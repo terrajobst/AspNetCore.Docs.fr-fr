@@ -1,8 +1,8 @@
 ---
 title: "Autorisation basée sur les rôles"
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: "Ce document montre comment restreindre l’accès de contrôleur et d’action ASP.NET Core en passant des rôles à l’attribut Authorize."
+keywords: "ASP.NET Core, l’autorisation, rôles"
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -11,23 +11,23 @@ ms.assetid: 5e014da1-8bc0-409b-951a-88b92c661fdf
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/roles
-ms.openlocfilehash: 1dc76f316b70d486febe386cc47cd1f843d8d8e3
-ms.sourcegitcommit: 9cdbfd0d670d70b9c354216aabee260c52dad5ee
+ms.openlocfilehash: 649b21d99c742843534748b0ba9d7b7b22483a62
+ms.sourcegitcommit: 703593d5fd14076e79be2ba75a5b8da12a60ab15
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/12/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="role-based-authorization"></a><span data-ttu-id="0fcb7-103">Autorisation basée sur les rôles</span><span class="sxs-lookup"><span data-stu-id="0fcb7-103">Role based Authorization</span></span>
+# <a name="role-based-authorization"></a><span data-ttu-id="4dc79-104">Autorisation basée sur les rôles</span><span class="sxs-lookup"><span data-stu-id="4dc79-104">Role based Authorization</span></span>
 
-<a name=security-authorization-role-based></a>
+<a name="security-authorization-role-based"></a>
 
-<span data-ttu-id="0fcb7-104">Lors de la création d’une identité, elle peut appartenir à un ou plusieurs rôles, par exemple Tracy mon peut appartenir aux rôles administrateur et utilisateur tandis que Scott peut uniquement appartenir au rôle d’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-104">When an identity is created it may belong to one or more roles, for example Tracy may belong to the Administrator and User roles whilst Scott may only belong to the user role.</span></span> <span data-ttu-id="0fcb7-105">Comment ces rôles sont créés et gérés varient selon le magasin de stockage du processus d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-105">How these roles are created and managed depends on the backing store of the authorization process.</span></span> <span data-ttu-id="0fcb7-106">Les rôles sont exposés au développeur via les [IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole) propriété sur le [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) classe.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-106">Roles are exposed to the developer through the [IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole) property on the [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) class.</span></span>
+<span data-ttu-id="4dc79-105">Lorsqu’une identité est créée, elle peut appartenir à un ou plusieurs rôles.</span><span class="sxs-lookup"><span data-stu-id="4dc79-105">When an identity is created it may belong to one or more roles.</span></span> <span data-ttu-id="4dc79-106">Par exemple, Tracy mon peut appartenir aux rôles administrateur et utilisateur tandis que Scott peut uniquement appartenir au rôle d’utilisateur.</span><span class="sxs-lookup"><span data-stu-id="4dc79-106">For example, Tracy may belong to the Administrator and User roles whilst Scott may only belong to the User role.</span></span> <span data-ttu-id="4dc79-107">Comment ces rôles sont créés et gérés varient selon le magasin de stockage du processus d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="4dc79-107">How these roles are created and managed depends on the backing store of the authorization process.</span></span> <span data-ttu-id="4dc79-108">Les rôles sont exposés au développeur via les [IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole) méthode sur le [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) classe.</span><span class="sxs-lookup"><span data-stu-id="4dc79-108">Roles are exposed to the developer through the [IsInRole](https://docs.microsoft.com/dotnet/api/system.security.principal.genericprincipal.isinrole) method on the [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) class.</span></span>
 
-## <a name="adding-role-checks"></a><span data-ttu-id="0fcb7-107">Ajout de contrôles de rôle</span><span class="sxs-lookup"><span data-stu-id="0fcb7-107">Adding role checks</span></span>
+## <a name="adding-role-checks"></a><span data-ttu-id="4dc79-109">Ajout de contrôles de rôle</span><span class="sxs-lookup"><span data-stu-id="4dc79-109">Adding role checks</span></span>
 
-<span data-ttu-id="0fcb7-108">Vérifications d’autorisation basé sur les rôles sont déclaratives - le développeur les incorpore dans leur code, par rapport à un contrôleur ou une action dans un contrôleur, en spécifiant des rôles auxquels l’utilisateur actuel doit être un membre d’accéder à la ressource demandée.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-108">Role based authorization checks are declarative - the developer embeds them within their code, against a controller or an action within a controller, specifying roles which the current user must be a member of to access the requested resource.</span></span>
+<span data-ttu-id="4dc79-110">Vérifications d’autorisation basé sur les rôles sont déclaratives&mdash;le développeur les incorpore dans leur code, par rapport à un contrôleur ou une action dans un contrôleur, en spécifiant des rôles auxquels l’utilisateur actuel doit être un membre d’accéder à la ressource demandée.</span><span class="sxs-lookup"><span data-stu-id="4dc79-110">Role based authorization checks are declarative&mdash;the developer embeds them within their code, against a controller or an action within a controller, specifying roles which the current user must be a member of to access the requested resource.</span></span>
 
-<span data-ttu-id="0fcb7-109">Par exemple le code suivant limite l’accès à toutes les actions sur le `AdministrationController` aux utilisateurs qui sont membres de le `Administrator` groupe.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-109">For example the following code would limit access to any actions on the `AdministrationController` to users who are a member of the `Administrator` group.</span></span>
+<span data-ttu-id="4dc79-111">Par exemple, le code suivant limite l’accès à toutes les actions sur le `AdministrationController` aux utilisateurs qui sont membres de le `Administrator` groupe.</span><span class="sxs-lookup"><span data-stu-id="4dc79-111">For example, the following code would limit access to any actions on the `AdministrationController` to users who are a member of the `Administrator` group.</span></span>
 
 ```csharp
 [Authorize(Roles = "Administrator")]
@@ -36,7 +36,7 @@ public class AdministrationController : Controller
 }
 ```
 
-<span data-ttu-id="0fcb7-110">Vous pouvez spécifier plusieurs rôles comme une liste séparée par des virgules ;</span><span class="sxs-lookup"><span data-stu-id="0fcb7-110">You can specify multiple roles as a comma separated list;</span></span>
+<span data-ttu-id="4dc79-112">Vous pouvez spécifier plusieurs rôles comme une liste séparée par des virgules :</span><span class="sxs-lookup"><span data-stu-id="4dc79-112">You can specify multiple roles as a comma separated list:</span></span>
 
 ```csharp
 [Authorize(Roles = "HRManager,Finance")]
@@ -45,9 +45,9 @@ public class SalaryController : Controller
 }
 ```
 
-<span data-ttu-id="0fcb7-111">Ce contrôleur étaient accessibles uniquement par les utilisateurs qui sont membres de la `HRManager` rôle ou le `Finance` rôle.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-111">This controller would be only accessible by users who are members of the `HRManager` role or the `Finance` role.</span></span>
+<span data-ttu-id="4dc79-113">Ce contrôleur étaient accessibles uniquement par les utilisateurs qui sont membres de la `HRManager` rôle ou le `Finance` rôle.</span><span class="sxs-lookup"><span data-stu-id="4dc79-113">This controller would be only accessible by users who are members of the `HRManager` role or the `Finance` role.</span></span>
 
-<span data-ttu-id="0fcb7-112">Si vous appliquez plusieurs attributs, un utilisateur doit être un membre de tous les rôles spécifiés ; l’exemple suivant nécessite qu’un utilisateur doit être membre des groupes le `PowerUser` et `ControlPanelUser` rôle.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-112">If you apply multiple attributes then an accessing user must be a member of all the roles specified; the following sample requires that a user must be a member of both the `PowerUser` and `ControlPanelUser` role.</span></span>
+<span data-ttu-id="4dc79-114">Si vous appliquez plusieurs attributs, un utilisateur doit être un membre de tous les rôles spécifiés ; l’exemple suivant nécessite qu’un utilisateur doit être membre des groupes le `PowerUser` et `ControlPanelUser` rôle.</span><span class="sxs-lookup"><span data-stu-id="4dc79-114">If you apply multiple attributes then an accessing user must be a member of all the roles specified; the following sample requires that a user must be a member of both the `PowerUser` and `ControlPanelUser` role.</span></span>
 
 ```csharp
 [Authorize(Roles = "PowerUser")]
@@ -57,7 +57,7 @@ public class ControlPanelController : Controller
 }
 ```
 
-<span data-ttu-id="0fcb7-113">Vous pouvez également limiter l’accès en appliquant des attributs d’autorisation de rôle supplémentaires au niveau action ;</span><span class="sxs-lookup"><span data-stu-id="0fcb7-113">You can further limit access by applying additional role authorization attributes at the action level;</span></span>
+<span data-ttu-id="4dc79-115">Vous pouvez également limiter l’accès en appliquant des attributs d’autorisation de rôle supplémentaires au niveau de l’action :</span><span class="sxs-lookup"><span data-stu-id="4dc79-115">You can further limit access by applying additional role authorization attributes at the action level:</span></span>
 
 ```csharp
 [Authorize(Roles = "Administrator, PowerUser")]
@@ -74,9 +74,9 @@ public class ControlPanelController : Controller
 }
 ```
 
-<span data-ttu-id="0fcb7-114">Dans les membres d’extrait de code précédent de la `Administrator` rôle ou le `PowerUser` rôle peut accéder au contrôleur et le `SetTime` action, mais seuls les membres du `Administrator` rôle peut accéder le `ShutDown` action.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-114">In the previous code snippet members of the `Administrator` role or the `PowerUser` role can access the controller and the `SetTime` action, but only members of the `Administrator` role can access the `ShutDown` action.</span></span>
+<span data-ttu-id="4dc79-116">Dans les membres d’extrait de code précédent de la `Administrator` rôle ou le `PowerUser` rôle peut accéder au contrôleur et le `SetTime` action, mais seuls les membres du `Administrator` rôle peut accéder le `ShutDown` action.</span><span class="sxs-lookup"><span data-stu-id="4dc79-116">In the previous code snippet members of the `Administrator` role or the `PowerUser` role can access the controller and the `SetTime` action, but only members of the `Administrator` role can access the `ShutDown` action.</span></span>
 
-<span data-ttu-id="0fcb7-115">Vous pouvez également verrouiller un contrôleur et autoriser l’accès anonyme, non authentifié à des actions individuelles.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-115">You can also lock down a controller but allow anonymous, unauthenticated access to individual actions.</span></span>
+<span data-ttu-id="4dc79-117">Vous pouvez également verrouiller un contrôleur et autoriser l’accès anonyme, non authentifié à des actions individuelles.</span><span class="sxs-lookup"><span data-stu-id="4dc79-117">You can also lock down a controller but allow anonymous, unauthenticated access to individual actions.</span></span>
 
 ```csharp
 [Authorize]
@@ -93,11 +93,11 @@ public class ControlPanelController : Controller
 }
 ```
 
-<a name=security-authorization-role-policy></a>
+<a name="security-authorization-role-policy"></a>
 
-## <a name="policy-based-role-checks"></a><span data-ttu-id="0fcb7-116">Contrôles de rôle basée sur la stratégie</span><span class="sxs-lookup"><span data-stu-id="0fcb7-116">Policy based role checks</span></span>
+## <a name="policy-based-role-checks"></a><span data-ttu-id="4dc79-118">Contrôles de rôle basée sur la stratégie</span><span class="sxs-lookup"><span data-stu-id="4dc79-118">Policy based role checks</span></span>
 
-<span data-ttu-id="0fcb7-117">Conditions de rôle peuvent également être exprimées à l’aide de la syntaxe de la nouvelle stratégie, où un développeur inscrit une stratégie au démarrage dans le cadre de la configuration du service d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-117">Role requirements can also be expressed using the new Policy syntax, where a developer registers a policy at startup as part of the Authorization service configuration.</span></span> <span data-ttu-id="0fcb7-118">Ceci se produit normalement dans `ConfigureServices()` dans votre *Startup.cs* fichier.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-118">This normally occurs in `ConfigureServices()` in your *Startup.cs* file.</span></span>
+<span data-ttu-id="4dc79-119">Conditions de rôle peuvent également être exprimées à l’aide de la syntaxe de la nouvelle stratégie, où un développeur inscrit une stratégie au démarrage dans le cadre de la configuration du service d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="4dc79-119">Role requirements can also be expressed using the new Policy syntax, where a developer registers a policy at startup as part of the Authorization service configuration.</span></span> <span data-ttu-id="4dc79-120">Ceci se produit normalement dans `ConfigureServices()` dans votre *Startup.cs* fichier.</span><span class="sxs-lookup"><span data-stu-id="4dc79-120">This normally occurs in `ConfigureServices()` in your *Startup.cs* file.</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -111,7 +111,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="0fcb7-119">Les stratégies sont appliquées à l’aide de la `Policy` propriété sur le `AuthorizeAttribute` d’attribut ;</span><span class="sxs-lookup"><span data-stu-id="0fcb7-119">Policies are applied using the `Policy` property on the `AuthorizeAttribute` attribute;</span></span>
+<span data-ttu-id="4dc79-121">Les stratégies sont appliquées à l’aide de la `Policy` propriété sur le `AuthorizeAttribute` attribut :</span><span class="sxs-lookup"><span data-stu-id="4dc79-121">Policies are applied using the `Policy` property on the `AuthorizeAttribute` attribute:</span></span>
 
 ```csharp
 [Authorize(Policy = "RequireAdministratorRole")]
@@ -121,11 +121,11 @@ public IActionResult Shutdown()
 }
 ```
 
-<span data-ttu-id="0fcb7-120">Si vous souhaitez spécifier plusieurs rôles autorisés dans une spécification, vous pouvez les spécifier en tant que paramètres à la `RequireRole` méthode ;</span><span class="sxs-lookup"><span data-stu-id="0fcb7-120">If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the `RequireRole` method;</span></span>
+<span data-ttu-id="4dc79-122">Si vous souhaitez spécifier plusieurs rôles autorisés dans une spécification, vous pouvez les spécifier en tant que paramètres à la `RequireRole` méthode :</span><span class="sxs-lookup"><span data-stu-id="4dc79-122">If you want to specify multiple allowed roles in a requirement then you can specify them as parameters to the `RequireRole` method:</span></span>
 
 ```csharp
 options.AddPolicy("ElevatedRights", policy =>
                   policy.RequireRole("Administrator", "PowerUser", "BackupAdministrator"));
 ```
 
-<span data-ttu-id="0fcb7-121">Cet exemple autorise les utilisateurs qui appartiennent à la `Administrator`, `PowerUser` ou `BackupAdministrator` rôles.</span><span class="sxs-lookup"><span data-stu-id="0fcb7-121">This example authorizes users who belong to the `Administrator`, `PowerUser` or `BackupAdministrator` roles.</span></span>
+<span data-ttu-id="4dc79-123">Cet exemple autorise les utilisateurs qui appartiennent à la `Administrator`, `PowerUser` ou `BackupAdministrator` rôles.</span><span class="sxs-lookup"><span data-stu-id="4dc79-123">This example authorizes users who belong to the `Administrator`, `PowerUser` or `BackupAdministrator` roles.</span></span>
