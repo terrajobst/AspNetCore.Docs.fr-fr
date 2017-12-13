@@ -1,85 +1,109 @@
 ---
-title: "Sécurité"
-author: rick-anderson
-description: 
-keywords: ASP.NET Core,
-ms.author: riande
+title: "Vue d’ensemble de la sécurité ASP.NET Core | Microsoft Docs"
+author: rachelappel
+description: "Découvrir les concepts de base de l’authentification, de l’autorisation et de la sécurité dans ASP.NET Core"
+ms.author: rachelap
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 11/01/2017
 ms.topic: article
 ms.assetid: a8fb7eb7-e0e5-4394-84f3-1f1dbe012345
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/index
-ms.openlocfilehash: f173d03f55a1ce52222a75c023f9e8a20d5c60dc
-ms.sourcegitcommit: 6e83c55eb0450a3073ef2b95fa5f5bcb20dbbf89
+ms.openlocfilehash: 4f3a74d67ce3453499ea9785cc80bee183dc1aff
+ms.sourcegitcommit: e4fb6b13be56a0fb2f2778623740a047d6489227
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="security"></a>Sécurité
+# <a name="aspnet-core-security-overview"></a><span data-ttu-id="4a9ec-103">Vue d’ensemble de la sécurité ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4a9ec-103">ASP.NET Core Security Overview</span></span>
 
-*   [Authentification](authentication/index.md)
-    *   [Présentation d’Identity](authentication/identity.md)
-    *   [Activation de l’authentification via Facebook, Google et d’autres fournisseurs externes](authentication/social/index.md)
-    * [Configurer l’authentification Windows](authentication/windowsauth.md)
-    *   [Confirmation de compte et récupération de mot de passe](authentication/accconfirm.md)
-    *   [Authentification à 2 facteurs avec SMS](authentication/2fa.md) 
-    *   [Utilisation de l’authentification par cookie sans ASP.NET Core Identity](authentication/cookie.md)
-    *   [Azure Active Directory](authentication/azure-active-directory/index.md)
-        *   [Intégration d’Azure AD dans une application web ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
-        *   [Appel d’une API web ASP.NET Core à partir d’une application WPF via Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
-        *   [Appel d’une API web dans une application web ASP.NET Core via Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
-        *   [Une application web ASP.NET Core Azure AD B2C](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
-    *   [Sécurisation des applications ASP.NET Core avec IdentityServer4](https://identityserver4.readthedocs.io)
-*   [Autorisation](authorization/index.md)
-    *   [Introduction](authorization/introduction.md)
-    *   [Créer une application avec des données utilisateur protégées par une autorisation](xref:security/authorization/secure-data)
-    *   [Autorisation simple](authorization/simple.md)
-    *   [Autorisation basée sur les rôles](authorization/roles.md)
-    *   [Autorisation basée sur des revendications](authorization/claims.md)
-    *   [Autorisation basée sur une stratégie personnalisée](authorization/policies.md)
-    *   [Injection de dépendances dans les gestionnaires d’exigences](authorization/dependencyinjection.md)
-    *   [Autorisation basée sur les ressources](authorization/resourcebased.md)
-    *   [Autorisation basée sur les vues](authorization/views.md)
-    *   [Limitation de l’identité selon le schéma](authorization/limitingidentitybyscheme.md)
-*   [Protection des données](data-protection/index.md)
-    *   [Présentation de la protection des données](data-protection/introduction.md)
-    *   [Bien démarrer avec les API de protection des données](data-protection/using-data-protection.md)
-    *   [API de contrôle serveur consommateur](data-protection/consumer-apis/index.md)
-        *   [Vue d’ensemble des API de contrôle serveur consommateur](data-protection/consumer-apis/overview.md)
-        *   [Chaînes d’objectifs](data-protection/consumer-apis/purpose-strings.md)
-        *   [Hiérarchie d’objectifs et architecture mutualisée](data-protection/consumer-apis/purpose-strings-multitenancy.md)
-        *   [Hachage de mot de passe](data-protection/consumer-apis/password-hashing.md)
-        *   [Limitation de la durée de vie des charges utiles protégées](data-protection/consumer-apis/limited-lifetime-payloads.md)
-        *   [Retrait de la protection des charges utiles dont les clés ont été révoquées](data-protection/consumer-apis/dangerous-unprotect.md)
-    *   [Configuration](data-protection/configuration/index.md)
-        *   [Configuration de la protection des données](data-protection/configuration/overview.md)
-        *   [Paramètres par défaut](data-protection/configuration/default-settings.md)
-        *   [Stratégie à l’échelle de la machine](data-protection/configuration/machine-wide-policy.md)
-        *   [Scénarios non compatibles avec l’injection de dépendances](data-protection/configuration/non-di-scenarios.md)
-    *   [API d’extensibilité](data-protection/extensibility/index.md)
-        *   [Extensibilité du chiffrement de base](data-protection/extensibility/core-crypto.md)
-        *   [Extensibilité de la gestion de clés](data-protection/extensibility/key-management.md)
-        *   [API diverses](data-protection/extensibility/misc-apis.md)
-    *   [Implémentation](data-protection/implementation/index.md)
-        *   [Détails du chiffrement authentifié](data-protection/implementation/authenticated-encryption-details.md)
-        *   [Dérivation de sous-clé et chiffrement authentifié](data-protection/implementation/subkeyderivation.md)
-        *   [En-têtes de contexte](data-protection/implementation/context-headers.md)
-        *   [Gestion des clés](data-protection/implementation/key-management.md)
-        *   [Fournisseurs de stockage de clés](data-protection/implementation/key-storage-providers.md)
-        *   [Chiffrement à clé au repos](data-protection/implementation/key-encryption-at-rest.md)
-        *   [Immuabilité des clés et modification des paramètres](data-protection/implementation/key-immutability.md)
-        *   [Format de stockage des clés](data-protection/implementation/key-storage-format.md)
-        *   [Fournisseurs de protection des données éphémères](data-protection/implementation/key-storage-ephemeral.md)
-    *   [Compatibilité](data-protection/compatibility/index.md)
-        *   [Partage des cookies entre les applications](data-protection/compatibility/cookie-sharing.md)
-        *   [Remplacement de <machineKey> dans ASP.NET](data-protection/compatibility/replacing-machinekey.md)
-*   [Créer une application avec des données utilisateur protégées par une autorisation](xref:security/authorization/secure-data)
-*   [Stockage sécurisé des secrets de l’application durant le développement](app-secrets.md)
-*   [Fournisseur de configuration Azure Key Vault](key-vault-configuration.md)
-*   [Mise en œuvre de SSL](enforcing-ssl.md)
-*   [Protection contre la falsification de requête](anti-request-forgery.md)
-*   [Blocage des attaques par redirection ouverte](preventing-open-redirects.md)
-*   [Blocage des scripts intersites](cross-site-scripting.md)
-*   [Activation des requêtes d’origines différentes](cors.md)
+<span data-ttu-id="4a9ec-104">ASP.NET Core permet aux développeurs de configurer et de gérer facilement la sécurité de leurs applications.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-104">ASP.NET Core enables developers to easily configure and manage security for their apps.</span></span> <span data-ttu-id="4a9ec-105">ASP.NET Core contient des fonctionnalités permettant de gérer l’authentification, l’autorisation, la protection des données, l’implémentation de SSL, les secrets des applications, la protection contre la falsification de requêtes et la gestion CORS.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-105">ASP.NET Core contains features for managing authentication, authorization, data protection, SSL enforcement, app secrets, anti-request forgery protection, and CORS management.</span></span> <span data-ttu-id="4a9ec-106">Ces fonctionnalités de sécurité vous permettent de générer des applications ASP.NET Core robustes et néanmoins sécurisées.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-106">These security features allow you to build robust yet secure ASP.NET Core apps.</span></span> 
+
+## <a name="aspnet-core-security-features"></a><span data-ttu-id="4a9ec-107">Fonctionnalités de sécurité ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4a9ec-107">ASP.NET Core security features</span></span>
+
+<span data-ttu-id="4a9ec-108">ASP.NET Core offre un grand nombre d’outils et de bibliothèques pour sécuriser vos applications, notamment des fournisseurs d’identité intégrés. Cela dit, vous pouvez utiliser des services d’identité tiers tels que Facebook, Twitter ou LinkedIn.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-108">ASP.NET Core provides many tools and libraries to secure your apps including built-in Identity providers but you can use 3rd party identity services such as Facebook, Twitter, or LinkedIn.</span></span> <span data-ttu-id="4a9ec-109">Avec ASP.NET Core, vous pouvez facilement gérer les secrets des applications, qui sont un moyen de stocker et d’utiliser des informations confidentielles sans avoir à les exposer dans le code.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-109">With ASP.NET Core, you can easily manage app secrets, which are a way to store and use confidential information without having to expose it in the code.</span></span> 
+
+## <a name="authentication-vs-authorization"></a><span data-ttu-id="4a9ec-110">Authentification et autorisation</span><span class="sxs-lookup"><span data-stu-id="4a9ec-110">Authentication vs. Authorization</span></span>
+
+<span data-ttu-id="4a9ec-111">L’authentification est un processus selon lequel un utilisateur fournit des informations d’identification qui sont ensuite comparées à celles stockées dans un système d’exploitation, une base de données, une application ou une ressource.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-111">Authentication is a process in which a user provides credentials that are then compared to those stored in an operating system, database, app or resource.</span></span> <span data-ttu-id="4a9ec-112">Si elles correspondent, les utilisateurs sont authentifiés et peuvent alors effectuer les actions pour lesquelles ils disposent d’autorisations pendant un processus d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-112">If they match, users authenticate successfully, and can then perform actions that they are authorized for, during an authorization process.</span></span> <span data-ttu-id="4a9ec-113">L’autorisation désigne le processus qui détermine ce qu’un utilisateur est autorisé à faire.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-113">The authorization refers to the process that determines what a user is allowed to do.</span></span> 
+
+<span data-ttu-id="4a9ec-114">Vous pouvez aussi vous représenter l’authentification comme un moyen d’entrer dans un espace, tel qu’un serveur, une base de données, une application ou une ressource, tandis que l’autorisation consiste à définir quelles actions l’utilisateur peut effectuer sur quels objets à l’intérieur de cet espace (serveur, base de données ou application).</span><span class="sxs-lookup"><span data-stu-id="4a9ec-114">Another way to think of authentication is to consider it as a way to enter a space, such as a server, database, app or resource, while authorization is which actions the user can perform to which objects inside that space (server, database, or app).</span></span>
+
+## <a name="common-vulnerabilities-in-software"></a><span data-ttu-id="4a9ec-115">Failles de sécurité courantes dans les logiciels</span><span class="sxs-lookup"><span data-stu-id="4a9ec-115">Common Vulnerabilities in software</span></span>
+
+<span data-ttu-id="4a9ec-116">ASP.NET Core et Entity Framework contiennent des fonctionnalités qui vous aident à sécuriser vos applications et à empêcher les violations de sécurité.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-116">ASP.NET Core and EF contain features that help you secure your apps and prevent security breaches.</span></span> <span data-ttu-id="4a9ec-117">La liste de liens ci-après vous permet d’accéder à une documentation décrivant en détail des techniques destinées à éviter les failles de sécurité les plus courantes dans les applications web :</span><span class="sxs-lookup"><span data-stu-id="4a9ec-117">The following list of links takes you to documentation detailing techniques to avoid the most common security vulnerabilities in web apps:</span></span>
+
+* [<span data-ttu-id="4a9ec-118">Attaques par exécution de scripts de site à site</span><span class="sxs-lookup"><span data-stu-id="4a9ec-118">Cross site scripting attacks</span></span>](https://docs.microsoft.com/aspnet/core/security/cross-site-scripting)
+* [<span data-ttu-id="4a9ec-119">Attaques par injection de code SQL</span><span class="sxs-lookup"><span data-stu-id="4a9ec-119">SQL Injection attacks</span></span>](https://docs.microsoft.com/ef/core/querying/raw-sql)
+* [<span data-ttu-id="4a9ec-120">Falsification de requête intersites (CSRF, Cross Site Request Forgery)</span><span class="sxs-lookup"><span data-stu-id="4a9ec-120">Cross-Site Request Forgery (CSRF)</span></span>](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery)
+* [<span data-ttu-id="4a9ec-121">Attaques par redirection ouverte</span><span class="sxs-lookup"><span data-stu-id="4a9ec-121">Open redirect attacks</span></span>](https://docs.microsoft.com/aspnet/core/security/preventing-open-redirects)
+
+<span data-ttu-id="4a9ec-122">Il existe d’autres failles de sécurité que vous devez connaître.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-122">There are more vulnerabilities that you should be aware of.</span></span> <span data-ttu-id="4a9ec-123">Pour plus d’informations, consultez la section de ce document relative à la *Documentation sur la sécurité ASP.NET*.</span><span class="sxs-lookup"><span data-stu-id="4a9ec-123">For more information, see the section in this document on *ASP.NET Security Documentation*.</span></span> 
+
+## <a name="aspnet-security-documentation"></a><span data-ttu-id="4a9ec-124">Documentation sur la sécurité ASP.NET</span><span class="sxs-lookup"><span data-stu-id="4a9ec-124">ASP.NET Security Documentation</span></span>
+
+*   [<span data-ttu-id="4a9ec-125">Authentification</span><span class="sxs-lookup"><span data-stu-id="4a9ec-125">Authentication</span></span>](authentication/index.md)
+    *   [<span data-ttu-id="4a9ec-126">Présentation d’Identity</span><span class="sxs-lookup"><span data-stu-id="4a9ec-126">Introduction to Identity</span></span>](authentication/identity.md)
+    *   [<span data-ttu-id="4a9ec-127">Activation de l’authentification via Facebook, Google et d’autres fournisseurs externes</span><span class="sxs-lookup"><span data-stu-id="4a9ec-127">Enabling authentication using Facebook, Google and other external providers</span></span>](authentication/social/index.md)
+    * [<span data-ttu-id="4a9ec-128">Configurer l’authentification Windows</span><span class="sxs-lookup"><span data-stu-id="4a9ec-128">Configure Windows Authentication</span></span>](authentication/windowsauth.md)
+    *   [<span data-ttu-id="4a9ec-129">Confirmation de compte et récupération de mot de passe</span><span class="sxs-lookup"><span data-stu-id="4a9ec-129">Account Confirmation and Password Recovery</span></span>](authentication/accconfirm.md)
+    *   [<span data-ttu-id="4a9ec-130">Authentification à 2 facteurs avec SMS</span><span class="sxs-lookup"><span data-stu-id="4a9ec-130">Two-factor authentication with SMS</span></span>](authentication/2fa.md) 
+    *   [<span data-ttu-id="4a9ec-131">Utilisation de l’authentification par cookie sans ASP.NET Core Identity</span><span class="sxs-lookup"><span data-stu-id="4a9ec-131">Using Cookie Authentication without ASP.NET Core Identity</span></span>](authentication/cookie.md)
+    *   [<span data-ttu-id="4a9ec-132">Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="4a9ec-132">Azure Active Directory</span></span>](authentication/azure-active-directory/index.md)
+        *   [<span data-ttu-id="4a9ec-133">Intégration d’Azure AD dans une application web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4a9ec-133">Integrating Azure AD Into an ASP.NET Core Web App</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
+        *   [<span data-ttu-id="4a9ec-134">Appel d’une API web ASP.NET Core à partir d’une application WPF via Azure AD</span><span class="sxs-lookup"><span data-stu-id="4a9ec-134">Calling a ASP.NET Core Web API From a WPF Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
+        *   [<span data-ttu-id="4a9ec-135">Appel d’une API web dans une application web ASP.NET Core via Azure AD</span><span class="sxs-lookup"><span data-stu-id="4a9ec-135">Calling a Web API in an ASP.NET Core Web Application Using Azure AD</span></span>](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
+        *   [<span data-ttu-id="4a9ec-136">Une application web ASP.NET Core Azure AD B2C</span><span class="sxs-lookup"><span data-stu-id="4a9ec-136">An ASP.NET Core web app with Azure AD B2C</span></span>](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
+    *   [<span data-ttu-id="4a9ec-137">Sécurisation des applications ASP.NET Core avec IdentityServer4</span><span class="sxs-lookup"><span data-stu-id="4a9ec-137">Securing ASP.NET Core apps with IdentityServer4</span></span>](https://identityserver4.readthedocs.io)
+*   [<span data-ttu-id="4a9ec-138">Autorisation</span><span class="sxs-lookup"><span data-stu-id="4a9ec-138">Authorization</span></span>](authorization/index.md)
+    *   [<span data-ttu-id="4a9ec-139">Introduction</span><span class="sxs-lookup"><span data-stu-id="4a9ec-139">Introduction</span></span>](authorization/introduction.md)
+    *   [<span data-ttu-id="4a9ec-140">Créer une application avec des données utilisateur protégées par une autorisation</span><span class="sxs-lookup"><span data-stu-id="4a9ec-140">Create an app with user data protected by authorization</span></span>](xref:security/authorization/secure-data)
+    *   [<span data-ttu-id="4a9ec-141">Autorisation simple</span><span class="sxs-lookup"><span data-stu-id="4a9ec-141">Simple Authorization</span></span>](authorization/simple.md)
+    *   [<span data-ttu-id="4a9ec-142">Autorisation basée sur les rôles</span><span class="sxs-lookup"><span data-stu-id="4a9ec-142">Role based Authorization</span></span>](authorization/roles.md)
+    *   [<span data-ttu-id="4a9ec-143">Autorisation basée sur des revendications</span><span class="sxs-lookup"><span data-stu-id="4a9ec-143">Claims-Based Authorization</span></span>](authorization/claims.md)
+    *   [<span data-ttu-id="4a9ec-144">Autorisation basée sur une stratégie personnalisée</span><span class="sxs-lookup"><span data-stu-id="4a9ec-144">Custom Policy-Based Authorization</span></span>](authorization/policies.md)
+    *   [<span data-ttu-id="4a9ec-145">Injection de dépendances dans les gestionnaires d’exigences</span><span class="sxs-lookup"><span data-stu-id="4a9ec-145">Dependency Injection in requirement handlers</span></span>](authorization/dependencyinjection.md)
+    *   [<span data-ttu-id="4a9ec-146">Autorisation basée sur les ressources</span><span class="sxs-lookup"><span data-stu-id="4a9ec-146">Resource-based authorization</span></span>](authorization/resourcebased.md)
+    *   [<span data-ttu-id="4a9ec-147">Autorisation basée sur les vues</span><span class="sxs-lookup"><span data-stu-id="4a9ec-147">View-based authorization</span></span>](authorization/views.md)
+    *   [<span data-ttu-id="4a9ec-148">Limitation d’identité par schéma</span><span class="sxs-lookup"><span data-stu-id="4a9ec-148">Limiting identity by scheme</span></span>](authorization/limitingidentitybyscheme.md)
+*   [<span data-ttu-id="4a9ec-149">Protection des données</span><span class="sxs-lookup"><span data-stu-id="4a9ec-149">Data Protection</span></span>](data-protection/index.md)
+    *   [<span data-ttu-id="4a9ec-150">Présentation de la protection des données</span><span class="sxs-lookup"><span data-stu-id="4a9ec-150">Introduction to Data Protection</span></span>](data-protection/introduction.md)
+    *   [<span data-ttu-id="4a9ec-151">Bien démarrer avec les API de protection des données</span><span class="sxs-lookup"><span data-stu-id="4a9ec-151">Getting Started with the Data Protection APIs</span></span>](data-protection/using-data-protection.md)
+    *   [<span data-ttu-id="4a9ec-152">API de contrôle serveur consommateur</span><span class="sxs-lookup"><span data-stu-id="4a9ec-152">Consumer APIs</span></span>](data-protection/consumer-apis/index.md)
+        *   [<span data-ttu-id="4a9ec-153">Vue d’ensemble des API de contrôle serveur consommateur</span><span class="sxs-lookup"><span data-stu-id="4a9ec-153">Consumer APIs Overview</span></span>](data-protection/consumer-apis/overview.md)
+        *   [<span data-ttu-id="4a9ec-154">Chaînes d’objectifs</span><span class="sxs-lookup"><span data-stu-id="4a9ec-154">Purpose Strings</span></span>](data-protection/consumer-apis/purpose-strings.md)
+        *   [<span data-ttu-id="4a9ec-155">Hiérarchie d’objectifs et architecture mutualisée</span><span class="sxs-lookup"><span data-stu-id="4a9ec-155">Purpose hierarchy and multi-tenancy</span></span>](data-protection/consumer-apis/purpose-strings-multitenancy.md)
+        *   [<span data-ttu-id="4a9ec-156">Hachage de mot de passe</span><span class="sxs-lookup"><span data-stu-id="4a9ec-156">Password Hashing</span></span>](data-protection/consumer-apis/password-hashing.md)
+        *   [<span data-ttu-id="4a9ec-157">Limitation de la durée de vie des charges utiles protégées</span><span class="sxs-lookup"><span data-stu-id="4a9ec-157">Limiting the lifetime of protected payloads</span></span>](data-protection/consumer-apis/limited-lifetime-payloads.md)
+        *   [<span data-ttu-id="4a9ec-158">Retrait de la protection des charges utiles dont les clés ont été révoquées</span><span class="sxs-lookup"><span data-stu-id="4a9ec-158">Unprotecting payloads whose keys have been revoked</span></span>](data-protection/consumer-apis/dangerous-unprotect.md)
+    *   [<span data-ttu-id="4a9ec-159">Configuration</span><span class="sxs-lookup"><span data-stu-id="4a9ec-159">Configuration</span></span>](data-protection/configuration/index.md)
+        *   [<span data-ttu-id="4a9ec-160">Configuration de la protection des données</span><span class="sxs-lookup"><span data-stu-id="4a9ec-160">Configuring Data Protection</span></span>](data-protection/configuration/overview.md)
+        *   [<span data-ttu-id="4a9ec-161">Paramètres par défaut</span><span class="sxs-lookup"><span data-stu-id="4a9ec-161">Default Settings</span></span>](data-protection/configuration/default-settings.md)
+        *   [<span data-ttu-id="4a9ec-162">Stratégie à l’échelle de la machine</span><span class="sxs-lookup"><span data-stu-id="4a9ec-162">Machine Wide Policy</span></span>](data-protection/configuration/machine-wide-policy.md)
+        *   [<span data-ttu-id="4a9ec-163">Scénarios non compatibles avec l’injection de dépendances</span><span class="sxs-lookup"><span data-stu-id="4a9ec-163">Non DI Aware Scenarios</span></span>](data-protection/configuration/non-di-scenarios.md)
+    *   [<span data-ttu-id="4a9ec-164">API d’extensibilité</span><span class="sxs-lookup"><span data-stu-id="4a9ec-164">Extensibility APIs</span></span>](data-protection/extensibility/index.md)
+        *   [<span data-ttu-id="4a9ec-165">Extensibilité du chiffrement de base</span><span class="sxs-lookup"><span data-stu-id="4a9ec-165">Core cryptography extensibility</span></span>](data-protection/extensibility/core-crypto.md)
+        *   [<span data-ttu-id="4a9ec-166">Extensibilité de la gestion de clés</span><span class="sxs-lookup"><span data-stu-id="4a9ec-166">Key management extensibility</span></span>](data-protection/extensibility/key-management.md)
+        *   [<span data-ttu-id="4a9ec-167">API diverses</span><span class="sxs-lookup"><span data-stu-id="4a9ec-167">Miscellaneous APIs</span></span>](data-protection/extensibility/misc-apis.md)
+    *   [<span data-ttu-id="4a9ec-168">Implémentation</span><span class="sxs-lookup"><span data-stu-id="4a9ec-168">Implementation</span></span>](data-protection/implementation/index.md)
+        *   [<span data-ttu-id="4a9ec-169">Détails du chiffrement authentifié</span><span class="sxs-lookup"><span data-stu-id="4a9ec-169">Authenticated encryption details</span></span>](data-protection/implementation/authenticated-encryption-details.md)
+        *   [<span data-ttu-id="4a9ec-170">Dérivation de sous-clé et chiffrement authentifié</span><span class="sxs-lookup"><span data-stu-id="4a9ec-170">Subkey Derivation and Authenticated Encryption</span></span>](data-protection/implementation/subkeyderivation.md)
+        *   [<span data-ttu-id="4a9ec-171">En-têtes de contexte</span><span class="sxs-lookup"><span data-stu-id="4a9ec-171">Context headers</span></span>](data-protection/implementation/context-headers.md)
+        *   [<span data-ttu-id="4a9ec-172">Gestion des clés</span><span class="sxs-lookup"><span data-stu-id="4a9ec-172">Key Management</span></span>](data-protection/implementation/key-management.md)
+        *   [<span data-ttu-id="4a9ec-173">Fournisseurs de stockage de clés</span><span class="sxs-lookup"><span data-stu-id="4a9ec-173">Key Storage Providers</span></span>](data-protection/implementation/key-storage-providers.md)
+        *   [<span data-ttu-id="4a9ec-174">Chiffrement à clé au repos</span><span class="sxs-lookup"><span data-stu-id="4a9ec-174">Key Encryption At Rest</span></span>](data-protection/implementation/key-encryption-at-rest.md)
+        *   [<span data-ttu-id="4a9ec-175">Immuabilité des clés et modification des paramètres</span><span class="sxs-lookup"><span data-stu-id="4a9ec-175">Key Immutability and Changing Settings</span></span>](data-protection/implementation/key-immutability.md)
+        *   [<span data-ttu-id="4a9ec-176">Format de stockage des clés</span><span class="sxs-lookup"><span data-stu-id="4a9ec-176">Key Storage Format</span></span>](data-protection/implementation/key-storage-format.md)
+        *   [<span data-ttu-id="4a9ec-177">Fournisseurs de protection des données éphémères</span><span class="sxs-lookup"><span data-stu-id="4a9ec-177">Ephemeral data protection providers</span></span>](data-protection/implementation/key-storage-ephemeral.md)
+    *   [<span data-ttu-id="4a9ec-178">Compatibilité</span><span class="sxs-lookup"><span data-stu-id="4a9ec-178">Compatibility</span></span>](data-protection/compatibility/index.md)
+        *   [<span data-ttu-id="4a9ec-179">Partage des cookies entre les applications</span><span class="sxs-lookup"><span data-stu-id="4a9ec-179">Sharing cookies between applications</span></span>](data-protection/compatibility/cookie-sharing.md)
+        *   [<span data-ttu-id="4a9ec-180">Remplacement de <machineKey> dans ASP.NET</span><span class="sxs-lookup"><span data-stu-id="4a9ec-180">Replacing <machineKey> in ASP.NET</span></span>](data-protection/compatibility/replacing-machinekey.md)
+*   [<span data-ttu-id="4a9ec-181">Créer une application avec des données utilisateur protégées par une autorisation</span><span class="sxs-lookup"><span data-stu-id="4a9ec-181">Create an app with user data protected by authorization</span></span>](xref:security/authorization/secure-data)
+*   [<span data-ttu-id="4a9ec-182">Stockage sécurisé des secrets de l’application durant le développement</span><span class="sxs-lookup"><span data-stu-id="4a9ec-182">Safe storage of app secrets during development</span></span>](app-secrets.md)
+*   [<span data-ttu-id="4a9ec-183">Fournisseur de configuration Azure Key Vault</span><span class="sxs-lookup"><span data-stu-id="4a9ec-183">Azure Key Vault configuration provider</span></span>](key-vault-configuration.md)
+*   [<span data-ttu-id="4a9ec-184">Mise en œuvre de SSL</span><span class="sxs-lookup"><span data-stu-id="4a9ec-184">Enforcing SSL</span></span>](enforcing-ssl.md)
+*   [<span data-ttu-id="4a9ec-185">Protection contre la falsification de requête</span><span class="sxs-lookup"><span data-stu-id="4a9ec-185">Anti-Request Forgery</span></span>](anti-request-forgery.md)
+*   [<span data-ttu-id="4a9ec-186">Blocage des attaques par redirection ouverte</span><span class="sxs-lookup"><span data-stu-id="4a9ec-186">Preventing Open Redirect Attacks</span></span>](preventing-open-redirects.md)
+*   [<span data-ttu-id="4a9ec-187">Blocage des scripts intersites</span><span class="sxs-lookup"><span data-stu-id="4a9ec-187">Preventing Cross-Site Scripting</span></span>](cross-site-scripting.md)
+*   [<span data-ttu-id="4a9ec-188">Activation des requêtes d’origines différentes</span><span class="sxs-lookup"><span data-stu-id="4a9ec-188">Enabling Cross-Origin Requests (CORS)</span></span>](cors.md)
