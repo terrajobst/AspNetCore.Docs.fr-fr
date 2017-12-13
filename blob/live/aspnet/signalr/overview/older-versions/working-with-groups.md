@@ -1,0 +1,124 @@
+---
+uid: signalr/overview/older-versions/working-with-groups
+title: Utilisation de groupes dans SignalR 1.x | Documents Microsoft
+author: pfletcher
+description: "Cette rubrique décrit comment conserver les informations d’appartenance au groupe avec l’API de concentrateur."
+ms.author: aspnetcontent
+manager: wpickett
+ms.date: 10/21/2013
+ms.topic: article
+ms.assetid: 22929efd-68c9-4609-b76d-f8ba42fda01e
+ms.technology: dotnet-signalr
+ms.prod: .net-framework
+msc.legacyurl: /signalr/overview/older-versions/working-with-groups
+msc.type: authoredcontent
+ms.openlocfilehash: 04da74f23663313e70e54fd4f2f9e5f005791cff
+ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 11/10/2017
+---
+<a name="working-with-groups-in-signalr-1x"></a><span data-ttu-id="f01f3-103">Utilisation de groupes dans SignalR 1.x</span><span class="sxs-lookup"><span data-stu-id="f01f3-103">Working with Groups in SignalR 1.x</span></span>
+====================
+<span data-ttu-id="f01f3-104">par [Patrick Fletcher](https://github.com/pfletcher), [Tom FitzMacken](https://github.com/tfitzmac)</span><span class="sxs-lookup"><span data-stu-id="f01f3-104">by [Patrick Fletcher](https://github.com/pfletcher), [Tom FitzMacken](https://github.com/tfitzmac)</span></span>
+
+> <span data-ttu-id="f01f3-105">Cette rubrique décrit comment ajouter des utilisateurs aux groupes et de conserver les informations d’appartenance au groupe.</span><span class="sxs-lookup"><span data-stu-id="f01f3-105">This topic describes how to add users to groups and persist group membership information.</span></span>
+
+
+## <a name="overview"></a><span data-ttu-id="f01f3-106">Vue d'ensemble</span><span class="sxs-lookup"><span data-stu-id="f01f3-106">Overview</span></span>
+
+<span data-ttu-id="f01f3-107">Groupes dans SignalR fournissent une méthode pour diffuser des messages à des sous-ensembles spécifiés de clients connectés.</span><span class="sxs-lookup"><span data-stu-id="f01f3-107">Groups in SignalR provide a method for broadcasting messages to specified subsets of connected clients.</span></span> <span data-ttu-id="f01f3-108">Un groupe peut avoir n’importe quel nombre de clients, et un client peut être un membre de n’importe quel nombre de groupes.</span><span class="sxs-lookup"><span data-stu-id="f01f3-108">A group can have any number of clients, and a client can be a member of any number of groups.</span></span> <span data-ttu-id="f01f3-109">Vous n’êtes pas obligé de créer explicitement des groupes.</span><span class="sxs-lookup"><span data-stu-id="f01f3-109">You don't have to explicitly create groups.</span></span> <span data-ttu-id="f01f3-110">En effet, un groupe est créé automatiquement la première fois que vous spécifiez son nom dans un appel à Groups.Add, et il est supprimé lorsque vous supprimez la dernière connexion de l’appartenance à elle.</span><span class="sxs-lookup"><span data-stu-id="f01f3-110">In effect, a group is automatically created the first time you specify its name in a call to Groups.Add, and it is deleted when you remove the last connection from membership in it.</span></span> <span data-ttu-id="f01f3-111">Pour une introduction à l’aide de groupes, consultez [comment gérer l’appartenance au groupe à partir de la classe de concentrateur](index.md) dans l’API de concentrateurs - Guide de serveur.</span><span class="sxs-lookup"><span data-stu-id="f01f3-111">For an introduction to using groups, see [How to manage group membership from the Hub class](index.md) in the Hubs API - Server Guide.</span></span>
+
+<span data-ttu-id="f01f3-112">Il n’existe aucune API pour obtenir une liste de l’appartenance au groupe ou une liste de groupes.</span><span class="sxs-lookup"><span data-stu-id="f01f3-112">There is no API for getting a group membership list or a list of groups.</span></span> <span data-ttu-id="f01f3-113">SignalR envoie des messages pour les clients et les groupes basés sur un modèle pub/sub, et le serveur ne conserve pas les listes de groupes ou des appartenances aux groupes.</span><span class="sxs-lookup"><span data-stu-id="f01f3-113">SignalR sends messages to clients and groups based on a pub/sub model, and the server does not maintain lists of groups or group memberships.</span></span> <span data-ttu-id="f01f3-114">Cela permet d’optimiser l’évolutivité, car chaque fois que vous ajoutez un nœud à une batterie de serveurs web, tout état SignalR tient à jour doit être propagée vers le nouveau nœud.</span><span class="sxs-lookup"><span data-stu-id="f01f3-114">This helps maximize scalability, because whenever you add a node to a web farm, any state that SignalR maintains has to be propagated to the new node.</span></span>
+
+<span data-ttu-id="f01f3-115">Lorsque vous ajoutez un utilisateur à un groupe à l’aide de la `Groups.Add` méthode, l’utilisateur reçoit les messages vers ce groupe pour la durée de la connexion en cours, mais l’appartenance de ce groupe n’est pas rendue persistante au-delà de la connexion actuelle.</span><span class="sxs-lookup"><span data-stu-id="f01f3-115">When you add a user to a group using the `Groups.Add` method, the user receives messages directed to that group for the duration of the current connection, but the user's membership in that group is not persisted beyond the current connection.</span></span> <span data-ttu-id="f01f3-116">Si vous souhaitez conserver les informations sur les groupes et l’appartenance au groupe, vous devez stocker ces données dans un référentiel tel qu’une base de données ou le stockage de table Windows Azure.</span><span class="sxs-lookup"><span data-stu-id="f01f3-116">If you want to permanently retain information about groups and group membership, you must store that data in a repository such as a database or Azure table storage.</span></span> <span data-ttu-id="f01f3-117">Ensuite, chaque fois qu'un utilisateur se connecte à votre application, vous récupérer à partir du référentiel, les groupes auxquels appartient l’utilisateur et ajouter manuellement cet utilisateur à ces groupes.</span><span class="sxs-lookup"><span data-stu-id="f01f3-117">Then, each time a user connects to your application, you retrieve from the repository which groups the user belongs to, and manually add that user to those groups.</span></span>
+
+<span data-ttu-id="f01f3-118">Lors de la reconnexion après une interruption temporaire, l’utilisateur nouveau joint automatiquement les groupes précédemment affectés.</span><span class="sxs-lookup"><span data-stu-id="f01f3-118">When reconnecting after a temporary disruption, the user automatically re-joins the previously-assigned groups.</span></span> <span data-ttu-id="f01f3-119">Automatiquement rejoint un groupe s’applique uniquement lors de la reconnexion, ne pas lors de l’établissement d’une nouvelle connexion.</span><span class="sxs-lookup"><span data-stu-id="f01f3-119">Automatically rejoining a group only applies when reconnecting, not when establishing a new connection.</span></span> <span data-ttu-id="f01f3-120">Un jeton de signature numérique est passé à partir du client qui contient la liste des groupes précédemment attribués.</span><span class="sxs-lookup"><span data-stu-id="f01f3-120">A digitally-signed token is passed from the client that contains the list of previously-assigned groups.</span></span> <span data-ttu-id="f01f3-121">Si vous souhaitez vérifier si l’utilisateur appartient aux groupes requis, vous pouvez remplacer le comportement par défaut.</span><span class="sxs-lookup"><span data-stu-id="f01f3-121">If you want to verify whether the user belongs to the requested groups, you can override the default behavior.</span></span>
+
+<span data-ttu-id="f01f3-122">Cette rubrique comporte les sections suivantes :</span><span class="sxs-lookup"><span data-stu-id="f01f3-122">This topic includes the following sections:</span></span>
+
+- [<span data-ttu-id="f01f3-123">Ajout et suppression d’utilisateurs</span><span class="sxs-lookup"><span data-stu-id="f01f3-123">Adding and removing users</span></span>](#add)
+- [<span data-ttu-id="f01f3-124">Appel des membres d’un groupe</span><span class="sxs-lookup"><span data-stu-id="f01f3-124">Calling members of a group</span></span>](#call)
+- [<span data-ttu-id="f01f3-125">Appartenance au groupe de stockage dans une base de données</span><span class="sxs-lookup"><span data-stu-id="f01f3-125">Storing group membership in a database</span></span>](#storedatabase)
+- [<span data-ttu-id="f01f3-126">Appartenance au groupe de stockage dans le stockage table Azure</span><span class="sxs-lookup"><span data-stu-id="f01f3-126">Storing group membership in Azure table storage</span></span>](#storeazuretable)
+- [<span data-ttu-id="f01f3-127">Vérification de l’appartenance au groupe lors de la reconnexion</span><span class="sxs-lookup"><span data-stu-id="f01f3-127">Verifying group membership when reconnecting</span></span>](#verify)
+
+<a id="add"></a>
+
+## <a name="adding-and-removing-users"></a><span data-ttu-id="f01f3-128">Ajout et suppression d’utilisateurs</span><span class="sxs-lookup"><span data-stu-id="f01f3-128">Adding and removing users</span></span>
+
+<span data-ttu-id="f01f3-129">Pour ajouter ou supprimer des utilisateurs dans un groupe, vous appelez le [ajouter](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx) ou [supprimer](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx) méthodes et passez les id de connexion de l’utilisateur et le nom du groupe en tant que paramètres.</span><span class="sxs-lookup"><span data-stu-id="f01f3-129">To add or remove users from a group, you call the [Add](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.add(v=vs.111).aspx) or [Remove](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.signalr.igroupmanager.remove(v=vs.111).aspx) methods, and pass in the user's connection id and group's name as parameters.</span></span> <span data-ttu-id="f01f3-130">Vous n’avez pas besoin de supprimer manuellement un utilisateur à partir d’un groupe lors de la connexion se termine.</span><span class="sxs-lookup"><span data-stu-id="f01f3-130">You do not need to manually remove a user from a group when the connection ends.</span></span>
+
+<span data-ttu-id="f01f3-131">L’exemple suivant illustre la `Groups.Add` et `Groups.Remove` méthodes utilisées dans les méthodes de concentrateur.</span><span class="sxs-lookup"><span data-stu-id="f01f3-131">The following example shows the `Groups.Add` and `Groups.Remove` methods used in Hub methods.</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample1.cs?highlight=5,10)]
+
+<span data-ttu-id="f01f3-132">Le `Groups.Add` et `Groups.Remove` méthodes exécutent de façon asynchrone.</span><span class="sxs-lookup"><span data-stu-id="f01f3-132">The `Groups.Add` and `Groups.Remove` methods execute asynchronously.</span></span>
+
+<span data-ttu-id="f01f3-133">Si vous souhaitez ajouter un client à un groupe et d’envoyer immédiatement un message au client en utilisant le groupe, vous devez vous assurer que la méthode Groups.Add se termine en premier.</span><span class="sxs-lookup"><span data-stu-id="f01f3-133">If you want to add a client to a group and immediately send a message to the client by using the group, you have to make sure that the Groups.Add method finishes first.</span></span> <span data-ttu-id="f01f3-134">Les exemples de code suivants montrent comment procéder, un à l’aide de code qui fonctionne dans .NET 4.5 et l’autre à l’aide de code qui fonctionne dans le .NET 4.</span><span class="sxs-lookup"><span data-stu-id="f01f3-134">The following code examples show how to do that, one by using code that works in .NET 4.5, and one by using code that works in .NET 4.</span></span>
+
+#### <a name="asynchronous-net-45-example"></a><span data-ttu-id="f01f3-135">Asynchrone .NET 4.5 exemple</span><span class="sxs-lookup"><span data-stu-id="f01f3-135">Asynchronous .NET 4.5 Example</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample2.cs?highlight=1,3)]
+
+#### <a name="asynchronous-net-4-example"></a><span data-ttu-id="f01f3-136">Asynchrone .NET 4 exemple</span><span class="sxs-lookup"><span data-stu-id="f01f3-136">Asynchronous .NET 4 Example</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample3.cs?highlight=3-4)]
+
+<span data-ttu-id="f01f3-137">En règle générale, vous ne devez pas inclure `await` lors de l’appel du `Groups.Remove` (méthode), car l’id de connexion que vous essayez de supprimer ne soit plus disponible.</span><span class="sxs-lookup"><span data-stu-id="f01f3-137">In general, you should not include `await` when calling the `Groups.Remove` method because the connection id that you are trying to remove might no longer be available.</span></span> <span data-ttu-id="f01f3-138">Dans ce cas, `TaskCanceledException` est levée après l’expiration de la demande. Si votre application doit garantir que l’utilisateur a été supprimé du groupe avant d’envoyer un message au groupe, vous pouvez ajouter `await` avant Groups.Remove et catch puis le `TaskCanceledException` exception peut être levée.</span><span class="sxs-lookup"><span data-stu-id="f01f3-138">In that case, `TaskCanceledException` is thrown after the request times out. If your application must ensure that the user has been removed from the group before sending a message to the group, you can add `await` before Groups.Remove, and then catch the `TaskCanceledException` exception that might be thrown.</span></span>
+
+<a id="call"></a>
+
+## <a name="calling-members-of-a-group"></a><span data-ttu-id="f01f3-139">Appel des membres d’un groupe</span><span class="sxs-lookup"><span data-stu-id="f01f3-139">Calling members of a group</span></span>
+
+<span data-ttu-id="f01f3-140">Vous pouvez envoyer des messages à tous les membres d’un groupe ou seuls les membres spécifiés du groupe, comme indiqué dans les exemples suivants.</span><span class="sxs-lookup"><span data-stu-id="f01f3-140">You can send messages to all of the members of a group or only specified members of the group, as shown in the following examples.</span></span>
+
+- <span data-ttu-id="f01f3-141">**Tous les** connecté les clients dans un groupe spécifié.</span><span class="sxs-lookup"><span data-stu-id="f01f3-141">**All** connected clients in a specified group.</span></span> 
+
+    [!code-css[Main](working-with-groups/samples/sample4.css)]
+- <span data-ttu-id="f01f3-142">Tous les clients dans un groupe spécifié connectés **à l’exception des clients spécifiés**, identifié par l’ID de connexion.</span><span class="sxs-lookup"><span data-stu-id="f01f3-142">All connected clients in a specified group **except the specified clients**, identified by connection ID.</span></span> 
+
+    [!code-csharp[Main](working-with-groups/samples/sample5.cs)]
+- <span data-ttu-id="f01f3-143">Tous les clients dans un groupe spécifié connectés **sauf le client appelant**.</span><span class="sxs-lookup"><span data-stu-id="f01f3-143">All connected clients in a specified group **except the calling client**.</span></span> 
+
+    [!code-css[Main](working-with-groups/samples/sample6.css)]
+
+<a id="storedatabase"></a>
+
+## <a name="storing-group-membership-in-a-database"></a><span data-ttu-id="f01f3-144">Appartenance au groupe de stockage dans une base de données</span><span class="sxs-lookup"><span data-stu-id="f01f3-144">Storing group membership in a database</span></span>
+
+<span data-ttu-id="f01f3-145">Les exemples suivants montrent comment conserver les informations utilisateur et de groupe dans une base de données.</span><span class="sxs-lookup"><span data-stu-id="f01f3-145">The following examples show how to retain group and user information in a database.</span></span> <span data-ttu-id="f01f3-146">Vous pouvez utiliser n’importe quel technologie d’accès aux données ; Toutefois, l’exemple ci-dessous montre comment définir des modèles à l’aide d’Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="f01f3-146">You can use any data access technology; however, the example below shows how to define models using Entity Framework.</span></span> <span data-ttu-id="f01f3-147">Ces modèles d’entité correspondent aux champs et des tables de base de données.</span><span class="sxs-lookup"><span data-stu-id="f01f3-147">These entity models correspond to database tables and fields.</span></span> <span data-ttu-id="f01f3-148">Votre structure de données peut varier considérablement selon les besoins de votre application.</span><span class="sxs-lookup"><span data-stu-id="f01f3-148">Your data structure could vary considerably depending on the requirements of your application.</span></span> <span data-ttu-id="f01f3-149">Cet exemple inclut une classe nommée `ConversationRoom` qui est unique à une application qui permet aux utilisateurs de joindre des conversations sur des sujets tels que sports ou jardinage.</span><span class="sxs-lookup"><span data-stu-id="f01f3-149">This example includes a class named `ConversationRoom` which would be unique to an application that enables users to join conversations about different subjects, such as sports or gardening.</span></span> <span data-ttu-id="f01f3-150">Cet exemple inclut également une classe pour les connexions.</span><span class="sxs-lookup"><span data-stu-id="f01f3-150">This example also includes a class for the connections.</span></span> <span data-ttu-id="f01f3-151">La classe de connexion n’est pas absolument requise pour le suivi de l’appartenance au groupe, mais fait souvent partie d’une solution fiable pour le suivi des utilisateurs.</span><span class="sxs-lookup"><span data-stu-id="f01f3-151">The connection class is not absolutely required for tracking group membership but is frequently part of robust solution to tracking users.</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample7.cs)]
+
+<span data-ttu-id="f01f3-152">Puis, dans le concentrateur, vous pouvez récupérer les informations de groupe et d’utilisateur de la base de données et ajouter manuellement l’utilisateur aux groupes appropriés.</span><span class="sxs-lookup"><span data-stu-id="f01f3-152">Then, in the hub, you can retrieve the group and user information from the database and manually add the user to the appropriate groups.</span></span> <span data-ttu-id="f01f3-153">L’exemple n’inclut pas de code pour le suivi des connexions utilisateur.</span><span class="sxs-lookup"><span data-stu-id="f01f3-153">The example does not include code for tracking the user connections.</span></span> <span data-ttu-id="f01f3-154">Dans cet exemple, le `await` mot clé n’est pas appliqué avant `Groups.Add` , car un message n’est pas immédiatement envoyé aux membres du groupe.</span><span class="sxs-lookup"><span data-stu-id="f01f3-154">In this example, the `await` keyword is not applied before `Groups.Add` because a message is not immediately sent to members of the group.</span></span> <span data-ttu-id="f01f3-155">Si vous souhaitez envoyer un message à tous les membres du groupe immédiatement après l’ajout du nouveau membre, il serez que vous souhaitez appliquer la `await` (mot clé) pour vous assurer que l’opération asynchrone est terminée.</span><span class="sxs-lookup"><span data-stu-id="f01f3-155">If you want to send a message to all members of the group immediately after adding the new member, you would want to apply the `await` keyword to make sure the asynchronous operation has completed.</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample8.cs)]
+
+<a id="storeazuretable"></a>
+
+## <a name="storing-group-membership-in-azure-table-storage"></a><span data-ttu-id="f01f3-156">Appartenance au groupe de stockage dans le stockage table Azure</span><span class="sxs-lookup"><span data-stu-id="f01f3-156">Storing group membership in Azure table storage</span></span>
+
+<span data-ttu-id="f01f3-157">L’utilisation du stockage de table Windows Azure pour stocker les informations utilisateur et de groupe est semblable à l’utilisation d’une base de données.</span><span class="sxs-lookup"><span data-stu-id="f01f3-157">Using Azure table storage to store group and user information is similar to using a database.</span></span> <span data-ttu-id="f01f3-158">L’exemple suivant montre une entité de table qui stocke le nom d’utilisateur et le nom de groupe.</span><span class="sxs-lookup"><span data-stu-id="f01f3-158">The following example shows a table entity that stores the user name and group name.</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample9.cs)]
+
+<span data-ttu-id="f01f3-159">Dans le concentrateur, vous récupérez les groupes qui sont affectés lorsque l’utilisateur se connecte.</span><span class="sxs-lookup"><span data-stu-id="f01f3-159">In the hub, you retrieve the assigned groups when the user connects.</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample10.cs)]
+
+<a id="verify"></a>
+
+## <a name="verifying-group-membership-when-reconnecting"></a><span data-ttu-id="f01f3-160">Vérification de l’appartenance au groupe lors de la reconnexion</span><span class="sxs-lookup"><span data-stu-id="f01f3-160">Verifying group membership when reconnecting</span></span>
+
+<span data-ttu-id="f01f3-161">Par défaut, SignalR nouveau attribue automatiquement un utilisateur aux groupes appropriés lors de la reconnexion à partir d’une interruption temporaire, tels que lorsqu’une connexion est supprimée ou rétablie avant l’expiration de la connexion. Informations sur les groupes de l’utilisateur sont passées dans un jeton lors de la reconnexion, et ce jeton est vérifié sur le serveur.</span><span class="sxs-lookup"><span data-stu-id="f01f3-161">By default, SignalR automatically re-assigns a user to the appropriate groups when reconnecting from a temporary disruption, such as when a connection is dropped and re-established before the connection times out. The user's group information is passed in a token when reconnecting, and that token is verified on the server.</span></span> <span data-ttu-id="f01f3-162">Pour plus d’informations sur le processus de vérification pour la réintégration des utilisateurs à des groupes, consultez [réintégration des groupes lors de la reconnexion](index.md).</span><span class="sxs-lookup"><span data-stu-id="f01f3-162">For information about the verification process for rejoining users to groups, see [Rejoining groups when reconnecting](index.md).</span></span>
+
+<span data-ttu-id="f01f3-163">En général, vous devez utiliser le comportement par défaut de la réintégration des groupes sur se reconnecter automatiquement.</span><span class="sxs-lookup"><span data-stu-id="f01f3-163">In general, you should use the default behavior of automatically rejoining groups on reconnect.</span></span> <span data-ttu-id="f01f3-164">SignalR groupes ne sont pas conçus comme mécanisme de sécurité pour restreindre l’accès aux données sensibles.</span><span class="sxs-lookup"><span data-stu-id="f01f3-164">SignalR groups are not intended as a security mechanism for restricting access to sensitive data.</span></span> <span data-ttu-id="f01f3-165">Toutefois, si votre application doit vérifier l’appartenance d’un utilisateur lors de la reconnexion, vous pouvez remplacer le comportement par défaut.</span><span class="sxs-lookup"><span data-stu-id="f01f3-165">However, if your application must double-check a user's group membership when reconnecting, you can override the default behavior.</span></span> <span data-ttu-id="f01f3-166">Modifier le comportement par défaut, une charge peut ajouter à votre base de données car l’appartenance au groupe de l’utilisateur doit être récupérée pour chaque reconnexion plutôt que simplement lorsque l’utilisateur se connecte.</span><span class="sxs-lookup"><span data-stu-id="f01f3-166">Changing the default behavior can add a burden to your database because a user's group membership must be retrieved for each reconnection rather than just when the user connects.</span></span>
+
+<span data-ttu-id="f01f3-167">Si vous devez vérifier l’appartenance au groupe sur se reconnecter, créez un nouveau module de pipeline de concentrateur qui retourne une liste de groupes qui sont affectés, comme illustré ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="f01f3-167">If you must verify group membership on reconnect, create a new hub pipeline module that returns a list of assigned groups, as shown below.</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample11.cs)]
+
+<span data-ttu-id="f01f3-168">Ajoutez ensuite ce module dans le pipeline de concentrateur, comme indiqué ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="f01f3-168">Then, add that module to the hub pipeline, as highlighted below.</span></span>
+
+[!code-csharp[Main](working-with-groups/samples/sample12.cs?highlight=10)]
