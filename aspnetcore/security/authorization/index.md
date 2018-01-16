@@ -11,28 +11,30 @@ ms.assetid: 1abd456b-2199-4ba3-9698-3241e0bd4afc
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/authorization/index
-ms.openlocfilehash: d74254c8f2cc3ee55f6842f9f952d7ab93fe7a03
-ms.sourcegitcommit: f1436107b4c022b26f5235dddef103cec5aa6bff
+ms.openlocfilehash: 13b4e1db7e3ae73a0cba49d214c5ffdb31601e5c
+ms.sourcegitcommit: 12e5194936b7e820efc5505a2d5d4f84e88eb5ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/11/2018
 ---
-# <a name="authorization-in-aspnet-core-simple-role-claims-based-and-custom"></a><span data-ttu-id="633bc-104">Autorisation dans ASP.NET Core : simple, de rôle, basée sur des revendications et personnalisée</span><span class="sxs-lookup"><span data-stu-id="633bc-104">Authorization in ASP.NET Core: Simple, role, claims-based, and custom</span></span>
+# <a name="authorization-in-aspnet-core-simple-role-claims-based-and-custom"></a><span data-ttu-id="f7efc-104">Autorisation dans ASP.NET Core : simple, de rôle, basée sur des revendications et personnalisée</span><span class="sxs-lookup"><span data-stu-id="f7efc-104">Authorization in ASP.NET Core: Simple, role, claims-based, and custom</span></span>
 
-* [<span data-ttu-id="633bc-105">Introduction</span><span class="sxs-lookup"><span data-stu-id="633bc-105">Introduction</span></span>](introduction.md)
+* [<span data-ttu-id="f7efc-105">Introduction</span><span class="sxs-lookup"><span data-stu-id="f7efc-105">Introduction</span></span>](introduction.md)
 
-* [<span data-ttu-id="633bc-106">Autorisation simple</span><span class="sxs-lookup"><span data-stu-id="633bc-106">Simple Authorization</span></span>](simple.md)
+* [<span data-ttu-id="f7efc-106">Autorisation des pages Razor</span><span class="sxs-lookup"><span data-stu-id="f7efc-106">Razor Pages authorization</span></span>](xref:security/authorization/razor-pages-authorization)
 
-* [<span data-ttu-id="633bc-107">Autorisation basée sur les rôles</span><span class="sxs-lookup"><span data-stu-id="633bc-107">Role based Authorization</span></span>](roles.md)
+* [<span data-ttu-id="f7efc-107">Autorisation simple</span><span class="sxs-lookup"><span data-stu-id="f7efc-107">Simple authorization</span></span>](simple.md)
 
-* [<span data-ttu-id="633bc-108">Autorisation basée sur des revendications</span><span class="sxs-lookup"><span data-stu-id="633bc-108">Claims-Based Authorization</span></span>](claims.md)
+* [<span data-ttu-id="f7efc-108">Autorisation basée sur des rôles</span><span class="sxs-lookup"><span data-stu-id="f7efc-108">Role-based authorization</span></span>](roles.md)
 
-* [<span data-ttu-id="633bc-109">Autorisation basée sur une stratégie personnalisée</span><span class="sxs-lookup"><span data-stu-id="633bc-109">Custom policy-based authorization</span></span>](policies.md)
+* [<span data-ttu-id="f7efc-109">Autorisation basée sur des revendications</span><span class="sxs-lookup"><span data-stu-id="f7efc-109">Claims-based authorization</span></span>](claims.md)
 
-* [<span data-ttu-id="633bc-110">Injection de dépendances dans les gestionnaires d’exigences</span><span class="sxs-lookup"><span data-stu-id="633bc-110">Dependency Injection in requirement handlers</span></span>](dependencyinjection.md)
+* [<span data-ttu-id="f7efc-110">Autorisation basée sur une stratégie</span><span class="sxs-lookup"><span data-stu-id="f7efc-110">Policy-based authorization</span></span>](policies.md)
 
-* [<span data-ttu-id="633bc-111">Autorisation basée sur les ressources</span><span class="sxs-lookup"><span data-stu-id="633bc-111">Resource-based authorization</span></span>](resourcebased.md)
+* [<span data-ttu-id="f7efc-111">Injection de dépendances dans les gestionnaires d’exigences</span><span class="sxs-lookup"><span data-stu-id="f7efc-111">Dependency injection in requirement handlers</span></span>](dependencyinjection.md)
 
-* [<span data-ttu-id="633bc-112">Autorisation basée sur les vues</span><span class="sxs-lookup"><span data-stu-id="633bc-112">View-based authorization</span></span>](views.md)
+* [<span data-ttu-id="f7efc-112">Autorisation basée sur les ressources</span><span class="sxs-lookup"><span data-stu-id="f7efc-112">Resource-based authorization</span></span>](resourcebased.md)
 
-* [<span data-ttu-id="633bc-113">Limitation d’identité par schéma</span><span class="sxs-lookup"><span data-stu-id="633bc-113">Limiting identity by scheme</span></span>](limitingidentitybyscheme.md)
+* [<span data-ttu-id="f7efc-113">Autorisation basée sur les vues</span><span class="sxs-lookup"><span data-stu-id="f7efc-113">View-based authorization</span></span>](views.md)
+
+* [<span data-ttu-id="f7efc-114">Limitation d’identité par schéma</span><span class="sxs-lookup"><span data-stu-id="f7efc-114">Limiting identity by scheme</span></span>](limitingidentitybyscheme.md)
