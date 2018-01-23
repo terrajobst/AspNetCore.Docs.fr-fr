@@ -1,117 +1,189 @@
 ---
-title: Partage des cookies entre des applications
+title: Partage des cookies entre applications
 author: rick-anderson
-description: "Ce document explique comment la pile de protection de données prend en charge le partage des cookies d’authentification entre ASP.NET 4.x et les applications ASP.NET Core."
+description: "Découvrez comment partager des cookies d’authentification entre ASP.NET 4.x et les applications ASP.NET Core."
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 01/19/2017
 ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: security/data-protection/compatibility/cookie-sharing
-ms.openlocfilehash: 0cbf5a3e9dfe8f99433800ac5c10ed36b4de6527
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 034c080c3459cd3a9e6b412492d1b19d9e6348a4
+ms.sourcegitcommit: 3f491f887074310fc0f145cd01a670aa63b969e3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/22/2018
 ---
-# <a name="sharing-cookies-between-applications"></a><span data-ttu-id="3f443-103">Partage des cookies entre des applications</span><span class="sxs-lookup"><span data-stu-id="3f443-103">Sharing cookies between applications</span></span>
+# <a name="sharing-cookies-among-apps"></a><span data-ttu-id="21f8c-103">Partage des cookies entre applications</span><span class="sxs-lookup"><span data-stu-id="21f8c-103">Sharing cookies among apps</span></span>
 
-<span data-ttu-id="3f443-104">Sites Web couramment se composent de nombreuses applications web individuelles, tout travail ensemble harmonieux.</span><span class="sxs-lookup"><span data-stu-id="3f443-104">Web sites commonly consist of many individual web applications, all working together harmoniously.</span></span> <span data-ttu-id="3f443-105">Si un développeur souhaite fournir une bonne expérience single-sign-on, il sont souvent nécessaire toutes les applications au sein du site web différent pour partager des tickets d’authentification entre eux.</span><span class="sxs-lookup"><span data-stu-id="3f443-105">If an application developer wants to provide a good single-sign-on experience, they'll often need all of the different web applications within the site to share authentication tickets between each other.</span></span>
+<span data-ttu-id="21f8c-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="21f8c-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="3f443-106">Pour prendre en charge ce scénario, la pile de protection des données permet de partager une authentification de cookie Katana et tickets d’authentification par cookie ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="3f443-106">To support this scenario, the data protection stack allows sharing Katana cookie authentication and ASP.NET Core cookie authentication tickets.</span></span>
+<span data-ttu-id="21f8c-105">Sites Web sont souvent composent d’applications web individuelles fonctionnent ensemble.</span><span class="sxs-lookup"><span data-stu-id="21f8c-105">Websites often consist of individual web apps working together.</span></span> <span data-ttu-id="21f8c-106">Pour fournir une expérience d’authentification unique (SSO), les applications web au sein d’un site doivent partager les cookies d’authentification.</span><span class="sxs-lookup"><span data-stu-id="21f8c-106">To provide a single sign-on (SSO) experience, web apps within a site must share authentication cookies.</span></span> <span data-ttu-id="21f8c-107">Pour prendre en charge ce scénario, la pile de protection des données permet de partager une authentification de cookie Katana et tickets d’authentification par cookie ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="21f8c-107">To support this scenario, the data protection stack allows sharing Katana cookie authentication and ASP.NET Core cookie authentication tickets.</span></span>
 
-## <a name="sharing-authentication-cookies-between-applications"></a><span data-ttu-id="3f443-107">Les cookies d’authentification entre les applications de partage</span><span class="sxs-lookup"><span data-stu-id="3f443-107">Sharing authentication cookies between applications</span></span>
+<span data-ttu-id="21f8c-108">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="21f8c-108">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="3f443-108">Pour partager des cookies d’authentification entre deux applications ASP.NET Core différents, configurez chaque application qui doit partager les cookies comme suit.</span><span class="sxs-lookup"><span data-stu-id="3f443-108">To share authentication cookies between two different ASP.NET Core applications, configure each application that should share cookies as follows.</span></span>
+<span data-ttu-id="21f8c-109">L’exemple illustre le partage de cookie entre trois applications qui utilisent l’authentification de cookie :</span><span class="sxs-lookup"><span data-stu-id="21f8c-109">The sample illustrates cookie sharing across three apps that use cookie authentication:</span></span>
 
-<span data-ttu-id="3f443-109">Dans votre configuration de méthode, les CookieAuthenticationOptions permet de configurer le service de protection des données pour les cookies et le AuthenticationScheme pour correspondre à ASP.NET 4.x.</span><span class="sxs-lookup"><span data-stu-id="3f443-109">In your configure method, use the CookieAuthenticationOptions to set up the data protection service for cookies and the AuthenticationScheme to match ASP.NET 4.x.</span></span>
+* <span data-ttu-id="21f8c-110">Principales 2.0 Razor Pages d’application ASP.NET sans utiliser [ASP.NET Core Identity](xref:security/authentication/identity)</span><span class="sxs-lookup"><span data-stu-id="21f8c-110">ASP.NET Core 2.0 Razor Pages app without using [ASP.NET Core Identity](xref:security/authentication/identity)</span></span>
+* <span data-ttu-id="21f8c-111">Application MVC de base d’ASP.NET 2.0 avec l’identité de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="21f8c-111">ASP.NET Core 2.0 MVC app with ASP.NET Core Identity</span></span>
+* <span data-ttu-id="21f8c-112">Application avec l’identité d’ASP.NET MVC est ASP.NET Framework 4.6.1</span><span class="sxs-lookup"><span data-stu-id="21f8c-112">ASP.NET Framework 4.6.1 MVC app with ASP.NET Identity</span></span>
 
-<span data-ttu-id="3f443-110">Si vous utilisez des identités :</span><span class="sxs-lookup"><span data-stu-id="3f443-110">If you're using identity:</span></span>
+<span data-ttu-id="21f8c-113">Dans les exemples qui suivent :</span><span class="sxs-lookup"><span data-stu-id="21f8c-113">In the examples that follow:</span></span>
+
+* <span data-ttu-id="21f8c-114">Le nom du cookie d’authentification est défini sur une valeur de `.AspNet.SharedCookie`.</span><span class="sxs-lookup"><span data-stu-id="21f8c-114">The authentication cookie name is set to a common value of `.AspNet.SharedCookie`.</span></span>
+* <span data-ttu-id="21f8c-115">Le `AuthenticationType` a la valeur `Identity.Application` explicitement ou par défaut.</span><span class="sxs-lookup"><span data-stu-id="21f8c-115">The `AuthenticationType` is set to `Identity.Application` either explicitly or by default.</span></span>
+* <span data-ttu-id="21f8c-116">[CookieAuthenticationDefaults.AuthenticationScheme](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationdefaults.authenticationscheme) est utilisé en tant que le schéma d’authentification.</span><span class="sxs-lookup"><span data-stu-id="21f8c-116">[CookieAuthenticationDefaults.AuthenticationScheme](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationdefaults.authenticationscheme) is used as the authentication scheme.</span></span> <span data-ttu-id="21f8c-117">La constante est résolue en une valeur de `Cookies`.</span><span class="sxs-lookup"><span data-stu-id="21f8c-117">The constant resolves to a value of `Cookies`.</span></span>
+* <span data-ttu-id="21f8c-118">Le middleware du cookie d’authentification utilise une implémentation de [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider).</span><span class="sxs-lookup"><span data-stu-id="21f8c-118">The cookie authentication middleware uses an implementation of [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider).</span></span> <span data-ttu-id="21f8c-119">`DataProtectionProvider`Fournit des services de protection des données pour le chiffrement et déchiffrement de données de charge utile de cookie d’authentification.</span><span class="sxs-lookup"><span data-stu-id="21f8c-119">`DataProtectionProvider` provides data protection services for the encryption and decryption of authentication cookie payload data.</span></span> <span data-ttu-id="21f8c-120">Le `DataProtectionProvider` instance est isolée à partir du système de protection des données utilisé par d’autres parties de l’application.</span><span class="sxs-lookup"><span data-stu-id="21f8c-120">The `DataProtectionProvider` instance is isolated from the data protection system used by other parts of the app.</span></span>
+  * <span data-ttu-id="21f8c-121">Commune [clé de protection des données](xref:security/data-protection/implementation/key-management) emplacement de stockage est utilisé.</span><span class="sxs-lookup"><span data-stu-id="21f8c-121">A common [data protection key](xref:security/data-protection/implementation/key-management) storage location is used.</span></span> <span data-ttu-id="21f8c-122">L’exemple d’application utilise un dossier nommé *porte-clé* à la racine de la solution pour stocker les clés de protection des données.</span><span class="sxs-lookup"><span data-stu-id="21f8c-122">The sample app uses a folder named *KeyRing* at the root of the solution to hold the data protection keys.</span></span>
+  * <span data-ttu-id="21f8c-123">[DataProtectionProvider.Create(System.IO.DirectoryInfo)](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider.create?view=aspnetcore-2.0#Microsoft_AspNetCore_DataProtection_DataProtectionProvider_Create_System_IO_DirectoryInfo_) accepte un [DirectoryInfo](/dotnet/api/system.io.directoryinfo) pour une utilisation avec les cookies d’authentification.</span><span class="sxs-lookup"><span data-stu-id="21f8c-123">[DataProtectionProvider.Create(System.IO.DirectoryInfo)](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider.create?view=aspnetcore-2.0#Microsoft_AspNetCore_DataProtection_DataProtectionProvider_Create_System_IO_DirectoryInfo_) accepts a [DirectoryInfo](/dotnet/api/system.io.directoryinfo) for use with authentication cookies.</span></span> <span data-ttu-id="21f8c-124">L’exemple d’application fournit le chemin d’accès de la *porte-clé* dossier `DirectoryInfo`.</span><span class="sxs-lookup"><span data-stu-id="21f8c-124">The sample app provides the path of the *KeyRing* folder to `DirectoryInfo`.</span></span>
+  * <span data-ttu-id="21f8c-125">[DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider) requiert le [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) package NuGet.</span><span class="sxs-lookup"><span data-stu-id="21f8c-125">[DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionprovider) requires the [Microsoft.AspNetCore.DataProtection.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/) NuGet package.</span></span> <span data-ttu-id="21f8c-126">Pour obtenir ce package pour ASP.NET 2.0 de base et des applications plus loin, référencer la [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) metapackage.</span><span class="sxs-lookup"><span data-stu-id="21f8c-126">To obtain this package for ASP.NET Core 2.0 and later apps, reference the [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) metapackage.</span></span> <span data-ttu-id="21f8c-127">Lorsque vous ciblez .NET Framework, ajoutez une référence de package à `Microsoft.AspNetCore.DataProtection.Extensions`.</span><span class="sxs-lookup"><span data-stu-id="21f8c-127">When targeting .NET Framework, add a package reference to `Microsoft.AspNetCore.DataProtection.Extensions`.</span></span>
+
+## <a name="share-authentication-cookies-among-aspnet-core-apps"></a><span data-ttu-id="21f8c-128">Partager les cookies d’authentification entre les applications ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="21f8c-128">Share authentication cookies among ASP.NET Core apps</span></span>
+
+<span data-ttu-id="21f8c-129">Lorsque vous utilisez ASP.NET Core identité :</span><span class="sxs-lookup"><span data-stu-id="21f8c-129">When using ASP.NET Core Identity:</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="21f8c-130">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-130">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+<span data-ttu-id="21f8c-131">Dans le `ConfigureServices` méthode, utilisez la [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie) méthode d’extension pour configurer le service de protection des données pour les cookies.</span><span class="sxs-lookup"><span data-stu-id="21f8c-131">In the `ConfigureServices` method, use the [ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie) extension method to set up the data protection service for cookies.</span></span>
+
+[!code-csharp[Main](cookie-sharing/sample/CookieAuthWithIdentity.Core/Startup.cs?name=snippet1)]
+
+<span data-ttu-id="21f8c-132">Consultez le *CookieAuthWithIdentity.Core* de projet dans le [exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="21f8c-132">See the *CookieAuthWithIdentity.Core* project in the [sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([how to download](xref:tutorials/index#how-to-download-a-sample)).</span></span>
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="21f8c-133">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-133">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="21f8c-134">Dans le `Configure` méthode, utilisez la [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions) à configurer :</span><span class="sxs-lookup"><span data-stu-id="21f8c-134">In the `Configure` method, use the [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.builder.cookieauthenticationoptions) to set up:</span></span>
+
+* <span data-ttu-id="21f8c-135">Le service de protection des données pour les cookies.</span><span class="sxs-lookup"><span data-stu-id="21f8c-135">The data protection service for cookies.</span></span>
+* <span data-ttu-id="21f8c-136">Le `AuthenticationScheme` pour correspondre à ASP.NET 4.x.</span><span class="sxs-lookup"><span data-stu-id="21f8c-136">The `AuthenticationScheme` to match ASP.NET 4.x.</span></span>
 
 ```csharp
 app.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-    options.Cookies.ApplicationCookie.AuthenticationScheme = "ApplicationCookie";
-    var protectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"));
-    options.Cookies.ApplicationCookie.DataProtectionProvider = protectionProvider;
-    options.Cookies.ApplicationCookie.TicketDataFormat = new TicketDataFormat(protectionProvider.CreateProtector("Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware", "Cookies", "v2"));
+    options.Cookies.ApplicationCookie.AuthenticationScheme = 
+        "ApplicationCookie";
+
+    var protectionProvider = 
+        DataProtectionProvider.Create(
+            new DirectoryInfo(@"PATH_TO_KEY_RING_FOLDER"));
+
+    options.Cookies.ApplicationCookie.DataProtectionProvider = 
+        protectionProvider;
+
+    options.Cookies.ApplicationCookie.TicketDataFormat = 
+        new TicketDataFormat(protectionProvider.CreateProtector(
+            "Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware", 
+            "Cookies", 
+            "v2"));
 });
 ```
 
-<span data-ttu-id="3f443-111">Si vous utilisez des cookies directement :</span><span class="sxs-lookup"><span data-stu-id="3f443-111">If you're using cookies directly:</span></span>
+---
+
+<span data-ttu-id="21f8c-137">Lors de l’utilisation de cookies directement :</span><span class="sxs-lookup"><span data-stu-id="21f8c-137">When using cookies directly:</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="21f8c-138">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-138">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+[!code-csharp[Main](cookie-sharing/sample/CookieAuth.Core/Startup.cs?name=snippet1)]
+
+<span data-ttu-id="21f8c-139">Consultez le *CookieAuth.Core* de projet dans le [exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="21f8c-139">See the *CookieAuth.Core* project in the [sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([how to download](xref:tutorials/index#how-to-download-a-sample)).</span></span>
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="21f8c-140">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-140">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
 {
-    DataProtectionProvider = DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"))
+    DataProtectionProvider = 
+        DataProtectionProvider.Create(
+            new DirectoryInfo(@"PATH_TO_KEY_RING_FOLDER"))
 });
 ```
-   
-<span data-ttu-id="3f443-112">Le `DataProtectionProvider` requiert le `Microsoft.AspNetCore.DataProtection.Extensions` package NuGet.</span><span class="sxs-lookup"><span data-stu-id="3f443-112">The `DataProtectionProvider` requires the `Microsoft.AspNetCore.DataProtection.Extensions` NuGet package.</span></span>
 
-<span data-ttu-id="3f443-113">Lorsqu’il est utilisé de cette manière, DirectoryInfo doit pointer vers un emplacement de stockage de clés aux cookies d’authentification.</span><span class="sxs-lookup"><span data-stu-id="3f443-113">When used in this manner, the DirectoryInfo should point to a key storage location specifically set aside for authentication cookies.</span></span> <span data-ttu-id="3f443-114">Le middleware du cookie d’authentification utilise l’implémentation fournie explicitement de DataProtectionProvider, ce qui est maintenant isolé à partir du système de protection des données utilisé par d’autres parties de l’application.</span><span class="sxs-lookup"><span data-stu-id="3f443-114">The cookie authentication middleware will use the explicitly provided implementation of the DataProtectionProvider, which is now isolated from the data protection system used by other parts of the application.</span></span> <span data-ttu-id="3f443-115">Le nom de l’application est ignoré (intentionnellement c’est le cas, étant donné que vous tentez d’obtenir plusieurs applications de partager les charges utiles).</span><span class="sxs-lookup"><span data-stu-id="3f443-115">The application name is ignored (intentionally so, since you're trying to get multiple applications to share payloads).</span></span>
+---
 
->[!WARNING]
-><span data-ttu-id="3f443-116">Vous devez envisager de configurer le DataProtectionProvider telles que les clés sont chiffrées au repos, comme dans l’exemple ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="3f443-116">You should consider configuring the DataProtectionProvider such that keys are encrypted at rest, as in the below example.</span></span>
->
->
->  ```csharp
->  app.UseCookieAuthentication(new CookieAuthenticationOptions
->  {
->      DataProtectionProvider = DataProtectionProvider.Create(
->          new DirectoryInfo(@"c:\shared-auth-ticket-keys\"),
->          configure =>
->          {
->              configure.ProtectKeysWithCertificate("thumbprint");
->          })
->  });
->  ```
+## <a name="encrypting-data-protection-keys-at-rest"></a><span data-ttu-id="21f8c-141">Chiffrement des clés de protection des données au repos</span><span class="sxs-lookup"><span data-stu-id="21f8c-141">Encrypting data protection keys at rest</span></span>
 
-## <a name="sharing-authentication-cookies-between-aspnet-4x-and-aspnet-core-applications"></a><span data-ttu-id="3f443-117">Partage des cookies d’authentification entre ASP.NET 4.x et les applications ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="3f443-117">Sharing authentication cookies between ASP.NET 4.x and ASP.NET Core applications</span></span>
+<span data-ttu-id="21f8c-142">Pour les déploiements de production, configurez le `DataProtectionProvider` pour chiffrer les clés au repos avec DPAPI ou un X509Certificate.</span><span class="sxs-lookup"><span data-stu-id="21f8c-142">For production deployments, configure the `DataProtectionProvider` to encrypt keys at rest with DPAPI or an X509Certificate.</span></span> <span data-ttu-id="21f8c-143">Consultez [clé de chiffrement à l’arrêt](xref:security/data-protection/implementation/key-encryption-at-rest) pour plus d’informations.</span><span class="sxs-lookup"><span data-stu-id="21f8c-143">See [Key Encryption At Rest](xref:security/data-protection/implementation/key-encryption-at-rest) for more information.</span></span>
 
-<span data-ttu-id="3f443-118">4.x des applications ASP.NET qui utilisent l’intergiciel (middleware) d’authentification de cookie Katana peuvent être configurées pour générer des cookies d’authentification qui sont compatibles avec le middleware du cookie d’authentification ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="3f443-118">ASP.NET 4.x applications which use Katana cookie authentication middleware can be configured to generate authentication cookies which are compatible with the ASP.NET Core cookie authentication middleware.</span></span> <span data-ttu-id="3f443-119">Cela permet la mise à niveau des applications individuelles d’un site volumineux fragmentaire tout en offrant une authentification unique lisse sur l’expérience sur le site.</span><span class="sxs-lookup"><span data-stu-id="3f443-119">This allows upgrading a large site's individual applications piecemeal while still providing a smooth single sign on experience across the site.</span></span>
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="21f8c-144">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-144">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
 
->[!TIP]
-> <span data-ttu-id="3f443-120">Vous pouvez déterminer si votre application existante utilise intergiciel (middleware) d’authentification de cookie Katana par l’existence d’un appel à UseCookieAuthentication dans les Startup.Auth.cs de votre projet.</span><span class="sxs-lookup"><span data-stu-id="3f443-120">You can tell if your existing application uses Katana cookie authentication middleware by the existence of a call to UseCookieAuthentication in your project's Startup.Auth.cs.</span></span> <span data-ttu-id="3f443-121">Projets d’application web ASP.NET 4.x créées avec Visual Studio 2013 et utilisent ultérieurement l’intergiciel (middleware) d’authentification de cookie Katana par défaut.</span><span class="sxs-lookup"><span data-stu-id="3f443-121">ASP.NET 4.x web application projects created with Visual Studio 2013 and later use the Katana cookie authentication middleware by default.</span></span>
+```csharp
+services.AddDataProtection()
+    .ProtectKeysWithCertificate("thumbprint");
+```
 
-> [!NOTE]
-> <span data-ttu-id="3f443-122">Votre application de 4.x ASP.NET doit cibler .NET Framework 4.5.1 ou version ultérieure, sinon les packages NuGet ne peut pas installer.</span><span class="sxs-lookup"><span data-stu-id="3f443-122">Your ASP.NET 4.x application must target .NET Framework 4.5.1 or higher, otherwise the necessary NuGet packages will fail to install.</span></span>
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="21f8c-145">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-145">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
 
-<span data-ttu-id="3f443-123">Pour partager des cookies d’authentification entre vos applications de 4.x ASP.NET et de vos applications ASP.NET Core, configurer l’application ASP.NET Core comme indiqué ci-dessus, puis configurer votre 4.x des applications ASP.NET en suivant les étapes ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="3f443-123">To share authentication cookies between your ASP.NET 4.x applications and your ASP.NET Core applications, configure the ASP.NET Core application as stated above, then configure your ASP.NET 4.x applications by following the steps below.</span></span>
+```csharp
+app.UseCookieAuthentication(new CookieAuthenticationOptions
+{
+    DataProtectionProvider = DataProtectionProvider.Create(
+        new DirectoryInfo(@"PATH_TO_KEY_RING"),
+        configure =>
+        {
+            configure.ProtectKeysWithCertificate("thumbprint");
+        })
+});
+```
 
-1.  <span data-ttu-id="3f443-124">Installez le package Microsoft.Owin.Security.Interop dans chacune des applications ASP.NET 4.x.</span><span class="sxs-lookup"><span data-stu-id="3f443-124">Install the package Microsoft.Owin.Security.Interop into each of your ASP.NET 4.x applications.</span></span>
+---
 
-2.   <span data-ttu-id="3f443-125">Dans Startup.Auth.cs, localisez l’appel à UseCookieAuthentication, qui est généralement l’aspect suivant.</span><span class="sxs-lookup"><span data-stu-id="3f443-125">In Startup.Auth.cs, locate the call to UseCookieAuthentication, which will generally look like the following.</span></span>
+## <a name="sharing-authentication-cookies-between-aspnet-4x-and-aspnet-core-apps"></a><span data-ttu-id="21f8c-146">Partage des cookies d’authentification entre ASP.NET 4.x et les applications ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="21f8c-146">Sharing authentication cookies between ASP.NET 4.x and ASP.NET Core apps</span></span>
 
-    ```csharp
-    app.UseCookieAuthentication(new CookieAuthenticationOptions
-    {
-        // ...
-    });
-    ```
-    
-3.  <span data-ttu-id="3f443-126">Modifiez l’appel à UseCookieAuthentication comme suit, la modification de la CookieName pour correspondre au nom utilisé par l’intergiciel d’authentification de cookie ASP.NET Core, fournissant une instance d’un DataProtectionProvider qui a été initialisé avec un emplacement de stockage de clés, et valeur CookieManager interopérabilité ChunkingCookieManager le format de segmentation est compatible.</span><span class="sxs-lookup"><span data-stu-id="3f443-126">Modify the call to UseCookieAuthentication as follows, changing the CookieName to match the name used by the ASP.NET Core cookie authentication middleware, providing an instance of a DataProtectionProvider that has been initialized to a key storage location, and set CookieManager to interop ChunkingCookieManager so the chunking format is compatible.</span></span>
+<span data-ttu-id="21f8c-147">Les applications ASP.NET 4.x qui utilisent l’intergiciel (middleware) d’authentification de cookie Katana peuvent être configurées pour générer des cookies d’authentification qui sont compatibles avec le middleware du cookie d’authentification ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="21f8c-147">ASP.NET 4.x apps which use Katana cookie authentication middleware can be configured to generate authentication cookies that are compatible with the ASP.NET Core cookie authentication middleware.</span></span> <span data-ttu-id="21f8c-148">Cela permet la mise à niveau les applications individuelles d’un site volumineux fragmentaire tout en offrant une meilleure expérience d’authentification unique sur le site.</span><span class="sxs-lookup"><span data-stu-id="21f8c-148">This allows upgrading a large site's individual apps piecemeal while providing a smooth SSO experience across the site.</span></span>
 
-    ```csharp
-    app.UseCookieAuthentication(new CookieAuthenticationOptions
-    {
-        AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-        CookieName = ".AspNetCore.Cookies",
-        // CookieName = ".AspNetCore.ApplicationCookie", (if you're using identity)
-        // CookiePath = "...", (if necessary)
-        // ...
-        TicketDataFormat = new AspNetTicketDataFormat(
-            new DataProtectorShim(
-                DataProtectionProvider.Create(new DirectoryInfo(@"c:\shared-auth-ticket-keys\"))
-                .CreateProtector("Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware",
-                "Cookies", "v2"))),
-        CookieManager = new ChunkingCookieManager()
-    });
-    ```
-    <span data-ttu-id="3f443-127">DirectoryInfo doit pointer vers le même emplacement de stockage que vous pointe de votre application ASP.NET Core et devez être configuré avec les mêmes paramètres.</span><span class="sxs-lookup"><span data-stu-id="3f443-127">The DirectoryInfo has to point to the same storage location that you pointed your ASP.NET Core application to and should be configured using the same settings.</span></span>
-
-<span data-ttu-id="3f443-128">ASP.NET 4.x et les applications ASP.NET Core sont désormais configurées pour partager des cookies d’authentification.</span><span class="sxs-lookup"><span data-stu-id="3f443-128">The ASP.NET 4.x and ASP.NET Core applications are now configured to share authentication cookies.</span></span>
+> [!TIP]
+> <span data-ttu-id="21f8c-149">Lorsqu’une application utilise un intergiciel (middleware) d’authentification de cookie Katana, il appelle `UseCookieAuthentication` dans le fichier *Startup.Auth.cs* fichier.</span><span class="sxs-lookup"><span data-stu-id="21f8c-149">When an app uses Katana cookie authentication middleware, it calls `UseCookieAuthentication` in the project's *Startup.Auth.cs* file.</span></span> <span data-ttu-id="21f8c-150">Projets d’application web ASP.NET 4.x créées avec Visual Studio 2013 et versions ultérieures utilisent l’intergiciel (middleware) d’authentification de cookie Katana par défaut.</span><span class="sxs-lookup"><span data-stu-id="21f8c-150">ASP.NET 4.x web app projects created with Visual Studio 2013 and later use the Katana cookie authentication middleware by default.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="3f443-129">Vous devez vous assurer que le système d’identité pour chaque application pointe vers la même base de données utilisateur.</span><span class="sxs-lookup"><span data-stu-id="3f443-129">You'll need to make sure that the identity system for each application is pointed at the same user database.</span></span> <span data-ttu-id="3f443-130">Sinon, le système d’identité génère les échecs lors de l’exécution lorsqu’il tente de faire correspondre les informations dans le cookie d’authentification contre les informations contenues dans sa base de données.</span><span class="sxs-lookup"><span data-stu-id="3f443-130">Otherwise the identity system will produce failures at runtime when it tries to match the information in the authentication cookie against the information in its database.</span></span>
+> <span data-ttu-id="21f8c-151">D’une application ASP.NET 4.x doit cibler le .NET Framework 4.5.1 ou version ultérieure.</span><span class="sxs-lookup"><span data-stu-id="21f8c-151">An ASP.NET 4.x app must target .NET Framework 4.5.1 or higher.</span></span> <span data-ttu-id="21f8c-152">Dans le cas contraire, les packages NuGet Impossible d’installer.</span><span class="sxs-lookup"><span data-stu-id="21f8c-152">Otherwise, the necessary NuGet packages fail to install.</span></span>
+
+<span data-ttu-id="21f8c-153">Pour partager des cookies d’authentification entre les applications ASP.NET 4.x et les applications ASP.NET Core, configurer l’application ASP.NET Core comme indiqué ci-dessus, puis configurez les applications ASP.NET 4.x en suivant les étapes ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="21f8c-153">To share authentication cookies among ASP.NET 4.x apps and ASP.NET Core apps, configure the ASP.NET Core app as stated above, then configure the ASP.NET 4.x apps by following the steps below.</span></span>
+
+1. <span data-ttu-id="21f8c-154">Installez le package [Microsoft.Owin.Security.Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) dans chaque application de 4.x ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="21f8c-154">Install the package [Microsoft.Owin.Security.Interop](https://www.nuget.org/packages/Microsoft.Owin.Security.Interop/) into each ASP.NET 4.x app.</span></span>
+
+2. <span data-ttu-id="21f8c-155">Dans *Startup.Auth.cs*, localisez l’appel à `UseCookieAuthentication` et modifiez-la comme suit.</span><span class="sxs-lookup"><span data-stu-id="21f8c-155">In *Startup.Auth.cs*, locate the call to `UseCookieAuthentication` and modify it as follows.</span></span> <span data-ttu-id="21f8c-156">Modifiez le nom de cookie pour correspondre au nom utilisé par l’intergiciel (middleware) d’authentification de cookie ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="21f8c-156">Change the cookie name to match the name used by the ASP.NET Core cookie authentication middleware.</span></span> <span data-ttu-id="21f8c-157">Fournir une instance d’un `DataProtectionProvider` initialisée à l’emplacement de stockage de clés de protection données commun.</span><span class="sxs-lookup"><span data-stu-id="21f8c-157">Provide an instance of a `DataProtectionProvider` initialized to the common data protection key storage location.</span></span>
+
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[<span data-ttu-id="21f8c-158">ASP.NET Core 2.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-158">ASP.NET Core 2.x</span></span>](#tab/aspnetcore2x)
+
+[!code-csharp[Main](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/App_Start/Startup.Auth.cs?name=snippet1)]
+
+<span data-ttu-id="21f8c-159">Consultez le *CookieAuthWithIdentity.NETFramework* de projet dans le [exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)).</span><span class="sxs-lookup"><span data-stu-id="21f8c-159">See the *CookieAuthWithIdentity.NETFramework* project in the [sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/data-protection/compatibility/cookie-sharing/sample/) ([how to download](xref:tutorials/index#how-to-download-a-sample)).</span></span>
+
+<span data-ttu-id="21f8c-160">Lorsque vous générez une identité d’utilisateur, le type d’authentification doit correspondre au type défini dans `AuthenticationType` avec `UseCookieAuthentication`.</span><span class="sxs-lookup"><span data-stu-id="21f8c-160">When generating a user identity, the authentication type must match the type defined in `AuthenticationType` set with `UseCookieAuthentication`.</span></span>
+
+<span data-ttu-id="21f8c-161">*Models/IdentityModels.cs*:</span><span class="sxs-lookup"><span data-stu-id="21f8c-161">*Models/IdentityModels.cs*:</span></span>
+
+[!code-csharp[Main](cookie-sharing/sample/CookieAuthWithIdentity.NETFramework/CookieAuthWithIdentity.NETFramework/Models/IdentityModels.cs?name=snippet1)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[<span data-ttu-id="21f8c-162">ASP.NET Core 1.x</span><span class="sxs-lookup"><span data-stu-id="21f8c-162">ASP.NET Core 1.x</span></span>](#tab/aspnetcore1x)
+
+<span data-ttu-id="21f8c-163">Définir le `CookieManager` à interop `ChunkingCookieManager` le format de segmentation est compatible.</span><span class="sxs-lookup"><span data-stu-id="21f8c-163">Set the `CookieManager` to interop `ChunkingCookieManager` so the chunking format is compatible.</span></span>
+
+```csharp
+app.UseCookieAuthentication(new CookieAuthenticationOptions
+{
+    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+    CookieName = ".AspNetCore.Cookies",
+    // CookieName = ".AspNetCore.ApplicationCookie", (if using ASP.NET Identity)
+    // CookiePath = "...", (if necessary)
+    // ...
+    TicketDataFormat = new AspNetTicketDataFormat(
+        new DataProtectorShim(
+            DataProtectionProvider.Create(
+                new DirectoryInfo(@"PATH_TO_KEY_RING_FOLDER"))
+            .CreateProtector(
+                "Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationMiddleware",
+                "Cookies", 
+                "v2"))),
+    CookieManager = new ChunkingCookieManager()
+});
+```
+
+---
+
+## <a name="use-a-common-user-database"></a><span data-ttu-id="21f8c-164">Utiliser une base de données commune de l’utilisateur</span><span class="sxs-lookup"><span data-stu-id="21f8c-164">Use a common user database</span></span>
+
+<span data-ttu-id="21f8c-165">Vérifiez que le système d’identité pour chaque application pointe vers la même base de données utilisateur.</span><span class="sxs-lookup"><span data-stu-id="21f8c-165">Confirm that the identity system for each app is pointed at the same user database.</span></span> <span data-ttu-id="21f8c-166">Sinon, le système d’identité génère des erreurs lors de l’exécution lorsqu’il tente de faire correspondre les informations contenues dans le cookie d’authentification contre les informations contenues dans sa base de données.</span><span class="sxs-lookup"><span data-stu-id="21f8c-166">Otherwise, the identity system produces failures at runtime when it attempts to match the information in the authentication cookie against the information in its database.</span></span>
