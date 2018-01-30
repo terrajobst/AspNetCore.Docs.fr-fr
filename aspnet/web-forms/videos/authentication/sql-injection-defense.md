@@ -12,19 +12,19 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/authentication/sql-injection-defense
 msc.type: video
-ms.openlocfilehash: 7d64cfbdc9c82e989403b0688bc14f240b9f7b6d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: db667d57b1cc3e2e5c78d93fe1dcee37dc5f0f1e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/30/2018
 ---
-<a name="sql-injection-defense"></a><span data-ttu-id="7ca56-104">Défense d’Injection SQL</span><span class="sxs-lookup"><span data-stu-id="7ca56-104">SQL Injection Defense</span></span>
+<a name="sql-injection-defense"></a><span data-ttu-id="d592e-104">Défense d’Injection SQL</span><span class="sxs-lookup"><span data-stu-id="d592e-104">SQL Injection Defense</span></span>
 ====================
-<span data-ttu-id="7ca56-105">par [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="7ca56-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="d592e-105">par [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="d592e-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="7ca56-106">Une vulnérabilité d’Injection SQL dans votre application peut gêner votre journée entière.</span><span class="sxs-lookup"><span data-stu-id="7ca56-106">A SQL Injection vulnerability in your application can ruin your whole day.</span></span> <span data-ttu-id="7ca56-107">Dans cette vidéo, Joe Stagner de Microsoft explique comment les attaques par Injection SQL peuvent se produire, une personne malintentionnée réalisables avec eux et protéger votre application ASP.NET à partir de vulnérabilités d’Injection SQL.</span><span class="sxs-lookup"><span data-stu-id="7ca56-107">In this video, Microsoft's Joe Stagner explains how SQL Injection attacks can happen, what a bad guy can do with them, and how to protect your ASP.NET application from SQL Injection vulnerabilities.</span></span>
+<span data-ttu-id="d592e-106">Une vulnérabilité d’Injection SQL dans votre application peut gêner votre journée entière.</span><span class="sxs-lookup"><span data-stu-id="d592e-106">A SQL Injection vulnerability in your application can ruin your whole day.</span></span> <span data-ttu-id="d592e-107">Dans cette vidéo, Joe Stagner de Microsoft explique comment les attaques par Injection SQL peuvent se produire, une personne malintentionnée réalisables avec eux et protéger votre application ASP.NET à partir de vulnérabilités d’Injection SQL.</span><span class="sxs-lookup"><span data-stu-id="d592e-107">In this video, Microsoft's Joe Stagner explains how SQL Injection attacks can happen, what a bad guy can do with them, and how to protect your ASP.NET application from SQL Injection vulnerabilities.</span></span>
 
-[<span data-ttu-id="7ca56-108">&#9654; Regardez la vidéo (25 minutes)</span><span class="sxs-lookup"><span data-stu-id="7ca56-108">&#9654; Watch video (25 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/sql-injection-defense)
+[<span data-ttu-id="d592e-108">&#9654; Regardez la vidéo (25 minutes)</span><span class="sxs-lookup"><span data-stu-id="d592e-108">&#9654; Watch video (25 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/sql-injection-defense)
 
 >[!div class="step-by-step"]
-[<span data-ttu-id="7ca56-109">Précédent</span><span class="sxs-lookup"><span data-stu-id="7ca56-109">Previous</span></span>](creating-inactive-users.md)
+[<span data-ttu-id="d592e-109">Précédent</span><span class="sxs-lookup"><span data-stu-id="d592e-109">Previous</span></span>](creating-inactive-users.md)
