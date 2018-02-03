@@ -1,5 +1,5 @@
 ---
-title: Disposition
+title: Mise en page
 author: ardalis
 description: 
 ms.author: riande
@@ -15,47 +15,47 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
 ---
-# <a name="layout"></a>Disposition
+# <a name="layout"></a>Mise en page
 
 Par [Steve Smith](https://ardalis.com/)
 
-Vues partagent fréquemment des éléments visuels et par programmation. Dans cet article, vous allez apprendre à utiliser des dispositions courantes, partager des directives et exécuter le code commun avant le rendu des vues dans votre application ASP.NET.
+Les vues partagent fréquemment des éléments visuels et de programmation. Dans cet article, vous allez apprendre à utiliser des mises en page courantes, partager des directives et exécuter le code commun avant le rendu des vues dans votre application ASP.NET.
 
 ## <a name="what-is-a-layout"></a>Qu’est une mise en page
 
-La plupart des applications web ont une disposition courante qui offre une expérience cohérente de l’utilisateur lorsqu’ils naviguent de page en page. En général, la mise en page inclut des éléments d’interface utilisateur courantes telles que l’en-tête de l’application, la navigation ou les éléments de menu et un pied de page.
+La plupart des applications web ont une mise en page courante qui offre une expérience cohérente à l’utilisateur lorsqu’ils naviguent de page en page. En général, la mise en page inclut des éléments d’interface utilisateur courantes telles que l’en-tête de l’application, la navigation ou les éléments de menu et un pied de page.
 
 ![Exemple de mise en page](layout/_static/page-layout.png)
 
-Structures HTML communes telles que des scripts et des feuilles de style sont fréquemment utilisés par nombre de pages au sein d’une application. Tous ces éléments partagés peuvent être définis dans un *disposition* fichier, qui peut ensuite être référencé par n’importe quelle vue utilisée dans l’application. Dispositions réduisent code en double dans les vues, de les aider à suivre le [ne répétez vous-même (sec) principe](http://deviq.com/don-t-repeat-yourself/).
+Les structures HTML courantes telles que des scripts et des feuilles de style sont fréquemment utilisées de nombreuses pages au sein d’une application. Tous ces éléments partagés peuvent être définis dans un fichier *layout*, qui peut ensuite être référencé par n’importe quelle vue utilisée dans l’application. Les mises en page réduisent le code dupliqué dans les vues, en aidant à suivre le [principe Don't repeat yourself (DRY)](http://deviq.com/don-t-repeat-yourself/).
 
-Par convention, la disposition par défaut pour une application ASP.NET est nommée `_Layout.cshtml`. Le modèle de projet Visual Studio ASP.NET Core MVC inclut ce fichier de mise en page dans le `Views/Shared` dossier :
+Par convention, la mise en page par défaut pour une application ASP.NET est nommée `_Layout.cshtml`. Le modèle de projet Visual Studio ASP.NET Core MVC inclut ce fichier de mise en page dans le dossier `Views/Shared` :
 
-![dossier d’affichages dans l’Explorateur de solutions](layout/_static/web-project-views.png)
+![dossier Views dans l’Explorateur de solutions](layout/_static/web-project-views.png)
 
-Cette disposition définit un modèle de niveau supérieur pour les vues dans l’application. Applications ne nécessitent pas une mise en page et applications peuvent définir plusieurs dispositions, avec des vues différentes en spécifiant des dispositions différentes.
+Cette mise en page définit un modèle de niveau supérieur pour les vues dans l’application. Les applications ne nécessitent pas une mise en page et les applications peuvent définir plusieurs mises en page, avec des vues différentes en spécifiant des mises en page différentes.
 
-Un exemple `_Layout.cshtml`:
+Un exemple de `_Layout.cshtml`:
 
 [!code-html[Main](../../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
 
 ## <a name="specifying-a-layout"></a>Spécification d’une disposition
 
-Les vues Razor ont un `Layout` propriété. Des vues spécifient une disposition en définissant cette propriété :
+Les vues Razor ont une propriété `Layout`. Des vues spécifient une mise en page en définissant cette propriété :
 
 [!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-La mise en page spécifiée peut utiliser un chemin d’accès complet (exemple : `/Views/Shared/_Layout.cshtml`) ou un nom partiel (exemple : `_Layout`). Lorsqu’un nom partiel est fourni, le moteur d’affichage Razor recherchera le fichier de disposition à l’aide de son processus de découverte standard. Le dossier associé au contrôleur de la recherche est effectuée en premier lieu, suivi par le `Shared` dossier. Ce processus de découverte est identique à celui utilisé pour découvrir les [vues partielles](partial.md).
+La mise en page spécifiée peut utiliser un chemin d’accès complet (exemple : `/Views/Shared/_Layout.cshtml`) ou un nom partiel (exemple : `_Layout`). Lorsqu’un nom partiel est fourni, le moteur d’affichage Razor recherchera le fichier de mise en page à l’aide de son processus de découverte standard. Le dossier associé au contrôleur de la recherche est effectuée en premier lieu, suivi par le dossier `Shared`. Ce processus de découverte est identique à celui utilisé pour découvrir les [vues partielles](partial.md).
 
-Par défaut, chaque disposition doit appeler `RenderBody`. Chaque fois que l’appel à `RenderBody` est placé, le contenu de la vue est restitué.
+Par défaut, chaque mise en page doit appeler `RenderBody`. Chaque fois que l’appel à `RenderBody` est placé, le contenu de la vue est restitué.
 
 <a name="layout-sections-label"></a>
 
 ### <a name="sections"></a>Sections
 
-Une disposition peut éventuellement faire référence à un ou plusieurs *sections*, en appelant `RenderSection`. Sections fournissent un moyen d’organiser où certains éléments de la page doivent être placés. Chaque appel à `RenderSection` peut spécifier si cette section est obligatoire ou facultatif. Si une section requise n’est trouvée, une exception est levée. Des vues spécifient le contenu à restituer dans une section à l’aide de la `@section` la syntaxe Razor. Si une vue définit une section, il doit être rendu (ou une erreur se produit).
+Une mise en page peut éventuellement faire référence à une ou plusieurs *sections*, en appelant `RenderSection`. Les sections fournissent un moyen d’organiser où certains éléments de la page doivent être placés. Chaque appel à `RenderSection` peut spécifier si cette section est obligatoire ou facultative. Si une section requise n’est pas trouvée, une exception est levée. Des vues spécifient le contenu à restituer dans une section à l’aide de la syntaxe Razor `@section`. Si une vue définit une section, il doit être rendu (ou une erreur se produit).
 
-Un exemple `@section` définition dans une vue :
+Un exemple de définition `@section` dans une vue :
 
 ```html
 @section Scripts {
@@ -63,23 +63,23 @@ Un exemple `@section` définition dans une vue :
    }
    ```
 
-Dans le code ci-dessus, les scripts de validation sont ajoutées à la `scripts` section sur une vue qui inclut un formulaire. Autres vues dans la même application ne nécessitent pas d’autres scripts et donc n’aurez pas besoin de définir une section de scripts.
+Dans le code ci-dessus, les scripts de validation sont ajoutées à la section `scripts` sur une vue qui inclut un formulaire. Les autres vues dans la même application ne nécessitent pas d’autres scripts et donc vous n’aurez pas besoin de définir une section de scripts.
 
-Les sections définies dans une vue sont disponibles uniquement dans sa page de présentation immédiate. Ils ne peuvent pas être référencés à partir d’autres parties de la vue système, affichage des composants ou aucun.
+Les sections définies dans une vue sont disponibles uniquement dans sa mise en page mmédiate. Ils ne peuvent pas être référencés à partir de vues partielles, de composants de vue ou d'autres parties du système de vue.
 
 ### <a name="ignoring-sections"></a>Ignorer des sections
 
-Par défaut, le corps et toutes les sections dans une page de contenu doivent tous être rendues par la page de disposition. Le moteur d’affichage Razor applique ceci en effectuant le suivi si le corps et chaque section ont été rendues.
+Par défaut, le corps et toutes les sections dans une page de contenu doivent tous être rendues par la page de disposition. Le moteur d’affichage Razor applique ceci en traçant si le corps et chaque section ont été rendues.
 
-Pour indiquer au moteur de vue d’ignorer le corps ou des sections, appelez le `IgnoreBody` et `IgnoreSection` méthodes.
+Pour indiquer au moteur de vue d’ignorer le corps ou des sections, appelez les méthodes `IgnoreBody` et `IgnoreSection`.
 
-Le corps et chaque section dans une page Razor doivent être rendus soit ignorés.
+Le corps et chaque section dans une page Razor doivent être soit rendus, soit ignorés.
 
 <a name="viewimports"></a>
 
-## <a name="importing-shared-directives"></a>L’importation des Directives partagés
+## <a name="importing-shared-directives"></a>L’importation des Directives partagées
 
-Vues peuvent utiliser des directives de Razor pour effectuer diverses opérations, telles que l’importation d’espaces de noms ou d’effectuer [injection de dépendance](dependency-injection.md). Directives partagés par plusieurs vues peuvent être spécifiés dans un commun `_ViewImports.cshtml` fichier. Le `_ViewImports` fichier prend en charge les directives suivantes :
+Les vues peuvent utiliser des directives de Razor pour effectuer diverses opérations, telles que l’importation d’espaces de noms ou d’effectuer l'[injection de dépendance](dependency-injection.md). Les directives partagées par plusieurs vues peuvent être spécifiées dans un fichier commun `_ViewImports.cshtml`. Le fichier `_ViewImports` prend en charge les directives suivantes :
 
 * `@addTagHelper`
 
@@ -95,41 +95,41 @@ Vues peuvent utiliser des directives de Razor pour effectuer diverses opération
 
 * `@inject`
 
-Le fichier ne prend pas en charge les autres fonctionnalités Razor, telles que les fonctions et les définitions de la section.
+Le fichier ne prend pas en charge les autres fonctionnalités Razor, telles que les fonctions et les définitions de section.
 
-Un exemple `_ViewImports.cshtml` fichier :
+Un exemple de fichier `_ViewImports.cshtml` :
 
 [!code-html[Main](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
-Le `_ViewImports.cshtml` de fichiers pour une application ASP.NET MVC de base est généralement placée dans le `Views` dossier. A `_ViewImports.cshtml` fichier peut être placé dans un dossier dans lequel cas seront uniquement appliquée aux vues dans ce dossier et ses sous-dossiers. `_ViewImports`les fichiers sont traités en commençant au niveau racine, et ensuite pour chaque dossier jusqu'à l’emplacement de la vue proprement dite, donc les paramètres spécifiés au niveau racine peut être remplacée au niveau du dossier.
+Le fichier `_ViewImports.cshtml` pour une application ASP.NET Core MVC est généralement placé dans le dossier `Views`. Un fichier `_ViewImports.cshtml` peut être placé dans un dossier, dans ce cas il sera uniquement appliqué aux vues dans ce dossier et ses sous-dossiers. Les fichiers `_ViewImports` sont traités en commençant au niveau racine, et ensuite pour chaque dossier jusqu'à l’emplacement de la vue proprement dite, donc les paramètres spécifiés au niveau racine peuvent être remplacés au niveau du dossier.
 
-Par exemple, si un niveau racine `_ViewImports.cshtml` fichier spécifie `@model` et `@addTagHelper`et un autre `_ViewImports.cshtml` fichier dans le dossier associé au contrôleur de la vue spécifie une autre `@model` et ajoute un autre `@addTagHelper`, la vue aura accès à ces deux programmes d’assistance de balise et utilisera ce dernier `@model`.
+Par exemple, si un fichier `_ViewImports.cshtml` au niveau racine spécifie `@model` et `@addTagHelper`et un autre fichier `_ViewImports.cshtml` dans le dossier associé au contrôleur de la vue spécifie un autre `@model` et ajoute un autre `@addTagHelper`, la vue aura accès à ces deux tag helpers et utilisera ce dernier `@model`.
 
-Si plusieurs `_ViewImports.cshtml` fichiers sont exécutées pour une vue, combinées de comportement des directives inclus dans le `ViewImports.cshtml` fichiers seront comme suit :
+Si plusieurs fichiers `_ViewImports.cshtml` sont exécutés pour une vue, le comportement combiné des directives incluses dans les fichiers `ViewImports.cshtml` seront comme suit :
 
-* `@addTagHelper`, `@removeTagHelper`: tous s’exécuter dans l’ordre
+* `@addTagHelper`, `@removeTagHelper`: tous exécutés dans l’ordre
 
-* `@tagHelperPrefix`: celui le plus proche à la vue remplace les autres noms
+* `@tagHelperPrefix`: le plus proche de la vue remplace les autres noms
 
-* `@model`: celui le plus proche à la vue remplace les autres noms
+* `@model`: le plus proche de la vue remplace les autres noms
 
-* `@inherits`: celui le plus proche à la vue remplace les autres noms
+* `@inherits`: le plus proche de la vue remplace les autres noms
 
-* `@using`: toutes les sont incluses ; les doublons sont ignorés.
+* `@using`: tous sont inclus ; les doublons sont ignorés.
 
-* `@inject`: pour chaque propriété, celui le plus proche à la vue remplace les autres noms portant le même nom de propriété
+* `@inject`: pour chaque propriété, le plus proche de la vue remplace les autres noms portant le même nom de propriété
 
 <a name="viewstart"></a>
 
 ## <a name="running-code-before-each-view"></a>Exécution du Code avant chaque vue.
 
-Si vous avez un code que vous devez exécuter avant chaque vue, cela doit être placé dans le `_ViewStart.cshtml` fichier. Par convention, le `_ViewStart.cshtml` fichier se trouve dans le `Views` dossier. Les instructions figurant dans `_ViewStart.cshtml` sont exécutés avant chaque vue complète (pas de dispositions et les vues partielles pas). Comme [ViewImports.cshtml](xref:mvc/views/layout#viewimports), `_ViewStart.cshtml` est hiérarchique. Si un `_ViewStart.cshtml` fichier est défini dans le dossier de la vue associée au contrôleur, il sera exécuté après celui défini dans la racine de la `Views` dossier (le cas échéant).
+Si vous avez un code que vous devez exécuter avant chaque vue, il doit être placé dans le fichier `_ViewStart.cshtml`. Par convention, le fichier `_ViewStart.cshtml` se trouve dans le dossier `Views`. Les instructions figurant dans `_ViewStart.cshtml` sont exécutées avant chaque vue complète (pas de mise en page et de vues partielles). Comme [ViewImports.cshtml](xref:mvc/views/layout#viewimports), `_ViewStart.cshtml` est hiérarchique. Si un fichier `_ViewStart.cshtml` est défini dans le dossier de la vue associée au contrôleur, il sera exécuté après celui défini dans la racine de le dossier `Views` (le cas échéant).
 
-Un exemple `_ViewStart.cshtml` fichier :
+Un exemple de fichier `_ViewStart.cshtml` :
 
 [!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
-Le fichier ci-dessus spécifie que toutes les vues utilisent le `_Layout.cshtml` mise en page.
+Le fichier ci-dessus spécifie que toutes les vues utilisent la mise en page `_Layout.cshtml`.
 
 > [!NOTE]
-> Ni `_ViewStart.cshtml` ni `_ViewImports.cshtml` sont généralement placés dans le `/Views/Shared` dossier. Les versions de niveau de l’application de ces fichiers doivent être placées directement dans le `/Views` dossier.
+> Ni `_ViewStart.cshtml` ni `_ViewImports.cshtml` ne sont généralement placés dans le dossier `/Views/Shared`. Les versions au niveau de l’application de ces fichiers doivent être placées directement dans le dossier `/Views`.
