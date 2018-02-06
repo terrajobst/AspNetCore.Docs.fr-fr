@@ -17,13 +17,13 @@ ms.lasthandoff: 01/30/2018
 ---
 # <a name="authentication"></a>Authentification
 
-* [Options d’authentification OOS de la communauté](community.md)
+* [Options d’authentification de la communauté Open Source](community.md)
 
 * [Présentation d’Identity](identity.md)
 
 * [Activer l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes](social/index.md)
 
-* [Activer la génération de code QR dans Identity](identity-enable-qrcodes.md)
+* [Activer la génération de QR code dans Identity](identity-enable-qrcodes.md)
 
 * [Configurer l’authentification Windows](windowsauth.md)
 
