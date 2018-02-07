@@ -26,16 +26,17 @@ Ce document montre comment :
 
 ## <a name="require-ssl"></a>Exiger SSL
 
-Le [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) est utilisée pour exiger SSL. Vous pouvez la décorer contrôleurs ou méthodes avec cet attribut, ou vous pouvez l’appliquer globalement, comme indiqué ci-dessous :
+L'attribut [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) est utilisée pour exiger le protocol SSL. Vous pouvez décorer les contrôleurs ou méthodes avec cet attribut, ou vous pouvez l’appliquer globalement, comme indiqué ci-dessous :
 
-Ajoutez le code suivant à `ConfigureServices` dans `Startup`:
+Ajoutez le code suivant à la méthode `ConfigureServices` dans la classe `Startup`:
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
-Le code en surbrillance ci-dessus nécessite l’utilisation de toutes les demandes `HTTPS`, par conséquent, les requêtes HTTP sont ignorés. Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
+Le code en surbrillance ci-dessus require l’utilisation du protocol `HTTPS` pour toutes les demandes, par conséquent, les requêtes HTTP sont ignorés. 
+Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
-Consultez [intergiciel (middleware) réécriture d’URL](xref:fundamentals/url-rewriting) pour plus d’informations.
+Consultez la documentation [Réécriture d’URL intergiciel (middleware)](xref:fundamentals/url-rewriting) pour plus d’informations.
 
-Nécessitant HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. Appliquer le `[RequireHttps]` attribut à tous les contrôleur n’est pas aussi sécurisée comme nécessitant HTTPS globalement. Vous ne pouvez pas garantir la sécurité ajoutées à votre application de nouveaux contrôleurs penser à appliquer le `[RequireHttps]` attribut.
+Exiger le protocol HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. Appliquer le `[RequireHttps]` attribut à tous les contrôleur n’est pas considéré aussi sécurisée que exiger le HTTPS globalement car vous ne pouvez pas garantir la sécurité aux nouveaux contrôleurs ajoutées à votre application il faudra penser à appliquer le `[RequireHttps]` attribut.
