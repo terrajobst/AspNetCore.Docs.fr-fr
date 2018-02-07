@@ -195,11 +195,11 @@ Observez parmi les différentes valeurs `OperationId` dans une demande et entre 
 
 ## <a name="request-services"></a>Request Services
 
-Les services disponibles dans ASP.NET demande à partir de `HttpContext` sont exposés via la collection `RequestServices`.
+Les services disponibles dans une demande ASP.NET à partir de `HttpContext` sont exposés via la collection `RequestServices`.
 
 ![HttpContext Request Services Intellisense boîte de dialogue contextuelle indiquant que la demande de Services Obtient ou définit le IServiceProvider qui fournit l’accès au conteneur de service de la demande.](dependency-injection/_static/request-services.png)
 
-Les Requeste Services représentent les services de configuration et de la demande dans le cadre de votre application. Lorsque vos objets de spécifient les dépendances, ceux-ci sont satisfaites par les types trouvés dans `RequestServices`, et non `ApplicationServices`.
+Les Request Services représentent les services de configuration et de la demande dans le cadre de votre application. Lorsque vos objets de spécifient les dépendances, ceux-ci sont satisfaites par les types trouvés dans `RequestServices`, et non `ApplicationServices`.
 
 En règle générale, vous ne devez pas utiliser ces propriétés directement, préférant à la place demander les types de vos classes que vous avez besoin via votre constructeur de classe et laissant le framework injecter ces dépendances. Cela génère des classes qui sont plus faciles à tester (voir [test](../testing/index.md)) et sont plus faiblement couplées.
 
