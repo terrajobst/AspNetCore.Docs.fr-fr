@@ -204,7 +204,7 @@ Les Requeste Services représentent les services de configuration et de la deman
 En règle générale, vous ne devez pas utiliser ces propriétés directement, préférant à la place demander les types de vos classes que vous avez besoin via votre constructeur de classe et laissant le framework injecter ces dépendances. Cela génère des classes qui sont plus faciles à tester (voir [test](../testing/index.md)) et sont plus faiblement couplées.
 
 > [!NOTE]
-> Préférez de demander des dépendances en tant que paramètres du constructeur pour accéder à la collection `RequestServices`.
+> Préférez de demander des dépendances en tant que paramètres du constructeur plutôt que d'accéder à la collection `RequestServices`.
 
 ## <a name="designing-your-services-for-dependency-injection"></a>Conception de vos Services pour l’Injection de dépendance
 
