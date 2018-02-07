@@ -22,22 +22,22 @@ Par [Luke Latham](https://github.com/guardrex) et [Andrew Stanton-infirmière](h
 
 Afficher ou télécharger l’exemple de code pour 2.x :
 
-* [Exemple de base](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample))-lit les valeurs des secrets dans une application.
-* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lit les valeurs des secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application.
+* [Exemple de base](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample))-lire des valeurs secrets dans une application.
+* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lire les valeurs secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Afficher ou télécharger l’exemple de code pour 1.x :
 
-* [Exemple de base](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/1.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample))-lit les valeurs des secrets dans une application.
-* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lit les valeurs des secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application. 
+* [Exemple de base](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/1.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample))-lire les valeurs secrets dans une application.
+* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lire les valeurs  secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application. 
 
 ---
 
-Ce document explique comment utiliser le [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) fournisseur de configuration à charger des valeurs de configuration d’application de secrets de coffre de clés Azure. Coffre de clés Azure est un service cloud qui vous aident à protéger les clés de chiffrement et les secrets utilisés par les applications et services. Scénarios courants incluent le contrôle d’accès aux données de configuration sensibles et répondre aux exigences de la norme FIPS 140-2 niveau 2 validé les Modules de sécurité matériel (HSM) lors du stockage des données de configuration. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou ultérieure.
+Ce document explique comment utiliser le fournisseur de configuration [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) à charger des valeurs de configuration d’application de secrets du Azure Key Vault. Azure Key Vault est un service cloud qui vous aident à protéger les clés de chiffrement et les secrets utilisés par les applications et services. Les scénarios courants incluent le contrôle d’accès aux données de configuration sensibles et répondre aux exigences de la norme FIPS 140-2 niveau 2 validé par les Modules de sécurité matériel (HSM) lors du stockage des données de configuration. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou ultérieure.
 
 ## <a name="package"></a>Package
-Pour utiliser le fournisseur, ajouter une référence à la [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) package.
+Pour utiliser le fournisseur, ajouter la référence le package Nuget [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/).
 
 ## <a name="application-configuration"></a>Configuration d’application
 Vous pouvez explorer le fournisseur avec le [exemples d’applications](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples). Une fois que vous établissez un coffre de clés et créez des clés secrètes dans le coffre, les exemples d’applications en toute sécurité par chargement les valeurs de secret principal dans leurs configurations et les affichent dans les pages Web.
