@@ -17,38 +17,38 @@ ms.lasthandoff: 01/30/2018
 ---
 # <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>Prévention des attaques de redirection ouvert dans une application ASP.NET Core
 
-Une application web qui effectue une redirection vers une URL qui est spécifiée via la demande tels que les données de chaîne de requête ou un formulaire peut potentiellement être falsifiée rediriger les utilisateurs vers une URL externe, malveillante. Cette manipulation est appelée une attaque de redirection ouvert.
+Une application web qui effectue une redirection vers une URL qui est spécifiée via la demande tels que les données de chaîne de requête ou un formulaire peut potentiellement être falsifiée en redirigant les utilisateurs vers une URL externe malveillante. Cette manipulation est appelée une attaque de redirection ouverte.
 
-Chaque fois que votre logique d’application redirige vers une URL spécifiée, vous devez vérifier que l’URL de redirection n’a pas été falsifié. ASP.NET Core intègre des fonctionnalités pour aider à protéger les applications contre les attaques de redirection ouvert (également appelé open redirection).
+Chaque fois que votre logique d’application redirige vers une URL spécifiée, vous devez vérifier que l’URL de redirection n’a pas été falsifié. ASP.NET Core intègre des fonctionnalités pour aider à protéger les applications contre les attaques de redirection ouverte (également appelé open redirection).
 
-## <a name="what-is-an-open-redirect-attack"></a>Qu’est une attaque de redirection ouvrir ?
+## <a name="what-is-an-open-redirect-attack"></a>Qu’est une attaque de redirection ouverte ?
 
-Les applications Web rediriger fréquemment les utilisateurs vers une page de connexion lorsqu’ils accèdent aux ressources qui requièrent une authentification. La redirection typlically inclut un `returnUrl` paramètre querystring afin que l’utilisateur peut être retourné à l’URL demandée à l’origine une fois qu’ils ont connecté avec succès. Une fois que l’utilisateur s’authentifie, ils êtes redirigés vers l’URL était initialement demandée.
+Les applications Web redirigent fréquemment les utilisateurs vers une page de connexion lorsqu’ils accèdent aux ressources qui requièrent une authentification. Typiquement la redirection inclut un paramètre querystring `returnUrl`  afin que l’utilisateur peut être retourné à l’URL demandée à l’origine une fois qu’ils ont connecté avec succès. Une fois que l’utilisateur s’authentifie, il est redirigé vers l’URL qui était initialement demandée.
 
-Étant donné que l’URL de destination est spécifié dans la chaîne de requête de la demande, un utilisateur malveillant peut falsifier la chaîne de requête. Une chaîne de requête falsifiée pourrait permettre au site pour rediriger l’utilisateur vers un site externe, malveillant. Cette technique est appelée une attaque de redirection (ou une redirection) ouverte.
+Étant donné que l’URL de destination est spécifié dans la chaîne de requête de la demande (querystring), un utilisateur malveillant peut falsifier vcette chaîne de requête. Une chaîne de requête falsifiée pourrait permettre au site pour rediriger l’utilisateur vers un site externe, malveillant. Cette technique est appelée une attaque de redirection (ou une redirection) ouverte.
 
-### <a name="an-example-attack"></a>Une attaque de l’exemple
+### <a name="an-example-attack"></a>Un exxemple d'attaque
 
-Un utilisateur malveillant peut développer une attaque conçue pour permettre l’accès utilisateur malveillant pour les informations d’identification d’un utilisateur ou les informations sensibles sur votre application. Pour lancer l’attaque, elles convaincre l’utilisateur clique sur un lien vers la page de connexion de votre site, avec un `returnUrl` valeur de chaîne de requête ajoutée à l’URL. Par exemple, le [NerdDinner.com](http://nerddinner.com) exemple d’application (écrite pour ASP.NET MVC) inclut ce une page de connexion ici : ``http://nerddinner.com/Account/LogOn?returnUrl=/Home/About``. L’attaque puis procédez comme suit :
+Un utilisateur malveillant peut développer une attaque conçue pour permettre l’accès utilisateur malveillant pour les informations d’identification d’un utilisateur ou les informations sensibles sur votre application. Pour lancer l’attaque, il convaint l’utilisateur de cliquer sur un lien vers la page de connexion de votre site, avec une valeur de chaîne de requête `returnUrl`  ajoutée à l’URL. Par exemple, l'exemple d’application [NerdDinner.com](http://nerddinner.com)  (écrite pour ASP.NET MVC) inclut une page de connexion ici : ``http://nerddinner.com/Account/LogOn?returnUrl=/Home/About``. L’attaque consiste à procéder comme suit :
 
 1. Utilisateur clique sur un lien vers ``http://nerddinner.com/Account/LogOn?returnUrl=http://nerddiner.com/Account/LogOn`` (Notez que la deuxième URL est nerddi**n**er, pas nerddi**nn**er).
 2. L’utilisateur parvient à se connecter.
 3. L’utilisateur est redirigé (par le site) à ``http://nerddiner.com/Account/LogOn`` (site malveillant qui ressemble à un site réel).
 4. L’utilisateur se connecte à nouveau (donnant malveillant leurs informations d’identification de site) et est redirigé vers le site réel.
 
-L’utilisateur sera pensez probablement de leur première tentative de connexion a échoué, et leur autre a réussi. Ils sont conservés très probablement pas au courant leurs informations d’identification ont été compromises.
+L’utilisateur sera pensez probablement de leur première tentative de connexion a échoué, et l'autre a réussi. Ils sont  très probablement pas au courant  que leurs informations d’identification ont été compromises.
 
-![Processus d’attaque Redirection ouvert](preventing-open-redirects/_static/open-redirection-attack-process.png)
+![Processus d’attaque Redirection ouverte](preventing-open-redirects/_static/open-redirection-attack-process.png)
 
-En plus des pages de connexion, certains sites fournissent des points de terminaison ou des pages de redirection. Imaginez que votre application comprend une page avec une redirection d’ouvrir, ``/Home/Redirect``. Un attaquant pourrait créer, par exemple, un lien dans un message électronique qui accède à ``[yoursite]/Home/Redirect?url=http://phishingsite.com/Home/Login``. Un utilisateur à l’URL et voir qu'il commence par le nom de votre site. Approbation qui, elles devra cliquer sur le lien. La redirection ouvrir envoie ensuite l’utilisateur vers le site de hameçonnage, qui est identique à la vôtre, et l’utilisateur aurait probablement connexion pour qu’ils pensent est votre site.
+En plus des pages de connexion, certains sites fournissent des points de terminaison ou des pages de redirection. Imaginez que votre application comprend une page avec une redirection ouverte, ``/Home/Redirect``. Un attaquant pourrait créer, par exemple, un lien dans un message électronique qui accède à ``[yoursite]/Home/Redirect?url=http://phishingsite.com/Home/Login``. Un utilisateur voit que l’URL commence par le nom de votre site. Faisant confiance,il cliquera sur le lien. La redirection ouverte envoie ensuite l’utilisateur vers le site de hameçonnage, qui est identique au vôtre, et l’utilisateur probablement se connectera pensant que c'est votre site.
 
-## <a name="protecting-against-open-redirect-attacks"></a>Protection contre les attaques de redirection ouvert
+## <a name="protecting-against-open-redirect-attacks"></a>Protection contre les attaques de redirection ouverte
 
 Lorsque vous développez des applications web, traiter toutes les données fournies par l’utilisateur comme non fiables. Si votre application possède des fonctionnalités qui redirige l’utilisateur en fonction du contenu de l’URL, vérifiez que ces redirections sont effectuées uniquement localement dans votre application (ou à une URL connue, pas une URL qui peut être fournie dans la chaîne de requête).
 
 ### <a name="localredirect"></a>LocalRedirect
 
-Utilisez le ``LocalRedirect`` méthode d’assistance à partir de la base de `Controller` classe :
+Utilisez la méthode helper ``LocalRedirect`` à partir de la classe de base de `Controller`:
 
 ```csharp
 public IActionResult SomeAction(string redirectUrl)
@@ -61,7 +61,7 @@ public IActionResult SomeAction(string redirectUrl)
 
 ### <a name="islocalurl"></a>IsLocalUrl
 
-Utilisez le [IsLocalUrl](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iurlhelper#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) méthode pour tester l’URL avant de rediriger les :
+Utilisez la méthode [IsLocalUrl](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iurlhelper#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) pour tester l’URL avant de rediriger les utlisateurs:
 
 L’exemple suivant montre comment vérifier si une URL est locale avant de rediriger.
 
@@ -79,4 +79,4 @@ private IActionResult RedirectToLocal(string returnUrl)
 }
 ```
 
-Le `IsLocalUrl` méthode protège les utilisateurs en cours par inadvertance redirigés vers un site malveillant. Vous pouvez consigner les détails de l’URL qui a été fourni lorsqu’une URL non local est fournie dans une situation dans laquelle vous vous attendiez une URL locale. Journalisation de redirection URL peuvent faciliter le diagnostic des attaques de redirection.
+La méthde `IsLocalUrl` protège les utilisateurs d'être redirigés par inadvertance vers un site malveillant. Vous pouvez consigner les détails de l’URL qui a été fourni lorsqu’une URL non local est fournie dans une situation dans laquelle vous vous attendiez une URL locale. La journalisation des redirection d'URL peuvent faciliter le diagnostic des attaques de redirection.
