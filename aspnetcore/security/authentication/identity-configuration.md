@@ -17,15 +17,15 @@ ms.lasthandoff: 01/30/2018
 ---
 # <a name="configure-identity"></a>Configurer l’identité
 
-ASP.NET Core Identity a des comportements courants dans les applications telles que la stratégie de mot de passe, l’heure de verrouillage et les paramètres de cookies que vous pouvez remplacer facilement dans votre application `Startup` classe.
+ASP.NET Core Identity a des comportements courants dans les applications telles que la stratégie de mot de passe, l’heure de verrouillage et les paramètres de cookies que vous pouvez remplacer facilement dans la classe `Startup` votre application.
 
 ## <a name="passwords-policy"></a>Stratégie de mots de passe
 
-Par défaut, identité requiert que les mots de passe contient un caractère majuscule, minuscule, un chiffre et un caractère non alphanumérique. Il existe également quelques autres restrictions. Pour simplifier les restrictions de mot de passe, vous devez modifier le `ConfigureServices` méthode de la `Startup` classe de votre application.
+Par défaut, Identity requiert que les mots de passe contiennent un caractère majuscule, minuscule, un chiffre et un caractère non alphanumérique. Il existe également quelques autres restrictions. Pour simplifier les restrictions de mot de passe, vous devez modifier la méthode `ConfigureServices` de la classe `Startup` de votre application.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Base d’ASP.NET 2.0 a ajouté le `RequiredUniqueChars` propriété. Dans le cas contraire, les options sont les mêmes à partir de ASP.NET 1.x.
+ASP.NET Core 2.0 a ajouté la propriété `RequiredUniqueChars`. Dans le cas contraire, les options sont les mêmes à partir de ASP.NET 1.x.
 
 [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-37,50-52)]
 
@@ -78,17 +78,17 @@ Base d’ASP.NET 2.0 a ajouté le `RequiredUniqueChars` propriété. Dans le cas
 
 | Propriété                | Description                       | Par défaut |
 | ----------------------- | --------------------------------- | ------- |
-| `RequireUniqueEmail`  | Nécessite que chaque utilisateur à un message électronique unique. | False  |
+| `RequireUniqueEmail`  | Nécessite que chaque utilisateur à un email unique. | False  |
 | `AllowedUserNameCharacters`  | Caractères autorisés dans le nom d’utilisateur. | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ |
 
 
 ## <a name="applications-cookie-settings"></a>Paramètres de cookies pour l’application
 
-Comme la stratégie de mots de passe, tous les paramètres du cookie de l’application peuvent être modifiés dans la `Startup` classe.
+Comme la stratégie de mots de passe, tous les paramètres du cookie de l’application peuvent être modifiés dans la classe `Startup`.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Sous `ConfigureServices` dans le `Startup` (classe), vous pouvez configurer le cookie de l’application.
+Sous `ConfigureServices` dans la classe `Startup` , vous pouvez configurer les cookies de l’application.
 
 [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?name=snippet_configurecookie)]
 
