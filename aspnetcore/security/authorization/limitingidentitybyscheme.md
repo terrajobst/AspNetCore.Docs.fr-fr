@@ -17,7 +17,7 @@ ms.lasthandoff: 01/30/2018
 ---
 # <a name="authorize-with-a-specific-scheme"></a>Autoriser avec un schéma spécifique
 
-Dans certains scénarios, tels que des Applications à Page unique (ZPS), il est courant d’utiliser plusieurs méthodes d’authentification. Par exemple, l’application peut utiliser l’authentification par cookie pour vous connecter et l’authentification du support JSON pour les demandes de JavaScript. Dans certains cas, l’application peut avoir plusieurs instances d’un gestionnaire d’authentification. Par exemple, deux gestionnaires de cookie où un contient une identité de base et l’autre est créé lorsqu’une authentification multifacteur (MFA) a été déclenchée. L’authentification Multifacteur peut être déclenchée, car l’utilisateur a demandé une opération qui requiert une sécurité supplémentaire.
+Dans certains scénarios, tels que des Applications à Page unique (SPA), il est courant d’utiliser plusieurs méthodes d’authentification. Par exemple, l’application peut utiliser l’authentification par cookie pour vous connecter et l’authentification du support JSON pour les demandes de JavaScript. Dans certains cas, l’application peut avoir plusieurs instances d’un gestionnaire d’authentification. Par exemple, deux gestionnaires de cookie où un premier contient une identité de base et l’autre est créé lorsqu’une authentification multifacteur (MFA) a été déclenchée. L’authentification Multifacteur peut être déclenchée, car l’utilisateur a demandé une opération qui requiert une sécurité supplémentaire.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -42,11 +42,11 @@ public void ConfigureServices(IServiceCollection services)
 Dans le code précédent, les deux gestionnaires d’authentification ont été ajoutés : une pour les cookies et l’autre pour le support.
 
 >[!NOTE]
->Spécification de schéma par défaut entraîne la `HttpContext.User` propriété définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en appelant le formulaire sans paramètre de `AddAuthentication`.
+>Spécification de schéma par défaut entraîne la propriété `HttpContext.User` définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en appelant le formulaire sans paramètre de `AddAuthentication`.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Schémas d’authentification sont nommés lors de l’authentification middlewares sont configurés lors de l’authentification. Exemple :
+Les schémas d’authentification sont nommés lors de l’authentification middlewares et sont configurés lors de l’authentification. Exemple :
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -71,10 +71,10 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
     });
 ```
 
-Dans le code précédent, deux middlewares d’authentification ont été ajoutés : une pour les cookies et l’autre pour le support.
+Dans le code précédent, deux middlewares d’authentification ont été ajoutés : un pour les cookies et l’autre pour le support.
 
 >[!NOTE]
->Spécification de schéma par défaut entraîne la `HttpContext.User` propriété définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en définissant le `AuthenticationOptions.AutomaticAuthenticate` propriété `false`.
+>Les spécification de schéma par défaut entraîne la propriété `HttpContext.User` définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en définissant la propriété `AuthenticationOptions.AutomaticAuthenticate` à `false`.
 
 ---
 
@@ -110,7 +110,7 @@ public class MixedController : Controller
 
 ---
 
-Dans l’exemple précédent, le cookie et le support de gestionnaires d’exécuteront et ont la possibilité de créer et ajouter une identité pour l’utilisateur actuel. En spécifiant un schéma unique uniquement, le gestionnaire correspondant s’exécute.
+Dans l’exemple précédent, le cookie et le support de gestionnaires s’exécuteront et ont la possibilité de créer et ajouter une identité pour l’utilisateur actuel. En spécifiant un schéma unique uniquement, le gestionnaire correspondant s’exécute.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -134,7 +134,7 @@ Dans le code précédent, seul le gestionnaire avec le schéma « Support » s
 
 ## <a name="selecting-the-scheme-with-policies"></a>Sélection du schéma avec des stratégies
 
-Si vous souhaitez spécifier les schémas souhaités dans [stratégie](xref:security/authorization/policies), vous pouvez définir le `AuthenticationSchemes` collection lors de l’ajout de votre stratégie :
+Si vous souhaitez spécifier les schémas souhaités dans [la stratégie](xref:security/authorization/policies), vous pouvez définir la collection `AuthenticationSchemes` lors de l’ajout de votre stratégie :
 
 ```csharp
 services.AddAuthorization(options =>
@@ -148,7 +148,7 @@ services.AddAuthorization(options =>
 });
 ```
 
-Dans l’exemple précédent, la stratégie « Over18 » ne s’exécute par rapport à l’identité créée par le gestionnaire « Support ». Utilisez la stratégie en définissant le `[Authorize]` l’attribut `Policy` propriété :
+Dans l’exemple précédent, la stratégie « Over18 » ne s’exécute par rapport à l’identité créée par le gestionnaire « Support ». Utilisez la stratégie en définissant l’attribut `[Authorize]` avec sa propriété `Policy`:
 
 ```csharp
 [Authorize(Policy = "Over18")]
