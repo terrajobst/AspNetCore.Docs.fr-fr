@@ -16,33 +16,33 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="browser-link-in-aspnet-core"></a>Lien du navigateur dans ASP.NET Core 
+# <a name="browser-link-in-aspnet-core"></a>Browser Link dans ASP.NET Core 
 
 Par [Nicolò Carandini](https://github.com/ncarandini), [Mike Wasson](https://github.com/MikeWasson), et [Tom Dykstra](https://github.com/tdykstra)
 
-Lien du navigateur est une fonctionnalité de Visual Studio qui crée un canal de communication entre l’environnement de développement et un ou plusieurs navigateurs web. Vous pouvez utiliser lien du navigateur pour actualiser votre application web dans plusieurs navigateurs à la fois, ce qui est utile pour le test de plusieurs navigateurs.
+Browser Link est une fonctionnalité de Visual Studio qui crée un canal de communication entre l’environnement de développement et un ou plusieurs navigateurs web. Vous pouvez utiliser Browser Link pour actualiser votre application web dans plusieurs navigateurs à la fois, ce qui est utile pour les tests dans plusieurs navigateurs.
 
-## <a name="browser-link-setup"></a>Programme d’installation lien du navigateur
+## <a name="browser-link-setup"></a>Installation de Browser Link
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Le cœur d’ASP.NET 2.x **Application Web**, **vide**, et **API Web** modèle projets utilisent la [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) méta-package qui contient une référence de package pour [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Par conséquent, à l’aide de la `Microsoft.AspNetCore.All` méta-package ne nécessite aucune action supplémentaire pour que le lien du navigateur disponibles.
+Le modèles de projet d’ASP.NET Core 2.x **Application Web**, **Vide**, et **API Web** utilisent le méta-package [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/)  qui contient une référence de package pour [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Par conséquent, grâce au méta-package `Microsoft.AspNetCore.All`  aucune action supplémentaire n'est nécessaire pour que la fonctionnalité Browser Link soit disponible à l'utilisation.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Le cœur d’ASP.NET 1.x **Application Web** modèle de projet a une référence de package pour le [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) package. Le **vide** ou **API Web** les projets de modèle, vous devez ajouter une référence de package à `Microsoft.VisualStudio.Web.BrowserLink`.
+Le modèle de projet d’ASP.NET Core 1.x **Application Web** a une référence de package pour le package [Microsoft.VisualStudio.Web.BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/). Pour les modèles de projet **Vide** ou **API Web**, vous devez ajouter une référence de package à `Microsoft.VisualStudio.Web.BrowserLink`.
 
-Dans la mesure où cela est une fonctionnalité de Visual Studio, le moyen le plus simple pour ajouter le package à un **vide** ou **API Web** modèle de projet consiste à ouvrir le **Package Manager Console** (**Vue** > **autres fenêtres** > **Package Manager Console**) et exécutez la commande suivante :
+Dans la mesure où cela est une fonctionnalité de Visual Studio, le moyen le plus simple pour ajouter le package à un modèle de projet  **Vide** ou **API Web** consiste à ouvrir la **Console du Gestionnaire de package** (**Affichage** > **Autres fenêtres** > **Console du Gestionnaire de package**) et exécuter la commande suivante :
 
 ```console
 install-package Microsoft.VisualStudio.Web.BrowserLink
 ```
 
-Vous pouvez également utiliser **Gestionnaire de Package NuGet**. Cliquez sur le nom du projet dans **l’Explorateur de solutions** et choisissez **gérer les Packages NuGet**:
+Vous pouvez également utiliser le **Gestionnaire de Package NuGet**. Cliquez sur le nom du projet dans **l’Explorateur de solutions** et choisissez **Gérer les packages NuGet**:
 
 ![Gestionnaire de Package NuGet ouvert](using-browserlink/_static/open-nuget-package-manager.png)
 
-Recherchez et installez le package :
+Recherchez et installez le package :
 
 ![Ajouter un package avec le Gestionnaire de Package NuGet](using-browserlink/_static/add-package-with-nuget-package-manager.png)
 
@@ -50,13 +50,13 @@ Recherchez et installez le package :
 
 ### <a name="configuration"></a>Configuration
 
-Dans le `Configure` méthode de la *Startup.cs* fichier :
+Dans la méthode `Configure` du fichier *Startup.cs* :
 
 ```csharp
 app.UseBrowserLink();
 ```
 
-Le code est généralement à l’intérieur d’un `if` bloc qui permet uniquement de lien de navigateur dans l’environnement de développement, comme indiqué ici :
+Le code est généralement à l’intérieur d’un bloc `if` qui permet uniquement d'utiliser Browser Link dans l’environnement de développement, comme indiqué ici :
 
 ```csharp
 if (env.IsDevelopment())
@@ -68,73 +68,73 @@ if (env.IsDevelopment())
 
 Pour plus d’informations, consultez [Utilisation de plusieurs environnements](xref:fundamentals/environments).
 
-## <a name="how-to-use-browser-link"></a>Comment utiliser le lien du navigateur
+## <a name="how-to-use-browser-link"></a>Comment utiliser Browser Link
 
-Lorsque vous avez un projet ASP.NET Core ouvert, Visual Studio affiche le contrôle de barre d’outils du lien du navigateur à côté du **cible de débogage** contrôle de barre d’outils :
+Lorsque vous avez un projet ASP.NET Core ouvert, Visual Studio affiche la barre d’outils de Browser Link à côté de la barre d'outils utilisée pour la **cible de débogage** :
 
 ![Menu de liste déroulante de lien de navigateur](using-browserlink/_static/browserLink-dropdown-menu.png)
 
-À partir du contrôle de barre d’outils de lien de navigateur, vous pouvez :
+À partir de la barre d’outils de Browser Link, vous pouvez :
 
 * Actualiser l’application web dans plusieurs navigateurs à la fois.
-* Ouvrez le **le tableau de bord navigateur lien**.
-* Activer ou désactiver **lien du navigateur**. Remarque : Le lien du navigateur est désactivée par défaut dans Visual Studio 2017 (15,3).
+* Ouvrir le **le tableau de bord Browser Link**.
+* Activer ou désactiver **Browser Link**. Remarque : Browser Link est désactivée par défaut dans Visual Studio 2017 (15,3).
 * Activer ou désactiver [la synchronisation automatique CSS](#enable-or-disable-css-auto-sync).
 
 > [!NOTE]
-> Certains plug-ins de Visual Studio, notamment *Web Extension Pack 2015* et *Web Extension Pack 2017*, proposent des fonctionnalités étendues pour le lien du navigateur, mais certaines des fonctionnalités supplémentaires ne fonctionnent pas avec ASP. Projets NET Core.
+> Certains plug-ins de Visual Studio, notamment *Web Extension Pack 2015* et *Web Extension Pack 2017*, proposent des fonctionnalités étendues pour Browser Link, mais certaines des fonctionnalités supplémentaires ne fonctionnent pas avec ASP. Projets NET Core.
 
 ## <a name="refresh-the-web-application-in-several-browsers-at-once"></a>Actualiser à la fois l’application web dans plusieurs navigateurs
 
-Pour choisir un navigateur web unique pour lancer au démarrage du projet, utilisez le menu déroulant dans le **cible de débogage** contrôle de barre d’outils :
+Pour choisir un navigateur web unique à lancer au démarrage du projet, utilisez le menu déroulant **cible de débogage** dans la barre d'outils :
 
 ![Menu déroulant de F5](using-browserlink/_static/debug-target-dropdown-menu.png)
 
-Pour ouvrir plusieurs navigateurs à la fois, choisissez **naviguer avec...**  à partir de la même liste déroulante. Maintenez enfoncée la touche CTRL ENFONCÉE pour sélectionner les navigateurs de votre choix, puis cliquez sur **Parcourir**:
+Pour ouvrir plusieurs navigateurs à la fois, choisissez **naviguer avec...**  à partir de la même liste déroulante. Maintenez enfoncée la touche CTRL enfoncée pour sélectionner les navigateurs de votre choix, puis cliquez sur **Parcourir**:
 
 ![Ouvrir à la fois des nombreux navigateurs](using-browserlink/_static/open-many-browsers-at-once.png)
 
-Voici une capture d’écran montrant Visual Studio avec la vue Index ouvert et de deux navigateurs ouverts :
+Voici une capture d’écran montrant Visual Studio avec la vue Index ouvert et deux navigateurs ouverts :
 
 ![Synchroniser avec l’exemple de deux navigateurs](using-browserlink/_static/sync-with-two-browsers-example.png)
 
-Placez le curseur sur le contrôle de barre d’outils de lien de navigateur pour voir les navigateurs qui sont connectés au projet :
+Placez le curseur sur la barre d’outils de Browser Link pour voir les navigateurs qui sont connectés au projet:
 
 ![Placez le curseur pointe](using-browserlink/_static/hoover-tip.png)
 
-Modifier l’affichage de l’Index, et tous les navigateurs connectés sont mis à jour lorsque vous cliquez sur le bouton Actualiser de lien du navigateur :
+Modifier l’affichage de l’Index, et tous les navigateurs connectés sont mis à jour lorsque vous cliquez sur le bouton Actualiser de Browser Link :
 
 ![navigateurs-sync-changes](using-browserlink/_static/browsers-sync-to-changes.png)
 
-Lien du navigateur fonctionne également avec les navigateurs que vous lancez en dehors de Visual Studio et accédez à l’URL de l’application.
+Browser Link fonctionne également avec les navigateurs que vous lancez en dehors de Visual Studio et accédez à l’URL de l’application.
 
 ### <a name="the-browser-link-dashboard"></a>Le tableau de bord de lien de navigateur
 
-Dans la liste déroulante de lien du navigateur vers le bas du menu pour gérer les connexions avec les navigateurs ouverts, ouvrez le tableau de bord de lien de navigateur :
+Dans la liste déroulante de lien du navigateur vers le bas du menu pour gérer les connexions avec les navigateurs ouverts, ouvrez le tableau de bord de lien de navigateur :
 
 ![Ouvrir-browserslink-tableau de bord](using-browserlink/_static/open-browserlink-dashboard.png)
 
-Si aucun navigateur n’est connecté, vous pouvez démarrer une session de débogage non en sélectionnant le *afficher dans le navigateur* lien :
+Si aucun navigateur n’est connecté, vous pouvez démarrer une session en sélectionnant le lien *afficher dans Browser* :
 
 ![browserlink-dashboard-no-connections](using-browserlink/_static/browserlink-dashboard-no-connections.png)
 
-Dans le cas contraire, les navigateurs connectés sont affichés avec le chemin d’accès à la page qui affiche chaque navigateur :
+Dans le cas contraire, les navigateurs connectés sont affichés avec le chemin d’accès à la page qui affiche chaque navigateur :
 
 ![browserlink-dashboard-two-connections](using-browserlink/_static/browserlink-dashboard-two-connections.png)
 
-Si vous le souhaitez, vous pouvez cliquer sur un nom de navigateur répertoriés pour actualiser ce seul navigateur.
+Si vous le souhaitez, vous pouvez cliquer sur un nom de navigateur répertorié pour actualiser seulement ce navigateur.
 
 ### <a name="enable-or-disable-browser-link"></a>Activer ou désactiver le lien du navigateur
 
-Lorsque vous réactivez lien du navigateur après l’avoir désactivé, vous devez actualiser le navigateur pour vous reconnecter les.
+Lorsque vous réactivez lien du navigateur après l’avoir désactivé, vous devez actualiser les navigateurs pour les reconnecter.
 
 ### <a name="enable-or-disable-css-auto-sync"></a>Activer ou désactiver la synchronisation automatique CSS
 
 Lorsque la synchronisation automatique CSS est activée, les navigateurs connectés sont automatiquement actualisées lorsque vous modifiez des fichiers CSS.
 
-## <a name="how-does-it-work"></a>Comment cela fonctionne-t-il ?
+## <a name="how-does-it-work"></a>Comment cela fonctionne-t-il ?
 
-Lien du navigateur utilise SignalR pour créer un canal de communication entre Visual Studio et le navigateur. Lorsque le lien du navigateur est activée, Visual Studio fait Office de serveur SignalR plusieurs clients (navigateurs) pouvant se connecter à. Lien du navigateur enregistre également un composant d’intergiciel (middleware) dans le pipeline de demande ASP.NET. Ce composant injecte spéciaux `<script>` références dans chaque demande de page à partir du serveur. Vous pouvez consulter les références de script en sélectionnant **afficher la source** dans le navigateur et le défilement à la fin de la `<body>` le contenu de la balise :
+Browser Link utilise SignalR pour créer un canal de communication entre Visual Studio et le navigateur. Lorsque le lien du navigateur est activée, Visual Studio fait office de serveur SignalR pouvant se connecter à plusieurs clients (navigateurs). Browser Link enregistre également un composant d’intergiciel (middleware) dans le pipeline de demande ASP.NET. Ce composant injecte des références de script `<script>`  dans chaque demande de page à partir du serveur. Vous pouvez consulter les références de script en sélectionnant **afficher la source** dans le navigateur et en défilant à la fin du contenu de la balise `<body>` :
 
 ```javascript
     <!-- Visual Studio Browser Link -->
@@ -148,4 +148,4 @@ Lien du navigateur utilise SignalR pour créer un canal de communication entre V
 
 Vos fichiers sources ne sont pas modifiés. Le composant d’intergiciel (middleware) injecte les références de script dynamiquement. 
 
-Le code côté navigateur étant toutes les fonctions JavaScript, il fonctionne sur tous les navigateurs prenant en charge SignalR sans nécessiter un plug-in de navigateur.
+Le code côté navigateur étant uniquement du code JavaScript, il fonctionne sur tous les navigateurs prenant en charge SignalR sans nécessiter un plug-in de navigateur.
