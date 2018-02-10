@@ -60,7 +60,7 @@ Les contrôleurs sont les composants qui gèrent l'interaction avec l’utilisat
 
 L’infrastructure ASP.NET MVC Core est framework de présentation léger, open source, facilement testable et optimisé pour une utilisation avec ASP.NET Core.
 
-ASP.NET MVC Core offre un fonctionnement basé sur des patterns pour créer des sites Web dynamiques qui permet une séparation claire des préoccupations. Il vous donne un contrôle total sur le balisage, prend en charge les développements TDD et utilise les standards web les plus récentes.
+ASP.NET MVC Core offre un fonctionnement basé sur des patterns pour créer des sites Web dynamiques qui permettent une séparation claire des préoccupations. Il vous donne un contrôle total sur le balisage, prend en charge les développements TDD et utilise les standards web les plus récents.
 
 ## <a name="features"></a>Fonctionnalités
 
@@ -111,7 +111,7 @@ La [liaison de modèle](models/model-binding.md) ASP.NET Core MVC convertit les 
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
    ```
 
-### <a name="model-validation"></a>validation du modèle
+### <a name="model-validation"></a>Validation du modèle
 
 ASP.NET Core MVC prend en charge la [validation](models/validation.md) en décorant votre objet de modèle avec des attributs de validation de données d’annotation. Les attributs de validation sont vérifiés côté client avant que les valeurs ne soient publiées sur le serveur, ainsi que sur le serveur avant que l’action du contrôleur ne soit appelée.
 
