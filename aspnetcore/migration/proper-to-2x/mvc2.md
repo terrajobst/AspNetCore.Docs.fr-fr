@@ -1,7 +1,7 @@
 ---
 title: "Migration d’ASP.NET vers ASP.NET Core 2.0"
 author: isaac2004
-description: "Recevoir des conseils de migration d'applications ASP.NET MVC ou Web API existante vers ASP.NET Core 2.0."
+description: "Recevoir des conseils de migration d'applications ASP.NET MVC ou Web API existantes vers ASP.NET Core 2.0."
 manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
