@@ -51,7 +51,7 @@ Les vues sont chargées de présenter du contenu via l’interface utilisateur. 
 Les contrôleurs sont les composants qui gèrent l'interaction avec l’utilisateur, travaillent avec le modèle et finalement sélectionnent une vue à restituer. Dans une application MVC, la vue affiche uniquement les informations ; le contrôleur gère et répond à la saisie de l’utilisateur et à l’interaction. Dans le modèle MVC, le contrôleur est le point d’entrée initial et est chargé de sélectionner les types de modèle avec lequels travailler et la vue à restituer (d'où son nom - il contrôle la manière dont l’application répond à une requête donnée).
 
 > [!NOTE]
-> Contrôleurs ne doit pas être trop complexe par trop de responsabilités. Pour conserver la logique du contrôleur de devenir trop complexe, utilisez la [principe de responsabilité unique](http://deviq.com/single-responsibility-principle/) par émission de données logique d’entreprise dans le modèle de domaine et le contrôleur.
+> Les contrôleurs ne doivent pas être trop complexes en possédant trop de responsabilités. Pour s'assurer que la logique du contrôleur ne devienne pas trop complexe, utilisez le [principe de responsabilité unique](http://deviq.com/single-responsibility-principle/) en séparant la logique métier de la logique du contrôleur et du modèle du domaine.
 
 >[!TIP]
 > Si vous trouvez que les actions du contrôleur effectuent fréquemment les mêmes types d’actions, vous pouvez suivre le [principe DRY (Don't Repeat Yourself : Ne vous répétez pas) ](http://deviq.com/don-t-repeat-yourself/) en déplaçant ces actions courantes dans des [filtres](#filters).
