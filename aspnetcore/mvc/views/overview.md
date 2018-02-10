@@ -21,9 +21,9 @@ Par [Steve Smith](https://ardalis.com/) et [Luke Latham](https://github.com/guar
 
 Ce document explique les vues utilisées dans les applications ASP.NET MVC de base. Pour plus d’informations sur les Pages Razor, consultez [Introduction aux Pages Razor](xref:mvc/razor-pages/index).
 
-Dans le **M**odèle -**V**UE -**C**ontroller (MVC), modèle, le *vue* gère l’interaction utilisateur et de présentation des données de l’application. Une vue est un modèle HTML incorporé [balisage de Razor](xref:mvc/views/razor). Balisage de Razor est un code qui interagit avec le balisage HTML pour générer une page Web qui est envoyée au client.
+Dans le **M**odèle -**V**UE -**C**ontroller (MVC), modèle, la *vue* gère la logique d'interaction avec l'utilisateur et la présentation des données de l’application. Une vue est un modèle HTML incorporé [balisage de Razor](xref:mvc/views/razor). Balisage de Razor est un code qui interagit avec le balisage HTML pour générer une page Web qui est envoyée au client.
 
-Dans ASP.NET MVC de base, les vues sont *.cshtml* fichiers qui utilisent le [langage de programmation c#](/dotnet/csharp/) dans le balisage de Razor. En règle générale, afficher les fichiers sont regroupés dans des dossiers nommés pour chacune de l’application [contrôleurs](xref:mvc/controllers/actions). Les dossiers sont stockées dans un *vues* dossier à la racine de l’application :
+Dans ASP.NET MVC de base, les vues sont des fichiers *.cshtml* qui utilisent le [langage de programmation c#](/dotnet/csharp/) dans le balisage de Razor. En règle générale, les fichiers des vues sont regroupés dans des dossiers nommés en fonction des [contrôleurs](xref:mvc/controllers/actions) de l’application. Ces dossiers sont stockés dans un dossier *vues* à la racine de l’application :
 
 ![Dossier de vues dans l’Explorateur de solutions de Visual Studio est ouvert avec le dossier de base ouvert pour afficher les fichiers About.cshtml, Contact.cshtml et Index.cshtml](overview/_static/views_solution_explorer.png)
 
