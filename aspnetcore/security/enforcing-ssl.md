@@ -32,7 +32,7 @@ Ajoutez le code suivant à la méthode `ConfigureServices` dans la classe `Start
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
-Le code en surbrillance ci-dessus require l’utilisation du protocol `HTTPS` pour toutes les demandes, par conséquent, les requêtes HTTP sont ignorés. 
+Le code en surbrillance ci-dessus exige l’utilisation du protocol `HTTPS` pour toutes les demandes, par conséquent, les requêtes HTTP sont ignorés. 
 Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
