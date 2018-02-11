@@ -148,7 +148,7 @@ services.AddAuthorization(options =>
 });
 ```
 
-Dans l’exemple précédent, la stratégie « Over18 » ne s’exécute par rapport à l’identité créée par le gestionnaire « Support ». Utilisez la stratégie en définissant l’attribut `[Authorize]` avec sa propriété `Policy`:
+Dans l’exemple précédent, la stratégie « Over18 » ne s’exécute pas par rapport à l’identité créée par le gestionnaire « Support ». Utilisez la stratégie en définissant l’attribut `[Authorize]` avec sa propriété `Policy`:
 
 ```csharp
 [Authorize(Policy = "Over18")]
