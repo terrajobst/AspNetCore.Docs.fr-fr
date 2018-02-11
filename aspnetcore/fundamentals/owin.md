@@ -1,42 +1,42 @@
 ---
 title: OWIN (Open Web Interface pour .NET)
 author: ardalis
-description: "Découvrez comment ASP.NET Core prend en charge l’Interface Web ouverte pour .NET (OWIN), ce qui permet aux applications web à être dissocié de serveurs web."
-ms.author: riande
+description: "Découvrez comment ASP.NET Core prend en charge OWIN (Open Web Interface pour .NET), ce qui permet aux applications web d’être dissociées des serveurs web."
 manager: wpickett
-ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
-ms.prod: asp.net-core
-uid: fundamentals/owin
+ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42ffa01745b7a492b3b8cb2778805f254863b890
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.date: 10/14/2016
+ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
+uid: fundamentals/owin
+ms.openlocfilehash: 1a6a49715840d66dc37465758d3a896af96e2976
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="introduction-to-open-web-interface-for-net-owin"></a><span data-ttu-id="8a0c3-103">Introduction à ouvrir l’Interface Web pour .NET (OWIN)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-103">Introduction to Open Web Interface for .NET (OWIN)</span></span>
+# <a name="introduction-to-open-web-interface-for-net-owin"></a><span data-ttu-id="ea10c-103">Introduction à OWIN (Open Web Interface pour .NET)</span><span class="sxs-lookup"><span data-stu-id="ea10c-103">Introduction to Open Web Interface for .NET (OWIN)</span></span>
 
-<span data-ttu-id="8a0c3-104">Par [Steve Smith](https://ardalis.com/) et [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-104">By [Steve Smith](https://ardalis.com/) and  [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="ea10c-104">Par [Steve Smith](https://ardalis.com/) et [Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="ea10c-104">By [Steve Smith](https://ardalis.com/) and  [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
-<span data-ttu-id="8a0c3-105">ASP.NET Core prend en charge l’interface Open Web pour .NET (OWIN).</span><span class="sxs-lookup"><span data-stu-id="8a0c3-105">ASP.NET Core supports the Open Web Interface for .NET (OWIN).</span></span> <span data-ttu-id="8a0c3-106">OWIN permet que les applications web soient dissociées des serveurs web.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-106">OWIN allows web apps to be decoupled from web servers.</span></span> <span data-ttu-id="8a0c3-107">Il définit une manière standard pour un intergiciel (middleware) à utiliser dans un pipeline pour gérer les demandes et réponses associées.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-107">It defines a standard way for middleware to be used in a pipeline to handle requests and associated responses.</span></span> <span data-ttu-id="8a0c3-108">Intergiciel (middleware) et les applications ASP.NET Core peuvent interagir avec intergiciel (middleware), les serveurs et les applications basées sur OWIN.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-108">ASP.NET Core applications and middleware can interoperate with OWIN-based applications, servers, and middleware.</span></span>
+<span data-ttu-id="ea10c-105">ASP.NET Core prend en charge l’interface Open Web pour .NET (OWIN).</span><span class="sxs-lookup"><span data-stu-id="ea10c-105">ASP.NET Core supports the Open Web Interface for .NET (OWIN).</span></span> <span data-ttu-id="ea10c-106">OWIN permet que les applications web soient dissociées des serveurs web.</span><span class="sxs-lookup"><span data-stu-id="ea10c-106">OWIN allows web apps to be decoupled from web servers.</span></span> <span data-ttu-id="ea10c-107">Elle définit une façon standard d’utiliser un intergiciel (middleware) dans un pipeline pour gérer les requêtes et les réponses associées.</span><span class="sxs-lookup"><span data-stu-id="ea10c-107">It defines a standard way for middleware to be used in a pipeline to handle requests and associated responses.</span></span> <span data-ttu-id="ea10c-108">Les applications ASP.NET Core et l’intergiciel peuvent interagir avec les applications OWIN, les serveurs et l’intergiciel.</span><span class="sxs-lookup"><span data-stu-id="ea10c-108">ASP.NET Core applications and middleware can interoperate with OWIN-based applications, servers, and middleware.</span></span>
 
-<span data-ttu-id="8a0c3-109">OWIN fournit une couche de découplage qui permet à deux infrastructures avec les modèles d’objets disparates à être utilisés ensemble.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-109">OWIN provides a decoupling layer that allows two frameworks with disparate object models to be used together.</span></span> <span data-ttu-id="8a0c3-110">Le `Microsoft.AspNetCore.Owin` package fournit deux implémentations d’adaptateur :</span><span class="sxs-lookup"><span data-stu-id="8a0c3-110">The `Microsoft.AspNetCore.Owin` package provides two adapter implementations:</span></span>
-- <span data-ttu-id="8a0c3-111">ASP.NET Core pour OWIN</span><span class="sxs-lookup"><span data-stu-id="8a0c3-111">ASP.NET Core to OWIN</span></span> 
-- <span data-ttu-id="8a0c3-112">OWIN à ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8a0c3-112">OWIN to ASP.NET Core</span></span>
+<span data-ttu-id="ea10c-109">OWIN fournit une couche de dissociation qui permet à deux frameworks ayant des modèles d’objets distincts d’être utilisés ensemble.</span><span class="sxs-lookup"><span data-stu-id="ea10c-109">OWIN provides a decoupling layer that allows two frameworks with disparate object models to be used together.</span></span> <span data-ttu-id="ea10c-110">Le package `Microsoft.AspNetCore.Owin` fournit deux implémentations d’adaptateurs :</span><span class="sxs-lookup"><span data-stu-id="ea10c-110">The `Microsoft.AspNetCore.Owin` package provides two adapter implementations:</span></span>
+- <span data-ttu-id="ea10c-111">ASP.NET Core sur OWIN</span><span class="sxs-lookup"><span data-stu-id="ea10c-111">ASP.NET Core to OWIN</span></span> 
+- <span data-ttu-id="ea10c-112">OWIN sur ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="ea10c-112">OWIN to ASP.NET Core</span></span>
 
-<span data-ttu-id="8a0c3-113">Cela permet à ASP.NET Core être hébergée sur un serveur/hôte compatible OWIN, ou pour d’autres composants compatibles OWIN à exécuter sur ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-113">This allows ASP.NET Core to be hosted on top of an OWIN compatible server/host, or for other OWIN compatible components to be run on top of ASP.NET Core.</span></span>
+<span data-ttu-id="ea10c-113">Cela permet à ASP.NET Core d’être hébergé sur un serveur/hôte compatible OWIN, ou à d’autres composants compatibles OWIN d’être exécutés sur ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="ea10c-113">This allows ASP.NET Core to be hosted on top of an OWIN compatible server/host, or for other OWIN compatible components to be run on top of ASP.NET Core.</span></span>
 
-<span data-ttu-id="8a0c3-114">Remarque : À l’aide de ces adaptateurs assortie d’une baisse des performances.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-114">Note: Using these adapters comes with a performance cost.</span></span> <span data-ttu-id="8a0c3-115">Les applications utilisant uniquement des composants ASP.NET Core ne doivent pas utiliser l’ou les adaptateurs Owin.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-115">Applications using only ASP.NET Core components shouldn't use the Owin package or adapters.</span></span>
+<span data-ttu-id="ea10c-114">Remarque : L’utilisation de ces adaptateurs a un impact sur les performances.</span><span class="sxs-lookup"><span data-stu-id="ea10c-114">Note: Using these adapters comes with a performance cost.</span></span> <span data-ttu-id="ea10c-115">Les applications utilisant uniquement des composants ASP.NET Core ne doivent pas utiliser les adaptateurs ou le package OWIN.</span><span class="sxs-lookup"><span data-stu-id="ea10c-115">Applications using only ASP.NET Core components shouldn't use the Owin package or adapters.</span></span>
 
-<span data-ttu-id="8a0c3-116">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="8a0c3-116">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="ea10c-116">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))</span><span class="sxs-lookup"><span data-stu-id="ea10c-116">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) ([how to download](xref:tutorials/index#how-to-download-a-sample))</span></span>
 
-## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a><span data-ttu-id="8a0c3-117">Intergiciel (middleware) OWIN en cours d’exécution dans le pipeline ASP.NET</span><span class="sxs-lookup"><span data-stu-id="8a0c3-117">Running OWIN middleware in the ASP.NET pipeline</span></span>
+## <a name="running-owin-middleware-in-the-aspnet-pipeline"></a><span data-ttu-id="ea10c-117">Exécution de l’intergiciel (middleware) OWIN dans le pipeline ASP.NET</span><span class="sxs-lookup"><span data-stu-id="ea10c-117">Running OWIN middleware in the ASP.NET pipeline</span></span>
 
-<span data-ttu-id="8a0c3-118">Prise en charge OWIN de ASP.NET Core est déployé dans le cadre de la `Microsoft.AspNetCore.Owin` package.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-118">ASP.NET Core's OWIN support is deployed as part of the `Microsoft.AspNetCore.Owin` package.</span></span> <span data-ttu-id="8a0c3-119">Vous pouvez importer la prise en charge OWIN dans votre projet en installant ce package.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-119">You can import OWIN support into your project by installing this package.</span></span>
+<span data-ttu-id="ea10c-118">La prise en charge de l’interface OWIN d’ASP.NET Core est déployée dans le cadre du package `Microsoft.AspNetCore.Owin`.</span><span class="sxs-lookup"><span data-stu-id="ea10c-118">ASP.NET Core's OWIN support is deployed as part of the `Microsoft.AspNetCore.Owin` package.</span></span> <span data-ttu-id="ea10c-119">Vous pouvez importer la prise en charge d’OWIN dans votre projet en installant ce package.</span><span class="sxs-lookup"><span data-stu-id="ea10c-119">You can import OWIN support into your project by installing this package.</span></span>
 
-<span data-ttu-id="8a0c3-120">Intergiciel (middleware) OWIN est conforme à la [spécification de OWIN](http://owin.org/spec/spec/owin-1.0.0.html), ce qui nécessite un `Func<IDictionary<string, object>, Task>` interface et clés spécifiques avec la valeur (tel que `owin.ResponseBody`).</span><span class="sxs-lookup"><span data-stu-id="8a0c3-120">OWIN middleware conforms to the [OWIN specification](http://owin.org/spec/spec/owin-1.0.0.html), which requires a `Func<IDictionary<string, object>, Task>` interface, and specific keys be set (such as `owin.ResponseBody`).</span></span> <span data-ttu-id="8a0c3-121">L’intergiciel OWIN de simple suivante affiche « Hello World » :</span><span class="sxs-lookup"><span data-stu-id="8a0c3-121">The following simple OWIN middleware displays "Hello World":</span></span>
+<span data-ttu-id="ea10c-120">L’intergiciel OWIN est conforme à la [spécification OWIN](http://owin.org/spec/spec/owin-1.0.0.html), laquelle exige une interface `Func<IDictionary<string, object>, Task>` et la définition de clés spécifiques (comme `owin.ResponseBody`).</span><span class="sxs-lookup"><span data-stu-id="ea10c-120">OWIN middleware conforms to the [OWIN specification](http://owin.org/spec/spec/owin-1.0.0.html), which requires a `Func<IDictionary<string, object>, Task>` interface, and specific keys be set (such as `owin.ResponseBody`).</span></span> <span data-ttu-id="ea10c-121">L’intergiciel OWIN simple suivant affiche « Hello World » :</span><span class="sxs-lookup"><span data-stu-id="ea10c-121">The following simple OWIN middleware displays "Hello World":</span></span>
 
 ```csharp
 public Task OwinHello(IDictionary<string, object> environment)
@@ -55,9 +55,9 @@ public Task OwinHello(IDictionary<string, object> environment)
 }
 ```
 
-<span data-ttu-id="8a0c3-122">La signature de l’exemple retourne un `Task` et accepte un `IDictionary<string, object>` comme exigé par le OWIN.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-122">The sample signature returns a `Task` and accepts an `IDictionary<string, object>` as required by OWIN.</span></span>
+<span data-ttu-id="ea10c-122">L’exemple de signature retourne un `Task` et accepte un `IDictionary<string, object>`, comme l’exige OWIN.</span><span class="sxs-lookup"><span data-stu-id="ea10c-122">The sample signature returns a `Task` and accepts an `IDictionary<string, object>` as required by OWIN.</span></span>
 
-<span data-ttu-id="8a0c3-123">Le code suivant montre comment ajouter la `OwinHello` intergiciel (middleware) (ci-dessus) pour le pipeline ASP.NET avec la `UseOwin` méthode d’extension.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-123">The following code shows how to add the `OwinHello` middleware (shown above) to the ASP.NET pipeline with the `UseOwin` extension method.</span></span>
+<span data-ttu-id="ea10c-123">Le code suivant montre comment ajouter l’intergiciel `OwinHello` (présenté ci-dessus) au pipeline ASP.NET avec la méthode d’extension `UseOwin`.</span><span class="sxs-lookup"><span data-stu-id="ea10c-123">The following code shows how to add the `OwinHello` middleware (shown above) to the ASP.NET pipeline with the `UseOwin` extension method.</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -69,13 +69,13 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-<span data-ttu-id="8a0c3-124">Vous pouvez configurer d’autres actions pour avoir lieu dans le pipeline OWIN.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-124">You can configure other actions to take place within the OWIN pipeline.</span></span>
+<span data-ttu-id="ea10c-124">Vous pouvez configurer d’autres actions pour qu’elles soient effectuées dans le pipeline OWIN.</span><span class="sxs-lookup"><span data-stu-id="ea10c-124">You can configure other actions to take place within the OWIN pipeline.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="8a0c3-125">En-têtes de réponse doivent uniquement être modifiées avant la première écriture dans le flux de réponse.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-125">Response headers should only be modified prior to the first write to the response stream.</span></span>
+> <span data-ttu-id="ea10c-125">Les en-têtes des réponses doivent être modifiés uniquement avant la première écriture dans le flux de réponse.</span><span class="sxs-lookup"><span data-stu-id="ea10c-125">Response headers should only be modified prior to the first write to the response stream.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="8a0c3-126">Appels multiples à `UseOwin` est déconseillée pour des raisons de performances.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-126">Multiple calls to `UseOwin` is discouraged for performance reasons.</span></span> <span data-ttu-id="8a0c3-127">Composants OWIN fonctionnera mieux si regroupés.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-127">OWIN components will operate best if grouped together.</span></span>
+> <span data-ttu-id="ea10c-126">Pour des raisons de performance, il est déconseillé d’effectuer plusieurs appels à `UseOwin`.</span><span class="sxs-lookup"><span data-stu-id="ea10c-126">Multiple calls to `UseOwin` is discouraged for performance reasons.</span></span> <span data-ttu-id="ea10c-127">Les composants OWIN fonctionnent mieux s’ils sont regroupés.</span><span class="sxs-lookup"><span data-stu-id="ea10c-127">OWIN components will operate best if grouped together.</span></span>
 
 ```csharp
 app.UseOwin(pipeline =>
@@ -91,17 +91,17 @@ app.UseOwin(pipeline =>
 
 <a name="hosting-on-owin"></a>
 
-## <a name="using-aspnet-hosting-on-an-owin-based-server"></a><span data-ttu-id="8a0c3-128">À l’aide d’hébergement ASP.NET sur un serveur OWIN</span><span class="sxs-lookup"><span data-stu-id="8a0c3-128">Using ASP.NET Hosting on an OWIN-based server</span></span>
+## <a name="using-aspnet-hosting-on-an-owin-based-server"></a><span data-ttu-id="ea10c-128">Utilisation de l’hébergement ASP.NET sur un serveur OWIN</span><span class="sxs-lookup"><span data-stu-id="ea10c-128">Using ASP.NET Hosting on an OWIN-based server</span></span>
 
-<span data-ttu-id="8a0c3-129">Les serveurs OWIN peuvent héberger des applications ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-129">OWIN-based servers can host ASP.NET applications.</span></span> <span data-ttu-id="8a0c3-130">Un tel serveur est [Nowin](https://github.com/Bobris/Nowin), un serveur web de .NET OWIN.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-130">One such server is [Nowin](https://github.com/Bobris/Nowin), a .NET OWIN web server.</span></span> <span data-ttu-id="8a0c3-131">Dans l’exemple de cet article, j’ai inclus un projet qui fait référence à Nowin et l’utilise pour créer un `IServer` capable d’auto-hébergement ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-131">In the sample for this article, I've included a project that references Nowin and uses it to create an `IServer` capable of self-hosting ASP.NET Core.</span></span>
+<span data-ttu-id="ea10c-129">Les serveurs OWIN peuvent héberger des applications ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="ea10c-129">OWIN-based servers can host ASP.NET applications.</span></span> <span data-ttu-id="ea10c-130">[Nowin](https://github.com/Bobris/Nowin), serveur web OWIN .NET, est l’un de ces serveurs.</span><span class="sxs-lookup"><span data-stu-id="ea10c-130">One such server is [Nowin](https://github.com/Bobris/Nowin), a .NET OWIN web server.</span></span> <span data-ttu-id="ea10c-131">Dans l’exemple de cet article, j’ai inclus un projet qui fait référence à Nowin et qui l’utilise pour créer un `IServer` capable d’auto-héberger ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="ea10c-131">In the sample for this article, I've included a project that references Nowin and uses it to create an `IServer` capable of self-hosting ASP.NET Core.</span></span>
 
 [!code-csharp[Main](owin/sample/src/NowinSample/Program.cs?highlight=15)]
 
-<span data-ttu-id="8a0c3-132">`IServer`est une interface qui nécessite une `Features` propriété et un `Start` (méthode).</span><span class="sxs-lookup"><span data-stu-id="8a0c3-132">`IServer` is an interface that requires an `Features` property and a `Start` method.</span></span>
+<span data-ttu-id="ea10c-132">`IServer` est une interface qui exige une propriété `Features` et une méthode `Start`.</span><span class="sxs-lookup"><span data-stu-id="ea10c-132">`IServer` is an interface that requires an `Features` property and a `Start` method.</span></span>
 
-<span data-ttu-id="8a0c3-133">`Start`est chargé de configurer et démarrer le serveur, qui dans ce cas est effectué via une série d’appels d’API fluent que définir des adresses analysés à partir de la IServerAddressesFeature.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-133">`Start` is responsible for configuring and starting the server, which in this case is done through a series of fluent API calls that set addresses parsed from the IServerAddressesFeature.</span></span> <span data-ttu-id="8a0c3-134">Notez que la configuration fluent de la `_builder` variable Spécifie que les demandes sont traitées par le `appFunc` définis précédemment dans la méthode.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-134">Note that the fluent configuration of the `_builder` variable specifies that requests will be handled by the `appFunc` defined earlier in the method.</span></span> <span data-ttu-id="8a0c3-135">Cela `Func` est appelée sur chaque demande de traiter les demandes entrantes.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-135">This `Func` is called on each request to process incoming requests.</span></span>
+<span data-ttu-id="ea10c-133">`Start` est chargé de configurer et de démarrer le serveur, ce qui, dans le cas présent, s’effectue à l’aide d’une série d’appels d’API Fluent qui définissent des adresses analysées à partir d’IServerAddressesFeature.</span><span class="sxs-lookup"><span data-stu-id="ea10c-133">`Start` is responsible for configuring and starting the server, which in this case is done through a series of fluent API calls that set addresses parsed from the IServerAddressesFeature.</span></span> <span data-ttu-id="ea10c-134">Notez que la configuration Fluent de la variable `_builder` spécifie que les requêtes seront traitées par le `appFunc` défini précédemment dans la méthode.</span><span class="sxs-lookup"><span data-stu-id="ea10c-134">Note that the fluent configuration of the `_builder` variable specifies that requests will be handled by the `appFunc` defined earlier in the method.</span></span> <span data-ttu-id="ea10c-135">Ce `Func` est appelé sur chaque requête pour traiter les requêtes entrantes.</span><span class="sxs-lookup"><span data-stu-id="ea10c-135">This `Func` is called on each request to process incoming requests.</span></span>
 
-<span data-ttu-id="8a0c3-136">Nous allons également ajouter un `IWebHostBuilder` extension pour faciliter la tâche Ajouter et configurer le serveur Nowin.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-136">We'll also add an `IWebHostBuilder` extension to make it easy to add and configure the Nowin server.</span></span>
+<span data-ttu-id="ea10c-136">Nous allons également ajouter une extension `IWebHostBuilder` pour faciliter l’ajout et la configuration du serveur Nowin.</span><span class="sxs-lookup"><span data-stu-id="ea10c-136">We'll also add an `IWebHostBuilder` extension to make it easy to add and configure the Nowin server.</span></span>
 
 ```csharp
 using System;
@@ -134,7 +134,7 @@ namespace Microsoft.AspNetCore.Hosting
 }
 ```
 
-<span data-ttu-id="8a0c3-137">Tout cela en place, tout ce qui est requis pour exécuter une application ASP.NET à l’aide de ce serveur personnalisé pour appeler l’extension de *Program.cs*:</span><span class="sxs-lookup"><span data-stu-id="8a0c3-137">With this in place, all that's required to run an ASP.NET application using this custom server to call the extension in *Program.cs*:</span></span>
+<span data-ttu-id="ea10c-137">Une fois cela en place, il ne reste plus qu’à exécuter une application ASP.NET avec ce serveur personnalisé pour appeler l’extension dans *Program.cs* :</span><span class="sxs-lookup"><span data-stu-id="ea10c-137">With this in place, all that's required to run an ASP.NET application using this custom server to call the extension in *Program.cs*:</span></span>
 
 ```csharp
 
@@ -165,11 +165,11 @@ namespace NowinSample
 
 ```
 
-<span data-ttu-id="8a0c3-138">En savoir plus sur ASP.NET [serveurs](servers/index.md).</span><span class="sxs-lookup"><span data-stu-id="8a0c3-138">Learn more about ASP.NET [Servers](servers/index.md).</span></span>
+<span data-ttu-id="ea10c-138">Découvrez des informations supplémentaires sur les [serveurs](servers/index.md) ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="ea10c-138">Learn more about ASP.NET [Servers](servers/index.md).</span></span>
 
-## <a name="run-aspnet-core-on-an-owin-based-server-and-use-its-websockets-support"></a><span data-ttu-id="8a0c3-139">Exécutez ASP.NET Core sur un serveur OWIN et utiliser sa prise en charge de WebSocket</span><span class="sxs-lookup"><span data-stu-id="8a0c3-139">Run ASP.NET Core on an OWIN-based server and use its WebSockets support</span></span>
+## <a name="run-aspnet-core-on-an-owin-based-server-and-use-its-websockets-support"></a><span data-ttu-id="ea10c-139">Exécuter ASP.NET Core sur un serveur OWIN et utiliser sa prise en charge des WebSockets</span><span class="sxs-lookup"><span data-stu-id="ea10c-139">Run ASP.NET Core on an OWIN-based server and use its WebSockets support</span></span>
 
-<span data-ttu-id="8a0c3-140">Un autre exemple de fonctionnalités de serveurs basée sur les OWIN peut être exploité par ASP.NET Core est aux fonctionnalités telles que les WebSockets.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-140">Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets.</span></span> <span data-ttu-id="8a0c3-141">Le serveur web .NET OWIN utilisé dans l’exemple précédent a prise en charge de WebSocket intégrées, qui peuvent être exploitées par une application ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-141">The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application.</span></span> <span data-ttu-id="8a0c3-142">L’exemple ci-dessous montre une application web simple qui prend en charge de WebSocket et renvoie tous les éléments envoyés au serveur via le protocole WebSocket.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-142">The example below shows a simple web app that supports Web Sockets and echoes back everything sent to the server through WebSockets.</span></span>
+<span data-ttu-id="ea10c-140">L’accès à des fonctionnalités comme les WebSockets constitue un autre exemple de la façon dont les fonctionnalités de serveurs OWIN peuvent être exploitées par ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="ea10c-140">Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets.</span></span> <span data-ttu-id="ea10c-141">Le serveur web .NET OWIN utilisé dans l’exemple précédent prend en charge les WebSockets intégrés, qui peuvent être exploités par une application ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="ea10c-141">The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application.</span></span> <span data-ttu-id="ea10c-142">L’exemple ci-dessous montre une application web simple qui prend en charge les WebSockets et renvoie tout ce qui est envoyé au serveur via des WebSockets.</span><span class="sxs-lookup"><span data-stu-id="ea10c-142">The example below shows a simple web app that supports Web Sockets and echoes back everything sent to the server through WebSockets.</span></span>
 
 ```csharp
 public class Startup
@@ -217,13 +217,13 @@ public class Startup
 }
 ```
 
-<span data-ttu-id="8a0c3-143">Cela [exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) est configuré à l’aide de la même `NowinServer` que la précédente - la seule différence réside dans la configuration de l’application dans son `Configure` (méthode).</span><span class="sxs-lookup"><span data-stu-id="8a0c3-143">This [sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) is configured using the same `NowinServer` as the previous one - the only difference is in how the application is configured in its `Configure` method.</span></span> <span data-ttu-id="8a0c3-144">Un test à l’aide de [un client websocket simple](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en) montre l’application :</span><span class="sxs-lookup"><span data-stu-id="8a0c3-144">A test using [a simple websocket client](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en) demonstrates  the application:</span></span>
+<span data-ttu-id="ea10c-143">Cet [exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) est configuré avec le même `NowinServer` que le précédent ; la seule différence réside dans la façon dont l’application est configurée dans sa méthode `Configure`.</span><span class="sxs-lookup"><span data-stu-id="ea10c-143">This [sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/owin/sample) is configured using the same `NowinServer` as the previous one - the only difference is in how the application is configured in its `Configure` method.</span></span> <span data-ttu-id="ea10c-144">Un test utilisant [un client WebSocket simple](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en) présente l’application :</span><span class="sxs-lookup"><span data-stu-id="ea10c-144">A test using [a simple websocket client](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en) demonstrates  the application:</span></span>
 
-![Client de Test Web Socket](owin/_static/websocket-test.png)
+![Client test WebSocket](owin/_static/websocket-test.png)
 
-## <a name="owin-environment"></a><span data-ttu-id="8a0c3-146">Environnement OWIN</span><span class="sxs-lookup"><span data-stu-id="8a0c3-146">OWIN environment</span></span>
+## <a name="owin-environment"></a><span data-ttu-id="ea10c-146">Environnement OWIN</span><span class="sxs-lookup"><span data-stu-id="ea10c-146">OWIN environment</span></span>
 
-<span data-ttu-id="8a0c3-147">Vous pouvez construire un environnement OWIN à l’aide du `HttpContext`.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-147">You can construct a OWIN environment using the `HttpContext`.</span></span>
+<span data-ttu-id="ea10c-147">Vous pouvez construire un environnement OWIN avec `HttpContext`.</span><span class="sxs-lookup"><span data-stu-id="ea10c-147">You can construct a OWIN environment using the `HttpContext`.</span></span>
 
 ```csharp
 
@@ -231,96 +231,94 @@ public class Startup
    var features = new OwinFeatureCollection(environment);
    ```
 
-## <a name="owin-keys"></a><span data-ttu-id="8a0c3-148">Clés OWIN</span><span class="sxs-lookup"><span data-stu-id="8a0c3-148">OWIN keys</span></span>
+## <a name="owin-keys"></a><span data-ttu-id="ea10c-148">Clés OWIN</span><span class="sxs-lookup"><span data-stu-id="ea10c-148">OWIN keys</span></span>
 
-<span data-ttu-id="8a0c3-149">Dépend de OWIN un `IDictionary<string,object>` objet pour communiquer des informations tout au long d’un échange de demande/réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-149">OWIN depends on an `IDictionary<string,object>` object to communicate information throughout an HTTP Request/Response exchange.</span></span> <span data-ttu-id="8a0c3-150">ASP.NET Core implémente les clés répertoriées ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="8a0c3-150">ASP.NET Core implements the keys listed below.</span></span> <span data-ttu-id="8a0c3-151">Consultez le [principales spécifications, les extensions](http://owin.org/#spec), et [OWIN clé instructions et des clés communes](http://owin.org/spec/spec/CommonKeys.html).</span><span class="sxs-lookup"><span data-stu-id="8a0c3-151">See the [primary specification, extensions](http://owin.org/#spec), and [OWIN Key Guidelines and Common Keys](http://owin.org/spec/spec/CommonKeys.html).</span></span>
+<span data-ttu-id="ea10c-149">OWIN dépend d’un objet `IDictionary<string,object>` pour communiquer des informations tout au long d’un échange Requête HTTP/Réponse.</span><span class="sxs-lookup"><span data-stu-id="ea10c-149">OWIN depends on an `IDictionary<string,object>` object to communicate information throughout an HTTP Request/Response exchange.</span></span> <span data-ttu-id="ea10c-150">ASP.NET Core implémente les clés répertoriées ci-dessous.</span><span class="sxs-lookup"><span data-stu-id="ea10c-150">ASP.NET Core implements the keys listed below.</span></span> <span data-ttu-id="ea10c-151">Consultez [la spécification principale, les extensions](http://owin.org/#spec) et les [recommandations relatives aux clés OWIN et aux clés communes](http://owin.org/spec/spec/CommonKeys.html).</span><span class="sxs-lookup"><span data-stu-id="ea10c-151">See the [primary specification, extensions](http://owin.org/#spec), and [OWIN Key Guidelines and Common Keys](http://owin.org/spec/spec/CommonKeys.html).</span></span>
 
-### <a name="request-data-owin-v100"></a><span data-ttu-id="8a0c3-152">Données de la demande (OWIN v1.0.0)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-152">Request Data (OWIN v1.0.0)</span></span>
+### <a name="request-data-owin-v100"></a><span data-ttu-id="ea10c-152">Données de requête (OWIN v1.0.0)</span><span class="sxs-lookup"><span data-stu-id="ea10c-152">Request data (OWIN v1.0.0)</span></span>
 
-| <span data-ttu-id="8a0c3-153">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-153">Key</span></span>               | <span data-ttu-id="8a0c3-154">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-154">Value (type)</span></span> | <span data-ttu-id="8a0c3-155">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-155">Description</span></span> |
+| <span data-ttu-id="ea10c-153">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-153">Key</span></span>               | <span data-ttu-id="ea10c-154">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-154">Value (type)</span></span> | <span data-ttu-id="ea10c-155">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-155">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-156">owin.RequestScheme</span><span class="sxs-lookup"><span data-stu-id="8a0c3-156">owin.RequestScheme</span></span> | `String` |  |
-| <span data-ttu-id="8a0c3-157">owin.RequestMethod</span><span class="sxs-lookup"><span data-stu-id="8a0c3-157">owin.RequestMethod</span></span>  | `String` | |    
-| <span data-ttu-id="8a0c3-158">owin.RequestPathBase</span><span class="sxs-lookup"><span data-stu-id="8a0c3-158">owin.RequestPathBase</span></span>  | `String` | |    
-| <span data-ttu-id="8a0c3-159">owin.RequestPath</span><span class="sxs-lookup"><span data-stu-id="8a0c3-159">owin.RequestPath</span></span> | `String` | |     
-| <span data-ttu-id="8a0c3-160">owin.RequestQueryString</span><span class="sxs-lookup"><span data-stu-id="8a0c3-160">owin.RequestQueryString</span></span>  | `String` | |    
-| <span data-ttu-id="8a0c3-161">owin.RequestProtocol</span><span class="sxs-lookup"><span data-stu-id="8a0c3-161">owin.RequestProtocol</span></span>  | `String` | |    
-| <span data-ttu-id="8a0c3-162">owin.RequestHeaders</span><span class="sxs-lookup"><span data-stu-id="8a0c3-162">owin.RequestHeaders</span></span> | `IDictionary<string,string[]>`  | |
-| <span data-ttu-id="8a0c3-163">owin.RequestBody</span><span class="sxs-lookup"><span data-stu-id="8a0c3-163">owin.RequestBody</span></span> | `Stream`  | |
+| <span data-ttu-id="ea10c-156">owin.RequestScheme</span><span class="sxs-lookup"><span data-stu-id="ea10c-156">owin.RequestScheme</span></span> | `String` |  |
+| <span data-ttu-id="ea10c-157">owin.RequestMethod</span><span class="sxs-lookup"><span data-stu-id="ea10c-157">owin.RequestMethod</span></span>  | `String` | |    
+| <span data-ttu-id="ea10c-158">owin.RequestPathBase</span><span class="sxs-lookup"><span data-stu-id="ea10c-158">owin.RequestPathBase</span></span>  | `String` | |    
+| <span data-ttu-id="ea10c-159">owin.RequestPath</span><span class="sxs-lookup"><span data-stu-id="ea10c-159">owin.RequestPath</span></span> | `String` | |     
+| <span data-ttu-id="ea10c-160">owin.RequestQueryString</span><span class="sxs-lookup"><span data-stu-id="ea10c-160">owin.RequestQueryString</span></span>  | `String` | |    
+| <span data-ttu-id="ea10c-161">owin.RequestProtocol</span><span class="sxs-lookup"><span data-stu-id="ea10c-161">owin.RequestProtocol</span></span>  | `String` | |    
+| <span data-ttu-id="ea10c-162">owin.RequestHeaders</span><span class="sxs-lookup"><span data-stu-id="ea10c-162">owin.RequestHeaders</span></span> | `IDictionary<string,string[]>`  | |
+| <span data-ttu-id="ea10c-163">owin.RequestBody</span><span class="sxs-lookup"><span data-stu-id="ea10c-163">owin.RequestBody</span></span> | `Stream`  | |
 
-### <a name="request-data-owin-v110"></a><span data-ttu-id="8a0c3-164">Données de la demande (OWIN v1.1.0)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-164">Request Data (OWIN v1.1.0)</span></span>
+### <a name="request-data-owin-v110"></a><span data-ttu-id="ea10c-164">Données de requête (OWIN v1.1.0)</span><span class="sxs-lookup"><span data-stu-id="ea10c-164">Request data (OWIN v1.1.0)</span></span>
 
-| <span data-ttu-id="8a0c3-165">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-165">Key</span></span>               | <span data-ttu-id="8a0c3-166">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-166">Value (type)</span></span> | <span data-ttu-id="8a0c3-167">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-167">Description</span></span> |
+| <span data-ttu-id="ea10c-165">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-165">Key</span></span>               | <span data-ttu-id="ea10c-166">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-166">Value (type)</span></span> | <span data-ttu-id="ea10c-167">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-167">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-168">owin.RequestId</span><span class="sxs-lookup"><span data-stu-id="8a0c3-168">owin.RequestId</span></span> | `String` | <span data-ttu-id="8a0c3-169">Facultatif</span><span class="sxs-lookup"><span data-stu-id="8a0c3-169">Optional</span></span> |
+| <span data-ttu-id="ea10c-168">owin.RequestId</span><span class="sxs-lookup"><span data-stu-id="ea10c-168">owin.RequestId</span></span> | `String` | <span data-ttu-id="ea10c-169">Facultatif</span><span class="sxs-lookup"><span data-stu-id="ea10c-169">Optional</span></span> |
 
-### <a name="response-data-owin-v100"></a><span data-ttu-id="8a0c3-170">Données de réponse (OWIN v1.0.0)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-170">Response Data (OWIN v1.0.0)</span></span>
+### <a name="response-data-owin-v100"></a><span data-ttu-id="ea10c-170">Données de réponse (OWIN v1.0.0)</span><span class="sxs-lookup"><span data-stu-id="ea10c-170">Response data (OWIN v1.0.0)</span></span>
 
-| <span data-ttu-id="8a0c3-171">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-171">Key</span></span>               | <span data-ttu-id="8a0c3-172">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-172">Value (type)</span></span> | <span data-ttu-id="8a0c3-173">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-173">Description</span></span> |
+| <span data-ttu-id="ea10c-171">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-171">Key</span></span>               | <span data-ttu-id="ea10c-172">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-172">Value (type)</span></span> | <span data-ttu-id="ea10c-173">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-173">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-174">owin.ResponseStatusCode</span><span class="sxs-lookup"><span data-stu-id="8a0c3-174">owin.ResponseStatusCode</span></span> | `int` | <span data-ttu-id="8a0c3-175">Facultatif</span><span class="sxs-lookup"><span data-stu-id="8a0c3-175">Optional</span></span> |
-| <span data-ttu-id="8a0c3-176">owin.ResponseReasonPhrase</span><span class="sxs-lookup"><span data-stu-id="8a0c3-176">owin.ResponseReasonPhrase</span></span> | `String` | <span data-ttu-id="8a0c3-177">Facultatif</span><span class="sxs-lookup"><span data-stu-id="8a0c3-177">Optional</span></span> |
-| <span data-ttu-id="8a0c3-178">owin.ResponseHeaders</span><span class="sxs-lookup"><span data-stu-id="8a0c3-178">owin.ResponseHeaders</span></span> | `IDictionary<string,string[]>`  | |
-| <span data-ttu-id="8a0c3-179">owin.ResponseBody</span><span class="sxs-lookup"><span data-stu-id="8a0c3-179">owin.ResponseBody</span></span> | `Stream`  | |
+| <span data-ttu-id="ea10c-174">owin.ResponseStatusCode</span><span class="sxs-lookup"><span data-stu-id="ea10c-174">owin.ResponseStatusCode</span></span> | `int` | <span data-ttu-id="ea10c-175">Facultatif</span><span class="sxs-lookup"><span data-stu-id="ea10c-175">Optional</span></span> |
+| <span data-ttu-id="ea10c-176">owin.ResponseReasonPhrase</span><span class="sxs-lookup"><span data-stu-id="ea10c-176">owin.ResponseReasonPhrase</span></span> | `String` | <span data-ttu-id="ea10c-177">Facultatif</span><span class="sxs-lookup"><span data-stu-id="ea10c-177">Optional</span></span> |
+| <span data-ttu-id="ea10c-178">owin.ResponseHeaders</span><span class="sxs-lookup"><span data-stu-id="ea10c-178">owin.ResponseHeaders</span></span> | `IDictionary<string,string[]>`  | |
+| <span data-ttu-id="ea10c-179">owin.ResponseBody</span><span class="sxs-lookup"><span data-stu-id="ea10c-179">owin.ResponseBody</span></span> | `Stream`  | |
 
 
-### <a name="other-data-owin-v100"></a><span data-ttu-id="8a0c3-180">Autres données (OWIN v1.0.0)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-180">Other Data (OWIN v1.0.0)</span></span>
+### <a name="other-data-owin-v100"></a><span data-ttu-id="ea10c-180">Autres données (OWIN v1.0.0)</span><span class="sxs-lookup"><span data-stu-id="ea10c-180">Other data (OWIN v1.0.0)</span></span>
 
-| <span data-ttu-id="8a0c3-181">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-181">Key</span></span>               | <span data-ttu-id="8a0c3-182">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-182">Value (type)</span></span> | <span data-ttu-id="8a0c3-183">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-183">Description</span></span> |
+| <span data-ttu-id="ea10c-181">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-181">Key</span></span>               | <span data-ttu-id="ea10c-182">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-182">Value (type)</span></span> | <span data-ttu-id="ea10c-183">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-183">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-184">owin.CallCancelled</span><span class="sxs-lookup"><span data-stu-id="8a0c3-184">owin.CallCancelled</span></span> | `CancellationToken` |  |
-| <span data-ttu-id="8a0c3-185">owin.Version</span><span class="sxs-lookup"><span data-stu-id="8a0c3-185">owin.Version</span></span>  | `String` | |   
+| <span data-ttu-id="ea10c-184">owin.CallCancelled</span><span class="sxs-lookup"><span data-stu-id="ea10c-184">owin.CallCancelled</span></span> | `CancellationToken` |  |
+| <span data-ttu-id="ea10c-185">owin.Version</span><span class="sxs-lookup"><span data-stu-id="ea10c-185">owin.Version</span></span>  | `String` | |   
 
 
-### <a name="common-keys"></a><span data-ttu-id="8a0c3-186">Clés communes</span><span class="sxs-lookup"><span data-stu-id="8a0c3-186">Common Keys</span></span>
+### <a name="common-keys"></a><span data-ttu-id="ea10c-186">Clés communes</span><span class="sxs-lookup"><span data-stu-id="ea10c-186">Common keys</span></span>
 
-| <span data-ttu-id="8a0c3-187">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-187">Key</span></span>               | <span data-ttu-id="8a0c3-188">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-188">Value (type)</span></span> | <span data-ttu-id="8a0c3-189">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-189">Description</span></span> |
+| <span data-ttu-id="ea10c-187">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-187">Key</span></span>               | <span data-ttu-id="ea10c-188">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-188">Value (type)</span></span> | <span data-ttu-id="ea10c-189">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-189">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-190">ssl.ClientCertificate</span><span class="sxs-lookup"><span data-stu-id="8a0c3-190">ssl.ClientCertificate</span></span> | `X509Certificate` |  |
-| <span data-ttu-id="8a0c3-191">ssl.LoadClientCertAsync</span><span class="sxs-lookup"><span data-stu-id="8a0c3-191">ssl.LoadClientCertAsync</span></span>  | `Func<Task>` | |    
-| <span data-ttu-id="8a0c3-192">server.RemoteIpAddress</span><span class="sxs-lookup"><span data-stu-id="8a0c3-192">server.RemoteIpAddress</span></span>  | `String` | |    
-| <span data-ttu-id="8a0c3-193">server.RemotePort</span><span class="sxs-lookup"><span data-stu-id="8a0c3-193">server.RemotePort</span></span> | `String` | |     
-| <span data-ttu-id="8a0c3-194">server.LocalIpAddress</span><span class="sxs-lookup"><span data-stu-id="8a0c3-194">server.LocalIpAddress</span></span>  | `String` | |    
-| <span data-ttu-id="8a0c3-195">server.LocalPort</span><span class="sxs-lookup"><span data-stu-id="8a0c3-195">server.LocalPort</span></span>  | `String` | |    
-| <span data-ttu-id="8a0c3-196">server.IsLocal</span><span class="sxs-lookup"><span data-stu-id="8a0c3-196">server.IsLocal</span></span>  | `bool` | |    
-| <span data-ttu-id="8a0c3-197">server.OnSendingHeaders</span><span class="sxs-lookup"><span data-stu-id="8a0c3-197">server.OnSendingHeaders</span></span>  | `Action<Action<object>,object>` | |
+| <span data-ttu-id="ea10c-190">ssl.ClientCertificate</span><span class="sxs-lookup"><span data-stu-id="ea10c-190">ssl.ClientCertificate</span></span> | `X509Certificate` |  |
+| <span data-ttu-id="ea10c-191">ssl.LoadClientCertAsync</span><span class="sxs-lookup"><span data-stu-id="ea10c-191">ssl.LoadClientCertAsync</span></span>  | `Func<Task>` | |    
+| <span data-ttu-id="ea10c-192">server.RemoteIpAddress</span><span class="sxs-lookup"><span data-stu-id="ea10c-192">server.RemoteIpAddress</span></span>  | `String` | |    
+| <span data-ttu-id="ea10c-193">server.RemotePort</span><span class="sxs-lookup"><span data-stu-id="ea10c-193">server.RemotePort</span></span> | `String` | |     
+| <span data-ttu-id="ea10c-194">server.LocalIpAddress</span><span class="sxs-lookup"><span data-stu-id="ea10c-194">server.LocalIpAddress</span></span>  | `String` | |    
+| <span data-ttu-id="ea10c-195">server.LocalPort</span><span class="sxs-lookup"><span data-stu-id="ea10c-195">server.LocalPort</span></span>  | `String` | |    
+| <span data-ttu-id="ea10c-196">server.IsLocal</span><span class="sxs-lookup"><span data-stu-id="ea10c-196">server.IsLocal</span></span>  | `bool` | |    
+| <span data-ttu-id="ea10c-197">server.OnSendingHeaders</span><span class="sxs-lookup"><span data-stu-id="ea10c-197">server.OnSendingHeaders</span></span>  | `Action<Action<object>,object>` | |
 
 
-### <a name="sendfiles-v030"></a><span data-ttu-id="8a0c3-198">SendFiles v0.3.0</span><span class="sxs-lookup"><span data-stu-id="8a0c3-198">SendFiles v0.3.0</span></span>
+### <a name="sendfiles-v030"></a><span data-ttu-id="ea10c-198">SendFiles v0.3.0</span><span class="sxs-lookup"><span data-stu-id="ea10c-198">SendFiles v0.3.0</span></span>
 
-| <span data-ttu-id="8a0c3-199">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-199">Key</span></span>               | <span data-ttu-id="8a0c3-200">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-200">Value (type)</span></span> | <span data-ttu-id="8a0c3-201">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-201">Description</span></span> |
+| <span data-ttu-id="ea10c-199">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-199">Key</span></span>               | <span data-ttu-id="ea10c-200">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-200">Value (type)</span></span> | <span data-ttu-id="ea10c-201">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-201">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-202">sendfile.SendAsync</span><span class="sxs-lookup"><span data-stu-id="8a0c3-202">sendfile.SendAsync</span></span> | <span data-ttu-id="8a0c3-203">Consultez [signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-203">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span> | <span data-ttu-id="8a0c3-204">Par demande</span><span class="sxs-lookup"><span data-stu-id="8a0c3-204">Per Request</span></span> |
+| <span data-ttu-id="ea10c-202">sendfile.SendAsync</span><span class="sxs-lookup"><span data-stu-id="ea10c-202">sendfile.SendAsync</span></span> | <span data-ttu-id="ea10c-203">Voir [Signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="ea10c-203">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span> | <span data-ttu-id="ea10c-204">Par requête</span><span class="sxs-lookup"><span data-stu-id="ea10c-204">Per Request</span></span> |
 
 
-### <a name="opaque-v030"></a><span data-ttu-id="8a0c3-205">V0.3.0 opaque</span><span class="sxs-lookup"><span data-stu-id="8a0c3-205">Opaque v0.3.0</span></span>
+### <a name="opaque-v030"></a><span data-ttu-id="ea10c-205">Opaque v0.3.0</span><span class="sxs-lookup"><span data-stu-id="ea10c-205">Opaque v0.3.0</span></span>
 
-| <span data-ttu-id="8a0c3-206">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-206">Key</span></span>               | <span data-ttu-id="8a0c3-207">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-207">Value (type)</span></span> | <span data-ttu-id="8a0c3-208">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-208">Description</span></span> |
+| <span data-ttu-id="ea10c-206">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-206">Key</span></span>               | <span data-ttu-id="ea10c-207">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-207">Value (type)</span></span> | <span data-ttu-id="ea10c-208">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-208">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-209">opaque.Version</span><span class="sxs-lookup"><span data-stu-id="8a0c3-209">opaque.Version</span></span> | `String` |  |
-| <span data-ttu-id="8a0c3-210">opaque.Upgrade</span><span class="sxs-lookup"><span data-stu-id="8a0c3-210">opaque.Upgrade</span></span> | `OpaqueUpgrade` | <span data-ttu-id="8a0c3-211">Consultez [signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-211">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span> |
-| <span data-ttu-id="8a0c3-212">opaque.Stream</span><span class="sxs-lookup"><span data-stu-id="8a0c3-212">opaque.Stream</span></span> | `Stream` |  |
-| <span data-ttu-id="8a0c3-213">opaque.CallCancelled</span><span class="sxs-lookup"><span data-stu-id="8a0c3-213">opaque.CallCancelled</span></span> | `CancellationToken` |  |
+| <span data-ttu-id="ea10c-209">opaque.Version</span><span class="sxs-lookup"><span data-stu-id="ea10c-209">opaque.Version</span></span> | `String` |  |
+| <span data-ttu-id="ea10c-210">opaque.Upgrade</span><span class="sxs-lookup"><span data-stu-id="ea10c-210">opaque.Upgrade</span></span> | `OpaqueUpgrade` | <span data-ttu-id="ea10c-211">Voir [Signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="ea10c-211">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span> |
+| <span data-ttu-id="ea10c-212">opaque.Stream</span><span class="sxs-lookup"><span data-stu-id="ea10c-212">opaque.Stream</span></span> | `Stream` |  |
+| <span data-ttu-id="ea10c-213">opaque.CallCancelled</span><span class="sxs-lookup"><span data-stu-id="ea10c-213">opaque.CallCancelled</span></span> | `CancellationToken` |  |
 
 
-### <a name="websocket-v030"></a><span data-ttu-id="8a0c3-214">WebSocket v0.3.0</span><span class="sxs-lookup"><span data-stu-id="8a0c3-214">WebSocket v0.3.0</span></span>
+### <a name="websocket-v030"></a><span data-ttu-id="ea10c-214">WebSocket v0.3.0</span><span class="sxs-lookup"><span data-stu-id="ea10c-214">WebSocket v0.3.0</span></span>
 
-| <span data-ttu-id="8a0c3-215">Touche</span><span class="sxs-lookup"><span data-stu-id="8a0c3-215">Key</span></span>               | <span data-ttu-id="8a0c3-216">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-216">Value (type)</span></span> | <span data-ttu-id="8a0c3-217">Description</span><span class="sxs-lookup"><span data-stu-id="8a0c3-217">Description</span></span> |
+| <span data-ttu-id="ea10c-215">Touche</span><span class="sxs-lookup"><span data-stu-id="ea10c-215">Key</span></span>               | <span data-ttu-id="ea10c-216">Valeur (type)</span><span class="sxs-lookup"><span data-stu-id="ea10c-216">Value (type)</span></span> | <span data-ttu-id="ea10c-217">Description</span><span class="sxs-lookup"><span data-stu-id="ea10c-217">Description</span></span> |
 | ----------------- | ------------ | ----------- |
-| <span data-ttu-id="8a0c3-218">websocket.Version</span><span class="sxs-lookup"><span data-stu-id="8a0c3-218">websocket.Version</span></span> | `String` |  |
-| <span data-ttu-id="8a0c3-219">websocket.Accept</span><span class="sxs-lookup"><span data-stu-id="8a0c3-219">websocket.Accept</span></span> | `WebSocketAccept` | <span data-ttu-id="8a0c3-220">Consultez [signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-220">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span> |
-| <span data-ttu-id="8a0c3-221">websocket.AcceptAlt</span><span class="sxs-lookup"><span data-stu-id="8a0c3-221">websocket.AcceptAlt</span></span> |  | <span data-ttu-id="8a0c3-222">Non-spec</span><span class="sxs-lookup"><span data-stu-id="8a0c3-222">Non-spec</span></span> |
-| <span data-ttu-id="8a0c3-223">websocket.SubProtocol</span><span class="sxs-lookup"><span data-stu-id="8a0c3-223">websocket.SubProtocol</span></span> | `String` | <span data-ttu-id="8a0c3-224">Consultez [RFC6455 Section 4.2.2](https://tools.ietf.org/html/rfc6455#section-4.2.2) étape 5.5</span><span class="sxs-lookup"><span data-stu-id="8a0c3-224">See [RFC6455 Section 4.2.2](https://tools.ietf.org/html/rfc6455#section-4.2.2) Step 5.5</span></span> |
-| <span data-ttu-id="8a0c3-225">websocket.SendAsync</span><span class="sxs-lookup"><span data-stu-id="8a0c3-225">websocket.SendAsync</span></span> | `WebSocketSendAsync` | <span data-ttu-id="8a0c3-226">Consultez [signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-226">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span>  |
-| <span data-ttu-id="8a0c3-227">websocket.ReceiveAsync</span><span class="sxs-lookup"><span data-stu-id="8a0c3-227">websocket.ReceiveAsync</span></span> | `WebSocketReceiveAsync` | <span data-ttu-id="8a0c3-228">Consultez [signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-228">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span>  |
-| <span data-ttu-id="8a0c3-229">websocket.CloseAsync</span><span class="sxs-lookup"><span data-stu-id="8a0c3-229">websocket.CloseAsync</span></span> | `WebSocketCloseAsync` | <span data-ttu-id="8a0c3-230">Consultez [signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-230">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span>  |
-| <span data-ttu-id="8a0c3-231">websocket.CallCancelled</span><span class="sxs-lookup"><span data-stu-id="8a0c3-231">websocket.CallCancelled</span></span> | `CancellationToken` |  |
-| <span data-ttu-id="8a0c3-232">websocket.ClientCloseStatus</span><span class="sxs-lookup"><span data-stu-id="8a0c3-232">websocket.ClientCloseStatus</span></span> | `int` | <span data-ttu-id="8a0c3-233">Facultatif</span><span class="sxs-lookup"><span data-stu-id="8a0c3-233">Optional</span></span> |
-| <span data-ttu-id="8a0c3-234">websocket.ClientCloseDescription</span><span class="sxs-lookup"><span data-stu-id="8a0c3-234">websocket.ClientCloseDescription</span></span> | `String` | <span data-ttu-id="8a0c3-235">Facultatif</span><span class="sxs-lookup"><span data-stu-id="8a0c3-235">Optional</span></span> |
+| <span data-ttu-id="ea10c-218">websocket.Version</span><span class="sxs-lookup"><span data-stu-id="ea10c-218">websocket.Version</span></span> | `String` |  |
+| <span data-ttu-id="ea10c-219">websocket.Accept</span><span class="sxs-lookup"><span data-stu-id="ea10c-219">websocket.Accept</span></span> | `WebSocketAccept` | <span data-ttu-id="ea10c-220">Voir [Signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="ea10c-220">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span> |
+| <span data-ttu-id="ea10c-221">websocket.AcceptAlt</span><span class="sxs-lookup"><span data-stu-id="ea10c-221">websocket.AcceptAlt</span></span> |  | <span data-ttu-id="ea10c-222">Non spécifiée</span><span class="sxs-lookup"><span data-stu-id="ea10c-222">Non-spec</span></span> |
+| <span data-ttu-id="ea10c-223">websocket.SubProtocol</span><span class="sxs-lookup"><span data-stu-id="ea10c-223">websocket.SubProtocol</span></span> | `String` | <span data-ttu-id="ea10c-224">Voir l’étape 5.5 de la [RFC 6455 Section 4.2.2](https://tools.ietf.org/html/rfc6455#section-4.2.2)</span><span class="sxs-lookup"><span data-stu-id="ea10c-224">See [RFC6455 Section 4.2.2](https://tools.ietf.org/html/rfc6455#section-4.2.2) Step 5.5</span></span> |
+| <span data-ttu-id="ea10c-225">websocket.SendAsync</span><span class="sxs-lookup"><span data-stu-id="ea10c-225">websocket.SendAsync</span></span> | `WebSocketSendAsync` | <span data-ttu-id="ea10c-226">Voir [Signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="ea10c-226">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span>  |
+| <span data-ttu-id="ea10c-227">websocket.ReceiveAsync</span><span class="sxs-lookup"><span data-stu-id="ea10c-227">websocket.ReceiveAsync</span></span> | `WebSocketReceiveAsync` | <span data-ttu-id="ea10c-228">Voir [Signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="ea10c-228">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span>  |
+| <span data-ttu-id="ea10c-229">websocket.CloseAsync</span><span class="sxs-lookup"><span data-stu-id="ea10c-229">websocket.CloseAsync</span></span> | `WebSocketCloseAsync` | <span data-ttu-id="ea10c-230">Voir [Signature du délégué](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span><span class="sxs-lookup"><span data-stu-id="ea10c-230">See [delegate signature](http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm)</span></span>  |
+| <span data-ttu-id="ea10c-231">websocket.CallCancelled</span><span class="sxs-lookup"><span data-stu-id="ea10c-231">websocket.CallCancelled</span></span> | `CancellationToken` |  |
+| <span data-ttu-id="ea10c-232">websocket.ClientCloseStatus</span><span class="sxs-lookup"><span data-stu-id="ea10c-232">websocket.ClientCloseStatus</span></span> | `int` | <span data-ttu-id="ea10c-233">Facultatif</span><span class="sxs-lookup"><span data-stu-id="ea10c-233">Optional</span></span> |
+| <span data-ttu-id="ea10c-234">websocket.ClientCloseDescription</span><span class="sxs-lookup"><span data-stu-id="ea10c-234">websocket.ClientCloseDescription</span></span> | `String` | <span data-ttu-id="ea10c-235">Facultatif</span><span class="sxs-lookup"><span data-stu-id="ea10c-235">Optional</span></span> |
 
+## <a name="additional-resources"></a><span data-ttu-id="ea10c-236">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="ea10c-236">Additional resources</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="8a0c3-236">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="8a0c3-236">Additional Resources</span></span>
-
-* [<span data-ttu-id="8a0c3-237">Intergiciel (middleware)</span><span class="sxs-lookup"><span data-stu-id="8a0c3-237">Middleware</span></span>](middleware.md)
-
-* [<span data-ttu-id="8a0c3-238">Serveurs</span><span class="sxs-lookup"><span data-stu-id="8a0c3-238">Servers</span></span>](servers/index.md)
+* [<span data-ttu-id="ea10c-237">Intergiciel (middleware)</span><span class="sxs-lookup"><span data-stu-id="ea10c-237">Middleware</span></span>](xref:fundamentals/middleware/index)
+* [<span data-ttu-id="ea10c-238">Serveurs</span><span class="sxs-lookup"><span data-stu-id="ea10c-238">Servers</span></span>](xref:fundamentals/servers/index)
