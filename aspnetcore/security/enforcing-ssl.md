@@ -39,4 +39,4 @@ Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
 
 Consultez la documentation [Réécriture d’URL intergiciel (middleware)](xref:fundamentals/url-rewriting) pour plus d’informations.
 
-Exiger le protocol HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. Appliquer le `[RequireHttps]` attribut à tous les contrôleur n’est pas considéré aussi sécurisée que exiger le HTTPS globalement car vous ne pouvez pas garantir la sécurité aux nouveaux contrôleurs ajoutées à votre application il faudra penser à appliquer le `[RequireHttps]` attribut.
+Exiger le protocol HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. Appliquer l'attribut `[RequireHttps]` à tous les contrôleur n’est pas considéré aussi sécurisée que exiger le HTTPS globalement, car vous ne pouvez pas garantir la sécurité aux nouveaux contrôleurs ajoutées à posteriori dans votre application. Il faudra donc penser à appliquer l'attribut `[RequireHttps]` sur ces nouveaux contrôleurs.
