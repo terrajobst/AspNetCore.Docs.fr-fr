@@ -19,7 +19,7 @@ ms.lasthandoff: 01/30/2018
 
 Par [Steve Smith](https://ardalis.com/) et [Scott Addie](https://scottaddie.com)
 
-Dans l’article précédent, nous avons commencé la migration [ASP.NET MVC vers un projet ASP.NET MVC Core](mvc.md). Dans cet article, nous migrer la configuration.
+Dans l’article précédent, nous avons commencé la migration [ASP.NET MVC vers un projet ASP.NET Core MVC](mvc.md). Dans cet article, nous migrer la configuration.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
@@ -45,7 +45,7 @@ Ajouter un fichier *appsettings.json* à la racine du projet à l’aide du mod�
 
 ## <a name="migrate-configuration-settings-from-webconfig"></a>Migrer les paramètres de Configuration à partir de web.config
 
-Notre projet ASP.NET MVC inclu  la chaîne de connexion de base de données requises dans le fichier *web.config*, dans l'élément `<connectionStrings>`. Dans notre projet ASP.NET Core, nous allons stocker ces informations dans le fichier *appsettings.json*. Ouvrez le fichier *appsettings.json* et notez qu’il contient déjà les éléments suivants :
+Notre projet ASP.NET MVC inclut  la chaîne de connexion de base de données requises dans le fichier *web.config*, dans l'élément `<connectionStrings>`. Dans notre projet ASP.NET Core, nous allons stocker ces informations dans le fichier *appsettings.json*. Ouvrez le fichier *appsettings.json* et notez qu’il contient déjà les éléments suivants :
 
 [!code-json[Main](../migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json?highlight=4)]
 
