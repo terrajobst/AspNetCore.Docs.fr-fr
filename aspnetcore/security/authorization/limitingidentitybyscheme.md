@@ -42,7 +42,7 @@ public void ConfigureServices(IServiceCollection services)
 Dans le code précédent, les deux gestionnaires d’authentification ont été ajoutés : une pour les cookies et l’autre pour le support.
 
 >[!NOTE]
->Spécification de schéma par défaut entraîne la propriété `HttpContext.User` définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en appelant le formulaire sans paramètre de `AddAuthentication`.
+>Spécifier un schéma par défaut entraîne que la propriété HttpContext.User soit définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en appelant le formulaire sans paramètre de `AddAuthentication`.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
