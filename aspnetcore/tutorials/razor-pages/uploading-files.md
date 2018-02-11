@@ -2,18 +2,18 @@
 title: Chargement de fichiers sur une page Razor dans ASP.NET Core
 author: guardrex
 description: "Découvrez comment charger des fichiers sur une page Razor."
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 09/12/2017
-ms.topic: get-started-article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: get-started-article
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: a29043ac5d28ae8efcbbd6919e73e3774ba22699
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 24eaa0dd9293cc932c51d280300308e835a0840e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>Chargement de fichiers sur une page Razor dans ASP.NET Core
 
@@ -76,9 +76,9 @@ Chaque groupe de formulaires inclut un élément **\<label>** qui affiche le nom
 
 Chaque groupe de formulaires comprend un élément **\<span>** de validation. Si l’entrée de l’utilisateur ne respecte pas les attributs de propriété définis dans la classe `FileUpload` ou si l’une des vérifications de validation de fichier de la méthode `ProcessFormFile` échoue, le modèle échoue à la validation. En cas d’échec de la validation du modèle, un message de validation utile est affiché pour l’utilisateur. Par exemple, la propriété `Title` est annotée avec `[Required]` et `[StringLength(60, MinimumLength = 3)]`. Si l’utilisateur ne parvient pas à fournir un titre, il reçoit un message indiquant qu’une valeur est obligatoire. Si l’utilisateur entre une valeur inférieure à trois caractères ou supérieure à 60 caractères, il reçoit un message indiquant que la valeur a une longueur incorrecte. Si un fichier fourni n’a pas de contenu, un message apparaît indiquant que le fichier est vide.
 
-## <a name="add-the-code-behind-file"></a>Ajouter le fichier code-behind
+## <a name="add-the-page-model"></a>Ajouter le modèle de page
 
-Ajoutez le fichier code-behind (*Index.cshtml.cs*) au dossier *Schedules* :
+Ajoutez le modèle de page (*Index.cshtml.cs*) au dossier *Schedules* :
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs)]
 
@@ -110,7 +110,7 @@ Quand l’utilisateur clique pour supprimer une planification, il doit avoir la 
 
 [!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml)]
 
-Le fichier code-behind (*Delete.cshtml.cs*) charge une seule planification identifiée par `id` dans les données de routage de la demande. Ajoutez le fichier *Delete.cshtml.cs* au dossier *Schedules* :
+Le modèle de page (*Delete.cshtml.cs*) charge une seule planification identifiée par `id` dans les données de routage de la demande. Ajoutez le fichier *Delete.cshtml.cs* au dossier *Schedules* :
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml.cs)]
 

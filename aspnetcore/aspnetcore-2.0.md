@@ -2,18 +2,18 @@
 title: "Nouveautés d’ASP.NET Core 2.0"
 author: rick-anderson
 description: "Nouveautés d’ASP.NET Core 2.0"
-ms.author: riande
 manager: wpickett
+ms.author: riande
 ms.date: 07/10/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: aspnetcore-2.0
-ms.openlocfilehash: ca02de7954002dcbc125898c9f570438f88db818
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 35d57abd07e83cd5b190572962fbf43aef03a534
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
 
@@ -54,13 +54,13 @@ Pour plus d’informations sur l’état de la documentation planifiée, consult
 
 ## <a name="logging-update"></a>Mise à jour de la journalisation
 
-Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendance par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs*. De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
+Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendances par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs*. De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
 
 Pour plus d’informations, consultez [Introduction à la journalisation](xref:fundamentals/logging/index).
 
 ## <a name="authentication-update"></a>Mise à jour de l’authentification
 
-Un nouveau modèle d’authentification simplifie la configuration de l’authentification pour une application à l’aide de l’injection de dépendance.
+Un nouveau modèle d’authentification simplifie la configuration de l’authentification pour une application à l’aide de l’injection de dépendances.
 
 De nouveaux modèles sont disponibles pour configurer l’authentification pour les applications web et les API web à l’aide de [Azure AD B2C] (https://azure.microsoft.com/services/active-directory-b2c/).
 
@@ -82,7 +82,7 @@ Des modèles de projet SPA (Single Page Application) pour Angular, Aurelia, Knoc
 
 ## <a name="kestrel-improvements"></a>Améliorations apportées à Kestrel
 
-Le serveur web Kestrel offre de nouvelles fonctionnalités qui le rendent plus adapté en tant que serveur connecté à Internet. Nous avons ajouté plusieurs options de configuration de contrainte de serveur dans la nouvelle propriété `Limits` de la classe `KestrelServerOptions`. Vous pouvez maintenant ajouter des limites pour les éléments suivants :
+Le serveur web Kestrel offre de nouvelles fonctionnalités qui le rendent plus adapté en tant que serveur connecté à Internet. Plusieurs options de configuration de contrainte de serveur ont été ajoutées à la nouvelle propriété `Limits` de la classe `KestrelServerOptions`. Ajoutez des limites pour les éléments suivants :
 
 - Nombre maximale de connexions client
 - Taille maximale du corps de la requête
@@ -120,7 +120,7 @@ Pour plus d’informations sur l’état de la documentation planifiée, consult
 
 ## <a name="automatic-use-of-anti-forgery-tokens"></a>Utilisation automatique des jetons anti-contrefaçon
 
-ASP.NET Core a toujours aidé le HTML à encoder votre contenu par défaut, mais avec la nouvelle version nous ajoutons une étape supplémentaire pour aider à prévenir les attaques par falsification de requête intersites (XSRF). ASP.NET Core émet désormais des jetons anti-contrefaçon par défaut, et les valide sur les pages et les actions POST de formulaire sans configuration supplémentaire.
+ASP.NET Core a toujours facilité l’encodage HTML du contenu par défaut, mais la nouvelle version aide encore davantage à prévenir les attaques par falsification de requête intersites (XSRF). ASP.NET Core émet désormais des jetons anti-contrefaçon par défaut, et les valide sur les pages et les actions POST de formulaire sans configuration supplémentaire.
 
 Pour plus d’informations, consultez [Prévention des attaques par falsification de requête intersites (XSRF/CSRF) dans ASP.NET Core](xref:security/anti-request-forgery).
 
@@ -158,4 +158,4 @@ Pour obtenir des conseils sur la migration d’applications ASP.NET Core 1.x ver
 
 Pour obtenir la liste complète des modifications, consultez les [Notes de publication d’ASP.NET Core 2.0 ](https://github.com/aspnet/Home/releases/tag/2.0.0).
 
-Si vous souhaitez être tenu au courant de la progression et des plans de l’équipe de développement ASP.NET Core, participez chaque semaine à la [réunion de la communauté ASP.NET](https://live.asp.net/).
+Pour être tenu au courant de la progression et des plans de l’équipe de développement ASP.NET Core, participez à la [réunion de la communauté ASP.NET](https://live.asp.net/).

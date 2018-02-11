@@ -105,9 +105,9 @@ L’élément anchor précédent est un [Tag Helper](xref:mvc/views/tag-helpers/
 
 Enregistrez vos changements, puis testez l’application en cliquant sur le lien **RpMovie**. Consultez le fichier [_Layout.cshtml](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml) dans GitHub.
 
-### <a name="the-create-code-behind-page"></a>Page code-behind Create
+### <a name="the-create-page-model"></a>Le modèle de page Create
 
-Examinez le fichier code-behind *Pages/Movies/Create.cshtml.cs* :
+Examinez le modèle de page *Pages/Movies/Create.cshtml.cs* :
 
 [!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Create.cshtml.cs?name=snippetALL)]
 

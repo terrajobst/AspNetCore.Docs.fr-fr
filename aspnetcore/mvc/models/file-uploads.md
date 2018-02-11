@@ -1,31 +1,31 @@
 ---
-title: "Téléchargements de fichiers dans ASP.NET Core"
+title: Chargements de fichiers dans ASP.NET Core
 author: ardalis
-description: "Comment utiliser la liaison de modèle et de diffusion en continu pour télécharger des fichiers dans ASP.NET MVC de base."
-ms.author: riande
+description: "Comment utiliser la liaison de modèle et le streaming pour charger des fichiers dans ASP.NET Core MVC."
 manager: wpickett
+ms.author: riande
 ms.date: 07/05/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/models/file-uploads
-ms.openlocfilehash: bc1cfe0d6ee88a0af49cdff9ce77ad42f57b95f7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 314d585c7bf7f8c95f763babe6cdf93e514ff656
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="file-uploads-in-aspnet-core"></a>Téléchargements de fichiers dans ASP.NET Core
+# <a name="file-uploads-in-aspnet-core"></a>Chargements de fichiers dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
-Actions d’ASP.NET MVC prend en charge le téléchargement d’un ou plusieurs fichiers à l’aide d’un modèle simple pour les fichiers plus petits de liaison ou de diffusion en continu pour les fichiers plus volumineux.
+Les actions d’ASP.NET MVC prennent en charge le chargement d’un ou plusieurs fichiers, avec une liaison de modèle simple pour les fichiers de petite taille ou avec le streaming pour les fichiers plus volumineux.
 
-[Afficher ou télécharger l’exemple à partir de GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample)
+[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/file-uploads/sample/FileUploadSample).
 
-## <a name="uploading-small-files-with-model-binding"></a>Téléchargement de petits fichiers avec la liaison de modèle
+## <a name="uploading-small-files-with-model-binding"></a>Chargement de petits fichiers avec la liaison de modèle
 
-Pour télécharger des petits fichiers, vous pouvez utiliser un formulaire HTML plusieurs partie ou construire une demande POST à l’aide de JavaScript. Un exemple de formulaire à l’aide de Razor, qui prend en charge plusieurs fichiers téléchargés, est indiqué ci-dessous :
+Pour charger des petits fichiers, vous pouvez utiliser un formulaire HTML en plusieurs parties ou construire une demande POST avec JavaScript. Voici un exemple de formulaire utilisant Razor, qui prend en charge plusieurs fichiers chargés :
 
 ```html
 <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
@@ -43,11 +43,11 @@ Pour télécharger des petits fichiers, vous pouvez utiliser un formulaire HTML 
 </form>
 ```
 
-Pour prendre en charge les téléchargements de fichiers, les formulaires HTML doivent spécifier un `enctype` de `multipart/form-data`. Le `files` élément d’entrée ci-dessus prend en charge le téléchargement de plusieurs fichiers. Omettre la `multiple` attribut de cet élément d’entrée pour autoriser uniquement un seul fichier à télécharger. Le balisage ci-dessus est rendu dans un navigateur en tant que :
+Pour prendre en charge les chargements de fichiers, les formulaires HTML doivent spécifier un `enctype` défini comme étant `multipart/form-data`. L’élément d’entrée `files` montré ci-dessus prend en charge le chargement de plusieurs fichiers. Omettez l’attribut `multiple` sur cet élément d’entrée pour autoriser le chargement d’un seul fichier. Le balisage ci-dessus est rendu comme ceci dans un navigateur :
 
-![Formulaire de téléchargement de fichier](file-uploads/_static/upload-form.png)
+![Formulaire de chargement de fichier](file-uploads/_static/upload-form.png)
 
-Les fichiers individuels téléchargés sur le serveur est accessible via [liaison de modèle](xref:mvc/models/model-binding) à l’aide de la [IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile) interface. `IFormFile`a la structure suivante :
+Les fichiers individuels chargés sur le serveur sont accessibles via la [liaison de modèle](xref:mvc/models/model-binding) avec l’interface [IFormFile](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.iformfile). `IFormFile` a la structure suivante :
 
 ```csharp
 public interface IFormFile
@@ -65,17 +65,17 @@ public interface IFormFile
 ```
 
 > [!WARNING]
-> Ne s’appuient sur ou approuver le `FileName` propriété sans validation. Le `FileName` propriété doit uniquement être utilisée pour l’affichage.
+> Ne vous basez pas ou ne faites pas confiance à la propriété `FileName` sans validation. La propriété `FileName` doit être utilisée seulement pour l’affichage.
 
-Lors du téléchargement de fichiers à l’aide de la liaison de modèle et la `IFormFile` interface, la méthode d’action peut accepter un seul `IFormFile` ou `IEnumerable<IFormFile>` (ou `List<IFormFile>`) représentant plusieurs fichiers. L’exemple suivant effectue une itération sur un ou plusieurs des fichiers téléchargés, les enregistre dans le système de fichiers local et retourne le nombre total et la taille des fichiers téléchargés.
+Lors du chargement de fichiers avec la liaison de modèle et l’interface `IFormFile`, la méthode d’action peut accepter un seul `IFormFile` ou un `IEnumerable<IFormFile>` (ou `List<IFormFile>`) représentant plusieurs fichiers. L’exemple suivant boucle dans un ou plusieurs fichiers chargés, les enregistre dans le système de fichiers local et retourne le nombre total et la taille totale des fichiers chargés.
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-Les fichiers téléchargés à l’aide de la `IFormFile` technique sont mis en mémoire tampon en mémoire ou sur disque sur le serveur web avant d’être traité. À l’intérieur de la méthode d’action, le `IFormFile` contenu est accessible en tant que flux. Outre le système de fichiers local, des fichiers peuvent être diffusées à [le stockage Blob Azure](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) ou [Entity Framework](https://docs.microsoft.com/ef/core/index).
+Les fichiers chargés avec la technique `IFormFile` sont placés dans une mémoire tampon ou sur disque du serveur web avant d’être traités. Dans la méthode d’action, le contenu de `IFormFile` est accessible sous forme de flux. En plus du système de fichiers local, les fichiers peuvent être diffusés en continu vers [Stockage Blob Azure](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) ou [Entity Framework](https://docs.microsoft.com/ef/core/index).
 
-Pour stocker les données de fichier binaire dans une base de données à l’aide d’Entity Framework, définir une propriété de type `byte[]` sur l’entité :
+Pour stocker les données de fichiers binaires dans une base de données avec Entity Framework, définissez une propriété de type `byte[]` sur l’entité :
 
 ```csharp
 public class ApplicationUser : IdentityUser
@@ -84,7 +84,7 @@ public class ApplicationUser : IdentityUser
 }
 ```
 
-Spécifiez une propriété viewmodel de type `IFormFile`:
+Spécifiez une propriété viewmodel de type `IFormFile` :
 
 ```csharp
 public class RegisterViewModel
@@ -96,9 +96,9 @@ public class RegisterViewModel
 ```
 
 > [!NOTE]
-> `IFormFile`peut être utilisé directement comme un paramètre de méthode d’action ou une propriété viewmodel, comme indiqué ci-dessus.
+> `IFormFile` peut être utilisé directement comme paramètre de méthode d’action ou comme propriété viewmodel, comme montré ci-dessus.
 
-Copie le `IFormFile` dans un flux et enregistrez-le dans le tableau d’octets :
+Copiez le `IFormFile` dans un flux et enregistrez-le dans le tableau d’octets :
 
 ```csharp
 // POST: /Account/Register
@@ -127,18 +127,18 @@ public async Task<IActionResult> Register(RegisterViewModel model)
 ```
 
 > [!NOTE]
-> Soyez prudent lorsque vous stockez des données binaires dans les bases de données relationnelles, comme il peut nuire aux performances.
+> Soyez prudent quand vous stockez des données binaires dans des bases de données relationnelles, car cela peut avoir un impact négatif sur les performances.
 
-## <a name="uploading-large-files-with-streaming"></a>Téléchargement de fichiers volumineux avec la diffusion en continu
+## <a name="uploading-large-files-with-streaming"></a>Chargement de fichiers volumineux avec le streaming
 
-Si la taille ou la fréquence des téléchargements de fichiers pose des problèmes de ressources de l’application, envisagez le téléchargement du fichier de diffusion en continu plutôt que de mise en mémoire tampon elle dans son intégralité, contrairement à l’approche de liaison de modèle ci-dessus. Lors de l’utilisation `IFormFile` et liaison de modèle est une solution beaucoup plus simple, diffusion en continu requiert plusieurs étapes pour implémenter correctement.
+Si la taille ou la fréquence des chargements de fichiers pose des problèmes de ressources pour l’application, envisagez le chargement des fichiers par streaming au lieu de les placer en totalité dans une mémoire tampon, comme le fait l’approche par liaison de modèle ci-dessus. Si l’utilisation de `IFormFile` et de la liaison de modèle est une solution beaucoup plus simple, le streaming nécessite l’implémentation correcte d’un certain nombre d’étapes.
 
 > [!NOTE]
-> N’importe quel fichier mis en mémoire tampon unique supérieure à 64 Ko est déplacé de la mémoire vive dans un fichier temporaire sur le disque sur le serveur. Les ressources (disque RAM) utilisées par les téléchargements de fichiers varient selon le nombre et la taille des téléchargements de fichier simultanées. Diffusion en continu n’est pas tellement sur les performances, il est sur l’échelle. Si vous essayez de mettre en mémoire tampon trop de téléchargements, votre site se bloque lorsqu’il s’exécute en dehors de la mémoire ou l’espace disque.
+> Tout fichier individuel mis en mémoire tampon et dépassant 64 Ko est déplacé de la RAM dans un fichier temporaire sur le disque du serveur. Les ressources (disque, RAM) utilisées par les chargements de fichiers varient selon le nombre et la taille des chargements de fichiers simultanés. Le problème du streaming n’est pas la performance : il est relatif à l’échelle. Si vous essayez de mettre trop de chargements en mémoire tampon, votre site se bloque dès lors qu’il manque de mémoire ou d’espace disque.
 
-L’exemple suivant illustre l’utilisation de JavaScript/angulaire à diffuser en continu à une action de contrôleur. Jeton de côté du fichier est généré à l’aide d’un attribut de filtre personnalisé et passées dans les en-têtes HTTP et non dans le corps de la demande. Étant donné que la méthode d’action traite les données transmises directement, liaison de modèle est désactivée par un autre filtre. Dans l’action, le contenu du formulaire est lus en utilisant un `MultipartReader`, qui lit chaque `MultipartSection`, du traitement du fichier ou enregistrer le contenu comme il convient. Une fois que toutes les sections ont été lus, l’action effectue ses propres liaison de modèle.
+L’exemple suivant montre l’utilisation de JavaScript/Angular pour diffuser en continu vers une action de contrôleur. Le jeton anti-contrefaçon du fichier est généré en utilisant un attribut de filtre personnalisé, et il est passé dans les en-têtes HTTP et non pas dans le corps de la requête. Comme la méthode d’action traite les données chargées directement, la liaison de modèle est désactivée par un autre filtre. Dans l’action, le contenu du formulaire est lu en avec `MultipartReader`, qui lit chaque `MultipartSection` individuelle, traitant le fichier ou enregistrant le contenu selon ce qui est approprié. Une fois que toutes les sections ont été lues, l’action effectue sa propre liaison de modèle.
 
-L’action initiale charge le formulaire et enregistre un jeton de côté dans un cookie (via la `GenerateAntiforgeryTokenCookieForAjax` attribut) :
+L’action initiale charge le formulaire et enregistre un jeton anti-contrefaçon dans un cookie (via l’attribut `GenerateAntiforgeryTokenCookieForAjax`) :
 
 ```csharp
 [HttpGet]
@@ -149,21 +149,21 @@ public IActionResult Index()
 }
 ```
 
-L’attribut utilise les intégrée d’ASP.NET Core [Antiforgery](xref:security/anti-request-forgery) prise en charge d’un cookie avec un jeton de demande :
+L’attribut utilise la prise en charge [anti-contrefaçon](xref:security/anti-request-forgery) intégrée d’ASP.NET Core pour définir un cookie avec un jeton de requête :
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/GenerateAntiforgeryTokenCookieForAjaxAttribute.cs?name=snippet1)]
 
-Angulaire transmet automatiquement un jeton de côté dans un en-tête de demande nommé `X-XSRF-TOKEN`. L’application ASP.NET MVC de base est configurée pour faire référence à cet en-tête dans sa configuration dans *Startup.cs*:
+Angular passe automatiquement un jeton anti-contrefaçon dans un en-tête de requête nommé `X-XSRF-TOKEN`. L’application ASP.NET Core MVC est configurée pour référencer cet en-tête dans sa configuration, qui se trouve dans *Startup.cs* :
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Startup.cs?name=snippet1)]
 
-Le `DisableFormValueModelBinding` attribut, illustré ci-dessous, est utilisé pour désactiver la liaison de modèle pour le `Upload` méthode d’action.
+L’attribut `DisableFormValueModelBinding`, montré ci-dessous, est utilisé pour désactiver la liaison de modèle pour la méthode d’action `Upload`.
 
 [!code-csharp[Main](file-uploads/sample/FileUploadSample/Filters/DisableFormValueModelBindingAttribute.cs?name=snippet1)]
 
-Étant donné que la liaison de modèle est désactivée, le `Upload` méthode d’action n’accepte pas les paramètres. Il fonctionne directement avec le `Request` propriété du `ControllerBase`. A `MultipartReader` est utilisé pour lire chaque section. Le fichier est enregistré avec un nom de fichier GUID et les données de clé/valeur sont stockées dans un `KeyValueAccumulator`. Une fois que toutes les sections ont été lus, le contenu de la `KeyValueAccumulator` sont utilisés pour lier les données de formulaire à un type de modèle.
+La liaison de modèle étant désactivée, la méthode d’action `Upload` n’accepte pas de paramètres. Elle utilise directement la propriété `Request` de `ControllerBase`. Un `MultipartReader` est utilisé pour lire chaque section. Le fichier est enregistré avec un nom de fichier GUID, et les données clé/valeur sont stockées dans un `KeyValueAccumulator`. Une fois que toutes les sections ont été lues, le contenu du `KeyValueAccumulator` est utilisé pour lier les données de formulaire à un type de modèle.
 
-Le texte complet `Upload` méthode est indiquée ci-dessous :
+Voici la méthode `Upload` complète :
 
 [!INCLUDE [GetTempFileName](../../includes/GetTempFileName.md)]
 
@@ -171,18 +171,18 @@ Le texte complet `Upload` méthode est indiquée ci-dessous :
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
-Voici certains problèmes courants rencontrés lors de l’utilisation avec le téléchargement de fichiers et leurs solutions possibles.
+Voici certains problèmes courants rencontrés avec le chargement de fichiers et leurs solutions possibles.
 
-### <a name="unexpected-not-found-error-with-iis"></a>Erreur inattendue introuvable avec IIS
+### <a name="unexpected-not-found-error-with-iis"></a>Erreur inattendue Non trouvé avec IIS
 
-L’erreur suivante indique le chargement du fichier dépasse le serveur configurée `maxAllowedContentLength`:
+L’erreur suivante indique que le chargement de votre fichier dépasse la valeur de `maxAllowedContentLength` configurée sur le serveur :
 
 ```
 HTTP 404.13 - Not Found
 The request filtering module is configured to deny a request that exceeds the request content length.
 ```
 
-Le paramètre par défaut est `30000000`, qui est d’environ 28,6 Mo. La valeur peut être personnalisée en modifiant *web.config*:
+La valeur par défaut est `30000000`, ce qui correspond à environ 28,6 Mo. Vous pouvez personnaliser la valeur en modifiant *web.config* :
 
 ```xml
 <system.webServer>
@@ -195,8 +195,8 @@ Le paramètre par défaut est `30000000`, qui est d’environ 28,6 Mo. La valeur
 </system.webServer>
 ```
 
-Ce paramètre s’applique uniquement à IIS. Le comportement ne se produit par défaut lors de l’hébergement sur Kestrel. Pour plus d’informations, consultez [limites des demandes \<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
+Ce paramètre s’applique seulement à IIS. Par défaut, ce comportement ne se produit pas dans le cas d’un hébergement sur Kestrel. Pour plus d’informations, consultez [Request Limits \<requestLimits\>](https://docs.microsoft.com/iis/configuration/system.webServer/security/requestFiltering/requestLimits/).
 
 ### <a name="null-reference-exception-with-iformfile"></a>Exception de référence null avec IFormFile
 
-Si votre contrôleur est acceptant téléchargé à l’aide de fichiers `IFormFile` , mais vous découvrirez que la valeur est toujours null, vérifiez la spécification de votre formulaire HTML un `enctype` valeur `multipart/form-data`. Si cet attribut n’est pas défini sur le `<form>` élément, le téléchargement du fichier ne se produit et n’importe quelle limite `IFormFile` arguments est null.
+Si votre contrôleur accepte des fichiers chargés avec `IFormFile`, mais que vous découvrirez que la valeur est toujours null, vérifiez que votre formulaire HTML une valeur `enctype` pour `multipart/form-data`. Si cet attribut n’est pas défini sur l’élément `<form>`, le chargement des fichiers ne se produit pas et les arguments `IFormFile` liés sont null.

@@ -1,104 +1,104 @@
 ---
-title: "Formateurs personnalisés dans les API de web ASP.NET MVC de base"
+title: "Formateurs personnalisés dans les API web ASP.NET Core MVC"
 author: tdykstra
-description: "Découvrez comment créer et utiliser des formateurs personnalisés pour l’API web dans ASP.NET Core."
-ms.author: tdykstra
+description: "Découvrez comment créer et utiliser des formateurs personnalisés pour les API web dans ASP.NET Core."
 manager: wpickett
+ms.author: tdykstra
 ms.date: 02/08/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/models/custom-formatters
-ms.openlocfilehash: 3a6474fdae29b170978226de74d523b20a16cd0c
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
-ms.translationtype: MT
+ms.openlocfilehash: 8a42f2d885bd0a0c6d2bd05f9c589def2e15d50a
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>Formateurs personnalisés dans les API de web ASP.NET MVC de base
+# <a name="custom-formatters-in-aspnet-core-mvc-web-apis"></a>Formateurs personnalisés dans les API web ASP.NET Core MVC
 
 Par [Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core MVC prend en charge pour l’échange de données dans l’API web à l’aide de formats JSON, XML ou texte brut. Cet article explique comment ajouter la prise en charge des formats supplémentaires en créant des formateurs personnalisés.
+ASP.NET Core MVC prend en charge l’échange de données dans les API web à l’aide des formats JSON, XML ou texte brut. Cet article montre comment ajouter la prise en charge de formats supplémentaires en créant des formateurs personnalisés.
 
-[Afficher ou télécharger l’exemple à partir de GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample).
+[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample).
 
 ## <a name="when-to-use-custom-formatters"></a>Quand utiliser les formateurs personnalisés
 
-Utiliser un formateur personnalisé lorsque vous souhaitez que le [négociation de contenu](xref:mvc/models/formatting) processus pour prendre en charge un type de contenu qui n’est pas pris en charge par les formateurs intégrés (JSON, XML et texte brut).
+Utilisez un formateur personnalisé quand vous souhaitez que le processus de [négociation de contenu](xref:mvc/models/formatting) prenne en charge un type de contenu non pris en charge par les formateurs intégrés (JSON, XML et texte brut).
 
-Par exemple, si certains des clients de votre API web peuvent gérer le [Protobuf](https://github.com/google/protobuf) format, vous souhaiterez utiliser Protobuf avec ces clients car il est plus efficace.  Vous pouvez également votre API web pour envoyer les noms de contact et les adresses de [vCard](https://wikipedia.org/wiki/VCard) format, un format couramment utilisé pour échanger des données de contact. L’exemple d’application fourni avec cet article implémente un formateur vCard simple.
+Par exemple, si certains clients de votre API web peuvent prendre en charge le format [Protobuf](https://github.com/google/protobuf), vous pouvez être amené à utiliser Protobuf avec ces clients, car il est plus efficace.  Vous pouvez également demander à votre API web d’envoyer les noms et adresses des contacts au format [vCard](https://wikipedia.org/wiki/VCard), format couramment utilisé pour l’échange de données de contact. L’exemple d’application fourni dans cet article implémente un formateur vCard simple.
 
-## <a name="overview-of-how-to-use-a-custom-formatter"></a>Vue d’ensemble de l’utilisation d’un formateur personnalisé
+## <a name="overview-of-how-to-use-a-custom-formatter"></a>Présentation de l’utilisation d’un formateur personnalisé
 
-Voici les étapes pour créer et utiliser un formateur personnalisé :
+Voici les étapes à suivre pour créer et utiliser un formateur personnalisé :
 
-* Créer une classe de module de formatage de sortie si vous souhaitez sérialiser des données à envoyer au client.
-* Créer une classe de formateur d’entrée si vous souhaitez désérialiser des données reçues du client. 
-* Ajouter des instances de vos modules de formatage de la `InputFormatters` et `OutputFormatters` collections dans [MvcOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.mvcoptions).
+* Créez une classe de formateur de sortie si vous souhaitez sérialiser les données à envoyer au client.
+* Créez une classe de formateur d’entrée si vous souhaitez désérialiser les données reçues en provenance du client. 
+* Ajoutez des instances de vos formateurs aux collections `InputFormatters` et `OutputFormatters` dans [MvcOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.mvcoptions).
 
-Les sections suivantes fournissent des conseils et des exemples de code pour chacune de ces étapes.
+Les sections suivantes fournissent de l’aide et des exemples de code pour chacune de ces étapes.
 
-## <a name="how-to-create-a-custom-formatter-class"></a>Comment créer une classe de formateur personnalisé
+## <a name="how-to-create-a-custom-formatter-class"></a>Guide pratique pour créer une classe de formateur personnalisé
 
-Pour créer un module de formatage :
+Pour créer un formateur :
 
-* Dérivez la classe de la classe de base appropriée.
-* Spécifier les encodages et types de support valide dans le constructeur.
-* Substituer `CanReadType` / `CanWriteType` méthodes
-* Substituer `ReadRequestBodyAsync` / `WriteResponseBodyAsync` méthodes
+* Faites dériver la classe de la classe de base appropriée.
+* Spécifiez les encodages et types de média valides dans le constructeur.
+* Substituez les méthodes `CanReadType`/`CanWriteType`.
+* Substituez les méthodes `ReadRequestBodyAsync`/`WriteResponseBodyAsync`.
   
-### <a name="derive-from-the-appropriate-base-class"></a>Dérive de la classe de base appropriée
+### <a name="derive-from-the-appropriate-base-class"></a>Effectuer une dérivation à partir de la classe de base appropriée
 
-Pour les types de média texte (par exemple, vCard) dérivent la [TextInputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textinputformatter) ou [TextOutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter) classe de base.
+Pour les médias de type texte (par exemple vCard), effectuez une dérivation à partir de la classe de base [TextInputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textinputformatter) ou [TextOutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter).
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
 
-Pour les types binaires, dérivent de la [InputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.inputformatter) ou [OutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformatter) classe de base.
+Pour les types binaires, effectuez une dérivation à partir de la classe de base [InputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.inputformatter) ou [OutputFormatter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformatter).
 
-### <a name="specify-valid-media-types-and-encodings"></a>Spécifier les encodages et types de média valide
+### <a name="specify-valid-media-types-and-encodings"></a>Spécifier les encodages et types de média valides
 
-Dans le constructeur, spécifiez les encodages et types de support valide en ajoutant à la `SupportedMediaTypes` et `SupportedEncodings` collections.
+Dans le constructeur, spécifiez les encodages et types de média valides en effectuant les ajouts nécessaires aux collections `SupportedMediaTypes` et `SupportedEncodings`.
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=ctor&highlight=3,5-6)]
 
 > [!NOTE]  
-> Vous ne pouvez pas faire d’injection de dépendance de constructeur dans une classe de formateur. Par exemple, Impossible d’obtenir un journal en ajoutant un paramètre de l’enregistreur d’événements au constructeur. Pour accéder aux services, vous devez utiliser l’objet de contexte transmis à vos méthodes. Un exemple de code [ci-dessous](#read-write) montre comment effectuer cette opération.
+> Vous ne pouvez pas effectuer d’injection de dépendances de constructeur dans une classe de formateur. Par exemple, vous ne pouvez pas obtenir un journaliseur en ajoutant un paramètre de journaliseur au constructeur. Pour accéder aux services, vous devez utiliser l’objet de contexte passé à vos méthodes. L’exemple de code [ci-dessous](#read-write) montre comment procéder.
 
 ### <a name="override-canreadtypecanwritetype"></a>Substituer CanReadType/CanWriteType 
 
-Spécifiez le type, vous pouvez désérialiser dans ou à partir de sérialiser en substituant le `CanReadType` ou `CanWriteType` méthodes. Par exemple, vous seulement pourrez créer du texte de carte de visite à partir d’un `Contact` type et vice versa.
+Spécifiez le type cible de la désérialisation ou de la sérialisation en remplaçant les méthodes `CanReadType` ou `CanWriteType`. Par exemple, vous pouvez peut-être créer uniquement un texte vCard à partir d’un type `Contact`, et inversement.
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
 
-#### <a name="the-canwriteresult-method"></a>La méthode CanWriteResult
+#### <a name="the-canwriteresult-method"></a>Méthode CanWriteResult
 
-Dans certains scénarios, vous devez substituer `CanWriteResult` au lieu de `CanWriteType`. Utilisez `CanWriteResult` si les conditions suivantes sont remplies :
+Dans certains cas, vous devez substituer `CanWriteResult` au lieu de `CanWriteType`. Utilisez `CanWriteResult` si les conditions suivantes sont vraies :
 
   * Votre méthode d’action retourne une classe de modèle.
-  * Il existe des classes dérivées qui peuvent être retournés lors de l’exécution.
-  * Vous devez connaître lors de l’exécution qui dérivée classe a été retournée par l’action.  
+  * Il existe des classes dérivées qui peuvent être retournées au moment de l’exécution.
+  * Vous devez savoir au moment de l’exécution quelle est la classe dérivée retournée par l’action.  
 
-Par exemple, supposons que votre signature de méthode d’action retourne un `Person` type, mais il peut retourner un `Student` ou `Instructor` type qui dérive de `Person`. Si vous souhaitez que votre formateur pour gérer uniquement `Student` objets, vérifiez le type de [objet](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object) dans l’objet de contexte fourni à la `CanWriteResult` (méthode). Notez qu’il n’est pas nécessaire d’utiliser `CanWriteResult` lorsque la méthode d’action retourne `IActionResult`; dans ce cas, le `CanWriteType` méthode reçoit le type de runtime.
+Par exemple, la signature de votre méthode d’action retourne un type `Person`, mais elle peut éventuellement retourner un type `Student` ou un type `Instructor` dérivé de `Person`. Si vous souhaitez que votre formateur gère uniquement les objets `Student`, vérifiez le type d’[Object](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object) dans l’objet de contexte fourni à la méthode `CanWriteResult`. Notez qu’il n’est pas nécessaire d’utiliser `CanWriteResult` quand la méthode d’action retourne `IActionResult`. Dans ce cas, la méthode `CanWriteType` reçoit le type au moment de l’exécution.
 
 <a id="read-write"></a>
-### <a name="override-readrequestbodyasyncwriteresponsebodyasync"></a>Override ReadRequestBodyAsync/WriteResponseBodyAsync 
+### <a name="override-readrequestbodyasyncwriteresponsebodyasync"></a>Substituer ReadRequestBodyAsync/WriteResponseBodyAsync 
 
-C’est le travail réel de la sérialisation ou désérialisation dans `ReadRequestBodyAsync` ou `WriteResponseBodyAsync`.  Les lignes en surbrillance dans l’exemple suivant affichent comment obtenir des services à partir du conteneur d’injection de dépendance (ne peut pas avoir de paramètres du constructeur).
+Vous effectuez le travail réel de désérialisation ou de sérialisation dans `ReadRequestBodyAsync` ou `WriteResponseBodyAsync`.  Les lignes surlignées dans l’exemple suivant montrent comment obtenir des services à partir du conteneur d’injection de dépendances (vous ne pouvez pas les obtenir à partir des paramètres du constructeur).
 
 [!code-csharp[Main](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=writeresponse&highlight=3-4)]
 
-## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>Comment configurer MVC pour utiliser un formateur personnalisé
+## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a>Guide pratique pour configurer MVC et utiliser un formateur personnalisé
  
-Pour utiliser un formateur personnalisé, ajoutez une instance de la classe du formateur pour la `InputFormatters` ou `OutputFormatters` collection.
+Pour utiliser un formateur personnalisé, ajoutez une instance de la classe du formateur à la collection `InputFormatters` ou `OutputFormatters`.
 
 [!code-csharp[Main](custom-formatters/sample/Startup.cs?name=mvcoptions&highlight=3-4)]
 
-Formateurs sont évalués dans l’ordre de qu'insertion. La première est prioritaire. 
+Les formateurs sont évalués dans l’ordre dans lequel vous les insérez. Le premier est prioritaire. 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Consultez le [exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample), qui implémente la vCard simple entrée et sortie formateurs.  L’application lit et écrit des cartes de visite qui ressemblent à l’exemple suivant :
+Consultez l’[exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/custom-formatters/sample), qui implémente de simples formateurs d’entrée et de sortie vCard.  L’application lit et écrit des vCard qui ressemblent à l’exemple suivant :
 
 ```
 BEGIN:VCARD
@@ -109,6 +109,6 @@ UID:20293482-9240-4d68-b475-325df4a83728
 END:VCARD
 ```
 
-Pour afficher la vCard de sortie, exécutez l’application et envoyer une demande Get avec accepter en-tête « texte/vcard » à `http://localhost:63313/api/contacts/` (lors de l’exécution à partir de Visual Studio) ou `http://localhost:5000/api/contacts/` (lors de l’exécution à partir de la ligne de commande).
+Pour afficher la sortie vCard, exécutez l’application et envoyez une requête Get avec « text/vcard » dans l’en-tête Accept à `http://localhost:63313/api/contacts/` (quand l’exécution a lieu à partir de Visual Studio) ou `http://localhost:5000/api/contacts/` (quand l’exécution a lieu à partir de la ligne de commande).
 
-Pour ajouter une carte de visite à la collection en mémoire des contacts, envoyez une demande Post à la même URL, avec l’en-tête Content-Type « texte/vcard » et texte vCard dans le corps, mis en forme comme l’exemple ci-dessus.
+Pour ajouter un vCard à la collection de contacts en mémoire, envoyez une requête Post à la même URL, avec « text/vcard » dans l’en-tête Content-Type et le texte du vCard dans le corps, comme dans l’exemple ci-dessus.

@@ -4,11 +4,11 @@ Ce didacticiel crée l’API suivante :
 
 |API | Description | Corps de la requête | Corps de réponse |
 |--- | ---- | ---- | ---- |
-|GET /api/todo | Obtenir toutes les tâches | Aucune | Tableau de tâches|
-|GET /api/todo/{id} | Obtenir un élément par ID | Aucune | Tâche|
+|GET /api/todo | Obtenir toutes les tâches | Aucun. | Tableau de tâches|
+|GET /api/todo/{id} | Obtenir un élément par ID | Aucun. | Tâche|
 |POST /api/todo | Ajouter un nouvel élément | Tâche | Tâche |
-|PUT /api/todo/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucune |
-|DELETE /api/todo/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucune | Aucune|
+|PUT /api/todo/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun. |
+|DELETE /api/todo/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun. | Aucun.|
 
 <br>
 

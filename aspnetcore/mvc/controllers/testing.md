@@ -1,150 +1,150 @@
 ---
-title: "Pour tester la logique de contrôleur dans ASP.NET Core"
+title: "Test de la logique des contrôleurs dans ASP.NET Core"
 author: ardalis
-description: "En savoir plus sur la logique du contrôleur de test dans ASP.NET Core avec Moq et xUnit."
-ms.author: riande
+description: "Découvrez plus d’informations sur le test de la logique des contrôleurs dans ASP.NET Core avec Moq et xUnit."
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/controllers/testing
-ms.openlocfilehash: f27e7ec43cd17e249dd646a7dfbce5df69d59664
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: cabb1d2498e6c993b327c2fb9719525ec2181f9e
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="testing-controller-logic-in-aspnet-core"></a>Pour tester la logique de contrôleur dans ASP.NET Core
+# <a name="testing-controller-logic-in-aspnet-core"></a>Test de la logique des contrôleurs dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
-Contrôleurs dans les applications ASP.NET MVC doivent être petit et se concentrent sur les problèmes d’interface utilisateur. Contrôleurs de grande taille qui traitent des problèmes d’interface utilisateur sont plus difficiles à tester et mettre à jour.
+Les contrôleurs dans les applications ASP.NET MVC doivent être de petite taille et dédiés aux problèmes de l’interface utilisateur. Les contrôleurs de grande taille qui traitent de problèmes autres que ceux de l’interface utilisateur sont plus difficiles à tester et à maintenir.
 
-[Afficher ou télécharger l’exemple à partir de GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample)
+[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample).
 
-## <a name="testing-controllers"></a>Contrôleurs de tests
+## <a name="testing-controllers"></a>Test des contrôleurs
 
-Contrôleurs sont une partie centrale d’une application ASP.NET MVC de base. Par conséquent, vous devez avoir confiance qu’ils se comportent comme prévu pour votre application. Tests automatisés peuvent vous fournir cette confiance et peuvent détecter les erreurs avant qu’ils atteignent la production. Il est important d’éviter de placer des responsabilités inutiles dans vos contrôleurs et vérifiez votre focus tests uniquement sur les responsabilités de contrôleur.
+Les contrôleurs sont une partie centrale des applications ASP.NET Core MVC. Par conséquent, vous devez avoir entièrement confiance dans le fait qu’ils se comportent comme prévu pour votre application. Les tests automatisés peuvent vous donner cette confiance et détecter des erreurs avant la mise en production. Il est important d’éviter de donner des responsabilités inutiles à vos contrôleurs et de faire en sorte que vos tests portent seulement sur les responsabilités du contrôleur.
 
-Logique de contrôleur doit être minime et n’est ne pas être axée sur les problèmes métier logique ou d’infrastructure (par exemple, accès aux données). Tester la logique du contrôleur, pas l’infrastructure. Test comment le contrôleur *se comporte* basé sur les entrées valides ou non valides. En fonction du résultat de l’opération métier qu'il effectue des réponses du contrôleur de test.
+La logique d’un contrôleur doit être minimale et ne pas porter sur la logique métier ni sur les problèmes d’infrastructure (par exemple l’accès aux données). Testez la logique du contrôleur et non pas le framework. Testez la façon dont le contrôleur *se comporte* en fonction d’entrées valides et non valides. Testez les réponses du contrôleur sur la base du résultat de l’opération métier qu’il effectue.
 
-Responsabilités du contrôleur classique :
+Voici les responsabilités classiques d’un contrôleur :
 
-* Vérifiez `ModelState.IsValid`.
-* Retourne une réponse d’erreur si `ModelState` n’est pas valide.
-* Récupérer une entité commerciale de persistance.
+* Vérifier `ModelState.IsValid`
+* Retourner une réponse d’erreur si `ModelState` n’est pas valide
+* Extraire une entité métier de son stockage.
 * Effectuer une action sur l’entité métier.
-* Enregistrer l’entité métier à la persistance.
-* Renvoyer un approprié `IActionResult`.
+* Enregistrer l’entité métier dans un stockage.
+* Retourner un `IActionResult` approprié.
 
 ## <a name="unit-testing"></a>Test unitaire
 
-[Tests unitaires](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test) implique le test d’une partie d’une application de manière isolée de son infrastructure et des dépendances. Lorsque la logique du contrôleur, seul le contenu d’une seule action de test unitaire est testé, pas le comportement de ses dépendances ou de l’infrastructure elle-même. En tant qu’unité vous vos actions de contrôleur de test, assurez-vous que vous concentrer uniquement sur son comportement. Un test unitaire de contrôleur évite des éléments tels que les [filtres](filters.md), [routage](../../fundamentals/routing.md), ou [liaison de modèle](../models/model-binding.md). En se concentrant sur la seule chose, les tests unitaires sont généralement simple à écrire et rapides à exécuter. Un ensemble bien écrit de tests unitaires peut être exécuté souvent sans la quantité de surcharge. Toutefois, les tests unitaires ne pas détecter les problèmes dans l’interaction entre les composants, qui est l’objectif de [test d’intégration](xref:mvc/controllers/testing#integration-testing).
+Les [tests unitaires](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test) impliquent le test d’une partie d’une application de façon isolée par rapport à son infrastructure et à ses dépendances. Lors du test de la logique d’un contrôleur, seul le contenu d’une action est testé, et non pas le comportement de ses dépendances ou du framework lui-même. Quand vous procédez à des tests unitaires des actions de votre contrôleur, pensez à vous concentrer seulement sur son comportement. Les tests unitaires d’un contrôleur évitent les éléments tels que les [filtres](filters.md), le [routage](../../fundamentals/routing.md) ou la [liaison de modèle](../models/model-binding.md). Étant consacrés au test d’une seule chose, les tests unitaires sont généralement simples à écrire et rapides à exécuter. Un ensemble de tests unitaires bien écrits peut être exécuté fréquemment sans engendrer une surcharge importante. Cependant, les tests unitaires ne détectent pas les problèmes d’interaction entre les composants, qui sont l’objet des [tests d’intégration](xref:mvc/controllers/testing#integration-testing).
 
-Si vous écrivez des filtres personnalisés, itinéraires, etc., vous devez le test unitaire leur, mais pas dans le cadre de vos tests sur une action de contrôleur spécifique. Ils doivent être testées de manière isolée.
+Si vous écrivez par exemple des filtres ou des routes personnalisés, vous devez leur appliquer des tests unitaires, mais pas dans le cadre de vos tests sur une action spécifique d’un contrôleur. Ils doivent être testés de façon isolée.
 
 > [!TIP]
-> [Créer et exécuter des tests unitaires avec Visual Studio](https://docs.microsoft.com/visualstudio/test/unit-test-your-code).
+> [Créer et exécuter des tests unitaires avec Visual Studio](https://docs.microsoft.com/visualstudio/test/unit-test-your-code)
 
-Pour illustrer les tests unitaires, passez en revue le contrôleur suivant. Il affiche la liste des sessions de réflexion et permet de nouvelles sessions sont créés avec une publication de réflexion :
+Pour voir ce que sont les tests unitaires, commencez par examiner le contrôleur suivant. Il affiche une liste de sessions de brainstorming et permet la création de nouvelles sessions avec une requête POST :
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs?highlight=12,16,21,42,43)]
 
-Le contrôleur est après le [principe de dépendances explicites](http://deviq.com/explicit-dependencies-principle/), attendu de lui fournir une instance de l’injection de dépendance `IBrainstormSessionRepository`. Cela rend relativement facile à tester à l’aide d’une infrastructure d’objets fictifs, tel que [Moq](https://www.nuget.org/packages/Moq/). Le `HTTP GET Index` méthode ne dispose d’aucune en boucle ou de création de branche et uniquement appelle une méthode. Pour effectuer ce test `Index` (méthode), nous devons vérifier qu’un `ViewResult` est retourné, avec une `ViewModel` à partir du référentiel `List` (méthode).
+Le contrôleur suit le [principe des dépendances explicites](http://deviq.com/explicit-dependencies-principle/), attendant qu’une injection de dépendances lui fournisse une instance de `IBrainstormSessionRepository`. Ceci le rend relativement facile à tester avec un framework d’objets fictifs, comme [Moq](https://www.nuget.org/packages/Moq/). La méthode `HTTP GET Index` n’a pas de boucle ni de branchement, et elle appelle seulement une méthode. Pour tester cette méthode `Index`, nous devons vérifier qu’un `ViewResult` est retourné, avec un `ViewModel` provenant de la méthode `List` du référentiel.
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=17-18&range=1-33,76-95)]
 
-Le `HomeController` `HTTP POST Index` (méthode) (illustré ci-dessus) devez vérifier :
+La méthode `HomeController` `HTTP POST Index` (montrée ci-dessus) doit vérifier :
 
-* La méthode d’action retourne une erreur demande incorrecte `ViewResult` avec les données appropriées lorsque `ModelState.IsValid` est`false`
+* La méthode d’action retourne une erreur Demande incorrecte : `ViewResult`, avec les données appropriées quand `ModelState.IsValid` est défini sur `false`
 
-* Le `Add` méthode sur le référentiel est appelée et un `RedirectToActionResult` est retourné avec les arguments appropriés lorsque `ModelState.IsValid` a la valeur true.
+* La méthode `Add` sur le référentiel est appelée et un `RedirectToActionResult` est retourné avec les arguments corrects quand `ModelState.IsValid` est défini sur true.
 
-État de modèle non valide peut être testé en ajoutant des erreurs à l’aide de `AddModelError` comme indiqué dans le premier test ci-dessous.
+Un état de modèle non valide peut être testé en ajoutant des erreurs avec `AddModelError`, comme le montre le premier test ci-dessous.
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs?highlight=8,15-16,37-39&range=35-75)]
 
-Le premier test confirme lorsque `ModelState` n’est pas valide, le même `ViewResult` est retourné en tant que pour un `GET` demande. Notez que le test ne tente pas de passer d’un modèle non valide. Cela ne fonctionnera pas tout de même, car la liaison de modèle n’est pas en cours d’exécution (si un [test d’intégration](xref:mvc/controllers/testing#integration-testing) utiliserait la liaison de modèle exercice). Dans ce cas, liaison de modèle n’est pas en cours de test. Ces tests unitaires Testez uniquement le code dans la méthode d’action.
+Le premier test vérifie que quand `ModelState` n’est pas valide, le même `ViewResult` est retourné, comme pour une requête `GET`. Notez que le test ne tente pas de passer un modèle non valide. Ceci ne fonctionnerait de toute façon pas, car la liaison de modèle n’est pas en cours d’exécution (même si un [test d’intégration](xref:mvc/controllers/testing#integration-testing) utiliserait une liaison de modèle de test). Dans ce cas, la liaison de modèle n’est pas testée. Ces tests unitaires testent seulement ce que fait le code dans la méthode d’action.
 
-Le deuxième test vérifie que quand `ModelState` est valide, un nouveau `BrainstormSession` est ajouté (via le référentiel), et la méthode retourne un `RedirectToActionResult` avec les propriétés attendues. Les appels factices qui ne sont pas appelés sont normalement ignoré, mais en appelant `Verifiable` à la fin de l’installation appel lui permet de le vérifier dans le test. Cette opération s’effectue avec l’appel à `mockRepo.Verify`, ce qui échoue au test si la méthode attendue n’a pas été appelée.
+Le second test vérifie que quand `ModelState` est valide, une nouvelle `BrainstormSession` est ajoutée (via le référentiel), et que la méthode retourne un `RedirectToActionResult` avec les propriétés attendues. Les appels fictifs qui ne sont pas appelés sont normalement ignorés, mais l’appel de `Verifiable` à la fin de l’appel de configuration lui permet d’être vérifié dans le test. Ceci se fait avec l’appel à `mockRepo.Verify`, qui échoue au test si la méthode attendue n’a pas été appelée.
 
 > [!NOTE]
-> La bibliothèque Moq utilisée dans cet exemple permet de facilement permet de combiner des simulacres vérifiables, ou « stricts », avec des simulacres non vérifiable (également appelés « libres » mocks ou stubs). En savoir plus sur [personnalisation du comportement fictifs avec Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
+> La bibliothèque Moq utilisée dans cet exemple facilite la combinaison d’éléments fictifs vérifiables (ou « stricts ») avec des éléments fictifs non vérifiables (également appelés éléments ou stubs « lâches»). Découvrez plus d’informations sur la [personnalisation des éléments fictifs avec Moq](https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior).
 
-Un autre contrôleur dans l’application affiche les informations liées à une séance particulier. Il inclut une logique pour traiter les valeurs d’id non valide :
+Un autre contrôleur de l’application affiche les informations relatives à une session de brainstorming particulière. Il inclut une logique pour traiter les valeurs d’ID non valides :
 
 [!code-csharp[Main](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
 
-L’action du contrôleur a trois cas à tester, une pour chaque `return` instruction :
+L’action du contrôleur a trois cas à tester, une pour chaque instruction `return` :
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs?highlight=27,28,29,46,47,64,65,66,67,68)]
 
-L’application expose les fonctionnalités comme web API (il s’agit d’une liste d’idées associé à une session de réflexion et une méthode pour ajouter de nouvelles idées à une session) :
+L’application expose des fonctionnalités comme une API web (une liste d’idées associées à une session de brainstorming et une méthode pour ajouter de nouvelles idées à une session) :
 
 <a name="ideas-controller"></a>
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs?highlight=21,22,27,30,31,32,33,34,35,36,41,42,46,52,65)]
 
-Le `ForSession` méthode retourne une liste de `IdeaDTO` types. Éviter de retourner les entités de votre domaine métier directement par le biais d’appels d’API, depuis la fréquence à laquelle ils incluent plus de données que le client API a besoin, et leur associent inutilement modèle de domaine interne de votre application avec l’API vous exposez à l’extérieur. Mappage entre les entités de domaine et les types que vous revenez sur le réseau peut être effectuée manuellement (à l’aide de LINQ `Select` comme indiqué ici) ou à l’aide d’une bibliothèque, par exemple [AutoMapper](https://github.com/AutoMapper/AutoMapper)
+La méthode `ForSession` retourne une liste de types `IdeaDTO`. Évitez de retourner vos entités du domaine métier directement via des appels d’API, car ils incluent souvent plus de données que ce dont le client de l’API a besoin, et ils couplent inutilement le modèle du domaine interne de votre application avec l’API que vous exposez en externe. Le mappage entre les entités de domaine et les types que vous retournez sur le fil peut être effectué manuellement (avec une requête LINQ `Select` comme indiqué ici) ou en utilisant une bibliothèque comme [AutoMapper](https://github.com/AutoMapper/AutoMapper)
 
-Les tests unitaires pour le `Create` et `ForSession` méthodes API :
+Les tests unitaires pour les méthodes d’API `Create` et `ForSession` :
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs?highlight=18,23,29,33,38-39,43,50,58-59,68-70,76-78&range=1-83,121-135)]
 
-Comme indiqué précédemment, pour tester le comportement de la méthode lorsque `ModelState` n’est pas valide, ajoutez une erreur de modèle au contrôleur en tant que partie du test. N’essayez pas de tester la liaison de modèle ou de la validation de modèle dans vos tests unitaires : tester simplement le comportement de votre méthode d’action une fois confronté à un particulier `ModelState` valeur.
+Comme indiqué précédemment, pour tester le comportement de la méthode quand `ModelState` n’est pas valide, ajoutez une erreur de modèle au contrôleur dans le cadre du test. N’essayez pas de tester la validation de modèle ou la liaison de modèle dans vos tests unitaires : testez simplement le comportement de votre méthode d’action quand elle est confrontée à une valeur de `ModelState` particulière.
 
-Le deuxième test dépend de l’espace de stockage retournant null, donc le référentiel fictif est configuré pour retourner une valeur null. Il est inutile de créer une base de données de test (dans la mémoire ou autre) et construire une requête qui retourne ce résultat - il peut être effectué dans une instruction unique comme indiqué.
+Le deuxième test dépend du retour d’une valeur null par le référentiel : le référentiel fictif est donc configuré pour retourner une valeur null. Il est inutile de créer une base de données de test (dans la mémoire ou ailleurs) et de construire une requête qui retourne ce résultat : ceci peut se faire en une seule instruction, comme vous pouvez le voir.
 
-Le dernier test vérifie que l’espace de stockage `Update` méthode est appelée. Comme nous l’avons fait précédemment, le fictifs est appelée avec `Verifiable` et puis factices du référentiel `Verify` méthode est appelée pour vérifier que la méthode vérifiable a été exécutée. Il n’est pas une responsabilité de test unitaire pour vous assurer que le `Update` méthode enregistré les données ; cela peut se faire avec un test d’intégration.
+Le dernier test vérifie que la méthode `Update` du référentiel est appelée. Comme nous l’avons fait précédemment, l’élément fictif est appelé avec `Verifiable`, puis la méthode `Verify` du référentiel fictif est appelée pour vérifier que la méthode vérifiable a été exécutée. Il n’est pas de la responsabilité d’un test unitaire de garantir que la méthode `Update` a enregistré les données ; ceci peut être vérifié avec un test d’intégration.
 
 ## <a name="integration-testing"></a>Tests d’intégration
 
-[Tests d’intégration](../../testing/integration-testing.md) est effectuée pour garantir correctement ensemble de modules distincts au sein de votre travail de l’application. En règle générale, tout ce que vous pouvez tester avec un test unitaire, vous pouvez également tester avec un test d’intégration, mais l’inverse n’est pas vrai. Toutefois, les tests d’intégration tendent à être beaucoup plus lent que les tests unitaires. Par conséquent, il est préférable de tester ce que vous pouvez avec des tests unitaires et utilisez des tests d’intégration pour les scénarios qui impliquent plusieurs collaborateurs.
+Les [tests d’intégration](../../testing/integration-testing.md) sont effectués pour vérifier que les modules distincts de votre application fonctionnent correctement ensemble. En règle générale, tout ce que vous pouvez tester avec un test unitaire, vous pouvez également le tester avec un test d’intégration, alors que l’inverse n’est pas vrai. Cependant, les tests d’intégration tendent à être beaucoup plus lents que les tests unitaires. Par conséquent, il est préférable de tester tout ce que vous pouvez avec des tests unitaires, et d’utiliser des tests d’intégration pour les scénarios qui impliquent plusieurs collaborateurs.
 
-Bien qu’elles peuvent toujours être utiles, les objets factices sont rarement utilisées dans les tests d’intégration. Dans les tests unitaires, objets factices sont un moyen efficace de contrôler le comportement de collaborateurs en dehors de l’unité en cours de test pour les besoins du test. Dans un test d’intégration, les collaborateurs réels sont utilisés pour vérifier que le sous-système complet ensemble fonctionne correctement.
+Bien qu’ils puissent toujours être utiles, les objets fictifs sont rarement utilisées dans les tests d’intégration. Dans les tests unitaires, les objets fictifs sont un moyen efficace de contrôler comment les collaborateurs qui se trouvent en dehors de l’unité testée doivent se comporter pour les besoins du test. Dans un test d’intégration, des collaborateurs réels sont utilisés pour vérifier que tout le sous-système fonctionne correctement.
 
 ### <a name="application-state"></a>État de l’application
 
-Un facteur important lorsque vous effectuez des tests d’intégration consiste à définir l’état de votre application. Les tests doivent être exécutés indépendamment des autres, et par conséquent, chaque test doit commencer par l’application dans un état connu. Si votre application n’utiliser une base de données de persistance, cela peut être pas un problème. Toutefois, la plupart des applications réelles conservent leur état à un certain type de magasin de données, donc toutes les modifications apportées par un seul test peut affecter un autre test, sauf si le magasin de données est réinitialisé. À l’aide de la fonction intégrée `TestServer`, il est très simple pour les applications ASP.NET Core hôte dans nos tests d’intégration, mais qui n’accorde pas nécessairement l’accès aux données qu’il utilisera. Si vous utilisez une base de données réelle, une approche consiste à avoir à l’application de se connecter à une base de données de test, lequel vos tests peuvent accéder à et vérifiez est réinitialisé à un état connu avant l’exécution de chaque test.
+Quand vous effectuez des tests d’intégration, il est important de considérer comment définir l’état de votre application. Les tests doivent être exécutés indépendamment les uns des autres, et chaque test doit donc démarrer avec l’application dans un état connu. Si votre application n’utilise pas une base de données ou si elle n’a aucun stockage persistant, ceci peut ne pas être un problème. Cependant, la plupart des applications réelles conservent leur état dans un magasin de données : toutes les modifications apportées par un test peuvent impacter un autre test, à moins que le magasin de données soit réinitialisé. Avec le `TestServer` intégré, il est très simple d’héberger des applications ASP.NET Core dans nos tests d’intégration, mais cela n’accorde pas nécessairement l’accès aux données qu’il doit utiliser. Si vous utilisez une base de données réelle, une approche consiste à ce que l’application se connecte à une base de données de test à laquelle vos tests peuvent accéder, et à vérifier qu’elle est réinitialisée à un état connu avant l’exécution de chaque test.
 
-Dans cet exemple d’application, j’utilise prise en charge de InMemoryDatabase d’Entity Framework Core, donc impossible de me connecter simplement à ce dernier à partir de mon projet de test. Au lieu de cela, j’ai exposer une `InitializeDatabase` méthode à partir de l’application `Startup` (classe), laquelle appeler au démarrage de l’application si elle se trouve dans le `Development` environnement. Mes tests d’intégration automatiquement tirer parti de cela, que leur définir l’environnement `Development`. Je n’ai pas à vous soucier de la réinitialisation de la base de données, dans la mesure où le InMemoryDatabase est réinitialisé chaque fois que l’application redémarre.
+Dans cet exemple d’application, j’utilise la prise en charge d’InMemoryDatabase par Entity Framework Core : je peux donc simplement m’y connecter à partir de mon projet de test. Au lieu de cela, j’expose une méthode `InitializeDatabase` depuis la classe `Startup` de l’application, que j’appelle au démarrage de l’application si elle se trouve dans l’environnement `Development`. Mes tests d’intégration en bénéficient automatiquement tant qu’ils définissent l’environnement sur `Development`. Je n’ai pas à me soucier de la réinitialisation de la base de données, car la base de données InMemoryDatabase est réinitialisée chaque fois que l’application redémarre.
 
-La `Startup` classe :
+La classe `Startup` :
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/src/TestingControllersSample/Startup.cs?highlight=19,20,34,35,43,52)]
 
-Vous verrez la `GetTestSession` méthode fréquemment utilisée dans les tests d’intégration ci-dessous.
+La méthode `GetTestSession` est fréquemment utilisée dans les tests d’intégration ci-dessous.
 
-### <a name="accessing-views"></a>L’accès aux vues
+### <a name="accessing-views"></a>Accès aux vues
 
-Chaque classe de test d’intégration configure le `TestServer` qui exécutera l’application ASP.NET Core. Par défaut, `TestServer` héberge l’application web dans le dossier dans lequel il est en cours d’exécution - dans ce cas, le dossier de projet de test. Par conséquent, lorsque vous essayez d’actions qui retournent du contrôleur de test `ViewResult`, vous pouvez voir cette erreur :
+Chaque classe de test d’intégration configure le `TestServer` qui doit exécuter l’application ASP.NET Core. Par défaut, `TestServer` héberge l’application web dans le dossier où elle s’exécute : dans ce cas, il s’agit du dossier du projet de test. Ainsi, quand vous essayez de tester les actions du contrôleur qui retournent `ViewResult`, vous pouvez recevoir cette erreur :
 
 ```
 The view 'Index' wasn't found. The following locations were searched:
 (list of locations)
 ```
 
-Pour corriger ce problème, vous devez configurer la racine du contenu du serveur, afin de pouvoir localiser les affichages pour le projet en cours de test. Pour cela, un appel à `UseContentRoot` dans le `TestFixture` (classe), illustré ci-dessous :
+Pour corriger ce problème, vous devez configurer la racine du contenu du serveur, pour qu’il puisse localiser les vues pour le projet à tester. Vous faites cela via un appel à `UseContentRoot` dans la classe `TestFixture`, comme illustré ci-dessous :
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/TestFixture.cs?highlight=30,33)]
 
-Le `TestFixture` classe est responsable de la configuration et la création la `TestServer`, paramétrage un `HttpClient` pour communiquer avec le `TestServer`. Chacune de l’intégration de tests utilise le `Client` propriété pour se connecter au serveur de test et effectuer une demande.
+La classe `TestFixture` est responsable de la configuration et de la création du `TestServer`, et de la configuration d’un `HttpClient` pour communiquer avec le `TestServer`. Chacun des tests d’intégration utilise la propriété `Client` pour se connecter au serveur de test et pour faire une requête.
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs?highlight=20,26,29,30,31,35,38,39,40,41,44,47,48)]
 
-Dans le premier test ci-dessus, le `responseString` contient le rendu HTML à partir de la vue, qui peut être inspectée pour confirmer qu’il contient les résultats attendus.
+Dans le premier test ci-dessus, `responseString` contient le HTML rendu de la vue, qui peut être examinée pour vérifier qu’elle contient les résultats attendus.
 
-Le deuxième test construit une publication de formulaire avec un nom de session unique et envoie à l’application, puis vérifie que la redirection attendue est retournée.
+Le deuxième test construit une requête POST de formulaire avec un nom de session unique et l’envoie à l’application, puis vérifie que la redirection attendue est retournée.
 
-### <a name="api-methods"></a>Méthodes de l’API
+### <a name="api-methods"></a>Méthodes d’API
 
-Si votre application expose web API, il judicieux d’avoir des tests automatisés confirmer qu’ils s’exécutent comme prévu. La fonction intégrée `TestServer` facilite l’API web de test. Si vos méthodes de l’API sont à l’aide de liaison de modèle, vous devez toujours vérifier `ModelState.IsValid`, et les tests d’intégration sont au bon endroit pour confirmer le fonctionne de la validation de votre modèle.
+Si votre application expose des API web, il est judicieux de vérifier par des tests automatisés qu’elles s’exécutent comme attendu. Le `TestServer` intégré facilite le test des API web. Si vos méthodes d’API utilisent la liaison de modèle, vous devez toujours vérifier `ModelState.IsValid` et déterminer si les tests d’intégration sont le bon endroit pour vérifier que la validation de votre modèle fonctionne correctement.
 
-L’ensemble de la cible de tests suivant le `Create` méthode dans le [IdeasController](xref:mvc/controllers/testing#ideas-controller) classe ci-dessus :
+L’ensemble de tests suivant cible la méthode `Create` de la classe [IdeasController](xref:mvc/controllers/testing#ideas-controller) montrée ci-dessus :
 
 [!code-csharp[Main](testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs)]
 
-Contrairement aux tests d’intégration d’actions qui retourne des vues HTML, les méthodes API web qui retournent des résultats peuvent généralement être désérialisés en tant qu’objets fortement typés, comme le montre le dernier test ci-dessus. Dans ce cas, le test désérialise le résultat à une `BrainstormSession` d’instance et confirme que l’idée a été correctement ajoutée à la collection des idées.
+Contrairement aux tests d’intégration des actions qui retournent des vues HTML, les méthodes d’API web qui retournent des résultats peuvent généralement être désérialisées en tant qu’objets fortement typés, comme le montre le dernier test ci-dessus. Dans ce cas, le test désérialise le résultat en une instance de `BrainstormSession` et vérifie que l’idée a été correctement ajoutée à la collection d’idées.
 
-Vous trouverez des exemples supplémentaires de tests d’intégration dans cet article [exemple de projet](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample).
+Vous pouvez trouver d’autres exemples de tests d’intégration dans [l’exemple de projet](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample) de cet article.

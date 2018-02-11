@@ -1,51 +1,51 @@
 ---
-title: "Distributed d’assistance de balise de Cache | Documents Microsoft"
+title: "Tag Helper Cache distribué dans ASP.NET Core"
 author: pkellner
-description: "Montre comment travailler avec l’application d’assistance de balise de Cache"
-ms.author: riande
+description: Montre comment utiliser un Tag Helper Cache
 manager: wpickett
+ms.author: riande
 ms.date: 02/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: f5844dade218fdba1169a55fe3ce251a9cc03db2
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
-ms.translationtype: MT
+ms.openlocfilehash: 710477732b865e2e3821102d34545bbd4e0a5919
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="distributed-cache-tag-helper"></a>Application d’assistance de balise de Cache distribué
+# <a name="distributed-cache-tag-helper"></a>Tag Helper Cache distribué
 
 Par [Peter Kellner](http://peterkellner.net) 
 
 
-L’application d’assistance de balise de Cache distribué permet d’améliorer considérablement les performances de votre application ASP.NET Core en mettant en cache de son contenu à une source de cache distribué.
+Le Tag Helper Cache distribué permet d’améliorer considérablement les performances de votre application ASP.NET Core en mettant en cache son contenu dans une source de cache distribué.
 
-L’assistance de balise de Cache distribué hérite de la même classe de base que l’application d’assistance de balise de Cache.  Tous les attributs associés à l’application d’assistance de balise de Cache fonctionne également sur l’assistance de balise distribué.
+Le Tag Helper Cache distribué hérite de la même classe de base que le Tag Helper Cache.  Tous les attributs associés au Tag Helper Cache fonctionnent également sur le Tag Helper Cache distribué.
 
 
-L’assistance de balise de Cache distribué suit le **principe de dépendances explicites** appelé **Injection de constructeur**.  Plus précisément, le `IDistributedCache` conteneur d’interface est passée dans le constructeur de la de Distributed balise Cache l’assistance.  Si aucune implémentation concrète de `IDistributedCache` a été créé dans `ConfigureServices`, se trouve généralement dans startup.cs, puis l’assistance de balise de Cache distribué utilisera le même fournisseur en mémoire pour le stockage des données mises en cache en tant que l’application d’assistance de balise de Cache de base.
+Le Tag Helper Cache distribué suit le **principe des dépendances explicites** appelé **injection de constructeur**.  Plus précisément, le conteneur d’interface `IDistributedCache` est passé dans le constructeur du Tag Helper Cache distribué.  Si aucune implémentation concrète d’`IDistributedCache` n’a été créée dans `ConfigureServices`, qui se trouve généralement dans startup.cs, le Tag Helper Cache distribué utilise le même fournisseur en mémoire pour le stockage des données mises en cache que le Tag Helper Cache de base.
 
-## <a name="distributed-cache-tag-helper-attributes"></a>Distributed des attributs de programme d’assistance de balise de Cache
-
-- - -
-
-### <a name="enabled-expires-on-expires-after-expires-sliding-vary-by-header-vary-by-query-vary-by-route-vary-by-cookie-vary-by-user-vary-by-priority"></a>activé expire sur expire après expiration coulissant varient en fonction de l’en-tête varient par requête varient par itinéraire varient par cookie varient par utilisateur varient-par priorité
-
-Consultez d’assistance de balise de Cache pour les définitions. Application d’assistance de balise de Cache distribué hérite de la même classe que l’application d’assistance de balise de Cache tous ces attributs sont communs à partir de l’application d’assistance de balise de Cache.
+## <a name="distributed-cache-tag-helper-attributes"></a>Attributs de Tag Helper Cache distribué
 
 - - -
 
-### <a name="name-required"></a>nom (obligatoire)
+### <a name="enabled-expires-on-expires-after-expires-sliding-vary-by-header-vary-by-query-vary-by-route-vary-by-cookie-vary-by-user-vary-by-priority"></a>enabled expires-on expires-after expires-sliding vary-by-header vary-by-query vary-by-route vary-by-cookie vary-by-user vary-by priority
+
+Consultez le Tag Helper Cache pour obtenir les définitions. Comme le Tag Helper Cache distribué hérite de la même classe que le Tag Helper Cache, tous ces attributs sont communs à partir du Tag Helper Cache.
+
+- - -
+
+### <a name="name-required"></a>name (obligatoire)
 
 | Type d’attribut    | Exemple de valeur     |
 |----------------   |----------------   |
 | chaîne    | "my-distributed-cache-unique-key-101"     |
 
-Requis `name` attribut est utilisé comme une clé pour que le cache stocké pour chaque instance d’une assistance de balise de Cache distribué.  Contrairement à la base du Cache balise d’assistance qui affecte une clé à chaque instance d’assistance de balise de Cache basée sur le nom de la page Razor et l’emplacement de l’application d’assistance de balise dans la page razor, l’assistance de balise de Cache distribué base uniquement sa clé sur l’attribut`name`
+L’attribut `name` obligatoire est utilisé comme clé de ce cache stockée pour chaque instance d’un Tag Helper Cache distribué.  Contrairement au Tag Helper Cache de base qui affecte une clé à chaque instance de Tag Helper Cache selon le nom de la page Razor et l’emplacement du Tag Helper dans la page Razor, le Tag Helper Cache distribué base uniquement sa clé sur l’attribut `name`
 
-Exemple d’utilisation :
+Exemple d’utilisation :
 
 ```cshtml
 <distributed-cache name="my-distributed-cache-unique-key-101">
@@ -53,11 +53,11 @@ Exemple d’utilisation :
 </distributed-cache>
 ```
 
-## <a name="distributed-cache-tag-helper-idistributedcache-implementations"></a>Distributed Cache balise d’assistance IDistributedCache implémentations
+## <a name="distributed-cache-tag-helper-idistributedcache-implementations"></a>Implémentations IDistributedCache de Tag Helper Cache distribué
 
-Il existe deux implémentations de `IDistributedCache` intégrée à ASP.NET Core.  Une est basée sur **Sql Server** et l’autre est basée sur **Redis**. Vous trouverez des détails de ces implémentations à la ressource référencée ci-dessous nommée « utilisation d’un cache distribué ». Les deux implémentations impliquent la définition d’une instance de `IDistributedCache` dans du ASP.NET Core **startup.cs**.
+Il existe deux implémentations d’`IDistributedCache` intégrées à ASP.NET Core.  L’une est basée sur **Sql Server** et l’autre sur **Redis**. Vous trouverez les détails de ces implémentations au niveau de la ressource référencée ci-dessous intitulée « Utilisation d’un cache distribué ». Les deux implémentations impliquent la définition d’une instance d’`IDistributedCache` dans le fichier **startup.cs** d’ASP.NET Core.
 
-Il n’existe aucun attribut de balise associés spécifiquement à l’aide d’une implémentation spécifique de `IDistributedCache`.
+Aucun attribut de balise n’est spécifiquement associé à l’utilisation d’une implémentation d’`IDistributedCache`.
 
 
 
