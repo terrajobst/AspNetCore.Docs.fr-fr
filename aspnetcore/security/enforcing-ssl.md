@@ -26,7 +26,7 @@ Ce document montre comment :
 
 ## <a name="require-ssl"></a>Exiger SSL
 
-L'attribut [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) est utilisée pour exiger le protocol SSL. Vous pouvez décorer les contrôleurs ou méthodes avec cet attribut, ou vous pouvez l’appliquer globalement, comme indiqué ci-dessous :
+L'attribut [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) est utilisé pour exiger le protocol SSL. Vous pouvez décorer les contrôleurs ou méthodes avec cet attribut, ou vous pouvez l’appliquer globalement, comme indiqué ci-dessous :
 
 Ajoutez le code suivant à la méthode `ConfigureServices` dans la classe `Startup`:
 
