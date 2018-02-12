@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
-ms.openlocfilehash: 92a6dee24b8942d721e3537a712be141155e61df
-ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
+ms.openlocfilehash: 058b7c6fe6eeeea4403e7e5fdc05bb44d2ba1300
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -255,7 +255,7 @@ La liste des modèles de projet inclut un nouveau modèle Application Intranet. 
 
 #### <a name="project-templates-are-now-html5-enabled"></a>Modèles de projet sont maintenant HTML5 activé
 
-La boîte de dialogue Nouveau projet contient maintenant une option pour ajouter des fonctionnalités HTML5 aux modèles de projet. En sélectionnant l’option entraîne la génération des vues qui contiennent la nouvelle HTML5 `<header>`, `<footer>`, et `<navigation>` éléments. éléments.
+La boîte de dialogue Nouveau projet contient maintenant une option pour ajouter des fonctionnalités HTML5 aux modèles de projet. En sélectionnant l’option entraîne la génération des vues qui contiennent la nouvelle HTML5 `<header>`, `<footer>`, et `<navigation>` éléments.
 
 Notez que des versions antérieures des navigateurs ne prennent pas en charge les balises HTML5. Pour résoudre cette limitation, les modèles de projet HTML5 incluent une référence à la bibliothèque Modernizr. (Consultez la section suivante.)
 
@@ -608,7 +608,7 @@ Vous pouvez également appliquer pour désactiver la validation de la demande po
 ## <a name="breaking-changes"></a>Modifications avec rupture
 
 - L’ordre d’exécution pour les filtres d’exception a été modifiée pour les filtres d’exception qui ont le même *commande* valeur. Dans ASP.NET MVC 2 et versions antérieures, les filtres d’exception sur le contrôleur ayant le même *commande* comme ceux qui sont sur une méthode d’action étaient exécutés avant les filtres d’exception sur la méthode d’action. Cela serait généralement le cas lorsque les filtres d’exception étaient appliqués sans spécifier *commande* valeur. Dans ASP.NET MVC 3, cette commande a été inversée afin que le Gestionnaire d’exceptions plus spécifique s’exécute en premier. Comme dans les versions antérieures, si la *commande* propriété est explicitement spécifiée, les filtres sont exécutés dans l’ordre spécifié.
-- Ajouter une nouvelle propriété nommée *FileExtensions* à la *VirtualPathProviderViewEngine* classe de base. Lorsque vous recherchez une vue par le chemin d’accès (et non pas par nom), seules les vues avec une extension de fichier contenues dans la liste spécifiée par cette nouvelle propriété est considérée comme. Ceci est une modification avec rupture pour les personnes inscrites personnalisé fournisseur pour activer une extension de fichier personnalisés pour les modes de formulaire web de build et et font référence à ces vues à l’aide d’un chemin d’accès complet, plutôt qu’un nom. La solution de contournement consiste à modifier la valeur de la *FileExtensions* propriété à inclure l’extension de fichier personnalisé.
+- Ajouter une nouvelle propriété nommée *FileExtensions* à la *VirtualPathProviderViewEngine* classe de base. Lorsque vous recherchez une vue par le chemin d’accès (et non pas par nom), seules les vues avec une extension de fichier contenues dans la liste spécifiée par cette nouvelle propriété est considérée comme. Il s’agit d’une modification avec rupture pour ceux qui font référence à ces vues à l’aide d’un chemin d’accès complet, plutôt qu’un nom et les inscrire un fournisseur de génération personnalisée pour activer une extension de fichier personnalisés pour les modes de formulaire web. La solution de contournement consiste à modifier la valeur de la *FileExtensions* propriété à inclure l’extension de fichier personnalisé.
 
 <a id="_Toc276711795"></a>
 ## <a name="known-issues"></a>Problèmes connus

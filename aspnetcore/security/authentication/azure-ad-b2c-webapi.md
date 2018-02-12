@@ -10,17 +10,17 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: a63bfc26bb6b0f5ea1c64641d6f57a3555d7f401
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: d768e2daf2464b282b097e935ef6c5f85e8705f5
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c"></a>Authentification de cloud de site web d’API avec Azure Active Directory B2C
 
 Auteur : [Cam Soper](https://twitter.com/camsoper)
 
-[Azure B2C Active Directory](/azure/active-directory-b2c/active-directory-b2c-overview) (B2C Active Directory de Azure) est une solution de gestion des identités de cloud pour les applications web et mobiles. Le service fournit l’authentification pour les applications hébergées dans le cloud et locales. Types d’authentification incluent les comptes individuels, les comptes de réseau social et fédéré de comptes d’entreprise. En outre, Azure AD B2C peut fournir l’authentification multifacteur avec une configuration minimale.
+[Azure B2C Active Directory](/azure/active-directory-b2c/active-directory-b2c-overview) (B2C Active Directory de Azure) est une solution de gestion des identités de cloud pour les applications web et mobiles. Le service fournit l’authentification pour les applications hébergées dans le cloud et locales. Types d’authentification, les comptes individuels, les comptes de réseau social et fédérés des comptes d’entreprise. En outre, Azure AD B2C peut fournir l’authentification multifacteur avec une configuration minimale.
 
 > [!TIP]
 > Azure Active Directory (Azure AD) Azure Active Directory B2C sont des offres de produits distincts. Un locataire Azure AD représente une organisation, alors qu’un locataire Azure AD B2C représente une collection d’identités à utiliser avec les applications de confiance. Pour plus d’informations, consultez [Azure AD B2C : Forum aux questions (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).

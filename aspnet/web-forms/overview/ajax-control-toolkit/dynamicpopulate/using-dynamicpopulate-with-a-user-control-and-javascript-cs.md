@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3f78da3898d44cc2cf1db6623ebcaf6a73ebbf3e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0d98177561b72ffbe05455f785e156f91e450d36
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#)
 ====================
@@ -67,7 +67,7 @@ Enfin, ajoutez le contrôle utilisateur à la page. Il vous suffit de définir s
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample8.aspx)]
 
-Et voilà ! La page se comporte comme prévu : un utilisateur clique sur des boutons radio, le contrôle de la boîte à outils appelle le service web et affiche la date actuelle au format souhaité.
+Et voilà ! La page se comporte comme prévu : un utilisateur clique sur l’un des boutons radio, le contrôle de la boîte à outils appelle le service web et affiche la date actuelle au format souhaité.
 
 
 [![Les boutons de case d’option se trouvent dans un contrôle utilisateur](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image1.png)

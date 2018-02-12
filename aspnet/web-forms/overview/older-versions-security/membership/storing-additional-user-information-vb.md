@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7b9acc02a1280446b9826c3f8f0022b4726139c7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a40238605e8fb3e26d80264af9156eec634affbe
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="storing-additional-user-information-vb"></a>Le stockage des informations utilisateur supplémentaires (VB)
 ====================
@@ -353,7 +353,7 @@ J’ai terminait suivant `LayoutTemplate`, `ItemTemplate`, et `ItemSeparatorTemp
 
 Le `LayoutTemplate` définit le balisage émis par le contrôle, tandis que le `ItemTemplate` affiche chaque élément retourné par le SqlDataSource. Le `ItemTemplate`de balisage qui en résulte est placé dans le `LayoutTemplate`de `itemPlaceholder` contrôle. Outre la `itemPlaceholder`, le `LayoutTemplate` inclut un contrôle DataPager, ce qui limite le ListView pour afficher seulement 10 perso par page (la valeur par défaut) et restitue une interface de pagination.
 
-Mon `ItemTemplate` affiche l’objet de chaque commentaire or dans un `<h4>` élément avec le corps situé au-dessous de l’objet. Notez que cette syntaxe permettant d’afficher le corps prend les données retournées par le `Eval("Body")` instruction de la liaison de données, il convertit en une chaîne, et les sauts de ligne de la remplace par la `<br />` élément. Cette conversion est nécessaire pour afficher les sauts de ligne entrés lors de l’envoi du commentaire, car l’espace blanc est ignoré par le langage HTML. Signature de l’utilisateur est affiché sous le corps en caractères italiques, suivi par ville accueil de l’utilisateur, un lien vers sa page d’accueil, la date et heure que le commentaire a été effectué et le nom d’utilisateur de la personne qui l’a laissé le commentaire.
+Mon `ItemTemplate` affiche l’objet de chaque commentaire or dans un `<h4>` élément avec le corps situé au-dessous de l’objet. Notez que syntaxe permettant d’afficher le corps prend les données retournées par le `Eval("Body")` instruction de la liaison de données, il convertit en une chaîne, et les sauts de ligne de la remplace par la `<br />` élément. Cette conversion est nécessaire pour afficher les sauts de ligne entrés lors de l’envoi du commentaire, car l’espace blanc est ignoré par le langage HTML. Signature de l’utilisateur est affiché sous le corps en caractères italiques, suivi par ville accueil de l’utilisateur, un lien vers sa page d’accueil, la date et heure que le commentaire a été effectué et le nom d’utilisateur de la personne qui l’a laissé le commentaire.
 
 Prenez un moment pour afficher la page via un navigateur. Vous devez voir les commentaires que vous avez ajouté à l’or à l’étape 5 affichés ici.
 

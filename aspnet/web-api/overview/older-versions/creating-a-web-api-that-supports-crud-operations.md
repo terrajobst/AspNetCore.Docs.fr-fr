@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
-ms.openlocfilehash: a91bf065c9ce0fc5bd9b7115340edabea975a7e0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69b7d5453b6ff36d6e28a69428b016cb8cfd06e9
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Activation des opérations CRUD dans ASP.NET Web API 1
 ====================
@@ -42,11 +42,11 @@ Exposent les API de produits suivants méthodes.
 | Action | Méthode HTTP | URI relatif |
 | --- | --- | --- |
 | Obtenir une liste de tous les produits | GET | produits/api / |
-| Obtenir un produit par ID | GET | /API/produits/*id* |
-| Obtenir un produit par catégorie | GET | produits/api / ? catégorie =*catégorie* |
-| Créer un nouveau produit | PUBLIER | produits/api / |
-| Mettre à jour un produit | PUT | /API/produits/*id* |
-| Supprimer un produit | SUPPR | /API/produits/*id* |
+| Obtenir un produit par ID | GET | /api/products/*id* |
+| Obtenir un produit par catégorie | GET | /api/products?category=*category* |
+| Créer un nouveau produit | POST | produits/api / |
+| Mettre à jour un produit | PUT | /api/products/*id* |
+| Supprimer un produit | SUPPR | /api/products/*id* |
 
 Notez que certaines des URI incluent l’ID de produit dans le chemin d’accès. Par exemple, pour obtenir le produit dont l’ID est égal à 28, le client envoie une demande GET pour `http://hostname/api/products/28`.
 
@@ -57,7 +57,7 @@ Les API de produits définit l’URI pour les deux types de ressources :
 | Ressource | URI |
 | --- | --- |
 | La liste de tous les produits. | produits/api / |
-| Un produit individuel. | /API/produits/*id* |
+| Un produit individuel. | /api/products/*id* |
 
 ### <a name="methods"></a>Méthodes
 
@@ -127,7 +127,7 @@ Si vous avez travaillé avec ASP.NET MVC, puis vous êtes déjà familiarisé av
 
 Pour commencer, supprimez ValuesController, en double-cliquant sur le fichier dans l’Explorateur de solutions et en sélectionnant **supprimer.** Maintenant, ajoutez un nouveau contrôleur, comme suit :
 
-Dans **l’Explorateur de solutions**, avec le bouton droit le dossier contrôleurs. Sélectionnez **ajouter** , puis sélectionnez **contrôleur**.
+Dans **l’Explorateur de solutions**, cliquez sur le dossier contrôleurs. Sélectionnez **ajouter** , puis sélectionnez **contrôleur**.
 
 ![](creating-a-web-api-that-supports-crud-operations/_static/image6.png)
 
@@ -158,8 +158,8 @@ L’API ProductStore expose plusieurs &quot;lire&quot; actions en tant que méth
 | Action | Méthode HTTP | URI relatif |
 | --- | --- | --- |
 | Obtenir une liste de tous les produits | GET | produits/api / |
-| Obtenir un produit par ID | GET | /API/produits/*id* |
-| Obtenir un produit par catégorie | GET | produits/api / ? catégorie =*catégorie* |
+| Obtenir un produit par ID | GET | /api/products/*id* |
+| Obtenir un produit par catégorie | GET | /api/products?category=*category* |
 
 Pour obtenir la liste de tous les produits, ajoutez cette méthode à la `ProductsController` classe :
 

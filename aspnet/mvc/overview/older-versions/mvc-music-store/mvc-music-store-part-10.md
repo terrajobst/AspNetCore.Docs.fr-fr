@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-10
 msc.type: authoredcontent
-ms.openlocfilehash: af08039de2d810948b9ab64974111b0346c7fa0f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2a65e4b793b615c45cdf31166e0a000ae72ee534
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="part-10-final-updates-to-navigation-and-site-design-conclusion"></a>Partie 10 : Les mises à jour finales à la Navigation et la conception de Site, Conclusion
 ====================
@@ -135,7 +135,7 @@ Maintenant lorsque nous exécutons l’application, nous allons voir notre page 
 
 ## <a name="conclusion"></a>Conclusion
 
-Nous avons vu que que ASP.NET MVC facilite la création d’un site Web sophistiqué avec un accès de base de données, l’appartenance, AJAX, etc. assez rapidement. Nous espérons que ce didacticiel vous a accordé les outils que vous avez besoin pour commencer à créer votre propre MVC ASP.NET applications !
+Nous avons vu que ASP.NET MVC facilite la création d’un site Web sophistiqué avec un accès de base de données, l’appartenance, AJAX, etc. assez rapidement. Nous espérons que ce didacticiel vous a accordé les outils que vous avez besoin pour commencer à créer votre propre MVC ASP.NET applications !
 
 
 >[!div class="step-by-step"]

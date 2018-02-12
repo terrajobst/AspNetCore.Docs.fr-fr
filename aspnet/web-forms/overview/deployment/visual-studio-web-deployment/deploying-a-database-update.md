@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-database-update
 msc.type: authoredcontent
-ms.openlocfilehash: 3fd29a5b26c564d88e4128d1904fab00b57a3b7c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8e875a4282df78ec647579e74c3fbeabd2495fc2
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-database-update"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement d’une mise à jour de la base de données
 ====================
@@ -90,7 +90,7 @@ Dans cette section, vous ajoutez une colonne de date de naissance à la `Person`
 6. Dans le **publication Web en un clic** barre d’outils, cliquez sur le **Production** le profil de publication, puis cliquez sur **publier le site Web**.
 7. Exécutez le **instructeurs** page en production pour vérifier que la mise à jour a été déployé.
 
-    Pour une une mise à jour d’application réelles de production qui inclut une modification de la base de données en général également suivre l’application en mode hors connexion durant le déploiement à l’aide de *application\_offline.htm*, comme vous l’avez vu dans le didacticiel précédent.
+    Pour une mise à jour d’application réelles de production qui inclut une modification de la base de données vous pouvait également prendre l’application en mode hors connexion durant le déploiement à l’aide de *application\_offline.htm*, comme vous l’avez vu dans le didacticiel précédent.
 
 ## <a name="deploy-a-database-update-by-using-the-dbdacfx-provider"></a>Déployer une mise à jour de la base de données en utilisant le fournisseur dbDacFx
 
@@ -160,7 +160,7 @@ Pour déployer à l’aide du fournisseur dbDacFx, il vous suffit de sélectionn
 
     Pour une mise à jour d’application réelles de production qui inclut une modification de la base de données en général également suivre l’application en mode hors connexion durant le déploiement en téléchargeant *application\_offline.htm* avant la publication et en la supprimant Ensuite, comme vous l’avez vu dans [du didacticiel précédent](deploying-a-code-update.md).
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Vous avez maintenant déployé une mise à jour d’application qui comportait une modification de la base de données à l’aide de Migrations Code First et le fournisseur dbDacFx.
 

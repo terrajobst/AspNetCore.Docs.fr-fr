@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
-ms.openlocfilehash: 5d6e6727f387d047e7b41a6efa0d2dadf467558e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 744396cb0c95d1887f259b1e2e890bd06ef7d049
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="external-authentication-services-with-aspnet-web-api-c"></a>Service d’authentification externe avec l’API Web ASP.NET (c#)
 ====================
@@ -39,7 +39,7 @@ Visual Studio 2013 et ASP.NET 4.5.1 développer les options de sécurité pour [
     - [Comment obtenir les paramètres de votre Application pour l’authentification Microsoft](#OBTAIN)
     - [Facultatif : Désactiver l’inscription du Local](#DISABLE)
 
-### <a name="prerequisites"></a>Conditions préalables
+### <a name="prerequisites"></a>Prérequis
 
 Pour suivre les exemples de cette procédure pas à pas, vous devez disposer des éléments suivants :
 
@@ -243,8 +243,8 @@ Une fois, vous avez obtenu votre clé de consommateur et de la question secrète
 
 Pour plus d’informations sur la création d’applications qui utilisent OAuth et OpenID, consultez les URL suivantes :
 
-- [https://go.Microsoft.com/fwlink/?LinkId=252166](https://go.microsoft.com/fwlink/?LinkID=252166)
-- [https://go.Microsoft.com/fwlink/?LinkId=243995](https://go.microsoft.com/fwlink/?LinkID=243995)
+- [https://go.microsoft.com/fwlink/?LinkID=252166](https://go.microsoft.com/fwlink/?LinkID=252166)
+- [https://go.microsoft.com/fwlink/?LinkID=243995](https://go.microsoft.com/fwlink/?LinkID=243995)
 
 <a id="COMBINE"></a>
 ### <a name="combining-external-authentication-services"></a>Combinaison de Services d’authentification externe
@@ -263,7 +263,7 @@ Certains fournisseurs d’authentification externe ne gèrent pas le test de vot
     1. Ouvrez une invite de commandes avec élévation de privilèges dans Windows.
     2. Tapez la commande suivante :
 
-        <kbd>Notepad %WinDir%\system32\drivers\etc\hosts</kbd>
+        <kbd>notepad %WinDir%\system32\drivers\etc\hosts</kbd>
     3. Dans le fichier d’hôtes, ajoutez une entrée semblable à la suivante :
 
         <kbd>127.0.0.1 www.wingtiptoys.com</kbd>
@@ -281,7 +281,7 @@ Certains fournisseurs d’authentification externe ne gèrent pas le test de vot
         <kbd>CD /d &quot;%ProgramFiles%\IIS Express&quot;</kbd>
     3. Tapez la commande suivante pour ajouter le nom de domaine complet à votre application :
 
-        <kbd>définir la configuration de appcmd.exe-section:system.applicationHost/sites / +&quot;[nom = 'WebApplication1'] .bindings. [ protocole = « http », bindingInformation ='* :80:www.wingtiptoys.com']&quot; /commit:apphost</kbd>
+        <kbd>appcmd.exe set config -section:system.applicationHost/sites /+&quot;[name='WebApplication1'].bindings.[protocol='http',bindingInformation='*:80:www.wingtiptoys.com']&quot; /commit:apphost</kbd>
 
  Où **WebApplication1** est le nom de votre projet et **bindingInformation** contient le numéro de port et le nom de domaine complet que vous souhaitez utiliser pour votre test.
 
@@ -303,7 +303,7 @@ Liaison d’une application Windows Live pour Microsoft Authentication est un pr
 <a id="DISABLE"></a>
 ### <a name="optional-disable-local-registration"></a>Facultatif : Désactiver l’inscription du Local
 
-La fonctionnalité de l’inscription du local ASP.NET actuelle n’empêche pas les programmes automatiques (robots) à partir de la création de membres comptes ; par exemple, en utilisant une technologie de prévention des robots et la validation comme [CAPTCHA](../../../web-pages/overview/security/16-adding-security-and-membership.md). Pour cette raison, vous devez supprimer le lien de formulaire et d’enregistrement de connexion locale sur la page de connexion. Pour ce faire, ouvrez le  *\_Login.cshtml* page dans votre projet, puis commentez les lignes pour le panneau de connexion d’accès local et le lien d’inscription. La page résultante doit se présenter comme à l’exemple de code suivant :
+La fonctionnalité de l’inscription du local ASP.NET actuelle n’empêche pas les programmes automatiques (robots) à partir de la création de membres comptes ; par exemple, en utilisant une technologie de prévention des robots et la validation comme [CAPTCHA](../../../web-pages/overview/security/16-adding-security-and-membership.md). Pour cette raison, vous devez supprimer le lien de formulaire et d’enregistrement de connexion locale sur la page de connexion. Pour ce faire, ouvrez le  *\_Login.cshtml* page dans votre projet, puis commentez les lignes pour le panneau de connexion d’accès local et le lien d’inscription. La page résultante doit ressembler à l’exemple de code suivant :
 
 [!code-html[Main](external-authentication-services/samples/sample10.html)]
 

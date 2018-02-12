@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: f43f0a2dd80e26ecff15e5742e18264ddb5b26aa
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: bbc1f6ef291eddd7488531943b146bb67ae7ee02
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>Vue d’ensemble des fournisseurs de stockage personnalisé d’identité ASP.NET
 ====================
@@ -128,7 +128,7 @@ La classe IdentityUser implémente IUser et contient des propriétés supplémen
 <a id="userstore"></a>
 ## <a name="customize-the-user-store"></a>Personnaliser le magasin de l’utilisateur
 
-Vous créer également une classe UserStore qui fournit les méthodes pour toutes les opérations de données sur l’utilisateur. Cette classe est équivalente à la [UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/library/dn315446(v=vs.108).aspx) classe dans le [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) espace de noms. Dans votre classe UserStore, vous implémentez le [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) et une des interfaces facultatives. Vous sélectionnez les interfaces facultatives à implémenter, selon les fonctionnalités que vous souhaitez fournir dans votre application.
+Vous créer également une classe UserStore qui fournit les méthodes pour toutes les opérations de données sur l’utilisateur. Cette classe est équivalente à la [UserStore&lt;TUser&gt; ](https://msdn.microsoft.com/library/dn315446(v=vs.108).aspx) classe dans le [Microsoft.ASP.NET.Identity.EntityFramework](https://msdn.microsoft.com/library/microsoft.aspnet.identity.entityframework(v=vs.108).aspx) espace de noms. Dans votre classe UserStore, vous implémentez le [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) et une des interfaces facultatives. Vous sélectionnez les interfaces facultatives à implémenter basé sur les fonctionnalités que vous souhaitez fournir dans votre application.
 
 L’illustration suivante montre la classe UserStore, que vous devez créer et les interfaces appropriées.
 

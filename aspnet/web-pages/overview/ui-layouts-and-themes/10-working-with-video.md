@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/10-working-with-video
 msc.type: authoredcontent
-ms.openlocfilehash: a14659997d86d1b5cf5381e21e997c1a03a3f57c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4e7dc50fb60546d1e1f10a16ed863c0b812ec82b
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="displaying-video-in-an-aspnet-web-pages-razor-site"></a>Affichant la vidéo dans un Site de Pages (Razor) Web ASP.NET
 ====================
@@ -82,7 +82,7 @@ Le `MediaPlayer` lecteur de la `Video` assistance vous permet de lire les vidéo
 - La vidéo est lue automatiquement lors de la charge de la page.
 - La vidéo est lue une fois (elle ne de boucle).
 - Le lecteur affiche l’ensemble des contrôles dans l’interface utilisateur.
-- La vidéo est lue une fenêtre.
+- La vidéo est lue dans une fenêtre.
 
 ### <a name="the-silverlight-player"></a>Le lecteur Silverlight
 

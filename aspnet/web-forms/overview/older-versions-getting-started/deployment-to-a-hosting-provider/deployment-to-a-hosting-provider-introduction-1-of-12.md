@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 9c0edb301de85d15b9a3527382b72211f6f3d3ec
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a0f38c83bd9231dbd37d3d505c90316af521b336
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio : Introduction - 1 de 12
 ====================
@@ -137,7 +137,7 @@ Les fonctionnalités suivantes de l’application affectent le déploiement ou q
 - L’application utilise Entity Framework 5.0 pour accéder aux données dans la base de données de l’application. L’assembly qui contient l’Entity Framework 5.0 doit être déployé avec l’application.
 - L’application utilise une application tierce journalisation des erreurs et utilitaire de création de rapports. Cet utilitaire est fourni dans un assembly qui doit être déployé avec l’application.
 - L’utilitaire de journalisation erreur écrit les informations d’erreur dans des fichiers XML dans un dossier. Vous devez vous assurer que le compte ASP.NET sous lequel s’exécute dans le site déployé a l’autorisation d’écriture à ce dossier, et vous devez exclure ce dossier de déploiement. (Dans le cas contraire, données de journal d’erreur à partir de l’environnement de test peuvent être déployées en production et/ou de fichiers de journal des erreurs de production peuvent être supprimés.)
-- L’application inclut certains paramètres qui doivent être modifiées dans déployé *Web.config* selon l’environnement de destination (test ou production) et d’autres paramètres qui doivent être modifiés en fonction de la build configuration (Debug ou Release).
+- L’application inclut certains paramètres qui doivent être modifiées dans la version déployée *Web.config* selon l’environnement de destination (test ou production) et d’autres paramètres qui doivent être modifiés en fonction de la build configuration (Debug ou Release).
 - La solution Visual Studio inclut un projet de bibliothèque de classes. Uniquement l’assembly généré par ce projet doit être déployé, pas le projet lui-même.
 
 Dans ce premier didacticiel de la série, vous avez téléchargé l’exemple de projet Visual Studio et passé en revue les fonctionnalités du site qui affectent la façon dont vous déployez l’application. Dans les didacticiels suivants vous préparer pour le déploiement en définissant une partie de ces éléments pour être géré automatiquement. D’autres que vous prenez soin de manuellement.

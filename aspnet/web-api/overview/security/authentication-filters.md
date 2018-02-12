@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/authentication-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 7c704cc351876b49ec143a49b25cc0ca83876e06
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 16e451f52799625983368bc938091eff47019b52
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="authentication-filters-in-aspnet-web-api-2"></a>Filtres d’authentification dans ASP.NET Web API 2
 ====================
@@ -160,7 +160,7 @@ Remarque : L’authentification de base extraits cette logique, en le plaçant 
 
 « Authentification au niveau hôte » est authentification réalisée par l’hôte (par exemple, IIS), avant du framework atteint l’API Web de demande.
 
-Souvent, peut souhaité pour activer l’authentification au niveau de l’hôte pour le reste de votre application, mais la désactiver pour les contrôleurs de votre API Web. Par exemple, un scénario typique est activer l’authentification par formulaire au niveau de l’hôte, mais d’utiliser l’authentification basée sur le jeton pour l’API Web.
+Souvent, vous souhaitez activer l’authentification au niveau de l’hôte pour le reste de votre application, mais la désactiver pour les contrôleurs de votre API Web. Par exemple, un scénario typique est activer l’authentification par formulaire au niveau de l’hôte, mais d’utiliser l’authentification basée sur le jeton pour l’API Web.
 
 Pour désactiver l’authentification au niveau de l’hôte dans le pipeline de l’API Web, appelez `config.SuppressHostPrincipal()` dans votre configuration. Cela provoque des API Web supprimer la **IPrincipal** à partir de toute demande qui entre dans le pipeline de l’API Web. En réalité, il &quot;Annuler-authentifie&quot; la demande.
 

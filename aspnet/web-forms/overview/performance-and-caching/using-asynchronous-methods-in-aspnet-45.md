@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 73e46134cfafb9edc4c1888211eab44b8f2bf828
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d3eb588aad592605a8e368d1af6e62ece34b79d0
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>Utilisation de méthodes asynchrones dans ASP.NET 4.5
 ====================
@@ -123,7 +123,7 @@ La version asynchrone :
 - Le `RegisterAsyncTask` méthode est utilisée pour enregistrer une tâche asynchrone qui contient le code qui s’exécute de façon asynchrone.
 - La nouvelle `GetGizmosSvcAsync` méthode est marquée avec la [async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) (mot clé), qui indique au compilateur pour générer des rappels pour les parties du corps et pour créer automatiquement un `Task` qui est retourné.
 - &quot;Async&quot; a été ajouté au nom de méthode asynchrone. Ajoutez « Async » n’est pas obligatoire, mais est la convention lors de l’écriture de méthodes asynchrones.
-- Le type de retour de la nouvelle nouvelle `GetGizmosSvcAsync` méthode est `Task`. Le type de retour de `Task` représente le travail en cours ainsi que les appelants de la méthode avec un descripteur via lequel attendre la fin de l’opération asynchrone.
+- Le type de retour de la nouvelle `GetGizmosSvcAsync` méthode est `Task`. Le type de retour de `Task` représente le travail en cours ainsi que les appelants de la méthode avec un descripteur via lequel attendre la fin de l’opération asynchrone.
 - Le [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) (mot clé) a été appliqué à l’appel du service web.
 - L’API de service web asynchrone a été appelée (`GetGizmosAsync`).
 

@@ -12,11 +12,11 @@ ms.technology:
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 8f28116f88f3cf5143d3d5c9821519d62c4e5452
-ms.sourcegitcommit: 6541c8b11001dd617adf5eb04c814cda165070b9
+ms.openlocfilehash: ceb7d3a7d1cb1685c0f1e62698f508c9a73e77c2
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="an-overview-of-project-katana"></a>Une vue d’ensemble du projet Katana
 ====================
@@ -29,7 +29,7 @@ par [Howard Dierking](https://github.com/howarddierking)
 
  Qu’une traite un produit de framework ou de l’utilisateur final de développeur, il est important de comprendre les motivations sous-jacent pour la création du produit – et la partie qui inclut connaître le produit a été créé pour. ASP.NET a été créé avec les deux clients à l’esprit.   
   
-**Le premier groupe de clients a été les développeurs ASP classiques.** À l’heure, ASP a été une des principales technologies pour la création d’applications et des sites Web dynamiques, pilotés par les données par entrelacement de balisage et le script côté serveur. Le runtime ASP fourni un script côté serveur avec un ensemble d’objets qui extrait les principaux aspects du protocole HTTP sous-jacent et serveur Web et autant de l’accès à d’autres services telle session état des applications, mettre en cache, etc. Pendant puissant, les applications ASP classiques est devenue difficile à gérer comme elles ont augmenté en taille et en complexité. Ceci était due en grande partie de l’absence de structure figurant dans des environnements associées à la duplication de code qui résulte de l’entrelacement de code et de balises de script. Afin de profiter des avantages de ASP classique, tout en répondant à certaines de relever ces défis, ASP.NET a tiré parti de l’organisation de code fournie par les langages orientés objet du .NET Framework tout en conservant le modèle de programmation côté serveur pour le ASP classique développeurs avaient pris l’habitude.
+**Le premier groupe de clients a été les développeurs ASP classiques.** À l’heure, ASP a été une des principales technologies pour la création d’applications et des sites Web dynamiques, pilotés par les données par entrelacement de balisage et le script côté serveur. Le runtime ASP fourni un script côté serveur avec un ensemble d’objets qui extrait les principaux aspects du protocole HTTP sous-jacent et serveur Web et autant de l’accès à d’autres services telle session état des applications, mettre en cache, etc. Pendant puissant, les applications ASP classiques est devenue difficile à gérer comme elles ont augmenté en taille et en complexité. Ceci était due en grande partie de l’absence de structure trouvée dans les environnements associées à la duplication de code qui résulte de l’entrelacement de code et de balises de script. Afin de profiter des avantages de ASP classique, tout en répondant à certaines de relever ces défis, ASP.NET a tiré parti de l’organisation de code fournie par les langages orientés objet du .NET Framework tout en conservant le modèle de programmation côté serveur pour le ASP classique développeurs avaient pris l’habitude.
 
 **Le deuxième groupe de clients cibles pour ASP.NET a été les développeurs d’applications métier Windows.** Contrairement aux développeurs ASP classiques, qui ont été habitués à l’écriture de code HTML et le code pour générer un balisage HTML plus, les développeurs de WinForms (par exemple, les développeurs VB6 avant eux) ont été habitué à une expérience au moment du design qui incluait une zone de dessin et un ensemble complet de l’utilisateur contrôles d’interface. La première version de ASP.NET – également appelé « Web Forms » fourni une expérience au moment du design similaire avec un modèle d’événement du côté serveur pour les composants d’interface utilisateur et un ensemble de fonctions d’infrastructure (tels que ViewState) pour créer une expérience développeur transparente entre le client et la programmation du côté serveur. Web Forms hid efficacement la nature sans état du site Web sous un modèle d’événement avec état qui était familière aux développeurs de WinForms.
 
@@ -173,7 +173,7 @@ La classe de démarrage sera abordée plus en détail plus loin dans l’article
 - **Microsoft.Owin.Host.SystemWeb**: comme indiqué précédemment, IIS de concert avec le pipeline ASP.NET agit comme un hôte et un serveur. Par conséquent, lors du choix de cette option d’hébergement, IIS à la fois gère des problèmes de niveau hôte, tels que l’activation de processus et écoute les requêtes HTTP. Pour les applications Web ASP.NET, il envoie ensuite les demandes dans le pipeline ASP.NET. L’hôte Katana SystemWeb inscrit une ASP.NET HttpModule et un HttpHandler pour intercepter les demandes qu’ils sont acheminées via le pipeline HTTP et les envoyer via le pipeline OWIN spécifié par l’utilisateur.
 - **Microsoft.Owin.Host.HttpListener**: comme son nom l’indique, ce serveur Katana utilise HttpListener (classe) du .NET Framework pour ouvrir un socket et envoyer des demandes dans un pipeline OWIN spécifié par le développeur. Il s’agit actuellement de la sélection du serveur par défaut pour les API d’auto-hébergement Katana et OwinHost.exe.
 
-## <a name="middlewareframework"></a>Intergiciel (middleware) / framework
+## <a name="middlewareframework"></a>Middleware/framework
 
  Comme mentionné précédemment, lorsque le serveur accepte une demande d’un client, il est chargé de passer par un pipeline de composants OWIN, qui sont spécifiées par le code de démarrage du développeur. Ces composants de pipeline sont appelées intergiciel (middleware).  
  À un niveau très simple, un composant d’intergiciel (middleware) OWIN doit simplement implémenter le délégué d’application OWIN afin qu’il soit pouvant être appelé.

@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8d0b3665e9bac6856a3fe1b50b05215f2747e354
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 92c003cf929448d0b03f9de76330e9495ac51d20
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-vb"></a>À l’aide de la classe TagBuilder pour générer des programmes d’assistance HTML (VB)
 ====================
@@ -59,7 +59,7 @@ Par exemple, le Listing 1 contient une application d’assistance HTML de l’Im
 
 Le module dans la liste 1 contient deux méthodes surchargées nommés Image(). Lorsque vous appelez la méthode Image(), vous pouvez passer un objet qui représente un ensemble d’attributs HTML ou non.
 
-Notez comment la méthode TagBuilder.MergeAttribute() permet d’ajouter des attributs individuels, tels que l’attribut src pour le TagBuilder. En outre, notez comment la méthode TagBuilder.MergeAttributes() permet d’ajouter une collection d’attributs pour le TagBuilder. La méthode MergeAttributes() accepte un dictionnaire&lt;chaîne, objet&gt; paramètre. La classe de la RouteValueDictionary est utilisée pour convertir l’objet qui représente la collection d’attributs dans un dictionnaire&lt;chaîne, objet&gt;.
+Notez comment la méthode TagBuilder.MergeAttribute() permet d’ajouter des attributs individuels, tels que l’attribut src pour le TagBuilder. En outre, notez comment la méthode TagBuilder.MergeAttributes() permet d’ajouter une collection d’attributs pour le TagBuilder. La méthode MergeAttributes() accepte un dictionnaire&lt;chaîne, objet&gt; paramètre. La classe RouteValueDictionary est utilisée pour convertir l’objet qui représente la collection d’attributs dans un dictionnaire&lt;chaîne, objet&gt;.
 
 Après avoir créé l’application d’assistance de l’Image, vous pouvez utiliser l’application d’assistance dans vos vues ASP.NET MVC, tout comme un de l’autres standards programmes d’assistance HTML. La vue dans la liste 2 utilise l’application d’assistance de l’Image pour afficher la même image d’une console Xbox deux fois (voir Figure 1). L’application d’assistance Image() est appelée avec et sans une collection d’attributs HTML.
 

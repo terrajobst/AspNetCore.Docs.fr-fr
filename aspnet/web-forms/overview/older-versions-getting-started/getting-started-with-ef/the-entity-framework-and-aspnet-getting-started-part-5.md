@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: 7200899d54585cd09e0a648e3aaaf839db2649e0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5efc5ff367d5da5df060eba0028399af898a69fa
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 les Web Forms ASP.NET - partie 5
 ====================
@@ -77,7 +77,7 @@ Exécutez le *Courses.aspx* page et sélectionner le même service pour afficher
 
 ## <a name="working-with-many-to-many-relationships"></a>Utilisation des relations plusieurs-à-plusieurs
 
-La relation entre la `Courses` jeu d’entités et les `People` jeu d’entités est une relation plusieurs-à-plusieurs. A `Course` entité a une propriété de navigation nommée `People` qui peut contenir zéro, un ou plusieurs liées `Person` entités (représentant des instructeurs affectés à animer ce cours). Et un `Person` entité a une propriété de navigation nommée `Courses` qui peut contenir zéro, un ou plusieurs liées `Course` entités (représentant des cours ce formateur est attribué à apprendre). Un formateur peut couvrir plusieurs cours, et un cours peut être dirigée par des instructeurs plusieurs. Dans cette section de la procédure pas à pas, vous allez ajouter et supprimer des relations entre `Person` et `Course` entités en mettant à jour les propriétés de navigation des entités associées.
+La relation entre la `Courses` jeu d’entités et les `People` jeu d’entités est une relation plusieurs-à-plusieurs. A `Course` entité a une propriété de navigation nommée `People` qui peut contenir zéro, un ou plusieurs liées `Person` entités (représentant des instructeurs affectés à animer ce cours). Et un `Person` entité a une propriété de navigation nommée `Courses` qui peut contenir zéro, un ou plusieurs liées `Course` entités (représentant les cours de ce formateur est attribué à apprendre). Un formateur peut couvrir plusieurs cours, et un cours peut être dirigée par des instructeurs plusieurs. Dans cette section de la procédure pas à pas, vous allez ajouter et supprimer des relations entre `Person` et `Course` entités en mettant à jour les propriétés de navigation des entités associées.
 
 Créer une nouvelle page web nommée *InstructorsCourses.aspx* qui utilise le *Site.Master* page maître et ajoutez le balisage suivant à la `Content` contrôle nommé `Content2`:
 
@@ -123,7 +123,7 @@ Exécutez la page.
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-5/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image9.png)
 
-Sélectionnez un formateur. Le **affecter un cours** liste déroulante affiche les cours le formateur n’animer, et le **supprimer un cours** liste déroulante affiche les cours le formateur est déjà assigné à. Dans le **affecter un cours** section, sélectionnez un cours, puis sur **affecter**. Le cours se déplace vers le **supprimer un cours** liste déroulante. Sélectionnez un cours dans le **supprimer un cours** et cliquez sur **supprimer***.* Le cours se déplace vers le **affecter un cours** liste déroulante.
+Sélectionnez un formateur. Le **affecter un cours** liste déroulante affiche les cours le formateur n’animer, et le **supprimer un cours** liste déroulante affiche les cours le formateur est déjà assigné à. Dans le **affecter un cours** section, sélectionnez un cours, puis sur **affecter**. Le cours se déplace vers le **supprimer un cours** liste déroulante. Sélectionnez un cours dans le **supprimer un cours** et cliquez sur **supprimer ***.* Le cours se déplace vers le **affecter un cours** liste déroulante.
 
 Vous savez maintenant certains autres façons de travailler avec les données associées. Dans ce didacticiel, vous allez apprendre comment utiliser l’héritage dans le modèle de données pour améliorer la facilité de maintenance de votre application.
 

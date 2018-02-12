@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6e5a936decb27fd2e3b8cdcea44db8db822c98eb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2025f31f369153b93cd293884880c97635fc8ab8
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>Appel d’API Web à partir d’une Application de 8 Windows Phone (c#)
 ====================
@@ -122,14 +122,14 @@ Est de l’étape suivante de ce scénario de bout en bout pour créer l’appli
 6. Mise à jour la **MainViewModel.cs** classe pour inclure les fonctionnalités pour communiquer avec l’application BookStore Web API :
 
     1. Développez le **ViewModel** dossier dans l’Explorateur de solutions, puis double-cliquez le **MainViewModel.cs** fichier.
-    2. Lors de la la **MainViewModel.cs** fichier est ouvert, remplacez le code dans le fichier par le code suivant ; Notez que vous devez mettre à jour la valeur de la `apiUrl` constante avec l’URL réelle de votre API Web : 
+    2. Lorsque le **MainViewModel.cs** fichier est ouvert, remplacez le code dans le fichier par le code suivant ; Notez que vous devez mettre à jour la valeur de la `apiUrl` constante avec l’URL réelle de votre API Web : 
 
         [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample5.cs)]
     3. Enregistrez et fermez le **MainViewModel.cs** fichier.
 7. Mise à jour la **MainPage.xaml** fichier pour personnaliser le nom de l’application :
 
     1. Double-cliquez sur le **MainPage.xaml** fichier dans l’Explorateur de solutions.
-    2. Lors de la la **MainPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
+    2. Lorsque le **MainPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
 
         [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample6.xml)]
     3. Remplacez les lignes avec les éléments suivants : 
@@ -139,7 +139,7 @@ Est de l’étape suivante de ce scénario de bout en bout pour créer l’appli
 8. Mise à jour la **DetailsPage.xaml** fichier pour personnaliser les éléments affichés :
 
     1. Double-cliquez sur le **DetailsPage.xaml** fichier dans l’Explorateur de solutions.
-    2. Lors de la la **DetailsPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
+    2. Lorsque le **DetailsPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
 
         [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample8.xml)]
     3. Remplacez les lignes avec les éléments suivants : 

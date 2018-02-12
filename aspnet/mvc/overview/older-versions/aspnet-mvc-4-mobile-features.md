@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: d47d8f61dc7af6e1dc5887338be862ea81d7bb17
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f4e0e4eb558e0c7b9e94fc83ede986fa4c666739
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Fonctionnalités mobiles ASP.NET MVC 4
 ====================
@@ -308,7 +308,7 @@ Lorsque vous tapez chaque lettre dans la zone de recherche, jQuery Mobile filtre
 
 Comme la valeur par défaut *haut-parleurs* mode, la *balises* vue est accessible en lecture, mais les liens sont difficiles à appuyer sur un appareil mobile et de petite taille. Dans cette section, vous allez corriger la *balises* afficher de la même façon que vous avez corrigé le *haut-parleurs* vue.
 
-Supprimer le &quot;masquer&quot; suffixe à la la *Views\Home\AllTags.Mobile.cshtml.hide* fichier le nom est *Views\Home\AllTags.Mobile.cshtml*. Ouvrez le fichier renommé et supprimez le `<h2>` élément.
+Supprimer le &quot;masquer&quot; suffixe à le *Views\Home\AllTags.Mobile.cshtml.hide* fichier le nom est *Views\Home\AllTags.Mobile.cshtml*. Ouvrez le fichier renommé et supprimez le `<h2>` élément.
 
 Ajouter le `data-role` et `data-filter` des attributs à la `<ul>` de balise, comme indiqué ici :
 

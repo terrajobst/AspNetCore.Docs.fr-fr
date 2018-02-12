@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 8541fe47207c0af232ca81ae45da6af201d94799
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8cadb550eaa2dbc4541f945dc8d8d49fa757d4d3
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -21,7 +21,7 @@ Par [Steve Smith](https://ardalis.com/)
 
 Identité de ASP.NET Core est un système extensible qui vous permet de créer un fournisseur de stockage personnalisé et le connecter à votre application. Cette rubrique décrit comment créer un fournisseur de stockage personnalisé pour ASP.NET Core Identity. Il aborde des concepts importants pour la création de votre propre fournisseur de stockage, mais n’est pas une procédure pas à pas.
 
-[Afficher ou télécharger l’exemple à partir de GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample).
+[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample).
 
 ## <a name="introduction"></a>Introduction
 
@@ -126,7 +126,7 @@ Le `IdentityUser` classe définit les propriétés qui la ``UserManager`` appels
 
 ## <a name="customize-the-user-store"></a>Personnaliser le magasin de l’utilisateur
 
-Créer un `UserStore` classe qui fournit les méthodes pour toutes les opérations de données sur l’utilisateur. Cette classe est équivalente à la [UserStore<TUser> ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1) classe. Dans votre `UserStore` classe, implémentez `IUserStore<TUser>` et interfaces facultatives requis. Vous sélectionnez les interfaces facultatives à implémenter basées sur les fonctionnalités offertes dans votre application.
+Créer un `UserStore` classe qui fournit les méthodes pour toutes les opérations de données sur l’utilisateur. Cette classe est équivalente à la [UserStore<TUser> ](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.identity.entityframeworkcore.userstore-1) classe. Dans votre `UserStore` classe, implémentez `IUserStore<TUser>` et interfaces facultatives requis. Vous sélectionnez les interfaces facultatives à implémenter basé sur les fonctionnalités fournies dans votre application.
 
 ### <a name="optional-interfaces"></a>Interfaces facultatives
 
