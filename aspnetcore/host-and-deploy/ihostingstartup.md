@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/ihostingstartup
-ms.openlocfilehash: bd2446d6133e0c06dc14509271c2d17be4c95b63
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e4b6293aff9fa39b70af40507a2cf5b7efcb295b
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="add-app-features-from-an-external-assembly-using-ihostingstartup-in-aspnet-core"></a>Ajouter des fonctionnalités de l’application à partir d’un assembly externe à l’aide de IHostingStartup dans ASP.NET Core
 
@@ -28,7 +28,7 @@ Un [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) i
 
 Pour découvrir les assemblys de démarrage d’hébergement chargé par l’application ou par des bibliothèques, activez la journalisation, puis vérifiez les journaux des applications. Les erreurs qui se produisent lors du chargement d’assemblys sont enregistrées. Assemblys de démarrage hébergement chargés sont enregistrées au niveau du débogage, et toutes les erreurs sont journalisées.
 
-Les lectures d’application exemple le le [HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey) dans un `string` de tableau et affiche le résultat dans la page d’Index de l’application :
+Les lectures d’application exemple le [HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey) dans un `string` de tableau et affiche le résultat dans la page d’Index de l’application :
 
 [!code-csharp[Main](ihostingstartup/sample/HostingStartupSample/Pages/Index.cshtml.cs?name=snippet1&highlight=14-16)]
 

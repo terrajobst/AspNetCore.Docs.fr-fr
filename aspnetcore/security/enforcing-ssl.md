@@ -1,41 +1,45 @@
 ---
-title: Application de SSL dans une application ASP.NET Core
+title: "L’application HTTPS dans une application ASP.NET Core"
 author: rick-anderson
-description: "Montre comment exiger le protocole SSL dans un cœur d’ASP.NET web app"
+description: "Montre comment exiger HTTPS/TLS dans un cœur d’ASP.NET application web."
 manager: wpickett
 ms.author: riande
-ms.date: 07/19/2017
+ms.date: 2/9/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: 3b72cddb7a240ad6d6e1427796e9bb4f7003a3f7
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 636077ea21581716308384ebf8d47c1e417a256a
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="enforcing-ssl-in-an-aspnet-core-app"></a>Application de SSL dans une application ASP.NET Core
+# <a name="enforcing-https-in-an-aspnet-core-app"></a>L’application HTTPS dans une application ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce document montre comment :
 
-- Exiger le protocole SSL pour toutes les demandes (uniquement pour les requêtes HTTPS).
+- Exiger HTTPS pour toutes les demandes.
 - Rediriger toutes les demandes HTTP vers HTTPS.
 
-## <a name="require-ssl"></a>Exiger SSL
+> [!WARNING]
+> Faire **pas** utiliser `RequireHttpsAttribute` sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute`utilise les codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPS. Les clients d’API ne peuvent pas comprendre ou obéissent aux règles de redirections HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. API Web doit soit :
+>
+>* Pas écouter sur HTTP.
+>* Fermer la connexion avec le code d’état 400 (demande incorrecte) et pas desservir la demande.
 
-Le [RequireHttpsAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.requirehttpsattribute) est utilisée pour exiger SSL. Vous pouvez la décorer contrôleurs ou méthodes avec cet attribut, ou vous pouvez l’appliquer globalement, comme indiqué ci-dessous :
+## <a name="require-https"></a>Exiger HTTPS
 
-Ajoutez le code suivant à `ConfigureServices` dans `Startup`:
+Le [RequireHttpsAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.RequireHttpsAttribute) est utilisée pour exiger HTTPS. `[RequireHttpsAttribute]`peut décorer contrôleurs ou méthodes, ou peut être appliqué globalement. Pour appliquer l’attribut global, ajoutez le code suivant à `ConfigureServices` dans `Startup`:
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
-Le code en surbrillance ci-dessus nécessite l’utilisation de toutes les demandes `HTTPS`, par conséquent, les requêtes HTTP sont ignorés. Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
+Le code en surbrillance précédent requiert que toutes les demandes utilisent `HTTPS`; par conséquent, les requêtes HTTP sont ignorés. Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
-Consultez [intergiciel (middleware) réécriture d’URL](xref:fundamentals/url-rewriting) pour plus d’informations.
+Pour plus d’informations, consultez [intergiciel (middleware) réécriture d’URL](xref:fundamentals/url-rewriting).
 
-Nécessitant HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. Appliquer le `[RequireHttps]` attribut à tous les contrôleur n’est pas aussi sécurisée comme nécessitant HTTPS globalement. Vous ne pouvez pas garantir la sécurité ajoutées à votre application de nouveaux contrôleurs penser à appliquer le `[RequireHttps]` attribut.
+Nécessitant HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. Appliquer le `[RequireHttps]` attribut à toutes les Pages de contrôleurs/Razor n’est pas aussi sécurisée comme nécessitant HTTPS globalement. Vous ne pouvez pas garantir la `[RequireHttps]` attribut est appliqué lors de l’ajout de nouveaux contrôleurs et les Pages Razor.

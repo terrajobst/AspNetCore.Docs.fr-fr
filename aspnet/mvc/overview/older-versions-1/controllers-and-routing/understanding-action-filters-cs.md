@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f469894022e39048154ec1915237e448104b4b6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 86d5d429d9900d4c04391804598626705e6c88b4
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/11/2018
 ---
 <a name="understanding-action-filters-c"></a>Présentation des filtres d’Action (c#)
 ====================
@@ -82,7 +82,7 @@ Filtres d’exception sont le dernier type de filtre à exécuter. Vous pouvez u
 
 Chaque type de filtre est exécutée dans un ordre particulier. Si vous souhaitez contrôler l’ordre dans lequel les filtres du même type sont exécutées vous pouvez définir les propriétés de commande d’un filtre.
 
-La classe de base pour tous les filtres d’action est la `System.Web.Mvc.FilterAttribute` classe. Si vous souhaitez implémenter un type particulier de filtre, vous devez créer une classe qui hérite de la classe de filtre de base et implémente une ou plusieurs de la `IAuthorizationFilter`, `IActionFilter`, `IResultFilter`, ou `ExceptionFilter` interfaces.
+La classe de base pour tous les filtres d’action est la `System.Web.Mvc.FilterAttribute` classe. Si vous souhaitez implémenter un type particulier de filtre, vous devez créer une classe qui hérite de la classe de filtre de base et implémente une ou plusieurs de la `IAuthorizationFilter`, `IActionFilter`, `IResultFilter`, ou `IExceptionFilter` interfaces.
 
 ### <a name="the-base-actionfilterattribute-class"></a>La classe de Base ActionFilterAttribute
 
@@ -121,7 +121,7 @@ Le contrôleur Home dans le Listing 3 illustre comment vous pouvez appliquer le 
 
 [!code-csharp[Main](understanding-action-filters-cs/samples/sample3.cs)]
 
-### <a name="summary"></a>Résumé
+### <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous ont été introduits pour les filtres d’action ASP.NET MVC. Vous avez appris les quatre différents types de filtres : filtres d’autorisation, les filtres d’action, les filtres de résultat et les filtres d’exception. Vous avez également appris sur la base `ActionFilterAttribute` classe.
 

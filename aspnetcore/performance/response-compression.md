@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/response-compression
-ms.openlocfilehash: eae51e74c7f2b2f038638c765d4e833a1d9b1232
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: c10f94b40fec00e7533cc3a6e88daa3f3da614ed
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Intergiciel (middleware) de réponse Compression pour ASP.NET Core
 
@@ -76,10 +76,10 @@ Vous pouvez explorer les fonctionnalités de l’intergiciel de compression de l
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
 
 ## <a name="package"></a>Package
-Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [ `Microsoft.AspNetCore.ResponseCompression` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) du package ou utilisez le [ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) package. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou version ultérieure.
+Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [ `Microsoft.AspNetCore.ResponseCompression` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) du package ou utilisez le [ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) package. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou versions ultérieures.
 
 ## <a name="configuration"></a>Configuration
-Le code suivant illustre l’activation de l’intergiciel de compression de la réponse avec l’avec la compression gzip par défaut et pour les types MIME par défaut.
+Le code suivant montre comment activer l’intergiciel de compression de la réponse avec la compression gzip par défaut et pour les types MIME par défaut.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -185,7 +185,7 @@ Si la compression des réponses basée sur la `Accept-Encoding` en-tête, il exi
 Lorsqu’une demande est transmise par Nginx, le `Accept-Encoding` en-tête est supprimé. Cela empêche l’intergiciel (middleware) de la compression de la réponse. Pour plus d’informations, consultez [NGINX : la Compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [Figure exclut la compression de pass-through pour Nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Utilisation de la compression dynamique IIS
-Si vous avez un IIS dynamique Compression Module actif configuré au niveau du serveur que vous voulez désactiver pour une application, vous pouvez le faire avec un ajout à votre *web.config* fichier. Pour plus d’informations, consultez [modules IIS de la désactivation de](xref:host-and-deploy/iis/modules#disabling-iis-modules).
+Si vous avez un IIS dynamique Compression Module actif configuré au niveau du serveur que vous voulez désactiver pour une application, vous pouvez le faire avec un ajout à votre *web.config* fichier. Pour plus d’informations, consultez [Désactivation de modules IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 Utiliser un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), ou [Postman](https://www.getpostman.com/), qui permettent de définir la `Accept-Encoding` en-tête de demande et d’étudier les en-têtes de réponse, la taille et le corps. L’intergiciel de compression de la réponse compresse les réponses qui remplissent les conditions suivantes :

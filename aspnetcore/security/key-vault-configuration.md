@@ -8,11 +8,11 @@ ms.date: 08/09/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: 1318ae855154dd8fc91ff0c19b0ab111d86c71e6
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1a91a87fb90d4d4651e07f32415e4364c8e2d993
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-key-vault-configuration-provider"></a>Fournisseur de configuration du coffre de clés Azure
 
@@ -77,7 +77,7 @@ Lorsque vous exécutez l’application, une page Web affiche les valeurs de secr
 `AddAzureKeyVault`fournit également une surcharge qui accepte une implémentation de `IKeyVaultSecretManager`, qui vous permet de contrôler comment les secrets de coffre sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger les valeurs des secrets selon une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, pour charger des secrets selon la version de l’application.
 
 > [!WARNING]
-> N’utilisez pas de préfixes sur les secrets de coffre de clés pour placer des secrets pour plusieurs applications dans le coffre de clés même ou à l’environnement de secrets (par exemple, *développement* verus *production* secrets) dans le même coffre. Nous conseillons différentes applications et environnements de développement/production des coffres de clés distinctes pour isoler les environnements d’application pour le niveau le plus élevé de sécurité.
+> N’utilisez pas de préfixes sur les secrets de coffre de clés pour placer des secrets pour plusieurs applications dans le coffre de clés même ou à l’environnement de secrets (par exemple, *développement* et *production* secrets) dans le même coffre. Nous conseillons différentes applications et environnements de développement/production des coffres de clés distinctes pour isoler les environnements d’application pour le niveau le plus élevé de sécurité.
 
 À l’aide de la deuxième exemple d’application, vous créez une clé secrète dans le coffre de clés pour `5000-AppSecret` (périodes ne sont pas autorisés dans les noms de coffre de clés secrètes) représentant un secret d’application pour la version 5.0.0.0 de votre application. Pour une autre version, 5.1.0.0, vous créez une clé secrète pour `5100-AppSecret`. Chaque version de l’application charge sa propre valeur secrète dans sa configuration en tant que `AppSecret`, extraction, la version tandis qu’il charge la clé secrète. Implémentation de l’exemple est illustrée ci-dessous :
 

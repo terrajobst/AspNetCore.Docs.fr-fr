@@ -8,11 +8,11 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: c38f9b9a1bf1c523951e2cf1f3070858fe5daf04
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 37592c3b2099c2cb74dc42ad4a7937b32c281f65
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>Réponse mise en cache dans ASP.NET Core
 
@@ -68,7 +68,7 @@ Pour plus d’informations, consultez [Introduction à la mise en cache dans ASP
 
 ### <a name="distributed-cache"></a>Cache distribué
 
-Utiliser un cache distribué pour stocker des données en mémoire lorsque l’application est hébergée dans une batterie de serveurs cloud ou le serveur. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande traitée par n’importe quel serveur dans le groupe et mis en cache des données pour le client est disponible. ASP.NET Core offre SQL Server et les caches Redis distribué.
+Utiliser un cache distribué pour stocker des données en mémoire lorsque l’application est hébergée dans une batterie de serveurs cloud ou le serveur. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande qui est gérée par n’importe quel serveur dans le groupe, si les données mises en cache pour le client ne sont disponibles. ASP.NET Core offre SQL Server et les caches Redis distribué.
 
 Pour plus d’informations, consultez [fonctionne avec un cache distribué](xref:performance/caching/distributed).
 
@@ -78,7 +78,7 @@ Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou de la Page R
 
 Pour plus d’informations, consultez [application d’assistance de balise de Cache dans ASP.NET MVC de base](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper).
 
-### <a name="distributed-cache-tag-helper"></a>Application d’assistance de balise de Cache distribué
+### <a name="distributed-cache-tag-helper"></a>Tag Helper Cache distribué
 
 Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou de la Page Razor dans les scénarios de batterie de serveurs web ou distribuée avec l’application d’assistance de balise de Cache distribué. L’assistance de balise de Cache distribué utilise SQL Server ou Redis pour stocker les données.
 
@@ -86,12 +86,14 @@ Pour plus d’informations, consultez [assistance de balise de Cache distribué]
 
 ## <a name="responsecache-attribute"></a>Attribut de ResponseCache
 
-Le `ResponseCacheAttribute` spécifie les paramètres nécessaires à la configuration des en-têtes appropriés dans la réponse mise en cache. Consultez [ResponseCacheAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.responsecacheattribute) pour obtenir une description des paramètres.
+Le [ResponseCacheAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) spécifie les paramètres nécessaires à la configuration des en-têtes appropriés dans la réponse mise en cache.
 
 > [!WARNING]
-> Désactiver la mise en cache du contenu qui contient des informations pour les clients authentifiés. La mise en cache doit être activée pour le contenu qui ne change pas en fonction de l’identité d’un utilisateur ou qu’un utilisateur est connecté.
+> Désactiver la mise en cache du contenu qui contient des informations pour les clients authentifiés. La mise en cache doit être activée pour le contenu qui ne change pas en fonction de l’identité d’un utilisateur ou si un utilisateur est connecté.
 
-`VaryByQueryKeys string[]`(nécessite ASP.NET Core 1.1 et versions ultérieures) : si la valeur, l’intergiciel (middleware) réponse mise en cache varie selon la réponse stockée par les valeurs de la liste donnée des clés de requête. L’intergiciel (middleware) réponse mise en cache doit être activé pour définir le `VaryByQueryKeys` propriété ; sinon, une exception runtime est levée. Il n’existe aucun en-tête HTTP correspondant pour le `VaryByQueryKeys` propriété. Cette propriété est une fonctionnalité HTTP gérée par l’intergiciel (middleware) réponse mise en cache. Pour l’intergiciel (middleware) servir une réponse mise en cache, la chaîne de requête et la valeur de chaîne de requête doivent correspondre à une demande précédente. Par exemple, considérez la séquence des demandes et les résultats présentés dans le tableau suivant.
+[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys) varie en fonction de la réponse stockée en fonction des valeurs de la liste donnée des clés de requête. Lorsqu’une valeur unique de `*` n’est fourni, l’intergiciel (middleware) varie par toutes les réponses de demandent des paramètres de chaîne de requête. `VaryByQueryKeys`nécessite ASP.NET Core 1.1 ou version ultérieure.
+
+L’intergiciel (middleware) réponse mise en cache doit être activé pour définir le `VaryByQueryKeys` propriété ; sinon, une exception runtime est levée. Il n’est pas un en-tête HTTP correspondant pour le `VaryByQueryKeys` propriété. La propriété est une fonctionnalité HTTP gérée par l’intergiciel (middleware) réponse mise en cache. Pour l’intergiciel (middleware) servir une réponse mise en cache, la chaîne de requête et la valeur de chaîne de requête doivent correspondre à une demande précédente. Par exemple, considérez la séquence des demandes et les résultats présentés dans le tableau suivant.
 
 | Demande                          | Résultat                   |
 | -------------------------------- | ------------------------ |
@@ -101,7 +103,7 @@ Le `ResponseCacheAttribute` spécifie les paramètres nécessaires à la configu
 
 La première requête est retournée par le serveur et mis en cache dans l’intergiciel (middleware). La deuxième demande est retournée par l’intergiciel (middleware), car la chaîne de requête correspond à la demande précédente. La troisième requête n’est pas dans le cache de l’intergiciel (middleware), car la valeur de chaîne de requête ne correspond pas à une demande précédente. 
 
-Le `ResponseCacheAttribute` est utilisé pour configurer et créer (via `IFilterFactory`) un `ResponseCacheFilter`. Le `ResponseCacheFilter` effectue le travail de mise à jour les en-têtes HTTP appropriés et les fonctionnalités de la réponse. Le filtre :
+Le `ResponseCacheAttribute` est utilisé pour configurer et créer (via `IFilterFactory`) un [ResponseCacheFilter](/dotnet/api/microsoft.aspnetcore.mvc.internal.responsecachefilter). Le `ResponseCacheFilter` effectue le travail de mise à jour les en-têtes HTTP appropriés et les fonctionnalités de la réponse. Le filtre :
 
 * Supprime tous les en-têtes existants pour `Vary`, `Cache-Control`, et `Pragma`. 
 * Écrit les en-têtes appropriés en fonction des propriétés définies le `ResponseCacheAttribute`. 

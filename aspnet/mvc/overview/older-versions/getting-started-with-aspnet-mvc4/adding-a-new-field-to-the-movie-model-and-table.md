@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
 msc.type: authoredcontent
-ms.openlocfilehash: 0c094c4d4c99702a5b513717126872a254ca3e5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9965c8a755857a8e8cb8ecbc6c467a6c856aa83d
+ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/11/2018
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table"></a>Ajout d’un nouveau champ à la Table et au modèle de film
 ====================
@@ -81,7 +81,7 @@ Dans le **Package Manager Console** fenêtre, entrez la commande « Ajouter-mig
 
 ![](adding-a-new-field-to-the-movie-model-and-table/_static/image7.png)
 
-Migrations Code First crée un autre fichier de classe dans le *Migrations* dossier (avec le nom *{DateStamp}\_Initial.cs* ), et cette classe contient le code qui crée le schéma de base de données. Le nom de fichier de migration est préalable fixe avec un horodatage pour aider à avec le classement. Examinez le *{DateStamp}\_Initial.cs* fichier, il contient les instructions pour créer la table de films pour la base de données de film. Lorsque vous mettez à jour la base de données dans les instructions ci-dessous, cela *{DateStamp}\_Initial.cs* fichier va exécuter et le schéma de la base de données. Le **Seed** méthode s’exécute pour remplir la base de données avec des données de test.
+Migrations Code First crée un autre fichier de classe dans le *Migrations* dossier (avec le nom *{DateStamp}\_Initial.cs* ), et cette classe contient le code qui crée le schéma de base de données. Le nom de fichier de migration est préalable fixe avec un horodatage pour aider à avec le classement. Examinez le *{DateStamp}\_Initial.cs* fichier, il contient les instructions pour créer la table de films pour la base de données de film. Lorsque vous mettez à jour la base de données dans les instructions ci-dessous, cela *{DateStamp}\_Initial.cs* fichier sera exécuté et créer le schéma de base de données. Le **Seed** méthode s’exécute pour remplir la base de données avec des données de test.
 
 Dans le **Package Manager Console**, entrez la commande « mise à jour de base de données » pour créer la base de données et exécuter le **Seed** (méthode).
 
