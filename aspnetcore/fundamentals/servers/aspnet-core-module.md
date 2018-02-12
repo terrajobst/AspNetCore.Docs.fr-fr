@@ -32,7 +32,7 @@ Versions Windows prises en charge :
 
 Le module ANCM est un module IIS natif qui se connecte au pipeline IIS et redirige le trafic vers l’application ASP.NET Core backend. La plupart des autres modules, tels que l’authentification Windows, conservent néanmoins la possibilité de s’exécuter. Le module ANCM ne prend le contrôle que quand un gestionnaire est sélectionné pour la demande et qu’un mappage de gestionnaire est défini dans le fichier *web.config* de l’application.
 
-Étant donné que les applications ASP.NET Core s’exécutent dans un processus distinct du processus Worker IIS, le module ANCM fait également de la gestion de processus. Le module ANCM démarre le processus pour l’application ASP.NET Core quand la première demande arrive et le redémarre quand elle s’arrête sur incident. Ce comportement rappelle pour l’essentiel celui des applications ASP.NET classiques qui s’exécutent In-process dans IIS et sont gérées par le service d’activation Windows (WAS).
+Étant donné que les applications ASP.NET Core s’exécutent dans un processus distinct du processus de travail IIS, ANCM traite également le processus de gestion. ANCM démarre le processus de l’application ASP.NET Core lorsque la première requête arrive et le redémarre lorsque qu’il s’arrête. Il s’agit essentiellement d'un comportement similaire aux applications ASP.NET classiques qui s’exécutent in-process dans IIS et sont gérées par le service WAS (Windows Activation Service).
 
 Voici un diagramme qui illustre les relations entre IIS, le module ANCM et les applications ASP.NET Core.
 

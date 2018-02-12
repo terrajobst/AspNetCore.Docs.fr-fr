@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 24eaa0dd9293cc932c51d280300308e835a0840e
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4a2c6da6ed698d1a65ee51bd00a557e607f012da
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="uploading-files-to-a-razor-page-in-aspnet-core"></a>Chargement de fichiers sur une page Razor dans ASP.NET Core
 
@@ -23,11 +23,29 @@ Dans cette section, vous allez découvrir comment charger des fichiers sur une p
 
 [L’exemple d’application Razor Pages Movie](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie) de ce didacticiel utilise une liaison de données simple pour charger des fichiers, ce qui fonctionne bien pour charger des fichiers de petite taille. Pour plus d’informations sur le streaming de fichiers volumineux, consultez [Chargement de fichiers volumineux par streaming](xref:mvc/models/file-uploads#uploading-large-files-with-streaming).
 
-Dans les étapes ci-dessous, vous ajoutez une fonctionnalité de chargement de fichiers de planification vidéo dans l’exemple d’application. Une planification vidéo est représentée par une classe `Schedule` . La classe inclut deux versions de la planification. Une version est fournie aux clients, `PublicSchedule`. L’autre version est utilisée pour les employés de la société, `PrivateSchedule`. Chaque version est chargée dans un fichier distinct. Le didacticiel décrit comment effectuer deux chargements de fichier à partir d’une page en envoyant une seule commande POST au serveur.
+Dans les étapes suivantes, une fonctionnalité de chargement de fichiers de planification vidéo est ajoutée dans l’exemple d’application. Une planification vidéo est représentée par une classe `Schedule` . La classe inclut deux versions de la planification. Une version est fournie aux clients, `PublicSchedule`. L’autre version est utilisée pour les employés de la société, `PrivateSchedule`. Chaque version est chargée dans un fichier distinct. Le didacticiel décrit comment effectuer deux chargements de fichier à partir d’une page en envoyant une seule commande POST au serveur.
+
+## <a name="security-considerations"></a>Considérations relatives à la sécurité
+
+Vous devez être vigilant lorsque vous fournissez aux utilisateurs la possibilité de charger des fichiers sur un serveur. Les attaquants peuvent procéder à une attaque [par déni de service](/windows-hardware/drivers/ifs/denial-of-service) et à d’autres attaques sur un système. Vous trouverez ci-dessous certaines étapes de sécurité qui réduisent la probabilité d’une attaque réussie :
+
+* Chargez les fichiers dans une zone de chargement de fichiers dédiée sur le système, ce qui facilite la prise de mesures de sécurité sur le contenu chargé. Lorsque vous autorisez des chargements de fichiers, assurez-vous que les autorisations d’exécution sont désactivées sur l’emplacement de chargement.
+* Utilisez un nom de fichier sécurisé déterminé par l’application, et non entré par l’utilisateur, ni le nom du fichier chargé.
+* Autorisez uniquement un ensemble spécifique d’extensions de fichiers approuvées.
+* Vérifiez que des vérifications côté client sont effectuées sur le serveur. Les vérifications côté client sont faciles à contourner.
+* Vérifiez la taille du chargement et empêchez des chargements plus volumineux que prévu.
+* Exécutez une analyse antivirus/contre les programmes malveillants sur le contenu chargé.
+
+> [!WARNING]
+> Le chargement d’un code malveillant sur un système est généralement la première étape de l’exécution de code capable de :
+> * Prendre complètement en charge un système.
+> * Surcharger un système, entraînant une défaillance complète de celui-ci.
+> * Compromettre les données utilisateur ou système.
+> * Appliquer un graffiti sur une interface publique.
 
 ## <a name="add-a-fileupload-class"></a>Ajouter une classe FileUpload
 
-Le code ci-dessous crée une page Razor qui gère deux chargements de fichiers. Ajoutez une classe `FileUpload` liée à la page pour obtenir les données de planification. Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **FileUpload** et ajoutez les propriétés suivantes :
+Créez une page Razor qui gère deux chargements de fichiers. Ajoutez une classe `FileUpload` liée à la page pour obtenir les données de planification. Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **FileUpload** et ajoutez les propriétés suivantes :
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
 
@@ -38,6 +56,23 @@ La classe compte une propriété pour le titre de la planification et une propri
 Pour éviter la duplication de code dans le traitement des fichiers de planification chargés, ajoutez d’abord une méthode d’assistance statique. Créez un dossier *Utilities* dans l’application et ajoutez un fichier *FileHelpers.cs* avec le contenu suivant. La méthode d’assistance, `ProcessFormFile`, prend un [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) et un [ModelStateDictionary](/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary), puis retourne une chaîne contenant la taille et le contenu du fichier. Le type de contenu et la longueur sont vérifiés. Si le fichier échoue à la vérification de validation, une erreur est ajoutée dans `ModelState`.
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Utilities/FileHelpers.cs)]
+
+### <a name="save-the-file-to-disk"></a>Enregistrer le fichier sur le disque
+
+L’exemple d’application enregistre le contenu du fichier dans un champ de base de données. Pour enregistrer le contenu du fichier sur le disque, utilisez un [FileStream](/dotnet/api/system.io.filestream) :
+
+```csharp
+using (var fileStream = new FileStream(filePath, FileMode.Create))
+{
+    await formFile.CopyToAsync(fileStream);
+}
+```
+
+Le processus Worker doit avoir des autorisations en écriture pour l’emplacement spécifié par `filePath`.
+
+### <a name="save-the-file-to-azure-blob-storage"></a>Enregistrer le fichier dans le stockage Blob Azure
+
+Pour charger le contenu du fichier dans le stockage Blob Azure, consultez [Bien démarrer avec le stockage Blob Azure à l’aide de .NET](/azure/storage/blobs/storage-dotnet-how-to-use-blobs). La rubrique montre comment utiliser [UploadFromStream](/dotnet/api/microsoft.windowsazure.storage.file.cloudfile.uploadfromstreamasync) pour enregistrer un [FileStream](/dotnet/api/system.io.filestream) dans le stockage Blob.
 
 ## <a name="add-the-schedule-class"></a>Ajouter la classe Schedule
 
@@ -106,7 +141,7 @@ Ouvrez *_Layout.cshtml* et ajoutez un lien vers la barre de navigation pour acc�
 
 ## <a name="add-a-page-to-confirm-schedule-deletion"></a>Ajouter une page pour confirmer la suppression de la planification
 
-Quand l’utilisateur clique pour supprimer une planification, il doit avoir la possibilité d’annuler l’opération. Ajoutez une page de confirmation de suppression (*Delete.cshtml*) au dossier *Schedules* :
+Quand l’utilisateur clique pour supprimer une planification, il existe la possibilité d’annuler l’opération. Ajoutez une page de confirmation de suppression (*Delete.cshtml*) au dossier *Schedules* :
 
 [!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml)]
 
@@ -144,7 +179,7 @@ L’utilisateur peut cliquer sur le lien **Supprimer** à partir d’ici pour ac
 
 Pour obtenir des informations sur la résolution des problèmes avec le chargement `IFormFile`, consultez [Chargements de fichier dans ASP.NET Core : Résolution des problèmes](xref:mvc/models/file-uploads#troubleshooting).
 
-Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Vos commentaires nous intéressent. La rubrique [Bien démarrer avec MVC et EF Core](xref:data/ef-mvc/intro) est un excellent moyen de poursuivre après ce didacticiel.
+Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. La rubrique [Bien démarrer avec MVC et EF Core](xref:data/ef-mvc/intro) est un excellent moyen de poursuivre après ce didacticiel.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

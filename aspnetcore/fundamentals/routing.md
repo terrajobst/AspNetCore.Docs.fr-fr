@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: 2897eb3a756654c61e38e847f5a8e1f8ca4f0b7c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d35c24347e8e06ed85e2af8addcc1f8cf28dc47a
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -36,7 +36,7 @@ Le routage utilise des *routes* (implémentations d’[IRouter](https://docs.mic
 
 En général, une application possède une collection de routes unique. Quand une requête arrive, la collection de routes est traitée dans l’ordre. La requête entrante recherche une route qui correspond à son URL en appelant la méthode `RouteAsync` sur chaque route disponible dans la collection de routes. En revanche, une réponse peut utiliser le routage pour générer des URL (par exemple, pour la redirection ou les liens) en fonction des informations de route et éviter ainsi d’avoir à coder en dur des URL, ce qui améliore la maintenabilité.
 
-Le routage est connecté au pipeline de [l’intergiciel (middleware)](middleware.md) par la classe `RouterMiddleware`. [ASP.NET MVC](../mvc/overview.md) ajoute le routage au pipeline de l’intergiciel dans le cadre de sa configuration. Pour en savoir plus sur l’utilisation du routage comme composant autonome, consultez [Utilisation d’un intergiciel (middleware) de routage](#using-routing-middleware).
+Le routage est connecté au pipeline de [l’intergiciel (middleware)](xref:fundamentals/middleware/index) par la classe `RouterMiddleware`. [ASP.NET Core MVC](xref:mvc/overview) ajoute le routage au pipeline de l’intergiciel dans le cadre de sa configuration. Pour en savoir plus sur l’utilisation du routage comme composant autonome, consultez [Utilisation d’un intergiciel (middleware) de routage](#using-routing-middleware).
 
 <a name="url-matching-ref"></a>
 
@@ -295,7 +295,7 @@ Les contraintes de routage s’exécutent quand un `Route` correspond à la synt
 
 Le tableau suivant illustre certaines contraintes de routage et leur comportement attendu.
 
-| Contrainte | Exemple | Exemples de correspondances | Notes |
+| contrainte | Exemple | Exemples de correspondances | Notes |
 | --------   | ------- | ------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789`  | Correspond à n’importe quel entier |
 | `bool`  | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
@@ -334,14 +334,14 @@ Les expressions régulières utilisent les délimiteurs et des jetons semblables
 
 Souvent, les expressions régulières utilisées dans le routage commencent par le caractère `^` (position de départ de correspondance de la chaîne) et se terminent par le caractère `$` (position de fin de correspondance de la chaîne). Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière établit une correspondance avec n’importe quelle sous-chaîne de la chaîne, ce qui n’est souvent pas ce que vous voulez. Le tableau ci-dessous présente des exemples et explique pourquoi ils établissent, ou non, une correspondance.
 
-| Expression               | Chaîne | Correspondance | Commentaire |
+| Expression               | Chaîne | Faire correspondre à | Commentaire |
 | ----------------- | ------------ |  ------------ |  ------------ | 
 | `[a-z]{2}` | hello | oui | correspondances de sous-chaînes |
 | `[a-z]{2}` | 123abc456 | oui | correspondances de sous-chaînes |
 | `[a-z]{2}` | mz | oui | correspondance avec l’expression |
 | `[a-z]{2}` | MZ | oui | non-respect de la casse |
-| `^[a-z]{2}$` |  hello | non | voir `^` et `$` ci-dessus |
-| `^[a-z]{2}$` |  123abc456 | non | voir `^` et `$` ci-dessus |
+| `^[a-z]{2}$` |  hello | Non | voir `^` et `$` ci-dessus |
+| `^[a-z]{2}$` |  123abc456 | Non | voir `^` et `$` ci-dessus |
 
 Pour plus d’informations sur la syntaxe des expressions régulières, consultez [Expressions régulières du .NET Framework](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).
 

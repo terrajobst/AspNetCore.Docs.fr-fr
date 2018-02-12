@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/app-state
-ms.openlocfilehash: 7aa200d3612f766ab633ccab807421b9c5393975
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f4ed38f7395e3f4fe939584c1f3f5b0dba93724c
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-session-and-application-state-in-aspnet-core"></a>Présentation de l’état de session et d’application dans ASP.NET Core
 
@@ -84,7 +84,7 @@ Le code de classe `Startup` suivant configure le fournisseur TempData basé sur 
 
 ---
 
-L’ordre est essentiel pour les composants d’intergiciel (middleware). Dans l’exemple précédent, une exception de type `InvalidOperationException` se produit quand `UseSession` est appelé après `UseMvcWithDefaultRoute`. Pour plus de détails, consultez [Ordre des intergiciels (middleware)](xref:fundamentals/middleware#ordering).
+L’ordre est essentiel pour les composants d’intergiciel (middleware). Dans l’exemple précédent, une exception de type `InvalidOperationException` se produit quand `UseSession` est appelé après `UseMvcWithDefaultRoute`. Pour plus de détails, consultez [Ordre des intergiciels (middleware)](xref:fundamentals/middleware/index#ordering).
 
 > [!IMPORTANT]
 > Si vous ciblez .NET Framework et utilisez le fournisseur basé sur les sessions, ajoutez le package NuGet [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session) à votre projet.
@@ -109,7 +109,7 @@ Les cookies servent souvent à personnaliser le contenu pour un utilisateur conn
 
 La collection `Items` est un bon emplacement pour stocker des données qui sont nécessaires uniquement pendant le traitement d’une requête particulière. Le contenu de la collection est supprimé après chaque requête. La collection `Items` est surtout utile pour permettre à des composants ou des intergiciels (middleware) de communiquer à différents moments de l’exécution d’une requête quand ils ne peuvent pas passer les paramètres de façon directe. Pour plus d’informations, consultez [Utilisation de la collection HttpContext.Items](#working-with-httpcontextitems), plus loin dans cet article.
 
-## <a name="cache"></a>Cache
+## <a name="cache"></a>d'instance/de clé
 
 La mise en cache est un moyen efficace de stocker et récupérer des données. Vous pouvez contrôler la durée de vie des éléments mis en cache en fonction de l’heure et d’autres critères. Découvrez-en plus sur la [mise en cache](../performance/caching/index.md).
 
@@ -189,7 +189,7 @@ L’exemple suivant montre comment définir et obtenir un objet sérialisable :
 
 L’abstraction `HttpContext` fournit la prise en charge d’une collection de dictionnaires de type `IDictionary<object, object>`, appelée `Items`. Cette collection est disponible dès le début d’une requête *HttpRequest*, mais elle est supprimée à la fin de chaque requête. Vous pouvez y accéder en attribuant une valeur à une entrée de clé, ou en demandant la valeur d’une clé particulière.
 
-Dans l’exemple ci-dessous, le [middleware](middleware.md) ajoute `isVerified` à la collection `Items`.
+Dans l’exemple suivant, le [middleware](xref:fundamentals/middleware/index) ajoute `isVerified` à la collection `Items`.
 
 ```csharp
 app.Use(async (context, next) =>
