@@ -34,15 +34,15 @@ Afficher ou télécharger l’exemple de code pour 1.x :
 
 ---
 
-Ce document explique comment utiliser le [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) fournisseur de configuration pour charger des valeurs de configuration d’application de secrets de coffre de clés Azure. Le coffre de clés Azure est un service cloud qui vous aident à protéger les clés de chiffrement et les secrets utilisés par les applications et services. Les scénarios courants incluent le contrôle d’accès aux données de configuration sensibles et répondre aux exigences de la norme FIPS 140-2 niveau 2 validé les Modules de sécurité matériel (HSM) lors du stockage des données de configuration. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou ultérieure.
+Ce document explique comment utiliser le fournisseur de configuration [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) pour charger des valeurs de configuration d’application de secrets de coffre de clés Azure. Le coffre de clés Azure est un service cloud qui vous aident à protéger les clés de chiffrement et les secrets utilisés par les applications et services. Les scénarios courants incluent le contrôle d’accès aux données de configuration sensibles et répondre aux exigences de la norme FIPS 140-2 niveau 2 validé les Modules de sécurité matériel (HSM) lors du stockage des données de configuration. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou ultérieure.
 
 ## <a name="package"></a>Package
-Pour utiliser le fournisseur, ajouter une référence à la [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) package.
+Pour utiliser le fournisseur, ajouter une référence au package Nuget [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) à votre application.
 
 ## <a name="application-configuration"></a>Configuration d’application
-Vous pouvez explorer le fournisseur avec le [exemples d’applications](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples). Une fois que vous établissez un coffre de clés et créez des clés secrètes dans le coffre, les exemples d’applications en toute sécurité par chargement les valeurs de secret principal dans leurs configurations et les affichent dans les pages Web.
+Vous pouvez explorer le fournisseur avec les [exemples d’applications](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples). Une fois que vous établissez un coffre de clés et créez des clés secrètes dans le coffre, les exemples d’applications chargent en toute sécurité les valeurs de secret principal dans leurs configurations et les affichent dans les pages Web.
 
-Le fournisseur est ajouté à la `ConfigurationBuilder` avec le `AddAzureKeyVault` extension. Dans les exemples d’applications, l’extension utilise trois valeurs de configuration chargés à partir de la *appsettings.json* fichier.
+Le fournisseur est ajouté à `ConfigurationBuilder`avec l'extension `AddAzureKeyVault` extension. Dans les exemples d’applications, l’extension utilise trois valeurs de configuration chargés à partir du fichier *appsettings.json*.
 
 | Paramètre d’application    | Description                    | Exemple                                      |
 | -------------- | ------------------------------ | -------------------------------------------- |
@@ -56,7 +56,7 @@ Le fournisseur est ajouté à la `ConfigurationBuilder` avec le `AddAzureKeyVaul
 1. Créer un coffre de clés et configurer Azure Active Directory (Azure AD) pour l’application en suivant les instructions de [prise en main d’Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-get-started/).
   * Ajouter les clés secrètes au coffre de clés à l’aide du [Module PowerShell Azure Resource Manager Key Vault](/powershell/module/azurerm.keyvault) disponible à partir de la [Gallery PowerShell](https://www.powershellgallery.com/packages/AzureRM.KeyVault), avec l' [API REST du coffre de clés Azure Key Vault](/rest/api/keyvault/), ou à partir du [Portail azure](https://portal.azure.com/). Les secrets sont créés en tant que *manuel* ou en tant que *certificat* secrets. Les secrets de type *Certificat* sont des certificats pour les applications et services, mais ne sont pas pris en charge par le fournisseur de configuration. Vous devez utiliser l'option *manuel* permettant de créer des clés secrètes de paire nom-valeur pour une utilisation avec le fournisseur de configuration.
     * Les secrets simples sont créées en tant que paires nom-valeur. Les noms de secret de coffre de clés Azure sont limités à des caractères alphanumériques et des tirets.
-    * Les valeurs hiérarchiques (sections de configuration) utilisent `--` (deux tirets) comme séparateur par exemple. Les deux-points `:`, qui est normalement utilisés pour délimiter une section à partir d’une sous-clé dans [configuration d’ASP.NET Core](xref:fundamentals/configuration/index), ne sont pas autorisés dans les noms de secret principal. Par conséquent, les deux tirets sont utilisés et échangés avec un signe deux-points lorsque les clés secrètes sont chargés dans la configuration de l’application.
+    * Les valeurs hiérarchiques (sections de configuration) utilisent `--` (deux tirets) comme séparateur par exemple. Les deux-points `:`, qui sont normalement utilisés pour délimiter une section à partir d’une sous-clé dans [configuration d’ASP.NET Core](xref:fundamentals/configuration/index), ne sont pas autorisés dans les noms de secret principal. Par conséquent, les deux tirets sont utilisés et échangés avec un signe deux-points lorsque les clés secrètes sont chargés dans la configuration de l’application.
     * Créez deux clés secretes *manuel* avec les paires nom-valeur suivantes: Le premier secret est une simple nom et valeur, et le deuxième secret crée une valeur secrete avec une section et une sous-clé dans le nom du secret:
       * `SecretName`: `secret_value_1`
       * `Section--SecretName`: `secret_value_2`
@@ -65,11 +65,11 @@ Le fournisseur est ajouté à la `ConfigurationBuilder` avec le `AddAzureKeyVaul
 2. Mettre à jour le fichier *appsettings.json*  de l’application avec les valeurs de `Vault`, `ClientId`, et `ClientSecret`.
 3. Exécutez l’exemple d’application, qui obtient ses valeurs de configuration à partir de `IConfigurationRoot` avec le même nom que le nom secret.
   * Valeurs non hiérarchique : la valeur du `SecretName` est obtenu avec `config["SecretName"]`.
-  * Valeurs hiérarchiques (sections) : utilisez `:` la notation (deux-points) ou la methode  d’extension `GetSection`. Utilisez une des ces approches pour obtenir la valeur de configuration, :
+  * Valeurs hiérarchiques (sections) : utilisez la notation (deux-points) `:` ou la methode  d’extension `GetSection`. Utilisez une des ces approches pour obtenir la valeur de configuration, :
     * `config["Section:SecretName"]`
     * `config.GetSection("Section")["SecretName"]`
 
-Lorsque vous exécutez l’application, une page Web affiche les valeurs de secret principal chargés :
+Lorsque vous exécutez l’application, une page Web s'affiche et charge les valeurs de secret principal:
 
 ![Fenêtre de navigateur affichant les valeurs des secrets chargée via le fournisseur de Configuration Azure Key Vault](key-vault-configuration/_static/sample1.png)
 
@@ -77,15 +77,15 @@ Lorsque vous exécutez l’application, une page Web affiche les valeurs de secr
 `AddAzureKeyVault`fournit également une surcharge qui accepte une implémentation de `IKeyVaultSecretManager`, qui vous permet de contrôler comment les secrets de coffre sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger les valeurs des secrets basé sur une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, pour charger des secrets selon la version de l’application.
 
 > [!WARNING]
-> N’utilisez pas de préfixes sur les secrets de coffre de clés pour placer des secrets pour plusieurs applications dans le coffre de clés même ou pour placer des secrets d'environements (par exemple, *développement* verus *production* secrets) dans le même coffre. Nous conseillons différentes applications et environnements de développement/production des coffres de clés distinctes pour isoler les environnements d’application pour le niveau le plus élevé de sécurité.
+> N’utilisez pas de préfixes sur les secrets de coffre de clés pour placer des secrets pour plusieurs applications dans le coffre de clés même ou pour placer des secrets d'environements (par exemple, *développement* versus *production* secrets) dans le même coffre. Nous conseillons différentes applications et environnements de développement/production des coffres de clés distinctes pour isoler les environnements d’application pour le niveau le plus élevé de sécurité.
 
-À l’aide du deuxième exemple d’application, vous créez une clé secrète dans le coffre de clés pour `5000-AppSecret` (les périodes ne sont pas autorisés dans les noms des secrètes du coffre de clés) représentant un secret d’application pour la version 5.0.0.0 de votre application. Pour une autre version, 5.1.0.0, vous créez une clé secrète pour `5100-AppSecret`. Chaque version de l’application charge sa propre valeur secrète dans sa configuration en tant que `AppSecret`, l' extraction de la version se fait lors du chargement de la clé secrète. L'implémentation de l’exemple est illustrée ci-dessous :
+À l’aide du deuxième exemple d’application, vous créez une clé secrète dans le coffre de clés pour `5000-AppSecret` (les périodes ne sont pas autorisées dans les noms des secrètes du coffre de clés) représentant un secret d’application pour la version 5.0.0.0 de votre application. Pour une autre version, 5.1.0.0, vous créez une clé secrète pour `5100-AppSecret`. Chaque version de l’application charge sa propre valeur secrète dans sa configuration en tant que `AppSecret`, l'extraction de la version se fait lors du chargement de la clé secrète. L'implémentation de l’exemple est illustrée ci-dessous :
 
 [!code-csharp[Configuration builder](key-vault-configuration/samples/key-name-prefix-sample/2.x/Program.cs?name=snippet1&highlight=12)]
 
 [!code-csharp[PrefixKeyVaultSecretManager](key-vault-configuration/samples/key-name-prefix-sample/2.x/Startup.cs?name=snippet1)]
 
-La méthode `Load` est appelée par un fournisseur d’algorithme qui effectue une itération dans les clés secrètes du coffre pour trouver celles qui ont le préfixe de la version. Quand un préfixe de version a été trouvé avec la méthode `Load`, l’algorithme utilise le `GetKey` méthode pour retourner le nom de la configuration du nom du secret principal. Il supprime le préfixe de la version du nom de la clé secrète et retourne le reste du nom du secret principal pour le chargement dans la configuration de l’application de paires nom-valeur.
+La méthode `Load` est appelée par un fournisseur d’algorithme qui effectue une itération dans les clés secrètes du coffre pour trouver celles qui ont le préfixe de la version. Quand un préfixe de version a été trouvé avec la méthode `Load`, l’algorithme utilise la méthode `GetKey` pour retourner le nom de la configuration du nom du secret principal. Il supprime le préfixe de la version du nom de la clé secrète et retourne le reste du nom du secret principal pour le chargement dans la configuration de l’application de paires nom-valeur.
 
 Lorsque vous implémentez cette approche :
 
@@ -114,7 +114,7 @@ Lorsque vous implémentez cette approche :
    ![Fenêtre de navigateur indiquant une valeur secrète chargée via le fournisseur de Configuration Azure Key Vault lors de la version de l’application est 5.1.0.0](key-vault-configuration/_static/sample2-2.png)
 
 ## <a name="controlling-access-to-the-clientsecret"></a>Contrôle l’accès à la ClientSecret
-Utilisez le [Gestionnaire Secret](xref:security/app-secrets) pour maintenir le `ClientSecret` en dehors de arborescence du code source de votre projet. Avec le Gestionnaire de clé secrète, associer des secrets de l’application à un projet spécifique et les partager entre plusieurs projets.
+Utilisez le [Gestionnaire Secret](xref:security/app-secrets) pour maintenir le `ClientSecret` en dehors de l'arborescence du code source de votre projet. Avec le Gestionnaire de clé secrète, associer des secrets de l’application à un projet spécifique et les partager entre plusieurs projets.
 
 Lorsque vous développez une application avec le Framework .NET  dans un environnement qui prend en charge les certificats, vous pouvez vous authentifier à Azure Key Vault avec un certificat X.509. Les clé privée du certificat X.509 sont gérée par le système d’exploitation. Pour plus d’informations, consultez [authentifier avec un certificat au lieu d’une clé secrète Client](https://docs.microsoft.com/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret). Utilisez la surcharge `AddAzureKeyVault` qui accepte un `X509Certificate2`.
 
@@ -134,17 +134,17 @@ Configuration = builder.Build();
 ```
 
 ## <a name="reloading-secrets"></a>Rechargement des clés secrètes
-Les secrets sont mis en cache jusqu'à ce que `IConfigurationRoot.Reload()` est appelée. Les secrets expirés, désactivés,  ou mis à jour dans le coffre de clés ne sont pas respectées par l’application tant que la méthode `Reload` est exécutée.
+Les secrets sont mis en cache jusqu'à ce que la méthode `IConfigurationRoot.Reload()` est appelée. Les secrets expirés, désactivés, ou modifiés dans le coffre de clés ne sont pas respectées par l’application tant que la méthode `Reload` est exécutée.
 
 ```csharp
 Configuration.Reload();
 ```
 
 ## <a name="disabled-and-expired-secrets"></a>Secrets désactivés et expirés
-les secrets désactivés et expirées levent une excepetion `KeyVaultClientException`. Pour empêcher votre application de lever cette excepetion, remplacez votre application, ou mettre à jour le secret désactivé/expiré.
+les secrets désactivés et expirées levent une exception `KeyVaultClientException`. Pour empêcher votre application de lever cette exception, corrigez le code de votre application, ou mettez à jour le secret désactivé/expiré.
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
-Lorsque l’application ne parvient pas à charger la configuration de l’utilisation du fournisseur, un message d’erreur est écrit pour le [journalisation d’ASP.NET d'infrastructure ](xref:fundamentals/logging/index). Les conditions suivantes empêchent de se charger :
+Lorsque l’application ne parvient pas à charger la configuration de l’utilisation du fournisseur, un message d’erreur est écrit dans la [l'infrastructure de journalisation d’ASP.NET](xref:fundamentals/logging/index). Les conditions suivantes empêchent la configuration de se charger :
 * L’application n’est pas configurée correctement dans Azure Active Directory.
 * Le coffre de clés n’existe pas dans le coffre de clés Azure.
 * L’application n’est pas autorisée à accéder au coffre de clés.
