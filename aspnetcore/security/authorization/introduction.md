@@ -1,7 +1,7 @@
 ---
 title: "Introduction à l’autorisation"
 author: rick-anderson
-description: "Ce document fournit une explication de l’autorisation de base et explique comment l’autorisation est lié à ASP.NET Core."
+description: "Ce document fournit une explication de l’autorisation de base et explique comment l’autorisation s'integre à ASP.NET Core."
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -19,13 +19,13 @@ ms.lasthandoff: 01/30/2018
 
 <a name="security-authorization-introduction"></a>
 
-Le terme Autorisation désigne le processus qui détermine ce qu’un utilisateur est en mesure d’effectuer. Par exemple, un utilisateur administratif est autorisé à créer une bibliothèque de documents, ajoutez les documents, modifier des documents et les supprimer. Un utilisateur non-administrateur, utilisant la bibliothèque est uniquement autorisé à lire les documents.
+Le terme Autorisation désigne le processus qui détermine ce qu’un utilisateur est en mesure d’effectuer. Par exemple, un utilisateur administrateur est autorisé à créer une bibliothèque de documents, à ajouter, modifier et supprimer des documents. Un utilisateur non-administrateur, utilisant la bibliothèque est uniquement autorisé à lire les documents.
 
-L’autorisation est orthogonales et indépendante de l’authentification, qui est le processus d’évaluation de qui est l'utilisateur. L’authentification peut créer une ou plusieurs identités pour l’utilisateur actuel.
+L’autorisation est orthogonale et indépendante de l’authentification, celle-ci corrrespond au processus de vérification de l'identité de l'utilisateur. L’authentification peut créer une ou plusieurs identités pour l’utilisateur actuel.
 
 ## <a name="authorization-types"></a>Types d’autorisation
 
-Les autorisation de ASP.NET Core fournit un simple [rôle](roles.md) déclaratif et un [modèle enrichie basée sur la stratégie](policies.md). L’autorisation est exprimée dans les exigences et les gestionnaires évaluent les revendications d’un utilisateur par rapport aux exigences. Les vérifications impératives peuvent reposer sur des stratégies simples ou des stratégies qui évaluent l’identité de l’utilisateur et les propriétés de la ressource à laquelle l’utilisateur tente d’accéder.
+Les autorisations de ASP.NET Core fournissent un simple [rôle](roles.md) déclaratif et un [modèle enrichie basée sur la stratégie](policies.md). L’autorisation est exprimée dans les exigences et les gestionnaires évaluent les revendications d’un utilisateur par rapport aux exigences. Les vérifications impératives peuvent reposer sur des stratégies simples ou des stratégies qui évaluent l’identité de l’utilisateur et les propriétés de la ressource à laquelle l’utilisateur tente d’accéder.
 
 ## <a name="namespaces"></a>Espaces de noms
 
