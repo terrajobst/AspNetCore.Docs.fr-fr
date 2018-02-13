@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: be3e3d61a6567da3c2cd696c01661146f2da7131
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6daa0dec764e2e9248cac97ba7d7b6df0da3208f
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/12/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a>Création de procédures stockées et fonctions définies par l’utilisateur avec du Code managé (c#)
 ====================
@@ -420,7 +420,7 @@ Le code commence par créer un `SqlMoney` instance nommée `inventoryValue` qui 
 
 ## <a name="step-11-deploying-the-managed-udf"></a>Étape 11 : Déploiement de l’UDF géré
 
-Maintenant que que l’UDF managé a été créé, vous êtes prêt à déployer dans la base de données Northwind. Comme nous l’avons vu à l’étape 4, les objets gérés dans un projet SQL Server sont déployés en cliquant sur le nom du projet dans l’Explorateur de solutions et en choisissant l’option de déploiement dans le menu contextuel.
+Maintenant que l’UDF managé a été créé, nous sommes prêts à déployer dans la base de données Northwind. Comme nous l’avons vu à l’étape 4, les objets gérés dans un projet SQL Server sont déployés en cliquant sur le nom du projet dans l’Explorateur de solutions et en choisissant l’option de déploiement dans le menu contextuel.
 
 Une fois que vous avez déployé le projet, retournez à SQL Server Management Studio et actualisez le dossier de fonctions scalaires. Vous devez maintenant voir deux entrées :
 
