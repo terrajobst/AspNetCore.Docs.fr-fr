@@ -23,7 +23,7 @@ ms.lasthandoff: 01/30/2018
 
 * [Activer l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes](social/index.md)
 
-* [Activer la génération de QR code dans Identity](identity-enable-qrcodes.md)
+* [Activer la génération de code QR dans Identity](identity-enable-qrcodes.md) 
 
 * [Configurer l’authentification Windows](windowsauth.md)
 
