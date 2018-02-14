@@ -20,7 +20,7 @@ ms.lasthandoff: 01/30/2018
 - [Utiliser Gulp](xref:client-side/using-gulp)
 - [Utiliser Grunt](xref:client-side/using-grunt)
 - [Gérer les packages côté client avec Bower](xref:client-side/bower)
-- [Créer des sites responsives avec Bootstrap](xref:client-side/bootstrap)
+- [Créer des sites réactifs avec Bootstrap](xref:client-side/bootstrap)
 - [Définir des styles d’applications avec LESS, Sass et Font Awesome](xref:client-side/less-sass-fa)
 - [Regrouper et minimiser](xref:client-side/bundling-and-minification)
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
