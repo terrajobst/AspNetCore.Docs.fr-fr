@@ -1,7 +1,7 @@
 ---
-title: "Cœur de ASP.NET MVC avec EF Core - Migrations - 4 10"
+title: ASP.NET Core MVC avec EF Core - Migrations - 4 sur 10
 author: tdykstra
-description: "Dans ce didacticiel, vous démarrez à l’aide de la fonctionnalité de migrations EF principales pour la gestion des modifications du modèle de données dans une application ASP.NET MVC de base."
+description: "Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d’EF Core pour gérer les modifications du modèle de données dans une application ASP.NET Core MVC."
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -10,45 +10,45 @@ ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/migrations
 ms.openlocfilehash: fd466af8a73bf4c568fafe7e7fdcaa82021624da
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>Migrations - Core EF avec le didacticiel d’ASP.NET MVC de base (4 sur 10)
+# <a name="migrations---ef-core-with-aspnet-core-mvc-tutorial-4-of-10"></a>Migrations - Didacticiel EF Core avec ASP.NET Core MVC (4 sur 10)
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET MVC de base à l’aide d’Entity Framework Core et Visual Studio. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
 
-Dans ce didacticiel, vous démarrez à l’aide de la fonctionnalité de migrations EF principales pour la gestion des modifications du modèle de données. Dans les didacticiels suivants, vous allez ajouter des migrations plus que vous modifiez le modèle de données.
+Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d’EF Core pour gérer les modifications du modèle de données. Dans les didacticiels suivants, vous allez ajouter d’autres migrations au fil de la modification du modèle de données.
 
 ## <a name="introduction-to-migrations"></a>Introduction aux migrations
 
-Lorsque vous développez une application, votre modèle de données change fréquemment et chaque fois que les modifications apportées au modèle, il est désynchronisé avec la base de données. Vous avez démarré ces didacticiels en configurant l’Entity Framework pour créer la base de données si elle n’existe pas. Ensuite, chaque fois que vous modifiez le modèle de données : ajoutez, supprimez, ou modifiez des classes d’entité ou modifiez votre classe DbContext--vous pouvez supprimer la base de données et EF crée un nouveau qui correspond au modèle et l’alimente avec les données de test.
+Quand vous développez une nouvelle application, votre modèle de données change fréquemment et, chaque fois que le modèle change, il n’est plus en synchronisation avec la base de données. Vous avez démarré ce didacticiel en configurant Entity Framework pour créer la base de données si elle n’existait pas. Ensuite, chaque fois que vous modifiez le modèle de données, en ajoutant, supprimant ou changeant des classes d’entité ou votre classe DbContext, vous pouvez supprimer la base de données : EF en crée alors une nouvelle qui correspond au modèle et l’alimente avec des données de test.
 
-Cette méthode de synchronisation de la base de données avec le modèle de données fonctionne bien jusqu'à ce que vous déployez l’application en production. Lorsque l’application est en cours d’exécution en production, qu'il stocke généralement les données que vous souhaitez conserver, et vous ne voulez pas perdre tous les éléments chaque fois que vous apportez une modification telles que l’ajout d’une nouvelle colonne. La fonctionnalité EF Core Migrations résout ce problème en activant EF mettre à jour le schéma de base de données au lieu de créer une nouvelle base de données.
+Cette méthode pour conserver la base de données en synchronisation avec le modèle de données fonctionne bien jusqu’au déploiement de l’application en production. Quand l’application s’exécute en production, elle stocke généralement les données que vous voulez conserver, et vous ne voulez pas tout perdre chaque fois que vous apportez une modification, comme ajouter une nouvelle colonne. La fonctionnalité Migrations d’EF Core résout ce problème en permettant à EF de mettre à jour le schéma de base de données au lieu de créer une nouvelle base de données.
 
 ## <a name="entity-framework-core-nuget-packages-for-migrations"></a>Packages NuGet Entity Framework Core pour les migrations
 
-Pour utiliser des migrations, vous pouvez utiliser la **Package Manager Console** (PMC) ou de l’interface de ligne de commande (CLI).  Ces didacticiels montrent comment utiliser les commandes CLI. Plus d’informations sur la CFP est à [la fin de ce didacticiel](#pmc).
+Pour effectuer des migrations, vous pouvez utiliser la **console du Gestionnaire de package** ou l’interface de ligne de commande (CLI).  Ces didacticiels montrent comment utiliser des commandes CLI. Vous trouverez des informations sur la console du Gestionnaire de package [à la fin de ce didacticiel](#pmc).
 
-Les outils EF de l’interface de ligne de commande (CLI) sont fournis dans [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Pour installer ce package, ajoutez-la à la `DotNetCliToolReference` collection dans le *.csproj* de fichiers, comme indiqué. **Remarque :** Vous devez installer ce package en modifiant le fichier *.csproj*. Vous ne pouvez pas utiliser la commande `install-package` ou le GUI (interface graphique utilisateur) du Gestionnaire de package. Vous pouvez modifier le *.csproj* fichier en cliquant sur le nom du projet dans **l’Explorateur de solutions** et en sélectionnant **ContosoUniversity.csproj de modifier**.
+Les outils EF de l’interface de ligne de commande (CLI) sont fournis dans [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet). Pour installer ce package, ajoutez-le à la collection `DotNetCliToolReference` dans le fichier *.csproj*, comme indiqué. **Remarque :** Vous devez installer ce package en modifiant le fichier *.csproj*. Vous ne pouvez pas utiliser la commande `install-package` ni l’interface graphique utilisateur du Gestionnaire de package. Vous pouvez modifier le fichier *.csproj* en cliquant sur le nom du projet dans **l’Explorateur de solutions** et en sélectionnant **Modifier ContosoUniversity.csproj**.
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
   
-(Dans cet exemple, les numéros de version étaient en cours lors de l’écriture de ce didacticiel.) 
+(Les numéros de version de cet exemple étaient les plus récents lors de la rédaction de ce didacticiel.) 
 
-## <a name="change-the-connection-string"></a>Modifier la chaîne de connexion
+## <a name="change-the-connection-string"></a>Changer la chaîne de connexion
 
-Dans le *appsettings.json* , modifiez le nom de la base de données dans la chaîne de connexion à ContosoUniversity2 ou un autre nom que vous avez utilisé sur l’ordinateur que vous utilisez.
+Dans le fichier *appsettings.json*, remplacez le nom de la base de données dans la chaîne de connexion par ContosoUniversity2 ou par un autre nom que vous n’avez pas utilisé sur l’ordinateur que vous utilisez.
 
 [!code-json[Main](intro/samples/cu/appsettings2.json?range=1-4)]
 
-Cette modification affecte le projet afin que la première migration créera une nouvelle base de données. Ce n’est pas requis pour la prise en main de migrations, mais vous le verrez plus tard pourquoi il est judicieux.
+Cette modification configure le projet de façon à ce que la première migration crée une nouvelle base de données. Ce n’est pas obligatoire quand vous commencez à utiliser les migrations, mais vous verrez plus tard pourquoi c’est judicieux.
 
 > [!NOTE]
-> Comme alternative à la modification du nom de la base de données, vous pouvez supprimer la base de données. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou le `database drop` commande CLI :
+> Au lieu de changer le nom de la base de données, vous pouvez la supprimer. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop` :
 > ```console
 > dotnet ef database drop
 > ```
@@ -56,15 +56,15 @@ Cette modification affecte le projet afin que la première migration créera une
 
 ## <a name="create-an-initial-migration"></a>Créer une migration initiale
 
-Enregistrez vos modifications et générez le projet. Ensuite, ouvrez une fenêtre de commande et accédez au dossier du projet. Voici un moyen rapide pour ce faire :
+Enregistrez vos modifications et générez le projet. Ouvrez ensuite une fenêtre Commande et accédez au dossier du projet. Voici un moyen rapide pour le faire :
 
-* Dans **l’Explorateur de solutions**, cliquez sur le projet et choisissez **ouvert dans l’Explorateur de fichiers** dans le menu contextuel.
+* Dans **l’Explorateur de solutions**, cliquez sur le projet et choisissez **Ouvrir dans l’Explorateur de fichiers** dans le menu contextuel.
 
-  ![Ouvrir dans l’élément de menu de l’Explorateur de fichiers](migrations/_static/open-in-file-explorer.png)
+  ![Élément de menu Ouvrir dans l’Explorateur de fichiers](migrations/_static/open-in-file-explorer.png)
 
-* Entrez « cmd » dans la barre d’adresses et appuyez sur ENTRÉE.
+* Entrez « cmd » dans la barre d’adresses et appuyez sur Entrée.
 
-  ![Fenêtre de commande ouverte](migrations/_static/open-command-window.png)
+  ![Ouvrir une fenêtre Commande](migrations/_static/open-command-window.png)
 
 Entrez la commande suivante dans la fenêtre Commande :
 
@@ -72,7 +72,7 @@ Entrez la commande suivante dans la fenêtre Commande :
 dotnet ef migrations add InitialCreate
 ```
 
-Vous voyez la sortie comme suit dans la fenêtre de commande :
+Vous voyez une sortie similaire à celle-ci dans la fenêtre Commande :
 
 ```console
 info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
@@ -83,41 +83,41 @@ Done. To undo this action, use 'ef migrations remove'
 ```
 
 > [!NOTE]
-> Si vous voyez un message d’erreur *aucun exécutable ne trouvé correspondant commande « dotnet-ef »*, consultez [ce billet de blog](http://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/) pour le dépannage de l’aide.
+> Si vous voyez un message d’erreur *Aucun exécutable trouvé correspondant à la commande « dotnet-ef »*, consultez [ce billet de blog](http://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/) pour résoudre ce problème.
 
-Si vous voyez un message d’erreur «*accéder au fichier... ContosoUniversity.dll, car il est utilisé par un autre processus.* », recherchez l’icône IIS Express dans la barre des tâches Windows, faites un clic droit, puis cliquez sur **ContosoUniversity > Stop Site**.
+Si vous voyez un message d’erreur « *Impossible d’accéder au fichier... ContosoUniversity.dll, car il est utilisé par un autre processus.* », recherchez l’icône IIS Express dans la barre d’état système de Windows, cliquez avec le bouton droit, puis cliquez sur **ContosoUniversity > Arrêter le Site**.
 
-## <a name="examine-the-up-and-down-methods"></a>Examiner le haut et vers le bas de méthodes
+## <a name="examine-the-up-and-down-methods"></a>Examiner les méthodes Up et Down
 
-Lorsque vous avez exécuté le `migrations add` EF généré le code qui crée la base de données à partir de zéro de la commande. Ce code se trouve dans le *Migrations* dossier, dans le fichier nommé  *\<timestamp > _InitialCreate.cs*. Le `Up` méthode de la `InitialCreate` classe crée les tables de base de données qui correspondent aux jeux d’entités de modèle de données, et le `Down` méthode les supprime, comme indiqué dans l’exemple suivant.
+Quand vous avez exécuté la commande `migrations add`, EF a généré le code qui crée la base de données à partir de zéro. Ce code se trouve dans le dossier *Migrations*, dans le fichier nommé *\<horodatage>_InitialCreate.cs*. La méthode `Up` de la classe `InitialCreate` crée les tables de base de données qui correspondent aux jeux d’entités du modèle de données, et la méthode `Down` les supprime, comme indiqué dans l’exemple suivant.
 
 [!code-csharp[Main](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
-Appels de migrations le `Up` méthode pour implémenter les modifications de modèle de données pour une migration. Lorsque vous entrez une commande pour restaurer la mise à jour, les appels de Migrations le `Down` (méthode).
+La fonctionnalité Migrations appelle la méthode `Up` pour implémenter les modifications du modèle de données pour une migration. Quand vous entrez une commande pour annuler la mise à jour, Migrations appelle la méthode `Down`.
 
-Ce code est pour la migration initiale qui a été créée lorsque vous avez entré la `migrations add InitialCreate` commande. Le paramètre de nom de la migration (« InitialCreate » dans l’exemple) est utilisé pour le nom de fichier et peut être tout ce que vous voulez. Il est conseillé de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, vous pouvez nommer une migration ultérieure « AddDepartmentTable ».
+Ce code est celui de la migration initiale qui a été créé quand vous avez entré la commande `migrations add InitialCreate`. Le paramètre de nom de la migration (« InitialCreate » dans l’exemple) est utilisé comme nom de fichier ; vous pouvez le choisir librement. Nous vous conseillons néanmoins de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, vous pouvez nommer une migration ultérieure « AjouterTableDépartement ».
 
-Si vous avez créé la migration initiale lors de la base de données existe déjà, le code de création de base de données est généré, mais ne doit pas nécessairement exécuter, car la base de données correspond déjà le modèle de données. Lorsque vous déployez l’application vers un autre environnement dans lequel la base de données n’existe pas encore, ce code sera exécuté pour créer votre base de données, il est donc judicieux de tester au préalable. C’est pourquoi vous avez modifié le nom de la base de données dans la chaîne de connexion précédemment--afin que les migrations peuvent créer un nouveau à partir de zéro.
+Si vous avez créé la migration initiale alors que la base de données existait déjà, le code de création de la base de données est généré, mais il n’est pas nécessaire de l’exécuter, car la base de données correspond déjà au modèle de données. Quand vous déployez l’application sur un autre environnement où la base de données n’existe pas encore, ce code est exécuté pour créer votre base de données : il est donc judicieux de le tester au préalable. C’est la raison pour laquelle vous avez précédemment changé le nom de la base de données dans la chaîne de connexion : les migrations doivent pouvoir créer une base de données à partir de zéro.
 
-## <a name="examine-the-data-model-snapshot"></a>Examinez l’instantané de modèle de données
+## <a name="examine-the-data-model-snapshot"></a>Examiner la capture instantanée du modèle de données
 
-Migrations crée également un *instantané* du schéma de base de données en cours dans *Migrations/SchoolContextModelSnapshot.cs*. Ce code ressemble à ceci :
+Migrations crée aussi une *capture instantanée* du schéma de base de données actuel dans *Migrations/SchoolContextModelSnapshot.cs*. Voici à quoi ressemble ce code :
 
 [!code-csharp[Main](intro/samples/cu/Migrations/SchoolContextModelSnapshot1.cs?name=snippet_Truncate)]
 
-Étant donné que le schéma de base de données actuelle est représenté dans le code, EF Core ne doit pas interagir avec la base de données pour créer des migrations. Lorsque vous ajoutez une migration, EF détermine ce qui a changé en comparant le modèle de données pour le fichier d’instantané. EF interagit avec la base de données uniquement lorsqu’il a mettre à jour la base de données. 
+Le schéma de base de données actuel étant représenté dans le code, EF Core n’a pas à interagir avec la base de données pour créer des migrations. Quand vous ajoutez une migration, EF détermine ce qui a changé en comparant le modèle de données au fichier de capture instantanée. EF interagit avec la base de données seulement quand il doit la mettre à jour. 
 
-Le fichier d’instantané doit être synchronisée avec les migrations qui créent, vous ne pouvez pas supprimer une migration uniquement en supprimant le fichier nommé  *\<timestamp > _\<migrationname > .cs*. Si vous supprimez ce fichier, les migrations restantes sera synchronisées avec le fichier d’instantané de base de données. Pour supprimer la dernière migration que vous avez ajouté, utilisez la [supprimer des migrations d’ef dotnet](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove) commande.
+Le fichier de capture instantanée doit rester synchronisé avec les migrations qui le créent : , vous ne pouvez donc pas supprimer une migration simplement en supprimant le fichier nommé *\<horodatage>_\<nom_migration>.cs*. Si vous supprimez ce fichier, les migrations restantes ne sont plus synchronisées avec le fichier de capture instantanée de la base de données. Pour supprimer la dernière migration que vous avez ajoutée, utilisez la commande [dotnet ef migrations remove](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove).
 
-## <a name="apply-the-migration-to-the-database"></a>Appliquer la migration vers la base de données
+## <a name="apply-the-migration-to-the-database"></a>Appliquer la migration à la base de données
 
-Dans la fenêtre de commande, entrez la commande suivante pour créer la base de données et les tables qu’il contient.
+Dans la fenêtre Commande, entrez la commande suivante pour créer la base de données et ses tables.
 
 ```console
 dotnet ef database update
 ```
 
-La sortie de la commande est similaire à la `migrations add` de commande, à ceci près que vous consultez les journaux des commandes SQL qui configurer la base de données. La plupart des journaux est omise dans l’exemple de sortie suivant. Si vous préférez ne pas voir ce niveau de détail dans les messages de journal, vous pouvez modifier le niveau de journal dans le *appsettings. Development.JSON* fichier. Pour plus d’informations, consultez [Introduction à la journalisation](xref:fundamentals/logging/index).
+La sortie de la commande est similaire à la commande `migrations add`, à ceci près que vous voyez des journaux pour les commandes SQL qui configurent la base de données. La plupart des journaux sont omis dans l’exemple de sortie suivant. Si vous préférez ne pas voir ce niveau de détail dans les messages des journaux, vous pouvez changer le niveau de journalisation dans le fichier *appsettings.Development.json*. Pour plus d’informations, consultez [Introduction à la journalisation](xref:fundamentals/logging/index).
 
 ```text
 info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[0]
@@ -144,28 +144,28 @@ info: Microsoft.EntityFrameworkCore.Database.Command[200101]
 Done.
 ```
 
-Utilisez **l’Explorateur d’objets SQL Server** pour inspecter la base de données comme vous le faisiez dans le premier didacticiel.  Vous remarquerez que l’ajout d’une table __EFMigrationsHistory qui conserve les migrations ont été appliquées à la base de données. Afficher les données de cette table, et vous verrez une ligne pour la première migration. (Le dernier journal dans l’exemple de sortie CLI précédent montre l’instruction INSERT qui crée cette ligne.)
+Utilisez **l’Explorateur d’objets SQL Server** pour inspecter la base de données, comme vous l’avez fait dans le premier didacticiel.  Vous pouvez noter l’ajout d’une table __EFMigrationsHistory, qui fait le suivi des migrations qui ont été appliquées à la base de données. Visualisez les données de cette table : vous y voyez une ligne pour la première migration. (Le dernier journal dans l’exemple de sortie CLI précédent montre l’instruction INSERT qui crée cette ligne.)
 
-Exécutez l’application pour vérifier que tout fonctionne toujours les mêmes qu’avant.
+Exécutez l’application pour vérifier que tout fonctionne toujours comme avant.
 
-![Page d’Index les étudiants](migrations/_static/students-index.png)
+![Page Index des étudiants](migrations/_static/students-index.png)
 
 <a id="pmc"></a>
-## <a name="command-line-interface-cli-vs-package-manager-console-pmc"></a>Par rapport à l’interface de ligne de commande (CLI) Console du Gestionnaire de package (PMC)
+## <a name="command-line-interface-cli-vs-package-manager-console-pmc"></a>Interface CLI ou console du Gestionnaire de package
 
-L’outillage EF pour la gestion des migrations ne sont disponible à partir de commandes .NET Core CLI ou d’applets de commande PowerShell dans Visual Studio **Package Manager Console** les fenêtre (PMC). Ce didacticiel montre comment utiliser l’interface CLI, mais vous pouvez utiliser le PMC si vous préférez.
+Les outils EF pour la gestion des migrations sont disponibles à partir de commandes CLI .NET Core ou d’applets de commande PowerShell dans la fenêtre **Console du Gestionnaire de package** de Visual Studio. Ce didacticiel montre comment utiliser l’interface CLI, mais vous pouvez utiliser la console du Gestionnaire de package si vous préférez.
 
-Les commandes EF pour les commandes PMC se trouvent dans le [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools) package. Ce package est déjà inclus dans le [Microsoft.AspNetCore.All](xref:fundamentals/metapackage) metapackage, sans que vous ayez à installer.
+Les commandes EF pour la console du Gestionnaire de package se trouvent dans le package [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools). Ce package est déjà inclus dans le métapackage [Microsoft.AspNetCore.All](xref:fundamentals/metapackage). Vous n’avez donc pas à l’installer.
 
-**Important :** cela n’est pas le même package que celui que vous installez pour l’interface CLI en modifiant le *.csproj* fichier. Le nom de celle-ci se termine dans `Tools`, contrairement au nom de package CLI qui se termine par `Tools.DotNet`.
+**Important :** Il ne s’agit pas du même package que celui que vous installez pour l’interface CLI en modifiant le fichier *.csproj*. Le nom de celui-ci se termine par `Tools`, contrairement au nom du package CLI qui se termine par `Tools.DotNet`.
 
-Pour plus d’informations sur les commandes CLI, consultez [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet). 
+Pour plus d’informations sur les commandes CLI, consultez [Interface CLI .NET Core](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet). 
 
-Pour plus d’informations sur les commandes PMC, consultez [Package Manager Console (Visual Studio)](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell).
+Pour plus d’informations sur les commandes de la console du Gestionnaire de package, consultez [Console du Gestionnaire de package (Visual Studio)](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell).
 
 ## <a name="summary"></a>Récapitulatif
 
-Dans ce didacticiel, vous avez vu comment créer et appliquer votre première migration. Dans l’étape suivante du didacticiel, vous pourrez commencer examinant rubriques plus avancées en développant le modèle de données. Tout au long du processus, vous allez créer et appliquer des migrations supplémentaires.
+Dans ce didacticiel, vous avez vu comment créer et appliquer votre première migration. Dans le didacticiel suivant, vous allez aborder des sujets plus avancés en développant le modèle de données. Au cour de ce processus, vous allez créer et appliquer d’autres migrations.
 
 >[!div class="step-by-step"]
 [Précédent](sort-filter-page.md)

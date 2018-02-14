@@ -1,7 +1,7 @@
 ---
-title: "Cœur de ASP.NET MVC avec EF Core - héritage - 9, 10"
+title: "ASP.NET Core MVC avec EF Core - Héritage - 9 sur 10"
 author: tdykstra
-description: "Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données, à l’aide d’Entity Framework Core dans une application ASP.NET Core."
+description: "Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données en utilisant Entity Framework Core dans une application ASP.NET Core."
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -10,138 +10,138 @@ ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/inheritance
 ms.openlocfilehash: 985cc38b10ef830b8274e40ad5f7050157fd4d86
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>Héritage - Core EF avec le didacticiel d’ASP.NET MVC de base (9 sur 10)
+# <a name="inheritance---ef-core-with-aspnet-core-mvc-tutorial-9-of-10"></a>Héritage - Didacticiel EF Core avec ASP.NET Core MVC (9 sur 10)
 
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
+De [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET MVC de base à l’aide d’Entity Framework Core et Visual Studio. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC à l’aide d’Entity Framework Core et de Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
 
 Dans le didacticiel précédent, vous avez géré les exceptions d’accès concurrentiel. Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données.
 
-Dans la programmation orientée objet, vous pouvez utiliser l’héritage pour faciliter la réutilisation de code. Dans ce didacticiel, vous allez modifier le `Instructor` et `Student` afin qu’ils dérivent des classes un `Person` classe qui contient les propriétés de base `LastName` qui sont communs aux instructeurs et les étudiants. Vous ne seront pas ajouter ou modifier des pages web, mais vous allez modifier la partie du code et ces modifications sont répercutées automatiquement dans la base de données.
+En programmation orientée objet, vous pouvez utiliser l’héritage pour faciliter la réutilisation du code. Dans ce didacticiel, vous allez modifier les classes `Instructor` et `Student` afin qu’elles dérivent d’une classe de base `Person` qui contient des propriétés telles que `LastName`, communes aux formateurs et aux étudiants. Vous n’ajouterez ni ne modifierez aucune page web, mais vous modifierez une partie du code et ces modifications seront automatiquement répercutées dans la base de données.
 
-## <a name="options-for-mapping-inheritance-to-database-tables"></a>Options pour le mappage d’héritage pour les tables de base de données
+## <a name="options-for-mapping-inheritance-to-database-tables"></a>Options pour mapper l’héritage aux tables de base de données
 
-Le `Instructor` et `Student` classes dans le modèle de données School ont plusieurs propriétés qui sont identiques :
+Les classes `Instructor` et `Student` du modèle de données School ont plusieurs propriétés identiques :
 
-![Classes de Student et Instructor](inheritance/_static/no-inheritance.png)
+![Classes Student et Instructor](inheritance/_static/no-inheritance.png)
 
-Supposons que vous souhaitez éliminer le code redondant pour les propriétés qui sont partagées par les `Instructor` et `Student` entités. Ou vous souhaitez écrire un service qui peut mettre en forme les noms sans soins si le nom provient d’un formateur ou un étudiant. Vous pouvez créer un `Person` classe de base qui contient uniquement les propriétés partagées, puis apportez les `Instructor` et `Student` classes héritent de cette classe de base, comme indiqué dans l’illustration suivante :
+Supposons que vous souhaitez éliminer le code redondant pour les propriétés partagées par les entités `Instructor` et `Student`. Ou vous souhaitez écrire un service capable de mettre en forme les noms sans se soucier du fait que le nom provienne d’un formateur ou d’un étudiant. Vous pouvez créer une classe de base `Person` qui contient uniquement les propriétés partagées, puis paramétrer les classes `Instructor` et `Student` pour qu’elles héritent de cette classe de base, comme indiqué dans l’illustration suivante :
 
-![Classes de Student et Instructor dérivant de la classe Person](inheritance/_static/inheritance.png)
+![Classes Student et Instructor dérivant de la classe Person](inheritance/_static/inheritance.png)
 
-Il existe plusieurs façons que cette structure d’héritage peut être représentée dans la base de données. Vous pourriez avoir une table de la personne qui inclut des informations sur les étudiants et instructeurs dans une table unique. Certaines des colonnes impossible applique uniquement aux instructeurs (HireDate), certains uniquement pour les étudiants (EnrollmentDate), certains pour les deux (nom, prénom). En règle générale, vous devriez pour indiquer le type de chaque ligne représente une colonne de discriminateur. Par exemple, la colonne de discriminateur peut-être « Formateur » pour les enseignants et « Étudiant » pour les étudiants.
+Il existe plusieurs façons de représenter cette structure d’héritage dans la base de données. Vous pouvez avoir une table de personnes qui inclut des informations sur les étudiants et les formateurs dans une table unique. Certaines des colonnes pourraient s’appliquer uniquement aux formateurs (HireDate), certaines uniquement aux étudiants (EnrollmentDate) et certaines aux deux (LastName, FirstName). En règle générale, vous pouvez avoir une colonne de discriminateur pour indiquer le type que chaque ligne représente. Par exemple, la colonne de discriminateur peut avoir « Instructor » pour les formateurs et « Student » pour les étudiants.
 
-![Exemple de table par hiérarchie](inheritance/_static/tph.png)
+![Exemple TPH (table par hiérarchie)](inheritance/_static/tph.png)
 
-Ce modèle de la génération d’une structure d’héritage d’entité à partir d’une table de base de données unique est appelé l’héritage table par hiérarchie (TPH).
+Ce modèle de génération d’une structure d’héritage d’entité à partir d’une table de base de données unique porte le nom d’héritage TPH (table par hiérarchie).
 
-Une alternative consiste à rendre la base de données ressemble plus à la structure d’héritage. Par exemple, vous pourriez uniquement les champs nom de la table Person et ont des tables distinctes Instructor et Student avec les champs de date.
+Une alternative consiste à faire en sorte que la base de données ressemble plus à la structure d’héritage. Par exemple, vous pouvez avoir uniquement les champs de nom dans la table Person, et des tables Instructor et Student distinctes avec les champs de date.
 
 ![Héritage TPT (table par type)](inheritance/_static/tpt.png)
 
-Ce modèle de configuration d’une table de base de données pour chaque classe d’entité est appelé table par héritage de type (TPT).
+Ce modèle consistant à créer une table de base de données pour chaque classe d’entité est appelé héritage TPT (table par type).
 
-Encore une autre option consiste à mapper tous les types non abstraits à des tables individuelles. Toutes les propriétés d’une classe, y compris les propriétés héritées, mappent aux colonnes de la table correspondante. Ce modèle est appelé l’héritage de Table-par classe concrète (TPC). Si vous avez implémenté l’héritage pour les classes de personne, Student et Instructor TPC comme indiqué précédemment, les tables Student et Instructor ne ressemble pas différents après l’implémentation de l’héritage de leur.
+Une autre option encore consiste à mapper tous les types non abstraits à des tables individuelles. Toutes les propriétés d’une classe, y compris les propriétés héritées, sont mappées aux colonnes de la table correspondante. Ce modèle porte le nom d’héritage TPC (table par classe concrète). Si vous avez implémenté l’héritage TPC pour les classes Person, Student et Instructor comme indiqué précédemment, les tables Student et Instructor ne seraient pas différentes avant et après l’implémentation de l’héritage.
 
-Les modèles d’héritage TPC et TPH remettre généralement meilleures performances que les modèles d’héritage TPT, étant donné que les modèles TPT peuvent entraîner des requêtes de jointure complexe.
+Les modèles d’héritage TPC et TPH fournissent généralement de meilleures performances que les modèles d’héritage TPT, car les modèles TPT peuvent entraîner des requêtes de jointure complexes.
 
-Ce didacticiel montre comment implémenter l’héritage TPH. TPH est un modèle d’héritage uniquement qui prend en charge de l’Entity Framework Core.  Ce que vous allez faire est de créer un `Person` de classe, de modifier le `Instructor` et `Student` comme classes de dérivation `Person`, ajouter la nouvelle classe par le `DbContext`et créer une migration.
+Ce didacticiel montre comment implémenter l’héritage TPH. TPH est le seul modèle d’héritage pris en charge par Entity Framework Core.  Vous allez créer une classe `Person`, modifier les classes `Instructor` et `Student` à dériver de `Person`, ajouter la nouvelle classe à `DbContext` et créer une migration.
 
 > [!TIP] 
-> Pensez à enregistrer une copie du projet avant d’apporter les modifications suivantes.  Si vous rencontrez des problèmes et devez recommencer, il sera alors plus facile de démarrer à partir du projet enregistré au lieu d’inverser les opérations effectuées pour ce didacticiel ou en accédant au début de la série entière.
+> Pensez à enregistrer une copie du projet avant d’apporter les modifications suivantes.  Ensuite, si vous rencontrez des problèmes et devez recommencer, il sera plus facile de démarrer à partir du projet enregistré que d’annuler les étapes effectuées pour ce didacticiel ou de retourner au début de la série entière.
 
-## <a name="create-the-person-class"></a>Créer la classe de personne
+## <a name="create-the-person-class"></a>Créer la classe Person
 
-Dans le dossier de modèles, créer Person.cs et remplacez le code de modèle par le code suivant :
+Dans le dossier Models, créez Person.cs et remplacez le code du modèle par le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Models/Person.cs)]
 
-## <a name="make-student-and-instructor-classes-inherit-from-person"></a>Faites en sorte que les classes de Student et Instructor hérite de personne
+## <a name="make-student-and-instructor-classes-inherit-from-person"></a>Paramétrer les classes Student et Instructor pour qu’elles héritent de Person
 
-Dans *Instructor.cs*, dérivez la classe de formateur de la classe de personne et supprimer les champs de clé et le nom. Le code doit ressembler à l’exemple suivant :
+Dans *Instructor.cs*, dérivez la classe Instructor de la classe Person et supprimez les champs de clé et de nom. Le code ressemblera à l’exemple suivant :
 
 [!code-csharp[Main](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
 
-Apporter les mêmes modifications dans *Student.cs*.
+Apportez les mêmes modifications dans *Student.cs*.
 
 [!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
-## <a name="add-the-person-entity-type-to-the-data-model"></a>Ajouter le type d’entité personne au modèle de données
+## <a name="add-the-person-entity-type-to-the-data-model"></a>Ajouter le type d’entité Person au modèle de données
 
-Ajouter le type d’entité personne *SchoolContext.cs*. Les nouvelles lignes sont mises en surbrillance.
+Ajoutez le type d’entité Person à *SchoolContext.cs*. Les nouvelles lignes apparaissent en surbrillance.
 
 [!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
 
-C’est tout ce qui a besoin d’Entity Framework pour configurer l’héritage table par hiérarchie. Comme vous le verrez, lorsque la base de données est mise à jour, il aura une table de la personne à la place les tables Student et formateur.
+C’est là tout ce dont Entity Framework a besoin pour configurer l’héritage TPH (table par hiérarchie). Comme vous le verrez, lorsque la base de données sera mise à jour, elle aura une table Person à la place des tables Student et Instructor.
 
-## <a name="create-and-customize-migration-code"></a>Créer et personnaliser le code de la migration
+## <a name="create-and-customize-migration-code"></a>Créer et personnaliser le code de migration
 
-Enregistrez vos modifications et générez le projet. Ouvrez la fenêtre de commande dans le dossier du projet, puis entrez la commande suivante :
+Enregistrez vos modifications et générez le projet. Ensuite, ouvrez la fenêtre de commande dans le dossier du projet et entrez la commande suivante :
 
 ```console
 dotnet ef migrations add Inheritance
 ```
 
-N’exécutez pas le `database update` commande encore. Cette commande entraîne de perte de données, car il supprime la table de formateurs et les renommer la table étudiant à personne. Vous devez fournir un code personnalisé pour préserver les données existantes.
+N’exécutez pas encore la commande `database update`. Cette commande entraîne une perte de données, car elle supprime la table Instructor et renomme la table Student en Person. Vous devez fournir un code personnalisé pour préserver les données existantes.
 
-Ouvrez *Migrations /\<timestamp > _Inheritance.cs* et remplacez le `Up` méthode avec le code suivant :
+Ouvrez *Migrations/\<horodatage>_Inheritance.cs* et remplacez la méthode `Up` par le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 
-Ce code prend en charge les tâches de mise à jour de base de données suivantes :
+Ce code prend en charge les tâches de mise à jour de base de données suivantes :
 
-* Supprime les contraintes de clé étrangère et les index qui pointent vers la table d’étudiants.
+* Supprime les contraintes de clé étrangère et les index qui pointent vers la table Student.
 
-* Renomme la table de formateurs en tant que personne et apporte les modifications nécessaires pour stocker les données de l’étudiant :
+* Renomme la table Instructor en Person et apporte les modifications nécessaires pour qu’elle stocke les données des étudiants :
 
-* Ajoute EnrollmentDate nullable pour les étudiants.
+* Ajoute une EnrollmentDate nullable pour les étudiants.
 
-* Ajoute la colonne de discriminateur pour indiquer si une ligne est pour un étudiant ou un formateur.
+* Ajoute la colonne Discriminator pour indiquer si une ligne est pour un étudiant ou un formateur.
 
-* Rend HireDate nullable étant donné que les lignes de l’étudiant n’ont des dates d’embauche.
+* Rend HireDate nullable étant donné que les lignes d’étudiant n’ont pas de dates d’embauche.
 
-* Ajoute un champ temporaire qui sera utilisé pour mettre à jour les clés étrangères qui pointent vers les étudiants. Lorsque vous copiez des étudiants dans la table Person qu’ils obtiendront les nouvelles valeurs de clé primaires.
+* Ajoute un champ temporaire qui sera utilisé pour mettre à jour les clés étrangères qui pointent vers les étudiants. Lorsque vous copiez des étudiants dans la table Person, ils obtiennent de nouvelles valeurs de clés primaires.
 
-* Copie des données à partir de la table de l’étudiant dans la table Person. Cela provoque des étudiants obtenir attribué les nouvelles valeurs de clé primaires.
+* Copie des données à partir de la table Student dans la table Person. Cela entraîne l’affectation de nouvelles valeurs de clés primaires aux étudiants.
 
-* Résout des valeurs de clés étrangères qui pointent vers les étudiants.
+* Corrige les valeurs de clés étrangères qui pointent vers les étudiants.
 
-* Crée de nouveau les contraintes de clé étrangère et des index, désormais de les utiliser pour la table Person.
+* Crée de nouveau les index et les contraintes de clé étrangère, désormais pointées vers la table Person.
 
-(Si vous aviez utilisé des GUID au lieu de l’entier en tant que le type de clé primaire, les valeurs de clé primaire étudiant n’ont pas à modifier, et plusieurs de ces étapes a été omises).
+(Si vous aviez utilisé un GUID à la place d’un entier comme type de clé primaire, les valeurs des clés primaires des étudiants n’auraient pas changé, et plusieurs de ces étapes auraient pu être omises.)
 
-Exécutez le `database update` commande :
+Exécutez la commande `database update` :
 
 ```console
 dotnet ef database update
 ```
 
-(Dans un système de production, vous effectueriez modifications correspondantes apportées à la `Down` méthode dans les cas, vous deviez jamais qui permet de revenir à la version précédente de la base de données. Pour ce didacticiel, vous n’utiliserez pas la `Down` méthode.)
+(Dans un système de production, vous apporteriez les modifications correspondantes à la méthode `Down` au cas où vous auriez à l’utiliser pour revenir à la version précédente de la base de données. Pour ce didacticiel, vous n’utiliserez pas la méthode `Down`.)
 
 > [!NOTE] 
-> Il est possible d’obtenir d’autres erreurs lorsque des modifications de schéma dans une base de données qui comporte déjà des données. Si vous obtenez des erreurs de migration que vous ne pouvez pas résoudre, vous pouvez modifier le nom de la base de données dans la chaîne de connexion ou supprimer la base de données. Avec une base de données, il n’existe pas de données à migrer, et la commande de base de données de mise à jour est plus susceptible de se terminer sans erreur. Pour supprimer la base de données, utilisez SSOX ou exécutez le `database drop` commande CLI.
+> Vous pouvez obtenir d’autres erreurs en apportant des modifications au schéma dans une base de données qui comporte déjà des données. Si vous obtenez des erreurs de migration que vous ne pouvez pas résoudre, vous pouvez changer le nom de la base de données dans la chaîne de connexion ou supprimer la base de données. Avec une nouvelle base de données, il n’y a pas de données à migrer et la commande de mise à jour de base de données a plus de chances de s’exécuter sans erreur. Pour supprimer la base de données, utilisez SSOX ou exécutez la commande CLI `database drop`.
 
-## <a name="test-with-inheritance-implemented"></a>Tester avec héritage implémentée
+## <a name="test-with-inheritance-implemented"></a>Tester avec l’héritage implémenté
 
-Exécutez l’application et essayez de différentes pages. Tout fonctionne comme auparavant.
+Exécutez l’application et essayez différentes pages. Tout fonctionne comme avant.
 
-Dans **l’Explorateur d’objets SQL Server**, développez **les connexions de données/SchoolContext** , puis **Tables**, et vous voyez que les tables Student et Instructor ont été remplacés par un Table Person. Ouvrez le Concepteur de tables Person et vous voyez qu’il possède toutes les colonnes utilisées dans les tables Student et formateur.
+Dans l’**Explorateur d’objets SQL Server**, développez **Data Connections/SchoolContext** puis **Tables**, et vous constatez que les tables Student et Instructor ont été remplacées par une table Person. Ouvrez le concepteur de la table Person et vous constatez qu’elle possède toutes les colonnes qui existaient dans les tables Student et Instructor.
 
 ![Table Person dans SSOX](inheritance/_static/ssox-person-table.png)
 
-Avec le bouton droit de la table Person, puis cliquez sur **afficher les données de Table** pour afficher la colonne de discriminateur.
+Cliquez avec le bouton droit sur la table Person, puis cliquez sur **Afficher les données de la table** pour voir la colonne de discriminateur.
 
 ![Table Person dans SSOX - données de la table](inheritance/_static/ssox-person-data.png)
 
 ## <a name="summary"></a>Récapitulatif
 
-Vous avez implémenté l’héritage table par hiérarchie pour le `Person`, `Student`, et `Instructor` classes. Pour plus d’informations sur l’héritage dans Entity Framework Core, consultez [héritage](https://docs.microsoft.com/ef/core/modeling/inheritance). Dans l’étape suivante du didacticiel, vous allez apprendre à gérer une variété de scénarios de Entity Framework relativement avancés.
+Vous avez implémenté l’héritage TPH (table par hiérarchie) pour les classes `Person`, `Student` et `Instructor`. Pour plus d’informations sur l’héritage dans Entity Framework Core, consultez [Héritage](https://docs.microsoft.com/ef/core/modeling/inheritance). Dans le prochain didacticiel, vous allez apprendre à gérer divers scénarios Entity Framework relativement avancés.
 
 >[!div class="step-by-step"]
 [Précédent](concurrency.md)

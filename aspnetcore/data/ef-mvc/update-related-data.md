@@ -1,7 +1,7 @@
 ---
-title: "Données - 7 sur 10 inhérentes à cœur d’ASP.NET MVC avec EF Core - mise à jour"
+title: "ASP.NET Core MVC avec EF Core - Mettre à jour les données associées - 7 sur 10"
 author: tdykstra
-description: "Dans ce didacticiel vous allez mettre à jour les données associées en mettant à jour les propriétés de navigation et les champs de clé étrangère."
+description: "Dans ce didacticiel, vous mettez à jour des données associées en mettant à jour des champs de clé étrangère et des propriétés de navigation."
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -10,30 +10,30 @@ ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/update-related-data
 ms.openlocfilehash: 4085ca9340291f6ab594285360f3b65738699098
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 01/31/2018
 ---
-# <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>Mise à jour des données connexes - Core EF avec le didacticiel d’ASP.NET MVC de base (7 sur 10)
+# <a name="updating-related-data---ef-core-with-aspnet-core-mvc-tutorial-7-of-10"></a>Mise à jour de données associées - Didacticiel EF Core avec ASP.NET Core MVC (7 sur 10)
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET MVC de base à l’aide d’Entity Framework Core et Visual Studio. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
 
-Dans le didacticiel précédent, vous avez affiché les données associées ; Dans ce didacticiel vous allez mettre à jour les données associées en mettant à jour les propriétés de navigation et les champs de clé étrangère.
+Dans le didacticiel précédent, vous avez affiché des données associées ; dans ce didacticiel, vous mettez à jour des données associées en mettant à jour des champs de clé étrangère et des propriétés de navigation.
 
-Les illustrations suivantes montrent certaines des pages que vous allez utiliser.
+Les illustrations suivantes montrent quelques-unes des pages que vous allez utiliser.
 
-![Page de modification du cours](update-related-data/_static/course-edit.png)
+![Page Edit pour les cours](update-related-data/_static/course-edit.png)
 
-![Page de modification du formateur](update-related-data/_static/instructor-edit-courses.png)
+![Page Edit pour les formateurs](update-related-data/_static/instructor-edit-courses.png)
 
-## <a name="customize-the-create-and-edit-pages-for-courses"></a>Personnaliser le créer et modifier des Pages pour les cours
+## <a name="customize-the-create-and-edit-pages-for-courses"></a>Personnaliser les pages Create et Edit pour les cours
 
-Lorsqu’une nouvelle entité de cours est créée, il doit avoir une relation à un service existant. Pour faciliter ce processus, le code de modèle généré automatiquement inclut des méthodes de contrôleur et de créer et modifier des vues qui incluent une liste déroulante pour sélectionner le service. Les jeux de liste déroulante, le `Course.DepartmentID` une propriété de clé étrangère, et c’est tout Entity Framework a besoin pour charger le `Department` propriété de navigation avec l’entité de service appropriée. Vous allez utiliser le code de modèle généré automatiquement, mais modifier légèrement pour ajouter la gestion des erreurs et de trier la liste déroulante.
+Quand une entité Course est créée, elle doit avoir une relation avec un département existant. Pour faciliter cela, le code du modèle généré automatiquement inclut des méthodes de contrôleur, et des vues Create et Edit qui incluent une liste déroulante pour sélectionner le département. La liste déroulante définit la propriété de clé étrangère `Course.DepartmentID`, qui est tout ce dont Entity Framework a besoin pour charger la propriété de navigation `Department` avec l’entité Department appropriée. Vous utilisez le code du modèle généré automatiquement, mais que vous modifiez un peu pour ajouter la gestion des erreurs et trier la liste déroulante.
 
-Dans *CoursesController.cs*, supprimez les quatre méthodes de créer et modifier et remplacez-les par le code suivant :
+Dans *CoursesController.cs*, supprimez les quatre méthodes Create et Edit, et remplacez-les par le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_CreateGet)]
 
@@ -43,91 +43,91 @@ Dans *CoursesController.cs*, supprimez les quatre méthodes de créer et modifie
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_EditPost)]
 
-Après le `Edit` HttpPost (méthode), créez une méthode qui charge les informations de service pour obtenir la liste déroulante.
+Après la méthode HttpPost `Edit`, créez une méthode qui charge les informations des départements pour la liste déroulante.
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_Departments)]
 
-Le `PopulateDepartmentsDropDownList` Obtient une liste de tous les départements sont triés par nom de méthode, crée un `SelectList` collection pour obtenir la liste déroulante et passe la collection à la vue dans `ViewBag`. La méthode accepte le paramètre facultatif `selectedDepartment` paramètre qui permet au code appelant spécifier l’élément est sélectionné lors du rendu de la liste déroulante. La vue passe le nom « DepartmentID » pour le `<select>` d’assistance de balise et l’application d’assistance puis sache qu’il peut pour rechercher dans le `ViewBag` de l’objet pour un `SelectList` nommé « DepartmentID ».
+La méthode `PopulateDepartmentsDropDownList` obtient une liste de tous les départements triés par nom, crée une collection `SelectList` pour une liste déroulante et passe la collection à la vue dans `ViewBag`. La méthode accepte le paramètre facultatif `selectedDepartment` qui permet au code appelant de spécifier l’élément sélectionné lors de l’affichage de la liste déroulante. La vue passe le nom « DepartmentID » pour le tag helper `<select>` : le helper peut alors rechercher dans l’objet `ViewBag` une `SelectList` nommée « DepartmentID ».
 
-Le HttpGet `Create` les appels de méthode le `PopulateDepartmentsDropDownList` méthode sans définir l’élément sélectionné, car de formation le service n’est pas encore établi :
+La méthode HttpGet `Create` appelle la méthode `PopulateDepartmentsDropDownList` sans définir l’élément sélectionné, car pour un nouveau cours, le département n’est pas encore établi :
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=3&name=snippet_CreateGet)]
 
-Le HttpGet `Edit` méthode définit l’élément sélectionné, en fonction de l’ID du service qui est déjà affecté au cours en cours de modification :
+La méthode HttpGet `Edit` définit l’élément sélectionné, en fonction de l’ID du département qui est déjà affecté au cours à modifier :
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=15&name=snippet_EditGet)]
 
-Pour les deux méthodes HttpPost `Create` et `Edit` également inclure du code qui définit l’élément sélectionné quand ils réafficher la page après une erreur. Cela garantit que lorsque la page s’affiche de nouveau pour afficher le message d’erreur, quel que soit le service a été sélectionné reste sélectionné.
+Les méthodes HttpPost pour `Create` et pour `Edit` incluent également du code qui définit l’élément sélectionné quand elles réaffichent la page après une erreur. Ceci garantit que quand la page est réaffichée pour montrer le message d’erreur, le département qui a été sélectionné le reste.
 
-### <a name="add-asnotracking-to-details-and-delete-methods"></a>Ajouter. AsNoTracking pour plus d’informations et de méthodes de suppression
+### <a name="add-asnotracking-to-details-and-delete-methods"></a>Ajouter .AsNoTracking aux méthodes Details et Delete
 
-Pour optimiser les performances des détails du cours et supprimer des pages, ajouter `AsNoTracking` appelle le `Details` et HttpGet `Delete` méthodes.
+Pour optimiser les performances des pages Details et Delete pour les cours, ajoutez des appels de `AsNoTracking` dans les méthodes `Details` et HttpGet `Delete`.
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_Details)]
 
 [!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?highlight=10&name=snippet_DeleteGet)]
 
-### <a name="modify-the-course-views"></a>Modifier les vues de cours
+### <a name="modify-the-course-views"></a>Modifier les vues des cours
 
-Dans *Views/Courses/Create.cshtml*, ajouter une option « Sélectionner département » pour le **service** déroulante liste, de modifier la légende de **DepartmentID** à  **Service**et ajouter un message de validation.
+Dans *Views/Courses/Create.cshtml*, ajoutez une option « Select Department » à la liste déroulante **Department**, changez la légende de **DepartmentID** en **Department** et ajoutez un message de validation.
 
 [!code-html[Main](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
-Dans *Views/Courses/Edit.cshtml*, apporter la même modification pour le champ de service que vous venez de faire dans *Create.cshtml*.
+Dans *Views/Courses/Edit.cshtml*, faites les mêmes modifications pour le champ Department que ce que vous venez de faire dans *Create.cshtml*.
 
-Également dans *Views/Courses/Edit.cshtml*, ajoutez un champ de numéro de cours avant la **titre** champ. Étant donné que le nombre de cours est la clé primaire, il est affiché, mais il ne peut pas être modifié.
+Également dans *Views/Courses/Edit.cshtml*, ajoutez un champ de numéro de cours avant le champ **Title**. Comme le numéro de cours est la clé primaire, il est affiché mais ne peut pas être modifié.
 
 [!code-html[Main](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
-Il existe déjà un champ masqué (`<input type="hidden">`) pour le nombre de cours dans la vue Edition. Ajout d’un `<label>` application d’assistance de balise n’élimine la nécessité pour le champ masqué, car elle n’entraîne pas le nombre de cours à inclure dans les données publiées lorsque l’utilisateur clique sur **enregistrer** sur la **modifier** page.
+Il existe déjà un champ masqué (`<input type="hidden">`) pour le numéro de cours dans la vue Edit. L’ajout d’un tag helper `<label>` n’élimine la nécessité d’avoir le champ masqué, car cela n’a pas comme effet que le numéro de cours est inclut dans les données envoyées quand l’utilisateur clique sur **Save** dans la page **Edit**.
 
-Dans *Views/Courses/Delete.cshtml*, ajoutez un champ du numéro de cours en haut et modifier l’ID de service pour le nom du service.
+Dans *Views/Courses/Delete.cshtml*, ajoutez un champ pour le numéro de cours en haut et changez l’ID de département en nom de département.
 
 [!code-html[Main](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
-Dans *Views/Courses/Details.cshtml*, apporter la même modification que vous venez de *Delete.cshtml*.
+Dans *Views/Courses/Details.cshtml*, faites la même modification que celle que vous venez de faire pour *Delete.cshtml*.
 
-### <a name="test-the-course-pages"></a>Tester les pages de cours
+### <a name="test-the-course-pages"></a>Tester les pages des cours
 
-Exécuter l’application, sélectionnez le **cours** , cliquez sur **créer un nouveau**et entrez les données d’un nouveau cours :
+Exécutez l’application, sélectionnez l’onglet **Courses**, cliquez sur **Create New** et entrez les données pour un nouveau cours :
 
-![Page de création de cours](update-related-data/_static/course-create.png)
+![Page Create pour les cours](update-related-data/_static/course-create.png)
 
-Cliquez sur **Créer**. La page d’Index de cours s’affiche avec le cours de nouveau ajouté à la liste. Le nom du service dans la liste de page d’Index provient de la propriété de navigation, indiquant que la relation a été établie correctement.
+Cliquez sur **Créer**. La page Index des cours est affichée avec le nouveau cours ajouté à la liste. Le nom du département dans la liste de la page Index provient de la propriété de navigation, ce qui montre que la relation a été établie correctement.
 
-Cliquez sur **modifier** sur un cours dans la page d’Index de cours.
+Cliquez sur **Edit** pour un cours dans la page Index des cours.
 
-![Page de modification du cours](update-related-data/_static/course-edit.png)
+![Page Edit pour les cours](update-related-data/_static/course-edit.png)
 
-Modifier les données sur la page, cliquez sur **enregistrer**. La page d’Index de cours s’affiche avec les données de cours mis à jour.
+Modifiez les données dans la page et cliquez sur **Save**. La page Index des cours est affichée avec les données du cours mises à jour.
 
-## <a name="add-an-edit-page-for-instructors"></a>Ajouter une Page de modification pour les formateurs
+## <a name="add-an-edit-page-for-instructors"></a>Ajouter une page Edit pour les formateurs
 
-Lorsque vous modifiez un enregistrement du formateur, que vous souhaitez être en mesure de mettre à jour l’attribution du formateur office. Entité Instructor a une relation un-à-zéro-ou-un avec l’entité OfficeAssignment, ce qui signifie que votre code doit gérer les situations suivantes :
+Quand vous modifiez un enregistrement de formateur, vous voulez avoir la possibilité de mettre à jour l’attribution du bureau du formateur. L’entité Instructor a une relation un-à-zéro ou un-à-un avec l’entité OfficeAssignment, ce qui signifie que votre code doit gérer les situations suivantes :
 
-* Si l’utilisateur efface l’attribution d’office et il avait une valeur, supprimez l’entité OfficeAssignment.
+* Si l’utilisateur efface l’attribution du bureau et qu’il existait une valeur à l’origine, supprimez l’entité OfficeAssignment.
 
-* Si l’utilisateur entre une valeur de l’attribution d’office et il a été initialement vide, créez une nouvelle entité OfficeAssignment.
+* Si l’utilisateur entre une attribution de bureau et qu’elle était vide à l’origine, créez une entité OfficeAssignment.
 
-* Si l’utilisateur modifie la valeur d’une assignation d’office, modifiez la valeur dans une entité OfficeAssignment existante.
+* Si l’utilisateur change la valeur d’une attribution de bureau, changez la valeur dans une entité OfficeAssignment existante.
 
-### <a name="update-the-instructors-controller"></a>Mettre à jour le contrôleur instructeurs
+### <a name="update-the-instructors-controller"></a>Mettre à jour le contrôleur Instructors
 
-Dans *InstructorsController.cs*, modifiez le code dans le HttpGet `Edit` méthode afin qu’elle charge de l’entité Instructor `OfficeAssignment` propriété de navigation et les appels `AsNoTracking`:
+Dans *InstructorsController.cs*, modifiez le code de la méthode HttpGet `Edit` afin qu’elle charge la propriété de navigation `OfficeAssignment` de l’entité Instructor et appelle `AsNoTracking` :
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
 
-Remplacez le HttpPost `Edit` méthode avec le code suivant pour gérer les mises à jour de l’attribution d’office :
+Remplacez la méthode HttpPost `Edit` par le code suivant pour gérer les mises à jour des attributions de bureau :
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EditPostOA)]
 
-Le code effectue les opérations suivantes :
+Le code effectue les actions suivantes :
 
--  Modifie le nom de la méthode `EditPost` , car la signature est désormais le même que le HttpGet `Edit` (méthode) (le `ActionName` attribut spécifie que le `/Edit/` URL est toujours utilisé).
+-  Il change le nom de la méthode `EditPost`, car la signature est maintenant la même que celle de la méthode HttpGet `Edit` (l’attribut `ActionName` spécifie que l’URL `/Edit/` est encore utilisée).
 
--  Obtient l’entité Instructor actuelle à partir de la base de données à l’aide pour le chargement hâtif le `OfficeAssignment` propriété de navigation. Il est identique à ce que vous l’avez fait dans le HttpGet `Edit` (méthode).
+-  Obtient l’entité Instructor actuelle auprès de la base de données en utilisant le chargement hâtif pour la propriété de navigation `OfficeAssignment`. C’est identique à ce que vous avez fait dans la méthode HttpGet `Edit`.
 
--  Met à jour l’entité Instructor récupérée avec des valeurs dans le classeur de modèles. Le `TryUpdateModel` surcharge vous permet à la liste blanche les propriétés que vous souhaitez inclure. Cela empêche la validation excessive, comme expliqué dans la [deuxième didacticiel](crud.md).
+-  Elle met à jour l’entité Instructor récupérée avec des valeurs dans le classeur de modèles. La surcharge de `TryUpdateModel` vous permet de mettre en liste verte les propriétés que vous voulez inclure. Ceci empêche la survalidation, comme expliqué dans le [deuxième didacticiel](crud.md).
 
     <!-- Snippets don't play well with <ul> [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -138,7 +138,7 @@ Le code effectue les opérations suivantes :
         i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
     ```
     
--   Si l’emplacement du bureau est vide, définit la propriété Instructor.OfficeAssignment NULL afin que la ligne correspondante dans la table OfficeAssignment est supprimée.
+-   Si l’emplacement du bureau est vide, il définit la propriété Instructor.OfficeAssignment sur null, de façon que la ligne correspondante dans la table OfficeAssignment soit supprimée.
 
     <!-- Snippets don't play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
 
@@ -149,120 +149,120 @@ Le code effectue les opérations suivantes :
     }
     ```
 
-- Enregistre les modifications dans la base de données.
+- Il enregistre les modifications dans la base de données.
 
-### <a name="update-the-instructor-edit-view"></a>Mettre à jour la vue Modifier le formateur
+### <a name="update-the-instructor-edit-view"></a>Mettre à jour la vue de modification des formateurs
 
-Dans *Views/Instructors/Edit.cshtml*, ajouter un nouveau champ pour la modification de l’emplacement du bureau, à la fin avant du **enregistrer** bouton :
+Dans *Views/Instructors/Edit.cshtml*, ajoutez un nouveau champ pour la modification de l’emplacement du bureau, à la fin et avant le bouton **Save** :
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
-Exécuter l’application, sélectionnez le **instructeurs** onglet, puis cliquez sur **modifier** sur un formateur. Modifier la **bureaux** et cliquez sur **enregistrer**.
+Exécutez l’application, sélectionnez l’onglet **Instructors**, puis cliquez sur **Edit** pour un formateur. Modifiez **Office Location** et cliquez sur **Save**.
 
-![Page de modification du formateur](update-related-data/_static/instructor-edit-office.png)
+![Page Edit pour les formateurs](update-related-data/_static/instructor-edit-office.png)
 
-## <a name="add-course-assignments-to-the-instructor-edit-page"></a>Ajouter des affectations de cours à la page Modifier le formateur
+## <a name="add-course-assignments-to-the-instructor-edit-page"></a>Ajouter des affectations de cours à la page de modification des formateurs
 
-Instructeurs enseigner à n’importe quel nombre de cours. Maintenant, vous allez améliorer la page Modifier le formateur en ajoutant la possibilité de modifier les affectations de cours à l’aide d’un groupe de cases à cocher, comme indiqué dans la capture d’écran suivante :
+Les formateurs peuvent donner un nombre quelconque de cours. Maintenant, vous allez améliorer la page de modification des formateurs en ajoutant la possibilité de modifier les affectations de cours avec un groupe de cases à cocher, comme le montre la capture d’écran suivante :
 
-![Page de modification du formateur en cours](update-related-data/_static/instructor-edit-courses.png)
+![Page de modification des formateurs avec des cours](update-related-data/_static/instructor-edit-courses.png)
 
-La relation entre les entités en cours et le formateur est plusieurs-à-plusieurs. Pour ajouter et supprimer des relations, vous ajoutez et supprimez des entités vers et depuis le jeu d’entités CourseAssignments jointure.
+La relation entre les entités Course et Instructor est plusieurs-à-plusieurs. Pour ajouter et supprimer des relations, vous ajoutez et vous supprimez des entités dans le jeu d’entités de la jointure CourseAssignments.
 
-Formateur de l’interface utilisateur qui permet de modifier les cours est assigné à est un groupe de cases à cocher. Une case à cocher pour chaque cours dans la base de données s’affiche, et celles qui le formateur est actuellement attribué aux sont sélectionnés. L’utilisateur peut sélectionner ou désactivez les cases à cocher pour modifier les affectations de cours. Si le nombre de cours ont été beaucoup plus important, vous souhaiterez probablement utiliser une autre méthode de présentation des données dans la vue, mais que vous utiliseriez la même méthode de manipulation d’une entité de jointure pour créer ou supprimer des relations.
+L’interface utilisateur qui vous permet de changer les cours auxquels un formateur est affecté est un groupe de cases à cocher. Une case à cocher est affichée pour chaque cours de la base de données, et ceux auxquels le formateur est actuellement affecté sont sélectionnés. L’utilisateur peut cocher ou décocher les cases pour changer les affectations de cours. Si le nombre de cours était beaucoup plus important, vous pourriez utiliser une autre méthode de présentation des données dans la vue, mais vous utiliseriez la même méthode de manipulation d’une entité de jointure pour créer ou supprimer des relations.
 
-### <a name="update-the-instructors-controller"></a>Mettre à jour le contrôleur instructeurs
+### <a name="update-the-instructors-controller"></a>Mettre à jour le contrôleur Instructors
 
-Pour fournir des données à la vue pour obtenir la liste de cases à cocher, vous allez utiliser une classe de modèle de vue.
+Pour fournir des données à la vue pour la liste de cases à cocher, vous utilisez une classe de modèle de vue.
 
-Créer *AssignedCourseData.cs* dans les *SchoolViewModels* dossier et remplacez le code existant par le code suivant :
+Créez *AssignedCourseData.cs* dans le dossier *SchoolViewModels* et remplacez le code existant par le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
-Dans *InstructorsController.cs*, remplacez le HttpGet `Edit` méthode avec le code suivant. Les modifications sont mises en surbrillance.
+Dans *InstructorsController.cs*, remplacez la méthode HttpGet `Edit` par le code suivant. Les modifications apparaissent en surbrillance.
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=10,17,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36&name=snippet_EditGetCourses)]
 
-Le code ajoute un chargement hâtif pour le `Courses` propriété de navigation et appelle la nouvelle `PopulateAssignedCourseData` méthode pour fournir des informations du tableau de case à cocher à l’aide de la `AssignedCourseData` afficher la classe de modèle.
+Le code ajoute un chargement hâtif pour la propriété de navigation `Courses` et appelle la nouvelle méthode `PopulateAssignedCourseData` pour fournir des informations pour le tableau de cases à cocher avec la classe de modèle de vue `AssignedCourseData`.
 
-Le code dans la `PopulateAssignedCourseData` méthode lit toutes les entités de cours pour charger une liste de cours à l’aide de la classe de modèle de vue. Pour chaque cours, le code vérifie l’existence de cours dans le formateur `Courses` propriété de navigation. Pour créer l’efficacité des recherches lors de la vérification si un cours est affecté pour le formateur, les cours affectés pour le formateur sont placés dans un `HashSet` collection. Le `Assigned` est définie sur true pour les cours le formateur est assigné à. La vue utilise cette propriété pour déterminer les zones doivent être affichées en tant que vérification sélectionné. Enfin, la liste est passée à la vue dans `ViewData`.
+Le code de la méthode`PopulateAssignedCourseData` lit toutes les entités Course pour charger une liste de cours avec la classe de modèle de vue. Pour chaque cours, le code vérifie s’il existe dans la propriété de navigation `Courses` du formateur. Pour créer une recherche efficace quand il est vérifié si un cours est affecté au formateur, les cours affectés au formateur sont placés dans une collection `HashSet`. La propriété `Assigned` est définie sur true pour les cours auxquels le formateur est affecté. La vue utilise cette propriété pour déterminer quelles cases doivent être affichées cochées. Enfin, la liste est passée à la vue dans `ViewData`.
 
-Ensuite, ajoutez le code qui est exécuté lorsque l’utilisateur clique sur **enregistrer**. Remplacez le `EditPost` méthode avec les éléments suivants de code et ajoutez une nouvelle méthode qui met à jour le `Courses` propriété de navigation d’entité Instructor.
+Ensuite, ajoutez le code qui est exécuté quand l’utilisateur clique sur **Save**. Remplacez la méthode `EditPost` par le code suivant et ajoutez une nouvelle méthode qui met à jour la propriété de navigation `Courses` de l’entité Instructor.
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=1,3,12,13,25,39-40&name=snippet_EditPostCourses)]
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=1-31)]
 
-La signature de méthode diffère maintenant le HttpGet `Edit` méthode, de sorte que si le nom de la méthode change de `EditPost` à `Edit`.
+La signature de la méthode diffère maintenant de celle de la méthode HttpGet `Edit` : le nom de la méthode change donc de `EditPost` en `Edit`.
 
-Étant donné que la vue ne dispose d’une collection d’entités de cours, le classeur de modèles ne peut pas mettre à jour automatiquement le `CourseAssignments` propriété de navigation. Au lieu d’utiliser le classeur de modèles pour mettre à jour le `CourseAssignments` propriété de navigation, c’est dans la nouvelle `UpdateInstructorCourses` (méthode). Par conséquent, vous devez exclure le `CourseAssignments` propriété à partir de la liaison de modèle. Cela ne nécessite aucune modification pour le code qui appelle `TryUpdateModel` , car vous utilisez la surcharge de la création de listes autorisées et `CourseAssignments` n’est pas dans la liste d’inclusion.
+Comme la vue n’a pas de collection d’entités Course, le classeur de modèles ne peut pas mettre à jour automatiquement la propriété de navigation `CourseAssignments`. Au lieu d’utiliser le classeur de modèles pour mettre à jour la propriété de navigation `CourseAssignments`, vous faites cela dans la nouvelle méthode `UpdateInstructorCourses`. Par conséquent, vous devez exclure la propriété `CourseAssignments` de la liaison de modèle. Ceci ne nécessite aucune modification du code qui appelle `TryUpdateModel`, car vous utilisez la surcharge de mise en liste verte et `CourseAssignments` n’est pas dans la liste des éléments à inclure.
 
-Si aucune vérification de zones ont été sélectionnés, le code dans `UpdateInstructorCourses` initialise le `CourseAssignments` propriété de navigation avec une collection vide et retourne :
+Si aucune case n’a été cochée, le code de `UpdateInstructorCourses` initialise la propriété de navigation `CourseAssignments` avec une collection vide et retourne :
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_UpdateCourses&highlight=3-7)]
 
-Ensuite, le code effectue une itération sur tous les cours dans la base de données et vérifie chaque cours par rapport à celles actuellement affectées au formateur par rapport à ceux qui ont été sélectionnés dans la vue. Pour faciliter les recherches efficaces, les deux collections ce dernier sont stockées dans `HashSet` objets.
+Le code boucle ensuite à travers tous les cours dans la base de données, et vérifie chaque cours par rapport à ceux actuellement affectés au formateur relativement à ceux qui ont été sélectionnés dans la vue. Pour faciliter des recherches efficaces, les deux dernières collections sont stockées dans des objets `HashSet`.
 
-Si la case à cocher pour un cours a été sélectionnée mais que le cours n’est pas dans le `Instructor.CourseAssignments` propriété de navigation, le cours est ajouté à la collection dans la propriété de navigation.
+Si la case pour un cours a été cochée mais que le cours n’est pas dans la propriété de navigation `Instructor.CourseAssignments`, le cours est ajouté à la collection dans la propriété de navigation.
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=14-20&name=snippet_UpdateCourses)]
 
-Si la case à cocher pour un cours n’a pas été activée, mais le cours se trouve dans le `Instructor.CourseAssignments` propriété de navigation, le cours est supprimée de la propriété de navigation.
+Si la case pour un cours a été cochée mais que le cours est dans la propriété de navigation `Instructor.CourseAssignments`, le cours est supprimé de la propriété de navigation.
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=21-29&name=snippet_UpdateCourses)]
 
-### <a name="update-the-instructor-views"></a>Mettre à jour les vues de formateur
+### <a name="update-the-instructor-views"></a>Mettre à jour les vues des formateurs
 
-Dans *Views/Instructors/Edit.cshtml*, ajouter un **cours** champ avec un tableau de cases à cocher en ajoutant le code suivant immédiatement après le code le `div` éléments pour le **Office**  champ et avant la `div` , élément pour les **enregistrer** bouton.
+Dans *Views/Instructors/Edit.cshtml*, ajoutez un champ **Courses** avec un tableau de cases à cocher, en ajoutant le code suivant immédiatement après le code les éléments `div` pour le champ **Office** et avant l’élément `div` pour le bouton **Save**.
 
 <a id="notepad"></a>
 > [!NOTE] 
-> Lorsque vous collez le code dans Visual Studio, les sauts de ligne changera d’une manière qui interrompt le code.  Appuyez une fois sur Ctrl + Z pour annuler la mise en forme automatique.  Cela permet de résoudre les sauts de ligne afin qu’elles apparaîtront comme vous le voyez ici. La mise en retrait ne doit pas nécessairement être parfait, mais la `@</tr><tr>`, `@:<td>`, `@:</td>`, et `@:</tr>` lignes doivent être chacun sur une ligne unique comme illustré, ou vous obtiendrez une erreur d’exécution. Avec le bloc de code nouveau sélectionné, appuyez sur Tab trois fois pour aligner le nouveau code avec le code existant. Vous pouvez vérifier l’état de ce problème [ici](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
+> Quand vous collez le code dans Visual Studio, les sauts de ligne seront changés d’une façon qui va déstructurer le code.  Appuyez une fois sur Ctrl+Z pour annuler la mise en forme automatique.  Ceci permet de corriger les sauts de ligne de façon à ce qu’ils apparaissent comme ce que vous voyez ici. L’indentation ne doit pas nécessairement être parfaite, mais les lignes `@</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune tenir sur une seule ligne comme dans l’illustration, sinon vous recevrez une erreur d’exécution. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur la touche Tab pour aligner le nouveau code avec le code existant. Vous pouvez vérifier l’état de ce problème [ici](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
-Ce code crée une table HTML qui possède trois colonnes. Dans chaque colonne est une case à cocher suivie d’une légende qui est constitué par le numéro et le titre. Toutes les cases à cocher ont le même nom (« selectedCourses »), qui informe le classeur de modèles qu’ils sont traités comme un groupe. L’attribut de valeur de chaque case à cocher est défini à la valeur de `CourseID`. Lorsque la page est publiée, le classeur de modèles passe un tableau au contrôleur qui se compose de la `CourseID` valeurs pour seulement les cases à cocher qui sont sélectionnées.
+Ce code crée un tableau HTML qui a trois colonnes. Dans chaque colonne se trouve une case à cocher, suivie d’une légende qui est constituée du numéro et du titre du cours. Toutes les cases à cocher ont le même nom (« selectedCourses »), qui indique au classeur de modèles qu’ils doivent être traités comme un groupe. L’attribut de valeur de chaque case à cocher est défini sur la valeur de `CourseID`. Quand la page est envoyée, le classeur de modèles passe un tableau au contrôleur, constitué des valeurs de `CourseID` seulement pour les cases qui sont cochées.
 
-Lorsque les cases à cocher sont restitués initialement, ceux qui sont pour les cours affectés pour le formateur archivées attributs, qui sélectionne les (affiche les archivés).
+Quand les cases à cocher sont affichées à l’origine, celles qui correspondent à des cours affectés au formateur ont des attributs cochés, qui les sélectionnent (ils les affichent cochées).
 
-Exécuter l’application, sélectionnez le **instructeurs** onglet, puis cliquez sur **modifier** sur un formateur pour voir les **modifier** page.
+Exécutez l’application, sélectionnez l’onglet **Instructors**, puis cliquez sur **Edit** pour un formateur pour voir la page **Edit**.
 
-![Page de modification du formateur en cours](update-related-data/_static/instructor-edit-courses.png)
+![Page de modification des formateurs avec des cours](update-related-data/_static/instructor-edit-courses.png)
 
-Modifier des attributions de cours et cliquez sur Enregistrer. Les modifications que vous apportez sont répercutées sur la page d’Index.
+Changez quelques affectations de cours et cliquez sur Save. Les modifications que vous apportez sont reflétées dans la page Index.
 
 > [!NOTE] 
-> L’approche adoptée ici pour modifier les données de cours formateur fonctionne bien quand un nombre limité de cours. Pour les collections qui sont beaucoup plus volumineux, une interface utilisateur différente et une autre méthode de mise à jour serait nécessaires.
+> L’approche adoptée ici pour modifier les données des cours des formateurs fonctionne bien le nombre de cours est limité. Pour les collections qui sont beaucoup plus volumineuses, une autre interface utilisateur et une autre méthode de mise à jour seraient nécessaires.
 
-## <a name="update-the-delete-page"></a>Mise à jour de la page de suppression
+## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
-Dans *InstructorsController.cs*, supprimez le `DeleteConfirmed` méthode et insérer le code suivant à la place.
+Dans *InstructorsController.cs*, supprimez la méthode `DeleteConfirmed` et insérez à la place le code suivant.
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?highlight=5-7,9-12&name=snippet_DeleteConfirmed)]
 
-Ce code rend les modifications suivantes :
+Ce code apporte les modifications suivantes :
 
-* Eager fait de chargement pour le `CourseAssignments` propriété de navigation.  Vous devez inclure ou EF ne sont pas informés sur connexes `CourseAssignment` entités et ne sont pas les supprimer.  Pour éviter d’avoir à les lire ici vous pouvez configurer suppression en cascade dans la base de données.
+* Il effectue un chargement hâtif pour la propriété de navigation `CourseAssignments`.  Vous devez inclure ceci car sinon, EF ne dispose pas d’informations sur les entités `CourseAssignment` associées et ne les supprime pas.  Pour éviter de devoir les lire ici, vous pouvez configurer une suppression en cascade dans la base de données.
 
-* Si le formateur à supprimer est attribué en tant qu’administrateur d’un service, supprime l’attribution de formateur de ces services.
+* Si le formateur à supprimer est affecté en tant qu’administrateur d’un département, il supprime l’affectation du formateur de ces départements.
 
-## <a name="add-office-location-and-courses-to-the-create-page"></a>Ajouter des bureaux et les cours à la page Créer
+## <a name="add-office-location-and-courses-to-the-create-page"></a>Ajouter des emplacements de bureau et des cours à la page Create
 
-Dans *InstructorsController.cs*, supprimez le HttpGet et HttpPost `Create` méthodes, puis ajoutez le code suivant à leur place :
+Dans *InstructorsController.cs*, supprimez les méthodes HttpGet et HttpPost `Create`, puis ajoutez le code suivant à leur place :
 
 [!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Create&highlight=3-5,12,14-22,29)]
 
-Ce code est similaire à ce que vous avez vu pour la `Edit` méthodes à l’exception qui initialement aucun cours sont sélectionnés. Le HttpGet `Create` les appels de méthode le `PopulateAssignedCourseData` méthode pas, car il peut y avoir des cours sélectionnés mais, dans commande pour fournir une collection vide pour le `foreach` boucle dans la vue (sinon l’afficher le code lève une exception de référence null).
+Ce code est similaire à ce que vous avez vu pour les méthodes `Edit`, excepté qu’initialement, aucun cours n’est sélectionné. La méthode HttpGet `Create` appelle la méthode `PopulateAssignedCourseData`, non pas en raison du fait qu’il peut exister des cours sélectionnés, mais pour pouvoir fournir une collection vide pour la boucle `foreach` dans la vue (sinon, le code de la vue lèverait une exception de référence null).
 
-HttpPost `Create` méthode ajoute chaque cours sélectionné pour le `CourseAssignments` propriété de navigation avant qu’il vérifie les erreurs de validation et ajoute le nouveau formateur pour la base de données. Cours sont ajoutés même s’il existe des erreurs de modèle afin que lorsque des erreurs de modèle (par exemple, l’utilisateur indexé une date non valide), et la page s’affiche de nouveau avec un message d’erreur, toutes les sélections de cours qui ont été apportées sont automatiquement restaurées.
+La méthode HttpPost `Create` ajoute chaque cours sélectionné à la propriété de navigation `CourseAssignments` avant de vérifier s’il y a des erreurs de validation et ajoute le nouveau formateur à la base de données. Les cours sont ajoutés même s’il existe des erreurs de modèle : ainsi, quand c’est le cas (par exemple si l’utilisateur a tapé une date non valide) et que la page est réaffichée avec un message d’erreur, les sélections de cours qui ont été faites sont automatiquement restaurées.
 
-Notez que pour pouvoir ajouter des cours à la `CourseAssignments` propriété de navigation que vous avez pour initialiser la propriété comme une collection vide :
+Notez que pour pouvoir ajouter des cours à la propriété de navigation `CourseAssignments`, vous devez initialiser la propriété en tant que collection vide :
 
 ```csharp
 instructor.CourseAssignments = new List<CourseAssignment>();
 ```
 
-Comme alternative à cette opération dans le code du contrôleur, vous pouvez l’effectuer dans le modèle de formateur en modifiant l’accesseur Get de propriété pour créer automatiquement la collection si elle n’existe pas, comme indiqué dans l’exemple suivant :
+Comme alternative à cette opération dans le code du contrôleur, vous pouvez l’effectuer dans le modèle Instructor en modifiant le getter de propriété pour créer automatiquement la collection si elle n’existe pas, comme le montre l’exemple suivant :
 
 ```csharp
 private ICollection<CourseAssignment> _courseAssignments;
@@ -279,21 +279,21 @@ public ICollection<CourseAssignment> CourseAssignments
 }
 ```
 
-Si vous modifiez le `CourseAssignments` propriété de cette façon, vous pouvez supprimer le code d’initialisation explicite de propriété dans le contrôleur.
+Si vous modifiez la propriété `CourseAssignments` de cette façon, vous pouvez supprimer le code d’initialisation explicite de la propriété dans le contrôleur.
 
-Dans *Views/Instructor/Create.cshtml*, ajoutez une zone de texte emplacement office et cochez les cases pour les cours avant le bouton Envoyer. Comme dans le cas de la page de modification, [corriger la mise en forme si Visual Studio remet en forme le code lorsque vous le collez](#notepad).
+Dans *Views/Instructor/Create.cshtml*, ajoutez une zone de texte pour l’emplacement du bureau et des cases à cocher pour les cours avant le bouton Envoyer. Comme dans le cas de la page Edit, [corrigez la mise en forme si Visual Studio remet en forme le code quand vous le collez](#notepad).
 
 [!code-html[Main](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
-Testez en exécutant l’application et la création d’un formateur. 
+Testez en exécutant l’application et en créant un formateur. 
 
-## <a name="handling-transactions"></a>La gestion des Transactions
+## <a name="handling-transactions"></a>Gestion des transactions
 
-Comme expliqué dans la [didacticiel CRUD](crud.md), Entity Framework implémente implicitement des transactions. Pour les scénarios où vous avez besoin de plus contrôler--par exemple, si vous souhaitez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](https://docs.microsoft.com/ef/core/saving/transactions).
+Comme expliqué dans le [didacticiel CRUD](crud.md), Entity Framework implémente implicitement les transactions. Pour les scénarios où vous avez besoin de plus de contrôle, par exemple si vous voulez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](https://docs.microsoft.com/ef/core/saving/transactions).
 
 ## <a name="summary"></a>Récapitulatif
 
-Vous avez maintenant terminé l’introduction à l’utilisation des données associées. Dans l’étape suivante du didacticiel, vous verrez comment gérer les conflits d’accès concurrentiel.
+Vous avez maintenant terminé l’introduction à l’utilisation des données associées. Dans le didacticiel suivant, vous verrez comment gérer les conflits d’accès concurrentiel.
 
 >[!div class="step-by-step"]
 [Précédent](read-related-data.md)
