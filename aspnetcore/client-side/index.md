@@ -24,7 +24,7 @@ ms.lasthandoff: 01/30/2018
 - [Définir des styles d’applications avec LESS, Sass et Font Awesome](xref:client-side/less-sass-fa)
 - [Regrouper et minimiser](xref:client-side/bundling-and-minification)
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
-- [Utiliser la liaison de navigateur](xref:client-side/using-browserlink)
+- [Utiliser Browser Link](xref:client-side/using-browserlink)
 - [Utiliser JavaScriptServices pour les applications à page unique](xref:client-side/spa-services)
 - [Utiliser les modèles de projet pour les applications à page unique (RC)](xref:spa/index)
     - [Modèle de projet Angular](xref:spa/angular)
