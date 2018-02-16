@@ -19,7 +19,7 @@ ms.lasthandoff: 01/30/2018
 
 - [Utiliser Gulp](xref:client-side/using-gulp)
 - [Utiliser Grunt](xref:client-side/using-grunt)
-- [Gérer les dépendances côté client avec Bower](xref:client-side/bower)
+- [Gérer les packages côté client avec Bower](xref:client-side/bower)
 - [Créer des sites au rendu adaptatif avec Bootstrap](xref:client-side/bootstrap)
 - [Définir des feuilles de styles avec Less, Sass et Font Awesome](xref:client-side/less-sass-fa)
 - [Concaténer et minifier](xref:client-side/bundling-and-minification)
