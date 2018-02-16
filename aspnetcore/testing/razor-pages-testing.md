@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: 5891b236306cd3790cbba14919796d6aa894ad53
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f9e986c34f41fe96beb492680106f725bc1e2f9
+ms.sourcegitcommit: 809ee4baf8bf7b4cae9e366ecae29de1037d2bbb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/15/2018
 ---
 # <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Unité de Pages Razor et les tests d’intégration dans ASP.NET Core
 
@@ -71,7 +71,7 @@ L’application de test est une application console à l’intérieur de la *tes
 | ------------------ | ----------- |
 | *IntegrationTests* | <ul><li>*IndexPageTest.cs* contient les tests d’intégration pour la page d’Index.</li><li>*TestFixture.cs* crée l’hôte de test pour tester l’application de message.</li></ul> |
 | *UnitTests*        | <ul><li>*DataAccessLayerTest.cs* contient les tests unitaires pour la couche DAL.</li><li>*IndexPageTest.cs* contient les tests unitaires pour le modèle de page d’Index.</li></ul> |
-| *Utilities*        | *Utilities.cs* contient le :<ul><li>`TestingDbContextOptions`méthode utilisée pour créer les options de contexte pour chaque test unitaire de la couche DAL de base de données afin que la base de données est réinitialisée à son état initial pour chaque test.</li><li>`GetRequestContentAsync`méthode utilisée pour préparer le `HttpClient` et le contenu pour les demandes qui sont envoyées à l’application de message pendant le test d’intégration.</li></ul>
+| *Utilities*        | *Utilities.cs* contient le :<ul><li>`TestingDbContextOptions` méthode utilisée pour créer les options de contexte pour chaque test unitaire de la couche DAL de base de données afin que la base de données est réinitialisée à son état initial pour chaque test.</li><li>`GetRequestContentAsync` méthode utilisée pour préparer le `HttpClient` et le contenu pour les demandes qui sont envoyées à l’application de message pendant le test d’intégration.</li></ul>
 
 L’infrastructure de test est [xUnit](https://xunit.github.io/). Est de l’objet de simulation framework [Moq](https://github.com/moq/moq4). Tests d’intégration sont effectuées à l’aide de la [hôte de Test ASP.NET Core](xref:testing/integration-testing#the-test-host).
 
@@ -102,7 +102,7 @@ Le problème avec cette approche est que chaque test reçoit la base de données
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/Utilities/Utilities.cs?name=snippet1)]
 
-À l’aide de la `DbContextOptions` dans l’unité de la couche DAL tests permet à chaque test exécuter de façon atomique avec une une instance de la nouvelle base de données :
+À l’aide de la `DbContextOptions` dans l’unité de la couche DAL tests permet à chaque test à exécuter de façon atomique avec une instance de la nouvelle base de données :
 
 ```csharp
 using (var db = new AppDbContext(Utilities.TestingDbContextOptions()))
@@ -176,7 +176,7 @@ Lorsque le `OnGetAsync` méthode est exécutée dans l’étape d’action, elle
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/UnitTests/IndexPageTest.cs?name=snippet2)]
 
-`IndexPage`de modèle page `OnGetAsync` (méthode) (*src/RazorPagesTestingSample/Pages/Index.cshtml.cs*) :
+`IndexPage` de modèle page `OnGetAsync` (méthode) (*src/RazorPagesTestingSample/Pages/Index.cshtml.cs*) :
 
 [!code-csharp[Main](razor-pages-testing/sample/src/RazorPagesTestingSample/Pages/Index.cshtml.cs?name=snippet1&highlight=3)]
 
@@ -212,7 +212,7 @@ Le `Post_AddMessageHandler_ReturnsRedirectToRoot` méthode de test :
 * Effectue une demande POST à l’application.
 * Vérifie que la réponse est une redirection vers la page d’Index.
 
-`Post_AddMessageHandler_ReturnsRedirectToRoot `méthode (*tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs*) :
+`Post_AddMessageHandler_ReturnsRedirectToRoot ` méthode (*tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs*) :
 
 [!code-csharp[Main](razor-pages-testing/sample/tests/RazorPagesTestingSample.Tests/IntegrationTests/IndexPageTest.cs?name=snippet2)]
 
