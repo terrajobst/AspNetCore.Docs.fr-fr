@@ -17,11 +17,11 @@ ms.lasthandoff: 01/30/2018
 ---
 # <a name="configure-identity"></a>Configurer l’identité
 
-ASP.NET Core Identity a des comportements courants dans les applications telles que la stratégie de mot de passe, l’heure de verrouillage et les paramètres de cookies que vous pouvez remplacer facilement dans la classe `Startup` votre application.
+ASP.NET Core Identity a des comportements en commun entre des applications telles que la stratégie de mot de passe, l’heure de verrouillage et les paramètres de cookies, que vous pouvez remplacer facilement dans la classe `Startup` de votre application.
 
 ## <a name="passwords-policy"></a>Stratégie de mots de passe
 
-Par défaut, Identity requiert que les mots de passe contiennent un caractère majuscule, minuscule, un chiffre et un caractère non alphanumérique. Il existe également quelques autres restrictions. Pour simplifier les restrictions de mot de passe, vous devez modifier la méthode `ConfigureServices` de la classe `Startup` de votre application.
+Par défaut, Identity requiert que les mots de passe contiennent une majuscule, une minuscule, un chiffre et un caractère non alphanumérique. Il existe également quelques autres restrictions. Pour simplifier les restrictions de mot de passe, vous devez modifier la méthode `ConfigureServices` de la classe `Startup` de votre application.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -78,7 +78,7 @@ ASP.NET Core 2.0 a ajouté la propriété `RequiredUniqueChars`. Dans le cas con
 
 | Propriété                | Description                       | Par défaut |
 | ----------------------- | --------------------------------- | ------- |
-| `RequireUniqueEmail`  | Nécessite que chaque utilisateur à un email unique. | False  |
+| `RequireUniqueEmail` | Nécessite que chaque utilisateur ait un e-mail unique. | False | 
 | `AllowedUserNameCharacters`  | Caractères autorisés dans le nom d’utilisateur. | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ |
 
 
