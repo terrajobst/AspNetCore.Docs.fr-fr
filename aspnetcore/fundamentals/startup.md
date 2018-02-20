@@ -10,24 +10,24 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: cf9e6a25f5b9cc8395c803a11c15622349620a07
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c324918b33af82b619bb2251f32308e4a57c27e5
+ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="application-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com), [Tom Dykstra](https://github.com/tdykstra) et [Luke Latham](https://github.com/guardrex)
 
-La classe `Startup` configure des services et le pipeline de requête de l’application.
+La classe `Startup` configure les services et le pipeline de demande de l’application.
 
 ## <a name="the-startup-class"></a>Classe Startup
 
-Les applications ASP.NET Core utilisent une classe `Startup`, appelée `Startup` par convention. La classe `Startup` :
+Les applications ASP.NET Core utilisent une classe de `Startup`, qui est nommée `Startup` par convention. La classe `Startup` :
 
 * Peut éventuellement inclure une méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) permettant de configurer les services de l’application.
-* Doit inclure une méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) pour créer le pipeline de traitement de requête de l’application.
+* Doit inclure une méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) pour créer le pipeline de traitement de demande de l’application.
 
 `ConfigureServices` et `Configure` sont appelées par le runtime au démarrage de l’application :
 
@@ -37,14 +37,14 @@ Spécifiez la classe `Startup` avec la méthode [WebHostBuilderExtensions](/dotn
 
 [!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=10)]
 
-Le constructeur de classe `Startup` accepte les dépendances définies par l’hôte. Une utilisation courante de [l’injection de dépendances](xref:fundamentals/dependency-injection) dans la classe `Startup` consiste à injecter :
+Le constructeur de la classe `Startup` accepte les dépendances définies par l’hôte. Une utilisation courante de [l’injection de dépendances](xref:fundamentals/dependency-injection) dans la classe `Startup` consiste à injecter :
 
-* [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment) pour configurer des services par environnement.
+* [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment) pour configurer les services par environnement.
 * [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) pour configurer l’application au démarrage.
 
 [!code-csharp[Main](startup/snapshot_sample/Startup2.cs)]
 
-Une alternative à l’injection de `IHostingEnvironment` consiste à utiliser une approche basée sur les conventions. L’application peut définir des classes `Startup` distinctes pour les différents environnements (par exemple, `StartupDevelopment`), et la classe de démarrage appropriée est sélectionnée au moment de l’exécution. La classe dont le suffixe du nom correspond à l’environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et qu’elle inclut à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utilisation de plusieurs environnements](xref:fundamentals/environments#startup-conventions).
+Une alternative à l’injection de `IHostingEnvironment` consiste à utiliser une approche basée sur les conventions. L’application peut définir différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), et la classe de démarrage appropriée est sélectionnée lors de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et comprend à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utilisation de plusieurs environnements](xref:fundamentals/environments#startup-conventions).
 
 Pour en savoir plus sur `WebHostBuilder`, consultez la rubrique [Hébergement](xref:fundamentals/hosting). Pour plus d’informations sur la gestion des erreurs lors du démarrage, consultez [Gestion des exceptions de démarrage](xref:fundamentals/error-handling#startup-exception-handling).
 
@@ -56,7 +56,7 @@ La méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startup
 * Appelée par l’hôte web avant la méthode `Configure` pour configurer les services de l’application.
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
-L’ajout de services au conteneur de service les rend disponibles dans l’application et dans la méthode `Configure`. Les services sont résolus à l’aide de [l’injection de dépendances](xref:fundamentals/dependency-injection) ou à partir [d’IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
+L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services ne sont pas résolus via [l’injection de dépendances](xref:fundamentals/dependency-injection) ou à partir de [d’IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
 
 L’hôte web peut configurer certains services avant que les méthodes `Startup` soient appelées. Vous trouverez plus de détails dans la rubrique [Hébergement](xref:fundamentals/hosting). 
 
@@ -70,7 +70,7 @@ L’hôte web fournit des services disponibles pour le constructeur de classe `S
 
 ## <a name="the-configure-method"></a>Méthode Configure
 
-La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) est utilisée pour spécifier la façon dont l’application répond aux requêtes HTTP. Le pipeline de requête est configuré en ajoutant des composants [d’intergiciel (middleware)](xref:fundamentals/middleware) à une instance [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` est disponible pour la méthode `Configure`, mais elle n’est pas inscrite dans le conteneur de service. L’hébergement crée un `IApplicationBuilder` et le passe directement à `Configure` ([source de référence](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
+La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) est utilisée pour spécifier la façon dont l’application répond aux requêtes HTTP. Le pipeline de requête est configuré en ajoutant des composants [d’intergiciel (middleware)](xref:fundamentals/middleware/index) à une instance [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` est disponible pour la méthode `Configure`, mais elle n’est pas inscrite dans le conteneur de service. L’hébergement crée un `IApplicationBuilder` et le passe directement à `Configure` ([source de référence](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
 
 Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeline avec la prise en charge d’une page d’exception de développeur, de [BrowserLink](http://vswebessentials.com/features/browserlink), des pages d’erreurs, des fichiers statiques et d’ASP.NET MVC :
 
@@ -80,7 +80,7 @@ Chaque méthode d’extension `Use` ajoute un composant d’intergiciel au pipel
 
 Il est également possible de spécifier des services supplémentaires, comme `IHostingEnvironment` et `ILoggerFactory`, dans la signature de méthode. Si tel est le cas, les services supplémentaires sont injectés s’ils sont disponibles.
 
-Pour plus d’informations sur l’utilisation d’`IApplicationBuilder`, consultez [Intergiciel (middleware)](xref:fundamentals/middleware).
+Pour plus d’informations sur l’utilisation d’`IApplicationBuilder`, consultez [Intergiciel (middleware)](xref:fundamentals/middleware/index).
 
 ## <a name="convenience-methods"></a>Méthodes pratiques
 
@@ -92,7 +92,7 @@ Les méthodes pratiques [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hos
 
 Utilisez [IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) pour configurer un intergiciel au début ou à la fin du pipeline de l’intergiciel de la méthode [Configure](#the-configure-method) d’une application. `IStartupFilter` est utile pour s’assurer qu’un intergiciel s’exécute avant ou après l’intergiciel ajouté par des bibliothèques au début ou à la fin du pipeline de traitement de requête de l’application.
 
-`IStartupFilter` implémente une méthode unique, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), qui reçoit et retourne un `Action<IApplicationBuilder>`. Un [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) définit une classe pour configurer le pipeline de requête d’une application. Pour plus d’informations, consultez [Création d’un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware#creating-a-middleware-pipeline-with-iapplicationbuilder).
+`IStartupFilter` implémente une méthode unique, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), qui reçoit et retourne un `Action<IApplicationBuilder>`. Un [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) définit une classe pour configurer le pipeline de requête d’une application. Pour plus d’informations, consultez [Création d’un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder).
 
 Chaque `IStartupFilter` implémente un ou plusieurs intergiciels dans le pipeline de requête. Les filtres sont appelés dans l’ordre dans lequel ils ont été ajoutés au conteneur de service. Les filtres peuvent ajouter l’intergiciel avant ou après la transmission du contrôle au filtre suivant. Par conséquent, ils s’ajoutent au début ou à la fin du pipeline de l’application.
 
@@ -121,7 +121,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 * [Hébergement d’applications WPF](xref:fundamentals/hosting)
 * [Utilisation de plusieurs environnements](xref:fundamentals/environments)
-* [Intergiciel (middleware)](xref:fundamentals/middleware)
+* [Intergiciel (middleware)](xref:fundamentals/middleware/index)
 * [Journalisation](xref:fundamentals/logging/index)
 * [Configuration](xref:fundamentals/configuration/index)
 * [Classe StartupLoader : méthode FindStartupType (source de référence)](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116)
