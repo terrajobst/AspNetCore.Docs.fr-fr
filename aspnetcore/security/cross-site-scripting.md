@@ -1,5 +1,5 @@
 ---
-title: "Empêche le script entre sites"
+title: "Empêcher les scripts entre sites"
 author: rick-anderson
 description: "Ce document présente l’écriture de scripts entre sites (XSS) et techniques pour traiter cette vulnérabilité dans une application ASP.NET Core."
 manager: wpickett
@@ -29,14 +29,15 @@ L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet
 
 2. Avant de placer des données non fiables à l’intérieur d’un élément HTML, assurez-vous qu’il est encodé au format HTML. L’encodage HTML accepte les caractères comme &lt; et les transforme en un formulaire sécurisé comme &amp;lt ;
 
-3. Avant de placer des données non fiables dans un attribut HTML, assurez-vous qu’il est l’attribut HTML encodé. L'Encodage d’attribut HTML est un sur-ensemble de l’encodage HTML et encode les caractères supplémentaires tels que « et ».
+3. Avant de placer des données non fiables dans un attribut HTML, assurez-vous qu’il est l’attribut HTML encodé. L'Encodage d’attribut HTML est un sur-ensemble de l’encodage HTML et encode les caractères supplémentaires tels que « et ».
 
-4. Avant de mettre des données non fiables en JavaScript placez les données dans un élément HTML dont le contenu sera récupéré lors de son exécution. Si ce n’est pas possible, vérifiez que les données sont encodées en JavaScript. L'encodage de JavaScript prend des caractères dangereux pour le JavaScript et les remplace par leur valeur hexadécimale, par exemple < serait codée en tant que `\u003C`.
+4. Avant de mettre des données non fiables en JavaScript placez les données dans un élément HTML dont le contenu sera récupéré lors de son exécution. Si ce n’est pas possible, vérifiez que les données sont encodées en JavaScript. L'encodage de JavaScript prend des caractères dangereux pour le JavaScript et les remplace par leur valeur hexadécimale, par exemple &lt; serait codée en tant que `\u003C`.
 
 5. Avant de placer des données non fiables dans une chaîne de requête URL assurez-vous qu'elles soient encodées URL.
 
 ## <a name="html-encoding-using-razor"></a>Encodage HTML à l’aide de Razor
-Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise les règles d'encodage d’attribut HTML chaque fois que vous utilisez la directive *@*. L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez *@* uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
+
+Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise les règles d'encodage d’attribut HTML chaque fois que vous utilisez la directive  *@* . L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez @ uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
 
 Prenez l’affichage Razor suivant ;
 
@@ -59,7 +60,7 @@ Cette vue renvoie le contenu de la variable *untrustedInput*. Cette variable inc
 
 ## <a name="javascript-encoding-using-razor"></a>Encodage de JavaScript à l’aide de Razor
 
-Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Le moyen le plus sûr pour insérer des valeurs simples consiste à placer la valeur dans un attribut de données d’une balise et de récupérer dans le code JavaScript. Exemple :
+Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Le moyen le plus sûr pour insérer des valeurs simples consiste à placer la valeur dans un attribut de données d’une balise et de récupérer dans le code JavaScript. Exemple :
 
 ```none
 @{
@@ -131,7 +132,7 @@ Vous pouvez également appeler l’encodeur JavaScript directement,
    </script>
    ```
 
-Cela s'affichera dans le navigateur comme suit :
+Cela s'affichera dans le navigateur comme suit :
 
 ```html
 <script>
@@ -144,9 +145,9 @@ Cela s'affichera dans le navigateur comme suit :
 
 ## <a name="accessing-encoders-in-code"></a>L’accès à des encodeurs dans le code
 
-Les encodeurs HTML, JavaScript et URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via [l' injection de dépendance](../fundamentals/dependency-injection.md#fundamentals-dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l'espace de noms `System.Text.Encodings.Web`. Si vous utilisez les encodeurs par défaut, puis que vous avez appliqué aux plages de caractères considérés comme sécurisés ne prendront pas effet - les encodeurs par défaut utilisent les règles d'encodage les plus sûrs possible.
+Les encodeurs HTML, JavaScript et URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via [injection de dépendance](../fundamentals/dependency-injection.md#fundamentals-dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l'espace de noms `System.Text.Encodings.Web`. Si vous utilisez les encodeurs par défaut, alors les encodeurs que vous avez appliqués aux plages de caractères considérés comme sécurisées ne prendront pas effet - les encodeurs par défaut utilisent les règles d'encodage les plus sûres possible.
 
-Pour utiliser les encodeurs configurables via DI votre constructeur doit prendre un paramètre *HtmlEncoder*, *JavaScriptEncoder* et *UrlEncoder* selon les besoins. Par exemple :
+Pour utiliser les encodeurs configurables via DI votre constructeur doit prendre un paramètre *HtmlEncoder*, *JavaScriptEncoder* et *UrlEncoder* selon les besoins. Par exemple :
 
 ```csharp
 public class HomeController : Controller
@@ -168,7 +169,7 @@ public class HomeController : Controller
 
 ## <a name="encoding-url-parameters"></a>Paramètres d’encodage URL
 
-Si vous souhaitez générer une chaîne de requête URL avec une entrée non approuvée en tant que valeur, utilisez la classe `UrlEncoder` pour encoder la valeur. Par exemple :
+Si vous souhaitez générer une chaîne de requête URL avec une entrée non approuvée en tant que valeur, utilisez la classe `UrlEncoder` pour encoder la valeur. Par exemple :
 
 ```csharp
 var example = "\"Quoted Value with spaces and &\"";
@@ -190,13 +191,13 @@ Le raisonnement sous-jacent vise à vous protéger des bogues de navigateur inco
 
 Vous pouvez personnaliser les listes sécurisées d'encodeurs pour inclure des plages Unicode appropriées à votre application lors du démarrage, dans `ConfigureServices()`.
 
-Par exemple, à l’aide de la configuration par défaut, vous pouvez utiliser un HtmlHelper Razor comme ;
+Par exemple, à l’aide de la configuration par défaut, vous pouvez utiliser un HtmlHelper Razor comme ;
 
 ```html
 <p>This link text is in Chinese: @Html.ActionLink("汉语/漢語", "Index")</p>
    ```
 
-Lorsque vous affichez la source de la page web vous verrez quelle a été restituée comme suit, avec le texte chinois encodé ;
+Lorsque vous affichez la source de la page web vous verrez quelle a été restituée comme suit, avec le texte chinois encodé ;
 
 ```html
 <p>This link text is in Chinese: <a href="/">&#x6C49;&#x8BED;/&#x6F22;&#x8A9E;</a></p>
@@ -219,12 +220,12 @@ Cet exemple étend la liste sécurisée pour inclure la plage Unicode CjkUnified
 Les plages de liste verte sont spécifiées sous forme de graphiques de code Unicode, pas les langues. Le [norme Unicode](http://unicode.org/) possède une liste de [code graphiques](http://www.unicode.org/charts/index.html) que vous pouvez utiliser pour rechercher le graphique qui contient les caractères. Chaque encodeur, Html, JavaScript et Url, doit être configuré séparément.
 
 > [!NOTE]
-> La personnalisation de la liste n’affecte que les encodeurs provenant de DI. Si vous accédez directement à un encodeur via `System.Text.Encodings.Web.Encoder.Default` alors seule la liste fiable par défaut, Basic Latin sera utilisée.
+> La personnalisation de la liste n’affecte que les encodeurs provenant de DI. Si vous accédez directement à un encodeur via `System.Text.Encodings.Web.*Encoder.Default` ealors seule la liste fiable par défaut, Basic Latin sera utilisée.
 
 ## <a name="where-should-encoding-take-place"></a>Où l'encodage doit s'effectuer ?
 
-Les pratiques générales acceptées est quel'encodage intervient au point de rendu et les valeurs encodées ne doivent jamais être stockées dans une base de données. L'encodage dans la phase de rendu vous permet de modifier l’utilisation des données, par exemple, à partir de HTML à une valeur de chaîne de requête. Aussi, il vous permet de rechercher facilement vos données sans avoir à encoder les valeurs avant de les rechercher et vous permet de tirer parti des modifications ou des correctifs de bogues apportées aux encodeurs.
+Les pratiques générales acceptées est que l'encodage intervienne au point de rendu et les valeurs encodées ne doivent jamais être stockées dans une base de données. L'encodage dans la phase de rendu vous permet de modifier l’utilisation des données, par exemple, à partir de HTML à une valeur de chaîne de requête. Aussi, il vous permet de rechercher facilement vos données sans avoir à encoder les valeurs avant de les rechercher et vous permet de tirer parti des modifications ou des correctifs de bogues apportés aux encodeurs.
 
 ## <a name="validation-as-an-xss-prevention-technique"></a>Validation comme une technique de prévention XSS
 
-La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, une chaîne numérique simple contenant uniquement les caractères 0-9 ne sont pas déclencher une attaque XSS. La validation devient plus complexe si vous souhaitez accepter HTML dans l’entrée d’utilisateur - l’analyse d’entrée HTML est difficile, voire impossible. Le MarkDown et les autres formats de texte est une option plus sûre pour l’entrée riche. Vous ne devez jamais vous appuyer sur la validation uniquement. Toujours encoder une entrée non approuvée avant le rendu, quel que soit le quel type de validation que vous avez effectué.
+La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, une chaîne numérique simple contenant uniquement les caractères 0-9 ne peut pas déclencher une attaque XSS. La validation devient plus complexe si vous souhaitez accepter HTML dans l’entrée d’utilisateur - l’analyse d’entrée HTML est difficile, voire impossible. Le MarkDown et les autres formats de texte sont une option plus sûre pour l’entrée riche. Vous ne devez jamais vous appuyer sur la validation uniquement. Encodez toujours une entrée non approuvée avant le rendu, quel que soit le quel type de validation que vous avez effectué.
