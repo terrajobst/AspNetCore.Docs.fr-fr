@@ -11,7 +11,7 @@ ms.topic: article
 uid: security/authentication/identity-configuration
 ms.openlocfilehash: cf7dcdb80f5edf9e10960cb08957793c36829a69
 ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
 ---
@@ -78,7 +78,7 @@ ASP.NET Core 2.0 a ajouté la propriété `RequiredUniqueChars`. Dans le cas con
 
 | Propriété                | Description                       | Par défaut |
 | ----------------------- | --------------------------------- | ------- |
-| `RequireUniqueEmail` | Nécessite que chaque utilisateur ait un e-mail unique. | False | 
+| `RequireUniqueEmail`  | Nécessite que chaque utilisateur ait un e-mail unique. | False  |
 | `AllowedUserNameCharacters`  | Caractères autorisés dans le nom d’utilisateur. | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ |
 
 
@@ -88,7 +88,7 @@ Comme la stratégie de mots de passe, tous les paramètres du cookie de l’appl
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Sous `ConfigureServices` dans la classe `Startup` , vous pouvez configurer les cookies de l’application.
+Sous `ConfigureServices` dans la classe `Startup`, vous pouvez configurer les cookies de l’application.
 
 [!code-csharp[Main](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?name=snippet_configurecookie)]
 
