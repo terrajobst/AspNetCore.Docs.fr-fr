@@ -1,7 +1,7 @@
 ---
 title: "Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core"
 author: shirhatti
-description: "Découvrez la prise en charge du débogage des applications ASP.NET Core lors de l’exécution derrière IIS sur Windows Server."
+description: "Découvrez la prise en charge pour le débogage des applications ASP.NET Core lors de l’exécution derrière IIS sur Windows Server."
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: a5f727dd21ac0c6702691df2215c42f4adc0ec27
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a8bdf4c0c0399c62666e6e61e70c0298a42c2c12
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
 Par : [Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
-Cet article décrit la prise en charge de [Visual Studio](https://www.visualstudio.com/vs/) pour le débogage des applications ASP.NET Core s’exécutant derrière IIS sur Windows Server. Cette rubrique décrit l’activation de cette fonctionnalité et la configuration d’un projet.
+Cet article décrit [Visual Studio](https://www.visualstudio.com/vs/) prend en charge pour le débogage des applications ASP.NET Core prend du retard IIS sur Windows Server. Cette rubrique décrit l’activation de cette fonctionnalité et la configuration d’un projet.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -37,7 +37,7 @@ Si l’installation d’IIS requiert un redémarrage, redémarrez le système.
 
 ## <a name="enable-development-time-iis-support"></a>Activer la prise en charge d’IIS lors du développement
 
-Une fois IIS installé, lancez le programme d’installation de Visual Studio pour modifier l’installation existante de Visual Studio. Dans le programme d’installation, sélectionnez le composant **Prise en charge d’IIS pendant le développement**. Le composant apparaît comme composant facultatif dans le panneau **Résumé** pour la charge de travail **Développement web et ASP.NET**. Ceci installe le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), qui est un module IIS natif nécessaire pour exécuter des applications ASP.NET Core.
+Lancez le programme d’installation de Visual Studio. Sélectionnez le **IIS prend en charge des temps de développement** composant. Le composant est répertorié comme facultatifs dans la **Résumé** panneau pour le **développement web ASP.NET et** la charge de travail. Cette commande installe le [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module), qui est un module IIS natif requis pour exécuter des applications ASP.NET Core.
 
 ![Modification des fonctionnalités de Visual Studio : l’onglet Charges de travail est sélectionné. Dans la section Web et cloud, le panneau Développement web et ASP.NET est sélectionné. Sur la droite dans la zone facultatif de l’écran récapitulatif, est une case à cocher pour le moment du développement QU'IIS prend en charge.](development-time-iis-support/_static/development_time_support.png)
 
@@ -73,8 +73,6 @@ Vous pouvez également ajouter manuellement un profil de lancement pour les [lau
 ```
 
 Visual Studio peut demander un redémarrage si ne pas en cours d’exécution en tant qu’administrateur. Si vous y êtes invité, redémarrez Visual Studio.
-
-Félicitations ! À ce stade, le projet est configuré pour la prise en charge au moment du développement IIS. 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
