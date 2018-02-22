@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/introduction
-ms.openlocfilehash: a6bd81a4e5796c1d0a0033c2b8d5a6ba9282564c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3fef6d38672af8871c04b65834789a39a7df8487
+ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/20/2018
 ---
 # <a name="introduction"></a>Introduction
 
@@ -25,8 +25,10 @@ L’autorisation est orthogonales et indépendante de l’authentification, qui 
 
 ## <a name="authorization-types"></a>Types d’autorisation
 
-Autorisation de ASP.NET Core fournit un simple déclaratif [rôle](roles.md) et un [enrichie basée sur la stratégie](policies.md) modèle. L’autorisation est exprimée dans la configuration requise et gestionnaires d’évaluent les revendications d’un utilisateur par rapport aux exigences. Vérifications impératives peuvent reposer sur des stratégies simples ou qui évaluent l’identité de l’utilisateur et les propriétés de la ressource à laquelle l’utilisateur tente d’accéder.
+Autorisation de ASP.NET Core fournit un simple, déclaratif [rôle](roles.md) et une riche [basée sur des stratégies](policies.md) modèle. L’autorisation est exprimée dans la configuration requise et gestionnaires d’évaluent les revendications d’un utilisateur par rapport aux exigences. Vérifications impératives peuvent reposer sur des stratégies simples ou qui évaluent l’identité de l’utilisateur et les propriétés de la ressource à laquelle l’utilisateur tente d’accéder.
 
 ## <a name="namespaces"></a>Espaces de noms
 
-Les composants d’autorisation, y compris le `AuthorizeAttribute` et `AllowAnonymousAttribute` attributs sont trouvent dans le `Microsoft.AspNetCore.Authorization` espace de noms.
+Les composants d’autorisation, y compris le `AuthorizeAttribute` et `AllowAnonymousAttribute` attributs, se trouvent dans le `Microsoft.AspNetCore.Authorization` espace de noms.
+
+Consultez la documentation sur [une autorisation simple](xref:security/authorization/simple).
