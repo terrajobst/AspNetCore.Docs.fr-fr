@@ -1,4 +1,4 @@
----
+﻿---
 title: Vues dans ASP.NET Core MVC
 author: ardalis
 description: "Découvrez comment les vues gèrent la présentation des données et les interactions utilisateur dans les applications ASP.NET Core MVC."
