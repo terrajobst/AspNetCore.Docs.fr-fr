@@ -19,9 +19,9 @@ ms.lasthandoff: 01/30/2018
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Dans ce document, la fonction de recherche est ajoutée à la page d’index qui permet la recherche de films par *genre* ou par *nom*.
+Dans ce document, la fonction de recherche est ajoutée à la page Index qui permet la recherche de films par *genre* ou par *nom*.
 
-Mettez à jour la méthode `OnGetAsync` de la page d’index avec le code suivant :
+Mettez à jour la méthode `OnGetAsync` de la page Index avec le code suivant :
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_1stSearch)]
 
@@ -46,17 +46,17 @@ Accédez à la page Movies, puis ajoutez une chaîne de requête telle que `?sea
 
 ![Vue Index](search/_static/ghost.png)
 
-Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `http://localhost:5000/Movies/ghost`).
+Si le modèle de routing suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `http://localhost:5000/Movies/ghost`).
 
 ```cshtml
 @page "{searchString?}"
 ```
 
-La contrainte d’itinéraire précédente permet de rechercher le titre comme données d’itinéraire (un segment d’URL) et non comme valeur de chaîne de requête.  Le `?` dans `"{searchString?}"` signifie qu’il s’agit d’un paramètre d’itinéraire facultatif.
+La contrainte de routing précédente permet de rechercher le titre comme données de routing (un segment d’URL) et non comme valeur de chaîne de requête.  Le `?` dans `"{searchString?}"` signifie qu’il s’agit d’un paramètre de routing facultatif.
 
 ![Vue Index avec le mot « ghost » ajouté à l’URL et une liste de films retournée contenant deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
 
-Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte d’itinéraire `"{searchString?}"`, supprimez-la.
+Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte de routing `"{searchString?}"`, supprimez-la.
 
 Ouvrez le fichier *Pages/Movies/Index.cshtml*, puis ajoutez la balise `<form>` mise en surbrillance dans le code suivant :
 
