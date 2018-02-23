@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: 7f0e30b3ac7f9cc3a32bd96f45d83ba13505a475
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 85d3eaf033eafbd24c71110ccd7f21ffcc8b0c82
+ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/19/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -169,9 +169,9 @@ Pour plus d’informations, consultez [Serveurs](xref:fundamentals/servers/index
 * [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
 * [HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement [WebListener](xref:fundamentals/servers/weblistener))
 
-## <a name="globalization-and-localization"></a>Internationalisation et traduction
+## <a name="globalization-and-localization"></a>Globalisation et localisation
 
-La création d’un site web multilingue avec ASP.NET Core vous permet de toucher un plus large public. ASP.NET Core offre des services et des intergiciels (middleware) de traduction dans différentes langues et cultures.
+La création d’un site web multilingue avec ASP.NET Core vous permet d’atteindre un plus large public. ASP.NET Core offre des services et des intergiciels (middleware) de traduction dans différentes langues et cultures.
 
 Pour plus d’informations, consultez [Internationalisation et traduction](xref:fundamentals/localization).
 
@@ -180,6 +180,12 @@ Pour plus d’informations, consultez [Internationalisation et traduction](xref:
 Les détails d’implémentation d’un serveur web relatifs aux requêtes HTTP et aux réponses sont définis dans les interfaces. Ces interfaces sont utilisées par les implémentations de serveur et les intergiciels (middleware) pour créer et modifier le pipeline d’hébergement de l’application.
 
 Pour plus d’informations, consultez [Fonctionnalités de requête](xref:fundamentals/request-features).
+
+## <a name="background-tasks"></a>Tâches en arrière-plan
+
+Les tâches en arrière-plan sont implémentées en tant que *services hébergés*. Un service hébergé est une classe avec la logique de tâches en arrière-plan qui implémente l’interface [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice).
+
+Pour plus d’informations, consultez [Tâches en arrière-plan avec services hébergés](xref:fundamentals/hosted-services).
 
 ## <a name="open-web-interface-for-net-owin"></a>OWIN (Open Web Interface pour .NET)
 
