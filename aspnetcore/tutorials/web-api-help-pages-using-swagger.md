@@ -21,7 +21,7 @@ ms.lasthandoff: 01/30/2018
 
 De [Shayne Boyer](https://twitter.com/spboyer) et [Scott Addie](https://twitter.com/Scott_Addie)
 
-Comprendre les différentes méthodes d’une API peut être un défi pour un développeur lors de la création d’une application consommatrice.
+Comprendre les différentes méthodes d’une API peut être un défi pour un développeur lors de la création d’une application cliente.
 
 Générer des pages d’aide et de documentation utiles pour votre API web à l’aide de [Swagger](https://swagger.io/) avec l’implémentation .NET Core de [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) est un jeu d’enfant : il vous suffit d’ajouter deux packages NuGet et de modifier le fichier *Startup.cs*.
 
@@ -37,9 +37,9 @@ Swashbuckle compte trois composants principaux :
 
 * `Swashbuckle.AspNetCore.Swagger` : un modèle objet Swagger et un intergiciel (middleware) pour exposer des objets `SwaggerDocument` en tant que points de terminaison JSON.
 
-* `Swashbuckle.AspNetCore.SwaggerGen` : un générateur Swagger qui crée des objets `SwaggerDocument` directement à partir de vos itinéraires, contrôleurs et modèles. Il est généralement associé à l’intergiciel de point de terminaison Swagger pour exposer automatiquement Swagger JSON.
+* `Swashbuckle.AspNetCore.SwaggerGen` : un générateur Swagger qui crée des objets `SwaggerDocument` directement à partir de vos routes, contrôleurs et modèles. Il est généralement associé à l’intergiciel de point de terminaison Swagger pour exposer automatiquement Swagger JSON.
 
-* `Swashbuckle.AspNetCore.SwaggerUI` : une version incorporée de l’outil d’interface utilisateur Swagger qui interprète Swagger JSON afin de générer une expérience enrichie et personnalisable pour la description de la fonctionnalité de l’API web. Il inclut des ateliers de test intégrés pour les méthodes publiques.
+* `Swashbuckle.AspNetCore.SwaggerUI` : une version incorporée de l’outil d’interface utilisateur Swagger qui interprète Swagger JSON afin de générer une expérience enrichie et personnalisable pour la description de la fonctionnalité de l’API web. Il inclut des modèles de test intégrés pour les méthodes publiques.
 
 ## <a name="nuget-packages"></a>Packages NuGet
 
@@ -323,9 +323,9 @@ La zone de liste déroulante **Response Content Type** permet de sélectionner c
 
 ### <a name="describing-response-types"></a>Description des types de réponse
 
-Les développeurs consommateurs se soucient davantage de ce qui est retourné, plus spécifiquement par les types de réponse et les codes d’erreur (s’ils ne sont pas standard). Ceux-ci sont gérés dans les annotations de données et les commentaires XML.
+Les développeurs d'applications clientes se soucient davantage de ce qui est retourné, plus spécifiquement par les types de réponse et les codes d’erreur (s’ils ne sont pas standard). Ceux-ci sont gérés dans les annotations de données et les commentaires XML.
 
-L’action `Create` retourne `201 Created` en cas de réussite ou `400 Bad Request` quand le corps de la requête envoyée est null. Sans documentation appropriée dans l’interface utilisateur de Swagger, le consommateur n’a pas connaissance de ces résultats attendus. Pour résoudre ce problème, il faut ajouter les lignes en surbrillance dans l’exemple suivant :
+L’action `Create` retourne `201 Created` en cas de réussite ou `400 Bad Request` quand le corps de la requête envoyée est `null`. Sans documentation appropriée dans l’interface utilisateur de Swagger, l'application cliente n’a pas connaissance de ces résultats attendus. Pour résoudre ce problème, il faut ajouter les lignes en surbrillance dans l’exemple suivant :
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Create&highlight=17,18,20,21)]
 
@@ -347,7 +347,7 @@ Activez l’intergiciel des fichiers statiques :
 
 [!code-csharp[Main](../tutorials/web-api-help-pages-using-swagger/sample/TodoApi/Startup.cs?name=snippet_Configure&highlight=3)]
 
-Faites l’acquisition du contenu du dossier *dist* à partir du [dépôt GitHub de l’interface utilisateur de Swagger](https://github.com/swagger-api/swagger-ui/tree/2.x/dist). Ce dossier contient les ressources nécessaires pour la page de l’interface utilisateur de Swagger.
+Téléchargez le contenu du dossier *dist* à partir du [dépôt GitHub de l’interface utilisateur de Swagger](https://github.com/swagger-api/swagger-ui/tree/2.x/dist). Ce dossier contient les ressources nécessaires pour la page de l’interface utilisateur de Swagger.
 
 Créez un dossier *wwwroot/swagger/ui* et copiez dedans le contenu du dossier *dist*.
 
