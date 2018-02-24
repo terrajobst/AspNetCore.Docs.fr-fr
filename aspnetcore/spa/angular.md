@@ -1,34 +1,34 @@
 ---
 title: "Utilisez le modèle de projet angulaire"
 author: SteveSandersonMS
-description: "Découvrez comment démarrer avec le modèle de projet ASP.NET Core seule Page Application (SPA) release candidate pour angulaire et l’interface CLI angulaire."
+description: "Découvrez comment démarrer avec le modèle de projet Application Page unique (SPA) de ASP.NET Core pour angulaire et l’interface CLI angulaire."
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/06/2017
+ms.date: 02/21/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: 4162b1c26e9d278c811f691c4277d4de25adb204
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f81130b67d61ee063b697f19862449c3054d547d
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="use-the-angular-project-template-release-candidate"></a>Utilisez le modèle de projet angulaire (version finale)
+# <a name="use-the-angular-project-template"></a>Utilisez le modèle de projet angulaire
 
 > [!NOTE]
-> Cette documentation n’est pas sur le modèle de projet angulaire finale. **Cette documentation est sur la version release candidate du modèle angulaire.** Nous espérons qu’expédier la version finale dans 2018 anticipée.
+> Cette documentation n’est pas sur le modèle de projet angulaire incluse dans ASP.NET 2.0 de base. Il s’agit du modèle angulaire plus récente à laquelle vous pouvez mettre à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
 
-Le modèle de projet angulaire mis à jour fournit un point de départ pratique pour ASP.NET Core applications à l’aide de 5 angulaire et l’interface CLI angulaire pour implémenter une interface utilisateur côté client riche (IU).
+Le modèle de projet angulaire mis à jour fournit un point de départ pratique pour ASP.NET Core applications à l’aide d’angulaire et l’interface CLI angulaire pour implémenter une interface utilisateur côté client riche (IU).
 
 Le modèle est équivalent à la création d’un projet ASP.NET Core pour agir comme un serveur principal d’API et un projet CLI angulaire d’agir comme une interface utilisateur. Le modèle offre l’avantage d’héberger les deux types de projets dans un projet d’application unique. Par conséquent, le projet d’application peut être généré et publié sous la forme d’une unité unique.
 
 ## <a name="create-a-new-app"></a>Créer une application
 
-Pour commencer, assurez-vous que vous avez [installé le modèle de projet angulaire mis à jour](xref:spa/index#installation). Ces instructions ne s’appliquent pas au modèle de projet angulaire précédente inclus dans le .NET Core 2.0.x SDK.
+Si vous utilisez ASP.NET Core 2.0, assurez-vous que vous avez [installé le modèle de projet angulaire mis à jour](xref:spa/index#installation). Si vous avez ASP.NET Core 2.1, il n’est pas nécessaire pour l’installer.
 
 Créez un nouveau projet à partir d’une invite de commandes à l’aide de la commande `dotnet new angular` dans un répertoire vide. Par exemple, les commandes suivantes créent l’application dans un *application mon nouveau* active et basculer vers ce répertoire :
 

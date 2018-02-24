@@ -1,26 +1,26 @@
 ---
 title: "Utilisez le modèle de projet React"
 author: SteveSandersonMS
-description: "Découvrez comment démarrer avec le modèle de projet ASP.NET Core seule Page Application (SPA) release candidate pour réagir et application de réagir créer."
+description: "Découvrez comment démarrer avec le modèle de projet Application Page unique (SPA) de ASP.NET Core pour réagir et application de réagir créer."
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/06/2017
+ms.date: 02/21/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: 5978094083a098a771f5dca103434ea8fcce7777
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e093a47159fd8278ff3705bb2c53571a8e27fab8
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="use-the-react-project-template-release-candidate"></a>Utilisez le modèle de projet React (version finale)
+# <a name="use-the-react-project-template"></a>Utilisez le modèle de projet React
 
 > [!NOTE]
-> Cette documentation n’est pas sur le modèle de projet React finale. **Cette documentation est sur la version release candidate du modèle React.** Nous espérons qu’expédier la version finale dans 2018 anticipée.
+> Cette documentation n’est pas sur le modèle de projet React incluse dans ASP.NET 2.0 de base. Il est sur le modèle de réagir plus récente à laquelle vous pouvez mettre à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
 
 Le modèle de projet React mis à jour fournit un point de départ pratique pour ASP.NET Core des applications à l’aide de réagir et [application react créer](https://github.com/facebookincubator/create-react-app) conventions (ARC) pour implémenter une interface utilisateur côté client riche (IU).
 
@@ -28,7 +28,7 @@ Le modèle est équivalent à la création d’un projet ASP.NET Core pour agir 
 
 ## <a name="create-a-new-app"></a>Créer une application
 
-Pour commencer, assurez-vous que vous avez [installé le modèle de projet mis à jour React](xref:spa/index#installation). Ces instructions ne s’appliquent pas au modèle de projet précédent React inclus dans le .NET Core 2.0.x SDK.
+Si vous utilisez ASP.NET Core 2.0, assurez-vous que vous avez [installé le modèle de projet mis à jour React](xref:spa/index#installation). Si vous avez ASP.NET Core 2.1, il n’est pas nécessaire pour l’installer.
 
 Créez un nouveau projet à partir d’une invite de commandes à l’aide de la commande `dotnet new react` dans un répertoire vide. Par exemple, les commandes suivantes créent l’application dans un *application mon nouveau* active et basculer vers ce répertoire :
 

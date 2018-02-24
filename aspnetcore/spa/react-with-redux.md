@@ -1,26 +1,26 @@
 ---
 title: "Utilisez le modèle de projet React avec réédition"
 author: SteveSandersonMS
-description: "Découvrez comment démarrer avec le modèle de projet ASP.NET Core seule Page Application (SPA) release candidate pour réagir avec Redux et application de réagir créer."
+description: "Découvrez comment démarrer avec le modèle de projet Application Page unique (SPA) de ASP.NET Core pour réagir avec Redux et application de réagir créer."
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/06/2017
+ms.date: 02/21/2018
 ms.devlang: csharp
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react-with-redux
-ms.openlocfilehash: 71a8702b9f6e9a2b40f150026f1955450e0fa7a3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f52f4a866b8bb2adeee19548df32f3e7a91761d1
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/23/2018
 ---
-# <a name="use-the-react-with-redux-project-template-release-candidate"></a>Utilisez le modèle de projet React avec réédition (version finale)
+# <a name="use-the-react-with-redux-project-template"></a>Utilisez le modèle de projet React avec réédition
 
 > [!NOTE]
-> Cette documentation n’est pas sur le modèle de projet React avec réédition finale. **Cette documentation est sur la version release candidate du modèle React avec réédition.** Nous espérons qu’expédier la version finale dans 2018 anticipée.
+> Cette documentation n’est pas sur le modèle de projet React avec réédition incluse dans ASP.NET 2.0 de base. Il est sur le modèle de réagir avec réédition plus récente à laquelle vous pouvez mettre à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
 
 Le modèle de projet React avec Redux mise à jour fournit un point de départ pratique pour les applications ASP.NET Core à l’aide de réagissent, Redux, et [application react créer](https://github.com/facebookincubator/create-react-app) conventions (ARC) pour implémenter une interface utilisateur côté client riche (IU).
 
