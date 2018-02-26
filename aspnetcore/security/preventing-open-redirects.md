@@ -19,15 +19,15 @@ ms.lasthandoff: 01/30/2018
 
 Une application web qui effectue une redirection vers une URL qui est spécifiée via la demande tels que les données de chaîne de requête ou d'un formulaire peuvent potentiellement être falsifiées en redirigant les utilisateurs vers une URL externe malveillante. Cette manipulation est appelée une attaque de redirection ouverte.
 
-Chaque fois que votre logique d’application redirige vers une URL spécifiée, vous devez vérifier que l’URL de redirection n’a pas été falsifié. ASP.NET Core intègre des fonctionnalités pour aider à protéger les applications contre les attaques de redirection ouverte (également appelé Open-Redirect).
+Chaque fois que votre logique d’application redirige vers une URL spécifiée, vous devez vérifier que l’URL de redirection n’a pas été falsifiée. ASP.NET Core intègre des fonctionnalités pour aider à protéger les applications contre les attaques de redirection ouverte (également appelée open redirection).
 
 ## <a name="what-is-an-open-redirect-attack"></a>Qu’est une attaque de redirection ouverte ?
 
 Les applications Web redirigent fréquemment les utilisateurs vers une page de connexion lorsqu’ils accèdent aux ressources qui requièrent une authentification. Typiquement la redirection inclut un paramètre querystring `returnUrl`  afin que l’utilisateur peut être retourné à l’URL demandée à l’origine une fois qu’ils ont connecté avec succès. Une fois que l’utilisateur s’authentifie, il est redirigé vers l’URL qui était initialement demandée.
 
-Étant donné que l’URL de destination est spécifié dans la chaîne de requête de la demande (querystring), un utilisateur malveillant peut falsifier cette chaîne de requête. Une chaîne de requête falsifiée pourrait permettre au site pour rediriger l’utilisateur vers un site externe, malveillant. Cette technique est appelée une attaque de redirection ouverte.
+Étant donné que l’URL de destination est spécifié dans la chaîne de requête de la demande, un utilisateur malveillant peut falsifier la chaîne de requête. Une chaîne de requête falsifiée pourrait permettre au site pour rediriger l’utilisateur vers un site externe, malveillant. Cette technique est appelée une attaque de redirection (ou une redirection) ouverte.
 
-### <a name="an-example-attack"></a>Un exemple d'attaque
+<a name="an-example-attack"></a>Un exemple d'attaque
 
 Un utilisateur malveillant peut développer une attaque conçue pour permettre l’accès utilisateur malveillant pour obtenir les informations d’identification d’un utilisateur ou les informations sensibles sur votre application. Pour lancer l’attaque, il convaint l’utilisateur de cliquer sur un lien vers la page de connexion de votre site, avec une valeur de chaîne de requête `returnUrl`  ajoutée à l’URL. Par exemple, l'exemple d’application [NerdDinner.com](http://nerddinner.com)  (écrite pour ASP.NET MVC) inclut une page de connexion ici : ``http://nerddinner.com/Account/LogOn?returnUrl=/Home/About``. L’attaque consiste à procéder comme suit :
 
