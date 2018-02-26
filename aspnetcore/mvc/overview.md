@@ -24,7 +24,7 @@ ASP.NET Core MVC est une infrastructure riche pour la création d’applications
 
 ## <a name="what-is-the-mvc-pattern"></a>Quel est le modèle de conception MVC ?
 
-Le modèle d’architecture Model-View-Controller (MVC) sépare une application en trois groupes de composants principaux : les modèles, les vues et les contrôleurs. Ce modèle permet d’effectuer de la [séparation des préoccupations](http://deviq.com/separation-of-concerns/). En utilisant ce modèle, les demandes de l’utilisateur sont acheminées vers un contrôleur qui a la responsabilité de fonctionner avec le modèle pour effectuer des actions de l’utilisateur et/ou de récupérer les résultats de requêtes. Le contrôleur choisit la vue à afficher à l’utilisateur et lui fournit toutes les données de modèle dont elle a besoin.
++Le modèle d’architecture Model-View-Controller (MVC) sépare une application en trois groupes de composants principaux : les modèles, les vues et les contrôleurs. Ce modèle permet d’effectuer la [séparation des préoccupations](http://deviq.com/separation-of-concerns/). En utilisant ce modèle, les demandes de l’utilisateur sont acheminées vers un contrôleur qui a la responsabilité de fonctionner avec le modèle pour effectuer des actions de l’utilisateur et/ou de récupérer les résultats de requ
 
 Le diagramme suivant montre les trois composants principaux et les références entre eux :
 
@@ -67,7 +67,7 @@ ASP.NET Core MVC offre un fonctionnement basé sur des patterns pour créer des 
 ASP.NET Core MVC inclut les éléments suivants :
 
 * [Le routage](#routing)
-* [La liaison de modèles](#model-binding)
+* [Liaison de modèles](#model-binding)
 * [La validation de modèle](#model-validation)
 * [L'injection de dépendance](../fundamentals/dependency-injection.md)
 * [Les filtres](#filters)
