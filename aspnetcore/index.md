@@ -47,7 +47,7 @@ ASP.NET Core est fourni entièrement sous forme de packages [NuGet](https://www.
 
 ## <a name="build-web-apis-and-web-ui-using-aspnet-core-mvc"></a>Créer des API web et une interface utilisateur web en utilisant le modèle MVC d’ASP.NET Core
 
-Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [APIs web](xref:tutorials/index#build-web-apis) et des [applications web](xref:tutorials/index#build-web-apps) :
+Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [API web](xref:tutorials/index#build-web-apis) et des [applications web](xref:tutorials/index#build-web-apps) :
 
 * Le [modèle MVC (Modèle-Vue-Contrôleur)](xref:mvc/overview) permet de rendre vos API web et vos applications web [testables](testing/index.md).
 * [Razor Pages](xref:mvc/razor-pages/index) (nouveauté dans ASP.NET Core 2.0) est un modèle de programmation basé sur les pages qui rend plus facile et plus productive la création d’une interface utilisateur web.
