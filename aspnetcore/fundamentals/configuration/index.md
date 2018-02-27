@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 5acae4de56e3f714f0cda2c00d5446d2dcddaf36
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: 12635c66bacdeed7360a9d6c689212bba81439e3
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="configure-an-aspnet-core-app"></a>Configurer une application ASP.NET Core
 
@@ -63,6 +63,25 @@ Les paires nom/valeur écrites dans les fournisseurs [Configuration](/dotnet/api
 
 L’exemple précédent utilise l’indexeur de configuration pour lire des valeurs. Pour accéder à la configuration en dehors de `Startup`, utilisez le *modèle d’options*. Pour plus d’informations, consultez la rubrique [Options](xref:fundamentals/configuration/options).
 
+## <a name="xml-configuration"></a>Configuration XML
+
+Pour utiliser des tableaux dans des sources de configuration au format XML, fournissez un index `name` à chaque élément. Utilisez l’index pour accéder aux valeurs :
+
+```xml
+<wizards>
+  <wizard name="Gandalf">
+    <age>1000</age>
+  </wizard>
+  <wizard name="Harry">
+    <age>17</age>
+  </wizard>
+</wizards>
+```
+
+```csharp
+Console.Write($"{Configuration["wizard:Harry:age"]}");
+// Output: 17
+```
 
 ## <a name="configuration-by-environment"></a>Configuration par environnement
 

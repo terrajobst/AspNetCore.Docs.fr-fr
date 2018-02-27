@@ -4,16 +4,16 @@ author: rick-anderson
 description: 
 manager: wpickett
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 02/21/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/index
-ms.openlocfilehash: 41cf3ce972de5e330dbe303e6a42fe215f3ac7a5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a4b42f7f4de07351e4e9a48ebc59bab2f187cedd
+ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="client-side-development-in-aspnet-core"></a>Développement côté client dans ASP.NET Core
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/30/2018
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
 - [Utiliser Browser Link](xref:client-side/using-browserlink)
 - [Utiliser JavaScriptServices pour les applications à page unique](xref:client-side/spa-services)
-- [Utiliser les modèles de projet pour les applications à page unique (RC)](xref:spa/index)
+- [Utiliser les modèles de projet pour les applications à page unique](xref:spa/index)
     - [Modèle de projet Angular](xref:spa/angular)
     - [Modèle de projet React](xref:spa/react)
     - [React avec modèle de projet Redux](xref:spa/react-with-redux)
