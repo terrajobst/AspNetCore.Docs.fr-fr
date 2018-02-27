@@ -1,4 +1,4 @@
----
+﻿---
 title: "Vue d’ensemble du modèle MVC d’ASP.NET Core"
 author: ardalis
 description: "Découvrez ASP.NET Core MVC, un puissant framework qui vous permet de générer des applications web et des API à l’aide du modèle de conception Model-View-Controller."
