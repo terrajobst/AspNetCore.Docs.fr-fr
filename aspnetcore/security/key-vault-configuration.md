@@ -42,7 +42,7 @@ Pour utiliser le fournisseur, ajouter une référence à la [Microsoft.Extension
 ## <a name="application-configuration"></a>Configuration d’application
 Vous pouvez explorer le fournisseur avec les [exemples d’applications](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples). Une fois que vous établissez un coffre de clés et créez des clés secrètes dans le coffre, les exemples d’applications chargent en toute sécurité les valeurs de secret dans leurs configurations et les affichent dans les pages Web.
 
-Le fournisseur est ajouté à la `ConfigurationBuilder` avec le `AddAzureKeyVault` extension. Dans les exemples d’applications, l’extension utilise trois valeurs de configuration chargées à partir du fichier *appsettings.json*.
+Le fournisseur est ajouté à la `ConfigurationBuilder` avec l'extention`AddAzureKeyVault`. Dans les exemples d’applications, l’extension utilise trois valeurs de configuration chargées à partir du fichier *appsettings.json*. 
 
 | Paramètre d’application    | Description                    | Exemple                                      |
 | -------------- | ------------------------------ | -------------------------------------------- |
