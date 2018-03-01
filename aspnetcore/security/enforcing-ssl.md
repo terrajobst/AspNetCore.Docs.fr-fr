@@ -1,4 +1,4 @@
----
+﻿---
 title: "L’application HTTPS dans une application ASP.NET Core"
 author: rick-anderson
 description: "Montre comment exiger HTTPS/TLS dans un cœur d’ASP.NET application web."
@@ -37,6 +37,7 @@ Le [RequireHttpsAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.RequireHttpsAttr
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 
 Le code en surbrillance précédent requiert que toutes les demandes utilisent `HTTPS`; par conséquent, les requêtes HTTP sont ignorés. Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
+Le code en surbrillance suivant redirige toutes les demandes HTTP vers HTTPS :
 
 [!code-csharp[Main](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet_AddRedirectToHttps&highlight=7-999)]
 
