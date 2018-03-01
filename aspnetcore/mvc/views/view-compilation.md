@@ -26,7 +26,7 @@ Les vues Razor sont compilées à l'exécution lors de leur premier appel. A par
 
 Considérations relatives à la précompilation :
 
-* les résultats de la précompilation des vues  génère une plus petite application et avec un  démarrage plus rapide.
+* les résultats de la précompilation des vues génère une plus petite application avec un démarrage plus rapide.
 * Vous ne pouvez pas modifier les vues précompilées. Elles ne font pas partie de l’application publiée. 
 
 Pour déployer des vues précompilés :
@@ -47,13 +47,13 @@ Les modèles de projet ASP.NET Core 2.x définissent la valeur `MvcRazorCompileO
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Définissez `MvcRazorCompileOnPublish` à `true`et inclure une référence de package à `Microsoft.AspNetCore.Mvc.Razor.ViewCompilation`. Le fichier *.csproj* suivant en est un exemple exemple, avec en surbrillance ces paramètres:
+Définir `MvcRazorCompileOnPublish` à `true`et inclure une référence de package à `Microsoft.AspNetCore.Mvc.Razor.ViewCompilation`. Le fichier *.csproj* suivant en est un exemple, avec en surbrillance ces paramètres :
 
 [!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish.csproj?highlight=5,12)]
 
 ---
 
-Préparer l’application pour un [dépendant du framework déploiement](/dotnet/core/deploying/#framework-dependent-deployments-fdd) en exécutant une la commande suivante à la racine du projet :
+Préparer l’application pour un [dépendant du framework déploiement](/dotnet/core/deploying/#framework-dependent-deployments-fdd) en exécutant une commande telle que la suivante à la racine du projet :
 
 ```console
 dotnet publish -c Release
