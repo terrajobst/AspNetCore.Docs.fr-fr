@@ -72,7 +72,7 @@ public class ControlPanelController : Controller
 }
 ```
 
-Dans le code précédent, les membres du rôle `Administrator` rôle ou du rôle `PowerUser` peuvent accéder au contrôleur et l'action `SetTime`, mais seuls les membres du rôle `Administrator` peuvent accéder à l'action `ShutDown`.
+Dans le code précédent, les membres du rôle `Administrator` ou du rôle `PowerUser` peuvent accéder au contrôleur et l'action `SetTime`, mais seuls les membres du rôle `Administrator` peuvent accéder à l'action `ShutDown`.
 
 Vous pouvez également verrouiller un contrôleur et autoriser l’accès anonyme, non authentifié, à des actions individuelles.
 
