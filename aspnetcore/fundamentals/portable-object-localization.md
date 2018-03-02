@@ -216,7 +216,7 @@ L’emplacement par défaut des fichiers PO peut être changé dans `ConfigureSe
 services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
 ```
 
-Dans cet exemple, les fichiers PO sont chargés à partir du dossier *Localisation*.
+Dans cet exemple, les fichiers PO sont chargés à partir du dossier *Localization*.
 
 ### <a name="implementing-a-custom-logic-for-finding-localization-files"></a>Implémentation d’une logique personnalisée pour la recherche de fichiers de localisation
 
