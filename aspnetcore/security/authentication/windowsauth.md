@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: c229537e7f533eea2173dbc51b8d0d0e097d434a
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: f6efd838d7b6c837c75f36591a49eab812f9d54c
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>Configurer l’authentification Windows dans une application ASP.NET Core
 
@@ -56,7 +56,7 @@ Vous pouvez également ces deux propriétés peuvent être configurées dans le 
 
 ## <a name="enable-windows-authentication-with-iis"></a>Activer l’authentification Windows avec IIS
 
-IIS utilise le [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) (ANCM) pour héberger des applications ASP.NET Core. La ANCM flux l’authentification Windows sur le serveur IIS par défaut. Configuration de l’authentification Windows est effectuée dans les services IIS, pas le projet d’application. Les sections suivantes montrent comment utiliser le Gestionnaire des services Internet pour configurer une application ASP.NET Core pour utiliser l’authentification Windows.
+IIS utilise le [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) pour les applications ASP.NET Core hôte. La module flux l’authentification Windows sur le serveur IIS par défaut. L’authentification Windows est configurée dans IIS, pas l’application. Les sections suivantes montrent comment utiliser le Gestionnaire des services Internet pour configurer une application ASP.NET Core pour utiliser l’authentification Windows.
 
 ### <a name="create-a-new-iis-site"></a>Créer un nouveau site IIS
 
@@ -113,7 +113,7 @@ Lorsque l’authentification Windows et l’accès anonyme sont activées, utili
 Dans ASP.NET Core 2.x, le `[Authorize]` attribut nécessite une configuration supplémentaire dans *Startup.cs* contester les demandes anonymes pour l’authentification Windows. La configuration recommandée varie légèrement selon le serveur web utilisé.
 
 > [!NOTE]
-> Par défaut, les utilisateurs qui ne disposent pas d’autorisation pour accéder à une page sont présentées avec un document vide. Le [StatusCodePages intergiciel (middleware)](xref:fundamentals/error-handling#configuring-status-code-pages) peut être configuré pour fournir aux utilisateurs une meilleure expérience « Accès refusé ».
+> Par défaut, les utilisateurs qui ne disposent pas d’autorisation pour accéder à une page sont présentées avec une réponse HTTP 403 vide. Le [StatusCodePages intergiciel (middleware)](xref:fundamentals/error-handling#configuring-status-code-pages) peut être configuré pour fournir aux utilisateurs une meilleure expérience « Accès refusé ».
 
 #### <a name="iis"></a>IIS
 

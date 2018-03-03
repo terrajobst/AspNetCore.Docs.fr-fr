@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 29ef3cf3d8bcd6b4ebbf08d831dc146e830fa1ac
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e9a74d8f6c3945b1bc8c62d0ab21145a7c5717fb
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
@@ -31,11 +31,11 @@ Pour inclure l’intergiciel (middleware) dans un projet, ajoutez une référenc
 
 Dans `ConfigureServices`, ajoutez l’intergiciel (middleware) à la collection de service.
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
 
 Configurer l’application pour utiliser l’intergiciel (middleware) avec la `UseResponseCaching` méthode d’extension, qui ajoute l’intergiciel (middleware) au pipeline de traitement de la demande. L’exemple d’application ajoute un [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) en-tête dans la réponse qui met en cache les réponses de mise en cache pendant 10 secondes. L’exemple envoie une [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) en-tête pour configurer l’intergiciel (middleware) pour servir une réponse mise en cache d’uniquement si le [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) en-tête des demandes ultérieures correspond à celle de la demande d’origine.
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
 
 Intergiciel (middleware) de réponse mise en cache met uniquement en cache les réponses du serveur qui génèrent un code d’état 200 (OK). Autres réponses, y compris [les pages d’erreur](xref:fundamentals/error-handling), sont ignorées par l’intergiciel (middleware).
 
@@ -125,10 +125,10 @@ Lorsque les tests et le dépannage du comportement de mise en cache, un navigate
 * La méthode de demande doit être GET ou HEAD.
 * Intergiciel Terminal, tel que [intergiciel (middleware) du fichier statique](xref:fundamentals/static-files), ne doit pas traiter la réponse avant de l’intergiciel (middleware) réponse mise en cache.
 * Le `Authorization` en-tête ne doit pas être présent.
-* `Cache-Control`paramètres de l’en-tête doivent être valides, et la réponse doit être marquée `public` et pas marquée `private`.
+* `Cache-Control` paramètres de l’en-tête doivent être valides, et la réponse doit être marquée `public` et pas marquée `private`.
 * Le `Pragma: no-cache` en-tête ne doit pas être présent si la `Cache-Control` en-tête n’est pas présent, comme le `Cache-Control` en-tête remplace le `Pragma` en-tête lorsqu’il est présent.
 * Le `Set-Cookie` en-tête ne doit pas être présent.
-* `Vary`paramètres de l’en-tête doivent être valide et non égal à `*`.
+* `Vary` paramètres de l’en-tête doivent être valide et non égal à `*`.
 * Le `Content-Length` valeur d’en-tête (si défini) doit correspondre à la taille du corps de réponse.
 * Le [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) n’est pas utilisé.
 * La réponse ne doit pas être périmée tel que spécifié par le `Expires` en-tête et le `max-age` et `s-maxage` directives de cache.

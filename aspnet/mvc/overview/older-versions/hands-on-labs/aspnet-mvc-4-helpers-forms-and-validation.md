@@ -12,34 +12,32 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 925d659f42496045089ba056e194ac977c37a8de
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 243db3708ac4311d423c4c137f503f072f5553e6
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Validation, les formulaires et les programmes d’assistance ASP.NET MVC 4
-====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+# <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Validation, les formulaires et les programmes d’assistance ASP.NET MVC 4
 
-> Dans **accès aux données et les modèles ASP.NET MVC 4** atelier pratique, vous avez été le chargement et l’affichage des données à partir de la base de données. Dans cet atelier pratique, vous allez ajouter à la **magasin de musique** application la possibilité de modifier ces données.
-> 
-> Objectifs à l’esprit, vous allez d’abord créer le contrôleur qui prend en charge les actions de création, lecture, mise à jour et supprimer (CRUD) des albums. Vous allez générer un modèle de vue d’Index en tirant parti de la fonctionnalité de génération de modèles automatique de ASP.NET MVC pour afficher les propriétés des albums dans une table HTML. Pour des raisons de cette vue, vous allez ajouter un programme d’assistance HTML personnalisé qui va tronquer les longues descriptions.
-> 
-> Vous ajouterez par la suite, le modifier et créer des vues qui permettent de modifier les albums dans la base de données, à l’aide des éléments de formulaire tels que des listes déroulantes.
-> 
-> Enfin, vous permet aux utilisateurs de supprimer un album et vous serez également les empêcher d’entrer des données erronées en validant leur entrée.
-> 
-> > [!NOTE]
-> > Cet atelier pratique suppose que vous avez une connaissance élémentaire des **ASP.NET MVC**. Si vous n’avez pas utilisé **ASP.NET MVC** auparavant, nous vous recommandons de dépasser **notions de base ASP.NET MVC** atelier pratique.
-> 
-> 
-> Ce laboratoire présente les améliorations et nouvelles fonctionnalités décrites précédemment en appliquant les modifications mineures à un exemple d’application Web dans le dossier Source.
-> 
-> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [https://www.microsoft.com/download/29843](https://www.microsoft.com/download/29843).
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
+[Télécharger Camps Web Kit de formation](https://aka.ms/webcamps-training-kit)
 
-<a id="Objectives"></a>
+Dans **accès aux données et les modèles ASP.NET MVC 4** atelier pratique, vous avez été le chargement et l’affichage des données à partir de la base de données. Dans cet atelier pratique, vous allez ajouter à la **magasin de musique** application la possibilité de modifier ces données.
+
+Objectifs à l’esprit, vous allez d’abord créer le contrôleur qui prend en charge les actions de création, lecture, mise à jour et supprimer (CRUD) des albums. Vous allez générer un modèle de vue d’Index en tirant parti de la fonctionnalité de génération de modèles automatique de ASP.NET MVC pour afficher les propriétés des albums dans une table HTML. Pour des raisons de cette vue, vous allez ajouter un programme d’assistance HTML personnalisé qui va tronquer les longues descriptions.
+
+Vous ajouterez par la suite, le modifier et créer des vues qui permettent de modifier les albums dans la base de données, à l’aide des éléments de formulaire tels que des listes déroulantes.
+
+Enfin, vous permet aux utilisateurs de supprimer un album et vous serez également les empêcher d’entrer des données erronées en validant leur entrée.
+
+Cet atelier pratique suppose que vous avez une connaissance élémentaire des **ASP.NET MVC**. Si vous n’avez pas utilisé **ASP.NET MVC** auparavant, nous vous recommandons de dépasser **notions de base ASP.NET MVC** atelier pratique.
+
+Ce laboratoire présente les améliorations et nouvelles fonctionnalités décrites précédemment en appliquant les modifications mineures à un exemple d’application Web dans le dossier Source.
+
+> [!NOTE]
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [Microsoft-Web/WebCampTrainingKit versions](https://aka.ms/webcamps-training-kit). Le projet spécifique pour ce laboratoire est disponible à l’adresse [programmes d’assistance de ASP.NET MVC 4, formulaires et la Validation](https://github.com/Microsoft-Web/HOL-MVC4HelpersFormsAndValidation).
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>Objectifs
@@ -659,7 +657,7 @@ Dans cette tâche, vous allez tester la validation que les pages créer et modif
 
     ![Champs validés dans la page de modification](aspnet-mvc-4-helpers-forms-and-validation/_static/image19.png)
 
-    *Champs validés dans la page de modification*
+    Champs validés dans la page de modification
 
 <a id="Exercise7"></a>
 

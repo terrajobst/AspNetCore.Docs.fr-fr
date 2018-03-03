@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: f81130b67d61ee063b697f19862449c3054d547d
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: 07cfd20809acb67bdae6561b6ccd6edf1e70a3fe
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-the-angular-project-template"></a>Utilisez le modèle de projet angulaire
 
@@ -49,9 +49,9 @@ Le processus de génération restaure npm dépendent de la première exécution,
 
 Assurez-vous d’avoir une variable d’environnement appelée `ASPNETCORE_Environment` avec la valeur `Development`. Sur Windows (dans les invites de non-PowerShell), exécutez `SET ASPNETCORE_Environment=Development`. Sur Linux ou macOS, exécutez `export ASPNETCORE_Environment=Development`.
 
-Exécutez `dotnet build` pour vérifier l’application se génère correctement. Sur la première exécution, le processus de génération restaure les dépendances de npm, qui peuvent prendre plusieurs minutes. Les builds suivantes sont beaucoup plus rapides.
+Exécutez [dotnet build](/dotnet/core/tools/dotnet-build) pour vérifier l’application se génère correctement. Sur la première exécution, le processus de génération restaure les dépendances de npm, qui peuvent prendre plusieurs minutes. Les builds suivantes sont beaucoup plus rapides.
 
-Exécutez `dotnet run` pour démarrer l’application. Un message semblable au suivant est enregistré :
+Exécutez [dotnet exécuter](/dotnet/core/tools/dotnet-run) pour démarrer l’application. Un message semblable au suivant est enregistré :
 
 ```console
 Now listening on: http://localhost:<port>

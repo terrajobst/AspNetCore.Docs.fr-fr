@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 584dbb545c15add4401086b9160d4bf30caf41b5
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 37332dda794f898fb866424b38394f5d4441e166
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>Ôter la protection de charges utiles dont les clés ont été révoqués.
 
@@ -30,7 +30,7 @@ Pour prendre en charge le scénario de permettre à des charges utiles d’être
 > [!NOTE]
 > Pas toutes `IDataProtector` instances peuvent être converties en `IPersistedDataProtector`. Les développeurs doivent utiliser le langage c# en tant qu’opérateur ou préparé similaire pour éviter les exceptions du runtime due à des casts non valides, et qu’ils doivent disposer gérer le cas de défaillance de manière appropriée.
 
-`IPersistedDataProtector`expose la surface API suivante :
+`IPersistedDataProtector` expose la surface API suivante :
 
 ```csharp
 DangerousUnprotect(byte[] protectedData, bool ignoreRevocationErrors,
@@ -46,4 +46,4 @@ Cette API prend la charge utile de protégé (en tant que tableau d’octets) et
 >[!WARNING]
 > Soyez extrêmement prudent lorsque vous passez `ignoreRevocationErrors: true` à la `DangerousUnprotect` (méthode). Si, après avoir appelé cette méthode le `wasRevoked` valeur est true, la clé utilisée pour protéger cette charge utile a été révoquée, puis les authenticité de la charge utile doivent être traitée comme étant suspecte. Dans ce cas, uniquement continue à fonctionner sur la charge utile non protégée si vous avez une garantie distincte qu’il est authentique, par exemple, qu’il provient d’une base de données sécurisée, plutôt que d’envoyées par un client web non fiable.
 
-[!code-csharp[Main](dangerous-unprotect/samples/dangerous-unprotect.cs)]
+[!code-csharp[](dangerous-unprotect/samples/dangerous-unprotect.cs)]

@@ -12,25 +12,26 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 msc.type: authoredcontent
-ms.openlocfilehash: 103cd68c576463d87d0077cc149f9b89c6e028e8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 639815cc92b7cb5f3dfb4e1a198f6b4c2476dc90
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-custom-action-filters"></a>Filtres d’Action personnalisés ASP.NET MVC 4
-====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+# <a name="aspnet-mvc-4-custom-action-filters"></a>Filtres d’Action personnalisés ASP.NET MVC 4
 
-> ASP.NET MVC fournit des filtres d’Action pour exécuter la logique de filtrage avant ou après l’appel d’une méthode d’action. Filtres d’action sont des attributs personnalisés qui fournissent un moyen déclaratif pour ajouter un comportement pré et post-action aux méthodes d’action du contrôleur.
-> 
-> Dans cet atelier pratique, vous allez créer un attribut de filtre d’action personnalisée dans la solution MvcMusicStore pour intercepter les demandes du contrôleur et les journaux de l’activité d’un site dans une table de base de données. Vous serez en mesure d’ajouter votre filtre de journalisation par injection à n’importe quel contrôleur ou d’action. Enfin, vous voyez s’afficher le journal qui présente la liste des visiteurs.
-> 
-> > [!NOTE]
-> > Cet atelier pratique suppose que vous avez une connaissance élémentaire des **ASP.NET MVC**. Si vous n’avez pas utilisé **ASP.NET MVC** auparavant, nous vous recommandons de dépasser **notions de base ASP.NET MVC 4** atelier pratique.
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
+[Télécharger Camps Web Kit de formation](https://aka.ms/webcamps-training-kit)
 
-<a id="Objectives"></a>
+ASP.NET MVC fournit des filtres d’Action pour exécuter la logique de filtrage avant ou après l’appel d’une méthode d’action. Filtres d’action sont des attributs personnalisés qui fournissent un moyen déclaratif pour ajouter un comportement pré et post-action aux méthodes d’action du contrôleur.
+
+Dans cet atelier pratique, vous allez créer un attribut de filtre d’action personnalisée dans la solution MvcMusicStore pour intercepter les demandes du contrôleur et les journaux de l’activité d’un site dans une table de base de données. Vous serez en mesure d’ajouter votre filtre de journalisation par injection à n’importe quel contrôleur ou d’action. Enfin, vous voyez s’afficher le journal qui présente la liste des visiteurs.
+
+Cet atelier pratique suppose que vous avez une connaissance élémentaire des **ASP.NET MVC**. Si vous n’avez pas utilisé **ASP.NET MVC** auparavant, nous vous recommandons de dépasser **notions de base ASP.NET MVC 4** atelier pratique.
+
+> [!NOTE]
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponibles à partir de sur [Microsoft-Web/WebCampTrainingKit versions](https://aka.ms/webcamps-training-kit). Le projet spécifique pour ce laboratoire est disponible à l’adresse [filtres d’Action ASP.NET MVC 4 personnalisé](https://github.com/Microsoft-Web/HOL-MVC4CustomActionFilters).
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>Objectifs
@@ -332,7 +333,7 @@ Dans cette tâche, vous mettrez à jour la solution pour enregistrer le nouveau 
 1. Dans **StoreController** classe, supprimez **[MyNewCustomActionFilter]** attribut et la propriété de commande à partir de **[CustomActionFilter]**. Il doit se présenter comme suit :
 
     [!code-csharp[Main](aspnet-mvc-4-custom-action-filters/samples/sample13.cs)]
-2. Ouvrez **Global.asax** de fichiers et recherchez le **Application\_Démarrer** (méthode). Notez que chaque thime l’application démarre, elle inscrit les filtres globaux en appelant **RegisterGlobalFilters** méthode **FilterConfig** classe.
+2. Ouvrez **Global.asax** de fichiers et recherchez le **Application\_Démarrer** (méthode). Notez que chaque fois que l’application démarre, elle inscrit les filtres globaux en appelant **RegisterGlobalFilters** méthode **FilterConfig** classe.
 
     ![L’enregistrement de filtres globaux dans Global.asax](aspnet-mvc-4-custom-action-filters/_static/image10.png "l’enregistrement de filtres globaux dans Global.asax")
 

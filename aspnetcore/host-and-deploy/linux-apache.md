@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 61827f456ba01ffa726f3446401156409b29111d
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: b11bc811b6aefce22b60a28afd72c2a2d0b26955
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -232,7 +232,7 @@ sudo journalctl -fu kestrel-hellomvc.service --since "2016-10-18" --until "2016-
 
 ### <a name="configure-firewall"></a>Configurer le pare-feu
 
-*Firewalld* est un démon dynamique pour gérer le pare-feu avec prise en charge pour les zones du réseau. Ports et le filtrage des paquets peuvent toujours être gérés par iptables. *Firewalld* doit être installé par défaut. `yum`peut être utilisé pour installer le package ou de vérifier qu’il est installé.
+*Firewalld* est un démon dynamique pour gérer le pare-feu avec prise en charge pour les zones du réseau. Ports et le filtrage des paquets peuvent toujours être gérés par iptables. *Firewalld* doit être installé par défaut. `yum` peut être utilisé pour installer le package ou de vérifier qu’il est installé.
 
 ```bash
 sudo yum install firewalld -y
@@ -351,7 +351,7 @@ Ajoutez la ligne `Header set X-Content-Type-Options "nosniff"`. Enregistrez le f
 
 ### <a name="load-balancing"></a>Équilibrage de charge 
 
-Cet exemple montre comment installer et configurer Apache sur CentOS 7 et Kestrel sur la même machine de l’instance. Afin de ne pas disposer d’un seul point de défaillance ; à l’aide de *mod_proxy_balancer* et la modification de la **VirtualHost** permettrait pour gérer des instances de plusieurs applications web derrière le serveur proxy Apache.
+Cet exemple montre comment installer et configurer Apache sur CentOS 7 et Kestrel sur la même machine de l’instance. Afin de ne pas disposer d’un seul point de défaillance ; à l’aide de *mod_proxy_balancer* et la modification de la **VirtualHost** permettrait permettant de gérer plusieurs instances des applications web derrière le serveur proxy Apache.
 
 ```bash
 sudo yum install mod_proxy_balancer

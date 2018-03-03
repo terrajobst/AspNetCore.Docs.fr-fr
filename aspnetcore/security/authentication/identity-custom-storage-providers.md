@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 8cadb550eaa2dbc4541f945dc8d8d49fa757d4d3
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 559c5c58b416912b1caef1964ff8d7532bd98439
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -112,7 +112,7 @@ Stocke et récupère les rôles sont attribués à quels utilisateurs. [Exemple]
 
 Dans les classes d’accès aux données, fournissez le code pour effectuer des opérations de données pour votre mécanisme de persistance. Par exemple, au sein d’un fournisseur personnalisé, vous pouvez avoir le code suivant pour créer un nouvel utilisateur dans le *stocker* classe :
 
-[!code-csharp[Main](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs?name=createuser&highlight=7)]
+[!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/CustomUserStore.cs?name=createuser&highlight=7)]
 
 La logique d’implémentation pour la création de l’utilisateur est dans le ``_usersTable.CreateAsync`` méthode, illustré ci-dessous.
 
@@ -145,7 +145,7 @@ Héritent des interfaces facultatives `IUserStore`. Vous pouvez voir un exemple 
 
 Dans le `UserStore` (classe), vous utilisez les classes d’accès aux données que vous avez créé pour effectuer des opérations. Ils sont passés à l’aide d’injection de dépendances. Par exemple, dans le serveur SQL Server avec une implémentation Dapper, le `UserStore` classe a la `CreateAsync` méthode qui utilise une instance de `DapperUsersTable` pour insérer un nouvel enregistrement :
 
-[!code-csharp[Main](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/DapperUsersTable.cs?name=createuser&highlight=7)]
+[!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/DapperUsersTable.cs?name=createuser&highlight=7)]
 
 ### <a name="interfaces-to-implement-when-customizing-user-store"></a>Interfaces à implémenter lors de la personnalisation du magasin de l’utilisateur
 
@@ -196,7 +196,7 @@ Lorsque vous implémentez un fournisseur de stockage de rôle, vous pouvez crée
 
 Voici un exemple de classe de rôle :
 
-[!code-csharp[Main](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/ApplicationRole.cs)]
+[!code-csharp[](identity-custom-storage-providers/sample/CustomIdentityProviderSample/CustomProvider/ApplicationRole.cs)]
 
 ## <a name="customize-the-role-store"></a>Personnaliser le magasin de rôles
 

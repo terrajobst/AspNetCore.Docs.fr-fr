@@ -12,24 +12,26 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 15db1589eb90739458b430c35cea38e93e3dec5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 396859463446d95c58271c4b00fc950bcd0d539a
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/02/2018
 ---
-<a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Migrations et la génération de modèles automatique ASP.NET MVC 4 Entity Framework
-====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+# <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Migrations et la génération de modèles automatique ASP.NET MVC 4 Entity Framework
 
-> Si vous êtes familiarisé avec les méthodes de contrôleur ASP.NET MVC 4, ou s’est terminé le &quot;programmes d’assistance, de formulaires et de Validation&quot; atelier pratique, vous devez être conscient que la plupart de la logique permettant de créer, mettre à jour, afficher et supprimer une entité de données qu’il est répété entre l’application. Ne pas de mentionner que, si votre modèle comporte plusieurs classes à manipuler, vous serez susceptible de prendre une écriture les méthodes d’action POST et GET pour chaque opération de l’entité, ainsi que chacune des vues.
-> 
-> Dans cet atelier, vous allez apprendre à utiliser la génération de modèles automatique ASP.NET MVC 4 pour générer automatiquement la ligne de base CRUD de votre application (création, lecture, mise à jour et suppression). À partir d’une classe de modèle simple et, sans écrire une seule ligne de code, vous allez créer un contrôleur contenant toutes les opérations CRUD, ainsi que toutes les vues nécessaires. Après la génération et exécution de la solution simple, vous devez la base de données d’application généré, ainsi que la logique MVC et les vues pour la manipulation de données.
-> 
-> En outre, vous allez apprendre combien il est facile à utiliser Entity Framework Migrations pour effectuer des mises à jour dans toute votre application. Entity Framework Migrations vous permettent de modifier votre base de données une fois que le modèle a changé étapes simples. Avec tous ces éléments à l’esprit, vous serez en mesure de créer et gérer des applications web plus efficacement, tirant parti des fonctionnalités plus récentes d’ASP.NET MVC 4.
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
+[Télécharger Camps Web Kit de formation](https://aka.ms/webcamps-training-kit)
 
-<a id="Objectives"></a>
+Si vous êtes familiarisé avec les méthodes de contrôleur ASP.NET MVC 4, ou s’est terminé le &quot;programmes d’assistance, de formulaires et de Validation&quot; atelier pratique, vous devez être conscient que la plupart de la logique permettant de créer, mettre à jour, afficher et supprimer une entité de données qu’il est répété entre l’application. Ne pas de mentionner que, si votre modèle comporte plusieurs classes à manipuler, vous serez susceptible de prendre une écriture les méthodes d’action POST et GET pour chaque opération de l’entité, ainsi que chacune des vues.
+
+Dans cet atelier, vous allez apprendre à utiliser la génération de modèles automatique ASP.NET MVC 4 pour générer automatiquement la ligne de base CRUD de votre application (création, lecture, mise à jour et suppression). À partir d’une classe de modèle simple et, sans écrire une seule ligne de code, vous allez créer un contrôleur contenant toutes les opérations CRUD, ainsi que toutes les vues nécessaires. Après la génération et exécution de la solution simple, vous devez la base de données d’application généré, ainsi que la logique MVC et les vues pour la manipulation de données.
+
+En outre, vous allez apprendre combien il est facile à utiliser Entity Framework Migrations pour effectuer des mises à jour dans toute votre application. Entity Framework Migrations vous permettent de modifier votre base de données une fois que le modèle a changé étapes simples. Avec tous ces éléments à l’esprit, vous serez en mesure de créer et gérer des applications web plus efficacement, tirant parti des fonctionnalités plus récentes d’ASP.NET MVC 4.
+
+> [!NOTE]
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponibles à partir de sur [Microsoft-Web/WebCampTrainingKit versions](https://aka.ms/webcamps-training-kit). Le projet spécifique pour ce laboratoire est disponible à l’adresse [génération de modèles automatique ASP.NET MVC 4 Entity Framework et les Migrations](https://github.com/Microsoft-Web/HOL-EntityFrameworkScaffoldingAndMigrations).
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>Objectifs
@@ -42,7 +44,7 @@ Dans cet atelier pratique, vous allez apprendre comment :
 <a id="Prerequisites"></a>
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Conditions préalables
+### <a name="prerequisites"></a>Prérequis
 
 Vous devez disposer des éléments suivants pour effectuer ce laboratoire :
 
@@ -112,7 +114,7 @@ Dans cet exercice, vous allez apprendre à utiliser la génération de modèles 
 
     ![Génération de l’application](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image3.png "génération de l’application")
 
-    *Génération de l’Application*
+    *Génération de l’application*
 7. Dans l’Explorateur de solutions, cliquez sur le dossier controllers, puis sélectionnez **ajouter | Contrôleur**.
 8. Nommez le contrôleur *PersonController* et terminer le **les options de génération de modèles automatique** avec les valeurs suivantes.
 
@@ -269,7 +271,7 @@ Dans cette tâche, vous mettrez à jour la base de données à l’aide d’Enti
 <a id="Summary"></a>
 
 <a id="Summary"></a>
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cet atelier, vous avez appris les étapes simples pour créer des opérations CRUD avec ASP.NET MVC 4 génération de modèles automatique à l’aide de n’importe quelle classe de modèle. Ensuite, vous avez appris comment effectuer une mise à jour de bout en bout dans votre application - à partir de la base de données pour les vues - à l’aide d’Entity Framework Migrations.
 
@@ -291,7 +293,7 @@ Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un au
 
     ![Accepter les termes du contrat de licence](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image23.png)
 
-    *Accepter les termes du contrat de licence*
+    Accepter les termes du contrat de licence
 5. Attendez que le processus de téléchargement et l’installation se termine.
 
     ![Progression de l'installation](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image24.png)
@@ -301,13 +303,13 @@ Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un au
 
     ![Installation est terminée](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image25.png)
 
-    *Installation est terminée*
+    Installation est terminée
 7. Cliquez sur **Exit** fermer Web Platform Installer.
 8. Pour ouvrir Visual Studio Express pour le Web, accédez à la **Démarrer** écran et démarrer l’écriture &quot; **VS Express**&quot;, puis cliquez sur le **Visual Studio Express pour le Web** vignette.
 
     ![VS Express pour la vignette du Web](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image26.png)
 
-    *VS Express pour la vignette du Web*
+    VS Express pour la vignette du Web
 
 <a id="AppendixB"></a>
 

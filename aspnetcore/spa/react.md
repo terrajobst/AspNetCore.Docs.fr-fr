@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: e093a47159fd8278ff3705bb2c53571a8e27fab8
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: cda9f52d1f5fa1d240e210488bf1bd5c76e49be7
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-the-react-project-template"></a>Utilisez le modèle de projet React
 
@@ -49,9 +49,9 @@ Le processus de génération restaure npm dépendent de la première exécution,
 
 Assurez-vous d’avoir une variable d’environnement appelée `ASPNETCORE_Environment` avec la valeur `Development`. Sur Windows (dans les invites de non-PowerShell), exécutez `SET ASPNETCORE_Environment=Development`. Sur Linux ou macOS, exécutez `export ASPNETCORE_Environment=Development`.
 
-Exécutez `dotnet build` pour vérifier votre application se génère correctement. Sur la première exécution, le processus de génération restaure les dépendances de npm, qui peuvent prendre plusieurs minutes. Les builds suivantes sont beaucoup plus rapides.
+Exécutez [dotnet build](/dotnet/core/tools/dotnet-build) pour vérifier votre application se génère correctement. Sur la première exécution, le processus de génération restaure les dépendances de npm, qui peuvent prendre plusieurs minutes. Les builds suivantes sont beaucoup plus rapides.
 
-Exécutez `dotnet run` pour démarrer l’application.
+Exécutez [dotnet exécuter](/dotnet/core/tools/dotnet-run) pour démarrer l’application.
 
 ---
 

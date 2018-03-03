@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: 447b13eccf523cab81590405740bb194112b0dad
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: c9c9f63cd635f364d9b2e081dc051a46a44d3e4f
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migration à partir de ASP.NET MVC à cœur d’ASP.NET MVC
 
@@ -48,17 +48,17 @@ Créer un nouveau *vide* application de web ASP.NET Core avec le même nom que l
 
 * Installer le `Microsoft.AspNetCore.Mvc` et `Microsoft.AspNetCore.StaticFiles` les packages NuGet.
 
-  `Microsoft.AspNetCore.Mvc`est de l’infrastructure ASP.NET MVC de base. `Microsoft.AspNetCore.StaticFiles`est le Gestionnaire de fichiers statiques. Le runtime ASP.NET est modulaire, et vous devez explicitement s’abonner à des fichiers statiques (consultez [utilisation des fichiers statiques](../fundamentals/static-files.md)).
+  `Microsoft.AspNetCore.Mvc` est de l’infrastructure ASP.NET MVC de base. `Microsoft.AspNetCore.StaticFiles` est le Gestionnaire de fichiers statiques. Le runtime ASP.NET est modulaire, et vous devez explicitement s’abonner à des fichiers statiques (consultez [utilisation des fichiers statiques](../fundamentals/static-files.md)).
 
 * Ouvrez le *.csproj* fichier (avec le bouton droit dans le projet de **l’Explorateur de solutions** et sélectionnez **WebApp1.csproj de modifier**) et ajoutez un `PrepareForPublish` cible :
 
-  [!code-xml[Main](mvc/sample/WebApp1.csproj?range=21-23)]
+  [!code-xml[](mvc/sample/WebApp1.csproj?range=21-23)]
 
   Le `PrepareForPublish` cible est nécessaire pour l’acquisition des bibliothèques côté client via Bower. Nous parlerons que plus tard.
 
 * Ouvrez le *Startup.cs* de fichiers et de modifier le code pour faire correspondre les éléments suivants :
 
-  [!code-csharp[Main](mvc/sample/Startup.cs?highlight=14,27-34)]
+  [!code-csharp[](mvc/sample/Startup.cs?highlight=14,27-34)]
 
   Le `UseStaticFiles` méthode d’extension ajoute le Gestionnaire de fichiers statiques. Comme mentionné précédemment, le runtime ASP.NET est modulaire, et vous devez explicitement s’abonner à des fichiers statiques. Le `UseMvc` méthode d’extension ajoute le routage. Pour plus d’informations, consultez [démarrage de l’Application](../fundamentals/startup.md) et [routage](../fundamentals/routing.md).
 
@@ -114,7 +114,7 @@ Maintenant que nous avons un projet ASP.NET Core minimale, nous pouvons commence
 
 ## <a name="controllers-and-views"></a>Contrôleurs et vues
 
-* Chacune des méthodes copier à partir de l’ASP.NET MVC `HomeController` au nouveau `HomeController`. Notez que dans ASP.NET MVC, type de retour de méthode de modèle prédéfini contrôleur action est [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); dans ASP.NET MVC de base, les méthodes d’action retournés `IActionResult` à la place. `ActionResult`implémente `IActionResult`, il est donc inutile de modifier le type de retour de vos méthodes d’action.
+* Chacune des méthodes copier à partir de l’ASP.NET MVC `HomeController` au nouveau `HomeController`. Notez que dans ASP.NET MVC, type de retour de méthode de modèle prédéfini contrôleur action est [ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx); dans ASP.NET MVC de base, les méthodes d’action retournés `IActionResult` à la place. `ActionResult` implémente `IActionResult`, il est donc inutile de modifier le type de retour de vos méthodes d’action.
 
 * Copie le *About.cshtml*, *Contact.cshtml*, et *Index.cshtml* Razor afficher les fichiers à partir du projet ASP.NET MVC au projet ASP.NET Core.
 
@@ -126,7 +126,7 @@ Maintenant que nous avons un projet ASP.NET Core minimale, nous pouvons commence
 
 ![Page de contact](mvc/_static/contact-page.png)
 
-Notez l’absence de style et éléments de menu. Qui sera résolu dans la section suivante.
+Notez l’absence de style et éléments de menu. Nous le corrigerons dans la section suivante.
 
 ## <a name="static-content"></a>Contenu statique
 
@@ -140,7 +140,7 @@ Dans le nouveau projet, nous allons ajouter la prise en charge des données d’
 
 * Ajouter un [Bower](https://bower.io/) fichier de configuration nommé *bower.json* à la racine du projet (avec le bouton droit sur le projet, puis **Ajouter > nouvel élément > fichier de Configuration Bower**). Ajouter [Bootstrap](http://getbootstrap.com/) et [jQuery](https://jquery.com/) au fichier (voir les lignes en surbrillance ci-dessous).
 
-  [!code-json[Main](mvc/sample/bower.json?highlight=5-6)]
+  [!code-json[](mvc/sample/bower.json?highlight=5-6)]
 
 Lors de l’enregistrement du fichier, Bower télécharge automatiquement les dépendances à la *wwwroot/lib* dossier. Vous pouvez utiliser la **recherche l’Explorateur de solutions** pour rechercher le chemin d’accès des actifs :
 
@@ -156,7 +156,7 @@ Consultez [gérer les Packages côté Client avec Bower](../client-side/bower.md
 
 * Créer un *Views/Shared* dossier.
 
-* *Facultatif :* copie *_ViewImports.cshtml* à partir de la *FullAspNetCore* du projet MVC *vues* dossier du projet de ASP.NET Core *Vues* dossier. Supprimez toute déclaration d’espace de noms dans le *_ViewImports.cshtml* fichier. Le *_ViewImports.cshtml* fournit des espaces de noms pour tous les fichiers de l’affichage de fichiers et permet de bénéficier de [programmes d’assistance de balise](xref:mvc/views/tag-helpers/intro). Programmes d’assistance de balise sont utilisés dans le nouveau fichier de disposition. Le *_ViewImports.cshtml* fichier est une nouveauté pour ASP.NET Core.
+* *Facultatif :* copie *_ViewImports.cshtml* à partir de la *FullAspNetCore* du projet MVC *vues* dossier dans le projet de ASP.NET Core  *Vues* dossier. Supprimez toute déclaration d’espace de noms dans le *_ViewImports.cshtml* fichier. Le *_ViewImports.cshtml* fournit des espaces de noms pour tous les fichiers de l’affichage de fichiers et permet de bénéficier de [programmes d’assistance de balise](xref:mvc/views/tag-helpers/intro). Programmes d’assistance de balise sont utilisés dans le nouveau fichier de disposition. Le *_ViewImports.cshtml* fichier est une nouveauté pour ASP.NET Core.
 
 * Copie le *_Layout.cshtml* fichier à partir de l’ancien projet ASP.NET MVC *Views/Shared* dossier dans le projet de ASP.NET Core *Views/Shared* dossier.
 
@@ -187,7 +187,7 @@ Les balises de script de remplacement :
 
 La mise à jour *_Layout.cshtml* fichier est présenté ci-dessous :
 
-[!code-html[Main](mvc/sample/Views/Shared/_Layout.cshtml?highlight=7,27,39-40)]
+[!code-html[](mvc/sample/Views/Shared/_Layout.cshtml?highlight=7,27,39-40)]
 
 Afficher le site dans le navigateur. Il doit maintenant charger correctement, avec les styles attendus en place.
 

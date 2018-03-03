@@ -10,15 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 150603d17f3bed983f9871fe7665748a70177f89
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: 27a46446e9bf63e96eecc392e6d6863e27b34730
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes de base ASP.NET sur Azure App Service
 
 Par [Luke Latham](https://github.com/guardrex)
+
+[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 Cet article fournit des instructions sur la façon de diagnostiquer un ASP.NET Core problème de démarrage d’application à l’aide des outils de diagnostic du Service d’applications Azure. Pour obtenir des conseils de dépannage supplémentaires, consultez [vue d’ensemble des diagnostics du Service d’applications Azure](/azure/app-service/app-service-diagnostics) et [Comment : surveiller les applications dans Azure App Service](/azure/app-service/web-sites-monitor) dans la documentation sur Azure.
 
@@ -103,7 +105,7 @@ Le Module de base ASP.NET stdout souvent enregistre les messages d’erreur util
 1. Sélectionnez **enregistrer** pour enregistrer le fichier.
 
 > [!WARNING]
-> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il existe aucune limite quant à la taille du fichier journal ou le nombre de fichiers journaux créés.
+> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés.
 >
 > Pour la routine de journalisation dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et la faire pivoter des journaux. Pour plus d’informations, consultez [modules fournisseurs d’informations de tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
@@ -170,7 +172,7 @@ Voir [Échec de la requête effectue le suivi la section de la journalisation de
 Pour plus d’informations, consultez [activer la journalisation des diagnostics pour les applications web dans Azure App Service](/azure/app-service/web-sites-enable-diagnostic-log).
 
 > [!WARNING]
-> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il existe aucune limite quant à la taille du fichier journal ou le nombre de fichiers journaux créés.
+> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés.
 >
 > Pour la routine de journalisation dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et la faire pivoter des journaux. Pour plus d’informations, consultez [modules fournisseurs d’informations de tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 

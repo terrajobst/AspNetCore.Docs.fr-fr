@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 68f590dffe8bb98813f974a5ecb9b270a5419ddf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: bcc4984efcee9a6ffd0f3b503a38089c78adf5e8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="key-management-extensibility"></a>Extensibilité de la gestion de clés
 
@@ -67,7 +67,7 @@ Le `IKeyManager` interface représente un objet chargé de stockage général de
 
 Le `XmlKeyManager` type est l’implémentation concrète de la boîte de réception de `IKeyManager`. Il fournit plusieurs installations utiles, y compris le dépôt de clé et le chiffrement des clés au repos. Dans ce système, les clés sont représentées comme des éléments XML (en particulier, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
 
-`XmlKeyManager`dépend de plusieurs autres composants au cours de l’exécution de ses tâches :
+`XmlKeyManager` dépend de plusieurs autres composants au cours de l’exécution de ses tâches :
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -75,17 +75,17 @@ Le `XmlKeyManager` type est l’implémentation concrète de la boîte de récep
 
 * `IXmlRepository`, qui contrôle où les clés sont rendues persistantes dans le stockage.
 
-* `IXmlEncryptor`[facultatif], ce qui permet de chiffrer les clés au repos.
+* `IXmlEncryptor` [facultatif], ce qui permet de chiffrer les clés au repos.
 
-* `IKeyEscrowSink`[facultatif], qui fournit des services de clé (Key escrow).
+* `IKeyEscrowSink` [facultatif], qui fournit des services de clé (Key escrow).
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 * `IXmlRepository`, qui contrôle où les clés sont rendues persistantes dans le stockage.
 
-* `IXmlEncryptor`[facultatif], ce qui permet de chiffrer les clés au repos.
+* `IXmlEncryptor` [facultatif], ce qui permet de chiffrer les clés au repos.
 
-* `IKeyEscrowSink`[facultatif], qui fournit des services de clé (Key escrow).
+* `IKeyEscrowSink` [facultatif], qui fournit des services de clé (Key escrow).
 
 ---
 
@@ -121,7 +121,7 @@ Dans l’implémentation de `CreateNewKey`, le `IAuthenticatedEncryptorConfigura
 
    *Récupération de clé / GetAllKeys*
 
-Dans l’implémentation de `GetAllKeys`, représentant les clés des documents XML et révocations sont lus à partir de l’objet sous-jacent `IXmlRepository`. Si ces documents sont chiffrées, le système sera automatiquement les déchiffrer. `XmlKeyManager`crée le `IAuthenticatedEncryptorDescriptorDeserializer` instances pour désérialiser les documents de nouveau `IAuthenticatedEncryptorDescriptor` instances, qui sont ensuite encapsulées dans individuels `IKey` instances. Cette collection de `IKey` instances est retourné à l’appelant.
+Dans l’implémentation de `GetAllKeys`, représentant les clés des documents XML et révocations sont lus à partir de l’objet sous-jacent `IXmlRepository`. Si ces documents sont chiffrées, le système sera automatiquement les déchiffrer. `XmlKeyManager` crée le `IAuthenticatedEncryptorDescriptorDeserializer` instances pour désérialiser les documents de nouveau `IAuthenticatedEncryptorDescriptor` instances, qui sont ensuite encapsulées dans individuels `IKey` instances. Cette collection de `IKey` instances est retourné à l’appelant.
 
 Vous trouverez plus d’informations sur les éléments XML particuliers dans le [document au format de stockage de clés](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format).
 
@@ -222,4 +222,4 @@ L’exemple de code suivant montre comment créer et inscrire un `IKeyEscrowSink
 > [!NOTE]
 > Pour exécuter cet exemple, vous devez être sur un domaine Windows 8 / machine Windows Server 2012 et le contrôleur de domaine doivent être Windows Server 2012 ou version ultérieure.
 
-[!code-csharp[Main](key-management/samples/key-management-extensibility.cs)]
+[!code-csharp[](key-management/samples/key-management-extensibility.cs)]

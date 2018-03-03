@@ -8,11 +8,11 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: 37592c3b2099c2cb74dc42ad4a7937b32c281f65
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: c654cfd7c2d291849067bfd3297f940018ccb3d8
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>Réponse mise en cache dans ASP.NET Core
 
@@ -91,7 +91,7 @@ Le [ResponseCacheAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.ResponseCacheAt
 > [!WARNING]
 > Désactiver la mise en cache du contenu qui contient des informations pour les clients authentifiés. La mise en cache doit être activée pour le contenu qui ne change pas en fonction de l’identité d’un utilisateur ou si un utilisateur est connecté.
 
-[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys) varie en fonction de la réponse stockée en fonction des valeurs de la liste donnée des clés de requête. Lorsqu’une valeur unique de `*` n’est fourni, l’intergiciel (middleware) varie par toutes les réponses de demandent des paramètres de chaîne de requête. `VaryByQueryKeys`nécessite ASP.NET Core 1.1 ou version ultérieure.
+[VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys) varie en fonction de la réponse stockée en fonction des valeurs de la liste donnée des clés de requête. Lorsqu’une valeur unique de `*` n’est fourni, l’intergiciel (middleware) varie par toutes les réponses de demandent des paramètres de chaîne de requête. `VaryByQueryKeys` nécessite ASP.NET Core 1.1 ou version ultérieure.
 
 L’intergiciel (middleware) réponse mise en cache doit être activé pour définir le `VaryByQueryKeys` propriété ; sinon, une exception runtime est levée. Il n’est pas un en-tête HTTP correspondant pour le `VaryByQueryKeys` propriété. La propriété est une fonctionnalité HTTP gérée par l’intergiciel (middleware) réponse mise en cache. Pour l’intergiciel (middleware) servir une réponse mise en cache, la chaîne de requête et la valeur de chaîne de requête doivent correspondre à une demande précédente. Par exemple, considérez la séquence des demandes et les résultats présentés dans le tableau suivant.
 
@@ -113,7 +113,7 @@ Le `ResponseCacheAttribute` est utilisé pour configurer et créer (via `IFilter
 
 Cet en-tête est écrit uniquement lorsque le `VaryByHeader` est définie. Il est défini sur la `Vary` valeur de la propriété. L’exemple suivant utilise le `VaryByHeader` propriété :
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
 
 Vous pouvez afficher les en-têtes de réponse avec les outils de réseau de votre navigateur. L’illustration suivante montre le F12 Edge de sortie sur le **réseau** onglet lorsque la `About2` méthode d’action est actualisée :
 
@@ -121,7 +121,7 @@ Vous pouvez afficher les en-têtes de réponse avec les outils de réseau de vot
 
 ### <a name="nostore-and-locationnone"></a>NoStore et Location.None
 
-`NoStore`remplace la plupart des autres propriétés. Lorsque cette propriété a la valeur `true`, le `Cache-Control` en-tête est défini sur `no-store`. Si `Location` a la valeur `None`:
+`NoStore` remplace la plupart des autres propriétés. Lorsque cette propriété a la valeur `true`, le `Cache-Control` en-tête est défini sur `no-store`. Si `Location` a la valeur `None`:
 
 * `Cache-Control` a la valeur `no-store,no-cache`.
 * `Pragma` a la valeur `no-cache`.
@@ -130,7 +130,7 @@ Si `NoStore` est `false` et `Location` est `None`, `Cache-Control` et `Pragma` o
 
 Vous définissez généralement `NoStore` à `true` sur les pages d’erreur. Exemple :
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
 
 Ainsi, les en-têtes suivants :
 
@@ -148,7 +148,7 @@ Pour activer la mise en cache, `Duration` doit être définie sur une valeur pos
 
 Ci-dessous un exemple montrant les en-têtes produit en définissant `Duration` et en conservant la valeur par défaut `Location` valeur :
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
 
 Cela génère l’en-tête suivant :
 
@@ -162,11 +162,11 @@ Au lieu de répéter `ResponseCache` paramètres sur les attributs d’action de
 
 Configuration d’un profil de cache :
 
-[!code-csharp[Main](response/sample/Startup.cs?name=snippet1)] 
+[!code-csharp[](response/sample/Startup.cs?name=snippet1)] 
 
 Faisant référence à un profil de cache :
 
-[!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
+[!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
 
 Le `ResponseCache` attribut peut être appliqué à la fois aux actions (méthodes) et contrôleurs (classes). Attributs de niveau de la méthode remplacent les paramètres spécifiés dans les attributs de niveau classe.
 

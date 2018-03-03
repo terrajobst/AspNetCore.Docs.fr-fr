@@ -1,7 +1,7 @@
 ---
-title: "Prévention des attaques Cross-Site Request Forgery (XSRF/CSRF) ASP.NET Core"
+title: "Attaques empêcher Cross-Site Request Forgery (XSRF/CSRF) dans ASP.NET Core"
 author: steve-smith
-description: "Prévention des attaques Cross-Site Request Forgery (XSRF/CSRF) ASP.NET Core"
+description: "Découvrez comment éviter les attaques contre les applications web où un site Web malveillant peut influencer l’interaction entre un navigateur client et l’application."
 manager: wpickett
 ms.author: riande
 ms.date: 7/14/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: 079c36535b8c9e7229952a2f7bcd53174effa6af
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 80651a3c3e4c722e0cb96d7cc07de366819f8d1d
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="preventing-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Prévention des attaques Cross-Site Request Forgery (XSRF/CSRF) ASP.NET Core
+# <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Attaques empêcher Cross-Site Request Forgery (XSRF/CSRF) dans ASP.NET Core
 
 [Steve Smith](https://ardalis.com/), [Fiyaz Hasan](https://twitter.com/FiyazBinHasan), et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -31,14 +31,14 @@ Voici un exemple d’une attaque CSRF :
 
    Le site contient un formulaire HTML semblable au suivant :
 
-```html
+   ```html
    <h1>You Are a Winner!</h1>
-     <form action="http://example.com/api/account" method="post">
-       <input type="hidden" name="Transaction" value="withdraw" />
-       <input type="hidden" name="Amount" value="1000000" />
-     <input type="submit" value="Click Me"/>
+   <form action="http://example.com/api/account" method="post">
+       <input type="hidden" name="Transaction" value="withdraw">
+       <input type="hidden" name="Amount" value="1000000">
+       <input type="submit" value="Click Me">
    </form>
-```
+   ```
 
 Notez que l’action de formulaire valide sur le site vulnérable, pas pour le site malveillant. Il s’agit de la partie « cross-site » de CSRF.
 
@@ -91,21 +91,21 @@ Vous pouvez désactiver la génération automatique d’anti-contrefaçon jetons
 
 * Désactive explicitement `asp-antiforgery`. Exemple :
 
- ```html
+  ```html
   <form method="post" asp-antiforgery="false">
   </form>
   ```
 
 * Choisir l’élément form en dehors des programmes d’assistance de balise à l’aide du programme d’assistance de balise [! annulations symbole](xref:mvc/views/tag-helpers/intro#opt-out).
 
- ```html
+  ```html
   <!form method="post">
   </!form>
   ```
 
 * Supprimer le `FormTagHelper` à partir de la vue. Vous pouvez supprimer le `FormTagHelper` à partir d’une vue en ajoutant la directive suivante à la vue Razor :
 
- ```html
+  ```html
   @removeTagHelper Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper, Microsoft.AspNetCore.Mvc.TagHelpers
   ```
 
@@ -125,7 +125,7 @@ L’approche la plus courante de défense contre les attaques CSRF est le modèl
 }
 ```
 
-Vous pouvez ajouter explicitement un jeton à côté d’un ``<form>`` élément sans l’aide de programmes d’assistance de balise avec l’application d’assistance HTML ``@Html.AntiForgeryToken``:
+Vous pouvez ajouter explicitement un jeton à côté d’un `<form>` élément sans l’aide de programmes d’assistance de balise avec l’application d’assistance HTML `@Html.AntiForgeryToken`:
 
 
 ```html
@@ -136,18 +136,16 @@ Vous pouvez ajouter explicitement un jeton à côté d’un ``<form>`` élément
 
 Dans chacun des cas précédents, ASP.NET Core ajoutera un champ de formulaire masqué semblable au suivant :
 ```html
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8NrAkSldwD9CpLRyOtm6FiJB1Jr_F3FQJQDvhlHoLNJJrLA6zaMUmhjMsisu2D2tFkAiYgyWQawJk9vNm36sYP1esHOtamBEPvSk1_x--Sg8Ey2a-d9CV2zHVWIN9MVhvKHOSyKqdZFlYDVd69XYx-rOWPw3ilHGLN6K0Km-1p83jZzF0E4WU5OGg5ns2-m9Yw" />
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8NrAkSldwD9CpLRyOtm6FiJB1Jr_F3FQJQDvhlHoLNJJrLA6zaMUmhjMsisu2D2tFkAiYgyWQawJk9vNm36sYP1esHOtamBEPvSk1_x--Sg8Ey2a-d9CV2zHVWIN9MVhvKHOSyKqdZFlYDVd69XYx-rOWPw3ilHGLN6K0Km-1p83jZzF0E4WU5OGg5ns2-m9Yw">
 ```
 
-ASP.NET Core inclut trois [filtres](xref:mvc/controllers/filters) pour l’utilisation des jetons de côté : ``ValidateAntiForgeryToken``, ``AutoValidateAntiforgeryToken``, et ``IgnoreAntiforgeryToken``.
-
-<a name="vaft"></a>
+ASP.NET Core inclut trois [filtres](xref:mvc/controllers/filters) pour l’utilisation des jetons de côté : `ValidateAntiForgeryToken`, `AutoValidateAntiforgeryToken`, et `IgnoreAntiforgeryToken`.
 
 ### <a name="validateantiforgerytoken"></a>ValidateAntiForgeryToken
 
-Le ``ValidateAntiForgeryToken`` est un filtre d’action qui peut être appliqué à une action individuelle, un contrôleur, ou globalement. Requêtes adressées à des actions qui ont ce filtre appliqué seront bloqués, sauf si la demande inclut un jeton valide de côté.
+Le `ValidateAntiForgeryToken` est un filtre d’action qui peut être appliqué à une action individuelle, un contrôleur, ou globalement. Requêtes adressées à des actions qui ont ce filtre appliqué seront bloqués, sauf si la demande inclut un jeton valide de côté.
 
-```c#
+```csharp
 [HttpPost]
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
@@ -167,25 +165,24 @@ public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
 }
 ```
 
-Le ``ValidateAntiForgeryToken`` attribut requiert un jeton pour les demandes de méthodes d’action qu’il décore, y compris `HTTP GET` demandes. Si vous appliquez largement, vous pouvez la remplacer par la ``IgnoreAntiforgeryToken`` attribut.
+Le `ValidateAntiForgeryToken` attribut requiert un jeton pour les demandes de méthodes d’action qu’il décore, y compris `HTTP GET` demandes. Si vous appliquez largement, vous pouvez la remplacer par la `IgnoreAntiforgeryToken` attribut.
 
 ### <a name="autovalidateantiforgerytoken"></a>AutoValidateAntiforgeryToken
 
-Applications ASP.NET Core généralement ne pas générer de jetons de côté pour les méthodes sans échec HTTP (GET, HEAD, OPTIONS et TRACE). Au lieu d’appliquer globalement la ``ValidateAntiForgeryToken`` attribut et en remplaçant puis avec ``IgnoreAntiforgeryToken`` attributs, vous pouvez utiliser la ``AutoValidateAntiforgeryToken`` attribut. Cet attribut fonctionne de manière identique à la ``ValidateAntiForgeryToken`` d’attribut, sauf qu’elle ne nécessite pas les jetons pour les demandes effectuées à l’aide des méthodes HTTP suivantes :
+Applications ASP.NET Core généralement ne pas générer de jetons de côté pour les méthodes sans échec HTTP (GET, HEAD, OPTIONS et TRACE). Au lieu d’appliquer globalement la `ValidateAntiForgeryToken` attribut et en remplaçant puis avec `IgnoreAntiforgeryToken` attributs, vous pouvez utiliser la ``AutoValidateAntiforgeryToken`` attribut. Cet attribut fonctionne de manière identique à la `ValidateAntiForgeryToken` d’attribut, sauf qu’elle ne nécessite pas les jetons pour les demandes effectuées à l’aide des méthodes HTTP suivantes :
 
 * GET
 * HEAD
 * OPTIONS
 * TRACE
 
-Nous vous recommandons d’utiliser ``AutoValidateAntiforgeryToken`` largement pour les scénarios non-API. Cela garantit que vos actions POST sont protégées par défaut. L’alternative consiste à ignorer les jetons côtés par défaut, sauf si ``ValidateAntiForgeryToken`` est appliqué à la méthode d’action individuelle. Il est plus probable dans ce scénario pour une méthode d’action POST à gauche non protégé, en laissant votre application vulnérable aux attaques CSRF. Les publications anonymes même doivent envoyer le jeton côté.
+Nous vous recommandons d’utiliser `AutoValidateAntiforgeryToken` largement pour les scénarios non-API. Cela garantit que vos actions POST sont protégées par défaut. L’alternative consiste à ignorer les jetons côtés par défaut, sauf si `ValidateAntiForgeryToken` est appliqué à la méthode d’action individuelle. Il est plus probable dans ce scénario pour une méthode d’action POST à gauche non protégé, en laissant votre application vulnérable aux attaques CSRF. Les publications anonymes même doivent envoyer le jeton côté.
 
 Remarque : Les API n’ont aucun mécanisme automatique pour l’envoi de la partie non-cookie du jeton ; votre implémentation dépend probablement votre implémentation de code client. Certains exemples sont présentés ci-dessous.
 
-
 Exemple (niveau de la classe) :
 
-```c#
+```csharp
 [Authorize]
 [AutoValidateAntiforgeryToken]
 public class ManageController : Controller
@@ -194,7 +191,7 @@ public class ManageController : Controller
 
 Exemple (global) :
 
-```c#
+```csharp
 services.AddMvc(options => 
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
 ```
@@ -203,9 +200,9 @@ services.AddMvc(options =>
 
 ### <a name="ignoreantiforgerytoken"></a>IgnoreAntiforgeryToken
 
-Le ``IgnoreAntiforgeryToken`` filtre est utilisé pour éliminer le besoin d’un jeton de côté être présent pour une action donnée (ou un contrôleur). Quand il est appliqué, ce filtre remplace ``ValidateAntiForgeryToken`` et/ou ``AutoValidateAntiforgeryToken`` filtres spécifiés à un niveau supérieur (globalement ou sur un contrôleur).
+Le `IgnoreAntiforgeryToken` filtre est utilisé pour éliminer le besoin d’un jeton de côté être présent pour une action donnée (ou un contrôleur). Quand il est appliqué, ce filtre remplace `ValidateAntiForgeryToken` et/ou `AutoValidateAntiforgeryToken` filtres spécifiés à un niveau supérieur (globalement ou sur un contrôleur).
 
-```c#
+```csharp
 [Authorize]
 [AutoValidateAntiforgeryToken]
 public class ManageController : Controller
@@ -225,14 +222,14 @@ Dans les applications traditionnelles basées sur HTML côtés jetons sont pass�
 
 ### <a name="angularjs"></a>AngularJS
 
-AngularJS utilise une convention à l’adresse CSRF. Si le serveur envoie un cookie avec le nom ``XSRF-TOKEN``, l’angulaire ``$http`` service, ajoutez la valeur de ce cookie à un en-tête lorsqu’il envoie une demande à ce serveur. Ce processus est automatique ; vous n’avez pas besoin de définir l’en-tête explicitement. Le nom d’en-tête est ``X-XSRF-TOKEN``. Le serveur doit détecter cet en-tête et valider son contenu.
+AngularJS utilise une convention à l’adresse CSRF. Si le serveur envoie un cookie avec le nom `XSRF-TOKEN`, l’angulaire `$http` service, ajoutez la valeur de ce cookie à un en-tête lorsqu’il envoie une demande à ce serveur. Ce processus est automatique ; vous n’avez pas besoin de définir l’en-tête explicitement. Le nom d’en-tête est `X-XSRF-TOKEN`. Le serveur doit détecter cet en-tête et valider son contenu.
 
 Pour le travail de l’API ASP.NET principale avec la convention :
 
-* Configurer votre application pour fournir un jeton dans un cookie appelé``XSRF-TOKEN``
-* Configurer le côté service pour rechercher un en-tête nommé``X-XSRF-TOKEN``
+* Configurer votre application pour fournir un jeton dans un cookie appelé `XSRF-TOKEN`
+* Configurer le côté service pour rechercher un en-tête nommé `X-XSRF-TOKEN`
 
-```c#
+```csharp
 services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 ```
 
@@ -242,20 +239,22 @@ services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
 
 À l’aide de JavaScript avec des vues, vous pouvez créer le jeton à l’aide d’un service à partir de votre affichage. Pour ce faire, vous injectez la `Microsoft.AspNetCore.Antiforgery.IAntiforgery` service dans la vue et appelez `GetAndStoreTokens`, comme indiqué :
 
-[!code-csharp[Main](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,24)]
+[!code-csharp[](anti-request-forgery/sample/MvcSample/Views/Home/Ajax.cshtml?highlight=4-10,12-13,28)]
 
 Cette approche élimine le besoin de traiter directement avec la définition des cookies à partir du serveur ou de les lire à partir du client.
 
+L’exemple précédent utilise jQuery pour lire la valeur du champ masqué pour l’en-tête AJAX POST. Pour utiliser JavaScript pour obtenir sa valeur, utilisez `document.getElementById('RequestVerificationToken').value`.
+
 JavaScript permettre également accéder aux jetons fournis dans des cookies et puis permet de contenu du cookie créer un en-tête avec sa valeur, comme indiqué ci-dessous.
 
-```c#
+```csharp
 context.Response.Cookies.Append("CSRF-TOKEN", tokens.RequestToken, 
   new Microsoft.AspNetCore.Http.CookieOptions { HttpOnly = false });
 ```
 
-Puis, en supposant que la construction de votre script demande à envoyer le jeton dans un en-tête appelé ``X-CSRF-TOKEN``, configurer le côté service pour rechercher le ``X-CSRF-TOKEN`` en-tête :
+Puis, en supposant que la construction de votre script demande à envoyer le jeton dans un en-tête appelé `X-CSRF-TOKEN`, configurer le côté service pour rechercher le `X-CSRF-TOKEN` en-tête :
 
-```c#
+```csharp
 services.AddAntiforgery(options => options.HeaderName = "X-CSRF-TOKEN");
 ```
 
@@ -277,10 +276,10 @@ $.ajax({
 
 ## <a name="configuring-antiforgery"></a>Configuration Antiforgery
 
-`IAntiforgery`fournit l’API pour configurer le système de côté. Il peut être demandé dans le `Configure` méthode de la `Startup` classe. L’exemple suivant utilise l’intergiciel (middleware) à partir de la page d’accueil de l’application pour générer un jeton de côté et l’envoyer dans la réponse sous forme de cookie (à l’aide de la convention de dénomination angulaire par défaut est décrite ci-dessus) :
+`IAntiforgery` fournit l’API pour configurer le système de côté. Il peut être demandé dans le `Configure` méthode de la `Startup` classe. L’exemple suivant utilise l’intergiciel (middleware) à partir de la page d’accueil de l’application pour générer un jeton de côté et l’envoyer dans la réponse sous forme de cookie (à l’aide de la convention de dénomination angulaire par défaut est décrite ci-dessus) :
 
 
-```c#
+```csharp
 public void Configure(IApplicationBuilder app, 
     IAntiforgery antiforgery)
 {
@@ -308,16 +307,16 @@ public void Configure(IApplicationBuilder app,
 
 Vous pouvez personnaliser [options côtées](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions#fields_summary) dans `ConfigureServices`:
 
-```c#
+```csharp
 services.AddAntiforgery(options => 
 {
-  options.CookieDomain = "mydomain.com";
-  options.CookieName = "X-CSRF-TOKEN-COOKIENAME";
-  options.CookiePath = "Path";
-  options.FormFieldName = "AntiforgeryFieldname";
-  options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
-  options.RequireSsl = false;
-  options.SuppressXFrameOptionsHeader = false;
+    options.CookieDomain = "mydomain.com";
+    options.CookieName = "X-CSRF-TOKEN-COOKIENAME";
+    options.CookiePath = "Path";
+    options.FormFieldName = "AntiforgeryFieldname";
+    options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+    options.RequireSsl = false;
+    options.SuppressXFrameOptionsHeader = false;
 });
 ```
 
@@ -331,7 +330,7 @@ services.AddAntiforgery(options =>
 |FormFieldName | Le nom du champ de formulaire masqué utilisé par le système de côté pour effectuer le rendu côté des jetons dans les vues. |
 |HeaderName    | Le nom de l’en-tête utilisé par le système de côté. Si `null`, le système considère uniquement les données de formulaire. |
 |RequireSsl    | Spécifie si SSL est requise par le système de côté. La valeur par défaut est `false`. Si `true`, les demandes non-SSL échouent. |
-|SuppressXFrameOptionsHeader  | Spécifie s’il faut supprimer la génération de la `X-Frame-Options` en-tête. Par défaut, l’en-tête est généré avec la valeur « SAMEORIGIN ». La valeur par défaut est `false`. |
+|SuppressXFrameOptionsHeader | Spécifie s’il faut supprimer la génération de la `X-Frame-Options` en-tête. Par défaut, l’en-tête est généré avec la valeur « SAMEORIGIN ». La valeur par défaut est `false`. |
 
 Https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.cookieauthenticationoptions pour plus d’informations, consultez.
 

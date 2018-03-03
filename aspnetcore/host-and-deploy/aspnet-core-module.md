@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c01abed767a226eae68725c1c53d922eac2f705e
-ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
+ms.openlocfilehash: 5aac5cf2b8fd4bc53ba7201645b9bb02a5d1ecae
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>Référence de configuration du Module de base ASP.NET
 
@@ -128,6 +128,12 @@ L’exemple suivant `aspNetCore` élément configure `stdout` journalisation pou
 ```
 
 Consultez [Configuration avec web.config](#configuration-with-webconfig) pour obtenir un exemple de la `aspNetCore` élément dans le *web.config* fichier.
+
+## <a name="proxy-configuration-uses-http-protocol-and-a-pairing-token"></a>La configuration du proxy utilise le protocole HTTP et un jeton d’appariement
+
+Le proxy créé entre le Module de base ASP.NET et Kestrel utilise le protocole HTTP. À l’aide de HTTP est une optimisation des performances, d’où le trafic entre le module et Kestrel a lieu sur une adresse de bouclage hors de l’interface réseau. Il n’existe aucun risque d’écoute clandestine le trafic entre le module et Kestrel à partir d’un emplacement sur le serveur.
+
+Un jeton d’appariement est utilisé pour garantir que les demandes reçues par Kestrel sont traitées par IIS et qu’elles ne proviennent pas d’une autre source. Le jeton d’appariement est créé et défini dans une variable d’environnement (`ASPNETCORE_TOKEN`) par le module. Le jeton d’appariement est également défini dans un en-tête (`MSAspNetCoreToken`) sur toutes les demandes en proxy. L’intergiciel (middleware) IIS vérifie chaque demande qu’il reçoit pour confirmer que la valeur d’en-tête du jeton d’appariement correspond à la valeur de variable d’environnement. Si les valeurs de jeton ne correspondent pas, la demande est journalisée et rejetée. La variable d’environnement jeton appariement et le trafic entre le module et Kestrel ne sont pas accessibles à partir d’un emplacement sur le serveur. Sans connaître la valeur du jeton d’appariement, une personne malveillante ne peut pas soumettre de demandes qui contournent la vérification effectuée par l’intergiciel (middleware) IIS.
 
 ## <a name="aspnet-core-module-with-an-iis-shared-configuration"></a>Configuration de Module ASP.NET Core avec un IIS partagée
 

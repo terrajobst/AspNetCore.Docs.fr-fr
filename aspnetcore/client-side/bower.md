@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: ee628ee14aa38969cdb4443718c378fd36192596
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: 67695843846cfaf1619db11a7bffcc65802e0f69
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Gérer les packages côté client avec Bower dans ASP.NET Core
 
@@ -67,13 +67,13 @@ Vous pouvez utiliser la zone de recherche dans l’Explorateur de solutions pour
 
 Ouvrez le *Views\Shared\_Layout.cshtml* et ajoutez le fichier CSS impressionnant de police à l’environnement [application d’assistance de balise](xref:mvc/views/tag-helpers/intro) pour `Development`. À partir de l’Explorateur de solutions, faites glisser et déposez *awesome.css de police* à l’intérieur du `<environment names="Development">` élément.
 
-[!code-html[Main](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
+[!code-html[](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
 
 Dans une application de production, vous ajouteriez *awesome.min.css de police* dans l’application d’assistance de balise environnement pour `Staging,Production`.
 
 Remplacez le contenu de la *Views\Home\About.cshtml* fichier Razor avec le balisage suivant :
 
-[!code-html[Main](bower/sample/About.cshtml)]
+[!code-html[](bower/sample/About.cshtml)]
 
 Exécutez l’application et accédez à la vue à propos de pour vérifier le fonctionnement du package impressionnant de police.
 
@@ -96,7 +96,7 @@ Une fois que la liste de packages dans le *bower.json* fichier, Visual Studio pe
 
 * Ouvrez *bower.json*et ajouter de jquery et données d’amorçage pour le `dependencies` section. Résultant *bower.json* fichier ressemblera à l’exemple suivant. Les versions changent au fil du temps et ne peuvent pas correspondre à l’image ci-dessous.
 
-[!code-json[Main](bower/sample/bower.json?highlight=5,6)]
+[!code-json[](bower/sample/bower.json?highlight=5,6)]
 
 * Enregistrer le *bower.json* fichier.
 
@@ -109,7 +109,7 @@ Une fois que la liste de packages dans le *bower.json* fichier, Visual Studio pe
 * Ajouter le `Microsoft.AspNetCore.StaticFiles` package NuGet pour le projet.
 * Activer des fichiers statiques avec la [intergiciel (middleware) du fichier statique](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions). Ajoutez un appel à [UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions) à la `Configure` méthode `Startup`.
 
-[!code-csharp[Main](bower/sample/Startup.cs?highlight=9)]
+[!code-csharp[](bower/sample/Startup.cs?highlight=9)]
 
 ### <a name="reference-packages"></a>Packages de référence
 
@@ -119,7 +119,7 @@ Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut 
 
  Remplacez le contenu de *Index.html* par le balisage suivant :
 
-[!code-html[Main](bower/sample/Index.html)]
+[!code-html[](bower/sample/Index.html)]
 
 * Exécutez l’application et accédez à `http://localhost:<port>/Index.html`. Vous pouvez également avec *Index.html* ouvert, appuyez sur `Ctrl+Shift+W`. Vérifiez que le style jumbotron est appliqué, le code jQuery répond quand le bouton est activé, et que le bouton d’amorçage modifie l’état.
 
