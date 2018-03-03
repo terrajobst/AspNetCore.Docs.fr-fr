@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: 85d3eaf033eafbd24c71110ccd7f21ffcc8b0c82
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: be37df7789354ac4ce8e373a1560366be157ffa5
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -22,7 +22,7 @@ Une application ASP.NET Core est une application console qui crée un serveur we
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs)]
+[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program2x.cs)]
 
 La méthode `Main` appelle `WebHost.CreateDefaultBuilder`, qui suit le modèle du générateur pour créer un hôte d’application web. Le générateur a des méthodes qui définissent le serveur web (par exemple `UseKestrel`) et la classe de démarrage (`UseStartup`). Dans l’exemple précédent, le serveur web [Kestrel](xref:fundamentals/servers/kestrel) est alloué automatiquement. L’hôte web d’ASP.NET Core tente de s’exécuter sur IIS, s’il est disponible. D’autres serveurs web, tels que [HTTP.sys](xref:fundamentals/servers/httpsys), peuvent être utilisés via l’appel de la méthode d’extension appropriée. `UseStartup` est expliqué de manière plus détaillée dans la section suivante.
 
@@ -30,7 +30,7 @@ La méthode `Main` appelle `WebHost.CreateDefaultBuilder`, qui suit le modèle d
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs)]
+[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program.cs)]
 
 La méthode `Main` utilise `WebHostBuilder`, qui suit le modèle du générateur pour créer un hôte d’application web. Le générateur a des méthodes qui définissent le serveur web (par exemple `UseKestrel`) et la classe de démarrage (`UseStartup`). Dans l’exemple précédent, le serveur web [Kestrel](xref:fundamentals/servers/kestrel) est utilisé. D’autres serveurs web, tels que [WebListener](xref:fundamentals/servers/weblistener), peuvent être utilisés via l’appel de la méthode d’extension appropriée. `UseStartup` est expliqué de manière plus détaillée dans la section suivante.
 
@@ -44,11 +44,11 @@ La méthode `UseStartup` sur `WebHostBuilder` spécifie la classe `Startup` pour
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program2x.cs?highlight=10&range=6-17)]
+[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program2x.cs?highlight=10&range=6-17)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-[!code-csharp[Main](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]
+[!code-csharp[](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]
 
 ---
 
