@@ -21,7 +21,7 @@ ms.lasthandoff: 01/30/2018
 
 Le terme Autorisation désigne le processus qui détermine ce qu’un utilisateur est en mesure d’effectuer. Par exemple, un utilisateur administrateur est autorisé à créer une bibliothèque de documents, à ajouter, modifier et supprimer des documents. Un utilisateur non-administrateur, utilisant la bibliothèque est uniquement autorisé à lire les documents.
 
-L’autorisation est orthogonale et indépendante de l’authentification, celle-ci corrrespond au processus de vérification de l'identité de l'utilisateur. L’authentification peut créer une ou plusieurs identités pour l’utilisateur actuel.
+L’autorisation est orthogonale et indépendante de l’authentification, qui est le processus d’évaluation de qui est l'utilisateur. L’authentification peut créer une ou plusieurs identités pour l’utilisateur actuel.
 
 ## <a name="authorization-types"></a>Types d’autorisation
 
