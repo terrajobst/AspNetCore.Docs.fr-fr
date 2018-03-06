@@ -75,7 +75,7 @@ Le code précédent génère une erreur de compilation semblable à un des élé
  * L’élément « int » n’a pas été fermé. Tous les éléments doivent être à fermeture automatique ou concordent une balise de fin.
  *  Impossible de convertir le groupe de méthodes 'GenericMethod' au type 'object' non-délégué. Souhaitiez-vous appeler la méthode ? » 
  
-Les appels de méthode générique doivent être encapsulées dans une [expression Razor explicite](#explicit-razor-expressions) ou un [bloc de code Razor](#razor-code-blocks).
+Les appels de méthode générique doivent être encapsulés dans une [expression Razor explicite](#explicit-razor-expressions) ou un [bloc de code Razor](#razor-code-blocks).
 
 ## <a name="explicit-razor-expressions"></a>Expressions explicites Razor
 
