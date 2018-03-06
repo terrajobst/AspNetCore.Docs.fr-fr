@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/index
-ms.openlocfilehash: 7d8ba912da4c0e543bd4dd56632cdc41706814d1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: baa77eba837ff8b86ad543a74ebeee51ace4c25d
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 
@@ -26,7 +26,7 @@ En général, pour déployer une application ASP.NET Core sur un environnement d
 
 ## <a name="publish-to-a-folder"></a>Publier dans un dossier 
 
-La commande CLI [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) compile le code d’application et copie les fichiers nécessaires pour exécuter l’application dans un dossier *publish*. Pendant un déploiement à partir de Visual Studio, l’étape `dotnet publish` est effectuée automatiquement avant que les fichiers ne soient copiés vers la destination du déploiement.
+La commande CLI [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) compile le code d’application et copie les fichiers nécessaires pour exécuter l’application dans un dossier *publish*. Dans le cadre d’un déploiement à partir de Visual Studio, l’étape [dotnet publish](/dotnet/core/tools/dotnet-publish) est effectuée automatiquement avant que les fichiers ne soient copiés dans la destination du déploiement.
 
 ### <a name="folder-contents"></a>Contenu du dossier
 
@@ -61,7 +61,7 @@ Si l’application utilise le serveur web [Kestrel](xref:fundamentals/servers/ke
 
 ## <a name="using-visual-studio-and-msbuild-to-automate-deployment"></a>Utilisation de Visual Studio et MSBuild pour automatiser le déploiement
 
-Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de `dotnet publish` vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish*. Visual Studio utilise MSBuild pour le déploiement web, et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez [Profils de publication dans Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
+Le déploiement nécessite souvent des tâches supplémentaires en plus de la copie de la sortie de [dotnet publish](/dotnet/core/tools/dotnet-publish) vers un serveur. Par exemple, des fichiers supplémentaires peuvent être requis ou exclus du dossier *publish*. Visual Studio utilise MSBuild pour le déploiement web, et MSBuild peut être personnalisé pour effectuer de nombreuses autres tâches pendant le déploiement. Pour plus d’informations, consultez [Profils de publication dans Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) et l’ouvrage [Using MSBuild and Team Foundation Build](http://msbuildbook.com/) (Utilisation de MSBuild et Team Foundation Build).
 
 Les applications peuvent être déployées directement à partir de Visual Studio sur Azure App Service à l’aide de la [fonctionnalité de publication web](xref:tutorials/publish-to-azure-webapp-using-vs) ou de la [prise en charge intégrée de Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment). Visual Studio Team Services prend en charge le [déploiement continu sur Azure App Service](/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?tabs=vsts).
 

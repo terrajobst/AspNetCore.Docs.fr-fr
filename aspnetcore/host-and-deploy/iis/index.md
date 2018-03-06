@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 620bfefa625f4b39cb2731b4f553caaa4526c71b
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: b1ca9303c620597f7844c401048129044e99d7be
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -45,6 +45,8 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. La méthode `UseIISIntegration` récupère le port dynamique et configure Kestrel pour écouter sur `http://locahost:{dynamicPort}/`. Les autres configurations d’URL sont alors remplacées, telles que les appels à `UseUrls` ou à [l’API d’écoute de Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). L’utilisation du module évite donc les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur le port spécifié lors de l’exécution de l’application sans IIS.
+
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Incluez une dépendance envers le package [Microsoft.AspNetCore.Server.IISIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IISIntegration/) dans les dépendances de l’application. Utilisez l’intergiciel (middleware) d’intégration IIS en ajoutant la méthode d’extension [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) à [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) :
@@ -57,6 +59,10 @@ var host = new WebHostBuilder()
 ```
 
 [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) et [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) sont tous les deux requis. Le code qui appelle `UseIISIntegration` n’affecte pas la portabilité du code. Si l’application n’est pas exécutée derrière IIS (par exemple si l’application est exécutée directement sur Kestrel), `UseIISIntegration` n’effectue pas d’opérations.
+
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. La méthode `UseIISIntegration` récupère le port dynamique et configure Kestrel pour écouter sur `http://locahost:{dynamicPort}/`. Les autres configurations d’URL sont alors remplacées, telles que les appels à `UseUrls`. L’utilisation du module rend donc inutile tout appel à `UseUrls`. Si `UseUrls` est appelé, Kestrel écoute sur le port spécifié lors de l’exécution de l’application sans IIS.
+
+Si `UseUrls` est appelé dans une application ASP.NET Core 1.0, appelez-le **avant** d’appeler `UseIISIntegration` pour que le port configuré par le module ne soit pas remplacé. Cet ordre d’appel est inutile avec ASP.NET Core 1.1, car le paramètre du module remplace `UseUrls`.
 
 ---
 
@@ -79,9 +85,9 @@ services.Configure<IISOptions>(options =>
 | `AuthenticationDisplayName`    | `null`  | Définit le nom d’affichage montré aux utilisateurs sur les pages de connexion. |
 | `ForwardClientCertificate`     | `true`  | Si la valeur est `true` et que l’en-tête de requête `MS-ASPNETCORE-CLIENTCERT` est présent, `HttpContext.Connection.ClientCertificate` est renseigné. |
 
-### <a name="webconfig-file"></a>Fichier web.config
+### <a name="webconfig-file"></a>fichier web.config
 
-Le fichier *web.config* configure le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). La création, la transformation et la publication de *web.config* sont gérées par le Kit de développement logiciel (SDK) web .NET Core (`Microsoft.NET.Sdk.Web`). Le Kit de développement logiciel (SDK) est défini en haut du fichier projet :
+Le fichier *web.config* configure le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). La création, la transformation et la publication de *web.config* sont gérées par le kit .NET Core Web SDK (`Microsoft.NET.Sdk.Web`). Le kit SDK est défini en haut du fichier projet :
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -164,6 +170,8 @@ Activez la **Console de gestion IIS** et les **Services World Wide Web**.
 1. Installez le [bundle d’hébergement .NET Core Windows Server](https://aka.ms/dotnetcore-2-windowshosting) sur le système hôte. Le bundle installe le Runtime .NET Core, la bibliothèque .NET Core et le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Le module crée le proxy inverse entre IIS et le serveur Kestrel. Si le système n’a pas de connexion Internet, obtenez et installez [Microsoft Visual C++ 2015 Redistributable](https://www.microsoft.com/download/details.aspx?id=53840) avant d’installer le bundle d’hébergement .NET Core Windows Server.
 
    **Important !** Si l’offre groupée hôte est installée avant IIS, l’installation de l’offre groupée doit être réparée. Après avoir installé IIS, exécutez à nouveau le programme d’installation de l’offre groupée d’hébergement.
+   
+   Pour empêcher le programme d’installation d’installer des packages x86 sur un système d’exploitation x64, exécutez le programme d’installation à partir d’une invite de commandes administrateur avec le commutateur `OPT_NO_X86=1`.
 
 1. Redémarrez le système ou exécutez **net stop was /y** suivi de **net start w3svc** à partir d’une invite de commandes. Le redémarrage d’IIS, récupère une modification apportée au CHEMIN D’ACCÈS du système par le programme d’installation.
 
@@ -261,7 +269,7 @@ Les fichiers dans le dossier de déploiement sont verrouillés quand l’applica
 
 ## <a name="data-protection"></a>Protection des données
 
-La [pile de protection des données ASP.NET Core](xref:security/data-protection/index) est utilisée par plusieurs [intergiciels (middlewares)](xref:fundamentals/middleware/index) ASP.NET Core, y compris l’intergiciel utilisé dans l’authentification. Même si les API de protection des données ne sont pas appelées par le code de l’utilisateur, la protection des données doit être configurée avec un script de déploiement ou dans un code utilisateur pour créer un [magasin de clés](xref:security/data-protection/implementation/key-management) de chiffrement persistantes. Si la protection des données n’est pas configurée, les clés sont conservées en mémoire et ignorées au redémarrage de l’application.
+La [pile de protection des données ASP.NET Core](xref:security/data-protection/index) est utilisée par plusieurs [intergiciels (middlewares)](xref:fundamentals/middleware/index) ASP.NET Core, y compris le middleware utilisé dans l’authentification. Même si les API de protection des données ne sont pas appelées par le code de l’utilisateur, la protection des données doit être configurée avec un script de déploiement ou dans un code utilisateur pour créer un [magasin de clés](xref:security/data-protection/implementation/key-management) de chiffrement persistantes. Si la protection des données n’est pas configurée, les clés sont conservées en mémoire et ignorées au redémarrage de l’application.
 
 Si le Key Ring est stocké en mémoire, au redémarrage de l’application :
 

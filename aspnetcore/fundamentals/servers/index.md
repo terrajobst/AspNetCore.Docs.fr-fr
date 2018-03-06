@@ -1,7 +1,7 @@
 ---
 title: "Implémentations de serveurs web dans ASP.NET Core"
 author: tdykstra
-description: "Présente les serveurs web Kestrel et WebListener pour ASP.NET Core. Vous aide à déterminer quand les choisir et à quel moment les utiliser avec un serveur proxy inverse."
+description: "Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. Découvrez comment en choisir un et à quel moment l’utiliser avec un serveur proxy inverse."
 manager: wpickett
 ms.author: tdykstra
 ms.date: 08/03/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/index
-ms.openlocfilehash: 9e2bea396e50615bd02affad93f0ee55255d299f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b9a7fa4e33c56a5973b4bc35f88ca0ebb3d67101
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
