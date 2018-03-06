@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 5d236c79120d79195c1970cc87d164002b56d0f1
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 186faa4c02275ae1f4be53f4a2dd4f8325397bd2
+ms.sourcegitcommit: c5ecda3c5b1674b62294cfddcb104e7f0b9ce465
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -23,24 +23,24 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Steve Smith](https://ar
 
 ## <a name="what-is-middleware"></a>Qu’est-ce qu’un intergiciel (middleware) ?
 
-Un middleware est un logiciel qui est assemblé dans un pipeline d’application pour gérer les requêtes et les réponses. Chaque composant :
+Un intergiciel est un logiciel qui est assemblé dans un pipeline d’application pour gérer les requêtes et les réponses. Chaque composant :
 
 * Choisit de passer la requête au composant suivant dans le pipeline.
 * Peut travailler avant et après l’appel du composant suivant dans le pipeline. 
 
 Les délégués de requête sont utilisés pour créer le pipeline de requête. Les délégués de requête gèrent chaque requête HTTP.
 
-Les délégués de requête sont configurés à l’aide des méthodes d’extension [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions), [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) et [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Chaque délégué de requête peut être spécifié inline comme méthode anonyme (appelée middleware inline) ou peut être défini dans une classe réutilisable. Ces classes réutilisables et les méthodes anonymes inline sont des *middlewares* ou des *composants de middleware*. Chaque composant de middleware du pipeline de requête est responsable de l’appel du composant suivant dans le pipeline ou du court-circuit de la chaîne, si nécessaire.
+Les délégués de requête sont configurés à l’aide des méthodes d’extension [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions), [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) et [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Chaque délégué de requête peut être spécifié inline comme méthode anonyme (appelée intergiciel inline) ou peut être défini dans une classe réutilisable. Ces classes réutilisables et les méthodes anonymes inline sont des *intergiciels* ou des *composants d’intergiciel*. Chaque composant d’intergiciel du pipeline de requête est responsable de l’appel du composant suivant dans le pipeline ou du court-circuit de la chaîne, si nécessaire.
 
-La rubrique [Migration des modules HTTP vers les intergiciels (middleware)](xref:migration/http-modules) explique la différence entre les pipelines de requête dans ASP.NET Core et ASP.NET 4.x, puis fournit d’autres exemples de middleware.
+La rubrique [Migration des modules HTTP vers les intergiciels (middleware)](xref:migration/http-modules) explique la différence entre les pipelines de requête dans ASP.NET Core et ASP.NET 4.x, puis fournit d’autres exemples d’intergiciel.
 
-## <a name="creating-a-middleware-pipeline-with-iapplicationbuilder"></a>Création d’un pipeline de middleware avec IApplicationBuilder
+## <a name="creating-a-middleware-pipeline-with-iapplicationbuilder"></a>Création d’un pipeline d’intergiciel avec IApplicationBuilder
 
 Le pipeline de requête ASP.NET Core se compose d’une séquence de délégués de requête, appelés l’un après l’autre, comme le montre ce diagramme (le thread d’exécution suit les flèches noires) :
 
-![Modèle de traitement des requêtes montrant une requête qui arrive et qui est traitée par trois middlewares, puis la réponse qui quitte l’application. Chaque middleware exécute sa logique et transmet la requête au middleware suivant à l’instruction next(). Une fois que le troisième middleware a traité la requête, celle-ci repasse par les deux middlewares précédents dans l’ordre inverse pour être à nouveau traitée après ses instructions next(), avant de quitter l’application sous forme de réponse au client.](index/_static/request-delegate-pipeline.png)
+![Modèle de traitement des requêtes montrant une requête qui arrive et qui est traitée par trois intergiciels, puis la réponse qui quitte l’application. Chaque intergiciel exécute sa logique et transmet la requête à l’intergiciel suivant à l’instruction next(). Une fois que le troisième intergiciel a traité la requête, celle-ci repasse par les deux intergiciels précédents dans l’ordre inverse pour être à nouveau traitée après ses instructions next(), avant de quitter l’application sous forme de réponse au client.](index/_static/request-delegate-pipeline.png)
 
-Chaque délégué peut effectuer des opérations avant et après le délégué suivant. Un délégué peut également décider de ne pas passer une requête au délégué suivant. On parle alors de court-circuit du pipeline de requête. Un court-circuit est souvent souhaitable car il évite le travail inutile. Par exemple, le middleware de fichiers statiques peut retourner une requête pour un fichier statique et court-circuiter le reste du pipeline. Les délégués de gestion des exceptions doivent être appelés tôt dans le pipeline pour qu’ils puissent intercepter les exceptions qui se produisent dans les phases ultérieures du pipeline.
+Chaque délégué peut effectuer des opérations avant et après le délégué suivant. Un délégué peut également décider de ne pas passer une requête au délégué suivant. On parle alors de court-circuit du pipeline de requête. Un court-circuit est souvent souhaitable car il évite le travail inutile. Par exemple, l’intergiciel de fichiers statiques peut retourner une requête pour un fichier statique et court-circuiter le reste du pipeline. Les délégués de gestion des exceptions doivent être appelés tôt dans le pipeline pour qu’ils puissent intercepter les exceptions qui se produisent dans les phases ultérieures du pipeline.
 
 L’application ASP.NET Core la plus simple possible définit un seul délégué de requête qui gère toutes les requêtes. Ce cas ne fait pas appel à un pipeline de requête réel. À la place, une seule fonction anonyme est appelée en réponse à chaque requête HTTP.
 
@@ -61,9 +61,9 @@ Vous pouvez chaîner plusieurs délégués de requête avec [app.Use](https://do
 
 ## <a name="ordering"></a>Classement
 
-L’ordre dans lequel les composants de middleware sont ajoutés dans la méthode `Configure` définit l’ordre dans lequel ils sont appelés sur les requêtes, et l’ordre inverse pour la réponse. Cet ordre est critique pour la sécurité, les performances et le fonctionnement.
+L’ordre dans lequel les composants d’intergiciel sont ajoutés dans la méthode `Configure` définit l’ordre dans lequel ils sont appelés sur les requêtes, et l’ordre inverse pour la réponse. Cet ordre est critique pour la sécurité, les performances et le fonctionnement.
 
-La méthode Configure (illustrée ci-dessous) ajoute les composants de middleware suivants :
+La méthode Configure (illustrée ci-dessous) ajoute les composants d’intergiciel suivants :
 
 1. Gestion des erreurs/exceptions
 2. Serveur de fichiers statiques
@@ -107,22 +107,22 @@ public void Configure(IApplicationBuilder app)
 
 -----------
 
-Dans le code ci-dessus, `UseExceptionHandler` est le premier composant de middleware ajouté au pipeline. Il intercepte donc toutes les exceptions qui se produisent dans les appels ultérieurs.
+Dans le code ci-dessus, `UseExceptionHandler` est le premier composant d’intergiciel ajouté au pipeline. Il intercepte donc toutes les exceptions qui se produisent dans les appels ultérieurs.
 
-Le middleware de fichiers statiques est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware de fichiers statiques ne fournit **aucune** vérification d’autorisation. Tous les fichiers qu’il sert, notamment ceux sous *wwwroot* sont accessibles à tous. Consultez [Utilisation de fichiers statiques](xref:fundamentals/static-files) pour une approche permettant de sécuriser les fichiers statiques.
+L’intergiciel de fichiers statiques est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. L’intergiciel de fichiers statiques ne fournit **aucune** vérification d’autorisation. Tous les fichiers qu’il sert, notamment ceux sous *wwwroot* sont accessibles à tous. Consultez [Utilisation de fichiers statiques](xref:fundamentals/static-files) pour une approche permettant de sécuriser les fichiers statiques.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 
-Si la requête n’est pas gérée par le middleware de fichiers statiques, elle est transmise au middleware Identité (`app.UseAuthentication`), qui effectue l’authentification. Le middleware Identité ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC sélectionne une page Razor/un contrôleur et une action spécifiques.
+Si la requête n’est pas gérée par l’intergiciel de fichiers statiques, elle est transmise à l’intergiciel Identité (`app.UseAuthentication`), qui effectue l’authentification. L’intergiciel Identité ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC sélectionne une page Razor/un contrôleur et une action spécifiques.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Si la requête n’est pas gérée par le middleware de fichiers statiques, elle est transmise au middleware Identité (`app.UseIdentity`), qui effectue l’authentification. Le middleware Identité ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC sélectionne un contrôleur et une action spécifiques.
+Si la requête n’est pas gérée par l’intergiciel de fichiers statiques, elle est transmise à l’intergiciel Identité (`app.UseIdentity`), qui effectue l’authentification. L’intergiciel Identité ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC sélectionne un contrôleur et une action spécifiques.
 
 -----------
 
-L’exemple suivant montre un ordre de middlewares où les requêtes pour les fichiers statiques sont gérées par le middleware de fichiers statiques avant le middleware de compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre de middlewares. Les réponses MVC de [UseMvcWithDefaultRoute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) peuvent être compressées.
+L’exemple suivant montre un ordre d’intergiciels où les requêtes pour les fichiers statiques sont gérées par l’intergiciel de fichiers statiques avant l’intergiciel de compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre d’intergiciels. Les réponses MVC de [UseMvcWithDefaultRoute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) peuvent être compressées.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -138,7 +138,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="use-run-and-map"></a>Use, Run et Map
 
-Vous configurez le pipeline HTTP avec `Use`, `Run` et `Map`. La méthode `Use` peut court-circuiter le pipeline (autrement dit, si elle n’appelle pas un délégué de requête `next`). `Run` est une convention, et certains composants de middleware peuvent exposer des méthodes `Run[Middleware]` qui s’exécutent à la fin du pipeline.
+Vous configurez le pipeline HTTP avec `Use`, `Run` et `Map`. La méthode `Use` peut court-circuiter le pipeline (autrement dit, si elle n’appelle pas un délégué de requête `next`). `Run` est une convention, et certains composants d’intergiciel peuvent exposer des méthodes `Run[Middleware]` qui s’exécutent à la fin du pipeline.
 
 Les extensions `Map*` sont utilisées comme convention pour créer une branche dans le pipeline. [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) crée une branche dans le pipeline de requête en fonction des correspondances du chemin de requête donné. Si le chemin de requête commence par le chemin donné, la branche est exécutée.
 
@@ -187,11 +187,11 @@ app.Map("/level1", level1App => {
 app.Map("/level1/level2", HandleMultiSeg);
 ```
 
-## <a name="built-in-middleware"></a>Middlewares intégrés
+## <a name="built-in-middleware"></a>Intergiciels (middleware) intégrés
 
-ASP.NET Core est fourni avec les composants de middleware suivants et une description de l’ordre dans lequel ils doivent être ajoutés :
+ASP.NET Core est fourni avec les composants d’intergiciel suivants et une description de l’ordre dans lequel ils doivent être ajoutés :
 
-| Mmiddleware | Description | Trier |
+| Intergiciel (middleware) | Description | Trier |
 | ---------- | ----------- | ----- |
 | [Authentification](xref:security/authentication/identity) | Prend en charge l’authentification. | Avant que `HttpContext.User` ne soit nécessaire. Terminal pour les rappels OAuth. |
 | [CORS](xref:security/cors) | Configure le partage des ressources cross-origin (CORS). | Avant les composants qui utilisent CORS. |
@@ -208,35 +208,38 @@ ASP.NET Core est fourni avec les composants de middleware suivants et une descri
 
 <a name="middleware-writing-middleware"></a>
 
-## <a name="writing-middleware"></a>Middlewares d’écriture
+## <a name="writing-middleware"></a>Intergiciel (middleware) d’écriture
 
-Les middlewares sont généralement encapsulés dans une classe et exposés avec une méthode d’extension. Prenez en compte le middleware suivant, qui définit la culture de la requête actuelle à partir de la chaîne de requête :
+Les intergiciels sont généralement encapsulés dans une classe et exposés avec une méthode d’extension. Prenez en compte l’intergiciel suivant, qui définit la culture de la requête actuelle à partir de la chaîne de requête :
 
 [!code-csharp[](index/sample/Culture/StartupCulture.cs?name=snippet1)]
 
-Remarque : L’exemple de code ci-dessus est utilisé pour illustrer la création d’un composant de middleware. Consultez [Globalisation et localisation](xref:fundamentals/localization) pour la prise en charge de la localisation intégrée d’ASP.NET Core.
+Remarque : L’exemple de code ci-dessus est utilisé pour illustrer la création d’un composant d’intergiciel. Consultez [Globalisation et localisation](xref:fundamentals/localization) pour la prise en charge de la localisation intégrée d’ASP.NET Core.
 
-Vous pouvez tester le middleware en passant la culture, par exemple `http://localhost:7997/?culture=no`.
+Vous pouvez tester l’intergiciel en passant la culture, par exemple `http://localhost:7997/?culture=no`.
 
-Le code suivant déplace le délégué du middleware dans une classe :
+Le code suivant déplace le délégué de l’intergiciel dans une classe :
 
 [!code-csharp[](index/sample/Culture/RequestCultureMiddleware.cs)]
 
-La méthode d’extension suivante expose le middleware à l’aide [d’IApplicationBuilder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder) :
+> [!NOTE]
+> Dans ASP.NET Core 1.x, le nom de la méthode `Task` du middleware doit être `Invoke`. Dans ASP.NET Core 2.0 ou ultérieur, le nom peut être `Invoke` ou `InvokeAsync`.
+
+La méthode d’extension suivante expose l’intergiciel à l’aide [d’IApplicationBuilder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder) :
 
 [!code-csharp[](index/sample/Culture/RequestCultureMiddlewareExtensions.cs)]
 
-Le code suivant appelle le middleware à partir de `Configure` :
+Le code suivant appelle l’intergiciel à partir de `Configure` :
 
 [!code-csharp[](index/sample/Culture/Startup.cs?name=snippet1&highlight=5)]
 
-Le middleware doit suivre le [principe de dépendances explicites](http://deviq.com/explicit-dependencies-principle/) en exposant ses dépendances dans son constructeur. Le middleware est construit une fois par *durée de vie d’application*. Consultez *Dépendances par requête* ci-dessous si vous avez besoin de partager des services avec un middleware au sein d’une requête.
+L’intergiciel doit suivre le [principe de dépendances explicites](http://deviq.com/explicit-dependencies-principle/) en exposant ses dépendances dans son constructeur. L’intergiciel est construit une fois par *durée de vie d’application*. Consultez *Dépendances par requête* ci-dessous si vous avez besoin de partager des services avec un intergiciel au sein d’une requête.
 
-Les composants de middleware peuvent résoudre leurs dépendances à partir de l’injection de dépendances à l’aide des paramètres du constructeur. [`UseMiddleware<T>`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) peut également accepter des paramètres supplémentaires directement.
+Les composants d’intergiciel peuvent résoudre leurs dépendances à partir de l’injection de dépendances à l’aide des paramètres du constructeur. [`UseMiddleware<T>`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) peut également accepter des paramètres supplémentaires directement.
 
 ### <a name="per-request-dependencies"></a>Dépendances par requête
 
-Étant donné que le middleware est construit au démarrage de l’application, et non par requête, les services de durée de vie *délimités* utilisés par les constructeurs du middleware ne sont pas partagés avec d’autres types injectés par des dépendances lors de chaque requête. Si vous devez partager un service *délimité* entre votre middleware et d’autres types, ajoutez-le à la signature de la méthode `Invoke`. La méthode `Invoke` peut accepter des paramètres supplémentaires qui sont renseignés par injection de dépendances. Exemple :
+Étant donné que l’intergiciel est construit au démarrage de l’application, et non par requête, les services de durée de vie *délimités* utilisés par les constructeurs de l’intergiciel ne sont pas partagés avec d’autres types injectés par des dépendances lors de chaque requête. Si vous devez partager un service *délimité* entre votre intergiciel et d’autres types, ajoutez-le à la signature de la méthode `Invoke`. La méthode `Invoke` peut accepter des paramètres supplémentaires qui sont renseignés par injection de dépendances. Exemple :
 
 ```c#
 public class MyMiddleware
