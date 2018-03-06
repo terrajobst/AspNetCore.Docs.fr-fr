@@ -267,7 +267,7 @@ La méthode `Where` retourne une collection. Dans la méthode `Where` précéden
 La méthode `Single` est utilisée sur une collection quand la collection ne compte qu’un seul élément. La méthode `Single` lève une exception si la collection est vide ou s’il y a plusieurs éléments. Une alternative est `SingleOrDefault`, qui retourne une valeur par défaut (Null dans le cas présent) si la collection est vide. L’utilisation de `SingleOrDefault` sur une collection vide :
 
 * Génère une exception (à cause de la tentative de trouver une propriété `Courses` sur une référence Null).
-* Le message d’exception indique moins clairement la cause du problème.
+* Le message d’exception indiquerait moins clairement la cause du problème.
 
 Le code suivant renseigne la propriété `Enrollments` du modèle d’affichage quand un cours est sélectionné :
 
