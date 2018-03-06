@@ -1,7 +1,7 @@
 ---
 title: "Présentation des pages Razor dans ASP.NET Core"
 author: Rick-Anderson
-description: "Didacticiel ASP.NET Core sur les pages Razor. Inclut MVC Core, ASP.NET Core 2.x, introduction au développement web et Visual Studio 2017. Ce document offre une vue d’ensemble de l’utilisation des pages Razor dans ASP.NET Core qui permet de faciliter le développement de scénarios orientés page."
+description: "Découvrez comment les pages Razor dans ASP.NET Core permettent de développer des scénarios orientés page de façon plus simple et plus productive qu’avec MVC."
 manager: wpickett
 ms.author: riande
 ms.date: 09/12/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: mvc/razor-pages/index
-ms.openlocfilehash: c16959189448337b12dc4902300516b25c200eee
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f24de7ab12a3bbd7915ce6c3c93a107eb47fe864
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -64,21 +64,21 @@ Exécutez `dotnet new razor` à partir de la ligne de commande.
 
 La fonctionnalité Pages Razor est activée dans *Startup.cs* :
 
-[!code-cs[main](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
+[!code-cs[](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
 Considérez une page de base : <a name="OnGet"></a>
 
-[!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index.cshtml)]
+[!code-cshtml[](index/sample/RazorPagesIntro/Pages/Index.cshtml)]
 
 Le code précédent ressemble beaucoup à un fichier vue Razor. Ce qui le rend différent est la directive `@page`. `@page` fait du fichier une action MVC, ce qui signifie qu’il gère les demandes directement, sans passer par un contrôleur. `@page` doit être la première directive Razor sur une page. `@page` affecte le comportement d’autres constructions Razor.
 
 Une page similaire, utilisant une classe `PageModel`, est illustrée dans les deux fichiers suivants. Le fichier *Pages/Index2.cshtml* :
 
-[!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
+[!code-cshtml[](index/sample/RazorPagesIntro/Pages/Index2.cshtml)]
 
 Le modèle de page *Pages/Index2.cshtml.cs* :
 
-[!code-cs[main](index/sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
+[!code-cs[](index/sample/RazorPagesIntro/Pages/Index2.cshtml.cs)]
 
 Par convention, le fichier de classe `PageModel` a le même nom que le fichier Page Razor, avec *.cs* en plus. Par exemple, la page Razor précédente est *Pages/Index2.cshtml*. Le fichier contenant la classe `PageModel` se nomme *Pages/Index2.cshtml.cs*.
 
@@ -102,23 +102,23 @@ Les fonctionnalités des pages Razor sont conçues pour simplifier les modèles 
 
 Pour les exemples de ce document, le `DbContext` est initialisé dans le fichier [Startup.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/mvc/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16).
 
-[!code-cs[main](index/sample/RazorPagesContacts/Startup.cs?highlight=15-16)]
+[!code-cs[](index/sample/RazorPagesContacts/Startup.cs?highlight=15-16)]
 
 Le modèle de données :
 
-[!code-cs[main](index/sample/RazorPagesContacts/Data/Customer.cs)]
+[!code-cs[](index/sample/RazorPagesContacts/Data/Customer.cs)]
 
 Le contexte de la base de données :
 
-[!code-cs[main](index/sample/RazorPagesContacts/Data/AppDbContext.cs)]
+[!code-cs[](index/sample/RazorPagesContacts/Data/AppDbContext.cs)]
 
 Le fichier vue *Pages/Create.cshtml* :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Create.cshtml)]
+[!code-cshtml[](index/sample/RazorPagesContacts/Pages/Create.cshtml)]
 
 Le modèle de page *Pages/Create.cshtml.cs* :
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
+[!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_ALL)]
 
 Par convention, la classe `PageModel` se nomme `<PageName>Model` et se trouve dans le même espace de noms que la page.
 
@@ -133,7 +133,7 @@ Le suffixe de nommage `Async` est facultatif, mais souvent utilisé par conventi
 
 La méthode `OnPostAsync` précédente :
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync)]
+[!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync)]
 
 Le flux de base de `OnPostAsync` :
 
@@ -148,37 +148,37 @@ Quand le formulaire envoyé comporte des erreurs de validation (qui sont passée
 
 La propriété `Customer` utilise l’attribut `[BindProperty]` pour accepter la liaison de modèle.
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
+[!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_PageModel&highlight=10-11)]
 
 Par défaut, les pages Razor lient les propriétés uniquement avec les verbes non-GET. La liaison aux propriétés peut réduire la quantité de code à écrire. Elle réduit la quantité de code en utilisant la même propriété pour afficher les champs de formulaire (`<input asp-for="Customer.Name" />`) et accepter l’entrée.
 
 La page d’accueil (*Index.cshtml*) :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml)]
+[!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml)]
 
 Le fichier code-behind *Index.cshtml.cs* :
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs)]
+[!code-cs[](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs)]
 
 Le fichier *Index.cshtml* contient le balisage suivant pour créer un lien d’édition pour chaque contact :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=21)]
+[!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=21)]
 
 Le [tag helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) a utilisé l’attribut `asp-route-{value}` pour générer un lien vers la page Edit. Le lien contient des données d’itinéraire avec l’ID de contact. Par exemple, `http://localhost:5000/Edit/1`.
 
 Le fichier *Pages/Edit.cshtml* :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Edit.cshtml?highlight=1)]
+[!code-cshtml[](index/sample/RazorPagesContacts/Pages/Edit.cshtml?highlight=1)]
 
 La première ligne contient la directive `@page "{id:int}"`. La contrainte de routage `"{id:int}"` indique à la page qu’elle doit accepter les requêtes qui contiennent des données d’itinéraire `int`. Si une requête à la page ne contient de données d’itinéraire qui peuvent être converties en `int`, le runtime retourne une erreur HTTP 404 (introuvable).
 
 Le fichier *Pages/Edit.cshtml.cs* :
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Edit.cshtml.cs)]
+[!code-cs[](index/sample/RazorPagesContacts/Pages/Edit.cshtml.cs)]
 
 Le fichier *Index.cshtml* contient également le balisage pour créer un bouton Supprimer pour chaque contact client :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=22-23)]
+[!code-cshtml[](index/sample/RazorPagesContacts/Pages/Index.cshtml?range=22-23)]
 
 Lorsque le bouton Supprimer est rendu en HTML, son `formaction` comprend des paramètres pour :
 
@@ -195,7 +195,7 @@ Quand le bouton est sélectionné, une demande `POST` de forumaire est envoyée 
 
 Étant donné que le `handler` est `delete` dans cet exemple, la méthode de gestionnaire `OnPostDeleteAsync` est utilisée pour traiter la demande `POST`. Si `asp-page-handler` est défini avec une autre valeur, telle que `remove`, une méthode de gestionnaire de page avec le nom `OnPostRemoveAsync` est sélectionnée.
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs?range=26-37)]
+[!code-cs[](index/sample/RazorPagesContacts/Pages/Index.cshtml.cs?range=26-37)]
 
 La méthode `OnPostDeleteAsync` :
 
@@ -219,7 +219,7 @@ Nous allons nettoyer un peu cette page en tirant parti de certaines de ces fonct
 
 Ajoutez une [page de disposition](xref:mvc/views/layout) à *Pages/_Layout.cshtml* :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_LayoutSimple.cshtml)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_LayoutSimple.cshtml)]
 
 La [disposition](xref:mvc/views/layout) :
 
@@ -230,7 +230,7 @@ Pour plus d’informations, consultez [Page de disposition](xref:mvc/views/layou
 
 La propriété [Layout](xref:mvc/views/layout#specifying-a-layout) est définie dans *Pages/_ViewStart.cshtml* :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewStart.cshtml)]
 
 **Remarque :** La disposition est dans le dossier *Pages*. Les pages recherchent d’autres vues (dispositions, modèles, partiels) hiérarchiquement, en commençant dans le même dossier que la page active. Une disposition dans le dossier *Pages* peut être utilisée à partir de n’importe quelle page Razor sous le dossier *Pages*.
 
@@ -240,7 +240,7 @@ La recherche de vue à partir d’une page Razor inclut le dossier *Pages*. Les 
 
 Ajoutez un fichier *Pages/_ViewImports.cshtml* :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml)]
 
 `@namespace` est expliqué plus loin dans le didacticiel. La directive `@addTagHelper` permet de bénéficier des [Tag Helpers intégrés](xref:mvc/views/tag-helpers/builtin-th/Index) dans toutes les pages du dossier *Pages*.
 
@@ -248,7 +248,7 @@ Ajoutez un fichier *Pages/_ViewImports.cshtml* :
 
 Quand la directive `@namespace` est utilisée explicitement sur une page :
 
-[!code-cshtml[main](index/sample/RazorPagesIntro/Pages/Customers/Namespace2.cshtml?highlight=2)]
+[!code-cshtml[](index/sample/RazorPagesIntro/Pages/Customers/Namespace2.cshtml?highlight=2)]
 
 La directive définit l’espace de noms pour la page. La directive `@model` n’a pas besoin d’inclure l’espace de noms.
 
@@ -256,11 +256,11 @@ Quand la directive `@namespace` est contenue dans *_ViewImports.cshtml*, l’esp
 
 Par exemple, le fichier code-behind *Pages/Customers/Edit.cshtml.cs* définit explicitement l’espace de noms :
 
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=snippet_namespace)]
+[!code-cs[](index/sample/RazorPagesContacts2/Pages/Customers/Edit.cshtml.cs?name=snippet_namespace)]
 
 Le fichier *Pages/_ViewImports.cshtml* définit l’espace de noms suivant :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml?highlight=1)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml?highlight=1)]
 
 L’espace de noms généré pour la page Razor *Pages/Customers/Edit.cshtml* est identique au fichier code-behind. La directive `@namespace` a été conçue pour que les classes C# ajoutées à un projet et au code généré par les pages *fonctionnent simplement* sans avoir à ajouter de directive `@using` pour le fichier code-behind.
 
@@ -268,11 +268,11 @@ L’espace de noms généré pour la page Razor *Pages/Customers/Edit.cshtml* es
 
 Le fichier de vue *Pages/Create.cshtml* d’origine :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts/Pages/Create.cshtml?highlight=2)]
+[!code-cshtml[](index/sample/RazorPagesContacts/Pages/Create.cshtml?highlight=2)]
 
 Le fichier vue *Pages/Create.cshtml* mis à jour :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/Create.cshtml?highlight=2)]
 
 Le [projet de démarrage de pages Razor](#rpvs17) contient *Pages/_ValidationScriptsPartial.cshtml*, qui connecte la validation côté client.
 
@@ -282,7 +282,7 @@ Le [projet de démarrage de pages Razor](#rpvs17) contient *Pages/_ValidationScr
 
 La page `Create`, illustrée précédemment, utilise `RedirectToPage` :
 
-[!code-cs[main](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=10)]
+[!code-cs[](index/sample/RazorPagesContacts/Pages/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=10)]
 
 L’application a la structure de fichiers/dossiers suivante :
 
@@ -324,7 +324,7 @@ L’attribut `[TempData]` est une nouveauté dans ASP.NET Core 2.0. Il est pris 
 
 Le code suivant définit la valeur de `Message` à l’aide de `TempData` :
 
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,25&name=snippet_Temp)]
+[!code-cs[](index/sample/RazorPagesContacts2/Pages/Customers/CreateDot.cshtml.cs?highlight=10-11,25&name=snippet_Temp)]
 
 Le balisage suivant dans le fichier *Pages/Customers/Index.cshtml* affiche la valeur de `Message` à l’aide de `TempData`.
 
@@ -346,7 +346,7 @@ Pour plus d’informations, consultez [TempData](xref:fundamentals/app-state#tem
 
 La page suivante génère un balisage pour deux gestionnaires de page à l’aide du Tag Helper `asp-page-handler` :
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?highlight=12-13)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?highlight=12-13)]
 
 <!-- Review: the FormActionTagHelper applies to all <form /> elements on a Razor page, even when there's no `asp-` attribute   -->
 
@@ -354,11 +354,11 @@ Le formulaire dans l’exemple précédent contient deux boutons d’envoi, chac
 
 Le modèle de page :
 
-[!code-cs[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml.cs?highlight=20,32)]
+[!code-cs[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml.cs?highlight=20,32)]
 
 Le code précédent utilise des *méthodes de gestionnaire nommées*. Pour créer des méthodes de gestionnaire nommées, il faut prendre le texte dans le nom après `On<HTTP Verb>` et avant `Async` (le cas échéant). Dans l’exemple précédent, les méthodes de page sont OnPost**JoinList**Async et OnPost**JoinListUC**Async. Avec *OnPost* et *Async* supprimés, les noms des gestionnaires sont `JoinList` et `JoinListUC`.
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?range=12-13)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateFATH.cshtml?range=12-13)]
 
 Avec le code précédent, le chemin d’URL qui envoie à `OnPostJoinListAsync` est `http://localhost:5000/Customers/CreateFATH?handler=JoinList`. Le chemin d’URL qui envoie à `OnPostJoinListUCAsync` est `http://localhost:5000/Customers/CreateFATH?handler=JoinListUC`.
 
@@ -366,7 +366,7 @@ Avec le code précédent, le chemin d’URL qui envoie à `OnPostJoinListAsync` 
 
 Si vous ne voulez pas avoir la chaîne de requête `?handler=JoinList` dans l’URL, vous pouvez changer l’itinéraire pour placer le nom du gestionnaire dans la partie chemin de l’URL. Vous pouvez personnaliser l’itinéraire en ajoutant un modèle d’itinéraire placé entre des guillemets doubles après la directive `@page`.
 
-[!code-cshtml[main](index/sample/RazorPagesContacts2/Pages/Customers/CreateRoute.cshtml?highlight=1)]
+[!code-cshtml[](index/sample/RazorPagesContacts2/Pages/Customers/CreateRoute.cshtml?highlight=1)]
 
 L’itinéraire précédent place le nom du gestionnaire dans le chemin d’URL au lieu de la chaîne de requête. Le `?` suivant `handler` signifie que le paramètre d’itinéraire est facultatif.
 
@@ -376,7 +376,7 @@ Vous pouvez utiliser `@page` pour ajouter des segments et des paramètres suppl�
 
 Pour configurer les options avancées, utilisez la méthode d’extension `AddRazorPagesOptions` sur le générateur MVC :
 
-[!code-cs[main](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet_1)]
+[!code-cs[](index/sample/RazorPagesContacts/StartupAdvanced.cs?name=snippet_1)]
 
 Actuellement, vous pouvez utiliser `RazorPagesOptions` pour définir le répertoire racine pour les pages, ou ajouter des conventions de modèle d’application pour les pages. Nous permettrons à l’avenir une plus grande extensibilité en ce sens.
 

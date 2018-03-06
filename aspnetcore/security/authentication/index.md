@@ -9,21 +9,23 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/index
-ms.openlocfilehash: fbef1545f3cdcbe3887a5dd9ceca0e9b420193f1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b9640e33043d452246f81b7968996bda1f7474ff
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="authentication"></a>Authentification
 
-* [Options d’authentification de la communauté Open Source](community.md)
+* [Options d’authentification OOS de la communauté](community.md)
 
 * [Présentation d’Identity](identity.md)
 
 * [Activer l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes](social/index.md)
 
-* [Activer la génération de code QR dans Identity](identity-enable-qrcodes.md) 
+* [Activer l’authentification avec WS-Federation](ws-federation.md)
+
+* [Activer la génération de code QR dans Identity](identity-enable-qrcodes.md)
 
 * [Configurer l’authentification Windows](windowsauth.md)
 
