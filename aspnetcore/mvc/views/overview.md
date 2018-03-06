@@ -15,11 +15,11 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
 ---
-# <a name="views-in-aspnet-core-mvc"></a>Les vues dans ASP.NET Core MVC
+# <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
 Par [Steve Smith](https://ardalis.com/) et [Luke Latham](https://github.com/guardrex)
 
-Ce document explique les vues utilisées dans les applications ASP.NET Core MVC. Pour plus d’informations sur les Pages Razor, consultez [Introduction aux Pages Razor](xref:mvc/razor-pages/index).
+Ce document explique l’utilisation des vues dans les applications ASP.NET Core MVC. Pour plus d’informations sur les pages Razor, consultez Présentation des pages Razor.
 
 Dans le **M**odèle -**V**UE -**C**ontroller (MVC), modèle, le *vue* gère l’interaction utilisateur et de présentation des données de l’application. Une vue est un modèle HTML incorporé [balisage de Razor](xref:mvc/views/razor). Balisage de Razor est un code qui interagit avec le balisage HTML pour générer une page Web qui est envoyée au client.
 
@@ -37,16 +37,16 @@ Utilisez [dispositions](xref:mvc/views/layout) pour fournir des sections cohére
 
 ## <a name="benefits-of-using-views"></a>Avantages de l’utilisation de vues
 
-Les vues permettent d’établir une [ **S**eparation **o**f **C**oncerns (SoC) conception](http://deviq.com/separation-of-concerns/) au sein d’une application MVC en séparant le balisage de l'interface utilisateur à partir d'autres parties de l’application. Suivre le principe de SoC rend votre application modulaire, ce qui offre plusieurs avantages :
+Les vues permettent d’établir une [ **S**eparation **o**f **C**oncerns (SoC) conception](http://deviq.com/separation-of-concerns/) au sein d’une application MVC en séparant le balisage de l'interface utilisateur des autres parties de l’application. Suivre les principes de la conception SoC rend votre application modulaire, ce qui offre plusieurs avantages :
 
 * L’application est plus facile à gérer, car elle est mieux organisée. Les vues sont généralement regroupées en fonction de l’application. Cela rend plus facile à trouver les vues associées lorsque vous travaillez sur une fonctionnalité.
-* Les parties de l’application sont faiblement couplées. Vous pouvez générer et mettre à jour des vues de l’application séparément dans les composants accès logique et les données d’entreprise. Vous pouvez modifier les vues de l’application sans nécessairement devoir mettre à jour des autres parties de l’application.
+* Les parties de l’application sont faiblement couplées. Vous pouvez créer et mettre à jour des vues de l’application séparément dans les composants de logique métier et d’accès aux données. Vous pouvez modifier les vues de l’application sans nécessairement devoir mettre à jour des autres parties de l’application.
 * Il est plus facile de tester des parties de l’interface utilisateur de l’application, car les vues sont des unités distinctes.
-* En raison d’une meilleure organisation, il est moins probable que vous alliez accidentellement dupliquer des sections de l’interface utilisateur.
+* En raison d’une meilleure organisation, le risque est moins grand de répéter accidentellement des sections de l’interface utilisateur.
 
 ## <a name="creating-a-view"></a>Création d’une vue
 
-Les vues qui sont spécifiques à un contrôleur sont créées dans le dossier *vues / [nom du contrôleur]*. Les vues qui sont partagées entre les contrôleurs sont placées dans le dossier *Views/Shared*.  Pour créer une vue, ajoutez un nouveau fichier et lui donner le même nom que son action de contrôleur associé avec le fichier *.cshtml*. Pour créer une vue qui correspond à l'action *a propos de* dans le contrôleur *accueil*, créez un fichier *About.cshtml* dans le dossier *Views/Home* :
+Les vues qui sont spécifiques à un contrôleur sont créées dans le dossier *Views/[nom du contrôleur]*. Les vues qui sont partagées entre les contrôleurs sont placées dans le dossier *Views/Shared*. Pour créer une vue, ajoutez un nouveau fichier et donnez-lui le même nom que son action de contrôleur associée avec l’extension de fichier *.cshtml*. Pour créer une vue qui correspond à l'action *About* dans le contrôleur *Home*, créez un fichier *About.cshtml* dans le dossier *Views/Home* :
 
 [!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
@@ -66,7 +66,7 @@ Lorsque cette action est retournée, la vue *About.cshtml* indiquée dans la der
 
 ![Sur la page rendue dans le navigateur Edge](overview/_static/about-page.png)
 
-La méthode `View` a plusieurs surcharges. Vous pouvez éventuellement spécifier :
+La méthode helper `View` a plusieurs surcharges. Vous pouvez éventuellement spécifier :
 
 * Un affichage explicite pour renvoyer :
 
@@ -162,7 +162,7 @@ public IActionResult Contact()
 }
 ```
 
-Il n’existe aucune restriction sur les types de modèles que vous pouvez fournir à une vue. Nous vous recommandons d’utiliser **P**brut **O**%ld **C**LR **O**ViewModel objet (POCO) avec peu ou pas de comportement (méthodes) défini. En règle générale, les classes viewmodel sont soit stockées dans le dossier  *modèles* ou distinct du dossier *ViewModel* à la racine de l’application. Le viewmodel *adresse*  utilisé dans l’exemple ci-dessus est un viewmodel POCO stocké dans un fichier nommé *Address.cs*:
+Il n’existe aucune restriction sur les types de modèles que vous pouvez fournir à une vue. Nous vous recommandons d’utiliser des modèles de vue POCO avec peu ou pas de comportements (méthodes) définis. En règle générale, les classes viewmodel sont soit stockées dans le dossier *Models* ou dans un dossier *ViewModels* distinct à la racine de l’application. Le viewmodel *Adress* utilisé dans l’exemple ci-dessus est un viewmodel POCO stocké dans un fichier nommé *Address.cs*:
 
 ```csharp
 namespace WebApplication1.ViewModels
@@ -350,6 +350,6 @@ Cette fonctionnalité offre une souplesse, mais ne propose pas de protection de 
 
 [Les tag helpers](xref:mvc/views/tag-helpers/intro) rendent facile l'ajout de comportement côté serveur à des balises HTML existantes. Les tag helpers permettent d'éviter d'écrire du code personnalisé ou des helpers dans vos vues. Les tag helpers sont appliqués en tant qu’attributs aux éléments HTML et sont ignorés par les éditeurs qui ne peuvent pas les traiter. Cela vous permet de modifier et de restituer le balisage de vue dans une variété d’outils.
 
-Générer un balisage HTML personnalisé peut être obtenu avec de nombreux helpers HTML intégrés. Une logique plus complexe de l’interface utilisateur peut être gérée par [affichage des composants](xref:mvc/views/view-components). Les composants de vue fournissent la même séparation de responsabilité (SoC) que les contrôleurs et les vues offrent. Il peuvent éliminer le besoin d'utiliser des actions ou des vues qui traitent les données utilisées par les éléments d’interface couramment utilisés.
+Générer un balisage HTML personnalisé peut être obtenu avec de nombreux helpers HTML intégrés. Une logique plus complexe de l’interface utilisateur peut être gérée par des [composants de vue](xref:mvc/views/view-components). Les composants de vue fournissent la même séparation de responsabilité (SoC) que les contrôleurs et les vues offrent. Il peuvent éliminer le besoin d'utiliser des actions ou des vues qui traitent les données utilisées par les éléments d’interface couramment utilisés.
 
 Comme de nombreux aspects d’ASP.NET Core, les vues prennent en charge [injection de dépendance](xref:fundamentals/dependency-injection), autorisant ainsi que les services soient [injectées dans les vues](xref:mvc/views/dependency-injection).
