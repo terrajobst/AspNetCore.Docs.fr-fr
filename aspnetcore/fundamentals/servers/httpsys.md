@@ -1,184 +1,174 @@
 ---
 title: "Implémentation du serveur web HTTP.sys dans ASP.NET Core"
-author: rick-anderson
-description: "Présente HTTP.sys, serveur web pour ASP.NET Core sur Windows. Basé sur le pilote en mode noyau Http.Sys, HTTP.sys est une alternative à Kestrel qui peut être utilisée pour une connexion directe à Internet sans IIS."
+author: tdykstra
+description: "Découvrez HTTP.sys, un serveur web pour ASP.NET Core sous Windows. Basé sur le pilote en mode noyau HTTP.sys, HTTP.sys est une solution qui permet d’établir une connexion directe à Internet sans IIS ni Kestrel."
 manager: wpickett
-ms.author: riande
-ms.date: 08/07/2017
+ms.author: tdykstra
+ms.custom: mvc
+ms.date: 02/28/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: f36a86fc67e715165afd0c38992f9767f90cf3b4
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 730ecf12f718f6bbbdefb7cdc561481b126c995b
+ms.sourcegitcommit: c5ecda3c5b1674b62294cfddcb104e7f0b9ce465
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
-Par [Tom Dykstra](https://github.com/tdykstra) et [Chris Ross](https://github.com/Tratcher)
+[Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher) et [Luke Latham](https://github.com/guardrex)
 
 > [!NOTE]
-> Cette rubrique s’applique uniquement à ASP.NET Core 2.0 et ultérieur. Dans les versions antérieures d’ASP.NET Core, HTTP.sys est appelé [WebListener](xref:fundamentals/servers/weblistener).
+> Cette rubrique s’applique à ASP.NET Core 2.0 et aux versions ultérieures. Dans les versions antérieures d’ASP.NET Core, HTTP.sys est appelé [WebListener](xref:fundamentals/servers/weblistener).
 
-HTTP.sys est un [serveur web pour ASP.NET Core](index.md) qui s’exécute uniquement sur Windows. Il repose sur le [pilote en mode noyau Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx). Offrant certaines fonctionnalités qui lui sont propres, HTTP.sys est une alternative à [Kestrel](kestrel.md). **HTTP.sys ne peut pas être utilisé avec IIS ou IIS Express, car il est incompatible avec le [module ASP.NET Core](aspnet-core-module.md).**
+[HTTP.sys](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) est un [serveur web pour ASP.NET Core](xref:fundamentals/servers/index) qui s’exécute uniquement sous Windows. Il offre des fonctionnalités supplémentaires par rapport à [Kestrel](xref:fundamentals/servers/kestrel).
+
+> [!IMPORTANT]
+> HTTP.sys est incompatible avec le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) et n’est pas utilisable avec IIS ni IIS Express.
 
 HTTP.sys prend en charge les fonctionnalités suivantes :
 
-- [Authentification Windows](xref:security/authentication/windowsauth)
-- Partage de port
-- HTTPS avec SNI
-- HTTP/2 sur TLS (Windows 10)
-- Transmission de fichier directe
-- Mise en cache des réponses
-- WebSockets (Windows 8)
+* [Authentification Windows](xref:security/authentication/windowsauth)
+* Partage de port
+* HTTPS avec SNI
+* HTTP/2 sur TLS (Windows 10 et versions ultérieures)
+* Transmission de fichier directe
+* Mise en cache des réponses
+* WebSockets (Windows 8 et versions ultérieures)
 
 Versions Windows prises en charge :
 
-- Windows 7 et Windows Server 2008 R2 et ultérieur
+* Windows 7 ou version ultérieure
+* Windows Server 2008 R2 ou une version ultérieure
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="when-to-use-httpsys"></a>Quand utiliser HTTP.sys
 
-HTTP.sys est utile pour les déploiements où vous devez exposer le serveur directement à Internet sans l’aide d’IIS.
+HTTP.sys est utile pour les déploiements lorsque :
 
-![HTTP.sys communique directement avec Internet](httpsys/_static/httpsys-to-internet.png)
+* Il est nécessaire d’exposer directement le serveur à Internet sans passer par IIS.
 
-Comme il repose sur Http.Sys, HTTP.sys ne nécessite pas de serveur proxy inverse en guise de protection contre les attaques. Http.Sys est une technologie en pleine maturité qui offre une protection contre de nombreux types d’attaques et fournit la fiabilité, la sécurité et la scalabilité d’un serveur web complet. Pour sa part, IIS s’exécute en tant qu’écouteur HTTP sur Http.Sys. 
+  ![HTTP.sys communique directement avec Internet](httpsys/_static/httpsys-to-internet.png)
 
-HTTP.sys est un bon choix pour les déploiements internes quand vous avez besoin d’une fonctionnalité qui n’est pas disponible dans Kestrel, telle que l’authentification Windows.
+* Un déploiement interne implique une fonctionnalité qui n’est pas disponible dans Kestrel, par exemple, [l’authentification Windows](xref:security/authentication/windowsauth).
 
-![HTTP.sys communique directement avec votre réseau interne](httpsys/_static/httpsys-to-internal.png)
+  ![HTTP.sys communique directement avec le réseau interne](httpsys/_static/httpsys-to-internal.png)
+
+HTTP.sys est une technologie aboutie qui assure une protection contre de nombreux types d’attaques et offre la robustesse, la sécurité et l’extensibilité d’un serveur web haut de gamme. Pour sa part, IIS s’exécute en tant qu’écouteur HTTP sur HTTP.sys. 
 
 ## <a name="how-to-use-httpsys"></a>Comment utiliser HTTP.sys
 
-Voici une vue d’ensemble des tâches de configuration pour le système d’exploitation hôte et votre application ASP.NET Core.
+### <a name="configure-the-aspnet-core-app-to-use-httpsys"></a>Configurer l’application ASP.NET Core afin d’utiliser HTTP.sys
+
+1. Il n’est pas nécessaire d’ajouter une référence de package dans le fichier projet dès lors que le [métapaquet Microsoft.AspNetCore.All](xref:fundamentals/metapackage) ([nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.All/)) est utilisé (ASP.NET Core 2.0 et versions ultérieures). Si vous n'utilisez pas le métapaquet `Microsoft.AspNetCore.All`, ajoutez une référence de package à [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/).
+
+1. Appelez la méthode d’extension [UseHttpSys](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderhttpsysextensions.usehttpsys) au moment de générer l’hôte web, en spécifiant les [options HTTP.sys](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions) requises :
+
+   [!code-csharp[](httpsys/sample/Program.cs?name=snippet1&highlight=4-12)]
+
+   Le reste de la configuration de HTTP.sys est géré par le biais des [paramètres du Registre](https://support.microsoft.com/kb/820129).
+
+   **Options HTTP.sys**
+
+   | Propriété | Description | Par défaut |
+   | -------- | ----------- | :-----: |
+   | [AllowSynchronousIO](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.allowsynchronousio) | Contrôle si l’entrée/sortie synchrone est autorisée pour le `HttpContext.Request.Body` et le `HttpContext.Response.Body`. | `true` |
+   | [Authentication.AllowAnonymous](/dotnet/api/microsoft.aspnetcore.server.httpsys.authenticationmanager.allowanonymous) | Autorise les requêtes anonymes. | `true` |
+   | [Authentication.Schemes](/dotnet/api/microsoft.aspnetcore.server.httpsys.authenticationmanager.schemes) | Spécifie les schémas d’authentification autorisés. Peut être modifié à tout moment avant la suppression de l’écouteur. Les valeurs sont fournies par [l’enum AuthenticationSchemes](/dotnet/api/microsoft.aspnetcore.server.httpsys.authenticationschemes) : `Basic`, `Kerberos`, `Negotiate`, `None` et `NTLM`. | `None` |
+   | [EnableResponseCaching](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.enableresponsecaching) | Tente la mise en cache [en mode noyau](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode) pour les réponses comportant un en-tête compatible. La réponse peut ne pas inclure d’en-tête `Set-Cookie`, `Vary` ou `Pragma`. Elle doit comporter un en-tête `Cache-Control` `public` et soit une valeur `shared-max-age` ou `max-age`, soit un en-tête `Expires`. | `true` |
+   | [MaxAccepts](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.maxaccepts) | Nombre maximal d'acceptations simultanées. | 5 &times; [Environment.<br>ProcessorCount](/dotnet/api/system.environment.processorcount) |
+   | [MaxConnections](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.maxconnections) | Nombre maximum de connexions simultanées à accepter. Utilisez `-1` pour signifier l’infini, et `null` pour utiliser le paramètre du Registre qui s’applique à l’ordinateur dans son ensemble. | `null`<br>(illimité) |
+   | [MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.maxrequestbodysize) | Consultez la section <a href="#maxrequestbodysize">MaxRequestBodySize</a>. | 30 000 000 octets<br>(env. 28,6 Mo) |
+   | [RequestQueueLimit](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.requestqueuelimit) | Nombre maximal de demandes pouvant être placées en file d'attente. | 1000 |
+   | [ThrowWriteExceptions](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.throwwriteexceptions) | Indique si les écritures dans le corps de la réponse qui échouent en raison d’une déconnexion du client doivent lever des exceptions ou se terminer normalement. | `false`<br>(se terminer normalement) |
+   | [Timeouts](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.timeouts) | Expose la configuration [TimeoutManager](/dotnet/api/microsoft.aspnetcore.server.httpsys.timeoutmanager) de HTTP.sys, également paramétrable dans le Registre. Suivez les liens de l’API pour en savoir plus sur chaque paramètre, y compris les valeurs par défaut :<ul><li>[Timeouts.DrainEntityBody](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.timeouts.drainentitybody) &ndash; Temps alloué à l’API de serveur HTTP pour décharger le corps de l’entité sur une connexion persistante.</li><li>[Timeouts.EntityBody](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.timeouts.entitybody) &ndash; Temps alloué pour que le corps de l'entité de la demande arrive.</li><li>[Timeouts.HeaderWait](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.timeouts.headerwait) &ndash; Temps alloué à l’API de serveur HTTP pour analyser l’en-tête de la demande.</li><li>[Timeouts.IdleConnection](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.timeouts.idleconnection) &ndash; Temps alloué pour une connexion inactive.</li><li>[Timeouts.MinSendBytesPerSecond](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.timeouts.minsendbytespersecond) &ndash; Taux d’envoi minimal de la réponse.</li><li>[Timeouts.RequestQueue](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.timeouts.requestqueue) &ndash; Temps alloué à la demande pour rester dans la file d’attente des demandes avant que l’application ne la récupère.</li></ul> |  |
+   | [UrlPrefixes](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.urlprefixes) | Spécifiez la [UrlPrefixCollection](/dotnet/api/microsoft.aspnetcore.server.httpsys.urlprefixcollection) à inscrire auprès de HTTP.sys. La plus utile est [UrlPrefixCollection.Add](/dotnet/api/microsoft.aspnetcore.server.httpsys.urlprefixcollection.add), qui permet d’ajouter un préfixe à la collection. Ces choix peuvent être modifiés à tout moment avant la suppression de l’écouteur. |  |
+
+   <a name="maxrequestbodysize"></a>
+   **MaxRequestBodySize**
+
+   Taille maximale autorisée pour le corps d’une demande, en octets. Lorsque la valeur est `null`, elle est illimitée. Cette limite est sans effet sur les connexions mises à niveau, qui sont illimitées.
+
+   Pour remplacer la limite d’un seul `IActionResult` dans une application MVC ASP.NET Core, nous vous recommandons d’utiliser l’attribut [RequestSizeLimitAttribute](/dotnet/api/microsoft.aspnetcore.mvc.requestsizelimitattribute) sur une méthode d’action :
+   
+   ```csharp
+   [RequestSizeLimit(100000000)]
+   public IActionResult MyActionMethod()
+   ```
+
+   Une exception est levée si l’application tente de configurer la limite sur une demande dont l’application a commencé la lecture. La propriété `IsReadOnly` indique si la propriété `MaxRequestBodySize` est en lecture seule, et donc s’il est trop tard pour configurer la limite.
+
+   Si l’application doit remplacer [MaxRequestBodySize](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.maxrequestbodysize) demande par demande, utilisez [IHttpMaxRequestBodySizeFeature](/dotnet/api/microsoft.aspnetcore.http.features.ihttpmaxrequestbodysizefeature) :
+
+   [!code-csharp[](httpsys/sample/Startup.cs?name=snippet1&highlight=6-7)]
+
+1. Si vous utilisez Visual Studio, vérifiez que l’application n’est pas configurée pour exécuter IIS ou IIS Express.
+
+   Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Express. Pour exécuter le projet en tant qu’application console, changez manuellement le profil sélectionné, comme dans la capture d’écran suivante :
+
+   ![Sélectionner le profil d’application console](httpsys/_static/vs-choose-profile.png)
 
 ### <a name="configure-windows-server"></a>Configurer Windows Server
 
-* Installez la version de .NET requise par votre application, telle que [.NET Core](https://www.microsoft.com/net/download/core) ou [.NET Framework](https://www.microsoft.com/net/download/framework).
+1. Si l’application est un [déploiement dépendant de .NET Framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), installez .NET Core, .NET Framework ou les deux (si l’application est une application .NET Core ciblant .NET Framework).
 
-* Préenregistrez les préfixes d’URL à lier à HTTP.sys et configurez les certificats SSL.
+   * **.NET Core** &ndash; Si l’application requiert .NET Core, allez chercher et exécutez le programme d’installation de .NET Core sur [Téléchargements .NET](https://www.microsoft.com/net/download/windows).
+   * **.NET Framework** &ndash; Si l’application requiert .NET Framework, consultez la page [.NET Framework : guide d’installation](/dotnet/framework/install/) pour connaître les instructions d’installation. Installez la version requise de .NET Framework. Le programme d’installation de la dernière version de .NET Framework se trouve sur la page [Téléchargements .NET](https://www.microsoft.com/net/download/windows).
 
-   Si vous ne préenregistrez pas de préfixes d’URL dans Windows, vous devez exécuter votre application avec des privilèges d’administrateur. C’est nécessaire, sauf si vous effectuez une liaison à localhost à l’aide de HTTP (pas HTTPS) avec un numéro de port supérieur à 1024.
+1. Configurez les ports et les URL de l’application.
 
-   Pour plus d’informations, consultez [Préenregistrer les préfixes d’URL et configurer SSL](#preregister-url-prefixes-and-configure-ssl) plus loin dans cet article.
+   Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Pour configurer les ports et les préfixes d’URL, il existe plusieurs possibilités :
 
-* Ouvrez des ports du pare-feu pour autoriser le trafic à atteindre HTTP.sys.
+   * [UseUrls](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.useurls)
+   * Arguments de ligne de commande `urls`
+   * Variable d’environnement `ASPNETCORE_URLS`
+   * [UrlPrefixes](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.urlprefixes)
 
-   Vous pouvez utiliser *netsh.exe* ou des [applets de commande PowerShell](https://technet.microsoft.com/library/jj554906).
+   L’exemple de code suivant montre comment utiliser [UrlPrefixes](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions.urlprefixes) :
 
-Vous pouvez également recourir aux [paramètres de Registre Http.Sys](https://support.microsoft.com/kb/820129).
+   [!code-csharp[](httpsys/sample/Program.cs?name=snippet1&highlight=11)]
 
-### <a name="configure-your-aspnet-core-application-to-use-httpsys"></a>Configurer votre application ASP.NET Core pour qu’elle utilise HTTP.sys
+   `UrlPrefixes` présente l’avantage de générer immédiatement un message d’erreur en cas de préfixe mal formé.
 
-* Aucune installation de package n’est nécessaire si vous utilisez le métapackage [Microsoft.AspNetCore.All](xref:fundamentals/metapackage). Le package [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/) est inclus dans le métapackage.
+   Les paramètres de `UrlPrefixes` remplacent les paramètres `UseUrls`/`urls`/`ASPNETCORE_URLS`. Par conséquent, avec `UseUrls`, `urls` et la variable d’environnement `ASPNETCORE_URLS`, il est plus facile de basculer entre Kestrel et HTTP.sys. Pour plus d’informations sur `UseUrls`, `urls` et `ASPNETCORE_URLS`, consultez la section [Hébergement](xref:fundamentals/hosting).
 
-* Appelez la méthode d’extension `UseHttpSys` sur `WebHostBuilder` dans votre méthode `Main`, en spécifiant les [options HTTP.sys](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs) dont vous avez besoin, comme indiqué dans l’exemple suivant :
+   HTTP.sys utilise les [formats de chaîne UrlPrefix de l’API de serveur HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
 
-  [!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=11-19)]
+1. Préinscrivez les préfixes d’URL à lier à HTTP.sys et configurez les certificats x.509.
 
-### <a name="configure-httpsys-options"></a>Configurer les options HTTP.sys
+   Si les préfixes d’URL ne sont pas préinscrits sous Windows, exécutez l’application avec des privilèges Administrateur. Il existe une seule exception : si vous effectuez une liaison à localhost avec HTTP (et non HTTPS) et un numéro de port supérieur à 1024, les privilèges Administrateur ne sont pas nécessaires.
 
-Voici certains paramètres et limites HTTP.sys que vous pouvez configurer.
+   1. L’outil intégré pour configurer HTTP.sys est *netsh.exe*. *netsh.exe* permet de réserver des préfixes d’URL et d’assigner des certificats X.509. L’outil requiert des privilèges Administrateur.
 
-**Nombre maximal de connexions client**
+      L’exemple suivant montre les commandes à effectuer pour réserver des préfixes d’URL aux ports 80 et 443 :
 
-Le nombre maximal de connexions TCP ouvertes simultanées peut être défini pour l’application entière avec le code suivant dans *Program.cs* :
+      ```console
+      netsh http add urlacl url=http://+:80/ user=Users
+      netsh http add urlacl url=https://+:443/ user=Users
+      ```
 
-[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=5)]
+      L’exemple suivant montre comment assigner un certificat X.509 :
 
-Le nombre maximal de connexions est illimité (null) par défaut.
+      ```console
+      netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={00000000-0000-0000-0000-000000000000}"
+      ```
 
-**Taille maximale du corps de la demande**
+      Documentation de référence de *netsh.exe* :
 
-La taille maximale par défaut du corps de la demande est de 30 000 000 octets, soit environ 28,6 Mo.
+      * [Commandes netsh pour HTTP (Hypertext Transfer Protocol)](https://technet.microsoft.com/library/cc725882.aspx)
+      * [Chaînes UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
-Pour remplacer la limite dans une application MVC ASP.NET Core, nous vous recommandons d’utiliser l’attribut [RequestSizeLimit](https://github.com/aspnet/Mvc/blob/rel/2.0.0/src/Microsoft.AspNetCore.Mvc.Core/RequestSizeLimitAttribute.cs) sur une méthode d’action :
+   1. Créez des certificats X.509 auto-signés, si nécessaire.
 
-```csharp
-[RequestSizeLimit(100000000)]
-public IActionResult MyActionMethod()
-```
+     [!INCLUDE[How to make an X.509 cert](../../includes/make-x509-cert.md)]
 
-Voici un exemple qui montre comment configurer la contrainte pour l’application entière et chaque demande :
+1. Ouvrez des ports du pare-feu pour autoriser le trafic à atteindre HTTP.sys. Utilisez *netsh.exe* ou les [cmdlets PowerShell](https://technet.microsoft.com/library/jj554906).
 
-[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Options&highlight=6)]
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-Vous pouvez remplacer le paramètre sur une demande spécifique dans *Startup.cs* :
-
-[!code-csharp[](httpsys/sample/Startup.cs?name=snippet_Configure&highlight=9-10)]
- 
-Une exception est levée si vous essayez de configurer la limite sur une demande dont l’application a commencé la lecture. Il existe une propriété `IsReadOnly` qui indique si la propriété `MaxRequestBodySize` est en lecture seule ; si tel est le cas, il est trop tard pour configurer la limite.
-
-Pour plus d’informations sur les autres options de HTTP.sys, consultez [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs). 
-
-### <a name="configure-urls-and-ports-to-listen-on"></a>Configurer les ports et les URL sur lesquels écouter 
-
-Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Pour configurer les ports et les préfixes d’URL, vous pouvez utiliser la méthode d’extension `UseUrls`, l’argument de ligne de commande `urls`, la variable d’environnement ASPNETCORE_URLS ou la propriété `UrlPrefixes` sur [HttpSysOptions](https://github.com/aspnet/HttpSysServer/blob/rel/2.0.0/src/Microsoft.AspNetCore.Server.HttpSys/HttpSysOptions.cs). L’exemple de code suivant utilise `UrlPrefixes`.
-
-[!code-csharp[](httpsys/sample/Program.cs?name=snippet_Main&highlight=17)]
-
-Grâce à `UrlPrefixes`, vous obtenez un message d’erreur immédiatement si vous essayez d’ajouter un préfixe au format incorrect. Pour sa part, `UseUrls` (partagé avec `urls` et ASPNETCORE_URLS) vous permet de basculer plus facilement entre Kestrel et HTTP.sys.
-
-Si vous utilisez à la fois `UseUrls` (ou `urls` ou ASPNETCORE_URLS) et `UrlPrefixes`, les paramètres dans `UrlPrefixes` remplacent ceux dans `UseUrls`. Pour plus d’informations, consultez [Hébergement](xref:fundamentals/hosting).
-
-HTTP.sys utilise les [formats de chaîne UrlPrefix de l’API de serveur HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
-
-> [!NOTE]
-> Veillez à spécifier dans `UseUrls` ou `UrlPrefixes` les mêmes chaînes de préfixe que celles que vous préenregistrez sur le serveur. 
-
-### <a name="dont-use-iis"></a>Ne pas utiliser IIS
-
-Vérifiez que votre application n’est pas configurée pour exécuter IIS ou IIS Express.
-
-Dans Visual Studio, le profil de démarrage par défaut est destiné à IIS Express. Pour exécuter le projet en tant qu’application console, changez manuellement le profil sélectionné, comme indiqué dans la capture d’écran suivante.
-
-![Sélectionner le profil d’application console](httpsys/_static/vs-choose-profile.png)
-
-## <a name="preregister-url-prefixes-and-configure-ssl"></a>Préenregistrer les préfixes d’URL et configurer SSL
-
-IIS et HTTP.sys s’appuient sur le pilote en mode noyau Http.Sys sous-jacent pour écouter les demandes et effectuer le traitement initial. Dans IIS, l’interface utilisateur de gestion vous permet de tout configurer avec une certaine aisance. Toutefois, vous devez configurer Http.Sys vous-même. Pour effectuer cette opération, vous disposez de l’outil intégré *netsh.exe*. 
-
-Avec *netsh.exe*, vous pouvez réserver les préfixes d’URL et assigner les certificats SSL. L’outil exige des privilèges d’administrateur.
-
-L’exemple suivant montre le minimum nécessaire pour réserver des préfixes d’URL pour les ports 80 et 443 :
-
-```console
-netsh http add urlacl url=http://+:80/ user=Users
-netsh http add urlacl url=https://+:443/ user=Users
-```
-
-L’exemple suivant montre comment assigner un certificat SSL :
-
-```console
-netsh http add sslcert ipport=0.0.0.0:443 certhash=MyCertHash_Here appid={00000000-0000-0000-0000-000000000000}"
-```
-
-Voici la documentation de référence de *netsh.exe* :
-
-* [Commandes netsh pour HTTP (Hypertext Transfer Protocol)](https://technet.microsoft.com/library/cc725882.aspx)
-* [Chaînes UrlPrefix](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
-
-Les ressources suivantes fournissent des instructions détaillées pour plusieurs scénarios. Les articles qui font référence à HttpListener s’appliquent aussi à HTTP.sys, tous deux reposant sur Http.Sys.
-
-* [Guide pratique pour configurer un port avec un certificat SSL](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-configure-a-port-with-an-ssl-certificate)
-* [HTTPS Communication - HttpListener based Hosting and Client Certification](http://sunshaking.blogspot.com/2012/11/https-communication-httplistener-based.html) Blog tiers et assez ancien, mais qui contient néanmoins des informations utiles.
-* [How To: Walkthrough Using HttpListener or Http Server unmanaged code (C++) as an SSL Simple Server](https://blogs.msdn.microsoft.com/jpsanders/2009/09/29/how-to-walkthrough-using-httplistener-or-http-server-unmanaged-code-c-as-an-ssl-simple-server/) Autre blog ancien comportant des informations utiles.
-
-Voici certains outils tiers qui peuvent être plus faciles à utiliser que la ligne de commande *netsh.exe*. Ils ne sont pas fournis ou recommandés par Microsoft. Les outils s’exécutent en tant qu’administrateur par défaut, étant donné que *netsh.exe* lui-même nécessite des privilèges d’administrateur.
-
-* [HTTP.sys Manager](http://httpsysmanager.codeplex.com/), dont l’interface utilisateur permet de répertorier et de configurer les options et certificats SSL, les réservations de préfixe et les listes de certificats de confiance. 
-* [HttpConfig](http://www.stevestechspot.com/ABetterHttpcfg.aspx) vous permet de répertorier ou de configurer les certificats SSL et les préfixes d’URL. L’interface utilisateur est plus précise que celle de http.sys Manager et offre quelques options de configuration supplémentaires ; sinon, elle fournit des fonctionnalités similaires. Cet outil ne peut pas créer de liste de certificats de confiance, mais peut assigner des listes existantes.
-
-[!INCLUDE[How to make an SSL cert](../../includes/make-ssl-cert.md)]
-
-## <a name="next-steps"></a>Étapes suivantes
-
-Pour plus d'informations, reportez-vous aux ressources suivantes :
-
-* [Exemple d’application pour cet article](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/sample)
-* [Code source HTTP.sys](https://github.com/aspnet/HttpSysServer/)
+* [API de serveur HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
+* [Référentiel GitHub aspnet/HttpSysServer (code source)](https://github.com/aspnet/HttpSysServer/)
 * [Hébergement d’applications WPF](xref:fundamentals/hosting)
