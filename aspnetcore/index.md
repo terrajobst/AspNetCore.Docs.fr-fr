@@ -1,4 +1,4 @@
----
+﻿---
 title: "Présentation d’ASP.NET Core"
 author: rick-anderson
 description: "Offre une présentation d’ASP.NET Core."
@@ -22,7 +22,7 @@ Par [Daniel Roth](https://github.com/danroth27), [Rick Anderson](https://twitter
 ASP.NET Core est un framework multiplateforme à hautes performances et [open source](https://github.com/aspnet/home) pour créer des applications cloud modernes et connectées à Internet. Avec ASP.NET Core, vous pouvez :
 
 * Créer des applications et des services web, des applications [IoT](https://www.microsoft.com/internet-of-things/) et des back-ends mobiles.
-* Utilisez vos outils de développement préférés sur Windows, macOS et Linux.
+* Utiliser vos outils de développement préférés sur Windows, macOS et Linux.
 * Déployer dans le cloud ou localement.
 * Exécuter sur [.NET Core ou .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
 
@@ -35,12 +35,12 @@ ASP.NET Core offre les avantages suivants :
 * Un scénario unifié pour créer une interface utilisateur web et des API web.
 * L’intégration de [frameworks modernes, côté client](xref:client-side/index) et des workflows de développement.
 * Un environnement prêt pour le cloud et basée sur des fichiers de [configuration système](xref:fundamentals/configuration/index).
-* [Injection de dépendances](xref:fundamentals/dependency-injection) intégrée.
+* Une [Injection de dépendances](xref:fundamentals/dependency-injection) intégrée.
 * Un pipeline de requête HTTP léger, [haute performance](https://github.com/aspnet/benchmarks) et modulaire.
 * La capacité à être hébergé sur [IIS](xref:host-and-deploy/iis/index), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache), [Docker](xref:host-and-deploy/docker/index), ou sur votre propre hébergement.
 * La gestion de version des applications côte à côte lorsque la cible est [.NET Core](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
 * Outillage qui simplifie le développement web moderne.
-* Capacité à générer et à exécuter sur Windows, macOS et Linux.
+* La capacité à générer et à exécuter sur Windows, macOS et Linux.
 * Open source et [centré sur la communauté](https://live.asp.net/).
 
 ASP.NET Core est fourni entièrement sous forme de packages [NuGet](https://www.nuget.org/). Ceci vous permet d’optimiser votre application pour y inclure seulement les packages NuGet nécessaires. En fait, les applications ASP.NET Core 2.x ciblant .NET Core ne nécessitent qu’un [seul package NuGet](xref:fundamentals/metapackage). Les avantages des applications ayant une surface d’exposition plus petite incluent une sécurité accrue, une maintenance réduite et des performances améliorées.
