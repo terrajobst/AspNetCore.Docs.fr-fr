@@ -28,7 +28,7 @@ Une implémentation de [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hostin
 
 Pour découvrir les assemblys de démarrage d’hébergement chargés par l’application ou par des bibliothèques, activez la journalisation, puis vérifiez les journaux des applications. Les erreurs qui se produisent lors du chargement d’assemblys sont enregistrées. Les assemblys de démarrage d'hébergement chargés sont enregistrées avec le niveau Debug, et toutes les erreurs sont journalisées.
 
-Les exemple d’application lit le [HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey) dans un tableau de `string` et affiche le résultat dans la page d’Index de l’application :
+L’exemple d’application lit le [HostingStartupAssembliesKey](/dotnet/api/microsoft.aspnetcore.hosting.webhostdefaults.hostingstartupassemblieskey) dans un tableau de `string` et affiche le résultat dans la page Index de l’application :
 
 [!code-csharp[Main](ihostingstartup/sample/HostingStartupSample/Pages/Index.cshtml.cs?name=snippet1&highlight=14-16)]
 
@@ -39,7 +39,7 @@ Il existe deux méthodes pour désactiver le chargement automatique des assembly
 * Définir le paramètre de configuration d'hébergement pour [empêcher le démarrage de l’hébergement](xref:fundamentals/hosting#prevent-hosting-startup) .
 * Définir la variable d’environnement `ASPNETCORE_preventHostingStartup`.
 
-Lorsque le paramètre d’hôte ou de la variable d’environnement est définie sur `true` ou `1`, les assemblys de démarrage d’hébergement  ne sont pas chargés automatiquement. Si les deux sont définis, le paramètre de l’hôte détermine le comportement.
+Lorsque le paramètre d’hôte ou la variable d’environnement est défini sur `true` ou `1`, les assemblys de démarrage d’hébergement ne sont pas chargés automatiquement. Si les deux sont définis, le paramètre de l’hôte détermine le comportement
 
 Désactiver des assemblys de démarrage d'hébergement à l’aide de la variable d’environnement ou le paramètre hôte les désactive globalement et peut désactiver plusieurs fonctionnalités d’une application. Il n’est pas encore possible de désactiver de manière sélective un assembly de démarrage d'hébergement ajouté par une bibliothèque, à moins que la bibliothèque ne propose sa propre option de configuration. Une version ultérieure propose la possibilité de désactiver de manière sélective les assemblys de démarrage d'hébergement (consultez [GitHub issue aspnet/hosting #1243](https://github.com/aspnet/Hosting/pull/1243)).
 
@@ -55,7 +55,7 @@ Un attribut [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingsta
 
 [!code-csharp[Main](ihostingstartup/snapshot_sample/StartupFeature.cs?name=snippet1)]
 
-Une classe implémente `IHostingStartup`. La classe [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des fonctionnalités à une application :
+Une classe implémente `IHostingStartup`. La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) de la classe utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des fonctionnalités à une application :
 
 [!code-csharp[Main](ihostingstartup/snapshot_sample/StartupFeature.cs?name=snippet2&highlight=3,5)]
 
@@ -71,7 +71,7 @@ L’emplacement d’exécution est spécifié dans le fichier *\*.deps.json*. Po
 
 [!code-json[Main](ihostingstartup/snapshot_sample/StartupFeature2.deps.json?range=2-13&highlight=8)]
 
-Dans l’exemple d’application, la modification du fichier *\*.deps.json* est effectué par un [PowerShell](/powershell/scripting/powershell-scripting) script. Le script PowerShell est automatiquement déclenché par une cible de génération dans le fichier projet.
+Dans l’exemple d’application, la modification du fichier *\*.deps.json* est effectuée par un script [PowerShell](/powershell/scripting/powershell-scripting). Le script PowerShell est automatiquement déclenché par une cible de génération dans le fichier projet.
 
 ### <a name="feature-activation"></a>Activation de fonctionnalités
 
@@ -95,15 +95,15 @@ Lors du déploiement de l’assembly dans le magasin de l’exécution, le fichi
 
 **Placez le fichier de dépendances**
 
-L'implémentation du fichier *\*. deps.json* doit être dans un emplacement accessible.
+Le fichier *\*. deps.json* de l'implémentation doit être dans un emplacement accessible.
 
-Pour une utilisation par l’utilisateur, placez le fichier dans le dossier `additonalDeps` du profil utilisateur `.dotnet` : 
+Pour une utilisation par l’utilisateur, placez le fichier dans le dossier `additonalDeps` des paramètres `.dotnet` du profil utilisateur : 
 
 ```
 <DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<FEATURE_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\
 ```
 
-Dans le monde entier, placez le fichier dans le dossier `additonalDeps` de l’installation de .NET Core :
+Pour une utilisation globale, placez le fichier dans le dossier `additonalDeps` de l’installation de .NET Core :
 
 ```
 <DRIVE>\Program Files\dotnet\additionalDeps\<FEATURE_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.0.0\
