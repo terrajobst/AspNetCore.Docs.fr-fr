@@ -1,4 +1,4 @@
----
+﻿---
 title: Autorisation simple
 author: rick-anderson
 description: "Ce document explique comment utiliser l’attribut Authorize pour restreindre l’accès aux actions et les contrôleurs ASP.NET Core."
@@ -19,7 +19,7 @@ ms.lasthandoff: 02/11/2018
 
 <a name="security-authorization-simple"></a>
 
-Dans MVC est contrôlée par le biais du `AuthorizeAttribute` attribut et ses paramètres différents. Dans le bloc-notes, appliquer la `AuthorizeAttribute` d’attribut à une limite l’accès contrôleur ou d’action au contrôleur ou une action à n’importe quel utilisateur authentifié.
+Dans MVC Les authorisations sont contrôlées par le biais de l'attribut `AuthorizeAttribute` et de ses paramètres différents. Pour faire simple appliquer l'attribut `AuthorizeAttribute` à un contrôleur ou à une action pour pour limiter l’accès au contrôleur ou à une action à n’importe quel utilisateur authentifié.
 
 Par exemple, le code suivant limite l’accès à la `AccountController` à tout utilisateur authentifié.
 
@@ -37,7 +37,7 @@ public class AccountController : Controller
 }
 ```
 
-Si vous souhaitez appliquer l’autorisation à une action plutôt que le contrôleur, appliquer la `AuthorizeAttribute` d’attribut pour l’action proprement dite :
+Si vous souhaitez appliquer une autorisation à une action plutôt que sur le contrôleur, appliquer la `AuthorizeAttribute` d’attribut pour l’action à proprement dite :
 
 ```csharp
 public class AccountController : Controller
@@ -53,7 +53,7 @@ public class AccountController : Controller
 }
 ```
 
-Maintenant seulement les utilisateurs authentifiés peuvent accéder le `Logout` (fonction).
+Maintenant seulement les utilisateurs authentifiés peuvent accéder à la fonction de `Logout`.
 
 Vous pouvez également utiliser le `AllowAnonymous` attribut pour permettre l’accès des utilisateurs non authentifiés à chacune des actions. Exemple :
 
@@ -72,7 +72,7 @@ public class AccountController : Controller
 }
 ```
 
-Ainsi, seuls les utilisateurs authentifiés pour le `AccountController`, à l’exception de la `Login` action, qui est accessible par tout le monde, quelle que soit leur état authentifié ou non authentifié / anonyme.
+Ainsi, seuls les utilisateurs authentifiés ont accès à `AccountController`, à l’exception de l'action `Login`, qui est accessible par tout le monde, quelle que soit leur état authentifié ou non authentifié / anonyme.
 
 >[!WARNING]
-> `[AllowAnonymous]`ignore toutes les instructions d’autorisation. Si vous appliquez combiner `[AllowAnonymous]` et n’importe quel `[Authorize]` attribut puis les attributs Authorize seront toujours ignorés. Par exemple, si vous appliquez `[AllowAnonymous]` au niveau du contrôleur de niveau les `[Authorize]` attributs sur le même contrôleur, ou sur toute action qu’il contient seront ignorés.
+> L'attribut `[AllowAnonymous]` ignore toutes les instructions d’autorisation. Si vous combinez `[AllowAnonymous]` et n’importe quel attribut `[Authorize]`, les attributs `[Authorize]` seront toujours ignorés. Par exemple, si vous appliquez `[AllowAnonymous]` au niveau du contrôleur, tous les attributs `[Authorize]` sur le même contrôleur, ou sur toute actions qu’il contient seront ignorés.
