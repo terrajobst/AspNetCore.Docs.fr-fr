@@ -1,7 +1,7 @@
----
+﻿---
 title: "Migration d’ASP.NET vers ASP.NET Core 2.0"
 author: isaac2004
-description: "Profitez de conseils sur la migration d’applications ASP.NET MVC ou d’API web existantes vers ASP.NET Core 2.0."
+description: "Recevoir des conseils de migration d'applications ASP.NET MVC ou Web API existantes vers ASP.NET Core 2.0."
 manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
@@ -11,7 +11,7 @@ ms.topic: article
 uid: migration/proper-to-2x/index
 ms.openlocfilehash: 877bcdbe5c5fb43e280800b2b843f2dfacb5bb45
 ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/02/2018
 ---
@@ -26,7 +26,7 @@ Cet article sert de guide de référence pour la migration d’applications ASP.
 * [SDK .NET Core 2.0.0](https://dot.net/core) ou version ultérieure
 
 ## <a name="target-frameworks"></a>Versions cibles de .NET Framework
-Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choix entre le .NET Core et le .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
+Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choix entre le .NET Core et le .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
 
 Quand vous ciblez le .NET Framework, les projets doivent référencer des packages NuGet individuels.
 
@@ -49,7 +49,7 @@ Le format de fichier *.csproj* a été simplifié dans ASP.NET Core. Voici certa
     ![Option de menu contextuel de modification du CSPROJ dans Visual Studio 2017](_static/EditProjectVs2017.png)
 
 ## <a name="globalasax-file-replacement"></a>Remplacement du fichier Global.asax
-ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax*. Les tâches telles que la configuration de l’itinéraire ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax*.
+ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax*. Les tâches telles que la configuration du routing ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax*.
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
@@ -57,7 +57,7 @@ Cette approche couple l’application au serveur sur lequel elle est déployée 
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
-Cela permet de configurer vos itinéraires par défaut, et de privilégier XmlSerialization à JSON. Ajoutez d’autres intergiciels (middleware) à ce pipeline selon les besoins (services de chargement, paramètres de configuration, fichiers statiques, etc.).
+Cela permet de configurer vos routes par défaut, et de privilégier la XmlSerialization à JSON. Ajoutez d’autres intergiciels (middleware) à ce pipeline selon les besoins (services de chargement, paramètres de configuration, fichiers statiques, etc.).
 
 ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour prendre en charge l’entrée. À la place, l’opération est effectuée via la méthode `Main` de *Program.cs* (un peu comme pour les applications console) et `Startup` est chargé à partir de là.
 
@@ -69,7 +69,7 @@ ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour 
 * Pages d’erreur
 * Fichiers statiques
 * ASP.NET Core MVC
-* identité
+* Identité
 
 [!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
 
@@ -132,7 +132,7 @@ Vous pouvez injecter le dépôt à l’emplacement de votre choix, comme c’ét
 
 **Remarque :** Pour obtenir des informations de référence sur l’injection de dépendances dans ASP.NET Core, consultez [Injection de dépendances dans ASP.NET Core](xref:fundamentals/dependency-injection#replacing-the-default-services-container)
 
-## <a name="serving-static-files"></a>Traitement des fichiers statiques
+## <a name="serving-static-files"></a>Fichiers statiques
 Une partie importante du développement web réside dans la capacité de traitement des composants statiques, côté client. Les fichiers HTML, CSS, JavaScript et image sont les exemples les plus courants de fichiers statiques. Ces fichiers doivent être enregistrés à l’emplacement publié de l’application (ou CDN) et référencés pour pouvoir être chargés par une requête. Ce processus a changé avec ASP.NET Core.
 
 Avec ASP.NET, les fichiers statiques sont stockés dans différents répertoires et référencés dans des vues.
