@@ -8,8 +8,8 @@ ms.date: 08/27/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
-uid: migration/mvc2
-ms.openlocfilehash: 65717c1605c7f55bfd836110072772fe3dcdeb76
+uid: migration/proper-to-2x/index
+ms.openlocfilehash: d6050c7946aa45b4c1b878b96baa1b082d0c8f71
 ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
@@ -23,10 +23,10 @@ Cet article sert de guide de référence pour la migration d’applications ASP.
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) ou version ultérieure
+* [SDK .NET Core 2.0.0](https://dot.net/core) ou version ultérieure
 
 ## <a name="target-frameworks"></a>Versions cibles de .NET Framework
-Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choisir entre .NET Core et .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
+Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choix entre le .NET Core et le .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
 
 Quand vous ciblez le .NET Framework, les projets doivent référencer des packages NuGet individuels.
 
@@ -107,7 +107,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 **Remarque :** Pour obtenir des informations de référence plus approfondies sur la configuration d’ASP.NET Core, consultez [Configuration dans ASP.NET Core](xref:fundamentals/configuration/index).
 
-## <a name="native-dependency-injection"></a>Injection de dépendances natif
+## <a name="native-dependency-injection"></a>Injection de dépendances native
 Quand vous générez des applications majeures et scalables, il est important d’avoir un couplage faible entre les composants et les services. L’[injection de dépendances](xref:fundamentals/dependency-injection) est une technique répandue qui permet d’y parvenir. Elle représente un composant natif d’ASP.NET Core.
 
 Dans les applications ASP.NET, les développeurs s’appuient sur une bibliothèque tierce pour implémenter l’injection de dépendances. L’une de ces bibliothèques, [Unity](https://github.com/unitycontainer/unity), est fournie par Microsoft Patterns & Practices. 
