@@ -29,7 +29,7 @@ Les fichiers statiques, tels que les fichiers HTML, CSS, images et JavaScript, s
 
 Les fichiers statiques sont stockés dans le répertoire racine de votre projet web. Le répertoire par défaut est  *\<content_root>/wwwroot*, mais il peut être modifié via la méthode [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_). Consultez [racine du contenu](xref:fundamentals/index#content-root) et [racine Web](xref:fundamentals/index#web-root) pour plus d’informations.
 
-L'hôte de l’application web doit être informé du répertoire de contenu racine.
+L'hôte web de l’application doit être informé du répertoire racine du contenu.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -39,7 +39,7 @@ Le `WebHost.CreateDefaultBuilder` méthode définit la racine du contenu dans le
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Définissez la racine de contenu dans le répertoire en cours en appelant [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) à l’intérieur de `Program.Main`:
+Définissez comme racine contenue dans le répertoire en cours en appelant [UseContentRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usecontentroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseContentRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_) à l’intérieur de `Program.Main`:
 
 [!code-csharp[](static-files/samples/1x/Program.cs?name=snippet_ProgramClass&highlight=7)]
 
@@ -60,11 +60,11 @@ Si vous ciblez le .NET Framework, ajoutez le package [Microsoft.AspNetCore.Stati
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Ajoutez le package [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) pour votre projet.
+Si vous ciblez le .NET Framework, ajoutez le package [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) à votre projet.
 
 ---
 
-Configurez le [intergiciel (middleware)](xref:fundamentals/middleware) qui permet les serveurs de fichiers statiques.
+Configurez [l’intergiciel (middleware)](xref:fundamentals/middleware) qui permet le traitement de fichiers statiques.
 
 ### <a name="serve-files-inside-of-web-root"></a>Les fichiers au sein de la racine web
 
@@ -72,7 +72,7 @@ Appelez le méthode [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.st
 
 [!code-csharp[](static-files/samples/1x/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
-La surcharge de méthode sans paramètre `UseStaticFiles` marque les fichiers dans la racine web en tant que servable. Les références suivantes de balisage *wwwroot/images/banner1.svg*:
+La surcharge de méthode sans paramètre `UseStaticFiles` marque les fichiers dans la racine web comme pouvant être traités. Le balisage suivant référence *wwwroot/images/banner1.svg*:
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
@@ -106,7 +106,7 @@ Un objet [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfile
 
 La méthode [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) existe dans le package [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/).
 
-Les fichiers ont été mis en cache publiquement pendant 10 minutes (600 secondes) :
+Les fichiers sont autorisés a être mis en cache publiquement pendant 10 minutes (600 secondes) :
 
 ![En-têtes de réponse indiquant l’en-tête Cache-Control a été ajouté.](static-files/_static/add-header.png)
 
@@ -129,7 +129,7 @@ Ajouter des services requis en appelant la méthode [AddDirectoryBrowser](/dotne
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureServicesMethod&highlight=3)]
 
-Le code précédent permet l’exploration des répertoires de le dossier *wwwroot/images* à l’aide de l’URL *http://\<server_address>/ MyImages*, avec des liens vers chaque fichier et dossier :
+Le code précédent permet l’exploration des répertoires du dossier *wwwroot/images* à l’aide de l’URL *http://\<server_address>/ MyImages*, avec des liens vers chaque fichier et dossier :
 
 ![exploration des répertoires](static-files/_static/dir-browse.png)
 
@@ -165,7 +165,7 @@ Le code suivant modifie le nom de fichier par défaut à *mydefault.html*:
 
 [UseFileServer](/dotnet/api/microsoft.aspnetcore.builder.fileserverextensions.usefileserver#Microsoft_AspNetCore_Builder_FileServerExtensions_UseFileServer_Microsoft_AspNetCore_Builder_IApplicationBuilder_) combine les fonctionnalités de `UseStaticFiles`, `UseDefaultFiles`, et `UseDirectoryBrowser`.
 
-Le code suivant active les serveurs de fichiers statiques et le fichier par défaut. L'exploration des répertoires n’est pas activée.
+Le code suivant active le traitement des fichiers statiques et du fichier par défaut
 
 ```csharp
 app.UseFileServer();
@@ -240,15 +240,15 @@ Avec le code précédent, une demande pour un fichier avec un type de contenu in
 
 * Les applications ASP.NET Core hébergées dans IIS utilisent le [Module ASP.NET Core (ANCM)](xref:fundamentals/servers/aspnet-core-module) pour transférer toutes les demandes à l’application, y compris les demandes de fichiers statiques. Le Gestionnaire de fichiers statiques d’IIS n’est pas utilisé. Il n'a pas de possibilité de traiter les demandes avant qu’ils soient gérés par le ANCM.
 
-* Effectuez les étapes suivantes dans IIS pour supprimer le handler de fichiers statiques de IIS au niveau du serveur ou le site Web :
+* Effectuez les étapes suivantes dans le Gestionnaire IIS pour supprimer le gestionnaire de fichiers statiques IIS au niveau du serveur ou du site Web :
     1. Accédez à la fonctionnalité **Modules**.
     1. Sélectionnez **StaticFileModule** dans la liste.
     1. Cliquez sur **supprimer** dans la barre latérale des **Actions**.
 
 > [!WARNING]
-> Si le handler de fichiers statiques d’IIS est activé **et** le ANCM est incorrectement configurée, les fichiers statiques sont pris en charge. Cela se produit, par exemple, si le fichier *web.config* n’est pas déployé.
+> Si le gestionnaire de fichiers statiques d’IIS est activé **et** que le module ASP.NET Core est incorrectement configuré, les fichiers statiques sont pris en charge. Cela se produit par exemple si le fichier *web.config* n’est pas déployé.
 
-* Placez les fichiers de code (y compris *.cs* et *.cshtml*) en dehors de la racine du projet l’application web. Par conséquent, une séparation logique est créée entre le contenu côté client et le code basé sur le serveur de l’application. Cela empêche le code côté serveur d'avoir des fuites.
+* Placez les fichiers de code (y compris *.cs* et *.cshtml*) en dehors de la racine web du projet d’application. Par conséquent, une séparation logique est créée entre le contenu côté client et le code basé sur le serveur de l’application. Cela empêche le code côté serveur d'avoir des fuites.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
