@@ -1,4 +1,4 @@
----
+﻿---
 title: "Développement côté client dans ASP.NET Core"
 author: rick-anderson
 description: 
@@ -25,8 +25,8 @@ ms.lasthandoff: 02/23/2018
 - [Concaténer et minifier](xref:client-side/bundling-and-minification)
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
 - [Utiliser Browser Link](xref:client-side/using-browserlink)
-- [Utiliser JavaScriptServices pour les applications à page unique](xref:client-side/spa-services)
+- [Utiliser JavaScriptServices pour les applications Single Page](xref:client-side/spa-services)
 - [Utiliser les modèles de projet pour les applications à page unique](xref:spa/index)
     - [Modèle de projet Angular](xref:spa/angular)
     - [Modèle de projet React](xref:spa/react)
-    - [React avec modèle de projet Redux](xref:spa/react-with-redux)
+    - [Modèle de projet React avec Redux](xref:spa/react-with-redux)
