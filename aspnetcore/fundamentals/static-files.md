@@ -1,4 +1,4 @@
----
+﻿---
 title: Utiliser des fichiers statiques dans ASP.NET Core
 author: rick-anderson
 description: "Découvrez comment délivrer et sécuriser des fichiers statiques, et comment configurer le comportement d’un intergiciel (middleware) hébergeant des fichiers statiques dans une application web ASP.NET Core."
