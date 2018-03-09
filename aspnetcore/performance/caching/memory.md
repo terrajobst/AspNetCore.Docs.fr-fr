@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/memory
-ms.openlocfilehash: ef5dba655a8b6332bf0b6f21c678481a1c55aecf
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 64635235c11b55818da02d63d044334f4b2cdb08
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="in-memory-caching-in-aspnet-core"></a>Mise en cache dans ASP.NET Core
 
@@ -46,15 +46,15 @@ Demander le `IMemoryCache` instance dans le constructeur :
 
 `IMemoryCache` nécessite le package NuGet « Microsoft.Extensions.Caching.Memory ».
 
-Le code suivant utilise [TryGetValue](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) pour vérifier si l’heure actuelle est dans le cache. Si l’élément n’est pas mis en cache, une nouvelle entrée est créée et ajoutée au cache avec [définir](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_).
+Le code suivant utilise [TryGetValue](/dotnet/api/microsoft.extensions.caching.memory.imemorycache.trygetvalue?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_IMemoryCache_TryGetValue_System_Object_System_Object__) pour vérifier si une heure est dans le cache. Si une heure n’est pas mis en cache, une nouvelle entrée est créée et ajoutée au cache avec [définir](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.set?view=aspnetcore-2.0#Microsoft_Extensions_Caching_Memory_CacheExtensions_Set__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object___0_Microsoft_Extensions_Caching_Memory_MemoryCacheEntryOptions_).
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet1)]
 
-L’heure actuelle et l’heure de mise en cache s’affiche :
+L’heure actuelle et l’heure de mise en cache sont affichent :
 
-[!code-html[](memory/sample/WebCache/Views/Home/Cache.cshtml)]
+[!code-cshtml[](memory/sample/WebCache/Views/Home/Cache.cshtml)]
 
-La mise en cache `DateTime` valeur reste dans le cache s’il existe des demandes dans le délai d’expiration (et aucune suppression en raison d’une sollicitation de la mémoire). L’illustration ci-dessous indique l’heure actuelle et une heure antérieure récupérés du cache :
+La mise en cache `DateTime` valeur reste dans le cache, bien qu’il existe des demandes dans le délai d’expiration (et aucune suppression en raison d’une sollicitation de la mémoire). L’illustration suivante montre l’heure actuelle et une heure antérieure récupérés du cache :
 
 ![Vue d’index avec deux fois différentes affichées](memory/_static/time.png)
 

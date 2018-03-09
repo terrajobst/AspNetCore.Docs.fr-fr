@@ -4,16 +4,16 @@ author: AdrienTorris
 description: "Comprendre les valeurs par défaut de ASP.NET Core Identity et savoir comment configurer les propriétés d’identité pour utiliser des valeurs personnalisées."
 manager: wpickett
 ms.author: scaddie
-ms.date: 02/21/2018
+ms.date: 03/06/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 6aeb85063b4b6f97822062b523a0c1f7ee6b595c
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 469068af2fc12627a0a5d1c5623eb60bef51cea0
+ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configure-identity"></a>Configurer l’identité
 
@@ -132,7 +132,7 @@ Configurer le cookie de l’application dans `Startup.ConfigureServices`:
 | [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge) | S’applique uniquement aux ASP.NET Core 1.x.<br><br> Si la valeur est true, l’intergiciel (middleware) d’authentification gère les défis automatique. Si la valeur est false, l’intergiciel (middleware) d’authentification modifie uniquement les réponses lorsque explicitement indiqué par le `AuthenticationScheme`. |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.claimsissuer) | Obtient ou définit l’émetteur doit être utilisée pour toutes les revendications qui sont créées (héritée de [AuthenticationSchemeOptions](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions)). |
 | [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain) | Le domaine auquel associer le cookie. |
-| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration) | Obtient ou définit la durée de vie d’un cookie. |
+| [Cookie.Expiration](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.expiration) | Obtient ou définit la durée de vie du cookie HTTP (pas le cookie d’authentification). Cette propriété est remplacée par [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan). Il ne doit pas être utilisé dans le contexte de CookieAuthentication. |
 | [Cookie.HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) | Indique si un cookie est accessible par un script côté client.<br><br>La valeur par défaut est `true`. |
 | [Cookie.Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) | Le nom du cookie.<br><br>La valeur par défaut est `.AspNetCore.Cookies`. |
 | [Cookie.Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) | Le chemin d’accès du cookie. |
