@@ -152,11 +152,11 @@
 #### [Créer des Tag Helpers](mvc/views/tag-helpers/authoring.md)
 #### [Utiliser des Tag Helpers dans les formulaires](mvc/views/working-with-forms.md)
 #### [Tag Helpers intégrés](mvc/views/tag-helpers/built-in/index.md)
-##### [Tag Helper Anchor](mvc/views/tag-helpers/built-in/anchor-tag-helper.md)
-##### [Tag Helper Cache](mvc/views/tag-helpers/built-in/cache-tag-helper.md)
-##### [Tag Helper Distributed Cache](mvc/views/tag-helpers/built-in/distributed-cache-tag-helper.md)
-##### [Tag Helper Environment](mvc/views/tag-helpers/built-in/environment-tag-helper.md)
-##### [Tag Helper Image](mvc/views/tag-helpers/built-in/image-tag-helper.md)
+##### [Tag Helper d’ancre](mvc/views/tag-helpers/built-in/anchor-tag-helper.md)
+##### [Tag Helper de cache](mvc/views/tag-helpers/built-in/cache-tag-helper.md)
+##### [Tag Helper de cache distribué](mvc/views/tag-helpers/built-in/distributed-cache-tag-helper.md)
+##### [Tag Helper d’environnement](mvc/views/tag-helpers/built-in/environment-tag-helper.md)
+##### [Tag Helper d’image](mvc/views/tag-helpers/built-in/image-tag-helper.md)
 ##### [Tag Helper Ppartial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)
 ### [Vues partielles](mvc/views/partial.md)
 ### [Injection de dépendances dans les vues](mvc/views/dependency-injection.md)
@@ -212,6 +212,9 @@
 
 # [Mobile](xref:mobile/index)
 ## [Créer des services backend pour les applications mobiles natives](xref:mobile/native-mobile-backend)
+
+# [SignalR](xref:signalr/index)
+## [Bien démarrer](xref:signalr/get-started-signalr-core)
 
 # [Héberger et déployer](xref:host-and-deploy/index)
 ## [Héberger sur Azure App Service](xref:host-and-deploy/azure-apps/index)
