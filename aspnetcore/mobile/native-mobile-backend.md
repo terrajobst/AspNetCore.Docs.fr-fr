@@ -15,7 +15,7 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="creating-backend-services-for-native-mobile-applications"></aest été encore>Création de Services principaux pour les Applications mobiles natives
+# <a name="creating-backend-services-for-native-mobile-applications">Création de services principaux pour les applications mobiles natives
 
 Par [Steve Smith](https://ardalis.com/)
 
@@ -31,15 +31,15 @@ Ce didacticiel montre comment créer des services principaux à l’aide du noya
 
 ### <a name="features"></a>Fonctionnalités
 
-L’application ToDoRest prend en charge l’affichage, ajout, la suppression et la mise à jour des éléments de tâche. Chaque élément possède un ID, un nom, Notes et une propriété qui indique si elle est déjà terminée.
+L’application ToDoRest prend en charge l’affichage, l’ajout, la suppression et la mise à jour des éléments de tâche. Chaque élément a un ID, un nom, des remarques et une propriété qui indique si la tâche a été effectuée.
 
-La vue principale des éléments, comme indiquée ci-dessus, répertorie le nom de chaque élément et indique si elle est effectuée avec une coche.
+La vue principale des éléments, reproduite ci-dessus, montre le nom de chaque élément et indique si la tâche est effectuée avec une marque.
 
-Si vous appuyez sur l'icône`+` s'ouvre une boîte de dialogue "Ajouter un élément" :
+Le fait d’appuyer sur l'icône`+` ouvre une boîte de dialogue permettant l’ajout d’un élément :
 
 ![Élément de boîte de dialogue Ajouter](native-mobile-backend/_static/todo-android-new-item.png)
 
-Cliquer sur un élément sur l’écran de la liste principale ouvre une boîte de dialogue dans laquelle se trouve le nom de l’élément, les notes de publication et les paramètres terminés peuvent être modifiés, ou l’élément peut être supprimé :
+Le fait de cliquer sur un élément de l’écran de la liste principale ouvre une boîte de dialogue où les valeurs pour Name, Notes et Done peuvent être modifiées, et où vous pouvez supprimer l’élément :
 
 ![Élément de boîte de dialogue Modifier](native-mobile-backend/_static/todo-android-edit-item.png)
 
@@ -55,7 +55,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="creating-the-aspnet-core-project"></a>Création du projet ASP.NET Core
 
-Pour créer une Application Web ASP.NET Core dans Visual Studio. Choisissez le modèle "API Web" et aucune authentification. Nommez le projet *ToDoApi*.
+Créez une application web ASP.NET Core dans Visual Studio. Choisissez le modèle "API web" et Pas d’authentification. Nommez le projet *ToDoApi*.
 
 ![Boîte de dialogue nouvelle Application Web ASP.NET avec le modèle de projet d’API Web sélectionné](native-mobile-backend/_static/web-api-template.png)
 
@@ -70,11 +70,11 @@ Ajouter une classe de modèle pour représenter des éléments de tâche. Marque
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
-Les méthodes d’API requièrent un moyen d’utiliser des données. Utilisez le même `IToDoRepository` que dans l’exemple de Xamarin d’origine qui utilise l’interface :
+Les méthodes d’API requièrent un moyen d’utiliser des données. Utilisez la même interface `IToDoRepository` que celle utilisée par l’exemple Xamarin d’origine :
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Interfaces/IToDoRepository.cs)]
 
-Pour cet exemple, l’implémentation utilise seulement une collection d’éléments de type privée :
+Pour cet exemple, l’implémentation utilise seulement une collection privée d’éléments :
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Services/ToDoRepository.cs)]
 
@@ -85,7 +85,7 @@ Configurez la mise en oeuvre dans *Startup.cs*:
 À ce stade, vous êtes prêt à créer le *ToDoItemsController*.
 
 > [!TIP]
-> En savoir plus sur la création d'une "web API" dans [construction votre API Web premier avec ASP.NET MVC de base et de Visual Studio](../tutorials/first-web-api.md).
+> Découvrez plus d’informations sur la création des API web dans [Création de votre première API web avec ASP.NET Core MVC et Visual Studio](../tutorials/first-web-api.md).
 
 ## <a name="creating-the-controller"></a>Création du contrôleur
 
@@ -111,7 +111,7 @@ Vous pouvez tester votre nouvelle méthode API à l’aide de divers outils, tel
 
 ### <a name="creating-items"></a>Création d’éléments
 
-Par convention, la création de nouveaux éléments de données est liée au verbe HTTP POST. La méthode `Create` a un attribut `[HttpPost]` appliqué et accepte une instance `ToDoItem`. Étant donné que l'argument `item` sera passé dans le corps de la publication, ce paramètre est complèté par l'attribut `[FromBody]`.
+Par convention, la création de nouveaux éléments de données est mappée au verbe HTTP POST. La méthode `Create` a un attribut `[HttpPost]` appliqué et accepte une instance `ToDoItem`. Étant donné que l'argument `item` est passé dans le corps de la publication, ce paramètre est décoté avec l'attribut `[FromBody]`.
 
 À l’intérieur de la méthode, l’élément est vérifié quant sur sa validité et son existence préalable dans le magasin de données. Si aucun problème ne se produit, il est ajouté à l’aide de l’espace de stockage. La vérification du modèle par `ModelState.IsValid`  [validation des modèles](../mvc/models/validation.md) doit être effectuée dans chaque méthode d’API qui accepte une entrée d’utilisateur.
 
