@@ -284,7 +284,7 @@ Le balisage suivant montre comment utiliser une instruction switch :
 
 ### <a name="looping-for-foreach-while-and-do-while"></a>Boucles @for, @foreach, @while et @do while
 
-Le code HTML basé sur un modèle peut être affiché avec des instructions de contrôle de boucle. Pour afficher une liste de personnes :
+Le rendu HTML peut être réalisé à partir d'instructions de contrôle de boucle. Pour afficher une liste de personnes :
 
 ```cshtml
 @{
