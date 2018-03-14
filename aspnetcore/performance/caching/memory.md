@@ -24,11 +24,11 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [John Luo](https://github.
 
 ## <a name="caching-basics"></a>Principes fondamentaux de la mise en cache
 
-La mise en cache peut améliorer considérablement les performances et l’évolutivité d’une application en réduisant le travail requis pour générer le contenu. La mise en cache fonctionne mieux avec les données qui sont rarement modifiées. La mise en cache permet une copie des données qui peuvent être renvoyées beaucoup plus rapidement qu’à partir de la source d’origine. Vous devez écrire et tester votre application pour ne jamais dépendre des données mises en cache.
+La mise en cache peut améliorer considérablement les performances et l’évolutivité d’une application en réduisant le travail requis pour générer le contenu. Elle est idéale pour les données qui ne sont pas souvent modifiées. Elle effectue une copie des données, qui sont ainsi renvoyées beaucoup plus rapidement qu’à partir de la source d’origine. L'application doit être écrite et testée de façon à ne jamais dépendre des données en cache.
 
 ASP.NET Core prend en charge plusieurs caches différents. Le cache le plus simple est basé sur le [IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache), qui représente un cache stocké dans la mémoire du serveur web. Les applications qui s’exécutent sur une batterie de serveurs de plusieurs serveurs devraient vous assurer que les sessions sont rémanentes lors de l’utilisation du cache en mémoire. Les sessions rémanentes assurent que les requêtes ultérieures à partir d’un client sont dirigées vers le même serveur. Par exemple, les applications Web Azure utilisent [Application Request Routing](https://www.iis.net/learn/extensions/planning-for-arr) (ARR) pour router toutes les demandes ultérieures vers le même serveur.
 
-Les sessions non persistantes dans une batterie de serveurs web nécessitent un [cache distribué](distributed.md) pour éviter les problèmes de cohérence du cache. Pour certaines applications, un cache distribué peut prendre en charge une montée en charge plus élevée qu’un cache en mémoire. Utiliser un cache distribué permet de décharger la mémoire cache vers un processus externe. 
+Les sessions non persistantes dans une batterie de serveurs Web nécessitent un [cache distribué](distributed.md) pour éviter les problèmes de cohérence du cache. Pour certaines applications, un cache distribué est est mesure de gérer une montée en charge plus élevée qu’un cache en mémoire. Il permet de décharger la mémoire cache vers un processus externe.  
 
 Le cache `IMemoryCache` supprimera les entrées du cache si la mémoire est insuffisante, sauf si la [priorité de cache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheitempriority) a la valeur `CacheItemPriority.NeverRemove`. Vous pouvez définir la `CacheItemPriority` pour ajuster la priorité avec laquelle le cache supprime des éléments sollicités en mémoire.
 
@@ -68,12 +68,12 @@ Le code suivant appelle [Get](https://docs.microsoft.com/aspnet/core/api/microso
 
 Consultez [les méthodes de IMemoryCache](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.imemorycache) et [les méthodes de CacheExtensions](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.cacheextensions) pour obtenir une description des méthodes du cache.
 
-## <a name="using-memorycacheentryoptions"></a>En utilisant les MemoryCacheEntryOptions
+## <a name="using-memorycacheentryoptions"></a>Utilisation de MemoryCacheEntryOptions
 
 L’exemple suivant :
 
-- Définit l’heure d’expiration absolue. Ceci est la durée maximale pendant laquelle l’entrée peut être miss en cache et empêche l’élément de devenir trop périmé quand l’expiration glissante est constamment renouvelée.
-- Définit un délai d’expiration glissant. Les requêtes qui accèdent à cet élément de mise en cache réinitialise l’horloge d’expiration glissante.
+- Définit l’heure d’expiration absolue. Ceci est la durée maximale pendant laquelle l’entrée peut être mise en cache et empêche l’élément de devenir trop périmé quand l’expiration glissante est constamment renouvelée.
+- Définit un délai d’expiration glissant. Les requêtes qui accèdent à cet élément de mise en cache réinitialisent l’horloge d’expiration glissante.
 - Définit la priorité de cache `CacheItemPriority.NeverRemove`. 
 - Définit un [PostEvictionDelegate](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.caching.memory.postevictiondelegate) qui est appelé après la suppression de l’entrée du cache. Le rappel est exécuté sur un thread différent du code qui supprime l’élément à partir du cache.
 
@@ -92,9 +92,9 @@ Utiliser un `CancellationTokenSource` permet à plusieurs entrées de cache d'ê
 - Lorsque vous utilisez un rappel pour remplir un élément de cache :
 
   - Plusieurs demandes peuvent trouver la valeur de clé mise en cache vide étant donné que le rappel n’est pas terminé. 
-  - Cela peut entraîner que plusieurs threads remplissent l’élément mis en cache .
+  - Il peut en résulter que plusieurs threads remplissent l’élément mis en cache.
 
-- Lorsqu’une entrée de cache est utilisée pour créer un autre, l’enfant copie les jetons d’expiration et les paramètres d’expiration basés sur le temps de l’entrée parente. L’enfant n’est pas expiré par la suppression manuelle ou la mise à jour de l’entrée du parent.
+- 	Lorsqu’une entrée de cache est utilisée pour en créer une autre, l’enfant copie les jetons d’expiration et les paramètres d’expiration basés sur le temps de l’entrée parente. L’enfant n’expire par suite à la suppression manuelle ou à la mise à jour de l’entrée parente.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
