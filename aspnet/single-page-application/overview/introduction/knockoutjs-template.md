@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
 ms.openlocfilehash: e6c0c45bed098a8a1160ff11e4f77244bf55ffd3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="single-page-application-knockoutjs-template"></a>Application à Page unique : Modèle de KnockoutJS
 ====================
@@ -94,7 +94,7 @@ Dans le projet Visual Studio, le dossier de modèles contient les modèles qui s
 
 **TodoItem, liste des tâches**
 
-Il s’agit de modèles de base de données pour Entity Framework Code First. Notez que ces modèles ont des propriétés qui pointent vers les uns par rapport aux autres. `ToDoList`contient une collection de ToDoItems et chaque `ToDoItem` a une référence à son parent ToDoList. Ces propriétés sont appelées propriétés de navigation, et elles représentent la relation un-à-plusieurs, une liste de tâches et ses éléments de tâches.
+Il s’agit de modèles de base de données pour Entity Framework Code First. Notez que ces modèles ont des propriétés qui pointent vers les uns par rapport aux autres. `ToDoList` contient une collection de ToDoItems et chaque `ToDoItem` a une référence à son parent ToDoList. Ces propriétés sont appelées propriétés de navigation, et elles représentent la relation un-à-plusieurs, une liste de tâches et ses éléments de tâches.
 
 Le `ToDoItem` également classe le **[ForeignKey]** attribut pour spécifier que `ToDoListId` est une clé étrangère dans la `ToDoList` table. Cela indique à EF pour ajouter une contrainte foreign key à la base de données.
 
@@ -162,7 +162,7 @@ Le `TodoController` classe est très similaire à `TodoListController`. La plus 
 
 ## <a name="mvc-controllers-and-views"></a>Vues et contrôleurs MVC
 
-Les contrôleurs MVC se trouvent également dans le dossier contrôleurs, de la solution. `HomeController`effectue le rendu HTML principal pour l’application. La vue pour le contrôleur Home est définie dans Views/Home/Index.cshtml. La vue accueil restitue un contenu différent selon que l’utilisateur est connecté :
+Les contrôleurs MVC se trouvent également dans le dossier contrôleurs, de la solution. `HomeController` effectue le rendu HTML principal pour l’application. La vue pour le contrôleur Home est définie dans Views/Home/Index.cshtml. La vue accueil restitue un contenu différent selon que l’utilisateur est connecté :
 
 [!code-cshtml[Main](knockoutjs-template/samples/sample4.cshtml)]
 

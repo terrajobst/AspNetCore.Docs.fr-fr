@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
 ms.openlocfilehash: 6210d01f65bcadf8ae4209e372d5aac68861bd7a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="web-deployment-in-the-enterprise"></a>Déploiement Web de l’entreprise
 ====================
@@ -26,7 +26,7 @@ par [Jason Lee](https://github.com/jrjlee)
 
 > Ce didacticiel explique comment répondre à un grand nombre des défis que vous pouvez rencontrer lorsque vous gérez le déploiement d’applications web de l’échelle de l’entreprise dans les environnements de développement, test, intermédiaire et de production. Le didacticiel comprend une solution de référence avec un mélange de contenu conceptuel et de tâches pour vous guider à travers les différentes tâches courantes et les procédures.
 > 
-> Pour obtenir une traduction italienne de ces didacticiels, visitez [http://www.lucamorelli.it](http://www.lucamorelli.it).
+> Pour obtenir une traduction italienne de ces didacticiels, visitez [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
 
 
 ## <a name="enterprise-deployment-challenges"></a>Problèmes de déploiement d’entreprise
@@ -68,19 +68,19 @@ Ce didacticiel inclut des rubriques qui entrent dans quatre domaines principaux.
 
 Ces rubriques présentent la solution de référence & #x 2014 ; la solution Contact Manager & #x 2014 ; et décrivent comment télécharger et configurez-le sur votre ordinateur local :
 
-- [La Solution de gestionnaire de contacts](the-contact-manager-solution.md)
-- [Configuration de la Solution de gestionnaire de contacts](setting-up-the-contact-manager-solution.md)
+- [La solution Gestionnaire de contacts](the-contact-manager-solution.md)
+- [Configuration de la solution Gestionnaire de contacts](setting-up-the-contact-manager-solution.md)
 
 Ces rubriques présentent des fichiers projet MSBuild, décrivent comment vous pouvez créer et utiliser des fichiers de projet personnalisés et suivez le processus de déploiement pour la solution de gestionnaire de contacts :
 
-- [Présentation du fichier de projet](understanding-the-project-file.md)
-- [Comprendre le processus de génération](understanding-the-build-process.md)
+- [Présentation du fichier projet](understanding-the-project-file.md)
+- [Présentation du processus de génération](understanding-the-build-process.md)
 
 Ces rubriques décrivent le déploiement d’applications web, y compris comment empaquetage de build et de fonctionnement du processus, comment le processus de génération s’intègre avec le Pipeline de publication Web, comment modifier les paramètres de déploiement et comment déployer des packages web vers la destination environnements :
 
-- [Création et l’empaquetage des projets d’Application Web](building-and-packaging-web-application-projects.md)
-- [Configuration des paramètres de déploiement du Package Web](configuring-parameters-for-web-package-deployment.md)
-- [Packages de déploiement Web](deploying-web-packages.md)
+- [Génération et empaquetage des projets d’application web](building-and-packaging-web-application-projects.md)
+- [Configuration des paramètres pour le déploiement de package web](configuring-parameters-for-web-package-deployment.md)
+- [Déploiement de packages web](deploying-web-packages.md)
 
 - [Déploiement de projets de base de données](deploying-database-projects.md) décrit les différentes techniques que vous pouvez utiliser pour déployer des projets de base de données de Visual Studio, ainsi que les avantages et inconvénients de chaque approche. [Création et exécution d’un fichier de commandes de déploiement](creating-and-running-a-deployment-command-file.md) décrit comment créer un fichier de commande simple qui encapsule la logique de votre déploiement et vous permet de déployer des solutions complexes comme un seule étape processus.
 - Enfin, [installer manuellement les Packages Web](manually-installing-web-packages.md) conclut le didacticiel en vous montrant pour importer des packages web dans IIS.

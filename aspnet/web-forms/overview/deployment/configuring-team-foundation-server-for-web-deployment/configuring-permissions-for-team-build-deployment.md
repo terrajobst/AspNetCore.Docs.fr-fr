@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: cb3d013d69e36f97335ea31dd6e4997772ba2d8e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-permissions-for-team-build-deployment"></a>Déploiement de la configuration des autorisations de Team Build
 ====================
@@ -38,7 +38,7 @@ Lorsque vous installez le service de build de 2010 Team Foundation Server (TFS),
 Les tâches de déploiement qui nécessitent l’authentification Windows et que vous prévoyez d’automatiser à l’aide de Team Build, seront exécute à l’aide de l’identité de service de build. Par conséquent, vous devez accorder à l’identité de service de build toutes les autorisations requises sur vos serveurs web et vos serveurs de base de données.
 
 > [!NOTE]
-> Le compte Service réseau utilise le compte d’ordinateur pour s’authentifier auprès d’autres ordinateurs. Comptes d’ordinateur prennent la forme *[nom de domaine]\[nom de l’ordinateur]***$**& #x 2014 ; par exemple, **FABRIKAM\TFSBUILD$**. Par conséquent, si votre service de build s’exécute à l’aide de l’identité Service réseau, vous devriez toutes les autorisations requises pour l’identité du compte d’ordinateur pour votre serveur de builds.
+> Le compte Service réseau utilise le compte d’ordinateur pour s’authentifier auprès d’autres ordinateurs. Comptes d’ordinateur prennent la forme * [nom de domaine]\[nom de l’ordinateur] ***$**& #x 2014 ; par exemple, **FABRIKAM\TFSBUILD$**. Par conséquent, si votre service de build s’exécute à l’aide de l’identité Service réseau, vous devriez toutes les autorisations requises pour l’identité du compte d’ordinateur pour votre serveur de builds.
 
 
 ## <a name="configuring-web-server-permissions"></a>Configuration des autorisations de serveur Web

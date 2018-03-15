@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: 80810415bac473a58f60110fb9d08772e0627bd5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>Exclusion de fichiers et dossiers de déploiement
 ====================
@@ -50,7 +50,7 @@ Lorsque vous choisissez **uniquement les fichiers nécessaires pour exécuter ce
 
 > [!NOTE]
 > La logique qui détermine les fichiers à inclure est contenue dans ce fichier :   
-> *%ProgramFiles%\MSBuild\Microsoft\VisualStudio\v10.0\Web\ Microsoft.Web.Publishing.OnlyFilesToRunTheApp.targets*
+> *%PROGRAMFILES%\MSBuild\Microsoft\VisualStudio\v10.0\Web\ Microsoft.Web.Publishing.OnlyFilesToRunTheApp.targets*
 
 
 ## <a name="excluding-specific-files-and-folders"></a>À l’exclusion des fichiers et des dossiers
@@ -95,7 +95,7 @@ La procédure suivante vous montre comment ajouter un *. wpp.targets* fichier po
 1. Ouvrez votre solution dans Visual Studio 2010.
 2. Dans le **l’Explorateur de solutions** fenêtre, cliquez sur le nœud de projet de votre application web (par exemple, **ContactManager.Mvc**), pointez sur **ajouter**, puis cliquez sur **Un nouvel élément**.
 3. Dans le **ajouter un nouvel élément** boîte de dialogue, sélectionnez le **fichier XML** modèle.
-4. Dans le **nom** , tapez *[nom du projet]***. wpp.targets** (par exemple, **ContactManager.Mvc.wpp.targets**), puis cliquez sur  **Ajouter**.
+4. Dans le **nom** , tapez *[nom du projet] ***.wpp.targets** (par exemple, **ContactManager.Mvc.wpp.targets**), puis cliquez sur **ajouter**.
 
     ![](excluding-files-and-folders-from-deployment/_static/image3.png)
 
