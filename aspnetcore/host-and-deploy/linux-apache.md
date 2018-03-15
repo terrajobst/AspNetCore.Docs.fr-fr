@@ -5,16 +5,16 @@ author: spboyer
 manager: wpickett
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 10/19/2016
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: b11bc811b6aefce22b60a28afd72c2a2d0b26955
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 033adddc586b60c9f7453df5434617aa838737f8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -112,27 +112,32 @@ Complete!
 ```
 
 > [!NOTE]
-> Dans cet exemple, la sortie reflète httpd.86_64 depuis la version CentOS 7 est de 64 bits. Pour vérifier où Apache est installé, exécutez `whereis httpd` à partir d’une invite de commandes. 
+> Dans cet exemple, la sortie reflète httpd.86_64 depuis la version CentOS 7 est de 64 bits. Pour vérifier où Apache est installé, exécutez `whereis httpd` à partir d’une invite de commandes.
 
 ### <a name="configure-apache-for-reverse-proxy"></a>Configurer Apache pour le proxy inverse
 
 Les fichiers de configuration pour Apache se trouvent dans le répertoire `/etc/httpd/conf.d/`. Tout fichier portant le *.conf* extension est traitée dans l’ordre alphabétique en plus des fichiers de configuration de module dans `/etc/httpd/conf.modules.d/`, qui contient toutes les configurations de fichiers nécessaire au chargement des modules.
 
-Créer un fichier de configuration pour l’application nommée `hellomvc.conf`:
+Créer un fichier de configuration nommé *hellomvc.conf*, pour l’application :
 
 ```
 <VirtualHost *:80>
     ProxyPreserveHost On
     ProxyPass / http://127.0.0.1:5000/
     ProxyPassReverse / http://127.0.0.1:5000/
-    ErrorLog /var/log/httpd/hellomvc-error.log
-    CustomLog /var/log/httpd/hellomvc-access.log common
+    ServerName www.example.com
+    ServerAlias *.example.com
+    ErrorLog ${APACHE_LOG_DIR}hellomvc-error.log
+    CustomLog ${APACHE_LOG_DIR}hellomvc-access.log common
 </VirtualHost>
 ```
 
-Le **VirtualHost** nœud peut apparaître plusieurs fois dans un ou plusieurs fichiers sur un serveur. **VirtualHost** est définie pour écouter sur n’importe quelle adresse IP à l’aide du port 80. Les deux lignes sont définies pour les demandes à la racine à 127.0.0.1 dans le serveur proxy sur le port 5000. Pour la communication bidirectionnelle, *ProxyPass* et *ProxyPassReverse* sont requis.
+Le `VirtualHost` bloc peut apparaître plusieurs fois, dans un ou plusieurs fichiers sur un serveur. Dans le fichier de configuration précédent Apache accepte le trafic public sur le port 80. Le domaine `www.example.com` est prise en charge et le `*.example.com` résout les alias pour le site Web. Consultez [prise en charge basée sur le nom d’hôte virtuel](https://httpd.apache.org/docs/current/vhosts/name-based.html) pour plus d’informations. Les demandes sont traitées à la racine pour le port 5000 du serveur de 127.0.0.1. Pour la communication bidirectionnelle, `ProxyPass` et `ProxyPassReverse` sont requis.
 
-La journalisation peut être configurée par **VirtualHost** à l’aide de **ErrorLog** et **CustomLog** directives. **Journal des erreurs** est l’emplacement où le serveur enregistre les erreurs, et **CustomLog** définit le nom de fichier et le format du fichier journal. Il s’agit dans ce cas, où les informations de demande sont consignées. Il existe une ligne pour chaque demande.
+> [!WARNING]
+> Échec de spécification de manière adéquate [nom_serveur directive](https://httpd.apache.org/docs/current/mod/core.html#servername) dans les **VirtualHost** bloc expose votre application à des failles de sécurité. Liaison de caractère générique de sous-domaine (par exemple, `*.example.com`) ne présente ce risque de sécurité si vous contrôlez le domaine parent entière (par opposition à `*.com`, qui est vulnérable). Consultez la [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) pour plus d’informations.
+
+La journalisation peut être configurée par `VirtualHost` à l’aide de `ErrorLog` et `CustomLog` directives. `ErrorLog` est l’emplacement où le serveur enregistre les erreurs, et `CustomLog` définit le nom de fichier et le format du fichier journal. Il s’agit dans ce cas, où les informations de demande sont consignées. Il existe une ligne pour chaque demande.
 
 Enregistrez le fichier et la configuration de test. Si tout réussit, la réponse doit être `Syntax [OK]`.
 

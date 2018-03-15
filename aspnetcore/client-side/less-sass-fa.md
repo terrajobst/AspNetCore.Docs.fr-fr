@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/less-sass-fa
-ms.openlocfilehash: 7ef82d15de64ef62b952b6c757cb9c35fd40e788
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e00a0929db9dff6c97c4b22468156f621a1a3820
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>Introduction aux applications de style avec moins, Sass et police impressionnant dans ASP.NET Core
 
@@ -97,9 +97,9 @@ body {
 .bgDark2    {color:@darker2}
 ```
 
-`@base`et l’autre @-prefixed éléments sont des variables. Chacun d’eux représente une couleur. À l’exception de `@base`, ils sont définis à l’aide des fonctions de couleur : éclaircir assombrissement et de rotation. Éclaircir et assombrissement faire à peu près ce que vous attendez ; rotation ajuste la teinte d’une couleur d’un nombre de degrés (autour de la roulette de la couleur). Moins le processeur est assez intelligent pour ignorer les variables qui ne sont pas utilisées, donc pour illustrer le fonctionnement de ces variables, vous devez les utiliser quelque part. Les classes `.baseColor`, etc. va vous montrer les valeurs calculées de chacune des variables dans le fichier CSS qui est généré.
+`@base` et l’autre @-prefixed éléments sont des variables. Chacun d’eux représente une couleur. À l’exception de `@base`, ils sont définis à l’aide des fonctions de couleur : éclaircir assombrissement et de rotation. Éclaircir et assombrissement faire à peu près ce que vous attendez ; rotation ajuste la teinte d’une couleur d’un nombre de degrés (autour de la roulette de la couleur). Moins le processeur est assez intelligent pour ignorer les variables qui ne sont pas utilisées, donc pour illustrer le fonctionnement de ces variables, vous devez les utiliser quelque part. Les classes `.baseColor`, etc. va vous montrer les valeurs calculées de chacune des variables dans le fichier CSS qui est généré.
 
-### <a name="getting-started"></a>Bien démarrer
+### <a name="get-started"></a>Prise en main
 
 Créer un **fichier de Configuration npm** (*package.json*) dans votre dossier de projet et le modifier pour faire référence à `gulp` et `gulp-less`:
 

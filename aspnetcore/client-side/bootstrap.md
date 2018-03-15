@@ -1,7 +1,7 @@
 ---
-title: "Création de sites web attrayants et adaptatifs avec Bootstrap"
+title: "Création de sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core"
 author: ardalis
-description: 
+description: "Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core."
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: e2ade6223cdc56a4f0f00ff0b985ceda4ab5484a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: c3dfaa53e9e3277d025d014f65004e4c24a5acc4
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="building-beautiful-responsive-sites-with-bootstrap"></a>Création de sites web attrayants et adaptatifs avec Bootstrap
+# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Création de sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
 
 <a name="bootstrap-index"></a>
 
@@ -23,7 +23,7 @@ Par [Steve Smith](https://ardalis.com/)
 
 Programme d’amorçage est actuellement l’infrastructure web les plus populaires pour le développement d’applications web réactives. Il offre un nombre de fonctionnalités et avantages qui peuvent améliorer l’expérience de vos utilisateurs avec votre site web, si vous êtes un utilisateur débutant à la conception frontale et de développement ou d’un expert. Programme d’amorçage est déployé en tant qu’ensemble de fichiers CSS et JavaScript et est conçu pour évoluer vos application ou un site efficacement des téléphones jusqu’aux tablettes aux ordinateurs de bureau.
 
-## <a name="getting-started"></a>Bien démarrer
+## <a name="get-started"></a>Prise en main
 
 Il existe plusieurs façons de prise en main d’amorçage. Si vous démarrez une nouvelle application web dans Visual Studio, vous pouvez choisir le modèle de démarrage par défaut pour ASP.NET Core, dans lequel cas Bootstrap proviendront préalablement installé :
 
@@ -190,7 +190,7 @@ Si vous souhaitez modifier le thème d’amorçage, placez le *bootstrap.css* fi
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
 ```
 
-Si vous souhaitez créer votre propre tableau de bord, vous pouvez démarrer à partir de l’exemple libre disponible ici : [http://getbootstrap.com/examples/dashboard/](http://getbootstrap.com/examples/dashboard/).
+Si vous souhaitez créer votre propre tableau de bord, vous pouvez démarrer à partir de l’exemple libre disponible ici : [ http://getbootstrap.com/examples/dashboard/ ](http://getbootstrap.com/examples/dashboard/).
 
 ## <a name="components"></a>Composants
 
@@ -214,7 +214,7 @@ Vues miniatures sont un composant de l’interface utilisateur commun utilisé p
 
 ## <a name="javascript-support"></a>Prise en charge de JavaScript
 
-Bibliothèque de JavaScript du programme d’amorçage inclut la prise en charge API pour les composants inclus, ce qui vous permet de contrôler leur comportement par programme au sein de votre application. En outre, *bootstrap.js* inclut plus d’une dizaine plug-ins de jQuery personnalisées, en fournissant des fonctionnalités supplémentaires, comme des transitions, boîtes de dialogue modales, faites défiler la détection (où l’utilisateur a défilé dans le document en fonction des styles de mise à jour), comportement de réduction, tapis roulants et menus apposition dans la fenêtre de sorte qu’ils ne défilent pas hors de l’écran. Il n’existe pas de suffisamment d’espace pour couvrir tous les modules complémentaires JavaScript intégrés Bootstrap – pour en savoir plus, consultez [http://getbootstrap.com/javascript/](http://getbootstrap.com/javascript/).
+Bibliothèque de JavaScript du programme d’amorçage inclut la prise en charge API pour les composants inclus, ce qui vous permet de contrôler leur comportement par programme au sein de votre application. En outre, *bootstrap.js* inclut plus d’une dizaine plug-ins de jQuery personnalisées, en fournissant des fonctionnalités supplémentaires, comme des transitions, boîtes de dialogue modales, faites défiler la détection (où l’utilisateur a défilé dans le document en fonction des styles de mise à jour), comportement de réduction, tapis roulants et menus apposition dans la fenêtre de sorte qu’ils ne défilent pas hors de l’écran. Il n’existe pas de suffisamment d’espace pour couvrir tous les modules complémentaires JavaScript intégrés Bootstrap – pour en savoir plus, consultez [ http://getbootstrap.com/javascript/ ](http://getbootstrap.com/javascript/).
 
 ## <a name="summary"></a>Récapitulatif
 

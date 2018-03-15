@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
 ms.openlocfilehash: 3f732ae6f1b7845bcae88912b4a4fe26574c10de
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="aspnet-error-handling"></a>Gestion des erreurs de ASP.NET
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -250,7 +250,7 @@ Comme mentionné précédemment dans ce didacticiel, vous pouvez ajouter des ins
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample13.cs?highlight=20,22-23)]
 
-Le code ci-dessus appelle le `LogException` méthode contenue dans la `ExceptionUtility` classe. Vous avez ajouté le *ExceptionUtility.cs* fichier de classe pour le *logique* dossier précédemment dans ce didacticiel. Le `LogException` méthode accepte deux paramètres. Le premier paramètre est l’objet exception. Le deuxième paramètre est une chaîne utilisée pour identifier la source de l’erreur.
+Le code ci-dessus appelle le `LogException` méthode contenue dans la `ExceptionUtility` classe. Vous avez ajouté le *ExceptionUtility.cs* fichier de classe pour le *logique* dossier précédemment dans ce didacticiel. La méthode `LogException` accepte deux paramètres. Le premier paramètre est l’objet exception. Le deuxième paramètre est une chaîne utilisée pour identifier la source de l’erreur.
 
 ### <a name="inspecting-the-error-logging-information"></a>Examiner les informations de journalisation des erreurs
 
@@ -301,7 +301,7 @@ Afficher le journal ELMAH est facile, mais tout d’abord, vous allez créer une
 
 1. Appuyez sur **CTRL + F5** pour exécuter l’exemple d’application Wingtip Toys.
 2. Pour écrire une exception non gérée dans le journal ELMAH, naviguer dans votre navigateur à l’URL suivante (à l’aide de votre numéro de port) :  
-    `https://localhost:44300/NoPage.aspx`La page d’erreur s’affichera.
+    `https://localhost:44300/NoPage.aspx` La page d’erreur s’affichera.
 3. Pour afficher le journal ELMAH, naviguer dans votre navigateur à l’URL suivante (à l’aide de votre numéro de port) :  
     `https://localhost:44300/elmah.axd`
 

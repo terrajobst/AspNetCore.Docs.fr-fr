@@ -5,16 +5,16 @@ description: "Décrit comment le programme d’installation de Nginx comme un pr
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/21/2017
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: 5e85cf909c1a360f245bcc83233ccc1347735b26
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: a1de177fcd41c925a85e5aab9a0d236249b7da0b
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Héberger ASP.NET Core sur Linux avec Nginx
 
@@ -22,7 +22,8 @@ De [Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
 Ce guide explique comment configurer un environnement ASP.NET Core prêt pour la production sur un serveur Ubuntu 16.04.
 
-**Remarque :** pour Ubuntu 14.04, *supervisord* est recommandé d’utiliser une solution pour l’analyse du processus Kestrel. *systemd* n’est pas disponible sur Ubuntu 14.04. [Voir la version précédente de ce document](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md)
+> [!NOTE]
+> Pour Ubuntu 14.04, *supervisord* est recommandé d’utiliser une solution pour l’analyse du processus Kestrel. *systemd* n’est pas disponible sur Ubuntu 14.04. [Consultez la version précédente de ce document](https://github.com/aspnet/Docs/blob/e9c1419175c4dd7e152df3746ba1df5935aaafd5/aspnetcore/publishing/linuxproduction.md).
 
 Ce guide montre comment effectuer les opérations suivantes :
 
@@ -113,23 +114,37 @@ Vérifiez qu’un navigateur affiche la page d’accueil par défaut de Nginx.
 
 ### <a name="configure-nginx"></a>Configurer Nginx
 
-Pour configurer Nginx comme un proxy inverse pour transférer les demandes à notre application ASP.NET Core, modifiez `/etc/nginx/sites-available/default`. Ouvrez-le dans un éditeur de texte et remplacez le contenu par ce qui suit :
+Pour configurer Nginx comme un proxy inverse pour transférer les demandes à votre application ASP.NET Core, modifiez */etc/nginx/sites-available/default*. Ouvrez-le dans un éditeur de texte et remplacez le contenu par ce qui suit :
 
-```
+```nginx
 server {
-    listen 80;
+    listen        80;
+    server_name   example.com *.example.com;
     location / {
-        proxy_pass http://localhost:5000;
+        proxy_pass         http://localhost:5000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection keep-alive;
-        proxy_set_header Host $http_host;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $http_host;
         proxy_cache_bypass $http_upgrade;
     }
 }
 ```
 
-Ce fichier de configuration Nginx transfère le trafic public entrant du port `80` au port `5000`.
+Lorsqu’aucun `server_name` correspondances, Nginx utilise le serveur par défaut. Si aucun serveur par défaut n’est défini, le premier serveur dans le fichier de configuration est le serveur par défaut. En tant que meilleure pratique, ajouter un serveur de valeur par défaut spécifique qui retourne un code d’état de 444 dans votre fichier de configuration. Un exemple de configuration de serveur par défaut est :
+
+```nginx
+server {
+    listen   80 default_server;
+    # listen [::]:80 default_server deferred;
+    return   444;
+}
+```
+
+Avec le précédent serveur de configuration par défaut et le fichier, Nginx accepte le trafic public sur le port 80 avec un en-tête d’hôte `example.com` ou `*.example.com`. Demande ne correspond ne pas à ces hôtes ne sont transmis à Kestrel. Nginx transfère les demandes correspondants à Kestrel à `http://localhost:5000`. Consultez [comment nginx traite une demande](https://nginx.org/docs/http/request_processing.html) pour plus d’informations.
+
+> [!WARNING]
+> Échec de spécification de manière adéquate [nom_serveur directive](https://nginx.org/docs/http/server_names.html) expose votre application à des failles de sécurité. Liaison de caractère générique de sous-domaine (par exemple, `*.example.com`) ne présente ce risque de sécurité si vous contrôlez le domaine parent entière (par opposition à `*.com`, qui est vulnérable). Consultez la [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) pour plus d’informations.
 
 Une fois la configuration de Nginx est établie, exécutez `sudo nginx -t` pour vérifier la syntaxe des fichiers de configuration. Si le test de fichier de configuration a réussi, forcer Nginx pour appliquer les modifications en exécutant `sudo nginx -s reload`.
 

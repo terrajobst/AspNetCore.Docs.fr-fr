@@ -10,11 +10,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction-signalr-core
-ms.openlocfilehash: d4ad9bb1910a3339ac8d0d8ff740417f4e7262b7
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: 3fa70c957b246787d4e457c74f90ad797b3af766
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="introduction-to-signalr"></a>Introduction à SignalR
 
@@ -39,7 +39,7 @@ SignalR pour ASP.NET Core :
 * Permet la diffusion des messages à tous les clients connectés simultanément. Par exemple, une salle de conversation.
 * Permet d’envoyer des messages à des clients spécifiques ou des groupes de clients.
 * Est open source à [GitHub](https://github.com/aspnet/signalr).
-* Met à l’échelle correcte.
+* Évolutive.
 
 La connexion entre le client et le serveur est persistante, contrairement à une connexion HTTP.
 

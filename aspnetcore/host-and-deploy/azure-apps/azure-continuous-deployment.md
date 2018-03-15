@@ -1,5 +1,5 @@
 ---
-title: "Déploiement continu sur Azure avec Visual Studio et Git"
+title: "Déploiement continu pour Azure avec Visual Studio et Git avec ASP.NET Core"
 author: rick-anderson
 description: "Découvrez comment créer une application web ASP.NET Core à l’aide de Visual Studio et comment la déployer sur Azure App Service en utilisant Git pour le déploiement continu."
 manager: wpickett
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: ea4788b5daead9e355e13b963c025dd110eb2bff
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 7302de1ace62dba53b317039aac7f4763314aa19
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="continuous-deployment-to-azure-for-aspnet-core-with-visual-studio-and-git"></a>Déploiement continu dans Azure pour ASP.NET Core avec Visual Studio et Git
+# <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Déploiement continu pour Azure avec Visual Studio et Git avec ASP.NET Core
 
 Par [Erik Reitan](https://github.com/Erikre)
 
@@ -43,7 +43,7 @@ Ce didacticiel suppose que les logiciels suivants sont installés :
 
 1. Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
 
-1. Sélectionnez le modèle de projet **Application web ASP.NET Core**. Il apparaît sous **Installé** > **Modèles** > **Visual C#** > **.NET Core**. Attribuez un nom au projet `SampleWebAppDemo`. Sélectionnez l’option **Créer un dépôt Git**, puis cliquez sur **OK**.
+1. Sélectionnez le modèle de projet **Application web ASP.NET Core**. Il apparaît sous **Installé** > **Modèles** > **Visual C#** > **.NET Core**. Attribuez un nom au projet `SampleWebAppDemo`. Sélectionnez le **nouveau référentiel Git de créer** , puis cliquez sur **OK**.
 
    ![Boîte de dialogue Nouveau projet](azure-continuous-deployment/_static/01-new-project.png)
 

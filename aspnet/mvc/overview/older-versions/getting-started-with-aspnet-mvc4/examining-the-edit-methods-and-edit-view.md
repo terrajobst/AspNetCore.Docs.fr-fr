@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
 ms.openlocfilehash: 315914056c0a666fdf23cf82a314a999e03114b6
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Examen des méthodes de modification et la vue d’édition
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -81,7 +81,7 @@ Si les valeurs publiées ne sont pas valides, ils sont affichés de nouveau dans
 ![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image4.png)
 
 > [!NOTE]
-> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale, vous devez inclure *globalize.js* et vos *cultures/globalize.cultures.js* fichier (à partir de [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml pour travailler avec les &quot;fr-FR&quot; culture :
+> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale, vous devez inclure *globalize.js* et vos *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml pour travailler avec les &quot;fr-FR&quot; culture :
 
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample7.cshtml)]

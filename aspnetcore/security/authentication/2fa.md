@@ -1,7 +1,7 @@
 ---
-title: "Authentification à deux facteurs avec SMS"
+title: "Authentification à deux facteurs avec SMS dans ASP.NET Core"
 author: rick-anderson
-description: "Montre comment configurer une authentification à deux facteurs (2FA) avec ASP.NET Core"
+description: "Découvrez comment configurer une authentification à deux facteurs (2FA) avec une application ASP.NET Core."
 manager: wpickett
 ms.author: riande
 ms.date: 08/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/2fa
-ms.openlocfilehash: 721c4c20234c7232b509a0cff444538c2cfeb166
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: c328c6f4b674695dd1f2db8145a7ac1b8f12d36d
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="two-factor-authentication-with-sms"></a>Authentification à deux facteurs avec SMS
+# <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Authentification à deux facteurs avec SMS dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [développeurs-Suisse](https://github.com/Swiss-Devs)
 
@@ -142,6 +142,13 @@ Si vous n’obtenez pas un message texte, consultez la page du journal twilio.
 
 ## <a name="account-lockout-for-protecting-against-brute-force-attacks"></a>Verrouillage de compte pour la protection contre les attaques en force brute
 
-Nous vous recommandons de qu'utiliser le verrouillage de compte avec 2FA. Une fois qu’un utilisateur se connecte (via un compte local ou social), chaque tentative ayant échoué 2FA est stockée et si le nombre maximal de tentatives (valeur par défaut est 5) est atteinte, l’utilisateur est verrouillé pendant cinq minutes (vous pouvez définir l’heure avec verrouillage `DefaultAccountLockoutTimeSpan`). Les éléments suivants configurent compte peuvent être verrouillés pendant 10 minutes après 10 tentatives ayant échoué.
+Le verrouillage de compte est recommandé avec 2FA. Une fois qu’un utilisateur se connecte via un compte local ou sociaux, chaque tentative ayant échoué 2FA est stocké. Si les tentatives d’accès ayant échoué maximale est atteinte, l’utilisateur est verrouillé (valeur par défaut : verrouillage de 5 minutes après l’échec de la tentative d’accès 5). Une authentification réussie réinitialise le nombre de tentatives d’accès ayant échoué et réinitialise l’horloge. Le nombre maximal de tentatives d’accès infructueuses et l’heure de verrouillage peut être défini avec [MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) et [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). La commande suivante configure le verrouillage de compte pendant 10 minutes après que 10 échecs de tentatives d’accès :
 
-[!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)] 
+[!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)]
+
+Vérifiez que [PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync) définit `lockoutOnFailure` à `true`:
+
+```csharp
+var result = await _signInManager.PasswordSignInAsync(
+                 Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+```

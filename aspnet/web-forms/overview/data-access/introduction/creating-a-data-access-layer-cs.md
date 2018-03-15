@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 927b2490b5c539a79bb9939b88942499b23cc464
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="creating-a-data-access-layer-c"></a>Création d’une couche d’accès aux données (c#)
 ====================
@@ -308,7 +308,7 @@ Les deux modèles de modification de données utilisent du TableAdapter **Insert
 
 [![Le TableAdapter a InsertCommand, UpdateCommand et DeleteCommand propriétés](creating-a-data-access-layer-cs/_static/image62.png)](creating-a-data-access-layer-cs/_static/image61.png)
 
-**Figure 23**: le TableAdapter a **InsertCommand**, **UpdateCommand**, et **DeleteCommand** propriétés ([cliquez pour afficher image plein écran](creating-a-data-access-layer-cs/_static/image63.png))
+**Figure 23**: le TableAdapter a **InsertCommand**, **UpdateCommand**, et **DeleteCommand** propriétés ([cliquez pour afficher en plein écran image](creating-a-data-access-layer-cs/_static/image63.png))
 
 
 Pour examiner ou modifier une de ces propriétés de commande de base de données, cliquez sur le **CommandText** sous-propriété, ouvrir le Générateur de requêtes.
@@ -316,7 +316,7 @@ Pour examiner ou modifier une de ces propriétés de commande de base de donnée
 
 [![Configurer le INSERT, UPDATE et des instructions de suppression dans le Générateur de requêtes](creating-a-data-access-layer-cs/_static/image65.png)](creating-a-data-access-layer-cs/_static/image64.png)
 
-**Figure 24**: configurer le **insérer**, **mise à jour**, et **supprimer** instructions dans le Générateur de requêtes ([cliquez pour afficher l’image en taille réelle ](creating-a-data-access-layer-cs/_static/image66.png))
+**Figure 24**: configurer le **insérer**, **mise à jour**, et **supprimer** instructions dans le Générateur de requêtes ([cliquez pour afficher l’image en taille réelle](creating-a-data-access-layer-cs/_static/image66.png))
 
 
 L’exemple de code suivant montre comment utiliser le modèle de mise à jour de lot pour doubler le prix de tous les produits qui ne sont pas supprimées et qui ont des 25 unités en stock moins :
@@ -537,7 +537,7 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 

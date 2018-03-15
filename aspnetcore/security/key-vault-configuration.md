@@ -1,5 +1,5 @@
-﻿---
-title: "Fournisseur de configuration du coffre de clés Azure"
+---
+title: Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 author: guardrex
 description: "Découvrez comment utiliser le fournisseur de Configuration du coffre de clé Azure pour configurer une application à l’aide de paires nom-valeur chargées pendant l’exécution."
 manager: wpickett
@@ -8,13 +8,13 @@ ms.date: 08/09/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: 1a91a87fb90d4d4651e07f32415e4364c8e2d993
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e1a4be77417f0a74182f1b123bfba429737d4330
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="azure-key-vault-configuration-provider"></a>Fournisseur de configuration du coffre de clés Azure
+# <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex) et [Andrew Stanton-infirmière](https://github.com/anurse)
 
@@ -23,26 +23,26 @@ Par [Luke Latham](https://github.com/guardrex) et [Andrew Stanton-infirmière](h
 Afficher ou télécharger l’exemple de code pour 2.x :
 
 * [Exemple de base](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/2.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lit les valeurs des secrets dans une application.
-* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lire les valeurs secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application.
+* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/2.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lit les valeurs des secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 Afficher ou télécharger l’exemple de code pour 1.x :
 
 * [Exemple de base](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/basic-sample/1.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lit les valeurs des secrets dans une application.
-* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lire les valeurs  secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application. 
+* [Exemple de préfixe de nom de la clé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples/key-name-prefix-sample/1.x) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) - lit les valeurs des secrets à l’aide d’un préfixe de nom de la clé qui représente la version d’une application, ce qui vous permet de charger un ensemble différent de valeurs de clé secrètes pour chaque version de l’application. 
 
 ---
 
-Ce document explique comment utiliser le fournisseur de configuration [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) à charger des valeurs de configuration d’application de secrets du Azure Key Vault. Azure Key Vault est un service cloud qui vous aident à protéger les clés de chiffrement et les secrets utilisés par les applications et services. Les scénarios courants incluent le contrôle d’accès aux données de configuration sensibles et répondre aux exigences de la norme FIPS 140-2 niveau 2 validé par les Modules de sécurité matériel (HSM) lors du stockage des données de configuration. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou ultérieure.
+Ce document explique comment utiliser le [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/) fournisseur de configuration à charger des valeurs de configuration d’application de secrets de coffre de clés Azure. Coffre de clés Azure est un service cloud qui vous aident à protéger les clés de chiffrement et les secrets utilisés par les applications et services. Scénarios courants incluent le contrôle d’accès aux données de configuration sensibles et répondre aux exigences de la norme FIPS 140-2 niveau 2 validé les Modules de sécurité matériel (HSM) lors du stockage des données de configuration. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou ultérieure.
 
 ## <a name="package"></a>Package
-Pour utiliser le fournisseur, ajouter la référence le package Nuget [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/).
+Pour utiliser le fournisseur, ajouter une référence à la [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) package.
 
 ## <a name="application-configuration"></a>Configuration d’application
-Vous pouvez explorer le fournisseur avec les [exemples d’applications](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples). Une fois que vous établissez un coffre de clés et créez des clés secrètes dans le coffre, les exemples d’applications chargent en toute sécurité les valeurs de secret dans leurs configurations et les affichent dans les pages Web.
+Vous pouvez explorer le fournisseur avec le [exemples d’applications](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/key-vault-configuration/samples). Une fois que vous établissez un coffre de clés et créez des clés secrètes dans le coffre, les exemples d’applications en toute sécurité par chargement les valeurs de secret principal dans leurs configurations et les affichent dans les pages Web.
 
-Le fournisseur est ajouté à la `ConfigurationBuilder` avec l'extention`AddAzureKeyVault`. Dans les exemples d’applications, l’extension utilise trois valeurs de configuration chargées à partir du fichier *appsettings.json*. 
+Le fournisseur est ajouté à la `ConfigurationBuilder` avec le `AddAzureKeyVault` extension. Dans les exemples d’applications, l’extension utilise trois valeurs de configuration chargés à partir de la *appsettings.json* fichier.
 
 | Paramètre d’application    | Description                    | Exemple                                      |
 | -------------- | ------------------------------ | -------------------------------------------- |
@@ -74,7 +74,7 @@ Lorsque vous exécutez l’application, une page Web affiche les valeurs de secr
 ![Fenêtre de navigateur affichant les valeurs des secrets chargée via le fournisseur de Configuration Azure Key Vault](key-vault-configuration/_static/sample1.png)
 
 ## <a name="creating-prefixed-key-vault-secrets-and-loading-configuration-values-key-name-prefix-sample"></a>Création des clés secrètes de coffre de clés avec préfixe et du chargement des valeurs de configuration (touche-nom-préfixe-exemple)
-`AddAzureKeyVault`fournit également une surcharge qui accepte une implémentation de `IKeyVaultSecretManager`, qui vous permet de contrôler comment les secrets de coffre sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger les valeurs des secrets selon une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, pour charger des secrets selon la version de l’application.
+`AddAzureKeyVault` fournit également une surcharge qui accepte une implémentation de `IKeyVaultSecretManager`, qui vous permet de contrôler comment les secrets de coffre sont convertis en clés de configuration. Par exemple, vous pouvez implémenter l’interface pour charger les valeurs des secrets selon une valeur de préfixe que vous fournissez au démarrage de l’application. Cela vous permet, par exemple, pour charger des secrets selon la version de l’application.
 
 > [!WARNING]
 > N’utilisez pas de préfixes sur les secrets de coffre de clés pour placer des secrets pour plusieurs applications dans le coffre de clés même ou à l’environnement de secrets (par exemple, *développement* et *production* secrets) dans le même coffre. Nous conseillons différentes applications et environnements de développement/production des coffres de clés distinctes pour isoler les environnements d’application pour le niveau le plus élevé de sécurité.

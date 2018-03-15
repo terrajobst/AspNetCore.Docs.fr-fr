@@ -5,16 +5,16 @@ description: "Découvrez comment héberger des applications ASP.NET Core sur Win
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/08/2018
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: b1ca9303c620597f7844c401048129044e99d7be
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: fa9e60c52f143b20dbf179679fc4932e838a9137
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -87,7 +87,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="webconfig-file"></a>fichier web.config
 
-Le fichier *web.config* configure le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). La création, la transformation et la publication de *web.config* sont gérées par le kit .NET Core Web SDK (`Microsoft.NET.Sdk.Web`). Le kit SDK est défini en haut du fichier projet :
+Le fichier *web.config* configure le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). La création, la transformation et la publication de *web.config* sont gérées par le Kit de développement logiciel (SDK) web .NET Core (`Microsoft.NET.Sdk.Web`). Le Kit de développement logiciel (SDK) est défini en haut du fichier projet :
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -196,6 +196,9 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publ
 
    ![Spécifiez le nom du site, le chemin physique et le nom d’hôte à l’étape Ajouter un site Web.](index/_static/add-website-ws2016.png)
 
+   > [!WARNING]
+   > Les liaisons génériques de niveau supérieur (`http://*:80/` et `http://+:80`) ne doivent **pas** être utilisées. Les liaisons génériques de niveau supérieur peuvent exposer votre application à des failles de sécurité. Cela s’applique aux caractères génériques forts et faibles. Utilisez des noms d’hôte explicites plutôt que des caractères génériques. Une liaison générique de sous-domaine (par exemple, `*.mysub.com`) ne présente pas ce risque de sécurité si vous contrôlez le domaine parent en entier (par opposition à `*.com`, qui est vulnérable). Consultez la [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) pour plus d’informations.
+
 1. Sous le nœud du serveur, sélectionnez **Pools d’applications**.
 
 1. Cliquez avec le bouton de droite sur le pool d’applications du site et sélectionnez **Paramètres de base** dans le menu contextuel.
@@ -269,7 +272,7 @@ Les fichiers dans le dossier de déploiement sont verrouillés quand l’applica
 
 ## <a name="data-protection"></a>Protection des données
 
-La [pile de protection des données ASP.NET Core](xref:security/data-protection/index) est utilisée par plusieurs [intergiciels (middlewares)](xref:fundamentals/middleware/index) ASP.NET Core, y compris le middleware utilisé dans l’authentification. Même si les API de protection des données ne sont pas appelées par le code de l’utilisateur, la protection des données doit être configurée avec un script de déploiement ou dans un code utilisateur pour créer un [magasin de clés](xref:security/data-protection/implementation/key-management) de chiffrement persistantes. Si la protection des données n’est pas configurée, les clés sont conservées en mémoire et ignorées au redémarrage de l’application.
+La [pile de protection des données ASP.NET Core](xref:security/data-protection/index) est utilisée par plusieurs [intergiciels (middlewares)](xref:fundamentals/middleware/index) ASP.NET Core, y compris l’intergiciel utilisé dans l’authentification. Même si les API de protection des données ne sont pas appelées par le code de l’utilisateur, la protection des données doit être configurée avec un script de déploiement ou dans un code utilisateur pour créer un [magasin de clés](xref:security/data-protection/implementation/key-management) de chiffrement persistantes. Si la protection des données n’est pas configurée, les clés sont conservées en mémoire et ignorées au redémarrage de l’application.
 
 Si le Key Ring est stocké en mémoire, au redémarrage de l’application :
 

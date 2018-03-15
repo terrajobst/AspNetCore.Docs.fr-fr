@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 msc.type: authoredcontent
 ms.openlocfilehash: 4d30a6803b1478014a2afb814ac317df27394446
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/15/2018
 ---
 <a name="create-a-new-aspnet-mvc-project"></a>Créer un nouveau projet ASP.NET MVC
 ====================
@@ -63,14 +63,14 @@ Lorsque vous créez une application ASP.NET MVC avec Visual Studio, il ajoute au
 
 Par défaut, les projets ASP.NET MVC ont six répertoires de niveau supérieur :
 
-| **Répertoire** | **Fonction** |
+| **Directory** | **Fonction** |
 | --- | --- |
 | **/ Contrôleurs** | Dans lequel vous enregistrez des classes de contrôleur qui gèrent les demandes d’URL |
-| **/ Modèles** | Dans lequel vous enregistrez des classes qui représentent et manipulent des données |
-| **/ Vues** | Dans lequel vous enregistrez les fichiers de modèle de l’interface utilisateur qui est responsables de la sortie de rendu |
-| **Scripts** | Dans lequel vous enregistrez les fichiers de la bibliothèque JavaScript et les scripts (.js) |
-| **/ Contenu** | Dans lequel vous enregistrez le code CSS et des fichiers image et autre contenu non-dynamique/non-JavaScript |
-| **/ Application\_données** | Lorsque vous stockez les fichiers de données, vous souhaitez en lecture/écriture. |
+| **/Models** | Dans lequel vous enregistrez des classes qui représentent et manipulent des données |
+| **/Views** | Dans lequel vous enregistrez les fichiers de modèle de l’interface utilisateur qui est responsables de la sortie de rendu |
+| **/Scripts** | Dans lequel vous enregistrez les fichiers de la bibliothèque JavaScript et les scripts (.js) |
+| **/Content** | Dans lequel vous enregistrez le code CSS et des fichiers image et autre contenu non-dynamique/non-JavaScript |
+| **/App\_Data** | Lorsque vous stockez les fichiers de données, vous souhaitez en lecture/écriture. |
 
 ASP.NET MVC ne nécessite pas de cette structure. En fait, les développeurs qui travaillent sur des applications de grande taille généralement partitionne l’application sur plusieurs projets pour le rendre plus facile à gérer (par exemple : les classes de modèle de données passent généralement dans un projet de bibliothèque de classes distinct à partir de l’application web). Toutefois, la structure de projet par défaut, offre une convention de répertoire par défaut agréable que nous pouvons utiliser pour nettoyer les problèmes de notre application.
 

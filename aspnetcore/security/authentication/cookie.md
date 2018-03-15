@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/cookie
-ms.openlocfilehash: 2c08c4810a1952cc4890d46593d55f558b6ed8e9
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: bbc49a0d3ede66ad07ec3f1dea055cae5fec39ff
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="using-cookie-authentication-without-aspnet-core-identity"></a>À l’aide de l’authentification de Cookie sans ASP.NET Core identité
 
@@ -426,3 +426,5 @@ await HttpContext.Authentication.SignInAsync(
 
 * [Les modifications d’authentification 2.0 / annonce de Migration](https://github.com/aspnet/Announcements/issues/262)
 * [Limitation d’identité par schéma](xref:security/authorization/limitingidentitybyscheme)
+* [Autorisation basée sur des revendications](xref:security/authorization/claims)
+* [Vérifications de stratégie de rôle](xref:security/authorization/roles#policy-based-role-checks)

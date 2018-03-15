@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-title: Getting Started with ASP.NET Web API 2 (c#)
+title: "Démarrer avec ASP.NET Web API 2 (c#)"
 author: MikeWasson
 description: "HTTP n’est pas simplement pour traiter des pages web. Il est également une plateforme puissante pour la création d’API qui exposent des services et des données. HTTP est simple et flexible et ubiq..."
 ms.author: aspnetcontent
@@ -11,13 +11,13 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 6ff9fd279a03197f761454bba3f180d7428b1b1f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d881563cdb6449aada444ef0528061581113a925
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
-<a name="getting-started-with-aspnet-web-api-2-c"></a>Getting Started with ASP.NET Web API 2 (c#)
+<a name="get-started-with-aspnet-web-api-2-c"></a>Démarrer avec ASP.NET Web API 2 (c#)
 ====================
 par [Mike Wasson](https://github.com/MikeWasson)
 
@@ -134,7 +134,7 @@ Remplacer tous les éléments de ce fichier avec les éléments suivants :
 
 [!code-html[Main](tutorial-your-first-web-api/samples/sample3.html)]
 
-Il existe plusieurs façons d’obtenir jQuery. Dans cet exemple, j’ai utilisé la [CDN Microsoft Ajax](../../../ajax/cdn/overview.md). Vous pouvez également le télécharger à partir de [http://jquery.com/](http://jquery.com/)et ASP.NET « API Web » modèle de projet inclut également de jQuery.
+Il existe plusieurs façons d’obtenir jQuery. Dans cet exemple, j’ai utilisé la [CDN Microsoft Ajax](../../../ajax/cdn/overview.md). Vous pouvez également le télécharger à partir de [ http://jquery.com/ ](http://jquery.com/)et ASP.NET « API Web » modèle de projet inclut également de jQuery.
 
 ### <a name="getting-a-list-of-products"></a>Obtention d’une liste de produits
 

@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
 ms.openlocfilehash: 137254be69344f31e65e1b4d1318a107ff9d6d47
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view-c"></a>Examen des méthodes de modification et la vue d’édition (c#)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.

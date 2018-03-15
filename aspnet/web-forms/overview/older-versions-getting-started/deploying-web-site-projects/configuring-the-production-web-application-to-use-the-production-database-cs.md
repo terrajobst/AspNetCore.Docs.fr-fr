@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 21eac6a4d829795f02eeeca5f9870b1ab8132d08
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>Configuration de l’Application Web de Production à utiliser la base de données de Production (c#)
 ====================
@@ -37,16 +37,16 @@ Il n’est pas rare que les informations de configuration à diffèrent entre le
 
 ## <a name="examining-the-connection-string-information"></a>Examiner les informations de chaîne de connexion
 
-La chaîne de connexion utilisée par l’application web critiques est stockée dans le fichier de configuration s application `Web.config`. `Web.config`inclut une section spéciale pour le stockage des chaînes de connexion, nommés invoque [ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx). Le `Web.config` fichier pour le site Web critiques comporte une chaîne de connexion définie dans cette section nommée `ReviewsConnectionString`:
+La chaîne de connexion utilisée par l’application web critiques est stockée dans le fichier de configuration s application `Web.config`. `Web.config` inclut une section spéciale pour le stockage des chaînes de connexion, nommés invoque [ &lt;connectionStrings&gt;](https://msdn.microsoft.com/library/bf7sd233.aspx). Le `Web.config` fichier pour le site Web critiques comporte une chaîne de connexion définie dans cette section nommée `ReviewsConnectionString`:
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-cs/samples/sample1.xml)]
 
 La chaîne de connexion - Source de données =. \SQLEXPRESS ; AttachDbFilename = | Sécurité de DataDirectory|\Reviews.mdf;Integrated = True ; User Instance = True - est composé d’un nombre d’options et des valeurs avec des paires de valeur d’option séparées par un point-virgule et chaque option et valeur séparées par un signe égal. Les quatre options utilisées dans cette chaîne de connexion sont :
 
-- `Data Source`-Spécifie l’emplacement du serveur de base de données et le nom d’instance de serveur de base de données (le cas échéant). La valeur, `.\SQLEXPRESS`, est un exemple dans lequel il existe un serveur de base de données et un nom d’instance. La période de Spécifie que le serveur de base de données est sur le même ordinateur que l’application ; le nom d’instance est `SQLEXPRESS`.
-- `AttachDbFilename`-Spécifie l’emplacement du fichier de base de données. La valeur contient l’espace réservé `|DataDirectory|`, qui est résolu sur le chemin d’accès complet de l’application s `App_Data` dossier lors de l’exécution.
-- `Integrated Security`-une valeur booléenne qui indique s’il faut utiliser un nom d’utilisateur/mot de passe spécifié lors de la connexion à la base de données (false) ou Windows actuel des informations d’identification de compte (true).
-- `User Instance`-une option de configuration spécifique pour les éditions SQL Server Express qui indique s’il faut autoriser les utilisateurs non-administrateurs sur l’ordinateur local, attachent et se connecter à une base de données SQL Server Express Edition. Consultez [Instances utilisateur SQL Server Express](https://msdn.microsoft.com/library/ms254504.aspx) pour plus d’informations sur ce paramètre.
+- `Data Source` -Spécifie l’emplacement du serveur de base de données et le nom d’instance de serveur de base de données (le cas échéant). La valeur, `.\SQLEXPRESS`, est un exemple dans lequel il existe un serveur de base de données et un nom d’instance. La période de Spécifie que le serveur de base de données est sur le même ordinateur que l’application ; le nom d’instance est `SQLEXPRESS`.
+- `AttachDbFilename` -Spécifie l’emplacement du fichier de base de données. La valeur contient l’espace réservé `|DataDirectory|`, qui est résolu sur le chemin d’accès complet de l’application s `App_Data` dossier lors de l’exécution.
+- `Integrated Security` -une valeur booléenne qui indique s’il faut utiliser un nom d’utilisateur/mot de passe spécifié lors de la connexion à la base de données (false) ou Windows actuel des informations d’identification de compte (true).
+- `User Instance` -une option de configuration spécifique pour les éditions SQL Server Express qui indique s’il faut autoriser les utilisateurs non-administrateurs sur l’ordinateur local, attachent et se connecter à une base de données SQL Server Express Edition. Consultez [Instances utilisateur SQL Server Express](https://msdn.microsoft.com/library/ms254504.aspx) pour plus d’informations sur ce paramètre.
   
 
 Les options de chaîne de connexion autorisés dépendent de la base de données que vous êtes connecté et le fournisseur de base de données ADO.NET utilisé. Par exemple, la chaîne de connexion pour la connexion à un Microsoft SQL Server diffère de la base de données utilisé pour se connecter à une base de données Oracle. De même, la connexion à une base de données Microsoft SQL Server à l’aide du fournisseur SqlClient utilise une chaîne de connexion différents que lorsque vous utilisez le fournisseur OLE DB.
@@ -125,7 +125,7 @@ Faites une copie du fichier databaseConnectionStrings.dev.config et nommez-le da
 **Figure 4**: ConfigSections ([cliquez pour afficher l’image en taille réelle](configuring-the-production-web-application-to-use-the-production-database-cs/_static/image12.jpg))
 
 
-Nous devons maintenant demander à `Web.config` à utiliser le fichier databaseConnectionStrings.config pour son magasin de chaînes de connexion. Ouvrez `Web.config` et remplacer la `<connectionStrings>` élément avec les éléments suivants :
+Nous devons maintenant demander à `Web.config` à utiliser le fichier databaseConnectionStrings.config pour son magasin de chaînes de connexion. Ouvrez `Web.config` et remplacez l’élément `<connectionStrings>` existant par l’élément suivant :
 
 [!code-xml[Main](configuring-the-production-web-application-to-use-the-production-database-cs/samples/sample4.xml)]
 
