@@ -23,7 +23,7 @@ Par [Erik Reitan](https://github.com/Erikre), [Scott Addie](https://scottaddie.c
 Dans une application web moderne classique, le processus de génération peut :
 
 * Regroupement et minimiser les fichiers JavaScript et CSS.
-* Exécuter les outils pour appeler les groupement et la minimisation des tâches avant chaque build.
+* Exécuter les outils pour appeler les tâches de regroupement et de minimisation avant chaque build.
 * Compilez inférieur ou SASS fichiers CSS.
 * Compiler des fichiers JavaScript CoffeeScript ou TypeScript.
 

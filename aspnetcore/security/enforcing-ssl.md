@@ -32,7 +32,7 @@ Ce document montre comment :
 
 ## <a name="require-https"></a>Exiger HTTPS
 
-Le [RequireHttpsAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.RequireHttpsAttribute) est utilisée pour exiger HTTPS. `[RequireHttpsAttribute]` peut décorer contrôleurs ou méthodes, ou peut être appliqué globalement. Pour appliquer l’attribut global, ajoutez le code suivant à `ConfigureServices` dans `Startup`:
+Le [RequireHttpsAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.RequireHttpsAttribute) est utilisée pour exiger HTTPS. `[RequireHttpsAttribute]` peut décorer contrôleurs ou méthodes, ou peut être appliqué globalement. Pour appliquer l’attribut global, ajoutez le code suivant à la méthode `ConfigureServices` dans la classe `Startup`: 
 
 [!code-csharp[](authentication/accconfirm/sample/WebApp1/Startup.cs?name=snippet2&highlight=4-999)]
 

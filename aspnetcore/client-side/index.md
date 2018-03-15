@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Développement côté client dans ASP.NET Core"
 author: rick-anderson
 description: 
@@ -19,13 +19,13 @@ ms.lasthandoff: 02/23/2018
 
 - [Utiliser Gulp](xref:client-side/using-gulp)
 - [Utiliser Grunt](xref:client-side/using-grunt)
-- [Gérer les packages côté client avec Bower](xref:client-side/bower)
+- [Gérer les dépendances côté client avec Bower](xref:client-side/bower)
 - [Créer des sites au rendu adaptatif avec Bootstrap](xref:client-side/bootstrap)
 - [Définir des feuilles de styles avec Less, Sass et Font Awesome](xref:client-side/less-sass-fa)
 - [Concaténer et minifier](xref:client-side/bundling-and-minification)
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/asp-net-core.html)
 - [Utiliser Browser Link](xref:client-side/using-browserlink)
-- [Utiliser JavaScriptServices pour les applications Single Page](xref:client-side/spa-services)
+- [Utiliser JavaScriptServices pour les applications à page unique](xref:client-side/spa-services)
 - [Utiliser les modèles de projet pour les applications à page unique](xref:spa/index)
     - [Modèle de projet Angular](xref:spa/angular)
     - [Modèle de projet React](xref:spa/react)

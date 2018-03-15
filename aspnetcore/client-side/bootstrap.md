@@ -1,5 +1,5 @@
 ---
-title: "Création de sites et attrayantes et réactives avec les données d’amorçage"
+title: "Création de sites web attrayants et adaptatifs avec Bootstrap"
 author: ardalis
 description: 
 manager: wpickett
@@ -11,11 +11,11 @@ ms.topic: article
 uid: client-side/bootstrap
 ms.openlocfilehash: e2ade6223cdc56a4f0f00ff0b985ceda4ab5484a
 ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/02/2018
 ---
-# <a name="building-beautiful-responsive-sites-with-bootstrap"></a>Création de sites et attrayantes et réactives avec les données d’amorçage
+# <a name="building-beautiful-responsive-sites-with-bootstrap"></a>Création de sites web attrayants et adaptatifs avec Bootstrap
 
 <a name="bootstrap-index"></a>
 

@@ -25,7 +25,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://blog.fa
 
 [Bower](https://bower.io/) s’appelle elle-même « Un gestionnaire de package pour le web ». Dans l’écosystème .NET, il remplit le vide laissé par l’impossibilité de NuGet pour remettre les fichiers de contenu statique. Pour les projets ASP.NET Core, ces fichiers statiques sont inhérents aux bibliothèques côté client comme [jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/). Pour les bibliothèques .NET, vous utilisez toujours [NuGet](https://www.nuget.org/) Gestionnaire de package.
 
-Processus de génération de nouveaux projets créés avec les modèles de projet ASP.NET Core configuration côté client. [jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/) sont installés, et Bower est pris en charge.
+Les nouveaux projets créés avec les modèles de projet ASP.NET Core sont configurés avec la génération côté client. [jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/) sont installés, et Bower est pris en charge.
 
 Les packages côté client sont répertoriés dans le *bower.json* fichier. Les modèles de projet ASP.NET Core configure *bower.json* avec jQuery, jQuery validation et d’amorçage.
 

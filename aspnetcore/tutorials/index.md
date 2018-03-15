@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: bcfd20fcea1e683bcbef00a9e67bb28add4f23be
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: 45b00fbc15740fad60202bb7e5ab14beb9ebe495
+ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="aspnet-core-tutorials"></a>Didacticiels ASP.NET Core
 
@@ -47,8 +47,11 @@ Les [pages Razor](xref:mvc/razor-pages/index) constituent l’approche recommand
   * [API web avec Visual Studio pour Windows](first-web-api.md)
   * [API web avec Visual Studio pour Mac](xref:tutorials/first-web-api-mac)
   * [API web avec Visual Studio Code](web-api-vsc.md)
-  
-* [Pages d’aide sur l’API web ASP.NET Core avec Swagger](web-api-help-pages-using-swagger.md)
+
+* [Pages d’aide sur l’API web ASP.NET Core avec Swagger](xref:tutorials/web-api-help-pages-using-swagger)
+  * [Bien démarrer avec NSwag](xref:tutorials/get-started-with-nswag)
+  * [Bien démarrer avec Swashbuckle](xref:tutorials/get-started-with-swashbuckle)
+
 * [Créer des services web backend pour les applications mobiles natives](../mobile/native-mobile-backend.md)
 
 ## <a name="data-access-and-storage"></a>Accès aux données et stockage
@@ -66,7 +69,7 @@ Les [pages Razor](xref:mvc/razor-pages/index) constituent l’approche recommand
 * [Utiliser Gulp](../client-side/using-gulp.md)
 * [Utiliser Grunt](../client-side/using-grunt.md)
 * [Gérer les packages côté client avec Bower](../client-side/bower.md)
-* [Créer des sites réactifs avec Bootstrap](../client-side/bootstrap.md)
+* [Créer des sites au rendu adaptatif avec Bootstrap](../client-side/bootstrap.md)
 
 ## <a name="test"></a>Tester
 * [Effectuer des tests unitaires dans .NET Core à l’aide de dotnet test](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
