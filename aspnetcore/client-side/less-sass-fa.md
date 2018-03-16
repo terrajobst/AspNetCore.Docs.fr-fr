@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/less-sass-fa
-ms.openlocfilehash: e00a0929db9dff6c97c4b22468156f621a1a3820
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 979f5639e382560d952df45ba6e0b8af3b132c2d
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="introduction-to-styling-applications-with-less-sass-and-font-awesome-in-aspnet-core"></a>Introduction aux applications de style avec moins, Sass et police impressionnant dans ASP.NET Core
 
@@ -323,7 +323,7 @@ Inférieur fournit un nombre de fonctionnalités supplémentaires, mais cela doi
 
 Sass est similaire à une valeur inférieure, en fournissant la prise en charge pour la plupart de ces fonctionnalités, mais avec une syntaxe légèrement différente. Il est construit à l’aide de Ruby, plutôt que JavaScript, ainsi que les exigences de configuration différents. Le langage Sass d’origine n’a pas d’utiliser des accolades ou des points-virgules, mais au lieu de cela défini étendue à l’aide d’un espace blanc et mise en retrait. Dans la version 3 de Sass, introduite une nouvelle syntaxe, **SCSS** (« CSS Sassy »). SCSS est similaire à CSS dans la mesure où il ignore les espaces blancs et les niveaux de mise en retrait et utilise à la place des points-virgules et des accolades.
 
-Pour installer Sass, en général, vous installez d’abord Ruby (préinstallé sur Mac) et puis exécutez :
+Pour installer Sass, en général, vous installez d’abord Ruby (préinstallé sur macOS) et puis exécutez :
 
 ```console
 gem install sass
