@@ -1,7 +1,7 @@
 ---
 title: "Présentation d’ASP.NET Core"
 author: rick-anderson
-description: "Offre une présentation d’ASP.NET Core."
+description: "Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet."
 manager: wpickett
 ms.author: riande
 ms.date: 02/28/2018
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: index
-ms.openlocfilehash: 112e1e4dc4eed2cf0ee94741a52ce6625e1f42a6
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+ms.openlocfilehash: 103b7862900e08488dcc0f5fc78c08fefcfa17f3
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="aspnet-core"></a>ASP.NET Core
+# <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
 Par [Daniel Roth](https://github.com/danroth27), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Shaun Luttin](https://twitter.com/dicshaunary)
 
@@ -71,7 +71,7 @@ Le ciblage de .NET Core présente plusieurs avantages, qui sont plus nombreux à
 * Performances améliorées
 * Gestion des versions côte à côte
 * Nouvelles API
-* Open source
+* Ouvrir la source
 
 Nous nous efforçons de combler l’écart d’API qui existe entre .NET Framework et .NET Core. Le [Pack de compatibilité Windows](/dotnet/core/porting/windows-compat-pack) a rendu disponible dans .NET Core des milliers d’API fonctionnant seulement dans Windows. Ces API n’étaient pas disponibles dans .NET Core 1.x.
 

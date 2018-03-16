@@ -1,7 +1,7 @@
 ---
 title: "Tag Helpers intégrés d’ASP.NET Core"
 author: pkellner
-description: "Tag Helpers intégrés d’ASP.NET Core"
+description: "Découvrez comment les Tag Helpers intégrés d’ASP.NET Core augmentent votre productivité."
 manager: wpickett
 ms.author: riande
 ms.date: 09/13/2017
@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 1d086bc0bc210fe19dda34d13008a49d48801607
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: f539f96a87b125c0f55855f780bbff005db8c0d9
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Tag Helpers intégrés d’ASP.NET Core
 
@@ -26,19 +26,19 @@ ASP.NET Core inclut de nombreux Tag Helpers intégrés permettant d’augmenter 
 
 ## <a name="built-in-aspnet-core-tag-helpers"></a>Tag Helpers intégrés d’ASP.NET Core
 
-**[Tag Helper Anchor](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)**
+**[Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)**
 
-**[Tag Helper Cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)**
+**[Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)**
 
-**[Tag Helper Distributed Cache](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)**
+**[Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)**
 
-**[Tag Helper Environment](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**
+**[Tag Helper d’environnement](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)**
 
 [comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/form-action-tag-helper)**
 
 **[Tag Helper Form](xref:mvc/views/working-with-forms#the-form-tag-helper)**
 
-**[Tag Helper Image](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
+**[Tag Helper d’image](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
 
 **[Tag Helper Input](xref:mvc/views/working-with-forms#the-input-tag-helper)**
 
@@ -56,9 +56,9 @@ ASP.NET Core inclut de nombreux Tag Helpers intégrés permettant d’augmenter 
 
 **[Tag Helper Textarea](xref:mvc/views/working-with-forms#the-textarea-tag-helper)**
 
-**[Tag Helper Validation Message](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**
+**[Tag Helper de message de validation](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)**
 
-**[Tag Helper Validation Summary](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**
+**[Tag Helper de résumé de validation](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)**
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
