@@ -1,5 +1,5 @@
 ---
-title: "Création de sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core"
+title: "Création de sites attrayants et réactifs avec Bootstrap et ASP.NET Core"
 author: ardalis
 description: "Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core."
 manager: wpickett
@@ -15,7 +15,7 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/15/2018
 ---
-# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Création de sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
+# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Création de sites attrayants et réactifs avec Bootstrap et ASP.NET Core
 
 <a name="bootstrap-index"></a>
 

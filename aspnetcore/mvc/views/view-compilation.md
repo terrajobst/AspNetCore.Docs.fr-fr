@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Précompilation et compilation de vues Razor"
 author: rick-anderson
 description: "Document de référence expliquant comment activer la précompilation et la compilation de vues Razor MVC dans les applications ASP.NET Core."
@@ -19,15 +19,15 @@ ms.lasthandoff: 01/30/2018
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Les vues Razor sont compilées au moment de l’exécution quand une vue est appelée. Dans ASP.NET Core 1.1.0 et ultérieur, les vues Razor peuvent éventuellement être compilées et déployées avec l’application &mdash; ce processus est appelé précompilation. Les modèles de projet ASP.NET Core 2.x activent la précompilation par défaut.
+Les vues Razor sont compilées à l'exécution lors de leur premier appel. A partir de  ASP.NET Core 1.1.0 il est possible de compiler les vues Razor et les déployer avec l’application &mdash; (précompilation).  Les modèles de projet ASP.NET Core 2.x activent la précompilation par défaut.
 
 > [!IMPORTANT]
-> La précompilation de vues Razor n’est pas disponible quand vous effectuez un [déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) dans ASP.NET Core 2.0. Cette fonctionnalité sera disponible pour les déploiements SCD dans la future version 2.1. Pour plus d’informations, consultez [View compilation fails when cross-compiling for Linux on Windows](https://github.com/aspnet/MvcPrecompilation/issues/102).
+> La précompilation de vue Razor est actuellement pas disponible lorsque vous effectuez un [déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) dans ASP.NET 2.0 de base. La fonctionnalité sera disponible les applications SCD (Self-Contained Deployment) lorsque Asp.Net Core 2.1 sera publié.  Pour plus d’informations, consultez [la compilation de la vue échoue lors de la compilation croisée pour Linux sur Windows](https://github.com/aspnet/MvcPrecompilation/issues/102).
 
 Considérations relatives à la précompilation :
 
 * La précompilation des vues réduit la taille du bundle publié et le temps de démarrage.
-* Vous ne pouvez pas modifier les fichiers Razor après avoir précompilé des vues. Les vues modifiées ne seraient pas présentes dans le bundle publié. 
+* Vous ne pouvez pas modifier les vues précompilées. Elles ne font pas partie de l’application publiée. 
 
 Pour déployer des vues précompilées :
 
@@ -41,13 +41,13 @@ Si votre projet cible .NET Framework, ajoutez une référence de package à [Mic
 
 Si votre projet cible .NET Core, aucune modification n’est nécessaire.
 
-Les modèles de projet ASP.NET Core 2.x définissent implicitement `MvcRazorCompileOnPublish` à la valeur `true` par défaut. Ce nœud peut donc être supprimé en toute sécurité dans le fichier *.csproj*. Si vous préférez une définition explicite, vous pouvez sans problème définir la propriété `MvcRazorCompileOnPublish` à la valeur `true`. L’exemple *.csproj* suivant illustre ce paramètre :
+Les modèles de projet ASP.NET Core 2.x définissent la valeur `MvcRazorCompileOnPublish` à `true` par défaut, ce qui signifie que ce nœud peut être supprimé en toute sécurité le fihier *.csproj*. Si vous préférez être explicite, il n’existe aucun risque à définir le paramètre de la propriété `MvcRazorCompileOnPublish` à `true`. Le fichier *.csproj* suivant en est un exemple exemple, avec en surbrillance ce paramètre :
 
 [!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish2.csproj?highlight=5)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Définissez `MvcRazorCompileOnPublish` avec la valeur `true` et ajoutez une référence de package à `Microsoft.AspNetCore.Mvc.Razor.ViewCompilation`. L’exemple *.csproj* suivant illustre ces paramètres :
+Définissez `MvcRazorCompileOnPublish` à `true` et inclure une référence de package à `Microsoft.AspNetCore.Mvc.Razor.ViewCompilation`. Le fichier *.csproj* suivant en est un exemple, avec en surbrillance ces paramètres :
 
 [!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish.csproj?highlight=5,12)]
 
@@ -59,6 +59,6 @@ Préparez l’application pour un [déploiement dépendant du framework (FDD)](/
 dotnet publish -c Release
 ```
 
-Quand la précompilation réussit, un fichier *<nom_projet>.PrecompiledViews.dll* contenant les vues Razor compilées est créé. Par exemple, la capture d’écran ci-dessous illustre le contenu des vues *Index.cshtml* dans le fichier *WebApplication1.PrecompiledViews.dll* :
+A *< nom_projet >. PrecompiledViews.dll* fichier, qui contient les vues Razor compilés, est généré lorsque la précompilation réussit. Par exemple, la capture d’écran ci-dessous illustre le contenu de *Index.cshtml* à l’intérieur de *WebApplication1.PrecompiledViews.dll*:
 
 ![Vues Razor dans la DLL](view-compilation/_static/razor-views-in-dll.png)
