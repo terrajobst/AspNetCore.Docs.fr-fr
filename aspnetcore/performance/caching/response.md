@@ -1,7 +1,7 @@
 ---
-title: "Réponse mise en cache dans ASP.NET Core"
+title: "Mise en cache de la réponse dans ASP.NET Core"
 author: rick-anderson
-description: "Découvrez comment utiliser la réponse mise en cache à faible bande passante et améliorer les performances des applications ASP.NET Core."
+description: "Découvrez comment utiliser la mise en cache de réponse pour diminuer la bande passante et améliorer les performances des applications ASP.NET Core."
 manager: wpickett
 ms.author: riande
 ms.date: 09/20/2017
@@ -14,7 +14,7 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/02/2018
 ---
-# <a name="response-caching-in-aspnet-core"></a>Réponse mise en cache dans ASP.NET Core
+# <a name="response-caching-in-aspnet-core"></a>Mise en cache de la réponse dans ASP.NET Core
 
 Par [John Luo](https://github.com/JunTaoLuo), [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://ardalis.com/), et [Luke Latham](https://github.com/guardrex)
 
