@@ -17,7 +17,7 @@ ms.lasthandoff: 03/15/2018
 ---
 # <a name="authentication-in-aspnet-core"></a>Authentification dans ASP.NET Core
 
-* [Options d’authentification OOS de la communauté](xref:security/authentication/community)
+* [Options d’authentification de la communauté Open Source](xref:security/authentication/community)
 
 * [Présentation d’Identity](xref:security/authentication/identity)
 

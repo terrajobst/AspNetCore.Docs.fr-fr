@@ -42,4 +42,4 @@ Le code en surbrillance précédent requiert que toutes les demandes utilisent `
 
 Pour plus d’informations, consultez [intergiciel (middleware) réécriture d’URL](xref:fundamentals/url-rewriting).
 
-Nécessitant HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. Appliquer le `[RequireHttps]` attribut à toutes les Pages de contrôleurs/Razor n’est pas aussi sécurisée comme nécessitant HTTPS globalement. Vous ne pouvez pas garantir la `[RequireHttps]` attribut est appliqué lors de l’ajout de nouveaux contrôleurs et les Pages Razor.
+Exiger le protocol HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. car vous ne pouvez pas garantir la sécurité aux nouveaux contrôleurs ajoutées à votre application il faudra penser à appliquer le `[RequireHttps]` attribut. Vous ne pouvez pas garantir la `[RequireHttps]` attribut est appliqué lors de l’ajout de nouveaux contrôleurs et les Pages Razor.
