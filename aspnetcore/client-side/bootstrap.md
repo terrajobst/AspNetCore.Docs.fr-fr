@@ -25,17 +25,17 @@ Programme d’amorçage est actuellement l’infrastructure web les plus populai
 
 ## <a name="get-started"></a>Prise en main
 
-Il existe plusieurs façons de prise en main d’amorçage. Si vous démarrez une nouvelle application web dans Visual Studio, vous pouvez choisir le modèle de démarrage par défaut pour ASP.NET Core, dans lequel cas Bootstrap proviendront préalablement installé :
+Il existe plusieurs façons de démarrer avec Bootstrap. Si vous démarrez une nouvelle application web dans Visual Studio, vous pouvez choisir le modèle de démarrage par défaut pour ASP.NET Core, dans lequel Bootstrap sera préalablement installé :
 
 ![Démarrer dans la vue de solution de modèle de démarrage](bootstrap/_static/bootstrap-in-starter-template.png)
 
-Ajout d’amorçage à un ASP.NET Core projet consiste simplement à ajouter *bower.json* en tant que dépendance :
+Ajouter Bootstrap à un ASP.NET Core projet consiste simplement à l'ajouter en tant que dépendance dans le fichier *bower.json*  :
 
 [!code-json[](../common/samples/WebApplication1/bower.json?highlight=5)]
 
-Il s’agit de la méthode recommandée pour ajouter des données d’amorçage à un projet ASP.NET Core.
+Vous pouvez également installer d’amorçage à l’aide de plusieurs gestionnaires de packages, tels que Bower, npm ou NuGeIl s’agit de la méthode recommandée pour ajouter Bootstrap à un projet ASP.NET Core.
 
-Vous pouvez également installer d’amorçage à l’aide de plusieurs gestionnaires de packages, tels que Bower, npm ou NuGet. Dans chaque cas, le processus est essentiellement le même :
+Vous pouvez également installer Bootstrap à l’aide de plusieurs gestionnaires de packages, tels que Bower, npm ou NuGet. Dans chaque cas, le processus est essentiellement le même :
 
 ### <a name="bower"></a>Bower
 
@@ -56,18 +56,18 @@ Install-Package bootstrap
 ```
 
 > [!NOTE]
-> La méthode recommandée pour installer des dépendances côté client comme programme d’amorçage dans ASP.NET Core via Bower (à l’aide de *bower.json*, comme indiqué ci-dessus). L’utilisation de npm/NuGet sont affichés pour illustrer comment facilement Bootstrap peut être ajouté à d’autres types d’applications web, y compris les versions antérieures d’ASP.NET.
+> La méthode recommandée pour installer des dépendances côté client comme Bootstrap dans ASP.NET Core est celle via Bower (à l’aide de *bower.json*, comme indiqué ci-dessus). L’utilisation de npm/NuGet sont affichés pour illustrer comment Bootstrap peut être ajouté facilemet à d’autres types d’applications web, y compris les versions antérieures d’ASP.NET.
 
-Si vous êtes faisant référence à vos propres versions locales d’amorçage, vous devez les référencer dans toutes les pages qui l’utilisent. En production, vous devez référencer les données d’amorçage à l’aide d’un CDN. Dans le modèle de site ASP.NET par défaut, le *_Layout.cshtml* fichier donc, comme ceci :
+Si vous souhaitez faire référence à vos propres versions locales de Bootstrap, vous devez les référencer dans toutes les pages qui l’utilisent. En production, vous devez référencer Bootstrap à l’aide d’un CDN. Dans le modèle de site ASP.NET par défaut, le *_Layout.cshtml*  se présente comme ceci :
 
 [!code-html[](../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
 
 > [!NOTE]
-> Si vous souhaitez utiliser des plug-ins de jQuery du programme d’amorçage, vous devez également référencer jQuery.
+> Si vous souhaitez utiliser des plug-ins jQuery de Bootstrap, vous devez également référencer jQuery.
 
 ## <a name="basic-templates-and-features"></a>Fonctionnalités et modèles de base
 
-Le modèle de démarrage plus simple ressemble beaucoup le *_Layout.cshtml* fichier illustré ci-dessus et simplement comprend un menu de base pour la navigation et un emplacement pour restituer le reste de la page.
+Le modèle de projet Bootstrap le plus simple ressemble beaucoup au fichier *_Layout.cshtml* illustré ci-dessus et comprend simplement un menu de base pour la navigation et un emplacement pour restituer le reste de la page.
 
 ### <a name="basic-navigation"></a>Navigation de base
 
@@ -85,23 +85,24 @@ Il inclut également le nom de l’application qui apparaît dans le coin supér
 
 ![Sur la page](bootstrap/_static/about-page-wide.png)
 
-La barre de navigation réduite, avec un bouton dans le coin supérieur droit, « hamburger » s’affiche quand la fenêtre devient inférieur à une certaine largeur :
+La barre de navigation réduite, avec un bouton "hamburger" dans le coin supérieur droit s’affiche quand la fenêtre devient inférieure à une certaine largeur :
 
-![sur la page avec hamburger menu](bootstrap/_static/about-page-hamburger.png)
+![à propos de la page avec le menu hamburger](bootstrap/_static/about-page-hamburger.png)
 
 En cliquant sur l’icône pour afficher les éléments de menu dans un tiroir vertical qui glisse vers le bas à partir du haut de la page :
 
-![sur la page avec hamburger menu développé](bootstrap/_static/about-page-hamburger-open.png)
+![à propos de la page avec le menu hamburger développé](bootstrap/_static/about-page-hamburger-open.png)
 
 ### <a name="typography-and-links"></a>Des liens et la typographie
 
-Programme d’amorçage définit la base typographie, couleurs et dans son fichier CSS de mise en forme de lien de site. Ce fichier CSS inclut les styles par défaut pour les tables, des boutons, des éléments de formulaire, des images et plus ([plus](http://getbootstrap.com/css/)). Une fonctionnalité particulièrement utile est le système de disposition Grille couvert ensuite.
+Bootstrap définit la typographie de base, les couleurs et la mise en forme des liens dans son fichier CSS Ce fichier CSS inclut les styles par défaut pour des tableaux, des boutons, des éléments de formulaire, des images et plus encore ([plus](http://getbootstrap.com/css/)). Une fonctionnalité particulièrement utile est le système de disposition par grille expliqué par la suite.
 
 ### <a name="grids"></a>Grilles
 
-Une des fonctionnalités plus populaires d’amorçage est son système de mise en page de grille. Les applications web modernes Évitez d’utiliser le `<table>` balise pour la mise en page, au lieu de cela en limitant l’utilisation de cet élément aux données tabulaires réelles. Au lieu de cela, colonnes et lignes peuvent être présentés à l’aide d’une série de `<div>` éléments et les classes CSS appropriées. Il existe plusieurs avantages de cette approche, y compris la possibilité d’ajuster la disposition des grilles pour afficher verticalement sur les écrans étroits, comme sur les téléphones.
+Une des fonctionnalités plus connues de Bootstrap est son système de mise en page par grille. Dans les applications web modernes, évitez d’utiliser la balise  `<table>` pour la mise en page. au lieu de limiter l’utilisation de cet élément à des données tabulaires réelles. Au lieu de cela, colonnes et lignes peuvent être présentés à l’aide d’une série de `<div>` éléments et les classes CSS appropriées. Il existe plusieurs avantages avec cette approche, comme la possibilité d’ajuster la disposition des grilles pour afficher du contenu verticalement sur des écrans étroits comme ceux des téléphones.
 
-[Système de disposition Grille du programme d’amorçage](http://getbootstrap.com/css/#grid) est basée sur des douze colonnes. Ce nombre a été choisi, car il peut être divisée uniformément 1, 2, 3 ou 4 colonnes et les largeurs de colonne peuvent varier à dans 1/12 de la largeur verticale de l’écran. Pour commencer à utiliser le système de disposition Grille, vous devez commencer par un conteneur `<div>` , puis ajoutez une ligne `<div>`, comme illustré ici :
+
+[Le système de présentation en grille de Bootstrap](http://getbootstrap.com/css/#grid) est basée sur douze colonnes. Ce nombre a été choisi, car il peut être divisé pour produire 1, 2, 3 ou 4 colonnes, et les largeurs de colonne peuvent varier sur 1/12 de la largeur verticale de l’écran. Pour commencer à utiliser le système de disposition Grille, vous devez commencer par un conteneur `<div>` , puis ajouter une ligne `<div>`, comme illustré ici :
 
 ```html
 <div class="container">
@@ -111,7 +112,7 @@ Une des fonctionnalités plus populaires d’amorçage est son système de mise 
 </div>
 ```
 
-Ensuite, ajoutez supplémentaires `<div>` éléments pour chaque colonne et spécifiez le nombre de colonnes qui `<div>` doit occuper (hors 12) dans le cadre d’une classe CSS en commençant par « col - md- ». Par exemple, si vous souhaitez simplement comporter deux colonnes de taille égale, vous utiliseriez une classe de « col-md-6 » pour chacun d’eux. Dans ce cas, « md » est l’abréviation de « moyenne » et fait référence à des tailles d’affichage de format standard ordinateur de bureau. Il existe quatre options différentes, que vous pouvez choisir parmi, et chacune sera utilisé pour les largeurs supérieurs sauf substitution (de sorte que si vous souhaitez que la mise en page pour être fixe, quelle que soit la largeur de l’écran, il vous suffit de spécifier les classes xs).
+Ensuite, ajoutez des éléments `<div>` supplémentaires pour chaque colonne et spécifiez le nombre de colonnes que chaque`<div>` doit occuper (sur 12) à l'aide d’une classe CSS commençant par  « col - md- ». Par exemple, si vous souhaitez simplement déclarer deux colonnes de taille égale, vous utiliserez une classe « col-md-6 » pour chacune d’entre elles. Dans ce cas, « md » est l’abréviation de "medium" et fait référence à des tailles d’affichage de format standard pour ordinateurs de bureau. Il existe quatre options différentes, parmi lesquelles vous pouvez choisir, et chacune sera utilisée pour les largeurs d'écran supérieures sauf surcharge (si vous souhaitez que la mise en page reste fixe, quelle que soit la largeur de l’écran, vous pouvez spécifier seulement des classes xs).
 
 Préfixe de classe CSS | Niveau de l’appareil | Largeur
 :---: | :---: | :---:
@@ -120,21 +121,21 @@ col-sm - | Tablettes | > = 768px
 col-md - | Ordinateurs de bureau | > = 992px
 col-lg - | Affiche de bureau plus grande | > = 1200px
 
-Lors de la spécification des deux colonnes avec « col-md-6 « la mise en page qui en résulte seront deux colonnes avec des résolutions de bureau, mais ces deux colonnes seront empilent verticalement lors du rendu sur les périphériques de petite taille (ou une fenêtre de navigateur plus étroite sur un ordinateur de bureau), permettant aux utilisateurs d’afficher facilement contenu sans avoir besoin de faire défiler horizontalement.
+Lors de la spécification de deux colonnes avec "col-md-6", la mise en page qui en résulte consiste en deux colonnes avec des résolutions pour poste de travail, mais ces deux colonnes seront empilées verticalement lors de l’affichage sur des appareils plus petits (ou dans une fenêtre de navigateur plus étroite sur un poste de travail), permettant aux utilisateurs d’afficher facilement du contenu sans devoir faire défiler horizontalement.
 
-Programme d’amorçage toujours par défaut à une disposition de colonne unique, vous devez uniquement spécifier des colonnes lorsque vous souhaitez que plusieurs colonnes. Le seul moment où vous ne souhaitez pas spécifier explicitement qu’un `<div>` occupent toutes les 12 colonnes serait pour substituer le comportement d’un plus grand niveau de périphérique. Lorsque vous spécifiez plusieurs classes de niveau de périphérique, vous devrez peut-être réinitialiser le rendu des colonnes à certains points. Ajout d’un élément div clearfix qui est uniquement visible dans une certaine fenêtre d’affichage permettre effectuer cette opération, comme indiqué ici :
+Bootstrap utilise toujours par défaut une disposition à une seule colonne : vous devez donc spécifier des colonnes seulement quand vous voulez avoir plusieurs colonnes. Le seul cas où vous devez spécifier explicitement qu’un`<div>`occupe les 12 colonnes est pour remplacer le comportement d’un niveau pour un  appareil plus grand. Lorsque vous spécifiez plusieurs classes de niveau de périphérique, vous devrez peut-être réinitialiser le rendu des colonnes à certains points.  L'ajout d’un élément clearfix div visible seulement dans une certaine fenêtre d’affichage permet cela, comme montré ici :
 
 ![grille de la fenêtre d’affichage étroites et étendues](bootstrap/_static/narrow-and-wide-viewport-grid.png)
 
-Dans l’exemple ci-dessus, un et deux partage une ligne dans la disposition « md », tandis que les deux et trois partagent une ligne dans la disposition « xs ». Sans le clearfix `<div>`, deux et trois ne sont pas affichés correctement dans la vue « xs » (Notez que seul, 4 et 5 est affichées) :
+Dans l’exemple ci-dessus, les cellules One et Two partagent une ligne avec la disposition "md", tandis que les cellules Two et Three partagent une ligne avec la disposition "xs". Sans le clearfix `<div>`, les cellules Two et Three ne sont pas affichées correctement dans la vue "xs" (Notez que seul les cellules Four et Five sont affichées) :
 
 ![grille sans utiliser de clearfix](bootstrap/_static/grid-without-clearfix.png)
 
-Dans cet exemple, une seule ligne `<div>` a été utilisé, et fixe d’amorçage a principalement l’attitude en ce qui concerne la mise en page et des colonnes d’empilement. En règle générale, vous devez spécifier une ligne `<div>` pour chaque ligne horizontale nécessite la mise en page, et bien entendu, vous pouvez imbriquer des grilles d’amorçage dans un autre. Lorsque vous procédez ainsi, chaque grille imbriquée occupera 100 % de la largeur de l’élément sur lequel il est placé, qui peut ensuite être subdivisée à l’aide des classes de colonne.
+Dans cet exemple, une seule ligne `<div>` a été utilisée, et Bootstrap a fait ce qu’il fallait pour la mise en page et l’empilement des colonnes. En règle générale, vous devez spécifier une ligne `<div>` pour chaque ligne horizontale nécessaire à la mise en page, et vous pouvez bien sûr imbriquer des grilles Bootstrap l’une dans l’autre. Quand vous procédez ainsi, chaque grille imbriquée occupe 100 % de la largeur de l’élément où elle est placée, qui peut ensuite être subdivisé avec des classes de colonne.
 
 ### <a name="jumbotron"></a>Jumbotron
 
-Si vous avez utilisé les modèles ASP.NET MVC par défaut dans Visual Studio 2012 ou 2013, vous avez probablement remarqué la Jumbotron en action. Il fait référence à une section pleine chasse volumineuse d’une page qui peut être utilisée pour afficher une image d’arrière-plan de grande taille, un appel à l’action, une rotation ou éléments similaires. Pour ajouter un jumbotron à une page, ajoutez simplement un `<div>` et lui donner une classe de « jumbotron », puis placer un conteneur `<div>` à l’intérieur et ajoutez votre contenu. Nous pouvons ajuster facilement la norme sur la page à utiliser un jumbotron pour les titres principaux, qu'il affiche :
+Si vous avez utilisé des modèles ASP.NET MVC par défaut dans Visual Studio 2012 ou 2013, vous avez probablement remarqué le Jumbotron en action. Il fait référence à une section de grande taille en pleine largeur d’une page, qui peut être utilisée pour afficher une image d’arrière-plan de grande taille, un appel à une action, un rotateur ou des éléments similaires. Pour ajouter un jumbotron à une page, ajoutez simplement un `<div>` et donnez lui une classe `<div>` puis placez un conteneur Nous pouvons ajuster facilement la page About pour qu'elle utilise un jumbotron pour afficher les titres principaux :
 
 ![exemple de JumboTron](bootstrap/_static/jumbotron.png)
 
