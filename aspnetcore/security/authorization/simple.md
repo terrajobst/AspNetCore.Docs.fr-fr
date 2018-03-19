@@ -1,4 +1,4 @@
-﻿---
+---
 title: Autorisation simple
 author: rick-anderson
 description: "Ce document explique comment utiliser l’attribut Authorize pour restreindre l’accès aux actions et les contrôleurs ASP.NET Core."
@@ -37,7 +37,7 @@ public class AccountController : Controller
 }
 ```
 
-Si vous souhaitez appliquer une autorisation à une action plutôt que sur le contrôleur, appliquer la `AuthorizeAttribute` d’attribut pour l’action à proprement dite :
+Si vous souhaitez appliquer une autorisation à une action plutôt que sur le contrôleur, appliquer la `AuthorizeAttribute` d’attribut pour l’action à proprement dite :
 
 ```csharp
 public class AccountController : Controller
@@ -55,7 +55,7 @@ public class AccountController : Controller
 
 Maintenant seulement les utilisateurs authentifiés peuvent accéder à la fonction de `Logout`.
 
-Vous pouvez également utiliser le `AllowAnonymous` attribut pour permettre l’accès des utilisateurs non authentifiés à chacune des actions. Exemple :
+Vous pouvez également utiliser l'attribut `AllowAnonymous` pour permettre l’accès à des utilisateurs non authentifiés à chacune des actions. Exemple :
 
 ```csharp
 [Authorize]

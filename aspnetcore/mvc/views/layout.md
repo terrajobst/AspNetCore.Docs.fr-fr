@@ -1,5 +1,5 @@
 ---
-title: Disposition
+title: Mise en page
 author: ardalis
 description: 
 manager: wpickett
@@ -15,7 +15,7 @@ ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="layout"></a>Disposition
+# <a name="layout"></a>Mise en page
 
 Par [Steve Smith](https://ardalis.com/)
 
