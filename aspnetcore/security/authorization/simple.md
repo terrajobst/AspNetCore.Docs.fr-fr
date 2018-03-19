@@ -15,13 +15,13 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 02/11/2018
 ---
-# <a name="simple-authorization"></a><span data-ttu-id="5ca06-103">Autorisation simple</span><span class="sxs-lookup"><span data-stu-id="5ca06-103">Simple Authorization</span></span>
+# <a name="simple-authorization"></a><span data-ttu-id="af4f0-103">Autorisation simple</span><span class="sxs-lookup"><span data-stu-id="af4f0-103">Simple Authorization</span></span>
 
 <a name="security-authorization-simple"></a>
 
-<span data-ttu-id="5ca06-104">Dans MVC est contrôlée par le biais du `AuthorizeAttribute` attribut et ses paramètres différents.</span><span class="sxs-lookup"><span data-stu-id="5ca06-104">Authorization in MVC is controlled through the `AuthorizeAttribute` attribute and its various parameters.</span></span> <span data-ttu-id="5ca06-105">Dans le bloc-notes, appliquer la `AuthorizeAttribute` d’attribut à une limite l’accès contrôleur ou d’action au contrôleur ou une action à n’importe quel utilisateur authentifié.</span><span class="sxs-lookup"><span data-stu-id="5ca06-105">At its simplest, applying the `AuthorizeAttribute` attribute to a controller or action limits access to the controller or action to any authenticated user.</span></span>
+<span data-ttu-id="af4f0-104">Dans MVC Les authorisations sont contrôlées par le biais de l'attribut `AuthorizeAttribute` et de ses paramètres différents.</span><span class="sxs-lookup"><span data-stu-id="af4f0-104">Authorization in MVC is controlled through the `AuthorizeAttribute` attribute and its various parameters.</span></span> <span data-ttu-id="af4f0-105">Pour faire simple appliquer l'attribut `AuthorizeAttribute` à un contrôleur ou à une action pour pour limiter l’accès au contrôleur ou à une action à n’importe quel utilisateur authentifié.</span><span class="sxs-lookup"><span data-stu-id="af4f0-105">At its simplest, applying the `AuthorizeAttribute` attribute to a controller or action limits access to the controller or action to any authenticated user.</span></span>
 
-<span data-ttu-id="5ca06-106">Par exemple, le code suivant limite l’accès à la `AccountController` à tout utilisateur authentifié.</span><span class="sxs-lookup"><span data-stu-id="5ca06-106">For example, the following code limits access to the `AccountController` to any authenticated user.</span></span>
+<span data-ttu-id="af4f0-106">Par exemple, le code suivant limite l’accès à la `AccountController` à tout utilisateur authentifié.</span><span class="sxs-lookup"><span data-stu-id="af4f0-106">For example, the following code limits access to the `AccountController` to any authenticated user.</span></span>
 
 ```csharp
 [Authorize]
@@ -37,7 +37,7 @@ public class AccountController : Controller
 }
 ```
 
-<span data-ttu-id="5ca06-107">Si vous souhaitez appliquer l’autorisation à une action plutôt que le contrôleur, appliquer la `AuthorizeAttribute` d’attribut pour l’action proprement dite :</span><span class="sxs-lookup"><span data-stu-id="5ca06-107">If you want to apply authorization to an action rather than the controller, apply the `AuthorizeAttribute` attribute to the action itself:</span></span>
+<span data-ttu-id="af4f0-107">Si vous souhaitez appliquer une autorisation à une action plutôt que sur le contrôleur, appliquer la `AuthorizeAttribute` d’attribut pour l’action à proprement dite :</span><span class="sxs-lookup"><span data-stu-id="af4f0-107">If you want to apply authorization to an action rather than the controller, apply the `AuthorizeAttribute` attribute to the action itself:</span></span>
 
 ```csharp
 public class AccountController : Controller
@@ -53,9 +53,9 @@ public class AccountController : Controller
 }
 ```
 
-<span data-ttu-id="5ca06-108">Maintenant seulement les utilisateurs authentifiés peuvent accéder le `Logout` (fonction).</span><span class="sxs-lookup"><span data-stu-id="5ca06-108">Now only authenticated users can access the `Logout` function.</span></span>
+<span data-ttu-id="af4f0-108">Maintenant seulement les utilisateurs authentifiés peuvent accéder à la fonction de `Logout`.</span><span class="sxs-lookup"><span data-stu-id="af4f0-108">Now only authenticated users can access the `Logout` function.</span></span>
 
-<span data-ttu-id="5ca06-109">Vous pouvez également utiliser le `AllowAnonymous` attribut pour permettre l’accès des utilisateurs non authentifiés à chacune des actions.</span><span class="sxs-lookup"><span data-stu-id="5ca06-109">You can also use the `AllowAnonymous` attribute to allow access by non-authenticated users to individual actions.</span></span> <span data-ttu-id="5ca06-110">Exemple :</span><span class="sxs-lookup"><span data-stu-id="5ca06-110">For example:</span></span>
+<span data-ttu-id="af4f0-109">Vous pouvez également utiliser l'attribut `AllowAnonymous` pour permettre l’accès à des utilisateurs non authentifiés à chacune des actions.</span><span class="sxs-lookup"><span data-stu-id="af4f0-109">You can also use the `AllowAnonymous` attribute to allow access by non-authenticated users to individual actions.</span></span> <span data-ttu-id="af4f0-110">Exemple :</span><span class="sxs-lookup"><span data-stu-id="af4f0-110">For example:</span></span>
 
 ```csharp
 [Authorize]
@@ -72,7 +72,7 @@ public class AccountController : Controller
 }
 ```
 
-<span data-ttu-id="5ca06-111">Ainsi, seuls les utilisateurs authentifiés pour le `AccountController`, à l’exception de la `Login` action, qui est accessible par tout le monde, quelle que soit leur état authentifié ou non authentifié / anonyme.</span><span class="sxs-lookup"><span data-stu-id="5ca06-111">This would allow only authenticated users to the `AccountController`, except for the `Login` action, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.</span></span>
+<span data-ttu-id="af4f0-111">Ainsi, seuls les utilisateurs authentifiés ont accès à `AccountController`, à l’exception de l'action `Login`, qui est accessible par tout le monde, quelle que soit leur état authentifié ou non authentifié / anonyme.</span><span class="sxs-lookup"><span data-stu-id="af4f0-111">This would allow only authenticated users to the `AccountController`, except for the `Login` action, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.</span></span>
 
 >[!WARNING]
-> <span data-ttu-id="5ca06-112">`[AllowAnonymous]`ignore toutes les instructions d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="5ca06-112">`[AllowAnonymous]` bypasses all authorization statements.</span></span> <span data-ttu-id="5ca06-113">Si vous appliquez combiner `[AllowAnonymous]` et n’importe quel `[Authorize]` attribut puis les attributs Authorize seront toujours ignorés.</span><span class="sxs-lookup"><span data-stu-id="5ca06-113">If you apply combine `[AllowAnonymous]` and any `[Authorize]` attribute then the Authorize attributes will always be ignored.</span></span> <span data-ttu-id="5ca06-114">Par exemple, si vous appliquez `[AllowAnonymous]` au niveau du contrôleur de niveau les `[Authorize]` attributs sur le même contrôleur, ou sur toute action qu’il contient seront ignorés.</span><span class="sxs-lookup"><span data-stu-id="5ca06-114">For example if you apply `[AllowAnonymous]` at the controller level any `[Authorize]` attributes on the same controller, or on any action within it will be ignored.</span></span>
+> <span data-ttu-id="af4f0-112">L'attribut `[AllowAnonymous]` ignore toutes les instructions d’autorisation.</span><span class="sxs-lookup"><span data-stu-id="af4f0-112">`[AllowAnonymous]` bypasses all authorization statements.</span></span> <span data-ttu-id="af4f0-113">Si vous combinez `[AllowAnonymous]` et n’importe quel attribut `[Authorize]`, les attributs `[Authorize]` seront toujours ignorés.</span><span class="sxs-lookup"><span data-stu-id="af4f0-113">If you apply combine `[AllowAnonymous]` and any `[Authorize]` attribute then the Authorize attributes will always be ignored.</span></span> <span data-ttu-id="af4f0-114">Par exemple, si vous appliquez `[AllowAnonymous]` au niveau du contrôleur, tous les attributs `[Authorize]` sur le même contrôleur, ou sur toute actions qu’il contient seront ignorés.</span><span class="sxs-lookup"><span data-stu-id="af4f0-114">For example if you apply `[AllowAnonymous]` at the controller level any `[Authorize]` attributes on the same controller, or on any action within it will be ignored.</span></span>
