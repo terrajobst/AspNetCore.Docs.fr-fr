@@ -9,15 +9,15 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 162fa4e0a6d5b6fdda7f043c9d106838a1c19954
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a437d98c2229e69bd2b66a7c9c868bf221aea94a
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core"></a>Créer une application web de pages Razor avec ASP.NET Core
 
-Cette série explique les principes fondamentaux de la création d’une application web de pages Razor avec ASP.NET Core à l’aide de Visual Studio. Les autres versions de cette série incluent une [version Mac](xref:tutorials/razor-pages-mac/index) et une [version Visual Studio Code](xref:tutorials/razor-pages-vsc/index).
+Cette série explique les principes fondamentaux de la création d’une application web de pages Razor avec ASP.NET Core à l’aide de Visual Studio. Les autres versions de cette série incluent une [version macOS](xref:tutorials/razor-pages-mac/index) et une [version Visual Studio Code](xref:tutorials/razor-pages-vsc/index).
 
 1. [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
 1. [Ajout d’un modèle à une application de pages Razor](xref:tutorials/razor-pages/model)

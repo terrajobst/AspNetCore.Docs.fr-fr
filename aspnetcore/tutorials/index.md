@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: 45b00fbc15740fad60202bb7e5ab14beb9ebe495
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: fd58a6a3e35a706d503603790fa1c726e6c865d6
+ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="aspnet-core-tutorials"></a>Didacticiels ASP.NET Core
 
@@ -27,14 +27,14 @@ Les [pages Razor](xref:mvc/razor-pages/index) constituent l’approche recommand
 * Créer une application web de pages Razor avec ASP.NET Core
 
    * [Pages Razor sur Windows](xref:tutorials/razor-pages/index)
-   * [Pages Razor sur Mac](xref:tutorials/razor-pages-mac/index)
+   * [Pages Razor sur macOS](xref:tutorials/razor-pages-mac/index)
    * [Pages Razor avec VS Code](xref:tutorials/razor-pages-vsc/index)  
 
 * Créer une application web ASP.NET Core MVC
 
    * [Application web avec Visual Studio pour Windows](first-mvc-app/index.md)
    * [Application web avec Visual Studio pour Mac](first-mvc-app-mac/index.md)
-   * [Application web avec Visual Studio Code sur Mac ou Linux](first-mvc-app-xplat/index.md)
+   * [Application web avec Visual Studio Code sur macOS ou Linux](first-mvc-app-xplat/index.md)
 
 * [Bien démarrer avec ASP.NET Core et Entity Framework Core à l’aide de Visual Studio](../data/ef-mvc/index.md)
 * [Créer des Tag Helpers](../mvc/views/tag-helpers/authoring.md)
@@ -68,7 +68,7 @@ Les [pages Razor](xref:mvc/razor-pages/index) constituent l’approche recommand
 ## <a name="client-side-development"></a>Développement côté client
 * [Utiliser Gulp](../client-side/using-gulp.md)
 * [Utiliser Grunt](../client-side/using-grunt.md)
-* [Gérer les packages côté client avec Bower](../client-side/bower.md)
+* [Gérer les dépendances côté client avec Bower](../client-side/bower.md)
 * [Créer des sites au rendu adaptatif avec Bootstrap](../client-side/bootstrap.md)
 
 ## <a name="test"></a>Tester
