@@ -93,7 +93,7 @@ En cliquant sur l’icône pour afficher les éléments de menu dans un tiroir v
 
 ![à propos de la page avec le menu hamburger développé](bootstrap/_static/about-page-hamburger-open.png)
 
-### <a name="typography-and-links"></a>Des liens et la typographie
+### <a name="typography-and-links"></a>Typographie et liens
 
 Bootstrap définit la typographie de base, les couleurs et la mise en forme des liens dans son fichier CSS Ce fichier CSS inclut les styles par défaut pour des tableaux, des boutons, des éléments de formulaire, des images et plus encore ([plus](http://getbootstrap.com/css/)). Une fonctionnalité particulièrement utile est le système de disposition par grille expliqué par la suite.
 
@@ -147,15 +147,15 @@ Les classes de bouton par défaut et leurs couleurs sont affichés dans la figur
 
 ### <a name="badges"></a>Badges
 
-Badges font référence aux légendes de petite taille, généralement numériques en regard d’un élément de navigation. Ils peuvent indiquer un nombre de messages ou des notifications en attente ou la présence de mises à jour. En spécifiant ces badges est aussi simple que l’ajout d’un <span> contenant le texte, avec une classe de « badge » :
+Les badges font référence aux légendes de petite taille, généralement numériques en regard d’un élément de navigation. Ils peuvent indiquer un nombre de messages ou des notifications en attente ou la présence de mises à jour. Spécifier ces badges est aussi simple que l’ajout d’un <span> contenant le texte, avec une classe de "badge" :
 
 ![badges à thème](bootstrap/_static/theme-badges.png)
 
 ### <a name="alerts"></a>Alertes
 
-Vous devrez peut-être afficher un type de notification, une alerte ou message d’erreur pour les utilisateurs de votre application. C'est-à-dire, où les classes d’alerte standards sont utiles. Il existe quatre niveaux de gravité différents jeux de couleurs associé :
+Vous devrez peut-être afficher un type de notification, une alerte ou un message d’erreur pour les utilisateurs de votre application. C'est là où les classes d’alerte standard sont utiles. Il existe quatre niveaux de gravité différents avec des jeux de couleurs associés:
 
-![alertes à thème](bootstrap/_static/theme-alerts.png)
+![alertes](bootstrap/_static/theme-alerts.png)
 
 ### <a name="navbars-and-menus"></a>Menus et barres de navigation
 
@@ -163,7 +163,7 @@ Notre disposition inclut déjà une barre de navigation standard, mais le thème
 
 ![poste à thème](bootstrap/_static/theme-tabstrips.png)
 
-Barres de navigation sont générés de la même façon, mais sont un peu plus complexes. Ils commencent par un `<nav>` ou `<div>` avec une classe de « barre de navigation », dans lequel un élément div conteneur conserve le reste des éléments. Notre page inclut déjà une barre de navigation dans son en-tête, celui illustré ci-dessous se développe simplement à ce sujet, ajout de la prise en charge pour un menu déroulant :
+Les barres de navigation sont générées de la même façon, mais sont un peu plus complexes. Elles commencent par `<nav>` ou `<div>`, dans laquelle un élément div container conserve le reste des éléments. Notre page inclut déjà une barre de navigation dans son en-tête, celui illustré ci-dessous se développe simplement, en ajoutant la prise en charge pour un menu déroulant :
 
 ![barres de navigation à thème](bootstrap/_static/theme-navbars.png)
 
@@ -179,7 +179,7 @@ Vous pouvez étendre le thème d’amorçage standard en remplaçant tout ou par
 
 ![Exemple thème inspinia](bootstrap/_static/theme-inspinia.png)
 
-Si vous souhaitez modifier le thème d’amorçage, placez le *bootstrap.css* fichier pour le thème que vous souhaitez dans le **wwwroot/css** dossier et modifiez les références dans *_Layout.cshtml* afin qu’il pointe. Modifier les liens pour tous les environnements :
+Si vous souhaitez modifier le thème Bootstrap, placez le fichier *bootstrap.css* pour le thème que vous souhaitez dans le dossier **wwwroot/css** et modifiez les références dans *_Layout.cshtml* pour pointer vers le fichier. Modifiez les liens pour tous les environnements :
 
 ```html
 <environment names="Development">
@@ -195,21 +195,21 @@ Si vous souhaitez créer votre propre tableau de bord, vous pouvez démarrer à 
 
 ## <a name="components"></a>Composants
 
-En plus de ces éléments déjà mentionnés, amorçage inclut la prise en charge pour un large éventail de [composants d’interface utilisateur intégrées](http://getbootstrap.com/components/).
+En plus de ces éléments déjà mentionnés, Bootstrap inclut la prise en charge pour un large éventail de [composants d’interface utilisateur intégrés](http://getbootstrap.com/components/).
 
 ### <a name="glyphicons"></a>Glyphicons
 
-Amorçage inclut les jeux d’icônes à partir de Glyphicons ([http://glyphicons.com](http://glyphicons.com)), avec des icônes plus de 200 disponibles gratuitement pour une utilisation dans votre application web compatible d’amorçage. Voici juste un petit échantillon :
+Bootstrap inclut des jeux d’icônes à partir de Glyphicons ([http://glyphicons.com](http://glyphicons.com)), avec plus de 200 icônes  disponibles gratuitement pour une utilisation dans votre application web compatible Bootstrap. Voici juste un petit échantillon : 
 
 ![Glyphicons](bootstrap/_static/theme-glyphicons.png)
 
-### <a name="input-groups"></a>groupes d’entrée
+### <a name="input-groups"></a>Groupe d'entrée
 
-Groupes d’entrée autoriser le regroupement de texte ou des boutons à un élément d’entrée, en fournissant une expérience plus intuitive à l’utilisateur :
+Les groupes d'entrée permettent le regroupement de texte ou des boutons avec un élément input, en fournissant une expérience plus intuitive à l’utilisateur :
 
 ![groupes d’entrée](bootstrap/_static/input-groups.png)
 
-### <a name="breadcrumbs"></a>Vues miniatures
+### <a name="breadcrumbs"></a>Breadcrumbs
 
 Vues miniatures sont un composant de l’interface utilisateur commun utilisé pour montrer leur historique récent ou la profondeur dans la hiérarchie de navigation d’un site à l’utilisateur. Ajoutez-les facilement en appliquant la classe « fil d’Ariane » aux `<ol>` élément de liste. Inclure la prise en charge intégrée pour la pagination à l’aide de la classe « pagination » sur un `<ul>` élément au sein d’un `<nav>`. Ajouter des diaporamas incorporé réactive et vidéo à l’aide de `<iframe>`, `<embed>`, `<video>`, ou `<object>` éléments dont le programme d’amorçage sera style automatiquement. Spécifiez un format particulier à l’aide des classes spécifiques, comme « incorporer-réactive-16by9 ».
 
