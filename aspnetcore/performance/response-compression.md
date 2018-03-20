@@ -21,15 +21,15 @@ Par [Luke Latham](https://github.com/guardrex)
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-La bande passante réseau est une ressource limitée. Réduire la taille de la réponse augmente généralement considérablement la réactivité d’une application. Une façon de réduire la taille de la charge utile consiste à compresser les réponses de l’application.
+La bande passante réseau est une ressource limitée. Le fait de réduire la taille de la réponse augmente généralement la réactivité d’une application, parfois de manière considérable. Une façon de réduire la taille de la charge utile consiste à compresser les réponses de l’application.
 
 ## <a name="when-to-use-response-compression-middleware"></a>Quand utiliser l’intergiciel (middleware) de compression de réponse
-Utiliser les technologies de compression de la réponse basée sur le serveur dans IIS, Apache ou Nginx. Les performances de l’intergiciel (middleware) ne correspondront probablement pas à celui des modules de serveur. [Serveur HTTP.sys](xref:fundamentals/servers/httpsys) et [Kestrel](xref:fundamentals/servers/kestrel) n’offrent actuellement pas prise en charge de la compression intégrée.
+Utilisez les technologies de compression de réponse basées sur le serveur dans IIS, Apache ou Nginx. Les performances de l’intergiciel (middleware) ne correspondront probablement pas à celles des modules de serveur. Les serveurs [HTTP.sys](xref:fundamentals/servers/httpsys) et [Kestrel](xref:fundamentals/servers/kestrel) ne prennent pas actuellement en charge la compression intégrée.
 
-Utilisez l'intergiciel (middleware) de Compression de réponse dans ces cas :
+Utilisez l’intergiciel (middleware) de compression de réponse dans les cas suivants :
 
-* Impossible d’utiliser les technologies de compression suivantes basées sur le serveur :
-  * [Module de Compression dynamique IIS](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
+*	Impossibilité d’utiliser les technologies de compression suivantes basées sur le serveur :	
+  * [Module de compression dynamique IIS](https://www.iis.net/overview/reliability/dynamiccachingandcompression)
   * [Module Apache mod_deflate](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Décompression et compression Nginx](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Hébergement directement sur :
@@ -39,7 +39,7 @@ Utilisez l'intergiciel (middleware) de Compression de réponse dans ces cas :
 ## <a name="response-compression"></a>Compression de la réponse
 En règle générale, toute réponse non compressée nativement peut bénéficier de la compression de la réponse. Les réponses non compressées nativement incliuent en général : CSS, JavaScript, HTML, XML et JSON. Vous ne devez pas compresser les ressources compressés nativement, telles que des fichiers PNG. Si vous tentez de compresser davantage une réponse compressée nativement, toute petite réduction supplémentaire de taille et de temps de transmission sera probablement éclipsée par le temps de traitement de la compression. Ne pas compresser les fichiers inférieurs à environ 150-1000 octets (selon le contenu du fichier et l’efficacité de compression). La surcharge de la compression des petits fichiers peut produire un fichier compressé plus volumineux que le fichier non compressé.
 
-Lorsqu’un client peut traiter le contenu compressé, le client informe le serveur de ses capacités en envoyant l'en-tête `Accept-Encoding` avec la demande. Lorsqu’un serveur envoie un contenu compressé, il doit inclure les informations contenues dans l' en-tête `Content-Encoding` sur la façon dont la réponse compressée est encodée. Les désignations d'encodage de contenu pris en charge par l’intergiciel (middleware) sont affichées dans le tableau suivant.
+Quand un client peut traiter du contenu compressé, il doit en informer le serveur en envoyant l'en-tête `Accept-Encoding` avec la requête. Quand un serveur envoie du contenu compressé, il doit inclure dans l’en-tête `Content-Encoding` des informations sur le mode d’encodage de la réponse compressée. Les désignations d'encodage de contenu prises en charge par l’intergiciel sont affichées dans le tableau suivant.
 
 | Caleurs d’en-tête `Accept-Encoding` | Intergiciel (middleware) pris en charge | Description                                                 |
 | :-----------------------------: | :------------------: | ----------------------------------------------------------- |
@@ -52,13 +52,13 @@ Lorsqu’un client peut traiter le contenu compressé, le client informe le serv
 | `pack200-gzip`                  | Non                   | Format de transfert réseau pour les Archives Java                   |
 | `*`                             | Oui                  | N'importe quel encodage de contenu disponible non explicitement demandé     |
 
-Pour plus d’informations, consultez la [liste IANA officiel des encodages de contenu](http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
+Pour plus d’informations, consultez la [liste IANA officielle des encodages de contenu](http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-content-coding-registry).
 
-L’intergiciel (middleware) vous permet d’ajouter des fournisseurs de compression supplémentaire des valeurs d’en-tête `Accept-Encoding`  personnalisés. Pour plus d’informations, consultez [fournisseurs personnalisés](#custom-providers) ci-dessous.
+L’intergiciel vous permet d’ajouter des fournisseurs de compression supplémentaires pour des valeurs d’en-tête `Accept-Encoding` personnalisées. Pour plus d’informations, consultez [Fournisseurs personnalisés](#custom-providers) ci-dessous.
 
-L’intergiciel (middleware) est capable de réagir à la pondération de valeur de qualité (qvalue, `q`) lors de l’envoi par le client afin de hiérarchiser les schémas de compression. Pour plus d’informations, consultez [7231 relative aux RFC : encodage](https://tools.ietf.org/html/rfc7231#section-5.3.4).
+L’intergiciel peut réagir à la pondération de la valeur de qualité (qvalue, `q`) envoyée par le client pour hiérarchiser les schémas de compression. Pour plus d’informations, consultez le [document RFC 7231: Accept-Encoding](https://tools.ietf.org/html/rfc7231#section-5.3.4).
 
-Les algorithmes de compression sont soumis à un compromis entre la vitesse de la compression et l’efficacité de la compression. L'*éfficacité* dans ce contexte fait référence à la taille de la sortie après la compression. La plus petite taille est obtenue par la compression la plus *optimale* .
+Les algorithmes de compression donnent lieu à un compromis entre vitesse de compression et efficacité de la compression. L'*efficacité* dans ce contexte fait référence à la taille de la sortie après la compression. La plus petite taille est obtenue par la compression la plus *optimale* .	
 
 Les en-têtes impliqués dans la demande, l'envoi, la mise en cache et la réception de contenu compressé sont décrits dans le tableau ci-dessous.
 
@@ -71,7 +71,7 @@ Les en-têtes impliqués dans la demande, l'envoi, la mise en cache et la récep
 | `Content-Type`     | Spécifie le type MIME du contenu. Chaque réponse doit spécifier son `Content-Type`. L’intergiciel (middleware) vérifie cette valeur pour déterminer si la réponse doit être compressée. L’intergiciel (middleware) spécifie un jeu de [types MIME par défaut](#mime-types) il peut encoder, mais vous pouvez remplacer ou ajouter des types MIME. |
 | `Vary`             | Lors de l’envoi par le serveur avec la valeur `Accept-Encoding` aux clients et serveurs proxy, l'en-tête `Vary` indique au client ou au proxy qu’il doit mettre en cache (vary) des réponses en fonction de la valeur de la `Accept-Encoding` en-tête de la demande. Le résultat de contenu avec l'en-tête `Vary: Accept-Encoding` est que les deux réponses compressées et non compressées sont mises en cache séparément. |
 
-Vous pouvez explorer les fonctionnalités de l’intergiciel de compression de la réponse avec l'[exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples). L’exemple illustre :
+Vous pouvez explorer les fonctionnalités de l’intergiciel de compression de réponse avec l’[exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples). L’exemple illustre :
 * La compression des réponses d’application à l’aide de gzip et fournisseurs de compression personnalisé.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
 
@@ -79,7 +79,7 @@ Vous pouvez explorer les fonctionnalités de l’intergiciel de compression de l
 Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence au package [ `Microsoft.AspNetCore.ResponseCompression` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) ou utilisez le package [ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/). Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou version ultérieure.
 
 ## <a name="configuration"></a>Configuration
-Le code suivant illustre l’activation de l’intergiciel de compression de la réponse avec la compression gzip par défaut et pour les types MIME par défaut.
+Le code suivant illustre l’activation de l’intergiciel de compression de réponse avec la compression gzip par défaut pour les types MIME par défaut.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -92,21 +92,21 @@ Le code suivant illustre l’activation de l’intergiciel de compression de la 
 ---
 
 > [!NOTE]
-> Utiliser un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), ou [Postman](https://www.getpostman.com/) pour définir l'en-tête `Accept-Encoding` de la requête et étudier les en-têtes de réponse, la taille et le corps.
+> Utilisez un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/) ou [Postman](https://www.getpostman.com/) pour définir l'en-tête `Accept-Encoding` de la requête et étudier les en-têtes, la taille et le corps de la réponse.
 
-Soumettez une requête pour l’exemple d’application sans la `Accept-Encoding` en-tête et observez que la réponse n’est pas compressée. Le `Content-Encoding` et `Vary` en-têtes ne sont pas présents sur la réponse.
+Soumettez une requête à l’exemple d’application sans l’en-tête `Accept-Encoding` et observez que la réponse n’est pas compressée. Les en-têtes `Content-Encoding` et `Vary` ne sont pas présents sur la réponse.
 
 ![Fenêtre Fiddler indiquant le résultat d’une requête sans l’en-tête Accept-Encoding. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
 
-Soumettez une requête pour l’exemple d’application avec l'en-tête `Accept-Encoding: gzip` et observez que la réponse est compressée. Les en-têtes `Content-Encoding` et `Vary` sont présents sur la réponse.
+Soumettez une requête à l’exemple d’application avec l’en-tête `Accept-Encoding: gzip` et observez que la réponse est compressée. Les en-têtes `Content-Encoding` et `Vary` sont présents sur la réponse.
 
 ![Fenêtre Fiddler affichant le résultat d’une demande avec l’en-tête Accept-Encoding et la valeur gzip. Les en-têtes Content-Encoding et de variable sont ajoutés à la réponse. La réponse est compressée.](response-compression/_static/request-compressed.png)
 
 ## <a name="providers"></a>Fournisseurs
 ### <a name="gzipcompressionprovider"></a>GzipCompressionProvider
-Utilisez le `GzipCompressionProvider` pour compresser les réponses avec gzip. Il s’agit du fournisseur de compression par défaut si aucune n’est spécifiée. Vous pouvez définir la compression au niveau de `GzipCompressionProviderOptions`. 
+Utilisez `GzipCompressionProvider` pour compresser les réponses avec gzip. Il s’agit du fournisseur de compression par défaut si aucun n’est spécifié. Vous pouvez définir le niveau de compression avec `GzipCompressionProviderOptions`.
 
-Le fournisseur de la compression gzip par défaut est le niveau de compression le plus rapide (`CompressionLevel.Fastest`), ce qui ne peut pas produire la compression la plus efficace. Si la compression la plus efficace est souhaitée, vous pouvez configurer l’intergiciel (middleware) de compression optimale.
+Le fournisseur de compression gzip opte par défaut pour le niveau de compression le plus rapide (`CompressionLevel.Fastest`), ce qui peut ne pas produire la compression la plus efficace. Si la compression la plus efficace est souhaitée, vous pouvez configurer l’intergiciel pour optimiser la compression.
 
 | Niveau de compression                | Description                                                                                                   |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -149,9 +149,9 @@ Vous pouvez remplacer ou ajouter des types MIME avec les options de l’intergic
 ---
 
 ### <a name="custom-providers"></a>Fournisseurs personnalisés
-Vous pouvez créer des implémentations personnalisées de la compression avec `ICompressionProvider`. Le `EncodingName` représente le contenu que cet encodage `ICompressionProvider` produit. L’intergiciel (middleware) utilise ces informations pour choisir le fournisseur en fonction de la liste spécifiée dans l'en-tête `Accept-Encoding` de la requête.
+Vous pouvez créer une implémentation de compression personnalisée avec `ICompressionProvider`. `EncodingName` représente le contenu que cet encodage `ICompressionProvider` produit. L’intergiciel utilise ces informations pour choisir le fournisseur en fonction de la liste spécifiée dans l'en-tête `Accept-Encoding` de la requête.
 
-À l’aide de l’exemple d’application, le client envoie une requête avec l'en-tête `Accept-Encoding: mycustomcompression`. L’intergiciel (middleware) utilise l’implémentation personnalisée de la compression et retourne la réponse avec un en-tête `Content-Encoding: mycustomcompression`. Le client doit être en mesure de décompresser l’encodage personnalisé dans l’ordre pour qu'une implémentation personnalisée de la compression fonctionne.
+À l’aide de l’exemple d’application, le client envoie une requête avec l'en-tête `Accept-Encoding: mycustomcompression`. L’intergiciel utilise l’implémentation de compression personnalisée et retourne la réponse avec un en-tête `Content-Encoding: mycustomcompression`. Pour que cette implémentation fonctionne, le client doit pouvoir décompresser l’encodage personnalisé.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -167,12 +167,12 @@ Vous pouvez créer des implémentations personnalisées de la compression avec `
 
 ---
 
-Soumettez une requête pour l’exemple d’application avec l'en-tête `Accept-Encoding: mycustomcompression` et observez les en-têtes de réponse. Les en-têtes `Vary` et `Content-Encoding` sont présents sur la réponse. Le corps de réponse (non affiché) n’est pas compressé par l’exemple. Il n’est pas une implémentation de la compression dans la classe `CustomCompressionProvider` de l’exemple. Toutefois, l’exemple montre où vous pouvez implémenter un algorithme de compression de ce type.
+Soumettez une requête à l’exemple d’application avec l’en-tête `Accept-Encoding: mycustomcompression` et observez les en-têtes de réponse. Les en-têtes `Vary` et `Content-Encoding` sont présents sur la réponse. Le corps de la réponse (non affiché) n’est pas compressé par l’exemple. Il n’y a pas d’implémentation de compression dans la classe `CustomCompressionProvider` de l’exemple. Toutefois, ce dernier montre où vous pouvez implémenter un tel algorithme de compression.
 
 ![Fenêtre Fiddler affichant le résultat d’une demande avec l’en-tête Accept-Encoding et la valeur mycustomcompression. Les en-têtes Content-Encoding et de variable sont ajoutés à la réponse.](response-compression/_static/request-custom-compression.png)
 
 ## <a name="compression-with-secure-protocol"></a>Compression avec un protocole sécurisé
-Les réponses compressées via des connexions sécurisées peuvent être contrôlées par l'option `EnableForHttps`, qui est désactivée par défaut. Utiliser la compression des pages générées dynamiquement peut mener à des problèmes de sécurité tels que les attaques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) et [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)).
+Les réponses compressées sur des connexions sécurisées peuvent être contrôlées à l'aide de l'option `EnableForHttps` (désactivée par défaut). L’utilisation de la compression avec des pages générées dynamiquement peut mener à des problèmes de sécurité tels que les attaques [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) et [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)).
 
 ## <a name="adding-the-vary-header"></a>Ajout de l’en-tête Vary
 Quand on compresse des réponses basée sur l'en-tête `Accept-Encoding`, il existe potentiellement plusieurs versions compressées de la réponse et une version non compressée. Afin d’indiquer aux caches de client et de proxy que plusieurs versions existent et doivent être stockées, l'en-tête `Vary` est ajouté avec une valeur `Accept-Encoding`. Dans ASP.NET Core 1.x, ajouter l'en-tête `Vary` dans la réponse s’effectue manuellement. Dans ASP.NET Core 2.x, l’intergiciel (middleware) ajoute l'en-tête  `Vary` automatiquement lorsque la réponse est compressée.
@@ -181,18 +181,18 @@ Quand on compresse des réponses basée sur l'en-tête `Accept-Encoding`, il exi
 
 [!code-csharp[Main](response-compression/samples/1.x/Startup.cs?name=snippet1)]
 
-## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Problème d’intergiciel (middleware) s'il est derrière un reverse proxy Nginx
-Lorsqu’une demande est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. Cela empêche l’intergiciel (middleware) de la compression de la réponse. Pour plus d’informations, consultez [NGINX : la Compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [Comprendre la compression pass-through pour Nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Problème au niveau de l’intergiciel s'il est derrière un proxy inverse Nginx
+Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. L’intergiciel ne peut donc pas compresser la réponse. Pour plus d’informations, consultez [NGINX : Compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [Comprendre la compression pass-through pour Nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Utilisation de la compression dynamique IIS
-Si vous avez un Module de Compression IIS dynamique actif configuré au niveau du serveur que vous voulez désactiver pour une application, vous pouvez le faire avec un ajout à votre fichier *web.config*. Pour plus d’informations, consultez [désactivation de modules IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
+Pour désactiver un module de compression IIS dynamique actif configuré au niveau du serveur pour une application, vous pouvez faire un ajout à votre fichier *web.config*. Pour plus d’informations, consultez [Désactivation de modules IIS](xref:host-and-deploy/iis/modules#disabling-iis-modules).
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
-Utiliser un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), ou [Postman](https://www.getpostman.com/), qui permettent de définir l'en-tête `Accept-Encoding` de la requête et étudier les en-têtes de réponse, la taille et le corps. L’intergiciel de compression de la réponse compresse les réponses qui remplissent les conditions suivantes :
-* L'en-tête `Accept-Encoding` est présent avec la valeur `gzip`, `*`, ou l’encodage personnalisé qui correspond à un fournisseur de compression personnalisé que vous avez établi. La valeur ne doit pas être `identity` ou avoir une valeur de qualité (qvalue, `q`) égale à 0 (zéro).
+Utilisez un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/) ou [Postman](https://www.getpostman.com/) pour définir l'en-tête `Accept-Encoding` de la requête et étudier les en-têtes, la taille et le corps de la réponse. L’intergiciel de compression de réponse compresse les réponses qui remplissent les conditions suivantes :
+* L'en-tête `Accept-Encoding` est présent avec la valeur `gzip`, `*` ou un encodage personnalisé qui correspond à un fournisseur de compression personnalisé que vous avez établi. La valeur ne doit pas être `identity` ou avoir une valeur de qualité (qvalue, `q`) égale à 0 (zéro).
 * Le type MIME (`Content-Type`) doit être défini et doit correspondre à un type MIME configuré sur le `ResponseCompressionOptions`.
-* La demande ne doit pas inclure l'en-tête `Content-Range`.
-* La demande doit utiliser un protocole non sécurisé (http), sauf si un protocole sécurisé (https) est configuré dans les options de l’intergiciel de compression de la réponse. *Notez le danger [décrit ci-dessus](#compression-with-secure-protocol) lors de l’activation de la compression du contenu sécurisée.*
+* La requête ne doit pas inclure l'en-tête `Content-Range`.
+* La requête doit utiliser un protocole non sécurisé (http), sauf si un protocole sécurisé (https) est configuré dans les options de l’intergiciel de compression de la réponse. *Notez le danger [décrit ci-dessus](#compression-with-secure-protocol) lors de l’activation de la compression de contenu sécurisée.*
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 * [Démarrage d’une application](xref:fundamentals/startup)
