@@ -1,4 +1,4 @@
----
+﻿---
 title: Pages Razor avec EF Core - Migrations - 4 sur 8
 author: rick-anderson
 description: "Dans ce didacticiel, vous allez commencer à utiliser la fonctionnalité de migrations EF Core pour gérer les modifications du modèle de données dans une application ASP.NET Core MVC."
