@@ -295,55 +295,55 @@ Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour interm�
 
 ## <a name="switching-between-environments"></a>Basculer entre les environnements
 
-Pour basculer entre la compilation pour des environnements différents, vous devez modifier le **ASPNETCORE_ENVIRONMENT** valeur de la variable d’environnement.
+Pour basculer entre la compilation pour des environnements différents, vous devez modifier la valeur de la variable d’environnement **ASPNETCORE_ENVIRONMENT**.
 
-1.  Dans **Task Runner Explorer**, vérifiez que le **min** tâche a été défini pour exécuter **avant de générer**.
+1.  Dans **Task Runner Explorer**, vérifiez que la tâche**min** ta été définie pour s'exécuter **avant de générer**.
 
-2.  Dans **l’Explorateur de solutions**, cliquez sur le nom du projet et sélectionnez **propriétés**.
+2.  Dans **l’Explorateur de solutions**, cliquez sur le nom du projet et sélectionnez **Propriétés**.
 
     La feuille de propriétés de l’application Web s’affiche.
 
 3.  Cliquez sur l’onglet **Déboguer**.
 
-4.  Définir la valeur de la **: environnement d’hébergement** variable d’environnement `Production`.
+4.  Définir la valeur de la variable d’environnement **:Hosting:Environment** à `Production`.
 
 5.  Appuyez sur **F5** pour exécuter l’application dans un navigateur.
 
-6.  Dans la fenêtre du navigateur, avec le bouton droit de la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
+6.  Dans la fenêtre du navigateur, cliquez avec le bouton droit sur la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
 
     Notez que les liens de la feuille de style pointent vers les fichiers CSS réduites.
 
 7.  Fermez le navigateur pour arrêter l’application Web.
 
-8.  Dans Visual Studio, revenir à la feuille de propriétés de l’application Web et modifier la **: environnement d’hébergement** variable d’environnement pour revenir `Development`.
+8.  Dans Visual Studio, revenir à la feuille de propriétés de l’application Web et modifier la variable d’environnement **Hosting:Environment**pour revenir à `Development`.
 
 9.  Appuyez sur **F5** réexécuter l’application dans un navigateur.
 
-10. Dans la fenêtre du navigateur, avec le bouton droit de la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
+10. Dans la fenêtre du navigateur, cliquez avec le bouton droit sur la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
 
-    Notez que les liens de la feuille de style pointent vers les versions unminified des fichiers CSS.
+    Notez que les liens de la feuille de style pointent vers les versions non minifiés des fichiers CSS.
 
 Pour plus d’informations sur les environnements dans ASP.NET Core, consultez [fonctionne avec plusieurs environnements](../fundamentals/environments.md).
 
-## <a name="task-and-module-details"></a>Détails des tâches et de module
+## <a name="task-and-module-details"></a>Détails de tâche et de module
 
-Une tâche Gulp est inscrit avec un nom de fonction. Vous pouvez spécifier des dépendances si d’autres tâches doivent être exécutées avant que la tâche actuelle. Les fonctions supplémentaires permettent à exécuter et surveiller les tâches de choses, ainsi que de définir la source (*src*) et de destination (*dest*) des fichiers en cours de modification. Les fonctions API de Gulp principales sont les suivantes :
+Une tâche Gulp est enregistrée avec un nom de fonction. Vous pouvez spécifier des dépendances si d’autres tâches doivent être exécutées avant que la tâche actuelle. Les fonctions supplémentaires permettent à exécuter et surveiller les tâches Gulp, ainsi que de définir la source (*src*) et de destination (*dest*) des fichiers en cours de modification. Les principales fonctions de l'API de Gulp sont les suivantes :
 
 |Gulp (fonction)|Syntaxe|Description|
 |---   |--- |--- |
-|task  |`gulp.task(name[, deps], fn) { }`|Le `task` fonction crée une tâche. Le `name` paramètre définit le nom de la tâche. Le `deps` paramètre contient un tableau de tâches à effectuer avant d’exécuter cette tâche. Le `fn` paramètre représente une fonction de rappel qui effectue les opérations de la tâche.|
-|Espion |`gulp.watch(glob [, opts], tasks) { }`|Le `watch` fonction surveille les fichiers et exécute des tâches lorsqu’une modification de fichier se produit. Le `glob` paramètre est un `string` ou `array` qui détermine les fichiers à surveiller. Le `opts` paramètre fournit la surveillance des options de fichiers supplémentaires.|
-|src   |`gulp.src(globs[, options]) { }`|Le `src` fonction fournit des fichiers qui correspondent aux valeurs glob. Le `glob` paramètre est un `string` ou `array` qui détermine les fichiers à lire. Le `options` paramètre fournit des options de fichiers supplémentaires.|
-|destination  |`gulp.dest(path[, options]) { }`|Le `dest` fonction définit un emplacement dans lequel les fichiers peuvent être écrites. Le `path` paramètre est une chaîne ou une fonction qui détermine le dossier de destination. Le `options` paramètre est un objet qui spécifie les options de dossier de sortie.|
+|task  |`gulp.task(name[, deps], fn) { }`|La fonction `task` crée une tâche. Le paramètre `name` définit le nom de la tâche. Le paramètre `deps` contient un tableau de tâches à effectuer avant d’exécuter cette tâche. Le paramètre `fn` représente une fonction de rappel qui effectue les opérations de la tâche.|
+|watch |`gulp.watch(glob [, opts], tasks) { }`|La fonction `watch` surveille les fichiers et exécute des tâches lorsqu’une modification de fichier se produit. Le paramètre `glob` est un `string` ou `array` qui détermine les fichiers à surveiller. Le paramètre `opts` fournit la surveillance des options de fichiers supplémentaires.|
+|src   |`gulp.src(globs[, options]) { }`|Le fonction `src` fournit des fichiers qui correspondent aux valeurs glob. Le paramètre `glob` est un `string` ou `array` qui détermine les fichiers à lire. Le paramètre `options` fournit des options de fichiers supplémentaires.|
+|destination  |`gulp.dest(path[, options]) { }`|La fonction `dest` définit un emplacement dans lequel les fichiers peuvent être écrites. Le paramètre `path` est une chaîne ou une fonction qui détermine le dossier de destination. Le paramètre `options` est un objet qui spécifie les options de dossier de sortie.|
 
-Pour plus d’informations de référence API de Gulp supplémentaires, consultez [Gulp des API de documents](https://github.com/gulpjs/gulp/blob/master/docs/API.md).
+Pour plus d’informations de référence supplémentaires sur l'API de Gulp , consultez [documentation de l'API Gulp](https://github.com/gulpjs/gulp/blob/master/docs/API.md).
 
-## <a name="gulp-recipes"></a>Gulp recettes
+## <a name="gulp-recipes"></a>Recettes Gulp
 
-La Communauté Gulp fournit Gulp [recettes](https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md). Ces recettes sont constituées des tâches de Gulp pour résoudre des scénarios courants.
+La Communauté Gulp fournit [recettes](https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md) Gulp. Ces recettes sont constituées des tâches Gulp pour résoudre des scénarios courants.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Documentation de gulp](https://github.com/gulpjs/gulp/blob/master/docs/README.md)
-* [Groupement et la minimisation dans ASP.NET Core](bundling-and-minification.md)
-* [À l’aide de Grunt dans ASP.NET Core](using-grunt.md)
+* [Reroupement et minimisation dans ASP.NET Core](bundling-and-minification.md)
+* [Utiliser Grunt dans ASP.NET Core](using-grunt.md)
