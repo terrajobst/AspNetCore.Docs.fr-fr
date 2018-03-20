@@ -15,7 +15,7 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="migrations---ef-core-with-razor-pages-tutorial-4-of-8"></a>Migrations - EF Core avec le didacticiel de Pages Razor (4 sur 8)
+# <a name="migrations---ef-core-with-razor-pages-tutorial-4-of-8"></a>Migrations - EF Core avec le didacticiel sur les Pages Razor (4 sur 8)
 
 Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog), et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -29,7 +29,7 @@ https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/S
 Lorsqu’une application est développée, le modèle de données change fréquemment. Chaque fois que des modifications sont apportées au modèle, le modèle est désynchronisé avec la base de données. Ce didacticiel a démarré en configurant Entity Framework pour créer la base de données si elle n’existe pas. Chaque fois que le modèle de données change :
 
 * La base de données est supprimée.
-* EF crée une nouvelle qui correspond au modèle.
+* EF en crée une nouvelle qui correspond au modèle.
 * L’application est basée sur la base de données avec des données de test.
 
 Cette approche pour conserver la base de données synchronisée avec le modèle de données fonctionne bien jusqu'à ce que vous déployez l’application en production. Lorsque l’application est en cours d’exécution en production, elle stocke généralement des données qui doivent être maintenues. L’application ne peut pas démarrer un test de base de données chaque fois qu’une modification est effectuée (par exemple, l’ajout d’une nouvelle colonne). La fonctionnalité EF Core Migrations résout ce problème en activant la mise à jour de schéma de base de données au lieu de créer une nouvelle base de données.
@@ -86,25 +86,25 @@ info: Microsoft.EntityFrameworkCore.Infrastructure[100403]
 Done. To undo this action, use 'ef migrations remove'
 ```
 
-Si la migration échoue avec le message «*accés au fichier... ContosoUniversity.dll, car il est utilisé par un autre processus.* " s’affiche :
+Si la migration échoue avec le message «*Impossible d’accéder au fichier... ContosoUniversity.dll, car il est utilisé par un autre processus.* " s’affiche :
 
 * Arrêtez IIS Express.
 
    * Quittez et redémarrez Visual Studio, ou
    * Recherchez l’icône IIS Express dans la barre d’état du système Windows.
-   * Cliquez sur l’icône IIS Express, puis cliquez sur **ContosoUniversity > arrêter le site**.
+   * Cliquez avec le bouton droit sur l’icône IIS Express, puis cliquez sur **ContosoUniversity > Arrêter le site**.
 
 Si le message d’erreur « Échec de la génération. » s’affiche, exécutez à nouveau la commande. Si vous obtenez cette erreur, laissez une note au bas de ce didacticiel.
 
 ### <a name="examine-the-up-and-down-methods"></a>Examiner le haut et vers le bas de méthodes
 
-La commande EF Core `migrations add` génére le code pour créer la base de données. Ce code de migrations se trouve dans le fichier *Migrations\<timestamp>_InitialCreate.cs*. La méthode `Up` de la classe `InitialCreate` crée les tables de base de données qui correspondent aux jeux d’entités de modèle données. La méthode `Down` les supprime, comme indiqué dans l’exemple suivant :
+La commande EF Core `migrations add` génère le code pour créer la base de données. Ce code de migrations se trouve dans le fichier *Migrations\<timestamp>_InitialCreate.cs*. La méthode `Up` de la classe `InitialCreate` crée les tables de base de données qui correspondent aux jeux d’entités de modèle données. La méthode `Down` les supprime, comme indiqué dans l’exemple suivant :
 
 [!code-csharp[Main](intro/samples/cu/Migrations/20171026010210_InitialCreate.cs?range=8-24,77-)]
 
-Les migrations appellent la méthode `Up` pour implémenter les modifications de modèle de données pour une migration. Lorsque vous entrez une commande pour revenir en arrière, les migrations appellent la méthode `Down`.
+Les migrations appellent la méthode `Up` pour implémenter les modifications de modèle de données pour une migration. Lorsque vous entrez une commande pour annuler la mise à jour, les migrations appellent la méthode `Down`.
 
-Le code précédent est pour la migration initiale. Ce code a été créé lorsque la commande `migrations add InitialCreate` a été exécutée. Le paramètre de nom de la migration (« InitialCreate » dans l’exemple) est utilisé pour le nom de fichier. Le nom de la migration peut être n’importe quel nom de fichier valide. Il est conseillé de choisir un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, une migration à l’ajout d’un tableau de service peut être appelée « AddDepartmentTable ».
+Le code de création de base de données n’a pas besoin de s’exécuter, car la base de données correspond déjà au modèle de données. Si le code de création de la base de données est exécuté, il n’apporte aucune modification car la base de données correspond déjà au modèle de données.
 
 Si la migration initiale est créée et la base de données s’arrête :
 
@@ -113,9 +113,9 @@ Si la migration initiale est créée et la base de données s’arrête :
 
 Lorsque l’application est déployée sur un nouvel environnement, vous devez exécuter le code de création de base de données pour créer la base de données.
 
-Précédemment, la chaîne de connexion a été modifiée pour utiliser un nouveau nom pour la base de données. La base de données spécifiée n’existe pas, donc les migrations crée la base de données.
+Précédemment, la chaîne de connexion a été modifiée pour utiliser un nouveau nom pour la base de données. La base de données spécifiée n’existe pas, donc les migrations créent la base de données.
 
-### <a name="examine-the-data-model-snapshot"></a>Examinez le snapshot du modèle de données
+### <a name="examine-the-data-model-snapshot"></a>Examiner l’instantané du modèle de données
 
 Les migrations crée un *snapshot* du schéma de base de données en cours dans *Migrations/SchoolContextModelSnapshot.cs*:
 
@@ -132,7 +132,7 @@ Pour le développement initial, la commande `EnsureCreated` a été utilisée. D
 * Ignore les migrations et crée la base de données et le schéma.
 * Ne crée pas une table de migration.
 * Ne peut *pas* être utilisé avec des migrations.
-* Est conçu pour un prototypage rapide ou un essai dans lequel la base de données est supprimée et recréée fréquemment.
+* Est conçu pour des tests ou pour un prototypage rapide dans lequel la base de données est supprimée et recréée fréquemment.
 
 Supprimez la ligne suivante à partir de `DbInitializer`:
 
@@ -204,13 +204,13 @@ EF Core utilise la table `__MigrationsHistory` pour voir si les migrations doive
 Les outils EF Core de gestion des migrations sont disponibles à partir de :
 
 * Commandes CLI de base .NET.
-* Les cmdlets PowerShell dans les fenêtre Visual Studio du **Package Manager Console** (PMC).
+* Les applets de commande PowerShell dans la fenêtre **Console du gestionnaire de package** de Visual Studio.
 
 Ce didacticiel montre comment utiliser l’interface CLI, certains développeurs préfèrent à l’aide de la PMC.
 
 Les commandes de EF Core pour PMC se trouvent dans le package [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools). Ce package est inclus dans le metapackage [Microsoft.AspNetCore.All](xref:fundamentals/metapackage), sans que vous ayez à l'installer.
 
-**Important :** cela n’est pas le même package que celui que vous installez pour l’interface CLI en modifiant le fichier *.csproj*. Le nom de celle-ci se trouve dans `Tools`, contrairement au nom de package CLI qui se trouve dans `Tools.DotNet`.
+**Important :** Ce n’est pas le même package que celui que vous installez pour l’interface CLI en modifiant le fichier *.csproj*. Le nom de celui-ci se termine par `Tools`, contrairement au nom du package CLI qui se termine par `Tools.DotNet`.
 
 Pour plus d’informations sur les commandes CLI, consultez [.NET Core CLI](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet).
 
