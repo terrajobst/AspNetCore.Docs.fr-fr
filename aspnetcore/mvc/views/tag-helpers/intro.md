@@ -54,7 +54,7 @@ L’étendue des Tag Helpers est contrôlée par une combinaison de `@addTagHelp
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper` rend les Tag Helpers disponibles
 
-Si vous créez une application web ASP.NET Core nommée *AuthoringTagHelpers* (sans aucune authentification), le fichier *Views/_ViewImports.cshtml* suivant est ajouté à votre projet :
+Si vous créez une application web ASP.NET Core nommée *AuthoringTagHelpers*  (avec aucune authentification), le fichier qui suit *Views/_ViewImports.cshtml* sera ajouté à votre projet :
 
 [!code-cshtml[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
@@ -64,7 +64,7 @@ Pour exposer tous les Tag Helpers inclus dans ce projet (ce qui crée un assembl
 
 [!code-cshtml[Main](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=3)]
 
-Si votre projet contient un `EmailTagHelper` avec l’espace de noms par défaut (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), vous pouvez fournir le nom complet (FQN) du Tag Helper :
+Si votre projet contient un `EmailTagHelper` avec l’espace de noms par défaut (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`), vous pouvez fournir le nom qualifié complet (FQN) des Tag helpers :
 
 ```cshtml
 @using AuthoringTagHelpers
@@ -85,7 +85,7 @@ Comme mentionné précédemment, l’ajout de la directive `@addTagHelper` au fi
 
 ### <a name="removetaghelper-removes-tag-helpers"></a>`@removeTagHelper` supprime les Tag Helpers
 
-`@removeTagHelper` a les deux mêmes paramètres que `@addTagHelper`, et supprime un Tag Helper précédemment ajouté. Par exemple, `@removeTagHelper` appliqué à un affichage spécifique supprime le Tag Helper spécifié de l’affichage. L’utilisation de `@removeTagHelper` dans un fichier *Views/Folder/_ViewImports.cshtml* supprime le Tag Helper spécifié de tous les affichages inclus dans *Folder*.
+Le`@removeTagHelper` a les deux mêmes paramètres que `@addTagHelper`, et il supprime un Tag helper ajoutée précédemment. Par exemple, `@removeTagHelper` appliqué à une vue supprime le Tag helper spécifié de la vue. Utiliser `@removeTagHelper` dans un fichier *Views/Folder/_ViewImports.cshtml* supprime le Tag helper à partir de toutes les vues du *dossier*.
 
 ### <a name="controlling-tag-helper-scope-with-the-viewimportscshtml-file"></a>Contrôle de l’étendue des Tag Helpers à l’aide du fichier *_ViewImports.cshtml*
 
