@@ -15,7 +15,7 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Mise en route avec ASP.NET Core MVC et d’Entity Framework Core, à l’aide de Visual Studio (1 sur 10)
+# <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Bien démarrer avec ASP.NET Core MVC et Entity Framework Core, à l’aide de Visual Studio (1 sur 10)
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -299,7 +299,7 @@ Lorsque vous avez démarré l’application, le `DbInitializer.Initialize` appel
 
 Fermez le navigateur.
 
-Si la fenêtre SSOX n’est pas déjà ouverte, sélectionnez-l adans le menu **Affichage** dans Visual Studio.
+Si la fenêtre SSOX n’est pas déjà ouverte, sélectionnez-la dans le menu **Affichage** dans Visual Studio.
 
 Dans SSOX, cliquez sur **(localdb)\MSSQLLocalDB > bases de données**, puis cliquez sur l’entrée pour le nom de la base de données qui se trouve dans la chaîne de connexion dans votre fichier *appsettings.json*.
 
@@ -349,7 +349,7 @@ Dans le code suivant, le  mot clé `async`, la valeur de retour `Task<T>`, le mo
 
 * `ToListAsync`est la version asynchrone de la méthode d’extension `ToList`.
 
-Quelques éléments à connaître lorsque vous écrivez du code asynchrone qui utilise Entity Framework :
+Éléments à connaître lorsque vous écrivez du code asynchrone qui utilise Entity Framework :
 
 * Seules les instructions qui génèrent des requêtes ou des commandes envoyées à la base de données sont exécutées de façon asynchrone. Cela inclut, par exemple, `ToListAsync`, `SingleOrDefaultAsync`, et `SaveChangesAsync`. Cela n’inclut pas, par exemple, les instructions qui modifient simplement un `IQueryable`, tel que `var students = context.Students.Where(s => s.LastName == "Davolio")`.
 
@@ -361,7 +361,7 @@ Pour plus d’informations sur la programmation asynchrone dans .NET, consultez 
 
 ## <a name="summary"></a>Récapitulatif
 
-Vous venez de créer une application simple qui utilise l’Entity Framework Core et SQL Server Express LocalDB pour stocker et afficher des données. Dans ce didacticiel suivant, vous allez apprendre à effectuer des opérations CRUD de base (créer, lire, mettre à jour, supprimer).
+Vous venez de créer une application simple qui utilise l’Entity Framework Core et SQL Server Express LocalDB pour stocker et afficher des données. Dans ce didacticiel, vous allez apprendre à effectuer des opérations CRUD de base (créer, lire, mettre à jour, supprimer).
 
 >[!div class="step-by-step"]
 [Next](crud.md)
