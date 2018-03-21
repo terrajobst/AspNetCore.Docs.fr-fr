@@ -1,4 +1,4 @@
----
+﻿---
 title: "Démarrage d’une application dans ASP.NET Core"
 author: ardalis
 description: "Découvrez comment la classe Startup dans ASP.NET Core configure des services et le pipeline de requête de l’application."
@@ -119,7 +119,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Hébergement d’applications WPF](xref:fundamentals/hosting)
+* [Hébergement](xref:fundamentals/hosting)
 * [Utilisation de plusieurs environnements](xref:fundamentals/environments)
 * [Intergiciel (middleware)](xref:fundamentals/middleware/index)
 * [Journalisation](xref:fundamentals/logging/index)
