@@ -38,17 +38,17 @@ Le code précédent :
     * `Production`
     * `Staging_2`
 
-Le [Tag helper environment ](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) utilise la valeur de `IHostingEnvironment.EnvironmentName` pour inclure ou exclure le balisage dans l’élément :
+L'[environnement Tag helper](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) utilise la valeur de `IHostingEnvironment.EnvironmentName` pour inclure ou exclure le balisage dans l’élément :
 
 [!code-html[Main](environments/sample/WebApp1/Pages/About.cshtml)]
 
-Remarque : Sur Windows et macOS, les valeurs et les variables d’environnement ne respectent la casse. Les variables d’environnement Linux et les valeurs sont **sensibles à la casse** par défaut.
+Remarque : sur Windows et macOS, les valeurs et les variables d’environnement ne respectent la casse. Les valeurs et les variables d’environnement Linux sont **sensibles à la casse** par défaut.
 
 ### <a name="development"></a>Développement
 
-L’environnement de développement peut activer des fonctionnalités qui ne doivent pas être exposées sur la production. Par exemple, les modèles ASP.NET Core activent la [page d’exception pour developpeur](xref:fundamentals/error-handling#the-developer-exception-page) dans l’environnement de développement.
+L’environnement de développement peut activer des fonctionnalités qui ne doivent pas être exposées en production. Par exemple, les modèles ASP.NET Core activent la [page d’exception pour le développeur](xref:fundamentals/error-handling#the-developer-exception-page) dans l’environnement de développement.
 
-L’environnement de développement de l’ordinateur local peut être défini dans le fichier *Properties\launchSettings.json* du projet. Définir des valeurs d’environnement dans *launchSettings.json* remplacent les valeurs définies dans l’environnement du système.
+L’environnement de développement de l’ordinateur local peut être défini dans le fichier *Properties\launchSettings.json* du projet. Les valeurs d’environnement définies dans *launchSettings.json* remplacent les valeurs définies dans l’environnement système.
 
 Le code XML suivant montre les trois profils d’un fichier *launchSettings.json* :
 
@@ -80,20 +80,20 @@ L'onglet Visual Studio **Debug** fournit une interface graphique utilisateur pou
 
 ![Variables d’environnement de définition de propriétés de projet](environments/_static/project-properties-debug.png)
 
-Les modifications apportées aux profils de projet peuvent ne prendre effet qu’après le redémarrage du serveur web. Kestrel doit être redémarré avant qu’il détecte les modifications apportées à son environnement.
+Les modifications apportées aux profils de projet peuvent ne prendre effet qu’après le redémarrage du serveur web. Kestrel doit être redémarré pour pouvoir détecter les modifications apportées à son environnement.
 
 >[!WARNING]
-> *launchSettings.json* ne doit pas stocker des clés secrètes. L'outil de [gestion des Secrets](xref:security/app-secrets) peut être utilisé pour stocker des clés secrètes de développement local.
+> *launchSettings.json* ne doit pas stocker de secrets. L'outil de [gestion des secrets](xref:security/app-secrets) peut être utilisé pour stocker des secrets de développement local.
 
 ### <a name="production"></a>Production
 
-L’environnement de production doit être configuré pour optimiser la sécurité,les  performances et la robustesse de l’application. Certains paramètres courants que l'environnement de production pourrait avoir, qui seraient diffèrent du développement, incluent :
+L’environnement de production doit être configuré pour optimiser la sécurité, les performances et la robustesse de l’application. Certains paramètres courants que l'environnement de production peut avoir, qui sont différents du développement, incluent :
 
 * La mise en cache.
-* Les ressources côté client sont fournies, mimisées et potentiellement prises en charge à partir d’un CDN.
-* Les pages d’erreur de diagnostic désactivés.
-* Les pages d’erreur convivial activées.
-* La journalisation de production et le monitoring activé. Par exemple, [Application Insights](https://azure.microsoft.com/documentation/articles/app-insights-asp-net-five/).
+* Les ressources côté client sont fournies, minimisées et potentiellement prises en charge à partir d’un CDN.
+* Les pages d’erreur de diagnostic désactivées.
+* Les pages d’erreur conviviales activées.
+* La journalisation de production et le monitoring activés. Par exemple, [Application Insights](https://azure.microsoft.com/documentation/articles/app-insights-asp-net-five/).
 
 ## <a name="setting-the-environment"></a>Configuration de l’environnement
 
@@ -121,7 +121,7 @@ set ASPNETCORE_ENVIRONMENT=Development
 $Env:ASPNETCORE_ENVIRONMENT = "Development"
 ```
 
-Ces commandes prennent effet uniquement pour la fenêtre active. Lorsque la fenêtre est fermée, le paramètre ASPNETCORE_ENVIRONMENT rétablit le paramètre par défaut ou la valeur de l’ordinateur. Pour définir la valeur globalement sur Windows ouvrez le **le panneau de configuration** > **système** > **les paramètres système avancés** et ajoutez ou modifiez la valeur `ASPNETCORE_ENVIRONMENT`.
+Ces commandes prennent effet uniquement pour la fenêtre active. Lorsque la fenêtre est fermée, le paramètre ASPNETCORE_ENVIRONMENT rétablit le paramètre par défaut ou la valeur de l’ordinateur. Pour définir la valeur globalement sur Windows ouvrez le **Panneau de configuration** > **Système** > **Paramètres système avancés** et ajoutez ou modifiez la valeur `ASPNETCORE_ENVIRONMENT`.
 
 ![Les propriétés avancées de système](environments/_static/systemsetting_environment.png)
 
@@ -130,14 +130,14 @@ Ces commandes prennent effet uniquement pour la fenêtre active. Lorsque la fen�
 
 **web.config**
 
-Consultez la section *définition des variables d’environnement* de la rubrique [référence de configuration de l'ASP.NET Core Module](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
+Consultez la section *Définition des variables d’environnement* de la rubrique [Référence de configuration du module ASP.NET Core](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
 
 **Via le pool d’applications IIS**
 
-Pour définir les variables d’environnement pour des applications qui s’exécutent dans des Pools d’applications isolés (pris en charge sur IIS 10.0 +), consultez la section *commande AppCmd.exe* de la rubrique [Variables d’environnement \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe).
+Pour définir les variables d’environnement pour des applications qui s’exécutent dans des pools d’applications isolés (pris en charge sur IIS 10.0 +), consultez la section *Commande AppCmd.exe* de la rubrique [Variables d’environnement \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe).
 
 ### <a name="macos"></a>macOS
-Définir l’environnement actuel pour macOS peut être effectuée en ligne lors de l’exécution de l’application ;
+La définition de l’environnement actuel pour macOS peut être effectuée en ligne lors de l’exécution de l’application ;
 
 ```bash
 ASPNETCORE_ENVIRONMENT=Development dotnet run
@@ -147,27 +147,27 @@ ou à l’aide de `export` pour la définir avant d’exécuter l’application.
 ```bash
 export ASPNETCORE_ENVIRONMENT=Development
 ```
-Les variables d’environnement au niveau machine sont définies le *.bashrc* ou *.bash_profile* fichier. Modifiez le fichier à l’aide de n’importe quel éditeur de texte et ajoutez l’instruction suivante.
+Les variables d’environnement au niveau machine sont définies le fichier *.bashrc* ou *.bash_profile*. Modifiez le fichier à l’aide de n’importe quel éditeur de texte et ajoutez l’instruction suivante.
 
 ```
 export ASPNETCORE_ENVIRONMENT=Development
 ```
 
 ### <a name="linux"></a>Linux
-Pour les versions de Linux, utilisez la commande `export` dans la ligne de commande pour la session en fonction des paramètres de variable et le fichier *bash_profile* pour les paramètres d’environnement au niveau de l'ordinateur.
+Pour les distributions Linux, utilisez la commande `export` dans la ligne de commande pour les paramètres de variable basés sur la session et le fichier *bash_profile* pour les paramètres d’environnement au niveau de l'ordinateur.
 
 ### <a name="configuration-by-environment"></a>Configuration par environnement
 
 Consultez [Configuration par environnement](xref:fundamentals/configuration/index#configuration-by-environment) pour plus d’informations.
 
 <a name="startup-conventions"></a>
-## <a name="environment-based-startup-class-and-methods"></a>Environnement en fonction de méthodes et de la classe Startup.
+## <a name="environment-based-startup-class-and-methods"></a>Méthodes et classe Startup basées sur l'environnement
 
-Quand une application ASP.NET Core démarre, la [classe Startup](xref:fundamentals/startup) initialise l’application. Si une classe `Startup{EnvironmentName}` existe, cette classe sera appelée pour cet `EnvironmentName`:
+Quand une application ASP.NET Core démarre, la [classe Startup](xref:fundamentals/startup) initialise l’application. Si une classe `Startup{EnvironmentName}` existe, elle sera appelée pour cet `EnvironmentName`:
 
 [!code-csharp[Main](environments/sample/WebApp1/StartupDev.cs?name=snippet&highlight=1)]
 
-Remarque : Appeler [WebHostBuilder.UseStartup<TStartup> ](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) remplace les sections de configuration.
+Remarque : le fait d'appeler [WebHostBuilder.UseStartup<TStartup> ](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) remplace les sections de configuration.
 
 [Configurer](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure?view=aspnetcore-2.0#Microsoft_AspNetCore_Hosting_StartupBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_) et [ConfigureServices](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices?view=aspnetcore-2.0) prennent en charge des versions spécifiques d’environnement de la forme `Configure{EnvironmentName}` et `Configure{EnvironmentName}Services`:
 
