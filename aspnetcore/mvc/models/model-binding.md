@@ -1,4 +1,4 @@
----
+﻿---
 title: "Liaison de modèle"
 author: rachelappel
 description: "Informations sur la liaison de modèle dans ASP.NET Core MVC"
