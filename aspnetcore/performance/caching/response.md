@@ -19,11 +19,11 @@ ms.lasthandoff: 01/30/2018
 Par [John Luo](https://github.com/JunTaoLuo), [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://ardalis.com/), et [Luke Latham](https://github.com/guardrex)
 
 > [!NOTE]
-> La mise en cache de la réponse [n’est pas pris en charge dans les Pages Razor avec ASP.NET Core 2.0](https://github.com/aspnet/Mvc/issues/6437). Cette fonctionnalité sera prise en charge dans la [version ASP.NET Core 2.1](https://github.com/aspnet/Home/wiki/Roadmap).
+> La mise en cache de la réponse [n’est pas prise en charge dans les Pages Razor avec ASP.NET Core 2.0](https://github.com/aspnet/Mvc/issues/6437). Cette fonctionnalité sera prise en charge dans la [version ASP.NET Core 2.1](https://github.com/aspnet/Home/wiki/Roadmap).
   
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-La mise en cache de la réponse réduit le nombre de demandes que le client ou le proxy fait à un serveur web. La mise en cache de la réponse réduit également la quantité de travail que le serveur web exécute pour générer une réponse. Mise en cache de la réponse est contrôlée par des en-têtes qui spécifient comment vous souhaitez que le client, le proxy et l'intergiciel (middleware) mettent en cache les réponses.
+La mise en cache de la réponse réduit le nombre de demandes que le client ou le proxy fait à un serveur web. La mise en cache de la réponse réduit également la quantité de travail que le serveur web exécute pour générer une réponse. La mise en cache de la réponse est contrôlée par des en-têtes qui spécifient comment vous souhaitez que le client, le proxy et l'intergiciel (middleware) mettent en cache les réponses.
 
 Le serveur web peut mettre en cache les réponses lorsque vous ajoutez [l'intergiciel (middleware) de mise en cache de réponse](xref:performance/caching/middleware).
 
@@ -47,14 +47,14 @@ Les autres en-têtes de cache qui jouent un rôle dans la mise en cache sont aff
 | ---------------------------------------------------------- | -------- |
 | [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | Une estimation de la durée en secondes écoulées depuis que la réponse a été générée ou validée sur le serveur d’origine. |
 | [Expires](https://tools.ietf.org/html/rfc7234#section-5.3) | Date/heure après laquelle la réponse est considérée comme obsolète. |
-| [Pragma](https://tools.ietf.org/html/rfc7234#section-5.4)  | Existe pour la compatibilité descendante avec les caches HTTP/1.0 pour le affecter le comportement `no-cache`. Si l'en-tête `Cache-Control` est présent, le `Pragma` en-tête est ignoré. |
-| [Varier](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | Spécifie qu’un mise en cache de réponse ne doit pas être envoyé tant que tous les `Vary` correspondent aux champs d’en-tête dans la demande d’origine de mise en cache réponse et de la nouvelle demande. |
+| [Pragma](https://tools.ietf.org/html/rfc7234#section-5.4) | Existe pour la compatibilité descendante avec les caches HTTP/1.0 pour affecter le comportement `no-cache`. Si l'en-tête `Cache-Control` est présent, l'en-tête `Pragma` est ignoré. |
+| [Vary](https://tools.ietf.org/html/rfc7231#section-7.1.4) | Spécifie qu’une réponse mise en cache ne doit pas être envoyée avant que tous les champs d'en-tête `Vary` correspondent dans la demande d’origine et la nouvelle demande de la réponse mise en cache. |
 
-## <a name="http-based-caching-respects-request-cache-control-directives"></a>Directives de demande de respect de mise en cache Cache-Control basée sur HTTP
+## <a name="http-based-caching-respects-request-cache-control-directives"></a>La mise en cache basée sur HTTP respecte les directives Cache-Control de la demande
 
-Le [spécification de la mise en cache à HTTP 1.1 pour l’en-tête Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2) requiert qu'un cache respecte un en-tête `Cache-Control` valide envoyé par le client. Un client peut envoyer des demandes avec un valeur d’en-tête `no-cache` et forcer que le serveur génère une nouvelle réponse pour chaque demande.
+La [spécification de la mise en cache HTTP 1.1 pour l’en-tête Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2) requiert qu'un cache respecte un en-tête `Cache-Control` valide envoyé par le client. Un client peut envoyer des demandes avec une valeur d’en-tête `no-cache` et forcer le serveur à générer une nouvelle réponse pour chaque demande.
 
-Toujours respecter les en-têtes de demande client `Cache-Control` a du sens si vous avez pour objectif la mise en cache HTTP. Sous la spécification officielle, la mise en cache vise à réduire la latence et la charge réseau pour satisfaire les demandes sur un réseau via les clients, les proxies et les serveurs. Ce n’est pas nécessairement un moyen de contrôler la charge sur un serveur d’origine.
+Le fait de toujours respecter les en-têtes de demande `Cache-Control` du client a du sens si vous avez pour objectif la mise en cache HTTP. Sous la spécification officielle, la mise en cache vise à réduire la latence et la charge réseau pour satisfaire les demandes sur un réseau via les clients, les proxies et les serveurs. Ce n’est pas nécessairement un moyen de contrôler la charge sur un serveur d’origine.
 
 Il n'y a actuellement aucun contrôle développeur sur ce comportement de mise en cache lorsque vous utilisez l'[intergiciel (middleware) de mise en cache de réponse](xref:performance/caching/middleware) , car l’intergiciel (middleware) est conforme à la mise en cache de la spécification officielle. [Les améliorations futures de l’intergiciel (middleware)](https://github.com/aspnet/ResponseCaching/issues/96) autorisent la configuration de l’intergiciel (middleware) pour ignorer une demande d' en-tête `Cache-Control` lorsque vous décidez de traiter une mise en cache de réponse. Cela vous propose une opportunité afin de mieux contrôler la charge sur votre serveur lorsque vous utilisez l’intergiciel (middleware).
 
@@ -62,25 +62,25 @@ Il n'y a actuellement aucun contrôle développeur sur ce comportement de mise e
 
 ### <a name="in-memory-caching"></a>La mise en cache en mémoire
 
-La mise en cache utilise la mémoire serveur pour stocker les données mises en cache. Ce type de mise en cache est adapté à un ou plusieurs serveurs à l’aide de *sessions rémanentes*. Les sessions rémanentes signifie que les demandes des clients sont toujours acheminées vers le même serveur pour traitement.
+La mise en cache utilise la mémoire serveur pour stocker les données mises en cache. Ce type de mise en cache est adapté à un ou plusieurs serveurs à l’aide de *sessions rémanentes*. Les sessions rémanentes signifient que les demandes des clients sont toujours acheminées vers le même serveur pour traitement.
 
 Pour plus d’informations, consultez [Introduction à la mise en cache dans ASP.NET Core](xref:performance/caching/memory).
 
 ### <a name="distributed-cache"></a>Cache distribué
 
-Utiliser un cache distribué pour stocker des données en mémoire lorsque l’application est hébergée dans une batterie de serveurs cloud ou le serveur. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande traitée par n’importe quel serveur dans le groupe et des données mises en cache pour le client si disponible. ASP.NET Core offre des caches SQL Server et Redis distribués.
+Utilisez un cache distribué pour stocker des données en mémoire lorsque l’application est hébergée dans une batterie de serveurs ou sur le cloud. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande traitée par n’importe quel serveur dans le groupe si les données mises en cache pour le client sont disponibles. ASP.NET Core offre des caches distribués Redis et SQL Server.
 
 Pour plus d’informations, consultez [Travailler avec un cache distribué](xref:performance/caching/distributed).
 
 ### <a name="cache-tag-helper"></a>Tag helper de cache
 
-Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou de la Page Razor avec le Tag helper de Cache. L’application d’assistance de balise de Cache utilise la mise en cache en mémoire pour stocker les données.
+Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou d'une page Razor avec Tag helper de cache. Tag helper de cache utilise la mise en cache en mémoire pour stocker les données.
 
-Pour plus d’informations, consultez [le Tag helper de Cache dans ASP.NET Core MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper).
+Pour plus d’informations, consultez [Tag helper de cache dans ASP.NET Core MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper).
 
 ### <a name="distributed-cache-tag-helper"></a>Tag helper de cache distribué
 
-Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou de la Page Razor dans les scénarios de batterie de serveurs web ou distribuée avec le Tag helper de Cache distribué. Le Tag helper de Cache distribué utilise SQL Server ou Redis pour stocker les données.
+Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou d'une page Razor dans des scénarios de cloud distribué ou des scénarios de batterie de serveurs web avec Tag helper de cache distribué. Tag helper de cache distribué utilise SQL Server ou Redis pour stocker les données.
 
 Pour plus d’informations, consultez [assistance de balise de Cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper).
 
@@ -89,7 +89,7 @@ Pour plus d’informations, consultez [assistance de balise de Cache distribué]
 Le `ResponseCacheAttribute` spécifie les paramètres nécessaires à la configuration des en-têtes appropriés dans la réponse mise en cache. Consultez [ResponseCacheAttribute](/aspnet/core/api/microsoft.aspnetcore.mvc.responsecacheattribute) pour obtenir une description des paramètres.
 
 > [!WARNING]
-> Désactiver la mise en cache du contenu qui contient des informations pour les clients authentifiés. La mise en cache doit être activée pour le contenu qui ne change pas en fonction de l’identité d’un utilisateur ou si un utilisateur est connecté.
+> Désactivez la mise en cache du contenu qui contient des informations pour les clients authentifiés. La mise en cache doit seulement être activée pour le contenu qui ne change pas selon l’identité d’un utilisateur ou si un utilisateur est connecté.
 
 `VaryByQueryKeys string[]`(nécessite ASP.NET Core 1.1 et versions ultérieures) : si spécifié, l’intergiciel (middleware) de mise en cache de réponse varie selon la réponse stockée par les valeurs de la liste des clés de requête données. L’intergiciel (middleware) de mise en cache de réponse doit être activé pour définir la propriété `VaryByQueryKeys` ; sinon, une exception runtime est levée. Il n’existe aucun en-tête HTTP correspondant pour la propriété `VaryByQueryKeys`. Cette propriété est une fonctionnalité HTTP gérée par l’intergiciel (middleware) de mise en cache de réponse. Pour que l’intergiciel (middleware) serve une mise en cache de réponse, la chaîne de requête et la valeur de chaîne de requête doivent correspondre à une demande précédente. Par exemple, considérez la séquence des demandes et les résultats présentés dans le tableau suivant.
 
@@ -109,11 +109,11 @@ Le `ResponseCacheAttribute` est utilisé pour configurer et créer (via `IFilter
 
 ### <a name="vary"></a>Vary
 
-Cet en-tête est écrit uniquement lorsque le `VaryByHeader` est définie. Il est défini sur la valeur `Vary` de la propriété. L’exemple suivant utilise la propriété `VaryByHeader` :
+Cet en-tête est écrit uniquement lorsque la propriété `VaryByHeader` est définie. Il est défini sur la valeur de la propriété `Vary`. L’exemple suivant utilise la propriété `VaryByHeader` :
 
 [!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_VaryByHeader&highlight=1)]
 
-Vous pouvez afficher les en-têtes de réponse avec les outils de réseau de votre navigateur. L’illustration suivante montre le F12 Edge de sortie sur l'onglet **réseau** lorsque la méthode d’action `About2` est actualisée :
+Vous pouvez afficher les en-têtes de réponse avec les outils réseau de votre navigateur. L’illustration suivante montre la sortie Edge F12 dans l'onglet **Réseau** lorsque la méthode d’action `About2` est actualisée :
 
 ![Bord F12 sortie dans l’onglet réseau lorsque la méthode d’action About2 est appelée.](response/_static/vary.png)
 
@@ -144,7 +144,7 @@ Pour activer la mise en cache, `Duration` doit être définie sur une valeur pos
 > [!NOTE]
 > `Location`d’options de `Any` et `Client` traduire en `Cache-Control` les valeurs d’en-tête de `public` et `private`, respectivement. Comme mentionné précédemment, le paramètre `Location` à `None` définit les deux `Cache-Control` et `Pragma` en-têtes à `no-cache`.
 
-Ci-dessous un exemple montrant les en-têtes produit en définissant `Duration` et en conservant la valeur par défaut `Location` :
+Vous trouverez ci-dessous un exemple montrant les en-têtes produits en définissant `Duration` et en conservant la valeur `Location` par défaut :
 
 [!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_duration&highlight=1)]
 
@@ -156,7 +156,7 @@ Cache-Control: public,max-age=60
 
 ### <a name="cache-profiles"></a>Profils de cache
 
-Au lieu de répéter les paramètres`ResponseCache` sur les attributs d’action de contrôleur, les profils de cache peuvent être configurés en tant qu’options lorsque vous configurez MVC dans le `ConfigureServices` méthode dans `Startup`. Les valeurs d’un profil de cache référencé sont utilisées en tant que les valeurs par défaut par le `ResponseCache` d’attribut et sont remplacées par les propriétés spécifiées sur l’attribut.
+Au lieu de répéter les paramètres`ResponseCache` sur plusieurs attributs d’action de contrôleur, les profils de cache peuvent être configurés en tant qu’options lorsque vous configurez MVC dans la méthode `ConfigureServices` dans `Startup`. Les valeurs d’un profil de cache référencé sont utilisées en tant que valeurs par défaut par l'attribut `ResponseCache` et sont remplacées par les propriétés spécifiées dans l’attribut.
 
 Configuration d’un profil de cache :
 
@@ -166,7 +166,7 @@ Faisant référence à un profil de cache :
 
 [!code-csharp[Main](response/sample/Controllers/HomeController.cs?name=snippet_controller&highlight=1,4)]
 
-L'attribut `ResponseCache` peut être appliqué à la fois aux actions (méthodes) et contrôleurs (classes). Les attributs au niveau de la méthode remplacent les paramètres spécifiés dans les attributs au niveau de la classe.
+L'attribut `ResponseCache` peut être appliqué à la fois aux actions (méthodes) et aux contrôleurs (classes). Les attributs au niveau de la méthode remplacent les paramètres spécifiés dans les attributs au niveau de la classe.
 
 Dans l’exemple ci-dessus, un attribut de niveau classe spécifie une durée de 30 secondes, pendant un attribut de niveau de la méthode fait référence à un profil de cache avec une durée de 60 secondes.
 
