@@ -1,4 +1,4 @@
----
+﻿---
 title: Pages Razor avec EF Core - CRUD - 2 sur 8
 author: rick-anderson
 description: "Montre comment créer, lire, mettre à jour et supprimer avec EF Core"
