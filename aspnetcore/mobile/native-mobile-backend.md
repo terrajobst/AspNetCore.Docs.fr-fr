@@ -31,17 +31,17 @@ Ce didacticiel montre comment créer des services backend à l’aide d’ASP.NE
 
 ### <a name="features"></a>Fonctionnalités
 
-L’application ToDoRest prend en charge l’affichage, ajout, la suppression et la mise à jour des éléments de tâche. Chaque élément possède un ID, un nom, des notes et une propriété qui indique si elle est déjà terminée.
+L’application ToDoRest prend en charge l’affichage, l'ajout, la suppression et la mise à jour des éléments de tâche. Chaque élément possède un ID, un nom, des notes et une propriété qui indique si elle est déjà terminée. 
 
 La vue principale des éléments, comme indiqué ci-dessus, répertorie le nom de chaque élément et indique si elle est effectuée avec une coche.
 
-Un appui sur l'icône `+` ouvre une boîte de dialogue Ajouter un élément :
+Appuyez sur l'icône `+` pour ouvrir une boîte de dialogue Ajouter un élément :
 
 ![boîte de dialogue Ajouter un élément](native-mobile-backend/_static/todo-android-new-item.png)
 
-Un appui sur un élément sur l’écran de liste principale ouvre une boîte de dialogue Modifier dans laquelle le nom de l’élément, les notes de publication et les paramètres terminés peuvent être modifiés ou que l’élément peut être supprimé :
+Le fait d'appuyer sur un élément sur l’écran de liste principale ouvre une boîte de dialogue Modifier dans laquelle les paramètres Nom, Notes de publication et Terminé de l’élément peuvent être modifiés ou bien l’élément peut être supprimé :
 
-!Bboîte de dialogue Modifier un élément](native-mobile-backend/_static/todo-android-edit-item.png)
+![Boîte de dialogue Modifier un élément](native-mobile-backend/_static/todo-android-edit-item.png) 
 
 Cet exemple est configuré par défaut pour utiliser les services backend hébergés sur developer.xamarin.com, qui autorisent des opérations en lecture seule. Pour tester vous-même par rapport à l’application ASP.NET Core créée dans la section suivante, en cours d’exécution sur votre ordinateur, vous devez mettre à jour constante `RestUrl` de l’application. Accédez au projet `ToDoREST` et ouvrez le fichier *Constants.cs*. Remplacez `RestUrl` avec une URL qui inclut l'adresse IP de votre ordinateur (pas localhost ou 127.0.0.1, étant donné que cette adresse est utilisée à partir de l’émulateur d’appareil, pas à partir de votre ordinateur). Inclure également le numéro de port (5000). Afin de vérifier que vos services fonctionnent avec un périphérique, assurez-vous que vous n’avez pas un pare-feu actif bloquuant l’accès à ce port.
 
@@ -91,7 +91,7 @@ Configurer la mise en oeuvre dans *Startup.cs*:
 
 Ajoutez un nouveau contrôleur pour le projet, *ToDoItemsController*. Il doit hériter de Microsoft.AspNetCore.Mvc.Controller. Ajoutez un attribut `Route` pour indiquer que le contrôleur gère les demandes effectuées aux chemins d’accès commençant par `api/todoitems`. Le token `[controller]` dans l’itinéraire est remplacé par le nom du contrôleur (en omettant le suffixe `Controller`) et s’avère particulièrement utile pour les routes globales. En savoir plus sur le [routage](../fundamentals/routing.md).
 
-Le contrôleur a besoin d’un `IToDoRepository` pour fonctionner ; demande une instance de ce type via le constructeur du contrôleur. Lors de l’exécution, cette instance est fournie à l’aide de la prise en charge par le framework de l'[injection de dépendance](../fundamentals/dependency-injection.md).
+Le contrôleur a besoin d’un `IToDoRepository` pour fonctionner ; demandez une instance de ce type via le constructeur du contrôleur. Lors de l’exécution, cette instance est fournie à l’aide de la prise en charge par le framework de l'[injection de dépendance](../fundamentals/dependency-injection.md). 
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=1-17&highlight=9,14)]
 
@@ -103,7 +103,7 @@ Demander une liste d’éléments est effectuée avec une demande GET pour le `L
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=19-23)]
 
-La méthode `List` retourne un code de réponse OK 200 et tous les éléments de tâche, sérialisées au format JSON.
+La méthode `List` retourne un code de réponse OK 200 et tous les éléments de tâche, sérialisés au format JSON. 
 
 Vous pouvez tester votre nouvelle méthode d’API à l’aide de divers outils, tels que [Postman](https://www.getpostman.com/docs/), comme illustré ici :
 
@@ -111,7 +111,7 @@ Vous pouvez tester votre nouvelle méthode d’API à l’aide de divers outils,
 
 ### <a name="creating-items"></a>Création d’éléments
 
-Par convention, la création de nouveaux éléments de données est mappé pour le verbe HTTP POST. La méthode `Create` a un attribut `[HttpPost]` appliqué et accepte une  instance `ToDoItem`. Étant donné que l'argument `item` sera passé dans le corps de la publication, ce paramètre est décoré avec l'attribut `[FromBody]` .
+Par convention, la création de nouveaux éléments de données est mappée pour le verbe HTTP POST. La méthode `Create` a un attribut `[HttpPost]` appliqué et accepte une instance `ToDoItem`. Étant donné que l'argument `item` sera passé dans le corps de la publication, ce paramètre est décoré avec l'attribut `[FromBody]`. 
 
 À l’intérieur de la méthode, l’élément est activé pour la validité et l’existence préalable dans le magasin de données, et si aucun problème ne se produit, il est ajouté à l’aide de l’espace de stockage. La vérification de `ModelState.IsValid` effectue la [validation du modèle](../mvc/models/validation.md) et doit être effectuée dans chaque méthode d’API qui accepte une entrée d’utilisateur.
 
@@ -129,7 +129,7 @@ La méthode retourne l’élément qui vient d’être créé dans la réponse.
 
 ### <a name="updating-items"></a>Mise à jour des éléments
 
-La modification des enregistrements s’effectue à l’aide de requêtes HTTP PUT. Outre cette modification, la méthode `Edit` est presque identique à `Create`. Notez que si l’enregistrement n’est trouvé, l'action `Edit` retournera une réponse (404) `NotFound`.
+La modification des enregistrements s’effectue à l’aide de requêtes HTTP PUT. Outre cette modification, la méthode `Edit` est presque identique à `Create`. Notez que si l’enregistrement n’est pas trouvé, l'action `Edit` retournera une réponse (404) `NotFound`. 
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=48-69)]
 
@@ -141,7 +141,7 @@ Cette méthode retourne une réponse (204) `NoContent` lors de la réussite, par
 
 ### <a name="deleting-items"></a>Suppression d’éléments
 
-La suppression d’enregistrements est effectuée par des demandes de suppression du service et en passant l’ID de l’élément à supprimer. Comme avec la mise à jour, des demandes pour les éléments qui n’existent pas renverra des réponses `NotFound`. Sinon, une demande réussie obtiennent une réponse (204) `NoContent`.
+La suppression d’enregistrements est effectuée par des demandes de suppression du service et en passant l’ID de l’élément à supprimer. Comme avec la mise à jour, les demandes pour des éléments qui n’existent pas renvoient des réponses `NotFound`. Sinon, une demande réussie obtient une réponse (204) `NoContent`. 
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=71-88)]
 
