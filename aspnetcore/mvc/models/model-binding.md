@@ -22,15 +22,15 @@ Par [Rachel Appel](https://github.com/rachelappel)
 
 ## <a name="introduction-to-model-binding"></a>Introduction à la liaison de modèle
 
-La liaison de modèle dans ASP.NET Core MVC mappe les données de requêtes HTTP aux paramètres de méthode d’action. Les paramètres peuvent être des types simples tels que des chaînes, des entiers ou des nombres à virgule flottante, ou peuvent être des types complexes. Il s’agit d’une fonctionnalité intéressante de MVC, car le mappage des données entrantes à un homologue est un scénario souvent répété, quelle que soit la taille ou la complexité des données. MVC résout ce problème en abstrayant la liaison de données afin que les développeurs ne doivent pas réécrire une version légèrement différente de ce même code dans chaque application. L’écriture de votre propre texte pour le code de convertisseur de type est fastidieux et sujet aux erreurs.
+La liaison de modèle dans ASP.NET Core MVC mappe les données de requêtes HTTP aux paramètres de méthode d’action. Les paramètres peuvent être des types simples tels que des chaînes, des entiers ou des nombres à virgule flottante, ou peuvent être des types complexes. Il s’agit d’une fonctionnalité intéressante de MVC, car le mappage des données entrantes à un homologue est un scénario souvent répété, quelle que soit la taille ou la complexité des données. MVC résout ce problème en abstrayant la liaison de données afin d'éviter aux développeurs de réécrire une version légèrement différente de ce même code dans chaque application. L’écriture de votre propre texte pour le code de convertisseur de type est fastidieux et sujet aux erreurs.
 
-## <a name="how-model-binding-works"></a>Comment fonctionne la liaison de modèle
+## <a name="how-model-binding-works"></a>Fonctionnement de la liaison de modèle
 
-Lorsque MVC reçoit une requête HTTP, il l'achemine vers une méthode d’action spécifique d’un contrôleur. Il détermine la méthode d’action à exécuter en fonction de ce qui est dans les données de routing, puis elle lie les valeurs de la requête HTTP aux paramètres de cette méthode d’action. Par exemple, considérez l’URL suivante :
+Lorsque MVC reçoit une requête HTTP, il l'achemine vers une méthode d’action spécifique d’un contrôleur. Il détermine la méthode d’action à exécuter en fonction de ce qui est dans les données de routing, puis lie les valeurs de la requête HTTP aux paramètres de cette méthode d’action. Par exemple, considérez l’URL suivante : 
 
 `http://contoso.com/movies/edit/2`
 
-Étant donné que le modèle de routing ressemble à ceci, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` achemine vers le contrôleur `Movies` et sa méthode d’action `Edit`. Elle accepte également un paramètre facultatif, appelé `id`. Le code de la méthode d’action doit ressembler à ceci :
+Étant donné que le modèle de routing ressemble à ceci, `{controller=Home}/{action=Index}/{id?}`, `movies/edit/2` achemine vers le contrôleur `Movies` et sa méthode d’action `Edit`. Il accepte également un paramètre facultatif, appelé `id`. Le code de la méthode d’action doit ressembler à ceci : 
 
 ```csharp
 public IActionResult Edit(int? id)
@@ -38,7 +38,7 @@ public IActionResult Edit(int? id)
 
 Remarque : Les chaînes dans la route d’URL ne respectent pas la casse.
 
-MVC tente de lier des données de la demande aux paramètres d’action par nom. MVC recherchera des valeurs pour chaque paramètre à l’aide du nom du paramètre et des noms de ses propriétés définissables publiques. Dans l’exemple ci-dessus, le paramètre de la seule action est nommé `id`, auquel MVC lie la valeur portant le même nom dans les valeurs de routing. En plus des valeurs de routing MVC liera des données à partir de différentes parties de la demande et il le fait dans un ordre bien défini. Voici une liste des sources de données dans l’ordre dans lequel la liaison de modèle les recherche :
+MVC tente de lier des données de la demande aux paramètres d’action par nom. MVC recherche des valeurs pour chaque paramètre à l’aide du nom du paramètre et des noms de ses propriétés définissables publiques. Dans l’exemple ci-dessus, le paramètre de la seule action est nommé `id`, auquel MVC lie la valeur portant le même nom dans les valeurs de routing. En plus des valeurs de routing MVC lie des données à partir de différentes parties de la demande et ce, dans un ordre bien défini. Voici une liste des sources de données dans l’ordre dans lequel la liaison de modèle les recherche :
 
 1. `Form values`: Ce sont des valeurs de formulaire qui vont dans la requête HTTP à l’aide de la méthode POST. (y compris les requêtes POST jQuery).
 
@@ -60,21 +60,21 @@ Jusqu'à présent, l’exemple utilise des types simples. Dans MVC les types sim
 
 Pour que la liaison se produise la classe doit avoir un constructeur public par défaut et les membres liés doivent être des propriétés publiques accessibles en écriture. Lorsque la liaison de modèle se produit, la classe sera uniquement instanciée en utilisant le constructeur public par défaut, puis les propriétés peuvent être définies.
 
-Lorsqu’un paramètre est lié, la liaison de modèle arrête la recherche de valeurs portant ce nom et elle passe à la liaison de paramètre suivant. Sinon, le comportement de liaison de modèle par défaut définit les paramètres à leurs valeurs par défaut en fonction de leur type :
+Lorsqu’un paramètre est lié, la liaison de modèle arrête la recherche de valeurs portant ce nom et elle passe à la liaison de paramètre suivant. Sinon, le comportement de liaison de modèle par défaut définit les paramètres sur leurs valeurs par défaut en fonction de leur type : 
 
-* `T[]`: À l’exception des tableaux de type `byte[]`, la liaison définit les paramètres de type `T[]` à `Array.Empty<T>()`. Les tableaux de type `byte[]` ont la valeur `null`.
+* `T[]`: À l’exception des tableaux de type `byte[]`, la liaison définit les paramètres de type `T[]` sur `Array.Empty<T>()`. Les tableaux de type `byte[]` ont la valeur `null`.
 
-* Types de référence : La liaison crée une instance d’une classe avec le constructeur par défaut sans définir ses propriétés. Toutefois, la liaison de modèle défini les paramètres `string` à `null`.
+* Types de référence : La liaison crée une instance d’une classe avec le constructeur par défaut sans définir ses propriétés. Toutefois, la liaison de modèle défini les paramètres `string` sur `null`. 
 
-* Types Nullable : Les types Nullable sont définies à `null`. Dans l’exemple ci-dessus, la liaison de modèle définit l'`id` à `null` car il est de type `int?`.
+* Types Nullable : Les types Nullable sont définis sur `null`. Dans l’exemple ci-dessus, la liaison de modèle définit l'`id` sur `null` car il est de type `int?`. 
 
-* : Les Types de valeur : Les types valeur Non nullable de type `T` ont la valeur `default(T)`. Par exemple, la liaison de modèle définit un paramètre `int id` à 0. Pensez à utiliser la validation des modèles ou des types nullable au lieu de reposer sur les valeurs par défaut.
+* Types de valeur : les types de valeur Non nullable de type `T` ont la valeur `default(T)`. Par exemple, la liaison de modèle définit un paramètre `int id` sur 0. Pensez à utiliser la validation des modèles ou des types nullable au lieu d'utiliser les valeurs par défaut. 
 
-Si la liaison échoue, MVC ne provoque une erreur. Chaque action qui accepte une entrée d’utilisateur doit vérifier la propriété `ModelState.IsValid`.
+Si la liaison échoue, MVC ne provoque pas d'erreur. Chaque action qui accepte une entrée utilisateur doit vérifier la propriété `ModelState.IsValid`. 
 
 Remarque : Chaque entrée dans la propriété `ModelState` du contrôleur est un `ModelStateEntry` contenant une propriété `Errors`. Il est rarement nécessaire d'interroger cette collection vous-même. Utilisez plutôt `ModelState.IsValid`.
 
-En outre, il existe de certains types de données spéciaux que MVC ne doit pas prendre en compte lors de la liaison de modèle :
+En outre, il existe certains types de données spéciaux que MVC doit prendre en compte lors de la liaison de modèle :
 
 * `IFormFile`, `IEnumerable<IFormFile>`: Un ou plusieurs fichiers téléchargés qui font partie de la requête HTTP.
 
@@ -86,11 +86,11 @@ Une fois que la liaison de modèle est terminée, la [Validation](validation.md)
 
 ## <a name="customize-model-binding-behavior-with-attributes"></a>Personnaliser le comportement de liaison de modèle avec des attributs
 
-MVC contient plusieurs attributs que vous pouvez utiliser pour indiquer son comportement de liaison de modèle par défaut à une source différente. Par exemple, vous pouvez spécifier si la liaison est requise pour une propriété, ou si ne elle doit jamais se produire du tout en utilisant les attributs `[BindRequired]` ou `[BindNever]`. Vous pouvez également remplacer la source de données par défaut et spécifier la source de données du model binder. Vous trouverez ci-dessous la liste des attributs de liaison de modèle :
+MVC contient plusieurs attributs que vous pouvez utiliser pour indiquer son comportement de liaison de modèle par défaut à une source différente. Par exemple, vous pouvez spécifier si la liaison est requise pour une propriété ou si elle ne doit jamais se produire du tout en utilisant les attributs `[BindRequired]` ou `[BindNever]`. Vous pouvez également remplacer la source de données par défaut et spécifier la source de données du model binder. Vous trouverez ci-dessous la liste des attributs de liaison de modèle :
 
 * `[BindRequired]`: Cet attribut ajoute une erreur d’état de modèle si la liaison ne peut pas se produire.
 
-* `[BindNever]`: Indique au de ne jamais lier ce paramètre.
+* `[BindNever]`: Indique au model binder de ne jamais lier ce paramètre. 
 
 * `[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]`: Utilisez-les pour spécifier la source de liaison exacte que vous souhaitez appliquer.
 
@@ -102,15 +102,15 @@ MVC contient plusieurs attributs que vous pouvez utiliser pour indiquer son comp
 
 Les attributs sont très utiles lorsque vous devez remplacer le comportement par défaut de la liaison de modèle.
 
-## <a name="bind-formatted-data-from-the-request-body"></a>Lier des données mises en forme depuis le corps de demande
+## <a name="bind-formatted-data-from-the-request-body"></a>Lier des données mises en forme depuis le corps de la demande 
 
 Les données de la demande peuvent venir dans divers formats, notamment JSON, XML et bien d’autres. Lorsque vous utilisez l’attribut [FromBody] pour indiquer que vous souhaitez lier un paramètre à des données dans le corps de la demande, MVC utilise un jeu de formateurs configuré pour gérer les données de la demande en fonction de son type de contenu. Par défaut, MVC inclut une classe `JsonInputFormatter` pour la gestion des données JSON, mais vous peuvent ajouter des formateurs supplémentaires pour la gestion de XML et d'autres formats personnalisés.
 
 > [!NOTE]
-> Il peut y avoir au plus un paramètre par action décoré avec `[FromBody]`. La durée d’exécution ASP.NET Core MVC délègue la responsabilité de lire le flux de demande au formateur. Une fois que le flux de demande est en lecture pour un paramètre, il n’est généralement pas possible de lire le flux de demande de liaison des autres paramètres `[FromBody]`.
+> Il peut y avoir au plus un paramètre par action décoré avec `[FromBody]`. Le runtime Core MVC ASP.NET délègue la responsabilité de lecture du flux de demandes au formateur. Une fois que le flux de demandes est lu pour un paramètre, il n’est généralement pas possible de lire à nouveau le flux de demandes pour la liaison d'autres paramètres `[FromBody]`. 
 
 > [!NOTE]
-> Le `JsonInputFormatter` est le formateur par défaut et est basé sur [Json.NET](https://www.newtonsoft.com/json).
+> `JsonInputFormatter` est le formateur par défaut et est basé sur [Json.NET](https://www.newtonsoft.com/json). 
 
 ASP.NET sélectionne les formateurs d’entrée selon l'en-tête [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) et le type du paramètre, sauf s’il existe un attribut appliqué en le spécifiant dans le cas contraire. Si vous souhaitez utiliser des données XML ou un autre format vous devez le configurer dans le fichier *Startup.cs*, mais vous devrez peut-être d’abord obtenir une référence à `Microsoft.AspNetCore.Mvc.Formatters.Xml` à l’aide de NuGet. Votre code de démarrage doit ressembler à ceci :
 
@@ -122,8 +122,8 @@ public void ConfigureServices(IServiceCollection services)
    }
 ```
 
-Le code dans le fichier *Startup.cs* contient une méthode `ConfigureServices` avec un argument `services`, vous pouvez utiliser pour générer des services pour votre application ASP.NET. Dans l’exemple, nous ajoutons un formateur XML en tant que service que MVC fournit pour cette application. L'argument `options` passé dans la méthode `AddMvc` permet d’ajouter et de gérer des filtres, les formateurs et les autres options de système de MVC lors du démarrage de l’application. Puis appliquez l'attribut `Consumes` pour aux classes de contrôleur ou aux méthodes d’action pour travailler avec le format souhaité.
+Le code dans le fichier *Startup.cs* contient une méthode `ConfigureServices` avec un argument `services` que vous pouvez utiliser pour générer des services pour votre application ASP.NET. Dans l’exemple, nous ajoutons un formateur XML en tant que service que MVC fournit pour cette application. L'argument `options` passé dans la méthode `AddMvc` permet d’ajouter et de gérer des filtres, les formateurs et les autres options système de MVC lors du démarrage de l’application. Puis appliquez l'attribut `Consumes` aux classes de contrôleur ou aux méthodes d’action pour travailler avec le format souhaité.
 
 ### <a name="custom-model-binding"></a>Liaison de modèle personnalisé
 
-Vous pouvez étendre la liaison de modèle en écrivant vos propres model binders personnalisés. En savoir plus sur la [liaison de modèle personnalisé](../advanced/custom-model-binding.md).
+Vous pouvez étendre la liaison de modèle en écrivant vos propres model binders personnalisés. En savoir plus sur la [liaison de modèle personnalisée](../advanced/custom-model-binding.md). 
