@@ -39,19 +39,19 @@ Notez qu’à ce stade, le fichier *Startup.cs* fichier ne sera pas compilé, qu
 using Microsoft.Extensions.Configuration;
 ```
 
-Ajouter un *appsettings.json* fichier à la racine du projet à l’aide du modèle d’élément approprié :
+Ajouter un fichier *appsettings.json* à la racine du projet à l’aide du modèle d’élément approprié :
 
 ![Ajouter AppSettings JSON](configuration/_static/add-appsettings-json.png)
 
 ## <a name="migrate-configuration-settings-from-webconfig"></a>Migrer les paramètres de Configuration à partir de web.config
 
-Notre projet ASP.NET MVC incluse de la chaîne de connexion de base de données requises dans *web.config*, dans le `<connectionStrings>` élément. Dans notre projet ASP.NET Core, nous allons stocker ces informations dans le *appsettings.json* fichier. Ouvrez *appsettings.json*et notez qu’il contient déjà les éléments suivants :
+Notre projet ASP.NET MVC inclut  la chaîne de connexion de base de données requises dans le fichier *web.config*, dans l'élément `<connectionStrings>`. Dans notre projet ASP.NET Core, nous allons stocker ces informations dans le fichier *appsettings.json*. Ouvrez le fichier *appsettings.json*et notez qu’il contient déjà les éléments suivants :
 
 [!code-json[](../migration/configuration/samples/WebApp1/src/WebApp1/appsettings.json?highlight=4)]
 
 
-Dans la ligne en surbrillance mentionnée ci-dessus, remplacez le nom de la base de données à partir de **_CHANGE_ME** au nom de votre base de données.
+Dans la ligne en surbrillance mentionnée ci-dessus, remplacez le nom de la base de données à partir de **_CHANGE_ME** avec le nom de votre base de données.
 
 ## <a name="summary"></a>Récapitulatif
 
-ASP.NET Core place toute logique de démarrage de l’application dans un seul fichier dans lequel les services nécessaires et les dépendances peuvent être définis et configurés. Il remplace le *web.config* fichier avec une fonctionnalité de configuration souples qui peut tirer parti des divers formats de fichier, tels que JSON, ainsi que les variables d’environnement.
+ASP.NET Core place toute la logique de démarrage de l’application dans un seul fichier dans lequel les services nécessaires et les dépendances peuvent être définis et configurés. Il remplace le fichier *web.config* avec une fonctionnalité de configuration souples qui peut tirer parti des divers formats de fichier, tels que JSON, ainsi que les variables d’environnement.
