@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Démarrage d’une application dans ASP.NET Core"
 author: ardalis
 description: "Découvrez comment la classe Startup dans ASP.NET Core configure des services et le pipeline de requête de l’application."
@@ -56,7 +56,7 @@ La méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startup
 * Appelée par l’hôte web avant la méthode `Configure` pour configurer les services de l’application.
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
-L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services ne sont pas résolus via [l’injection de dépendances](xref:fundamentals/dependency-injection) ou à partir de [d’IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
+L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services ne sont pas résolus via [l'injection de dépendance](xref:fundamentals/dependency-injection) ou à partir de [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
 
 L’hôte web peut configurer certains services avant que les méthodes `Startup` soient appelées. Vous trouverez plus de détails dans la rubrique [Hébergement](xref:fundamentals/hosting). 
 

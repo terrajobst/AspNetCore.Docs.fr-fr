@@ -11,7 +11,7 @@ ms.topic: article
 uid: security/authorization/views
 ms.openlocfilehash: 22754d07882cd704309a4e1a28ad0bf6f69432ea
 ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
 ---
@@ -75,4 +75,4 @@ Dans certains cas, la ressource sera votre modèle de Vue. Utilisez `AuthorizeAs
 Dans le code précédent, le modèle est transmis en tant que ressource que l’évaluation de stratégie doit prendre en considération.
 
 > [!WARNING]
-> Ne vous fiez pas au bascule de visibilité des éléments d’interface utilisateur de votre application en tant que contrôle d’autorisation unique. Le masquage d’un élément d’interface utilisateur peuvent ne pas complètement empêcher l’accès à son action de contrôleur associé. Par exemple, dans l’extrait de code précédent. Un utilisateur peut appeler la méthode d’Action `Edit` s'il connaît sa ressource relative comme  par exemple *http://<host>/Document/Edit/1*. Pour cette raison, la méthode d'Action `Edit` doit effectuer son propre contrôle d’autorisation.
+> Ne vous fiez pas bascule de visibilité des éléments d’interface utilisateur de votre application en tant que le contrôle d’autorisation unique. Le masquage d’un élément d’interface utilisateur peuvent ne pas complètement empêche l’accès à son action de contrôleur associé. Par exemple, considérez le bouton dans l’extrait de code précédent. Un utilisateur peut appeler le `Edit` URL de la méthode d’action si il connaît la ressource relative est */Document/Edit/1*. Pour cette raison, la `Edit` méthode d’action doit effectuer son propre contrôle d’autorisation.

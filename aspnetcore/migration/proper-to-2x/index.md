@@ -1,7 +1,7 @@
-﻿---
+---
 title: "Migration d’ASP.NET vers ASP.NET Core 2.0"
 author: isaac2004
-description: "Recevoir des conseils de migration d'applications ASP.NET MVC ou Web API existantes vers ASP.NET Core 2.0."
+description: Recevoir des conseils de migration d'applications ASP.NET MVC ou Web API existantes vers ASP.NET Core 2.0.
 manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
@@ -11,7 +11,7 @@ ms.topic: article
 uid: migration/proper-to-2x/index
 ms.openlocfilehash: 877bcdbe5c5fb43e280800b2b843f2dfacb5bb45
 ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/02/2018
 ---
@@ -26,7 +26,7 @@ Cet article sert de guide de référence pour la migration d’applications ASP.
 * [SDK .NET Core 2.0.0](https://dot.net/core) ou version ultérieure
 
 ## <a name="target-frameworks"></a>Versions cibles de .NET Framework
-Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choix entre le .NET Core et le .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
+Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choix entre le .NET Core et le .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
 
 Quand vous ciblez le .NET Framework, les projets doivent référencer des packages NuGet individuels.
 
