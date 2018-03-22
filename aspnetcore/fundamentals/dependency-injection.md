@@ -46,14 +46,14 @@ ASP.NET Core inclut un conteneur simple intégré (représenté par l'interface 
 
 L'Injection de constructeur requiert que le constructeur en question soit *public*. Sinon, votre application génère une `InvalidOperationException`:
 
-> A suitable constructor for type 'YourType' couldn't be located. Ensure the type is concrete and services are registered for all parameters of a public constructor.
+> Impossible de trouver un constructeur approprié pour le type 'YourType'. Vérifiez le type est concrète et les services sont inscrits pour tous les paramètres d’un constructeur public.
 
 
 L'Injection de constructeur requiert qu’un seul constructeur applicable existe. Les srcharges de constructeur sont prises en charge, mais seulement une surcharge peut exister dont les arguments peuvent tous être satisfaits par injectionl' de dépendances. Si plusieurs existent, votre application lève une `InvalidOperationException`:
 
-> Multiple constructors accepting all given argument types have been found in type 'YourType'. There should only be one applicable constructor.
+> Plusieurs constructeurs accepter tous les types d’argument donné ont été trouvées dans le type 'YourType'. Doit être un constructeur applicable.
 
-Les constructeurs peuvent accepter des arguments qui ne sont pas fournies par injection de dépendances, mais ils doivent prendre en charge les valeurs par défaut. Exemple :
+Les constructeurs peuvent accepter des arguments qui ne sont pas fournies par l'injection de dépendances, mais ils doivent prendre en charge les valeurs par défaut. Exemple :
 
 ```csharp
 // throws InvalidOperationException: Unable to resolve service for type 'System.String'...
@@ -80,7 +80,7 @@ La méthode `ConfigureServices` dans la classe `Startup` est chargée de défini
 | [Microsoft.AspNetCore.Hosting.IHostingEnvironment](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.ihostingenvironment) | Singleton |
 | [Microsoft.Extensions.Logging.ILoggerFactory](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.iloggerfactory) | Singleton |
 | [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) | Singleton |
-| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Transient |
+| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Temporaire |
 | [Microsoft.AspNetCore.Http.IHttpContextFactory](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.ihttpcontextfactory) | Transient |
 | [Microsoft.Extensions.Options.IOptions&lt;T&gt;](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.options.ioptions-1) | Singleton |
 | [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | Singleton |
@@ -193,7 +193,7 @@ Observez parmi les différentes valeurs `OperationId` dans une demande et entre 
 
 * *Singleton* objets sont les mêmes pour tous les objets et toutes les demandes (quel que soit la fourniture d’une instance dans `ConfigureServices`)
 
-## <a name="request-services"></a>Request Services
+## <a name="request-services"></a>Services de requêtes
 
 Les services disponibles dans une demande ASP.NET à partir de `HttpContext` sont exposés via la collection `RequestServices`.
 
