@@ -1,7 +1,7 @@
 ---
-title: "Validation de modèle dans ASP.NET Core MVC"
+title: "Validation de modèle dans ASP.NET MVC de base"
 author: rachelappel
-description: "En savoir plus sur la validation de modèle dans ASP.NET Core MVC."
+description: "En savoir plus sur la validation de modèle dans ASP.NET MVC de base."
 ms.author: riande
 manager: wpickett
 ms.date: 12/18/2016
@@ -15,13 +15,13 @@ ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
 ---
-# <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>Introduction à la validation de modèle dans ASP.NET Core MVC
+# <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>Introduction à la validation de modèle dans ASP.NET MVC de base
 
 Par [Rachel Appel](https://github.com/rachelappel)
 
 ## <a name="introduction-to-model-validation"></a>Introduction à la validation du modèle
 
-Avant qu'une application stocke des données dans une base de données, l’application doit valider les données. Les données doivent être validées pour des menaces de sécurité potentielles, vérifiées qu'elles sont correctement formattées en termes de type et de taille, et elles doivent être conformes à vos règles. La validation est nécessaire même si elle peut être fastidieuse à implémenter et redondantes. Dans MVC, la validation se produit sur le client et le serveur.
+Avant qu'une application stocke des données dans une base de données, elle doit valider les données. Les données doivent être validées pour détecter la présence de menaces de sécurité potentielles, pour vérifier qu'elles sont correctement formatées en termes de type et de taille, et elles doivent être conformes à vos règles. La validation est nécessaire même si elle peut être fastidieuse à implémenter et redondante. Dans MVC, la validation se produit sur le client et le serveur. 
 
 Heureusement, .NET a abstrait la validation dans des attributs de validation. Ces attributs contiennent du code de validation, ce qui réduit la quantité de code à écrire.
 
@@ -31,7 +31,7 @@ Heureusement, .NET a abstrait la validation dans des attributs de validation. Ce
 
 Les attributs de validation sont un moyen de configurer la validation de modèle afin qu’elle soit similaire sur le plan conceptuel à la validation des champs dans les tables de base de données. Cela inclut les contraintes telles que l’affectation de types de données ou les champs obligatoires. Les autres types de validation incluent l’application de modèles aux données pour appliquer des règles métiers, telles qu’une carte de crédit, une numéro de téléphone, ou une adresse de messagerie. Les attributs de validation rendent l’application de ces exigences beaucoup plus simples et plus faciles à utiliser.
 
-Voici un modèle `Movie` annoté d’une application qui stocke des informations sur les films et les émissions de télévision. La plupart des propriétés sont nécessaires, et plusieurs propriétés de chaîne ont des exigences de longueur. En outre, il y a une restriction de plage numérique en place pour la propriété `Price` de 0 à $999,99, ainsi que d’un attribut de validation personnalisé.
+Voici un modèle `Movie` annoté d’une application qui stocke des informations sur les films et les émissions de télévision. La plupart des propriétés sont nécessaires, et plusieurs propriétés de chaîne ont des exigences de longueur. En outre, il y a une restriction de plage numérique en place pour la propriété `Price` de 0 à $999,99, ainsi qu'un attribut de validation personnalisé. 
 
 [!code-csharp[Main](validation/sample/Movie.cs?range=6-29)]
 
@@ -55,9 +55,9 @@ En lisant simplement le modèle, vous affichez les règles concernant les donné
 
 * `[Url]`: Valide que la propriété a un format d’URL.
 
-MVC prend en charge tout attribut qui dérive de `ValidationAttribute` à des fins de validation. Vous trouverez des attributs de validation utile dans l'espace de noms [System.ComponentModel.DataAnnotations](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations).
+MVC prend en charge tout attribut qui dérive de `ValidationAttribute` à des fins de validation. Vous trouverez des attributs de validation utiles dans l'espace de noms [System.ComponentModel.DataAnnotations](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations).
 
-Il peut y avoir des moments où vous avez besoin de davantage de fonctionnalités que celles que les attributs prédéfinis fournissent. Dans ces cas, vous pouvez créer des attributs de validation personnalisés en dérivant de `ValidationAttribute` ou en modificant votre modèle pour implémenter `IValidatableObject`.
+Vous aurez peut-être parfois besoin de davantage de fonctionnalités que celles fournies par les attributs prédéfinis. Dans ce cas, vous pouvez créer des attributs de validation personnalisés en dérivant de `ValidationAttribute` ou en modifiant votre modèle pour implémenter `IValidatableObject`.
 
 ## <a name="notes-on-the-use-of-the-required-attribute"></a>Remarques sur l’utilisation de l’attribut Required
 
@@ -75,7 +75,7 @@ La validation côté client requiert une valeur pour un champ de formulaire qui 
 
 L'état du modèle (Model State) représente les erreurs de validation dans les valeurs de formulaire HTML envoyées.
 
-MVC continuera la validation des champs jusqu'à atteindree le nombre maximal d’erreurs (200 par défaut). Vous pouvez configurer ce nombre en insérant le code suivant dans la méthode `ConfigureServices` dans le fichier *Startup.cs* :
+MVC continuera la validation des champs jusqu'à atteindre le nombre maximal d’erreurs (200 par défaut). Vous pouvez configurer ce nombre en insérant le code suivant dans la méthode `ConfigureServices` dans le fichier *Startup.cs* : 
 
 [!code-csharp[Main](validation/sample/Startup.cs?range=27)]
 
@@ -83,11 +83,11 @@ MVC continuera la validation des champs jusqu'à atteindree le nombre maximal d�
 
 La validation du modèle se produit avant chaque action du contrôleur qui est appelée, et il incombe à la méthode d’action d'inspecter `ModelState.IsValid` et de réagir de façon appropriée. Dans de nombreux cas, la réaction appropriée doit renvoyer une réponse d’erreur, dans l’idéal, détaillant la raison de l’échec de validation du modèle.
 
-Certaines applications choisissentt de suivre une convention standard pour traiter les erreurs de validation de modèle, auquel cas un filtre peut être un emplacement approprié pour implémenter une telle stratégie. Vous devez tester le comportement de vos actions avec les États de modèles valides et non valides.
+Certaines applications choisissent de suivre une convention standard pour traiter les erreurs de validation de modèle, auquel cas un filtre peut être un emplacement approprié pour implémenter une telle stratégie. Vous devez tester le comportement de vos actions avec les États de modèles valides et non valides. 
 
 ## <a name="manual-validation"></a>Validation manuelle
 
-Une fois la validation et la liaison de modèle, vous souhaiterez répéter des parties de celui-ci. Par exemple, un utilisateur peut avoir entré du texte dans un champ attendant un entier, ou vous devrez peut-être calculer une valeur pour les propriétés d’un modèle.
+Une fois la validation et la liaison de modèle terminées, vous souhaiterez répéter des parties de celui-ci. Par exemple, un utilisateur peut avoir entré du texte dans un champ attendant un entier, ou vous devrez peut-être calculer une valeur pour les propriétés d’un modèle. 
 
 Vous devrez peut-être exécuter manuellement la validation. Pour ce faire, appelez la méthode `TryValidateModel`, comme illustré ici :
 
@@ -109,7 +109,7 @@ De manière alternative, ce code aurait pu être placé dans le modèle en impl�
 
 ## <a name="client-side-validation"></a>Validation côté client
 
-La validation côté client est très pratique pour les utilisateurs. Cela fait gagner du temps qui nécessiterait sinon un aller-retour vers le serveur. En termes de métier, quelques fractions de secondes multipliées des centaines de fois par jour ajoute beaucoup de temps, des frais et de la frustration. La validation simple et immédiate permet aux utilisateurs de travailler plus efficacement et de produire une meilleure qualité d’entrée et sortie.
+La validation côté client est très pratique pour les utilisateurs. Cela fait gagner du temps qui nécessiterait sinon un aller-retour vers le serveur. Sur le plan professionnel, quelques fractions de secondes multipliées des centaines de fois par jour accroissent le temps et les frais requis, ainsi que la frustration. La validation simple et immédiate permet aux utilisateurs de travailler plus efficacement et de produire une entrée et une sortie de meilleure qualité. 
 
 Vous devez disposer d’une vue avec les références de script JavaScript appropriées en place pour que la validation côté client fonctionne comme vous le voyez ici.
 
@@ -142,7 +142,7 @@ Les tags helpers ci-dessus affichent le HTML ci-dessous. Notez que les attributs
 </form>
 ```
 
-La validation côté client empêche la soumission jusqu'à ce que le formulaire soit valide. Le bouton d’envoi exécute le JavaScript qui envoie le formulaire ou affiche des messages d’erreur.
+La validation côté client empêche l'envoi jusqu'à ce que le formulaire soit valide. Le bouton d’envoi exécute JavaScript qui envoie le formulaire ou affiche des messages d’erreur. 
 
 MVC détermine les valeurs d’attribut de type en fonction du type de données .NET d’une propriété, et éventuellement remplacés à l’aide d'attributs `[DataType]`. L'attribut`[DataType]` de base n'effectue aucune validation côté serveur. Les navigateurs choisissent leurs propres messages d’erreur et affichent ces erreurs, comme ils le souhaitent, toutefois le package Validation jQuery non obtrusive peut remplacer les messages et les afficher de manière cohérente avec d’autres. Cela se produit plus évidemment lorsque les utilisateurs appliquent les sous-classes`[DataType]` telles que `[EmailAddress]`.
 
@@ -196,7 +196,7 @@ Vous pouvez créer une logique côté client pour votre attribut personnalisé, 
 
 [!code-csharp[Main](validation/sample/ClassicMovieAttribute.cs?range=30-42)]
 
-Les attributs qui implémentent cette interface peuvent ajouter des attributs HTML pour les champs générés. L'examen de la sortie pour l'élément `ReleaseDate` révèle que le HTML qui est similaire à l’exemple précédent, mais il existe désormais un attribut `data-val-classicmovie` qui a été défini dans la méthode `AddValidation` de `IClientModelValidator`.
+Les attributs qui implémentent cette interface peuvent ajouter des attributs HTML pour les champs générés. L'examen de la sortie pour l'élément `ReleaseDate` révèle que le HTML est similaire à l’exemple précédent, mais il existe désormais un attribut `data-val-classicmovie` qui a été défini dans la méthode `AddValidation` de `IClientModelValidator`. 
 
 ```html
 <input class="form-control" type="datetime"
@@ -207,7 +207,7 @@ Les attributs qui implémentent cette interface peuvent ajouter des attributs HT
     id="ReleaseDate" name="ReleaseDate" value="" />
 ```
 
-La validation non obstrusive utilise les données dans les attributs `data-` pour afficher des messages d’erreur. Toutefois, jQuery ne connaît pas les règles ou des messages jusqu'à ce que vous les ajoutiez à l'objet jQuery `validator`. Cela est illustré dans l’exemple ci-dessous qui ajoute une méthode nommée `classicmovie` contenant le code de validation client personnalisé pour l'objet jQuery `validator`.
+La validation discrète utilise les données dans les attributs `data-` pour afficher des messages d’erreur. Toutefois, jQuery ne connaît pas les règles ou les messages jusqu'à ce que vous les ajoutiez à l'objet `validator` de jQuery. Cela est illustré dans l’exemple ci-dessous qui ajoute une méthode nommée `classicmovie` contenant le code de validation client personnalisé pour l'objet `validator` de jQuery. 
 
 [!code-javascript[Main](validation/sample/Views/Movies/Create.cshtml?range=71-93)]
 
@@ -221,11 +221,11 @@ Vous pouvez implémenter la validation à distance dans un processus en deux ét
 
 [!code-csharp[Main](validation/sample/User.cs?range=7-8)]
 
-La deuxième étape est de placer le code de validation dans la méthode d’action correspondante tel que défini dans l'attribut `[Remote]`. Selon la documentation de la validation jQuery de la méthode [ `remote()` ](https://jqueryvalidation.org/remote-method/):
+La deuxième étape consiste à placer le code de validation dans la méthode d’action correspondante tel que définie dans l'attribut `[Remote]`. Selon la documentation de la validation jQuery de la méthode [ `remote()` ](https://jqueryvalidation.org/remote-method/): 
 
 > La réponse serverside doit être une chaîne JSON qui doit être `"true"` pour les éléments valides et peut être `"false"`, `undefined`, ou `null` pour les éléments non valides, à l’aide de message d’erreur par défaut. Si la réponse serverside est une chaîne, par exemple. `"That name is already taken, try peter123 instead"`, cette chaîne s’affichera sous la forme d’un message d’erreur personnalisé à la place de la valeur par défaut.
 
-La définition de la méthode `VerifyEmail()` suit ces règles, comme indiqué ci-dessous. Il renvoie une erreur de validation de message si l’adresse de messagerie est effectuée, ou `true` si l’adresse de messagerie est libre et encapsule le résultat dans un objet `JsonResult`. Le côté client peut ensuite utiliser la valeur retournée pour continuer ou afficher sur l’erreur si nécessaire.
+La définition de la méthode `VerifyEmail()` suit ces règles, comme indiqué ci-dessous. Elle renvoie un message d'erreur de validation si l'e-mail est pris ou `true` si l'e-mail est libre, et encapsule le résultat dans un objet `JsonResult`. Le côté client peut ensuite utiliser la valeur retournée pour continuer ou afficher l’erreur si nécessaire. 
 
 [!code-csharp[Main](validation/sample/UsersController.cs?range=19-28)]
 
@@ -245,7 +245,7 @@ Maintenant lorsque les utilisateurs entrer un nom et prénom, JavaScript :
 * Si la paire existe, un message d’erreur s’affiche. 
 * Si ne pas le cas, l’utilisateur peut envoyer le formulaire.
 
-Si vous devez valider deux ou plusieurs champs supplémentaires avec l'attribut `[Remote]`, vous lui fournirez sous forme de liste délimitée par des virgules. Par exemple, pour ajouter une propriété `MiddleName` au modèle, affectez l'attribut `[Remote]` comme indiqué dans le code suivant :
+Si vous devez valider deux ou plusieurs champs supplémentaires avec l'attribut `[Remote]`, vous les fournissez sous forme de liste délimitée par des virgules. Par exemple, pour ajouter une propriété `MiddleName` au modèle, affectez l'attribut `[Remote]` comme indiqué dans le code suivant : 
 
 ```cs
 [Remote(action: "VerifyName", controller: "Users", AdditionalFields = nameof(FirstName) + "," + nameof(LastName))]
