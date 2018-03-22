@@ -48,7 +48,7 @@ Les utilisateurs peuvent afficher et mettre à jour des étudiants, les cours et
 
 ![Page de modification des étudiants](intro/_static/student-edit.png)
 
-Le style de l’interface utilisateur de ce site est proche de ce qui est généré par les modèles prédéfinis. L'objet principal du didacticiel est sur le Core EF comportant des Pages Razor, pas sur l’interface utilisateur.
+Le style de l’interface utilisateur de ce site est proche de ce qui est généré par les modèles prédéfinis. L'objet principal du didacticiel est Core EF comportant des pages Razor, pas l’interface utilisateur.
 
 ## <a name="create-a-razor-pages-web-app"></a>Créer une application de web Pages Razor
 
@@ -68,7 +68,7 @@ Ouvrez *Pages/_Layout.cshtml* et apportez les modifications suivantes :
 
 * Remplacez chaque occurrence de « ContosoUniversity » par « Université de Contoso . » Il existe trois occurrences.
 
-* Ajoutez des entrées de menu pour **étudiants**, **cours**, **instructeurs**, et **départements**et supprimer l'entrée **Contact** du menu.
+* Ajoutez des entrées de menu pour **étudiants**, **cours**, **instructeurs**, et **départements**et supprimez l'entrée **Contact** du menu.
 
 Les modifications sont mises en surbrillance. (Tout le balisage est *pas* affichés.)
 
@@ -122,7 +122,7 @@ La propriété`StudentID` est une clé étrangère, et la propriété de navigat
 
 La propriété `CourseID` est une clé étrangère, et la propriété de navigation correspondante est `Course`. Une entité `Enrollment` est associée à une entité `Course`.
 
-EF Core interprète une propriété comme une clé étrangère s’elle est nommée `<navigation property name><primary key property name>`. Par exemple,`StudentID` pour la propriété de navigation `Student`, dans la mesure où `Student`, la clé primaire de l’entité est `ID`. Les propriétés de clé étrangère peuvent également être nommées `<primary key property name>`. Par exemple, `CourseID` depuis la table `Course`, la clé primaire de l’entité est `CourseID`.
+EF Core interprète une propriété comme une clé étrangère si elle est nommée `<navigation property name><primary key property name>`. Par exemple,`StudentID` pour la propriété de navigation `Student`, dans la mesure où `Student`, la clé primaire de l’entité est `ID`. Les propriétés de clé étrangère peuvent également être nommées `<primary key property name>`. Par exemple, `CourseID` depuis la table `Course`, la clé primaire de l’entité est `CourseID'.
 
 ### <a name="the-course-entity"></a>L’entité de cours
 
@@ -260,7 +260,7 @@ No executable found matching command "dotnet-aspnet-codegenerator"
 Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 
 
-Générez le projet. La "build" génère des erreurs comme suit :
+Générez le projet. La build génère des erreurs comme suit :
 
  `1>Pages\Students\Index.cshtml.cs(26,38,26,45): error CS1061: 'SchoolContext' does not contain a definition for 'Student'`
 
@@ -288,15 +288,15 @@ Développez le noeud **Tables**.
 
 Avec le bouton droit sur la table **Student**, cliquez sur **des données d’affichage** pour afficher les colonnes créées et les lignes insérées dans la table.
 
-s fichiers *.mdf* et *.ldf* de la base de données se trouvent dans le dossier *C:\Users\\ <yourusername>*.
+Les fichiers *.mdf* et *.ldf* de la base de données se trouvent dans le dossier *C:\Users\\ <yourusername>*.
 
 `EnsureCreated`est appelé sur le démarrage de l’application, ce qui permet le flux de travail suivant :
 
 * Supprimer la base de données.
-* Modifier le schéma de base de données (par exemple, ajouter un `EmailAddress` champ).
+* Modifier le schéma de base de données (par exemple, ajouter un champ `EmailAddress`).
 * Exécuter l’application.
 
-`EnsureCreated`Crée une base de données avec la colonne `EmailAddress`.
+`EnsureCreated`crée une base de données avec la colonne `EmailAddress`.
 
 ## <a name="conventions"></a>Conventions
 
@@ -339,7 +339,7 @@ Les éléments à connaître lors de l’écriture de code asynchrone qui utilis
 
 * Uniquement les instructions qui génèrent des requêtes ou des commandes à envoyer à la base de données sont exécutées de façon asynchrone. Ceci inclut, `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync`, et `SaveChangesAsync`. Il n’inclut pas les instructions qui modifient simplement un `IQueryable`, tel que `var students = context.Students.Where(s => s.LastName == "Davolio")`.
 
-* Un contexte EF n’est pas "thread-safe" : n’essayez pas d’effectuer plusieurs opérations en parallèle. 
+* Un contexte EF n’est pas thread-safe : n’essayez pas d’effectuer plusieurs opérations en parallèle. 
 
 * Pour tirer parti des avantages de performances du code asynchrone, vérifiez que les packages de bibliothèque (tels que la pagination) utilisent async si celles-ci appellent des méthodes EF Core qui envoient des requêtes à la base de données.
 
