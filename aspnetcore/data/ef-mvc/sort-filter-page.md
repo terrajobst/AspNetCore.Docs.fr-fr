@@ -1,4 +1,4 @@
----
+﻿---
 title: ASP.NET Core MVC avec EF Core - Tri, filtre, changement de page - 3 sur 10
 author: tdykstra
 description: "Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de changement de page à une page à l’aide d’ASP.NET Core et d’Entity Framework Core."
