@@ -1,4 +1,4 @@
----
+﻿---
 title: Utilisation de Gulp dans ASP.NET Core
 author: rick-anderson
 description: "Découvrez comment utiliser Gulp dans ASP.NET Core."
@@ -22,7 +22,7 @@ Par [Erik Reitan](https://github.com/Erikre), [Scott Addie](https://scottaddie.c
 
 Dans une application web moderne classique, le processus de génération peut :
 
-* Regroupement et minimiser les fichiers JavaScript et CSS.
+* Regrouper et minimiser les fichiers JavaScript et CSS.
 * Exécuter les outils pour appeler les tâches de regroupement et de minimisation avant chaque build.
 * Compiler lds fichiers LESS ou SASS en CSS.
 * Compiler des fichiers CoffeeScript ou TypeScript en JavaScript.
@@ -57,7 +57,7 @@ paths.concatJsDest = paths.webroot + "js/site.min.js";
 paths.concatCssDest = paths.webroot + "css/site.min.css";
 ```
 
-Le code ci-dessus spécifie quels modules de nœud sont requises. Le `require` fonction importe chaque module afin que les tâches dépendantes peuvent utiliser leurs fonctionnalités. Chaque module importé est assigné à une variable. Les modules peuvent être situés par nom ou chemin d’accès. Dans cet exemple, les modules nommé `gulp`, `rimraf`, `gulp-concat`, `gulp-cssmin`, et `gulp-uglify` sont récupérés par nom. En outre, une série de chemins d’accès sont créés afin que les emplacements des fichiers CSS et JavaScript peuvent être réutilisées et référencées dans les tâches. Le tableau suivant fournit des descriptions des modules inclus dans *gulpfile.js*.
+Le code ci-dessus spécifie quels modules Node sont requis. La fonction `require` importe chaque module afin que les tâches dépendantes puissent utiliser leurs fonctionnalités. Chaque module importé est assigné à une variable. Les modules peuvent être localisés par nom ou chemin d’accès. Dans cet exemple, les modules nommés `gulp`, `rimraf`, `gulp-concat`, `gulp-cssmin`, et `gulp-uglify` sont récupérés par nom. En outre, une série de chemins d’accès sont créés afin que les emplacements des fichiers CSS et JavaScript puissent être réutilisées et référencées dans les tâches. Le tableau suivant fournit des descriptions des modules inclus dans *gulpfile.js*.
 
 | Nom du module | Description |
 | ----------- | ----------- |
@@ -103,9 +103,9 @@ Le tableau suivant fournit une explication sur les tâches spécifiées dans le 
 |--- |--- |
 |nettoyer : js|Une tâche qui utilise le module Node de suppression rimraf pour supprimer la version réduite du fichier site.js.|
 |nettoyer : css|Une tâche qui utilise le module Node de suppression de rimraf pour supprimer la version réduite du fichier site.css.|
-|Nettoyer|Une tâche qui appelle le `clean:js` tâche, suivi par le `clean:css` tâche.|
-|min:js|Une tâche qui minimise et concatène tous les fichiers .js dans le dossier js. Le. les fichiers min.js sont exclus.|
-|min:CSS|Une tâche qui minimise et concatène tous les fichiers .css dans le dossier css. Le. les fichiers min.css sont exclus.|
+|Nettoyer|Une tâche qui appelle la tâche `clean:js`, suivi par la tâche `clean:css`.|
+|min:js|Une tâche qui minimise et concatène tous les fichiers .js dans le dossier js. Le. les fichiers .min.js sont exclus.|
+|min:CSS|Une tâche qui minimise et concatène tous les fichiers .css dans le dossier css. Le. les fichiers .min.css sont exclus.|
 |min|Une tâche qui appelle la tâche `min:js`suivi par la tâche `min:css`.|
 
 ## <a name="running-default-tasks"></a>Exécution des tâches par défaut
@@ -162,7 +162,7 @@ Si vous n’avez pas déjà créé une application Web, créez un nouveau projet
     gulp.task("min", ["min:js", "min:css"]);
     ```
 
-2.  Ouvrez le *package.json* fichier (ajoutez si ce n’est pas il) et ajoutez le code suivant.
+2.  Ouvrez le fichier *package.json* (ajoutez si il n’est pas là) et ajoutez le code suivant.
 
     ```json
     {
@@ -260,7 +260,7 @@ Lorsque vous exécutez plusieurs tâches, les tâches s'exécutent simultanémen
 
 ## <a name="intellisense"></a>IntelliSense
 
-IntelliSense fournit l’exécution de code, des descriptions de paramètre et d’autres fonctionnalités pour améliorer la productivité et réduire les erreurs. Les tâches de gulp sont écrites en JavaScript ; Par conséquent, IntelliSense peut fournir une assistance lors du développement. Lorsque vous travaillez avec JavaScript, IntelliSense répertorie les objets, les fonctions, les propriétés et paramètres qui sont disponibles en fonction de votre contexte actuel. Sélectionnez une option de programmation dans la liste contextuelle fournie par IntelliSense pour compléter le code.
+IntelliSense fournit l'autocomplétion de code, des descriptions de paramètre et d’autres fonctionnalités pour améliorer la productivité et réduire les erreurs. Les tâches de gulp sont écrites en JavaScript ; Par conséquent, IntelliSense peut fournir une assistance lors du développement. Lorsque vous travaillez avec JavaScript, IntelliSense répertorie les objets, les fonctions, les propriétés et paramètres qui sont disponibles en fonction de votre contexte actuel. Sélectionnez une option de programmation dans la liste contextuelle fournie par IntelliSense pour compléter le code.
 
 ![gulp IntelliSense](using-gulp/_static/08-IntelliSense.png)
 
@@ -268,7 +268,7 @@ Pour plus d’informations sur IntelliSense, consultez [JavaScript IntelliSense]
 
 ## <a name="development-staging-and-production-environments"></a>Environnements de développement, de staging et de production
 
-Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour intermédiaire et de production, les fichiers traités sont enregistrés dans un emplacement intermédiaire et de production local. Le *_Layout.cshtml* fichier utilise le **environnement** balise d’assistance pour fournir deux versions différentes de fichiers CSS. Une version des fichiers CSS est pour le développement et l’autre version est optimisée pour la préparation et de production. Dans Visual Studio 2017, lorsque vous modifiez le **ASPNETCORE_ENVIRONMENT** variable d’environnement `Production`, Visual Studio génère l’application Web et un lien vers les fichiers CSS sous forme réduites. La balise suivante montre la **environnement** programmes d’assistance qui contient des balises de liens à la balise la `Development` CSS le réduite et fichiers `Staging, Production` fichiers CSS.
+Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour le staging et la production, les fichiers traités sont enregistrés dans un emplacement local de staging et de production. Le fichier *_Layout.cshtml* utilise le tag helper **environment** pour fournir deux versions différentes de fichiers CSS. Une version des fichiers CSS est pour le développement et l’autre version est optimisée pour le staging et la production. Dans Visual Studio 2017, lorsque vous modifiez la variable d’environnement **ASPNETCORE_ENVIRONMENT** à `Production`, Visual Studio génère l’application Web et un lien vers les fichiers CSS sous forme minimisée. La balise suivante montre les tag helpers **environnement** qui contiennent des balises de liens pour les fichiers CSS pour `Development` et les fichiers CSS minimisés pour `Staging, Production`.
 
 ```html
 <environment names="Development">
