@@ -126,7 +126,7 @@ Envisagez d’écrire un élément HTML `<label>`. Dès que vous entrez `<l` dan
 
 ![image](intro/_static/label.png)
 
-Non seulement vous obtenezde l'aide HTML, mais aussi l’icône (le symbole "@" avec "<>" en-dessous).
+Non seulement vous obtenez de l'aide HTML, mais aussi l’icône (le symbole "@" avec "<>" en-dessous).
 
 ![image](intro/_static/tagSym.png)
 
@@ -222,7 +222,7 @@ Considérez le groupe *email* :
 
 [!code-csharp[Main](intro/sample/Register.cshtml?range=12-18)]
 
-Chacun des attributs "asp-" a la valeur "Email", mais "Email" n’est pas une chaîne. Dans ce contexte, "Email" est la propriété d’expression de modèle c# pour le `RegisterViewModel`.
+Chacun des attributs « asp- » a la valeur « Email », mais « Email » n’est pas une chaîne. Dans ce contexte, « Email » est la propriété d’expression de modèle c# pour le `RegisterViewModel`.
 
 L’éditeur Visual Studio vous aide à écrire **toutes les** balises avec l’approche Tag helper du formulaire d'inscription, alors que Visual Studio ne fournit aucune aide pour la plupart du code avec l’approche HTML helper. [la prise en charge d'IntelliSense pour les Tag helpers](#intellisense-support-for-tag-helpers) fournit de détails sur l’utilisation des Tag helpers dans l’éditeur Visual Studio.
 
@@ -230,7 +230,7 @@ L’éditeur Visual Studio vous aide à écrire **toutes les** balises avec l’
 
 * Les Tag helpers ne possèdent pas l’élément auxquels ils sont associés ; ils participent simplement au rendu de l’élément et au contenu. [Les contrôles serveur Web](https://msdn.microsoft.com/library/7698y1f0.aspx) ASP.NET sont déclarés et appelés sur une page.
 
-* [Les contrôles serveur Web](https://msdn.microsoft.com/library/zsyt68f1.aspx) ont un cycle de vie non trivial qui facilitent le développement et le débogage difficile.
+* [Les contrôles serveur Web](https://msdn.microsoft.com/library/zsyt68f1.aspx) ont un cycle de vie non trivial qui facilite le développement et le débogage difficile.
 
 * Les contrôles serveur Web permettent d’ajouter des fonctionnalités aux éléments de modèle DOM (Document Object) client à l’aide d’un contrôle client. Les Tag helpers n’ont aucun modèle DOM.
 
