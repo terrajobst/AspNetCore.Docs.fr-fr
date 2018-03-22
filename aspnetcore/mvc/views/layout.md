@@ -1,7 +1,7 @@
 ---
 title: Mise en page
 author: ardalis
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
