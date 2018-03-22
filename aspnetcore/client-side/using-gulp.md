@@ -311,7 +311,7 @@ Pour basculer entre la compilation pour des environnements différents, vous dev
 
 6.  Dans la fenêtre du navigateur, cliquez avec le bouton droit sur la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
 
-    Notez que les liens de la feuille de style pointent vers les fichiers CSS minimisés.
+    Notez que les liens de la feuille de style pointent vers les fichiers CSS réduites.
 
 7.  Fermez le navigateur pour arrêter l’application Web.
 
@@ -321,7 +321,7 @@ Pour basculer entre la compilation pour des environnements différents, vous dev
 
 10. Dans la fenêtre du navigateur, avec le bouton droit de la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
 
-    Notez que les liens de la feuille de style pointent vers les versions non minimisés des fichiers CSS.
+    Notez que les liens de la feuille de style pointent vers les versions non minifiés des fichiers CSS.
 
 Pour plus d’informations sur les environnements dans ASP.NET Core, consultez [fonctionne avec plusieurs environnements](../fundamentals/environments.md).
 
