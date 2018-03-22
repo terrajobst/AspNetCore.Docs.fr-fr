@@ -1,7 +1,7 @@
 ---
-title: "Création de sites attrayants et réactifs avec Bootstrap et ASP.NET Core"
+title: Créer des sites attrayants et réactifs avec Bootstra et ASP.NET Core
 author: ardalis
-description: "Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core."
+description: Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -11,11 +11,11 @@ ms.topic: article
 uid: client-side/bootstrap
 ms.openlocfilehash: c3dfaa53e9e3277d025d014f65004e4c24a5acc4
 ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/15/2018
 ---
-# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Création de sites attrayants et réactifs avec Bootstrap et ASP.NET Core
+# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Créer des sites attrayants et réactifs avec Bootstra et ASP.NET Core
 
 <a name="bootstrap-index"></a>
 
@@ -29,11 +29,11 @@ Il existe plusieurs façons de démarrer avec Bootstrap. Si vous démarrez une n
 
 ![Démarrer dans la vue de solution de modèle de démarrage](bootstrap/_static/bootstrap-in-starter-template.png)
 
-Ajouter Bootstrap à un ASP.NET Core projet consiste simplement à l'ajouter en tant que dépendance dans le fichier *bower.json*  :
+Ajouter Bootstrap à un projet ASP.NET Core consiste simplement à ajouter *bower.json* en tant que dépendance :
 
 [!code-json[](../common/samples/WebApplication1/bower.json?highlight=5)]
 
-Vous pouvez également installer d’amorçage à l’aide de plusieurs gestionnaires de packages, tels que Bower, npm ou NuGeIl s’agit de la méthode recommandée pour ajouter Bootstrap à un projet ASP.NET Core.
+Il s’agit de la méthode recommandée pour ajouter Bootstrap à un projet ASP.NET Core.
 
 Vous pouvez également installer Bootstrap à l’aide de plusieurs gestionnaires de packages, tels que Bower, npm ou NuGet. Dans chaque cas, le processus est essentiellement le même :
 
@@ -56,18 +56,18 @@ Install-Package bootstrap
 ```
 
 > [!NOTE]
-> La méthode recommandée pour installer des dépendances côté client comme Bootstrap dans ASP.NET Core est celle via Bower (à l’aide de *bower.json*, comme indiqué ci-dessus). L’utilisation de npm/NuGet sont affichés pour illustrer comment Bootstrap peut être ajouté facilemet à d’autres types d’applications web, y compris les versions antérieures d’ASP.NET.
+> La méthode recommandée pour installer des dépendances côté client comme Bootstrap dans ASP.NET Core est via Bower (à l’aide de *bower.json*, comme indiqué ci-dessus).  L’utilisation de npm/NuGet est affichée pour illustrer comment Bootstrap peut facilement être ajouté à d’autres types d’applications web, y compris les versions antérieures d’ASP.NET.
 
-Si vous souhaitez faire référence à vos propres versions locales de Bootstrap, vous devez les référencer dans toutes les pages qui l’utilisent. En production, vous devez référencer Bootstrap à l’aide d’un CDN. Dans le modèle de site ASP.NET par défaut, le *_Layout.cshtml*  se présente comme ceci :
+Si vous faites référence à vos propres versions locales de Bootstrap, vous devez les référencer dans toutes les pages qui l’utilisent. En production, vous devez référencer Bootstrap à l’aide d’un CDN. Dans le modèle de site ASP.NET par défaut, le fichier *_Layout.cshtml* fait donc comme ceci :
 
 [!code-html[](../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=9,13,51,59)]
 
 > [!NOTE]
-> Si vous souhaitez utiliser des plug-ins jQuery de Bootstrap, vous devez également référencer jQuery.
+> Si vous souhaitez utiliser des plug-ins de jQuery Bootstrap, vous devez également référencer jQuery.
 
 ## <a name="basic-templates-and-features"></a>Fonctionnalités et modèles de base
 
-Le modèle de projet Bootstrap le plus simple ressemble beaucoup au fichier *_Layout.cshtml* illustré ci-dessus et comprend simplement un menu de base pour la navigation et un emplacement pour restituer le reste de la page.
+Le modèle de démarrage plus simple ressemble beaucoup au fichier *_Layout.cshtml* illustré ci-dessus et comprend simplement un menu de base pour la navigation et un emplacement pour restituer le reste de la page.
 
 ### <a name="basic-navigation"></a>Navigation de base
 
@@ -85,24 +85,24 @@ Il inclut également le nom de l’application qui apparaît dans le coin supér
 
 ![Sur la page](bootstrap/_static/about-page-wide.png)
 
-La barre de navigation réduite, avec un bouton "hamburger" dans le coin supérieur droit s’affiche quand la fenêtre devient inférieure à une certaine largeur :
+La barre de navigation réduite, avec un bouton affichant 3 lignes horizontales (appelé style "hamburger") dans le coin supérieur droit, s’affiche quand la fenêtre est inférieure à une certaine largeur :
 
 ![à propos de la page avec le menu hamburger](bootstrap/_static/about-page-hamburger.png)
 
-En cliquant sur l’icône pour afficher les éléments de menu dans un tiroir vertical qui glisse vers le bas à partir du haut de la page :
+Le fait de cliquer sur l’icône affiche les éléments de menu dans un développement vertical qui glisse vers le bas à partir du haut de la page :
 
 ![à propos de la page avec le menu hamburger développé](bootstrap/_static/about-page-hamburger-open.png)
 
 ### <a name="typography-and-links"></a>Typographie et liens
 
-Bootstrap définit la typographie de base, les couleurs et la mise en forme des liens dans son fichier CSS Ce fichier CSS inclut les styles par défaut pour des tableaux, des boutons, des éléments de formulaire, des images et plus encore ([plus](http://getbootstrap.com/css/)). Une fonctionnalité particulièrement utile est le système de disposition par grille expliqué par la suite.
+Bootstrap définit la typographie de base, les couleurs et la mise en forme des liens du site dans son fichier CSS. Ce fichier CSS inclut les styles par défaut pour les tables, les boutons, les éléments de formulaire, les images et plus ([en savoir plus](http://getbootstrap.com/css/)). Une fonctionnalité particulièrement utile est le système de disposition par grille, traité ci-après.
 
 ### <a name="grids"></a>Grilles
 
 Une des fonctionnalités plus connues de Bootstrap est son système de mise en page par grille. Dans les applications web modernes, évitez d’utiliser la balise  `<table>` pour la mise en page. au lieu de limiter l’utilisation de cet élément à des données tabulaires réelles. Au lieu de cela, colonnes et lignes peuvent être présentés à l’aide d’une série de `<div>` éléments et les classes CSS appropriées. Il existe plusieurs avantages avec cette approche, comme la possibilité d’ajuster la disposition des grilles pour afficher du contenu verticalement sur des écrans étroits comme ceux des téléphones.
 
 
-[Le système de présentation en grille de Bootstrap](http://getbootstrap.com/css/#grid) est basée sur douze colonnes. Ce nombre a été choisi, car il peut être divisé pour produire 1, 2, 3 ou 4 colonnes, et les largeurs de colonne peuvent varier sur 1/12 de la largeur verticale de l’écran. Pour commencer à utiliser le système de disposition Grille, vous devez commencer par un conteneur `<div>` , puis ajouter une ligne `<div>`, comme illustré ici :
+[Le système de disposition par grille de Bootstrap](http://getbootstrap.com/css/#grid) est basé sur douze colonnes. Ce nombre a été choisi, car il peut être divisé uniformément par 1, 2, 3 ou 4 colonnes et les largeurs de colonne peuvent varier de 1/12 de la largeur verticale de l’écran. Pour commencer à utiliser le système de disposition par grille, vous devez commencer par un conteneur `<div>`, puis ajouter une ligne `<div>`, comme illustré ici:
 
 ```html
 <div class="container">
@@ -121,13 +121,13 @@ col-sm - | Tablettes | > = 768px
 col-md - | Ordinateurs de bureau | > = 992px
 col-lg - | Affiche de bureau plus grande | > = 1200px
 
-Lors de la spécification de deux colonnes avec "col-md-6", la mise en page qui en résulte consiste en deux colonnes avec des résolutions pour poste de travail, mais ces deux colonnes seront empilées verticalement lors de l’affichage sur des appareils plus petits (ou dans une fenêtre de navigateur plus étroite sur un poste de travail), permettant aux utilisateurs d’afficher facilement du contenu sans devoir faire défiler horizontalement.
+Lors de la spécification des deux colonnes avec "col-md-6", la mise en page obtenue sera constituée de deux colonnes avec des résolutions de bureau, mais ces deux colonnes seront empilées verticalement lors du rendu sur les appareils de petite taille (ou une fenêtre de navigateur plus étroite sur un ordinateur de bureau), permettant aux utilisateurs d’afficher facilement le contenu sans avoir besoin de faire défiler horizontalement.
 
 Bootstrap utilise toujours par défaut une disposition à une seule colonne : vous devez donc spécifier des colonnes seulement quand vous voulez avoir plusieurs colonnes. Le seul cas où vous devez spécifier explicitement qu’un`<div>`occupe les 12 colonnes est pour remplacer le comportement d’un niveau pour un  appareil plus grand. Lorsque vous spécifiez plusieurs classes de niveau de périphérique, vous devrez peut-être réinitialiser le rendu des colonnes à certains points.  L'ajout d’un élément clearfix div visible seulement dans une certaine fenêtre d’affichage permet cela, comme montré ici :
 
 ![grille de la fenêtre d’affichage étroites et étendues](bootstrap/_static/narrow-and-wide-viewport-grid.png)
 
-Dans l’exemple ci-dessus, les cellules One et Two partagent une ligne avec la disposition "md", tandis que les cellules Two et Three partagent une ligne avec la disposition "xs". Sans le clearfix `<div>`, les cellules Two et Three ne sont pas affichées correctement dans la vue "xs" (Notez que seul les cellules Four et Five sont affichées) :
+Dans l’exemple ci-dessus, One et Two partagent une ligne dans la disposition "md", tandis que Two et Three partagent une ligne dans la disposition "xs". Sans le clearfix `<div>`, Two et Three ne sont pas affichés correctement dans la vue "xs" (notez que seul One, Four et Five sont affichés) :
 
 ![grille sans utiliser de clearfix](bootstrap/_static/grid-without-clearfix.png)
 
@@ -153,7 +153,7 @@ Les badges font référence aux légendes de petite taille, généralement numé
 
 ### <a name="alerts"></a>Alertes
 
-Vous devrez peut-être afficher un type de notification, une alerte ou un message d’erreur pour les utilisateurs de votre application. C'est là où les classes d’alerte standard sont utiles. Il existe quatre niveaux de gravité différents avec des jeux de couleurs associés:
+Vous devrez peut-être afficher un type de notification, une alerte ou un message d’erreur pour les utilisateurs de votre application. C'est là où les classes d’alerte standard sont utiles. Il existe quatre niveaux de gravité différents avec des jeux de couleurs associés :
 
 ![alertes](bootstrap/_static/theme-alerts.png)
 
@@ -163,7 +163,7 @@ Notre disposition inclut déjà une barre de navigation standard, mais le thème
 
 ![poste à thème](bootstrap/_static/theme-tabstrips.png)
 
-Les barres de navigation sont générées de la même façon, mais sont un peu plus complexes. Elles commencent par `<nav>` ou `<div>`, dans laquelle un élément div container conserve le reste des éléments. Notre page inclut déjà une barre de navigation dans son en-tête, celui illustré ci-dessous se développe simplement, en ajoutant la prise en charge pour un menu déroulant :
+Les barres de navigation sont générées de la même façon, mais sont un peu plus complexes. Elles commencent par `<nav>` ou `<div>` avec une classe "navbar", dans laquelle un élément div container conserve le reste des éléments. Notre page inclut déjà une barre de navigation dans son en-tête, celui illustré ci-dessous se développe simplement, en ajoutant la prise en charge pour un menu déroulant :
 
 ![barres de navigation à thème](bootstrap/_static/theme-navbars.png)
 
@@ -199,11 +199,11 @@ En plus de ces éléments déjà mentionnés, Bootstrap inclut la prise en charg
 
 ### <a name="glyphicons"></a>Glyphicons
 
-Bootstrap inclut des jeux d’icônes à partir de Glyphicons ([http://glyphicons.com](http://glyphicons.com)), avec plus de 200 icônes  disponibles gratuitement pour une utilisation dans votre application web compatible Bootstrap. Voici juste un petit échantillon : 
+Bootstrap inclut des jeux d’icônes à partir de Glyphicons ([http://glyphicons.com](http://glyphicons.com)), avec plus de 200 icônes disponibles gratuitement pour une utilisation dans votre application web compatible Bootstrap. Voici juste un petit échantillon :
 
 ![Glyphicons](bootstrap/_static/theme-glyphicons.png)
 
-### <a name="input-groups"></a>Groupe d'entrée
+### <a name="input-groups"></a>Groupes d’entrée
 
 Les groupes d'entrée permettent le regroupement de texte ou des boutons avec un élément input, en fournissant une expérience plus intuitive à l’utilisateur :
 
