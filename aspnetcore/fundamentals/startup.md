@@ -1,7 +1,7 @@
 ---
-title: "Démarrage d’une application dans ASP.NET Core"
+title: Démarrage d’une application dans ASP.NET Core
 author: ardalis
-description: "Découvrez comment la classe Startup dans ASP.NET Core configure des services et le pipeline de requête de l’application."
+description: Découvrez comment la classe Startup dans ASP.NET Core configure des services et le pipeline de requête de l’application.
 manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
