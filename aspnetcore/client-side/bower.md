@@ -27,35 +27,35 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://blog.fa
 
 Les nouveaux projets créés avec les modèles de projet ASP.NET Core sont configurés avec la génération côté client. [jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/) sont installés, et Bower est pris en charge.
 
-Les packages côté client sont répertoriés dans le *bower.json* fichier. Les modèles de projet ASP.NET Core configure *bower.json* avec jQuery, jQuery validation et d’amorçage.
+Les paquets côté client sont répertoriés dans le fichier *bower.json*. Les modèles de projet ASP.NET Core configurent *bower.json* avec jQuery, la validation jQuery et Bootstrap.
 
-Dans ce didacticiel, nous allons ajouter la prise en charge de [police impressionnant](http://fontawesome.io). Bower packages peuvent être installés avec le **gérer les Packages Bower** UI ou manuellement dans le *bower.json* fichier.
+Dans ce didacticiel, nous allons ajouter la prise en charge de [Font Awesome](http://fontawesome.io). Les paquets Bower peuvent être installés avec l'interface graphique **Gérer les paquets Bower** ou manuellement dans le fichier *bower.json*.
 
 ### <a name="installation-via-manage-bower-packages-ui"></a>Installation via gérer les Packages Bower l’interface utilisateur
 
-* Créer une application ASP.NET Core Web avec le **Application ASP.NET Core Web (.NET Core)** modèle. Sélectionnez **Application Web** et **aucune authentification**.
+* Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)**. Sélectionnez **Application Web** et **Aucune authentification**.
 
 * Cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions et sélectionnez **Gérer les packages Bower** (ou dans le menu principal, **Projet** > **Gérer les packages Bower**).
 
-* Dans le **Bower : \<nom du projet\>**  fenêtre, cliquez sur l’onglet « Parcourir », puis filtrer la liste de packages en entrant `font-awesome` dans la zone de recherche :
+* Dans la fenêtre **Bower : \<nom du projet\>**  , cliquez sur l’onglet "Parcourir", puis filtrez la liste des paquets en entrant `font-awesome` dans la zone de recherche :
 
  ![gérer les packages bower](bower/_static/manage-bower-packages.png)
 
-* Vérifiez que le « enregistrer les modifications *bower.json*« case à cocher est activée. Sélectionnez une version dans la liste déroulante et cliquez sur le **installer** bouton. Le **sortie** fenêtre affiche les détails d’installation.
+* Vérifiez que la case à cocher "Enregistrer les modifications dans *bower.json* est activée. Sélectionnez une version dans la liste déroulante et cliquez sur le bouton **Installer**. Le **sortie** fenêtre affiche les détails d’installation.
 
 ### <a name="manual-installation-in-bowerjson"></a>Installation manuelle de bower.json
 
-Ouvrez le *bower.json* et ajoutez « police impressionnant » aux dépendances. IntelliSense affiche les packages disponibles. Lorsqu’un package est sélectionné, les versions disponibles sont affichées. Les images ci-dessous sont plus anciennes et ne correspond pas à ce que vous voyez.
+Ouvrez le fichier *bower.json* et ajoutez "Font Awesome" aux dépendances. IntelliSense affiche les paquets disponibles. Lorsqu’un paquet est sélectionné, les versions disponibles sont affichées. Les images ci-dessous sont plus anciennes et ne correspondent pas à ce que vous voyez.
 
 ![IntelliSense de l’Explorateur de package bower](bower/_static/add-package.png)
 
 ![version de bower IntelliSense](bower/_static/version-intelliSense.png)
 
-Bower utilise [contrôle de version sémantique](http://semver.org/) pour organiser les dépendances. Contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation \<majeure >.\< mineure >. \<correctif >. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste IntelliSense (4.6.3 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole du signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente.
+Bower utilise le [contrôle de version sémantique](http://semver.org/) pour organiser les dépendances. Le contrôle de version sémantique, également appelé SemVer, identifie les paquets avec le modèle de numérotation \<majeure >.\< mineure >. \<correctif >. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste IntelliSense (4.6.3 dans l’exemple ci-dessus) est considéré comme la dernière version stable du paquet. Le symbole du signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente.
 
-Enregistrer le *bower.json* fichier. Visual Studio surveille le *bower.json* des modifications. Lors de l’enregistrement, la *bower installation* commande est exécutée. Consultez la fenêtre de sortie **Bower/npm** vue pour la commande exacte exécutée.
+Enregistrez le fichier *bower.json*. Visual Studio surveille les modifications du fichier *bower.json*. Lors de l’enregistrement, la commande *bower install* est exécutée. Consultez la fenêtre de sortie et la vue **Bower/npm** pour connaître la commande exacte exécutée.
 
-Ouvrez le *.bowerrc* de fichiers sous *bower.json*. Le `directory` est définie sur *wwwroot/lib* qui indique l’emplacement Bower installera les composants de package.
+Ouvrez le fichier *.bowerrc* sous le fichier *bower.json*. La propriété `directory` est configurée sur *wwwroot/lib* qui indique l’emplacement où Bower installera les composants de paquet.
 
 ```json
 {
@@ -63,42 +63,42 @@ Ouvrez le *.bowerrc* de fichiers sous *bower.json*. Le `directory` est définie 
 }
 ```
 
-Vous pouvez utiliser la zone de recherche dans l’Explorateur de solutions pour rechercher et afficher le package impressionnant de police.
+Vous pouvez utiliser la zone de recherche dans l’Explorateur de solutions pour rechercher et afficher le paquet font-awesome.
 
-Ouvrez le *Views\Shared\_Layout.cshtml* et ajoutez le fichier CSS impressionnant de police à l’environnement [application d’assistance de balise](xref:mvc/views/tag-helpers/intro) pour `Development`. À partir de l’Explorateur de solutions, faites glisser et déposez *awesome.css de police* à l’intérieur du `<environment names="Development">` élément.
+Ouvrez le fichier *Views\Shared\_Layout.cshtml* et ajoutez le fichier CSS font-awesome à l’environnement [TagHelper](xref:mvc/views/tag-helpers/intro) pour `Development`. À partir de l’Explorateur de solutions, faites glisser et déposez *font-awesome.css* à l’intérieur de la balise `<environment names="Development">`.
 
 [!code-html[](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
 
-Dans une application de production, vous ajouteriez *awesome.min.css de police* dans l’application d’assistance de balise environnement pour `Staging,Production`.
+Dans une application de production, vous ajouteriez *awesome.min.css de police* à l'environnement pour `Staging,Production`.
 
-Remplacez le contenu de la *Views\Home\About.cshtml* fichier Razor avec le balisage suivant :
+Remplacez le contenu du fichier Razor *Views\Home\About.cshtml* avec le balisage suivant :
 
 [!code-html[](bower/sample/About.cshtml)]
 
-Exécutez l’application et accédez à la vue à propos de pour vérifier le fonctionnement du package impressionnant de police.
+Exécutez l’application et accédez à la vue About pour vérifier le fonctionnement du paquet font-awesome.
 
 ## <a name="exploring-the-client-side-build-process"></a>Explorer le processus de génération du côté client
 
-La plupart des modèles de projet ASP.NET Core sont déjà configurés pour utiliser Bower. Cette procédure pas à pas suivante commence par un projet ASP.NET Core vide et ajoute chaque élément manuellement, vous pouvez obtenir une idée pour l’utilisation de Bower dans un projet. Vous pouvez voir ce qui arrive à la structure de projet et l’exécution de chaque configuration est modifié de sortie.
+La plupart des modèles de projet ASP.NET Core sont déjà configurés pour utiliser Bower. Cette procédure pas à pas commence par un projet ASP.NET Core vide et ajoute chaque élément manuellement pour vous donner une idée de l’utilisation de Bower dans un projet. Vous pouvez voir ainsi ce qui arrive à la structure du projet et l’exécution en sortie chaque fois que la configuration est modifiée.
 
-Les étapes générales à utiliser le processus de génération de côté client avec Bower sont :
+Les étapes globales à utiliser pour le processus de génération côté client avec Bower sont :
 
-* Définir les packages utilisés dans votre projet. <!-- once defined, you don't need to download them, VS does -->
-* Référence à des packages à partir de vos pages web.
+* Définir les paquets utilisés dans votre projet. <!-- once defined, you don't need to download them, VS does -->
+* Référencer des paquets à partir de vos pages web.
 
 ### <a name="define-packages"></a>Définir des packages
 
-Une fois que la liste de packages dans le *bower.json* fichier, Visual Studio permet de le télécharger. L’exemple suivant utilise Bower pour charger jQuery et amorçage pour le *wwwroot* dossier.
+Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studio télécharge les paquets. L’exemple suivant utilise Bower pour charger jQuery et Bootstrap dans le dossier *wwwroot*.
 
-* Créer une application ASP.NET Core Web avec le **Application ASP.NET Core Web (.NET Core)** modèle. Sélectionnez le **vide** modèle de projet et cliquez sur **OK**.
+* Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)**. Sélectionnez le modèle de projet **vide** et cliquez sur **OK**.
 
 * Dans l’Explorateur de solutions, cliquez sur le projet > **ajouter un nouvel élément** et sélectionnez **fichier de Configuration Bower**. Remarque : Un *.bowerrc* fichier est également ajouté.
 
-* Ouvrez *bower.json*et ajouter de jquery et données d’amorçage pour le `dependencies` section. Résultant *bower.json* fichier ressemblera à l’exemple suivant. Les versions changent au fil du temps et ne peuvent pas correspondre à l’image ci-dessous.
+* Ouvrez le fichier *bower.json*et ajoutez jquery et bootstrap dans la section `dependencies`. Le fichier *bower.json* résultant ressemblera à l’exemple suivant. Les versions changent au fil du temps et peuvent ne pas correspondre à l’image ci-dessous.
 
 [!code-json[](bower/sample/bower.json?highlight=5,6)]
 
-* Enregistrer le *bower.json* fichier.
+* Enregistrez le fichier *bower.json*.
 
  Vérifiez que le projet inclut le *amorçage* et *jQuery* répertoires dans *wwwroot/lib*. Bower utilise le *.bowerrc* fichier pour installer les composants dans *wwwroot/lib*.
 
@@ -117,7 +117,7 @@ Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut 
 
 * Ajouter une nouvelle page HTML nommée *Index.html* à la *wwwroot* dossier. Remarque : Vous devez ajouter le fichier HTML pour le *wwwroot* dossier. Par défaut, le contenu statique ne peut pas être traitée en dehors de *wwwroot*. Consultez [utilisation des fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
 
- Remplacez le contenu de *Index.html* par le balisage suivant :
+ Remplacez le contenu du fichier *Index.html* par ce qui suit :
 
 [!code-html[](bower/sample/Index.html)]
 

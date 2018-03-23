@@ -1,7 +1,7 @@
 ---
-title: "Vue d’ensemble d’ASP.NET Core MVC"
+title: Vue d’ensemble d’ASP.NET Core MVC
 author: ardalis
-description: "ASP.NET Core MVC est une infrastructure riche pour la création d’applications web et d'API à l’aide du modèle de conception Model-View-Controller."
+description: ASP.NET Core MVC est une infrastructure riche pour la création d’applications web et d'API à l’aide du modèle de conception Model-View-Controller.
 manager: wpickett
 ms.author: riande
 ms.date: 01/08/2018
@@ -59,7 +59,7 @@ Les contrôleurs sont les composants qui gèrent l'interaction avec l’utilisat
 
 L’infrastructure ASP.NET MVC Core est un framework de présentation léger, open source, facilement testable et optimisé pour une utilisation avec ASP.NET Core.
 
-ASP.NET Core MVC offre un fonctionnement basé sur des patterns pour créer des sites Web dynamiques qui permet une séparation claire des préoccupations. Il vous donne un contrôle total sur le balisage, prend en charge les développements TDD et utilise les standards web les plus récents.
+ASP.NET Core MVC offre un fonctionnement basé sur des patterns pour créer des sites Web dynamiques qui permettent une séparation claire des préoccupations. Il vous donne un contrôle total sur le balisage, prend en charge les développements TDD et utilise les standards web les plus récents.
 
 ## <a name="features"></a>Fonctionnalités
 
@@ -67,7 +67,7 @@ ASP.NET Core MVC inclut les éléments suivants :
 
 * [Le routage](#routing)
 * [Liaison de modèles](#model-binding)
-* [La validation de modèle](#model-validation)
+* [Validation du modèle](#model-validation)
 * [Injection de dépendances](../fundamentals/dependency-injection.md)
 * [Les filtres](#filters)
 * [Les zones (areas)](#areas)
@@ -80,7 +80,7 @@ ASP.NET Core MVC inclut les éléments suivants :
 
 ### <a name="routing"></a>Routage
 
-ASP.NET MVC Core est construit sur [le routage d'ASP.NET Core](../fundamentals/routing.md), un composant de mappage d’URL puissant qui vous permet de créer des applications ayant des URL compréhensibles et découvrables. Cela vous permet de définir les patterns de noms d’URL de votre application qui fonctionnent bien pour l’optimisation des moteurs de recherche (SEO) et pour la génération de lien, sans tenir compte de la façon dont les fichiers sont organisés sur votre serveur web. Vous pouvez définir vos routes à l’aide d’une syntaxe pratique de modèle de routes (route template) qui prend en charge les contraintes de valeur, les valeurs par défaut et les valeurs facultatives de routes.
+ASP.NET Core MVC est construit sur [le routage d'ASP.NET Core](../fundamentals/routing.md), un composant de mappage d’URL puissant qui vous permet de créer des applications ayant des URLs compréhensibles et découvrables. Cela vous permet de définir les patterns de noms d’URL de votre application qui fonctionnent bien pour l’optimisation des moteurs de recherche (SEO) et pour la génération de lien, sans tenir compte de la façon dont les fichiers sont organisés sur votre serveur web. Vous pouvez définir vos routes à l’aide d’une syntaxe pratique de modèle de routes (route template) qui prend en charge les contraintes de valeur, les valeurs par défaut et les valeurs facultatives de routes.
 
 *Le routage basé sur une convention* vous permet de définir globalement les formats d'URL que votre application accepte et comment chacun de ces formats est mappé à une méthode d’action spécifique sur un contrôleur donné. Lorsqu’une demande entrante est reçue, le moteur de routage analyse l’URL et la fait correspondre à l’un des formats d’URL définis et appelle ensuite la méthode d’action du contrôleur associé.
 
@@ -104,13 +104,13 @@ public class ProductsController : Controller
 
 ### <a name="model-binding"></a>Liaison de données
 
-La [liaison de modèle](models/model-binding.md) ASP.NET Core MVC convertit les données de requête client (les valeurs de formulaire, les données de routage, les paramètres de chaîne de requête, les en-têtes HTTP) en objets que le contrôleur peut traiter. Par conséquent, votre logique de contrôleur ne doit pas nécessairement faire le travail d’identifier les données de requête entrante ; elle a simplement les données en tant que paramètres dans ces méthodes d’action.
+La [liaison de modèle](models/model-binding.md) ASP.NET Core MVC convertit les données de requête client (les valeurs de formulaire, les données de routage, les paramètres de chaîne de requête, les en-têtes HTTP) en objets que le contrôleur peut traiter. Par conséquent, votre logique de contrôleur ne doit pas nécessairement faire le travail d’identifier les données de requête entrante; Il a simplement les données en tant que paramètres dans ses méthodes d’action.
 
 ```csharp
 public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null) { ... }
    ```
 
-### <a name="model-validation"></a>Validation de modèle
+### <a name="model-validation"></a>Validation du modèle
 
 ASP.NET Core MVC prend en charge la [validation](models/validation.md) en décorant votre objet de modèle avec des attributs de validation de données d’annotation. Les attributs de validation sont vérifiés côté client avant que les valeurs ne soient publiées sur le serveur, ainsi que sur le serveur avant que l’action du contrôleur ne soit appelée.
 
@@ -179,7 +179,7 @@ Les [filtres](controllers/filters.md) aident les développeurs à encapsuler des
 
 ### <a name="areas"></a>Zones (Areas)
 
-Les [zones](controllers/areas.md) fournissent un moyen de partitionner une application Web ASP.NET Core MVC volumineuse en regroupements fonctionnels plus petits. Une zone est une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques tels que les modèles, les contrôleurs et les vues sont conservés dans des dossiers différents et MVC utilise les conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs entités, telles que le paiement, la facturation et la recherche, etc. Chacune de ces unités a ses propres composants logiques de vues, contrôleurs et modèles.
+Les [zones](controllers/areas.md) fournissent un moyen de partitionner une application Web ASP.NET Core MVC volumineuse en regroupements fonctionnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques tels que les modèles, les contrôleurs et les vues sont conservés dans des dossiers différents et MVC utilise les conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, une application de commerce électronique avec plusieurs entités, telles que le paiement, le facturation et la recherche, etc. Chacune de ces unités a ses propres composants logiques de vues, contrôleurs et modèles.
 
 ### <a name="web-apis"></a>API web
 
@@ -187,7 +187,7 @@ En plus de constituer une plate-forme idéale pour la création de sites web, AS
 
 Le framework inclut le support de la négociation de contenu HTTP avec prise en charge intégrée pour la [mise en forme des données](models/formatting.md) en JSON ou XML. Vous pouvez écrire des [formateurs personnalisés](advanced/custom-formatters.md) pour ajouter la prise en charge de vos propres formats.
 
-Utilisez la génération de liens pour activer la prise en charge de liens hypermédias. Activez facilement la prise en charge de [Le partage de ressources cross-origin (CORS)](http://www.w3.org/TR/cors/) afin que vos API web puissent être partagées entre plusieurs applications web.
+Utilisez la génération de lien pour activer la prise en charge de liens hypermédia. Activez facilement la prise en charge du [partage de ressources cross-origin (CORS)](http://www.w3.org/TR/cors/) afin que vos APIs Web puissent être partagées entre plusieurs applications Web.
 
 ### <a name="testability"></a>Testabilité
 
@@ -225,9 +225,9 @@ Par exemple, la vue suivante affiche un modèle de type `IEnumerable<Product>` 
 
 ### <a name="tag-helpers"></a>Tag helpers
 
-Les [Tag helpers](views/tag-helpers/intro.md) permettent au code côté serveur de participer à la création et le rendu des éléments HTML dans les fichiers Razor. Vous pouvez utiliser des Tag helpers pour définir des balises personnalisées (par exemple, `<environment>`) ou pour modifier le comportement de balises existantes (par exemple, `<label>`). Les Tag helpers associent des éléments spécifiques en fonction du nom de l’élément et des ses attributs. Ils fournissent les avantages de rendu côté serveur tout en conservant la possibilité d'éditer le HTML.
+Les [Tag helpers](views/tag-helpers/intro.md) permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Vous pouvez utiliser des Tag helpers pour définir des balises personnalisées (par exemple, `<environment>`) ou pour modifier le comportement de balises existantes (par exemple, `<label>`). Les Tag helpers associent des éléments spécifiques en fonction du nom de l’élément et des ses attributs. Ils fournissent les avantages de rendu côté serveur tout en conservant la possibilité d'éditer le HTML.
 
-Il existe de nombreux Tag helpers intégrés pour les tâches courantes - telles que la création de formulaires, des liens, de chargement de ressources et plus - et bien d'autres sont disponibles dans les dépôts GitHub publics et sous forme de NuGet packages Les Tag helpers sont créés en c#, et ils ciblent des éléments HTML en fonction de la balise parente, du nom d’attribut ou du nom de l’élément Par exemple, la fonction intégrée LinkTagHelper peut être utilisée pour créer un lien vers l'action `Login` du `AccountsController`:
+Il existe de nombreux Tag helpers intégrés pour les tâches courantes - telles que la création de formulaires, des liens, de chargement de ressources et plus - et bien d'autres sont disponibles dans les dépôts GitHub publics et sous forme de NuGet packages. Les Tag helpers sont créés en c#, et ils ciblent des éléments HTML en fonction de la balise parente, du nom d’attribut ou du nom de l’élément. Par exemple, la fonction intégrée LinkTagHelper peut être utilisée pour créer un lien vers l'action `Login` du `AccountsController`:
 
 ```cshtml
 <p>

@@ -2,7 +2,7 @@
 uid: web-pages/overview/mobile/rendering-aspnet-web-pages-sites-for-mobile-devices
 title: Rendu de ASP.NET Web Pages (Razor) Sites pour les appareils mobiles | Documents Microsoft
 author: tfitzmac
-description: "Cet article décrit comment créer des pages dans un site ASP.NET Web Pages (Razor) qui apparaîtront correctement sur les appareils mobiles. Vous apprendrez : comment vous..."
+description: 'Cet article décrit comment créer des pages dans un site ASP.NET Web Pages (Razor) qui apparaîtront correctement sur les appareils mobiles. Vous apprendrez : comment vous...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/17/2014
@@ -40,7 +40,7 @@ par [Tom FitzMacken](https://github.com/tfitzmac)
 
 Les Pages Web ASP.NET vous permet de créer des affichages personnalisés pour restituer le contenu sur mobile ou d’autres périphériques.
 
-Le plus simple pour créer une page de périphérique spécifiques dans un site ASP.NET Web Pages est à l’aide d’un modèle d’affectation de noms de fichier comme celui-ci : *nom de fichier. **Mobile**.cshtml*. Vous pouvez créer deux versions d’une page (par exemple, un nommé *MyFile.cshtml* et l’autre nommé *MyFile.Mobile.cshtml*). À l’exécution, quand un appareil mobile demande *MyFile.cshtml*, ASP.NET restitue le contenu à partir de *MyFile.Mobile.cshtml*. Dans le cas contraire, *MyFile.cshtml* est rendu.
+Le plus simple pour créer une page de périphérique spécifiques dans un site ASP.NET Web Pages est à l’aide d’un modèle d’affectation de noms de fichier comme celui-ci : *nom de fichier.**Mobile**.cshtml*. Vous pouvez créer deux versions d’une page (par exemple, un nommé *MyFile.cshtml* et l’autre nommé *MyFile.Mobile.cshtml*). À l’exécution, quand un appareil mobile demande *MyFile.cshtml*, ASP.NET restitue le contenu à partir de *MyFile.Mobile.cshtml*. Dans le cas contraire, *MyFile.cshtml* est rendu.
 
 L’exemple suivant montre comment activer le rendu mobile en ajoutant une page de contenu pour les appareils mobiles. *Page1.cshtml* contient le contenu ainsi qu’une barre latérale de navigation. *Page1.Mobile.cshtml* contient le même contenu, mais omet la barre latérale.
 
