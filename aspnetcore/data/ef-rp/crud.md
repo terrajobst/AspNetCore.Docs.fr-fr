@@ -1,7 +1,7 @@
-﻿---
+---
 title: Pages Razor avec EF Core - CRUD - 2 sur 8
 author: rick-anderson
-description: "Montre comment créer, lire, mettre à jour et supprimer avec EF Core"
+description: Montre comment créer, lire, mettre à jour et supprimer avec EF Core
 manager: wpickett
 ms.author: riande
 ms.date: 10/15/2017
@@ -15,7 +15,7 @@ ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/31/2018
 ---
-# <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>Créer, lire, mettre à jour et supprimer - EF Core avec Pages Razor (2 sur 8)
+# <a name="create-read-update-and-delete---ef-core-with-razor-pages-2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
 Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -58,56 +58,56 @@ Dans une grande partie du code généré automatiquement, vous pouvez utiliser [
 * Recherche une entité avec la clé primaire. Si une entité avec la clé primaire est suivie par le contexte, elle est retournée sans qu’une requête soit envoyée à la base de données.
 * Est simple et concise.
 * Est optimisée pour rechercher une entité unique.
-* Peut offrir des avantages en matière de performances dans certaines situations, mais ces avantages ont rarement de l’importance dans les scénarios web ordinaires.
+* Peut avoir des avantages de performances dans certaines situations, mais ils interviennent rarement pour les scénarios web normaux.
 * Utilise implicitement [FirstAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_) au lieu de [SingleAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.singleasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_SingleAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_).
-En revanche, si vous souhaitez inclure d’autres entités, Find n’est plus appropriée. Cela signifie que vous devrez peut-être abandonner Find et passer à une requête à mesure que votre application progresse.
+Toutefois, si vous souhaitez inclure d’autres entités, le Find n’est plus approprié. Cela signifie que vous devrez peut-être abandonner Find et passer à une requête au fur et à mesure que votre application progresse.
 
 ## <a name="customize-the-details-page"></a>Personnaliser la page Details
 
-Accédez à la page `Pages/Students`. Les liens **Edit**, **Details** et **Delete** sont générés par le [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Students/Index.cshtml*.
+Accédez à la page `Pages/Students`. Les liens **Edit**, **Details**, et **Delete** sont générés par le [Tag helper anchor](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) dans le fichier *Pages/Student/Index.cshtml*.
 
 [!code-cshtml[Main](intro/samples/cu/Pages/Students/Index1.cshtml?range=40-44)]
 
 Sélectionnez un lien Details. L’URL est au format `http://localhost:5000/Students/Details?id=2`. L’ID d’étudiant est transmis à l’aide d’une chaîne de requête (`?id=2`).
 
-Mettez à jour les pages Razor Edit, Details et Delete pour utiliser le modèle de route `"{id:int}"`. Remplacez la directive de chacune de ces pages (`@page "{id:int}"`) par `@page`.
+Mettez à jour les Pages Razor Edit, Details et Delete pour utiliser le modèle de route `"{id:int}"`. Remplacez la directive de chacune de ces pages (`@page`) par `@page "{id:int}"`.
 
-Une requête à la page avec le modèle de route « {id:int} » qui n’inclut **pas** une valeur de route entière retourne une erreur HTTP 404 (introuvable). Par exemple, `http://localhost:5000/Students/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de routage :
+Une demande à la page avec le modèle de route «{id:int}» qui n'inclut **pas** une valeur de route avec un entier retourne une erreur HTTP 404 (not found).  Par exemple, `http://localhost:5000/Students/Details` retourne une erreur 404. Pour que l’ID soit facultatif, ajoutez `?` à la contrainte de route :
 
  ```cshtml
 @page "{id:int?}"
 ```
 
-Exécutez l’application, cliquez sur un lien Details et vérifiez que l’URL transmet l’ID en tant que données de route (`http://localhost:5000/Students/Details/2`).
+Exécutez l’application, cliquez sur un lien Détails et vérifiez que l’URL passe l’ID en tant que données de route (`http://localhost:5000/Students/Details/2`).
 
-Ne remplacez pas globalement `@page` par `@page "{id:int}"`, car cela rompt les liens vers les pages Home et Create.
+Ne changez pas `@page` en `@page "{id:int}"` globalement, cela casserait les liens vers les pages Home et Create.
 
 <!-- See https://github.com/aspnet/Scaffolding/issues/590 -->
 
 ### <a name="add-related-data"></a>Ajouter des données associées
 
-Le code généré automatiquement pour la page Students Index n’inclut pas la propriété `Enrollments`. Dans cette section, le contenu de la collection `Enrollments` est affiché dans la page Details.
+Le code généré automatiquement pour la page Index des étudiants n’inclut pas la propriété `Enrollments`. Dans cette section, le contenu de la collection `Enrollments` s’affiche dans la page Details.
 
-La méthode `OnGetAsync` de *Pages/Students/Details.cshtml.cs* utilise la méthode `FirstOrDefaultAsync` pour récupérer une seule entité `Student`. Ajoutez le code en surbrillance suivant :
+Le méthode `OnGetAsync` de *Pages/Students/Details.cshtml.cs* utilise la méthode `FirstOrDefaultAsync` pour récupérer une seule entité `Student`. Ajoutez le code en surbrillance suivant :
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Details.cshtml.cs?name=snippet_Details&highlight=8-12)]
 
-Les méthodes `Include` et `ThenInclude` font en sorte que le contexte charge la propriété de navigation `Student.Enrollments`, et dans chaque inscription la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le didacticiel portant sur la lecture des données.
+Les méthodes `Include` et `ThenInclude` font que le contexte charge la propriété de navigation `Student.Enrollments` et dans chaque inscription, la propriété de navigation `Enrollment.Course`. Ces méthodes sont examinées en détail dans le didacticiel sur la lecture des données.
 
-La méthode `AsNoTracking` améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour dans le contexte actif. `AsNoTracking` est abordé plus loin dans ce didacticiel.
+La méthode `AsNoTracking` améliore les performances dans les scénarios lorsque les entités retournées ne sont pas mises à jour dans le contexte actuel.  Le sujet `AsNoTracking` est abordé plus loin dans ce didacticiel.
 
-### <a name="display-related-enrollments-on-the-details-page"></a>Afficher les inscriptions associées dans la page Details
+### <a name="display-related-enrollments-on-the-details-page"></a>Afficher les inscriptions associées sur la page Details
 
 Ouvrez *Pages/Students/Details.cshtml*. Ajoutez le code en surbrillance suivant pour afficher la liste des inscriptions :
 
  <!--2do ricka. if doesn't change, remove dup -->
 [!code-cshtml[Main](intro/samples/cu/Pages/Students/Details1.cshtml?highlight=32-53)]
 
-Si la mise en retrait du code est incorrecte une fois le code collé, appuyez sur Ctrl + K + D pour résoudre ce problème.
+Si la mise en retrait du code est incorrecte, une fois que le code est collé, appuyez sur CTRL + K + D pour résoudre ce problème.
 
-Le code précédent parcourt en boucle les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et la note. Le titre du cours est récupéré à partir de l’entité Course stockée dans la propriété de navigation `Course` de l’entité Enrollments.
+Le code précédent effectue une itération sur les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et le niveau. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
-Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et des notes de l’étudiant sélectionné s’affiche.
+Exécutez l’application, sélectionnez l'onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. La liste des cours et les notes de l’étudiant sélectionné s’affiche.
 
 ## <a name="update-the-create-page"></a>Mettre à jour la page Create
 
@@ -211,20 +211,20 @@ Remplacez la méthode `OnGetAsync` par le code suivant :
 
 Le code précédent contient le paramètre facultatif `saveChangesError`. `saveChangesError` indique si la méthode a été appelée après un échec de suppression de l’objet Student. L’opération de suppression peut échouer en raison de problèmes réseau temporaires. Les erreurs réseau temporaires sont probablement dans le cloud. `saveChangesError` a la valeur false quand la méthode `OnGetAsync` de la page Delete est appelée à partir de l’interface utilisateur. Quand `OnGetAsync` est appelée par `OnPostAsync` (car l’opération de suppression a échoué), le paramètre `saveChangesError` a la valeur true.
 
-### <a name="the-delete-pages-onpostasync-method"></a>La méthode OnPostAsync de la page Delete
+### <a name="the-delete-pages-onpostasync-method"></a>La méthode OnPostAsync des pages Delete
 
 Remplacez `OnPostAsync` par le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Pages/Students/Delete.cshtml.cs?name=snippet_OnPostAsync)]
 
-Le code précédent récupère l’entité sélectionnée, puis appelle la méthode `Remove` pour définir l’état de l’entité sur `Deleted`. Quand `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
+Le code précédent récupère l’entité sélectionnée, puis appelle la `Remove` pour définir l’état de l’entité `Deleted`. Lorsque `SaveChanges` est appelée, une commande SQL DELETE est générée. Si `Remove` échoue :
 
 * L’exception de la base de données est interceptée.
-* La méthode `OnGetAsync` de la page Delete est appelée avec `saveChangesError=true`.
+* La méthode `OnGetAsync` des pages est appelée avec `saveChangesError=true`.
 
-### <a name="update-the-delete-razor-page"></a>Mettre à jour la page Razor Delete
+### <a name="update-the-delete-razor-page"></a>Mise à jour de la Page Razor Delete
 
-Ajoutez le message d’erreur mis en surbrillance suivant à la page Razor Delete.
+Ajoutez le message d’erreur mis en surbrillance suivant à la Page Razor Delete.
 
 [!code-cshtml[Main](intro/samples/cu/Pages/Students/Delete.cshtml?range=1-13&highlight=10)]
 

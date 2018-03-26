@@ -1,7 +1,7 @@
 ---
-title: "Ajout d’une fonction de recherche à des pages Razor dans ASP.NET Core MVC"
+title: Ajout d’une fonction de recherche à des pages Razor dans ASP.NET Core MVC
 author: rick-anderson
-description: "Montre comment ajouter une fonction de recherche à des pages Razor dans ASP.NET Core MVC"
+description: Montre comment ajouter une fonction de recherche à des pages Razor dans ASP.NET Core MVC
 manager: wpickett
 ms.author: riande
 ms.date: 08/07/2017
@@ -46,17 +46,17 @@ Accédez à la page Movies, puis ajoutez une chaîne de requête telle que `?sea
 
 ![Vue Index](search/_static/ghost.png)
 
-Si le modèle de routing suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `http://localhost:5000/Movies/ghost`).
+Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `http://localhost:5000/Movies/ghost`).
 
 ```cshtml
 @page "{searchString?}"
 ```
 
-La contrainte de routing précédente permet de rechercher le titre comme données de routing (un segment d’URL) et non comme valeur de chaîne de requête.  Le `?` dans `"{searchString?}"` signifie qu’il s’agit d’un paramètre de routing facultatif.
+La contrainte d’itinéraire précédente permet de rechercher le titre comme données d’itinéraire (un segment d’URL) et non comme valeur de chaîne de requête.  Le `?` dans `"{searchString?}"` signifie qu’il s’agit d’un paramètre d’itinéraire facultatif.
 
 ![Vue Index avec le mot « ghost » ajouté à l’URL et une liste de films retournée contenant deux films, Ghostbusters et Ghostbusters 2](search/_static/g2.png)
 
-Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte de routing `"{searchString?}"`, supprimez-la.
+Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL pour rechercher un film. Dans cette étape, une interface utilisateur est ajoutée pour filtrer les films. Si vous avez ajouté la contrainte d’itinéraire `"{searchString?}"`, supprimez-la.
 
 Ouvrez le fichier *Pages/Movies/Index.cshtml*, puis ajoutez la balise `<form>` mise en surbrillance dans le code suivant :
 

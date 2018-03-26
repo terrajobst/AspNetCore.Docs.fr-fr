@@ -1,7 +1,7 @@
-﻿---
-title: "Liaison de modèle"
+---
+title: Liaison de modèle
 author: rachelappel
-description: "Informations sur la liaison de modèle dans ASP.NET Core MVC"
+description: Informations sur la liaison de modèle dans ASP.NET Core MVC
 manager: wpickett
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: rachelap
@@ -62,7 +62,7 @@ Pour que la liaison puisse se faire, la classe doit avoir un constructeur public
 
 Quand un paramètre est lié, la liaison de modèle cesse de rechercher des valeurs avec ce nom et elle passe à la liaison du paramètre suivant. Sinon, le comportement de la liaison de modèle par défaut définit les paramètres à leurs valeurs par défaut en fonction de leur type :
 
-* `T[]` : à l’exception des tableaux de type `byte[]`, la liaison définit des paramètres de type `T[]` sur `Array.Empty<T>()`. Les tableaux de type `byte[]` sont définis sur `null`.
+* `T[]` : À l’exception des tableaux de type `byte[]`, la liaison définit les paramètres de type `T[]` sur `Array.Empty<T>()`. Les tableaux de type `byte[]` ont la valeur `null`.
 
 * Types de référence : la liaison crée une instance d’une classe avec le constructeur par défaut sans définir des propriétés. Cependant, la liaison de modèle définit les `string` sur `null`.
 
