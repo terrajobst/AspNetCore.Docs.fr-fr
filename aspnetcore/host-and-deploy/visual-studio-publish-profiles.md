@@ -197,7 +197,7 @@ L’Assistant Publication prend en charge les cibles de publication suivantes :
 Pour plus d’informations, consultez [Quelles options de publication choisir ?](https://docs.microsoft.com/visualstudio/ide/not-in-toc/web-publish-options).
 
 Lors de la création d’un profil de publication avec Visual Studio, un *propriétés/PublishProfiles/\<nom de publication > .pubxml* fichier MSBuild est créé. Ce fichier *.pubxml* est un fichier MSBuild qui contient des paramètres de configuration de publication. Ce fichier peut être modifié pour personnaliser la génération et le processus de publication. Ce fichier est lu par le processus de publication. `<LastUsedBuildConfiguration>` est spécial, car elle est une propriété globale et ne doivent pas être dans n’importe quel fichier qui est importé dans la build. Pour plus d’informations, consultez [MSBuild: how to set the configuration property (Comment définir la propriété de configuration)](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx).
-Le *.pubxml* fichier ne doit pas être archivé dans le contrôle de code source, car elle dépend du *.user* fichier. Le fichier *.user* ne doit jamais être archivé dans le contrôle de code source, car il peut contenir des informations sensibles et il est valide uniquement pour un utilisateur et un ordinateur.
+Le fichier *.pubxml* ne doit pas être archivé dans le contrôle de code source, car il dépend du fichier *.user* fichier. Le fichier *.user* ne doit jamais être archivé dans le contrôle de code source, car il peut contenir des informations sensibles et il est valide uniquement pour un utilisateur et un ordinateur.
 
 Les informations sensibles (telles que le mot de passe de publication) sont chiffrées pour chaque utilisateur/ordinateur et stockées dans le fichier *Properties/PublishProfiles/\<nom_publication>.pubxml.user*. Ce fichier pouvant contenir des informations sensibles, il ne doit **pas** être archivé dans le contrôle de code source.
 
@@ -215,7 +215,7 @@ Dans les exemples précédents, **ne** passer `deployonbuild` à `dotnet publish
 
 Pour plus d’informations, consultez [Microsoft.NET.Sdk.Publish](https://github.com/aspnet/websdk#microsoftnetsdkpublish).
 
-`dotnet publish` prend en charge les API KUDU pour publier sur Azure à partir de n’importe quelle plateforme. Prend en charge les API KUDU, mais il est pris en charge par websdk pour plat croisée publier sur Azure de publication de Visual Studio.
+`dotnet publish` prend en charge les API KUDU pour publier sur Azure à partir de n’importe quelle plateforme. La publication Visual Studio prend en charge les API KUDU, mais elle est prise en charge par websdk pour la publication multiplateforme sur Azure.
 
 Ajoutez un profil de publication au dossier *Properties/PublishProfiles* avec le contenu suivant :
 
@@ -288,13 +288,13 @@ Pour publier avec MSDeploy, le plus simple est d’abord de créer un profil de 
 
 Dans l’exemple suivant, une application de web ASP.NET Core est créée (à l’aide de `dotnet new mvc`), et un profil de publication Azure est ajouté avec Visual Studio.
 
-Exécutez `msbuild` d’un **invite de commandes développeur pour VS 2017**. L’invite de commandes développeur possède la bonne *msbuild.exe* dans son chemin d’accès avec un ensemble de variables MSBuild.
+Exécutez `msbuild` d’un **invite de commandes développeur pour VS 2017**. L’invite de commandes développeur possède la bon *msbuild.exe* dans son chemin d’accès avec un ensemble de variables MSBuild.
 
 MSBuild utilise la syntaxe suivante :
 
 `msbuild <path-to-project-file> /p:DeployOnBuild=true /p:PublishProfile=<Publish Profile> /p:Username=<USERNAME> /p:Password=<PASSWORD>`
 
-Obtenir le `Password` à partir de la  *\<nom de publication >. Paramètres de publication* fichier. Téléchargez le *. Paramètres de publication* à partir d’un fichier de :
+Récupérez le `Password` auprès du fichier  *\<nom de publication >. PublishSettings*. Téléchargez le *.PublishSettings* à partir d’un fichier de :
 
 * L’Explorateur de solutions : Avec le bouton droit sur l’application Web et sélectionnez **télécharger le profil de publication**.
 * Le portail de gestion Azure : Sélectionnez **obtenir le profil de publication** à partir du Panneau de l’application Web.
@@ -332,13 +332,13 @@ Le balisage d’éléments `<MsDeploySkipRules>` suivant exclut tous les fichier
 </ItemGroup>
 ```
 
-`<MsDeploySkipRules>` ne supprime pas le *ignorer* cibles à partir du site de déploiement. `<Content>` dossiers et fichiers ciblés sont supprimés à partir du site de déploiement. Par exemple, qu'une application web déployée avait les fichiers suivants :
+`<MsDeploySkipRules>` ne supprime pas les cibles *skip* du site de déploiement. Les fichiers et dossiers `<Content>` ciblés sont supprimés du site de déploiement. Par exemple,  supposez qu'une application web déployée avait les fichiers suivants :
 
 * *Views/Home/About1.cshtml*
 * *Views/Home/About2.cshtml*
 * *Views/Home/About3.cshtml*
 
-Si les éléments suivants `<MsDeploySkipRules>` balisage est ajouté, ces fichiers ne pourraient être supprimées sur le site de déploiement.
+Si le balisage ``<MsDeploySkipRules>` suivant est ajouté, ces fichiers ne peuvent pas être supprimés du site de déploiement.
 
 ``` xml
 <ItemGroup>
@@ -359,9 +359,9 @@ Si les éléments suivants `<MsDeploySkipRules>` balisage est ajouté, ces fichi
 </ItemGroup>
 ```
 
-Le `<MsDeploySkipRules>` balisage ci-dessus empêche le *ignorée* fichiers ne soient pas depoyed mais ne supprime pas ces fichiers une fois qu’elles sont déployées.
+La balise `<MsDeploySkipRules>` ci-dessus empêche les fichiers *ignorés* d'être déployés, mais ne supprime pas ces fichiers une fois qu’ils sont déployés.
 
-Les éléments suivants `<Content>` balisage supprime les fichiers ciblés sur le site de déploiement :
+La balise `<Content>` suivante supprime les fichiers ciblés sur le site de déploiement :
 
 ``` xml
 <ItemGroup>
