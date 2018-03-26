@@ -92,7 +92,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 * Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)**. Sélectionnez le modèle de projet **vide** et cliquez sur **OK**.
 
-* Dans l’Explorateur de solutions, cliquez sur le projet > **ajouter un nouvel élément** et sélectionnez **fichier de Configuration Bower**. Remarque : Un *.bowerrc* fichier est également ajouté.
+* Dans l’Explorateur de solutions, cliquez sur le projet > **Ajouter un nouvel élément** et sélectionnez **Fichier de configuration Bower**. Remarque : un fichier *.bowerrc* est également ajouté.
 
 * Ouvrez le fichier *bower.json*et ajoutez jquery et bootstrap dans la section `dependencies`. Le fichier *bower.json* résultant ressemblera à l’exemple suivant. Les versions changent au fil du temps et peuvent ne pas correspondre à l’image ci-dessous.
 
@@ -100,14 +100,14 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 * Enregistrez le fichier *bower.json*.
 
- Vérifiez que le projet inclut le *amorçage* et *jQuery* répertoires dans *wwwroot/lib*. Bower utilise le *.bowerrc* fichier pour installer les composants dans *wwwroot/lib*.
+ Vérifiez que le projet inclut les répertoires *Bootstrap* et *jQuery* dans *wwwroot/lib*. Bower utilise le fichier *.bowerrc* pour installer les composants dans *wwwroot/lib*.
 
  Remarque : L’interface utilisateur "Gérer les paquets Bower" offre une alternative à la modification manuelle du fichier.
 
 ### <a name="enable-static-files"></a>Activer les fichiers statiques
 
-* Ajoutez le package NuGet `Microsoft.AspNetCore.StaticFiles` au projet.
-* Activer des fichiers statiques avec la [intergiciel (middleware) du fichier statique](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions). Ajoutez un appel à [UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions) à la `Configure` méthode `Startup`.
+* Ajoutez le paquet NuGet `Microsoft.AspNetCore.StaticFiles` au projet.
+* Activez le support des fichiers statiques grâce au [middleware de service des fichiers statiques](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions). Ajoutez un appel à [UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions) à la méthode `Configure` de la classe `Startup`.
 
 [!code-csharp[](bower/sample/Startup.cs?highlight=9)]
 
@@ -115,12 +115,12 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut accéder aux packages déployés.
 
-* Ajouter une nouvelle page HTML nommée *Index.html* à la *wwwroot* dossier. Remarque : Vous devez ajouter le fichier HTML pour le *wwwroot* dossier. Par défaut, le contenu statique ne peut pas être traitée en dehors de *wwwroot*. Consultez [utilisation des fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
+* Ajoutez une nouvelle page HTML nommée *Index.html* dans le dossier *wwwroot*. Remarque : vous devez ajouter le fichier HTML dans le dossier *wwwroot*. En effet, par défaut, le contenu statique ne peut pas être traité en dehors du dossier *wwwroot*. Consultez [Utilisation des fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
 
  Remplacez le contenu du fichier *Index.html* par le contenu suivant :
 
 [!code-html[](bower/sample/Index.html)]
 
-* Exécutez l’application et accédez à `http://localhost:<port>/Index.html`. Vous pouvez également avec *Index.html* ouvert, appuyez sur `Ctrl+Shift+W`. Vérifiez que le style jumbotron est appliqué, le code jQuery répond quand le bouton est activé, et que le bouton d’amorçage modifie l’état.
+* Exécutez l’application et accédez à `http://localhost:<port>/Index.html`. Ou, avec le fichier *Index.html* ouvert, appuyez sur `Ctrl+Shift+W`. Vérifiez que le style "jumbotron" est appliqué, que le code jQuery répond quand le bouton est activé et que le bouton d’amorçage change d’état.
 
  ![style de JumboTron appliqué](bower/_static/jumbotron.png)
