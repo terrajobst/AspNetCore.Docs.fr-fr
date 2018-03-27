@@ -1,7 +1,7 @@
 ---
-title: "Tests d’intégration dans ASP.NET Core"
+title: Tests d’intégration dans ASP.NET Core
 author: ardalis
-description: "Comment utiliser ASP.NET Core tests d’intégration pour vous assurer que les composants d’une application fonctionnent correctement."
+description: Comment utiliser des tests d’intégration ASP.NET Core pour vous assurer que les composants d’une application fonctionnent correctement.
 manager: wpickett
 ms.author: riande
 ms.date: 09/25/2017
@@ -11,7 +11,7 @@ ms.topic: article
 uid: testing/integration-testing
 ms.openlocfilehash: 8c28f1b4f66433eaebd9e474e784ecf3f1ac271b
 ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/02/2018
 ---

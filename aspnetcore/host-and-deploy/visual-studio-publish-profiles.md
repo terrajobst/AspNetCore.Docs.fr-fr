@@ -109,7 +109,7 @@ Lorsque un projet ASP.NET Core référence `Microsoft.NET.Sdk.Web` dans le fichi
 
 ## <a name="basic-command-line-publishing"></a>Publication en ligne de commande de base
 
-La publication en ligne de commande fonctionne sur toutes les plateformes prises en charge par .NET Core et ne nécessite pas Visual Studio. Dans les exemples ci-dessous, la [dotnet publier](/dotnet/core/tools/dotnet-publish) commande est exécutée à partir du répertoire de projet (qui contient le *.csproj* fichier). S’il n’est pas dans le dossier du projet, passez explicitement le chemin du fichier projet. Exemple :
+La publication en ligne de commande fonctionne sur toutes les plateformes prises en charge par .NET Core et ne nécessite pas Visual Studio. Dans les exemples ci-dessous, la [dotnet publier](/dotnet/core/tools/dotnet-publish) commande est exécutée à partir du répertoire de projet (qui contient le *.csproj* fichier). S’il n’est pas dans le dossier du projet, passez explicitement le chemin du fichier projet. Par exemple :
 
 ```console
 dotnet publish c:/webs/web1
@@ -272,7 +272,7 @@ MSBuild file.
 </Project>
 ```
 
-Notez que `<LastUsedBuildConfiguration>` a la valeur `Release`. Lors de la publication à partir de Visual Studio, la propriété de configuration `<LastUsedBuildConfiguration>` prend la valeur en vigueur lors du démarrage du processus de publication. Le `<LastUsedBuildConfiguration>` propriété de configuration est spéciale et ne doit pas être substituée dans un fichier MSBuild importé. Cette propriété peut être substituée à partir de la ligne de commande. Exemple :
+Notez que `<LastUsedBuildConfiguration>` a la valeur `Release`. Lors de la publication à partir de Visual Studio, la propriété de configuration `<LastUsedBuildConfiguration>` prend la valeur en vigueur lors du démarrage du processus de publication. Le `<LastUsedBuildConfiguration>` propriété de configuration est spéciale et ne doit pas être substituée dans un fichier MSBuild importé. Cette propriété peut être substituée à partir de la ligne de commande. Par exemple :
 
 `dotnet build -c Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile`
 
@@ -282,7 +282,7 @@ Notez que `<LastUsedBuildConfiguration>` a la valeur `Release`. Lors de la publi
 
 ## <a name="publish-to-an-msdeploy-endpoint-from-the-command-line"></a>Publier sur un point de terminaison MSDeploy à partir de la ligne de commande
 
-Comme mentionné précédemment, la publication peut être effectuée à l’aide de `dotnet publish` ou `msbuild` commande. `dotnet publish` s’exécute dans le contexte de .NET Core. Le `msbuild` commande nécessite .NET framework et est donc limitée aux environnements Windows.
+Comme mentionné précédemment, la publication peut être effectuée à l’aide de `dotnet publish` ou de la commande `msbuild`. `dotnet publish` s’exécute dans le contexte de .NET Core. La commande `msbuild` nécessite .NET Framework et est donc limitée aux environnements Windows.
 
 Pour publier avec MSDeploy, le plus simple est d’abord de créer un profil de publication dans Visual Studio 2017, puis d’utiliser le profil à partir de la ligne de commande.
 
@@ -311,7 +311,7 @@ msbuild "C:\Webs\Web1\Web1.csproj" /p:DeployOnBuild=true
 
 ## <a name="excluding-files"></a>Exclusion de fichiers
 
-Lors de la publication d’applications web ASP.NET Core, les artefacts de build et le contenu du dossier *wwwroot* sont inclus. `msbuild` prend en charge les [modèles d’utilisation des caractères génériques](https://gruntjs.com/configuring-tasks#globbing-patterns). Par exemple, `<Content>` balisage d’élément exclut tout le texte (*.txt*) fichiers à partir de la *wwwroot/contenu* dossier et tous ses sous-dossiers.
+Lors de la publication d’applications web ASP.NET Core, les artefacts de build et le contenu du dossier *wwwroot* sont inclus. `msbuild` prend en charge les [modèles d’utilisation des caractères génériques](https://gruntjs.com/configuring-tasks#globbing-patterns). Par exemple, la balise `<Content>` ci-dessous exclut tous les fichiers texte (*.txt*) présents dans le dossier *wwwroot/contenu* et tous ses sous-dossiers.
 
 ```xml
 <ItemGroup>
@@ -369,7 +369,7 @@ La balise `<Content>` suivante supprime les fichiers ciblés sur le site de dép
 </ItemGroup>
 ```
 
-À l’aide d’un déploiement de ligne de commande avec le `<Content>` balisage au-dessus des résultats de sortie similaire à ce qui suit :
+Utiliser un déploiement via ligne de commande avec la balise `<Content>` ci-dessus génère en sortie des résultats similaires à ce qui suit :
 
 ``` console
 MSDeployPublish:
@@ -390,7 +390,7 @@ Done Building Project "C:\Webs\Web1\Web1.csproj" (default targets).
 
 ## <a name="including-files"></a>Inclusion de fichiers
 
-Le balisage suivant inclut une *images* dossier en dehors du répertoire de projet pour le *wwwroot/images* dossier du site de publication :
+Le balisage suivant inclut un dossier *images* en dehors du répertoire de projet pour le dossier *wwwroot/images* du site de publication :
 
 ``` xml
 <ItemGroup>
@@ -401,7 +401,7 @@ Le balisage suivant inclut une *images* dossier en dehors du répertoire de proj
 </ItemGroup>
 ```
 
-Vous pouvez ajouter le balisage au fichier *.csproj* ou au profil de publication. S’il est ajouté à la *.csproj* fichier, il est inclus dans chaque profil de publication dans le projet.
+Vous pouvez ajouter le balisage au fichier *.csproj* ou au profil de publication. S’il est ajouté au fichier *.csproj*, il est inclus dans chaque profil de publication dans le projet.
 
 Le balisage mis en surbrillance ci-dessous montre comment :
 
@@ -446,7 +446,7 @@ Pour obtenir d’autres exemples de déploiement, consultez le fichier [Lisez-mo
 
 ### <a name="run-a-target-before-or-after-publishing"></a>Exécuter une cible avant ou après la publication
 
-La fonction intégrée `BeforePublish` et `AfterPublish` cibles peuvent servir à exécuter une cible avant ou après la cible de publication. Vous pouvez ajouter le balisage suivant au profil de publication pour enregistrer les messages dans la sortie de console avant et après la publication :
+Les cibles intégrées `BeforePublish` et `AfterPublish` peuvent servir à exécuter une cible avant ou après la cible de publication. Vous pouvez ajouter le balisage suivant au profil de publication pour enregistrer les messages dans la sortie de console avant et après la publication :
 
 ``` xml
 <Target Name="CustomActionsBeforePublish" BeforeTargets="BeforePublish">
@@ -459,7 +459,7 @@ La fonction intégrée `BeforePublish` et `AfterPublish` cibles peuvent servir �
 
 ## <a name="the-kudu-service"></a>Le service Kudu
 
-Pour afficher les fichiers dans l’un déploiement d’application web Service d’applications Azure, utilisez le [service de Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Ajouter le `scm` le jeton dans le nom de l’application web. Exemple :
+Pour afficher les fichiers dans un déploiement d’application web Azure Apps Service, utilisez le [service de Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service).  Ajoutez le jeton `scm` au nom de l’application web. Par exemple :
 
 | URL                                    | Résultat      |
 | -------------------------------------- | ----------- |
