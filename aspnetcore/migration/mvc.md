@@ -220,7 +220,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 ```
 
-Consultez **à l’aide de la Page d’Exception Developer** dans [gestion des erreurs](../fundamentals/error-handling.md) pour plus d’informations.
+Pour plus d’informations, consultez **Page d’exception de développeur** dans [Gestion des erreurs](../fundamentals/error-handling.md).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

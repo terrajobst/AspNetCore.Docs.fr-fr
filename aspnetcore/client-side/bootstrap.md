@@ -21,7 +21,7 @@ ms.lasthandoff: 03/15/2018
 
 Par [Steve Smith](https://ardalis.com/)
 
-Programme d’amorçage est actuellement l’infrastructure web les plus populaires pour le développement d’applications web réactives. Il offre un nombre de fonctionnalités et avantages qui peuvent améliorer l’expérience de vos utilisateurs avec votre site web, si vous êtes un utilisateur débutant à la conception frontale et de développement ou d’un expert. Programme d’amorçage est déployé en tant qu’ensemble de fichiers CSS et JavaScript et est conçu pour évoluer vos application ou un site efficacement des téléphones jusqu’aux tablettes aux ordinateurs de bureau.
+Bootstrap est actuellement le framework web le plus populaire pour le développement d’applications web adaptatives. Il offre un nombre de fonctionnalités et d'avantages qui peuvent améliorer l’expérience de vos utilisateurs avec votre site web, que vous soyez un débutant dans la conception frontale ou le développement ou un expert. Bootstrap est déployé sous la forme d'un ensemble de fichiers CSS et JavaScript et est conçu pour permettre à vos applications ou sites web de s'adapter efficacement aux téléphones, tablettes, ordinateurs de bureau, etc.
 
 ## <a name="get-started"></a>Prise en main
 
@@ -71,7 +71,7 @@ Le modèle de démarrage plus simple ressemble beaucoup au fichier *_Layout.csht
 
 ### <a name="basic-navigation"></a>Navigation de base
 
-Le modèle par défaut utilise un ensemble de `<div>` éléments afin d’afficher une barre de navigation supérieure et le corps de la page. Si vous utilisez HTML5, vous pouvez remplacer la première `<div>` la balise avec un `<nav>` balise pour obtenir le même effet, mais avec une sémantique plus précise. Dans ce premier `<div>` vous pouvez voir d’autres. Tout d’abord, un `<div>` avec une classe de « conteneur », puis, dans, les deux autres `<div>` éléments : « barre de navigation en-tête » et « réduction de la barre de navigation ». L’élément div d’en-tête de la barre de navigation inclut un bouton qui s’affiche lorsque l’écran est inférieure à une certaine largeur minimale, affichant 3 lignes horizontales (un dite « icône représentant un hamburger »). L’icône est restitué à l’aide de pure HTML et CSS ; Aucune image n’est requise. Voici le code qui affiche l’icône, avec chacun de la <span> une des barres blanches de rendu des balises :
+Le modèle par défaut utilise un ensemble d'éléments `<div>` pour afficher une barre de navigation supérieure et le corps de la page. Si vous utilisez HTML5, vous pouvez remplacer la première balise `<div>` par une balise `<nav>` pour obtenir le même effet, mais avec une sémantique plus précise. Dans le premier élément `<div>` vous pouvez en voir d’autres. Tout d’abord, un `<div>` avec une classe "container", puis deux autres éléments `<div>` à l'intérieur avec les classes respectives "navbar-header" et "navbar-collapse". L’élément div navbar-header inclut un bouton affichant 3 lignes horizontales (habituellement appelé icône "hamburger") qui apparaît quand la taille d'écran ou de fenêtre est inférieure à une certaine largeur minimale. L’icône est restituée en code HTML et CSS pur : aucune image n’est requise. Voici le code qui permet d'afficher l’icône hamburger avec chaque balise <span> responsable du rendu d'une des barres blanches :
 
 ```html
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -81,7 +81,7 @@ Le modèle par défaut utilise un ensemble de `<div>` éléments afin d’affich
 </button>
 ```
 
-Il inclut également le nom de l’application qui apparaît dans le coin supérieur gauche. Le menu de navigation principal est restitué par le `<ul>` élément dans la deuxième div et inclut des liens pour chez eux, sur et de Contact. Des liens supplémentaires pour inscrire et de connexion sont ajoutés à la ligne _LoginPartial ligne 29. Sous le volet de navigation, le corps principal de chaque page est rendu dans un autre `<div>`, marqués avec les classes « conteneur » et « contenu du corps ». Dans le fichier de _Layout simple par défaut indiqué ici, le contenu de la page est rendu par l’affichage spécifique associé à la page, puis un simple `<footer>` est ajouté à la fin de la `<div>` élément. Vous pouvez voir comment la fonction intégrée sur la page s’affiche à l’aide ce modèle :
+La barre de navigation inclut également le nom de l’application qui apparaît dans le coin supérieur gauche. Le menu de navigation principal est restitué par l'élément `<ul>` dans le deuxième div et inclut des liens vers les pages Home, About et Contact. Des liens supplémentaires vers les pages Register et Login sont ajoutés grâce la ligne _LoginPartial à la ligne 29. Sous la navigation, le corps principal de chaque page est rendu dans un autre `<div>`, marqués à l'aide des les classes "container" et "body-content". Dans le fichier par défaut _Layout montré ici, le contenu de la page est rendu par une vue spécifique associée à la page, puis un simple `<footer>` est ajouté à la fin de l'élément `<div>`. Vous pouvez voir ici comment la page About intégrée s’affiche à l’aide de ce modèle :
 
 ![Sur la page](bootstrap/_static/about-page-wide.png)
 
@@ -141,7 +141,7 @@ Si vous avez utilisé des modèles ASP.NET MVC par défaut dans Visual Studio 20
 
 ### <a name="buttons"></a>Boutons
 
-Les classes de bouton par défaut et leurs couleurs sont affichés dans la figure ci-dessous.
+Les classes de bouton par défaut et leurs couleurs sont montrées dans la figure ci-dessous.
 
 ![boutons à thème](bootstrap/_static/theme-buttons.png)
 
