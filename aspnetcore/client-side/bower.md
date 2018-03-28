@@ -69,7 +69,7 @@ Ouvrez le fichier *Views\Shared\_Layout.cshtml* et ajoutez le fichier CSS font-a
 
 [!code-html[](bower/sample/_Layout.cshtml?highlight=4&range=9-13)]
 
-Dans une application de production, vous ajouteriez *awesome.min.css de police* à l'environnement pour `Staging,Production`.
+Dans une application de production, vous ajouteriez *font-awesome.min.css* au tag helper de l'environnement pour `Staging,Production`.
 
 Remplacez le contenu du fichier Razor *Views\Home\About.cshtml* par le balisage suivant :
 
@@ -107,7 +107,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 ### <a name="enable-static-files"></a>Activer les fichiers statiques
 
 * Ajoutez le paquet NuGet `Microsoft.AspNetCore.StaticFiles` au projet.
-* Activez le support des fichiers statiques grâce au [middleware de service des fichiers statiques](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions). Ajoutez un appel à [UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions) à la méthode `Configure` de la classe `Startup`.
+* Activez le support des fichiers statiques grâce à [l’intergiciel (middleware) de service des fichiers statiques](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions). Ajoutez un appel à [UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions) à la méthode `Configure` de la classe `Startup`.
 
 [!code-csharp[](bower/sample/Startup.cs?highlight=9)]
 
@@ -115,12 +115,12 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut accéder aux packages déployés.
 
-* Ajoutez une nouvelle page HTML nommée *Index.html* dans le dossier *wwwroot*. Remarque : vous devez ajouter le fichier HTML dans le dossier *wwwroot*. En effet, par défaut, le contenu statique ne peut pas être traité en dehors du dossier *wwwroot*. Consultez [Utilisation des fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
+* Ajoutez une nouvelle page HTML nommée *Index.html* dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Pour plus d’informations, consultez [Utilisation des fichiers statiques](xref:fundamentals/static-files).
 
  Remplacez le contenu du fichier *Index.html* par le contenu suivant :
 
 [!code-html[](bower/sample/Index.html)]
 
-* Exécutez l’application et accédez à `http://localhost:<port>/Index.html`. Ou, avec le fichier *Index.html* ouvert, appuyez sur `Ctrl+Shift+W`. Vérifiez que le style "jumbotron" est appliqué, que le code jQuery répond quand le bouton est activé et que le bouton d’amorçage change d’état.
+* Exécutez l’application et accédez à `http://localhost:<port>/Index.html`. Vous pouvez également, à partir du fichier *Index.html* ouvert, appuyer sur `Ctrl+Shift+W`. Vérifiez que le style jumbotron est appliqué, que le code jQuery répond quand le bouton fait l'objet d'un clic et que le bouton Bootstrap change d’état.
 
  ![style de JumboTron appliqué](bower/_static/jumbotron.png)

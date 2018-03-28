@@ -89,7 +89,7 @@ La barre de navigation réduite, avec un bouton affichant 3 lignes horizontales 
 
 ![à propos de la page avec le menu hamburger](bootstrap/_static/about-page-hamburger.png)
 
-Le fait de cliquer sur l’icône affiche les éléments de menu dans un développement vertical qui glisse vers le bas à partir du haut de la page :
+Le fait de cliquer sur l’icône affiche les éléments de menu dans un tiroir vertical qui glisse vers le bas depuis le haut de la page :
 
 ![à propos de la page avec le menu hamburger développé](bootstrap/_static/about-page-hamburger-open.png)
 

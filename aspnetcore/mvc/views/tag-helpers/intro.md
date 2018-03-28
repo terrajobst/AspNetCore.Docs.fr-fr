@@ -1,7 +1,7 @@
-﻿---
+---
 title: Tag Helpers dans ASP.NET Core
 author: rick-anderson
-description: "Découvrez ce que sont les Tag Helpers et comment les utiliser dans ASP.NET Core."
+description: Découvrez ce que sont les Tag Helpers et comment les utiliser dans ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -24,7 +24,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Les Tag Helpers permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Par exemple, le `ImageTagHelper` intégré peut ajouter un numéro de version au nom de l’image. Chaque fois que l’image change, le serveur en génère une nouvelle version unique, pour que les clients soient sûrs d’obtenir l’image actuelle (au lieu d’une image mise en cache obsolète). Il existe de nombreux Tag Helpers pour les tâches courantes (par exemple la création de formulaires ou de liens, le chargement de ressources, etc.) et bien d’autres encore, dans les dépôts GitHub publics et sous forme de packages NuGet. Les Tag Helpers sont créés en C# et ciblent les éléments HTML en fonction du nom de l’élément, du nom de l’attribut ou de la balise parente. Par exemple, le `LabelTagHelper` intégré peut cibler l’élément `<label>` HTML quand les attributs `LabelTagHelper` sont appliqués. Si vous connaissez déjà les [HTML Helpers](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers), les Tag Helpers permettent de réduire les transitions explicites entre le code HTML et le code C# dans les affichages Razor. Dans de nombreux cas, les HTML Helpers offrent une autre approche par rapport à un Tag Helper spécifique. Toutefois, il est clair que les Tag Helpers ne remplacent pas les HTML Helpers, et qu’il n’existe pas toujours un Tag Helper pour chaque HTML Helper. [Comparaison des Tag Helpers aux HTML Helpers](#tag-helpers-compared-to-html-helpers) explique les différences de façon plus approfondie.
 
-## <a name="what-tag-helpers-provide"></a>Que fournissent les Tag Helpers ?
+## <a name="what-tag-helpers-provide"></a>Ce que fournissent des Tag helpers
 
 **Une expérience de développement HTML**  Dans leur majorité, les balises Razor qui utilisent des Tag Helpers ressemblent à du code HTML standard. Les concepteurs frontaux familiarisés avec HTML, CSS et JavaScript peuvent modifier Razor sans apprendre la syntaxe Razor C#.
 
