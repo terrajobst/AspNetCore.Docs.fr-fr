@@ -182,7 +182,7 @@ Quand **Dossier** est sélectionné, le bouton **Publier** crée un dossier de p
 
 ![Onglet **Publier** de la page de capacités de l'application montrant Azure, IIS, FTB, Dossier](visual-studio-publish-profiles/_static/pub1.png)
 
-Une fois qu’un profil de publication est créé, le **publier** onglet modifications, puis sélectionnez **créer nouveau profil** pour créer un nouveau profil.
+Une fois le profil de publication créé, l'onglet **Publier** change. Sélectionnez **Créer un profil** pour créer un profil.
 
 ![L’onglet **Publier** de la page de capacités de l'application montrant FolderProfile (créé lors de la dernière étape) et le lien Créer un profil](visual-studio-publish-profiles/_static/create_new.png)
 
@@ -470,5 +470,5 @@ Sélectionnez l’élément de menu [Console de débogage](https://github.com/pr
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) simplifie le déploiement des applications web et sites Web aux serveurs IIS.
+* [Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) simplifie le déploiement des applications web et des sites web sur des serveurs IIS.
 * [https://github.com/ASPNET/websdk](https://github.com/aspnet/websdk/issues) : soumettez vos problèmes et demandez des fonctionnalités pour le déploiement.

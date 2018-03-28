@@ -1,7 +1,7 @@
-﻿---
-title: "Création de services backend pour les applications mobiles natives"
+---
+title: Création de services principaux pour les applications mobiles natives
 author: ardalis
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -15,7 +15,7 @@ ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/31/2018
 ---
-# <a name="creating-backend-services-for-native-mobile-applications"></a>Création de services backend pour les applications mobiles natives
+# <a name="creating-backend-services-for-native-mobile-applications"></a>Création de services principaux pour les applications mobiles natives
 
 Par [Steve Smith](https://ardalis.com/)
 
@@ -31,15 +31,15 @@ Ce didacticiel montre comment créer des services backend en utilisant ASP.NET C
 
 ### <a name="features"></a>Fonctionnalités
 
-L’application TodoREST prend en charge l’affichage, l’ajout, la suppression et la mise à jour d’éléments de tâche à effectuer. Chaque élément a un ID, un nom, des notes et une propriété qui indique si elle est déjà effectuée.
+L’application ToDoRest prend en charge l’affichage, l’ajout, la suppression et la mise à jour des éléments de tâche. Chaque élément a un ID, un nom, des remarques et une propriété qui indique si la tâche a été effectuée.
 
-La vue principale des éléments, comme illustré ci-dessus, liste le nom de chaque élément et indique s’il est effectué avec une marque de coche.
+La vue principale des éléments, reproduite ci-dessus, montre le nom de chaque élément et indique si la tâche est effectuée avec une marque.
 
-Si vous appuyez sur l’icône `+`, une boîte de dialogue d’ajout d’un élément s’ouvre :
+Le fait d’appuyer sur l'icône`+` ouvre une boîte de dialogue permettant l’ajout d’un élément :
 
 ![Boîte de dialogue pour ajouter un élément](native-mobile-backend/_static/todo-android-new-item.png)
 
-Le fait d’appuyer sur un élément dans l’écran de la liste principale ouvre une boîte de dialogue de modification où vous pouvez modifier les valeur du nom de l’élément, des notes et de son état de réalisation. Vous pouvez aussi supprimer l’élément :
+Le fait de cliquer sur un élément de l’écran de la liste principale ouvre une boîte de dialogue où les valeurs pour Name, Notes et Done peuvent être modifiées, et où vous pouvez supprimer l’élément :
 
 ![Boîte de dialogue pour modifier un élément](native-mobile-backend/_static/todo-android-edit-item.png)
 
@@ -55,7 +55,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 
 ## <a name="creating-the-aspnet-core-project"></a>Création du projet ASP.NET Core
 
-Créez une application web ASP.NET Core dans Visual Studio. Choisissez le modèle API web et Pas d’authentification. Nommez le projet *ToDoApi*.
+réez une application web ASP.NET Core dans Visual Studio. Choisissez le modèle "API web" et Pas d’authentification. Nommez le projet *ToDoApi*.
 
 ![Boîte de dialogue Nouvelle application web ASP.NET avec le modèle de projet API web sélectionné](native-mobile-backend/_static/web-api-template.png)
 
@@ -70,7 +70,7 @@ Ajoutez une classe de modèle pour représenter des éléments de tâche à effe
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
-Les méthodes d’API nécessitent un moyen leur permettant d’utiliser des données. Utilisez la même interface `IToDoRepository` que celle utilisée par l’exemple Xamarin d’origine :
+Les méthodes d’API requièrent un moyen d’utiliser des données. Utilisez la même interface `IToDoRepository` que celle utilisée par l’exemple Xamarin d’origine :
 
 [!code-csharp[Main](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Interfaces/IToDoRepository.cs)]
 
