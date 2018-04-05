@@ -1,4 +1,4 @@
----
+﻿---
 title: Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 author: rick-anderson
 description: Découvrez comment créer des profils de publication pour les applications ASP.NET Core dans Visual Studio.
@@ -95,7 +95,7 @@ Quand MSBuild ou Visual Studio charge un projet, les actions principales suivant
 
 Quand le projet est chargé, les éléments du projet (fichiers) sont traités. L’attribut `item type` détermine comment le fichier est traité. Par défaut, les fichiers *.cs* sont inclus dans la liste d’éléments `Compile`. Les fichiers dans la liste d’éléments `Compile` sont compilés.
 
-Le `Content` liste d’éléments contient des fichiers qui sont publiés en plus les sorties de génération. Par défaut, les fichiers correspondant au modèle `wwwroot/**` sont inclus dans le `Content` élément. [wwwroot /\* \* est un modèle de la globalisation](https://gruntjs.com/configuring-tasks#globbing-patterns) qui spécifie tous les fichiers dans le *wwwroot* dossier **et** sous-dossiers. Pour ajouter explicitement un fichier à la liste de publication, ajoutez-le directement au fichier *.csproj* comme indiqué dans [Inclusion de fichiers](#including-files).
+La liste d’éléments `Content` contient les fichiers qui sont publiés en plus des fichiers générés. Par défaut, les fichiers correspondant au modèle `wwwroot/**` sont inclus dans l'élément `Content`. [wwwroot /\* \* est un modèle de la globalisation](https://gruntjs.com/configuring-tasks#globbing-patterns) qui désigne tous les fichiers dans le dossier *wwwroot* dossier **et** ses sous-dossiers. Pour ajouter explicitement un fichier à la liste de publication, ajoutez-le directement au fichier *.csproj* comme indiqué dans [Inclusion de fichiers](#including-files).
 
 Lorsque vous sélectionnez le bouton **publier** dans Visual Studio, ou lors de la publication à partir de la ligne de commande :
 
@@ -174,7 +174,7 @@ Vérifiez que l’application publiée pour le déploiement n’est pas en cours
 
 Cette section utilise Visual Studio 2017 et versions ultérieures pour créer des profils de publication. Une fois créé, la publication à partir de Visual Studio ou de la ligne de commande est disponible.
 
-Les profils de publication peuvent simplifier le processus de publication. Plusieurs profils de publication peut exister. Pour créer un profil de publication dans Visual Studio, avec le bouton droit sur le projet dans l’Explorateur de solutions et sélectionnez **publier**. Vous pouvez également sélectionner **publier \<nom du projet >** dans le menu Générer. L’onglet **Publier** de la page de capacités d’application s’affiche. Si le projet ne contient pas de profil de publication, la page suivante s’affiche :
+Les profils de publication peuvent simplifier le processus de publication. Plusieurs profils de publication peut exister. Pour créer un profil de publication dans Visual Studio, cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions et sélectionnez **publier**. Vous pouvez également sélectionner **publier \<nom du projet >** dans le menu Générer. L’onglet **Publier** de la page de capacités de l’application s’affiche. Si le projet ne contient pas de profil de publication, la page suivante s’affiche :
 
 ![L’onglet de la publication de la page de capacités application affichant Azure, IIS, FTB, dossier avec Azure sélectionné. Contient également les cases d’option Créer nouveau et Sélectionner.](visual-studio-publish-profiles/_static/az.png)
 
