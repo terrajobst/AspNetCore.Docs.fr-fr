@@ -1,4 +1,4 @@
----
+﻿---
 title: Pages Razor avec Entity Framework Core - didacticiel 1 de 8
 author: rick-anderson
 description: Montre comment créer une application de Pages Razor à l’aide d’Entity Framework Core
@@ -153,7 +153,7 @@ Ce code crée une propriété `DbSet` pour chaque jeu d’entités. Dans la term
 
 `DbSet<Enrollment>`et `DbSet<Course>` peuvent être omis. EF Core les inclut implicitement, car `Student` contient les références d’entité `Enrollment` et `Enrollment` contient les références des entités `Course`. Pour ce didacticiel, conservez `DbSet<Enrollment>` et `DbSet<Course>` dans le `SchoolContext`.
 
-Lorsque la base de données est créé, EF Core crée des tables qui ont des noms identique à la `DbSet` les noms de propriété. Les noms de propriété pour les collections sont en général au pluriel (étudiants plutôt qu’étudiant). Les développeurs sont en désaccord sur si les noms de table doivent être au pluriel. Pour ces didacticiels, le comportement par défaut est substitué en spécifiant des noms de table unique dans le DbContext. Pour spécifier les noms de table au singulier, ajoutez le code en surbrillance suivant :
+Lorsque la base de données est créée, EF Core crée des tables qui ont des noms identique aux noms de propriété de la `DbSet`. Les noms de propriété pour les collections sont en général au pluriel (étudiants plutôt qu’étudiant). Les développeurs sont en désaccord sur le fait que les noms de table doivent être au pluriel. Pour ces didacticiels, le comportement par défaut est modifié en spécifiant des noms de table unique dans le DbContext. Pour spécifier les noms de table au singulier, ajoutez le code en surbrillance suivant :
 
 [!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_TableNames&highlight=16-21)]
 
@@ -260,7 +260,7 @@ No executable found matching command "dotnet-aspnet-codegenerator"
 Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 
 
-Générez le projet. La build génère des erreurs comme suit :
+Générez le projet. La build génère des erreurs comme suit :
 
  `1>Pages\Students\Index.cshtml.cs(26,38,26,45): error CS1061: 'SchoolContext' does not contain a definition for 'Student'`
 
@@ -316,7 +316,7 @@ Un comportement conventionnel peut être remplacé. Par exemple, les noms de tab
 
 La programmation asynchrone est le mode par défaut pour ASP.NET Core et EF Core.
 
-Un serveur web a un nombre limité de threads disponibles, et dans les situations de forte charge tous les threads disponibles peuvent être en cours d’utilisation. Lorsque cela se produit, le serveur ne peut pas traiter de nouvelles demandes jusqu'à ce que les threads ne sont pas libérées. Avec le code synchrone, plusieurs threads peuvent être bloqués dans pendant qu’ils ne sont pas réellement effectuer aucun travail car ils sont en attente pour les e/s. Avec le code asynchrone, lorsqu’un processus est en attente d’e/s, son thread est libéré pour le serveur à utiliser pour traiter d’autres demandes. Par conséquent, code asynchrone permet d’utiliser plus efficacement les ressources serveur et le serveur est activé pour gérer plus de trafic sans délai.
+Un serveur web a un nombre limité de threads disponibles, et dans les situations de forte charge tous les threads disponibles peuvent être en cours d’utilisation. Lorsque cela se produit, le serveur ne peut pas traiter de nouvelles demandes jusqu'à ce que des threads soient libérés. Avec le code synchrone, plusieurs threads peuvent être bloqués et ne peuvent pas réellement effectuer de travail car ils sont en attente pour des e/s. Avec le code asynchrone, lorsqu’un processus est en attente d’e/s, son thread est libéré pour le serveur qui peut l'utiliser pour traiter d’autres demandes. Par conséquent, le code asynchrone permet d’utiliser plus efficacement les ressources du serveur et le serveur est activé pour gérer plus de trafic sans délai.
 
 Le code asynchrone introduit une petite quantité de charge au moment de l’exécution. Dans les situations de faible trafic, le gain de performances est négligeable, alors que pour les cas de trafic élevé, l’amélioration potentielle des performances est importante.
 
@@ -339,7 +339,7 @@ Les éléments à connaître lors de l’écriture de code asynchrone qui utilis
 
 * Uniquement les instructions qui génèrent des requêtes ou des commandes à envoyer à la base de données sont exécutées de façon asynchrone. Ceci inclut, `ToListAsync`, `SingleOrDefaultAsync`, `FirstOrDefaultAsync`, et `SaveChangesAsync`. Il n’inclut pas les instructions qui modifient simplement un `IQueryable`, tel que `var students = context.Students.Where(s => s.LastName == "Davolio")`.
 
-* Un contexte EF n’est pas thread-safe : n’essayez pas d’effectuer plusieurs opérations en parallèle. 
+* Un contexte EF n’est pas thread-safe : n’essayez pas d’effectuer plusieurs opérations en parallèle. 
 
 * Pour tirer parti des avantages de performances du code asynchrone, vérifiez que les packages de bibliothèque (tels que la pagination) utilisent async si celles-ci appellent des méthodes EF Core qui envoient des requêtes à la base de données.
 
