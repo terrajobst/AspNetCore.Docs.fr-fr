@@ -38,7 +38,7 @@ Dans la mesure où il s'agit d'une fonctionnalité Visual Studio, la meilleure f
 install-package Microsoft.VisualStudio.Web.BrowserLink
 ```
 
-Vous pouvez également utiliser **Gestionnaire de Package NuGet**. Cliquez sur le nom du projet dans **l’Explorateur de solutions** et choisissez **gérer les Packages NuGet**:
+Vous pouvez également utiliser le **Gestionnaire de package NuGet**.  Cliquez sur le nom du projet dans **l’Explorateur de solutions** et choisissez **Gérer les packages NuGet** :
 
 ![Gestionnaire de Package NuGet ouvert](using-browserlink/_static/open-nuget-package-manager.png)
 

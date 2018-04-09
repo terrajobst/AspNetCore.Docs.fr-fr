@@ -22,16 +22,16 @@ Par [Erik Reitan](https://github.com/Erikre), [Scott Addie](https://scottaddie.c
 
 Dans une application web moderne classique, le processus de génération peut :
 
-* Regroupement et minimiser les fichiers JavaScript et CSS.
+* Regrouper et minimiser les fichiers JavaScript et CSS.
 * Exécuter les outils pour appeler les tâches de regroupement et de minimisation avant chaque build.
 * Compiler lds fichiers LESS ou SASS en CSS.
 * Compiler des fichiers CoffeeScript ou TypeScript en JavaScript.
 
-Un *exécuteur de tâches* est un outil qui automatise les tâches de développement de routine et bien plus encore. Visual Studio fournit la prise en charge intégrée pour deux exécuteurs de tâches populaires basés sur Javascript : [Gulp](https://gulpjs.com/) et [Grunt](using-grunt.md).
+Un *exécuteur de tâches* est un outil qui automatise les tâches de développement de routine et bien plus encore. Visual Studio fournit la prise en charge intégrée pour deux exécuteurs de tâches de base de JavaScript populaires: [Gulp](https://gulpjs.com/) et [Grunt](using-grunt.md).
 
 ## <a name="gulp"></a>gulp
 
-Gulp est un toolkit de build en continu basé sur JavaScript pour le code côté client. Il est couramment utilisé pour diffuser des fichiers côté client via une série de processus quand un événement spécifique est déclenché dans un environnement de génération. Par exemple, Gulp peut être utilisé pour automatiser [le regroupement et la minimisation](bundling-and-minification.md) ou le nettoyage d’un environnement de développement avant une nouvelle build.
+Gulp est un toolkit de build en continu basé sur JavaScript pour le code côté client. Il est couramment utilisé pour diffuser des fichiers côté client via une série de processus de déclenchement d’un événement spécifique dans un environnement de génération. Par exemple, Gulp peut être utilisé pour automatiser [le regroupement et la minimisation](bundling-and-minification.md) ou le nettoyage d’un environnement de développement avant une nouvelle build.
 
 Un ensemble de tâches de Gulp est défini dans *gulpfile.js*. Le code JavaScript suivant inclut les modules Gulp et spécifie les chemins d’accès des fichiers référencés dans les tâches à venir :
 
@@ -57,7 +57,7 @@ paths.concatJsDest = paths.webroot + "js/site.min.js";
 paths.concatCssDest = paths.webroot + "css/site.min.css";
 ```
 
-Le code ci-dessus spécifie quels modules de nœud sont requises. Le `require` fonction importe chaque module afin que les tâches dépendantes peuvent utiliser leurs fonctionnalités. Chaque module importé est assigné à une variable. Les modules peuvent être situés par nom ou chemin d’accès. Dans cet exemple, les modules nommé `gulp`, `rimraf`, `gulp-concat`, `gulp-cssmin`, et `gulp-uglify` sont récupérés par nom. En outre, une série de chemins d’accès sont créés afin que les emplacements des fichiers CSS et JavaScript peuvent être réutilisées et référencées dans les tâches. Le tableau suivant fournit des descriptions des modules inclus dans *gulpfile.js*.
+Le code ci-dessus spécifie quels modules de nœud sont requis. La fonction `require` importe chaque module afin que les tâches dépendantes puissent utiliser leurs fonctionnalités. Chaque module importé est assigné à une variable. Les modules peuvent être localisés par nom ou chemin d’accès. Dans cet exemple, les modules nommé `gulp`, `rimraf`, `gulp-concat`, `gulp-cssmin`, et `gulp-uglify` sont récupérés par nom. En outre, une série de chemins d’accès sont créés afin que les emplacements des fichiers CSS et JavaScript puissent être réutilisés et référencés dans les tâches. Le tableau suivant fournit des descriptions des modules inclus dans *gulpfile.js*.
 
 | Nom du module | Description |
 | ----------- | ----------- |
@@ -103,7 +103,7 @@ Le tableau suivant fournit une explication sur les tâches spécifiées dans le 
 |--- |--- |
 |nettoyer : js|Une tâche qui utilise le module Node de suppression rimraf pour supprimer la version réduite du fichier site.js.|
 |nettoyer : css|Une tâche qui utilise le module Node de suppression de rimraf pour supprimer la version réduite du fichier site.css.|
-|Nettoyer|Une tâche qui appelle le `clean:js` tâche, suivi par le `clean:css` tâche.|
+|Nettoyer|Une tâche qui appelle la tâche `clean:js`, suivie par la tâche `clean:css`.|
 |min:js|Une tâche qui minimise et concatène tous les fichiers .js dans le dossier js. Le. les fichiers min.js sont exclus.|
 |min:CSS|Une tâche qui minimise et concatène tous les fichiers .css dans le dossier css. Le. les fichiers min.css sont exclus.|
 |min|Une tâche qui appelle la tâche `min:js`suivi par la tâche `min:css`.|
@@ -162,7 +162,7 @@ Si vous n’avez pas déjà créé une application Web, créez un nouveau projet
     gulp.task("min", ["min:js", "min:css"]);
     ```
 
-2.  Ouvrez le fichier *package.json* (ajoutez si il n’est pas là) et ajoutez le code suivant.
+2.  Ouvrez le fichier *package.json* (ajoutez-le s'il n'existe pas) et ajoutez le code suivant.
 
     ```json
     {
@@ -176,17 +176,17 @@ Si vous n’avez pas déjà créé une application Web, créez un nouveau projet
     }
     ```
 
-3.  Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur *gulpfile.js*, puis sélectionnez **Task Runner Explorer**.
+3.  Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur *gulpfile.js*, puis sélectionnez **Task Runner Explorer**. 
     
-    ![Ouvrez l’Explorateur d’exécuteur de tâche à partir de l’Explorateur de solutions](using-gulp/_static/02-SolutionExplorer-TaskRunnerExplorer.png)
+    ![Ouvrez Task Runner Explorer à partir de l’Explorateur de solutions](using-gulp/_static/02-SolutionExplorer-TaskRunnerExplorer.png)
     
-    **Task Runner Explorer** affiche la liste des tâches de Gulp. (Vous devrez peut-être cliquer sur le bouton**Actualiser** qui apparaît à gauche du nom du projet.)
+    **Task Runner Explorer** affiche la liste des tâches de Gulp. (Vous devrez peut-être cliquez sur le bouton **Actualiser** qui apparaît à gauche du nom du projet.)
     
-    ![Explorateur d’exécuteur de tâche](using-gulp/_static/03-TaskRunnerExplorer.png)
+    ![Task Runner Explorer](using-gulp/_static/03-TaskRunnerExplorer.png)
 
-4.  Sous **Tasks** dans **Task Runner Explorer**, cliquez avec avec le bouton droit sur **clean**, puis sélectionnez **Run** dans le menu contextuel.
+4.  Sous **Tâches** dans **Task Runner Explorer**, cliquez avec le bouton droit sur **clean**, puis sélectionnez **exécuter** dans le menu contextuel. 
 
-    ![Tâche de nettoyage d’Explorateur d’exécuteur de tâche](using-gulp/_static/04-TaskRunner-clean.png)
+    ![Tâche de nettoyage d’Task Runner Explorer](using-gulp/_static/04-TaskRunner-clean.png)
 
     **Task Runner Explorer** créera un nouvel onglet nommé **clean** et exécuter la tâche clean telle qu’elle est définie dans *gulpfile.js*.
 
@@ -194,7 +194,7 @@ Si vous n’avez pas déjà créé une application Web, créez un nouveau projet
 
     ![Liaison BeforeBuild Task Runner Explorer](using-gulp/_static/05-TaskRunner-BeforeBuild.png)
 
-    Le binding **Before Build** configure la tâche clean pour s’exécuter automatiquement avant chaque génération du projet.
+    La liaison **avant la build** configure la tâche clean pour qu'elle s’exécute automatiquement avant chaque génération du projet.
 
 Les Bindings définis avec **Task Runner Explorer** sont stockés sous la forme d’un commentaire en haut de votre *gulpfile.js* et sont effectifs seulement dans Visual Studio. Une alternative qui ne nécessite pas Visual Studio consiste à configurer l’exécution automatique des tâches de gulp dans votre fichier *.csproj*. Par exemple, ajoutez ceci dans votre fichier *.csproj* :
 
@@ -204,7 +204,7 @@ Les Bindings définis avec **Task Runner Explorer** sont stockés sous la forme 
 </Target>
 ```
 
-Maintenant que la tâche de nettoyage est exécutée lorsque vous exécutez le projet dans Visual Studio ou à partir d’une invite de commandes à l’aide de la commande[dotnet exécuter](/dotnet/core/tools/dotnet-run) (exécuter `npm install` en premier).
+Maintenant la tâche de nettoyage est exécutée lorsque vous exécutez le projet dans Visual Studio ou à partir d’une invite de commandes à l’aide de la commande [dotnet run](/dotnet/core/tools/dotnet-run) (exécuter `npm install` d'abord).
 
 ## <a name="defining-and-running-a-new-task"></a>Définition et exécution d'une nouvelle tâche
 
@@ -226,13 +226,13 @@ Pour définir une nouvelle tâche Gulp, modifier *gulpfile.js*.
 
 4.  Dans **Task Runner Explorer**, cliquez avec le bouton droit sur **first**, puis sélectionnez **Run**.
 
-    ![Exécutez la première tâche Task Runner Explorer](using-gulp/_static/06-TaskRunner-First.png)
+    ![Exécutez la tâche first de Task Runner Explorer](using-gulp/_static/06-TaskRunner-First.png)
 
     Vous verrez que le texte de sortie s’affiche. Si vous êtes intéressé par des exemples basés sur un scénario courant, consultez les recettes de Gulp.
 
 ## <a name="defining-and-running-tasks-in-a-series"></a>Définition et l’exécution de tâches dans une série
 
-Lorsque vous exécutez plusieurs tâches, les tâches s'exécutent simultanément par défaut. Toutefois, si vous avez besoin d'exécuter des tâches dans un ordre spécifique, vous devez spécifier quand chaque tâche est terminée, ainsi que les tâches qui dépendent de la complétion d’une autre tâche.
+Lorsque vous exécutez plusieurs tâches, les tâches sont exécutées simultanément par défaut. Toutefois, si vous avez besoin d'exécuter des tâches dans un ordre spécifique, vous devez spécifier quand chaque tâche est terminée, ainsi que les tâches qui dépendent de l’achèvement d’une autre tâche.
 
 1.  Pour définir une série de tâches à exécuter dans l’ordre, remplacez la tâche `first` que vous avez ajoutée ci-dessus dans *gulpfile.js* avec les éléments suivants :
 
@@ -256,7 +256,7 @@ Lorsque vous exécutez plusieurs tâches, les tâches s'exécutent simultanémen
 
 4.  Dans **Task Runner Explorer**, cliquez avec le bouton droit sur **series** et sélectionnez **Run**.
 
-    ![Explorateur d’exécuteur de tâches exécuter la tâche de série](using-gulp/_static/07-TaskRunner-Series.png)
+    ![Task Runner Explorer exécuter la tâche de série](using-gulp/_static/07-TaskRunner-Series.png)
 
 ## <a name="intellisense"></a>IntelliSense
 
@@ -295,7 +295,7 @@ Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour interm�
 
 ## <a name="switching-between-environments"></a>Basculer entre les environnements
 
-Pour basculer entre la compilation pour des environnements différents, vous devez modifier la valeur de la variable d’environnement **ASPNETCORE_ENVIRONMENT**.
+Pour basculer entre la compilation pour des environnements différents, vous devez modifier la valeur de la variable d'environnement **ASPNETCORE_ENVIRONMENT**.
 
 1.  Dans **Task Runner Explorer**, vérifiez que la tâche**min** ta été définie pour s'exécuter **avant de générer**.
 
@@ -311,13 +311,13 @@ Pour basculer entre la compilation pour des environnements différents, vous dev
 
 6.  Dans la fenêtre du navigateur, cliquez avec le bouton droit sur la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
 
-    Notez que les liens de la feuille de style pointent vers les fichiers CSS réduites.
+    Notez que les liens de la feuille de style pointent vers les versions non minimisées des fichiers CSS.
 
 7.  Fermez le navigateur pour arrêter l’application Web.
 
 8.  Dans Visual Studio, revenir à la feuille de propriétés de l’application Web et modifier la variable d’environnement **Hosting:Environment**pour revenir à `Development`.
 
-9.  Appuyez sur **F5** réexécuter l’application dans un navigateur.
+9.  Appuyez sur **F5** pour réexécuter l’application dans un navigateur.
 
 10. Dans la fenêtre du navigateur, cliquez avec le bouton droit sur la page, puis sélectionnez **afficher la Source** pour afficher le code HTML de la page.
 
@@ -327,14 +327,14 @@ Pour plus d’informations sur les environnements dans ASP.NET Core, consultez [
 
 ## <a name="task-and-module-details"></a>Détails de tâche et de module
 
-Une tâche Gulp est enregistrée avec un nom de fonction. Vous pouvez spécifier des dépendances si d’autres tâches doivent être exécutées avant que la tâche actuelle. Les fonctions supplémentaires permettent à exécuter et surveiller les tâches Gulp, ainsi que de définir la source (*src*) et de destination (*dest*) des fichiers en cours de modification. Les principales fonctions de l'API de Gulp sont les suivantes :
+Une tâche Gulp est inscrite avec un nom de fonction. Vous pouvez spécifier des dépendances si d’autres tâches doivent être exécutées avant la tâche actuelle. Des fonctions supplémentaires permettent d'exécuter et de surveiller les tâches Gulp, ainsi que de définir la source (*src*) et la destination (*dest*) des fichiers en cours de modification. Les fonctions principales de l'API Gulp sont les suivantes :
 
 |Gulp (fonction)|Syntaxe|Description|
 |---   |--- |--- |
 |task  |`gulp.task(name[, deps], fn) { }`|La fonction `task` crée une tâche. Le paramètre `name` définit le nom de la tâche. Le paramètre `deps` contient un tableau de tâches à effectuer avant d’exécuter cette tâche. Le paramètre `fn` représente une fonction de rappel qui effectue les opérations de la tâche.|
 |watch |`gulp.watch(glob [, opts], tasks) { }`|La fonction `watch` surveille les fichiers et exécute des tâches lorsqu’une modification de fichier se produit. Le paramètre `glob` est un `string` ou `array` qui détermine les fichiers à surveiller. Le paramètre `opts` fournit la surveillance des options de fichiers supplémentaires.|
-|src   |`gulp.src(globs[, options]) { }`|Le fonction `src` fournit des fichiers qui correspondent aux valeurs glob. Le paramètre `glob` est un `string` ou `array` qui détermine les fichiers à lire. Le paramètre `options` fournit des options de fichiers supplémentaires.|
-|destination  |`gulp.dest(path[, options]) { }`|La fonction `dest` définit un emplacement dans lequel les fichiers peuvent être écrites. Le paramètre `path` est une chaîne ou une fonction qui détermine le dossier de destination. Le paramètre `options` est un objet qui spécifie les options de dossier de sortie.|
+|src   |`gulp.src(globs[, options]) { }`|La fonction `src` fournit des fichiers qui correspondent aux valeurs glob. Le paramètre `glob` est une `string` ou un `array` qui détermine les fichiers à lire. Le paramètre `options` fournit des options de fichiers supplémentaires.|
+|destination  |`gulp.dest(path[, options]) { }`|La fonction `dest` définit un emplacement dans lequel les fichiers peuvent être écrits. Le paramètre `path` est une chaîne ou une fonction qui détermine le dossier de destination. Le paramètre `options` est un objet qui spécifie les options de dossier de sortie.|
 
 Pour plus d’informations de référence supplémentaires sur l'API de Gulp , consultez [documentation de l'API Gulp](https://github.com/gulpjs/gulp/blob/master/docs/API.md).
 
