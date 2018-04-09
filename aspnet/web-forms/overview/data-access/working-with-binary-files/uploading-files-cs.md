@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/uploading-files-cs
-title: "Téléchargement de fichiers (c#) | Documents Microsoft"
+title: Téléchargement de fichiers (c#) | Documents Microsoft
 author: rick-anderson
-description: "Découvrez comment permettre aux utilisateurs de télécharger les fichiers binaires (tels que des documents Word ou PDF) à votre site Web où ils peuvent être stockés dans le système de fichiers soit du serveur..."
+description: Découvrez comment permettre aux utilisateurs de télécharger les fichiers binaires (tels que des documents Word ou PDF) à votre site Web où ils peuvent être stockés dans le système de fichiers soit du serveur...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/uploading-files-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 629c1154683a0370e3e650873edf29dc9f22b4bc
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3c758e94311817d01b17d27083733f805caf600f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="uploading-files-c"></a>Téléchargement de fichiers (c#)
 ====================
@@ -124,9 +124,9 @@ Le `CategoriesDataTable` dans la couche DAL (Data Access) a actuellement quatre 
 
 Comme indiqué dans *création d’une couche d’accès aux données*, les tables de données dans le DataSet typé constituent les objets métier. Les TableAdapters sont responsables de la communication avec la base de données et remplir les objets d’entreprise avec les résultats de requête. Le `CategoriesDataTable` est rempli par le `CategoriesTableAdapter`, qui a trois méthodes de récupération de données :
 
-- `GetCategories()`exécute la requête principale de TableAdapter s et retourne le `CategoryID`, `CategoryName`, et `Description` les champs de tous les enregistrements dans la `Categories` table. La requête principale est celui qui est utilisé par générées automatiquement `Insert` et `Update` méthodes.
-- `GetCategoryByCategoryID(categoryID)`Retourne le `CategoryID`, `CategoryName`, et `Description` champs de la catégorie dont `CategoryID` est égal à *categoryID*.
-- `GetCategoriesAndNumberOfProducts()`-Retourne la `CategoryID`, `CategoryName`, et `Description` champs pour tous les enregistrements dans la `Categories` table. Utilise également une sous-requête pour retourner le nombre de produits associés à chaque catégorie.
+- `GetCategories()` exécute la requête principale de TableAdapter s et retourne le `CategoryID`, `CategoryName`, et `Description` les champs de tous les enregistrements dans la `Categories` table. La requête principale est celui qui est utilisé par générées automatiquement `Insert` et `Update` méthodes.
+- `GetCategoryByCategoryID(categoryID)` Retourne le `CategoryID`, `CategoryName`, et `Description` champs de la catégorie dont `CategoryID` est égal à *categoryID*.
+- `GetCategoriesAndNumberOfProducts()` -Retourne la `CategoryID`, `CategoryName`, et `Description` champs pour tous les enregistrements dans la `Categories` table. Utilise également une sous-requête pour retourner le nombre de produits associés à chaque catégorie.
 
 Notez qu’aucune de ces requêtes retournent le `Categories` table s `Picture` ou `BrochurePath` colonnes ; et ne le `CategoriesDataTable` fournir `DataColumn` s pour ces champs. Pour pouvoir travailler avec l’image et `BrochurePath` propriétés, nous devons d’abord les ajouter à la `CategoriesDataTable` puis mettez à jour la `CategoriesTableAdapter` classe pour retourner ces colonnes.
 
@@ -287,11 +287,11 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Teresa Murphy et Bernadette Leigh. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Next](displaying-binary-data-in-the-data-web-controls-cs.md)
+> [!div class="step-by-step"]
+> [Next](displaying-binary-data-in-the-data-web-controls-cs.md)

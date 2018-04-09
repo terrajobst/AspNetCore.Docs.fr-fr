@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
-title: "Exécutez différentes Versions des Pages Web ASP.NET (Razor) côte à côte | Documents Microsoft"
+title: Exécutez différentes Versions des Pages Web ASP.NET (Razor) côte à côte | Documents Microsoft
 author: tfitzmac
-description: "Cet article explique comment exécuter des sites Web ASP.NET Web Pages (Razor) sur le même ordinateur ou serveur lorsque les sites Web sont configurés pour utiliser des versions différentes..."
+description: Cet article explique comment exécuter des sites Web ASP.NET Web Pages (Razor) sur le même ordinateur ou serveur lorsque les sites Web sont configurés pour utiliser des versions différentes...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
 msc.type: authoredcontent
-ms.openlocfilehash: c11399b0bde59d18fa378ed48c15844454c1f956
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1729f3201013926b221afc92d23416b0081d8efb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="running-different-versions-of-aspnet-web-pages-razor-side-by-side"></a>Exécution côte à côte de différentes Versions de ASP.NET Web Pages (Razor)
 ====================
@@ -52,7 +52,7 @@ Voici quelques points à retenir lorsque vous installez les Pages Web avec WebMa
 - Si vous souhaitez exécuter un site à l’aide d’une autre version d’ASP.NET Web Pages, vous pouvez configurer le site pour ce faire. Si votre site n’a pas encore un *web.config* dans la racine du site, créez-en un et copiez-y le code XML suivant, remplacer le contenu existant. Si le site contient déjà un *web.config* , ajoutez une `<appSettings>` élément tel que le suivant à la `<configuration>` section.
 
     [!code-xml[Main](running-v1-and-v2-sites-side-by-side/samples/sample1.xml)]
-'-Si vous ne spécifiez pas une version dans le *web.config* fichier, un site est déployé en tant que la version la plus récente. (Les assemblys sont copiés dans le *bin* dossier dans le site déployé.)
+  '-Si vous ne spécifiez pas une version dans le *web.config* fichier, un site est déployé en tant que la version la plus récente. (Les assemblys sont copiés dans le *bin* dossier dans le site déployé.)
 - Nouvelles applications que vous créez dans les modèles de site Web Matrix incluent les assemblys de version des Pages Web dans la table *bin* dossier.
 
 En règle générale, vous pouvez contrôler toujours la version de Pages Web à utiliser avec votre site à l’aide de NuGet pour installer les assemblys appropriés dans le site *bin* dossier. Pour rechercher les packages, visitez [NuGet.org](http://NuGet.org).

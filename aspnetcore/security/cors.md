@@ -1,7 +1,7 @@
 ---
-title: "L’activation de demandes Cross-Origin (CORS) dans ASP.NET Core"
+title: Activer les demandes Cross-Origin (CORS) dans ASP.NET Core
 author: rick-anderson
-description: "Découvrez comment CORS comme une norme pour autoriser ou rejeter les demandes cross-origin dans une application ASP.NET Core."
+description: Découvrez comment CORS comme une norme pour autoriser ou rejeter les demandes cross-origin dans une application ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 05/17/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cors
-ms.openlocfilehash: 64d939033fee14fad37a08c60da608898e20c01b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
-ms.translationtype: HT
+ms.openlocfilehash: 3c5d0840426c7ed52353a7832a1a1959027121de
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="enabling-cross-origin-requests-cors-in-aspnet-core"></a>L’activation de demandes Cross-Origin (CORS) dans ASP.NET Core
+# <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Activer les demandes Cross-Origin (CORS) dans ASP.NET Core
 
 Par [Mike Wasson](https://github.com/mikewasson), [Shayne Boyer](https://twitter.com/spboyer), et [Tom Dykstra](https://github.com/tdykstra)
 

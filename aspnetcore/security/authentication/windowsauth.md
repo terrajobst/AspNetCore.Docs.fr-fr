@@ -1,7 +1,7 @@
 ---
-title: "Configurer l’authentification Windows dans ASP.NET Core"
+title: Configurer l’authentification Windows dans ASP.NET Core
 author: ardalis
-description: "Cet article décrit comment configurer l’authentification Windows dans ASP.NET Core, à l’aide d’IIS Express, IIS, HTTP.sys et WebListener."
+description: Cet article décrit comment configurer l’authentification Windows dans ASP.NET Core, à l’aide d’IIS Express, IIS, HTTP.sys et WebListener.
 manager: wpickett
 ms.author: riande
 ms.date: 10/24/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: f6efd838d7b6c837c75f36591a49eab812f9d54c
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: ff47519db4e9d1c5aea8811fef24c84bb564e80e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>Configurer l’authentification Windows dans une application ASP.NET Core
+# <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com) et [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -38,7 +38,7 @@ Dans Visual Studio :
 1. Sélectionnez l’Application Web à partir de la liste des modèles.
 1. Sélectionnez le **modifier l’authentification** sélectionnez **l’authentification Windows**. 
 
-Exécutez l’application. Le nom d’utilisateur s’affiche dans le coin supérieur droit de l’application.
+Exécuter l’application. Le nom d’utilisateur s’affiche dans le coin supérieur droit de l’application.
 
 ![Capture d’écran de navigateur de l’authentification Windows](windowsauth/_static/browser-screenshot.png)
 
@@ -84,20 +84,17 @@ Lancez l’application pour vérifier l’utilisation de l’authentification Wi
 
 ## <a name="enable-windows-authentication-with-httpsys-or-weblistener"></a>Activer l’authentification Windows avec HTTP.sys ou WebListener
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 Bien que Kestrel ne prend pas en charge l’authentification Windows, vous pouvez utiliser [HTTP.sys](xref:fundamentals/servers/httpsys) pour prendre en charge les scénarios auto-hébergés sur Windows. L’exemple suivant configure l’hôte web de l’application pour utiliser HTTP.sys avec l’authentification Windows :
 
 [!code-csharp[](windowsauth/sample/Program2x.cs?highlight=9-14)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Bien que Kestrel ne prend pas en charge l’authentification Windows, vous pouvez utiliser [WebListener](xref:fundamentals/servers/weblistener) pour prendre en charge les scénarios auto-hébergés sur Windows. L’exemple suivant configure l’hôte web de l’application pour utiliser WebListener avec l’authentification Windows :
 
 [!code-csharp[](windowsauth/sample/Program1x.cs?highlight=6-11)]
 
----
-
+* * *
 ## <a name="work-with-windows-authentication"></a>Utiliser l’authentification Windows
 
 L’état de configuration de l’accès anonyme détermine la façon dont le `[Authorize]` et `[AllowAnonymous]` attributs sont utilisés dans l’application. Les deux sections suivantes expliquent comment gérer les États de configuration non autorisés et autorisées de l’accès anonyme.

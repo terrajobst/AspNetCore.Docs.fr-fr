@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb
-title: "Création d’un contrôle d’évaluation (VB) | Documents Microsoft"
+title: Création d’un contrôle d’évaluation (VB) | Documents Microsoft
 author: wenz
-description: "De nombreux sites Web, de commerce électronique pour les sites de Communauté, offrent à leurs utilisateurs aux articles de taux ou aux éléments. Cela nécessite généralement des efforts de codage, mais nous avons le..."
+description: De nombreux sites Web, de commerce électronique pour les sites de Communauté, offrent à leurs utilisateurs aux articles de taux ou aux éléments. Cela nécessite généralement des efforts de codage, mais nous avons le...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ff3394865e084c5a24e7e79469a4a7d26aabb552
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c19f36dfe1b72a3954db61ff1845e99c02e47c14
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-rating-control-vb"></a>Création d’un contrôle d’évaluation (VB)
 ====================
@@ -41,12 +41,12 @@ Ensuite, créez un nouveau fichier ASP.NET et commencez par ajouter un `ScriptMa
 
 Ensuite, ajoutez le `Rating` contrôle à partir de la boîte à outils de contrôle ASP.NET AJAX. Les attributs suivants doivent être définis pour cet exemple :
 
-- `CurrentRating`l’évaluation initiale à utiliser
-- `MaxRating`la classification maximale
-- `EmptyStarCssClass`la classe CSS à utiliser lorsqu’un élément de contrôle d’accès (en étoile) est vide
-- `FilledStarCssClass`la classe CSS à utiliser lorsqu’un élément de contrôle d’accès (en étoile) est renseignée.
-- `StarCssClass`la classe CSS à utiliser pour un état visible
-- `WaitingStarCssClass`la classe CSS à utiliser pendant un nombre d’étoiles est envoyé sur le serveur
+- `CurrentRating` l’évaluation initiale à utiliser
+- `MaxRating` la classification maximale
+- `EmptyStarCssClass` la classe CSS à utiliser lorsqu’un élément de contrôle d’accès (en étoile) est vide
+- `FilledStarCssClass` la classe CSS à utiliser lorsqu’un élément de contrôle d’accès (en étoile) est renseignée.
+- `StarCssClass` la classe CSS à utiliser pour un état visible
+- `WaitingStarCssClass` la classe CSS à utiliser pendant un nombre d’étoiles est envoyé sur le serveur
 
 Et Voici le balisage qui crée un contrôle d’évaluation avec cinq éléments (smileys) dont aucun n’est remplie initialement :
 
@@ -73,5 +73,5 @@ Enregistrez la page et chargez-le dans votre navigateur. Lorsque vous pointez su
 
 Création d’un système d’évaluation avec un minimum de code ([cliquez pour afficher l’image en taille réelle](creating-a-rating-control-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](creating-a-rating-control-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-rating-control-cs.md)

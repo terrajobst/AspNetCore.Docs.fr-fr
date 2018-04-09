@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/7-displaying-data-in-a-chart
-title: "Affichage des données dans un graphique avec les Pages Web ASP.NET (Razor) | Documents Microsoft"
+title: Affichage des données dans un graphique avec les Pages Web ASP.NET (Razor) | Documents Microsoft
 author: microsoft
-description: "Ce chapitre explique comment afficher des données dans un graphique. Dans les chapitres précédents, vous avez appris comment afficher des données dans une grille et manuellement. Ce chapitre explique..."
+description: Ce chapitre explique comment afficher des données dans un graphique. Dans les chapitres précédents, vous avez appris comment afficher des données dans une grille et manuellement. Ce chapitre explique...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: f252b74bc42d0ea65b8b1150973c4f3c50cc9cf4
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 5cf17e54408d585e9a375b302b61b4e28d9b022a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>Affichage des données dans un graphique avec les Pages Web ASP.NET (Razor)
 ====================
@@ -129,7 +129,7 @@ La troisième option de création de graphiques est d’utiliser un fichier XML 
 
     ![](7-displaying-data-in-a-chart/_static/image10.jpg)
 
-> [!TIP] 
+> [!TIP]
 > 
 > <a id="SB_UsingStatements"></a>
 > ### <a name="using-statements-and-fully-qualified-names"></a>Instructions « Using » et les noms qualifiés complets

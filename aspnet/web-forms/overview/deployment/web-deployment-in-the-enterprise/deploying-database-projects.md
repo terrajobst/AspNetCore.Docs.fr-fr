@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-database-projects
-title: "Déploiement de projets de base de données | Documents Microsoft"
+title: Déploiement de projets de base de données | Documents Microsoft
 author: jrjlee
-description: "Remarque : Dans de nombreux scénarios de déploiement d’entreprise, vous devez la possibilité de publier des mises à jour incrémentielles dans une base de données déployée. L’alternative consiste à recréer..."
+description: 'Remarque : Dans de nombreux scénarios de déploiement d’entreprise, vous devez la possibilité de publier des mises à jour incrémentielles dans une base de données déployée. L’alternative consiste à recréer...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-database-projects
 msc.type: authoredcontent
-ms.openlocfilehash: 9b1f9a19c76e33b5d996cb4d562cf0c1a3e2f83b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a0b3871ea098b549271bce2b9d5f0c24f9ca8a9c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-database-projects"></a>Déploiement de projets de base de données
 ====================
@@ -92,8 +92,8 @@ Dans ce cas :
 
 - Le **/a** (ou **/action**) commutateur spécifie ce que vous souhaitez faire VSDBCMD. Vous pouvez définir cette option **importation** ou **déployer**. Le **importation** option est utilisée pour générer un fichier .dbschema à partir d’une base de données existante et la **déployer** option permet de déployer un fichier .dbschema vers une base de données cible.
 - Le **de manifeste** (ou **MANIFESTFILE**) commutateur identifie le fichier .deploymanifest que vous souhaitez déployer. Si vous souhaitez utiliser le fichier .dbschema au lieu de cela, vous devez utiliser le **/modèle** (ou **/ModelFile**) basculer.
-- Le **/cs** (ou **/ConnectionString**) commutateur fournit la chaîne de connexion pour le serveur de base de données cible. Notez que cela n’inclut pas le nom de la base de données & #x 2014 ; VSDBCMD doit se connecter au serveur pour créer la base de données ; Il n’a pas besoin de se connecter à une base de données individuel. Si votre fichier .deploymanifest inclut une chaîne de connexion, vous pouvez omettre ce commutateur. Si vous utilisez le commutateur tout de même, la valeur du commutateur remplace la valeur .deploymanifest.
-- Le **/p : TargetDatabase** fournit le nom que vous souhaitez affecter à la base de données cible lors de la création. Cela remplace la valeur de la **TargetDatabase** propriété dans le fichier .deploymanifest. Vous pouvez utiliser la **/p:** *[nom de propriété]*selon la syntaxe pour définir un large éventail de propriétés de déploiement pour remplacer des variables SQLCMD déclaré dans votre fichier .sqlcmdvars.
+- Le **/cs** (ou **/ConnectionString**) commutateur fournit la chaîne de connexion pour le serveur de base de données cible. Notez que cela n’inclut pas le nom de la base de données&#x2014;VSDBCMD doit se connecter au serveur pour créer la base de données ; Il n’a pas besoin de se connecter à une base de données individuel. Si votre fichier .deploymanifest inclut une chaîne de connexion, vous pouvez omettre ce commutateur. Si vous utilisez le commutateur tout de même, la valeur du commutateur remplace la valeur .deploymanifest.
+- Le <strong>/p : TargetDatabase</strong> fournit le nom que vous souhaitez affecter à la base de données cible lors de la création. Cela remplace la valeur de la <strong>TargetDatabase</strong> propriété dans le fichier .deploymanifest. Vous pouvez utiliser la <strong>/p:</strong> <em>[nom de propriété]</em>selon la syntaxe pour définir un large éventail de propriétés de déploiement pour remplacer des variables SQLCMD déclaré dans votre fichier .sqlcmdvars.
 - Le **/dd+** (ou **/DeployToDatabase+**) commutateur indique que vous souhaitez créer un déploiement et le déployer dans l’environnement cible. Si vous spécifiez **/dd-**, ou omettez le commutateur, VSDBCMD génère un script de déploiement, mais il déploiera pas à l’environnement cible. Ce commutateur est souvent la source de confusion et est expliqué plus en détail dans la section suivante.
 - Le **/script** (ou **/DeploymentScriptFile**) commutateur spécifie où vous souhaitez générer le script de déploiement. Cette valeur n’affecte pas le processus de déploiement.
 
@@ -150,6 +150,6 @@ Ces rubriques sur MSDN fournissent des conseils plus large et des informations g
 - [Comment : préparer une base de données pour le déploiement à partir d’une invite de commandes à l’aide de VSDBCMD. EXE](https://msdn.microsoft.com/library/dd193258.aspx)
 - [Une vue d’ensemble de la génération de la base de données et de déploiement](https://msdn.microsoft.com/library/aa833165.aspx)
 
->[!div class="step-by-step"]
-[Précédent](deploying-web-packages.md)
-[Suivant](creating-and-running-a-deployment-command-file.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-web-packages.md)
+> [Suivant](creating-and-running-a-deployment-command-file.md)

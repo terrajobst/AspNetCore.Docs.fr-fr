@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb
-title: "Affichage des données avec les contrôles de répéteur (VB) et un contrôle DataList | Documents Microsoft"
+title: Affichage des données avec les contrôles de répéteur (VB) et un contrôle DataList | Documents Microsoft
 author: rick-anderson
-description: "Dans les didacticiels précédents, nous avons utilisé le contrôle GridView pour afficher des données. À partir de ce didacticiel, nous nous intéresser à la création de modèles de création de rapports courants avec..."
+description: Dans les didacticiels précédents, nous avons utilisé le contrôle GridView pour afficher des données. À partir de ce didacticiel, nous nous intéresser à la création de modèles de création de rapports courants avec...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 20a092ee2886932664705c22c3aa88d8a2f7f0ef
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6aa7cb76295d18711d88dd9855b43b259b558060
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-data-with-the-datalist-and-repeater-controls-vb"></a>Affichage des données avec le contrôle DataList et le contrôle de répéteur (VB)
 ====================
@@ -161,12 +161,12 @@ Avec l’ajout de ce fichier d’apparence, l’apparence de s DataList est mis 
 
 Outre le `ItemTemplate`, le contrôle DataList prend en charge les six autres modèles facultatif :
 
-- `HeaderTemplate`Si fourni, ajoute une ligne d’en-tête à la sortie et est utilisé pour rendre cette ligne
-- `AlternatingItemTemplate`utilisé pour afficher les éléments de remplacement
-- `SelectedItemTemplate`utilisé pour restituer l’élément sélectionné ; l’élément sélectionné est l’élément dont l’index correspond à du contrôle DataList s [ `SelectedIndex` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
-- `EditItemTemplate`utilisé pour restituer l’élément en cours de modification
-- `SeparatorTemplate`Si fourni, ajoute un séparateur entre chaque élément et est utilisé pour restituer ce séparateur
-- `FooterTemplate`-Si fourni, ajoute une ligne de pied de page à la sortie et est utilisé pour rendre cette ligne
+- `HeaderTemplate` Si fourni, ajoute une ligne d’en-tête à la sortie et est utilisé pour rendre cette ligne
+- `AlternatingItemTemplate` utilisé pour afficher les éléments de remplacement
+- `SelectedItemTemplate` utilisé pour restituer l’élément sélectionné ; l’élément sélectionné est l’élément dont l’index correspond à du contrôle DataList s [ `SelectedIndex` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.selectedindex.aspx)
+- `EditItemTemplate` utilisé pour restituer l’élément en cours de modification
+- `SeparatorTemplate` Si fourni, ajoute un séparateur entre chaque élément et est utilisé pour restituer ce séparateur
+- `FooterTemplate` -Si fourni, ajoute une ligne de pied de page à la sortie et est utilisé pour rendre cette ligne
 
 Lorsque vous spécifiez la `HeaderTemplate` ou `FooterTemplate`, DataList ajoute une ligne d’en-tête ou pied de page supplémentaire à la sortie rendue. Comme avec l’en-tête de s GridView et le pied de page lignes, l’en-tête et le pied de page dans un contrôle DataList pas liés aux données. Par conséquent, toute syntaxe de liaison de données dans le `HeaderTemplate` ou `FooterTemplate` que les tentatives d’accès aux données liées retournera une chaîne vide.
 
@@ -210,11 +210,11 @@ Si vous faire une vue/Source à partir de votre navigateur lors de la visite de 
 
 Que se passe-t-il si vous ne souhaitez à émettre HTML `<table>`, bien que ? Pour un contrôle total et complet sur le balisage généré par un contrôle Web de données, nous devons utiliser le contrôle du répéteur. Comme le contrôle DataList répéteur est construit en fonction des modèles. Toutefois, le répéteur, offre uniquement cinq modèles suivants :
 
-- `HeaderTemplate`Si spécifié, ajoute la balise spécifiée avant les éléments
-- `ItemTemplate`permet de restituer les éléments
-- `AlternatingItemTemplate`Si fourni, utilisé pour afficher les éléments de remplacement
-- `SeparatorTemplate`Si fourni, ajoute le balisage spécifié entre chaque élément.
-- `FooterTemplate`-Si fourni, ajoute le balisage spécifié après les éléments
+- `HeaderTemplate` Si spécifié, ajoute la balise spécifiée avant les éléments
+- `ItemTemplate` permet de restituer les éléments
+- `AlternatingItemTemplate` Si fourni, utilisé pour afficher les éléments de remplacement
+- `SeparatorTemplate` Si fourni, ajoute le balisage spécifié entre chaque élément.
+- `FooterTemplate` -Si fourni, ajoute le balisage spécifié après les éléments
 
 Dans ASP.NET 1.x, le contrôle a été couramment utilisé pour afficher une liste à puces dont les données proviennent d’une source de données de répéteur. Dans ce cas, le `HeaderTemplate` et `FooterTemplates` contiendrait l’ouverture et fermeture `<ul>` balises, respectivement, while la `ItemTemplate` contiendrait `<li>` éléments avec la syntaxe de liaison de données. Cette approche peut toujours être utilisée dans ASP.NET 2.0 comme nous l’avons vu dans les deux exemples de la [les Pages maîtres et Navigation du Site](../introduction/master-pages-and-site-navigation-vb.md) didacticiel :
 
@@ -312,12 +312,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Yaakov Ellis, Liz Shulok, Randy Schmidt et Stacy Park. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](nested-data-web-controls-cs.md)
-[Suivant](formatting-the-datalist-and-repeater-based-upon-data-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](nested-data-web-controls-cs.md)
+> [Suivant](formatting-the-datalist-and-repeater-based-upon-data-vb.md)
