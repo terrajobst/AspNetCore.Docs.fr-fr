@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/editor-control
-title: "Contrôle de l’éditeur | Documents Microsoft"
+title: Contrôle de l’éditeur | Documents Microsoft
 author: JoeStagner
-description: "Cette vidéo va vous montrer comment utiliser le nouveau contrôle d’éditeur WYSIWYG éditeur à partir de la boîte à outils de contrôle Microsoft AJAX."
+description: Cette vidéo va vous montrer comment utiliser le nouveau contrôle d’éditeur WYSIWYG éditeur à partir de la boîte à outils de contrôle Microsoft AJAX.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/13/2009
@@ -12,21 +12,21 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/editor-control
 msc.type: video
-ms.openlocfilehash: bbf1ee044319173aeeafd1d9fb7cd6c415ed3a02
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: eb4368378d639691e67cc96964f7cbbc9bc0a98f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
-<a name="editor-control"></a><span data-ttu-id="10934-103">Contrôle de l’éditeur</span><span class="sxs-lookup"><span data-stu-id="10934-103">Editor Control</span></span>
+<a name="editor-control"></a><span data-ttu-id="f2700-103">Contrôle de l’éditeur</span><span class="sxs-lookup"><span data-stu-id="f2700-103">Editor Control</span></span>
 ====================
-<span data-ttu-id="10934-104">par [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="10934-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="f2700-104">par [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="f2700-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="10934-105">Cette vidéo va vous montrer comment utiliser le nouveau contrôle d’éditeur WYSIWYG éditeur à partir de la boîte à outils de contrôle Microsoft AJAX.</span><span class="sxs-lookup"><span data-stu-id="10934-105">This video will demonstrate how to use the new Editor WYSIWYG Editor control from the Microsoft AJAX Control Toolkit.</span></span>
+<span data-ttu-id="f2700-105">Cette vidéo va vous montrer comment utiliser le nouveau contrôle d’éditeur WYSIWYG éditeur à partir de la boîte à outils de contrôle Microsoft AJAX.</span><span class="sxs-lookup"><span data-stu-id="f2700-105">This video will demonstrate how to use the new Editor WYSIWYG Editor control from the Microsoft AJAX Control Toolkit.</span></span>
 
-[<span data-ttu-id="10934-106">&#9654; Regardez la vidéo (4 minutes)</span><span class="sxs-lookup"><span data-stu-id="10934-106">&#9654; Watch video (4 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/editor-control)
+[<span data-ttu-id="f2700-106">&#9654;Regardez la vidéo (4 minutes)</span><span class="sxs-lookup"><span data-stu-id="f2700-106">&#9654; Watch video (4 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/editor-control)
 
->[!div class="step-by-step"]
-<span data-ttu-id="10934-107">[Précédent](combo-box.md)
-[Suivant](editor-control-custom.md)</span><span class="sxs-lookup"><span data-stu-id="10934-107">[Previous](combo-box.md)
+> [!div class="step-by-step"]
+> <span data-ttu-id="f2700-107">[Précédent](combo-box.md)
+> [Suivant](editor-control-custom.md)</span><span class="sxs-lookup"><span data-stu-id="f2700-107">[Previous](combo-box.md)
 [Next](editor-control-custom.md)</span></span>
