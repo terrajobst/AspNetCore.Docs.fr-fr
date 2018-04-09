@@ -1,7 +1,7 @@
 ---
-title: "Déploiement continu pour Azure avec Visual Studio et Git avec ASP.NET Core"
+title: Déploiement continu pour Azure avec Visual Studio et Git avec ASP.NET Core
 author: rick-anderson
-description: "Découvrez comment créer une application web ASP.NET Core à l’aide de Visual Studio et comment la déployer sur Azure App Service en utilisant Git pour le déploiement continu."
+description: Découvrez comment créer une application web ASP.NET Core à l’aide de Visual Studio et comment la déployer sur Azure App Service en utilisant Git pour le déploiement continu.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 7302de1ace62dba53b317039aac7f4763314aa19
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4de1893e8c1f7f2f4d9af7278a110067ea777c61
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Déploiement continu pour Azure avec Visual Studio et Git avec ASP.NET Core
 
 Par [Erik Reitan](https://github.com/Erikre)
 
-[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
+[!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 Ce didacticiel montre comment créer une application de web ASP.NET Core à l’aide de Visual Studio et le déployer vers Azure App Service à partir de Visual Studio à l’aide d’un déploiement continu.
 
@@ -34,7 +34,7 @@ Consultez aussi [Use VSTS to Build and Publish to an Azure Web App with Continuo
 Ce didacticiel suppose que les logiciels suivants sont installés :
 
 * [Visual Studio](https://www.visualstudio.com)
-* [Kit de développement .NET core](https://www.microsoft.com/net/download/core) (runtime et les outils)
+* [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * [Git](https://git-scm.com/downloads) pour Windows
 
 ## <a name="create-an-aspnet-core-web-app"></a>Créer une application web ASP.NET Core

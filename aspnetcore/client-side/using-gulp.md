@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-gulp
-ms.openlocfilehash: 0a3443e8187d46992f55dc537d0f400c6771c50c
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: f776b2025b6ebfeff28d3903aaeac4d7d89665b3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="introduction-to-using-gulp-in-aspnet-core"></a>Introduction à l’utilisation de Gulp dans ASP.NET Core 
+# <a name="use-gulp-in-aspnet-core"></a>Utilisation de Gulp dans ASP.NET Core
 
 Par [Erik Reitan](https://github.com/Erikre), [Scott Addie](https://scottaddie.com), [Michel Roth](https://github.com/danroth27), et [Shayne Boyer](https://twitter.com/spboyer)
 
@@ -176,13 +176,16 @@ Si vous n’avez pas déjà créé une application Web, créez un nouveau projet
     }
     ```
 
-3.  Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur *gulpfile.js*, puis sélectionnez **Task Runner Explorer**. 
+3.  Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur *gulpfile.js*, puis sélectionnez **Task Runner Explorer**.
     
     ![Ouvrez Task Runner Explorer à partir de l’Explorateur de solutions](using-gulp/_static/02-SolutionExplorer-TaskRunnerExplorer.png)
     
     **Task Runner Explorer** affiche la liste des tâches de Gulp. (Vous devrez peut-être cliquez sur le bouton **Actualiser** qui apparaît à gauche du nom du projet.)
     
     ![Task Runner Explorer](using-gulp/_static/03-TaskRunnerExplorer.png)
+    
+    > [!IMPORTANT]
+    > Le **Task Runner Explorer** élément de menu contextuel s’affiche uniquement si *gulpfile.js* est dans le répertoire racine du projet.
 
 4.  Sous **Tâches** dans **Task Runner Explorer**, cliquez avec le bouton droit sur **clean**, puis sélectionnez **exécuter** dans le menu contextuel. 
 
@@ -228,7 +231,7 @@ Pour définir une nouvelle tâche Gulp, modifier *gulpfile.js*.
 
     ![Exécutez la tâche first de Task Runner Explorer](using-gulp/_static/06-TaskRunner-First.png)
 
-    Vous verrez que le texte de sortie s’affiche. Si vous êtes intéressé par des exemples basés sur un scénario courant, consultez les recettes de Gulp.
+    Le texte de sortie s’affiche. Pour voir des exemples basés sur des scénarios courants, consultez [Gulp les recettes](#gulp-recipes).
 
 ## <a name="defining-and-running-tasks-in-a-series"></a>Définition et l’exécution de tâches dans une série
 
@@ -323,7 +326,7 @@ Pour basculer entre la compilation pour des environnements différents, vous dev
 
     Notez que les liens de la feuille de style pointent vers les versions non minifiés des fichiers CSS.
 
-Pour plus d’informations sur les environnements dans ASP.NET Core, consultez [fonctionne avec plusieurs environnements](../fundamentals/environments.md).
+Pour plus d’informations sur les environnements dans ASP.NET Core, consultez [travailler avec plusieurs environnements](../fundamentals/environments.md).
 
 ## <a name="task-and-module-details"></a>Détails de tâche et de module
 
@@ -340,7 +343,7 @@ Pour plus d’informations de référence supplémentaires sur l'API de Gulp , c
 
 ## <a name="gulp-recipes"></a>Recettes Gulp
 
-La Communauté Gulp fournit [recettes](https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md) Gulp. Ces recettes sont constituées des tâches Gulp pour résoudre des scénarios courants.
+La Communauté Gulp fournit Gulp [recettes](https://github.com/gulpjs/gulp/blob/master/docs/recipes/README.md). Ces recettes sont constituées des tâches Gulp pour résoudre des scénarios courants.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

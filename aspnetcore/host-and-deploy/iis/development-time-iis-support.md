@@ -1,7 +1,7 @@
 ---
-title: "Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core"
+title: Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 author: shirhatti
-description: "Découvrez la prise en charge pour le débogage des applications ASP.NET Core lors de l’exécution derrière IIS sur Windows Server."
+description: Découvrez la prise en charge pour le débogage des applications ASP.NET Core lors de l’exécution derrière IIS sur Windows Server.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,22 +10,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: a8bdf4c0c0399c62666e6e61e70c0298a42c2c12
-ms.sourcegitcommit: 9f758b1550fcae88ab1eb284798a89e6320548a5
+ms.openlocfilehash: 218bb2653b92cd7b1cf2c6726b2d4bedbf307a62
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
-Par : [Sourabh Shirhatti](https://twitter.com/sshirhatti)
+De [Sourabh Shirhatti](https://twitter.com/sshirhatti)
 
 Cet article décrit [Visual Studio](https://www.visualstudio.com/vs/) prend en charge pour le débogage des applications ASP.NET Core prend du retard IIS sur Windows Server. Cette rubrique décrit l’activation de cette fonctionnalité et la configuration d’un projet.
 
 ## <a name="prerequisites"></a>Prérequis
 
-* Visual Studio (2017/version 15.3 ou ultérieure)
-* Charge de travail de développement ASP.NET et web *OU* la charge de travail de développement multiplateforme .NET Core
+[!INCLUDE [](~/includes/net-core-prereqs-windows.md)]
 
 ## <a name="enable-iis"></a>Activer IIS
 
@@ -45,7 +44,7 @@ Lancez le programme d’installation de Visual Studio. Sélectionnez le **IIS pr
 
 Créez un nouveau profil de lancement pour ajouter la prise en charge d’IIS lors du développement. Dans **l’Explorateur de solutions** de Visual Studio, cliquez avec le bouton droit sur le projet et sélectionnez **Propriétés**. Sélectionnez l’onglet **Débogage**. Sélectionnez **IIS** dans la liste déroulante **Lancer**. Vérifiez que la fonctionnalité **Lancer le navigateur** est activée avec l’URL correcte.
 
-![Fenêtre de propriétés du projet avec l’onglet Débogage sélectionné. Les paramètres de profil et de lancement sont définis sur IIS. La fonctionnalité Lancer le navigateur est activée avec l’adresse http://localhost/WebApplication2. La même adresse est également fournie dans le champ URL de l’application de la zone Paramètres du serveur web avec Activer l’authentification anonyme activé.](development-time-iis-support/_static/project_properties.png)
+![Fenêtre de propriétés du projet avec l’onglet Débogage sélectionné. Les paramètres de profil et de lancement sont définis sur IIS. La fonctionnalité de navigateur de lancement est activée avec une adresse de http://localhost/WebApplication2. La même adresse est également fournie dans le champ URL de l’application de la zone Paramètres du serveur web avec Activer l’authentification anonyme activé.](development-time-iis-support/_static/project_properties.png)
 
 Vous pouvez également ajouter manuellement un profil de lancement pour les [launchSettings.json](http://json.schemastore.org/launchsettings) fichier dans l’application :
 

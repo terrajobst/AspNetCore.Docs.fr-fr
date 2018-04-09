@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
-title: "Choisir l’approche appropriée pour le déploiement Web | Documents Microsoft"
+title: Choisir l’approche appropriée pour le déploiement Web | Documents Microsoft
 author: jrjlee
-description: "Lorsque vous travaillez avec les Internet Information Services (IIS) outil de déploiement Web (Web Deploy) 2.0 ou version ultérieure, il existe trois approches principales que vous pouvez utiliser pour obtenir..."
+description: Lorsque vous travaillez avec les Internet Information Services (IIS) outil de déploiement Web (Web Deploy) 2.0 ou version ultérieure, il existe trois approches principales que vous pouvez utiliser pour obtenir...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: b77aa37160f3822f58908866e44497aea3d3bdc8
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 2d690744687af93a69743dc6ce6c853629f61f5d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="choosing-the-right-approach-to-web-deployment"></a>Choisir l’approche appropriée pour le déploiement Web
 ====================
@@ -118,7 +118,7 @@ Dans le cas des utilisateurs non administrateurs, le Service de gestion Web (WMS
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample6.cmd)]
 
 
-Par exemple, qu'un processus de build est configuré pour déployer automatiquement une application web dans un environnement intermédiaire après chaque génération réussie. Si vous avez utilisé l’approche de l’agent distant, vous devez rendre l’identité de processus de génération d’un administrateur sur vos serveurs de destination. En revanche, à l’aide de la méthode de gestionnaire de déploiement Web vous pouvez donner à un utilisateur non administrateur & le #x 2014 ; **FABRIKAM\stagingdeployer** dans cette cas, & #x 2014 ; autorisé à un site IIS spécifique uniquement et le processus de génération peut fournir ces informations d’identification pour déployer le package web.
+Par exemple, qu'un processus de build est configuré pour déployer automatiquement une application web dans un environnement intermédiaire après chaque génération réussie. Si vous avez utilisé l’approche de l’agent distant, vous devez rendre l’identité de processus de génération d’un administrateur sur vos serveurs de destination. En revanche, à l’aide de la méthode de gestionnaire de déploiement Web vous pouvez donner à un utilisateur non administrateur&#x2014;**FABRIKAM\stagingdeployer** dans ce cas&#x2014;autorisation pour un site IIS spécifique uniquement et le processus de génération peut fournir ces informations d’identification pour déployer le package web.
 
 
 [!code-console[Main](choosing-the-right-approach-to-web-deployment/samples/sample7.cmd)]
@@ -150,6 +150,6 @@ Pour plus d’informations sur les opérations de ligne de commande de déploiem
 
 Pour obtenir des instructions plus générales sur les différentes façons dans laquelle vous pouvez déployer des packages web à partir d’un ordinateur distant, consultez [à l’aide de Web Deploy Remotely](https://technet.microsoft.com/library/ee461175(WS.10).aspx). Pour plus d’informations sur l’utilisation de Web déployer à la demande, consultez [Web déployer à la demande](https://technet.microsoft.com/library/ee517345(WS.10).aspx).
 
->[!div class="step-by-step"]
-[Précédent](configuring-server-environments-for-web-deployment.md)
-[Suivant](scenario-configuring-a-test-environment-for-web-deployment.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-server-environments-for-web-deployment.md)
+> [Suivant](scenario-configuring-a-test-environment-for-web-deployment.md)

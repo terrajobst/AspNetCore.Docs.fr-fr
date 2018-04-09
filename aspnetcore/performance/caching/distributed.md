@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: 635c61cbb72a6a9eb822307bbc80936ee73bedc8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: d9c7c1c3b2c052ba11f9ea5eaaa424d69bc43eb2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="working-with-a-distributed-cache-in-aspnet-core"></a>Travailler avec un cache distribué dans ASP.NET Core
+# <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Travailler avec un cache distribué dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
@@ -26,7 +26,7 @@ Les caches distribués peuvent améliorer les performances et la scalabilité de
 
 ## <a name="what-is-a-distributed-cache"></a>Qu’est un cache distribué
 
-Un cache distribué est partagé par plusieurs serveurs d’application (consultez [principes fondamentaux de la mise en cache](memory.md#caching-basics)). Les informations contenues dans le cache ne sont pas isolées dans la mémoire de chaque serveur de site web, mais les données mises en cache sont disponibles pour tous les serveurs de l’application. Cela présente plusieurs avantages :
+Un cache distribué est partagé par plusieurs serveurs d’application (consultez [principes de base du Cache](memory.md#caching-basics)). Les informations contenues dans le cache ne sont pas isolées dans la mémoire de chaque serveur de site web, mais les données mises en cache sont disponibles pour tous les serveurs de l’application. Cela présente plusieurs avantages :
 
 1. Les données mises en cache sont cohérentes sur tous les serveurs web. Les utilisateurs ne voient pas des résultats différents selon le serveur web qui gère leur demande
 
@@ -96,7 +96,7 @@ Dans l’exemple de code, une implémentation de type `RedisCache` est utilisée
 [!code-csharp[](./distributed/sample/src/DistCacheSample/Startup.cs?highlight=8,9,10,11,12,13&range=27-40)]
 
 > [!NOTE]
-> Pour installer Redis sur votre ordinateur local, installez le package chocolatey [https://chocolatey.org/packages/redis-64/](https://chocolatey.org/packages/redis-64/) et exécutez `redis-server` à partir d’une invite de commandes.
+> Pour installer Redis sur votre ordinateur local, installez le package chocolatey [ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/) et exécutez `redis-server` à partir d’une invite de commandes.
 
 ## <a name="using-a-sql-server-distributed-cache"></a>Utiliser un cache distribué SQL Server
 
@@ -139,7 +139,7 @@ Lorsque vous décidez quelle implémentation de `IDistributedCache` est adaptée
 
 * [Cache dans Azure redis](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [Base de données SQL Azure](https://azure.microsoft.com/documentation/services/sql-database/)
-* [Mise en cache en mémoire](xref:performance/caching/memory)
+* [Cache en mémoire](xref:performance/caching/memory)
 * [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
 * [Mise en cache des réponses](xref:performance/caching/response)
 * [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)

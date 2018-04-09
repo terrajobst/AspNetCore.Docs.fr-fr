@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
-title: "Vue d’ensemble des fournisseurs de stockage personnalisés pour ASP.NET Identity | Documents Microsoft"
+title: Vue d’ensemble des fournisseurs de stockage personnalisés pour ASP.NET Identity | Documents Microsoft
 author: tfitzmac
-description: "ASP.NET Identity est un système extensible qui vous permet de créer votre propre fournisseur de stockage et connectez-le à votre application sans utiliser de nouveau l’Affich..."
+description: ASP.NET Identity est un système extensible qui vous permet de créer votre propre fournisseur de stockage et connectez-le à votre application sans utiliser de nouveau l’Affich...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2014
 ms.topic: article
 ms.assetid: 681a9204-462e-4260-9a0b-19f0644d6ad7
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: bbc1f6ef291eddd7488531943b146bb67ae7ee02
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 06e3ad3b74bf94806f56da9f579255bf2917bc48
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>Vue d’ensemble des fournisseurs de stockage personnalisé d’identité ASP.NET
 ====================
@@ -153,29 +153,29 @@ L’image suivante montre le plus de détails sur la fonctionnalité définie da
 ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image4.png)
 
 - **IUserStore**  
- Le [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613278(v=vs.108).aspx) interface est la seule interface, vous devez implémenter dans votre magasin de l’utilisateur. Elle définit des méthodes pour la création, la mise à jour, la suppression et la récupération des utilisateurs.
+  Le [IUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613278(v=vs.108).aspx) interface est la seule interface, vous devez implémenter dans votre magasin de l’utilisateur. Elle définit des méthodes pour la création, la mise à jour, la suppression et la récupération des utilisateurs.
 - **IUserClaimStore**  
- Le [IUserClaimStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613265(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur à activer les revendications d’utilisateur. Il contienne des méthodes ou ajout, suppression et la récupération des revendications d’utilisateur.
+  Le [IUserClaimStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613265(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur à activer les revendications d’utilisateur. Il contienne des méthodes ou ajout, suppression et la récupération des revendications d’utilisateur.
 - **IUserLoginStore**  
- Le [IUserLoginStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613272(v=vs.108).aspx) définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur pour permettre aux fournisseurs d’authentification externe. Il contient des méthodes pour ajouter, supprimer et la récupération des connexions utilisateur et une méthode pour récupérer un utilisateur selon les informations de connexion.
+  Le [IUserLoginStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613272(v=vs.108).aspx) définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur pour permettre aux fournisseurs d’authentification externe. Il contient des méthodes pour ajouter, supprimer et la récupération des connexions utilisateur et une méthode pour récupérer un utilisateur selon les informations de connexion.
 - **IUserRoleStore**  
- Le [IUserRoleStore&lt;TKey, TUser&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur pour mapper un utilisateur à un rôle. Il contient des méthodes pour ajouter, supprimer et récupérer des rôles d’un utilisateur et une méthode pour vérifier si un utilisateur est assigné à un rôle.
+  Le [IUserRoleStore&lt;TKey, TUser&gt; ](https://msdn.microsoft.com/library/dn613276(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur pour mapper un utilisateur à un rôle. Il contient des méthodes pour ajouter, supprimer et récupérer des rôles d’un utilisateur et une méthode pour vérifier si un utilisateur est assigné à un rôle.
 - **IUserPasswordStore**  
- Le [IUserPasswordStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613273(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur pour conserver les hacher des mots de passe. Il contient des méthodes pour obtenir et définir le mot de passe haché et une méthode qui indique si l’utilisateur a défini un mot de passe.
+  Le [IUserPasswordStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613273(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur pour conserver les hacher des mots de passe. Il contient des méthodes pour obtenir et définir le mot de passe haché et une méthode qui indique si l’utilisateur a défini un mot de passe.
 - **IUserSecurityStampStore**  
- Le [IUserSecurityStampStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613277(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur à utiliser un tampon de sécurité permettant d’indiquer si les informations de compte de l’utilisateur a changé. . Cet horodatage est mis à jour lorsqu’un utilisateur modifie le mot de passe, ou ajoute ou supprime des connexions. Il contient des méthodes pour obtenir et définir l’horodatage de sécurité.
+  Le [IUserSecurityStampStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613277(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter dans votre magasin de l’utilisateur à utiliser un tampon de sécurité permettant d’indiquer si les informations de compte de l’utilisateur a changé. . Cet horodatage est mis à jour lorsqu’un utilisateur modifie le mot de passe, ou ajoute ou supprime des connexions. Il contient des méthodes pour obtenir et définir l’horodatage de sécurité.
 - **IUserTwoFactorStore**  
- Le [IUserTwoFactorStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613279(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter pour implémenter l’authentification à deux facteurs. Il contient des méthodes pour obtenir et définir si l’authentification à deux facteurs est activée pour un utilisateur.
+  Le [IUserTwoFactorStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613279(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter pour implémenter l’authentification à deux facteurs. Il contient des méthodes pour obtenir et définir si l’authentification à deux facteurs est activée pour un utilisateur.
 - **IUserPhoneNumberStore**  
- Le [IUserPhoneNumberStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613275(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter pour stocker les numéros de téléphone des utilisateurs. Il contient des méthodes pour obtenir et définir le numéro de téléphone et indique si le numéro de téléphone est confirmé.
+  Le [IUserPhoneNumberStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613275(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter pour stocker les numéros de téléphone des utilisateurs. Il contient des méthodes pour obtenir et définir le numéro de téléphone et indique si le numéro de téléphone est confirmé.
 - **IUserEmailStore**  
- Le [IUserEmailStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613143(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter pour stocker les adresses de messagerie d’utilisateur. Il contient des méthodes pour obtenir et définir l’adresse de messagerie et si l’adresse de messagerie est confirmée.
+  Le [IUserEmailStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613143(v=vs.108).aspx) interface définit les méthodes que vous devez implémenter pour stocker les adresses de messagerie d’utilisateur. Il contient des méthodes pour obtenir et définir l’adresse de messagerie et si l’adresse de messagerie est confirmée.
 - **IUserLockoutStore**  
- Le [IUserLockoutStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613271(v=vs.108).aspx) interface définit les méthodes à implémenter pour stocker des informations sur le verrouillage d’un compte. Il contient des méthodes pour l’obtention du nombre actuel de tentatives d’accès ayant échoué, l’obtention et définition si le compte peut être verrouillé, mise en route et de définir la date de fin de verrouillage, incrémente le nombre de tentatives infructueuses et réinitialiser le nombre de tentatives ayant échoué.
+  Le [IUserLockoutStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613271(v=vs.108).aspx) interface définit les méthodes à implémenter pour stocker des informations sur le verrouillage d’un compte. Il contient des méthodes pour l’obtention du nombre actuel de tentatives d’accès ayant échoué, l’obtention et définition si le compte peut être verrouillé, mise en route et de définir la date de fin de verrouillage, incrémente le nombre de tentatives infructueuses et réinitialiser le nombre de tentatives ayant échoué.
 - **IQueryableUserStore**  
- Le [IQueryableUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613267(v=vs.108).aspx) interface définit les membres que vous devez implémenter pour fournir un magasin d’utilisateurs utilisable. Il contient une propriété qui contient les utilisateurs utilisable dans une requête.
+  Le [IQueryableUserStore&lt;TUser, TKey&gt; ](https://msdn.microsoft.com/library/dn613267(v=vs.108).aspx) interface définit les membres que vous devez implémenter pour fournir un magasin d’utilisateurs utilisable. Il contient une propriété qui contient les utilisateurs utilisable dans une requête.
 
- Vous implémentez les interfaces qui sont nécessaires dans votre application ; par exemple, le IUserClaimStore, IUserLoginStore, IUserRoleStore, IUserPasswordStore et IUserSecurityStampStore les interfaces comme indiqué ci-dessous. 
+  Vous implémentez les interfaces qui sont nécessaires dans votre application ; par exemple, le IUserClaimStore, IUserLoginStore, IUserRoleStore, IUserPasswordStore et IUserSecurityStampStore les interfaces comme indiqué ci-dessous. 
 
 [!code-csharp[Main](overview-of-custom-storage-providers-for-aspnet-identity/samples/sample5.cs)]
 
@@ -218,11 +218,11 @@ L’exemple suivant montre une classe de rôle du magasin. Le paramètre génér
 [!code-csharp[Main](overview-of-custom-storage-providers-for-aspnet-identity/samples/sample8.cs)]
 
 - **IRoleStore&lt;TRole&gt;**  
- Le [IRoleStore](https://msdn.microsoft.com/library/dn468195.aspx) interface définit les méthodes à implémenter dans votre classe de rôle du magasin. Il contient des méthodes pour la création, la mise à jour, suppression et la récupération des rôles.
+  Le [IRoleStore](https://msdn.microsoft.com/library/dn468195.aspx) interface définit les méthodes à implémenter dans votre classe de rôle du magasin. Il contient des méthodes pour la création, la mise à jour, suppression et la récupération des rôles.
 - **RoleStore&lt;TRole&gt;**  
- Pour personnaliser les RoleStore, créez une classe qui implémente l’interface IRoleStore. Il vous suffit de mettre en œuvre de cette classe si à utiliser les rôles sur votre système. Le constructeur qui prend un paramètre nommé *base de données* de type ExampleDatabase n'est qu’une illustration comment transmettre dans votre classe d’accès aux données. Par exemple, dans l’implémentation de MySQL, ce constructeur prend un paramètre de type MySQLDatabase.  
+  Pour personnaliser les RoleStore, créez une classe qui implémente l’interface IRoleStore. Il vous suffit de mettre en œuvre de cette classe si à utiliser les rôles sur votre système. Le constructeur qui prend un paramètre nommé *base de données* de type ExampleDatabase n'est qu’une illustration comment transmettre dans votre classe d’accès aux données. Par exemple, dans l’implémentation de MySQL, ce constructeur prend un paramètre de type MySQLDatabase.  
   
- Pour une implémentation complète, consultez [RoleStore (MySQL)](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/AspNet.Identity.MySQL/RoleStore.cs) .
+  Pour une implémentation complète, consultez [RoleStore (MySQL)](https://aspnet.codeplex.com/SourceControl/latest#Samples/Identity/AspNet.Identity.MySQL/RoleStore.cs) .
 
 <a id="reconfigure"></a>
 ## <a name="reconfigure-application-to-use-new-storage-provider"></a>Reconfigurer l’application pour utiliser le nouveau fournisseur de stockage
@@ -232,7 +232,7 @@ Vous avez implémenté votre nouveau fournisseur de stockage. Maintenant, vous d
 ### <a name="replace-default-storage-provider-in-mvc-project"></a>Remplacez le fournisseur de stockage par défaut dans un projet MVC
 
 1. Dans le **gérer les Packages NuGet** fenêtre, désinstallez le **Microsoft ASP.NET Identity EntityFramework** package. Vous pouvez trouver ce package en recherchant dans les packages installés Identity.EntityFramework.  
-    ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image7.png)Vous demandera si vous voulez également désinstaller Entity Framework. Si vous ne devez pas dans d’autres parties de votre application, vous pouvez la désinstaller.
+    ![](overview-of-custom-storage-providers-for-aspnet-identity/_static/image7.png) Vous demandera si vous voulez également désinstaller Entity Framework. Si vous ne devez pas dans d’autres parties de votre application, vous pouvez la désinstaller.
 2. Dans le fichier IdentityModels.cs dans le dossier de modèles, supprimez ou commentez la **ApplicationUser** et **ApplicationDbContext** classes. Dans une application MVC, vous pouvez supprimer l’intégralité du fichier IdentityModels.cs. Dans une application Web Forms, supprimez les deux classes, mais veillez à que conserver la classe d’assistance qui se trouve également dans le fichier IdentityModels.cs.
 3. Si votre fournisseur de stockage se trouve dans un projet distinct, ajoutez une référence à celle-ci dans votre application web.
 4. Remplacez toutes les références à `using Microsoft.AspNet.Identity.EntityFramework;` avec un à l’aide de l’instruction pour l’espace de noms de votre fournisseur de stockage.

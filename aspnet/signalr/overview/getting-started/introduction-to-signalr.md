@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/introduction-to-signalr
-title: "Introduction à SignalR | Documents Microsoft"
+title: Introduction à SignalR | Documents Microsoft
 author: pfletcher
-description: "Cet article décrit les nouveautés du SignalR et certaines solutions qu’il a été conçu pour créer."
+description: Cet article décrit les nouveautés du SignalR et certaines solutions qu’il a été conçu pour créer.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 5bb49c9c2405d232ba5e067d99f8879b3bc99361
-ms.sourcegitcommit: 53ee14b9c8200f44705d8997c3619fa874192d45
+ms.openlocfilehash: 0ceca3edc26d35b1155946e60863a84da0bbe592
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-signalr"></a>Introduction à SignalR
 ====================
@@ -85,11 +85,11 @@ La liste suivante décrit les étapes que SignalR utilise pour déterminer le tr
 2. Si JSONP est configuré (autrement dit, le `jsonp` paramètre est défini sur `true` au démarrage de la connexion), interrogation longue est utilisé.
 3. Si une connexion entre domaines est effectuée (autrement dit, si le point de terminaison SignalR ne se trouve pas dans le même domaine que la page d’hébergement), WebSocket est utilisé si les critères suivants sont satisfaits :
 
-    - Le client prend en charge CORS (partage des ressources Cross-Origin). Pour plus d’informations sur lequel les clients prennent en charge CORS, consultez [CORS au caniuse.com](http://www.caniuse.com/CORS).
-    - Le client prend en charge de WebSocket
-    - Le serveur prend en charge de WebSocket
+   - Le client prend en charge CORS (partage des ressources Cross-Origin). Pour plus d’informations sur lequel les clients prennent en charge CORS, consultez [CORS au caniuse.com](http://www.caniuse.com/CORS).
+   - Le client prend en charge de WebSocket
+   - Le serveur prend en charge de WebSocket
 
-    Si un de ces critères ne sont pas remplie, interrogation longue sera utilisé. Pour plus d’informations sur les connexions entre domaines, consultez [comment établir une connexion entre domaines](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
+     Si un de ces critères ne sont pas remplie, interrogation longue sera utilisé. Pour plus d’informations sur les connexions entre domaines, consultez [comment établir une connexion entre domaines](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
 4. Si JSONP n’est pas configuré et que la connexion n’est pas entre domaines, WebSocket est utilisé à la fois le client et le serveur de prise en charge.
 5. Si le client ou le serveur ne prennent pas en charge WebSocket, les événements envoyés du serveur est utilisé s’il est disponible.
 6. Si les événements envoyés du serveur n’est pas disponible, Forever Frame est tentée.

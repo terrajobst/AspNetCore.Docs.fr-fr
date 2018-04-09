@@ -2,25 +2,25 @@
 uid: visual-studio/overview/2012/windows-azure-authentication
 title: Windows Azure Authentication | Documents Microsoft
 author: Rick-Anderson
-description: "Outils Microsoft ASP.NET pour Windows Azure Active Directory facilite activer l’authentification pour les applications web hébergées sur les Sites Web Windows Azure..."
+description: Outils Microsoft ASP.NET pour Windows Azure Active Directory facilite activer l’authentification pour les applications web hébergées sur les Sites Web Windows Azure...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2013
 ms.topic: article
 ms.assetid: a3cef801-a54b-4ebd-93c3-55764e2e14b1
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: 4deb3536699f1ef3025f8858ee71a76a1c2def18
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 09cb37ceb0132958a48f5f3a5d52dc46c6f0a78d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="windows-azure-authentication"></a>Windows Azure Authentication
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Des outils Microsoft ASP.NET pour Windows Azure Active Directory facilite l’activer l’authentification pour les applications web hébergées sur [Sites Web Windows Azure](https://www.windowsazure.com/home/features/web-sites/). Vous pouvez utiliser l’authentification Windows Azure pour authentifier les utilisateurs d’Office 365 à partir de votre organisation, les comptes d’entreprise synchronisés à partir de votre annuaire Active Directory sur site ou les utilisateurs créés dans votre domaine personnalisé de Windows Azure Active Directory. Activer l’authentification de Windows Azure configure votre application pour authentifier les utilisateurs à l’aide d’un seul [Windows Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) client.
 > 
@@ -50,7 +50,7 @@ Si vous ne disposez pas d’un locataire Windows Azure Active Directory existant
 
 1. Dans le menu projet, sélectionnez **activer l’authentification Windows Azure**:  
   
- ![](windows-azure-authentication/_static/image2.png)
+   ![](windows-azure-authentication/_static/image2.png)
 
 2. Entrez le domaine de votre locataire Windows Azure Active Directory (par exemple, contoso.onmicrosoft.com) et cliquez sur **activer**:
 
@@ -58,7 +58,7 @@ Si vous ne disposez pas d’un locataire Windows Azure Active Directory existant
 
 3. Dans l’authentification Web boîte de dialogue Ouvrir une session en tant qu’administrateur pour votre locataire Windows Azure Active Directory :  
   
- ![](windows-azure-authentication/_static/image4.png)
+   ![](windows-azure-authentication/_static/image4.png)
 
 ![](windows-azure-authentication/_static/image5.png)
 

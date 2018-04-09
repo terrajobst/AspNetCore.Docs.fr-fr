@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-vb
-title: "À l’aide de la classe TagBuilder pour générer des programmes d’assistance HTML (VB) | Documents Microsoft"
+title: À l’aide de la classe TagBuilder pour générer des programmes d’assistance HTML (VB) | Documents Microsoft
 author: StephenWalther
-description: "Stephen Walther présente une classe utilitaire utiles dans l’infrastructure ASP.NET MVC nommé de la classe TagBuilder. Vous pouvez utiliser la classe TagBuilder à facilement..."
+description: Stephen Walther présente une classe utilitaire utiles dans l’infrastructure ASP.NET MVC nommé de la classe TagBuilder. Vous pouvez utiliser la classe TagBuilder à facilement...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 92c003cf929448d0b03f9de76330e9495ac51d20
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 2b72e08dff646f66252f210543230186cab6e641
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-tagbuilder-class-to-build-html-helpers-vb"></a>À l’aide de la classe TagBuilder pour générer des programmes d’assistance HTML (VB)
 ====================
@@ -79,6 +79,6 @@ Notez que vous devez importer l’espace de noms associé à l’application d�
 
 Dans une application Visual Basic, l’espace de noms par défaut est le même que le nom de l’application.
 
->[!div class="step-by-step"]
-[Précédent](creating-custom-html-helpers-vb.md)
-[Suivant](creating-page-layouts-with-view-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-custom-html-helpers-vb.md)
+> [Suivant](creating-page-layouts-with-view-master-pages-vb.md)

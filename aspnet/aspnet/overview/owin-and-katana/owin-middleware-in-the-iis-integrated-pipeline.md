@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
-title: "Intergiciel OWIN dans IIS intégré pipeline | Documents Microsoft"
+title: Intergiciel OWIN dans IIS intégré pipeline | Documents Microsoft
 author: Praburaj
-description: "Cet article explique comment exécuter les composants d’intergiciel (middleware) OWIN (OMCs) dans le pipeline intégré IIS, et comment définir l’événement de pipeline un OMC s’exécute sur. Tu devrais..."
+description: Cet article explique comment exécuter les composants d’intergiciel (middleware) OWIN (OMCs) dans le pipeline intégré IIS, et comment définir l’événement de pipeline un OMC s’exécute sur. Tu devrais...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/07/2013
 ms.topic: article
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 5f6ed1ae0309e9bdd3ca4ae229195835f20bc729
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5df70c80084a32c5f61ac9288c8cdbfaaa47f124
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>Intergiciel OWIN dans le pipeline intégré IIS
 ====================
@@ -83,13 +83,13 @@ Composants d’intergiciel (middleware) Owin (OMC) peuvent être configurés pou
 
     [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample9.cmd)]
 
- les appels à `app.UseStageMarker` passage `Authenticate` ou `PostAuthenticate` ne sera pas pris en compte et aucune exception n’est levée. OMCs s’exécutent à la dernière phase, ce qui par défaut est `PreHandlerExecute`. Les marqueurs d’étape sont utilisés pour les rendre à exécuter plus tôt. Si vous spécifiez les marqueurs d’étape en désordre, nous arrondir au marqueur antérieur. En d’autres termes, l’ajout d’un marqueur d’étape indique « Exécuter après le stade X ». Exécution de OMC sur le marqueur d’étape plus tôt ajouté après ces derniers dans le pipeline OWIN.
+   les appels à `app.UseStageMarker` passage `Authenticate` ou `PostAuthenticate` ne sera pas pris en compte et aucune exception n’est levée. OMCs s’exécutent à la dernière phase, ce qui par défaut est `PreHandlerExecute`. Les marqueurs d’étape sont utilisés pour les rendre à exécuter plus tôt. Si vous spécifiez les marqueurs d’étape en désordre, nous arrondir au marqueur antérieur. En d’autres termes, l’ajout d’un marqueur d’étape indique « Exécuter après le stade X ». Exécution de OMC sur le marqueur d’étape plus tôt ajouté après ces derniers dans le pipeline OWIN.
 4. La première étape d’appels à `app.UseStageMarker` wins. Par exemple, si vous changez l’ordre des `app.UseStageMarker` appels à partir de l’exemple précédent :
 
     [!code-csharp[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample10.cs?highlight=13,19)]
 
- Affiche la fenêtre Sortie : 
+   Affiche la fenêtre Sortie : 
 
     [!code-console[Main](owin-middleware-in-the-iis-integrated-pipeline/samples/sample11.cmd)]
 
- Les OMCs tous s’exécuter dans le `AuthenticateRequest` à l’étape, car la dernière OMC enregistré avec le `Authenticate` événement et le `Authenticate` événement précède tous les autres événements.
+   Les OMCs tous s’exécuter dans le `AuthenticateRequest` à l’étape, car la dernière OMC enregistré avec le `Authenticate` événement et le `Authenticate` événement précède tous les autres événements.

@@ -1,5 +1,5 @@
 ---
-title: Migration d’ASP.NET vers ASP.NET Core 2.0
+title: Migrer à partir de ASP.NET vers ASP.NET Core 2.0
 author: isaac2004
 description: Recevoir des conseils de migration d'applications ASP.NET MVC ou Web API existantes vers ASP.NET Core 2.0.
 manager: wpickett
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc2
-ms.openlocfilehash: 9424234011525afdba35824b6b324f5175ba023f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: 58fac7642dbfdad58fef99f04d17de33e7218524
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-to-aspnet-core-20"></a>Migration d’ASP.NET vers ASP.NET Core 2.0
+# <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Migrer à partir de ASP.NET vers ASP.NET Core 2.0
 
 De [Isaac Levin](https://isaaclevin.com)
 
@@ -23,7 +23,12 @@ Cet article sert de guide de référence pour la migration d’applications ASP.
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) ou version ultérieure
+Installer **un** des opérations suivantes à partir de [téléchargements .NET : Windows](https://www.microsoft.com/net/download/windows):
+
+* SDK .NET Core
+* Visual Studio pour Windows
+  * **Développement web ASP.NET et** la charge de travail
+  * **.NET core le développement multiplateforme** la charge de travail
 
 ## <a name="target-frameworks"></a>Versions cibles de .NET Framework
 Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choisir entre .NET Core et .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
@@ -132,7 +137,7 @@ Vous pouvez injecter le dépôt à l’emplacement de votre choix, comme c’ét
 
 **Remarque :** Pour obtenir des informations de référence sur l’injection de dépendances dans ASP.NET Core, consultez [Injection de dépendances dans ASP.NET Core](xref:fundamentals/dependency-injection#replacing-the-default-services-container)
 
-## <a name="serving-static-files"></a>Traitement des fichiers statiques
+## <a name="serving-static-files"></a>Fichiers statiques
 Une partie importante du développement web réside dans la capacité de traitement des composants statiques, côté client. Les fichiers HTML, CSS, JavaScript et image sont les exemples les plus courants de fichiers statiques. Ces fichiers doivent être enregistrés à l’emplacement publié de l’application (ou CDN) et référencés pour pouvoir être chargés par une requête. Ce processus a changé avec ASP.NET Core.
 
 Avec ASP.NET, les fichiers statiques sont stockés dans différents répertoires et référencés dans des vues.
@@ -145,7 +150,7 @@ Avec ASP.NET Core, les fichiers statiques sont stockés à la « racine web »
 
 Par exemple, un composant image dans le dossier *wwwroot/images* est accessible au navigateur à un emplacement tel que `http://<app>/images/<imageFileName>`.
 
-**Remarque :** Pour obtenir des informations de référence plus approfondies sur le traitement des fichiers statiques dans ASP.NET Core, consultez [Présentation de l’utilisation des fichiers statiques dans ASP.NET Core](xref:fundamentals/static-files).
+**Remarque :** pour des informations plus détaillées pour servir les fichiers statiques dans ASP.NET Core, consultez [travailler avec des fichiers statiques dans ASP.NET Core](xref:fundamentals/static-files).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

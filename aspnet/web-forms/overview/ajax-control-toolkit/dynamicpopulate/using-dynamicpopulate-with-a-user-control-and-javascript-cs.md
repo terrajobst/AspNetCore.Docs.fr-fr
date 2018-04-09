@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
-title: "À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#) | Documents Microsoft"
+title: À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t..."
+description: Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0d98177561b72ffbe05455f785e156f91e450d36
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: cced645733375de7ab6235efa46b8d20ed262e50
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#)
 ====================
@@ -74,6 +74,6 @@ Et voilà ! La page se comporte comme prévu : un utilisateur clique sur l’u
 
 Les boutons de case d’option se trouvent dans un contrôle utilisateur ([cliquez pour afficher l’image en taille réelle](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](dynamically-populating-a-control-using-javascript-code-cs.md)
-[Suivant](dynamically-populating-a-control-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](dynamically-populating-a-control-using-javascript-code-cs.md)
+> [Suivant](dynamically-populating-a-control-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-vb
-title: "Création d’un fournisseur de plan de Site de piloté par base de données personnalisé (VB) | Documents Microsoft"
+title: Création d’un fournisseur de plan de Site de piloté par base de données personnalisé (VB) | Documents Microsoft
 author: rick-anderson
-description: "Le fournisseur de plan de site par défaut dans ASP.NET 2.0 récupère ses données à partir d’un fichier XML statique. Alors que le fournisseur basé sur XML convient à de nombreuses petites et siz de support..."
+description: Le fournisseur de plan de site par défaut dans ASP.NET 2.0 récupère ses données à partir d’un fichier XML statique. Alors que le fournisseur basé sur XML convient à de nombreuses petites et siz de support...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e9b71ed89dce4e973a9096a9e2326d2c16c30673
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: df295f1b8bf0b83647ffb90501936181894634d7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-a-custom-database-driven-site-map-provider-vb"></a>Création d’un fournisseur de plan de Site de piloté par base de données personnalisé (VB)
 ====================
@@ -145,7 +145,7 @@ Ensuite, ajoutez un HyperLinkField et déplacez-le vers la position la plus à g
 
 ![Ajouter un HyperLinkField vue Détails qui pointe vers ProductDetails.aspx](building-a-custom-database-driven-site-map-provider-vb/_static/image10.gif)
 
-**La figure 10**: ajouter une vue Détails HyperLinkField qui pointe vers`ProductDetails.aspx`
+**La figure 10**: ajouter une vue Détails HyperLinkField qui pointe vers `ProductDetails.aspx`
 
 
 Après avoir apporté ces personnalisations, le balisage déclaratif s GridView et ObjectDataSource doit ressembler à ceci :
@@ -210,7 +210,7 @@ Lorsque la `SiteMap` des propriétés de la classe s sont accessibles, il doit s
 
 Tous les fournisseurs de plan de site doivent être dérivés du [ `SiteMapProvider` classe](https://msdn.microsoft.com/library/system.web.sitemapprovider.aspx), qui inclut les méthodes essentielles et les propriétés nécessaires pour le site mapper des fournisseurs, mais omet de nombreux détails d’implémentation. Une deuxième classe, [ `StaticSiteMapProvider` ](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.aspx), étend la `SiteMapProvider` classe et contient une implémentation plus robuste de la fonctionnalité requise. En interne, le `StaticSiteMapProvider` stocke la `SiteMapNode` mappent les instances du site dans un `Hashtable` et fournit des méthodes telles que `AddNode(child, parent)`, `RemoveNode(siteMapNode),` et `Clear()` qui ajouter et supprimer des `SiteMapNode` s pour interne `Hashtable`. `XmlSiteMapProvider` est dérivé de `StaticSiteMapProvider`.
 
-Lorsque la création d’un fournisseur personnalisé qui étend `StaticSiteMapProvider`, il existe deux méthodes abstraites qui doivent être remplacées : [ `BuildSiteMap` ](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.buildsitemap.aspx) et [ `GetRootNodeCore` ](https://msdn.microsoft.com/library/system.web.sitemapprovider.getrootnodecore.aspx). `BuildSiteMap`, comme son nom l’indique, est responsable du chargement de la structure de plan de site à partir d’un stockage persistant et de construction dans la mémoire. `GetRootNodeCore`Retourne le nœud racine dans le plan de site.
+Lorsque la création d’un fournisseur personnalisé qui étend `StaticSiteMapProvider`, il existe deux méthodes abstraites qui doivent être remplacées : [ `BuildSiteMap` ](https://msdn.microsoft.com/library/system.web.staticsitemapprovider.buildsitemap.aspx) et [ `GetRootNodeCore` ](https://msdn.microsoft.com/library/system.web.sitemapprovider.getrootnodecore.aspx). `BuildSiteMap`, comme son nom l’indique, est responsable du chargement de la structure de plan de site à partir d’un stockage persistant et de construction dans la mémoire. `GetRootNodeCore` Retourne le nœud racine dans le plan de site.
 
 Avant d’un site web application peut utiliser un fournisseur de plan de site qu'il doit être enregistré dans la configuration d’application s. Par défaut, le `XmlSiteMapProvider` classe est inscrite à l’aide du nom `AspNetXmlSiteMapProvider`. Pour inscrire des fournisseurs de plan de site supplémentaires, ajoutez le balisage suivant à `Web.config`:
 
@@ -221,10 +221,10 @@ Le *nom* valeur affecte un nom explicite pour le fournisseur lors de la *type* S
 
 La classe de fournisseur de plan de site est instanciée à la première fois, il est accessible à partir de la `SiteMap` classe et reste en mémoire pour la durée de vie de l’application web. Étant donné qu’une seule instance du fournisseur de plan de site qui peut-être être appelée plusieurs simultanées web visiteurs du site, il est impératif que les méthodes de fournisseur s soit *thread-safe*.
 
-Pour des raisons de performances et l’évolutivité, il s important que le site en mémoire cache mapper la structure et retourner cette mis en cache structure plutôt que de recréer chaque fois que le `BuildSiteMap` méthode est appelée. `BuildSiteMap`peut être appelée plusieurs fois par demande de page par utilisateur, selon les contrôles de navigation en cours d’utilisation sur la page et la profondeur de la structure de plan de site. Dans tous les cas, si nous ne pas mettre en cache la structure du plan de site dans `BuildSiteMap` chaque fois qu’elle est appelée nous devez à nouveau de récupérer les informations de produit et la catégorie de l’architecture (ce qui entraînerait une requête à la base de données). Comme expliqué dans les didacticiels de mise en cache précédents, les données mises en cache peuvent devenir obsolètes. Pour faire face à cela, nous pouvons utiliser le temps ou les expirations de dans le cache en fonction de dépendance SQL.
+Pour des raisons de performances et l’évolutivité, il s important que le site en mémoire cache mapper la structure et retourner cette mis en cache structure plutôt que de recréer chaque fois que le `BuildSiteMap` méthode est appelée. `BuildSiteMap` peut être appelée plusieurs fois par demande de page par utilisateur, selon les contrôles de navigation en cours d’utilisation sur la page et la profondeur de la structure de plan de site. Dans tous les cas, si nous ne pas mettre en cache la structure du plan de site dans `BuildSiteMap` chaque fois qu’elle est appelée nous devez à nouveau de récupérer les informations de produit et la catégorie de l’architecture (ce qui entraînerait une requête à la base de données). Comme expliqué dans les didacticiels de mise en cache précédents, les données mises en cache peuvent devenir obsolètes. Pour faire face à cela, nous pouvons utiliser le temps ou les expirations de dans le cache en fonction de dépendance SQL.
 
 > [!NOTE]
-> Un fournisseur de plan de site peut-être éventuellement substituer le [ `Initialize` méthode](https://msdn.microsoft.com/library/system.web.sitemapprovider.initialize.aspx). `Initialize`est appelée lorsque le fournisseur de plan de site est instancié et est transmis à tous les attributs personnalisés affectés au fournisseur de `Web.config` dans les `<add>` élément tel que : `<add name="name" type="type" customAttribute="value" />`. Il est utile si vous souhaitez permettre à un développeur de page spécifier les paramètres liée au fournisseur diverses de mappage de site sans avoir à modifier le code du fournisseur s. Par exemple, si nous étions lire les données de catégorie et les produits directement à partir de la base de données par opposition à l’architecture, nous d probablement souhaitez permettent au développeur de pages de spécifier la chaîne de connexion de base de données via `Web.config` au lieu d’utiliser un codé en dur valeur dans le code du fournisseur s. Le fournisseur de plan de site personnalisé à l’étape 6, nous créerons ne remplace pas cette `Initialize` (méthode). Pour obtenir un exemple d’utilisation de la `Initialize` (méthode), reportez-vous à [Jeff Prosise](http://www.wintellect.com/Weblogs/CategoryView,category,Jeff%20Prosise.aspx) s [le stockage des plans de sites dans SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) article.
+> Un fournisseur de plan de site peut-être éventuellement substituer le [ `Initialize` méthode](https://msdn.microsoft.com/library/system.web.sitemapprovider.initialize.aspx). `Initialize` est appelée lorsque le fournisseur de plan de site est instancié et est transmis à tous les attributs personnalisés affectés au fournisseur de `Web.config` dans les `<add>` élément tel que : `<add name="name" type="type" customAttribute="value" />`. Il est utile si vous souhaitez permettre à un développeur de page spécifier les paramètres liée au fournisseur diverses de mappage de site sans avoir à modifier le code du fournisseur s. Par exemple, si nous étions lire les données de catégorie et les produits directement à partir de la base de données par opposition à l’architecture, nous d probablement souhaitez permettent au développeur de pages de spécifier la chaîne de connexion de base de données via `Web.config` au lieu d’utiliser un codé en dur valeur dans le code du fournisseur s. Le fournisseur de plan de site personnalisé à l’étape 6, nous créerons ne remplace pas cette `Initialize` (méthode). Pour obtenir un exemple d’utilisation de la `Initialize` (méthode), reportez-vous à [Jeff Prosise](http://www.wintellect.com/Weblogs/CategoryView,category,Jeff%20Prosise.aspx) s [le stockage des plans de sites dans SQL Server](https://msdn.microsoft.com/msdnmag/issues/05/06/WickedCode/) article.
 
 
 ## <a name="step-6-creating-the-custom-site-map-provider"></a>Étape 6 : Création du fournisseur de plan de Site personnalisé
@@ -238,13 +238,13 @@ Permettent de commencer à Explorer cette classe s s `BuildSiteMap` (méthode), 
 
 Niveau de la classe `SiteMapNode` variable `root` est utilisé pour mettre en cache la structure de plan de site. Lorsque le plan de site est créée pour la première fois, ou pour la première fois après avoir modifié les données sous-jacentes, `root` sera `Nothing` et la structure de plan de site sera construite. Le nœud racine du mappage s site est attribué à `root` lors de la construction processus afin que la prochaine fois que cette méthode est appelé, `root` ne sera pas `Nothing`. Par conséquent, tant que `root` n’est pas `Nothing` la structure de plan de site s’affichera à l’appelant sans avoir à recréer.
 
-Si la racine est `Nothing`, la structure de plan de site est créée à partir des informations de produit et la catégorie. Le mappage de site est créé en créant le `SiteMapNode` instances et puis qui forment la hiérarchie par des appels à la `StaticSiteMapProvider` classe s `AddNode` (méthode). `AddNode`effectue la comptabilité interne, le stockage du assorties `SiteMapNode` instances dans un `Hashtable`. Avant de commencer à construire la hiérarchie, nous commençons en appelant le `Clear` (méthode), ce qui efface les éléments de la liste interne `Hashtable`. Ensuite, le `ProductsBLL` classe s `GetProducts` méthode et résultant `ProductsDataTable` sont stockées dans des variables locales.
+Si la racine est `Nothing`, la structure de plan de site est créée à partir des informations de produit et la catégorie. Le mappage de site est créé en créant le `SiteMapNode` instances et puis qui forment la hiérarchie par des appels à la `StaticSiteMapProvider` classe s `AddNode` (méthode). `AddNode` effectue la comptabilité interne, le stockage du assorties `SiteMapNode` instances dans un `Hashtable`. Avant de commencer à construire la hiérarchie, nous commençons en appelant le `Clear` (méthode), ce qui efface les éléments de la liste interne `Hashtable`. Ensuite, le `ProductsBLL` classe s `GetProducts` méthode et résultant `ProductsDataTable` sont stockées dans des variables locales.
 
 La construction d’un mappage s site commence par créer le nœud racine et en l’assignant à `root`. La surcharge de la [ `SiteMapNode` constructeur de s](https://msdn.microsoft.com/library/system.web.sitemapnode.sitemapnode.aspx) utilisé ici, tout au long de ce `BuildSiteMap` reçoit les informations suivantes :
 
 - Une référence au fournisseur de plan de site (`Me`).
 - Le `SiteMapNode` s `Key`. Cela requis la valeur doit être unique pour chaque `SiteMapNode`.
-- Le `SiteMapNode` s `Url`. `Url`est facultatif, mais si fourni, chacun `SiteMapNode` s `Url` valeur doit être unique.
+- Le `SiteMapNode` s `Url`. `Url` est facultatif, mais si fourni, chacun `SiteMapNode` s `Url` valeur doit être unique.
 - Le `SiteMapNode` s `Title`, ce qui est nécessaire.
 
 Le `AddNode(root)` appel de méthode ajoute la `SiteMapNode` `root` pour le plan de site comme racine. Ensuite, chaque `ProductRow` dans le `ProductsDataTable` est énuméré. S’il existe déjà un `SiteMapNode` pour la catégorie de produit s actuelle, il est référencé. Sinon, un nouveau `SiteMapNode` pour la catégorie est créée et ajoutée en tant qu’enfant de la `SiteMapNode``root` via la `AddNode(categoryNode, root)` appel de méthode. Une fois la catégorie appropriée `SiteMapNode` nœud a été trouvé ou créé, un `SiteMapNode` est créé pour le produit actuel et ajouté en tant qu’enfant de la catégorie `SiteMapNode` via `AddNode(productNode, categoryNode)`. Notez que la catégorie `SiteMapNode` s `Url` valeur de propriété est `~/SiteMapProvider/ProductsByCategory.aspx?CategoryID=categoryID` alors que le produit `SiteMapNode` s `Url` est affectée à `~/SiteMapNode/ProductDetails.aspx?ProductID=productID`.
@@ -261,7 +261,7 @@ Après avoir construit le plan de site, un objet arbitraire est ajouté au cache
 
 Le `BuildSiteMap` méthode se termine en renvoyant le nœud racine du plan de site.
 
-Les autres méthodes sont assez simples. `GetRootNodeCore`est chargée de retourner le nœud racine. Étant donné que `BuildSiteMap` retourne la racine, `GetRootNodeCore` retourne simplement `BuildSiteMap` s retourner de valeur. Le `OnSiteMapChanged` jeux de méthode `root` à `Nothing` lorsque l’élément de cache est supprimé. Avec racine revenir `Nothing`, la prochaine fois `BuildSiteMap` est appelé, la structure de plan de site sera reconstruite. Enfin, le `CachedDate` propriété retourne la valeur de date et d’heure stockée dans le cache de données, si cette valeur existe. Cette propriété peut être utilisée par un développeur de page pour déterminer si les données de plan de site a été dernière mises en cache.
+Les autres méthodes sont assez simples. `GetRootNodeCore` est chargée de retourner le nœud racine. Étant donné que `BuildSiteMap` retourne la racine, `GetRootNodeCore` retourne simplement `BuildSiteMap` s retourner de valeur. Le `OnSiteMapChanged` jeux de méthode `root` à `Nothing` lorsque l’élément de cache est supprimé. Avec racine revenir `Nothing`, la prochaine fois `BuildSiteMap` est appelé, la structure de plan de site sera reconstruite. Enfin, le `CachedDate` propriété retourne la valeur de date et d’heure stockée dans le cache de données, si cette valeur existe. Cette propriété peut être utilisée par un développeur de page pour déterminer si les données de plan de site a été dernière mises en cache.
 
 ## <a name="step-7-registering-thenorthwindsitemapprovider"></a>Étape 7 : Inscrire le`NorthwindSiteMapProvider`
 
@@ -362,11 +362,11 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Dave Gardner, Zack Jones, Teresa Murphy et Bernadette Leigh. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](building-a-custom-database-driven-site-map-provider-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](building-a-custom-database-driven-site-map-provider-cs.md)

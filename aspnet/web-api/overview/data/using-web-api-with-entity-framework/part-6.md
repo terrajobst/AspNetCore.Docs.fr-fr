@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-6
-title: "Créer le Client JavaScript | Documents Microsoft"
+title: Créer le Client JavaScript | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-6
 msc.type: authoredcontent
-ms.openlocfilehash: b397c5a413ae213c9b79da1c0e0626efe21c7e21
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 29d50e448e6d282c7db06b9d1946ac221347e1ea
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-javascript-client"></a>Créer le Client JavaScript
 ====================
@@ -58,8 +58,8 @@ Ajouter un fichier JavaScript nommé app.js dans le dossier Scripts. (Dans l’E
 
 Dans Knockout, la `observable` classe permet la liaison de données. Lorsque le contenu d’un observable change, l’observable avertit tous les contrôles liés aux données, ils peuvent mettre à jour eux-mêmes. (Le `observableArray` classe est la version du tableau de *observable*.) Pour commencer, notre modèle de vue possède deux observables :
 
-- `books`contient la liste de livres.
-- `error`contient un message d’erreur si un appel AJAX échoue.
+- `books` contient la liste de livres.
+- `error` contient un message d’erreur si un appel AJAX échoue.
 
 Le `getAllBooks` méthode effectue un appel AJAX pour obtenir la liste de livres. Puis il exécute un push du résultat dans la `books` tableau.
 
@@ -73,6 +73,6 @@ Ouvrez le fichier App\_Start/BundleConfig.cs. Ajoutez le code suivant à la mét
 
 [!code-csharp[Main](part-6/samples/sample3.cs)]
 
->[!div class="step-by-step"]
-[Précédent](part-5.md)
-[Suivant](part-7.md)
+> [!div class="step-by-step"]
+> [Précédent](part-5.md)
+> [Suivant](part-7.md)

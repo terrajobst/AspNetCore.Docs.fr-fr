@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/5-working-with-data
-title: "Introduction à l’utilisation d’une base de données dans ASP.NET Web Pages (Razor) Sites | Documents Microsoft"
+title: Introduction à l’utilisation d’une base de données dans ASP.NET Web Pages (Razor) Sites | Documents Microsoft
 author: tfitzmac
-description: "Ce chapitre explique comment accéder aux données à partir d’une base de données et les afficher à l’aide d’ASP.NET Web Pages."
+description: Ce chapitre explique comment accéder aux données à partir d’une base de données et les afficher à l’aide d’ASP.NET Web Pages.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/5-working-with-data
 msc.type: authoredcontent
-ms.openlocfilehash: 460af471a1b0650f8d782d582ce6cd9a06664d5c
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 563074cf3e60717c2e6c336a2c282b4203f73b8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>Introduction à l’utilisation d’une base de données dans ASP.NET Web Pages (Razor) Sites
 ====================
@@ -361,7 +361,7 @@ Cette section montre comment permettre aux utilisateurs de supprimer un produit 
 6. Cliquez sur le **supprimer** lien pour un de ces produits. Le *DeleteProduct.cshtml* page s’affiche pour confirmer que vous souhaitez supprimer l’enregistrement.
 7. Cliquez sur le **supprimer** bouton. L’enregistrement du produit est supprimé et la page est actualisée avec une liste de produits mis à jour.
 
-> [!TIP] 
+> [!TIP]
 > 
 > <a id="SB_ConnectingToADatabase"></a>
 > ### <a name="connecting-to-a-database"></a>Connexion à une base de données

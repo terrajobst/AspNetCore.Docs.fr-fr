@@ -1,7 +1,7 @@
 ---
-title: "Migration d’authentification et de l’identité au cœur d’ASP.NET 2.0"
+title: Migrer l’authentification et identité vers ASP.NET Core 2.0
 author: scottaddie
-description: "Cet article présente les étapes les plus courantes pour l’authentification de migration ASP.NET Core 1.x et l’identité pour ASP.NET 2.0 de base."
+description: Cet article présente les étapes les plus courantes pour l’authentification de migration ASP.NET Core 1.x et l’identité pour ASP.NET 2.0 de base.
 manager: wpickett
 ms.author: scaddie
 ms.date: 10/26/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: f0c29e6b4faa5c9d574726fc960f0c7c60092757
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 16369a14dbe97778724632317a82e11de5a8faed
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-authentication-and-identity-to-aspnet-core-20"></a>Migration de l’authentification et identité au cœur d’ASP.NET 2.0
+# <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Migrer l’authentification et identité vers ASP.NET Core 2.0
 
 Par [Scott Addie](https://github.com/scottaddie) et [arts martiaux de Hao](https://github.com/HaoK)
 

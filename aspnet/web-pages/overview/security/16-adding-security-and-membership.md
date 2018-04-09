@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/security/16-adding-security-and-membership
-title: "Ajout de sécurité et l’appartenance à un site Web ASP.NET de Pages (Razor) Site | Documents Microsoft"
+title: Ajout de sécurité et l’appartenance à un site Web ASP.NET de Pages (Razor) Site | Documents Microsoft
 author: tfitzmac
-description: "Ce chapitre explique comment sécuriser votre site Web de sorte que certaines pages sont disponibles uniquement pour les personnes qui se connectent. (Vous allez également apprendre à créer tha pages..."
+description: Ce chapitre explique comment sécuriser votre site Web de sorte que certaines pages sont disponibles uniquement pour les personnes qui se connectent. (Vous allez également apprendre à créer tha pages...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/24/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/security/16-adding-security-and-membership
 msc.type: authoredcontent
-ms.openlocfilehash: af2eeb128cff554e7ae3d903e2117861087344e9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 351368a356a71e85d4abfdceac8d4f84e0b217f4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-security-and-membership-to-an-aspnet-web-pages-razor-site"></a>Ajout de sécurité et l’appartenance à un Site de Pages (Razor) Web ASP.NET
 ====================
@@ -47,7 +47,7 @@ par [Tom FitzMacken](https://github.com/tfitzmac)
 > - Bibliothèque d’applications auxiliaires Web ASP.NET
 
 
-Vous pouvez configurer votre site Web afin que les utilisateurs peuvent se connecter à &#8212; Autrement dit, afin que le site prend en charge *appartenance*. Cela peut être utile pour de nombreuses raisons. Par exemple, votre site peut avoir des pages qui doivent être disponibles uniquement pour les membres. Dans certains cas, vous pouvez avoir besoin d’utilisateurs de se connecter afin de vous envoyer des commentaires ou de laisser un commentaire.
+Vous pouvez configurer votre site Web afin que les utilisateurs peuvent se connecter au &#8212; , afin que le site prend en charge *appartenance*. Cela peut être utile pour de nombreuses raisons. Par exemple, votre site peut avoir des pages qui doivent être disponibles uniquement pour les membres. Dans certains cas, vous pouvez avoir besoin d’utilisateurs de se connecter afin de vous envoyer des commentaires ou de laisser un commentaire.
 
 Même si votre site Web prend en charge l’appartenance, les utilisateurs ne sont pas forcément nécessaire de se connecter avant qu’ils utilisent des pages sur le site. Les utilisateurs connectés ne sont pas appelés *les utilisateurs anonymes*.
 
@@ -88,26 +88,26 @@ La procédure suivante décrit comment créer le site et le configurer.
     Si vous ne souhaitez pas configurer la confirmation par courrier électronique, vous pouvez ignorer cette étape et l’étape suivante. Si les valeurs SMTP ne sont pas définies, le nouveau compte est immédiatement disponible sans un e-mail de confirmation.
 6. Modifier les paramètres de courrier électronique suivants dans le code :
 
-    - Définissez `WebMail.SmtpServer` au nom du serveur SMTP que vous avez accès.
-    - Laissez `WebMail.EnableSsl` la valeur `true`. Ce paramètre permet de sécuriser les informations d’identification sont envoyées au serveur SMTP en les chiffrant.
-    - Définissez `WebMail.UserName` au nom d’utilisateur pour votre compte de serveur SMTP.
-    - Définissez `WebMail.Password` au mot de passe pour votre compte de serveur SMTP.
-    - Définissez `WebMail.From` à votre adresse de messagerie. Il s’agit de l’adresse de messagerie, le message est envoyé à partir de.
+   - Définissez `WebMail.SmtpServer` au nom du serveur SMTP que vous avez accès.
+   - Laissez `WebMail.EnableSsl` la valeur `true`. Ce paramètre permet de sécuriser les informations d’identification sont envoyées au serveur SMTP en les chiffrant.
+   - Définissez `WebMail.UserName` au nom d’utilisateur pour votre compte de serveur SMTP.
+   - Définissez `WebMail.Password` au mot de passe pour votre compte de serveur SMTP.
+   - Définissez `WebMail.From` à votre adresse de messagerie. Il s’agit de l’adresse de messagerie, le message est envoyé à partir de.
 
-    > [!NOTE] 
-    > 
-    > **Conseil** pour plus d’informations sur les valeurs de ces propriétés, consultez [configuration des paramètres de messagerie](https://go.microsoft.com/fwlink/?LinkID=202906#configuring_email_settings) dans [personnalisation du comportement au niveau du Site pour ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkID=202906).
+     > [!NOTE] 
+     > 
+     > **Conseil** pour plus d’informations sur les valeurs de ces propriétés, consultez [configuration des paramètres de messagerie](https://go.microsoft.com/fwlink/?LinkID=202906#configuring_email_settings) dans [personnalisation du comportement au niveau du Site pour ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkID=202906).
 7. Enregistrez et fermez  *\_AppStart.cshtml*.
 8. Exécutez le *Default.cshtml* page dans un navigateur.
 
     ![security-membership-2](16-adding-security-and-membership/_static/image1.png)
 
-    > [!NOTE]
-    > Si vous voyez une erreur indiquant qu’une propriété doit être une instance de `ExtendedMembershipProvider`, le site ne peut pas être configuré pour utiliser le système d’appartenance ASP.NET Web Pages (SimpleMembership). Cela peut parfois se produire si le serveur du fournisseur d’hébergement est configuré différemment de votre serveur local. Pour résoudre ce problème, ajoutez l’élément suivant sur le site *Web.config* fichier :
-    > 
-    > [!code-xml[Main](16-adding-security-and-membership/samples/sample2.xml)]
-    > 
-    > Ajoutez cet élément en tant qu’enfant de la `<configuration>` élément et en tant qu’homologue de la `<system.web>` élément.
+   > [!NOTE]
+   > Si vous voyez une erreur indiquant qu’une propriété doit être une instance de `ExtendedMembershipProvider`, le site ne peut pas être configuré pour utiliser le système d’appartenance ASP.NET Web Pages (SimpleMembership). Cela peut parfois se produire si le serveur du fournisseur d’hébergement est configuré différemment de votre serveur local. Pour résoudre ce problème, ajoutez l’élément suivant sur le site *Web.config* fichier :
+   > 
+   > [!code-xml[Main](16-adding-security-and-membership/samples/sample2.xml)]
+   > 
+   > Ajoutez cet élément en tant qu’enfant de la `<configuration>` élément et en tant qu’homologue de la `<system.web>` élément.
 9. Dans le coin supérieur droit de la page, cliquez sur le **inscrire** lien. Le *Register.cshtml* page s’affiche.
 10. Entrez un nom d’utilisateur et un mot de passe, puis activez **inscrire**.
 
@@ -120,14 +120,14 @@ La procédure suivante décrit comment créer le site et le configurer.
 12. Cliquez sur le lien hypertexte pour activer votre compte. Le lien hypertexte de confirmation s’ouvre une page de confirmation d’inscription.
 
     ![sécurité-appartenance-5](16-adding-security-and-membership/_static/image4.png)
-- Cliquez sur le **connexion** lier, puis connectez-vous en utilisant le compte que vous avez enregistré.
+13. Cliquez sur le **connexion** lier, puis connectez-vous en utilisant le compte que vous avez enregistré.
 
-    Une fois que vous vous connectez, la **connexion** et **inscrire** liens sont remplacés par un **déconnexion** lien. Votre nom de connexion s’affiche sous forme de lien. (Le lien permet d’aller à une page dans laquelle vous pouvez modifier votre mot de passe.)
+      Une fois que vous vous connectez, la **connexion** et **inscrire** liens sont remplacés par un **déconnexion** lien. Votre nom de connexion s’affiche sous forme de lien. (Le lien permet d’aller à une page dans laquelle vous pouvez modifier votre mot de passe.)
 
-    ![security-membership-6](16-adding-security-and-membership/_static/image5.png)
+      ![security-membership-6](16-adding-security-and-membership/_static/image5.png)
 
-    > [!NOTE]
-    > Par défaut, ASP.NET web pages envoyer des informations d’identification au serveur en texte clair (en tant que texte lisible). Un site de production doit-elle utiliser le protocole HTTP sécurisé (https://, également connu sous le *SSL* ou SSL) pour chiffrer les informations sensibles qui sont échangées avec le serveur. Vous pouvez requis messagerie envoi de messages à l’aide de SSL en définissant `WebMail.EnableSsl=true` comme dans l’exemple précédent. Pour plus d’informations sur le protocole SSL, consultez [sécurisation des Communications Web : les certificats SSL et https://](https://go.microsoft.com/fwlink/?LinkId=208660).
+      > [!NOTE]
+      > Par défaut, ASP.NET web pages envoyer des informations d’identification au serveur en texte clair (en tant que texte lisible). Un site de production doit-elle utiliser le protocole HTTP sécurisé (https://, également connu sous le *SSL* ou SSL) pour chiffrer les informations sensibles qui sont échangées avec le serveur. Vous pouvez requis messagerie envoi de messages à l’aide de SSL en définissant `WebMail.EnableSsl=true` comme dans l’exemple précédent. Pour plus d’informations sur le protocole SSL, consultez [sécurisation des Communications Web : les certificats SSL et https://](https://go.microsoft.com/fwlink/?LinkId=208660).
 
 ## <a name="additional-membership-functionality-in-the-site"></a>Fonctionnalité d’appartenance supplémentaires dans le Site
 
@@ -165,7 +165,7 @@ Dans cette procédure, vous allez créer un dossier qui contient les pages qui s
     (Le numéro de port (38366) sera probablement différent dans l’URL.)
 
     Vous êtes redirigé vers la *Login.cshtml* page, car vous n’êtes pas connecté.
-- Connectez-vous en utilisant le compte que vous avez créé précédemment. Vous êtes redirigé vers la *MembersInformation* page. Étant donné que vous êtes connecté, cette fois vous consultez le contenu de la page.
+7. Connectez-vous en utilisant le compte que vous avez créé précédemment. Vous êtes redirigé vers la *MembersInformation* page. Étant donné que vous êtes connecté, cette fois vous consultez le contenu de la page.
 
 Pour sécuriser l’accès à plusieurs pages, vous pouvez effectuer ceci :
 
@@ -227,10 +227,10 @@ La page de connexion s’arrête pas les programmes automatiques (parfois appel�
 7. Remplacez `PUBLIC_KEY` avec votre clé.
 8. Si vous n’avez pas supprimé il déjà, supprimez le `<div>` élément qui contient le texte qui commence par « Pour activer la vérification CAPTCHA... ». (Supprimez la totalité de `<div>` élément et son contenu.)
 
-1. Exécutez *Default.cshtml* dans un navigateur. Si vous êtes connecté au site, cliquez sur le **déconnexion** lien.
-2. Cliquez sur le **inscrire** liez et l’inscription à l’aide du test CAPTCHA de test.
+9. Exécutez *Default.cshtml* dans un navigateur. Si vous êtes connecté au site, cliquez sur le **déconnexion** lien.
+10. Cliquez sur le **inscrire** liez et l’inscription à l’aide du test CAPTCHA de test.
 
-    ![security-membership-10](16-adding-security-and-membership/_static/image9.png)
+     ![security-membership-10](16-adding-security-and-membership/_static/image9.png)
 
 Pour plus d’informations sur la `ReCaptcha` assistance, consultez [à un CATPCHA empêcher automatisée programmes (robots) à partir d’à l’aide de votre Site Web ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251967).
 

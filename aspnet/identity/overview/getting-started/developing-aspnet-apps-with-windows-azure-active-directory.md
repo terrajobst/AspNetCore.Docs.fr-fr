@@ -1,30 +1,30 @@
 ---
 uid: identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
-title: "Développement d’applications ASP.NET avec Azure Active Directory | Documents Microsoft"
+title: Développement d’applications ASP.NET avec Azure Active Directory | Documents Microsoft
 author: Rick-Anderson
-description: "Outils Microsoft ASP.NET pour Azure Active Directory facilite activer l’authentification pour les applications web hébergées sur Azure. Vous pouvez utiliser Azure Authenti..."
+description: Outils Microsoft ASP.NET pour Azure Active Directory facilite activer l’authentification pour les applications web hébergées sur Azure. Vous pouvez utiliser Azure Authenti...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2014
 ms.topic: article
 ms.assetid: 457d7eaf-ee76-4ceb-9082-c7c1721435ad
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/developing-aspnet-apps-with-windows-azure-active-directory
 msc.type: authoredcontent
-ms.openlocfilehash: 1ef0468d5f5c17480b23ac88983f30fe6f4979c0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 44bf29e099583bf9d49f2715d3ff4f748728ad8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="developing-aspnet-apps-with-azure-active-directory"></a>Développement d’applications ASP.NET avec Azure Active Directory
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Des outils Microsoft ASP.NET pour Azure Active Directory facilite l’activer l’authentification pour les applications web hébergées sur [Azure](https://www.windowsazure.com/home/features/web-sites/). Vous pouvez utiliser l’authentification Azure pour authentifier les utilisateurs d’Office 365 à partir de votre organisation, les comptes d’entreprise synchronisés à partir de votre annuaire Active Directory sur site ou les utilisateurs créés dans votre domaine Azure Active Directory personnalisé. Activer l’authentification de Windows Azure configure votre application pour authentifier les utilisateurs à l’aide d’un seul [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) client.
 > 
->  Ce didacticiel a été rédigé par Rick Anderson[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
+>  Ce didacticiel a été rédigé par Rick Anderson [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 
 
 Ce didacticiel va vous montrer comment créer une application ASP.NET qui est configurée pour l’authentification avec [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (Azure AD). Vous apprendrez également comment appeler l’API Graph pour obtenir des informations sur l’utilisateur actuellement connecté et le déploiement de l’application sur Azure.
@@ -52,7 +52,7 @@ Ce didacticiel va vous montrer comment créer une application ASP.NET qui est co
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image4.png)  
   
- Enregistrer le mot de passe, vous serez requis pour modifier le mot de passe après la première connexion. L’illustration suivante montre le nouveau compte d’administrateur. Vous devez utiliser Azure Active Directory pour vous connecter à votre application, et non le compte Microsoft également affiché sur cette page.  
+   Enregistrer le mot de passe, vous serez requis pour modifier le mot de passe après la première connexion. L’illustration suivante montre le nouveau compte d’administrateur. Vous devez utiliser Azure Active Directory pour vous connecter à votre application, et non le compte Microsoft également affiché sur cette page.  
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image5.png)
 
@@ -65,11 +65,11 @@ Les étapes suivantes utilisent [Visual Studio Express 2013 pour le Web](https:/
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image6.png)
 3. Sur le **modifier l’authentification** boîte de dialogue, sélectionnez **comptes professionnels**. Ces options peuvent être utilisées pour automatiquement enregistrer votre application auprès d’Azure AD ainsi que pour configurer automatiquement votre application à intégrer à Azure AD. Vous n’êtes pas obligé d’utiliser le **modifier l’authentification** boîte de dialogue pour inscrire et configurer votre application, mais il rend plus facile. Si vous utilisez Visual Studio 2012 par exemple, vous pouvez manuellement inscrire l’application dans le portail de gestion Azure et mettre à jour sa configuration à intégrer à Azure AD.  
- Dans les menus de la liste déroulante, sélectionnez **Cloud - organisation** et **Single Sign On, les données d’annuaire en lecture**. Entrez le domaine de votre annuaire Azure AD, par exemple (dans les images ci-dessous) *aricka0yahoo.onmicrosoft.com*, puis cliquez sur **OK**. Vous pouvez obtenir le nom de domaine à partir de l’onglet domaines pour le répertoire par défaut sur le portail azure (voir l’image suivante vers le bas).   
+   Dans les menus de la liste déroulante, sélectionnez **Cloud - organisation** et **Single Sign On, les données d’annuaire en lecture**. Entrez le domaine de votre annuaire Azure AD, par exemple (dans les images ci-dessous) *aricka0yahoo.onmicrosoft.com*, puis cliquez sur **OK**. Vous pouvez obtenir le nom de domaine à partir de l’onglet domaines pour le répertoire par défaut sur le portail azure (voir l’image suivante vers le bas).   
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image7.png)  
   
- L’illustration suivante montre le nom de domaine à partir du portail Azure.  
+   L’illustration suivante montre le nom de domaine à partir du portail Azure.  
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image8.png)  
 
@@ -94,11 +94,11 @@ Les étapes suivantes utilisent [Visual Studio Express 2013 pour le Web](https:/
   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image13.png)  
   
- Si vous obtenez l’erreur :  
- Valeur ne peut pas être null ou vide. Nom du paramètre : linkText   
+   Si vous obtenez l’erreur :  
+   Valeur ne peut pas être null ou vide. Nom du paramètre : linkText   
     ![](developing-aspnet-apps-with-windows-azure-active-directory/_static/image14.png)  
   
- consultez le [déboguer](#dbg) section à la fin du didacticiel.
+   consultez le [déboguer](#dbg) section à la fin du didacticiel.
 
 ## <a name="basics-of-the-graph-api"></a>Notions de base de l’API Graph
 

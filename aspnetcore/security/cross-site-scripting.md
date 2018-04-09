@@ -1,7 +1,7 @@
 ---
-title: "Empêchant intersites script (XSS) dans ASP.NET Core"
+title: Empêcher intersites script (XSS) dans ASP.NET Core
 author: rick-anderson
-description: "En savoir plus sur les scripts entre sites (XSS) et techniques pour traiter cette vulnérabilité dans une application ASP.NET Core."
+description: En savoir plus sur les scripts entre sites (XSS) et techniques pour traiter cette vulnérabilité dans une application ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/cross-site-scripting
-ms.openlocfilehash: 9e54ee0b1169c01629c3cd91a378509a73c53904
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: d9263a2c1bb6a376008b7d8a55864e4d15e77cee
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="preventing-cross-site-scripting-xss-in-aspnet-core"></a>Empêchant intersites script (XSS) dans ASP.NET Core
+# <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher intersites script (XSS) dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -37,7 +37,7 @@ L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet
 
 ## <a name="html-encoding-using-razor"></a>Encodage HTML à l’aide de Razor
 
-Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise les règles d'encodage d’attribut HTML chaque fois que vous utilisez la directive  *@* . L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez @ uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
+Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise les règles d'encodage d’attribut HTML chaque fois que vous utilisez la directive *@*. L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez @ uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
 
 Prenez l’affichage Razor suivant ;
 
@@ -60,7 +60,7 @@ Cette vue renvoie le contenu de la variable *untrustedInput*. Cette variable inc
 
 ## <a name="javascript-encoding-using-razor"></a>Encodage de JavaScript à l’aide de Razor
 
-Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Le moyen le plus sûr pour insérer des valeurs simples consiste à placer la valeur dans un attribut de données d’une balise et de récupérer dans le code JavaScript. Exemple :
+Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Le moyen le plus sûr pour insérer des valeurs simples consiste à placer la valeur dans un attribut de données d’une balise et de récupérer dans le code JavaScript. Par exemple :
 
 ```none
 @{
@@ -145,7 +145,7 @@ Cela s'affichera dans le navigateur comme suit :
 
 ## <a name="accessing-encoders-in-code"></a>L’accès à des encodeurs dans le code
 
-Les encodeurs HTML, JavaScript et URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via [injection de dépendance](../fundamentals/dependency-injection.md#fundamentals-dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l'espace de noms `System.Text.Encodings.Web`. Si vous utilisez les encodeurs par défaut, alors les encodeurs que vous avez appliqués aux plages de caractères considérés comme sécurisées ne prendront pas effet - les encodeurs par défaut utilisent les règles d'encodage les plus sûres possible.
+Les encodeurs HTML, JavaScript et URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via [injection de dépendance](xref:fundamentals/dependency-injection#fundamentals-dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l'espace de noms `System.Text.Encodings.Web`. Si vous utilisez les encodeurs par défaut, alors les encodeurs que vous avez appliqués aux plages de caractères considérés comme sécurisées ne prendront pas effet - les encodeurs par défaut utilisent les règles d'encodage les plus sûres possible.
 
 Pour utiliser les encodeurs configurables via DI votre constructeur doit prendre un paramètre *HtmlEncoder*, *JavaScriptEncoder* et *UrlEncoder* selon les besoins. Par exemple :
 

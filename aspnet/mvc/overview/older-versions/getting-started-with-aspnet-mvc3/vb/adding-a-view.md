@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
-title: "Ajout d’une vue (VB) | Documents Microsoft"
+title: Ajout d’une vue (VB) | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: 7e8564c743510780b93d56bc1215f4c5b1faeb43
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c9675eb7776116ecbe910d5515abfe9b4391df22
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view-vb"></a>Ajout d’une vue (VB)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est une version gratuite de Microsoft Visual Studio. Avant de commencer, assurez-vous que vous avez installé les composants requis répertoriés ci-dessous. Vous pouvez installer tous les en cliquant sur le lien suivant : [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Vous pouvez également installer individuellement les conditions préalables à l’aide des liens suivants :
 > 
@@ -65,7 +65,7 @@ Il semble bon. Toutefois, notez que la barre de titre indique &quot;Index&quot; 
 
 Tout d’abord, nous allons modifier le texte &quot;mon Application MVC.&quot; Ce texte est partagé et s’affiche sur chaque page. Il apparaît réellement dans un seul endroit dans notre projet, même s’il est sur chaque page dans notre application. Accédez à la */vues/Shared* dossier **l’Explorateur de solutions** et ouvrez le  *\_Layout.vbhtml* fichier. Ce fichier s’appelle une page de disposition et il est partagé &quot;shell&quot; qui utilisent de toutes les autres pages.
 
-Remarque la `@RenderBody()` ligne de code vers le bas du fichier. `RenderBody`est un espace réservé dans lequel toutes les pages que vous créez apparaissent, &quot;encapsulé&quot; dans la page de disposition. Modifier la `<h1>` titre de  **&quot;**  mon Application MVC&quot; à &quot;application MVC est film&quot;.
+Remarque la `@RenderBody()` ligne de code vers le bas du fichier. `RenderBody` est un espace réservé dans lequel toutes les pages que vous créez apparaissent, &quot;encapsulé&quot; dans la page de disposition. Modifier la `<h1>` titre de **&quot;** mon Application MVC&quot; à &quot;application MVC est film&quot;.
 
 [!code-html[Main](adding-a-view/samples/sample3.html)]
 
@@ -79,7 +79,7 @@ Maintenant, nous allons modifier le titre de la page d’Index (vue).
 
 [!code-vbhtml[Main](adding-a-view/samples/sample5.vbhtml)]
 
-Ouvrez *MvcMovie\Views\HelloWorld\Index.vbhtml*. Il existe deux emplacements pour apporter une modification : tout d’abord, le texte qui apparaît dans le titre du navigateur, puis dans l’en-tête secondaire (le `<h2>` élément). Nous allons effectuer les légèrement différent afin de voir les bits de code modifie la partie de l’application.
+Open *MvcMovie\Views\HelloWorld\Index.vbhtml*. Il existe deux emplacements pour apporter une modification : tout d’abord, le texte qui apparaît dans le titre du navigateur, puis dans l’en-tête secondaire (le `<h2>` élément). Nous allons effectuer les légèrement différent afin de voir les bits de code modifie la partie de l’application.
 
 Exécutez l’application et accédez à`http://localhost:xx/HelloWorld`. Notez que le titre du navigateur, l’en-tête principal et les en-têtes secondaires ont changé. Il est facile d’effectuer des modifications importantes dans votre application avec petites modifications à une vue. (Si vous ne voyez pas les changements dans le navigateur, vous voyez peut-être le contenu mis en cache. Appuyez sur Ctrl+F5 dans votre navigateur pour forcer le chargement de la réponse du serveur.)
 
@@ -111,11 +111,11 @@ Voici ce que votre **ajouter une vue** boîte de dialogue.
 
 [![3AddWelcomeView](adding-a-view/_static/image12.png "3AddWelcomeView")](adding-a-view/_static/image11.png)
 
-Ajoutez le code suivant sous le `<h2>` élément dans la nouvelle *Bienvenue.* fichier de vbhtml. Nous allons effectuer une boucle et dire &quot;Hello&quot; autant de fois que l’utilisateur indique que nous devez !
+Ajoutez le code suivant sous le `<h2>` élément dans la nouvelle <em>Bienvenue.</em> fichier de vbhtml. Nous allons effectuer une boucle et dire &quot;Hello&quot; autant de fois que l’utilisateur indique que nous devez !
 
 [!code-vbhtml[Main](adding-a-view/samples/sample8.vbhtml)]
 
-Exécutez l’application et accédez à`http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4`
+Exécutez l’application et accédez à `http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4`
 
 Maintenant les données sont extraites de l’URL et passées automatiquement au contrôleur. Le contrôleur regroupe les données en un `Model` objet et passe à la vue. La vue qu’affiche les données au format HTML à l’utilisateur.
 
@@ -123,6 +123,6 @@ Maintenant les données sont extraites de l’URL et passées automatiquement au
 
 Ainsi, ce qui a un type d’un &quot;M&quot; pour le modèle, mais pas le type de base de données. Créons une base de données de films en utilisant ce que nous avons appris.
 
->[!div class="step-by-step"]
-[Précédent](adding-a-controller.md)
-[Suivant](adding-a-model.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-controller.md)
+> [Suivant](adding-a-model.md)

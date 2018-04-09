@@ -1,7 +1,7 @@
 ---
-title: "Articles basés sur les projets créés avec des comptes d’utilisateur individuels"
+title: Articles basés sur les projets ASP.NET Core créés avec des comptes d’utilisateur individuels
 author: rick-anderson
-description: "Ce document répertorie les articles basés sur les projets créés avec des comptes d’utilisateur individuels."
+description: Découvrez les articles basés sur les projets ASP.NET Core créés avec des comptes d’utilisateur individuels.
 manager: wpickett
 ms.author: riande
 ms.date: 11/30/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/individual
-ms.openlocfilehash: aee18fa08fbc5c8452ca2b401d32858edaf55e7c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 40715debb48c0a7121ce84d7843b8517b0973e74
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="articles-based-on-projects-created-with-individual-user-accounts"></a>Articles basés sur les projets créés avec des comptes d’utilisateur individuels
+# <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>Articles basés sur les projets ASP.NET Core créés avec des comptes d’utilisateur individuels
 
 Identité de ASP.NET Core est incluse dans les modèles de projet dans Visual Studio avec l’option « Comptes d’utilisateur individuels ».
 

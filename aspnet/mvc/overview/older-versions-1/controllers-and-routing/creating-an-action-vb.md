@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
-title: "Création d’une Action (VB) | Documents Microsoft"
+title: Création d’une Action (VB) | Documents Microsoft
 author: microsoft
-description: "Découvrez comment ajouter une nouvelle action à un contrôleur ASP.NET MVC. En savoir plus sur la configuration requise pour une méthode d’action."
+description: Découvrez comment ajouter une nouvelle action à un contrôleur ASP.NET MVC. En savoir plus sur la configuration requise pour une méthode d’action.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3d1d355599c17df597f9c08d9d7f129fffc1a2e4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c77e4738444c61d60bdd78a50b36f98be41fc271
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-an-action-vb"></a>Création d’une Action (VB)
 ====================
@@ -31,7 +31,7 @@ L’objectif de ce didacticiel est d’expliquer comment vous pouvez créer une 
 
 Vous ajoutez une nouvelle action à un contrôleur en ajoutant une nouvelle méthode au contrôleur. Par exemple, le contrôleur dans la liste 1 contient une action nommée Index() et qu’une action nommée SayHello(). Les deux méthodes sont exposées en tant qu’actions.
 
-**La liste 1 - Controllers\HomeController.vb**
+**Listing 1 - Controllers\HomeController.vb**
 
 [!code-vb[Main](creating-an-action-vb/samples/sample1.vb)]
 
@@ -64,6 +64,6 @@ Si vous tentez d’appeler l’action du contrôleur CompanySecrets() en tapant 
 
 **Figure 01**: appeler une méthode NonAction ([cliquez pour afficher l’image en taille réelle](creating-an-action-vb/_static/image2.png))
 
->[!div class="step-by-step"]
-[Précédent](creating-a-controller-vb.md)
-[Suivant](aspnet-mvc-controllers-overview-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-controller-vb.md)
+> [Suivant](aspnet-mvc-controllers-overview-cs.md)

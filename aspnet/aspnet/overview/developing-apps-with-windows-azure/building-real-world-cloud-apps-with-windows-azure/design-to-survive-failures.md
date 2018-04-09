@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
-title: "Conception pour faire face aux défaillances (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft"
+title: Conception pour faire face aux défaillances (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: 62a16e9a99cd1298b0db5f8099092212f9f6850b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 01883cb0be3e7c7b5dc8d32b784ccb3a28652f1e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>Concevoir pour faire face aux défaillances (génération d’applications Cloud du monde réel avec Azure)
 ====================
@@ -131,6 +131,6 @@ Vidéos :
 - [Prévention de défaillance : Création de Services de cloud computing évolutive et robuste](https://channel9.msdn.com/Series/FailSafe). Série en neuf parties par Ulrich Homann, Marc Mercuri et Mark Simms. Présente les principaux concepts et les principes d’architecture de manière très accessible et intéressante, avec récits tirés de l’expérience de Microsoft Customer Advisory Team (CAT) avec des clients réels. Épisodes 1 et 8 aborde en détail les raisons de conception d’applications de cloud pour faire face aux défaillances. Voir aussi la discussion de suivi de la limitation dans l’épisode 2 en commençant à la discussion de disjoncteurs dans épisode 3 en commençant à 40:55 49:57 et la discussion des points d’échec et les modes d’échec du démarrage de l’épisode 2 à 56:05.
 - [Construction Big : Leçons reçues des clients Azure - partie II](https://channel9.msdn.com/Events/Build/2012/3-030). Mark Simms parle de la conception en cas d’échec et l’instrumentation de tous les éléments. Similaire à la série de prévention de défaillance mais le passage en plus de détails sur les procédures.
 
->[!div class="step-by-step"]
-[Précédent](unstructured-blob-storage.md)
-[Suivant](monitoring-and-telemetry.md)
+> [!div class="step-by-step"]
+> [Précédent](unstructured-blob-storage.md)
+> [Suivant](monitoring-and-telemetry.md)

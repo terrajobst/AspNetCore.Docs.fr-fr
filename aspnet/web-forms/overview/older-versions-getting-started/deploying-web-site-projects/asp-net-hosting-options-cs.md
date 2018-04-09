@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
-title: "Options (c#) d’hébergement de ASP.NET | Documents Microsoft"
+title: Options (c#) d’hébergement de ASP.NET | Documents Microsoft
 author: rick-anderson
-description: "Les applications web ASP.NET sont généralement conçues, créé, testé dans un environnement de développement local et doivent être déployés vers un o d’environnement de production..."
+description: Les applications web ASP.NET sont généralement conçues, créé, testé dans un environnement de développement local et doivent être déployés vers un o d’environnement de production...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 34e1f9c7ee1ae22bceb614eeeaa1ebe286c1ccad
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f8bb0e5a34d84d448af56285e8761c447229f7d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-hosting-options-c"></a>Options d’hébergement ASP.NET (c#)
 ====================
@@ -95,5 +95,5 @@ Bonne programmation !
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Next](determining-what-files-need-to-be-deployed-cs.md)
+> [!div class="step-by-step"]
+> [Next](determining-what-files-need-to-be-deployed-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
-title: "Programmes d’assistance ASP.NET MVC 4, formulaires et la Validation | Documents Microsoft"
+title: Programmes d’assistance ASP.NET MVC 4, formulaires et la Validation | Documents Microsoft
 author: rick-anderson
-description: "Dans ASP.NET MVC 4 modèles et les ateliers pratiques de données Access, vous avez été le chargement et affichage des données à partir de la base de données. Dans cet atelier pratique, vous allez ajouter à la..."
+description: Dans ASP.NET MVC 4 modèles et les ateliers pratiques de données Access, vous avez été le chargement et affichage des données à partir de la base de données. Dans cet atelier pratique, vous allez ajouter à la...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 243db3708ac4311d423c4c137f503f072f5553e6
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 4cfa98144919c3f1bdb3608970af1a7952fe6ea7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Validation, les formulaires et les programmes d’assistance ASP.NET MVC 4
 
@@ -112,12 +112,12 @@ Dans cette tâche, vous allez créer un nouveau contrôleur appelé **StoreManag
 
 1. Ouvrez le **commencer** solution situé dans **début/CreatingTheStoreManagerController-Ex1/Source/** dossier.
 
-    1. Vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Ajoutez un nouveau contrôleur. Pour ce faire, cliquez sur le **contrôleurs** dossier dans l’Explorateur de solutions, sélectionnez **ajouter** , puis le **contrôleur** commande. Modifier la **contrôleur** **nom** à **StoreManagerController** et assurez-vous que l’option **contrôleur MVC avec des actions de lecture/écriture vides**est sélectionnée. Cliquez sur **Ajouter**.
 
     ![Boîte de dialogue Ajouter contrôleur](aspnet-mvc-4-helpers-forms-and-validation/_static/image1.png "boîte de dialogue Ajouter contrôleur")
@@ -184,7 +184,7 @@ Dans cette tâche, vous pouvez ajuster le modèle d’affichage simple créé av
 1. Passez en revue le code créé. La liste de champs générées feront partie des éléments suivants de table HTML qui **la structure** utilise pour afficher les données tabulaires.
 
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample4.cshtml)]
-2. Remplacez le  **&lt;table&gt;**  code avec le code suivant pour afficher uniquement les **Genre**, **artiste**, **titre d’Album**, et **prix** champs. Cette opération supprime le **AlbumId** et **Album Art URL** colonnes. En outre, il modifie les colonnes GenreId et ArtistId pour afficher leurs propriétés de classe lié de **Artist.Name** et **Genre.Name**et supprime la **détails** lien.
+2. Remplacez le **&lt;table&gt;** code avec le code suivant pour afficher uniquement les **Genre**, **artiste**, **titre d’Album**, et **prix** champs. Cette opération supprime le **AlbumId** et **Album Art URL** colonnes. En outre, il modifie les colonnes GenreId et ArtistId pour afficher leurs propriétés de classe lié de **Artist.Name** et **Genre.Name**et supprime la **détails** lien.
 
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample5.cshtml)]
 3. Modifier les descriptions suivantes.
@@ -231,14 +231,14 @@ Dans cette tâche, vous allez ajouter une nouvelle méthode **Truncate** à la *
 
 1. Ouvrez le **commencer** solution situé dans **début/AddingAnHTMLHelper-Ex2/Source/** dossier. Dans le cas contraire, vous pouvez continuer à utiliser le **fin** solution obtenue par la fin de l’exercice précédent.
 
-    1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Index de StoreManager afficher. Pour ce faire, dans l’Explorateur de solutions, développez le **vues** dossier, puis le **StoreManager** et ouvrez le **Index.cshtml** fichier.
-3. Ajoutez le code suivant ci-dessous le  **@model**  la directive pour définir le **Truncate** méthode d’assistance.
+3. Ajoutez le code suivant ci-dessous le <strong>@model</strong> la directive pour définir le <strong>Truncate</strong> méthode d’assistance.
 
     [!code-cshtml[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample7.cshtml)]
 
@@ -275,7 +275,7 @@ Dans cette tâche, vous allez tester que le **StoreManager** **Index** afficher 
 
 Dans cet exercice, vous allez apprendre à créer un formulaire pour permettre aux responsables de magasin modifier un Album. Ils seront parcourir le **/StoreManager/Edit/id** URL (**id** en cours de l’id unique de l’album pour modifier), créant ainsi un appel HTTP-GET sur le serveur.
 
-La méthode d’action contrôleur modifier se récupérer l’Album approprié à partir de la base de données, créez un **StoreManagerViewModel** objet à encapsuler (ainsi que d’une liste d’artistes et Genres), puis transmettre à un modèle d’affichage afficher la page HTML à l’utilisateur. Cette page contient un  **&lt;formulaire&gt;**  élément avec les zones de texte et les listes déroulantes pour modifier les propriétés de l’Album.
+La méthode d’action contrôleur modifier se récupérer l’Album approprié à partir de la base de données, créez un **StoreManagerViewModel** objet à encapsuler (ainsi que d’une liste d’artistes et Genres), puis transmettre à un modèle d’affichage afficher la page HTML à l’utilisateur. Cette page contient un **&lt;formulaire&gt;** élément avec les zones de texte et les listes déroulantes pour modifier les propriétés de l’Album.
 
 Une fois que l’utilisateur met à jour les valeurs de formulaire Album et clique sur le **enregistrer** bouton, les modifications sont envoyées une requête HTTP-POST rappeler **/StoreManager/Edit/id**. Bien que l’URL reste la même que dans le dernier appel, ASP.NET MVC qui identifie ce temps est une requête HTTP-POST et par conséquent exécute une autre méthode d’action de modification (un décorée avec **[HttpPost]**).
 
@@ -288,12 +288,12 @@ Dans cette tâche, vous allez implémenter la version HTTP-GET de la méthode d�
 
 1. Ouvrez le **commencer** solution situé dans **début/CreatingTheEditView-Ex3/Source/** dossier. Dans le cas contraire, vous pouvez continuer à utiliser le **fin** solution obtenue par la fin de l’exercice précédent.
 
-    1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Ouvrez le **StoreManagerController** classe. Pour ce faire, développez le **contrôleurs** et double-cliquez sur **StoreManagerController.cs**.
 3. Remplacez le **HTTP-GET modifier** méthode d’action avec le code suivant pour récupérer les **Album** , ainsi que les **Genres** et **artistes**répertorie.
 
@@ -425,12 +425,12 @@ Dans cette tâche, vous allez implémenter la version HTTP-GET de la méthode d�
 
 1. Ouvrez le **commencer** solution situé dans **Source/Ex4-AddingACreateView/début/** dossier. Dans le cas contraire, vous pouvez continuer à utiliser le **fin** solution obtenue par la fin de l’exercice précédent.
 
-    1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Ouvrez **StoreManagerController** classe. Pour ce faire, développez le **contrôleurs** et double-cliquez sur **StoreManagerController.cs**.
 3. Remplacez le **créer** code de méthode d’action avec les éléments suivants :
 
@@ -524,12 +524,12 @@ Dans cette tâche, vous allez implémenter la version HTTP-GET de la méthode d�
 
 1. Ouvrez le **commencer** solution situé dans **début/HandlingDeletion-Ex5/Source/** dossier. Dans le cas contraire, vous pouvez continuer à utiliser le **fin** solution obtenue par la fin de l’exercice précédent.
 
-    1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Ouvrez **StoreManagerController** classe. Pour ce faire, développez le **contrôleurs** et double-cliquez sur **StoreManagerController.cs**.
 3. La contrôleur action Delete est exactement le même que l’action de contrôleur précédente détails du magasin : elle interroge le **album** objet à partir de la base de données à l’aide de la **id** fourni dans l’URL et retourne le approprié **vue**. Pour ce faire, remplacez la méthode HTTP-GET **supprimer** code de méthode d’action avec les éléments suivants :
 
@@ -613,12 +613,12 @@ Cela est un peu plus complexe dans le cas de cette application, où le modèle d
 
 1. Ouvrez le **commencer** solution situé dans **Source/Ex6-AddingValidation/début/** dossier. Dans le cas contraire, vous pouvez continuer à utiliser le **fin** solution obtenue par la fin de l’exercice précédent.
 
-    1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Ouvrez le **Album.cs** à partir de la **modèles** dossier.
 3. Remplacez **Album.cs** de contenu avec le code en surbrillance, afin qu’il ressemble à ce qui suit :
 
@@ -657,7 +657,7 @@ Dans cette tâche, vous allez tester la validation que les pages créer et modif
 
     ![Champs validés dans la page de modification](aspnet-mvc-4-helpers-forms-and-validation/_static/image19.png)
 
-    Champs validés dans la page de modification
+    *Champs validés dans la page de modification*
 
 <a id="Exercise7"></a>
 
@@ -679,12 +679,12 @@ Dans cette tâche, vous allez exécuter l’application avant l’inclusion de j
 
 1. Ouvrez le **commencer** solution situé dans **Source/Ex7-UnobtrusivejQueryValidation/début/** dossier. Dans le cas contraire, vous pouvez continuer à utiliser le **fin** solution obtenue par la fin de l’exercice précédent.
 
-    1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Si vous avez ouvert le **commencer** solution, vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Appuyez sur **F5** pour exécuter l’application.
 3. Le projet de démarrage dans la page d’accueil. Parcourir **/StoreManager/créer** et cliquez sur **créer** sans le remplir le formulaire pour vérifier que vous obtenez des messages de validation :
 
@@ -739,24 +739,24 @@ Dans cette tâche, vous allez tester que le **StoreManager** créer la vue de mo
 
     [!code-html[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample23.html)]
 
-    > [!NOTE]
-    > Pour chaque règle de validation client, jQuery non obstructive ajoute un attribut avec des données-val -*rulename*=&quot;*message*&quot;. Voici une liste de balises qui discrète jQuery insère dans le champ d’entrée html pour effectuer la validation côté client :
-    > 
-    > - Data-val
-    > - Data-val-number
-    > - Data-val-range
-    > - Données val plage min / données-val-range-max
-    > - Données val requises
-    > - Longueur de données val
-    > - Données-val-longueur-max / données val-Longueur-min.
-    > 
-    > Toutes les valeurs de données sont remplis avec le modèle **Annotation de données**. Vous pouvez ensuite exécuter toute la logique qui fonctionne au côté serveur côté client. Par exemple, des attributs de prix est l’annotation de données suivant dans le modèle :
-    > 
-    > [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample24.cs)]
-    > 
-    > Une fois à l’aide de jQuery non obstructive, le code généré est :
-    >  
-    > [!code-html[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample25.html)]
+   > [!NOTE]
+   > Pour chaque règle de validation client, jQuery non obstructive ajoute un attribut avec des données-val -*rulename*=&quot;*message*&quot;. Voici une liste de balises qui discrète jQuery insère dans le champ d’entrée html pour effectuer la validation côté client :
+   > 
+   > - Data-val
+   > - Data-val-number
+   > - Data-val-range
+   > - Données val plage min / données-val-range-max
+   > - Données val requises
+   > - Longueur de données val
+   > - Données-val-longueur-max / données val-Longueur-min.
+   > 
+   > Toutes les valeurs de données sont remplis avec le modèle **Annotation de données**. Vous pouvez ensuite exécuter toute la logique qui fonctionne au côté serveur côté client. Par exemple, des attributs de prix est l’annotation de données suivant dans le modèle :
+   > 
+   > [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample24.cs)]
+   > 
+   > Une fois à l’aide de jQuery non obstructive, le code généré est :
+   > 
+   > [!code-html[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample25.html)]
 
 * * *
 
@@ -781,9 +781,9 @@ Dans cette tâche, vous allez tester que le **StoreManager** créer la vue de mo
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Annexe a : installation de Visual Studio Express 2012 pour le Web
 
-Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du  **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
+Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
 
-1. Accédez à [ [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; *Visual Studio Express 2012 pour le Web avec Windows Azure SDK*&quot;.
+1. Accédez à [ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; <em>Visual Studio Express 2012 pour le Web avec Windows Azure SDK</em>&quot;.
 2. Cliquez sur **installer maintenant**. Si vous n’avez pas **Web Platform Installer** vous allez être redirigé pour télécharger et installer tout d’abord.
 3. Une fois **Web Platform Installer** est ouvert, cliquez sur **installer** pour démarrer le programme d’installation.
 

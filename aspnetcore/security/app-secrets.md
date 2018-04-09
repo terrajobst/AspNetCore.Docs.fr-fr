@@ -1,7 +1,7 @@
 ---
-title: "Stockage sécurisé des secrets d’application dans le développement d'application ASP.NET Core"
+title: Stockage sécurisé des secrets d’application en cours de développement dans ASP.NET Core
 author: rick-anderson
-description: "Montre comment stocker des clés secrètes en toute sécurité pendant le développement"
+description: Montre comment stocker des clés secrètes en toute sécurité pendant le développement
 manager: wpickett
 ms.author: riande
 ms.date: 09/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: a23c9dc9ee1e20c0e0551a372e1cd706bb82070e
-ms.sourcegitcommit: 6548a3dd0cd1e3e92ac2310dee757ddad9fd6456
+ms.openlocfilehash: 166111696a9c4244ede44fca8878dd3725bb3099
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="safe-storage-of-app-secrets-during-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application dans le développement d'application ASP.NET Core
+# <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application en cours de développement dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Michel Roth](https://github.com/danroth27), et [Scott Addie](https://scottaddie.com) 
 
@@ -34,15 +34,14 @@ Par exemple, si vous créez une application web ASP.NET Core avec les comptes d�
 
 ## <a name="secret-manager"></a>L'outil Secret Manager (Gestionnaire de secrets)
 
-L’outil principal Secret Manager stocke des données sensibles pour les travaux de développement en dehors de l’arborescence de votre projet. L’outil Secret Manager est un outil de projet qui peut être utilisé pour stocker des secrets pour un projet [.NET Core](https://www.microsoft.com/net/core) pendant le développement. Avec l’outil Secret Manager, vous pouvez associer des secrets de l’application à un projet spécifique et les partager entre plusieurs projets.
+L’outil principal Secret Manager stocke des données sensibles pour les travaux de développement en dehors de l’arborescence de votre projet. L’outil Gestionnaire de la clé secrète est un outil de projet qui peut être utilisé pour stocker des secrets pour un projet .NET Core pendant le développement. Avec l’outil Secret Manager, vous pouvez associer des secrets de l’application à un projet spécifique et les partager entre plusieurs projets.
 
 >[!WARNING]
 > L'outil Secret Manager ne chiffre pas les clés secrètes stockées et donc ne doit pas être traité comme un magasin approuvé. Il est utile uniquement à des fins de développement. Les clés et valeurs sont stockées dans un fichier de configuration JSON dans le répertoire de profil utilisateur.
 
 ## <a name="installing-the-secret-manager-tool"></a>Installation de l’outil Secret Manager
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
+#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 Cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions, puis sélectionnez dans le menu contextuel **Modifier \<project_name\>.csproj** . Ajoutez la ligne en surbrillance dans le fichier *.csproj* et enregistrez pour restaurer le package NuGet associé :
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -59,8 +58,7 @@ L’enregistrement du fichier *.csproj* modifié ouvre également un fichier `se
 }
 ```
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
+#### <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 Ajoutez la référence à `Microsoft.Extensions.SecretManager.Tools` dans le fichier *.csproj* et exécutez la commande [dotnet restauration](/dotnet/core/tools/dotnet-restore). Vous pouvez utiliser les mêmes étapes pour installer Secret Manager à l’aide de la ligne de commande.
 
 [!code-xml[](app-secrets/sample/UserSecrets/UserSecrets-before.csproj?highlight=10)]
@@ -89,15 +87,14 @@ dotnet user-secrets set MySecret ValueOfMySecret
 ```
 
 Vous pouvez exécuter l’outil Secret Manager à partir d’autres annuaires, mais vous devez utiliser l'option `--project` à passer dans le chemin d’accès au fichier *.csproj*:
- 
+
 ```console
 dotnet user-secrets set MySecret ValueOfMySecret --project c:\work\WebApp1\src\webapp1
 ```
 
 Vous pouvez également utiliser l’outil Secret Manager pour répertorier, supprimer et effacer les secrets de l’application.
 
------
-
+* * *
 ## <a name="accessing-user-secrets-via-configuration"></a>L’accès à des secrets de l’utilisateur via la configuration
 
 Vous pouvez accéder aux secrets stockés dans Secret Manager via le système de configuration. Ajoutez le package `Microsoft.Extensions.Configuration.UserSecrets` et exécutez la commande [dotnet restore](/dotnet/core/tools/dotnet-restore).
@@ -114,7 +111,7 @@ Vous pouvez accéder à des secrets de l’utilisateur via l’API de configurat
 
 L’outil Secret Manager élimine les détails d’implémentation, tels qu’où et comment les valeurs sont stockées. Vous pouvez utiliser l’outil sans connaître ces détails d’implémentation. Dans la version actuelle, les valeurs sont stockées dans un fichier [JSON](http://json.org/) de configuration dans le répertoire de profil utilisateur :
 
-* Windows : `%APPDATA%\microsoft\UserSecrets\<userSecretsId>\secrets.json`
+* Windows : `%APPDATA%\microsoft\UserSecrets\<userSecretsId>\secrets.json`
 
 * Linux : `~/.microsoft/usersecrets/<userSecretsId>/secrets.json`
 

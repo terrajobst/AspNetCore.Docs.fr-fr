@@ -1,7 +1,7 @@
 ---
-title: "Gestion de clés"
+title: Gestion des clés dans ASP.NET Core
 author: rick-anderson
-description: "Ce document décrit les détails d’implémentation de la gestion de clés d’ASP.NET Core données protection API."
+description: Découvrez les détails d’implémentation de la gestion de clés de Protection des données ASP.NET Core API.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: a1fd7c55ec94d5def569bb407c064f4fd2fe9695
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 1b073d8779547a828c17e825b0663b26efb61d14
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-management"></a>Gestion de clés
+# <a name="key-management-in-aspnet-core"></a>Gestion des clés dans ASP.NET Core
 
 <a name="data-protection-implementation-key-management"></a>
 
@@ -29,7 +29,7 @@ Le système de protection de données gère automatiquement la durée de vie des
 
 * Révoqué - la clé est compromise et ne doit pas être utilisée pour les nouvelles opérations de protection.
 
-Clés créées, actifs et expirés peuvent utilisés pour la protection des charges utiles entrants. Clés révoqués par défaut ne sont pas utilisable pour ôter la protection des charges utiles, mais le développeur d’applications peut [remplacer ce comportement](../consumer-apis/dangerous-unprotect.md#data-protection-consumer-apis-dangerous-unprotect) si nécessaire.
+Clés créées, actifs et expirés peuvent utilisés pour la protection des charges utiles entrants. Clés révoqués par défaut ne sont pas utilisable pour ôter la protection des charges utiles, mais le développeur d’applications peut [remplacer ce comportement](xref:security/data-protection/consumer-apis/dangerous-unprotect#data-protection-consumer-apis-dangerous-unprotect) si nécessaire.
 
 >[!WARNING]
 > Le développeur peut être tenté de supprimer une clé à partir de l’anneau de clé (par exemple, en supprimant le fichier correspondant du système de fichiers). À ce stade, toutes les données protégées par la clé est définitivement indéchiffrables et aucun remplacement en cas d’urgence, comme avec des clés révoqués. Suppression d’une clé est comportement destructeur réellement et, par conséquent, le système de protection de données n’expose aucune API de première classe pour effectuer cette opération.
@@ -83,6 +83,6 @@ L’exemple ci-dessous montre comment utiliser le `IKeyManager` interface pour i
 
 Le système de protection de données a une heuristique dans laquelle il essaie automatiquement de déduire un emplacement de stockage de clé approprié et le chiffrement au mécanisme de rest. Cela est également configurable par le développeur de l’application. Les documents suivants décrivent les implémentations de boîte aux lettres de ces mécanismes :
 
-* [Fournisseurs de stockage de clés de boîte aux lettres](key-storage-providers.md#data-protection-implementation-key-storage-providers)
+* [Fournisseurs de stockage de clés de boîte aux lettres](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers)
 
-* [Boîte de chiffrement à clé auprès des fournisseurs de rest](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers)
+* [Boîte de chiffrement à clé auprès des fournisseurs de rest](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest-providers)

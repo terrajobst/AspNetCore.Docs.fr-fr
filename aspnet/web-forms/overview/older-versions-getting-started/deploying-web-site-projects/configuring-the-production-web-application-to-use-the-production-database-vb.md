@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
-title: "Configuration de l’Application Web de Production à utiliser la base de données de Production (VB) | Documents Microsoft"
+title: Configuration de l’Application Web de Production à utiliser la base de données de Production (VB) | Documents Microsoft
 author: rick-anderson
-description: "Comme indiqué dans les didacticiels antérieures, il n’est pas rare que les informations de configuration à diffèrent entre les environnements de développement et de production. Il s’agit d’es..."
+description: Comme indiqué dans les didacticiels antérieures, il n’est pas rare que les informations de configuration à diffèrent entre les environnements de développement et de production. Il s’agit d’es...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 60ef1f93efea777e9309ad8c664a2c6645f1ce80
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: b1741807fe02b4e60db7098cfd46922d3ba50ccd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a>Configuration de l’Application Web de Production à utiliser la base de données de Production (VB)
 ====================
@@ -71,7 +71,7 @@ Ensuite, spécifiez les différentes informations de connexion de la base de don
 
 La base de données des environnement de production doit figurer dans l’Explorateur de serveurs. Sélectionnez la base de données à partir de l’Explorateur de serveurs et accédez à la fenêtre Propriétés. Vous y trouverez une propriété de chaîne de connexion avec la chaîne de connexion de base de données s. Si que vous utilisez une base de données Microsoft SQL Server sur la production et le fournisseur SqlClient votre chaîne de connexion doit ressembler à ce qui suit :
 
-**Source de données =*nom_serveur*; Catalogue initial =*databaseName*; Persist Security Info = True ; ID d’utilisateur =*nom d’utilisateur*; Mot de passe = * mot de passe***
+<strong>Source de données =<em>nom_serveur</em>; Catalogue initial =<em>databaseName</em>; Persist Security Info = True ; ID d’utilisateur =<em>nom d’utilisateur</em>; Mot de passe =*mot de passe</strong>*
 
 Où *nom_serveur*, *databaseName*, *nom d’utilisateur*, et *mot de passe* sont avec les valeurs pour le nom du serveur de base de données, la base de données nom et le nom d’utilisateur et mot de passe fournie par votre société d’hôte web.
 
@@ -152,6 +152,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Déplacer les paramètres du fichier Web.config](http://www.asp101.com/tips/index.asp?id=154)
 - [Documentation technique pour le &lt;connectionStrings&gt; élément](https://msdn.microsoft.com/library/bf7sd233.aspx)
 
->[!div class="step-by-step"]
-[Précédent](deploying-a-database-vb.md)
-[Suivant](configuring-a-website-that-uses-application-services-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-a-database-vb.md)
+> [Suivant](configuring-a-website-that-uses-application-services-vb.md)

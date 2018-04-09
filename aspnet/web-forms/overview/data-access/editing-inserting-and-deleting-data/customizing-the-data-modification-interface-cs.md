@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs
-title: "Personnalisation de l’Interface de Modification de données (c#) | Documents Microsoft"
+title: Personnalisation de l’Interface de Modification de données (c#) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons étudier comment personnaliser l’interface d’un GridView modifiable, en remplaçant la zone de texte standard et les contrôles de case à cocher avec secondaire..."
+description: Dans ce didacticiel, nous allons étudier comment personnaliser l’interface d’un GridView modifiable, en remplaçant la zone de texte standard et les contrôles de case à cocher avec secondaire...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fb0b20ab25d87eddc0b2f9da786db469b16f861a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f25b265c50870d59721a94c01d78f589a5d5f1c3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-the-data-modification-interface-c"></a>Personnalisation de l’Interface de Modification de données (c#)
 ====================
@@ -236,7 +236,7 @@ Commencez par convertir le `Discontinued` CheckBoxField en TemplateField, ce qui
 Remplacez la case à cocher à la fois dans le `ItemTemplate` et `EditItemTemplate` avec un contrôle RadioButtonList, paramètre à la fois RadioButtonList `ID` propriétés `DiscontinuedChoice`. Ensuite, indiquer la RadioButtonList doit contenant chacun deux cases d’option, un étiqueté « actif » avec la valeur « False » et un intitulé « Supprimé » avec la valeur « True ». Pour cela que vous pouvez soit entrer le `<asp:ListItem>` éléments directement par le biais de la syntaxe déclarative ou utilisez le `ListItem` éditeur de collections à partir du concepteur. Figure 13 illustre le `ListItem` éditeur de Collection une fois que les deux cases d’option options de bouton ont été spécifiés.
 
 
-[![Ajouter](customizing-the-data-modification-interface-cs/_static/image38.png)](customizing-the-data-modification-interface-cs/_static/image37.png)
+[![Add](customizing-the-data-modification-interface-cs/_static/image38.png)](customizing-the-data-modification-interface-cs/_static/image37.png)
 
 **Figure 13**: ajouter des « Actif » et « Discontinued » Options à RadioButtonList ([cliquez pour afficher l’image en taille réelle](customizing-the-data-modification-interface-cs/_static/image39.png))
 
@@ -262,7 +262,7 @@ Avec ces modifications, la `Discontinued` colonne ont été transformée dans un
 > Étant donné que la `Discontinued` colonne dans la `Products` base de données ne peut pas avoir `NULL` valeurs, nous n’avez pas besoin à vous soucier de capture `NULL` informations dans l’interface. If, toutefois, `Discontinued` colonne peut contenir `NULL` valeurs nous voulons ajouter une troisième case d’option à la liste avec ses `Value` définie sur une chaîne vide (`Value=""`), à l’instar d’avec la catégorie et la compréhension des listes de fournisseur.
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Tandis que les BoundField et CheckBoxField automatiquement sont affichés en lecture seule, modification, insertion d’interfaces, ils n’ont pas la possibilité de personnalisation. Souvent, cependant, nous allons devoir personnaliser la modification ou insertion d’interface, peut-être en ajoutant des contrôles de validation (comme nous l’avons vu dans le didacticiel précédent) ou en personnalisant l’interface utilisateur de collecte de données (comme nous l’avons vu dans ce didacticiel). Personnalisation de l’interface avec TemplateField peut être résumée dans les étapes suivantes :
 
@@ -276,8 +276,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
-[Suivant](implementing-optimistic-concurrency-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
+> [Suivant](implementing-optimistic-concurrency-cs.md)

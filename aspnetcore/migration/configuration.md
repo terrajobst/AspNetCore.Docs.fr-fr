@@ -1,7 +1,7 @@
 ---
-title: Migration de la Configuration pour ASP.NET Core
+title: Migrer la configuration vers ASP.NET Core
 author: ardalis
-description: "En savoir plus sur la migration de configuration à partir d’un projet ASP.NET MVC à un projet ASP.NET MVC de base."
+description: En savoir plus sur la migration de configuration à partir d’un projet ASP.NET MVC à un projet ASP.NET MVC de base.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/configuration
-ms.openlocfilehash: 6c72b324de49a03a3b2c4e96ba8886d1ed249103
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 5bb89401ac54b54810fe5724b293ae8ed7e5afef
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-configuration-to-aspnet-core"></a>Migration de la Configuration pour ASP.NET Core
+# <a name="migrate-configuration-to-aspnet-core"></a>Migrer la configuration vers ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/) et [Scott Addie](https://scottaddie.com)
 
-Dans l’article précédent, nous avons commencé la migration [ASP.NET MVC vers un projet ASP.NET Core MVC](mvc.md). Dans cet article, nous migrer la configuration.
+Dans l’article précédent, nous avons commencé [migrer un projet ASP.NET MVC à ASP.NET MVC de base](mvc.md). Dans cet article, nous migrer la configuration.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/migration/configuration/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 

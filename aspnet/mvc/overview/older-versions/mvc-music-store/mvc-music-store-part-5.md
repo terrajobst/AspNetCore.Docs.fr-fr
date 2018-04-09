@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5
-title: "Partie 5 : Modification de formulaires et création de modèles | Documents Microsoft"
+title: 'Partie 5 : Modification de formulaires et création de modèles | Documents Microsoft'
 author: jongalloway
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 5 couvre la modification de formulaires et de création de modèles."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 5 couvre la modification de formulaires et de création de modèles.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: cde6fe133291254531a797a434a4b2cdd226dd5f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d584e614b5a4124044cd9decd2272192ca164643
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-5-edit-forms-and-templating"></a>Partie 5 : Modification de formulaires et création de modèles
 ====================
@@ -265,6 +265,6 @@ Maintenant lorsque nous parcourir l’URL /StoreManager/, les albums et les titr
 Remarque : Cela indique un cas simple de la création et à l’aide d’un programme d’assistance dans une vue. Pour en savoir plus sur la création de programmes d’assistance que vous pouvez utiliser tout au long de votre site, consultez mon blog : [http://bit.ly/mvc3-helper-options](http://bit.ly/mvc3-helper-options)
 
 
->[!div class="step-by-step"]
-[Précédent](mvc-music-store-part-4.md)
-[Suivant](mvc-music-store-part-6.md)
+> [!div class="step-by-step"]
+> [Précédent](mvc-music-store-part-4.md)
+> [Suivant](mvc-music-store-part-6.md)

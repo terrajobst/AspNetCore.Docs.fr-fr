@@ -1,7 +1,7 @@
 ---
-title: "Permet de créer des Applications à Page unique dans ASP.NET Core JavaScriptServices"
+title: Permet de créer des Applications à Page unique dans ASP.NET Core JavaScriptServices
 author: scottaddie
-description: "En savoir plus sur les avantages de l’utilisation de JavaScriptServices pour créer une Application de Page unique (SPA) est soutenu par ASP.NET Core."
+description: En savoir plus sur les avantages de l’utilisation de JavaScriptServices pour créer une Application de Page unique (SPA) est soutenu par ASP.NET Core.
 manager: wpickett
 ms.author: scaddie
 ms.custom: H1Hack27Feb2017
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: c962fc160cf39ad1c69f4269616c993fde420035
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 05b0d7f31e167e620f2d168109ffd907ba120a49
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>Permet de créer des Applications à Page unique dans ASP.NET Core JavaScriptServices
 
@@ -62,7 +62,7 @@ Collectivement, ces composants d’infrastructure améliorent le flux de travail
 
 Pour utiliser SpaServices, vous devez installer les éléments suivants :
 * [Node.js](https://nodejs.org/) (version 6 ou version ultérieure) avec npm
-    * Pour vérifier que ces composants sont installés et sont accessibles, exécutez la commande suivante à partir de la ligne de commande :
+  * Pour vérifier que ces composants sont installés et sont accessibles, exécutez la commande suivante à partir de la ligne de commande :
 
     ```console
     node -v && npm -v
@@ -70,8 +70,9 @@ Pour utiliser SpaServices, vous devez installer les éléments suivants :
 
 Remarque : Si vous effectuez un déploiement vers un site web Azure, vous n’avez à faire quoi que ce soit ici &mdash; Node.js est installé et disponible dans les environnements de serveur.
 
-* [Kit de développement .NET core](https://www.microsoft.com/net/download/core) 1.0 (ou version ultérieure)
-    * Si vous êtes sous Windows, cela peut être installé en sélectionnant de 2017 Visual Studio **.NET Core le développement multiplateforme** la charge de travail.
+* [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
+
+  * Si vous êtes sur Windows à l’aide de Visual Studio 2017, le Kit de développement logiciel est installé en sélectionnant le **.NET Core le développement multiplateforme** la charge de travail.
 
 * [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices/) package NuGet
 
@@ -262,7 +263,7 @@ Il existe deux modes de configuration principal d’exécution :
     * Exclut les mappages de sources.
     * Optimise le code côté client via une minimisation & de regroupement.
 
-ASP.NET Core utilise une variable d’environnement nommée `ASPNETCORE_ENVIRONMENT` pour stocker le mode de configuration. Consultez  **[définition de l’environnement](xref:fundamentals/environments#setting-the-environment)**  pour plus d’informations.
+ASP.NET Core utilise une variable d’environnement nommée `ASPNETCORE_ENVIRONMENT` pour stocker le mode de configuration. Consultez **[définition de l’environnement](xref:fundamentals/environments#setting-the-environment)** pour plus d’informations.
 
 ### <a name="running-with-net-core-cli"></a>En cours d’exécution avec le .NET Core CLI
 

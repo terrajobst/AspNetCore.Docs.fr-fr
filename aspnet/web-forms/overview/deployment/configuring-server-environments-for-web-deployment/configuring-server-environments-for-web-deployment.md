@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment
-title: "Configuration d’environnements de serveur pour le déploiement Web | Documents Microsoft"
+title: Configuration d’environnements de serveur pour le déploiement Web | Documents Microsoft
 author: jrjlee
-description: "Ce didacticiel va vous montrer comment configurer des environnements de serveur pour la prise en charge en un clic ou automatisé, le déploiement de site Web et la publication dans différentes du scénario de différentes..."
+description: Ce didacticiel va vous montrer comment configurer des environnements de serveur pour la prise en charge en un clic ou automatisé, le déploiement de site Web et la publication dans différentes du scénario de différentes...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 8a07d283e3e4344e5513152cf760ac90481d9f4b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ff6118be618a170ac76d66a9de24a7b5cc2d840a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-server-environments-for-web-deployment"></a>Configuration d’environnements de serveur pour le déploiement Web
 ====================
@@ -28,20 +28,20 @@ par [Jason Lee](https://github.com/jrjlee)
 > 
 > Ce didacticiel utilise le scénario de déploiement de Fabrikam, Inc. décrit dans [déploiement Web d’entreprise : vue d’ensemble du scénario](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md) en tant que point de référence pour l’infrastructure réseau et des exemples.
 > 
-> Pour obtenir une traduction italienne de ces didacticiels, visitez [http://www.lucamorelli.it](http://www.lucamorelli.it).
+> Pour obtenir une traduction italienne de ces didacticiels, visitez [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
 
 
 Ce didacticiel inclut les rubriques suivantes :
 
-- [Choisir l’approche appropriée pour le déploiement Web](choosing-the-right-approach-to-web-deployment.md)
-- [Scénario : Configuration d’un environnement de Test pour le déploiement Web](scenario-configuring-a-test-environment-for-web-deployment.md)
-- [Scénario : Configuration d’un environnement intermédiaire pour le déploiement Web](scenario-configuring-a-staging-environment-for-web-deployment.md)
-- [Scénario : Configuration d’un environnement de Production pour le déploiement Web](scenario-configuring-a-production-environment-for-web-deployment.md)
-- [Configuration d’un serveur Web pour la publication (Agent distant) de déploiement Web](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)
-- [Publication de déploiement de configuration d’un serveur Web pour le Web (Gestionnaire de déploiement Web)](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
-- [Configuration d’un serveur Web pour la publication (déploiement en mode hors connexion) de déploiement Web](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)
-- [Configuration d’un serveur de base de données de publication de déploiement Web](configuring-a-database-server-for-web-deploy-publishing.md)
-- [Création d’une batterie de serveurs avec l’infrastructure de batterie de serveurs Web](creating-a-server-farm-with-the-web-farm-framework.md)
+- [Choix de la bonne approche pour le déploiement web](choosing-the-right-approach-to-web-deployment.md)
+- [Scénario : configuration d’un environnement de test pour le déploiement web](scenario-configuring-a-test-environment-for-web-deployment.md)
+- [Scénario : configuration d’un environnement de préproduction pour le déploiement web](scenario-configuring-a-staging-environment-for-web-deployment.md)
+- [Scénario : configuration d’un environnement de production pour le déploiement web](scenario-configuring-a-production-environment-for-web-deployment.md)
+- [Configuration d’un serveur web pour la publication Web Deploy (Agent distant)](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)
+- [Configuration d’un serveur web pour la publication Web Deploy (Gestionnaire Web Deploy)](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
+- [Configuration d’un serveur web pour la publication Web Deploy (Déploiement hors connexion)](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)
+- [Configuration d’un serveur de base de données pour la publication Web Deploy](configuring-a-database-server-for-web-deploy-publishing.md)
+- [Création d’une batterie de serveurs avec le framework de batterie de serveurs web](creating-a-server-farm-with-the-web-farm-framework.md)
 - [Configuration des propriétés de déploiement pour un environnement cible](configuring-deployment-properties-for-a-target-environment.md)
 
 La première rubrique [en choisissant l’approche de droite pour le déploiement Web](choosing-the-right-approach-to-web-deployment.md), décrit les méthodes principales que vous pouvez utiliser pour publier des applications web à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy) 2.0. Il identifie également les scénarios correspondant à chaque approche. À ce stade, chaque rubrique scénario fournit une vue d’ensemble des tâches que vous devez effectuer et identifie les rubriques que vous devez réaliser pour vous aider à effectuer ces tâches.
@@ -68,5 +68,5 @@ Cela fait partie d’une série de cinq didacticiels sur le déploiement web de 
 - [Configuration de Team Foundation Server pour le déploiement Web](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md). Ce didacticiel explique comment configurer Team Foundation Server (TFS) pour prendre en charge différents scénarios de déploiement, y compris le déploiement automatisé en tant que partie d’un processus d’intégration continue (CI) et déclencher manuellement les déploiements des builds spécifiques.
 - [Avancé de déploiement Web d’entreprise](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md). Ce didacticiel explique comment effectuer différentes tâches de déploiement plus avancées, telles que la personnalisation des déploiements de base de données pour plusieurs environnements, à l’exclusion des fichiers et dossiers de déploiement et en prenant des applications web en mode hors connexion pendant le processus de déploiement .
 
->[!div class="step-by-step"]
-[Next](choosing-the-right-approach-to-web-deployment.md)
+> [!div class="step-by-step"]
+> [Next](choosing-the-right-approach-to-web-deployment.md)

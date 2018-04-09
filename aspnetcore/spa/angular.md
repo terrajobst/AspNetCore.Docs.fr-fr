@@ -1,7 +1,7 @@
 ---
-title: "Utilisez le modèle de projet angulaire"
+title: Utilisez le modèle de projet angulaire avec ASP.NET Core
 author: SteveSandersonMS
-description: "Découvrez comment démarrer avec le modèle de projet Application Page unique (SPA) de ASP.NET Core pour angulaire et l’interface CLI angulaire."
+description: Découvrez comment démarrer avec le modèle de projet Application Page unique (SPA) de ASP.NET Core pour angulaire et l’interface CLI angulaire.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/angular
-ms.openlocfilehash: 07cfd20809acb67bdae6561b6ccd6edf1e70a3fe
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e3956bedbc243578f6dfdc09f5f043327de7c66b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="use-the-angular-project-template"></a>Utilisez le modèle de projet angulaire
+# <a name="use-the-angular-project-template-with-aspnet-core"></a>Utilisez le modèle de projet angulaire avec ASP.NET Core
 
 > [!NOTE]
 > Cette documentation n’est pas sur le modèle de projet angulaire incluse dans ASP.NET 2.0 de base. Il s’agit du modèle angulaire plus récente à laquelle vous pouvez mettre à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
@@ -39,14 +39,12 @@ cd my-new-app
 
 Exécutez l’application à partir de Visual Studio ou le .NET Core CLI :
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
-
+#### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 Ouvrez généré *.csproj* , et exécutez l’application normalement à partir de là.
 
 Le processus de génération restaure npm dépendent de la première exécution, ce qui peut prendre plusieurs minutes. Les builds suivantes sont beaucoup plus rapides.
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
-
+#### <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli/)
 Assurez-vous d’avoir une variable d’environnement appelée `ASPNETCORE_Environment` avec la valeur `Development`. Sur Windows (dans les invites de non-PowerShell), exécutez `SET ASPNETCORE_Environment=Development`. Sur Linux ou macOS, exécutez `export ASPNETCORE_Environment=Development`.
 
 Exécutez [dotnet build](/dotnet/core/tools/dotnet-build) pour vérifier l’application se génère correctement. Sur la première exécution, le processus de génération restaure les dépendances de npm, qui peuvent prendre plusieurs minutes. Les builds suivantes sont beaucoup plus rapides.
@@ -59,10 +57,9 @@ Now listening on: http://localhost:<port>
 
 Accédez à cette URL dans un navigateur.
 
-L’application démarre une instance du serveur angulaire CLI en arrière-plan. Un message semblable au suivant est consigné : *NG Live un serveur de développement est à l’écoute sur localhost :&lt;otherport&gt;, ouvrez votre navigateur sur http://localhost :&lt;otherport&gt; /* . Ignorer ce message&mdash;il a **pas** l’URL de l’application ASP.NET Core et CLI angulaire combinée.
+L’application démarre une instance du serveur angulaire CLI en arrière-plan. Un message semblable au suivant est consigné : <em>NG Live un serveur de développement est à l’écoute sur localhost :&lt;otherport&gt;, ouvrez votre navigateur sur http://localhost: &lt;otherport&gt; /</em> . Ignorer ce message&mdash;il a <strong>pas</strong> l’URL de l’application ASP.NET Core et CLI angulaire combinée.
 
----
-
+* * *
 Le modèle de projet crée une application ASP.NET Core et une application angulaire. L’application ASP.NET Core est destinée à être utilisé pour l’accès aux données, l’autorisation et autres problèmes côté serveur. L’application angulaire, résidant dans le *ClientApp* sous-répertoire, est destiné à être utilisé pour tous les problèmes de l’interface utilisateur.
 
 ## <a name="add-pages-images-styles-modules-etc"></a>Ajouter des pages, les images, les styles, les modules, etc.
@@ -83,9 +80,9 @@ Si vous avez le `ng` outil installé de manière globale, vous pouvez exécuter 
 
 Si vous n’avez pas les `ng` outil est installé, exécutez `npm run ng` à la place. Par exemple, vous pouvez exécuter `npm run ng lint` ou `npm run ng test`.
 
-## <a name="install-npm-packages"></a>Installer les packages npm
+## <a name="install-npm-packages"></a>Installer des packages npm
 
-Pour installer des packages tiers npm, utilisez une invite de commandes dans le *ClientApp* sous-répertoire. Exemple :
+Pour installer des packages tiers npm, utilisez une invite de commandes dans le *ClientApp* sous-répertoire. Par exemple :
 
 ```console
 cd ClientApp

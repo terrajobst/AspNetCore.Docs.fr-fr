@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods
-title: "Examiner les détails et les méthodes de suppression | Documents Microsoft"
+title: Examiner les détails et les méthodes de suppression | Documents Microsoft
 author: Rick-Anderson
-description: "Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration..."
+description: 'Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: f3c56356aaa595e200a16fe0045a8b00dc5823b7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 00f7e5d6679f1bd8875931e601c8151049f785ac
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-details-and-delete-methods"></a>Examiner les détails et les méthodes de suppression
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -52,7 +52,7 @@ La méthode `HttpPost` qui supprime les données est nommée `DeleteConfirmed` p
 
 Le Common Language Runtime (CLR) nécessite des méthodes surchargées pour avoir une signature à paramètre unique (même nom de méthode, mais liste de paramètres différentes). Toutefois, vous devez ici deux méthodes de suppression : un pour GET--et un pour valider que les deux ont la même signature de paramètre. (Elles doivent toutes les deux accepter un entier unique comme paramètre.)
 
-Pour trier sur ce point, vous pouvez effectuer deux choses. Une consiste à attribuer aux méthodes des noms différents. C’est ce qu’a fait le mécanisme de génération de modèles automatique dans l’exemple précédent. Toutefois, elle présente un petit problème : ASP.NET mappe des segments d’une URL à des méthodes d’action par nom. Si vous renommez une méthode, il est probable que le routage ne pourra pas trouver cette méthode. La solution consiste à faire ce que vous voyez dans l’exemple, c’est-à-dire à ajouter l’attribut `ActionName("Delete")` à la méthode `DeleteConfirmed`. Cela exécute efficacement mappage pour le système de routage afin qu’une URL qui inclut */Delete/*un billet demande trouveront le `DeleteConfirmed` (méthode).
+Pour trier sur ce point, vous pouvez effectuer deux choses. Une consiste à attribuer aux méthodes des noms différents. C’est ce qu’a fait le mécanisme de génération de modèles automatique dans l’exemple précédent. Toutefois, elle présente un petit problème : ASP.NET mappe des segments d’une URL à des méthodes d’action par nom. Si vous renommez une méthode, il est probable que le routage ne pourra pas trouver cette méthode. La solution consiste à faire ce que vous voyez dans l’exemple, c’est-à-dire à ajouter l’attribut `ActionName("Delete")` à la méthode `DeleteConfirmed`. Cela exécute efficacement mappage pour le système de routage afin qu’une URL qui inclut <em>/Delete/</em>un billet demande trouveront le `DeleteConfirmed` (méthode).
 
 Une autre méthode pour éviter tout problème avec les méthodes qui ont des signatures et des noms identiques est artificiellement modifier la signature de la méthode POST pour inclure un paramètre inutilisé. Par exemple, certains développeurs ajoutent un type de paramètre `FormCollection` qui est passé à la méthode POST et puis simplement n’utilisez pas le paramètre :
 
@@ -70,8 +70,8 @@ Après avoir généré et testé une application web, l’étape suivante consis
 
 Commentaires sont Bienvenue.
 
-— [Rick Anderson](https://blogs.msdn.com/rickAndy) twitter :[@RickAndMSFT](https://twitter.com/RickAndMSFT)  
-— [Scott Hanselman](http://www.hanselman.com/blog/) twitter :[@shanselman](https://twitter.com/shanselman)
+— [Rick Anderson](https://blogs.msdn.com/rickAndy) twitter : [@RickAndMSFT](https://twitter.com/RickAndMSFT)  
+— [Scott Hanselman](http://www.hanselman.com/blog/) twitter : [@shanselman](https://twitter.com/shanselman)
 
->[!div class="step-by-step"]
-[Précédent](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-validation-to-the-model.md)

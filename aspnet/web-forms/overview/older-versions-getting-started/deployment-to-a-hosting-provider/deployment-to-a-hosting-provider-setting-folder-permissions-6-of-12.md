@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12
-title: "Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : définition des autorisations dossier - 6 de 12 | Documents Microsoft"
+title: 'Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : définition des autorisations dossier - 6 de 12 | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 42085fff5f1aed1440f49e1e2ceee0cf0e751e2c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 573e75221a1c0018bded7544e584b0c75f47d607
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-setting-folder-permissions---6-of-12"></a>Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : définition des autorisations dossier - 6 de 12
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
@@ -83,6 +83,6 @@ Dans cet exemple, la raison pour laquelle Elmah a été impossible d’enregistr
 
 Pour plus d’informations sur la façon d’accorder des autorisations pour les identités du pool d’applications, consultez [identités du Pool d’applications](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) et [le contenu sécurisé dans IIS via ACL du système de fichiers](https://www.iis.net/learn/get-started/planning-for-security/secure-content-in-iis-through-file-system-acls) sur le site IIS.net.
 
->[!div class="step-by-step"]
-[Précédent](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)
-[Suivant](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)
+> [!div class="step-by-step"]
+> [Précédent](deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12.md)
+> [Suivant](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
-title: "L’appartenance et l’Administration | Documents Microsoft"
+title: L’appartenance et l’Administration | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
 msc.type: authoredcontent
-ms.openlocfilehash: a10dbfe1ca49baee1604aac8dd9a1f93ccfcb7f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 166bc642ea2083f455be0648e424f0b0ae3b082c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="membership-and-administration"></a>L’appartenance et l’Administration
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -66,14 +66,14 @@ ASP.NET Web Forms fournit des capacités d’appartenance. À l’aide du modèl
 
     [!code-csharp[Main](membership-and-administration/samples/sample2.cs?highlight=11,26-28)]
 6. Notez que `AddUserAndRole` est souligné en rouge. Double-cliquez sur le code AddUserAndRole.  
- La lettre « A » au début de la méthode de mise en surbrillance est soulignée.
+   La lettre « A » au début de la méthode de mise en surbrillance est soulignée.
 7. Placez le curseur sur la lettre « A » et cliquez sur l’interface utilisateur qui vous permet de générer un stub de méthode pour le `AddUserAndRole` (méthode). 
 
     ![L’appartenance et Advministration - générer le Stub de méthode](membership-and-administration/_static/image1.png)
 8. Cliquez sur l’option intitulée :  
     `Generate method stub for "AddUserAndRole" in "WingtipToys.Logic.RoleActions"`
 9. Ouvrez le *RoleActions.cs* à partir de la *logique* dossier.  
- Le `AddUserAndRole` méthode a été ajoutée au fichier de classe.
+   Le `AddUserAndRole` méthode a été ajoutée au fichier de classe.
 10. Modifier la *RoleActions.cs* fichier en supprimant le `NotImplementedeException` et en ajoutant le code mis en surbrillance en jaune, afin qu’il apparaisse comme suit :  
 
     [!code-csharp[Main](membership-and-administration/samples/sample3.cs?highlight=5-7,15-51)]
@@ -120,8 +120,8 @@ Ensuite, vous allez créer un dossier nommé *Admin* exemple d’application pou
 1. Cliquez sur le nom du projet (**Wingtip Toys**) dans **l’Explorateur de solutions** et sélectionnez **ajouter**  - &gt; **nouveau dossier**.
 2. Nommez le nouveau dossier *Admin*.
 3. Avec le bouton droit le *Admin* dossier, puis sélectionnez **ajouter**  - &gt; **un nouvel élément**.   
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
-4. Sélectionnez le **Visual C#** - &gt; **Web** groupe de modèles sur la gauche. Dans la liste du milieu, sélectionnez **Web Form avec Page maître**, nommez-le *AdminPage.aspx***,** , puis sélectionnez **ajouter**.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+4. Sélectionnez le <strong>Visual C#</strong> - &gt; <strong>Web</strong> groupe de modèles sur la gauche. Dans la liste du milieu, sélectionnez <strong>Web Form avec Page maître</strong>, nommez-le <em>AdminPage.aspx</em><strong>,</strong> , puis sélectionnez <strong>ajouter</strong>.
 5. Sélectionnez le *Site.Master* de fichiers en tant que la page maître, puis choisissez **OK**.
 
 #### <a name="add-a-webconfig-file"></a>Ajouter un fichier Web.config
@@ -129,8 +129,8 @@ Ensuite, vous allez créer un dossier nommé *Admin* exemple d’application pou
 En ajoutant un *Web.config* de fichiers à la *Admin* dossier, vous pouvez restreindre l’accès à la page contenue dans le dossier.
 
 1. Avec le bouton droit le *Admin* et sélectionnez **ajouter**  - &gt; **un nouvel élément**.  
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
-2. Dans la liste des modèles de web Visual c#, sélectionnez **fichier de Configuration Web**à partir de la liste du milieu, acceptez le nom par défaut *Web.config***,** , puis sélectionnez **Ajouter**.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+2. Dans la liste des modèles de web Visual c#, sélectionnez <strong>fichier de Configuration Web</strong>à partir de la liste du milieu, acceptez le nom par défaut <em>Web.config</em><strong>,</strong> , puis sélectionnez <strong>Ajouter</strong>.
 3. Remplacez le document XML contenu dans le *Web.config* fichier avec les éléments suivants :  
 
     [!code-xml[Main](membership-and-administration/samples/sample4.xml)]
@@ -167,9 +167,9 @@ Jusqu'à présent, vous avez créé le rôle « canEdit » et ajouté un utili
 Dans le code que vous avez entré pour le *AdminPage.aspx.cs* fichier code-behind, une classe appelée `AddProducts` effectue le travail de l’ajout de produits à la base de données. Cette classe n’existe pas encore, vous allez donc créer il maintenant.
 
 1. Dans **l’Explorateur de solutions**, avec le bouton droit le *logique* dossier, puis sélectionnez **ajouter**  - &gt; **un nouvel élément**.   
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
 2. Sélectionnez le **Visual C#**  - &gt; **Code** groupe de modèles sur la gauche. Ensuite, sélectionnez **classe**à partir du milieu de liste et nommez-le *AddProducts.cs*.   
- Le nouveau fichier de classe s’affiche.
+   Le nouveau fichier de classe s’affiche.
 3. Remplacez le code existant par le code ci-dessous :  
 
     [!code-csharp[Main](membership-and-administration/samples/sample9.cs)]
@@ -235,15 +235,15 @@ Le `Page_Load` Gestionnaire d’événements vérifie la valeur de chaîne de re
 Vous pouvez exécuter l’application maintenant pour voir comment vous pouvez ajouter, supprimer et les éléments de mise à jour dans le panier d’achat. Le total de panier d’achat reflète le coût total de tous les éléments dans le panier d’achat.
 
 1. Dans l’Explorateur de solutions, appuyez sur **F5** pour exécuter l’exemple d’application Wingtip Toys.  
- Le navigateur s’ouvre et affiche le *Default.aspx* page.
+   Le navigateur s’ouvre et affiche le *Default.aspx* page.
 2. Cliquez sur le **connecter** lien en haut de la page. 
 
     ![L’appartenance et l’Administration - connectez-vous de lien](membership-and-administration/_static/image2.png)
 
- Le *Login.aspx* page s’affiche.
+   Le *Login.aspx* page s’affiche.
 3. Utilisez le nom d’utilisateur suivant et le mot de passe :  
- Nom d’utilisateur :canEditUser@wingtiptoys.com  
- Mot de passe : Pa$ $word1 
+   Nom d’utilisateur : canEditUser@wingtiptoys.com  
+   Mot de passe : Pa$ $word1 
 
     ![L’appartenance et l’Administration - Page de connexion](membership-and-administration/_static/image3.png)
 4. Cliquez sur le **connecter** bouton vers le bas de la page.
@@ -254,7 +254,7 @@ Vous pouvez exécuter l’application maintenant pour voir comment vous pouvez a
 
     ![L’appartenance et l’Administration - Page d’administration](membership-and-administration/_static/image5.png)
 
- Notez que les messages de champ obligatoire sont affichés.
+   Notez que les messages de champ obligatoire sont affichés.
 7. Ajouter les détails d’un nouveau produit, puis cliquez sur le **ajouter un produit** bouton. 
 
     ![L’appartenance et l’Administration - ajouter un produit](membership-and-administration/_static/image6.png)
@@ -268,9 +268,9 @@ Vous pouvez exécuter l’application maintenant pour voir comment vous pouvez a
     ![L’appartenance et l’Administration - Remove produit](membership-and-administration/_static/image8.png)
 12. Sélectionnez **produits** à partir du menu de navigation supérieure pour confirmer que le produit a été supprimé.
 13. Cliquez sur **session** d’exister en mode d’administration.   
- Notez que le volet de navigation supérieure n’affiche plus le **Admin** élément de menu.
+    Notez que le volet de navigation supérieure n’affiche plus le **Admin** élément de menu.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous ajouté un rôle personnalisé et un utilisateur appartenant au rôle personnalisé, un accès limité à la page et le dossier d’administration et fourni la navigation de l’utilisateur appartenant au rôle personnalisé. Liaison de modèle vous permet de remplir un **DropDownList** contrôle de données. Vous implémenté la **FileUpload** contrôle et les contrôles de validation. En outre, vous avez appris comment ajouter et supprimer des produits à partir d’une base de données. Dans l’étape suivante du didacticiel, vous allez apprendre à implémenter le routage ASP.NET.
 
@@ -281,6 +281,6 @@ Dans ce didacticiel, vous ajouté un rôle personnalisé et un utilisateur appar
 [Déployer une application de formulaires Web ASP.NET sécurisée avec base de données SQL, OAuth et l’appartenance à un Site Web Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  
 [Microsoft Azure - version d’évaluation gratuite](https://azure.microsoft.com/pricing/free-trial/)
 
->[!div class="step-by-step"]
-[Précédent](checkout-and-payment-with-paypal.md)
-[Suivant](url-routing.md)
+> [!div class="step-by-step"]
+> [Précédent](checkout-and-payment-with-paypal.md)
+> [Suivant](url-routing.md)

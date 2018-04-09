@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
-title: "Créer un nouveau projet ASP.NET MVC | Documents Microsoft"
+title: Créer un nouveau projet ASP.NET MVC | Documents Microsoft
 author: microsoft
-description: "Étape 1 illustre la manière de mettre la structure d’application de NerdDinner base en place."
+description: Étape 1 illustre la manière de mettre la structure d’application de NerdDinner base en place.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 msc.type: authoredcontent
-ms.openlocfilehash: 4d30a6803b1478014a2afb814ac317df27394446
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: d15ca67f0ddd8db6842bc5112996ae2dee433536
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-a-new-aspnet-mvc-project"></a>Créer un nouveau projet ASP.NET MVC
 ====================
@@ -136,6 +136,6 @@ Plus loin dans ce didacticiel nous reviendrons plus de tests automatisés et ajo
 
 Nous avons désormais une structure d’application de base en place. Nous allons maintenant [créer une base de données pour stocker les données d’application](create-a-database.md).
 
->[!div class="step-by-step"]
-[Précédent](introducing-the-nerddinner-tutorial.md)
-[Suivant](create-a-database.md)
+> [!div class="step-by-step"]
+> [Précédent](introducing-the-nerddinner-tutorial.md)
+> [Suivant](create-a-database.md)

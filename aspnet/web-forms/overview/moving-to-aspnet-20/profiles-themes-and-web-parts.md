@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
-title: "Les profils, les thèmes et les composants WebPart | Documents Microsoft"
+title: Les profils, les thèmes et les composants WebPart | Documents Microsoft
 author: microsoft
-description: "Voici les principales modifications de configuration et d’instrumentation dans ASP.NET 2.0. La nouvelle API de configuration ASP.NET permet des modifications de configuration doit être effectuée pr..."
+description: Voici les principales modifications de configuration et d’instrumentation dans ASP.NET 2.0. La nouvelle API de configuration ASP.NET permet des modifications de configuration doit être effectuée pr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/profiles-themes-and-web-parts
 msc.type: authoredcontent
-ms.openlocfilehash: 2c6ba11799a5a9be3d8c0037fad5d79d8177c0e8
-ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
+ms.openlocfilehash: b749ed093fbaacf45b60f2826a2c20bac219a5c7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="profiles-themes-and-web-parts"></a>Les profils, les thèmes et les composants WebPart
 ====================
@@ -341,19 +341,19 @@ Dans cette partie de la procédure pas à pas, vous créez une page qui utilise 
 4. Placez le point d’insertion avant le `<div>` des étiquettes sur l’aire de conception et appuyez sur ENTRÉE pour ajouter une nouvelle ligne. Placez le point d’insertion avant le caractère de nouvelle ligne, cliquez sur le **Format du bloc** dans le menu de contrôle de liste déroulante, puis sélectionnez le **titre 1** option. Dans l’en-tête, ajoutez le texte **Page de démonstration WebPart**.
 5. À partir de la **WebParts** onglet de la boîte à outils, faites glisser un **WebPartManager** contrôle sur la page, en plaçant juste après le caractère de nouvelle ligne et avant la `<div>`balises.   
   
- Le **WebPartManager** contrôle ne restitue une sortie, donc elle apparaît sous la forme d’une zone grise sur l’aire du concepteur.
+   Le **WebPartManager** contrôle ne restitue une sortie, donc elle apparaît sous la forme d’une zone grise sur l’aire du concepteur.
 6. Placez le point d’insertion dans la `<div>` balises.
 7. Dans le **disposition** menu, cliquez sur **insérer un tableau**et créer une table qui comporte une ligne et trois colonnes. Cliquez sur le **propriétés de cellule** bouton, sélectionnez **haut** à partir de la **Alignement Vertical** la liste déroulante, cliquez sur **OK**et cliquez sur **OK** à nouveau pour créer la table.
 8. Dans la colonne de table de gauche, faites glisser un contrôle WebPartZone. Cliquez sur le **WebPartZone** contrôler, choisissez **propriétés**et définissez les propriétés suivantes :   
   
- ID : SidebarZone   
+   ID : SidebarZone   
   
- HeaderText : barre latérale
+   HeaderText : barre latérale
 9. Faites glisser un deuxième **WebPartZone** un contrôle dans la colonne de table intermédiaire et définissez les propriétés suivantes :   
   
- ID : MainZone   
+   ID : MainZone   
   
- HeaderText : principal
+   HeaderText : principal
 10. Enregistrez le fichier.
 
 Votre page dispose maintenant de deux zones distinctes que vous pouvez contrôler séparément. Toutefois, aucune zone n’a aucun contenu, afin de la création de contenu est l’étape suivante. Pour cette procédure pas à pas, vous travaillez avec les contrôles WebPart qui affichent uniquement le contenu statique.
@@ -462,10 +462,10 @@ Vous pouvez maintenant tester la capacité de modifier des pages et mise en page
 2. Pour démontrer que la personnalisation fonctionne, fermez le navigateur, puis rechargez la page. Les modifications apportées sont enregistrées pour les futures sessions de navigateur.
 3. À partir de la **Mode d’affichage** menu, sélectionnez **modifier**.   
   
- Chaque contrôle sur la page est maintenant affiché avec une flèche vers le bas dans la barre de titre, qui contient la liste déroulante d’actions verbales.
+   Chaque contrôle sur la page est maintenant affiché avec une flèche vers le bas dans la barre de titre, qui contient la liste déroulante d’actions verbales.
 4. Cliquez sur la flèche pour afficher le menu d’actions verbales sur le **Mes liens** contrôle. Cliquez sur le **modifier** verbe.   
   
- Le **EditorZone** contrôle apparaît, affichant le EditorPart contrôle vous avez ajouté.
+   Le **EditorZone** contrôle apparaît, affichant le EditorPart contrôle vous avez ajouté.
 5. Dans le **apparence** section du contrôle d’édition, modifier le **titre** dans Mes favoris, utilisez le **Type de Chrome** liste déroulante pour sélectionner **titre uniquement**, puis cliquez sur **appliquer**. La capture d’écran suivante montre la page en mode édition.
 
 ### <a name="web-parts-demo-page-in-edit-mode"></a>Page de démonstration WebPart en mode édition
@@ -496,7 +496,7 @@ Vous pouvez également autoriser les utilisateurs à ajouter des contrôles WebP
 1. Ouvrez la page WebPartsDemo.aspx et basculer vers **conception** vue.
 2. À partir de la **WebParts** onglet de la boîte à outils, faites glisser un contrôle CatalogZone dans la colonne de droite de la table, sous la **EditorZone** contrôle.   
   
- Les deux contrôles peuvent être dans la même cellule de table, car ils seront afficheront pas en même temps.
+   Les deux contrôles peuvent être dans la même cellule de table, car ils seront afficheront pas en même temps.
 3. Dans le volet Propriétés, affectez à la chaîne **ajouter des WebParts** à la propriété HeaderText de la **CatalogZone** contrôle.
 4. À partir de la **WebParts** section de la boîte à outils, faites glisser un contrôle DeclarativeCatalogPart dans la zone de contenu de la **CatalogZone** contrôle.
 5. Cliquez sur la flèche dans le coin supérieur droit de la **DeclarativeCatalogPart** de contrôle pour exposer son menu tâches, puis sélectionnez **modifier les modèles**.
@@ -504,7 +504,7 @@ Vous pouvez également autoriser les utilisateurs à ajouter des contrôles WebP
 7. Basculez vers **Source** vue. Inspecter le code source de la &lt;asp : catalogzone&gt; élément. Notez que la **DeclarativeCatalogPart** contrôle contient un &lt;webpartstemplate&gt; élément avec les deux contrôles serveur délimités que vous serez en mesure d’ajouter à votre page à partir du catalogue.
 8. Ajouter un **titre** propriété à chacun des contrôles ajoutés au catalogue, à l’aide de la valeur de chaîne affichée pour chaque titre de l’exemple de code ci-dessous. Même si le titre n’est pas une propriété vous pouvez définir normalement sur ces deux contrôles serveur au moment du design, lorsqu’un utilisateur ajoute ces contrôles à un **WebPartZone** zone à partir du catalogue en cours d’exécution, ils sont chacun inclus dans un  **GenericWebPart** contrôle. Cela leur permet d’agir en tant que contrôles WebPart, par conséquent, ils pourront afficher les titres.   
   
- Le code pour les deux contrôles contenus dans le **DeclarativeCatalogPart** contrôle doit se présenter comme suit. 
+   Le code pour les deux contrôles contenus dans le **DeclarativeCatalogPart** contrôle doit se présenter comme suit. 
 
     [!code-aspx[Main](profiles-themes-and-web-parts/samples/sample26.aspx)]
 9. Enregistrez la page.
@@ -516,12 +516,12 @@ Vous pouvez désormais tester le catalogue.
 1. Charger la page dans un navigateur.
 2. Cliquez sur le **Mode d’affichage** menu déroulant, puis sélectionnez **catalogue**.   
   
- Le catalogue intitulé **ajouter des WebParts** s’affiche.
+   Le catalogue intitulé **ajouter des WebParts** s’affiche.
 3. Faites glisser le **Mes favoris** contrôler à partir de la zone principale vers le haut de la zone de la barre latérale et placez-le à cet endroit.
 4. Dans le **ajouter des WebParts** de catalogue, sélectionnez les deux cases à cocher, puis **principal** à partir de la liste déroulante qui contient les zones disponibles.
 5. Cliquez sur **ajouter** dans le catalogue. Les contrôles sont ajoutés à la zone principale. Si vous le souhaitez, vous pouvez ajouter plusieurs instances de contrôles à partir du catalogue à votre page.   
   
- La capture d’écran suivante montre la page avec le contrôle de téléchargement de fichier et le calendrier dans la zone principale. 
+   La capture d’écran suivante montre la page avec le contrôle de téléchargement de fichier et le calendrier dans la zone principale. 
 
 ![Contrôles ajoutés à la zone Main à partir du catalogue](profiles-themes-and-web-parts/_static/image7.gif)
 

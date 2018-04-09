@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
-title: "Exclusion de fichiers et dossiers du déploiement | Documents Microsoft"
+title: Exclusion de fichiers et dossiers du déploiement | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment vous pouvez exclure les fichiers et dossiers à partir d’un package de déploiement web lorsque vous générez et empaqueter un projet d’application web."
+description: Cette rubrique décrit comment vous pouvez exclure les fichiers et dossiers à partir d’un package de déploiement web lorsque vous générez et empaqueter un projet d’application web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 80810415bac473a58f60110fb9d08772e0627bd5
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c435448bf057bbef9127d66ffda24a07729f2322
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>Exclusion de fichiers et dossiers de déploiement
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit comment vous pouvez exclure les fichiers et dossiers à partir d’un package de déploiement web lorsque vous générez et empaqueter un projet d’application web.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="overview"></a>Vue d'ensemble
 
@@ -74,7 +74,7 @@ Bien que vous pourriez manipuler vos fichiers projet pour exclure des fichiers e
 1. Créez un fichier de projet personnalisé nommé *[nom du projet].wpp.targets* dans le même dossier que votre fichier projet.
 
     > [!NOTE]
-    > Le *. wpp.targets* fichier doit aller dans le même dossier que votre fichier de projet d’application web et le #x 2014 ; par exemple, *ContactManager.Mvc.csproj*& #x 2014 ; plutôt que dans le même dossier les fichiers de projet personnalisés que vous utilisez pour le contrôle la génération et le processus de déploiement.
+    > Le *. wpp.targets* fichier doit aller dans le même dossier que votre fichier de projet d’application web&#x2014;par exemple, *ContactManager.Mvc.csproj*&#x2014;plutôt que dans le même dossier que personnalisés fichiers de projet que vous permet de contrôler le processus de génération et de déploiement.
 2. Dans le *. wpp.targets* , ajoutez une **ItemGroup** élément.
 3. Dans le **ItemGroup** élément, ajouter **ExcludeFromPackageFolders** et **ExcludeFromPackageFiles** éléments à exclure certains fichiers et dossiers en fonction des besoins.
 
@@ -106,16 +106,16 @@ La procédure suivante vous montre comment ajouter un *. wpp.targets* fichier po
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample2.xml)]
 6. Si vous souhaitez exclure des dossiers à partir du package web, ajoutez un **ExcludeFromPackageFolders** élément à la **ItemGroup** élément :
 
-    1. Dans le **Include** d’attribut, de fournir une liste délimitée par des points-virgules des dossiers à exclure.
-    2. Dans le **FromTarget** l’élément de métadonnées, fournir une valeur explicite pour indiquer pourquoi les dossiers sont exclus, telles que le nom de la *. wpp.targets* fichier.
+   1. Dans le **Include** d’attribut, de fournir une liste délimitée par des points-virgules des dossiers à exclure.
+   2. Dans le **FromTarget** l’élément de métadonnées, fournir une valeur explicite pour indiquer pourquoi les dossiers sont exclus, telles que le nom de la *. wpp.targets* fichier.
 
-    [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
+      [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample3.xml)]
 7. Si vous souhaitez exclure des fichiers à partir du package web, ajoutez un **ExcludeFromPackageFiles** élément à la **ItemGroup** élément :
 
-    1. Dans le **Include** d’attribut, de fournir une liste délimitée par des points-virgules des fichiers à exclure.
-    2. Dans le **FromTarget** l’élément de métadonnées, fournir une valeur explicite pour indiquer pourquoi les fichiers sont exclus, telles que le nom de la *. wpp.targets* fichier.
+   1. Dans le **Include** d’attribut, de fournir une liste délimitée par des points-virgules des fichiers à exclure.
+   2. Dans le **FromTarget** l’élément de métadonnées, fournir une valeur explicite pour indiquer pourquoi les fichiers sont exclus, telles que le nom de la *. wpp.targets* fichier.
 
-    [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
+      [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample4.xml)]
 8. Le *[nom du projet].wpp.targets* fichier doit maintenant ressembler à ceci :
 
     [!code-xml[Main](excluding-files-and-folders-from-deployment/samples/sample5.xml)]
@@ -131,6 +131,6 @@ Cette rubrique décrit comment exclure des fichiers et des dossiers lorsque vous
 
 Pour plus d’informations sur l’utilisation de fichiers de projet Microsoft Build Engine (MSBuild) personnalisés pour contrôler le processus de déploiement, consultez [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md) et [comprendre le processus de génération](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Pour plus d’informations sur l’empaquetage et le processus de déploiement, consultez [génération et des projets d’Application Web Packaging](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md), [configuration des paramètres pour le déploiement du Package Web](../web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment.md), et [ Déploiement de Packages Web](../web-deployment-in-the-enterprise/deploying-web-packages.md).
 
->[!div class="step-by-step"]
-[Précédent](deploying-membership-databases-to-enterprise-environments.md)
-[Suivant](taking-web-applications-offline-with-web-deploy.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-membership-databases-to-enterprise-environments.md)
+> [Suivant](taking-web-applications-offline-with-web-deploy.md)

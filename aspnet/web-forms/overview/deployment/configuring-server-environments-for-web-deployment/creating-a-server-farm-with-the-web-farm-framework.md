@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework
-title: "Création d’une batterie de serveurs avec l’infrastructure de batterie de serveurs Web | Documents Microsoft"
+title: Création d’une batterie de serveurs avec l’infrastructure de batterie de serveurs Web | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit l’utilisation de Web Farm Framework (WFF) 2.0 pour créer et configurer une batterie de serveurs web à partir d’un ensemble de serveurs."
+description: Cette rubrique décrit l’utilisation de Web Farm Framework (WFF) 2.0 pour créer et configurer une batterie de serveurs web à partir d’un ensemble de serveurs.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/creating-a-server-farm-with-the-web-farm-framework
 msc.type: authoredcontent
-ms.openlocfilehash: c592ed78a7332834923ce2290af77919fb3c7576
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 53a91660953795f2c55edcd795b053641d308dfe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-server-farm-with-the-web-farm-framework"></a>Création d’une batterie de serveurs avec l’infrastructure de batterie de serveurs Web
 ====================
@@ -27,7 +27,7 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit l’utilisation de Web Farm Framework (WFF) 2.0 pour créer et configurer une batterie de serveurs web à partir d’un ensemble de serveurs.
 
 
-WFF vous permet de synchroniser des produits de plateforme web et des composants, des applications web, des sites Web et les paramètres de configuration sur plusieurs serveurs web d’équilibrage de la charge. Dans les scénarios où vous avez besoin de plusieurs serveurs web, comme les environnements intermédiaire et de production, cela peut considérablement simplifier votre processus de déploiement et de configuration. Vous pouvez déployer une application web sur un seul serveur #x 2014 ; le *serveur principal*& #x 2014 ; et qui seront WFF réplique automatiquement cette application web sur tous les autres serveurs de web dans la batterie de serveurs.
+WFF vous permet de synchroniser des produits de plateforme web et des composants, des applications web, des sites Web et les paramètres de configuration sur plusieurs serveurs web d’équilibrage de la charge. Dans les scénarios où vous avez besoin de plusieurs serveurs web, comme les environnements intermédiaire et de production, cela peut considérablement simplifier votre processus de déploiement et de configuration. Vous pouvez déployer une application web sur un seul serveur&#x2014;le *serveur principal*&#x2014;et WFF réplique automatiquement cette application web sur tous les autres serveurs de web dans la batterie de serveurs.
 
 ## <a name="understanding-the-web-farm-framework"></a>Présentation de l’infrastructure de batterie de serveurs Web
 
@@ -51,7 +51,7 @@ Avant de commencer à configurer vos environnements intermédiaire et de product
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
-Pour effectuer les tâches et les procédures pas à pas dans cette rubrique, vous aurez besoin d’au moins trois serveurs & #x 2014 ; un seul contrôleur WFF, un principal serveur web pour la batterie de serveurs et un ou plusieurs serveurs web secondaire pour la batterie de serveurs. Vous pouvez ajouter plusieurs serveurs secondaires à une batterie de serveurs WFF à tout moment. À un niveau élevé, pour créer et configurer une batterie de serveurs WFF pour votre environnement intermédiaire ou de production, que vous devez :
+Pour effectuer les tâches et les procédures pas à pas dans cette rubrique, vous aurez besoin d’au moins trois serveurs&#x2014;un seul contrôleur WFF, un serveur web principal pour la batterie de serveurs et un ou plusieurs serveurs web secondaire pour la batterie de serveurs. Vous pouvez ajouter plusieurs serveurs secondaires à une batterie de serveurs WFF à tout moment. À un niveau élevé, pour créer et configurer une batterie de serveurs WFF pour votre environnement intermédiaire ou de production, que vous devez :
 
 - Créer un serveur de contrôleur en installant Internet Information Services (IIS) 7.5 et WFF 2.0.
 - Préparer les serveurs principaux et secondaires en créant un compte d’administrateur commun et de configuration des exceptions de pare-feu.
@@ -78,7 +78,7 @@ Pour créer un serveur de contrôleur WFF, vous devez installer IIS 7 ou version
 2. En haut de la **Web Platform Installer 3.0** fenêtre, cliquez sur **produits**.
 3. Sur le côté gauche de la fenêtre, dans le volet de navigation, cliquez sur **Server**.
 4. Dans le **Configuration IIS 7 recommandée** , cliquez sur **ajouter**.
-5. Dans le **Framework 2 de la batterie de serveurs Web. *** x* , cliquez sur **ajouter**.
+5. Dans le <strong>Web Farm Framework 2.</strong> <em>x</em> , cliquez sur <strong>ajouter</strong>.
 
     ![](creating-a-server-farm-with-the-web-farm-framework/_static/image2.png)
 6. Cliquez sur **Installer**. Notez que le programme d’installation de la plateforme Web a ajouté l’outil de déploiement Web, ainsi que diverses autres dépendances, à la liste de l’installation.
@@ -96,7 +96,7 @@ Avant de créer une batterie de serveurs WFF, vous devez effectuer certaines tâ
 
 Pour plus d’informations sur la façon de configurer ces exceptions de pare-feu dans le pare-feu Windows, consultez [système et les spécifications de plateforme pour le Web Farm Framework 2.0 pour IIS 7](https://go.microsoft.com/?linkid=9805128). Pour les autres systèmes de pare-feu, consultez votre documentation du produit.
 
-Vous pouvez utiliser la procédure suivante pour ajouter un compte de domaine au groupe local Administrateurs dans Windows Server 2008 R2. Vous devez effectuer cette procédure sur chaque serveur que vous souhaitez ajouter à la batterie de serveurs & #x 2014 ; en d’autres termes, ajoutez le compte de domaine au groupe Administrateurs local sur le serveur principal et sur chaque serveur secondaire.
+Vous pouvez utiliser la procédure suivante pour ajouter un compte de domaine au groupe local Administrateurs dans Windows Server 2008 R2. Vous devez effectuer cette procédure sur chaque serveur que vous souhaitez ajouter à la batterie de serveurs&#x2014;en d’autres termes, ajoutez le compte de domaine au groupe Administrateurs local sur le serveur principal et sur chaque serveur secondaire.
 
 **Pour ajouter un compte de domaine au groupe Administrateurs local**
 
@@ -111,7 +111,7 @@ Vous pouvez utiliser la procédure suivante pour ajouter un compte de domaine au
     ![](creating-a-server-farm-with-the-web-farm-framework/_static/image5.png)
 6. Dans le **propriétés du groupe Administrateurs** boîte de dialogue, cliquez sur **OK**.
 
-Vos serveurs sont désormais prêts à être ajouté à une batterie de serveurs. Dans le cas du serveur principal, vous pouvez configurer le serveur pour répondre aux exigences de votre application avant ou après avoir créé la batterie de serveurs & #x 2014 ; dans les deux cas, le WFF synchronisera les serveurs en déployant les produits de mêmes, les composants, ou configuration de vos serveurs secondaires. Par souci de simplicité, ce didacticiel suppose que vous allez configurer le serveur principal lorsque vous avez fini de créer la batterie de serveurs.
+Vos serveurs sont désormais prêts à être ajouté à une batterie de serveurs. Dans le cas du serveur principal, vous pouvez configurer le serveur pour répondre aux exigences de votre application avant ou après avoir créé la batterie de serveurs&#x2014;dans les deux cas, le WFF synchronisera les serveurs en déployant des produits, de composants ou de configuration pour vos serveurs secondaires. Par souci de simplicité, ce didacticiel suppose que vous allez configurer le serveur principal lorsque vous avez fini de créer la batterie de serveurs.
 
 ## <a name="create-the-wff-server-farm"></a>Créer la batterie de serveurs WFF
 
@@ -225,12 +225,12 @@ Vous pouvez surveiller l’intégrité de votre batterie de serveurs à tout mom
 
 ## <a name="conclusion"></a>Conclusion
 
-Votre batterie de serveurs WFF doit maintenant être en cours d’exécution. Vous pouvez configurer le serveur principal pour prendre en charge quelle approche de déploiement que vous préférez & le #x 2014 ; consultez la section obtenir des informations supplémentaires pour plus d’informations & #x 2014 ; votre configuration est répliquée sur chaque serveur secondaire dans la batterie de serveurs.
+Votre batterie de serveurs WFF doit maintenant être en cours d’exécution. Vous pouvez configurer le serveur principal pour prendre en charge quelle approche de déploiement que vous préférez&#x2014;, consultez la section obtenir des informations supplémentaires pour plus d’informations&#x2014;et votre configuration est répliquée sur chaque serveur secondaire dans la batterie de serveurs.
 
 ## <a name="further-reading"></a>informations supplémentaires
 
 Pour plus d’informations sur tous les aspects de la configuration et l’utilisation de la WFF, consultez la [Microsoft Web Farm Framework 2.0 pour IIS 7](https://go.microsoft.com/?linkid=9805129) site Web.
 
->[!div class="step-by-step"]
-[Précédent](configuring-a-database-server-for-web-deploy-publishing.md)
-[Suivant](configuring-deployment-properties-for-a-target-environment.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-a-database-server-for-web-deploy-publishing.md)
+> [Suivant](configuring-deployment-properties-for-a-target-environment.md)

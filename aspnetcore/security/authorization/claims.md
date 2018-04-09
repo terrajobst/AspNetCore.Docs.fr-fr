@@ -1,7 +1,7 @@
 ---
-title: "Autorisation basée sur les revendications"
+title: Autorisation basée sur les revendications dans ASP.NET Core
 author: rick-anderson
-description: "Ce document explique comment ajouter des contrôles de revendications d’autorisation dans une application ASP.NET Core."
+description: Découvrez comment ajouter des vérifications de revendications d’autorisation dans une application ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: 608aaa469c5ca20fab8250025804e28e7808122d
-ms.sourcegitcommit: 7a87d66cf1d01febe6635c7306f2f679434901d1
+ms.openlocfilehash: da308b67be046395bb1baa0f272e767cccbc99c8
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="claims-based-authorization"></a>Autorisation basée sur les revendications
+# <a name="claims-based-authorization-in-aspnet-core"></a>Autorisation basée sur les revendications dans ASP.NET Core
 
 <a name="security-authorization-claims-based"></a>
 
@@ -103,7 +103,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="multiple-policy-evaluation"></a>Évaluation des stratégies
 
-Si vous appliquez plusieurs stratégies à un contrôleur ou d’action, toutes les stratégies doivent passer avant que l’accès est accordé. Exemple :
+Si vous appliquez plusieurs stratégies à un contrôleur ou d’action, toutes les stratégies doivent passer avant que l’accès est accordé. Par exemple :
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -122,4 +122,4 @@ public class SalaryController : Controller
 
 Dans l’exemple ci-dessus n’importe quelle identité ce qui répond à la `EmployeeOnly` stratégie peut accéder à la `Payslip` action en tant que cette stratégie est appliquée sur le contrôleur. Toutefois afin d’appeler le `UpdateSalary` action doit répondre à l’identité *les deux* le `EmployeeOnly` stratégie et le `HumanResources` stratégie.
 
-Si vous souhaitez que les stratégies plus complexes, tels que prend une date de naissance revendication, calculer un âge à partir de celui-ci, puis la vérification de la durée de vie est 21 ou antérieure, vous devez écrire [gestionnaires de stratégie personnalisée](policies.md).
+Si vous souhaitez que les stratégies plus complexes, tels que prend une date de naissance revendication, calculer un âge à partir de celui-ci, puis la vérification de la durée de vie est 21 ou antérieure, vous devez écrire [gestionnaires de stratégie personnalisée](xref:security/authorization/policies).

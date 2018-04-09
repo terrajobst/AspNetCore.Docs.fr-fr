@@ -1,7 +1,7 @@
 ---
-title: "Autorisation basée sur des stratégies dans ASP.NET Core"
+title: Autorisation basée sur des stratégies dans ASP.NET Core
 author: rick-anderson
-description: "Découvrez comment créer et utiliser des gestionnaires de stratégie d’autorisation pour mettre en œuvre les spécifications d’autorisation dans une application ASP.NET Core."
+description: Découvrez comment créer et utiliser des gestionnaires de stratégie d’autorisation pour mettre en œuvre les spécifications d’autorisation dans une application ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/policies
-ms.openlocfilehash: a9ee7e6fd06fa88485d7f578a9df74cbf87d9540
-ms.sourcegitcommit: 7ee6e7582421195cbd675355c970d3d292ee668d
+ms.openlocfilehash: 411fee90bdccfb45c33f5d4ccd7864c83c614e70
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="policy-based-authorization"></a>Autorisation basée sur la stratégie
+# <a name="policy-based-authorization-in-aspnet-core"></a>Autorisation basée sur des stratégies dans ASP.NET Core
 
 Dans les coulisses, [d’autorisation basée sur le rôle](xref:security/authorization/roles) et [d’autorisation basée sur les revendications](xref:security/authorization/claims) utilisent une spécification, un gestionnaire de condition et une stratégie préconfigurée. Ces blocs de construction prend en charge l’expression d’évaluations d’autorisation dans le code. Le résultat est une structure d’autorisation plus riches, réutilisables, testable.
 
@@ -26,11 +26,11 @@ Une stratégie d’autorisation se compose d’une ou plusieurs conditions. Il e
 
 Dans l’exemple précédent, une stratégie de « AtLeast21 » est créée. Il a une seule exigence&mdash;celle d’un minimum d’ancienneté, qui est fournie en tant que paramètre à la spécification.
 
-Les stratégies sont appliquées à l’aide de la `[Authorize]` attribut avec le nom de la stratégie. Exemple :
+Les stratégies sont appliquées à l’aide de la `[Authorize]` attribut avec le nom de la stratégie. Par exemple :
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="requirements"></a>Configuration requise
+## <a name="requirements"></a>Spécifications
 
 Une demande d’autorisation est une collection de paramètres de données une stratégie peut utiliser pour évaluer le principal utilisateur actuel. Dans notre stratégie « AtLeast21 », la spécification est un paramètre unique&mdash;l’ancienneté minimale. Une exigence implémente [IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement), qui est une interface de marqueur vide. Une spécification de l’ancienneté minimale paramétrable peut être implémentée comme suit :
 
@@ -69,7 +69,7 @@ Le code précédent traverse [PendingRequirements](/dotnet/api/microsoft.aspnetc
 
 ### <a name="handler-registration"></a>Inscription du Gestionnaire
 
-Les gestionnaires sont enregistrés dans la collection de services lors de la configuration. Exemple :
+Les gestionnaires sont enregistrés dans la collection de services lors de la configuration. Par exemple :
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63-65,72)]
 

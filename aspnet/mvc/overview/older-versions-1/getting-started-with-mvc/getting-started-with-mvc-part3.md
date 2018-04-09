@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
-title: "Ajout d’une vue | Documents Microsoft"
+title: Ajout d’une vue | Documents Microsoft
 author: shanselman
-description: "Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données."
+description: Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part3
 msc.type: authoredcontent
-ms.openlocfilehash: 8725d054861c857ceac10a42b0cc3f2afe056aea
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 978d7980274c072ed559b54ed69ab86245b6c5a7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view"></a>Ajout d’une vue
 ====================
@@ -120,6 +120,6 @@ Exécutez votre application, vous accédez à `http://localhost:xx/HelloWorld/We
 
 C’est un type d’un « M » pour le modèle, mais pas le type de base de données. Prenons nous avez appris et créer une base de données de films.
 
->[!div class="step-by-step"]
-[Précédent](getting-started-with-mvc-part2.md)
-[Suivant](getting-started-with-mvc-part4.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started-with-mvc-part2.md)
+> [Suivant](getting-started-with-mvc-part4.md)

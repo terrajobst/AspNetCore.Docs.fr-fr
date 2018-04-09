@@ -16,4 +16,4 @@ Instructions :
 1. Connectez-vous à l’utilisateur à un des trois applications. Le cookie d’authentification est partagé entre les applications. Notez que l’utilisateur est automatiquement connecté à deux autres applications.
 1. Se déconnecter l’utilisateur à partir des applications. Notez que l’utilisateur est automatiquement déconnecté deux autres applications.
 
-Cet exemple illustre les fonctionnalités décrites dans le [les cookies entre les applications de partage](https://docs.microsoft.com/aspnet/core/security/cookie-sharing) rubrique.
+Cet exemple illustre les fonctionnalités décrites dans le [partager les cookies entre applications](https://docs.microsoft.com/aspnet/core/security/cookie-sharing) rubrique.

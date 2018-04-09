@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs
-title: "Personnalisation du contrôle DataList d’édition Interface (c#) | Documents Microsoft"
+title: Personnalisation du contrôle DataList d’édition Interface (c#) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons créer une interface plus riche de modification pour le contrôle DataList, qui inclut la compréhension des listes et une case à cocher."
+description: Dans ce didacticiel, nous allons créer une interface plus riche de modification pour le contrôle DataList, qui inclut la compréhension des listes et une case à cocher.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ffd649bc5a1af4d211c8b331004cb39c7a591d7a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ad603b7cb80d2266e84d4a521a1748a1e09a5bed
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-the-datalists-editing-interface-c"></a>Personnalisation modification Interface du contrôle DataList (c#)
 ====================
@@ -182,7 +182,7 @@ Pour enregistrer option (aucun) en tant qu’une base de données `NULL` valeur,
 
 Avec cette modification, la valeur `Nothing` sera passé dans le `UpdateProduct` option de méthode BLL si l’utilisateur sélectionné (aucun) à partir des listes de liste déroulante, qui correspond à un `NULL` de base de données de valeur.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, nous avons vu comment créer une interface de modification DataList plus complexe incluant trois contrôles Web d’entrée différents, une case à cocher, ainsi que des contrôles de validation, une zone de texte et compréhension des deux listes. Lors de la création de l’interface de modification, les étapes sont identiques pour tous les contrôles Web utilisés : commencez par ajouter les contrôles Web au contrôle DataList s `EditItemTemplate`; syntaxe de liaison de données permet d’attribuer les valeurs de champ de données correspondantes avec le site Web approprié Propriétés du contrôle ; puis, dans le `UpdateCommand` Gestionnaire d’événements, accéder par programmation à des contrôles Web et leurs propriétés appropriées, en passant leurs valeurs dans la couche BLL.
 
@@ -192,12 +192,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Randy Schmidt Dennis Patterson et David Suru. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](adding-validation-controls-to-the-datalist-s-editing-interface-cs.md)
-[Suivant](an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-validation-controls-to-the-datalist-s-editing-interface-cs.md)
+> [Suivant](an-overview-of-editing-and-deleting-data-in-the-datalist-vb.md)

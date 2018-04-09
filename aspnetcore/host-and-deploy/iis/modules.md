@@ -1,7 +1,7 @@
 ---
-title: "À l’aide des modules IIS avec ASP.NET Core"
+title: Modules IIS avec ASP.NET Core
 author: guardrex
-description: "Découvrir actives et inactives des modules IIS pour les applications ASP.NET Core et comment gérer les modules IIS."
+description: Découvrir actives et inactives des modules IIS pour les applications ASP.NET Core et comment gérer les modules IIS.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: a6610e33abdc3eafb5908728b3299e95e6e7183f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: d9b3de915df333153255f91649f9169f76ba2fe0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="using-iis-modules-with-aspnet-core"></a>À l’aide des Modules IIS avec ASP.NET Core
+# <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
@@ -58,7 +58,7 @@ Dans une configuration de proxy inverse, les applications ASP.NET Core sont héb
 | **Autorisation URL**<br>`UrlAuthorizationModule` | Oui | [Identité de ASP.NET Core](xref:security/authentication/identity) |
 | **Authentification Windows**<br>`WindowsAuthenticationModule` | Oui | |
 
-&#8224; De l’URL du Module de réécriture `isFile` et `isDirectory` correspond aux types ne fonctionne pas avec les applications ASP.NET Core en raison de modifications dans [structure de répertoires](xref:host-and-deploy/directory-structure).
+&#8224;De l’URL du Module de réécriture `isFile` et `isDirectory` correspond aux types ne fonctionne pas avec les applications ASP.NET Core en raison de modifications dans [structure de répertoires](xref:host-and-deploy/directory-structure).
 
 ## <a name="managed-modules"></a>Modules managés
 
@@ -106,21 +106,21 @@ Si vous être inscrit pour supprimer un module avec un paramètre dans *web.conf
 
 1. Déverrouiller le module au niveau du serveur. Sélectionnez le serveur IIS dans le Gestionnaire IIS **connexions** barre latérale. Ouvrez le **Modules** dans les **IIS** zone. Sélectionnez le module dans la liste. Dans le **Actions** encadré à droite, sélectionnez **Unlock**. Déverrouiller autant de modules que vous envisagez de retirer *web.config* plus tard.
 
-1. Déployer l’application sans un  **\<modules >** section *web.config*. Si une application est déployée avec une *web.config* contenant le  **\<modules >** section sans avoir déverrouillé la section tout d’abord dans le Gestionnaire des services Internet, le Gestionnaire de Configuration lève une exception lors de la tentative de déverrouillage de la section. Par conséquent, déployez l’application sans un  **\<modules >** section.
+2. Déployer l’application sans un  **\<modules >** section *web.config*. Si une application est déployée avec une *web.config* contenant le  **\<modules >** section sans avoir déverrouillé la section tout d’abord dans le Gestionnaire des services Internet, le Gestionnaire de Configuration lève une exception lors de la tentative de déverrouillage de la section. Par conséquent, déployez l’application sans un  **\<modules >** section.
 
-1. Déverrouiller le  **\<modules >** section de *web.config*. Dans le **connexions** encadré, sélectionnez le site Web dans **Sites**. Dans le **gestion** zone, ouvrez le **l’éditeur de Configuration**. Utilisez les contrôles de navigation pour sélectionner le `system.webServer/modules` section. Dans le **Actions** encadré à droite, sélectionnez cette option pour **Unlock** la section.
+3. Déverrouiller le  **\<modules >** section de *web.config*. Dans le **connexions** encadré, sélectionnez le site Web dans **Sites**. Dans le **gestion** zone, ouvrez le **l’éditeur de Configuration**. Utilisez les contrôles de navigation pour sélectionner le `system.webServer/modules` section. Dans le **Actions** encadré à droite, sélectionnez cette option pour **Unlock** la section.
 
-1. À ce stade, un  **\<modules >** section peut être ajoutée à la *web.config* de fichiers avec un  **\<Supprimer >** élément à supprimer le module à partir de l’application. Plusieurs  **\<Supprimer >** éléments peuvent être ajoutés pour supprimer plusieurs modules. Si *web.config* modifications sont effectuées sur le serveur, immédiatement apporter les mêmes modifications dans le fichier *web.config* fichier localement. Retrait d’un module de cette manière n’affecte pas l’utilisation du module avec d’autres applications sur le serveur.
+4. À ce stade, un  **\<modules >** section peut être ajoutée à la *web.config* de fichiers avec un  **\<Supprimer >** élément à supprimer le module à partir de l’application. Plusieurs  **\<Supprimer >** éléments peuvent être ajoutés pour supprimer plusieurs modules. Si *web.config* modifications sont effectuées sur le serveur, immédiatement apporter les mêmes modifications dans le fichier *web.config* fichier localement. Retrait d’un module de cette manière n’affecte pas l’utilisation du module avec d’autres applications sur le serveur.
 
-  ```xml
-  <configuration> 
+   ```xml
+   <configuration> 
     <system.webServer> 
       <modules> 
         <remove name="MODULE_NAME" /> 
       </modules> 
     </system.webServer> 
-  </configuration>
-  ```
+   </configuration>
+   ```
 
 Pour une installation d’IIS avec les modules par défaut installé, utilisez ce qui suit  **\<module >** section pour supprimer les modules par défaut.
 

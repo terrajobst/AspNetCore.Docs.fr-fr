@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/ws-federation
-ms.openlocfilehash: 0532f866e9c58b2e45623f522f62438e15017e54
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: d4621c7b97678903b9f2562e353da3883334b599
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>Authentifier les utilisateurs avec WS-Federation dans ASP.NET Core
 
@@ -111,7 +111,7 @@ Par défaut, l’intergiciel (middleware) nouvelle :
      // ...
     ```
 
-[!INCLUDE[default settings configuration](social/includes/default-settings.md)]
+[!INCLUDE [default settings configuration](social/includes/default-settings.md)]
 
 ### <a name="log-in-with-ws-federation"></a>Se connecter avec WS-Federation
 
@@ -125,7 +125,7 @@ Une réussite sign-in pour un nouvel utilisateur redirige vers la page d’inscr
 
 ## <a name="use-ws-federation-without-aspnet-core-identity"></a>Utiliser WS-Federation sans ASP.NET Core identité
 
-L’intergiciel (middleware) WS-Federation peut être utilisé sans identité. Exemple :
+L’intergiciel (middleware) WS-Federation peut être utilisé sans identité. Par exemple :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

@@ -2,7 +2,7 @@
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 title: Gestion des erreurs de ASP.NET | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 3f732ae6f1b7845bcae88912b4a4fe26574c10de
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: ac5508334bf6d471471a719b98618bdcd3214fb5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-error-handling"></a>Gestion des erreurs de ASP.NET
 ====================
@@ -104,7 +104,7 @@ Dans le code ci-dessus, le bloc try contient le code qui doit être protégée c
 Avant d’ajouter la gestion des erreurs à l’exemple d’application Wingtip Toys, vous allez ajouter la prise en charge de la journalisation des erreurs en ajoutant une `ExceptionUtility` classe le *logique* dossier. Ainsi, chaque fois que l’application gère une erreur, les détails de l’erreur figurera dans le fichier journal des erreurs.
 
 1. Avec le bouton droit le *logique* dossier, puis sélectionnez **ajouter**  - &gt; **un nouvel élément**.   
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
 2. Sélectionnez le **Visual C#**  - &gt; **Code** groupe de modèles sur la gauche. Ensuite, sélectionnez **classe**à partir du milieu de liste et nommez-le **ExceptionUtility.cs**.
 3. Sélectionnez **Ajouter**. Le nouveau fichier de classe s’affiche.
 4. Remplacez le code existant par le code ci-dessous :  
@@ -118,7 +118,7 @@ Lorsqu’une exception se produit, l’exception peut être écrites dans un fic
 Dans l’exemple d’application Wingtip Toys, une page servira pour afficher les erreurs. La page d’erreurs est conçue pour afficher un message d’erreur sécurisé aux utilisateurs du site. Toutefois, si l’utilisateur est un développeur qui apporte une requête HTTP qui est prise en charge localement sur l’ordinateur où se trouve le code, les détails d’erreur supplémentaires seront affichera sur la page d’erreur.
 
 1. Cliquez sur le nom du projet (**Wingtip Toys**) dans **l’Explorateur de solutions** et sélectionnez **ajouter**  - &gt; **unnouvelélément**.   
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
 2. Sélectionnez le **Visual C#**  - &gt; **Web** groupe de modèles sur la gauche. Dans la liste du milieu, sélectionnez **Web Form avec Page maître**et nommez-le **Pageerreur.aspx**.
 3. Cliquez sur **Ajouter**.
 4. Sélectionnez le *Site.Master* de fichiers en tant que la page maître, puis choisissez **OK**.
@@ -166,7 +166,7 @@ Lorsque vous demandez la *NoPage.aspx* page qui n’existe pas, la page d’erre
 Pour vérifier le fonctionne de votre application lorsqu’une erreur se produit, vous pouvez créer délibérément des conditions d’erreur dans ASP.NET. L’exemple d’application Wingtip Toys, lève une exception de test lors de la charge de la page par défaut pour voir ce qui se passe.
 
 1. Ouvrez le fichier code-behind de la *Default.aspx* page dans Visual Studio.   
- Le *Default.aspx.cs* page code-behind s’affichera.
+   Le *Default.aspx.cs* page code-behind s’affichera.
 2. Dans la `Page_Load` gestionnaire, ajoutez le code afin que le gestionnaire s’affiche comme suit :   
 
     [!code-csharp[Main](aspnet-error-handling/samples/sample9.cs?highlight=3-4)]
@@ -356,11 +356,11 @@ J’aimerais remercier les personnes suivantes qui a effectué des contributions
 ## <a name="community-contributions"></a>Contributions de la Communauté
 
 - Graham Mendick ([@grahammendick](http://twitter.com/grahammendick))  
- Visual Studio 2012 liés l’exemple de code sur MSDN : [Navigation Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
+  Visual Studio 2012 liés l’exemple de code sur MSDN : [Navigation Wingtip Toys](https://code.msdn.microsoft.com/Navigation-Wingtip-Toys-5f0daba2)
 - James Chaney ([jchaney@agvance.net](mailto:jchaney@agvance.net))  
- Visual Studio 2012 liés l’exemple de code sur MSDN : [série de didacticiel ASP.NET 4.5 Web Forms dans Visual Basic](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
+  Visual Studio 2012 liés l’exemple de code sur MSDN : [série de didacticiel ASP.NET 4.5 Web Forms dans Visual Basic](https://code.msdn.microsoft.com/ASPNET-45-Web-Forms-f37f0f63)
 - Andrielle Azevedo - collaborateur assistance technique de Microsoft (twitter : @driazevedo)  
- Visual Studio 2012 traduction : [Iniciando com e ASP.NET Web Forms 4.5 - entendue 1 - Introdução Visão Geral](https://andrielleazevedo.wordpress.com/2013/01/24/iniciando-com-asp-net-web-forms-4-5-introducao-e-visao-geral/)
+  Visual Studio 2012 traduction : [Iniciando com e ASP.NET Web Forms 4.5 - entendue 1 - Introdução Visão Geral](https://andrielleazevedo.wordpress.com/2013/01/24/iniciando-com-asp-net-web-forms-4-5-introducao-e-visao-geral/)
 
->[!div class="step-by-step"]
-[Précédent](url-routing.md)
+> [!div class="step-by-step"]
+> [Précédent](url-routing.md)

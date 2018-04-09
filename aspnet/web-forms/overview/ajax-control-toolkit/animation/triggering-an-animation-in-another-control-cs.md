@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-cs
-title: "Déclenchement d’une Animation dans un autre contrôle (c#) | Documents Microsoft"
+title: Déclenchement d’une Animation dans un autre contrôle (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. En règle générale, lancer un..."
+description: Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. En règle générale, lancer un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8d243eebc42b66f1e86b38a1b7531e527144ea7e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e94046ca70607e37c1b5ef57d5cedef67a236b94
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="triggering-an-animation-in-another-control-c"></a>Déclenchement d’une Animation dans un autre contrôle (c#)
 ====================
@@ -64,6 +64,6 @@ Notez l’ordre spécial dans lequel les animations individuelles. Tout d’abor
 
 Un clic de souris sur le bouton démarre l’animation du Panneau de configuration ([cliquez pour afficher l’image en taille réelle](triggering-an-animation-in-another-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](disabling-actions-during-animation-cs.md)
-[Suivant](modifying-animations-from-the-server-side-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](disabling-actions-during-animation-cs.md)
+> [Suivant](modifying-animations-from-the-server-side-cs.md)

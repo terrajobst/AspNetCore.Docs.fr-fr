@@ -1,7 +1,7 @@
 ---
-title: "Autorisation basée sur le mode dans ASP.NET MVC de base"
+title: Autorisation basée sur le mode dans ASP.NET MVC de base
 author: rick-anderson
-description: "Ce document montre comment injecter et utiliser le service d’autorisation à l’intérieur d’une vue ASP.NET Core Razor."
+description: Ce document montre comment injecter et utiliser le service d’autorisation à l’intérieur d’une vue ASP.NET Core Razor.
 manager: wpickett
 ms.author: riande
 ms.date: 10/30/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/views
-ms.openlocfilehash: 22754d07882cd704309a4e1a28ad0bf6f69432ea
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: dad59a297efb4648755436fbd07742f95af97fb2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="view-based-authorization"></a>Autorisation basée sur une vue
+# <a name="view-based-authorization-in-aspnet-core-mvc"></a>Autorisation basée sur le mode dans ASP.NET MVC de base
 
 Un développeur souhaite souvent afficher, masquer ou modifier une interface utilisateur basée sur l’identité de l’utilisateur actuel. Vous pouvez accéder au service de l’autorisation au sein de vues MVC via [l'injection de dépendance](xref:fundamentals/dependency-injection#fundamentals-dependency-injection). Pour insérer le service d’autorisation dans une vue Razor, utilisez la directive `@inject`:
 

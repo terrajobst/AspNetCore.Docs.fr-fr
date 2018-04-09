@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-cs
-title: "Itération #7 – des fonctionnalités Ajax d’ajouter (c#) | Documents Microsoft"
+title: 'Itération #7 – des fonctionnalités Ajax d’ajouter (c#) | Documents Microsoft'
 author: microsoft
-description: "Dans l’itération septième, nous améliorer la réactivité et les performances de votre application en ajoutant la prise en charge d’Ajax."
+description: Dans l’itération septième, nous améliorer la réactivité et les performances de votre application en ajoutant la prise en charge d’Ajax.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-cs
 msc.type: authoredcontent
-ms.openlocfilehash: db313d12dfd6a146347f253dc3a1f4a889bee780
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 35d62383a571725749b2fc629bbb17954657b2f6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-7--add-ajax-functionality-c"></a>Itération #7 – des fonctionnalités Ajax d’ajouter (c#)
 ====================
@@ -103,7 +103,7 @@ Permettent de commencer par modifier la vue d’Index afin qu’en cliquant sur 
 
 La première étape consiste à séparer la partie de la vue que vous souhaitez mettre à jour de façon asynchrone dans un partiel distinct (contrôle utilisateur). La section de la vue de l’Index qui affiche la table des contacts a été déplacée dans partielle dans la liste 1.
 
-**La liste 1 - Views\Contact\ContactList.ascx**
+**Listing 1 - Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample2.aspx)]
 
@@ -147,7 +147,7 @@ Il existe plusieurs méthodes que vous pouvez indiquer à un utilisateur dont le
 
 Nous allons utiliser la bibliothèque jQuery qui est incluse dans le framework Microsoft ASP.NET MVC, pour créer les effets d’animation. La vue Index mis à jour est contenue dans la liste 4.
 
-**La liste 4 - Views\Contact\Index.aspx**
+**Listing 4 - Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample6.aspx)]
 
@@ -175,7 +175,7 @@ L’historique du navigateur ASP.NET AJAX, vous devez effectuer trois actions :
 
 La vue Index mis à jour est contenue dans la liste 5.
 
-**La liste 5 - Views\Contact\Index.aspx**
+**Listing 5 - Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample8.aspx)]
 
@@ -205,7 +205,7 @@ Il est tentant d’ignorer la page de confirmation de suppression et de supprime
 
 Le lien Supprimer est contenu dans le ContactList partielle. Une version mise à jour de la ContactList partielle est contenue dans la liste 6.
 
-**La liste 6 - Views\Contact\ContactList.ascx**
+**Listing 6 - Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample10.aspx)]
 
@@ -230,7 +230,7 @@ L’action AjaxDelete() est décorée avec un attribut AcceptVerbs. Cet attribut
 
 Après avoir supprimé les enregistrements de base de données, vous devez afficher la liste de mises à jour des contacts qui ne contient-elle pas l’enregistrement supprimé. La méthode AjaxDelete() retourne le ContactList partielle et la liste de mises à jour des contacts.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous avons ajouté des fonctionnalités Ajax à notre application Gestionnaire de contacts. Nous avons utilisé Ajax pour améliorer la réactivité et les performances de notre application.
 
@@ -242,6 +242,6 @@ Nous avons également ajouté des navigateurs pris en charge de l’historique �
 
 Enfin, nous avons créé un lien de suppression qui prend en charge les opérations HTTP DELETE. Effectuez les suppressions Ajax, nous permettre aux utilisateurs de supprimer des enregistrements de la base de données sans que l’utilisateur demander une page de confirmation de suppression supplémentaires.
 
->[!div class="step-by-step"]
-[Précédent](iteration-6-use-test-driven-development-cs.md)
-[Suivant](iteration-1-create-the-application-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-6-use-test-driven-development-cs.md)
+> [Suivant](iteration-1-create-the-application-vb.md)

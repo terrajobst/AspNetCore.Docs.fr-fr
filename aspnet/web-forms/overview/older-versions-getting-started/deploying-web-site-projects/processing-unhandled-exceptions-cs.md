@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
-title: "Le traitement des Exceptions non gérées (c#) | Documents Microsoft"
+title: Le traitement des Exceptions non gérées (c#) | Documents Microsoft
 author: rick-anderson
-description: "Lorsqu’une erreur d’exécution se produit sur une application web en production, il est important pour avertir un développeur et d’enregistrer l’erreur afin qu’il peut être diagnostiqué à un la..."
+description: Lorsqu’une erreur d’exécution se produit sur une application web en production, il est important pour avertir un développeur et d’enregistrer l’erreur afin qu’il peut être diagnostiqué à un la...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dda73ca1878396e04b8ff04a255c25bf26ed4eff
-ms.sourcegitcommit: 9622bdc6326c28c3322c70000468a80ef21ad376
+ms.openlocfilehash: fccd529f5c489ed28f3cb01f07ffdc4452ead36d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="processing-unhandled-exceptions-c"></a>Le traitement des Exceptions non gérées (c#)
 ====================
@@ -167,6 +167,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Utilisation avec ASP.NET `Global.asax` fichier](http://articles.techrepublic.com.com/5100-10878_11-5771721.html)
 - [Utilisation de `HttpApplication` Instances](https://msdn.microsoft.com/library/a0xez8f2.aspx)
 
->[!div class="step-by-step"]
-[Précédent](displaying-a-custom-error-page-cs.md)
-[Suivant](logging-error-details-with-asp-net-health-monitoring-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](displaying-a-custom-error-page-cs.md)
+> [Suivant](logging-error-details-with-asp-net-health-monitoring-cs.md)

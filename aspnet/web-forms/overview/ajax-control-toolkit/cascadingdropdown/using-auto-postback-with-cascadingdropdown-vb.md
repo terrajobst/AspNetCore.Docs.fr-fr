@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
-title: "À l’aide de la publication automatique CascadingDropDown (VB) | Documents Microsoft"
+title: À l’aide de la publication automatique CascadingDropDown (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth..."
+description: Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f8059f44b4efbf59ebe7b3d2fd5400e886642a90
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e8a48692dd96ee6a647bfb57ce2915b4e85544fe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-auto-postback-with-cascadingdropdown-vb"></a>À l’aide de la publication automatique CascadingDropDown (VB)
 ====================
@@ -64,5 +64,5 @@ De cette manière, une publication (postback) est exécutée uniquement lorsqu�
 
 Sélection d’un élément de liste entraîne une publication ([cliquez pour afficher l’image en taille réelle](using-auto-postback-with-cascadingdropdown-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](presetting-list-entries-with-cascadingdropdown-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](presetting-list-entries-with-cascadingdropdown-vb.md)

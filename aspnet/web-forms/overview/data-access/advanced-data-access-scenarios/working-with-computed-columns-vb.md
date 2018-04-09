@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-vb
-title: "Utilisation des colonnes calculées (VB) | Documents Microsoft"
+title: Utilisation des colonnes calculées (VB) | Documents Microsoft
 author: rick-anderson
-description: "Lorsque vous créez une table de base de données, Microsoft SQL Server vous permet de définir une colonne calculée, dont la valeur est calculée à partir d’une expression pouvant généralement referen..."
+description: Lorsque vous créez une table de base de données, Microsoft SQL Server vous permet de définir une colonne calculée, dont la valeur est calculée à partir d’une expression pouvant généralement referen...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 52fc0b89343236b70f8a2e013ad8a33431ae3d2d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 04b39902aae05d815eb11ec7b7163988d017f78c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="working-with-computed-columns-vb"></a>Utilisation des colonnes calculées (VB)
 ====================
@@ -29,7 +29,7 @@ par [Scott Mitchell](https://twitter.com/ScottOnWriting)
 
 ## <a name="introduction"></a>Introduction
 
-Permet à Microsoft SQL Server pour  *[les colonnes calculées](https://msdn.microsoft.com/library/ms191250.aspx)*, qui sont des colonnes dont les valeurs sont calculées à partir d’une expression référençant généralement les valeurs des autres colonnes dans la même table. Par exemple, un modèle de données de suivi de temps peut comporter une table nommée `ServiceLog` avec des colonnes, y compris `ServicePerformed`, `EmployeeID`, `Rate`, et `Duration`, entre autres. Alors que le montant dû par service (qui est le taux multiplié par la durée) peut être calculé via une page web ou une autre interface de programmation, il peut être utile pour inclure une colonne dans la `ServiceLog` table nommée `AmountDue` qui a signalé cette plus d’informations. Cette colonne a pu être créée pour une colonne, mais il doit être mis à jour à tout moment la `Rate` ou `Duration` les valeurs de colonne modifiées. Une meilleure approche consisterait à rendre le `AmountDue` une colonne calculée à l’aide de l’expression de colonne `Rate * Duration`. Entraînerait SQL Server permet de calculer automatiquement le `AmountDue` valeur chaque fois qu’il a été référencé dans une requête de la colonne.
+Permet à Microsoft SQL Server pour * [les colonnes calculées](https://msdn.microsoft.com/library/ms191250.aspx)*, qui sont des colonnes dont les valeurs sont calculées à partir d’une expression référençant généralement les valeurs des autres colonnes dans la même table. Par exemple, un modèle de données de suivi de temps peut comporter une table nommée `ServiceLog` avec des colonnes, y compris `ServicePerformed`, `EmployeeID`, `Rate`, et `Duration`, entre autres. Alors que le montant dû par service (qui est le taux multiplié par la durée) peut être calculé via une page web ou une autre interface de programmation, il peut être utile pour inclure une colonne dans la `ServiceLog` table nommée `AmountDue` qui a signalé cette plus d’informations. Cette colonne a pu être créée pour une colonne, mais il doit être mis à jour à tout moment la `Rate` ou `Duration` les valeurs de colonne modifiées. Une meilleure approche consisterait à rendre le `AmountDue` une colonne calculée à l’aide de l’expression de colonne `Rate * Duration`. Entraînerait SQL Server permet de calculer automatiquement le `AmountDue` valeur chaque fois qu’il a été référencé dans une requête de la colonne.
 
 Une valeur de colonne calculée s est déterminée par une expression, ces colonnes sont en lecture seule et par conséquent ne peut pas attribuer une valeur correspondante dans `INSERT` ou `UPDATE` instructions. Toutefois, lorsque des colonnes calculées font partie de la requête principale pour un TableAdapter qui utilise des instructions SQL ad hoc, ils sont automatiquement inclus dans générées automatiquement `INSERT` et `UPDATE` instructions. Par conséquent, le TableAdapter s `INSERT` et `UPDATE` requêtes et `InsertCommand` et `UpdateCommand` propriétés doivent être mises à jour pour supprimer les références à des colonnes calculées.
 
@@ -51,7 +51,7 @@ Commencez par ouvrir le `Suppliers` définition d’une table en cliquant sur le
 Notez que les chaînes peuvent être concaténés de SQL à l’aide de la `+` opérateur. La `CASE` instruction peut être utilisée comme une condition dans un langage de programmation traditionnel. Dans l’expression ci-dessus le `CASE` peut être lue en tant que : si `ContactTitle` n’est pas `NULL` puis sortie le `ContactTitle` valeur concaténée avec une virgule, sinon émettre rien. Pour plus d’informations sur l’utilité de la `CASE` instruction, consultez [la puissance de SQL `CASE` instructions](http://www.4guysfromrolla.com/webtech/102704-1.shtml).
 
 > [!NOTE]
-> Au lieu d’utiliser un `CASE` instruction ici, nous pouvons également utiliser `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx)Retourne *checkExpression* si elle n’est pas NULL, sinon elle retourne *replacementValue*. Lors de le `ISNULL` ou `CASE` fonctionnera dans cette instance, il existe des scénarios plus complexes où la flexibilité de la `CASE` instruction ne peut pas être mis en correspondance par `ISNULL`.
+> Au lieu d’utiliser un `CASE` instruction ici, nous pouvons également utiliser `ISNULL(ContactTitle, '')`. [`ISNULL(checkExpression, replacementValue)`](https://msdn.microsoft.com/library/ms184325.aspx) Retourne *checkExpression* si elle n’est pas NULL, sinon elle retourne *replacementValue*. Lors de le `ISNULL` ou `CASE` fonctionnera dans cette instance, il existe des scénarios plus complexes où la flexibilité de la `CASE` instruction ne peut pas être mis en correspondance par `ISNULL`.
 
 
 Après l’ajout de cette colonne calculée, votre écran doit ressembler à la capture d’écran de la Figure 1.
@@ -261,12 +261,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Hilton Geisenow et Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](adding-additional-datatable-columns-vb.md)
-[Suivant](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-additional-datatable-columns-vb.md)
+> [Suivant](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)

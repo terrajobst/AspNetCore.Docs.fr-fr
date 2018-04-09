@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/top-features-in-web-pages-2
 msc.type: authoredcontent
-ms.openlocfilehash: e8fc758936953970ff3e9ba289516925dee9ef45
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: f0d32edd3ab54c55aa06c803cd91e01cbbb8f08a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="the-top-features-in-aspnet-web-pages-2"></a>Les fonctionnalités principales dans les Pages Web ASP.NET 2
 ====================
@@ -26,7 +26,7 @@ par [Microsoft](https://github.com/microsoft)
 > 
 > **Ce qui est inclus :** 
 > 
-> - [Installation de WebMatrix](#install)
+> - [Installing WebMatrix](#install)
 > - [Fonctionnalités nouvelles et améliorées](#New_and_Enhanced_Features)
 > 
 >     - [Modifications pour la version RC](#Changes_for_the_RC_Version)
@@ -53,7 +53,7 @@ Pour installer les Pages Web, vous pouvez utiliser Microsoft Web Platform Instal
 
 1. Accédez à la page d’installation de la dernière version de Web Platform Installer :
 
-    [https://go.Microsoft.com/fwlink/?LinkId=226883](https://go.microsoft.com/fwlink/?LinkId=226883)
+    [https://go.microsoft.com/fwlink/?LinkId=226883](https://go.microsoft.com/fwlink/?LinkId=226883)
 
     > [!NOTE]
     > Si vous avez déjà WebMatrix 1 est installé, cette installation met à jour à la bêta 2 de WebMatrix. Vous pouvez exécuter des sites Web qui ont été créés à l’aide de la version 1 ou 2 sur le même ordinateur. Pour plus d’informations, consultez la section sur [les Applications Web Pages en cours d’exécution côte à côte](#sidebyside).
@@ -62,9 +62,9 @@ Pour installer les Pages Web, vous pouvez utiliser Microsoft Web Platform Instal
     Si vous utilisez Internet Explorer, accédez à l’étape suivante. Si vous utilisez un autre navigateur comme Mozilla Firefox ou Google Chrome, vous êtes invité à enregistrer le *Webmatrix.exe* le fichier sur votre ordinateur. Enregistrez le fichier, puis cliquez dessus pour lancer le programme d’installation.
 3. Exécutez le programme d’installation et choisissez le **installer** bouton. Cette commande installe WebMatrix et Web Pages.
 
-## <a id="New_and_Enhanced_Features"></a>Fonctionnalités nouvelles et améliorées
+## <a id="New_and_Enhanced_Features"></a>  Fonctionnalités nouvelles et améliorées
 
-### <a id="Changes_for_the_RC_Version"></a>Modifications de la Version RC (juin 2012)
+### <a id="Changes_for_the_RC_Version"></a>  Modifications de la Version RC (juin 2012)
 
 La version RC en juin 2012 a peu de modifications à partir de la mise à jour version bêta qui a été publiée en mars 2012. Ces modifications sont :
 
@@ -94,8 +94,8 @@ La version bêta publiée en février 2012 a peu de modifications de la version 
     `<a href="~/Default.cshtml">Home</a>`
 - Le `Scripts` auxiliaire pour la gestion des ressources (ressource) a été remplacée par la `Assets` assistance, ce qui a des méthodes légèrement différentes, telles que les éléments suivants :
 
-    - Pour `Scripts.Add`, utiliser`Assets.AddScript`
-    - Pour `Scripts.GetScriptTags`, utiliser`Assets.GetScripts`
+  - Pour `Scripts.Add`, utiliser `Assets.AddScript`
+  - Pour `Scripts.GetScriptTags`, utiliser `Assets.GetScripts`
 
     Il s’agit d’une modification avec rupture ; la `Scripts` classe n’est pas disponible dans la version bêta. Les exemples de code dans ce document qui utilisent la gestion de ressources ont été mis à jour avec cette modification.
 
@@ -149,15 +149,15 @@ Pour afficher un résumé (`<ul>` liste) de toutes les erreurs dans la page, `Ht
 
 Ces étapes suffisent pour implémenter la validation côté serveur. Si vous souhaitez ajouter la validation côté client, procédez comme suit en outre.
 
-Ajoutez les références de fichier de script suivantes à l’intérieur de la `<head>` section d’une page web. Les deux premières références de script pointent vers les fichiers à distance sur un serveur de diffusion de contenu (CDN). La troisième référence pointe vers un fichier de script local.
+Ajoutez les références de fichier de script suivantes à l’intérieur de la `<head>` section d’une page web. Les deux premières références de script pointent vers les fichiers à distance sur un serveur de diffusion de contenu (CDN). La troisième référence pointe vers un fichier de script local. Les applications de production doivent implémenter une stratégie de secours lorsque le CDN n’est pas disponible. Tester le basculement.
 
 [!code-html[Main](top-features-in-web-pages-2/samples/sample5.html)]
 
 Le moyen le plus simple pour obtenir une copie locale de la *jquery.validate.unobtrusive.min.js* bibliothèque consiste à créer un nouveau site Web Pages basé sur l’un des modèles de site (par exemple, Site de démarrage). Le site créé par le modèle inclut *jquery.validate.unobtrusive.js* fichier dans son dossier de Scripts, à partir de laquelle vous pouvez le copier sur votre site.
 
-Si votre site Web utilise un*\_SiteLayout* page pour contrôler la mise en page, vous pouvez inclure ces références de script dans cette page afin que la validation est disponible pour toutes les pages de contenu. Si vous souhaitez effectuer une validation uniquement sur certaines pages, vous pouvez utiliser le Gestionnaire de ressources pour enregistrer les scripts sur les pages. Pour ce faire, appelez `Assets.AddScript(path)` dans la page que vous souhaitez valider et de faire référence à chacun des fichiers de script. Puis ajoutez un appel à `Assets.GetScripts` dans les  *\_SiteLayout* page afin de restituer inscrit `<script>` balises. Pour plus d’informations, consultez la section [l’inscription des Scripts avec le Gestionnaire de ressources](#resmanagement).
+Si votre site Web utilise un<em>\_SiteLayout</em> page pour contrôler la mise en page, vous pouvez inclure ces références de script dans cette page afin que la validation est disponible pour toutes les pages de contenu. Si vous souhaitez effectuer une validation uniquement sur certaines pages, vous pouvez utiliser le Gestionnaire de ressources pour enregistrer les scripts sur les pages. Pour ce faire, appelez `Assets.AddScript(path)` dans la page que vous souhaitez valider et de faire référence à chacun des fichiers de script. Puis ajoutez un appel à `Assets.GetScripts` dans les  <em>\_SiteLayout</em> page afin de restituer inscrit `<script>` balises. Pour plus d’informations, consultez la section [l’inscription des Scripts avec le Gestionnaire de ressources](#resmanagement).
 
-Dans le balisage pour un élément individuel, appelez le `Validation.For` (méthode). Cette méthode émet des attributs que jQuery pouvez raccorder afin de fournir la validation côté client. Exemple :
+Dans le balisage pour un élément individuel, appelez le `Validation.For` (méthode). Cette méthode émet des attributs que jQuery pouvez raccorder afin de fournir la validation côté client. Par exemple :
 
 [!code-cshtml[Main](top-features-in-web-pages-2/samples/sample6.cshtml)]
 
@@ -172,15 +172,15 @@ L’exemple suivant montre une page qui valide l’entrée d’utilisateur sur u
 
 Voici la page lorsqu’un utilisateur soumet une entrée valide :
 
-[![topSeven valide 1](top-features-in-web-pages-2/_static/image8.png)](top-features-in-web-pages-2/_static/image7.png)
+[![topSeven-valid-1](top-features-in-web-pages-2/_static/image8.png)](top-features-in-web-pages-2/_static/image7.png)
 
 Voici la page lorsqu’un utilisateur envoie les données avec un champ obligatoire est laissé vide :
 
-[![topSeven valide 2](top-features-in-web-pages-2/_static/image10.png)](top-features-in-web-pages-2/_static/image9.png)
+[![topSeven-valid-2](top-features-in-web-pages-2/_static/image10.png)](top-features-in-web-pages-2/_static/image9.png)
 
 Voici la page lorsqu’un utilisateur le soumet à autre chose qu’un entier dans la **crédits** champ :
 
-[![topSeven valide 3](top-features-in-web-pages-2/_static/image12.png)](top-features-in-web-pages-2/_static/image11.png)
+[![topSeven-valid-3](top-features-in-web-pages-2/_static/image12.png)](top-features-in-web-pages-2/_static/image11.png)
 
 Pour plus d’informations, consultez les billets de blog suivants :
 
@@ -207,7 +207,7 @@ L’exemple suivant montre le fonctionnement du Gestionnaire de ressources. Le c
 
 - Un programme d’assistance personnalisé nommé `MakeNote`. Ce programme d’assistance restitue une chaîne à l’intérieur d’une zone en encapsulant un `div` élément qui a un style avec une bordure et en ajoutant &quot;Remarque :&quot; à celui-ci. L’application d’assistance appelle également un fichier JavaScript qui ajoute le comportement au moment de l’exécution à la note. Plutôt que référencer le script avec un `<script>` balise, l’Assistant enregistre le script en appelant `Assets.AddScript` .
 - Un fichier JavaScript. Il s’agit du fichier qui est appelé par l’application d’assistance et il augmente temporairement la taille de police des éléments de note pendant un `mouseover` événement.
-- Une page de contenu qui fait référence à la*\_SiteLayout* effectue le rendu du contenu dans le corps de la page et appelle ensuite la `MakeNote` helper.
+- Une page de contenu qui fait référence à la<em>\_SiteLayout</em> effectue le rendu du contenu dans le corps de la page et appelle ensuite la `MakeNote` helper.
 - A  *\_SiteLayout* page. Cette page fournit un en-tête commun et une structure de mise en page. Il inclut également un appel à `Assets.GetScripts`, qui est la façon dont le Gestionnaire de ressources restitue le script appelle dans une page.
 
 Pour exécuter l’exemple :
@@ -447,7 +447,7 @@ Voici quelques points à retenir lorsque vous installez la version bêta 2 de Pa
 - Si vous souhaitez exécuter un site à l’aide de la version 1 des Pages Web (au lieu de la valeur par défaut, comme dans le point précédent), vous pouvez configurer le site pour ce faire. Si votre site n’a pas encore un *web.config* dans la racine du site, créez-en un et copiez-y le code XML suivant, remplacer le contenu existant. Si le site contient déjà un *web.config* , ajoutez une `<appSettings>` élément tel que le suivant à la `<configuration>` section.
 
     [!code-xml[Main](top-features-in-web-pages-2/samples/sample22.xml)]
-'-Si vous ne spécifiez pas une version dans le *web.config* fichier, un site est déployé comme un site de version 2. (Les assemblys de version 2 sont copiés vers le *bin* dossier dans le site déployé.)
+  '-Si vous ne spécifiez pas une version dans le *web.config* fichier, un site est déployé comme un site de version 2. (Les assemblys de version 2 sont copiés vers le *bin* dossier dans le site déployé.)
 - Nouvelles applications que vous créez à l’aide des modèles de site dans la version Web Matrix bêta 2 inclut les assemblys de version 2 des Pages Web dans la table *bin* dossier.
 
 En règle générale, vous pouvez contrôler toujours la version de Pages Web à utiliser avec votre site à l’aide de NuGet pour installer les assemblys appropriés dans le site *bin* dossier. Pour rechercher les packages, visitez [NuGet.org](http://NuGet.org).
@@ -459,7 +459,7 @@ Pages Web 2 vous permet de créer des affichages personnalisés pour restituer l
 
 Le `System.Web.WebPages` espace de noms contient les classes suivantes qui vous permettent de travailler avec les modes d’affichage : `DefaultDisplayMode`, `DisplayInfo`, et `DisplayModes`. Vous pouvez utiliser ces classes directement et écrire du code qui restitue le résultat approprié pour des périphériques spécifiques.
 
-Vous pouvez également créer des pages spécifiques à l’appareil à l’aide d’un modèle d’affectation de noms de fichier comme celui-ci : *nom de fichier.* *Mobile**.cshtml*. Par exemple, vous pouvez créer deux versions d’une page, un nommé *MyFile.cshtml* et l’autre nommé *MyFile.Mobile.cshtml*. À l’exécution, quand un appareil mobile demande *MyFile.cshtml*, Pages Web restitue le contenu à partir de *MyFile.Mobile.cshtml*. Dans le cas contraire, *MyFile.cshtml* est rendu.
+Vous pouvez également créer des pages spécifiques à l’appareil à l’aide d’un modèle d’affectation de noms de fichier comme celui-ci : <em>nom de fichier.</em> <em>Mobile</em><em>.cshtml</em>. Par exemple, vous pouvez créer deux versions d’une page, un nommé <em>MyFile.cshtml</em> et l’autre nommé <em>MyFile.Mobile.cshtml</em>. À l’exécution, quand un appareil mobile demande <em>MyFile.cshtml</em>, Pages Web restitue le contenu à partir de <em>MyFile.Mobile.cshtml</em>. Dans le cas contraire, <em>MyFile.cshtml</em> est rendu.
 
 L’exemple suivant montre comment activer le rendu mobile en ajoutant une page de contenu pour les appareils mobiles. *Page1.cshtml* contient le contenu ainsi qu’une barre latérale de navigation. *Page1.Mobile.cshtml* contient le même contenu, mais omet la barre latérale.
 
@@ -502,5 +502,5 @@ Pour générer et exécuter l’exemple de code :
 ### <a name="webmatrix-resources"></a>Ressources de WebMatrix
 
 - [WebMatrix 2 Nouveautés](http://webmatrix.com/next)
-- [Site de Microsoft WebMatrix](https://go.microsoft.com/fwlink/?LinkID=195076)
+- [Microsoft WebMatrix Site](https://go.microsoft.com/fwlink/?LinkID=195076)
 - [Starting Web Development with Microsoft WebMatrix](https://msdn.microsoft.com/en-us/library/hh145669(v=VS.99).aspx)(inclut une application Web Pages standard)

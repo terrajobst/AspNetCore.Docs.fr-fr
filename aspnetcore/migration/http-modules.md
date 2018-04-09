@@ -1,7 +1,7 @@
 ---
-title: Migration des gestionnaires HTTP et des modules pour ASP.NET Core intergiciel (middleware)
+title: Migrer des modules et les gestionnaires HTTP vers l’intergiciel (middleware) ASP.NET Core
 author: rick-anderson
-description: 
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 12/07/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/http-modules
-ms.openlocfilehash: 7f08e155491b56933ae183818e9b9ee562ad8286
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e02f3a75269e5e4a4794d1979d3a5add21fe38be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="migrating-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migration des gestionnaires HTTP et des modules pour ASP.NET Core intergiciel (middleware) 
+# <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrer des modules et les gestionnaires HTTP vers l’intergiciel (middleware) ASP.NET Core
 
 Par [Matt Perdeck](https://www.linkedin.com/in/mattperdeck)
 
@@ -81,7 +81,7 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
    * Ordre de l’intergiciel (middleware) pour les réponses est l’inverse de celui pour les demandes, tandis que l’ordre des modules est le même pour les demandes et réponses
 
-   * Consultez [création d’un pipeline de l’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder)
+   * Consultez [pour créer un pipeline de l’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![Intergiciel (middleware)](http-modules/_static/middleware.png)
 
@@ -173,17 +173,17 @@ La nouvelle [système de configuration](xref:fundamentals/configuration/index) v
 
 * Utilisez le [modèle d’options](xref:fundamentals/configuration/options):
 
-1.  Créez une classe pour contenir les options de l’intergiciel (middleware), par exemple :
+1. Créez une classe pour contenir les options de l’intergiciel (middleware), par exemple :
 
-    [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Options)]
+   [!code-csharp[](http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Options)]
 
-2.  Stocker les valeurs d’option
+2. Stocker les valeurs d’option
 
-    Le système de configuration vous permet de vous permet de stocker des valeurs d’option partout où que vous souhaitez. Toutefois, les sites plus utiliser *appsettings.json*, donc nous allons cette approche :
+   Le système de configuration vous permet de vous permet de stocker des valeurs d’option partout où que vous souhaitez. Toutefois, les sites plus utiliser *appsettings.json*, donc nous allons cette approche :
 
-    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
+   [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
 
-    *MyMiddlewareOptionsSection* ici est un nom de section. Il ne doit pas être le même que le nom de votre classe d’options.
+   *MyMiddlewareOptionsSection* ici est un nom de section. Il ne doit pas être le même que le nom de votre classe d’options.
 
 3. Associer les valeurs d’option de la classe d’options
 
@@ -191,25 +191,25 @@ La nouvelle [système de configuration](xref:fundamentals/configuration/index) v
 
     Mise à jour votre `Startup` classe :
 
-    1.  Si vous utilisez *appsettings.json*, ajoutez-le au Générateur de configuration dans le `Startup` constructeur :
+   1. Si vous utilisez *appsettings.json*, ajoutez-le au Générateur de configuration dans le `Startup` constructeur :
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Ctor&highlight=5-6)]
 
-    2.  Configurer le service d’options :
+   2. Configurer le service d’options :
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=4)]
 
-    3.  Associer vos options à votre classe d’options :
+   3. Associer vos options à votre classe d’options :
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_ConfigureServices&highlight=6-8)]
 
-4.  Injecter les options dans votre constructeur d’intergiciel (middleware). Cela est similaire à l’injection d’options dans un contrôleur.
+4. Injecter les options dans votre constructeur d’intergiciel (middleware). Cela est similaire à l’injection d’options dans un contrôleur.
 
-  [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_MiddlewareWithParams&highlight=4,7,10,15-16)]
+   [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_MiddlewareWithParams&highlight=4,7,10,15-16)]
 
-  Le [UseMiddleware](#http-modules-usemiddleware) méthode d’extension qui ajoute votre intergiciel (middleware) pour le `IApplicationBuilder` prend en charge l’injection de dépendances.
+   Le [UseMiddleware](#http-modules-usemiddleware) méthode d’extension qui ajoute votre intergiciel (middleware) pour le `IApplicationBuilder` prend en charge l’injection de dépendances.
 
-  Ce n’est pas limité à `IOptions` objets. De cette manière peut être ajoutée à n’importe quel autre objet nécessitant votre intergiciel (middleware).
+   Ce n’est pas limité à `IOptions` objets. De cette manière peut être ajoutée à n’importe quel autre objet nécessitant votre intergiciel (middleware).
 
 ## <a name="loading-middleware-options-through-direct-injection"></a>Chargement des options d’intergiciel (middleware) par le biais d’injection directe
 
@@ -219,21 +219,21 @@ Cela répartit bien que si vous souhaitez utiliser l’intergiciel (middleware) 
 
 La solution consiste à obtenir les objets d’options avec les valeurs d’options réelles dans votre `Startup` classe et transfèrent ces informations directement à chaque instance de votre intergiciel (middleware).
 
-1.  Ajouter une deuxième clé à *appsettings.json*
+1. Ajouter une deuxième clé à *appsettings.json*
 
-    Pour ajouter un deuxième ensemble d’options pour le *appsettings.json* , utilisez une nouvelle clé pour identifier de manière unique :
+   Pour ajouter un deuxième ensemble d’options pour le *appsettings.json* , utilisez une nouvelle clé pour identifier de manière unique :
 
-    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
+   [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
 
-2.  Récupérer les valeurs des options et les passer à un intergiciel (middleware). Le `Use...` méthode d’extension (ce qui ajoute votre intergiciel (middleware) au pipeline) est un emplacement logique pour transmettre les valeurs d’option : 
+2. Récupérer les valeurs des options et les passer à un intergiciel (middleware). Le `Use...` méthode d’extension (ce qui ajoute votre intergiciel (middleware) au pipeline) est un emplacement logique pour transmettre les valeurs d’option : 
 
-    [!code-csharp[](http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=20-23)]
+   [!code-csharp[](http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=20-23)]
 
-4.  Activer l’intergiciel (middleware) prendre un paramètre options. Fournissez une surcharge de la `Use...` méthode d’extension (qui prend le paramètre options et passe à `UseMiddleware`). Lorsque `UseMiddleware` est appelée avec des paramètres, il transmet les paramètres à votre constructeur d’intergiciel (middleware) lorsqu’il instancie l’objet de l’intergiciel (middleware).
+3. Activer l’intergiciel (middleware) prendre un paramètre options. Fournissez une surcharge de la `Use...` méthode d’extension (qui prend le paramètre options et passe à `UseMiddleware`). Lorsque `UseMiddleware` est appelée avec des paramètres, il transmet les paramètres à votre constructeur d’intergiciel (middleware) lorsqu’il instancie l’objet de l’intergiciel (middleware).
 
-    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Extensions&highlight=9-14)]
+   [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Extensions&highlight=9-14)]
 
-    Notez comment cela encapsule l’objet d’options dans un `OptionsWrapper` objet. Il implémente `IOptions`, comme prévu par le constructeur d’intergiciel (middleware).
+   Notez comment cela encapsule l’objet d’options dans un `OptionsWrapper` objet. Il implémente `IOptions`, comme prévu par le constructeur d’intergiciel (middleware).
 
 ## <a name="migrating-to-the-new-httpcontext"></a>Migration vers le nouveau HttpContext
 

@@ -1,7 +1,7 @@
 ---
-title: "Résoudre les problèmes de base ASP.NET sur IIS"
+title: Résoudre les problèmes de base ASP.NET sur IIS
 author: guardrex
-description: "Découvrez comment diagnostiquer les problèmes avec les déploiements d’applications ASP.NET Core Internet Information Services (IIS)."
+description: Découvrez comment diagnostiquer les problèmes avec les déploiements d’applications ASP.NET Core Internet Information Services (IIS).
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 65173e0101a17c64f4cde583e5bbb9fb0a9c7718
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: e44892d2022ca1a176cee9d027e220e196c6572d
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes de base ASP.NET sur IIS
 
@@ -29,7 +29,7 @@ Rubriques de dépannage supplémentaires :
 [Résoudre les problèmes liés à ASP.NET Core sur Azure App Service](xref:host-and-deploy/azure-apps/troubleshoot)  
 Bien que le Service de l’application utilise le [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) et IIS pour les applications de l’hôte, consultez la rubrique dédiée pour obtenir des instructions spécifiques au Service de l’application.
 
-[Gestion des erreurs](xref:fundamentals/error-handling)  
+[Gérer les erreurs](xref:fundamentals/error-handling)  
 Découvrez comment gérer les erreurs dans les applications ASP.NET Core pendant le développement sur un système local.
 
 [Apprendre à déboguer avec Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)  
@@ -96,7 +96,7 @@ Pour activer et afficher les journaux de stdout :
 
 1. Accédez au dossier de déploiement du site sur le système hôte.
 1. Si le *journaux* dossier n’est pas présent, créez le dossier. Pour obtenir des instructions sur l’activation de MSBuild créer le *journaux* dossier dans le déploiement automatique, voir la [structure de répertoires](xref:host-and-deploy/directory-structure) rubrique.
-1. Modifier la *web.config* fichier. Définir **stdoutLogEnabled** à `true` et modifiez le **stdoutLogFile** chemin d’accès pour pointer vers le *journaux* dossier (par exemple, `.\logs\stdout`). `stdout`dans le chemin d’accès est le préfixe de nom de fichier journal. Un horodatage, un id de processus et une extension de fichier sont ajoutés automatiquement lorsque le journal est créé. À l’aide de `stdout` en tant que préfixe du nom de fichier, un fichier journal par défaut est nommé *stdout_20180205184032_5412.log*. 
+1. Modifier la *web.config* fichier. Définir **stdoutLogEnabled** à `true` et modifiez le **stdoutLogFile** chemin d’accès pour pointer vers le *journaux* dossier (par exemple, `.\logs\stdout`). `stdout` dans le chemin d’accès est le préfixe de nom de fichier journal. Un horodatage, un id de processus et une extension de fichier sont ajoutés automatiquement lorsque le journal est créé. À l’aide de `stdout` en tant que préfixe du nom de fichier, un fichier journal par défaut est nommé *stdout_20180205184032_5412.log*. 
 1. Enregistrer les mises à jour *web.config* fichier.
 1. Effectuer une demande à l’application.
 1. Accédez à la *journaux* dossier. Recherchez et ouvrez le journal de stdout plus récent.
@@ -109,7 +109,7 @@ Pour activer et afficher les journaux de stdout :
 1. Enregistrez le fichier.
 
 > [!WARNING]
-> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il existe aucune limite quant à la taille du fichier journal ou le nombre de fichiers journaux créés.
+> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés.
 >
 > Pour la routine de journalisation dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et la faire pivoter des journaux. Pour plus d’informations, consultez [modules fournisseurs d’informations de tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 

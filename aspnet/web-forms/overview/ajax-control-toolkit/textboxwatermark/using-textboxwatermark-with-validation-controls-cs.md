@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-with-validation-controls-cs
-title: "À l’aide de TextBoxWatermark avec des contrôles de Validation (c#) | Documents Microsoft"
+title: À l’aide de TextBoxWatermark avec des contrôles de Validation (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle TextBoxWatermark dans la boîte à outils de contrôle AJAX étend une zone de texte afin qu’un texte s’affiche dans la zone. Lorsqu’un utilisateur clique dans la zone, il vous..."
+description: Le contrôle TextBoxWatermark dans la boîte à outils de contrôle AJAX étend une zone de texte afin qu’un texte s’affiche dans la zone. Lorsqu’un utilisateur clique dans la zone, il vous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-with-validation-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 61fa55c8c4580800de1097b7242c7077cda27115
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b5cc7974f3444b54770cba54b991aab7b103f753
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-textboxwatermark-with-validation-controls-c"></a>À l’aide de TextBoxWatermark avec des contrôles de Validation (c#)
 ====================
@@ -56,6 +56,6 @@ Enfin, ajoutez du code côté serveur pour le texte dans le champ de sortie si a
 
 Le programme de validation indique que la taille que le champ n’est pas de texte ([cliquez pour afficher l’image en taille réelle](using-textboxwatermark-with-validation-controls-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](using-textboxwatermark-in-a-formview-cs.md)
-[Suivant](using-textboxwatermark-in-a-formview-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-textboxwatermark-in-a-formview-cs.md)
+> [Suivant](using-textboxwatermark-in-a-formview-vb.md)

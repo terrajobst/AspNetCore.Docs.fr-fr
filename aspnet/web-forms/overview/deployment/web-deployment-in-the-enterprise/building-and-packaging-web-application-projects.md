@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
-title: "Création et l’empaquetage des projets d’Application Web | Documents Microsoft"
+title: Création et l’empaquetage des projets d’Application Web | Documents Microsoft
 author: jrjlee
-description: "Lorsque vous souhaitez déployer un projet d’application web dans un environnement de serveur distant, la première tâche consiste à générer le projet et générer un packa de déploiement web..."
+description: Lorsque vous souhaitez déployer un projet d’application web dans un environnement de serveur distant, la première tâche consiste à générer le projet et générer un packa de déploiement web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
 msc.type: authoredcontent
-ms.openlocfilehash: c05f725c9e6b493a6af8f5b5d20dbc9ff73a1ef8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d630e1776607bd0bd7c61e1f0f7234ef58c7533b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-and-packaging-web-application-projects"></a>Création et l’empaquetage des projets d’Application Web
 ====================
@@ -59,8 +59,8 @@ Cette cible utilise la **MSBuild** tâche pour générer des projets différents
 Le **Package** cible est définie dans le *Microsoft.Web.Publishing.targets* fichier. Pour l’essentiel, cette cible prend la sortie de génération de votre projet d’application web et la convertit en un package de déploiement web qui peut être publié sur un serveur web IIS.
 
 > [!NOTE]
-> Pour afficher un fichier de projet (par exemple, *ContactManager.Mvc.csproj*) dans Visual Studio 2010, vous devez tout d’abord décharger le projet à partir de votre solution. Dans le **l’Explorateur de solutions** fenêtre, cliquez sur le nœud du projet, puis cliquez sur **décharger le projet**. Cliquez à nouveau sur le nœud du projet, puis cliquez sur **modifier***[fichier de projet]*). Le fichier projet s’ouvre dans sa forme XML brut. N’oubliez pas de recharger le projet lorsque vous avez terminé.  
-> Pour plus d’informations sur les cibles de MSBuild, tâches, et **importation** consultez [présentation du fichier de projet](understanding-the-project-file.md). Pour obtenir une présentation plus approfondie des fichiers projet et les fournisseurs de services, consultez [à l’intérieur de la Microsoft Build Engine : à l’aide de MSBuild et Team Foundation Build](http://amzn.com/0735645248) par Sayed Ibrahim Hashimi et William Bartholomew, numéro ISBN : 978-0-7356-4524-0.
+> Pour afficher un fichier de projet (par exemple, <em>ContactManager.Mvc.csproj</em>) dans Visual Studio 2010, vous devez tout d’abord décharger le projet à partir de votre solution. Dans le <strong>l’Explorateur de solutions</strong> fenêtre, cliquez sur le nœud du projet, puis cliquez sur <strong>décharger le projet</strong>. Cliquez à nouveau sur le nœud du projet, puis cliquez sur <strong>modifier</strong><em>[fichier de projet]</em>). Le fichier projet s’ouvre dans sa forme XML brut. N’oubliez pas de recharger le projet lorsque vous avez terminé.  
+> Pour plus d’informations sur les cibles de MSBuild, tâches, et <strong>importation</strong> consultez [présentation du fichier de projet](understanding-the-project-file.md). Pour obtenir une présentation plus approfondie des fichiers projet et les fournisseurs de services, consultez [à l’intérieur de la Microsoft Build Engine : à l’aide de MSBuild et Team Foundation Build](http://amzn.com/0735645248) par Sayed Ibrahim Hashimi et William Bartholomew, numéro ISBN : 978-0-7356-4524-0.
 
 
 ## <a name="what-is-a-web-deployment-package"></a>Qu’est un Package de déploiement Web ?
@@ -104,6 +104,6 @@ Les rubriques suivantes dans ce didacticiel, [configuration des paramètres pour
 
 Pour obtenir une présentation plus approfondie des fichiers projet et les fournisseurs de services, consultez [à l’intérieur de la Microsoft Build Engine : à l’aide de MSBuild et Team Foundation Build](http://amzn.com/0735645248) par Sayed Ibrahim Hashimi et William Bartholomew, numéro ISBN : 978-0-7356-4524-0.
 
->[!div class="step-by-step"]
-[Précédent](understanding-the-build-process.md)
-[Suivant](configuring-parameters-for-web-package-deployment.md)
+> [!div class="step-by-step"]
+> [Précédent](understanding-the-build-process.md)
+> [Suivant](configuring-parameters-for-web-package-deployment.md)

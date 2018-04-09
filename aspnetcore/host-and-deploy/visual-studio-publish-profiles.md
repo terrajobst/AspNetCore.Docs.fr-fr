@@ -1,4 +1,4 @@
-﻿---
+---
 title: Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 author: rick-anderson
 description: Découvrez comment créer des profils de publication pour les applications ASP.NET Core dans Visual Studio.
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: d2c4ec317f235c6d042bd130dbf79f6cb5e2d47d
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: 64c96f572c42c56480cfe2bd58f926d54eddf35e
+ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/20/2018
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 
@@ -91,11 +91,11 @@ Quand MSBuild ou Visual Studio charge un projet, les actions principales suivant
 * Traitement des fichiers à publier
 * Publication des fichiers sur la destination
 
-### <a name="compute-project-items"></a>Traitement des éléments du projet
+## <a name="compute-project-items"></a>Traitement des éléments du projet
 
 Quand le projet est chargé, les éléments du projet (fichiers) sont traités. L’attribut `item type` détermine comment le fichier est traité. Par défaut, les fichiers *.cs* sont inclus dans la liste d’éléments `Compile`. Les fichiers dans la liste d’éléments `Compile` sont compilés.
 
-La liste d’éléments `Content` contient les fichiers qui sont publiés en plus des fichiers générés. Par défaut, les fichiers correspondant au modèle `wwwroot/**` sont inclus dans l'élément `Content`. [wwwroot /\* \* est un modèle de la globalisation](https://gruntjs.com/configuring-tasks#globbing-patterns) qui désigne tous les fichiers dans le dossier *wwwroot* dossier **et** ses sous-dossiers. Pour ajouter explicitement un fichier à la liste de publication, ajoutez-le directement au fichier *.csproj* comme indiqué dans [Inclusion de fichiers](#including-files).
+Le `Content` liste d’éléments contient des fichiers qui sont publiés en plus les sorties de génération. Par défaut, les fichiers correspondant au modèle `wwwroot/**` sont inclus dans le `Content` élément. [wwwroot /\* \* est un modèle de la globalisation](https://gruntjs.com/configuring-tasks#globbing-patterns) qui spécifie tous les fichiers dans le *wwwroot* dossier **et** sous-dossiers. Pour ajouter explicitement un fichier à la liste de publication, ajoutez-le directement au fichier *.csproj* comme indiqué dans [Inclusion de fichiers](#including-files).
 
 Lorsque vous sélectionnez le bouton **publier** dans Visual Studio, ou lors de la publication à partir de la ligne de commande :
 
@@ -174,7 +174,7 @@ Vérifiez que l’application publiée pour le déploiement n’est pas en cours
 
 Cette section utilise Visual Studio 2017 et versions ultérieures pour créer des profils de publication. Une fois créé, la publication à partir de Visual Studio ou de la ligne de commande est disponible.
 
-Les profils de publication peuvent simplifier le processus de publication. Plusieurs profils de publication peut exister. Pour créer un profil de publication dans Visual Studio, cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions et sélectionnez **publier**. Vous pouvez également sélectionner **publier \<nom du projet >** dans le menu Générer. L’onglet **Publier** de la page de capacités de l’application s’affiche. Si le projet ne contient pas de profil de publication, la page suivante s’affiche :
+Les profils de publication peuvent simplifier le processus de publication. Plusieurs profils de publication peut exister. Pour créer un profil de publication dans Visual Studio, avec le bouton droit sur le projet dans l’Explorateur de solutions et sélectionnez **publier**. Vous pouvez également sélectionner **publier \<nom du projet >** dans le menu Générer. L’onglet **Publier** de la page de capacités d’application s’affiche. Si le projet ne contient pas de profil de publication, la page suivante s’affiche :
 
 ![L’onglet de la publication de la page de capacités application affichant Azure, IIS, FTB, dossier avec Azure sélectionné. Contient également les cases d’option Créer nouveau et Sélectionner.](visual-studio-publish-profiles/_static/az.png)
 
@@ -197,6 +197,7 @@ L’Assistant Publication prend en charge les cibles de publication suivantes :
 Pour plus d’informations, consultez [Quelles options de publication choisir ?](https://docs.microsoft.com/visualstudio/ide/not-in-toc/web-publish-options).
 
 Lors de la création d’un profil de publication avec Visual Studio, un *propriétés/PublishProfiles/\<nom de publication > .pubxml* fichier MSBuild est créé. Ce fichier *.pubxml* est un fichier MSBuild qui contient des paramètres de configuration de publication. Ce fichier peut être modifié pour personnaliser la génération et le processus de publication. Ce fichier est lu par le processus de publication. `<LastUsedBuildConfiguration>` est spécial, car elle est une propriété globale et ne doivent pas être dans n’importe quel fichier qui est importé dans la build. Pour plus d’informations, consultez [MSBuild: how to set the configuration property (Comment définir la propriété de configuration)](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx).
+
 Le fichier *.pubxml* ne doit pas être archivé dans le contrôle de code source, car il dépend du fichier *.user* fichier. Le fichier *.user* ne doit jamais être archivé dans le contrôle de code source, car il peut contenir des informations sensibles et il est valide uniquement pour un utilisateur et un ordinateur.
 
 Les informations sensibles (telles que le mot de passe de publication) sont chiffrées pour chaque utilisateur/ordinateur et stockées dans le fichier *Properties/PublishProfiles/\<nom_publication>.pubxml.user*. Ce fichier pouvant contenir des informations sensibles, il ne doit **pas** être archivé dans le contrôle de code source.
@@ -444,7 +445,7 @@ MSBuild file.
 
 Pour obtenir d’autres exemples de déploiement, consultez le fichier [Lisez-moi webSDK](https://github.com/aspnet/websdk).
 
-### <a name="run-a-target-before-or-after-publishing"></a>Exécuter une cible avant ou après la publication
+## <a name="run-a-target-before-or-after-publishing"></a>Exécuter une cible avant ou après la publication
 
 Les cibles intégrées `BeforePublish` et `AfterPublish` peuvent servir à exécuter une cible avant ou après la cible de publication. Vous pouvez ajouter le balisage suivant au profil de publication pour enregistrer les messages dans la sortie de console avant et après la publication :
 
@@ -455,6 +456,16 @@ Les cibles intégrées `BeforePublish` et `AfterPublish` peuvent servir à exéc
   <Target Name="CustomActionsAfterPublish" AfterTargets="AfterPublish">
     <Message Text="Inside AfterPublish" Importance="high" />
 </Target>
+```
+
+## <a name="publish-to-a-server-using-an-untrusted-certificate"></a>Publier sur un serveur à l’aide d’un certificat non approuvé
+
+Ajouter le `<AllowUntrustedCertificate>` propriété avec la valeur `True` pour le profil de publication :
+
+```xml
+<PropertyGroup>
+  <AllowUntrustedCertificate>True</AllowUntrustedCertificate>
+</PropertyGroup>
 ```
 
 ## <a name="the-kudu-service"></a>Le service Kudu
@@ -471,4 +482,4 @@ Sélectionnez l’élément de menu [Console de débogage](https://github.com/pr
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) simplifie le déploiement des applications web et des sites web sur des serveurs IIS.
-* [https://github.com/ASPNET/websdk](https://github.com/aspnet/websdk/issues) : soumettez vos problèmes et demandez des fonctionnalités pour le déploiement.
+* [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues): Problèmes de fichiers et de demander des fonctionnalités pour le déploiement.

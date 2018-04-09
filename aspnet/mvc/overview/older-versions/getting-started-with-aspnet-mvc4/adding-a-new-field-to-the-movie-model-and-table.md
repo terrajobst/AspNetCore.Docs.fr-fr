@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
-title: "Ajout d’un nouveau champ à la Table et au modèle de film | Documents Microsoft"
+title: Ajout d’un nouveau champ à la Table et au modèle de film | Documents Microsoft
 author: Rick-Anderson
-description: "Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration..."
+description: 'Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-a-new-field-to-the-movie-model-and-table
 msc.type: authoredcontent
-ms.openlocfilehash: 9965c8a755857a8e8cb8ecbc6c467a6c856aa83d
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: d8a42e9acdce687ab6e9742071dd2949f244622f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table"></a>Ajout d’un nouveau champ à la Table et au modèle de film
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -107,7 +107,7 @@ Générez l’application à l’aide de la **générer** &gt; **générer un fi
 
 Maintenant que vous avez mis à jour le `Model` (classe), vous devez également mettre à jour le *\Views\Movies\Index.cshtml* et *\Views\Movies\Create.cshtml* afficher les modèles afin d’afficher la nouvelle `Rating`propriété dans la vue du navigateur.
 
-Ouvrez le*\Views\Movies\Index.cshtml* et ajoutez un `<th>Rating</th>` juste après l’en-tête de colonne le **prix** colonne. Ajoutez ensuite une `<td>` colonne vers la fin du modèle pour afficher le `@item.Rating` valeur. Voici quelles mis à jour *Index.cshtml* afficher le modèle ressemble à :
+Ouvrez le<em>\Views\Movies\Index.cshtml</em> et ajoutez un `<th>Rating</th>` juste après l’en-tête de colonne le <strong>prix</strong> colonne. Ajoutez ensuite une `<td>` colonne vers la fin du modèle pour afficher le `@item.Rating` valeur. Voici quelles mis à jour <em>Index.cshtml</em> afficher le modèle ressemble à :
 
 [!code-cshtml[Main](adding-a-new-field-to-the-movie-model-and-table/samples/sample5.cshtml?highlight=26-28,46-48)]
 
@@ -173,6 +173,6 @@ Vous pouvez entrer la commande « mise à jour de base de données » dans le 
 
 Dans cette section, vous avez vu comment vous pouvez modifier les objets de modèle et synchroniser la base de données avec les modifications. Vous avez également appris une méthode pour remplir une base de données nouvellement créée avec les exemples de données permettent de tester des scénarios. Ensuite, nous allons voir comment vous pouvez ajouter la logique de validation plus riche pour les classes du modèle et activer des règles d’entreprise être appliqué.
 
->[!div class="step-by-step"]
-[Précédent](examining-the-edit-methods-and-edit-view.md)
-[Suivant](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [Précédent](examining-the-edit-methods-and-edit-view.md)
+> [Suivant](adding-validation-to-the-model.md)

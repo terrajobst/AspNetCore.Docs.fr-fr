@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
-title: "L’authentification des utilisateurs avec des formulaires d’authentification (c#) | Documents Microsoft"
+title: L’authentification des utilisateurs avec des formulaires d’authentification (c#) | Documents Microsoft
 author: microsoft
-description: "Découvrez comment utiliser l’attribut [Authorize] de mot de passe protéger certaines pages dans votre application MVC. Vous apprenez à utiliser le Site Web Administration trop..."
+description: Découvrez comment utiliser l’attribut [Authorize] de mot de passe protéger certaines pages dans votre application MVC. Vous apprenez à utiliser le Site Web Administration trop...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 17bcf02e1351587d64b72ee2b40393e0f748f23e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e1def84bbf48847339e89b239b026d053640b935
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-forms-authentication-c"></a>L’authentification des utilisateurs avec l’authentification par formulaire (c#)
 ====================
@@ -107,7 +107,7 @@ Pour voir la base de données ASPNETDB.mdf dans la fenêtre de l’Explorateur d
 
 La première étape consiste à ajouter tous les objets de base de données nécessaires (tables et procédures stockées) à votre base de données de production. Pour ajouter ces objets à une base de données le plus simple consiste à tirer parti de l’Assistant Installation de ASP.NET SQL Server (voir la Figure 8). Vous pouvez lancer cet outil en ouvrant l’invite de commandes de Visual Studio 2008 à partir du groupe de programmes Microsoft Visual Studio 2008 et en exécutant la commande suivante à partir de l’invite de commandes :
 
-ASPNET\_regsql
+aspnet\_regsql
 
 **Figure 8 : l’Assistant Installation du serveur SQL d’ASP.NET**
 
@@ -148,9 +148,9 @@ Après avoir créé la connexion requise, vous devez mapper la connexion à un u
 
 ![clip_image020](authenticating-users-with-forms-authentication-cs/_static/image10.jpg)
 
-#### <a name="summary"></a>Résumé
+#### <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris à utiliser l’authentification par formulaire lors de la création d’une application ASP.NET MVC. Tout d’abord, vous avez appris à créer de nouveaux utilisateurs et rôles en tirant parti de l’outil Administration de Site Web. Ensuite, vous avez appris à utiliser l’attribut [Authorize] pour empêcher les utilisateurs non autorisés d’appeler des actions de contrôleur. Enfin, vous avez appris comment configurer votre application MVC pour stocker les informations d’utilisateur et rôle dans une base de données de production.
 
->[!div class="step-by-step"]
-[Next](authenticating-users-with-windows-authentication-cs.md)
+> [!div class="step-by-step"]
+> [Next](authenticating-users-with-windows-authentication-cs.md)

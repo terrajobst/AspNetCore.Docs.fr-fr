@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
-title: "Ajout d’une colonne de GridView des cases à cocher (VB) | Documents Microsoft"
+title: Ajout d’une colonne de GridView des cases à cocher (VB) | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel explique comment ajouter une colonne de cases à cocher à un contrôle GridView pour fournir un moyen intuitif de la sélection de plusieurs lignes de G. l’utilisateur..."
+description: Ce didacticiel explique comment ajouter une colonne de cases à cocher à un contrôle GridView pour fournir un moyen intuitif de la sélection de plusieurs lignes de G. l’utilisateur...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4468f7e0c142fa432e58d4c686dd79d3b38612ad
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: beb28de901805e07365f336192d20e914eeebb1e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-gridview-column-of-checkboxes-vb"></a>Ajout d’une colonne de GridView des cases à cocher (VB)
 ====================
@@ -158,8 +158,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](adding-a-gridview-column-of-radio-buttons-vb.md)
-[Suivant](inserting-a-new-record-from-the-gridview-s-footer-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-gridview-column-of-radio-buttons-vb.md)
+> [Suivant](inserting-a-new-record-from-the-gridview-s-footer-vb.md)

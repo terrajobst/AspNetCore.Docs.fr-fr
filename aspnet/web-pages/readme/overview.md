@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/readme
 msc.type: content
-ms.openlocfilehash: b8402aa3db1b2566878c4d56212facbbb2925eec
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c65ee58b8c13b0b4acb6e7c9b631c8235e791506
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="webmatrix-readme"></a>Fichier Lisez-moi de WebMatrix
 ====================
@@ -126,7 +126,7 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 - [Changes](#Changes)
 - [Issues](#Issues)
 
-#### <a id="NewFeatures"></a>Nouvelles fonctionnalités
+#### <a id="NewFeatures"></a>  Nouvelles fonctionnalités
 
 #### <a name="new-configuration-setting-added-to-disable-the-package-manager"></a>Nouveau : Paramètre de Configuration est ajoutée pour désactiver le Gestionnaire de package
 
@@ -142,7 +142,7 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 > Le `webPages:AdminFolderVirtualPath` clé qui peut être ajouté à la *web.config* pour spécifier l’emplacement du Gestionnaire de package a été renommé pour utiliser le `asp:` espace de noms à la place de la `webPages` espace de noms. Si vous avez utilisé cet élément, vous devez le renommer dans le fichier de configuration.
 
 
-#### <a id="Issues"></a>Problèmes connus
+#### <a id="Issues"></a>  Problèmes connus
 
 #### <a name="issue-passwords-for-membership-users-no-longer-recognized"></a>Problème : Les mots de passe pour les utilisateurs d’appartenance n’est plus reconnus
 
@@ -226,7 +226,7 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 > Si vous désinstallez le Kit de développement .NET Framework version 4 et puis réinstallez, ASP.NET Web Pages avec syntaxe Razor est désactivées. Pages avec la *.cshtml* extension ne fonctionnent pas correctement. Les Pages Web ASP.NET enregistre un assembly dans la racine de l’ordinateur *web.config* des fichiers et suppression de .NET Framework supprime ce fichier. Réinstallez le .NET Framework installe une nouvelle version du fichier de configuration, mais ne pas ajoute la référence de l’assembly ASP.NET Web Pages.
 > 
 > **Solution de contournement** après la réinstallation de .NET Framework, réinstallez ASP.NET Web Pages avec syntaxe Razor. Cette opération ajoute l’élément suivant à la *web.config* fichier à la racine de l’ordinateur, qui correspond généralement à l’emplacement suivant :  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config (32-bit)`  
 > `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config (64-bit)`
 > 
@@ -236,9 +236,9 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>Problème : URL sans extension ne trouvent pas les fichiers.cshtml/.vbhtml sur IIS 7 ou IIS 7.5
 
 > Sur IIS 7 ou IIS 7.5, les demandes avec une URL semblable à la suivante ne sont pas en mesure de trouver les pages qui ont le *.cshtml* ou *.vbhtml* extension :  
->   
+> 
 > `http://www.example.com/ExampleSite/ExampleFile`  
->   
+> 
 > Le problème se produit car la réécriture d’URL n’est pas activée par défaut pour IIS 7 ou IIS 7.5. Le scénario voyez généralement cette est que vous ne voyez pas le problème lors du test localement à l’aide d’IIS Express, mais que vous le rencontrez lorsque vous déployez votre site Web sur un site Web d’hébergement.
 > 
 > **Workaround**
@@ -257,10 +257,11 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 > 
 > 1. Copiez les assemblys du moteur de base de données à la *Bin* dossier (et sous-dossiers) de l’application sur l’ordinateur cible :  
 > 
->     - Copy *C:\Program Files\Microsoft SQL Server Edition\v4.0\Desktop\System.Data.SqlServerCe.dll*   
->         **to** *\Bin*
->     - Copie *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\*** pour *** \Bin\x86*
->     - Copie *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\****à *** \Bin\amd64*
+>    - Copy *C:\Program Files\Microsoft SQL Server Edition\v4.0\Desktop\System.Data.SqlServerCe.dll*   
+>        **to** *\Bin*
+>    - Copie <em>C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\</em><strong><em>à</em></strong>\Bin\x86*
+>    - Copie <em>C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\</em>* <strong>à</strong><em>\Bin\amd64</em>
+> 
 > 2. Dans le dossier racine du site Web, créez ou ouvrez un *web.config* fichier. (Dans WebMatrix, 1.0, ce type de fichier est disponible si vous cliquez sur **tous les** dans les **choisir un Type de fichier** boîte de dialogue.)
 > 3. Ajoutez l’élément suivant en tant qu’enfant de la `<configuration>` élément (pas à l’intérieur du `<system.web>` élément) :
 > 
@@ -279,7 +280,7 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 
 #### <a name="issue-applicationpart-resources-are-externally-accessible"></a>Problème : Les ressources « ApplicationPart » sont accessibles en externe
 
-> Si un assembly contient des objets qui dérive de la `ApplicationPart` classe, que les ressources de l’assembly sont exposées par la `ResourceRouteHandler` classe. Par exemple, considérez l’URL suivante :  
+> Si un assembly contient des objets qui dérive de la `ApplicationPart` classe, que les ressources de l’assembly sont exposées par la `ResourceRouteHandler` classe. Par exemple, considérez l’URL suivante :  
 >   
 > `~/r.ashx/System.Web.WebPages.Administration/Resources/AdminResources.resources`  
 >   
@@ -412,7 +413,7 @@ SQL Server Compact a son propre fichier Lisez-moi dans lequel est disponible à 
 
 Pour plus d’informations sur les problèmes qui nécessitent l’installation de SQL Server Compact comme faisant partie de WebMatrix, consultez [problèmes d’Installation de WebMatrix](#Known_Issues_Installation) plus haut dans ce document.
 
-### <a id="Known_Issues_Installing_Applications"></a>L’installation d’Applications
+### <a id="Known_Issues_Installing_Applications"></a>  L’installation d’Applications
 
 #### <a name="issue-installing-an-application-can-take-a-long-time-if-the-users-my-documents-folder-is-redirected-to-a-network-share"></a>Problème : Installation d’une application peut prendre beaucoup de temps si le dossier Mes Documents de l’utilisateur est redirigé vers un partage réseau
 
@@ -420,7 +421,7 @@ Pour plus d’informations sur les problèmes qui nécessitent l’installation 
 > Aucun. L’application peut prendre un certain temps à installer, mais ne s’installe correctement.
 
 
-### <a id="Known_Issues_Publishing_Applications"></a>Publication d’Applications
+### <a id="Known_Issues_Publishing_Applications"></a>  Publication d’Applications
 
 #### <a name="issue-required-permissions-cannot-be-acquired-error-when-publishing-a-sql-compact-database"></a>Problème : « requis Impossible d’obtenir des autorisations » erreur lors de la publication d’une base de données SQL Compact
 

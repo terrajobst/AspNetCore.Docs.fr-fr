@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
-title: "Authentification à deux facteurs à l’aide de SMS et des messages électroniques avec ASP.NET Identity | Documents Microsoft"
+title: Authentification à deux facteurs à l’aide de SMS et des messages électroniques avec ASP.NET Identity | Documents Microsoft
 author: HaoK
-description: "Ce didacticiel vous indiquera comment configurer l’authentification à deux facteurs (2FA) à l’aide de SMS et des messages électroniques. Cet article a été rédigé par Rick Anderson ( @RickAndMSFT ), par..."
+description: Ce didacticiel vous indiquera comment configurer l’authentification à deux facteurs (2FA) à l’aide de SMS et des messages électroniques. Cet article a été rédigé par Rick Anderson ( @RickAndMSFT ), par...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/15/2015
 ms.topic: article
 ms.assetid: 053e23c4-13c9-40fa-87cb-3e9b0823b31e
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 0f9ff7cf74048a008b150da1e843ff15333269ab
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c8f628d177004a8569dde2651469ed591e48591e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="two-factor-authentication-using-sms-and-email-with-aspnet-identity"></a>Authentification à deux facteurs avec l’identité de ASP.NET à l’aide de SMS et par courrier électronique
 ====================
@@ -52,11 +52,11 @@ Dans cette section, vous utiliserez NuGet pour télécharger un exemple que nous
     `Install-Package SendGrid`  
     `Install-Package -Prerelease Microsoft.AspNet.Identity.Samples`  
   
- Dans ce didacticiel, nous allons utiliser [SendGrid](http://sendgrid.com/) pour envoyer un courrier électronique et [Twilio](https://www.twilio.com/) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/testcredits/) pour sms texto. Le `Identity.Samples` package installe le code que nous travaillerons avec.
+   Dans ce didacticiel, nous allons utiliser [SendGrid](http://sendgrid.com/) pour envoyer un courrier électronique et [Twilio](https://www.twilio.com/) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/testcredits/) pour sms texto. Le `Identity.Samples` package installe le code que nous travaillerons avec.
 3. Définir le [projet pour utiliser SSL](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
 4. *Facultatif*: suivez les instructions de mon [didacticiel de confirmation par courrier électronique](account-confirmation-and-password-recovery-with-aspnet-identity.md) pour raccorder SendGrid puis exécuter l’application et inscrire un compte de messagerie.
 5. * Facultatif : * supprimez le code de confirmation de lien démonstration par courrier électronique à partir de l’exemple (le `ViewBag.Link` code dans le contrôleur de compte. Consultez le `DisplayEmail` et `ForgotPasswordConfirmation` les méthodes d’action et des vues razor).
-6. * Facultatif : * supprimez la `ViewBag.Status` code à partir de contrôleurs de compte et de gérer et de la *Views\Account\VerifyCode.cshtml* et *Views\Manage\VerifyPhoneNumber.cshtml* vues razor. Vous pouvez également, garder la `ViewBag.Status` affichage pour tester le fonctionnement de cette application localement sans avoir à connecter et envoyer par courrier électronique et les messages SMS.
+6. <em>Facultatif : * supprimez la `ViewBag.Status` code à partir de contrôleurs de compte et de gérer et de la *Views\Account\VerifyCode.cshtml</em> et <em>Views\Manage\VerifyPhoneNumber.cshtml</em> vues razor. Vous pouvez également, garder la `ViewBag.Status` affichage pour tester le fonctionnement de cette application localement sans avoir à connecter et envoyer par courrier électronique et les messages SMS.
 
 > [!NOTE]
 > Avertissement : Si vous modifiez les paramètres de sécurité dans cet exemple, les applications de production devrez subir un audit de sécurité qui appelle explicitement les modifications apportées.
@@ -70,44 +70,44 @@ Ce didacticiel fournit des instructions relatives à l’aide de Twilio ou ASPSM
 
 1. **Création d’un compte d’utilisateur avec un fournisseur SMS**  
   
- Créer un [Twilio](https://www.twilio.com/try-twilio) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/testcredits/) compte.
+   Créer un [Twilio](https://www.twilio.com/try-twilio) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/testcredits/) compte.
 2. **Installation de packages supplémentaires ou l’ajout de références de service**  
   
- Twilio :  
- Dans la Console du Gestionnaire de Package, entrez la commande suivante :  
+   Twilio :  
+   Dans la Console du Gestionnaire de Package, entrez la commande suivante :  
     `Install-Package Twilio`  
   
- ASPSMS :  
- La référence de service suivant doit être ajouté :  
+   ASPSMS :  
+   La référence de service suivant doit être ajouté :  
   
     ![](two-factor-authentication-using-sms-and-email-with-aspnet-identity/_static/image1.png)  
   
- Adresse :  
+   Adresse :  
     `https://webservice.aspsms.com/aspsmsx2.asmx?WSDL`  
   
- Espace de noms :  
+   Espace de noms :  
     `ASPSMSX2`
 3. **Déterminer les informations d’identification de l’utilisateur du fournisseur SMS**  
   
- Twilio :  
- À partir de la **tableau de bord** onglet de votre compte Twilio, copie le **SID de compte** et **Auth jeton**.  
+   Twilio :  
+   À partir de la **tableau de bord** onglet de votre compte Twilio, copie le **SID de compte** et **Auth jeton**.  
   
- ASPSMS :  
- À partir des paramètres de votre compte, accédez à **clé d’utilisateur a** et copiez-le avec votre définis par l’utilisateur **mot de passe**.  
+   ASPSMS :  
+   À partir des paramètres de votre compte, accédez à **clé d’utilisateur a** et copiez-le avec votre définis par l’utilisateur **mot de passe**.  
   
- Nous allons stocker plus tard de ces valeurs dans les variables `SMSAccountIdentification` et `SMSAccountPassword` .
+   Nous allons stocker plus tard de ces valeurs dans les variables `SMSAccountIdentification` et `SMSAccountPassword` .
 4. **Spécifiant l’ID d’expéditeur / donneur d’ordre**  
   
- Twilio :  
- À partir de la **numéros** , onglet de la copie de votre numéro de téléphone Twilio.  
+   Twilio :  
+   À partir de la **numéros** , onglet de la copie de votre numéro de téléphone Twilio.  
   
- ASPSMS :  
- Dans le **déverrouiller les expéditeurs** déverrouiller un ou plusieurs expéditeurs de Menu, ou choisissez un donneur d’ordre alphanumérique (non pris en charge par tous les réseaux).  
+   ASPSMS :  
+   Dans le **déverrouiller les expéditeurs** déverrouiller un ou plusieurs expéditeurs de Menu, ou choisissez un donneur d’ordre alphanumérique (non pris en charge par tous les réseaux).  
   
- Nous allons stocker plus loin de cette valeur dans la variable `SMSAccountFrom` .
+   Nous allons stocker plus loin de cette valeur dans la variable `SMSAccountFrom` .
 5. **Transfert des informations d’identification du fournisseur SMS dans l’application**  
   
- Rendre les informations d’identification et le numéro de téléphone de l’expéditeur disponible à l’application :
+   Rendre les informations d’identification et le numéro de téléphone de l’expéditeur disponible à l’application :
 
     [!code-csharp[Main](two-factor-authentication-using-sms-and-email-with-aspnet-identity/samples/sample1.cs)]
 
@@ -115,9 +115,9 @@ Ce didacticiel fournit des instructions relatives à l’aide de Twilio ou ASPSM
     > Sécurité - magasin jamais des données sensibles dans votre code source. Le compte et les informations d’identification sont ajoutées au code ci-dessus pour simplifier l’exemple. Consultez de Jon Atten [ASP.NET MVC : conserver les paramètres privés hors contrôle de code Source](http://typecastexception.com/post/2014/04/06/ASPNET-MVC-Keep-Private-Settings-Out-of-Source-Control.aspx).
 6. **Implémentation du transfert de données au fournisseur SMS**  
   
- Configurer le `SmsService` classe dans le *application\_Start\IdentityConfig.cs* fichier.  
+   Configurer le `SmsService` classe dans le *application\_Start\IdentityConfig.cs* fichier.  
   
- Selon le fournisseur SMS utilisé activer soit le **Twilio** ou **ASPSMS** section : 
+   Selon le fournisseur SMS utilisé activer soit le **Twilio** ou **ASPSMS** section : 
 
     [!code-csharp[Main](two-factor-authentication-using-sms-and-email-with-aspnet-identity/samples/sample2.cs)]
 7. Exécutez l’application et connectez-vous avec le compte que vous avez enregistré précédemment.

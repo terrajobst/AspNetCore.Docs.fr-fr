@@ -1,5 +1,5 @@
 ---
-title: Créer des sites attrayants et réactifs avec Bootstra et ASP.NET Core
+title: Créer des sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
 author: ardalis
 description: Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core.
 manager: wpickett
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: c3dfaa53e9e3277d025d014f65004e4c24a5acc4
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
-ms.translationtype: HT
+ms.openlocfilehash: 142a997fa46f37545ea04971ab6593bff053b1ef
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="building-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Créer des sites attrayants et réactifs avec Bootstra et ASP.NET Core
+# <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Créer des sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
 
 <a name="bootstrap-index"></a>
 
@@ -153,7 +153,7 @@ Les badges font référence à des légendes de petite taille, généralement nu
 
 ### <a name="alerts"></a>Alertes
 
-Vous devrez peut-être afficher un type de notification, une alerte ou message d’erreur pour les utilisateurs de votre application. C'est là où les classes d’alerte standard sont utiles. Il existe quatre niveaux de gravité différents avec jeux de couleurs associé :
+Vous devrez peut-être afficher un type de notification, une alerte ou un message d’erreur pour les utilisateurs de votre application. C'est là où les classes d’alerte standard sont utiles. Il existe quatre niveaux de gravité différents avec jeux de couleurs associé :
 
 
 ![alertes](bootstrap/_static/theme-alerts.png)

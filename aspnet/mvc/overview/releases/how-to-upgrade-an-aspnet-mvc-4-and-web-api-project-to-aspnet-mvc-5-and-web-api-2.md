@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
-title: "Comment mettre à niveau un ASP.NET MVC 4 et Web de projet d’API à ASP.NET MVC 5 et Web API 2 | Documents Microsoft"
+title: Comment mettre à niveau un ASP.NET MVC 4 et Web de projet d’API à ASP.NET MVC 5 et Web API 2 | Documents Microsoft
 author: Rick-Anderson
-description: "ASP.NET MVC 5 et Web API 2 mettre un ordinateur hôte de nouvelles fonctionnalités, y compris le routage d’attributs, des filtres de l’authentification et bien plus encore."
+description: ASP.NET MVC 5 et Web API 2 mettre un ordinateur hôte de nouvelles fonctionnalités, y compris le routage d’attributs, des filtres de l’authentification et bien plus encore.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 05a3189cf105d1230b96e90b46ea5ab60fef1bf1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f61502933a5ba92896ee97cef9cff915fe23831d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2"></a>Comment mettre à niveau un ASP.NET MVC 4 et le projet d’API Web ASP.NET MVC 5 et API Web 2
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-> ASP.NET MVC 5 et Web API 2 mettre un ordinateur hôte de nouvelles fonctionnalités, y compris le routage d’attributs, des filtres de l’authentification et bien plus encore. Consultez [https://www.asp.net/vnext](https://www.asp.net/core) pour plus d’informations.
+> ASP.NET MVC 5 et Web API 2 mettre un ordinateur hôte de nouvelles fonctionnalités, y compris le routage d’attributs, des filtres de l’authentification et bien plus encore. Consultez [ https://www.asp.net/vnext ](https://www.asp.net/core) pour plus d’informations.
 > 
 > Cette procédure pas à pas vous guide avec les étapes requises pour mettre à niveau votre application vers la dernière version.  
 > 
@@ -41,7 +41,7 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
 
     [!code-csharp[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample1.cs)]
 
- par celle-ci :
+   par celle-ci :
 
     [!code-csharp[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample2.cs)]
 3. Assurez-vous que tous les packages qui utilisent de vos projets sont compatibles avec MVC 5 et des API Web 2. Le tableau indique le MVC 4 et les API Web suivantes liées packages que doivent être modifiées. Si vous avez un package qui est dépendant d’un des packages répertoriés ci-dessous, veuillez contacter les serveurs de publication pour obtenir les versions plus récentes qui sont compatibles avec MVC 5 et Web API 2. Si vous avez le code source pour ces packages, vous devez les recompiler avec les nouveaux assemblys de MVC 5 et Web API 2.   
@@ -68,7 +68,7 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
     | Microsoft.Data.Edm | 5.2.x | 5.6.x |
     | Microsoft.AspNet.Mvc.FixedDisplayModes | < o : p >< / o : p > | Supprimé |
     | Microsoft.AspNet.WebPages.Administration | < o : p >< / o : p > | Supprimé |
-    | Applications auxiliaires Web de Microsoft | < o : p >< / o : p > | Microsoft.AspNet.WebHelpers |
+    | Microsoft-Web-Helpers | < o : p >< / o : p > | Microsoft.AspNet.WebHelpers |
 
     > [!NOTE]
     > Applications auxiliaires Web de Microsoft a été remplacée par Microsoft.AspNet.WebHelpers. Vous devez d’abord supprimer l’ancien package et puis installer le package plus récente.   
@@ -78,17 +78,17 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
 5. Supprimez l’un des packages NuGet ASP.NET suivants qui sont installés. Vous allez supprimer à l’aide de la Console Gestionnaire de Package (PMC). Pour ouvrir le PMC, sélectionnez le **outils** , puis sélectionnez **Gestionnaire de Package de bibliothèque,** puis sélectionnez **Package Manager Console**. Votre projet ne peut pas inclure tous ces éléments.
 
     1. `Microsoft.AspNet.WebPages.Administration`  
- Ce package est en principe ajouté lors de la mise à niveau à partir de MVC 3 vers MVC 4. Pour le supprimer, exécutez la commande suivante dans le PMC :  
+   Ce package est en principe ajouté lors de la mise à niveau à partir de MVC 3 vers MVC 4. Pour le supprimer, exécutez la commande suivante dans le PMC :  
         `Uninstall-Package -Id Microsoft.AspNet.WebPages.Administration`
     2. `Microsoft-Web-Helpers`   
- Ce package a été renommé `Microsoft.AspNet.WebHelpers`. Pour le supprimer, exécutez la commande suivante dans le PMC :  
+   Ce package a été renommé `Microsoft.AspNet.WebHelpers`. Pour le supprimer, exécutez la commande suivante dans le PMC :  
         `Uninstall-Package -Id Microsoft-Web-Helpers`
     3. `Microsoft.AspNet.Mvc.FixedDisplayMode`  
- Ce package contient une solution de contournement pour un bogue dans MVC 4 qui a été résolu dans MVC 5. Pour le supprimer, exécutez la commande suivante dans le PMC :  
+   Ce package contient une solution de contournement pour un bogue dans MVC 4 qui a été résolu dans MVC 5. Pour le supprimer, exécutez la commande suivante dans le PMC :  
         `Uninstall-Package -Id Microsoft.AspNet.Mvc.FixedDisplayModes`
 6. Mettre à niveau tous les packages NuGet ASP.NET à l’aide de la PMC. Dans le CFP, exécutez la commande suivante :  
     `Update-Package`  
- Le `Update-Package` de commande sans aucun paramètre met à jour chaque package. Vous pouvez mettre à jour individuellement des packages à l’aide de l’argument ID. Pour plus d’informations sur la commande de mise à jour, exécutez `get-help update-package` .
+   Le `Update-Package` de commande sans aucun paramètre met à jour chaque package. Vous pouvez mettre à jour individuellement des packages à l’aide de l’argument ID. Pour plus d’informations sur la commande de mise à jour, exécutez `get-help update-package` .
 
 ## <a name="update-the-application-webconfig-file"></a>Mettre à jour de l’Application *web.config* fichier
 
@@ -103,7 +103,7 @@ Recherchez la `<runtime>/<assemblyBinding>` section et apportez les modification
 3. Recherchez la `<appSettings>` section et mettre à jour le webpages:version de 2.0.0.0.0 à 3.0.0.0, comme indiqué ci-dessous :
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample4.xml?highlight=2)]
-4. Supprimez tous les niveaux de confiance qu’intégral. Exemple :
+4. Supprimez tous les niveaux de confiance qu’intégral. Par exemple :
 
     [!code-xml[Main](how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2/samples/sample5.xml?highlight=2)]
 

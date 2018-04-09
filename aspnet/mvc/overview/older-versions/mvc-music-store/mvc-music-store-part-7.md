@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
-title: "Partie 7 : L’appartenance et l’autorisation | Documents Microsoft"
+title: 'Partie 7 : L’appartenance et l’autorisation | Documents Microsoft'
 author: jongalloway
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 7 couvre l’appartenance et l’autorisation."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 7 couvre l’appartenance et l’autorisation.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: db459de687db862be00a9b59ff5b1b238fa75061
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a0f599da4691c5bb7c8e6f01625fc0e94ce0eac8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-7-membership-and-authorization"></a>Partie 7 : L’appartenance et l’autorisation
 ====================
@@ -110,6 +110,6 @@ Maintenant accédant à /StoreManager affiche une boîte de dialogue Ouverture d
 
 Après l’ouverture de session avec notre nouveau compte d’administrateur, nous sommes en mesure de passer à l’écran Album modifier comme avant.
 
->[!div class="step-by-step"]
-[Précédent](mvc-music-store-part-6.md)
-[Suivant](mvc-music-store-part-8.md)
+> [!div class="step-by-step"]
+> [Précédent](mvc-music-store-part-6.md)
+> [Suivant](mvc-music-store-part-8.md)

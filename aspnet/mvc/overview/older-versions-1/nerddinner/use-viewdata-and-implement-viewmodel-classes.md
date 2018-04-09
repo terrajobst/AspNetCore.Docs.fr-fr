@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-viewdata-and-implement-viewmodel-classes
-title: "Utilisez ViewData et implémentez ViewModel Classes | Documents Microsoft"
+title: Utilisez ViewData et implémentez ViewModel Classes | Documents Microsoft
 author: microsoft
-description: "Étape 6 montre comment activer la prise en charge de la modification de scénarios, de forme plus riche et présente également les deux approches qui peuvent être utilisés pour passer des données à partir des contrôleurs à des vues :..."
+description: Étape 6 montre comment activer la prise en charge de la modification de scénarios, de forme plus riche et présente également les deux approches qui peuvent être utilisés pour passer des données à partir des contrôleurs à des vues :...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-viewdata-and-implement-viewmodel-classes
 msc.type: authoredcontent
-ms.openlocfilehash: 36b9e87cc24f74f7f2cc592afb5102709b598f74
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9ba8758bd6524f3e300f3fd91ef68cfe8a3587a7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-viewdata-and-implement-viewmodel-classes"></a>Utilisez ViewData et implémenter les Classes ViewModel
 ====================
@@ -127,6 +127,6 @@ Classes de ViewModel en forme personnalisée peuvent fournir une grande soupless
 
 Nous allons maintenant voir comment nous pouvons utiliser aucun et les pages maîtres pour réutiliser et partager l’interface utilisateur dans notre application.
 
->[!div class="step-by-step"]
-[Précédent](provide-crud-create-read-update-delete-data-form-entry-support.md)
-[Suivant](re-use-ui-using-master-pages-and-partials.md)
+> [!div class="step-by-step"]
+> [Précédent](provide-crud-create-read-update-delete-data-form-entry-support.md)
+> [Suivant](re-use-ui-using-master-pages-and-partials.md)

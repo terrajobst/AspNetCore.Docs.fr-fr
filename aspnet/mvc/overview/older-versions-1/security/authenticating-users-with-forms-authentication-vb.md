@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb
-title: "L’authentification des utilisateurs avec des formulaires d’authentification (VB) | Documents Microsoft"
+title: L’authentification des utilisateurs avec des formulaires d’authentification (VB) | Documents Microsoft
 author: microsoft
-description: "Découvrez comment utiliser l’attribut [Authorize] de mot de passe protéger certaines pages dans votre application MVC. Vous apprenez à utiliser le Site Web Administration trop..."
+description: Découvrez comment utiliser l’attribut [Authorize] de mot de passe protéger certaines pages dans votre application MVC. Vous apprenez à utiliser le Site Web Administration trop...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-forms-authentication-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c7d52e51158575c674264efd19c81de9b077d27b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0ff425a4c9728de2eec3d0c94e76cb51a15de487
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-forms-authentication-vb"></a>L’authentification des utilisateurs avec l’authentification par formulaire (VB)
 ====================
@@ -33,25 +33,25 @@ Avant de le faire autre chose, nous devons commencer par créer des utilisateurs
 
 **Figure 1 : lancement de l’outil d’Administration de Site Web**
 
-![clip_image002 [4]](authenticating-users-with-forms-authentication-vb/_static/image1.jpg)
+![clip_image002[4]](authenticating-users-with-forms-authentication-vb/_static/image1.jpg)
 
 Dans l’outil Administration de Site Web, créer des utilisateurs et rôles en sélectionnant l’onglet sécurité. Cliquez sur le **créer un utilisateur** lien pour créer un nouvel utilisateur nommé Stephen (voir Figure 2). Fournir à l’utilisateur Stephen avec n’importe quel mot de passe (par exemple, *secret*).
 
 **Figure 2 : création d’un nouvel utilisateur**
 
-![clip_image004 [4]](authenticating-users-with-forms-authentication-vb/_static/image2.jpg)
+![clip_image004[4]](authenticating-users-with-forms-authentication-vb/_static/image2.jpg)
 
 Créer de nouveaux rôles par la première activation de rôles et de la définition d’un ou plusieurs rôles. Activer les rôles en cliquant sur le **Active les rôles** lien. Ensuite, créez un rôle nommé *administrateurs* en cliquant sur le **créer ou gérer des rôles** lier (voir Figure 3).
 
 **Figure 3 : création d’un rôle**
 
-![clip_image006 [4]](authenticating-users-with-forms-authentication-vb/_static/image3.jpg)
+![clip_image006[4]](authenticating-users-with-forms-authentication-vb/_static/image3.jpg)
 
 Enfin, créez un utilisateur nommé Sarah et Sarah associer le rôle d’administrateur en cliquant sur le lien Créer un utilisateur et en sélectionnant les administrateurs lors de la création de Sarah (voir Figure 4).
 
 **Figure 4 : ajout d’un utilisateur à un rôle**
 
-![clip_image008 [4]](authenticating-users-with-forms-authentication-vb/_static/image4.jpg)
+![clip_image008[4]](authenticating-users-with-forms-authentication-vb/_static/image4.jpg)
 
 Lorsque toutes les est dite et en fait, vous devez avoir deux nouveaux utilisateurs nommés Stephen et Sarah. Vous devez également disposer d’un nouveau rôle Administrateurs. Catherine est membre du rôle Administrateurs et Stephen n’est pas.
 
@@ -69,7 +69,7 @@ Si vous appelez l’action CompanySecrets() en entrant l’URL /Home/CompanySecr
 
 **Figure 5 : la vue de la connexion**
 
-![clip_image010 [4]](authenticating-users-with-forms-authentication-vb/_static/image5.jpg)
+![clip_image010[4]](authenticating-users-with-forms-authentication-vb/_static/image5.jpg)
 
 Vous pouvez utiliser la vue de la connexion à entrer votre nom d’utilisateur et un mot de passe. Si vous n’êtes pas un utilisateur enregistré, vous pouvez cliquer sur le **inscrire** lien pour accéder au Registre afficher (voir Figure 6). Vous pouvez utiliser la vue de Registre pour créer un nouveau compte d’utilisateur.
 
@@ -107,7 +107,7 @@ Pour voir la base de données ASPNETDB.mdf dans la fenêtre de l’Explorateur d
 
 La première étape consiste à ajouter tous les objets de base de données nécessaires (tables et procédures stockées) à votre base de données de production. Pour ajouter ces objets à une base de données le plus simple consiste à tirer parti de l’Assistant Installation de ASP.NET SQL Server (voir la Figure 8). Vous pouvez lancer cet outil en ouvrant l’invite de commandes de Visual Studio 2008 à partir du groupe de programmes Microsoft Visual Studio 2008 et en exécutant la commande suivante à partir de l’invite de commandes :
 
-ASPNET\_regsql
+aspnet\_regsql
 
 **Figure 8 : l’Assistant Installation du serveur SQL d’ASP.NET**
 
@@ -117,8 +117,8 @@ L’Assistant Installation de ASP.NET SQL Server vous permet de sélectionner un
 
 > [!NOTE]
 > Si vous ne souhaitez pas utiliser l’Assistant Installation de ASP.NET SQL Server, vous pouvez trouver des scripts SQL pour ajouter les objets de base de données d’application services dans le dossier suivant :
-
-
+> 
+> 
 > C:\Windows\Microsoft.NET\Framework\v2.0.50727
 
 
@@ -148,10 +148,10 @@ Après avoir créé la connexion requise, vous devez mapper la connexion à un u
 
 ![clip_image020](authenticating-users-with-forms-authentication-vb/_static/image10.jpg)
 
-#### <a name="summary"></a>Résumé
+#### <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris à utiliser l’authentification par formulaire lors de la création d’une application ASP.NET MVC. Tout d’abord, vous avez appris à créer de nouveaux utilisateurs et rôles en tirant parti de l’outil Administration de Site Web. Ensuite, vous avez appris à utiliser l’attribut [Authorize] pour empêcher les utilisateurs non autorisés d’appeler des actions de contrôleur. Enfin, vous avez appris comment configurer votre application MVC pour stocker les informations d’utilisateur et rôle dans une base de données de production.
 
->[!div class="step-by-step"]
-[Précédent](preventing-javascript-injection-attacks-cs.md)
-[Suivant](authenticating-users-with-windows-authentication-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](preventing-javascript-injection-attacks-cs.md)
+> [Suivant](authenticating-users-with-windows-authentication-vb.md)

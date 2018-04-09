@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
-title: "Générer un modèle avec les Validations de règle d’entreprise | Documents Microsoft"
+title: Générer un modèle avec les Validations de règle d’entreprise | Documents Microsoft
 author: microsoft
-description: "Étape 3 montre comment créer un modèle que nous pouvons utiliser pour les deux requêtes et mettre à jour la base de données pour notre application NerdDinner."
+description: Étape 3 montre comment créer un modèle que nous pouvons utiliser pour les deux requêtes et mettre à jour la base de données pour notre application NerdDinner.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/build-a-model-with-business-rule-validations
 msc.type: authoredcontent
-ms.openlocfilehash: dbe6370979f218988c168df3e80314ef9b338fbd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c5a482474fd2f41836f70952306ada5cd9136455
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="build-a-model-with-business-rule-validations"></a>Générer un modèle avec les Validations de règle d’entreprise
 ====================
@@ -228,6 +228,6 @@ Nous avons maintenant un modèle que nous pouvons utiliser pour interroger et de
 
 Vous allez maintenant ajouter certains contrôleurs et les vues au projet que nous pouvons utiliser pour générer une expérience de l’interface utilisateur HTML autour de lui.
 
->[!div class="step-by-step"]
-[Précédent](create-a-database.md)
-[Suivant](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
+> [!div class="step-by-step"]
+> [Précédent](create-a-database.md)
+> [Suivant](use-controllers-and-views-to-implement-a-listingdetails-ui.md)

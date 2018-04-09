@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
-title: "L’authentification des utilisateurs avec l’authentification Windows (c#) | Documents Microsoft"
+title: L’authentification des utilisateurs avec l’authentification Windows (c#) | Documents Microsoft
 author: microsoft
-description: "Découvrez comment utiliser l’authentification Windows dans le contexte d’une application MVC. Vous apprenez à activer l’authentification Windows au sein de la quantité de co de votre application web..."
+description: Découvrez comment utiliser l’authentification Windows dans le contexte d’une application MVC. Vous apprenez à activer l’authentification Windows au sein de la quantité de co de votre application web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d52597e65272fa202ef4980924f669dcc4cec593
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 140d2232f7826e178301d1d2064e12657be23385
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="authenticating-users-with-windows-authentication-c"></a>L’authentification des utilisateurs avec l’authentification Windows (c#)
 ====================
@@ -51,7 +51,7 @@ Pour une application web de production, la part, vous utilisez IIS en tant que v
 
 > [!NOTE] 
 > 
-> Pour obtenir une présentation plus détaillée de ces différents types d’authentification, consultez [https://msdn.microsoft.com/library/aa292114(VS.71).aspx](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
+> Pour obtenir une présentation plus détaillée de ces différents types d’authentification, consultez [ https://msdn.microsoft.com/library/aa292114(VS.71).aspx ](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
 
 
 Vous pouvez utiliser le Gestionnaire des Services Internet pour activer un type particulier d’authentification. N’oubliez pas que tous les types d’authentification ne sont pas disponibles dans le cas de tous les systèmes d’exploitation. En outre, si vous utilisez IIS 7.0 avec Windows Vista, vous devez activer les différents types de l’authentification Windows avant d’apparaître dans le Gestionnaire des Services Internet. Ouvrez **le panneau de configuration, programmes, programmes et fonctionnalités, activer des fonctionnalités Windows ou désactiver**, développez le nœud Internet Information Services (voir Figure 2).
@@ -93,6 +93,6 @@ Si, en revanche, vous utilisez IIS avec l’authentification anonyme est désact
 
 Ce didacticiel explique comment vous pouvez utiliser l’authentification Windows dans le contexte d’une application ASP.NET MVC. Vous avez appris à activer l’authentification Windows dans le fichier de configuration de votre application web et comment configurer l’authentification avec IIS. Enfin, vous avez appris à utiliser l’attribut [Authorize] pour restreindre l’accès aux actions de contrôleur pour les utilisateurs Windows particuliers ou des groupes.
 
->[!div class="step-by-step"]
-[Précédent](authenticating-users-with-forms-authentication-cs.md)
-[Suivant](preventing-javascript-injection-attacks-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](authenticating-users-with-forms-authentication-cs.md)
+> [Suivant](preventing-javascript-injection-attacks-cs.md)

@@ -2,7 +2,7 @@
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 title: La gestion des Exceptions au niveau de la couche BLL et de la couche DAL dans une Page ASP.NET (c#) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous verrons comment afficher un message d’erreur convivial, informatif doit se produire une exception lors d’une insertion, mise à jour ou opération de suppression de..."
+description: Dans ce didacticiel, nous verrons comment afficher un message d’erreur convivial, informatif doit se produire une exception lors d’une insertion, mise à jour ou opération de suppression de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5a0ffde90aa85383d87bd48e16a1c16433465cbf
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e7589584f3b0773a739b785c433ec45eeac3607e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>La gestion des Exceptions au niveau de la couche BLL et de la couche DAL dans une Page ASP.NET (c#)
 ====================
@@ -155,9 +155,9 @@ Création de ce gestionnaire d’événements ajoute le code suivant à la class
 
 Second paramètre de ce gestionnaire d’événements est un objet de type [GridViewUpdatedEventArgs](https://msdn.microsoft.com/library/system.web.ui.webcontrols.gridviewupdatedeventargs.aspx), qui a trois propriétés dignes d’intérêt pour la gestion des exceptions :
 
-- `Exception`une référence à l’exception levée ; Si aucune exception n’a été levée, cette propriété a une valeur`null`
-- `ExceptionHandled`valeur booléenne qui indique si l’exception a été gérée dans le `RowUpdated` Gestionnaire d’événements ; si `false` (la valeur par défaut), l’exception est à nouveau levée, percolation jusqu'à l’exécution d’ASP.NET
-- `KeepInEditMode`Si la valeur `true` la ligne GridView modifiée reste en mode édition ; si `false` (la valeur par défaut), la ligne GridView revienne à son mode de lecture seule
+- `Exception` une référence à l’exception levée ; Si aucune exception n’a été levée, cette propriété a une valeur `null`
+- `ExceptionHandled` valeur booléenne qui indique si l’exception a été gérée dans le `RowUpdated` Gestionnaire d’événements ; si `false` (la valeur par défaut), l’exception est à nouveau levée, percolation jusqu'à l’exécution d’ASP.NET
+- `KeepInEditMode` Si la valeur `true` la ligne GridView modifiée reste en mode édition ; si `false` (la valeur par défaut), la ligne GridView revienne à son mode de lecture seule
 
 Notre code, puis vérifiez si `Exception` n’est pas `null`, ce qui signifie que qu’une exception a été levée pendant l’opération. Si c’est le cas, nous voulons :
 
@@ -224,12 +224,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Liz Shulok. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
-[Suivant](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
+> [Suivant](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)

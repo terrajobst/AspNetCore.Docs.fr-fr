@@ -2,7 +2,7 @@
 uid: mvc/overview/getting-started/introduction/adding-search
 title: Recherche | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 116f681e14af0a09a4eb1502ef9f057c5db2f97d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8afa72d4dbc4695e7d26c6ef4052be08a7c69080
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="search"></a>Rechercher
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 ## <a name="adding-a-search-method-and-search-view"></a>Ajout d’une méthode de recherche et l’affichage de la recherche
 
@@ -157,6 +157,6 @@ Exécutez l’application et accédez à *films/Index*. Essayez une recherche pa
 
 Dans cette section, vous avez créé une méthode d’action de recherche et la vue qui permettent aux utilisateurs d’effectuer une recherche par titre du film et le genre. Dans la section suivante, vous allez examiner comment ajouter une propriété à la `Movie` modèle et comment ajouter un initialiseur qui crée automatiquement une base de données de test.
 
->[!div class="step-by-step"]
-[Précédent](examining-the-edit-methods-and-edit-view.md)
-[Suivant](adding-a-new-field.md)
+> [!div class="step-by-step"]
+> [Précédent](examining-the-edit-methods-and-edit-view.md)
+> [Suivant](adding-a-new-field.md)

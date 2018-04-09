@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-vb
-title: "Contrôler l’ID d’affectation de noms dans les Pages de contenu (VB) | Documents Microsoft"
+title: Contrôler l’ID d’affectation de noms dans les Pages de contenu (VB) | Documents Microsoft
 author: rick-anderson
-description: "Montre comment les contrôles ContentPlaceHolder servent de conteneur d’attribution de noms et donc l’utilisation par programmation un contrôle difficile (via FindConrol)..."
+description: Montre comment les contrôles ContentPlaceHolder servent de conteneur d’attribution de noms et donc l’utilisation par programmation un contrôle difficile (via FindConrol)...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9523fe5b241b6ff45927f142eb844a716822336b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 288afbb6851e23de4725f9e6351ae12ccecefaa5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="control-id-naming-in-content-pages-vb"></a>ID de contrôle d’affectation de noms dans les Pages de contenu (VB)
 ====================
@@ -121,7 +121,7 @@ Notez que la `id` attribut inclut à la fois de la page maître `ID` valeur (`ct
 
 Chaque contrôle de serveur ASP.NET inclut un `FindControl("controlID")` méthode qui consiste à rechercher les descendants d' un contrôle pour un contrôle nommé *controlID*. Si un tel contrôle est trouvé, il est retourné ; Si aucun contrôle correspondant n’est trouvé, `FindControl` retourne `Nothing`.
 
-`FindControl`est utile dans les scénarios où vous devez accéder à un contrôle, mais que vous avez une référence directe à celui-ci. Lorsque vous travaillez avec des données de contrôles Web comme le GridView, par exemple, les contrôles dans les champs de GridView sont définies une seule fois dans la syntaxe déclarative, mais lors de l’exécution, une instance du contrôle est créée pour chaque ligne GridView. Par conséquent, les contrôles générés lors de l’exécution existent, mais ne pas avoir une référence directe disponible à partir de la classe code-behind. Par conséquent, nous devons utiliser `FindControl` utiliser par programmation un contrôle spécifique dans les champs de GridView. (Pour plus d’informations sur l’utilisation de `FindControl` pour accéder aux contrôles dans les modèles d’un contrôle Web de données, consultez [personnalisé de mise en forme à données](../../data-access/custom-formatting/custom-formatting-based-upon-data-vb.md).) Ce scénario se produit lors de l’ajout dynamique de contrôles Web à un formulaire Web, une rubrique présentés dans [création d’Interfaces utilisateur dynamique données entrée](https://msdn.microsoft.com/library/aa479330.aspx).
+`FindControl` est utile dans les scénarios où vous devez accéder à un contrôle, mais que vous avez une référence directe à celui-ci. Lorsque vous travaillez avec des données de contrôles Web comme le GridView, par exemple, les contrôles dans les champs de GridView sont définies une seule fois dans la syntaxe déclarative, mais lors de l’exécution, une instance du contrôle est créée pour chaque ligne GridView. Par conséquent, les contrôles générés lors de l’exécution existent, mais ne pas avoir une référence directe disponible à partir de la classe code-behind. Par conséquent, nous devons utiliser `FindControl` utiliser par programmation un contrôle spécifique dans les champs de GridView. (Pour plus d’informations sur l’utilisation de `FindControl` pour accéder aux contrôles dans les modèles d’un contrôle Web de données, consultez [personnalisé de mise en forme à données](../../data-access/custom-formatting/custom-formatting-based-upon-data-vb.md).) Ce scénario se produit lors de l’ajout dynamique de contrôles Web à un formulaire Web, une rubrique présentés dans [création d’Interfaces utilisateur dynamique données entrée](https://msdn.microsoft.com/library/aa479330.aspx).
 
 Pour illustrer l’utilisation de la `FindControl` méthode pour rechercher des contrôles dans une page de contenu, créez un gestionnaire d’événements pour le `SubmitButton`de `Click` événements. Dans le Gestionnaire d’événements, ajoutez le code suivant, qui fait référence à par programme le `Age` zone de texte et `Results` d’étiquette à l’aide de la `FindControl` (méthode), puis affiche un message dans `Results` en fonction de l’entrée d’utilisateur.
 
@@ -256,7 +256,7 @@ Bonne programmation !
 
 Pour plus d’informations sur les sujets abordés dans ce didacticiel, consultez les ressources suivantes :
 
-- [Pages maîtres ASP.NET et`FindControl`](http://www.west-wind.com/WebLog/posts/5127.aspx)
+- [Pages maîtres ASP.NET et `FindControl`](http://www.west-wind.com/WebLog/posts/5127.aspx)
 - [Création d’Interfaces utilisateur dynamique des données](https://msdn.microsoft.com/library/aa479330.aspx)
 - [Extension des fonctionnalités de Type de Base avec des méthodes d’Extension](http://aspnet.4guysfromrolla.com/articles/120507-1.aspx)
 - [Comment : Référencer le contenu de la Page maître ASP.NET](https://msdn.microsoft.com/library/xxwa0ff0.aspx)
@@ -265,12 +265,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Zack Jones et Suchi Barnerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Précédent](urls-in-master-pages-vb.md)
-[Suivant](interacting-with-the-master-page-from-the-content-page-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](urls-in-master-pages-vb.md)
+> [Suivant](interacting-with-the-master-page-from-the-content-page-vb.md)

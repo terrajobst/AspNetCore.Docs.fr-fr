@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
-title: "Nouveautés de développement ASP.NET et Web dans Visual Studio 2012 | Documents Microsoft"
+title: Nouveautés de développement ASP.NET et Web dans Visual Studio 2012 | Documents Microsoft
 author: rick-anderson
-description: "La nouvelle version de Visual Studio intègre plusieurs améliorations centrée sur l’amélioration de l’expérience et les performances lorsque vous travaillez avec des technologies Web..."
+description: La nouvelle version de Visual Studio intègre plusieurs améliorations centrée sur l’amélioration de l’expérience et les performances lorsque vous travaillez avec des technologies Web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: f0818cce2a82ede80556b3471cec9d965c3e987f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 00b43cc548df44edded925521991a095ed856494
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>Nouveautés de développement ASP.NET et Web dans Visual Studio 2012
 ====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
 > La nouvelle version de Visual Studio présente plusieurs améliorations centrée sur l’amélioration de l’expérience et les performances lorsque vous travaillez avec les technologies Web. Les éditeurs de Visual Studio pour CSS, JavaScript et HTML ont été complètement repensées pour inclure de nombreux les aides de code plus dans la demande, comme IntelliSense et de mise en retrait automatique. En ce qui concerne les performances, groupement et la minimisation sont désormais intégrées comme le temps de chargement des fonctionnalités intégrées pour réduire facilement la page.
 > 
@@ -32,7 +32,7 @@ par [Web Camps équipe](https://twitter.com/webcamps)
 > 
 > Ce laboratoire présente les améliorations et nouvelles fonctionnalités décrites précédemment en appliquant les modifications mineures à un exemple d’application Web dans le dossier Source.
 > 
-> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [ https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409 ](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
 
 
 <a id="Objectives"></a>
@@ -147,7 +147,7 @@ Dans cette tâche, vous allez découvrir que le nouveau sélecteur de couleurs C
     *Sélecteur Couleur d’opacité*
 
     > [!NOTE]
-    > La définition de la couleur RGBA (rouge, vert, bleu, Alpha) dans CSS3 vous permet de définir la valeur d’opacité de couleur pour un seul élément. Contrairement aux **opacité -** un attribut CSS semblable  **-**  RGBA couleurs sont également compatibles avec les navigateurs les plus récents.
+    > La définition de la couleur RGBA (rouge, vert, bleu, Alpha) dans CSS3 vous permet de définir la valeur d’opacité de couleur pour un seul élément. Contrairement aux **opacité -** un attribut CSS semblable **-** RGBA couleurs sont également compatibles avec les navigateurs les plus récents.
 
 <a id="Ex1Task3"></a>
 
@@ -156,7 +156,7 @@ Dans cette tâche, vous allez découvrir que le nouveau sélecteur de couleurs C
 
 Dans cette tâche, vous allez apprendre comment utiliser des extraits de code de CSS3 compatibles entre navigateurs pour implémenter certaines fonctionnalités dans votre site Web.
 
-1. Dans le **Site.css** de fichiers, recherchez le **en-tête** CSS (.header) de définition de classe et placez le curseur ci-dessous le  **/ \*radius de bordure\* /**  espace réservé pour ajouter un nouvel extrait de code. Appuyez sur **entrée** pour afficher la liste IntelliSense et le type **radius** pour filtrer la liste. Sélectionnez le **valeurs border-radius** option dans la liste avec un double-clic, puis appuyez sur la **onglet** touche pour insérer l’extrait de code. Ensuite, tapez une taille de rayon en pixels et appuyez sur **entrée**. Par exemple, tapez **15px**.
+1. Dans le **Site.css** de fichiers, recherchez le **en-tête** CSS (.header) de définition de classe et placez le curseur ci-dessous le **/ \*radius de bordure\* /** espace réservé pour ajouter un nouvel extrait de code. Appuyez sur **entrée** pour afficher la liste IntelliSense et le type **radius** pour filtrer la liste. Sélectionnez le **valeurs border-radius** option dans la liste avec un double-clic, puis appuyez sur la **onglet** touche pour insérer l’extrait de code. Ensuite, tapez une taille de rayon en pixels et appuyez sur **entrée**. Par exemple, tapez **15px**.
 
     Les attributs CSS3 ajoutées par l’extrait de code seront restituées bordures arrondies dans la plupart des navigateurs de conformité HTML5, y compris Mozilla et les navigateurs WebKit.
 
@@ -260,7 +260,9 @@ Visual Studio met maintenant à jour le code HTML ouverture ou la fermeture des 
 1. Sur le **Default.aspx** , ajoutez une **H3** élément avec un titre (par exemple, Visual Studio 2012 Rocks !).
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample5.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample5.aspx)]
+~~~
 2. Modifier la **H3** balise et le type **H2** ou **H1.**
 
     Notez que la balise de fin sont automatiquement mises à jour. Vous pouvez également modifier la balise de fin pour voir que la balise de début des mises à jour en conséquence trop.
@@ -287,10 +289,12 @@ Visual Studio inclut désormais plusieurs extraits de code HTML5. Dans cette tâ
 3. Mettre à jour la source audio pour pointer vers un fichier audio.
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample6.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample6.aspx)]
 
-    > [!NOTE]
-    > Vous devez ajouter le fichier audio à la solution.
+> [!NOTE]
+> You will need to add the audio file to the solution.
+~~~
 4. Appuyez sur **F5** pour exécuter le site et de lecture du fichier audio.
 
     ![Exécution du contrôle audio](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image29.png "en cours d’exécution du contrôle audio")
@@ -404,7 +408,7 @@ Cette tâche vous présentent les nouvelles fonctionnalités JavaScript éditeur
 
     *Compteur de page*
 3. Fermez le navigateur et revenez à Visual Studio.
-4. Ouvrez le **JavaScript.aspx** page et recherchez le  **&lt;script&gt;**  bloc (voir ci-dessous).
+4. Ouvrez le **JavaScript.aspx** page et recherchez le **&lt;script&gt;** bloc (voir ci-dessous).
 
     Le code suivant utilise le stockage local de HTML5 pour stocker un *pageLoadCount* variable qui stocke le nombre de fois que la page a été visitée par l’utilisateur actuel. Stockage local est une base de données côté client clé-valeur introduite avec la norme HTML5. Les données sont enregistrées sur l’ordinateur local, à l’intérieur du navigateur de l’utilisateur.
 
@@ -449,8 +453,8 @@ Dans cette tâche, vous allez découvrir la nouvelle validation JavaScript de la
     ![Message d’erreur de validation JavaScript](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image42.png "message d’erreur de validation JavaScript")
 
     *Message d’erreur de validation JavaScript*
-3. Commentez la  **&quot;utilisez strict&quot;**  direction et notez que les erreurs disparaissent, mais les avertissements restent.
-4. Dans la dernière ligne du fichier, écrivez n’importe quelle chaîne comme  **&quot;test&quot;**  (inclure les guillemets pour indiquer qu’il est en tant que chaîne). Écrire une période en regard de la chaîne à afficher la liste IntelliSense, puis sélectionnez le **trim** option.
+3. Commentez la **&quot;utilisez strict&quot;** direction et notez que les erreurs disparaissent, mais les avertissements restent.
+4. Dans la dernière ligne du fichier, écrivez n’importe quelle chaîne comme **&quot;test&quot;** (inclure les guillemets pour indiquer qu’il est en tant que chaîne). Écrire une période en regard de la chaîne à afficher la liste IntelliSense, puis sélectionnez le **trim** option.
 
     ECMAScript5 standard, variables et valeurs de chaîne ont également les méthodes de chaîne définies, telles que trim, majuscules, rechercher et remplacer.
 
@@ -546,28 +550,36 @@ Dans cette tâche, vous allez apprendre à activer et référencer les fichiers 
     Notez que la nouvelle **Microsoft.Web.Optimization** espace de noms est commentée au début du fichier. Supprimez les commentaires d’à l’aide de la directive pour inclure les fonctionnalités de groupement et la minimisation.
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample10.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample10.cs)]
+~~~
 4. Recherchez le **Application\_Démarrer** (méthode).
 
     Dans cette méthode, supprimez l’appel de EnableDefaultBundles comme indiqué dans l’extrait de code ci-dessous. Cela permet de faire référence à une collection groupés sur des fichiers CSS dans un dossier en utilisant le chemin d’accès à ce dossier, ainsi que les &quot;CSS&quot; ou &quot;JS&quot; suffixe.
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample11.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample11.cs)]
+~~~
 5. Ouvrez le **Optimization.aspx** de fichiers et recherchez le contrôle de contenu pour **HeadContent**.
 
     Notez les fichiers CSS et JS avoir une seule balise référencée.
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample12.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample12.aspx)]
 
-    > [!NOTE]
-    > Ce code est à des fins de démonstration. Dans l’idéal, vous ferez référence les regroupements dans le fichier Site.Master. Dans cet exemple de code, vous constaterez que certains des fichiers regroupés sont également référencés par le fichier Site.Master, qui effectue cette dernière référence redondant.
+> [!NOTE]
+> This code is for demo purposes. Ideally, you will reference the bundles in the Site.Master file. In this sample code, you will find that some of the bundled files are also being referenced by the Site.Master file, making this last reference redundant.
+~~~
 6. Notez que les liens utilisent les conventions de regroupement dans la **href** attribut pour obtenir les fichiers de tous les CSS ou JS des Styles et Scripts\custom dossier respectivement.
 
     Vous pouvez utiliser le chemin d’accès **personnalisé/Scripts/JS** comme indiqué ci-dessous pour regrouper et minimiser tous les fichiers JS à l’intérieur d’un **Scripts/custom** dossier. Il s’agit du comportement par défaut avec les regroupements par défaut.
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample13.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample13.aspx)]
+~~~
 7. Ouvrez le **Styles\Site.css** fichier.
 
     Notez que le fichier CSS d’origine contienne code en retrait, les espaces vides et les commentaires qui agrandissent le fichier. (Le fichier JavaScript contient également les commentaires et espaces vides).
@@ -609,13 +621,17 @@ Dans cette tâche, vous allez configurer un groupe statique pour définir un ens
     Notez que les fichiers ne se trouvent pas au même endroit ; Il s’agit d’un autre avantage sur le regroupement par défaut.
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample14.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample14.cs)]
+~~~
 4. Ouvrez le **Optimization.aspx** fichier.
 
     Notez que le lien vers **statique JS regroupement** utilise le chemin d’accès que vous avez déclaré lorsque vous avez configuré l’application statique dans le fichier Global.asax.cs : **/StaticBundle**.
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample15.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample15.aspx)]
+~~~
 5. Appuyez sur **F5** et exécuter l’application, puis accédez à la **optimisation** page.
 6. Cliquez sur le **statique JS regroupement** lien pour ouvrir le fichier.
 
@@ -641,7 +657,9 @@ Dans cet exemple, vous allez apprendre à utiliser le **DynamicFolderBundle** cl
     Vous définissez un regroupement de dossiers dynamique qui utilisera le **CoffeeMinify** processeur minimisation personnalisé qui s’applique uniquement aux fichiers avec le &quot; **.coffee** &quot; extension () Fichiers CoffeeScript). Notez que vous pouvez utiliser un modèle de recherche pour sélectionner les fichiers à regrouper dans un dossier, tel que «\*.coffee ».
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample16.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample16.cs)]
+~~~
 3. Ouvrez la Console du Gestionnaire de Package NuGet. Pour ce faire, utilisez le menu **vue** | **autres fenêtres** | **Package Manager Console**.
 4. Dans le **Console du Gestionnaire de Package,** type **Install-Package CoffeeSharp** et appuyez sur **entrée**.
 5. Cliquez sur le **afficher tous les fichiers** situé dans le **l’Explorateur de solutions** fenêtre
@@ -659,7 +677,9 @@ Dans cet exemple, vous allez apprendre à utiliser le **DynamicFolderBundle** cl
     Cette classe hérite de JsMinify à minimiser la sortie JavaScript résultant de la compilation de code CoffeeScript. Il appelle le compilateur CoffeeScript pour générer le code JavaScript tout d’abord, puis il transmet à la méthode JsMinify.Process à minimiser le code résultant.
 
 
-    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample17.cs)]
+~~~
+[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample17.cs)]
+~~~
 8. Ouvrez le **Script1.coffee** et **Script2.coffee** fichiers à partir de la **/groupe de Scripts** dossier.
 
     Ces fichiers inclut le code de CoffeScript peut être compilé lors de l’exécution de l’intégration avec la classe CoffeeMinify.
@@ -677,7 +697,9 @@ Dans cet exemple, vous allez apprendre à utiliser le **DynamicFolderBundle** cl
     Notez que le lien vers **dynamique JS regroupement** fait référence à la **/groupe de Scripts** dossier à l’aide de la **/café** suffixe que vous avez configuré pour le regroupement de dossiers dynamique.
 
 
-    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample18.aspx)]
+~~~
+[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample18.aspx)]
+~~~
 10. Appuyez sur **F5** et exécuter l’application, puis accédez à la **optimisation** page.
 11. Cliquez sur le **dynamique JS regroupement** lien pour ouvrir le fichier généré.
 
@@ -703,9 +725,9 @@ Cet atelier vous aide à comprendre ce qui sont nouveau dans ASP.NET et le déve
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Annexe a : installation de Visual Studio Express 2012 pour le Web
 
-Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du  **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
+Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
 
-1. Accédez à [ [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; *Visual Studio Express 2012 pour le Web avec Windows Azure SDK*&quot;.
+1. Accédez à [ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; <em>Visual Studio Express 2012 pour le Web avec Windows Azure SDK</em>&quot;.
 2. Cliquez sur **installer maintenant**. Si vous n’avez pas **Web Platform Installer** vous allez être redirigé pour télécharger et installer tout d’abord.
 3. Une fois **Web Platform Installer** est ouvert, cliquez sur **installer** pour démarrer le programme d’installation.
 
@@ -851,14 +873,14 @@ Si votre application se sert de SQL Server vous devez créer un serveur de base 
     *Configuration de déploiement Web*
 5. Configurer la connexion de base de données comme suit :
 
-    - Dans le **nom du serveur** tapez votre URL de base de données SQL server à l’aide du *tcp :* préfixe.
-    - Dans **nom d’utilisateur** tapez le nom de connexion de votre administrateur de serveur.
-    - Dans **mot de passe** votre mot de passe du compte de connexion administrateur serveur.
-    - Tapez un nouveau nom de base de données, par exemple : *MVC4SampleDB*.
+   - Dans le **nom du serveur** tapez votre URL de base de données SQL server à l’aide du *tcp :* préfixe.
+   - Dans **nom d’utilisateur** tapez le nom de connexion de votre administrateur de serveur.
+   - Dans **mot de passe** votre mot de passe du compte de connexion administrateur serveur.
+   - Tapez un nouveau nom de base de données, par exemple : *MVC4SampleDB*.
 
-    ![Configuration de chaîne de connexion de destination](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image80.png "configuration de chaîne de connexion de destination")
+     ![Configuration de chaîne de connexion de destination](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image80.png "configuration de chaîne de connexion de destination")
 
-    *Configuration de chaîne de connexion de destination*
+     *Configuration de chaîne de connexion de destination*
 6. Cliquez ensuite sur **OK**. Lorsque vous êtes invité à créer la base de données, cliquez sur **Oui**.
 
     ![Création de la base de données](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image81.png "création de la chaîne de la base de données")

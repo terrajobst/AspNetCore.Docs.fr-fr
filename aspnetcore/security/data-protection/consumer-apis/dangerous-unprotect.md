@@ -1,7 +1,7 @@
 ---
-title: "Ôter la protection de charges utiles dont les clés ont été révoqués."
+title: Ôter la protection des charges utiles dont les clés ont été révoqués dans ASP.NET Core
 author: rick-anderson
-description: "Ce document explique comment ôter la protection des données, protégées avec des clés qui ont depuis été révoqués, dans une application ASP.NET Core."
+description: En savoir plus sur Ôter la protection des données, protégées avec des clés qui ont depuis été révoqués, dans une application ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,14 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/dangerous-unprotect
-ms.openlocfilehash: 37332dda794f898fb866424b38394f5d4441e166
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: b721bba63d0673f4e22fd9d1456af33489a2a389
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="unprotecting-payloads-whose-keys-have-been-revoked"></a>Ôter la protection de charges utiles dont les clés ont été révoqués.
+# <a name="unprotect-payloads-whose-keys-have-been-revoked-in-aspnet-core"></a>Ôter la protection des charges utiles dont les clés ont été révoqués dans ASP.NET Core
+
 
 <a name="data-protection-consumer-apis-dangerous-unprotect"></a>
 

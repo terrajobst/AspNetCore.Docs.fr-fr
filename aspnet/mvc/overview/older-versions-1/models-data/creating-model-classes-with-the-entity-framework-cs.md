@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
-title: "Création de Classes de modèle avec Entity Framework (c#) | Documents Microsoft"
+title: Création de Classes de modèle avec Entity Framework (c#) | Documents Microsoft
 author: microsoft
-description: "Dans ce didacticiel, vous allez apprendre à utiliser ASP.NET MVC avec Microsoft Entity Framework. Vous apprenez à utiliser l’Assistant pour créer un Da d’entité ADO.NET..."
+description: Dans ce didacticiel, vous allez apprendre à utiliser ASP.NET MVC avec Microsoft Entity Framework. Vous apprenez à utiliser l’Assistant pour créer un Da d’entité ADO.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8a897f671de73d9991189e32a5d86b513051ef05
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b0a79da580f14d5ae6bcfaaa00d3900234dc662e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-model-classes-with-the-entity-framework-c"></a>Création de Classes de modèle avec Entity Framework (c#)
 ====================
@@ -33,7 +33,7 @@ Pour illustrer la façon dont vous pouvez utiliser Microsoft Entity Framework av
 
 Ce didacticiel suppose que vous disposez de Visual Studio 2008 ou Visual Web Developer 2008 avec Service Pack 1. Vous devez le Service Pack 1 pour pouvoir utiliser Entity Framework. Vous pouvez télécharger Visual Studio 2008 Service Pack 1 ou Visual Web Developer, avec Service Pack 1 à partir de l’adresse suivante :
 
-> [https://www.ASP.NET/downloads/](https://www.asp.net/downloads)
+> [https://www.asp.net/downloads/](https://www.asp.net/downloads)
 
 
 > [!NOTE] 
@@ -48,8 +48,8 @@ L’application de base de données de film utilise une table de base de donnée
 | Nom de la colonne | Type de données | Autoriser les valeurs null ? | Est la clé primaire ? |
 | --- | --- | --- | --- |
 | Id | int | False | True |
-| Titre | Nvarchar (100) | False | False |
-| Directeur | Nvarchar (100) | False | False |
+| Titre | nvarchar(100) | False | False |
+| Directeur | nvarchar(100) | False | False |
 
 Vous pouvez ajouter cette table à un projet ASP.NET MVC en procédant comme suit :
 
@@ -201,7 +201,7 @@ Enfin, s’il n’y a aucune erreur de validation, la table de base de données 
 
 Lors de la modification des enregistrements de base de données, vous devez passer l’Id de l’enregistrement en cours de modification pour l’action du contrôleur qui effectue la mise à jour de la base de données. Sinon, l’action du contrôleur ne saura pas quel enregistrement il doit mettre à jour dans la base de données sous-jacente. La vue de modification contenue dans la liste 5, inclut un champ masqué qui représente l’Id de l’enregistrement de base de données en cours de modification.
 
-**La liste 5 – Views\Home\Edit.aspx**
+**Listing 5 – Views\Home\Edit.aspx**
 
 [!code-aspx[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample8.aspx)]
 
@@ -215,11 +215,11 @@ L’opération finale de la base de données, nous avons besoin d’attaquer dan
 
 L’action Delete() récupère d’abord le film entité qui correspond à l’Id est transmise à l’action. Ensuite, la séquence est supprimée de la base de données en appelant la méthode DeleteObject() suivie par la méthode SaveChanges(). Enfin, l’utilisateur est redirigé vers la vue Index.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel a pour illustrer comment vous pouvez générer des applications web orientées sur la base de données en tirant parti d’ASP.NET MVC et Microsoft Entity Framework. Vous avez appris à créer une application qui vous permet de sélectionner, insérer, mettre à jour et supprimer des enregistrements de base de données.
 
 Tout d’abord, nous avons expliqué comment vous pouvez utiliser l’Assistant Entity Data Model pour générer un Entity Data Model à partir de Visual Studio. Ensuite, vous découvrez comment utiliser LINQ to Entities pour récupérer un jeu d’enregistrements de base de données à partir d’une table de base de données. Enfin, nous avons utilisé l’Entity Framework pour insérer, mettre à jour et supprimer des enregistrements de base de données.
 
->[!div class="step-by-step"]
-[Next](creating-model-classes-with-linq-to-sql-cs.md)
+> [!div class="step-by-step"]
+> [Next](creating-model-classes-with-linq-to-sql-cs.md)

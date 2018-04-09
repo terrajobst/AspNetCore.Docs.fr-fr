@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
-title: "Personnalisation des déploiements de base de données pour plusieurs environnements | Documents Microsoft"
+title: Personnalisation des déploiements de base de données pour plusieurs environnements | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment personnaliser les propriétés d’une base de données pour les environnements cibles spécifiques dans le cadre du processus de déploiement. Remarque : La rubrique suppose th..."
+description: 'Cette rubrique décrit comment personnaliser les propriétés d’une base de données pour les environnements cibles spécifiques dans le cadre du processus de déploiement. Remarque : La rubrique suppose th...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
-ms.openlocfilehash: f3ca344c2466d9d538f55cd8ff0a5bf5b7bac808
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 06f22bc9a3068ee5621df62ee5ed1bea06d7e9e6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="customizing-database-deployments-for-multiple-environments"></a>Personnalisation des déploiements de base de données pour plusieurs environnements
 ====================
@@ -35,9 +35,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Dans un projet de base de données Visual Studio 2010, les paramètres de déploiement sont contenues dans un fichier de configuration (.sqldeployment). Cette rubrique sera vous montrent comment créer des fichiers de configuration spécifiques à l’environnement de déploiement et spécifier celui que vous souhaitez utiliser comme paramètre VSDBCMD.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -146,6 +146,6 @@ Ces articles sur MSDN fournissent des instructions plus générales sur le dépl
 - [Créer et déployer des bases de données dans un environnement de développement isolé](https://msdn.microsoft.com/library/dd193409.aspx)
 - [Créer et déployer des bases de données dans un environnement de Production ou de mise en lots](https://msdn.microsoft.com/library/dd193413.aspx)
 
->[!div class="step-by-step"]
-[Précédent](performing-a-what-if-deployment.md)
-[Suivant](deploying-database-role-memberships-to-test-environments.md)
+> [!div class="step-by-step"]
+> [Précédent](performing-a-what-if-deployment.md)
+> [Suivant](deploying-database-role-memberships-to-test-environments.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
-title: "Ajout d’un contrôleur | Documents Microsoft"
+title: Ajout d’un contrôleur | Documents Microsoft
 author: shanselman
-description: "Une version mise à jour si ce didacticiel est disponible ici à l’aide de Visual Studio 2013. Le nouveau didacticiel utilise ASP.NET MVC 5, qui fournit de nombreuses améliorations de t..."
+description: Une version mise à jour si ce didacticiel est disponible ici à l’aide de Visual Studio 2013. Le nouveau didacticiel utilise ASP.NET MVC 5, qui fournit de nombreuses améliorations de t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part2
 msc.type: authoredcontent
-ms.openlocfilehash: 93a362cf83d39b29fcba3f2dee0c28257805a89e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c6ecd1ffdd53a629d0079d57b85c7f6db2f316ce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller"></a>Ajour d’un contrôleur
 ====================
@@ -57,7 +57,7 @@ Votre contrôleur est nommé HelloWorldController et votre nouvelle méthode est
 
 ASP.NET MVC appelle différentes classes de contrôleur (et les différentes méthodes d’Action au sein de celles-ci) en fonction de l’URL entrante. La logique de mappage par défaut utilisée par ASP.NET MVC utilise un format comme suit pour contrôler le code est exécuté :
 
-/ [Controller] / [ActionName] / [paramètres]
+/[Controller]/[ActionName]/[Parameters]
 
 La première partie de l’URL détermine la classe de contrôleur à exécuter. Par conséquent, /HelloWorld mappe à la classe HelloWorldController. La deuxième partie de l’URL détermine la méthode d’Action sur la classe à exécuter. Par conséquent, /HelloWorld/Index risque d’entraîner la méthode Index() de la classe HelloWorldcontroller à exécuter. Notez que nous avons dû à visiter /HelloWorld ci-dessus et la méthode de Qu'index a été impliquée. Il s’agit d’une méthode nommée « Index » étant la méthode par défaut qui sera appelée sur un contrôleur s’il n’est pas explicitement spécifié.
 
@@ -77,6 +77,6 @@ Exécutez votre application, vous accédez à `http://localhost:xx/HelloWorld/We
 
 Dans ces deux exemples le contrôleur a été effectuer tout le travail et a été renvoyant du HTML directement. En général nous ne voulons pas nos contrôleurs renvoyant du HTML directement - étant donné que qui finit par être très fastidieuse au code. Au lieu de cela, nous allons utiliser généralement un fichier de modèle de vue séparé afin de générer la réponse HTML. Voyons comment nous pouvons faire cela. Fermez votre navigateur et revenir à l’IDE.
 
->[!div class="step-by-step"]
-[Précédent](getting-started-with-mvc-part1.md)
-[Suivant](getting-started-with-mvc-part3.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started-with-mvc-part1.md)
+> [Suivant](getting-started-with-mvc-part3.md)

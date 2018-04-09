@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
-title: "Génération de modèles automatique ASP.NET MVC 4 Entity Framework et les Migrations | Documents Microsoft"
+title: Génération de modèles automatique ASP.NET MVC 4 Entity Framework et les Migrations | Documents Microsoft
 author: rick-anderson
-description: "Si vous êtes familiarisé avec les méthodes de contrôleur ASP.NET MVC 4, ou s’est terminé le &quot;programmes d’assistance, de formulaires et de Validation&quot; atelier pratique, vous devez être conscient..."
+description: Si vous êtes familiarisé avec les méthodes de contrôleur ASP.NET MVC 4, ou s’est terminé le &quot;programmes d’assistance, de formulaires et de Validation&quot; atelier pratique, vous devez être conscient...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 396859463446d95c58271c4b00fc950bcd0d539a
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 548afe1926eed49841251832d54dc213da0cb753
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Migrations et la génération de modèles automatique ASP.NET MVC 4 Entity Framework
 
@@ -109,7 +109,9 @@ Dans cet exercice, vous allez apprendre à utiliser la génération de modèles 
     (Code d’extrait de code - *ASP.NET MVC 4 et Entity Framework Migrations - propriétés de personne Ex1*)
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample1.cs)]
+~~~
 6. Cliquez sur **générer | Générez la Solution** pour enregistrer les modifications et générez le projet.
 
     ![Génération de l’application](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image3.png "génération de l’application")
@@ -118,14 +120,14 @@ Dans cet exercice, vous allez apprendre à utiliser la génération de modèles 
 7. Dans l’Explorateur de solutions, cliquez sur le dossier controllers, puis sélectionnez **ajouter | Contrôleur**.
 8. Nommez le contrôleur *PersonController* et terminer le **les options de génération de modèles automatique** avec les valeurs suivantes.
 
-    1. Dans le **modèle** la liste déroulante, sélectionnez le **contrôleur MVC avec des actions de lecture/écriture et de vues, utilisant Entity Framework** option.
-    2. Dans le **classe de modèle** la liste déroulante, sélectionnez le **personne** classe.
-    3. Dans le **classe du contexte de données** liste, sélectionnez  **&lt;nouveau contexte de données... &gt;**. Choisir un nom et cliquez sur **OK**.
-    4. Dans le **vues** déroulante liste, assurez-vous que **Razor** est sélectionnée.
+   1. Dans le **modèle** la liste déroulante, sélectionnez le **contrôleur MVC avec des actions de lecture/écriture et de vues, utilisant Entity Framework** option.
+   2. Dans le **classe de modèle** la liste déroulante, sélectionnez le **personne** classe.
+   3. Dans le **classe du contexte de données** liste, sélectionnez  **&lt;nouveau contexte de données... &gt;**. Choisir un nom et cliquez sur **OK**.
+   4. Dans le **vues** déroulante liste, assurez-vous que **Razor** est sélectionnée.
 
-    ![Ajout du contrôleur de personne avec la structure](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image4.png "Ajout du contrôleur de personne avec la génération de modèles automatique")
+      ![Ajout du contrôleur de personne avec la structure](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image4.png "Ajout du contrôleur de personne avec la génération de modèles automatique")
 
-    *Ajout du contrôleur de personne avec la génération de modèles automatique*
+      *Ajout du contrôleur de personne avec la génération de modèles automatique*
 9. Cliquez sur **ajouter** pour créer le nouveau contrôleur de personne avec la génération de modèles automatique. Vous avez généré les actions de contrôleur, ainsi que les vues.
 
     ![Après avoir créé le contrôleur de la personne avec la structure](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image5.png "après avoir créé le contrôleur de la personne avec la génération de modèles automatique")
@@ -133,9 +135,9 @@ Dans cet exercice, vous allez apprendre à utiliser la génération de modèles 
     *Après avoir créé le contrôleur de la personne avec la génération de modèles automatique*
 10. Ouvrez **PersonController** classe. Notez que les méthodes d’action CRUD complètes ont été générées automatiquement.
 
-    ![À l’intérieur du contrôleur personne](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image6.png "contrôleur d’à l’intérieur de la personne")
+   ![À l’intérieur du contrôleur personne](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image6.png "contrôleur d’à l’intérieur de la personne")
 
-    *À l’intérieur du contrôleur de la personne*
+   *À l’intérieur du contrôleur de la personne*
 
 <a id="Ex1Task2"></a>
 
@@ -195,11 +197,15 @@ Dans cette tâche, vous mettrez à jour la base de données à l’aide d’Enti
 3. Ouvrez le **Configuration.cs** fichier dans le dossier Migrations. Recherchez le constructeur de classe et modifiez le **AutomaticMigrationsEnabled** valeur *true*.
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]
+~~~
 4. Ouvrez la classe de personne et ajoutez un attribut pour le nom de personne intermédiaire. Avec ce nouvel attribut, vous modifiez le modèle.
 
 
-    [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
+~~~
+[!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample4.cs)]
+~~~
 5. Sélectionnez **générer | Générez la Solution** dans le menu pour générer l’application.
 
     ![Génération de l’application](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image13.png "génération de l’application")
@@ -247,9 +253,9 @@ Dans cette tâche, vous mettrez à jour la base de données à l’aide d’Enti
     *Mise à jour le contrôleur*
 10. Cliquez sur **Ajouter**. Ensuite, sélectionnez les valeurs **PersonController.cs de remplacer** et **remplacer les vues associées** et cliquez sur **OK**.
 
-    ![Ajout d’un remplacement de contrôleur](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image19.png)
+   ![Ajout d’un remplacement de contrôleur](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image19.png)
 
-    *Mise à jour le contrôleur*
+   *Mise à jour le contrôleur*
 
 <a id="Ex1Task4"></a>
 
@@ -280,9 +286,9 @@ Dans cet atelier, vous avez appris les étapes simples pour créer des opératio
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Annexe a : installation de Visual Studio Express 2012 pour le Web
 
-Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du  **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
+Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
 
-1. Accédez à [ [https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; *Visual Studio Express 2012 pour le Web avec Windows Azure SDK*&quot;.
+1. Accédez à [ [ https://go.microsoft.com/? linkid = 9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; <em>Visual Studio Express 2012 pour le Web avec Windows Azure SDK</em>&quot;.
 2. Cliquez sur **installer maintenant**. Si vous n’avez pas **Web Platform Installer** vous allez être redirigé pour télécharger et installer tout d’abord.
 3. Une fois **Web Platform Installer** est ouvert, cliquez sur **installer** pour démarrer le programme d’installation.
 
@@ -293,7 +299,7 @@ Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un au
 
     ![Accepter les termes du contrat de licence](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image23.png)
 
-    Accepter les termes du contrat de licence
+    *Accepter les termes du contrat de licence*
 5. Attendez que le processus de téléchargement et l’installation se termine.
 
     ![Progression de l'installation](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image24.png)
@@ -303,13 +309,13 @@ Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un au
 
     ![Installation est terminée](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image25.png)
 
-    Installation est terminée
+    *Installation est terminée*
 7. Cliquez sur **Exit** fermer Web Platform Installer.
 8. Pour ouvrir Visual Studio Express pour le Web, accédez à la **Démarrer** écran et démarrer l’écriture &quot; **VS Express**&quot;, puis cliquez sur le **Visual Studio Express pour le Web** vignette.
 
     ![VS Express pour la vignette du Web](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image26.png)
 
-    VS Express pour la vignette du Web
+    *VS Express pour la vignette du Web*
 
 <a id="AppendixB"></a>
 

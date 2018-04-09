@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
-title: "Présentation des Pages Web ASP.NET - programmation | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET - programmation | Documents Microsoft
 author: tfitzmac
-description: "Ce didacticiel vous donne une vue d’ensemble de la façon de programme dans ASP.NET Web Pages avec syntaxe Razor. Vous apprendrez : la syntaxe « Razor » de base que vous utilisez pour la requête de tirage..."
+description: 'Ce didacticiel vous donne une vue d’ensemble de la façon de programme dans ASP.NET Web Pages avec syntaxe Razor. Vous apprendrez : la syntaxe « Razor » de base que vous utilisez pour la requête de tirage...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/17/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: eed07f4f8a13ea9082ab3aad3e3db24febff8ef6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3e2c990a6451c13e03baafa343df156b2d46d219
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---programming-basics"></a>Présentation des Pages Web ASP.NET - notions de base de programmation
 ====================
@@ -103,7 +103,7 @@ Vous n’êtes pas limité à des variables, cependant. Dans certains cas, le ca
 
 - @(un\*b) restitue le produit de tout ce qui est dans les variables d’un et b. (Le \* opérateur : multiplication.)
 - @(technologie + » « + produit) affiche les valeurs de la technologie de variables et les produits après les concaténer et ajout d’un espace entre les deux. L’opérateur (+) pour concaténer des chaînes est identique à l’opérateur pour l’ajout de nombres. ASP.NET peut indiquer généralement si vous travaillez avec des nombres ou des chaînes et qu’il effectue l’opération de droite avec l’opérateur « + ».
-- @Request.Urlrend la propriété Url de l’objet de demande. L’objet de requête contient des informations sur la demande en cours à partir du navigateur, et bien entendu la propriété Url contient l’URL de la demande actuelle.
+- @Request.Url rend la propriété Url de l’objet de demande. L’objet de requête contient des informations sur la demande en cours à partir du navigateur, et bien entendu la propriété Url contient l’URL de la demande actuelle.
 
 L’exemple est également conçu pour montrer que vous pouvez vous fonctionnent différemment. Vous pouvez effectuer des calculs dans le bloc de code en haut, placer les résultats dans une variable et rendre ensuite la variable dans le balisage. Ou bien, vous pouvez effectuer des calculs dans un droit de l’expression dans le balisage. L’approche que vous utilisez dépend de ce que vous faites et, dans une certaine mesure, de vos propres préférences.
 
@@ -165,7 +165,7 @@ Voici quelques exemples de conditions que vous pouvez tester dans une instructio
 
 [!code-csharp[Main](intro-to-web-pages-programming/samples/sample7.cs)]
 
-Vous pouvez tester les variables par rapport aux valeurs ou par rapport aux expressions en utilisant un *opérateur logique* ou *opérateur de comparaison*: égal à (==), supérieur à (&gt;), inférieur à (&lt;), supérieur ou égal à (&gt;=) et inférieur ou égal à (&lt;=). Le ! = signifie d’opérateur non égal à, par exemple, si (un ! = 0) signifie *si* *un**n’est pas égal à 0*.
+Vous pouvez tester les variables par rapport aux valeurs ou par rapport aux expressions en utilisant un <em>opérateur logique</em> ou <em>opérateur de comparaison</em>: égal à (==), supérieur à (&gt;), inférieur à (&lt;), supérieur ou égal à (&gt;=) et inférieur ou égal à (&lt;=). Le ! = signifie d’opérateur non égal à, par exemple, si (un ! = 0) signifie <em>si</em> <em>un</em><em>n’est pas égal à 0</em>.
 
 > [!NOTE]
 > Assurez-vous que vous remarquez que l’opérateur de comparaison égal à (==) n’est pas le même que =. Le = opérateur est utilisé uniquement pour affecter des valeurs (var un = 2). Si vous combinez ces opérateurs de, vous obtenez une erreur ou que vous obtiendrez des résultats inattendus.
@@ -207,7 +207,7 @@ Exécutez la page et cliquez sur **Submit**. Ce temps vous permet de voir un mes
 
 ### <a name="testing-the-value-of-a-query-string"></a>Test de la valeur de chaîne de requête
 
-Un test plus. Cette fois-ci, vous allez ajouter une instruction if bloc qui teste une valeur nommé show qui peut-être être transmis dans la chaîne de requête. (À ceci : '' http://localhost:43097/TestRazorPart2.cshtml`?show=true`) vous allez modifier la page afin que le message vous avez été affichage (« Il s’agit de la première fois... », etc.) s’affiche uniquement si la valeur d’émission est true.
+Un test plus. Cette fois-ci, vous allez ajouter une instruction if bloc qui teste une valeur nommé show qui peut-être être transmis dans la chaîne de requête. (À ceci : ''http://localhost:43097/TestRazorPart2.cshtml`?show=true`) vous allez modifier la page afin que le message vous avez été affichage (« Il s’agit de la première fois... », etc.) s’affiche uniquement si la valeur d’émission est true.
 
 Dans le bas (mais à l’intérieur), le bloc de code en haut de la page, ajoutez le code suivant :
 
@@ -223,7 +223,7 @@ Le nouveau code dans le bloc Initialise une variable nommée showMessage sur fal
 
 Le code détermine si l’URL contient une variable nommée afficher dans la chaîne de requête, telles que cette version de l’URL :
 
-`http://localhost:43097/TestRazorPart2.cshtml`? Afficher = true
+`http://localhost:43097/TestRazorPart2.cshtml`?show=true
 
 Le test lui-même examine la propriété de chaîne de requête de l’objet de demande. Si la chaîne de requête contient un élément nommé afficher, et si cet élément est défini sur true, le cas bloc s’exécute et définit la variable showMessage sur true.
 
@@ -259,7 +259,7 @@ Dans le cas où vous ne savez pas entièrement de ce que vous venez de faire, Vo
 
 Exécutez la page. Aucun message, ne tient showMessage est false, dans le balisage, le test if(showMessage) retourne false.
 
-Cliquez sur **envoyer**. Affiche la date et une heure, mais toujours pas de message.
+Cliquez sur **Envoyer**. Affiche la date et une heure, mais toujours pas de message.
 
 Dans votre navigateur, accédez à la zone URL et ajoutez le code suivant à la fin de l’URL : ? afficher = true et appuyez sur ENTRÉE.
 
@@ -281,7 +281,7 @@ Les Pages Web ASP.NET a plusieurs programmes d’assistance intégrées. Toutefo
 
 Dans cette partie du didacticiel, vous allez installer un programme d’assistance qui vous permet d’afficher une image Gravatar (« avatar globalement reconnue »). Vous allez apprendre deux choses. L’une est à rechercher et installer un programme d’assistance. Vous apprendrez également comment une application auxiliaire permet de facilement faire quelque chose que vous devez faire en utilisant beaucoup de code, que vous devez écrire vous-même dans le cas contraire.
 
-Vous pouvez inscrire votre propre Gravatar sur le site Web de Gravatar à [http://www.gravatar.com/](http://www.gravatar.com/), mais il n’est pas essentiel pour créer un compte Gravatar pour effectuer cette partie du didacticiel.
+Vous pouvez inscrire votre propre Gravatar sur le site Web de Gravatar à [ http://www.gravatar.com/ ](http://www.gravatar.com/), mais il n’est pas essentiel pour créer un compte Gravatar pour effectuer cette partie du didacticiel.
 
 Dans WebMatrix, cliquez sur le **NuGet** bouton.
 
@@ -360,6 +360,6 @@ Le didacticiel suivant vous présente à l’utilisation d’une base de donnée
 - [Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
 - [Application auxiliaire Twitter](../../ui-layouts-and-themes/twitter-helper.md)
 
->[!div class="step-by-step"]
-[Précédent](getting-started.md)
-[Suivant](displaying-data.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started.md)
+> [Suivant](displaying-data.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/what-s-new-in-the-entity-framework-4
-title: "Quelles sont les nouveautés dans Entity Framework 4.0 | Documents Microsoft"
+title: Quelles sont les nouveautés dans Entity Framework 4.0 | Documents Microsoft
 author: tdykstra
-description: "Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par la prise en main de la série de didacticiels Entity Framework 4.0. I..."
+description: Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par la prise en main de la série de didacticiels Entity Framework 4.0. I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/what-s-new-in-the-entity-framework-4
 msc.type: authoredcontent
-ms.openlocfilehash: c114627388217e892c84d6b76366d0fa96b0b70c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 04444ce98fa60045cf617a6c518dd55677258148
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="whats-new-in-the-entity-framework-40"></a>Quelles sont les nouveautés dans Entity Framework 4.0
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par le [mise en route avec Entity Framework](../getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md) série de didacticiels. Si vous n’avez pas terminé les didacticiels antérieures, comme point de départ pour ce didacticiel vous pouvez [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) que vous devriez avoir créé. Vous pouvez également [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) qui est créé par la série de didacticiels terminée. Si vous avez des questions sur les didacticiels, vous pouvez les valider pour le [forum de ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
 
@@ -212,5 +212,5 @@ Cette étape termine la vue d’ensemble à ce qui est nouvelle dans Entity Fram
 - [Nouveautés dans ADO.NET](https://msdn.microsoft.com/library/ex6y04yf.aspx) rubrique MSDN sur les nouvelles fonctionnalités dans la version 4 d’Entity Framework.
 - [Annonce de la version d’Entity Framework 4](https://blogs.msdn.com/b/efdesign/archive/2010/04/12/announcing-the-release-of-entity-framework-4.aspx) billet de blog de l’équipe de développement Entity Framework sur les nouvelles fonctionnalités dans la version 4.
 
->[!div class="step-by-step"]
-[Précédent](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [!div class="step-by-step"]
+> [Précédent](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)

@@ -1,7 +1,7 @@
 ---
-title: "Prévention des attaques de redirection ouvert dans une application ASP.NET Core"
+title: Empêcher les attaques de redirection ouvert dans ASP.NET Core
 author: ardalis
-description: "Montre comment empêcher des attaques de redirection ouvert par rapport à une application ASP.NET Core"
+description: Montre comment empêcher des attaques de redirection ouvert par rapport à une application ASP.NET Core
 manager: wpickett
 ms.author: riande
 ms.date: 07/07/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/preventing-open-redirects
-ms.openlocfilehash: d6cd65a2516c4d5e41428f0c1f2dbbe913ac2123
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4a210b8bb8091e7c036d4bc98306e3b3f90d7d46
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="preventing-open-redirect-attacks-in-an-aspnet-core-app"></a>Prévention des attaques de redirection ouvert dans une application ASP.NET Core
+# <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>Empêcher les attaques de redirection ouvert dans ASP.NET Core
 
 Une application web qui effectue une redirection vers une URL qui est spécifiée via la demande tels que les données de chaîne de requête ou un formulaire peut potentiellement être falsifiée en redirigant les utilisateurs vers une URL externe malveillante. Cette manipulation est appelée une attaque de redirection ouverte.
 
@@ -57,11 +57,11 @@ public IActionResult SomeAction(string redirectUrl)
 }
 ```
 
-``LocalRedirect``lève une exception si une URL non local est spécifiée. Dans le cas contraire, il se comporte comme le ``Redirect`` (méthode).
+``LocalRedirect`` lève une exception si une URL non local est spécifiée. Dans le cas contraire, il se comporte comme le ``Redirect`` (méthode).
 
 ### <a name="islocalurl"></a>IsLocalUrl
 
-Utilisez la méthode [IsLocalUrl](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iurlhelper#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) pour tester l’URL avant de rediriger les utlisateurs:
+Utilisez la méthode [IsLocalUrl](/dotnet/api/Microsoft.AspNetCore.Mvc.IUrlHelper?view=aspnetcore-2.0#Microsoft_AspNetCore_Mvc_IUrlHelper_IsLocalUrl_System_String_) pour tester l’URL avant de rediriger les utlisateurs:
 
 L’exemple suivant montre comment vérifier si une URL est locale avant de rediriger.
 

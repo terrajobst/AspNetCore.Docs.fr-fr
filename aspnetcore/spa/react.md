@@ -1,7 +1,7 @@
 ---
-title: "Utilisez le modèle de projet React"
+title: Utilisez le modèle de projet React avec ASP.NET Core
 author: SteveSandersonMS
-description: "Découvrez comment démarrer avec le modèle de projet Application Page unique (SPA) de ASP.NET Core pour réagir et application de réagir créer."
+description: Découvrez comment démarrer avec le modèle de projet Application Page unique (SPA) de ASP.NET Core pour réagir et application de réagir créer.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: cda9f52d1f5fa1d240e210488bf1bd5c76e49be7
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 4dcfef2bbb99873a9d716a4942f39123944f495c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="use-the-react-project-template"></a>Utilisez le modèle de projet React
+# <a name="use-the-react-project-template-with-aspnet-core"></a>Utilisez le modèle de projet React avec ASP.NET Core
 
 > [!NOTE]
 > Cette documentation n’est pas sur le modèle de projet React incluse dans ASP.NET 2.0 de base. Il est sur le modèle de réagir plus récente à laquelle vous pouvez mettre à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
@@ -63,9 +63,9 @@ Le *ClientApp* active est une application de réagir de l’arc standard. Consul
 
 Il existe de légères différences entre l’application de réagir créés par ce modèle et celui créé par arc lui-même ; Toutefois, les fonctionnalités de l’application sont identiques. L’application créée par le modèle contient un [Bootstrap](https://getbootstrap.com/)-en fonction de la mise en page et un exemple de routage de base.
 
-## <a name="install-npm-packages"></a>Installer les packages npm
+## <a name="install-npm-packages"></a>Installer des packages npm
 
-Pour installer des packages tiers npm, utilisez une invite de commandes dans le *ClientApp* sous-répertoire. Exemple :
+Pour installer des packages tiers npm, utilisez une invite de commandes dans le *ClientApp* sous-répertoire. Par exemple :
 
 ```console
 cd ClientApp

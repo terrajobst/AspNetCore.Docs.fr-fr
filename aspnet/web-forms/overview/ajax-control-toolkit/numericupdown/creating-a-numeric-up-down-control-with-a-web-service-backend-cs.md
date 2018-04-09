@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-cs
-title: "Création d’une valeur numérique contrôle NumericUpDown avec un service principal de Service Web (c#) | Documents Microsoft"
+title: Création d’une valeur numérique contrôle NumericUpDown avec un service principal de Service Web (c#) | Documents Microsoft
 author: wenz
-description: "Au lieu de laisser un utilisateur de taper une valeur dans une case à cocher, contrôle (qui existe sur Windows et d’autres systèmes d’exploitation) vers le haut/bas numérique peut s’avérer plus c..."
+description: Au lieu de laisser un utilisateur de taper une valeur dans une case à cocher, contrôle (qui existe sur Windows et d’autres systèmes d’exploitation) vers le haut/bas numérique peut s’avérer plus c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0cce9aa215c2b4480e845326f69cad4679ecf847
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 942902bdba93fe4fef8a9122403c6d5c62e6123c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-c"></a>Création de contrôle vers le haut/bas numérique avec un service principal de Service Web (c#)
 ====================
@@ -45,10 +45,10 @@ Pour cet exemple, numérique contrôle NumericUpDown doit autoriser uniquement l
 
 Enfin, créez une nouvelle page ASP.NET. Comme d’habitude, vous devez un `ScriptManager` (contrôle), un `TextBox` contrôle et un `NumericUpDownExtender` contrôle. Dans le second cas, vous devez fournir les informations du service web :
 
-- `ServiceDownMethod`nom de vers le bas méthode web ou de page (méthode)
-- `ServiceDownPath`chemin d’accès au service web avec la méthode de service bas ; omettre si vous utilisez une méthode de page
-- `ServiceUpMethod`nom de la distance méthode web ou de page (méthode)
-- `ServiceUpPath`chemin d’accès au service web avec la méthode de service haut ; omettre si vous utilisez une méthode de page
+- `ServiceDownMethod` nom de vers le bas méthode web ou de page (méthode)
+- `ServiceDownPath` chemin d’accès au service web avec la méthode de service bas ; omettre si vous utilisez une méthode de page
+- `ServiceUpMethod` nom de la distance méthode web ou de page (méthode)
+- `ServiceUpPath` chemin d’accès au service web avec la méthode de service haut ; omettre si vous utilisez une méthode de page
 
 Voici le balisage complet pour la page :
 
@@ -61,5 +61,5 @@ Si vous exécutez la page, notez la façon dont la valeur dans la zone de texte 
 
 Seuls les nombres sont une puissance de 2 apparaissent ([cliquez pour afficher l’image en taille réelle](creating-a-numeric-up-down-control-with-a-web-service-backend-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Next](creating-a-numeric-up-down-control-with-a-web-service-backend-vb.md)
+> [!div class="step-by-step"]
+> [Next](creating-a-numeric-up-down-control-with-a-web-service-backend-vb.md)

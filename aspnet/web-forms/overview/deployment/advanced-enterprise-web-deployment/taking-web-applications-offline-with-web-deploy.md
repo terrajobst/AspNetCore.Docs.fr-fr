@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
-title: "Déploiement des Applications Web prise en mode hors connexion avec Web | Documents Microsoft"
+title: Déploiement des Applications Web prise en mode hors connexion avec Web | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment mettre une application web en mode hors connexion pendant la durée d’un déploiement automatisé à l’aide de la Dépl Web Internet Information Services (IIS)..."
+description: Cette rubrique décrit comment mettre une application web en mode hors connexion pendant la durée d’un déploiement automatisé à l’aide de la Dépl Web Internet Information Services (IIS)...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: 1c262ec7b834107524a18c6552b171f731452c91
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 511201dc5646340b21023430fa319417f2b53ae2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="taking-web-applications-offline-with-web-deploy"></a>Déploiement des Applications Web prise en mode hors connexion avec le Web
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit comment mettre une application web en mode hors connexion pendant la durée d’un déploiement automatisé à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy). Les utilisateurs qui accèdent à l’application web sont redirigées vers un *application\_offline.htm* fichier jusqu'à ce que le déploiement est terminé.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -94,7 +94,7 @@ Pour automatiser ces commandes en tant que partie d’un processus de générati
 2. Dans la racine de **projet** élément, créer un nouveau **PropertyGroup** élément à stocker les variables pour le *application\_hors connexion* déploiement :
 
     [!code-xml[Main](taking-web-applications-offline-with-web-deploy/samples/sample3.xml)]
-3. Le **SourceRoot** propriété est définie ailleurs dans le *Publish.proj* fichier. Elle indique l’emplacement du dossier racine pour le contenu de la source par rapport au chemin d’accès actuel & #x 2014 ; en d’autres termes, relatif à l’emplacement de la *Publish.proj* fichier.
+3. Le **SourceRoot** propriété est définie ailleurs dans le *Publish.proj* fichier. Elle indique l’emplacement du dossier racine pour le contenu de la source par rapport à l’emplacement actuel&#x2014;en d’autres termes, par rapport à l’emplacement de la *Publish.proj* fichier.
 4. Le **contentPath** fournisseur n’accepte pas les chemins d’accès relatifs, donc vous devez obtenir le chemin d’accès absolu à votre fichier source avant de pouvoir le déployer. Vous pouvez utiliser la [ConvertToAbsolutePath](https://msdn.microsoft.com/library/bb882668.aspx) tâche pour ce faire.
 5. Ajouter un nouveau **cible** élément nommé **GetAppOfflineAbsolutePath**. Dans cette cible, utilisez le **ConvertToAbsolutePath** tâche pour obtenir un chemin d’accès absolu pour le *application\_modèles hors connexion* fichier dans votre dossier de projet.
 
@@ -116,7 +116,7 @@ Lorsque vous exécutez votre fichier projet MSBuild personnalisé, le *applicati
 
 ## <a name="adding-an-appoffline-file-to-deployment-packages"></a>Ajout d’une application\_des fichiers hors connexion pour les Packages de déploiement
 
-Selon la façon dont vous configurez votre déploiement, le contenu existant à l’application web de destination IIS & #x 2014 ; comme le *application\_offline.htm* fichier & #x 2014 ; peut être supprimé automatiquement lorsque vous déployez un site web package à la destination. Pour vous assurer que le *application\_offline.htm* fichier reste en place pour la durée du déploiement, vous devez inclure le fichier dans le package de déploiement web lui-même en outre à déployer le fichier directement au début de le processus de déploiement.
+Selon la configuration de votre déploiement, les contenus existants à la destination IIS web application&#x2014;comme le *application\_offline.htm* fichier&#x2014;risquent d’être supprimés automatiquement lorsque vous déployez un site web package à la destination. Pour vous assurer que le *application\_offline.htm* fichier reste en place pour la durée du déploiement, vous devez inclure le fichier dans le package de déploiement web lui-même en outre à déployer le fichier directement au début de le processus de déploiement.
 
 - Si vous avez suivi les tâches précédentes de cette rubrique, vous devez avoir ajouté le *application\_offline.htm* fichier à votre projet d’application web sous un nom de fichier différent (nous avons utilisé *application\_ en mode hors connexion-template.htm*) et vous devez définir l’action de génération **aucun**. Ces modifications sont nécessaires pour empêcher le fichier à partir d’interférer avec le développement et le débogage. Par conséquent, vous devez personnaliser le processus d’empaquetage pour vous assurer que le *application\_offline.htm* fichier est inclus dans le package de déploiement web.
 
@@ -125,7 +125,7 @@ Le Pipeline de publication Web (WPP) utilise une liste d’éléments nommée **
 1. Créez un fichier de projet personnalisé nommé *[nom du projet].wpp.targets* dans le même dossier que votre fichier projet.
 
     > [!NOTE]
-    > Le *. wpp.targets* fichier doit aller dans le même dossier que votre fichier de projet d’application web et le #x 2014 ; par exemple, *ContactManager.Mvc.csproj*& #x 2014 ; plutôt que dans le même dossier les fichiers de projet personnalisés que vous utilisez pour le contrôle la génération et le processus de déploiement.
+    > Le *. wpp.targets* fichier doit aller dans le même dossier que votre fichier de projet d’application web&#x2014;par exemple, *ContactManager.Mvc.csproj*&#x2014;plutôt que dans le même dossier que personnalisés fichiers de projet que vous permet de contrôler le processus de génération et de déploiement.
 2. Dans le *. wpp.targets* de fichiers, créez une nouvelle cible MSBuild qui exécute *avant* le **CopyAllFilesToSingleFolderForPackage** cible. Il s’agit de la cible WPP qui génère la liste des éléments à inclure dans le package.
 3. Dans la nouvelle cible, créez un **ItemGroup** élément.
 4. Dans le **ItemGroup** élément, ajouter un **FilesForPackagingFromProject** d’élément et spécifiez le *application\_offline.htm* fichier.
@@ -175,6 +175,6 @@ Pour plus d’informations sur l’empaquetage et le processus de déploiement, 
 
 Si vous publiez vos applications web directement à partir de Visual Studio, plutôt que d’à l’aide de l’approche de fichier de projet MSBuild personnalisé décrit dans ces didacticiels, vous devez utiliser une approche légèrement différente pour mettre votre application en mode hors connexion lors de la publication processus. Pour plus d’informations, consultez [comment faire passer votre application web en mode hors connexion lors de la publication](https://go.microsoft.com/?linkid=9805135) (billet de blog).
 
->[!div class="step-by-step"]
-[Précédent](excluding-files-and-folders-from-deployment.md)
-[Suivant](running-windows-powershell-scripts-from-msbuild-project-files.md)
+> [!div class="step-by-step"]
+> [Précédent](excluding-files-and-folders-from-deployment.md)
+> [Suivant](running-windows-powershell-scripts-from-msbuild-project-files.md)

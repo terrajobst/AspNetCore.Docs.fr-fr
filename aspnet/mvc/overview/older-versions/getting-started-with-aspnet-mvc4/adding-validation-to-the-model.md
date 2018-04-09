@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
-title: "Ajout d’une Validation pour le modèle | Documents Microsoft"
+title: Ajout d’une Validation pour le modèle | Documents Microsoft
 author: Rick-Anderson
-description: "Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration..."
+description: 'Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 6de7d279677c7bbf220b956767a97aaaff8da9a1
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 39d1d9d4cb8b11f7ce5a3a85c51f652115d79db7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model"></a>Ajout d’une Validation pour le modèle
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -81,7 +81,7 @@ Cliquez sur le **créer un nouveau** pour ajouter un nouveau film. Remplissez le
 ![8_validationErrors](adding-validation-to-the-model/_static/image1.png)
 
 > [!NOTE]
-> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale, vous devez inclure *globalize.js* et vos *cultures/globalize.cultures.js* fichier (à partir de [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml pour travailler avec les &quot;fr-FR&quot; culture :
+> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale, vous devez inclure *globalize.js* et vos *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml pour travailler avec les &quot;fr-FR&quot; culture :
 
 
 [!code-cshtml[Main](adding-validation-to-the-model/samples/sample6.cshtml)]
@@ -94,10 +94,10 @@ Vous avez peut-être remarqué des propriétés `Title` et `Genre`, l’attribut
 
 1. Onglet dans le champ.
 2. Entrez du texte.
-3. Appuyez sur TAB.
+3. Appuyez sur Tab.
 4. Onglet dans le champ.
 5. Supprimez le texte.
-6. Appuyez sur TAB.
+6. Appuyez sur Tab.
 
 La séquence ci-dessus déclenche la validation requise sans cliquer sur le bouton Envoyer. Simplement en appuyant sur le bouton Soumettre sans entrer l’un des champs déclenchera la validation côté client. Les données de formulaire ne sont pas envoyées au serveur tant qu’il y a des erreurs de validation côté client. Vous pouvez tester cela en plaçant un point d’arrêt dans la méthode HTTP Post ou en utilisant le [outil fiddler](http://fiddler2.com/fiddler2/) ou Internet Explorer 9 [outils de développement F12](https://msdn.microsoft.com/ie/aa740478).
 
@@ -165,6 +165,6 @@ L’image ci-dessous montre les mêmes données affichées avec la culture par d
 
 Dans la partie suivante de la série, nous allons examiner l’application et apporter des améliorations aux méthodes `Details` et `Delete` générées automatiquement.
 
->[!div class="step-by-step"]
-[Précédent](adding-a-new-field-to-the-movie-model-and-table.md)
-[Suivant](examining-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-new-field-to-the-movie-model-and-table.md)
+> [Suivant](examining-the-details-and-delete-methods.md)

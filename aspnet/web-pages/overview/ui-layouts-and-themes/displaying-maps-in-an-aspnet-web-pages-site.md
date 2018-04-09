@@ -2,7 +2,7 @@
 uid: web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
 title: Affichage des mappages dans une application Web Pages (Razor) Site | Documents Microsoft
 author: tfitzmac
-description: "Cet article explique comment afficher des cartes interactives sur les pages d’un site Web d’ASP.NET Web Pages (Razor) en fonction de mappage des services fournis par Bing, Google, Ma..."
+description: Cet article explique comment afficher des cartes interactives sur les pages d’un site Web d’ASP.NET Web Pages (Razor) en fonction de mappage des services fournis par Bing, Google, Ma...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/displaying-maps-in-an-aspnet-web-pages-site
 msc.type: authoredcontent
-ms.openlocfilehash: 6f3e6a0cfb8c08cd971e88986d0f059dd8237aab
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 608dab8760bad7b877ab6fd4f89b21e980f5b1db
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-maps-in-an-aspnet-web-pages-razor-site"></a>Affichage des mappages dans un Site de Pages (Razor) Web ASP.NET
 ====================
@@ -89,9 +89,9 @@ L’exemple suivant montre comment créer une page qui affiche une table basée 
         > [!NOTE]
         > Si vous utilisez une version différente de la bibliothèque jQuery, assurez-vous simplement que vous êtes pointant vers la version correctement.
     - L’appel à la `@Maps.GetGoogleHtml` dans le corps de la page. Pour mapper une adresse, vous devez passer une chaîne d’adresse. Les méthodes pour les autres moteurs de carte fonctionnent de manière similaire (`@Maps.GetYahooHtml`, `@Maps.GetMapQuestHtml`).
-- Exécuter la page et entrez une adresse. La page affiche une table, basée sur des cartes de Google, qui indique l’emplacement que vous avez spécifié.
+3. Exécuter la page et entrez une adresse. La page affiche une table, basée sur des cartes de Google, qui indique l’emplacement que vous avez spécifié.
 
-    ![mappage de-1.](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
+     ![mappage de-1.](displaying-maps-in-an-aspnet-web-pages-site/_static/image2.png)
 
 ## <a name="creating-a-map-based-on-latitude-and-longitude-coordinates-using-bing"></a>Création d’une table basée sur une Latitude et Longitude coordonne (à l’aide de Bing)
 
@@ -103,12 +103,12 @@ Cet exemple montre comment créer une table basée sur des coordonnées. Cet exe
 2. Remplacez `your-key-here` avec la clé Bing Maps que vous avez créé précédemment.
 3. Exécutez le *MapCoordinates.cshtml* page, entrez les coordonnées de latitude et longitude, puis cliquez sur le **carte !** disproportionnée. (Si vous ne connaissez pas toutes les coordonnées, essayez ce qui suit. C’est un emplacement sur le campus de Redmond de Microsoft).
 
-    - Latitude : 47.6781005859375
-    - Longitude :-122.158317565918
+   - Latitude : 47.6781005859375
+   - Longitude :-122.158317565918
 
-    La page s’affiche à l’aide de coordonnées que vous avez spécifié.
+     La page s’affiche à l’aide de coordonnées que vous avez spécifié.
 
-    ![mappage-3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
+     ![mappage-3](displaying-maps-in-an-aspnet-web-pages-site/_static/image3.png)
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Ressources supplémentaires

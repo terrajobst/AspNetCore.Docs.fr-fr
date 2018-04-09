@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
-title: "Didacticiel : Mise en route avec SignalR 1.x et MVC 4 | Documents Microsoft"
+title: 'Didacticiel : Mise en route avec SignalR 1.x et MVC 4 | Documents Microsoft'
 author: pfletcher
-description: "Utilisez ASP.NET SignalR et ASP.NET MVC 4 pour créer une application de conversation en temps réel."
+description: Utilisez ASP.NET SignalR et ASP.NET MVC 4 pour créer une application de conversation en temps réel.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/29/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 632e6098a03eae02f2367c6dc1c293dbdb6b6170
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1ae330be5caf00c3cac7451f326398c0958538af
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>Didacticiel : Mise en route avec SignalR 1.x et MVC 4
 ====================
@@ -63,17 +63,17 @@ Cette section montre comment créer une application ASP.NET MVC 4, ajoutez la bi
         > Dans Visual Studio 2010, sélectionnez **.NET Framework 4** dans la liste déroulante version Framework. SignalR code s’exécute sur les versions du .NET Framework 4 et 4.5.
 
         ![Créer web mvc](tutorial-getting-started-with-signalr-and-mvc-4/_static/image3.png)
-    2. Sélectionnez le modèle d’Application Internet, décochez l’option de **créer un projet de test unitaire**, puis cliquez sur OK.
+      2. Sélectionnez le modèle d’Application Internet, décochez l’option de **créer un projet de test unitaire**, puis cliquez sur OK.
 
-        ![Créer un site internet de mvc](tutorial-getting-started-with-signalr-and-mvc-4/_static/image4.png)
-    3. Ouvrez le **outils | Gestionnaire de Package de bibliothèque | Console du Gestionnaire de package** et exécutez la commande suivante. Cette étape ajoute au projet un ensemble de fichiers de script et les références d’assembly que vous activez la fonctionnalité de SignalR.
+         ![Créer un site internet de mvc](tutorial-getting-started-with-signalr-and-mvc-4/_static/image4.png)
+      3. Ouvrez le **outils | Gestionnaire de Package de bibliothèque | Console du Gestionnaire de package** et exécutez la commande suivante. Cette étape ajoute au projet un ensemble de fichiers de script et les références d’assembly que vous activez la fonctionnalité de SignalR.
 
-        `install-package Microsoft.AspNet.SignalR -Version 1.1.3`
-    4. Dans **l’Explorateur de solutions** développez le dossier Scripts. Notez que les bibliothèques de scripts pour SignalR ont été ajoutés au projet.
+         `install-package Microsoft.AspNet.SignalR -Version 1.1.3`
+      4. Dans **l’Explorateur de solutions** développez le dossier Scripts. Notez que les bibliothèques de scripts pour SignalR ont été ajoutés au projet.
 
-        ![Références de bibliothèque](tutorial-getting-started-with-signalr-and-mvc-4/_static/image6.png)
-    5. Dans **l’Explorateur de solutions**, cliquez sur le projet, sélectionnez **ajouter | Nouveau dossier**, et ajouter un nouveau dossier nommé **concentrateurs**.
-    6. Cliquez sur le **concentrateurs** dossier, cliquez sur **ajouter | Classe**et créer une nouvelle classe c# nommée **ChatHub.cs**. Vous allez utiliser cette classe comme un concentrateur SignalR serveur qui envoie des messages à tous les clients.
+         ![Références de bibliothèque](tutorial-getting-started-with-signalr-and-mvc-4/_static/image6.png)
+      5. Dans **l’Explorateur de solutions**, cliquez sur le projet, sélectionnez **ajouter | Nouveau dossier**, et ajouter un nouveau dossier nommé **concentrateurs**.
+      6. Cliquez sur le **concentrateurs** dossier, cliquez sur **ajouter | Classe**et créer une nouvelle classe c# nommée **ChatHub.cs**. Vous allez utiliser cette classe comme un concentrateur SignalR serveur qui envoie des messages à tous les clients.
 
 > [!NOTE]
 > Si vous utilisez Visual Studio 2012 et que vous avez installé le [mise à jour ASP.NET et Web Tools 2012.2](../../../visual-studio/overview/2012/aspnet-and-web-tools-20122-release-notes-rtw.md#_Installation), vous pouvez utiliser le nouveau modèle d’élément SignalR pour créer la classe de concentrateur. Pour ce faire, cliquez sur le **concentrateurs** dossier, cliquez sur **ajouter | Un nouvel élément**, sélectionnez **classe de concentrateur SignalR (v1)**et le nom de la classe **ChatHub.cs**.

@@ -2,21 +2,21 @@
 uid: visual-studio/overview/2013/release-notes
 title: ASP.NET et Web Tools pour Visual Studio 2013 Release Notes | Documents Microsoft
 author: microsoft
-description: "Ce document décrit la version de ASP.NET et Web Tools pour Visual Studio 2013."
+description: Ce document décrit la version de ASP.NET et Web Tools pour Visual Studio 2013.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
 ms.topic: article
 ms.assetid: 08815768-2702-42ae-ae85-0a59934a11d1
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 7f38a0f2693aeb2a4884b9c03719b583423957a8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e9ddd96f186564834ff6bb2c30cf0ed5444cbf1b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET et Web Tools pour les Notes de publication Visual Studio 2013
 ====================
@@ -199,16 +199,16 @@ Filtres d’authentification sont un nouveau type de filtre dans ASP.NET MVC qui
 
 Vous pouvez maintenant remplacer les filtres à appliquer à une méthode d’action donné ou un contrôleur en spécifiant un filtre de remplacement. Les filtres de remplacement de spécifier un ensemble de types de filtre ne doit pas être exécutée pour une étendue donnée (action ou contrôleur). Cela vous permet de vous permet de configurer des filtres qui s’appliquent globalement mais puis exclure certains filtres globaux de l’application à des actions spécifiques ou les contrôleurs.
 
-### <a name="attribute-routing"></a>Routage d’attributs
+### <a name="attribute-routing"></a>Routage par attributs
 
-ASP.NET MVC prend désormais en charge le routage d’attributs, grâce à une contribution par Tim McCall, l’auteur de [http://attributerouting.net](http://attributerouting.net). Avec le routage de l’attribut, vous pouvez spécifier votre itinéraires par vos actions et les contrôleurs d’annotation.
+ASP.NET MVC prend désormais en charge le routage d’attributs, grâce à une contribution par Tim McCall, l’auteur de [ http://attributerouting.net ](http://attributerouting.net). Avec le routage de l’attribut, vous pouvez spécifier votre itinéraires par vos actions et les contrôleurs d’annotation.
 
 <a id="TOC11"></a>
 ## <a name="aspnet-web-api-2"></a>API web ASP.NET 2
 
-### <a name="attribute-routing"></a>Routage d’attributs
+### <a name="attribute-routing"></a>Routage par attributs
 
-API Web ASP.NET prend désormais en charge le routage d’attributs, grâce à une contribution par Tim McCall, l’auteur de [http://attributerouting.net](http://attributerouting.net). Avec le routage de l’attribut, vous pouvez spécifier des itinéraires de votre API Web en annotant vos actions et les contrôleurs comme suit :
+API Web ASP.NET prend désormais en charge le routage d’attributs, grâce à une contribution par Tim McCall, l’auteur de [ http://attributerouting.net ](http://attributerouting.net). Avec le routage de l’attribut, vous pouvez spécifier des itinéraires de votre API Web en annotant vos actions et les contrôleurs comme suit :
 
 [!code-csharp[Main](release-notes/samples/sample1.cs)]
 
@@ -284,7 +284,7 @@ La nouvelle **HttpRequestContext** effectue le suivi de tout état qui n’est l
 
 Grâce à une autre grande contribution à partir de Brock Allen, ASP.NET prend désormais entièrement en charge Cross-Origin demander partage (CORS).
 
-Sécurité du navigateur empêche une page web d’effectuer des demandes AJAX vers un autre domaine. [CORS](http://www.w3.org/TR/cors/) est une norme W3C qui permet à un serveur d’abaisser la stratégie de même origine. À l’aide de CORS, un serveur peut autoriser explicitement les certaines demandes cross-origin lors du refus d’autres.
+La sécurité du navigateur empêche une page web d’effectuer des demandes AJAX vers un autre domaine. [CORS](http://www.w3.org/TR/cors/) est une norme W3C qui permet à un serveur d’abaisser la stratégie de même origine. À l’aide de CORS, un serveur peut autoriser explicitement certaines demandes cross-origin lors du refus d’autres.
 
 API Web 2 prend désormais en charge les règles CORS, y compris la gestion automatique des demandes de contrôle en amont. Pour plus d’informations, consultez [l’activation des demandes Cross-Origin dans ASP.NET Web API](../../../web-api/overview/security/enabling-cross-origin-requests-in-web-api.md).
 
@@ -332,7 +332,7 @@ SignalR 2.0 repose entièrement sur [OWIN (l’Interface Web ouverte pour .NET)]
 
 ### <a name="maphubs-and-mapconnection-are-now-mapsignalr"></a>MapHubs et MapConnection sont désormais MapSignalR
 
-Pour la compatibilité avec les normes OWIN, ces méthodes ont été renommées `MapSignalR`. `MapSignalR`appelée sans paramètres mappera tous les concentrateurs (en tant que `MapHubs` dans la version 1.x) ; pour mapper des **persistentconnection ne** objets, spécifiez le type de connexion en tant que paramètre de type et l’extension d’URL pour la connexion en tant que le premier argument.
+Pour la compatibilité avec les normes OWIN, ces méthodes ont été renommées `MapSignalR`. `MapSignalR` appelée sans paramètres mappera tous les concentrateurs (en tant que `MapHubs` dans la version 1.x) ; pour mapper des **persistentconnection ne** objets, spécifiez le type de connexion en tant que paramètre de type et l’extension d’URL pour la connexion en tant que le premier argument.
 
 Le `MapSignalR` méthode est appelée dans une classe de démarrage Owin. Visual Studio 2013 contient un nouveau modèle pour une classe de démarrage Owin ; Pour utiliser ce modèle, procédez comme suit :
 
@@ -392,7 +392,7 @@ Le code suivant montre comment activer les CORS ou JSONP dans un projet SignalR 
 
 Prise en charge a été ajoutée pour iOS et Android clients à l’aide de composants MonoTouch et MonoDroid à partir de la [Xamarin bibliothèque](https://xamarin.com/). Pour plus d’informations sur la façon de les utiliser, consultez [à l’aide des composants Xamarin](https://github.com/SignalR/SignalR/wiki/Building-Mono.Mobile.sln). Ces composants seront disponibles dans le [Xamarin Store](https://store.xamarin.com/) lorsque la mise en production SignalR RTW est disponible.
 
-<a id="portable"></a>### Portable client .NET
+<a id="portable"></a> ### Portable client .NET
 
 Pour mieux facilitent le développement multiplateforme, le Silverlight, WinRT et les clients Windows Phone ont été remplacés par un seul client .NET portable qui prend en charge les plateformes suivantes :
 
@@ -580,8 +580,8 @@ ASP.NET Razor 3 inclut les nouvelles fonctionnalités suivantes :
 - Prise en charge pour la modification de l’onglet. Preivously, le **Document au Format** commande, la mise en retrait automatique et automatique de mise en forme dans Visual Studio n’a pas fonctionné correctement lorsque vous utilisez la **conserver les tabulations** option. Cette modification résout Visual Studio pour le code Razor pour l’onglet mise en forme de mise en forme.
 - Prise en charge pour les règles de réécriture d’URL lors de la génération des liens.
 - Suppression de l’attribut transparent de sécurité.
- > [!NOTE]
- > Ceci est une modification avec rupture et rend Razor 3 incompatible avec MVC 4 et versions antérieures, tandis que Razor 2 n’est pas compatible avec MVC5 ou des assemblys compilés avec MVC5.
+  > [!NOTE]
+  > Ceci est une modification avec rupture et rend Razor 3 incompatible avec MVC 4 et versions antérieures, tandis que Razor 2 n’est pas compatible avec MVC5 ou des assemblys compilés avec MVC5.
 
 Problèmes de Razor 3 corrigés dans Visual Studio 2013 à partir de versions préliminaires, vous pouvez trouver [ici](https://aspnetwebstack.codeplex.com/workitem/list/advanced?keyword=&status=Resolved%7cClosed&type=All&priority=All&release=All%7cv5.0%2bPreview%7cv5.0%2bRC%7cv5.0%2bRTM&assignedTo=All&component=Web%2bPages%252fRazor&reasonClosed=Fixed&sortField=LastUpdatedDate&sortDirection=Descending&page=0).
 
@@ -603,7 +603,7 @@ Cette section décrit les problèmes connus et les modifications avec rupture da
 
 ### <a name="aspnet-web-api"></a>API web ASP.NET
 
-1. `ODataQueryOptions<T>.ApplyTo(IQueryable)`ne retourne pas `IQueryable<T>` toujours, que nous avons ajouté la prise en charge de `$select` et `$expand`.
+1. `ODataQueryOptions<T>.ApplyTo(IQueryable)` ne retourne pas `IQueryable<T>` toujours, que nous avons ajouté la prise en charge de `$select` et `$expand`.
 
     Nos exemples précédents pour `ODataQueryOptions<T>` toujours convertir la valeur de retour à partir de `ApplyTo` à `IQueryable<T>`. Cela fonctionnait précédemment, car les options de la requête que nous avons pris en charge précédemment (`$filter`, `$orderby`, `$skip`, `$top`) ne modifiez pas la forme de la requête. Maintenant que nous prenons en charge `$select` et `$expand` la valeur de retour à partir de `ApplyTo` ne sera pas `IQueryable<T>` toujours.
 
@@ -632,7 +632,7 @@ Cette section décrit les problèmes connus et les modifications avec rupture da
 
     *Erreur de serveur dans l’Application '/'.*
 
-    *Une revendication de type 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier' ou 'http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider' n’était pas présente sur le ClaimsIdentity fourni. Pour activer la prise en charge avec l’authentification basée sur les revendications de jeton anti-contrefaçon, vérifiez que le fournisseur de revendications configurée fournit les deux de ces revendications sur les instances de ClaimsIdentity qu’il génère. Si le fournisseur de revendications configurée utilise à la place un type de revendication différent comme identificateur unique, il peut être configuré en définissant la propriété statique AntiForgeryConfig.UniqueClaimTypeIdentifier.*
+    <em>Une revendication de type '<http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier>'ou'<http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider>' n’était pas présente sur le ClaimsIdentity fourni. Pour activer la prise en charge avec l’authentification basée sur les revendications de jeton anti-contrefaçon, vérifiez que le fournisseur de revendications configurée fournit les deux de ces revendications sur les instances de ClaimsIdentity qu’il génère. Si le fournisseur de revendications configurée utilise à la place un type de revendication différent comme identificateur unique, il peut être configuré en définissant la propriété statique AntiForgeryConfig.UniqueClaimTypeIdentifier.</em>
 
     **Solution de contournement**:
 
@@ -647,14 +647,14 @@ Cette section décrit les problèmes connus et les modifications avec rupture da
 
     Pour corriger l’erreur ci-dessus, ouvrez *tous les* les fichiers Web.config (y compris celles figurant dans le dossier Views) dans votre projet, puis effectuez les éléments suivants :
 
-    1. Mettre à jour toutes les occurrences de la version « 4.0.0.0 » de « System.Web.Mvc » à « 5.0.0.0 ».
-    2. Mettre à jour toutes les occurrences de la version « 2.0.0.0 » de « System.Web.Helpers », &quot;System.Web.WebPages&quot; et &quot;System.Web.WebPages.Razor&quot; à « 3.0.0.0 »
+   1. Mettre à jour toutes les occurrences de la version « 4.0.0.0 » de « System.Web.Mvc » à « 5.0.0.0 ».
+   2. Mettre à jour toutes les occurrences de la version « 2.0.0.0 » de « System.Web.Helpers », &quot;System.Web.WebPages&quot; et &quot;System.Web.WebPages.Razor&quot; à « 3.0.0.0 »
 
-    Par exemple, après avoir apporté les modifications ci-dessus, les liaisons d’assembly doivent ressembler à ceci :
+      Par exemple, après avoir apporté les modifications ci-dessus, les liaisons d’assembly doivent ressembler à ceci :
 
-    [!code-xml[Main](release-notes/samples/sample24.xml)]
+      [!code-xml[Main](release-notes/samples/sample24.xml)]
 
-    Pour plus d’informations sur la mise à niveau des projets MVC 4 à 5 de MVC, consultez [la mise à niveau un ASP.NET MVC 4 et le projet d’API Web ASP.NET MVC 5 et Web API 2](../../../mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md).
+      Pour plus d’informations sur la mise à niveau des projets MVC 4 à 5 de MVC, consultez [la mise à niveau un ASP.NET MVC 4 et le projet d’API Web ASP.NET MVC 5 et Web API 2](../../../mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md).
 3. Lorsque vous utilisez la validation côté client avec jQuery Validation discrète, le message de validation est parfois incorrect pour un élément d’entrée HTML avec type = 'number'. L’erreur de validation pour une valeur requise (« champ de l’âge est requis ») s’affichent lorsqu’un nombre non valide est entré à la place du message correct, qu’un nombre valid est requis.
 
     Ce problème est couramment trouvé avec le code de modèle généré automatiquement pour un modèle avec une propriété entière sur les vues de créer et modifier.
@@ -697,13 +697,13 @@ Solution de contournement :
 - Pour corriger cette erreur pour MVC, ajouter un nouvel élément de modèle généré automatiquement, puis sélectionnez les dépendances de MVC 5 (complète ou minimale). Ce processus sera ajouter toutes les modifications nécessaires à votre projet.
 - Pour corriger cette erreur pour l’API Web :
 
-    1. Ajoutez la classe WebApiConfig à votre projet.
+  1. Ajoutez la classe WebApiConfig à votre projet.
 
-        [!code-csharp[Main](release-notes/samples/sample25.cs)]
+      [!code-csharp[Main](release-notes/samples/sample25.cs)]
 
-        [!code-vb[Main](release-notes/samples/sample26.vb)]
-    2. Configurer WebApiConfig.Register dans l’Application\_Start (méthode) dans Global.asax, comme suit :
+      [!code-vb[Main](release-notes/samples/sample26.vb)]
+  2. Configurer WebApiConfig.Register dans l’Application\_Start (méthode) dans Global.asax, comme suit :
 
-        [!code-csharp[Main](release-notes/samples/sample27.cs)]
+      [!code-csharp[Main](release-notes/samples/sample27.cs)]
 
-        [!code-vb[Main](release-notes/samples/sample28.vb)]
+      [!code-vb[Main](release-notes/samples/sample28.vb)]

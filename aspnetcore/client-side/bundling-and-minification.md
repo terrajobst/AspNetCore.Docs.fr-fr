@@ -1,7 +1,7 @@
 ---
-title: Groupement et la minimisation dans ASP.NET Core
+title: Regroupement et minifiy actifs statiques dans ASP.NET Core
 author: scottaddie
-description: "Découvrez comment optimiser les ressources statiques dans une application de web ASP.NET Core en appliquant le groupement et la minimisation des techniques."
+description: Découvrez comment optimiser les ressources statiques dans une application de web ASP.NET Core en appliquant le groupement et la minimisation des techniques.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 6c233d0957ce9974adbc6112e6194c072aab0b41
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a155422c0fd638f46fe4a9d8a77faebc0b2a5681
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="bundling-and-minification"></a>Groupement et minimisation
+# <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>Regroupement et minifiy actifs statiques dans ASP.NET Core
 
 Par [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -220,28 +220,22 @@ Spécifier les fichiers à inclure dans vos pages à l’aide de la [assistance 
 
 Les éléments suivants `environment` effectue le rendu lors de l’exécution les fichiers CSS non traités le `Development` environnement :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=21-24)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=9-12)]
 
----
-
+* * *
 Les éléments suivants `environment` effectue le rendu lors de l’exécution dans un environnement autre que les fichiers CSS groupées et réduites `Development`. Par exemple, en cours d’exécution `Production` ou `Staging` déclenche le rendu de ces feuilles de style :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=5&range=25-30)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
----
-
+* * *
 ## <a name="consume-bundleconfigjson-from-gulp"></a>Consommer bundleconfig.json de Gulp
 
 Il existe des cas dans lequel les flux de travail groupement et la minimisation d’une application nécessite un traitement supplémentaire. Optimisation des images, fonctions antispam de cache et le traitement d’asset CDN sont des exemples. Pour satisfaire ces exigences, vous pouvez convertir le flux de travail groupement et la minimisation pour utiliser Gulp.
@@ -317,7 +311,7 @@ Dans cet exemple, toutes les tâches définies dans le `MyPreCompileTarget` cibl
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Utilisation de Gulp](xref:client-side/using-gulp)
-* [Utilisation de Grunt](xref:client-side/using-grunt)
-* [Utilisation de plusieurs environnements](xref:fundamentals/environments)
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Utiliser Gulp](xref:client-side/using-gulp)
+* [Utiliser Grunt](xref:client-side/using-grunt)
+* [Travailler avec plusieurs environnements](xref:fundamentals/environments)
+* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)

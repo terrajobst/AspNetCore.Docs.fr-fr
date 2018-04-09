@@ -1,7 +1,7 @@
 ---
-title: "Résoudre les problèmes de base ASP.NET sur Azure App Service"
+title: Résoudre les problèmes de base ASP.NET sur Azure App Service
 author: guardrex
-description: "Découvrez comment diagnostiquer les problèmes liés aux déploiements ASP.NET Core sur Azure App Service."
+description: Découvrez comment diagnostiquer les problèmes liés aux déploiements ASP.NET Core sur Azure App Service.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,17 +10,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: e6a8404d3fe96a0136d7f874107b2cdf63e8e890
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 47056c80c7abf5dd5ad5ae96af7b821d31b21b8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes de base ASP.NET sur Azure App Service
 
 Par [Luke Latham](https://github.com/guardrex)
 
-[!INCLUDE[Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
+[!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
 Cet article fournit des instructions sur la façon de diagnostiquer un ASP.NET Core problème de démarrage d’application à l’aide des outils de diagnostic du Service d’applications Azure. Pour obtenir des conseils de dépannage supplémentaires, consultez [vue d’ensemble des diagnostics du Service d’applications Azure](/azure/app-service/app-service-diagnostics) et [Comment : surveiller les applications dans Azure App Service](/azure/app-service/web-sites-monitor) dans la documentation sur Azure.
 
@@ -105,9 +105,9 @@ Le Module de base ASP.NET stdout souvent enregistre les messages d’erreur util
 1. Sélectionnez **enregistrer** pour enregistrer le fichier.
 
 > [!WARNING]
-> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés.
+> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés. Utilisez uniquement stdout journalisation pour résoudre les problèmes de démarrage d’application.
 >
-> Pour la routine de journalisation dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et la faire pivoter des journaux. Pour plus d’informations, consultez [modules fournisseurs d’informations de tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+> Pour général enregistrer dans une application ASP.NET Core après le démarrage, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et la faire pivoter des journaux. Pour plus d’informations, consultez [modules fournisseurs d’informations de tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 ## <a name="common-startup-errors"></a>Erreurs courantes de démarrage 
 

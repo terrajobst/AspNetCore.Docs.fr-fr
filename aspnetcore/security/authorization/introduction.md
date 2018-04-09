@@ -1,7 +1,7 @@
 ---
-title: "Introduction à l’autorisation"
+title: Introduction à l’autorisation dans ASP.NET Core
 author: rick-anderson
-description: "Ce document fournit une explication de l’autorisation de base et explique comment l’autorisation est lié à ASP.NET Core."
+description: Découvrez les principes fondamentaux de l’autorisation et le fonctionnement des autorisations dans les applications ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/introduction
-ms.openlocfilehash: 3fef6d38672af8871c04b65834789a39a7df8487
-ms.sourcegitcommit: d43c84c4c80527c85e49d53691b293669557a79d
+ms.openlocfilehash: 7ba1966dcaf1ce0510f489cfe0ff11501faffa56
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/20/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="introduction"></a>Introduction
+# <a name="introduction-to-authorization-in-aspnet-core"></a>Introduction à l’autorisation dans ASP.NET Core
 
 <a name="security-authorization-introduction"></a>
 
@@ -25,7 +25,7 @@ L’autorisation est orthogonale et indépendante de l’authentification, qui e
 
 ## <a name="authorization-types"></a>Types d’autorisation
 
-L'autorisation de ASP.NET Core fournit un simple [rôle](roles.md) déclaratif et un [modèle enrichie basée sur la stratégie](policies.md). L’autorisation est exprimée dans les exigences et les gestionnaires évaluent les revendications d’un utilisateur par rapport aux exigences. Les vérifications impératives peuvent reposer sur des stratégies simples ou des stratégies qui évaluent l’identité de l’utilisateur et les propriétés de la ressource à laquelle l’utilisateur tente d’accéder.
+L'autorisation de ASP.NET Core fournit un simple [rôle](xref:security/authorization/roles) déclaratif et un [modèle enrichie basée sur la stratégie](xref:security/authorization/policies). L’autorisation est exprimée dans les exigences et les gestionnaires évaluent les revendications d’un utilisateur par rapport aux exigences. Les vérifications impératives peuvent reposer sur des stratégies simples ou des stratégies qui évaluent l’identité de l’utilisateur et les propriétés de la ressource à laquelle l’utilisateur tente d’accéder.
 
 ## <a name="namespaces"></a>Espaces de noms
 

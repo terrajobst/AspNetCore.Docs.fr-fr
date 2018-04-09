@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process
-title: "Dépannage du processus d’empaquetage | Documents Microsoft"
+title: Dépannage du processus d’empaquetage | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment vous pouvez collecter des informations détaillées sur le processus d’empaquetage à l’aide de la propriété EnablePackageProcessLoggingAndAssert dans le M..."
+description: Cette rubrique décrit comment vous pouvez collecter des informations détaillées sur le processus d’empaquetage à l’aide de la propriété EnablePackageProcessLoggingAndAssert dans le M...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/troubleshooting-the-packaging-process
 msc.type: authoredcontent
-ms.openlocfilehash: 977077357eb5774193a40c55fabee9733dd5ab2f
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 816ab77c44b52c6449a139475f2ef8546bd38071
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="troubleshooting-the-packaging-process"></a>Le processus d’empaquetage de résolution des problèmes
 ====================
@@ -38,9 +38,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > > Le **EnablePackageProcessLoggingAndAssert** propriété ne fonctionne que si vous générez votre projet en utilisant le **déboguer** configuration. La propriété est ignorée dans d’autres configurations.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="understanding-the-enablepackageprocessloggingandassert-property"></a>Description de la propriété EnablePackageProcessLoggingAndAssert
 
@@ -115,5 +115,5 @@ Cette rubrique décrit comment vous pouvez utiliser la **EnablePackageProcessLog
 
 Pour plus d’informations sur l’utilisation des fichiers projet MSBuild personnalisés pour contrôler le processus de déploiement, consultez [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md) et [comprendre le processus de génération](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Pour plus d’informations sur les fournisseurs de services et la façon dont il gère le processus d’empaquetage, consultez [génération et des projets d’Application Web empaquetage](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md). Pour obtenir des conseils sur la façon d’exclure certains fichiers et dossiers à partir de packages de déploiement web, consultez [à l’exclusion des fichiers et dossiers de déploiement](excluding-files-and-folders-from-deployment.md).
 
->[!div class="step-by-step"]
-[Précédent](running-windows-powershell-scripts-from-msbuild-project-files.md)
+> [!div class="step-by-step"]
+> [Précédent](running-windows-powershell-scripts-from-msbuild-project-files.md)

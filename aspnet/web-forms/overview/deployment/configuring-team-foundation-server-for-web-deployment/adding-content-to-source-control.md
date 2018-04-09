@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
-title: "Ajout de contenu au contrôle de code Source | Documents Microsoft"
+title: Ajout de contenu au contrôle de code Source | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique explique comment ajouter du contenu à un contrôle de code source Team Foundation Server (TFS) 2010. Il décrit comment ajouter des solutions et des projets à un projet d’équipe..."
+description: Cette rubrique explique comment ajouter du contenu à un contrôle de code source Team Foundation Server (TFS) 2010. Il décrit comment ajouter des solutions et des projets à un projet d’équipe...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
 msc.type: authoredcontent
-ms.openlocfilehash: d46e2697d10ca27f8e08533350a6e7f2354b4a43
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: c9c3a506d2745a6793661453a293732429d3e46e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-content-to-source-control"></a>Ajout de contenu au contrôle de code Source
 ====================
@@ -27,7 +27,7 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique explique comment ajouter du contenu à un contrôle de code source Team Foundation Server (TFS) 2010. Il décrit comment ajouter des solutions et des projets à un projet d’équipe dans TFS, et elle explique comment ajouter des dépendances externes, telles que les infrastructures ou les assemblys au contrôle de code source.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -157,6 +157,6 @@ La rubrique suivante, [configuration d’un serveur de Build TFS pour le déploi
 
 Pour plus d’informations sur l’utilisation de contrôle de code source TFS, consultez [à l’aide de la gestion de Version](https://msdn.microsoft.com/library/ms181368.aspx).
 
->[!div class="step-by-step"]
-[Précédent](creating-a-team-project-in-tfs.md)
-[Suivant](configuring-a-tfs-build-server-for-web-deployment.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-team-project-in-tfs.md)
+> [Suivant](configuring-a-tfs-build-server-for-web-deployment.md)

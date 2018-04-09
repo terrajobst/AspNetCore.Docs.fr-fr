@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
-title: "Quelles sont les nouveautés dans ASP.NET Web Pages 3.2 | Documents Microsoft"
+title: Quelles sont les nouveautés dans ASP.NET Web Pages 3.2 | Documents Microsoft
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/30/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/releases/whats-new-in-aspnet-web-pages-32
 msc.type: authoredcontent
-ms.openlocfilehash: cdb0e259bbf27d1d3dcf6ada11e6636c9cefcc9c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 80421018e0508d430b6142cd3cee1727d1d17b7e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="whats-new-in-aspnet-web-pages-32"></a>Quelles sont les nouveautés dans les Pages Web ASP.NET 3.2
 ====================
@@ -50,7 +50,7 @@ Le résultat sur le serveur est l’utilisation du processeur supplémentaire, l
 
 Voici un tableau montrant les résultats d’analyse un [perfview](https://channel9.msdn.com/Series/PerfView-Tutorial) pour une exécution. Le processeur est maintenu constant à environ 68 %, tandis que les grandes pages sont restituées. Le tableau montre que le nombre de collections de génération 2 a été presque entièrement éliminé, et le résultat est le taux plus élevé et une réduction considérable des pauses dus au garbage collection.
 
-| **Zone** | **Avant (3.2)** | **Après avoir (3.2.1)** | **% De delta** |
+| **Zone** | **Avant (3.2)** | **Après avoir (3.2.1)** | **Delta %** |
 | --- | --- | --- | --- |
 | Nb total de requêtes (nombre) | 26,986 | 32,591 | <font style="background-color: #4bacc6">20.80%</font> |
 | Durée (en secondes) de trace | 196.20 | 198.60 | 1.20% |
@@ -65,7 +65,8 @@ Voici un tableau montrant les résultats d’analyse un [perfview](https://chann
 | Processeur / demande (exemples/req) | 19.73 | 16.47 | -16.50% |
 
 | Codage en couleur : | <font style="background-color: #00ff00">Amélioration de base</font> | <font style="background-color: #4bacc6">Impact positif sur les performances</font> |
-| --- | --- | --- |
+|---------------|-----------------------------------------------------------------|-------------------------------------------------------------------------------|
+|               |                                                                 |                                                                               |
 
 ## <a name="aspnet-web-pages-323-beta1"></a>ASP.NET Web Pages 3.2.3 beta1
 

@@ -1,7 +1,7 @@
 ---
-title: "Authentification de cloud de site web d’API avec Azure Active Directory B2C dans ASP.NET Core"
+title: Authentification de cloud de site web d’API avec Azure Active Directory B2C dans ASP.NET Core
 author: camsoper
-description: "Découvrez comment configurer l’authentification d’Azure Active Directory B2C avec l’API Web ASP.NET principale. Tester l’API avec Postman de web authentifié."
+description: Découvrez comment configurer l’authentification d’Azure Active Directory B2C avec l’API Web ASP.NET principale. Tester l’API avec Postman de web authentifié.
 ms.author: casoper
 manager: wpickett
 ms.date: 01/25/2018
@@ -10,11 +10,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 1213f7eb25fb6525f98d83dff0956a841ae686a7
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 621290f7e303f9157577b5c1b32646b750ed5159
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification de cloud de site web d’API avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -23,7 +23,7 @@ Auteur : [Cam Soper](https://twitter.com/camsoper)
 [Azure B2C Active Directory](/azure/active-directory-b2c/active-directory-b2c-overview) (B2C Active Directory de Azure) est une solution de gestion des identités de cloud pour les applications web et mobiles. Le service fournit l’authentification pour les applications hébergées dans le cloud et locales. Types d’authentification, les comptes individuels, les comptes de réseau social et fédérés des comptes d’entreprise. En outre, Azure AD B2C peut fournir l’authentification multifacteur avec une configuration minimale.
 
 > [!TIP]
-> Azure Active Directory (Azure AD) Azure Active Directory B2C sont des offres de produits distincts. Un locataire Azure AD représente une organisation, alors qu’un locataire Azure AD B2C représente une collection d’identités à utiliser avec les applications de confiance. Pour plus d’informations, consultez [Azure AD B2C : Forum aux questions (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
+> Azure Active Directory (Azure AD) et Azure AD B2C sont des offres de produits distincts. Un locataire Azure AD représente une organisation, alors qu’un locataire Azure AD B2C représente une collection d’identités à utiliser avec les applications de confiance. Pour plus d’informations, consultez [Azure AD B2C : Forum aux questions (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
 
 Étant donné que l’API web ont aucune interface utilisateur, ils ne peuvent pas rediriger l’utilisateur vers un service de jeton sécurisé comme Azure AD B2C. Au lieu de cela, l’API est passé un jeton de support à partir de l’application appelante qui a déjà authentifié l’utilisateur avec Azure Active Directory B2C. L’API puis valide le jeton sans intervention de l’utilisateur directe.
 
@@ -78,21 +78,21 @@ Dans Visual Studio :
 1. Créez une application web ASP.NET Core. 
 2. Sélectionnez **API Web** à partir de la liste des modèles.
 3. Sélectionnez le **modifier l’authentification** bouton.
-    
+
     ![Bouton de modifier l’authentification](./azure-ad-b2c-webapi/change-auth-button.png)
 
 4. Dans le **modifier l’authentification** boîte de dialogue, sélectionnez **comptes d’utilisateur individuels**, puis sélectionnez **se connecter à un magasin d’utilisateur existant dans le cloud** dans la liste déroulante. 
-    
+
     ![Boîte de dialogue Modifier l’authentification](./azure-ad-b2c-webapi/change-auth-dialog.png)
 
 5. Remplissez le formulaire avec les valeurs suivantes :
-    
+
     | Paramètre                       | Value                                                 |
     |-------------------------------|-------------------------------------------------------|
     | **Nom de domaine**               | *&lt;le nom de domaine de votre client B2C&gt;*          |
     | **ID d’application**            | *&lt;Collez l’ID d’Application à partir du Presse-papiers&gt;* |
     | **Stratégie d’inscription ou de la connexion** | `B2C_1_SiUpIn`                                        |
-    
+
     Sélectionnez **OK** pour fermer la **modifier l’authentification** boîte de dialogue. Sélectionnez **OK** pour créer l’application web.
 
 Visual Studio crée l’API web avec un contrôleur nommé *le fichier ValuesController.cs* qui retourne des valeurs codées en dur pour les demandes GET. La classe est décorée avec le [attribut Authorize](xref:security/authorization/simple), de sorte que toutes les demandes nécessitent l’authentification.
@@ -140,17 +140,17 @@ Lancez Postman. Par défaut, Postman affiche le **créer un nouveau** boîte de 
 À partir de la **créer un nouveau** boîte de dialogue :
 
 1. Sélectionnez **demande**.
-    
+
     ![Bouton de demande](./azure-ad-b2c-webapi/postman-create-new.png)
 
 2. Entrez *obtenir les valeurs* dans les **nom de la demande** boîte.
 3. Sélectionnez **+ créer une Collection de** pour créer une nouvelle collection pour stocker la demande. Nom de la collection *les didacticiels ASP.NET Core* , puis sélectionnez la coche.
-    
-    ![Création d’un regroupement](./azure-ad-b2c-webapi/postman-create-collection.png)
+
+    ![Créer un nouveau regroupement](./azure-ad-b2c-webapi/postman-create-collection.png)
 
 4. Sélectionnez le **enregistrer dans les didacticiels ASP.NET Core** bouton.
 
-### <a name="test-the-web-api-withoutauthentication"></a>Tester l’API web withoutauthentication
+### <a name="test-the-web-api-without-authentication"></a>Tester l’API web sans authentification
 
 Pour vérifier que l’API web nécessite une authentification, tout d’abord effectuer une demande sans authentification.
 
@@ -165,34 +165,36 @@ Pour vérifier que l’API web nécessite une authentification, tout d’abord e
 Pour rendre une demande authentifiée à l’API web, un jeton de support est nécessaire. Postman permet de facilement se connecter au locataire Azure AD B2C et obtenir un jeton.
 
 1. Sur le **autorisation** sous l’onglet du **TYPE** liste déroulante, sélectionnez **OAuth 2.0**. Dans le **ajouter des données d’autorisation** liste déroulante, sélectionnez **en-têtes de la requête**. Sélectionnez **accéder nouveau jeton**.
-    
+
     ![Onglet autorisation avec des paramètres](./azure-ad-b2c-webapi/postman-auth-tab.png)
 
 2. Terminer la **obtenir nouveau jeton d’accès** boîte de dialogue comme suit :
-    
-    | Paramètre                   | Value                                                                                         | Notes                                                                                      |
-    |---------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
-    | **Nom du jeton**            | *&lt;nom du jeton&gt;*                                                                          | Entrez un nom descriptif pour le jeton.                                                    |
-    | **Type d’accès**            | Implicite                                                                                      |                                                                                            |
-    | **URL de rappel**          | `https://getpostman.com/postman`                                                              |                                                                                            |
-    | **URL d’authentification**              | `https://login.microsoftonline.com/<tenant domain name>/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` | Remplacez  *&lt;nom_domaine_client&gt;*  avec le nom de domaine du locataire sans crochets pointus. |
-    | **ID de client**             | *&lt;Entrez l’application Postman <b>ID d’Application</b>&gt;*                                       |                                                                                            |
-    | **Question secrète du client**         | *&lt;Laissez vide&gt;*                                                                         |                                                                                            |
-    | **Portée**                 | `https://<tenant domain name>/api/user_impersonation openid offline_access`                   | Remplacez  *&lt;nom_domaine_client&gt;*  avec le nom de domaine du locataire sans crochets pointus. |
-    | **Authentification du client** | Envoyer des informations d’identification du client dans le corps                                                               |                                                                                            |
-    
+
+
+   |                Paramètre                 |                                             Value                                             |                                                                                                                                    Notes                                                                                                                                     |
+   |----------------------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+   |      <strong>Nom du jeton</strong>       |                                  <em>&lt;nom du jeton&gt;</em>                                  |                                                                                                                   Entrez un nom descriptif pour le jeton.                                                                                                                    |
+   |      <strong>Type d’accès</strong>       |                                           Implicite                                            |                                                                                                                                                                                                                                                                              |
+   |     <strong>URL de rappel</strong>      |                               `https://getpostman.com/postman`                                |                                                                                                                                                                                                                                                                              |
+   |       <strong>URL d’authentification</strong>        | `https://login.microsoftonline.com/<tenant domain name>/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |                                                                                                  Remplacez <em>&lt;nom_domaine_client&gt;</em> avec le nom de domaine du locataire.                                                                                                  |
+   |       <strong>ID de client</strong>       |                <em>&lt;Entrez l’application Postman <b>ID d’Application</b>&gt;</em>                 |                                                                                                                                                                                                                                                                              |
+   |     <strong>Question secrète du client</strong>     |                                 <em>&lt;Laissez vide&gt;</em>                                  |                                                                                                                                                                                                                                                                              |
+   |         <strong>Portée</strong>         |         `https://<tenant domain name>/<api>/user_impersonation openid offline_access`         | Remplacez <em>&lt;nom_domaine_client&gt;</em> avec le nom de domaine du locataire. Remplacez <em>&lt;api&gt;</em> avec le nom du projet Web API. Vous pouvez également utiliser les ID d’Application. Le modèle de l’URL est : <em>https://{tenant}.onmicrosoft.com/{app_name_or_id}/{scope nom}</em>. |
+   | <strong>Authentification du client</strong> |                                Envoyer des informations d’identification du client dans le corps                                |                                                                                                                                                                                                                                                                              |
+
+
 3. Sélectionnez le **demander un jeton** bouton.
 
 4. Postman ouvre une nouvelle fenêtre contenant la boîte de dialogue de connexion du locataire Azure AD B2C. Connectez-vous avec un compte existant (si un a été créé les stratégies de test) ou sélectionnez **s’inscrire maintenant** pour créer un nouveau compte. Le **votre mot de passe oublié ?** lien est utilisé pour réinitialiser un mot de passe oublié.
 
 5. Une fois connecté avec succès, la fenêtre se ferme et le **gérer les jetons d’accès** boîte de dialogue s’affiche. Faites défiler vers le bas et sélectionnez le **utilisez jeton** bouton.
-    
+
     ![Où trouver le bouton « Token usage »](./azure-ad-b2c-webapi/postman-access-token.png)
 
 ### <a name="test-the-web-api-with-authentication"></a>L’API web avec l’authentification de test
 
 Sélectionnez le **envoyer** bouton Envoyer la demande à nouveau. Cette fois, l’état de réponse est *200 OK* et la charge utile JSON est visible sur la réponse **corps** onglet.
-    
+
 ![État de réussite et de charge utile](./azure-ad-b2c-webapi/postman-success.png)
 
 ## <a name="next-steps"></a>Étapes suivantes

@@ -2,7 +2,7 @@
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 title: Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013 | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels pas à pas, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express..."
+description: Cette série de didacticiels pas à pas, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 572b263a5f968b473457771a1dd4075910218c01
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013
 ====================
@@ -177,9 +177,9 @@ Après avoir installé les composants requis, vous êtes prêt à commencer à c
 
 [Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (c#) 
 
-Le téléchargement est un *.zip* fichier. Pour afficher le projet terminé cette série de didacticiels crée, recherchez et sélectionnez le *c#*dossier dans le *.zip* fichier. Enregistrer le *c#* dossier dans le dossier que vous utilisez pour travailler avec les projets Visual Studio 2013. Par défaut, le dossier de projets Visual Studio 2013 est le suivant :
+Le téléchargement est un <em>.zip</em> fichier. Pour afficher le projet terminé cette série de didacticiels crée, recherchez et sélectionnez le <em>c#</em>dossier dans le <em>.zip</em> fichier. Enregistrer le <em>c#</em> dossier dans le dossier que vous utilisez pour travailler avec les projets Visual Studio 2013. Par défaut, le dossier de projets Visual Studio 2013 est le suivant :
 
-**C:\Users\*****&lt;nom d’utilisateur&gt;*** \Documents\Visual Studio 2013\Projects**
+<strong>C:\Users\</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
 
 Renommer le ***c#*** dossier ***WingtipToys***.
 
@@ -197,5 +197,5 @@ Commentaires sur cette série de didacticiels sont les bienvenus et lorsque la m
 
 Lorsqu’une erreur se produit pendant le développement, ou si le site Web ne fonctionne pas correctement, les messages d’erreur peuvent donner des indices complexes à la source du problème ou ne peuvent pas expliquer comment la corriger. Pour résoudre certains problèmes courants, vous pouvez également utiliser le [forums ASP.NET](https://forums.asp.net/) ou la section Q et r inclus avec le [prise en main de Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) () C#) exemple. Si vous obtenez un message d’erreur, ou quelque chose ne fonctionne pas lorsque vous parcourez les didacticiels, veillez à consulter les emplacements ci-dessus.
 
->[!div class="step-by-step"]
-[Next](create-the-project.md)
+> [!div class="step-by-step"]
+> [Next](create-the-project.md)

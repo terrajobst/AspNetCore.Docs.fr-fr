@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
-title: "Créer le projet | Documents Microsoft"
+title: Créer le projet | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: 094733dcbe31486385dda2f8b44ba77a17486c82
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b42e62b560e01d592c9f4cb61ea6199a15dc8bb6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-project"></a>Créer le projet
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -195,6 +195,6 @@ Dans ce didacticiel vous avez créé, révisé et exécuter l’application Web 
 [Projets d’Application Web et projets de Site Web](https://msdn.microsoft.com/library/dd547590.aspx)   
 [Vue d’ensemble des Pages de formulaires Web ASP.NET](https://msdn.microsoft.com/library/428509ah.aspx)
 
->[!div class="step-by-step"]
-[Précédent](introduction-and-overview.md)
-[Suivant](create_the_data_access_layer.md)
+> [!div class="step-by-step"]
+> [Précédent](introduction-and-overview.md)
+> [Suivant](create_the_data_access_layer.md)

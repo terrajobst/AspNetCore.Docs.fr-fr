@@ -1,7 +1,7 @@
 ---
-title: "Extensibilité de la gestion de clés"
+title: Extensibilité de la gestion de clés dans ASP.NET Core
 author: rick-anderson
-description: "Ce document décrit l’extensibilité de la gestion de clés de protection de données ASP.NET Core."
+description: En savoir plus sur l’extensibilité de la gestion de clés de Protection des données ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 11/22/2017
@@ -9,18 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: bcc4984efcee9a6ffd0f3b503a38089c78adf5e8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e3042b371cf7be8fa0218c1906042d2810b180e3
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-management-extensibility"></a>Extensibilité de la gestion de clés
+# <a name="key-management-extensibility-in-aspnet-core"></a>Extensibilité de la gestion de clés dans ASP.NET Core
 
 <a name="data-protection-extensibility-key-management"></a>
 
 >[!TIP]
-> Lecture la [gestion de clés](../implementation/key-management.md#data-protection-implementation-key-management) section avant de lire cette section, car il décrit certains des concepts fondamentaux de ces API.
+> Lecture la [gestion de clés](xref:security/data-protection/implementation/key-management#data-protection-implementation-key-management) section avant de lire cette section, car il décrit certains des concepts fondamentaux de ces API.
 
 >[!WARNING]
 > Les types qui implémentent des interfaces suivantes doivent être thread-safe pour les appelants plusieurs.
@@ -37,11 +37,11 @@ Le `IKey` interface est la représentation sous forme de base d’une clé dans 
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-En outre, `IKey` expose un `CreateEncryptor` méthode qui peut être utilisé pour créer un [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance liée à cette clé.
+En outre, `IKey` expose un `CreateEncryptor` méthode qui peut être utilisé pour créer un [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance liée à cette clé.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-En outre, `IKey` expose un `CreateEncryptorInstance` méthode qui peut être utilisé pour créer un [IAuthenticatedEncryptor](core-crypto.md#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance liée à cette clé.
+En outre, `IKey` expose un `CreateEncryptorInstance` méthode qui peut être utilisé pour créer un [IAuthenticatedEncryptor](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptor) instance liée à cette clé.
 
 ---
 
@@ -123,7 +123,7 @@ Dans l’implémentation de `CreateNewKey`, le `IAuthenticatedEncryptorConfigura
 
 Dans l’implémentation de `GetAllKeys`, représentant les clés des documents XML et révocations sont lus à partir de l’objet sous-jacent `IXmlRepository`. Si ces documents sont chiffrées, le système sera automatiquement les déchiffrer. `XmlKeyManager` crée le `IAuthenticatedEncryptorDescriptorDeserializer` instances pour désérialiser les documents de nouveau `IAuthenticatedEncryptorDescriptor` instances, qui sont ensuite encapsulées dans individuels `IKey` instances. Cette collection de `IKey` instances est retourné à l’appelant.
 
-Vous trouverez plus d’informations sur les éléments XML particuliers dans le [document au format de stockage de clés](../implementation/key-storage-format.md#data-protection-implementation-key-storage-format).
+Vous trouverez plus d’informations sur les éléments XML particuliers dans le [document au format de stockage de clés](xref:security/data-protection/implementation/key-storage-format#data-protection-implementation-key-storage-format).
 
 ## <a name="ixmlrepository"></a>IXmlRepository
 
@@ -135,7 +135,7 @@ Le `IXmlRepository` interface représente un type qui peut faire persister XML �
 
 Les implémentations de `IXmlRepository` n’avez pas besoin analyser le XML en passant par leur intermédiaire. Qu’ils doivent traiter les documents XML comme opaque et laisser les couches supérieures vous inquiétez pas sur la génération et l’analyse de documents.
 
-Il existe deux types intégrés concrètes qui implémentent `IXmlRepository`: `FileSystemXmlRepository` et `RegistryXmlRepository`. Consultez le [document de fournisseurs de stockage de clés](../implementation/key-storage-providers.md#data-protection-implementation-key-storage-providers) pour plus d’informations. Enregistrement personnalisé `IXmlRepository` serait de manière appropriée à utiliser un magasin de stockage, par exemple, stockage d’objets Blob Azure.
+Il existe deux types intégrés concrètes qui implémentent `IXmlRepository`: `FileSystemXmlRepository` et `RegistryXmlRepository`. Consultez le [document de fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers) pour plus d’informations. Enregistrement personnalisé `IXmlRepository` serait de manière appropriée à utiliser un magasin de stockage, par exemple, stockage d’objets Blob Azure.
 
 Pour modifier le référentiel par défaut à l’échelle de l’application, enregistrer personnalisé `IXmlRepository` instance :
 
@@ -169,7 +169,7 @@ Il existe quatre types intégrés concrètes qui implémentent `IXmlEncryptor`:
 * `DpapiXmlEncryptor`
 * `NullXmlEncryptor`
 
-Consultez le [chiffrement à clé au niveau du document de rest](../implementation/key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) pour plus d’informations.
+Consultez le [chiffrement à clé au niveau du document de rest](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) pour plus d’informations.
 
 Pour modifier le mécanisme de clé chiffrement au repos à l’échelle de l’application par défaut, enregistrer personnalisé `IXmlEncryptor` instance :
 

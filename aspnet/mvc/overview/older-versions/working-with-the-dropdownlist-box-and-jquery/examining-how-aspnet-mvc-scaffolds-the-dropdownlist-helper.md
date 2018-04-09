@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
-title: "Examiner la façon dont ASP.NET MVC micro-capsules du programme d’assistance DropDownList | Documents Microsoft"
+title: Examiner la façon dont ASP.NET MVC micro-capsules du programme d’assistance DropDownList | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: abd9b5c09e942b966eb3eaaebe1b315c30b8e0c0
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: 09d2d7a0df5e8ffa14160b7d3c16b1e9da905fa1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>Examiner la façon dont ASP.NET MVC micro-capsules du programme d’assistance DropDownList
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 Dans **l’Explorateur de solutions**, avec le bouton droit le *contrôleurs* dossier, puis sélectionnez **ajouter un contrôleur**. Nommez le contrôleur **StoreManagerController**. Définir les options de la **ajouter un contrôleur** boîte de dialogue comme illustré dans l’image ci-dessous.
 
@@ -206,6 +206,6 @@ Certains développeurs préfèrent l’approche ViewModel. D’autres prendre en
 
 Dans cette section, nous avons appris trois manières d’utiliser le **DropDownList** avec les données de catégorie. Dans la section suivante, nous allons montrer comment ajouter une nouvelle catégorie.
 
->[!div class="step-by-step"]
-[Précédent](using-the-dropdownlist-helper-with-aspnet-mvc.md)
-[Suivant](adding-a-new-category-to-the-dropdownlist-using-jquery-ui.md)
+> [!div class="step-by-step"]
+> [Précédent](using-the-dropdownlist-helper-with-aspnet-mvc.md)
+> [Suivant](adding-a-new-category-to-the-dropdownlist-using-jquery-ui.md)

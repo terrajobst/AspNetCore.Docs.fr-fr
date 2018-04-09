@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs
-title: "Une vue d’ensemble de la modification et suppression des données dans le contrôle DataList (c#) | Documents Microsoft"
+title: Une vue d’ensemble de la modification et suppression des données dans le contrôle DataList (c#) | Documents Microsoft
 author: rick-anderson
-description: "Lorsque le contrôle DataList ne dispose pas intégrés de modification et suppression de fonctionnalités, dans ce didacticiel nous verrons comment créer un contrôle DataList qui prend en charge la modification et suppression o..."
+description: Lorsque le contrôle DataList ne dispose pas intégrés de modification et suppression de fonctionnalités, dans ce didacticiel nous verrons comment créer un contrôle DataList qui prend en charge la modification et suppression o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8b3067c5a6bcf81a35f66d43886c9b116a0ef7d8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: be86707980b11453ef78fdbddead73ab9808b54d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-c"></a>Une vue d’ensemble de la modification et suppression des données dans le contrôle DataList (c#)
 ====================
@@ -249,7 +249,7 @@ En cliquant sur le produit modifié s mise à jour ou les boutons Annuler n’ex
 
 Pour que le contrôle DataList restituer tous ses éléments dans le mode lecture seule, nous devons :
 
-1. Valeur du contrôle DataList s [ `EditItemIndex` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) à l’index d’un inexistant `DataListItem` index. `-1`est un choix sûr, étant donné que la `DataListItem` index commencent à `0`.
+1. Valeur du contrôle DataList s [ `EditItemIndex` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) à l’index d’un inexistant `DataListItem` index. `-1` est un choix sûr, étant donné que la `DataListItem` index commencent à `0`.
 2. Lier de nouveau les données du contrôle DataList. Etant donné que `DataListItem` `ItemIndex` es correspondent à du contrôle DataList s `EditItemIndex`, DataList entière sera rendue dans un mode en lecture seule.
 
 Ces étapes peuvent être accomplies avec le code de gestionnaire d’événements suivantes :
@@ -263,7 +263,7 @@ Le dernier gestionnaire d’événements nécessaires est le `UpdateCommand` Ges
 
 1. Accès par programme le nom de l’utilisateur a entré un produit et prix, ainsi que le produit modifié s `ProductID`.
 2. Lancer le processus de mise à jour en appelant approprié `UpdateProduct` surcharge dans les `ProductsBLL` classe.
-3. Valeur du contrôle DataList s [ `EditItemIndex` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) à l’index d’un inexistant `DataListItem` index. `-1`est un choix sûr, étant donné que la `DataListItem` index commencent à `0`.
+3. Valeur du contrôle DataList s [ `EditItemIndex` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.datalist.edititemindex.aspx) à l’index d’un inexistant `DataListItem` index. `-1` est un choix sûr, étant donné que la `DataListItem` index commencent à `0`.
 4. Lier de nouveau les données du contrôle DataList. Etant donné que `DataListItem` `ItemIndex` es correspondent à du contrôle DataList s `EditItemIndex`, DataList entière sera rendue dans un mode en lecture seule.
 
 Les étapes 1 et 2 sont chargés pour enregistrer les modifications de s ; de l’utilisateur les étapes 3 et 4 retournent du contrôle DataList à son état avant modification une fois que les modifications ont été enregistrées et sont identiques aux étapes effectuées dans le `CancelCommand` Gestionnaire d’événements.
@@ -339,11 +339,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont Zack Jones, Ken Pespisa et Randy Schmidt. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Next](performing-batch-updates-cs.md)
+> [!div class="step-by-step"]
+> [Next](performing-batch-updates-cs.md)

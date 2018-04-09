@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
-title: "Créer un site Web ASP.NET application formulaires avec authentification à deux facteurs SMS (c#) | Documents Microsoft"
+title: Créer un site Web ASP.NET application formulaires avec authentification à deux facteurs SMS (c#) | Documents Microsoft
 author: Erikre
-description: "Ce didacticiel vous montre comment créer une application Web Forms ASP.NET avec l’authentification à deux facteurs. Ce didacticiel a été conçu pour compléter le didacticiel intitulé Cr..."
+description: Ce didacticiel vous montre comment créer une application Web Forms ASP.NET avec l’authentification à deux facteurs. Ce didacticiel a été conçu pour compléter le didacticiel intitulé Cr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/09/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/security/create-an-aspnet-web-forms-app-with-sms-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: b1f0ec0fdefa12eb7f7b2714dbc224fef735f4bb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6c040fd3e0592b8cfd230dcd85ed3293f0a22ba7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-an-aspnet-web-forms-app-with-sms-two-factor-authentication-c"></a>Créer un site Web ASP.NET application formulaires avec authentification à deux facteurs SMS (c#)
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger l’application de formulaires Web ASP.NET avec la messagerie et d’authentification à deux facteurs SMS](https://code.msdn.microsoft.com/ASPNET-Web-Forms-App-with-5a0ff94e)
 
@@ -63,12 +63,12 @@ Ce didacticiel utilise Twilio, mais vous pouvez utiliser n’importe quel fourni
 2. À partir de la **tableau de bord** onglet de votre compte Twilio, copie le **SID de compte** et **jeton d’authentification.** Vous allez ajouter les à votre application plus tard.
 3. À partir de la **numéros** , onglet de la copie de votre Twilio **numéro de téléphone** également.
 4. Rendre le Twilio **SID de compte**, **Auth jeton** et **numéro de téléphone** disponibles pour l’application. Pour simplifier les choses, vous souhaitez stocker ces valeurs dans le *web.config* fichier. Lorsque vous déployez dans Azure, vous pouvez stocker les valeurs de manière sécurisée dans le **appSettings** section sur le site web de l’onglet Configurer. En outre, lorsque vous ajoutez le numéro de téléphone, utiliser uniquement des chiffres.   
- Notez que vous pouvez également ajouter des informations d’identification SendGrid. SendGrid est un service de notification par courrier électronique. Pour plus d’informations sur l’activation de SendGrid, consultez la section de « Raccordement de SendGrid » du didacticiel intitulée [créer une application sécurisée de formulaires ASP.NET Web avec l’enregistrement de l’utilisateur, par courrier électronique de confirmation et le mot de passe de la réinitialisation.](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md)
+   Notez que vous pouvez également ajouter des informations d’identification SendGrid. SendGrid est un service de notification par courrier électronique. Pour plus d’informations sur l’activation de SendGrid, consultez la section de « Raccordement de SendGrid » du didacticiel intitulée [créer une application sécurisée de formulaires ASP.NET Web avec l’enregistrement de l’utilisateur, par courrier électronique de confirmation et le mot de passe de la réinitialisation.](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset.md)
 
     [!code-xml[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample1.xml?highlight=2,6-10)]
 
     > [!WARNING]
-    > Sécurité - magasin jamais des données sensibles dans votre code source. Dans cet exemple, le compte et les informations d’identification sont stockées dans le **appSettings** section de la *Web.config* fichier. Sur Azure, vous pouvez stocker en toute sécurité des ces valeurs sur le  **[configurer](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)**  onglet dans le portail Azure. Pour plus d’informations, consultez la rubrique de Rick Anderson [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
+    > Sécurité - magasin jamais des données sensibles dans votre code source. Dans cet exemple, le compte et les informations d’identification sont stockées dans le **appSettings** section de la *Web.config* fichier. Sur Azure, vous pouvez stocker en toute sécurité des ces valeurs sur le **[configurer](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** onglet dans le portail Azure. Pour plus d’informations, consultez la rubrique de Rick Anderson [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
 5. Configurer le `SmsService` classe dans le *application\_Start\IdentityConfig.cs* en jaune des modifications de fichier en effectuant ce qui suit : 
 
     [!code-csharp[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample2.cs?highlight=5-17)]
@@ -85,7 +85,7 @@ Ce didacticiel utilise Twilio, mais vous pouvez utiliser n’importe quel fourni
 
     [!code-csharp[Main](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/samples/sample6.cs?highlight=3-4,13)]
 
- En rendant le code ci-dessus à modifier, DropDownList « Fournisseurs » contenant les options d’authentification ne rétablit pas à la première valeur. Ainsi, l’utilisateur de sélectionner correctement de toutes les options à utiliser lors de l’authentification, pas seulement la première.
+   En rendant le code ci-dessus à modifier, DropDownList « Fournisseurs » contenant les options d’authentification ne rétablit pas à la première valeur. Ainsi, l’utilisateur de sélectionner correctement de toutes les options à utiliser lors de l’authentification, pas seulement la première.
 10. Dans **l’Explorateur de solutions**, avec le bouton droit *Default.aspx* et sélectionnez **définir comme Page de démarrage**.
 11. En testant votre application, tout d’abord créer l’application (**Ctrl**+**MAJ**+**B**), puis exécutez l’application (**F5**) et Sélectionnez **inscrire** pour créer un nouveau compte d’utilisateur ou sélectionnez **connecter** si le compte d’utilisateur a déjà été inscrit.
 12. Une fois que vous (en tant que l’utilisateur) avez connecté, cliquez sur l’ID d’utilisateur (adresse électronique) dans la barre de navigation pour afficher les **gérer le compte** page (Manage.aspx).  
@@ -94,7 +94,7 @@ Ce didacticiel utilise Twilio, mais vous pouvez utiliser n’importe quel fourni
     ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image3.png)
 14. Ajouter le numéro de téléphone où vous (en tant que l’utilisateur) souhaitez recevoir des messages SMS (SMS) et cliquez sur le **Submit** bouton.   
     ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image4.png)  
- À ce stade, l’application utilisera les informations d’identification à partir de la *Web.config* contacter Twilio. Vous recevrez un message SMS (SMS) au numéro de téléphone associé au compte d’utilisateur. Vous pouvez vérifier que le message de Twilio a été envoyé en consultant le tableau de bord Twilio.
+    À ce stade, l’application utilisera les informations d’identification à partir de la *Web.config* contacter Twilio. Vous recevrez un message SMS (SMS) au numéro de téléphone associé au compte d’utilisateur. Vous pouvez vérifier que le message de Twilio a été envoyé en consultant le tableau de bord Twilio.
 15. En quelques secondes, le téléphone associé au compte d’utilisateur obtenez un message texte contenant le code de vérification. Entrez le code de vérification, appuyez sur **Submit**.  
      ![](create-an-aspnet-web-forms-app-with-sms-two-factor-authentication/_static/image5.png)
 

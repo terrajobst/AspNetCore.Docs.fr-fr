@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
-title: "Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 5 | Documents Microsoft"
+title: Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 5 | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: 5efc5ff367d5da5df060eba0028399af898a69fa
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 7f351718123e881e832f4ac95af506ed601d3337
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-5"></a>Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 les Web Forms ASP.NET - partie 5
 ====================
@@ -123,10 +123,10 @@ Exécutez la page.
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-5/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-5/_static/image9.png)
 
-Sélectionnez un formateur. Le **affecter un cours** liste déroulante affiche les cours le formateur n’animer, et le **supprimer un cours** liste déroulante affiche les cours le formateur est déjà assigné à. Dans le **affecter un cours** section, sélectionnez un cours, puis sur **affecter**. Le cours se déplace vers le **supprimer un cours** liste déroulante. Sélectionnez un cours dans le **supprimer un cours** et cliquez sur **supprimer ***.* Le cours se déplace vers le **affecter un cours** liste déroulante.
+Sélectionnez un formateur. Le <strong>affecter un cours</strong> liste déroulante affiche les cours le formateur n’animer, et le <strong>supprimer un cours</strong> liste déroulante affiche les cours le formateur est déjà assigné à. Dans le <strong>affecter un cours</strong> section, sélectionnez un cours, puis sur <strong>affecter</strong>. Le cours se déplace vers le <strong>supprimer un cours</strong> liste déroulante. Sélectionnez un cours dans le <strong>supprimer un cours</strong> et cliquez sur <strong>supprimer</strong><em>.</em> Le cours se déplace vers le <strong>affecter un cours</strong> liste déroulante.
 
 Vous savez maintenant certains autres façons de travailler avec les données associées. Dans ce didacticiel, vous allez apprendre comment utiliser l’héritage dans le modèle de données pour améliorer la facilité de maintenance de votre application.
 
->[!div class="step-by-step"]
-[Précédent](the-entity-framework-and-aspnet-getting-started-part-4.md)
-[Suivant](the-entity-framework-and-aspnet-getting-started-part-6.md)
+> [!div class="step-by-step"]
+> [Précédent](the-entity-framework-and-aspnet-getting-started-part-4.md)
+> [Suivant](the-entity-framework-and-aspnet-getting-started-part-6.md)

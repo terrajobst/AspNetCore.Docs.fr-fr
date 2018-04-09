@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
-title: "Le déploiement de l’entreprise Web | Documents Microsoft"
+title: Le déploiement de l’entreprise Web | Documents Microsoft
 author: jrjlee
-description: "Ce didacticiel explique comment répondre à un grand nombre des défis que vous pouvez rencontrer lorsque vous gérez le déploiement d’applications web de l’échelle de l’entreprise pour le développement..."
+description: Ce didacticiel explique comment répondre à un grand nombre des défis que vous pouvez rencontrer lorsque vous gérez le déploiement d’applications web de l’échelle de l’entreprise pour le développement...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise
 msc.type: authoredcontent
-ms.openlocfilehash: 6210d01f65bcadf8ae4209e372d5aac68861bd7a
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: fc463cb689f4f63a12788b80958c9fc8fe20119d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-deployment-in-the-enterprise"></a>Déploiement Web de l’entreprise
 ====================
@@ -66,7 +66,7 @@ Ce didacticiel, ainsi que les autres didacticiels de cette série, utilise cette
 
 Ce didacticiel inclut des rubriques qui entrent dans quatre domaines principaux.
 
-Ces rubriques présentent la solution de référence & #x 2014 ; la solution Contact Manager & #x 2014 ; et décrivent comment télécharger et configurez-le sur votre ordinateur local :
+Ces rubriques présentent la solution de référence&#x2014;la solution de gestionnaire de contacts&#x2014;et décrivent comment télécharger et configurez-le sur votre ordinateur local :
 
 - [La solution Gestionnaire de contacts](the-contact-manager-solution.md)
 - [Configuration de la solution Gestionnaire de contacts](setting-up-the-contact-manager-solution.md)
@@ -104,5 +104,5 @@ Cela fait partie d’une série de cinq didacticiels sur le déploiement web de 
 - [Configuration de Team Foundation Server pour le déploiement Web](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md). Ce didacticiel explique comment configurer TFS pour prendre en charge différents scénarios de déploiement, notamment le déploiement automatisé en tant que partie d’un processus de l’élément de configuration et de déclencher manuellement les déploiements des builds spécifiques.
 - [Avancé de déploiement Web d’entreprise](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md). Ce didacticiel explique comment effectuer différentes tâches de déploiement plus avancées, telles que la personnalisation des déploiements de base de données pour plusieurs environnements, à l’exclusion des fichiers et dossiers de déploiement et en prenant des applications web en mode hors connexion pendant le processus de déploiement .
 
->[!div class="step-by-step"]
-[Next](the-contact-manager-solution.md)
+> [!div class="step-by-step"]
+> [Next](the-contact-manager-solution.md)

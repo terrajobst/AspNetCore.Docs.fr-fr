@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part7
-title: "Ajout d’une Validation pour le modèle | Documents Microsoft"
+title: Ajout d’une Validation pour le modèle | Documents Microsoft
 author: shanselman
-description: "Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données."
+description: Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part7
 msc.type: authoredcontent
-ms.openlocfilehash: 5616c3c3bc77be0a770540d04cc2ae48ba9eedff
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 78dd6bdd81fcb51a3a21a8f1ee12b4b2bfc37db5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model"></a>Ajout d’une Validation pour le modèle
 ====================
@@ -72,6 +72,6 @@ Exécuter votre application et consultez à nouveau /Movies/Create et cliquez su
 
 Cette recherche bon ! Vous allez maintenant ajouter une colonne supplémentaire à la base de données.
 
->[!div class="step-by-step"]
-[Précédent](getting-started-with-mvc-part6.md)
-[Suivant](getting-started-with-mvc-part8.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started-with-mvc-part6.md)
+> [Suivant](getting-started-with-mvc-part8.md)

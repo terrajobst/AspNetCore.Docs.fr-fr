@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 title: Optimisation des performances avec Entity Framework 4.0 dans une Application ASP.NET 4 | Documents Microsoft
 author: tdykstra
-description: "Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par la prise en main de la série de didacticiels Entity Framework 4.0. I..."
+description: Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par la prise en main de la série de didacticiels Entity Framework 4.0. I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 40a53a110115e5f6342d2a97d21b64470450fd3c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b85645eebf2822b33df944692736ea9d9b69b9aa
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="maximizing-performance-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>Optimisation des performances avec Entity Framework 4.0 dans une Application ASP.NET 4
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par le [mise en route avec l’Entity Framework 4.0](https://asp.net/entity-framework/tutorials#Getting%20Started) série de didacticiels. Si vous n’avez pas terminé les didacticiels antérieures, comme point de départ pour ce didacticiel vous pouvez [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) que vous devriez avoir créé. Vous pouvez également [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) qui est créé par la série de didacticiels terminée. Si vous avez des questions sur les didacticiels, vous pouvez les valider pour le [forum de ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
 
@@ -54,11 +54,11 @@ Pour démarrer le didacticiel, démarrez Visual Studio et ouvrez l’application
 
 Il existe plusieurs façons qu’Entity Framework peut charger des données connexes dans les propriétés de navigation d’une entité :
 
-- *Chargement différé*. Lors de la lecture de l’entité est tout d’abord, les données associées n’est pas récupérées. Toutefois, la première fois que vous tentez d’accéder à une propriété de navigation, les données requises pour cette propriété de navigation sont automatiquement récupérées. Cela entraîne plusieurs requêtes envoyées à la base de données : une pour l’entité elle-même et chaque fois que les données pour l’entité associées doivent être récupérées. 
+- *Chargement différé*. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Toutefois, la première fois que vous essayez d’accéder à une propriété de navigation, les données requises pour cette propriété de navigation sont récupérées automatiquement. Cela entraîne plusieurs requêtes envoyées à la base de données : une pour l’entité elle-même et chaque fois que les données pour l’entité associées doivent être récupérées. 
 
     [![Image05](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image2.png)](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image1.png)
 
-*Chargement hâtif*. Lors de la lecture de l’entité, les données associées sont récupérées en même temps. Cela entraîne généralement une requête de jointure unique qui extrait toutes les données que nécessaire. Vous spécifiez un chargement hâtif à l’aide de la `Include` méthode, comme vous l’avez déjà vu dans ces didacticiels.
+*Chargement hâtif*. Quand l’entité est lue, ses données associées sont également récupérées. Cela génère en général une requête de jointure unique qui récupère toutes les données nécessaires. Vous spécifiez un chargement hâtif à l’aide de la `Include` méthode, comme vous l’avez déjà vu dans ces didacticiels.
 
 [![Image07](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image4.png)](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application/_static/image3.png)
 
@@ -76,7 +76,7 @@ En général, si vous savez que vous devez les données associées pour chaque e
 
 Dans une application web, le chargement tardif peut être relativement peu d’intérêt, car les actions de l’utilisateur qui affectent la nécessité pour les données associées ont lieu dans le navigateur, qui dispose d’aucune connexion au contexte d’objet que la page rendue. En revanche, lorsque vous databind un contrôle, vous savez généralement les données que vous avez besoin et par conséquent, il est généralement meilleures pour choisir un chargement hâtif ou le chargement différé en fonction de ce qui est approprié dans chaque scénario.
 
-En outre, un contrôle lié aux données peut utiliser un objet d’entité, une fois que le contexte de l’objet est supprimé. Dans ce cas, une tentative de chargement différé une propriété de navigation échouerait. Vous recevez le message d’erreur est clair :&quot;`The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.`&quot;
+En outre, un contrôle lié aux données peut utiliser un objet d’entité, une fois que le contexte de l’objet est supprimé. Dans ce cas, une tentative de chargement différé une propriété de navigation échouerait. Vous recevez le message d’erreur est clair : &quot;`The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.`&quot;
 
 Le `EntityDataSource` contrôle désactive le chargement différé par défaut. Pour le `ObjectDataSource` contrôle que vous utilisez pour le didacticiel actuel (ou si vous le contexte de l’objet à partir de code de la page), il existe plusieurs méthodes que vous pouvez apporter différée chargement désactivé par défaut. Vous pouvez le désactiver lorsque vous instanciez un contexte d’objet. Par exemple, vous pouvez ajouter la ligne suivante à la méthode de constructeur de la `SchoolRepository` classe :
 
@@ -266,6 +266,6 @@ Cette étape termine l’introduction d’améliorer les performances dans une a
 
 Le didacticiel suivant passe en revue les améliorations importantes à Entity Framework qui sont nouvelles dans la version 4.
 
->[!div class="step-by-step"]
-[Précédent](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
-[Suivant](what-s-new-in-the-entity-framework-4.md)
+> [!div class="step-by-step"]
+> [Précédent](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [Suivant](what-s-new-in-the-entity-framework-4.md)

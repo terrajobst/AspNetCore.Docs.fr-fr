@@ -1,7 +1,7 @@
 ---
-title: "Prise en main les API de Protection des données"
+title: Prise en main les API de Protection des données dans ASP.NET Core
 author: rick-anderson
-description: "Ce document explique comment utiliser l’API de protection des données ASP.NET Core pour protéger et déprotéger les données dans une application."
+description: Découvrez comment utiliser l’API de protection des données ASP.NET Core pour protéger et déprotéger les données dans une application.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/using-data-protection
-ms.openlocfilehash: ff72773fce28ba75aa8777eea321ed2bfb8f7e54
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 3a69abd2b58e02f87ccaf2317b0a8a2a7e9d7b4a
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="get-started-with-the-data-protection-apis"></a>Prise en main les API de Protection des données
+# <a name="get-started-with-the-data-protection-apis-in-aspnet-core"></a>Prise en main les API de Protection des données dans ASP.NET Core
 
 <a name="security-data-protection-getting-started"></a>
 
@@ -31,7 +31,7 @@ La plupart des infrastructures et des modèles d’application, telles que ASP.N
 
 [!code-csharp[](../../security/data-protection/using-data-protection/samples/protectunprotect.cs?highlight=26,34,35,36,37,38,39,40)]
 
-Lorsque vous créez un logiciel de protection, vous devez fournir un ou plusieurs [objectif chaînes](consumer-apis/purpose-strings.md). Une chaîne de l’objet fournit une isolation entre les consommateurs. Par exemple, un protecteur créé avec une chaîne de l’objectif de « vert » semblent ne pas pouvoir ôter la protection de données fournies par un protecteur dans un but de « violet ».
+Lorsque vous créez un logiciel de protection, vous devez fournir un ou plusieurs [objectif chaînes](xref:security/data-protection/consumer-apis/purpose-strings). Une chaîne de l’objet fournit une isolation entre les consommateurs. Par exemple, un protecteur créé avec une chaîne de l’objectif de « vert » semblent ne pas pouvoir ôter la protection de données fournies par un protecteur dans un but de « violet ».
 
 >[!TIP]
 > Instances de `IDataProtectionProvider` et `IDataProtector` sont thread-safe pour les appelants plusieurs. Il a prévu qui une fois qu’un composant obtient une référence à un `IDataProtector` via un appel à `CreateProtector`, il utilisera cette référence pour les appels multiples à `Protect` et `Unprotect`.

@@ -1,7 +1,7 @@
 ---
-title: "Migration de l’authentification et identité pour ASP.NET Core"
+title: Migration de l’authentification et identité vers ASP.NET Core
 author: ardalis
-description: "En savoir plus sur la migration de l’authentification et identité à partir d’un projet ASP.NET MVC à un projet ASP.NET MVC de base."
+description: En savoir plus sur la migration de l’authentification et identité à partir d’un projet ASP.NET MVC à un projet ASP.NET MVC de base.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/identity
-ms.openlocfilehash: bf452ad3969863f8f058b29a31f19af13cb2fc6b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 320f5e079316114832e639d62c780a0639df0c61
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-authentication-and-identity-to-aspnet-core"></a>Migration de l’authentification et identité pour ASP.NET Core
+# <a name="migrate-authentication-and-identity-to-aspnet-core"></a>Migration de l’authentification et identité vers ASP.NET Core
 
 <a name="migration-identity"></a>
 
@@ -27,7 +27,7 @@ Dans le précédent article nous [migré la configuration à partir d’un proje
 
 Dans ASP.NET MVC, les fonctionnalités d’authentification et identité sont configurées à l’aide d’ASP.NET Identity dans Startup.Auth.cs et IdentityConfig.cs, situé dans le dossier App_Start. Dans ASP.NET MVC de base, ces fonctionnalités sont configurées dans *Startup.cs*.
 
-Installer le `Microsoft.AspNetCore.Identity.EntityFrameworkCore` et `Microsoft.AspNetCore.Authentication.Cookies` les packages NuGet.
+Installez les packages NuGet `Microsoft.AspNetCore.Identity.EntityFrameworkCore` et `Microsoft.AspNetCore.Authentication.Cookies`.
 
 Ensuite, ouvrez Startup.cs et mettre à jour le `ConfigureServices()` méthode à utiliser les services d’Entity Framework et de l’identité :
 

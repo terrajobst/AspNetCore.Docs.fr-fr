@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/integration-testing
-ms.openlocfilehash: 8c28f1b4f66433eaebd9e474e784ecf3f1ac271b
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: 3c618b2bd5919f6536601631eb4d21359a6bc03a
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="integration-testing-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
+# <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
@@ -151,4 +151,4 @@ Après cette refactorisation, vous êtes certain que l’application web fonctio
 
 * [Tests unitaires](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 * [Intergiciel (middleware)](xref:fundamentals/middleware/index)
-* [Test des contrôleurs](xref:mvc/controllers/testing)
+* [Contrôleurs de test](xref:mvc/controllers/testing)

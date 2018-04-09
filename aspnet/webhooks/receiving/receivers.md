@@ -1,20 +1,20 @@
 ---
 uid: webhooks/receiving/receivers
-title: "Récepteurs d’ASP.NET WebHooks | Documents Microsoft"
+title: Récepteurs d’ASP.NET WebHooks | Documents Microsoft
 author: rick-anderson
-description: "Récepteurs d’ASP.NET WebHooks"
+description: Récepteurs d’ASP.NET WebHooks
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 6cdea089-15b2-4732-8c68-921ca561a8f1
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
-ms.openlocfilehash: 8c42db4056dd7a6ef77c7bcbc0eca3b5bf7c87e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a8e42521f201f88b0ed433550e8786411b4487b0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-webhooks-receivers"></a>Récepteurs d’ASP.NET WebHooks
 
@@ -36,7 +36,7 @@ https://<host>/api/webhooks/incoming/<receiver>/{id}
 
 Pour des raisons de sécurité, les différents destinataires WebHook nécessitent que l’URI est un *https* URI et dans certains cas, il doit également contenir un paramètre de requête supplémentaire qui est utilisé pour garantir que seul le destinataire prévu peut envoyer des WebHooks à l’URI ci-dessus .
 
-Le  *<receiver>*  composant est le nom du destinataire, par exemple *github* ou *slack*.
+Le <em> <receiver> </em> composant est le nom du destinataire, par exemple <em>github</em> ou <em>slack</em>.
 
 Le *{id}* est un identificateur facultatif qui peut servir à identifier une configuration de récepteur WebHook particulière. Cela peut servir à inscrire le WebHooks N avec un récepteur spécifique. Par exemple, les URI suivants de trois utilisable pour vous inscrire à trois WebHooks indépendants :
 

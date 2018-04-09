@@ -8,11 +8,11 @@ ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: c654cfd7c2d291849067bfd3297f940018ccb3d8
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: cc1ec50155398ba4143a2bf697ca26435c228c49
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="response-caching-in-aspnet-core"></a>Mise en cache de la réponse dans ASP.NET Core
 
@@ -64,13 +64,13 @@ Aucun contrôle n’est en cours développeur sur ce comportement de mise en cac
 
 La mise en cache utilise la mémoire serveur pour stocker les données mises en cache. Ce type de mise en cache est adapté à un ou plusieurs serveurs à l’aide de *sessions rémanentes*. Les sessions rémanentes signifient que les demandes des clients sont toujours acheminées vers le même serveur pour traitement.
 
-Pour plus d’informations, consultez [Introduction à la mise en cache dans ASP.NET Core](xref:performance/caching/memory).
+Pour plus d’informations, consultez [mettre en Cache en mémoire](xref:performance/caching/memory).
 
 ### <a name="distributed-cache"></a>Cache distribué
 
 Utilisez un cache distribué pour stocker des données en mémoire lorsque l’application est hébergée dans une batterie de serveurs ou sur le cloud. Le cache est partagé entre les serveurs qui traitent les demandes. Un client peut soumettre une demande traitée par n’importe quel serveur dans le groupe si les données mises en cache pour le client sont disponibles. ASP.NET Core offre des caches distribués Redis et SQL Server.
 
-Pour plus d’informations, consultez [Travailler avec un cache distribué](xref:performance/caching/distributed).
+Pour plus d’informations, consultez [fonctionne avec un cache distribué](xref:performance/caching/distributed).
 
 ### <a name="cache-tag-helper"></a>Tag helper de cache
 
@@ -128,7 +128,7 @@ Vous pouvez afficher les en-têtes de réponse avec les outils réseau de votre 
 
 Si `NoStore` est `false` et `Location` est `None`, `Cache-Control` et `Pragma` ont la valeur `no-cache`.
 
-Vous définissez généralement `NoStore` à `true` sur les pages d’erreur. Exemple :
+Vous définissez généralement `NoStore` à `true` sur les pages d’erreur. Par exemple :
 
 [!code-csharp[](response/sample/Controllers/HomeController.cs?name=snippet1&highlight=1)]
 
@@ -180,10 +180,10 @@ Cache-Control: public,max-age=60
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Mise en cache dans HTTP à partir de la spécification](https://tools.ietf.org/html/rfc7234#section-3)
+* [Stockage en mémoire cache des réponses](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [Mise en cache en mémoire](xref:performance/caching/memory)
-* [Utilisation d’un cache distribué](xref:performance/caching/distributed)
+* [Cache en mémoire](xref:performance/caching/memory)
+* [Utiliser un cache distribué](xref:performance/caching/distributed)
 * [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
 * [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
 * [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

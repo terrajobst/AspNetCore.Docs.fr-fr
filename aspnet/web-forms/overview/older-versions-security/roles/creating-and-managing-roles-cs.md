@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/roles/creating-and-managing-roles-cs
-title: "Création et la gestion des rôles (c#) | Documents Microsoft"
+title: Création et la gestion des rôles (c#) | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel examine les étapes nécessaires à la configuration de l’infrastructure de rôles. Après cela, nous allons créer des pages web pour créer et supprimer des rôles."
+description: Ce didacticiel examine les étapes nécessaires à la configuration de l’infrastructure de rôles. Après cela, nous allons créer des pages web pour créer et supprimer des rôles.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/24/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/creating-and-managing-roles-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b2b13a2a3b242877060aaec2257b2a742ac8d674
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a4ea7e76e023cd436d1d8ac52307a3ac17267fef
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-and-managing-roles-c"></a>Création et la gestion des rôles (c#)
 ====================
@@ -96,8 +96,8 @@ Du fournisseur `connectionStringName` attribut spécifie le magasin de rôles qu
 
 Par conséquent, si nous avons simplement permettre à l’infrastructure de rôles sans spécification de toutes les informations de fournisseur de notre application `Web.config` fichier, l’application utilise le fournisseur de rôles par défaut enregistré, `AspNetSqlRoleProvider`. Si le `~/App_Data/aspnet.mdf` base de données n’existe pas, le runtime ASP.NET crée automatiquement et ajoutez le schéma de services d’application. Toutefois, nous ne souhaitez pas utiliser le `aspnet.mdf` base de données ; au lieu de cela, nous souhaitons utiliser le `SecurityTutorials.mdf` que nous avons déjà créé et ajouté le schéma de services d’application de base de données. Cette modification peut être accomplie de deux manières :
 
-- **Spécifiez une valeur pour le ***`LocalSqlServer`*** nom de chaîne de connexion dans ***`Web.config`***.** En remplaçant le `LocalSqlServer` valeur du nom de chaîne de connexion `Web.config`, nous pouvons utiliser le fournisseur de rôles par défaut enregistré (`AspNetSqlRoleProvider`) et qu’il fonctionne correctement avec le `SecurityTutorials.mdf` base de données. Pour plus d’informations sur cette technique, consultez [Scott Guthrie](https://weblogs.asp.net/scottgu/)du billet de blog, [configurer les Services d’Application ASP.NET 2.0 pour utiliser SQL Server 2000 ou SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx).
-- **Ajouter un nouveau fournisseur inscrit de type ***`SqlRoleProvider`*** et configurer ses ***`connectionStringName`*** paramètre pour pointer vers le ***`SecurityTutorials.mdf`*** base de données.** C’est l’approche recommandée et de l’utilisées dans le <a id="_msoanchor_7"> </a> [ *création du schéma de l’appartenance dans SQL Server* ](../membership/creating-the-membership-schema-in-sql-server-cs.md) didacticiel et il est l’approche, vous allez utiliser dans ce didacticiel également.
+- <strong>Spécifiez une valeur pour le</strong><strong>`LocalSqlServer`</strong><strong>nom de chaîne de connexion dans</strong><strong>`Web.config`</strong><strong>.</strong> En remplaçant le `LocalSqlServer` valeur du nom de chaîne de connexion `Web.config`, nous pouvons utiliser le fournisseur de rôles par défaut enregistré (`AspNetSqlRoleProvider`) et qu’il fonctionne correctement avec le `SecurityTutorials.mdf` base de données. Pour plus d’informations sur cette technique, consultez [Scott Guthrie](https://weblogs.asp.net/scottgu/)du billet de blog, [configurer les Services d’Application ASP.NET 2.0 pour utiliser SQL Server 2000 ou SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx).
+- <strong>Ajouter un nouveau fournisseur inscrit de type</strong><strong>`SqlRoleProvider`</strong><strong>et configurer ses</strong><strong>`connectionStringName`</strong><strong>paramètre pour pointer vers le</strong> <strong>`SecurityTutorials.mdf`</strong> <strong>base de données.</strong> C’est l’approche recommandée et de l’utilisées dans le <a id="_msoanchor_7"> </a> [ *création du schéma de l’appartenance dans SQL Server* ](../membership/creating-the-membership-schema-in-sql-server-cs.md) didacticiel et il est l’approche, vous allez utiliser dans ce didacticiel également.
 
 Ajoutez le balisage de configuration de rôles suivant à la `Web.config` fichier. Ce balisage enregistre un nouveau fournisseur nommé `SecurityTutorialsSqlRoleProvider`.
 
@@ -215,8 +215,8 @@ Maintenant lorsque l’utilisateur ajoute un nouveau rôle le `RoleList` GridVie
 
 À ce stade un utilisateur peut créer un nouveau rôle et afficher tous les rôles existants à partir de la `ManageRoles.aspx` page. Nous allons permettre aux utilisateurs de supprimer des rôles. Le `Roles.DeleteRole` méthode possède deux surcharges :
 
-- [`DeleteRole(roleName)`](https://msdn.microsoft.com/library/ek4sywc0.aspx)-Supprime le rôle *roleName*. Une exception est levée si le rôle contient un ou plusieurs membres.
-- [`DeleteRole(roleName, throwOnPopulatedRole)`](https://msdn.microsoft.com/library/38h6wf59.aspx)-Supprime le rôle *roleName*. Si *throwOnPopulateRole* est `true`, une exception est levée si le rôle contient un ou plusieurs membres. Si *throwOnPopulateRole* est `false`, le rôle est supprimée si elle contient des membres ou non. En interne, le `DeleteRole(roleName)` les appels de méthode `DeleteRole(roleName, true)`.
+- [`DeleteRole(roleName)`](https://msdn.microsoft.com/library/ek4sywc0.aspx) -Supprime le rôle *roleName*. Une exception est levée si le rôle contient un ou plusieurs membres.
+- [`DeleteRole(roleName, throwOnPopulatedRole)`](https://msdn.microsoft.com/library/38h6wf59.aspx) -Supprime le rôle *roleName*. Si *throwOnPopulateRole* est `true`, une exception est levée si le rôle contient un ou plusieurs membres. Si *throwOnPopulateRole* est `false`, le rôle est supprimée si elle contient des membres ou non. En interne, le `DeleteRole(roleName)` les appels de méthode `DeleteRole(roleName, true)`.
 
 Le `DeleteRole` méthode lève également une exception si *roleName* est `null` ou une chaîne vide ou si *roleName* contient une virgule. Si *roleName* n’existe pas dans le système, `DeleteRole` échoue en mode silencieux, sans lever d’exception.
 
@@ -263,11 +263,11 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
-Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel incluent Alicja Maziarz, Suchi Banerjee et Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel incluent Alicja Maziarz, Suchi Banerjee et Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Next](assigning-roles-to-users-cs.md)
+> [!div class="step-by-step"]
+> [Next](assigning-roles-to-users-cs.md)

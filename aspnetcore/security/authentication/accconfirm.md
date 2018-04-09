@@ -1,7 +1,7 @@
 ---
-title: "Confirmation du compte et récupération de mot de passe dans ASP.NET Core"
+title: Confirmation du compte et récupération de mot de passe dans ASP.NET Core
 author: rick-anderson
-description: "Découvrez comment créer une application ASP.NET Core à la réinitialisation par courrier électronique de confirmation et le mot de passe."
+description: Découvrez comment créer une application ASP.NET Core à la réinitialisation par courrier électronique de confirmation et le mot de passe.
 manager: wpickett
 ms.author: riande
 ms.date: 2/11/2018
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: b236b4e5d3a4fa7212453f2aec209d145f5f5e32
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 8ad2a63ce007a68eac3b607db454c6b4fc834444
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation du compte et récupération de mot de passe dans ASP.NET Core
 
@@ -30,7 +30,7 @@ Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore
 
 ## <a name="prerequisites"></a>Prérequis
 
-[.NET core 2.1.4 SDK](https://www.microsoft.com/net/core) ou version ultérieure.
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
 ## <a name="create-a-new-aspnet-core-project-with-the-net-core-cli"></a>Créer un nouveau projet ASP.NET Core avec l’interface de ligne de base .NET
 
@@ -74,7 +74,7 @@ Exécuter l’application, sélectionnez le **inscrire** lier et inscrire un uti
 
 ## <a name="view-the-identity-database"></a>Afficher la base de données d’identité
 
-Consultez [utilisation de SQLite dans un projet ASP.NET MVC de base](xref:tutorials/first-mvc-app-xplat/working-with-sql) pour obtenir des instructions sur l’affichage de la base de données SQLite.
+Consultez [de travail dans un projet ASP.NET MVC de base avec SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql) pour obtenir des instructions sur l’affichage de la base de données SQLite.
 
 Pour Visual Studio :
 
@@ -116,7 +116,7 @@ Créez une classe pour extraire la clé de sécuriser la messagerie électroniqu
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
-Définir le `SendGridUser` et `SendGridKey` avec la [outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
+Définir le `SendGridUser` et `SendGridKey` avec la [outil Gestionnaire de secret](xref:security/app-secrets). Par exemple :
 
 ```console
 C:\WebAppl\src\WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT
@@ -138,16 +138,13 @@ Le contenu de la *secrets.json* fichier ne sont pas chiffrées. Le *secrets.json
 
 Ajouter `AuthMessageSenderOptions` au conteneur de service à la fin de la `ConfigureServices` méthode dans le *Startup.cs* fichier :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet2&highlight=28)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=26)]
 
----
-
+* * *
 ### <a name="configure-the-authmessagesender-class"></a>Configurer la classe AuthMessageSender
 
 Ce didacticiel montre comment ajouter des notifications par courrier électronique via [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer par courrier électronique à l’aide de SMTP et autres mécanismes.
@@ -160,31 +157,28 @@ Installer le `SendGrid` package NuGet :
 
 * À partir de la Console du Gestionnaire de Package, entrez la commande suivante :
 
- `Install-Package SendGrid`
+  `Install-Package SendGrid`
 
 Consultez [prise en main SendGrid gratuitement](https://sendgrid.com/free/) s’inscrire pour un compte SendGrid gratuit.
 
 #### <a name="configure-sendgrid"></a>Configurer SendGrid
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 Pour configurer SendGrid, ajoutez du code semblable au suivant dans *Services/EmailSender.cs*:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Services/EmailSender.cs)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 * Ajoutez le code dans *Services/MessageServices.cs* similaire à ce qui suit pour configurer SendGrid :
 
 [!code-csharp[](accconfirm/sample/WebApp1/Services/MessageServices.cs)]
 
----
-
+* * *
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Activer la récupération de confirmation et le mot de passe du compte
 
 Le modèle a le code pour la récupération de confirmation et le mot de passe du compte. Rechercher les `OnPostAsync` méthode dans *Pages/Account/Register.cshtml.cs*.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 Interdire nouvellement inscrit qui est automatiquement connecté en supprimant la ligne suivante :
 
 ```csharp
@@ -195,8 +189,7 @@ La méthode complète s’affiche avec la ligne modifiée mis en surbrillance :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Pages/Account/Register.cshtml.cs?highlight=16&name=snippet_Register)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Pour activer la confirmation du compte, supprimez le code suivant :
 
 [!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
@@ -215,15 +208,14 @@ Supprimez les commentaires de l’élément form *Views/Account/ForgotPassword.c
 
 [!code-cshtml[](accconfirm/sample/WebApp1/Views/Account/ForgotPassword.cshtml?highlight=7-10,12,28)]
 
----
-
+* * *
 ## <a name="register-confirm-email-and-reset-password"></a>Inscrire, par courrier électronique de confirmation et réinitialiser le mot de passe
 
 Exécuter l’application web et testez la confirmation du compte et le flux de récupération de mot de passe.
 
 * Exécutez l’application et inscrire un nouvel utilisateur
 
- ![Affichage du livre de comptes application Web](accconfirm/_static/loginaccconfirm1.png)
+  ![Affichage du livre de comptes application Web](accconfirm/_static/loginaccconfirm1.png)
 
 * Vérifiez votre adresse de messagerie pour le lien de confirmation du compte. Consultez [déboguer messagerie](#debug) si vous n’obtenez pas le message électronique.
 * Cliquez sur le lien pour confirmer votre adresse de messagerie.

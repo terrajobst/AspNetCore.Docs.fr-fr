@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
-title: "Scénario : Configuration d’un environnement de Test pour le déploiement Web | Documents Microsoft"
+title: 'Scénario : Configuration d’un environnement de Test pour le déploiement Web | Documents Microsoft'
 author: jrjlee
-description: "Cette rubrique décrit un scénario de déploiement web par défaut pour le développeur ou environnements de test et décrit les tâches que vous devez effectuer pour configurer un si..."
+description: Cette rubrique décrit un scénario de déploiement web par défaut pour le développeur ou environnements de test et décrit les tâches que vous devez effectuer pour configurer un si...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 23e317c6e0b6daf2d7937b73738e5cb6fa32cde2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2976be642815e715ac19bd9db34485cf5474cb32
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="scenario-configuring-a-test-environment-for-web-deployment"></a>Scénario : Configuration d’un environnement de Test pour le déploiement Web
 ====================
@@ -63,6 +63,6 @@ Ces rubriques fournissent toutes les informations dont vous avez besoin pour eff
 
 Pour obtenir des conseils sur la configuration d’un environnement intermédiaire classique, consultez [scénario : configuration d’un environnement intermédiaire pour le déploiement Web](scenario-configuring-a-staging-environment-for-web-deployment.md). Pour obtenir des conseils sur la configuration d’un environnement de production typique, consultez [scénario : configuration d’un environnement de Production pour le déploiement Web](scenario-configuring-a-production-environment-for-web-deployment.md).
 
->[!div class="step-by-step"]
-[Précédent](choosing-the-right-approach-to-web-deployment.md)
-[Suivant](scenario-configuring-a-staging-environment-for-web-deployment.md)
+> [!div class="step-by-step"]
+> [Précédent](choosing-the-right-approach-to-web-deployment.md)
+> [Suivant](scenario-configuring-a-staging-environment-for-web-deployment.md)

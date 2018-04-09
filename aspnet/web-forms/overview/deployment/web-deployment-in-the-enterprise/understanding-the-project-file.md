@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
-title: "Présentation du fichier de projet | Documents Microsoft"
+title: Présentation du fichier de projet | Documents Microsoft
 author: jrjlee
-description: "Fichiers de projet Microsoft Build Engine (MSBuild) se trouvent au cœur du processus de génération et de déploiement. Cette rubrique commence par une vue d’ensemble conceptuelle de MSBuild..."
+description: Fichiers de projet Microsoft Build Engine (MSBuild) se trouvent au cœur du processus de génération et de déploiement. Cette rubrique commence par une vue d’ensemble conceptuelle de MSBuild...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
 msc.type: authoredcontent
-ms.openlocfilehash: 09c3793e9cdddb7c42cf966f2d079245f441540c
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 49d1d4fbe48cd4f073e774d8a9c6c0c011bd3319
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-the-project-file"></a>Présentation du fichier de projet
 ====================
@@ -36,9 +36,9 @@ par [Jason Lee](https://github.com/jrjlee)
 
 ## <a name="msbuild-and-the-project-file"></a>MSBuild et le fichier projet
 
-Lorsque vous créez et créer des solutions dans Visual Studio, Visual Studio utilise MSBuild pour générer chaque projet dans votre solution. Chaque projet Visual Studio inclut un fichier de projet MSBuild, avec une extension de fichier qui reflète le type de projet & #x 2014 ; par exemple, un projet c# (.csproj), un projet Visual Basic.NET (.vbproj) ou un projet de base de données (.dbproj). Pour générer un projet, MSBuild doit traiter le fichier de projet associé au projet. Le fichier projet est un document XML qui contient toutes les informations et les instructions que MSBuild a besoin pour générer votre projet, telles que le contenu à inclure, configuration requise, les informations de contrôle de version, serveur web ou les paramètres de serveur de base de données et le tâches qui doivent être effectuées.
+Lorsque vous créez et créer des solutions dans Visual Studio, Visual Studio utilise MSBuild pour générer chaque projet dans votre solution. Chaque projet Visual Studio inclut un fichier de projet MSBuild, avec une extension de fichier qui reflète le type de projet&#x2014;, par exemple, un projet c# (.csproj), un projet Visual Basic.NET (.vbproj) ou un projet de base de données (.dbproj). Pour générer un projet, MSBuild doit traiter le fichier de projet associé au projet. Le fichier projet est un document XML qui contient toutes les informations et les instructions que MSBuild a besoin pour générer votre projet, telles que le contenu à inclure, configuration requise, les informations de contrôle de version, serveur web ou les paramètres de serveur de base de données et le tâches qui doivent être effectuées.
 
-Fichiers projet MSBuild sont basées sur les [schéma XML MSBuild](https://msdn.microsoft.com/library/5dy88c2e.aspx), et ainsi le processus de génération est entièrement ouvert et transparent. En outre, vous n’avez pas besoin d’installer Visual Studio pour pouvoir utiliser le moteur MSBuild & #x 2014 ; l’exécutable de MSBuild.exe fait partie du .NET Framework, et vous pouvez l’exécuter à partir d’une invite de commandes. En tant que développeur, vous pouvez créer vos propres fichiers projet MSBuild, en à l’aide du schéma XML MSBuild, pour garder le contrôle sophistiqué et affiné comment vos projets sont générés et déployés. Ces fichiers de projet personnalisés fonctionnent dans la même façon que les fichiers de projet Visual Studio génère automatiquement.
+Fichiers projet MSBuild sont basées sur les [schéma XML MSBuild](https://msdn.microsoft.com/library/5dy88c2e.aspx), et ainsi le processus de génération est entièrement ouvert et transparent. En outre, vous n’avez pas besoin d’installer Visual Studio pour pouvoir utiliser le moteur MSBuild&#x2014;l’exécutable de MSBuild.exe fait partie du .NET Framework, et vous pouvez l’exécuter à partir d’une invite de commandes. En tant que développeur, vous pouvez créer vos propres fichiers projet MSBuild, en à l’aide du schéma XML MSBuild, pour garder le contrôle sophistiqué et affiné comment vos projets sont générés et déployés. Ces fichiers de projet personnalisés fonctionnent dans la même façon que les fichiers de projet Visual Studio génère automatiquement.
 
 > [!NOTE]
 > Vous pouvez également utiliser des fichiers projet MSBuild avec le service de Build d’équipe dans Team Foundation Server (TFS). Par exemple, vous pouvez utiliser les fichiers de projet dans les scénarios d’intégration continue (CI) pour automatiser le déploiement dans un environnement de test lorsque le nouveau code est archivé. Pour plus d’informations, consultez [configuration Team Foundation Server pour le déploiement Web automatisé](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md).
@@ -93,7 +93,7 @@ Un fichier projet doit généralement fournir un grand nombre d’éléments d�
 [!code-xml[Main](understanding-the-project-file/samples/sample2.xml)]
 
 
-Pour récupérer une valeur de propriété, vous utilisez le format **$(***PropertyName***) ***.* Par exemple, pour récupérer la valeur de la **nom_serveur** propriété, tapez :
+Pour récupérer une valeur de propriété, vous utilisez le format <strong>$(</strong><em>PropertyName</em><strong>)</strong><em>.</em> Par exemple, pour récupérer la valeur de la <strong>nom_serveur</strong> propriété, tapez :
 
 
 [!code-powershell[Main](understanding-the-project-file/samples/sample3.ps1)]
@@ -113,7 +113,7 @@ Incorporation d’informations en tant que propriétés statiques dans un fichie
 > Pour plus d’informations sur les arguments et les commutateurs que vous pouvez utiliser avec MSBuild.exe, consultez [référence de ligne de commande MSBuild](https://msdn.microsoft.com/library/ms164311.aspx).
 
 
-Vous pouvez utiliser la même syntaxe de propriété pour obtenir les valeurs des variables d’environnement et des propriétés de projet prédéfinis. Un grand nombre de propriétés couramment utilisées est défini pour vous, et vous pouvez les utiliser dans vos fichiers projet en incluant le nom du paramètre approprié. Par exemple, pour récupérer la plateforme de projet actuelle & #x 2014 ; par exemple, **x86** ou **AnyCpu**& #x 2014 ; vous pouvez inclure le **$(Platform)** référence de propriété dans votre fichier projet. Pour plus d’informations, consultez [Macros pour les commandes de génération et les propriétés](https://msdn.microsoft.com/library/c02as0cs.aspx), [propriétés communes des projets MSBuild](https://msdn.microsoft.com/library/bb629394.aspx), et [propriétés réservées](https://msdn.microsoft.com/library/ms164309.aspx).
+Vous pouvez utiliser la même syntaxe de propriété pour obtenir les valeurs des variables d’environnement et des propriétés de projet prédéfinis. Un grand nombre de propriétés couramment utilisées est défini pour vous, et vous pouvez les utiliser dans vos fichiers projet en incluant le nom du paramètre approprié. Par exemple, pour récupérer la plateforme de projet actuelle&#x2014;, par exemple, **x86** ou **AnyCpu**&#x2014;vous pouvez inclure le **$(Platform)** référence de propriété dans votre fichier projet. Pour plus d’informations, consultez [Macros pour les commandes de génération et les propriétés](https://msdn.microsoft.com/library/c02as0cs.aspx), [propriétés communes des projets MSBuild](https://msdn.microsoft.com/library/bb629394.aspx), et [propriétés réservées](https://msdn.microsoft.com/library/ms164309.aspx).
 
 Propriétés sont souvent utilisées en conjonction avec *conditions*. La plupart des éléments MSBuild prend en charge la **Condition** attribut, qui vous permet de spécifier les critères sur lesquels MSBuild doit évaluer l’élément. Par exemple, considérez cette définition de propriété :
 
@@ -121,13 +121,13 @@ Propriétés sont souvent utilisées en conjonction avec *conditions*. La plupar
 [!code-xml[Main](understanding-the-project-file/samples/sample5.xml)]
 
 
-Lorsque MSBuild traite cette définition de propriété, il vérifie si une **$(OutputRoot)** valeur de propriété n’est disponible. Si la valeur de propriété est vide & #x 2014 ; en d’autres termes, l’utilisateur n’a pas fourni une valeur pour cette propriété, & #x 2014 ; la condition a la valeur **true** et la valeur de propriété est définie sur **... \Publish\Out**. Si l’utilisateur a fourni une valeur pour cette propriété, la condition prend la valeur **false** et la valeur de propriété statique n’est pas utilisée.
+Lorsque MSBuild traite cette définition de propriété, il vérifie si une **$(OutputRoot)** valeur de propriété n’est disponible. Si la valeur de propriété est vide&#x2014;en d’autres termes, l’utilisateur n’a pas fourni une valeur pour cette propriété&#x2014;la condition a la valeur **true** et la valeur de propriété est définie sur **... \Publish\Out**. Si l’utilisateur a fourni une valeur pour cette propriété, la condition prend la valeur **false** et la valeur de propriété statique n’est pas utilisée.
 
 Pour plus d’informations sur les différentes façons dans laquelle vous pouvez spécifier des conditions, consultez [Conditions MSBuild](https://msdn.microsoft.com/library/7szfhaft.aspx).
 
 ### <a name="items-and-item-groups"></a>Éléments et des groupes d’éléments
 
-Un rôle important du fichier projet consiste à définir les entrées dans le processus de génération. En règle générale, ces entrées sont des fichiers & #x 2014 ; fichiers de code, les fichiers de configuration, les fichiers de commandes et tous les autres fichiers dont vous avez besoin à traiter ou à copier en tant que partie du processus de génération. Dans le schéma de projet MSBuild, ces entrées sont représentées par [élément](https://msdn.microsoft.com/library/ms164283.aspx) éléments. Dans un fichier de projet, les éléments doivent être définies dans un [ItemGroup](https://msdn.microsoft.com/library/646dk05y.aspx) élément. Tout comme **propriété** éléments, vous pouvez nommer un **élément** élément comme vous le souhaitez. Toutefois, vous devez spécifier un **Include** attribut pour identifier le fichier ou le caractère générique représentant l’élément.
+Un rôle important du fichier projet consiste à définir les entrées dans le processus de génération. En règle générale, ces entrées sont des fichiers&#x2014;code des fichiers, les fichiers de configuration, les fichiers de commandes et tous les autres fichiers dont vous avez besoin à traiter ou à copier en tant que partie du processus de génération. Dans le schéma de projet MSBuild, ces entrées sont représentées par [élément](https://msdn.microsoft.com/library/ms164283.aspx) éléments. Dans un fichier de projet, les éléments doivent être définies dans un [ItemGroup](https://msdn.microsoft.com/library/646dk05y.aspx) élément. Tout comme **propriété** éléments, vous pouvez nommer un **élément** élément comme vous le souhaitez. Toutefois, vous devez spécifier un **Include** attribut pour identifier le fichier ou le caractère générique représentant l’élément.
 
 
 [!code-xml[Main](understanding-the-project-file/samples/sample6.xml)]
@@ -139,7 +139,7 @@ En spécifiant plusieurs **élément** éléments portant le même nom, que vous
 [!code-xml[Main](understanding-the-project-file/samples/sample7.xml)]
 
 
-De cette façon, le fichier projet est demandant MSBuild pour générer une liste des fichiers qui doivent être traités de la même façon & #x 2014 ; le **référence** liste inclut des assemblys qui doivent être en place pour une génération réussie, le **Compiler** liste inclut les fichiers de code qui doivent être compilés, et le **contenu** liste inclut des ressources qui doivent être copiés sans altération. Nous allons examiner comment le processus de génération référence et utilise ces éléments plus loin dans cette rubrique.
+De cette façon, le fichier projet est demandant MSBuild pour générer une liste des fichiers qui doivent être traités de la même façon&#x2014;le **référence** liste inclut des assemblys qui doivent être en place pour une génération réussie, le  **Compiler** liste inclut les fichiers de code qui doivent être compilés, et le **contenu** liste inclut des ressources qui doivent être copiés sans altération. Nous allons examiner comment le processus de génération référence et utilise ces éléments plus loin dans cette rubrique.
 
 Les éléments item peuvent également inclure [ItemMetadata](https://msdn.microsoft.com/library/ms164284.aspx) des éléments enfants. Ceux-ci sont des paires clé-valeur définies par l’utilisateur et essentiellement représentent des propriétés qui sont spécifiques à cet élément. Par exemple, un grand nombre de la **compiler** incluent des éléments dans le fichier projet **DependentUpon** des éléments enfants.
 
@@ -155,7 +155,7 @@ Vous pouvez créer **ItemGroup** éléments dans le niveau racine **projet** él
 
 ### <a name="targets-and-tasks"></a>Cibles et tâches
 
-Dans le schéma MSBuild, un [tâche](https://msdn.microsoft.com/library/77f2hx1s.aspx) élément représente une instruction de build individuel (ou tâche). MSBuild inclut une multitude de tâches prédéfinies. Exemple :
+Dans le schéma MSBuild, un [tâche](https://msdn.microsoft.com/library/77f2hx1s.aspx) élément représente une instruction de build individuel (ou tâche). MSBuild inclut une multitude de tâches prédéfinies. Par exemple :
 
 - Le **copie** tâche copie des fichiers vers un nouvel emplacement.
 - Le **Csc** tâche appelle le compilateur Visual c#.
@@ -195,11 +195,11 @@ Les cibles et les tâches peuvent inclure **Condition** attributs. Par conséque
 
 En règle générale, lorsque vous créez des tâches utiles et cibles, vous devez faire référence aux propriétés et les éléments que vous avez définis ailleurs dans le fichier projet :
 
-- Pour utiliser une valeur de propriété, tapez **$(***PropertyName***)**, où *PropertyName* est le nom de la **propriété** élément ou le nom de la paramètre.
-- Pour utiliser un élément, tapez **@(***ItemName***)**, où *ItemName* est le nom de la **élément** élément.
+- Pour utiliser une valeur de propriété, tapez <strong>$(</strong><em>PropertyName</em><strong>)</strong>, où <em>PropertyName</em> est le nom de la <strong>propriété</strong> élément ou le nom du paramètre.
+- Pour utiliser un élément, tapez <strong>@(</strong><em>ItemName</em><strong>)</strong>, où <em>ItemName</em> est le nom de la <strong>élément</strong> élément.
 
 > [!NOTE]
-> N’oubliez pas que si vous créez plusieurs éléments portant le même nom, vous créez une liste. En revanche, si vous créez plusieurs propriétés portant le même nom, la dernière valeur de propriété que vous fournissez remplace toutes les propriétés précédentes avec le même nom & #x 2014, une propriété peut contenir uniquement une valeur unique.
+> N’oubliez pas que si vous créez plusieurs éléments portant le même nom, vous créez une liste. En revanche, si vous créez plusieurs propriétés portant le même nom, la dernière valeur de propriété que vous fournissez remplace toutes les propriétés précédentes portant le même nom&#x2014;une propriété peut contenir uniquement une valeur unique.
 
 
 Par exemple, dans le *Publish.proj* de fichiers dans l’exemple de solution, examinons la **BuildProjects** cible.
@@ -227,7 +227,7 @@ Vous pouvez également voir que le **MSBuild** tâche appelle une cible nommée 
 
 ## <a name="splitting-project-files-to-support-multiple-environments"></a>Fractionner des fichiers de projet pour prendre en charge plusieurs environnements
 
-Supposons que vous souhaitez être en mesure de déployer une solution dans plusieurs environnements, tels que les serveurs de test, intermédiaire plateformes et les environnements de production. La configuration peut varier considérablement entre ces environnements les & #x 2014 ; pas seulement en termes de noms de serveur, les chaînes de connexion et ainsi de suite, mais aussi potentiellement en termes d’informations d’identification, les paramètres de sécurité et un grand nombre d’autres facteurs. Si vous avez besoin pour ce faire régulièrement, il n’est pas vraiment utile de modifier plusieurs propriétés dans votre fichier projet chaque fois que vous basculez de l’environnement cible. Et n’est pas une solution idéale pour exiger une liste d’un nombre infinie de valeurs de propriété doivent être fournies pour le processus de génération.
+Supposons que vous souhaitez être en mesure de déployer une solution dans plusieurs environnements, tels que les serveurs de test, intermédiaire plateformes et les environnements de production. La configuration peut varier considérablement entre ces environnements&#x2014;pas seulement en termes de noms de serveur, les chaînes de connexion et ainsi de suite, mais aussi potentiellement en termes d’informations d’identification, les paramètres de sécurité et un grand nombre d’autres facteurs. Si vous avez besoin pour ce faire régulièrement, il n’est pas vraiment utile de modifier plusieurs propriétés dans votre fichier projet chaque fois que vous basculez de l’environnement cible. Et n’est pas une solution idéale pour exiger une liste d’un nombre infinie de valeurs de propriété doivent être fournies pour le processus de génération.
 
 Il existe heureusement une alternative. MSBuild vous permet de fractionner votre configuration de build dans plusieurs fichiers de projet. Pour voir comment cela fonctionne, dans l’exemple de solution, notez qu’il existe deux fichiers de projet personnalisé :
 
@@ -266,6 +266,6 @@ La rubrique suivante, [comprendre le processus de génération](understanding-th
 
 Pour obtenir une présentation plus approfondie des fichiers projet et les fournisseurs de services, consultez [à l’intérieur de la Microsoft Build Engine : à l’aide de MSBuild et Team Foundation Build](http://amzn.com/0735645248) par Sayed Ibrahim Hashimi et William Bartholomew, numéro ISBN : 978-0-7356-4524-0.
 
->[!div class="step-by-step"]
-[Précédent](setting-up-the-contact-manager-solution.md)
-[Suivant](understanding-the-build-process.md)
+> [!div class="step-by-step"]
+> [Précédent](setting-up-the-contact-manager-solution.md)
+> [Suivant](understanding-the-build-process.md)

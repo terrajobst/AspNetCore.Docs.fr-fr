@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
-title: "Examiner les détails et les méthodes de suppression | Documents Microsoft"
+title: Examiner les détails et les méthodes de suppression | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: a4e2b075497e08334183519bf8942e4af6f7a727
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b6939207ee15aa93bfb3ccb9cad553b814896bd1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-details-and-delete-methods"></a>Examiner les détails et les méthodes de suppression
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 Dans cette partie du didacticiel, vous allez examiner générées automatiquement `Details` et `Delete` méthodes.
 
@@ -68,8 +68,8 @@ Après avoir généré et testé une application web, l’étape suivante consis
 
 Commentaires sont Bienvenue.
 
-— [Rick Anderson](https://blogs.msdn.com/rickAndy) twitter :[@RickAndMSFT](https://twitter.com/RickAndMSFT)  
-— [Scott Hanselman](http://www.hanselman.com/blog/) twitter :[@shanselman](https://twitter.com/shanselman)
+— [Rick Anderson](https://blogs.msdn.com/rickAndy) twitter : [@RickAndMSFT](https://twitter.com/RickAndMSFT)  
+— [Scott Hanselman](http://www.hanselman.com/blog/) twitter : [@shanselman](https://twitter.com/shanselman)
 
->[!div class="step-by-step"]
-[Précédent](adding-validation.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-validation.md)

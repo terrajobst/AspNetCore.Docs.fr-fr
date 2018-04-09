@@ -1,7 +1,7 @@
 ---
-title: "Fournisseurs de stockage de clés"
+title: Fournisseurs de stockage de clés dans ASP.NET Core
 author: rick-anderson
-description: "En savoir plus sur les fournisseurs de stockage de clés dans ASP.NET Core et comment configurer les emplacements de stockage de clés."
+description: En savoir plus sur les fournisseurs de stockage de clés dans ASP.NET Core et comment configurer les emplacements de stockage de clés.
 manager: wpickett
 ms.author: riande
 ms.date: 01/14/2017
@@ -9,20 +9,20 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 83e02a19e465b3ff81a0c0c62c2c8b090bfab052
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: e8b7804e93b812c2e710ab15510c2fbaa7c4866d
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="key-storage-providers"></a>Fournisseurs de stockage de clés
+# <a name="key-storage-providers-in-aspnet-core"></a>Fournisseurs de stockage de clés dans ASP.NET Core
 
 <a name="data-protection-implementation-key-storage-providers"></a>
 
 Par défaut, le système de protection des données [utilise une heuristique](xref:security/data-protection/configuration/default-settings) pour déterminer où le matériel de clé de chiffrement doit être persistante. Le développeur peut substituer l’heuristique et spécifier manuellement l’emplacement.
 
 > [!NOTE]
-> Si vous spécifiez un emplacement de persistance clé explicite, le système de protection des données sera annuler l’inscription au chiffrement à clé par défaut au mécanisme de rest l’heuristique fournie, afin de clés n’est plus seront chiffrées au repos. Il est recommandé que vous en outre [spécifient un mécanisme de chiffrement à clé explicite](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest-providers) pour les applications de production.
+> Si vous spécifiez un emplacement de persistance clé explicite, le système de protection des données sera annuler l’inscription au chiffrement à clé par défaut au mécanisme de rest l’heuristique fournie, afin de clés n’est plus seront chiffrées au repos. Il est recommandé que vous en outre [spécifient un mécanisme de chiffrement à clé explicite](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest-providers) pour les applications de production.
 
 Le système de protection des données est fourni avec plusieurs fournisseurs de stockage de clés de boîte aux lettres.
 
@@ -36,7 +36,7 @@ sc.AddDataProtection()
        .PersistKeysToFileSystem(new DirectoryInfo(@"c:\temp-keys\"));
    ```
 
-Le `DirectoryInfo` peut pointer vers un répertoire sur l’ordinateur local, ou il peut pointer vers un dossier sur un partage réseau. Si vous pointez vers un répertoire sur l’ordinateur local (et le scénario est que seules les applications sur l’ordinateur local devrez utiliser ce référentiel), envisagez d’utiliser [DPAPI Windows](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) pour chiffrer les clés au repos. Sinon, envisagez d’utiliser un [certificat X.509](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) pour chiffrer les clés au repos.
+Le `DirectoryInfo` peut pointer vers un répertoire sur l’ordinateur local, ou il peut pointer vers un dossier sur un partage réseau. Si vous pointez vers un répertoire sur l’ordinateur local (et le scénario est que seules les applications sur l’ordinateur local devrez utiliser ce référentiel), envisagez d’utiliser [DPAPI Windows](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) pour chiffrer les clés au repos. Sinon, envisagez d’utiliser un [certificat X.509](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) pour chiffrer les clés au repos.
 
 ## <a name="azure-and-redis"></a>Azure et Redis
 
@@ -84,7 +84,7 @@ Parfois, l’application peut-être pas accès en écriture au système de fichi
        .PersistKeysToRegistry(Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Sample\keys"));
    ```
 
-Si vous utilisez le Registre du système comme un mécanisme de persistance, envisagez d’utiliser [DPAPI Windows](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest) pour chiffrer les clés au repos.
+Si vous utilisez le Registre du système comme un mécanisme de persistance, envisagez d’utiliser [DPAPI Windows](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest) pour chiffrer les clés au repos.
 
 ## <a name="custom-key-repository"></a>Référentiel de clés personnalisé
 

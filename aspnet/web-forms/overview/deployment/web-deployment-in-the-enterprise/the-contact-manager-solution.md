@@ -2,7 +2,7 @@
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/the-contact-manager-solution
 title: La Solution de gestionnaire de contacts | Documents Microsoft
 author: jrjlee
-description: "Cette série de didacticiels utilise un exemple de solution & #x 2014 ; le Gestionnaire de contacts solution & #x 2014 ; pour représenter une application d’entreprise avec un niveau réaliste..."
+description: Cette série de didacticiels utilise un exemple de solution&#x2014;la solution de gestionnaire de contacts&#x2014;pour représenter une application d’entreprise avec un niveau réaliste...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/the-contact-manager-solution
 msc.type: authoredcontent
-ms.openlocfilehash: b7f691a1ee855788f6a57616aea35d960e4c85c7
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: d7034f800df98747d10401d7e2c7297fea0e46d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="the-contact-manager-solution"></a>La Solution de gestionnaire de contacts
 ====================
@@ -24,7 +24,7 @@ par [Jason Lee](https://github.com/jrjlee)
 
 [Télécharger le PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Cela [série de didacticiels](web-deployment-in-the-enterprise.md) utilise un exemple de solution & #x 2014 ; le Gestionnaire de contacts solution & #x 2014 ; pour représenter une application d’entreprise avec un niveau réaliste de complexité. Cette rubrique présente la solution de gestionnaire de contacts, décrit les composants clés de la solution et identifie les problèmes de déploiement de ce type d’application sur différentes plateformes de destination dans un environnement d’entreprise.
+> Cela [série de didacticiels](web-deployment-in-the-enterprise.md) utilise un exemple de solution&#x2014;la solution de gestionnaire de contacts&#x2014;pour représenter une application d’entreprise avec un niveau réaliste de complexité. Cette rubrique présente la solution de gestionnaire de contacts, décrit les composants clés de la solution et identifie les problèmes de déploiement de ce type d’application sur différentes plateformes de destination dans un environnement d’entreprise.
 > 
 > Lorsque vous utilisez les rubriques dans ces didacticiels, vous pouvez utiliser la solution de gestionnaire de contacts en tant qu’une implémentation de référence qui montre comment vous pouvez répondre à des défis spécifiques dans les scénarios de déploiement d’entreprise. La rubrique suivante, [paramètre de la Solution de gestionnaire de contacts](setting-up-the-contact-manager-solution.md), décrit comment télécharger et exécuter la solution sur votre station de travail du développeur.
 
@@ -67,6 +67,6 @@ Cette rubrique fourni une vue d’ensemble de la solution de gestionnaire de con
 
 La rubrique suivante, [paramètre de la Solution de gestionnaire de contacts](setting-up-the-contact-manager-solution.md), décrit comment télécharger et exécuter la solution sur votre station de travail du développeur.
 
->[!div class="step-by-step"]
-[Précédent](web-deployment-in-the-enterprise.md)
-[Suivant](setting-up-the-contact-manager-solution.md)
+> [!div class="step-by-step"]
+> [Précédent](web-deployment-in-the-enterprise.md)
+> [Suivant](setting-up-the-contact-manager-solution.md)

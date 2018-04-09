@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-cs
-title: "Création d’une contrainte d’itinéraire de personnalisés (c#) | Documents Microsoft"
+title: Création d’une contrainte d’itinéraire de personnalisés (c#) | Documents Microsoft
 author: StephenWalther
-description: "Stephen Walther montre comment vous pouvez créer une contrainte d’itinéraire personnalisées. Nous implémentons un simple contrainte personnalisé qui empêche un itinéraire mis en correspondance w..."
+description: Stephen Walther montre comment vous pouvez créer une contrainte d’itinéraire personnalisées. Nous implémentons un simple contrainte personnalisé qui empêche un itinéraire mis en correspondance w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-custom-route-constraint-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c31ba3382b9dbe22a6826b9f858944c223efdd9d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4c120a102b117433b6774f2ea7800f1c4a609f8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-custom-route-constraint-c"></a>Création d’une contrainte d’itinéraire de personnalisés (c#)
 ====================
@@ -53,6 +53,6 @@ La contrainte de Localhost est utilisée dans la définition de l’itinéraire 
 
 Notez que l’itinéraire par défaut a été commenté à partir du fichier Global.asax dans le Listing 2. Si vous incluez l’itinéraire par défaut, l’itinéraire par défaut correspondrait demandes pour le contrôleur de l’administrateur. Dans ce cas, les utilisateurs distants peuvent toujours invoquer des actions du contrôleur Admin même si leurs demandes ne correspond à l’itinéraire de l’administrateur.
 
->[!div class="step-by-step"]
-[Précédent](creating-a-route-constraint-cs.md)
-[Suivant](asp-net-mvc-controller-overview-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-route-constraint-cs.md)
+> [Suivant](asp-net-mvc-controller-overview-vb.md)
