@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs
-title: "Présentation des filtres d’Action (c#) | Documents Microsoft"
+title: Présentation des filtres d’Action (c#) | Documents Microsoft
 author: microsoft
-description: "L’objectif de ce didacticiel est d’expliquer les filtres d’action. Un filtre d’action est un attribut que vous pouvez appliquer à une action de contrôleur--ou à un contrôleur ensemble..."
+description: L’objectif de ce didacticiel est d’expliquer les filtres d’action. Un filtre d’action est un attribut que vous pouvez appliquer à une action de contrôleur--ou à un contrôleur ensemble...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 86d5d429d9900d4c04391804598626705e6c88b4
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: d68933297329370e227f524c4b96ed7e259ef833
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-action-filters-c"></a>Présentation des filtres d’Action (c#)
 ====================
@@ -45,7 +45,7 @@ Un filtre d’action est un attribut. Vous pouvez appliquer la plupart des filtr
 
 Par exemple, le contrôleur de données dans la liste 1 expose une action nommée `Index()` qui retourne l’heure actuelle. Cette action est décorée avec le `OutputCache` filtre d’action. Ce filtre provoque la valeur retournée par l’action doit être mis en cache pendant 10 secondes.
 
-**La liste 1 :`Controllers\DataController.cs`**
+**La liste 1 : `Controllers\DataController.cs`**
 
 [!code-csharp[Main](understanding-action-filters-cs/samples/sample1.cs)]
 
@@ -103,7 +103,7 @@ Dans la section suivante, nous verrons comment vous pouvez implémenter chacun d
 
 Afin d’illustrer comment vous pouvez créer un filtre d’action personnalisé, nous allons créer un filtre d’action personnalisé qui enregistre les étapes de traitement d’une action du contrôleur dans la fenêtre Sortie de Visual Studio. Notre `LogActionFilter` est contenue dans la liste 2.
 
-**Liste 2 :`ActionFilters\LogActionFilter.cs`**
+**Liste 2 : `ActionFilters\LogActionFilter.cs`**
 
 [!code-csharp[Main](understanding-action-filters-cs/samples/sample2.cs)]
 
@@ -117,7 +117,7 @@ Dans la liste 2, le `OnActionExecuting()`, `OnActionExecuted()`, `OnResultExecut
 
 Le contrôleur Home dans le Listing 3 illustre comment vous pouvez appliquer le filtre d’action de journal à une classe de contrôleur entière. Chaque fois que toutes les actions exposées par le contrôleur Home sont appelées – soit le `Index()` méthode ou la `About()` méthode – les étapes de traitement de l’action sont enregistrés dans la fenêtre Sortie de Visual Studio.
 
-**La liste 3 :`Controllers\HomeController.cs`**
+**La liste 3 : `Controllers\HomeController.cs`**
 
 [!code-csharp[Main](understanding-action-filters-cs/samples/sample3.cs)]
 
@@ -127,6 +127,6 @@ Dans ce didacticiel, vous ont été introduits pour les filtres d’action ASP.N
 
 Enfin, vous avez appris comment implémenter un filtre d’action simple. Nous avons créé un filtre d’action de journal qui enregistre les étapes de traitement d’une action du contrôleur dans la fenêtre Sortie de Visual Studio.
 
->[!div class="step-by-step"]
-[Précédent](asp-net-mvc-routing-overview-cs.md)
-[Suivant](improving-performance-with-output-caching-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](asp-net-mvc-routing-overview-cs.md)
+> [Suivant](improving-performance-with-output-caching-cs.md)

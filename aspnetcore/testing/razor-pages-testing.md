@@ -1,7 +1,7 @@
 ---
-title: "Unité de Pages Razor et les tests d’intégration dans ASP.NET Core"
+title: Pages Razor unité et l’intégration de tests dans ASP.NET Core
 author: guardrex
-description: "Découvrez comment créer des tests unitaires et l’intégration pour les applications de Pages Razor."
+description: Découvrez comment créer des tests unitaires et l’intégration pour les applications de Pages Razor.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: testing/razor-pages-testing
-ms.openlocfilehash: e4f87a8151e378717aa9198e4629711c4ea6ef77
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: dc5e8651f873b8e86aaa8fdf2527e461bb065424
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="razor-pages-unit-and-integration-testing-in-aspnet-core"></a>Unité de Pages Razor et les tests d’intégration dans ASP.NET Core
+# <a name="razor-pages-unit-and-integration-tests-in-aspnet-core"></a>Pages Razor unité et l’intégration de tests dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
@@ -59,9 +59,9 @@ L’application de message est un simple système de messages de Pages Razor ave
 * L’application contient une couche d’accès aux données (DAL) dans sa classe de contexte de base de données, `AppDbContext` (*Data/AppDbContext.cs*). Les méthodes de la couche DAL sont marquées `virtual`, ce qui permet la simulation les méthodes à utiliser dans les tests.
 * Si la base de données est vide au démarrage de l’application, la banque de messages est initialisée avec trois messages. Ces *amorcée messages* sont également utilisées dans le test.
 
-&#8224;La rubrique EF [test avec InMemory](/ef/core/miscellaneous/testing/in-memory), explique comment utiliser une base de données en mémoire pour les tests avec MSTest. Cette rubrique utilise le [xUnit](https://xunit.github.io/) infrastructure de test. Concepts de tests et de test implémentations différentes infrastructures de tests sont similaires mais non identiques.
+&#8224;La rubrique EF [Test avec InMemory](/ef/core/miscellaneous/testing/in-memory), explique comment utiliser une base de données en mémoire pour les tests avec MSTest. Cette rubrique utilise le [xUnit](https://xunit.github.io/) infrastructure de test. Concepts de tests et de test implémentations différentes infrastructures de tests sont similaires mais non identiques.
 
-Bien que l’application n’utilise pas le [modèle de référentiel](http://martinfowler.com/eaaCatalog/repository.html) et n’est pas un exemple effectif de la [modèle d’unité de travail (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Pages Razor prend en charge de ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), [mise en œuvre du référentiel et les modèles d’unité de travail dans une Application ASP.NET MVC](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application), et [test logique de contrôleur](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
+Bien que l’application n’utilise pas le [modèle de référentiel](http://martinfowler.com/eaaCatalog/repository.html) et n’est pas un exemple effectif de la [modèle d’unité de travail (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Pages Razor prend en charge de ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), [mise en œuvre du référentiel et les modèles d’unité de travail dans une Application ASP.NET MVC](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application), et [contrôleur de Test logique](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
 
 ## <a name="test-app-organization"></a>Organisation de l’application de test
 
@@ -232,7 +232,7 @@ Le `Post_AddMessageHandler_ReturnsSuccess_WhenMessageTextTooLong` test `Message`
 
 * [Test unitaire C# dans .NET Core, à l’aide de xUnit et dotnet test](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 * [Tests d’intégration](xref:testing/integration-testing)
-* [Test des contrôleurs](xref:mvc/controllers/testing)
+* [Contrôleurs de test](xref:mvc/controllers/testing)
 * [Votre Code de Test unitaire](/visualstudio/test/unit-test-your-code) (Visual Studio)
 * [xUnit.net](https://xunit.github.io/)
 * [Prise en main de xUnit.net (.NET Core/ASP.NET Core)](https://xunit.github.io/docs/getting-started-dotnet-core)

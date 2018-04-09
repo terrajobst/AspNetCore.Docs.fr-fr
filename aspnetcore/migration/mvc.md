@@ -1,5 +1,5 @@
 ---
-title: Migration à partir de ASP.NET MVC vers ASP.NET Core MVC
+title: Migrer à partir de ASP.NET MVC à cœur d’ASP.NET MVC
 author: ardalis
 description: Découvrez comment commencer la migration vers ASP.NET MVC de base d’un projet ASP.NET MVC.
 manager: wpickett
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/mvc
-ms.openlocfilehash: c9c9f63cd635f364d9b2e081dc051a46a44d3e4f
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
-ms.translationtype: HT
+ms.openlocfilehash: e249be06726b307a1c41a525a132f7e0ab8b50ee
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="migrating-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migration à partir de ASP.NET MVC vers ASP.NET Core MVC
+# <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migrer à partir de ASP.NET MVC à cœur d’ASP.NET MVC
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Michel Roth](https://github.com/danroth27), [Steve Smith](https://ardalis.com/), et [Scott Addie](https://scottaddie.com)
 
@@ -48,7 +48,7 @@ Créez une nouvelle application web ASP.NET Core *vide* avec le même nom que le
 
 * Installez les packages NuGet `Microsoft.AspNetCore.Mvc` et `Microsoft.AspNetCore.StaticFiles`.
 
-  `Microsoft.AspNetCore.Mvc` est le framework ASP.NET Core MVC. `Microsoft.AspNetCore.StaticFiles` est le Gestionnaire de fichiers statiques. Le runtime ASP.NET est modulaire, et vous devez explicitement autoriser les fichiers statiques (consultez [utilisation de fichiers statiques](../fundamentals/static-files.md)).
+  `Microsoft.AspNetCore.Mvc` est le framework ASP.NET Core MVC. `Microsoft.AspNetCore.StaticFiles` est le Gestionnaire de fichiers statiques. Le runtime ASP.NET est modulaire, et vous devez explicitement s’abonner à des fichiers statiques (consultez [travailler avec des fichiers statiques](../fundamentals/static-files.md)).
 
 * Ouvrez le *.csproj* fichier (avec le bouton droit dans le projet de **l’Explorateur de solutions** et sélectionnez **WebApp1.csproj de modifier**) et ajoutez une cible `PrepareForPublish` :
 
@@ -90,7 +90,7 @@ Remplacez le contenu du fichier *Views/Home/Index.cshtml* avec les éléments su
 <h1>Hello world!</h1>
 ```
 
-Exécutez l’application.
+Exécuter l’application.
 
 ![Application Web ouverte dans Microsoft Edge](mvc/_static/hello-world.png)
 
@@ -220,9 +220,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 ```
 
-Pour plus d’informations, consultez **Page d’exception de développeur** dans [Gestion des erreurs](../fundamentals/error-handling.md).
+Consultez **à l’aide de la Page d’Exception Developer** dans [gérer les erreurs](../fundamentals/error-handling.md) pour plus d’informations.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Développement côté client](xref:client-side/index)
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)

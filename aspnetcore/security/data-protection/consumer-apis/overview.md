@@ -1,7 +1,7 @@
 ---
-title: "Vue d’ensemble des API de consommateur"
+title: Vue d’ensemble des API de consommateur pour ASP.NET Core
 author: rick-anderson
-description: "Ce document fournit une vue d’ensemble du consommateur diverses API disponibles dans la bibliothèque ASP.NET Core data protection."
+description: Réception d’une vue d’ensemble du consommateur diverses API disponibles dans la bibliothèque ASP.NET Core data protection.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/overview
-ms.openlocfilehash: 3aa0c4bc8d009147dd15571da4d7d63402e4c512
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 5d161ed8fbc39bcf4a970644480b4e909810b555
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="consumer-apis-overview"></a>Vue d’ensemble des API de consommateur
+# <a name="consumer-apis-overview-for-aspnet-core"></a>Vue d’ensemble des API de consommateur pour ASP.NET Core
 
 Le `IDataProtectionProvider` et `IDataProtector` les interfaces sont les interfaces de base par le biais duquel les consommateurs utilisent le système de protection des données. Ils se trouvent dans le [Microsoft.AspNetCore.DataProtection.Abstractions](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/) package.
 
 ## <a name="idataprotectionprovider"></a>IDataProtectionProvider
 
-L’interface du fournisseur représente la racine du système de protection des données. Il ne peut pas être utilisé directement pour protéger ou ôter la protection des données. Au lieu de cela, le consommateur doit obtenir une référence à un `IDataProtector` en appelant `IDataProtectionProvider.CreateProtector(purpose)`, où le but est une chaîne qui décrit le cas d’utilisation prévue de consommateur. Consultez [objectif chaînes](purpose-strings.md) pour plus d’informations sur l’intention de ce paramètre et comment choisir une valeur appropriée.
+L’interface du fournisseur représente la racine du système de protection des données. Il ne peut pas être utilisé directement pour protéger ou ôter la protection des données. Au lieu de cela, le consommateur doit obtenir une référence à un `IDataProtector` en appelant `IDataProtectionProvider.CreateProtector(purpose)`, où le but est une chaîne qui décrit le cas d’utilisation prévue de consommateur. Consultez [objectif chaînes](xref:security/data-protection/consumer-apis/purpose-strings) pour plus d’informations sur l’intention de ce paramètre et comment choisir une valeur appropriée.
 
 ## <a name="idataprotector"></a>IDataProtector
 
@@ -31,18 +31,18 @@ Pour protéger une partie des données, passer les données à le `Protect` (mé
 
 Pour ôter la protection d’une donnée précédemment protégé, passer les données protégées sur le `Unprotect` (méthode). (Il n’y byte []-basé sur chaîne et en fonction des surcharges pour des raisons pratiques de développement.) Si la charge utile protégée a été générée par un appel précédent à `Protect` sur ce même `IDataProtector`, le `Unprotect` méthode retournera la charge non protégée d’origine. Si la charge utile protégée a été falsifiée ou a été créée par un autre `IDataProtector`, le `Unprotect` méthode lèvera CryptographicException.
 
-Le concept d’identiques ou différents `IDataProtector` ties sauvegarder sur le concept d’objectif. Si deux `IDataProtector` les instances ont été générées à partir de la même racine `IDataProtectionProvider` mais via des chaînes d’objectif différent dans l’appel à `IDataProtectionProvider.CreateProtector`, puis elles sont considérées comme [protecteurs différentes](purpose-strings.md), et une ne pourra plus être ôter la protection charges utiles générées par l’autre.
+Le concept d’identiques ou différents `IDataProtector` ties sauvegarder sur le concept d’objectif. Si deux `IDataProtector` les instances ont été générées à partir de la même racine `IDataProtectionProvider` mais via des chaînes d’objectif différent dans l’appel à `IDataProtectionProvider.CreateProtector`, puis elles sont considérées comme [protecteurs différentes](xref:security/data-protection/consumer-apis/purpose-strings), et une ne pourra plus être ôter la protection charges utiles générées par l’autre.
 
 ## <a name="consuming-these-interfaces"></a>Consommation de ces interfaces.
 
 Pour un composant prenant en charge DI, l’utilisation prévue est que le composant prend un `IDataProtectionProvider` dans son constructeur et que le système DI fournit automatiquement ce service lorsque le composant est instancié.
 
 > [!NOTE]
-> Certaines applications (telles que les applications console ou les applications ASP.NET 4.x) ne peuvent pas être DI prenant en charge ne pouvez pas utiliser le mécanisme décrit ici. Pour ces scénarios, consultez le [Non scénarios DI](../configuration/non-di-scenarios.md) document pour plus d’informations sur l’obtention d’une instance d’un `IDataProtection` fournisseur sans passer par DI.
+> Certaines applications (telles que les applications console ou les applications ASP.NET 4.x) ne peuvent pas être DI prenant en charge ne pouvez pas utiliser le mécanisme décrit ici. Pour ces scénarios, consultez le [Non scénarios DI](xref:security/data-protection/configuration/non-di-scenarios) document pour plus d’informations sur l’obtention d’une instance d’un `IDataProtection` fournisseur sans passer par DI.
 
 L’exemple suivant illustre trois concepts :
 
-1. [Ajout du système de protection des données](../configuration/overview.md) au conteneur de service,
+1. [Ajouter le système de protection des données](xref:security/data-protection/configuration/overview) au conteneur de service,
 
 2. À l’aide de DI pour recevoir une instance d’un `IDataProtectionProvider`, et
 

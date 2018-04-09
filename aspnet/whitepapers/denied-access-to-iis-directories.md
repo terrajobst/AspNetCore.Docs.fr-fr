@@ -1,26 +1,26 @@
 ---
 uid: whitepapers/denied-access-to-iis-directories
-title: "Accès refusé à ASP.NET pour les répertoires IIS | Documents Microsoft"
+title: Accès refusé à ASP.NET pour les répertoires IIS | Documents Microsoft
 author: rick-anderson
-description: "Ce livre blanc décrit ce que vous devez faire si une demande à votre application ASP.NET renvoie l’erreur « accès refusé au répertoire du nom du répertoire. Impossible de s..."
+description: Ce livre blanc décrit ce que vous devez faire si une demande à votre application ASP.NET renvoie l’erreur « accès refusé au répertoire du nom du répertoire. Impossible de s...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: 3cb27b8a-354f-4332-bfe0-232b13bbf8aa
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/denied-access-to-iis-directories
 msc.type: content
-ms.openlocfilehash: 64118ac7a5f280775106d2dc7636923b08f28d89
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d95423776a6b58fc67ae6c791685543dadd2480c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/22/2018
 ---
 <a name="aspnet-denied-access-to-iis-directories"></a>Accès refusé à ASP.NET pour les répertoires IIS
 ====================
-> Ce livre blanc décrit ce que vous devez faire si une demande à votre application ASP.NET retourne l’erreur, « refuser l’accès à *Nom_répertoire* active. Échec de démarrage de l’analyse du répertoire chaanges. »
+> Ce livre blanc décrit ce que vous devez faire si une demande à votre application ASP.NET retourne l’erreur, « refuser l’accès à *Nom_répertoire* active. Échec de démarrage de l’analyse des modifications d’annuaire. »
 > 
 > S’applique à ASP.NET 1.0 et 1.1 d’ASP.NET.
 

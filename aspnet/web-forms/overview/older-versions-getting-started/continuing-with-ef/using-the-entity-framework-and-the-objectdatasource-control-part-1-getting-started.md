@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
-title: "À l’aide d’Entity Framework 4.0 et du contrôle ObjectDataSource, partie 1 : prise en main | Documents Microsoft"
+title: 'À l’aide d’Entity Framework 4.0 et du contrôle ObjectDataSource, partie 1 : prise en main | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels s’appuie sur l’application web de Contoso University créé par la prise en main de la série de didacticiels Entity Framework. Si v..."
+description: Cette série de didacticiels s’appuie sur l’application web de Contoso University créé par la prise en main de la série de didacticiels Entity Framework. Si v...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,19 +12,19 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 83fe815af9030aee10a5204718b00c79925e9126
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6584767418c898913777b3b1549a816679c8430d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>À l’aide d’Entity Framework 4.0 et du contrôle ObjectDataSource, partie 1 : prise en main
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par le [mise en route avec l’Entity Framework 4.0](../getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md) série de didacticiels. Si vous n’avez pas terminé les didacticiels antérieures, comme point de départ pour ce didacticiel vous pouvez [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) que vous devriez avoir créé. Vous pouvez également [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) qui est créé par la série de didacticiels terminée.
 > 
-> L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide de l’Entity Framework 4.0 et Visual Studio 2010. L’exemple d’application est un site Web pour une université fictif de Contoso. Il inclut des fonctionnalités telles que leur admission d’étudiant, la création de cours et les affectations de formateur.
+> L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide de l’Entity Framework 4.0 et Visual Studio 2010. L’exemple d’application est un site Web pour une université fictif de Contoso. Il inclut des fonctionnalités telles que l'admission d’étudiant, la création de cours et les affectations de formateur.
 > 
 > Le didacticiel présente des exemples dans c#. Le [exemple téléchargeable](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) contient le code en c# et Visual Basic.
 > 
@@ -311,7 +311,7 @@ Le gestionnaire pour le `Init` événement enregistre une référence à la `Dro
 Utilisez le *DepartmentsAdd.aspx* page pour ajouter un nouveau service, puis exécutez le *Departments.aspx* page, puis cliquez sur **modifier** sur la ligne que vous avez ajouté.
 
 > [!NOTE]
-> Vous ne pourrez pas modifier les lignes que vous n’avez pas ajouté (autrement dit, qui étaient déjà présents dans la base de données), en raison de données non valides dans la base de données ; les administrateurs pour les lignes qui ont été créées avec la base de données sont des étudiants. Si vous essayez de modifier un d’eux, vous obtiendrez une page d’erreur qui signale une erreur comme`'InstructorsDropDownList' has a SelectedValue which is invalid because it does not exist in the list of items.`
+> Vous ne pourrez pas modifier les lignes que vous n’avez pas ajouté (autrement dit, qui étaient déjà présents dans la base de données), en raison de données non valides dans la base de données ; les administrateurs pour les lignes qui ont été créées avec la base de données sont des étudiants. Si vous essayez de modifier un d’eux, vous obtiendrez une page d’erreur qui signale une erreur comme `'InstructorsDropDownList' has a SelectedValue which is invalid because it does not exist in the list of items.`
 
 
 [![Image10](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image36.png)](using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started/_static/image35.png)
@@ -324,5 +324,5 @@ Modifier une valeur de champ ou sélectionnez un autre administrateur, puis cliq
 
 Cette étape termine l’introduction à l’utilisation de la `ObjectDataSource` contrôle pour CRUD de base (créer, lire, mettre à jour, supprimer) des opérations avec Entity Framework. Vous avez créé une application multicouche simple, mais la couche de logique métier est toujours étroitement à la couche d’accès aux données, ce qui complique le test unitaire automatisé. Dans ce didacticiel, vous verrez comment implémenter le modèle de référentiel pour faciliter les tests unitaires.
 
->[!div class="step-by-step"]
-[Next](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
+> [!div class="step-by-step"]
+> [Next](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)

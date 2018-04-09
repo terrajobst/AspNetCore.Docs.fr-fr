@@ -1,7 +1,7 @@
 ---
-title: "Autoriser avec un schéma spécifique - ASP.NET Core"
+title: Autoriser avec un modèle spécifique dans ASP.NET Core
 author: rick-anderson
-description: "Cet article explique comment limiter l’identité à un schéma spécifique lorsque vous travaillez avec plusieurs méthodes d’authentification."
+description: Cet article explique comment limiter l’identité à un schéma spécifique lorsque vous travaillez avec plusieurs méthodes d’authentification.
 manager: wpickett
 ms.author: riande
 ms.date: 10/12/2017
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: dd044a0829382f9f7f0c3256c6e669340f2d5240
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: 81a01d7de8221fcb3bf90a108d9df6633ca2b696
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="authorize-with-a-specific-scheme"></a>Autoriser avec un schéma spécifique
+# <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>Autoriser avec un modèle spécifique dans ASP.NET Core
 
 Dans certains scénarios, tels que des Applications à Page unique (SPA), il est courant d’utiliser plusieurs méthodes d’authentification. Par exemple, l’application peut utiliser l’authentification par cookie pour vous connecter et l’authentification du support JSON pour les demandes de JavaScript. Dans certains cas, l’application peut avoir plusieurs instances d’un gestionnaire d’authentification. Par exemple, deux gestionnaires de cookie où un premier contient une identité de base et l’autre est créé lorsqu’une authentification multifacteur (MFA) a été déclenchée. L’authentification Multifacteur peut être déclenchée, car l’utilisateur a demandé une opération qui requiert une sécurité supplémentaire.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Un schéma d’authentification est appelé lorsque le service d’authentification est configuré lors de l’authentification. Exemple :
+Un schéma d’authentification est appelé lorsque le service d’authentification est configuré lors de l’authentification. Par exemple :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -42,11 +42,11 @@ public void ConfigureServices(IServiceCollection services)
 Dans le code précédent, les deux gestionnaires d’authentification ont été ajoutés : une pour les cookies et l’autre pour le support.
 
 >[!NOTE]
->Spécifier un schéma par défaut entraîne que la propriété `HttpContext.User` soit définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en appelant le formulaire sans paramètre de `AddAuthentication`.
+>Les spécifications de schéma par défaut entraînent la propriété `HttpContext.User` définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en appelant le formulaire sans paramètre de `AddAuthentication`.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Les schémas d’authentification sont nommés lors de l’authentification middlewares et sont configurés lors de l’authentification. Exemple :
+Les schémas d’authentification sont nommés lors de l’authentification middlewares et sont configurés lors de l’authentification. Par exemple :
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -74,13 +74,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 Dans le code précédent, deux middlewares d’authentification ont été ajoutés : un pour les cookies et l’autre pour le support.
 
 >[!NOTE]
->Spécifier un schéma par défaut entraîne que la propriété `HttpContext.User` soit définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en définissant le `AuthenticationOptions.AutomaticAuthenticate` propriété `false`.
+>Les spécifications de schéma par défaut entraînent la propriété `HttpContext.User` définie pour cette identité. Si ce comportement n’est pas souhaité, désactivez-le en définissant la propriété `AuthenticationOptions.AutomaticAuthenticate` à `false`.
 
 ---
 
 ## <a name="selecting-the-scheme-with-the-authorize-attribute"></a>Sélection du schéma avec l’attribut Authorize
 
-Dans la phase d’autorisation, l’application indique le gestionnaire à utiliser. Sélectionnez le gestionnaire avec lequel l’application autorise en passant une liste délimitée par des virgules des schémas d’authentification à `[Authorize]`. Le `[Authorize]` attribut spécifie le schéma d’authentification ou les schémas à utiliser que par défaut soit configuré. Exemple :
+Dans la phase d’autorisation, l’application indique le gestionnaire à utiliser. Sélectionnez le gestionnaire avec lequel l’application autorise en passant une liste délimitée par des virgules des schémas d’authentification à `[Authorize]`. Le `[Authorize]` attribut spécifie le schéma d’authentification ou les schémas à utiliser que par défaut soit configuré. Par exemple :
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-build-process
-title: "Comprendre le processus de génération | Documents Microsoft"
+title: Comprendre le processus de génération | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique fournit une procédure pas à pas d’un processus de génération et de déploiement de l’échelle de l’entreprise. L’approche décrite dans cette rubrique utilise du Microsoft Build moteur personnalisé..."
+description: Cette rubrique fournit une procédure pas à pas d’un processus de génération et de déploiement de l’échelle de l’entreprise. L’approche décrite dans cette rubrique utilise du Microsoft Build moteur personnalisé...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-build-process
 msc.type: authoredcontent
-ms.openlocfilehash: 3efcefc40dc135ff42f55911036f8b38b5aa13b1
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4544a5e6212ea9b1247062dc35edc135ff7ca354
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-the-build-process"></a>Comprendre le processus de génération
 ====================
@@ -30,9 +30,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > > La rubrique précédente, [présentation du fichier de projet](understanding-the-project-file.md), décrit les principaux composants d’un fichier projet MSBuild et a introduit le concept de fractionnement des fichiers de projet pour prendre en charge le déploiement à plusieurs environnements cibles. Si vous n’êtes pas déjà familiarisé avec ces concepts, vous devez passer en revue [présentation du fichier de projet](understanding-the-project-file.md) avant d’effectuer cette rubrique.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="build-and-deployment-overview"></a>Vue d’ensemble de déploiement et de la build
 
@@ -50,16 +50,16 @@ Avant d’examiner ces fichiers plus en détail, examinons un fonctionnement du 
 
 ![](understanding-the-build-process/_static/image2.png)
 
-La première chose qui se produit est que les deux fichiers de & projet #x 2014 ; un contenant la build universel et des instructions de déploiement et l’autre contenant les paramètres spécifiques à l’environnement & #x 2014 ; sont fusionnés dans un seul fichier de projet. MSBuild travaille ensuite les instructions dans le fichier projet. Il génère les projets dans la solution, à l’aide du fichier projet pour chaque projet. Il appelle ensuite autres outils, tels que Web Deploy (MSDeploy.exe) et l’utilitaire VSDBCMD pour déployer votre contenu web et les bases de données à l’environnement cible.
+La première chose qui se produit est que les deux fichiers de projet&#x2014;contenant des instructions de génération et de déploiement universelles et contenant les paramètres spécifiques à l’environnement&#x2014;sont fusionnés dans un seul fichier de projet. MSBuild travaille ensuite les instructions dans le fichier projet. Il génère les projets dans la solution, à l’aide du fichier projet pour chaque projet. Il appelle ensuite autres outils, tels que Web Deploy (MSDeploy.exe) et l’utilitaire VSDBCMD pour déployer votre contenu web et les bases de données à l’environnement cible.
 
 À partir du début à la fin, le processus de génération et de déploiement effectue ces tâches :
 
 1. Il supprime le contenu du répertoire de sortie, en vue d’une nouvelle génération.
 2. Il génère chaque projet dans la solution :
 
-    1. Pour les projets web & #x 2014 ; dans ce cas, une application de web ASP.NET MVC et un service WCF web service & #x 2014 ; le processus de génération crée un package de déploiement web pour chaque projet.
+    1. Pour les projets web&#x2014;dans ce cas, une application de web ASP.NET MVC et un service WCF service web&#x2014;le processus de génération crée un package de déploiement web pour chaque projet.
     2. Pour les projets de base de données, le processus de génération crée un manifeste de déploiement (fichier .deploymanifest) pour chaque projet.
-3. Elle utilise l’utilitaire VSDBCMD.exe pour déployer chaque projet de base de données dans la solution, à l’aide de différentes propriétés dans les fichiers projet #x 2014 ; une chaîne de connexion cible et un nom de base de données & #x 2014 ; ainsi que le fichier .deploymanifest.
+3. Il utilise l’utilitaire VSDBCMD.exe pour déployer chaque projet de base de données dans la solution, à l’aide de différentes propriétés des fichiers de projet&#x2014;une chaîne de connexion cible et un nom de base de données&#x2014;ainsi que le fichier .deploymanifest.
 4. Elle utilise l’utilitaire MSDeploy.exe pour déployer chaque projet web dans la solution, à l’aide de différentes propriétés des fichiers de projet pour contrôler le processus de déploiement.
 
 Vous pouvez utiliser l’exemple de solution pour suivre ce processus plus en détail.
@@ -102,9 +102,9 @@ MSBuild rencontre l’élément suivant est un groupe d’articles unique conten
 [!code-xml[Main](understanding-the-build-process/samples/sample4.xml)]
 
 
-MSBuild traite cette instruction en créant une liste d’éléments nommée **ProjectsToBuild**. Dans ce cas, la liste d’éléments contient une seule valeur & #x 2014 ; le chemin d’accès et nom de fichier du fichier solution.
+MSBuild traite cette instruction en créant une liste d’éléments nommée **ProjectsToBuild**. Dans ce cas, la liste d’éléments contient une seule valeur&#x2014;le chemin d’accès et le nom du fichier solution.
 
-À ce stade, les éléments restants sont des cibles. Les cibles sont traitées différemment à partir des propriétés et des éléments de & #x 2014 ; pour l’essentiel, les cibles ne sont pas traités, sauf si elles sont spécifiées par l’utilisateur ou explicitement appelées par une autre construction dans le fichier projet. N’oubliez pas que l’ouverture **projet** balise inclut un **DefaultTargets** attribut.
+À ce stade, les éléments restants sont des cibles. Les cibles sont traitées différemment des propriétés et des éléments&#x2014;essentiellement cibles ne sont pas traités, sauf si elles sont spécifiées par l’utilisateur ou explicitement appelées par une autre construction dans le fichier projet. N’oubliez pas que l’ouverture **projet** balise inclut un **DefaultTargets** attribut.
 
 
 [!code-xml[Main](understanding-the-build-process/samples/sample5.xml)]
@@ -173,7 +173,7 @@ Si vous étudiez la **GatherPackagesForPublishing** cible, vous remarquerez qu�
 
 Ces éléments font référence aux packages de déploiement qui ont été créées lorsque le **BuildProjects** cible a été exécutée. Vous n’a pas pu définir ces éléments statiquement dans le fichier projet, car les fichiers qui font référence les éléments n’existent pas jusqu'à ce que le **BuildProjects** cible est exécutée. Au lieu de cela, les éléments doivent être définies dynamiquement dans une cible qui n’est pas appelée tant qu’après le **BuildProjects** cible est exécutée.
 
-Les éléments ne sont pas utilisés dans cette cible de & #x 2014 ; cette cible génère simplement les éléments et les métadonnées associées à chaque valeur de l’élément. Une fois que ces éléments sont traités, le **PublishPackages** élément contient deux valeurs, le chemin d’accès à la *ContactManager.Mvc.deploy.cmd* fichier et le chemin d’accès à la  *ContactManager.Service.deploy.cmd* fichier. Web Deploy crée ces fichiers dans le cadre du package pour chaque projet web, et ce sont les fichiers que vous devez appeler sur le serveur de destination afin de déployer les packages. Si vous ouvrez un de ces fichiers, vous verrez en fait une commande MSDeploy.exe avec différentes valeurs de paramètre de build spécifique.
+Les éléments ne sont pas utilisés dans cette cible&#x2014;cette cible génère simplement les éléments et les métadonnées associées à chaque valeur de l’élément. Une fois que ces éléments sont traités, le **PublishPackages** élément contient deux valeurs, le chemin d’accès à la *ContactManager.Mvc.deploy.cmd* fichier et le chemin d’accès à la  *ContactManager.Service.deploy.cmd* fichier. Web Deploy crée ces fichiers dans le cadre du package pour chaque projet web, et ce sont les fichiers que vous devez appeler sur le serveur de destination afin de déployer les packages. Si vous ouvrez un de ces fichiers, vous verrez en fait une commande MSDeploy.exe avec différentes valeurs de paramètre de build spécifique.
 
 Le **DbPublishPackages** élément contient une valeur unique, le chemin d’accès à la *ContactManager.Database.deploymanifest* fichier.
 
@@ -199,7 +199,7 @@ Il s’agit d’un exemple de *le traitement par lot cible*. Dans les fichiers d
 - Exécutez la cible une fois par lot.
 
 > [!NOTE]
-> **Identité** est un de la [les valeurs de métadonnées intégrées](https://msdn.microsoft.com/library/ms164313.aspx) qui est assignée à chaque élément lors de la création. Il fait référence à la valeur de la **Include** d’attribut dans le **élément** , élément & #x 2014 ; en d’autres termes, le chemin d’accès et le nom de l’élément.
+> **Identité** est un de la [les valeurs de métadonnées intégrées](https://msdn.microsoft.com/library/ms164313.aspx) qui est assignée à chaque élément lors de la création. Il fait référence à la valeur de la **Include** d’attribut dans le **élément** élément&#x2014;en d’autres termes, le chemin d’accès et le nom de l’élément.
 
 
 Dans ce cas, car il ne doit jamais y avoir plus d’un élément avec le même chemin d’accès et nom de fichier, nous travaillons essentiellement avec des tailles de lot d’un. La cible est exécutée une fois pour chaque package de base de données.
@@ -251,6 +251,6 @@ Cette rubrique fourni une procédure pas à pas de l’utilisation des fichiers 
 
 Pour obtenir une présentation plus approfondie des fichiers projet et les fournisseurs de services, consultez [à l’intérieur de la Microsoft Build Engine : à l’aide de MSBuild et Team Foundation Build](http://amzn.com/0735645248) par Sayed Ibrahim Hashimi et William Bartholomew, numéro ISBN : 978-0-7356-4524-0.
 
->[!div class="step-by-step"]
-[Précédent](understanding-the-project-file.md)
-[Suivant](building-and-packaging-web-application-projects.md)
+> [!div class="step-by-step"]
+> [Précédent](understanding-the-project-file.md)
+> [Suivant](building-and-packaging-web-application-projects.md)

@@ -1,7 +1,7 @@
 ---
-title: Hachage de mot de passe
+title: Hachage des mots de passe dans ASP.NET Core
 author: rick-anderson
-description: "Ce document explique comment le hachage des mots de passe à l’aide de l’API de protection des données ASP.NET Core."
+description: En savoir plus sur le hachage des mots de passe à l’aide de l’API de Protection de données ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/password-hashing
-ms.openlocfilehash: 8e2796108be14ef382f46e6deb3d584517120d27
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 63348da144e84d614f274b5d816cbecb020dcab4
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="password-hashing"></a>Hachage de mot de passe
+# <a name="hash-passwords-in-aspnet-core"></a>Hachage des mots de passe dans ASP.NET Core
 
 La base de code de protection de données inclut un package *Microsoft.AspNetCore.Cryptography.KeyDerivation* qui contient les fonctions de dérivation de clé de chiffrement. Ce package est un composant autonome et n’a aucune dépendance sur le reste du système de protection des données. Il peut être utilisé totalement indépendants. La source existe en même temps que le code de protection des données base pour des raisons pratiques.
 

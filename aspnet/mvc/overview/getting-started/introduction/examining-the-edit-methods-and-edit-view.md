@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: d7e1ba503b8aa815cebf431d2f5ffc9436b3575b
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: a3baa8e9af572d4c21813218ba394715a6db65cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Examen des méthodes de modification et la vue d’édition
 ====================
 par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 Dans cette section, vous allez examiner générées `Edit` méthodes d’action et des vues pour le contrôleur vidéo. Mais tout d’abord prendra un détournement court faire plus de la date de publication. Ouvrez le *Models\Movie.cs* et ajoutez les lignes en surbrillance ci-dessous :
 
@@ -106,12 +106,12 @@ Si vous utilisez un ordinateur en langue anglaise, vous pouvez ignorer cette sec
 1. À partir de la **outils** menu, cliquez sur **NuGetLibrary Package Manager**, puis cliquez sur **gérer les Packages NuGet pour la Solution**.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
-2. Dans le volet gauche, sélectionnez **Parcourir*.***(voir l’image ci-dessous).
+2. Dans le volet gauche, sélectionnez <strong>Parcourir*.</strong>* (Voir l’image ci-dessous).
 3. Dans la zone d’entrée, tapez *Globalize**.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) Choisissez `jQuery.Validation.Globalize`, choisissez `MvcMovie` et cliquez sur **installer**. Le *Scripts\jquery.globalize\globalize.js* fichier sera ajouté à votre projet. Le *Scripts\jquery.globalize\cultures\* nombreux culture contiendra les fichiers JavaScript. Il peut prendre cinq minutes pour installer ce package.
 
- Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml : 
+   Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml : 
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cshtml)]
 
@@ -125,6 +125,6 @@ Comme solution temporaire, si vous ne parvenez validation travaillant dans vos p
 
 <a id="gettingstarted"></a><a id="jQueryAjaxJSON"></a> Dans l’étape suivante du didacticiel, nous allons implémenter la fonctionnalité de recherche.
 
->[!div class="step-by-step"]
-[Précédent](accessing-your-models-data-from-a-controller.md)
-[Suivant](adding-search.md)
+> [!div class="step-by-step"]
+> [Précédent](accessing-your-models-data-from-a-controller.md)
+> [Suivant](adding-search.md)

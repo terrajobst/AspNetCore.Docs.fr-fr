@@ -1,7 +1,7 @@
 ---
-title: "Présentation d’ASP.NET Core"
+title: Présentation d’ASP.NET Core
 author: rick-anderson
-description: "Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet."
+description: Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.
 manager: wpickett
 ms.author: riande
 ms.date: 02/28/2018
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: index
-ms.openlocfilehash: 103b7862900e08488dcc0f5fc78c08fefcfa17f3
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 63ea2aaf7b502ee08fc2f5268d17ed459adaee73
+ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -37,7 +37,7 @@ ASP.NET Core offre les avantages suivants :
 * Un environnement prêt pour le cloud et basé sur des fichiers de [configuration système](xref:fundamentals/configuration/index).
 * Une [Injection de dépendances](xref:fundamentals/dependency-injection) intégrée.
 * Un pipeline de requête HTTP léger, [haute performance](https://github.com/aspnet/benchmarks) et modulaire.
-* La capacité à être hébergé sur [IIS](xref:host-and-deploy/iis/index), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache), [Docker](xref:host-and-deploy/docker/index), ou sur votre propre hébergement.
+* La capacité à héberger sur [IIS](xref:host-and-deploy/iis/index), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache), [Docker](xref:host-and-deploy/docker/index), ou d’un auto-hébergement dans votre propre processus.
 * La gestion de version des applications côte à côte lorsque la cible est [.NET Core](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
 * des outils qui simplifient le développement web moderne.
 * La capacité à générer et à exécuter sur Windows, macOS et Linux.
@@ -53,7 +53,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 * [Razor Pages](xref:mvc/razor-pages/index) (nouveauté dans ASP.NET Core 2.0) est un modèle de programmation basé sur les pages qui rend plus facile et plus productive la création d’une interface utilisateur web.
 * Le [balisage Razor](xref:mvc/views/razor) fournit une syntaxe efficace pour [Razor Pages](xref:mvc/razor-pages/index) et les [vues MVC](xref:mvc/views/overview).
 * Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor.
-* La prise en charge intégrée de [plusieurs formats de données et de la négociation de contenu](mvc/models/formatting.md) permet à vos API web d’être utilisées par un large éventail de clients, notamment des navigateurs et des appareils mobiles.
+* La prise en charge intégrée de [plusieurs formats de données et de la négociation de contenu](xref:web-api/advanced/formatting) permet à vos API web d’être utilisées par un large éventail de clients, notamment des navigateurs et des appareils mobiles.
 * Le principe de la [liaison de modèle](xref:mvc/models/model-binding) permet le mappage automatiquement des données des requêtes HTTP aux paramètres des méthodes d’action.
 * La [validation de modèle](xref:mvc/models/validation) effectue automatiquement la validation côté client et côté serveur.
 
