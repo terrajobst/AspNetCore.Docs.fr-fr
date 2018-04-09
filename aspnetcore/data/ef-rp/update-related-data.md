@@ -1,7 +1,7 @@
 ---
-title: "Pages Razor avec EF Core - Mettre à jour des données associées - 7 sur 8"
+title: Pages Razor avec EF Core - Mettre à jour des données associées - 7 sur 8
 author: rick-anderson
-description: "Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère."
+description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
 manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
@@ -36,7 +36,7 @@ Les pages de création et de modification de cours ont chacune besoin d’une li
 
 [!code-csharp[Main](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
-Le code précédent crée un [SelectList](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) devant contenir la liste des noms de départements. Si `selectedDepartment` est spécifié, ce département est sélectionné dans le `SelectList`.
+Le code précédent crée un [SelectList](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) pour contenir la liste des noms de département.  Si `selectedDepartment` est spécifié, ce département est sélectionné dans le `SelectList`. 
 
 Les classes de modèle de page Create et Edit doivent dériver de `DepartmentNamePageModel`.
 
@@ -46,7 +46,7 @@ Quand une entité de cours est créée, elle doit avoir une relation à un dépa
 
 ![Créer le cours](update-related-data/_static/ddl.png)
 
-Mettez à jour le modèle de la page Create avec le code suivant :
+Mettez à jour le modèle de la page Create avec le code suivant : 
 
 [!code-csharp[Main](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-)]
 
@@ -66,7 +66,7 @@ Mettez à jour *Pages/Courses/Create.cshtml* avec le balisage suivant :
 
 Le balisage précédent apporte les modifications suivantes :
 
-* Il remplace la légende **DepartmentID** par **Department**.
+* Modifie la légende de **DepartmentID** en **Department**. 
 * Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 * Il ajoute l’option « Select Department ». Cette modification entraîne l’affichage de « Select Department » plutôt que du premier département.
 * Il ajoute un message de validation quand le département n’est pas sélectionné.
@@ -77,7 +77,7 @@ La Page Razor utilise le [Tag Helper Select](xref:mvc/views/working-with-forms#t
 
 Testez la page Create. La page Create affiche le nom du département plutôt que son ID.
 
-### <a name="update-the-courses-edit-page"></a>Mettre à jour la page de modification de cours
+### <a name="update-the-courses-edit-page"></a>Mise à jour de la page Edit d'un cours.
 
 Mettez à jour le modèle de modification de cours avec le code suivant :
 
@@ -91,8 +91,8 @@ Mettez à jour *Pages/Courses/Edit.cshtml* avec le balisage suivant :
 
 Le balisage précédent apporte les modifications suivantes :
 
-* Il affiche l’ID du cours. En général, la clé primaire d’une entité n’est pas affichée. Les clés primaires sont généralement sans signification pour les utilisateurs. Ici, la clé primaire est le numéro de cours.
-* Il remplace la légende **DepartmentID** par **Department**.
+* Affiche l’identificateur du cours. En général la clé primaire (PK) d’une entité n’est pas affichée. Les clés primaires sont généralement sans signification pour les utilisateurs. Dans ce cas, la clé est le numéro de cours.
+* Modifie la légende de **DepartmentID** en **Department**. 
 * Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
 * Il ajoute l’option « Select Department ». Cette modification entraîne l’affichage de « Select Department » plutôt que du premier département.
 * Il ajoute un message de validation quand le département n’est pas sélectionné.
@@ -123,19 +123,19 @@ Apportez les mêmes modifications à la page Details.
 
 Testez les fonctionnalités de création, de modification, de détails et de suppression.
 
-## <a name="update-the-instructor-pages"></a>Mettre à jour les pages des formateurs
+## <a name="update-the-instructor-pages"></a>Mettre à jour les pages d'instructeur
 
-Les sections suivantes mettent à jour les pages des formateurs.
+Les sections suivantes mettent à jour les pages d'instructeur.
 
 ### <a name="add-office-location"></a>Ajouter l’emplacement du bureau
 
 Lors de la modification d’un enregistrement de formateur, vous souhaiterez peut-être mettre à jour l’attribution de bureau du formateur. L’entité `Instructor` a une relation un-à-zéro-ou-un avec l’entité `OfficeAssignment`. Le code de formateur doit gérer ce qui suit :
 
-* Si l’utilisateur efface l’attribution de bureau, supprimer l’entité `OfficeAssignment`.
-* Si l’utilisateur entre une attribution de bureau et qu’elle était vide, créer une entité `OfficeAssignment`.
+* Si l’utilisateur efface l’attribution d'un bureau, supprimer l'entité `OfficeAssignment`. 
+* Si l’utilisateur entre une attribution et qu'elle était vide, créer une nouvelle entité `OfficeAssignment`. 
 * Si l’utilisateur change l’attribution de bureau, mettre à jour l’entité `OfficeAssignment`.
 
-Mettez à jour le modèle de page de modification des formateurs avec le code suivant :
+Mettez à jour le modèle de page Edit d'instructeur avec le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml.cs?name=snippet&highlight=20-23,32,39-)]
 
@@ -182,7 +182,7 @@ Créez la classe de base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs
 
 ### <a name="instructors-edit-page-model"></a>Modèle de page de modification de formateur
 
-Mettez à jour le modèle de page de modification de formateur avec le code suivant :
+Mettez à jour le modèle de page Edit d'instructeur avec le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml.cs?name=snippet&highlight=1,20-24,30,34,41-)]
 
