@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
-title: "ASP.NET MVC affiche la vue d’ensemble (VB) | Documents Microsoft"
+title: ASP.NET MVC affiche la vue d’ensemble (VB) | Documents Microsoft
 author: StephenWalther
-description: "Quelle est la vue ASP.NET MVC et en quoi il diffère une page HTML ? Dans ce didacticiel, Stephen Walther présente les vues et montre comment vous pouvez t..."
+description: Quelle est la vue ASP.NET MVC et en quoi il diffère une page HTML ? Dans ce didacticiel, Stephen Walther présente les vues et montre comment vous pouvez t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c85b969aa4457d0326b4a16da218db9e11d01e10
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a64c70851d13b923964dfd1cf3bad55612ae0d0f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC affiche la vue d’ensemble (VB)
 ====================
@@ -84,13 +84,13 @@ Par exemple, la vue dans la liste 2 affiche la date et heure actuelles.
 
 Notez que le corps de la page HTML dans la liste 2 contient le script suivant :
 
-&lt;% Response.Write(DateTime.Now) %&gt;
+&lt;% Response.Write(DateTime.Now)%&gt;
 
 Vous utilisez les délimiteurs de script &lt;et %&gt; pour marquer le début et la fin d’un script. Ce script est écrit en Visual basic. Il affiche la date et heure actuelles en appelant la méthode Response.Write () pour afficher le contenu dans le navigateur. Les délimiteurs de script &lt;et %&gt; peut être utilisé pour exécuter une ou plusieurs instructions.
 
 Étant donné que vous appelez souvent Response.Write (), Microsoft vous fournit un raccourci pour appeler la méthode Response.Write (). La vue dans la liste 3 utilise les délimiteurs &lt;% = et %&gt; comme raccourci pour l’appel à Response.Write ().
 
-**La liste 3 - Views\Home\Index2.aspx**
+**Listing 3 - Views\Home\Index2.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample3.aspx)]
 
@@ -102,7 +102,7 @@ Pour le rendre plus facile d’ajouter du contenu à une vue, vous pouvez tirer 
 
 Par exemple, la vue dans la liste 4 tire profit des trois des programmes d’assistance HTML--les BeginForm(), TextBox() et Password() programmes d’assistance--pour générer une connexion forment (voir Figure 1).
 
-**La liste 4--\Views\Home\Login.aspx**
+**Listing 4 -- \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample4.aspx)]
 
@@ -118,7 +118,7 @@ Notez que vous utilisez les délimiteurs de script &lt;% = et %&gt; lors de l’
 
 À l’aide des méthodes de programme d’assistance HTML est facultative. Ils vous simplifier la vie en réduisant la quantité de code HTML et le script que vous devez écrire. La vue dans la liste 5 restitue la même forme exacte que la vue dans la liste 4 sans utiliser de programmes d’assistance HTML.
 
-**La liste 5--\Views\Home\Login.aspx**
+**Listing 5 -- \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample5.aspx)]
 
@@ -136,7 +136,7 @@ Le contrôleur de propriété ViewData représente une collection de paires nom 
 
 La vue dans la liste 7 récupère le message à partir des données d’affichage et restitue le message dans le navigateur.
 
-**La liste 7--\Views\Product\Index.aspx**
+**Listing 7 -- \Views\Product\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample7.aspx)]
 
@@ -148,10 +148,10 @@ Dans la liste 7, nous avons pris parti des données d’affichage pour passer un
 
 Vous avez également la possibilité de passage des données d’affichage fortement typé à partir d’un contrôleur à une vue. Nous avons ce sujet, consultez le didacticiel **présentation fortement typée afficher les données et les vues**.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Ce didacticiel fourni une brève introduction aux vues d’ASP.NET MVC, afficher les données et les programmes d’assistance HTML. Dans la première section, vous avez appris comment ajouter de nouvelles vues à votre projet. Vous avez appris que vous devez ajouter une vue vers le dossier approprié pour pouvoir pour l’appeler à partir d’un contrôleur spécifique. Ensuite, nous avons abordé le sujet de programmes d’assistance HTML. Vous avez appris comment programmes d’assistance HTML permettent de créer facilement un contenu HTML standard. Enfin, vous avez appris comment tirer parti des données d’affichage pour passer des données à partir d’un contrôleur à une vue.
 
->[!div class="step-by-step"]
-[Précédent](passing-data-to-view-master-pages-cs.md)
-[Suivant](creating-custom-html-helpers-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](passing-data-to-view-master-pages-cs.md)
+> [Suivant](creating-custom-html-helpers-vb.md)

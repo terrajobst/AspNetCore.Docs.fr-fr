@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb
-title: "Création d’un AJAX personnalisé contrôle extendeur de contrôle de boîte à outils (VB) | Documents Microsoft"
+title: Création d’un AJAX personnalisé contrôle extendeur de contrôle de boîte à outils (VB) | Documents Microsoft
 author: microsoft
-description: "Extensions personnalisées permettent de personnaliser et étendre les fonctionnalités des contrôles ASP.NET sans avoir à créer de nouvelles classes."
+description: Extensions personnalisées permettent de personnaliser et étendre les fonctionnalités des contrôles ASP.NET sans avoir à créer de nouvelles classes.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/creating-a-custom-ajax-control-toolkit-control-extender-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3e8fceb3c7570aa1bf085c8e1037736254e74ef9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 06950770bf788fff4a03e9d41fd448ea675a8bce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-custom-ajax-control-toolkit-control-extender-vb"></a>Création d’un extendeur de contrôle de boîte à outils de contrôle AJAX personnalisés (VB)
 ====================
@@ -198,7 +198,7 @@ Ensuite, nous devons créer une page ASP.NET. Procédez comme suit :
 2. Faites glisser un ScriptManager sur la page.
 3. Faites glisser un contrôle de zone de texte sur la page.
 4. Faites glisser un contrôle bouton sur la page.
-5. Dans la fenêtre Propriétés, modifiez la propriété ID de bouton à la valeur *btnSave* et la propriété Text la valeur *enregistrer\**.
+5. Dans la fenêtre Propriétés, modifiez la propriété ID de bouton à la valeur <em>btnSave</em> et la propriété Text la valeur *enregistrer\**.
   
 
 Nous avons créé une page avec un contrôle ASP.NET de zone de texte et bouton standard.
@@ -234,9 +234,9 @@ Lorsque vous exécutez la page (en appuyant sur F5), le contrôle bouton est ini
 **Figure 07**: le DisabledButton l’extendeur en action ([cliquez pour afficher l’image en taille réelle](creating-a-custom-ajax-control-toolkit-control-extender-vb/_static/image27.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel est d’expliquer comment vous pouvez étendre les outils de contrôle AJAX avec les contrôles d’extendeur personnalisé. Dans ce didacticiel, nous avons créé un extendeur de contrôle DisabledButton simple. Nous avons implémenté cette extension en créant une classe DisabledButtonExtender, un comportement DisabledButtonBehavior JavaScript et une classe DisabledButtonDesigner. Vous suivez un ensemble similaire d’étapes chaque fois que vous créez un extendeur de contrôle personnalisé.
 
->[!div class="step-by-step"]
-[Précédent](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)

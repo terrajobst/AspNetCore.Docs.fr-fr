@@ -82,7 +82,7 @@ Quand vous avez un projet ASP.NET Core ouvert, Visual Studio affiche le contrôl
 * Activer ou désactiver [la synchronisation automatique CSS](#enable-or-disable-css-auto-sync).
 
 > [!NOTE]
-> Certains plug-ins de Visual Studio, notamment *Web Extension Pack 2015* et *Web Extension Pack 2017*, proposent des fonctionnalités étendues pour le lien du navigateur, mais certaines des fonctionnalités supplémentaires ne fonctionnent pas avec ASP. Projets NET Core.
+> Certains plug-ins Visual Studio, notamment *Web Extension Pack 2015* et *Web Extension Pack 2017*, proposent des fonctionnalités étendues pour le lien du navigateur, mais certaines de ces fonctionnalités ne fonctionnent pas avec ASP. Projets NET Core.
 
 ## <a name="refresh-the-web-application-in-several-browsers-at-once"></a>Actualiser à la fois l’application web dans plusieurs navigateurs
 
@@ -134,7 +134,7 @@ Lorsque la synchronisation automatique CSS est activée, les navigateurs connect
 
 ## <a name="how-does-it-work"></a>Comment cela fonctionne-t-il ?
 
-Lien du navigateur utilise SignalR pour créer un canal de communication entre Visual Studio et le navigateur. Lorsque le lien du navigateur est activée, Visual Studio fait Office de serveur SignalR plusieurs clients (navigateurs) pouvant se connecter à. Lien du navigateur enregistre également un composant d’intergiciel (middleware) dans le pipeline de demande ASP.NET. Ce composant injecte spéciaux `<script>` références dans chaque demande de page à partir du serveur. Vous pouvez consulter les références de script en sélectionnant **afficher la source** dans le navigateur et le défilement à la fin de la `<body>` le contenu de la balise :
+Browser Link utilise SignalR pour créer un canal de communication entre Visual Studio et le navigateur. Quand le lien du navigateur est activé, Visual Studio fait office de serveur SignalR auquel plusieurs clients (navigateurs) peuvent se connecter.  Browser Link enregistre également un composant d’intergiciel (middleware) dans le pipeline de demande ASP.NET. Ce composant injecte des références `<script>` dans chaque demande de page à partir du serveur. Pour voir les références de script, sélectionnez **Afficher la source** dans le navigateur et faites défiler jusqu’à la fin du contenu de la balise `<body>` :
 
 ```javascript
     <!-- Visual Studio Browser Link -->
