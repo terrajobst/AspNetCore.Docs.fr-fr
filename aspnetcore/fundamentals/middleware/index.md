@@ -1,7 +1,7 @@
 ---
 title: Intergiciel (middleware) ASP.NET Core
 author: rick-anderson
-description: "Découvrez le middleware ASP.NET Core et le pipeline de requête."
+description: Découvrez le middleware ASP.NET Core et le pipeline de requête.
 manager: wpickett
 ms.author: riande
 ms.date: 01/22/2018
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 186faa4c02275ae1f4be53f4a2dd4f8325397bd2
-ms.sourcegitcommit: c5ecda3c5b1674b62294cfddcb104e7f0b9ce465
+ms.openlocfilehash: 3312b27f936340a73243224c1a716fe421f178bc
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -30,11 +30,11 @@ Un intergiciel est un logiciel qui est assemblé dans un pipeline d’applicatio
 
 Les délégués de requête sont utilisés pour créer le pipeline de requête. Les délégués de requête gèrent chaque requête HTTP.
 
-Les délégués de requête sont configurés à l’aide des méthodes d’extension [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions), [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) et [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Chaque délégué de requête peut être spécifié inline comme méthode anonyme (appelée intergiciel inline) ou peut être défini dans une classe réutilisable. Ces classes réutilisables et les méthodes anonymes inline sont des *intergiciels* ou des *composants d’intergiciel*. Chaque composant d’intergiciel du pipeline de requête est responsable de l’appel du composant suivant dans le pipeline ou du court-circuit de la chaîne, si nécessaire.
+Les délégués de requête sont configurés à l’aide des méthodes d’extension [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions), [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) et [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Chaque délégué de requête peut être spécifié inline comme méthode anonyme (appelée intergiciel inline) ou peut être défini dans une classe réutilisable. Ces classes réutilisables et les méthodes anonymes inline sont des *intergiciels* ou des *composants d’intergiciel*. Chaque composant d’intergiciel du pipeline de requête est chargé de l’appel du composant suivant dans le pipeline, ou du court-circuit de la chaîne, si nécessaire.
 
-La rubrique [Migration des modules HTTP vers les intergiciels (middleware)](xref:migration/http-modules) explique la différence entre les pipelines de requête dans ASP.NET Core et ASP.NET 4.x, puis fournit d’autres exemples d’intergiciel.
+[Migrer des modules HTTP vers les intergiciels (middleware)](xref:migration/http-modules) explique la différence entre les pipelines de requêtes dans ASP.NET Core et ASP.NET 4.x, puis fournit d’autres exemples d’intergiciels.
 
-## <a name="creating-a-middleware-pipeline-with-iapplicationbuilder"></a>Création d’un pipeline d’intergiciel avec IApplicationBuilder
+## <a name="creating-a-middleware-pipeline-with-iapplicationbuilder"></a>Création d’un pipeline d’intergiciel (middleware) avec IApplicationBuilder
 
 Le pipeline de requête ASP.NET Core se compose d’une séquence de délégués de requête, appelés l’un après l’autre, comme le montre ce diagramme (le thread d’exécution suit les flèches noires) :
 
@@ -109,7 +109,7 @@ public void Configure(IApplicationBuilder app)
 
 Dans le code ci-dessus, `UseExceptionHandler` est le premier composant d’intergiciel ajouté au pipeline. Il intercepte donc toutes les exceptions qui se produisent dans les appels ultérieurs.
 
-L’intergiciel de fichiers statiques est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. L’intergiciel de fichiers statiques ne fournit **aucune** vérification d’autorisation. Tous les fichiers qu’il sert, notamment ceux sous *wwwroot* sont accessibles à tous. Consultez [Utilisation de fichiers statiques](xref:fundamentals/static-files) pour une approche permettant de sécuriser les fichiers statiques.
+L’intergiciel de fichiers statiques est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. L’intergiciel de fichiers statiques ne fournit **aucune** vérification d’autorisation. Tous les fichiers qu’il sert, notamment ceux sous *wwwroot* sont accessibles à tous. Consultez [Utiliser des fichiers statiques](xref:fundamentals/static-files) pour une approche permettant de sécuriser les fichiers statiques.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -200,7 +200,7 @@ ASP.NET Core est fourni avec les composants d’intergiciel suivants et une desc
 | [Mise en cache des réponses](xref:performance/caching/middleware) | Prend en charge la mise en cache des réponses. | Avant les composants qui nécessitent la mise en cache. |
 | [Compression des réponses](xref:performance/response-compression) | Prend en charge la compression des réponses. | Avant les composants qui nécessitent la compression. |
 | [RequestLocalization](xref:fundamentals/localization) | Prend en charge la localisation. | Avant la localisation des composants sensibles. |
-| [Routage](xref:fundamentals/routing) | Définit et contraint des routes de requête. | Terminal pour les routes correspondantes. |
+| [Le routage](xref:fundamentals/routing) | Définit et contraint des routes de requête. | Terminal pour les routes correspondantes. |
 | [Session](xref:fundamentals/app-state) | Prend en charge la gestion des sessions utilisateur. | Avant les composants qui nécessitent la session. |
 | [Fichiers statiques](xref:fundamentals/static-files) | Prend en charge le traitement des fichiers statiques et l’exploration des répertoires. | Terminal si une requête correspond à des fichiers. |
 | [Réécriture d’URL](xref:fundamentals/url-rewriting) | Prend en charge la réécriture d’URL et la redirection des requêtes. | Avant les composants qui consomment l’URL. |
@@ -261,7 +261,7 @@ public class MyMiddleware
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Migration des modules HTTP vers les intergiciels (middleware)](xref:migration/http-modules)
+* [Migrer des modules HTTP vers les intergiciels (middleware)](xref:migration/http-modules)
 * [Démarrage d’une application](xref:fundamentals/startup)
 * [Fonctionnalités de requête](xref:fundamentals/request-features)
 * [Activation d’intergiciel (middleware) basée sur une fabrique](xref:fundamentals/middleware/extensibility)

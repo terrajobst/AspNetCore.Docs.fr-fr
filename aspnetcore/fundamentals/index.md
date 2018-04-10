@@ -1,7 +1,7 @@
 ---
-title: "Notions de base d’ASP.NET Core"
+title: Notions de base d’ASP.NET Core
 author: rick-anderson
-description: "Découvrez les concepts de base permettant de créer des applications ASP.NET Core."
+description: Découvrez les concepts de base permettant de créer des applications ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,48 +10,42 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: be37df7789354ac4ce8e373a1560366be157ffa5
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: b74870c93ea0120e43931bb75f47bab19a6de201
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
 Une application ASP.NET Core est une application console qui crée un serveur web dans sa méthode `Main` :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](../getting-started/sample/aspnetcoreapp/Program2x.cs)]
 
 La méthode `Main` appelle `WebHost.CreateDefaultBuilder`, qui suit le modèle du générateur pour créer un hôte d’application web. Le générateur a des méthodes qui définissent le serveur web (par exemple `UseKestrel`) et la classe de démarrage (`UseStartup`). Dans l’exemple précédent, le serveur web [Kestrel](xref:fundamentals/servers/kestrel) est alloué automatiquement. L’hôte web d’ASP.NET Core tente de s’exécuter sur IIS, s’il est disponible. D’autres serveurs web, tels que [HTTP.sys](xref:fundamentals/servers/httpsys), peuvent être utilisés via l’appel de la méthode d’extension appropriée. `UseStartup` est expliqué de manière plus détaillée dans la section suivante.
 
 `IWebHostBuilder`, le type de retour de l’appel de `WebHost.CreateDefaultBuilder`, fournit de nombreuses méthodes facultatives. Certaines de ces méthodes incluent `UseHttpSys` pour l’hébergement de l’application dans HTTP.sys et `UseContentRoot` pour la spécification du répertoire de contenu racine. Les méthodes `Build` et `Run` génèrent l’objet `IWebHost`, qui héberge l’application et démarre l’écoute des requêtes HTTP.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](../getting-started/sample/aspnetcoreapp/Program.cs)]
 
 La méthode `Main` utilise `WebHostBuilder`, qui suit le modèle du générateur pour créer un hôte d’application web. Le générateur a des méthodes qui définissent le serveur web (par exemple `UseKestrel`) et la classe de démarrage (`UseStartup`). Dans l’exemple précédent, le serveur web [Kestrel](xref:fundamentals/servers/kestrel) est utilisé. D’autres serveurs web, tels que [WebListener](xref:fundamentals/servers/weblistener), peuvent être utilisés via l’appel de la méthode d’extension appropriée. `UseStartup` est expliqué de manière plus détaillée dans la section suivante.
 
 `WebHostBuilder` fournit de nombreuses méthodes facultatives, notamment `UseIISIntegration` pour l’hébergement dans IIS et IIS Express et `UseContentRoot` pour la spécification du répertoire de contenu racine. Les méthodes `Build` et `Run` génèrent l’objet `IWebHost`, qui héberge l’application et démarre l’écoute des requêtes HTTP.
 
----
-
+* * *
 ## <a name="startup"></a>Démarrage
 
 La méthode `UseStartup` sur `WebHostBuilder` spécifie la classe `Startup` pour votre application :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 [!code-csharp[](../getting-started/sample/aspnetcoreapp/Program2x.cs?highlight=10&range=6-17)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 [!code-csharp[](../getting-started/sample/aspnetcoreapp/Program.cs?highlight=7&range=6-17)]
 
----
-
+* * *
 La classe `Startup` est l’emplacement où vous définissez le pipeline de traitement des requêtes et où sont configurés les services nécessaires à l’application. La classe `Startup` doit être publique et contenir les méthodes suivantes :
 
 ```csharp
@@ -96,7 +90,7 @@ Dans ASP.NET Core, vous composez votre pipeline de requêtes à l’aide d’un 
 ASP.NET Core comprend un ensemble complet d’intergiciels (middleware) intégrés :
 
 * [Fichiers statiques](xref:fundamentals/static-files)
-* [Routage](xref:fundamentals/routing)
+* [Le routage](xref:fundamentals/routing)
 * [Authentification](xref:security/authentication/index)
 * [Intergiciel (middleware) de compression des réponses](xref:performance/response-compression)
 * [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting)
@@ -109,7 +103,7 @@ Pour plus d’informations, consultez [Intergiciel (middleware)](xref:fundamenta
 
 Les environnements, tels que « Développement » et « Production », sont une notion de premier plan dans ASP.NET Core. Vous pouvez les définir à l’aide de variables d’environnement.
 
-Pour plus d’informations, consultez [Utilisation de plusieurs environnements](xref:fundamentals/environments).
+Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments).
 
 ## <a name="configuration"></a>Configuration
 
@@ -127,7 +121,7 @@ ASP.NET Core prend en charge une API de journalisation qui fonctionne avec diver
 
 ASP.NET Core offre des fonctionnalités intégrées pour la gestion des erreurs dans les applications, notamment une page d’exceptions du développeur, des pages d’erreurs personnalisées, des pages de code d’état statique et la gestion des exceptions de démarrage.
 
-Pour plus d’informations, consultez [Gestion des erreurs](xref:fundamentals/error-handling).
+Pour plus d’informations, consultez [Guide pratique pour gérer les erreurs](xref:fundamentals/error-handling).
 
 ## <a name="routing"></a>Routage
 
@@ -145,7 +139,7 @@ Pour plus d’informations, consultez [Fournisseurs de fichiers](xref:fundamenta
 
 L’intergiciel (middleware) de fichiers statiques prend en charge des fichiers statiques, tels que HTML, CSS, image et JavaScript.
 
-Pour plus d’informations, consultez [Utilisation des fichiers statiques](xref:fundamentals/static-files).
+Pour plus d’informations, consultez [Utiliser des fichiers statiques](xref:fundamentals/static-files).
 
 ## <a name="hosting"></a>Hébergement
 
