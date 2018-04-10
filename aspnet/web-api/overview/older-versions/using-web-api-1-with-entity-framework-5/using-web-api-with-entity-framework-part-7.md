@@ -16,7 +16,7 @@ ms.openlocfilehash: 2c378e68a1e6600daf655c19afbfe355e89496d4
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="part-7-creating-the-main-page"></a>Partie 7 : Création de la Main Page
 ====================
@@ -94,7 +94,7 @@ Voici les liaisons pour le panier d’achat :
 
 Il effectue une itération sur le tableau de panier et affiche le nom, le prix et la quantité. Notez que le lien « Supprimer » et le bouton « Créer une commande » sont liées à des fonctions de modèle d’affichage.
 
-**Orders**
+**Commandes**
 
 Voici les liaisons pour la liste des commandes :
 

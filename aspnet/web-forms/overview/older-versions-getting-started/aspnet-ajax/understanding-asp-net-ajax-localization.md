@@ -16,7 +16,7 @@ ms.openlocfilehash: 565b0294f57b784bc592b286b3d8b28504110415
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="understanding-aspnet-ajax-localization"></a>Présentation d’ASP.NET AJAX localisation
 ====================
@@ -149,7 +149,7 @@ Comme les applications web augmentent pour atteindre une audience plus large, la
 
 Le .NET Framework intrinsèquement prend en charge une infrastructure riche de localisation, assemblys satellites et fichiers de ressources (.resx) XML pour présenter une méthode uniforme pour rechercher des images et des chaînes de ressources. Les Extensions ASP.NET AJAX, y compris l’infrastructure de Microsoft AJAX et le Script Microsoft AJAX Library, prennent en charge ce modèle de programmation dans le code côté client, l’activation des recherches de chaîne de ressource facile. Assemblys satellites prend en charge l’inscription automatique des ressources de script (fichiers .js réel) via ScriptResource.axd tant que les noms de fichier suivent un schéma d’affectation de noms donné. Avec cette prise en charge, les Extensions ASP.NET AJAX simplifient la localisation de scripts et de la globalisation des applications.
 
-## <a name="bio"></a>*Bio*
+## <a name="bio"></a>*BIO*
 
 Scott caté travaille avec les technologies Microsoft Web depuis 1997 et est le directeur de myKB.com ([www.myKB.com](http://www.myKB.com)) où il est spécialisé dans l’écriture d’ASP.NET en fonction des applications axées sur les solutions logicielles de la Base de connaissances. Scott peut être contacté par courrier électronique en [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) ou son blog à [ScottCate.com](http://ScottCate.com)
 

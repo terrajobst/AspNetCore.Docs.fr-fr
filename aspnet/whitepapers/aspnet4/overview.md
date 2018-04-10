@@ -16,7 +16,7 @@ ms.openlocfilehash: 6ce52c387ff835eda46bc1882b8b974889e2d4af
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 et Visual Studio 2010 Web présentation du développement
 ====================
@@ -69,7 +69,7 @@ ms.lasthandoff: 04/06/2018
 [Prise en charge de l’Annotation de données attribut Validation](#0.2__Toc253429276 "_Toc253429276")  
 [Application auxiliaire](#0.2__Toc253429277 "_Toc253429277")
 
-**[Dynamic Data](#0.2__Toc253429278 "_Toc253429278")**  
+**[Données dynamiques](#0.2__Toc253429278 "_Toc253429278")**  
 [L’activation dynamique des données pour les projets existants](#0.2__Toc253429279 "_Toc253429279")  
 [Syntaxe de déclarative du contrôle DynamicDataManager](#0.2__Toc253429280 "_Toc253429280")  
 [Les modèles d’entité](#0.2__Toc253429281 "_Toc253429281")  
@@ -83,7 +83,7 @@ ms.lasthandoff: 04/06/2018
 **[Améliorations de développement Visual Studio 2010 Web](#0.2__Toc253429288 "_Toc253429288")**  
 [Amélioration de compatibilité CSS](#0.2__Toc253429289 "_Toc253429289")  
 [HTML et des extraits de code JavaScript](#0.2__Toc253429290 "_Toc253429290")  
-[JavaScript IntelliSense Enhancements](#0.2__Toc253429291 "_Toc253429291")
+[Améliorations de JavaScript IntelliSense](#0.2__Toc253429291 "_Toc253429291")
 
 **[Le déploiement d’Application avec Visual Studio 2010 Web](#0.2__Toc253429292 "_Toc253429292")**  
 [Web Packaging](#0.2__Toc253429293 "_Toc253429293")  
@@ -579,7 +579,7 @@ Le code dans l’exemple mappe l’itinéraire à une page physique (dans le pre
 
 Le *MapPageRoute* méthode prend en charge les surcharges de méthode suivantes :
 
-- *MapPageRoute(string routeName, string routeUrl, string physicalFile, bool checkPhysicalUrlAccess)*
+- *MapPageRoute (routeName de chaîne, chaîne routeUrl, physicalFile de chaîne, bool checkPhysicalUrlAccess)*
 - *MapPageRoute (routeName de chaîne, chaîne routeUrl, physicalFile de chaîne, bool checkPhysicalUrlAccess, valeurs par défaut RouteValueDictionary)*
 - *MapPageRoute (routeName de chaîne, chaîne routeUrl, physicalFile de chaîne, bool checkPhysicalUrlAccess, valeurs par défaut RouteValueDictionary, RouteValueDictionary contraintes)*
 
@@ -985,10 +985,10 @@ Vous pouvez ensuite définir une classe CSS qui s’applique uniquement à la *m
 Par défaut, les contrôles serveur Web ASP.NET suivants qui prennent en charge les modèles sont automatiquement inclus dans une table externe qui est utilisée pour appliquer des styles intralignes :
 
 - *FormView*
-- *Connexion*
+- *Login*
 - *PasswordRecovery*
 - *ChangePassword*
-- *Wizard*
+- *Assistant*
 - *CreateUserWizard*
 
 Une nouvelle propriété nommée *RenderOuterTable* a été ajouté à ces contrôles qui permet à la table externe doit être supprimée à partir du balisage. Par exemple, considérez l’exemple suivant d’un *FormView* contrôle :
@@ -1308,7 +1308,7 @@ Visual Studio 2010 inclut des technologies qui répondent à ces problèmes et q
 Fonctionnalités de déploiement Web dans Visual Studio 2010 incluent les principaux domaines suivantes :
 
 - Création de packages Web
-- Transformation Web.config
+- Web.config transformation
 - Déploiement de base de données
 - Publication en un clic pour les applications Web
 
@@ -1331,7 +1331,7 @@ Visual Studio 2010 fournit des tâches MSBuild et les cibles pour créer des pac
 
 <a id="0.2__Toc224729057"></a><a id="0.2__Toc253429294"></a><a id="0.2__Toc243304665"></a>
 
-### <a name="webconfig-transformation"></a>Transformation Web.config
+### <a name="webconfig-transformation"></a>Web.config Transformation
 
 Pour le déploiement d’application Web, Visual Studio 2010 introduit [transformer des documents XML (XDT)](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html), qui est une fonctionnalité qui vous permet de transformer un `Web.config` fichier de paramètres de développement pour les paramètres de production. Les paramètres de transformation sont spécifiés dans les fichiers de transformation nommées `web.debug.config`, `web.release.config`, et ainsi de suite. (Les noms de ces fichiers correspondent aux configurations de MSBuild.) Un fichier de transformation inclut uniquement les modifications que vous devez apporter à un `Web.config` fichier. Vous spécifiez les modifications apportées à l’aide d’une syntaxe simple.
 

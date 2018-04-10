@@ -16,11 +16,11 @@ ms.openlocfilehash: 0dba613594686a28b82bc6d7701cda6e24b82e2e
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="checkout-and-payment-with-paypal"></a>L’extraction et paiement via PayPal
 ====================
-par [Erik Reitan](https://github.com/Erikre)
+by [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -389,7 +389,7 @@ Le **DetailsView** contrôle est utilisé pour afficher les détails des command
 
 > [!NOTE] 
 > 
-> **Tip**
+> **Info-bulle**
 > 
 > Dans le balisage de la *CheckoutReview.aspx* page, notez que le `<ItemStyle>` balise est utilisée pour modifier le style des éléments dans le **DetailsView** contrôle vers le bas de la page. En affichant la page dans **mode** (en sélectionnant **conception** dans l’angle inférieur gauche de Visual Studio), puis en sélectionnant le **DetailsView** contrôler, puis en sélectionnant le  **Balise active** (l’icône de flèche en haut à droite du contrôle), vous ne pourrez pas voir les **Tâches DetailsView**.
 > 

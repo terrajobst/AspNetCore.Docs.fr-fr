@@ -1,6 +1,6 @@
 ---
 uid: whitepapers/mvc4-beta-release-notes
-title: ASP.NET MVC 4 | Documents Microsoft
+title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
 description: Ce document décrit la version de la version bêta d’ASP.NET MVC 4 pour Visual Studio 2010.
 ms.author: aspnetcontent
@@ -16,7 +16,7 @@ ms.openlocfilehash: d29f09d726e835c1eb1fc38e643a4bfe7f00f61c
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 
 - [Notes d’installation](#_Toc303253802)
 - [Documentation](#_Toc303253803)
-- [Support](#_Toc303253804)
+- [Prise en charge](#_Toc303253804)
 - [Configuration logicielle requise](#_Toc303253805)
 - [La mise à niveau d’un projet ASP.NET MVC 3 vers ASP.NET MVC 4](#_Toc303253806)
 - [Nouvelles fonctionnalités de la version bêta d’ASP.NET MVC 4](#_Toc303253807)

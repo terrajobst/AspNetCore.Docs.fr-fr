@@ -16,7 +16,7 @@ ms.openlocfilehash: 978d7980274c072ed559b54ed69ab86245b6c5a7
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="adding-a-view"></a>Ajout d’une vue
 ====================
@@ -77,7 +77,7 @@ Voici le Site.Master dans son intégralité avec notre titre modifié :
 
 Maintenant, nous allons modifier le titre de la page d’Index.
 
-Open /HelloWorld/Index.aspx. Il existe deux emplacements à modifier. Tout d’abord, le titre qui s’affiche dans le titre du navigateur, puis l’en-tête secondaire - qui est H2 - également. Vous allez rendre chaque légèrement différent afin de voir les bits de code modifie la partie de l’application.
+Ouvrez /HelloWorld/Index.aspx. Il existe deux emplacements à modifier. Tout d’abord, le titre qui s’affiche dans le titre du navigateur, puis l’en-tête secondaire - qui est H2 - également. Vous allez rendre chaque légèrement différent afin de voir les bits de code modifie la partie de l’application.
 
 [!code-aspx[Main](getting-started-with-mvc-part3/samples/sample7.aspx)]
 
@@ -112,7 +112,7 @@ Ajoutez ce code sous le &lt;h2&gt; dans votre nouvelle Welcome.aspx. Nous allons
 
 Notez également que lorsque vous tapez qui car nous dit à cette vue sur le WelcomeViewModel (ils sont mariés, n’oubliez pas ?) que nous obtenons Intellisense utile chaque fois que nous référençons notre objet modèle vu dans la capture d’écran ci-dessous :
 
-[![NumTime Source Code](getting-started-with-mvc-part3/_static/image12.png)](getting-started-with-mvc-part3/_static/image11.png)
+[![Code Source de NumTime](getting-started-with-mvc-part3/_static/image12.png)](getting-started-with-mvc-part3/_static/image11.png)
 
 Exécutez votre application, vous accédez à `http://localhost:xx/HelloWorld/Welcome?name=Scott&numtimes=4` à nouveau. Maintenant nous allons prenant des données à partir de l’URL, il a été passée dans notre contrôleur automatiquement, notre contrôleur regroupe les données en un ViewModel et passe cet objet sur notre affichage. La vue qu’affiche les données au format HTML à l’utilisateur.
 

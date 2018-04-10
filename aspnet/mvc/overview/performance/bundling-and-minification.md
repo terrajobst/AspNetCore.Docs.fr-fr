@@ -16,7 +16,7 @@ ms.openlocfilehash: 001ebf89cda66a50cddcd7e4944f27b9396d4450
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="bundling-and-minification"></a>Groupement et minimisation
 ====================
@@ -43,7 +43,7 @@ L’illustration suivante montre la même vue de minutage de la vue à propos d�
 
 ![](bundling-and-minification/_static/image3.png)
 
-## <a name="minification"></a>Minification
+## <a name="minification"></a>Minimisation
 
 Minimisation effectue diverses optimisations de code différentes css, telles que la suppression d’un espace blanc inutile et les commentaires et de raccourcir les noms de variables pour un caractère ou de scripts. Considérez la fonction JavaScript suivante.
 
@@ -55,7 +55,7 @@ Après réduction, la fonction est réduite à ce qui suit :
 
 Outre la suppression des commentaires et espaces inutiles, les paramètres suivants et les noms de variables ont été renommés (abrégé) comme suit :
 
-| **Original** | **Renommé** |
+| **Langue source** | **Renommé** |
 | --- | --- |
 | imageTagAndImageID | n |
 | imageContext | t |
@@ -170,11 +170,11 @@ Le tableau suivant présente les fichiers ajoutés à un groupe en utilisant le 
 
 | **Call** | **Fichiers ajoutés ou Exception levée** |
 | --- | --- |
-| Include("~/Scripts/Common/\*.js") | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
-| Include("~/Scripts/Common/T\*.js") | Exception de modèle non valide. Le caractère générique est uniquement autorisé sur le préfixe ou le suffixe. |
-| Include("~/Scripts/Common/\*og.\*") | Exception de modèle non valide. Qu’un seul caractère générique est autorisé. |
-| "Include("~/Scripts/Common/T\*") | *ToggleDiv.js, ToggleImg.js* |
-| "Include("~/Scripts/Common/\*") | Exception de modèle non valide. Un segment de caractère générique pure n’est pas valide. |
+| Inclure (« ~/Scripts/Common/\*.js ») | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
+| Inclure (« ~/Scripts/Common/T\*.js ») | Exception de modèle non valide. Le caractère générique est uniquement autorisé sur le préfixe ou le suffixe. |
+| Inclure (« ~/Scripts/Common/\*og.\*») | Exception de modèle non valide. Qu’un seul caractère générique est autorisé. |
+| « Inclure (« ~/Scripts/Common/T\*») | *ToggleDiv.js, ToggleImg.js* |
+| « Inclure (« ~/Scripts/Common/\*») | Exception de modèle non valide. Un segment de caractère générique pure n’est pas valide. |
 | IncludeDirectory("~/Scripts/Common", "T\*") | *ToggleDiv.js, ToggleImg.js* |
 | IncludeDirectory("~/Scripts/Common", "T\*",true) | *ToggleDiv.js, ToggleImg.js, ToggleLinks.js* |
 

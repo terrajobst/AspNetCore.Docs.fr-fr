@@ -16,7 +16,7 @@ ms.openlocfilehash: cd91c745624f09d01a326a445bea2bb756576688
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="logging-error-details-with-elmah-c"></a>Journalisation des détails de l’erreur avec ELMAH (c#)
 ====================
@@ -132,7 +132,7 @@ De ELMAH `SqlErrorLog` fournisseur enregistre les détails de l’erreur dans un
 
 **Figure 2**: le `SqlErrorLog` fournisseur utilise trois procédures stockées
 
-## <a name="elmah-in-action"></a>ELMAH en Action
+## <a name="elmah-in-action"></a>ELMAH In Action
 
 À ce stade, nous avons ajouté ELMAH à l’application web, inscrit le `ErrorLogModule` HTTP Module et le `ErrorLogPageFactory` gestionnaire HTTP spécifié les options de configuration de ELMAH dans `Web.config`et ajouté les objets de base de données requis pour la `SqlErrorLog` module fournisseur d’erreur. Nous sommes prêts à voir ELMAH en action ! Visitez le site Web critiques, vous accédez à une page qui génère une erreur d’exécution, telles que `Genre.aspx?ID=foo`, ou une page inexistante, tel que `NoSuchPage.aspx`. Ce que vous voyez lors de la visite de ces pages varie selon le `<customErrors>` configuration et si vous vous visitez localement ou à distance. (Faire référence à la [ *affichage d’une Page d’erreur personnalisée* didacticiel](displaying-a-custom-error-page-cs.md) pour un petit rappel sur cette rubrique.)
 

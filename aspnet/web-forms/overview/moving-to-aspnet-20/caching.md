@@ -16,7 +16,7 @@ ms.openlocfilehash: 90faaae75cc85585efa05e6e50eabe8c990d076e
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="caching"></a>Mise en cache
 ====================
@@ -158,7 +158,7 @@ L’exemple suivant configure un contrôle de source de données pour la dépend
 
 Dans ce cas, si la requête spécifiée dans le **SelectCommand** retourne un résultat différent qu’elle ne l’avez fait, les résultats sont mis en cache sont invalidés.
 
-Vous pouvez également spécifier que toutes vos sources de données soit activée pour les dépendances de cache SQL en définissant le **SqlDependency** attribut de la **@ OutputCache** directive **CommandNotification** . L’exemple ci-dessous illustre ce comportement.
+Vous pouvez également spécifier que toutes vos sources de données soit activée pour les dépendances de cache SQL en définissant le **SqlDependency** attribut de la **@ OutputCache** directive **CommandNotification **. L’exemple ci-dessous illustre ce comportement.
 
 [!code-aspx[Main](caching/samples/sample13.aspx)]
 

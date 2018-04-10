@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/mvc51-release-notes
-title: "Quelles sont les nouveautés dans ASP.NET MVC 5.1 | Documents Microsoft"
+title: Quelles sont les nouveautés dans ASP.NET MVC 5.1 | Documents Microsoft
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/releases/mvc51-release-notes
 msc.type: authoredcontent
 ms.openlocfilehash: be10486c9fd39738f44cdda4fedb409058017601
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/10/2018
 ---
 <a name="whats-new-in-aspnet-mvc-51"></a>Quelles sont les nouveautés dans ASP.NET MVC 5.1
 ====================
@@ -54,7 +54,7 @@ Vous pouvez installer ou mettre à jour pour les packages NuGet publiés à l’
 <a id="documentation"></a>
 ## <a name="documentation"></a>Documentation
 
-Didacticiels et autres informations sur ASP.NET MVC 5.1 RTM sont disponibles à partir du site web ASP.NET (https://www.asp.net). 
+Didacticiels et autres informations sur ASP.NET MVC 5.1 RTM sont disponibles à partir du site web ASP.NET ( https://www.asp.net). 
 
 <a id="new-features"></a>
 ## <a name="new-features-in-aspnet-mvc-51"></a>Nouvelles fonctionnalités dans ASP.NET MVC 5.1
@@ -84,7 +84,7 @@ Vous pouvez voir un exemple complet [ici](https://aspnet.codeplex.com/SourceCont
 
 Nous avons maintenant autoriser la transmission des attributs HTML dans [EditorFor](https://msdn.microsoft.com/en-us/library/system.web.mvc.html.editorextensions.editorfor(v=vs.100).aspx) comme un [objet anonyme](https://msdn.microsoft.com/en-us/library/bb397696.aspx).
 
-Exemple :
+Par exemple :
 
 [!code-cshtml[Main](mvc51-release-notes/samples/sample3.cshtml)]
 
@@ -98,7 +98,7 @@ La validation côté client pour les types string et array sera désormais être
 
 ### <a name="supporting-the-this-context-in-unobtrusive-ajax"></a>Prise en charge le contexte de 'THI' dans Ajax discrète
 
-Les fonctions de rappel (`OnBegin, OnComplete, OnFailure, OnSuccess`) sera désormais en mesure de trouver l’élément appelant via le `this` contexte. Exemple :
+Les fonctions de rappel (`OnBegin, OnComplete, OnFailure, OnSuccess`) sera désormais en mesure de trouver l’élément appelant via le `this` contexte. Par exemple :
 
 [!code-html[Main](mvc51-release-notes/samples/sample4.html)]
 

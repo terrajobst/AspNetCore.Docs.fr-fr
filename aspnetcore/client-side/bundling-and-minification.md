@@ -15,7 +15,7 @@ ms.openlocfilehash: a155422c0fd638f46fe4a9d8a77faebc0b2a5681
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>Regroupement et minifiy actifs statiques dans ASP.NET Core
 
@@ -33,7 +33,7 @@ Groupement et la minimisation principalement améliorent le premier temps de cha
 
 Regroupement de combine plusieurs fichiers dans un seul fichier. Regroupement réduit le nombre de demandes de serveur qui sont nécessaires pour afficher une ressource web, par exemple une page web. Vous pouvez créer n’importe quel nombre de lots individuels spécifiquement pour CSS, JavaScript, etc. Moins de fichiers signifie moins de demandes HTTP à partir du navigateur sur le serveur ou dans le service de fourniture de votre application. Il en résulte dans amélioration des performances de charge première page.
 
-### <a name="minification"></a>Minification
+### <a name="minification"></a>Minimisation
 
 Minimisation supprime les caractères inutiles à partir de code sans modifier les fonctionnalités. Il en résulte une réduction de taille importante de ressources demandées (par exemple, CSS, des images et des fichiers JavaScript). Les effets secondaires communs de minimisation incluent raccourcir les noms de variables pour un caractère et de suppression de commentaires et espaces inutiles.
 
@@ -79,13 +79,13 @@ Options de configuration sont les suivantes :
 
 * `outputFileName`: Le nom du fichier d’offre groupée de sortie. Peut contenir un chemin d’accès relatif à partir de la *bundleconfig.json* fichier. **required**
 * `inputFiles`: Un tableau de fichiers à regrouper. Voici les chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide entraîne un fichier de sortie vide. [la globalisation](http://www.tldp.org/LDP/abs/html/globbingref.html) modèles sont pris en charge.
-* `minify`: Options de réduction pour le type de sortie. **optional**, *default - `minify: { enabled: true }`*
+* `minify`: Options de réduction pour le type de sortie. **facultatif**, *par défaut : `minify: { enabled: true }`*
   * Options de configuration sont disponibles par type de fichier de sortie.
     * [Minimisation CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minimisation de JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minimisation de HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: Indicateur indiquant s’il faut ajouter les fichiers générés au fichier projet. **optional**, *default - false*
-* `sourceMap`: Indicateur précisant s’il faut générer une carte de code source pour le fichier regroupé. **optional**, *default - false*
+* `includeInProject`: Indicateur indiquant s’il faut ajouter les fichiers générés au fichier projet. **facultatif**, *par défaut : false*
+* `sourceMap`: Indicateur précisant s’il faut générer une carte de code source pour le fichier regroupé. **facultatif**, *par défaut : false*
 * `sourceMapRootPath`: Le chemin d’accès racine pour stocker le fichier de mappage de source.
 
 ## <a name="build-time-execution-of-bundling-and-minification"></a>Exécution du moment de la génération du groupement et minimisation
@@ -313,5 +313,5 @@ Dans cet exemple, toutes les tâches définies dans le `MyPreCompileTarget` cibl
 
 * [Utiliser Gulp](xref:client-side/using-gulp)
 * [Utiliser Grunt](xref:client-side/using-grunt)
-* [Travailler avec plusieurs environnements](xref:fundamentals/environments)
+* [Utiliser plusieurs environnements](xref:fundamentals/environments)
 * [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)

@@ -1,6 +1,6 @@
 ---
 uid: whitepapers/mvc3-release-notes
-title: ASP.NET MVC 3 | Documents Microsoft
+title: ASP.NET MVC 3 | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -16,7 +16,7 @@ ms.openlocfilehash: 0bfe9cdc215226457ccfafff2b85ace87325b91b
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -24,7 +24,7 @@ ms.lasthandoff: 04/06/2018
 - [Notes d’installation](#installation-notes)
 - [Configuration logicielle requise](#software-requirements)
 - [Documentation](#documentation)
-- [Support](#support)
+- [Prise en charge](#support)
 - [La mise à niveau d’un projet ASP.NET MVC 2 vers ASP.NET MVC 3 Tools mettre à jour les](#upgrading)
 - [ASP.NET MVC 3 Tools Update (12 avril 2011)](#tu-changes)
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 04/06/2018
     - [Les propriétés renommé « Controller.ViewModel » et « Vue » à « ViewBag »](#_Toc2_4)
     - [Classe renommé « ControllerSessionStateAttribute » à « SessionStateAttribute »](#_Toc2_5)
     - [Propriété RemoteAttribute renommé « Champs » « AdditionalFields »](#_Toc2_6)
-    - [Renamed "SkipRequestValidationAttribute" to "AllowHtmlAttribute"](#_Toc2_7)
+    - [Renommé « SkipRequestValidationAttribute » à « AllowHtmlAttribute »](#_Toc2_7)
     - [Méthode modifiées « Html.ValidationMessage » pour afficher le premier Message d’erreur utiles](#_Toc2_8)
     - [Fixe @model déclaration de ne pas ajouter un espace blanc au Document](#_Toc2_9)
     - [Propriété ajoutée « FileExtensions » pour les moteurs d’affichage pour prendre en charge les noms de fichiers de moteur spécifique](#_Toc2_10)
@@ -675,7 +675,7 @@ La nouvelle technologie de Pages Web ASP.NET inclut un ensemble de méthodes d�
 | Chiffrement | Utilise le hachage d’algorithmes pour créer correctement salé et hacher les mots de passe. |
 | WebGrid | Affiche une collection d’objets (en règle générale, les données à partir d’une base de données) sous la forme d’une grille. Prend en charge la pagination et le tri. |
 | WebImage | Restitue une image. |
-| Messagerie Web | Envoie un e-mail. |
+| WebMail | Envoie un e-mail. |
 
 Une rubrique de référence rapide qui répertorie les programmes d’assistance et la syntaxe de base est disponible en tant que partie de la documentation de la syntaxe ASP.NET Razor à l’URL suivante :
 

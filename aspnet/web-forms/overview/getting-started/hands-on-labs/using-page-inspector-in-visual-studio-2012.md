@@ -16,7 +16,7 @@ ms.openlocfilehash: 052d29dba170d403c2b1c1667c55fc2c34045615
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="using-page-inspector-in-visual-studio-2012"></a>À l’aide de l’inspecteur de Page dans Visual Studio 2012
 ====================
@@ -128,7 +128,7 @@ Dans cette tâche, vous allez apprendre à utiliser l’inspecteur de Page dans 
 
     Cet outil vous permettra de sélectionner un élément de la page et de voir son code HTML et Razor.
 
-    ![Toggle-Inspection-Mode-button](using-page-inspector-in-visual-studio-2012/_static/image4.png)
+    ![Bouton bascule-Inspection-Mode](using-page-inspector-in-visual-studio-2012/_static/image4.png)
 
     *Bouton bascule du Mode d’Inspection*
 6. Dans le navigateur de l’inspecteur de Page, déplacez le pointeur de la souris sur les éléments de page. Lorsque vous déplacez le pointeur de la souris sur n’importe quelle partie de la page rendue, le type d’élément est affiché et le balisage source ou le code correspondant est mis en surbrillance dans l’éditeur Visual Studio.

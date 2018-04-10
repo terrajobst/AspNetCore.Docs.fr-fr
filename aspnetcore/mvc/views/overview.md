@@ -1,7 +1,7 @@
 ---
 title: Vues dans ASP.NET Core MVC
 author: ardalis
-description: "Découvrez comment les vues gèrent la présentation des données et les interactions utilisateur dans les applications ASP.NET Core MVC."
+description: Découvrez comment les vues gèrent la présentation des données et les interactions utilisateur dans les applications ASP.NET Core MVC.
 manager: wpickett
 ms.author: riande
 ms.date: 12/12/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: bab08e75652c75b371438581d6e9f56541844a61
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: HT
+ms.openlocfilehash: b9af2068aec4326585eb2a8994399a16461db3be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
@@ -27,9 +27,9 @@ Dans ASP.NET Core MVC, les vues sont des fichiers *.cshtml* qui utilisent le [la
 
 ![Dossier Vues développé dans l’Explorateur de solutions de Visual Studio, avec le dossier Accueil ouvert contenant les fichiers About.cshtml, Contact.cshtml et Index.cshtml](overview/_static/views_solution_explorer.png)
 
-Le contrôleur *Home* est représenté par un dossier *Accueil* dans le dossier *Vues*. Le dossier *Accueil* contient les vues associées aux pages d’accueil web *About*, *Contact* et *Index*. Quand un utilisateur demande l’une de ces trois pages web, les actions dans le contrôleur *Home* déterminent laquelle des trois vues est utilisée pour générer une page web et la retourner à l’utilisateur.
+Le contrôleur *Home* est représenté par un dossier *Home* à l’intérieur du dossier *vues*. Le dossier *Home* contient les vues pour les pages web *About*, *Contact*, et *Index* (page d’accueil). Quand un utilisateur demande une de ces trois pages Web, les actions de contrôleur dans le contrôleur *Home* sont utilisées afin de déterminer laquelle des trois vues est utilisée pour générer et retourner une page Web à l’utilisateur.
 
-Utilisez des [dispositions](xref:mvc/views/layout) pour rendre les sections de page web homogènes et réduire la répétition de code. Les dispositions contiennent souvent l’en-tête, des éléments de menu et de navigation, ainsi que le pied de page. L’en-tête et le pied de page renferment généralement le code de balisage réutilisable pour divers éléments de métadonnées, et les liens vers des ressources de script et de style. Les dispositions vous permettent de limiter l’usage de ce balisage réutilisable dans vos vues.
+Utilisez [dispositions](xref:mvc/views/layout) pour fournir des sections cohérentes de page Web et de réduire la redondance du code. Les dispositions contiennent souvent l’en-tête, des éléments de menu et de navigation, et le pied de page. L’en-tête et le pied de page contiennent généralement des balises standard pour de nombreux éléments de métadonnées et des liens vers des ressources de script et de style. Les dispositions vous aident à éviter ce balisage réutilisable dans vos vues.
 
 Les [vues partielles](xref:mvc/views/partial) réduisent la répétition de code grâce à la gestion des parties réutilisables dans les vues. Par exemple, une vue partielle est utile dans le cas d’une biographie d’auteur publiée sur un site web de blog qui doit s’afficher dans plusieurs vues. Une biographie d’auteur présente un contenu de vue standard et ne nécessite pas d’exécution de code particulier pour générer le contenu à afficher sur la page web. Le contenu de la biographie d’auteur est fourni à la vue uniquement par la liaison de données. C’est pourquoi l’utilisation d’une vue partielle pour ce type de contenu est la solution la plus appropriée.
 
@@ -37,36 +37,36 @@ Les [composants de vue](xref:mvc/views/view-components) sont similaires aux vues
 
 ## <a name="benefits-of-using-views"></a>Avantages de l’utilisation des vues
 
-Les vues facilitent l’implémentation du principe de conception basé sur la séparation des préoccupations (ou principe SoC, [**S**eparation **o**f **C**oncerns)](http://deviq.com/separation-of-concerns/) au sein d’une application MVC. En effet, elles permettent de séparer le balisage de l’interface utilisateur des autres parties de l’application. Une application conçue selon ce principe présente une plus grande modularité, ce qui offre plusieurs avantages :
+Les vues permettent d’établir une [ **S**eparation **o**f **C**oncerns (SoC) conception](http://deviq.com/separation-of-concerns/) au sein d’une application MVC en séparant le balisage de l'interface utilisateur des autres parties de l’application. Suivre les principes de la conception SoC rend votre application modulaire, ce qui offre plusieurs avantages :
 
-* L’application est plus facile à gérer, car elle est mieux organisée. Les vues sont généralement regroupées par fonctionnalité dans l’application. Vous pouvez ainsi trouver plus rapidement les vues associées quand vous utilisez une fonctionnalité.
-* Les différentes parties de l’application sont faiblement couplées. Vous pouvez générer et mettre à jour les vues de l’application séparément de la logique métier et des composants d’accès aux données. Vous pouvez modifier les vues de l’application sans avoir nécessairement besoin de mettre à jour d’autres parties de l’application.
+* L’application est plus facile à gérer, car elle est mieux organisée. Les vues sont généralement regroupées en fonction de l’application. Cela rend plus facile à trouver les vues associées lorsque vous travaillez sur une fonctionnalité.
+* Les parties de l’application sont faiblement couplées. Vous pouvez créer et mettre à jour des vues de l’application séparément dans les composants de logique métier et d’accès aux données. Vous pouvez modifier les vues de l’application sans nécessairement devoir mettre à jour des autres parties de l’application.
 * Il est plus facile de tester les parties de l’interface utilisateur de l’application, car les vues constituent des unités individuelles séparées.
-* Du fait que l’application est mieux organisée, vous risquez moins de répéter par inadvertance certaines sections de l’interface utilisateur.
+* En raison d’une meilleure organisation, le risque est moins grand de répéter accidentellement des sections de l’interface utilisateur.
 
 ## <a name="creating-a-view"></a>Création d’une vue
 
-Les vues associées à un contrôleur spécifique sont créées dans le dossier *Vues/[nom_contrôleur]*. Les vues communes à plusieurs contrôleurs sont créées dans le dossier *Vues/Partagé*. Pour créer une vue, ajoutez un nouveau fichier et attribuez-lui le même nom que son action de contrôleur associée, avec l’extension de fichier *.cshtml*. Pour créer une vue correspondant à l’action *About* dans le contrôleur *Home*, créez un fichier *About.cshtml* dans le dossier *Vues/Accueil* :
+Les vues qui sont spécifiques à un contrôleur sont créées dans le dossier *Views/[nom du contrôleur]*. Les vues qui sont partagées entre les contrôleurs sont placées dans le dossier *Views/Shared*. Pour créer une vue, ajoutez un nouveau fichier et donnez-lui le même nom que son action de contrôleur associée avec l’extension de fichier *.cshtml*. Pour créer une vue qui correspond à l'action *About* dans le contrôleur *Home*, créez un fichier *About.cshtml* dans le dossier *Views/Home* :
 
-[!code-cshtml[Main](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/Home/About.cshtml)]
 
-Le balisage *Razor* commence par le symbole `@`. Pour exécuter des instructions C#, placez le code C# dans des [blocs de code Razor](xref:mvc/views/razor#razor-code-blocks) délimités par des accolades (`{ ... }`). L’exemple ci-dessus montre comment attribuer la valeur « About » à `ViewData["Title"]`. Vous pouvez afficher des valeurs dans le code HTML simplement en référençant chaque valeur avec le symbole `@`. Le code ci-dessus donne un exemple de contenu des éléments `<h2>` et `<h3>`.
+La syntaxe *Razor* commence par le symbole `@`. Exécutez des instructions c# en plaçant du code c# dans des [blocs de code Razor](xref:mvc/views/razor#razor-code-blocks) délimités par des accolades (`{ ... }`). Par exemple, consultez l’affectation de « About » pour `ViewData["Title"]` ci-dessus. Vous pouvez afficher des valeurs dans le code HTML en référençant simplement la valeur avec le symbole `@`. Consultez le contenu des éléments `<h2>` et `<h3>` ci-dessus.
 
-Le contenu de la vue illustré ci-dessus est uniquement une partie de la page web entière qui est affichée à l’utilisateur. Le reste de la disposition de la page et les autres aspects communs de la vue sont spécifiés dans d’autres fichiers de vue. Pour en savoir plus, consultez l’article [Disposition](xref:mvc/views/layout).
+Le contenu de la vue ci-dessus n'est qu’une partie de la page Web entière qui est restituée à l’utilisateur. Le reste de la mise en page et d’autres aspects courants de la vue sont spécifiés dans d’autres fichiers de vue. Pour plus d’informations, consultez la [rubrique de présentation](xref:mvc/views/layout).
 
-## <a name="how-controllers-specify-views"></a>Comment les contrôleurs spécifient-ils les vues ?
+## <a name="how-controllers-specify-views"></a>Comment les contrôleurs spécifient les vues
 
 Les vues sont généralement retournées par des actions sous forme d’objet [ViewResult](/aspnet/core/api/microsoft.aspnetcore.mvc.viewresult), qui est un type d’objet [ActionResult](/aspnet/core/api/microsoft.aspnetcore.mvc.actionresult). Votre méthode d’action peut créer et retourner un `ViewResult` directement, mais cela n’est pas le plus fréquent. Étant donné que la plupart des contrôleurs héritent de [Controller](/aspnet/core/api/microsoft.aspnetcore.mvc.controller), utilisez simplement la méthode d’assistance `View` pour retourner le `ViewResult` :
 
 *HomeController.cs*
 
-[!code-csharp[Main](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
+[!code-csharp[](../../common/samples/WebApplication1/Controllers/HomeController.cs?highlight=5&range=16-21)]
 
-Quand cette action est retournée, la vue *About.cshtml* figurant dans la dernière section s’affiche dans la page web comme ceci :
+Lorsque cette action est retournée, la vue *About.cshtml* indiquée dans la dernière section est restituée en tant que page Web :
 
 ![Page About affichée dans le navigateur Edge](overview/_static/about-page.png)
 
-La méthode d’assistance `View` a plusieurs surcharges. Vous pouvez éventuellement spécifier :
+La méthode helper `View` a plusieurs surcharges. Vous pouvez éventuellement spécifier :
 
 * Une vue explicite à retourner :
 
@@ -86,13 +86,13 @@ La méthode d’assistance `View` a plusieurs surcharges. Vous pouvez éventuell
 
 ### <a name="view-discovery"></a>Détection de la vue
 
-Quand une action doit retourner une vue, un processus appelé *détection de la vue* s’enclenche. Ce processus détermine quel fichier de vue est utilisé en fonction du nom de la vue. 
+Lorsqu’une action retourne une vue, un processus appelé *détection de la vue* a lieu. Ce processus détermine quel fichier est utilisé en fonction du nom de la vue. 
 
 Le comportement par défaut de la méthode `View` (`return View();`) est de retourner une vue du même nom que la méthode d’action à partir de laquelle elle est appelée. Par exemple, le nom de la méthode `ActionResult` *About* du contrôleur est utilisé pour rechercher un fichier de vue nommé *About.cshtml*. Le Runtime commence par rechercher la vue dans le dossier *Vues/[nom_contrôleur]*. S’il ne trouve pas de vue correspondante, il recherche ensuite la vue dans le dossier *Partagé*.
 
 Peu importe si vous retournez implicitement `ViewResult` avec `return View();` ou si vous passez explicitement le nom de la vue à la méthode `View` avec `return View("<ViewName>");`. Dans les deux cas, la détection de la vue recherche un fichier de vue correspondant dans cet ordre :
 
-   1. *Vues/\[nom_contrôleur]\[nom_vue].cshtml*
+   1. *Vues /\[ControllerName] /\[ViewName] .cshtml*
    1. *Vues/Partagé/\[nom_vue].cshtml*
 
 Vous pouvez spécifier le chemin du fichier de vue au lieu du nom de la vue. Si vous utilisez un chemin absolu à partir de la racine de l’application (commençant éventuellement par « / » ou « ~/ »), vous devez indiquer l’extension *.cshtml* :
@@ -123,7 +123,7 @@ Suivez les bonnes pratiques en matière d’organisation de la structure des fic
 
 ## <a name="passing-data-to-views"></a>Passage de données aux vues
 
-Plusieurs approches sont possibles pour passer des données aux vues. L’approche la plus fiable consiste à spécifier un type de [modèle](xref:mvc/models/model-binding) dans la vue. Ce modèle est communément appelé *ViewModel*. Vous passez une instance de type ViewModel à la vue à partir de l’action.
+Vous pouvez passer des données pour les vues à l’aide de plusieurs approches. L’approche la plus fiable consiste à spécifier un [modèle](xref:mvc/models/model-binding) type dans la vue. Ce modèle est communément appelé un *viewmodel*. Vous passez une instance du type viewmodel à la vue à partir de l’action.
 
 L’utilisation d’un ViewModel pour passer des données à une vue vous permet d’effectuer un contrôle de type *fort* dans la vue. Le terme *typage fort* (ou *fortement typé*) signifie que chaque variable et constante a un type défini explicitement (par exemple, `string`, `int` ou `DateTime`). La validité des types utilisés dans une vue est contrôlée au moment de la compilation.
 
@@ -162,7 +162,7 @@ public IActionResult Contact()
 }
 ```
 
-Il n’y a pas de restrictions relatives aux types de modèles que vous pouvez fournir à une vue. Nous vous recommandons d’utiliser des ViewModel de type OCT (appelé aussi POCO, **P**lain **O**ld **C**LR **O**bject), avec peu ou pas de méthodes de comportement définies. En règle générale, les classes ViewModel sont stockées dans le dossier *Modèles* ou dans un dossier *ViewModels* distinct à la racine de l’application. Le ViewModel *Address* utilisé dans l’exemple ci-dessus est un ViewModel OCT stocké dans un fichier nommé *Address.cs* :
+Il n’existe aucune restriction sur les types de modèles que vous pouvez fournir à une vue. Nous vous recommandons d’utiliser des modèles de vue **P****O****C****O**avec peu ou pas de comportements (méthodes) définis. En règle générale, les classes viewmodel sont soit stockées dans le dossier *Models* ou dans un dossier *ViewModels* distinct à la racine de l’application. Le viewmodel *Adress* utilisé dans l’exemple ci-dessus est un viewmodel POCO stocké dans un fichier nommé *Address.cs*:
 
 ```csharp
 namespace WebApplication1.ViewModels
@@ -350,6 +350,6 @@ Cette fonctionnalité offre beaucoup de flexibilité, mais elle ne fournit pas d
 
 Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent d’ajouter facilement un comportement côté serveur dans des balises HTML existantes. Leur utilisation vous évite d’avoir à écrire du code personnalisé ou des méthodes d’assistance dans les vues. Les Tag Helpers sont appliqués comme attributs aux éléments HTML et sont ignorés par les éditeurs qui ne peuvent pas les traiter. Vous pouvez ainsi modifier et afficher le balisage des vues dans divers outils.
 
-La génération d’un balisage HTML personnalisé est possible avec de nombreux HTML Helpers intégrés. Si vous avez une logique d’interface utilisateur plus complexe, gérez-la avec les [composants de vue](xref:mvc/views/view-components). Les composants de vue sont conçus sur le même principe de séparation des préoccupations (SoC) que les contrôleurs et les vues. Ils vous évitent de devoir utiliser des actions et des vues pour le traitement des données utilisées par les éléments d’interface utilisateur communs.
+Générer un balisage HTML personnalisé peut être obtenu avec de nombreux helpers HTML intégrés. Une logique plus complexe de l’interface utilisateur peut être gérée par des [composants de vue](xref:mvc/views/view-components). Les composants de vue fournissent la même séparation de responsabilité (SoC) que les contrôleurs et les vues offrent. Il peuvent éliminer le besoin d'utiliser des actions ou des vues qui traitent les données utilisées par les éléments d’interface couramment utilisés.
 
 Comme de nombreux autres aspects d’ASP.NET Core, les vues prennent en charge [l’injection de dépendances](xref:fundamentals/dependency-injection), ce qui permet aux services d’être [injectés dans les vues](xref:mvc/views/dependency-injection).

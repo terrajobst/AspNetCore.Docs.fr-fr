@@ -16,7 +16,7 @@ ms.openlocfilehash: a4ea7e76e023cd436d1d8ac52307a3ac17267fef
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="creating-and-managing-roles-c"></a>Création et la gestion des rôles (c#)
 ====================
@@ -97,7 +97,7 @@ Du fournisseur `connectionStringName` attribut spécifie le magasin de rôles qu
 Par conséquent, si nous avons simplement permettre à l’infrastructure de rôles sans spécification de toutes les informations de fournisseur de notre application `Web.config` fichier, l’application utilise le fournisseur de rôles par défaut enregistré, `AspNetSqlRoleProvider`. Si le `~/App_Data/aspnet.mdf` base de données n’existe pas, le runtime ASP.NET crée automatiquement et ajoutez le schéma de services d’application. Toutefois, nous ne souhaitez pas utiliser le `aspnet.mdf` base de données ; au lieu de cela, nous souhaitons utiliser le `SecurityTutorials.mdf` que nous avons déjà créé et ajouté le schéma de services d’application de base de données. Cette modification peut être accomplie de deux manières :
 
 - <strong>Spécifiez une valeur pour le</strong><strong>`LocalSqlServer`</strong><strong>nom de chaîne de connexion dans</strong><strong>`Web.config`</strong><strong>.</strong> En remplaçant le `LocalSqlServer` valeur du nom de chaîne de connexion `Web.config`, nous pouvons utiliser le fournisseur de rôles par défaut enregistré (`AspNetSqlRoleProvider`) et qu’il fonctionne correctement avec le `SecurityTutorials.mdf` base de données. Pour plus d’informations sur cette technique, consultez [Scott Guthrie](https://weblogs.asp.net/scottgu/)du billet de blog, [configurer les Services d’Application ASP.NET 2.0 pour utiliser SQL Server 2000 ou SQL Server 2005](https://weblogs.asp.net/scottgu/archive/2005/08/25/423703.aspx).
-- <strong>Ajouter un nouveau fournisseur inscrit de type</strong><strong>`SqlRoleProvider`</strong><strong>et configurer ses</strong><strong>`connectionStringName`</strong><strong>paramètre pour pointer vers le</strong> <strong>`SecurityTutorials.mdf`</strong> <strong>base de données.</strong> C’est l’approche recommandée et de l’utilisées dans le <a id="_msoanchor_7"> </a> [ *création du schéma de l’appartenance dans SQL Server* ](../membership/creating-the-membership-schema-in-sql-server-cs.md) didacticiel et il est l’approche, vous allez utiliser dans ce didacticiel également.
+- <strong>Ajouter un nouveau fournisseur inscrit de type</strong><strong>`SqlRoleProvider`</strong><strong>et configurer ses</strong><strong>`connectionStringName`</strong><strong>paramètre pour pointer vers le</strong> <strong> `SecurityTutorials.mdf` </strong> <strong>base de données.</strong> C’est l’approche recommandée et de l’utilisées dans le <a id="_msoanchor_7"> </a> [ *création du schéma de l’appartenance dans SQL Server* ](../membership/creating-the-membership-schema-in-sql-server-cs.md) didacticiel et il est l’approche, vous allez utiliser dans ce didacticiel également.
 
 Ajoutez le balisage de configuration de rôles suivant à la `Web.config` fichier. Ce balisage enregistre un nouveau fournisseur nommé `SecurityTutorialsSqlRoleProvider`.
 
@@ -263,7 +263,7 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est * [SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 

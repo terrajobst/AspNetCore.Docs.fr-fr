@@ -16,7 +16,7 @@ ms.openlocfilehash: 9a0d476ffaf1f176c21b245520fa943f66e8c0d5
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="user-based-authorization-c"></a>Autorisation basée sur l’utilisateur (c#)
 ====================
@@ -217,7 +217,7 @@ Ces règles d’autorisation de granularité fine peuvent être implémentés de
 Nous allons créer une page qui répertorie les fichiers dans un répertoire particulier dans un GridView. En même temps que l’affichage de la liste nom de chaque fichier, de taille et d’autres informations, le contrôle GridView inclut deux colonnes de LinkButton : un intitulé vue et supprimez intitulé. Si un clic sur le bouton de lien de vue, le contenu du fichier sélectionné s’affichera ; Si l’utilisateur clique sur le bouton de lien Supprimer, le fichier sera supprimé. Nous allons créer initialement cette page de telle sorte que ses fonctionnalités d’affichage et de suppression ne soient disponible pour tous les utilisateurs. Dans la les sections de contrôle LoginView et limitant par programme les fonctionnalités que nous allons voir comment activer ou désactiver ces fonctionnalités en fonction de l’utilisateur sur la page.
 
 > [!NOTE]
-> Nous sommes sur le point de créer la page ASP.NET utilise un contrôle GridView pour afficher une liste de fichiers. Depuis ce didacticiel série se concentre sur l’authentification par formulaire, l’autorisation, les comptes d’utilisateurs et rôles, je ne souhaite pas passer trop de temps d’aborder le fonctionnement interne du contrôle GridView. Alors que ce didacticiel fournit des instructions spécifiques pour la configuration de cette page, il ne pas étudier en détail pourquoi certains choix ont été apportées, ou ce qui ont les propriétés particulières d’effet sur la sortie rendue. Pour un examen approfondi du contrôle GridView, consultez Mes *[utilisation des données dans ASP.NET 2.0](../../data-access/index.md)* série de didacticiels.
+> Nous sommes sur le point de créer la page ASP.NET utilise un contrôle GridView pour afficher une liste de fichiers. Depuis ce didacticiel série se concentre sur l’authentification par formulaire, l’autorisation, les comptes d’utilisateurs et rôles, je ne souhaite pas passer trop de temps d’aborder le fonctionnement interne du contrôle GridView. Alors que ce didacticiel fournit des instructions spécifiques pour la configuration de cette page, il ne pas étudier en détail pourquoi certains choix ont été apportées, ou ce qui ont les propriétés particulières d’effet sur la sortie rendue. Pour un examen approfondi du contrôle GridView, consultez Mes * [utilisation des données dans ASP.NET 2.0](../../data-access/index.md) * série de didacticiels.
 
 
 Commencez par ouvrir le `UserBasedAuthorization.aspx` de fichiers dans le `Membership` dossier et l’ajout d’un contrôle GridView à la page nommée `FilesGrid`. À partir de la balise de GridView, cliquez sur le lien Modifier les colonnes pour ouvrir la boîte de dialogue champs. À ce stade, désactivez les générer automatiquement des champs dans l’angle inférieur gauche. Ensuite, ajoutez un bouton de sélection et deux BoundFields un bouton Supprimer à partir de l’angle supérieur gauche (les boutons Sélectionner et supprimer se trouve dans le type CommandField). Définir le bouton de sélection `SelectText` à la vue et de la première BoundField `HeaderText` et `DataField` propriétés nom. Définir le BoundField deuxième `HeaderText` propriété à la taille en octets, son `DataField` propriété de longueur, son `DataFormatString` propriété {0 : N0} et son `HtmlEncode` propriété sur False.
@@ -408,7 +408,7 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est * [SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
