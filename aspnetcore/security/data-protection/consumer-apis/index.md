@@ -1,7 +1,7 @@
 ---
-title: "API de contrôle serveur consommateur"
+title: API de contrôle serveur consommateur pour ASP.NET Core
 author: rick-anderson
-description: "Ce document constitue la table des matières des différentes rubriques relatives à la protection des données d’API consommateur ASP.NET Core."
+description: Découvrez plus d’informations sur les questions de protection des données des API de contrôle serveur consommateur d’ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,22 +9,22 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/index
-ms.openlocfilehash: a36dbaa7c34ed0cd99bfb2b27a9d59b81ffccbcf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d7ca1104b0a14a330df8d13be58425b3371bff73
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="consumer-apis"></a><span data-ttu-id="c101a-103">API de contrôle serveur consommateur</span><span class="sxs-lookup"><span data-stu-id="c101a-103">Consumer APIs</span></span>
+# <a name="consumer-apis-for-aspnet-core"></a><span data-ttu-id="f4924-103">API de contrôle serveur consommateur pour ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f4924-103">Consumer APIs for ASP.NET Core</span></span>
 
-* [<span data-ttu-id="c101a-104">Vue d’ensemble des API de contrôle serveur consommateur</span><span class="sxs-lookup"><span data-stu-id="c101a-104">Consumer APIs Overview</span></span>](overview.md)
+* [<span data-ttu-id="f4924-104">Vue d’ensemble des API de contrôle serveur consommateur</span><span class="sxs-lookup"><span data-stu-id="f4924-104">Consumer APIs Overview</span></span>](xref:security/data-protection/consumer-apis/overview)
 
-* [<span data-ttu-id="c101a-105">Chaînes d’objectifs</span><span class="sxs-lookup"><span data-stu-id="c101a-105">Purpose Strings</span></span>](purpose-strings.md)
+* [<span data-ttu-id="f4924-105">Chaînes d’objectifs</span><span class="sxs-lookup"><span data-stu-id="f4924-105">Purpose Strings</span></span>](xref:security/data-protection/consumer-apis/purpose-strings)
 
-* [<span data-ttu-id="c101a-106">Hiérarchie d’objectifs et architecture mutualisée</span><span class="sxs-lookup"><span data-stu-id="c101a-106">Purpose hierarchy and multi-tenancy</span></span>](purpose-strings-multitenancy.md)
+* [<span data-ttu-id="f4924-106">Hiérarchie d’objectifs et architecture mutualisée</span><span class="sxs-lookup"><span data-stu-id="f4924-106">Purpose hierarchy and multi-tenancy</span></span>](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)
 
-* [<span data-ttu-id="c101a-107">Hachage de mot de passe</span><span class="sxs-lookup"><span data-stu-id="c101a-107">Password Hashing</span></span>](password-hashing.md)
+* [<span data-ttu-id="f4924-107">Hacher les mots de passe</span><span class="sxs-lookup"><span data-stu-id="f4924-107">Hash passwords</span></span>](xref:security/data-protection/consumer-apis/password-hashing)
 
-* [<span data-ttu-id="c101a-108">Limitation de la durée de vie des charges utiles protégées</span><span class="sxs-lookup"><span data-stu-id="c101a-108">Limiting the lifetime of protected payloads</span></span>](limited-lifetime-payloads.md)
+* [<span data-ttu-id="f4924-108">Limiter la durée de vie des charges utiles protégées</span><span class="sxs-lookup"><span data-stu-id="f4924-108">Limit the lifetime of protected payloads</span></span>](xref:security/data-protection/consumer-apis/limited-lifetime-payloads)
 
-* [<span data-ttu-id="c101a-109">Retrait de la protection des charges utiles dont les clés ont été révoquées</span><span class="sxs-lookup"><span data-stu-id="c101a-109">Unprotecting payloads whose keys have been revoked</span></span>](dangerous-unprotect.md)
+* [<span data-ttu-id="f4924-109">Retirer la protection des charges utiles dont les clés ont été révoquées</span><span class="sxs-lookup"><span data-stu-id="f4924-109">Unprotect payloads whose keys have been revoked</span></span>](xref:security/data-protection/consumer-apis/dangerous-unprotect)
