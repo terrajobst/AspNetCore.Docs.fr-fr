@@ -1,4 +1,4 @@
----
+﻿---
 title: Pages Razor avec EF Core - Mettre à jour des données associées - 7 sur 8
 author: rick-anderson
 description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
@@ -162,7 +162,6 @@ Les formateurs peuvent dispenser une quantité quelconque de cours. Dans cette s
 `Course` et `Instructor` entretiennent une relation plusieurs-à-plusieurs. Pour ajouter et supprimer des relations, vous ajoutez et supprimez des entités à partir du jeu d’entités de jointures `CourseAssignments`.
 
 Les cases à cocher permettent de changer les cours auxquels un formateur est assigné. Une case à cocher est affichée pour chaque cours dans la base de données. Les cours auxquels le formateur est affecté sont cochés. L’utilisateur peut cocher ou décocher les cases pour modifier les affectations de cours. Si le nombre de cours était beaucoup plus élevé :
-
 * Vous utiliseriez sans doute une interface utilisateur différente pour afficher les cours.
 * La méthode de manipulation d’une entité de jointure pour créer ou supprimer des relations ne changerait pas.
 
