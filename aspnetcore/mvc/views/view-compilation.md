@@ -41,7 +41,7 @@ Si votre projet cible .NET Framework, ajoutez une référence de package à [Mic
 
 Si votre projet cible .NET Core, aucune modification n’est nécessaire.
 
-Les modèles de projet ASP.NET Core 2.x définissent la valeur `MvcRazorCompileOnPublish` à `true` par défaut, ce qui signifie que ce nœud peut être supprimé en toute sécurité le fihier *.csproj*. Si vous préférez être explicite, il n’existe aucun risque à définir le paramètre de la propriété `MvcRazorCompileOnPublish` à `true`. Le fichier *.csproj* suivant en est un exemple exemple, avec en surbrillance ce paramètre :
+Les modèles de projet ASP.NET Core 2.x définissent la valeur `MvcRazorCompileOnPublish` à `true` par défaut, ce qui signifie que ce nœud peut être supprimé en toute sécurité le fichier *.csproj*. Si vous préférez être explicite, il n’existe aucun risque à définir le paramètre de la propriété `MvcRazorCompileOnPublish` à `true`. Le fichier *.csproj* suivant en est un exemple, avec en surbrillance ce paramètre :
 
 [!code-xml[Main](view-compilation\sample\MvcRazorCompileOnPublish2.csproj?highlight=5)]
 
