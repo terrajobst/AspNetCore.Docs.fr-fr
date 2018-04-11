@@ -16,7 +16,7 @@ ms.openlocfilehash: a8358b91ca424f4f3e576057ab43d850081dda60
 ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Comment : Ajouter des Pages mobiles à ASP.NET Web Forms / Application MVC
 ====================
@@ -116,7 +116,7 @@ Les développeurs ASP.NET Web Forms et MVC peuvent découvrir immédiatement des
 - Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel
 - Request.Browser.ScreenPixelsWidth
 - Request.Browser.SupportsXmlHttp
-- .. .et beaucoup d’autres
+- ...et beaucoup d’autres
 
 En arrière-plan, la plateforme ASP.NET correspond à entrant *User-Agent* en-tête HTTP de (l’agent utilisateur) par rapport aux expressions régulières dans un ensemble de fichiers XML de définition de navigateur. Par défaut la plateforme inclut les définitions pour de nombreux périphériques mobiles courantes, et vous pouvez ajouter des fichiers de définition de navigateur personnalisés pour d’autres que vous voulez reconnaître. Pour plus d’informations, consultez la page MSDN [des contrôles serveur Web ASP.NET et les fonctionnalités du navigateur](https://msdn.microsoft.com/library/x3k2ssx2.aspx).
 

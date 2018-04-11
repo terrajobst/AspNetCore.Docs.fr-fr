@@ -107,7 +107,7 @@ Si vous utilisez un ordinateur en langue anglaise, vous pouvez ignorer cette sec
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
 2. Dans le volet gauche, sélectionnez <strong>Parcourir*.</strong>* (Voir l’image ci-dessous).
-3. Dans la zone d’entrée, tapez *Globalize**.  
+3. Dans la zone d’entrée, tapez *Globalize* \*.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) Choisissez `jQuery.Validation.Globalize`, choisissez `MvcMovie` et cliquez sur **installer**. Le *Scripts\jquery.globalize\globalize.js* fichier sera ajouté à votre projet. Le *Scripts\jquery.globalize\cultures\* nombreux culture contiendra les fichiers JavaScript. Il peut prendre cinq minutes pour installer ce package.
 
