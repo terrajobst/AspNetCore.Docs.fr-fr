@@ -114,7 +114,7 @@ Dans le code suivant, `courseID` ne correspond pas à un paramètre dans l’iti
 
     La valeur « OverPost » serait correctement ajoutée à la propriété `Secret` de la ligne insérée, même si vous n’aviez jamais prévu que la page web puisse définir cette propriété.
 
-    Il est recommandé d’utiliser le `Include` paramètre avec le `Bind` attribut *liste blanche* champs. Il est également possible d’utiliser le `Exclude` paramètre *blacklist* champs que vous souhaitez exclure. La raison `Include` est plus sécurisé est que lorsque vous ajoutez une nouvelle propriété à l’entité, le nouveau champ n'est pas automatiquement protégé par un `Exclude` liste.
+    Il est recommandé d’utiliser le `Include` paramètre avec le `Bind` attribut *liste verte* champs. Il est également possible d’utiliser le `Exclude` paramètre *blacklist* champs que vous souhaitez exclure. La raison `Include` est plus sécurisé est que lorsque vous ajoutez une nouvelle propriété à l’entité, le nouveau champ n'est pas automatiquement protégé par un `Exclude` liste.
 
     Vous pouvez empêcher overposting dans les scénarios de modifier est en lecture de l’entité à partir de la base de données tout d’abord, puis `TryUpdateModel`, en passant une liste de propriétés autorisés explicites. Qui est la méthode utilisée dans ces didacticiels.
 

@@ -166,7 +166,7 @@ Notez que la seconde action Add() est décorée avec l’attribut AcceptVerbs. C
 La seconde action Add() crée une nouvelle instance de la classe Entity Framework film à l’aide de la méthode ASP.NET MVC TryUpdateModel(). La méthode TryUpdateModel() prend les champs dans la FormCollection passé à la méthode Add() et assigne les valeurs de ces champs de formulaire HTML à la classe de film.
 
 
-Lorsque vous utilisez Entity Framework, vous devez fournir une « liste blanche » des propriétés lorsque vous utilisez les méthodes TryUpdateModel ou UpdateModel pour mettre à jour les propriétés d’une classe d’entité.
+Lorsque vous utilisez Entity Framework, vous devez fournir une « liste verte » des propriétés lorsque vous utilisez les méthodes TryUpdateModel ou UpdateModel pour mettre à jour les propriétés d’une classe d’entité.
 
 
 Ensuite, l’action Add() effectue une validation de formulaire simple. L’action vérifie que le titre et le directeur des propriétés ont des valeurs. S’il existe une erreur de validation, un message d’erreur de validation est ajouté à ModelState.
@@ -193,7 +193,7 @@ La seconde action Edit() commence par récupérer de l’enregistrement vidéo �
 
 [!code-csharp[Main](creating-model-classes-with-the-entity-framework-cs/samples/sample7.cs)]
 
-Ensuite, la méthode TryUpdateModel() est utilisée pour affecter les valeurs des champs de formulaire HTML pour les propriétés de l’entité de film. Notez qu’une liste blanche est fournie pour spécifier les propriétés exactes à mettre à jour.
+Ensuite, la méthode TryUpdateModel() est utilisée pour affecter les valeurs des champs de formulaire HTML pour les propriétés de l’entité de film. Notez qu’une liste verte est fournie pour spécifier les propriétés exactes à mettre à jour.
 
 Ensuite, une validation simple est exécutée pour vérifier que le titre du film et le directeur des propriétés ont des valeurs. Si une valeur sont manquante dans des propriétés, puis un message d’erreur de validation est ajouté à ModelState et ModelState.IsValid renvoie la valeur false.
 

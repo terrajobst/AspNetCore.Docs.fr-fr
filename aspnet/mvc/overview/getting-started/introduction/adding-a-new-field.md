@@ -115,7 +115,7 @@ Le texte complet `Movie` classe se présente comme le code suivant :
 
 Générez l’application (Ctrl + Maj + B).
 
-Étant donné que vous avez ajouté un nouveau champ à la `Movie` (classe), vous devez également mettre à jour la liaison *liste blanche* pour cette nouvelle propriété sera incluse. Mise à jour la `bind` attribut `Create` et `Edit` méthodes d’action pour inclure le `Rating` propriété :
+Étant donné que vous avez ajouté un nouveau champ à la `Movie` (classe), vous devez également mettre à jour la liaison *liste verte* pour cette nouvelle propriété sera incluse. Mise à jour la `bind` attribut `Create` et `Edit` méthodes d’action pour inclure le `Rating` propriété :
 
 [!code-csharp[Main](adding-a-new-field/samples/sample7.cs?highlight=1)]
 
