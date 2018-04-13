@@ -67,7 +67,7 @@ Le code ci-dessus spécifie quels modules de nœud sont requis. La fonction `req
 | gulp-cssmin | Un module qui minimise les fichiers CSS. Pour plus d’informations, consultez [gulp-cssmin](https://www.npmjs.com/package/gulp-cssmin). |
 | gulp-uglify | Un module qui minimise les fichiers *.js*. Pour plus d’informations, consultez [gulp-uglify](https://www.npmjs.com/package/gulp-uglify). |
 
-Une fois que les modules requis sont importés, les tâches peuvent être spécifiées. Ici, il existe six tâches enregistrées, représentées par le code suivant :
+Une fois les modules requis importés, les tâches peuvent être spécifiées. Ici, il existe six tâches inscrites, décrites par le code suivant : 
 
 ```javascript
 gulp.task("clean:js", function (cb) {
@@ -87,7 +87,7 @@ gulp.task("min:js", function () {
     .pipe(gulp.dest("."));
 });
 
-egulp.task("min:css", function () {
+gulp.task("min:css", function () {
   return gulp.src([paths.css, "!" + paths.minCss])
     .pipe(concat(paths.concatCssDest))
     .pipe(cssmin())
@@ -215,7 +215,7 @@ Pour définir une nouvelle tâche Gulp, modifier *gulpfile.js*.
 
     Cette tâche est nommée `first`, et elle affiche simplement une chaîne.
 2.  Enregistrez *gulpfile.js*.
-3.  Dans **l’Explorateur de solutions**, cliquez avec le bouton droit *gulpfile.js*, puis sélectionnez *Task Runner Explorer*.
+3.  Dans **l’Explorateur de solutions**, avec le bouton droit *gulpfile.js*, puis sélectionnez *Task Runner Explorer*.
 
 3.  Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur *gulpfile.js*, puis sélectionnez *Task Runner Explorer*.
 
@@ -261,7 +261,7 @@ Pour plus d’informations sur IntelliSense, consultez [JavaScript IntelliSense]
 
 ## <a name="development-staging-and-production-environments"></a>Environnements de développement, de staging et de production
 
-  Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour le développement et la production, les fichiers traités sont enregistrés dans des emplacements de développment et de production locaux. Le fichier *_Layout.cshtml* utilise la balise d'assitance **environnement** pour fournir deux versions différentes de fichiers CSS. Une version des fichiers CSS est pour le développement et l’autre version est optimisée pour les tests et la production. Dans Visual Studio 2017, lorsque vous modifiez la variable d'environnement **ASPNETCORE_ENVIRONMENT** `Production`, Visual Studio génère l’application Web et un lien vers les fichiers CSS sous forme réduites. La balise suivante montre les balises d'assistance **environnement** qui contiennent des balises de liens `Development` CSS réduites et fichiers `Staging, Production` pour les fichiers CSS.
+  Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour intermédiaire et de production, les fichiers traités sont enregistrés dans un emplacement intermédiaire et de production local. Le *_Layout.cshtml* fichier utilise le **environnement** balise d’assistance pour fournir deux versions différentes de fichiers CSS. Une version des fichiers CSS est pour le développement et l’autre version est optimisée pour la préparation et de production. Dans Visual Studio 2017, lorsque vous modifiez le **ASPNETCORE_ENVIRONMENT** variable d’environnement `Production`, Visual Studio génère l’application Web et un lien vers les fichiers CSS sous forme réduites. La balise suivante montre la **environnement** programmes d’assistance qui contient des balises de liens à la balise la `Development` CSS le réduite et fichiers `Staging, Production` fichiers CSS.
 
 ```html
 r<environment names="Development">
