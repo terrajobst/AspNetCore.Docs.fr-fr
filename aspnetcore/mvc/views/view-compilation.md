@@ -1,7 +1,7 @@
 ---
-title: "Précompilation et compilation de vues Razor"
+title: Précompilation et compilation de vues Razor
 author: rick-anderson
-description: "Document de référence expliquant comment activer la précompilation et la compilation de vues Razor MVC dans les applications ASP.NET Core."
+description: Document de référence expliquant comment activer la précompilation et la compilation de vues Razor MVC dans les applications ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 12/13/2017

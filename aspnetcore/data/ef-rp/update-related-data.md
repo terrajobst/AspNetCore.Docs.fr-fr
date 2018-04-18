@@ -1,5 +1,5 @@
-﻿---
-title: Pages Razor avec EF Core - Mettre à jour des données associées - 7 sur 8
+---
+title: Pages Razor avec EF Core - Mise à jour de données associées - 7 sur 8
 author: rick-anderson
 description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
 manager: wpickett
@@ -15,7 +15,7 @@ ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/31/2018
 ---
-# <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>Mise à jour de données associées - Pages Razor EF Core (7 sur 8)
+# <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>Mise à jour des données associées - Pages Razor avec EF Core (7 sur 8)
 
 De [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -28,7 +28,7 @@ Les illustrations suivantes montrent certaines des pages terminées.
 ![Page de modification de cours](update-related-data/_static/course-edit.png)
 ![Page de modification de formateur](update-related-data/_static/instructor-edit-courses.png)
 
-Examinez et testez les pages de cours Create et Edit. Créez un cours. Le département est sélectionné par sa clé primaire (un entier), et non par son nom. Modifiez le nouveau cours. Une fois les tests terminés, supprimez le nouveau cours.
+Examinez et testez les pages des cours Create et Edit. Créez un nouveau cours. Le service est sélectionné par sa clé primaire (entier), pas par son nom. Modifiez le nouveau cours. Lorsque vous avez terminé le test, supprimez le nouveau cours.
 
 ## <a name="create-a-base-class-to-share-common-code"></a>Créer une classe de base pour partager le code commun
 
@@ -141,9 +141,9 @@ Mettez à jour le modèle de page Edit d'instructeur avec le code suivant :
 
 Le code précédent :
 
-- Obtient l’entité `Instructor` actuelle à partir de la base de données en utilisant le chargement hâtif pour la propriété de navigation `OfficeAssignment`.
+- Obtient l'entité `Instructor` en cours à partir de la base de données à l’aide d’un chargement hâtif de la propriété de navigation `OfficeAssignment`.
 - Met à jour l’entité `Instructor` récupérée avec les valeurs du classeur de modèles. `TryUpdateModel` empêche la [survalidation](xref:data/ef-rp/crud#overposting).
-- Si l’emplacement du bureau est vide, la valeur Null est affectée à `Instructor.OfficeAssignment`. Quand `Instructor.OfficeAssignment` est Null, la ligne correspondante dans la table `OfficeAssignment` est supprimée.
+- Si l’emplacement du bureau est vide, définit `Instructor.OfficeAssignment` avec la valeur null. Lorsque `Instructor.OfficeAssignment` est null, la ligne correspondante dans la table `OfficeAssignment` est supprimée.
 
 ### <a name="update-the-instructor-edit-page"></a>Mettre à jour la page de modification de formateur
 
@@ -151,29 +151,30 @@ Mettez à jour *Pages/Instructors/Edit.cshtml* avec l’emplacement du bureau :
 
 [!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
 
-Vérifiez que vous pouvez changer l’emplacement du bureau d’un formateur.
+Vérifiez que vous pouvez modifier l'emplacement de bureau d'un instructeur.
 
-## <a name="add-course-assignments-to-the-instructor-edit-page"></a>Ajouter des affectations de cours à la page de modification de formateur
+## <a name="add-course-assignments-to-the-instructor-edit-page"></a>Ajouter des affectations de cours à la page Edit de l'instructeur
 
-Les formateurs peuvent dispenser une quantité quelconque de cours. Dans cette section, vous allez ajouter la capacité à changer les affectations de cours. L’illustration suivante montre la page de modification de formateur mise à jour :
+Les instructeurs peuvent enseigner dans n’importe quel nombre de cours. Dans cette section, vous ajoutez la possibilité de modifier les affectations de cours. L’illustration suivante montre la page de modification de l'instructeur mise à jour :
 
 ![Page de modification de formateur avec des cours](update-related-data/_static/instructor-edit-courses.png)
 
 `Course` et `Instructor` entretiennent une relation plusieurs-à-plusieurs. Pour ajouter et supprimer des relations, vous ajoutez et supprimez des entités à partir du jeu d’entités de jointures `CourseAssignments`.
 
 Les cases à cocher permettent de changer les cours auxquels un formateur est assigné. Une case à cocher est affichée pour chaque cours dans la base de données. Les cours auxquels le formateur est affecté sont cochés. L’utilisateur peut cocher ou décocher les cases pour modifier les affectations de cours. Si le nombre de cours était beaucoup plus élevé :
+
 * Vous utiliseriez sans doute une interface utilisateur différente pour afficher les cours.
 * La méthode de manipulation d’une entité de jointure pour créer ou supprimer des relations ne changerait pas.
 
-### <a name="add-classes-to-support-create-and-edit-instructor-pages"></a>Ajouter des classes pour prendre en charge les pages de formateur Create et Edit
+### <a name="add-classes-to-support-create-and-edit-instructor-pages"></a>Ajouter des classes pour prendre en charge Create et Edit des pages d'instructeur
 
 Créez *SchoolViewModels/AssignedCourseData.cs* avec le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
-La classe `AssignedCourseData` contient des données afin de créer les cases à cocher pour les cours attribués par formateur.
+La classe `AssignedCourseData` contient des données pour créer les cases à cocher pour les cours attribués par un formateur.
 
-Créez la classe de base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs* :
+Créez la classe de base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs* :
 
 [!code-csharp[Main](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
 
@@ -187,7 +188,7 @@ Mettez à jour le modèle de page Edit d'instructeur avec le code suivant :
 
 Le code précédent gère les changements d’affectation de bureau.
 
-Mettez à jour l’affichage Razor de formateur :
+Mettez à jour la vue Razor Instructeur :
 
 [!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
 
@@ -203,19 +204,19 @@ Exécutez l’application et testez la page Edit des formateurs mise à jour. Ch
 
 Remarque : L’approche adoptée ici pour modifier les données de cours des formateurs fonctionne bien quand il y a un nombre limité de cours. Pour les collections qui sont beaucoup plus grandes, une interface utilisateur différente et une autre méthode de mise à jour seraient plus utiles et plus efficaces.
 
-### <a name="update-the-instructors-create-page"></a>Mettre à jour la page Create des formateurs
+### <a name="update-the-instructors-create-page"></a>Mise à jour de la page de création des instructeurs
 
 Mettez à jour le modèle de page de création de formateur avec le code suivant :
 
 [!code-csharp[Main](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
 
-Le code précédent est semblable au code *Pages/Instructors/Edit.cshtml.cs*.
+Le code précédent est similaire au code de *Pages/Instructors/Edit.cshtml.cs*.
 
 Mettez à jour la page Razor de création de formateur avec le balisage suivant :
 
 [!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
 
-Testez la page de création de formateur.
+Testez la page de création de l'instructeur.
 
 ## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
@@ -225,9 +226,9 @@ Mettez à jour le modèle de page de suppression avec le code suivant :
 
 Le code précédent apporte les modifications suivantes :
 
-* Il utilise le chargement hâtif pour la propriété de navigation `CourseAssignments`. Les `CourseAssignments` doivent être inclus, sinon ils ne sont pas supprimés quand le formateur est supprimé. Pour éviter d’avoir à les lire, configurez la suppression en cascade dans la base de données.
+* Utilise un chargement hâtif pour la propriété de navigation `CourseAssignments`. Les `CourseAssignments` doivent être inclus ou ils ne seront pas supprimés lorsque l'instructeur est supprimé. Pour éviter d’avoir à les lire, configurez la suppression en cascade dans la base de données.
 
-* Si le formateur à supprimer est affecté en tant qu’administrateur d’un département, le code supprime l’affectation du formateur à ce département.
+* Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
 
 >[!div class="step-by-step"]
 [Précédent](xref:data/ef-rp/read-related-data)
