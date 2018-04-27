@@ -11,17 +11,17 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: a243eeb982ba581e237263c4e31e130d634aff0e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fdb74b0eb74ce7f387f49a0b25ceebd3fc389da9
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>Appeler une API Web à partir d’un Client .NET (c#)
 ====================
 par [Mike Wasson](https://github.com/MikeWasson) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Télécharger le projet terminé](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample)
+[Télécharger le projet terminé](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample). [Télécharger les instructions](/aspnet/core/tutorials/#how-to-download-a-sample). 
 
 Ce didacticiel montre comment appeler une API web à partir d’une application .NET, à l’aide de [System.Net.Http.HttpClient.](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)
 
@@ -29,10 +29,10 @@ Dans ce didacticiel, une application cliente est écrit qui utilise l’API de w
 
 | Action | Méthode HTTP | URI relatif |
 | --- | --- | --- |
-| Obtenir un produit par ID | GET | /api/products/*id* |
-| Créer un nouveau produit | POST | produits/api / |
-| Mettre à jour un produit | PUT | /api/products/*id* |
-| Supprimer un produit | SUPPR | /api/products/*id* |
+| Obtenir un produit par ID | GET | /API/produits/*id* |
+| Créer un nouveau produit | PUBLIER | produits/api / |
+| Mettre à jour un produit | PUT | /API/produits/*id* |
+| Supprimer un produit | SUPPR | /API/produits/*id* |
 
 Pour savoir comment implémenter cette API avec l’API Web ASP.NET, consultez [création d’une API Web qui prend en charge les opérations CRUD](xref:web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 ).
@@ -167,7 +167,7 @@ Comme GET, une demande de suppression n’a pas un corps de demande. Vous n’av
 
 Pour tester l’application cliente :
 
-1. [Télécharger](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) et exécuter l’application serveur. [Télécharger les instructions](https://docs.microsoft.com/aspnet/core/tutorials/#how-to-download-a-sample). Vérifiez que l’application serveur fonctionne. Pour exaxmple, `http://localhost:64195/api/products` doit retourner une liste de produits.
+1. [Télécharger](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) et exécuter l’application serveur. [Télécharger les instructions](/aspnet/core/tutorials/#how-to-download-a-sample). Vérifiez que l’application serveur fonctionne. Pour exaxmple, `http://localhost:64195/api/products` doit retourner une liste de produits.
 2. Définir l’URI de base pour les requêtes HTTP. Modifier le numéro de port pour le port utilisé dans l’application serveur.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

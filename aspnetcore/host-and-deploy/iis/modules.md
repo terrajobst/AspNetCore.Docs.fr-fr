@@ -5,16 +5,16 @@ description: Découvrir actives et inactives des modules IIS pour les applicatio
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/15/2018
+ms.date: 04/04/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: d9b3de915df333153255f91649f9169f76ba2fe0
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e88526d997618658f58488adb37ae1e519ea3f59
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
 
@@ -24,8 +24,10 @@ Dans une configuration de proxy inverse, les applications ASP.NET Core sont héb
 
 ## <a name="native-modules"></a>Modules natifs
 
-| Module | .NET core actif | Option ASP.NET Core |
-| ------ | :--------------: | ------------------- |
+Le tableau indique les modules IIS natifs qui fonctionnent sur les demandes de proxy inverse pour les applications ASP.NET Core.
+
+| Module | Fonctionnel avec les applications ASP.NET Core | Option ASP.NET Core |
+| ------ | :-------------------------------: | ------------------- |
 | **Authentification anonyme**<br>`AnonymousAuthenticationModule` | Oui | |
 | **Authentification de base**<br>`BasicAuthenticationModule` | Oui | |
 | **Authentification par mappage de Certification de client**<br>`CertificateMappingAuthenticationModule` | Oui | |
@@ -49,7 +51,7 @@ Dans une configuration de proxy inverse, les applications ASP.NET Core sont héb
 | **Prise en charge du protocole**<br>`ProtocolSupportModule` | Oui | |
 | **Filtrage des demandes**<br>`RequestFilteringModule` | Oui | [Intergiciel (middleware) réécriture d’URL `IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **Observateur de demandes**<br>`RequestMonitorModule` | Oui | |
-| **Réécriture d’URL**<br>`RewriteModule` | Yes&#8224; | [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting) |
+| **Réécriture d’URL**<br>`RewriteModule` | Oui&#8224; | [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting) |
 | **Inclusions côté serveur**<br>`ServerSideIncludeModule` | Non | |
 | **Compression statique**<br>`StaticCompressionModule` | Non | [Intergiciel (middleware) de compression des réponses](xref:performance/response-compression) |
 | **Contenu statique**<br>`StaticFileModule` | Non | [Intergiciel (middleware) de fichiers statiques](xref:fundamentals/static-files) |
@@ -62,21 +64,23 @@ Dans une configuration de proxy inverse, les applications ASP.NET Core sont héb
 
 ## <a name="managed-modules"></a>Modules managés
 
-| Module                  | .NET core actif | Option ASP.NET Core |
-| ----------------------- | :--------------: | ------------------- |
-| AnonymousIdentification | Non               | |
-| DefaultAuthentication   | Non               | |
-| FileAuthorization       | Non               | |
-| FormsAuthentication     | Non               | [Intergiciel (middleware) de cookie d’authentification](xref:security/authentication/cookie) |
-| OutputCache             | Non               | [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware) |
-| Profil                 | Non               | |
-| RoleManager             | Non               | |
-| ScriptModule-4.0        | Non               | |
-| Session                 | Non               | [Intergiciel (middleware) de session](xref:fundamentals/app-state) |
-| UrlAuthorization        | Non               | |
-| UrlMappingsModule       | Non               | [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting) |
-| UrlRoutingModule-4.0    | Non               | [Identité de ASP.NET Core](xref:security/authentication/identity) |
-| WindowsAuthentication   | Non               | |
+Les modules managés sont *pas* fonctionnel avec les applications ASP.NET Core hébergées lors de la version du CLR .NET de pool d’applications est définie sur **aucun Code managé**. ASP.NET Core offrent des alternatives de l’intergiciel (middleware) dans plusieurs cas.
+
+| Module                  | Option ASP.NET Core |
+| ----------------------- | ------------------- |
+| AnonymousIdentification | |
+| DefaultAuthentication   | |
+| FileAuthorization       | |
+| FormsAuthentication     | [Intergiciel (middleware) de cookie d’authentification](xref:security/authentication/cookie) |
+| OutputCache             | [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware) |
+| Profil                 | |
+| RoleManager             | |
+| ScriptModule-4.0        | |
+| Session                 | [Intergiciel (middleware) de session](xref:fundamentals/app-state) |
+| UrlAuthorization        | |
+| UrlMappingsModule       | [Intergiciel de réécriture d’URL](xref:fundamentals/url-rewriting) |
+| UrlRoutingModule-4.0    | [Identité de ASP.NET Core](xref:security/authentication/identity) |
+| WindowsAuthentication   | |
 
 ## <a name="iis-manager-application-changes"></a>Modification de l’application Gestionnaire des services Internet
 
@@ -88,7 +92,7 @@ Si un module IIS est configuré au niveau du serveur qui doit être désactivé 
 
 ### <a name="module-deactivation"></a>Désactivation du module
 
-Nombre de modules offre un paramètre de configuration qui leur permet d’être désactivé sans supprimer le module de l’application. Il s’agit de la façon la plus simple et plus rapide pour désactiver un module. Par exemple, le Module de réécriture d’URL IIS peut être désactivé avec le  **\<httpRedirect >** élément *web.config*:
+Nombre de modules offre un paramètre de configuration qui leur permet d’être désactivé sans supprimer le module de l’application. Il s’agit de la façon la plus simple et plus rapide pour désactiver un module. Par exemple, le Module de la Redirection HTTP peut être désactivé avec le  **\<httpRedirect >** élément *web.config*:
 
 ```xml
 <configuration>
@@ -122,22 +126,6 @@ Si vous être inscrit pour supprimer un module avec un paramètre dans *web.conf
    </configuration>
    ```
 
-Pour une installation d’IIS avec les modules par défaut installé, utilisez ce qui suit  **\<module >** section pour supprimer les modules par défaut.
-
-```xml
-<modules>
-  <remove name="CustomErrorModule" />
-  <remove name="DefaultDocumentModule" />
-  <remove name="DirectoryListingModule" />
-  <remove name="HttpCacheModule" />
-  <remove name="HttpLoggingModule" />
-  <remove name="ProtocolSupportModule" />
-  <remove name="RequestFilteringModule" />
-  <remove name="StaticCompressionModule" /> 
-  <remove name="StaticFileModule" /> 
-</modules>
-```
-
 Un module IIS peut également être supprimé avec *Appcmd.exe*. Fournir le `MODULE_NAME` et `APPLICATION_NAME` dans la commande :
 
 ```console
@@ -155,6 +143,10 @@ Par exemple, supprimez le `DynamicCompressionModule` à partir du Site Web par d
 Les modules uniquement requis pour exécuter une application ASP.NET Core sont le Module d’authentification anonyme et le Module de base ASP.NET.
 
 ![Ouvrir le Gestionnaire des services Internet aux Modules avec la configuration de modules minimale indiquée](modules/_static/modules.png)
+
+Le Module de mise en cache URI (`UriCacheModule`) permet à IIS à la configuration de site Web de cache au niveau de l’URL. Sans ce module, IIS doit lire et analyser la configuration sur chaque demande, même lorsque la même URL est demandée à plusieurs reprises. L’analyse de la configuration de chaque demande entraîne une baisse significative des performances. *Bien que le Module de mise en cache URI n’est pas strictement obligatoire pour une application ASP.NET Core hébergée s’exécute, nous recommandons que le Module de mise en cache URI soit activée pour tous les déploiements ASP.NET Core.*
+
+Le Module de mise en cache HTTP (`HttpCacheModule`) implémente le cache de sortie IIS et également la logique de mise en cache des éléments dans le cache de HTTP.sys. Sans ce module, le contenu n’est plus mise en cache du mode noyau, et les profils de cache sont ignorés. La suppression du Module de mise en cache HTTP généralement a des effets négatifs sur les performances et l’utilisation des ressources. *Bien que le Module de mise en cache HTTP n’est pas strictement obligatoire pour une application ASP.NET Core hébergée s’exécute, nous recommandons que le Module de mise en cache HTTP soit activée pour tous les déploiements ASP.NET Core.*
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

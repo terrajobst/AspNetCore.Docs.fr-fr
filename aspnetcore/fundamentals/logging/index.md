@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 4cb2cf5b22ed9f5b84638b5f8c4b07d99a17ce1c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: aab1190467c13ae121625c377d0908eac2fe8d95
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -487,37 +487,6 @@ loggerFactory.AddEventSourceLogger()
 Pour configurer PerfView afin qu’il collecte les événements enregistrés par ce fournisseur, ajoutez la chaîne `*Microsoft-Extensions-Logging` à la liste des **fournisseurs supplémentaires**. (N’oubliez pas d’inclure l’astérisque au début de la chaîne.)
 
 ![Fournisseurs supplémentaires dans PerfView](index/_static/perfview-additional-providers.png)
-
-La collecte d’événements sur Nano Server nécessite une configuration supplémentaire :
-
-* Établissez une communication à distance PowerShell sur Nano Server :
-
-  ```powershell
-  Enter-PSSession [name]
-  ```
-
-* Créez une session ETW :
-
-  ```powershell
-  New-EtwTraceSession -Name "MyAppTrace" -LocalFilePath C:\trace.etl
-  ```
-
-* Ajoutez des fournisseurs ETW pour [CLR](/dotnet/framework/performance/clr-etw-providers), ASP.NET Core et autres types en fonction de vos besoins. Le GUID du fournisseur ASP.NET Core est `3ac73b97-af73-50e9-0822-5da4367920d0`. 
-
-  ```powershell
-  Add-EtwTraceProvider -Guid "{e13c0d23-ccbc-4e12-931b-d9cc2eee27e4}" -SessionName MyAppTrace
-  Add-EtwTraceProvider -Guid "{3ac73b97-af73-50e9-0822-5da4367920d0}" -SessionName MyAppTrace
-  ```
-
-* Exécutez le site et effectuez toutes les actions pour lesquelles vous voulez collecter des informations de suivi.
-
-* Arrêtez la session de suivi quand vous avez terminé :
-
-  ```powershell
-  Stop-EtwTraceSession -Name "MyAppTrace"
-  ```
-
-Vous pouvez analyser le fichier *C:\trace.etl* obtenu avec PerfView de la même manière que sur les autres éditions de Windows.
 
 <a id="eventlog"></a>
 ### <a name="the-windows-eventlog-provider"></a>Fournisseur EventLog Windows

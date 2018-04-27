@@ -10,18 +10,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 81244cfb71194876071c64899d627c296aad3802
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: ada8120189baf036296b83f91d20b364ee90d074
+ms.sourcegitcommit: 07903a1be39a99dcf538d57981161592d0e658b8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Gérer les dépendances côté client avec Bower dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/), et [Scott Addie](https://scottaddie.com) 
 
 > [!IMPORTANT]
-> Tandis que Bower est conservé, son chargés de maintenance est recommandé d’utiliser une autre solution. L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles.
+> Tandis que Bower est conservé, son chargés de maintenance est recommandé d’utiliser une autre solution. [Le Gestionnaire de bibliothèque](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/) (LibMan en abrégé) est le nouveau système de gestion de contenu statique côté client de Visual Studio. L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles.
 
 [Bower](https://bower.io/) se définit lui-même comme "Un gestionnaire de paquets pour le web". Dans l’écosystème .NET, il remplit le vide laissé par l’impossibilité d'inclure des fichiers de contenu statique avec NuGet. Pour les projets ASP.NET Core, ces fichiers statiques sont inhérents aux bibliothèques côté client comme[jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/). Pour les bibliothèques .NET, vous utilisez toujours le gestionnaire de package [NuGet](https://www.nuget.org/)
 

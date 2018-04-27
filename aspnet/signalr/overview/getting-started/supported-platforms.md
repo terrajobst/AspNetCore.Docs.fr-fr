@@ -2,21 +2,21 @@
 uid: signalr/overview/getting-started/supported-platforms
 title: Plateformes prises en charge | Documents Microsoft
 author: pfletcher
-description: "Cet article décrit les clients et les serveurs sont pris en charge par SignalR."
+description: Cet article décrit les clients et les serveurs sont pris en charge par SignalR.
 ms.author: aspnetcontent
 manager: wpickett
-ms.date: 06/10/2014
+ms.date: 04/18/2018
 ms.topic: article
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: 1379b9fb638f67896d88d7aa4312d95280ef7318
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4d3dc028ff67d0a9cfa03627b5f98f6541ecfff8
+ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 <a name="supported-platforms"></a>Plateformes prises en charge
 ====================
@@ -37,8 +37,9 @@ Le composant de serveur SignalR peut être hébergé sur une variété de config
 
 ### <a name="supported-server-operating-systems"></a>Systèmes d'exploitation serveurs pris en charge
 
-Le composant de serveur SignalR peut être hébergé dans les systèmes d’exploitation client ou serveur suivants. Notez que pour SignalR utiliser des WebSockets, Windows Server 2012 ou Windows 8 (WebSocket peut être utilisé sur les Sites Web Windows Azure, tant que la version .NET framework du site est définie sur 4.5 et WebSocket est activée dans la page de Configuration du site).
+Le composant de serveur SignalR peut être hébergé dans les systèmes d’exploitation client ou serveur suivants. Notez que pour SignalR utiliser des WebSockets, Windows Server 2012, Windows Server 2016 ou Windows 8 (WebSocket peut être utilisé sur les Sites Web Windows Azure, tant que la version .NET framework du site est définie sur 4.5 et WebSocket est activée dans la table Page de configuration).
 
+- Windows Server 2016
 - Windows Server 2012
 - Windows Server 2008 r2
 - Windows 10

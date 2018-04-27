@@ -3,6 +3,7 @@ title: Introduction à ASP.NET Core SignalR
 author: rachelappel
 description: Découvrez comment la bibliothèque ASP.NET Core SignalR simplifie l’ajout de fonctionnalités web en temps réel aux applications.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
 ms.date: 03/07/2018
@@ -10,15 +11,18 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/introduction
-ms.openlocfilehash: 2da6737c09ab922b0e02c1dfeba3b1808c98ea4c
-ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
+ms.openlocfilehash: fa9b10201b5dc0e67bcd6d1321a3737e2025fda4
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="introduction-to-aspnet-core-signalr"></a>Introduction à ASP.NET Core SignalR
 
 Par [Rachel Appel](https://twitter.com/rachelappel)
+
+
+[!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
 ## <a name="what-is-signalr"></a>Nouveautés SignalR
 

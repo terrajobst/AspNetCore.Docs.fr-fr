@@ -3,6 +3,7 @@ title: Utilisation des hubs dans ASP.NET Core SignalR
 author: rachelappel
 description: En savoir plus sur l’utilisation des hubs dans ASP.NET Core SignalR.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
 ms.date: 03/30/2018
@@ -10,15 +11,17 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/hubs
-ms.openlocfilehash: 73397ba6951f2752653575920bdf739439874366
-ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
+ms.openlocfilehash: 7da0c4832b1aa6a844172bf751a46b280a02f37a
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utilisation des hubs dans SignalR pour ASP.NET Core
 
 Par [Rachel Appel](https://twitter.com/rachelappel) et [Kevin Griffin](https://twitter.com/1kevgriff)
+
+[!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
 ## <a name="what-is-a-signalr-hub"></a>Qu’est un concentrateur SignalR
 

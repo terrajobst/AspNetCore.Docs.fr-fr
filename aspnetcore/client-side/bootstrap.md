@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: 142a997fa46f37545ea04971ab6593bff053b1ef
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: a11ed13c709830795ebfd0e658d3f2fd2fd5a458
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Créer des sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
 
@@ -81,7 +81,7 @@ Le modèle par défaut utilise un ensemble d'éléments `<div>` pour afficher un
 </button>
 ```
 
-La barre de navigation inclut également le nom de l’application qui apparaît dans le coin supérieur gauche. Le menu de navigation principal est restitué par l'élément `<ul>` dans le deuxième div et inclut des liens vers les pages Home, About et Contact. Des liens supplémentaires vers les pages Register et Login sont ajoutés grâce la ligne _LoginPartial à la ligne 29. Sous la navigation, le corps principal de chaque page est rendu dans un autre `<div>`, marqués à l'aide des les classes "container" et "body-content". Dans le fichier par défaut _Layout montré ici, le contenu de la page est rendu par une vue spécifique associée à la page, puis un simple `<footer>` est ajouté à la fin de l'élément `<div>`. Vous pouvez voir ici comment la page About intégrée s’affiche à l’aide de ce modèle :
+La barre de navigation inclut également le nom de l’application qui apparaît dans le coin supérieur gauche. Le menu de navigation principal est restitué par l'élément `<ul>` dans le deuxième div et inclut des liens vers les pages Home, About et Contact. Sous la navigation, le corps principal de chaque page est rendu dans un autre `<div>`, marqués à l'aide des les classes "container" et "body-content". Dans le fichier par défaut _Layout montré ici, le contenu de la page est rendu par une vue spécifique associée à la page, puis un simple `<footer>` est ajouté à la fin de l'élément `<div>`. Vous pouvez voir ici comment la page About intégrée s’affiche à l’aide de ce modèle :
 
 ![Sur la page](bootstrap/_static/about-page-wide.png)
 
@@ -116,7 +116,7 @@ Ensuite, ajoutez des éléments `<div>` supplémentaires pour chaque colonne et 
 
 Préfixe de classe CSS | Niveau de l’appareil | Largeur
 :---: | :---: | :---:
-col-xs- | Téléphones | < 768px
+col-xs - | Téléphones | < 768px
 col-sm - | Tablettes | > = 768px
 col-md - | Ordinateurs de bureau | > = 992px
 col-lg - | Affiche de bureau plus grande | > = 1200px
@@ -133,7 +133,7 @@ Dans l’exemple ci-dessus, One et Two partagent une ligne dans la disposition "
 
 Dans cet exemple, une seule ligne `<div>` a été utilisée, et Bootstrap a fait ce qu’il fallait pour la mise en page et l’empilement des colonnes. En règle générale, vous devez spécifier une ligne `<div>` pour chaque ligne horizontale nécessaire à la mise en page, et vous pouvez bien sûr imbriquer des grilles Bootstrap l’une dans l’autre. Quand vous procédez ainsi, chaque grille imbriquée occupe 100 % de la largeur de l’élément où elle est placée, qui peut ensuite être subdivisé avec des classes de colonne.
 
-### <a name="jumbotron"></a>Jumbotron
+### <a name="jumbotron"></a>JumboTron
 
 Si vous avez utilisé des modèles ASP.NET MVC par défaut dans Visual Studio 2012 ou 2013, vous avez probablement remarqué le Jumbotron en action. Il fait référence à une section de grande taille en pleine largeur d’une page, qui peut être utilisée pour afficher une image d’arrière-plan de grande taille, un appel à une action, un rotateur ou des éléments similaires. Pour ajouter un jumbotron à une page, ajoutez simplement un `<div>` et donnez lui une classe `<div>` puis placez un conteneur Nous pouvons ajuster facilement la page About pour qu'elle utilise un jumbotron pour afficher les titres principaux :
 
@@ -147,7 +147,7 @@ Les classes de bouton par défaut et leurs couleurs sont montrées dans la figur
 
 ### <a name="badges"></a>Badges
 
-Les badges font référence à des légendes de petite taille, généralement numériques, en regard d’un élément de navigation. Ils peuvent indiquer un nombre de messages de notifications en attente, ou la présence de mises à jour. La spécification d’un badge se fait simplement en ajoutant un <span> contenant le texte, avec une classe "badge" :
+Les badges font référence à des légendes de petite taille, généralement numériques, en regard d’un élément de navigation. Ils peuvent indiquer un nombre de messages de notifications en attente, ou la présence de mises à jour. La spécification d’un badge se fait simplement en ajoutant un `<span>` contenant le texte, avec une classe "badge" :
 
 ![badges à thème](bootstrap/_static/theme-badges.png)
 
@@ -160,7 +160,7 @@ Vous devrez peut-être afficher un type de notification, une alerte ou un messag
 
 ### <a name="navbars-and-menus"></a>Menus et barres de navigation
 
-Notre disposition inclut déjà une barre de navigation standard, mais le thème Bootstrap prend en charge des options de style supplémentaires. Nous pouvons également facilement choisir d’afficher la barre de navigation verticalement plutôt qu’horizontalement, ainsi qu'ajouter des sous-éléments de navigation dans les menus glissants. Les menus de navigation simple, comme les barres d'onglets, reposent sur des éléments <ul> éléments. Vous pouvez créer ces derniers très simplement en leur affectant les classes CSS "nav" et "nav-tabs" :
+Notre disposition inclut déjà une barre de navigation standard, mais le thème Bootstrap prend en charge des options de style supplémentaires. Nous pouvons également facilement choisir d’afficher la barre de navigation verticalement plutôt qu’horizontalement, ainsi qu'ajouter des sous-éléments de navigation dans les menus glissants. Menus de navigation simple comme onglet bandes, reposent sur des `<ul>` éléments. Vous pouvez créer ces derniers très simplement en leur affectant les classes CSS "nav" et "nav-tabs" :
 
 ![poste à thème](bootstrap/_static/theme-tabstrips.png)
 

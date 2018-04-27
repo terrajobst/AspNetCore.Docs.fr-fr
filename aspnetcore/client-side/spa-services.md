@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/spa-services
-ms.openlocfilehash: 05b0d7f31e167e620f2d168109ffd907ba120a49
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fd893b7c62f38442bf5633a956786983763e6f9f
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>Permet de créer des Applications à Page unique dans ASP.NET Core JavaScriptServices
 
@@ -166,7 +166,7 @@ Le *webpack.config.js* du fichier `output.publicPath` propriété indique à l�
 
 ## <a name="hot-module-replacement"></a>Remplacement d’un Module à chaud
 
-Pensez à Webpack [remplacement d’un Module à chaud](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html) fonctionnalité (HMR) comme une évolution du [Webpack Dev Middleware](#webpack-dev-middleware). HMR présente les mêmes avantages, mais il simplifie davantage le flux de travail de développement en mettant à jour automatiquement de contenu de la page après la compilation des modifications. Ne pas confondre avec une actualisation du navigateur, ce qui entraînerait une interférence avec l’état en mémoire actuel et la session de débogage de SPA. Il existe un lien direct entre le service de l’intergiciel (middleware) de Webpack développement et le navigateur, ce qui signifie que les modifications sont envoyées au navigateur.
+Pensez à Webpack [remplacement d’un Module à chaud](https://webpack.js.org/concepts/hot-module-replacement/) fonctionnalité (HMR) comme une évolution du [Webpack Dev Middleware](#webpack-dev-middleware). HMR présente les mêmes avantages, mais il simplifie davantage le flux de travail de développement en mettant à jour automatiquement de contenu de la page après la compilation des modifications. Ne pas confondre avec une actualisation du navigateur, ce qui entraînerait une interférence avec l’état en mémoire actuel et la session de débogage de SPA. Il existe un lien direct entre le service de l’intergiciel (middleware) de Webpack développement et le navigateur, ce qui signifie que les modifications sont envoyées au navigateur.
 
 ### <a name="prerequisites"></a>Prérequis
 
@@ -226,7 +226,7 @@ Conseil : Les itinéraires sont évaluées dans l’ordre dans lequel ils sont 
 
 ## <a name="creating-a-new-project"></a>Création d’un projet
 
-JavaScriptServices fournit des modèles d’application préconfigurée. SpaServices est utilisé dans ces modèles, en association avec différentes infrastructures et bibliothèques, telles qu’angulaire, Aurelia, Knockout, réagissent et la Vue.
+JavaScriptServices fournit des modèles d’application préconfigurée. SpaServices est utilisé dans ces modèles, conjointement avec différentes infrastructures et bibliothèques, telles que Redux, réagissent et angulaire.
 
 Ces modèles peuvent être installés via l’interface de ligne de base .NET en exécutant la commande suivante :
 
@@ -238,12 +238,9 @@ Une liste des modèles SPA disponibles s’affiche :
 
 | Modèles                                 | Nom court | Langue | Balises        |
 |:------------------------------------------|:-----------|:---------|:------------|
-| MVC ASP.NET Core avec angulaire             | angular    | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core avec Aurelia             | aurelia    | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core avec Knockout.js         | Knockout   | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core avec React.js            | react      | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core avec React.js et réédition  | reactredux | [C#]     | Web/MVC/SPA |
-| MVC ASP.NET Core avec Vue.js              | vue        | [C#]     | Web/MVC/SPA | 
+| MVC ASP.NET Core avec angulaire             | angular    | [C#]     | MVC/Web/SPA |
+| MVC ASP.NET Core avec React.js            | react      | [C#]     | MVC/Web/SPA |
+| MVC ASP.NET Core avec React.js et réédition  | reactredux | [C#]     | MVC/Web/SPA |
 
 Pour créer un nouveau projet à l’aide d’un des modèles de SPA, incluez le **nom court** du modèle dans le [dotnet nouvelle](/dotnet/core/tools/dotnet-new) commande. La commande suivante crée une application angulaire avec ASP.NET MVC de base configuré pour le côté serveur :
 
@@ -295,7 +292,7 @@ Modèles de SpaServices sont préconfigurés pour exécuter des tests côté cli
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Ouvrez l’invite de commandes à la racine du projet et exécutez la commande suivante :
+Ouvrez l’invite de commandes dans le *ClientApp* active. Exécutez la commande suivante :
 
 ```console
 npm test
