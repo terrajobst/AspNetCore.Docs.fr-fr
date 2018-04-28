@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 572b263a5f968b473457771a1dd4075910218c01
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: a3527b54d1936bc14e32a1828ac3a2be625107ba
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013
 ====================
@@ -60,7 +60,7 @@ Est de cette série de didacticiels destiné aux développeurs expérimentés qu
 Si vous souhaitez parcourir les éléments mentionnés ci-dessus, examinez le contenu suivant :
 
 - [Prise en main de Visual c#](https://msdn.microsoft.com/library/a72418yk.aspx)
-- [Web Development](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
+- [Développement Web](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
 - [Base de données relationnelle](http://en.wikipedia.org/wiki/Relational_database)
 - [Architecture multiniveau](http://en.wikipedia.org/wiki/Multitier_architecture)
 
@@ -179,7 +179,7 @@ Après avoir installé les composants requis, vous êtes prêt à commencer à c
 
 Le téléchargement est un <em>.zip</em> fichier. Pour afficher le projet terminé cette série de didacticiels crée, recherchez et sélectionnez le <em>c#</em>dossier dans le <em>.zip</em> fichier. Enregistrer le <em>c#</em> dossier dans le dossier que vous utilisez pour travailler avec les projets Visual Studio 2013. Par défaut, le dossier de projets Visual Studio 2013 est le suivant :
 
-<strong>C:\Users\</strong><strong><em>&lt;username&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
+<strong>C:\Users&#92;</strong><strong><em>&lt;nom d’utilisateur&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
 
 Renommer le ***c#*** dossier ***WingtipToys***.
 
