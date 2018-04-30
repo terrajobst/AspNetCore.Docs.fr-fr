@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: c2675f73880a41ee75f6ec13155419945387e109
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: f53f77d342cc59094a80e8667db6ef345a6e8305
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Héberger ASP.NET Core sur Azure App Service
 
@@ -91,18 +91,17 @@ Lors d’une permutation entre les emplacements de déploiement, aucun système 
 
 Pour plus d’informations, consultez [Fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers).
 
-## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>Déployer la version préliminaire d’ASP.NET Core sur Azure App Service
+## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>Déployer la version Preview d’ASP.NET Core sur Azure App Service
 
-Les applications basées sur la version préliminaire d’ASP.NET Core peuvent être déployées sur Azure App Service avec les approches suivantes :
+Les applications basées sur la version Preview d’ASP.NET Core peuvent être déployées sur Azure App Service avec les approches suivantes :
 
-* [Installer l’extension de site préliminaire](#site-x)
-* [Déployer l’application autonome](#self)
-* [Utiliser Docker avec Web Apps pour conteneurs](#docker)
+* [Installer l’extension de site de version Preview](#install-the-preview-site-extension)
+* [Déployer l’application autonome](#deploy-the-app-self-contained)
+* [Utiliser Docker avec Web Apps pour conteneurs](#use-docker-with-web-apps-for-containers)
 
-Si vous rencontrez des difficultés pour utiliser l’extension de site préliminaire, ouvrez un problème sur [GitHub](https://github.com/aspnet/azureintegration/issues/new).
+Si un problème se produit quand vous utilisez l’extension de site de version Preview, ouvrez un problème sur [GitHub](https://github.com/aspnet/azureintegration/issues/new).
 
-<a name="site-x"></a>
-### <a name="install-the-preview-site-extention"></a>Installer l’extension de site préliminaire
+### <a name="install-the-preview-site-extension"></a>Installer l’extension de site de version Preview
 
 * Dans le portail Azure, accédez au panneau App Service.
 * Entrez « ex » dans la zone de recherche.
@@ -111,10 +110,10 @@ Si vous rencontrez des difficultés pour utiliser l’extension de site prélimi
 
 ![Panneau de l’application Azure avec les étapes précédentes](index/_static/x1.png)
 
-* Sélectionnez **Extensions du runtime ASP.NET Core**.
-* Sélectionnez **OK** > **OK**.
+* Sélectionnez **ASP.NET Core 2.1 (x86) Runtime** ou **ASP.NET Core 2.1 (x64) Runtime**.
+* Sélectionnez **OK**. Resélectionnez **OK**.
 
-Quand les opérations d’ajout sont terminées, la dernière version préliminaire de .NET Core 2.1 est installée. Vous pouvez vérifier l’installation en exécutant `dotnet --info` dans la console. Dans le panneau App Service :
+Quand les opérations d’ajout sont terminées, la dernière version Preview 2.1 de .NET Core est installée. Vérifiez l’installation en exécutant `dotnet --info` dans la console. Dans le panneau **App Service** :
 
 * Entrez « con » dans la zone de recherche.
 * Sélectionnez **Console**.
@@ -124,28 +123,26 @@ Quand les opérations d’ajout sont terminées, la dernière version prélimina
 
 L’image précédente date du moment où ceci a été écrit. La version que vous voyez peut être différente.
 
-La commande `dotnet --info` affiche le chemin de l’extension de site où la version préliminaire a été installée. Il indique que l’application s’exécute depuis l’extension de site au lieu de l’emplacement de *ProgramFiles* par défaut. Si vous voyez *ProgramFiles*, redémarrez le site et exécutez `dotnet --info`.
+La commande `dotnet --info` affiche le chemin de l’extension de site où la version Preview a été installée. Il indique que l’application s’exécute depuis l’extension de site au lieu de l’emplacement de *ProgramFiles* par défaut. Si vous voyez *ProgramFiles*, redémarrez le site et exécutez `dotnet --info`.
 
-#### <a name="use-the-preview-site-extention-with-an-arm-template"></a>Utiliser l’extension de site en version préliminaire avec un modèle ARM
+**Utiliser l’extension de site de la version Preview avec un modèle ARM**
 
-Si vous utilisez un modèle ARM pour créer et déployer des applications, vous pouvez utiliser le type de ressource `siteextensions` pour ajouter l’extension de site à une application web. Exemple :
+Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Exemple :
 
 [!code-json[Main](index/sample/arm.json?highlight=2)]
 
-<a name="self"></a>
 ### <a name="deploy-the-app-self-contained"></a>Déployer l’application autonome
 
-Vous pouvez déployer une [application autonome](/dotnet/core/deploying/#self-contained-deployments-scd) qui contient le runtime en version préliminaire lors du déploiement. Lors du déploiement d’une application autonome :
+Vous pouvez déployer une [application autonome](/dotnet/core/deploying/#self-contained-deployments-scd) qui emporte avec elle la version Preview dans le déploiement. Pendant le déploiement d’une application autonome :
 
-* Vous n’avez pas besoin de préparer votre site.
-* Nécessite de publier votre application différemment de ce que vous feriez lors du déploiement d’une application une fois le SDK installé sur le serveur.
+* Le site n’a pas besoin d’être préparé.
+* L’application doit être publiée autrement que dans le cadre d’un déploiement dépendant du framework avec le runtime partagé et l’hôte sur le serveur.
 
-Les applications autonomes sont une option pour toutes les applications .NET Core.
+Les applications autonomes sont une option pour toutes les applications ASP.NET Core.
 
-<a name="docker"></a>
 ### <a name="use-docker-with-web-apps-for-containers"></a>Utiliser Docker avec Web Apps pour conteneurs
 
-[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) contient les dernières images de Docker 2.1 en version préliminaire. Vous pouvez les utiliser comme image de base et les déployer sur Web Apps pour conteneurs comme vous le feriez normalement.
+[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) contient les dernières images de la version Preview 2.1 de Docker. Les images peuvent être utilisées comme images de base. Utilisez l’image pour effectuer un déploiement sur Web Apps pour conteneurs normalement.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
