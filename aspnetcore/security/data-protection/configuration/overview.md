@@ -9,19 +9,27 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 3a19cec2ce4387ca44ca120f031a072269b93454
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 300feb42dff7f1bb86bab6fedf3f657273ced8be
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Configurer la Protection des données ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Lorsque le système de Protection des données est initialisé, il s’applique [paramètres par défaut](xref:security/data-protection/configuration/default-settings) en fonction de l’environnement d’exploitation. Ces paramètres sont généralement appropriés pour les applications qui s’exécutent sur un seul ordinateur. Il existe des cas où un développeur peut souhaiter modifier les paramètres par défaut, peut-être parce que son application est répartie sur plusieurs ordinateurs ou pour des raisons de compatibilité. Pour ces scénarios, le système de Protection des données offre une API de configuration complet.
+Lorsque le système de Protection des données est initialisé, il s’applique [paramètres par défaut](xref:security/data-protection/configuration/default-settings) en fonction de l’environnement d’exploitation. Ces paramètres sont généralement appropriés pour les applications qui s’exécutent sur un seul ordinateur. Il existe des cas où un développeur peut souhaiter modifier les paramètres par défaut :
 
-Il existe une méthode d’extension [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) qui retourne un [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` expose des méthodes d’extension que vous pouvez chaîner des options pour configurer la Protection des données.
+* L’application est répartie sur plusieurs ordinateurs.
+* Pour des raisons de compatibilité.
+
+Pour ces scénarios, le système de Protection des données offre une API de configuration complet.
+
+> [!WARNING]
+> Comme pour les fichiers de configuration, l’anneau de clé de protection de données doivent être protégée à l’aide des autorisations appropriées. Vous pouvez choisir de chiffrer les clés au repos, mais cela n’empêche pas les personnes malveillantes de créer de nouvelles clés. Par conséquent, la sécurité de votre application est affectée. L’emplacement de stockage configuré avec la Protection des données doit avoir son accès limité à l’application elle-même, similaire à celle que vous feriez protéger des fichiers de configuration. Par exemple, si vous choisissez de stocker votre clé d’anneau sur le disque, utilisez les autorisations de système de fichiers. Vérifiez seulement l’identité sous laquelle votre application web s’exécute dispose de lecture, écriture et création de l’accès à ce répertoire. Si vous utilisez le stockage de tables Azure, seule l’application web doit avoir la possibilité de lire, écrire ou créer de nouvelles entrées dans le magasin de tables, etc.
+>
+> La méthode d’extension [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) retourne un [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` expose des méthodes d’extension que vous pouvez chaîner des options pour configurer la Protection des données.
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 
