@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 166111696a9c4244ede44fca8878dd3725bb3099
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0a04f5762a35426f342b58b8b60288c66c057ae7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application en cours de développement dans ASP.NET Core
 
@@ -21,7 +21,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Michel Roth](https://gith
 
 Ce document montre comment vous pouvez utiliser l’outil Secret Manager dans le développement et comment conserver les clés secrètes en dehors de votre code.  Le point le plus important est que vous ne devez jamais stocker les mots de passe ou d’autres données sensibles dans le code source, et vous ne devez pas utiliser les clés secrètes de production en mode de développement et de test. Vous pouvez utiliser à la place la [configuration du système](xref:fundamentals/configuration/index) et lire ces valeurs à partir de variables d’environnement ou à partir de valeurs stockées à l’aide de l'outil Secret Manager.  L’outil Secret Manager empêche les données sensibles d'être archivées dans le contrôle de code source. La [configuration du système](xref:fundamentals/configuration/index) peut lire les clés secrètes stockées avec l’outil Secret Manager décrit dans cet article.
 
-L’outil Secret Manager est utilisé uniquement dans le développement. Vous pouvez protéger des secrets de test et de production Azure avec le fournisseur de configuration [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Consultez [fournisseur de configuration d’Azure Key Vault](https://docs.microsoft.com/aspnet/core/security/key-vault-configuration) pour plus d’informations.
+L’outil Secret Manager est utilisé uniquement dans le développement. Vous pouvez protéger des secrets de test et de production Azure avec le fournisseur de configuration [Microsoft Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Consultez [fournisseur de configuration d’Azure Key Vault](xref:security/key-vault-configuration) pour plus d’informations.
 
 ## <a name="environment-variables"></a>Variables d’environnement
 

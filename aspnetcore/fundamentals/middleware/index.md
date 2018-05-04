@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: a410d686b6140a487efb9962e94f64cfbec245f2
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 4c44063fb3385fc625c35c8a3cf06a35b5b0afb7
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -30,7 +30,7 @@ Un intergiciel est un logiciel qui est assemblé dans un pipeline d’applicatio
 
 Les délégués de requête sont utilisés pour créer le pipeline de requête. Les délégués de requête gèrent chaque requête HTTP.
 
-Les délégués de requête sont configurés à l’aide des méthodes d’extension [Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions), [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) et [Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Chaque délégué de requête peut être spécifié inline comme méthode anonyme (appelée intergiciel inline) ou peut être défini dans une classe réutilisable. Ces classes réutilisables et les méthodes anonymes inline sont des *intergiciels* ou des *composants d’intergiciel*. Chaque composant d’intergiciel du pipeline de requête est chargé de l’appel du composant suivant dans le pipeline, ou du court-circuit de la chaîne, si nécessaire.
+Les délégués de requête sont configurés à l’aide des méthodes d’extension [Run](/dotnet/api/microsoft.aspnetcore.builder.runextensions), [Map](/dotnet/api/microsoft.aspnetcore.builder.mapextensions) et [Use](/dotnet/api/microsoft.aspnetcore.builder.useextensions). Chaque délégué de requête peut être spécifié inline comme méthode anonyme (appelée intergiciel inline) ou peut être défini dans une classe réutilisable. Ces classes réutilisables et les méthodes anonymes inline sont des *intergiciels* ou des *composants d’intergiciel*. Chaque composant d’intergiciel du pipeline de requête est chargé de l’appel du composant suivant dans le pipeline, ou du court-circuit de la chaîne, si nécessaire.
 
 [Migrer des modules HTTP vers les intergiciels (middleware)](xref:migration/http-modules) explique la différence entre les pipelines de requêtes dans ASP.NET Core et ASP.NET 4.x, puis fournit d’autres exemples d’intergiciels.
 
@@ -46,9 +46,9 @@ L’application ASP.NET Core la plus simple possible définit un seul délégué
 
 [!code-csharp[](index/sample/Middleware/Startup.cs)]
 
-Le premier délégué [app.Run](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.runextensions) termine le pipeline.
+Le premier délégué [app.Run](/dotnet/api/microsoft.aspnetcore.builder.runextensions) termine le pipeline.
 
-Vous pouvez chaîner plusieurs délégués de requête avec [app.Use](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.useextensions). Le paramètre `next` représente le délégué suivant dans le pipeline. (N’oubliez pas que vous pouvez court-circuiter le pipeline en n’appelant *pas* le paramètre *next*.) Vous pouvez généralement effectuer des actions à la fois avant et après le délégué suivant, comme illustré dans cet exemple :
+Vous pouvez chaîner plusieurs délégués de requête avec [app.Use](/dotnet/api/microsoft.aspnetcore.builder.useextensions). Le paramètre `next` représente le délégué suivant dans le pipeline. (N’oubliez pas que vous pouvez court-circuiter le pipeline en n’appelant *pas* le paramètre *next*.) Vous pouvez généralement effectuer des actions à la fois avant et après le délégué suivant, comme illustré dans cet exemple :
 
 [!code-csharp[](index/sample/Chain/Startup.cs?name=snippet1)]
 
@@ -57,7 +57,7 @@ Vous pouvez chaîner plusieurs délégués de requête avec [app.Use](https://do
 > - Peut entraîner une violation de protocole. Par exemple, écrire plus que le `content-length` indiqué.
 > - Peut altérer le format du corps. Par exemple, l’écriture d’un pied de page HTML dans un fichier CSS.
 >
-> [HttpResponse.HasStarted](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.http.features.httpresponsefeature#Microsoft_AspNetCore_Http_Features_HttpResponseFeature_HasStarted) est un indice utile pour indiquer si les en-têtes ont été envoyés et/ou si le corps a fait l’objet d’écritures.
+> [HttpResponse.HasStarted](/dotnet/api/microsoft.aspnetcore.http.features.httpresponsefeature#Microsoft_AspNetCore_Http_Features_HttpResponseFeature_HasStarted) est un indice utile pour indiquer si les en-têtes ont été envoyés et/ou si le corps a fait l’objet d’écritures.
 
 ## <a name="ordering"></a>Classement
 
@@ -122,7 +122,7 @@ Si la requête n’est pas gérée par l’intergiciel de fichiers statiques, el
 
 -----------
 
-L’exemple suivant montre un ordre d’intergiciels où les requêtes pour les fichiers statiques sont gérées par l’intergiciel de fichiers statiques avant l’intergiciel de compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre d’intergiciels. Les réponses MVC de [UseMvcWithDefaultRoute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) peuvent être compressées.
+L’exemple suivant montre un ordre d’intergiciels où les requêtes pour les fichiers statiques sont gérées par l’intergiciel de fichiers statiques avant l’intergiciel de compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre d’intergiciels. Les réponses MVC de [UseMvcWithDefaultRoute](/dotnet/api/microsoft.aspnetcore.builder.mvcapplicationbuilderextensions#Microsoft_AspNetCore_Builder_MvcApplicationBuilderExtensions_UseMvcWithDefaultRoute_Microsoft_AspNetCore_Builder_IApplicationBuilder_) peuvent être compressées.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -140,7 +140,7 @@ public void Configure(IApplicationBuilder app)
 
 Vous configurez le pipeline HTTP avec `Use`, `Run` et `Map`. La méthode `Use` peut court-circuiter le pipeline (autrement dit, si elle n’appelle pas un délégué de requête `next`). `Run` est une convention, et certains composants d’intergiciel peuvent exposer des méthodes `Run[Middleware]` qui s’exécutent à la fin du pipeline.
 
-Les extensions `Map*` sont utilisées comme convention pour créer une branche dans le pipeline. [Map](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapextensions) crée une branche dans le pipeline de requête en fonction des correspondances du chemin de requête donné. Si le chemin de requête commence par le chemin donné, la branche est exécutée.
+Les extensions `Map*` sont utilisées comme convention pour créer une branche dans le pipeline. [Map](/dotnet/api/microsoft.aspnetcore.builder.mapextensions) crée une branche dans le pipeline de requête en fonction des correspondances du chemin de requête donné. Si le chemin de requête commence par le chemin donné, la branche est exécutée.
 
 [!code-csharp[](index/sample/Chain/StartupMap.cs?name=snippet1)]
 
@@ -155,7 +155,7 @@ Le tableau suivant présente les requêtes et les réponses de `http://localhost
 
 Quand `Map` est utilisé, les segments de chemin mis en correspondance sont supprimés de `HttpRequest.Path` et ajoutés à `HttpRequest.PathBase` pour chaque requête.
 
-[MapWhen](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.mapwhenextensions) crée une branche dans le pipeline de requête en fonction du résultat du prédicat donné. Un prédicat de type `Func<HttpContext, bool>` peut être utilisé pour mapper les requêtes à une nouvelle branche du pipeline. Dans l’exemple suivant, un prédicat est utilisé pour détecter la présence d’une variable de chaîne de requête `branch` :
+[MapWhen](/dotnet/api/microsoft.aspnetcore.builder.mapwhenextensions) crée une branche dans le pipeline de requête en fonction du résultat du prédicat donné. Un prédicat de type `Func<HttpContext, bool>` peut être utilisé pour mapper les requêtes à une nouvelle branche du pipeline. Dans l’exemple suivant, un prédicat est utilisé pour détecter la présence d’une variable de chaîne de requête `branch` :
 
 [!code-csharp[](index/sample/Chain/StartupMapWhen.cs?name=snippet1)]
 
@@ -225,7 +225,7 @@ Le code suivant déplace le délégué de l’intergiciel dans une classe :
 > [!NOTE]
 > Dans ASP.NET Core 1.x, le nom de la méthode `Task` du middleware doit être `Invoke`. Dans ASP.NET Core 2.0 ou ultérieur, le nom peut être `Invoke` ou `InvokeAsync`.
 
-La méthode d’extension suivante expose l’intergiciel à l’aide [d’IApplicationBuilder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.iapplicationbuilder) :
+La méthode d’extension suivante expose l’intergiciel à l’aide [d’IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) :
 
 [!code-csharp[](index/sample/Culture/RequestCultureMiddlewareExtensions.cs)]
 
@@ -235,7 +235,7 @@ Le code suivant appelle l’intergiciel à partir de `Configure` :
 
 L’intergiciel doit suivre le [principe de dépendances explicites](http://deviq.com/explicit-dependencies-principle/) en exposant ses dépendances dans son constructeur. L’intergiciel est construit une fois par *durée de vie d’application*. Consultez *Dépendances par requête* ci-dessous si vous avez besoin de partager des services avec un intergiciel au sein d’une requête.
 
-Les composants d’intergiciel peuvent résoudre leurs dépendances à partir de l’injection de dépendances à l’aide des paramètres du constructeur. [`UseMiddleware<T>`](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) peut également accepter des paramètres supplémentaires directement.
+Les composants d’intergiciel peuvent résoudre leurs dépendances à partir de l’injection de dépendances à l’aide des paramètres du constructeur. [`UseMiddleware<T>`](/dotnet/api/microsoft.aspnetcore.builder.usemiddlewareextensions#methods_summary) peut également accepter des paramètres supplémentaires directement.
 
 ### <a name="per-request-dependencies"></a>Dépendances par requête
 

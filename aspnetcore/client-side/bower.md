@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: ada8120189baf036296b83f91d20b364ee90d074
-ms.sourcegitcommit: 07903a1be39a99dcf538d57981161592d0e658b8
+ms.openlocfilehash: 2d6cc526b5a0890103e2856a0ca4b58c5f162c79
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Gérer les dépendances côté client avec Bower dans ASP.NET Core
 
@@ -107,7 +107,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 ### <a name="enable-static-files"></a>Activer les fichiers statiques
 
 * Ajoutez le paquet NuGet `Microsoft.AspNetCore.StaticFiles` au projet.
-* Activez le support des fichiers statiques grâce à [l’intergiciel (middleware) de service des fichiers statiques](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions). Ajoutez un appel à [UseStaticFiles](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.staticfileextensions) à la méthode `Configure` de la classe `Startup`.
+* Activez le support des fichiers statiques grâce à [l’intergiciel (middleware) de service des fichiers statiques](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions). Ajoutez un appel à [UseStaticFiles](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions) à la méthode `Configure` de la classe `Startup`.
 
 [!code-csharp[](bower/sample/Startup.cs?highlight=9)]
 

@@ -8,11 +8,11 @@ ms.date: 08/09/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: 09f28ec3792cf137fbcfdecc593e27ce6b2e7e09
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 78a00e04e260863af17d7888ca6bf77d3f915ce1
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -161,4 +161,4 @@ Quand l’application ne parvient pas à charger la configuration à l'aide du f
 * [Microsoft Azure : Coffre de clés](https://azure.microsoft.com/services/key-vault/)
 * [Microsoft Azure : Documentation de coffre de clés](https://docs.microsoft.com/azure/key-vault/)
 * [Comment générer et transférer protégée par HSM clés pour le coffre de clés Azure](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)
-* [Classe de KeyVaultClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
+* [Classe de KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)
