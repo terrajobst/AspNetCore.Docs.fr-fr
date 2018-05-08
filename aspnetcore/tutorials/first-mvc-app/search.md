@@ -1,7 +1,7 @@
 ---
-title: "Ajout d’une fonction de recherche"
+title: Ajout d’une fonction de recherche
 author: rick-anderson
-description: "Montre comment ajouter une fonction de recherche à une application ASP.NET MVC simple"
+description: Montre comment ajouter une fonction de recherche à une application ASP.NET MVC simple
 manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 3ab9086275ec4c3651383c4c845e40db55f67f4c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 772409f11a43e1d130265d8bba3bad1da5a41b86
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-[!INCLUDE[adding-model](../../includes/mvc-intro/search1.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/search1.md)]
 
 Vous pouvez renommer rapidement le paramètre`searchString` en `id` à l’aide de la commande **Renommer**. Cliquez avec le bouton droit sur `searchString` **> Renommer**.
 
@@ -29,7 +29,7 @@ Remplacez le paramètre par `id` et toutes les occurrences de `searchString` par
 
 ![Éditeur de code montrant que la variable a été remplacée par id](search/_static/rename3.png)
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/search2.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/search2.md)]
 
 Notez comment IntelliSense nous permet de mettre à jour la balise.
 
@@ -41,8 +41,8 @@ Notez la police distinctive dans la balise `<form>`. Cette police distinctive in
 
 ![balise form avec du texte en violet](search/_static/th_font.png)
 
-[!INCLUDE[adding-model](../../includes/mvc-intro/search3.md)]
+[!INCLUDE [adding-model](../../includes/mvc-intro/search3.md)]
 
->[!div class="step-by-step"]
-[Précédent](controller-methods-views.md)
-[Suivant](new-field.md)  
+> [!div class="step-by-step"]
+> [Précédent](controller-methods-views.md)
+> [Suivant](new-field.md)  

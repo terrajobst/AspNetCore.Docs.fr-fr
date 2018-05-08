@@ -1,7 +1,7 @@
 ---
 title: Fournisseurs de fichiers dans ASP.NET Core
 author: ardalis
-description: "Découvrez comment ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers."
+description: Découvrez comment ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers.
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/file-providers
-ms.openlocfilehash: 06197f967e111d75531e9c3bcbcbdb971cb9f99b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cdbffdadd9616fe941809d67dc2c0bbd52149561
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -50,15 +50,15 @@ Vous pouvez itérer au sein du contenu de ses répertoires ou obtenir les inform
 
 Pour demander un fournisseur à partir d’un contrôleur, spécifiez-le dans le constructeur du contrôleur et attribuez-le à un champ local. Utilisez l’instance locale à partir de vos méthodes d’action :
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Controllers/HomeController.cs?highlight=5,7,12&range=6-19)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Controllers/HomeController.cs?highlight=5,7,12&range=6-19)]
 
 Créez ensuite le fournisseur dans la classe `Startup` de l’application :
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=35,40&range=1-43)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=35,40&range=1-43)]
 
 Dans la vue *Index.cshtml*, itérez au sein du `IDirectoryContents` fourni :
 
-[!code-html[Main](file-providers/sample/src/FileProviderSample/Views/Home/Index.cshtml?highlight=2,7,9,11,15)]
+[!code-html[](file-providers/sample/src/FileProviderSample/Views/Home/Index.cshtml?highlight=2,7,9,11,15)]
 
 Le résultat :
 
@@ -68,7 +68,7 @@ Le résultat :
 
 `EmbeddedFileProvider` est utilisé pour accéder à des fichiers incorporés dans des assemblys. Dans .NET Core, vous incorporez des fichiers dans un assembly avec l’élément `<EmbeddedResource>` dans le fichier *.csproj* :
 
-[!code-json[Main](file-providers/sample/src/FileProviderSample/FileProviderSample.csproj?range=13-18)]
+[!code-json[](file-providers/sample/src/FileProviderSample/FileProviderSample.csproj?range=13-18)]
 
 Vous pouvez utiliser des [modèles d’utilisation des caractères génériques](#globbing-patterns) lors de la spécification des fichiers à incorporer dans l’assembly. Ces modèles peuvent être utilisés pour faire correspondre un ou plusieurs fichiers.
 
@@ -97,7 +97,7 @@ La mise à jour de l’exemple d’application pour utiliser un `EmbeddedFilePro
 
 `CompositeFileProvider` combine des instances `IFileProvider`, en exposant une interface unique qui permet d’utiliser des fichiers de différents fournisseurs. Quand vous créez `CompositeFileProvider`, vous passez une ou plusieurs instances `IFileProvider` à son constructeur :
 
-[!code-csharp[Main](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=3&range=35-37)]
+[!code-csharp[](file-providers/sample/src/FileProviderSample/Startup.cs?highlight=3&range=35-37)]
 
 La mise à jour de l’exemple d’application pour utiliser un `CompositeFileProvider` qui inclut à la fois le fournisseur physique et le fournisseur incorporé configurés précédemment génère la sortie suivante :
 
@@ -109,7 +109,7 @@ La méthode `IFileProvider` `Watch` offre un moyen d’observer un ou plusieurs 
 
 Dans l’exemple de cet article, une application console est configurée pour afficher un message chaque fois qu’un fichier texte est modifié :
 
-[!code-csharp[Main](file-providers/sample/src/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
+[!code-csharp[](file-providers/sample/src/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
 
 Voici le résultat, après avoir enregistré plusieurs fois le fichier :
 

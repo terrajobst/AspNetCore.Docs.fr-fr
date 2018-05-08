@@ -1,21 +1,22 @@
 ---
-title: "Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.x et ultérieur"
+title: Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.x et ultérieur
 author: Rick-Anderson
-description: "Le métapackage Microsoft.AspNetCore.All comprend tous les packages ASP.NET Core et Entity Framework Core, ainsi que leurs dépendances."
+description: Le métapackage Microsoft.AspNetCore.All comprend tous les packages ASP.NET Core et Entity Framework Core, ainsi que leurs dépendances.
 manager: wpickett
+monikerRange: = aspnetcore-2.0
 ms.author: riande
 ms.date: 09/20/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/metapackage
-ms.openlocfilehash: 07220fdae299723088fa85e452cedff5e5685bd7
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 4c11f15e659565325bfe8b8d91188b62177b251d
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-#<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.x
+# <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.x
 
 Cette fonctionnalité nécessite ASP.NET Core 2.x ciblant .NET Core 2.x.
 
@@ -25,7 +26,7 @@ Le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Micros
 * Tous les packages pris en charge par Entity Framework Core. 
 * Les dépendances internes et tierces utilisées par ASP.NET Core et Entity Framework Core. 
 
-Toutes les fonctionnalités d’ASP.NET Core 2.x et d’Entity Framework Core 2.x sont incluses dans le package `Microsoft.AspNetCore.All`. Les modèles de projet par défaut utilisent ce package.
+Toutes les fonctionnalités d’ASP.NET Core 2.x et d’Entity Framework Core 2.x sont incluses dans le package `Microsoft.AspNetCore.All`. Les modèles de projet par défaut ciblant ASP.NET Core 2.0 utilisent ce package.
 
 Le numéro de version du métapackage `Microsoft.AspNetCore.All` représente la version d’ASP.NET Core et la version d’Entity Framework Core (alignées sur la version de .NET Core).
 
@@ -35,4 +36,4 @@ Vous pouvez utiliser le processus de suppression de package pour supprimer les p
 
 Le fichier *.csproj* suivant fait référence au métapackage `Microsoft.AspNetCore.All` pour ASP.NET Core :
 
-[!code-xml[Main](..\mvc\views\view-compilation\sample\MvcRazorCompileOnPublish2.csproj?highlight=9)]
+[!code-xml[](../mvc/views/view-compilation/sample/MvcRazorCompileOnPublish2.csproj?highlight=9)]

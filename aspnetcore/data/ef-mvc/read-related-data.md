@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC avec EF Core - Lire les données associées - 6 sur 10"
+title: ASP.NET Core MVC avec EF Core - Lire les données associées - 6 sur 10
 author: tdykstra
-description: "Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation."
+description: Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 58b05587458aacad1a633a04f0359a4d2a3605a3
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 6ee4b0db5bf4d1781ce44f1aff8331680ca8686c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="reading-related-data---ef-core-with-aspnet-core-mvc-tutorial-6-of-10"></a>Lecture des données associées - Didacticiel EF Core avec ASP.NET Core MVC (6 sur 10)
+# <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC avec EF Core - Lire les données associées - 6 sur 10
 
-De [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC à l’aide d’Entity Framework Core et de Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
 
 Dans le didacticiel précédent, vous a élaboré le modèle de données School. Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 
@@ -65,7 +65,7 @@ Ouvrez *CoursesController.cs* et examinez la méthode `Index`. La génération d
 
 Remplacez la méthode `Index` par le code suivant qui utilise un nom plus approprié pour `IQueryable` qui renvoie les entités Course (`courses` à la place de `schoolContext`) :
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_RevisedIndexMethod)]
 
 Ouvrez *Views/Courses/Index.cshtml* et remplacez le code de modèle par le code suivant. Les modifications apparaissent en surbrillance :
 
@@ -107,7 +107,7 @@ La page Instructors affiche des données de trois tables différentes. Par cons�
 
 Dans le dossier *SchoolViewModels*, créez *InstructorIndexData.cs* et remplacez le code existant par le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
 ### <a name="create-the-instructor-controller-and-views"></a>Créer les vues et le contrôleur de formateurs
 
@@ -117,31 +117,31 @@ Créez un contrôleur de formateurs avec des actions de lecture/écriture EF com
 
 Ouvrez *InstructorsController.cs* et ajoutez une instruction using pour l’espace de noms ViewModel :
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Using)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_Using)]
 
 Remplacez la méthode Index par le code suivant pour effectuer un chargement hâtif des données associées et le placer dans le modèle de vue.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EagerLoading)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_EagerLoading)]
 
 La méthode accepte des données de route facultatives (`id`) et un paramètre de chaîne de requête (`courseID`) qui fournissent les valeurs d’ID du formateur sélectionné et du cours sélectionné. Ces paramètres sont fournis par les liens hypertexte **Select** dans la page.
 
 Le code commence par créer une instance du modèle de vue et la placer dans la liste des formateurs. Le code spécifie un chargement hâtif pour les propriétés de navigation `Instructor.OfficeAssignment` et `Instructor.CourseAssignments`. Dans la propriété `CourseAssignments`, la propriété `Course` est chargée et, dans ce cadre, les propriétés `Enrollments` et `Department` sont chargées, et dans chaque entité `Enrollment`, la propriété `Student` est chargée.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude)]
 
 Étant donné que la vue nécessite toujours l’entité OfficeAssignment, il est plus efficace de l’extraire dans la même requête. Les entités Course sont requises lorsqu’un formateur est sélectionné dans la page web, de sorte qu’une requête individuelle est meilleure que plusieurs requêtes seulement si la page s’affiche plus souvent avec un cours sélectionné que sans.
 
 Le code répète `CourseAssignments` et `Course`, car vous avez besoin de deux propriétés de `Course`. La première chaîne d’appels `ThenInclude` obtient `CourseAssignment.Course`, `Course.Enrollments` et `Enrollment.Student`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=3-6)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=3-6)]
 
 À ce stade dans le code, un autre `ThenInclude` serait pour les propriétés de navigation de `Student`, dont vous n’avez pas besoin. Toutefois, l’appel de `Include` recommence avec les propriétés `Instructor`, donc vous devez parcourir la chaîne à nouveau, cette fois en spécifiant `Course.Department` à la place de `Course.Enrollments`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=7-9)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ThenInclude&highlight=7-9)]
 
 Le code suivant s’exécute quand un formateur a été sélectionné. Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle de vue. La propriété `Courses` du modèle de vue est alors chargée avec les entités Course de la propriété de navigation `CourseAssignments` de ce formateur.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=56-62)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=56-62)]
 
 La méthode `Where` renvoie une collection, mais dans ce cas, les critères transmis à cette méthode entraînent le renvoi d’une seule entité Instructor. La méthode `Single` convertit la collection en une seule entité Instructor, ce qui vous permet d’accéder à la propriété `CourseAssignments` de cette entité. La propriété `CourseAssignments` contient des entités `CourseAssignment`, à partir desquelles vous souhaitez uniquement les entités `Course` associées.
 
@@ -159,7 +159,7 @@ Vous utilisez la méthode `Single` sur une collection lorsque vous savez que la 
 
 Ensuite, si un cours a été sélectionné, le cours sélectionné est récupéré à partir de la liste des cours dans le modèle de vue. Ensuite, la propriété `Enrollments` du modèle de vue est chargée avec les entités Enrollment à partir de la propriété de navigation `Enrollments` de ce cours.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?range=64-69)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=64-69)]
 
 ### <a name="modify-the-instructor-index-view"></a>Modifier la vue d’index des formateurs
 
@@ -231,7 +231,7 @@ Lorsque vous avez récupéré la liste des formateurs dans *InstructorsControlle
 
 Supposons que vous vous attendiez à ce que les utilisateurs ne souhaitent que rarement voir les inscriptions pour un formateur et un cours sélectionnés. Dans ce cas, vous pouvez charger les données d’inscription uniquement si elles sont demandées. Pour voir un exemple illustrant comment effectuer un chargement explicite, remplacez la méthode `Index` par le code suivant, qui supprime le chargement hâtif pour Enrollments et charge explicitement cette propriété. Les modifications du code apparaissent en surbrillance.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?name=snippet_ExplicitLoading&highlight=23-29)]
 
 Le nouveau code supprime les appels de la méthode *ThenInclude* pour les données d’inscription à partir du code qui extrait les entités de formateur. Si un formateur et un cours sont sélectionnés, le code en surbrillance récupère les entités Enrollment pour le cours sélectionné et les entités Student pour chaque entité Enrollment.
 

@@ -4,4 +4,4 @@ Ce didacticiel vous permet de découvrir le développement web ASP.NET Core MVC 
 * est plus facile à suivre ;
 * couvre davantage de fonctionnalités ;
 
-Si vous choisissez ce didacticiel plutôt que la version [Pages Razor](xref:tutorials/razor-pages/razor-pages-start), merci de laisser une note expliquant pourquoi.
+Si vous choisissez ce tutoriel plutôt que la version [Pages Razor](xref:tutorials/razor-pages/razor-pages-start), merci de laisser une note expliquant pourquoi dans [ ce problème GitHub ](https://github.com/aspnet/Docs/issues/6146).

@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 51811ee1669a24a0fc4ce9bc67e782b61bff655c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6f19a989c9bdfddea7609c5571cdd49de29e036b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Tag Helper Cache dans ASP.NET Core MVC
 
@@ -60,10 +60,9 @@ Exemple :
 
 ### <a name="expires-on"></a>expires-on 
 
-| Type d’attribut    | Exemple de valeur     |
-|----------------   |----------------   |
-| DateTimeOffset    | "@new DateTime(2025,1,29,17,02,0)"    |
-
+| Type d’attribut |           Exemple de valeur            |
+|----------------|------------------------------------|
+| DateTimeOffset | "@new DateTime(2025,1,29,17,02,0)" |
 
 Définit une date d’expiration absolue. L’exemple suivant met en cache le contenu du Tag Helper Cache jusqu’à 17:02 le 29 janvier 2025.
 
@@ -79,10 +78,9 @@ Exemple :
 
 ### <a name="expires-after"></a>expires-after
 
-| Type d’attribut    | Exemple de valeur     |
-|----------------   |----------------   |
-| TimeSpan    | "@TimeSpan.FromSeconds(120)"    |
-
+| Type d’attribut |        Exemple de valeur         |
+|----------------|------------------------------|
+|    TimeSpan    | "@TimeSpan.FromSeconds(120)" |
 
 Définit la durée à partir de l’heure de la première demande pour mettre en cache le contenu. 
 
@@ -98,10 +96,9 @@ Exemple :
 
 ### <a name="expires-sliding"></a>expires-sliding
 
-| Type d’attribut    | Exemple de valeur     |
-|----------------   |----------------   |
-| TimeSpan    | "@TimeSpan.FromSeconds(60)"     |
-
+| Type d’attribut |        Exemple de valeur        |
+|----------------|-----------------------------|
+|    TimeSpan    | "@TimeSpan.FromSeconds(60)" |
 
 Définit l’heure à laquelle une entrée de cache doit être supprimée si elle n’a fait l’objet d’aucun accès.
 
@@ -169,7 +166,7 @@ routes.MapRoute(
     name: "default",
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
-  
+
 *Index.cshtml*
 
 ```cshtml
@@ -224,10 +221,9 @@ L’utilisation de cet attribut permet de conserver le contenu dans le cache via
 
 ### <a name="vary-by"></a>vary-by
 
-| Type d’attribut    | Exemples de valeurs                |
-|----------------   |----------------               |
-| Chaîne             | "@Model"                 |
-
+| Type d’attribut | Exemples de valeurs |
+|----------------|----------------|
+|     Chaîne     |    "@Model"    |
 
 Permet la personnalisation des données mises en cache. Quand l’objet référencé par la valeur de la chaîne de l’attribut change, le contenu du Tag Helper Cache est mis à jour. Souvent, une concaténation de chaîne des valeurs de modèle est affectée à cet attribut.  En effet, cela signifie qu’une mise à jour de l’une des valeurs concaténées invalide le cache.
 
@@ -283,5 +279,5 @@ Le Tag Helper Cache dépend du [service de cache en mémoire](xref:performance/c
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Mise en cache en mémoire](xref:performance/caching/memory)
+* [Mettre en cache en mémoire](xref:performance/caching/memory)
 * [Présentation d’Identity](xref:security/authentication/identity)

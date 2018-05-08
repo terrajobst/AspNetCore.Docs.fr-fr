@@ -1,7 +1,7 @@
 ---
-title: Tag Helper Ancre
+title: Tag Helper Ancre dans ASP.NET Core
 author: pkellner
-description: "Découvrez les attributs ASP.NET Core Tag Helper Ancre et le rôle joué par chaque attribut dans l’extension du comportement de la balise d’ancrage HTML."
+description: Découvrez les attributs ASP.NET Core Tag Helper Ancre et le rôle joué par chaque attribut dans l’extension du comportement de la balise d’ancrage HTML.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -10,23 +10,23 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: f3b704174c3287edda12725b7973a2464e485bac
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 31ff62b6bedb5e577a51f341c89d241d06a83ad3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="anchor-tag-helper"></a>Tag Helper Ancre
+# <a name="anchor-tag-helper-in-aspnet-core"></a>Tag Helper Ancre dans ASP.NET Core
 
 Par [Peter Kellner](http://peterkellner.net) et [Scott Addie](https://github.com/scottaddie)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tag-helpers/built-in/samples/TagHelpersBuiltInAspNetCore) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
 Le [Tag Helper Ancre](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper) améliore la balise d’ancrage HTML standard (`<a ... ></a>`) en ajoutant de nouveaux attributs. Par convention, les noms d’attribut commencent par `asp-`. La valeur d’attribut de l’élément d’ancrage rendu `href` est déterminée par les valeurs des attributs `asp-`.
 
 *SpeakerController* est utilisé dans les exemples dans ce document :
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
 Un inventaire des attributs `asp-` vient ensuite.
 
@@ -34,7 +34,7 @@ Un inventaire des attributs `asp-` vient ensuite.
 
 L’attribut [asp-controller](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.controller) assigne le contrôleur utilisé pour générer l’URL. Le balisage suivant répertorie tous les présentateurs :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspController)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspController)]
 
 Code HTML généré :
 
@@ -52,7 +52,7 @@ Si l’attribut `asp-controller` est spécifié et que `asp-action` ne l’est p
 
 La valeur de l’attribut [asp-action](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.action) représente le nom d’action du contrôleur inclus dans l’attribut `href` généré. Le balisage suivant définit la valeur de l’attribut `href` généré sur la page d’évaluations du présentateur :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAction)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAction)]
 
 Code HTML généré :
 
@@ -70,11 +70,11 @@ L’attribut [asp-route-{value}](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers
 
 Examinons l’action du contrôleur ci-dessous :
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/BuiltInTagController.cs?name=snippet_AnchorTagHelperAction)]
 
 Avec un modèle d’itinéraire par défaut défini dans *Startup.Configure* :
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=8-10)]
 
 La vue MVC utilise le modèle, fourni par l’action, comme suit :
 
@@ -122,11 +122,11 @@ Si `asp-controller` ou `asp-action` ne sont pas spécifiés, le même traitement
 
 L’attribut [asp-route](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.route) est utilisé pour créer une URL reliant directement à un itinéraire nommé. À l’aide des [attributs de routage](xref:mvc/controllers/routing#attribute-routing), un itinéraire peut être nommé comme indiqué dans `SpeakerController` et utilisé dans son action `Evaluations` :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=22-24)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?range=22-24)]
 
 Dans le balisage suivant, l’attribut `asp-route` fait référence à l’itinéraire nommé :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspRoute)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspRoute)]
 
 Le Tag Helper Ancre génère un itinéraire directement vers cette action de contrôleur à l’aide de l’URL */Speaker/Evaluations*. Code HTML généré :
 
@@ -142,7 +142,7 @@ L’attribut [asp-all-route-data](/dotnet/api/microsoft.aspnetcore.mvc.taghelper
 
 Dans l’exemple suivant, un dictionnaire est initialisé et transmis à une vue Razor. Les données peuvent également être transmises avec votre modèle.
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
 
 Le code précédent génère le code HTML suivant :
 
@@ -152,7 +152,7 @@ Le code précédent génère le code HTML suivant :
 
 Le dictionnaire `asp-all-route-data` est aplati pour produire une chaîne de requête conforme aux exigences de l’action `Evaluations` surchargée :
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Controllers/SpeakerController.cs?range=26-30)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?range=26-30)]
 
 Si des clés dans le dictionnaire correspondent aux paramètres d’itinéraire, ces valeurs sont substituées dans l’itinéraire comme il convient. Les autres valeurs non correspondantes sont générées en tant que paramètres de la requête.
 
@@ -160,7 +160,7 @@ Si des clés dans le dictionnaire correspondent aux paramètres d’itinéraire,
 
 L’attribut [asp-fragment](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.fragment) définit un fragment d’URL à ajouter à l’URL. Le Tag Helper Ancre ajoute le caractère de hachage (#). Examinons le balisage suivant :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspFragment)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspFragment)]
 
 Code HTML généré :
 
@@ -176,7 +176,7 @@ L’attribut [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchorta
 
 * **<Nom du projet\>**
   * **wwwroot**
-  * **Zones**
+  * **Les zones (areas)**
     * **Blogs**
       * **Contrôleurs**
         * *HomeController.cs*
@@ -189,7 +189,7 @@ L’attribut [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchorta
 
 Étant donné la hiérarchie de répertoire précédente, le balisage pour faire référence au fichier *AboutBlog.cshtml* est :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspArea)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspArea)]
 
 Code HTML généré :
 
@@ -198,13 +198,13 @@ Code HTML généré :
 ```
 
 > [!TIP]
-> Pour que les zones fonctionnent dans une application MVC, le modèle de routage doit inclure une référence à la zone si elle existe. Ce modèle est représenté par le deuxième paramètre de l’appel de méthode `routes.MapRoute` dans *Startup.Configure* : [!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Startup.cs?name=snippet_UseMvc&highlight=5)]
+> Pour que les zones fonctionnent dans une application MVC, le modèle de routage doit inclure une référence à la zone si elle existe. Ce modèle est représenté par le deuxième paramètre de l’appel de méthode `routes.MapRoute` dans *Startup.Configure* : [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ## <a name="asp-protocol"></a>asp-protocol
 
 L’attribut [asp-protocol](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.protocol) permet de spécifier un protocole (tel que `https`) dans l’URL. Exemple :
 
-[!code-cshtml[samples/TagHelpersBuiltInAspNetCore/Views/Index.cshtml?name=snippet_AspProtocol]]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspProtocol)]
 
 Code HTML généré :
 
@@ -218,7 +218,7 @@ Le nom d’hôte dans l’exemple est localhost, mais le Tag Helper Ancre utilis
 
 L’attribut [asp-host](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.host) est destiné à spécifier un nom d’hôte dans votre URL. Exemple :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspHost)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspHost)]
 
 Code HTML généré :
 
@@ -232,7 +232,7 @@ L’attribut [asp-page](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchorta
 
 L’exemple suivant pointe vers la Page Razor du participant :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPage)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPage)]
 
 Code HTML généré :
 
@@ -242,7 +242,7 @@ Code HTML généré :
 
 L’attribut `asp-page` et les attributs `asp-route`, `asp-controller` et `asp-action` s’excluent mutuellement. Toutefois, `asp-page` peut être utilisé avec `asp-route-{value}` pour contrôler le routage, comme illustré dans le balisage suivant :
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageAspRouteId)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageAspRouteId)]
 
 Code HTML généré :
 
@@ -256,11 +256,11 @@ L’attribut [asp-page-handler](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.
 
 Prenons le gestionnaire de page suivant :
 
-[!code-csharp[](samples/TagHelpersBuiltInAspNetCore/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
+[!code-csharp[](samples/TagHelpersBuiltIn/Pages/Attendee.cshtml.cs?name=snippet_OnGetProfileHandler)]
 
 Le balisage associé au modèle de page est lié au gestionnaire de page `OnGetProfile`. Notez que le préfixe `On<Verb>` du nom de la méthode du gestionnaire de page est omis dans la valeur d’attribut `asp-page-handler`. S’il s’agissait d’une méthode asynchrone, le suffixe `Async` serait également omis.
 
-[!code-cshtml[](samples/TagHelpersBuiltInAspNetCore/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
+[!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPageHandler)]
 
 Code HTML généré :
 
@@ -270,5 +270,5 @@ Code HTML généré :
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Zones](xref:mvc/controllers/areas)
+* [Les zones (areas)](xref:mvc/controllers/areas)
 * [Présentation des Pages Razor](xref:mvc/razor-pages/index)

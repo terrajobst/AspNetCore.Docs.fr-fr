@@ -6,13 +6,13 @@
 
   ![Créer une vue avec des champs pour le genre, le prix, la date de sortie et le titre](../../tutorials/first-mvc-app/adding-model/_static/movies.png)
 
-* Vous ne pourrez peut-être pas entrer des décimales ou des virgules dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Pour plus d’informations, consultez https://github.com/aspnet/Docs/issues/4076 et [Ressources supplémentaires](#additional-resources). Pour le moment, entrez simplement des nombres entiers tels que 10.
+* Vous ne pourrez peut-être pas entrer des séparateurs décimaux ou des virgules dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Pour plus d’informations, consultez https://github.com/aspnet/Docs/issues/4076 et [Ressources supplémentaires](#additional-resources). Pour le moment, entrez simplement des nombres entiers tels que 10.
 
 <a name="displayformatdatelocal"></a>
 
 * Avec certains paramètres régionaux, vous devez spécifier le format de date. Consultez le code en surbrillance ci-dessous.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateFormat.cs?name=snippet_1&highlight=2,10)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateFormat.cs?name=snippet_1&highlight=2,10)]
 
 Nous parlerons de `DataAnnotations` plus loin dans le didacticiel.
 

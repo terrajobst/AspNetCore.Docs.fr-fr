@@ -4,7 +4,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 L’objet `MovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
-[!code-csharp[Main](code/Startup.cs?name=snippet2&highlight=6-8)]
+[!code-csharp[](code/Startup.cs?name=snippet2&highlight=6-8)]
 
 ## <a name="sqlite"></a>SQLite
 
@@ -20,7 +20,7 @@ Vous pouvez télécharger de nombreux outils tiers pour gérer et afficher une b
 
 Créez une classe nommée `SeedData` dans l’espace de noms *Modèles*. Remplacez le code généré par ce qui suit :
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/SeedData.cs?name=snippet_1)]
+[!code-csharp[](code/Models/SeedData.cs)]
 
 Si la base de données contient des films, l’initialiseur de valeur initiale retourne.
 
@@ -36,10 +36,10 @@ if (context.Movie.Any())
 
 Ajoutez l’initialiseur de valeur initiale à la méthode `Main` dans le fichier *Program.cs* :
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Program.cs?highlight=6,16-32)]
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
 ### <a name="test-the-app"></a>Tester l’application
 
 Supprimez tous les enregistrements dans la base de données (pour que la méthode seed s’exécute). Arrêtez et démarrez l’application pour amorcer la base de données.
-   
+
 L’application affiche les données de départ.
