@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/improvements-in-visual-studio-2005
-title: "Améliorations dans Visual Studio 2005 | Documents Microsoft"
+title: Améliorations dans Visual Studio 2005 | Documents Microsoft
 author: microsoft
-description: "Visual Studio 2005 fournit les développeurs d’applications Web avec une longue liste d’améliorations apportées aux projets Web."
+description: Visual Studio 2005 fournit les développeurs d’applications Web avec une longue liste d’améliorations apportées aux projets Web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005

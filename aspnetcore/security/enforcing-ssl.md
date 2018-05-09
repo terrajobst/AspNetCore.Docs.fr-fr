@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/enforcing-ssl
-ms.openlocfilehash: 0509bebe430c6ba213031a2cb7cb91bb7a39566d
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: b324dbcd6d28c1a8505f96da333874728e2e6a18
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="enforce-https-in-an-aspnet-core"></a>Appliquer HTTPS dans une base de ASP.NET
 
@@ -34,9 +34,6 @@ Ce document montre comment :
 ## <a name="require-https"></a>Exiger HTTPS
 
 ::: moniker range=">= aspnetcore-2.1"
-
-[!INCLUDE[](~/includes/2.1.md)]
-
 Nous vous recommandons de tous les principaux ASP.NET web applications appel `UseHttpsRedirection` pour rediriger toutes les demandes HTTP vers HTTPS. Si `UseHsts` est appelée dans l’application, il doit être appelé avant `UseHttpsRedirection`.
 
 Le code suivant appelle `UseHttpsRedirection` dans la `Startup` classe :
@@ -125,5 +122,12 @@ dotnet new razor --no-https
 ```
 
 ------
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+## <a name="how-to-setup-a-developer-certificate-for-docker"></a>La configuration d’un certificat de développeur pour Docker
+
+Consultez [ce problème GitHub](https://github.com/aspnet/Docs/issues/6199).
 
 ::: moniker-end

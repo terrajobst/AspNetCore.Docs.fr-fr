@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/index
-ms.openlocfilehash: b1c2b734a2e9b274792b597bfd222c31e661b0d7
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 4637ff6312f32f5887ff0f7a6e74d10f5beb0ca5
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -111,7 +111,7 @@ Points à prendre en considération pour la configuration :
 
 * [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot) peut recharger les données de configuration quand elles changent.
 * Les clés de configuration ne respectent **pas** la casse.
-* Ne stockez **jamais** des mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte clair. N’utilisez aucun secret de production dans les environnements de développement ou de test. Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source. Découvrez des informations supplémentaires sur [l’utilisation de plusieurs environnements](xref:fundamentals/environments) et sur la gestion du [stockage sécurisé des secrets des applications lors du développement](xref:security/app-secrets).
+* Ne stockez **jamais** des mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte clair. N’utilisez aucun secret de production dans les environnements de développement ou de test. Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source. Découvrez plus en détail comment [utiliser plusieurs environnements](xref:fundamentals/environments) et gérer le [stockage sécurisé des secrets des applications lors du développement](xref:security/app-secrets).
 * Pour les valeurs de configuration hiérarchiques spécifiées dans des variables d’environnement, un signe deux-points (`:`) peut ne pas fonctionner sur toutes les plateformes. Le trait de soulignement double (`__`) est pris en charge par toutes les plateformes.
 * Pour l’interaction avec l’API de configuration, un signe deux-points (`:`) fonctionne sur toutes les plateformes.
 
@@ -412,6 +412,10 @@ Un fichier *web.config* est nécessaire pour héberger l’application dans IIS 
 ## <a name="access-configuration-during-startup"></a>Accéder à la configuration lors du démarrage
 
 Pour accéder à la configuration dans `ConfigureServices` ou `Configure` au démarrage, consultez les exemples dans la rubrique [Démarrage de l’application](xref:fundamentals/startup).
+
+## <a name="adding-configuration-from-an-external-assembly"></a>Ajout de la configuration à partir d’un assembly externe
+
+L’implémentation de [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez [Améliorer une application à partir d’un assembly externe](xref:fundamentals/configuration/platform-specific-configuration).
 
 ## <a name="access-configuration-in-a-razor-page-or-mvc-view"></a>Accéder à la configuration dans une page Razor ou une vue MVC
 

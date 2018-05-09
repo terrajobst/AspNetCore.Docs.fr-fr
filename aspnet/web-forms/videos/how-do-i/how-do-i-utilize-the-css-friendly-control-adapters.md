@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-utilize-the-css-friendly-control-adapters
-title: "[Comment faire] Utiliser les adaptateurs de contrôle convivial CSS ? | Microsoft Docs"
+title: '[Comment faire] Utiliser les adaptateurs de contrôle convivial CSS ? | Microsoft Docs'
 author: rick-anderson
-description: "Les adaptateurs de contrôle convivial CSS permettent de modifier le code HTML qui est restitué par un contrôle de serveur ASP.NET 2.0 standard. Dans cette vidéo, nous apprendre qui le stan..."
+description: Les adaptateurs de contrôle convivial CSS permettent de modifier le code HTML qui est restitué par un contrôle de serveur ASP.NET 2.0 standard. Dans cette vidéo, nous apprendre qui le stan...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/01/2007

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bower
-ms.openlocfilehash: 2d6cc526b5a0890103e2856a0ca4b58c5f162c79
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 4f53d0f04d17631a12e2c2030d6dbb1f4fcc09d3
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Gérer les dépendances côté client avec Bower dans ASP.NET Core
 
@@ -115,7 +115,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut accéder aux packages déployés.
 
-* Ajoutez une nouvelle page HTML nommée *Index.html* dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Consultez [travailler avec des fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
+* Ajoutez une nouvelle page HTML nommée *Index.html* dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Consultez [fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
 
   Remplacez le contenu du fichier *Index.html* par le contenu suivant :
 

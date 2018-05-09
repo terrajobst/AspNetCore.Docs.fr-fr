@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
-title: "Activation des opérations CRUD dans ASP.NET Web API 1 | Documents Microsoft"
+title: Activation des opérations CRUD dans ASP.NET Web API 1 | Documents Microsoft
 author: MikeWasson
-description: "Ce didacticiel montre comment prendre en charge des opérations dans un service HTTP à l’aide des API Web ASP.NET. Versions des logiciels utilisées dans le didacticiel Visual Studio 2012 Web AP..."
+description: Ce didacticiel montre comment prendre en charge des opérations dans un service HTTP à l’aide des API Web ASP.NET. Versions des logiciels utilisées dans le didacticiel Visual Studio 2012 Web AP...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/28/2012

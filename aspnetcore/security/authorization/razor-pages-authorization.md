@@ -1,7 +1,7 @@
 ---
-title: "Conventions d’autorisation de Pages Razor dans ASP.NET Core"
+title: Conventions d’autorisation de Pages Razor dans ASP.NET Core
 author: guardrex
-description: "Découvrez comment contrôler l’accès aux pages avec conventions d’autorisent des utilisateurs, et permettent aux utilisateurs anonymes d’accéder aux pages ou aux dossiers de pages."
+description: Découvrez comment contrôler l’accès aux pages avec conventions d’autorisent des utilisateurs, et permettent aux utilisateurs anonymes d’accéder aux pages ou aux dossiers de pages.
 manager: wpickett
 ms.author: riande
 ms.date: 10/27/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: bbef653c6cf968527e753df9c853f5972640cc03
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: 2fd8cd444b1d774c387dc6426af5914bde9b8ae7
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Conventions d’autorisation de Pages Razor dans ASP.NET Core
 
@@ -79,5 +79,5 @@ Nécessitant une autorisation sur la page privée ne fonctionne pas, car lorsqu�
 
 ## <a name="see-also"></a>Voir aussi
 
-* [Itinéraire personnalisé des pages Razor et fournisseurs de modèle de page](xref:mvc/razor-pages/razor-pages-convention-features)
-* [PageConventionCollection](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection) class
+* [Itinéraire personnalisé des pages Razor et fournisseurs de modèle de page](xref:mvc/razor-pages/razor-pages-conventions)
+* [PageConventionCollection](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection) classe

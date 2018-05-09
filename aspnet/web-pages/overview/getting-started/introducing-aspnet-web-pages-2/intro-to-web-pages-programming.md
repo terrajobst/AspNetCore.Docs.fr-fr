@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: 3e2c990a6451c13e03baafa343df156b2d46d219
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 60115dd06a27bf856427953de29e993194afb991
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 <a name="introducing-aspnet-web-pages---programming-basics"></a>Présentation des Pages Web ASP.NET - notions de base de programmation
 ====================
@@ -207,7 +207,7 @@ Exécutez la page et cliquez sur **Submit**. Ce temps vous permet de voir un mes
 
 ### <a name="testing-the-value-of-a-query-string"></a>Test de la valeur de chaîne de requête
 
-Un test plus. Cette fois-ci, vous allez ajouter une instruction if bloc qui teste une valeur nommé show qui peut-être être transmis dans la chaîne de requête. (À ceci : ''http://localhost:43097/TestRazorPart2.cshtml`?show=true`) vous allez modifier la page afin que le message vous avez été affichage (« Il s’agit de la première fois... », etc.) s’affiche uniquement si la valeur d’émission est true.
+Un test plus. Cette fois-ci, vous allez ajouter une instruction if bloc qui teste une valeur nommé show qui peut-être être transmis dans la chaîne de requête. (À ceci : `http://localhost:43097/TestRazorPart2.cshtml?show=true`) vous allez modifier la page afin que le message vous avez été affichage (« Il s’agit de la première fois... », etc.) s’affiche uniquement si la valeur d’émission est true.
 
 Dans le bas (mais à l’intérieur), le bloc de code en haut de la page, ajoutez le code suivant :
 
@@ -223,7 +223,7 @@ Le nouveau code dans le bloc Initialise une variable nommée showMessage sur fal
 
 Le code détermine si l’URL contient une variable nommée afficher dans la chaîne de requête, telles que cette version de l’URL :
 
-`http://localhost:43097/TestRazorPart2.cshtml`?show=true
+`http://localhost:43097/TestRazorPart2.cshtml`? Afficher = true
 
 Le test lui-même examine la propriété de chaîne de requête de l’objet de demande. Si la chaîne de requête contient un élément nommé afficher, et si cet élément est défini sur true, le cas bloc s’exécute et définit la variable showMessage sur true.
 
