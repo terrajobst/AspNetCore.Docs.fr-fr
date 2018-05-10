@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 5a8a035ff3f127d01655888d4f83a871645b0bf5
-ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
+ms.openlocfilehash: 473585f1be180645395c14a154c9c017ca50edab
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -79,7 +79,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Si aucun [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) sont spécifiés à l’intergiciel (middleware), les en-têtes par défaut à transférer sont `None`.
 
-Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des équilibreurs de charge et les serveurs proxy. Pour plus d’informations, consultez [configurer ASP.NET Core pour travailler avec des serveurs proxy et des équilibrages de charge](xref:host-and-deploy/proxy-load-balancer).
+Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge. Pour plus d’informations, consultez [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
 
 ### <a name="install-apache"></a>Installer Apache
 
@@ -189,6 +189,13 @@ WantedBy=multi-user.target
 
 > [!NOTE]
 > **Utilisateur** &mdash; si l’utilisateur *apache* n’est pas utilisé par la configuration, l’utilisateur doit être créé en premier et étant donné la propriété appropriée pour les fichiers.
+
+> [!NOTE]
+> Certaines valeurs (par exemple, chaînes de connexion SQL) doivent être échappés pour les fournisseurs de configuration à lire les variables d’environnement. Utilisez la commande suivante pour générer une valeur correctement avec la séquence d’échappement pour une utilisation dans le fichier de configuration :
+>
+> ```console
+> systemd-escape "<value-to-escape>"
+> ```
 
 Enregistrez le fichier et activer le service :
 
