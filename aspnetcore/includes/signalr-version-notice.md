@@ -1,2 +1,2 @@
 > [!NOTE]
-> <span data-ttu-id="dc72b-101">Ce document décrit en détail la dernière version de ASP.NET Core SignalR.</span><span class="sxs-lookup"><span data-stu-id="dc72b-101">This document details the latest version of ASP.NET Core SignalR.</span></span> <span data-ttu-id="dc72b-102">Consultez le [SignalR 1.x documentation](/aspnet/signalr/) pour la version de l’infrastructure ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="dc72b-102">See the [SignalR 1.x documentation](/aspnet/signalr/) for the ASP.NET Framework version.</span></span>
+> Ce document décrit en détail la dernière version de ASP.NET Core SignalR. Consultez le [SignalR 1.x documentation](/aspnet/signalr/) pour la version de l’infrastructure ASP.NET.

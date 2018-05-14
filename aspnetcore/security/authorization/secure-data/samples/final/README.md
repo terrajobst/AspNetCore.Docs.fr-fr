@@ -1,9 +1,9 @@
-# <a name="how-to-buildrun-secure-user-data-sample"></a><span data-ttu-id="dcdd9-101">Comment faire pour générer/exécuter l’exemple de données utilisateur sécurisé</span><span class="sxs-lookup"><span data-stu-id="dcdd9-101">How to build/run Secure user data sample</span></span>
+# <a name="how-to-buildrun-secure-user-data-sample"></a>Comment faire pour générer/exécuter l’exemple de données utilisateur sécurisé
 
-* <span data-ttu-id="dcdd9-102">Définir le mot de passe avec l’outil Gestionnaire de Secret :</span><span class="sxs-lookup"><span data-stu-id="dcdd9-102">Set password with the Secret Manager tool:</span></span>
+* Définir le mot de passe avec l’outil Gestionnaire de Secret :
 
   `dotnet user-secrets set SeedUserPW <pw>`
 
-* <span data-ttu-id="dcdd9-103">Mettre à jour la base de données :</span><span class="sxs-lookup"><span data-stu-id="dcdd9-103">Update the database:</span></span>
+* Mettre à jour la base de données :
 
     `dotnet ef database update`

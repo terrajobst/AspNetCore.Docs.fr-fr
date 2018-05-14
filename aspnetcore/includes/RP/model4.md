@@ -1,31 +1,31 @@
-<span data-ttu-id="9e504-101">Le tableau suivant détaille les paramètres des générateurs de code ASP.NET Core :</span><span class="sxs-lookup"><span data-stu-id="9e504-101">The following table details the ASP.NET Core code generators\` parameters:</span></span>
+Le tableau suivant détaille les paramètres des générateurs de code ASP.NET Core :
 
-| <span data-ttu-id="9e504-102">Paramètre</span><span class="sxs-lookup"><span data-stu-id="9e504-102">Parameter</span></span>               | <span data-ttu-id="9e504-103">Description</span><span class="sxs-lookup"><span data-stu-id="9e504-103">Description</span></span>|
+| Paramètre               | Description|
 | ----------------- | ------------ |
-| <span data-ttu-id="9e504-104">-m</span><span class="sxs-lookup"><span data-stu-id="9e504-104">-m</span></span>  | <span data-ttu-id="9e504-105">Nom du modèle.</span><span class="sxs-lookup"><span data-stu-id="9e504-105">The name of the model.</span></span> |
-| <span data-ttu-id="9e504-106">-dc</span><span class="sxs-lookup"><span data-stu-id="9e504-106">-dc</span></span>  | <span data-ttu-id="9e504-107">Contexte de données.</span><span class="sxs-lookup"><span data-stu-id="9e504-107">The data context.</span></span> |
-| <span data-ttu-id="9e504-108">-udl</span><span class="sxs-lookup"><span data-stu-id="9e504-108">-udl</span></span> | <span data-ttu-id="9e504-109">Utiliser la disposition par défaut.</span><span class="sxs-lookup"><span data-stu-id="9e504-109">Use the default layout.</span></span> |
-| <span data-ttu-id="9e504-110">-outDir</span><span class="sxs-lookup"><span data-stu-id="9e504-110">-outDir</span></span> | <span data-ttu-id="9e504-111">Chemin du dossier de sortie relatif pour créer les vues.</span><span class="sxs-lookup"><span data-stu-id="9e504-111">The relative output folder path to create the views.</span></span> |
-| <span data-ttu-id="9e504-112">--referenceScriptLibraries</span><span class="sxs-lookup"><span data-stu-id="9e504-112">--referenceScriptLibraries</span></span> | <span data-ttu-id="9e504-113">Ajoute `_ValidationScriptsPartial` aux pages Modifier et Créer.</span><span class="sxs-lookup"><span data-stu-id="9e504-113">Adds `_ValidationScriptsPartial` to Edit and Create pages</span></span> |
+| -m  | Nom du modèle. |
+| -dc  | Contexte de données. |
+| -udl | Utiliser la disposition par défaut. |
+| -outDir | Chemin du dossier de sortie relatif pour créer les vues. |
+| --referenceScriptLibraries | Ajoute `_ValidationScriptsPartial` aux pages Modifier et Créer. |
 
-<span data-ttu-id="9e504-114">Utilisez le commutateur `h` pour obtenir de l’aide sur la commande `aspnet-codegenerator razorpage` :</span><span class="sxs-lookup"><span data-stu-id="9e504-114">Use the `h` switch to get help on the `aspnet-codegenerator razorpage` command:</span></span>
+Utilisez le commutateur `h` pour obtenir de l’aide sur la commande `aspnet-codegenerator razorpage` :
 
 ```console
 dotnet aspnet-codegenerator razorpage -h
 ```
 <a name="test"></a>
-### <a name="test-the-app"></a><span data-ttu-id="9e504-115">Tester l’application</span><span class="sxs-lookup"><span data-stu-id="9e504-115">Test the app</span></span>
+### <a name="test-the-app"></a>Tester l’application
 
-* <span data-ttu-id="9e504-116">Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).</span><span class="sxs-lookup"><span data-stu-id="9e504-116">Run the app and append `/Movies` to the URL in the browser (`http://localhost:port/movies`).</span></span>
-* <span data-ttu-id="9e504-117">Testez le lien **Créer**.</span><span class="sxs-lookup"><span data-stu-id="9e504-117">Test the **Create** link.</span></span>
+* Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
+* Testez le lien **Créer**.
 
   ![Créer une page](../../tutorials/razor-pages/model/_static/conan.png)
 
 <a name="scaffold"></a>
 
-* <span data-ttu-id="9e504-119">Testez les liens **Modifier**, **Détails** et **Supprimer**.</span><span class="sxs-lookup"><span data-stu-id="9e504-119">Test the **Edit**, **Details**, and **Delete** links.</span></span>
+* Testez les liens **Modifier**, **Détails** et **Supprimer**.
 
-<span data-ttu-id="9e504-120">Si vous obtenez l’erreur suivante, vérifiez que vous avez exécuté les migrations et mis à jour la base de données :</span><span class="sxs-lookup"><span data-stu-id="9e504-120">If you get the error similar to the following, verify you have run migrations and updated the database:</span></span>
+Si vous obtenez l’erreur suivante, vérifiez que vous avez exécuté les migrations et mis à jour la base de données :
 
 ```
 An unhandled exception occurred while processing the request.
