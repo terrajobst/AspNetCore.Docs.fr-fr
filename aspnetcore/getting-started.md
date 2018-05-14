@@ -1,7 +1,7 @@
 ---
-title: "Bien démarrer avec ASP.NET Core 2.0"
+title: Bien démarrer avec ASP.NET Core
 author: rick-anderson
-description: "Didacticiel rapide qui crée et exécute une application Hello World simple à l’aide d’ASP.NET Core."
+description: Didacticiel rapide qui crée et exécute une application Hello World simple à l’aide d’ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/18/2017
@@ -9,18 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: getting-started
-ms.openlocfilehash: eb1fd748029743ca6991927cc95b612ed1975338
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c2f18c69901a5a6503314d508a776e6985872681
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-aspnet-core"></a>Bien démarrer avec ASP.NET Core
 
 > [!NOTE]
-> Les instructions suivantes concernent la dernière version d’ASP.NET Core. Si vous souhaitez bien démarrer avec une version précédente, consultez [la version 1.1 de ce didacticiel](xref:getting-started-1.1).
+> Les instructions suivantes concernent la dernière version d’ASP.NET Core. Consultez [Bien démarrer avec ASP.NET Core 1.1](xref:getting-started-1.1) pour la version 1.1 de ce document.
 
-1. Installez [.NET Core](https://www.microsoft.com/net/core/).
+1. Installez le [!INCLUDE [](~/includes/net-core-sdk-download-link.md)].
 
 2. Créez un projet .NET Core.
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/30/2018
     dotnet new razor -o aspnetcoreapp
     ```
     
-4. Exécutez l’application.
+3. Exécutez l’application.
 
     Exécutez les commandes suivantes pour exécuter l’application :
 
@@ -39,13 +39,13 @@ ms.lasthandoff: 01/30/2018
     dotnet run
     ```
 
-5. Accédez à [http://localhost:5000](http://localhost:5000)
+4. Accédez à [http://localhost:5000](http://localhost:5000).
 
-6. Ouvrez *Pages/About.cshtml*, puis modifiez la page de façon à afficher le message « Hello, world! The time on the server is @DateTime.Now » :
+5. Ouvrez <em>Pages/About.cshtml</em>, puis modifiez la page de façon à afficher le message « Hello, world! The time on the server is @DateTime.Now » :
 
-    [!code-html[Main](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
+    [!code-html[](getting-started/sample/getting-started/about.cshtml?highlight=9&range=1-9)]
 
-7. Accédez à [http://localhost:5000/About](http://localhost:5000/About), puis vérifiez les modifications.
+6. Accédez à [http://localhost:5000/About](http://localhost:5000/About) et vérifiez les changements.
 
 ### <a name="next-steps"></a>Étapes suivantes
 

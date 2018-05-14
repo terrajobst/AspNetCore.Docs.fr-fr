@@ -1,7 +1,7 @@
 ---
-title: "Bien démarrer avec ASP.NET Core 1.1"
+title: Bien démarrer avec ASP.NET Core 1.1
 author: rick-anderson
-description: "Didacticiel rapide qui crée et exécute une application Hello World simple à l’aide d’ASP.NET Core 1.1."
+description: Suivez ce tutoriel rapide pour créer et exécuter une application Hello World simple à l’aide d’ASP.NET Core 1.1.
 manager: wpickett
 ms.author: riande
 ms.date: 08/07/2017
@@ -9,18 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: getting-started-1.1
-ms.openlocfilehash: 895e91efbba931923540e4cd182862cbc1851585
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c61a9a918e51bbd6c1f1142a04473393c8fc54ca
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="getting-started-with-aspnet-core-11"></a>Bien démarrer avec ASP.NET Core 1.1
+# <a name="get-started-with-aspnet-core-11"></a>Bien démarrer avec ASP.NET Core 1.1
 
 > [!NOTE]
-> Les instructions suivantes concernent ASP.NET Core 1.1. Si vous recherchez la dernière version, consultez [la version actuelle de ce didacticiel](xref:getting-started).
+> Les instructions suivantes concernent ASP.NET Core 1.1. Si vous recherchez la dernière version, consultez [la version actuelle de ce tutoriel](xref:getting-started).
 
-1. Installez le **programme d’installation du SDK** .NET Core pour le SDK 1.0.4 à partir de la [page des téléchargements du SDK 1.0.4 .NET Core 1.0.5 & 1.1.2](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.0.5-download.md).
+1. Installez le **programme d’installation du SDK** .NET Core pour le SDK 1.0.4 à partir de la [page de tous les téléchargements .NET Core](https://www.microsoft.com/net/download/all).
 
 2. Créez un dossier pour un nouveau projet .NET Core.
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/30/2018
 
 4. Exécutez l’application.
 
-   La commande `dotnet run` commence par générer l’application, si nécessaire.
+   La commande [dotnet run](/dotnet/core/tools/dotnet-run) commence par créer l’application, si nécessaire.
 
    ```terminal
    dotnet run

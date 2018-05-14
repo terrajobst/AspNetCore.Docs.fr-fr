@@ -1,7 +1,7 @@
 ---
 title: ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
 author: tdykstra
-description: 
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/crud
-ms.openlocfilehash: a7e0d4ff3d57e42dd7e33ffb5f26f2143520be87
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 54f25733126c6de5a3704664bda7c7942a3643a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="create-read-update-and-delete---ef-core-with-aspnet-core-mvc-tutorial-2-of-10"></a>Créer, lire, mettre à jour et supprimer - Didacticiel EF Core avec ASP.NET Core MVC (2 sur 10)
+# <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -42,9 +42,9 @@ Le code du modèle généré automatiquement pour la page Index des étudiants e
 
 Dans *Controllers/StudentsController.cs*, la méthode d’action pour la vue Details utilise la méthode `SingleOrDefaultAsync` pour récupérer une seule entité `Student`. Ajoutez du code qui appelle `Include`. Les méthodes `ThenInclude` et `AsNoTracking`, comme indiqué dans le code en surbrillance suivant.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
-Les méthodes `Include` et `ThenInclude` provoquent le chargement par le contexte de la propriété de navigation `Student.Enrollments` et, dans chaque inscription, le chargement de la propriété de navigation `Enrollment.Course`.  Vous découvrirez plus d’informations sur ces méthodes dans le didacticiel sur [la lecture des données connexes](read-related-data.md).
+Les méthodes `Include` et `ThenInclude` font que le contexte charge la propriété de navigation `Student.Enrollments` et dans chaque inscription, la propriété de navigation `Enrollment.Course`.  Vous découvrirez plus d’informations sur ces méthodes dans le tutoriel sur [la lecture des données associées](read-related-data.md).
 
 La méthode `AsNoTracking` améliore les performances dans les scénarios où les entités retournées ne sont pas mises à jour pendant la durée de vie du contexte actif. Vous pouvez découvrir plus d’informations sur `AsNoTracking` à la fin de ce didacticiel.
 
@@ -52,7 +52,7 @@ La méthode `AsNoTracking` améliore les performances dans les scénarios où le
 
 La valeur de clé qui est passée à la méthode `Details` provient des *données de route*. Les données de route sont des données que le classeur de modèles a trouvées dans un segment de l’URL. Par exemple, la route par défaut spécifie les segments contrôleur, action et ID :
 
-[!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
+[!code-csharp[](intro/samples/cu/Startup.cs?name=snippet_Route&highlight=5)]
 
 Dans l’URL suivante, la route par défaut mappe Instructor en tant que contrôleur, Index en tant qu’action et 1 en tant qu’ID ; il s’agit des valeurs des données de route.
 
@@ -104,7 +104,7 @@ Après le dernier champ et immédiatement avant la balise de fermeture `</dl>`, 
 
 Si l’indentation du code est incorrecte une fois le code collé, appuyez sur Ctrl-K-D pour la corriger.
 
-Ce code parcourt en boucle les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et la note. Le titre du cours est récupéré auprès de l’entité Course qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
+Ce code parcourt en boucle les entités dans la propriété de navigation `Enrollments`. Pour chaque inscription, il affiche le titre du cours et la note. Le titre du cours est récupéré à partir de l’entité de cours qui est stockée dans la propriété de navigation `Course` de l’entité Enrollments.
 
 Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez sur le lien **Details** pour un étudiant. Vous voyez la liste des cours et des notes de l’étudiant sélectionné :
 
@@ -114,7 +114,7 @@ Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez s
 
 Dans *StudentsController.cs*, modifiez la méthode HttpPost `Create` en ajoutant un bloc try-catch et en supprimant l’ID de l’attribut `Bind`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
 Ce code ajoute l’entité Student créée par le classeur de modèles ASP.NET MVC au jeu d’entités Students, puis enregistre les modifications dans la base de données. (Le classeur de modèles référence la fonctionnalité d’ASP.NET MVC qui facilite l’utilisation des données envoyées par un formulaire ; un classeur de modèles convertit les valeurs de formulaire envoyées en types CLR et les passe à la méthode d’action dans des paramètres. Dans ce cas, le classeur de modèles instancie une entité Student pour vous avec des valeurs de propriété provenant de la collection Form.)
 
@@ -162,7 +162,7 @@ Entrez des noms et une date. Si votre navigateur vous le permet, essayez d’ent
 
 Il s’agit de la validation côté serveur que vous obtenez par défaut ; dans un didacticiel suivant, vous verrez comment ajouter des attributs qui génèrent du code également pour la validation côté client. Le code en surbrillance suivant montre la vérification de validation du modèle dans la méthode `Create`.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=8)]
 
 Changez la date en une valeur valide, puis cliquez sur **Create** pour voir apparaître le nouvel étudiant dans la page **Index**.
 
@@ -174,7 +174,7 @@ Dans *StudentController.cs*, la méthode HttpGet `Edit` (celle sans l’attribut
 
 Remplacez la méthode d’action HttpPost Edit par le code suivant.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ReadFirst)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_ReadFirst)]
 
 Ces modifications implémentent une bonne pratique de sécurité pour empêcher la survalidation. Le générateur de modèles automatique a généré un attribut `Bind` et a ajouté l’entité créée par le classeur de modèles au jeu d’entités avec un indicateur `Modified`. Ce code n’est pas recommandé dans de nombreux scénarios, car l’attribut `Bind` efface toutes les données préexistantes dans les champs non répertoriés dans le paramètre `Include`.
 
@@ -188,7 +188,7 @@ Au titre de bonne pratique pour empêcher la survalidation, les champs dont vous
 
 Le code de HttpPost Edit recommandé garantit que seules les colonnes modifiées sont mises à jour et conserve les données dans les propriétés que vous ne voulez pas inclure pour la liaison de modèle. Cependant, l’approche « lecture en premier » nécessite une lecture supplémentaire de la base de données et peut aboutir à un code plus complexe pour la gestion des conflits d’accès concurrentiel. Une alternative consiste à attacher une entité créée par le classeur de modèles au contexte EF et à la marquer comme étant modifiée. (Ne mettez pas à jour votre projet avec ce code, il figure ici seulement pour illustrer une approche facultative.) 
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_CreateAndAttach)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_CreateAndAttach)]
 
 Vous pouvez utiliser cette approche quand l’interface utilisateur de la page web inclut tous les champs de l’entité et peut les mettre à jour.
 
@@ -236,7 +236,7 @@ Vous allez ajouter un bloc try-catch à la méthode HttpPost `Delete` pour gére
 
 Remplacez la méthode d’action HttpGet `Delete` par le code suivant, qui gère le signalement des erreurs.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteGet&highlight=1,9,16-21)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteGet&highlight=1,9,16-21)]
 
 Ce code accepte un paramètre facultatif qui indique si la méthode a été appelée après une erreur d’enregistrement des modifications. Ce paramètre a la valeur false quand la méthode HttpGet `Delete` est appelée sans une erreur antérieure. Quand elle est appelée par la méthode HttpPost `Delete` en réponse à une erreur de mise à jour de la base de données, le paramètre a la valeur true et un message d’erreur est passé à la vue.
 
@@ -244,7 +244,7 @@ Ce code accepte un paramètre facultatif qui indique si la méthode a été appe
 
 Remplacez la méthode d’action HttpPost `Delete` (nommée `DeleteConfirmed`) par le code suivant, qui effectue l’opération de suppression réelle et intercepte les erreurs de mise à jour de la base de données.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
 
 Ce code récupère l’entité sélectionnée, puis appelle la méthode `Remove` pour définir l’état de l’entité sur `Deleted`. Quand `SaveChanges` est appelée, une commande SQL DELETE est générée.
 
@@ -252,7 +252,7 @@ Ce code récupère l’entité sélectionnée, puis appelle la méthode `Remove`
 
 Si l’amélioration des performances dans une application traitant des volumes importants est une priorité, vous pouvez éviter une requête SQL inutile en instanciant une entité de Student en utilisant seulement la valeur de la clé primaire, puis en définissant l’état de l’entité sur `Deleted`. C’est tout ce dont a besoin Entity Framework pour pouvoir supprimer l’entité. (Ne placez pas de ce code dans votre projet ; il figure ici seulement pour illustrer une solution alternative.)
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithoutReadFirst&highlight=7-8)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithoutReadFirst&highlight=7-8)]
 
 Si l’entité a des données connexes qui doivent également être supprimées, vérifiez que la suppression en cascade est configurée dans la base de données. Avec cette approche pour la suppression de l’entité, EF peut ne pas réaliser que des entités connexes doivent être supprimées.
 
@@ -296,6 +296,6 @@ Pour plus d’informations, consultez [Suivi ou pas de suivi](https://docs.micro
 
 Vous avez maintenant un ensemble complet de pages qui effectuent des opérations CRUD simples pour les entités Student. Dans le didacticiel suivant, vous allez développer les fonctionnalités de la page **Index** en ajoutant le tri, le filtrage et la pagination.
 
->[!div class="step-by-step"]
-[Précédent](intro.md)
-[Suivant](sort-filter-page.md)  
+> [!div class="step-by-step"]
+> [Précédent](intro.md)
+> [Suivant](sort-filter-page.md)  

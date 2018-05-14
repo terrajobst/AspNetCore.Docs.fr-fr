@@ -1,7 +1,7 @@
 ---
-title: "Activation d’un intergiciel (middleware) basé sur une fabrique dans ASP.NET Core"
+title: Activation d’un intergiciel (middleware) basé sur une fabrique dans ASP.NET Core
 author: guardrex
-description: "Découvrez comment utiliser un middleware fortement typé avec une implémentation de l’activation basée sur une fabrique dans ASP.NET Core."
+description: Découvrez comment utiliser un middleware fortement typé avec une implémentation de l’activation basée sur une fabrique dans ASP.NET Core.
 ms.author: riande
 manager: wpickett
 ms.custom: mvc
@@ -10,11 +10,11 @@ ms.topic: article
 ms.technology: aspnet
 ms.prod: asp.net-core
 uid: fundamentals/middleware/extensibility
-ms.openlocfilehash: 57ff9db2edbf307f2442443dc14e69b0498f7475
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 76ba257abfb11e0c2950b974f837c6ae5818a6a1
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="factory-based-middleware-activation-in-aspnet-core"></a>Activation d’un intergiciel (middleware) basé sur une fabrique dans ASP.NET Core
 
@@ -35,8 +35,8 @@ Avantages :
 
 L’exemple d’application montre un middleware activé par :
 
-* Convention (`ConventionalMiddleware`). Pour plus d’informations sur l’activation conventionnelle de middleware, consultez la rubrique [Intergiciel (middleware)](xref:fundamentals/middleware/index).
-* Une implémentation de [IMiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) (`IMiddlewareMiddleware`). La [classe MiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.middlewarefactory) par défaut active le middleware.
+* Convention. Pour plus d’informations sur l’activation conventionnelle de middleware, consultez la rubrique [Intergiciel (middleware)](xref:fundamentals/middleware/index).
+* Une implémentation de [IMiddleware](/dotnet/api/microsoft.aspnetcore.http.imiddleware). La [classe MiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.middlewarefactory) par défaut active le middleware.
 
 Les implémentations de middleware fonctionnent de façon identique et enregistrent la valeur fournie par un paramètre de la chaîne de requête (`key`). Les middlewares utilisent un contexte de base de données injecté (un service délimité) pour enregistrer la valeur de la chaîne de requête dans une base de données en mémoire.
 
@@ -46,15 +46,15 @@ Les implémentations de middleware fonctionnent de façon identique et enregistr
 
 Middleware activé par convention :
 
-[!code-csharp[Main](extensibility/sample/Middleware/ConventionalMiddleware.cs?name=snippet1)]
+[!code-csharp[](extensibility/sample/Middleware/ConventionalMiddleware.cs?name=snippet1)]
 
 Middleware activé par `MiddlewareFactory` :
 
-[!code-csharp[Main](extensibility/sample/Middleware/IMiddlewareMiddleware.cs?name=snippet1)]
+[!code-csharp[](extensibility/sample/Middleware/IMiddlewareMiddleware.cs?name=snippet1)]
 
 Des extensions sont créées pour les middleware :
 
-[!code-csharp[Main](extensibility/sample/Middleware/MiddlewareExtensions.cs?name=snippet1)]
+[!code-csharp[](extensibility/sample/Middleware/MiddlewareExtensions.cs?name=snippet1)]
 
 Il n’est pas possible de passer des objets au middleware activé par fabrique avec `UseMiddleware` :
 
@@ -69,11 +69,11 @@ public static IApplicationBuilder UseIMiddlewareMiddleware(
 
 Le middleware activé par fabrique est ajouté au conteneur intégré dans *Startup.cs* :
 
-[!code-csharp[Main](extensibility/sample/Startup.cs?name=snippet1&highlight=6)]
+[!code-csharp[](extensibility/sample/Startup.cs?name=snippet1&highlight=6)]
 
 Les deux middlewares sont inscrits dans le pipeline de traitement des requêtes dans `Configure` :
 
-[!code-csharp[Main](extensibility/sample/Startup.cs?name=snippet2&highlight=12-13)]
+[!code-csharp[](extensibility/sample/Startup.cs?name=snippet2&highlight=12-13)]
 
 ## <a name="imiddlewarefactory"></a>IMiddlewareFactory
 
@@ -84,3 +84,4 @@ L’implémentation par défaut de `IMiddlewareFactory`, [MiddlewareFactory](/do
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Intergiciel (middleware)](xref:fundamentals/middleware/index)
+* [Activation d’intergiciel (middleware) avec un conteneur tiers](xref:fundamentals/middleware/extensibility-third-party-container)

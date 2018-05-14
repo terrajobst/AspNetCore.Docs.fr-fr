@@ -1,7 +1,7 @@
 ---
-title: "Bien démarrer avec ASP.NET Core MVC et Visual Studio pour Mac"
+title: Bien démarrer avec ASP.NET Core MVC et Visual Studio pour Mac
 author: rick-anderson
-description: "Bien démarrer avec ASP.NET Core MVC et Visual Studio"
+description: Découvrez comment bien démarrer avec ASP.NET Core MVC et Visual Studio.
 manager: wpickett
 ms.author: riande
 ms.date: 8/23/2017
@@ -9,19 +9,19 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: tutorials/first-mvc-app-mac/start-mvc
-ms.openlocfilehash: 05a2323851c58c95667066a74c11f1d015405e6f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ffa620f07251c52c785672d8fbeefacac31ed4c1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio pour Mac
+# <a name="get-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio pour Mac
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel présente les principes de base de la génération d’une application web ASP.NET Core MVC à l’aide de [Visual Studio pour Mac](https://www.visualstudio.com/vs/visual-studio-mac/). 
 
-[!INCLUDE[consider RP](../../includes/razor.md)]
+[!INCLUDE [consider RP](../../includes/razor.md)]
 
 Il existe trois versions de ce didacticiel :
 
@@ -31,12 +31,7 @@ Il existe trois versions de ce didacticiel :
 
 ## <a name="prerequisites"></a>Prérequis
 
-Ce didacticiel nécessite le [SDK .NET Core 2.0.0](https://www.microsoft.com/net/core) ou version ultérieure.
-
-Installez les éléments suivants :
-
-- [SDK .NET Core 2.0.0 ](https://www.microsoft.com/net/core) ou version ultérieure
-- [Visual Studio pour Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
+[!INCLUDE [](~/includes/net-core-prereqs-macos.md)]
 
 ## <a name="create-a-web-app"></a>Créer une application web
 
@@ -67,5 +62,5 @@ Le modèle par défaut donne des liens **Accueil, À propos** et **Contact**. L�
 
 Dans la prochaine partie de ce didacticiel, vous allez découvrir MVC et commencer à écrire du code.
 
->[!div class="step-by-step"]
-[Next](adding-controller.md)  
+> [!div class="step-by-step"]
+> [Next](adding-controller.md)  

@@ -5,46 +5,46 @@ description: Découvrez comment la classe Startup dans ASP.NET Core configure de
 manager: wpickett
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/08/2017
+ms.date: 4/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: c324918b33af82b619bb2251f32308e4a57c27e5
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 8dd632a2c888e65c6420e0fed7acf6fa15173b3d
+ms.sourcegitcommit: c4a31aaf902f2e84aaf4a9d882ca980fdf6488c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="application-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com), [Tom Dykstra](https://github.com/tdykstra) et [Luke Latham](https://github.com/guardrex)
 
-La classe `Startup` configure les services et le pipeline de demande de l’application.
+La classe `Startup` configure des services et le pipeline de requête de l’application.
 
 ## <a name="the-startup-class"></a>Classe Startup
 
-Les applications ASP.NET Core utilisent une classe de `Startup`, qui est nommée `Startup` par convention. La classe `Startup` :
+Les applications ASP.NET Core utilisent une classe `Startup`, appelée `Startup` par convention. La classe `Startup` :
 
 * Peut éventuellement inclure une méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) permettant de configurer les services de l’application.
 * Doit inclure une méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) pour créer le pipeline de traitement de demande de l’application.
 
 `ConfigureServices` et `Configure` sont appelées par le runtime au démarrage de l’application :
 
-[!code-csharp[Main](startup/snapshot_sample/Startup1.cs)]
+[!code-csharp[](startup/snapshot_sample/Startup1.cs)]
 
 Spécifiez la classe `Startup` avec la méthode [WebHostBuilderExtensions](/dotnet/api/Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions) [UseStartup&lt;TStartup&gt;](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) :
 
-[!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=10)]
+[!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Program.cs?name=snippet_Main&highlight=10)]
 
 Le constructeur de la classe `Startup` accepte les dépendances définies par l’hôte. Une utilisation courante de [l’injection de dépendances](xref:fundamentals/dependency-injection) dans la classe `Startup` consiste à injecter :
 
-* [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment) pour configurer les services par environnement.
+* [IHostingEnvironment](/dotnet/api/Microsoft.AspNetCore.Hosting.IHostingEnvironment) pour configurer des services par environnement.
 * [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) pour configurer l’application au démarrage.
 
-[!code-csharp[Main](startup/snapshot_sample/Startup2.cs)]
+[!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-Une alternative à l’injection de `IHostingEnvironment` consiste à utiliser une approche basée sur les conventions. L’application peut définir différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), et la classe de démarrage appropriée est sélectionnée lors de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et comprend à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utilisation de plusieurs environnements](xref:fundamentals/environments#startup-conventions).
+Une alternative à l’injection de `IHostingEnvironment` consiste à utiliser une approche basée sur les conventions. L’application peut définir différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), et la classe de démarrage appropriée est sélectionnée lors de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et comprend à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments#startup-conventions).
 
 Pour en savoir plus sur `WebHostBuilder`, consultez la rubrique [Hébergement](xref:fundamentals/hosting). Pour plus d’informations sur la gestion des erreurs lors du démarrage, consultez [Gestion des exceptions de démarrage](xref:fundamentals/error-handling#startup-exception-handling).
 
@@ -52,17 +52,55 @@ Pour en savoir plus sur `WebHostBuilder`, consultez la rubrique [Hébergement](x
 
 La méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) est :
 
-* Facultative.
+* Facultatif
 * Appelée par l’hôte web avant la méthode `Configure` pour configurer les services de l’application.
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
-L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services ne sont pas résolus via [l'injection de dépendance](xref:fundamentals/dependency-injection) ou à partir de [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
+L’ajout de services au conteneur de service les rend disponibles dans l’application et dans la méthode `Configure`. Les services sont résolus à l’aide de [l’injection de dépendances](xref:fundamentals/dependency-injection) ou à partir [d’IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
 
-L’hôte web peut configurer certains services avant que les méthodes `Startup` soient appelées. Vous trouverez plus de détails dans la rubrique [Hébergement](xref:fundamentals/hosting). 
+L’hôte web peut configurer certains services avant que les méthodes `Startup` soient appelées. Vous trouverez plus de détails dans la rubrique [Hébergement](xref:fundamentals/hosting).
 
 Pour les fonctionnalités qui nécessitent une installation substantielle, il existe des méthodes d’extension `Add[Service]` sur [IServiceCollection](/dotnet/api/Microsoft.Extensions.DependencyInjection.IServiceCollection). Une application web classique inscrit des services pour Entity Framework, Identity et MVC :
 
-[!code-csharp[Main](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
+[!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
+
+::: moniker range=">= aspnetcore-2.1" 
+
+<a name="setcompatibilityversion"></a>
+### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>SetCompatibilityVersion pour ASP.NET Core MVC 
+
+La méthode `SetCompatibilityVersion` permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants qui ont été introduits dans ASP.NET MVC Core 2.1+. Ces changements de comportement potentiellement cassants concernent en général la façon dont le sous-système MVC se comporte et la façon dont **votre code** est appelé par le runtime. En acceptant, vous obtenez le comportement le plus récent et le comportement à long terme d’ASP.NET Core.
+
+Le code suivant définit le mode de compatibilité sur ASP.NET Core 2.1 :
+
+[!code-csharp[Main](startup/sampleCompatibility/Startup.cs?name=snippet1)]
+
+Nous vous recommandons de tester votre application avec la version la plus récente (`CompatibilityVersion.Version_2_1`). Nous pensons que la plupart des applications ne connaîtront pas de changements de comportement cassants avec la version la plus récente. 
+
+Les applications qui appellent `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)` sont protégées contre les changements de comportement potentiellement cassants qui ont été introduits dans ASP.NET Core 2.1 MVC et dans les versions 2.x ultérieures. Cette protection :
+
+* Ne s’applique pas à tous les changements de 2.1 et ultérieur. Elle est destinée aux changements de comportement potentiellement cassants du runtime ASP.NET Core dans le sous-système MVC.
+* Ne s’étend pas à la version majeure suivante.
+
+La compatibilité par défaut pour les applications ASP.NET Core 2.1 et les versions 2.x ultérieures qui n’appellent **pas** `SetCompatibilityVersion` est la compatibilité 2.0. Autrement dit, ne pas appeler `SetCompatibilityVersion` revient à appeler `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`.
+
+Le code suivant définit le mode de compatibilité sur ASP.NET Core 2.1, sauf pour les comportements suivants :
+
+* [AllowCombiningAuthorizeFilters](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
+* [InputFormatterExceptionPolicy](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
+
+[!code-csharp[Main](startup/sampleCompatibility/Startup2.cs?name=snippet1)]
+
+Pour les applications qui rencontrent des changements de comportement cassants, l’utilisation des commutateurs de compatibilité appropriés :
+
+* Vous permet d’utiliser la dernière version et de refuser des changements de comportement cassants spécifiques.
+* Vous laisse le temps de mettre à jour votre application pour qu’elle fonctionne avec les derniers changements.
+
+Les commentaires dans la source de la classe [MvcOptions](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs) expliquent clairement ce qui a changé et pourquoi les changements représentent une amélioration pour la plupart des utilisateurs.
+
+À une date ultérieure, il y aura une [version d’ASP.NET Core 3.0](https://github.com/aspnet/Home/wiki/Roadmap). Les comportements anciens pris en charge par les commutateurs de compatibilité seront supprimés dans la version 3.0. Nous pensons que ce sont des changements positifs, qui vont bénéficier à presque tous les utilisateurs. Comme nous introduisons ces changements maintenant, la plupart des applications peuvent en profiter tout de suite. Pour les autres applications, les développeurs ont du temps pour les mettre à jour.
+
+::: moniker-end
 
 ## <a name="services-available-in-startup"></a>Services disponibles dans Startup
 
@@ -74,39 +112,41 @@ La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.con
 
 Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeline avec la prise en charge d’une page d’exception de développeur, de [BrowserLink](http://vswebessentials.com/features/browserlink), des pages d’erreurs, des fichiers statiques et d’ASP.NET MVC :
 
-[!code-csharp[Main](../common/samples/WebApplication1DotNetCore2.0App/Startup.cs?range=28-48&highlight=5,6,10,13,15)]
+[!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Startup.cs?range=28-48&highlight=5,6,10,13,15)]
 
-Chaque méthode d’extension `Use` ajoute un composant d’intergiciel au pipeline de requête. Par exemple, la méthode d’extension `UseMvc` ajoute [l’intergiciel (middleware) de routage](xref:fundamentals/routing) au pipeline de requête et configure [MVC](xref:mvc/overview) comme gestionnaire par défaut.
+Chaque méthode d’extension `Use` ajoute un composant d’intergiciel au pipeline de requête. Par exemple, la méthode d’extension `UseMvc` ajoute [le middleware de routage](xref:fundamentals/routing) au pipeline des requêtes et configure [MVC](xref:mvc/overview) comme gestionnaire par défaut.
+
+Chaque composant de middleware du pipeline des requêtes est chargé d’appeler le composant suivant du pipeline ou de court-circuiter la chaîne, si c’est approprié. Si un court-circuit ne se produit pas dans la chaîne de middlewares, chaque middleware a une deuxième occasion de traiter la requête avant qu’elle soit envoyée au client.
 
 Il est également possible de spécifier des services supplémentaires, comme `IHostingEnvironment` et `ILoggerFactory`, dans la signature de méthode. Si tel est le cas, les services supplémentaires sont injectés s’ils sont disponibles.
 
-Pour plus d’informations sur l’utilisation d’`IApplicationBuilder`, consultez [Intergiciel (middleware)](xref:fundamentals/middleware/index).
+Pour plus d’informations sur l’utilisation de `IApplicationBuilder` et l’ordre de traitement des middlewares, consultez [Middleware](xref:fundamentals/middleware/index).
 
 ## <a name="convenience-methods"></a>Méthodes pratiques
 
 Les méthodes pratiques [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder.configureservices) et [Configure](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configure) peuvent être utilisées au lieu de spécifier une classe `Startup`. Les appels multiples à `ConfigureServices` s’ajoutent les uns aux autres. Les appels multiples à `Configure` utilisent le dernier appel à la méthode.
 
-[!code-csharp[Main](startup/snapshot_sample/Program.cs?highlight=18,22)]
+[!code-csharp[](startup/snapshot_sample/Program.cs?highlight=18,22)]
 
 ## <a name="startup-filters"></a>Filtres Startup
 
 Utilisez [IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) pour configurer un intergiciel au début ou à la fin du pipeline de l’intergiciel de la méthode [Configure](#the-configure-method) d’une application. `IStartupFilter` est utile pour s’assurer qu’un intergiciel s’exécute avant ou après l’intergiciel ajouté par des bibliothèques au début ou à la fin du pipeline de traitement de requête de l’application.
 
-`IStartupFilter` implémente une méthode unique, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), qui reçoit et retourne un `Action<IApplicationBuilder>`. Un [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) définit une classe pour configurer le pipeline de requête d’une application. Pour plus d’informations, consultez [Création d’un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder).
+`IStartupFilter` implémente une méthode unique, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), qui reçoit et retourne un `Action<IApplicationBuilder>`. Un [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) définit une classe pour configurer le pipeline de requête d’une application. Pour plus d’informations, consultez [Créer un pipeline de middlewares avec IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder).
 
 Chaque `IStartupFilter` implémente un ou plusieurs intergiciels dans le pipeline de requête. Les filtres sont appelés dans l’ordre dans lequel ils ont été ajoutés au conteneur de service. Les filtres peuvent ajouter l’intergiciel avant ou après la transmission du contrôle au filtre suivant. Par conséquent, ils s’ajoutent au début ou à la fin du pipeline de l’application.
 
 [L’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/startup/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample)) montre comment inscrire un intergiciel avec `IStartupFilter`. L’exemple d’application inclut un intergiciel qui définit une valeur d’options à partir d’un paramètre de chaîne de requête :
 
-[!code-csharp[Main](startup/sample/RequestSetOptionsMiddleware.cs?name=snippet1)]
+[!code-csharp[](startup/sample/RequestSetOptionsMiddleware.cs?name=snippet1)]
 
 `RequestSetOptionsMiddleware` est configuré dans la classe `RequestSetOptionsStartupFilter` :
 
-[!code-csharp[Main](startup/sample/RequestSetOptionsStartupFilter.cs?name=snippet1&highlight=7)]
+[!code-csharp[](startup/sample/RequestSetOptionsStartupFilter.cs?name=snippet1&highlight=7)]
 
 `IStartupFilter` est inscrit dans le conteneur de service dans `ConfigureServices` :
 
-[!code-csharp[Main](startup/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](startup/sample/Startup.cs?name=snippet1&highlight=3)]
 
 Quand un paramètre de chaîne de requête pour `option` est fourni, l’intergiciel traite l’affectation de valeur avant que l’intergiciel MVC affiche la réponse :
 
@@ -120,7 +160,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Hébergement](xref:fundamentals/hosting)
-* [Utilisation de plusieurs environnements](xref:fundamentals/environments)
+* [Utiliser plusieurs environnements](xref:fundamentals/environments)
 * [Intergiciel (middleware)](xref:fundamentals/middleware/index)
 * [Journalisation](xref:fundamentals/logging/index)
 * [Configuration](xref:fundamentals/configuration/index)

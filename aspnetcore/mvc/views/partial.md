@@ -1,23 +1,23 @@
 ---
-title: Vues partielles
+title: Vues partielles dans ASP.NET Core
 author: ardalis
-description: Utilisation de vues partielles dans ASP.NET Core MVC
+description: Découvrez ce qu’est une vue partielle, une vue rendue dans une autre vue, et quand l’utiliser dans les applications ASP.NET Core.
 manager: wpickett
 ms.author: riande
-ms.date: 03/14/2017
+ms.date: 03/14/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/partial
-ms.openlocfilehash: 169948e5d7dc8068463ed61114666148b785b217
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3deaaeb666e5443d0784f2ac6977e58e1b25d711
+ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/20/2018
 ---
-# <a name="partial-views"></a>Vues partielles
+# <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 
-Par [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend) et [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Sauber](https://twitter.com/scottsauber)
 
 ASP.NET Core MVC prend en charge les vues partielles. Celles-ci sont utiles quand vous avez des parties réutilisables de pages web que vous souhaitez partager entre différentes vues.
 
@@ -41,19 +41,17 @@ Vous créez les vues partielles comme les autres vues : vous créez un fichier 
 
 ## <a name="referencing-a-partial-view"></a>Référencement d’une vue partielle
 
-À partir d’une page de vue, vous pouvez afficher une vue partielle de plusieurs manières. Le plus simple est d’utiliser `Html.Partial`, qui retourne `IHtmlString` et peut être référencé en faisant précéder l’appel de `@` :
+À partir d’une page de vue, vous pouvez afficher une vue partielle de plusieurs manières. Une bonne pratique consiste à utiliser `Html.PartialAsync`, qui retourne `IHtmlString` et qui peut être référencé en faisant précéder l’appel de `@` :
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=9)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
 
-La méthode `PartialAsync` est disponible pour les vues partielles contenant du code asynchrone (bien qu’il soit déconseillé d’utiliser du code dans les vues) :
+Vous pouvez afficher une vue partielle avec `RenderPartialAsync`. Cette méthode ne retourne aucun résultat. Elle effectue un streaming de la sortie affichée directement vers la réponse. Comme elle ne retourne aucun résultat, elle doit être appelée dans un bloc de code Razor :
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=8)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=11-13)]
 
-Vous pouvez afficher une vue partielle avec `RenderPartial`. Cette méthode ne retourne aucun résultat. Elle effectue un streaming de la sortie affichée directement vers la réponse. Comme elle ne retourne aucun résultat, elle doit être appelée dans un bloc de code Razor (vous pouvez également appeler `RenderPartialAsync` si nécessaire) :
+Dans la mesure où elle effectue directement un streaming du résultat, `RenderPartialAsync` peut être plus efficace dans certains scénarios. Toutefois, il est recommandé d’utiliser `PartialAsync`.
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Home/About.cshtml?range=10-12)]
-
-Dans la mesure où elle effectue directement un streaming du résultat, `RenderPartial` et `RenderPartialAsync` peuvent être plus efficaces dans certains scénarios. Toutefois, dans la plupart des cas, il est recommandé d’utiliser `Partial` et `PartialAsync`.
+Bien qu’il existe des équivalents synchrones de `Html.PartialAsync` (`Html.Partial`) et de `Html.RenderPartialAsync` (`Html.RenderPartial`), leur utilisation n’est pas recommandée en raison du risque d’interblocage dans certains scénarios. Les méthodes synchrones ne seront pas disponibles dans les futures versions.
 
 > [!NOTE]
 > Si vos vues doivent exécuter du code, le modèle recommandé consiste à utiliser un [composant de vue](view-components.md) au lieu d’une vue partielle.
@@ -62,21 +60,21 @@ Dans la mesure où elle effectue directement un streaming du résultat, `RenderP
 
 Quand vous référencez une vue partielle, vous pouvez faire référence à son emplacement de plusieurs façons :
 
-```text
+```cshtml
 // Uses a view in current folder with this name
 // If none is found, searches the Shared folder
-@Html.Partial("ViewName")
+@await Html.PartialAsync("ViewName")
 
 // A view with this name must be in the same folder
-@Html.Partial("ViewName.cshtml")
+@await Html.PartialAsync("ViewName.cshtml")
 
 // Locate the view based on the application root
 // Paths that start with "/" or "~/" refer to the application root
-@Html.Partial("~/Views/Folder/ViewName.cshtml")
-@Html.Partial("/Views/Folder/ViewName.cshtml")
+@await Html.PartialAsync("~/Views/Folder/ViewName.cshtml")
+@await Html.PartialAsync("/Views/Folder/ViewName.cshtml")
 
 // Locate the view using relative paths
-@Html.Partial("../Account/LoginPartial.cshtml")
+@await Html.PartialAsync("../Account/LoginPartial.cshtml")
 ```
 
 Vous pouvez avoir différentes vues partielles portant le même nom dans des dossiers de vues distincts. Quand vous référencez des vues par leur nom (sans extension de fichier), les vues de chaque dossier utilisent la vue partielle située dans le même dossier. Vous pouvez également spécifier une vue partielle par défaut à utiliser, en la plaçant dans le dossier *Partagé*. La vue partielle partagée est utilisée par toutes les vues qui n’ont pas leur propre version de la vue partielle. Une vue partielle par défaut (dans *Partagé*) peut être remplacée par une vue partielle ayant le même nom dans le dossier de la vue parente.
@@ -92,31 +90,31 @@ Quand une vue partielle est instanciée, elle obtient une copie du dictionnaire 
 
 Vous pouvez passer une instance de `ViewDataDictionary` à la vue partielle :
 
-```csharp
-@Html.Partial("PartialName", customViewData)
-   ```
+```cshtml
+@await Html.PartialAsync("PartialName", customViewData)
+```
 
-Vous pouvez également passer un modèle dans une vue partielle. Il peut s’agir du modèle de vue de la page, ou d’une partie de celui-ci, ou d’un objet personnalisé. Vous pouvez passer un modèle à `Partial`,`PartialAsync`, `RenderPartial` ou `RenderPartialAsync` :
+Vous pouvez également passer un modèle dans une vue partielle. Il peut s’agir du modèle de vue de la page ou d’un objet personnalisé. Vous pouvez passer un modèle à `PartialAsync` ou `RenderPartialAsync` :
 
-```csharp
-@Html.Partial("PartialName", viewModel)
-   ```
+```cshtml
+@await Html.PartialAsync("PartialName", viewModel)
+```
 
 Vous pouvez passer une instance de `ViewDataDictionary` et un modèle de vue à une vue partielle :
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?range=15-16)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml?range=15-16)]
 
 Le code ci-dessous montre la vue *Views/Articles/Read.cshtml*, qui contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. Vous pouvez passer le nouveau dictionnaire de `ViewData` tout en conservant le `ViewData` existant, si vous utilisez la surcharge de constructeur du `ViewDataDictionary` mis en évidence ci-dessous :
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/Read.cshtml)]
 
 *Views/Shared/AuthorPartial* :
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Shared/AuthorPartial.cshtml)]
 
 Le *ArticleSection* partiel :
 
-[!code-html[Main](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml)]
+[!code-cshtml[](partial/sample/src/PartialViewsSample/Views/Articles/ArticleSection.cshtml)]
 
 Au moment de l’exécution, les vues partielles sont affichées dans la vue parente, elle-même affichée dans le fichier *_Layout.cshtml* partagé
 

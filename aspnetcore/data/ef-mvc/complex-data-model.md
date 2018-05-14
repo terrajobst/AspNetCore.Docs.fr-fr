@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC avec EF Core - Modèle de données - 5 sur 10"
+title: ASP.NET Core MVC avec EF Core - Modèle de données - 5 sur 10
 author: tdykstra
-description: "Dans ce didacticiel, vous ajoutez des entités et des relations, et personnalisez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage de base de données."
+description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vous personnalisez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: ac30d9ae5531934ba5163a8d9114b11ac54af8d2
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: ab3d4221b498bb2987105fb36f2c6803f8fe6125
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="creating-a-complex-data-model---ef-core-with-aspnet-core-mvc-tutorial-5-of-10"></a>Création d’un modèle de données complexe - Didacticiel EF Core avec ASP.NET Core MVC (5 sur 10)
+# <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC avec EF Core - Modèle de données - 5 sur 10
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC à l’aide d’Entity Framework Core et de Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
 
 Dans les didacticiels précédents, vous avez travaillé avec un modèle de données simple composé de trois entités. Dans ce didacticiel, vous allez ajouter des entités et des relations, et vous personnaliserez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage de base de données.
 
@@ -37,7 +37,7 @@ Pour les dates d’inscription des étudiants, toutes les pages web affichent l�
 
 Dans *Models/Student.cs*, ajoutez une instruction `using` pour l’espace de noms `System.ComponentModel.DataAnnotations` et ajoutez les attributs `DataType` et `DisplayFormat` à la propriété `EnrollmentDate`, comme indiqué dans l’exemple suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
 L’attribut `DataType` sert à spécifier un type de données qui est plus spécifique que le type intrinsèque de la base de données. Dans le cas présent, nous voulons uniquement effectuer le suivi de la date, pas de la date et de l’heure. L’énumération `DataType` fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, etc. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple, vous pouvez créer un lien `mailto:` pour `DataType.EmailAddress`, et vous pouvez fournir un sélecteur de date pour `DataType.Date` dans les navigateurs qui prennent en charge HTML5. L’attribut `DataType` émet des attributs HTML 5 `data-` compréhensibles par les navigateurs HTML 5. Les attributs `DataType` ne fournissent aucune validation.
 
@@ -69,7 +69,7 @@ Vous pouvez également spécifier les règles de validation de données et les m
 
 Supposons que vous voulez garantir que les utilisateurs n’entrent pas plus de 50 caractères pour un nom. Pour ajouter cette limitation, ajoutez des attributs `StringLength` aux propriétés `LastName` et `FirstMidName`, comme indiqué dans l’exemple suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_StringLength&highlight=10,12)]
 
 L’attribut `StringLength` n’empêche pas un utilisateur d’entrer un espace blanc comme nom. Vous pouvez utiliser l’attribut `RegularExpression` pour appliquer des restrictions à l’entrée. Par exemple, le code suivant exige que le premier caractère soit en majuscule et que les autres caractères soient alphabétiques :
 
@@ -107,7 +107,7 @@ L’attribut `Column` spécifie que lorsque la base de données sera créée, la
 
 Dans le fichier *Student.cs*, ajoutez une instruction `using` pour `System.ComponentModel.DataAnnotations.Schema` et ajoutez l’attribut de nom de colonne à la propriété `FirstMidName`, comme indiqué dans le code en surbrillance suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_Column&highlight=4,14)]
 
 L’ajout de l’attribut `Column` change le modèle sur lequel repose `SchoolContext`, donc il ne correspond pas à la base de données.
 
@@ -136,7 +136,7 @@ Avant d’appliquer les deux premières migrations, les colonnes de nom étaient
 
 Dans *Models/Student.cs*, remplacez le code que vous avez ajouté précédemment par le code suivant. Les modifications apparaissent en surbrillance.
 
-[!code-csharp[Main](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
+[!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_BeforeInheritance&highlight=11,13,15,18,22,24-31)]
 
 ### <a name="the-required-attribute"></a>Attribut Required
 
@@ -164,7 +164,7 @@ L’attribut `Display` spécifie que la légende pour les zones de texte doit ê
 
 Créez *Models/Instructor.cs*, en remplaçant le code du modèle par le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
+[!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_BeforeInheritance)]
 
 Notez que plusieurs propriétés sont identiques dans les entités Student et Instructor. Dans le didacticiel [Implémentation de l’héritage](inheritance.md) plus loin dans cette série, vous allez refactoriser ce code pour éliminer la redondance.
 
@@ -200,7 +200,7 @@ public OfficeAssignment OfficeAssignment { get; set; }
 
 Créez *Models/OfficeAssignment.cs* avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/OfficeAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/OfficeAssignment.cs)]
 
 ### <a name="the-key-attribute"></a>Attribut Key
 
@@ -227,7 +227,7 @@ Vous pouvez placer un attribut `[Required]` sur la propriété de navigation du 
 
 Dans *Models/Course.cs*, remplacez le code que vous avez ajouté précédemment par le code suivant. Les modifications apparaissent en surbrillance.
 
-[!code-csharp[Main](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
+[!code-csharp[](intro/samples/cu/Models/Course.cs?name=snippet_Final&highlight=2,10,13,16,19,21,23)]
 
 L’entité de cours a une propriété de clé étrangère `DepartmentID` qui pointe sur l’entité Department associée et elle a une propriété de navigation `Department`.
 
@@ -277,7 +277,7 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 Créez *Models/Department.cs* avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
 
 ### <a name="the-column-attribute"></a>Attribut Column
 
@@ -322,7 +322,7 @@ public ICollection<Course> Courses { get; set; }
 
 Dans *Models/Enrollment.cs*, remplacez le code que vous avez ajouté précédemment par le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
+[!code-csharp[](intro/samples/cu/Models/Enrollment.cs?name=snippet_Final&highlight=1-2,16)]
 
 ### <a name="foreign-key-and-navigation-properties"></a>Propriétés de clé étrangère et de navigation
 
@@ -362,7 +362,7 @@ Si la table Enrollment n’incluait pas d’informations de notes, elle aurait u
 
 Créez *Models/CourseAssignment.cs* avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/CourseAssignment.cs)]
+[!code-csharp[](intro/samples/cu/Models/CourseAssignment.cs)]
 
 ### <a name="join-entity-names"></a>Noms des entités de jointure
 
@@ -378,7 +378,7 @@ La clé composite garantit qu’en ayant plusieurs lignes pour un cours et plusi
 
 Ajoutez le code en surbrillance suivant au fichier *Data/SchoolContext.cs* :
 
-[!code-csharp[Main](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
+[!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
 Ce code ajoute les nouvelles entités et configure la clé primaire composite de l’entité CourseAssignment.
 
@@ -413,7 +413,7 @@ Outre les lignes de relation un-à-plusieurs (1 à \*), vous pouvez voir ici la 
 
 Remplacez le code dans le fichier *Data/DbInitializer.cs* par le code suivant afin de fournir des données initiales pour les nouvelles entités que vous avez créées.
 
-[!code-csharp[Main](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
+[!code-csharp[](intro/samples/cu/Data/DbInitializer.cs?name=snippet_Final)]
 
 Comme vous l’avez vu dans le premier didacticiel, la majeure partie de ce code crée simplement de nouveaux objets d’entité et charge des exemples de données dans les propriétés requises pour les tests. Notez la façon dont les relations plusieurs à plusieurs sont gérées : le code crée des relations en créant des entités dans les jeux d’entités de jointure `Enrollments` et `CourseAssignment`.
 
@@ -444,11 +444,11 @@ Pour faire en sorte que cette migration fonctionne avec les données existantes,
 
 * Commentez la ligne de code qui ajoute la colonne DepartmentID à la table Course.
 
-  [!code-csharp[Main](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
+  [!code-csharp[](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
 
 * Ajoutez le code en surbrillance suivant après le code qui crée la table Department :
 
-  [!code-csharp[Main](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
+  [!code-csharp[](intro/samples/cu/Migrations/20170215234014_ComplexDataModel.cs?name=snippet_CreateDefaultValue&highlight=22-32)]
 
 Dans une application de production, vous devez écrire un code ou des scripts pour ajouter des lignes Department et associer des lignes Course aux nouvelles lignes Department. Vous n’avez alors plus besoin du département « Temp » ni de la valeur par défaut sur la colonne Course.DepartmentID.
 
@@ -495,6 +495,6 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 
 Vous avez maintenant un modèle de données plus complexe et une base de données correspondante. Dans le didacticiel suivant, vous en apprendrez davantage sur la façon d’accéder aux données associées.
 
->[!div class="step-by-step"]
-[Précédent](migrations.md)
-[Suivant](read-related-data.md)  
+> [!div class="step-by-step"]
+> [Précédent](migrations.md)
+> [Suivant](read-related-data.md)  

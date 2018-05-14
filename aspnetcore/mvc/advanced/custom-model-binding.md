@@ -1,7 +1,7 @@
 ---
-title: "Liaison de données personnalisée"
+title: Liaison de données personnalisée dans ASP.NET Core
 author: ardalis
-description: "Personnalisation de la liaison de données dans ASP.NET Core MVC."
+description: Découvrez comment la liaison de données permet aux actions du contrôleur de fonctionner directement avec des types de modèle dans ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 04/10/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 313bc586a1c313f0bf5d8f413a4b082ffc2b7f0c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a687753083d3b11898e9ff35828780a5ad240854
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="custom-model-binding"></a>Liaison de données personnalisée
+# <a name="custom-model-binding-in-aspnet-core"></a>Liaison de données personnalisée dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
@@ -31,7 +31,7 @@ Les classeurs de modèles par défaut prennent en charge la plupart des types de
 
 La liaison de données utilise des définitions spécifiques pour les types sur lesquels elle opère. Un *type simple* est converti à partir d’une seule chaîne dans l’entrée. Un *type complexe* est converti à partir de plusieurs valeurs d’entrée. Le framework détermine la différence en fonction de l’existence de `TypeConverter`. Nous vous recommandons de créer un convertisseur de type si vous disposez d’un mappage `string` -> `SomeType` simple qui ne nécessite pas de ressources externes.
 
-Avant de créer votre propre classeur de modèles personnalisé, vérifiez la façon dont les classeurs de modèles existants sont implémentés. Prenons l’exemple de [ByteArrayModelBinder](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinder), qui permet de convertir des chaînes encodées au format base64 en tableaux d’octets. Les tableaux d’octets sont souvent stockés sous forme de fichiers ou de champs BLOB de base de données.
+Avant de créer votre propre classeur de modèles personnalisé, vérifiez la façon dont les classeurs de modèles existants sont implémentés. Prenons l’exemple de [ByteArrayModelBinder](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinder), qui permet de convertir des chaînes encodées au format base64 en tableaux d’octets. Les tableaux d’octets sont souvent stockés sous forme de fichiers ou de champs BLOB de base de données.
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>Utilisation de ByteArrayModelBinder
 
@@ -45,7 +45,7 @@ Une petite partie de la chaîne encodée est affichée dans l’image suivante 
 
 Suivez les instructions du [fichier README de l’exemple](https://github.com/aspnet/Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/sample/CustomModelBindingSample/README.md) pour convertir la chaîne encodée au format base64 en fichier.
 
-ASP.NET Core MVC peut accepter une chaîne encodée au format base64 et utiliser `ByteArrayModelBinder` pour la convertir en tableau d’octets. Le [ByteArrayModelBinderProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinderprovider) qui implémente [IModelBinderProvider](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.imodelbinderprovider) mappe les arguments `byte[]` à `ByteArrayModelBinder` :
+ASP.NET Core MVC peut accepter une chaîne encodée au format base64 et utiliser `ByteArrayModelBinder` pour la convertir en tableau d’octets. Le [ByteArrayModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.binders.bytearraymodelbinderprovider) qui implémente [IModelBinderProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.imodelbinderprovider) mappe les arguments `byte[]` à `ByteArrayModelBinder` :
 
 ```csharp
 public IModelBinder GetBinder(ModelBinderProviderContext context)
@@ -64,11 +64,11 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 }
 ```
 
-Quand vous créez votre propre classeur de modèles personnalisé, vous pouvez implémenter votre propre type `IModelBinderProvider`, ou utiliser [ModelBinderAttribute](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinderattribute).
+Quand vous créez votre propre classeur de modèles personnalisé, vous pouvez implémenter votre propre type `IModelBinderProvider`, ou utiliser [ModelBinderAttribute](/dotnet/api/microsoft.aspnetcore.mvc.modelbinderattribute).
 
 L’exemple suivant montre comment utiliser `ByteArrayModelBinder` pour convertir une chaîne encodée au format base64 en `byte[]`, et comment enregistrer le résultat dans un fichier :
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post1&highlight=3)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post1&highlight=3)]
 
 Vous pouvez envoyer (POST) une chaîne encodée au format base64 à cette méthode d’API à l’aide d’un outil tel que [Postman](https://www.getpostman.com/) :
 
@@ -76,7 +76,7 @@ Vous pouvez envoyer (POST) une chaîne encodée au format base64 à cette métho
 
 Tant que le classeur peut lier les données de requête à des propriétés ou des arguments nommés de manière appropriée, la liaison de données s’effectue correctement. L’exemple suivant montre comment utiliser `ByteArrayModelBinder` avec un modèle de vue :
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post2&highlight=2)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/ImageController.cs?name=post2&highlight=2)]
 
 ## <a name="custom-model-binder-sample"></a>Exemple de classeur de modèles personnalisé
 
@@ -88,21 +88,21 @@ Dans cette section, nous allons implémenter un classeur de modèles personnalis
 
 L’exemple suivant utilise l’attribut `ModelBinder` pour le modèle `Author` :
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Data/Author.cs?highlight=10)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Data/Author.cs?highlight=10)]
 
 Dans le code précédent, l’attribut `ModelBinder` spécifie le type de `IModelBinder` à utiliser pour lier les paramètres d’action de `Author`. 
 
 `AuthorEntityBinder` est utilisé pour lier un paramètre `Author` en récupérant (fetch) l’entité à partir d’une source de données via Entity Framework Core et `authorId` :
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinder.cs?name=demo)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinder.cs?name=demo)]
 
 Le code suivant montre comment utiliser `AuthorEntityBinder` dans une méthode d’action :
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo2&highlight=2)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo2&highlight=2)]
 
 L’attribut `ModelBinder` permet d’appliquer `AuthorEntityBinder` aux paramètres qui n’utilisent pas les conventions par défaut :
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
 Dans cet exemple, comme le nom de l’argument n’est pas le `authorId` par défaut, il est spécifié dans le paramètre à l’aide de l’attribut `ModelBinder`. Notez que le contrôleur et la méthode d’action sont simplifiés par rapport à la recherche de l’entité dans la méthode d’action. La logique permettant de récupérer (fetch) l’auteur à l’aide d’Entity Framework Core est déplacée vers le classeur de modèles. Cela peut représenter une simplification considérable quand vous avez plusieurs méthodes qui sont liées au modèle author. Cela peut également vous aider à suivre le principe [DRY](http://deviq.com/don-t-repeat-yourself/).
 
@@ -112,13 +112,13 @@ Vous pouvez appliquer l’attribut `ModelBinder` à des propriétés de modèle 
 
 Au lieu d’appliquer un attribut, vous pouvez implémenter `IModelBinderProvider`. C’est ainsi que les classeurs de framework intégrés sont implémentés. Quand vous spécifiez le type sur lequel votre classeur opère, vous spécifiez le type d’argument qu’il produit, et **non** l’entrée que votre classeur accepte. Le fournisseur de classeurs suivant fonctionne avec `AuthorEntityBinder`. Quand il est ajouté à la collection de fournisseurs de MVC, vous n’avez pas besoin d’utiliser l’attribut `ModelBinder` sur `Author` ou les paramètres typés de `Author`.
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
 
 > Remarque : Le code précédent retourne `BinderTypeModelBinder`. `BinderTypeModelBinder` sert de fabrique pour les classeurs de modèles et permet l’injection de dépendances. `AuthorEntityBinder` a besoin de l’injection de dépendances pour accéder à EF Core. Utilisez `BinderTypeModelBinder`, si votre classeur de modèles nécessite des services liés à l’injection de dépendances.
 
 Pour utiliser un fournisseur de classeurs de modèles personnalisé, ajoutez-le à `ConfigureServices` :
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
 
 Durant l’évaluation des classeurs de modèles, la collection de fournisseurs est examinée dans un certain ordre. Le premier fournisseur qui retourne un classeur est utilisé.
 
@@ -128,11 +128,11 @@ L’image suivante illustre les classeurs de modèles par défaut du débogueur.
 
 L’ajout de votre fournisseur à la fin de la collection peut entraîner l’appel d’un classeur de modèles intégré avant votre classeur personnalisé. Dans cet exemple, le fournisseur personnalisé est ajouté au début de la collection afin qu’il soit utilisé pour les arguments d’action `Author`.
 
-[!code-csharp[Main](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
+[!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Startup.cs?name=callout&highlight=5-9)]
 
 ## <a name="recommendations-and-best-practices"></a>Recommandations et bonnes pratiques
 
 Les classeurs de modèles personnalisés :
 - Ne doivent pas tenter de définir des codes d’état ou de retourner des résultats (par exemple, 404 Introuvable). En cas d’échec de la liaison de données, un [filtre d’action](xref:mvc/controllers/filters) ou une logique située dans la méthode d’action elle-même doit prendre en charge l’erreur.
 - Sont surtout utiles pour éliminer le code répétitif et les problèmes transversaux des méthodes d’action.
-- Ne doivent pas être utilisés pour convertir une chaîne en type personnalisé. En règle générale, [`TypeConverter`](https://docs.microsoft.com//dotnet/api/system.componentmodel.typeconverter) est une meilleure option.
+- Ne doivent pas être utilisés pour convertir une chaîne en type personnalisé. En règle générale, [`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter) est une meilleure option.

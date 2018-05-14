@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC avec EF Core - Rubriques avancées - 10 sur 10"
+title: ASP.NET Core MVC avec EF Core - Rubriques avancées - 10 sur 10
 author: tdykstra
-description: "Ce didacticiel présente plusieurs rubriques qu’il est utile de connaître lorsque vous allez au-delà des principes de base du développement d’applications web ASP.NET qui utilisent Entity Framework Core."
+description: Ce tutoriel présente plusieurs rubriques pratiques pour aller au-delà des principes de base du développement d’applications web ASP.NET Core qui utilisent Entity Framework Core.
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 458f2dc8a67f8c706d043f0d9d7cb7ce962e52ce
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 655f60116cbfe1dd81b7e2855906446b919b6489
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="advanced-topics---ef-core-with-aspnet-core-mvc-tutorial-10-of-10"></a>Rubriques avancées - Didacticiel EF Core avec ASP.NET Core MVC (10 sur 10)
+# <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC avec EF Core - Rubriques avancées - 10 sur 10
 
-De [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC à l’aide d’Entity Framework Core et de Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
 
 Dans le didacticiel précédent, vous avez implémenté l’héritage TPH (table par hiérarchie). Ce didacticiel présente plusieurs rubriques qu’il est utile de connaître lorsque vous allez au-delà des principes de base du développement d’applications web ASP.NET Core qui utilisent Entity Framework Core.
 
@@ -41,7 +41,7 @@ La classe `DbSet<TEntity>` fournit une méthode que vous pouvez utiliser pour ex
 
 Dans *DepartmentsController.cs*, dans la méthode `Details`, remplacez le code qui récupère un service par un appel de méthode `FromSql`, comme indiqué dans le code en surbrillance suivant :
 
-[!code-csharp[Main](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_RawSQL&highlight=8,9,10,13)]
 
 Pour vérifier que le nouveau code fonctionne correctement, sélectionnez l’onglet **Departments**, puis **Details** pour l’un des services.
 
@@ -53,11 +53,11 @@ Précédemment, vous avez créé une grille de statistiques des étudiants pour 
 
 Dans *HomeController.cs*, remplacez la méthode `About` par le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseRawSQL&highlight=3-32)]
 
 Ajoutez une instruction using :
 
-[!code-csharp[Main](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
+[!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_Usings2)]
 
 Exécutez l’application et accédez à la page About. Elle affiche les mêmes données qu’auparavant.
 
@@ -71,9 +71,9 @@ Supposons que les administrateurs de Contoso University veuillent effectuer des 
 
 Dans *CoursesContoller.cs*, ajoutez les méthodes UpdateCourseCredits pour HttpGet et HttpPost :
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdateGet)]
 
-[!code-csharp[Main](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdatePost)]
+[!code-csharp[](intro/samples/cu/Controllers/CoursesController.cs?name=snippet_UpdatePost)]
 
 Lorsque le contrôleur traite une demande HttpGet, rien n’est renvoyé dans `ViewData["RowsAffected"]` et la vue affiche une zone de texte vide et un bouton d’envoi, comme indiqué dans l’illustration précédente.
 
@@ -85,7 +85,7 @@ Dans la boîte de dialogue **Ajouter un nouvel élément**, cliquez sur **ASP.NE
 
 Dans *Views/Courses/UpdateCourseCredits.cshtml*, remplacez le code du modèle par le code suivant :
 
-[!code-html[Main](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
+[!code-html[](intro/samples/cu/Views/Courses/UpdateCourseCredits.cshtml)]
 
 Exécutez la méthode `UpdateCourseCredits` en sélectionnant l’onglet **Courses**, puis en ajoutant « /UpdateCourseCredits » à la fin de l’URL dans la barre d’adresse du navigateur (par exemple : `http://localhost:5813/Courses/UpdateCourseCredits`). Entrez un nombre dans la zone de texte :
 
@@ -149,7 +149,7 @@ De nombreux développeurs écrivent du code pour implémenter les modèles d’u
 
 Pour plus d’informations sur la façon d’implémenter les modèles d’unité de travail et de référentiel, consultez [la version Entity Framework 5 de cette série de didacticiels](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application).
 
-Entity Framework Core implémente un fournisseur de base de données en mémoire qui peut être utilisé pour les tests. Pour plus d’informations, consultez [Tests avec InMemory](https://docs.microsoft.com/ef/core/miscellaneous/testing/in-memory).
+Entity Framework Core implémente un fournisseur de base de données en mémoire qui peut être utilisé pour les tests. Pour plus d’informations, consultez [Tester avec InMemory](https://docs.microsoft.com/ef/core/miscellaneous/testing/in-memory).
 
 ## <a name="automatic-change-detection"></a>Détection automatique des modifications
 
@@ -182,7 +182,7 @@ Pour rétroconcevoir un modèle de données comprenant des classes d’entité i
 
 Le [troisième didacticiel de cette série](sort-filter-page.md) montre comment écrire du code LINQ en codant en dur les noms des colonnes dans une instruction `switch`. Avec deux colonnes sélectionnables, cela fonctionne correctement, mais si vous avez de nombreuses colonnes, le code peut devenir très détaillé. Pour résoudre ce problème, vous pouvez utiliser la méthode `EF.Property` pour spécifier le nom de la propriété sous forme de chaîne. Pour tester cette approche, remplacez la méthode `Index` dans `StudentsController` par le code suivant.
 
-[!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DynamicLinq)]
 
 ## <a name="next-steps"></a>Étapes suivantes
 
@@ -192,7 +192,7 @@ Pour plus d’informations sur EF Core, consultez la [documentation sur Entity F
 
 Pour obtenir des informations sur la façon de déployer une application web, consultez [Héberger et déployer](xref:host-and-deploy/index).
 
-Pour obtenir des informations sur d’autres sujets associés à ASP.NET Core MVC, tels que l’authentification et l’autorisation, consultez la [documentation relative à ASP.NET Core](https://docs.microsoft.com/aspnet/core/).
+Pour obtenir des informations sur d’autres sujets associés à ASP.NET Core MVC, tels que l’authentification et l’autorisation, consultez la [documentation relative à ASP.NET Core](xref:index).
 
 ## <a name="acknowledgments"></a>Remerciements
 
@@ -244,5 +244,5 @@ Solution :
 
 Vérifiez la chaîne de connexion. Si vous avez supprimé manuellement le fichier de base de données, modifiez le nom de la base de données dans la chaîne de construction pour recommencer avec une nouvelle base de données.
 
->[!div class="step-by-step"]
-[Précédent](inheritance.md)
+> [!div class="step-by-step"]
+> [Précédent](inheritance.md)

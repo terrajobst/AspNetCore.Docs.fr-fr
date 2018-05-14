@@ -1,7 +1,7 @@
 ---
-title: "Développement d’applications ASP.NET Core à l’aide de dotnet watch"
+title: Développer des applications ASP.NET Core à l’aide de dotnet watch
 author: rick-anderson
-description: "Ce didacticiel montre comment installer et utiliser l’outil Observateur de fichiers (dotnet watch) de l’interface de ligne de commande .NET Core dans une application ASP.NET Core."
+description: Ce didacticiel montre comment installer et utiliser l’outil Observateur de fichiers (dotnet watch) de l’interface de ligne de commande .NET Core dans une application ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/05/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: cb15e28cb98ea82091cf5ddeed12df8926079e52
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c3ece3a5b936b2ea7b7772eee10e598cb557b361
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="developing-aspnet-core-apps-using-dotnet-watch"></a>Développement d’applications ASP.NET Core à l’aide de dotnet watch
+# <a name="develop-aspnet-core-apps-using-dotnet-watch"></a>Développer des applications ASP.NET Core à l’aide de dotnet watch
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
@@ -95,7 +95,7 @@ Vérifiez que `http://localhost:<port number>/api/math/product?a=4&b=5` retourne
 
 1. Modifiez la méthode `Product` de *MathController.cs* pour qu’elle retourne à nouveau la somme, puis enregistrez le fichier.
 1. Dans une interface de commande, accédez au dossier *WebAppTests*.
-1. Exécutez `dotnet restore`.
+1. Exécutez [dotnet restore](/dotnet/core/tools/dotnet-restore).
 1. Exécutez `dotnet watch test`. Sa sortie indique qu’un test a échoué et que l’observateur est en attente de changement de fichier :
 
      ```console

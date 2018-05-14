@@ -1,7 +1,7 @@
 ---
-title: "Injection de dépendances dans les contrôleurs"
+title: Injection de dépendances dans les contrôleurs dans ASP.NET Core
 author: ardalis
-description: 
+description: Découvrez comment les contrôleurs ASP.NET Core MVC demandent explicitement leurs dépendances par le biais de leurs constructeurs avec l’injection de dépendances dans ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 118f504311b58258b5a0510477280505135dd2d9
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c3e26d294d51dc7044158b05c1ac39015c494610
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="dependency-injection-into-controllers"></a>Injection de dépendances dans les contrôleurs
+# <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Injection de dépendances dans les contrôleurs dans ASP.NET Core
 
 <a name="dependency-injection-controllers"></a>
 
@@ -33,17 +33,17 @@ L’injection de dépendances est une technique qui suit le [principe d’invers
 
 La prise en charge intégrée dans ASP.NET Core de l’injection de dépendances basée sur les constructeurs s’étend aux contrôleurs MVC. En ajoutant simplement un type de service à votre contrôleur en tant que paramètre de constructeur, ASP.NET Core tente de résoudre ce type en utilisant son conteneur de services intégrés. Les services sont, en général mais pas toujours, définis en utilisant des interfaces. Par exemple, si votre application a une logique métier qui dépend de l’heure, vous pouvez injecter un service qui récupère l’heure (au lieu de la coder en dur), ce qui permet à vos tests de réussir dans des implémentations qui utilisent une heure définie.
 
-[!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs)]
+[!code-csharp[](dependency-injection/sample/src/ControllerDI/Interfaces/IDateTime.cs)]
 
 
 L’implémentation d’une interface comme celle-ci pour qu’elle utilise l’horloge système lors de l’exécution est simple :
 
-[!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs)]
+[!code-csharp[](dependency-injection/sample/src/ControllerDI/Services/SystemDateTime.cs)]
 
 
 Ceci étant en place, nous pouvons utiliser le service dans notre contrôleur. Dans ce cas, nous avons ajouté de la logique pour la méthode `HomeController` `Index` permettant d’afficher un message d’accueil à l’utilisateur en fonction de l’heure du jour.
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30&range=1-31,51-52)]
+[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=8,10,12,17,18,19,20,21,22,23,24,25,26,27,28,29,30&range=1-31,51-52)]
 
 Si nous exécutons l’application maintenant, nous allons très probablement rencontrer une erreur :
 
@@ -56,7 +56,7 @@ Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceP
 
 Cette erreur se produit si nous n’avons pas configuré un service dans la méthode `ConfigureServices` de notre classe `Startup`. Pour spécifier que les demandes de `IDateTime` doivent être résolues en utilisant une instance de `SystemDateTime`, ajoutez la ligne en surbrillance dans la liste ci-dessous à votre méthode `ConfigureServices` :
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4&range=26-27,42-44)]
+[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=4&range=26-27,42-44)]
 
 > [!NOTE]
 > Ce service particulier peut être implémenté en utilisant plusieurs options de durée de vie différentes (`Transient`, `Scoped` ou `Singleton`). Consultez [Injection de dépendances](../../fundamentals/dependency-injection.md) pour comprendre comment chacune de ces options d’étendue affecte le comportement de votre service.
@@ -66,7 +66,7 @@ Une fois que le service a été configuré, l’exécution de l’application et
 ![Message d’accueil du serveur](dependency-injection/_static/server-greeting.png)
 
 >[!TIP]
-> Consultez [Test de la logique du contrôleur](testing.md) pour découvrir comment demander explicitement les dépendances [http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/) dans les contrôleurs rend le code plus facile à tester.
+> Consultez [Tester la logique du contrôleur](testing.md) pour découvrir comment demander explicitement les dépendances ([http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/)) dans les contrôleurs afin de rendre le code plus facile à tester.
 
 L’injection de dépendances intégrée d’ASP.NET Core ne prend en charge qu’un seul constructeur pour les classes demandant des services. Si vous avez plusieurs constructeurs, vous pouvez recevoir une exception indiquant :
 
@@ -83,7 +83,7 @@ Comme le message d’erreur l’indique, vous pouvez corriger ce problème en n�
 
 Parfois, vous n’avez pas besoin d’un service pour plusieurs actions dans votre contrôleur. Dans ce cas, il peut être judicieux d’injecter le service comme paramètre de la méthode d’action. Vous faites cela en marquant le paramètre avec l’attribut `[FromServices]`, comme illustré ici :
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1&range=33-38)]
+[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/HomeController.cs?highlight=1&range=33-38)]
 
 ## <a name="accessing-settings-from-a-controller"></a>Accès aux paramètres à partir d’un contrôleur
 
@@ -91,17 +91,17 @@ L’accès aux paramètres de configuration ou d’application à partir d’un 
 
 Pour utiliser le modèle Options, vous devez créer une classe qui représente les options, comme celle-ci :
 
-[!code-csharp[Main](dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs)]
+[!code-csharp[](dependency-injection/sample/src/ControllerDI/Model/SampleWebSettings.cs)]
 
 Vous devez ensuite configurer l’application pour qu’elle utilise le modèle Options et ajouter votre classe de configuration à la collection de services dans `ConfigureServices` :
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19&range=14-44)]
+[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Startup.cs?highlight=3,4,5,6,9,16,19&range=14-44)]
 
 > [!NOTE]
 > Dans la liste ci-dessus, nous configurons l’application pour qu’elle lise les paramètres dans un fichier au format JSON. Vous pouvez également configurer les paramètres entièrement dans le code, comme illustré dans le code commenté ci-dessus. Consultez [Configuration](xref:fundamentals/configuration/index) pour d’autres options de configuration.
 
 Une fois que vous avez spécifié un objet de configuration fortement typé (dans ce cas, `SampleWebSettings`) et que vous l’avez ajouté à la collection de services, vous pouvez le demander à partir de n’importe quelle méthode de contrôleur ou d’action en demandant une instance de `IOptions<T>` (dans ce cas, `IOptions<SampleWebSettings>`). Le code suivant montre comment demander les paramètres à partir d’un contrôleur :
 
-[!code-csharp[Main](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7&range=7-22)]
+[!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7&range=7-22)]
 
-Suivre le modèle Options permet de découpler les paramètres et la configuration, et garantit que le contrôleur est conforme à la [séparation des problèmes](http://deviq.com/separation-of-concerns/), car il n’a pas besoin de savoir ni comment ni où rechercher les informations des paramètres. Cela simplifie également les tests unitaires du contrôleur ([Test de la logique du contrôleur](testing.md)), car il n’y a pas [de couplage des fonctionnalités statiques](http://deviq.com/static-cling/) ou d’instanciation directe de classes de paramètres au sein de la classe du contrôleur.
+Suivre le modèle Options permet de découpler les paramètres et la configuration, et garantit que le contrôleur est conforme à la [séparation des problèmes](http://deviq.com/separation-of-concerns/), car il n’a pas besoin de savoir ni comment ni où rechercher les informations des paramètres. Cela simplifie également les tests unitaires du contrôleur ([Tester la logique du contrôleur](testing.md)), car il n’y a pas de [couplage des fonctionnalités statiques](http://deviq.com/static-cling/) ni d’instanciation directe de classes de paramètres au sein de la classe du contrôleur.

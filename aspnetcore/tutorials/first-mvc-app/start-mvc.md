@@ -1,7 +1,7 @@
 ---
-title: "Bien démarrer avec ASP.NET Core MVC et Visual Studio"
+title: Bien démarrer avec ASP.NET Core MVC et Visual Studio
 author: rick-anderson
-description: "Bien démarrer avec ASP.NET Core MVC et Visual Studio"
+description: Découvrez comment bien démarrer avec ASP.NET Core MVC et Visual Studio.
 manager: wpickett
 ms.author: riande
 ms.date: 10/07/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: d07d133aa0ed83962b6dc60b9fa0c42993f87843
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b7036b92e8f25613917cfc4112389be81c12f614
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-visual-studio"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio
+# <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[consider RP](../../includes/razor.md)]
+[!INCLUDE [consider RP](../../includes/razor.md)]
 
 Il existe trois versions de ce didacticiel :
 
@@ -29,12 +29,10 @@ Il existe trois versions de ce didacticiel :
 
 ## <a name="install-visual-studio-and-net-core"></a>Installer Visual Studio et .NET Core
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+#### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
-[!INCLUDE[install 2.0](../../includes/install2.0.md)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
+#### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 Installez Visual Studio Community 2017. Sélectionnez le téléchargement Community. Ignorez cette étape si Visual Studio 2017 est installé sur votre ordinateur.
 
 * [Page d’accueil du programme d’installation de Visual Studio 2017](https://www.visualstudio.com/)
@@ -48,8 +46,7 @@ Exécutez le programme d’installation et sélectionnez les charges de travail 
 
 ![**Développement multiplateforme .NET Core** (sous **Autres ensembles d’outils**)](start-mvc/_static/x_plat_wl.png)
 
----
-
+* * *
 ## <a name="create-a-web-app"></a>Créer une application web
 
 Dans Visual Studio, sélectionnez **Fichier > Nouveau > Projet**.
@@ -95,7 +92,7 @@ Appuyez sur **F5** pour exécuter l’application en mode débogage ou sur **Ctr
 <!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
 ![application en cours d’exécution](start-mvc/_static/1.png)
 
-* Visual Studio démarre [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute votre application. Notez que la barre d’adresse affiche `localhost:port#`, et non quelque chose comme `example.com`. C’est parce que `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web. Dans l’image ci-dessus, le numéro de port est 5000. L’URL dans le navigateur affiche `localhost:5000`. Quand vous exécutez l’application, vous voyez un autre numéro de port.
+* Visual Studio démarre [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute votre application. Notez que la barre d’adresse affiche `localhost:port#`, et non quelque chose comme `example.com`. C’est parce que `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web. Dans l’image ci-dessus, le numéro de port est 5000. L’URL dans le navigateur affiche `localhost:5000`. Quand vous exécutez l’application, vous voyez un autre numéro de port.
 * Si vous lancez l’application avec **Ctrl+F5** (mode sans débogage), vous pouvez effectuer des modifications du code, enregistrer le fichier, actualiser le navigateur et afficher les modifications du code. De nombreux développeurs préfèrent utiliser le mode non-débogage pour lancer rapidement l’application et voir les modifications.
 * Vous pouvez lancer l’application en mode débogage ou non-débogage à partir de l’élément de menu **Déboguer** :
 
@@ -113,5 +110,5 @@ Si vous exécutiez l’application en mode débogage, appuyez sur **Maj-F5** pou
 
 Dans la prochaine partie de ce didacticiel, nous allons découvrir MVC et commencer à écrire du code.
 
->[!div class="step-by-step"]
-[Next](adding-controller.md)  
+> [!div class="step-by-step"]
+> [Next](adding-controller.md)  

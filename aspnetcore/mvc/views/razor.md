@@ -1,7 +1,7 @@
 ---
-title: "Informations de référence sur la syntaxe Razor pour ASP.NET Core"
+title: Informations de référence sur la syntaxe Razor pour ASP.NET Core
 author: rick-anderson
-description: "Apprenez à utiliser la syntaxe de balisage Razor pour incorporer du code serveur dans des pages web."
+description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer du code serveur dans des pages web.
 manager: wpickett
 ms.author: riande
 ms.date: 10/18/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/razor
-ms.openlocfilehash: 98021cc76555f0c1402764c845471a4730b01b20
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9c96ea34071bf3009f1ec53ed9af9206439aa229
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="razor-syntax-for-aspnet-core"></a>Syntaxe Razor pour ASP.NET Core
+# <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Luke Latham](https://github.com/guardrex), [Taylor Mullen](https://twitter.com/ntaylormullen) et [Dan Vicarel](https://github.com/Rabadash8820)
 
@@ -89,7 +89,7 @@ Le contenu situé entre les parenthèses `@()` est évalué et affiché dans la 
 
 Les expressions implicites, décrites dans la section précédente, ne doivent généralement pas contenir d’espaces. Dans le code suivant, une semaine n’est pas déduite de l’heure actuelle :
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact.cshtml?range=17)]
+[!code-cshtml[](razor/sample/Views/Home/Contact.cshtml?range=17)]
 
 Le code s’affiche en HTML de la façon suivante :
 
@@ -109,19 +109,7 @@ Les expressions explicites peuvent servir à concaténer du texte avec un résul
 
 Sans l’expression explicite, `<p>Age@joe.Age</p>` est traité comme une adresse e-mail, et `<p>Age@joe.Age</p>` est affiché. Avec une expression explicite, `<p>Age33</p>` est affiché.
 
-
-Les expressions explicites peuvent être utilisées pour afficher la sortie de méthodes génériques dans les fichiers *.cshtml*. Dans une expression implicite, les caractères placés entre crochets (`<>`) sont interprétés comme une balise HTML. Le balisage suivant n’est **pas** une syntaxe Razor valide :
-
-```cshtml
-<p>@GenericMethod<int>()</p>
-```
-
-Le code précédent génère l’un des types d’erreur de compilateur suivants :
-
- * L’élément « int » n’a pas été fermé. Tous les éléments doivent se fermer automatiquement ou contenir une balise de fin correspondante.
- *  Impossible de convertir le groupe de méthodes 'GenericMethod' en type non-délégué 'object'. Souhaitiez-vous appeler la méthode ? 
- 
- Le balisage suivant montre comment écrire ce code correctement. Le code est écrit sous forme d’expression explicite :
+Les expressions explicites peuvent être utilisées pour afficher la sortie de méthodes génériques dans les fichiers *.cshtml*. Le balisage suivant montre comment corriger l’erreur affichée précédemment provoquée par les crochets d’un générique C#. Le code est écrit sous forme d’expression explicite :
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -370,7 +358,7 @@ Des actions au niveau de l’étendue peuvent être effectuées avec des [Tag He
 
 La gestion des exceptions est similaire à C# :
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact7.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact7.cshtml)]
 
 ### <a name="lock"></a>@lock
 
@@ -419,7 +407,7 @@ Les directives Razor sont représentées par des expressions implicites constitu
 
 Pour mieux comprendre le fonctionnement des directives, vous devez bien comprendre comment Razor génère le code pour une vue.
 
-[!code-html[Main](razor/sample/Views/Home/Contact8.cshtml)]
+[!code-html[](razor/sample/Views/Home/Contact8.cshtml)]
 
 Le code génère une classe semblable à celle-ci :
 
@@ -439,11 +427,12 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 La section [Affichage de la classe C# Razor générée pour une vue](#viewing-the-razor-c-class-generated-for-a-view), plus loin dans cet article, explique comment afficher cette classe générée.
 
+<a name="using"></a>
 ### <a name="using"></a>@using
 
 La directive `@using` ajoute la directive `using` C# à la vue générée :
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact9.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact9.cshtml)]
 
 ### <a name="model"></a>@model
 
@@ -471,7 +460,7 @@ Razor expose une propriété `Model` pour accéder au modèle passé à la vue :
 <div>The Login Email: @Model.Email</div>
 ```
 
-La directive `@model` spécifie le type de cette propriété. La directive spécifie le type `T` dans `RazorPage<T>` pour la classe générée dont dérive la vue. Si la directive `@model` n’est pas spécifiée, la propriété `Model` est de type `dynamic`. La valeur du modèle est passée à la vue par le contrôleur. Pour plus d’informations, consultez l’article sur les modèles fortement typés et le mot clé @model.
+La directive `@model` spécifie le type de cette propriété. La directive spécifie le type `T` dans `RazorPage<T>` pour la classe générée dont dérive la vue. Si la directive `@model` n’est pas spécifiée, la propriété `Model` est de type `dynamic`. La valeur du modèle est passée à la vue par le contrôleur. Pour plus d’informations, consultez [Modèles fortement typés et le mot clé &commat;model](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-and-the--keyword).
 
 ### <a name="inherits"></a>@inherits
 
@@ -483,11 +472,11 @@ La directive `@inherits` fournit un contrôle complet de la classe héritée par
 
 Le code suivant est un type de page Razor personnalisé :
 
-[!code-csharp[Main](razor/sample/Classes/CustomRazorPage.cs)]
+[!code-csharp[](razor/sample/Classes/CustomRazorPage.cs)]
 
 Le `CustomText` s’affiche dans une vue :
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact10.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact10.cshtml)]
 
 Le code s’affiche en HTML de la façon suivante :
 
@@ -497,11 +486,11 @@ Le code s’affiche en HTML de la façon suivante :
 
  `@model` et `@inherits` peuvent s’utiliser dans la même vue. `@inherits` peut être dans un fichier *_ViewImports.cshtml* importé par la vue :
 
-[!code-cshtml[Main](razor/sample/Views/_ViewImportsModel.cshtml)]
+[!code-cshtml[](razor/sample/Views/_ViewImportsModel.cshtml)]
 
 Le code suivant est un exemple de vue fortement typée :
 
-[!code-cshtml[Main](razor/sample/Views/Home/Login1.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Login1.cshtml)]
 
 Si « rick@contoso.com » est passé au modèle, la vue génère le balisage HTML suivant :
 
@@ -517,7 +506,7 @@ La directive `@inject` permet à la page Razor d’injecter un service dans une 
 
 ### <a name="functions"></a>@functions
 
-La directive `@functions` permet à une page Razor d’ajouter du contenu au niveau des fonctions dans une vue :
+La directive `@functions` permet à une page Razor d’ajouter un bloc de code C# à une vue :
 
 ```cshtml
 @functions { // C# Code }
@@ -525,7 +514,7 @@ La directive `@functions` permet à une page Razor d’ajouter du contenu au niv
 
 Exemple :
 
-[!code-cshtml[Main](razor/sample/Views/Home/Contact6.cshtml)]
+[!code-cshtml[](razor/sample/Views/Home/Contact6.cshtml)]
 
 Le code génère le balisage HTML suivant :
 
@@ -535,7 +524,7 @@ Le code génère le balisage HTML suivant :
 
 Le code suivant correspond à la classe C# Razor générée :
 
-[!code-csharp[Main](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
+[!code-csharp[](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
 
 ### <a name="section"></a>@section
 
@@ -547,18 +536,18 @@ Il existe trois directives spécifiques aux [Tag Helpers](xref:mvc/views/tag-hel
 
 | Directive | Fonction |
 | --------- | -------- |
-| [@addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | Rend les Tag Helpers disponibles dans une vue. |
-| [@removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Supprime les Tag Helpers précédemment ajoutés à une vue. |
-| [@tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Spécifie un préfixe de balise pour activer la prise en charge des Tag Helpers et rendre leur usage explicite. |
+| [&commat;addTagHelper](xref:mvc/views/tag-helpers/intro#add-helper-label) | Rend les Tag Helpers disponibles dans une vue. |
+| [&commat;removeTagHelper](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | Supprime les Tag Helpers précédemment ajoutés à une vue. |
+| [&commat;tagHelperPrefix](xref:mvc/views/tag-helpers/intro#prefix-razor-directives-label) | Spécifie un préfixe de balise pour activer la prise en charge des Tag Helpers et rendre leur usage explicite. |
 
 ## <a name="razor-reserved-keywords"></a>Mots clés réservés Razor
 
 ### <a name="razor-keywords"></a>Mots clés Razor
 
 * page (nécessite ASP.NET Core 2.0 ou version ultérieure)
-* functions
-* inherits
-* model
+* fonctions
+* hérite
+* modèle
 * section
 * helper (non pris en charge par ASP.NET Core)
 
@@ -566,7 +555,7 @@ Les mots clés Razor sont précédés d’une séquence d’échappement `@(Razo
 
 ### <a name="c-razor-keywords"></a>Mots clés Razor C#
 
-* case
+* casse
 * do
 * default
 * for
@@ -592,11 +581,11 @@ Les mots clés Razor C# doivent être précédés d’une double séquence d’�
 
 Ajoutez la classe suivante au projet ASP.NET Core MVC :
 
-[!code-csharp[Main](razor/sample/Utilities/CustomTemplateEngine.cs)]
+[!code-csharp[](razor/sample/Utilities/CustomTemplateEngine.cs)]
 
 Remplacez la classe `RazorTemplateEngine` ajoutée par MVC par la classe `CustomTemplateEngine` :
 
-[!code-csharp[Main](razor/sample/Startup.cs?highlight=4&range=10-14)]
+[!code-csharp[](razor/sample/Startup.cs?highlight=4&range=10-14)]
 
 Définissez un point d’arrêt sur l’instruction `return csharpDocument` de `CustomTemplateEngine`. Quand l’exécution du programme s’arrête au point d’arrêt, affichez la valeur de `generatedCode`.
 

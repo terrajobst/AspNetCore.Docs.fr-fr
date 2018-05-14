@@ -1,7 +1,7 @@
 ---
-title: "Gestion des requêtes avec des contrôleurs dans ASP.NET Core MVC"
+title: Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 author: ardalis
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 07/03/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/actions
-ms.openlocfilehash: 0f04891aaeec026120e2afff3ff24fb89f649c8d
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 187ac69322545685380ad8f810bb65208c093d82
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="handling-requests-with-controllers-in-aspnet-core-mvc"></a>Gestion des requêtes avec des contrôleurs dans ASP.NET Core MVC
+# <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 
 Par [Steve Smith](https://ardalis.com/) et [Scott Addie](https://github.com/scottaddie)
 
@@ -36,11 +36,11 @@ Un contrôleur est une classe instanciable dans laquelle au moins une des condit
 
 Une classe de contrôleur ne doit pas avoir d’attribut `[NonController]` associé.
 
-Les contrôleurs doivent suivre le [principe de dépendances explicites](http://deviq.com/explicit-dependencies-principle/). Deux approches existent pour implémenter ce principe. Si plusieurs actions de contrôleur nécessitent le même service, envisagez d’utiliser [l’injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour demander ces dépendances. Si le service est nécessaire pour une seule méthode d’action, envisagez d’utiliser [l’injection d’action](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) pour demander la dépendance.
+Les contrôleurs doivent suivre le [principe de dépendances explicites](http://deviq.com/explicit-dependencies-principle/). Il existe deux approches pour implémenter ce principe. Si plusieurs actions de contrôleur nécessitent le même service, envisagez d’utiliser [l’injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour demander ces dépendances. Si le service est nécessaire pour une seule méthode d’action, envisagez d’utiliser [l’injection d’action](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) pour demander la dépendance.
 
 Dans le **M**odèle-**V**ue-**C**ontrôleur, un contrôleur est responsable du traitement initial de la demande et de l’instanciation du modèle. En règle générale, les décisions métier doivent être prises dans le modèle.
 
-Le contrôleur prend le résultat du traitement du modèle (le cas échéant) et retourne la vue appropriée et les données associées à cette vue, ou bien le résultat de l’appel d’API. Découvrez plus d’informations dans [Vue d’ensemble d’ASP.NET Core MVC](xref:mvc/overview) et [Bien démarrer avec ASP.NET Core MVC et Visual Studio](xref:tutorials/first-mvc-app/start-mvc).
+Le contrôleur prend le résultat du traitement du modèle (le cas échéant) et retourne la vue appropriée et les données associées à cette vue, ou bien le résultat de l’appel d’API. Pour en savoir plus, consultez [Vue d’ensemble d’ASP.NET Core MVC](xref:mvc/overview) et [Bien démarrer avec ASP.NET Core MVC et Visual Studio](xref:tutorials/first-mvc-app/start-mvc).
 
 Le contrôleur est une abstraction *au niveau de l’interface utilisateur*. Ses responsabilités sont de garantir que les données de la demande sont valides et de choisir la vue (ou le résultat d’API) à retourner. Dans les applications bien construites, il n’inclut pas directement l’accès aux données ni la logique métier. Au lieu de cela, le contrôleur délègue à des services la gestion de ces responsabilités.
 
@@ -54,7 +54,7 @@ Les actions peuvent retourner des valeurs de n’importe quel type, mais elles r
 
 ### <a name="controller-helper-methods"></a>Méthodes helper des contrôleurs
 
-Les contrôleurs héritent généralement de la classe [Controller](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.controller), bien que ce ne soit pas obligatoire. Le fait de dériver de `Controller` fournit l’accès à trois catégories de méthodes helper :
+Les contrôleurs héritent généralement de la classe [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller), bien que ce ne soit pas obligatoire. Le fait de dériver de `Controller` fournit l’accès à trois catégories de méthodes helper :
 
 #### <a name="1-methods-resulting-in-an-empty-response-body"></a>1. Méthodes aboutissant à un corps de réponse vide
 
@@ -76,7 +76,7 @@ Il existe deux types de résultats dans cette catégorie : Redirection et Code d
 
 La plupart des méthodes helper de cette catégorie incluent une propriété `ContentType`, qui vous permet de définir l’en-tête de réponse `Content-Type` pour décrire le corps de la réponse.
 
-Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/overview) et [Réponse mise en forme](xref:mvc/models/formatting).
+Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/overview) et [Réponse mise en forme](xref:web-api/advanced/formatting).
 
 * **Affichage**
 
@@ -90,7 +90,7 @@ Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. Méthodes aboutissant à un corps de réponse non vide mise en forme selon un type de contenu négocié avec le client
 
-Cette catégorie est plus connue sous le nom de **Négociation de contenu**. La [Négociation de contenu](xref:mvc/models/formatting#content-negotiation) s’applique chaque fois qu’une action retourne un type [ObjectResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.objectresult) ou quelque chose d’autre qu’une implémentation de [IActionResult](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.iactionresult). Une action qui retourne une implémentation autre que `IActionResult` (par exemple `object`) retourne également une Réponse mise en forme.
+Cette catégorie est plus connue sous le nom de **Négociation de contenu**. La [Négociation de contenu](xref:web-api/advanced/formatting#content-negotiation) s’applique chaque fois qu’une action retourne un type [ObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.objectresult) ou quelque chose d’autre qu’une implémentation de [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult). Une action qui retourne une implémentation autre que `IActionResult` (par exemple `object`) retourne également une Réponse mise en forme.
 
 `BadRequest`, `CreatedAtRoute` et `Ok` sont des méthodes helper de ce type. `return BadRequest(modelState);`, `return CreatedAtRoute("routename", values, newobject);` et `return Ok(value);` sont des exemples respectifs de ces méthodes. Notez que `BadRequest` et `Ok` effectuent une négociation de contenu seulement quand ils reçoivent une valeur ; si aucune valeur ne leur est passée, ils délivrent à la place des types de résultats Code d’état HTTP. La méthode `CreatedAtRoute` effectue quant à elle toujours une négociation de contenu, car ses surcharges nécessitent toutes qu’une valeur soit passée.
 
@@ -101,7 +101,7 @@ En règle générale, les applications partagent des parties de leur flux de tra
 La plupart des attributs des filtres, comme `[Authorize]`, peuvent être appliqués au niveau du contrôleur ou de l’action, selon le niveau de granularité souhaité.
 
 La gestion des erreurs et la mise en cache des réponses sont souvent des problèmes transversaux :
-   * [Gestion des erreurs](xref:mvc/controllers/filters#exception-filters)
+   * [Gérer les erreurs](xref:mvc/controllers/filters#exception-filters)
    * [Mise en cache des réponses](xref:performance/caching/response)
 
 De nombreux problèmes transversaux peuvent être gérés en utilisant des filtres ou un [intergiciel (middleware)](xref:fundamentals/middleware/index) personnalisé.

@@ -1,5 +1,5 @@
 ---
-title: Pages Razor avec EF Core - Mise à jour de données associées - 7 sur 8
+title: Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 author: rick-anderson
 description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
 manager: wpickett
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 5c91c91ab938f3aa4abc55049c54f399469f6163
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 2eff6cd5f4bb737cb79875c9b04c889914376cd0
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="updating-related-data---ef-core-razor-pages-7-of-8"></a>Mise à jour des données associées - Pages Razor avec EF Core (7 sur 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 
 De [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 Ce didacticiel illustre la mise à jour de données associées. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez l’[application terminée pour cette phase](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part7).
 
@@ -34,9 +34,9 @@ Examinez et testez les pages des cours Create et Edit. Créez un nouveau cours. 
 
 Les pages de création et de modification de cours ont chacune besoin d’une liste de noms de départements. Créez la classe de base *Pages/Courses/DepartmentNamePageModel.cshtml.cs* pour les pages Create et Edit :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/DepartmentNamePageModel.cshtml.cs?highlight=9,11,20-21)]
 
-Le code précédent crée un [SelectList](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) pour contenir la liste des noms de département.  Si `selectedDepartment` est spécifié, ce département est sélectionné dans le `SelectList`. 
+Le code précédent crée un [SelectList](/dotnet/api/microsoft.aspnetcore.mvc.rendering.selectlist?view=aspnetcore-2.0) pour contenir la liste des noms de département.  Si `selectedDepartment` est spécifié, ce département est sélectionné dans le `SelectList`. 
 
 Les classes de modèle de page Create et Edit doivent dériver de `DepartmentNamePageModel`.
 
@@ -48,7 +48,7 @@ Quand une entité de cours est créée, elle doit avoir une relation à un dépa
 
 Mettez à jour le modèle de la page Create avec le code suivant : 
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Create.cshtml.cs?highlight=7,18,32-999)]
 
 Le code précédent :
 
@@ -62,7 +62,7 @@ Le code précédent :
 
 Mettez à jour *Pages/Courses/Create.cshtml* avec le balisage suivant :
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?highlight=29-34)]
 
 Le balisage précédent apporte les modifications suivantes :
 
@@ -73,7 +73,7 @@ Le balisage précédent apporte les modifications suivantes :
 
 La Page Razor utilise le [Tag Helper Select](xref:mvc/views/working-with-forms#the-select-tag-helper) :
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Create.cshtml?range=28-35&highlight=3-6)]
 
 Testez la page Create. La page Create affiche le nom du département plutôt que son ID.
 
@@ -81,13 +81,13 @@ Testez la page Create. La page Create affiche le nom du département plutôt que
 
 Mettez à jour le modèle de modification de cours avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Edit.cshtml.cs?highlight=8,28,35,36,40,47-999)]
 
 Les modifications sont semblables à celles effectuées dans le modèle de page Create. Dans le code précédent, `PopulateDepartmentsDropDownList` transmet l’ID de département, ce qui sélectionne le département spécifié dans la liste déroulante.
 
 Mettez à jour *Pages/Courses/Edit.cshtml* avec le balisage suivant :
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Edit.cshtml?highlight=17-20,32-35)]
 
 Le balisage précédent apporte les modifications suivantes :
 
@@ -103,19 +103,19 @@ Testez le code mis à jour. Créez, modifiez et supprimez un cours.
 
 ## <a name="add-asnotracking-to-the-details-and-delete-page-models"></a>Ajouter AsNoTracking aux modèles de page Details et Delete
 
-[AsNoTracking](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) peut améliorer les performances quand le suivi n’est pas nécessaire. Ajoutez `AsNoTracking` dans les modèles de page Details et Delete. Le code suivant montre le modèle de page Delete mis à jour :
+[AsNoTracking](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.asnotracking?view=efcore-2.0#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_AsNoTracking__1_System_Linq_IQueryable___0__) peut améliorer les performances quand le suivi n’est pas nécessaire. Ajoutez `AsNoTracking` dans les modèles de page Details et Delete. Le code suivant montre le modèle de page Delete mis à jour :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Delete.cshtml.cs?name=snippet&highlight=21,23,40,41)]
 
 Mettez à jour la méthode `OnGetAsync` dans le fichier *Pages/Courses/Details.cshtml.cs* :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Details.cshtml.cs?name=snippet)]
 
 ### <a name="modify-the-delete-and-details-pages"></a>Modifier les pages Delete et Details
 
 Mettez à jour la page Razor Delete avec le balisage suivant :
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Delete.cshtml?highlight=15-20)]
 
 Apportez les mêmes modifications à la page Details.
 
@@ -137,7 +137,7 @@ Lors de la modification d’un enregistrement de formateur, vous souhaiterez peu
 
 Mettez à jour le modèle de page Edit d'instructeur avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml.cs?name=snippet&highlight=20-23,32,39-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Edit1.cshtml.cs?name=snippet&highlight=20-23,32,39-999)]
 
 Le code précédent :
 
@@ -149,7 +149,7 @@ Le code précédent :
 
 Mettez à jour *Pages/Instructors/Edit.cshtml* avec l’emplacement du bureau :
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit1.cshtml?highlight=29-33)]
 
 Vérifiez que vous pouvez modifier l'emplacement de bureau d'un instructeur.
 
@@ -170,27 +170,27 @@ Les cases à cocher permettent de changer les cours auxquels un formateur est as
 
 Créez *SchoolViewModels/AssignedCourseData.cs* avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/AssignedCourseData.cs)]
 
 La classe `AssignedCourseData` contient des données pour créer les cases à cocher pour les cours attribués par un formateur.
 
 Créez la classe de base *Pages/Instructors/InstructorCoursesPageModel.cshtml.cs* :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/InstructorCoursesPageModel.cshtml.cs)]
 
-`InstructorCoursesPageModel` est la classe de base que vous utiliserez pour les modèles de page Edit et Create. `PopulateAssignedCourseData` lit toutes les entités `Course` pour renseigner `AssignedCourseDataList`. Pour chaque cours, le code définit le `CourseID`, le titre, et si le formateur est affecté au cours. Un [HashSet](https://docs.microsoft.com/dotnet/api/system.collections.generic.hashset-1) est utilisé pour créer des recherches efficaces.
+`InstructorCoursesPageModel` est la classe de base que vous utiliserez pour les modèles de page Edit et Create. `PopulateAssignedCourseData` lit toutes les entités `Course` pour renseigner `AssignedCourseDataList`. Pour chaque cours, le code définit le `CourseID`, le titre, et si le formateur est affecté au cours. Un [HashSet](/dotnet/api/system.collections.generic.hashset-1) est utilisé pour créer des recherches efficaces.
 
 ### <a name="instructors-edit-page-model"></a>Modèle de page de modification de formateur
 
 Mettez à jour le modèle de page Edit d'instructeur avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml.cs?name=snippet&highlight=1,20-24,30,34,41-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Edit.cshtml.cs?name=snippet&highlight=1,20-24,30,34,41-999)]
 
 Le code précédent gère les changements d’affectation de bureau.
 
 Mettez à jour la vue Razor Instructeur :
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Edit.cshtml?highlight=34-59)]
 
 <a id="notepad"></a>
 > [!NOTE]
@@ -208,13 +208,13 @@ Remarque : L’approche adoptée ici pour modifier les données de cours des fo
 
 Mettez à jour le modèle de page de création de formateur avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Create.cshtml.cs)]
 
 Le code précédent est similaire au code de *Pages/Instructors/Edit.cshtml.cs*.
 
 Mettez à jour la page Razor de création de formateur avec le balisage suivant :
 
-[!code-cshtml[Main](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/Create.cshtml?highlight=32-62)]
 
 Testez la page de création de l'instructeur.
 
@@ -222,7 +222,7 @@ Testez la page de création de l'instructeur.
 
 Mettez à jour le modèle de page de suppression avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Delete.cshtml.cs?highlight=5,40-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Delete.cshtml.cs?highlight=5,40-999)]
 
 Le code précédent apporte les modifications suivantes :
 
@@ -230,6 +230,6 @@ Le code précédent apporte les modifications suivantes :
 
 * Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
 
->[!div class="step-by-step"]
-[Précédent](xref:data/ef-rp/read-related-data)
-[Suivant](xref:data/ef-rp/concurrency)
+> [!div class="step-by-step"]
+> [Précédent](xref:data/ef-rp/read-related-data)
+> [Suivant](xref:data/ef-rp/concurrency)

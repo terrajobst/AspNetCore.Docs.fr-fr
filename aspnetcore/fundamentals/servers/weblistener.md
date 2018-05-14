@@ -1,19 +1,19 @@
 ---
-title: "Implémentation du serveur web WebListener dans ASP.NET Core"
+title: Implémentation du serveur web WebListener dans ASP.NET Core
 author: rick-anderson
-description: "Présente WebListener, serveur web pour ASP.NET Core sur Windows. Basé sur le pilote en mode noyau Http.Sys, WebListener est une alternative à Kestrel qui peut être utilisée pour une connexion directe à Internet sans IIS."
+description: Découvrez plus d’informations sur WebListener, un serveur web pour ASP.NET Core sur Windows, qui peut être utilisé pour une connexion directe à Internet sans IIS.
 manager: wpickett
 ms.author: riande
-ms.date: 08/07/2017
+ms.date: 03/13/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: fb2e0621645a48f4e603d754d8babbc07a78cae4
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cd2e477824d916afcf1a7901e935dd465a466922
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web WebListener dans ASP.NET Core
 
@@ -78,7 +78,7 @@ Vous pouvez également recourir aux [paramètres de Registre Http.Sys](https://s
 
 * Installez le package NuGet [Microsoft.AspNetCore.Server.WebListener](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.WebListener/). Cette opération installe également [Microsoft.Net.Http.Server](https://www.nuget.org/packages/Microsoft.Net.Http.Server/) en tant que dépendance.
 
-* Appelez la méthode d’extension `UseWebListener` sur [WebHostBuilder](/aspnet/core/api/microsoft.aspnetcore.hosting.webhostbuilder) dans votre méthode `Main`, en spécifiant les [options](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) et [paramètres](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) WebListener dont vous avez besoin, comme indiqué dans l’exemple suivant :
+* Appelez la méthode d’extension `UseWebListener` sur [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) dans votre méthode `Main`, en spécifiant les [options](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.AspNetCore.Server.WebListener/WebListenerOptions.cs) et [paramètres](https://github.com/aspnet/HttpSysServer/blob/rel/1.1.2/src/Microsoft.Net.Http.Server/WebListenerSettings.cs) WebListener dont vous avez besoin, comme indiqué dans l’exemple suivant :
 
   [!code-csharp[](weblistener/sample/Program.cs?name=snippet_Main&highlight=13-17)]
 
@@ -87,6 +87,9 @@ Vous pouvez également recourir aux [paramètres de Registre Http.Sys](https://s
   Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Pour configurer les ports et les préfixes d’URL, vous pouvez utiliser la méthode d’extension `UseURLs`, l’argument de ligne de commande `urls` ou le système de configuration ASP.NET Core. Pour plus d’informations, consultez [Hébergement](../../fundamentals/hosting.md).
 
   WebListener utilise les [formats de chaîne de préfixe Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx). WebListener n’exige aucun format de chaîne de préfixe spécifique.
+
+  > [!WARNING]
+  > Les liaisons génériques de niveau supérieur (`http://*:80/` et `http://+:80`) ne doivent **pas** être utilisées. Les liaisons génériques de niveau supérieur peuvent exposer votre application à des failles de sécurité. Cela s’applique aux caractères génériques forts et faibles. Utilisez des noms d’hôte explicites plutôt que des caractères génériques. Une liaison générique de sous-domaine (par exemple, `*.mysub.com`) ne présente pas ce risque de sécurité si vous contrôlez le domaine parent en entier (par opposition à `*.com`, qui est vulnérable). Consultez la [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) pour plus d’informations.
 
   > [!NOTE]
   > Veillez à spécifier dans `UseUrls` les mêmes chaînes de préfixe que celles que vous préenregistrez sur le serveur. 
@@ -176,4 +179,4 @@ Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * [Exemple d’application pour cet article](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)
 * [Code source de WebListener](https://github.com/aspnet/HttpSysServer/)
-* [Hébergement d’applications WPF](../hosting.md)
+* [Hébergement](../hosting.md)

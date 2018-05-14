@@ -1,7 +1,7 @@
 ---
-title: Zones
+title: Zones dans ASP.NET Core
 author: rick-anderson
-description: Montre comment utiliser les zones.
+description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues).
 manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/areas
-ms.openlocfilehash: 1ade49de3f6c58edc4ea7b06bc593b3db797081c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 61527eb350b5aba9cb37b1de5acdeae1287bf073
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="areas"></a>Zones
+# <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
 Par [Dhananjay Kumar](https://twitter.com/debug_mode) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -45,7 +45,7 @@ Examinons un exemple pour illustrer la façon dont les zones sont créées et ut
 
 * Nom du projet
 
-  * Zones
+  * Zones (Areas)
 
     * Produits
 
@@ -55,7 +55,7 @@ Examinons un exemple pour illustrer la façon dont les zones sont créées et ut
 
         * ManageController.cs
 
-      * Vues
+      * Affichages
 
         * Accueil
 
@@ -71,7 +71,7 @@ Examinons un exemple pour illustrer la façon dont les zones sont créées et ut
 
         * HomeController.cs
 
-      * Vues
+      * Affichages
 
         * Accueil
 
@@ -125,7 +125,7 @@ Une fois que vous avez défini la hiérarchie des dossiers, vous devez indiquer 
    }
    ```
 
-Configurez une définition de route qui fonctionne avec vos zones nouvellement créées. L’article [Routage vers les actions de contrôleur](routing.md) explique en détails comment créer des définitions de route, notamment l’utilisation de routes conventionnelles par rapport aux routes d’attributs. Dans cet exemple, nous allons utiliser une route conventionnelle. Pour cela, ouvrez le fichier *Startup.cs* et modifiez-le en ajoutant la définition de route nommée `areaRoute` ci-dessous.
+Configurez une définition de route qui fonctionne avec vos zones nouvellement créées. L’article [Router vers les actions du contrôleur](routing.md) explique en détail comment créer des définitions de route, notamment l’utilisation de routes conventionnelles par rapport aux routes d’attributs. Dans cet exemple, nous allons utiliser une route conventionnelle. Pour cela, ouvrez le fichier *Startup.cs* et modifiez-le en ajoutant la définition de route nommée `areaRoute` ci-dessous.
 
 ```csharp
 ...

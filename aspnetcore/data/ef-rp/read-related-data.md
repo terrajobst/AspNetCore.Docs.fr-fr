@@ -1,7 +1,7 @@
 ---
-title: "Pages Razor avec EF Core - Lire des données associées - 6 sur 8"
+title: Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons lire et afficher des données associées, autrement dit des données chargées par Entity Framework dans des propriétés de navigation."
+description: Dans ce didacticiel, nous allons lire et afficher des données associées, autrement dit des données chargées par Entity Framework dans des propriétés de navigation.
 manager: wpickett
 ms.author: riande
 ms.date: 11/05/2017
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: ccb1e95ae2b43fd0a4c4b1ac9ed58a4d474ab3b6
-ms.sourcegitcommit: 18d1dc86770f2e272d93c7e1cddfc095c5995d9e
+ms.openlocfilehash: 55d9b6743c7d97dc9a354bae218b1fac69d7b6bc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="reading-related-data---ef-core-with-razor-pages-6-of-8"></a>Lire des données associées - EF Core avec Pages Razor (6 sur 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
 Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
 Dans ce didacticiel, nous allons lire et afficher des données associées. Les données associées sont des données qu’EF Core charge dans des propriétés de navigation.
 
@@ -37,22 +37,22 @@ EF Core peut charger des données associées dans les propriétés de navigation
 
 * [Chargement hâtif](https://docs.microsoft.com/ef/core/querying/related-data#eager-loading). Le chargement hâtif a lieu quand une requête pour un type d’entité charge également des entités associées. Quand l’entité est lue, ses données associées sont récupérées. Cela génère en général une requête de jointure unique qui récupère toutes les données nécessaires. EF Core émet plusieurs requêtes pour certains types de chargement hâtif. L’émission de requêtes multiples peut être plus efficace que ce n’était le cas pour certaines requêtes dans EF6 où une seule requête était émise. Le chargement hâtif est spécifié avec les méthodes `Include` et `ThenInclude`.
 
- ![Exemple de chargement hâtif](read-related-data/_static/eager-loading.png)
+  ![Exemple de chargement hâtif](read-related-data/_static/eager-loading.png)
  
- Le chargement hâtif envoie plusieurs requêtes quand une navigation dans la collection est incluse :
+  Le chargement hâtif envoie plusieurs requêtes quand une navigation dans la collection est incluse :
 
- * Une requête pour la requête principale 
- * Une requête pour chaque « périmètre » de collection dans l’arborescence de la charge.
+  * Une requête pour la requête principale 
+  * Une requête pour chaque « périmètre » de collection dans l’arborescence de la charge.
 
 * Requêtes distinctes avec `Load` : les données peuvent être récupérées dans des requêtes distinctes, et EF Core « corrige » les propriétés de navigation. Le terme « corrige » signifie qu’EF Core renseigne automatiquement les propriétés de navigation. Les requêtes distinctes avec `Load` s’apparentent plus au chargement explicite qu’au chargement hâtif.
 
- ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
+  ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
- Remarque : EF Core corrige automatiquement les propriétés de navigation vers d’autres entités qui étaient précédemment chargées dans l’instance de contexte. Même si les données pour une propriété de navigation ne sont *pas* explicitement incluses, la propriété peut toujours être renseignée si toutes ou une partie des entités associées ont été précédemment chargées.
+  Remarque : EF Core corrige automatiquement les propriétés de navigation vers d’autres entités qui étaient précédemment chargées dans l’instance de contexte. Même si les données pour une propriété de navigation ne sont *pas* explicitement incluses, la propriété peut toujours être renseignée si toutes ou une partie des entités associées ont été précédemment chargées.
 
 * [Chargement explicite](https://docs.microsoft.com/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
 
- ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
+  ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
 * [Chargement différé](https://docs.microsoft.com/ef/core/querying/related-data#lazy-loading). [EF Core ne prend pas en charge le chargement différé actuellement](https://github.com/aspnet/EntityFrameworkCore/issues/3797). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Lors du premier accès à une propriété de navigation, les données requises pour cette propriété de navigation sont récupérées automatiquement. Une requête est envoyée à la base de données chaque fois qu’une propriété de navigation est sollicitée pour la première fois.
 
@@ -76,9 +76,9 @@ Pour afficher le nom du département affecté dans une liste de cours
 * Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Exécutez la commande suivante :
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
+  ```
 
 La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
 
@@ -97,7 +97,7 @@ Exécutez l’application et sélectionnez le lien **Courses**. La colonne Depar
 
 Mettez à jour la méthode `OnGetAsync` avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod)]
 
 Le code précédent ajoute `AsNoTracking`. `AsNoTracking` améliore les performances, car les entités retournées ne sont pas suivies. Les entités ne sont pas suivies, car elles ne sont pas mises à jour dans le contexte actuel.
 
@@ -108,7 +108,7 @@ Mettez à jour *Views/Courses/Index.cshtml* avec le balisage en surbrillance sui
 Les modifications suivantes ont été apportées au code généré automatiquement :
 
 * Changement de l’en-tête : Index a été remplacé par Course.
-* Ajout d’une colonne **Number** qui affiche la valeur de propriété `CourseID`. Par défaut, les clés primaires ne sont pas générées automatiquement, car elles ne sont normalement pas significatives pour les utilisateurs finaux. Toutefois, dans le cas présent la clé primaire est significative.
+* Ajout d’une colonne **Number** qui affiche la valeur de la propriété `CourseID`. Par défaut, les clés primaires ne sont pas générées automatiquement, car elles ne sont normalement pas significatives pour les utilisateurs finaux. Toutefois, dans le cas présent la clé primaire est significative.
 * Modification de la colonne **Department** afin d’afficher le nom du département. Le code affiche la propriété `Name` de l’entité `Department` qui est chargée dans la propriété de navigation `Department` :
 
   ```html
@@ -124,17 +124,17 @@ Exécutez l’application et sélectionnez l’onglet **Courses** pour afficher 
 
 La méthode `OnGetAsync` charge les données associées avec la méthode `Include` :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/Index.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
 
-L’opérateur `Select` charge uniquement les données associées nécessaires. Pour les éléments uniques, comme `Department.Name`, il utilise une jointure interne SQL. Pour les collections, il utilise un autre accès à la base de données, mais c’est aussi le cas de l’opérateur .`Include` sur les collections.
+L’opérateur `Select` charge uniquement les données associées nécessaires. Pour les éléments uniques, comme `Department.Name`, il utilise une jointure interne SQL. Pour les collections, il utilise un autre accès à la base de données, mais c’est aussi le cas de l’opérateur `Include` sur les collections.
 
 Le code suivant charge les données associées avec la méthode `Select` :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
+[!code-csharp[](intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=4)]
 
 Voici le `CourseViewModel` :
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
 Pour obtenir un exemple complet, consultez [IndexSelect.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) et [IndexSelect.cshtml.cs](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
 
@@ -148,7 +148,7 @@ Dans cette section, nous allons créer la page Instructors.
 Cette page lit et affiche les données associées comme suit :
 
 * La liste des formateurs affiche des données associées de l’entité `OfficeAssignment` (Office dans l’image précédente). Il existe une relation un-à-zéro-ou-un entre les entités `Instructor` et `OfficeAssignment`. Le chargement hâtif est utilisé pour les entités `OfficeAssignment`. Le chargement hâtif est généralement plus efficace quand les données associées doivent être affichées. Ici, les affectations de bureau pour les formateurs sont affichées.
-* Quand l’utilisateur sélectionne un formateur (Harui dans l’image précédente), les entités `Course` associées sont affichées. Il existe une relation plusieurs-à-plusieurs entre les entités `Instructor` et `Course`. Nous utilisons le chargement hâtif pour les entités `Course` et leurs entités `Department` associées. Dans le cas présent, des requêtes distinctes peuvent être plus efficaces, car seuls les cours du formateur sélectionné sont nécessaires. Cet exemple montre comment utiliser le chargement hâtif pour des propriétés de navigation dans des entités qui se trouvent dans des propriétés de navigation.
+* Quand l’utilisateur sélectionne un formateur (Harui dans l’image précédente), les entités `Course` associées sont affichées. Il existe une relation plusieurs-à-plusieurs entre les entités `Instructor` et `Course`. Le chargement hâtif est utilisé pour les entités `Course` et leurs entités `Department` associées. Dans le cas présent, des requêtes distinctes peuvent être plus efficaces, car seuls les cours du formateur sélectionné sont nécessaires. Cet exemple montre comment utiliser le chargement hâtif pour des propriétés de navigation dans des entités qui se trouvent dans des propriétés de navigation.
 * Quand l’utilisateur sélectionne un cours (Chemistry dans l’image précédente), les données associées de l’entité `Enrollments` sont affichées. Dans l’image précédente, le nom et la note de l’étudiant sont affichés. Il existe une relation un-à-plusieurs entre les entités `Course` et `Enrollment`.
 
 ### <a name="create-a-view-model-for-the-instructor-index-view"></a>Créer un modèle d’affichage pour l’affichage d’index des formateurs
@@ -157,7 +157,7 @@ La page sur les formateurs affiche les données de trois tables différentes. No
 
 Dans le dossier *SchoolViewModels*, créez *InstructorIndexData.cs* avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
+[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
 ### <a name="scaffold-the-instructor-model"></a>Générer automatiquement le modèle Instructor
 
@@ -165,9 +165,9 @@ Dans le dossier *SchoolViewModels*, créez *InstructorIndexData.cs* avec le code
 * Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Exécutez la commande suivante :
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
+  ```
 
 La commande précédente génère automatiquement le modèle `Instructor`. Ouvrez le projet dans Visual Studio.
 
@@ -179,13 +179,13 @@ Exécutez l’application et accédez à la page des formateurs.
 
 Remplacez *Pages/Instructors/Index.cshtml.cs* par le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-99)]
 
 La méthode `OnGetAsync` accepte des données de route facultatives pour l’ID du formateur sélectionné.
 
 Examinez la requête dans la page *Pages/Instructors/Index.cshtml* :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
 
 La requête comporte deux Include :
 
@@ -201,7 +201,7 @@ Mettez à jour *Pages/Instructors/Index.cshtml* avec le balisage suivant :
 
 Le balisage précédent apporte les modifications suivantes :
 
-* Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int?}"`. `"{id:int?}"` est un modèle de route. Le modèle de route change les chaînes de requête entières dans l’URL en données de route. Par exemple, si vous cliquez sur le lien **Select** pour un formateur, une URL comme celle-ci est générée :
+* Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int?}"`. `"{id:int?}"` est un modèle de route. Le modèle de route change les chaînes de requête entières dans l’URL en données de route. Par exemple, si vous cliquez sur le lien **Select** pour un formateur avec seulement la directive `@page`, une URL comme celle-ci est générée :
 
     `http://localhost:1234/Instructors?id=2`
 
@@ -219,9 +219,9 @@ Le balisage précédent apporte les modifications suivantes :
   }
   ```
 
-* Ajout d’une colonne **Courses** qui affiche les cours dispensés par chaque formateur. Pour en savoir plus sur cette syntaxe razor, consultez [Explicit Line Transition with `@:`](xref:mvc/views/razor#explicit-line-transition-with-) (Transition de ligne explicite avec @:).
+* Ajout d’une colonne **Courses** qui affiche les cours dispensés par chaque formateur. Consultez [Conversion de ligne explicite avec `@:`](xref:mvc/views/razor#explicit-line-transition-with-) pour en savoir plus sur cette syntaxe razor.
 
-* Ajout de code qui ajoute dynamiquement `class="success"` à l’élément `tr` du formateur sélectionné. Cela définit une couleur d’arrière-plan pour la ligne sélectionnée à l’aide d’une classe d’amorçage.
+* Vous avez ajouté un code qui ajoute dynamiquement `class="success"` à l’élément `tr` du formateur sélectionné. Cela définit une couleur d’arrière-plan pour la ligne sélectionnée à l’aide d’une classe d’amorçage.
 
   ```html
   string selectedRow = "";
@@ -248,17 +248,17 @@ Cliquez sur le lien **Select**. Le style de ligne change.
 
 Mettez à jour la méthode `OnGetAsync` dans *Pages/Instructors/Index.cshtml.cs* avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_OnGetAsync&highlight=1,8,16-999)]
 
 Examinez la requête mise à jour :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ThenInclude)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ThenInclude)]
 
 La requête précédente ajoute les entités `Department`.
 
 Le code suivant s’exécute quand un formateur est sélectionné (`id != null`). Le formateur sélectionné est récupéré à partir de la liste des formateurs dans le modèle d’affichage. La propriété `Courses` du modèle d’affichage est chargée avec les entités `Course` de la propriété de navigation `CourseAssignments` de ce formateur.
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ID)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_ID)]
 
 La méthode `Where` retourne une collection. Dans la méthode `Where` précédente, une seule entité `Instructor` est retournée. La méthode `Single` convertit la collection en une seule entité `Instructor`. L’entité `Instructor` fournit l’accès à la propriété `CourseAssignments`. `CourseAssignments` fournit l’accès aux entités `Course` associées.
 
@@ -267,15 +267,15 @@ La méthode `Where` retourne une collection. Dans la méthode `Where` précéden
 La méthode `Single` est utilisée sur une collection quand la collection ne compte qu’un seul élément. La méthode `Single` lève une exception si la collection est vide ou s’il y a plusieurs éléments. Une alternative est `SingleOrDefault`, qui retourne une valeur par défaut (Null dans le cas présent) si la collection est vide. L’utilisation de `SingleOrDefault` sur une collection vide :
 
 * Génère une exception (à cause de la tentative de trouver une propriété `Courses` sur une référence Null).
-* Le message d’exception indiquerait moins clairement la cause du problème.
+* Le message d’exception indique moins clairement la cause du problème.
 
 Le code suivant renseigne la propriété `Enrollments` du modèle d’affichage quand un cours est sélectionné :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 
 Ajoutez le balisage suivant à la fin de la page Razor *Pages/Courses/Index.cshtml* :
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-)]
+[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 
 Le balisage précédent affiche une liste de cours associés à un formateur quand un formateur est sélectionné.
 
@@ -289,7 +289,7 @@ Dans cette section, nous allons mettre à jour l’application afin d’afficher
 
 Mettez à jour la requête dans la méthode `OnGetAsync` dans *Pages/Instructors/Index.cshtml.cs* avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
 Mettez à jour *Pages/Instructors/Index.cshtml*. Ajoutez le balisage suivant à la fin du fichier :
 
@@ -305,7 +305,7 @@ Actualisez la page et sélectionnez un formateur. Sélectionnez un cours pour af
 
 La méthode `Single` peut passer la condition `Where` au lieu d’appeler la méthode `Where` séparément :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
 
 L’approche précédente faisant appel à `Single` ne présente aucun avantage par rapport à l’utilisation de `Where`. Certains développeurs préfèrent le style d’approche `Single`.
 
@@ -313,13 +313,13 @@ L’approche précédente faisant appel à `Single` ne présente aucun avantage 
 
 Le code actuel spécifie le chargement hâtif pour `Enrollments` et `Students` :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
 Supposez que les utilisateurs souhaitent rarement voir les inscriptions à un cours. Dans ce cas, une optimisation consisterait à charger les données d’inscription uniquement si elles sont demandées. Dans cette section, la méthode `OnGetAsync` est mise à jour de façon à utiliser le chargement explicite de `Enrollments` et `Students`.
 
 Mettez à jour la méthode `OnGetAsync` avec le code suivant :
 
-[!code-csharp[Main](intro/samples/cu/Pages/Instructors/IndexXp.cshtml.cs?name=snippet_OnGetAsync&highlight=9-13,29-35)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexXp.cshtml.cs?name=snippet_OnGetAsync&highlight=9-13,29-35)]
 
 Le code précédent supprime les appels de méthode *ThenInclude* pour les données sur les inscriptions et les étudiants. Si un cours est sélectionné, le code en surbrillance récupère :
 

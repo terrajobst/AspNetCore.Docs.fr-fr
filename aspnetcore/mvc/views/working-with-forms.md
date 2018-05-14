@@ -1,7 +1,7 @@
 ---
 title: Tag Helpers dans les formulaires dans ASP.NET Core
 author: rick-anderson
-description: "Décrit les Tag Helpers intégrés, utilisés avec des formulaires."
+description: Décrit les Tag Helpers intégrés, utilisés avec des formulaires.
 manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
@@ -10,13 +10,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 805c2ba5b3a9669d5547e1c595883436eea0d11a
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 9155bd54bc211c8be0678065e857f73d8a139365
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="introduction-to-using-tag-helpers-in-forms-in-aspnet-core"></a>Présentation de l’utilisation des Tag Helpers dans les formulaires dans ASP.NET Core
+# <a name="tag-helpers-in-forms-in-aspnet-core"></a>Tag Helpers dans les formulaires dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Dave Paquette](https://twitter.com/Dave_Paquette) et [Jerrie Pelser](https://github.com/jerriep)
 
@@ -40,15 +40,15 @@ Le Tag Helper [Form](https://www.w3.org/TR/html401/interact/forms.html) :
 
 Aperçu :
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/RegisterFormOnly.cshtml)]
 
 Le Tag Helper Form ci-dessus génère le code HTML suivant :
 
 ```HTML
 <form method="post" action="/Demo/Register">
-     <!-- Input and Submit elements -->
-     <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
-    </form>
+    <!-- Input and Submit elements -->
+    <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>" />
+</form>
 ```
 
 Le runtime MVC génère la valeur de l’attribut `action` à partir des attributs `asp-controller` et `asp-action` du Tag Helper Form. Le Tag Helper Form génère également un [jeton de vérification de requête](https://docs.microsoft.com/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) masqué pour empêcher la falsification de requête intersites (quand il est utilisé avec l’attribut `[ValidateAntiForgeryToken]` dans la méthode d’action HTTP Post). Il est difficile de protéger un formulaire HTML contre une falsification de requête intersites. Le Tag Helper Form se charge de fournir ce service à votre place.
@@ -57,9 +57,9 @@ Le runtime MVC génère la valeur de l’attribut `action` à partir des attribu
 
 L’attribut Tag Helper `asp-route` peut également générer des balises pour l’attribut HTML `action`. Une application avec un [routage](../../fundamentals/routing.md) nommé `register` peut utiliser les balises suivantes pour la page d’inscription :
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterRoute.cshtml)]
 
-Un bon nombre des vues du dossier *Vues/Compte* (généré quand vous créez une application web avec des *comptes d’utilisateurs individuels*) contiennent l’attribut [asp-route-returnurl](https://docs.microsoft.com/aspnet/core/mvc/views/working-with-forms) :
+Un bon nombre des vues du dossier *Vues/Compte* (généré quand vous créez une application web avec des *comptes d’utilisateurs individuels*) contiennent l’attribut [asp-route-returnurl](xref:mvc/views/working-with-forms) :
 
 ```cshtml
 <form asp-controller="Account" asp-action="Login"
@@ -84,11 +84,11 @@ Tag Helper Input :
 
 * Génère les attributs HTML `id` et `name` pour le nom d’expression spécifié dans l’attribut `asp-for`. `asp-for="Property1.Property2"` équivaut à `m => m.Property1.Property2`. Nom de l’expression utilisée pour la valeur de l’attribut `asp-for`. Pour plus d’informations, consultez la section [Noms d’expressions](#expression-names).
 
-* Définit la valeur de l’attribut HTML `type` en fonction du type de modèle et des attributs d’[annotation de données](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) appliqués à la propriété de modèle
+* Définit la valeur de l’attribut HTML `type` en fonction du type de modèle et des attributs d’[annotation de données](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) appliqués à la propriété de modèle
 
 * Ne remplace pas la valeur de l’attribut HTML `type` quand une valeur est spécifiée
 
-* Génère des attributs de validation [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) à partir des attributs d’[annotation de données](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) appliqués aux propriétés de modèle
+* Génère des attributs de validation [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) à partir des attributs d’[annotation de données](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) appliqués aux propriétés de modèle
 
 * Chevauche des fonctionnalités HTML Helper avec `Html.TextBoxFor` et `Html.EditorFor`. Pour plus d’informations, consultez la section **Alternatives HTML Helper au Tag Helper Input**.
 
@@ -117,7 +117,7 @@ Le Tag Helper `Input` définit l’attribut HTML `type` en fonction du type .NET
 |Single, Double|type=”number”|
 
 
-Le tableau suivant présente des attributs d’[annotations de données](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) usuels que le Tag Helper Input mappe à des types d’entrée spécifiques (tous les attributs de validation ne sont pas listés) :
+Le tableau suivant présente des attributs d’[annotations de données](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.iattributeadapter) usuels que le Tag Helper Input mappe à des types d’entrée spécifiques (tous les attributs de validation ne sont pas listés) :
 
 
 |Attribut|Type d’entrée|
@@ -133,9 +133,9 @@ Le tableau suivant présente des attributs d’[annotations de données](https:/
 
 Aperçu :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/RegisterInput.cshtml)]
 
 Le code ci-dessus génère le code HTML suivant :
 
@@ -189,17 +189,22 @@ Génère ce qui suit :
 
 Avec les propriétés de collection, `asp-for="CollectionProperty[23].Member"` génère le même nom que `asp-for="CollectionProperty[i].Member"` quand `i` a la valeur `23`.
 
+Quand ASP.NET Core MVC calcule la valeur de `ModelExpression`, plusieurs sources sont inspectées, notamment `ModelState`. Prenez le cas de `<input type="text" asp-for="@Name" />`. L’attribut `value` calculé est la première valeur non-null des éléments suivants :
+
+* Entrée `ModelState` avec la clé « Name ».
+* Résultat de l’expression `Model.Name`.
+
 ### <a name="navigating-child-properties"></a>Navigation dans les propriétés enfants
 
 Vous pouvez également accéder aux propriétés enfants à l’aide du chemin de propriété du modèle de vue. Prenons le cas d’une classe de modèle plus complexe qui contient une propriété enfant `Address`.
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/AddressViewModel.cs?highlight=1,2,3,4&range=5-8)]
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs?highlight=8&range=5-13)]
 
 Dans la vue, nous effectuons une liaison à `Address.AddressLine1` :
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml?highlight=6)]
 
 Le code HTML suivant est généré pour `Address.AddressLine1` :
 
@@ -211,7 +216,7 @@ Le code HTML suivant est généré pour `Address.AddressLine1` :
 
 Dans cet exemple, un modèle contient un tableau de `Colors` :
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/Person.cs?highlight=3&range=5-10)]
 
 Méthode d’action :
 
@@ -225,23 +230,23 @@ public IActionResult Edit(int id, int colorIndex)
 
 Le code Razor suivant montre comment accéder à un élément `Color` spécifique :
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
 Modèle *Views/Shared/EditorTemplates/String.cshtml* :
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml)]
 
 Exemple utilisant `List<T>` :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]
 
 Le code Razor suivant montre comment effectuer une itération dans une collection :
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
 Modèle *Views/Shared/EditorTemplates/ToDoItem.cshtml* :
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml)]
 
 
 >[!NOTE]
@@ -264,9 +269,9 @@ Le Tag Helper `Textarea Tag Helper` est similaire au Tag Helper Input.
 
 Aperçu :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs)]
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml?highlight=4)]
 
 Le code HTML suivant est généré :
 
@@ -300,9 +305,9 @@ Le `Label Tag Helper` offre les avantages suivants sur un élément d’étiquet
 
 Aperçu :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/SimpleViewModel.cs)]
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml?highlight=4)]
 
 Le code HTML suivant est généré pour l’élément `<label>` :
 
@@ -370,9 +375,9 @@ Le `Validation Summary Tag Helper` est utilisé pour afficher un récapitulatif 
 
 Dans l’exemple suivant, le modèle de données est décoré avec les attributs `DataAnnotation`, ce qui génère des messages d’erreur de validation pour l’élément `<input>`.  Quand une erreur de validation se produit, le Tag Helper Validation affiche le message d’erreur :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml?highlight=4,6,8&range=1-10)]
 
 Code HTML généré (quand le modèle est valide) :
 
@@ -403,23 +408,23 @@ Code HTML généré (quand le modèle est valide) :
 
 Le `Select Tag Helper` `asp-for` spécifie le nom de propriété de modèle de l’élément [select](https://www.w3.org/wiki/HTML/Elements/select), et `asp-items` spécifie les éléments [option](https://www.w3.org/wiki/HTML/Elements/option).  Exemple :
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
+[!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 Aperçu :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryViewModel.cs)]
 
 La méthode `Index` initialise `CountryViewModel`, définit le pays sélectionné et le passe à la vue `Index`.
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
 La méthode HTTP POST `Index` affiche la sélection :
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=15-27)]
 
 Vue `Index` :
 
-[!code-cshtml[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
+[!code-cshtml[](working-with-forms/sample/final/Views/Home/Index.cshtml?highlight=4)]
 
 Qui génère le code HTML suivant (avec « CA » sélectionné) :
 
@@ -440,7 +445,7 @@ Qui génère le code HTML suivant (avec « CA » sélectionné) :
 
 La valeur de l’attribut `asp-for` est un cas particulier et ne nécessite pas de préfixe `Model`, contrairement aux autres attributs du Tag Helper (par exemple `asp-items`)
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
+[!code-HTML[](working-with-forms/sample/final/Views/Home/Index.cshtml?range=4)]
 
 ### <a name="enum-binding"></a>Liaison d’enum
 
@@ -448,17 +453,17 @@ Il est souvent pratique d’utiliser `<select>` avec une propriété `enum` et d
 
 Aperçu :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs?range=3-7)]
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnum.cs)]
 
 La méthode `GetEnumSelectList` génère un objet `SelectList` pour un enum.
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
 
 Vous pouvez décorer votre liste d’énumérateurs avec l’attribut `Display` pour obtenir une IU plus riche :
 
-[!code-csharp[Main](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
+[!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 
 Le code HTML suivant est généré :
 
@@ -484,7 +489,7 @@ L’élément HTML [\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup)
 
 `CountryViewModelGroup` regroupe les éléments `SelectListItem` dans les groupes « North America » et « Europe » :
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs?highlight=5,6,14,20,26,32,38,44&range=6-56)]
 
 Les deux groupes sont affichés ci-dessous :
 
@@ -515,11 +520,11 @@ Code HTML généré :
 
 Le Tag Helper Select génère automatiquement l’attribut [multiple = "multiple"](http://w3c.github.io/html-reference/select.html) si la propriété spécifiée dans l’attribut `asp-for` est `IEnumerable`. Par exemple, le modèle suivant :
 
-[!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
+[!code-csharp[](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 
 Avec la vue suivante :
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml?highlight=4)]
 
 Génère le code HTML suivant :
 
@@ -543,17 +548,17 @@ Génère le code HTML suivant :
 
 Si vous constatez que l’option « not specified » est utilisée dans plusieurs pages, vous pouvez créer un modèle pour éviter de répéter le code HTML :
 
-[!code-HTML[Main](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
+[!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml?highlight=5)]
 
 Modèle *Views/Shared/EditorTemplates/CountryViewModel.cshtml* :
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
 L’ajout d’éléments HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) ne se limite pas au cas *No selection*. Par exemple, la vue et la méthode d’action suivante génèrent du code HTML similaire au code ci-dessus :
 
-[!code-csharp[Main](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
+[!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?range=114-119)]
 
-[!code-HTML[Main](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
+[!code-HTML[](working-with-forms/sample/final/Views/Home/IndexOption.cshtml)]
 
 L’élément `<option>` approprié est sélectionné (il contient l’attribut `selected="selected"`) en fonction de la valeur actuelle de `Country`.
 
@@ -572,10 +577,10 @@ L’élément `<option>` approprié est sélectionné (il contient l’attribut 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)
 * [Élément HTML Form](https://www.w3.org/TR/html401/interact/forms.html)
 * [Jeton de vérification de requête](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)
 * [Liaison de données](xref:mvc/models/model-binding)
 * [Validation de modèle](xref:mvc/models/validation)
 * [IAttributeAdapter, interface](/dotnet/api/Microsoft.AspNetCore.Mvc.DataAnnotations.IAttributeAdapter)
-* [Extraits de code pour ce document](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/forms/sample)
+* [Extraits de code pour ce document](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/working-with-forms/sample/final)

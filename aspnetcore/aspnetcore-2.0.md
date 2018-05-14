@@ -1,7 +1,7 @@
 ---
-title: "Nouveautés d’ASP.NET Core 2.0"
+title: Nouveautés d’ASP.NET Core 2.0
 author: rick-anderson
-description: "Nouveautés d’ASP.NET Core 2.0"
+description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.0.
 manager: wpickett
 ms.author: riande
 ms.date: 07/10/2017
@@ -9,11 +9,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: aspnetcore-2.0
-ms.openlocfilehash: 35d57abd07e83cd5b190572962fbf43aef03a534
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: b4ac500888ce134e8f4f0d4bf16efa4e95f24c15
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
 
@@ -38,7 +38,7 @@ Pour plus d’informations, consultez [Métapackage Microsoft.AspNetCore.All pou
 
 Les applications qui utilisent le métapackage `Microsoft.AspNetCore.All` tirent automatiquement parti du nouveau magasin Runtime de .NET Core. Ce magasin contient toutes les ressources Runtime nécessaires à l’exécution des applications ASP.NET Core 2.0. Quand vous utilisez le métapackage `Microsoft.AspNetCore.All`, aucune des ressources des packages NuGet ASP.NET Core référencés ne sont déployées avec l’application, car elles se trouvent déjà sur le système cible. Les ressources dans le magasin Runtime sont également précompilées afin d’améliorer la vitesse de démarrage des applications.
 
-Pour plus d’informations, consultez [Magasin de packages Runtime](https://docs.microsoft.com/dotnet/core/deploying/runtime-store)
+Pour plus d’informations, consultez [Magasin de packages Runtime](/dotnet/core/deploying/runtime-store)
 
 ## <a name="net-standard-20"></a>.NET Standard 2.0
 
@@ -54,13 +54,13 @@ Pour plus d’informations sur l’état de la documentation planifiée, consult
 
 ## <a name="logging-update"></a>Mise à jour de la journalisation
 
-Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendances par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs*. De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
+Dans ASP.NET Core 2.0, la journalisation est incorporée dans le système d’injection de dépendance par défaut. Vous pouvez ajouter des fournisseurs et configurer le filtrage dans le fichier *Program.cs* plutôt que dans le fichier *Startup.cs*. De plus, le `ILoggerFactory` par défaut prend en charge le filtrage d’une manière qui vous permet d’adopter une approche flexible pour le filtrage entre fournisseurs et le filtrage propre au fournisseur.
 
 Pour plus d’informations, consultez [Introduction à la journalisation](xref:fundamentals/logging/index).
 
 ## <a name="authentication-update"></a>Mise à jour de l’authentification
 
-Un nouveau modèle d’authentification simplifie la configuration de l’authentification pour une application à l’aide de l’injection de dépendances.
+Un nouveau modèle d’authentification simplifie la configuration de l’authentification pour une application à l’aide de l’injection de dépendance.
 
 De nouveaux modèles sont disponibles pour configurer l’authentification pour les applications web et les API web à l’aide de [Azure AD B2C] (https://azure.microsoft.com/services/active-directory-b2c/).
 
@@ -73,12 +73,12 @@ Nous avons simplifié la génération d’API web sécurisées à l’aide d’I
 Pour plus d’informations sur les modifications apportées à l’authentification dans la version 2.0, consultez les ressources suivantes :
 
 * [Account confirmation and password recovery in ASP.NET Core (Confirmation de compte et récupération de mot de passe dans ASP.NET Core)](xref:security/authentication/accconfirm)
-* [Enabling QR Code generation for authenticator apps in ASP.NET Core (Activation de la génération de code QR pour les applications d’authentification dans ASP.NET Core)](xref:security/authentication/identity-enable-qrcodes)
-* [Migrating Authentication and Identity to ASP.NET Core 2.0 (Migration de l’authentification et de l’identité vers ASP.NET Core 2.0)](xref:migration/1x-to-2x/identity-2x)
+* [Activer la génération de code QR pour les applications d’authentification dans ASP.NET Core](xref:security/authentication/identity-enable-qrcodes)
+* [Migrer l’authentification et l’identité vers ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="spa-templates"></a>Modèles SPA
 
-Des modèles de projet SPA (Single Page Application) pour Angular, Aurelia, Knockout.js, React.js et React.js avec Redux sont disponibles. Le modèle Angular a été mis à jour vers Angular 4. Les modèles Angular et React sont disponibles par défaut. Pour plus d’informations sur la façon d’obtenir les autres modèles, consultez [Création d’un projet SPA](xref:client-side/spa-services#creating-a-new-project). Pour plus d’informations sur la façon de générer un projet SPA dans ASP.NET Core, consultez [Utilisation de JavaScriptServices pour créer des applications web monopages](xref:client-side/spa-services).
+Des modèles de projet SPA (Single Page Application) pour Angular, Aurelia, Knockout.js, React.js et React.js avec Redux sont disponibles. Le modèle Angular a été mis à jour vers Angular 4. Les modèles Angular et React sont disponibles par défaut. Pour plus d’informations sur l’obtention des autres modèles, consultez [Créer un projet SPA](xref:client-side/spa-services#creating-a-new-project). Pour plus d’informations sur la génération d’un projet SPA dans ASP.NET Core, consultez [Utiliser JavaScriptServices pour créer des applications web monopages](xref:client-side/spa-services).
 
 ## <a name="kestrel-improvements"></a>Améliorations apportées à Kestrel
 
@@ -122,11 +122,13 @@ Pour plus d’informations sur l’état de la documentation planifiée, consult
 
 ASP.NET Core a toujours facilité l’encodage HTML du contenu par défaut, mais la nouvelle version aide encore davantage à prévenir les attaques par falsification de requête intersites (XSRF). ASP.NET Core émet désormais des jetons anti-contrefaçon par défaut, et les valide sur les pages et les actions POST de formulaire sans configuration supplémentaire.
 
-Pour plus d’informations, consultez [Prévention des attaques par falsification de requête intersites (XSRF/CSRF) dans ASP.NET Core](xref:security/anti-request-forgery).
+Pour plus d’informations, consultez [Empêcher les attaques par falsification de requête intersites (XSRF/CSRF)](xref:security/anti-request-forgery).
 
 ## <a name="automatic-precompilation"></a>Précompilation automatique
 
 La précompilation de vue Razor est activée par défaut pendant la publication, ce qui réduit la taille de sortie de publication et la durée de démarrage de l’application.
+
+Pour plus d’informations, consultez [Précompilation et compilation de vues Razor dans ASP.NET Core](xref:mvc/views/view-compilation).
 
 ## <a name="razor-support-for-c-71"></a>Prise en charge de Razor pour C# 7.1
 
@@ -142,17 +144,17 @@ Pour plus d’informations sur l’état des fonctionnalités de C# 7.1, consult
 
 * [Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core](xref:host-and-deploy/visual-studio-publish-profiles)
 * [Gestion des clés](xref:security/data-protection/implementation/key-management)
-* [Configuration de l’authentification Facebook](xref:security/authentication/facebook-logins)
-* [Configuration de l’authentification Twitter](xref:security/authentication/twitter-logins)
-* [Configuration de l’authentification Google](xref:security/authentication/google-logins)
-* [Configuration de l’authentification de compte Microsoft](xref:security/authentication/microsoft-logins)
+* [Configurer l’authentification Facebook](xref:security/authentication/facebook-logins)
+* [Configurer l’authentification Twitter](xref:security/authentication/twitter-logins)
+* [Configurer l’authentification Google](xref:security/authentication/google-logins)
+* [Configurer l’authentification de compte Microsoft](xref:security/authentication/microsoft-logins)
 
 ## <a name="migration-guidance"></a>Conseils de migration
 
 Pour obtenir des conseils sur la migration d’applications ASP.NET Core 1.x vers ASP.NET Core 2.0, consultez les ressources suivantes :
 
-* [Migration d’ASP.NET 1.x vers ASP.NET Core 2.0](xref:migration/1x-to-2x/index)
-* [Migrating Authentication and Identity to ASP.NET Core 2.0 (Migration de l’authentification et de l’identité vers ASP.NET Core 2.0)](xref:migration/1x-to-2x/identity-2x)
+* [Migrer d’ASP.NET Core 1.x vers ASP.NET Core 2.0](xref:migration/1x-to-2x/index)
+* [Migrer l’authentification et l’identité vers ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="additional-information"></a>Informations supplémentaires
 

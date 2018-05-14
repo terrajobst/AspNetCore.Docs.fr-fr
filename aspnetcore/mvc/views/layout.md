@@ -1,7 +1,7 @@
 ---
-title: Mise en page
+title: Disposition dans ASP.NET Core
 author: ardalis
-description: ''
+description: Apprenez à utiliser des dispositions communes, à partager des directives et à exécuter le code commun avant d’afficher les vues dans une application ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/layout
-ms.openlocfilehash: 3e9e5949d8940a33508e24f0da015b49b7ba468c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8e89c8e6cf18c47abb6bf432cdc6bb6b97e8aeb0
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="layout"></a>Mise en page
+# <a name="layout-in-aspnet-core"></a>Disposition dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
@@ -37,13 +37,13 @@ Cette disposition définit un modèle général pour les vues dans l’applicati
 
 Exemple `_Layout.cshtml` :
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
+[!code-html[](../../common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=42,66)]
 
 ## <a name="specifying-a-layout"></a>Spécification d’une disposition
 
 Les vues Razor ont une propriété `Layout`. Chaque vue spécifie une disposition en définissant cette propriété :
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
 La disposition spécifiée peut utiliser un chemin complet (par exemple, `/Views/Shared/_Layout.cshtml`) ou un nom partiel (par exemple, `_Layout`). Quand un nom partiel est fourni, le moteur de vue Razor recherche le fichier de disposition en suivant son processus de détection habituel. Il recherche d’abord le dossier associé au contrôleur, puis le dossier `Shared`. Ce processus de détection est le même que celui utilisé pour détecter les [vues partielles](partial.md).
 
@@ -99,7 +99,7 @@ Le fichier ne prend pas en charge les autres fonctionnalités Razor, telles que 
 
 Exemple de fichier `_ViewImports.cshtml` :
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
 Le fichier `_ViewImports.cshtml` pour une application ASP.NET Core MVC est généralement créé dans le dossier `Views`. Un fichier `_ViewImports.cshtml` peut être créé dans un autre dossier, auquel cas il s’applique uniquement aux vues contenues dans ce dossier et ses sous-dossiers. Les fichiers `_ViewImports` sont traités d’abord au niveau racine, puis pour chaque dossier jusqu’à l’emplacement de la vue proprement dite. Les paramètres spécifiés au niveau racine peuvent dont être remplacés par les paramètres définis au niveau du dossier.
 
@@ -127,7 +127,7 @@ Si vous avez du code à exécuter avant chaque vue, vous devez l’ajouter au fi
 
 Exemple de fichier `_ViewStart.cshtml` :
 
-[!code-html[Main](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
+[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
 Le fichier ci-dessus spécifie que toutes les vues doivent utiliser la disposition `_Layout.cshtml`.
 
