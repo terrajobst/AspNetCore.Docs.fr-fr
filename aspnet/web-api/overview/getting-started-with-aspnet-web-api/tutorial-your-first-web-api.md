@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-title: "Démarrer avec ASP.NET Web API 2 (c#)"
+title: Démarrer avec ASP.NET Web API 2 (c#)
 author: MikeWasson
-description: "HTTP n’est pas simplement pour traiter des pages web. Il est également une plateforme puissante pour la création d’API qui exposent des services et des données. HTTP est simple et flexible et ubiq..."
+description: HTTP n’est pas simplement pour traiter des pages web. Il est également une plateforme puissante pour la création d’API qui exposent des services et des données. HTTP est simple et flexible et ubiq...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/28/2017

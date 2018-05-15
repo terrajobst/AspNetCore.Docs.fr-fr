@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/releases/index
-title: "Libère de l’API Web ASP.NET | Documents Microsoft"
+title: Libère de l’API Web ASP.NET | Documents Microsoft
 author: rick-anderson
-description: "Quelles sont les nouveautés dans les API Web récentes mises à jour."
+description: Quelles sont les nouveautés dans les API Web récentes mises à jour.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/13/2014

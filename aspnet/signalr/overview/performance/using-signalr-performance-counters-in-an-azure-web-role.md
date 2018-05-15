@@ -1,9 +1,9 @@
 ---
 uid: signalr/overview/performance/using-signalr-performance-counters-in-an-azure-web-role
-title: "À l’aide des compteurs de performance SignalR dans un rôle Web Azure | Documents Microsoft"
+title: À l’aide des compteurs de performance SignalR dans un rôle Web Azure | Documents Microsoft
 author: guardrex
-description: "Comment installer et utiliser des compteurs de performance SignalR dans un rôle Web Azure."
-keywords: "Compteur ASP.NET,SignalR,performance, rôle web azure"
+description: Comment installer et utiliser des compteurs de performance SignalR dans un rôle Web Azure.
+keywords: Compteur ASP.NET,SignalR,performance, rôle web azure
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/11/2017

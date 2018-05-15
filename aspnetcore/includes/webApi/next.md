@@ -1,7 +1,13 @@
-## <a name="next-steps"></a>Étapes suivantes
+## <a name="next-steps"></a><span data-ttu-id="4fdbf-101">Étapes suivantes</span><span class="sxs-lookup"><span data-stu-id="4fdbf-101">Next steps</span></span>
 
-* [Pages d’aide sur l’API web ASP.NET Core avec Swagger](xref:tutorials/web-api-help-pages-using-swagger)
-* [Routage vers les actions du contrôleur](xref:mvc/controllers/routing)
-* Pour plus d’informations sur le déploiement d’une API, notamment sur Azure App Service, consultez [Héberger et déployer](xref:host-and-deploy/index).
-* [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/sample). Consultez [Guide pratique pour télécharger](xref:tutorials/index#how-to-download-a-sample).
-* [Postman](https://www.getpostman.com/)
+* <span data-ttu-id="4fdbf-102">Pour plus d’informations sur l’utilisation d’une base de données persistante, consultez :</span><span class="sxs-lookup"><span data-stu-id="4fdbf-102">For information on using a persistent database, see:</span></span>
+
+  * [<span data-ttu-id="4fdbf-103">Créer une application web Razor Pages avec ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4fdbf-103">Create a Razor Pages web app with ASP.NET Core</span></span>](xref:tutorials/index)
+  * [<span data-ttu-id="4fdbf-104">Utiliser des données dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4fdbf-104">Work with data in ASP.NET Core</span></span>](xref:data/index)
+
+* [<span data-ttu-id="4fdbf-105">Pages d’aide sur l’API web ASP.NET Core avec Swagger</span><span class="sxs-lookup"><span data-stu-id="4fdbf-105">ASP.NET Core Web API help pages using Swagger</span></span>](xref:tutorials/web-api-help-pages-using-swagger)
+* [<span data-ttu-id="4fdbf-106">Routage vers les actions du contrôleur</span><span class="sxs-lookup"><span data-stu-id="4fdbf-106">Routing to controller actions</span></span>](xref:mvc/controllers/routing)
+* [<span data-ttu-id="4fdbf-107">Créer des API web avec ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4fdbf-107">Build web APIs with ASP.NET Core</span></span>](xref:web-api/index)
+* [<span data-ttu-id="4fdbf-108">Types de retour des actions du contrôleur</span><span class="sxs-lookup"><span data-stu-id="4fdbf-108">Controller action return types</span></span>](xref:web-api/action-return-types)
+* <span data-ttu-id="4fdbf-109">Pour plus d’informations sur le déploiement d’une API, notamment sur Azure App Service, consultez [Héberger et déployer](xref:host-and-deploy/index).</span><span class="sxs-lookup"><span data-stu-id="4fdbf-109">For information about deploying an API, including to Azure App Service, see [Host and deploy](xref:host-and-deploy/index).</span></span>
+* <span data-ttu-id="4fdbf-110">[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/samples).</span><span class="sxs-lookup"><span data-stu-id="4fdbf-110">[View or download sample code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/samples).</span></span> <span data-ttu-id="4fdbf-111">Consultez [Guide pratique pour télécharger](xref:tutorials/index#how-to-download-a-sample).</span><span class="sxs-lookup"><span data-stu-id="4fdbf-111">See [how to download](xref:tutorials/index#how-to-download-a-sample).</span></span>

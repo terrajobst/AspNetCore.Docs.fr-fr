@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/10-working-with-video
-title: "Affichant la vidéo dans ASP.NET Web Pages (Razor) Site | Documents Microsoft"
+title: Affichant la vidéo dans ASP.NET Web Pages (Razor) Site | Documents Microsoft
 author: tfitzmac
-description: "Ce chapitre explique comment afficher la vidéo dans un ASP.NET Web Pages avec la page de syntaxe Razor."
+description: Ce chapitre explique comment afficher la vidéo dans un ASP.NET Web Pages avec la page de syntaxe Razor.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
