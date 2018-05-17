@@ -1,6 +1,6 @@
 ---
 title: Implémentations de serveurs web dans ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. Découvrez comment choisir un serveur et quand utiliser un serveur proxy inverse.
 manager: wpickett
 ms.author: tdykstra
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/index
-ms.openlocfilehash: cdf6fafce644f424d3cd58395e1fa91e5e6fa2cb
-ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
+ms.openlocfilehash: 38af9d0206d66ac7fd2dc13a5a8245e8f66df41e
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -24,13 +24,12 @@ Une application ASP.NET Core s’exécute avec une implémentation de serveur HT
 
 ASP.NET Core est livré avec deux implémentations de serveurs :
 
-* [Kestrel](xref:fundamentals/servers/kestrel) est un serveur HTTP multiplateforme basé sur [libuv](https://github.com/libuv/libuv), une bibliothèque d’E/S asynchrones multiplateforme.
-
+* [Kestrel](xref:fundamentals/servers/kestrel) est le serveur HTTP multiplateforme par défaut pour ASP.NET Core.
 * [HTTP.sys](xref:fundamentals/servers/httpsys) est un serveur HTTP exclusivement Windows basé sur le [pilote de noyau HTTP.Sys et l’API Serveur HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx). (HTTP.sys est appelé [WebListener](xref:fundamentals/servers/weblistener) dans ASP.NET Core 1.x.)
 
 ## <a name="kestrel"></a>Kestrel
 
-Kestrel est le serveur web inclus par défaut dans les modèles de nouveaux projets ASP.NET Core. 
+Kestrel est le serveur web par défaut inclus dans les modèles de projet ASP.NET Core.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 

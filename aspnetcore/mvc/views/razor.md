@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/razor
-ms.openlocfilehash: 9c96ea34071bf3009f1ec53ed9af9206439aa229
-ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
+ms.openlocfilehash: 224c855b355b8ecde36377bba6966edec251af6a
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -545,6 +545,7 @@ Il existe trois directives spécifiques aux [Tag Helpers](xref:mvc/views/tag-hel
 ### <a name="razor-keywords"></a>Mots clés Razor
 
 * page (nécessite ASP.NET Core 2.0 ou version ultérieure)
+* namespace
 * fonctions
 * hérite
 * modèle
@@ -574,7 +575,6 @@ Les mots clés Razor C# doivent être précédés d’une double séquence d’�
 
 ### <a name="reserved-keywords-not-used-by-razor"></a>Mots clés réservés non utilisés par Razor
 
-* namespace
 * class
 
 ## <a name="viewing-the-razor-c-class-generated-for-a-view"></a>Affichage de la classe C# Razor générée pour une vue

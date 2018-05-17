@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity
-ms.openlocfilehash: cf63766dc4ae94d784190d6dbc7b5beb57342f42
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 4eebda171f02c46ff831adf2798a025cd094051d
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
@@ -59,7 +59,8 @@ Dans cette rubrique, vous allez apprendre à utiliser ASP.NET Core Identity pour
 
    Les services d’Identity sont ajoutés à l’application dans le `ConfigureServices` méthode dans la `Startup` classe :
 
-   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
    Ces services sont accessibles à l’application via [injection de dépendance](xref:fundamentals/dependency-injection).
@@ -68,7 +69,8 @@ Dans cette rubrique, vous allez apprendre à utiliser ASP.NET Core Identity pour
 
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configure&highlight=17)]
 
-   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,13-33)]
 
    Ces services sont accessibles à l’application via [injection de dépendance](xref:fundamentals/dependency-injection).
@@ -77,7 +79,8 @@ Dans cette rubrique, vous allez apprendre à utiliser ASP.NET Core Identity pour
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configure&highlight=21)]
 
-   * * *
+   ---
+
    Pour plus d’informations sur le démarrage de l’application des processus, consultez [démarrage de l’Application](xref:fundamentals/startup).
 
 3. Créez un utilisateur.
@@ -126,13 +129,16 @@ Dans cette rubrique, vous allez apprendre à utiliser ASP.NET Core Identity pour
 
    Identité a certains comportements par défaut qui peuvent être substituées dans une classe de démarrage de l’application. `IdentityOptions` inutile d’être configuré à l’aide de comportements par défaut. Le code suivant définit plusieurs options de force du mot de passe :
 
-   #### <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+   # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+
    [!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=7-9,11-28,30-42)]
 
-   #### <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+   # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Startup.cs?name=snippet_configureservices&highlight=13-33)]
 
-   * * *
+   ---
+
    Pour plus d’informations sur la façon de configurer Identity, consultez [configurer Identity](xref:security/authentication/identity-configuration).
 
    Vous pouvez également configurer le type de données de la clé primaire, consultez [type de données de clés primaires de configurer Identity](xref:security/authentication/identity-primary-key-configuration).

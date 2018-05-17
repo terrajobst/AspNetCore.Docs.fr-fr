@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: d9c7c1c3b2c052ba11f9ea5eaaa424d69bc43eb2
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: c40209e3b3f2b5bf28450bb2a88cbe40e9e23230
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Travailler avec un cache distribué dans ASP.NET Core
 
@@ -53,11 +53,11 @@ Prend une clé de type string et récupère un élément mis en cache sous la fo
 
 Ajoute un élément (comme `byte[]`) dans le cache à l’aide d’une clé de type string.
 
-**Refresh, RefreshAsync**
+**Actualisation, RefreshAsync**
 
 Actualise un élément dans le cache en fonction de sa clé, la réinitialisation de son délai d’expiration est décalée (si défini).
 
-**Remove, RemoveAsync**
+**Supprimer, RemoveAsync**
 
 Supprime une entrée de cache en fonction de sa clé.
 
@@ -133,13 +133,13 @@ Comme toutes les implémentations de cache, votre application doit obtenir et d�
 
 ## <a name="recommendations"></a>Recommandations
 
-Lorsque vous décidez quelle implémentation de `IDistributedCache` est adaptée à votre application, choisissez entre Redis et SQL Server en fonction de votre infrastructure existante et votre environnement, de vos exigences de performances et l'expérience de votre équipe. Si votre équipe est plus familière avec Redis, Redis constitue un excellent choix. Si votre équipe préfère SQL Server, vous pouvez être certain qu’elle appréciera également l’implémentation SQL Server. Notez qu’une solution de mise en cache traditionnelle stocke les données en mémoire ce qui permet la récupération rapide des données. Vous devez stocker les données couramment utilisées dans un cache et stocker la totalité des données dans un magasin persistant de back-end comme SQL Server ou le Stockage Azure. Un cache redis est une solution de mise en cache qui vous donne un débit élevé et une faible latence par rapport au Cache SQL.
+Lorsque vous décidez quelle implémentation de `IDistributedCache` est adaptée à votre application, choisissez entre Redis et SQL Server en fonction de votre infrastructure existante et votre environnement, de vos exigences de performances et l'expérience de votre équipe. Si votre équipe est plus familière avec Redis, Redis constitue un excellent choix. Si votre équipe préfère SQL Server, vous pouvez être certain qu’elle appréciera également l’implémentation SQL Server. Notez qu’une solution de mise en cache traditionnelle stocke les données en mémoire qui permet la récupération rapide des données. Vous devez stocker les données couramment utilisées dans un cache et stocker la totalité des données dans un magasin persistant de back-end comme SQL Server ou le Stockage Azure. Un cache redis est une solution de mise en cache qui vous donne un débit élevé et une faible latence par rapport au Cache SQL.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Cache dans Azure redis](https://azure.microsoft.com/documentation/services/redis-cache/)
 * [Base de données SQL Azure](https://azure.microsoft.com/documentation/services/sql-database/)
-* [Cache en mémoire](xref:performance/caching/memory)
+* [Mettre en cache en mémoire](xref:performance/caching/memory)
 * [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
 * [Mise en cache des réponses](xref:performance/caching/response)
 * [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api
-title: "Modèle de Validation dans ASP.NET Web API | Documents Microsoft"
+title: Modèle de Validation dans ASP.NET Web API | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/20/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 45b519af4073b62c8be1ca8951e44d6cf3cbe075
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 409a91eceb8baa48a7dded1b850d59a27cec2c60
+ms.sourcegitcommit: 5ae0c125ee3bbd324edef3818d1d160f4dd84602
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/17/2018
 ---
 <a name="model-validation-in-aspnet-web-api"></a>Validation de modèle dans l’API Web ASP.NET
 ====================
@@ -26,7 +26,7 @@ Lorsqu’un client envoie des données à votre API web, vous souhaitez souvent 
 
 ## <a name="data-annotations"></a>Annotations de données
 
-Dans ASP.NET Web API, vous pouvez utiliser des attributs à partir de la [System.ComponentModel.DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx) espace de noms pour définir des règles de validation pour les propriétés de votre modèle. Considérez le modèle suivant :
+Dans ASP.NET Web API, vous pouvez utiliser des attributs à partir de la [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations) espace de noms pour définir des règles de validation pour les propriétés de votre modèle. Considérez le modèle suivant :
 
 [!code-csharp[Main](model-validation-in-aspnet-web-api/samples/sample1.cs)]
 
@@ -54,11 +54,11 @@ L’état du modèle est valide, car le zéro est une valeur valide pour ces pro
 
 [!code-csharp[Main](model-validation-in-aspnet-web-api/samples/sample5.cs?highlight=1-2)]
 
-**« Trop de validation »**: un client peut également envoyer *plus* données que prévu. Exemple :
+**« Trop de validation »**: un client peut également envoyer *plus* données que prévu. Par exemple :
 
 [!code-json[Main](model-validation-in-aspnet-web-api/samples/sample6.json)]
 
-Ici, l’objet JSON inclut une propriété (« couleur ») qui n’existe pas dans la `Product` modèle. Dans ce cas, le module de formatage JSON ignore simplement cette valeur. (Le formateur XML fait de même.) Validation excessive entraîne des problèmes si votre modèle comporte des propriétés que vous souhaitez être en lecture seule. Exemple :
+Ici, l’objet JSON inclut une propriété (« couleur ») qui n’existe pas dans la `Product` modèle. Dans ce cas, le module de formatage JSON ignore simplement cette valeur. (Le formateur XML fait de même.) Validation excessive entraîne des problèmes si votre modèle comporte des propriétés que vous souhaitez être en lecture seule. Par exemple :
 
 [!code-csharp[Main](model-validation-in-aspnet-web-api/samples/sample7.cs)]
 

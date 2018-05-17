@@ -1,6 +1,6 @@
 ---
 title: Héberger et déployer ASP.NET Core
-author: tdykstra
+author: rick-anderson
 description: Découvrez comment configurer des environnements d’hébergement et déployer des applications ASP.NET Core.
 manager: wpickett
 ms.author: riande
@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/index
-ms.openlocfilehash: 515589e38a1ba121d365427b5fddac1b0e845b1f
-ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
+ms.openlocfilehash: 6364f54ede43b8eec070166a75b4552d896644f3
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 

@@ -10,8 +10,6 @@ Ce didacticiel crée l’API suivante :
 |PUT /api/todo/{id} | Mettre à jour un élément existant &nbsp; | Tâche | Aucun. |
 |DELETE /api/todo/{id} &nbsp; &nbsp; | Supprimer un élément &nbsp; &nbsp; | Aucun. | Aucun.|
 
-<br>
-
 Le diagramme suivant illustre la conception de base de l’application.
 
 ![Le client, représenté par une zone située à gauche, soumet une requête et reçoit une réponse de l’application, représentée par une zone dessinée sur la droite. Dans la zone de l’application, trois zones représentent le contrôleur, le modèle et la couche d’accès aux données. La requête provient du contrôleur de l’application, et les opérations de lecture/écriture se produisent entre le contrôleur et la couche d’accès aux données. Le modèle est sérialisé et retourné au client dans la réponse.](../../tutorials/first-web-api/_static/architecture.png)

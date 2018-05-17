@@ -107,7 +107,7 @@ Le filtre étendra **ActionFilterAttributeClass** et remplacez **OnActionExecuti
 
 Cette solution de magasin de musique a une nouvelle table de modèle de données pour l’enregistrement de site, **ActionLog**, avec les champs suivants : nom du contrôleur qui a reçu une demande, l’appelées action, l’adresse IP du Client et l’horodatage.
 
-![Modèle de données. Table ActionLog. ] (aspnet-mvc-4-custom-action-filters/_static/image1.png "Modèle de données. Table ActionLog.")
+![Modèle de données. Table ActionLog. ](aspnet-mvc-4-custom-action-filters/_static/image1.png "Modèle de données. Table ActionLog.")
 
 *Modèle de données - ActionLog table*
 
