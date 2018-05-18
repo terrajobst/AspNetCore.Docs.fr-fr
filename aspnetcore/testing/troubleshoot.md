@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: content
 uid: testing/troubleshoot
-ms.openlocfilehash: f2c785bfe27ddd67db0313b8ee1c077a8cc06e05
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 3bba085c69ee96b5725331b14dcf15350d66e4a4
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>Résoudre les problèmes des projets ASP.NET Core
 
@@ -66,3 +66,15 @@ Cet avertissement s’affiche lorsque la variable d’environnement `PATH` ne po
 
 * Installer ou vérifiez que le Kit de développement .NET Core est installé.
 * Vérifiez le `PATH` variable d’environnement pointe vers l’emplacement du Kit de développement logiciel est installé. Le programme d’installation définit normalement le `PATH`.
+
+::: moniker range=">= aspnetcore-2.1"
+
+### <a name="use-of-ihtmlhelperpartial-may-result-in-application-deadlocks"></a>Utilisation de IHtmlHelper.Partial peut générer des blocages d’application
+
+Dans ASP.NET Core 2.1 et versions ultérieures, l’appel `Html.Partial` génère un avertissement de l’analyseur en raison du risque de blocages. Le message d’avertissement est :
+
+*Utilisation de IHtmlHelper.Partial peut entraîner des blocages d’application. Envisagez d’utiliser `<partial>` application d’assistance de balise ou `IHtmlHelper.PartialAsync`.*
+
+Les appels à `@Html.Partial` doit être remplacé par `@await Html.PartialAsync` ou l’application d’assistance d’étiquette partielle `<partial name="_Partial" />`.
+
+::: moniker-end

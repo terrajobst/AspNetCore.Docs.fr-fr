@@ -11,11 +11,11 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/hubs
-ms.openlocfilehash: cfe9f7a7321094b8f901687d91745df2247e1da6
-ms.sourcegitcommit: 3d071fabaf90e32906df97b08a8d00e602db25c0
+ms.openlocfilehash: 5c477dd64c4cf8b7d6da1f121a290b00f3864f45
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utilisation des hubs dans SignalR pour ASP.NET Core
 
@@ -55,7 +55,8 @@ Chaque instance de la `Hub` classe a une propriété nommée `Clients` qui conti
 | `Caller` | Appelle une méthode sur le client qui a appelé la méthode de concentrateur |
 | `Others` | Appelle une méthode sur tous les clients connectés à l’exception du client qui a appelé la méthode |
 
-En outre, la `Hub` classe contient les méthodes suivantes :
+
+En outre, `Hub.Clients` contient les méthodes suivantes :
 
 | Méthode | Description |
 | ------ | ----------- |
