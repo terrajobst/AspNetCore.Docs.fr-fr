@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: ded549109ca6e7ad806f1c3f53387766527e5a94
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: cb02288e93be801a1e55852741ed1443d8d3617d
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="build-restful-apis-with-aspnet-web-api"></a>Générer une API RESTful avec l’API Web ASP.NET
 ====================
@@ -171,10 +171,7 @@ Dans cette tâche, vous allez créer les classes de contrôleur dans lequel les 
 
     (Code d’extrait de code - *Web API Lab - Ex01 - classe de Contact*)
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample2.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample2.cs)]
 4. Dans le **ContactController** de classes, sélectionnez le mot **chaîne** dans la définition de méthode de la **obtenir** (méthode) et tapez le mot *Contact*. Une fois le mot est tapé dans, un indicateur apparaît au début du mot **Contact**. Soit maintenez le **Ctrl** clé et appuyez sur la touche point (.) ou cliquez sur l’icône à l’aide de la souris pour ouvrir la boîte de dialogue de l’assistance dans l’éditeur de code, pour renseigner automatiquement le **à l’aide de** directive pour les modèles espace de noms.
 
     ![À l’aide de l’assistance d’Intellisense pour les déclarations d’espace de noms](build-restful-apis-with-aspnet-web-api/_static/image12.png)
@@ -222,10 +219,7 @@ Cette tâche va vous montrer comment extraire des fonctionnalités dans une couc
     *Création d’un fichier de classe pour contenir le code de la couche de service de référentiel de Contact*
 4. Ajouter un à l’aide de la directive pour le **ContactRepository.cs** fichier à inclure l’espace de noms de modèles.
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample4.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample4.cs)]
 5. Ajoutez le code en surbrillance suivant à la **ContactRepository.cs** fichier pour implémenter la méthode de GetAllContacts.
 
     (Code d’extrait de code - *Web de référentiel de Contact API Lab - Ex01 -*)
@@ -234,10 +228,7 @@ Cette tâche va vous montrer comment extraire des fonctionnalités dans une couc
 6. Ouvrez le **ContactController.cs** fichier s’il n’est pas déjà ouvert.
 7. Ajoutez le code suivant à l’aide d’instruction à la section de déclaration d’espace de noms du fichier.
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample6.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample6.cs)]
 8. Ajoutez le code en surbrillance suivant à la **ContactController.cs** classe pour ajouter un champ privé pour représenter l’instance du référentiel, afin que le reste de la classe les membres peuvent apporter utiliser l’implémentation de service.
 
     (Code d’extrait de code - *contrôleur Contact d’API Lab - Ex01 - Web*)
@@ -356,16 +347,10 @@ Dans cette tâche, vous allez modifier la vue d’Index par défaut de l’appli
 3. Ouvrez le **Index.cshtml** fichier situé à **Views/Home** dossier.
 4. Remplacez le code HTML au sein de l’élément div avec l’id **corps** afin qu’il ressemble au code suivant.
 
-
-~~~
-[!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample13.html)]
-~~~
+    [!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample13.html)]
 5. Ajoutez le code Javascript suivant en bas du fichier à exécuter la requête HTTP à l’API Web.
 
-
-~~~
-[!code-cshtml[Main](build-restful-apis-with-aspnet-web-api/samples/sample14.cshtml)]
-~~~
+    [!code-cshtml[Main](build-restful-apis-with-aspnet-web-api/samples/sample14.cshtml)]
 6. Ouvrez le **ContactController.cs** fichier s’il n’est pas déjà ouvert.
 7. Placez un point d’arrêt sur la **obtenir** méthode de la **ContactController** classe.
 
@@ -400,17 +385,11 @@ Dans cette tâche, vous continuerez à modifier l’affichage de l’Index de l�
 
     (Code d’extrait de code - *API Lab - Ex03 - Post méthode Web*)
 
-
-~~~
-[!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample15.cs)]
-~~~
+    [!code-csharp[Main](build-restful-apis-with-aspnet-web-api/samples/sample15.cs)]
 3. Ouvrez le **Index.cshtml** de fichiers dans Visual Studio s’il n’est pas déjà ouvert.
 4. Ajoutez le code HTML suivant au fichier juste après la liste non triée, que vous avez ajouté dans la tâche précédente.
 
-
-~~~
-[!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample16.html)]
-~~~
+    [!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample16.html)]
 5. Dans l’élément de script en bas du document, ajoutez le code en surbrillance suivant pour gérer les événements de clic de bouton, ce qui valide les données à l’API Web à l’aide d’un appel HTTP POST.
 
     [!code-html[Main](build-restful-apis-with-aspnet-web-api/samples/sample17.html)]

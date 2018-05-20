@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: ce79118fa025f912d7f04e2c9bff481a04489674
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 97c0b289b259332d57f8175e05020fe03d505723
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -155,7 +155,7 @@ Pour plus d’informations, consultez [Fichiers statiques](xref:fundamentals/sta
 
 Les applications ASP.NET Core configurent et lancent un *hôte*, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
 
-Pour plus d’informations, consultez [Hébergement](xref:fundamentals/hosting).
+Pour plus d’informations, consultez [Héberger dans ASP.NET Core](xref:fundamentals/host/index).
 
 ## <a name="session-and-application-state"></a>État de session et d’application
 
@@ -189,7 +189,7 @@ Pour plus d’informations, consultez [Fonctionnalités de requête](xref:fundam
 
 Les tâches en arrière-plan sont implémentées en tant que *services hébergés*. Un service hébergé est une classe avec la logique de tâches en arrière-plan qui implémente l’interface [IHostedService](/dotnet/api/microsoft.extensions.hosting.ihostedservice).
 
-Pour plus d’informations, consultez [Tâches en arrière-plan avec services hébergés](xref:fundamentals/hosted-services).
+Pour plus d’informations, consultez [Tâches en arrière-plan avec services hébergés](xref:fundamentals/host/hosted-services).
 
 ## <a name="open-web-interface-for-net-owin"></a>OWIN (Open Web Interface pour .NET)
 

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 9f164b6e1f3cc520b704cbb5ffdaadb99cebdc57
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 3a9479dc1bb09218ebb4a5a76078ea514041d751
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -64,7 +64,7 @@ Si `UseUrls` est appelé dans une application ASP.NET Core 1.0, appelez-le **ava
 
 ---
 
-Pour plus d’informations sur l’hébergement, consultez [Hébergement dans ASP.NET Core](xref:fundamentals/hosting).
+Pour plus d’informations sur l’hébergement, consultez [Héberger dans ASP.NET Core](xref:fundamentals/host/index).
 
 ### <a name="iis-options"></a>Options IIS
 
@@ -172,7 +172,7 @@ Activez la **Console de gestion IIS** et les **Services World Wide Web**.
 1. Installez le *bundle d’hébergement .NET Core* sur le système hôte. Le bundle installe le Runtime .NET Core, la bibliothèque .NET Core et le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Le module crée le proxy inverse entre IIS et le serveur Kestrel. Si le système n’a pas de connexion Internet, obtenez et installez [Microsoft Visual C++ 2015 Redistributable](https://www.microsoft.com/download/details.aspx?id=53840) avant d’installer le bundle d’hébergement .NET Core.
 
    1. Accédez à la [page All Downloads de .NET](https://www.microsoft.com/net/download/all).
-   1. Sélectionnez la version non-Preview du runtime .NET Core la plus récente dans la liste (**.NET Core** > **Runtime** > **.NET Core Runtime x.y.z**). Sauf si vous avez l’intention d’utiliser une version Preview du logiciel, évitez les runtimes pour lesquels le texte du lien contient le mot « preview ».
+   1. Sélectionnez le runtime .NET Core non préliminaire le plus récent dans la liste (**.NET Core** > **Runtime** > **.NET Core Runtime x.y.z**). Sauf si vous avez l’intention d’utiliser une version préliminaire du logiciel, évitez les runtimes pour lesquels le texte du lien contient le mot « preview » (préliminaire).
    1. Dans la page de téléchargement du runtime .NET Core, sous **Windows**, sélectionnez le lien **Hosting Bundle Installer** (programme d’installation du bundle d’hébergement) pour télécharger le *bundle d’hébergement .NET Core*.
 
    **Important !** Si le bundle d’hébergement est installé avant IIS, l’installation du bundle doit être réparée. Après avoir installé IIS, réexécutez le programme d’installation du bundle d’hébergement.

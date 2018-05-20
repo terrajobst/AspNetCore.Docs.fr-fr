@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: 0dbd3063c9be3564637fad34e60f62c1662dcc07
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0d44a8f607df3a45ef312820f85f269c7a2c9c1e
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>Création d’une base ASP.NET Web 4.5 Page Forms dans Visual Studio 2013
 ====================
@@ -94,7 +94,7 @@ Examinez l’illustration ci-dessus et correspond au texte à la liste suivante,
 - Fenêtre de document. Affiche les documents que vous travaillez dans les fenêtres à onglets. Vous pouvez basculer entre les documents en cliquant sur les onglets.
 - **Propriétés** fenêtre. Permet de modifier les paramètres de la page, des éléments HTML, des contrôles et d’autres objets.
 - Afficher les onglets. Présenter des vues différentes du même document. **Conception** vue est une surface de modification proche du WYSIWYG. **Source** affichage est l’éditeur HTML de la page. **Fractionnement** affiche à la fois le **conception** affichage et le **Source** le document. Vous allez travailler avec les **conception** et **Source** vues plus loin dans cette procédure pas à pas. Si vous préférez ouvrir des pages Web dans **conception** afficher, dans le **outils** menu, cliquez sur **Options**, sélectionnez le **Concepteur HTML** nœud, puis remplacez le **Démarrer les Pages en** option.
-- **ToolBox**. Fournit des contrôles et des éléments HTML que vous pouvez faire glisser vers votre page. **Boîte à outils** éléments sont regroupés selon leur fonction.
+- **Boîte à outils**. Fournit des contrôles et des éléments HTML que vous pouvez faire glisser vers votre page. **Boîte à outils** éléments sont regroupés selon leur fonction.
 - S **erver Explorer**. Affiche les connexions de base de données. Si l’Explorateur de serveurs n’est pas visible, dans le menu Affichage, cliquez sur l’Explorateur de serveurs.
 
 
@@ -315,15 +315,12 @@ Dans cette section, vous programmerez le [calendrier](https://msdn.microsoft.com
     Un gestionnaire d’événements est créé et affiché dans le fichier code-behind nommé *FirstWebPage.aspx.cs*.
 2. Terminer la [SelectionChanged](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.selectionchanged.aspx) Gestionnaire d’événements avec le code suivant.
 
-
-~~~
-[!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
+    [!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
 
 
-[!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
-~~~
+    [!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
 
- Le code ci-dessus définit le texte du contrôle label pour la date sélectionnée dans le contrôle calendar.
+    Le code ci-dessus définit le texte du contrôle label pour la date sélectionnée dans le contrôle calendar.
 
 
 ### <a name="running-the-page"></a>Exécution de la Page

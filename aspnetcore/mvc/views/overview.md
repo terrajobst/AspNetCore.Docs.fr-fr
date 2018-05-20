@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: 9af08d8fcbd91a9189fe1f4c6cedd644361773f7
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: b9947de03942bd71616e4bf12263befd9f784915
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
@@ -21,7 +21,7 @@ Par [Steve Smith](https://ardalis.com/) et [Luke Latham](https://github.com/guar
 
 Ce document explique l’utilisation des vues dans les applications ASP.NET Core MVC. Pour plus d’informations sur les pages Razor, consultez [Présentation des pages Razor](xref:mvc/razor-pages/index).
 
-Selon le schéma MVC (**M**odèle-**V**ue-**C**ontrôleur, la *vue* gère la présentation des données et les interactions utilisateur dans l’application. Une vue est un modèle HTML dans lequel est incorporé un [balisage Razor](xref:mvc/views/razor). Le balisage Razor est du code qui interagit avec le balisage HTML pour générer une page web qui est envoyée au client.
+Selon le schéma MVC (Modèle-Vue-Contrôleur), la *vue* gère la présentation des données et les interactions utilisateur dans l’application. Une vue est un modèle HTML dans lequel est incorporé un [balisage Razor](xref:mvc/views/razor). Le balisage Razor est du code qui interagit avec le balisage HTML pour générer une page web qui est envoyée au client.
 
 Dans ASP.NET Core MVC, les vues sont des fichiers *.cshtml* qui utilisent le [langage de programmation C#](/dotnet/csharp/) dans le balisage Razor. En règle générale, les fichiers de vue sont regroupés dans des dossiers nommés correspondant aux différents [contrôleurs](xref:mvc/controllers/actions) de l’application. Ces dossiers sont eux-mêmes regroupés sous le dossier *Vues* situé à la racine de l’application :
 
@@ -37,7 +37,7 @@ Les [composants de vue](xref:mvc/views/view-components) sont similaires aux vues
 
 ## <a name="benefits-of-using-views"></a>Avantages de l’utilisation des vues
 
-Les vues facilitent l’implémentation du principe de conception basé sur la séparation des préoccupations (ou principe SoC, [**S**eparation **o**f **C**oncerns)](http://deviq.com/separation-of-concerns/) au sein d’une application MVC. En effet, elles permettent de séparer le balisage de l’interface utilisateur des autres parties de l’application. Une application conçue selon ce principe présente une plus grande modularité, ce qui offre plusieurs avantages :
+Les vues facilitent l’implémentation du principe de conception basé sur la séparation des préoccupations ([SoC, Separation of Concerns](http://deviq.com/separation-of-concerns/)) au sein d’une application MVC. En effet, elles permettent de séparer le balisage de l’interface utilisateur des autres parties de l’application. Une application conçue selon ce principe présente une plus grande modularité, ce qui offre plusieurs avantages :
 
 * L’application est plus facile à gérer, car elle est mieux organisée. Les vues sont généralement regroupées par fonctionnalité dans l’application. Vous pouvez ainsi trouver plus rapidement les vues associées quand vous utilisez une fonctionnalité.
 * Les différentes parties de l’application sont faiblement couplées. Vous pouvez générer et mettre à jour les vues de l’application séparément de la logique métier et des composants d’accès aux données. Vous pouvez modifier les vues de l’application sans avoir nécessairement besoin de mettre à jour d’autres parties de l’application.
@@ -123,7 +123,16 @@ Suivez les bonnes pratiques en matière d’organisation de la structure des fic
 
 ## <a name="passing-data-to-views"></a>Passage de données aux vues
 
-Plusieurs approches sont possibles pour passer des données aux vues. L’approche la plus fiable consiste à spécifier un type de [modèle](xref:mvc/models/model-binding) dans la vue. Ce modèle est communément appelé *ViewModel*. Vous passez une instance de type ViewModel à la vue à partir de l’action.
+Plusieurs approches sont possibles pour passer des données aux vues :
+
+* Données fortement typées : viewmodel
+* Données faiblement typées
+  - `ViewData` (`ViewDataAttribute`)
+  - `ViewBag`
+
+### <a name="strongly-typed-data-viewmodel"></a>Données fortement typées (viewmodel)
+
+L’approche la plus fiable consiste à spécifier un type de [modèle](xref:mvc/models/model-binding) dans la vue. Ce modèle est communément appelé *ViewModel*. Vous passez une instance de type ViewModel à la vue à partir de l’action.
 
 L’utilisation d’un ViewModel pour passer des données à une vue vous permet d’effectuer un contrôle de type *fort* dans la vue. Le terme *typage fort* (ou *fortement typé*) signifie que chaque variable et constante a un type défini explicitement (par exemple, `string`, `int` ou `DateTime`). La validité des types utilisés dans une vue est contrôlée au moment de la compilation.
 
@@ -162,7 +171,7 @@ public IActionResult Contact()
 }
 ```
 
-Il n’y a pas de restrictions relatives aux types de modèles que vous pouvez fournir à une vue. Nous vous recommandons d’utiliser des ViewModel de type OCT (appelé aussi POCO, **P**lain **O**ld **C**LR **O**bject), avec peu ou pas de méthodes de comportement définies. En règle générale, les classes ViewModel sont stockées dans le dossier *Modèles* ou dans un dossier *ViewModels* distinct à la racine de l’application. Le ViewModel *Address* utilisé dans l’exemple ci-dessus est un ViewModel OCT stocké dans un fichier nommé *Address.cs* :
+Il n’y a pas de restrictions relatives aux types de modèles que vous pouvez fournir à une vue. Nous vous recommandons d’utiliser des ViewModels POCO (Plain Old CLR Object), avec peu ou pas de méthodes de comportement définies. En règle générale, les classes ViewModel sont stockées dans le dossier *Modèles* ou dans un dossier *ViewModels* distinct à la racine de l’application. Le ViewModel *Address* utilisé dans l’exemple ci-dessus est un ViewModel OCT stocké dans un fichier nommé *Address.cs* :
 
 ```csharp
 namespace WebApplication1.ViewModels
@@ -178,15 +187,13 @@ namespace WebApplication1.ViewModels
 }
 ```
 
-> [!NOTE]
-> Rien ne vous empêche d’utiliser les mêmes classes pour vos types de ViewModel et vos types de modèle métier. Toutefois, l’utilisation de modèles distincts vous permet de changer les vues indépendamment de la logique métier et des composants d’accès aux données de votre application. La séparation des modèles et des ViewModel est également un gage de sécurité si vous avez des modèles qui utilisent la [liaison de données](xref:mvc/models/model-binding) et la [validation](xref:mvc/models/validation) pour les données envoyées à l’application par l’utilisateur.
-
+Rien ne vous empêche d’utiliser les mêmes classes pour vos types de ViewModel et vos types de modèle métier. Toutefois, l’utilisation de modèles distincts vous permet de changer les vues indépendamment de la logique métier et des composants d’accès aux données de votre application. La séparation des modèles et des ViewModel est également un gage de sécurité si vous avez des modèles qui utilisent la [liaison de données](xref:mvc/models/model-binding) et la [validation](xref:mvc/models/validation) pour les données envoyées à l’application par l’utilisateur.
 
 <a name="VD_VB"></a>
 
-### <a name="weakly-typed-data-viewdata-and-viewbag"></a>Données faiblement typées (ViewData et ViewBag)
+### <a name="weakly-typed-data-viewdata-viewdata-attribute-and-viewbag"></a>Données faiblement typées (ViewData, attribut ViewData et ViewBag)
 
-Remarque : `ViewBag` n’est pas disponible dans les pages Razor.
+`ViewBag` *n’est pas disponible dans les pages Razor.*
 
 En plus des vues fortement typées, les vues ont accès à une collection de données *faiblement typées* (ou *librement typées*). Contrairement aux types forts, les *types faibles* (ou *types libres*) ne nécessitent pas de déclarer explicitement le type de données utilisé. Vous pouvez utiliser la collection de données faiblement typées pour passer de petites quantités de données entre les contrôleurs et les vues.
 
@@ -199,7 +206,6 @@ En plus des vues fortement typées, les vues ont accès à une collection de don
 Cette collection peut être référencée par les propriétés `ViewData` ou `ViewBag` sur les contrôleurs et les vues. La propriété `ViewData` est un dictionnaire d’objets faiblement typés. La propriété `ViewBag` est un wrapper autour de `ViewData` qui fournit des propriétés dynamiques pour la collection `ViewData` sous-jacente.
 
 `ViewData` et `ViewBag` sont résolues dynamiquement au moment de l’exécution. Dans la mesure où elles n’effectuent pas de contrôle de type à la compilation, ces deux propriétés sont généralement davantage sujettes aux erreurs qu’un ViewModel. Pour cette raison, certains développeurs préfèrent ne jamais utiliser les propriétés `ViewData` et `ViewBag`, ou les utiliser le moins possible.
-
 
 <a name="VD"></a>
 
@@ -243,9 +249,49 @@ Utilisation des données dans une vue :
 </address>
 ```
 
+::: moniker range=">= aspnetcore-2.1"
+**Attribut ViewData**
+
+Une autre approche qui utilise le [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) est [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Les valeurs des propriétés définies sur des contrôleurs ou sur des modèles de page Razor décorés avec `[ViewData]` sont stockées dans le dictionnaire et chargées à partir de celui-ci.
+
+Dans l’exemple suivant, le contrôleur Home contient une propriété `Title` décorée avec `[ViewData]`. La méthode `About` définit le titre de la vue About :
+
+```csharp
+public class HomeController : Controller
+{
+    [ViewData]
+    public string Title { get; set; }
+
+    public IActionResult About()
+    {
+        Title = "About Us";
+        ViewData["Message"] = "Your application description page.";
+
+        return View();
+    }
+}
+```
+
+Dans la vue About, accédez à la propriété `Title` en tant que propriété de modèle :
+
+```cshtml
+<h1>@Model.Title</h1>
+```
+
+Dans la disposition, le titre est lu à partir du dictionnaire ViewData :
+
+```cshtml
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - WebApplication</title>
+    ...
+```
+::: moniker-end
+
 **ViewBag**
 
-Remarque : `ViewBag` n’est pas disponible dans les pages Razor.
+`ViewBag` *n’est pas disponible dans les pages Razor.*
 
 `ViewBag` est un objet [DynamicViewData](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.internal.dynamicviewdata) qui fournit un accès dynamique aux objets stockés dans `ViewData`. `ViewBag` est parfois plus pratique à utiliser, car il ne nécessite pas de cast. L’exemple suivant montre comment utiliser `ViewBag` pour obtenir le même résultat qu’avec l’objet `ViewData` ci-dessus :
 
@@ -278,7 +324,7 @@ public IActionResult SomeAction()
 
 **Utilisation simultanée de ViewData et ViewBag**
 
-Remarque : `ViewBag` n’est pas disponible dans les pages Razor.
+`ViewBag` *n’est pas disponible dans les pages Razor.*
 
 Comme `ViewData` et `ViewBag` font référence à la même collection `ViewData` sous-jacente, vous pouvez utiliser `ViewData` et `ViewBag` simultanément, en les combinant et en les associant pour lire et écrire des valeurs.
 

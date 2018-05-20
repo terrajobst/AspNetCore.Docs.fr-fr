@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: advanced
 uid: mvc/razor-pages/ui-class
-ms.openlocfilehash: 731d37a8f4983b18ded114f05470f8a408deb7cd
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 44091ab8ab5d69a5975e191fd00fca1d1d957238
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créez une interface utilisateur réutilisable à l’aide du projet Razor Class Library dans ASP.NET Core.
 
@@ -23,8 +23,6 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 Les vues, pages, contrôleurs, modèles de page et modèles de données Razor peuvent être intégrés à une bibliothèque de classes Razor (RCL, Razor Class Library). La RCL peut être empaquetée et réutilisée. Les applications peuvent inclure la RCL et remplacer les vues et les pages qu’elle contient. Quand une vue, une vue partielle ou une page Razor est présente dans l’application web et la RCL, le balisage Razor (fichier *.cshtml*) dans l’application web est prioritaire.
 
 Cette fonctionnalité nécessite [!INCLUDE[](~/includes/2.1-SDK.md)].
-
-[!INCLUDE[](~/includes/2.1.md)]
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/razor-pages/ui-class/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 

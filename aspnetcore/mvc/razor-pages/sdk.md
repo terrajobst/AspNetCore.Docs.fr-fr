@@ -10,17 +10,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: content
 uid: mvc/razor-pages/sdk
-ms.openlocfilehash: 2cbebb12ccd1098e1950aa7eeb22fab4ffc689e6
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: acc049a69574968d1e304d6c504cb89243387d6c
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="aspnet-core-razor-sdk"></a>SDK Razor ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-[!INCLUDE[](~/includes/2.1.md)]
 
 [!INCLUDE [](~/includes/2.1-SDK.md)] inclut le SDK MSBuild `Microsoft.NET.Sdk.Razor` (SDK Razor). Le SDK Razor :
 
@@ -66,7 +64,7 @@ Les propriétés et éléments suivants sont utilisés pour configurer les entr�
 | ------------                                  | -------------                                                                 |
 | RazorGenerate                                 | Composants d’élément (fichiers *.cshtml*) fournis en entrée aux cibles de génération de code. |
 | RazorCompile                                  | Composants d’élément (fichiers .cs) fournis en entrée aux cibles de compilation Razor. Utilisez ItemGroup pour spécifier d’autres fichiers à compiler dans l’assembly Razor. |
-| RazorAssemblyAttribute                        | Composants d’élément utilisés pour générer le code d’attributs pour l’assembly Razor. Exemple :  <br />`<RazorAssemblyAttribute ` <br />  `Include="System.Reflection.AssemblyMetadataAttribute"`<br />`  _Parameter1="BuildSource" _Parameter2="https://docs.asp.net/">` |
+| RazorTargetAssemblyAttribute                  | Composants d’élément utilisés pour générer le code d’attributs pour l’assembly Razor. Exemple :  <br />`<RazorAssemblyAttribute ` <br />  `Include="System.Reflection.AssemblyMetadataAttribute"`<br />`  _Parameter1="BuildSource" _Parameter2="https://docs.asp.net/">` |
 | RazorEmbeddedResource                         | Composants d’élément ajoutés comme ressources incorporées à l’assembly Razor généré. |
 
 | Propriété                                      | Description                                                                   |

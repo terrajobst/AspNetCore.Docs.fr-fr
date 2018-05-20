@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 660ee2365e2e186dd93d57ec79628e0bd7d24d52
-ms.sourcegitcommit: d45d766504c2c5aad2453f01f089bc6b696b5576
+ms.openlocfilehash: 800ff2039e7cc1fa37315ed55a77711dc9f47504
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
@@ -35,7 +35,7 @@ Une classe d’options doit être non abstraite avec un constructeur public sans
 
 [!code-csharp[](options/sample/Models/MyOptions.cs?name=snippet1)]
 
-La classe `MyOptions` est ajoutée au conteneur de service avec [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) et liée à la configuration :
+La classe `MyOptions` est ajoutée au conteneur de service avec [Configure&lt;TOptions&gt;(IServiceCollection, IConfiguration)](/dotnet/api/microsoft.extensions.dependencyinjection.optionsconfigurationservicecollectionextensions.configure#Microsoft_Extensions_DependencyInjection_OptionsConfigurationServiceCollectionExtensions_Configure__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_) et liée à la configuration :
 
 [!code-csharp[](options/sample/Startup.cs?name=snippet_Example1)]
 
@@ -177,7 +177,7 @@ La prise en charge des options nommées avec [IConfigureNamedOptions](/dotnet/ap
 
 *Nécessite ASP.NET Core 2.0 ou version ultérieure.*
 
-La prise en charge des *options nommées* permet à l’application de faire la distinction entre les configurations d’options nommées. Dans l’exemple d’application, les options nommées sont déclarées avec la méthode [ConfigureNamedOptions&lt;TOptions&gt;.Configure](/dotnet/api/microsoft.extensions.options.configurenamedoptions-1.configure) :
+La prise en charge des *options nommées* permet à l’application de faire la distinction entre les configurations d’options nommées. Dans l’exemple d’application, les options nommées sont déclarées avec [OptionsServiceCollectionExtensions.Configure&lt;TOptions&gt;(IServiceCollection, String, Action&lt;TOptions&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configure), qui appelle ensuite la méthode d’extension [ConfigureNamedOptions&lt;TOptions&gt;.Configure](/dotnet/api/microsoft.extensions.options.configurenamedoptions-1.configure) :
 
 [!code-csharp[](options/sample/Startup.cs?name=snippet_Example6)]
 

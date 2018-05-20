@@ -11,17 +11,15 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/http-requests
-ms.openlocfilehash: 30ac239a38376feecffc3010387ec5e0009b6db6
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 1f2c7522a10220cd9520d78846d2e897115447c2
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="initiate-http-requests"></a>Lancer des requêtes HTTP
 
 By [Glenn Condron](https://github.com/glennc), [Ryan Nowak](https://github.com/rynowak) et [Steve Gordon](https://github.com/stevejgordon)
-
-[!INCLUDE[](~/includes/2.1.md)]
 
 Une `IHttpClientFactory` peut être inscrite et utilisée pour configurer et créer des instances de [HttpClient](/dotnet/api/system.net.http.httpclient) dans une application. Elle offre les avantages suivants :
 
@@ -77,7 +75,7 @@ Un client typé accepte un `HttpClient` dans son constructeur :
 
 [!code-csharp[](http-requests/samples/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
-Dans le code précédent, la configuration est déplacée dans le client typé. L’objet `HttpClient` est exposé en tant que propriété publique. Il est possible de définir des méthodes d’API spécifiques qui exposent les fonctionnalités de `HttpClient`. La méthode `GetLatestDocsIssue` encapsule le code nécessaire pour interroger et analyser le problème le plus récent d’un dépôt GitHub.
+Dans le code précédent, la configuration est déplacée dans le client typé. L’objet `HttpClient` est exposé en tant que propriété publique. Il est possible de définir des méthodes d’API spécifiques qui exposent les fonctionnalités de `HttpClient`. La méthode `GetAspNetDocsIssues` encapsule le code nécessaire pour interroger et analyser les problèmes ouverts les plus récents d’un dépôt GitHub.
 
 Pour inscrire un client typé, la méthode d’extension `AddHttpClient` générique peut être utilisée dans `ConfigureServices`, en spécifiant la classe du client typé :
 

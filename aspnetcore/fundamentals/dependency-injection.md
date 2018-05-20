@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 8a105f835dddfcd0e9f32059e644f60dc1fdbbe1
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 700ceb081b2067f932ce8ed08c45c62058775e33
+ms.sourcegitcommit: 3d071fabaf90e32906df97b08a8d00e602db25c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -351,13 +351,15 @@ Lorsque vous utilisez l’injection de dépendances, gardez à l’esprit les re
 
 * Évitez l’accès statique à `HttpContext`.
 
-> [!NOTE]
-> Comme pour toutes les recommandations, vous pouvez vous trouver dans des situations où il est nécessaire d’en ignorer une. À notre sens, ces exceptions sont rares. Elles concernent principalement des cas très spéciaux au sein du framework lui-même.
+Comme pour toutes les recommandations, vous pouvez vous trouver dans des situations où il est nécessaire d’en ignorer une. À notre sens, ces exceptions sont rares. Elles concernent principalement des cas très spéciaux au sein du framework lui-même.
 
-N’oubliez pas que l’injection de dépendances est une *alternative* aux modèles d’accès aux objets statiques/globaux. Vous ne pourrez pas bénéficier des avantages de l’injection de dépendances si vous la combinez avec l’accès aux objets statiques.
+L’injection de dépendances constitue une *alternative* aux modèles d’accès aux objets statiques/globaux. Il est possible que vous ne bénéficiez pas des avantages de l’injection de dépendances si vous la combinez avec l’accès aux objets statiques.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* [Injection de dépendances dans les vues](xref:mvc/views/dependency-injection)
+* [Injection de dépendances dans les contrôleurs](xref:mvc/controllers/dependency-injection)
+* [Injection de dépendances dans les gestionnaires d’exigences](xref:security/authorization/dependencyinjection)
 * [Démarrage d’une application](xref:fundamentals/startup)
 * [Test et débogage](xref:testing/index)
 * [Activation d’intergiciel (middleware) basée sur une fabrique](xref:fundamentals/middleware/extensibility)

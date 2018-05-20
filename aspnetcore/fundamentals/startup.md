@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
-ms.openlocfilehash: 8dd632a2c888e65c6420e0fed7acf6fa15173b3d
-ms.sourcegitcommit: c4a31aaf902f2e84aaf4a9d882ca980fdf6488c0
+ms.openlocfilehash: a61f78b2d0e5c6c171a26690fcce256462a82508
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="application-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -64,9 +64,10 @@ Pour les fonctionnalités qui nécessitent une installation substantielle, il ex
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
-::: moniker range=">= aspnetcore-2.1" 
+::: moniker range=">= aspnetcore-2.1"
 
 <a name="setcompatibilityversion"></a>
+
 ### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>SetCompatibilityVersion pour ASP.NET Core MVC 
 
 La méthode `SetCompatibilityVersion` permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants qui ont été introduits dans ASP.NET MVC Core 2.1+. Ces changements de comportement potentiellement cassants concernent en général la façon dont le sous-système MVC se comporte et la façon dont **votre code** est appelé par le runtime. En acceptant, vous obtenez le comportement le plus récent et le comportement à long terme d’ASP.NET Core.
@@ -156,6 +157,10 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 
 * Plusieurs implémentations d’`IStartupFilter` peuvent interagir avec les mêmes objets. Si l’ordre est important, définissez l’ordre des inscriptions de leurs services `IStartupFilter` pour qu’il corresponde à l’ordre dans lequel leurs intergiciels doivent s’exécuter.
 * Les bibliothèques peuvent ajouter des intergiciels avec une ou plusieurs implémentations `IStartupFilter` qui s’exécutent avant ou après l’autre intergiciel d’application inscrit avec `IStartupFilter`. Pour appeler un intergiciel `IStartupFilter` avant un intergiciel ajouté à l’`IStartupFilter` d’une bibliothèque, placez l’inscription du service avant l’ajout de la bibliothèque au conteneur de service. Pour l’appeler par la suite, placez l’inscription du service après l’ajout de la bibliothèque.
+
+## <a name="adding-configuration-at-startup-from-an-external-assembly"></a>Ajout de la configuration au démarrage à partir d’un assembly externe
+
+L’implémentation de [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez [Améliorer une application à partir d’un assembly externe](xref:fundamentals/configuration/platform-specific-configuration).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

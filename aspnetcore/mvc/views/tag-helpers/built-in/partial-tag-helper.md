@@ -11,17 +11,15 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 670663b963f4207da793afff44d55b85ba58b7f8
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 786c333980db89a9a5a60dc70c0bd1998ca159cd
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Tag Helper Partial dans ASP.NET Core
 
 Par [Scott Addie](https://github.com/scottaddie)
-
-[!INCLUDE [2.1 preview notice](~/includes/2.1.md)]
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
@@ -66,7 +64,7 @@ La vue partielle est liée à la propriété `Product` du modèle de page associ
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Pages/Product.cshtml.cs?highlight=8)]
 
-## <a name="model"></a>model
+## <a name="model"></a>modèle
 
 L’attribut `model` affecte une instance de modèle à passer à la vue partielle. L’attribut `model` ne peut pas être utilisé avec l’attribut [for](#for).
 
@@ -89,4 +87,4 @@ Dans cet exemple, la valeur de `ViewData["IsNumberReadOnly"]` détermine si le c
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Vues partielles](xref:mvc/views/partial)
-* [Données faiblement typées (ViewData et ViewBag)](xref:mvc/views/overview#weakly-typed-data-viewdata-and-viewbag)
+* [Données faiblement typées (ViewData, attribut ViewData et ViewBag)](xref:mvc/views/overview#weakly-typed-data-viewdata-viewdata-attribute-and-viewbag)

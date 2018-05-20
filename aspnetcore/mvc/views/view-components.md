@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/view-components
-ms.openlocfilehash: a3614024c7f776e4502bc049180ae1c965e31db4
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: cdf44fc15ac64497b2589e8b7b289beb94c5b2c4
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -21,9 +21,11 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="introducing-view-components"></a>Présentation des composants de vue
+## <a name="view-components"></a>Composants de vue
 
-Les composants de vue sont une nouvelle fonctionnalité disponible dans ASP.NET Core MVC. Ils sont similaires aux vues partielles, mais sont beaucoup plus puissants. Les composants de vue n’utilisent pas la liaison de données ; ils dépendent uniquement des données fournies en réponse à l’appel d’un composant de vue. Un composant de vue a les caractéristiques suivantes :
+Les composants de vue sont similaires aux vues partielles, mais ils sont beaucoup plus puissants. Les composants de vue n’utilisent pas la liaison de données ; ils dépendent uniquement des données fournies en réponse à l’appel d’un composant de vue. Cet article a été écrit avec ASP.NET Core MVC, mais les composants de vue fonctionnent également avec les pages Razor.
+
+Un composant de vue a les caractéristiques suivantes :
 
 * Il effectue le rendu d’un bloc de code au lieu d’une réponse entière.
 * Il garantit la même « séparation des préoccupations » et offre les mêmes avantages de testabilité qu’entre un contrôleur et une vue.

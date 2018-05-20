@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 3055eec91adc412b596d4cc73e8523e18ff63331
-ms.sourcegitcommit: 7c8fd9b7445cd77eb7f7d774bfd120c26f3b5d84
+ms.openlocfilehash: 06751e713fbd579a944333cc3c3b2c0c0ad51eba
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
 
@@ -108,7 +108,7 @@ Le constructeur de la classe implémentée, `ConfigurationMonitor`, inscrit un r
 
 [!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
 
-`config.GetReloadToken()` fournit le jeton. `InvokeChanged` est la méthode de rappel. Le `state` dans cette instance est une chaîne qui décrit l’état de la surveillance. Deux propriétés sont utilisées :
+`config.GetReloadToken()` fournit le jeton. `InvokeChanged` est la méthode de rappel. Le `state` dans cette instance est une référence à l’instance `IConfigurationMonitor` qui est utilisée pour accéder à l’état du monitoring. Deux propriétés sont utilisées :
 
 * `MonitoringEnabled` indique si le rappel doit exécuter son code personnalisé.
 * `CurrentState` décrit l’état actuel de la surveillance pour une utilisation dans l’interface utilisateur.
@@ -116,7 +116,6 @@ Le constructeur de la classe implémentée, `ConfigurationMonitor`, inscrit un r
 La méthode `InvokeChanged` est similaire à l’approche précédente, excepté que :
 
 * Elle n’exécute pas son code, sauf si `MonitoringEnabled` est `true`.
-* Elle définit la chaîne de la propriété `CurrentState` avec un message descriptif qui enregistre l’heure à laquelle le code a été exécuté.
 * Elle indique le `state` actuel dans sa sortie `WriteConsole`.
 
 [!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
@@ -201,7 +200,6 @@ var compositeChangeToken =
 
 * [Mettre en cache en mémoire](xref:performance/caching/memory)
 * [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
 * [Mise en cache des réponses](xref:performance/caching/response)
 * [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
 * [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

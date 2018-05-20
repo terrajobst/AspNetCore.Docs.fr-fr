@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 4db09d3d41b705597f93d05af91077f2b9236b7e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 88b4ee9a963543f8cc97cb66271628a14fe657de
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application en cours de développement dans ASP.NET Core
 
@@ -55,8 +55,25 @@ L’outil Gestionnaire de secret principal stocke des données sensibles pendant
 
 L’outil Secret Manager élimine les détails d’implémentation, tels qu’où et comment les valeurs sont stockées. Vous pouvez utiliser l’outil sans connaître ces détails d’implémentation. Les valeurs sont stockées dans un [JSON](https://json.org/) fichier de configuration dans un dossier de profil utilisateur protégés par le système sur l’ordinateur local :
 
-* Windows : `%APPDATA%\Microsoft\UserSecrets\<user_secrets_id>\secrets.json`
-* Linux et macOS : `~/.microsoft/usersecrets/<user_secrets_id>/secrets.json`
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+
+Chemin d’accès du système de fichiers :
+
+`%APPDATA%\Microsoft\UserSecrets\<user_secrets_id>\secrets.json`
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+Chemin d’accès du système de fichiers :
+
+`~/.microsoft/usersecrets/<user_secrets_id>/secrets.json`
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+Chemin d’accès du système de fichiers :
+
+`~/.microsoft/usersecrets/<user_secrets_id>/secrets.json`
+
+---
 
 Dans l’exemple précédent, les chemins de fichiers, remplacez `<user_secrets_id>` avec la `UserSecretsId` valeur spécifiée dans le *.csproj* fichier.
 
@@ -133,17 +150,33 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ## <a name="set-multiple-secrets"></a>Définir plusieurs clés secrètes
 
-Un lot de secrets peut être défini en transférant JSON à le `set` commande. Dans l’exemple suivant, la *input.json* contenu du fichier est dirigé vers le `set` commande sur Windows :
+Un lot de secrets peut être défini en transférant JSON à le `set` commande. Dans l’exemple suivant, la *input.json* contenu du fichier est dirigé vers le `set` commande.
 
-```console
-type .\input.json | dotnet user-secrets set
-```
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
-Sur Mac OS et Linux, utilisez la commande suivante :
+Ouvrez une invite de commandes et exécutez la commande suivante :
 
-```console
-cat ./input.json | dotnet user-secrets set
-```
+  ```console
+  type .\input.json | dotnet user-secrets set
+  ```
+
+# <a name="macostabmacos"></a>[macOS](#tab/macos)
+
+Ouvrez une invite de commandes et exécutez la commande suivante :
+
+  ```console
+  cat ./input.json | dotnet user-secrets set
+  ```
+
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+Ouvrez une invite de commandes et exécutez la commande suivante :
+
+  ```console
+  cat ./input.json | dotnet user-secrets set
+  ```
+
+---
 
 ## <a name="access-a-secret"></a>Accéder à une clé secrète
 

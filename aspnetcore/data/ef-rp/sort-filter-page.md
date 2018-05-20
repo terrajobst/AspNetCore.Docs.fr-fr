@@ -8,11 +8,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: be7d55bf1a5d3da63ff137ed86f71984dc897eff
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 26f516716864bdce81cf3acdacb0f9d2f98407b7
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -58,7 +58,7 @@ La première ligne indique que quand `sortOrder` est null ou vide, `NameSort` pr
 
 `?: operator` est également appelé opérateur ternaire.
 
-Ces deux instructions permettent à l’affichage de définir les liens hypertexte d’en-tête de colonne comme suit :
+Ces deux instructions permettent à la page de définir les liens hypertexte d’en-tête de colonne comme suit :
 
 | Ordre de tri actuel | Lien hypertexte Nom de famille | Lien hypertexte Date |
 |:--------------------:|:-------------------:|:--------------:|
@@ -77,7 +77,7 @@ La méthode utilise LINQ to Entities pour spécifier la colonne d’après laque
 
 `OnGetAsync` peut contenir un grand nombre de colonnes.
 
-### <a name="add-column-heading-hyperlinks-to-the-student-index-view"></a>Ajouter des liens hypertexte d’en-tête de colonne à l’affichage d’index des étudiants
+### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>Ajouter des liens hypertexte d’en-tête de colonne à la page d’index des étudiants
 
 Remplacez le code dans *Students/Index.cshtml* par le code en surbrillance suivant :
 
@@ -133,9 +133,9 @@ Le code précédent garantit que les résultats ne respectent pas la casse si le
 
 Il existe un coût en matière de performances en cas d’appel à `ToUpper`. Le code `ToUpper` ajoute une fonction dans la clause WHERE de l’instruction TSQL SELECT. La fonction ajoutée empêche l’optimiseur d’utiliser un index. Étant donné que SQL est installé sans respect de la casse, il est préférable d’éviter l’appel à `ToUpper` quand il n’est pas nécessaire.
 
-### <a name="add-a-search-box-to-the-student-index-view"></a>Ajouter une zone de recherche à l’affichage d’index des étudiants
+### <a name="add-a-search-box-to-the-student-index-page"></a>Ajouter une zone de recherche à la page d’index des étudiants
 
-Dans *Views/Student/Index.cshtml*, ajoutez le code en surbrillance suivant pour créer un bouton **Search** et le contrôle Chrome assorti.
+Dans *Pages/Students/Index.cshtml*, ajoutez le code en surbrillance suivant pour créer un bouton **Search** et le chrome assorti.
 
 [!code-html[](intro/samples/cu/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
@@ -267,7 +267,7 @@ Remarque : La commande LINQ `group` n’est pas prise en charge actuellement par
 
 ### <a name="modify-the-about-razor-page"></a>Modifier la page Razor About
 
-Remplacez le code du fichier *Views/Home/About.cshtml* par le code suivant :
+Remplacez le code du fichier *Pages/About.cshtml* par le code suivant :
 
 [!code-html[](intro/samples/cu/Pages/About.cshtml)]
 

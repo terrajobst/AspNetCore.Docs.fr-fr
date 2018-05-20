@@ -6,24 +6,20 @@ helpviewer_heywords: ASP.NET Core, WebAPI, Web API, REST, mac, macOS, HTTP, Serv
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/27/2018
+ms.date: 05/08/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api-mac
-ms.openlocfilehash: 46050f4bbd6ae821c03d92c8750e839d491328cd
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 699fbbf54abf1dc5c4156c559761110cdb375558
+ms.sourcegitcommit: c867d7427bd4a88a78b2322e156367733b532730
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/09/2018
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-mac"></a>Créer une API web avec ASP.NET Core et Visual Studio pour Mac
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Mike Wasson](https://github.com/mikewasson)
-
-::: moniker range="= aspnetcore-2.1"
-[!INCLUDE[](~/includes/2.1.md)]
-::: moniker-end
 
 Dans ce didacticiel, créez une API web pour la gestion d’une liste de tâches. L’interface utilisateur n’est pas construite.
 
@@ -121,7 +117,7 @@ Dans Visual Studio, sélectionnez **Exécuter** > **Démarrer avec débogage** p
 ["value1","value2"]
 ```
 
-Accédez au contrôleur `Todo` à l’adresse `http://localhost:<port>/api/todo` :
+Accédez au contrôleur `Todo` à l’adresse `http://localhost:<port>/api/todo`. Le code JSON suivant est retourné :
 
 ```json
 [{"key":1,"name":"Item1","isComplete":false}]
@@ -156,7 +152,7 @@ La méthode `CreatedAtRoute` retourne une réponse 201. Il s’agit de la répon
 * Mettez à jour le numéro de port dans l’URL localhost.
 * Définissez la méthode HTTP sur *POST*.
 * Cliquez sur l’onglet **Body** (Corps).
-* Sélectionnez la case d’option **raw** (brutes).
+* Sélectionnez la case d’option **raw** (données brutes).
 * Définissez le type sur *JSON (application/json)*.
 * Entrez un corps de requête avec une tâche similaire au code JSON suivant :
 
@@ -171,10 +167,10 @@ La méthode `CreatedAtRoute` retourne une réponse 201. Il s’agit de la répon
 
 ::: moniker range=">= aspnetcore-2.1"
 > [!TIP]
-> Si vous ne recevez aucune réponse après avoir cliqué sur **Send** (Envoyer), désactivez l’option **SSL certification verification** (Vérification de la certification SSL). Celle-ci se trouve sous **File** (Fichier) > **Settings** (Paramètres). Cliquez à nouveau sur le bouton **Send** (Envoyer) une fois le paramètre désactivé.
+> Si vous ne recevez pas de réponse après avoir cliqué sur **Send** (Envoyer), désactivez l’option **SSL certification verification** (Vérification de la certification SSL). Celle-ci se trouve sous **File** (Fichier) > **Settings** (Paramètres). Cliquez à nouveau sur le bouton **Send** (Envoyer) une fois le paramètre désactivé.
 ::: moniker-end
 
-Cliquez sur l’onglet **Headers** (En-têtes) dans le volet **Response** (Réponse) et copiez la valeur de l’en-tête **Location** (Emplacement) :
+Cliquez sur l’onglet **Headers** (En-têtes) dans le volet **Response** (Réponse), puis copiez la valeur de l’en-tête **Location** (Emplacement) :
 
 ![Onglet Headers de la console Postman](first-web-api/_static/pmc2.png)
 

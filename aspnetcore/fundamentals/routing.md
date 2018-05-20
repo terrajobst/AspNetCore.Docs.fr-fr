@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: 2e1257639ec41f657093439c5245b50adbad34dc
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: d9d5a26b08f67fe4ee39d6b974027826a93e5d5f
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -74,7 +74,7 @@ Les routes utilisent principalement les valeurs de route fournies par `Values` e
 
 Conseil : Considérez `Values` comme un ensemble de substitutions pour les `AmbientValues`. La génération d’URL tente de réutiliser des valeurs de route de la requête actuelle pour faciliter la génération d’URL pour des liens utilisant la même route ou les mêmes valeurs de route.
 
-La sortie de `GetVirtualPath` est un `VirtualPathData`. `VirtualPathData` est l’équivalent de `RouteData` ; il contient le `VirtualPath` de l’URL de sortie, ainsi que des propriétés supplémentaires qui doivent être définies par le route.
+La sortie de `GetVirtualPath` est un `VirtualPathData`. `VirtualPathData` est l’équivalent de `RouteData` ; il contient le `VirtualPath` de l’URL de sortie et des propriétés supplémentaires qui doivent être définies par la route.
 
 La propriété `VirtualPathData.VirtualPath` contient le *chemin virtuel* produit par la route. En fonction de vos besoins, vous aurez peut-être besoin de traiter davantage le chemin. Par exemple, si vous souhaitez afficher l’URL générée au format HTML, vous devez ajouter un préfixe au chemin de base de l’application.
 
