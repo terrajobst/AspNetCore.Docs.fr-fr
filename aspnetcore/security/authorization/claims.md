@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: da308b67be046395bb1baa0f272e767cccbc99c8
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 2464f8cac720dcf5de02f2679e9450e8b77de3ee
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="claims-based-authorization-in-aspnet-core"></a>Autorisation basée sur les revendications dans ASP.NET Core
 
@@ -100,6 +100,10 @@ public void ConfigureServices(IServiceCollection services)
     });
 }
 ```
+
+### <a name="add-a-generic-claim-check"></a>Ajouter une vérification de la revendication générique
+
+Si la valeur de revendication n’est pas une valeur unique ou une transformation est requise, utilisez [RequireAssertion](/dotnet/api/microsoft.aspnetcore.authorization.authorizationpolicybuilder.requireassertion). Pour plus d’informations, consultez [à l’aide d’une func pour répondre à une stratégie](xref:security/authorization/policies#using-a-func-to-fulfill-a-policy).
 
 ## <a name="multiple-policy-evaluation"></a>Évaluation des stratégies
 
