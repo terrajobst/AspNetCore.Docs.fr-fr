@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/gdpr
-ms.openlocfilehash: 3adfd1703dbf6446356886a662168bf1dbf65d56
-ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
-ms.translationtype: HT
+ms.openlocfilehash: dc1724e8a78c25d3697d14ad784ce853737681f2
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/23/2018
+ms.lasthandoff: 05/24/2018
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Prise en charge de l’Union européenne général données Protection règlement (PIBR) dans ASP.NET Core
 
@@ -28,9 +28,9 @@ ASP.NET Core fournit des API et des modèles pour répondre à certaines de la [
 * [Les cookies de Session et TempData](#tempdata) ne fonctionnent pas lorsque le suivi est désactivé.
 * Le [gérer les identités](#pd) page fournit un lien pour télécharger et supprimer des données de l’utilisateur.
 
-Le [exemple d’application](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr) vous permet de tester la plupart des API ajouté aux modèles ASP.NET Core 2.1 et PIBR des points d’extension. Consultez le [Lisez-moi](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr) fichier pour tester les instructions.
+Le [exemple d’application](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr/sample) vous permet de tester la plupart des API ajouté aux modèles ASP.NET Core 2.1 et PIBR des points d’extension. Consultez le [Lisez-moi](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr/sample) fichier pour tester les instructions.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/gdpr/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>Prise en charge d’ASP.NET Core PIBR dans le modèle de code généré
 
