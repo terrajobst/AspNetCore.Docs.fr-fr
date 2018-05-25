@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: ce4edf6f07808d3958c919a1d81561ce020fe52b
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 89d9a51334bdd50b72213d32fa194808ac6a93b9
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
@@ -133,7 +133,7 @@ HTTP.sys est une technologie aboutie qui assure une protection contre de nombreu
 
    `UrlPrefixes` présente l’avantage de générer immédiatement un message d’erreur en cas de préfixe mal formé.
 
-   Les paramètres de `UrlPrefixes` remplacent les paramètres `UseUrls`/`urls`/`ASPNETCORE_URLS`. Par conséquent, avec `UseUrls`, `urls` et la variable d’environnement `ASPNETCORE_URLS`, il est plus facile de basculer entre Kestrel et HTTP.sys. Pour plus d’informations sur `UseUrls`, `urls` et `ASPNETCORE_URLS`, consultez la section [Hébergement](xref:fundamentals/hosting).
+   Les paramètres de `UrlPrefixes` remplacent les paramètres `UseUrls`/`urls`/`ASPNETCORE_URLS`. Par conséquent, avec `UseUrls`, `urls` et la variable d’environnement `ASPNETCORE_URLS`, il est plus facile de basculer entre Kestrel et HTTP.sys. Pour plus d’informations sur `UseUrls`, `urls` et `ASPNETCORE_URLS`, consultez la rubrique [Héberger dans ASP.NET Core](xref:fundamentals/host/index).
 
    HTTP.sys utilise les [formats de chaîne UrlPrefix de l’API de serveur HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx).
 
@@ -179,4 +179,4 @@ Pour les applications hébergées par HTTP.sys qui interagissent avec les demand
 
 * [API de serveur HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
 * [Référentiel GitHub aspnet/HttpSysServer (code source)](https://github.com/aspnet/HttpSysServer/)
-* [Hébergement](xref:fundamentals/hosting)
+* [Héberger dans ASP.NET Core](xref:fundamentals/host/index)

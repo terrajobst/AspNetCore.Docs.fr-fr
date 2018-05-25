@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
 msc.type: authoredcontent
-ms.openlocfilehash: 8cad6ee45a8331513c72c4079f300fbb06c1ed77
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9f3a55c5e68e61a2d7907c765209d3786e05a485
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/24/2018
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-remote-agent"></a>Configuration d’un serveur Web pour la publication (Agent distant) de déploiement Web
 ====================
@@ -217,7 +217,7 @@ Vous pouvez vérifier si un service est en cours d’exécution de plusieurs man
 
 Par défaut, le Service de l’Agent distant écoute sur le port TCP 80, à cette URL :
 
-http:// [<em>nom du serveur</em>] / MSDEPLOYAGENTSERVICE
+<http://servername.com/MSDEPLOYAGENTSERVICE>
 
 Dans la plupart des cas, vous ne devez configurer les règles de pare-feu supplémentaires pour le Service de l’Agent distant, car les serveurs web est généralement écoutent les requêtes HTTP sur le port 80. Si vous avez personnalisé votre installation pour l’écoute sur un port non standard, vous devez configurer des exceptions de pare-feu en fonction des besoins.
 

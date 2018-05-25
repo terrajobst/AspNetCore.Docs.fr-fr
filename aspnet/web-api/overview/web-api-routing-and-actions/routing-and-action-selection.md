@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/routing-and-action-selection
-title: "Routage et sélection d’Action dans ASP.NET Web API | Documents Microsoft"
+title: Routage et sélection d’Action dans ASP.NET Web API | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2012

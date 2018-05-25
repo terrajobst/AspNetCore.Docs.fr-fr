@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/whats-new-in-aspnet-and-web-development-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 00b43cc548df44edded925521991a095ed856494
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: f447dc0108dffb36ed6d627fb83b3117fd22c94c
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="whats-new-in-aspnet-and-web-development-in-visual-studio-2012"></a>Nouveautés de développement ASP.NET et Web dans Visual Studio 2012
 ====================
@@ -202,7 +202,7 @@ Dans cette tâche, vous allez apprendre comment utiliser des extraits de code de
     > [!NOTE]
     > Si vous utilisez Internet Explorer 10 et que vous ne pouvez pas voir les ombres, assurez-vous que le mode de document est défini sur les normes Internet Explorer 10. Appuyez sur **F12** pour ouvrir les outils de développement Internet Explorer sur **Mode Document** pour convertir des normes Internet Explorer 10.
 
-    ![about-us](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image21.png)
+    ![sur-nous](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image21.png)
 
 <a id="Exercise2"></a>
 
@@ -259,10 +259,7 @@ Visual Studio met maintenant à jour le code HTML ouverture ou la fermeture des 
 
 1. Sur le **Default.aspx** , ajoutez une **H3** élément avec un titre (par exemple, Visual Studio 2012 Rocks !).
 
-
-~~~
-[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample5.aspx)]
-~~~
+    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample5.aspx)]
 2. Modifier la **H3** balise et le type **H2** ou **H1.**
 
     Notez que la balise de fin sont automatiquement mises à jour. Vous pouvez également modifier la balise de fin pour voir que la balise de début des mises à jour en conséquence trop.
@@ -288,13 +285,10 @@ Visual Studio inclut désormais plusieurs extraits de code HTML5. Dans cette tâ
     *Insertion d’extraits de Code HTML5*
 3. Mettre à jour la source audio pour pointer vers un fichier audio.
 
+    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample6.aspx)]
 
-~~~
-[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample6.aspx)]
-
-> [!NOTE]
-> You will need to add the audio file to the solution.
-~~~
+    > [!NOTE]
+    > Vous devez ajouter le fichier audio à la solution.
 4. Appuyez sur **F5** pour exécuter le site et de lecture du fichier audio.
 
     ![Exécution du contrôle audio](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/_static/image29.png "en cours d’exécution du contrôle audio")
@@ -549,37 +543,25 @@ Dans cette tâche, vous allez apprendre à activer et référencer les fichiers 
 
     Notez que la nouvelle **Microsoft.Web.Optimization** espace de noms est commentée au début du fichier. Supprimez les commentaires d’à l’aide de la directive pour inclure les fonctionnalités de groupement et la minimisation.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample10.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample10.cs)]
 4. Recherchez le **Application\_Démarrer** (méthode).
 
     Dans cette méthode, supprimez l’appel de EnableDefaultBundles comme indiqué dans l’extrait de code ci-dessous. Cela permet de faire référence à une collection groupés sur des fichiers CSS dans un dossier en utilisant le chemin d’accès à ce dossier, ainsi que les &quot;CSS&quot; ou &quot;JS&quot; suffixe.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample11.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample11.cs)]
 5. Ouvrez le **Optimization.aspx** de fichiers et recherchez le contrôle de contenu pour **HeadContent**.
 
     Notez les fichiers CSS et JS avoir une seule balise référencée.
 
+    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample12.aspx)]
 
-~~~
-[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample12.aspx)]
-
-> [!NOTE]
-> This code is for demo purposes. Ideally, you will reference the bundles in the Site.Master file. In this sample code, you will find that some of the bundled files are also being referenced by the Site.Master file, making this last reference redundant.
-~~~
+    > [!NOTE]
+    > Ce code est à des fins de démonstration. Dans l’idéal, vous ferez référence les regroupements dans le fichier Site.Master. Dans cet exemple de code, vous constaterez que certains des fichiers regroupés sont également référencés par le fichier Site.Master, qui effectue cette dernière référence redondant.
 6. Notez que les liens utilisent les conventions de regroupement dans la **href** attribut pour obtenir les fichiers de tous les CSS ou JS des Styles et Scripts\custom dossier respectivement.
 
     Vous pouvez utiliser le chemin d’accès **personnalisé/Scripts/JS** comme indiqué ci-dessous pour regrouper et minimiser tous les fichiers JS à l’intérieur d’un **Scripts/custom** dossier. Il s’agit du comportement par défaut avec les regroupements par défaut.
 
-
-~~~
-[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample13.aspx)]
-~~~
+    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample13.aspx)]
 7. Ouvrez le **Styles\Site.css** fichier.
 
     Notez que le fichier CSS d’origine contienne code en retrait, les espaces vides et les commentaires qui agrandissent le fichier. (Le fichier JavaScript contient également les commentaires et espaces vides).
@@ -620,18 +602,12 @@ Dans cette tâche, vous allez configurer un groupe statique pour définir un ens
 
     Notez que les fichiers ne se trouvent pas au même endroit ; Il s’agit d’un autre avantage sur le regroupement par défaut.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample14.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample14.cs)]
 4. Ouvrez le **Optimization.aspx** fichier.
 
     Notez que le lien vers **statique JS regroupement** utilise le chemin d’accès que vous avez déclaré lorsque vous avez configuré l’application statique dans le fichier Global.asax.cs : **/StaticBundle**.
 
-
-~~~
-[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample15.aspx)]
-~~~
+    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample15.aspx)]
 5. Appuyez sur **F5** et exécuter l’application, puis accédez à la **optimisation** page.
 6. Cliquez sur le **statique JS regroupement** lien pour ouvrir le fichier.
 
@@ -656,10 +632,7 @@ Dans cet exemple, vous allez apprendre à utiliser le **DynamicFolderBundle** cl
 
     Vous définissez un regroupement de dossiers dynamique qui utilisera le **CoffeeMinify** processeur minimisation personnalisé qui s’applique uniquement aux fichiers avec le &quot; **.coffee** &quot; extension () Fichiers CoffeeScript). Notez que vous pouvez utiliser un modèle de recherche pour sélectionner les fichiers à regrouper dans un dossier, tel que «\*.coffee ».
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample16.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample16.cs)]
 3. Ouvrez la Console du Gestionnaire de Package NuGet. Pour ce faire, utilisez le menu **vue** | **autres fenêtres** | **Package Manager Console**.
 4. Dans le **Console du Gestionnaire de Package,** type **Install-Package CoffeeSharp** et appuyez sur **entrée**.
 5. Cliquez sur le **afficher tous les fichiers** situé dans le **l’Explorateur de solutions** fenêtre
@@ -676,10 +649,7 @@ Dans cet exemple, vous allez apprendre à utiliser le **DynamicFolderBundle** cl
 
     Cette classe hérite de JsMinify à minimiser la sortie JavaScript résultant de la compilation de code CoffeeScript. Il appelle le compilateur CoffeeScript pour générer le code JavaScript tout d’abord, puis il transmet à la méthode JsMinify.Process à minimiser le code résultant.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample17.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample17.cs)]
 8. Ouvrez le **Script1.coffee** et **Script2.coffee** fichiers à partir de la **/groupe de Scripts** dossier.
 
     Ces fichiers inclut le code de CoffeScript peut être compilé lors de l’exécution de l’intégration avec la classe CoffeeMinify.
@@ -696,10 +666,7 @@ Dans cet exemple, vous allez apprendre à utiliser le **DynamicFolderBundle** cl
 
     Notez que le lien vers **dynamique JS regroupement** fait référence à la **/groupe de Scripts** dossier à l’aide de la **/café** suffixe que vous avez configuré pour le regroupement de dossiers dynamique.
 
-
-~~~
-[!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample18.aspx)]
-~~~
+    [!code-aspx[Main](whats-new-in-aspnet-and-web-development-in-visual-studio-2012/samples/sample18.aspx)]
 10. Appuyez sur **F5** et exécuter l’application, puis accédez à la **optimisation** page.
 11. Cliquez sur le **dynamique JS regroupement** lien pour ouvrir le fichier généré.
 

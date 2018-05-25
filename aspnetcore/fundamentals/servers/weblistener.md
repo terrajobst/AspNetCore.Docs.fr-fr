@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/weblistener
-ms.openlocfilehash: d40243454632550147a7d42ab26a8f1d2d100db2
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: 46871edb744ad152df8eb958b344068b7408dd1e
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="weblistener-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web WebListener dans ASP.NET Core
 
@@ -82,9 +82,9 @@ Vous pouvez également recourir aux [paramètres de Registre Http.Sys](https://s
 
   [!code-csharp[](weblistener/sample/Program.cs?name=snippet_Main&highlight=13-17)]
 
-* Configurez les ports et les URL sur lesquels écouter. 
+* Configurer les ports et les URL sur lesquels écouter 
 
-  Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Pour configurer les ports et les préfixes d’URL, vous pouvez utiliser la méthode d’extension `UseURLs`, l’argument de ligne de commande `urls` ou le système de configuration ASP.NET Core. Pour plus d’informations, consultez [Hébergement](../../fundamentals/hosting.md).
+  Par défaut, ASP.NET Core est lié à `http://localhost:5000`. Pour configurer les ports et les préfixes d’URL, vous pouvez utiliser la méthode d’extension `UseURLs`, l’argument de ligne de commande `urls` ou le système de configuration ASP.NET Core. Pour plus d’informations, consultez [Héberger dans ASP.NET Core(xref:fundamentals/host/index).
 
   WebListener utilise les [formats de chaîne de préfixe Http.Sys](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx). WebListener n’exige aucun format de chaîne de préfixe spécifique.
 
@@ -179,4 +179,4 @@ Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * [Exemple d’application pour cet article](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/servers/weblistener/sample)
 * [Code source de WebListener](https://github.com/aspnet/HttpSysServer/)
-* [Hébergement](../hosting.md)
+* [Hébergement](xref:fundamentals/host/index)

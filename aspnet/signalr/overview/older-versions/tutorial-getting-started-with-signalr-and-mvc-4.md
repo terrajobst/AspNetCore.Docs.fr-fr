@@ -76,7 +76,7 @@ Cette section montre comment créer une application ASP.NET MVC 4, ajoutez la bi
       6. Cliquez sur le **concentrateurs** dossier, cliquez sur **ajouter | Classe**et créer une nouvelle classe c# nommée **ChatHub.cs**. Vous allez utiliser cette classe comme un concentrateur SignalR serveur qui envoie des messages à tous les clients.
 
 > [!NOTE]
-> Si vous utilisez Visual Studio 2012 et que vous avez installé le [mise à jour ASP.NET et Web Tools 2012.2](../../../visual-studio/overview/2012/aspnet-and-web-tools-20122-release-notes-rtw.md#_Installation), vous pouvez utiliser le nouveau modèle d’élément SignalR pour créer la classe de concentrateur. Pour ce faire, cliquez sur le **concentrateurs** dossier, cliquez sur **ajouter | Un nouvel élément**, sélectionnez **classe de concentrateur SignalR (v1)**et le nom de la classe **ChatHub.cs**.
+> Si vous utilisez Visual Studio 2012 et que vous avez installé le [mise à jour ASP.NET et Web Tools 2012.2](../../../visual-studio/overview/2012/aspnet-and-web-tools-20122-release-notes-rtw.md#_Installation), vous pouvez utiliser le nouveau modèle d’élément SignalR pour créer la classe de concentrateur. Pour ce faire, cliquez sur le **concentrateurs** dossier, cliquez sur **ajouter | Un nouvel élément**, sélectionnez **classe de concentrateur SignalR (v1)** et le nom de la classe **ChatHub.cs**.
 
 
 1. Remplacez le code dans le **ChatHub** classe par le code suivant.

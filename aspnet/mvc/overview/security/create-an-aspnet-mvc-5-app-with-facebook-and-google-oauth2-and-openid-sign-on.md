@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
 ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/21/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Créer une application ASP.NET MVC 5 avec Facebook, Twitter, LinkedIn et Google OAuth2 Sign-on (c#)
 ====================
@@ -261,7 +261,7 @@ Supprimer la base de données d’appartenance afin de pouvoir à nouveau enregi
 
 1. Enable-Migrations
 2. Migration ajouter Init
-3. Update-Database
+3. Base de données de mise à jour
 
 Exécutez l’application et utilisez FaceBook et Google pour vous connecter et d’inscrire certains utilisateurs.
 

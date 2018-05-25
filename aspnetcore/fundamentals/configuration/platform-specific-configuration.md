@@ -11,11 +11,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 9bd54319b312e18e6114cd800231c47e1fa22894
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 793169b491596cd7326d747a3f19d7fdaf7e2b65
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>Améliorer une application à partir d’un assembly externe dans ASP.NET Core avec IHostingStartup
 
@@ -37,7 +37,7 @@ L’exemple d’application lit [HostingStartupAssembliesKey](/dotnet/api/micros
 
 Pour désactiver le chargement automatique des assemblys d’hébergement au démarrage, procédez de l’une des manières suivantes :
 
-* Définissez le paramètre de configuration d’hôte [Empêcher l’hébergement au démarrage](xref:fundamentals/hosting#prevent-hosting-startup).
+* Définissez le paramètre de configuration d’hôte [Empêcher l’hébergement au démarrage](xref:fundamentals/host/web-host#prevent-hosting-startup).
 * Définissez la variable d’environnement `ASPNETCORE_PREVENTHOSTINGSTARTUP`.
 
 Si le paramètre d’hôte ou la variable d’environnement a la valeur `true` ou `1`, les assemblys d’hébergement au démarrage ne sont pas chargés automatiquement. Si les deux sont définis, le paramètre d’hôte contrôle le comportement.
@@ -120,7 +120,7 @@ ASPNETCORE\_HOSTINGSTARTUPASSEMBLIES
 
 Seuls les assemblys d’hébergement au démarrage sont analysés à la recherche de `HostingStartupAttribute`. Le nom d’assembly de l’implémentation est fourni dans cette variable d’environnement. L’exemple d’application définit la valeur `StartupDiagnostics`.
 
-Vous pouvez également définir la valeur à l’aide du paramètre de configuration d’hôte [Assemblys d’hébergement au démarrage](xref:fundamentals/hosting#hosting-startup-assemblies).
+Vous pouvez également définir la valeur à l’aide du paramètre de configuration d’hôte [Assemblys d’hébergement au démarrage](xref:fundamentals/host/web-host#hosting-startup-assemblies).
 
 DOTNET\_ADDITIONAL\_DEPS
 

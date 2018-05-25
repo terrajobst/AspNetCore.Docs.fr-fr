@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 977a6b5a84825ebd087752dcc2ebc0c5410e1657
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 485d2ba7a1274bbb36cfbcbca9322cecc8c8d77c
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Quelles sont les nouveautés dans ASP.NET MVC 4
 
@@ -152,13 +152,10 @@ Dans cet exercice, vous allez explorer les améliorations dans les modèles de p
 6. Ouvrez le fichier **AuthConfig.cs** situé sous le **application\_Démarrer** dossier.
 7. Supprimez le commentaire de la dernière ligne pour inscrire le client Google pour *OAuth* l’authentification.
 
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample1.cs)]
 
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample1.cs)]
-
-> [!NOTE]
-> Notice you can easily enable authentication using any OpenID or OAuth service like Facebook, Twitter, Microsoft, etc.
-~~~
+    > [!NOTE]
+    > Notez que vous pouvez facilement activer l’authentification à l’aide de n’importe quel service OpenID ou OAuth tels que Facebook, Twitter, Microsoft, etc.
 8. Appuyez sur **F5** pour exécuter la solution et de naviguer vers la page de connexion.
 9. Sélectionnez **Google** service pour la connexion.
 
@@ -230,20 +227,16 @@ ASP.NET MVC 4 facilite le développement de sites Web pour mobile et les navigat
 9. Ouvrez  **\_Layout.cshtml**, situé dans le **vues | Partagé** dossier et le commentaire de la balise meta de la fenêtre d’affichage. Exécutez l’application, si ce n’est pas déjà ouvert et découvrez les différences.
 
 
-~~~
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample2.cshtml)]
 
-![The site after commenting the viewport meta tag](whats-new-in-aspnet-mvc-4/_static/image15.png "The site after commenting the viewport meta tag")
+![Le site après la balise meta de la fenêtre d’affichage de commentaires](whats-new-in-aspnet-mvc-4/_static/image15.png "le site après la balise meta de la fenêtre d’affichage de commentaires")
 
-*The site after commenting the viewport meta tag*
-~~~
+*Le site après la balise meta de la fenêtre d’affichage de commentaires*
 10. Dans Visual Studio, appuyez sur **MAJ** + **F5** pour arrêter le débogage de l’application.
 11. Supprimez les commentaires de la balise meta de la fenêtre d’affichage.
 
 
-~~~
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample3.cshtml)]
-~~~
 
 <a id="Task_3_-_Using_Adaptive_Rendering"></a>
 #### <a name="task-3---using-adaptive-rendering"></a>Tâche 3 - à l’aide de rendu adaptable
@@ -260,7 +253,7 @@ La souplesse de la technique de rendu adaptable permet à toute personnalisation
 > Le format de base d’une requête de média est : @media \[étendue : tous les | poche | imprimer | projection | écran\] ([propriété : valeur] et... propriété : valeur)
 
 
-Exemples de requêtes de média : &gt;  <strong>@media tous et (largeur maximale : 1000px) et (largeur minimale : 700px) {} :</strong> pour toutes les résolutions entre 700px et 1000px.
+Exemples de requêtes de média : &gt;  <strong>@media tous et (largeur maximale : 1000px) et (largeur minimale : 700px) {}:</strong> pour toutes les résolutions entre 700px et 1000px.
 
 > <strong>@media écran et (largeur minimale : 400 px) et (largeur maximale : 700px) {...} :</strong> uniquement pour les écrans. La résolution doit être compris entre 400 et 700px.
 > 
@@ -326,10 +319,7 @@ Dans cette tâche, vous allez créer un fictifs du service pour récupérer le c
 
     (Code d’extrait de code - *Action ASP.NET MVC 4 de la galerie de Lab - Ex02 -*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample4.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample4.cs)]
 7. Appuyez sur **F5** pour exécuter la solution, puis accédez à l’URL suivante pour tester le service photo factices : `http://localhost:[port]/photo/gallery` (la valeur [port] dépend le port actif sur lequel l’application a été lancée). La demande à cette URL doit récupérer le contenu de la **Photos.json** fichier.
 
     ![Test du service photo factices](whats-new-in-aspnet-mvc-4/_static/image20.png "test du service factices photo")
@@ -349,37 +339,25 @@ Dans cette tâche, vous mettrez à jour la page d’accueil pour afficher la gal
 
     (Code d’extrait de code - *modèle d’ASP.NET MVC 4 Lab - Ex02 - Photo*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample5.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample5.cs)]
 4. Ouvrez le fichier **HomeController.cs** dans le dossier **Controllers**.
 5. Ajoutez les instructions using suivantes.
 
     (Code d’extrait de code - *ASP.NET MVC 4 les instructions Using HomeController Lab - Ex02 -*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample6.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample6.cs)]
 6. Mise à jour la **Index** action utilise **HttpClient** pour récupérer les données de la galerie, puis utiliser le **JavaScriptSerializer** à désérialiser par le modèle d’affichage.
 
     (Code d’extrait de code - *Action ASP.NET MVC 4 sur l’Index Lab - Ex02 -*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample7.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample7.cs)]
 7. Ouvrez le **Index.cshtml** fichier situé dans le **Views\Home** dossier et remplacer tout le contenu par le code suivant.
 
     Ce code effectue une itération sur toutes les photos extraites du service et les affiche dans une liste non triée.
 
     (Code d’extrait de code - *liste de photos ASP.NET MVC 4 Lab - Ex02 -*)
 
-
-~~~
-[!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample8.cshtml)]
-~~~
+    [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample8.cshtml)]
 8. Dans le **l’Explorateur de solutions**, avec le bouton droit le **contenu** dossier de votre projet, puis sélectionnez **ajouter | Un élément existant**. Accédez à la **Source\Assets\Content** dossier de ce laboratoire et ajouter la **Site.css** fichier. Vous devrez confirmer son remplacement. Si vous avez le **Site.css** le fichier est ouvert, vous devez confirmer pour recharger le fichier également.
 9. Ouvrez l’Explorateur de fichiers et de copier l’intégralité du **Photos** dossier situé sous le **Source\Assets** dossier de ce laboratoire dans le dossier racine de votre projet dans l’Explorateur de solutions.
 10. Exécutez l'application. Vous devez maintenant voir la page d’accueil affiche les photos stockées dans la galerie.
@@ -434,10 +412,7 @@ Une clé mises à jour dans ASP.NET MVC 4 est la prise en charge pour le dévelo
 
     (Code d’extrait de code - *ASP.NET MVC 4 Mobile offres groupées de Registre Lab - Ex03 -*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample10.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample10.cs)]
 5. Exécutez l’application à l’aide d’un navigateur web au bureau.
 6. Ouvrez le **émulateur de Windows Phone 7,** situé dans **Menu Démarrer | Tous les programmes | Windows Phone SDK 7.1 | Émulateur de Windows Phone.**
 7. Dans l’écran d’accueil téléphone, ouvrez Internet Explorer. Extraire l’URL où l’application est démarrée et accédez à cette URL avec le navigateur de téléphone (par exemple, `http://localhost:[PortNumber]/`).
@@ -462,22 +437,19 @@ Dans cette tâche, vous allez créer une version mobile de l’affichage de l’
 1. Copie le **Views\Home\Index.cshtml** afficher et les coller pour créer une copie, renommez le nouveau fichier à **Index.Mobile.cshtml**.
 2. Ouvrir le nouveau créée **Index.Mobile.cshtml** permet d’afficher et de remplacer la &lt;ul&gt; balise avec ce code. Ce faisant, vous mettront à jour la &lt;ul&gt; balise jQuery Mobile et annotations de données à utiliser des thèmes de jQuery mobiles.
 
+    [!code-html[Main](whats-new-in-aspnet-mvc-4/samples/sample11.html)]
 
-~~~
-[!code-html[Main](whats-new-in-aspnet-mvc-4/samples/sample11.html)]
-
-> [!NOTE] 
-> 
-> Notice that:
-> 
-> - The **data-role** attribute set to **listview** will render the list using the listview styles.
-> 
-> - The **data-inset** attribute set to true will show the list with rounded border and margin.
-> 
-> - The **data-filter** attribute set to **true** will generate a search box.
-> 
-> You can learn more about jQuery Mobile conventions in the project documentation: [[http://jquerymobile.com/demos/1.1.1/](http://jquerymobile.com/demos/1.1.1/)](http://jquerymobile.com/demos/1.1.1/)
-~~~
+    > [!NOTE] 
+    > 
+    > Notez que :
+    > 
+    > - Le **rôle de données** attribut la valeur **listview** affichera la liste en utilisant les styles de listview.
+    > 
+    > - Le **incrustation de données** attribut défini sur true affiche la liste avec une bordure arrondie et marge.
+    > 
+    > - Le **filtre de données** attribut la valeur **true** génère une zone de recherche.
+    > 
+    > Pour plus d’informations sur les conventions de jQuery Mobile dans la documentation du projet : [[http://jquerymobile.com/demos/1.1.1/](http://jquerymobile.com/demos/1.1.1/)](http://jquerymobile.com/demos/1.1.1/)
 3. Appuyez sur **CTRL + S** pour enregistrer les modifications.
 4. Basculez vers le **Windows Phone Emulator** et actualisez le site. Notez que la nouvelle apparence de la liste de bibliothèque, ainsi que la nouvelle zone de recherche située en haut. Ensuite, tapez un mot dans la zone de recherche (par exemple, **Tulips**) pour lancer une recherche dans la galerie de photos.
 
@@ -512,10 +484,7 @@ Dans cette tâche, vous mettrez à jour la mise en page mobile pour utiliser un 
 2. Ouvrez le  **\_Layout.Mobile.cshtml** fichier situé dans **Views\Shared**.
 3. Rechercher l’élément div avec le rôle de données la valeur &quot;page&quot; et mettre à jour le **données-theme** à &quot; **e**&quot;.
 
-
-~~~
-[!code-html[Main](whats-new-in-aspnet-mvc-4/samples/sample13.html)]
-~~~
+    [!code-html[Main](whats-new-in-aspnet-mvc-4/samples/sample13.html)]
 4. Appuyez sur **CTRL + S** pour enregistrer les modifications.
 5. Actualiser le site dans le **Windows Phone Emulator** et notez le nouveau jeu de couleurs.
 
@@ -570,10 +539,7 @@ Dans cette tâche, vous mettrez à jour la disposition de bureau pour inclure le
 3. Revenez à Visual Studio et ouvrez le  **\_Layout.cshtml** vue.
 4. Recherchez la section de connexion et insérez un appel à restituer le  **\_ViewSwitcher** vue partielle ci-dessous le  **\_LogOnPartial** vue partielle. Ensuite, appuyez sur **CTRL + S** pour enregistrer les modifications.
 
-
-~~~
-[!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample14.cshtml)]
-~~~
+    [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample14.cshtml)]
 5. Appuyez sur **CTRL + S** pour enregistrer les modifications.
 6. Actualisez la page dans l’émulateur Windows Phone et double-cliquez sur l’écran pour effectuer un zoom. Notez que la page d’accueil affiche maintenant le **affichage Mobile** lien bascule de mobile en mode bureau.
 
@@ -603,39 +569,32 @@ Dans cette tâche, vous allez créer une disposition personnalisée pour les app
 1. Dans Visual Studio, appuyez sur **MAJ** + **F5** pour arrêter le débogage de l’application.
 2. Ouvrez **Global.asax.cs** et ajoutez le code suivant à l’aide d’instruction.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample15.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample15.cs)]
 3. Ajoutez le code en surbrillance suivant à l’Application\_Start (méthode).
 
     (Code d’extrait de code - *ASP.NET MVC 4 Lab - Ex03 - iPhone DisplayMode*)
 
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample16.cs)]
 
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample16.cs)]
+Vous avez enregistré un nouveau **DefaultDisplayMode nommé &quot;iPhone&quot;**, au sein de la méthode statique **DisplayModeProvider.Instance.Modes** liste statique, qui sera comparée à chaque demande entrante. Si la demande entrante contient la chaîne &quot;iPhone&quot;, ASP.NET MVC trouvera les vues dont le nom contient la &quot;iPhone&quot; suffixe. Le paramètre 0 indique la façon dont certains est le nouveau mode ; par exemple, cette vue est plus spécifique que le général &quot;.mobile&quot; règle qui correspond aux demandes à partir d’appareils mobiles.
 
-You have registered a new **DefaultDisplayMode named &quot;iPhone&quot;**, within the static **DisplayModeProvider.Instance.Modes** static list, that will be matched against each incoming request. If the incoming request contains the string &quot;iPhone&quot;, ASP.NET MVC will find the views whose name contain the &quot;iPhone&quot; suffix. The 0 parameter indicates how specific is the new mode; for instance, this view is more specific than the general &quot;.mobile&quot; rule that matches requests from mobile devices.
-
-After this code runs, when an iPhone browser generates a request, your application will use the **Views\Shared\\_Layout.iPhone.cshtml** layout you will create in the next steps.
+Une fois ce code s’exécute lorsqu’un navigateur iPhone génère une demande, votre application utilisera le **Views\Shared\\_Layout.iPhone.cshtml** mise en page que vous créerez dans les étapes suivantes.
 
 > [!NOTE]
-> This way of testing the request for iPhone has been simplified for demo purposes and might not work as expected for every iPhone user agent string (for example test is case sensitive).
-~~~
+> Cette méthode de test de la demande pour iPhone a été simplifié à des fins de démonstration et peut ne pas fonctionne comme prévu pour chaque chaîne d’agent utilisateur iPhone (pour le test de l’exemple respecte la casse).
+
 4. Créer une copie de la  **\_Layout.Mobile.cshtml** de fichiers dans le **Views\Shared** dossier et renommez la copie à &quot; **\_Layout.iPhone.csthml**&quot;.
 5. Ouvrez  **\_Layout.iPhone.csthml** vous avez créé à l’étape précédente.
 6. Rechercher l’élément div avec l’attribut de rôle de données la valeur **page** et modifiez le **thème de données** attribut &quot; **un**&quot;.
 
 
-~~~
 [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample17.cshtml)]
 
-Now you have 3 layouts in your ASP.NET MVC 4 application:
+Vous avez maintenant 3 mises en page dans votre application ASP.NET MVC 4 :
 
-1. **\_Layout.cshtml**: default layout used for desktop browsers.
-2. **\_Layout.mobile.cshtml**: default layout used for mobile devices.
-3. **\_Layout.iPhone.cshtml**: specific layout for iPhone devices, using a different color scheme to differentiate from \_Layout.mobile.cshtml.
-~~~
+1. **\_Layout.cshtml**: présentation par défaut utilisée pour les navigateurs de bureau.
+2. **\_Layout.Mobile.cshtml**: présentation par défaut utilisée pour les appareils mobiles.
+3. **\_Layout.iPhone.cshtml**: mise en page spécifique pour les appareils iPhone, à l’aide d’un jeu de couleurs pour différencier \_Layout.mobile.cshtml.
 7. Appuyez sur **F5** pour exécuter l’application et de parcourir le site dans le **Windows Phone Emulator**.
 8. Ouvrir un **simulateur iPhone** (consultez [annexe C](#AppendixC) pour obtenir des instructions sur la façon d’installer et configurer un simulateur iPhone), puis accédez au site trop. Notez que chaque téléphone utilise le modèle spécifique.
 
@@ -666,46 +625,31 @@ Cet exercice explique les principes fondamentaux de l’opération asynchrone da
 2. Ouvrez le **HomeController.cs** classe à partir de la **contrôleurs** dossier.
 3. Ajoutez le code suivant à l’aide d’instruction.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample18.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample18.cs)]
 4. Mise à jour la **HomeController** classe hérite de **AsyncController**. Les contrôleurs qui dérivent de AsyncController activent ASP.NET traiter les requêtes asynchrones, et ils peuvent toujours les méthodes d’action synchrones service.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample19.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample19.cs)]
 5. Ajouter le **async** mot clé à la **Index** (méthode) et le rendre le type de retour **tâche&lt;ActionResult&gt;**.
 
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample20.cs)]
 
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample20.cs)]
-
-> [!NOTE]
-> The **async** keyword is one of the new keywords the .NET Framework 4.5 provides; it tells the compiler that this method contains asynchronous code. A **Task** object represents an asynchronous operation that may complete at some point in the future.
-~~~
+    > [!NOTE]
+    > Le **async** (mot clé) est un des nouveaux mots clés du .NET Framework 4.5 fournit ; elle indique au compilateur que cette méthode contient du code asynchrone. A **tâche** objet représente une opération asynchrone qui peut se terminer à un moment donné dans le futur.
 6. Remplacez le **client. GetAsync()** appel avec la version complète asynchrone à l’aide await (mot clé), comme indiqué ci-dessous.
 
     (Code d’extrait de code - *ASP.NET MVC 4 Lab - Ex04 - GetAsync*)
 
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample21.cs)]
 
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample21.cs)]
-
-> [!NOTE]
-> In the previous version, you were using the **Result** property from the **Task** object to block the thread until the result is returned (sync version).
-> 
-> Adding the **await** keyword tells the compiler to asynchronously wait for the task returned from the method call. This means that the rest of the code will be executed as a callback only after the awaited method completes. Another thing to notice is that you do not need to change your try-catch block in order to make this work: the exceptions that happen in background or in foreground will still be caught without any extra work using a handler provided by the framework.
-~~~
+    > [!NOTE]
+    > Dans la version précédente, que vous utilisiez le **résultat** propriété à partir de la **tâche** objet bloque le thread jusqu'à ce que le résultat est retourné (version de synchronisation).
+    > 
+    > Ajout de la **await** mot clé indique au compilateur pour attendre la tâche retournée à partir de l’appel de méthode de manière asynchrone. Cela signifie que le reste du code sera exécuté comme un rappel seulement après l’achève de la méthode attendue. Une autre chose à remarquer est que vous n’avez pas besoin de modifier votre bloc try-catch afin de résoudre ce problème : les exceptions qui se produisent en arrière-plan ou au premier plan sont encore interceptées sans aucun travail supplémentaire à l’aide d’un gestionnaire fourni par l’infrastructure.
 7. Modifier le code pour continuer avec l’implémentation asynchrone, en remplaçant les lignes avec le nouveau code, comme indiqué ci-dessous
 
     (Code d’extrait de code - *ASP.NET MVC 4 Lab - Ex04 - ReadAsStringAsync*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample22.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample22.cs)]
 8. Exécutez l'application. Vous ne remarquerez aucune modification majeure, mais votre code ne bloquera pas d’un thread du pool de threads qui effectue une meilleure utilisation des ressources du serveur et améliore les performances.
 
     > [!NOTE]
@@ -719,44 +663,26 @@ Méthodes d’action asynchrones qui retournent des instances de tâche peuvent 
 1. Revenez à Visual Studio, puis appuyez sur **MAJ + F5** pour arrêter le débogage.
 2. Ajoutez le code suivant à l’aide de l’instruction à la **HomeController.cs** fichier.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample23.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample23.cs)]
 3. Mettre à jour de l’action de l’Index à recevoir un **CancellationToken** argument.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample24.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample24.cs)]
 4. Mise à jour la **GetAsync** appel pour passer le jeton d’annulation.
 
     (Code d’extrait de code - *SendAsync de Lab - Ex04 - ASP.NET MVC 4 avec CancellationToken*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample25.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample25.cs)]
 5. Décorer le *Index* méthode avec un **AsyncTimeout** attribut la valeur 500 millisecondes et un **HandleError** attribut configurée pour traiter les  **TaskCanceledException** en redirigeant vers un **TimedOut** vue.
 
     (Code d’extrait de code - *ASP.NET MVC 4 Lab - Ex04 - attributs*)
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample26.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample26.cs)]
 6. Ouvrir le **PhotoController** classe et mise à jour la **galerie** méthode différer les millisecondes d’exécution 1000 (1 seconde) pour simuler une tâche de longue durée.
 
-
-~~~
-[!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample27.cs)]
-~~~
+    [!code-csharp[Main](whats-new-in-aspnet-mvc-4/samples/sample27.cs)]
 7. Ouvrez le **Web.config** de fichiers et activez les erreurs personnalisées en ajoutant l’élément suivant.
 
-
-~~~
-[!code-xml[Main](whats-new-in-aspnet-mvc-4/samples/sample28.xml)]
-~~~
+    [!code-xml[Main](whats-new-in-aspnet-mvc-4/samples/sample28.xml)]
 8. Créer une nouvelle vue dans **Views\Shared** nommé **TimedOut** et utiliser la disposition par défaut. Dans l’Explorateur de solutions, cliquez sur le **Views\Shared** et sélectionnez **ajouter | Vue**.
 
     ![À l’aide des vues différentes pour chaque périphérique mobile](whats-new-in-aspnet-mvc-4/_static/image36.png "à l’aide des vues différentes pour chaque périphérique mobile")
@@ -764,10 +690,7 @@ Méthodes d’action asynchrones qui retournent des instances de tâche peuvent 
     *À l’aide des vues différentes pour chaque périphérique mobile*
 9. Mise à jour la **TimedOut** afficher le contenu comme indiqué ci-dessous.
 
-
-~~~
-[!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample29.cshtml)]
-~~~
+    [!code-cshtml[Main](whats-new-in-aspnet-mvc-4/samples/sample29.cshtml)]
 10. Exécutez l’application et accédez à l’URL racine. Que vous avez ajouté un **Thread.Sleep** de 1 000 millisecondes, vous obtiendrez une erreur de délai d’attente, générée par le **AsyncTimeout** d’attribut et d’intercepter par le **HandleError** attribut.
 
     ![Exception de délai d’attente de traitement](whats-new-in-aspnet-mvc-4/_static/image37.png "exception de délai d’attente de traitement")
@@ -889,9 +812,9 @@ Pour exécuter votre site sur un appareil simulé iPhone, vous pouvez utiliser l
 2. Cliquez sur **installer maintenant**. Si vous n’avez pas **Web Platform Installer** vous allez être redirigé pour télécharger et installer tout d’abord.
 3. Une fois **Web Platform Installer** est ouvert, cliquez sur **installer** pour démarrer le programme d’installation.
 
-    ![Install WebMatrix 2](whats-new-in-aspnet-mvc-4/_static/image49.png "Install WebMatrix 2")
+    ![Installer WebMatrix 2](whats-new-in-aspnet-mvc-4/_static/image49.png "installer WebMatrix 2")
 
-    *Install WebMatrix 2*
+    *Installer WebMatrix 2*
 4. Lisez les termes et les licences de tous les produits et cliquez sur **J’accepte** pour continuer.
 
     ![Accepter les termes du contrat de licence](whats-new-in-aspnet-mvc-4/_static/image50.png "acceptant les termes du contrat de licence")

@@ -10,11 +10,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 700ceb081b2067f932ce8ed08c45c62058775e33
-ms.sourcegitcommit: 3d071fabaf90e32906df97b08a8d00e602db25c0
+ms.openlocfilehash: 067d9bd09f6d5e54bbafd953eea169d2df2be34e
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -72,7 +72,7 @@ public CharactersController(ICharacterRepository characterRepository, string tit
 
 ## <a name="using-framework-provided-services"></a>Utilisation des services fournis par le framework
 
-La méthode `ConfigureServices` dans la classe `Startup` est chargée de définir les services utilisés par l’application, notamment les fonctionnalités de plateforme comme Entity Framework Core et ASP.NET Core MVC. Au départ, la valeur `IServiceCollection` fournie à `ConfigureServices` a les services suivants définis (en fonction de [la manière dont l’hôte a été configuré](xref:fundamentals/hosting)) :
+La méthode `ConfigureServices` dans la classe `Startup` est chargée de définir les services utilisés par l’application, notamment les fonctionnalités de plateforme comme Entity Framework Core et ASP.NET Core MVC. Au départ, la valeur `IServiceCollection` fournie à `ConfigureServices` a les services suivants définis (en fonction de [la manière dont l’hôte a été configuré](xref:fundamentals/host/index)) :
 
 | Type de service | Durée de vie |
 | ----- | ------- |
@@ -235,7 +235,7 @@ Le fournisseur de services racine est créé quand [BuildServiceProvider](/dotne
 
 Les services délimités sont supprimés par le conteneur qui les a créés. Si un service délimité est créé dans le conteneur racine, la durée de vie du service est promue en singleton, car elle est supprimée par le conteneur racine seulement quand l’application/le serveur est arrêté. La validation des étendues du service permet de traiter ces situations quand `BuildServiceProvider` est appelé.
 
-Pour plus d’informations, consultez [Validation des étendues dans la rubrique Hébergement](xref:fundamentals/hosting#scope-validation).
+Pour plus d’informations, consultez la rubrique [Validation des étendues dans l’hôte web](xref:fundamentals/host/web-host#scope-validation).
 
 ## <a name="request-services"></a>Services de requête
 
@@ -245,7 +245,7 @@ Les services disponibles au sein d’une requête ASP.NET à partir de `HttpCont
 
 Les services de requête représentent les services que vous configurez et demandez dans le cadre de votre application. Lorsque vos objets spécifient des dépendances, ceux-ci sont satisfaits par les types trouvés dans `RequestServices`, pas dans `ApplicationServices`.
 
-En règle générale, vous ne devez pas utiliser ces propriétés directement, mais plutôt préférer demander les types dont vos classes ont besoin par le biais du constructeur de votre classe et laisser le framework injecter ces dépendances. Vous obtenez ainsi des classes plus faciles à tester (consultez [Tester et déboguer](../testing/index.md)) et plus faiblement couplées.
+En règle générale, vous ne devez pas utiliser ces propriétés directement, mais plutôt préférer demander les types dont vos classes ont besoin par le biais du constructeur de votre classe et laisser le framework injecter ces dépendances. Vous obtenez ainsi des classes plus faciles à tester (consultez [Tester et déboguer](xref:testing/index)) et plus faiblement couplées.
 
 > [!NOTE]
 > Préférez demander des dépendances en tant que paramètres de constructeur plutôt qu’accéder à la collection `RequestServices`.

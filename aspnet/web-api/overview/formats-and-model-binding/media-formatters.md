@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/media-formatters
-title: "Formateurs de médias dans ASP.NET Web API 2 | Documents Microsoft"
+title: Formateurs de médias dans ASP.NET Web API 2 | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -12,25 +12,25 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/media-formatters
 msc.type: authoredcontent
-ms.openlocfilehash: 9103574597df126a22e21a2f51815f608e46f47f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1cb1c7e0f832a0a0160276fbd41facc017e2ae3e
+ms.sourcegitcommit: 50d40c83fa641d283c097f986dde5341ebe1b44c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/22/2018
 ---
 <a name="media-formatters-in-aspnet-web-api-2"></a>Formateurs de médias dans ASP.NET Web API 2
 ====================
 par [Mike Wasson](https://github.com/MikeWasson)
 
-Ce didacticiel montre comment prennent en charge que les formats supplémentaires dans l’API Web ASP.NET.
+Ce didacticiel montre comment prendre en charge des formats supplémentaires dans l’API Web ASP.NET.
 
 ## <a name="internet-media-types"></a>Types de média Internet
 
-Un type de média, également appelé un type MIME, identifie le format d’un élément de données. HTTP, les types de médias décrivent le format du corps du message. Un type de média se compose de deux chaînes, un type et un sous-type. Exemple :
+Un type de média, également appelé un type MIME, identifie le format d’un élément de données. HTTP, les types de médias décrivent le format du corps du message. Un type de média se compose de deux chaînes, un type et un sous-type. Par exemple :
 
-- text/html
+- texte/html
 - image/png
-- application/json
+- application/json.
 
 Lorsqu’un message HTTP contienne un corps d’entité, l’en-tête Content-Type spécifie le format du corps du message. Cela indique le récepteur comment analyser le contenu du corps du message.
 
@@ -38,7 +38,7 @@ Par exemple, si une réponse HTTP contient une image PNG, la réponse peut avoir
 
 [!code-console[Main](media-formatters/samples/sample1.cmd)]
 
-Lorsque le client envoie un message de demande, il peut inclure un en-tête Accept. L’en-tête Accept indique que le serveur les media type (s) le client souhaite à partir du serveur. Exemple :
+Lorsque le client envoie un message de demande, il peut inclure un en-tête Accept. L’en-tête Accept indique que le serveur les media type (s) le client souhaite à partir du serveur. Par exemple :
 
 [!code-console[Main](media-formatters/samples/sample2.cmd)]
 

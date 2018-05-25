@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables191
 msc.type: content
 ms.openlocfilehash: 2e6eaf51b7333fc38f769330934d3e368bf9707b
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 05/21/2018
 ---
 <a name="jquery-datatables-191"></a>jQuery DataTables 1.9.1
 ====================
@@ -25,7 +25,7 @@ Les fichiers suivants pour la plug-ins DataTables de jQuery sont hébergés sur 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/jquery.dataTables.min.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/css/jquery.dataTables.css
-- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/css/jquery.dataTables\_themeroller.CSS
+- https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/css/jquery.dataTables\_themeroller.css
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/images/back\_disabled.png
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/images/back\_enabled.png
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/images/back\_enabled\_hover.png
