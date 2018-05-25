@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
-title: "Didacticiel : Mise en route avec SignalR 2 | Documents Microsoft"
+title: 'Didacticiel : Mise en route avec SignalR 2 | Documents Microsoft'
 author: pfletcher
-description: "Ce didacticiel montre comment utiliser SignalR pour créer une application de conversation en temps réel. Vous allez ajouter SignalR à l’application web ASP.NET vide et créer une adresse de fournisseur HTML..."
+description: Ce didacticiel montre comment utiliser SignalR pour créer une application de conversation en temps réel. Vous allez ajouter SignalR à l’application web ASP.NET vide et créer une adresse de fournisseur HTML...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014

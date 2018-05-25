@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-getting-started-with-signalr
-title: "Didacticiel : Mise en route avec SignalR 1.x | Documents Microsoft"
+title: 'Didacticiel : Mise en route avec SignalR 1.x | Documents Microsoft'
 author: pfletcher
-description: "Utilisez ASP.NET SignalR pour générer une application de conversation en temps réel dans une page HTML."
+description: Utilisez ASP.NET SignalR pour générer une application de conversation en temps réel dans une page HTML.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013

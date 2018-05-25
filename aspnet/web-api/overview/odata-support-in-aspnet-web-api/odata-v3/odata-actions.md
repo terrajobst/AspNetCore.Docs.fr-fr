@@ -2,7 +2,7 @@
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/odata-actions
 title: Prise en charge des Actions OData dans ASP.NET Web API 2 | Documents Microsoft
 author: MikeWasson
-description: "Dans OData, les actions sont un moyen d’ajouter des comportements côté serveur qui ne sont pas définies facilement comme des opérations CRUD sur les entités. Certaines utilisations pour les actions incluent : implémentez..."
+description: 'Dans OData, les actions sont un moyen d’ajouter des comportements côté serveur qui ne sont pas définies facilement comme des opérations CRUD sur les entités. Certaines utilisations pour les actions incluent : implémentez...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2014

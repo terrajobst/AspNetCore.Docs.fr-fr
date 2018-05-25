@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
-title: "Guide d’API ASP.NET SignalR concentrateurs - Client JavaScript | Documents Microsoft"
+title: Guide d’API ASP.NET SignalR concentrateurs - Client JavaScript | Documents Microsoft
 author: pfletcher
-description: "Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 2, les clients JavaScript, telles que les navigateurs et en cours du Windows Store (WinJS)..."
+description: Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 2, les clients JavaScript, telles que les navigateurs et en cours du Windows Store (WinJS)...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2015

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/self-host-a-web-api
-title: "Auto-hébergement ASP.NET Web API 1 (c#) | Documents Microsoft"
+title: Auto-hébergement ASP.NET Web API 1 (c#) | Documents Microsoft
 author: MikeWasson
-description: "API Web ASP.NET ne requiert pas d’IIS. Vous pouvez auto-hébergement une API web dans votre propre processus d’hébergement. Ce didacticiel montre comment héberger une API web à l’intérieur d’une console applic..."
+description: API Web ASP.NET ne requiert pas d’IIS. Vous pouvez auto-hébergement une API web dans votre propre processus d’hébergement. Ce didacticiel montre comment héberger une API web à l’intérieur d’une console applic...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2012

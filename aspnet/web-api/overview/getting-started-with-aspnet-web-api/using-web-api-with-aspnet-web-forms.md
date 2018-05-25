@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms
-title: "À l’aide des API Web avec ASP.NET Web Forms | Documents Microsoft"
+title: À l’aide des API Web avec ASP.NET Web Forms | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2012

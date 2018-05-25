@@ -2,7 +2,7 @@
 uid: signalr/overview/guide-to-the-api/working-with-groups
 title: Utilisation de groupes dans SignalR | Documents Microsoft
 author: pfletcher
-description: "Cette rubrique décrit comment conserver les informations d’appartenance au groupe avec l’API de concentrateur."
+description: Cette rubrique décrit comment conserver les informations d’appartenance au groupe avec l’API de concentrateur.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014

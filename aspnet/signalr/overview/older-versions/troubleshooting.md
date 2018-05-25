@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/troubleshooting
-title: "Résolution des problèmes de SignalR (SignalR 1.x) | Documents Microsoft"
+title: Résolution des problèmes de SignalR (SignalR 1.x) | Documents Microsoft
 author: pfletcher
-description: "Cet article décrit les problèmes courants avec le développement d’applications SignalR."
+description: Cet article décrit les problèmes courants avec le développement d’applications SignalR.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/05/2013

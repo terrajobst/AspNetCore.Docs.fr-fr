@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
-title: "Paramètre de liaison dans l’API Web ASP.NET | Documents Microsoft"
+title: Paramètre de liaison dans l’API Web ASP.NET | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2013

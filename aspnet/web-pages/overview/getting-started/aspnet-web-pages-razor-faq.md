@@ -2,7 +2,7 @@
 uid: web-pages/overview/getting-started/aspnet-web-pages-razor-faq
 title: Des Pages Web ASP.NET (Razor) FAQ | Documents Microsoft
 author: tfitzmac
-description: "Cet article répertorie les questions fréquemment posées sur les Pages Web ASP.NET (Razor) et WebMatrix. Versions des logiciels utilisées dans le didacticiel ASP.NET Web Pages (R..."
+description: Cet article répertorie les questions fréquemment posées sur les Pages Web ASP.NET (Razor) et WebMatrix. Versions des logiciels utilisées dans le didacticiel ASP.NET Web Pages (R...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/07/2014

@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
-title: "Didacticiel : Mise en route avec SignalR 2 et MVC 5 | Documents Microsoft"
+title: 'Didacticiel : Mise en route avec SignalR 2 et MVC 5 | Documents Microsoft'
 author: pfletcher
-description: "Ce didacticiel montre comment utiliser ASP.NET SignalR 2 pour créer une application de conversation en temps réel. Vous allez ajouter SignalR à une application MVC 5 et créer une vue de la conversation..."
+description: Ce didacticiel montre comment utiliser ASP.NET SignalR 2 pour créer une application de conversation en temps réel. Vous allez ajouter SignalR à une application MVC 5 et créer une vue de la conversation...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
