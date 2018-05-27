@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1f30ff6c97e565059c57c55f26d2dff477774aeb
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9a56ceb9eab5774906ecc89ce9da570d4f691a82
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/27/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a>Création de Classes de modèle avec LINQ to SQL (c#)
 ====================
 par [Microsoft](https://github.com/microsoft)
 
-[Télécharger le PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
+[Télécharger PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
 
 > L’objectif de ce didacticiel est d’expliquer une méthode de création de classes de modèle pour une application ASP.NET MVC. Dans ce didacticiel, vous allez apprendre à générer des classes de modèle et d’effectuer un accès de base de données en tirant parti de Microsoft LINQ to SQL.
 
@@ -75,7 +75,7 @@ Nous devons ajouter les colonnes suivantes à notre table de base de données :
 | --- | --- | --- |
 | Id | Int | False |
 | Titre | Nvarchar(200) | False |
-| Directeur | Nvarchar(50) | False |
+| Directeur | nvarchar (50) | False |
 
 Vous devez effectuer deux opérations spéciales pour la colonne Id. Tout d’abord, vous devez marquer la colonne d’Id en tant que colonne clé primaire en sélectionnant la colonne dans le Concepteur de tables et en cliquant sur l’icône d’une clé. LINQ to SQL vous oblige à spécifier vos colonnes de clé primaire lorsque effectue insère ou met à jour par rapport à la base de données.
 
@@ -149,7 +149,7 @@ Après avoir ajouté des enregistrements de base de données pour le `tblMovies`
 
 ## <a name="using-the-repository-pattern"></a>L’utilisation du modèle de référentiel
 
-Dans la section précédente, nous avons utilisé LINQ aux classes SQL directement dans une action du contrôleur. Nous avons utilisé le `MovieDataContex` classe t directement à partir de la `Index()` action du contrôleur. Il n’existe aucun problème avec cette opération dans le cas d’une application simple. Toutefois, l’utilisation directe des LINQ to SQL dans une classe de contrôleur crée des problèmes lorsque vous avez besoin pour générer une application plus complexe.
+Dans la section précédente, nous avons utilisé LINQ aux classes SQL directement dans une action du contrôleur. Nous avons utilisé le `MovieDataContext` classe directement à partir de la `Index()` action du contrôleur. Il n’existe aucun problème avec cette opération dans le cas d’une application simple. Toutefois, l’utilisation directe des LINQ to SQL dans une classe de contrôleur crée des problèmes lorsque vous avez besoin pour générer une application plus complexe.
 
 À l’aide de LINQ to SQL au sein d’une classe de contrôleur rend difficile de passer à l’avenir des technologies d’accès aux données. Par exemple, vous pouvez décider passer de l’utilisation de Microsoft LINQ to SQL à l’utilisation d’Entity Framework Microsoft en tant que votre technologie d’accès aux données. Dans ce cas, vous devez réécrire chaque contrôleur qui accède à la base de données dans votre application.
 
