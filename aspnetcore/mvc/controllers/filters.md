@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/filters
-ms.openlocfilehash: edc2e9460eb68febe25e8dd60e3872e5ab28e9e9
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 49e51a867e47ce375a5048cae5979360c4103365
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/27/2018
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -66,7 +66,7 @@ Les filtres synchrones qui peuvent exécuter du code avant et après leur étape
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleActionFilter.cs?name=snippet1)]
 
-Les filtres asynchrones définissent une méthode On*Stage*ExecutionAsync. Cette méthode prend un délégué*FilterType*ExecutionDelegate qui exécute l’étape du pipeline du filtre. Par exemple, `ActionExecutionDelegate` appelle la méthode d’action, et vous pouvez exécuter du code avant et après l’appel de cette méthode.
+Les filtres asynchrones définissent une méthode On*Stage*ExecutionAsync. Cette méthode prend un délégué*FilterType*ExecutionDelegate qui exécute l’étape du pipeline du filtre. Par exemple, `ActionExecutionDelegate` appelle la méthode d’action ou le filtre d’action suivant, et vous pouvez exécuter du code avant et après l’appel de cette méthode.
 
 [!code-csharp[](./filters/sample/src/FiltersSample/Filters/SampleAsyncActionFilter.cs?highlight=6,8-10,13)]
 

@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/application-model
-ms.openlocfilehash: f61d04f6cf0aa054566d9f48a030cf268f2ba72a
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: a0e38b041f428f8b519fd726643b3214761fb44e
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/27/2018
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Utiliser le modèle d’application dans ASP.NET Core
 
@@ -168,7 +168,7 @@ Cet exemple applique cette convention aux routes qui n’utilisent pas le routag
 ASP.NET Core MVC utilise un autre ensemble de conventions d’ASP.NET Web API 2. Avec des conventions personnalisées, vous pouvez modifier le comportement d’une application ASP.NET Core MVC pour le mettre en cohérence avec celui d’une application d’API web. Microsoft livre le [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim/) spécialement à cette fin.
 
 > [!NOTE]
-> Découvrez plus en détail comment [migrer à partir l’API web ASP.NET](xref:migration/webapi).
+> Découvrez plus d’informations sur la [migration depuis l’API web ASP.NET](xref:migration/webapi).
 
 Pour utiliser le shim de compatibilité d’API web, vous devez ajouter le package à votre projet, puis ajouter les conventions à MVC en appelant `AddWebApiConventions` dans `Startup` :
 
