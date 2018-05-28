@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/logging/index
-ms.openlocfilehash: 7e2a4657211b0142ec87fd792d013f7ef397de2b
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 8b53a19f4958e97198175d6acea4017d54f827bb
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/24/2018
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -583,21 +583,22 @@ Le fournisseur est activé uniquement si votre projet est exécuté dans l’env
 
 ## <a name="third-party-logging-providers"></a>Fournisseurs de journalisation tiers
 
-Voici des frameworks de journalisation tiers qui sont pris en charge dans ASP.NET Core :
+Frameworks de journalisation tiers qui sont pris en charge dans ASP.NET Core :
 
-* [elmah.io](https://github.com/elmahio/Elmah.Io.Extensions.Logging) : fournisseur pour le service Elmah.Io
-
-* [JSNLog](http://jsnlog.com) : enregistre les exceptions JavaScript et d’autres événements côté client dans votre journal côté serveur.
-
-* [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging) : fournisseur pour le service Loggr
-
-* [NLog](https://github.com/NLog/NLog.Extensions.Logging) : fournisseur pour la bibliothèque NLog
-
-* [Serilog](https://github.com/serilog/serilog-extensions-logging) : fournisseur pour la bibliothèque Serilog
+* [elmah.io](https://elmah.io/) ([dépôt GitHub](https://github.com/elmahio/Elmah.Io.Extensions.Logging))
+* [JSNLog](http://jsnlog.com/) ([dépôt GitHub](https://github.com/mperdeck/jsnlog))
+* [Loggr](http://loggr.net/) ([dépôt GitHub](https://github.com/imobile3/Loggr.Extensions.Logging))
+* [NLog](http://nlog-project.org/) ([dépôt GitHub](https://github.com/NLog/NLog.Extensions.Logging))
+* [Serilog](https://serilog.net/) ([dépôt GitHub](https://github.com/serilog/serilog-extensions-logging))
 
 Certains frameworks tiers prennent en charge la [journalisation sémantique, également appelée journalisation structurée](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-L’utilisation d’un framework tiers est semblable à celle des fournisseurs intégrés : vous ajoutez un package NuGet à votre projet, puis vous appelez une méthode d’extension sur `ILoggerFactory`. Pour plus d’informations, consultez la documentation du framework.
+L’utilisation d’un framework tiers est semblable à l’utilisation des fournisseurs intégrés :
+
+1. Ajoutez un package NuGet à votre projet.
+1. Appelez une méthode d’extension sur `ILoggerFactory`.
+
+Pour plus d’informations, consultez la documentation du framework.
 
 ## <a name="azure-log-streaming"></a>Streaming des journaux Azure
 
