@@ -1,7 +1,7 @@
 ---
-title: Résoudre les problèmes de base ASP.NET sur IIS
+title: Résoudre les problèmes liés à ASP.NET Core sur IIS
 author: guardrex
-description: Découvrez comment diagnostiquer les problèmes avec les déploiements d’applications ASP.NET Core Internet Information Services (IIS).
+description: Découvrez comment diagnostiquer les problèmes liés aux déploiements Internet Information Services (IIS) d’applications ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -12,22 +12,23 @@ ms.topic: article
 uid: host-and-deploy/iis/troubleshoot
 ms.openlocfilehash: e44892d2022ca1a176cee9d027e220e196c6572d
 ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30073891"
 ---
-# <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes de base ASP.NET sur IIS
+# <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes liés à ASP.NET Core sur IIS
 
 Par [Luke Latham](https://github.com/guardrex)
 
-Cet article fournit des instructions sur la façon de diagnostiquer un ASP.NET Core problème de démarrage d’application lors de l’hébergement avec [Internet Information Services (IIS)](/iis). Les informations contenues dans cet article s’applique à l’hébergement dans IIS sur Windows Server et Windows Desktop.
+Cet article fournit des instructions sur la façon de diagnostiquer un problème de démarrage d’application ASP.NET Core dans le cas d’un hébergement avec [Internet Information Services (IIS)](/iis). Les informations contenues dans cet article s’appliquent à l’hébergement dans IIS sur Windows Server et Windows Desktop.
 
-Dans Visual Studio, un projet ASP.NET Core par défaut [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) hébergement pendant le débogage. A *502.5 Échec d’un processus* qui se produit lorsque le débogage local peut être devez, à l’aide de l’avis de cette rubrique.
+Dans Visual Studio, un projet ASP.NET Core est par défaut hébergé sur [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) pendant une opération de débogage. Vous pouvez suivre les conseils indiqués dans cette rubrique pour résoudre un *échec de processus 502.5* qui se produit pendant un débogage local.
 
-Rubriques de dépannage supplémentaires :
+Rubriques de dépannage supplémentaires :
 
 [Résoudre les problèmes liés à ASP.NET Core sur Azure App Service](xref:host-and-deploy/azure-apps/troubleshoot)  
-Bien que le Service de l’application utilise le [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) et IIS pour les applications de l’hôte, consultez la rubrique dédiée pour obtenir des instructions spécifiques au Service de l’application.
+Bien qu’App Service utilise le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) et IIS pour héberger des applications, consultez la rubrique dédiée pour obtenir des instructions qui concernent spécifiquement App Service.
 
 [Gérer les erreurs](xref:fundamentals/error-handling)  
 Découvrez comment gérer les erreurs dans les applications ASP.NET Core pendant le développement sur un système local.
@@ -35,87 +36,87 @@ Découvrez comment gérer les erreurs dans les applications ASP.NET Core pendant
 [Apprendre à déboguer avec Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)  
 Cette rubrique présente les fonctionnalités du débogueur Visual Studio.
 
-## <a name="app-startup-errors"></a>Erreurs de démarrage d’application
+## <a name="app-startup-errors"></a>Erreurs de démarrage des applications
 
-**502.5 Échec du processus**  
+**Échec de processus 502.5**  
 Le processus de travail échoue. L’application ne démarre pas.
 
-Le Module de base ASP.NET tente de démarrer le processus de travail, mais il ne démarre. La cause d’un échec de démarrage du processus peut généralement être déterminée à partir des entrées dans le [journal des événements Application](#application-event-log) et [journal stdout de Module de base ASP.NET](#aspnet-core-module-stdout-log).
+Le module ASP.NET Core tente, en vain, de démarrer le processus de travail. Vous pouvez généralement déterminer la cause d’un échec de démarrage du processus à partir des entrées du [Journal des événements de l’application](#application-event-log) et du [journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log).
 
-Le *502.5 Échec d’un processus* page d’erreur est retournée lorsqu’une erreur de configuration d’hébergement ou application entraîne l’échec du processus de travail :
+La page d’erreur d’un *échec de processus 502.5* est retournée quand une erreur de configuration d’hébergement ou d’application entraîne l’échec du processus de travail :
 
-![Fenêtre de navigateur affichant la page d’échec d’un processus 502.5](troubleshoot/_static/process-failure-page.png)
+![Fenêtre de navigateur affichant la page d’échec de processus 502.5](troubleshoot/_static/process-failure-page.png)
 
 **Erreur de serveur interne 500**  
-L’application démarre, mais une erreur empêche le serveur de répondre à la demande.
+L’application démarre, mais une erreur empêche le serveur de répondre à la requête.
 
-Cette erreur se produit dans le code de l’application lors du démarrage ou lors de la création d’une réponse. La réponse ne peut contenir aucun contenu ou la réponse ne peut apparaître comme un *500 Erreur interne au serveur* dans le navigateur. Le journal des événements indique généralement que l’application a démarré normalement. Du point de vue du serveur, qui est correct. L’application n’a pas démarré, mais il ne peut pas générer une réponse valide. [Exécuter l’application à une invite de commandes](#run-the-app-at-a-command-prompt) sur le serveur ou [activer le journal de stdout ASP.NET Core Module](#aspnet-core-module-stdout-log) pour résoudre le problème.
+Cette erreur se produit dans le code de l’application pendant le démarrage ou durant la création d’une réponse. La réponse peut être dépourvue de contenu ou apparaître sous la forme d’une *erreur de serveur interne 500* dans le navigateur. Le Journal des événements de l’application indique généralement que l’application a démarré normalement. Du point de vue du serveur, cela est correct. L’application a démarré, mais elle ne peut pas générer de réponse valide. [Exécutez l’application depuis une invite de commandes](#run-the-app-at-a-command-prompt) sur le serveur ou [activez le journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log) pour résoudre le problème.
 
 **Réinitialisation de la connexion**
 
-Si une erreur se produit après l’envoi des en-têtes, il est trop tard pour le serveur envoyer un **500 Erreur interne au serveur** lorsqu’une erreur se produit. Cela se produit souvent quand une erreur se produit pendant la sérialisation d’objets complexes d’une réponse. Ce type d’erreur apparaît comme un *réinitialisation de la connexion* erreur sur le client. [Journal des applications](xref:fundamentals/logging/index) peuvent aider à résoudre ces types d’erreurs.
+Si une erreur se produit après l’envoi des en-têtes, il est trop tard pour que le serveur puisse envoyer une **erreur de serveur interne 500**. Il en est souvent ainsi quand une erreur se produit pendant la sérialisation des objets complexes d’une réponse. Ce type d’erreur apparaît en tant qu’erreur de *réinitialisation de la connexion* sur le client. La [journalisation des applications](xref:fundamentals/logging/index) peut aider à résoudre ces types d’erreurs.
 
 ## <a name="default-startup-limits"></a>Limites de démarrage par défaut
 
-Le Module de base ASP.NET est configuré avec une valeur par défaut *startupTimeLimit* de 120 secondes. Lors de la gauche au niveau de la valeur par défaut, une application peut prendre jusqu'à deux minutes de démarrer avant que le module connecte à un échec d’un processus. Pour plus d’informations sur la configuration du module, consultez [attributs de l’élément aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
+Le module ASP.NET Core est configuré avec une valeur *startupTimeLimit* par défaut de 120 secondes. Quand cette valeur par défaut est conservée, une application peut mettre jusqu’à deux minutes à démarrer avant que le module journalise un échec d’un processus. Pour plus d’informations sur la configuration du module, consultez [Attributs de l’élément aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
 
 ## <a name="troubleshoot-app-startup-errors"></a>Résoudre les erreurs de démarrage d’application
 
 ### <a name="application-event-log"></a>Journal des événements de l'application
 
-Accéder au journal des événements Application :
+Accédez au Journal des événements de l’application :
 
-1. Ouvrez le menu Démarrer, recherchez **Observateur d’événements**, puis sélectionnez le **Observateur d’événements** application.
-1. Dans **Observateur d’événements**, ouvrez le **journaux Windows** nœud.
-1. Sélectionnez **Application** pour ouvrir le journal des événements.
-1. Rechercher les erreurs liées à l’application défectueuse. Les erreurs ont une valeur de *IIS AspNetCore Module* ou *IIS Express AspNetCore Module* dans les *Source* colonne.
+1. Ouvrez le menu Démarrer, recherchez **Observateur d’événements**, puis sélectionnez l’application **Observateur d’événements**.
+1. Dans **Observateur d’événements**, ouvrez le nœud **Journaux Windows**.
+1. Sélectionnez **Application** pour ouvrir le Journal des événements de l’application.
+1. Recherchez les erreurs liées à l’application défectueuse. Les erreurs sont signalées par une valeur *IIS AspNetCore Module* (Module AspNetCore IIS) ou *IIS Express AspNetCore Module* (Module AspNetCore IIS Express) dans la colonne *Source*.
 
-### <a name="run-the-app-at-a-command-prompt"></a>Exécuter l’application à une invite de commandes
+### <a name="run-the-app-at-a-command-prompt"></a>Exécuter l’application depuis une invite de commandes
 
-De nombreuses erreurs de démarrage ne produisent pas des informations utiles dans le journal des événements. Vous pouvez trouver la cause de certaines erreurs en exécutant l’application à une invite de commandes sur le système hôte.
+De nombreuses erreurs de démarrage ne produisent pas d’informations utiles dans le Journal des événements de l’application. Vous pouvez trouver la cause de certaines erreurs en exécutant l’application depuis une invite de commandes sur le système hôte.
 
-**Déploiement d’infrastructure dépendant**
+**Déploiement dépendant du framework**
 
-Si l’application est un [dépendant du framework déploiement](/dotnet/core/deploying/#framework-dependent-deployments-fdd):
+Si l’application est un [déploiement dépendant du framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd) :
 
-1. À l’invite de commandes, accédez au dossier de déploiement, et exécuter l’application en exécutant l’assembly de l’application avec *dotnet.exe*. Dans la commande suivante, remplacez le nom de l’assembly de l’application pour \<assembly_name > : `dotnet .\<assembly_name>.dll`.
-1. La sortie de l’application, en affichant les erreurs, de console est écrite dans la fenêtre de console.
-1. Si les erreurs se produisent lors d’une demande à l’application, effectuez une demande à l’hôte et le port sur lequel Kestrel écoute. À l’aide de l’hôte par défaut et post, faites une demande pour `http://localhost:5000/`. Si l’application répond généralement à l’adresse de point de terminaison Kestrel, le problème est probablement lié à la configuration de proxy inverse et moins probable au sein de l’application.
+1. Depuis une invite de commandes, accédez au dossier de déploiement et exécutez l’application en exécutant l’assembly de l’application avec *dotnet.exe*. Dans la commande suivante, substituez le nom de l’assembly de l’application à \<assembly_name>: `dotnet .\<assembly_name>.dll`.
+1. La sortie de console de l’application est écrite dans la fenêtre de console, affichant toutes les erreurs éventuelles.
+1. Si les erreurs se produisent pendant qu’une requête est adressée à l’application, effectuez une requête en direction de l’hôte et du port sur lequel Kestrel écoute. À l’aide de l’hôte et du port par défaut, faites une requête en direction de `http://localhost:5000/`. Si l’application répond normalement à l’adresse de point de terminaison Kestrel, le problème est probablement lié à la configuration du proxy inverse plutôt qu’à l’application.
 
 **Déploiement autonome**
 
-Si l’application est un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd):
+Si l’application est un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) :
 
-1. À l’invite de commandes, accédez au dossier de déploiement et exécutez le fichier exécutable de l’application. Dans la commande suivante, remplacez le nom de l’assembly de l’application pour \<assembly_name > : `<assembly_name>.exe`.
-1. La sortie de l’application, en affichant les erreurs, de console est écrite dans la fenêtre de console.
-1. Si les erreurs se produisent lors d’une demande à l’application, effectuez une demande à l’hôte et le port sur lequel Kestrel écoute. À l’aide de l’hôte par défaut et post, faites une demande pour `http://localhost:5000/`. Si l’application répond généralement à l’adresse de point de terminaison Kestrel, le problème est probablement lié à la configuration de proxy inverse et moins probable au sein de l’application.
+1. Depuis une invite de commandes, accédez au dossier de déploiement et exécutez l’exécutable de l’application. Dans la commande suivante, substituez le nom de l’assembly de l’application à \<assembly_name>: `<assembly_name>.exe`.
+1. La sortie de console de l’application est écrite dans la fenêtre de console, affichant toutes les erreurs éventuelles.
+1. Si les erreurs se produisent pendant qu’une requête est adressée à l’application, effectuez une requête en direction de l’hôte et du port sur lequel Kestrel écoute. À l’aide de l’hôte et du port par défaut, faites une requête en direction de `http://localhost:5000/`. Si l’application répond normalement à l’adresse de point de terminaison Kestrel, le problème est probablement lié à la configuration du proxy inverse plutôt qu’à l’application.
 
-### <a name="aspnet-core-module-stdout-log"></a>Journal de stdout de Module de base ASP.NET
+### <a name="aspnet-core-module-stdout-log"></a>Journal stdout du module ASP.NET Core
 
-Pour activer et afficher les journaux de stdout :
+Pour activer et afficher les journaux stdout :
 
 1. Accédez au dossier de déploiement du site sur le système hôte.
-1. Si le *journaux* dossier n’est pas présent, créez le dossier. Pour obtenir des instructions sur l’activation de MSBuild créer le *journaux* dossier dans le déploiement automatique, voir la [structure de répertoires](xref:host-and-deploy/directory-structure) rubrique.
-1. Modifier la *web.config* fichier. Définir **stdoutLogEnabled** à `true` et modifiez le **stdoutLogFile** chemin d’accès pour pointer vers le *journaux* dossier (par exemple, `.\logs\stdout`). `stdout` dans le chemin d’accès est le préfixe de nom de fichier journal. Un horodatage, un id de processus et une extension de fichier sont ajoutés automatiquement lorsque le journal est créé. À l’aide de `stdout` en tant que préfixe du nom de fichier, un fichier journal par défaut est nommé *stdout_20180205184032_5412.log*. 
-1. Enregistrer les mises à jour *web.config* fichier.
-1. Effectuer une demande à l’application.
-1. Accédez à la *journaux* dossier. Recherchez et ouvrez le journal de stdout plus récent.
-1. Analysez le journal des erreurs.
+1. Si le dossier *logs* n’est pas présent, créez-le. Pour obtenir des instructions sur l’activation de MSBuild et créer le dossier *logs* dans le déploiement automatiquement, consultez la rubrique [Structure des répertoires](xref:host-and-deploy/directory-structure).
+1. Modifiez le fichier *web.config*. Définissez **stdoutLogEnabled** sur `true` et faites pointer le chemin **stdoutLogFile** vers le dossier *logs* (par exemple, `.\logs\stdout`). Dans le chemin, `stdout` est le préfixe du nom du fichier journal. Un horodatage, un ID de processus et une extension de fichier sont ajoutés automatiquement quand le journal est créé. Si `stdout` est utilisé comme préfixe du nom de fichier, un fichier journal classique porte le nom *stdout_20180205184032_5412.log*. 
+1. Enregistrez le fichier *web.config* mis à jour.
+1. Adressez une requête à l’application.
+1. Accédez au dossier *logs*. Recherchez et ouvrez le journal stdout le plus récent.
+1. Déterminez si le journal contient des erreurs.
 
-**Important !** Désactiver la journalisation de stdout lors de la résolution des problèmes sont terminée.
+**Important !** Désactivez la journalisation stdout une fois la résolution des problèmes effectuée.
 
-1. Modifier la *web.config* fichier.
-1. Définissez **stdoutLogEnabled** à `false`.
+1. Modifiez le fichier *web.config*.
+1. Définissez **stdoutLogEnabled** sur `false`.
 1. Enregistrez le fichier.
 
 > [!WARNING]
-> Échec pour désactiver le journal de stdout risque d’échec de l’application ou le serveur. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés.
+> Si vous ne désactivez pas le journal stdout, l’application ou le serveur risque d’échouer. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés.
 >
-> Pour la routine de journalisation dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et la faire pivoter des journaux. Pour plus d’informations, consultez [modules fournisseurs d’informations de tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+> Pour les opérations de journalisation courantes dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
-## <a name="enabling-the-developer-exception-page"></a>L’activation de la Page d’Exception de développeur
+## <a name="enabling-the-developer-exception-page"></a>Activation de la page d’exception de développeur
 
-Le `ASPNETCORE_ENVIRONMENT` [variable d’environnement peut être ajoutée au fichier web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) pour exécuter l’application dans l’environnement de développement. Tant que l’environnement n’est pas substitué dans le démarrage de l’application par `UseEnvironment` sur le Générateur de l’hôte, définissant la variable d’environnement permet la [développeur Exception Page](xref:fundamentals/error-handling) apparaissent lorsque l’application est exécutée.
+Vous pouvez ajouter la [variable d’environnement `ASPNETCORE_ENVIRONMENT` au fichier web.config](xref:host-and-deploy/aspnet-core-module#setting-environment-variables) pour exécuter l’application dans l’environnement de développement. Tant que l’environnement n’est pas substitué dans le démarrage de l’application par `UseEnvironment` sur le générateur de l’hôte, la définition de la variable d’environnement permet à la [page d’exception de développeur](xref:fundamentals/error-handling) d’apparaître quand l’application est exécutée.
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -128,41 +129,41 @@ Le `ASPNETCORE_ENVIRONMENT` [variable d’environnement peut être ajoutée au f
 </aspNetCore>
 ```
 
-Définition de la variable d’environnement `ASPNETCORE_ENVIRONMENT` est recommandée uniquement pour une utilisation sur les serveurs qui ne sont pas exposés à Internet de test et de mise en lots. Supprimer la variable d’environnement à partir de la *web.config* fichier après la résolution des problèmes. Pour plus d’informations sur la définition des variables d’environnement dans *web.config*, consultez [élément enfant d’environmentVariables d’aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
+La définition de la variable d’environnement `ASPNETCORE_ENVIRONMENT` est recommandée uniquement en vue d’une utilisation sur les serveurs de préproduction et de test qui ne sont pas exposés à Internet. Supprimez la variable d’environnement du fichier *web.config* une fois la résolution des problèmes effectuée. Pour plus d’informations sur la définition des variables d’environnement dans *web.config*, consultez la section sur [l’élément enfant environmentVariables d’aspNetCore](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
 
-## <a name="common-startup-errors"></a>Erreurs courantes de démarrage 
+## <a name="common-startup-errors"></a>Erreurs de démarrage courantes 
 
-Consultez le [référence des erreurs commune ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference). La plupart des problèmes courants qui empêchent le démarrage de l’application est traitée dans la rubrique de référence.
+Consultez les [informations de référence sur les erreurs ASP.NET Core courantes](xref:host-and-deploy/azure-iis-errors-reference). La plupart des problèmes courants qui empêchent le démarrage de l’application sont traités dans la rubrique de référence.
 
 ## <a name="slow-or-hanging-app"></a>Application lente ou bloquée
 
-Lorsqu’une application répond lentement ou se bloque sur demande, obtenir et analyser un [fichier dump](/visualstudio/debugger/using-dump-files). Fichiers de vidage peuvent être obtenus à l’aide des outils suivants :
+Quand une application répond lentement ou se bloque sur une requête, obtenez un [fichier de vidage](/visualstudio/debugger/using-dump-files) afin de l’analyser. Les fichiers de vidage peuvent être obtenus à l’aide des outils suivants :
 
 * [ProcDump](/sysinternals/downloads/procdump)
 * [DebugDiag](https://www.microsoft.com/download/details.aspx?id=49924)
-* WinDbg : [télécharger les outils de débogage pour Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [WinDbg d’à l’aide de débogage](/windows-hardware/drivers/debugger/debugging-using-windbg)
+* WinDbg : [Télécharger les outils de débogage pour Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [Débogage à l’aide de WinDbg](/windows-hardware/drivers/debugger/debugging-using-windbg)
 
 ## <a name="remote-debugging"></a>Débogage distant
 
-Consultez [Core d’ASP.NET déboguer à distance sur un ordinateur IIS distant dans Visual Studio 2017](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer) dans la documentation de Visual Studio.
+Consultez [Déboguer à distance ASP.NET Core sur un ordinateur IIS distant dans Visual Studio 2017](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer) dans la documentation de Visual Studio.
 
 ## <a name="application-insights"></a>Application Insights
 
-[Application Insights](/azure/application-insights/) fournit les données de télémétrie des applications hébergées par IIS, y compris la journalisation des erreurs et les fonctions de rapport. Application Insights peuvent uniquement générer des rapports sur les erreurs qui surviennent après le démarrage de l’application lors de la disponibilité des fonctionnalités de journalisation de l’application. Pour plus d’informations, consultez [Application Insights pour ASP.NET Core](/azure/application-insights/app-insights-asp-net-core).
+[Application Insights](/azure/application-insights/) fournit des données de télémétrie des applications hébergées par IIS, y compris des fonctionnalités de journalisation des erreurs et de création de rapports. Application Insights peut uniquement générer des rapports sur les erreurs qui surviennent après le démarrage de l’application quand les fonctionnalités de journalisation de l’application sont disponibles. Pour plus d’informations, consultez [Application Insights pour ASP.NET Core](/azure/application-insights/app-insights-asp-net-core).
 
 ## <a name="additional-troubleshooting-advice"></a>Conseils de dépannage supplémentaires
 
-Parfois, une application opérationnelle échoue immédiatement après la mise à niveau soit du SDK .NET Core sur les versions de machine ou un package de développement au sein de l’application. Dans certains cas, les packages incohérents peuvent bloquer une application quand vous effectuez des mises à niveau majeures. La plupart de ces problèmes permettre être résolue en suivant ces instructions :
+Parfois, une application opérationnelle échoue après la mise à niveau du SDK .NET Core sur l’ordinateur de développement ou des versions de package dans l’application. Dans certains cas, les packages incohérents peuvent bloquer une application quand vous effectuez des mises à niveau majeures. Vous pouvez résoudre la plupart de ces problèmes en suivant les instructions suivantes :
 
-1. Supprimer le *bin* et *obj* dossiers.
-1. Désactivez le package met en cache à *% USERPROFILE%\\.nuget\\packages* et *%LocalAppData%\\Nuget\\v3-cache*.
-1. Restaurez et régénérez le projet.
+1. Supprimez les dossiers *bin* et *obj*.
+1. Effacez les caches de package aux emplacements *%UserProfile%\\.nuget\\packages* et *%LocalAppData%\\Nuget\\v3-cache*.
+1. Restaurez et regénérez le projet.
 1. Vérifiez que le déploiement préalable sur le serveur a été supprimé complètement avant de redéployer l’application.
 
 > [!TIP]
 > Un moyen pratique pour effacer les caches de package consiste à exécuter `dotnet nuget locals all --clear` à partir d’une invite de commandes.
 > 
-> Effacer les caches de package peut également être accompli en utilisant le [nuget.exe](https://www.nuget.org/downloads) outil et l’exécution de la commande `nuget locals all -clear`. *NuGet.exe* n’est pas une installation fournie avec le système d’exploitation de bureau Windows et doivent être obtenues séparément à partir de la [site Web de NuGet](https://www.nuget.org/downloads).
+> Vous pouvez également effacer les caches de package en utilisant l’outil [nuget.exe](https://www.nuget.org/downloads) et en exécutant la commande `nuget locals all -clear`. *NuGet.exe* n’étant pas une installation fournie avec le système d’exploitation de bureau Windows, il doit être obtenu séparément à partir du [site web de NuGet](https://www.nuget.org/downloads).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
