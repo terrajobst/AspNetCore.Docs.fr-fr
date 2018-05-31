@@ -3,7 +3,6 @@ title: Utiliser le modèle de projet React avec ASP.NET Core
 author: SteveSandersonMS
 description: Découvrez comment démarrer avec le modèle de projet d’application monopage ASP.NET Core pour React et create-react-app.
 manager: wpickett
-monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/21/2018
@@ -12,21 +11,17 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: spa/react
-ms.openlocfilehash: c88320c628f219652a2cb63a16b494661c481ffb
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 4dcfef2bbb99873a9d716a4942f39123944f495c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/27/2018
-ms.locfileid: "34555337"
+ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077800"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React avec ASP.NET Core
 
-::: moniker range="= aspnetcore-2.0"
-
 > [!NOTE]
 > Cette documentation ne concerne pas le modèle de projet React inclus dans ASP.NET Core 2.0. Elle traite du nouveau modèle React vers lequel vous pouvez effectuer une mise à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
-
-::: moniker-end
 
 Le modèle de projet React mis à jour fournit un point de départ pratique pour les applications ASP.NET Core utilisant les conventions React et [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) pour implémenter une interface utilisateur (IU) côté client enrichie.
 

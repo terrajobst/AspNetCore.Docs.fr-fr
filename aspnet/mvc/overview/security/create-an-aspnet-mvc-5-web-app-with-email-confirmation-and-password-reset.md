@@ -18,6 +18,7 @@ ms.sourcegitcommit: 50d40c83fa641d283c097f986dde5341ebe1b44c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/22/2018
+ms.locfileid: "34452566"
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Créer une application web ASP.NET MVC 5 sécurisée avec connexion, confirmation par courrier électronique et réinitialisation de mot de passe (C#)
 
@@ -105,25 +106,25 @@ Actuellement, une fois qu’un utilisateur complète le formulaire d’inscripti
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample7.cs?highlight=14-15,23-30)]
 
-Si vous décommentez la méthode `SignInAsync`, l’utilisateur ne sera pas connecté lors de l’inscription. Le `TempData["ViewBagLink"] = callbackUrl;` ligne peut être utilisé pour [déboguer l’application](#dbg) et tester l’inscription sans envoyer par courrier électronique. `ViewBag.Message` Permet d’afficher les instructions de confirmation. Le [télécharger exemple](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952) contient du code pour tester l’e-mail de confirmation sans configurer la messagerie et peut également être utilisé pour déboguer l’application.
+Si vous décommentez la méthode `SignInAsync`, l’utilisateur ne sera pas connecté lors de l’inscription. La ligne `TempData["ViewBagLink"] = callbackUrl;` peut être utilisée pour [déboguer l’application](#dbg) et tester l’inscription sans envoyer de courrier électronique. `ViewBag.Message` permet d’afficher les instructions de confirmation. L'[exemple à télécharger](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952) contient du code pour tester l’e-mail de confirmation sans configurer la messagerie et peut également être utilisé pour déboguer l’application.
 
 Créez un fichier `Views\Shared\Info.cshtml` et ajoutez le balisage razor suivant :
 
 [!code-cshtml[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample8.cshtml)]
 
-Ajouter le [attribut Authorize](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.118).aspx) à la `Contact` méthode d’action du contrôleur Home. Vous pouvez cliquer sur le **Contact** lien pour vérifier les utilisateurs anonymes n’ont accès et les utilisateurs authentifiés n’ont pas accès.
+Ajoutez l' [attribut Authorize](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.118).aspx) à la méthode d’action `Contact` du contrôleur Home. Vous pouvez cliquer sur le **Contact** lien pour vérifier les utilisateurs anonymes n’ont accès et les utilisateurs authentifiés n’ont pas accès.
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample9.cs?highlight=1)]
 
-Vous devez également mettre à jour le `HttpPost Login` méthode d’action :
+Vous devez également mettre à jour la méthode d’action `HttpPost Login`:
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample10.cs?highlight=13-22)]
 
-Mise à jour la *Views\Shared\Error.cshtml* pour afficher le message d’erreur :
+Mettez à jour la vue *Views\Shared\Error.cshtml* pour afficher le message d’erreur :
 
 [!code-cshtml[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample11.cshtml?highlight=8-17)]
 
-Supprimez tous les comptes dans le **AspNetUsers** table qui contient l’alias de messagerie électronique que vous souhaitez tester. Exécutez l’application et vérifiez que vous ne pouvez pas vous connecter avant d’avoir confirmé votre adresse de messagerie. Après avoir confirmé votre adresse de messagerie, cliquez sur le **Contact** lien.
+Supprimez les comptes de la table **AspNetUsers** qui contiennent l’alias d’e-mail que vous voulez tester. Exécutez l’application et vérifiez que vous ne pouvez pas vous connecter avant d’avoir confirmé votre adresse e-mail. Après avoir confirmé votre adresse e-mail, cliquez sur le lien **Contact**.
 
 <a id="reset"></a>
 ## <a name="password-recoveryreset"></a>Récupération/réinitialisation de mot de passe
@@ -132,7 +133,7 @@ Supprimez les caractères de commentaire de la `HttpPost ForgotPassword` méthod
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample12.cs?highlight=17-20)]
 
-Supprimez les caractères de commentaire de la `ForgotPassword` [ActionLink](https://msdn.microsoft.com/library/system.web.mvc.html.linkextensions.actionlink(v=vs.118).aspx) dans les *Views\Account\Login.cshtml* fichier de vue razor :
+Supprimez les caractères de commentaire de la méthode `ForgotPassword` [ActionLink](https://msdn.microsoft.com/library/system.web.mvc.html.linkextensions.actionlink(v=vs.118).aspx) dans le fichier de vue razor *Views\Account\Login.cshtml* :
 
 [!code-cshtml[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample13.cshtml?highlight=47-50)]
 
@@ -144,60 +145,60 @@ La page de connexion affiche maintenant un lien pour réinitialiser le mot de pa
 Une fois qu’un utilisateur crée un compte local, un lien de confirmation lui est envoyé par e-mail, qu’il doit utiliser avant de pouvoir se connecter. Si l’utilisateur supprime accidentellement l’e-mail de confirmation ou si l’e-mail n’arrive jamais, le lien de confirmation doit lui être renvoyé. Les modifications suivantes du code montrent comment faire cela.
 
 
-Ajoutez la méthode d’assistance suivante vers le bas de la *Controllers\AccountController.cs* fichier :
+Ajoutez la méthode helper suivante en bas du fichier *Controllers\AccountController.cs*:
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample14.cs)]
 
-Mise à jour de la méthode Register pour utiliser l’Assistant Nouvelle :
+Mettez à jour la méthode Register de façon à utiliser le nouveau helper :
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample15.cs?highlight=17)]
 
-Mise à jour de la méthode de connexion pour renvoyer le mot de passe si le compte d’utilisateur n’a pas été confirmé :
+Mettez à jour la méthode Login de façon à renvoyer le mot de passe si le compte d’utilisateur n’a pas été confirmé :
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample16.cs?highlight=20)]
 
 <a id="combine"></a>
 ## <a name="combine-social-and-local-login-accounts"></a>Combiner des comptes de connexion de réseaux sociaux et local
 
-Vous pouvez combiner les comptes locaux et réseaux sociaux en cliquant sur le lien de votre messagerie. Dans l’ordre suivant **RickAndMSFT@gmail.com** est tout d’abord créé en tant qu’une connexion locale, mais vous pouvez créer le compte en tant qu’un journal social en premier, puis ajouter une connexion locale.
+Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre messagerie. Dans la séquence suivante, **RickAndMSFT@gmail.com** est d’abord créé en tant que connexion locale, mais vous pouvez d’abord créer le compte en tant que connexion de réseau social, puis ajouter une connexion locale.
 
 ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image5.png)
 
-Cliquez sur le **gérer** lien. Remarque la **Logins externes : 0** associé à ce compte.
+Cliquez sur le lien **Gérer**. Notez l’information **Connexions externes : 0** associée à ce compte.
 
 ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image6.png)
 
-Cliquez sur le lien vers un autre journal dans le service et accepter les demandes d’application. Les deux comptes ont été combinés, vous ne pourrez pas vous connecter avec un compte. Vous pourriez vos utilisateurs pour ajouter des comptes locaux au cas où le journal des réseaux sociaux dans le service d’authentification est arrêté, ou plus probable qu’ils ont perdu l’accès à leur compte sociaux.
+Cliquez sur le lien vers un autre service de connexion et acceptez les demandes d’application. Les deux comptes ont été combinés : vous pourrez donc vous connecter avec l'un ou l'autre compte. Vous pouvez permettre à vos utilisateurs d’ajouter des comptes locaux au cas où leur service d’authentification de connexion de réseau social serait indisponible, ou au cas plus probable où ils auraient perdu l’accès à leur compte social.
 
-Dans l’image suivante, Tom est un journal des réseaux sociaux dans (que vous pouvez visualiser à partir de la **Logins externes : 1** présentée sur la page).
+Dans l’image suivante, Tom est une connexion de réseau social (comme l'indique **Connexions externes : 1** affiché dans la page).
 
 ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image7.png)
 
-En cliquant sur **choisir un mot de passe** vous permet d’ajouter un journal local sur avec le même compte.
+Le fait de cliquer sur **Choisir un mot de passe** vous permet d’ajouter une connexion locale associée au même compte.
 
 ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image8.png)
 
 ## <a name="email-confirmation-in-more-depth"></a>E-mail de confirmation de manière plus approfondie
 
-Mon didacticiel [Confirmation du compte et la récupération de mot de passe avec ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md) sont placées dans cette rubrique avec plus de détails.
+Mon didacticiel [Confirmation du compte et récupération de mot de passe avec ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md) aborde ce sujet avec plus de détails.
 
 <a id="dbg"></a>
 ## <a name="debugging-the-app"></a>Débogage de l’application
 
 Si vous n’obtenez pas un message électronique contenant le lien :
 
-- Vérifiez votre dossier courrier indésirable ou le courrier indésirable.
+- Vérifiez votre dossier des courriers indésirables.
 - Connectez-vous à votre compte SendGrid, puis cliquez sur le [lien de l’activité de messagerie](https://sendgrid.com/logs/index).
 
-Pour tester le lien de vérification sans par courrier électronique, vous devez télécharger le [exemple terminé](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952). Le lien de confirmation et les codes de confirmation seront affichera sur la page.
+Pour tester le lien de vérification sans e-mail, vous devez télécharger l'[exemple terminé](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952). Le lien de confirmation et les codes de confirmation seront affichés dans la page.
 
 <a id="addRes"></a>
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-- [Des liens vers ASP.NET Identity recommandé de ressources](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)
-- [Compte de Confirmation et récupération de mot de passe avec ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md) des informations plus détaillées sur la confirmation de compte et de récupération du mot de passe.
-- [Application MVC est 5 avec Facebook, Twitter, LinkedIn et d’authentification Google OAuth2](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) ce didacticiel vous montre comment écrire une application ASP.NET MVC 5 avec autorisation Facebook et Google OAuth 2. Il montre également comment ajouter des données supplémentaires à la base de données d’identité.
-- [Déployer une application sécurisée ASP.NET MVC avec l’appartenance, OAuth et base de données SQL Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Ce didacticiel ajoute le déploiement d’Azure, la sécurisation de votre application avec les rôles, l’utilisation de l’API d’appartenance pour ajouter des utilisateurs et des rôles et des fonctionnalités de sécurité supplémentaires.
-- [Création d’une application de Google OAuth 2 et la connexion de l’application au projet](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md#goog)
-- [Création de l’application de Facebook et la connexion de l’application au projet](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md#fb)
+- [Des liens vers les ressources recommandées sur ASP.NET Identity](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)
+- [Confirmation de compte et récupération de mot de passe avec ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md) Décrit plus en détails la confirmation de compte et la récupération de mot de passe.
+- [Application MVC 5 avec connexion Facebook, Twitter, LinkedIn et Google OAuth2](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) Ce tutoriel vous montre comment écrire une application ASP.NET MVC 5 avec une autorisation Facebook et Google OAuth2. Il montre également comment ajouter des données supplémentaires à la base de données Identity.
+- [Déployer une application sécurisée ASP.NET MVC avec l’appartenance, OAuth et SQL Database sur Azure](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data). Ce tutoriel ajoute le déploiement Azure, la sécurisation de votre application avec des rôles, l’utilisation de l’API d’appartenance pour ajouter des utilisateurs et des rôles, et des fonctionnalités de sécurité supplémentaires.
+- [Création d’une application pour Google OAuth 2 et connexion de l’application au projet](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md#goog)
+- [Création de l’application dans Facebook et connexion de l’application au projet](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md#fb)
 - [Configuration de SSL dans le projet](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md#ssl)
