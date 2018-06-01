@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: e0bca48fcaa9a29847fdda714698ed8562d30707
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 397d8bf04abf6be811ad8c91d52565251ac61678
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34688968"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation du compte et récupération de mot de passe dans ASP.NET Core
 
@@ -36,10 +37,23 @@ Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
+::: moniker range=">= aspnetcore-2.1"
+
+```console
+dotnet new webapp --auth Individual -o WebPWrecover
+cd WebPWrecover
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 ```console
 dotnet new razor --auth Individual -o WebPWrecover
 cd WebPWrecover
 ```
+
+::: moniker-end
 
 * `--auth Individual` Spécifie le modèle de projet de comptes d’utilisateur individuels.
 * Sur Windows, ajoutez le `-uld` option. Il spécifie la que base de données locale doit être utilisé au lieu de SQLite.
@@ -70,7 +84,7 @@ Vous pouvez également créer un nouveau projet ASP.NET Core avec Visual Studio�
 
 ## <a name="test-new-user-registration"></a>Nouvelle inscription de l’utilisateur de test
 
-Exécuter l’application, sélectionnez le **inscrire** lier et inscrire un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation de l’adresse de messagerie est avec le [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute) attribut. Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour pour les nouveaux utilisateurs ne peuvent pas se connecter jusqu'à ce que leur courrier électronique a été validée.
+Exécuter l’application, sélectionnez le **inscrire** lier et inscrire un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour pour les nouveaux utilisateurs ne peuvent pas se connecter jusqu'à ce que leur courrier électronique a été validée.
 
 ## <a name="view-the-identity-database"></a>Afficher la base de données d’identité
 
@@ -116,7 +130,7 @@ Créez une classe pour extraire la clé de sécuriser la messagerie électroniqu
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
-Définir le `SendGridUser` et `SendGridKey` avec la [outil Gestionnaire de secret](xref:security/app-secrets). Par exemple :
+Définir le `SendGridUser` et `SendGridKey` avec la [outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
 
 ```console
 C:\WebAppl\src\WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT
@@ -277,11 +291,11 @@ Si vous ne parvenez le travail de la messagerie :
 
 Pour terminer cette section, vous devez d’abord activer un fournisseur d’authentification externe. Consultez [Facebook, Google et l’authentification du fournisseur externe](xref:security/authentication/social/index).
 
-Vous pouvez combiner les comptes locaux et réseaux sociaux en cliquant sur le lien de votre messagerie. Dans l’ordre suivant, «RickAndMSFT@gmail.com» est tout d’abord créé en tant qu’une connexion locale ; Toutefois, vous pouvez créer le compte en tant qu’une connexion sociale tout d’abord, puis ajouter une connexion locale.
+Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre messagerie. Dans l’ordre suivant, «RickAndMSFT@gmail.com» est tout d’abord créé en tant qu’une connexion locale ; Toutefois, vous pouvez créer le compte en tant qu’une connexion sociale tout d’abord, puis ajouter une connexion locale.
 
 ![Application Web : RickAndMSFT@gmail.com utilisateur authentifié](accconfirm/_static/rick.png)
 
-Cliquez sur le **gérer** lien. Notez la valeur 0 externe (connexions sociales) associé à ce compte.
+Cliquez sur le lien **Gérer**. Notez la valeur 0 externe (connexions sociales) associé à ce compte.
 
 ![Gérer les affichages](accconfirm/_static/manage.png)
 
