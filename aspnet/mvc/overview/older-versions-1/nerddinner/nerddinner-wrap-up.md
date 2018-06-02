@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
-title: "Retour à la ligne de NerdDinner des | Documents Microsoft"
+title: Retour à la ligne de NerdDinner des | Documents Microsoft
 author: microsoft
-description: "Ceci est la fin du didacticiel de NerdDinner et vous fournit des informations sur la façon d’en savoir plus."
+description: Ceci est la fin du didacticiel de NerdDinner et vous fournit des informations sur la façon d’en savoir plus.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/nerddinner-wrap-up
 msc.type: authoredcontent
-ms.openlocfilehash: bb55668c714532c0a9ff499511b7a47572314194
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8d418f40f6d2911491c1a4f2498a4f711e9c271c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="nerddinner-wrap-up"></a>Retour à la ligne de NerdDinner des
 ====================
@@ -43,11 +43,11 @@ Ce didacticiel NerdDinner est le premier chapitre du nouveau [Professionnel ASP.
 
 Vous pouvez lire le reste de la documentation pour en savoir plus sur ASP.NET MVC.
 
-Vous trouverez également excellent ASP.NET MVC didacticiels et vidéos sur : [https://www.asp.net/mvc](../../../index.md) autres ouvrages ASP.NET MVC très peu de temps seront publiées. Je mettrai à jour cette page pour inclure des liens vers des livres supplémentaires lorsqu’elles sont disponibles.
+Vous trouverez également excellent ASP.NET MVC didacticiels et vidéos sur : [ https://www.asp.net/mvc ](../../../index.md) autres ouvrages ASP.NET MVC très peu de temps seront publiées. Je mettrai à jour cette page pour inclure des liens vers des livres supplémentaires lorsqu’elles sont disponibles.
 
 Cela permet, d’espoir
 
 Scott
 
->[!div class="step-by-step"]
-[Précédent](enable-automated-unit-testing.md)
+> [!div class="step-by-step"]
+> [Précédent](enable-automated-unit-testing.md)

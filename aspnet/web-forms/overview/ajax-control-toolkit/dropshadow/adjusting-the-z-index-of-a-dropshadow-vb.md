@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-vb
-title: "Ajustement de l’Index Z d’un DropShadow (VB) | Documents Microsoft"
+title: Ajustement de l’Index Z d’un DropShadow (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle dans la boîte à outils de contrôle AJAX DropShadow étend un panneau avec une ombre portée. Toutefois cette ombre parfois est en conflit avec d’autres contrôles, d’insta..."
+description: Le contrôle dans la boîte à outils de contrôle AJAX DropShadow étend un panneau avec une ombre portée. Toutefois cette ombre parfois est en conflit avec d’autres contrôles, d’insta...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/adjusting-the-z-index-of-a-dropshadow-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 844ea00c2ef1c974aa72c7dd627819b0429d612e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b484dc6bfa6f67bd6b70f7c36c2eb2ec7143edaf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adjusting-the-z-index-of-a-dropshadow-vb"></a>Ajustement de l’Index Z d’un DropShadow (VB)
 ====================
@@ -68,6 +68,6 @@ Avant : L’entrée de menu n’est pas visible ([cliquez pour afficher l’ima
 
 Après : L’entrée de menu s’affiche ([cliquez pour afficher l’image en taille réelle](adjusting-the-z-index-of-a-dropshadow-vb/_static/image6.png))
 
->[!div class="step-by-step"]
-[Précédent](manipulating-dropshadow-properties-from-client-code-cs.md)
-[Suivant](manipulating-dropshadow-properties-from-client-code-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](manipulating-dropshadow-properties-from-client-code-cs.md)
+> [Suivant](manipulating-dropshadow-properties-from-client-code-vb.md)

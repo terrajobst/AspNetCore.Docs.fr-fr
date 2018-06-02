@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
-title: "Création d’une définition de Build qui prend en charge le déploiement | Documents Microsoft"
+title: Création d’une définition de Build qui prend en charge le déploiement | Documents Microsoft
 author: jrjlee
-description: "Si vous souhaitez effectuer tout type de build dans Team Foundation Server (TFS) 2010, vous devez créer une définition de build dans votre projet d’équipe. De cette rubrique..."
+description: Si vous souhaitez effectuer tout type de build dans Team Foundation Server (TFS) 2010, vous devez créer une définition de build dans votre projet d’équipe. De cette rubrique...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: e5610753968328e5d0f1dba4cbbfed08480fd773
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c5ea0bd9f01bb57b96abd349741f304c0093d887
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="creating-a-build-definition-that-supports-deployment"></a>Création d’une définition de Build qui prend en charge le déploiement
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Si vous souhaitez effectuer tout type de build dans Team Foundation Server (TFS) 2010, vous devez créer une définition de build dans votre projet d’équipe. Cette rubrique décrit comment créer une définition de build dans TFS et comment contrôler le déploiement web dans le cadre du processus de génération dans Team Build.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération et de déploiement est contrôlé par deux fichiers projet & #x 2014 ; o ne contenant les instructions de génération qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération et de déploiement est contrôlé par deux fichiers de projet&#x2014;une qui contient les instructions de génération qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -62,7 +62,7 @@ Le [le Gestionnaire de contacts](../web-deployment-in-the-enterprise/the-contact
 La section suivante explique comment implémenter ce processus en créant une définition de build.
 
 > [!NOTE]
-> Cette procédure, & #x 2014 ; dans lequel un processus automatisé unique génère, tests et déploie une solution & le #x 2014 ; est susceptibles d’être plus adaptée au déploiement pour les environnements de test. Pour les environnements intermédiaire et de production, vous êtes plus susceptible de vouloir déployer le contenu à partir d’une build précédente que vous avez déjà vérifié et validé dans un environnement de test. Cette approche est décrite dans la rubrique suivante, [déploiement d’une Build spécifique](deploying-a-specific-build.md).
+> Cette procédure&#x2014;dans lequel un seul automatisée processus génère, teste et déploie une solution&#x2014;est susceptible d’être plus adaptée au déploiement pour les environnements de test. Pour les environnements intermédiaire et de production, vous êtes plus susceptible de vouloir déployer le contenu à partir d’une build précédente que vous avez déjà vérifié et validé dans un environnement de test. Cette approche est décrite dans la rubrique suivante, [déploiement d’une Build spécifique](deploying-a-specific-build.md).
 
 
 ### <a name="who-performs-this-procedure"></a>Qui exécute cette procédure ?
@@ -133,7 +133,7 @@ Si vous avez configuré votre définition de build pour utiliser l’élément d
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image10.png)
 
-Pour passer en revue la progression et le résultat d’une build & le #x 2014 ; indépendamment de si elle a été déclenchée manuellement ou automatiquement & #x 2014 ; double-cliquez sur la définition de build dans le **Team Explorer** fenêtre. Cela ouvre une **Explorateur de builds** onglet.
+Pour passer en revue la progression et le résultat d’une build&#x2014;indépendamment de si elle a été déclenchée manuellement ou automatiquement&#x2014;double-cliquez sur la définition de build dans le **Team Explorer** fenêtre. Cela ouvre une **Explorateur de builds** onglet.
 
 ![](creating-a-build-definition-that-supports-deployment/_static/image11.png)
 
@@ -161,6 +161,6 @@ Dans l’ordre pour un déploiement automatisé réussir dans le cadre du proces
 
 Pour plus d’informations sur la création de définitions de build, consultez [créer une définition de Build](https://msdn.microsoft.com/library/ms181716.aspx) et [définir votre processus de génération](https://msdn.microsoft.com/library/ms181715.aspx). Pour plus d’informations sur les files d’attente de builds, consultez [une Build en file d’attente](https://msdn.microsoft.com/library/ms181722.aspx).
 
->[!div class="step-by-step"]
-[Précédent](configuring-a-tfs-build-server-for-web-deployment.md)
-[Suivant](deploying-a-specific-build.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-a-tfs-build-server-for-web-deployment.md)
+> [Suivant](deploying-a-specific-build.md)

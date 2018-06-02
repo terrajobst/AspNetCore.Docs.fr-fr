@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
-title: "Le traitement des Exceptions non gérées (c#) | Documents Microsoft"
+title: Le traitement des Exceptions non gérées (c#) | Documents Microsoft
 author: rick-anderson
-description: "Lorsqu’une erreur d’exécution se produit sur une application web en production, il est important pour avertir un développeur et d’enregistrer l’erreur afin qu’il peut être diagnostiqué à un la..."
+description: Lorsqu’une erreur d’exécution se produit sur une application web en production, il est important pour avertir un développeur et d’enregistrer l’erreur afin qu’il peut être diagnostiqué à un la...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,17 +12,17 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7be257faa350476bef9f6d372ea4f140fff8d136
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: fccd529f5c489ed28f3cb01f07ffdc4452ead36d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="processing-unhandled-exceptions-c"></a>Le traitement des Exceptions non gérées (c#)
 ====================
 par [Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Télécharger le Code](http://download.microsoft.com/download/1/0/C/10CC829F-A808-4302-97D3-59989B8F9C01/ASPNET_Hosting_Tutorial_12_CS.zip) ou [télécharger le PDF](http://download.microsoft.com/download/5/C/5/5C57DB8C-5DEA-4B3A-92CA-4405544D313B/aspnet_tutorial12_ErrorHandling_cs.pdf)
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-cs/samples) ([procédure de téléchargement](/aspnet/core/tutorials/index#how-to-download-a-sample))
 
 > Lorsqu’une erreur d’exécution se produit sur une application web en production, il est important pour avertir un développeur et d’enregistrer l’erreur afin qu’il peut être diagnostiqué à un moment ultérieur dans le temps. Ce didacticiel fournit une vue d’ensemble du mode de ASP.NET traite les erreurs d’exécution et examine une façon d’exécuter un code personnalisé chaque fois qu’un bulles d’exception non gérée à l’exécution d’ASP.NET.
 
@@ -62,7 +62,7 @@ Le `Global.asax` fichier créé dans un point d’accès par le modèle de class
 
 Les gestionnaires d’événements créés par le modèle de classe d’Application globale de Visual Studio ne sont pas exhaustives. Vous pouvez ajouter un gestionnaire d’événements pour les `HttpApplication` événement par le Gestionnaire d’événements d’affectation de noms `Application_EventName`. Par exemple, vous pouvez ajouter le code suivant à la `Global.asax` pour créer un gestionnaire d’événements pour le [ `AuthorizeRequest` événement](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx):
 
-[!code-vb[Main](processing-unhandled-exceptions-cs/samples/sample1.vb)]
+[!code-cs[Main](processing-unhandled-exceptions-cs/samples/sample1.cs)]
 
 De même, vous pouvez supprimer les gestionnaires d’événements créés par le modèle de classe d’Application globale qui ne sont pas nécessaires. Pour ce didacticiel, nous avons besoin uniquement un gestionnaire d’événements pour le `Error` événement ; hésitez pas à supprimer les autres gestionnaires d’événements à partir de la `Global.asax` fichier.
 
@@ -159,7 +159,7 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 - [Vue d’ensemble des gestionnaires HTTP et de Modules HTTP ASP.NET](https://support.microsoft.com/kb/307985)
 - [Normalement répondre aux Exceptions non gérées - traitement des Exceptions non gérées](http://aspnet.4guysfromrolla.com/articles/091306-1.aspx)
-- [`HttpApplication`Classe et l’objet d’Application ASP.NET](http://www.eggheadcafe.com/articles/20030211.asp)
+- [`HttpApplication` Classe et l’objet d’Application ASP.NET](http://www.eggheadcafe.com/articles/20030211.asp)
 - [Les gestionnaires HTTP et des Modules HTTP dans ASP.NET](http://www.15seconds.com/Issue/020417.htm)
 - [Envoi de courrier électronique dans ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
 - [Présentation de le `Global.asax` fichier](http://aspalliance.com/1114_Understanding_the_Globalasax_file.all)
@@ -167,6 +167,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Utilisation avec ASP.NET `Global.asax` fichier](http://articles.techrepublic.com.com/5100-10878_11-5771721.html)
 - [Utilisation de `HttpApplication` Instances](https://msdn.microsoft.com/library/a0xez8f2.aspx)
 
->[!div class="step-by-step"]
-[Précédent](displaying-a-custom-error-page-cs.md)
-[Suivant](logging-error-details-with-asp-net-health-monitoring-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](displaying-a-custom-error-page-cs.md)
+> [Suivant](logging-error-details-with-asp-net-health-monitoring-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler
-title: "Publication de déploiement de configuration d’un serveur Web pour le Web (Gestionnaire de déploiement Web) | Documents Microsoft"
+title: Publication de déploiement de configuration d’un serveur Web pour le Web (Gestionnaire de déploiement Web) | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment configurer un serveur web d’Internet Information Services (IIS) pour prendre en charge la publication sur le web et déploiement à l’aide de la Han de déploiement Web IIS..."
+description: Cette rubrique décrit comment configurer un serveur web d’Internet Information Services (IIS) pour prendre en charge la publication sur le web et déploiement à l’aide de la Han de déploiement Web IIS...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler
 msc.type: authoredcontent
-ms.openlocfilehash: 81848c683fb9ddaa8942f030a520847a3c89fde0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d98be2859181e014ad332298ee3a572ad4235649
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler"></a>Publication de déploiement de configuration d’un serveur Web pour le Web (Gestionnaire de déploiement Web)
 ====================
@@ -108,7 +108,7 @@ Dans ce cas, vous devez installer les opérations suivantes :
 9. Dans le **2.1 d’outil de déploiement Web** , cliquez sur **ajouter**.
 10. Dans le **IIS : authentification de base** , cliquez sur **ajouter**.
 11. Dans le **IIS : Service de gestion** , cliquez sur **ajouter**.
-12. Cliquez sur **Installer**. Le programme d’installation de la plateforme Web affiche une liste de produits & #x 2014 ; ainsi que toutes les dépendances associées et les #x 2014 ; à installer et vous invite à accepter les termes du contrat de licence.
+12. Cliquez sur **Installer**. Le programme d’installation de la plateforme Web affiche une liste de produits&#x2014;ainsi que les dépendances associées&#x2014;pour être installé et vous invite à accepter les termes du contrat de licence.
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image2.png)
 13. Passez en revue les termes du contrat de licence et si vous acceptez les termes du contrat, cliquez sur **J’accepte**.
@@ -232,11 +232,11 @@ Bien que rien ne vous empêche de déploiement de contenu au site Web par défau
     > [!NOTE]
     > L’exemple de solution requiert .NET Framework 4.0. Cela n’est pas en général une exigence pour Web Deploy.
 
-Dans l’ordre de votre site Web traiter du contenu, l’identité du pool d’applications doit avoir autorisations de lecture sur le dossier local qui stocke le contenu. Pools d’applications dans IIS 7.5, exécutent une identité de pool d’applications unique par défaut (contrairement aux versions précédentes d’IIS, où des pools d’applications sont exécute généralement en utilisant le compte de Service réseau). L’identité du pool d’applications n’est pas un compte d’utilisateur réel et ne s’affichent pas sur toutes les listes d’utilisateurs ou les groupes & #x 2014 ; au lieu de cela, elle est créée dynamiquement lorsque le pool d’applications est démarré. Chaque identité de pool d’applications est ajoutée à la variable locale **IIS\_IUSRS** groupe de sécurité comme un élément masqué.
+Dans l’ordre de votre site Web traiter du contenu, l’identité du pool d’applications doit avoir autorisations de lecture sur le dossier local qui stocke le contenu. Pools d’applications dans IIS 7.5, exécutent une identité de pool d’applications unique par défaut (contrairement aux versions précédentes d’IIS, où des pools d’applications sont exécute généralement en utilisant le compte de Service réseau). L’identité du pool d’applications n’est pas un compte d’utilisateur réel et ne s’affichent pas sur toutes les listes d’utilisateurs ou des groupes&#x2014;au lieu de cela, elle est créée dynamiquement lorsque le pool d’applications est démarré. Chaque identité de pool d’applications est ajoutée à la variable locale **IIS\_IUSRS** groupe de sécurité comme un élément masqué.
 
 Pour accorder des autorisations à une identité de pool d’applications sur un fichier ou dossier, vous avez deux options :
 
-- Affecter des autorisations à l’identité du pool d’applications directement, en utilisant le format **pool d’applications IIS\***[nom] * (par exemple, **IIS AppPool\DemoSite**).
+- Affecter des autorisations à l’identité du pool d’applications directement, en utilisant le format <strong>pool d’applications IIS\</strong ><em>[nom]</em>(par exemple, <strong>IIS AppPool\DemoSite</strong>).
 - Assignation d’autorisations pour le **IIS\_IUSRS** groupe.
 
 L’approche la plus courante consiste à affecter des autorisations à l’ordinateur local **IIS\_IUSRS** du groupe, car cette approche vous permet de modifier des pools d’applications sans reconfigurer les autorisations de système de fichiers. La procédure suivante utilise cette approche basée sur le groupe.
@@ -254,8 +254,8 @@ L’approche la plus courante consiste à affecter des autorisations à l’ordi
 
     ![](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler/_static/image15.png)
 5. Dans le **sélectionner des utilisateurs ou groupes** boîte de dialogue, tapez **IIS\_IUSRS**, cliquez sur **vérifier les noms**, puis cliquez sur **OK**.
-6. Dans le **autorisations pour *** [nom du dossier]* boîte de dialogue, notez que le nouveau groupe a été affecté le **en lecture &amp; exécuter**, **répertorier le contenu du dossier**, et **En lecture** autorisations par défaut. Laissez inchangée et cliquez sur **OK**.
-7. Cliquez sur **OK** pour fermer la *[nom du dossier] *** propriétés** boîte de dialogue.
+6. Dans le <strong>autorisations pour</strong><em>[nom du dossier]</em> boîte de dialogue, notez que le nouveau groupe a été affecté le <strong>en lecture &amp; exécuter</strong>, <strong>liste du dossier contenu</strong>, et <strong>en lecture</strong> autorisations par défaut. Laissez inchangée et cliquez sur <strong>OK</strong>.
+7. Cliquez sur <strong>OK</strong> pour fermer la <em>[nom du dossier]</em><strong>propriétés</strong> boîte de dialogue.
 
 En tant que dernière tâche, vous devez accorder les autorisations appropriées à l’utilisateur non administrateur dont informations d’identification que vous utiliserez pour déployer du contenu. Cet utilisateur nécessite les autorisations pour déployer du contenu à votre site Web à distance.
 
@@ -306,6 +306,6 @@ Votre serveur web doit maintenant être prêt à accepter des déploiements à d
 
 Pour obtenir des conseils sur la configuration des fichiers de projet personnalisés Microsoft Build Engine (MSBuild) pour déployer des packages web pour le Gestionnaire de déploiement Web, consultez [configuration des propriétés de déploiement pour un environnement cible](configuring-deployment-properties-for-a-target-environment.md).
 
->[!div class="step-by-step"]
-[Précédent](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)
-[Suivant](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md)
+> [Suivant](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)

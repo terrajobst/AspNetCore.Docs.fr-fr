@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6
-title: "Partie 6 : À l’aide des Annotations de données pour la Validation de modèle | Documents Microsoft"
+title: 'Partie 6 : À l’aide des Annotations de données pour la Validation de modèle | Documents Microsoft'
 author: jongalloway
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 6 traite à l’aide des Annotations de données pour le modèle V..."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 6 traite à l’aide des Annotations de données pour le modèle V...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: b2083d5604741a0142f504f92779c9f931d0d6d9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 328eccb4324bb10a7e8dec819a70129fc14c42c4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-6-using-data-annotations-for-model-validation"></a>Partie 6 : À l’aide des Annotations de données pour la Validation de modèle
 ====================
@@ -81,6 +81,6 @@ Tapez une lettre unique dans le champ titre est conforme aux exigences de valida
 ![](mvc-music-store-part-6/_static/image3.png)
 
 
->[!div class="step-by-step"]
-[Précédent](mvc-music-store-part-5.md)
-[Suivant](mvc-music-store-part-7.md)
+> [!div class="step-by-step"]
+> [Précédent](mvc-music-store-part-5.md)
+> [Suivant](mvc-music-store-part-7.md)

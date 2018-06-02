@@ -1289,7 +1289,7 @@
 ##### [Application Storefront ASP.NET MVC, partie 16 : Reconception de l’appartenance avec OpenID](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
 ##### [Application Storefront ASP.NET MVC, partie 17 : Validation avec Jeff Atwood](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
 ##### [Application Storefront ASP.NET MVC, partie 18 : Création de l’expérience](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md)
-##### [Application Storefront ASP.NET MVC, partie 19 : Traitement des commandes avec un workflow Windows](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+##### [Application Storefront ASP.NET MVC, partie 19 : Traitement des commandes avec un workflow Windows](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
 ##### [Application Storefront ASP.NET MVC, partie 19a : Suite concernant le workflow Windows](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
 ##### [Application Storefront ASP.NET MVC, partie 20 : Journalisation](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md)
 ##### [Application Storefront ASP.NET MVC, partie 21 : Gestionnaire de commandes et personnalisation](mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)

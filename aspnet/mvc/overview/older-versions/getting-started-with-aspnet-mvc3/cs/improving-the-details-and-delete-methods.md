@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
-title: "Améliorer les détails et les méthodes de suppression (c#) | Documents Microsoft"
+title: Améliorer les détails et les méthodes de suppression (c#) | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/improving-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: e46616d45ad0e4a0ab861e6fb53f33bc567cbdea
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 55945eb373c79fd6ae018fe8f896dc5e6bbe7744
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="improving-the-details-and-delete-methods-c"></a>Améliorer les détails et les méthodes de suppression (c#)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -61,7 +61,7 @@ La méthode `HttpPost` qui supprime les données est nommée `DeleteConfirmed` p
 
 Le common language runtime (CLR) requiert des méthodes surchargées pour avoir une signature unique (même nom, autre liste de paramètres). Toutefois, vous devez ici deux méthodes de suppression : un pour GET--et un pour valider que requièrent la même signature. (Elles doivent toutes les deux accepter un entier unique comme paramètre.)
 
-Pour trier sur ce point, vous pouvez effectuer deux choses. Une consiste à attribuer aux méthodes des noms différents. C’est ce que nous l’avons fait il précédent exemple. Toutefois, elle présente un petit problème : ASP.NET mappe des segments d’une URL à des méthodes d’action par nom. Si vous renommez une méthode, il est probable que le routage ne pourra pas trouver cette méthode. La solution consiste à faire ce que vous voyez dans l’exemple, c’est-à-dire à ajouter l’attribut `ActionName("Delete")` à la méthode `DeleteConfirmed`. Cela exécute efficacement mappage pour le système de routage afin qu’une URL qui inclut */Delete/*un billet demande trouveront le `DeleteConfirmed` (méthode).
+Pour trier sur ce point, vous pouvez effectuer deux choses. Une consiste à attribuer aux méthodes des noms différents. C’est ce que nous l’avons fait il précédent exemple. Toutefois, elle présente un petit problème : ASP.NET mappe des segments d’une URL à des méthodes d’action par nom. Si vous renommez une méthode, il est probable que le routage ne pourra pas trouver cette méthode. La solution consiste à faire ce que vous voyez dans l’exemple, c’est-à-dire à ajouter l’attribut `ActionName("Delete")` à la méthode `DeleteConfirmed`. Cela exécute efficacement mappage pour le système de routage afin qu’une URL qui inclut <em>/Delete/</em>un billet demande trouveront le `DeleteConfirmed` (méthode).
 
 Une autre façon d’éviter un problème avec les méthodes qui ont des signatures et des noms identiques est artificiellement modifier la signature de la méthode POST pour inclure un paramètre inutilisé. Par exemple, certains développeurs ajoutent un type de paramètre `FormCollection` qui est passé à la méthode POST et puis simplement n’utilisez pas le paramètre :
 
@@ -81,11 +81,11 @@ Si vous souhaitez déployer votre application, il est utile pour le premier test
 - [L’activation d’IIS 7.x](https://blogs.msdn.com/b/rickandy/archive/2011/03/14/enabling-iis-7-x-on-windows-7-vista-sp1-windows-2008-windows-2008-r2.aspx)
 - [Déploiement de projets d’Application Web](https://msdn.microsoft.com/library/dd394698.aspx)
 
-Je maintenant vous encourage à passer à notre niveau intermédiaire [création d’un modèle de données Entity Framework pour une Application ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) et [magasin de musique MVC](../../mvc-music-store/mvc-music-store-part-1.md) didacticiels, pour Explorer le [ASP.NET articles sur MSDN](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)et à consulter les vidéos et des ressources sur plusieurs [https://asp.net/mvc](https://asp.net/mvc) pour en savoir plus sur ASP.NET MVC ! Le [forums d’ASP.NET MVC](https://forums.asp.net/1146.aspx) sont idéal pour poser des questions.
+Je maintenant vous encourage à passer à notre niveau intermédiaire [création d’un modèle de données Entity Framework pour une Application ASP.NET MVC](../../../getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md) et [magasin de musique MVC](../../mvc-music-store/mvc-music-store-part-1.md) didacticiels, pour Explorer le [ASP.NET articles sur MSDN](https://msdn.microsoft.com/library/gg416514(VS.98).aspx)et à consulter les vidéos et des ressources sur plusieurs [ https://asp.net/mvc ](https://asp.net/mvc) pour en savoir plus sur ASP.NET MVC ! Le [forums d’ASP.NET MVC](https://forums.asp.net/1146.aspx) sont idéal pour poser des questions.
 
 Bonne lecture !
 
-— Scott Hanselman ([http://hanselman.com](http://hanselman.com) et [ @shanselman ](http://twitter.com/shanselman) sur Twitter) et Rick Anderson [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
+— Scott Hanselman ([ http://hanselman.com ](http://hanselman.com) et [ @shanselman ](http://twitter.com/shanselman) sur Twitter) et Rick Anderson [blogs.msdn.com/rickAndy](https://blogs.msdn.com/rickAndy)
 
->[!div class="step-by-step"]
-[Précédent](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-validation-to-the-model.md)

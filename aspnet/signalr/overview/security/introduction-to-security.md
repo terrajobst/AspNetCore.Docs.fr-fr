@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/security/introduction-to-security
-title: "Introduction à la sécurité de SignalR | Documents Microsoft"
+title: Introduction à la sécurité de SignalR | Documents Microsoft
 author: pfletcher
-description: "Décrit les problèmes de sécurité que vous devez prendre en compte lorsque vous développez une application SignalR."
+description: Décrit les problèmes de sécurité que vous devez prendre en compte lorsque vous développez une application SignalR.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: 1cb9f15a958028822b50decf4b420c36596ce25e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9a4f09c8036d6d662dfdc44d7c7feaba0101e0c6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-signalr-security"></a>Introduction à la sécurité de SignalR
 ====================
@@ -115,7 +115,7 @@ Voici un exemple d’une attaque CSRF :
 
     [!code-html[Main](introduction-to-security/samples/sample1.html)]
 
- Notez que l’action de formulaire valide sur le site vulnérable, pas pour le site malveillant. Il s’agit de la partie « cross-site » de CSRF.
+   Notez que l’action de formulaire valide sur le site vulnérable, pas pour le site malveillant. Il s’agit de la partie « cross-site » de CSRF.
 4. L’utilisateur clique sur le bouton Envoyer. Le navigateur inclut le cookie d’authentification avec la demande.
 5. La requête s’exécute sur le serveur example.com avec le contexte de l’authentification de l’utilisateur et peut faire tout ce qu’un utilisateur authentifié est autorisé à faire.
 

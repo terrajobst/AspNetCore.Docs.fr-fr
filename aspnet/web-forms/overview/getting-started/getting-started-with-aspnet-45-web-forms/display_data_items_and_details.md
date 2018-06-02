@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details
-title: "Afficher les données des éléments et les détails | Documents Microsoft"
+title: Afficher les données des éléments et les détails | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details
 msc.type: authoredcontent
-ms.openlocfilehash: 809d7a9c21a3ddf5dfd07d079eb8fe0d1d81712d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5fea654aa5116193cb7496c1b9020ed8e25fc06f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="display-data-items-and-details"></a>Afficher les données des éléments et les détails
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -131,7 +131,7 @@ Ce code utilise un **FormView** contrôle pour afficher plus d’informations su
 Pour connecter le balisage ci-dessus à la base de données, vous devez ajouter du code pour le *ProductDetails.aspx* code.
 
 1. Dans **l’Explorateur de solutions**, avec le bouton droit *ProductDetails.aspx* puis cliquez sur **afficher le Code**.  
- Le *ProductDetails.aspx.cs* fichier s’affiche.
+   Le *ProductDetails.aspx.cs* fichier s’affiche.
 2. Remplacez le code existant par celui-ci :   
 
     [!code-csharp[Main](display_data_items_and_details/samples/sample6.cs)]
@@ -152,7 +152,7 @@ Vous pouvez maintenant exécuter l’application pour afficher les produits affi
     ![Afficher les données des éléments et les détails - produits](display_data_items_and_details/_static/image4.png)
 4. Fermez le navigateur.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel de la série ont ajouter du code pour afficher une liste de produits et pour afficher des détails sur le produit et balisage. Pendant ce processus, vous avez appris à propos des contrôles de données fortement typées, liaison de modèle et les fournisseurs de valeur. Dans l’étape suivante du didacticiel, vous allez ajouter un panier d’achat pour l’exemple d’application Wingtip Toys.
 
@@ -160,6 +160,6 @@ Dans ce didacticiel de la série ont ajouter du code pour afficher une liste de 
 
 [La récupération et affichage des données avec la liaison de modèle et les web forms](../../presenting-and-managing-data/model-binding/retrieving-data.md)
 
->[!div class="step-by-step"]
-[Précédent](ui_and_navigation.md)
-[Suivant](shopping-cart.md)
+> [!div class="step-by-step"]
+> [Précédent](ui_and_navigation.md)
+> [Suivant](shopping-cart.md)

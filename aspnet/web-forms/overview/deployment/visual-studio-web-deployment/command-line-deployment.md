@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de la ligne de commande | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de la ligne de commande | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 8446b3fc05e3ef4a5a30c753c989252fd7f1a56f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: acc4a0e7f4744a3759b90e0f1b159da68b7c7362
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de la ligne de commande
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -45,7 +45,7 @@ Ouvrez le *About.aspx* page, de supprimer toutes les marques à l’intérieur d
 
 Exécutez le projet et sélectionnez le **sur** page.
 
-![Sur la page](command-line-deployment/_static/image2.png)
+![Page About](command-line-deployment/_static/image2.png)
 
 ## <a name="deploy-to-test-by-using-the-command-line"></a>Déploiement de Test à l’aide de la ligne de commande
 
@@ -98,9 +98,9 @@ Vous pouvez spécifier le profil de publication par nom ou par le chemin complet
 
 Trois méthodes de publication sont pris en charge pour la publication de la ligne de commande :
 
-- `MSDeploy`-Publier à l’aide de Web Deploy.
-- `Package`-Publier en créant un Package de déploiement Web. Vous devez l’installer séparément à partir de la commande MSBuild qui le crée.
-- `FileSystem`-Publier en copiant les fichiers dans un dossier spécifié.
+- `MSDeploy` -Publier à l’aide de Web Deploy.
+- `Package` -Publier en créant un Package de déploiement Web. Vous devez l’installer séparément à partir de la commande MSBuild qui le crée.
+- `FileSystem` -Publier en copiant les fichiers dans un dossier spécifié.
 
 ### <a name="specifying-the-build-configuration-and-platform"></a>Spécification de la plateforme et la configuration de build
 
@@ -136,7 +136,7 @@ Le processus de déploiement en production est similaire au processus de mise en
     Pour un site de production réel, s’il existe également une modification de la base de données, vous en général, copiez la *application\_offline.htm* au site avant le déploiement de fichiers et le supprimer après un déploiement réussi.
 4. Ouvrez un navigateur et accédez à l’URL de votre site intermédiaire, puis cliquez sur le **sur** page pour vérifier que le déploiement a réussi.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Vous avez déployé une mise à jour de l’application à l’aide de la ligne de commande.
 
@@ -144,6 +144,6 @@ Vous avez déployé une mise à jour de l’application à l’aide de la ligne 
 
 Dans l’étape suivante du didacticiel, vous verrez un exemple montrant comment étendre le site web Pipe-Line de publication. L’exemple illustre comment déployer des fichiers qui ne sont pas inclus dans le projet.
 
->[!div class="step-by-step"]
-[Précédent](deploying-a-database-update.md)
-[Suivant](deploying-extra-files.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-a-database-update.md)
+> [Suivant](deploying-extra-files.md)

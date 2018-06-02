@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
-title: "Lot de mise à jour (c#) | Documents Microsoft"
+title: Lot de mise à jour (c#) | Documents Microsoft
 author: rick-anderson
-description: "Découvrez comment mettre à jour de plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous créons un GridView où chaque ligne est modifiable. Dans les données en cours..."
+description: Découvrez comment mettre à jour de plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous créons un GridView où chaque ligne est modifiable. Dans les données en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1210f9048401ca1b4e29d6dde9bf5dbef987091f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9f1bad4f0b58175a8437ebfedf161db057bb2bd2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="batch-updating-c"></a>Lot de mise à jour (c#)
 ====================
@@ -185,7 +185,7 @@ Une dernière reste de problème : si le produit n’a un `CategoryID` valeur s
 Notez comment la `<asp:ListItem Value="">` a--sélectionner un--son `Value` attribut défini explicitement sur une chaîne vide. Faire référence à la [personnalisation de l’Interface de Modification de données](../editing-inserting-and-deleting-data/customizing-the-data-modification-interface-cs.md) didacticiel pour une discussion plus approfondie sur la raison pour laquelle cet élément DropDownList supplémentaire est nécessaire pour gérer le `NULL` cas et pourquoi l’attribution du `Value` propriété à une chaîne vide est essentielle.
 
 > [!NOTE]
-> Il existe un potentiel performances et évolutivité problème ici qui est important de mentionner. Étant donné que chaque ligne a une liste déroulante qui utilise le `CategoriesDataSource` comme source de données, le `CategoriesBLL` classe s `GetCategories` méthode sera appelée  *n*  fois par page à consulter, où  *n*  est le nombre de lignes dans le GridView. Ces  *n*  appelle à `GetCategories` entraîner  *n*  requêtes à la base de données. Cet impact sur la base de données peut être atténué par la mise en cache les catégories retournés dans un cache par demande ou via la couche de mise en cache à l’aide d’une dépendance ou une expiration très courte temporels de la mise en cache de SQL. Pour plus d’informations sur la demande par la mise en cache d’option, consultez [ `HttpContext.Items` un magasin de Cache par demande](http://aspnet.4guysfromrolla.com/articles/060904-1.aspx).
+> Il existe un potentiel performances et évolutivité problème ici qui est important de mentionner. Étant donné que chaque ligne a une liste déroulante qui utilise le `CategoriesDataSource` comme source de données, le `CategoriesBLL` classe s `GetCategories` méthode sera appelée *n* fois par page à consulter, où *n* est le nombre de lignes dans le GridView. Ces *n* appelle à `GetCategories` entraîner *n* requêtes à la base de données. Cet impact sur la base de données peut être atténué par la mise en cache les catégories retournés dans un cache par demande ou via la couche de mise en cache à l’aide d’une dépendance ou une expiration très courte temporels de la mise en cache de SQL. Pour plus d’informations sur la demande par la mise en cache d’option, consultez [ `HttpContext.Items` un magasin de Cache par demande](http://aspnet.4guysfromrolla.com/articles/060904-1.aspx).
 
 
 ## <a name="step-4-completing-the-editing-interface"></a>Étape 4 : Fin de l’Interface de modification
@@ -270,7 +270,7 @@ Pour ces types de situations, envisagez d’utiliser les éléments suivants `Ba
 
 [!code-csharp[Main](batch-updating-cs/samples/sample7.cs)]
 
-`BatchMethodAlternate`démarre en créant un nouveau vide `ProductsDataTable` nommé `products`. Parcourt les s GridView ensuite `Rows` collection et, pour chaque ligne Obtient les informations de produit spécifique à l’aide de la couche BLL s `GetProductByProductID(productID)` (méthode). Extraites `ProductsRow` instance possède des propriétés mises à jour de la même manière que `BatchUpdate`, mais après la mise à jour de la ligne, il est importé dans le `products``ProductsDataTable` via le DataTable s [ `ImportRow(DataRow)` méthode](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx).
+`BatchMethodAlternate` démarre en créant un nouveau vide `ProductsDataTable` nommé `products`. Parcourt les s GridView ensuite `Rows` collection et, pour chaque ligne Obtient les informations de produit spécifique à l’aide de la couche BLL s `GetProductByProductID(productID)` (méthode). Extraites `ProductsRow` instance possède des propriétés mises à jour de la même manière que `BatchUpdate`, mais après la mise à jour de la ligne, il est importé dans le `products``ProductsDataTable` via le DataTable s [ `ImportRow(DataRow)` méthode](https://msdn.microsoft.com/library/system.data.datatable.importrow(VS.80).aspx).
 
 Après le `foreach` boucle se termine, `products` contient un `ProductsRow` instance pour chaque ligne dans le GridView. Depuis chacun de la `ProductsRow` instances ont été ajoutés à la `products` (au lieu de mise à jour), si nous passer à l’aveugle à la `UpdateWithTransaction` (méthode) le `ProductsTableAdatper` essaie d’insérer des enregistrements dans la base de données. Au lieu de cela, nous devons spécifier que chacune de ces lignes ont été modifiée (ne pas ajouté).
 
@@ -289,12 +289,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Teresa Murphy et David Suru. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](wrapping-database-modifications-within-a-transaction-cs.md)
-[Suivant](batch-deleting-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](wrapping-database-modifications-within-a-transaction-cs.md)
+> [Suivant](batch-deleting-cs.md)

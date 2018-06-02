@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
-title: "Utiliser AJAX pour fournir des mises à jour dynamiques | Documents Microsoft"
+title: Utiliser AJAX pour fournir des mises à jour dynamiques | Documents Microsoft
 author: microsoft
-description: "Étape 10 prend en charge les utilisateurs connectés à RSVP leur intérêt de participer à un dîner, à l’aide d’une approche basée sur Ajax intégrée dans le détail dîner..."
+description: Étape 10 prend en charge les utilisateurs connectés à RSVP leur intérêt de participer à un dîner, à l’aide d’une approche basée sur Ajax intégrée dans le détail dîner...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-ajax-to-deliver-dynamic-updates
 msc.type: authoredcontent
-ms.openlocfilehash: 7b75f8c6cf08112eb77d1a9a40222ed1425ef3a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7cea3ee2ec52261521941efac484e91a53f6310b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-ajax-to-deliver-dynamic-updates"></a>Utiliser AJAX pour fournir des mises à jour dynamiques
 ====================
@@ -117,7 +117,7 @@ Pour utiliser jQuery, nous allons tout d’abord ajouter une référence de scri
 
 *Conseil : Vérifiez que vous avez installé le correctif du JavaScript intellisense pour Visual Studio 2008 SP1 qui permet la prise en charge d’intellisense plus riche pour les fichiers JavaScript (y compris jQuery). Vous pouvez le télécharger à partir de : http://tinyurl.com/vs2008javascripthotfix*
 
-Le code écrit à l’aide de JQuery souvent utilise un « $() » global méthode JavaScript qui Récupère un ou plusieurs des éléments HTML à l’aide d’un sélecteur CSS. Par exemple, *$("#rsvpmsg")* sélectionne un élément HTML portant l’id rsvpmsg, tandis que *$(".something")* Sélectionnez tous les éléments dont le « quelque chose « CSS nom de la classe. Vous pouvez également écrire des requêtes plus avancées telles que « retourner tous les boutons radio activé » à l’aide d’une requête de sélecteur comme : *$(« entrée [@type= radio] [@checked] »)*.
+Le code écrit à l’aide de JQuery souvent utilise un « $() » global méthode JavaScript qui Récupère un ou plusieurs des éléments HTML à l’aide d’un sélecteur CSS. Par exemple, <em>$("#rsvpmsg")</em> sélectionne un élément HTML portant l’id rsvpmsg, tandis que <em>$(".something")</em> Sélectionnez tous les éléments dont le « quelque chose « CSS nom de la classe. Vous pouvez également écrire des requêtes plus avancées telles que « retourner tous les boutons radio activé » à l’aide d’une requête de sélecteur comme : <em>$(« entrée [@type= radio] [@checked] »)</em>.
 
 Une fois que vous avez sélectionné les éléments, vous pouvez appeler des méthodes sur ces derniers pour effectuer une action, comme les masquer : *$(#rsvpmsg").hide() » ;*
 
@@ -153,6 +153,6 @@ Cela rend le code plus propre pour lire et mettre à jour.
 
 Examinons à présent comment nous pouvons utiliser AJAX davantage et ajouter la prise en charge du mappage interactif à notre application.
 
->[!div class="step-by-step"]
-[Précédent](secure-applications-using-authentication-and-authorization.md)
-[Suivant](use-ajax-to-implement-mapping-scenarios.md)
+> [!div class="step-by-step"]
+> [Précédent](secure-applications-using-authentication-and-authorization.md)
+> [Suivant](use-ajax-to-implement-mapping-scenarios.md)

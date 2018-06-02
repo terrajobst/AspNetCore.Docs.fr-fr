@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
-title: "Configuration d’un serveur Web pour le Web de déployer la publication (Agent distant) | Documents Microsoft"
+title: Configuration d’un serveur Web pour le Web de déployer la publication (Agent distant) | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment configurer un serveur web d’Internet Information Services (IIS) pour prendre en charge la publication sur le web et déploiement à l’aide du déploiement de Web IIS..."
+description: Cette rubrique décrit comment configurer un serveur web d’Internet Information Services (IIS) pour prendre en charge la publication sur le web et déploiement à l’aide du déploiement de Web IIS...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent
 msc.type: authoredcontent
-ms.openlocfilehash: 23195949121cd13ca4b1809b8db91a7320d1fdd2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9f3a55c5e68e61a2d7907c765209d3786e05a485
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/24/2018
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-remote-agent"></a>Configuration d’un serveur Web pour la publication (Agent distant) de déploiement Web
 ====================
@@ -102,7 +102,7 @@ Dans ce cas, vous devez installer les opérations suivantes :
 7. Dans le volet de navigation, cliquez sur **Server**.
 8. Dans le **Configuration IIS 7 recommandée** , cliquez sur **ajouter**.
 9. Dans le **2.1 d’outil de déploiement Web** , cliquez sur **ajouter**.
-10. Cliquez sur **Installer**. Le programme d’installation de la plateforme Web affiche une liste de produits & #x 2014 ; ainsi que toutes les dépendances associées et les #x 2014 ; à installer et vous invite à accepter les termes du contrat de licence.
+10. Cliquez sur **Installer**. Le programme d’installation de la plateforme Web affiche une liste de produits&#x2014;ainsi que les dépendances associées&#x2014;pour être installé et vous invite à accepter les termes du contrat de licence.
 
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image2.png)
 11. Passez en revue les termes du contrat de licence et si vous acceptez les termes du contrat, cliquez sur **J’accepte**.
@@ -176,11 +176,11 @@ Bien que rien ne vous empêche de déploiement de contenu au site Web par défau
     > [!NOTE]
     > L’exemple de solution requiert .NET Framework 4.0. Cela n’est pas en général une exigence pour Web Deploy.
 
-Dans l’ordre de votre site Web traiter du contenu, l’identité du pool d’applications doit avoir autorisations de lecture sur le dossier local qui stocke le contenu. Pools d’applications dans IIS 7.5, exécutent une identité de pool d’applications unique par défaut (contrairement aux versions précédentes d’IIS, où des pools d’applications sont exécute généralement en utilisant le compte de Service réseau). L’identité du pool d’applications n’est pas un compte d’utilisateur réel et ne s’affichent pas sur toutes les listes d’utilisateurs ou les groupes & #x 2014 ; au lieu de cela, elle est créée dynamiquement lorsque le pool d’applications est démarré. Chaque identité de pool d’applications est ajoutée à la variable locale **IIS\_IUSRS** groupe de sécurité comme un élément masqué.
+Dans l’ordre de votre site Web traiter du contenu, l’identité du pool d’applications doit avoir autorisations de lecture sur le dossier local qui stocke le contenu. Pools d’applications dans IIS 7.5, exécutent une identité de pool d’applications unique par défaut (contrairement aux versions précédentes d’IIS, où des pools d’applications sont exécute généralement en utilisant le compte de Service réseau). L’identité du pool d’applications n’est pas un compte d’utilisateur réel et ne s’affichent pas sur toutes les listes d’utilisateurs ou des groupes&#x2014;au lieu de cela, elle est créée dynamiquement lorsque le pool d’applications est démarré. Chaque identité de pool d’applications est ajoutée à la variable locale **IIS\_IUSRS** groupe de sécurité comme un élément masqué.
 
 Pour accorder des autorisations à une identité de pool d’applications sur un fichier ou dossier, vous avez deux options :
 
-- Affecter des autorisations à l’identité du pool d’applications directement, en utilisant le format **pool d’applications IIS\***[nom] * (par exemple, **IIS AppPool\DemoSite**).
+- Affecter des autorisations à l’identité du pool d’applications directement, en utilisant le format <strong>pool d’applications IIS\</strong ><em>[nom]</em>(par exemple, <strong>IIS AppPool\DemoSite</strong>).
 - Assignation d’autorisations pour le **IIS\_IUSRS** groupe.
 
 L’approche la plus courante consiste à affecter des autorisations à l’ordinateur local **IIS\_IUSRS** parce que cette approche vous permet de modifier des pools d’applications sans reconfigurer les autorisations de système de fichiers. La procédure suivante utilise cette approche basée sur le groupe.
@@ -198,8 +198,8 @@ L’approche la plus courante consiste à affecter des autorisations à l’ordi
 
     ![](configuring-a-web-server-for-web-deploy-publishing-remote-agent/_static/image8.png)
 5. Dans le **sélectionner des utilisateurs ou groupes** boîte de dialogue, tapez **IIS\_IUSRS**, cliquez sur **vérifier les noms**, puis cliquez sur **OK**.
-6. Dans le **autorisations pour *** [nom du dossier]*boîte de dialogue, notez que le nouveau groupe a été affecté le **en lecture &amp; exécuter**, **répertorier le contenu du dossier**, et **En lecture** autorisations par défaut. Laissez inchangée et cliquez sur **OK**.
-7. Cliquez sur **OK** pour fermer la *[nom du dossier] *** propriétés** boîte de dialogue.
+6. Dans le <strong>autorisations pour</strong><em>[nom du dossier]</em>boîte de dialogue, notez que le nouveau groupe a été affecté le <strong>en lecture &amp; exécuter</strong>, <strong>liste du dossier contenu</strong>, et <strong>en lecture</strong> autorisations par défaut. Laissez inchangée et cliquez sur <strong>OK</strong>.
+7. Cliquez sur <strong>OK</strong> pour fermer la <em>[nom du dossier]</em><strong>propriétés</strong> boîte de dialogue.
 
 En tant que dernière tâche avant de tenter de déployer des packages web à votre serveur, vous devez vous assurer que le Service de l’Agent de déploiement Web est en cours d’exécution. Lorsque vous déployez un package à partir d’un ordinateur distant, le Service de l’Agent de déploiement Web est chargé pour extraire et installer le contenu du package. Le service est démarré par défaut lorsque vous installez l’outil de déploiement Web et s’exécute sous l’identité Service réseau.
 
@@ -217,7 +217,7 @@ Vous pouvez vérifier si un service est en cours d’exécution de plusieurs man
 
 Par défaut, le Service de l’Agent distant écoute sur le port TCP 80, à cette URL :
 
-http:// [*nom du serveur*] / MSDEPLOYAGENTSERVICE
+<http://servername.com/MSDEPLOYAGENTSERVICE>
 
 Dans la plupart des cas, vous ne devez configurer les règles de pare-feu supplémentaires pour le Service de l’Agent distant, car les serveurs web est généralement écoutent les requêtes HTTP sur le port 80. Si vous avez personnalisé votre installation pour l’écoute sur un port non standard, vous devez configurer des exceptions de pare-feu en fonction des besoins.
 
@@ -233,6 +233,6 @@ Dans la plupart des cas, vous ne devez configurer les règles de pare-feu suppl�
 
 Pour obtenir des conseils sur la configuration des fichiers de projet Microsoft Build Engine (MSBuild) personnalisés pour déployer des packages web pour le Service de l’Agent distant, consultez [configuration des propriétés de déploiement pour un environnement cible](configuring-deployment-properties-for-a-target-environment.md).
 
->[!div class="step-by-step"]
-[Précédent](scenario-configuring-a-production-environment-for-web-deployment.md)
-[Suivant](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
+> [!div class="step-by-step"]
+> [Précédent](scenario-configuring-a-production-environment-for-web-deployment.md)
+> [Suivant](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs
-title: "La récupération et la modification des mots de passe (c#) | Documents Microsoft"
+title: La récupération et la modification des mots de passe (c#) | Documents Microsoft
 author: rick-anderson
-description: "ASP.NET inclut deux contrôles Web qui contribuent à la récupération et la modification des mots de passe. Le contrôle PasswordRecovery permet à un visiteur de récupérer son pa perdu..."
+description: ASP.NET inclut deux contrôles Web qui contribuent à la récupération et la modification des mots de passe. Le contrôle PasswordRecovery permet à un visiteur de récupérer son pa perdu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 76c02a3da7dffad25a7bee03efff6b693f261d85
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7f8b019631eff4840bf1759f8e2752946abcaf80
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="recovering-and-changing-passwords-c"></a>La récupération et la modification des mots de passe (c#)
 ====================
@@ -86,7 +86,7 @@ Avant de tester cette page, il existe un dernier élément de configuration à o
 La configuration de remise du courrier est spécifiée via la [ `<system.net>` élément](https://msdn.microsoft.com/library/6484zdc1.aspx)de [ `<mailSettings>` élément](https://msdn.microsoft.com/library/w355a94k.aspx). Utilisez le [ `<smtp>` élément](https://msdn.microsoft.com/library/ms164240.aspx) pour indiquer que la méthode de remise et la valeur par défaut à partir de l’adresse. Le balisage suivant configure les paramètres de messagerie pour utiliser un serveur SMTP sur le réseau nommé `smtp.example.com` sur le port 25 et avec les informations d’identification de nom d’utilisateur/mot de passe du nom d’utilisateur et mot de passe.
 
 > [!NOTE]
-> `<system.net>`est un élément enfant de la racine de `<configuration>` élément et un frère du `<system.web>`. Par conséquent, ne placez pas le `<system.net>` élément dans le `<system.web>` élément ; au lieu de cela, placez-le au même niveau.
+> `<system.net>` est un élément enfant de la racine de `<configuration>` élément et un frère du `<system.web>`. Par conséquent, ne placez pas le `<system.net>` élément dans le `<system.web>` élément ; au lieu de cela, placez-le au même niveau.
 
 
 [!code-xml[Main](recovering-and-changing-passwords-cs/samples/sample1.xml)]
@@ -125,7 +125,7 @@ Retournez au site et connectez-vous en utilisant les informations suivantes.
 
 Nom d’utilisateur : *nom d’utilisateur*
 
-mot de passe : *mot de passe*
+Mot de passe : *mot de passe*
 
 Ce message peut être personnalisé par programme via un gestionnaire d’événements du contrôle PasswordRecovery [ `SendingMail` événement](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.sendingmail.aspx), ou de façon déclarative par la [ `MailDefinition` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.passwordrecovery.maildefinition.aspx). Examinons ces deux options.
 
@@ -165,8 +165,8 @@ Le `MailDefinition` propriété n’est pas unique à la classe PasswordRecovery
 
 La réinitialisation de mot de passe d’un utilisateur le PasswordRecovery lorsque des appels de contrôle le `MembershipUser` l’objet [ `ResetPassword` méthode](https://msdn.microsoft.com/library/system.web.security.membershipuser.resetpassword.aspx). Cette méthode présente deux surcharges :
 
-- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)**-Réinitialise le mot de passe d’un utilisateur. Utilisez cette surcharge si `RequiresQuestionAndAnswer` a la valeur False.
-- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)**-réinitialise uniquement si de mot de passe d’un utilisateur fourni *securityAnswer* est correct. Utilisez cette surcharge si `RequiresQuestionAndAnswer` a la valeur True.
+- **[`ResetPassword`](https://msdn.microsoft.com/library/d94bdzz2.aspx)** -Réinitialise le mot de passe d’un utilisateur. Utilisez cette surcharge si `RequiresQuestionAndAnswer` a la valeur False.
+- **[`ResetPassword(securityAnswer)`](https://msdn.microsoft.com/library/d90zte4w.aspx)** -réinitialise uniquement si de mot de passe d’un utilisateur fourni *securityAnswer* est correct. Utilisez cette surcharge si `RequiresQuestionAndAnswer` a la valeur True.
 
 Ces deux surcharges retournent le mot de passe de nouveau, généré de manière aléatoire.
 
@@ -300,16 +300,16 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Démarrages rapides du contrôle ChangePassword](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/changepassword.aspx)
 - [Démarrages rapides du contrôle PasswordRecovery](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/login/passwordrecovery.aspx)
 - [Envoi de courrier électronique dans ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
-- [`System.Net.Mail`Foire aux questions](http://www.systemnetmail.com/)
+- [`System.Net.Mail` Foire aux questions](http://www.systemnetmail.com/)
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
-Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel incluent Michael Emmings et Suchi Banerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel incluent Michael Emmings et Suchi Banerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](building-an-interface-to-select-one-user-account-from-many-cs.md)
-[Suivant](unlocking-and-approving-user-accounts-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](building-an-interface-to-select-one-user-account-from-many-cs.md)
+> [Suivant](unlocking-and-approving-user-accounts-cs.md)

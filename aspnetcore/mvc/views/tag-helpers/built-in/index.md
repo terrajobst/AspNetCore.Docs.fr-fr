@@ -1,7 +1,7 @@
 ---
 title: "Tag Helpers intégrés d’ASP.NET Core"
 author: pkellner
-description: "Tag Helpers intégrés d’ASP.NET Core"
+description: "Découvrez comment les Tag Helpers intégrés d’ASP.NET Core augmentent votre productivité."
 manager: wpickett
 ms.author: riande
 ms.date: 09/13/2017
@@ -9,15 +9,15 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 09024bf0d6c87fce9eba9b70bebefa11d2ff0a44
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: f539f96a87b125c0f55855f780bbff005db8c0d9
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Tag Helpers intégrés d’ASP.NET Core
 
-Par [Peter Kellner](http://peterkellner.net) 
+Par [Peter Kellner](http://peterkellner.net)
 
 ASP.NET Core inclut de nombreux Tag Helpers intégrés permettant d’augmenter votre productivité. Cette section donne une vue d’ensemble de ces Tag Helpers.
 
@@ -49,6 +49,8 @@ ASP.NET Core inclut de nombreux Tag Helpers intégrés permettant d’augmenter 
 [comment]: **[OptionTagHelper](xref:mvc/views/tag-helpers/builtin-th/option-tag-helper)**
 
 [comment]: **[ScriptTagHelper](xref:mvc/views/tag-helpers/builtin-th/script-tag-helper)**
+
+**[Tag Helper Partial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)**
 
 **[Tag Helper Select](xref:mvc/views/working-with-forms#the-select-tag-helper)**
 

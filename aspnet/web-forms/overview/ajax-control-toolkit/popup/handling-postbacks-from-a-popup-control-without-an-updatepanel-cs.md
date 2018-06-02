@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
-title: "La gestion des publications (postback) à partir d’un contrôle Popup sans UpdatePanel (c#) | Documents Microsoft"
+title: La gestion des publications (postback) à partir d’un contrôle Popup sans UpdatePanel (c#) | Documents Microsoft
 author: wenz
-description: "L’extendeur PopupControl dans la boîte à outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Si une publication (postback) se produit dans su..."
+description: L’extendeur PopupControl dans la boîte à outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Si une publication (postback) se produit dans su...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
 msc.type: authoredcontent
-ms.openlocfilehash: df43052950b6186908fe1baf04808f40cb926f69
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 59ffa05945289de6e01e2c21dd5a0f82ca1fa374
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-c"></a>La gestion des publications (postback) à partir d’un contrôle Popup sans UpdatePanel (c#)
 ====================
@@ -61,6 +61,6 @@ Le calendrier s’affiche lorsque l’utilisateur clique dans la zone de texte (
 
 En cliquant sur une date place dans la zone de texte ([cliquez pour afficher l’image en taille réelle](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image6.png))
 
->[!div class="step-by-step"]
-[Précédent](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
-[Suivant](using-multiple-popup-controls-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+> [Suivant](using-multiple-popup-controls-vb.md)

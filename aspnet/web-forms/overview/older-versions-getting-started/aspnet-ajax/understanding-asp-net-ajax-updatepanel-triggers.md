@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
-title: "ASP.NET AJAX UpdatePanel déclencheurs | Documents Microsoft"
+title: ASP.NET AJAX UpdatePanel déclencheurs | Documents Microsoft
 author: scottcate
-description: "Lorsque vous travaillez dans l’éditeur de balisage dans Visual Studio, vous pouvez remarquer (à partir d’IntelliSense) qu’il existe deux éléments enfants d’un contrôle UpdatePanel. Une des Much..."
+description: Lorsque vous travaillez dans l’éditeur de balisage dans Visual Studio, vous pouvez remarquer (à partir d’IntelliSense) qu’il existe deux éléments enfants d’un contrôle UpdatePanel. Une des Much...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/12/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-updatepanel-triggers
 msc.type: authoredcontent
-ms.openlocfilehash: 1338ef0763d9bfab451bc30cafa39f715200153d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f30f2ead402d2f49a89b2caf47cc30b6445d4cfb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-updatepanel-triggers"></a>Déclencheurs de UpdatePanel ASP.NET AJAX
 ====================
@@ -57,10 +57,10 @@ De même, le `<asp:PostBackTrigger>` élément peut être utilisé à déclenche
 
 *Balisage Descendants :*
 
-| **Balise** | **Description** |
+| **Tag** | **Description** |
 | --- | --- |
-| &lt;ASP : AsyncPostBackTrigger&gt; | Spécifie un contrôle et les événements susceptibles d’entraîner une mise à jour de page partielle pour le contrôle UpdatePanel qui contient cette référence de déclencheur. |
-| &lt;ASP : PostBackTrigger&gt; | Spécifie un contrôle et l’événement qui provoque une mise à jour pleine page (une actualisation de la page entière). Cette balise peut être utilisée pour forcer une actualisation complète quand un contrôle déclenche sinon rendu partiel. |
+| &lt;asp:AsyncPostBackTrigger&gt; | Spécifie un contrôle et les événements susceptibles d’entraîner une mise à jour de page partielle pour le contrôle UpdatePanel qui contient cette référence de déclencheur. |
+| &lt;asp:PostBackTrigger&gt; | Spécifie un contrôle et l’événement qui provoque une mise à jour pleine page (une actualisation de la page entière). Cette balise peut être utilisée pour forcer une actualisation complète quand un contrôle déclenche sinon rendu partiel. |
 
 ## <a name="walkthrough-cross-updatepanel-triggers"></a>*Procédure pas à pas : Cross-UpdatePanel déclencheurs*
 
@@ -85,7 +85,7 @@ De même, le `<asp:PostBackTrigger>` élément peut être utilisé à déclenche
 ([Cliquez pour afficher l’image en taille réelle](understanding-asp-net-ajax-updatepanel-triggers/_static/image3.png))
 
 
-## <a name="under-the-hood"></a>*Sous le capot*
+## <a name="under-the-hood"></a>*Rouages du système*
 
 En utilisant l’exemple que nous venez de créer, nous pouvons effectuer de voir ce que fait ASP.NET AJAX et le fonctionnement de nos déclencheurs cross-Panneau de UpdatePanel. Pour ce faire, nous utiliserons la source HTML de la page générée, ainsi que l’extension de Mozilla Firefox appelé FireBug -, nous pouvons facilement examiner les publications (postback) AJAX. Nous allons également utiliser l’outil .NET Reflector par Lutz Roeder. Ces deux outils sont disponibles gratuitement en ligne et vous pouvez trouver avec une recherche sur internet.
 
@@ -141,7 +141,7 @@ Comme les informations s’affichent dans la capture d’écran ci-dessus, un cl
 
 Il convient de préciser, toutefois, avais je l’heure dans la Page initialisé\_événement de chargement, l’heure est ont été correctement incrémentée. Par conséquent, les développeurs doivent Méfiez-vous que le code approprié est en cours d’exécution pendant les gestionnaires d’événements appropriée et éviter l’utilisation de la Page\_lorsqu’un gestionnaire d’événements de contrôle peut s’avérer judicieux de charge.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Le contrôle ASP.NET AJAX Extensions UpdatePanel est flexible et peut utiliser plusieurs méthodes pour identifier les événements de contrôle doivent entraîner sa mise à jour. Il prend en charge la mise à jour automatiquement par ses contrôles enfants, mais peut également répondre aux événements de contrôle sur la page.
 
@@ -149,12 +149,12 @@ Pour réduire le risque potentiel de la charge de traitement serveur, il est rec
 
 En examinant le fonctionnement interne de la forme d’ASP.NET AJAX valider le modèle de l’interception, nous avons pu déterminer qu’il utilise l’infrastructure déjà fournie par ASP.NET. Ce faisant, il préserve la compatibilité maximale avec les contrôles conçus à l’aide de la même infrastructure et impose au minimum sur n’importe quel code JavaScript écrit pour la page.
 
-## <a name="bio"></a>BIO
+## <a name="bio"></a>Bio
 
-Rob Paveza est un développeur d’applications .NET senior à Terralever ([www.terralever.com](http://www.terralever.com)), une société de marketing début interactive dans Tempe, en Arizona. Il peut être atteint à [ robpaveza@gmail.com ](mailto:robpaveza@gmail.com), et son blog se trouve dans [http://geekswithblogs.net/robp/](http://geekswithblogs.net/robp/).
+Rob Paveza est un développeur d’applications .NET senior à Terralever ([www.terralever.com](http://www.terralever.com)), une société de marketing début interactive dans Tempe, en Arizona. Il peut être atteint à [ robpaveza@gmail.com ](mailto:robpaveza@gmail.com), et son blog se trouve dans [ http://geekswithblogs.net/robp/ ](http://geekswithblogs.net/robp/).
 
 Scott caté travaille avec les technologies Microsoft Web depuis 1997 et est le directeur de myKB.com ([www.myKB.com](http://www.myKB.com)) où il est spécialisé dans l’écriture d’ASP.NET en fonction des applications axées sur les solutions logicielles de la Base de connaissances. Scott peut être contacté par courrier électronique en [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) ou son blog à [ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[Précédent](understanding-partial-page-updates-with-asp-net-ajax.md)
-[Suivant](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
+> [!div class="step-by-step"]
+> [Précédent](understanding-partial-page-updates-with-asp-net-ajax.md)
+> [Suivant](understanding-asp-net-ajax-authentication-and-profile-application-services.md)

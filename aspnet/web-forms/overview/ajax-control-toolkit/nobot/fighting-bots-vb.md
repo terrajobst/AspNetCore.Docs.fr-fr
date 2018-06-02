@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
 title: Lutte contre robots (VB) | Documents Microsoft
 author: wenz
-description: "Robots automatisés coller les blogs et autres sites Web avec courrier indésirable, l’envoi de formulaires de commentaire sans intervention de l’utilisateur. Le contrôle NoBot dans la Con AJAX ASP.NET..."
+description: Robots automatisés coller les blogs et autres sites Web avec courrier indésirable, l’envoi de formulaires de commentaire sans intervention de l’utilisateur. Le contrôle NoBot dans la Con AJAX ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3b786fd8605c7521a4aae8e49ca236363a71b572
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 35d5984ac7ff3422bab07a759c93fef3914a22f7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="fighting-bots-vb"></a>Lutte contre robots (VB)
 ====================
@@ -37,7 +37,7 @@ Une approche commune pour lutter robots est CAPTCHAs entièrement automatisée p
 
 Il existe plusieurs avantages et inconvénients de cette approche, mais une discussion de ce est dépasse le cadre de ce didacticiel. Il existe toutefois un contrôle dans les outils de contrôle ASP.NET AJAX qui fournit une approche similaire : `NoBot`. Il est plus facile de résoudre à un test CAPTCHA, mais est très facile à utiliser et tarifs parfaitement sur les sites Web tels que des blogs, où il est considéré comme un succès si la plupart des tentatives de spam invalidées, ce qui le `NoBot` peut faire.
 
-`NoBot`intercepte la publication du formulaire web ASP.NET en cours si au moins une des conditions suivantes est remplie :
+`NoBot` intercepte la publication du formulaire web ASP.NET en cours si au moins une des conditions suivantes est remplie :
 
 - Le navigateur ne parvient pas à résoudre un puzzle JavaScript (par exemple lorsque JavaScript est désactivé)
 - L’utilisateur a envoyé le formulaire à rapide
@@ -45,9 +45,9 @@ Il existe plusieurs avantages et inconvénients de cette approche, mais une disc
 
 Pour vérifier ces conditions, la `NoBot` contrôle requiert ces attributs (tous les facultatif) :
 
-- `ResponseMinimumDelaySeconds`quantité minimale de secondes entre les publications (postback)
-- `CutoffWindowSeconds`longueur d’intervalle de temps dans laquelle les publications (postback) à partir d’une adresse IP est des mesures
-- `CutoffMaximumInstances`quantité maximale de l’intervalle de temps, en secondes
+- `ResponseMinimumDelaySeconds` quantité minimale de secondes entre les publications (postback)
+- `CutoffWindowSeconds` longueur d’intervalle de temps dans laquelle les publications (postback) à partir d’une adresse IP est des mesures
+- `CutoffMaximumInstances` quantité maximale de l’intervalle de temps, en secondes
 
 Les demandes de balisage suivant au moins deux secondes s’écoulent entre publications (postback) et qu’il existe cinq publications (postback) ou moins dans un intervalle de 30 secondes :
 
@@ -72,5 +72,5 @@ Lorsque vous exécutez ce script et désactivez JavaScript ou envoyez le formula
 
 Ce message d’erreur peut être dû à un bot ([cliquez pour afficher l’image en taille réelle](fighting-bots-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](fighting-bots-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](fighting-bots-cs.md)

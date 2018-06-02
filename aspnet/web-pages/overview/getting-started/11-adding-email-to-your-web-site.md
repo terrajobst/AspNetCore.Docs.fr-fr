@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/11-adding-email-to-your-web-site
-title: "Envoi de courrier électronique à partir d’un serveur Web ASP.NET de Pages (Razor) Site | Documents Microsoft"
+title: Envoi de courrier électronique à partir d’un serveur Web ASP.NET de Pages (Razor) Site | Documents Microsoft
 author: tfitzmac
-description: "Ce chapitre explique comment envoyer un message électronique automatisé à partir d’un site Web."
+description: Ce chapitre explique comment envoyer un message électronique automatisé à partir d’un site Web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/11-adding-email-to-your-web-site
 msc.type: authoredcontent
-ms.openlocfilehash: c5878c3bc468daef050dcebee99f64441066409a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9be242d238c627a9557fe7ff7e596974e5b7d1c8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="sending-email-from-an-aspnet-web-pages-razor-site"></a>Envoi de courrier électronique à partir d’un Site de Pages (Razor) Web ASP.NET
 ====================
@@ -48,7 +48,7 @@ par [Tom FitzMacken](https://github.com/tfitzmac)
 
 Il existe toutes sortes de raisons pour lesquelles vous devrez peut-être envoyer un courrier électronique à partir de votre site Web. Vous pouvez envoyer des messages de confirmation aux utilisateurs, ou vous pouvez envoyer des notifications à vous-même (par exemple, un nouvel utilisateur a inscrits.) Le `WebMail` helper facilite l’utilisation que vous pouvez envoyer par courrier électronique.
 
-Pour utiliser le `WebMail` application d’assistance, vous devez avoir accès à un serveur SMTP. (Abréviation de *Simple Mail Transfer Protocol*.) Un serveur SMTP est un serveur de messagerie qui transfère uniquement les messages du destinataire server &#8212; Il s’agit du côté sortant des messages électroniques. Si vous utilisez un fournisseur d’hébergement de votre site Web, ils probablement configurer vous avec adresse de messagerie et il peuvent vous indiquer quel est le nom de votre serveur SMTP. Si vous travaillez à l’intérieur d’un réseau d’entreprise, un administrateur ou votre service informatique peut généralement donne les informations sur un serveur SMTP que vous pouvez utiliser. Si vous travaillez à votre domicile, vous pourrez même tester à l’aide de votre fournisseur de messagerie ordinaire, ce qui peut vous indiquer le nom du serveur SMTP. Vous devez généralement :
+Pour utiliser le `WebMail` application d’assistance, vous devez avoir accès à un serveur SMTP. (Abréviation de *Simple Mail Transfer Protocol*.) Un serveur SMTP est un serveur de messagerie qui transfère uniquement les messages vers le serveur du destinataire &#8212; il s’agit du côté sortant des messages électroniques. Si vous utilisez un fournisseur d’hébergement de votre site Web, ils probablement configurer vous avec adresse de messagerie et il peuvent vous indiquer quel est le nom de votre serveur SMTP. Si vous travaillez à l’intérieur d’un réseau d’entreprise, un administrateur ou votre service informatique peut généralement donne les informations sur un serveur SMTP que vous pouvez utiliser. Si vous travaillez à votre domicile, vous pourrez même tester à l’aide de votre fournisseur de messagerie ordinaire, ce qui peut vous indiquer le nom du serveur SMTP. Vous devez généralement :
 
 - Le nom du serveur SMTP.
 - Le numéro de port. Il s’agit généralement de 25. Toutefois, votre fournisseur de services Internet peut nécessiter que vous pouvez utiliser le port 587. Si vous utilisez SSL (SSL) pour le courrier électronique, vous devrez peut-être un autre port. Vérifiez auprès de votre fournisseur de messagerie.
@@ -86,23 +86,23 @@ Dans cette procédure, vous créez deux pages. La première page comporte un for
 
     Modifier les paramètres associés dans le code de messagerie suivantes :
 
-    - Définissez `your-SMTP-host` au nom du serveur SMTP que vous avez accès.
-    - Définissez `your-user-name-here` au nom d’utilisateur pour votre compte de serveur SMTP.
-    - Définissez `your-account-password` au mot de passe pour votre compte de serveur SMTP.
-    - Définissez `your-email-address-here` à votre adresse de messagerie. Il s’agit de l’adresse de messagerie, le message est envoyé à partir de. (Certains fournisseurs de messagerie ne vous permettent de spécifier une autre `From` adresse et utilise votre nom d’utilisateur en tant que le `From` adresse.)
+   - Définissez `your-SMTP-host` au nom du serveur SMTP que vous avez accès.
+   - Définissez `your-user-name-here` au nom d’utilisateur pour votre compte de serveur SMTP.
+   - Définissez `your-account-password` au mot de passe pour votre compte de serveur SMTP.
+   - Définissez `your-email-address-here` à votre adresse de messagerie. Il s’agit de l’adresse de messagerie, le message est envoyé à partir de. (Certains fournisseurs de messagerie ne vous permettent de spécifier une autre `From` adresse et utilise votre nom d’utilisateur en tant que le `From` adresse.)
 
-    > [!TIP] 
-    > 
-    > <a id="configuring_email_settings"></a>
-    > ### <a name="configuring-email-settings"></a>Configuration des paramètres de messagerie
-    > 
-    > Il peut être un défi parfois s’assurer que vous disposez des paramètres corrects pour le serveur SMTP, numéro de port et ainsi de suite. Voici quelques conseils :
-    > 
-    > - Le nom du serveur SMTP est souvent quelque chose comme `smtp.provider.com` ou `smtp.provider.net`. Toutefois, si vous publiez votre site à un fournisseur d’hébergement, le nom du serveur SMTP à ce stade peut être `localhost`. Il s’agit, car une fois que vous avez publiée et que votre site est en cours d’exécution sur le serveur du fournisseur, le serveur de messagerie peut être local du point de vue de votre application. Cette modification dans les noms de serveur peut signifier que vous devez modifier le nom du serveur SMTP dans le cadre de votre processus de publication.
-    > - Le numéro de port est généralement 25. Toutefois, certains fournisseurs exigent que vous pour utiliser le port 587 ou une autre port.
-    > - Assurez-vous que vous utilisez les informations d’identification correctes. Si vous avez publié votre site à un fournisseur d’hébergement, utilisez les informations d’identification que le fournisseur a indiqué spécifiquement le sont pour le courrier électronique. Il peut s’agir différentes informations d’identification que vous permet de publier.
-    > - Parfois, vous n’avez pas besoin d’informations d’identification du tout. Si vous envoyez par courrier électronique à l’aide de votre fournisseur de services Internet, votre fournisseur de messagerie déjà connaissez peut-être vos informations d’identification. Une fois que vous publiez, vous devrez peut-être utiliser différentes informations d’identification que lorsque vous testez sur votre ordinateur local.
-    > - Si votre fournisseur de messagerie utilise le chiffrement, vous devez définir `WebMail.EnableSsl` à `true`.
+     > [!TIP] 
+     > 
+     > <a id="configuring_email_settings"></a>
+     > ### <a name="configuring-email-settings"></a>Configuration des paramètres de messagerie
+     > 
+     > Il peut être un défi parfois s’assurer que vous disposez des paramètres corrects pour le serveur SMTP, numéro de port et ainsi de suite. Voici quelques conseils :
+     > 
+     > - Le nom du serveur SMTP est souvent quelque chose comme `smtp.provider.com` ou `smtp.provider.net`. Toutefois, si vous publiez votre site à un fournisseur d’hébergement, le nom du serveur SMTP à ce stade peut être `localhost`. Il s’agit, car une fois que vous avez publiée et que votre site est en cours d’exécution sur le serveur du fournisseur, le serveur de messagerie peut être local du point de vue de votre application. Cette modification dans les noms de serveur peut signifier que vous devez modifier le nom du serveur SMTP dans le cadre de votre processus de publication.
+     > - Le numéro de port est généralement 25. Toutefois, certains fournisseurs exigent que vous pour utiliser le port 587 ou une autre port.
+     > - Assurez-vous que vous utilisez les informations d’identification correctes. Si vous avez publié votre site à un fournisseur d’hébergement, utilisez les informations d’identification que le fournisseur a indiqué spécifiquement le sont pour le courrier électronique. Il peut s’agir différentes informations d’identification que vous permet de publier.
+     > - Parfois, vous n’avez pas besoin d’informations d’identification du tout. Si vous envoyez par courrier électronique à l’aide de votre fournisseur de services Internet, votre fournisseur de messagerie déjà connaissez peut-être vos informations d’identification. Une fois que vous publiez, vous devrez peut-être utiliser différentes informations d’identification que lorsque vous testez sur votre ordinateur local.
+     > - Si votre fournisseur de messagerie utilise le chiffrement, vous devez définir `WebMail.EnableSsl` à `true`.
 4. Exécutez le *EmailRequest.cshtml* page dans un navigateur. (Assurez-vous que la page est sélectionnée dans le **fichiers** espace de travail avant de l’exécuter.)
 5. Entrez votre nom et une description du problème, puis cliquez sur le **Submit** bouton. Vous êtes redirigé vers la *ProcessRequest.cshtml* page, qui confirme que votre message, et qui vous envoie un message électronique. 
 

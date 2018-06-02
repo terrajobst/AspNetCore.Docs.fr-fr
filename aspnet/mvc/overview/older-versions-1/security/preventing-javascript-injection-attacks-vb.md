@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-vb
-title: "Prévention des attaques d’injection de code JavaScript (VB) | Documents Microsoft"
+title: Prévention des attaques d’injection de code JavaScript (VB) | Documents Microsoft
 author: StephenWalther
-description: "Empêcher les attaques par Injection de JavaScript et les attaques de script entre sites pour vous. Dans ce didacticiel, Stephen Walther explique comment vous pouvez facilement de..."
+description: Empêcher les attaques par Injection de JavaScript et les attaques de script entre sites pour vous. Dans ce didacticiel, Stephen Walther explique comment vous pouvez facilement de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1d49d4d1afa30247d3452a96c8004441ba417ac8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cb19236b22abd455472621ce74a8cddf9752d6c5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="preventing-javascript-injection-attacks-vb"></a>Prévention des attaques d’injection de code JavaScript (VB)
 ====================
@@ -43,7 +43,7 @@ Imaginez que vous avez créé un site Web des commentaires client (voir Figure 1
 
 Le site Web des commentaires client utilise le `controller` dans la liste 1. Cela `controller` contient deux actions nommées `Index()` et `Create()`.
 
-**La liste 1 :`HomeController.vb`**
+**La liste 1 : `HomeController.vb`**
 
 [!code-vb[Main](preventing-javascript-injection-attacks-vb/samples/sample1.vb)]
 
@@ -53,7 +53,7 @@ Le `Create()` méthode crée un nouvel élément de commentaires et l’ajoute �
 
 Le `Index` affichage est contenu dans la liste 2.
 
-**Liste 2 :`Index.aspx`**
+**Liste 2 : `Index.aspx`**
 
 [!code-aspx[Main](preventing-javascript-injection-attacks-vb/samples/sample2.aspx)]
 
@@ -65,10 +65,10 @@ Imaginez que vous entrez le texte suivant dans le formulaire de commentaires cli
 
 [!code-html[Main](preventing-javascript-injection-attacks-vb/samples/sample3.html)]
 
-Ce texte représente un script JavaScript qui affiche une boîte de message d’alerte. Une fois que quelqu'un envoie ce script les commentaires écran, le message *Boo !* s’affiche chaque fois que tout le monde visite le site Web des commentaires client dans le futur (voir Figure 2).
+Ce texte représente un script JavaScript qui affiche une boîte de message d’alerte. Une fois que quelqu'un envoie ce script les commentaires écran, le message <em>Boo !</em> s’affiche chaque fois que tout le monde visite le site Web des commentaires client dans le futur (voir Figure 2).
 
 
-[![Injection de code JavaScript](preventing-javascript-injection-attacks-vb/_static/image5.png)](preventing-javascript-injection-attacks-vb/_static/image4.png)
+[![JavaScript Injection](preventing-javascript-injection-attacks-vb/_static/image5.png)](preventing-javascript-injection-attacks-vb/_static/image4.png)
 
 **Figure 02**: injection de code JavaScript ([cliquez pour afficher l’image en taille réelle](preventing-javascript-injection-attacks-vb/_static/image6.png))
 
@@ -117,9 +117,9 @@ En règle générale, vous devez pencher pour la première approche décrite dan
 
 Pourquoi est-ce incorrect ? Si vous devez afficher les données de la base de données dans l’autre chose qu’une page web, vous devez les problèmes. Par exemple, vous pouvez afficher n’est plus facilement les données dans une application Windows Forms.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel a été à vous font peur sur la perspective d’une attaque par injection de JavaScript. Ce didacticiel décrit deux approches pour la protection de vos applications ASP.NET MVC contre les attaques par injection de JavaScript : vous pouvez soit HTML Encoder soumise par un utilisateur les données dans la vue, ou vous peuvent HTML Encoder soumise par un utilisateur les données dans le contrôleur.
 
->[!div class="step-by-step"]
-[Précédent](authenticating-users-with-windows-authentication-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](authenticating-users-with-windows-authentication-vb.md)

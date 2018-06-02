@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
-title: "Appel des API Web à partir d’un Windows Phone 8 d’Application (c#) | Documents Microsoft"
+title: Appel des API Web à partir d’un Windows Phone 8 d’Application (c#) | Documents Microsoft
 author: rmcmurray
-description: "Créer un scénario complet de bout en bout consistant en une application ASP.NET Web API qui fournit un catalogue de livres à une application Windows Phone 8."
+description: Créer un scénario complet de bout en bout consistant en une application ASP.NET Web API qui fournit un catalogue de livres à une application Windows Phone 8.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/09/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
-ms.openlocfilehash: 6e5a936decb27fd2e3b8cdcea44db8db822c98eb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7d0486b4cab85ffe77fda87d4b34dd3ec0a9e8fe
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>Appel d’API Web à partir d’une Application de 8 Windows Phone (c#)
 ====================
@@ -40,7 +40,7 @@ Dans ce didacticiel de bout en bout, vous allez apprendre à utiliser des API We
 - Pour obtenir la liste des exigences supplémentaires, consultez le *requise* section sur le [Windows Phone SDK 8.0](https://www.microsoft.com/download/details.aspx?id=35471) page de téléchargement.
 
 > [!NOTE]
-> Si vous vous apprêtez à tester la connectivité entre l’API Web et les projets Windows Phone 8 sur votre système local, vous devez suivre les instructions fournies dans le  *[la connexion de l’émulateur de 8 Windows Phone pour les Applications de l’API Web sur un ordinateur Local Ordinateur](https://go.microsoft.com/fwlink/?LinkId=324014)*  article pour configurer votre environnement de test.
+> Si vous vous apprêtez à tester la connectivité entre l’API Web et les projets Windows Phone 8 sur votre système local, vous devez suivre les instructions fournies dans le *[la connexion de l’émulateur de 8 Windows Phone pour les Applications de l’API Web sur un ordinateur Local Ordinateur](https://go.microsoft.com/fwlink/?LinkId=324014)* article pour configurer votre environnement de test.
 
 
 <a id="STEP1"></a>
@@ -52,15 +52,21 @@ La première étape de ce didacticiel de bout en bout consiste à créer un proj
 2. Cliquez sur **fichier**, puis **nouveau**, puis **projet**.
 3. Lorsque le **nouveau projet** boîte de dialogue, développez **installé**, puis **modèles**, puis **Visual C#**, puis **Web**.
 
-    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image2.png)](calling-web-api-from-a-windows-phone-8-application/_static/image1.png) |
-    | --- |
-    | Cliquez sur l’image pour développer |
+
+   | [![](calling-web-api-from-a-windows-phone-8-application/_static/image2.png)](calling-web-api-from-a-windows-phone-8-application/_static/image1.png) |
+   |-----------------------------------------------------------------------------------------------------------------------------------------------------|
+   |                                                                Cliquez sur l’image pour développer                                                                |
+
+
 4. Mettez en surbrillance **Application Web ASP.NET**, entrez **BookStore** pour le nom du projet, puis cliquez sur **OK**.
 5. Lorsque le **nouveau projet ASP.NET** boîte de dialogue est affichée, sélectionnez le **API Web** modèle, puis cliquez sur **OK**.
 
-    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image4.png)](calling-web-api-from-a-windows-phone-8-application/_static/image3.png) |
-    | --- |
-    | Cliquez sur l’image pour développer |
+
+   | [![](calling-web-api-from-a-windows-phone-8-application/_static/image4.png)](calling-web-api-from-a-windows-phone-8-application/_static/image3.png) |
+   |-----------------------------------------------------------------------------------------------------------------------------------------------------|
+   |                                                                Cliquez sur l’image pour développer                                                                |
+
+
 6. Lorsque le projet d’API Web s’ouvre, supprimez le contrôleur de l’exemple du projet :
 
     1. Développez le **contrôleurs** dossier dans l’Explorateur de solutions.
@@ -68,30 +74,33 @@ La première étape de ce didacticiel de bout en bout consiste à créer un proj
     3. Cliquez sur **OK** lorsque vous êtes invité à confirmer la suppression.
 7. Ajouter un fichier de données XML pour le projet d’API Web ; Ce fichier contient le contenu du catalogue bookstore :
 
-    1. Avec le bouton droit le **application\_données** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **un nouvel élément**.
-    2. Lorsque le **ajouter un nouvel élément** boîte de dialogue s’affiche, mettez en surbrillance le **fichier XML** modèle.
-    3. Nommez le fichier **Books.xml**, puis cliquez sur **ajouter**.
-    4. Lorsque le **Books.xml** fichier est ouvert, remplacez le code dans le fichier par le code XML à partir de l’exemple **books.xml** fichier sur MSDN : 
+   1. Avec le bouton droit le **application\_données** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **un nouvel élément**.
+   2. Lorsque le **ajouter un nouvel élément** boîte de dialogue s’affiche, mettez en surbrillance le **fichier XML** modèle.
+   3. Nommez le fichier **Books.xml**, puis cliquez sur **ajouter**.
+   4. Lorsque le **Books.xml** fichier est ouvert, remplacez le code dans le fichier par le code XML à partir de l’exemple **books.xml** fichier sur MSDN : 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample1.xml)]
-    5. Enregistrez et fermez le fichier XML.
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample1.xml)]
+   5. Enregistrez et fermez le fichier XML.
+
 8. Ajouter le modèle bookstore au projet d’API Web ; Ce modèle contient la logique de création, lecture, mise à jour et supprimer (CRUD) pour l’application bookstore :
 
-    1. Avec le bouton droit le **modèles** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **classe**.
-    2. Lorsque le **ajouter un nouvel élément** boîte de dialogue s’affiche, nommez le fichier de classe **BookDetails.cs**, puis cliquez sur **ajouter**.
-    3. Lorsque le **BookDetails.cs** fichier est ouvert, remplacez le code dans le fichier avec les éléments suivants : 
+   1. Avec le bouton droit le **modèles** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **classe**.
+   2. Lorsque le **ajouter un nouvel élément** boîte de dialogue s’affiche, nommez le fichier de classe **BookDetails.cs**, puis cliquez sur **ajouter**.
+   3. Lorsque le **BookDetails.cs** fichier est ouvert, remplacez le code dans le fichier avec les éléments suivants : 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample2.cs)]
-    4. Enregistrez et fermez le **BookDetails.cs** fichier.
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample2.cs)]
+   4. Enregistrez et fermez le **BookDetails.cs** fichier.
+
 9. Ajouter le contrôleur bookstore au projet d’API Web :
 
-    1. Avec le bouton droit le **contrôleurs** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **contrôleur**.
-    2. Lorsque le **ajouter une vue de structure** boîte de dialogue s’affiche, mettez en surbrillance **Web vide - contrôleur 2 d’API**, puis cliquez sur **ajouter**.
-    3. Lorsque le **ajouter un contrôleur** boîte de dialogue s’affiche, nommez le contrôleur **BooksController**, puis cliquez sur **ajouter**.
-    4. Lorsque le **BooksController.cs** fichier est ouvert, remplacez le code dans le fichier avec les éléments suivants : 
+   1. Avec le bouton droit le **contrôleurs** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **contrôleur**.
+   2. Lorsque le **ajouter une vue de structure** boîte de dialogue s’affiche, mettez en surbrillance **Web vide - contrôleur 2 d’API**, puis cliquez sur **ajouter**.
+   3. Lorsque le **ajouter un contrôleur** boîte de dialogue s’affiche, nommez le contrôleur **BooksController**, puis cliquez sur **ajouter**.
+   4. Lorsque le **BooksController.cs** fichier est ouvert, remplacez le code dans le fichier avec les éléments suivants : 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample3.cs)]
-    5. Enregistrez et fermez le **BooksController.cs** fichier.
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample3.cs)]
+   5. Enregistrez et fermez le **BooksController.cs** fichier.
+
 10. Générez l’application API Web pour rechercher les erreurs.
 
 <a id="STEP2"></a>
@@ -111,46 +120,50 @@ Est de l’étape suivante de ce scénario de bout en bout pour créer l’appli
     5. Une fois l’installation terminée, cliquez sur **fermer**.
 5. Ajouter le **BookDetails** modèle pour le **BookCatalog** projet ; contient un modèle générique de la classe bookstore :
 
-    1. Avec le bouton droit le **BookCatalog** de projet dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **nouveau dossier**.
-    2. Nommez le nouveau dossier **modèles**.
-    3. Avec le bouton droit le **modèles** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **classe**.
-    4. Lorsque le **ajouter un nouvel élément** boîte de dialogue s’affiche, nommez le fichier de classe **BookDetails.cs**, puis cliquez sur **ajouter**.
-    5. Lorsque le **BookDetails.cs** fichier est ouvert, remplacez le code dans le fichier avec les éléments suivants : 
+   1. Avec le bouton droit le **BookCatalog** de projet dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **nouveau dossier**.
+   2. Nommez le nouveau dossier **modèles**.
+   3. Avec le bouton droit le **modèles** dossier dans l’Explorateur de solutions, puis cliquez sur **ajouter**, puis cliquez sur **classe**.
+   4. Lorsque le **ajouter un nouvel élément** boîte de dialogue s’affiche, nommez le fichier de classe **BookDetails.cs**, puis cliquez sur **ajouter**.
+   5. Lorsque le **BookDetails.cs** fichier est ouvert, remplacez le code dans le fichier avec les éléments suivants : 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample4.cs)]
-    6. Enregistrez et fermez le **BookDetails.cs** fichier.
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample4.cs)]
+   6. Enregistrez et fermez le **BookDetails.cs** fichier.
+
 6. Mise à jour la **MainViewModel.cs** classe pour inclure les fonctionnalités pour communiquer avec l’application BookStore Web API :
 
-    1. Développez le **ViewModel** dossier dans l’Explorateur de solutions, puis double-cliquez le **MainViewModel.cs** fichier.
-    2. Lors de la la **MainViewModel.cs** fichier est ouvert, remplacez le code dans le fichier par le code suivant ; Notez que vous devez mettre à jour la valeur de la `apiUrl` constante avec l’URL réelle de votre API Web : 
+   1. Développez le **ViewModel** dossier dans l’Explorateur de solutions, puis double-cliquez le **MainViewModel.cs** fichier.
+   2. Lorsque le **MainViewModel.cs** fichier est ouvert, remplacez le code dans le fichier par le code suivant ; Notez que vous devez mettre à jour la valeur de la `apiUrl` constante avec l’URL réelle de votre API Web : 
 
-        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample5.cs)]
-    3. Enregistrez et fermez le **MainViewModel.cs** fichier.
+       [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample5.cs)]
+   3. Enregistrez et fermez le **MainViewModel.cs** fichier.
+
 7. Mise à jour la **MainPage.xaml** fichier pour personnaliser le nom de l’application :
 
-    1. Double-cliquez sur le **MainPage.xaml** fichier dans l’Explorateur de solutions.
-    2. Lors de la la **MainPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
+   1. Double-cliquez sur le **MainPage.xaml** fichier dans l’Explorateur de solutions.
+   2. Lorsque le **MainPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample6.xml)]
-    3. Remplacez les lignes avec les éléments suivants : 
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample6.xml)]
+   3. Remplacez les lignes avec les éléments suivants : 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample7.xml)]
-    4. Enregistrez et fermez le **MainPage.xaml** fichier.
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample7.xml)]
+   4. Enregistrez et fermez le **MainPage.xaml** fichier.
+
 8. Mise à jour la **DetailsPage.xaml** fichier pour personnaliser les éléments affichés :
 
-    1. Double-cliquez sur le **DetailsPage.xaml** fichier dans l’Explorateur de solutions.
-    2. Lors de la la **DetailsPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
+   1. Double-cliquez sur le **DetailsPage.xaml** fichier dans l’Explorateur de solutions.
+   2. Lorsque le **DetailsPage.xaml** fichier est ouvert, recherchez les lignes de code suivantes : 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample8.xml)]
-    3. Remplacez les lignes avec les éléments suivants : 
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample8.xml)]
+   3. Remplacez les lignes avec les éléments suivants : 
 
-        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample9.xml)]
-    4. Enregistrez et fermez le **DetailsPage.xaml** fichier.
+       [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample9.xml)]
+   4. Enregistrez et fermez le **DetailsPage.xaml** fichier.
+
 9. Générez l’application Windows Phone pour rechercher les erreurs.
 
 ### <a name="step-3-testing-the-end-to-end-solution"></a>Étape 3 : Test de la Solution de bout en bout
 
-Comme indiqué dans le *conditions préalables* projets de la section de ce didacticiel, lorsque vous testez la connectivité entre l’API Web et Windows Phone 8 sur votre système local, vous devez suivre les instructions fournies dans le  *[ La connexion de l’émulateur de 8 Windows Phone pour les Applications de l’API Web sur un ordinateur Local](https://go.microsoft.com/fwlink/?LinkId=324014)*  article pour configurer votre environnement de test.
+Comme indiqué dans le *conditions préalables* projets de la section de ce didacticiel, lorsque vous testez la connectivité entre l’API Web et Windows Phone 8 sur votre système local, vous devez suivre les instructions fournies dans le *[ La connexion de l’émulateur de 8 Windows Phone pour les Applications de l’API Web sur un ordinateur Local](https://go.microsoft.com/fwlink/?LinkId=324014)* article pour configurer votre environnement de test.
 
 Une fois que vous avez configuré l’environnement de test, vous devez définir l’application Windows Phone comme projet de démarrage. Pour ce faire, mettez en surbrillance le **BookCatalog** application dans l’Explorateur de solutions, puis cliquez sur **définir comme projet de démarrage**:
 
@@ -184,6 +197,8 @@ Si l’application ne peut pas communiquer avec votre API Web, un message d’er
 
 Si vous cliquez sur le message d’erreur, des détails supplémentaires sur l’erreur seront affiche :
 
+
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image16.png)](calling-web-api-from-a-windows-phone-8-application/_static/image15.png) |
-| --- |
-| Cliquez sur l’image pour développer |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                 Cliquez sur l’image pour développer                                                                 |
+

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-a-controller
-title: "Ajout d’un contrôleur | Documents Microsoft"
+title: Ajout d’un contrôleur | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: c8f317b2ac133f560461917af1588b7a1fa51c4f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3864bab284661b0c44f9e4cb363c2d60eccc7c66
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller"></a>Ajour d’un contrôleur
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 MVC est l’acronyme *model-view-controller*. MVC est un modèle pour le développement d’applications qui sont bien conçue, testable et facile à gérer. Applications basées sur MVC contiennent :
 
@@ -95,7 +95,7 @@ Remplacez la méthode Bienvenue dans le code suivant :
 
 [!code-csharp[Main](adding-a-controller/samples/sample4.cs)]
 
-Exécutez l’application et entrez l’URL suivante :`http://localhost:xxx/HelloWorld/Welcome/1?name=Scott`
+Exécutez l’application et entrez l’URL suivante : `http://localhost:xxx/HelloWorld/Welcome/1?name=Scott`
 
 ![](adding-a-controller/_static/image8.png)
 
@@ -115,6 +115,6 @@ Pour de nombreuses applications MVC, l’itinéraire par défaut fonctionne corr
 
 Dans ces exemples le contrôleur a fait la &quot;VC&quot; partie de MVC, autrement dit, le travail de la vue et contrôleur. Le contrôleur retourne HTML directement. En général, vous ne souhaitez contrôleurs renvoyant du HTML directement, étant donné que qui devient très lourde au code. Au lieu de cela, nous allons utiliser généralement un fichier de modèle de vue séparé afin de générer la réponse HTML. Penchons-nous à la façon dont nous pouvons faire cela.
 
->[!div class="step-by-step"]
-[Précédent](getting-started.md)
-[Suivant](adding-a-view.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started.md)
+> [Suivant](adding-a-view.md)

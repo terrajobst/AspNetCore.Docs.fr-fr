@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
-title: "Débogage des procédures stockées (VB) | Documents Microsoft"
+title: Débogage des procédures stockées (VB) | Documents Microsoft
 author: rick-anderson
-description: "Les éditions Professional de Studio et Team System Visual permettent de définir des points d’arrêt et l’étape les procédures stockées dans SQL Server, rendent le débogage stockées..."
+description: Les éditions Professional de Studio et Team System Visual permettent de définir des points d’arrêt et l’étape les procédures stockées dans SQL Server, rendent le débogage stockées...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ad09847d828d02019a72e3022d035a8fbe921568
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3391a78eaeb0add46e75048069a614ba00628f67
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="debugging-stored-procedures-vb"></a>Débogage des procédures stockées (VB)
 ====================
@@ -167,7 +167,7 @@ La première étape est relativement simple. Tout d’abord, identifiez le compt
 
 La seconde tâche requiert que le compte d’utilisateur Windows que vous permet de déboguer l’application soit une connexion valide sur la base de données distante. Toutefois, sans doute le compte Windows que vous ouvert une session votre station de travail n’est pas une connexion valide sur SQL Server. Au lieu d’ajouter votre compte de connexion spécifique à SQL Server, un meilleur choix serait pour désigner un compte d’utilisateur Windows en tant que le compte de débogage de SQL Server. Ensuite, pour déboguer les objets de base de données d’une instance distante de SQL Server, vous exécuteriez Visual Studio à l’aide de ce informations d’identification de compte s de la connexion Windows.
 
-Un exemple doit aider à clarifier les choses. Imaginez qu’il existe un compte Windows nommé `SQLDebug` au sein du domaine Windows. Ce compte devra être ajouté à l’instance distante de SQL Server en tant qu’une connexion valide et en tant que membre de la `sysadmin` rôle. Ensuite, pour déboguer l’instance distante de SQL Server à partir de Visual Studio, nous devez exécuter Visual Studio en tant que la `SQLDebug` utilisateur. Cette opération peut être effectuée en vous connectant en dehors de la station de travail, connectant en tant que `SQLDebug`, et ensuite lancer Visual Studio, mais une approche plus simple pour se connecter à notre station de travail à l’aide de ses propres informations d’identification, puis utiliser `runas.exe` pour lancer Visual Studio en tant que le `SQLDebug` utilisateur. `runas.exe`permet à une application spécifique doit être exécuté sous la forme d’un compte d’utilisateur différent. Pour lancer Visual Studio en tant que `SQLDebug`, vous pouvez entrer l’instruction suivante à la ligne de commande :
+Un exemple doit aider à clarifier les choses. Imaginez qu’il existe un compte Windows nommé `SQLDebug` au sein du domaine Windows. Ce compte devra être ajouté à l’instance distante de SQL Server en tant qu’une connexion valide et en tant que membre de la `sysadmin` rôle. Ensuite, pour déboguer l’instance distante de SQL Server à partir de Visual Studio, nous devez exécuter Visual Studio en tant que la `SQLDebug` utilisateur. Cette opération peut être effectuée en vous connectant en dehors de la station de travail, connectant en tant que `SQLDebug`, et ensuite lancer Visual Studio, mais une approche plus simple pour se connecter à notre station de travail à l’aide de ses propres informations d’identification, puis utiliser `runas.exe` pour lancer Visual Studio en tant que le `SQLDebug` utilisateur. `runas.exe` permet à une application spécifique doit être exécuté sous la forme d’un compte d’utilisateur différent. Pour lancer Visual Studio en tant que `SQLDebug`, vous pouvez entrer l’instruction suivante à la ligne de commande :
 
 
 [!code-console[Main](debugging-stored-procedures-vb/samples/sample2.cmd)]
@@ -190,8 +190,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](protecting-connection-strings-and-other-configuration-information-vb.md)
-[Suivant](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](protecting-connection-strings-and-other-configuration-information-vb.md)
+> [Suivant](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb.md)

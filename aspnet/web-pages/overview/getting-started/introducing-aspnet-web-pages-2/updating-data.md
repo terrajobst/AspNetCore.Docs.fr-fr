@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
-title: "Présentation des Pages Web ASP.NET - mise à jour de la base de données | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET - mise à jour de la base de données | Documents Microsoft
 author: tfitzmac
-description: "Ce didacticiel vous montre comment mettre à jour (modifier) une base de données entrée lorsque vous utilisez les Pages Web ASP.NET (Razor). Il suppose que vous avez terminé la série th..."
+description: Ce didacticiel vous montre comment mettre à jour (modifier) une base de données entrée lorsque vous utilisez les Pages Web ASP.NET (Razor). Il suppose que vous avez terminé la série th...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/02/2018
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: b016231975bf8d359f4c390b0b478edc383117d4
-ms.sourcegitcommit: df2157ae9aeea0075772719c29784425c783e82a
+ms.openlocfilehash: e889cd27e2267a08f7b6ea708c92e35edbdd7a1a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>Présentation des Pages Web ASP.NET - mise à jour de la base de données
 ====================
@@ -108,7 +108,7 @@ Une fois que vous connaissez le `format` propriété, il est plus facile à comp
 
 La colonne se compose *uniquement* le balisage restitue le lien, ainsi que certaines informations (ID) qui est extraite à partir de l’enregistrement de la base de données pour la ligne.
 
-> [!TIP] 
+> [!TIP]
 > 
 > **Les paramètres nommés et les paramètres positionnels d’une méthode**
 > 
@@ -120,7 +120,7 @@ La colonne se compose *uniquement* le balisage restitue le lien, ainsi que certa
 > 
 > Nous n’avez pas signaler le problème lorsque vous l’avez vu tout d’abord ce code, mais dans chaque cas, vous êtes passage de paramètres aux méthodes dans un ordre spécifique &mdash; à savoir, l’ordre dans lequel les paramètres sont définis dans cette méthode. Pour `db.Execute` et `Validation.RequireFields`, si une combinaison de l’ordre des valeurs que vous passez, vous pourriez obtenir un message d’erreur lorsque la page s’exécute, ou au moins des résultats inattendus. Clairement, vous devez connaître l’ordre de passer les paramètres dans. (Dans WebMatrix, IntelliSense peut vous aider à apprendre figure le nom, le type et l’ordre des paramètres.)
 > 
-> Comme alternative à la transmission de valeurs dans l’ordre, vous pouvez utiliser *des paramètres nommés*. (Passage de paramètres dans l’ordre est appelé à l’aide de *paramètres positionnels*.) Des paramètres nommés, vous incluez explicitement le nom du paramètre lors du passage de sa valeur. Vous avez utilisé les paramètres nommés déjà un nombre de fois dans ces didacticiels. Exemple :
+> Comme alternative à la transmission de valeurs dans l’ordre, vous pouvez utiliser *des paramètres nommés*. (Passage de paramètres dans l’ordre est appelé à l’aide de *paramètres positionnels*.) Des paramètres nommés, vous incluez explicitement le nom du paramètre lors du passage de sa valeur. Vous avez utilisé les paramètres nommés déjà un nombre de fois dans ces didacticiels. Par exemple :
 > 
 > [!code-csharp[Main](updating-data/samples/sample8.cs)]
 > 
@@ -173,7 +173,7 @@ Le code utilise `Request.QueryString["id"]` pour obtenir l’ID qui est passé �
 
 Ce code montre une manière différente pour valider les informations. Dans le didacticiel précédent, vous avez travaillé avec le `Validation` helper. Vous avez inscrit des champs à valider et ASP.NET a la validation automatiquement et affiche les erreurs à l’aide de `Html.ValidationMessage` et `Html.ValidationSummary`. Dans ce cas, toutefois, vous n'êtes pas vraiment valider l’entrée d’utilisateur. Au lieu de cela, vous êtes validation d’une valeur qui a été passée à la page à partir d’un autre emplacement. Le `Validation` helper ne fera pas pour vous.
 
-Par conséquent, vous vérifiez la valeur vous-même, en le testant avec `if(!Request.QueryString["ID"].IsEmpty()`). S’il existe un problème, vous pouvez afficher l’erreur à l’aide de `Html.ValidationSummary`, comme vous le faisiez avec les `Validation` helper. Pour ce faire, vous appelez `Validation.AddFormError` et lui passer un message à afficher. `Validation.AddFormError`est une méthode intégrée qui vous permet de définir des messages personnalisés à vous êtes déjà familiarisé avec le système de contrôle. (Plus loin dans ce didacticiel nous parlerons comment rendre ce processus de validation un peu plus fiable.)
+Par conséquent, vous vérifiez la valeur vous-même, en le testant avec `if(!Request.QueryString["ID"].IsEmpty()`). S’il existe un problème, vous pouvez afficher l’erreur à l’aide de `Html.ValidationSummary`, comme vous le faisiez avec les `Validation` helper. Pour ce faire, vous appelez `Validation.AddFormError` et lui passer un message à afficher. `Validation.AddFormError` est une méthode intégrée qui vous permet de définir des messages personnalisés à vous êtes déjà familiarisé avec le système de contrôle. (Plus loin dans ce didacticiel nous parlerons comment rendre ce processus de validation un peu plus fiable.)
 
 Après avoir vérifié qu’il existe un ID pour la vidéo, le code lit la base de données, recherchez un élément unique de la base de données. (Vous avez probablement remarqué le modèle général pour les opérations de base de données : ouvrir la base de données, définir une instruction SQL et exécutez l’instruction.) Cette fois-ci, l’instruction SQL `Select` instruction inclut `WHERE ID = @0`. Étant donné que l’ID est unique, un seul enregistrement peut être retourné.
 
@@ -311,6 +311,6 @@ Dans l’étape suivante du didacticiel, vous verrez comment supprimer un enregi
 - [Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor](../../getting-started/introducing-razor-syntax-c.md)
 - [Instruction de mise à jour de SQL](http://www.w3schools.com/sql/sql_update.asp) sur le site W3Schools
 
->[!div class="step-by-step"]
-[Précédent](entering-data.md)
-[Suivant](deleting-data.md)
+> [!div class="step-by-step"]
+> [Précédent](entering-data.md)
+> [Suivant](deleting-data.md)

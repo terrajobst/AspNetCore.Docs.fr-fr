@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/individual-accounts-in-web-api
-title: "Sécuriser une API Web avec des comptes individuels et de la connexion locale dans ASP.NET Web API 2.2 | Documents Microsoft"
+title: Sécuriser une API Web avec des comptes individuels et de la connexion locale dans ASP.NET Web API 2.2 | Documents Microsoft
 author: MikeWasson
-description: "Cette rubrique montre comment sécuriser une API web à l’aide d’OAuth2 pour s’authentifier auprès d’une base de données d’appartenance. Versions des logiciels utilisées dans le didacticiel 201 de Studio Visual..."
+description: Cette rubrique montre comment sécuriser une API web à l’aide d’OAuth2 pour s’authentifier auprès d’une base de données d’appartenance. Versions des logiciels utilisées dans le didacticiel 201 de Studio Visual...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/15/2014

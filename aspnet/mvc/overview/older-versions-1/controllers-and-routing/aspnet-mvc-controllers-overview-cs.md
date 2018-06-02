@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
-title: "Vue d’ensemble du contrôleur ASP.NET MVC (c#) | Documents Microsoft"
+title: Vue d’ensemble du contrôleur ASP.NET MVC (c#) | Documents Microsoft
 author: StephenWalther
-description: "Dans ce didacticiel, Stephen Walther présente les contrôleurs ASP.NET MVC. Vous apprenez à créer de nouveaux contrôleurs et de retourner différents types de res d’action..."
+description: Dans ce didacticiel, Stephen Walther présente les contrôleurs ASP.NET MVC. Vous apprenez à créer de nouveaux contrôleurs et de retourner différents types de res d’action...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9e4ca745fa068b1813e01b131d53a0199cc47d5a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 95e7c555a52c8c3b765a6fffab15276491cf5714
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-controller-overview-c"></a>Vue d’ensemble du contrôleur ASP.NET MVC (c#)
 ====================
@@ -114,10 +114,10 @@ Si une action du contrôleur retourne un résultat qui n’est pas un résultat 
 
 L’action dans la liste 5 Index() retourne un objet DateTime. L’infrastructure ASP.NET MVC convertit l’objet DateTime en une chaîne et la valeur DateTime est encapsulé dans un ContentResult automatiquement. Le navigateur reçoit la date et l’heure sous forme de texte brut.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel est de vous présenter les concepts de contrôleurs ASP.NET MVC, les actions de contrôleur et les résultats d’action de contrôleur. Dans la première section, vous avez appris comment ajouter de nouveaux contrôleurs pour un projet ASP.NET MVC. Ensuite, vous avez appris les méthodes publics d’un contrôleur sont exposées à l’univers en tant qu’actions de contrôleur. Enfin, nous avons abordé les différents types de résultats d’action qui peuvent être retournées à partir d’une action du contrôleur. En particulier, nous avons expliqué comment retourner un ViewResult, RedirectToActionResult et ContentResult à partir d’une action du contrôleur.
 
->[!div class="step-by-step"]
-[Précédent](creating-an-action-vb.md)
-[Suivant](creating-custom-routes-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-an-action-vb.md)
+> [Suivant](creating-custom-routes-cs.md)

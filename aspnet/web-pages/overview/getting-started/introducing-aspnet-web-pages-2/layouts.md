@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
-title: "Présentation des Pages Web ASP.NET - création d’une disposition cohérente | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET - création d’une disposition cohérente | Documents Microsoft
 author: tfitzmac
-description: "Ce didacticiel vous montre comment utiliser des dispositions pour créer une apparence cohérente pour les pages sur un site qui utilise ASP.NET Web Pages. Il suppose que vous avez terminé le..."
+description: Ce didacticiel vous montre comment utiliser des dispositions pour créer une apparence cohérente pour les pages sur un site qui utilise ASP.NET Web Pages. Il suppose que vous avez terminé le...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
 msc.type: authoredcontent
-ms.openlocfilehash: 692adc5a03892f27c91fe8868c8eab6ce08f49cd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c2d5c4d8ed8a71979c16d484ab90d283a45de537
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>Présentation des Pages Web ASP.NET - création d’une disposition cohérente
 ====================
@@ -149,7 +149,7 @@ Ouvrez le *Movies.cshtml* page à nouveau. Dans le code en haut, ajoutez la lign
 
 Le `Page` objet n’est disponible sur tous les *.cshtml* pages et est à cet effet, à savoir pour partager des informations entre une page et de sa disposition.
 
-Ouvrez le*\_Layout.cshtml* page. Modifier la `<title>` élément afin qu’il ressemble à ce balisage :
+Ouvrez le<em>\_Layout.cshtml</em> page. Modifier la `<title>` élément afin qu’il ressemble à ce balisage :
 
 [!code-html[Main](layouts/samples/sample9.html)]
 
@@ -237,6 +237,6 @@ Dans l’étape suivante du didacticiel, vous allez apprendre à publier votre s
 - [Création d’une zone de recherche cohérent](https://go.microsoft.com/fwlink/?LinkID=202891) , un article qui fournit certaines plus de détails sur l’utilisation des dispositions. Il explique également comment passer une valeur à une page de disposition qui affiche ou masque le contenu.
 - [Pages de disposition avec Razor imbriquées](http://www.mikesdotnetting.com/Article/164/Nested-Layout-Pages-with-Razor) , Mike Brind blogs un exemple montrant comment imbriquer des pages de disposition. (Y compris un téléchargement des pages.)
 
->[!div class="step-by-step"]
-[Précédent](deleting-data.md)
-[Suivant](publishing.md)
+> [!div class="step-by-step"]
+> [Précédent](deleting-data.md)
+> [Suivant](publishing.md)

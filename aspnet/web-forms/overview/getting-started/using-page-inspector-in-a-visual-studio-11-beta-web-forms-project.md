@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/using-page-inspector-in-a-visual-studio-11-beta-web-forms-project
-title: "À l’aide de l’inspecteur de Page pour Visual Studio 2012 dans ASP.NET Web Forms | Documents Microsoft"
+title: À l’aide de l’inspecteur de Page pour Visual Studio 2012 dans ASP.NET Web Forms | Documents Microsoft
 author: rick-anderson
-description: "L’inspecteur de page pour Visual Studio 2012 est un outil de développement web avec un navigateur intégré. Sélectionner un élément dans le navigateur intégré et l’inspecteur de Page..."
+description: L’inspecteur de page pour Visual Studio 2012 est un outil de développement web avec un navigateur intégré. Sélectionner un élément dans le navigateur intégré et l’inspecteur de Page...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -249,7 +249,7 @@ Lorsque vous tapez le premier caractère de chaque mot dans une propriété sép
 
 ![IntelliSense filtré des valeurs](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image24.png)
 
-Maintenant, tapez un signe deux-points. Lorsque vous procédez ainsi, le nom de propriété de couleur d’arrière-plan complète est inséré. Type  **#**  ou **RVB (**, et la barre de sélecteur de couleurs s’affiche :
+Maintenant, tapez un signe deux-points. Lorsque vous procédez ainsi, le nom de propriété de couleur d’arrière-plan complète est inséré. Type **#** ou **RVB (**, et la barre de sélecteur de couleurs s’affiche :
 
 ![La barre de sélecteur de couleurs CSS](using-page-inspector-in-a-visual-studio-11-beta-web-forms-project/_static/image25.png)
 

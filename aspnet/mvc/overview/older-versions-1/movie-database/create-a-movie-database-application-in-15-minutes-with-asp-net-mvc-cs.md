@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs
-title: "Créer une Application de base de données de film des 15 dernières minutes avec ASP.NET MVC (c#) | Documents Microsoft"
+title: Créer une Application de base de données de film des 15 dernières minutes avec ASP.NET MVC (c#) | Documents Microsoft
 author: StephenWalther
-description: "Stephen Walther génère une ensemble piloté par base de données application ASP.NET MVC du début à la fin. Ce didacticiel est une bonne introduction aux personnes qui sont nouvelles t..."
+description: Stephen Walther génère une ensemble piloté par base de données application ASP.NET MVC du début à la fin. Ce didacticiel est une bonne introduction aux personnes qui sont nouvelles t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a67ca5422d4353b8c23b3fd804246906b8b6d717
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 81e0ae42bc3e7656c933ba70920eaeeffa4c4bd6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-c"></a>Créer une Application de base de données de film des 15 dernières minutes avec ASP.NET MVC (c#)
 ====================
@@ -368,5 +368,5 @@ L’objectif de ce didacticiel a pour vous donner une idée de l’expérience d
 
 Dans ce didacticiel, nous avons examiné uniquement les principales fonctionnalités de base de l’infrastructure ASP.NET MVC. Dans les didacticiels futures, nous Explorer plus en détail des sujets tels que les contrôleurs, les actions de contrôleur, des vues, afficher les données et programmes d’assistance HTML.
 
->[!div class="step-by-step"]
-[Next](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb.md)
+> [!div class="step-by-step"]
+> [Next](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb.md)

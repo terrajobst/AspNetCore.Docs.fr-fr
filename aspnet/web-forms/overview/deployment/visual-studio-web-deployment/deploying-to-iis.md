@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de Test | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de Test | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/23/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
 msc.type: authoredcontent
-ms.openlocfilehash: 01f72e0240e84944f8ffece9a2dbc5802be4646b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dc11072e053cbddd089e5df4bcea6d2a7af864fc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-test"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de Test
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -52,15 +52,15 @@ Pour déployer sur IIS sur votre ordinateur de développement, vous devez dispos
 
     Pour exécuter le programme Web Platform Installer pour installer IIS et Web Deploy, utilisez le lien suivant. Si vous avez déjà installé IIS, Web Deploy ou l’un de leurs composants requis, le programme Web Platform Installer installe uniquement ce qui est manquant.
 
-    - [Installer IIS et Web Deploy à l’aide de WebPI](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=IIS7;ASPNET;NETFramework4;WDeploy)
+   - [Installer IIS et Web Deploy à l’aide de WebPI](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=IIS7;ASPNET;NETFramework4;WDeploy)
 
-    Vous verrez des messages indiquant que IIS 7 sera installé. Le fonctionnement du lien pour IIS 8 dans Windows 8, mais pour Windows 8 Assurez-vous que ASP.NET 4.5 est installé, effectuez les opérations suivantes :
+     Vous verrez des messages indiquant que IIS 7 sera installé. Le fonctionnement du lien pour IIS 8 dans Windows 8, mais pour Windows 8 Assurez-vous que ASP.NET 4.5 est installé, effectuez les opérations suivantes :
 
-    1. Ouvrez **le panneau de configuration**, **programmes et fonctionnalités**, **ou désactiver des fonctionnalités Windows d’activer**.
-    2. Développez **Internet Information Services**, **Services World Wide Web**, et **fonctionnalités de développement d’applications**.
-    3. Assurez-vous que **ASP.NET 4.5** est sélectionnée.
+   - Ouvrez **le panneau de configuration**, **programmes et fonctionnalités**, **ou désactiver des fonctionnalités Windows d’activer**.
+   - Développez **Internet Information Services**, **Services World Wide Web**, et **fonctionnalités de développement d’applications**.
+   - Assurez-vous que **ASP.NET 4.5** est sélectionnée.
 
-        ![Sélectionnez ASP.NET 4.5](deploying-to-iis/_static/image1.png)
+      ![Sélectionnez ASP.NET 4.5](deploying-to-iis/_static/image1.png)
 
 Après avoir installé IIS, exécutez **Gestionnaire des services Internet** pour vous assurer que le .NET Framework version 4 est affecté au pool d’applications par défaut.
 
@@ -178,7 +178,7 @@ Avant la publication, assurez-vous que vous exécutez Visual Studio en mode admi
     L’Assistant passe automatiquement à la **connexion** onglet.
 4. Dans le **URL du Service** , entrez *localhost*.
 5. Dans le **Site/application** , entrez *Default Web Site/ContosoUniversity*
-6. Dans le **URL de Destination** , entrez`http://localhost/ContosoUniversity`
+6. Dans le **URL de Destination** , entrez `http://localhost/ContosoUniversity`
 
     Le **URL de Destination** paramètre n’est pas nécessaire. Visual Studio après déploiement de l’application, il s’ouvre automatiquement votre navigateur par défaut pour cette URL. Si vous ne souhaitez pas le navigateur s’ouvre automatiquement après le déploiement, laissez cette zone vide.
 7. Cliquez sur **valider la connexion** pour vérifier que les paramètres sont corrects et que vous pouvez vous connecter à IIS sur l’ordinateur local.
@@ -337,6 +337,6 @@ Pour plus d’informations sur l’exécution d’IIS ou IIS Express dans Visual
 
 Pour plus d’informations sur les problèmes susceptibles de se produire lorsque votre application s’exécute en confiance moyenne, consultez [hébergeant des Applications ASP.NET en mode de confiance moyenne](http://www.4guysfromrolla.com/articles/100307-1.aspx) sur les 4 Guys Rolla site.
 
->[!div class="step-by-step"]
-[Précédent](project-properties.md)
-[Suivant](setting-folder-permissions.md)
+> [!div class="step-by-step"]
+> [Précédent](project-properties.md)
+> [Suivant](setting-folder-permissions.md)

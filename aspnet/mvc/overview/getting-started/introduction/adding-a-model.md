@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/adding-a-model
-title: "Ajout d’un modèle | Documents Microsoft"
+title: Ajout d’un modèle | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-model
 msc.type: authoredcontent
-ms.openlocfilehash: 13aab58e86829a8d4accd1d304420dcb34ffa472
-ms.sourcegitcommit: ec9371e2fbfcb8d62e7e7cae69e7752f3f205385
+ms.openlocfilehash: b3ef871c4d7627a03c8f0fd8cce9d3e97fc1a4ba
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-model"></a>Ajout d’un modèle
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 Dans cette section, vous allez ajouter des classes pour la gestion des films dans une base de données. Ces classes seront les &quot;modèle&quot; dans le cadre de l’application ASP.NET MVC.
 
@@ -54,16 +54,16 @@ Afin de pouvoir faire référence à `DbContext` et `DbSet`, vous devez ajouter 
 
 [!code-csharp[Main](adding-a-model/samples/sample3.cs)]
 
-Ce faire, vous pouvez ajouter manuellement à l’aide de l’instruction, ou vous pouvez survoler les traits rouges ondulés, cliquez sur `Show potential fixes` et cliquez sur`using System.Data.Entity;`
+Ce faire, vous pouvez ajouter manuellement à l’aide de l’instruction, ou vous pouvez survoler les traits rouges ondulés, cliquez sur `Show potential fixes` et cliquez sur `using System.Data.Entity;`
 
 ![](adding-a-model/_static/image2.png)
 
-Remarque : Plusieurs inutilisé `using` instructions ont été supprimées. Visual Studio affiche les dépendances non utilisées en gris. Vous pouvez supprimer les dépendances d’unnused en pointant sur les dépendances en gris, cliquez sur `Show potential fixes` et cliquez sur **supprimer les instructions Using obsolètes.**
+Remarque : Plusieurs inutilisé `using` instructions ont été supprimées. Visual Studio affiche les dépendances non utilisées en gris. Vous pouvez supprimer les dépendances non utilisées en pointant sur les dépendances en gris, cliquez sur `Show potential fixes` et cliquez sur **supprimer les instructions Using obsolètes.**
 
 ![](adding-a-model/_static/image3.png)
 
 Nous avons ajouté enfin d’un modèle (le M dans MVC). Dans la section suivante, vous allez travailler avec la chaîne de connexion de base de données.
 
->[!div class="step-by-step"]
-[Précédent](adding-a-view.md)
-[Suivant](creating-a-connection-string.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-view.md)
+> [Suivant](creating-a-connection-string.md)

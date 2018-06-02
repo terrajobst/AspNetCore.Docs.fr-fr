@@ -1,7 +1,7 @@
 ---
-title: Azure Active Directory
+title: Azure Active Directory avec ASP.NET Core
 author: rick-anderson
-description: "Ce document constitue la table des matières des différentes rubriques Azure Active Directory relatives à ASP.NET Core."
+description: Découvrez les rubriques Azure Active Directory relatives à ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/4/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/azure-active-directory/index
-ms.openlocfilehash: 3bc8991ff6c2017be43d9fd43ac22e5334b62681
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 238f8c6e8c4c0b98df93ef4ed70eae8e72a6f8f9
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="azure-active-directory"></a>Azure Active Directory
+# <a name="azure-active-directory-with-aspnet-core"></a>Azure Active Directory avec ASP.NET Core
 
 * [Intégration d’Azure AD dans une application web ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 * [Appel d’une API web ASP.NET Core à partir d’une application WPF via Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)

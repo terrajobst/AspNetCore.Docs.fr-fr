@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/caching-data/caching-data-at-application-startup-vb
-title: "Mise en cache de données au démarrage de l’Application (VB) | Documents Microsoft"
+title: Mise en cache de données au démarrage de l’Application (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans n’importe quelle application Web certaines données sont fréquemment utilisées, et certaines données seront rarement utilisées. Nous pouvons améliorer les performances de notre b d’application ASP.NET..."
+description: Dans n’importe quelle application Web certaines données sont fréquemment utilisées, et certaines données seront rarement utilisées. Nous pouvons améliorer les performances de notre b d’application ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-at-application-startup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5b84b797bf0c9670ac65a5384b6d95d5df3827eb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f8f322dae89480fc7ed5586d7f8eeb4c67d7839f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="caching-data-at-application-startup-vb"></a>Mise en cache de données au démarrage de l’Application (VB)
 ====================
@@ -129,11 +129,11 @@ Ajouter le `Global.asax` fichier dans votre répertoire racine de web applicatio
 
 La valeur par défaut `Global.asax` modèle de fichier inclut cinq méthodes au sein d’un côté serveur `<script>` balise :
 
-- **`Application_Start`**s’exécute au premier démarrage de l’application web
-- **`Application_End`**s’exécute lorsque l’application est en cours d’arrêt
-- **`Application_Error`**s’exécute chaque fois qu’une exception non gérée atteint l’application
-- **`Session_Start`**s’exécute lorsqu’une nouvelle session est créée.
-- **`Session_End`**s’exécute lorsqu’une session a expiré ou a abandonné
+- **`Application_Start`** s’exécute au premier démarrage de l’application web
+- **`Application_End`** s’exécute lorsque l’application est en cours d’arrêt
+- **`Application_Error`** s’exécute chaque fois qu’une exception non gérée atteint l’application
+- **`Session_Start`** s’exécute lorsqu’une nouvelle session est créée.
+- **`Session_End`** s’exécute lorsqu’une session a expiré ou a abandonné
 
 Le `Application_Start` Gestionnaire d’événements est appelé une seule fois pendant un cycle de vie de l’application s. Démarrage de l’application la première fois une ressource ASP.NET est demandée par l’application et continue de s’exécuter jusqu'à ce que l’application est redémarrée, ce qui peut se produire en modifiant le contenu de la `/Bin` dossier, modification `Global.asax`, modification le contenu dans le `App_Code` dossier, ou en modifiant le `Web.config` fichier, entre autres. Reportez-vous à [vue d’ensemble du Cycle de vie ASP.NET Application](https://msdn.microsoft.com/library/ms178473.aspx) pour plus d’informations sur le cycle de vie d’application.
 
@@ -194,12 +194,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Teresa Murphy et Zack Jones. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](caching-data-in-the-architecture-vb.md)
-[Suivant](using-sql-cache-dependencies-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](caching-data-in-the-architecture-vb.md)
+> [Suivant](using-sql-cache-dependencies-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/releases/whats-new-in-aspnet-mvc-52
-title: "Quelles sont les nouveautés dans ASP.NET MVC 5.2 | Documents Microsoft"
+title: Quelles sont les nouveautés dans ASP.NET MVC 5.2 | Documents Microsoft
 author: microsoft
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/25/2014

@@ -1,26 +1,26 @@
 ---
 uid: visual-studio/overview/2013/visual-studio-2013-web-tools
-title: "Ateliers pratiques : Visual Studio 2013 Web Tools | Documents Microsoft"
+title: 'Ateliers pratiques : Visual Studio 2013 Web Tools | Documents Microsoft'
 author: rick-anderson
-description: "Visual Studio est un excellent environnement de développement pour. Windows basé sur le réseau et les projets web. Il inclut un éditeur de texte puissant qui peut facilement être utilisé pour..."
+description: Visual Studio est un excellent environnement de développement pour. Windows basé sur le réseau et les projets web. Il inclut un éditeur de texte puissant qui peut facilement être utilisé pour...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: 09e82351-816b-402d-acd1-0f9ac6901d16
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-tools
 msc.type: authoredcontent
 ms.openlocfilehash: ef8ab82f9043ef9da3a3e6a146a97f083149534d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/10/2018
 ---
 <a name="hands-on-lab-visual-studio-2013-web-tools"></a>Ateliers pratiques : Outils de Web Visual Studio 2013
 ====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
 [Télécharger Camps Web Kit de formation](http://aka.ms/webcamps-training-kit)
 
@@ -30,7 +30,7 @@ par [Web Camps équipe](https://twitter.com/webcamps)
 > 
 > Cette puissance est également disponible pour les extensions, rendant simple à étendre les éditeurs de nouvelles fonctionnalités puissantes pour répondre à vos besoins. Web Essentials est un ensemble d’améliorations (principalement) liés au web pour Visual Studio. Il comprend un grand nombre de nouveau achèvements IntelliSense (en particulier pour CSS), les nouvelles fonctionnalités de lien de navigateur, automatique des fichiers JSHint pour JavaScript, nouveaux avertissements pour HTML et CSS et de nombreuses autres fonctionnalités qui sont essentielles pour le développement web moderne.
 > 
-> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 
 
 <a id="Overview"></a>
@@ -47,7 +47,7 @@ Dans cet atelier pratique, vous allez apprendre comment :
 - Échanger des données entre votre navigateur et de Visual Studio à l’aide du lien du navigateur
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Conditions préalables
+### <a name="prerequisites"></a>Prérequis
 
 Les éléments suivants sont nécessaire pour terminer cet atelier pratique :
 
@@ -144,7 +144,7 @@ Dans cet exercice, vous utiliserez la fonctionnalité de simplicité de codage f
 
 1. Revenez à Visual Studio.
 2. Ouvrez le **Index.cshtml** fichier situé dans le **vues** | **accueil** dossier.
-3. Remplacez le  **&lt;!--TODO : ajoutez ici--options de&gt;**  commentaire avec le code suivant et appuyez sur **onglet**.
+3. Remplacez le **&lt;!--TODO : ajoutez ici--options de&gt;** commentaire avec le code suivant et appuyez sur **onglet**.
 
     [!code-css[Main](visual-studio-2013-web-tools/samples/sample1.css)]
 4. Le code doit être développé au format HTML.
@@ -180,7 +180,7 @@ Dans cet exercice, vous utiliserez la fonctionnalité de simplicité de codage f
     *Lorem Ipsum automatiquement*
 
     > [!NOTE]
-    > Dans le cadre de la simplicité de codage, vous pouvez maintenant générer Lorem Ipsum code directement dans l’éditeur HTML. Tapez simplement **lorem** puis appuyez sur **onglet** et un 30 word Lorem Ipsum texte sera inséré. Par exemple *lorem10* insère 10 Lorem Ipsum mots.
+    > Dans le cadre de la simplicité de codage, vous pouvez maintenant générer Lorem Ipsum code directement dans l’éditeur HTML. Tapez simplement **lorem** puis appuyez sur **onglet** et un 30 word Lorem Ipsum texte sera inséré. Par exemple, *lorem10* insère 10 Lorem Ipsum mots.
 10. Vous allez ajouter un logo en haut de la question à l’aide d’une autre fonctionnalité nouvelle dans Essentials Web appelé **Générateur de Pixel de Lorem**. Ajoutez le code suivant en tant que le premier élément enfant de le **div** élément avec **conteneur** en tant que **classe** valeur et appuyez sur **onglet**.
 
     [!code-css[Main](visual-studio-2013-web-tools/samples/sample3.css)]
@@ -307,7 +307,7 @@ Dans cette tâche, vous allez utiliser le lien de navigateur **en Mode Création
     ![Question modifiée](visual-studio-2013-web-tools/_static/image29.png "Question modifiée")
 
     *Question modifiée*
-4. Commutateur vers Visual Studio et ouvrez **Index.cshtml**, si pas déjà ouvert. Notez que le texte interne de la  **&lt;p&gt;**  élément a été mis à jour.
+4. Commutateur vers Visual Studio et ouvrez **Index.cshtml**, si pas déjà ouvert. Notez que le texte interne de la **&lt;p&gt;** élément a été mis à jour.
 
     ![Point de mise à jour dans la page HTML](visual-studio-2013-web-tools/_static/image30.png "question de mise à jour dans la page HTML")
 
@@ -323,7 +323,7 @@ Dans cette tâche, vous allez utiliser le lien de navigateur **en Mode Création
     ![Liste d’erreurs dans la vue menu](visual-studio-2013-web-tools/_static/image31.png "liste d’erreurs dans le menu Affichage")
 
     *Liste d’erreurs dans la vue menu*
-2. Notez qu’il existe un avertissement de moteurs de recherche qui notifier un  **&lt;meta&gt;**  de balise pour la description de la page est manquante. Double-cliquez sur l’entrée d’avertissement de moteurs de recherche pour le corriger.
+2. Notez qu’il existe un avertissement de moteurs de recherche qui notifier un **&lt;meta&gt;** de balise pour la description de la page est manquante. Double-cliquez sur l’entrée d’avertissement de moteurs de recherche pour le corriger.
 
     ![Fenêtre liste d’erreurs](visual-studio-2013-web-tools/_static/image32.png "fenêtre liste d’erreurs")
 
@@ -333,7 +333,7 @@ Dans cette tâche, vous allez utiliser le lien de navigateur **en Mode Création
     ![Boîte de dialogue Web Essentials](visual-studio-2013-web-tools/_static/image33.png "boîte de dialogue Web Essentials")
 
     *Boîte de dialogue Web Essentials*
-4. L’éditeur pour  **\_Layout.cshtml** s’ouvre et le  **&lt;meta&gt;**  balise est ajoutée automatiquement à la **head** section de la Fichier HTML.
+4. L’éditeur pour  **\_Layout.cshtml** s’ouvre et le **&lt;meta&gt;** balise est ajoutée automatiquement à la **head** section de la Fichier HTML.
 
     ![Balise META automatiquement ajoutée dans la page de _Layout](visual-studio-2013-web-tools/_static/image34.png "balise Meta automatiquement ajoutée dans la page de _Layout")
 
@@ -354,7 +354,7 @@ Dans cette tâche, vous allez créer un nouvel élément de formulaire HTML qui 
 
 1. Ouvrez **Visual Studio Express 2013 pour le Web** et **Begin.sln** solution situé dans le **début/TakingAdvantageofCodeSnippetsandIntelliSense-Ex2/Source** dossier. Ou bien, vous pouvez continuer avec la solution que vous avez obtenu dans l’exercice précédent.
 2. Dans **l’Explorateur de solutions**, ouvrez le **Index.cshtml** fichier situé dans le **vues** | **accueil** dossier.
-3. Ajoutez un formulaire à l’intérieur de la  **&lt;section&gt;**  élément.
+3. Ajoutez un formulaire à l’intérieur de la **&lt;section&gt;** élément.
 
     (Code d’extrait de code - *VisualStudio2013WebTooling* - *Ex2* - *formulaire*)
 
@@ -362,19 +362,19 @@ Dans cette tâche, vous allez créer un nouvel élément de formulaire HTML qui 
 4. La balise d’entrée doit être précédée d’une étiquette avec une description du champ. Ajoutez l’intitulé suivant avant la balise d’entrée.
 
     [!code-html[Main](visual-studio-2013-web-tools/samples/sample5.html)]
-5. Le **pour** attribut d’un  **&lt;étiquette&gt;**  indique à quel élément de formulaire une étiquette est liée. La valeur d’attribut doit être égale à l’id de l’élément associé. Ajouter le **pour** d’attribut pour le  **&lt;étiquette&gt;**  élément. Comme indiqué dans l’illustration suivante, le &quot;nom&quot; valeur s’affiche dans la zone IntelliSense, en fonction de l’id des éléments dans la même portée (englobants  **&lt;formulaire&gt;**).
+5. Le **pour** attribut d’un **&lt;étiquette&gt;** indique à quel élément de formulaire une étiquette est liée. La valeur d’attribut doit être égale à l’id de l’élément associé. Ajouter le **pour** d’attribut pour le **&lt;étiquette&gt;** élément. Comme indiqué dans l’illustration suivante, le &quot;nom&quot; valeur s’affiche dans la zone IntelliSense, en fonction de l’id des éléments dans la même portée (englobants  **&lt;formulaire&gt;**).
 
     ![Indiquer l’id dans IntelliSense](visual-studio-2013-web-tools/_static/image35.png "indiquant l’id dans IntelliSense")
 
     *Indiquer l’id dans IntelliSense*
-6. Supprimer la dernière ajoutée  **&lt;formulaire&gt;**  élément et son contenu.
+6. Supprimer la dernière ajoutée **&lt;formulaire&gt;** élément et son contenu.
 
 <a id="Ex2Task2"></a>
 #### <a name="task-2---using-html-code-snippets"></a>Tâche 2 - extraits de Code HTML à l’aide de
 
 HTML5 a introduit plus de 25 nouvelles balises sémantiques. Visual Studio a déjà été prise en charge IntelliSense pour ces balises, mais Visual Studio 2013 est plus rapide et plus facile d’écrire le balisage en ajoutant de nouveaux extraits de code. Bien que ces étiquettes ne sont pas compliquées, ils sont livrés avec quelques subtilités, telles que l’ajout les secours codec correct pour le *audio* balise. Dans cette tâche, vous verrez les extraits de code HTML pour la balise audio.
 
-1. Dans le **Index.cshtml** de fichier, tapez  **&lt;aud** à l’intérieur de la  **&lt;section&gt;**  élément, comme indiqué dans l’illustration suivante.
+1. Dans le **Index.cshtml** de fichier, tapez  **&lt;aud** à l’intérieur de la **&lt;section&gt;** élément, comme indiqué dans l’illustration suivante.
 
     ![Insertion d’un élément audio](visual-studio-2013-web-tools/_static/image36.png "insertion d’un élément audio")
 
@@ -385,7 +385,7 @@ HTML5 a introduit plus de 25 nouvelles balises sémantiques. Visual Studio a dé
 
     > [!NOTE]
     > En appuyant sur la **onglet** clé à deux reprises, l’extrait de code est inséré. L’extrait de code audio illustre l’utilisation standard de la *audio* balise, avec deux fichiers sources pour la prise en charge améliorée.
-3. Supprimez la deuxième ligne et de mettre à jour de la source de la première ligne avec le lien suivant pour l’afficher WebCampsTV Katana : [http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3](http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3). Le code résultant est indiqué ci-dessous.
+3. Supprimez la deuxième ligne et de mettre à jour de la source de la première ligne avec le lien suivant pour l’afficher WebCampsTV Katana : [ http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3 ](http://media.ch9.ms/ch9/11d8/604b8163-fad3-4f12-9607-b404201211d8/KatanaProject.mp3). Le code résultant est indiqué ci-dessous.
 
     [!code-html[Main](visual-studio-2013-web-tools/samples/sample7.html)]
 
@@ -465,7 +465,7 @@ Avec Web Essentials 2013, les feuilles de style et des pages HTML produisent une
     ![Affichage d’IntelliSense pour la méthode getElementByTagName](visual-studio-2013-web-tools/_static/image45.png "affichage d’IntelliSense pour la méthode getElementByTagName")
 
     *Affichage d’IntelliSense pour la méthode getElementsByTagName*
-13. Sélectionnez  **&quot;audio&quot;**  à partir de la liste et appuyez sur **entrée**. Le résultat est affiché dans l’illustration suivante.
+13. Sélectionnez **&quot;audio&quot;** à partir de la liste et appuyez sur **entrée**. Le résultat est affiché dans l’illustration suivante.
 
     ![Récupération des éléments Audio](visual-studio-2013-web-tools/_static/image46.png "la récupération des éléments Audio")
 
@@ -517,7 +517,7 @@ Avec Web Essentials 2013, les feuilles de style et des pages HTML produisent une
 * * *
 
 <a id="Summary"></a>
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 À la fin de cet atelier pratique, vous avez appris comment :
 

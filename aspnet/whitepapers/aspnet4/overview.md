@@ -2,21 +2,21 @@
 uid: whitepapers/aspnet4/overview
 title: ASP.NET 4 et Visual Studio 2010 Web Development Overview | Documents Microsoft
 author: rick-anderson
-description: "Ce document fournit une vue d’ensemble de la plupart des nouvelles fonctionnalités d’ASP.NET qui sont inclus dans le.NET Framework 4 et Visual Studio 2010."
+description: Ce document fournit une vue d’ensemble de la plupart des nouvelles fonctionnalités d’ASP.NET qui sont inclus dans le.NET Framework 4 et Visual Studio 2010.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 29d5b2f4c04b899b900427ac202c0a4f57f8076f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 6ce52c387ff835eda46bc1882b8b974889e2d4af
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 et Visual Studio 2010 Web présentation du développement
 ====================
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/30/2018
 
 **Sommaire**
 
-**[Services principaux](#0.2__Toc253429238 "_Toc253429238")**  
+**[Core Services](#0.2__Toc253429238 "_Toc253429238")**  
 [Refactorisation du fichier Web.config](#0.2__Toc253429239 "_Toc253429239")  
 [La mise en cache de sortie extensible](#0.2__Toc253429240 "_Toc253429240")  
 [Démarrage automatique des Applications Web](#0.2__Toc253429241 "_Toc253429241")  
@@ -38,9 +38,9 @@ ms.lasthandoff: 01/30/2018
 [La mise en cache de l’objet et de l’objet d’extensibilité de mise en cache](#0.2__Toc253429246 "_Toc253429246")  
 [Encodage d’en-tête HTTP, l’URL et extensible HTML](#0.2__Toc253429247 "_Toc253429247")  
 [Analyse des performances pour des Applications individuelles dans un seul processus de travail](#0.2__Toc253429248 "_Toc253429248")  
-[Multi-ciblage](#0.2__Toc253429249 "_Toc253429249")
+[Multi-Targeting](#0.2__Toc253429249 "_Toc253429249")
 
-**[AJAX](#0.2__Toc253429250 "_Toc253429250")**  
+**[Ajax](#0.2__Toc253429250 "_Toc253429250")**  
 [jQuery dans les Web Forms et MVC](#0.2__Toc253429251 "_Toc253429251")  
 [Prise en charge du réseau de livraison de contenu](#0.2__Toc253429252 "_Toc253429252")  
 [Scripts explicite de ScriptManager](#0.2__Toc253429253 "_Toc253429253")
@@ -87,12 +87,12 @@ ms.lasthandoff: 01/30/2018
 
 **[Le déploiement d’Application avec Visual Studio 2010 Web](#0.2__Toc253429292 "_Toc253429292")**  
 [Web Packaging](#0.2__Toc253429293 "_Toc253429293")  
-[Transformation Web.config](#0.2__Toc253429294 "_Toc253429294")  
+[Web.config Transformation](#0.2__Toc253429294 "_Toc253429294")  
 [Déploiement de base de données](#0.2__Toc253429295 "_Toc253429295")  
 [Publication en un clic pour les Applications Web](#0.2__Toc253429296 "_Toc253429296")  
-[Ressources](#0.2__Toc253429297 "_Toc253429297")
+[Resources](#0.2__Toc253429297 "_Toc253429297")
 
-**[Exclusion de responsabilité](#0.2__Toc253429298 "_Toc253429298")**
+**[Disclaimer](#0.2__Toc253429298 "_Toc253429298")**
 
 <a id="0.2__Toc224729018"></a><a id="0.2__Toc253429238"></a><a id="0.2__Toc243304612"></a>
 
@@ -199,13 +199,13 @@ ASP.NET 4 présente de nouvelles options pour le développement de la taille des
 
 [!code-xml[Main](overview/samples/sample10.xml)]
 
-Pour permettre les chemins d’accès plus ou moins longtemps (la partie de l’URL qui n’inclut pas de protocole, de nom de serveur et de chaîne de requête), modifiez le  *[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)*  attribut. Pour permettre les chaînes de requête longue ou plus courte, modifiez la valeur de la  *[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)*  attribut.
+Pour permettre les chemins d’accès plus ou moins longtemps (la partie de l’URL qui n’inclut pas de protocole, de nom de serveur et de chaîne de requête), modifiez le *[maxUrlLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxurllength.aspx)* attribut. Pour permettre les chaînes de requête longue ou plus courte, modifiez la valeur de la *[maxQueryStringLength](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.maxquerystringlength.aspx)* attribut.
 
 ASP.NET 4 vous permet également à configurer les caractères qui sont utilisés par la vérification des caractères d’URL. Lorsque ASP.NET trouve un caractère non valide dans la partie chemin d’accès d’une URL, il rejette la demande et génère une erreur HTTP 400. Dans les versions précédentes d’ASP.NET, les vérifications de caractères URL étaient limitées à un ensemble fixe de caractères. Dans ASP.NET 4, vous pouvez personnaliser le jeu de caractères valides à l’aide de la nouvelle *requestPathInvalidChars* attribut de la *httpRuntime* élément de configuration, comme indiqué dans l’exemple suivant :
 
 [!code-xml[Main](overview/samples/sample11.xml)]
 
-Par défaut, le *requestPathInvalidChars* attribut définit huit caractères comme étant non valide. (Dans la chaîne est assignée à *requestPathInvalidChars* par défaut*,*l’inférieur à (&lt;), supérieur à (&gt;) et « et commercial » (&amp;) sont des caractères codé, car le `Web.config` est un fichier XML.) Vous pouvez personnaliser le jeu de caractères non valides en fonction des besoins.
+Par défaut, le <em>requestPathInvalidChars</em> attribut définit huit caractères comme étant non valide. (Dans la chaîne est assignée à <em>requestPathInvalidChars</em> par défaut<em>,</em>l’inférieur à (&lt;), supérieur à (&gt;) et « et commercial » (&amp;) sont des caractères codé, car le `Web.config` est un fichier XML.) Vous pouvez personnaliser le jeu de caractères non valides en fonction des besoins.
 
 > [!NOTE]
 > Notez que ASP.NET 4 rejette toujours les chemins d’accès URL qui contiennent des caractères dans la plage ASCII de 0 x 00 à 0x1F, car ce sont des caractères URL non valides comme défini dans RFC 2396 de l’IETF ([http://www.ietf.org/rfc/rfc2396.txt](http://www.ietf.org/rfc/rfc2396.txt)). Sur les versions de Windows Server qui exécutent IIS 6 ou version ultérieure, le pilote de périphérique de protocole http.sys rejette automatiquement les URL avec ces caractères.
@@ -326,9 +326,11 @@ En tirant parti du CDN Microsoft Ajax, vous pouvez considérablement améliorer 
 
 Microsoft Ajax Content Delivery Network prend en charge SSL (HTTPS) au cas où vous deviez traiter une page web à l’aide de Secure Sockets Layer.
 
+Implémenter une stratégie de secours lorsque le CDN n’est pas disponible. Tester le basculement.
+
 Pour plus d’informations sur le CDN Microsoft Ajax, visitez le site Web suivant :
 
-[https://www.ASP.NET/ajaxlibrary/CDN.ashx](../../ajax/cdn/overview.md)
+[https://www.asp.net/ajaxlibrary/CDN.ashx](../../ajax/cdn/overview.md)
 
 ScriptManager ASP.NET prend en charge le CDN Microsoft Ajax. Simplement par paramètre une propriété, la propriété EnableCdn, vous pouvez récupérer tous les fichiers JavaScript de framework ASP.NET du CDN :
 
@@ -412,13 +414,13 @@ Comme vous pouvez le voir, le code désactive état d’affichage pour le contr�
 
 L’effet de ces paramètres est que lorsque la page charge de la première fois, la sortie suivante s’affiche dans le navigateur :
 
-Désactivé`: [DynamicValue]`
+Désactivé `: [DynamicValue]`
 
 Activé :`[DynamicValue]`
 
 Toutefois, après une publication (postback), la sortie suivante s’affiche :
 
-Désactivé`: [DeclaredValue]`
+Désactivé `: [DeclaredValue]`
 
 Activé :`[DynamicValue]`
 
@@ -444,17 +446,17 @@ Le *HttpBrowserCapabilities* objet est piloté par un ensemble de fichiers de d�
 
 La liste suivante présente des fichiers de définition de nouvelle fenêtre de navigateur :
 
-- *BlackBerry.Browser*
-- *chrome.Browser*
-- *Default.Browser*
-- *Firefox.Browser*
-- *Gateway.Browser*
-- *Generic.browser situé*
-- *IE.Browser*
-- *Iemobile.Browser*
-- *iPhone.Browser*
-- *Opera.Browser*
-- *Safari.Browser*
+- *blackberry.browser*
+- *chrome.browser*
+- *Default.browser*
+- *firefox.browser*
+- *gateway.browser*
+- *generic.browser*
+- *ie.browser*
+- *iemobile.browser*
+- *iphone.browser*
+- *opera.browser*
+- *safari.browser*
 
 #### <a name="using-browser-capabilities-providers"></a>À l’aide de fournisseurs de fonctionnalités de navigateur
 
@@ -629,7 +631,7 @@ Le *RouteParameter* classe vous permet de spécifier les données d’itinérair
 
 [!code-aspx[Main](overview/samples/sample46.aspx)]
 
-Dans ce cas, la valeur de la searchterm de paramètre d’itinéraire sera utilisée pour le @companyname paramètre dans le *sélectionnez* instruction.
+Dans ce cas, la valeur de la searchterm de paramètre d’itinéraire sera utilisée pour le @companyname paramètre dans le <em>sélectionnez</em> instruction.
 
 <a id="0.2__Toc224729037"></a><a id="0.2__Toc253429261"></a><a id="0.2__Toc243304635"></a>
 
@@ -805,7 +807,7 @@ L’option d’expression de propriété vous permet de définir une comparaison
 
 [!code-aspx[Main](overview/samples/sample63.aspx)]
 
-#### <a name="customexpression"></a>Expression personnalisée
+#### <a name="customexpression"></a>CustomExpression
 
 Enfin, vous pouvez spécifier une expression personnalisée à utiliser avec le *QueryExtender* contrôle. Cette option vous permet d’appeler une fonction dans la page qui définit la logique de filtre personnalisé. L’exemple suivant montre comment spécifier de façon déclarative une expression personnalisée dans le *QueryExtender* contrôle.
 
@@ -983,7 +985,7 @@ Vous pouvez ensuite définir une classe CSS qui s’applique uniquement à la *m
 Par défaut, les contrôles serveur Web ASP.NET suivants qui prennent en charge les modèles sont automatiquement inclus dans une table externe qui est utilisée pour appliquer des styles intralignes :
 
 - *FormView*
-- *Connexion*
+- *Login*
 - *PasswordRecovery*
 - *ChangePassword*
 - *Assistant*
@@ -1306,7 +1308,7 @@ Visual Studio 2010 inclut des technologies qui répondent à ces problèmes et q
 Fonctionnalités de déploiement Web dans Visual Studio 2010 incluent les principaux domaines suivantes :
 
 - Création de packages Web
-- Transformation Web.config
+- Web.config transformation
 - Déploiement de base de données
 - Publication en un clic pour les applications Web
 
@@ -1329,7 +1331,7 @@ Visual Studio 2010 fournit des tâches MSBuild et les cibles pour créer des pac
 
 <a id="0.2__Toc224729057"></a><a id="0.2__Toc253429294"></a><a id="0.2__Toc243304665"></a>
 
-### <a name="webconfig-transformation"></a>Transformation Web.config
+### <a name="webconfig-transformation"></a>Web.config Transformation
 
 Pour le déploiement d’application Web, Visual Studio 2010 introduit [transformer des documents XML (XDT)](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html), qui est une fonctionnalité qui vous permet de transformer un `Web.config` fichier de paramètres de développement pour les paramètres de production. Les paramètres de transformation sont spécifiés dans les fichiers de transformation nommées `web.debug.config`, `web.release.config`, et ainsi de suite. (Les noms de ces fichiers correspondent aux configurations de MSBuild.) Un fichier de transformation inclut uniquement les modifications que vous devez apporter à un `Web.config` fichier. Vous spécifiez les modifications apportées à l’aide d’une syntaxe simple.
 
@@ -1362,10 +1364,10 @@ Pour plus d’informations, consultez [Comment : déployer une Application à l
 Les sites Web suivants fournissent des informations supplémentaires sur ASP.NET 4 et Visual Studio 2010.
 
 - [ASP.NET 4](https://msdn.microsoft.com/library/ee532866%28VS.100%29.aspx) : la documentation officielle pour ASP.NET 4 sur le site Web MSDN.
-- [https://www.ASP.NET/](https://www.asp.net/) : ASP.NET du site Web de l’équipe.
-- [https://www.ASP.NET/DynamicData/](https://msdn.microsoft.com/library/cc488545.aspx) et [ASP.NET Dynamic Data Content Map](https://msdn.microsoft.com/library/cc488545%28VS.100%29.aspx) : ressources en ligne sur le site d’équipe ASP.NET et dans la documentation officielle pour Dynamic Data ASP.NET.
-- [https://www.ASP.NET/AJAX/](../../ajax/index.md) : la ressource Web principale pour le développement d’ASP.NET Ajax.
-- [https://blogs.msdn.com/webdevtools/](https://blogs.msdn.com/webdevtools/) , Visual Web Developer Team blog, qui inclut des informations sur les fonctionnalités dans Visual Studio 2010.
+- [https://www.asp.net/](https://www.asp.net/) — ASP.NET site Web de l’équipe.
+- [https://www.asp.net/dynamicdata/](https://msdn.microsoft.com/library/cc488545.aspx) et [ASP.NET Dynamic Data Content Map](https://msdn.microsoft.com/library/cc488545%28VS.100%29.aspx) : ressources en ligne sur le site d’équipe ASP.NET et dans la documentation officielle pour Dynamic Data ASP.NET.
+- [https://www.asp.net/ajax/](../../ajax/index.md) : Les ressources Web principal pour le développement d’ASP.NET Ajax.
+- [https://blogs.msdn.com/webdevtools/](https://blogs.msdn.com/webdevtools/) : Le blog de Visual Web Developer Team, qui inclut des informations sur les fonctionnalités dans Visual Studio 2010.
 - [ASP.NET WebStack](https://github.com/aspnet/AspNetWebStack) : la ressource Web principale pour les versions préliminaires de ASP.NET.
 
 <a id="0.2__Toc224729061"></a><a id="0.2__Toc253429298"></a><a id="0.2__Toc243304669"></a>

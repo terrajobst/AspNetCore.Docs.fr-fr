@@ -1,22 +1,22 @@
 ---
 uid: single-page-application/overview/templates/hottowel-template
-title: "Modèle de linge à chaud | Documents Microsoft"
+title: Modèle de linge à chaud | Documents Microsoft
 author: madskristensen
-description: "Modèle de HotTowel"
+description: Modèle de HotTowel
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/09/2013
 ms.topic: article
 ms.assetid: 75af2e17-6ed3-4d24-8ea1-bc340027c318
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/hottowel-template
 msc.type: authoredcontent
-ms.openlocfilehash: bfc6e2c884c422f44e8be5f4f29554ae86f7ecb6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dbd037c2469d326a3d3248ca07492ed9eb93e225
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="hot-towel-template"></a>Modèle de linge à chaud
 ====================
@@ -29,8 +29,8 @@ par [Mads Kristensen](https://github.com/madskristensen)
 > [Modèle MVC linge à chaud pour Visual Studio 2012](https://visualstudiogallery.msdn.microsoft.com/1f68fbe8-b4e9-4968-9fd3-ddc7cbc52dca)
 > 
 > [Modèle MVC linge à chaud pour Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/1eb8780d-d522-4dcf-bf56-56f0eab305c2)
-
-
+> 
+> 
 > Linge à chaud : Étant donné que vous ne souhaitez pas atteindre le SPA sans un !
 
 
@@ -50,7 +50,7 @@ Dans le dossier de l’application :
 - durandal
 - services
 - ViewModel
-- vues
+- Vues
 
 Le dossier de l’application contient une collection de modules. Ces modules encapsulent des fonctionnalités et déclarent des dépendances sur d’autres modules. Le dossier views contient le code HTML pour votre application et le dossier ViewModel contient la logique de présentation pour les vues (MVVM courant). Le dossier services est idéal pour héberger tous les services courants tels que la récupération des données HTTP ou d’une interaction de stockage local requis par votre application. Il est courant pour plusieurs ViewModel réutiliser du code à partir des modules de service.
 
@@ -95,7 +95,7 @@ Démarrez simplement ajouter du code !
 2. Ajouter des vues à le `App/views` dossier
 3. Ajouter ViewModel pour le `App/viewmodels` dossier
 4. Ajouter le HTML et le masquage des liaisons de données pour vos nouveaux affichages
-5. Mettre à jour des itinéraires de navigation`shell.js`
+5. Mettre à jour des itinéraires de navigation `shell.js`
 
 ## <a name="walkthrough-of-the-htmljavascript"></a>Procédure pas à pas du HTML/JavaScript
 
@@ -117,7 +117,7 @@ Le `main.js` fichier définit plusieurs des modules de durandal pour aider à co
 
 Vues sont trouvent dans le `App/views` dossier.
 
-### <a name="shellhtml"></a>Shell.HTML
+### <a name="shellhtml"></a>shell.html
 
 La `shell.html` contient la mise en page maître pour votre code HTML. Toutes les autres vues seront composé quelque part dans la partie de votre `shell` vue. Linge à chaud fournit un `shell` avec trois régions de ce type : un en-tête, une zone de contenu et un pied de page. Chacune de ces régions est chargé avec contenu forme d’autres vues lorsqu’il est demandé.
 
@@ -125,7 +125,7 @@ Le `compose` liaisons pour l’en-tête et le pied de page sont codées en durs 
 
 [!code-html[Main](hottowel-template/samples/sample4.html)]
 
-### <a name="navhtml"></a>NAV.HTML
+### <a name="navhtml"></a>nav.html
 
 Le `nav.html` contient les liens de navigation pour SPA. Il s’agit où la structure de menu peut être placée, par exemple. Il s’agit souvent les données liées (à l’aide de Knockout) à la `router` module pour afficher la barre de navigation que vous avez définies dans le `shell.js`. Knockout recherche la liaison de données des attributs et celles qui lie la `shell` viewmodel pour afficher les itinéraires de navigation et afficher un progressbar (à l’aide d’amorçage de Twitter) si le `router` module est en cours de la navigation d’une vue à une autre (voir `router.isNavigating`).
 
@@ -135,11 +135,11 @@ Le `nav.html` contient les liens de navigation pour SPA. Il s’agit où la stru
 
 Ces vues contiennent HTML pour des vues personnalisées. Lorsque le `home` lien dans le `nav` clic sur le menu de la vue, le `home` affichage sera placé dans la zone de contenu de la `shell` vue. Ces vues peuvent être augmentées ou remplacées par vos propres affichages personnalisés.
 
-### <a name="footerhtml"></a>Footer.HTML
+### <a name="footerhtml"></a>footer.html
 
 Le `footer.html` contient du code HTML qui s’affiche dans le pied de page, en bas de la `shell` vue.
 
-## <a name="viewmodels"></a>ViewModel
+## <a name="viewmodels"></a>ViewModels
 
 ViewModel se trouvent dans le `App/viewmodels` dossier.
 
@@ -159,6 +159,6 @@ Ces modèles ViewModel contiennent les propriétés et les fonctions qui sont li
 
 Services sont trouvent dans le dossier services d’application. Dans l’idéal, vos futures services comme un module dataservice, qui est responsable de la mise en route et la validation des données distantes, peut être placés.
 
-### <a name="loggerjs"></a>Logger.js
+### <a name="loggerjs"></a>logger.js
 
 Linge à chaud fournit un `logger` module dans le dossier services. Le `logger` module est idéal pour les messages de journalisation pour la console et l’utilisateur dans la fenêtre contextuelle toasts.

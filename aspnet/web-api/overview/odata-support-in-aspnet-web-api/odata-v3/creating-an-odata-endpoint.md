@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
-title: "Création d’un point de terminaison OData v3 avec l’API Web 2 | Documents Microsoft"
+title: Création d’un point de terminaison OData v3 avec l’API Web 2 | Documents Microsoft
 author: MikeWasson
-description: "Le protocole Open Data Protocol (OData) est un protocole d’accès aux données pour le web. OData fournit une méthode uniforme pour la structure des données, interroger les données et manipuler les données en cours..."
+description: Le protocole Open Data Protocol (OData) est un protocole d’accès aux données pour le web. OData fournit une méthode uniforme pour la structure des données, interroger les données et manipuler les données en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/25/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: cb466124aacf6b13c1ade22ad8b865b83e6351e2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 227faacd3f42731e08a4cd2b71075776309961b6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-an-odata-v3-endpoint-with-web-api-2"></a>Création d’un point de terminaison OData v3 avec l’API Web 2
 ====================
@@ -150,7 +150,7 @@ Le **MapODataRoute** méthode ajoute un itinéraire pour le point de terminaison
 
 [!code-csharp[Main](creating-an-odata-endpoint/samples/sample4.cs)]
 
-Le premier paramètre est un nom convivial pour l’itinéraire. Ce nom n’apparaît pas dans les clients de votre service. Le deuxième paramètre est le préfixe URI pour le point de terminaison. Étant donné ce code, l’URI pour le jeu d’entités de produits est http://*nom d’hôte*odata/produits. Votre application peut avoir plus d’un point de terminaison OData. Pour chaque point de terminaison, appelez **MapODataRoute** et fournir un nom d’itinéraire unique et un préfixe URI unique.
+Le premier paramètre est un nom convivial pour l’itinéraire. Ce nom n’apparaît pas dans les clients de votre service. Le deuxième paramètre est le préfixe URI pour le point de terminaison. Étant donné ce code, l’URI pour le jeu d’entités de produits est http://<em>nom d’hôte</em>odata/produits. Votre application peut avoir plus d’un point de terminaison OData. Pour chaque point de terminaison, appelez <strong>MapODataRoute</strong> et fournir un nom d’itinéraire unique et un préfixe URI unique.
 
 <a id="seed-db"></a>
 ## <a name="seed-the-database-optional"></a>Valeur initiale de la base de données (facultatif)
@@ -241,7 +241,7 @@ OData prend en charge plusieurs formats de sérialisation :
 
 - Atom Pub (XML)
 - JSON « light » (introduite dans OData v3)
-- JSON « commentaires » (OData v2)
+- JSON "verbose" (OData v2)
 
 Par défaut, API Web utilise le format de AtomPubJSON « light ». 
 

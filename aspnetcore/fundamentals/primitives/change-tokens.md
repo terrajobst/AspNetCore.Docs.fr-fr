@@ -1,7 +1,7 @@
 ---
-title: "Détecte les modifications avec modification de jetons dans ASP.NET Core"
+title: Détecter les modifications avec des jetons de modification dans ASP.NET Core
 author: guardrex
-description: "Découvrez comment utiliser des jetons de modification pour effectuer le suivi des modifications."
+description: Découvrez comment utiliser des jetons de modification pour effectuer le suivi des modifications.
 manager: wpickett
 ms.author: riande
 ms.date: 11/10/2017
@@ -10,171 +10,170 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 94bf356fcbfab3930804485c1b65e4a0f4c52b8e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 06751e713fbd579a944333cc3c3b2c0c0ad51eba
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecte les modifications avec modification de jetons dans ASP.NET Core
+# <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-A *modifier le jeton* est un bloc de construction à usage général de bas niveau est utilisé pour effectuer le suivi des modifications.
+Un *jeton de modification* est un module à usage général de bas niveau, utilisé pour effectuer le suivi des modifications.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/primitives/change-tokens/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="ichangetoken-interface"></a>Interface de IChangeToken
+## <a name="ichangetoken-interface"></a>Interface d’IChangeToken
 
-[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) propage les notifications qu’une modification s’est produite. `IChangeToken`réside dans le [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) espace de noms. Pour les applications qui n’utilisent pas le [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) metapackage, référence le [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) package NuGet dans le fichier projet.
+[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) propage des notifications indiquant qu’une modification s’est produite. `IChangeToken` se trouve dans l’espace de noms [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Pour les applications qui n’utilisent pas le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), référencez le package NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) dans le fichier projet.
 
-`IChangeToken`a deux propriétés :
+`IChangeToken` a deux propriétés :
 
-* [ActiveChangedCallbacks](/dotnet/api/microsoft.extensions.primitives.ichangetoken.activechangecallbacks) indiquer si le jeton déclenche proactive des rappels. Si `ActiveChangedCallbacks` a la valeur `false`, un rappel n’est jamais appelé, et l’application doit interroger `HasChanged` des modifications. Il est également possible pour un jeton de ne jamais être annulé si aucune modification se produit ou si l’écouteur de modifications sous-jacent est supprimé ou désactivé.
-* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged) Obtient une valeur qui indique si une modification a eu lieu.
+* [ActiveChangedCallbacks](/dotnet/api/microsoft.extensions.primitives.ichangetoken.activechangecallbacks) indique si le jeton déclenche des rappels de façon proactive. Si `ActiveChangedCallbacks` est défini sur `false`, un rappel n’est jamais appelé, et l’application doit interroger `HasChanged` pour connaître les modifications. Il est également possible qu’un jeton ne soit jamais annulé si aucune modification ne se produit, ou si l’écouteur de modifications sous-jacent est supprimé ou désactivé.
+* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged) obtient une valeur qui indique si une modification a eu lieu.
 
-L’interface a une méthode, [RegisterChangeCallback (Action&lt;objet&gt;, objet)](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback), qui inscrit un rappel qui est appelé lorsque le jeton a été modifiée. `HasChanged`doit être définie avant le rappel est appelé.
+L’interface a une méthode, [RegisterChangeCallback(Action&lt;objet&gt;, Object)](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback), qui inscrit un rappel qui est appelé quand le jeton a été modifié. `HasChanged` doit être défini avant que le rappel soit appelé.
 
-## <a name="changetoken-class"></a>Classe de ChangeToken
+## <a name="changetoken-class"></a>Classe ChangeToken
 
-`ChangeToken`une classe statique est utilisée pour propager des notifications a changé. `ChangeToken`réside dans le [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives) espace de noms. Pour les applications qui n’utilisent pas le [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) metapackage, référence le [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) package NuGet dans le fichier projet.
+`ChangeToken` est une classe statique utilisée pour propager des notifications indiquant qu’une modification s’est produite. `ChangeToken` se trouve dans l’espace de noms [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Pour les applications qui n’utilisent pas le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), référencez le package NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) dans le fichier projet.
 
-Le `ChangeToken` [OnChange (Func&lt;IChangeToken&gt;, Action)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action_) méthode registres une `Action` pour appeler chaque fois que le jeton change :
-* `Func<IChangeToken>`génère le jeton.
-* `Action`est appelé lorsque le jeton est modifiée.
+La méthode `ChangeToken` [OnChange(Func&lt;IChangeToken&gt;, Action)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action_) inscrit une `Action` à appeler chaque fois que le jeton change :
+* `Func<IChangeToken>` produit le jeton.
+* `Action` est appelée quand le jeton change.
 
-`ChangeToken`a un [OnChange&lt;TState&gt;(Func&lt;IChangeToken&gt;, Action&lt;TState&gt;, TState)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange__1_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action___0____0_) surcharge qui accepte un supplémentaires`TState`paramètre est passé dans le consommateur de jeton `Action`.
+`ChangeToken` a une surcharge [OnChange&lt;TState&gt;(Func&lt;IChangeToken&gt;, Action&lt;TState&gt;, TState)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange__1_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action___0____0_) qui prend un paramètre `TState` supplémentaire passé dans l’élément `Action` du consommateur du jeton.
 
-`OnChange`Retourne un [IDisposable](/dotnet/api/system.idisposable). Appel de [Dispose](/dotnet/api/system.idisposable.dispose) arrête le jeton de l’écoute des modifications supplémentaires et libère les ressources du jeton.
+`OnChange` retourne un [IDisposable](/dotnet/api/system.idisposable). L’appel de [Dispose](/dotnet/api/system.idisposable.dispose) fait que le jeton cesse d’être à l’écoute des modifications suivantes et libère les ressources du jeton.
 
 ## <a name="example-uses-of-change-tokens-in-aspnet-core"></a>Exemples d’utilisation de jetons de modification dans ASP.NET Core
 
-Les jetons de modification sont utilisés dans les zones principales d’ASP.NET Core surveiller les modifications apportées aux objets :
+Les jetons de modification sont utilisés dans des zones importantes d’ASP.NET Core pour la surveillance des modifications apportées aux objets :
 
-* Pour surveiller les modifications apportées aux fichiers, [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider)de [espion](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) méthode crée un `IChangeToken` pour les fichiers ou dossier à surveiller.
-* `IChangeToken`les jetons peuvent être ajoutés aux entrées du cache pour déclencher des suppressions dans le cache des modifications.
-* Pour `TOptions` change, la valeur par défaut [OptionsMonitor](/dotnet/api/microsoft.extensions.options.optionsmonitor-1) implémentation de [IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) a une surcharge qui accepte un ou plusieurs [IOptionsChangeTokenSource](/dotnet/api/microsoft.extensions.options.ioptionschangetokensource-1)instances. Chaque instance retourne un `IChangeToken` pour inscrire un rappel de notification de modification des options de suivi des modifications.
+* Pour surveiller les modifications apportées aux fichiers, la méthode [Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) de [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) crée un `IChangeToken` pour les fichiers ou le dossier à surveiller.
+* Les jetons `IChangeToken` peuvent être ajoutés aux entrées du cache pour déclencher des suppressions dans le cache en cas de modification.
+* Pour les modifications `TOptions`, l’implémentation par défaut de [OptionsMonitor](/dotnet/api/microsoft.extensions.options.optionsmonitor-1) de [IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) a une surcharge qui accepte une ou plusieurs instances de [IOptionsChangeTokenSource](/dotnet/api/microsoft.extensions.options.ioptionschangetokensource-1). Chaque instance retourne un `IChangeToken` pour inscrire un rappel de notification de modification pour les modifications des options de suivi.
 
-## <a name="monitoring-for-configuration-changes"></a>Surveiller les modifications de configuration
+## <a name="monitoring-for-configuration-changes"></a>Surveillance des modifications de configuration
 
-Par défaut, utilisent les modèles ASP.NET Core [les fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration) (*appsettings.json*, *appsettings. Development.JSON*, et *appsettings. Production.JSON*) pour charger les paramètres de configuration d’application.
+Par défaut, les modèles ASP.NET Core utilisent des [fichiers de configuration JSON](xref:fundamentals/configuration/index#json-configuration) (*appsettings.json*, *appsettings.Development.json* et *appsettings.Production.json*) pour charger les paramètres de configuration des applications.
 
-Ces fichiers sont configurés à l’aide de la [AddJsonFile (IConfigurationBuilder, chaîne, booléen, Boolean)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) méthode d’extension sur [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) qui accepte un `reloadOnChange` paramètre (ASP.NET Noyaux 1.1 et ultérieure). `reloadOnChange`Indique si la configuration doit être rechargée sur les modifications de fichier. Ce paramètre dans le [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) méthode pratique [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) ([source de référence](https://github.com/aspnet/MetaPackages/blob/rel/2.0.3/src/Microsoft.AspNetCore/WebHost.cs#L152-L193)) :
+Ces fichiers sont configurés avec la méthode d’extension [AddJsonFile(IConfigurationBuilder, chaîne, booléen, booléen)](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions.addjsonfile?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_JsonConfigurationExtensions_AddJsonFile_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_System_Boolean_System_Boolean_) sur [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) qui accepte un paramètre `reloadOnChange` (ASP.NET Core 1.1 et ultérieur). `reloadOnChange` indique si la configuration doit être rechargée en cas de modification d’un fichier. Vous pouvez voir ce paramètre dans la méthode pratique [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) de [WebHost](/dotnet/api/microsoft.aspnetcore.webhost) :
 
 ```csharp
 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
       .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 ```
 
-Configuration basée sur le fichier représentée par [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource). `FileConfigurationSource`utilise [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) ([source de référence](https://github.com/aspnet/FileSystem/blob/patch/2.0.1/src/Microsoft.Extensions.FileProviders.Abstractions/IFileProvider.cs)) pour analyser les fichiers.
+La configuration basée sur les fichiers est représentée par [FileConfigurationSource](/dotnet/api/microsoft.extensions.configuration.fileconfigurationsource). `FileConfigurationSource` utilise [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider) pour surveiller des fichiers.
 
-Par défaut, le `IFileMonitor` est fournie par un [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider) ([source de référence](https://github.com/aspnet/Configuration/blob/patch/2.0.1/src/Microsoft.Extensions.Configuration.FileExtensions/FileConfigurationSource.cs#L82)), qui utilise [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) pour analyser le fichier de configuration modifications.
+Par défaut, `IFileMonitor` est fourni par un [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider), qui utilise [FileSystemWatcher](/dotnet/api/system.io.filesystemwatcher) pour surveiller les modifications des fichiers de configuration.
 
-L’exemple d’application illustre les deux implémentations de surveillance des modifications de configuration. Si le *appsettings.json* les modifications de fichier ou la version de l’environnement du fichier change, chaque implémentation exécute du code personnalisé. L’exemple d’application écrit un message dans la console.
+L’exemple d’application montre les deux implémentations de la surveillance des modifications de configuration. Si le fichier *appsettings.json* change ou que la version de l’environnement du fichier change, chaque implémentation exécute du code personnalisé. L’exemple d’application écrit un message sur la console.
 
-Un fichier de configuration `FileSystemWatcher` peut déclencher plusieurs rappels de jeton pour une modification de fichier de configuration unique. Implémentation de l’exemple protège contre ce problème en vérifiant les hachages de fichier sur les fichiers de configuration. Vérification des fichiers à hacher garantit qu’au moins un des fichiers de configuration a changé avant d’exécuter le code personnalisé. L’exemple utilise le fichier de hachage SHA1 (*Utilities/Utilities.cs*) :
+Le `FileSystemWatcher` d’un fichier de configuration peut déclencher plusieurs rappels de jeton pour une même modification du fichier de configuration. L’implémentation de l’exemple protège de ce problème en vérifiant les hachages de fichier sur les fichiers de configuration. La vérification des hachages de fichier garantit qu’au moins un des fichiers de configuration a changé avant d’exécuter le code personnalisé. L’exemple utilise le hachage de fichier SHA1 (*Utilities/Utilities.cs*) :
 
-   [!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet1)]
+   [!code-csharp[](change-tokens/sample/Utilities/Utilities.cs?name=snippet1)]
 
-   Une nouvelle tentative est implémentée avec une interruption exponentielle. La nouvelle tentative est présente, car le verrouillage de fichier peut se produire qui empêche temporairement le calcul de hachage de nouveau sur l’un des fichiers.
+   Une nouvelle tentative est implémentée avec une interruption d’une durée exponentielle. Une nouvelle tentative est effectuée, car il peut se produire un verrouillage du fichier qui empêche temporairement le calcul d’un nouveau hachage sur un des fichiers.
 
 ### <a name="simple-startup-change-token"></a>Jeton de modification de démarrage simple
 
-Inscrire un consommateur de jeton `Action` rappel pour les notifications de modification pour le jeton de rechargement de configuration (*Startup.cs*) :
+Inscrivez un rappel `Action` de consommateur de jeton pour les notifications de modification au jeton de rechargement de configuration (*Startup.cs*) :
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet2)]
 
-`config.GetReloadToken()`fournit le jeton. Le rappel est le `InvokeChanged` méthode :
+`config.GetReloadToken()` fournit le jeton. Le rappel est la méthode `InvokeChanged` :
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet3)]
 
-Le `state` du rappel est utilisé pour transmettre le `IHostingEnvironment`. Cela est utile pour déterminer la bonne *appsettings* fichier de configuration de JSON à analyser, *appsettings.&lt; Environnement&gt;.json*. Fichiers à hacher sont utilisés pour empêcher la `WriteConsole` instruction de s’exécuter plusieurs fois en raison de plusieurs rappels jeton lorsque le fichier de configuration a été modifiée uniquement une seule fois.
+Le `state` du rappel est utilisé pour passer le `IHostingEnvironment`. C’est utile pour déterminer le fichier JSON de configuration *appsettings* correct à surveiller, *appsettings.&lt;Environnement&gt;.json*. Les hachages de fichier sont utilisés pour empêcher l’instruction `WriteConsole` d’être exécutée plusieurs fois en raison de plusieurs rappels de jeton alors que le fichier de configuration n’a été modifié qu’une seule fois.
 
-Ce système s’exécute en tant que l’application est en cours d’exécution et ne peut pas être désactivée par l’utilisateur.
+Ce système s’exécute tant que l’application est en cours d’exécution et ne peut pas être désactivé par l’utilisateur.
 
 ### <a name="monitoring-configuration-changes-as-a-service"></a>Surveillance des modifications de configuration en tant que service
 
-L’exemple implémente :
+L’exemple implémente :
 
-* Analyse de jeton du démarrage de base.
-* Analyse en tant que service.
-* Un mécanisme pour activer et désactiver l’analyse.
+* Surveillance de jeton du démarrage de base.
+* Surveillance en tant que service.
+* Un mécanisme pour activer et désactiver la surveillance.
 
-L’exemple établit une `IConfigurationMonitor` interface (*Extensions/ConfigurationMonitor.cs*) :
+L’exemple établit une interface `IConfigurationMonitor` (*Extensions/ConfigurationMonitor.cs*) :
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
-Le constructeur de la classe implémentée, `ConfigurationMonitor`, inscrit un rappel pour les notifications de modification :
+Le constructeur de la classe implémentée, `ConfigurationMonitor`, inscrit un rappel pour les notifications de modification :
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet2)]
 
-`config.GetReloadToken()`fournit le jeton. `InvokeChanged`est la méthode de rappel. Le `state` dans cette instance est une chaîne qui décrit l’état d’analyse. Deux propriétés sont utilisées :
+`config.GetReloadToken()` fournit le jeton. `InvokeChanged` est la méthode de rappel. Le `state` dans cette instance est une référence à l’instance `IConfigurationMonitor` qui est utilisée pour accéder à l’état du monitoring. Deux propriétés sont utilisées :
 
-* `MonitoringEnabled`Indique si le rappel doit s’exécuter son code personnalisé.
-* `CurrentState`Décrit l’état en cours d’analyse pour une utilisation dans l’interface utilisateur.
+* `MonitoringEnabled` indique si le rappel doit exécuter son code personnalisé.
+* `CurrentState` décrit l’état actuel de la surveillance pour une utilisation dans l’interface utilisateur.
 
-Le `InvokeChanged` méthode est similaire à l’approche précédente, sauf qu’elle :
+La méthode `InvokeChanged` est similaire à l’approche précédente, excepté que :
 
-* Ne s’exécute pas son code, sauf si `MonitoringEnabled` est `true`.
-* Définit le `CurrentState` chaîne de propriété et un message descriptif qui enregistre l’heure que le code s’exécute.
-* Notes actuel `state` dans son `WriteConsole` sortie.
+* Elle n’exécute pas son code, sauf si `MonitoringEnabled` est `true`.
+* Elle indique le `state` actuel dans sa sortie `WriteConsole`.
 
-[!code-csharp[Main](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Extensions/ConfigurationMonitor.cs?name=snippet3)]
 
-Une instance `ConfigurationMonitor` est inscrit en tant que service dans `ConfigureServices` de *Startup.cs*:
+Une instance de `ConfigurationMonitor` est inscrite en tant que service dans `ConfigureServices` de *Startup.cs* :
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet1)]
 
-La page d’Index offre à l’utilisateur de contrôler l’analyse de configuration. L’instance de `IConfigurationMonitor` est injecté dans le `IndexModel`:
+La page Index permet à l’utilisateur de contrôler la surveillance de la configuration. L’instance de `IConfigurationMonitor` est injectée dans le `IndexModel` :
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet1)]
 
-Un bouton active et désactive la surveillance :
+Un bouton active et désactive la surveillance :
 
-[!code-cshtml[Main](change-tokens/sample/Pages/Index.cshtml?range=35)]
+[!code-cshtml[](change-tokens/sample/Pages/Index.cshtml?range=35)]
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet2)]
 
-Lorsque `OnPostStartMonitoring` est déclenchée, l’analyse est activée, et l’état actuel est désactivée. Lorsque `OnPostStopMonitoring` est déclenchée, l’analyse est désactivée et l’état est défini pour indiquer que l’analyse n’est pas produit.
+Quand `OnPostStartMonitoring` est déclenché, la surveillance est activée et l’état actuel est effacé. Quand `OnPostStopMonitoring` est déclenché, la surveillance est désactivée et l’état est défini de façon à indiquer que la surveillance n’est pas effectuée.
 
-## <a name="monitoring-cached-file-changes"></a>Surveillance des modifications de fichier mis en cache
+## <a name="monitoring-cached-file-changes"></a>Surveillance des modifications de fichiers mis en cache
 
-Contenu du fichier peut être mis en cache à l’aide de mémoire [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). La mise en cache en mémoire est décrite dans le [mise en cache](xref:performance/caching/memory) rubrique. Sans prendre des mesures supplémentaires, telles que l’implémentation décrite ci-dessous, *obsolètes* données (obsolètes) sont retournées à partir d’un cache si la source de données change.
+Le contenu des fichiers peut être mis en cache en mémoire avec [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache). La mise en cache en mémoire est décrite dans la rubrique [Mise en cache en mémoire](xref:performance/caching/memory). Sans actions supplémentaires, comme l’implémentation décrite ci-dessous, les données *périmées* (obsolètes) sont retournées depuis un cache si la source de données change.
 
-Sans tenir compte l’état d’un fichier source de mise en cache lors du renouvellement un [expiration décalée](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration) période aboutit à des données du cache obsolètes. Chaque demande des données renouvelle la période d’expiration décalée, mais le fichier n’est jamais rechargé dans le cache. Toutes les fonctionnalités d’application qui utilisent le contenu du fichier mis en cache sont soumis aux éventuellement recevoir du contenu obsolète.
+Le fait de ne pas prendre en compte l’état d’un fichier source en cache lors du renouvellement d’une période [d’expiration décalée](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration) rend obsolètes les données du cache. Chaque demande de données renouvelle la période d’expiration décalée, mais le fichier n’est jamais rechargé dans le cache. Toutes les fonctionnalités d’une application qui utilisent le contenu mis en cache d’un fichier sont exposées au risque de recevoir du contenu obsolète.
 
-L’utilisation de jetons de modification dans un scénario de mise en cache de fichier empêche contenu du fichier obsolètes dans le cache. L’exemple d’application illustre une implémentation de l’approche.
+L’utilisation de jetons de modification dans un scénario de mise en cache de fichier empêche la présence de contenu obsolète dans le cache. L’exemple d’application montre une implémentation de l’approche.
 
-L’exemple utilise `GetFileContent` pour :
+L’exemple utilise `GetFileContent` pour :
 
-* Retourne le contenu du fichier.
-* Implémenter un algorithme de nouvelle tentative avec interruption exponentielle pour couvrir les cas où un verrou de fichier temporaire empêche un fichier en cours de lecture.
+* Retourner le contenu du fichier.
+* Implémenter un algorithme de nouvelle tentative avec interruption exponentielle pour couvrir les cas où un verrou de fichier empêche temporairement la lecture d’un fichier.
 
-*Utilities/Utilities.cs*:
+*Utilities/Utilities.cs* :
 
-[!code-csharp[Main](change-tokens/sample/Utilities/Utilities.cs?name=snippet2)]
+[!code-csharp[](change-tokens/sample/Utilities/Utilities.cs?name=snippet2)]
 
-A `FileService` est créé pour gérer les recherches de fichier mis en cache. Le `GetFileContent` appel de méthode du service tente d’obtenir le contenu du fichier à partir du cache en mémoire et le retourner à l’appelant (*Services/FileService.cs*).
+Un `FileService` est créé pour gérer les recherches des fichiers mis en cache. L’appel de la méthode `GetFileContent` du service tente d’obtenir le contenu du fichier à partir du cache en mémoire et le retourne à l’appelant (*Services/FileService.cs*).
 
-Si le contenu mis en cache n’est trouvé à l’aide de la clé de cache, les actions suivantes sont exécutées :
+Si le contenu en cache n’est pas trouvé avec la clé du cache, les actions suivantes sont effectuées :
 
 1. Le contenu du fichier est obtenu à l’aide de `GetFileContent`.
-1. Un jeton de modification est obtenu à partir du fournisseur du fichier avec [IFileProviders.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch). Rappel du jeton est déclenchée lorsque le fichier est modifié.
-1. Le contenu du fichier est mis en cache avec un [expiration décalée](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration) période. Le jeton de modification est attaché avec [MemoryCacheEntryExtensions.AddExpirationToken](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.addexpirationtoken) pour supprimer l’entrée du cache si le fichier change pendant qu’il est mis en cache.
+1. Un jeton de modification est obtenu auprès du fournisseur du fichier avec [IFileProviders.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch). Le rappel du jeton est déclenché quand le fichier est modifié.
+1. Le contenu du fichier est mis en cache avec une période [d’expiration décalée](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryoptions.slidingexpiration). Le jeton de modification est attaché avec [MemoryCacheEntryExtensions.AddExpirationToken](/dotnet/api/microsoft.extensions.caching.memory.memorycacheentryextensions.addexpirationtoken) pour supprimer l’entrée du cache si le fichier change alors qu’il est mis en cache.
 
-[!code-csharp[Main](change-tokens/sample/Services/FileService.cs?name=snippet1)]
+[!code-csharp[](change-tokens/sample/Services/FileService.cs?name=snippet1)]
 
-Le `FileService` est enregistré dans le conteneur de service, ainsi que le service de mise en cache (*Startup.cs*) :
+Le `FileService` est inscrit dans le conteneur de service, ainsi que le service de mise en cache en mémoire (*Startup.cs*) :
 
-[!code-csharp[Main](change-tokens/sample/Startup.cs?name=snippet4)]
+[!code-csharp[](change-tokens/sample/Startup.cs?name=snippet4)]
 
-Le modèle de page charge le contenu du fichier à l’aide du service (*Pages/Index.cshtml.cs*) :
+Le modèle de page charge le contenu du fichier en utilisant le service (*Pages/Index.cshtml.cs*) :
 
-[!code-csharp[Main](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet3)]
+[!code-csharp[](change-tokens/sample/Pages/Index.cshtml.cs?name=snippet3)]
 
-## <a name="compositechangetoken-class"></a>Classe de CompositeChangeToken
+## <a name="compositechangetoken-class"></a>Classe CompositeChangeToken
 
-Pour représenter un ou plusieurs `IChangeToken` instances dans un seul objet, utilisez le [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken) classe ([source de référence](https://github.com/aspnet/Common/blob/patch/2.0.1/src/Microsoft.Extensions.Primitives/CompositeChangeToken.cs)).
+Pour représenter une ou plusieurs instances de `IChangeToken` dans un même objet, utilisez la classe [CompositeChangeToken](/dotnet/api/microsoft.extensions.primitives.compositechangetoken).
 
 ```csharp
 var firstCancellationTokenSource = new CancellationTokenSource();
@@ -195,13 +194,12 @@ var compositeChangeToken =
         });
 ```
 
-`HasChanged`dans les rapports de jeton composites `true` si les représenté jeton `HasChanged` est `true`. `ActiveChangeCallbacks`dans les rapports de jeton composites `true` si les représenté jeton `ActiveChangeCallbacks` est `true`. Si plusieurs modifications simultanées se produisent, le rappel de modification composite est appelé exactement une fois.
+`HasChanged` sur le jeton composite indique `true` si l’élément `HasChanged` d’un jeton représenté est `true`. `ActiveChangeCallbacks` sur le jeton composite indique `true` si l’élément `ActiveChangeCallbacks` d’un jeton représenté est `true`. Si plusieurs modifications simultanées se produisent, le rappel de modification composite n’est appelé qu’une seule fois.
 
 ## <a name="see-also"></a>Voir aussi
 
-* [Mise en cache en mémoire](xref:performance/caching/memory)
-* [Utilisation d’un cache distribué](xref:performance/caching/distributed)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
+* [Mettre en cache en mémoire](xref:performance/caching/memory)
+* [Utiliser un cache distribué](xref:performance/caching/distributed)
 * [Mise en cache des réponses](xref:performance/caching/response)
 * [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
 * [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

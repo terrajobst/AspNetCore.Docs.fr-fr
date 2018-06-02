@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
-title: "Validation avec l’Interface IDataErrorInfo (c#) | Documents Microsoft"
+title: Validation avec l’Interface IDataErrorInfo (c#) | Documents Microsoft
 author: StephenWalther
-description: "Stephen Walther vous montre comment afficher des messages d’erreur de validation personnalisées en implémentant l’interface IDataErrorInfo dans une classe de modèle."
+description: Stephen Walther vous montre comment afficher des messages d’erreur de validation personnalisées en implémentant l’interface IDataErrorInfo dans une classe de modèle.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c04088c576481e4a91676d7e6962c03b56e7a8a4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b5028b2e07c4144efa59824885ce96cd8b037dff
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-with-the-idataerrorinfo-interface-c"></a>Validation avec l’Interface IDataErrorInfo (c#)
 ====================
@@ -37,8 +37,8 @@ Dans ce didacticiel, je vais utiliser la base de données MoviesDB et la table d
 | **Nom de la colonne** | **Type de données** | **Autoriser les valeurs null** |
 | --- | --- | --- |
 | Id | Int | False |
-| Titre | Nvarchar (100) | False |
-| Directeur | Nvarchar (100) | False |
+| Titre | Nvarchar(100) | False |
+| Directeur | Nvarchar(100) | False |
 | DateReleased | DateTime | False |
 
 
@@ -157,10 +157,10 @@ Vous n’avez pas besoin de modifier le contrôleur Home de quelque manière d�
 
 Notez que la valeur DateReleased est automatiquement validée. Étant donné que la propriété DateReleased n’accepte pas les valeurs NULL, la DefaultModelBinder génère automatiquement une erreur de validation pour cette propriété lorsqu’il n’a pas de valeur. Si vous souhaitez modifier le message d’erreur pour la propriété DateReleased, vous devez créer un classeur de modèles personnalisés.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris à utiliser l’interface IDataErrorInfo pour générer des messages d’erreur de validation. Tout d’abord, nous avons créé une classe partielle de film qui étend les fonctionnalités de la classe partielle de vidéo générée par Entity Framework. Ensuite, nous avons ajouté la logique de validation pour les films classe OnTitleChanging() et OnDirectorChanging() méthodes partielles. Enfin, nous avons implémenté l’interface IDataErrorInfo afin d’exposer ces messages de validation de l’infrastructure ASP.NET MVC.
 
->[!div class="step-by-step"]
-[Précédent](performing-simple-validation-cs.md)
-[Suivant](validating-with-a-service-layer-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](performing-simple-validation-cs.md)
+> [Suivant](validating-with-a-service-layer-cs.md)

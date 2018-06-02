@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
-title: "Présentation des Pages Web ASP.NET - notions de base de formulaire HTML | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET - notions de base de formulaire HTML | Documents Microsoft
 author: tfitzmac
-description: "Ce didacticiel vous montre les principes fondamentaux de la création d’un formulaire d’entrée et comment gérer l’entrée d’utilisateur lorsque vous utilisez les Pages Web ASP.NET (Razor). Et maintenant que vous avez..."
+description: Ce didacticiel vous montre les principes fondamentaux de la création d’un formulaire d’entrée et comment gérer l’entrée d’utilisateur lorsque vous utilisez les Pages Web ASP.NET (Razor). Et maintenant que vous avez...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: 68056759b2e80230e5fd2c0f9b2d2a89b549cf37
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6f44f74774c2fa6338524987779e15f3940d1830
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>Présentation des Pages Web ASP.NET - notions de base de formulaire HTML
 ====================
@@ -88,11 +88,11 @@ Le `<form>` élément entoure des éléments HTML à être soumis. (Une erreur f
 
 La plupart des éléments d’entrée d’utilisateur sont HTML `<input>` éléments. Ils ressemblent `<input type="type" name="name">,` où *type* indique le type de contrôle d’entrée d’utilisateur souhaité. Ces éléments sont ceux courantes :
 
-- Zone de texte :`<input type="text">`
-- Case à cocher :`<input type="check">`
-- Case d’option :`<input type="radio">`
-- Bouton :`<input type="button">`
-- Bouton Envoyer :`<input type="submit">`
+- Zone de texte : `<input type="text">`
+- Case à cocher : `<input type="check">`
+- Case d’option : `<input type="radio">`
+- bouton : `<input type="button">`
+- Bouton Envoyer : `<input type="submit">`
 
 Vous pouvez également utiliser le `<textarea>` élément pour créer une zone de texte multiligne et `<select>` élément pour créer une liste déroulante ou une liste déroulante. (Pour plus d’informations sur HTML forment des éléments, consultez [formulaires HTML et entrée](http://www.w3schools.com/html/html_forms.asp) sur le site W3Schools.)
 
@@ -167,11 +167,11 @@ Ce bloc définit l’étape de création d’une requête qui utilise le terme d
 > 
 > `var someValue = Request["name"];`
 > 
-> Le `Request` objet expose réellement plusieurs sous-ensembles. Exemple :
+> Le `Request` objet expose réellement plusieurs sous-ensembles. Par exemple :
 > 
-> - `Request.Form`vous donne les valeurs à partir des éléments à l’intérieur de l’élément soumis `<form>` élément si la demande est un `POST` demande.
-> - `Request.QueryString`permet que les valeurs dans la chaîne de requête URL. (Dans une URL telle que `http://mysite/myapp/page?searchGenre=action&page=2`, le `?searchGenre=action&page=2` section de l’URL est la chaîne de requête.)
-> - `Request.Cookies`collection vous permet d’accéder aux cookies envoyées par le navigateur.
+> - `Request.Form` vous donne les valeurs à partir des éléments à l’intérieur de l’élément soumis `<form>` élément si la demande est un `POST` demande.
+> - `Request.QueryString` permet que les valeurs dans la chaîne de requête URL. (Dans une URL telle que `http://mysite/myapp/page?searchGenre=action&page=2`, le `?searchGenre=action&page=2` section de l’URL est la chaîne de requête.)
+> - `Request.Cookies` collection vous permet d’accéder aux cookies envoyées par le navigateur.
 > 
 > Pour obtenir une valeur qui est dans le formulaire envoyé, vous pouvez utiliser `Request["name"]`. Vous pouvez également utiliser les versions plus spécifiques `Request.Form["name"]` (pour `POST` demandes) ou `Request.QueryString["name"]` (pour `GET` demandes). Bien entendu, *nom* est le nom de l’élément à obtenir.
 > 
@@ -363,6 +363,6 @@ Dans l’étape suivante du didacticiel, vous allez créer une page qui utilise 
 - [Une Clause SQL WHERE](http://www.w3schools.com/sql/sql_where.asp) sur le site W3Schools
 - [Définitions de méthode](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) article sur le site W3C
 
->[!div class="step-by-step"]
-[Précédent](displaying-data.md)
-[Suivant](entering-data.md)
+> [!div class="step-by-step"]
+> [Précédent](displaying-data.md)
+> [Suivant](entering-data.md)

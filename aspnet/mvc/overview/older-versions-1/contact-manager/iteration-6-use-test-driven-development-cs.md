@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-cs
-title: "Itération #6 – Utilisez le développement piloté par test (c#) | Documents Microsoft"
+title: 'Itération #6 – Utilisez le développement piloté par test (c#) | Documents Microsoft'
 author: microsoft
-description: "Dans cette itération sixième, nous ajouter de nouvelles fonctionnalités à notre application en écrivant des tests unitaires tout d’abord et d’écrire du code pour les tests unitaires. Dans cette itération,..."
+description: Dans cette itération sixième, nous ajouter de nouvelles fonctionnalités à notre application en écrivant des tests unitaires tout d’abord et d’écrire du code pour les tests unitaires. Dans cette itération,...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 85426a7d4024b779848c3ffd05f2ab306152000c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 94502625f66d3eb08a24b8f2a369bf456a3367b1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-6--use-test-driven-development-c"></a>Itération #6 – Utilisez le développement piloté par test (c#)
 ====================
@@ -123,7 +123,7 @@ Créer un nouveau test unitaire en double-cliquant sur le dossier contrôleurs d
 
 Notre premier test unitaire est contenue dans la liste 1. Ce test vérifie que la méthode Index() du contrôleur de groupe renvoie un ensemble de groupes. Le test vérifie qu’une collection de groupes est retournée dans la vue données.
 
-**La liste 1 - Controllers\GroupControllerTest.cs**
+**Listing 1 - Controllers\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample1.cs)]
 
@@ -155,7 +155,7 @@ Maintenant nous pouvons passer au deuxième récit utilisateur. Nous devons êtr
 
 Le test dans la liste 4 vérifie que l’appel de la méthode avec un nouveau groupe ajoute le groupe à la liste des groupes retournés par la méthode Index() de Create(). En d’autres termes, si vous créez un nouveau groupe puis dois-je être en mesure de récupérer le nouveau groupe dans la liste des groupes retournés par la méthode Index().
 
-**La liste 4 - Controllers\GroupControllerTest.cs**
+**Listing 4 - Controllers\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample4.cs)]
 
@@ -177,7 +177,7 @@ Cette exigence n’a pas été explicitement précisée dans le récit utilisate
 
 La liste 6 contienne un test qui exprime l’intention. Ce test vérifie que la tentative de création d’un groupe sans avoir à fournir un nom aboutit à un message d’erreur de validation dans l’état du modèle.
 
-**La liste 6 - Controllers\GroupControllerTest.cs**
+**Listing 6 - Controllers\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample6.cs)]
 
@@ -215,7 +215,7 @@ La liste 11 contient une nouvelle classe FakeContactManagerRepository qui implé
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample10.cs)]
 
-**La liste 11 - Controllers\FakeContactManagerRepository.cs**
+**Listing 11 - Controllers\FakeContactManagerRepository.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample11.cs)]
 
@@ -226,7 +226,7 @@ Modifier la IContactManagerRepository interface requiert utiliser pour implémen
 
 Enfin, ces modifications à la conception de notre application nécessitent apporter certaines modifications au cours de nos tests unitaires. Nous devons maintenant utiliser le FakeContactManagerRepository lors de l’exécution des tests unitaires. La classe GroupControllerTest mis à jour est contenue dans la liste 12.
 
-**Liste des 12 - Controllers\GroupControllerTest.cs**
+**Listing 12 - Controllers\GroupControllerTest.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample13.cs)]
 
@@ -249,7 +249,7 @@ Nous devons créer une table de base de données de groupe. Procédez comme suit
 | **Nom de la colonne** | **Type de données** | **Autoriser les valeurs null** |
 | --- | --- | --- |
 | Id | int | False |
-| Nom | nvarchar (50) | False |
+| Name | nvarchar(50) | False |
 
 
 Ensuite, nous devons supprimer toutes les données à partir de la table Contacts (dans le cas contraire, nous a gagné t être en mesure de créer une relation entre les tables de Contacts et groupes). Procédez comme suit :
@@ -308,7 +308,7 @@ Après avoir effectué ces étapes, votre modèle de données représente les Co
 
 Ensuite, nous devons implémenter notre classe référentiel. Au cours de cette itération, nous avons ajouté plusieurs nouvelles méthodes à l’interface IContactManagerRepository lors de l’écriture de code pour satisfaire nos tests unitaires. La version finale de l’interface IContactManagerRepository est contenue dans la liste de 14.
 
-**Liste 14 - Models\IContactManagerRepository.cs**
+**Listing 14 - Models\IContactManagerRepository.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample14.cs)]
 
@@ -318,7 +318,7 @@ Nous vous n avez encore t implémentée réellement une des méthodes liées à 
 
 Les méthodes stub nous permis de compiler notre application et les tests unitaires. Toutefois, il est maintenant temps réellement implémenter ces méthodes. La version finale de la classe EntityContactManagerRepository est contenue dans la liste 13.
 
-**Liste de 13 - Models\EntityContactManagerRepository.cs**
+**Listing 13 - Models\EntityContactManagerRepository.cs**
 
 [!code-csharp[Main](iteration-6-use-test-driven-development-cs/samples/sample16.cs)]
 
@@ -351,7 +351,7 @@ Vous pouvez voir les vues modifiés en examinant l’application Visual Studio q
 **Figure 08**: affichage de l’Index de Contact ([cliquez pour afficher l’image en taille réelle](iteration-6-use-test-driven-development-cs/_static/image16.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous avons ajouté les nouvelles fonctionnalités à notre application Gestionnaire de contacts en suivant une méthodologie de conception d’application développement piloté par test. Nous avons commencé en créant un ensemble de récits utilisateur. Nous avons créé un ensemble de tests unitaires qui correspond aux exigences exprimées par les récits utilisateur. Enfin, nous avons rédigé juste assez de code pour répondre aux exigences exprimées par les tests unitaires.
 
@@ -359,6 +359,6 @@ Une fois que nous avons terminé l’écriture de suffisamment de code pour rép
 
 Dans la prochaine itération--la dernière itération--nous réécrire notre application pour tirer parti d’Ajax. En tirant parti d’Ajax, nous allons améliorer la réactivité et les performances de l’application Gestionnaire de contacts.
 
->[!div class="step-by-step"]
-[Précédent](iteration-5-create-unit-tests-cs.md)
-[Suivant](iteration-7-add-ajax-functionality-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-5-create-unit-tests-cs.md)
+> [Suivant](iteration-7-add-ajax-functionality-cs.md)

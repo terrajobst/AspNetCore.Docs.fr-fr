@@ -58,7 +58,7 @@ Si une image est déjà disponible sur votre site et que vous souhaitez simpleme
 
 [!code-html[Main](9-working-with-images/samples/sample1.html)]
 
-Parfois, cependant, vous devez être en mesure d’afficher dynamiquement les images &#8212; Autrement dit, vous ne connaissez pas quelle image pour afficher jusqu'à ce que la page est en cours d’exécution.
+Parfois, cependant, vous devez être en mesure d’afficher dynamiquement les images & #8212 ; Autrement dit, vous ne connaissez pas quelle image pour afficher jusqu'à ce que la page est en cours d’exécution.
 
 La procédure décrite dans cette section montre comment afficher une image à la volée, où les utilisateurs spécifient le nom du fichier image à partir d’une liste de noms d’images. Ils sélectionnent le nom de l’image à partir d’une liste déroulante et lorsqu’ils envoient la page, l’image qu’ils ont sélectionné s’affiche.
 
@@ -109,7 +109,7 @@ L’exemple précédent a montré comment afficher une image de manière dynamiq
 
     *C:\Users\Joe\Pictures\SamplePhoto1.jpg*
 
-    Vous ne souhaitez pas que toutes les informations de ce chemin d’accès, bien que &#8212; vous souhaitez simplement le nom de fichier réel (*SamplePhoto1.jpg*). Vous pouvez retirer simplement le fichier à partir d’un chemin d’accès à l’aide de la `Path.GetFileName` méthode, comme suit :
+    Vous ne souhaitez pas que toutes les informations de ce chemin d’accès, bien que & #8212 ; vous souhaitez simplement le nom de fichier réel (*SamplePhoto1.jpg*). Vous pouvez retirer simplement le fichier à partir d’un chemin d’accès à l’aide de la `Path.GetFileName` méthode, comme suit :
 
     [!code-csharp[Main](9-working-with-images/samples/sample4.cs)]
 

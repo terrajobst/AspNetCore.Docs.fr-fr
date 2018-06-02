@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-vb
-title: "Création d’une contrainte d’itinéraire (VB) | Documents Microsoft"
+title: Création d’une contrainte d’itinéraire (VB) | Documents Microsoft
 author: StephenWalther
-description: "Dans ce didacticiel, Stephen Walther montre comment vous pouvez contrôler la façon dont le navigateur demande itinéraires à la correspondance en créant des contraintes d’itinéraire avec des expressions régulières."
+description: Dans ce didacticiel, Stephen Walther montre comment vous pouvez contrôler la façon dont le navigateur demande itinéraires à la correspondance en créant des contraintes d’itinéraire avec des expressions régulières.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 67ff2666f4558abd4f8d9bddffd7aef8bb68d7bd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2f50b371ac679218b06c4848e6d33516d29d3a82
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-route-constraint-vb"></a>Création d’une contrainte d’itinéraire (VB)
 ====================
@@ -77,6 +77,6 @@ Mais pas les URL suivantes :
 
 Ces demandes du navigateur seront gérées par un autre itinéraire ou, si aucun itinéraire correspondant, un *Impossible de trouver la ressource* erreur est renvoyée.
 
->[!div class="step-by-step"]
-[Précédent](creating-custom-routes-vb.md)
-[Suivant](creating-a-custom-route-constraint-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-custom-routes-vb.md)
+> [Suivant](creating-a-custom-route-constraint-vb.md)

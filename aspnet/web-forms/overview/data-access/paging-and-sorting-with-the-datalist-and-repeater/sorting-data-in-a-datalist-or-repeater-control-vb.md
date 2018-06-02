@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-vb
-title: "Tri des données dans un contrôle DataList ou d’un contrôle de répéteur (VB) | Documents Microsoft"
+title: Tri des données dans un contrôle DataList ou d’un contrôle de répéteur (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons examiner comment inclure la prise en charge dans le contrôle DataList et répéteur de tri, ainsi que comment construire un contrôle DataList ou un répéteur dont les données peuvent..."
+description: Dans ce didacticiel, nous allons examiner comment inclure la prise en charge dans le contrôle DataList et répéteur de tri, ainsi que comment construire un contrôle DataList ou un répéteur dont les données peuvent...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/sorting-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0133a74454a7754f4f7087e2121c7387a1aef8a8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 66d6833e69a91aef39cc4a202ef662ecaeeee839
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-vb"></a>Tri des données dans un contrôle DataList ou d’un contrôle de répéteur (VB)
 ====================
@@ -231,9 +231,9 @@ Lors de la première visite de la page, les données sont triées par ordre alph
 
 L’exemple de DataList examinées à l’étape 5 pages via ses données à l’aide de la technique de la pagination par défaut inefficace. Lors de la pagination via suffisamment grandes quantités de données, il est impératif que la pagination personnalisée est utilisée. Dans le [efficacement la pagination via grandes quantités de données](../paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb.md) et [tri des données de la réserve paginée personnalisé](../paging-and-sorting/sorting-custom-paged-data-vb.md) didacticiels, nous avons examiné les différences entre la pagination personnalisée et méthodes créés par défaut et dans la couche BLL pour utilisation de la pagination et le tri des données paginées personnalisées personnalisé. En particulier, dans ces deux didacticiels précédents, nous avons ajouté les trois méthodes suivantes pour la `ProductsBLL` classe :
 
-- `GetProductsPaged(startRowIndex, maximumRows)`Retourne un sous-ensemble particulier d’enregistrements en commençant à *startRowIndex* et ne dépassant ne pas *maximumRows*.
-- `GetProductsPagedAndSorted(sortExpression, startRowIndex, maximumRows)`Retourne un sous-ensemble particulier d’enregistrements triés par le *sortExpression* paramètre d’entrée.
-- `TotalNumberOfProducts()`fournit le nombre total d’enregistrements dans la `Products` table de base de données.
+- `GetProductsPaged(startRowIndex, maximumRows)` Retourne un sous-ensemble particulier d’enregistrements en commençant à *startRowIndex* et ne dépassant ne pas *maximumRows*.
+- `GetProductsPagedAndSorted(sortExpression, startRowIndex, maximumRows)` Retourne un sous-ensemble particulier d’enregistrements triés par le *sortExpression* paramètre d’entrée.
+- `TotalNumberOfProducts()` fournit le nombre total d’enregistrements dans la `Products` table de base de données.
 
 Ces méthodes peuvent être utilisées à la page et de tri des données à l’aide d’un contrôle DataList ou répéteur efficacement. Pour illustrer cela, permettent de s commencez par créer un contrôle de répéteur avec prise en charge la pagination personnalisée ; Nous allons ensuite ajouter des fonctionnalités de tri.
 
@@ -390,11 +390,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été David Suru. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](paging-report-data-in-a-datalist-or-repeater-control-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](paging-report-data-in-a-datalist-or-repeater-control-vb.md)

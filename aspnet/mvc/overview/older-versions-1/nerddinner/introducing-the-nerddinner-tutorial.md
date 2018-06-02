@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
-title: "Présentation du didacticiel de NerdDinner | Documents Microsoft"
+title: Présentation du didacticiel de NerdDinner | Documents Microsoft
 author: shanselman
-description: "La meilleure façon d’apprendre une nouvelle infrastructure doit créer quelque chose avec lui. Ce didacticiel vous montre comment créer une application petite mais complet, à l’aide d’ASP.ne...."
+description: La meilleure façon d’apprendre une nouvelle infrastructure doit créer quelque chose avec lui. Ce didacticiel vous montre comment créer une application petite mais complet, à l’aide d’ASP.ne....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/introducing-the-nerddinner-tutorial
 msc.type: authoredcontent
-ms.openlocfilehash: 57eedb224e26867c78cc399b89f91b95f722074d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3d925a7dc89fc0c742468653c5c138a0f1d71231
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-the-nerddinner-tutorial"></a>Présentation du didacticiel de NerdDinner
 ====================
@@ -88,5 +88,5 @@ Maintenant que nous avons couvert NerdDinner What ' s, nous allons Relevez nos m
 
 Nous allons commencer à l’aide de fichier -&gt;nouveau projet dans Visual Studio pour créer l’application de NerdDinner.
 
->[!div class="step-by-step"]
-[Next](create-a-new-aspnet-mvc-project.md)
+> [!div class="step-by-step"]
+> [Next](create-a-new-aspnet-mvc-project.md)

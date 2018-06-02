@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/generating-views
-title: "Base de données EF tout d’abord avec ASP.NET MVC : génération de vues | Documents Microsoft"
+title: 'Base de données EF tout d’abord avec ASP.NET MVC : génération de vues | Documents Microsoft'
 author: tfitzmac
-description: "À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri..."
+description: À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/29/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/generating-views
 msc.type: authoredcontent
-ms.openlocfilehash: 5fccb3c56af0945ec448becff777a3e92dc160d7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b60e89a187a879255eb051dc87241714cef6fa63
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-generating-views"></a>Base de données EF tout d’abord avec ASP.NET MVC : génération de vues
 ====================
@@ -109,6 +109,6 @@ En outre, la validation de valeurs fournies est appliquée automatiquement en fo
 
 Vous avez vérifié que les vues générées automatiquement permettent aux utilisateurs de travailler avec les données dans la base de données. Dans l’étape suivante du didacticiel de cette série, vous mettez à jour la base de données et apporte les modifications correspondantes dans l’application web.
 
->[!div class="step-by-step"]
-[Précédent](creating-the-web-application.md)
-[Suivant](changing-the-database.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-the-web-application.md)
+> [Suivant](changing-the-database.md)

@@ -1,68 +1,68 @@
 ---
-title: Le routage ASP.NET Core
+title: Routage dans ASP.NET Core
 author: ardalis
-description: "Découvrez comment les fonctionnalités de routage ASP.NET Core sont responsable de mappage d’une demande entrante à un gestionnaire d’itinéraire."
-ms.author: riande
+description: Découvrez comment la fonctionnalité de routage ASP.NET Core est chargée du mappage d’une requête entrante à un gestionnaire de routage.
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: 8f6f4fac89afe14d83d629128fc3e4632ae95510
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: d9d5a26b08f67fe4ee39d6b974027826a93e5d5f
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="routing-in-aspnet-core"></a>Le routage ASP.NET Core
+# <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
-Par [Ryan Nowak](https://github.com/rynowak), [Steve Smith](https://ardalis.com/), et [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Ryan Nowak](https://github.com/rynowak), [Steve Smith](https://ardalis.com/) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Fonctionnalité de routage est chargée pour le mappage d’une demande entrante vers un gestionnaire d’itinéraire. Les itinéraires sont définis dans l’application ASP.NET et configurés au démarrage de l’application. Un itinéraire peut éventuellement extraire les valeurs à partir de l’URL contenue dans la demande, et ces valeurs peuvent ensuite être utilisées pour traiter une demande. À l’aide des informations d’itinéraire à partir de l’application ASP.NET, la fonctionnalité de routage peut également générer des URL qui mappent aux gestionnaires d’itinéraire. Par conséquent, le routage peut trouver un gestionnaire d’itinéraires basé sur une URL ou l’URL correspondant à un gestionnaire d’itinéraire donné en fonction des informations de gestionnaire d’itinéraire.
+La fonctionnalité de routage est chargée du mappage d’une requête entrante à un gestionnaire de routage. Les routes sont définies dans l’application ASP.NET et configurées au démarrage de l’application. Une route peut éventuellement extraire des valeurs de l’URL contenue dans la requête, et ces valeurs peuvent ensuite être utilisées pour le traitement de la requête. À l’aide des informations de route fournies par l’application ASP.NET, la fonctionnalité de routage peut également générer des URL qui mappent à des gestionnaires de routage. Par conséquent, le routage peut trouver un gestionnaire de routage en fonction d’une URL, ou l’URL correspondant à un gestionnaire de routage donné en fonction des informations du gestionnaire de routage.
 
 >[!IMPORTANT]
-> Ce document couvre le routage du bas niveau ASP.NET Core. Pour le routage ASP.NET MVC de base, consultez [routage vers les Actions de contrôleur](../mvc/controllers/routing.md)
+> Ce document traite du routage ASP.NET Core de bas niveau. Pour le routage ASP.NET Core MVC, consultez [Router vers les actions du contrôleur](../mvc/controllers/routing.md).
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="routing-basics"></a>Principes de base de routage
+## <a name="routing-basics"></a>Concepts de base du routage
 
-Routage utilise *itinéraires* (implémentations de [IRouter](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.routing.irouter)) pour :
+Le routage utilise des *routes* (implémentations d’[IRouter](/dotnet/api/microsoft.aspnetcore.routing.irouter)) pour :
 
-* mapper les demandes entrantes vers *acheminer des gestionnaires*
+* mapper les requêtes entrantes à des *gestionnaires de routage*
 
 * générer des URL utilisées dans les réponses
 
-En règle générale, une application possède une seule collection d’itinéraires. Lorsqu’une demande arrive, la collection d’itinéraires est traitée dans l’ordre. Recherche de la demande entrante d’un itinéraire qui correspond à l’URL de demande en appelant le `RouteAsync` méthode sur chaque itinéraire disponible dans la collection d’itinéraires. En revanche, une réponse peut utiliser le routage pour générer des URL (par exemple, pour la redirection ou liaisons) en fonction des informations d’itinéraire et ainsi éviter d’avoir à coder en dur des URL, qui vous aide à la facilité de maintenance.
+En général, une application possède une collection de routes unique. Quand une requête arrive, la collection de routes est traitée dans l’ordre. La requête entrante recherche une route qui correspond à son URL en appelant la méthode `RouteAsync` sur chaque route disponible dans la collection de routes. En revanche, une réponse peut utiliser le routage pour générer des URL (par exemple, pour la redirection ou les liens) en fonction des informations de route et éviter ainsi d’avoir à coder en dur des URL, ce qui améliore la maintenabilité.
 
-Le routage est connecté à la [intergiciel (middleware)](middleware.md) de pipeline par la `RouterMiddleware` classe. [ASP.NET MVC](../mvc/overview.md) ajoute le routage vers le pipeline de l’intergiciel (middleware) dans le cadre de sa configuration. Pour en savoir plus sur l’utilisation de routage comme un composant autonome, consultez [middleware routage à l’aide de](#using-routing-middleware).
+Le routage est connecté au pipeline de [l’intergiciel (middleware)](xref:fundamentals/middleware/index) par la classe `RouterMiddleware`. [ASP.NET Core MVC](xref:mvc/overview) ajoute le routage au pipeline de l’intergiciel dans le cadre de sa configuration. Pour en savoir plus sur l’utilisation du routage comme composant autonome, consultez [Utilisation d’un intergiciel (middleware) de routage](#using-routing-middleware).
 
 <a name="url-matching-ref"></a>
 
-### <a name="url-matching"></a>URL correspondant
+### <a name="url-matching"></a>Correspondance d’URL
 
-URL correspondant est le processus par le routage distribue un entrant demander à un *gestionnaire*. Ce processus est généralement basé sur des données dans le chemin d’accès URL, mais peut être étendu pour prendre en compte toutes les données de la demande. La possibilité de distribuer des demandes pour séparer les gestionnaires est la clé à l’échelle de la taille et la complexité d’une application.
+La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *gestionnaire*. Ce processus est généralement basé sur des données présentes dans le chemin de l’URL, mais peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
 
-Les demandes entrantes entrent le `RouterMiddleware`, qui appelle la `RouteAsync` méthode sur chaque itinéraire dans la séquence. Le `IRouter` instance choisit s’il faut *gérer* la demande en définissant le `RouteContext.Handler` à une valeur non null `RequestDelegate`. Si un itinéraire définit un gestionnaire pour la demande, itinéraire, le traitement s’arrête et le gestionnaire sera appelé pour traiter la demande. Si tous les itinéraires sont essayés et qu’aucun gestionnaire ne trouvé pour la demande, l’intergiciel (middleware) appelle *suivant* et de l’intergiciel (middleware) suivant dans le pipeline de requête est appelée.
+Les requêtes entrantes entrent dans `RouterMiddleware`, qui appelle la méthode `RouteAsync` sur chaque route dans l’ordre. L’instance `IRouter` détermine s’il faut *gérer* la requête en affectant à `RouteContext.Handler` un `RequestDelegate` non null. Si une route définit un gestionnaire pour la requête, le traitement de la route s’arrête et le gestionnaire est appelé pour traiter la requête. Si toutes les routes sont tentées et qu’aucun gestionnaire n’est trouvé pour la requête, l’intergiciel appelle *next* : l’intergiciel suivant dans le pipeline de requête est alors appelé.
 
-L’entrée principale de `RouteAsync` est le `RouteContext.HttpContext` associé à la demande en cours. Le `RouteContext.Handler` et `RouteContext.RouteData` sont sorties qui seront définis une fois que l’itinéraire correspond à.
+L’entrée principale de `RouteAsync` est le `RouteContext.HttpContext` associé à la requête actuelle. `RouteContext.Handler` et `RouteContext.RouteData` sont des sorties qui seront définies une fois une correspondance de route trouvée.
 
-Une correspondance pendant `RouteAsync` sera également définir les propriétés de la `RouteContext.RouteData` avec les valeurs appropriées selon le traitement de la demande effectué jusqu'à présent. Si l’itinéraire correspond à une demande, le `RouteContext.RouteData` contiennent des informations d’état importantes sur la *résultat*.
+Une correspondance pendant `RouteAsync` définit également les propriétés de `RouteContext.RouteData` avec les valeurs appropriées en fonction du traitement de requête effectué jusqu’à présent. Si une route correspond à une requête, `RouteContext.RouteData` contiendra des informations d’état importantes concernant le *résultat*.
 
-`RouteData.Values`est un dictionnaire de *valeurs d’itinéraire* produits à partir de l’itinéraire. Ces valeurs sont généralement déterminées par l’URL de création de jetons et peuvent être utilisés pour accepter l’entrée d’utilisateur, ou prendre des décisions davantage de distribution à l’intérieur de l’application.
+`RouteData.Values` est un dictionnaire de *valeurs de route* produites à partir de la route. Ces valeurs sont généralement déterminées en décomposant l’URL en jetons. Elles peuvent être utilisées pour accepter l’entrée d’utilisateur ou pour prendre d’autres décisions relatives à la distribution à l’intérieur de l’application.
 
-`RouteData.DataTokens`est un jeu de propriétés des données supplémentaires associées à l’itinéraire correspondant. `DataTokens`sont fournis pour prendre en charge d’association état mis en correspondance des données avec chaque itinéraire afin de l’application de prendre des décisions ultérieurement en fonction de l’itinéraire. Ces valeurs sont définis par le développeur et **pas** affectent le comportement de routage en aucune façon. En outre, les valeurs dissimulés dans des jetons de données peuvent être de n’importe quel type, contrairement aux valeurs d’itinéraire, qui doit être facilement convertibles vers et à partir de chaînes.
+`RouteData.DataTokens` est un conteneur de propriétés des données supplémentaires associées à la route mise en correspondance. Les `DataTokens` sont fournis pour prendre en charge l’association de données d’état à chaque route afin de l’application puisse prendre des décisions ultérieurement en fonction de la route avec laquelle la correspondance a été établie. Ces valeurs sont définies par le développeur et n’affectent **pas** le comportement du routage de quelque manière que ce soit. De plus, les valeurs dissimulées dans des jetons de données peuvent être de n’importe quel type, contrairement aux valeurs de route, qui doivent être facilement convertibles en chaînes et à partir de chaînes.
 
-`RouteData.Routers`est une liste des itinéraires que participé correctement correspondant à la demande. Itinéraires peuvent être imbriquées dans une autre et le `Routers` propriété reflète le chemin d’accès dans l’arborescence logique d’itinéraires qui a entraîné une correspondance. En règle générale le premier élément de `Routers` est la collection d’itinéraires et doit être utilisé pour la génération d’URL. Le dernier élément `Routers` est le Gestionnaire d’itinéraire correspondant.
+`RouteData.Routers` est une liste des routes qui ont participé à la mise en correspondance correcte de la requête. Les routes peuvent être imbriquées les unes dans les autres et la propriété `Routers` reflète le chemin à travers l’arborescence logique des routes qui ont générés une correspondance. En général le premier élément de `Routers` est la collection de routes et doit être utilisé pour la génération d’URL. Le dernier élément de `Routers` est le gestionnaire de routage avec lequel la correspondance a été établie.
 
 ### <a name="url-generation"></a>Génération d’URL
 
-Génération d’URL est le processus par lequel le routage peut créer un chemin d’accès d’URL basée sur un ensemble de valeurs d’itinéraire. Cela permet une séparation logique entre les gestionnaires et les URL qui y accèdent.
+La génération d’URL est le processus par lequel le routage peut créer un chemin d’URL basé sur un ensemble de valeurs de route. Cela permet une séparation logique entre vos gestionnaires et les URL qui y accèdent.
 
-Génération d’URL suit un processus itératif similaire, mais démarre avec le code utilisateur ou framework appellent la `GetVirtualPath` méthode de la collection d’itinéraires. Chaque *itinéraire* aura son `GetVirtualPath` méthode appelée dans la séquence jusqu'à une valeur non null `VirtualPathData` est retourné.
+La génération d’URL suit un processus itératif similaire, mais elle commence par un appel du code utilisateur ou de framework à la méthode `GetVirtualPath` de la collection de routes. La méthode `GetVirtualPath` de chaque *route* est alors appelée en séquence jusqu’à ce qu’un `VirtualPathData` non null soit retourné.
 
-Le réplica principal est une entrée `GetVirtualPath` sont :
+Les entrées principales dans `GetVirtualPath` sont les suivantes :
 
 * `VirtualPathContext.HttpContext`
 
@@ -70,27 +70,27 @@ Le réplica principal est une entrée `GetVirtualPath` sont :
 
 * `VirtualPathContext.AmbientValues`
 
-Itinéraires utilisent principalement les valeurs d’itinéraire fournies par le `Values` et `AmbientValues` pour décider où il est possible de générer une URL et les valeurs à inclure. Le `AmbientValues` sont le jeu de valeurs d’itinéraire qui ont été générés à partir de la mise en correspondance la demande en cours avec le système de routage. En revanche, `Values` sont les valeurs d’itinéraire qui spécifient comment générer l’URL de votre choix pour l’opération actuelle. Le `HttpContext` est fournie au cas où un itinéraire a besoin d’obtenir des services ou des données supplémentaires associées au contexte actuel.
+Les routes utilisent principalement les valeurs de route fournies par `Values` et `AmbientValues` pour décider où il est possible de générer une URL et les valeurs à inclure. Les `AmbientValues` sont l’ensemble des valeurs de route produites à partir de la mise en correspondance de la requête actuelle avec le système de routage. En revanche, les `Values` sont les valeurs de route qui spécifient la façon de générer l’URL souhaitée pour l’opération actuelle. `HttpContext` est fourni au cas où une route aurait besoin d’obtenir des services ou des données supplémentaires associés au contexte actuel.
 
-Conseil : Considérer `Values` comme étant un ensemble de remplacements pour le `AmbientValues`. Génération d’URL tente de réutiliser des valeurs d’itinéraire à partir de la requête actuelle pour faciliter la génération d’URL pour les liens à l’aide de la même itinéraire ou les valeurs d’itinéraire.
+Conseil : Considérez `Values` comme un ensemble de substitutions pour les `AmbientValues`. La génération d’URL tente de réutiliser des valeurs de route de la requête actuelle pour faciliter la génération d’URL pour des liens utilisant la même route ou les mêmes valeurs de route.
 
-La sortie de `GetVirtualPath` est un `VirtualPathData`. `VirtualPathData`est une représentation parallèle de `RouteData`; il contient le `VirtualPath` pour l’URL de sortie, ainsi que des propriétés supplémentaires qui doivent être définies par l’itinéraire.
+La sortie de `GetVirtualPath` est un `VirtualPathData`. `VirtualPathData` est l’équivalent de `RouteData` ; il contient le `VirtualPath` de l’URL de sortie et des propriétés supplémentaires qui doivent être définies par la route.
 
-Le `VirtualPathData.VirtualPath` propriété contient le *chemin d’accès virtuel* produits par l’itinéraire. Selon vos besoins, vous devrez peut-être traiter davantage le chemin d’accès. Par exemple, si vous souhaitez afficher l’URL générée au format HTML, vous devez ajouter le chemin d’accès de base de l’application.
+La propriété `VirtualPathData.VirtualPath` contient le *chemin virtuel* produit par la route. En fonction de vos besoins, vous aurez peut-être besoin de traiter davantage le chemin. Par exemple, si vous souhaitez afficher l’URL générée au format HTML, vous devez ajouter un préfixe au chemin de base de l’application.
 
-Le `VirtualPathData.Router` est une référence à l’itinéraire qui a généré avec succès l’URL.
+`VirtualPathData.Router` est une référence à la route qui a généré avec succès l’URL.
 
-Le `VirtualPathData.DataTokens` propriétés est un dictionnaire de données supplémentaires relatives à l’itinéraire qui a généré l’URL. Il s’agit du parallèle de `RouteData.DataTokens`.
+La propriété `VirtualPathData.DataTokens` est un dictionnaire de données supplémentaires relatives à la route qui a généré l’URL. Il s’agit de l’équivalent de `RouteData.DataTokens`.
 
-### <a name="creating-routes"></a>Création des itinéraires
+### <a name="creating-routes"></a>Création de routes
 
-Le routage fournit le `Route` classe en tant que l’implémentation standard de `IRouter`. `Route`utilise le *modèle d’itinéraire* syntaxe pour définir des modèles correspondant sur le chemin d’accès de l’URL lorsque `RouteAsync` est appelée. `Route`utilisera le même modèle d’itinéraire pour générer une URL lorsque `GetVirtualPath` est appelée.
+Le routage fournit la classe `Route` comme implémentation standard d’`IRouter`. `Route` utilise la syntaxe de *modèle de routage* pour définir les modèles qui correspondront au chemin d’URL quand `RouteAsync` sera appelé. `Route` utilisera le même modèle de routage pour générer une URL quand `GetVirtualPath` est appelé.
 
-La plupart des applications de créer des itinéraires en appelant `MapRoute` ou l’une des méthodes d’extension semblable définis sur `IRouteBuilder`. Toutes ces méthodes créera une instance de `Route` et l’ajouter à la collection d’itinéraires.
+La plupart des applications créent des routes en appelant `MapRoute` ou l’une des méthodes d’extension similaires définies sur `IRouteBuilder`. Toutes ces méthodes créent une instance de `Route` et l’ajoutent à la collection de routes.
 
-Remarque : `MapRoute` n’accepte pas un paramètre de gestionnaire d’itinéraire - il ajoute uniquement les itinéraires qui seront gérés par le `DefaultHandler`. Étant donné que le gestionnaire par défaut est un `IRouter`, il peut décider de ne pas traiter la demande. Par exemple, ASP.NET MVC est généralement configuré comme un gestionnaire par défaut qui gère uniquement les requêtes qui correspondent à une action et contrôleur disponible. Pour en savoir plus sur le routage vers MVC, consultez [le routage pour les Actions de contrôleur](../mvc/controllers/routing.md).
+Remarque : `MapRoute` ne prend pas de paramètre de gestionnaire de routage : il ajoute uniquement les routes qui seront gérées par `DefaultHandler`. Étant donné que le gestionnaire par défaut est un `IRouter`, il peut décider de ne pas traiter la requête. Par exemple, ASP.NET MVC est généralement configuré comme gestionnaire par défaut qui gère uniquement les requêtes correspondant à un contrôleur et une action disponibles. Pour plus d’informations sur le routage vers MVC, consultez [Router vers les actions du contrôleur](../mvc/controllers/routing.md).
 
-Il s’agit d’un exemple d’un `MapRoute` appel utilisée par une définition d’itinéraire ASP.NET MVC par défaut :
+Voici un exemple d’appel à `MapRoute` utilisé par une définition de route ASP.NET MVC classique :
 
 ```csharp
 routes.MapRoute(
@@ -98,13 +98,13 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{id?}");
 ```
 
-Ce modèle correspond à un chemin d’accès de l’URL comme `/Products/Details/17` et extraire les valeurs d’itinéraire `{ controller = Products, action = Details, id = 17 }`. Les valeurs d’itinéraire sont déterminées par le fractionnement le chemin d’accès de l’URL en segments et correspondant à chaque segment avec le *paramètre d’itinéraire* nom dans le modèle d’itinéraire. Paramètres d’itinéraire sont nommés. Ils sont définis en incluant le nom du paramètre entouré d’accolades `{ }`.
+Ce modèle établit une correspondance avec un chemin d’URL comme `/Products/Details/17` et extrait les valeurs de route `{ controller = Products, action = Details, id = 17 }`. Les valeurs de route sont déterminées par le fractionnement du chemin d’URL en segments et la mise en correspondance de chaque segment avec le nom des *paramètres de routage* dans le modèle de routage. Les paramètres de routage sont nommés. Ils sont définis en plaçant le nom du paramètre entre accolades `{ }`.
 
-Le modèle ci-dessus peut également correspondre le chemin d’accès URL `/` et génère les valeurs `{ controller = Home, action = Index }`. Cela se produit car le `{controller}` et `{action}` paramètres d’itinéraire ont des valeurs par défaut et le `id` paramètre d’itinéraire est facultatif. Égal `=` signe suivi d’une valeur une fois que le nom de paramètre d’itinéraire définit une valeur par défaut pour le paramètre. Un point d’interrogation `?` après le nom de paramètre d’itinéraire définit le paramètre comme facultatif. Paramètres avec une valeur par défaut d’itinéraire *toujours* produisent une valeur de routage lors de l’itinéraire correspond à - paramètres facultatifs ne produisent une valeur de routage s’il y a aucun segment de chemin d’accès d’URL correspondante.
+Le modèle ci-dessus peut également mettre en correspondance le chemin d’URL `/` et produirait les valeurs `{ controller = Home, action = Index }`. Cela s’explique par le fait que les paramètres de routage`{controller}` et `{action}` ont des valeurs par défaut et que le paramètre de routage `id` est facultatif. Un signe égal `=` suivi d’une valeur après le nom du paramètre de routage définit une valeur par défaut pour le paramètre. Un point d’interrogation `?` après le nom du paramètre de routage définit le paramètre comme facultatif. Les paramètres de routage ayant une valeur par défaut produisent *toujours* une valeur de routage quand une correspondance est trouvée pour la route. Les paramètres facultatifs ne produisent pas de valeur de route si aucune correspondance de segment de chemin d’URL n’est trouvée.
 
-Consultez [référence du modèle d’itinéraire](#route-template-reference) pour une description complète des fonctionnalités de modèle d’itinéraire et la syntaxe.
+Pour obtenir une description complète des fonctionnalités et de la syntaxe des modèles de routage, consultez [Informations de référence sur les modèles de routage](#route-template-reference).
 
-Cet exemple inclut un *Router contrainte*:
+Cet exemple inclut une *contrainte de routage* :
 
 ```csharp
 routes.MapRoute(
@@ -112,11 +112,11 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{id:int}");
 ```
 
-Ce modèle correspond à un chemin d’accès de l’URL comme `/Products/Details/17`, mais pas `/Products/Details/Apples`. La définition de paramètre d’itinéraire `{id:int}` définit un *Router contrainte* pour la `id` paramètre d’itinéraire. Implémentent des contraintes d’itinéraire `IRouteConstraint` et inspecter pour vérifier les valeurs d’itinéraire. Dans cet exemple, la valeur de l’itinéraire `id` doit être convertible en entier. Consultez [référence de contrainte d’itinéraire](#route-constraint-reference) pour une explication plus détaillée des contraintes d’itinéraire qui sont fournies par l’infrastructure.
+Ce modèle établit une correspondance avec un chemin d’URL comme `/Products/Details/17`, mais pas `/Products/Details/Apples`. La définition de paramètre de routage `{id:int}` définit une *contrainte de routage* pour le paramètre de routage `id`. Les contraintes de routage implémentent `IRouteConstraint` et inspectent les valeurs de route pour les vérifier. Dans cet exemple, la valeur de route `id` doit être convertible en entier. Pour obtenir une explication plus détaillée des contraintes de routage fournies par le framework, consultez [Informations de référence sur les contraintes de routage](#route-constraint-reference).
 
-Les surcharges supplémentaires de `MapRoute` accepte les valeurs pour `constraints`, `dataTokens`, et `defaults`. Ces paramètres supplémentaires de `MapRoute` sont définies en tant que type `object`. L’utilisation typique de ces paramètres consiste à passer un objet typé anonymement, où les noms des propriétés de la correspondance de type anonyme diriger les noms de paramètre.
+Des surcharges supplémentaires de `MapRoute` acceptent des values pour `constraints`, `dataTokens` et `defaults`. Ces paramètres supplémentaires de `MapRoute` sont définis comme type `object`. L’utilisation classique de ces paramètres consiste à passer un objet typé anonymement, où les noms des propriétés du type anonyme correspondent aux noms de paramètre de routage.
 
-Les deux exemples suivants créent équivalentes :
+Les deux exemples suivants créent des routes équivalentes :
 
 ```csharp
 routes.MapRoute(
@@ -129,9 +129,9 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{id?}");
 ```
 
-Conseil : La syntaxe inline pour la définition des contraintes et des valeurs par défaut peut être plus pratique pour les itinéraires simples. Toutefois, il existe des fonctionnalités telles que les jetons de données qui ne sont pas pris en charge par la syntaxe inline.
+Conseil : La syntaxe inline pour la définition des contraintes et des valeurs par défaut peut être plus pratique pour les routes simples. Toutefois, certaines fonctionnalités comme les jetons de données ne sont pas prises en charge par la syntaxe inline.
 
-Cet exemple illustre quelques fonctionnalités supplémentaires :
+L’exemple suivant illustre quelques fonctionnalités supplémentaires :
 
 ```csharp
 routes.MapRoute(
@@ -140,9 +140,9 @@ routes.MapRoute(
   defaults: new { controller = "Blog", action = "ReadArticle" });
 ```
 
-Ce modèle correspond à un chemin d’accès de l’URL comme `/Blog/All-About-Routing/Introduction` et extrait les valeurs `{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }`. Les valeurs de l’itinéraire par défaut pour `controller` et `action` sont produites par l’itinéraire, même s’il n’existe aucun paramètre d’itinéraire correspondant dans le modèle. Valeurs par défaut peuvent être spécifiées dans le modèle d’itinéraire. Le `article` paramètre d’itinéraire est défini comme un *fourre-tout* par l’apparence d’un astérisque `*` avant le nom de paramètre d’itinéraire. Paramètres d’itinéraire de fourre-tout capturer le reste du chemin d’URL et peuvent correspondre également à une chaîne vide.
+Ce modèle établit une correspondance avec un chemin d’URL comme `/Blog/All-About-Routing/Introduction` et extrait les valeurs `{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }`. Les valeurs de route par défaut pour `controller` et `action` sont produites par la route, même s’il n’existe aucun paramètre de routage correspondant dans le modèle. Il est possible de spécifier des valeurs par défaut dans le modèle de route. Le paramètre de routage `article` est défini comme un *fourre-tout*  par la présence d’un astérisque `*` avant le nom de paramètre de routage. Les paramètres de routage fourre-tout capturent le reste du chemin d’URL, et peuvent également établir une correspondance avec la chaîne vide.
 
-Cet exemple ajoute des jetons contraintes et les données d’itinéraire :
+Cet exemple ajoute des contraintes de routage et des jetons de données :
 
 ```csharp
 routes.MapRoute(
@@ -153,19 +153,19 @@ routes.MapRoute(
     dataTokens: new { locale = "en-US" });
 ```
 
-Ce modèle correspond à un chemin d’accès de l’URL comme `/Products/5` et extrait les valeurs `{ controller = Products, action = Details, id = 5 }` et des jetons de données `{ locale = en-US }`.
+Ce modèle établit une correspondance avec un chemin d’URL comme `/Products/5`, et extrait les valeurs `{ controller = Products, action = Details, id = 5 }` et les jetons de données `{ locale = en-US }`.
 
-![Jetons Windows variables locales](routing/_static/tokens.png)
+![Jetons Windows de variables locales](routing/_static/tokens.png)
 
 <a name="id1"></a>
 
 ### <a name="url-generation"></a>Génération d’URL
 
-La `Route` classe peut également effectuer de génération d’URL en combinant un ensemble de valeurs d’itinéraire et de son modèle d’itinéraire. Il est logiquement le processus inverse de mise en correspondance le chemin d’accès d’URL.
+La classe `Route` peut également effectuer une génération d’URL en combinant un ensemble de valeurs de route et son modèle de routage. Il s’agit logiquement du processus inverse de la mise en correspondance du chemin d’URL.
 
-Conseil : Pour mieux comprendre la génération de l’URL, imaginez le URL que vous souhaitez générer et puis pensez à la façon dont un modèle d’itinéraire correspondrait à cette URL. Quelles sont les valeurs serait produit ? Ceci est l’équivalent du fonctionne de la génération d’URL dans la `Route` classe.
+Conseil : Pour mieux comprendre la génération d’URL, imaginez l’URL que vous voulez générer, puis pensez à la façon dont un modèle de routage établirait une correspondance avec cette URL. Quelles valeurs seraient produites ? Cela équivaut approximativement à la façon dont la génération d’URL fonctionne dans la classe `Route`.
 
-Cet exemple utilise un itinéraire de style base ASP.NET MVC :
+Cet exemple utilise une route de style ASP.NET MVC de base :
 
 ```csharp
 routes.MapRoute(
@@ -173,27 +173,27 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{id?}");
 ```
 
-Avec les valeurs d’itinéraire `{ controller = Products, action = List }`, cet itinéraire génère l’URL `/Products/List`. Les valeurs d’itinéraire sont substitués pour les paramètres d’itinéraire correspondant former le chemin d’accès d’URL. Étant donné que `id` est d’un paramètre d’itinéraire, elle ne pose aucun problème qu’il n’a pas une valeur.
+Avec les valeurs de route `{ controller = Products, action = List }`, cette route génère l’URL `/Products/List`. Les valeurs de route remplacent les paramètres de routage correspondant pour former le chemin d’URL. Étant donné qu’`id` est un paramètre de routage facultatif, ce n’est pas un problème qu’il n’ait pas de valeur.
 
-Avec les valeurs d’itinéraire `{ controller = Home, action = Index }`, cet itinéraire génère l’URL `/`. Les valeurs d’itinéraire qui ont été fournies correspondent aux valeurs par défaut pour les segments correspondant à ces valeurs peuvent être omis en toute sécurité. Notez que les deux URL générées serait aller-retour avec cette définition de l’itinéraire et produire les mêmes valeurs d’itinéraire qui ont été utilisés pour générer l’URL.
+Avec les valeurs de route `{ controller = Home, action = Index }`, cette route génère l’URL `/`. Les valeurs de route fournies sont mises en correspondance avec les valeurs par défaut de sorte que les segments correspondant à ces valeurs peuvent être omis sans risque. Notez que les deux URL générées effectueraient un aller-retour avec cette définition de route et produiraient les mêmes valeurs de route que celles utilisées pour générer l’URL.
 
-Conseil : Une application à l’aide d’ASP.NET MVC doit utiliser `UrlHelper` pour générer des URL au lieu d’appeler directement le routage.
+Conseil : Pour générer des URL, une application utilisant ASP.NET MVC doit utiliser `UrlHelper` au lieu d’effectuer un appel directement dans le routage.
 
-Pour plus d’informations sur le processus de génération d’URL, consultez [url de référence de génération](#url-generation-reference).
+Pour plus d’informations sur le processus de génération d’URL, consultez [Informations de référence sur la génération d’URL](#url-generation-reference).
 
-## <a name="using-routing-middleware"></a>À l’aide de routage intergiciel (middleware)
+## <a name="using-routing-middleware"></a>Utilisation de l’intergiciel (middleware) de routage
 
-Ajoutez le package NuGet « Microsoft.AspNetCore.Routing ».
+Ajoutez le package NuGet « Microsoft.AspNetCore.Routing ».
 
-Ajouter le routage vers le conteneur de service dans *Startup.cs*:
+Ajoutez le routage au conteneur de service dans *Startup.cs* :
 
-[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&start=11&end=14)]
+[!code-csharp[](../fundamentals/routing/sample/RoutingSample/Startup.cs?highlight=3&start=11&end=14)]
 
-Les itinéraires doivent être configurés dans le `Configure` méthode dans la `Startup` classe. L’exemple ci-dessous utilise ces API :
+Les routes doivent être configurées dans la méthode `Configure` de la classe `Startup`. L’exemple ci-dessous utilise les API suivantes :
 
 * `RouteBuilder`
 * `Build`
-* `MapGet`Correspond à uniquement les requêtes HTTP GET
+* `MapGet` Établit une correspondance avec les requêtes HTTP GET uniquement
 * `UseRouter`
 
 ```csharp
@@ -226,21 +226,21 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
 }
 ```
 
-Le tableau ci-dessous montre les réponses avec l’URI donné.
+Le tableau ci-dessous montre les réponses avec les URI donnés.
 
 | URI | Réponse  |
 | ------- | -------- |
-| /package/create/3  | Hello! Valeurs d’itinéraire : [opération, créer], [id, 3] |
-| /package/track/-3  | Hello! Valeurs d’itinéraire : [opération, le suivi,] [id -3] |
-| / package/suivi/3 / | Hello! Valeurs d’itinéraire : [opération, le suivi,] [id -3]  |
-| /package/suivi | \<Passage à aucune correspondance > |
-| GET /hello/Joe | Bonjour, Joe ! |
-| POST /hello/Joe | \<Passer, correspond à HTTP GET uniquement > |
-| OBTENIR /hello/Joe/Smith | \<Passage à aucune correspondance > |
+| /package/create/3  | Hello! Valeurs de route : [operation, create], [id, 3] |
+| /package/track/-3  | Hello! Valeurs de route : [operation, track], [id, -3] |
+| /package/track/-3/ | Hello! Valeurs de route : [operation, track], [id, -3]  |
+| /package/track/ | \<Fourre-tout, aucune correspondance> |
+| GET /hello/Joe | Hi, Joe! |
+| POST /hello/Joe | \<Fourre-tout, établir une correspondance avec HTTP GET uniquement> |
+| GET /hello/Joe/Smith | \<Fourre-tout, aucune correspondance> |
 
-Si vous configurez un seul itinéraire, appelez `app.UseRouter` en passant un `IRouter` instance. Vous ne devez pas appeler `RouteBuilder`.
+Si vous configurez une seule route, appelez `app.UseRouter` en passant une instance `IRouter`. Vous n’avez pas besoin d’appeler `RouteBuilder`.
 
-Le framework fournit un ensemble de méthodes d’extension pour la création d’itinéraires telles que :
+Le framework fournit un ensemble de méthodes d’extension pour la création de routes, notamment les suivantes :
 
 * `MapRoute`
 * `MapGet`
@@ -249,130 +249,130 @@ Le framework fournit un ensemble de méthodes d’extension pour la création d�
 * `MapDelete`
 * `MapVerb`
 
-Certaines de ces méthodes comme `MapGet` nécessitent un `RequestDelegate` doit être fourni. Le `RequestDelegate` sera utilisé comme le *Gestionnaire d’itinéraire* lorsque correspond à l’itinéraire. Autres méthodes dans cette famille de permettent la configuration d’un pipeline d’intergiciel (middleware) qui sera utilisé en tant que gestionnaire d’itinéraire. Si le *carte* méthode n’accepte pas un gestionnaire, tel que `MapRoute`, il utilisera le `DefaultHandler`.
+Certaines de ces méthodes comme `MapGet` nécessitent qu’un `RequestDelegate` soit fourni. `RequestDelegate` est utilisé comme *gestionnaire de routage* quand une correspondance est trouvée pour la route. D’autres méthodes de cette famille permettent de configurer un pipeline d’intergiciel qui sera utilisé comme gestionnaire de routage. Si la méthode *Map* n’accepte pas de gestionnaire, par exemple `MapRoute`, elle utilise `DefaultHandler`.
 
-Le `Map[Verb]` méthodes utilisent des contraintes pour limiter l’itinéraire pour le verbe HTTP dans le nom de la méthode. Par exemple, consultez [MapGet](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L85-L88) et [MapVerb](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L156-L180).
+Les méthodes `Map[Verb]` utilisent des contraintes pour limiter la route au verbe HTTP dans le nom de la méthode. Par exemple, consultez [MapGet](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L85-L88) et [MapVerb](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L156-L180).
 
-## <a name="route-template-reference"></a>Référence de modèle d’itinéraire
+## <a name="route-template-reference"></a>Informations de référence sur les modèles de routage
 
-Jetons entre accolades (`{ }`) définir *paramètres d’itinéraire* sera lié si l’itinéraire est mis en correspondance. Vous pouvez définir plusieurs paramètres d’itinéraire dans un segment de l’itinéraire, mais ils doivent être séparés par une valeur littérale. Par exemple `{controller=Home}{action=Index}` ne serait pas un itinéraire valid, car il n’existe aucune valeur littérale entre `{controller}` et `{action}`. Ces paramètres d’itinéraire doivent avoir un nom, et peuvent avoir des attributs supplémentaires spécifiés.
+Les jetons placés entre accolades (`{ }`) définissent des *paramètres de routage* qui seront liés si une correspondance est trouvée pour la route. Vous pouvez définir plusieurs paramètres de routage dans un segment de route, mais ils doivent être séparés par une valeur littérale. Par exemple `{controller=Home}{action=Index}` ne serait pas une route valide, car il n’y a aucune valeur littérale entre `{controller}` et `{action}`. Ces paramètres de routage doivent avoir un nom, et autorisent la spécification d’attributs supplémentaires.
 
-Texte littéral autres que les paramètres d’itinéraire (par exemple, `{id}`) et le séparateur de chemin d’accès `/` doit correspondre au texte dans l’URL. La correspondance de texte est la casse et en fonction de la représentation sous forme décodée du chemin d’accès d’URL. Pour faire correspondre le délimiteur de paramètre d’itinéraire littéral `{` ou `}`, échapper en répétant le caractère (`{{` ou `}}`).
+Un texte littéral autre que les paramètres de routage (par exemple, `{id}`) et le séparateur de chemin `/` doit correspondre au texte présent dans l’URL. La correspondance de texte ne respecte pas la casse et est basée sur la représentation décodée du chemin des URL. Pour mettre en correspondance le délimiteur de paramètre de routage littéral `{` ou `}`, placez-le dans une séquence d’échappement en répétant le caractère (`{{` ou `}}`).
 
-Modèles d’URL qui tentent de capturer un nom de fichier avec une extension de fichier facultatif ont des considérations supplémentaires. Par exemple, à l’aide du modèle `files/{filename}.{ext?}` - lorsque les deux `filename` et `ext` existe, les deux valeurs seront remplies. Si une seule `filename` existe dans l’URL, les correspondances de l’itinéraire, car la période de fin `.` est facultatif. Les URL suivantes correspondrait à cet itinéraire :
+Les modèles d’URL qui tentent de capturer un nom de fichier avec une extension de fichier facultative font l’objet de considérations supplémentaires. Par exemple, l’utilisation du modèle `files/{filename}.{ext?}` : quand `filename` et `ext` existent tous les deux, les deux valeurs seront renseignées. Si seul `filename` existe dans l’URL, une correspondance est trouvée pour la route, car le point final `.` est facultatif. Les URL suivantes correspondraient à cette route :
 
 * `/files/myFile.txt`
 * `/files/myFile.`
 * `/files/myFile`
 
-Vous pouvez utiliser la `*` caractère en tant que préfixe pour un paramètre d’itinéraire à lier au reste de l’URI - il s’agit un *fourre-tout* paramètre. Par exemple, `blog/{*slug}` correspondrait à n’importe quel URI qui commencent par `/blog` et toute valeur (qui sont assigné à la `slug` Router valeur). Les paramètres de collecte peuvent correspondre également à une chaîne vide.
+Vous pouvez utiliser le caractère `*` comme préfixe d’un paramètre de routage à lier au reste de l’URI. Cela s’appelle un paramètre *fourre-tout*. Par exemple, `blog/{*slug}` établit une correspondance avec n’importe quel URI commençant par `/blog` et suivi de n’importe quelle valeur (affectée à la valeur de route `slug`). Les paramètres fourre-tout peuvent également établir une correspondance avec la chaîne vide.
 
-Paramètres d’itinéraire peut-être *les valeurs par défaut*, désigné par la spécification de la valeur par défaut après le nom de paramètre, séparé par un `=`. Par exemple, `{controller=Home}` définirait `Home` en tant que la valeur par défaut `controller`. La valeur par défaut est utilisée si aucune valeur n’est présent dans l’URL pour le paramètre. En plus des valeurs par défaut, les paramètres d’itinéraire peuvent être facultatif (spécifié en ajoutant un `?` à la fin du nom du paramètre, comme dans `id?`). La différence entre facultatif et « a par défaut » n’est qu’un paramètre d’itinéraire avec une valeur par défaut génère toujours une valeur ; un paramètre optionnel a une valeur uniquement lorsqu’elle est fournie.
+Les paramètres de routage peuvent avoir des *valeurs par défaut*, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparés par un `=`. Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut pour `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. En plus des valeurs par défaut, les paramètres de routage peuvent être facultatifs (spécifié en ajoutant un `?` à la fin du nom du paramètre, comme dans `id?`). La différence entre « être facultatif » et « avoir une valeur par défaut » est qu’un paramètre de routage ayant une valeur par défaut produit toujours une valeur, tandis qu’un paramètre facultatif a une valeur uniquement quand une valeur est fournie.
 
-Paramètres d’itinéraire peuvent également avoir des contraintes, qui doivent correspondre à la valeur de l’itinéraire liée à partir de l’URL. Ajout d’un signe deux-points `:` et le nom de la contrainte après le nom de paramètre d’itinéraire spécifie un *contrainte inline* sur un paramètre d’itinéraire. Si la contrainte requiert des arguments que ceux fournis entre parenthèses `( )` après le nom de la contrainte. Plusieurs contraintes en ligne peuvent être spécifiés en ajoutant un autre signe deux-points `:` et le nom de la contrainte. Le nom de la contrainte est passé à la `IInlineConstraintResolver` pour créer une instance de service `IRouteConstraint` à utiliser dans le traitement de l’URL. Par exemple, le modèle d’itinéraire `blog/{article:minlength(10)}` Spécifie le `minlength` contrainte avec l’argument `10`. Pour plusieurs contraintes d’itinéraire description et la liste des contraintes fournies par le framework, consultez [référence de contrainte d’itinéraire](#route-constraint-reference).
+Les paramètres de routage peuvent également avoir des contraintes, qui doivent établir une correspondance avec la valeur de route liée à partir de l’URL. L’ajout d’un signe deux-points `:` et d’un nom de contrainte après le nom du paramètre de routage spécifie une *contrainte inline* sur un paramètre de routage. Si la contrainte exige des arguments, ils sont fournis placés entre parenthèses `( )` après le nom de la contrainte. Il est possible de spécifier plusieurs contraintes inline en ajoutant un autre signe deux-points `:` et le nom d’une autre contrainte. Le nom de la contrainte est passé au service `IInlineConstraintResolver` pour créer une instance de `IRouteConstraint` à utiliser dans le traitement des URL. Par exemple, le modèle de routage `blog/{article:minlength(10)}` spécifie la contrainte `minlength` avec l’argument `10`. Pour obtenir une description plus détaillée des contraintes de routage et la liste des contraintes fournies par le framework, consultez [Informations de référence sur les contraintes de routage](#route-constraint-reference).
 
-Le tableau suivant illustre certains modèles d’itinéraire et leur comportement.
+Le tableau suivant illustre certains modèles de routage et leur comportement.
 
-| Modèle d’itinéraire | Exemple d’URL mise en correspondance | Notes |
+| Modèle de routage | Exemple d’URL correspondante | Notes |
 | -------- | -------- | ------- |
-| hello  | /hello  | Correspond uniquement au chemin d’accès unique`/hello` |
-| {Page=Home} | / | Correspond à et définit `Page` à`Home` |
-| {Page=Home}  | /Contact  | Correspond à et définit `Page` à`Contact` |
-| {controller}/{action}/{id?} | / Produits/liste | Mappe à `Products` contrôleur et `List` action |
-| {controller}/{action}/{id?} | /Products/Details/123  |  Mappe à `Products` contrôleur et `Details` action.  `id`la valeur 123 |
-| {controller=Home}/{action=Index}/{id?} | /  |  Mappe à `Home` contrôleur et `Index` méthode ; `id` est ignoré. |
+| hello  | /hello  | Correspond uniquement au chemin unique `/hello` |
+| {Page=Home} | / | Correspond à `Page` et le définit sur `Home` |
+| {Page=Home}  | /Contact  | Correspond à `Page` et le définit sur `Contact` |
+| {controller}/{action}/{id?} | /Products/List | Correspond au contrôleur `Products` et à l’action `List` |
+| {controller}/{action}/{id?} | /Products/Details/123  |  Correspond au contrôleur `Products` et à l’action `Details`.  `id` a la valeur 123 |
+| {controller=Home}/{action=Index}/{id?} | /  |  Correspond au contrôleur `Home` et à la méthode `Index`. `id` est ignoré. |
 
-À l’aide d’un modèle est généralement l’approche la plus simple pour le routage. Contraintes et des valeurs par défaut peuvent également être spécifiées en dehors du modèle d’itinéraire.
+L’utilisation d’un modèle est généralement l’approche la plus simple pour le routage. Il est également possible de spécifier des contraintes et des valeurs par défaut hors du modèle de routage.
 
-Conseil : Activer [journalisation](xref:fundamentals/logging/index) pour voir comment la générées dans les implémentations de routage, tels que `Route`, correspondent aux requêtes.
+Conseil : Activez la [journalisation](xref:fundamentals/logging/index) pour voir comment les implémentations de routage intégrées, comme `Route`, établissent des correspondances avec des requêtes.
 
-## <a name="route-constraint-reference"></a>Référence de contrainte d’itinéraire
+## <a name="route-constraint-reference"></a>Informations de référence sur les contraintes de routage
 
-Contraintes d’itinéraire exécutent quand un `Route` a mis en correspondance de la syntaxe de l’URL entrante et le chemin d’accès de l’URL sous forme de jetons dans les valeurs d’itinéraire. En règle générale, les contraintes d’itinéraire inspecter la valeur de l’itinéraire associée via le modèle d’itinéraire et créer une simple de décision Oui/non ou non la valeur est acceptable. Certaines contraintes d’itinéraire utilisent des données en dehors de la valeur de l’itinéraire pour envisager si la demande peut être routée. Par exemple, le `HttpMethodRouteConstraint` peut accepter ou refuser une demande basée sur son verbe HTTP.
+Les contraintes de routage s’exécutent quand un `Route` correspond à la syntaxe de l’URL entrante et a décomposé le chemin de l’URL en valeurs de route. En général, les contraintes de routage inspectent la valeur de route associée par le biais du modèle de routage et créent une décision oui/non simple indiquant si la valeur est, ou non, acceptable. Certaines contraintes de routage utilisent des données hors de la valeur de route pour déterminer si la requête peut être routée. Par exemple, `HttpMethodRouteConstraint` peut accepter ou rejeter une requête en fonction de son verbe HTTP.
 
 >[!WARNING]
-> Évitez d’utiliser des contraintes pour **validation d’entrée**, car vous aurez ainsi que les entrées non valides entraîne une erreur 404 (introuvable) au lieu d’un 400 avec un message d’erreur approprié. Contraintes d’itinéraire doivent être utilisés pour **lever l’ambiguïté** entre les itinéraires semblables, ne pas à valider les entrées d’un itinéraire particulier.
+> Évitez d’utiliser des contraintes pour la **validation d’entrée**, car les entrées non valides génèrent alors une erreur 404 (Introuvable) au lieu d’une erreur 400 avec un message d’erreur approprié. Les contraintes de routage doivent être utilisées pour **lever l’ambiguïté** entre des routes similaires, et non pas pour valider les entrées d’une route particulière.
 
-Le tableau suivant illustre certaines contraintes d’itinéraire et leur comportement attendu.
+Le tableau suivant illustre certaines contraintes de routage et leur comportement attendu.
 
-| contrainte | Exemple | Correspondances d’exemple | Notes |
+| contrainte | Exemple | Exemples de correspondances | Notes |
 | --------   | ------- | ------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789`  | Correspond à n’importe quel entier |
-| `bool`  | `{active:bool}` | `true`, `FALSE` | Correspondances `true` ou `false` (non-respect de la casse) |
-| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm`  | Correspond à un élément valide `DateTime` valeur (voir l’avertissement dans la culture dite indifférente -) |
-| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | Correspond à un élément valide `decimal` valeur (voir l’avertissement dans la culture dite indifférente -) |
-| `double`  | `{weight:double}` | `1.234`, `-1,001.01e8` | Correspond à un élément valide `double` valeur (voir l’avertissement dans la culture dite indifférente -) |
-| `float`  | `{weight:float}` | `1.234`, `-1,001.01e8` | Correspond à un élément valide `float` valeur (voir l’avertissement dans la culture dite indifférente -) |
-| `guid`  | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Correspond à un élément valide `Guid` valeur |
-| `long` | `{ticks:long}` | `123456789`, `-123456789` | Correspond à un élément valide `long` valeur |
-| `minlength(value)` | `{username:minlength(4)}` | `Rick` | Chaîne doit comporter au moins 4 caractères |
-| `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | Chaîne doit être pas plus de 8 caractères |
-| `length(length)` | `{filename:length(12)}` | `somefile.txt` | Chaîne doit être exactement de 12 caractères. |
-| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | Chaîne doit être au moins 8 et pas plus de 16 caractères |
-| `min(value)` | `{age:min(18)}` | `19` | Valeur entière doit être au moins 18 |
-| `max(value)` | `{age:max(120)}` |  `91` | Valeur entière doit être pas plus de 120 |
-| `range(min,max)` | `{age:range(18,120)}` | `91` | Valeur entière doit être au moins 18, mais pas plus de 120 |
-| `alpha` | `{name:alpha}` | `Rick` | Chaîne doit se composer d’un ou plusieurs caractères alphabétiques (`a`-`z`, non-respect de la casse) |
-| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | Chaîne doit correspondre à l’expression régulière (consultez les conseils sur la définition d’une expression régulière) |
-| `required`  | `{name:required}` | `Rick` |  Utilisé pour garantir qu’une valeur de paramètre non est présente pendant la génération d’URL |
+| `bool`  | `{active:bool}` | `true`, `FALSE` | Correspond à `true` ou à `false` (non-respect de la casse) |
+| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm`  | Correspond à une valeur `DateTime` valide (dans la culture invariante ; voir l’avertissement) |
+| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | Correspond à une valeur `decimal` valide (dans la culture invariante ; voir l’avertissement) |
+| `double`  | `{weight:double}` | `1.234`, `-1,001.01e8` | Correspond à une valeur `double` valide (dans la culture invariante ; voir l’avertissement) |
+| `float`  | `{weight:float}` | `1.234`, `-1,001.01e8` | Correspond à une valeur `float` valide (dans la culture invariante ; voir l’avertissement) |
+| `guid`  | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | Correspond à une valeur `Guid` valide |
+| `long` | `{ticks:long}` | `123456789`, `-123456789` | Correspond à une valeur `long` valide |
+| `minlength(value)` | `{username:minlength(4)}` | `Rick` | La chaîne doit comporter au moins 4 caractères |
+| `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | La chaîne ne doit pas comporter plus de 8 caractères |
+| `length(length)` | `{filename:length(12)}` | `somefile.txt` | La chaîne doit comporter exactement 12 caractères |
+| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | La chaîne doit comporter au moins 8 caractères et pas plus de 16 caractères |
+| `min(value)` | `{age:min(18)}` | `19` | La valeur entière doit être au moins égale à 18 |
+| `max(value)` | `{age:max(120)}` |  `91` | La valeur entière ne doit pas être supérieure à 120 |
+| `range(min,max)` | `{age:range(18,120)}` | `91` | La valeur entière doit être au moins égale à 18 mais ne doit pas être supérieure à 120 |
+| `alpha` | `{name:alpha}` | `Rick` | La chaîne doit se composer d’un ou de plusieurs caractères alphabétiques (`a`-`z`, non-respect de la casse) |
+| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | La chaîne doit correspondre à l’expression régulière (voir les conseils relatifs à la définition d’une expression régulière) |
+| `required`  | `{name:required}` | `Rick` |  Utilisé pour garantir qu’une valeur autre qu’un paramètre est présente pendant la génération de l’URL |
 
 >[!WARNING]
-> Contraintes d’itinéraire qui vérifient l’URL peuvent être convertis en un type CLR (tel que `int` ou `DateTime`) utilisez toujours la culture dite indifférente : ils supposent que l’URL n’est pas localisable. Les contraintes d’itinéraire fourni par le framework ne modifiez pas les valeurs stockées dans les valeurs d’itinéraire. Toutes les valeurs d’itinéraire analysés à partir de l’URL seront stockées en tant que chaînes. Par exemple, le [contrainte d’itinéraire Float](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60) tente de convertir la valeur de l’itinéraire à virgule flottante, mais la valeur convertie est utilisée uniquement pour vérifier qu’il peut être converti en une valeur float.
+> Les contraintes de routage qui vérifient que l’URL peut être convertie en type CLR (comme `int` ou `DateTime`) utilisent toujours la culture invariant : elles supposent que l’URL n’est pas localisable. Les contraintes de routage fournies par le framework ne modifient pas les valeurs stockées dans les valeurs de route. Toutes les valeurs de route analysées à partir de l’URL sont stockées sous forme de chaînes. Par exemple, la [contrainte de routage Float](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60) tente de convertir la valeur de route en valeur float, mais la valeur convertie est utilisée uniquement pour vérifier qu’elle peut être convertie en valeur float.
 
 ## <a name="regular-expressions"></a>Expressions régulières 
 
-L’infrastructure ASP.NET Core ajoute `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` au constructeur d’expression régulière. Consultez [RegexOptions, énumération](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions) pour obtenir une description de ces membres.
+Le framework ASP.NET Core ajoute `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` au constructeur d’expression régulière. Pour obtenir une description de ces membres, consultez [RegexOptions, énumération](/dotnet/api/system.text.regularexpressions.regexoptions).
 
-Expressions régulières utilisent les délimiteurs et les jetons semblables à celles utilisées par le routage et le langage c#. Jetons d’expression régulière doivent être échappés. Par exemple, pour utiliser l’expression régulière `^\d{3}-\d{2}-\d{4}$` de routage, il doit avoir le `\` caractères tapées comme `\\` dans le fichier source c# pour échapper le `\` caractère d’échappement de chaîne (sauf à l’aide de [textuel littéraux de chaîne](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string). Le `{` , `}` , ' [' et ']' caractères doivent être doublée pour échapper les caractères de délimitation des paramètres de routage.  Le tableau ci-dessous montre une expression régulière et la version.
+Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Par exemple, pour utiliser l’expression régulière `^\d{3}-\d{2}-\d{4}$` dans le service de routage, elle doit avoir les caractères `\` tapés sous la forme `\\` dans le fichier source C# pour placer dans une séquence d’échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string). Les caractères `{` , `}` , '[' et ']' doivent être placés dans une séquence d’échappement en les doublant afin de placer les caractères de délimiteur de paramètre du service de routage dans une séquence d’échappement.  Le tableau ci-dessous montre une expression régulière et la version placée dans une séquence d’échappement.
 
 | Expression               | Remarque |
 | ----------------- | ------------ | 
 | `^\d{3}-\d{2}-\d{4}$` | Expression régulière |
-| `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` | Séquence d’échappement  |
+| `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` | Dans une séquence d’échappement  |
 | `^[a-z]{2}$` | Expression régulière |
-| `^[[a-z]]{{2}}$` | Séquence d’échappement  |
+| `^[[a-z]]{{2}}$` | Dans une séquence d’échappement  |
 
-Souvent des expressions régulières utilisées dans le routage commence par la `^` caractères (correspondance la position de la chaîne de départ) et se terminent par le `$` caractère (se terminant par la position de la chaîne de correspondance). Le `^` et `$` caractères vous assurer que la valeur de paramètre d’itinéraire entier de la correspondance d’expression régulière. Sans le `^` et `$` caractères, l’expression régulière correspondra toute sous-chaîne dans la chaîne, ce qui est souvent pas ce que vous souhaitez. Le tableau ci-dessous présente des exemples et explique pourquoi ils correspondent ou ne correspondent pas.
+Souvent, les expressions régulières utilisées dans le routage commencent par le caractère `^` (position de départ de correspondance de la chaîne) et se terminent par le caractère `$` (position de fin de correspondance de la chaîne). Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière établit une correspondance avec n’importe quelle sous-chaîne de la chaîne, ce qui n’est souvent pas ce que vous voulez. Le tableau ci-dessous présente des exemples et explique pourquoi ils établissent, ou non, une correspondance.
 
 | Expression               | Chaîne | Faire correspondre à | Commentaire |
 | ----------------- | ------------ |  ------------ |  ------------ | 
 | `[a-z]{2}` | hello | oui | correspondances de sous-chaînes |
 | `[a-z]{2}` | 123abc456 | oui | correspondances de sous-chaînes |
-| `[a-z]{2}` | mz | oui | correspond à l’expression |
-| `[a-z]{2}` | MZ | oui | non respect de la casse |
-| `^[a-z]{2}$` |  hello | Non | consultez `^` et `$` ci-dessus |
-| `^[a-z]{2}$` |  123abc456 | Non | consultez `^` et `$` ci-dessus |
+| `[a-z]{2}` | mz | oui | correspondance avec l’expression |
+| `[a-z]{2}` | MZ | oui | non-respect de la casse |
+| `^[a-z]{2}$` |  hello | Non | voir `^` et `$` ci-dessus |
+| `^[a-z]{2}$` |  123abc456 | Non | voir `^` et `$` ci-dessus |
 
-Reportez-vous à [Expressions régulières .NET Framework](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) pour plus d’informations sur la syntaxe d’expression régulière.
+Pour plus d’informations sur la syntaxe des expressions régulières, consultez [Expressions régulières du .NET Framework](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
-Pour contraindre un paramètre à un jeu connu de valeurs possibles, utilisez une expression régulière. Par exemple `{action:regex(^(list|get|create)$)}` correspond uniquement à la `action` acheminer la valeur à `list`, `get`, ou `create`. Si passé dans le dictionnaire de contraintes, la chaîne « ^ (liste | get | créer) $» serait équivalent. Les contraintes qui sont passées dans le dictionnaire de contraintes (pas inline dans un modèle) et qui ne correspondent pas l’une des contraintes connus sont également traités comme des expressions régulières.
+Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilisez une expression régulière. Par exemple, `{action:regex(^(list|get|create)$)}` établit une correspondance avec la valeur de route `action` uniquement pour `list`, `get` ou `create`. Si elle était passée dans le dictionnaire de contraintes, la chaîne « ^(list|get|create)$ » serait équivalente. Les contraintes passées dans le dictionnaire de contraintes (c’est-à-dire qui ne sont pas inline dans un modèle) qui ne correspondent pas à l’une des contraintes connues sont également traitées comme des expressions régulières.
 
-## <a name="url-generation-reference"></a>Référence de la génération d’URL
+## <a name="url-generation-reference"></a>Informations de référence sur la génération d’URL
 
-L’exemple ci-dessous montre comment générer un lien vers un itinéraire donné d’un dictionnaire de valeurs d’itinéraire et un `RouteCollection`.
+L’exemple ci-dessous montre comment générer un lien vers une route selon un dictionnaire de valeurs de route et un `RouteCollection` données.
 
-[!code-csharp[Main](../fundamentals/routing/sample/RoutingSample/Startup.cs?range=45-59)]
+[!code-csharp[](../fundamentals/routing/sample/RoutingSample/Startup.cs?range=45-59)]
 
 Le `VirtualPath` généré à la fin de l’exemple ci-dessus est `/package/create/123`.
 
-Le second paramètre pour le `VirtualPathContext` constructeur est une collection de *valeurs ambiantes*. Valeurs ambiantes fournissent plus de commodité en limitant le nombre de valeurs, qu'un développeur doit spécifier dans un certain contexte de demande. Les valeurs d’itinéraire actuel de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de lien. Par exemple, dans une application ASP.NET MVC si vous êtes dans le `About` action de la `HomeController`, vous n’avez pas besoin de spécifier la valeur d’itinéraire de contrôleur à lier à la `Index` action (la valeur ambiante de `Home` sera utilisé).
+Le deuxième paramètre pour le constructeur `VirtualPathContext` est une collection de *valeurs ambiantes*. Les valeurs ambiantes offre beaucoup de souplesse en limitant le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête donné. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Par exemple, dans une application ASP.NET MVC, si vous êtes dans l’action `About` de `HomeController`, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` (la valeur ambiante de `Home` sera utilisée).
 
-Valeurs ambiantes qui ne correspond pas à un paramètre sont ignorées et ambiante les valeurs sont également ignorées lorsqu’une valeur explicitement fourni substitue à elle, allant de gauche à droite dans l’URL.
+Les valeurs ambiantes qui ne correspondent pas à un paramètre sont ignorées. De plus, les valeurs ambiantes sont également ignorées quand une valeur fournie explicitement le remplace, en procédant de gauche à droite dans l’URL.
 
-Les valeurs qui sont fournis explicitement, mais qui ne correspond à rien sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat lorsque vous utilisez le modèle d’itinéraire `{controller}/{action}/{id?}`.
+Les valeurs qui sont fournis explicitement mais qui n’ont pas de correspondance sont ajoutées à la chaîne de requête. Le tableau suivant présente le résultat en cas d’utilisation du modèle de routage `{controller}/{action}/{id?}`.
 
 | Valeurs ambiantes | Valeurs explicites | Résultat |
 | -------------   | -------------- | ------ |
 | controller="Home" | action="About" | `/Home/About` |
 | controller="Home" | controller="Order",action="About" | `/Order/About` |
-| contrôleur = « Home », color = « Red » | action="About" | `/Home/About` |
-| controller="Home" | action = « About », de couleur = « Red » | `/Home/About?color=Red`
+| controller="Home",color="Red" | action="About" | `/Home/About` |
+| controller="Home" | action="About",color="Red" | `/Home/About?color=Red`
 
-Si un itinéraire a la valeur par défaut qui ne correspond pas à un paramètre et cette valeur est explicitement fournie, il doit correspondre à la valeur par défaut. Exemple :
+Si une route a une valeur par défaut qui ne correspond pas à un paramètre et que cette valeur est explicitement fournie, elle doit correspondre à la valeur par défaut. Exemple :
 
 ```csharp
 routes.MapRoute("blog_route", "blog/{*slug}",
   defaults: new { controller = "Blog", action = "ReadPost" });
 ```
 
-Génération de liens génère un lien pour cet itinéraire uniquement lorsque les valeurs correspondantes pour le contrôleur et d’action sont fournis.
+La génération de liens génère un lien pour cette route uniquement quand les valeurs correspondantes pour le contrôleur et l’action sont fournies.

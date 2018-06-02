@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb
-title: "Les différences de Configuration commune entre le développement et de Production (VB) | Documents Microsoft"
+title: Les différences de Configuration commune entre le développement et de Production (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans les didacticiels précédentes, nous avons déployé notre site Web en copiant tous les fichiers pertinentes à partir de l’environnement de développement dans l’environnement de production. Toutefois, j’ai..."
+description: Dans les didacticiels précédentes, nous avons déployé notre site Web en copiant tous les fichiers pertinentes à partir de l’environnement de développement dans l’environnement de production. Toutefois, j’ai...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b53565e4ae09b007029bdab7cc8724e2d7d193fe
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 079f6c5a67ec378991ff63694c30e94ed8011bb4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="common-configuration-differences-between-development-and-production-vb"></a>Différences de Configuration commune entre le développement et de Production (VB)
 ====================
@@ -53,7 +53,7 @@ Lors de la visite d’une page ASP.NET pour la première fois (ou la première f
 L’attribut de débogage est un des attributs plus importants dans le `<compilation>` élément. Si le `debug` attribut est défini sur « true », les assemblys compilés incluent les symboles de débogage, qui sont nécessaires lorsque vous déboguez une application dans Visual Studio. Toutefois, les symboles de débogage augmentent la taille de l’assembly et imposent des exigences de mémoire supplémentaire lors de l’exécution du code. En outre, lorsque la `debug` attribut est défini sur « true » à n’importe quel contenu retourné par `WebResource.axd` n'est pas mis en cache, ce qui signifie que que chaque fois qu’un utilisateur visite une page, ils devront télécharger à nouveau le contenu statique retourné par `WebResource.axd`.
 
 > [!NOTE]
-> `WebResource.axd`est un gestionnaire HTTP intégré introduit dans ASP.NET 2.0 qui utilisent des contrôles serveur pour récupérer des ressources incorporées, telles que les fichiers de script, des images, des fichiers CSS et autre contenu. Pour plus d’informations sur la façon de `WebResource.axd` fonctionne et comment vous pouvez l’utiliser pour accéder à des ressources incorporées à partir de vos contrôles serveur personnalisés, consultez [l’accès à incorporé ressources via une URL à l’aide de `WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx).
+> `WebResource.axd` est un gestionnaire HTTP intégré introduit dans ASP.NET 2.0 qui utilisent des contrôles serveur pour récupérer des ressources incorporées, telles que les fichiers de script, des images, des fichiers CSS et autre contenu. Pour plus d’informations sur la façon de `WebResource.axd` fonctionne et comment vous pouvez l’utiliser pour accéder à des ressources incorporées à partir de vos contrôles serveur personnalisés, consultez [l’accès à incorporé ressources via une URL à l’aide de `WebResource.axd` ](http://aspnet.4guysfromrolla.com/articles/080906-1.aspx).
 
 
 Le `<compilation>` l’élément `debug` attribut a généralement la valeur « true » dans l’environnement de développement. En fait, cet attribut doit être défini sur « true » pour déboguer une application web ; Si vous essayez de déboguer une application ASP.NET à partir de Visual Studio et le `debug` attribut est défini sur « false », Visual Studio affiche un message expliquant que l’application ne peut pas être déboguée jusqu'à ce que le `debug` attribut est défini sur « true » et, dans proposer à effectuer cette modification pour vous.
@@ -136,6 +136,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Projets de déploiement Web de Visual Studio 2008](https://weblogs.asp.net/scottgu/archive/2005/11/06/429723.aspx) | [Visual Studio 2008 déploiement projet prise en charge Web publié](https://weblogs.asp.net/scottgu/archive/2008/01/28/vs-2008-web-deployment-project-support-released.aspx)
 - [Projets de déploiement web](https://msdn.microsoft.com/magazine/cc163448.aspx)
 
->[!div class="step-by-step"]
-[Précédent](deploying-your-site-using-visual-studio-vb.md)
-[Suivant](core-differences-between-iis-and-the-asp-net-development-server-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-your-site-using-visual-studio-vb.md)
+> [Suivant](core-differences-between-iis-and-the-asp-net-development-server-vb.md)

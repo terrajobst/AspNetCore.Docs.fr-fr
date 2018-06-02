@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs
-title: "Création d’une couche de logique métier (c#) | Documents Microsoft"
+title: Création d’une couche de logique métier (c#) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous verrons comment centraliser vos règles d’entreprise dans une couche BLL (Business Logic) qui sert d’intermédiaire pour l’échange de données entre t..."
+description: Dans ce didacticiel, nous verrons comment centraliser vos règles d’entreprise dans une couche BLL (Business Logic) qui sert d’intermédiaire pour l’échange de données entre t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7518ddd11a05a9e3d5df85e3cf6ceffa09a25060
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6e73e9e68e4abb0d382baa7da925c167809e417a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-business-logic-layer-c"></a>Création d’une couche de logique métier (c#)
 ====================
@@ -61,13 +61,13 @@ Ensuite, nous allons ajouter des méthodes à chacune des classes simplement d�
 
 Pour le `ProductsBLL` nous devons ajouter un total de sept méthodes de classe :
 
-- `GetProducts()`Retourne tous les produits
-- `GetProductByProductID(productID)`Retourne le produit avec l’ID de produit spécifié
-- `GetProductsByCategoryID(categoryID)`Retourne tous les produits à partir de la catégorie spécifiée
-- `GetProductsBySupplier(supplierID)`Retourne tous les produits du fournisseur spécifié
-- `AddProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued)`Insère un nouveau produit dans la base de données en utilisant les valeurs passées dans ; Retourne le `ProductID` la valeur de l’enregistrement qui vient d’être inséré.
-- `UpdateProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued, productID)`met à jour un produit existant dans la base de données en utilisant les valeurs passées dans ; Retourne `true` précisément une ligne a été mise à jour, `false` dans le cas contraire
-- `DeleteProduct(productID)`Supprime le produit spécifié à partir de la base de données
+- `GetProducts()` Retourne tous les produits
+- `GetProductByProductID(productID)` Retourne le produit avec l’ID de produit spécifié
+- `GetProductsByCategoryID(categoryID)` Retourne tous les produits à partir de la catégorie spécifiée
+- `GetProductsBySupplier(supplierID)` Retourne tous les produits du fournisseur spécifié
+- `AddProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued)` Insère un nouveau produit dans la base de données en utilisant les valeurs passées dans ; Retourne le `ProductID` la valeur de l’enregistrement qui vient d’être inséré.
+- `UpdateProduct(productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, reorderLevel, discontinued, productID)` met à jour un produit existant dans la base de données en utilisant les valeurs passées dans ; Retourne `true` précisément une ligne a été mise à jour, `false` dans le cas contraire
+- `DeleteProduct(productID)` Supprime le produit spécifié à partir de la base de données
 
 ProductsBLL.cs
 
@@ -205,12 +205,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Liz Shulok, Dennis Patterson, Carlos Santos et Hilton Giesenow. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](creating-a-data-access-layer-cs.md)
-[Suivant](master-pages-and-site-navigation-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-data-access-layer-cs.md)
+> [Suivant](master-pages-and-site-navigation-cs.md)

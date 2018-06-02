@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
-title: "Déploiement des appartenances aux rôles de base de données dans les environnements de Test | Documents Microsoft"
+title: Déploiement des appartenances aux rôles de base de données dans les environnements de Test | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment ajouter des comptes d’utilisateurs aux rôles de base de données dans le cadre d’un déploiement de solution pour un environnement de test. Lorsque vous déployez une solution contenant..."
+description: Cette rubrique décrit comment ajouter des comptes d’utilisateurs aux rôles de base de données dans le cadre d’un déploiement de solution pour un environnement de test. Lorsque vous déployez une solution contenant...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments
 msc.type: authoredcontent
-ms.openlocfilehash: 226c28622f76e866fba1fc33cf9b9b7a01e5295b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4f635153213b0695d7d4b64d09adefaf8ee8e892
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-database-role-memberships-to-test-environments"></a>Déploiement des appartenances aux rôles de base de données dans les environnements de Test
 ====================
@@ -37,9 +37,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Le facteur clé est que cette opération doit être conditionnel en fonction de l’environnement cible. Si vous déployez vers un intermédiaire ou d’un environnement de production, vous souhaitez ignorer l’opération. Si vous effectuez un déploiement à un développeur ou l’environnement de test, que vous souhaitez déployer des appartenances de rôle sans autre intervention. Cette rubrique décrit une approche, que vous pouvez utiliser pour relever ce défi.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -94,7 +94,7 @@ Avant de vous incorporez cette commande dans une cible MSBuild, vous devez envis
 
 - La base de données cible doit exister avant de modifier ses appartenances aux rôles. Par conséquent, vous devez exécuter ce script *après* le déploiement de la base de données.
 - Vous devez inclure une condition afin que le script est exécuté uniquement pour les environnements de test.
-- Si vous exécutez un déploiement « que se passe-t-il si » et le #x 2014 ; en d’autres termes, si vous utilisez la génération de scripts de déploiement, mais pas en cours d’exécution les & #x 2014 ; vous ne devez pas exécuter le script SQL.
+- Si vous exécutez un déploiement « que se passe-t-il si »&#x2014;en d’autres termes, si vous êtes génération de scripts de déploiement, mais ne les exécute pas réellement&#x2014;vous ne devez pas exécuter le script SQL.
 
 Si vous utilisez l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), comme illustré dans l’exemple de solution de gestionnaire de contacts, vous pouvez fractionner les instructions de génération pour votre script SQL comme suit :
 
@@ -132,6 +132,6 @@ Cette rubrique décrit une façon dans laquelle vous pouvez ajouter des utilisat
 
 Pour plus d’informations sur l’utilisation de VSDBCMD pour déployer des projets de base de données, consultez [déploiement de projets de base de données](../web-deployment-in-the-enterprise/deploying-database-projects.md). Pour obtenir des conseils sur la personnalisation des déploiements de base de données pour les environnements cibles différentes, consultez [personnalisation des déploiements de base de données pour plusieurs environnements](customizing-database-deployments-for-multiple-environments.md). Pour plus d’informations sur l’utilisation des fichiers projet MSBuild personnalisés pour contrôler le processus de déploiement, consultez [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md) et [comprendre le processus de génération](../web-deployment-in-the-enterprise/understanding-the-build-process.md). Pour plus d’informations sur les options de ligne de commande sqlcmd, consultez [utilitaire sqlcmd](https://msdn.microsoft.com/library/ms162773.aspx).
 
->[!div class="step-by-step"]
-[Précédent](customizing-database-deployments-for-multiple-environments.md)
-[Suivant](deploying-membership-databases-to-enterprise-environments.md)
+> [!div class="step-by-step"]
+> [Précédent](customizing-database-deployments-for-multiple-environments.md)
+> [Suivant](deploying-membership-databases-to-enterprise-environments.md)

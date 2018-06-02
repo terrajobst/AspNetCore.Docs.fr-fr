@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
-title: "L’accès aux données de votre modèle à partir d’un contrôleur | Documents Microsoft"
+title: L’accès aux données de votre modèle à partir d’un contrôleur | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 91bfa5fe3c5bd3029b7d7c12c8831e1653fb1d2b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d3dfa079c334e04f368531456ec2ec4e9728f893
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>L’accès aux données de votre modèle à partir d’un contrôleur
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 Dans cette section, vous allez créer un nouveau `MoviesController` classe et d’écrire du code qui extrait les données de film et l’affiche dans le navigateur à l’aide d’un modèle d’affichage.
 
@@ -40,7 +40,7 @@ Dans le **ajouter une vue de structure** boîte de dialogue, cliquez sur **contr
 - Sélectionnez **MovieDBContext (MvcMovie.Models)** pour la classe de contexte de données.
 - Entrez le nom du contrôleur **MoviesController**.
 
- L’image ci-dessous montre la boîte de dialogue terminé.  
+  L’image ci-dessous montre la boîte de dialogue terminé.  
   
 ![](accessing-your-models-data-from-a-controller/_static/image3.png)   
 
@@ -64,7 +64,7 @@ Sélectionnez le lien **Créer nouveau**. Entrez des détails sur un film, puis 
 ![](accessing-your-models-data-from-a-controller/_static/image5.png)
 
 > [!NOTE]
-> Vous n’êtes peut-être pas en mesure d’entrer des décimales ou des virgules dans le champ prix. pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et vos  *cultures/globalize.cultures.js* fichier (à partir de [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. J’ai allons montrer comment effectuer cette opération dans le didacticiel suivant. Pour le moment, entrez simplement des nombres entiers tels que 10.
+> Vous n’êtes peut-être pas en mesure d’entrer des décimales ou des virgules dans le champ prix. pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et vos  *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. J’ai allons montrer comment effectuer cette opération dans le didacticiel suivant. Pour le moment, entrez simplement des nombres entiers tels que 10.
 
 
 En cliquant sur le **créer** bouton, le formulaire est publié sur le serveur, où les informations de film sont enregistrées dans la base de données. Vous êtes alors redirigé vers la */Movies* URL, où vous pouvez consulter le film nouvellement créé dans la liste.
@@ -157,6 +157,6 @@ Lorsque vous avez terminé, fermez la connexion en cliquant *MovieDBContext* et 
 
 Vous disposez maintenant d’une base de données et de pages pour afficher, modifier, mettre à jour et supprimer les données. Dans l’étape suivante du didacticiel, nous allons examiner le reste du code du modèle généré automatiquement et ajouter un `SearchIndex` (méthode) et un `SearchIndex` vue qui vous permet de rechercher des vidéos dans cette base de données. Pour plus d’informations sur l’utilisation d’Entity Framework avec MVC, consultez [création d’un modèle de données Entity Framework pour une Application ASP.NET MVC](../getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
->[!div class="step-by-step"]
-[Précédent](creating-a-connection-string.md)
-[Suivant](examining-the-edit-methods-and-edit-view.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-connection-string.md)
+> [Suivant](examining-the-edit-methods-and-edit-view.md)

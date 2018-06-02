@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-vb
-title: "Ajout de colonnes de table de données supplémentaires (VB) | Documents Microsoft"
+title: Ajout de colonnes de table de données supplémentaires (VB) | Documents Microsoft
 author: rick-anderson
-description: "Lorsque vous utilisez l’Assistant TableAdapter pour créer un DataSet typé, le DataTable contient les colonnes retournées par la requête de base de données principale. Mais il n’y a..."
+description: Lorsque vous utilisez l’Assistant TableAdapter pour créer un DataSet typé, le DataTable contient les colonnes retournées par la requête de base de données principale. Mais il n’y a...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d357ca7bfe364090ff2c8504b2116e0d99d004bc
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: b51089057ad1e14901cb09589534d6e575261c3e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-additional-datatable-columns-vb"></a>Ajouter des colonnes supplémentaires DataTable (VB)
 ====================
@@ -41,9 +41,9 @@ Dans ce didacticiel, nous allons examiner comment étendre un schéma de s DataT
 
 Dans le *création de nouvelles procédures stockées s DataSet typé TableAdapters* didacticiel, nous avons créé un DataSet typé nommé `NorthwindWithSprocs`. Ce jeu de données contient deux tables de données : `ProductsDataTable` et `EmployeesDataTable`. Le `ProductsTableAdapter` a trois méthodes suivantes :
 
-- `GetProducts`-la requête principale, qui retourne tous les enregistrements à partir de la `Products` table
-- `GetProductsByCategoryID(categoryID)`-Retourne tous les produits avec les *categoryID*.
-- `GetProductByProductID(productID)`-Retourne le produit avec l’objet *productID*.
+- `GetProducts` -la requête principale, qui retourne tous les enregistrements à partir de la `Products` table
+- `GetProductsByCategoryID(categoryID)` -Retourne tous les produits avec les *categoryID*.
+- `GetProductByProductID(productID)` -Retourne le produit avec l’objet *productID*.
 
 La requête principale et toutes les deux méthodes supplémentaires retournent le même ensemble de champs de données, à savoir toutes les colonnes à partir de la `Products` table. Il n’y aucun sous-requêtes en corrélation ou `JOIN` s extrayant des données connexes à partir de la `Categories` ou `Suppliers` tables. Par conséquent, le `ProductsDataTable` a une colonne correspondante pour chaque champ dans le `Products` table.
 
@@ -209,12 +209,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Randy Schmidt, Jeremy Goor, Bernadette Leigh et Hilton Giesenow. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](updating-the-tableadapter-to-use-joins-vb.md)
-[Suivant](working-with-computed-columns-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](updating-the-tableadapter-to-use-joins-vb.md)
+> [Suivant](working-with-computed-columns-vb.md)

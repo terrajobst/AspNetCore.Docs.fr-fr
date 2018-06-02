@@ -2,7 +2,7 @@
 uid: web-forms/overview/moving-to-aspnet-20/caching
 title: La mise en cache | Documents Microsoft
 author: microsoft
-description: "Compréhension de la mise en cache est importante pour une application ASP.NET et performant. ASP.NET 1.x proposé trois options différentes pour la mise en cache ; sortie mise en cache..."
+description: Compréhension de la mise en cache est importante pour une application ASP.NET et performant. ASP.NET 1.x proposé trois options différentes pour la mise en cache ; sortie mise en cache...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 9b229de60e09b94189f62a6bb6fa61a9973d637b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 90faaae75cc85585efa05e6e50eabe8c990d076e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="caching"></a>Mise en cache
 ====================
@@ -59,7 +59,7 @@ Pour invalider l’élément qui a été insérée au-dessus, supprimez simpleme
 
 Notez que la clé de l’élément qui agit en tant que la clé de cache doit être identique à la valeur ajoutée dans le tableau de clés de cache.
 
-## <a name="polling-based-sql-cache-dependenciesalso-called-table-based-dependencies"></a>Reposant sur l’interrogation des dépendances de Cache SQL*(également appelé dépendances basées sur une Table)*
+## <a name="polling-based-sql-cache-dependenciesemalso-called-table-based-dependenciesem"></a>Reposant sur l’interrogation des dépendances de Cache SQL<em>(également appelé dépendances basées sur une Table)</em>
 
 SQL Server 7 et 2000 utilisent le modèle basé sur l’interrogation pour les dépendances de cache SQL. Le modèle basé sur l’interrogation utilise un déclencheur sur une table de base de données qui est déclenchée lorsque des modifications des données dans la table. Qui déclenchent des mises à jour un **changeId** de la table de notification ASP.NET vérifie régulièrement. Si le **changeId** champ a été mis à jour, ASP.NET sait que les données ont changé et n’invalide les données en cache.
 
@@ -158,7 +158,7 @@ L’exemple suivant configure un contrôle de source de données pour la dépend
 
 Dans ce cas, si la requête spécifiée dans le **SelectCommand** retourne un résultat différent qu’elle ne l’avez fait, les résultats sont mis en cache sont invalidés.
 
-Vous pouvez également spécifier que toutes vos sources de données soit activée pour les dépendances de cache SQL en définissant le **SqlDependency** attribut de la **@ OutputCache** directive **CommandNotification** . L’exemple ci-dessous illustre ce comportement.
+Vous pouvez également spécifier que toutes vos sources de données soit activée pour les dépendances de cache SQL en définissant le **SqlDependency** attribut de la **@ OutputCache** directive **CommandNotification **. L’exemple ci-dessous illustre ce comportement.
 
 [!code-aspx[Main](caching/samples/sample13.aspx)]
 
@@ -237,12 +237,13 @@ Les attributs suivants sont disponibles dans le &lt;cache&gt; élément :
 
 Les attributs suivants sont disponibles pour le &lt;outputCache&gt; élément.
 
-| **Attribut** | **Description** |
-| --- | --- |
-| **enableOutputCache** | Facultatif **Boolean** attribut. Active/désactive le cache de sortie de page. Si désactivé, aucune page n’est mis en cache, indépendamment des paramètres déclaratives ou par programme. Valeur par défaut est **true**. |
-| **enableFragmentCache** | Facultatif **Boolean** attribut. Active/désactive le cache de fragment d’application. Si désactivé, aucune page n’est mis en cache, quel que soit le [@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx) directive ou la mise en cache de profil utilisé. Inclut un en-tête cache-control indiquant que les serveurs proxy en amont, ainsi que des clients de navigateur ne doivent pas essayer de sortie de la page du cache. Valeur par défaut est **false**. |
-| **sendCacheControlHeader** | Facultatif **Boolean** attribut. Obtient ou définit une valeur indiquant si le **cache-contrôle : private** en-tête est envoyé par le module de cache de sortie par défaut. Valeur par défaut est **false**. |
-| **omitVaryStar** | Facultatif **Boolean** attribut. Active/désactive l’envoi d’un Http «**Vary : \*** « en-tête dans la réponse. Avec le paramètre par défaut de la valeur est false, un «**Vary : \*** « en-tête est envoyé pour les pages mises en cache de sortie. Lorsque l’en-tête Vary est envoyé, il permet pour différentes versions doit être mis en cache en fonction de ce qui est spécifié dans l’en-tête Vary. Par exemple, *Vary : utilisateur-Agents* stockera les différentes versions d’une page en fonction de l’agent utilisateur qui émet la demande. Valeur par défaut est **false**. |
+
+|       <strong>Attribut</strong>        |                                                                                                                                                                                                                                                       <strong>Description</strong>                                                                                                                                                                                                                                                       |
+|-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   <strong>enableOutputCache</strong>    |                                                                                                                                                          Facultatif <strong>Boolean</strong> attribut. Active/désactive le cache de sortie de page. Si désactivé, aucune page n’est mis en cache, indépendamment des paramètres déclaratives ou par programme. Valeur par défaut est <strong>true</strong>.                                                                                                                                                           |
+|  <strong>enableFragmentCache</strong>   |                                                Facultatif <strong>Boolean</strong> attribut. Active/désactive le cache de fragment d’application. Si désactivé, aucune page n’est mis en cache, quel que soit le [@ OutputCache](https://msdn.microsoft.com/library/hdxfb6cy.aspx) directive ou la mise en cache de profil utilisé. Inclut un en-tête cache-control indiquant que les serveurs proxy en amont, ainsi que des clients de navigateur ne doivent pas essayer de sortie de la page du cache. Valeur par défaut est <strong>false</strong>.                                                 |
+| <strong>sendCacheControlHeader</strong> |                                                                                                                                                      Facultatif <strong>Boolean</strong> attribut. Obtient ou définit une valeur indiquant si le <strong>cache-contrôle : private</strong> en-tête est envoyé par le module de cache de sortie par défaut. Valeur par défaut est <strong>false</strong>.                                                                                                                                                      |
+|      <strong>omitVaryStar</strong>      | Facultatif <strong>Boolean</strong> attribut. Active/désactive l’envoi d’un Http «<strong>Vary : \</strong ><em>« en-tête dans la réponse. Avec le paramètre par défaut de la valeur est false, un «</em>* Vary : \* <strong>« en-tête est envoyé pour les pages mises en cache de sortie. Lorsque l’en-tête Vary est envoyé, il permet pour différentes versions doit être mis en cache en fonction de ce qui est spécifié dans l’en-tête Vary. Par exemple, <em>Vary : utilisateur-Agents</em> stockera les différentes versions d’une page en fonction de l’agent utilisateur qui émet la demande. Valeur par défaut est ** false</strong>. |
 
 ### <a name="the-ltoutputcachesettingsgt-element"></a>Le &lt;outputCacheSettings&gt; élément
 

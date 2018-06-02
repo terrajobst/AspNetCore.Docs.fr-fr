@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
-title: "Ajout d’une colonne au modèle | Documents Microsoft"
+title: Ajout d’une colonne au modèle | Documents Microsoft
 author: shanselman
-description: "Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données."
+description: Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part8
 msc.type: authoredcontent
-ms.openlocfilehash: 17ee105f596319423ac83cf718683ed293f952f3
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7a0b64ce00fc5ee6d49990f1d4d93a154c467bf5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="adding-a-column-to-the-model"></a>Ajout d’une colonne au modèle
 ====================
@@ -77,11 +77,11 @@ Une fois que vous cliquez sur Créer, vous êtes envoyé à la page d’Index o�
 
 Ce didacticiel de base obtenu vous lancer dans la création de contrôleurs, leur association avec des vues et en passant autour des données codées en dur. Ensuite, nous avons créé et conçu une base de données et placer des données dans. Nous les données récupérées à partir de la base de données et elle affiche dans une table HTML. Ensuite, nous avons ajouté un formulaire de création qui permettent à l’utilisateur d’ajouter des données à la base de données eux-mêmes à partir de l’Application Web. Nous avons ajouté la validation, puis apportées à la validation d’utiliser JavaScript côté client. Enfin, nous avons modifié la base de données pour inclure une colonne de données, puis nos deux pages pour créer et afficher ces nouvelles données mises à jour.
 
-Je maintenant vous encourage à passer à notre didacticiel de niveau intermédiaire «[magasin de musique MVC](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)», ainsi que des vidéos et des ressources au nombre [https://asp.net/mvc](https://asp.net/mvc) pour en savoir plus sur ASP.NET MVC !
+Je maintenant vous encourage à passer à notre didacticiel de niveau intermédiaire «[magasin de musique MVC](../../older-versions/mvc-music-store/mvc-music-store-part-1.md)», ainsi que des vidéos et des ressources au nombre [ https://asp.net/mvc ](https://asp.net/mvc) pour en savoir plus sur ASP.NET MVC !
 
 Bonne lecture !
 
-- Scott Hanselman - [http://hanselman.com](http://hanselman.com) et [ @shanselman ](http://twitter.com/shanselman) sur Twitter.
+- Scott Hanselman - [ http://hanselman.com ](http://hanselman.com) et [ @shanselman ](http://twitter.com/shanselman) sur Twitter.
 
->[!div class="step-by-step"]
-[Précédent](getting-started-with-mvc-part7.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started-with-mvc-part7.md)

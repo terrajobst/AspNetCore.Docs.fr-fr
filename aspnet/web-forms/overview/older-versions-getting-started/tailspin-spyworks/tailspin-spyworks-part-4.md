@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
-title: "Partie 4 : Liste des produits | Documents Microsoft"
+title: 'Partie 4 : Liste des produits | Documents Microsoft'
 author: JoeStagner
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 4 couvre les produits de la liste avec le contrat de GridView..."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 4 couvre les produits de la liste avec le contrat de GridView...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 420cdbcc002bcbfff619d399a7a374009999d754
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 69b26344e6dcdbf27e94da90ad5d6cd79f27ccd3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-4-listing-products"></a>Partie 4 : Liste de produits
 ====================
@@ -27,7 +27,7 @@ par [Joe Stagner](https://github.com/JoeStagner)
 > Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 4 couvre la liste des produits avec le contrôle GridView.
 
 
-## <a id="_Toc260221670"></a>Liste des produits avec le contrôle GridView
+## <a id="_Toc260221670"></a>  Liste des produits avec le contrôle GridView
 
 Nous allons commencer l’implémentation de notre page ProductsList.aspx en « Cliquant avec le bouton droit sur » sur notre solution, puis en sélectionnant « Ajouter » et « Nouvel élément ».
 
@@ -100,6 +100,6 @@ Notre base de données contient une table nommée « ShoppingCart ». Lorsque 
 
 Il est également important de noter que nous allons créer un panier d’achat simple et l’incorporation de la logique de panier d’achat avec l’affichage du panier d’achat. Nous pouvons également choisir d’implémenter notre panier d’achat dans une couche métier complètement distincte.
 
->[!div class="step-by-step"]
-[Précédent](tailspin-spyworks-part-3.md)
-[Suivant](tailspin-spyworks-part-5.md)
+> [!div class="step-by-step"]
+> [Précédent](tailspin-spyworks-part-3.md)
+> [Suivant](tailspin-spyworks-part-5.md)

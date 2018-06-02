@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-vb
-title: "Itération #2 – que l’application de rechercher des commandes nice (VB) | Documents Microsoft"
+title: 'Itération #2 – que l’application de rechercher des commandes nice (VB) | Documents Microsoft'
 author: microsoft
-description: "Dans cette itération, nous améliorer l’apparence de l’application en modifiant la valeur par défaut de page maître de vue ASP.NET MVC en cascade de feuille de style."
+description: Dans cette itération, nous améliorer l’apparence de l’application en modifiant la valeur par défaut de page maître de vue ASP.NET MVC en cascade de feuille de style.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 07c4eaaf9ae5a389605a98951e970d410ca23122
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8545351b099e52533789b372903cd493f533f834
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-2--make-the-application-look-nice-vb"></a>Itération #2 – que l’application de rechercher des commandes nice (VB)
 ====================
@@ -66,7 +66,7 @@ J’ai décidé de ne pas utiliser un modèle à partir de la bibliothèque ASP.
 
 La bibliothèque ASP.NET MVC est une ressource gratuite fournie par Microsoft. La galerie de MVC ASP.NET se trouve à l’adresse suivante :
 
-[https://www.ASP.NET/MVC/Gallery](https://www.asp.net/mvc/gallery)
+[https://www.asp.net/mvc/gallery](https://www.asp.net/mvc/gallery)
 
 La galerie de conception MVC ASP.NET héberge une collection de conceptions de site Web gratuit qui ont été créés spécifiquement pour l’utilisation dans un projet ASP.NET MVC. Les conceptions sont téléchargées par les membres de la Communauté. Les visiteurs de la galerie peuvent voter pour leur conception favorites (voir Figure 2).
 
@@ -115,7 +115,7 @@ La bibliothèque ASP.NET MVC a une bonne sélection de styles de conception diff
 
 Toutefois, vous devrez peut-être créer une conception complètement unique pour votre site Web. Dans ce cas, il est judicieux de travail avec une société de conception de site Web. J’ai décidé de suivre cette approche pour la conception de l’application Gestionnaire de Contact.
 
-Je le Gestionnaire de Contact à partir de l’itération 1 puis de l’envoyer le projet à la société de conception. Ils ne possédait pas Visual Studio (dommage dessus !), mais ce ne t présentent un problème. Ils ont été en mesure de télécharger Microsoft Visual Web Developer gratuitement à partir de la [https://www.asp.net](https://www.asp.net) site Web et ouvrez l’application Gestionnaire de contacts dans Visual Web Developer. Dans quelques jours, elles avaient produites la conception dans la Figure 7.
+Je le Gestionnaire de Contact à partir de l’itération 1 puis de l’envoyer le projet à la société de conception. Ils ne possédait pas Visual Studio (dommage dessus !), mais ce ne t présentent un problème. Ils ont été en mesure de télécharger Microsoft Visual Web Developer gratuitement à partir de la [ https://www.asp.net ](https://www.asp.net) site Web et ouvrez l’application Gestionnaire de contacts dans Visual Web Developer. Dans quelques jours, elles avaient produites la conception dans la Figure 7.
 
 
 [![La boîte de dialogue Nouveau projet](iteration-2-make-the-application-look-nice-vb/_static/image7.jpg)](iteration-2-make-the-application-look-nice-vb/_static/image13.png)
@@ -155,7 +155,7 @@ Pour prendre en charge le rendu des onglets sélectionnés et désélectionnés,
 
 Le MenuItemHelper utilise la classe TagBuilder en interne pour générer le &lt;li&gt; balise HTML. La classe TagBuilder est une classe utilitaire très utiles que vous pouvez utiliser chaque fois que vous avez besoin créer une nouvelle balise HTML. Il inclut des méthodes pour l’ajout d’attributs, l’ajout de classes CSS, ID de génération et la modification de la balise s HTML interne.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous avons amélioré la conception visuelle de votre application ASP.NET MVC. Tout d’abord, vous ont été introduites dans la galerie de conception MVC ASP.NET. Vous avez appris comment télécharger les modèles de conception disponible à partir de la galerie de conception MVC ASP.NET que vous pouvez utiliser dans vos applications ASP.NET MVC.
 
@@ -163,6 +163,6 @@ Ensuite, nous avons expliqué comment vous pouvez créer une conception personna
 
 Dans l’itération suivante, nous attaquer le sujet très important de validation. Nous ajoutez le code de validation à notre application afin qu’un utilisateur ne peut pas créer un contact sans fournir tout d’abord les valeurs requises par exemple une personne s et nom de famille.
 
->[!div class="step-by-step"]
-[Précédent](iteration-1-create-the-application-vb.md)
-[Suivant](iteration-3-add-form-validation-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-1-create-the-application-vb.md)
+> [Suivant](iteration-3-add-form-validation-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
-title: "Ajout d’une nouvelle catégorie à DropDownList à l’aide de l’interface utilisateur jQuery | Documents Microsoft"
+title: Ajout d’une nouvelle catégorie à DropDownList à l’aide de l’interface utilisateur jQuery | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/adding-a-new-category-to-the-dropdownlist-using-jquery-ui
 msc.type: authoredcontent
-ms.openlocfilehash: de661616ff3ca83052ae74d3ae6810d014aff764
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 16f7af1d679aace24fff86abb19740beebafe785
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-category-to-the-dropdownlist-using-jquery-ui"></a>Ajout d’une nouvelle catégorie à DropDownList à l’aide de jQuery UI
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 Le code HTML `Select` balise est idéal pour présenter une liste de données de catégorie fixe, mais il peut arriver que vous avez besoin ajouter une nouvelle catégorie. Supposons que nous souhaitons ajouter le genre « Opera » pour les catégories dans notre base de données ? Dans cette section, nous allons utiliser l’interface utilisateur jQuery pour ajouter une boîte de dialogue que nous pouvons utiliser pour ajouter une nouvelle catégorie. L’image ci-dessous montre comment l’interface utilisateur présente dans le navigateur.
 
@@ -36,7 +36,7 @@ Lors de l’entrée un nouveau nom de genre et la **enregistrer** bouton est enf
 2. JavaScript ajoute les nouvelles données de genre à la liste de sélection.
 3. JavaScript rend le genre de nouveau l’élément sélectionné.
 
- Dans l’image ci-dessous, **Opera** a été ajouté à la base de données et sélectionné dans le **Genre** zone de liste déroulante. 
+   Dans l’image ci-dessous, **Opera** a été ajouté à la base de données et sélectionné dans le **Genre** zone de liste déroulante. 
 
 ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image3.png)
 
@@ -60,7 +60,7 @@ Exécutez l’application et cliquez sur le **ajouter un nouveau Genre** bouton.
 
 ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image4.png)
 
-Cliquez sur le **enregistrer** bouton. Un appel AJAX crée la catégorie Opera remplit la liste déroulante avec Opera et définit Opera comme le genre sélectionné.
+Cliquez sur le bouton **Enregistrer**. Un appel AJAX crée la catégorie Opera remplit la liste déroulante avec Opera et définit Opera comme le genre sélectionné.
 
 ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image5.png)
 
@@ -102,7 +102,7 @@ JQuery `$.post` ligne effectue un appel AJAX à l’attribut d’action (`/Store
 3. Dans la zone de recherche, entrez GenreID.
 4. À l’aide de l’icône suivante,   
     ![](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/_static/image9.png)  
- Accédez à la balise select suivante :
+   Accédez à la balise select suivante :
 
     [!code-html[Main](adding-a-new-category-to-the-dropdownlist-using-jquery-ui/samples/sample9.html)]
 5. Développez la dernière valeur d’option.
@@ -141,5 +141,5 @@ Rick.Anderson[at]Microsoft.com
 - Protocole de Mike
 - Tom Dykstra
 
->[!div class="step-by-step"]
-[Précédent](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)
+> [!div class="step-by-step"]
+> [Précédent](examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper.md)

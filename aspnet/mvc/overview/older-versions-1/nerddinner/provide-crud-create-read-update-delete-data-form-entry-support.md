@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
-title: "Fournir CRUD (créer, lire, mettre à jour, supprimer) prise en charge de l’entrée de données de formulaires | Documents Microsoft"
+title: Fournir CRUD (créer, lire, mettre à jour, supprimer) prise en charge de l’entrée de données de formulaires | Documents Microsoft
 author: microsoft
-description: "Étape 5 montre comment prendre notre classe DinnersController plus par prise en charge de l’activer pour la modification, la création et la suppression préparés avec lui aussi."
+description: Étape 5 montre comment prendre notre classe DinnersController plus par prise en charge de l’activer pour la modification, la création et la suppression préparés avec lui aussi.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
 msc.type: authoredcontent
-ms.openlocfilehash: 5a314a1761527d8a2273166a743e3deac012a557
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bd906282db5c620476966ffbe09cecb5ade66ee4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>Fournir CRUD (créer, lire, mettre à jour, supprimer) prise en charge de l’entrée de données de formulaires
 ====================
@@ -39,23 +39,23 @@ Nous avons introduit les contrôleurs et les vues et expliqué comment les utili
 
 Nous avons ajouté précédemment des méthodes d’action à DinnersController qui implémenté la prise en charge pour les deux URL : */Dinners* et */Dinners/détails / [id]*.
 
-| **URL** | **VERBE** | **Fonction** |
+| **URL** | **VERB** | **Fonction** |
 | --- | --- | --- |
 | */Dinners/* | GET | Afficher une liste HTML de préparés à venir. |
-| */Dinners/détails / [id]* | GET | Afficher des détails sur un dîner spécifique. |
+| */Dinners/Details/[id]* | GET | Afficher des détails sur un dîner spécifique. |
 
-Nous allons maintenant ajouter des méthodes d’action pour implémenter les trois URL supplémentaires : */Dinners/modification / [id], préparés/Create,*et*/Dinners/Delete / [id]*. Ces URL activer la prise en charge pour l’éditions préparés existants, nouveau préparés de création et la suppression préparés.
+Nous allons maintenant ajouter des méthodes d’action pour implémenter les trois URL supplémentaires : <em>/Dinners/modification / [id], préparés/Create,</em>et<em>/Dinners/Delete / [id]</em>. Ces URL activer la prise en charge pour l’éditions préparés existants, nouveau préparés de création et la suppression préparés.
 
 Nous prendrons en charge les interactions de verbe HTTP GET et HTTP POST avec ces nouvelles URL. Demandes HTTP GET pour ces URL affiche la vue HTML initiale des données (un formulaire rempli avec les données Dinner « modifier » dans le cas d’un formulaire vide dans le cas de « créer » et un écran de confirmation de suppression dans le cas de « supprimer »). Les requêtes HTTP POST à ces URL seront enregistrement ou de suppression/mise à jour les données dîner dans notre DinnerRepository (et à partir de là, la base de données).
 
-| **URL** | **VERBE** | **Fonction** |
+| **URL** | **VERB** | **Fonction** |
 | --- | --- | --- |
-| */Dinners/modification / [id]* | GET | Afficher un formulaire HTML modifiable rempli avec des données de dîner. |
-| PUBLIER | Enregistrer les modifications de formulaire pour un dîner particulier à la base de données. |
-| */ Préparés/créer* | GET | Afficher un formulaire HTML vide qui permet aux utilisateurs de définir de nouveaux préparés. |
-| PUBLIER | Créer un nouveau dîner et l’enregistrer dans la base de données. |
-| */Dinners/delete / [id]* | GET | Afficher écran de confirmation de suppression. |
-| PUBLIER | Supprime le dîner spécifié à partir de la base de données. |
+| */Dinners/Edit/[id]* | GET | Afficher un formulaire HTML modifiable rempli avec des données de dîner. |
+| POST | Enregistrer les modifications de formulaire pour un dîner particulier à la base de données. |
+| */Dinners/Create* | GET | Afficher un formulaire HTML vide qui permet aux utilisateurs de définir de nouveaux préparés. |
+| POST | Créer un nouveau dîner et l’enregistrer dans la base de données. |
+| */Dinners/Delete/[id]* | GET | Afficher écran de confirmation de suppression. |
+| POST | Supprime le dîner spécifié à partir de la base de données. |
 
 ### <a name="edit-support"></a>Modifier la prise en charge
 
@@ -107,7 +107,7 @@ Vous pouvez également, si vous trouvez l’instruction « using » approche n
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample4.aspx)]
 
-Appel de Html.BeginForm() sans aucun paramètre entraînera vers la sortie d’un élément de formulaire qui exécute une requête HTTP-POST à l’URL de la demande actuelle. Autrement dit pourquoi notre modifier la vue génère une  *&lt;action de formulaire = méthode « / préparés/modifier/1 » = « post »&gt;*  élément. Nous avons également transmis paramètres explicites à Html.BeginForm() si nous voulons à une autre URL.
+Appel de Html.BeginForm() sans aucun paramètre entraînera vers la sortie d’un élément de formulaire qui exécute une requête HTTP-POST à l’URL de la demande actuelle. Autrement dit pourquoi notre modifier la vue génère une *&lt;action de formulaire = méthode « / préparés/modifier/1 » = « post »&gt;* élément. Nous avons également transmis paramètres explicites à Html.BeginForm() si nous voulons à une autre URL.
 
 ##### <a name="htmltextbox-helper-method"></a>Méthode d’assistance de Html.TextBox()
 
@@ -115,7 +115,7 @@ Notre vue Edit.aspx utilise la méthode d’assistance Html.TextBox() pour gén�
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample5.aspx)]
 
-La méthode Html.TextBox() ci-dessus prend un seul paramètre, qui est utilisé pour spécifier les attributs id/nom de la &lt;d’entrée de type = « text » /&gt; élément à la sortie, ainsi que la propriété du modèle pour renseigner la valeur de la zone de texte à partir de. Par exemple, l’objet de dîner nous passées à la vue d’édition avait une valeur de propriété « Title » de « .NET perspectives », et donc notre méthode Html.TextBox("Title") appeler sortie :  *&lt;id d’entrée = « Title » name = « Title » type = valeur de « texte » = « .NET perspectives » /&gt;* .
+La méthode Html.TextBox() ci-dessus prend un seul paramètre, qui est utilisé pour spécifier les attributs id/nom de la &lt;d’entrée de type = « text » /&gt; élément à la sortie, ainsi que la propriété du modèle pour renseigner la valeur de la zone de texte à partir de. Par exemple, l’objet de dîner nous passées à la vue d’édition avait une valeur de propriété « Title » de « .NET perspectives », et donc notre méthode Html.TextBox("Title") appeler sortie : *&lt;id d’entrée = « Title » name = « Title » type = valeur de « texte » = « .NET perspectives » /&gt;*.
 
 Ou bien, nous pouvons utiliser le premier paramètre Html.TextBox() pour spécifier l’id/nom de l’élément, puis passez explicitement la valeur à utiliser en tant que second paramètre :
 
@@ -141,7 +141,7 @@ Nous allons commencer en ajoutant une méthode surchargée d’action « Modifi
 
 [!code-csharp[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample9.cs)]
 
-Lorsque l’attribut [AcceptVerbs] est appliqué aux méthodes d’action surchargé, ASP.NET MVC gère automatiquement la distribution des demandes à la méthode d’action appropriée selon le verbe HTTP entrante. Des demandes HTTP POST à */Dinners/modification / [id]* URL seront transmise à la méthode Edit ci-dessus, tandis que les toutes les autres requêtes de verbe HTTP à */Dinners/modification / [id]*URL passera à la première méthode de modification, nous avons implémenté (qui a pas avoir un attribut [AcceptVerbs]).
+Lorsque l’attribut [AcceptVerbs] est appliqué aux méthodes d’action surchargé, ASP.NET MVC gère automatiquement la distribution des demandes à la méthode d’action appropriée selon le verbe HTTP entrante. Des demandes HTTP POST à <em>/Dinners/modification / [id]</em> URL seront transmise à la méthode Edit ci-dessus, tandis que les toutes les autres requêtes de verbe HTTP à <em>/Dinners/modification / [id]</em>URL passera à la première méthode de modification, nous avons implémenté (qui a pas avoir un attribut [AcceptVerbs]).
 
 | **Rubrique de côté : Différencier pourquoi via les verbes HTTP ?** |
 | --- |
@@ -231,7 +231,7 @@ La méthode d’assistance Html.ValidationMessage() prend également en charge u
 
 [!code-aspx[Main](provide-crud-create-read-update-delete-data-form-entry-support/samples/sample18.aspx)]
 
-Le code ci-dessus génère :  *&lt;span classe = « erreur de validation de champ »&gt;\*&lt;/span&gt;*au lieu du texte d’erreur par défaut lorsqu’une erreur est présente pour le Propriété de date événement.
+Le code ci-dessus génère :  <em>&lt;span classe = « erreur de validation de champ »&gt;\*&lt;/span&gt;</em>au lieu du texte d’erreur par défaut lorsqu’une erreur est présente pour le Propriété de date événement.
 
 ##### <a name="htmlvalidationsummary-helper-method"></a>Méthode d’assistance de Html.ValidationSummary()
 
@@ -427,6 +427,6 @@ Nous disposons désormais implémenter au sein de notre classe DinnersController
 
 Nous allons maintenant voir comment nous pouvons utiliser des classes ViewData et ViewModel pour activer l’interface utilisateur enrichie sur nos formulaires.
 
->[!div class="step-by-step"]
-[Précédent](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
-[Suivant](use-viewdata-and-implement-viewmodel-classes.md)
+> [!div class="step-by-step"]
+> [Précédent](use-controllers-and-views-to-implement-a-listingdetails-ui.md)
+> [Suivant](use-viewdata-and-implement-viewmodel-classes.md)

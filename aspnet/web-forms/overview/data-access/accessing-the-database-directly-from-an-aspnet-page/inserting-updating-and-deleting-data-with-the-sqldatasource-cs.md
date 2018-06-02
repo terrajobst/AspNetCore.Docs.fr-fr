@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-cs
-title: "Insertion, mise à jour et suppression de données avec le SqlDataSource (c#) | Documents Microsoft"
+title: Insertion, mise à jour et suppression de données avec le SqlDataSource (c#) | Documents Microsoft
 author: rick-anderson
-description: "Dans les didacticiels précédents, nous avons appris comment le contrôle ObjectDataSource est autorisée pour l’insertion, de mise à jour et de suppression de données. Le contrôle SqlDataSource prend en charge t..."
+description: Dans les didacticiels précédents, nous avons appris comment le contrôle ObjectDataSource est autorisée pour l’insertion, de mise à jour et de suppression de données. Le contrôle SqlDataSource prend en charge t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3b080046df49ff6d4c83063d782962c5fcb33e94
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 25dab0292aefa183a1abc2615a7ba8e7a512346d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-c"></a>Insertion, mise à jour et suppression de données avec le SqlDataSource (c#)
 ====================
@@ -203,7 +203,7 @@ Si ces personnalisations sont requises, vous devez effectuer manuellement, par l
 > Lors de l’ajout de paramètres qui n’ont pas de champs correspondants dans les données de contrôle Web, gardez à l’esprit que ces valeurs de paramètres devrez attribuer des valeurs dans un mode quelconque. Ces valeurs peuvent être : codé en dur directement dans le `InsertCommand` ou `UpdateCommand`; peuvent provenir d’une source prédéfinie (chaîne de requête, l’état de session, les contrôles Web sur la page et ainsi de suite) ; peuvent être affectés ou par programme, comme nous l’avons vu dans le didacticiel précédent.
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans l’ordre pour les données de que contrôles Web afin d’utiliser leurs intégrées d’insertion, la modification et la suppression de fonctionnalités, le contrôle de source de données qu’ils sont liés à doit offrir. Pour le SqlDataSource, cela signifie que `INSERT`, `UPDATE`, et `DELETE` instructions SQL doivent être affectées à la `InsertCommand`, `UpdateCommand`, et `DeleteCommand` propriétés. Ces propriétés et les collections de paramètres correspondants, peuvent être ajoutées manuellement ou générées automatiquement via l’Assistant Configurer la Source de données. Dans ce didacticiel, nous avons examiné ces deux techniques.
 
@@ -213,8 +213,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](using-parameterized-queries-with-the-sqldatasource-cs.md)
-[Suivant](implementing-optimistic-concurrency-with-the-sqldatasource-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](using-parameterized-queries-with-the-sqldatasource-cs.md)
+> [Suivant](implementing-optimistic-concurrency-with-the-sqldatasource-cs.md)

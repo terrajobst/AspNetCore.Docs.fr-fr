@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
-title: "Création d’applications de Cloud du monde réel avec Azure | Documents Microsoft"
+title: Création d’applications de Cloud du monde réel avec Azure | Documents Microsoft
 author: MikeWasson
-description: "Ce livre électronique vous guide dans une approche basée sur des modèles de création de solutions de cloud du monde réel. Les modèles s’appliquent au processus de développement, ainsi que pour un..."
+description: Ce livre électronique vous guide dans une approche basée sur des modèles de création de solutions de cloud du monde réel. Les modèles s’appliquent au processus de développement, ainsi que pour un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 4de0b52e0b4ae7ce00e7b07bce2decfc5068964a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5a62818a2dc21128bb0a42a8b296ade460e7b060
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="building-real-world-cloud-apps-with-azure"></a>Création d’applications de Cloud du monde réel avec Azure
 ====================
@@ -60,7 +60,7 @@ Ce livre électronique explique treize recommandé de modèles pour le développ
     - Conserver le niveau web sans état.
     - Démo : mise à l’échelle et la montée en puissance automatique dans les applications Web dans Azure App Service.
     - Évitez d’état de session.
-    - Utiliser un CDN.
+    - Utiliser un CDN avec une stratégie de secours lorsque le CDN n’est pas disponible.
     - Utilisez le modèle de programmation asynchrone.
     - Démo : les asynchrones dans ASP.NET MVC et Entity Framework.
 - [L’authentification unique](single-sign-on.md). 
@@ -177,5 +177,5 @@ Vidéos :
 - [Architecture de Sites Web - avec Stefan Schackow](https://azure.microsoft.com/documentation/videos/why-azure-web-sites-plus-architecture/).
 - [Éléments internes de Sites Web Azure avec Nir Mashkowski](https://channel9.msdn.com/Shows/Web+Camps+TV/Windows-Azure-Web-Sites-Internals-with-Nir-Mashkowski).
 
->[!div class="step-by-step"]
-[Next](automate-everything.md)
+> [!div class="step-by-step"]
+> [Next](automate-everything.md)

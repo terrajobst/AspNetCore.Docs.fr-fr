@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/updating-deleting-and-creating-data
-title: "Mise à jour, suppression et la création des données avec la liaison de modèle et les web forms | Documents Microsoft"
+title: Mise à jour, suppression et la création des données avec la liaison de modèle et les web forms | Documents Microsoft
 author: tfitzmac
-description: "Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-..."
+description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/updating-deleting-and-creating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 18c065b44524e7738c048b5908fa50c592188064
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e6536f7858afde5faf3aedd34f3cbe95c5ed0d53
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="updating-deleting-and-creating-data-with-model-binding-and-web-forms"></a>Mise à jour, suppression et la création des données avec la liaison de modèle et les web forms
 ====================
@@ -133,6 +133,6 @@ Dans ce didacticiel, vous activé la mise à jour, la suppression et la créatio
 
 Dans la prochaine [didacticiel](sorting-paging-and-filtering-data.md) dans cette série, vous allez activer le tri, la pagination et le filtrage des données.
 
->[!div class="step-by-step"]
-[Précédent](retrieving-data.md)
-[Suivant](sorting-paging-and-filtering-data.md)
+> [!div class="step-by-step"]
+> [Précédent](retrieving-data.md)
+> [Suivant](sorting-paging-and-filtering-data.md)

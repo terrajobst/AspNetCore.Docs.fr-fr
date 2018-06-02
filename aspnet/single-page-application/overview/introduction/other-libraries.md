@@ -1,22 +1,22 @@
 ---
 uid: single-page-application/overview/introduction/other-libraries
-title: "Savoir une bibliothèque de Knockout ? | Microsoft Docs"
+title: Savoir une bibliothèque de Knockout ? | Microsoft Docs
 author: madskristensen
-description: "Savoir une bibliothèque de Knockout ?"
+description: Savoir une bibliothèque de Knockout ?
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/05/2013
 ms.topic: article
 ms.assetid: a8367c6d-ef94-4dff-a010-5eff9e6eea96
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/other-libraries
 msc.type: authoredcontent
-ms.openlocfilehash: 5a863f50401a4e2bab3f772374b7fd178f6c6cdf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6ac260e88fd156bad4b414e93325d5a04c490c88
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="know-a-library-other-than-knockout"></a>Savoir une bibliothèque de Knockout ?
 ====================
@@ -57,15 +57,17 @@ Comparaison avec les autres modèles répertoriés ici, la teample linge à chau
 
 Voici les fonctionnalités fournies par chaque modèle SPA :
 
-|  | Application à page unique ASP.NET | Réseau principal | Jeu d’enfant/angulaire | Jeu d’enfant/KO | Ember | Linge à chaud |
-| --- | --- | --- | --- | --- | --- | --- |
-| Exemple de tâches | &#10003; |  | &#10003; | &#10003; | &#10003; |  |
-| Modèle de récupération |  | &#10003; |  |  |  | &#10003; |
-| Navigation et l’historique |  | &#10003; | &#10003; |  | &#10003; | &#10003; |
-| Suivies |  |  |  |  |  |  |
-| angulaire |  |  | &#10003; |  |  |  |
-| &#8195; Réseau principal |  | &#10003; |  |  |  |  |
-| Jeu d’enfant |  |  | &#10003; | &#10003; |  | &#10003; |
-| durandal |  |  |  |  |  | &#10003; |
-| Ember |  |  |  |  | &#10003; |  |
-| Knockout | &#10003; |  |  | &#10003; |  | &#10003; |
+
+|                        | Application à page unique ASP.NET | Réseau principal | Jeu d’enfant/angulaire | Jeu d’enfant/KO |  Ember   | Linge à chaud |
+|------------------------|-------------|----------|----------------|-----------|----------|-----------|
+|      Exemple de tâches       |  &#10003;   |          |    &#10003;    | &#10003;  | &#10003; |           |
+|     Modèle de récupération      |             | &#10003; |                |           |          | &#10003;  |
+| Navigation et l’historique |             | &#10003; |    &#10003;    |           | &#10003; | &#10003;  |
+|        Suivies        |             |          |                |           |          |           |
+|        angulaire         |             |          |    &#10003;    |           |          |           |
+|    &#8195;Backbone     |             | &#10003; |                |           |          |           |
+|         Jeu d’enfant         |             |          |    &#10003;    | &#10003;  |          | &#10003;  |
+|        durandal        |             |          |                |           |          | &#10003;  |
+|         Ember          |             |          |                |           | &#10003; |           |
+|        Knockout        |  &#10003;   |          |                | &#10003;  |          | &#10003;  |
+

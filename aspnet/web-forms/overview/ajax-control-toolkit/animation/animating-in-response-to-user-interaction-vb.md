@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-vb
-title: "Animation en réponse à une Interaction de l’utilisateur (VB) | Documents Microsoft"
+title: Animation en réponse à une Interaction de l’utilisateur (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Les animations peuvent étoile..."
+description: Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Les animations peuvent étoile...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3219e9d126b3225bfc78d08fb3ac7ef4cc3dca75
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e12467bfeb88c2ab9d1cfb866506e9e8e7f9ae25
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animating-in-response-to-user-interaction-vb"></a>Animation en réponse à une Interaction de l’utilisateur (VB)
 ====================
@@ -51,11 +51,11 @@ Ensuite, ajoutez le `AnimationExtender` à la page, en fournissant une `ID`, le 
 
 Dans le `<Animations>` nœud, il existe cinq façons pour démarrer l’animation via l’intervention de l’utilisateur (l’élément manquant est `<OnLoad>` qui est exécuté une fois que la page entière a été entièrement chargée) :
 
-- `<OnClick>`(clic de souris sur le contrôle)
-- `<OnHoverOut>`(la souris s’écarte du contrôle)
-- `<OnHoverOver>`(la souris pointe sur un contrôle, l’arrêt du `<OnHoverOut>` animation)
-- `<OnMouseOut>`(la souris quitte un contrôle)
-- `<OnMouseOver>`(la souris pointe sur un contrôle, ne pas l’arrêt du `<OnMouseOut>` animation)
+- `<OnClick>` (clic de souris sur le contrôle)
+- `<OnHoverOut>` (la souris s’écarte du contrôle)
+- `<OnHoverOver>` (la souris pointe sur un contrôle, l’arrêt du `<OnHoverOut>` animation)
+- `<OnMouseOut>` (la souris quitte un contrôle)
+- `<OnMouseOver>` (la souris pointe sur un contrôle, ne pas l’arrêt du `<OnMouseOut>` animation)
 
 Dans ce scénario, `<OnClick>` est utilisé. Lorsque l’utilisateur clique sur le panneau de configuration, il est redimensionné et fondu en même temps.
 
@@ -66,6 +66,6 @@ Dans ce scénario, `<OnClick>` est utilisé. Lorsque l’utilisateur clique sur 
 
 Un clic de souris démarre l’animation ([cliquez pour afficher l’image en taille réelle](animating-in-response-to-user-interaction-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](picking-one-animation-out-of-a-list-vb.md)
-[Suivant](disabling-actions-during-animation-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](picking-one-animation-out-of-a-list-vb.md)
+> [Suivant](disabling-actions-during-animation-vb.md)

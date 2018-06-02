@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
-title: "Déployer des Applications Web dans les scénarios d’entreprise à l’aide de Visual Studio 2010 | Documents Microsoft"
+title: Déployer des Applications Web dans les scénarios d’entreprise à l’aide de Visual Studio 2010 | Documents Microsoft
 author: jrjlee
-description: "Cet ensemble de didacticiels décrit les outils et techniques que vous pouvez utiliser pour déployer des applications web dans différents scénarios d’entreprise. Cette rubrique explique comment utiliser mieux..."
+description: Cet ensemble de didacticiels décrit les outils et techniques que vous pouvez utiliser pour déployer des applications web dans différents scénarios d’entreprise. Cette rubrique explique comment utiliser mieux...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/03/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: 99bab371dd34b30f3554843e49bbec7f57c3f96c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 921b1ccd8a1f2109a51f3f75149588422fefb91d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-web-applications-in-enterprise-scenarios-using-visual-studio-2010"></a>Déployer des Applications Web dans les scénarios d’entreprise à l’aide de Visual Studio 2010
 ====================
@@ -36,7 +36,7 @@ par [Jason Lee](https://github.com/jrjlee)
 > > Alors que ces didacticiels décrivent l’utilisation de TFS en tant que l’élément de configuration serveur, les instructions sont facilement adaptée à n’importe quel serveur de l’élément de configuration. Vous n’avez pas besoin une connaissance détaillée de TFS pour comprendre et exploiter les didacticiels.
 > 
 > 
-> Pour obtenir une traduction italienne de ces didacticiels, visitez [http://www.lucamorelli.it](http://www.lucamorelli.it).
+> Pour obtenir une traduction italienne de ces didacticiels, visitez [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
 
 
 ## <a name="about-the-authors"></a>À propos des auteurs
@@ -80,5 +80,5 @@ La série comprend quatre jeux de didacticiel. Chacun se concentre sur les diff�
 
 Cet ensemble de didacticiels utilise un exemple de solution avec un niveau réaliste de complexité, ainsi que d’un scénario de déploiement d’une entreprise fictive, pour fournir une implémentation de référence et pour donner les tâches et les procédures pas à pas un contexte commun. La rubrique suivante, [déploiement Web d’entreprise : vue d’ensemble du scénario](enterprise-web-deployment-scenario-overview.md), présente le scénario et l’exemple de solution. À partir de là, vous pouvez travailler dans les didacticiels et les rubriques qui correspondent le mieux à vos besoins.
 
->[!div class="step-by-step"]
-[Next](enterprise-web-deployment-scenario-overview.md)
+> [!div class="step-by-step"]
+> [Next](enterprise-web-deployment-scenario-overview.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-vb
-title: "Validation des informations d’identification de l’utilisateur dans le magasin d’utilisateur d’appartenance (VB) | Documents Microsoft"
+title: Validation des informations d’identification de l’utilisateur dans le magasin d’utilisateur d’appartenance (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons examiner comment valider des informations d’identification d’un utilisateur sur le magasin d’utilisateur d’appartenance à l’aide de moyens par programme et le contrôle de connexion en cours..."
+description: Dans ce didacticiel, nous allons examiner comment valider des informations d’identification d’un utilisateur sur le magasin d’utilisateur d’appartenance à l’aide de moyens par programme et le contrôle de connexion en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f57bc8c32757c1ea25bf6bbb34539570e4c09aad
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f8d3de9736d901e02096d20345650b47c47897ae
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-vb"></a>Validation des informations d’identification de l’utilisateur dans le magasin d’utilisateur d’appartenance (VB)
 ====================
@@ -71,8 +71,8 @@ Lorsqu’un visiteur atteint la page de connexion et envoie ses informations d�
 
 Pour empêcher ces attaques en force brute, l’infrastructure d’appartenance verrouille un utilisateur s’il existe un certain nombre de tentatives de connexion ayant échoué dans un certain temps. Les paramètres exacts sont configurables via les paramètres de configuration de fournisseur de l’appartenance deux suivantes :
 
-- `maxInvalidPasswordAttempts`-Spécifie le mot de passe non valide combien tentatives sont autorisées pour l’utilisateur au sein de la période de temps avant que le compte est verrouillé. La valeur par défaut est 5.
-- `passwordAttemptWindow`-Indique la période de temps en minutes pendant lesquelles le nombre spécifié de tentatives de connexion non valide provoque le compte peuvent être verrouillés. La valeur par défaut est 10.
+- `maxInvalidPasswordAttempts` -Spécifie le mot de passe non valide combien tentatives sont autorisées pour l’utilisateur au sein de la période de temps avant que le compte est verrouillé. La valeur par défaut est 5.
+- `passwordAttemptWindow` -Indique la période de temps en minutes pendant lesquelles le nombre spécifié de tentatives de connexion non valide provoque le compte peuvent être verrouillés. La valeur par défaut est 10.
 
 Si un utilisateur a été verrouillé, elle ne peut pas se connecter jusqu'à ce qu’un administrateur déverrouille son compte. Lorsqu’un utilisateur est verrouillé, le `ValidateUser` méthode sera *toujours* retourner `False`, même si les informations d’identification valides sont fournies. Alors que ce comportement réduit la probabilité qu’un pirate s’arrêtera dans votre site via des méthodes de force brute, il peut finir de verrouillage d’un utilisateur valide qui a oublié simplement son mot de passe ou accidentellement a verrouillage des majuscules ou ayant un jour de la saisie incorrect.
 
@@ -110,7 +110,7 @@ Et nous avons terminé ! Clic sur bouton se connecter du contrôle de connexion
 
 Le contrôle de connexion utilise quatre facteurs pour déterminer la page appropriée pour rediriger l’utilisateur lors d’une connexion réussie :
 
-- Si le contrôle de connexion est sur la page de connexion comme défini par `loginUrl` est de valeur de valeur par défaut de ce paramètre dans la configuration de l’authentification de formulaires ;`Login.aspx`
+- Si le contrôle de connexion est sur la page de connexion comme défini par `loginUrl` est de valeur de valeur par défaut de ce paramètre dans la configuration de l’authentification de formulaires ; `Login.aspx`
 - La présence d’un `ReturnUrl` paramètre querystring
 - La valeur du contrôle de connexion [ `DestinationUrl` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.destinationpageurl.aspx)
 - Le `defaultUrl` la valeur spécifiée dans les formulaires, les paramètres de configuration de l’authentification ; par défaut de ce paramètre est Default.aspx
@@ -230,7 +230,7 @@ Comme vous pouvez le voir, la `Authenticate` un objet de type est passé au gest
 
 ### <a name="determining-and-validating-the-supplied-credentials"></a>Détermination et valider les informations d’identification fournies
 
-Utilisez le contrôle de connexion [ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx) et [ `Password` propriétés](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx) pour déterminer les informations d’identification de nom d’utilisateur et mot de passe entrées par l’utilisateur. Afin de déterminer les valeurs entrées dans les contrôles Web supplémentaires (telles que la `Email` TextBox, nous avons ajouté à l’étape précédente), utilisez `LoginControlID.FindControl`(«*`controlID`*») pour obtenir une référence de programmation pour le Web contrôle dans le modèle dont `ID` propriété est égale à  *`controlID`* . Par exemple, pour obtenir une référence à la `Email` zone de texte, utilisez le code suivant :
+Utilisez le contrôle de connexion [ `UserName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.username.aspx) et [ `Password` propriétés](https://msdn.microsoft.com/library/system.web.ui.webcontrols.login.password.aspx) pour déterminer les informations d’identification de nom d’utilisateur et mot de passe entrées par l’utilisateur. Afin de déterminer les valeurs entrées dans les contrôles Web supplémentaires (telles que la `Email` TextBox, nous avons ajouté à l’étape précédente), utilisez `LoginControlID.FindControl`(«*`controlID`*») pour obtenir une référence de programmation pour le Web contrôle dans le modèle dont `ID` propriété est égale à *`controlID`*. Par exemple, pour obtenir une référence à la `Email` zone de texte, utilisez le code suivant :
 
 `Dim EmailTextBox As TextBox = CType(myLogin.FindControl("Email"), TextBox)`
 
@@ -310,12 +310,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Teresa Murphy et Michael Olivero. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Précédent](creating-user-accounts-vb.md)
-[Suivant](user-based-authorization-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-user-accounts-vb.md)
+> [Suivant](user-based-authorization-vb.md)

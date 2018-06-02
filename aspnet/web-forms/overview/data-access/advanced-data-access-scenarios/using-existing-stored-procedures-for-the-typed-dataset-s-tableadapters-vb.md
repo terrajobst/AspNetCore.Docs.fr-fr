@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
-title: "À l’aide d’existante des procédures stockées pour TableAdapters le groupe de données typé (VB) | Documents Microsoft"
+title: À l’aide d’existante des procédures stockées pour TableAdapters le groupe de données typé (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans le didacticiel précédent, nous avons appris à utiliser l’Assistant TableAdapter pour générer des procédures stockées. Dans ce didacticiel, nous apprendre comment le TableAdapter même..."
+description: Dans le didacticiel précédent, nous avons appris à utiliser l’Assistant TableAdapter pour générer des procédures stockées. Dans ce didacticiel, nous apprendre comment le TableAdapter même...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5d1be6c30cda5a06087516210a77f48b6a3fe45b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ac319b67c9215c5dde8e7507076ed45a1f7825c6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>À l’aide d’existante des procédures stockées pour TableAdapters le groupe de données typé (VB)
 ====================
@@ -56,7 +56,7 @@ Entrez le script suivant :
 
 Ce script, lors de l’exécution, ajoutera une nouvelle procédure stockée à la base de données Northwind nommé `Products_SelectByCategoryID`. Cette procédure stockée accepte un paramètre d’entrée unique (`@CategoryID`, de type `int`) et elle retourne tous les champs de ces produits avec une mise en correspondance `CategoryID` valeur.
 
-Pour exécuter cette `CREATE PROCEDURE` de script et ajouter de la procédure stockée à la base de données, cliquez sur l’icône Enregistrer dans la barre d’outils ou appuyez sur Ctrl + S. Après cela, les actualisations de dossier de procédures stockées, montrant nouvellement créé la procédure stockée. En outre, le script dans la fenêtre modifiera plusieurs à partir de `CREATE PROCEDURE dbo.Products_SelectProductByCategoryID` à `ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`. `CREATE PROCEDURE`Ajoute une nouvelle procédure stockée à la base de données, tandis que `ALTER PROCEDURE` met à jour un existant. Étant donné que le début du script a changé `ALTER PROCEDURE`, modifier les procédures stockées d’entrée paramètres ou des instructions SQL et en cliquant sur l’icône Enregistrer met à jour la procédure stockée avec ces modifications.
+Pour exécuter cette `CREATE PROCEDURE` de script et ajouter de la procédure stockée à la base de données, cliquez sur l’icône Enregistrer dans la barre d’outils ou appuyez sur Ctrl + S. Après cela, les actualisations de dossier de procédures stockées, montrant nouvellement créé la procédure stockée. En outre, le script dans la fenêtre modifiera plusieurs à partir de `CREATE PROCEDURE dbo.Products_SelectProductByCategoryID` à `ALTER PROCEDURE` `dbo.Products_SelectProductByCategoryID`. `CREATE PROCEDURE` Ajoute une nouvelle procédure stockée à la base de données, tandis que `ALTER PROCEDURE` met à jour un existant. Étant donné que le début du script a changé `ALTER PROCEDURE`, modifier les procédures stockées d’entrée paramètres ou des instructions SQL et en cliquant sur l’icône Enregistrer met à jour la procédure stockée avec ces modifications.
 
 La figure 2 illustre Visual Studio après le `Products_SelectByCategoryID` procédure stockée a été enregistrée.
 
@@ -273,12 +273,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont Hilton Geisenow, S ren Jacob Lauritsen et Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
-[Suivant](updating-the-tableadapter-to-use-joins-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+> [Suivant](updating-the-tableadapter-to-use-joins-vb.md)

@@ -2,7 +2,7 @@
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4
 title: Ouvrir des Types dans OData v4 avec ASP.NET Web API | Documents Microsoft
 author: microsoft
-description: "Dans OData v4, un type ouvert est un type de stuctured qui contient les propriétés dynamiques, en plus de toutes les propriétés qui sont déclarées dans la définition de type. Ouvrir..."
+description: Dans OData v4, un type ouvert est un type de stuctured qui contient les propriétés dynamiques, en plus de toutes les propriétés qui sont déclarées dans la définition de type. Ouvrir...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/15/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/use-open-types-in-odata-v4
 msc.type: authoredcontent
-ms.openlocfilehash: c2d7454534ff0e9e0a80365793800ab7c45d3b6e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fe67b9a11a82b55d5f3e0e5f1b0cee10a58833d2
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="open-types-in-odata-v4-with-aspnet-web-api"></a>Ouvrir des Types dans OData v4 avec l’API Web ASP.NET
 ====================
@@ -88,7 +88,7 @@ Notez que la première `Book` instance ne possède pas de propriétés dynamique
 En outre, le `Press` propriété dudit `Book` instance a les propriétés dynamiques suivantes :
 
 - « Blog » : type primitif
-- « Address » : type complexe
+- "Address": Complex type
 
 ## <a name="query-the-metadata"></a>Interroger les métadonnées
 
@@ -100,11 +100,11 @@ Pour obtenir le document de métadonnées OData, envoyez une demande GET pour `~
 
 - Pour le `Book` et `Press` types, la valeur de la `OpenType` attribut a la valeur true. Le `Customer` et `Address` types ne possèdent pas cet attribut.
 - Le `Book` type d’entité possède trois propriétés déclarées : ISBN, le titre et appuyez sur. Les métadonnées OData n’incluent pas le `Book.Properties` propriété à partir de la classe CLR.
-- De même, la `Press` type complexe possède uniquement deux propriétés déclarées : nom et la catégorie. Les métadonnées n’incluent pas pas le `Press.DynamicProperties` propriété à partir de la classe CLR.
+- De même, la `Press` type complexe possède uniquement deux propriétés déclarées : nom et la catégorie. Les métadonnées n’incluent pas le `Press.DynamicProperties` propriété à partir de la classe CLR.
 
 ## <a name="query-an-entity"></a>Une entité de requête
 
-Pour obtenir le livre avec ISBN égal à « 978-0-7356-7942-9 », envoi envoyer une demande GET pour `~/Books('978-0-7356-7942-9')`. Le corps de réponse doit ressembler à ce qui suit. (Mise en retrait pour le rendre plus lisible.)
+Pour obtenir le livre avec ISBN égal à « 978-0-7356-7942-9 », envoyer une demande GET pour `~/Books('978-0-7356-7942-9')`. Le corps de réponse doit ressembler à ce qui suit. (Mise en retrait pour le rendre plus lisible.)
 
 [!code-console[Main](use-open-types-in-odata-v4/samples/sample7.cmd?highlight=8-13,15-23)]
 

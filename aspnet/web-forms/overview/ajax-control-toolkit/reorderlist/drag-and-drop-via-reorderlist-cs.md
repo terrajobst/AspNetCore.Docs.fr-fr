@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
-title: "Faites glisser et déposez via ReorderList fournissant (c#) | Documents Microsoft"
+title: Faites glisser et déposez via ReorderList fournissant (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle ReorderList fournissant dans la boîte à outils de contrôle AJAX fournit une liste qui peut être réorganisée par l’utilisateur via la fonction glisser- déposer. L’ordre actuel de la liste est en cours..."
+description: Le contrôle ReorderList fournissant dans la boîte à outils de contrôle AJAX fournit une liste qui peut être réorganisée par l’utilisateur via la fonction glisser- déposer. L’ordre actuel de la liste est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6afecfc7330647e6f4944c507e308afec6d2401b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 42464d10f119e0ba51d5eebf2a67e76e3e419bda
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="drag-and-drop-via-reorderlist-c"></a>Faites glisser et déposez via ReorderList fournissant (c#)
 ====================
@@ -35,16 +35,16 @@ Le `ReorderList` contrôle dans la boîte à outils de contrôle AJAX fournit un
 
 Le `ReorderList` contrôle prend en charge la liaison de données à partir d’une base de données à la liste. De plus, il prend également en charge l’écriture des modifications à l’ordre de l’élément de liste dans le magasin de données.
 
-Cet exemple utilise Microsoft SQL Server 2005 Express Edition en tant que le magasin de données. La base de données est une partie facultative (et gratuite) d’une installation de Visual Studio, y compris l’édition expresse. Il est également disponible en téléchargement séparé sous [https://go.microsoft.com/fwlink/?LinkId=64064](https://go.microsoft.com/fwlink/?LinkId=64064). Pour cet exemple, nous partons du principe que l’instance de SQL Server 2005 Express Edition est appelée `SQLEXPRESS` et réside sur le même ordinateur que le serveur web ; il s’agit également de la configuration par défaut. Si votre programme d’installation est différente, vous devez adapter les informations de connexion pour la base de données.
+Cet exemple utilise Microsoft SQL Server 2005 Express Edition en tant que le magasin de données. La base de données est une partie facultative (et gratuite) d’une installation de Visual Studio, y compris l’édition expresse. Il est également disponible en téléchargement séparé sous [ https://go.microsoft.com/fwlink/?LinkId=64064 ](https://go.microsoft.com/fwlink/?LinkId=64064). Pour cet exemple, nous partons du principe que l’instance de SQL Server 2005 Express Edition est appelée `SQLEXPRESS` et réside sur le même ordinateur que le serveur web ; il s’agit également de la configuration par défaut. Si votre programme d’installation est différente, vous devez adapter les informations de connexion pour la base de données.
 
 Pour configurer la base de données le plus simple consiste à utiliser le Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang = fr](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en) ). Se connecter au serveur, double-cliquez sur `Databases` et créer une base de données (avec le bouton droit et choisissez `New Database`) appelée `Tutorials`.
 
 Dans cette base de données, créez une nouvelle table appelée `AJAX` avec les quatre colonnes suivantes :
 
-- `id`(entier de clés, primaire, identité, non NULL)
-- `char`(char (1), valeur NULL)
-- `description`(varchar (50), valeur NULL)
-- `position`(int, NULL)
+- `id` (entier de clés, primaire, identité, non NULL)
+- `char` (char (1), valeur NULL)
+- `description` (varchar (50), valeur NULL)
+- `position` (int, NULL)
 
 
 [![La disposition de la table AJAX](drag-and-drop-via-reorderlist-cs/_static/image2.png)](drag-and-drop-via-reorderlist-cs/_static/image1.png)
@@ -90,6 +90,6 @@ Exécuter cet exemple dans le navigateur et réorganiser les éléments de liste
 
 Élément de données dans les modifications de base de données en fonction de la nouvelle liste d’ordre ([cliquez pour afficher l’image en taille réelle](drag-and-drop-via-reorderlist-cs/_static/image9.png))
 
->[!div class="step-by-step"]
-[Précédent](using-postbacks-with-reorderlist-cs.md)
-[Suivant](using-postbacks-with-reorderlist-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-postbacks-with-reorderlist-cs.md)
+> [Suivant](using-postbacks-with-reorderlist-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-vb
-title: "Création de cases à cocher s’excluent mutuellement (VB) | Documents Microsoft"
+title: Création de cases à cocher s’excluent mutuellement (VB) | Documents Microsoft
 author: wenz
-description: "Lorsque seul un ensemble d’options peut être sélectionné, cases d’option sont généralement utilisées. Il existe cependant un inconvénient, : une fois qu’une case d’option dans un groupe est sélectionnée,..."
+description: 'Lorsque seul un ensemble d’options peut être sélectionné, cases d’option sont généralement utilisées. Il existe cependant un inconvénient, : une fois qu’une case d’option dans un groupe est sélectionnée,...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 023ca0b145de8147a98e78f4dba20846dc344f06
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cdb93a080fb62cfdc7e3ff0604a1447e2bb99071
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-mutually-exclusive-checkboxes-vb"></a>Création de cases à cocher s’excluent mutuellement (VB)
 ====================
@@ -54,5 +54,5 @@ Enregistrez et exécutez la page : vous pouvez vérifier et désactivez les cas
 
 Case à cocher qu’une seule peut être vérifiée à la fois ([cliquez pour afficher l’image en taille réelle](creating-mutually-exclusive-checkboxes-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](creating-mutually-exclusive-checkboxes-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-mutually-exclusive-checkboxes-cs.md)

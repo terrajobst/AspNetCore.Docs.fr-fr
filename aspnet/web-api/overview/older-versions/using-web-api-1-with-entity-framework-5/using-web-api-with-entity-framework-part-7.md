@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
-title: "Partie 7 : Création de la Main Page | Documents Microsoft"
+title: 'Partie 7 : Création de la Main Page | Documents Microsoft'
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 4d06e72bc664f707bbbe4603be41347158c58903
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2c378e68a1e6600daf655c19afbfe355e89496d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="part-7-creating-the-main-page"></a>Partie 7 : Création de la Main Page
 ====================
@@ -59,13 +59,13 @@ Les utilisateurs peuvent sélectionner une commande existante et obtenir les dé
 
 Le `OrderDetailsViewModel` est initialisé avec une commande, et il extrait les détails de commande en envoyant une requête AJAX au serveur.
 
-En outre, notez le `total` propriété sur le `OrderDetailsViewModel`. Cette propriété est un type spécial d’observable appelé un [calculée observable](http://knockoutjs.com/documentation/computedObservables.html). Comme son nom l’indique, un observable calculée vous permet de lier des données à une valeur calculée &#8212; dans ce cas, le coût total de la commande.
+En outre, notez le `total` propriété sur le `OrderDetailsViewModel`. Cette propriété est un type spécial d’observable appelé un [calculée observable](http://knockoutjs.com/documentation/computedObservables.html). Comme son nom l’indique, un observable calculée vous permet de lier les données à une valeur calculée&#8212;dans ce cas, le coût total de la commande.
 
 Ensuite, ajoutez ces fonctions à `AppViewModel`:
 
-- `resetCart`Supprime tous les éléments du panier.
-- `getDetails`Obtient les détails d’une commande (par pusing un nouveau `OrderDetailsViewModel` sur la `details` liste).
-- `createOrder`Crée une nouvelle commande et vide le panier d’achat.
+- `resetCart` Supprime tous les éléments du panier.
+- `getDetails` Obtient les détails d’une commande (par pusing un nouveau `OrderDetailsViewModel` sur la `details` liste).
+- `createOrder` Crée une nouvelle commande et vide le panier d’achat.
 
 
 [!code-javascript[Main](using-web-api-with-entity-framework-part-7/samples/sample6.js?highlight=4)]
@@ -94,7 +94,7 @@ Voici les liaisons pour le panier d’achat :
 
 Il effectue une itération sur le tableau de panier et affiche le nom, le prix et la quantité. Notez que le lien « Supprimer » et le bouton « Créer une commande » sont liées à des fonctions de modèle d’affichage.
 
-**Orders**
+**Commandes**
 
 Voici les liaisons pour la liste des commandes :
 
@@ -119,5 +119,5 @@ Ressources supplémentaires :
 - [ASP.NET Data Access Content Map](https://msdn.microsoft.com/library/6759sth4.aspx)
 - [Centre de développement Entity Framework](https://msdn.microsoft.com/data/ef)
 
->[!div class="step-by-step"]
-[Précédent](using-web-api-with-entity-framework-part-6.md)
+> [!div class="step-by-step"]
+> [Précédent](using-web-api-with-entity-framework-part-6.md)

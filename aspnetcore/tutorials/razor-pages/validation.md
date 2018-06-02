@@ -1,21 +1,22 @@
 ---
-title: Ajout de la validation
+title: Ajouter une validation à une page Razor ASP.NET Core
 author: rick-anderson
-description: "Explique comment ajouter la validation à une page Razor."
+description: Découvrez comment ajouter la validation à une page Razor dans ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 770b930373888c8b4bd578ba6d2524546549800e
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: bf3cfd8ce7616807bae4bcacf09b63e54c8fae55
+ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="adding-validation-to-a-razor-page"></a>Ajout de la validation à une page Razor
+# <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -33,7 +34,7 @@ Ouvrez le fichier *Movie.cs*. [DataAnnotations](https://docs.microsoft.com/aspne
 
 Mettez à jour la classe `Movie` pour tirer parti des attributs de validation `Required`, `StringLength`, `RegularExpression` et `Range`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 Les attributs de validation spécifient un comportement qui est appliqué sur les propriétés du modèle :
 
@@ -85,7 +86,7 @@ Facultatif : Testez la validation côté serveur :
 
 Le code suivant affiche la partie de la page *Create.cshtml* pour laquelle vous avez généré automatiquement des modèles précédemment dans le didacticiel. Elle est utilisée par les pages Créer et Modifier pour afficher le formulaire initial et le réafficher en cas d’erreur.
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
 Le [Tag Helper d’entrée](xref:mvc/views/working-with-forms) utilise les attributs [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) et produit les attributs HTML nécessaires à la validation jQuery côté client. Le [Tag Helper de validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) affiche les erreurs de validation. Pour plus d’informations, consultez [Validation](xref:mvc/models/validation).
 
@@ -97,7 +98,7 @@ Quand la logique de validation doit être modifiée, cela s’effectue uniquemen
 
 Examiner la classe `Movie`. L’espace de noms `System.ComponentModel.DataAnnotations` fournit des attributs de mise en forme en plus de l’ensemble intégré d’attributs de validation. L'attribut `DataType` est appliqué aux propriétés `ReleaseDate` et `Price`.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
 Les attributs `DataType` fournissent uniquement des conseils permettant au moteur de vue de mettre en forme les données (et fournissent des attributs tels que `<a>` pour les URL et `<a href="mailto:EmailAddress.com">` pour l’e-mail). Utilisez l’attribut `RegularExpression` pour valider le format des données. L’attribut `DataType` sert à spécifier un type de données qui est plus spécifique que le type intrinsèque de la base de données. Les attributs `DataType` ne sont pas des attributs de validation. Dans l’exemple d’application, seule la date est affichée, sans l’heure.
 
@@ -130,9 +131,9 @@ Il n’est généralement pas recommandé de compiler des dates en dur dans vos 
 
 Le code suivant illustre la combinaison d’attributs sur une seule ligne :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-La rubrique [Bien démarrer avec les pages Razor et Entity Framework Core](xref:data/ef-rp/intro) présente des opérations Entity Framework Core plus avancées avec les pages Razor.
+La rubrique [Bien démarrer avec les pages Razor et Entity Framework Core](xref:data/ef-rp/intro) présente des opérations EF Core plus avancées avec les pages Razor.
 
 ### <a name="publish-to-azure"></a>Publier sur Azure
 
@@ -143,8 +144,8 @@ Consultez [Publier une application web ASP.NET Core sur Azure App Service à l�
 * [Utilisation des formulaires](xref:mvc/views/working-with-forms)
 * [Globalisation et localisation](xref:fundamentals/localization)
 * [Introduction aux Tag Helpers](xref:mvc/views/tag-helpers/intro)
-* [Création de Tag Helpers](xref:mvc/views/tag-helpers/authoring)
+* [Créer des Tag Helpers](xref:mvc/views/tag-helpers/authoring)
 
->[!div class="step-by-step"]
-[Précédent : Ajout d’un nouveau champ](xref:tutorials/razor-pages/new-field)
-[Suivant : Chargement de fichiers](xref:tutorials/razor-pages/uploading-files)
+> [!div class="step-by-step"]
+> [Précédent : Ajout d’un nouveau champ](xref:tutorials/razor-pages/new-field)
+> [Suivant : Chargement de fichiers](xref:tutorials/razor-pages/uploading-files)

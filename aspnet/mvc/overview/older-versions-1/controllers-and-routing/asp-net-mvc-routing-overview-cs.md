@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs
-title: "Présentation du routage ASP.NET MVC (c#) | Documents Microsoft"
+title: Présentation du routage ASP.NET MVC (c#) | Documents Microsoft
 author: StephenWalther
-description: "Dans ce didacticiel, Stephen Walther montre comment l’infrastructure ASP.NET MVC mappe les demandes du navigateur aux actions de contrôleur."
+description: Dans ce didacticiel, Stephen Walther montre comment l’infrastructure ASP.NET MVC mappe les demandes du navigateur aux actions de contrôleur.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-routing-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 714fd1939ffeba11b84a82e80193ecbbe4b12e09
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fa565d2ef253539844f5224df00bdcdc047bb3f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-routing-overview-c"></a>Présentation du routage ASP.NET MVC (c#)
 ====================
@@ -47,7 +47,7 @@ La table d’itinéraires par défaut contient un seul itinéraire (nommé par d
 
 Imaginez que vous entrez l’URL suivante dans la barre d’adresse de votre navigateur web :
 
-/ Home/Index/3
+/Home/Index/3
 
 L’itinéraire par défaut est mappé à cette URL pour les paramètres suivants :
 
@@ -55,7 +55,7 @@ L’itinéraire par défaut est mappé à cette URL pour les paramètres suivant
 
 - action = Index
 
-- ID = 3
+- id = 3
 
 Lorsque vous demandez l’URL /Home/Index/3, le code suivant est exécuté :
 
@@ -105,9 +105,9 @@ Enfin, l’appel à la méthode Index() dans la liste de 5 avec l’URL /Home en
 
 L’URL /Home/Index/3, quant à eux, fonctionne parfaitement avec l’action de contrôleur d’Index dans la liste 5. La demande /Home/Index/3 entraîne la méthode Index() être appelé avec un paramètre d’Id qui a la valeur 3.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel est de vous fournir une brève introduction au routage ASP.NET. Nous avons examiné la table d’itinéraires par défaut que vous obtenez avec une application ASP.NET MVC. Vous avez appris comment l’itinéraire par défaut mappe des URL aux actions de contrôleur.
 
->[!div class="step-by-step"]
-[Next](understanding-action-filters-cs.md)
+> [!div class="step-by-step"]
+> [Next](understanding-action-filters-cs.md)

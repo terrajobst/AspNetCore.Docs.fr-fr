@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview
-title: "Déploiement Web d’entreprise : Vue d’ensemble du scénario | Documents Microsoft"
+title: 'Déploiement Web d’entreprise : Vue d’ensemble du scénario | Documents Microsoft'
 author: jrjlee
-description: "Cet ensemble de didacticiels utilise un exemple de solution avec un niveau réaliste de complexité, ainsi que d’un scénario de déploiement d’une entreprise fictive, pour fournir une référence..."
+description: Cet ensemble de didacticiels utilise un exemple de solution avec un niveau réaliste de complexité, ainsi que d’un scénario de déploiement d’une entreprise fictive, pour fournir une référence...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/03/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview
 msc.type: authoredcontent
-ms.openlocfilehash: f90db22bf98456661c530e728e854ce109aec6fd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 20f6e206d6aa4bebb4936246468f5ada0e213236
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="enterprise-web-deployment-scenario-overview"></a>Déploiement Web d’entreprise : Vue d’ensemble du scénario
 ====================
@@ -105,7 +105,7 @@ Voici une liste de chaque étape du processus de déploiement du point de vue de
 
 ### <a name="key-deployment-issues"></a>Principaux problèmes de déploiement
 
-La solution de gestionnaire de contacts et le scénario de Fabrikam, Inc. Mettez en surbrillance les différents problèmes courants et des défis que vous pouvez rencontrer lorsque vous déployez complexes, les solutions d’entreprise à l’échelle. Exemple :
+La solution de gestionnaire de contacts et le scénario de Fabrikam, Inc. Mettez en surbrillance les différents problèmes courants et des défis que vous pouvez rencontrer lorsque vous déployez complexes, les solutions d’entreprise à l’échelle. Par exemple :
 
 - Vous devez être en mesure de déployer des projets pour plusieurs environnements, comme le développeur environnements ou de test, intermédiaire des plates-formes et des serveurs de production. La solution doit être déployé avec différents paramètres de configuration pour chaque environnement.
 - Vous devez déployer plusieurs projets dépendants simultanément dans le cadre d’un processus de génération et de déploiement étape unique ou automatisé.
@@ -115,13 +115,13 @@ La solution de gestionnaire de contacts et le scénario de Fabrikam, Inc. Mettez
 - Vous devez déployer des bases de données d’appartenance sur une base ad hoc sans déployer des données de compte d’utilisateur. Vous devez également mettre à jour le schéma des bases de données d’appartenance déployé sans perte de données de compte utilisateur existant.
 - Vous devez exclure certains fichiers ou dossiers lorsque vous déployez du contenu pour les environnements cibles différents.
 
-En outre, la gestion du déploiement quand les mises à jour fréquentes et incrémentielle lève des défis supplémentaires. Exemple :
+En outre, la gestion du déploiement quand les mises à jour fréquentes et incrémentielle lève des défis supplémentaires. Par exemple :
 
 - Pour exécuter des tests unitaires chaque fois qu’un développeur vérifie dans le nouveau code. Vous souhaitez déployer la solution si le code réussit les tests unitaires uniquement.
 - Lorsque vous déployez une application web dans un environnement intermédiaire ou de production, vous souhaitez rediriger les utilisateurs vers un *application\_offline.htm* fichier pendant la durée du processus de déploiement.
 - Vous souhaitez connecter des activités de déploiement. Le processus de déploiement doit envoyer des notifications par courrier électronique des déploiements réussies ou échoués pour les destinataires désignés.
 - En cas d’un déploiement automatisé, le processus de déploiement doit réexécuter le déploiement actuel ou déployer le package web précédente à la place.
 
->[!div class="step-by-step"]
-[Précédent](deploying-web-applications-in-enterprise-scenarios.md)
-[Suivant](application-lifecycle-management-from-development-to-production.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-web-applications-in-enterprise-scenarios.md)
+> [Suivant](application-lifecycle-management-from-development-to-production.md)

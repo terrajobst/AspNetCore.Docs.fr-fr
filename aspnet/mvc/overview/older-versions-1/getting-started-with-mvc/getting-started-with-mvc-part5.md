@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part5
-title: "L’accès aux données de votre modèle à partir d’un contrôleur | Documents Microsoft"
+title: L’accès aux données de votre modèle à partir d’un contrôleur | Documents Microsoft
 author: shanselman
-description: "Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données."
+description: Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part5
 msc.type: authoredcontent
-ms.openlocfilehash: cf81d351aef45af3640f5d113eb3619911e03606
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 2ba1b73f40a920e27e4a03d9f703e62054d3f25c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>L’accès aux données de votre modèle à partir d’un contrôleur
 ====================
@@ -63,6 +63,6 @@ Elle consiste à créer des liens ne sont pas nécessaires, nous allons supprime
 
 Nous disposons désormais d’une liste simple de nos données de film. Toutefois, si vous cliquez sur le lien « Nouvel », nous obtenons une erreur car il n’est pas connecté ! Nous allons implémenter une méthode d’Action de création et permettre à un utilisateur à entrer de nouveaux films dans notre base de données.
 
->[!div class="step-by-step"]
-[Précédent](getting-started-with-mvc-part4.md)
-[Suivant](getting-started-with-mvc-part6.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started-with-mvc-part4.md)
+> [Suivant](getting-started-with-mvc-part6.md)

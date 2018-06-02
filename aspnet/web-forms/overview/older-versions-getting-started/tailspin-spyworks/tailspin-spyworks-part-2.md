@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2
-title: "Partie 2 : Couche d’accès aux données | Documents Microsoft"
+title: 'Partie 2 : Couche d’accès aux données | Documents Microsoft'
 author: JoeStagner
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 2 couvre l’ajout de la couche d’accès aux données."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 2 couvre l’ajout de la couche d’accès aux données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 8b07b320640c1bb0074a4d3a04ca7c5b7e7bb6cd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9f734b04a0f4cec3c33bc5b42ef283ea64cdb463
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-2-data-access-layer"></a>Partie 2 : Couche d’accès aux données
 ====================
@@ -27,7 +27,7 @@ par [Joe Stagner](https://github.com/JoeStagner)
 > Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 2 couvre l’ajout de la couche d’accès aux données.
 
 
-## <a id="_Toc260221668"></a>Ajout de la couche d’accès aux données
+## <a id="_Toc260221668"></a>  Ajout de la couche d’accès aux données
 
 Notre application de commerce électronique dépend de deux bases de données.
 
@@ -57,6 +57,6 @@ Enregistrez et générez.
 
 Nous sommes maintenant prêts à ajouter la fonctionnalité de notre premier : un menu de catégorie de produit.
 
->[!div class="step-by-step"]
-[Précédent](tailspin-spyworks-part-1.md)
-[Suivant](tailspin-spyworks-part-3.md)
+> [!div class="step-by-step"]
+> [Précédent](tailspin-spyworks-part-1.md)
+> [Suivant](tailspin-spyworks-part-3.md)

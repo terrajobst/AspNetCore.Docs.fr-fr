@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
-title: "Examen des méthodes de modification et affichage Modifier | Documents Microsoft"
+title: Examen des méthodes de modification et affichage Modifier | Documents Microsoft
 author: Rick-Anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: d7e1ba503b8aa815cebf431d2f5ffc9436b3575b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a3baa8e9af572d4c21813218ba394715a6db65cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Examen des méthodes de modification et la vue d’édition
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 Dans cette section, vous allez examiner générées `Edit` méthodes d’action et des vues pour le contrôleur vidéo. Mais tout d’abord prendra un détournement court faire plus de la date de publication. Ouvrez le *Models\Movie.cs* et ajoutez les lignes en surbrillance ci-dessous :
 
@@ -62,7 +62,7 @@ Notez que la deuxième méthode d’action `Edit` est précédée de l’attribu
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample6.cshtml?highlight=9)]
 
-`@Html.AntiForgeryToken()`génère un jeton anti-contrefaçon formulaire masqué qui doit correspondre dans le `Edit` méthode de la `Movies` contrôleur. Vous pouvez en savoir plus sur Cross-site demande falsification (également appelé XSRF ou CSRF) dans mon didacticiel [prévention XSRF/CSRF dans MVC](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md).
+`@Html.AntiForgeryToken()` génère un jeton anti-contrefaçon formulaire masqué qui doit correspondre dans le `Edit` méthode de la `Movies` contrôleur. Vous pouvez en savoir plus sur Cross-site demande falsification (également appelé XSRF ou CSRF) dans mon didacticiel [prévention XSRF/CSRF dans MVC](../../security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages.md).
 
 Le `HttpGet` `Edit` méthode accepte le paramètre d’ID de film, recherche le film à l’aide d’Entity Framework `Find` (méthode) et retourne le film sélectionné pour le mode édition. Si un film ne peut pas être trouvé, [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx) est retourné. Quand le système de génération de modèles automatique a créé la vue Edit, il a examiné la classe `Movie` et a créé le code pour restituer les éléments `<label>` et `<input>` de chaque propriété de la classe. L’exemple suivant montre le mode d’édition qui a été généré par le système de génération de modèles automatique de visual studio :
 
@@ -100,18 +100,18 @@ Si vous utilisez un ordinateur en langue anglaise, vous pouvez ignorer cette sec
 
 
 > [!NOTE]
-> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et vos  *cultures/globalize.cultures.js* fichier (à partir de [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Vous pouvez obtenir la validation non anglaises de jQuery à partir de NuGet. (N’installez pas Globalize si vous utilisez des paramètres régionaux anglais.)
+> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et vos  *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Vous pouvez obtenir la validation non anglaises de jQuery à partir de NuGet. (N’installez pas Globalize si vous utilisez des paramètres régionaux anglais.)
 
 
 1. À partir de la **outils** menu, cliquez sur **NuGetLibrary Package Manager**, puis cliquez sur **gérer les Packages NuGet pour la Solution**.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
-2. Dans le volet gauche, sélectionnez **Parcourir*. *** (voir l’image ci-dessous).
-3. Dans la zone d’entrée, tapez * Globalize **.  
+2. Dans le volet gauche, sélectionnez <strong>Parcourir*.</strong>* (Voir l’image ci-dessous).
+3. Dans la zone d’entrée, tapez *Globalize* \*.  
   
-    ![](examining-the-edit-methods-and-edit-view/_static/image6.png)Choisissez `jQuery.Validation.Globalize`, choisissez `MvcMovie` et cliquez sur **installer**. Le *Scripts\jquery.globalize\globalize.js* fichier sera ajouté à votre projet. Le *Scripts\jquery.globalize\cultures\* nombreux culture contiendra les fichiers JavaScript. Il peut prendre cinq minutes pour installer ce package.
+    ![](examining-the-edit-methods-and-edit-view/_static/image6.png) Choisissez `jQuery.Validation.Globalize`, choisissez `MvcMovie` et cliquez sur **installer**. Le *Scripts\jquery.globalize\globalize.js* fichier sera ajouté à votre projet. Le *Scripts\jquery.globalize\cultures\* nombreux culture contiendra les fichiers JavaScript. Il peut prendre cinq minutes pour installer ce package.
 
- Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml : 
+   Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml : 
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample10.cshtml)]
 
@@ -123,8 +123,8 @@ Comme solution temporaire, si vous ne parvenez validation travaillant dans vos p
 
 [!code-xml[Main](examining-the-edit-methods-and-edit-view/samples/sample11.xml)]
 
-<a id="gettingstarted"></a><a id="jQueryAjaxJSON"></a>Dans l’étape suivante du didacticiel, nous allons implémenter la fonctionnalité de recherche.
+<a id="gettingstarted"></a><a id="jQueryAjaxJSON"></a> Dans l’étape suivante du didacticiel, nous allons implémenter la fonctionnalité de recherche.
 
->[!div class="step-by-step"]
-[Précédent](accessing-your-models-data-from-a-controller.md)
-[Suivant](adding-search.md)
+> [!div class="step-by-step"]
+> [Précédent](accessing-your-models-data-from-a-controller.md)
+> [Suivant](adding-search.md)

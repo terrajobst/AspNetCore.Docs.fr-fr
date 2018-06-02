@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data
-title: "Présentation des Pages Web ASP.NET - suppression des données de la base de données | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET - suppression des données de la base de données | Documents Microsoft
 author: tfitzmac
-description: "Ce didacticiel vous montre comment supprimer une entrée de la base de données individuels. Il suppose que vous avez terminé la série grâce à la mise à jour des données de base de données dans ASP.NET Web PA..."
+description: Ce didacticiel vous montre comment supprimer une entrée de la base de données individuels. Il suppose que vous avez terminé la série grâce à la mise à jour des données de base de données dans ASP.NET Web PA...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/02/2018
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data
 msc.type: authoredcontent
-ms.openlocfilehash: 5bc92b5d40e7a55dcd730d552c71031d913b277e
-ms.sourcegitcommit: 281f0c614543a6c3db565ea4655b70fe49b61d84
+ms.openlocfilehash: 146199e862cd6fa2607671d31633476b1cb67021
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---deleting-database-data"></a>Présentation des Pages Web ASP.NET - suppression des données de la base de données
 ====================
@@ -172,6 +172,6 @@ Le didacticiel suivant vous montre comment permettre à toutes les pages sur vot
 - [Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor](../introducing-razor-syntax-c.md)
 - [Instruction DELETE de SQL](http://www.w3schools.com/sql/sql_delete.asp) sur le site W3Schools
 
->[!div class="step-by-step"]
-[Précédent](updating-data.md)
-[Suivant](layouts.md)
+> [!div class="step-by-step"]
+> [Précédent](updating-data.md)
+> [Suivant](layouts.md)
