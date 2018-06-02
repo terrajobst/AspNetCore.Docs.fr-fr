@@ -1,6 +1,5 @@
 ---
 title: Création de sites attrayants et réactifs avec Bootstrap
-=======
 author: ardalis
 description: Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core.
 manager: wpickett
