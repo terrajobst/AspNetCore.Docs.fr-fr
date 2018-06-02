@@ -39,12 +39,12 @@ Nous vous recommandons de tous les principaux ASP.NET web applications appel `Us
 
 Le code suivant appelle `UseHttpsRedirection` dans la `Startup` classe :
 
-[!code-csharp[sample](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=13)]
+[!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet1&highlight=13)]
 
 
 L'exemple de code suivant :
 
-[!code-csharp[sample](enforcing-ssl/sample/Startup.cs?name=snippet2&highlight=14-99)]
+[!code-csharp[](enforcing-ssl/sample/Startup.cs?name=snippet2&highlight=14-99)]
 
 * Jeux de `RedirectStatusCode`.
 * Définit le port HTTPS 5001.
