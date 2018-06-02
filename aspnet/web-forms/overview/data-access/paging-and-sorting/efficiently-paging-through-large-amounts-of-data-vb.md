@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb
-title: "Efficacement la pagination des grandes quantités de données (VB) | Documents Microsoft"
+title: Efficacement la pagination des grandes quantités de données (VB) | Documents Microsoft
 author: rick-anderson
-description: "L’option de pagination par défaut une présentation du contrôle de données est inappropriée lorsque vous travaillez avec grandes quantités de données, comme son retriev de contrôle de source données sous-jacent..."
+description: L’option de pagination par défaut une présentation du contrôle de données est inappropriée lorsque vous travaillez avec grandes quantités de données, comme son retriev de contrôle de source données sous-jacent...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9a1b7fbb1e60c9f1bc6a26ccaeb7d14b4c95219d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 00057f9bfd9b1c479e500ac591db694388a5d358
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-vb"></a>Efficacement la pagination des grandes quantités de données (Visual Basic)
 ====================
@@ -122,9 +122,9 @@ Il existe deux techniques générales utilisés pour associer efficacement un in
 - **À l’aide de SQL Server 2005 s `ROW_NUMBER()` mot clé** nouvelle pour SQL Server 2005, le `ROW_NUMBER()` mot clé associe un classement de chaque enregistrement renvoyé en fonction de classement. Ce classement peut être utilisé comme un index de ligne pour chaque ligne.
 - **À l’aide d’une Variable de Table et `SET ROWCOUNT`**  s de SQL Server [ `SET ROWCOUNT` instruction](https://msdn.microsoft.com/library/ms188774.aspx) peut être utilisé pour spécifier le nombre total d’enregistrements une requête doit traiter avant la fin d’exécution ; [variables de table](http://www.sqlteam.com/item.asp?ItemID=9454) sont des variables locales T-SQL qui peuvent contenir des données tabulaires, akin [tables temporaires](http://www.sqlteam.com/item.asp?ItemID=2029). Cette approche fonctionne également bien avec Microsoft SQL Server 2005 et SQL Server 2000 (tandis que les `ROW_NUMBER()` approche fonctionne uniquement avec SQL Server 2005).  
   
- L’idée consiste à créer une variable de table qui a un `IDENTITY` colonne et des colonnes pour les clés primaires de la table dont les données sont paginées via. Ensuite, le contenu de la table dont les données sont paginées via est enregistré dans la variable de table, en associant un index de ligne séquentiel (via la `IDENTITY` colonne) pour chaque enregistrement dans la table. Une fois que la variable de table a été remplie, un `SELECT` instruction sur la variable de table, jointe à la table sous-jacente, peut être exécutée pour extraire les enregistrements particuliers. La `SET ROWCOUNT` instruction est utilisée pour intelligemment et limiter le nombre d’enregistrements qui doivent être extraites dans la variable de table.  
+  L’idée consiste à créer une variable de table qui a un `IDENTITY` colonne et des colonnes pour les clés primaires de la table dont les données sont paginées via. Ensuite, le contenu de la table dont les données sont paginées via est enregistré dans la variable de table, en associant un index de ligne séquentiel (via la `IDENTITY` colonne) pour chaque enregistrement dans la table. Une fois que la variable de table a été remplie, un `SELECT` instruction sur la variable de table, jointe à la table sous-jacente, peut être exécutée pour extraire les enregistrements particuliers. La `SET ROWCOUNT` instruction est utilisée pour intelligemment et limiter le nombre d’enregistrements qui doivent être extraites dans la variable de table.  
   
- L’efficacité de cette approche s est basée sur le numéro de page demandé, comme le `SET ROWCOUNT` valeur est assignée à la valeur de l’Index de ligne de début plus le nombre maximal de lignes. Lorsque la pagination des pages de bas niveau telles que la première de plusieurs pages de données, cette approche est très efficace. Toutefois, il présente des performances de la pagination de type par défaut lors de la récupération d’une page vers la fin.
+  L’efficacité de cette approche s est basée sur le numéro de page demandé, comme le `SET ROWCOUNT` valeur est assignée à la valeur de l’Index de ligne de début plus le nombre maximal de lignes. Lorsque la pagination des pages de bas niveau telles que la première de plusieurs pages de données, cette approche est très efficace. Toutefois, il présente des performances de la pagination de type par défaut lors de la récupération d’une page vers la fin.
 
 Ce didacticiel implémente la pagination personnalisée à l’aide du `ROW_NUMBER()` (mot clé). Pour plus d’informations sur l’utilisation de la variable de table et `SET ROWCOUNT` technique, consultez [la méthode plus efficace A de la pagination par le biais de grands jeux de résultats](http://www.4guysfromrolla.com/webtech/042606-1.shtml).
 
@@ -133,7 +133,7 @@ Le `ROW_NUMBER()` mot clé associé à un classement chaque enregistrement retou
 
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-vb/samples/sample3.sql)]
 
-`ROW_NUMBER()`Retourne une valeur numérique qui spécifie le rang de chaque enregistrement en ce qui concerne l’ordre indiqué. Par exemple, pour voir le rang de chaque produit, trié du plus cher le moins, nous pourrions utiliser la requête suivante :
+`ROW_NUMBER()` Retourne une valeur numérique qui spécifie le rang de chaque enregistrement en ce qui concerne l’ordre indiqué. Par exemple, pour voir le rang de chaque produit, trié du plus cher le moins, nous pourrions utiliser la requête suivante :
 
 
 [!code-sql[Main](efficiently-paging-through-large-amounts-of-data-vb/samples/sample4.sql)]
@@ -147,7 +147,7 @@ La figure 5 illustre cette requête résultats s lors de l’exécution via la f
 
 
 > [!NOTE]
-> `ROW_NUMBER()`simplement l’une des nombreuses nouvelles fonctions de classement n’est pas disponible dans SQL Server 2005. Pour une discussion plus approfondie de `ROW_NUMBER()`, ainsi que les autres fonctions de classement, lire [retournant les résultats classés avec Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml).
+> `ROW_NUMBER()` simplement l’une des nombreuses nouvelles fonctions de classement n’est pas disponible dans SQL Server 2005. Pour une discussion plus approfondie de `ROW_NUMBER()`, ainsi que les autres fonctions de classement, lire [retournant les résultats classés avec Microsoft SQL Server 2005](http://www.4guysfromrolla.com/webtech/010406-1.shtml).
 
 
 Lorsque les résultats de classement par le `ORDER BY` colonne dans la `OVER` clause (`UnitPrice`, dans l’exemple ci-dessus), SQL Server doit trier les résultats. Ceci est une opération rapide s’il existe un index cluster sur les colonnes, les résultats sont classées par, ou s’il existe une couverture d’index, mais peut être plus coûteux dans le cas contraire. Pour aider à améliorer les performances des requêtes suffisamment volumineuses, envisagez l’ajout d’un index non cluster pour la colonne par laquelle les résultats sont triés par. Consultez [fonctions de classement et de performances dans SQL Server 2005](http://www.sql-server-performance.com/ak_ranking_functions.asp) pour examiner les considérations de performances plus détaillée.
@@ -163,7 +163,7 @@ Les informations de classement retournées par `ROW_NUMBER()` ne peut pas être 
 [!code-html[Main](efficiently-paging-through-large-amounts-of-data-vb/samples/sample6.html)]
 
 > [!NOTE]
-> Comme nous verrons plus loin dans ce didacticiel, les  *`StartRowIndex`*  fournie par ObjectDataSource est indexée en commençant à zéro, alors que le `ROW_NUMBER()` valeur retournée par SQL Server 2005 est indexée en commençant à 1. Par conséquent, le `WHERE` clause retourne les enregistrements où `PriceRank` est strictement supérieur à  *`StartRowIndex`*  et inférieure ou égale à  *`StartRowIndex`*   +  *`MaximumRows`*.
+> Comme nous verrons plus loin dans ce didacticiel, les *`StartRowIndex`* fournie par ObjectDataSource est indexée en commençant à zéro, alors que le `ROW_NUMBER()` valeur retournée par SQL Server 2005 est indexée en commençant à 1. Par conséquent, le `WHERE` clause retourne les enregistrements où `PriceRank` est strictement supérieur à *`StartRowIndex`* et inférieure ou égale à *`StartRowIndex`*  +  *`MaximumRows`*.
 
 
 Maintenant que nous avons indiqué comment `ROW_NUMBER()` peut être utilisée pour récupérer une page spécifique de données selon les valeurs de l’Index de ligne de début et le nombre maximal de lignes, nous devons maintenant implémenter cette logique en tant que méthodes dans la couche DAL et la couche BLL.
@@ -188,7 +188,7 @@ Après avoir créé la procédure stockée, prenez un moment pour le tester. Ave
 
 ![Entrez une valeur pour le @startRowIndex et @maximumRows paramètres](efficiently-paging-through-large-amounts-of-data-vb/_static/image7.png)
 
-**Figure 7**: entrez une valeur pour le @startRowIndex et @maximumRows paramètres
+<strong>Figure 7</strong>: entrez une valeur pour le @startRowIndex et @maximumRows paramètres
 
 
 Une fois ces choix d’entrée des valeurs de paramètres, la fenêtre Sortie affiche les résultats. La figure 8 illustre les résultats lors du passage de 10 à la fois pour le `@startRowIndex` et `@maximumRows` paramètres.
@@ -276,9 +276,9 @@ Le contrôle GridView est manquant, car l’ObjectDataSource est actuellement à
 Pour résoudre ce problème, nous devons configurer ObjectDataSource pour utiliser la pagination personnalisée. Cela peut être accompli dans les étapes suivantes :
 
 1. **Définir le s ObjectDataSource `EnablePaging` propriété `true`**  cela indique à l’ObjectDataSource elle doit passer à la `SelectMethod` deux paramètres supplémentaires : un pour spécifier l’Index de ligne de début ([ `StartRowIndexParameterName` ](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.startrowindexparametername.aspx)) et l’autre pour spécifier le nombre maximal de lignes ([`MaximumRowsParameterName`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.maximumrowsparametername.aspx)).
-2. **Définir le s ObjectDataSource `StartRowIndexParameterName` et `MaximumRowsParameterName` propriétés en conséquence** le `StartRowIndexParameterName` et `MaximumRowsParameterName` propriétés indiquent les noms des paramètres d’entrée passés à la `SelectMethod` pour des raisons de la pagination personnalisée . Par défaut, ces noms de paramètre sont `startIndexRow` et `maximumRows`, c’est pourquoi, lors de la création du `GetProductsPaged` méthode dans la couche BLL, j’ai utilisé ces valeurs pour les paramètres d’entrée. Si vous avez choisi d’utiliser des noms de paramètres différents pour la couche BLL s `GetProductsPaged` méthode telle que `startIndex` et `maxRows`, pour l’exemple, vous devez définie le s ObjectDataSource `StartRowIndexParameterName` et `MaximumRowsParameterName` propriétés en conséquence (par exemple, startIndex pour `StartRowIndexParameterName` et le nombre maximal de lignes pour `MaximumRowsParameterName`).
+2. **Définir le s ObjectDataSource `StartRowIndexParameterName` et `MaximumRowsParameterName` propriétés en conséquence** le `StartRowIndexParameterName` et `MaximumRowsParameterName` propriétés indiquent les noms des paramètres d’entrée passés à la `SelectMethod` pour des raisons de la pagination personnalisée. Par défaut, ces noms de paramètre sont `startIndexRow` et `maximumRows`, c’est pourquoi, lors de la création du `GetProductsPaged` méthode dans la couche BLL, j’ai utilisé ces valeurs pour les paramètres d’entrée. Si vous avez choisi d’utiliser des noms de paramètres différents pour la couche BLL s `GetProductsPaged` méthode telle que `startIndex` et `maxRows`, pour l’exemple, vous devez définie le s ObjectDataSource `StartRowIndexParameterName` et `MaximumRowsParameterName` propriétés en conséquence (par exemple, startIndex pour `StartRowIndexParameterName` et le nombre maximal de lignes pour `MaximumRowsParameterName`).
 3. **Définir le s ObjectDataSource [ `SelectCountMethod` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.selectcountmethod(VS.80).aspx) au nom de la méthode qui retourne le Total nombre d’enregistrements en cours paginée via (`TotalNumberOfProducts`)** n’oubliez pas que la `ProductsBLL` classe s `TotalNumberOfProducts`méthode retourne le nombre total d’enregistrements transmise par radiomessagerie à l’aide d’une méthode de la couche DAL qui exécute un `SELECT COUNT(*) FROM Products` requête. Ces informations sont nécessaires par ObjectDataSource pour restituer correctement de l’interface de pagination.
-4. **Supprimer le `startRowIndex` et `maximumRows` `<asp:Parameter>` éléments de balisage déclaratif ObjectDataSource s** lors de la configuration ObjectDataSource via l’Assistant, Visual Studio automatiquement ajouté deux `<asp:Parameter>` éléments de la `GetProductsPaged` méthode s les paramètres d’entrée. En définissant `EnablePaging` à `true`, ces paramètres seront transférés automatiquement ; si elles apparaissent également dans la syntaxe déclarative, ObjectDataSource va tenter de passer *quatre* paramètres à la `GetProductsPaged` (méthode) et les deux paramètres à la `TotalNumberOfProducts` (méthode). Si vous avez oublié de supprimer ces `<asp:Parameter>` éléments, lors de la visite de la page via un navigateur, vous obtiendrez un message d’erreur comme : *ObjectDataSource 'ObjectDataSource1' n’a pas trouvé une méthode non générique 'TotalNumberOfProducts' qui a paramètres : startRowIndex, maximumRows*.
+4. **Supprimer le `startRowIndex` et `maximumRows` `<asp:Parameter>` éléments de balisage déclaratif ObjectDataSource s** lors de la configuration ObjectDataSource via l’Assistant, Visual Studio automatiquement ajouté deux `<asp:Parameter>` éléments pour le `GetProductsPaged` méthode s les paramètres d’entrée. En définissant `EnablePaging` à `true`, ces paramètres seront transférés automatiquement ; si elles apparaissent également dans la syntaxe déclarative, ObjectDataSource va tenter de passer *quatre* paramètres à la `GetProductsPaged` (méthode) et les deux paramètres à la `TotalNumberOfProducts` (méthode). Si vous avez oublié de supprimer ces `<asp:Parameter>` éléments, lors de la visite de la page via un navigateur, vous obtiendrez un message d’erreur comme : *ObjectDataSource 'ObjectDataSource1' n’a pas trouvé une méthode non générique 'TotalNumberOfProducts' qui a paramètres : startRowIndex, maximumRows*.
 
 Après avoir apporté ces modifications, la syntaxe déclarative de s ObjectDataSource doit se présenter comme suit :
 
@@ -326,7 +326,7 @@ Si vous l’activation de la fonctionnalité de suppression dans un GridView don
 Lors de la suppression du dernier produit, le contrôle GridView *doit* accéder automatiquement à la page huitième et pagination par défaut présente ces fonctionnalités. Avec la pagination personnalisée, toutefois, après la suppression de ce dernier produit sur la dernière page, le contrôle GridView simplement disparaît de l’écran complètement. La cause exacte *pourquoi* dans ce cas est de type bit dépasse le cadre de ce didacticiel, consultez [la suppression du dernier enregistrement de la dernière Page à partir d’un GridView avec la pagination personnalisée](http://scottonwriting.net/sowblog/posts/7326.aspx) pour plus d’informations sur la source de bas niveau Ce problème. En résumé il s en raison de la séquence d’étapes effectuées par le contrôle GridView lorsque l’utilisateur clique sur le bouton Supprimer suivante :
 
 1. Supprimer l’enregistrement
-2. Obtenir les enregistrements appropriés à afficher pour le texte spécifié `PageIndex` et`PageSize`
+2. Obtenir les enregistrements appropriés à afficher pour le texte spécifié `PageIndex` et `PageSize`
 3. Assurez-vous que le `PageIndex` ne dépasse pas le nombre de pages de données dans la source de données si le s GridView est le cas, automatiquement décrémente `PageIndex` propriété
 4. Lier la page appropriée de données pour le contrôle GridView à l’aide d’enregistrements obtenus à l’étape 2
 
@@ -377,8 +377,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](paging-and-sorting-report-data-vb.md)
-[Suivant](sorting-custom-paged-data-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](paging-and-sorting-report-data-vb.md)
+> [Suivant](sorting-custom-paged-data-vb.md)

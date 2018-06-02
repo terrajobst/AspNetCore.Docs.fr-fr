@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller
-title: "Ajout d’un contrôleur (c#) | Documents Microsoft"
+title: Ajout d’un contrôleur (c#) | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express cette Pack 1, qui, je..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express cette Pack 1, qui, je...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 77bfc8f3778dcf75453c216579e50a016b1ac971
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 963d3bbbadf408d7045c50bfd693069e4097d45d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller-c"></a>Ajout d’un contrôleur (c#)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -85,6 +85,6 @@ Exécuter votre application et accédez à l’exemple d’URL (`http://localhos
 
 Dans ces deux exemples le contrôleur a fait la partie « VC » de MVC, autrement dit, le travail de la vue et contrôleur. Le contrôleur retourne HTML directement. En général, vous ne souhaitez contrôleurs renvoyant du HTML directement, étant donné que qui devient très lourde au code. Au lieu de cela, nous allons utiliser généralement un fichier de modèle de vue séparé afin de générer la réponse HTML. Penchons-nous à la façon dont nous pouvons faire cela.
 
->[!div class="step-by-step"]
-[Précédent](intro-to-aspnet-mvc-3.md)
-[Suivant](adding-a-view.md)
+> [!div class="step-by-step"]
+> [Précédent](intro-to-aspnet-mvc-3.md)
+> [Suivant](adding-a-view.md)

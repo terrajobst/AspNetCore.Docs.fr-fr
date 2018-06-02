@@ -1,7 +1,7 @@
 ---
-title: "MVC ASP.NET Core avec EF Core - Série de didacticiels"
-author: tdykstra
-description: 
+title: MVC ASP.NET Core avec EF Core - Série de didacticiels
+author: rick-anderson
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 10/15/2017
@@ -9,25 +9,23 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/index
-ms.openlocfilehash: 4666148edcf77fa7b3dec40f1672d491998c870a
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c5d1f3f57c7371aa5fa4254a44f2c544067ad2ed
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio"></a>Bien démarrer avec ASP.NET Core MVC et Entity Framework Core à l’aide de Visual Studio
+# <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>MVC ASP.NET Core avec EF Core - Série de didacticiels
 
-Remarque : Une version des pages Razor de ce didacticiel est disponible [ici](xref:data/ef-rp/intro). La version des pages Razor est plus facile à suivre et couvre plus de fonctionnalités Entity Framework.
+[!INCLUDE [RP better than MVC](../../includes/RP-EF/rp-over-mvc.md)]
 
-Cette série de didacticiels vous apprend à créer des applications web MVC ASP.NET Core qui utilisent Entity Framework Core pour accéder aux données. Les didacticiels nécessitent Visual Studio 2017.
-
-1. [Prise en main](intro.md)
-2. [Opérations de création, de lecture, de mise à jour et de suppression](crud.md)
-3. [Tri, filtrage, pagination et regroupement](sort-filter-page.md)
-4. [Migrations](migrations.md)
-5. [Création d’un modèle de données complexe](complex-data-model.md)
-6. [Lecture de données associées](read-related-data.md)
-7. [Mise à jour de données associées](update-related-data.md)
-8. [Gestion des conflits d’accès concurrentiel](concurrency.md)
-9. [Héritage](inheritance.md)
-10. [Rubriques avancées](advanced.md)
+1. [Bien démarrer](xref:data/ef-mvc/intro)
+1. [Opérations de création, de lecture, de mise à jour et de suppression](xref:data/ef-mvc/crud)
+1. [Tri, filtrage, pagination et regroupement](xref:data/ef-mvc/sort-filter-page)
+1. [Migrations](xref:data/ef-mvc/migrations)
+1. [Créer un modèle de données complexe](xref:data/ef-mvc/complex-data-model)
+1. [Lecture de données associées](xref:data/ef-mvc/read-related-data)
+1. [Mise à jour de données associées](xref:data/ef-mvc/update-related-data)
+1. [Gérer les conflits d’accès concurrentiel](xref:data/ef-mvc/concurrency)
+1. [Héritage](xref:data/ef-mvc/inheritance)
+1. [Rubriques avancées](xref:data/ef-mvc/advanced)

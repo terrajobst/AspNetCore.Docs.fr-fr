@@ -1,31 +1,32 @@
 ---
-title: "Utilisation de SQL Server LocalDB et d’ASP.NET Core"
+title: Utilisation de SQL Server LocalDB et d’ASP.NET Core
 author: rick-anderson
-description: "Explique l’utilisation de SQL Server LocalDB et d’ASP.NET Core."
+description: Explique l’utilisation de SQL Server LocalDB et d’ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 3bec0b7b547443dbb20c7e3a7422262c05f93975
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: d1a345fe8c61f6e07ebbe53de6d53e18d6f4c851
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="working-with-sql-server-localdb-and-aspnet-core"></a>Utilisation de SQL Server LocalDB et d’ASP.NET Core
+# <a name="work-with-sql-server-localdb-and-aspnet-core"></a>Utilisation de SQL Server LocalDB et d’ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://twitter.com/joeaudette) 
 
 L’objet `MovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
 
 Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NET Core lit `ConnectionString`. Pour un développement local, il obtient la chaîne de connexion à partir du fichier *appsettings.json* :
 
-[!code-json[Main](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
+[!code-json[](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
 
 Quand vous déployez l’application sur un serveur de test ou de production, vous pouvez utiliser une variable d’environnement ou une autre approche pour définir un serveur SQL Server réel comme chaîne de connexion. Pour plus d’informations, consultez [Configuration](xref:fundamentals/configuration/index).
 
@@ -54,7 +55,7 @@ Notez l’icône de clé en regard de `ID`. Par défaut, EF crée une propriét�
 
 Créez une classe nommée `SeedData` dans l’espace de noms *Modèles*. Remplacez le code généré par ce qui suit :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
 
 Si la base de données contient des films, l’initialiseur de valeur initiale retourne une valeur et aucun film n’est ajouté.
 
@@ -69,7 +70,7 @@ if (context.Movie.Any())
 
 Ajoutez l’initialiseur de valeur initiale à la fin de la méthode `Main` dans le fichier *Program.cs* :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
 Tester l’application
 
@@ -82,8 +83,8 @@ Tester l’application
 
     ![Menu contextuel](sql/_static/stopIIS.png)
 
-   * Si vous exécutiez Visual Studio en mode de non-débogage, appuyez sur F5 pour l’exécuter en mode de débogage.
-   * Si vous exécutiez Visual Studio en mode de débogage, arrêtez le débogueur et appuyez sur F5.
+    * Si vous exécutiez Visual Studio en mode de non-débogage, appuyez sur F5 pour l’exécuter en mode de débogage.
+    * Si vous exécutiez Visual Studio en mode de débogage, arrêtez le débogueur et appuyez sur F5.
    
 L’application affiche les données de départ :
 
@@ -91,6 +92,6 @@ L’application affiche les données de départ :
 
 Le didacticiel suivant nettoie la présentation des données.
 
->[!div class="step-by-step"]
-[Précédent : Pages Razor obtenues par génération de modèles automatiques](xref:tutorials/razor-pages/page)
-[Suivant : Mises à jour des pages](xref:tutorials/razor-pages/da1)
+> [!div class="step-by-step"]
+> [Précédent : Pages Razor obtenues par génération de modèles automatiques](xref:tutorials/razor-pages/page)
+> [Suivant : Mises à jour des pages](xref:tutorials/razor-pages/da1)

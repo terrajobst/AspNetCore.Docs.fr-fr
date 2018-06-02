@@ -1,7 +1,7 @@
 ---
-title: "Publier une application ASP.NET Core sur Azure à l’aide de Visual Studio"
+title: Publier une application ASP.NET Core sur Azure avec Visual Studio
 author: rick-anderson
-description: "Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide de Visual Studio."
+description: Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide de Visual Studio.
 manager: wpickett
 ms.author: riande
 ms.date: 12/16/2017
@@ -9,17 +9,21 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: 14d8dd0a5e6a99bacce3bf50b0468b20e0dddb96
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e5c213a682c9bf7c64c40fad630cacfff24e23bb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="publish-an-aspnet-core-web-app-to-azure-app-service-using-visual-studio"></a>Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio
+# <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Cesar Blum Silveira](https://github.com/cesarbs) et [Rachel Appel](https://twitter.com/rachelappel)
 
-Consultez la page [Publier sur Azure à partir de Visual Studio pour Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/) si vous travaillez sur un Mac.
+[!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
+
+Consultez [Publier sur Azure à partir de Visual Studio pour Mac](https://blog.xamarin.com/publish-azure-visual-studio-mac/) si vous utilisez macOS.
+
+Pour résoudre un problème de déploiement App Service, consultez [Résoudre les problèmes liés à ASP.NET Core sur Azure App Service](xref:host-and-deploy/azure-apps/troubleshoot).
 
 ## <a name="set-up"></a>Installer
 
@@ -185,3 +189,4 @@ Après avoir testé l’application, accédez au [portail Azure](https://portal.
 * [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
 * [Groupes de ressources Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)
 * [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)
+* [Résoudre les problèmes liés à ASP.NET Core sur Azure App Service](xref:host-and-deploy/azure-apps/troubleshoot)

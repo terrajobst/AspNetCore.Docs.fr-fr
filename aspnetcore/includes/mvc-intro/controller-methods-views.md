@@ -1,13 +1,13 @@
 
-Nous aborderons [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) dans le prochain didacticiel. L’attribut [Display](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) spécifie les éléments à afficher pour le nom d’un champ (dans le cas présent, « Release Date » au lieu de « ReleaseDate »). L’attribut [DataType](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) spécifie le type des données (Date). Les informations d’heures stockées dans le champ ne s’affichent donc pas.
+Nous aborderons [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) dans le prochain didacticiel. L’attribut [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) spécifie les éléments à afficher pour le nom d’un champ (dans le cas présent, « Release Date » au lieu de « ReleaseDate »). L’attribut [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) spécifie le type des données (Date). Les informations d’heures stockées dans le champ ne s’affichent donc pas.
 
 Accédez au contrôleur `Movies` et maintenez le pointeur de la souris sur un lien **Edit** pour afficher l’URL cible.
 
-![Fenêtre de navigateur avec la souris sur le lien Edit et une URL de lien http://localhost:1234/Movies/Edit/5 affichée](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
+![Fenêtre de navigateur avec la souris sur le lien Edit et l’URL de lien http://localhost:1234/Movies/Edit/5 affichée](../../tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
 Les liens **Edit**, **Details** et **Delete** sont générés par le Tag Helper Anchor Core MVC dans le fichier *Views/Movies/Index.cshtml*.
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
 Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Dans le code ci-dessus, le `AnchorTagHelper` génère dynamiquement la valeur d’attribut `href` HTML à partir de l’ID d’itinéraire et de la méthode d’action de contrôleur. Utilisez **Afficher la Source** dans votre navigateur favori ou les outils de développement pour examiner le balisage généré. Une partie du code HTML généré est affichée ci-dessous :
 
@@ -21,7 +21,7 @@ Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent au code côté se
 
 Rappelez-vous le format du [routage](xref:mvc/controllers/routing) défini dans le fichier *Startup.cs* :
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 ASP.NET Core traduit `http://localhost:1234/Movies/Edit/4` en une requête à la méthode d’action `Edit` du contrôleur `Movies` avec un paramètre `Id` de 4. (Les méthodes de contrôleur sont également appelées méthodes d’action.)
 
@@ -29,33 +29,33 @@ Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) sont l’une des nouvelles f
 
 Ouvrez le contrôleur `Movies` et examinez les deux méthodes d’action `Edit`. Le code suivant montre la méthode `HTTP GET Edit`, qui extrait le film et renseigne le formulaire de modification généré par le fichier Razor *Edit.cshtml*.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
 
 Le code suivant montre la méthode `HTTP POST Edit`, qui traite les valeurs de film publiées :
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
 
-L’attribut `[Bind]` est l’un des moyens qui permettent d’assurer une protection contre la [sur-publication](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Vous devez inclure dans l’attribut `[Bind]` uniquement les propriétés que vous souhaitez modifier. Pour plus d’informations, consultez [Protect your controller from over-posting (Protéger votre contrôleur contre la sur-publication)](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). Les [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) fournissent une alternative pour empêcher la sur-publication.
+L’attribut `[Bind]` est l’un des moyens qui permettent d’assurer une protection contre la [sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Vous devez inclure dans l’attribut `[Bind]` uniquement les propriétés que vous souhaitez modifier. Pour plus d’informations, consultez [Protect your controller from over-posting (Protéger votre contrôleur contre la sur-publication)](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). Les [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) fournissent une alternative pour empêcher la sur-publication.
 
 Notez que la deuxième méthode d’action `Edit` est précédée de l’attribut `[HttpPost]`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2&highlight=4)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2&highlight=4)]
 
 L’attribut `HttpPost` indique que cette méthode `Edit` peut être appelée *uniquement* pour les requêtes `POST`. Vous pouvez appliquer l’attribut `[HttpGet]` à la première méthode Edit, mais cela n’est pas nécessaire car `[HttpGet]` est la valeur par défaut.
 
 L’attribut `ValidateAntiForgeryToken` est utilisé pour [lutter contre la falsification de requête](xref:security/anti-request-forgery). Il est associé à un jeton anti-contrefaçon généré dans le fichier de la vue Edit (*Views/Movies/Edit.cshtml*). Le fichier de la vue Edit génère le jeton anti-contrefaçon avec le [Tag Helper Form](xref:mvc/views/working-with-forms).
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 
 Le [Tag Helper Form](xref:mvc/views/working-with-forms) génère un jeton anti-contrefaçon masqué qui doit correspondre au jeton anti-contrefaçon généré par `[ValidateAntiForgeryToken]` dans la méthode `Edit` du contrôleur Movies. Pour plus d’informations, consultez [Protection contre la falsification de requête](xref:security/anti-request-forgery).
 
 La méthode `HttpGet Edit` prend le paramètre `ID` du film, recherche le film à l’aide de la méthode Entity Framework `SingleOrDefaultAsync`, et retourne le film sélectionné à la vue Edit. Si un film est introuvable, l’erreur `NotFound` (HTTP 404) est retournée.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
 
 Quand le système de génération de modèles automatique a créé la vue Edit, il a examiné la classe `Movie` et a créé le code pour restituer les éléments `<label>` et `<input>` de chaque propriété de la classe. L’exemple suivant montre la vue Edit qui a été générée par le système de génération de modèles automatique de Visual Studio :
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/EditCopy.cshtml?highlight=1)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/EditCopy.cshtml?highlight=1)]
 
 Notez que le modèle de vue comporte une instruction `@model MvcMovie.Models.Movie` en haut du fichier. `@model MvcMovie.Models.Movie` indique que la vue s’attend à ce que le modèle pour le modèle de vue soit de type `Movie`.
 
@@ -63,7 +63,7 @@ Le code de génération de modèles automatique utilise plusieurs méthodes Tag 
 
 Exécutez l’application et accédez à l’URL `/Movies`. Cliquez sur un lien **Edit**. Dans le navigateur, affichez la source de la page. Le code HTML généré pour l’élément `<form>` est indiqué ci-dessous.
 
-[!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/edit_view_source.html?highlight=1,6,10,17,24,28)]
+[!code-HTML[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/edit_view_source.html?highlight=1,6,10,17,24,28)]
 
 Les éléments `<input>` sont dans un élément `HTML <form>` dont l’attribut `action` est défini de façon à publier à l’URL `/Movies/Edit/id`. Les données du formulaire sont publiées au serveur en cas de clic sur le bouton `Save`. La dernière ligne avant l’élément `</form>` de fermeture montre le jeton [XSRF](xref:security/anti-request-forgery) masqué généré par le [Tag Helper Form](xref:mvc/views/working-with-forms).
 
@@ -71,7 +71,7 @@ Les éléments `<input>` sont dans un élément `HTML <form>` dont l’attribut 
 
 Le code suivant montre la version `[HttpPost]` de la méthode d’action `Edit`.
 
-[!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
 
 L’attribut `[ValidateAntiForgeryToken]` valide le jeton [XSRF](xref:security/anti-request-forgery) masqué généré par le générateur de jetons anti-contrefaçon dans le [Tag Helper Form](xref:mvc/views/working-with-forms)
 
@@ -87,9 +87,9 @@ Toutes les méthodes `HttpGet` du contrôleur Movies suivent un modèle similair
 
 * [Globalisation et localisation](xref:fundamentals/localization)
 * [Introduction aux Tag Helpers](xref:mvc/views/tag-helpers/intro)
-* [Création de Tag Helpers](xref:mvc/views/tag-helpers/authoring)
+* [Créer des Tag Helpers](xref:mvc/views/tag-helpers/authoring)
 * [Protection contre la falsification de requête](xref:security/anti-request-forgery)
-* Protéger votre contrôleur contre la [sur-publication](https://docs.microsoft.com/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
+* Protéger votre contrôleur contre la [sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application)
 * [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Tag Helper Form](xref:mvc/views/working-with-forms)
 * [Tag Helper Input](xref:mvc/views/working-with-forms)

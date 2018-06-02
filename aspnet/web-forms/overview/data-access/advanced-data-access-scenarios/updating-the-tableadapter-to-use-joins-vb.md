@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-vb
-title: "Mise à jour le TableAdapter à l’utilisation de jointures (VB) | Documents Microsoft"
+title: Mise à jour le TableAdapter à l’utilisation de jointures (VB) | Documents Microsoft
 author: rick-anderson
-description: "Lorsque vous travaillez avec une base de données, il est courant pour demander des données qui sont réparties sur plusieurs tables. Pour récupérer des données à partir de deux tables différentes, nous pouvons utiliser soit..."
+description: Lorsque vous travaillez avec une base de données, il est courant pour demander des données qui sont réparties sur plusieurs tables. Pour récupérer des données à partir de deux tables différentes, nous pouvons utiliser soit...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2e0698269c0a29c234f03dc56f7b63e7bc83d032
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 91d700f3de02dc78692e933644e221e2ac8175a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="updating-the-tableadapter-to-use-joins-vb"></a>Mise à jour le TableAdapter à l’utilisation de jointures (Visual Basic)
 ====================
@@ -54,7 +54,7 @@ Vous pouvez également un `JOIN` peut être utilisé pour renvoyer le nom de fou
 A `JOIN` fusionne les enregistrements d’une table avec des enregistrements à partir d’une autre table en fonction de certains critères. Dans la requête ci-dessus, par exemple, le `LEFT JOIN Categories ON Categories.CategoryID = Products.CategoryID` fait en sorte que SQL Server pour la fusion de chaque enregistrement de produit avec la catégorie Enregistrer dont `CategoryID` valeur correspond au produit s `CategoryID` valeur. Le résultat fusionné nous permet de travailler avec les champs de catégorie correspondant pour chaque produit (tel que `CategoryName`).
 
 > [!NOTE]
-> `JOIN`s sont fréquemment utilisés lors de l’interrogation des données à partir de bases de données relationnelles. Si vous ne connaissez pas le `JOIN` syntaxe ou devoir rafraîchir un bit sur son utilisation, je d recommande le [SQL Join le didacticiel](http://www.w3schools.com/sql/sql_join.asp) à [W3 écoles](http://www.w3schools.com/). Également intéressant de lecture sont les [ `JOIN` notions de base](https://msdn.microsoft.com/library/ms191517.aspx) et [principes de base](https://msdn.microsoft.com/library/ms189575.aspx) sections de la [la documentation en ligne de SQL](https://msdn.microsoft.com/library/ms130214.aspx).
+> `JOIN` s sont fréquemment utilisés lors de l’interrogation des données à partir de bases de données relationnelles. Si vous ne connaissez pas le `JOIN` syntaxe ou devoir rafraîchir un bit sur son utilisation, je d recommande le [SQL Join le didacticiel](http://www.w3schools.com/sql/sql_join.asp) à [W3 écoles](http://www.w3schools.com/). Également intéressant de lecture sont les [ `JOIN` notions de base](https://msdn.microsoft.com/library/ms191517.aspx) et [principes de base](https://msdn.microsoft.com/library/ms189575.aspx) sections de la [la documentation en ligne de SQL](https://msdn.microsoft.com/library/ms130214.aspx).
 
 
 Étant donné que `JOIN` s et les sous-requêtes en corrélation peuvent être utilisés pour récupérer les données associées provenant d’autres tables, de nombreux développeurs sont laissés vous demandez l’approche à utiliser et de leurs en-têtes. Tous les experts SQL je ve, nous avons pour ont dit à peu près la même chose qu’il n’importent vraiment performance-wise comme SQL Server génère des plans d’exécution à peu près identique. Leur avis, il faut utiliser la technique que vous et votre équipe conviennent le mieux. Elle mérite en notant qu’après imprimer ce Conseil ces experts expriment immédiatement leurs préférences de `JOIN` s sur les sous-requêtes en corrélation.
@@ -260,12 +260,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Teresa Murphy Hilton Geisenow et David Suru. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
-[Suivant](adding-additional-datatable-columns-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+> [Suivant](adding-additional-datatable-columns-vb.md)

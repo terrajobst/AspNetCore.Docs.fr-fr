@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-vb
-title: "Plusieurs ContentPlaceHolders et le contenu par défaut (VB) | Documents Microsoft"
+title: Plusieurs ContentPlaceHolders et le contenu par défaut (VB) | Documents Microsoft
 author: rick-anderson
-description: "Examine l’ajout de plusieurs espaces réservés contenu à une page maître, ainsi que comment spécifier le contenu par défaut dans les espaces réservés contenu."
+description: Examine l’ajout de plusieurs espaces réservés contenu à une page maître, ainsi que comment spécifier le contenu par défaut dans les espaces réservés contenu.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ccb65f0b2f16e0c7a67787f7dfab14303daeca1d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fcd1d8f34dba52a04c0d9f6a1961df7b97405b42
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="multiple-contentplaceholders-and-default-content-vb"></a>Plusieurs ContentPlaceHolders et le contenu par défaut (VB)
 ====================
@@ -169,7 +169,7 @@ La figure 8 illustre `Default.aspx` lors de l’affichage via un navigateur. N�
 **Figure 08**: la valeur par défaut contenu pour le `LeftColumnContent` et `QuickLoginUI` ContentPlaceHolders sont affichés ([cliquez pour afficher l’image en taille réelle](multiple-contentplaceholders-and-default-content-vb/_static/image24.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Le modèle de page maître ASP.NET permet un nombre arbitraire de ContentPlaceHolders dans la page maître. Ce qui est plus, ContentPlaceHolders inclure du contenu par défaut, qui est émis dans le cas qu’il n’existe pas de correspondance de contenu contrôle dans la page de contenu. Dans ce didacticiel, nous avons vu comment inclure des contrôles ContentPlaceHolder supplémentaires dans la page maître et comment définir des contrôles de contenu pour ces nouvelles ContentPlaceHolders dans les pages ASP.NET nouveaux et existants. Nous avons également étudié spécifiant la valeur par défaut contenus dans un espace réservé, ce qui est utile dans les scénarios où une minorité des besoins de pages pour personnaliser le sinon normalisé contenu dans une région donnée.
 
@@ -179,12 +179,12 @@ Bonne programmation !
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Suchi Banerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Précédent](creating-a-site-wide-layout-using-master-pages-vb.md)
-[Suivant](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-site-wide-layout-using-master-pages-vb.md)
+> [Suivant](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb.md)

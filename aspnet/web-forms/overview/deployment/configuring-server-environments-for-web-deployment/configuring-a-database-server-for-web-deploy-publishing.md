@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing
-title: "Publication de déploiement de configuration d’un serveur de base de données pour le Web | Documents Microsoft"
+title: Publication de déploiement de configuration d’un serveur de base de données pour le Web | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment configurer un serveur de base de données SQL Server 2008 R2 pour prendre en charge la publication et déploiement web. Les tâches décrites dans cette rubrique sont co..."
+description: Cette rubrique décrit comment configurer un serveur de base de données SQL Server 2008 R2 pour prendre en charge la publication et déploiement web. Les tâches décrites dans cette rubrique sont co...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing
 msc.type: authoredcontent
-ms.openlocfilehash: 98fd728f48f6fb64a61686bc58824b9fb3a28b13
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a2340c0d561ed274e281b5f6d942af0a2027315a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-a-database-server-for-web-deploy-publishing"></a>Configuration d’un serveur de base de données de publication de déploiement Web
 ====================
@@ -26,7 +26,7 @@ par [Jason Lee](https://github.com/jrjlee)
 
 > Cette rubrique décrit comment configurer un serveur de base de données SQL Server 2008 R2 pour prendre en charge la publication et déploiement web.
 > 
-> Les tâches décrites dans cette rubrique sont communes à chaque scénario de déploiement & le #x 2014 ; peu importe si vos serveurs web sont configurés pour utiliser le Service de l’Agent distant d’outil de déploiement Web IIS (Web Deploy), le Gestionnaire de déploiement Web ou le déploiement en mode hors connexion ou votre application s’exécute sur un serveur web unique ou une batterie de serveurs. La façon de déployer la base de données peut changer en fonction des exigences de sécurité et d’autres considérations. Par exemple, vous pouvez déployer la base de données avec ou sans les exemples de données, et peut déployer des mappages de rôle d’utilisateur ou configurer manuellement après le déploiement. Toutefois, la manière dont vous configurez le serveur de base de données reste le même.
+> Les tâches décrites dans cette rubrique sont communes à chaque scénario de déploiement&#x2014;peu importe si vos serveurs web sont configurés pour utiliser le Service de l’Agent distant d’outil de déploiement Web IIS (Web Deploy), le Gestionnaire de déploiement Web ou le déploiement en mode hors connexion ou votre application s’exécute sur un serveur web unique ou une batterie de serveurs. La façon de déployer la base de données peut changer en fonction des exigences de sécurité et d’autres considérations. Par exemple, vous pouvez déployer la base de données avec ou sans les exemples de données, et peut déployer des mappages de rôle d’utilisateur ou configurer manuellement après le déploiement. Toutefois, la manière dont vous configurez le serveur de base de données reste le même.
 
 
 Vous n’êtes pas obligé d’installer toutes les autres produits ou les outils de configuration d’un serveur de base de données pour prendre en charge le déploiement web. En supposant que votre serveur de base de données et de votre serveur web s’exécutent sur des ordinateurs différents, vous devez simplement :
@@ -65,8 +65,8 @@ Pour activer SQL Server de communiquer via TCP/IP, utilisez le Gestionnaire de C
 1. Sur le **Démarrer** menu, pointez sur **tous les programmes**, cliquez sur **Microsoft SQL Server 2008 R2**, cliquez sur **outils de Configuration**, puis cliquez sur **Gestionnaire de Configuration SQL Server**.
 2. Dans le volet d’arborescence, développez **Configuration du réseau SQL Server**, puis cliquez sur **protocoles pour MSSQLSERVER**.
 
-    > [!NOTE]
-    > Si vous avez installé plusieurs instances de SQL Server, vous verrez un **protocoles pour *** [nom d’instance]* élément pour chaque instance. Vous devez configurer les paramètres réseau sur une instance par instance de base.
+   > [!NOTE]
+   > Si vous avez installé plusieurs instances de SQL Server, vous verrez un <strong>protocoles pour</strong><em>[nom d’instance]</em> élément pour chaque instance. Vous devez configurer les paramètres réseau sur une instance par instance de base.
 3. Dans le volet détails, cliquez sur le **TCP/IP** de ligne, puis cliquez sur **activer**.
 
     ![](configuring-a-database-server-for-web-deploy-publishing/_static/image1.png)
@@ -130,7 +130,7 @@ Pour plus d’informations sur la configuration du pare-feu Windows pour SQL Ser
 
 ## <a name="configure-logins-and-database-permissions"></a>Configurer des connexions et les autorisations de base de données
 
-Lorsque vous déployez une application web pour Internet Information Services (IIS), l’application s’exécute à l’aide de l’identité du pool d’applications. Dans un environnement de domaine, les identités du pool d’applications utilisent le compte d’ordinateur du serveur sur lequel elles s’exécutent à accéder aux ressources réseau. Comptes d’ordinateur prennent la forme * [nom de domaine]***\*** [nom_ordinateur]***$** & #x 2014 ; par exemple, **FABRIKAM\TESTWEB1$**. Pour autoriser votre application web pour accéder à une base de données sur le réseau, vous devez :
+Lorsque vous déployez une application web pour Internet Information Services (IIS), l’application s’exécute à l’aide de l’identité du pool d’applications. Dans un environnement de domaine, les identités du pool d’applications utilisent le compte d’ordinateur du serveur sur lequel elles s’exécutent à accéder aux ressources réseau. Comptes d’ordinateur prennent la forme <em>[nom de domaine]</em><strong>\</strong ><em>[nom_ordinateur]</em><strong>$</strong>&#x2014;, par exemple, <strong>FABRIKAM\TESTWEB1$</strong>. Pour autoriser votre application web pour accéder à une base de données sur le réseau, vous devez :
 
 - Ajouter une connexion pour le compte ordinateur du serveur web à l’instance de SQL Server.
 - Mapper la connexion de compte d’ordinateur pour tous les rôles de base de données requis (en général **db\_datareader** et **db\_datawriter**).
@@ -231,6 +231,6 @@ Votre serveur de base de données doit maintenant être prêt à accepter des d�
 
 Pour obtenir des conseils sur le déploiement des projets de base de données, consultez [déploiement de projets de base de données](../web-deployment-in-the-enterprise/deploying-database-projects.md). Pour obtenir des conseils sur la création des appartenances aux rôles de base de données en exécutant un script de post-déploiement, consultez [appartenances de rôle de base de données de déploiement pour les environnements de Test](../advanced-enterprise-web-deployment/deploying-database-role-memberships-to-test-environments.md). Pour obtenir des conseils sur la façon de relever les défis de déploiement unique qui présentent des bases de données d’appartenance, consultez [déploiement de bases de données d’appartenance pour les environnements d’entreprise](../advanced-enterprise-web-deployment/deploying-membership-databases-to-enterprise-environments.md).
 
->[!div class="step-by-step"]
-[Précédent](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)
-[Suivant](creating-a-server-farm-with-the-web-farm-framework.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md)
+> [Suivant](creating-a-server-farm-with-the-web-farm-framework.md)

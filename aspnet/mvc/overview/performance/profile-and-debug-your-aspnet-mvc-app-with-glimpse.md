@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
-title: "Profiler et déboguer votre application ASP.NET MVC avec Glimpse | Documents Microsoft"
+title: Profiler et déboguer votre application ASP.NET MVC avec Glimpse | Documents Microsoft
 author: Rick-Anderson
-description: "Aperçu est plein essor et augmente la famille de packages de NuGet open source qui fournit des performances détaillés, débogage et des informations de diagnostic pour ASP.NET un..."
+description: Aperçu est plein essor et augmente la famille de packages de NuGet open source qui fournit des performances détaillés, débogage et des informations de diagnostic pour ASP.NET un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/26/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: 9cfdced21251b482ca527dda9c3a698de77cc8ca
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6ac23256c57116de81c7bf690d5ce743301c75ce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Profiler et déboguer votre application ASP.NET MVC avec aperçu
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Aperçu est plein essor et augmente la famille de packages de NuGet open source qui fournit des performances détaillés, débogage et des informations de diagnostic pour les applications ASP.NET. Il est très facile à installer, léger et ultra rapide et affiche les mesures de performances clés au bas de chaque page. Il vous permet d’approfondir votre application lorsque vous avez besoin savoir ce qui se passe au niveau du serveur. Aperçu fournit des informations précieuses bien que nous vous recommandons de que vous l’utilisez dans votre cycle de développement, y compris de votre environnement de test Azure. Alors que [Fiddler](http://www.telerik.com/fiddler) et [outils de développement F-12](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx) fournissent un côté client vue Aperçu fournit une vue détaillée du serveur. Ce didacticiel se concentrera sur l’utilisation de l’aperçu ASP.NET MVC et les packages EF, mais de nombreux autres packages sont disponibles. Lorsque cela est possible de lier sera à approprié [visualiser docs](http://getglimpse.com/Docs/) qui vous aider à gérer. Aperçu est un projet open source, vous pouvez trop contribuer au code source et les documents.
 
@@ -55,7 +55,7 @@ Les commandes suivantes installent les modules aperçu MVC5 et EF6 à partir de 
 <a id="eg"></a>
 ## <a name="enable-glimpse-for-localhost"></a>Activer l’aperçu pour localhost
 
-Accédez à http://localhost :&lt;# port&gt;/glimpse.axd et cliquez sur le **activer l’aperçu sur** bouton.
+Accédez à http://localhost: &lt;# port&gt;/glimpse.axd et cliquez sur le <strong>activer l’aperçu sur</strong> bouton.
 
 ![Page d’aperçu axd](profile-and-debug-your-aspnet-mvc-app-with-glimpse/_static/image4.png)
 

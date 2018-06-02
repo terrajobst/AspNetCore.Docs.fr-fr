@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-cs
-title: "Utilisation de TemplateField dans le contrôle GridView (c#) | Documents Microsoft"
+title: Utilisation de TemplateField dans le contrôle GridView (c#) | Documents Microsoft
 author: rick-anderson
-description: "Pour fournir une grande souplesse, le contrôle GridView offre le TemplateField, qui effectue le rendu à l’aide d’un modèle. Un modèle peut inclure une combinaison de fichiers HTML statiques, contrôles Web, et..."
+description: Pour fournir une grande souplesse, le contrôle GridView offre le TemplateField, qui effectue le rendu à l’aide d’un modèle. Un modèle peut inclure une combinaison de fichiers HTML statiques, contrôles Web, et...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-gridview-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 004f1450937cc6543cb728e01586e3c3529a57d0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6485cbda50912920808fc0caf41c888493f210dc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-templatefields-in-the-gridview-control-c"></a>Utilisation de TemplateField dans le contrôle GridView (c#)
 ====================
@@ -94,7 +94,7 @@ Continuez et convertir les `FirstName` BoundField en TemplateField. Une fois cet
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-cs/samples/sample2.aspx)]
 
-Comme vous pouvez le voir, le TemplateField se compose de deux modèles un `ItemTemplate` qui a une étiquette dont `Text` est définie sur la valeur de la `FirstName` champ de données et un `EditItemTemplate` avec une zone de texte de contrôle dont `Text` est également définie pour le `FirstName` champ de données. La syntaxe de liaison de données - `<%# Bind("fieldName") %>` -indique que le champ des données  *`fieldName`*  est lié à la propriété de contrôle Web spécifiée.
+Comme vous pouvez le voir, le TemplateField se compose de deux modèles un `ItemTemplate` qui a une étiquette dont `Text` est définie sur la valeur de la `FirstName` champ de données et un `EditItemTemplate` avec une zone de texte de contrôle dont `Text` est également définie pour le `FirstName` champ de données. La syntaxe de liaison de données - `<%# Bind("fieldName") %>` -indique que le champ des données *`fieldName`* est lié à la propriété de contrôle Web spécifiée.
 
 Pour ajouter le `LastName` valeur à cette TemplateField, nous devons ajouter un autre contrôle Web de l’étiquette de champ de données le `ItemTemplate` et lier sa `Text` propriété `LastName`. Cela peut être accompli manuellement ou via le concepteur. Pour le faire manuellement, ajoutez simplement la syntaxe déclarative appropriée pour le `ItemTemplate`:
 
@@ -239,7 +239,7 @@ Définir de cette nouvelle TemplateField `HeaderText` propriété « Les jours 
 
 [!code-aspx[Main](using-templatefields-in-the-gridview-control-cs/samples/sample6.aspx)]
 
-`Container.DataItem`Retourne un `DataRowView` objet correspondant à la `DataSource` enregistrement lié à la `GridViewRow`. Son `Row` propriété retourne le fortement typée `Northwind.EmployeesRow`, qui est transmis à la `DisplayDaysOnJob` (méthode). Cette syntaxe de liaison de données peut apparaître directement dans le `ItemTemplate` (comme indiqué dans la syntaxe déclarative ci-dessous) ou peut être affectée à la `Text` propriété d’un contrôle Web Label.
+`Container.DataItem` Retourne un `DataRowView` objet correspondant à la `DataSource` enregistrement lié à la `GridViewRow`. Son `Row` propriété retourne le fortement typée `Northwind.EmployeesRow`, qui est transmis à la `DisplayDaysOnJob` (méthode). Cette syntaxe de liaison de données peut apparaître directement dans le `ItemTemplate` (comme indiqué dans la syntaxe déclarative ci-dessous) ou peut être affectée à la `Text` propriété d’un contrôle Web Label.
 
 > [!NOTE]
 > Vous pouvez également, au lieu de passer dans un `EmployeesRow` instance, nous avons simplement passer dans le `HireDate` à l’aide de la valeur `<%# DisplayDaysOnJob(Eval("HireDate")) %>`. Toutefois, le `Eval` méthode retourne un `object`, de sorte que nous devons modifier notre `DisplayDaysOnJob` accepte un paramètre d’entrée de type de la signature de méthode `object`à la place. Nous ne pouvons pas effectué de manière aveugle le `Eval("HireDate")` de l’appel à une `DateTime` , car le `HireDate` colonne dans la `Employees` table peut contenir `NULL` valeurs. Par conséquent, nous devons accepter un `object` comme paramètre d’entrée pour le `DisplayDaysOnJob` (méthode), vérifiez si elle a une base de données `NULL` valeur (celle-ci peut être réalisée à l’aide de `Convert.IsDBNull(objectToCheck)`), puis passez en conséquence.
@@ -276,12 +276,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Dan Jagers. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](custom-formatting-based-upon-data-cs.md)
-[Suivant](using-templatefields-in-the-detailsview-control-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](custom-formatting-based-upon-data-cs.md)
+> [Suivant](using-templatefields-in-the-detailsview-control-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-vb
-title: "Déploiement de votre Site à l’aide d’un Client FTP (VB) | Documents Microsoft"
+title: Déploiement de votre Site à l’aide d’un Client FTP (VB) | Documents Microsoft
 author: rick-anderson
-description: "Pour déployer une application ASP.NET, la plus simple consiste à copier manuellement les fichiers nécessaires à partir de l’environnement de développement à l’environnement de production. THI..."
+description: Pour déployer une application ASP.NET, la plus simple consiste à copier manuellement les fichiers nécessaires à partir de l’environnement de développement à l’environnement de production. THI...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7792891aed6f0c5e952018dacb36a1d267cb6ae0
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 90ae866d82c4dbfd5c3e209c3d397df42d162515
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="deploying-your-site-using-an-ftp-client-vb"></a>Déploiement de votre Site à l’aide d’un Client FTP (VB)
 ====================
@@ -77,7 +77,7 @@ La figure 1 montre FileZilla après avoir copié les fichiers nécessaires. File
 **Figure 1**: utiliser un FTP Client pour copier les fichiers nécessaires à partir de votre bureau sur le serveur Web au fournisseur de serveur Web ([cliquez pour afficher l’image en taille réelle](deploying-your-site-using-an-ftp-client-vb/_static/image3.png))
 
 
-Après avoir déployé votre site prendre quelques instants pour tester le site. Si vous avez acheté un nom de domaine et les paramètres DNS configurés correctement, vous pouvez visiter le site en entrant votre nom de domaine. Vous pouvez également votre fournisseur d’hébergement web doit avoir fourni vous avec une URL vers votre site, qui ressemble à ce qui *accountname*.* webhostprovider*.com ou *webhostprovider*.com /*accountname*. Par exemple, l’URL de mon compte sur ASP.NET de remise est : `http://httpruntime.web703.discountasp.net`.
+Après avoir déployé votre site prendre quelques instants pour tester le site. Si vous avez acheté un nom de domaine et les paramètres DNS configurés correctement, vous pouvez visiter le site en entrant votre nom de domaine. Vous pouvez également votre fournisseur d’hébergement web doit avoir fourni vous avec une URL vers votre site, qui ressemble à ce qui *accountname*. *webhostprovider*.com ou *webhostprovider*.com /*accountname*. Par exemple, l’URL de mon compte sur ASP.NET de remise est : `http://httpruntime.web703.discountasp.net`.
 
 Figure 2 montre le site critiques déployé. Notez que je suis l’affichage sur ASP de remise. Les serveurs du réseau, à `http://httpruntime.web703.discountasp.net`. À ce stade, toute personne disposant d’une connexion à Internet peut afficher mon site Web ! Comme nous l’attend, le site recherche et se comporte comme s’il était au moment de la tester dans l’environnement de développement.
 
@@ -161,6 +161,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Application\_Offline.htm et contourner la fonctionnalité « Erreurs conviviale d’Internet Explorer »](https://weblogs.asp.net/scottgu/App_5F00_Offline.htm-and-working-around-the-_2200_IE-Friendly-Errors_2200_-feature)
 - [Modes d’état de session](https://msdn.microsoft.com/library/ms178586.aspx)
 
->[!div class="step-by-step"]
-[Précédent](determining-what-files-need-to-be-deployed-vb.md)
-[Suivant](deploying-your-site-using-visual-studio-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](determining-what-files-need-to-be-deployed-vb.md)
+> [Suivant](deploying-your-site-using-visual-studio-vb.md)

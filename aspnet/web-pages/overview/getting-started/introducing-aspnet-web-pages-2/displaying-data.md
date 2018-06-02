@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
-title: "Présentation des Pages Web ASP.NET - affichage des données | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET - affichage des données | Documents Microsoft
 author: tfitzmac
-description: "Ce didacticiel vous montre comment créer une base de données dans WebMatrix et comment afficher les données de la base de données dans une page lorsque vous utilisez les Pages Web ASP.NET (Razor). Il suppose y..."
+description: Ce didacticiel vous montre comment créer une base de données dans WebMatrix et comment afficher les données de la base de données dans une page lorsque vous utilisez les Pages Web ASP.NET (Razor). Il suppose y...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
 msc.type: authoredcontent
-ms.openlocfilehash: fdb9af0ba87c7802c63451ac7aa422e0020b5719
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6c66e5fb0a1a49da411286e19c7954f83055c3fd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---displaying-data"></a>Présentation des Pages Web ASP.NET - affichage des données
 ====================
@@ -36,7 +36,7 @@ par [Tom FitzMacken](https://github.com/tfitzmac)
 > Fonctionnalités technologies abordées :
 > 
 > - Outils de base de données de WebMatrix.
-> - `WebGrid`application d’assistance.
+> - `WebGrid` application d’assistance.
 
 
 ## <a name="what-youll-build"></a>Ce que vous allez générer
@@ -338,6 +338,6 @@ Dans l’étape suivante du didacticiel, vous allez apprendre à utiliser le cod
 
 - [Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
 
->[!div class="step-by-step"]
-[Précédent](intro-to-web-pages-programming.md)
-[Suivant](form-basics.md)
+> [!div class="step-by-step"]
+> [Précédent](intro-to-web-pages-programming.md)
+> [Suivant](form-basics.md)

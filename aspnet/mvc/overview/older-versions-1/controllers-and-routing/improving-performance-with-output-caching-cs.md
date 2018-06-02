@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
-title: "Amélioration des performances avec la sortie mise en cache (c#) | Documents Microsoft"
+title: Amélioration des performances avec la sortie mise en cache (c#) | Documents Microsoft
 author: microsoft
-description: "Dans ce didacticiel, vous découvrez comment vous pouvez améliorer considérablement les performances des applications web ASP.NET MVC en tirant parti de la mise en cache de sortie. Vous..."
+description: Dans ce didacticiel, vous découvrez comment vous pouvez améliorer considérablement les performances des applications web ASP.NET MVC en tirant parti de la mise en cache de sortie. Vous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/improving-performance-with-output-caching-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 47f0aa976c5876991ccc2406fb8f7402e59ec556
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8958caa5a0ccad669ca861bed261102625be5cb6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="improving-performance-with-output-caching-c"></a>Amélioration des performances avec la sortie mise en cache (c#)
 ====================
@@ -39,7 +39,7 @@ Vous activez la mise en cache de sortie en ajoutant un attribut [OutputCache] po
 
 [!code-csharp[Main](improving-performance-with-output-caching-cs/samples/sample1.cs)]
 
-Dans les versions bêta d’ASP.NET MVC, la mise en cache de sortie ne fonctionne pas pour une URL telle que [http://www.MySite.com/](http://www.mysite.com/). Au lieu de cela, vous devez entrer une URL telle que [http://www.MySite.com/Home/Index](http://www.mysite.com/Home/Index). 
+Dans les versions bêta d’ASP.NET MVC, la mise en cache de sortie ne fonctionne pas pour une URL telle que [ http://www.MySite.com/ ](http://www.mysite.com/). Au lieu de cela, vous devez entrer une URL telle que [ http://www.MySite.com/Home/Index ](http://www.mysite.com/Home/Index). 
 
 Dans la liste de 1, la sortie de l’action Index() est mis en cache pendant 10 secondes. Si vous préférez, vous pouvez spécifier une durée beaucoup plus longue. Par exemple, si vous souhaitez mettre en cache la sortie d’une action de contrôleur pour un jour vous pouvez spécifier une durée de cache de 86 400 secondes (60 secondes \* 60 minutes \* 24 heures).
 
@@ -69,7 +69,7 @@ Par défaut, lorsque vous utilisez l’attribut [OutputCache], le contenu est mi
 
 Vous pouvez définir la propriété d’emplacement à l’une des valeurs suivantes :
 
-> · N’importe quel
+> · Any
 > 
 > · Client
 > 
@@ -132,7 +132,7 @@ Il est important de comprendre qu’à l’aide de la propriété VaryByParam en
 
 Vous pouvez définir la propriété VaryByParam les valeurs suivantes :
 
-> \*= Créer une autre version de mise en cache chaque fois qu’un paramètre de chaîne de requête ou de formulaire varie.
+> \* = Créer une autre version de mise en cache chaque fois qu’un paramètre de chaîne de requête ou de formulaire varie.
 > 
 > None = jamais créer différentes versions de mise en cache
 > 
@@ -161,10 +161,10 @@ Le contrôleur dans la liste 7 illustre comment vous pouvez appliquer le profil 
 
 Si vous appelez l’action Index() exposée par le contrôleur dans la liste 7, le même temps sera retourné pour 1 heure.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 La mise en cache de sortie vous offre une méthode très simple qui améliore considérablement les performances de vos applications ASP.NET MVC. Dans ce didacticiel, vous avez appris à utiliser l’attribut [OutputCache] pour mettre en cache la sortie d’actions de contrôleur. Vous avez également appris à modifier les propriétés de l’attribut [OutputCache] telles que les propriétés Duration et VaryByParam pour modifier la façon dont le contenu obtient mis en cache. Enfin, vous avez appris à définir des profils de cache dans le fichier de configuration web.
 
->[!div class="step-by-step"]
-[Précédent](understanding-action-filters-cs.md)
-[Suivant](adding-dynamic-content-to-a-cached-page-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](understanding-action-filters-cs.md)
+> [Suivant](adding-dynamic-content-to-a-cached-page-cs.md)

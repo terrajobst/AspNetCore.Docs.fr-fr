@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
-title: "L’authentification unique (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft"
+title: L’authentification unique (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 7d82d5e9-0619-4f22-9e03-32a6d52940a5
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: b3640c94a8ae9ede330c0fe6a392acb5843cb65c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 82f2f99154d94074b03d580a0f491053d6f53bde
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>Single Sign-On (génération d’applications Cloud du monde réel avec Azure)
 ====================
@@ -130,7 +130,7 @@ Et dans quelques minutes, vous avez terminé.
 
 Vous devez uniquement exécuter cette procédure sur un contrôleur de domaine de l’organisation, sur Windows 2003 ou version ultérieure. Et le redémarrer. Lorsque vous avez terminé, tous les utilisateurs se trouvent dans le cloud et vous pouvez effectuer l’authentification unique à partir de n’importe quel web ou d’une application mobile, à l’aide de SAML, OAuth ou WS-Fed.
 
-Parfois nous demande souvent sur le niveau de sécurité Il s’agit de : Microsoft l’utilise pour leurs données sensibles de l’entreprise ? Et la réponse est Oui, que nous faisons. Par exemple, si vous accédez au site Microsoft SharePoint interne à [https://microsoft.sharepoint.com/](https://microsoft.sharepoint.com/), vous êtes invité à se connecter.
+Parfois nous demande souvent sur le niveau de sécurité Il s’agit de : Microsoft l’utilise pour leurs données sensibles de l’entreprise ? Et la réponse est Oui, que nous faisons. Par exemple, si vous accédez au site Microsoft SharePoint interne à [ https://microsoft.sharepoint.com/ ](https://microsoft.sharepoint.com/), vous êtes invité à se connecter.
 
 ![Connexion à Office 365](single-sign-on/_static/image20.png)
 
@@ -193,6 +193,6 @@ Pour plus d'informations, reportez-vous aux ressources suivantes :
 - [Blog de l’API Graph Active Directory Azure](https://blogs.msdn.com/b/aadgraphteam/).
 - [Contrôle d’accès dans le modèle BYOD et intégration d’annuaire dans une Infrastructure d’identité hybride](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/PCIT-B213#fbid=). Tech Ed 2014 session vidéo par Gayana Bagdasaryan.
 
->[!div class="step-by-step"]
-[Précédent](web-development-best-practices.md)
-[Suivant](data-storage-options.md)
+> [!div class="step-by-step"]
+> [Précédent](web-development-best-practices.md)
+> [Suivant](data-storage-options.md)

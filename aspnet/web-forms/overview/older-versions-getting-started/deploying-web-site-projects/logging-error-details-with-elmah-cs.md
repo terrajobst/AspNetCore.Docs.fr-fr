@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs
-title: "Journalisation des détails de l’erreur avec ELMAH (c#) | Documents Microsoft"
+title: Journalisation des détails de l’erreur avec ELMAH (c#) | Documents Microsoft
 author: rick-anderson
-description: "Erreur de journalisation des Modules et gestionnaires (ELMAH) offre une autre approche pour la journalisation des erreurs d’exécution dans un environnement de production. ELMAH une erreur s’est libre et open source..."
+description: Erreur de journalisation des Modules et gestionnaires (ELMAH) offre une autre approche pour la journalisation des erreurs d’exécution dans un environnement de production. ELMAH une erreur s’est libre et open source...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 26d40d17447b3b03d17265f291b8ac246a449966
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cd91c745624f09d01a326a445bea2bb756576688
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="logging-error-details-with-elmah-c"></a>Journalisation des détails de l’erreur avec ELMAH (c#)
 ====================
@@ -70,9 +70,9 @@ Le `Elmah.dll` assembly inclut les classes utilisées par le système ELMAH. Ces
 
 - **Les Modules HTTP** -un HTTP Module est une classe qui définit des gestionnaires d’événements pour `HttpApplication` événements, tels que le `Error` événement. ELMAH comprend plusieurs Modules HTTP, les plus pertinentes trois en cours : 
 
-    - `ErrorLogModule`-enregistre les exceptions non gérées dans une source de journal.
-    - `ErrorMailModule`-envoie les détails d’une exception non gérée dans un message électronique.
-    - `ErrorFilterModule`-applique spécifié par le développeur de filtres pour déterminer quelles exceptions sont enregistrées et que celles sont ignorés.
+    - `ErrorLogModule` -enregistre les exceptions non gérées dans une source de journal.
+    - `ErrorMailModule` -envoie les détails d’une exception non gérée dans un message électronique.
+    - `ErrorFilterModule` -applique spécifié par le développeur de filtres pour déterminer quelles exceptions sont enregistrées et que celles sont ignorés.
 - **Les gestionnaires HTTP** -un gestionnaire HTTP est une classe qui est chargée de générer le balisage pour un type particulier de demande. ELMAH inclut des gestionnaires HTTP qui restituent les détails de l’erreur comme une page web, un flux RSS ou un fichier délimité par des virgules (CSV).
 - **Sources de journaux d’erreur** - emploi ELMAH peut enregistrer les erreurs dans la mémoire, à une base de données Microsoft SQL Server pour une base de données Microsoft Access, à une base de données Oracle dans un fichier XML, à une base de données SQLite ou à une base de données de la base de données de Vista. Comme l’intégrité du système de surveillance, architecture de ELMAH a été généré à l’aide du modèle de fournisseur, ce qui signifie que vous pouvez créer et intégrer en toute transparence vos propres fournisseurs de source de journal personnalisé, si nécessaire.
 
@@ -132,7 +132,7 @@ De ELMAH `SqlErrorLog` fournisseur enregistre les détails de l’erreur dans un
 
 **Figure 2**: le `SqlErrorLog` fournisseur utilise trois procédures stockées
 
-## <a name="elmah-in-action"></a>ELMAH en Action
+## <a name="elmah-in-action"></a>ELMAH In Action
 
 À ce stade, nous avons ajouté ELMAH à l’application web, inscrit le `ErrorLogModule` HTTP Module et le `ErrorLogPageFactory` gestionnaire HTTP spécifié les options de configuration de ELMAH dans `Web.config`et ajouté les objets de base de données requis pour la `SqlErrorLog` module fournisseur d’erreur. Nous sommes prêts à voir ELMAH en action ! Visitez le site Web critiques, vous accédez à une page qui génère une erreur d’exécution, telles que `Genre.aspx?ID=foo`, ou une page inexistante, tel que `NoSuchPage.aspx`. Ce que vous voyez lors de la visite de ces pages varie selon le `<customErrors>` configuration et si vous vous visitez localement ou à distance. (Faire référence à la [ *affichage d’une Page d’erreur personnalisée* didacticiel](displaying-a-custom-error-page-cs.md) pour un petit rappel sur cette rubrique.)
 
@@ -257,6 +257,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [À l’aide des Modules HTTP et des gestionnaires pour créer des composants enfichables ASP.NET](https://msdn.microsoft.com/library/aa479332.aspx)
 - [Didacticiels de sécurité de site Web](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 
->[!div class="step-by-step"]
-[Précédent](logging-error-details-with-asp-net-health-monitoring-cs.md)
-[Suivant](precompiling-your-website-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](logging-error-details-with-asp-net-health-monitoring-cs.md)
+> [Suivant](precompiling-your-website-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
-title: "Partie 1 : Fichier -> Nouveau projet | Documents Microsoft"
+title: 'Partie 1 : Fichier -> Nouveau projet | Documents Microsoft'
 author: JoeStagner
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 1 couvre la vue d’ensemble et le fichier/nouveau projet."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 1 couvre la vue d’ensemble et le fichier/nouveau projet.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: bd840f9f3f5d723e6bc1bb35955a7770634e9483
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a1b9681516e626b6a0eec420b168a74e05d88afb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-1-file--new-project"></a>Partie 1 : Fichier -> Nouveau projet
 ====================
@@ -27,7 +27,7 @@ par [Joe Stagner](https://github.com/JoeStagner)
 > Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 1 couvre la vue d’ensemble et le fichier/nouveau projet.
 
 
-## <a id="_Toc260221666"></a>Vue d’ensemble
+## <a id="_Toc260221666"></a>  Vue d’ensemble
 
 Ce didacticiel est une introduction à Web Forms d’ASP.NET. Nous allons commencer lentement, afin de l’expérience de développement de niveau web débutant est OK.
 
@@ -61,11 +61,11 @@ Après le classement, ils voient un écran de confirmation simple :
 
 Nous allons commencer par créer un nouveau projet ASP.NET WebForms dans Visual Studio 2010, et nous allons ajouter progressivement les fonctionnalités pour créer une application fonctionnelle complète. Avant cela, nous aborderons accès de base de données, les affichages de listes et de la grille, pages de mise à jour des données, validation des données, à l’aide de pages maîtres pour la mise en page cohérente, AJAX, validation, l’appartenance des utilisateurs et bien plus encore.
 
-Peut suivre la procédure étape par étape, ou vous pouvez télécharger l’application terminée à partir de [http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
+Peut suivre la procédure étape par étape, ou vous pouvez télécharger l’application terminée [http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
 
-Vous pouvez utiliser Visual Studio 2010 ou le libre Visual Web Developer 2010 à partir de [https://www.microsoft.com/express/Web/](https://www.microsoft.com/express/Web/). Pour générer l’application, vous pouvez utiliser SQL Server soit libre SQL Server Express pour héberger la base de données.
+Vous pouvez utiliser Visual Studio 2010 ou le libre Visual Web Developer 2010 à partir de [ https://www.microsoft.com/express/Web/ ](https://www.microsoft.com/express/Web/). Pour générer l’application, vous pouvez utiliser SQL Server soit libre SQL Server Express pour héberger la base de données.
 
-## <a id="_Toc260221667"></a>Fichier / nouveau projet
+## <a id="_Toc260221667"></a>  Fichier / nouveau projet
 
 Nous allons commencer en sélectionnant le nouveau projet à partir du menu fichier dans Visual Studio. De la boîte de dialogue Nouveau projet s’affiche.
 
@@ -105,5 +105,5 @@ Nous allons également de déplacer la Page maître dans le répertoire de Style
 
 Une fois cela que nous aurons besoin pour modifier la page maître références dans tous les fichiers .aspx générés par la valeur par défaut des pages Web Forms d’ASP.NET.
 
->[!div class="step-by-step"]
-[Next](tailspin-spyworks-part-2.md)
+> [!div class="step-by-step"]
+> [Next](tailspin-spyworks-part-2.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
-title: "Définition par programme des valeurs de paramètres de l’ObjectDataSource (VB) | Documents Microsoft"
+title: Définition par programme des valeurs de paramètres de l’ObjectDataSource (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons étudier d’ajout d’une méthode pour notre DAL et la couche BLL qui accepte un seul paramètre d’entrée et retourne les données. L’exemple définit ce paramètre..."
+description: Dans ce didacticiel, nous allons étudier d’ajout d’une méthode pour notre DAL et la couche BLL qui accepte un seul paramètre d’entrée et retourne les données. L’exemple définit ce paramètre...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/basic-reporting/programmatically-setting-the-objectdatasource-s-parameter-values-vb
 msc.type: authoredcontent
-ms.openlocfilehash: aa4afbf2200e1167c9f66aeaddb4273e710394b4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ac53d651601829b6e7d2ce312a084618a8afbb61
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="programmatically-setting-the-objectdatasources-parameter-values-vb"></a>Définition par programme des valeurs de paramètres de l’ObjectDataSource (VB)
 ====================
@@ -124,7 +124,7 @@ Pour définir cette valeur par programmation, nous devons créer un gestionnaire
 **Figure 9**: cliquez sur l’icône d’éclair dans la fenêtre Propriétés pour répertorier les événements d’un contrôle Web
 
 
-Tous les trois approches ajouter un gestionnaire d’événements pour l’ObjectDataSource `Selecting` événement à la classe code-behind de la page. Dans ce gestionnaire d’événements, nous pouvons lire et écrire les valeurs de paramètre à l’aide de `e.InputParameters(parameterName)`, où  *`parameterName`*  est la valeur de la `Name` d’attribut dans le `<asp:Parameter>` balise (le `InputParameters` collection peut également être indexée ordinale, comme dans `e.InputParameters(index)`). Pour définir le `month` paramètre pour le mois en cours, ajoutez le code suivant à la `Selecting` Gestionnaire d’événements :
+Tous les trois approches ajouter un gestionnaire d’événements pour l’ObjectDataSource `Selecting` événement à la classe code-behind de la page. Dans ce gestionnaire d’événements, nous pouvons lire et écrire les valeurs de paramètre à l’aide de `e.InputParameters(parameterName)`, où *`parameterName`* est la valeur de la `Name` d’attribut dans le `<asp:Parameter>` balise (le `InputParameters` collection peut également être indexée ordinale, comme dans `e.InputParameters(index)`). Pour définir le `month` paramètre pour le mois en cours, ajoutez le code suivant à la `Selecting` Gestionnaire d’événements :
 
 
 [!code-vb[Main](programmatically-setting-the-objectdatasource-s-parameter-values-vb/samples/sample3.vb)]
@@ -147,11 +147,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Hilton Giesenow. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](declarative-parameters-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](declarative-parameters-vb.md)

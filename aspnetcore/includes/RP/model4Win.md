@@ -12,7 +12,7 @@ Si vous obtenez l’erreur :
 No executable found matching command "dotnet-aspnet-codegenerator"
   ```
 
-Ouvrez une interface de commande dans le répertoire du projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+L’erreur précédente se produit quand vous êtes dans le mauvais répertoire. Ouvrez une interface de commande dans le répertoire du projet (répertoire contenant les fichiers *Program.cs*, *Startup.cs* et *.csproj*), puis exécutez la commande précédente.
 
 Si vous obtenez l’erreur :
   ```

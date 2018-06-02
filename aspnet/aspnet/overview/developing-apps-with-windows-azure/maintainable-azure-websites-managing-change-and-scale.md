@@ -1,26 +1,26 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
-title: "Laboratoire pratique : sites Web Azure facile à gérer : gestion des modifications et l’échelle | Documents Microsoft"
+title: 'Laboratoire pratique : sites Web Azure facile à gérer : gestion des modifications et l’échelle | Documents Microsoft'
 author: rick-anderson
-description: "Dans ce laboratoire, découvrez comment Microsoft Azure permet de facilement créer et déployer des sites Web en production."
+description: Dans ce laboratoire, découvrez comment Microsoft Azure permet de facilement créer et déployer des sites Web en production.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: 4bce02b2c592ff04e0dbce78d18004c69268e4fd
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a79921681b4e742b5cd23f7119d19f4dd74c3f83
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Laboratoire pratique : sites Web Azure facile à gérer : gestion des modifications et l’échelle
 ====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
 [Télécharger Camps Web Kit de formation](http://aka.ms/webcamps-training-kit)
 
@@ -34,7 +34,7 @@ par [Web Camps équipe](https://twitter.com/webcamps)
 > 
 > Avec les bases de données SQL, il est important de conserver votre base de données de production à jour lors du déploiement de nouvelles versions de votre application. Grâce à **Migrations Entity Framework Code First**, le développement et le déploiement de votre modèle de données a été simplifié pour mettre à jour vos environnements en quelques minutes. Cet atelier pratique va vous montrer les différentes rubriques que pourrait être confronté lors du déploiement de votre application web pour les environnements de production dans Microsoft Azure.
 > 
-> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 > 
 > Pour plus d’une description approfondie de cette rubrique, consultez la [génération d’applications Cloud réel avec Azure livres](building-real-world-cloud-apps-with-windows-azure/introduction.md).
 
@@ -281,13 +281,13 @@ Dans cette tâche, vous allez créer une application web **Azure App Service** �
     *Personnalisation de la nouvelle application web*
 5. Spécifiez les informations suivantes pour les paramètres de base de données :
 
-    - Dans le **nom** texte, entrez un nom de base de données (par exemple, *geekquiz\_db*)
-    - Dans le serveur **déroulante** liste, sélectionnez **serveur de base de données SQL de nouvelle**. Vous pouvez également sélectionner un serveur existant.
-    - Dans le **nom d’utilisateur de base de données** et **mot de passe de base de données** zones, entrez le nom d’utilisateur administrateur et le mot de passe pour le serveur de base de données SQL. Si vous sélectionnez un serveur que vous avez déjà créé, vous serez invité pour le mot de passe.
+   - Dans le **nom** texte, entrez un nom de base de données (par exemple, *geekquiz\_db*)
+   - Dans le serveur **déroulante** liste, sélectionnez **serveur de base de données SQL de nouvelle**. Vous pouvez également sélectionner un serveur existant.
+   - Dans le **nom d’utilisateur de base de données** et **mot de passe de base de données** zones, entrez le nom d’utilisateur administrateur et le mot de passe pour le serveur de base de données SQL. Si vous sélectionnez un serveur que vous avez déjà créé, vous serez invité pour le mot de passe.
 
-    ![En spécifiant les paramètres de base de données](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
+     ![En spécifiant les paramètres de base de données](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
 
-    *En spécifiant les paramètres de base de données*
+     *En spécifiant les paramètres de base de données*
 6. Cliquez sur **Suivant** pour continuer.
 7. Sélectionnez **référentiel Git Local** pour le contrôle de code source à utiliser et cliquez sur **suivant**.
 
@@ -687,7 +687,7 @@ Dans cette tâche, vous utiliserez la fenêtre de l’Explorateur de serveurs à
 
 Dans cette tâche, vous allez configurer le **GeekQuiz** solution pour utiliser l’image téléchargée pour le stockage d’objets Blob Azure (au lieu de l’image est situé dans l’application web) en ajoutant une règle de réécriture d’URL ASP.NET dans le **web.config**fichier.
 
-1. Dans Visual Studio, ouvrez le **Web.config** de fichiers à l’intérieur de la **GeekQuiz** de projet et recherchez le  **&lt;system.webServer&gt;**  élément.
+1. Dans Visual Studio, ouvrez le **Web.config** de fichiers à l’intérieur de la **GeekQuiz** de projet et recherchez le **&lt;system.webServer&gt;** élément.
 2. Ajoutez le code suivant pour ajouter une réécriture d’URL, règle de mise à jour de l’espace réservé avec le nom de votre compte de stockage.
 
     (Code d’extrait de code - *WebSitesInProduction - Ex4 - UrlRewriteRule*)
@@ -785,7 +785,7 @@ Maintenant que **mise à l’échelle** a été configuré, vous allez créer un
     ![Ajout d’une demande à Testweb1](maintainable-azure-websites-managing-change-and-scale/_static/image81.png "Ajout d’une demande à Testweb1")
 
     *Ajout d’une demande à Testweb1*
-4. Dans le **propriétés** fenêtre du nouveau nœud de la demande, mettre à jour le **Url** propriété pour pointer vers l’URL de votre application web (par exemple,  *[http://geek-quiz.azurewebsites.net/](http://geek-quiz.azurewebsites.net/)* ).
+4. Dans le **propriétés** fenêtre du nouveau nœud de la demande, mettre à jour le **Url** propriété pour pointer vers l’URL de votre application web (par exemple, *[ http://geek-quiz.azurewebsites.net/ ](http://geek-quiz.azurewebsites.net/)*).
 
     ![Modification de la propriété Url](maintainable-azure-websites-managing-change-and-scale/_static/image82.png "modification de la propriété Url")
 
@@ -797,13 +797,13 @@ Maintenant que **mise à l’échelle** a été configuré, vous allez créer un
     *Ajout d’une boucle à Testweb1*
 6. Dans le **ajouter une règle conditionnelle et des éléments à la boucle** boîte de dialogue, sélectionnez le **de boucles for** règle et modifier les propriétés suivantes.
 
-    1. **Valeur de fin :** 1000
-    2. **Nom du paramètre de contexte :** itérateur
-    3. **Valeur d’incrément :** 1
+   1. **Valeur de fin :** 1000
+   2. **Nom du paramètre de contexte :** itérateur
+   3. **Valeur d’incrément :** 1
 
-    ![En sélectionnant la règle de boucles for et les propriétés de mise à jour](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "en sélectionnant la règle de boucles for et les propriétés de mise à jour")
+      ![En sélectionnant la règle de boucles for et les propriétés de mise à jour](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "en sélectionnant la règle de boucles for et les propriétés de mise à jour")
 
-    *En sélectionnant la règle de boucles for et les propriétés de mise à jour*
+      *En sélectionnant la règle de boucles for et les propriétés de mise à jour*
 7. Sous le **éléments de la boucle** , sélectionnez la requête que vous avez créée précédemment pour le premier et dernier éléments de la boucle. Cliquez sur **OK** pour continuer.
 
     ![En sélectionnant les premier et dernier éléments de la boucle](maintainable-azure-websites-managing-change-and-scale/_static/image85.png "en sélectionnant les premier et dernier éléments de la boucle")

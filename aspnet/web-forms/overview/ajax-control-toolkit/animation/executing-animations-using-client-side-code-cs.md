@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-cs
-title: "L’exécution des Animations à l’aide du Code côté Client (c#) | Documents Microsoft"
+title: L’exécution des Animations à l’aide du Code côté Client (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. L’exécution de l’animation en cours..."
+description: Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. L’exécution de l’animation en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 6b1911686a79aa692ef193430cd0746a2511105a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cfaed745b4c547d04033ee89d2c6549c5989cb73
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="executing-animations-using-client-side-code-c"></a>Animations en cours d’exécution à l’aide de Code côté Client (c#)
 ====================
@@ -70,6 +70,6 @@ Voici le code JavaScript côté client complet qui émule le, cliquez sur le pan
 
 L’animation s’exécute immédiatement, sans un clic de souris ([cliquez pour afficher l’image en taille réelle](executing-animations-using-client-side-code-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](modifying-animations-from-the-server-side-cs.md)
-[Suivant](changing-an-animation-using-client-side-code-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](modifying-animations-from-the-server-side-cs.md)
+> [Suivant](changing-an-animation-using-client-side-code-cs.md)

@@ -1,78 +1,70 @@
 ---
-title: Journalisation de hautes performances avec LoggerMessage dans ASP.NET Core
+title: Journalisation avancée avec LoggerMessage dans ASP.NET Core
 author: guardrex
-description: "Découvrez comment utiliser les fonctionnalités de LoggerMessage pour créer des délégués pouvant être nécessitant moins d’allocations objet celle des méthodes d’extension d’enregistreur d’événements pour les scénarios de journalisation de hautes performances."
-ms.author: riande
+description: Découvrez comment utiliser LoggerMessage pour créer des délégués pouvant être mis en cache et nécessitant moins d’allocations d’objets pour les scénarios de journalisation à hautes performances.
 manager: wpickett
+ms.author: riande
 ms.date: 11/03/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/logging/loggermessage
-ms.openlocfilehash: defba75c6c9ea13d24af4cd8515d82d9e7cf9853
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.openlocfilehash: 24a75cfacfa61ca66e78deeb743baa75718dfb76
+ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>Journalisation de hautes performances avec LoggerMessage dans ASP.NET Core
+# <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>Journalisation avancée avec LoggerMessage dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-[LoggerMessage](/dotnet/api/microsoft.extensions.logging.loggermessage) fonctionnalités créer pouvant être délégués qui nécessitent moins d’allocations objets et réduit la charge de calcul à [les méthodes d’extension d’enregistreur d’événements](/dotnet/api/Microsoft.Extensions.Logging.LoggerExtensions), tel que `LogInformation`, `LogDebug`et `LogError`. Pour les scénarios de journalisation de hautes performances, utilisez la `LoggerMessage` modèle.
+Les fonctionnalités [LoggerMessage](/dotnet/api/microsoft.extensions.logging.loggermessage) créent des délégués pouvant être mis en cache qui nécessitent moins d’allocations d’objet et de charge de calcul que les [méthodes d’extension de journaliseur](/dotnet/api/Microsoft.Extensions.Logging.LoggerExtensions), telles que `LogInformation`, `LogDebug` et `LogError`. Pour les scénarios de journalisation hautes performances, utilisez le modèle `LoggerMessage`.
 
-`LoggerMessage`fournit les avantages de performances suivants sur les méthodes d’extension d’enregistreur d’événements :
+`LoggerMessage` procure les avantages suivants en termes de performances par rapport aux méthodes d’extension de journaliseur :
 
-* Méthodes d’extension d’enregistreur d’événements nécessitent des types de valeur « conversion boxing » (conversion), tel que `int`, dans `object`. Le `LoggerMessage` boxing évite de modèle à l’aide de static `Action` champs et méthodes d’extension avec des paramètres fortement typés.
-* Méthodes d’extension d’enregistreur d’événements doivent analyser le modèle de message (chaîne de format nommé) chaque fois qu’un message de journal est écrit. `LoggerMessage`ne nécessite que l’analyse d’un modèle une fois lorsque le message est défini.
+* Les méthodes d’extension de journaliseur nécessitent la conversion (« boxing ») de types de valeur, tels que `int`, en `object`. Utilisant des champs `Action` statiques et des méthodes d’extension avec des paramètres fortement typés, le modèle `LoggerMessage` évite le boxing.
+* Les méthodes d’extension de journaliseur doivent analyser le modèle de message (chaîne de format nommé) chaque fois qu’un message de journal est écrit. `LoggerMessage` requiert l’analyse d’un modèle une seule fois quand le message est défini.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/loggermessage/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-L’exemple d’application montre `LoggerMessage` fonctionnalités avec une demande de base système de suivi. L’application ajoute et supprime les guillemets doubles à l’aide d’une base de données en mémoire. Comme ces opérations se produisent, des messages de journal sont générées à l’aide de la `LoggerMessage` modèle.
+L’exemple d’application illustre les fonctionnalités `LoggerMessage` avec un système de suivi de citations de base. L’application ajoute et supprime des citations à l’aide d’une base de données en mémoire. À mesure que ces opérations se produisent, des messages de journal sont générés à l’aide du modèle `LoggerMessage`.
 
 ## <a name="loggermessagedefine"></a>LoggerMessage.Define
 
-[Définir (LogLevel, ID d’événement, String)](/dotnet/api/microsoft.extensions.logging.loggermessage.define) crée un `Action` délégué pour la journalisation d’un message. `Define`surcharges autorisent le passage de paramètres de type jusqu'à six à une chaîne de format nommée (modèle).
+[Define(LogLevel, EventId, String)](/dotnet/api/microsoft.extensions.logging.loggermessage.define) crée un délégué `Action` pour la journalisation d’un message. Les surcharges `Define` permettent de passer jusqu’à six paramètres de type à une chaîne de format nommée (modèle).
 
-## <a name="loggermessagedefinescope"></a>LoggerMessage.DefineScope
+La chaîne fournie à la méthode `Define` est un modèle et non pas une chaîne interpolée. Les espaces réservés sont remplis dans l’ordre dans lequel les types sont spécifiés. Les noms d’espace réservé dans le modèle doivent être descriptifs et cohérents d’un modèle à l’autre. Ils servent de noms de propriété dans les données de journal structurées. Nous vous recommandons d’utiliser la [casse Pascal](/dotnet/standard/design-guidelines/capitalization-conventions) pour les noms d’espace réservé. Par exemple, `{Count}`, `{FirstName}`.
 
-[DefineScope(String)](/dotnet/api/microsoft.extensions.logging.loggermessage.definescope) crée un `Func` delegate pour définir un [connecter étendue](xref:fundamentals/logging/index#log-scopes). `DefineScope`surcharges autorisent le passage de jusqu'à trois paramètres de type à une chaîne de format nommée (modèle).
+Chaque message de journal est une `Action` contenue dans un champ statique créé par `LoggerMessage.Define`. Par exemple, l’exemple d’application crée un champ afin de décrire un message de journal pour une demande GET pour la page Index (*Internal/LoggerExtensions.cs*) :
 
-## <a name="message-template-named-format-string"></a>Modèle de message (nommé la chaîne de format)
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet1)]
 
-La chaîne fournie pour le `Define` et `DefineScope` méthodes est un modèle et pas une chaîne interpolée. Les espaces réservés sont remplis dans l’ordre que les types sont spécifiés. Noms d’espace réservé dans le modèle doivent être descriptif et cohérent entre les modèles. Ils servent de noms de propriété dans les données structurées de journal. Nous vous recommandons de [Pascal casse](/dotnet/standard/design-guidelines/capitalization-conventions) pour les noms d’espace réservé. Par exemple, `{Count}`, `{FirstName}`.
+Pour l’`Action`, spécifiez :
 
-## <a name="implementing-loggermessagedefine"></a>Implémentation de LoggerMessage.Define
+* Le niveau du journal
+* Un identificateur d’événement unique ([EventId](/dotnet/api/microsoft.extensions.logging.eventid)) avec le nom de la méthode d’extension statique
+* Le modèle de message (chaîne de format nommée) 
 
-Chaque message du journal est une `Action` contenues dans un champ statique créé par `LoggerMessage.Define`. Par exemple, l’exemple d’application crée un champ pour décrire un message de journal pour une demande GET pour la page d’Index (*Internal/LoggerExtensions.cs*) :
+Une demande pour la page Index de l’exemple d’application définit :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet1)]
+* Le niveau de journal sur `Information`
+* L’ID d’événement sur `1` avec le nom de la méthode `IndexPageRequested`
+* Le modèle de message (chaîne de format nommée) sur une chaîne
 
-Pour le `Action`, spécifiez :
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet5)]
 
-* Le niveau de journal.
-* Un identificateur d’événement unique ([EventId](/dotnet/api/microsoft.extensions.logging.eventid)) avec le nom de la méthode d’extension statique.
-* Le modèle de message (nommé la chaîne de format). 
+Des magasins de journalisation structurée peuvent utiliser le nom d’événement quand il est fourni avec l’ID d’événement pour enrichir la journalisation. Par exemple, [Serilog](https://github.com/serilog/serilog-extensions-logging) utilise le nom d’événement.
 
-Une demande de la page d’Index de l’application d’exemple définit le :
+L’`Action` est appelée par le biais d’une méthode d’extension fortement typée. La méthode `IndexPageRequested` journalise un message pour une demande GET pour la page Index dans l’exemple d’application :
 
-* Ouvrez une session au niveau de `Information`.
-* Id d’événement de `1` avec le nom de la `IndexPageRequested` (méthode).
-* Modèle de message (nommé la chaîne de format) en une chaîne.
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet9)]
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet5)]
+`IndexPageRequested` est appelé sur le journaliseur dans la méthode `OnGetAsync` dans *Pages/Index.cshtml.cs* :
 
-Magasins de journalisation structuré peuvent utiliser le nom d’événement lorsqu’il est fourni avec l’id d’événement d’enrichir la journalisation. Par exemple, [Serilog](https://github.com/serilog/serilog-extensions-logging) utilise le nom de l’événement.
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=3)]
 
-Le `Action` est appelé via une méthode d’extension de fortement typée. Le `IndexPageRequested` méthode consigne un message pour une demande d’obtention de page Index dans l’exemple d’application :
-
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet9)]
-
-`IndexPageRequested`est appelé sur l’enregistreur d’événements dans le `OnGetAsync` méthode dans *Pages/Index.cshtml.cs*:
-
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet2&highlight=3)]
-
-Examinez la sortie de l’application console :
+Examinez la sortie de la console de l’application :
 
 ```console
 info: LoggerMessageSample.Pages.IndexModel[1]
@@ -80,23 +72,23 @@ info: LoggerMessageSample.Pages.IndexModel[1]
       GET request for Index page
 ```
 
-Pour passer des paramètres à un message de journal, définir jusqu'à six types lors de la création du champ statique. L’exemple d’application enregistre une chaîne lors de l’ajout d’un guillemet en définissant un `string` de type pour le `Action` champ :
+Pour passer des paramètres à un message de journal, définissez jusqu’à six types au moment de la création du champ statique. L’exemple d’application journalise une chaîne au moment de l’ajout d’une citation en définissant un type `string` pour le champ `Action` :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet2)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet2)]
 
-Modèle de message du journal du délégué reçoit ses valeurs d’espace réservé à partir des types fournis. L’exemple d’application définit un délégué pour l’ajout d’un guillemet, où le paramètre de devis est un `string`:
+Le modèle de message de journal du délégué reçoit ses valeurs d’espace réservé des types fournis. L’exemple d’application définit un délégué pour l’ajout d’une citation, où le paramètre Quote est de type `string` :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet6)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet6)]
 
-La méthode d’extension statique pour l’ajout d’un guillemet, `QuoteAdded`, reçoit la valeur d’argument devis et passe à la `Action` délégué :
+La méthode d’extension statique pour l’ajout d’une citation, `QuoteAdded`, reçoit la valeur d’argument quote et la passe au délégué `Action` :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet10)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet10)]
 
-Dans le fichier de code-behind de la page d’Index (*Pages/Index.cshtml.cs*), `QuoteAdded` est appelée pour enregistrer le message :
+Dans le modèle de page de la page Index (*Pages/Index.cshtml.cs*), `QuoteAdded` est appelé pour journaliser le message :
 
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
-Examinez la sortie de l’application console :
+Examinez la sortie de la console de l’application :
 
 ```console
 info: LoggerMessageSample.Pages.IndexModel[2]
@@ -104,21 +96,21 @@ info: LoggerMessageSample.Pages.IndexModel[2]
       Quote added (Quote = 'You can avoid reality, but you cannot avoid the consequences of avoiding reality. - Ayn Rand')
 ```
 
-L’application exemple implémente un `try` &ndash; `catch` modèle pour la suppression de devis. Un message d’information est consigné pour une opération de suppression réussit. Un message d’erreur est enregistré pour une opération de suppression lorsqu’une exception est levée. Le message du journal pour l’échec de suppression opération inclut la trace de pile d’exception (*Internal/LoggerExtensions.cs*) :
+L’exemple d’application implémente un modèle `try`&ndash;`catch` pour la suppression de citations. Un message d’information est journalisé chaque fois qu’une opération de suppression réussit. Un message d’erreur est journalisé chaque fois qu’une opération de suppression donne lieu à la levée d’une exception. Le message de journal lié à l’échec d’une opération de suppression inclut la trace des exceptions (*Internal/LoggerExtensions.cs*) :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet3)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet3)]
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet7)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet7)]
 
-Notez la manière dont l’exception est passée au délégué dans `QuoteDeleteFailed`:
+Notez la manière dont l’exception est passée au délégué dans `QuoteDeleteFailed` :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet11)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet11)]
 
-Dans le fichier Index page code-behind, une suppression réussie de devis appelle la `QuoteDeleted` méthode sur l’enregistreur d’événements. Lorsqu’un guillemet n’est pas trouvé pour la suppression, un `ArgumentNullException` est levée. L’exception est interceptée par le `try` &ndash; `catch` instruction et enregistrés en appelant le `QuoteDeleteFailed` méthode sur l’enregistreur d’événements dans le `catch` bloc (*Pages/Index.cshtml.cs*) :
+Dans le modèle de page pour la page Index, la réussite de la suppression d’une citation se traduit par l’appel de la méthode `QuoteDeleted` sur le journaliseur. Quand une citation à supprimer n’est pas trouvée, une `ArgumentNullException` est levée. L’exception est interceptée par l’instruction `try`&ndash;`catch` et journalisée par le biais de l’appel de la méthode `QuoteDeleteFailed` sur le journaliseur dans le bloc `catch` (*Pages/Index.cshtml.cs*) :
 
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet5&highlight=14,18)]
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet5&highlight=14,18)]
 
-Lorsqu’un devis est supprimé avec succès, examinez la sortie de la console de l’application :
+Quand une citation est correctement supprimée, voici à quoi ressemble la sortie de la console de l’application :
 
 ```console
 info: LoggerMessageSample.Pages.IndexModel[4]
@@ -126,7 +118,7 @@ info: LoggerMessageSample.Pages.IndexModel[4]
       Quote deleted (Quote = 'You can avoid reality, but you cannot avoid the consequences of avoiding reality. - Ayn Rand' Id = 1)
 ```
 
-En cas d’échec de la suppression de devis, inspecter la sortie de la console de l’application. Notez que l’exception est incluse dans le message du journal :
+Quand la suppression d’une citation échoue, voici à quoi ressemble la sortie de la console de l’application. Notez que l’exception est incluse dans le message de journal :
 
 ```console
 fail: LoggerMessageSample.Pages.IndexModel[5]
@@ -141,37 +133,41 @@ Parameter name: entity
       <PATH>\sample\Pages\Index.cshtml.cs:line 87
 ```
 
-## <a name="implementing-loggermessagedefinescope"></a>Implémentation de LoggerMessage.DefineScope
+## <a name="loggermessagedefinescope"></a>LoggerMessage.DefineScope
 
-Définir un [connecter étendue](xref:fundamentals/logging/index#log-scopes) à appliquer à une série de messages du journal à l’aide de la [DefineScope(String)](/dotnet/api/microsoft.extensions.logging.loggermessage.definescope) (méthode).
+[DefineScope(String)](/dotnet/api/microsoft.extensions.logging.loggermessage.definescope) crée un délégué `Func` pour la définition d’une [étendue de journal](xref:fundamentals/logging/index#log-scopes). Les surcharges `DefineScope` permettent de passer jusqu’à trois paramètres de type à une chaîne de format nommée (modèle).
 
-L’exemple d’application a un **Effacer tout** bouton pour supprimer tous les guillemets dans la base de données. Les guillemets sont supprimés en supprimant une à la fois. Chaque fois qu’un guillemet est supprimé, le `QuoteDeleted` méthode est appelée sur l’enregistreur d’événements. Une étendue de journal est ajoutée à ces messages du journal.
+Comme c’est le cas avec la méthode `Define`, la chaîne fournie à la méthode `DefineScope` est un modèle et non pas une chaîne interpolée. Les espaces réservés sont remplis dans l’ordre dans lequel les types sont spécifiés. Les noms d’espace réservé dans le modèle doivent être descriptifs et cohérents d’un modèle à l’autre. Ils servent de noms de propriété dans les données de journal structurées. Nous vous recommandons d’utiliser la [casse Pascal](/dotnet/standard/design-guidelines/capitalization-conventions) pour les noms d’espace réservé. Par exemple, `{Count}`, `{FirstName}`.
 
-Activer `IncludeScopes` dans les options de journalisation de console :
+Définissez une [étendue de journal](xref:fundamentals/logging/index#log-scopes) à appliquer à une série de messages de journal à l’aide de la méthode [DefineScope(String)](/dotnet/api/microsoft.extensions.logging.loggermessage.definescope).
 
-[!code-csharp[Main](loggermessage/sample/Program.cs?name=snippet1&highlight=22)]
+L’exemple d’application a un bouton **Clear All** (Effacer tout) pour supprimer toutes les citations de la base de données. Les citations sont supprimées une par une. Chaque fois qu’une citation est supprimée, la méthode `QuoteDeleted` est appelée sur le journaliseur. Une étendue de journal est ajoutée à ces messages de journal.
 
-Paramètre `IncludeScopes` est requis dans les applications ASP.NET Core 2.0 pour activer des étendues de journal. Paramètre `IncludeScopes` via *appsettings* les fichiers de configuration est une fonctionnalité qui a planifié pour la version de ASP.NET Core 2.1.
+Activez `IncludeScopes` dans les options du journaliseur de la console :
 
-L’exemple d’application efface les autres fournisseurs et ajoute les filtres afin de réduire la sortie de journalisation. Cela rend plus facile de voir les messages du journal de l’exemple qui illustrent `LoggerMessage` fonctionnalités.
+[!code-csharp[](loggermessage/sample/Program.cs?name=snippet1&highlight=10)]
 
-Pour créer une étendue de journal, ajoutez un champ pour contenir un `Func` delegate pour l’étendue. L’exemple d’application crée un champ intitulé `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*) :
+Définir `IncludeScopes` est requis dans les applications ASP.NET Core 2.0 pour activer les étendues de journal. Définir `IncludeScopes` par le biais de fichiers de configuration *appsettings* est une fonctionnalité qui est planifiée pour ASP.NET Core 2.1.
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet4)]
+L’exemple d’application efface les autres fournisseurs et ajoute des filtres afin de réduire la sortie de la journalisation. Ainsi, vous pouvez voir plus facilement les messages de journal de l’exemple qui illustrent les fonctionnalités `LoggerMessage`.
 
-Utilisez `DefineScope` pour créer le délégué. Jusqu'à trois types peuvent être spécifiés pour une utilisation en tant qu’arguments de modèle lorsque le délégué est appelé. L’exemple d’application utilise un modèle de message qui inclut le nombre de devis supprimés (un `int` type) :
+Pour créer une étendue de journal, ajoutez un champ destiné à contenir un délégué `Func` pour l’étendue. L’exemple d’application crée un champ intitulé `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*) :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet8)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet4)]
 
-Fournir une méthode d’extension statique pour le message du journal. Inclure tous les paramètres de type pour les propriétés nommées qui s’affichent dans le modèle de message. L’exemple d’application utilise un `count` de devis à supprimer et renvoie `_allQuotesDeletedScope`:
+Utilisez `DefineScope` pour créer le délégué. Vous pouvez spécifier jusqu’à trois types à utiliser comme arguments de modèle quand le délégué est appelé. L’exemple d’application utilise un modèle de message qui inclut le nombre de citations supprimées (un type `int`) :
 
-[!code-csharp[Main](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet12)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet8)]
 
-Le retour automatique à la portée l’extension de journalisation des appels dans un `using` bloc :
+Fournissez une méthode d’extension statique pour le message de journal. Incluez tous les paramètres de type pour les propriétés nommées qui s’affichent dans le modèle de message. L’exemple d’application prend un `count` de citations à supprimer et retourne `_allQuotesDeletedScope` :
 
-[!code-csharp[Main](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet4&highlight=5-6,14)]
+[!code-csharp[](loggermessage/sample/Internal/LoggerExtensions.cs?name=snippet12)]
 
-Examinez les messages du journal dans la sortie de la console de l’application. Le résultat suivant montre les trois devis supprimés avec le message d’étendue de journal inclus :
+L’étendue inclut les appels d’extension de journalisation dans un bloc `using` :
+
+[!code-csharp[](loggermessage/sample/Pages/Index.cshtml.cs?name=snippet4&highlight=5-6,14)]
+
+Examinez les messages de journal dans la sortie de la console de l’application. Le résultat suivant montre trois citations supprimées, message d’étendue de journal compris :
 
 ```console
 info: LoggerMessageSample.Pages.IndexModel[4]

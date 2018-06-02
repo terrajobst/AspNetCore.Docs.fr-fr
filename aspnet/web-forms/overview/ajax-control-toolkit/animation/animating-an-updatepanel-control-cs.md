@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-cs
-title: "Animer un contrôle UpdatePanel (c#) | Documents Microsoft"
+title: Animer un contrôle UpdatePanel (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Pour le contenu d’un..."
+description: Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Pour le contenu d’un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7e6d8954d2ec886994cdd723121e540b471131f6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5d8d5b9c3f15b39045b5e01b455bdddfc9443a24
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animating-an-updatepanel-control-c"></a>Animer un contrôle UpdatePanel (c#)
 ====================
@@ -43,8 +43,8 @@ L’animation dans ce scénario s’appliqueront à ASP.NET `Wizard` contrôle w
 
 Le balisage nécessaire pour le `UpdatePanelAnimationExtender` contrôle est très semblable à celui utilisé pour le `AnimationExtender`. Dans le `TargetControlID` attribut nous fournir le `ID` de la `UpdatePanel` pour animer ; dans le `UpdatePanelAnimationExtender` (contrôle), le `<Animations>` élément contient le balisage XML pour les ou les animations. Toutefois, il existe une différence : la quantité d’événements et gestionnaires d’événements est limitée par rapport à `AnimationExtender`. Pour `UpdatePanels`, seulement deux d'entre elles existent :
 
-- `<OnUpdated>`Lorsque le contrôle UpdatePanel a été mis à jour
-- `<OnUpdating>`UpdatePanel démarrage de la mise à jour
+- `<OnUpdated>` Lorsque le contrôle UpdatePanel a été mis à jour
+- `<OnUpdating>` UpdatePanel démarrage de la mise à jour
 
 Dans ce scénario, le contenu de la `UpdatePanel` (après la publication) est en fondu. Il s’agit de la balise nécessaire pour que :
 
@@ -57,6 +57,6 @@ Désormais chaque fois qu’une publication (postback) se produit dans le contr�
 
 L’étape suivante de l’Assistant est du fondu ([cliquez pour afficher l’image en taille réelle](animating-an-updatepanel-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](changing-an-animation-using-client-side-code-cs.md)
-[Suivant](dynamically-controlling-updatepanel-animations-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](changing-an-animation-using-client-side-code-cs.md)
+> [Suivant](dynamically-controlling-updatepanel-animations-cs.md)

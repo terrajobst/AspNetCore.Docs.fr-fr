@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations
-title: "Prise en charge des Relations d’entité dans OData v3 avec l’API Web 2 | Documents Microsoft"
+title: Prise en charge des Relations d’entité dans OData v3 avec l’API Web 2 | Documents Microsoft
 author: MikeWasson
-description: "La plupart des jeux de données définissent les relations entre des entités : les clients ont passé des commandes ; les livres peuvent avoir auteurs ; les produits ont des fournisseurs. L’utilisation d’OData, les clients peuvent naviguer sur..."
+description: 'La plupart des jeux de données définissent les relations entre des entités : les clients ont passé des commandes ; les livres peuvent avoir auteurs ; les produits ont des fournisseurs. L’utilisation d’OData, les clients peuvent naviguer sur...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/26/2014
@@ -68,7 +68,7 @@ Pour prendre en charge de cette demande, ajoutez la méthode suivante à la `Pro
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample6.cs)]
 
-Le *clé* paramètre est la clé du produit. La méthode retourne l’entité associée &#8212;dans ce cas, un `Supplier` instance. Le nom de la méthode et le nom de paramètre sont cruciales. En règle générale, si la propriété de navigation est nommée « X », vous devez ajouter une méthode nommée « GetX ». La méthode doit prendre un paramètre nommé «*clé*» qui correspond au type de données de clé du parent.
+Le *clé* paramètre est la clé du produit. La méthode retourne l’entité associée & #8212 dans ce cas, un `Supplier` instance. Le nom de la méthode et le nom de paramètre sont cruciales. En règle générale, si la propriété de navigation est nommée « X », vous devez ajouter une méthode nommée « GetX ». La méthode doit prendre un paramètre nommé «*clé*» qui correspond au type de données de clé du parent.
 
 Il est également important d’inclure le **[FromOdataUri]** d’attribut dans le *clé* paramètre. Cet attribut indique à l’API Web à utiliser les règles de syntaxe OData lorsqu’il analyse la clé à partir de l’URI de requête.
 

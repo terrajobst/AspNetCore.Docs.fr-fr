@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
-title: "Conventions d’itinéraire dans ASP.NET Web API 2 Odata | Documents Microsoft"
+title: Conventions d’itinéraire dans ASP.NET Web API 2 Odata | Documents Microsoft
 author: MikeWasson
-description: "Cet article décrit les conventions de routage utilise des API Web pour les points de terminaison OData."
+description: Cet article décrit les conventions de routage utilise des API Web pour les points de terminaison OData.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/31/2013
@@ -147,7 +147,7 @@ Actuellement les conventions intégrées ne couvrent pas tous les OData URIs pos
 
 Pour les deux méthodes, si la convention ne s’applique pas à cette demande, la méthode doit retourner null.
 
-Le **ODataPath** paramètre représente le chemin d’accès de ressource OData analysé. Il contient une liste de  **[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)**  instances, une pour chaque segment du chemin d’accès de ressource. **ODataPathSegment** est une classe abstraite ; chaque type de segment est représenté par une classe qui dérive de **ODataPathSegment**.
+Le **ODataPath** paramètre représente le chemin d’accès de ressource OData analysé. Il contient une liste de **[ODataPathSegment](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatapathsegment.aspx)** instances, une pour chaque segment du chemin d’accès de ressource. **ODataPathSegment** est une classe abstraite ; chaque type de segment est représenté par une classe qui dérive de **ODataPathSegment**.
 
 Le **ODataPath.TemplatePath** propriété est une chaîne qui représente la concaténation de tous les segments de chemin d’accès. Par exemple, si l’URI est `/Products(1)/Supplier`, le modèle de chemin d’accès est &quot;~/entityset/key/navigation&quot;. Notez que les segments ne correspondent pas directement aux segments URI. Par exemple, la clé d’entité (1) est représentée en tant que son propre **ODataPathSegment**.
 
@@ -169,7 +169,7 @@ Remarques :
 
 1. Dériver une classe à partir de **EntitySetRoutingConvention**, car le **SelectController** méthode dans cette classe est appropriée pour cette nouvelle convention de routage. Cela signifie que vous n’avez pas besoin de réimplémenter **SelectController**.
 2. La convention s’applique uniquement aux demandes GET, et uniquement lorsque le modèle de chemin d’accès est &quot;~/entityset/key/navigation/key&quot;.
-3. Le nom d’action est &quot;obtenir {EntityType}&quot;, où *{EntityType}* est le type de la collection de navigation. Par exemple, &quot;GetSupplier&quot;. Vous pouvez utiliser n’importe quel convention d’affectation de noms que vous aimez &#8212; Assurez-vous que les actions de contrôleur correspondent.
+3. Le nom d’action est &quot;obtenir {EntityType}&quot;, où *{EntityType}* est le type de la collection de navigation. Par exemple, &quot;GetSupplier&quot;. Vous pouvez utiliser n’importe quel convention d’affectation de noms que vous aimez & #8212 ; Assurez-vous que les actions de contrôleur correspondent.
 4. L’action prend deux paramètres nommés *clé* et *relatedKey*. (Pour obtenir la liste de certains noms de paramètres prédéfinies, consultez [ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx).)
 
 L’étape suivante ajoute la nouvelle convention à la liste des conventions d’itinéraire. Cela se produit lors de la configuration, comme indiqué dans le code suivant :

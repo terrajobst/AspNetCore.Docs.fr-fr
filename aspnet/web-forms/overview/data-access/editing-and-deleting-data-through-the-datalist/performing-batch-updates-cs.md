@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
-title: "Mise à jour de lot (c#) | Documents Microsoft"
+title: Mise à jour de lot (c#) | Documents Microsoft
 author: rick-anderson
-description: "Apprendre à créer un entièrement modifiable DataList tous ses éléments où se trouvent dans modifier le mode et dont les valeurs peuvent être enregistrées en cliquant sur un bouton « Tout mettre à jour » dans le..."
+description: Apprendre à créer un entièrement modifiable DataList tous ses éléments où se trouvent dans modifier le mode et dont les valeurs peuvent être enregistrées en cliquant sur un bouton « Tout mettre à jour » dans le...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/performing-batch-updates-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 46db3c5d733b9c8b6e749a9b8ff1aa9a061c36df
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: af19104edb1849272773193befe1f5b2c7347683
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="performing-batch-updates-c"></a>Mise à jour de lot (c#)
 ====================
@@ -43,8 +43,8 @@ Dans ce didacticiel, nous allons examiner comment permettre aux utilisateurs de 
 
 Dans le didacticiel précédent, où nous création d’un contrôle DataList modifiable standard, au niveau élément, nous avons utilisé deux modèles :
 
-- `ItemTemplate`contenu de l’interface utilisateur en lecture seule (les contrôles Web Label pour afficher chaque nom de produit et le prix).
-- `EditItemTemplate`contenu de l’interface utilisateur en mode d’édition (les deux contrôles de zone de texte Web).
+- `ItemTemplate` contenu de l’interface utilisateur en lecture seule (les contrôles Web Label pour afficher chaque nom de produit et le prix).
+- `EditItemTemplate` contenu de l’interface utilisateur en mode d’édition (les deux contrôles de zone de texte Web).
 
 DataList s `EditItemIndex` détermine ce que la propriété `DataListItem` (le cas échéant) est restitué à l’aide du `EditItemTemplate`. En particulier, la `DataListItem` dont `ItemIndex` valeur correspond à celle du contrôle DataList s `EditItemIndex` propriété est restituée à l’aide du `EditItemTemplate`. Ce modèle fonctionne bien lorsque qu’un seul élément peut être modifié à un moment, mais se situe éloignés lors de la création d’un contrôle DataList totalement modifiable.
 
@@ -163,12 +163,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Zack Jones et Ken Pespisa. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md)
-[Suivant](handling-bll-and-dal-level-exceptions-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](an-overview-of-editing-and-deleting-data-in-the-datalist-cs.md)
+> [Suivant](handling-bll-and-dal-level-exceptions-cs.md)

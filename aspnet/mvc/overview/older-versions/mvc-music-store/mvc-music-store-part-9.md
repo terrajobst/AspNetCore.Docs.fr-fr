@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
-title: "Partie 9 : Enregistrement et extraction | Documents Microsoft"
+title: 'Partie 9 : Enregistrement et extraction | Documents Microsoft'
 author: jongalloway
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 9 couvre l’inscription et l’extraction."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 9 couvre l’inscription et l’extraction.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-9
 msc.type: authoredcontent
-ms.openlocfilehash: 71f87043be064d24bdfb203380fb6cf651527e30
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e7e83b70f2508b6dfc0c078b992747a76e4d0ff2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-9-registration-and-checkout"></a>Partie 9 : Enregistrement et extraction
 ====================
@@ -119,7 +119,7 @@ Le code CheckoutController complet est comme suit :
 
 ## <a name="adding-the-addressandpayment-view"></a>Ajout de la vue AddressAndPayment
 
-Maintenant, nous allons créer la vue AddressAndPayment. Avec le bouton droit sur l’un des actions de contrôleur AddressAndPayment et ajouter une vue nommée AddressAndPayment qui est fortement typé comme une commande et utilise le modèle de modification, comme indiqué ci-dessous.
+Maintenant, nous allons créer la vue AddressAndPayment. Avec le bouton droit sur une des actions de contrôleur AddressAndPayment et ajouter une vue nommée AddressAndPayment qui est fortement typé comme une commande et utilise le modèle de modification, comme indiqué ci-dessous.
 
 ![](mvc-music-store-part-9/_static/image6.png)
 
@@ -163,6 +163,6 @@ Dans la mesure où il s’agit d’une page d’erreur générique, le contenu e
 [!code-cshtml[Main](mvc-music-store-part-9/samples/sample13.cshtml)]
 
 
->[!div class="step-by-step"]
-[Précédent](mvc-music-store-part-8.md)
-[Suivant](mvc-music-store-part-10.md)
+> [!div class="step-by-step"]
+> [Précédent](mvc-music-store-part-8.md)
+> [Suivant](mvc-music-store-part-10.md)

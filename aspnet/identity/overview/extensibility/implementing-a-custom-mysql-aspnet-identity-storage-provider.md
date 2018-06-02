@@ -1,22 +1,22 @@
 ---
 uid: identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
-title: "Implémentation d’un fournisseur de stockage d’identité ASP.NET MySQL personnalisé | Documents Microsoft"
+title: Implémentation d’un fournisseur de stockage d’identité ASP.NET MySQL personnalisé | Documents Microsoft
 author: raquelsa
-description: "ASP.NET Identity est un système extensible qui vous permet de créer votre propre fournisseur de stockage et connectez-le à votre application sans utiliser de nouveau l’Affich..."
+description: ASP.NET Identity est un système extensible qui vous permet de créer votre propre fournisseur de stockage et connectez-le à votre application sans utiliser de nouveau l’Affich...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
 ms.topic: article
 ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 3bfbccd91705755fc24bb8305fff171baa26f370
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d843b31e011fe520aad6cfdab0beca2d12477f12
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>Implémentation d’un fournisseur de stockage d’identité ASP.NET MySQL personnalisé
 ====================
@@ -124,7 +124,7 @@ Si nécessaire, installez [Visual Studio Express 2013 pour le Web](https://go.mi
 5. Cliquez avec le bouton droit sur le projet IdentityMySQLDemo, sélectionnez **ajouter**, **référence, les solutions, projets ;** sélectionnez le projet AspNet.Identity.MySQL et cliquez sur **OK**.
 6. Dans le projet IdentityMySQLDemo, remplacez toutes les références à  
     `using Microsoft.AspNet.Identity.EntityFramework;`  
- par  
+   par  
      `using AspNet.Identity.MySQL;`
 7. Dans IdentityModels.cs, définissez **ApplicationDbContext** dériver **MySqlDatabase** et inclure un constructeur qui prend un seul paramètre portant le nom de connexion.  
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-vb
-title: "Validation avec les validateurs d’Annotation de données (VB) | Documents Microsoft"
+title: Validation avec les validateurs d’Annotation de données (VB) | Documents Microsoft
 author: microsoft
-description: "Tirer parti de classeur de modèles de données d’Annotation pour effectuer la validation au sein d’une application ASP.NET MVC. Découvrez comment utiliser les différents types de programme de validation..."
+description: Tirer parti de classeur de modèles de données d’Annotation pour effectuer la validation au sein d’une application ASP.NET MVC. Découvrez comment utiliser les différents types de programme de validation...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 227c1acb5e478047c4e5cdc7dbddedd703e91292
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d1987182a44a0ad3f91f455342dc934d1dd50267
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validation-with-the-data-annotation-validators-vb"></a>Validation avec les validateurs d’Annotation de données (Visual Basic)
 ====================
@@ -78,7 +78,7 @@ La classe Product illustre comment utiliser un attribut supplémentaire : l’a
 
 > [!NOTE] 
 > 
-> Si vous souhaitez personnaliser entièrement le message d’erreur affiché par un programme de validation vous pouvez affecter un message d’erreur personnalisé à la propriété ErrorMessage du validateur comme suit :`<Required(ErrorMessage:="This field needs a value!")>`
+> Si vous souhaitez personnaliser entièrement le message d’erreur affiché par un programme de validation vous pouvez affecter un message d’erreur personnalisé à la propriété ErrorMessage du validateur comme suit : `<Required(ErrorMessage:="This field needs a value!")>`
 
 
 Vous pouvez utiliser la classe de produit dans **liste 1** avec l’action de contrôleur Create() dans **liste 2**. Cette action de contrôleur actualise la vue Create lorsque l’état du modèle contient des erreurs.
@@ -149,9 +149,9 @@ Dans la page de **Figure 6** illustre les messages d’erreur retournés lorsque
 
 **Figure 6**: à l’aide de validateurs avec Entity Framework ([cliquez pour afficher l’image en taille réelle](validation-with-the-data-annotation-validators-vb/_static/image14.png))
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris comment tirer parti de classeur de modèles de données d’Annotation pour effectuer la validation au sein d’une application ASP.NET MVC. Vous avez appris à utiliser les différents types d’attributs de validateur comme requis et les attributs de StringLength. Vous avez également appris à utiliser ces attributs lorsque vous travaillez avec Microsoft Entity Framework.
 
->[!div class="step-by-step"]
-[Précédent](validating-with-a-service-layer-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](validating-with-a-service-layer-vb.md)

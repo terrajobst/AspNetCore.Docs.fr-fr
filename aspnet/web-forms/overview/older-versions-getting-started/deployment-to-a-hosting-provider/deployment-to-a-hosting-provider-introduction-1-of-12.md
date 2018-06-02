@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
-title: "Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio : Introduction - 1 de 12 | Documents Microsoft"
+title: 'Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio : Introduction - 1 de 12 | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 9c0edb301de85d15b9a3527382b72211f6f3d3ec
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3f1572bb890ee136cdd746040a5efae2ce537116
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio : Introduction - 1 de 12
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
@@ -53,7 +53,7 @@ Les didacticiels visant les développeurs ASP.NET qui travaillent dans les petit
 
 Dans les environnements d’entreprise, il est plus courant de mettre en œuvre des processus d’intégration continue et l’environnement de production est généralement hébergé par les serveurs de la société. En outre, différentes personnes jouent des rôles différents. Pour plus d’informations sur le déploiement de l’entreprise, consultez [déploiement d’Applications Web dans les scénarios d’entreprise](../../deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md).
 
-Organisations de toutes tailles peuvent également déployer des applications web vers Azure, et la plupart des procédures indiquées dans ces didacticiels s’appliquent également à Azure App Services Web Apps. Pour une introduction à Azure, consultez [https://azure.microsoft.com](https://azure.microsoft.com).
+Organisations de toutes tailles peuvent également déployer des applications web vers Azure, et la plupart des procédures indiquées dans ces didacticiels s’appliquent également à Azure App Services Web Apps. Pour une introduction à Azure, consultez [ https://azure.microsoft.com ](https://azure.microsoft.com).
 
 ## <a name="the-hosting-provider-shown-in-the-tutorials"></a>Le fournisseur d’hébergement indiqué dans les didacticiels
 
@@ -137,10 +137,10 @@ Les fonctionnalités suivantes de l’application affectent le déploiement ou q
 - L’application utilise Entity Framework 5.0 pour accéder aux données dans la base de données de l’application. L’assembly qui contient l’Entity Framework 5.0 doit être déployé avec l’application.
 - L’application utilise une application tierce journalisation des erreurs et utilitaire de création de rapports. Cet utilitaire est fourni dans un assembly qui doit être déployé avec l’application.
 - L’utilitaire de journalisation erreur écrit les informations d’erreur dans des fichiers XML dans un dossier. Vous devez vous assurer que le compte ASP.NET sous lequel s’exécute dans le site déployé a l’autorisation d’écriture à ce dossier, et vous devez exclure ce dossier de déploiement. (Dans le cas contraire, données de journal d’erreur à partir de l’environnement de test peuvent être déployées en production et/ou de fichiers de journal des erreurs de production peuvent être supprimés.)
-- L’application inclut certains paramètres qui doivent être modifiées dans déployé *Web.config* selon l’environnement de destination (test ou production) et d’autres paramètres qui doivent être modifiés en fonction de la build configuration (Debug ou Release).
+- L’application inclut certains paramètres qui doivent être modifiées dans la version déployée *Web.config* selon l’environnement de destination (test ou production) et d’autres paramètres qui doivent être modifiés en fonction de la build configuration (Debug ou Release).
 - La solution Visual Studio inclut un projet de bibliothèque de classes. Uniquement l’assembly généré par ce projet doit être déployé, pas le projet lui-même.
 
 Dans ce premier didacticiel de la série, vous avez téléchargé l’exemple de projet Visual Studio et passé en revue les fonctionnalités du site qui affectent la façon dont vous déployez l’application. Dans les didacticiels suivants vous préparer pour le déploiement en définissant une partie de ces éléments pour être géré automatiquement. D’autres que vous prenez soin de manuellement.
 
->[!div class="step-by-step"]
-[Next](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)
+> [!div class="step-by-step"]
+> [Next](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)

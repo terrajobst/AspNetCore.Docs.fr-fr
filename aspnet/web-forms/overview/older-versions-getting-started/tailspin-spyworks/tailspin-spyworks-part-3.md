@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
-title: "Partie 3 : Mise en page et Menu catégorie | Documents Microsoft"
+title: 'Partie 3 : Mise en page et Menu catégorie | Documents Microsoft'
 author: JoeStagner
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 3 traite de l’ajout de mise en page et un menu de la catégorie."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 3 traite de l’ajout de mise en page et un menu de la catégorie.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 57c0342efb67b94a0d8c8b06dc13a727e7184db8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 27a493173b03f813ee3dcbbfafd8bc52fb0b9771
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-3-layout-and-category-menu"></a>Partie 3 : Mise en page et Menu catégorie
 ====================
@@ -27,7 +27,7 @@ par [Joe Stagner](https://github.com/JoeStagner)
 > Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 3 traite de l’ajout de mise en page et un menu de la catégorie.
 
 
-## <a id="_Toc260221669"></a>Ajout d’une mise en page et un Menu de la catégorie
+## <a id="_Toc260221669"></a>  Ajout d’une mise en page et un Menu de la catégorie
 
 Dans notre page maître du site, nous allons ajouter un élément div de la colonne de gauche qui contiendra notre menu de catégorie de produit.
 
@@ -77,6 +77,6 @@ Permet d’exécuter l’application maintenant.
 
 Notez que notre menu de catégorie de produit s’affiche désormais lorsque nous pointez sur un des éléments de menu de catégorie nous pouvons voir les points de lien d’élément menu à une page, il n’est pas encore implémenter nommé ProductsList.aspx et que nous avons créé un argument de chaîne de requête dynamique qui contient le  id de catégorie.
 
->[!div class="step-by-step"]
-[Précédent](tailspin-spyworks-part-2.md)
-[Suivant](tailspin-spyworks-part-4.md)
+> [!div class="step-by-step"]
+> [Précédent](tailspin-spyworks-part-2.md)
+> [Suivant](tailspin-spyworks-part-4.md)

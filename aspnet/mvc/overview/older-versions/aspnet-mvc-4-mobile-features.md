@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/aspnet-mvc-4-mobile-features
-title: "Fonctionnalités mobiles d’ASP.NET MVC 4 | Documents Microsoft"
+title: Fonctionnalités mobiles d’ASP.NET MVC 4 | Documents Microsoft
 author: Rick-Anderson
-description: "Il existe désormais une version MVC 5 de ce didacticiel avec des exemples de code à déployer une Application Web de Mobile dans ASP.NET MVC 5 sur les Sites Web Azure."
+description: Il existe désormais une version MVC 5 de ce didacticiel avec des exemples de code à déployer une Application Web de Mobile dans ASP.NET MVC 5 sur les Sites Web Azure.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: d47d8f61dc7af6e1dc5887338be862ea81d7bb17
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5f38fcdd8e71ce12f7899214b6b2133e21f9910c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Fonctionnalités mobiles ASP.NET MVC 4
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Il existe désormais une version MVC 5 de ce didacticiel avec des exemples de code à [déployer une Application Web de Mobile dans ASP.NET MVC 5 sur les Sites Web Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/).
 
@@ -190,7 +190,7 @@ Installer le *jQuery.Mobile.MVC* package NuGet en procédant ainsi :
 1. À partir de la **outils** menu, sélectionnez **Gestionnaire de Package de bibliothèque**, puis sélectionnez **Package Manager Console**.
 
     [![p3_packageMgr](aspnet-mvc-4-mobile-features/_static/image20.png)](aspnet-mvc-4-mobile-features/_static/image19.png)
-2. Dans le **Package Manager Console**, entrez`Install-Package jQuery.Mobile.MVC -version 1.0.0`
+2. Dans le **Package Manager Console**, entrez `Install-Package jQuery.Mobile.MVC -version 1.0.0`
 
 L’illustration suivante montre les fichiers ajoutés et modifiés au projet MvcMobile par le package jQuery.Mobile.MVC NuGet. Fichiers qui sont ajoutées ont [Ajouter] ajoutés après le nom de fichier. L’image n’affiche pas l’image GIF et PNG fichiers ajoutés à la *Content\images* dossier.
 
@@ -204,7 +204,7 @@ Le package jQuery.Mobile.MVC NuGet installe les éléments suivants :
 - fichiers JavaScript mobiles jQuery.
 - Un fichier de mise en page de style Mobile jQuery (*Views\Shared\\_Layout.Mobile.cshtml*).
 - Une vue partielle du sélecteur de vue *(MvcMobile\Views\Shared\\_ViewSwitcher.cshtml*) qui fournit un lien en haut de chaque page pour passer de l’affichage du bureau en affichage mobile et vice versa.
-- Plusieurs*.png* et *.gif* fichiers image dans le *Content\images* dossier.
+- Plusieurs<em>.png</em> et <em>.gif</em> fichiers image dans le <em>Content\images</em> dossier.
 
 Ouvrez le *Global.asax* et ajoutez le code suivant en tant que la dernière ligne de la `Application_Start` (méthode).
 
@@ -270,7 +270,7 @@ Vous pouvez désactiver globalement d’une vue de (non mobile) par défaut à p
 
 [!code-cshtml[Main](aspnet-mvc-4-mobile-features/samples/sample17.cshtml)]
 
-Lorsque `RequireConsistentDisplayMode` a la valeur `true`, la mise en page mobile (*\_Layout.Mobile.cshtml*) est utilisé uniquement pour les périphériques mobiles. (Autrement dit, le fichier est sous la forme ***ViewName**. Mobile.cshtml*.) Vous souhaiterez peut-être définir `RequireConsistentDisplayMode` à `true` si votre mise en page mobile ne fonctionne pas correctement avec les vues non mobiles. La capture d’écran ci-dessous montre comment la *haut-parleurs* page restitue lorsque `RequireConsistentDisplayMode` a la valeur `true`.
+Lorsque `RequireConsistentDisplayMode` a la valeur `true`, la mise en page mobile (<em>\_Layout.Mobile.cshtml</em>) est utilisé uniquement pour les périphériques mobiles. (Autrement dit, le fichier est au format <em>** ViewName</em><em>. Mobile.cshtml</em>.) Vous souhaiterez peut-être définir `RequireConsistentDisplayMode` à `true` si votre mise en page mobile ne fonctionne pas correctement avec les vues non mobiles. La capture d’écran ci-dessous montre comment la <em>haut-parleurs</em> page restitue lorsque `RequireConsistentDisplayMode` a la valeur `true`.
 
 [![p3_speakersConsistent](aspnet-mvc-4-mobile-features/_static/image33.png)](aspnet-mvc-4-mobile-features/_static/image32.png)
 
@@ -308,7 +308,7 @@ Lorsque vous tapez chaque lettre dans la zone de recherche, jQuery Mobile filtre
 
 Comme la valeur par défaut *haut-parleurs* mode, la *balises* vue est accessible en lecture, mais les liens sont difficiles à appuyer sur un appareil mobile et de petite taille. Dans cette section, vous allez corriger la *balises* afficher de la même façon que vous avez corrigé le *haut-parleurs* vue.
 
-Supprimer le &quot;masquer&quot; suffixe à la la *Views\Home\AllTags.Mobile.cshtml.hide* fichier le nom est *Views\Home\AllTags.Mobile.cshtml*. Ouvrez le fichier renommé et supprimez le `<h2>` élément.
+Supprimer le &quot;masquer&quot; suffixe à le *Views\Home\AllTags.Mobile.cshtml.hide* fichier le nom est *Views\Home\AllTags.Mobile.cshtml*. Ouvrez le fichier renommé et supprimez le `<h2>` élément.
 
 Ajouter le `data-role` et `data-filter` des attributs à la `<ul>` de balise, comme indiqué ici :
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
-title: "Implémentation de l’accès concurrentiel optimiste (VB) | Documents Microsoft"
+title: Implémentation de l’accès concurrentiel optimiste (VB) | Documents Microsoft
 author: rick-anderson
-description: "Pour une application web qui permet à plusieurs utilisateurs de modifier des données, il existe un risque que deux utilisateurs peuvent modifier les mêmes données en même temps. Dans cette tutori..."
+description: Pour une application web qui permet à plusieurs utilisateurs de modifier des données, il existe un risque que deux utilisateurs peuvent modifier les mêmes données en même temps. Dans cette tutori...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a31ce101c3264d10ec80a45718d9222fc18c093c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 056d907e80b5bdfa1848b4b31cb03702ca823583
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-optimistic-concurrency-vb"></a>Implémentation de l’accès concurrentiel optimiste (VB)
 ====================
@@ -259,8 +259,8 @@ Pour ces didacticiels précédents impliquant la modification des données, nous
 
 Il existe un paramètre de propriété final qui doit être effectuée dans l’ordre pour ObjectDataSource correctement passer les valeurs d’origine pour les méthodes de la couche BLL. ObjectDataSource a un [propriété ConflictDetection](https://msdn.microsoft.com/library/system.web.ui.webcontrols.objectdatasource.conflictdetection.aspx) pouvant être assigné à [une des deux valeurs](https://msdn.microsoft.com/library/system.web.ui.conflictoptions.aspx):
 
-- `OverwriteChanges`-la valeur par défaut ; n’envoie pas les valeurs d’origine pour les paramètres d’entrée d’origine des méthodes de la couche BLL
-- `CompareAllValues`-envoie les valeurs d’origine pour les méthodes de la couche BLL ; Choisissez cette option lors de l’utilisation de l’accès concurrentiel optimiste
+- `OverwriteChanges` -la valeur par défaut ; n’envoie pas les valeurs d’origine pour les paramètres d’entrée d’origine des méthodes de la couche BLL
+- `CompareAllValues` -envoie les valeurs d’origine pour les méthodes de la couche BLL ; Choisissez cette option lors de l’utilisation de l’accès concurrentiel optimiste
 
 Prenez un moment pour définir le `ConflictDetection` propriété `CompareAllValues`.
 
@@ -429,8 +429,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](customizing-the-data-modification-interface-vb.md)
-[Suivant](adding-client-side-confirmation-when-deleting-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](customizing-the-data-modification-interface-vb.md)
+> [Suivant](adding-client-side-confirmation-when-deleting-vb.md)

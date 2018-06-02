@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
-title: "Affichage d’une Page d’erreur personnalisée (VB) | Documents Microsoft"
+title: Affichage d’une Page d’erreur personnalisée (VB) | Documents Microsoft
 author: rick-anderson
-description: "Ce qui voit l’utilisateur lorsqu’une erreur d’exécution se produit dans une application web ASP.NET ? La réponse dépend du site Web &lt;customErrors&gt; configuration..."
+description: Ce qui voit l’utilisateur lorsqu’une erreur d’exécution se produit dans une application web ASP.NET ? La réponse dépend du site Web &lt;customErrors&gt; configuration...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e8a2f88490de08f731f9737d15237ae445c5ec0d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: eda7ceeac174f0d1697cb95d2eab4127f124011e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-a-custom-error-page-vb"></a>Affichage d’une Page d’erreur personnalisée (VB)
 ====================
@@ -89,11 +89,11 @@ Parmi les trois pages d’erreur possibles s’affiche est basée sur deux varia
 
 Le [ `<customErrors>` section](https://msdn.microsoft.com/library/h0hfz6fc.aspx) dans `Web.config` a deux attributs qui affectent la page d’erreur est affiché : `defaultRedirect` et `mode`. L'attribut `defaultRedirect` est facultatif. Si fourni, il spécifie l’URL de la page d’erreur personnalisée et indique que la page d’erreurs personnalisées doit être affichée au lieu du YSOD d’erreur de Runtime. Le `mode` attribut est requis et qu’il accepte l’une des trois valeurs : `On`, `Off`, ou `RemoteOnly`. Ces valeurs ont le comportement suivant :
 
-- `On`-Indique que la page d’erreur personnalisée ou la YSOD d’erreur de Runtime est affichée pour tous les visiteurs, qu’ils soient locaux ou distants.
-- `Off`-Spécifie que le YSOD détails de l’Exception est affichée pour tous les visiteurs, qu’ils soient locaux ou distants.
-- `RemoteOnly`-Indique que la page d’erreur personnalisée ou la YSOD d’erreur de Runtime est affichée à distance visiteurs, alors que le YSOD détails de l’Exception est affiché pour les visiteurs locales.
+- `On` -Indique que la page d’erreur personnalisée ou la YSOD d’erreur de Runtime est affichée pour tous les visiteurs, qu’ils soient locaux ou distants.
+- `Off` -Spécifie que le YSOD détails de l’Exception est affichée pour tous les visiteurs, qu’ils soient locaux ou distants.
+- `RemoteOnly` -Indique que la page d’erreur personnalisée ou la YSOD d’erreur de Runtime est affichée à distance visiteurs, alors que le YSOD détails de l’Exception est affiché pour les visiteurs locales.
 
-Sauf indication contraire, ASP.NET se comporte comme si vous aviez défini l’attribut mode `RemoteOnly` et n’avait pas spécifié un `defaultRedirect` valeur. En d’autres termes, le comportement par défaut est que le YSOD détails de l’Exception est affiché pour les visiteurs locales alors que le YSOD d’erreur de Runtime est affiché pour les visiteurs à distance. Vous pouvez substituer ce comportement par défaut en ajoutant un `<customErrors>` section à votre application web`Web.config file.`
+Sauf indication contraire, ASP.NET se comporte comme si vous aviez défini l’attribut mode `RemoteOnly` et n’avait pas spécifié un `defaultRedirect` valeur. En d’autres termes, le comportement par défaut est que le YSOD détails de l’Exception est affiché pour les visiteurs locales alors que le YSOD d’erreur de Runtime est affiché pour les visiteurs à distance. Vous pouvez substituer ce comportement par défaut en ajoutant un `<customErrors>` section à votre application web `Web.config file.`
 
 ## <a name="using-a-custom-error-page"></a>À l’aide d’une Page d’erreur personnalisée
 
@@ -143,7 +143,7 @@ Cette modification en place, chaque fois qu’un utilisateur visite à distance 
 > Extraire [des Pages d’erreur 404, une fois plus](http://www.smashingmagazine.com/2009/01/29/404-error-pages-one-more-time/) pour obtenir des conseils sur la création de pages d’erreur 404 efficace.
 
 
-[![](displaying-a-custom-error-page-vb/_static/image19.png)](displaying-a-custom-error-page-vb/_static/image18.png)**Figure 7**: la Page d’erreur 404 personnalisée affiche un Message plus ciblé que`Oops.aspx`  
+[![](displaying-a-custom-error-page-vb/_static/image19.png)](displaying-a-custom-error-page-vb/_static/image18.png)**Figure 7**: la Page d’erreur 404 personnalisée affiche un Message plus ciblé que `Oops.aspx`  
  ([Cliquez pour afficher l’image en taille réelle](displaying-a-custom-error-page-vb/_static/image20.png)) 
 
 Étant donné que vous savez que le `404.aspx` page est atteint uniquement quand l’utilisateur effectue une demande pour une page qui n’a été trouvée, vous pouvez améliorer cette page d’erreur personnalisée pour inclure les fonctionnalités pour aider l’utilisateur à résoudre ce type d’erreur spécifique. Par exemple, vous pouvez créer une table de base de données qui mappe connue une URL incorrecte pour la bonne URL, puis le `404.aspx` page d’erreur personnalisée exécuter une requête de table et de suggérer des pages de l’utilisateur essaie d’accéder.
@@ -172,6 +172,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Gestion et levée des Exceptions](https://msdn.microsoft.com/library/5b2yeyab.aspx)
 - [Correctement à l’aide des Pages d’erreurs personnalisées dans ASP.NET](http://professionalaspnet.com/archive/2007/09/30/Properly-Using-Custom-Error-Pages-in-ASP.NET.aspx)
 
->[!div class="step-by-step"]
-[Précédent](strategies-for-database-development-and-deployment-vb.md)
-[Suivant](processing-unhandled-exceptions-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](strategies-for-database-development-and-deployment-vb.md)
+> [Suivant](processing-unhandled-exceptions-vb.md)

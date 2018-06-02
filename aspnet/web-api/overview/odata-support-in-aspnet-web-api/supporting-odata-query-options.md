@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
-title: "Prise en charge des Options de requête OData dans ASP.NET Web API 2 | Documents Microsoft"
+title: Prise en charge des Options de requête OData dans ASP.NET Web API 2 | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/04/2013
@@ -26,7 +26,7 @@ OData définit les paramètres qui peuvent être utilisés pour modifier une req
 
 `http://localhost/Products?$orderby=Name`
 
-La spécification OData appelle ces paramètres *options de requête*. Vous pouvez activer des options de requête OData pour n’importe quel contrôleur d’API Web dans votre projet &#8212; le contrôleur n’a pas besoin d’un point de terminaison OData. Cela vous donne un moyen pratique pour ajouter des fonctionnalités telles que le filtrage et tri à n’importe quelle application de l’API Web.
+La spécification OData appelle ces paramètres *options de requête*. Vous pouvez activer des options de requête OData pour n’importe quel contrôleur d’API Web dans votre projet & #8212 ; le contrôleur n’a pas besoin d’un point de terminaison OData. Cela vous donne un moyen pratique pour ajouter des fonctionnalités telles que le filtrage et tri à n’importe quelle application de l’API Web.
 
 Avant d’activer les options de requête, consultez la rubrique [Guide de sécurité OData](odata-security-guidance.md).
 

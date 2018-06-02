@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
-title: "Couche de logique métier ajout à un projet qui utilise la liaison de modèle et les web forms | Documents Microsoft"
+title: Couche de logique métier ajout à un projet qui utilise la liaison de modèle et les web forms | Documents Microsoft
 author: tfitzmac
-description: "Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-..."
+description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
 msc.type: authoredcontent
-ms.openlocfilehash: ca50690052cca73a718342a9725c8096a72f1187
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 25e887bdc316abf65c780bb6c8d075e938e85064
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-business-logic-layer-to-a-project-that-uses-model-binding-and-web-forms"></a>Couche de logique métier ajout à un projet qui utilise la liaison de modèle et les web forms
 ====================
@@ -98,5 +98,5 @@ Exécutez l’application et remarquez que toutes les pages de fonction comme c�
 
 Dans ce didacticiel, vous ré-structurée de votre application d’utiliser une couche d’accès aux données et la couche de logique métier. Vous avez spécifié que les contrôles de données utilisent un objet qui n’est pas la page actuelle pour les opérations de données.
 
->[!div class="step-by-step"]
-[Précédent](using-query-string-values-to-retrieve-data.md)
+> [!div class="step-by-step"]
+> [Précédent](using-query-string-values-to-retrieve-data.md)

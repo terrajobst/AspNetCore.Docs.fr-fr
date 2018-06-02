@@ -2,7 +2,7 @@
 uid: web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs
 title: Suppression (c#) par lots | Documents Microsoft
 author: rick-anderson
-description: "Découvrez comment supprimer plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous reposent sur un GridView améliorée créé dans une version tut..."
+description: Découvrez comment supprimer plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous reposent sur un GridView améliorée créé dans une version tut...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-deleting-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 71c4b323c2604d9e775f75272bb9565505580522
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 59c90dcf373d19aad42250ee6dedba5f09f833b5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="batch-deleting-c"></a>Traitement par lots de suppression (c#)
 ====================
@@ -99,7 +99,7 @@ La figure 4 montre le contrôle GridView après qu’un nombre de lignes qui ont
 > Pour tester le `DeleteProductsWithTransaction` atomicité de la méthode s, ajoutez manuellement une entrée pour un produit dans le `Order Details` de table, puis que vous essayez de supprimer ce produit (ainsi que d’autres utilisateurs). Vous recevrez une violation de contrainte de clé étrangère lorsque vous tentez de supprimer le produit avec une commande associée, mais notez comment les autres suppressions de produits sélectionnés sont restaurées.
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Création d’un lot de suppression d’interface implique l’ajout d’un GridView avec une colonne de cases à cocher et un bouton de serveur Web de contrôle qui, lorsque vous cliquez sur, supprime toutes les lignes sélectionnées en une seule opération atomique. Dans ce didacticiel, nous avons créé une telle interface par le travail effectué dans deux didacticiels précédents, réorganisation [Ajout d’une colonne de GridView des cases à cocher](../enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-cs.md) et [encapsulant les Modifications de base de données d’une Transaction](wrapping-database-modifications-within-a-transaction-cs.md). Dans le premier didacticiel, nous avons créé un GridView avec une colonne de cases à cocher et dans le second nous avons implémenté la méthode dans la couche BLL qui, lorsqu’il est passé un `List<T>` de `ProductID` valeurs supprimés intégralement dans le cadre d’une transaction.
 
@@ -109,12 +109,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Hilton Giesenow et Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](batch-updating-cs.md)
-[Suivant](batch-inserting-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](batch-updating-cs.md)
+> [Suivant](batch-inserting-cs.md)

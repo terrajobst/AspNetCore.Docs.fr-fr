@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
-title: "Partie 5 : La logique métier | Documents Microsoft"
+title: 'Partie 5 : La logique métier | Documents Microsoft'
 author: JoeStagner
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 5 ajoute une logique métier."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 5 ajoute une logique métier.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/21/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: e205788e05a2ad94d86d4847c11c40898b1c3113
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e4342e634ef8c4bcf4e0085650a28f414ab23736
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-5-business-logic"></a>Partie 5 : La logique métier
 ====================
@@ -27,7 +27,7 @@ par [Joe Stagner](https://github.com/JoeStagner)
 > Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application Tailspin Spyworks. Partie 5 ajoute une logique métier.
 
 
-## <a id="_Toc260221671"></a>Ajout d’une logique métier
+## <a id="_Toc260221671"></a>  Ajout d’une logique métier
 
 Nous voulons que notre expérience d’achat chaque fois que quelqu'un visite notre site web. Visiteurs sera en mesure de parcourir et ajouter des éléments au panier d’achat même s’ils ne sont pas inscrits ou connectés. Lorsqu’elles sont prêtes à extraire ils reçoivent la possibilité de s’authentifier et si elles ne sont pas encore membres qu’ils seront en mesure de créer un compte.
 
@@ -85,7 +85,7 @@ En supposant qu’aucune erreur ne se produisent lorsque le contrôle est passé
 
 Actuellement nous n'avons pas encore implémenté un gestionnaire d’erreurs globales pour cette exception va passer non prise en charge par notre application, mais nous sera bientôt remédier.
 
-Notez également l’utilisation de l’instruction Debug.Fail() (disponible via`using System.Diagnostics;)`
+Notez également l’utilisation de l’instruction Debug.Fail() (disponible via `using System.Diagnostics;)`
 
 Est de l’application s’exécute dans le débogueur, cette méthode affiche une boîte de dialogue détaillée avec des informations sur l’état des applications, ainsi que le message d’erreur qui nous spécifions.
 
@@ -187,6 +187,6 @@ Cela fournit un moyen adéquat pour accéder aux valeurs des éléments liés da
 
 Avant cela nous allons utiliser Visual Studio pour générer la base de données d’appartenance et ajouter un utilisateur dans le référentiel d’appartenance.
 
->[!div class="step-by-step"]
-[Précédent](tailspin-spyworks-part-4.md)
-[Suivant](tailspin-spyworks-part-6.md)
+> [!div class="step-by-step"]
+> [Précédent](tailspin-spyworks-part-4.md)
+> [Suivant](tailspin-spyworks-part-6.md)

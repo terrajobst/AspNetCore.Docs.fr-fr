@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
-title: "Activer automatisée de tests unitaires | Documents Microsoft"
+title: Activer automatisée de tests unitaires | Documents Microsoft
 author: microsoft
-description: "Étape 12 montre comment développer une suite de tests unitaires automatisés pour vérifier nos fonctionnalités de NerdDinner, et qui donne la confiance pour apporter des modifications..."
+description: Étape 12 montre comment développer une suite de tests unitaires automatisés pour vérifier nos fonctionnalités de NerdDinner, et qui donne la confiance pour apporter des modifications...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
-ms.openlocfilehash: 1a4258054d90b2d5bcc06a63fb6f3b4673a4837d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fede08be7e06327c6d04fa5d36f7dd818d79b380
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="enable-automated-unit-testing"></a>Activer le test unitaire automatisé
 ====================
@@ -128,7 +128,7 @@ Tests unitaires de code à l’aide d’une base de données réel, cependant, o
 
 Examinons un modèle de conception appelé « injection de dépendance » qui peut nous aider à contourner ces problèmes et d’éviter la nécessité d’utiliser une base de données réel avec nos tests.
 
-### <a name="dependency-injection"></a>Injection de dépendance
+### <a name="dependency-injection"></a>Injection de dépendances
 
 Maintenant DinnersController est « étroitement » à la classe DinnerRepository. « COUPLAGE » fait référence à une situation où une classe explicitement s’appuie sur une autre classe afin de fonctionner :
 
@@ -234,7 +234,7 @@ L’objet utilisateur sur la classe de base de contrôleur contient des informat
 
 Infrastructures factices faciliter le test en permettant de créer dynamiquement des versions fausses des objets dépendants qui prennent en charge de nos tests. Par exemple, nous pouvons utiliser une infrastructure mocking dans notre test d’action de modification pour créer dynamiquement un objet utilisateur que notre DinnersController peut utiliser pour rechercher un nom d’utilisateur simulé. Cela permet d’éviter une référence null ne soit levée si nous exécutons notre test.
 
-Il existe de nombreuses .NET simulation des infrastructures qui peuvent être utilisés avec ASP.NET MVC (vous pouvez voir une liste ici : [http://www.mockframeworks.com/](http://www.mockframeworks.com/)). Test de notre application NerdDinner que nous allons utiliser une open source simulation infrastructure appelée « Moq », qui peut être téléchargé gratuitement à partir de [http://www.mockframeworks.com/moq](http://www.mockframeworks.com/moq).
+Il existe de nombreuses .NET simulation des infrastructures qui peuvent être utilisés avec ASP.NET MVC (vous pouvez voir une liste ici : [ http://www.mockframeworks.com/ ](http://www.mockframeworks.com/)). Test de notre application NerdDinner que nous allons utiliser une open source simulation infrastructure appelée « Moq », qui peut être téléchargé gratuitement à partir de [ http://www.mockframeworks.com/moq ](http://www.mockframeworks.com/moq).
 
 Une fois téléchargé, nous allons ajouter une référence dans notre projet NerdDinner.Tests à l’assembly Moq.dll :
 
@@ -285,6 +285,6 @@ Traite un chapitre ultérieur dans le carnet de développement piloté par des t
 
 Certains wrap finale des commentaires.
 
->[!div class="step-by-step"]
-[Précédent](use-ajax-to-implement-mapping-scenarios.md)
-[Suivant](nerddinner-wrap-up.md)
+> [!div class="step-by-step"]
+> [Précédent](use-ajax-to-implement-mapping-scenarios.md)
+> [Suivant](nerddinner-wrap-up.md)

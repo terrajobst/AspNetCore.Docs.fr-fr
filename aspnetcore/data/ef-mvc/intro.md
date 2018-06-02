@@ -1,7 +1,7 @@
 ---
-title: "ASP.NET Core MVC avec Entity Framework Core - didacticiel 1 sur 10"
-author: tdykstra
-description: 
+title: ASP.NET Core MVC avec Entity Framework Core - didacticiel 1 sur 10
+author: rick-anderson
+description: ''
 manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2017
@@ -9,11 +9,11 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 7de43a390ee0e11f6eda811b0774343ab330c53b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.openlocfilehash: 0eef084c656f68fb1cad9fc0f5cfeee31ff96a30
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="getting-started-with-aspnet-core-mvc-and-entity-framework-core-using-visual-studio-1-of-10"></a>Bien démarrer avec ASP.NET Core MVC et Entity Framework Core, à l’aide de Visual Studio (1 sur 10)
 

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
-title: "Examen des méthodes de modification et affichage Modifier | Documents Microsoft"
+title: Examen des méthodes de modification et affichage Modifier | Documents Microsoft
 author: Rick-Anderson
-description: "Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration..."
+description: 'Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: a20693f3e83053dd99499d486412b66777189f1d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 304d3c1efbce8949fd9385529f2a16b07e05ffdf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Examen des méthodes de modification et la vue d’édition
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -52,7 +52,7 @@ Ouvrez la `Movies` contrôleur. Les deux `Edit` méthodes d’action sont indiqu
 
 [!code-csharp[Main](examining-the-edit-methods-and-edit-view/samples/sample3.cs)]
 
-Notez que la deuxième méthode d’action `Edit` est précédée de l’attribut `HttpPost`. Cet attribut spécifie que qui surcharge de la `Edit` méthode peut être appelée uniquement pour les demandes POST. Vous pouvez appliquer le `HttpGet` au premier attribut de modifier la méthode, mais qui n’est pas nécessaire car il s’agit de la valeur par défaut. (Nous allons faire référence aux méthodes d’action qui sont affectés de manière implicite le `HttpGet` sous la forme `HttpGet` méthodes.)
+Notez que la deuxième méthode d’action `Edit` est précédée de l’attribut `HttpPost`. Cet attribut spécifie cette surcharge de la `Edit` méthode peut être appelée uniquement pour les demandes POST. Vous pouvez appliquer le `HttpGet` au premier attribut de modifier la méthode, mais qui n’est pas nécessaire car il s’agit de la valeur par défaut. (Nous allons faire référence aux méthodes d’action qui sont affectés de manière implicite le `HttpGet` sous la forme `HttpGet` méthodes.)
 
 Le `HttpGet` `Edit` méthode accepte le paramètre d’ID de film, recherche le film à l’aide d’Entity Framework `Find` (méthode) et retourne le film sélectionné pour le mode édition. Le paramètre ID spécifie un [valeur par défaut](https://msdn.microsoft.com/library/dd264739.aspx) de zéro si la `Edit` méthode est appelée sans paramètre. Si un film ne peut pas être trouvé, [HttpNotFound](https://msdn.microsoft.com/library/gg453938(VS.98).aspx) est retourné. Quand le système de génération de modèles automatique a créé la vue Edit, il a examiné la classe `Movie` et a créé le code pour restituer les éléments `<label>` et `<input>` de chaque propriété de la classe. L’exemple suivant montre le mode d’édition qui a été généré :
 
@@ -81,7 +81,7 @@ Si les valeurs publiées ne sont pas valides, ils sont affichés de nouveau dans
 ![abcNotValid](examining-the-edit-methods-and-edit-view/_static/image4.png)
 
 > [!NOTE]
-> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale, vous devez inclure *globalize.js* et vos *cultures/globalize.cultures.js* fichier (à partir de [https://github.com/jquery/globalize](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml pour travailler avec les &quot;fr-FR&quot; culture :
+> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale, vous devez inclure *globalize.js* et vos *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et le JavaScript pour utiliser `Globalize.parseFloat`. Le code suivant montre les modifications dans le fichier Views\Movies\Edit.cshtml pour travailler avec les &quot;fr-FR&quot; culture :
 
 
 [!code-cshtml[Main](examining-the-edit-methods-and-edit-view/samples/sample7.cshtml)]
@@ -212,6 +212,6 @@ Exécutez l’application et accédez à *films/SearchIndex*. Essayez une recher
 
 Dans cette section, vous avez examiné les méthodes d’action CRUD et les vues générées par le framework. Vous avez créé une méthode d’action de recherche et la vue qui permettent aux utilisateurs d’effectuer une recherche par titre du film et le genre. Dans la section suivante, vous allez examiner comment ajouter une propriété à la `Movie` modèle et comment ajouter un initialiseur qui crée automatiquement une base de données de test.
 
->[!div class="step-by-step"]
-[Précédent](accessing-your-models-data-from-a-controller.md)
-[Suivant](adding-a-new-field-to-the-movie-model-and-table.md)
+> [!div class="step-by-step"]
+> [Précédent](accessing-your-models-data-from-a-controller.md)
+> [Suivant](adding-a-new-field-to-the-movie-model-and-table.md)

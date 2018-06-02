@@ -2,7 +2,7 @@
 uid: mvc/overview/performance/bundling-and-minification
 title: Groupement et la minimisation | Documents Microsoft
 author: Rick-Anderson
-description: "Groupement et la minimisation sont deux techniques que vous pouvez utiliser dans ASP.NET 4.5 pour améliorer les temps de chargement de demande. Groupement et la minimisation améliore les temps de chargement en reducin..."
+description: Groupement et la minimisation sont deux techniques que vous pouvez utiliser dans ASP.NET 4.5 pour améliorer les temps de chargement de demande. Groupement et la minimisation améliore les temps de chargement en reducin...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/23/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 7192481de46c36f7de71164766e68afdbba74f6d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 001ebf89cda66a50cddcd7e4944f27b9396d4450
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="bundling-and-minification"></a>Groupement et minimisation
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Groupement et la minimisation sont deux techniques que vous pouvez utiliser dans ASP.NET 4.5 pour améliorer les temps de chargement de demande. Groupement et la minimisation améliore les temps de chargement en réduisant le nombre de demandes au serveur et de réduire la taille des actifs demandés (par exemple, CSS et JavaScript)
 
@@ -43,7 +43,7 @@ L’illustration suivante montre la même vue de minutage de la vue à propos d�
 
 ![](bundling-and-minification/_static/image3.png)
 
-## <a name="minification"></a>Minification
+## <a name="minification"></a>Minimisation
 
 Minimisation effectue diverses optimisations de code différentes css, telles que la suppression d’un espace blanc inutile et les commentaires et de raccourcir les noms de variables pour un caractère ou de scripts. Considérez la fonction JavaScript suivante.
 
@@ -55,7 +55,7 @@ Après réduction, la fonction est réduite à ce qui suit :
 
 Outre la suppression des commentaires et espaces inutiles, les paramètres suivants et les noms de variables ont été renommés (abrégé) comme suit :
 
-| **Original** | **Renommé** |
+| **Langue source** | **Renommé** |
 | --- | --- |
 | imageTagAndImageID | n |
 | imageContext | t |
@@ -98,7 +98,7 @@ Pour activer le groupement et la minimisation, définissez la `debug` la valeur 
 [!code-csharp[Main](bundling-and-minification/samples/sample4.cs?highlight=7)]
 
 > [!NOTE]
-> À moins que `EnableOptimizations` est `true` ou l’attribut de débogage dans le [compilation, élément](https://msdn.microsoft.com/library/s10awwz0.aspx) dans les *Web.config* fichier est défini sur `false`, fichiers ne seront pas fournis ou réduites. En outre, la version .min de fichiers ne sera pas utilisée, les versions de débogage complet seront sélectionnées. `EnableOptimizations`remplace l’attribut de débogage dans le [compilation élément](https://msdn.microsoft.com/library/s10awwz0.aspx) dans les *Web.config* fichier
+> À moins que `EnableOptimizations` est `true` ou l’attribut de débogage dans le [compilation, élément](https://msdn.microsoft.com/library/s10awwz0.aspx) dans les *Web.config* fichier est défini sur `false`, fichiers ne seront pas fournis ou réduites. En outre, la version .min de fichiers ne sera pas utilisée, les versions de débogage complet seront sélectionnées. `EnableOptimizations` remplace l’attribut de débogage dans le [compilation élément](https://msdn.microsoft.com/library/s10awwz0.aspx) dans les *Web.config* fichier
 
 
 ## <a name="using-bundling-and-minification-with-aspnet-web-forms-and-web-pages"></a>À l’aide de regroupement et la minimisation avec Web Forms ASP.NET et des Pages Web
@@ -170,11 +170,11 @@ Le tableau suivant présente les fichiers ajoutés à un groupe en utilisant le 
 
 | **Call** | **Fichiers ajoutés ou Exception levée** |
 | --- | --- |
-| Include("~/Scripts/Common/\*.js") | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
-| Include("~/Scripts/Common/T\*.js") | Exception de modèle non valide. Le caractère générique est uniquement autorisé sur le préfixe ou le suffixe. |
-| Include("~/Scripts/Common/\*og.\*") | Exception de modèle non valide. Qu’un seul caractère générique est autorisé. |
-| "Include("~/Scripts/Common/T\*") | *ToggleDiv.js, ToggleImg.js* |
-| "Include("~/Scripts/Common/\*") | Exception de modèle non valide. Un segment de caractère générique pure n’est pas valide. |
+| Inclure (« ~/Scripts/Common/\*.js ») | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
+| Inclure (« ~/Scripts/Common/T\*.js ») | Exception de modèle non valide. Le caractère générique est uniquement autorisé sur le préfixe ou le suffixe. |
+| Inclure (« ~/Scripts/Common/\*og.\*») | Exception de modèle non valide. Qu’un seul caractère générique est autorisé. |
+| « Inclure (« ~/Scripts/Common/T\*») | *ToggleDiv.js, ToggleImg.js* |
+| « Inclure (« ~/Scripts/Common/\*») | Exception de modèle non valide. Un segment de caractère générique pure n’est pas valide. |
 | IncludeDirectory("~/Scripts/Common", "T\*") | *ToggleDiv.js, ToggleImg.js* |
 | IncludeDirectory("~/Scripts/Common", "T\*",true) | *ToggleDiv.js, ToggleImg.js, ToggleLinks.js* |
 
@@ -186,7 +186,7 @@ Ajouter explicitement chaque fichier à une offre groupée est généralement pr
 
     [!code-csharp[Main](bundling-and-minification/samples/sample12.cs)]
 
- Le sélecteur de caractère générique «\*.css » permet de bénéficier de chaque fichier CSS dans le dossier, y compris le *Content\themes\base\jquery.ui.all.css* fichier. Le *jquery.ui.all.css* fichier importe d’autres fichiers CSS.
+  Le sélecteur de caractère générique «\*.css » permet de bénéficier de chaque fichier CSS dans le dossier, y compris le *Content\themes\base\jquery.ui.all.css* fichier. Le *jquery.ui.all.css* fichier importe d’autres fichiers CSS.
 
 ## <a name="bundle-caching"></a>Regrouper la mise en cache
 
@@ -233,15 +233,15 @@ Regroupements doivent être partitionnées par les pages qui en ont besoin. Par 
 
 Le `System.Web.Optimization` espace de noms est implémenté dans System.Web.Optimization.DLL. Il tire parti de la bibliothèque WebGrease (WebGrease.dll) pour les fonctions de réduction, qui à son tour utilise Antlr3.Runtime.dll.
 
-*Utiliser Twitter pour effectuer des publications rapides et de partager des liens. Le handle de mon Twitter est*:[@RickAndMSFT](http://twitter.com/RickAndMSFT)
+*Utiliser Twitter pour effectuer des publications rapides et de partager des liens. Le handle de mon Twitter est*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 - Vidéo :[groupement et optimisation](https://channel9.msdn.com/Events/aspConf/aspConf/Bundling-and-Optimizing) par [Howard Dierking](https://twitter.com/#!/howard_dierking)
 - [Ajout de l’optimisation du Web à un Site Web Pages](https://blogs.msdn.com/b/rickandy/archive/2012/08/15/adding-web-optimization-to-a-web-pages-site.aspx).
 - [Groupement de l’ajout et la minimisation pour Web Forms](https://blogs.msdn.com/b/rickandy/archive/2012/08/14/adding-bundling-and-minification-to-web-forms.aspx).
-- [Impact sur les performances de regroupement et la minimisation sur la navigation Web](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx) par [Henrik F Nielsen](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen)[@frystyk](https://twitter.com/frystyk)
-- [À l’aide du CDN et expire pour améliorer les performances de Site Web](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx) par Rick Anderson[@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
+- [Impact sur les performances de regroupement et la minimisation sur la navigation Web](https://blogs.msdn.com/b/henrikn/archive/2012/06/17/performance-implications-of-bundling-and-minification-on-http.aspx) par [Henrik F Nielsen](http://en.wikipedia.org/wiki/Henrik_Frystyk_Nielsen) [@frystyk](https://twitter.com/frystyk)
+- [À l’aide du CDN et expire pour améliorer les performances de Site Web](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx) par Rick Anderson [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 - [Réduire RTT (durée des boucles)](https://developers.google.com/speed/docs/best-practices/rtt)
 
 ## <a name="contributors"></a>Contributors

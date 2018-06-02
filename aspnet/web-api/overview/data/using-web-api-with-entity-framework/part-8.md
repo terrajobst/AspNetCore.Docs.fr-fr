@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-8
-title: "Afficher les détails de l’élément | Documents Microsoft"
+title: Afficher les détails de l’élément | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 0b6ae9384843712cae824ea662b984a40f021e57
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 94863e94f2a8b3f1ce8a8fb85d877bc0768f3d8a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="display-item-details"></a>Affichage des détails d’élément
 ====================
@@ -52,6 +52,6 @@ Maintenant, si vous exécutez l’application et cliquez sur un de la &quot;dét
 
 [![](part-8/_static/image2.png)](part-8/_static/image1.png)
 
->[!div class="step-by-step"]
-[Précédent](part-7.md)
-[Suivant](part-9.md)
+> [!div class="step-by-step"]
+> [Précédent](part-7.md)
+> [Suivant](part-9.md)

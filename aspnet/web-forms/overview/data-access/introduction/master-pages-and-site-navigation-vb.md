@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/introduction/master-pages-and-site-navigation-vb
-title: "Les Pages maîtres et Navigation du Site (VB) | Documents Microsoft"
+title: Les Pages maîtres et Navigation du Site (VB) | Documents Microsoft
 author: rick-anderson
-description: "Une caractéristique commune des sites Web conviviales est qu’ils disposent d’un schéma de mise en page et de navigation de page cohérente au niveau du site. Ce didacticiel aborde la y..."
+description: Une caractéristique commune des sites Web conviviales est qu’ils disposent d’un schéma de mise en page et de navigation de page cohérente au niveau du site. Ce didacticiel aborde la y...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/master-pages-and-site-navigation-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7bb8a9bccbd9dfbbf983618ecd32588fd8f69c64
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 45fdbf70f7981c0faefef2603d21f913022e2a8f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="master-pages-and-site-navigation-vb"></a>Les Pages maîtres et Navigation du Site (VB)
 ====================
@@ -309,11 +309,11 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont Liz Shulok, Dennis Patterson et Hilton Giesenow. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](creating-a-business-logic-layer-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-business-logic-layer-vb.md)

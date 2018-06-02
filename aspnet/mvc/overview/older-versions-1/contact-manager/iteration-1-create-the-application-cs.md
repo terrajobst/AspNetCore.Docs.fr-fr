@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-cs
-title: "Itération #1 : créer l’Application (c#) | Documents Microsoft"
+title: 'Itération #1 : créer l’Application (c#) | Documents Microsoft'
 author: microsoft
-description: "Dans la première itération, nous créons le Gestionnaire de Contact de la façon la plus simple possible. Prise en charge pour les opérations de base de données : création, lecture, mise à jour et D...."
+description: 'Dans la première itération, nous créons le Gestionnaire de Contact de la façon la plus simple possible. Prise en charge pour les opérations de base de données : création, lecture, mise à jour et D....'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 12927250595a8f3130328d2fe219280a13349787
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 30f626511164363fea2195a05e73aeee5764933b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-1--create-the-application-c"></a>Itération #1 : créer l’Application (c#)
 ====================
@@ -67,7 +67,7 @@ Dans cette itération, nous allons terminer les étapes suivantes :
 
 Dans les applications ASP.NET MVC, vous devez disposer de Visual Studio 2008 ou Visual Web Developer 2008 est installé sur votre ordinateur (Visual Web Developer est une version gratuite de Visual Studio qui n’inclut pas toutes les fonctionnalités avancées de Visual Studio). Vous pouvez télécharger la version d’évaluation de Visual Studio 2008 ou Visual Web Developer à l’adresse suivante :
 
-[https://www.ASP.NET/downloads/Essential/](https://www.asp.net/downloads/essential)
+[https://www.asp.net/downloads/essential/](https://www.asp.net/downloads/essential)
 
 > [!NOTE] 
 > 
@@ -76,15 +76,15 @@ Dans les applications ASP.NET MVC, vous devez disposer de Visual Studio 2008 ou 
 
 Infrastructure ASP.NET MVC. Vous pouvez télécharger l’infrastructure ASP.NET MVC à partir de l’adresse suivante :
 
-[https://www.ASP.NET/MVC](../../../index.md)
+[https://www.asp.net/mvc](../../../index.md)
 
 Dans ce didacticiel, nous utilisons Microsoft Entity Framework pour accéder à une base de données. Entity Framework est inclus dans .NET Framework 3.5 Service Pack 1. Vous pouvez télécharger ce service pack à partir de l’emplacement suivant :
 
-[https://www.Microsoft.com/downloads/details.aspx?FamilyId=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang = fr](https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en)
+[https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en](https://www.microsoft.com/downloads/details.aspx?familyid=ab99342f-5d1a-413d-8319-81da479ab0d7&amp;displaylang=en)
 
 Comme alternative à la réalisation de chacune de ces téléchargements un par un, vous pouvez tirer parti de Web Platform Installer (Web PI). Vous pouvez télécharger Web Platform Installer à partir de l’adresse suivante :
 
-[https://www.ASP.NET/downloads/Essential/](https://www.asp.net/downloads/essential)
+[https://www.asp.net/downloads/essential/](https://www.asp.net/downloads/essential)
 
 ## <a name="aspnet-mvc-project"></a>Projet ASP.NET MVC
 
@@ -172,10 +172,10 @@ Nous devons créer une table qui contient les colonnes suivantes :
 | **Nom de la colonne** | **Type de données** | **Autoriser les valeurs null** |
 | --- | --- | --- |
 | Id | int | False |
-| FirstName | nvarchar (50) | False |
-| LastName | nvarchar (50) | False |
-| Téléphone | nvarchar (50) | False |
-| Messagerie | nvarchar (255) | False |
+| FirstName | nvarchar(50) | False |
+| LastName | nvarchar(50) | False |
+| Téléphone | nvarchar(50) | False |
+| Messagerie | nvarchar(255) | False |
 
 
 La première colonne, la colonne d’Id est spéciale. Vous devez marquer la colonne Id comme une colonne d’identité et une colonne de clé primaire. Vous indiquez qu’une colonne est une colonne d’identité en développant des propriétés de colonne (recherchez au bas de la Figure 6) et le défilement à la propriété de la spécification d’identité. Définir le **(est d’identité)** valeur à la propriété **Oui**.
@@ -354,7 +354,7 @@ Dans le **ajouter une vue** boîte de dialogue, sélectionnez le **ContactManage
 
 La vue Create contient des champs de formulaire pour chacune des propriétés de la classe de Contact. Le code de la vue de créer est inclus dans la liste 5.
 
-**La liste 5 - Views\Home\Create.aspx**
+**Listing 5 - Views\Home\Create.aspx**
 
 [!code-aspx[Main](iteration-1-create-the-application-cs/samples/sample5.aspx)]
 
@@ -390,7 +390,7 @@ Vous pouvez générer la vue qui contient le formulaire d’édition en double-c
 
 Lorsque vous cliquez sur le bouton Ajouter, une nouvelle vue de modifier est générée automatiquement. Le formulaire HTML généré contient des champs qui correspondent à chacune des propriétés de la classe de Contact (voir la liste 7).
 
-**La liste 7 - Views\Home\Edit.aspx**
+**Listing 7 - Views\Home\Edit.aspx**
 
 [!code-aspx[Main](iteration-1-create-the-application-cs/samples/sample7.aspx)]
 
@@ -419,7 +419,7 @@ La première méthode Delete() retourne un écran de confirmation de suppression
 
 Nous devons modifier la vue de l’Index pour qu’il contienne un lien pour la suppression des enregistrements de contact (voir Figure 21). Vous devez ajouter le code suivant à la même cellule de tableau qui contient le lien Modifier :
 
-Html.ActionLink ({id = l’élément. ID})&gt;
+Html.ActionLink( { id=item.Id }) %&gt;
 
 
 [![La boîte de dialogue Nouveau projet](iteration-1-create-the-application-cs/_static/image21.jpg)](iteration-1-create-the-application-cs/_static/image41.png)
@@ -439,7 +439,7 @@ Contrairement à dans le cas des liste, créer et modifier des vues, la boîte d
 
 Le contenu de la vue Delete est contenu dans la liste 9. Cette vue contient un formulaire qui confirme ou non un contact particulier doit être supprimé (voir Figure 21).
 
-**Liste 9 - Views\Home\Delete.aspx**
+**Listing 9 - Views\Home\Delete.aspx**
 
 [!code-aspx[Main](iteration-1-create-the-application-cs/samples/sample9.aspx)]
 
@@ -478,7 +478,7 @@ Nous devons mettre à jour de l’itinéraire par défaut dans le fichier Global
 
 Après avoir apporté ces modifications, le Gestionnaire de Contact s’exécutent correctement. À présent, il utilise la classe de contrôleur de Contact en tant que le contrôleur par défaut.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette première itération, nous avons créé une application de base le Gestionnaire de contacts dans le moyen le plus rapide possible. Nous a tiré parti de Visual Studio pour générer le code initial pour les contrôleurs et les vues automatiquement. Nous avons pris également parti d’Entity Framework pour générer automatiquement des classes de notre modèle de base de données.
 
@@ -490,5 +490,5 @@ Ensuite, nous n'avons pas implémenté aucune validation de formulaire. Par exem
 
 Enfin et surtout, l’itération actuelle de l’application Gestionnaire de contacts ne peut pas facilement modifiée ou conservée. Par exemple, la logique d’accès de base de données est intégrée à droite dans les actions de contrôleur. Cela signifie que nous ne pouvons pas modifier notre code d’accès aux données sans modifier nos contrôleurs. Dans les itérations ultérieures, nous explorons les modèles de conception de logiciels que nous pouvons implémentée pour rendre le Gestionnaire de contacts plus résilient à modifier.
 
->[!div class="step-by-step"]
-[Next](iteration-2-make-the-application-look-nice-cs.md)
+> [!div class="step-by-step"]
+> [Next](iteration-2-make-the-application-look-nice-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-cs
-title: "Itération #4 : rendre des applications faiblement couplées (c#) | Documents Microsoft"
+title: 'Itération #4 : rendre des applications faiblement couplées (c#) | Documents Microsoft'
 author: microsoft
-description: "Dans cette troisième itération, nous tirer parti de plusieurs modèles de conception de logiciel pour le rendre plus facile à gérer et modifier l’application Gestionnaire de contacts. Pré..."
+description: Dans cette troisième itération, nous tirer parti de plusieurs modèles de conception de logiciel pour le rendre plus facile à gérer et modifier l’application Gestionnaire de contacts. Pré...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1b8df72f51b4730a1fa9178b51a3770ce9edf181
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 33221c6c3326c7034fe013f152579828e2fc8a3a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-c"></a>Itération #4 : rendre des applications faiblement couplées (c#)
 ====================
@@ -82,7 +82,7 @@ Implémentation du modèle de référentiel nous oblige à effectuer les deux é
 
 Tout d’abord, nous devons créer une interface qui décrit toutes les méthodes d’accès aux données que nous devons effectuer. L’interface IContactManagerRepository est contenue dans la liste 1. Décrit les cinq méthodes de cette interface : CreateContact(), DeleteContact(), EditContact(), GetContact et ListContacts().
 
-**La liste 1 - Models\IContactManagerRepositiory.cs**
+**Listing 1 - Models\IContactManagerRepositiory.cs**
 
 [!code-csharp[Main](iteration-4-make-the-application-loosely-coupled-cs/samples/sample1.cs)]
 
@@ -140,7 +140,7 @@ Pour résoudre ce problème, nous pouvons créer un distinct [ *couche de servic
 
 Le ContactManagerService est contenue dans la liste 4. Il contient la logique de validation à partir de la classe de contrôleur du Contact.
 
-**La liste 4 - Models\ContactManagerService.cs**
+**Listing 4 - Models\ContactManagerService.cs**
 
 [!code-csharp[Main](iteration-4-make-the-application-loosely-coupled-cs/samples/sample4.cs)]
 
@@ -172,7 +172,7 @@ Un contrôleur utilise un ModelStateDictionary nommé ModelState pour représent
 
 Le modèle d’élément décoratif vous permet d’encapsuler une classe existante dans une nouvelle classe pour implémenter une interface. Notre projet de gestionnaire de contacts inclut la classe ModelStateWrapper contenue dans la liste 7. La classe ModelStateWrapper implémente l’interface dans la liste 8.
 
-**La liste 7 - Models\Validation\ModelStateWrapper.cs**
+**Listing 7 - Models\Validation\ModelStateWrapper.cs**
 
 [!code-csharp[Main](iteration-4-make-the-application-loosely-coupled-cs/samples/sample7.cs)]
 
@@ -184,7 +184,7 @@ Si vous examinez une liste 5 vous verrez alors que la couche de service ContactM
 
 [!code-csharp[Main](iteration-4-make-the-application-loosely-coupled-cs/samples/sample9.cs)]
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous n’avez pas ajouté de nouvelles fonctionnalités à l’application Gestionnaire de contacts. L’objectif de cette itération a été de refactoriser l’application Gestionnaire de contacts pour qu’elle soit plus facile à gérer et modifier.
 
@@ -196,6 +196,6 @@ Lorsque nous avons créé la couche de service, nous avons tiré parti du modèl
 
 Enfin, nous avons pris parti d’un modèle de conception de logiciel nommé le modèle d’Injection de dépendances. Ce modèle permet de programmer des interfaces (abstractions) au lieu de classes concrètes. Implémentation du modèle de conception d’Injection de dépendances permet également de notre code des tests. Dans l’itération suivante, nous ajoutons des tests unitaires à notre projet.
 
->[!div class="step-by-step"]
-[Précédent](iteration-3-add-form-validation-cs.md)
-[Suivant](iteration-5-create-unit-tests-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-3-add-form-validation-cs.md)
+> [Suivant](iteration-5-create-unit-tests-cs.md)

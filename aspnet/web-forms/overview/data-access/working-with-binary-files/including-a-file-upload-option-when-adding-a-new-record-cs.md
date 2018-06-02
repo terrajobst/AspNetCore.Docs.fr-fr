@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
-title: "Options incluant un fichier de téléchargement lors de l’ajout d’un nouvel enregistrement (c#) | Documents Microsoft"
+title: Options incluant un fichier de téléchargement lors de l’ajout d’un nouvel enregistrement (c#) | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel montre comment créer une interface Web qui permet à l’utilisateur à entrer des données de texte et télécharger les fichiers binaires. Pour illustrer l’options disponibles de t..."
+description: Ce didacticiel montre comment créer une interface Web qui permet à l’utilisateur à entrer des données de texte et télécharger les fichiers binaires. Pour illustrer l’options disponibles de t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 384251e5d0d72c6d1cc014c929a5d504be11d1d6
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ab63f9b0c536be81fdaa894985bae6a6b9346fa5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Y compris une Option de téléchargement de fichier lors de l’ajout d’un nouvel enregistrement (c#)
 ====================
@@ -280,12 +280,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Dave Gardner Teresa Murphy et Bernadette Leigh. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](displaying-binary-data-in-the-data-web-controls-cs.md)
-[Suivant](updating-and-deleting-existing-binary-data-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](displaying-binary-data-in-the-data-web-controls-cs.md)
+> [Suivant](updating-and-deleting-existing-binary-data-cs.md)

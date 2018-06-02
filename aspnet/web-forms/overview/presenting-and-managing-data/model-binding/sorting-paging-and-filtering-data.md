@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
-title: "Le tri, la pagination et le filtrage des données avec la liaison de modèle et les web forms | Documents Microsoft"
+title: Le tri, la pagination et le filtrage des données avec la liaison de modèle et les web forms | Documents Microsoft
 author: tfitzmac
-description: "Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-..."
+description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
 msc.type: authoredcontent
-ms.openlocfilehash: 94fc84533be5fcbcf0612fcdcabea7dee738d89b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d63ebecadd392877e4cb1d1dffe9db2d1d231190
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>Le tri, la pagination et le filtrage des données avec la liaison de modèle et les web forms
 ====================
@@ -48,7 +48,7 @@ Exécuter l’application web et de tester des étudiants tri en fonction des va
 
 ![étudiants de tri](sorting-paging-and-filtering-data/_static/image2.png)
 
-## <a name="add-paging"></a>Ajouter la pagination
+## <a name="add-paging"></a>ajouter la pagination
 
 Il est également très facile de l’activation de la pagination. Dans le GridView, définissez la **AllowPaging** propriété **true** et définir le **PageSize** propriété pour le nombre d’enregistrements que vous souhaitez afficher sur chaque page. Dans ce didacticiel, vous pouvez la définir à 4.
 
@@ -71,8 +71,8 @@ Liaison de modèle ajoute plusieurs attributs qui vous permettent de désigner l
 - QueryString
 - RouteData
 - Session
-- Profil utilisateur
-- État d’affichage
+- UserProfile
+- ViewState
 
 Dans ce didacticiel, vous utiliserez une valeur d’un contrôle pour filtrer les enregistrements sont affichés dans le GridView. Vous allez ajouter le **contrôle** d’attribut à la méthode de requête que vous avez créé précédemment. Dans un [ultérieurement](using-query-string-values-to-retrieve-data.md) didacticiel, vous allez appliquer la **QueryString** d’attribut à un paramètre pour spécifier que la valeur du paramètre provient d’une valeur de chaîne de requête.
 
@@ -100,6 +100,6 @@ Dans ce didacticiel, vous activé le tri et la pagination des données. Vous est
 
 Dans la prochaine [didacticiel](integrating-jquery-ui.md) vous allez améliorer l’interface utilisateur en intégrant un widget de JQuery UI dans le modèle de données dynamiques.
 
->[!div class="step-by-step"]
-[Précédent](updating-deleting-and-creating-data.md)
-[Suivant](integrating-jquery-ui.md)
+> [!div class="step-by-step"]
+> [Précédent](updating-deleting-and-creating-data.md)
+> [Suivant](integrating-jquery-ui.md)

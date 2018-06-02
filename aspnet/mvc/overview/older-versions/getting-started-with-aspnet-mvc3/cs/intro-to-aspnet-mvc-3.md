@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3
-title: "Présentation d’ASP.NET MVC 3 (c#) | Documents Microsoft"
+title: Présentation d’ASP.NET MVC 3 (c#) | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3
 msc.type: authoredcontent
-ms.openlocfilehash: bbeaad9e52db1fd85ef166052a377e8b6732a90a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9b965df6175051a084de35627160161c116be42d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="intro-to-aspnet-mvc-3-c"></a>Présentation d’ASP.NET MVC 3 (c#)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -57,7 +57,7 @@ Voici ce que vous allez apprendre :
 - Comment récupérer et afficher des données.
 - Comment modifier des données et activer la validation de données.
 
-## <a name="getting-started"></a>Commencer
+## <a name="getting-started"></a>Prise en main
 
 Commencez par exécuter Visual Web Developer 2010 Express (« Visual Web Developer » pour la forme courte) et sélectionnez **nouveau projet** à partir de la **Démarrer** page.
 
@@ -91,5 +91,5 @@ F5 provoque Visual Web Developer pour démarrer un serveur web de développement
 
 Emploi ce modèle par défaut vous donne deux pages à visiter et une page de connexion de base. L’étape suivante consiste à modifier le fonctionnement de cette application et en savoir un peu ASP.NET MVC dans le processus. Fermez votre navigateur et nous allons modifier du code.
 
->[!div class="step-by-step"]
-[Next](adding-a-controller.md)
+> [!div class="step-by-step"]
+> [Next](adding-a-controller.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs
-title: "Déploiement de votre Site à l’aide de Visual Studio (c#) | Documents Microsoft"
+title: Déploiement de votre Site à l’aide de Visual Studio (c#) | Documents Microsoft
 author: rick-anderson
-description: "Visual Studio inclut des outils de déploiement d’un site Web. Plus d’informations sur ces outils dans ce didacticiel."
+description: Visual Studio inclut des outils de déploiement d’un site Web. Plus d’informations sur ces outils dans ce didacticiel.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c0c32c3dd24be5edfea3e17695753973f3fad30a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f06e2fe1fdfb03b106466a1792f6381495f76096
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-your-site-using-visual-studio-c"></a>Déploiement de votre Site à l’aide de Visual Studio (c#)
 ====================
@@ -155,6 +155,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Comment : Publier des Sites Web](https://msdn.microsoft.com/library/20yh9f1b.aspx)
 - [Le programme d’installation et de déploiement des projets dans Visual Studio](https://msdn.microsoft.com/library/wx3b589t.aspx)
 
->[!div class="step-by-step"]
-[Précédent](deploying-your-site-using-an-ftp-client-cs.md)
-[Suivant](common-configuration-differences-between-development-and-production-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-your-site-using-an-ftp-client-cs.md)
+> [Suivant](common-configuration-differences-between-development-and-production-cs.md)

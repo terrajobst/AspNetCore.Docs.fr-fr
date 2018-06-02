@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
-title: "Affichage d’une Table de base de données (VB) | Documents Microsoft"
+title: Affichage d’une Table de base de données (VB) | Documents Microsoft
 author: microsoft
-description: "Dans ce didacticiel, vous montrent deux méthodes d’affichage d’un ensemble d’enregistrements de base de données. Puis-je afficher les deux méthodes de mise en forme un ensemble d’enregistrements de base de données dans le code HTML ta..."
+description: Dans ce didacticiel, vous montrent deux méthodes d’affichage d’un ensemble d’enregistrements de base de données. Puis-je afficher les deux méthodes de mise en forme un ensemble d’enregistrements de base de données dans le code HTML ta...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6dc0aa91cfb68d308ed098f429d3251d424ab778
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: dd871520f98aaae2d7b33d83b1646eb9eee88821
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-a-table-of-database-data-vb"></a>Affichage d’une Table de base de données (Visual Basic)
 ====================
@@ -40,7 +40,7 @@ Nous allons pour afficher le jeu d’enregistrements de la table de base de donn
 | --- | --- | --- |
 | Id | Int | False |
 | Titre | Nvarchar(200) | False |
-| Directeur | Nvarchar (50) | False |
+| Directeur | NVarchar(50) | False |
 | DateReleased | DateTime | False |
 
 
@@ -101,7 +101,7 @@ Lorsque le **ajouter un contrôleur** boîte de dialogue s’affiche, entrez le 
 
 Nous devons modifier l’action Index() exposée par le contrôleur vidéo afin qu’elle retourne le jeu d’enregistrements de base de données. Modifier le contrôleur afin qu’il semble que le contrôleur dans la liste 1.
 
-**La liste 1 – Controllers\MovieController.vb**
+**Listing 1 – Controllers\MovieController.vb**
 
 [!code-vb[Main](displaying-a-table-of-database-data-vb/samples/sample1.vb)]
 
@@ -161,7 +161,7 @@ Suivez ces étapes pour créer le partielle :
 
 Après avoir effectué ces étapes, modifiez le MovieTemplate partielle ressemble à la liste 3.
 
-**La liste 3 – Views\Movie\MovieTemplate.ascx**
+**Listing 3 – Views\Movie\MovieTemplate.ascx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-vb/samples/sample3.aspx)]
 
@@ -169,7 +169,7 @@ Partielle dans le Listing 3 contient un modèle pour une seule ligne d’enregis
 
 La vue Index modifiée sur la liste 4 utilise la MovieTemplate partielle.
 
-**La liste 4 – Views\Movie\Index.aspx**
+**Listing 4 – Views\Movie\Index.aspx**
 
 [!code-aspx[Main](displaying-a-table-of-database-data-vb/samples/sample4.aspx)]
 
@@ -181,10 +181,10 @@ La vue Index modifiée restitue la même table HTML d’enregistrements de base 
 La méthode RenderPartial() est différente de celui de la plupart des autres méthodes d’assistance, car elle ne retourne pas une chaîne. Par conséquent, vous devez appeler la méthode RenderPartial() à l’aide &lt;Html.RenderPartial() %&gt; au lieu de &lt;% = Html.RenderPartial() %&gt;.
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel est d’expliquer comment vous pouvez afficher un ensemble d’enregistrements de base de données dans une table HTML. Tout d’abord, vous avez appris comment retourner un jeu d’enregistrements de base de données à partir d’une action de contrôleur en tirant parti d’Entity Framework Microsoft. Ensuite, vous avez appris à utiliser la structure de Visual Studio pour générer une vue qui s’affiche automatiquement une collection d’éléments. Enfin, vous avez appris comment simplifier l’affichage en tirant parti d’un partiel. Vous avez appris à utiliser un partiel en tant que modèle afin que vous pouvez mettre en forme chaque enregistrement de la base de données.
 
->[!div class="step-by-step"]
-[Précédent](creating-model-classes-with-linq-to-sql-vb.md)
-[Suivant](performing-simple-validation-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-model-classes-with-linq-to-sql-vb.md)
+> [Suivant](performing-simple-validation-vb.md)

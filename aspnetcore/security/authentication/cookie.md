@@ -1,7 +1,7 @@
 ---
-title: "À l’aide de l’authentification de Cookie sans ASP.NET Core identité"
+title: Utiliser l’authentification de cookie sans ASP.NET Core Identity
 author: rick-anderson
-description: "Une explication de l’utilisation de l’authentification de cookie sans ASP.NET Core Identity"
+description: Une explication de l’utilisation de l’authentification de cookie sans ASP.NET Core Identity
 manager: wpickett
 ms.author: riande
 ms.date: 10/11/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/cookie
-ms.openlocfilehash: 1f20a2f7cab123e5a41ee1d232271da9de4c9058
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: bdaa0e3a5ce54d3822615ac57e22f4fd6beacdcb
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="using-cookie-authentication-without-aspnet-core-identity"></a>À l’aide de l’authentification de Cookie sans ASP.NET Core identité
+# <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification de cookie sans ASP.NET Core Identity
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Luke Latham](https://github.com/guardrex)
 
@@ -23,23 +23,23 @@ Comme vous l’avez vu dans les rubriques précédentes de l’authentification,
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-Pour plus d’informations sur l’authentification basée sur le cookie de migration à partir de ASP.NET 1.x vers la version 2.0, consultez [migration de l’authentification et d’identité ASP.NET Core 2.0 rubrique (basée sur le Cookie d’authentification)](xref:migration/1x-to-2x/identity-2x#cookie-based-authentication).
+Pour plus d’informations sur l’authentification basée sur le cookie de migration à partir de ASP.NET 1.x vers la version 2.0, consultez [migrer l’authentification et identité ASP.NET Core 2.0 rubrique (basée sur le Cookie d’authentification)](xref:migration/1x-to-2x/identity-2x#cookie-based-authentication).
 
 ## <a name="configuration"></a>Configuration
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 Si vous n’utilisez pas le [Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage), installez la version 2.0 + de le [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) package NuGet.
 
 Dans le `ConfigureServices` (méthode), créer le service de l’intergiciel (middleware) d’authentification avec le `AddAuthentication` et `AddCookie` méthodes :
 
-[!code-csharp[Main](cookie/sample/Startup.cs?name=snippet1)]
+[!code-csharp[](cookie/sample/Startup.cs?name=snippet1)]
 
-`AuthenticationScheme`passé à `AddAuthentication` définit le schéma d’authentification par défaut pour l’application. `AuthenticationScheme`est utile lorsqu’il existe plusieurs instances de l’authentification de cookie et vous souhaitez [autoriser avec un schéma spécifique](xref:security/authorization/limitingidentitybyscheme). Définition de la `AuthenticationScheme` à `CookieAuthenticationDefaults.AuthenticationScheme` fournit une valeur de « Cookies » pour le schéma. Vous pouvez fournir une valeur de chaîne qui distingue le schéma.
+`AuthenticationScheme` passé à `AddAuthentication` définit le schéma d’authentification par défaut pour l’application. `AuthenticationScheme` est utile lorsqu’il existe plusieurs instances de l’authentification de cookie et vous souhaitez [autoriser avec un schéma spécifique](xref:security/authorization/limitingidentitybyscheme). Définition de la `AuthenticationScheme` à `CookieAuthenticationDefaults.AuthenticationScheme` fournit une valeur de « Cookies » pour le schéma. Vous pouvez fournir une valeur de chaîne qui distingue le schéma.
 
 Dans le `Configure` méthode, utilisez la `UseAuthentication` méthode à appeler l’intergiciel (middleware) d’authentification qui définit la `HttpContext.User` propriété. Appelez le `UseAuthentication` méthode avant d’appeler `UseMvcWithDefaultRoute` ou `UseMvc`:
 
-[!code-csharp[Main](cookie/sample/Startup.cs?name=snippet2)]
+[!code-csharp[](cookie/sample/Startup.cs?name=snippet2)]
 
 **Options de AddCookie**
 
@@ -59,14 +59,14 @@ Le [CookieAuthenticationOptions](/dotnet/api/microsoft.aspnetcore.authentication
 | [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0) | Définit le `DataProtectionProvider` qui est utilisé pour créer la valeur par défaut `TicketDataFormat`. Si le `TicketDataFormat` propriété est définie, la `DataProtectionProvider` option n’est pas utilisée. Si n’est fourni, le fournisseur de protection des données de l’application par défaut est utilisé. |
 | [Événements](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.events?view=aspnetcore-2.0) | Le gestionnaire appelle des méthodes sur le fournisseur qui donnent le contrôle de l’application à certains points de traitement. Si `Events` ne sont pas fournies, une instance par défaut est fournie qui ne fait rien lorsque les méthodes sont appelées. |
 | [EventsType](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.eventstype?view=aspnetcore-2.0) | Utilisé en tant que le type de service pour obtenir le `Events` instance au lieu de la propriété. |
-| [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan?view=aspnetcore-2.0) | Le `TimeSpan` après laquelle le ticket d’authentification stocké dans le cookie expire. `ExpireTimeSpan`est ajouté à l’heure actuelle pour créer le délai d’expiration pour le ticket. Le `ExpiredTimeSpan` la valeur est toujours en AuthTicket chiffrée vérifié par le serveur. Il peut également aller dans le [Set-Cookie](https://tools.ietf.org/html/rfc6265#section-4.1) en-tête, mais uniquement si `IsPersistent` est défini. Pour définir `IsPersistent` à `true`, configurer le [AuthenticationProperties](/dotnet/api/microsoft.aspnetcore.authentication.authenticationproperties) passé à `SignInAsync`. La valeur par défaut de `ExpireTimeSpan` est de 14 jours. |
+| [ExpireTimeSpan](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.expiretimespan?view=aspnetcore-2.0) | Le `TimeSpan` après laquelle le ticket d’authentification stocké dans le cookie expire. `ExpireTimeSpan` est ajouté à l’heure actuelle pour créer le délai d’expiration pour le ticket. Le `ExpiredTimeSpan` la valeur est toujours en AuthTicket chiffrée vérifié par le serveur. Il peut également aller dans le [Set-Cookie](https://tools.ietf.org/html/rfc6265#section-4.1) en-tête, mais uniquement si `IsPersistent` est défini. Pour définir `IsPersistent` à `true`, configurer le [AuthenticationProperties](/dotnet/api/microsoft.aspnetcore.authentication.authenticationproperties) passé à `SignInAsync`. La valeur par défaut de `ExpireTimeSpan` est de 14 jours. |
 | [LoginPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.loginpath?view=aspnetcore-2.0) | Fournit le chemin d’accès à fournir une détection 302 (redirection d’URL) lorsque déclenchée par `HttpContext.ChallengeAsync`. L’URL actuelle qui a généré le code 401 est ajoutée à la `LoginPath` comme paramètre de chaîne de requête nommé par le `ReturnUrlParameter`. Une fois une demande pour le `LoginPath` accorde une nouvelle identité de connexion, le `ReturnUrlParameter` valeur est utilisée pour rediriger le navigateur vers l’URL qui a provoqué le code d’état non autorisé d’origine. La valeur par défaut est `/Account/Login`. |
-| [LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath?view=aspnetcore-2.0) | Si le `LogoutPath` est fournie pour le gestionnaire, ensuite une demande à ce chemin d’accès redirige en fonction de la valeur de la `ReturnUrlParameter`. La valeur par défaut est `/Account/Logout`. |
-| [ReturnUrlParameter](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.returnurlparameter?view=aspnetcore-2.0) | Détermine le nom du paramètre de chaîne de requête qui est ajouté par le Gestionnaire de réponse 302 trouvé (redirection d’URL). `ReturnUrlParameter`est utilisé lorsqu’une demande arrive sur le `LoginPath` ou `LogoutPath` pour renvoyer le navigateur vers l’URL d’origine après l’exécution de l’action de connexion ou de déconnexion. La valeur par défaut est `ReturnUrl`. |
-| [SessionStore](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.sessionstore?view=aspnetcore-2.0) | Conteneur facultatif utilisé pour stocker l’identité entre les demandes. Lorsqu’il est utilisé, uniquement un identificateur de session est envoyé au client. `SessionStore`peut être utilisé pour atténuer les problèmes potentiels avec les identités de grande taille. |
+| [Valeur de LogoutPath](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.logoutpath?view=aspnetcore-2.0) | Si le `LogoutPath` est fournie pour le gestionnaire, ensuite une demande à ce chemin d’accès redirige en fonction de la valeur de la `ReturnUrlParameter`. La valeur par défaut est `/Account/Logout`. |
+| [ReturnUrlParameter](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.returnurlparameter?view=aspnetcore-2.0) | Détermine le nom du paramètre de chaîne de requête qui est ajouté par le Gestionnaire de réponse 302 trouvé (redirection d’URL). `ReturnUrlParameter` est utilisé lorsqu’une demande arrive sur le `LoginPath` ou `LogoutPath` pour renvoyer le navigateur vers l’URL d’origine après l’exécution de l’action de connexion ou de déconnexion. La valeur par défaut est `ReturnUrl`. |
+| [SessionStore](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.sessionstore?view=aspnetcore-2.0) | Conteneur facultatif utilisé pour stocker l’identité entre les demandes. Lorsqu’il est utilisé, uniquement un identificateur de session est envoyé au client. `SessionStore` peut être utilisé pour atténuer les problèmes potentiels avec les identités de grande taille. |
 | [SlidingExpiration](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.slidingexpiration?view=aspnetcore-2.0) | Indicateur signalant si un nouveau cookie avec un délai d’expiration de mise à jour doit être émis de manière dynamique. Cela peut se produire sur toute demande dont le délai d’expiration du cookie actuel est supérieur à 50 % expiré. La nouvelle date d’expiration est déplacée vers la date actuelle plus la `ExpireTimespan`. Un [délai d’expiration de cookie absolu](xref:security/authentication/cookie#absolute-cookie-expiration) peut être définie à l’aide de la `AuthenticationProperties` lors de l’appel de la classe `SignInAsync`. Un délai d’expiration absolue peut améliorer la sécurité de votre application en limitant la durée pendant laquelle le cookie d’authentification est valide. La valeur par défaut est `true`. |
 | [TicketDataFormat](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.ticketdataformat?view=aspnetcore-2.0) | Le `TicketDataFormat` est utilisé pour protéger et déprotéger l’identité et autres propriétés qui sont stockées dans la valeur du cookie. Si n’est fourni, un `TicketDataFormat` est créé à l’aide de la [DataProtectionProvider](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions.dataprotectionprovider?view=aspnetcore-2.0). |
-| [Validate](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.validate?view=aspnetcore-2.0) | Méthode qui vérifie que les options sont valides. |
+| [Valider](/dotnet/api/microsoft.aspnetcore.authentication.authenticationschemeoptions.validate?view=aspnetcore-2.0) | Méthode qui vérifie que les options sont valides. |
 
 Définissez `CookieAuthenticationOptions` dans la configuration du service pour l’authentification dans le `ConfigureServices` méthode :
 
@@ -78,7 +78,7 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 ASP.NET Core 1.x utilise cookie [intergiciel (middleware)](xref:fundamentals/middleware/index) qui sérialise un principal d’utilisateur dans un cookie chiffré. Pour les demandes suivantes, le cookie est validé, et le principal est recréé et affecté à la `HttpContext.User` propriété.
 
@@ -103,7 +103,7 @@ Le [CookieAuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.Cookie
 
 | Option | Description |
 | ------ | ----------- |
-| [AuthenticationScheme](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.authenticationscheme?view=aspnetcore-1.1) | Définit le schéma d’authentification. `AuthenticationScheme`est utile lorsqu’il existe plusieurs instances de l’authentification et vous souhaitez [autoriser avec un schéma spécifique](xref:security/authorization/limitingidentitybyscheme). Définition de la `AuthenticationScheme` à `CookieAuthenticationDefaults.AuthenticationScheme` fournit une valeur de « Cookies » pour le schéma. Vous pouvez fournir une valeur de chaîne qui distingue le schéma. |
+| [AuthenticationScheme](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.authenticationscheme?view=aspnetcore-1.1) | Définit le schéma d’authentification. `AuthenticationScheme` est utile lorsqu’il existe plusieurs instances de l’authentification et vous souhaitez [autoriser avec un schéma spécifique](xref:security/authorization/limitingidentitybyscheme). Définition de la `AuthenticationScheme` à `CookieAuthenticationDefaults.AuthenticationScheme` fournit une valeur de « Cookies » pour le schéma. Vous pouvez fournir une valeur de chaîne qui distingue le schéma. |
 | [AutomaticAuthenticate](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticauthenticate?view=aspnetcore-1.1) | Définit une valeur pour indiquer que l’authentification de cookie doit s’exécuter sur chaque demande et tentez de valider et de reconstruire toute entité sérialisée de que sa création. |
 | [AutomaticChallenge](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.automaticchallenge?view=aspnetcore-1.1) | Si la valeur est true, l’intergiciel (middleware) d’authentification gère les défis automatique. Si la valeur est false, l’intergiciel (middleware) d’authentification modifie uniquement les réponses lorsque explicitement indiqué par le `AuthenticationScheme`. |
 | [ClaimsIssuer](/dotnet/api/microsoft.aspnetcore.builder.authenticationoptions.claimsissuer?view=aspnetcore-1.1) | L’émetteur à utiliser pour le [émetteur](/dotnet/api/system.security.claims.claim.issuer) propriété sur toutes les revendications créés par l’intergiciel (middleware) d’authentification de cookie. |
@@ -142,7 +142,7 @@ app.UseCookiePolicy(cookiePolicyOptions);
 | [MinimumSameSitePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.minimumsamesitepolicy) | Affecte un attribut du même site du cookie (voir ci-dessous). La valeur par défaut est `SameSiteMode.Lax`. Cette option est disponible pour les principaux d’ASP.NET 2.0 +. |
 | [OnAppendCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.onappendcookie) | Appelé lorsqu’un cookie est ajouté. |
 | [OnDeleteCookie](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.ondeletecookie) | Appelé lorsqu’un cookie est supprimé. |
-| [Secure](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.secure) | Détermine si les cookies doivent être sécurisés. La valeur par défaut est `CookieSecurePolicy.None`. |
+| [Sécuriser](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.secure) | Détermine si les cookies doivent être sécurisés. La valeur par défaut est `CookieSecurePolicy.None`. |
 
 **MinimumSameSitePolicy** (ASP.NET Core 2.0 + uniquement)
 
@@ -165,15 +165,15 @@ Le paramètre de stratégie Middleware du Cookie de `MinimumSameSitePolicy` peuv
 
 ## <a name="creating-an-authentication-cookie"></a>Création d’un cookie d’authentification
 
-Pour créer un cookie contenant les informations de l’utilisateur, vous devez construire une [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). Les informations de l’utilisateur sont sérialisées et stockées dans le cookie. 
+Pour créer un cookie contenant les informations de l’utilisateur, vous devez construire une [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal). Les informations de l’utilisateur sont sérialisées et stockées dans le cookie. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 Créer un [ClaimsIdentity](/dotnet/api/system.security.claims.claimsidentity) avec tout [revendication](/dotnet/api/system.security.claims.claim)s et appelez [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-2.0) connecter l’utilisateur :
 
-[!code-csharp[Main](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet1)]
+[!code-csharp[](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 Appelez [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signinasync?view=aspnetcore-1.1) connecter l’utilisateur :
 
@@ -185,19 +185,19 @@ await HttpContext.Authentication.SignInAsync(
 
 ---
 
-`SignInAsync`Crée un cookie chiffré et l’ajoute à la réponse actuelle. Si vous ne spécifiez pas un `AuthenticationScheme`, le schéma par défaut est utilisé.
+`SignInAsync` Crée un cookie chiffré et l’ajoute à la réponse actuelle. Si vous ne spécifiez pas un `AuthenticationScheme`, le schéma par défaut est utilisé.
 
 En arrière-plan, le chiffrement utilisé est de ASP.NET Core [Protection des données](xref:security/data-protection/using-data-protection#security-data-protection-getting-started) système. Si vous hébergez une application sur plusieurs ordinateurs, l’équilibrage de charge entre les applications ou à l’aide d’une batterie de serveurs web, vous devez [configurer la protection des données](xref:security/data-protection/configuration/overview) pour utiliser le même anneau de clé et l’identificateur de l’application.
 
 ## <a name="signing-out"></a>Déconnecter
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 Pour déconnecter l’utilisateur actuel et supprimer les cookies, appelez [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signoutasync?view=aspnetcore-2.0):
 
-[!code-csharp[Main](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet2)]
+[!code-csharp[](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet2)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 Pour déconnecter l’utilisateur actuel et supprimer les cookies, appelez [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signoutasync?view=aspnetcore-1.1):
 
@@ -425,4 +425,6 @@ await HttpContext.Authentication.SignInAsync(
 ## <a name="see-also"></a>Voir aussi
 
 * [Les modifications d’authentification 2.0 / annonce de Migration](https://github.com/aspnet/Announcements/issues/262)
-* [Limitation d’identité par schéma](xref:security/authorization/limitingidentitybyscheme)
+* [Limiter une identité par schéma](xref:security/authorization/limitingidentitybyscheme)
+* [Autorisation basée sur des revendications](xref:security/authorization/claims)
+* [Vérifications de stratégie de rôle](xref:security/authorization/roles#policy-based-role-checks)

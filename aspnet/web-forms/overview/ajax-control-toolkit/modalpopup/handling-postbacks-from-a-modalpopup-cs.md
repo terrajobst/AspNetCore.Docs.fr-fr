@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-cs
-title: "La gestion des publications (postback) à partir d’un ModalPopup (c#) | Documents Microsoft"
+title: La gestion des publications (postback) à partir d’un ModalPopup (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle ModalPopup dans la boîte à outils de contrôle AJAX offre un moyen simple de créer une fenêtre modale, à l’aide des moyens de côté client. Une attention particulière doit entreprendre lorsqu’un pos..."
+description: Le contrôle ModalPopup dans la boîte à outils de contrôle AJAX offre un moyen simple de créer une fenêtre modale, à l’aide des moyens de côté client. Une attention particulière doit entreprendre lorsqu’un pos...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 096c32d6004474d3d5952ce12d7349b9ebda6003
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 183725db62ba8b4037f368ed9d87d5059e3f1bcb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-postbacks-from-a-modalpopup-c"></a>La gestion des publications (postback) à partir d’un ModalPopup (c#)
 ====================
@@ -62,6 +62,6 @@ En outre, les contrôles de zone de texte dans la fenêtre contextuelle modale d
 
 La fenêtre contextuelle modale entraîne une publication ([cliquez pour afficher l’image en taille réelle](handling-postbacks-from-a-modalpopup-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](using-modalpopup-with-a-repeater-control-cs.md)
-[Suivant](positioning-a-modalpopup-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](using-modalpopup-with-a-repeater-control-cs.md)
+> [Suivant](positioning-a-modalpopup-cs.md)

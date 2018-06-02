@@ -1,7 +1,7 @@
 ---
-title: "Pages Razor avec EF Core - d’accès concurrentiel - 8 de 8"
+title: Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 author: rick-anderson
-description: "Ce didacticiel montre comment gérer les conflits lorsque plusieurs utilisateurs mettre à jour la même entité en même temps."
+description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
@@ -9,107 +9,107 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 1c6cdefa1410839606711d7460a8f4d0f1d6c72b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.openlocfilehash: b6a8354bf438895f5188290013afefd883c4dd0a
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-en-us /
+fr-fr/
 
-# <a name="handling-concurrency-conflicts---ef-core-with-razor-pages-8-of-8"></a>La gestion des conflits d’accès concurrentiel - Core EF avec les Pages Razor (8 sur 8)
+# <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra), et [Jon P Smith](https://twitter.com/thereformedprog)
+By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra) et [Jon P Smith](https://twitter.com/thereformedprog)
 
-[!INCLUDE[about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
 
-Ce didacticiel montre comment gérer les conflits lorsque plusieurs utilisateurs mettre à jour une entité simultanément (simultanément). Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez le [application terminée pour cette étape](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part8).
+Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour une entité en même temps. Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez l’[application terminée pour cette phase](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part8).
 
 ## <a name="concurrency-conflicts"></a>Conflits d’accès concurrentiel
 
-Un conflit de concurrence se produit lorsque :
+Un conflit d’accès concurrentiel se produit quand :
 
-* Un utilisateur accède à la page de modification pour une entité.
-* Un autre utilisateur met à jour la même entité avant la première modification utilisateur est écrit dans la base de données.
+* Un utilisateur accède à la page de modification d’une entité.
+* Un autre utilisateur met à jour la même entité avant que la modification du premier utilisateur soit écrite dans la base de données.
 
-Si la détection d’accès concurrentiel n’est pas activée, lorsque des mises à jour simultanées se produisent :
+Si la détection d’accès concurrentiel n’est pas activée, quand des mises à jour simultanées se produisent :
 
-* La dernière mise à jour est prioritaire. Autrement dit, les dernières valeurs de mise à jour sont enregistrés dans la base de données.
-* La première mises à jour en cours sont perdues.
+* La dernière mise à jour est prioritaire. Autrement dit, les dernières valeurs mises à jour sont enregistrées dans la base de données.
+* La première des mises à jour en cours est perdue.
 
 ### <a name="optimistic-concurrency"></a>Accès concurrentiel optimiste
 
-L’accès concurrentiel optimiste permet de conflits d’accès concurrentiel se produire et puis réagit en conséquence s’ils ne. Par exemple, Jane visite de la page de modification de service et modifie l’allocation de réserve pour le service en anglais à partir de $350,000.00 à 0,00 $.
+L’accès concurrentiel optimiste autorise la survenance des conflits d’accès concurrentiel, et réagit correctement quand ils surviennent. Par exemple, Jane consulte la page de modification de département et change le montant de « Budget » pour le département « English » en le faisant passer de 350 000,00 $ à 0,00 $.
 
-![La modification de budget à 0](concurrency/_static/change-budget.png)
+![Modification de la valeur de budget sur 0](concurrency/_static/change-budget.png)
 
-Avant de Jane clique sur **enregistrer**, John consulte la même page et modifie le champ Date de début à partir de 1/9/2007, à 1/9/2013.
+Avant que Jane clique sur **Save**, John consulte la même page et change le champ Start Date de 01/09/2007 en 01/09/2013.
 
-![La modification de la date de début pour 2013](concurrency/_static/change-date.png)
+![Modification de la date de début sur 2013](concurrency/_static/change-date.png)
 
-Jane clique sur **enregistrer** première et voit sa change lorsque le navigateur affiche la page d’Index.
+Jane clique la première sur **Save** et voit sa modification quand le navigateur revient à la page Index.
 
-![Allocation de réserve modifiée à zéro](concurrency/_static/budget-zero.png)
+![Le budget est passé à zéro](concurrency/_static/budget-zero.png)
 
-John clique sur **enregistrer** sur une page d’édition qui affiche toujours un budget de $350,000.00. Que se passe-t-il ensuite est déterminé par la façon dont vous gérez les conflits d’accès concurrentiel.
+John clique sur **Save** dans une page Edit qui affiche toujours un budget de 350 000,00 $. Ce qui se passe ensuite est déterminé par la façon dont vous gérez les conflits d’accès concurrentiel.
 
-L’accès concurrentiel optimiste inclut les options suivantes :
+L’accès concurrentiel optimiste comprend les options suivantes :
 
-* Vous pouvez effectuer le suivi des dont un utilisateur a modifié la propriété et mettre à jour uniquement les colonnes correspondantes dans la base de données.
+* Vous pouvez effectuer le suivi des propriétés modifiées par un utilisateur et mettre à jour seulement les colonnes correspondantes dans la base de données.
 
- Dans le scénario, aucune donnée n’a été perdue. Des propriétés différentes ont été mis à jour par les deux utilisateurs. La prochaine fois qu’un utilisateur parcourt le service en anglais, ils verront les modifications apportées à la fois de John et Jane. Cette méthode de mise à jour peut réduire le nombre de conflits qui peuvent entraîner une perte de données. Cette approche : * ne peut pas éviter une perte de données si des modifications concurrentes sont apportées à la même propriété.
-        * N’est généralement pas pratique dans une application web. Elle nécessite la gestion de l’état significatif pour effectuer le suivi d’extraites de toutes les valeurs et les nouvelles valeurs. Maintenance de grandes quantités d’état peut affecter les performances de l’application.
-        * Peut augmenter la complexité des applications par rapport à la détection de concurrence sur une entité.
+  Dans le scénario, aucune donnée ne serait perdue. Des propriétés différentes ont été mises à jour par les deux utilisateurs. La prochaine fois que quelqu’un consultera le département « English », il verra à la fois les modifications de Jane et de John. Cette méthode de mise à jour peut réduire le nombre de conflits susceptibles d’entraîner une perte de données. Cette approche : * ne peut pas éviter une perte de données si des modifications concurrentes sont apportées à la même propriété.
+        * N’est généralement pas pratique dans une application web. Elle nécessite la tenue à jour d’un état significatif afin d’effectuer le suivi de toutes les valeurs récupérées et des nouvelles valeurs. La maintenance de grandes quantités d’état peut affecter les performances de l’application.
+        * Peut augmenter la complexité de l’application par rapport à la détection de l’accès concurrentiel sur une entité.
 
-* Vous pouvez laisser les modifications de John écrase les modifications de Jeanne.
+* Vous pouvez laisser les modifications de John remplacer celles de Jane.
 
- La prochaine fois que quelqu'un accède le service en anglais, ils verront le 1/9/2013 et la valeur de $350,000.00 extraite. Cette approche est appelée un *Client Wins* ou *dernier dans Wins* scénario. (Toutes les valeurs à partir du client sont prioritaires sur les nouveautés dans le magasin de données). Si vous ne le faites pas de codage pour la gestion d’accès concurrentiel, priorité au Client se produit automatiquement.
+  La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée. Cette approche est un scénario *Priorité au client* ou *Priorité au dernier*. (Toutes les valeurs du client sont prioritaires par rapport au contenu du magasin de données.) Si vous n’écrivez pas de code pour la gestion de l’accès concurrentiel, la Priorité au client est appliquée automatiquement.
 
-* Vous pouvez empêcher la modification de Jean à partir de la mise à jour dans la base de données. En règle générale, l’application serait : * affiche un message d’erreur.
-        * Afficher l’état actuel des données.
-        * Autoriser l’utilisateur à réappliquer les modifications.
+* Vous pouvez empêcher les modifications de John d’être mises à jour dans la base de données. En règle générale, l’application : * Afficherait un message d’erreur.
+        * Afficherait l’état actuel de l’état.
+        * Autoriserait l’utilisateur à réappliquer les modifications.
 
- Cela s’appelle un *magasin Wins* scénario. (Les valeurs du magasin de données sont prioritaires sur les valeurs soumis par le client). Implémenter le scénario de magasin Wins dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacées sans que l’utilisateur est averti.
+  Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
 
-## <a name="handling-concurrency"></a>Gestion d’accès concurrentiel 
+## <a name="handling-concurrency"></a>Gestion de l’accès concurrentiel 
 
-Quand une propriété est configurée comme un [jeton d’accès concurrentiel](https://docs.microsoft.com/ef/core/modeling/concurrency):
+Quand une propriété est configurée en tant que [jeton d’accès concurrentiel](https://docs.microsoft.com/ef/core/modeling/concurrency) :
 
-* EF Core vérifie que propriété n’a pas été modifiée après que qu’elle a été extraite. La vérification se produit lorsque [SaveChanges](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) ou [SaveChangesAsync](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) est appelée.
-* Si la propriété a été modifiée après qu’elle a été extraite, un [DbUpdateConcurrencyException](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) est levée. 
+* EF Core vérifie que cette propriété n’a pas été modifiée après avoir été récupérée. La vérification a lieu quand [SaveChanges](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChanges) ou [SaveChangesAsync](/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-2.0#Microsoft_EntityFrameworkCore_DbContext_SaveChangesAsync_System_Threading_CancellationToken_) est appelée.
+* Si la propriété a été modifiée après avoir été récupérée, une [DbUpdateConcurrencyException](/dotnet/api/microsoft.entityframeworkcore.dbupdateconcurrencyexception?view=efcore-2.0) est levée. 
 
-Le modèle de données et de la base de données doit être configuré pour prendre en charge de lever `DbUpdateConcurrencyException`.
+Le modèle de données et de la base de données doivent être configurés pour prendre en charge la levée de `DbUpdateConcurrencyException`.
 
 ### <a name="detecting-concurrency-conflicts-on-a-property"></a>Détection des conflits d’accès concurrentiel sur une propriété
 
-Conflits d’accès concurrentiel peuvent être détectées au niveau de la propriété avec le [ConcurrencyCheck](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0) attribut. L’attribut peut être appliqué à plusieurs propriétés sur le modèle. Pour plus d’informations, consultez [Annotations de données-ConcurrencyCheck](https://docs.microsoft.com/ef/core/modeling/concurrency#data-annotations).
+Les conflits d’accès concurrentiel peuvent être détectés au niveau de la propriété avec l’attribut [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute?view=netcore-2.0). L’attribut peut être appliqué à plusieurs propriétés sur le modèle. Pour plus d’informations, consultez [Data Annotations-ConcurrencyCheck (Annotations de données-ConcurrencyCheck)](/ef/core/modeling/concurrency#data-annotations).
 
-Le `[ConcurrencyCheck]` attribut n’est pas utilisé dans ce didacticiel.
+Nous n’utilisons pas l’attribut `[ConcurrencyCheck]` dans ce didacticiel.
 
 ### <a name="detecting-concurrency-conflicts-on-a-row"></a>Détection des conflits d’accès concurrentiel sur une ligne
 
-Pour détecter les conflits d’accès concurrentiel, une [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) le suivi de colonne est ajouté au modèle.  `rowversion` :
+Pour détecter les conflits d’accès concurrentiel, une colonne de suivi [rowversion](/sql/t-sql/data-types/rowversion-transact-sql) est ajoutée au modèle.  `rowversion` :
 
-* SQL Server est spécifique. Autres bases de données peut ne pas fournissent une fonctionnalité similaire.
-* Permet de déterminer qu’une entité n’a pas été modifiée depuis qu’elle a été extraite à partir de la base de données. 
+* est propre à SQL Server. D’autres bases de données peuvent ne pas fournir une fonctionnalité similaire.
+* Sert à déterminer qu’une entité n’a pas été modifiée depuis qu’elle a été récupérée à partir de la base de données. 
 
-La base de données génère une liste séquentielle `rowversion` nombre qui est incrémentée chaque fois que la ligne est mise à jour. Dans un `Update` ou `Delete` commande, le `Where` clause inclut la valeur extraite de `rowversion`. Si la ligne mise à jour a changé :
+La base de données génère un numéro `rowversion` séquentiel qui est incrémenté chaque fois que la ligne est mise à jour. Dans une commande `Update` ou `Delete`, la clause `Where` comprend la valeur récupérée de `rowversion`. Si la ligne mise à jour a changé :
 
- * `rowversion`ne correspond pas à la valeur extraite.
- * Le `Update` ou `Delete` commandes ne trouve pas une ligne, car le `Where` clause inclut l’extraction `rowversion`.
- * A `DbUpdateConcurrencyException` est levée.
+ * `rowversion` ne correspond pas à la valeur récupérée.
+ * Les commandes `Update` ou `Delete` ne trouvent pas de ligne, car la clause `Where` comprend la valeur `rowversion` récupérée.
+ * Une `DbUpdateConcurrencyException` est levée.
 
-Dans EF Core, lorsque aucune ligne n’a été mis à jour par une `Update` ou `Delete` de commande, une exception d’accès concurrentiel est levée.
+Dans EF Core, quand aucune ligne n’a été mise à jour par une commande `Update` ou `Delete`, une exception d’accès concurrentiel est levée.
 
-### <a name="add-a-tracking-property-to-the-department-entity"></a>Ajouter une propriété de suivi à l’entité du service
+### <a name="add-a-tracking-property-to-the-department-entity"></a>Ajouter une propriété de suivi à l’entité Department
 
-Dans *Models/Department.cs*, ajouter une propriété de suivi nommée RowVersion :
+Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :
 
-[!code-csharp[Main](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
+[!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
-Le [Timestamp](https://docs.microsoft.com/dotnet/api/system.componentmodel.dataannotations.timestampattribute) attribut spécifie que cette colonne est incluse dans le `Where` clause de `Update` et `Delete` commandes. L’attribut est appelé `Timestamp` , car les versions précédentes de SQL Server utilisaient SQL `timestamp` type de données avant l’instruction SQL `rowversion` type remplacé.
+L’attribut [Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) spécifie que cette colonne est incluse dans la clause `Where` des commandes `Update` et `Delete`. L’attribut se nomme `Timestamp`, car les versions précédentes de SQL Server utilisaient un type de données SQL `timestamp` avant son remplacement par le type SQL `rowversion`.
 
-L’API fluent peut également spécifier la propriété de suivi :
+L’API Fluent peut également spécifier la propriété de suivi :
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -117,25 +117,25 @@ modelBuilder.Entity<Department>()
   .IsRowVersion();
 ```
 
-Le code suivant montre une partie de T-SQL générée par EF Core lorsque le nom du service est mis à jour :
+Le code suivant montre une partie du T-SQL généré par EF Core quand le nom du département est mis à jour :
 
 [!code-sql[](intro/samples/sql.txt?highlight=2-3)]
 
-L’exemple précédent en surbrillance montre le code le `WHERE` clause contenant `RowVersion`. Si la base de données `RowVersion` n’est pas égal le `RowVersion` paramètre (`@p2`), aucune ligne n’est mis à jour.
+Le code en surbrillance ci-dessus montre la clause `WHERE` contenant `RowVersion`. Si la `RowVersion` de la base de données n’est pas égale au paramètre `RowVersion` (`@p2`), aucune ligne n’est mise à jour.
 
-Le code en surbrillance suivant montre le code T-SQL qui vérifie qu’une seule ligne a été mis à jour :
+Le code en surbrillance suivant montre le T-SQL qui vérifie qu’une seule ligne a été mise à jour :
 
 [!code-sql[](intro/samples/sql.txt?highlight=4-6)]
 
-[@@ROWCOUNT ](https://docs.microsoft.com/sql/t-sql/functions/rowcount-transact-sql) retourne le nombre de lignes affectées par la dernière instruction. Absence lignes sont mises à jour, EF Core lève une `DbUpdateConcurrencyException`.
+[@@ROWCOUNT](/sql/t-sql/functions/rowcount-transact-sql) retourne le nombre de lignes affectées par la dernière instruction. Si aucune ligne n’est mise à jour, EF Core lève une `DbUpdateConcurrencyException`.
 
-Vous pouvez voir que le cœur de EF T-SQL génère dans la fenêtre Sortie de Visual Studio.
+Vous pouvez voir le T-SQL généré par EF Core dans la fenêtre Sortie de Visual Studio.
 
-### <a name="update-the-db"></a>Mise à jour de la base de données
+### <a name="update-the-db"></a>Mettre à jour la base de données
 
-Ajout de la `RowVersion` propriété modifie le modèle de base de données, ce qui requiert une migration.
+L’ajout de la propriété `RowVersion` change le modèle de base de données, ce qui nécessite une migration.
 
-Générez le projet. Dans une fenêtre de commande, entrez ce qui suit :
+Générez le projet. Entrez ce qui suit dans une fenêtre de commande :
 
 ```console
 dotnet ef migrations add RowVersion
@@ -144,169 +144,169 @@ dotnet ef database update
 
 Les commandes précédentes :
 
-* Ajoute le *Migrations / {temps stamp}_RowVersion.cs* fichier de migration.
-* Les mises à jour le *Migrations/SchoolContextModelSnapshot.cs* fichier. La mise à jour ajoute le code en surbrillance suivant à la `BuildModel` méthode :
+* Ajoutent le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.
+* Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*. La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :
 
-[!code-csharp[Main](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
+[!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
 
-* Exécute des migrations pour mettre à jour la base de données.
+* Exécutent des migrations pour mettre à jour la base de données.
 
 <a name="scaffold"></a>
-## <a name="scaffold-the-departments-model"></a>Structure du modèle de services
+## <a name="scaffold-the-departments-model"></a>Générer automatiquement le modèle Departments
 
 * Quittez Visual Studio.
 * Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
 * Exécutez la commande suivante :
 
- ```console
-dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
- ```
+  ```console
+  dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
+  ```
 
-Les structures de commande précédent la `Department` modèle. Ouvrez le projet dans Visual Studio.
+La commande précédente génère automatiquement le modèle `Department`. Ouvrez le projet dans Visual Studio.
 
-Générez le projet. La build génère des erreurs comme suit :
+Générez le projet. La build génère des erreurs telles que celle-ci :
 
 `1>Pages/Departments/Index.cshtml.cs(26,37,26,43): error CS1061: 'SchoolContext' does not
  contain a definition for 'Department' and no extension method 'Department' accepting a first
  argument of type 'SchoolContext' could be found (are you missing a using directive or
  an assembly reference?)`
 
- Modifier globalement `_context.Department` à `_context.Departments` (autrement dit, ajoutez un « s » pour `Department`). 7 occurrences sont trouvées et mis à jour.
+ Remplacez globalement `_context.Department` par `_context.Departments` (autrement dit, ajoutez un « s » à `Department`). 7 occurrences sont trouvées et mises à jour.
 
-### <a name="update-the-departments-index-page"></a>Mise à jour de la page d’Index de services
+### <a name="update-the-departments-index-page"></a>Mettre à jour la page d’index des départements
 
-Le moteur de génération de modèles automatique créé un `RowVersion` colonne pour la page d’Index, mais ce champ ne doit pas être affichée. Dans ce didacticiel, le dernier octet de la `RowVersion` s’affiche pour aider à comprendre la concurrence. Le dernier octet n’est pas garanti pour être unique. Dans une application réelle n’aurait aucun affichage `RowVersion` ou le dernier octet de `RowVersion`.
+Le moteur de génération de modèles automatique créé une colonne `RowVersion` pour la page Index, mais ce champ ne doit pas être affiché. Dans ce didacticiel, le dernier octet de `RowVersion` est affiché afin d’aider à mieux comprendre l’accès concurrentiel. Il n’est pas garanti que le dernier octet soit unique. Une application réelle n’afficherait pas `RowVersion` ou le dernier octet de `RowVersion`.
 
-Mise à jour de la page d’Index :
+Mettez à jour la page Index :
 
-* Avec les services de remplacer l’Index.
-* Remplacez le balisage contenant `RowVersion` avec le dernier octet de `RowVersion`.
-* Remplacez FirstMidName par nom complet.
+* Remplacez Index par Departments.
+* Remplacez le balisage contenant `RowVersion` par le dernier octet de `RowVersion`.
+* Remplacez FirstMidName par FullName.
 
-Le balisage suivant montre la page de mise à jour :
+Le balisage suivant montre la page mise à jour :
 
 [!code-html[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
 
 ### <a name="update-the-edit-page-model"></a>Mettre à jour le modèle de page de modification
 
-Mise à jour *pages\departments\edit.cshtml.cs* avec le code suivant :
+Mettez à jour *pages\departments\edit.cshtml.cs* avec le code suivant :
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet)]
 
-Pour détecter un problème d’accès concurrentiel, le [OriginalValue](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) est mis à jour avec la `rowVersion` la valeur de l’entité qu’elle a été extraite. EF Core génère une commande SQL UPDATE avec une clause WHERE contenant la version d’origine `RowVersion` valeur. Si aucune ligne n’est affectées par la commande de mise à jour (aucune ligne n’ont d’origine `RowVersion` valeur), un `DbUpdateConcurrencyException` exception est levée.
+Pour détecter un problème d’accès concurrentiel, [OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) est mise à jour avec la valeur `rowVersion` de l’entité récupérée. EF Core génère une commande SQL UPDATE avec une clause WHERE contenant la valeur `RowVersion` d’origine. Si aucune ligne n’est affectée par la commande UPDATE (aucune ligne ne contient la valeur `RowVersion` d’origine), une exception `DbUpdateConcurrencyException` est levée.
 
-[!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-)]
+[!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_rv&highlight=24-999)]
 
-Dans le code précédent, `Department.RowVersion` est la valeur lorsque l’entité a été extraite. `OriginalValue`est la valeur de la base de données lorsque `FirstOrDefaultAsync` a été appelée dans cette méthode.
+Dans le code précédent, `Department.RowVersion` est la valeur quand l’entité a été récupérée. `OriginalValue` est la valeur présente dans la base de données quand `FirstOrDefaultAsync` a été appelée dans cette méthode.
 
-Le code suivant obtient les valeurs de client (les valeurs publiées dans cette méthode) et les valeurs de la base de données :
+Le code suivant obtient les valeurs du client (celles envoyées à cette méthode) et les valeurs de la base de données :
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=9,18)]
 
-Le code suivant ajoute un message d’erreur personnalisé pour chaque colonne dont la base de données les valeurs différentes à partir de ce qui a été validé dans `OnPostAsync`:
+Le code suivant ajoute un message d’erreur personnalisé pour chaque colonne dont les valeurs dans la base de données sont différentes de celles envoyées à `OnPostAsync` :
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-Les éléments suivants mis en surbrillance le code définit la `RowVersion` valeur à la nouvelle valeur récupérée à partir de la base de données. La prochaine fois que l’utilisateur clique sur **enregistrer**, seules les erreurs d’accès concurrentiel qui se produisent dans la mesure où le dernier affichage de la page de modification est interceptée.
+Le code en surbrillance suivant affecte à `RowVersion` la nouvelle valeur récupérée à partir de la base de données. La prochaine fois que l’utilisateur cliquera sur **Save**, seules les erreurs d’accès concurrentiel qui se sont produites depuis le dernier affichage de la page Edit seront interceptées.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
-Le `ModelState.Remove` instruction est requise car `ModelState` a l’ancien `RowVersion` valeur. Dans la Page Razor, le `ModelState` valeur pour un champ est prioritaire sur les valeurs de propriété de modèle lorsque les deux sont présents.
+L’instruction `ModelState.Remove` est nécessaire car `ModelState` contient l’ancienne valeur `RowVersion`. Dans la page Razor, la valeur `ModelState` d’un champ est prioritaire par rapport aux valeurs de propriétés du modèle quand les deux sont présentes.
 
-## <a name="update-the-edit-page"></a>Mise à jour de la page de modification
+## <a name="update-the-edit-page"></a>Mettre à jour la page Edit
 
-Mise à jour *Pages/Departments/Edit.cshtml* par le balisage suivant :
+Mettez à jour *Pages/Departments/Edit.cshtml* avec le balisage suivant :
 
 [!code-html[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
 Le balisage précédent :
 
-* Les mises à jour le `page` de `@page` à `@page "{id:int}"`.
-* Ajoute une version de ligne masquée. `RowVersion`doit être ajouté pour la publication lie la valeur.
+* Met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.
+* Ajoute une version de ligne masquée. `RowVersion` doit être ajouté afin que la publication lie la valeur.
 * Affiche le dernier octet de `RowVersion` à des fins de débogage.
-* Remplace `ViewData` avec le fortement typé `InstructorNameSL`.
+* Remplace `ViewData` par le `InstructorNameSL` fortement typé.
 
-## <a name="test-concurrency-conflicts-with-the-edit-page"></a>Conflits d’accès concurrentiel de test avec la page de modification
+## <a name="test-concurrency-conflicts-with-the-edit-page"></a>Tester les conflits d’accès concurrentiel avec la page Edit
 
-Ouvrez deux instances de navigateurs de modification sur le service en anglais :
+Ouvrez deux instances de navigateur de la page Edit sur le département English :
 
-* Exécutez l’application et sélectionnez Services.
-* Avec le bouton droit le **modifier** lien hypertexte pour le service en anglais, puis sélectionnez **ouvrir dans un nouvel onglet**.
-* Dans le premier onglet, cliquez sur le **modifier** lien hypertexte pour le service en anglais.
+* Exécutez l’application et sélectionnez Departments.
+* Cliquez avec le bouton droit sur le lien hypertexte **Edit** correspondant au département English, puis sélectionnez **Open in new tab**.
+* Sous le premier onglet, cliquez sur le lien hypertexte **Edit** correspondant au département English.
 
-Les onglets de deux navigateur affichent les mêmes informations.
+Les deux onglets de navigateur affichent les mêmes informations.
 
-Modifier le nom dans le premier onglet de navigateur, puis cliquez sur **enregistrer**.
+Changez le nom sous le premier onglet de navigateur, puis cliquez sur **Save**.
 
-![Édition de service page 1 après modification](concurrency/_static/edit-after-change-1.png)
+![Page 1 de modification de département après changement](concurrency/_static/edit-after-change-1.png)
 
-Le navigateur affiche la page d’Index de la valeur modifiée et d’un indicateur de mise à jour rowVersion. Notez l’indicateur rowVersion mis à jour, il est affiché sur la deuxième publication dans l’autre onglet.
+Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour. Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.
 
-Modifier un champ différent dans le deuxième onglet du navigateur.
+Changez un champ différent sous le deuxième onglet du navigateur.
 
-![Modification du service page 2 après la modification](concurrency/_static/edit-after-change-2.png)
+![Page Edit 2 du département après changement](concurrency/_static/edit-after-change-2.png)
 
-Cliquez sur **Enregistrer**. Vous consultez les messages d’erreur pour tous les champs ne correspondent pas aux valeurs de la base de données :
+Cliquez sur **Enregistrer**. Des messages d’erreur s’affichent pour tous les champs qui ne correspondent pas aux valeurs de la base de données :
 
-![Message d’erreur service modifier page](concurrency/_static/edit-error.png)
+![Message d’erreur de page de modification de département](concurrency/_static/edit-error.png)
 
-Cette fenêtre de navigateur ne le vouliez modifier le champ nom. Copiez et collez la valeur actuelle (langues) dans le champ nom. Appuyez sur TAB. La validation côté client supprime le message d’erreur.
+Cette fenêtre de navigateur n’avait pas l’intention de changer le champ Name. Copiez et collez la valeur actuelle (Languages) dans le champ Name. Appuyez sur Tab. La validation côté client supprime le message d’erreur.
 
-![Message d’erreur service modifier page](concurrency/_static/cv.png)
+![Message d’erreur de page de modification de département](concurrency/_static/cv.png)
 
-Cliquez sur **enregistrer** à nouveau. La valeur que vous avez entré dans le deuxième onglet navigateur est enregistrée. Vous voyez les valeurs enregistrées dans la page d’Index.
+Cliquez à nouveau sur **Save**. La valeur que vous avez entrée sous le deuxième onglet du navigateur est enregistrée. Les valeurs enregistrées sont visibles dans la page Index.
 
-## <a name="update-the-delete-page"></a>Mise à jour de la page de suppression
+## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
-Mettre à jour le modèle de page de suppression par le code suivant :
+Mettez à jour le modèle de page de suppression avec le code suivant :
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Delete.cshtml.cs)]
 
-La page de suppression détecte les conflits d’accès concurrentiel lorsque l’entité a été modifiée après que qu’elle a été extraite. `Department.RowVersion`est la version de ligne lorsque l’entité a été extraite. Lorsque EF Core crée la commande SQL DELETE, il inclut une clause WHERE avec `RowVersion`. Si les résultats de la commande SQL DELETE dans des lignes nulles affectés :
+La page Delete détecte les conflits d’accès concurrentiel quand l’entité a changé après avoir été récupérée. `Department.RowVersion` est la version de ligne quand l’entité a été récupérée. Quand EF Core crée la commande SQL DELETE, il inclut une clause WHERE avec `RowVersion`. Si après l’exécution de la commande SQL DELETE aucune ligne n’est affectée :
 
-* Le `RowVersion` dans le SQL DELETE commande ne correspond pas à `RowVersion` dans la base de données.
+* La valeur de `RowVersion` dans la commande SQL DELETE ne correspond pas à `RowVersion` dans la base de données.
 * Une exception DbUpdateConcurrencyException est levée.
-* `OnGetAsync`est appelée avec le `concurrencyError`.
+* `OnGetAsync` est appelée avec `concurrencyError`.
 
-### <a name="update-the-delete-page"></a>Mise à jour de la page de suppression
+### <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
-Mise à jour *Pages/Departments/Delete.cshtml* avec le code suivant :
+Mettez à jour *Pages/Departments/Delete.cshtml* avec le code suivant :
 
 [!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,36,51)]
 
 
 Le balisage précédent apporte les modifications suivantes :
 
-* Les mises à jour le `page` de `@page` à `@page "{id:int}"`.
-* Ajoute un message d’erreur.
-* Remplace FirstMidName FullName dans le **administrateur** champ.
-* Modifications `RowVersion` pour afficher le dernier octet.
-* Ajoute une version de ligne masquée. `RowVersion`doit être ajouté pour la publication lie la valeur.
+* Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int}"`.
+* Il ajoute un message d’erreur.
+* Il remplace FirstMidName par FullName dans le champ **Administrator**.
+* Il change `RowVersion` pour afficher le dernier octet.
+* Ajoute une version de ligne masquée. `RowVersion` doit être ajouté afin que la publication lie la valeur.
 
-### <a name="test-concurrency-conflicts-with-the-delete-page"></a>Conflits d’accès concurrentiel de test avec la page de suppression
+### <a name="test-concurrency-conflicts-with-the-delete-page"></a>Tester les conflits d’accès concurrentiel avec la page Delete
 
-Créer un service de test.
+Créez un département test.
 
-Ouvrez deux instances de navigateurs de suppression sur le service de test :
+Ouvrez deux instances de navigateur de la page Delete sur le département test :
 
-* Exécutez l’application et sélectionnez Services.
-* Avec le bouton droit le **supprimer** lien hypertexte pour le service de test, puis sélectionnez **ouvrir dans un nouvel onglet**.
-* Cliquez sur le **modifier** lien hypertexte pour le service de test.
+* Exécutez l’application et sélectionnez Departments.
+* Cliquez avec le bouton droit sur le lien hypertexte **Delete** correspondant au département test, puis sélectionnez **Open in new tab**.
+* Cliquez sur le lien hypertexte **Edit** correspondant au département test.
 
-Les onglets de deux navigateur affichent les mêmes informations.
+Les deux onglets de navigateur affichent les mêmes informations.
 
-Modifier l’allocation de réserve dans le premier onglet de navigateur, cliquez sur **enregistrer**.
+Changez le budget sous le premier onglet de navigateur, puis cliquez sur **Save**.
 
-Le navigateur affiche la page d’Index de la valeur modifiée et d’un indicateur de mise à jour rowVersion. Notez l’indicateur rowVersion mis à jour, il est affiché sur la deuxième publication dans l’autre onglet.
+Le navigateur affiche la page Index avec la valeur modifiée et un indicateur rowVersion mis à jour. Notez l’indicateur rowVersion mis à jour ; il est affiché sur la deuxième publication (postback) sous l’autre onglet.
 
-Supprimer le service de test à partir du deuxième onglet. Une erreur d’accès concurrentiel est s’affichent avec les valeurs actuelles à partir de la base de données. En cliquant sur **supprimer** supprime l’entité, sauf si `RowVersion` a été updated.department a été supprimé.
+Supprimez le département test du deuxième onglet. Une erreur d’accès concurrentiel s’affiche, avec les valeurs présentes actuellement dans la base de données. Un clic sur **Delete** supprime l’entité, sauf si `RowVersion` a été mis à jour.
 
-Consultez [héritage](xref:data/ef-mvc/inheritance) comment hériter d’un modèle de données.
+Pour découvrir comment hériter d’un modèle de données, consultez [Héritage](xref:data/ef-mvc/inheritance).
 
 ### <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Jetons d’accès concurrentiel dans EF Core](https://docs.microsoft.com/ef/core/modeling/concurrency)
-* [Gestion d’accès concurrentiel dans EF Core](https://docs.microsoft.com/ef/core/saving/concurrency)
+* [Concurrency Tokens in EF Core (Jetons d’accès concurrentiel dans EF Core)](/ef/core/modeling/concurrency)
+* [Gestion de l’accès concurrentiel dans EF Core](/ef/core/saving/concurrency)
 
->[!div class="step-by-step"]
-[Précédent](xref:data/ef-rp/update-related-data)
+> [!div class="step-by-step"]
+> [Précédent](xref:data/ef-rp/update-related-data)

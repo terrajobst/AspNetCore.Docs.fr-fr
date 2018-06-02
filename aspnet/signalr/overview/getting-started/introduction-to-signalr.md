@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/getting-started/introduction-to-signalr
-title: "Introduction à SignalR | Documents Microsoft"
+title: Introduction à SignalR | Documents Microsoft
 author: pfletcher
-description: "Cet article décrit les nouveautés du SignalR et certaines solutions qu’il a été conçu pour créer."
+description: Cet article décrit les nouveautés du SignalR et certaines solutions qu’il a été conçu pour créer.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 27150d314b6861f1098e6ef4a7de94e7b371a78e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0ceca3edc26d35b1155946e60863a84da0bbe592
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-signalr"></a>Introduction à SignalR
 ====================
@@ -26,7 +26,7 @@ par [Patrick Fletcher](https://github.com/pfletcher)
 > 
 > ## <a name="questions-and-comments"></a>Questions et des commentaires
 > 
-> Veuillez laisser des commentaires sur la façon dont vous avez aimé ce didacticiel et nous pouvons améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les valider pour le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
+> Veuillez laisser des commentaires sur la façon dont vous avez aimé ce didacticiel et nous pouvons améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les valider pour le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](https://stackoverflow.com/questions/tagged/signalr).
 
 
 ## <a name="what-is-signalr"></a>Nouveautés SignalR
@@ -35,7 +35,7 @@ ASP.NET SignalR est une bibliothèque pour les développeurs ASP.NET qui simplif
 
 SignalR peut servir à ajouter de fonctionnalités web « en temps réel » quelconque à votre application ASP.NET. Lors de la conversation est souvent utilisée comme un exemple, vous pouvez effectuer beaucoup plus. Chaque fois qu’un utilisateur actualise une page web pour afficher les nouvelles données, ou la page implémente [interrogation longue](http://en.wikipedia.org/wiki/Push_technology#Long_polling) pour extraire les nouvelles données, il constitue un candidat pour l’utilisation de SignalR. Exemples de tableaux de bord et de l’analyse des applications, des applications de collaboration (par exemple, l’Édition simultanée de documents), la fonction mises à jour de progression et des formulaires en temps réel.
 
-SignalR permet également complètement nouveaux types d’applications web qui requièrent de haute fréquence des mises à jour à partir du serveur, par exemple, les jeux en temps réel. Pour obtenir un bon exemple de cela, consultez le [ShootR jeu.](http://shootr.signalr.net/)
+SignalR permet également complètement nouveaux types d’applications web qui requièrent de haute fréquence des mises à jour à partir du serveur, par exemple, les jeux en temps réel.
 
 SignalR fournit une API simple pour la création d’appels de procédure distante du serveur-client (RPC) qui appellent les fonctions JavaScript dans le client (et autres plateformes de client) à partir du code .NET côté serveur. SignalR inclut également des API pour la gestion des connexions (par exemple, vous connecter et événements de déconnexion) et le regroupement de connexions.
 
@@ -85,11 +85,11 @@ La liste suivante décrit les étapes que SignalR utilise pour déterminer le tr
 2. Si JSONP est configuré (autrement dit, le `jsonp` paramètre est défini sur `true` au démarrage de la connexion), interrogation longue est utilisé.
 3. Si une connexion entre domaines est effectuée (autrement dit, si le point de terminaison SignalR ne se trouve pas dans le même domaine que la page d’hébergement), WebSocket est utilisé si les critères suivants sont satisfaits :
 
-    - Le client prend en charge CORS (partage des ressources Cross-Origin). Pour plus d’informations sur lequel les clients prennent en charge CORS, consultez [CORS au caniuse.com](http://www.caniuse.com/CORS).
-    - Le client prend en charge de WebSocket
-    - Le serveur prend en charge de WebSocket
+   - Le client prend en charge CORS (partage des ressources Cross-Origin). Pour plus d’informations sur lequel les clients prennent en charge CORS, consultez [CORS au caniuse.com](http://www.caniuse.com/CORS).
+   - Le client prend en charge de WebSocket
+   - Le serveur prend en charge de WebSocket
 
-    Si un de ces critères ne sont pas remplie, interrogation longue sera utilisé. Pour plus d’informations sur les connexions entre domaines, consultez [comment établir une connexion entre domaines](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
+     Si un de ces critères ne sont pas remplie, interrogation longue sera utilisé. Pour plus d’informations sur les connexions entre domaines, consultez [comment établir une connexion entre domaines](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain).
 4. Si JSONP n’est pas configuré et que la connexion n’est pas entre domaines, WebSocket est utilisé à la fois le client et le serveur de prise en charge.
 5. Si le client ou le serveur ne prennent pas en charge WebSocket, les événements envoyés du serveur est utilisé s’il est disponible.
 6. Si les événements envoyés du serveur n’est pas disponible, Forever Frame est tentée.

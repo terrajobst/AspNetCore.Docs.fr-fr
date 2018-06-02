@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs
-title: "Limitant les fonctionnalités de Modification de données basé sur l’utilisateur (c#) | Documents Microsoft"
+title: Limitant les fonctionnalités de Modification de données basé sur l’utilisateur (c#) | Documents Microsoft
 author: rick-anderson
-description: "Dans une application web qui permet aux utilisateurs de modifier des données, différents comptes d’utilisateurs peuvent avoir des privilèges de modification de données différents. Dans ce didacticiel, nous allons examiner comment t..."
+description: Dans une application web qui permet aux utilisateurs de modifier des données, différents comptes d’utilisateurs peuvent avoir des privilèges de modification de données différents. Dans ce didacticiel, nous allons examiner comment t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 44d0c192e082a7ad123096acb57fd053f6dcaeb1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b056536eeaa86ef2c73debe23dd38861f41b2a69
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-c"></a>Limitant les fonctionnalités de Modification de données en fonction de l’utilisateur (c#)
 ====================
@@ -236,7 +236,7 @@ Dans ce didacticiel ASP.NET page gère toute la logique en ce qui concerne les i
 
 Je n’incluait pas ces contrôles de la couche BLL ici, car notre didacticiel les droits d’utilisateur s sont déterminées par une liste déroulante dans la page, les classes de la couche BLL ne peut pas accéder. Lorsque vous utilisez le système d’appartenance ou un des schémas d’authentification hors à l’emploi fournies par ASP.NET (par exemple, l’authentification Windows), actuellement connecté sur utilisateur s plus d’informations et des informations sur les rôles sont accessibles à partir de la couche BLL, rendant ce type d’accès droits vérifie possible à la présentation et les couches de la couche BLL.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 La plupart des sites qui fournissent des comptes d’utilisateur doivent personnaliser l’interface de modification de données en fonction de l’utilisateur connecté. Les utilisateurs administratifs peuvent être en mesure de supprimer et de modifier n’importe quel enregistrement, alors que les utilisateurs non-administrateurs peuvent être limités à uniquement la mise à jour ou supprimer des enregistrements, ils ont créés eux-mêmes. Quel que soit le scénario peut être, les contrôles Web, ObjectDataSource, données et classes de la couche de logique métier peuvent être étendues pour ajouter ou de refus de certaines fonctionnalités en fonction de l’utilisateur connecté. Dans ce didacticiel, nous avons vu comment limiter les données visibles et modifiables selon si l’utilisateur a été associé à un fournisseur particulier ou si tout a fonctionné pour notre société.
 
@@ -246,8 +246,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](adding-client-side-confirmation-when-deleting-cs.md)
-[Suivant](an-overview-of-inserting-updating-and-deleting-data-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-client-side-confirmation-when-deleting-cs.md)
+> [Suivant](an-overview-of-inserting-updating-and-deleting-data-vb.md)

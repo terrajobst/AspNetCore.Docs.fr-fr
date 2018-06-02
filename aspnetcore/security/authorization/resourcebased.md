@@ -1,7 +1,7 @@
 ---
-title: "Autorisation basée sur les ressources dans ASP.NET Core"
+title: Autorisation basée sur les ressources dans ASP.NET Core
 author: scottaddie
-description: "Découvrez comment implémenter l’autorisation basée sur les ressources dans une application ASP.NET Core lorsqu’un attribut Authorize ne suffit."
+description: Découvrez comment implémenter l’autorisation basée sur les ressources dans une application ASP.NET Core lorsqu’un attribut Authorize ne suffit.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,15 +11,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/resourcebased
-ms.openlocfilehash: 708f306da740870b106cbeeb96879480f8745439
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 3be2d9b9aef18763fbdba78e044dd6b68ddcef0c
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="resource-based-authorization"></a>Autorisation basée sur les ressources
-
-Par [Scott Addie](https://twitter.com/Scott_Addie)
+# <a name="resource-based-authorization-in-aspnet-core"></a>Autorisation basée sur les ressources dans ASP.NET Core
 
 Stratégie d’autorisation dépend de la ressource sollicitée. Envisagez d’un document qui possède une propriété de l’auteur. Seul l’auteur est autorisé à mettre à jour le document. Par conséquent, le document doit être récupéré à partir du magasin de données avant de l’évaluation de l’autorisation peut se produire.
 
@@ -27,13 +25,15 @@ Stratégie d’autorisation dépend de la ressource sollicitée. Envisagez d’u
 
 Utilisez le [exemples d’applications](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/resourcebased/samples) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)) pour Explorer les fonctionnalités décrites dans cette rubrique.
 
+[Créer une application ASP.NET Core et de données utilisateur protégées par autorisation](xref:security/authorization/secure-data) contient un exemple d’application qui utilise l’autorisation basée sur les ressources.
+
 ## <a name="use-imperative-authorization"></a>Utiliser l’autorisation impérative
 
 L’autorisation est implémentée comme un [IAuthorizationService](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationservice) de service et est enregistré dans la collection de service dans la `Startup` classe. Le service est rendu disponible via [injection de dépendance](xref:fundamentals/dependency-injection#fundamentals-dependency-injection) aux gestionnaires de page ou aux actions.
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Controllers/DocumentController.cs?name=snippet_IAuthServiceDI&highlight=6)]
 
-`IAuthorizationService`a deux `AuthorizeAsync` surcharges de méthode : une acceptation de la ressource et le nom de la stratégie et l’autre accepte la ressource et une liste d’exigences à évaluer.
+`IAuthorizationService` a deux `AuthorizeAsync` surcharges de méthode : une acceptation de la ressource et le nom de la stratégie et l’autre accepte la ressource et une liste d’exigences à évaluer.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -66,11 +66,11 @@ Dans l’exemple suivant, la ressource à sécuriser chargée personnalisé `Doc
 > [!NOTE]
 > Le code suivant exemples supposent que l’authentification a été exécuté et le jeu le `User` propriété.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/Edit.cshtml.cs?name=snippet_DocumentEditHandler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentEditAction)]
 
@@ -80,11 +80,11 @@ Dans l’exemple suivant, la ressource à sécuriser chargée personnalisé `Doc
 
 Écriture d’un gestionnaire pour l’autorisation basée sur la ressource n’est pas très différente de [écriture d’un gestionnaire d’exigences brut](xref:security/authorization/policies#security-authorization-policies-based-authorization-handler). Créer une classe de demande personnalisée et implémenter une classe de gestionnaire de condition. La classe de gestionnaire spécifie l’exigence et le type de ressource. Par exemple, un gestionnaire utilisant un `SameAuthorRequirement` exigence et un `Document` ressource se présente comme suit :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationHandler.cs?name=snippet_HandlerAndRequirement)]
 
@@ -96,17 +96,17 @@ Enregistrer la configuration requise, le gestionnaire dans le `Startup.Configure
 
 ### <a name="operational-requirements"></a>Spécifications opérationnelles
 
-Si vous apportez des décisions basées sur les résultats de CRUD (**C**réer, **R**IRE, **U**mettre à jour, **D**supprim) opérations, utilisez le [OperationAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.infrastructure.operationauthorizationrequirement) classe d’assistance. Cette classe vous permet d’écrire un gestionnaire unique au lieu d’une classe individuelle pour chaque type d’opération. Pour l’utiliser, fournir des noms d’opération :
+Si vous apportez des décisions basées sur les résultats des opérations CRUD (création, lecture, mise à jour, suppression), utilisez la [OperationAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.infrastructure.operationauthorizationrequirement) classe d’assistance. Cette classe vous permet d’écrire un gestionnaire unique au lieu d’une classe individuelle pour chaque type d’opération. Pour l’utiliser, fournir des noms d’opération :
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_OperationsClass)]
 
 Le gestionnaire est implémenté comme suit, à l’aide un `OperationAuthorizationRequirement` exigence et un `Document` ressource :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Services/DocumentAuthorizationCrudHandler.cs?name=snippet_Handler)]
 
@@ -119,13 +119,13 @@ Pour appeler un gestionnaire de ressources opérationnelles, spécifiez l’opé
 > [!NOTE]
 > Le code suivant exemples supposent que l’authentification a été exécuté et le jeu le `User` propriété.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp2/Pages/Document/View.cshtml.cs?name=snippet_DocumentViewHandler&highlight=10-11)]
 
 Si l’autorisation réussit, la page d’affichage du document est retournée. Si l’autorisation échoue mais que l’utilisateur est authentifié, retour `ForbidResult` informe tout intergiciel d’authentification qui a l’autorisation a échoué. A `ChallengeResult` est retourné lorsque l’authentification doit être effectuée. Pour les clients de navigateur interactive, il peut être approprié rediriger l’utilisateur vers une page de connexion.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 [!code-csharp[](resourcebased/samples/ResourceBasedAuthApp1/Controllers/DocumentController.cs?name=snippet_DocumentViewAction&highlight=11-12)]
 

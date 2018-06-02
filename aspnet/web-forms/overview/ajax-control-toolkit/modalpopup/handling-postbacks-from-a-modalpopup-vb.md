@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-vb
-title: "La gestion des publications (postback) à partir d’un ModalPopup (VB) | Documents Microsoft"
+title: La gestion des publications (postback) à partir d’un ModalPopup (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle ModalPopup dans la boîte à outils de contrôle AJAX offre un moyen simple de créer une fenêtre modale, à l’aide des moyens de côté client. Une attention particulière doit entreprendre lorsqu’un pos..."
+description: Le contrôle ModalPopup dans la boîte à outils de contrôle AJAX offre un moyen simple de créer une fenêtre modale, à l’aide des moyens de côté client. Une attention particulière doit entreprendre lorsqu’un pos...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7915d555fef363f41aa51bd77f0183c97c2f3769
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 1aa2c42deb67015dd0b35edf4ba72d8d667ec88c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-postbacks-from-a-modalpopup-vb"></a>La gestion des publications (postback) à partir d’un ModalPopup (VB)
 ====================
@@ -62,6 +62,6 @@ En outre, les contrôles de zone de texte dans la fenêtre contextuelle modale d
 
 La fenêtre contextuelle modale entraîne une publication ([cliquez pour afficher l’image en taille réelle](handling-postbacks-from-a-modalpopup-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](using-modalpopup-with-a-repeater-control-vb.md)
-[Suivant](positioning-a-modalpopup-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-modalpopup-with-a-repeater-control-vb.md)
+> [Suivant](positioning-a-modalpopup-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
-title: "Configuration d’un serveur TFS du serveur de builds pour le déploiement Web | Documents Microsoft"
+title: Configuration d’un serveur TFS du serveur de builds pour le déploiement Web | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment préparer un serveur de builds Team Foundation Server (TFS) pour générer et déployer vos solutions à l’aide de Team Build et le Informat Internet..."
+description: Cette rubrique décrit comment préparer un serveur de builds Team Foundation Server (TFS) pour générer et déployer vos solutions à l’aide de Team Build et le Informat Internet...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: de31a9dffb95b863a4ec38b74fd2c6e03f287a7f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7b3130ca7d36ffec457e1871fa62c1077b5e3174
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>Configuration d’un serveur de Build TFS pour le déploiement Web
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit comment préparer un serveur de builds Team Foundation Server (TFS) pour générer et déployer vos solutions à l’aide de Team Build et l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy).
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -100,7 +100,7 @@ La meilleure façon d’installer les composants de plateforme web commune consi
 7. Dans le **ASP.NET MVC 3 (Visual Studio 2010)** , cliquez sur **ajouter**.
 8. Dans le volet de navigation, cliquez sur **Server**.
 9. Dans le **2.1 d’outil de déploiement Web** , cliquez sur **ajouter**.
-10. Cliquez sur **Installer**. Le programme d’installation de la plateforme Web affiche une liste de produits & #x 2014 ; ainsi que toutes les dépendances associées et les #x 2014 ; à installer et vous invite à accepter les termes du contrat de licence.
+10. Cliquez sur **Installer**. Le programme d’installation de la plateforme Web affiche une liste de produits&#x2014;ainsi que les dépendances associées&#x2014;pour être installé et vous invite à accepter les termes du contrat de licence.
 11. Passez en revue les termes du contrat de licence et si vous acceptez les termes du contrat, cliquez sur **J’accepte**.
 12. Une fois l’installation terminée, cliquez sur **Terminer**, puis fermez le **Web Platform Installer 3.0** fenêtre.
 
@@ -116,6 +116,6 @@ La meilleure façon d’installer les composants de plateforme web commune consi
 
 Pour obtenir des instructions plus générales sur l’utilisation de Team Build, consultez [administration de Team Foundation Build](https://msdn.microsoft.com/library/ms252495.aspx).
 
->[!div class="step-by-step"]
-[Précédent](adding-content-to-source-control.md)
-[Suivant](creating-a-build-definition-that-supports-deployment.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-content-to-source-control.md)
+> [Suivant](creating-a-build-definition-that-supports-deployment.md)

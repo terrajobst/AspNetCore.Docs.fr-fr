@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-new-multi-targeting
-title: "Visual Studio 2010 rapide d’atteinte - nouvelle multi-ciblage | Documents Microsoft"
+title: Visual Studio 2010 rapide d’atteinte - nouvelle multi-ciblage | Documents Microsoft
 author: JoeStagner
-description: "Dans cette vidéo, vous allez apprendre à utiliser multi-ciblage prise en charge améliorée Visual Studio qui vous permet d’utiliser et de cibler plusieurs versions de .NET."
+description: Dans cette vidéo, vous allez apprendre à utiliser multi-ciblage prise en charge améliorée Visual Studio qui vous permet d’utiliser et de cibler plusieurs versions de .NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/11/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/visual-studio-2010/visual-studio-2010-quick-hit-new-multi-targeting
 msc.type: video
-ms.openlocfilehash: 72268f8ca15a6d12966b6a61c377325909ae9b6f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9b7d4b3ddbd19ed35a6037f958d7d3a883efe667
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="visual-studio-2010-quick-hit---new-multi-targeting"></a>Visual Studio 2010 « Rapide Hit » - nouvelle fonctionnalité de multi-ciblage
 ====================
@@ -24,8 +24,8 @@ par [Joe Stagner](https://github.com/JoeStagner)
 
 Dans cette vidéo, vous allez apprendre à utiliser multi-ciblage prise en charge améliorée Visual Studio qui vous permet d’utiliser et de cibler plusieurs versions de .NET.
 
-[&#9654; Regardez la vidéo (6 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2010-quick-hit-new-multi-targeting)
+[&#9654;Regardez la vidéo (6 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/visual-studio-2010-quick-hit-new-multi-targeting)
 
->[!div class="step-by-step"]
-[Précédent](visual-studio-2010-quick-hit-new-web-project-template.md)
-[Suivant](visual-studio-2010-quick-hit-websites-instead-of-web-projects.md)
+> [!div class="step-by-step"]
+> [Précédent](visual-studio-2010-quick-hit-new-web-project-template.md)
+> [Suivant](visual-studio-2010-quick-hit-websites-instead-of-web-projects.md)

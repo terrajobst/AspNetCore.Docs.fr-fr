@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
-title: "Déterminer quels fichiers doivent être déployés (c#) | Documents Microsoft"
+title: Déterminer quels fichiers doivent être déployés (c#) | Documents Microsoft
 author: rick-anderson
-description: "Les fichiers devant être déployés à partir de l’environnement de développement à l’environnement de production dépend en partie indique si l’application ASP.NET a été générée nous..."
+description: Les fichiers devant être déployés à partir de l’environnement de développement à l’environnement de production dépend en partie indique si l’application ASP.NET a été générée nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d58956323275a46b44b36d4f19db4d2f607e3916
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: ff5f1d7d156efa12d97382db56211a07c43178fd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="determining-what-files-need-to-be-deployed-c"></a>Déterminer quels fichiers doivent être déployés (c#)
 ====================
@@ -80,14 +80,14 @@ Le téléchargement de ce didacticiel inclut une application ASP.NET appelée cr
 - Sept différentes pages ASP.NET : 
 
     - ~`/Default.aspx`-page d’accueil du site.
-    - ~`/About.aspx`-une page « Sur le Site ».
-    - ~`/Fiction/Default.aspx`-une page qui répertorie les livres de science-fiction qui ont été vérifiées. 
+    - ~`/About.aspx` -une page « Sur le Site ».
+    - ~`/Fiction/Default.aspx` -une page qui répertorie les livres de science-fiction qui ont été vérifiées. 
 
-        - ~`/Fiction/Blaze.aspx`-une revue de la nouvelle Richard Bachman *vérifie*.
-    - ~/`Tech/Default.aspx`-une page qui répertorie les livres de la technologie qui ont été vérifiées. 
+        - ~`/Fiction/Blaze.aspx` -une revue de la nouvelle Richard Bachman *vérifie*.
+    - ~/`Tech/Default.aspx` -une page qui répertorie les livres de la technologie qui ont été vérifiées. 
 
         - ~/`Tech/CYOW.aspx`-une revue de *créer votre propre site Web de*.
-        - ~/`Tech/TYASP35.aspx`-une revue de *apprendre vous-même ASP.NET 3.5 des dernières 24 heures*.
+        - ~/`Tech/TYASP35.aspx` -une revue de *apprendre vous-même ASP.NET 3.5 des dernières 24 heures*.
 - Trois fichiers CSS différents dans le dossier Styles.
 - Quatre fichiers image - un optimisé par ASP.NET logo et les images d’arrière-plan de livres passés en revue trois - tous les situé dans le `Images` dossier.
 - A `Web.sitemap` fichier, qui définit le plan de site et est utilisé pour afficher les menus dans le `Default.aspx` pages dans le répertoire racine et `Fiction` et `Tech` dossiers.
@@ -110,7 +110,7 @@ Cette application n’utilise pas d’une base de données ; chaque révision e
 Téléchargement de ce didacticiel comporte deux copies de l’application web, chacun implémenté en tant qu’un autre type de projet Visual Studio : BookReviewsWAP, un projet d’Application Web et BookReviewsWSP, un projet de Site Web. Les deux projets ont été créées avec Visual Web Developer 2008 SP1 et utilisent ASP.NET 3.5 SP1. Pour travailler avec ces projets démarrer à décompresser le contenu sur votre bureau. Pour ouvrir le projet d’Application Web (BookReviewsWAP), accédez au dossier BookReviewsWAP et double-cliquez sur le fichier Solution `BookReviewsWAP.sln`. Pour ouvrir le projet de Site Web (BookReviewsWSP), lancez Visual Studio, puis, dans le menu fichier, choisissez l’option Ouvrir le Site Web, accédez à la `BookReviewsWSP` dossier sur votre bureau, cliquez sur OK.
 
 
-Les deux sections suivantes de ce didacticiel examiner les fichiers que vous devez copier dans l’environnement de production lors du déploiement de l’application. Les deux didacticiels -  *[déploiement de votre Site à l’aide de FTP](deploying-your-site-using-an-ftp-client-cs.md)*  et  *[déploiement de votre Site à l’aide de Visual Studio](deploying-your-site-using-visual-studio-cs.md)*  -afficher les différentes façons de Copiez ces fichiers vers un fournisseur d’hébergement web.
+Les deux sections suivantes de ce didacticiel examiner les fichiers que vous devez copier dans l’environnement de production lors du déploiement de l’application. Les deux didacticiels - *[déploiement de votre Site à l’aide de FTP](deploying-your-site-using-an-ftp-client-cs.md)* et *[déploiement de votre Site à l’aide de Visual Studio](deploying-your-site-using-visual-studio-cs.md)* -afficher les différentes façons de Copiez ces fichiers vers un fournisseur d’hébergement web.
 
 ## <a name="determining-the-files-to-deploy-for-the-web-application-project"></a>Déterminer les fichiers à déployer pour le projet d’Application Web
 
@@ -185,6 +185,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Système de projet de Site Web de Visual Studio 2005 : définition et pourquoi cela A-t-il été ?](https://weblogs.asp.net/scottgu/archive/2005/08/21/423201.aspx)
 - [Procédure pas à pas : Conversion d’un projet de Site Web à un projet d’Application Web dans Visual Studio](https://msdn.microsoft.com/library/aa983476.aspx)
 
->[!div class="step-by-step"]
-[Précédent](asp-net-hosting-options-cs.md)
-[Suivant](deploying-your-site-using-an-ftp-client-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](asp-net-hosting-options-cs.md)
+> [Suivant](deploying-your-site-using-an-ftp-client-cs.md)

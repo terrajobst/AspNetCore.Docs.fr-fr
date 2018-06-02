@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-vb
-title: "Déploiement d’une base de données (VB) | Documents Microsoft"
+title: Déploiement d’une base de données (VB) | Documents Microsoft
 author: rick-anderson
-description: "Déploiement d’une application web ASP.NET implique l’obtention des fichiers nécessaires et aux ressources à partir de l’environnement de développement à l’environnement de production. Pour AD..."
+description: Déploiement d’une application web ASP.NET implique l’obtention des fichiers nécessaires et aux ressources à partir de l’environnement de développement à l’environnement de production. Pour AD...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-vb
 msc.type: authoredcontent
-ms.openlocfilehash: b0890d50f21eb790d81d54261a67fcf487b1c95e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 024a34c1b2e37e60e6777dd54dcbd9aa845ec749
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-a-database-vb"></a>Déploiement d’une base de données (Visual Basic)
 ====================
@@ -41,10 +41,10 @@ Les mises à jour critiques web application utilise un [SQL Server 2008 Express 
 
 Le `Reviews.mdf` base de données contient quatre tables :
 
-- `Genres`-inclut un enregistrement pour chaque genre, telles que la technologie, science-fiction et entreprise.
-- `Books`-inclut un enregistrement pour chaque révision, avec des colonnes comme `Title`, `GenreId`, `ReviewDate`, et `Review`, entre autres.
-- `Authors`-contient des informations sur chaque auteur qui a contribué à un livre passés en revue.
-- `BooksAuthors`-une table de jointure plusieurs-à-plusieurs qui spécifie les auteurs ont écrit les manuels.
+- `Genres` -inclut un enregistrement pour chaque genre, telles que la technologie, science-fiction et entreprise.
+- `Books` -inclut un enregistrement pour chaque révision, avec des colonnes comme `Title`, `GenreId`, `ReviewDate`, et `Review`, entre autres.
+- `Authors` -contient des informations sur chaque auteur qui a contribué à un livre passés en revue.
+- `BooksAuthors` -une table de jointure plusieurs-à-plusieurs qui spécifie les auteurs ont écrit les manuels.
   
 
 La figure 1 montre un diagramme de quatre tables.
@@ -180,7 +180,7 @@ Il est tout s ! À ce stade, la base de données de développement a été dupl
 
 À ce stade, nous avons déployé uniquement la base de données de développement en production. Nous n'avons pas encore été examiné le déploiement de l’application web elle-même ou examiner les modifications de configuration nécessaires pour que l’application de production de la base de données de production. Nous aborderons ces problèmes dans le didacticiel suivant !
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Déploiement d’une application web pilotées par les données nécessite la copie de la base de données utilisée pendant le développement à l’environnement de production. Plusieurs fournisseurs d’hébergement web offrent des outils pour simplifier le processus de déploiement d’une base de données. Par exemple, avec DiscountASP.NET, vous pouvez FTP votre base de données `.mdf` fichier (ou une sauvegarde), puis attachez la base de données sur le serveur de base de données à partir du panneau. Une autre option qui fonctionne indépendamment de quelles fonctionnalités proposés par votre fournisseur hôte web est outil Assistant Publication de base de données Microsoft s, ce qui génère un script de commandes SQL pour créer le schéma de développement de base de données s et des données. Une fois que ce script a été généré, vous pouvez l’exécuter sur la base de données de production.
 
@@ -195,6 +195,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Télécharger la base de données Microsoft SQL Server Assistant 1.1](https://www.microsoft.com/downloads/details.aspx?familyid=56E5B1C5-BF17-42E0-A410-371A838E570A&amp;displaylang=en)
 - [Télécharger Microsoft SQL Server Management Studio Express Edition](https://www.microsoft.com/downloads/details.aspx?FamilyId=C243A5AE-4BD1-4E3D-94B8-5A0F62BF7796&amp;displaylang=en)
 
->[!div class="step-by-step"]
-[Précédent](core-differences-between-iis-and-the-asp-net-development-server-vb.md)
-[Suivant](configuring-the-production-web-application-to-use-the-production-database-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](core-differences-between-iis-and-the-asp-net-development-server-vb.md)
+> [Suivant](configuring-the-production-web-application-to-use-the-production-database-vb.md)

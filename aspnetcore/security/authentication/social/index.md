@@ -1,7 +1,7 @@
 ---
-title: "Activation de l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes"
+title: Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 author: rick-anderson
-description: "Ce didacticiel montre comment générer une application ASP.NET Core 2.x à l’aide d’OAuth 2.0 avec des fournisseurs d’authentification externes."
+description: Ce didacticiel montre comment générer une application ASP.NET Core 2.x à l’aide d’OAuth 2.0 avec des fournisseurs d’authentification externes.
 manager: wpickett
 ms.author: riande
 ms.date: 11/01/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/social/index
-ms.openlocfilehash: 475656b03b0d1a3e79e78e6cf3816f091ccd640b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 93fa42be9c551f5bbdf3851aec1d9e01139fdb76
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="enabling-authentication-using-facebook-google-and-other-external-providers"></a>Activation de l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes
+# <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
 <a name="security-authentication-social-logins"></a>
 
@@ -23,7 +23,7 @@ Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://
 
 Ce didacticiel montre comment créer une application ASP.NET Core 2.x qui permet aux utilisateurs de se connecter à l’aide d’OAuth 2.0 avec des informations d’identification provenant de fournisseurs d’authentification externes.
 
-Les fournisseurs [Facebook](facebook-logins.md), [Twitter](twitter-logins.md), [Google](google-logins.md) et [Microsoft](microsoft-logins.md) sont traités dans les sections qui suivent. D’autres fournisseurs sont disponibles dans des packages tiers, comme [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) et [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
+Les fournisseurs [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins) et [Microsoft](xref:security/authentication/microsoft-logins) sont traités dans les sections qui suivent. D’autres fournisseurs sont disponibles dans des packages tiers, comme [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) et [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
 ![Icônes de réseau social pour Facebook, Twitter, Google plus et Windows](index/_static/social.png)
 
@@ -58,7 +58,7 @@ OAuth 2.0 nécessite l’utilisation de SSL pour l’authentification avec le pr
 
 Remarque : Les projets créés à partir des modèles de projet **Application web** ou **API web** pour ASP.NET Core 2.x sont configurés automatiquement pour activer SSL, et pour se lancer avec des URL HTTPS si l’option **Comptes d’utilisateur individuels** a été sélectionnée dans la boîte de dialogue **Modifier l’authentification** dans l’Assistant Projet, comme indiqué ci-dessus.
 
-* Exigez SSL sur votre site en suivant les étapes de la rubrique [Exiger SSL dans une application ASP.NET Core](xref:security/enforcing-ssl).
+* Imposez l’utilisation de SSL sur votre site en suivant les étapes de la rubrique [Imposer SSL dans une application ASP.NET Core](xref:security/enforcing-ssl).
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>Utilisez SecretManager pour stocker les jetons affectés par les fournisseurs de connexion
 
@@ -72,11 +72,11 @@ Suivez les étapes de la rubrique [Stockage sécurisé des secrets d’applicati
 
 Utilisez les rubriques suivantes pour configurer votre application pour utiliser ces différents fournisseurs :
 
-* Instructions pour [Facebook](facebook-logins.md)
-* Instructions pour [Twitter](twitter-logins.md)
-* Instructions pour [Google](google-logins.md)
-* Instructions pour [Microsoft](microsoft-logins.md)
-* Instructions pour les [autres fournisseurs](other-logins.md)
+* Instructions pour [Facebook](xref:security/authentication/facebook-logins)
+* Instructions pour [Twitter](xref:security/authentication/twitter-logins)
+* Instructions pour [Google](xref:security/authentication/google-logins)
+* Instructions pour [Microsoft](xref:security/authentication/microsoft-logins)
+* Instructions pour les [autres fournisseurs](xref:security/authentication/otherlogins)
 
 ## <a name="optionally-set-password"></a>Définition facultative d’un mot de passe
 

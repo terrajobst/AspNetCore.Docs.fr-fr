@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-vb
-title: "Ajout de contenu dynamique à une Page mise en cache (VB) | Documents Microsoft"
+title: Ajout de contenu dynamique à une Page mise en cache (VB) | Documents Microsoft
 author: microsoft
-description: "Découvrez comment combiner le contenu dynamique et mise en cache dans la même page. Post-cache vous permet d’afficher le contenu dynamique, tels que bannière publications o..."
+description: Découvrez comment combiner le contenu dynamique et mise en cache dans la même page. Post-cache vous permet d’afficher le contenu dynamique, tels que bannière publications o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/adding-dynamic-content-to-a-cached-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f07f4ecec36e71679dbc471b65f26d260349a07e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 89421b4bec2170e408ded87ccc918a7a16844a98
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-dynamic-content-to-a-cached-page-vb"></a>Ajout de contenu dynamique à une Page mise en cache (VB)
 ====================
@@ -91,12 +91,12 @@ Lorsque vous demandez la page rendue par la vue dans la liste 5, une publication
 
 ![clip_image004](adding-dynamic-content-to-a-cached-page-vb/_static/image2.jpg)
 
-#### <a name="summary"></a>Résumé
+#### <a name="summary"></a>Récapitulatif
 
 Ce didacticiel explique comment vous pouvez mettre à jour dynamiquement le contenu dans une page mise en cache. Vous avez appris comment utiliser la méthode HttpResponse.WriteSubstitution() pour permettre à injecter dans une page mise en cache du contenu dynamique. Vous avez également appris à encapsuler l’appel à la méthode WriteSubstitution() dans une méthode d’assistance HTML.
 
 Tirer parti de la mise en cache chaque fois que possible : il peut avoir un impact considérable sur les performances de vos applications web. Comme expliqué dans ce didacticiel, vous pouvez tirer parti de la mise en cache même si vous avez besoin afficher le contenu dynamique dans vos pages.
 
->[!div class="step-by-step"]
-[Précédent](improving-performance-with-output-caching-vb.md)
-[Suivant](creating-a-controller-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](improving-performance-with-output-caching-vb.md)
+> [Suivant](creating-a-controller-vb.md)

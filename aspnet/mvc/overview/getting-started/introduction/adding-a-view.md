@@ -1,7 +1,7 @@
 ---
-title: "Ajout d’une vue à une application MVC"
+title: Ajout d’une vue à une application MVC
 author: Rick-Anderson
-description: "Ajout d’une vue à une application MVC"
+description: Ajout d’une vue à une application MVC
 ms.author: riande
 manager: wpickett
 ms.date: 09/1721/2017
@@ -9,17 +9,17 @@ ms.topic: article
 ms.technology: dotnet-mvc
 ms.prod: .net-framework
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: 86887f0dafa31ff3eb6597284c469c4b3053b6b7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 21db97e635b5db580df31f46ca7f8b60a80d6f94
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-view"></a>Ajout d’une vue
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-[!INCLUDE[Tutorial Note](sample/code-location.md)]
+[!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 Dans cette section que vous allez modifier la `HelloWorldController` classe à utiliser l’affichage des fichiers de modèle à proprement encapsulent le processus de génération des réponses HTML à un client. 
 
@@ -85,7 +85,7 @@ Lorsque nous avons créé la *Views\HelloWorld\Index.cshtml* fichier, il trouve 
 
 [!code-cshtml[Main](adding-a-view/samples/sample4.cshtml)]
 
-Le code Razor ci-dessus est définir explicitement la page de disposition. Examinez le *vues\\_ViewStart.cshtml* fichier, il contient le balisage de Razor même exact. Le  *[vues\\_ViewStart.cshtml](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)*  fichier définit la disposition courante qui utilisent toutes les vues, par conséquent, vous pouvez commentaire du délai d’attente ou de supprimer ce code à partir de la *Views\HelloWorld\ Index.cshtml* fichier.
+Le code Razor ci-dessus est définir explicitement la page de disposition. Examinez le *vues\\_ViewStart.cshtml* fichier, il contient le balisage de Razor même exact. Le *[vues\\_ViewStart.cshtml](https://weblogs.asp.net/scottgu/archive/2010/10/22/asp-net-mvc-3-layouts.aspx)* fichier définit la disposition courante qui utilisent toutes les vues, par conséquent, vous pouvez commentaire du délai d’attente ou de supprimer ce code à partir de la *Views\HelloWorld\ Index.cshtml* fichier.
 
 [!code-cshtml[Main](adding-a-view/samples/sample5.cshtml?highlight=1-3)]
 
@@ -119,7 +119,7 @@ Contrôleurs sont chargés de fournir les données ou les objets sont requis pou
 
 Actuellement, le `Welcome` méthode d’action dans le `HelloWorldController` classe prend un `name` et un `numTimes` paramètre, puis les sorties, les valeurs directement dans le navigateur. Plutôt que le contrôleur de rendre cette réponse sous forme de chaîne, nous allons modifier le contrôleur pour utiliser un modèle d’affichage à la place. Le modèle de vue génère une réponse dynamique, ce qui signifie que vous devez passer les bits de données appropriés du contrôleur à la vue pour générer la réponse. Vous pouvez faire cela ayant le contrôleur de placer les données dynamiques (paramètres) que le modèle de vue doit être dans un `ViewBag` objet du modèle d’affichage peut alors accéder.
 
-Retour à la *HelloWorldController.cs* de fichiers et de modifier le `Welcome` méthode pour ajouter un `Message` et `NumTimes` valeur le `ViewBag` objet. `ViewBag`est un objet dynamique, ce qui signifie que vous pouvez placer tout ce que vous voulez le `ViewBag` objet ne possède aucune propriété définie jusqu'à ce que vous placez un élément qu’il contient. Le [système de liaison de modèle ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx) mappe automatiquement les paramètres nommés (`name` et `numTimes`) à partir de la chaîne de requête dans la barre d’adresses à des paramètres dans votre méthode. Le fichier *HelloWorldController.cs* complet ressemble à ceci :
+Retour à la *HelloWorldController.cs* de fichiers et de modifier le `Welcome` méthode pour ajouter un `Message` et `NumTimes` valeur le `ViewBag` objet. `ViewBag` est un objet dynamique, ce qui signifie que vous pouvez placer tout ce que vous voulez le `ViewBag` objet ne possède aucune propriété définie jusqu'à ce que vous placez un élément qu’il contient. Le [système de liaison de modèle ASP.NET MVC](http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx) mappe automatiquement les paramètres nommés (`name` et `numTimes`) à partir de la chaîne de requête dans la barre d’adresses à des paramètres dans votre méthode. Le fichier *HelloWorldController.cs* complet ressemble à ceci :
 
 [!code-csharp[Main](adding-a-view/samples/sample8.cs)]
 
@@ -151,6 +151,6 @@ Dans l’exemple ci-dessus, nous avons utilisé un `ViewBag` objet pour passer d
 
 Ainsi, ce qui a un type d’un &quot;M&quot; pour le modèle, mais pas le type de base de données. Créons une base de données de films en utilisant ce que nous avons appris.
 
->[!div class="step-by-step"]
-[Précédent](adding-a-controller.md)
-[Suivant](adding-a-model.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-controller.md)
+> [Suivant](adding-a-model.md)

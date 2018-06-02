@@ -1,23 +1,27 @@
 ---
-title: "Metapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.x et versions ultérieures"
+title: Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.0 et ultérieur
 author: Rick-Anderson
-description: "Le metapackage Microsoft.AspNetCore.All inclut tous les packages ASP.NET Core et Entity Framework Core, ainsi que leurs dépendances."
-ms.author: riande
+description: Le métapackage Microsoft.AspNetCore.All comprend tous les packages ASP.NET Core et Entity Framework Core, ainsi que leurs dépendances.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
+ms.author: riande
 ms.date: 09/20/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: fundamentals/metapackage
-ms.openlocfilehash: 8a44ee7ebb7e6b0112000429f1f080bceb7dc895
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
-ms.translationtype: MT
+ms.openlocfilehash: c0d7d7fb5f41a91f8d881dd7880d8adcaa478968
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/20/2018
 ---
-#<a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-2x"></a>Metapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.x
+# <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.0
 
-Cette fonctionnalité nécessite .NET de ciblage ASP.NET Core 2.x 2.x de base.
+> [!NOTE]
+> Nous recommandons que les applications qui ciblent ASP.NET Core 2.1 et ultérieur utilisent [Microsoft.AspNetCore.App](xref:fundamentals/metapackage) au lieu de ce package. Consultez [Migration de Microsoft.AspNetCore.All vers Microsoft.AspNetCore.App](#migrate) dans cet article.
+
+Cette fonctionnalité nécessite ASP.NET Core 2.x ciblant .NET Core 2.x.
 
 Le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) pour ASP.NET Core comprend :
 
@@ -25,14 +29,42 @@ Le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Micros
 * Tous les packages pris en charge par Entity Framework Core. 
 * Les dépendances internes et tierces utilisées par ASP.NET Core et Entity Framework Core. 
 
-Toutes les fonctionnalités ASP.NET Core 2.x et Entity Framework Core 2.x sont inclus dans le `Microsoft.AspNetCore.All` package. Les modèles de projet par défaut utilisent ce package.
+Toutes les fonctionnalités d’ASP.NET Core 2.x et d’Entity Framework Core 2.x sont incluses dans le package `Microsoft.AspNetCore.All`. Les modèles de projet par défaut ciblant ASP.NET Core 2.0 utilisent ce package.
 
-Le numéro de version de la `Microsoft.AspNetCore.All` metapackage représente la version de ASP.NET Core et Entity Framework Core (aligné avec la version de .NET Core).
+Le numéro de version du métapackage `Microsoft.AspNetCore.All` représente la version d’ASP.NET Core et la version d’Entity Framework Core.
 
-Les applications qui utilisent la `Microsoft.AspNetCore.All` metapackage tirer parti automatiquement de la [magasin du Runtime .NET Core](https://docs.microsoft.com/dotnet/core/deploying/runtime-store). Le magasin de Runtime contient tous les composants runtime nécessaires à l’exécution des applications 2.x ASP.NET Core. Lorsque vous utilisez la `Microsoft.AspNetCore.All` metapackage, **aucun** des ressources depuis les packages ASP.NET Core NuGet référencés sont déployés avec l’application &mdash; le magasin du Runtime .NET Core contient ces ressources. Les éléments multimédias dans le magasin d’exécution sont précompilés pour améliorer les temps de démarrage d’application.
+Les applications qui utilisent le métapackage `Microsoft.AspNetCore.All` tirent automatiquement parti du [magasin de packages de runtime de .NET Core](https://docs.microsoft.com/dotnet/core/deploying/runtime-store). Ce magasin Runtime contient toutes les ressources runtime nécessaires à l’exécution des applications ASP.NET Core 2.x. Quand vous utilisez le métapackage `Microsoft.AspNetCore.All`, **aucune** des ressources des packages NuGet ASP.NET Core référencés n’est déployée avec l’application. En effet, le magasin Runtime de .NET Core contient ces ressources. Les ressources présentes dans le magasin Runtime sont précompilées afin d’améliorer la vitesse de démarrage des applications.
 
-Vous pouvez utiliser le processus de suppression du package à supprimer les packages que vous n’utilisez pas. Packages découpés sont exclus de la sortie de l’application publiée.
+Vous pouvez utiliser le processus de suppression de package pour supprimer les packages que vous n’utilisez pas. Les packages supprimés sont exclus de la sortie d’application publiée.
 
-Les éléments suivants *.csproj* références de fichiers le `Microsoft.AspNetCore.All` metapackage pour ASP.NET Core :
+Le fichier *.csproj* suivant fait référence au métapackage `Microsoft.AspNetCore.All` pour ASP.NET Core :
 
-[!code-xml[Main](..\mvc\views\view-compilation\sample\MvcRazorCompileOnPublish2.csproj?highlight=9)]
+[!code-xml[](metapackage/samples/Metapackage.All.Example.csproj?highlight=6)]
+
+<a name="migrate"></a>
+## <a name="migrating-from-microsoftaspnetcoreall-to-microsoftaspnetcoreapp"></a>Migration de Microsoft.AspNetCore.All vers Microsoft.AspNetCore.App
+
+Les packages suivants sont inclus dans `Microsoft.AspNetCore.All` mais pas le package `Microsoft.AspNetCore.App`. 
+
+* `Microsoft.AspNetCore.ApplicationInsights.HostingStartup`
+* `Microsoft.AspNetCore.AzureAppServices.HostingStartup`
+* `Microsoft.AspNetCore.AzureAppServicesIntegration`
+* `Microsoft.AspNetCore.DataProtection.AzureKeyVault`
+* `Microsoft.AspNetCore.DataProtection.AzureStorage`
+* `Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv`
+* `Microsoft.AspNetCore.SignalR.Redis`
+* `Microsoft.Data.Sqlite`
+* `Microsoft.Data.Sqlite.Core`
+* `Microsoft.EntityFrameworkCore.Sqlite`
+* `Microsoft.EntityFrameworkCore.Sqlite.Core`
+* `Microsoft.Extensions.Caching.Redis`
+* `Microsoft.Extensions.Configuration.AzureKeyVault`
+* `Microsoft.Extensions.Logging.AzureAppServices`
+* `Microsoft.VisualStudio.Web.BrowserLink`
+
+Pour passer de `Microsoft.AspNetCore.All` à `Microsoft.AspNetCore.App`, si votre application utilise les API des packages ci-dessus, ou les packages apportés par ces packages, ajoutez des références à ces packages dans votre projet.
+
+Toutes les dépendances des packages précédents qui ne sont pas des dépendances de `Microsoft.AspNetCore.App` ne sont pas incluses de manière implicite. Exemple :
+
+* `StackExchange.Redis` comme dépendance de `Microsoft.Extensions.Caching.Redis`
+* `Microsoft.ApplicationInsights` comme dépendance de `Microsoft.AspNetCore.ApplicationInsights.HostingStartup`

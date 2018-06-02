@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
-title: "Présentation des Pages Web ASP.NET - saisie de données de la base de données à l’aide de formulaires | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET - saisie de données de la base de données à l’aide de formulaires | Documents Microsoft
 author: tfitzmac
-description: "Ce didacticiel vous montre comment créer un formulaire d’entrée, puis entrez les données que vous obtenez à partir du formulaire dans une table de base de données lorsque vous utilisez ASP.NET Web Pages (...)"
+description: Ce didacticiel vous montre comment créer un formulaire d’entrée, puis entrez les données que vous obtenez à partir du formulaire dans une table de base de données lorsque vous utilisez ASP.NET Web Pages (...)
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/28/2015
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
 msc.type: authoredcontent
-ms.openlocfilehash: b74eecb16b2c4695bb417816b90f701f724cc9d0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bbccf8134e90c19e29efaa5afe1e46e15320c189
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>Présentation des Pages Web ASP.NET - saisie de données de la base de données à l’aide de formulaires
 ====================
@@ -121,7 +121,7 @@ Dans l’arborescence de fichiers dans WebMatrix, cliquez sur le *AddMovie.cshtm
 
 ![Ajouter des films de page dans le navigateur](entering-data/_static/image2.png)
 
-(Si vous vous retrouvez avec une autre page dans le navigateur, assurez-vous que l’URL est `http://localhost:nnnnn/AddMovie`), où  *nnnnn*  est le numéro de port que vous utilisez.)
+(Si vous vous retrouvez avec une autre page dans le navigateur, assurez-vous que l’URL est `http://localhost:nnnnn/AddMovie`), où *nnnnn* est le numéro de port que vous utilisez.)
 
 Si vous avez reçu une page d’erreur ? Dans ce cas, le lire attentivement et assurez-vous que le code ressemble exactement ce qui a été répertorié précédemment.
 
@@ -145,7 +145,7 @@ Dans ce cas, la base de données n’a pas été déclenche réellement (ou *lev
 
 Évidemment, vous ne souhaitez pas permettre aux utilisateurs d’entrer des informations de film de moitié vide dans la base de données. La solution consiste à valider les entrées de l’utilisateur. Au départ, la validation sera Assurez-vous simplement que l’utilisateur a entré une valeur pour tous les champs (autrement dit, qu’aucun d'entre eux contient une chaîne vide).
 
-> [!TIP] 
+> [!TIP]
 > 
 > **Chaînes null et vides**
 > 
@@ -260,6 +260,6 @@ Dans le didacticiel suivant, vous allez apprendre comment permettre aux utilisat
 - [Instruction SQL INSERT INTO](http://www.w3schools.com/sql/sql_insert.asp) sur le site W3Schools
 - [Validation des entrées d’utilisateur dans ASP.NET Web Pages Sites](https://go.microsoft.com/fwlink/?LinkId=253002). Plus d’informations sur l’utilisation de la `Validation` helper.
 
->[!div class="step-by-step"]
-[Précédent](form-basics.md)
-[Suivant](updating-data.md)
+> [!div class="step-by-step"]
+> [Précédent](form-basics.md)
+> [Suivant](updating-data.md)

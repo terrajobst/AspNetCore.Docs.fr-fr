@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/implement-efficient-data-paging
-title: "Implémenter la pagination des données efficace | Documents Microsoft"
+title: Implémenter la pagination des données efficace | Documents Microsoft
 author: microsoft
-description: "Étape 8 montre comment ajouter des prise en charge la pagination à nos URL /Dinners afin qu’au lieu d’afficher 1000 préparés à la fois, nous affichons uniquement 10 préparés à venir à..."
+description: Étape 8 montre comment ajouter des prise en charge la pagination à nos URL /Dinners afin qu’au lieu d’afficher 1000 préparés à la fois, nous affichons uniquement 10 préparés à venir à...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/implement-efficient-data-paging
 msc.type: authoredcontent
-ms.openlocfilehash: 0b0fba604f97d3bb72d2d403e643b422b9ce48bd
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0188e21438820adf2adbe05b047fdb772540e1a0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implement-efficient-data-paging"></a>Implémenter la pagination des données efficace
 ====================
@@ -139,6 +139,6 @@ Nous avons également &lt; &lt; &lt; et &gt; &gt; &gt; interface utilisateur en 
 
 Nous allons maintenant voir comment nous pouvons ajouter la prise en charge de l’authentification et autorisation à notre application.
 
->[!div class="step-by-step"]
-[Précédent](re-use-ui-using-master-pages-and-partials.md)
-[Suivant](secure-applications-using-authentication-and-authorization.md)
+> [!div class="step-by-step"]
+> [Précédent](re-use-ui-using-master-pages-and-partials.md)
+> [Suivant](secure-applications-using-authentication-and-authorization.md)

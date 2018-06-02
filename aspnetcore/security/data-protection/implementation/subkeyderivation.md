@@ -1,7 +1,7 @@
 ---
-title: "Dérivation de sous-clés et de chiffrement authentifié"
+title: Dérivation de sous-clés et de chiffrement authentifié dans ASP.NET Core
 author: rick-anderson
-description: "Ce document explique les détails d’implémentation de la protection des données ASP.NET Core dérivation des sous-clés et authentifié de chiffrement."
+description: Découvrez les détails d’implémentation de la Protection des données ASP.NET Core dérivation des sous-clés et authentifié de chiffrement.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: 4b905bbc7bb064b6ba1741557bd694c8c67ccfa8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 8c83da40a524896becc07c94c01d5e2b684e4386
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="subkey-derivation-and-authenticated-encryption"></a>Dérivation de sous-clés et de chiffrement authentifié
+# <a name="subkey-derivation-and-authenticated-encryption-in-aspnet-core"></a>Dérivation de sous-clés et de chiffrement authentifié dans ASP.NET Core
 
 <a name="data-protection-implementation-subkey-derivation"></a>
 
@@ -63,7 +63,7 @@ Une fois que K_E est généré par le biais du mécanisme ci-dessus, nous géné
 *output:= keyModifier || iv || E_cbc (K_E,iv,data) || HMAC(K_H, iv || E_cbc (K_E,iv,data))*
 
 > [!NOTE]
-> Le `IDataProtector.Protect` implémentation sera [ajouter l’en-tête magic et l’id de clé](authenticated-encryption-details.md) de sortie avant de le renvoyer à l’appelant. Étant donné que l’en-tête magic et l’id de clé sont implicitement dans le cadre du [AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad), et étant donné que le modificateur de clé est acheminé comme entrée au KDF, cela signifie que chaque octet de la charge utile de retourné finale est authentifié par le Mac.
+> Le `IDataProtector.Protect` implémentation sera [ajouter l’en-tête magic et l’id de clé](xref:security/data-protection/implementation/authenticated-encryption-details) de sortie avant de le renvoyer à l’appelant. Étant donné que l’en-tête magic et l’id de clé sont implicitement dans le cadre du [AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad), et étant donné que le modificateur de clé est acheminé comme entrée au KDF, cela signifie que chaque octet de la charge utile de retourné finale est authentifié par le Mac.
 
 ## <a name="galoiscounter-mode-encryption--validation"></a>Le chiffrement du Mode de compteur/GALOIS + validation
 
@@ -74,4 +74,4 @@ Une fois que K_E est généré par le biais du mécanisme ci-dessus, nous géné
 *sortie : = keyModifier || valeur à usage unique || E_gcm (K_E, valeur à usage unique, de données) || authTag*
 
 > [!NOTE]
-> Même si GCM prend nativement en charge le concept d’AAD, nous sommes toujours à l’alimentation AAD uniquement KDF d’origine, pour passer une chaîne vide en GCM pour son paramètre AAD. La raison à cela est double. Tout d’abord, [pour prendre en charge agilité](context-headers.md#data-protection-implementation-context-headers) que nous ne souhaitons utiliser K_M directement en tant que la clé de chiffrement. En outre, GCM impose des exigences très strictes unicité sur ses entrées. La probabilité que la routine de chiffrement GCM n’est jamais appelée sur deux ou plus distincte des jeux de données d’entrée avec le même (clé, valeur à usage unique) paire ne doit pas dépasser 2 ^ 32. Si nous corriger K_E nous ne pouvons pas effectuer plus de 2 ^ 32 opérations de chiffrement avant d’exécuter que nous afoul of le 2 ^ -32 limiter. Cela peut sembler un très grand nombre d’opérations, mais un serveur web de trafic élevé peut subir de 4 milliards de demandes en jours simples, dans la durée de vie normale pour ces clés. Pour rester conformes de 2 ^ limite de la probabilité de-32, que nous continuons à utiliser un modificateur de clé de 128 bits et les 96 bits valeur à usage unique, qui étend radicalement le nombre d’opérations utilisable pour n’importe quel K_M donné. Par souci de simplicité de conception, nous partageons le chemin d’accès du code KDF entre les opérations CBC et GCM et AAD est déjà pris en compte dans le KDF il est inutile de transférer à la routine GCM.
+> Même si GCM prend nativement en charge le concept d’AAD, nous sommes toujours à l’alimentation AAD uniquement KDF d’origine, pour passer une chaîne vide en GCM pour son paramètre AAD. La raison à cela est double. Tout d’abord, [pour prendre en charge agilité](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers) que nous ne souhaitons utiliser K_M directement en tant que la clé de chiffrement. En outre, GCM impose des exigences très strictes unicité sur ses entrées. La probabilité que la routine de chiffrement GCM n’est jamais appelée sur deux ou plus distincte des jeux de données d’entrée avec le même (clé, valeur à usage unique) paire ne doit pas dépasser 2 ^ 32. Si nous corriger K_E nous ne pouvons pas effectuer plus de 2 ^ 32 opérations de chiffrement avant d’exécuter que nous afoul of le 2 ^ -32 limiter. Cela peut sembler un très grand nombre d’opérations, mais un serveur web de trafic élevé peut subir de 4 milliards de demandes en jours simples, dans la durée de vie normale pour ces clés. Pour rester conformes de 2 ^ limite de la probabilité de-32, que nous continuons à utiliser un modificateur de clé de 128 bits et les 96 bits valeur à usage unique, qui étend radicalement le nombre d’opérations utilisable pour n’importe quel K_M donné. Par souci de simplicité de conception, nous partageons le chemin d’accès du code KDF entre les opérations CBC et GCM et AAD est déjà pris en compte dans le KDF il est inutile de transférer à la routine GCM.

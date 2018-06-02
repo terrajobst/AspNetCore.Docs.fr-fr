@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
-title: "Extraction et affichage des données avec modèle de liaison et les formulaires web | Documents Microsoft"
+title: Extraction et affichage des données avec modèle de liaison et les formulaires web | Documents Microsoft
 author: tfitzmac
-description: "Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-..."
+description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: e750250285fcb0088da284588d721ac21e73820c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 26873efa5dbfdbdab39a52cfb9cfd5a65c8231a3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>La récupération et affichage des données avec la liaison de modèle et les web forms
 ====================
@@ -182,5 +182,5 @@ Dans ce didacticiel, vous créé des classes de modèle de données et généré
 
 Dans la prochaine [didacticiel](updating-deleting-and-creating-data.md) dans cette série, vous allez activer la mise à jour, la suppression et la création de données.
 
->[!div class="step-by-step"]
-[Next](updating-deleting-and-creating-data.md)
+> [!div class="step-by-step"]
+> [Next](updating-deleting-and-creating-data.md)

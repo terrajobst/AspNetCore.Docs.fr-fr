@@ -1,26 +1,28 @@
 ---
-title: "Publier une application ASP.NET Core sur Azure à l’aide d’outils en ligne de commande | Microsoft Docs"
-description: "Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide du client de ligne de commande Git."
-services: multiple
+title: Publier une application ASP.NET Core sur Azure avec des outils en ligne de commande
 author: camsoper
-ms.author: casoper
+description: Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide du client de ligne de commande Git.
 manager: wpickett
+ms.author: casoper
+ms.custom: mvc
 ms.date: 11/03/2017
-ms.topic: get-started-article
+ms.devlang: dotnet
 ms.prod: asp.net-core
 ms.technology: aspnet
-ms.custom: mvc
-ms.devlang: dotnet
+ms.topic: get-started-article
+services: multiple
 uid: tutorials/publish-to-azure-webapp-using-cli
-ms.openlocfilehash: de05c1688d7de6126434395042103d803ee3064e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0462a4cf18bba23643ed3b1b4e6b76bdbceb24a8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="deploy-an-aspnet-core-application-to-azure-app-service-from-the-command-line"></a>Déployer une application ASP.NET Core sur Azure App Service en ligne de commande
+# <a name="publish-an-aspnet-core-app-to-azure-with-command-line-tools"></a>Publier une application ASP.NET Core sur Azure avec des outils en ligne de commande
 
 Auteur : [Cam Soper](https://twitter.com/camsoper)
+
+[!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
 
 Ce didacticiel vous montrera comment générer et déployer une application ASP.NET Core sur Microsoft Azure App Service à l’aide d’outils en ligne de commande.  Lorsque vous aurez terminé, vous disposerez d’une application web créée dans ASP.NET MVC Core et hébergée comme une application Azure App Service Web Apps.  Ce didacticiel est écrit avec des outils en ligne de commande Windows, mais il peut également s’appliquer à des environnements macOS et Linux.  
 
@@ -35,7 +37,7 @@ Dans ce didacticiel, vous apprendrez à :
 Pour suivre ce didacticiel, vous aurez besoin des éléments suivants :
 
 * Un [abonnement Microsoft Azure](https://azure.microsoft.com/free/)
-* [.NET Core](https://www.microsoft.com/net/download/core)
+* [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 * Un client de ligne de commande [Git](https://www.git-scm.com/)
 
 ## <a name="create-a-web-application"></a>Créer une application web

@@ -2,7 +2,7 @@
 uid: web-pages/overview/ui-layouts-and-themes/twitter-helper
 title: Application auxiliaire avec ASP.NET Web Pages Twitter | Documents Microsoft
 author: tfitzmac
-description: "Cette rubrique, l’application montrent comment ajouter une application auxiliaire Twitter à votre projet WebMatrix 3. Il contient le code de l’application auxiliaire Twitter et montre comment appeler l’application d’assistance..."
+description: Cette rubrique, l’application montrent comment ajouter une application auxiliaire Twitter à votre projet WebMatrix 3. Il contient le code de l’application auxiliaire Twitter et montre comment appeler l’application d’assistance...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/07/2014
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/twitter-helper
 msc.type: authoredcontent
 ms.openlocfilehash: 07d9c4d485c42b78a42c54c9740af5f67cb44763
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/25/2018
 ---
 <a name="twitter-helper-with-aspnet-web-pages"></a>Programme d’assistance de Twitter avec les Pages Web ASP.NET
 ====================
@@ -67,24 +67,24 @@ Le code ci-dessus génère les boutons et les widgets suivants. Ces boutons et l
 
 ### <a name="follow-button"></a>Suivez le bouton
 
-[Suivez @aspnet)](https://twitter.com/aspnet)<script>! (fonction) (d, s, id) {var js, fjs = d.getElementsByTagName(s) [0], p = /^http:/.test(d.location) ? 'http' : 'https'. Si ( ! d.getElementById(id)) {js = d.createElement(s) ; js.id = id ; js.src = p + ' : / / platform.twitter.com/widgets.js' ; fjs.parentNode.insertBefore (js, fjs) ;}} (document, 'script', 'twitter-wjs') ;</script>
+[Suivez @aspnet)](https://twitter.com/aspnet)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
 ### <a name="tweet-button"></a>Bouton de tweet
 
-[Tweet](https://twitter.com/share)<script>! (fonction) (d, s, id) {var js, fjs = d.getElementsByTagName(s) [0], p = /^http:/.test(d.location) ? 'http' : 'https'. Si ( ! d.getElementById(id)) {js = d.createElement(s) ; js.id = id ; js.src = p + ' : / / platform.twitter.com/widgets.js' ; fjs.parentNode.insertBefore (js, fjs) ;}} (document, 'script', 'twitter-wjs') ;</script>
+[Tweet](https://twitter.com/share)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
 ### <a name="user-timeline-profile"></a>Chronologie de l’utilisateur (profil)
 
-[Tweets par @aspnet ](https://twitter.com/aspnet) <script>! (fonction) (d, s, id) {var js, fjs = d.getElementsByTagName(s) [0], p = /^http:/.test(d.location) ? 'http' : 'https'. Si ( ! d.getElementById(id)) {js = d.createElement(s) ; js.id = id ; js.src = p + » : / / platform.twitter.com/widgets.js » ; fjs.parentNode.insertBefore (js, fjs) ;}} (document, « script », « wjs-twitter ») ;</script>
+[Tweets par @aspnet](https://twitter.com/aspnet)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
 
 ### <a name="favorites"></a>Favoris
 
-[Tweet favori par @Microsoft ](https://twitter.com/Microsoft/favorites) <script>! (fonction) (d, s, id) {var js, fjs = d.getElementsByTagName(s) [0], p = /^http:/.test(d.location) ? 'http' : 'https'. Si ( ! d.getElementById(id)) {js = d.createElement(s) ; js.id = id ; js.src = p + » : / / platform.twitter.com/widgets.js » ; fjs.parentNode.insertBefore (js, fjs) ;}} (document, « script », « wjs-twitter ») ;</script>
+[Favoris tweet par @Microsoft](https://twitter.com/Microsoft/favorites)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
 
 ### <a name="list"></a>Liste
 
-[Tweets de @Microsoft/MS \_consommateur\_bandes](https://twitter.com/microsoft/ms-consumer-brands/)<script>! (fonction) (d, s, id) {var js, fjs = d.getElementsByTagName(s) [0], p = /^http:/.test(d.location) ? 'http' : 'https'. Si ( ! d.getElementById(id)) {js = d.createElement(s) ; js.id = id ; js.src = p + » : / / platform.twitter.com/widgets.js » ; fjs.parentNode.insertBefore (js, fjs) ;}} (document, « script », « wjs-twitter ») ;</script>
+[Tweets de @Microsoft/MS \_consommateur\_bandes](https://twitter.com/microsoft/ms-consumer-brands/)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
 
 ### <a name="search"></a>Rechercher
 
-[Tweets sur &quot;#asp.net&quot;](https://twitter.com/search?q=%23asp.net)<script>! (fonction) (d, s, id) {var js, fjs = d.getElementsByTagName(s) [0], p = /^http:/.test(d.location) ? 'http' : 'https'. Si ( ! d.getElementById(id)) {js = d.createElement(s) ; js.id = id ; js.src = p + » : / / platform.twitter.com/widgets.js » ; fjs.parentNode.insertBefore (js, fjs) ;}} (document, « script », « wjs-twitter ») ;</script>
+[Tweets sur &quot;#asp.net&quot;](https://twitter.com/search?q=%23asp.net)<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>

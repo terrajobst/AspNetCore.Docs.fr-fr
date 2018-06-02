@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application
-title: "Gestion d’accès concurrentiel avec Entity Framework 4.0 dans une Application ASP.NET 4 | Documents Microsoft"
+title: Gestion d’accès concurrentiel avec Entity Framework 4.0 dans une Application ASP.NET 4 | Documents Microsoft
 author: tdykstra
-description: "Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par la prise en main de la série de didacticiels Entity Framework 4.0. JE..."
+description: Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par la prise en main de la série de didacticiels Entity Framework 4.0. I...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 7bdcf610458631749531ed1279d27e90572f0371
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f40695270006e4f8b0c9ad8e94049e5239f06e63
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-concurrency-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>Gestion d’accès concurrentiel avec Entity Framework 4.0 dans une Application ASP.NET 4
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > Cette série de didacticiels s’appuie sur l’application web de l’université Contoso qui est créée par le [mise en route avec l’Entity Framework 4.0](https://asp.net/entity-framework/tutorials#Getting%20Started) série de didacticiels. Si vous n’avez pas terminé les didacticiels antérieures, comme point de départ pour ce didacticiel vous pouvez [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) que vous devriez avoir créé. Vous pouvez également [télécharger l’application](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) qui est créé par la série de didacticiels terminée. Si vous avez des questions sur les didacticiels, vous pouvez les valider pour le [forum de ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
 
@@ -37,13 +37,13 @@ Un conflit de concurrence se produit lorsqu’un utilisateur modifie un enregist
 
 ### <a name="pessimistic-concurrency-locking"></a>L’accès simultané pessimiste (verrouillage)
 
-Si votre application doit-elle éviter la perte accidentelle de données dans les scénarios d’accès concurrentiel, une manière de procéder consiste à utiliser des verrous de base de données. Il s’agit *d’accès concurrentiel pessimiste*. Par exemple, avant de lire une ligne à partir d’une base de données, vous demandez un verrou de lecture seule ou pour l’accès de mise à jour. Si vous verrouillez une ligne pour l’accès de mise à jour, aucun autre utilisateur n’est autorisés pour le verrouillage de la ligne pour en lecture seule ou mettre à jour de l’accès, car ils obtenez une copie des données sont en cours de modification. Si vous verrouillez une ligne pour l’accès en lecture seule, d’autres peuvent également le verrouiller pour l’accès en lecture seule, mais pas pour la mise à jour.
+Si votre application doit éviter la perte accidentelle de données dans des scénarios d’accès concurrentiel, une manière de le faire consiste à utiliser des verrous de base de données. Il s’agit *d’accès concurrentiel pessimiste*. Par exemple, avant de lire une ligne d’une base de données, vous demandez un verrou pour lecture seule ou pour accès avec mise à jour. Si vous verrouillez une ligne pour accès avec mise à jour, aucun autre utilisateur n’est autorisé à verrouiller la ligne pour lecture seule ou pour accès avec mise à jour, car ils obtiendraient ainsi une copie de données qui sont en cours de modification. Si vous verrouillez une ligne pour accès en lecture seule, d’autres utilisateurs peuvent également la verrouiller pour accès en lecture seule, mais pas pour accès avec mise à jour.
 
-Gestion des verrous a certains inconvénients. Il peut être complexe au programme. Il nécessite des ressources de gestion de base de données importantes, et cela peut provoquer des problèmes de performances en tant que le nombre d’utilisateurs d’une application augmente (autrement dit, il n’évolue pas correctement). Pour ces raisons, pas tous les systèmes de gestion de base de données prend en charge l’accès simultané pessimiste. Entity Framework ne fournit aucune prise en charge intégrée pour celle-ci, et ce didacticiel ne vous montre comment l’implémenter.
+Gestion des verrous a certains inconvénients. Elle peut être complexe à programmer. Il nécessite des ressources de gestion de base de données importantes, et cela peut provoquer des problèmes de performances en tant que le nombre d’utilisateurs d’une application augmente (autrement dit, il n’évolue pas correctement). Pour ces raisons, certains systèmes de gestion de base de données ne prennent pas en charge l’accès concurrentiel pessimiste. Entity Framework ne fournit aucune prise en charge intégrée pour celle-ci, et ce didacticiel ne vous montre comment l’implémenter.
 
 ### <a name="optimistic-concurrency"></a>Accès concurrentiel optimiste
 
-L’alternative à l’accès concurrentiel pessimiste est *d’accès concurrentiel optimiste*. L’accès concurrentiel optimiste signifie autoriser les conflits d’accès concurrentiel se produire et puis réagir correctement dans le cas. Par exemple, John exécute le *Department.aspx* page, clique sur le **modifier** la liaison pour le service de l’historique et réduit la **Budget** quantité à partir du format 1,000,000.00 $ $ $ 125,000.00. (John administre un département concurrent et souhaite libérer de l’argent pour son propre service).
+L’alternative à l’accès concurrentiel pessimiste est *d’accès concurrentiel optimiste*. L’accès concurrentiel optimiste signifie autoriser la survenance des conflits d’accès concurrentiel, puis de réagir correctement quand ils surviennent. Par exemple, John exécute le *Department.aspx* page, clique sur le **modifier** la liaison pour le service de l’historique et réduit la **Budget** quantité à partir du format 1,000,000.00 $ $ $ 125,000.00. (John administre un département concurrent et souhaite libérer de l’argent pour son propre service).
 
 [![Image07](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image6.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image5.png)
 
@@ -55,15 +55,15 @@ John clique sur **mise à jour** tout d’abord, puis clique Jane **mise à jour
 
 Certaines des actions que vous pouvez effectuer dans ce scénario sont les suivantes :
 
-- Vous pouvez effectuer le suivi des dont un utilisateur a modifié la propriété et mettre à jour uniquement les colonnes correspondantes dans la base de données. Dans l’exemple de scénario, aucune donnée n’a été perdue, car des propriétés différentes ont été mis à jour par les deux utilisateurs. La prochaine fois que quelqu'un accède le département de l’historique, ils verront le 1/1/1999 et $125,000.00. 
+- Vous pouvez effectuer le suivi des propriétés modifiées par un utilisateur et mettre à jour seulement les colonnes correspondantes dans la base de données. Dans l’exemple de scénario, aucune donnée ne serait perdue, car des propriétés différentes ont été mises à jour par chacun des deux utilisateurs. La prochaine fois que quelqu'un accède le département de l’historique, ils verront le 1/1/1999 et $125,000.00. 
 
     Il s’agit du comportement par défaut dans Entity Framework, et elle peut réduire sensiblement le nombre de conflits qui peuvent entraîner une perte de données. Toutefois, ce comportement n’éviter la perte de données si des modifications concurrentes sont apportées à la même propriété d’une entité. En outre, ce comportement n’est pas toujours possible. Lorsque vous mappez des procédures stockées à un type d’entité, toutes les propriétés d’une entité sont mis à jour lorsque des modifications à l’entité sont apportées dans la base de données.
-- Vous pouvez laisser les modifications de Jane écrase les modifications de John. Une fois que Jane clique sur **mise à jour**, le **Budget** quantité repasse au format 1,000,000.00 $. Cela s’appelle un *Client Wins* ou *dernier dans Wins* scénario. (Les valeurs du client sont prioritaires sur les nouveautés dans le magasin de données).
-- Vous pouvez empêcher la modification de Jeanne à partir de la mise à jour dans la base de données. En règle générale, vous afficher un message d’erreur, elle indique l’état actuel des données et lui permet d’entrer à nouveau des modifications si elle souhaite que pour les rendre encore. Vous pouvez davantage automatiser le processus d’en enregistrant son entrée et de lui donner la possibilité à appliquer à nouveau sans avoir à saisir de nouveau. Cela s’appelle un *magasin Wins* scénario. (Les valeurs du magasin de données sont prioritaires sur les valeurs soumis par le client).
+- Vous pouvez laisser les modifications de Jane écrase les modifications de John. Une fois que Jane clique sur **mise à jour**, le **Budget** quantité repasse au format 1,000,000.00 $. Ceci s’appelle un scénario *Priorité au client* ou *Priorité au dernier entré* (Last in Wins). (Les valeurs du client sont prioritaires sur les nouveautés dans le magasin de données).
+- Vous pouvez empêcher la modification de Jeanne à partir de la mise à jour dans la base de données. En règle générale, vous afficher un message d’erreur, elle indique l’état actuel des données et lui permet d’entrer à nouveau des modifications si elle souhaite que pour les rendre encore. Vous pouvez davantage automatiser le processus d’en enregistrant son entrée et de lui donner la possibilité à appliquer à nouveau sans avoir à saisir de nouveau. Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.)
 
 ### <a name="detecting-concurrency-conflicts"></a>Détection des conflits d’accès concurrentiel
 
-Dans Entity Framework, vous pouvez résoudre les conflits en gérant `OptimisticConcurrencyException` Entity Framework lève les exceptions. Pour savoir quand ces exceptions de lever, Entity Framework doit être en mesure de détecter les conflits. Par conséquent, vous devez configurer la base de données et le modèle de données en conséquence. Certaines options pour l’activation de la détection de conflit sont les suivantes :
+Dans Entity Framework, vous pouvez résoudre les conflits en gérant `OptimisticConcurrencyException` Entity Framework lève les exceptions. Pour savoir quand lever ces exceptions, Entity Framework doit être en mesure de détecter les conflits. Par conséquent, vous devez configurer de façon appropriée la base de données et le modèle de données. Voici quelques options pour l’activation de la détection des conflits :
 
 - Dans la base de données inclut une colonne de table qui peut être utilisée pour déterminer quand une ligne a été modifiée. Vous pouvez ensuite configurer l’Entity Framework pour inclure cette colonne dans la `Where` clause SQL `Update` ou `Delete` commandes.
 
@@ -302,8 +302,8 @@ Exécuter la page et recréez un conflit d’accès concurrentiel. Cette fois, v
 
 [![Image23](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image46.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image45.png)
 
-Cette étape termine l’introduction à la gestion des conflits d’accès concurrentiel. Le didacticiel suivant fournissent des instructions sur la façon d’améliorer les performances dans une application web qui utilise Entity Framework.
+Ceci termine l’introduction à la gestion des conflits d’accès concurrentiel. Le didacticiel suivant fournissent des instructions sur la façon d’améliorer les performances dans une application web qui utilise Entity Framework.
 
->[!div class="step-by-step"]
-[Précédent](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
-[Suivant](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [!div class="step-by-step"]
+> [Précédent](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
+> [Suivant](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)

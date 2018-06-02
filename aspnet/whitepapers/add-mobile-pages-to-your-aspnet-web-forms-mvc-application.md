@@ -1,22 +1,22 @@
 ---
 uid: whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
-title: "Comment : Ajouter des Pages mobiles à ASP.NET Web Forms / MVC Application | Documents Microsoft"
+title: 'Comment : Ajouter des Pages mobiles à ASP.NET Web Forms / MVC Application | Documents Microsoft'
 author: rick-anderson
-description: "Cette rubrique décrit différentes méthodes pour servir les pages optimisés pour les appareils mobiles à partir de votre ASP.NET Web Forms / application MVC et suggère architecturaux et en cours..."
+description: Cette rubrique décrit différentes méthodes pour servir les pages optimisés pour les appareils mobiles à partir de votre ASP.NET Web Forms / application MVC et suggère architecturaux et en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2011
 ms.topic: article
 ms.assetid: 3124f28e-cc32-418a-afe3-519fa56f4c36
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
-ms.openlocfilehash: aac359b26c508784793a67260dc2e65c30db687a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a8358b91ca424f4f3e576057ab43d850081dda60
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Comment : Ajouter des Pages mobiles à ASP.NET Web Forms / Application MVC
 ====================
@@ -116,7 +116,7 @@ Les développeurs ASP.NET Web Forms et MVC peuvent découvrir immédiatement des
 - Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel
 - Request.Browser.ScreenPixelsWidth
 - Request.Browser.SupportsXmlHttp
-- .. .et beaucoup d’autres
+- ...et beaucoup d’autres
 
 En arrière-plan, la plateforme ASP.NET correspond à entrant *User-Agent* en-tête HTTP de (l’agent utilisateur) par rapport aux expressions régulières dans un ensemble de fichiers XML de définition de navigateur. Par défaut la plateforme inclut les définitions pour de nombreux périphériques mobiles courantes, et vous pouvez ajouter des fichiers de définition de navigateur personnalisés pour d’autres que vous voulez reconnaître. Pour plus d’informations, consultez la page MSDN [des contrôles serveur Web ASP.NET et les fonctionnalités du navigateur](https://msdn.microsoft.com/library/x3k2ssx2.aspx).
 
@@ -185,7 +185,7 @@ Notez que l’authentification par formulaire effectue certaines hypothèses con
 
     [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample4.cs)]
   
- Ce code suppose que votre page possède un contrôle de serveur de connexion appelé LoginUser, comme dans le modèle de projet par défaut.
+  Ce code suppose que votre page possède un contrôle de serveur de connexion appelé LoginUser, comme dans le modèle de projet par défaut.
 
 ### <a name="working-with-output-caching"></a>Utilisation de la mise en cache de sortie
 
@@ -243,7 +243,7 @@ Ensuite, notez qu’en ajoutant un deuxième HomeController à votre application
 
 [!code-csharp[Main](add-mobile-pages-to-your-aspnet-web-forms-mvc-application/samples/sample9.cs)]
 
-À présent l’erreur passe et l’URL http://*yoursite*/ atteint la page d’accueil de bureau et http://*yoursite*/mobile/ va atteindre la page d’accueil mobile.
+À présent l’erreur passe et l’URL http://<em>yoursite</em>/ atteint la page d’accueil de bureau et http://<em>yoursite</em>/mobile/ va atteindre la page d’accueil mobile.
 
 ### <a name="redirecting-mobile-visitors-to-your-mobile-area"></a>Redirection des visiteurs mobiles à votre zone mobile
 

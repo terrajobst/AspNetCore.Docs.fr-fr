@@ -2,7 +2,7 @@
 uid: web-api/overview/advanced/http-cookies
 title: Les Cookies HTTP dans ASP.NET Web API | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/17/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/http-cookies
 msc.type: authoredcontent
-ms.openlocfilehash: e17c51946a268aa13ec035d18dc516928c9f4419
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 363ca975cf75b635b766a53eeda87cf957eed60c
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/22/2018
 ---
 <a name="http-cookies-in-aspnet-web-api"></a>Cookies HTTP dans l’API Web ASP.NET
 ====================
@@ -28,7 +28,7 @@ Cette rubrique décrit comment envoyer et recevoir des cookies HTTP dans l’API
 
 Cette section donne une vue d’ensemble de la façon dont les cookies sont implémentés au niveau HTTP. Pour plus d’informations, consultez [RFC 6265](http://tools.ietf.org/html/rfc6265).
 
-Un cookie est un élément de données qu’un serveur envoie des réponses HTTP. Le client stocke le cookie (facultatif) et le retourne subsequet demandes. Ainsi, le client et le serveur partager l’état. Pour définir un cookie, le serveur inclut un en-tête Set-Cookie dans la réponse. Le format d’un cookie est une paire nom-valeur, avec des attributs facultatifs. Exemple :
+Un cookie est un élément de données qu’un serveur envoie des réponses HTTP. Le client stocke le cookie (facultatif) et le retourne subsequet demandes. Ainsi, le client et le serveur partager l’état. Pour définir un cookie, le serveur inclut un en-tête Set-Cookie dans la réponse. Le format d’un cookie est une paire nom-valeur, avec des attributs facultatifs. Par exemple :
 
 [!code-powershell[Main](http-cookies/samples/sample1.ps1)]
 
@@ -36,7 +36,7 @@ Voici un exemple avec des attributs :
 
 [!code-powershell[Main](http-cookies/samples/sample2.ps1)]
 
-Pour retourner un cookie sur le serveur, le client contient un en-tête Cookie dans les demandes ultérieures.
+Pour retourner un cookie sur le serveur, le client inclut un en-tête Cookie dans les demandes ultérieures.
 
 [!code-console[Main](http-cookies/samples/sample3.cmd)]
 
@@ -79,7 +79,7 @@ A **CookieHeaderValue** contient une collection de **CookieState** instances. Ch
 
 ## <a name="structured-cookie-data"></a>Données de Cookie structurée
 
-De nombreux navigateurs limitent le nombre de cookies ils stockera &#8212; à la fois le nombre total et le nombre par domaine. Par conséquent, il peut être utile de placer des données structurées dans un cookie unique, au lieu de définir plusieurs cookies.
+De nombreux navigateurs limitent le nombre de cookies ils stockera&#8212;le nombre total et le nombre par domaine. Par conséquent, il peut être utile de placer des données structurées dans un cookie unique, au lieu de définir plusieurs cookies.
 
 > [!NOTE]
 > RFC 6265 ne définit pas la structure des données de cookie.

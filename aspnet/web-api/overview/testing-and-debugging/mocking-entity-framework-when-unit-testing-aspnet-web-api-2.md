@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/testing-and-debugging/mocking-entity-framework-when-unit-testing-aspnet-web-api-2
-title: "Simulation d’Entity Framework lorsque l’API Web ASP.NET 2 de tests unitaires | Documents Microsoft"
+title: Simulation d’Entity Framework lorsque l’API Web ASP.NET 2 de tests unitaires | Documents Microsoft
 author: tfitzmac
-description: "Ce guide et l’application montrent comment créer des tests unitaires pour votre application Web API 2 qui utilise Entity Framework. Il montre comment modifier le..."
+description: Ce guide et l’application montrent comment créer des tests unitaires pour votre application Web API 2 qui utilise Entity Framework. Il montre comment modifier le...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/13/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/testing-and-debugging/mocking-entity-framework-when-unit-testing-aspnet-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: 2d8a3df94c91d2fac79006916375764c2b90dc85
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: abfde7edec85812de3560f4edefb110c3e374580
+ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/12/2018
 ---
 <a name="mocking-entity-framework-when-unit-testing-aspnet-web-api-2"></a>Simulation d’Entity Framework lorsque l’API Web ASP.NET 2 de tests unitaires
 ====================
@@ -55,7 +55,7 @@ Cette rubrique contient les sections suivantes :
 Si vous avez déjà effectué les étapes de [tests unitaires avec ASP.NET Web API 2](unit-testing-with-aspnet-web-api.md), vous pouvez passer à la section [ajouter le contrôleur de](#controller).
 
 <a id="prereqs"></a>
-## <a name="prerequisites"></a>Conditions préalables
+## <a name="prerequisites"></a>Prérequis
 
 Visual Studio 2017 Community, Professional ou l’édition entreprise
 
@@ -149,7 +149,7 @@ Cliquez sur le projet StoreApp.Tests et sélectionnez **gérer les Packages NuGe
 
 ![gérer les packages](mocking-entity-framework-when-unit-testing-aspnet-web-api-2/_static/image4.png)
 
-Des packages en ligne, rechercher et installer le package EntityFramework (version 6.0 ou version ultérieure). S’il apparaît que le package EntityFramework est déjà installé, vous avez peut-être sélectionné le projet StoreApp au lieu du projet StoreApp.Tests.
+Des packages en ligne, rechercher et installer le package EntityFramework (version 6.0 ou version ultérieure). S’il apparaît que le package EntityFramework est déjà installé, il pouvez que vous avez sélectionné le projet StoreApp au lieu du projet StoreApp.Tests.
 
 ![ajouter l’Entity Framework](mocking-entity-framework-when-unit-testing-aspnet-web-api-2/_static/image5.png)
 

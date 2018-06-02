@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs
-title: "Filtrage avec une liste déroulante (c#) maître/détail | Documents Microsoft"
+title: Filtrage avec une liste déroulante (c#) maître/détail | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous expliquons comment afficher les rapports maître/détail dans une page web à l’aide de la compréhension des listes pour afficher les enregistrements de 'master' et un contrôle DataList à Affic..."
+description: Dans ce didacticiel, nous expliquons comment afficher les rapports maître/détail dans une page web à l’aide de la compréhension des listes pour afficher les enregistrements de 'master' et un contrôle DataList à Affic...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/18/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c2199f0957f4cbe1d35dd971744087da9af1abce
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c84902ccf028c976246380abfaebb6a76c573603
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-c"></a>Maître/détail, le filtrage avec une liste déroulante (c#)
 ====================
@@ -103,12 +103,12 @@ La dernière étape de notre rapport maître/détail est pour répertorier les p
 **Figure 7**: sélectionnez le `GetProductsByCategoryID(categoryID)` (méthode) ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image17.png))
 
 
-Après avoir cliqué sur Suivant, l’Assistant ObjectDataSource nous invite pour la source de la valeur pour le `GetProductsByCategoryID(categoryID)` la méthode  *`categoryID`*  paramètre. Pour utiliser la valeur de l’élément sélectionné `categories` DropDownList élément définie la source de paramètre pour le contrôle et le ControlID à `Categories`.
+Après avoir cliqué sur Suivant, l’Assistant ObjectDataSource nous invite pour la source de la valeur pour le `GetProductsByCategoryID(categoryID)` la méthode *`categoryID`* paramètre. Pour utiliser la valeur de l’élément sélectionné `categories` DropDownList élément définie la source de paramètre pour le contrôle et le ControlID à `Categories`.
 
 
 [![Affectez à la valeur de DropDownList catégories categoryID paramètre](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image19.png)](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image18.png)
 
-**Figure 8**: définir le  *`categoryID`*  paramètre à la valeur de la `Categories` DropDownList ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image20.png))
+**Figure 8**: définir le *`categoryID`* paramètre à la valeur de la `Categories` DropDownList ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image20.png))
 
 
 À la fin de l’Assistant Configurer la Source de données, Visual Studio génère automatiquement un `ItemTemplate` pour le contrôle DataList qui affiche le nom et la valeur de chaque champ de données. Nous allons améliorer du contrôle DataList au lieu d’utiliser un `ItemTemplate` qui affiche simplement le nom du produit, catégorie, fournisseur, quantité par unité et le prix avec un `SeparatorTemplate` qui injecte un `<hr>` élément entre chaque élément. Je vais utiliser la `ItemTemplate` à partir d’un exemple dans le [affichage des données avec les contrôles de répéteur DataList](../displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-cs.md) didacticiel, mais n’hésitez à utiliser le balisage de modèle, vous trouvez plus attrayante.
@@ -164,9 +164,9 @@ La raison pour laquelle nous avons choisi la valeur `0` pour obtenir la liste «
 **Figure 13**: lorsque l’élément de liste «--Choisir une catégorie-- » est sélectionnée, les produits non sont affichés ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-datalist-cs/_static/image31.png))
 
 
-Si vous affichez plutôt *tous les* des produits lorsque l’option «--choisir une catégorie-- » est sélectionnée, utilisez la valeur `-1` à la place. Le lecteur perspicace souvenez-vous que précédent dans le *filtrage de maître/détail avec un DropDownList* didacticiel, nous avons mis à jour le `ProductsBLL` de classe `GetProductsByCategoryID(categoryID)` (méthode) afin que si un  *`categoryID`*  valeur de `-1` a été passé, produit tous les enregistrements retournés.
+Si vous affichez plutôt *tous les* des produits lorsque l’option «--choisir une catégorie-- » est sélectionnée, utilisez la valeur `-1` à la place. Le lecteur perspicace souvenez-vous que précédent dans le *filtrage de maître/détail avec un DropDownList* didacticiel, nous avons mis à jour le `ProductsBLL` de classe `GetProductsByCategoryID(categoryID)` (méthode) afin que si un *`categoryID`* valeur de `-1` a été passé, produit tous les enregistrements retournés.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Lors de l’affichage des données hiérarchiquement relatives, il vous aide souvent à présenter les données à l’aide de rapports maître/détail, à partir de laquelle l’utilisateur peut démarrer vous parcourez attentivement les données à partir du haut de la hiérarchie et afficher des détails. Dans ce didacticiel, nous avons examiné création d’un rapport maître/détail simple montrant les produits d’une catégorie sélectionnée. Cela a été accompli en utilisant une liste déroulante pour obtenir la liste des catégories et un contrôle DataList pour les produits appartenant à la catégorie sélectionnée.
 
@@ -176,11 +176,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements particuliers à...
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Randy Schmidt. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Next](master-detail-filtering-acess-two-pages-datalist-cs.md)
+> [!div class="step-by-step"]
+> [Next](master-detail-filtering-acess-two-pages-datalist-cs.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
-title: "Création d’un projet d’équipe dans TFS | Documents Microsoft"
+title: Création d’un projet d’équipe dans TFS | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment créer un nouveau projet d’équipe dans Team Foundation Server (TFS) 2010."
+description: Cette rubrique décrit comment créer un nouveau projet d’équipe dans Team Foundation Server (TFS) 2010.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
 msc.type: authoredcontent
-ms.openlocfilehash: ef8cddb7733c1f8cacd24c5cf341a42741d25a95
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 79c069a601c0eafd84ae142241895428052acd29
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-team-project-in-tfs"></a>Création d’un projet d’équipe dans TFS
 ====================
@@ -27,7 +27,7 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit comment créer un nouveau projet d’équipe dans Team Foundation Server (TFS) 2010.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -107,11 +107,11 @@ Ensuite, vous devez donner à l’utilisateur l’autorisation de créer de nouv
 
     ![](creating-a-team-project-in-tfs/_static/image9.png)
 
-    > [!NOTE]
-    > Vous pouvez recevoir un **HTTP 404 introuvable** erreur en raison d’un bogue de codage HTTP double. Si cela se produit, remplacez l’URL par ceci :   
-    > [*URL de collection de site*] /\_layouts/permsetup.aspx  
-    > Exemple :  
-    > http://tfs/sites/Fabrikam%20Web%20Projects/\_layouts/permsetup.aspx
+   > [!NOTE]
+   > Vous pouvez recevoir un <strong>HTTP 404 introuvable</strong> erreur en raison d’un bogue de codage HTTP double. Si cela se produit, remplacez l’URL par ceci :   
+   > [<em>URL de collection de site</em>] /\_layouts/permsetup.aspx  
+   > Par exemple :  
+   > http://tfs/sites/Fabrikam%20Web%20Projects/\_layouts/permsetup.aspx
 8. Sur le **configurer les groupes pour ce Site** page, ajoutez l’utilisateur qui doivent créer des projets d’équipe pour le **propriétaires** de groupe, puis cliquez sur **OK**.
 
     ![](creating-a-team-project-in-tfs/_static/image10.png)
@@ -202,6 +202,6 @@ La rubrique suivante, [Ajout de contenu pour le contrôle de code Source](adding
 
 Pour plus d’informations sur la création de projets d’équipe dans TFS, consultez [créer un projet d’équipe](https://msdn.microsoft.com/library/ms181477(v=VS.100).aspx). Pour plus d’informations sur l’activation aux utilisateurs de créer de nouveaux projets d’équipe au sein d’une collection de projets d’équipe, consultez [définition d’autorisations d’administrateur pour les Collections de projets d’équipe](https://msdn.microsoft.com/library/dd547204.aspx). Pour plus d’informations sur l’ajout d’utilisateurs aux projets d’équipe, consultez [ajouter des utilisateurs aux projets d’équipe](https://msdn.microsoft.com/library/bb558971.aspx).
 
->[!div class="step-by-step"]
-[Précédent](configuring-team-foundation-server-for-web-deployment.md)
-[Suivant](adding-content-to-source-control.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-team-foundation-server-for-web-deployment.md)
+> [Suivant](adding-content-to-source-control.md)

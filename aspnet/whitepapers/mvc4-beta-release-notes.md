@@ -1,22 +1,22 @@
 ---
 uid: whitepapers/mvc4-beta-release-notes
-title: ASP.NET MVC 4 | Documents Microsoft
+title: ASP.NET MVC 4 | Microsoft Docs
 author: rick-anderson
-description: "Ce document décrit la version de la version bêta d’ASP.NET MVC 4 pour Visual Studio 2010."
+description: Ce document décrit la version de la version bêta d’ASP.NET MVC 4 pour Visual Studio 2010.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/09/2011
 ms.topic: article
 ms.assetid: 666407bb-81de-4319-89ba-0302c382a208
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-beta-release-notes
 msc.type: content
-ms.openlocfilehash: 58ae178a0e6578d8353e1a4e9d67fc1026e99f55
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d29f09d726e835c1eb1fc38e643a4bfe7f00f61c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/24/2018
 
 - [Notes d’installation](#_Toc303253802)
 - [Documentation](#_Toc303253803)
-- [Support](#_Toc303253804)
+- [Prise en charge](#_Toc303253804)
 - [Configuration logicielle requise](#_Toc303253805)
 - [La mise à niveau d’un projet ASP.NET MVC 3 vers ASP.NET MVC 4](#_Toc303253806)
 - [Nouvelles fonctionnalités de la version bêta d’ASP.NET MVC 4](#_Toc303253807)
@@ -139,7 +139,7 @@ ASP.NET Web API prend en charge les fonctionnalités suivantes :
 - **Configuration basée sur le code :** configuration de l’API Web est obtenue uniquement via le code, en laissant votre configuration nettoyer les fichiers.
 - **Auto-hébergement :** API Web peut être hébergé dans votre propre processus, en plus de IIS tout en utilisant la puissance d’itinéraires et d’autres fonctionnalités de l’API Web.
 
-Pour plus d’informations sur l’API Web ASP.NET, consultez [https://www.asp.net/web-api](../web-api/index.md).
+Pour plus d’informations sur l’API Web ASP.NET, consultez [ https://www.asp.net/web-api ](../web-api/index.md).
 
 <a id="_Toc317096198"></a>
 ### <a name="aspnet-single-page-application"></a>Application à Page unique d’ASP.NET
@@ -150,7 +150,7 @@ ASP.NET MVC 4 inclut désormais une version préliminaire de l’expérience de 
 - Composants Web API supplémentaires pour l’unité de travail et la prise en charge de la couche DAL
 - Un modèle de projet MVC avec la génération de modèles automatique pour commencer rapidement
 
-Pour plus d’informations sur l’Application à Page unique prend en charge dans ASP.NET MVC 4 visitez [https://www.asp.net/single-page-application](../single-page-application/index.md).
+Pour plus d’informations sur l’Application à Page unique prend en charge dans ASP.NET MVC 4 visitez [ https://www.asp.net/single-page-application ](../single-page-application/index.md).
 
 <a id="_Toc303253808"></a>
 ### <a name="enhancements-to-default-project-templates"></a>Améliorations apportées aux modèles de projet par défaut
@@ -185,7 +185,7 @@ Si vous avez déjà un site orienté sur le bureau que vous souhaitez ajouter de
 
 La nouvelle fonctionnalité de Modes d’affichage permet à une application de sélectionner les vues selon le navigateur qui effectue la demande. Par exemple, si un navigateur demande la page d’accueil, l’application peut utiliser le modèle Views\Home\Index.cshtml. Si un navigateur mobile demande à la page d’accueil, l’application peut retourner le modèle Views\Home\Index.mobile.cshtml.
 
-Dispositions et aucun peut également être remplacées pour les types de navigateur particulier. Exemple :
+Dispositions et aucun peut également être remplacées pour les types de navigateur particulier. Par exemple :
 
 - Si votre dossier Views\Shared contient à la fois le \_Layout.cshtml et \_modèles Layout.mobile.cshtml, par défaut, l’application utilisera \_Layout.mobile.cshtml lors des demandes à partir de navigateurs mobiles et \_Layout.cshtml au cours des autres requêtes.
 - Si un dossier contient à la fois \_MyPartial.cshtml et \_MyPartial.mobile.cshtml, l’instruction @Html.Partial(«\_MyPartial ») sera rendue \_MyPartial.mobile.cshtml lors des demandes de mobile navigateurs, et \_MyPartial.cshtml au cours des autres requêtes.
@@ -219,7 +219,7 @@ Une convention pour les pages web mobile optimisé est pour ajouter un lien dont
 
 Si les visiteurs sur le lien, ils sont basculés vers la version bureau de la même page.
 
-Étant donné que la disposition de votre bureau n’inclut pas d’un sélecteur de vue par défaut, les visiteurs ne pourront pas obtenir en mode mobile. Pour ce faire, ajoutez la référence suivante à  *\_ViewSwitcher* à disposition de votre bureau, juste à l’intérieur de la  *&lt;corps&gt;*  élément :
+Étant donné que la disposition de votre bureau n’inclut pas d’un sélecteur de vue par défaut, les visiteurs ne pourront pas obtenir en mode mobile. Pour ce faire, ajoutez la référence suivante à  *\_ViewSwitcher* à disposition de votre bureau, juste à l’intérieur de la *&lt;corps&gt;* élément :
 
 [!code-cshtml[Main](mvc4-beta-release-notes/samples/sample7.cshtml)]
 
@@ -280,9 +280,9 @@ Version bêta d’ASP.NET MVC 4 prend en charge la version 1.5 de septembre 2011
     L’élément de liaison d’assembly dans le fichier web.config modifié doit apparaître comme suit :
 
     [!code-xml[Main](mvc4-beta-release-notes/samples/sample12.xml)]
-- **Le modèle d’élément « Ajouter un contrôleur » dans les projets Visual Basic génère un espace de noms incorrect lorsqu’elle est appelée *** d’à l’intérieur d’une zone.** Lorsque vous ajoutez un contrôleur à une zone dans un projet ASP.NET MVC qui utilise Visual Basic, le modèle d’élément insère l’espace de noms incorrect dans le contrôleur. Le résultat est une erreur « fichier introuvable » lorsque vous accédez à une action dans le contrôleur.  
+- <strong>Le modèle d’élément « Ajouter un contrôleur » dans les projets Visual Basic génère un espace de noms incorrect lorsqu’elle est appelée</strong><strong>à partir d’à l’intérieur d’une zone.</strong> Lorsque vous ajoutez un contrôleur à une zone dans un projet ASP.NET MVC qui utilise Visual Basic, le modèle d’élément insère l’espace de noms incorrect dans le contrôleur. Le résultat est une erreur « fichier introuvable » lorsque vous accédez à une action dans le contrôleur.  
   
- L’espace de noms généré omet tout après l’espace de noms racine. Par exemple, l’espace de noms généré est *RootNamespace* mais doit être *RootNamespace.Areas.AreaName.Controllers* .
+  L’espace de noms généré omet tout après l’espace de noms racine. Par exemple, l’espace de noms généré est *RootNamespace* mais doit être *RootNamespace.Areas.AreaName.Controllers* .
 - **Modifications avec rupture dans le moteur d’affichage Razor.** Dans le cadre d’une réécriture de l’analyseur Razor, les types suivants ont été supprimés des *System.Web.Mvc.Razor*: 
 
     - *ModelSpan*
@@ -290,7 +290,7 @@ Version bêta d’ASP.NET MVC 4 prend en charge la version 1.5 de septembre 2011
     - *MvcCSharpRazorCodeGenerator*
     - *MvcVBRazorCodeParser*
 
- Les méthodes suivantes ont été également supprimés : 
+  Les méthodes suivantes ont été également supprimés : 
 
     - *MvcCSharpRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
     - *MvcWebPageRazorHost.DecorateCodeGenerator(System.Web.Razor.Generator.RazorCodeGenerator)*
@@ -305,15 +305,15 @@ Version bêta d’ASP.NET MVC 4 prend en charge la version 1.5 de septembre 2011
 
     **Mises à jour requises**
 
-    1. Dans le fichier racine Web.config, ajoutez un nouvel  *&lt;appSettings&gt;*  entrée avec la clé *webPages:Version* et la valeur *1.0.0.0*.
+  1. Dans le fichier racine Web.config, ajoutez un nouvel *&lt;appSettings&gt;* entrée avec la clé *webPages:Version* et la valeur *1.0.0.0*.
 
-        [!code-xml[Main](mvc4-beta-release-notes/samples/sample14.xml)]
-    2. Dans l’Explorateur de solutions, cliquez sur le nom du projet, puis sélectionnez Décharger le projet. Cliquez à nouveau sur le nom, puis sélectionnez Modifier *nom_projet*.csproj.
-    3. Recherchez les références d’assembly suivantes : 
+      [!code-xml[Main](mvc4-beta-release-notes/samples/sample14.xml)]
+  2. Dans l’Explorateur de solutions, cliquez sur le nom du projet, puis sélectionnez Décharger le projet. Cliquez à nouveau sur le nom, puis sélectionnez Modifier *nom_projet*.csproj.
+  3. Recherchez les références d’assembly suivantes : 
 
-        [!code-xml[Main](mvc4-beta-release-notes/samples/sample15.xml)]
+      [!code-xml[Main](mvc4-beta-release-notes/samples/sample15.xml)]
 
-        Remplacez-les par les éléments suivants :
+      Remplacez-les par les éléments suivants :
 
-        [!code-xml[Main](mvc4-beta-release-notes/samples/sample16.xml)]
-    4. Enregistrer les modifications, fermez le fichier projet (.csproj) modifiiez, puis cliquez sur le projet et choisissez recharger.
+      [!code-xml[Main](mvc4-beta-release-notes/samples/sample16.xml)]
+  4. Enregistrer les modifications, fermez le fichier projet (.csproj) modifiiez, puis cliquez sur le projet et choisissez recharger.

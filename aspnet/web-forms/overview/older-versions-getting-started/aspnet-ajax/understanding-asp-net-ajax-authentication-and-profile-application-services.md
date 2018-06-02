@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
-title: "Présentation de l’authentification ASP.NET AJAX et les Services d’Application de profil | Documents Microsoft"
+title: Présentation de l’authentification ASP.NET AJAX et les Services d’Application de profil | Documents Microsoft
 author: scottcate
-description: "Le service d’authentification permet aux utilisateurs de fournir des informations d’identification afin de recevoir un cookie d’authentification et est le service de passerelle pour permettre à utilisateur personnalisé..."
+description: Le service d’authentification permet aux utilisateurs de fournir des informations d’identification afin de recevoir un cookie d’authentification et est le service de passerelle pour permettre à utilisateur personnalisé...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
 msc.type: authoredcontent
-ms.openlocfilehash: 182276f9f91b99beb1ce0fc40dcda1f19376669a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0bf6538d0c4ae9488e6ac29ccba6d4b243cf070e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-authentication-and-profile-application-services"></a>Présentation de l’authentification ASP.NET AJAX et les Services d’Application de profil
 ====================
@@ -43,7 +43,7 @@ Le service d’authentification permet aux utilisateurs de fournir des informati
 
 Le service de profil permet l’intégration automatique et le stockage des données utilisateur en fonction de l’appartenance, tel que fourni par le service d’authentification. Les données stockées sont spécifiées par le fichier web.config, et les différents fournisseurs de services de profilage gérer la gestion des données. Comme avec le service d’authentification, le service de profil d’AJAX est compatible avec le service de profil ASP.NET standard, afin que les pages actuellement incorporation des fonctionnalités du service de profil ASP.NET ne doivent pas être divisés en incluant la prise en charge d’AJAX.
 
-Incorporation de l’authentification ASP.NET et les services de profilage eux-mêmes dans une application se trouve en dehors de la portée de ce livre blanc. Pour plus d’informations sur la rubrique, consultez MSDN Library font référence à l’article Gestion des utilisateurs à l’aide de l’appartenance à [https://msdn.microsoft.com/library/tw292whz.aspx](https://msdn.microsoft.com/library/tw292whz.aspx). ASP.NET inclut également un utilitaire permettant de configurer automatiquement l’appartenance à un serveur SQL, qui est le fournisseur de service d’authentification par défaut pour l’appartenance d’ASP.NET. Pour plus d’informations, consultez l’article ASP.NET SQL Server Registration Tool (Aspnet\_regsql.exe) à [https://msdn.microsoft.com/library/ms229862(vs.80).aspx](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
+Incorporation de l’authentification ASP.NET et les services de profilage eux-mêmes dans une application se trouve en dehors de la portée de ce livre blanc. Pour plus d’informations sur la rubrique, consultez MSDN Library font référence à l’article Gestion des utilisateurs à l’aide de l’appartenance à [ https://msdn.microsoft.com/library/tw292whz.aspx ](https://msdn.microsoft.com/library/tw292whz.aspx). ASP.NET inclut également un utilitaire permettant de configurer automatiquement l’appartenance à un serveur SQL, qui est le fournisseur de service d’authentification par défaut pour l’appartenance d’ASP.NET. Pour plus d’informations, consultez l’article ASP.NET SQL Server Registration Tool (Aspnet\_regsql.exe) à [ https://msdn.microsoft.com/library/ms229862(vs.80).aspx ](https://msdn.microsoft.com/library/ms229862(vs.80).aspx).
 
 ## <a name="using-the-aspnet-ajax-authentication-service"></a>*À l’aide du Service d’authentification ASP.NET AJAX*
 
@@ -131,7 +131,7 @@ La référence de la fonction spécifiée par cette propriété doit avoir la si
 
 | **Nom du paramètre** | **Signification** |
 | --- | --- |
-| validCredentials | Spécifie si l’utilisateur a fourni les informations d’identification valides. `true`Si l’utilisateur est connecté avec succès dans le cas contraire `false`. |
+| validCredentials | Spécifie si l’utilisateur a fourni les informations d’identification valides. `true` Si l’utilisateur est connecté avec succès dans le cas contraire `false`. |
 | userContext | Spécifie les informations de contexte utilisateur fournies quand la fonction de connexion a été appelée. |
 | MethodName | Le nom de la méthode d’appel. |
 
@@ -345,6 +345,6 @@ En outre, en créant des implémentations de service web simplifié avec des sig
 
 Scott caté travaille avec les technologies Microsoft Web depuis 1997 et est le directeur de myKB.com ([www.myKB.com](http://www.myKB.com)) où il est spécialisé dans l’écriture d’ASP.NET en fonction des applications axées sur les solutions logicielles de la Base de connaissances. Scott peut être contacté par courrier électronique en [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) ou son blog à [ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[Précédent](understanding-asp-net-ajax-updatepanel-triggers.md)
-[Suivant](understanding-asp-net-ajax-localization.md)
+> [!div class="step-by-step"]
+> [Précédent](understanding-asp-net-ajax-updatepanel-triggers.md)
+> [Suivant](understanding-asp-net-ajax-localization.md)

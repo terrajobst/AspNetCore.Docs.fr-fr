@@ -2,7 +2,7 @@
 uid: web-pages/overview/testing-and-debugging/aspnet-web-pages-razor-troubleshooting-guide
 title: Des Pages Web ASP.NET (Razor) Troubleshooting Guide | Documents Microsoft
 author: tfitzmac
-description: "Cet article décrit les problèmes que vous pourriez rencontrer lorsque vous travaillez avec des Pages Web ASP.NET (Razor) et des solutions proposées. Versions logicielles Pag de Web ASP.NET..."
+description: Cet article décrit les problèmes que vous pourriez rencontrer lorsque vous travaillez avec des Pages Web ASP.NET (Razor) et des solutions proposées. Versions logicielles Pag de Web ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/testing-and-debugging/aspnet-web-pages-razor-troubleshooting-guide
 msc.type: authoredcontent
-ms.openlocfilehash: 2e25e9c7cea937016301e0f11919adb9647ca216
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ec51169ccea0016712de3fdb28a16a174150a8bd
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-pages-razor-troubleshooting-guide"></a>Des Pages Web ASP.NET (Razor) Troubleshooting Guide
 ====================
@@ -144,12 +144,12 @@ Remplacez les valeurs appropriées pour `your-SMTP-server-name`, et ainsi de sui
     *Une tentative de connexion a échoué car la partie connectée n’a pas répondu convenablement après une période de temps ou une connexion établie a échoué car l’hôte connecté n’a pas répondu*
 
     Cette erreur signifie généralement que l’application ne peut pas se connecter au serveur SMTP. Vérifiez le nom du serveur et le numéro de port.
-- *La boîte aux lettres non disponible. La réponse du serveur était : 5.1.0 &lt; someuser@invaliddomain &gt; expéditeur rejeté : domaine de l’expéditeur non valide*
+- <em>La boîte aux lettres non disponible. La réponse du serveur était : 5.1.0 &lt; someuser@invaliddomain &gt; expéditeur rejeté : domaine de l’expéditeur non valide</em>
 
     Ce message peut indiquer que le `From` adresse n’est pas correct ou est manquant.
 - *La chaîne spécifiée n’est pas dans le format requis pour une adresse de messagerie.*
 
-    Cette erreur peut indiquer que la valeur de la `To` ou `From` propriétés ne sont pas reconnues en tant qu’adresses de messagerie. (ASP.NET ne peut pas vérifier que l’adresse de messagerie est valide, uniquement si elle 's au format approprié, tel que  *name@domain.com* .)
+    Cette erreur peut indiquer que la valeur de la `To` ou `From` propriétés ne sont pas reconnues en tant qu’adresses de messagerie. (ASP.NET ne peut pas vérifier que l’adresse de messagerie est valide, uniquement si elle 's au format approprié, tel que *name@domain.com*.)
 
 > [!NOTE]
 > Supprimez le balisage qui affiche l’erreur (`@errorMessage`) avant de publier la page à un site dynamique. Il n’est pas judicieux de permettre aux utilisateurs de voir les messages d’erreur que vous obtenez à partir d’un serveur.

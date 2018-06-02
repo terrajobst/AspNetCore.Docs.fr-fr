@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
-title: "Le modèle de Page 2.0 ASP.NET | Documents Microsoft"
+title: Le modèle de Page 2.0 ASP.NET | Documents Microsoft
 author: microsoft
-description: "Dans ASP.NET 1.x, les développeurs devaient choisir entre un modèle de code inline et un modèle de code-behind du code. Code-behind peut être implémenté à l’aide soit du attr Src..."
+description: Dans ASP.NET 1.x, les développeurs devaient choisir entre un modèle de code inline et un modèle de code-behind du code. Code-behind peut être implémenté à l’aide soit du attr Src...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/the-asp-net-2-0-page-model
 msc.type: authoredcontent
-ms.openlocfilehash: e008f197cf08bec81c560018f2d42306598f9e6d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: fda85ec03f845cafa7720382bf85652937932c44
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="the-aspnet-20-page-model"></a>Le modèle de Page 2.0 d’ASP.NET
 ====================
@@ -77,7 +77,7 @@ L’attribut CodeFile est le remplacement de l’attribut code-behind dans Visua
 
 L’attribut CodeFileBaseClass est utilisé dans les cas où vous souhaitez plusieurs pages pour dériver à partir d’une seule classe de base. En raison de l’implémentation des classes partielles dans ASP.NET, sans cet attribut, une classe de base qui utilise des champs communs partagés pour référencer les contrôles déclarés dans une page ASPX ne fonctionnera pas correctement, car ASP. Moteur de compilation filets crée automatiquement les nouveaux membres basées sur les contrôles dans la page. Par conséquent, si vous souhaitez une classe de base commune pour les deux ou plusieurs pages dans ASP.NET, vous devez définir spécifier votre classe de base dans l’attribut CodeFileBaseClass et puis dérivez chaque classe de pages à partir de cette classe de base. L’attribut CodeFile est également requis lorsque cet attribut est utilisé.
 
-## <a name="compilationmode"></a>compilationMode
+## <a name="compilationmode"></a>CompilationMode
 
 Cet attribut vous permet de définir la propriété CompilationMode de la page ASPX. La propriété CompilationMode est une énumération qui contient les valeurs **toujours**, **automatique**, et **jamais**. La valeur par défaut est **toujours**. Le **automatique** paramètre empêche ASP.NET dynamiquement la compilation de la page si possible. À l’exception des pages à partir de la compilation dynamique améliore les performances. Toutefois, si une page qui est exclue contient ce code doit être compilé, une erreur est levée lors de la page.
 
@@ -148,7 +148,7 @@ Retourne le chemin d’accès relatif à l’application à la page ou le contr�
 
 ## <a name="apprelativevirtualpath"></a>AppRelativeVirtualPath
 
-Retourne le chemin d’accès du répertoire virtuel relatif à la page ou le contrôle. Par exemple pour une page à http://app/folder/page.aspx, la propriété retourne ~ / folder/page.aspx.
+Retourne le chemin d’accès du répertoire virtuel relatif à la page ou le contrôle. Par exemple, pour une page à http://app/folder/page.aspx, la propriété retourne ~ / folder/page.aspx.
 
 ## <a name="asynctimeout"></a>AsyncTimeout
 
@@ -600,11 +600,13 @@ Utilisez la méthode IsStartupScriptRegistered pour déterminer si un script a d
 
 Voici quelques-unes des autres méthodes de la classe ClientScriptManager utiles.
 
-| **GetCallbackEventReference** | Consultez les rappels de script plus haut dans ce module. |
-| --- | --- |
-| **GetPostBackClientHyperlink** | Obtient une référence JavaScript (javascript :&lt;appeler&gt;) qui peut être utilisé pour publier à partir d’un événement côté client. |
-| **GetPostBackEventReference** | Obtient une chaîne qui peut être utilisée pour lancer une publication à partir du client. |
-| **GetWebResourceUrl** | Retourne une URL à une ressource qui est incorporée dans un assembly. Doit être utilisé conjointement avec **RegisterClientScriptResource**. |
-| **RegisterClientScriptResource** | Enregistre une ressource Web avec la page. Il s’agit de ressources incorporé dans un assembly et gérée par le gestionnaire WebResource.axd nouvelle. |
-| **RegisterHiddenField** | Inscrit un champ masqué avec la page. |
-| **RegisterOnSubmitStatement** | Inscrit le code côté client qui s’exécute lorsque l’envoi du formulaire HTML. |
+
+|  <strong>GetCallbackEventReference</strong>   |                                                 Consultez les rappels de script plus haut dans ce module.                                                 |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
+|  <strong>GetPostBackClientHyperlink</strong>  |                Obtient une référence JavaScript (javascript :&lt;appeler&gt;) qui peut être utilisé pour publier à partir d’un événement côté client.                 |
+|  <strong>GetPostBackEventReference</strong>   |                                   Obtient une chaîne qui peut être utilisée pour lancer une publication à partir du client.                                    |
+|      <strong>GetWebResourceUrl</strong>       | Retourne une URL à une ressource qui est incorporée dans un assembly. Doit être utilisé conjointement avec <strong>RegisterClientScriptResource</strong>. |
+| <strong>RegisterClientScriptResource</strong> |     Enregistre une ressource Web avec la page. Il s’agit de ressources incorporé dans un assembly et gérée par le gestionnaire WebResource.axd nouvelle.      |
+|     <strong>RegisterHiddenField</strong>      |                                                 Inscrit un champ masqué avec la page.                                                 |
+|  <strong>RegisterOnSubmitStatement</strong>   |                                  Inscrit le code côté client qui s’exécute lorsque l’envoi du formulaire HTML.                                   |
+

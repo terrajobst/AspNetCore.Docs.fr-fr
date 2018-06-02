@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/performing-simple-validation-cs
-title: "Exécution de la Validation Simple (c#) | Documents Microsoft"
+title: Exécution de la Validation Simple (c#) | Documents Microsoft
 author: StephenWalther
-description: "Découvrez comment effectuer la validation dans une application ASP.NET MVC. Dans ce didacticiel, Stephen Walther présente l’état du modèle et l’application d’assistance de la validation HTML..."
+description: Découvrez comment effectuer la validation dans une application ASP.NET MVC. Dans ce didacticiel, Stephen Walther présente l’état du modèle et l’application d’assistance de la validation HTML...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/performing-simple-validation-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 005872308d9d4d8ac7feb12dd5ab1fc463d0140e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7fc1dcc6935841382215f67a519cd241ac68931a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="performing-simple-validation-c"></a>Exécution de la Validation Simple (c#)
 ====================
@@ -126,10 +126,10 @@ Le classeur de modèles par défaut ne peut pas également affecter une valeur n
 
 Si vous souhaitez personnaliser l’apparence de ces messages d’erreur de prebinding vous devez créer des chaînes de ressources pour ces messages.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel a pour décrire les mécanismes de base de validation dans l’infrastructure ASP.NET MVC. Vous avez appris à utiliser l’état du modèle et les programmes d’assistance HTML de la validation. Nous avons abordé également la distinction entre prebinding et postbinding de validation. Dans d’autres didacticiels, nous aborderons diverses stratégies pour le déplacement de votre code de validation en dehors de vos contrôleurs et dans vos classes de modèle.
 
->[!div class="step-by-step"]
-[Précédent](displaying-a-table-of-database-data-cs.md)
-[Suivant](validating-with-the-idataerrorinfo-interface-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](displaying-a-table-of-database-data-cs.md)
+> [Suivant](validating-with-the-idataerrorinfo-interface-cs.md)

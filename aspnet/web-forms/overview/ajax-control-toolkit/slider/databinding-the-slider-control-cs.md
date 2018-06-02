@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs
-title: "Liaison de données le contrôle Slider (c#) | Documents Microsoft"
+title: Liaison de données le contrôle Slider (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle de curseur dans la boîte à outils de contrôle AJAX fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position en cours..."
+description: Le contrôle de curseur dans la boîte à outils de contrôle AJAX fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2aa770bce5969a4ab57893d5ceecc127cf7f7872
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7644c991cd88868235511ba372be1f5b47c68fea
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="databinding-the-slider-control-c"></a>Liaison de données le contrôle Slider (c#)
 ====================
@@ -52,6 +52,6 @@ Comme vous pouvez le voir dans le navigateur, la liaison de données fonctionne 
 
 Curseur et zone de texte sont synchronisées ([cliquez pour afficher l’image en taille réelle](databinding-the-slider-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](using-the-slider-control-with-auto-postback-cs.md)
-[Suivant](using-the-slider-control-with-auto-postback-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-the-slider-control-with-auto-postback-cs.md)
+> [Suivant](using-the-slider-control-with-auto-postback-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-vb
-title: "Manipulation des propriétés DropShadow à partir du Code Client (VB) | Documents Microsoft"
+title: Manipulation des propriétés DropShadow à partir du Code Client (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle dans la boîte à outils de contrôle AJAX DropShadow étend un panneau avec une ombre portée. Propriétés de cette extension peuvent également être modifiées à l’aide du client JavaScrip..."
+description: Le contrôle dans la boîte à outils de contrôle AJAX DropShadow étend un panneau avec une ombre portée. Propriétés de cette extension peuvent également être modifiées à l’aide du client JavaScrip...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow/manipulating-dropshadow-properties-from-client-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 706ccb5a95873aad4c1b9e0942ab06cf4162710a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b5b024811ea511e67ce180169de9f0b7e3ef51d9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="manipulating-dropshadow-properties-from-client-code-vb"></a>Manipulation des propriétés DropShadow à partir du Code Client (VB)
 ====================
@@ -62,5 +62,5 @@ La fonction JavaScript `changeOpacity()` doit tout d’abord recherchez le `Drop
 
 L’opacité est modifiée du côté client ([cliquez pour afficher l’image en taille réelle](manipulating-dropshadow-properties-from-client-code-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](adjusting-the-z-index-of-a-dropshadow-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](adjusting-the-z-index-of-a-dropshadow-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1
-title: "Partie 1 : Vue d’ensemble et fichier -> Nouveau projet | Documents Microsoft"
+title: 'Partie 1 : Vue d’ensemble et fichier -> Nouveau projet | Documents Microsoft'
 author: jongalloway
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 1 traite de vue d’ensemble et de fichier -> Nouveau projet."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 1 traite de vue d’ensemble et de fichier -> Nouveau projet.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: 1e3373a21c7d1766cfad390a7ba68b1363d8d895
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 2082927d18c95563893da199d60347fa15952446
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-1-overview-and-file-new-project"></a>Partie 1 : Vue d’ensemble et fichier -> Nouveau projet
 ====================
@@ -115,15 +115,15 @@ Le modèle vide MVC 3 n’est pas vide, il ajoute une structure de dossiers de b
 
 ASP.NET MVC utilise des conventions d’affectation de noms de base pour les noms de dossier :
 
-| **Dossier** | **Fonction** |
+| **Folder** | **Fonction** |
 | --- | --- |
 | **/ Contrôleurs** | Contrôleurs de répondent à l’entrée à partir du navigateur, décider quoi faire avec ce dernier et retourner une réponse à l’utilisateur. |
-| **/ Vues** | Vues contiennent nos modèles de l’interface utilisateur |
-| **/ Modèles** | Les modèles contiennent et manipulent des données |
-| **/ Contenu** | Ce dossier conserve nos images, CSS et tout autre contenu statique |
-| **Scripts** | Ce dossier conserve nos fichiers JavaScript |
+| **/Views** | Vues contiennent nos modèles de l’interface utilisateur |
+| **/Models** | Les modèles contiennent et manipulent des données |
+| **/Content** | Ce dossier conserve nos images, CSS et tout autre contenu statique |
+| **/Scripts** | Ce dossier conserve nos fichiers JavaScript |
 
 Ces dossiers sont inclus même dans une application vide ASP.NET MVC parce que l’infrastructure ASP.NET MVC par défaut utilise une approche « convention avant la configuration » et fait des hypothèses par défaut basés sur les conventions d’affectation de noms de dossier. Par exemple, les contrôleurs de recherchent des vues dans le dossier vues par défaut sans avoir à spécifier explicitement ceci dans votre code. Les conventions par défaut ne conserverez réduit la quantité de code, vous devez écrire, et peut également faciliter par d’autres développeurs à comprendre votre projet. Nous allons expliquer ces conventions plus que nous créons notre application.
 
->[!div class="step-by-step"]
-[Next](mvc-music-store-part-2.md)
+> [!div class="step-by-step"]
+> [Next](mvc-music-store-part-2.md)

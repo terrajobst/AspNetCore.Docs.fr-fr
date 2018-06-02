@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb
-title: "Prise en main la boîte à outils de contrôle AJAX (VB) | Documents Microsoft"
+title: Prise en main la boîte à outils de contrôle AJAX (VB) | Documents Microsoft
 author: microsoft
-description: "En savoir plus vous devez connaître pour commencer à utiliser les outils de contrôle AJAX."
+description: En savoir plus vous devez connaître pour commencer à utiliser les outils de contrôle AJAX.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/get-started-with-the-ajax-control-toolkit-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0bbf6dc0be8a96ecd47b8620a6ba3220b50f10d4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 30653a147bd3bf581af27220e11cdecc2f89fc4a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="get-started-with-the-ajax-control-toolkit-vb"></a>Prise en main la boîte à outils de contrôle AJAX (VB)
 ====================
@@ -89,6 +89,6 @@ Si vous utilisiez une version antérieure du Kit de ressources et que vous devez
 - Fichiers binaires - supprimer l’ancienne version de l’assembly AjaxControlToolkit.dll dans votre dossier Bin du site Web.
 - Les éléments de boîte à outils - supprimer de l’onglet Outils de contrôle AJAX et suivez les étapes ci-dessus pour créer de nouveau l’onglet avec la nouvelle version de l’assembly AjaxControlToolkit.dll.
 
->[!div class="step-by-step"]
-[Précédent](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
-[Suivant](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-custom-ajax-control-toolkit-control-extender-cs.md)
+> [Suivant](using-ajax-control-toolkit-controls-and-control-extenders-vb.md)

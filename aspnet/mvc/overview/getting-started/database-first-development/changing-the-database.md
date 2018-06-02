@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/changing-the-database
-title: "Base de données EF tout d’abord avec ASP.NET MVC : modification de la base de données | Documents Microsoft"
+title: 'Base de données EF tout d’abord avec ASP.NET MVC : modification de la base de données | Documents Microsoft'
 author: tfitzmac
-description: "À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri..."
+description: À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/01/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/changing-the-database
 msc.type: authoredcontent
-ms.openlocfilehash: 1ffe753812e5eef817f03ab488a28ae5fcefd41e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 63ee8768a43dbdac80922e3adbedd3378c10da73
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-changing-the-database"></a>Base de données EF tout d’abord avec ASP.NET MVC : modification de la base de données
 ====================
@@ -63,6 +63,6 @@ Les vues contiennent désormais la propriété MiddleName.
 
 Dans la section suivante, vous ajouterez du code pour personnaliser l’affichage pour afficher les détails d’un enregistrement de l’étudiant.
 
->[!div class="step-by-step"]
-[Précédent](generating-views.md)
-[Suivant](customizing-a-view.md)
+> [!div class="step-by-step"]
+> [Précédent](generating-views.md)
+> [Suivant](customizing-a-view.md)

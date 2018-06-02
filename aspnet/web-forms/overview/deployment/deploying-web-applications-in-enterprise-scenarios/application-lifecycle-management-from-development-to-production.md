@@ -2,7 +2,7 @@
 uid: web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
 title: "Gestion du cycle de vie des applications : Du développement jusqu'à la Production | Documents Microsoft"
 author: jrjlee
-description: "Cette rubrique illustre comment une entreprise fictive gère le déploiement d’application web ASP.NET dans les environnements de test, intermédiaire et de production en tant que par..."
+description: Cette rubrique illustre comment une entreprise fictive gère le déploiement d’application web ASP.NET dans les environnements de test, intermédiaire et de production en tant que par...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: f7ffff1c3434ce98c70265e4bf64047fd44252d0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 8beeffb374df09c6695a1845199d30006ddcc1b7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="application-lifecycle-management-from-development-to-production"></a>Gestion du cycle de vie des applications : Du développement jusqu'à la Production
 ====================
@@ -26,7 +26,7 @@ par [Jason Lee](https://github.com/jrjlee)
 
 > Cette rubrique illustre comment une entreprise fictive gère le déploiement d’application web ASP.NET dans les environnements de test, intermédiaire et de production dans le cadre d’un processus de développement continu. Tout au long de la rubrique, des liens sont fournis pour plus d’informations et procédures pas à pas sur la façon d’effectuer des tâches spécifiques.
 > 
-> La rubrique est conçue pour fournir une vue d’ensemble pour un [série de didacticiels](deploying-web-applications-in-enterprise-scenarios.md) sur le déploiement web de l’entreprise. Ne vous inquiétez pas si vous n’êtes pas familiarisé avec les concepts décrits ici & #x 2014 certains ; les didacticiels qui suivent fournissent des informations détaillées sur l’ensemble de ces tâches et les techniques.
+> La rubrique est conçue pour fournir une vue d’ensemble pour un [série de didacticiels](deploying-web-applications-in-enterprise-scenarios.md) sur le déploiement web de l’entreprise. Ne vous inquiétez pas si vous n’êtes pas familiarisé avec certains concepts décrits ici&#x2014;les didacticiels qui suivent fournissent des informations détaillées sur l’ensemble de ces tâches et les techniques.
 > 
 > > [!NOTE]
 > > Générales des raisons de simplicité, cette rubrique n’explique pas les bases de données mise à jour dans le cadre du processus de déploiement. Toutefois, qui effectue des mises à jour incrémentielles pour les fonctionnalités de bases de données est une exigence de nombreux scénarios de déploiement d’entreprise, et vous pouvez trouver des conseils sur la façon d’y parvenir plus loin dans cette série de didacticiels. Pour plus d’informations, consultez [déploiement de projets de base de données](../web-deployment-in-the-enterprise/deploying-database-projects.md).
@@ -63,7 +63,7 @@ Le reste de cette rubrique examine les principales étapes de ce cycle de vie de
 - **Déploiement dans l’environnement intermédiaire**: comment déployer des builds à un environnement intermédiaire et de l’exécution de « que se passe-t-il si » déploiements pour vous assurer que tous les problèmes ne provoque pas d’un déploiement.
 - **Déploiement en production**: comment importer des packages web dans un environnement de production lors de l’infrastructure réseau empêche le déploiement à distance.
 
-## <a name="prerequisites"></a>Conditions préalables
+## <a name="prerequisites"></a>Prérequis
 
 La première tâche dans les scénarios de déploiement est pour vous assurer que votre infrastructure de serveur répond aux exigences de vos outils de déploiement et les techniques. Dans ce cas, Fabrikam, Inc. a configuré son infrastructure de serveur comme suit :
 
@@ -95,7 +95,7 @@ Pour exécuter le déploiement, un utilisateur exécute la *Publish.proj* de fic
 
 > [!NOTE]
 > Le fonctionnement de ces fichiers de projet personnalisé est indépendant du mécanisme que vous permet d’appeler MSBuild. Par exemple, vous pouvez utiliser la ligne de commande MSBuild directement, comme décrit dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md). Vous pouvez exécuter les fichiers projet à partir d’un fichier de commandes, comme décrit dans [créer et exécuter un fichier de commandes de déploiement](../web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file.md). Vous pouvez également exécuter les fichiers projet à partir d’une définition de build dans TFS, comme décrit dans [création d’une définition de Build que prend en charge le déploiement](../configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment.md).  
-> Dans chaque cas, le résultat final est & #x 2014 ; MSBuild exécute le fichier de projet fusionné et déploie votre solution dans l’environnement cible. Cela vous offre une grande souplesse dans la manière dont vous déclenchez votre processus de publication.
+> Dans chaque cas, le résultat final est le même&#x2014;MSBuild exécute le fichier de projet fusionné et déploie votre solution dans l’environnement cible. Cela vous offre une grande souplesse dans la manière dont vous déclenchez votre processus de publication.
 
 
 Une fois qu’il a créé les fichiers de projet personnalisé, Matt les ajoute à un dossier de solution et les vérifie dans le contrôle de code source.
@@ -185,7 +185,7 @@ Le **DeployToStaging-WhatIf** définition de build contient la même logique de 
 [!code-console[Main](application-lifecycle-management-from-development-to-production/samples/sample3.cmd)]
 
 
-Dans le *Publish.proj* fichier, le **WhatIf** propriété indique que toutes les ressources de déploiement doivent être publiées en mode « que se passe-t-il si ». En d’autres termes, les fichiers journaux sont générés comme si le déploiement avait dépassé de manière anticipée, mais rien n’est réellement modifié dans l’environnement de destination. Cela vous permet d’évaluer l’impact d’un déploiement proposé & le #x 2014 ; en particulier, ce qui est ajouté, ce qui sera mis à jour et ce que seront supprimé & #x 2014 ; avant de procéder réellement des modifications.
+Dans le *Publish.proj* fichier, le **WhatIf** propriété indique que toutes les ressources de déploiement doivent être publiées en mode « que se passe-t-il si ». En d’autres termes, les fichiers journaux sont générés comme si le déploiement avait dépassé de manière anticipée, mais rien n’est réellement modifié dans l’environnement de destination. Cela vous permet d’évaluer l’impact d’un déploiement proposé&#x2014;en particulier, ce qui est ajouté, ce qui sera mis à jour, et ce que seront supprimé&#x2014;avant de procéder réellement des modifications.
 
 > [!NOTE]
 > Pour plus d’informations sur la façon de configurer des déploiements « que se passe-t-il si », consultez [exécution d’un déploiement « Que se passe-t-il si »](../advanced-enterprise-web-deployment/performing-a-what-if-deployment.md).
@@ -227,5 +227,5 @@ Cette rubrique fait partie d’une série de didacticiels qui fournissent des co
 - [Configuration de Team Foundation Server pour automatisée de déploiement Web](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md). Ce didacticiel fournit des conseils sur la façon d’intégrer la logique de déploiement dans le processus de génération TFS.
 - [Avancé de déploiement Web d’entreprise](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md). Ce didacticiel fournit des conseils sur la façon de répondre à des défis de déploiement plus complexes auxquels sont confrontées les entreprises.
 
->[!div class="step-by-step"]
-[Précédent](enterprise-web-deployment-scenario-overview.md)
+> [!div class="step-by-step"]
+> [Précédent](enterprise-web-deployment-scenario-overview.md)

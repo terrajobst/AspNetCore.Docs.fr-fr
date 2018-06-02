@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
-title: "Gestion d’accès concurrentiel avec Entity Framework dans une Application ASP.NET MVC (7 sur 10) | Documents Microsoft"
+title: Gestion d’accès concurrentiel avec Entity Framework dans une Application ASP.NET MVC (7 sur 10) | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 87bb08a4d16965a10112a42c4e9318c32f192c04
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 609f493845f1d00a47d175a1b623a7f4866d191e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="handling-concurrency-with-the-entity-framework-in-an-aspnet-mvc-application-7-of-10"></a>Gestion d’accès concurrentiel avec Entity Framework dans une Application ASP.NET MVC (7 sur 10)
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet terminé](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio 2012. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Vous pouvez démarrer la série de didacticiels à partir du début ou [télécharger un projet de démarrage pour ce chapitre](building-the-ef5-mvc4-chapter-downloads.md) et Démarrer ici.
+> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio 2012. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Vous pouvez démarrer la série de didacticiels à partir du début ou [télécharger un projet de démarrage pour ce chapitre](building-the-ef5-mvc4-chapter-downloads.md) et Démarrer ici.
 > 
 > > [!NOTE] 
 > > 
@@ -39,17 +39,17 @@ Dans les deux didacticiels précédents, vous avez travaillé avec des données 
 
 ## <a name="concurrency-conflicts"></a>Conflits d’accès concurrentiel
 
-Un conflit de concurrence se produit lorsqu’un utilisateur affiche les données d’une entité afin de la pour modifier, puis un autre utilisateur met à jour les données de la même entité avant la première modification utilisateur est écrit dans la base de données. Si vous n’activez pas la détection de ces conflits, la personne qui met à jour la base de données remplace dernier les modifications de l’autre utilisateur. Dans de nombreuses applications, ce risque est acceptable : s’il existe quelques utilisateurs ou les mises à jour, ou si n’est pas réellement critique si des modifications sont remplacées, le coût de la programmation d’accès concurrentiel peut-être dépasser l’avantage. Dans ce cas, vous n’êtes pas obligé de configurer l’application pour gérer les conflits d’accès concurrentiel.
+Un conflit d’accès concurrentiel se produit quand un utilisateur affiche les données d’une entité pour la modifier, puis qu’un autre utilisateur met à jour les données de la même entité avant que les modifications du premier utilisateur soient écrites dans la base de données. Si vous n’activez pas la détection de ces conflits, la personne qui met à jour la base de données en dernier remplace les modifications de l’autre utilisateur. Dans de nombreuses applications, ce risque est acceptable : s’il n’y a que quelques utilisateurs ou quelques mises à jour, ou s’il n’est pas réellement critique que des modifications soient remplacées, le coût de la programmation nécessaire à la gestion des accès concurrentiels peut être supérieur au bénéfice qu’elle apporte. Dans ce cas, vous ne devez pas configurer l’application pour gérer les conflits d’accès concurrentiel.
 
 ### <a name="pessimistic-concurrency-locking"></a>L’accès simultané pessimiste (verrouillage)
 
-Si votre application doit-elle éviter la perte accidentelle de données dans les scénarios d’accès concurrentiel, une manière de procéder consiste à utiliser des verrous de base de données. Il s’agit *d’accès concurrentiel pessimiste*. Par exemple, avant de lire une ligne à partir d’une base de données, vous demandez un verrou de lecture seule ou pour l’accès de mise à jour. Si vous verrouillez une ligne pour l’accès de mise à jour, aucun autre utilisateur n’est autorisés pour le verrouillage de la ligne pour en lecture seule ou mettre à jour de l’accès, car ils obtenez une copie des données sont en cours de modification. Si vous verrouillez une ligne pour l’accès en lecture seule, d’autres peuvent également le verrouiller pour l’accès en lecture seule, mais pas pour la mise à jour.
+Si votre application doit éviter la perte accidentelle de données dans des scénarios d’accès concurrentiel, une manière de le faire consiste à utiliser des verrous de base de données. Il s’agit *d’accès concurrentiel pessimiste*. Par exemple, avant de lire une ligne d’une base de données, vous demandez un verrou pour lecture seule ou pour accès avec mise à jour. Si vous verrouillez une ligne pour accès avec mise à jour, aucun autre utilisateur n’est autorisé à verrouiller la ligne pour lecture seule ou pour accès avec mise à jour, car ils obtiendraient ainsi une copie de données qui sont en cours de modification. Si vous verrouillez une ligne pour accès en lecture seule, d’autres utilisateurs peuvent également la verrouiller pour accès en lecture seule, mais pas pour accès avec mise à jour.
 
-Gestion des verrous présente des inconvénients. Il peut être complexe au programme. Il nécessite des ressources de gestion de base de données importantes, et cela peut provoquer des problèmes de performances en tant que le nombre d’utilisateurs d’une application augmente (autrement dit, il n’évolue pas correctement). Pour ces raisons, pas tous les systèmes de gestion de base de données prend en charge l’accès simultané pessimiste. Entity Framework ne fournit aucune prise en charge intégrée pour celle-ci, et ce didacticiel ne vous montre comment l’implémenter.
+La gestion des verrous présente des inconvénients. Elle peut être complexe à programmer. Il nécessite des ressources de gestion de base de données importantes, et cela peut provoquer des problèmes de performances en tant que le nombre d’utilisateurs d’une application augmente (autrement dit, il n’évolue pas correctement). Pour ces raisons, certains systèmes de gestion de base de données ne prennent pas en charge l’accès concurrentiel pessimiste. Entity Framework ne fournit aucune prise en charge intégrée pour celle-ci, et ce didacticiel ne vous montre comment l’implémenter.
 
 ### <a name="optimistic-concurrency"></a>Accès concurrentiel optimiste
 
-L’alternative à l’accès concurrentiel pessimiste est *d’accès concurrentiel optimiste*. L’accès concurrentiel optimiste signifie autoriser les conflits d’accès concurrentiel se produire et puis réagir correctement dans le cas. Par exemple, John exécute la page Modifier les services, des modifications du **Budget** montant pour le service en anglais à partir de $350,000.00 à 0,00 $.
+L’alternative à l’accès concurrentiel pessimiste est *d’accès concurrentiel optimiste*. L’accès concurrentiel optimiste signifie autoriser la survenance des conflits d’accès concurrentiel, puis de réagir correctement quand ils surviennent. Par exemple, John exécute la page Modifier les services, des modifications du **Budget** montant pour le service en anglais à partir de $350,000.00 à 0,00 $.
 
 ![Changing_English_dept_budget_to_100000](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 
@@ -57,17 +57,17 @@ Avant de Jean clique sur **enregistrer**, Jane exécute la même page et les mê
 
 ![Changing_English_dept_start_date_to_1999](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
-John clique sur **enregistrer** premier et voit sa modification lorsque le navigateur revient à la page d’Index, Jane puis clique sur **enregistrer**. Que se passe-t-il ensuite est déterminé par la façon dont vous gérez les conflits d’accès concurrentiel. Certaines de ces options sont les suivantes :
+John clique sur **enregistrer** premier et voit sa modification lorsque le navigateur revient à la page d’Index, Jane puis clique sur **enregistrer**. Ce qui se passe ensuite est déterminé par la façon dont vous gérez les conflits d’accès concurrentiel. Voici quelques-unes des options :
 
-- Vous pouvez effectuer le suivi des dont un utilisateur a modifié la propriété et mettre à jour uniquement les colonnes correspondantes dans la base de données. Dans l’exemple de scénario, aucune donnée n’a été perdue, car des propriétés différentes ont été mis à jour par les deux utilisateurs. La prochaine fois que quelqu'un accède le service en anglais, il voit les modifications de John et Jane : une date de début de 8/8/2013 et qu’une allocation de réserve de zéro dollars.
+- Vous pouvez effectuer le suivi des propriétés modifiées par un utilisateur et mettre à jour seulement les colonnes correspondantes dans la base de données. Dans l’exemple de scénario, aucune donnée ne serait perdue, car des propriétés différentes ont été mises à jour par chacun des deux utilisateurs. La prochaine fois que quelqu'un accède le service en anglais, il voit les modifications de John et Jane : une date de début de 8/8/2013 et qu’une allocation de réserve de zéro dollars.
 
-    Cette méthode de mise à jour peut réduire le nombre de conflits qui peuvent entraîner une perte de données, mais il ne peut pas éviter la perte de données si des modifications concurrentes sont apportées à la même propriété d’une entité. Si Entity Framework fonctionne de cette façon dépend de la façon dont vous implémentez votre code de mise à jour. Il est souvent pratique dans une application web, car elle peut requérir que vous conservez des grandes quantités d’état afin d’effectuer le suivi de toutes les valeurs de propriété d’origine d’une entité, ainsi que les nouvelles valeurs. Maintenance de grandes quantités d’état peut affecter les performances de l’application, car il nécessite des ressources serveur ou doit être inclus dans la page web elle-même (par exemple, dans les champs masqués).
-- Vous pouvez laisser les modifications de Jane écrase les modifications de John. La prochaine fois que quelqu'un accède le service en anglais, il voit 8/8/2013 et la valeur de $350,000.00 restaurée. Cela s’appelle un *Client Wins* ou *dernier dans Wins* scénario. (Les valeurs du client sont prioritaires sur les nouveautés dans le magasin de données). Comme indiqué dans l’introduction de cette section, si vous ne le faites pas de codage pour la gestion d’accès concurrentiel, cela se produit automatiquement.
-- Vous pouvez empêcher la modification de Jeanne à partir de la mise à jour dans la base de données. En règle générale, vous afficher un message d’erreur, elle indique l’état actuel des données et lui permet de réappliquer les modifications si elle souhaite que pour les rendre encore. Cela s’appelle un *magasin Wins* scénario. (Les valeurs du magasin de données sont prioritaires sur les valeurs soumis par le client). Vous allez implémenter le scénario de magasin Wins dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacées sans que l’utilisateur est averti que se passe-t-il.
+    Cette méthode de mise à jour peut réduire le nombre de conflits qui peuvent entraîner des pertes de données, mais elle ne peut pas éviter la perte de données si des modifications concurrentes sont apportées à la même propriété d’une entité. Un tel fonctionnement d’Entity Framework dépend de la façon dont vous implémentez votre code de mise à jour. Il n’est pas souvent pratique dans une application web, car il peut nécessiter la gestion de grandes quantités d’états pour effectuer le suivi de toutes les valeurs de propriété d’origine d’une entité, ainsi que des nouvelles valeurs. Maintenance de grandes quantités d’état peut affecter les performances de l’application, car il nécessite des ressources serveur ou doit être inclus dans la page web elle-même (par exemple, dans les champs masqués).
+- Vous pouvez laisser les modifications de Jane écrase les modifications de John. La prochaine fois que quelqu'un accède le service en anglais, il voit 8/8/2013 et la valeur de $350,000.00 restaurée. Ceci s’appelle un scénario *Priorité au client* ou *Priorité au dernier entré* (Last in Wins). (Les valeurs du client sont prioritaires sur les nouveautés dans le magasin de données). Comme indiqué dans l’introduction de cette section, si vous ne codez rien pour la gestion des accès concurrentiels, ceci se produit automatiquement.
+- Vous pouvez empêcher la modification de Jeanne à partir de la mise à jour dans la base de données. En règle générale, vous afficher un message d’erreur, elle indique l’état actuel des données et lui permet de réappliquer les modifications si elle souhaite que pour les rendre encore. Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Dans ce didacticiel, vous allez implémenter le scénario Priorité au magasin. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti de ce qui se passe.
 
 ### <a name="detecting-concurrency-conflicts"></a>Détection des conflits d’accès concurrentiel
 
-Vous pouvez résoudre les conflits en gérant [OptimisticConcurrencyException](https://msdn.microsoft.com/library/system.data.optimisticconcurrencyexception.aspx) Entity Framework lève les exceptions. Pour savoir quand ces exceptions de lever, Entity Framework doit être en mesure de détecter les conflits. Par conséquent, vous devez configurer la base de données et le modèle de données en conséquence. Certaines options pour l’activation de la détection de conflit sont les suivantes :
+Vous pouvez résoudre les conflits en gérant [OptimisticConcurrencyException](https://msdn.microsoft.com/library/system.data.optimisticconcurrencyexception.aspx) Entity Framework lève les exceptions. Pour savoir quand lever ces exceptions, Entity Framework doit être en mesure de détecter les conflits. Par conséquent, vous devez configurer de façon appropriée la base de données et le modèle de données. Voici quelques options pour l’activation de la détection des conflits :
 
 - Dans la table de base de données, incluez une colonne de suivi qui peut être utilisée pour déterminer quand une ligne a été modifiée. Vous pouvez ensuite configurer l’Entity Framework pour inclure cette colonne dans la `Where` clause SQL `Update` ou `Delete` commandes.
 
@@ -90,7 +90,7 @@ Le [Timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataanno
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
 
-En ajoutant une propriété, vous avez modifié le modèle de base de données, vous devez effectuer une autre migration. Dans Package Manager Console (PMC), entrez les commandes suivantes :
+En ajoutant une propriété, vous avez changé le modèle de base de données et vous devez donc effectuer une autre migration. Dans la console du Gestionnaire de package, entrez les commandes suivantes :
 
 [!code-console[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cmd)]
 
@@ -126,7 +126,7 @@ Un message d’erreur plu explique que s’est-il passé et ce qu’il faut fair
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample9.cs)]
 
-Enfin, le code définit les `RowVersion` valeur de la `Department` de récupérer l’objet à la nouvelle valeur à partir de la base de données. Cette nouvelle `RowVersion` valeur est stockée dans le champ masqué lorsque la modification de page s’affiche de nouveau et la prochaine fois que l’utilisateur clique sur **enregistrer**, seules les erreurs d’accès concurrentiel qui se produisent dans la mesure où l’actualiser de la page de modification est interceptée.
+Enfin, le code définit les `RowVersion` valeur de la `Department` de récupérer l’objet à la nouvelle valeur à partir de la base de données. Cette nouvelle valeur de `RowVersion` est stockée dans le champ masqué quand la page Edit est réaffichée et, la prochaine fois que l’utilisateur clique sur **Save**, seules les erreurs d’accès concurrentiel qui se produisent depuis le réaffichage de la page Edit sont interceptées.
 
 Dans *Views\Department\Edit.cshtml*, ajoutez un champ masqué pour enregistrer le `RowVersion` valeur de propriété, qui suit immédiatement le champ masqué pour le `DepartmentID` propriété :
 
@@ -150,7 +150,7 @@ Modifier un champ dans la première fenêtre de navigateur, cliquez sur **enregi
 
 ![Department_Edit_page_1_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
-Le navigateur affiche la page d’Index de la valeur modifiée.
+Le navigateur affiche la page Index avec la valeur modifiée.
 
 ![Departments_Index_page_after_first_budget_edit](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
 
@@ -158,29 +158,29 @@ Le champ tout dans la deuxième fenêtre de navigateur, cliquez sur **enregistre
 
 ![Department_Edit_page_2_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
-Cliquez sur **enregistrer** dans la deuxième fenêtre de navigateur. Vous voyez un message d’erreur :
+Cliquez sur **enregistrer** dans la deuxième fenêtre de navigateur. Vous voyez un message d’erreur :
 
 ![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
-Cliquez sur **enregistrer** à nouveau. La valeur que vous avez entré dans le second navigateur est enregistrée avec la valeur d’origine des données que vous modifiez dans le navigateur en premier. Vous voyez les valeurs enregistrées lorsque la page d’Index s’affiche.
+Cliquez à nouveau sur **Save**. La valeur que vous avez entré dans le second navigateur est enregistrée avec la valeur d’origine des données que vous modifiez dans le navigateur en premier. Vous voyez les valeurs enregistrées quand la page Index apparaît.
 
 ![Department_Index_page_with_change_from_second_browser](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image11.png)
 
 ## <a name="updating-the-delete-page"></a>Mise à jour de la Page de suppression
 
-Pour la page de suppression, Entity Framework détecte les conflits d’accès concurrentiel causés par quelqu'un d’autre modification du service d’une manière similaire. Lorsque le `HttpGet` `Delete` méthode affiche la vue de confirmation, la vue inclut la version d’origine `RowVersion` valeur dans un champ masqué. Que valeur est ensuite disponible pour le `HttpPost` `Delete` méthode qui est appelée lorsque l’utilisateur confirme la suppression. Lorsque Entity Framework crée l’instruction SQL `DELETE` de commande, elle inclut un `WHERE` clause avec la version d’origine `RowVersion` valeur. Si les résultats de la commande dans des lignes nulles affectés (c'est-à-dire la ligne a été modifiée après l’affichage de la page de confirmation de suppression), une exception d’accès concurrentiel est levée et le `HttpGet Delete` méthode est appelée avec un indicateur d’erreur défini sur `true` pour réafficher le page de confirmation avec un message d’erreur. Il est également possible qu’aucune ligne ont été affectés, car la ligne a été supprimée par un autre utilisateur, afin que dans ce cas d’un message d’erreur différent est affiché.
+Pour la page Delete, Entity Framework détecte les conflits d’accès concurrentiel provoqués par un autre utilisateur qui modifie le service de façon similaire. Lorsque le `HttpGet` `Delete` méthode affiche la vue de confirmation, la vue inclut la version d’origine `RowVersion` valeur dans un champ masqué. Que valeur est ensuite disponible pour le `HttpPost` `Delete` méthode qui est appelée lorsque l’utilisateur confirme la suppression. Lorsque Entity Framework crée l’instruction SQL `DELETE` de commande, elle inclut un `WHERE` clause avec la version d’origine `RowVersion` valeur. Si les résultats de la commande dans des lignes nulles affectés (c'est-à-dire la ligne a été modifiée après l’affichage de la page de confirmation de suppression), une exception d’accès concurrentiel est levée et le `HttpGet Delete` méthode est appelée avec un indicateur d’erreur défini sur `true` pour réafficher le page de confirmation avec un message d’erreur. Il est également possible qu’aucune ligne ont été affectés, car la ligne a été supprimée par un autre utilisateur, afin que dans ce cas d’un message d’erreur différent est affiché.
 
 Dans *DepartmentController.cs*, remplacez le `HttpGet` `Delete` méthode avec le code suivant :
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cs)]
 
-La méthode accepte un paramètre facultatif qui indique si la page est en cours affiche de nouveau après une erreur d’accès concurrentiel. Si cet indicateur est `true`, un message d’erreur est envoyé à la vue en utilisant un `ViewBag` propriété.
+La méthode accepte un paramètre facultatif qui indique si la page est réaffichée après une erreur d’accès concurrentiel. Si cet indicateur est `true`, un message d’erreur est envoyé à la vue en utilisant un `ViewBag` propriété.
 
 Remplacez le code dans le `HttpPost` `Delete` (méthode) (nommé `DeleteConfirmed`) avec le code suivant :
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cs)]
 
-Dans le code de modèle généré automatiquement qui vient d’être remplacé, cette méthode acceptées uniquement un ID d’enregistrement :
+Dans le code du modèle généré automatiquement que vous venez de remplacer, cette méthode n’acceptait qu’un seul ID d’enregistrement :
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample14.cs)]
 
@@ -188,11 +188,11 @@ Vous avez modifié ce paramètre pour un `Department` instance d’entité cré�
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs)]
 
-Vous avez également modifié le nom de la méthode d’action à partir de `DeleteConfirmed` à `Delete`. Le nom de code modèle généré automatiquement le `HttpPost` `Delete` méthode `DeleteConfirmed` afin de donner la `HttpPost` une signature unique (méthode). (Le CLR a besoin des méthodes surchargées pour avoir des paramètres de l’autre méthode.) Maintenant que les signatures sont uniques, vous pouvez coller avec la convention MVC et utiliser le même nom pour le `HttpPost` et `HttpGet` supprimer les méthodes.
+Vous avez également changé le nom de la méthode d’action de `DeleteConfirmed` en `Delete`. Le nom de code modèle généré automatiquement le `HttpPost` `Delete` méthode `DeleteConfirmed` afin de donner la `HttpPost` une signature unique (méthode). (Pour le CLR, les méthodes surchargées doivent avoir des paramètres de méthode différents.) Maintenant que les signatures sont uniques, vous pouvez coller avec la convention MVC et utiliser le même nom pour le `HttpPost` et `HttpGet` supprimer les méthodes.
 
-Si une erreur d’accès concurrentiel est interceptée, le code affiche la page de confirmation de suppression de nouveau et fournit un indicateur qui indique qu’il doit afficher un message d’erreur d’accès concurrentiel.
+Si une erreur d’accès concurrentiel est interceptée, le code réaffiche la page de confirmation de suppression et fournit un indicateur indiquant qu’elle doit afficher un message d’erreur d’accès concurrentiel.
 
-Dans *Views\Department\Delete.cshtml*, remplacez le code de modèle généré automatiquement par le code suivant qui effectue une mise en forme change et ajoute un champ de message d’erreur. Les modifications sont mises en surbrillance.
+Dans *Views\Department\Delete.cshtml*, remplacez le code de modèle généré automatiquement par le code suivant qui effectue une mise en forme change et ajoute un champ de message d’erreur. Les modifications apparaissent en surbrillance.
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cshtml?highlight=9,37,40,45-46)]
 
@@ -222,18 +222,18 @@ Dans la deuxième fenêtre, cliquez sur **supprimer**.
 
 ![Department_Delete_confirmation_page_before_concurrency_error](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image14.png)
 
-Vous voyez le message d’erreur d’accès concurrentiel et les valeurs de service sont actualisés avec ce qui est actuellement dans la base de données.
+Vous voyez le message d’erreur d’accès concurrentiel et les valeurs du département sont actualisées avec ce qui est actuellement dans la base de données.
 
 ![Department_Delete_confirmation_page_with_concurrency_error](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image15.png)
 
-Si vous cliquez sur **supprimer** là encore, vous êtes redirigé vers la page d’Index, ce qui indique que le service a été supprimé.
+Si vous recliquez sur **Delete**, vous êtes redirigé vers la page Index, qui montre que le département a été supprimé.
 
 ## <a name="summary"></a>Récapitulatif
 
-Cette étape termine l’introduction à la gestion des conflits d’accès concurrentiel. Pour plus d’informations sur les autres méthodes pour gérer les différents scénarios de concurrence, consultez [des modèles d’accès concurrentiel optimiste](https://blogs.msdn.com/b/adonet/archive/2011/02/03/using-dbcontext-in-ef-feature-ctp5-part-9-optimistic-concurrency-patterns.aspx) et [utilisation des valeurs de propriété](https://blogs.msdn.com/b/adonet/archive/2011/01/30/using-dbcontext-in-ef-feature-ctp5-part-5-working-with-property-values.aspx) sur le blog de l’équipe Entity Framework. Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour le `Instructor` et `Student` entités.
+Ceci termine l’introduction à la gestion des conflits d’accès concurrentiel. Pour plus d’informations sur les autres méthodes pour gérer les différents scénarios de concurrence, consultez [des modèles d’accès concurrentiel optimiste](https://blogs.msdn.com/b/adonet/archive/2011/02/03/using-dbcontext-in-ef-feature-ctp5-part-9-optimistic-concurrency-patterns.aspx) et [utilisation des valeurs de propriété](https://blogs.msdn.com/b/adonet/archive/2011/01/30/using-dbcontext-in-ef-feature-ctp5-part-5-working-with-property-values.aspx) sur le blog de l’équipe Entity Framework. Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour le `Instructor` et `Student` entités.
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans le [ASP.NET Data Access Content Map](../../../../whitepapers/aspnet-data-access-content-map.md).
 
->[!div class="step-by-step"]
-[Précédent](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-[Suivant](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [Précédent](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [Suivant](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
