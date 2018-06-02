@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
-title: "Maître/détail à l’aide d’un GridView maître avec un DetailView détail (VB) | Documents Microsoft"
+title: Maître/détail à l’aide d’un GridView maître avec un DetailView détail (VB) | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel ont un GridView dont les lignes incluent le nom et le prix de chaque produit, ainsi que d’un bouton de sélection. En cliquant sur le bouton de sélection pour un particu..."
+description: Ce didacticiel ont un GridView dont les lignes incluent le nom et le prix de chaque produit, ainsi que d’un bouton de sélection. En cliquant sur le bouton de sélection pour un particu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: eae9c07eff7780aab18346815ca410d687789d17
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 80db1589de901f7364c05c5bb67829145579b6c0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-vb"></a>Maître/détail à l’aide d’un GridView maître avec un DetailView détail (VB)
 ====================
@@ -131,12 +131,12 @@ Avec la `ProductsGrid` terminer GridView, tout ce qui reste consiste à ajouter 
 **Figure 9**: appeler le `ProductsBLL` de classe `GetProductByProductID(productID)` (méthode) ([cliquez pour afficher l’image en taille réelle](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image27.png))
 
 
-Avoir le  *`productID`*  valeur du paramètre obtenue à partir du contrôle GridView `SelectedValue` propriété. Comme indiqué précédemment, le contrôle du GridView `SelectedValue` propriété retourne la valeur de la ligne sélectionnée de la clé les premières données. Par conséquent, il est impératif que du GridView `DataKeyNames` est définie sur `ProductID`, de sorte que la ligne sélectionnée `ProductID` valeur est retournée par `SelectedValue`.
+Avoir le *`productID`* valeur du paramètre obtenue à partir du contrôle GridView `SelectedValue` propriété. Comme indiqué précédemment, le contrôle du GridView `SelectedValue` propriété retourne la valeur de la ligne sélectionnée de la clé les premières données. Par conséquent, il est impératif que du GridView `DataKeyNames` est définie sur `ProductID`, de sorte que la ligne sélectionnée `ProductID` valeur est retournée par `SelectedValue`.
 
 
 [![Définir le paramètre productID à la propriété SelectedValue de GridView](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image29.png)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image28.png)
 
-**La figure 10**: définir le  *`productID`*  paramètre du GridView `SelectedValue` propriété ([cliquez pour afficher l’image en taille réelle](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image30.png))
+**La figure 10**: définir le *`productID`* paramètre du GridView `SelectedValue` propriété ([cliquez pour afficher l’image en taille réelle](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image30.png))
 
 
 Une fois la `productDetailsDataSource` ObjectDataSource a été correctement configuré et lié au contrôle DetailsView, ce didacticiel est terminé ! Lorsque la page est visitée en premier, aucune ligne n’est sélectionnée, donc du GridView `SelectedValue` propriété renvoie `Nothing`. Dans la mesure où aucun produit avec un `NULL` `ProductID` valeur, aucun enregistrement n’est retournés par la `GetProductByProductID(productID)` méthode, ce qui signifie que le contrôle DetailsView n’est pas affiché (voir Figure 11). Après avoir cliqué sur le bouton de sélection d’une ligne GridView, une publication (postback) s’ensuit et le contrôle DetailsView est actualisé. Cette fois de GridView `SelectedValue` propriété retourne le `ProductID` de la ligne sélectionnée, le `GetProductByProductID(productID)` méthode retourne un `ProductsDataTable` avec des informations sur ce produit et le contrôle DetailsView montre ces détails (voir Figure 12).
@@ -162,11 +162,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Hilton Giesenow. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](master-detail-filtering-across-two-pages-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](master-detail-filtering-across-two-pages-vb.md)

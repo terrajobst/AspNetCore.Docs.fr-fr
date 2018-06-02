@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
-title: "Routage d’URL | Documents Microsoft"
+title: Routage d’URL | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 279617e4ebb475d935c0d1e01e08a3a2def0f9e9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: a195b36517bcae4bbeaf43fe7386e7787fd00212
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="url-routing"></a>Routage d’URL
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -49,7 +49,7 @@ En personnalisant le routage d’URL, l’exemple d’application Wingtip Toys s
 
 `https://localhost:44300/Product/Convertible%20Car`
 
-### <a name="routes"></a>Itinéraires
+### <a name="routes"></a>Routes
 
 Un itinéraire est un modèle d’URL qui est mappé à un gestionnaire. Le gestionnaire peut être un fichier physique, tel qu’un fichier .aspx dans une application Web Forms. Un gestionnaire peut également être une classe qui traite la demande. Pour définir un itinéraire, vous créez une instance de la classe d’itinéraire en spécifiant le type d’URL, le gestionnaire et éventuellement un nom pour l’itinéraire.
 
@@ -143,7 +143,7 @@ Vous pouvez exécuter l’application maintenant pour voir les itinéraires de m
     `https://localhost:44300/ProductDetails.aspx?productID=2`  
  Le code reconnaît toujours une URL qui inclut une chaîne de requête, dans le cas où un utilisateur a un lien de signet.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez ajouté des itinéraires pour les catégories et les produits. Vous avez appris comment les itinéraires peuvent être intégrés à des contrôles de données qui utilisent la liaison de modèle. Dans l’étape suivante du didacticiel, vous allez implémenter la gestion des erreurs global.
 
@@ -153,6 +153,6 @@ Dans ce didacticiel, vous avez ajouté des itinéraires pour les catégories et 
 [Déployer une application de formulaires Web ASP.NET sécurisées avec l’appartenance, OAuth et base de données SQL dans Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)  
 [Microsoft Azure - version d’évaluation gratuite](https://azure.microsoft.com/pricing/free-trial/)
 
->[!div class="step-by-step"]
-[Précédent](membership-and-administration.md)
-[Suivant](aspnet-error-handling.md)
+> [!div class="step-by-step"]
+> [Précédent](membership-and-administration.md)
+> [Suivant](aspnet-error-handling.md)

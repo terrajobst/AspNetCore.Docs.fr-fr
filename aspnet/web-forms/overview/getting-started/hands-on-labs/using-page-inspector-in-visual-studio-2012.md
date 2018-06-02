@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012
-title: "À l’aide de l’inspecteur de Page dans Visual Studio 2012 | Documents Microsoft"
+title: À l’aide de l’inspecteur de Page dans Visual Studio 2012 | Documents Microsoft
 author: rick-anderson
-description: "Dans cet atelier pratique, vous allez découvrir un nouvel outil pour rechercher et corriger les problèmes de la page web dans Visual Studio - l’inspecteur de Page. L’inspecteur de page est un nouvel outil que b..."
+description: Dans cet atelier pratique, vous allez découvrir un nouvel outil pour rechercher et corriger les problèmes de la page web dans Visual Studio - l’inspecteur de Page. L’inspecteur de page est un nouvel outil que b...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 1a9e093faae2cea1c27c582e22aebc908f78addb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 052d29dba170d403c2b1c1667c55fc2c34045615
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/10/2018
 ---
 <a name="using-page-inspector-in-visual-studio-2012"></a>À l’aide de l’inspecteur de Page dans Visual Studio 2012
 ====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
 > Dans cet atelier pratique, vous allez découvrir un nouvel outil pour rechercher et corriger les problèmes de la page web dans Visual Studio - l’inspecteur de Page.
 > 
@@ -38,7 +38,7 @@ par [Web Camps équipe](https://twitter.com/webcamps)
 > 
 > Ce laboratoire présente les améliorations et nouvelles fonctionnalités décrites précédemment en appliquant les modifications mineures à un exemple d’application Web dans le dossier Source.
 > 
-> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [ https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409 ](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
 
 
 <a id="Objectives"></a>
@@ -55,7 +55,7 @@ Dans cet atelier pratique, vous allez apprendre comment :
 <a id="Prerequisites"></a>
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Conditions préalables
+### <a name="prerequisites"></a>Prérequis
 
 Vous devez disposer des éléments suivants pour effectuer ce laboratoire :
 
@@ -96,12 +96,12 @@ Dans cette tâche, vous allez apprendre à utiliser l’inspecteur de Page dans 
 
 1. Ouvrez le **commencer** solution situé dans **début/MVC4-Ex1/Source/** dossier.
 
-    1. Vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Dans l’Explorateur de solutions, recherchez **Index.cshtml** afficher sous le **/vues/Home** dossier de projet, faites un clic droit et sélectionnez **afficher dans l’inspecteur de Page**.
 
     ![Sélection d’un fichier pour afficher un aperçu de l’inspecteur de Page](using-page-inspector-in-visual-studio-2012/_static/image1.png "en sélectionnant un fichier pour afficher un aperçu de l’inspecteur de Page")
@@ -221,7 +221,7 @@ Dans cette tâche, vous utilisez l’inspecteur de Page et résoudre des problè
 2. Basculer vers le Mode Inspection sélectionné, cliquez sur Fermer pour, mais pas sur le lien de s’inscrire pour ouvrir son code.
 
     Notez que le code source des liens se trouve dans le  **\_LoginPartial.cshtml** de fichiers, pas le Index.cshtml ni le \_Layout.cshtml, qui sont les emplacements que vous peut se présenter en premier lieu. Vous avez été placé directement dans le fichier de code source approprié.
-3. Dans le **Styles** onglet, recherchez et cliquez sur le  **<section> #login</section>**  élément, qui est le conteneur HTML pour que ces liens.
+3. Dans le **Styles** onglet, recherchez et cliquez sur le **<section> #login</section>** élément, qui est le conteneur HTML pour que ces liens.
 
     Notez que la **#login** style se trouve automatiquement dans **Site.css** après avoir cliqué sur. En outre, le code est maintenant en surbrillance.
 
@@ -242,7 +242,7 @@ Dans cette tâche, vous utilisez l’inspecteur de Page et résoudre des problè
     ![Page mise à jour](using-page-inspector-in-visual-studio-2012/_static/image18.png)
 
     *Page mise à jour*
-6. À l’aide du mode d’inspection, sélectionnez un de la  **&lt;li&gt;**  les éléments qui contiennent la &quot;inscrire&quot; et &quot;connectez-vous&quot; des liens. Ensuite, cliquez sur le  **&lt;section&gt; #login** d’élément pour l’accès **Styles.css** code.
+6. À l’aide du mode d’inspection, sélectionnez un de la **&lt;li&gt;** les éléments qui contiennent la &quot;inscrire&quot; et &quot;connectez-vous&quot; des liens. Ensuite, cliquez sur le  **&lt;section&gt; #login** d’élément pour l’accès **Styles.css** code.
 
     ![Recherche le style](using-page-inspector-in-visual-studio-2012/_static/image19.png "recherche le style")
 
@@ -287,12 +287,12 @@ Dans cette tâche, vous allez apprendre comment utiliser les fonctionnalités de
 
 1. Ouvrez le **commencer** solution situé dans **Source/Ex2-WebForms/début/** dossier.
 
-    1. Vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
-    2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
-    3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
+   1. Vous devez télécharger des packages NuGet manquants avant de poursuivre. Pour ce faire, cliquez sur le **projet** menu et sélectionnez **gérer les Packages NuGet**.
+   2. Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur **restaurer** afin de télécharger les packages manquants.
+   3. Enfin, générez la solution en cliquant sur **générer** | **générer la Solution**.
 
-    > [!NOTE]
-    > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
+      > [!NOTE]
+      > Un des avantages de l’utilisation de NuGet est que vous ne devez expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques requises à la première fois que vous exécutez le projet. C’est pourquoi vous devez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
 2. Dans l’Explorateur de solutions, recherchez **Default.aspx** page, faites un clic droit et sélectionnez **afficher dans l’inspecteur de Page**.
 
     ![Ouvrir Default.aspx avec l’inspecteur de Page](using-page-inspector-in-visual-studio-2012/_static/image24.png "ouverture Default.aspx avec l’inspecteur de Page")
@@ -433,7 +433,7 @@ Dans cette tâche, vous allez utiliser l’inspecteur de Page pour la résolutio
     ![Page mise à jour](using-page-inspector-in-visual-studio-2012/_static/image41.png)
 
     *Page mise à jour*
-6. À l’aide du mode d’inspection, sélectionnez un de la  **&lt;li&gt;**  les éléments qui contiennent la &quot;inscrire&quot; et &quot;connectez-vous&quot; des liens. Ensuite, cliquez sur le  **&lt;section&gt; #login** d’élément pour l’accès **Styles.css** code.
+6. À l’aide du mode d’inspection, sélectionnez un de la **&lt;li&gt;** les éléments qui contiennent la &quot;inscrire&quot; et &quot;connectez-vous&quot; des liens. Ensuite, cliquez sur le  **&lt;section&gt; #login** d’élément pour l’accès **Styles.css** code.
 
     ![Recherche le style](using-page-inspector-in-visual-studio-2012/_static/image42.png "recherche le style")
 
@@ -465,7 +465,7 @@ Dans cette tâche, vous allez utiliser l’inspecteur de Page pour la résolutio
 <a id="Summary"></a>
 
 <a id="Summary"></a>
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 À la fin de cet atelier pratique, vous avez appris comment utiliser l’inspecteur de Page pour afficher un aperçu de votre application Web sans avoir à reconstruire, puis exécuter le site Web dans un navigateur. En outre, vous avez appris comment rapidement rechercher et résoudre les bogues en accédant directement à partir de la sortie rendue au code source.
 
@@ -474,9 +474,9 @@ Dans cette tâche, vous allez utiliser l’inspecteur de Page pour la résolutio
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Annexe a : installation de Visual Studio Express 2012 pour le Web
 
-Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du  **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
+Vous pouvez installer **Microsoft Visual Studio Express 2012 pour Web** ou un autre &quot;Express&quot; à l’aide de la version du **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. Les instructions suivantes vous guident à travers les étapes requises pour installer *Visual studio Express 2012 pour le Web* à l’aide de *Microsoft Web Platform Installer*.
 
-1. Accédez à [ [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; *Visual Studio Express 2012 pour le Web avec Windows Azure SDK*&quot;.
+1. Accédez à [ [ https://go.microsoft.com/?linkid=9810169 ](https://go.microsoft.com/?linkid=9810169) ](https://go.microsoft.com/?linkid=9810169). Sinon, si vous avez déjà installé Web Platform Installer, vous pouvez ouvrir il et recherchez le produit &quot; <em>Visual Studio Express 2012 pour le Web avec Windows Azure SDK</em>&quot;.
 2. Cliquez sur **installer maintenant**. Si vous n’avez pas **Web Platform Installer** vous allez être redirigé pour télécharger et installer tout d’abord.
 3. Une fois **Web Platform Installer** est ouvert, cliquez sur **installer** pour démarrer le programme d’installation.
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
-title: "Présentation des fonctionnalités de débogage de ASP.NET AJAX | Documents Microsoft"
+title: Présentation des fonctionnalités de débogage de ASP.NET AJAX | Documents Microsoft
 author: scottcate
-description: "La possibilité de déboguer du code est que tous les développeurs doivent être placés dans leur arsenal quelle que soit la technologie qu’ils utilisent. Alors que de nombreux développeurs sont en cours..."
+description: La possibilité de déboguer du code est que tous les développeurs doivent être placés dans leur arsenal quelle que soit la technologie qu’ils utilisent. Alors que de nombreux développeurs sont en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
 msc.type: authoredcontent
-ms.openlocfilehash: 426d0182978faf7fc7516203fcc84ef0152790ba
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f082e2206f5e691579670e42634f30b57e3b3593
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="understanding-aspnet-ajax-debugging-capabilities"></a>Présentation des fonctionnalités de débogage de ASP.NET AJAX
 ====================
@@ -58,7 +58,7 @@ La figure 1 montre quelles Internet Explorer dialogue avancé doit ressembler ap
 
 Une fois le débogage a été activé, vous verrez un nouvel élément de menu s’affichent dans le menu affichage nommé débogueur de Script. Il a deux options disponibles, notamment les ouvrir et de saut à la prochaine instruction. Lors de l’ouverture est sélectionné, vous êtes invité à la page déboguer dans Visual Studio 2008 (Notez que Visual Web Developer Express peut également être utilisé pour le débogage). Si Visual Studio .NET est en cours d’exécution, vous pouvez choisir d’utiliser cette instance ou pour créer une nouvelle instance. Lors de l’arrêt au niveau de l’instruction suivante est sélectionnée, vous êtes invité à déboguer la page lors de l’exécution du code JavaScript. Si le code JavaScript qui s’exécute dans l’événement onLoad de la page, vous pouvez actualiser la page pour déclencher une session de débogage. Si le code JavaScript est exécuté après qu’un clic est effectué le débogueur exécute immédiatement après un clic sur le bouton.
 
-> *>[!NOTE] si vous exécutez sur Windows Vista avec accès contrôle utilisateur (UAC) activé, et que Visual Studio 2008 configuré pour s’exécuter en tant qu’administrateur, Visual Studio ne pourront pas attacher au processus lorsque vous êtes invité à joindre. Pour contourner ce problème, démarrez Visual Studio tout d’abord et permet de déboguer cette instance.*
+> *> [!NOTE] Si vous exécutez sur Windows Vista avec accès contrôle utilisateur (UAC) activé, et que Visual Studio 2008 configuré pour s’exécuter en tant qu’administrateur, Visual Studio ne pourront pas attacher au processus lorsque vous êtes invité à joindre. Pour contourner ce problème, démarrez Visual Studio tout d’abord et permet de déboguer cette instance.*
 
 
 Bien que la section suivante va vous montrer comment déboguer une page ASP.NET AJAX directement à partir de Visual Studio 2008, à l’aide de l’option du débogueur de Script Internet Explorer est utile lorsqu’une page est déjà ouverte et que vous souhaitez inspecter plus en détail.
@@ -101,7 +101,7 @@ Une fois qu’une session de débogage est démarrée et commencer à parcourir 
 
 Cette boîte de dialogue s’affiche, car Visual Studio .NET n’est pas vraiment comment obtenir le code source de certains scripts référencés par la page. Cela peut être très frustrant dans un premier temps, il existe une solution simple. Une fois que vous avez démarré une session de débogage et atteint un point d’arrêt, accédez à la fenêtre Explorateur de scripts Windows déboguer dans le menu Visual Studio 2008, ou utilisez le raccourci clavier Ctrl + Alt + N.
 
-> *>[!NOTE] Si vous ne voyez pas le menu de l’Explorateur de Script répertorié, accédez à outils* *personnaliser* *commandes du menu de Visual Studio .NET. Recherchez l’entrée de débogage dans la section Catégories, puis cliquez dessus pour afficher toutes les entrées de menu disponibles. Dans la liste de commandes, faites défiler jusqu'à l’Explorateur de Script et puis faites glisser sur le débogage* *menu Windows mentionné précédemment. Cela rend l’entrée de menu Explorateur de scripts disponibles chaque fois que vous exécutez Visual Studio .NET.*
+> *> [!NOTE] Si vous ne voyez pas le menu de l’Explorateur de Script répertorié, accédez à outils* *personnaliser* *commandes du menu de Visual Studio .NET. Recherchez l’entrée de débogage dans la section Catégories, puis cliquez dessus pour afficher toutes les entrées de menu disponibles. Dans la liste de commandes, faites défiler jusqu'à l’Explorateur de Script et puis faites glisser sur le débogage* *menu Windows mentionné précédemment. Cela rend l’entrée de menu Explorateur de scripts disponibles chaque fois que vous exécutez Visual Studio .NET.*
 
 
 L’Explorateur de Script peut être utilisé pour afficher tous les scripts utilisés dans une page et de les ouvrir dans l’éditeur de code. Une fois que l’Explorateur de Script est ouvert, double-cliquez sur la page .aspx en cours de débogage pour l’ouvrir dans la fenêtre d’éditeur de code. Effectuer l’action de même pour tous les autres scripts présentés dans l’Explorateur de Script. Une fois que tous les scripts sont ouverts dans la fenêtre de code que vous pouvez appuyer sur F11 (et utilisez les autres touches de raccourci de débogage) pour parcourir votre code. La figure 3 montre un exemple de l’Explorateur de Script. Il répertorie le fichier actuel en cours de débogage (Demo.aspx), ainsi que deux scripts personnalisés et les deux scripts dynamiquement injectés dans la page par ASP.NET AJAX ScriptManager.
@@ -116,11 +116,11 @@ Plusieurs autres windows peuvent également être utilisés pour fournir des inf
 
 Mesure que vous parcourez le code à l’aide du débogueur vous pouvez placez la souris sur les variables dans le code pour afficher la valeur qui leur sont affectés. Toutefois, le débogueur de script occasionnellement n’indique pas tout ce que vous placez la souris sur une variable JavaScript donnée. Pour afficher la valeur, mettez en surbrillance de l’instruction ou la variable que vous tentez d’afficher dans la fenêtre d’éditeur de code et puis déplacez la souris dessus. Bien que cette technique ne fonctionne pas dans tous les cas, nombre de fois où vous serez en mesure d’afficher la valeur sans avoir à rechercher dans une fenêtre de débogage différents tels que la fenêtre variables locales.
 
-Un didacticiel vidéo décrivant certaines des fonctionnalités présentées ici peut être consultée dans [http://www.xmlforasp.net](http://www.xmlforasp.net).
+Un didacticiel vidéo décrivant certaines des fonctionnalités présentées ici peut être consultée dans [ http://www.xmlforasp.net ](http://www.xmlforasp.net).
 
 ## <a name="debugging-with-web-development-helper"></a>Débogage avec l’Assistant de développement Web
 
-Bien que Visual Studio 2008 et Visual Web Developer Express 2008 sont très efficaces, outils de débogage, il existe des options supplémentaires qui peuvent également être utilisées sont plus léger. Un des outils plus récentes libérée est l’application d’assistance du développement Web. Microsoft Nikhil Kothari (parmi les architectes de ASP.NET AJAX clés chez Microsoft) a écrit cet excellent outil qui peut effectuer différentes tâches de débogage simple à l’affichage de messages de demande et de réponse HTTP. Assistant de développement Web peuvent être téléchargé sur [http://projects.nikhilk.net/Projects/WebDevHelper.aspx](http://projects.nikhilk.net/Projects/WebDevHelper.aspx).
+Bien que Visual Studio 2008 et Visual Web Developer Express 2008 sont très efficaces, outils de débogage, il existe des options supplémentaires qui peuvent également être utilisées sont plus léger. Un des outils plus récentes libérée est l’application d’assistance du développement Web. Microsoft Nikhil Kothari (parmi les architectes de ASP.NET AJAX clés chez Microsoft) a écrit cet excellent outil qui peut effectuer différentes tâches de débogage simple à l’affichage de messages de demande et de réponse HTTP. Assistant de développement Web peuvent être téléchargé sur [ http://projects.nikhilk.net/Projects/WebDevHelper.aspx ](http://projects.nikhilk.net/Projects/WebDevHelper.aspx).
 
 Assistant de développement Web peut être utilisé directement à l’intérieur d’Internet Explorer qui la rend facile à utiliser. Il est démarré en sélectionnant Outils Assistant de développement Web dans le menu d’Internet Explorer. L’outil s’ouvre dans la partie inférieure du navigateur qui est pratique, car vous n’êtes pas obligé de laisser le navigateur pour effectuer plusieurs tâches telles que la journalisation de message de demande et de réponse HTTP. Figure 4 montre l’Assistant de développement Web aspect en action.
 
@@ -201,11 +201,11 @@ La visionneuse du journal HTTP traite les objets JSON automatiquement et les aff
 **Figure 8**: message de réponse d’un UpdatePanel affichés à l’aide de la visionneuse du journal HTTP.  ([Cliquez pour afficher l’image en taille réelle](understanding-asp-net-ajax-debugging-capabilities/_static/image24.png))
 
 
-Il existe plusieurs autres outils qui peuvent être utilisés pour afficher les messages de demande et de réponse en plus de l’Assistant de développement Web. Une autre solution intéressante est Fiddler qui est disponible gratuitement sur [http://www.fiddlertool.com](http://www.fiddlertool.com). Bien que Fiddler n’est pas abordé ici, il est également un bon choix lorsque vous devez examiner soigneusement les données et les en-têtes de message.
+Il existe plusieurs autres outils qui peuvent être utilisés pour afficher les messages de demande et de réponse en plus de l’Assistant de développement Web. Une autre solution intéressante est Fiddler qui est disponible gratuitement sur [ http://www.fiddlertool.com ](http://www.fiddlertool.com). Bien que Fiddler n’est pas abordé ici, il est également un bon choix lorsque vous devez examiner soigneusement les données et les en-têtes de message.
 
 ## <a name="debugging-with-firefox-and-firebug"></a>Débogage avec Firefox et Firebug
 
-Microsoft Internet Explorer est toujours le navigateur plus largement utilisé, d’autres navigateurs, telles que Firefox sont devenues très répandus et sont plus utilisés. Par conséquent, que vous souhaitez afficher et de déboguer vos pages ASP.NET AJAX dans Firefox, ainsi que Internet Explorer pour vous assurer que vos applications fonctionnent correctement. Bien que Firefox ne peut pas lier directement dans Visual Studio 2008 pour le débogage, il a une extension appelée Firebug qui peut être utilisé pour le débogage des pages. Firebug peut être téléchargé gratuitement en accédant à [http://www.getfirebug.com](http://www.getfirebug.com).
+Microsoft Internet Explorer est toujours le navigateur plus largement utilisé, d’autres navigateurs, telles que Firefox sont devenues très répandus et sont plus utilisés. Par conséquent, que vous souhaitez afficher et de déboguer vos pages ASP.NET AJAX dans Firefox, ainsi que Internet Explorer pour vous assurer que vos applications fonctionnent correctement. Bien que Firefox ne peut pas lier directement dans Visual Studio 2008 pour le débogage, il a une extension appelée Firebug qui peut être utilisé pour le débogage des pages. Firebug peut être téléchargé gratuitement en accédant à [ http://www.getfirebug.com ](http://www.getfirebug.com).
 
 Firebug fournit un environnement de débogage complète qui peut être utilisé pour parcourir le code ligne par ligne, accéder à tous les scripts utilisés dans une page, afficher des structures de DOM, afficher des styles CSS et même suivre les événements qui se produisent dans une page. Une fois installé, Firebug est accessible en sélectionnant Firebug d’outils Firebug ouvert à partir du menu de Firefox. Comme l’Assistant de développement Web, Firebug est utilisé directement dans le navigateur, bien qu’il peut également être utilisé comme une application autonome.
 
@@ -249,7 +249,7 @@ La classe Sys.Debug expose plusieurs fonctions différentes qui peuvent être ut
 | --- | --- |
 | Assert (condition, message, displayCaller) | Déclare que le paramètre de condition est true. Si la condition testée a la valeur false, une boîte de message est utilisée pour afficher la valeur de paramètre de message. Si le paramètre displayCaller est true, la méthode affiche également des informations sur l’appelant. |
 | clearTrace() | Efface la sortie des instructions à partir d’opérations de suivi. |
-| Fail(message) | Le programme s’arrête l’exécution et entre dans le débogueur. Le paramètre de message peut être utilisé pour indiquer la raison de l’échec. |
+| fail(message) | Le programme s’arrête l’exécution et entre dans le débogueur. Le paramètre de message peut être utilisé pour indiquer la raison de l’échec. |
 | trace(message) | Écrit le paramètre de message dans la sortie de trace. |
 | traceDump (objet, nom) | Génère des données d’un objet dans un format lisible. Le paramètre de nom peut être utilisé pour fournir une étiquette pour le vidage de la trace. Les sous-objets au sein de l’objet de vidage seront écrit par défaut. |
 
@@ -349,11 +349,11 @@ Technologie de Microsoft ASP.NET AJAX fournit une base solide pour la création 
 
 Dans cet article vous connaissez différentes techniques pour le débogage des pages ASP.NET AJAX, y compris Internet Explorer avec Visual Studio 2008, Assistant de développement Web et Firebug. Ces outils peuvent simplifier le processus de débogage global, car vous pouvez accéder aux données de variable, parcourir le code ligne par ligne et afficher les instructions de trace. En plus des différents outils de débogage décrites, vous avez également vu utilisation de la classe de Sys.Debug de la bibliothèque ASP.NET AJAX dans une application et comment la classe de ScriptManager peut être utilisée pour charger debug ou release des versions de scripts.
 
-## <a name="bio"></a>BIO
+## <a name="bio"></a>Bio
 
 Dan Wahlin (Microsoft Most Valuable Professional pour ASP.NET et les Services Web XML) est développement du formateur et architecture consultant .NET à la formation de l’Interface ([www.interfacett.com)](http://www.interfacett.com). Dan a créé le code XML pour le site Web des développeurs ASP.NET ([www.XMLforASP.NET](http://www.XMLforASP.NET)), se trouve sur le Bureau de l’INETA et participe à plusieurs conférences. Dan coauteur ADN Windows Professionnel (Wrox), ASP.NET : conseils, didacticiels et Code (SAM), ASP.NET 1.1 Insider Solutions, ASP.NET 2.0 AJAX Professionnel (Wrox), ASP.NET 2.0 MVP Hacks et XML créé pour les développeurs ASP.NET (SAM). Lorsqu’il n’écrit pas de code, des articles ou des livres, Dan bénéficie de l’écriture et l’enregistrement de musique et lecture de golf et basket avec sa femme et les enfants.
 
 Scott caté travaille avec les technologies Microsoft Web depuis 1997 et est le directeur de myKB.com ([www.myKB.com](http://www.myKB.com)) où il est spécialisé dans l’écriture d’ASP.NET en fonction des applications axées sur les solutions logicielles de la Base de connaissances. Scott peut être contacté par courrier électronique en [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) ou son blog à [ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[Précédent](understanding-asp-net-ajax-web-services.md)
+> [!div class="step-by-step"]
+> [Précédent](understanding-asp-net-ajax-web-services.md)

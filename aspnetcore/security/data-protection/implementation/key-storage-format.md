@@ -1,7 +1,7 @@
 ---
-title: "Format de stockage de clés"
-author: tdykstra
-description: "Ce document explique les détails d’implémentation du format de stockage de clé de protection de données ASP.NET Core."
+title: Format de stockage de clés dans ASP.NET Core
+author: rick-anderson
+description: Découvrez les détails d’implémentation du format de stockage de clés de Protection des données ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: 66783eb7264a4551eafdd9d5c7d99b014701a6de
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1a5912f246708355e6677c60034d982d053c3938
+ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="key-storage-format"></a>Format de stockage de clés
+# <a name="key-storage-format-in-aspnet-core"></a>Format de stockage de clés dans ASP.NET Core
 
 <a name="data-protection-implementation-key-storage-format"></a>
 
@@ -66,7 +66,7 @@ Le format de la \<descripteur > élément dépend de l’implémentation de chif
 
 ## <a name="the-encryptedsecret-element"></a>Le \<encryptedSecret > élément
 
-Un <encryptedSecret> élément qui contient le formulaire chiffrée de la clé secrète peut être présent si [le chiffrement de clés secrètes au repos est activé](key-encryption-at-rest.md#data-protection-implementation-key-encryption-at-rest). L’attribut decryptorType sera le nom qualifié d’assembly d’un type qui implémente IXmlDecryptor. Ce type est responsable de lire interne <encryptedKey> élément et le déchiffrement pour récupérer le texte brut d’origine.
+Un <encryptedSecret> élément qui contient le formulaire chiffrée de la clé secrète peut être présent si [le chiffrement de clés secrètes au repos est activé](xref:security/data-protection/implementation/key-encryption-at-rest#data-protection-implementation-key-encryption-at-rest). L’attribut decryptorType sera le nom qualifié d’assembly d’un type qui implémente IXmlDecryptor. Ce type est responsable de lire interne <encryptedKey> élément et le déchiffrement pour récupérer le texte brut d’origine.
 
 Comme avec \<descripteur >, le format de la <encryptedSecret> élément varie selon le mécanisme de chiffrement au repos en cours d’utilisation. Dans l’exemple ci-dessus, la clé principale est chiffrée à l’aide de DPAPI Windows par le commentaire.
 

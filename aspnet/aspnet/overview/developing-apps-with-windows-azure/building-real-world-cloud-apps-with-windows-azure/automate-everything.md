@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
-title: "Automatiser tout (création d’applications de Cloud du monde réel avec Azure) | Documents Microsoft"
+title: Automatiser tout (création d’applications de Cloud du monde réel avec Azure) | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: aa8bb895ed6eaa0ef4c5752f475ea7c911544ef2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2e30ab7831a10f215a08f74e61adf2d147e76543
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatiser tout (création d’applications de Cloud du monde réel avec Azure)
 ====================
@@ -90,7 +90,7 @@ Sur le **configurer** onglet pour l’application web, vous pouvez voir qu’il 
 
 ![appSettings et connectionStrings](automate-everything/_static/image6.png)
 
-Le *Automation* maintenant contient également un  *&lt;websitename&gt;.pubxml* fichier. Ce fichier stocke les paramètres que MSBuild utilisera pour déployer l’application à l’environnement Azure qui vient d’être créé. Exemple :
+Le *Automation* maintenant contient également un  *&lt;websitename&gt;.pubxml* fichier. Ce fichier stocke les paramètres que MSBuild utilisera pour déployer l’application à l’environnement Azure qui vient d’être créé. Par exemple :
 
 [!code-xml[Main](automate-everything/samples/sample1.xml)]
 
@@ -128,7 +128,7 @@ La première chose que le script est de créer l’application web en appelant l
 
 ### <a name="create-the-storage-account"></a>Créer le compte de stockage
 
-Le script principal s’exécute le *New-AzureStorage.ps1* de script, en spécifiant «*&lt;websitename&gt;*stockage » pour le nom de compte de stockage, et les mêmes données poste en tant que l’application web.
+Le script principal s’exécute le <em>New-AzureStorage.ps1</em> de script, en spécifiant «<em>&lt;websitename&gt;</em>stockage » pour le nom de compte de stockage, et les mêmes données poste en tant que l’application web.
 
 [!code-powershell[Main](automate-everything/samples/sample4.ps1?highlight=3)]
 
@@ -158,7 +158,7 @@ Le script de création de base de données récupère l’adresse IP de l’ordi
 
     [!code-powershell[Main](automate-everything/samples/sample10.ps1?highlight=4)]
 
-    `New-PSCredentialFromPlainText`est une fonction dans le script qui appelle le `ConvertTo-SecureString` applet de commande pour chiffrer le mot de passe et retourne un `PSCredential` de l’objet, le même type que le `Get-Credential` applet de commande renvoie.
+    `New-PSCredentialFromPlainText` est une fonction dans le script qui appelle le `ConvertTo-SecureString` applet de commande pour chiffrer le mot de passe et retourne un `PSCredential` de l’objet, le même type que le `Get-Credential` applet de commande renvoie.
 - Crée la base de données de l’application et la base de données d’appartenance à l’aide de la `New-AzureSqlDatabase` applet de commande.
 
     [!code-powershell[Main](automate-everything/samples/sample11.ps1?highlight=2,5)]
@@ -264,6 +264,6 @@ Dans le [chapitre suivant](source-control.md) nous allons examiner le code sourc
 - [À l’aide de Scripts Windows PowerShell pour publier dans les environnements de Test et développement](https://msdn.microsoft.com/library/azure/dn642480.aspx). Documentation MSDN qui explique comment utiliser les scripts que Visual Studio génère automatiquement pour les projets web de publication.
 - [Outils PowerShell pour Visual Studio 2013](https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597). Extension Visual Studio qui ajoute la prise en charge linguistique pour Windows PowerShell dans Visual Studio.
 
->[!div class="step-by-step"]
-[Précédent](introduction.md)
-[Suivant](source-control.md)
+> [!div class="step-by-step"]
+> [Précédent](introduction.md)
+> [Suivant](source-control.md)

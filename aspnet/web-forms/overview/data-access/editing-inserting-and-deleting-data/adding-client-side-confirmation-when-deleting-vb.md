@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-vb
-title: "Ajout de Confirmation côté Client lors de la suppression (VB) | Documents Microsoft"
+title: Ajout de Confirmation côté Client lors de la suppression (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans les interfaces que nous avons créé jusqu'à présent, un utilisateur peut supprimer accidentellement des données en cliquant sur le bouton de suppression lorsqu’ils destinée à cliquer sur le bouton Modifier. Dans ce t..."
+description: Dans les interfaces que nous avons créé jusqu'à présent, un utilisateur peut supprimer accidentellement des données en cliquant sur le bouton de suppression lorsqu’ils destinée à cliquer sur le bouton Modifier. Dans ce t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3461f9ec4f139f1ea0e60a01b898e67e7ebd7f54
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 03ab3f9974bca7c3e08b8d3fa6fd4fc786ebed4d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-client-side-confirmation-when-deleting-vb"></a>Ajout de Confirmation côté Client lors de la suppression (VB)
 ====================
@@ -75,7 +75,7 @@ Avec ces modifications, nous avons une page web entièrement fonctionnelle qui p
 
 ## <a name="step-2-calling-the-confirmstring-function-from-the-delete-buttons-client-side-onclick-event"></a>Étape 2 : Appel de la fonction confirm(string) à partir de la supprimer des boutons onclick côté Client événement
 
-Avec le contrôle FormView créé, l’étape finale consiste à configurer le bouton supprimer ces qui, lorsqu’il s cliqué par le visiteur, le code JavaScript `confirm(string)` fonction est appelée. Ajout d’un script côté client à un bouton, LinkButton ou ImageButton s côté client `onclick` événement peut être effectué à l’aide de la `OnClientClick property`, qui est une nouveauté d’ASP.NET 2.0. Étant donné que nous voulons que la valeur de la `confirm(string)` renvoyée de la fonction, définissez simplement cette propriété sur :`return confirm('Are you certain that you want to delete this product?');`
+Avec le contrôle FormView créé, l’étape finale consiste à configurer le bouton supprimer ces qui, lorsqu’il s cliqué par le visiteur, le code JavaScript `confirm(string)` fonction est appelée. Ajout d’un script côté client à un bouton, LinkButton ou ImageButton s côté client `onclick` événement peut être effectué à l’aide de la `OnClientClick property`, qui est une nouveauté d’ASP.NET 2.0. Étant donné que nous voulons que la valeur de la `confirm(string)` renvoyée de la fonction, définissez simplement cette propriété sur : `return confirm('Are you certain that you want to delete this product?');`
 
 Après cette modification de la syntaxe déclarative de supprimer le LinkButton s doit ressembler à :
 
@@ -146,7 +146,7 @@ Une autre approche consiste à convertir des s GridView et DetailsView CommandFi
 
 Où *controlID* est la valeur du bouton s `ID` propriété. Alors que ce modèle nécessite toujours un type codé en dur pour la conversion, il supprime la nécessité pour l’indexation, ce qui permet la mise en page Modifier sans entraîne une erreur d’exécution.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Le code JavaScript `confirm(string)` fonction est une technique couramment utilisée pour le contrôle du flux de travail envoi du formulaire. Lors de l’exécution, la fonction affiche une boîte de dialogue modale, côté client qui inclut les deux boutons OK et Annuler. Si l’utilisateur clique sur OK, la `confirm(string)` fonction renvoie `true`; cliquez sur Annuler pour revenir `false`. Cette fonctionnalité, couplée avec un comportement de navigateur s pour annuler l’envoi d’un formulaire si un gestionnaire d’événements pendant le processus de soumission retourne `false`, peut être utilisé pour afficher un messagebox de confirmation lorsque vous supprimez un enregistrement.
 
@@ -156,8 +156,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](implementing-optimistic-concurrency-vb.md)
-[Suivant](limiting-data-modification-functionality-based-on-the-user-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](implementing-optimistic-concurrency-vb.md)
+> [Suivant](limiting-data-modification-functionality-based-on-the-user-vb.md)

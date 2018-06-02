@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
-title: "Interagir avec la Page de contenu à partir de la Page maître (VB) | Documents Microsoft"
+title: Interagir avec la Page de contenu à partir de la Page maître (VB) | Documents Microsoft
 author: rick-anderson
-description: "Explique comment appeler des méthodes et de définir des propriétés, etc., de la Page de contenu à partir du code dans la Page maître."
+description: Explique comment appeler des méthodes et de définir des propriétés, etc., de la Page de contenu à partir du code dans la Page maître.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/11/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-content-page-from-the-master-page-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a25f739e5d5717d275554909e1584bb7e7fed302
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9274924b441cb21e33eb57de06ff374428fa036b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="interacting-with-the-content-page-from-the-master-page-vb"></a>Interagir avec la Page de contenu à partir de la Page maître (VB)
 ====================
@@ -153,7 +153,7 @@ Comme indiqué précédemment dans ce didacticiel, nous avons besoin déclencher
 Une classe s’abonne à un événement en créant une *Gestionnaire d’événements*, qui est une méthode qui est exécutée en réponse à l’événement déclenché. Le serveur de publication définit les événements qu’il déclenche en définissant un *délégué d’événement*. Le délégué d’événement spécifie les paramètres d’entrée, le Gestionnaire d’événements doit accepter. Dans le .NET Framework, les délégués d’événements ne pas retourner aucune valeur et accepter deux paramètres d’entrée :
 
 - Un `Object`, qui identifie la source d’événements, et
-- Une classe dérivée à partir de`System.EventArgs`
+- Une classe dérivée à partir de `System.EventArgs`
 
 Le second paramètre transmis au gestionnaire d’événements peut inclure des informations supplémentaires sur l’événement. Lors de la base de `EventArgs` classe ne passe pas d’informations, le .NET Framework inclut un nombre de classes qui étendent `EventArgs` et englobe les propriétés supplémentaires. Par exemple, un `CommandEventArgs` instance est passée aux gestionnaires d’événements qui répondent à la `Command` événement et inclut deux propriétés d’information : `CommandArgument` et `CommandName`.
 
@@ -257,12 +257,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
-Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Suchi Banerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Suchi Banerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](interacting-with-the-master-page-from-the-content-page-vb.md)
-[Suivant](master-pages-and-asp-net-ajax-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](interacting-with-the-master-page-from-the-content-page-vb.md)
+> [Suivant](master-pages-and-asp-net-ajax-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
-title: "Code First Migrations et déploiement avec Entity Framework dans une Application ASP.NET MVC | Documents Microsoft"
+title: Code First Migrations et déploiement avec Entity Framework dans une Application ASP.NET MVC | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/07/2014
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 2294f2aba3f765d7849d1f407e85f424dc8b2518
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 04d393edca0469df140f06a7d083a48aa8f84b65
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="code-first-migrations-and-deployment-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Code First Migrations et déploiement avec Entity Framework dans une Application ASP.NET MVC
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) ou [télécharger le PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
 
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio 2013. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio 2013. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 Jusqu'à présent l’application a été exécuté localement dans IIS Express sur votre ordinateur de développement. Pour rendre une application réelle disponible pour d’autres personnes à utiliser sur Internet, vous devez déployer vers un fournisseur d’hébergement web. Dans ce didacticiel, vous allez déployer l’application Contoso University au cloud dans Azure.
 
@@ -37,9 +37,9 @@ Nous vous recommandons d’utiliser un processus d’intégration continue avec 
 
 ## <a name="enable-code-first-migrations"></a>Activer les Migrations Code First
 
-Lorsque vous développez une application, votre modèle de données change fréquemment et chaque fois que les modifications apportées au modèle, il est désynchronisé avec la base de données. Vous avez configuré pour automatiquement supprimer et recréer la base de données chaque fois que vous modifiez le modèle de données Entity Framework. Lorsque vous ajouter, supprimer ou modifier des classes d’entité ou modifier votre `DbContext` classe, la prochaine fois que vous exécutez l’application elle supprime de votre base de données existante, crée un nouveau qui correspond au modèle et l’alimente avec les données de test d’automatiquement.
+Quand vous développez une nouvelle application, votre modèle de données change fréquemment et, chaque fois que le modèle change, il n’est plus en synchronisation avec la base de données. Vous avez configuré pour automatiquement supprimer et recréer la base de données chaque fois que vous modifiez le modèle de données Entity Framework. Lorsque vous ajouter, supprimer ou modifier des classes d’entité ou modifier votre `DbContext` classe, la prochaine fois que vous exécutez l’application elle supprime de votre base de données existante, crée un nouveau qui correspond au modèle et l’alimente avec les données de test d’automatiquement.
 
-Cette méthode de synchronisation de la base de données avec le modèle de données fonctionne bien jusqu'à ce que vous déployez l’application en production. Lorsque l’application est en cours d’exécution en production, il stocke généralement les données que vous souhaitez conserver, et vous ne voulez pas perdre tous les éléments chaque fois que vous apportez des modifications telles que l’ajout d’une nouvelle colonne. Le [Migrations Code First](https://msdn.microsoft.com/data/jj591621) fonctionnalité résout ce problème en activant Code First mettre à jour le schéma de base de données au lieu de devoir supprimer et recréer la base de données. Dans ce didacticiel, vous allez déployer l’application, et pour préparer pour que vous allez activer les Migrations.
+Cette méthode pour conserver la base de données en synchronisation avec le modèle de données fonctionne bien jusqu’au déploiement de l’application en production. Lorsque l’application est en cours d’exécution en production, il stocke généralement les données que vous souhaitez conserver, et vous ne voulez pas perdre tous les éléments chaque fois que vous apportez des modifications telles que l’ajout d’une nouvelle colonne. Le [Migrations Code First](https://msdn.microsoft.com/data/jj591621) fonctionnalité résout ce problème en activant Code First mettre à jour le schéma de base de données au lieu de devoir supprimer et recréer la base de données. Dans ce didacticiel, vous allez déployer l’application, et pour préparer pour que vous allez activer les Migrations.
 
 1. Désactiver l’initialiseur que vous avez configurée précédemment en supprimant ou en supprimant le `contexts` élément que vous avez ajouté au fichier Web.config de l’application.
 
@@ -48,7 +48,7 @@ Cette méthode de synchronisation de la base de données avec le modèle de donn
 
     [!code-xml[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.xml?highlight=2)]
 
-    Cette modification affecte le projet afin que la première migration créera une nouvelle base de données. Cela n’est pas nécessaire, mais vous le verrez plus tard pourquoi il est judicieux.
+    Cette modification configure le projet de façon à ce que la première migration crée une nouvelle base de données. Cela n’est pas nécessaire, mais vous le verrez plus tard pourquoi il est judicieux.
 3. À partir de la **outils** menu, cliquez sur **Gestionnaire de Package de bibliothèque** , puis **Package Manager Console**.
 
     ![Selecting_Package_Manager_Console](https://asp.net/media/4336350/1pm.png)
@@ -112,11 +112,11 @@ Lorsque vous avez exécuté le `add-migration` Migrations généré le code susc
 
 [!code-csharp[Main](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample8.cs)]
 
-Appels de migrations le `Up` méthode pour implémenter les modifications de modèle de données pour une migration. Lorsque vous entrez une commande pour restaurer la mise à jour, les appels de Migrations le `Down` (méthode).
+Les migrations appellent la méthode `Up` pour implémenter les modifications de modèle de données pour une migration. Quand vous entrez une commande pour annuler la mise à jour, Migrations appelle la méthode `Down`.
 
 Il s’agit de la migration initiale qui a été créée lorsque vous avez entré la `add-migration InitialCreate` commande. Le paramètre (`InitialCreate` dans l’exemple) est utilisé pour le fichier de nommer et peut être tout ce que vous voulez ; vous choisissez généralement un mot ou une expression qui résume ce qui est effectué dans la migration. Par exemple, vous pouvez nommer une migration ultérieure &quot;AddDepartmentTable&quot;.
 
-Si vous avez créé la migration initiale lors de la base de données existe déjà, le code de création de base de données est généré, mais ne doit pas nécessairement exécuter, car la base de données correspond déjà le modèle de données. Lorsque vous déployez l’application vers un autre environnement dans lequel la base de données n’existe pas encore, ce code sera exécuté pour créer votre base de données, il est donc judicieux de tester au préalable. C’est pourquoi vous avez modifié le nom de la base de données dans la chaîne de connexion précédemment--afin que les migrations peuvent créer un nouveau à partir de zéro.
+Si vous avez créé la migration initiale alors que la base de données existait déjà, le code de création de la base de données est généré, mais il n’est pas nécessaire de l’exécuter, car la base de données correspond déjà au modèle de données. Quand vous déployez l’application sur un autre environnement où la base de données n’existe pas encore, ce code est exécuté pour créer votre base de données : il est donc judicieux de le tester au préalable. C’est la raison pour laquelle vous avez précédemment changé le nom de la base de données dans la chaîne de connexion : les migrations doivent pouvoir créer une base de données à partir de zéro.
 
 1. Dans le **Package Manager Console** fenêtre, entrez la commande suivante :
 
@@ -125,7 +125,7 @@ Si vous avez créé la migration initiale lors de la base de données existe dé
     ![](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 
     Le `update-database` commande s’exécute le `Up` méthode pour créer la base de données, puis il exécute la `Seed` méthode pour remplir la base de données. Le même processus s’exécutera automatiquement en production après avoir déployé l’application, comme vous le verrez dans la section suivante.
-- Utilisez **l’Explorateur de serveurs** pour inspecter la base de données comme vous le faisiez dans le premier didacticiel, exécutez l’application pour vérifier que tout fonctionne toujours le même qu’avant.
+2. Utilisez **l’Explorateur de serveurs** pour inspecter la base de données comme vous le faisiez dans le premier didacticiel, exécutez l’application pour vérifier que tout fonctionne toujours le même qu’avant.
 
 ## <a name="deploy-to-azure"></a>Déployer vers Azure
 
@@ -153,7 +153,7 @@ Vous allez déployer la base de données à la base de données SQL Azure. Base 
 
     ![Nouveau bouton dans le portail de gestion](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/CreateWeb-Sql.png)
 
- Le **nouvelle application Web & SQL - créer** Assistant s’ouvre.
+   Le **nouvelle application Web & SQL - créer** Assistant s’ouvre.
 
 2. Dans le panneau, entrez une chaîne dans le **nom de l’application** à cocher pour utiliser l’URL unique pour votre application. L’URL complète consiste à ce que vous entrez ici ainsi que le domaine par défaut des Services d’application Azure (. azurewebsites.net). Si le **nom de l’application** est déjà utilisé, l’Assistant vous avertit avec une croix rouge *le nom de l’application n’est pas disponible* message. Si le **nom de l’application** est disponible, vous obtiendrez une coche verte.
 
@@ -175,9 +175,9 @@ Vous allez déployer la base de données à la base de données SQL Azure. Base 
 10. Modifier [classement](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support) en fonction des besoins.
 11. Entrez un administrateur **nom d’utilisateur administrateur de SQL** et **mot de passe administrateur SQL**. Si vous avez sélectionné **serveur de base de données SQL**, vous n’êtes pas entrer un nom existant et un mot de passe ici, vous entrez un nouveau nom et mot de passe que vous définissez maintenant pour une utilisation ultérieure lorsque vous accédez à la base de données. Si vous avez sélectionné un serveur que vous avez créé précédemment, vous devez entrer les informations d’identification pour ce serveur.
 12. Collecte de données de télémétrie peut être activée pour le Service d’applications à l’aide d’Application Insights. Application Insights avec peu de configuration collecte les événements précieuses, exception, dépendance, demande et les informations de trace. Pour en savoir plus sur Application Insights, prise en main de [Azure Docs](https://azure.microsoft.com/services/application-insights/).
-12. Cliquez sur **créer** en bas du panneau pour indiquer que vous avez terminé.
+13. Cliquez sur **créer** en bas du panneau pour indiquer que vous avez terminé.
   
- Le portail de gestion renvoie à la page de tableaux de bord et le **Notifications** panneau en haut de la page indique que le site est créé. Après un certain temps (en général moins d’une minute), il y aura une notification indiquant que le déploiement a réussi. Dans la barre de navigation à gauche, la nouvelle **du Service d’applications** s’affiche dans le *des Services d’application* section et les nouveaux **base de données SQL** s’affiche dans le *bases de données SQL*  section.
+    Le portail de gestion renvoie à la page de tableaux de bord et le **Notifications** panneau en haut de la page indique que le site est créé. Après un certain temps (en général moins d’une minute), il y aura une notification indiquant que le déploiement a réussi. Dans la barre de navigation à gauche, la nouvelle **du Service d’applications** s’affiche dans le *des Services d’application* section et les nouveaux **base de données SQL** s’affiche dans le *bases de données SQL*  section.
 
 ### <a name="deploy-the-application-to-azure"></a>Déployer l’application sur Azure
 
@@ -195,30 +195,30 @@ Vous allez déployer la base de données à la base de données SQL Azure. Base 
 5. Une fois que le profil a été configuré, le **connexion** onglet s’affiche. Cliquez sur **valider la connexion** pour vous assurer que les paramètres sont corrects
 
     ![Valider la connexion](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/Publish-Connection.png)
-7. Lorsque la connexion a été validée, une coche verte s’affiche en regard du **valider la connexion** bouton. Cliquez sur **Suivant**.
+6. Lorsque la connexion a été validée, une coche verte s’affiche en regard du **valider la connexion** bouton. Cliquez sur **Suivant**.
   
     ![Connexion validée avec succès](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/Publish-SettingsValidated.png)
-8. Ouvrez le **chaîne de connexion à distance** liste déroulante sous **SchoolContext** et sélectionnez la chaîne de connexion pour la base de données que vous avez créé.
-9. Sélectionnez **base de données de mise à jour**.
+7. Ouvrez le **chaîne de connexion à distance** liste déroulante sous **SchoolContext** et sélectionnez la chaîne de connexion pour la base de données que vous avez créé.
+8. Sélectionnez **base de données de mise à jour**.
 
     ![Onglet Paramètres](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/Publish-Settings.png)
 
     Ce paramètre oblige le processus de déploiement configurer automatiquement l’application *Web.config* des fichiers sur le serveur de destination afin qu’utilise le premier Code la `MigrateDatabaseToLatestVersion` classe de l’initialiseur.
-10. Cliquez sur **Suivant**.
-11. Dans le **aperçu** , cliquez sur **démarrer la version préliminaire**.
+9. Cliquez sur **Suivant**.
+10. Dans le **aperçu** , cliquez sur **démarrer la version préliminaire**.
   
     ![Bouton du démarrage dans l’onglet d’aperçu](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/Publish-Preview.png)
   
- L’onglet affiche une liste des fichiers qui seront copiés vers le serveur. Affichage de l’aperçu n’est pas requise pour publier l’application, mais elle est une fonction utile de connaître. Dans ce cas, vous n’avez pas besoin de faire quelque chose avec la liste des fichiers qui s’affiche. La prochaine fois que vous déployez cette application, seuls les fichiers qui ont été modifiés seront dans cette liste.
+    L’onglet affiche une liste des fichiers qui seront copiés vers le serveur. Affichage de l’aperçu n’est pas requise pour publier l’application, mais elle est une fonction utile de connaître. Dans ce cas, vous n’avez pas besoin de faire quelque chose avec la liste des fichiers qui s’affiche. La prochaine fois que vous déployez cette application, seuls les fichiers qui ont été modifiés seront dans cette liste.
     ![Sortie de fichier du démarrage](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/Publish-PreviewLoaded.png)
 
-12. Cliquez sur **Publier**.
- Visual Studio lance le processus de copie des fichiers vers le serveur Azure.
-13. Le **sortie** fenêtre affiche les actions de déploiement ont été effectuées et signale la réussite du déploiement.
+11. Cliquez sur **Publier**.
+    Visual Studio lance le processus de copie des fichiers vers le serveur Azure.
+12. Le **sortie** fenêtre affiche les actions de déploiement ont été effectuées et signale la réussite du déploiement.
   
     ![Fenêtre Sortie reporting réussir le déploiement](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/Publish-BuildOutput.png)
-14. Lors du déploiement réussi, le navigateur par défaut s’ouvre automatiquement à l’URL du site web déployé.
- L’application que vous avez créé est en cours d’exécution dans le cloud. 
+13. Lors du déploiement réussi, le navigateur par défaut s’ouvre automatiquement à l’URL du site web déployé.
+    L’application que vous avez créé est en cours d’exécution dans le cloud. 
   
     ![Students_index_page_with_paging](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/Publish-Site.png)
 
@@ -250,7 +250,7 @@ Dans la section déploiement, vous avez vu le [MigrateDatabaseToLatestVersion](h
 
 Pour plus d’informations sur les initialiseurs, consultez [compréhension des initialiseurs de base de données dans Entity Framework Code First](http://www.codeguru.com/csharp/article.php/c19999/Understanding-Database-Initializers-in-Entity-Framework-Code-First.htm) et chapitre 6 du livre [programmation Entity Framework : Code First](http://shop.oreilly.com/product/0636920022220.do) par Julie Lerman et Rowan Miller.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez vu comment activer les migrations et déployer l’application. Dans le didacticiel suivant vous commencerez examinant rubriques plus avancées en développant le modèle de données.
 
@@ -258,6 +258,6 @@ Veuillez laisser des commentaires sur la façon dont vous avez aimé ce didactic
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans [ASP.NET Data Access - ressources recommandées](xref:whitepapers/aspnet-data-access-content-map).
 
->[!div class="step-by-step"]
-[Précédent](xref:mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application)
-[Suivant](xref:mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application)
+> [!div class="step-by-step"]
+> [Précédent](xref:mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application)
+> [Suivant](xref:mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application)

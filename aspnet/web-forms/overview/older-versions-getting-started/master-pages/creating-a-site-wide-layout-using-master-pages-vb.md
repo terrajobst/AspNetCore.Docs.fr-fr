@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb
-title: "Création d’une disposition à l’échelle du Site à l’aide de gabarits (VB) | Documents Microsoft"
+title: Création d’une disposition à l’échelle du Site à l’aide de gabarits (VB) | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel vous présente les notions de base de page maître. Quelles sont les pages maîtres, à savoir comment fait un créer une page maître, quelles sont les espaces réservés contenu, en quoi un cr..."
+description: Ce didacticiel vous présente les notions de base de page maître. Quelles sont les pages maîtres, à savoir comment fait un créer une page maître, quelles sont les espaces réservés contenu, en quoi un cr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 29671970dc6f53d0e14170cf6376c02634b7b08e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d18993af7159de552db0c622fbef58e814e36ebb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-vb"></a>Création d’une disposition à l’échelle du Site à l’aide de gabarits (VB)
 ====================
@@ -34,7 +34,7 @@ Un attribut d’un site Web bien conçu est une disposition cohérente des pages
 
 [![Le site Web www.asp.net utilise une apparence et convivialité cohérentes dans toutes les Pages](creating-a-site-wide-layout-using-master-pages-vb/_static/image2.png)](creating-a-site-wide-layout-using-master-pages-vb/_static/image1.png)
 
-**Figure 01**: le site Web www.asp.net emploie un rechercher cohérent et l’apparence sur toutes les Pages ([cliquez pour afficher l’image en taille réelle](creating-a-site-wide-layout-using-master-pages-vb/_static/image3.png))
+<strong>Figure 01</strong>: le site Web www.asp.net emploie un rechercher cohérent et l’apparence sur toutes les Pages ([cliquez pour afficher l’image en taille réelle](creating-a-site-wide-layout-using-master-pages-vb/_static/image3.png))
 
 
 Un autre attribut d’un site bien conçu est la facilité avec laquelle l’apparence du site peut être modifiée. La figure 1 montre la page d’accueil www.asp.net à partir de mars 2008, mais entre maintenant et publication de ce didacticiel, l’apparence a peut-être été modifié. Par exemple, les éléments de menu en haut seront développe pour inclure une nouvelle section pour l’infrastructure MVC. Ou peut-être une radicalement nouvelle conception avec différentes couleurs, polices et la disposition sera résolue. Appliquer ces modifications à l’ensemble du site doit être un processus rapide et simple qui ne requiert pas de modification des milliers de pages web qui composent le site.
@@ -281,12 +281,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
 Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Précédent](nested-master-pages-cs.md)
-[Suivant](multiple-contentplaceholders-and-default-content-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](nested-master-pages-cs.md)
+> [Suivant](multiple-contentplaceholders-and-default-content-vb.md)

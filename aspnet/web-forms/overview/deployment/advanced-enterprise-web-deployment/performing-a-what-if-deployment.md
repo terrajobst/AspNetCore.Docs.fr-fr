@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/performing-a-what-if-deployment
-title: "Effectuer le déploiement | Documents Microsoft"
+title: Effectuer le déploiement | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique explique comment effectuer « que se passe-t-il si » (ou simulé) déploiements à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy) et V..."
+description: Cette rubrique explique comment effectuer « que se passe-t-il si » (ou simulé) déploiements à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy) et V...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/performing-a-what-if-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: cea805c86f0764c7443ccc5c9f89248860a6a842
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c1a13f38c8e629bcd615190b00104109e25fb289
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="performing-a-what-if-deployment"></a>Exécution d’un déploiement « Que se passe-t-il si »
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique explique comment effectuer « que se passe-t-il si » (ou simulé) déploiements à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy) et VSDBCMD. Cela vous permet de déterminer l’impact de votre logique de déploiement sur un environnement cible particulier avant de déployer votre application.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération et de déploiement est contrôlé par deux fichiers projet & #x 2014 ; o ne contenant les instructions de génération qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération et de déploiement est contrôlé par deux fichiers de projet&#x2014;une qui contient les instructions de génération qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="performing-a-what-if-deployment-for-web-packages"></a>Exécution d’un déploiement « Que se passe-t-il si » pour les Packages Web
 
@@ -41,7 +41,7 @@ Web Deploy inclut des fonctionnalités qui vous permet d’effectuer des déploi
 
 Car un déploiement « que se passe-t-il si » réellement ne modifie en rien sur le serveur de destination, ce qu’il ne peut pas toujours faire est de prédire si un déploiement réussira.
 
-Comme décrit dans [déploiement des Packages Web](../web-deployment-in-the-enterprise/deploying-web-packages.md), vous pouvez déployer des packages web à l’aide de Web Deploy dans deux façons & #x 2014 ; à l’aide de l’utilitaire de ligne de commande MSDeploy.exe directement ou en exécutant la *. deploy.cmd* fichier qui génère des processus de génération.
+Comme décrit dans [déploiement des Packages Web](../web-deployment-in-the-enterprise/deploying-web-packages.md), vous pouvez déployer des packages web à l’aide de Web Deploy de deux façons&#x2014;à l’aide de l’utilitaire de ligne de commande MSDeploy.exe directement ou en exécutant la *. deploy.cmd* fichier que le processus de génération génère.
 
 Si vous utilisez MSDeploy.exe directement, vous pouvez exécuter un déploiement « que se passe-t-il si » en ajoutant le **– whatif** indicateur à votre commande. Par exemple, pour évaluer ce qui se passerait si vous avez déployé le package ContactManager.Mvc.zip dans un environnement intermédiaire, la commande MSDeploy doit ressembler à ceci :
 
@@ -122,7 +122,7 @@ L’étape suivante consiste à paramétrer les Web Deploy et des commandes de V
 [!code-xml[Main](performing-a-what-if-deployment/samples/sample6.xml)]
 
 
-De même, la cible suivante utilise l’utilitaire VSDBCMD pour déployer une base de données. Par défaut, un **/dd** commutateur n’est pas inclus. Cela signifie que VSDBCMD génère un script de déploiement, mais ne déploiera pas de la base de données & #x 2014 ; en d’autres termes, un scénario « que se passe-t-il si ». Si le **WhatIf** propriété n’est pas définie sur **true**, un **/dd** commutateur est ajouté et VSDBCMD déployez la base de données.
+De même, la cible suivante utilise l’utilitaire VSDBCMD pour déployer une base de données. Par défaut, un **/dd** commutateur n’est pas inclus. Cela signifie que VSDBCMD génère un script de déploiement, mais ne déploiera pas de la base de données&#x2014;en d’autres termes, un scénario « que se passe-t-il si ». Si le **WhatIf** propriété n’est pas définie sur **true**, un **/dd** commutateur est ajouté et VSDBCMD déployez la base de données.
 
 
 [!code-xml[Main](performing-a-what-if-deployment/samples/sample7.xml)]
@@ -144,6 +144,6 @@ Cette rubrique décrit comment exécuter « que se passe-t-il si » les déplo
 
 Pour plus d’informations sur la syntaxe de ligne de commande de Web Deploy, consultez [Web Deploy opération Settings](https://technet.microsoft.com/library/dd569089(WS.10).aspx). Pour obtenir des conseils sur les options de ligne de commande lorsque vous utilisez la *. deploy.cmd* de fichiers, consultez [Comment : installer un Package de déploiement à l’aide du fichier deploy.cmd](https://msdn.microsoft.com/library/ff356104.aspx). Pour obtenir des conseils sur la syntaxe de ligne de commande de VSDBCMD, consultez [référence de ligne de commande pour VSDBCMD. EXE (déploiement et importation de schéma)](https://msdn.microsoft.com/library/dd193283.aspx).
 
->[!div class="step-by-step"]
-[Précédent](advanced-enterprise-web-deployment.md)
-[Suivant](customizing-database-deployments-for-multiple-environments.md)
+> [!div class="step-by-step"]
+> [Précédent](advanced-enterprise-web-deployment.md)
+> [Suivant](customizing-database-deployments-for-multiple-environments.md)

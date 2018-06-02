@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/7-displaying-data-in-a-chart
-title: "Affichage des données dans un graphique avec les Pages Web ASP.NET (Razor) | Documents Microsoft"
+title: Affichage des données dans un graphique avec les Pages Web ASP.NET (Razor) | Documents Microsoft
 author: microsoft
-description: "Ce chapitre explique comment afficher des données dans un graphique. Dans les chapitres précédents, vous avez appris comment afficher des données dans une grille et manuellement. Ce chapitre explique..."
+description: Ce chapitre explique comment afficher des données dans un graphique. Dans les chapitres précédents, vous avez appris comment afficher des données dans une grille et manuellement. Ce chapitre explique...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: f252b74bc42d0ea65b8b1150973c4f3c50cc9cf4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5cf17e54408d585e9a375b302b61b4e28d9b022a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>Affichage des données dans un graphique avec les Pages Web ASP.NET (Razor)
 ====================
@@ -41,7 +41,7 @@ par [Microsoft](https://github.com/microsoft)
 <a id="The_Chart_Helper"></a>
 ## <a name="the-chart-helper"></a>L’Assistant graphique
 
-Lorsque vous souhaitez afficher vos données dans un graphique, vous pouvez utiliser `Chart` helper. Le `Chart` assistance peut rendre une image qui affiche les données dans une variété de types de graphiques. Il prend en charge de nombreuses options pour la mise en forme et l’étiquetage. Le `Chart` assistance peut rendre plus de 30 types de graphiques, y compris tous les types de graphiques que vous pouvez être familiarisé avec à partir de Microsoft Excel ou d’autres outils &#8212; graphiques en aires, à barres des graphiques, des histogrammes, de ligne graphiques et les graphiques à secteurs, ainsi que de plus graphiques spécialisés tels que les graphiques boursiers.
+Lorsque vous souhaitez afficher vos données dans un graphique, vous pouvez utiliser `Chart` helper. Le `Chart` assistance peut rendre une image qui affiche les données dans une variété de types de graphiques. Il prend en charge de nombreuses options pour la mise en forme et l’étiquetage. Le `Chart` assistance peut rendre plus de 30 types de graphiques, y compris tous les types de graphiques que vous connaissez à partir de Microsoft Excel ou d’autres outils peut-être &#8212; graphiques en aires, graphiques à barres, histogrammes, graphiques en courbes et les graphiques à secteurs, ainsi que d’informations graphiques spécialisés tels que les graphiques boursiers.
 
 | **Graphique en aires** ![Description : image de graphique en aires](7-displaying-data-in-a-chart/_static/image1.jpg) | **Graphique à barres** ![Description : image du type de graphique à barres](7-displaying-data-in-a-chart/_static/image2.jpg) |
 | --- | --- |
@@ -122,14 +122,14 @@ La troisième option de création de graphiques est d’utiliser un fichier XML 
 
     Le code crée d’abord un `DataSet` objet. Cet objet est utilisé pour gérer les données qui sont lu à partir du fichier XML et organiser selon les informations contenues dans le fichier de schéma. (Notez que la partie supérieure du code inclut l’instruction `using SystemData`. Cela est indispensable pour pouvoir travailler avec le `DataSet` objet. Pour plus d’informations, consultez [ &quot;Using&quot; instructions et des noms qualifiés complets](#SB_UsingStatements) plus loin dans cet article.)
 
-    Ensuite, le code crée un `DataView` objet basé sur le jeu de données. La vue de données fournit un objet qui peut lier le graphique &#8212; Autrement dit, en lecture et tracer. Le graphique est lié aux données à l’aide du `AddSeries` (méthode), en tant que vous avez vu précédemment lorsque vous traitez les données de tableau, à ceci près que cette fois le `xValue` et `yValues` paramètres sont définis sur le `DataView` objet.
+    Ensuite, le code crée un `DataView` objet basé sur le jeu de données. La vue de données fournit un objet qui peut lier le graphique &#8212; , autrement dit, lire et tracer. Le graphique est lié aux données à l’aide du `AddSeries` (méthode), en tant que vous avez vu précédemment lorsque vous traitez les données de tableau, à ceci près que cette fois le `xValue` et `yValues` paramètres sont définis sur le `DataView` objet.
 
     Cet exemple montre également comment spécifier un type de graphique particulier. Lorsque les données sont ajoutées dans le `AddSeries` (méthode), la `chartType` paramètre est également configuré pour afficher un graphique à secteurs.
 7. Exécutez la page dans un navigateur. 
 
     ![](7-displaying-data-in-a-chart/_static/image10.jpg)
 
-> [!TIP] 
+> [!TIP]
 > 
 > <a id="SB_UsingStatements"></a>
 > ### <a name="using-statements-and-fully-qualified-names"></a>Instructions « Using » et les noms qualifiés complets
@@ -239,7 +239,7 @@ Graphiques enregistrés dans le cache peuvent être supprimées si le serveur ma
 
     Enfin, le code utilise la `WriteFromCache` méthode pour extraire et afficher le graphique à partir du cache. Notez que cette méthode est en dehors de la `if` bloc qui vérifie le cache, car il recevra le graphique à partir du cache si le graphique s’y trouvait pour commencer ou a dû être généré et enregistré dans le cache.
 
-    Notez que dans l’exemple, le `AddTitle` méthode inclut un horodatage. (Il ajoute la date et heure &#8212; `DateTime.Now` &#8212; pour le titre.)
+    Notez que dans l’exemple, le `AddTitle` méthode inclut un horodatage. (Il ajoute la date et heure actuelles &#8212; `DateTime.Now` &#8212; au titre.)
 5. Créer une nouvelle page nommée *ClearCache.cshtml* et remplacer son contenu par le code suivant :
 
     [!code-cshtml[Main](7-displaying-data-in-a-chart/samples/sample14.cshtml)]

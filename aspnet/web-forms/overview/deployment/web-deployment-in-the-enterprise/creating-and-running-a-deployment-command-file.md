@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
-title: "Fichier de commandes de création et exécution d’un déploiement | Documents Microsoft"
+title: Fichier de commandes de création et exécution d’un déploiement | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique explique comment générer un fichier de commandes qui vous permettent d’exécuter un déploiement à l’aide de fichiers de projet Microsoft Build Engine (MSBuild) en tant qu’une seule étape, re..."
+description: Cette rubrique explique comment générer un fichier de commandes qui vous permettent d’exécuter un déploiement à l’aide de fichiers de projet Microsoft Build Engine (MSBuild) en tant qu’une seule étape, re...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
 msc.type: authoredcontent
-ms.openlocfilehash: bc31bf55b29661816e0ca9a50b51b0abc3eb2c98
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e5fb034a67bc9f2ea549af269eae51a49acc4d98
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-and-running-a-deployment-command-file"></a>Création et exécution d’un fichier de commandes de déploiement
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit comment créer un fichier de commandes qui vous permettent d’exécuter un déploiement à l’aide de fichiers de projet Microsoft Build Engine (MSBuild) comme un processus étape unique et reproductible.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [Contact Manager](the-contact-manager-solution.md) solution & #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [le Gestionnaire de contacts](the-contact-manager-solution.md) solution&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [comprendre le processus de génération](understanding-the-build-process.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [comprendre le processus de génération](understanding-the-build-process.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="process-overview"></a>Vue d’ensemble du processus
 
@@ -40,7 +40,7 @@ Dans cette rubrique, vous allez apprendre à créer et exécuter un fichier de c
 
 ## <a name="create-an-msbuild-command"></a>Créer une commande de MSBuild
 
-Comme décrit dans [comprendre le processus de génération](understanding-the-build-process.md), le fichier de projet spécifique à un environnement & #x 2014 ; par exemple, *Env-Dev.proj*& #x 2014 ; est conçue pour être importé dans le indépendant de l’environnement *Publish.proj* fichier au moment de la génération. Ensemble, ces deux fichiers fournissent un ensemble complet d’instructions qui indiquent comment générer et déployer votre solution à MSBuild.
+Comme décrit dans [comprendre le processus de génération](understanding-the-build-process.md), le fichier de projet spécifique à un environnement&#x2014;, par exemple, *Env-Dev.proj*&#x2014;est conçu pour être importé dans l’environnement indépendant. *Publish.proj* fichier au moment de la génération. Ensemble, ces deux fichiers fournissent un ensemble complet d’instructions qui indiquent comment générer et déployer votre solution à MSBuild.
 
 Le *Publish.proj* fichier utilise une **importer** élément pour importer le fichier de projet spécifique à l’environnement.
 
@@ -92,7 +92,7 @@ Lorsque vous avez créé un fichier de commandes pour votre environnement cible,
 5. S’il s’agit de la première fois que vous avez déployé la solution à cet environnement, vous devez ajouter le compte d’ordinateur du serveur test web pour le **db\_datawriter** et **db\_datareader**rôles sur le **ContactManager** base de données. Cette procédure est décrite dans [configurer un serveur de base de données pour la publication de déploiement Web](../configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing.md).
 
     > [!NOTE]
-    > Il vous suffit de vous attribuez ces autorisations lorsque vous créez la base de données. Par défaut, le processus de génération ne recrée pas la base de données sur chaque #x 2014 et le déploiement ; au lieu de cela, il compare la base de données pour le schéma le plus récent et assurez-vous que les modifications nécessaires. Par conséquent, vous devez uniquement mapper ces rôles de base de données de la première fois que vous déployez la solution.
+    > Il vous suffit de vous attribuez ces autorisations lorsque vous créez la base de données. Par défaut, le processus de génération ne recréera pas la base de données sur chaque déploiement&#x2014;au lieu de cela, il compare la base de données pour le schéma le plus récent et assurez-vous que les modifications nécessaires. Par conséquent, vous devez uniquement mapper ces rôles de base de données de la première fois que vous déployez la solution.
 6. Ouvrez Internet Explorer et accédez à l’URL de l’application du responsable du Contact (par exemple, `http://testweb1:85/ContactManager/`).
 7. Vérifiez que l’application fonctionne comme prévu et que vous êtes en mesure d’ajouter des contacts.
 
@@ -118,6 +118,6 @@ Un fichier de commandes pour publier dans un environnement intermédiaire peut c
 
 Vous pouvez également personnaliser le processus de génération pour chaque environnement par substitution de propriétés ou de la définition de plusieurs autres commutateurs dans votre commande de MSBuild. Pour plus d’informations, consultez [référence de ligne de commande MSBuild](https://msdn.microsoft.com/library/ms164311.aspx).
 
->[!div class="step-by-step"]
-[Précédent](deploying-database-projects.md)
-[Suivant](manually-installing-web-packages.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-database-projects.md)
+> [Suivant](manually-installing-web-packages.md)

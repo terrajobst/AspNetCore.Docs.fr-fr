@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/creating-the-web-application
-title: "Base de données EF tout d’abord avec ASP.NET MVC : création de l’Application Web et les modèles de données | Documents Microsoft"
+title: 'Base de données EF tout d’abord avec ASP.NET MVC : création de l’Application Web et les modèles de données | Documents Microsoft'
 author: tfitzmac
-description: "À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri..."
+description: À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/01/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: f495bfa3aa5332e4ca3e44c2ffbfb760fbbeafc8
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 04ccc00fa48702608fdc7b5b00d73778985852f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ef-database-first-with-aspnet-mvc-creating-the-web-application-and-data-models"></a>Base de données EF tout d’abord avec ASP.NET MVC : création de l’Application Web et les modèles de données
 ====================
@@ -101,6 +101,6 @@ Le **ContosoModel.Context.cs** fichier contient une classe qui dérive de la **D
 
 Avant de poursuivre ce didacticiel, générez le projet. Dans la section suivante, vous allez générer du code basé sur les modèles de données, mais cette section ne fonctionne pas si le projet n’a pas été généré.
 
->[!div class="step-by-step"]
-[Précédent](setting-up-database.md)
-[Suivant](generating-views.md)
+> [!div class="step-by-step"]
+> [Précédent](setting-up-database.md)
+> [Suivant](generating-views.md)

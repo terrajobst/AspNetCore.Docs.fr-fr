@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb
-title: "La pagination des données de rapport dans un contrôle DataList ou d’un contrôle de répéteur (VB) | Documents Microsoft"
+title: La pagination des données de rapport dans un contrôle DataList ou d’un contrôle de répéteur (VB) | Documents Microsoft
 author: rick-anderson
-description: "Lors de la pagination automatique de répéteur ni DataList offre ou prise en charge de tri, ce didacticiel montre comment ajouter la prise en charge la pagination au DataList ou répéteur..."
+description: Lors de la pagination automatique de répéteur ni DataList offre ou prise en charge de tri, ce didacticiel montre comment ajouter la prise en charge la pagination au DataList ou répéteur...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/paging-report-data-in-a-datalist-or-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 66f1065c41352f355dd5f1be43443165df909b93
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 867f2a0a6de6da2ccda1526ef7c1d0edd97431c6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="paging-report-data-in-a-datalist-or-repeater-control-vb"></a>La pagination des données de rapport dans un contrôle DataList ou d’un contrôle de répéteur (VB)
 ====================
@@ -100,10 +100,10 @@ Le `ProductsBLL` classe a actuellement une méthode pour retourner toutes les in
 
 Ajoutez une méthode à la `ProductsBLL` classe nommée `GetProductsAsPagedDataSource` qui accepte deux paramètres d’entrée entière :
 
-- `pageIndex`l’index de la page à afficher, indexé à zéro, et
-- `pageSize`le nombre d’enregistrements à afficher par page.
+- `pageIndex` l’index de la page à afficher, indexé à zéro, et
+- `pageSize` le nombre d’enregistrements à afficher par page.
 
-`GetProductsAsPagedDataSource`commence par récupérer *tous les* des enregistrements à partir de `GetProducts()`. Elle crée ensuite un `PagedDataSource` objet, en définissant ses `CurrentPageIndex` et `PageSize` propriétés aux valeurs du passé en `pageIndex` et `pageSize` paramètres. La méthode se termine par retour de ce type de configuration `PagedDataSource`:
+`GetProductsAsPagedDataSource` commence par récupérer *tous les* des enregistrements à partir de `GetProducts()`. Elle crée ensuite un `PagedDataSource` objet, en définissant ses `CurrentPageIndex` et `PageSize` propriétés aux valeurs du passé en `pageIndex` et `pageSize` paramètres. La méthode se termine par retour de ce type de configuration `PagedDataSource`:
 
 
 [!code-vb[Main](paging-report-data-in-a-datalist-or-repeater-control-vb/samples/sample2.vb)]
@@ -275,12 +275,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont Liz Shulok, Ken Pespisa et Bernadette Leigh. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](sorting-data-in-a-datalist-or-repeater-control-cs.md)
-[Suivant](sorting-data-in-a-datalist-or-repeater-control-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](sorting-data-in-a-datalist-or-repeater-control-cs.md)
+> [Suivant](sorting-data-in-a-datalist-or-repeater-control-vb.md)

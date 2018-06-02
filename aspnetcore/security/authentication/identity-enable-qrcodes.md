@@ -1,7 +1,7 @@
 ---
-title: "Activer la génération de Code QR pour les applications d’authentification dans ASP.NET Core"
+title: Activer la génération de Code QR pour les applications d’authentification dans ASP.NET Core
 author: rick-anderson
-description: "Activer la génération de Code QR pour les applications d’authentification dans ASP.NET Core"
+description: Découvrez comment activer la génération de code QR pour les applications d’authentification qui fonctionnent avec l’authentification à deux facteurs ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 09/24/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: ae2d8eb938c00a26cf7ffb5f2fff0b9e0d22148b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: c61918d42b407b01484b67d740edc7a682c3a4b0
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="enabling-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>Activer la génération de Code QR pour les applications d’authentification dans ASP.NET Core
+# <a name="enable-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>Activer la génération de Code QR pour les applications d’authentification dans ASP.NET Core
 
 Remarque : Cette rubrique s’applique à ASP.NET Core 2.x
 
@@ -25,7 +25,7 @@ Les modèles d’application web ASP.NET Core prennent en charge des authentific
 
 ## <a name="adding-qr-codes-to-the-2fa-configuration-page"></a>Ajout des Codes QR à la page de configuration 2FA
 
-Ces instructions utilisent *qrcode.js* du référentiel https://davidshimjs.github.io/qrcodejs/.
+Ces instructions utilisent *qrcode.js* à partir de la https://davidshimjs.github.io/qrcodejs/ référentiel.
 
 * Téléchargez le [bibliothèque javascript pour qrcode.js](https://davidshimjs.github.io/qrcodejs/) à la `wwwroot\lib` dossier dans votre projet.
 
@@ -84,10 +84,8 @@ Vous pouvez remplacer la bibliothèque de Code QR avec la bibliothèque par déf
 
 L’URL correcte pour le Code QR est disponible dans le :
 
-* `AuthenticatorUri`propriété du modèle.
-* `data-url`propriété dans le `qrCodeData` élément. 
-
-Utilisez `@Html.Raw` pour accéder à la propriété de modèle dans une vue (sinon les signes & dans l’url doit être encodés en double et le paramètre d’étiquette du Code QR est ignoré).
+* `AuthenticatorUri` propriété du modèle.
+* `data-url` propriété dans le `qrCodeData` élément. 
 
 ## <a name="totp-client-and-server-time-skew"></a>Décalage horaire TOTP client et serveur
 

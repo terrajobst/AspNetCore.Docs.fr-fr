@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/data-bound-controls
-title: "Contrôles liés aux données | Documents Microsoft"
+title: Contrôles liés aux données | Documents Microsoft
 author: microsoft
-description: "La plupart des applications ASP.NET s’appuient sur une certaine de présentation des données à partir d’une source de données back-end. Contrôles liés aux données ont été une partie essentielle de w interaction..."
+description: La plupart des applications ASP.NET s’appuient sur une certaine de présentation des données à partir d’une source de données back-end. Contrôles liés aux données ont été une partie essentielle de w interaction...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/data-bound-controls
 msc.type: authoredcontent
-ms.openlocfilehash: 3ebb0f9a7a2f071b7bf7aa3855920f1a5784a61f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5c3f6aad4b87450149189352e86106f46c765fb8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-bound-controls"></a>Contrôles liés aux données
 ====================
@@ -92,13 +92,13 @@ Si vous choisissez d’utiliser une table de base de données comme source de do
 | **Nom de la colonne** | **Type de données** | **Description** |
 | --- | --- | --- |
 | Id | int | Clé primaire. Cette colonne peut avoir n’importe quel nom. |
-| ImageUrl | nvarchar (*longueur*) | URL relative ou absolue de l’image à afficher pour la publicité. |
-| NavigateUrl | nvarchar (*longueur*) | L’URL cible pour la publicité. Si vous ne fournissez pas de valeur, Active Directory n’est pas un lien hypertexte. |
-| AlternateText | nvarchar (*longueur*) | Texte affiché si l’image ne peut pas être trouvée. Dans certains navigateurs, le texte est affiché en tant qu’une info-bulle. Texte de remplacement est également utilisé pour l’accessibilité afin que les utilisateurs qui ne peuvent pas consulter le graphique peuvent écouter la lecture de sa description. |
-| Mot clé | nvarchar (*longueur*) | Une catégorie de la publicité sur lequel pouvez filtrer la page. |
-| Impressions | int (4) | Nombre qui indique la probabilité de la fréquence à laquelle la publicité est affichée. Le plus grand nombre, le plus souvent la publicité doit être affichée. Le total de toutes les valeurs dans le fichier XML ne peut pas dépasser 2 048 000 000-1. |
-| Largeur | int (4) | La largeur de l’image en pixels. |
-| Hauteur  | int (4) | La hauteur de l’image en pixels. |
+| ImageUrl | nvarchar(*length*) | URL relative ou absolue de l’image à afficher pour la publicité. |
+| NavigateUrl | nvarchar(*length*) | L’URL cible pour la publicité. Si vous ne fournissez pas de valeur, Active Directory n’est pas un lien hypertexte. |
+| AlternateText | nvarchar(*length*) | Texte affiché si l’image ne peut pas être trouvée. Dans certains navigateurs, le texte est affiché en tant qu’une info-bulle. Texte de remplacement est également utilisé pour l’accessibilité afin que les utilisateurs qui ne peuvent pas consulter le graphique peuvent écouter la lecture de sa description. |
+| Mot clé | nvarchar(*length*) | Une catégorie de la publicité sur lequel pouvez filtrer la page. |
+| Impressions | int(4) | Nombre qui indique la probabilité de la fréquence à laquelle la publicité est affichée. Le plus grand nombre, le plus souvent la publicité doit être affichée. Le total de toutes les valeurs dans le fichier XML ne peut pas dépasser 2 048 000 000-1. |
+| Largeur | int(4) | La largeur de l’image en pixels. |
+| Hauteur  | int(4) | La hauteur de l’image en pixels. |
 
 Dans les cas où vous disposez déjà d’une base de données avec un schéma différent, vous pouvez utiliser la **AlternateTextField**, **ImageUrlField**, et **NavigateUrlField** propriétés pour mapper les AdRotator des attributs à votre base de données existante. Pour afficher les données à partir de la base de données dans le contrôle AdRotator, ajoutez un contrôle de source de données à la page, configurer la chaîne de connexion pour le contrôle de source de données pointer vers votre base de données et définir le contrôle de AdRotator **DataSourceID** propriété de l’ID du contrôle de source de données. Dans les cas où vous avez besoin pour configurer les publicités AdRotator par programmation, utilisez l’événement AdCreated. L’événement AdCreated prend deux paramètres ; un objet et l’autre instance de AdCreatedEventArgs. Le AdCreatedEventArgs est une référence à la publicité est en cours de création.
 
@@ -152,7 +152,7 @@ Le tableau suivant répertorie les types de champs de colonne différente qui pe
 | ImageField | Affiche une image pour chaque élément dans le contrôle GridView. |
 | TemplateField | Affiche le contenu défini par l’utilisateur pour chaque élément dans le contrôle GridView selon un modèle spécifié. Ce type de champ de colonne vous permet de créer un champ de colonne personnalisé. |
 
-Pour définir une collection de champs de colonne de façon déclarative, ajoutez d’abord fermer  **&lt;colonnes&gt;**  balises situées entre les balises d’ouverture et de fermeture du contrôle GridView. Ensuite, répertoriez les champs de colonne que vous souhaitez inclure entre les balises  **&lt;colonnes&gt;**  balises. Les colonnes spécifiées sont ajoutées à la collection de colonnes dans l’ordre indiqué. Le **colonnes** collection stocke tous les champs dans le contrôle de la colonne et vous permet de gérer par programme les champs de colonne dans le contrôle GridView.
+Pour définir une collection de champs de colonne de façon déclarative, ajoutez d’abord fermer **&lt;colonnes&gt;** balises situées entre les balises d’ouverture et de fermeture du contrôle GridView. Ensuite, répertoriez les champs de colonne que vous souhaitez inclure entre les balises **&lt;colonnes&gt;** balises. Les colonnes spécifiées sont ajoutées à la collection de colonnes dans l’ordre indiqué. Le **colonnes** collection stocke tous les champs dans le contrôle de la colonne et vous permet de gérer par programme les champs de colonne dans le contrôle GridView.
 
 Les champs de colonnes déclarés explicitement peuvent être affichés en combinaison avec les champs de colonne générée automatiquement. Lorsque les deux sont utilisés, les champs de colonnes déclarés explicitement sont rendus en premier, suivis des champs de colonne générée automatiquement.
 
@@ -213,7 +213,7 @@ Le contrôle GridView fournit plusieurs événements que vous pouvez programmer.
 | PageIndexChanging | Se produit lorsque l’utilisateur clique sur un des boutons de pagineur, mais avant que le contrôle GridView contrôle l’opération de pagination. Cet événement est souvent utilisé pour annuler l’opération de pagination. |
 | RowCancelingEdit | Se produit lorsque l’utilisateur clique sur le bouton d’annulation d’une ligne, mais avant que le contrôle GridView quitte le mode édition. Cet événement est souvent utilisé pour arrêter l’opération d’annulation. |
 | RowCommand | Se produit lorsqu’un clic est effectué dans le contrôle GridView. Cet événement est souvent utilisé pour effectuer une tâche lorsqu’un clic est effectué dans le contrôle. |
-| Syllabusgrid_rowcreated | Se produit lorsqu’une nouvelle ligne est créée dans le contrôle GridView. Cet événement est souvent utilisé pour modifier le contenu d’une ligne lorsque la ligne est créée. |
+| RowCreated | Se produit lorsqu’une nouvelle ligne est créée dans le contrôle GridView. Cet événement est souvent utilisé pour modifier le contenu d’une ligne lorsque la ligne est créée. |
 | RowDataBound | Se produit lorsqu’une ligne de données est liée aux données dans le contrôle GridView. Cet événement est souvent utilisé pour modifier le contenu d’une ligne lorsque la ligne est liée aux données. |
 | RowDeleted | Se produit lorsque l’utilisateur clique sur le bouton Supprimer d’une ligne, mais une fois que le contrôle GridView supprime l’enregistrement de la source de données. Cet événement est souvent utilisé pour vérifier les résultats de l’opération de suppression. |
 | RowDeleting | Se produit lorsque l’utilisateur clique sur le bouton Supprimer d’une ligne, mais avant le GridView contrôle supprime l’enregistrement à partir de la source de données. Cet événement est souvent utilisé pour annuler l’opération de suppression. |
@@ -272,7 +272,7 @@ Le contrôle FormView fournit plusieurs fonctionnalités intégrées qui permett
 | Modifier | « Modifier » | Utilisé dans les opérations de mise à jour pour placer le contrôle FormView en mode édition. Le contenu spécifié dans le **EditItemTemplate** propriété s’affiche pour la ligne de données. |
 | Insert | « Insertion » | Utilisé dans les opérations d’insertion pour tenter d’insérer un nouvel enregistrement dans la source de données à l’aide des valeurs fournies par l’utilisateur. Déclenche les événements ItemInserting et ItemInserted. |
 | Nouveau | « Nouveau » | Utilisé dans les opérations d’insertion pour placer le contrôle FormView en mode insertion. Le contenu spécifié dans le **InsertItemTemplate** propriété s’affiche pour la ligne de données. |
-| Page | « Page » | Utilisé dans les opérations de pagination pour représenter un bouton dans la ligne du pagineur qui effectue la pagination. Pour spécifier l’opération de pagination, définissez la **CommandArgument** propriété du bouton « Suivant », « Précédent », « First », « Dernier » ou l’index de la page vers laquelle naviguer. Déclenche les événements PageIndexChanging et PageIndexChanged. |
+| Page | "Page" | Utilisé dans les opérations de pagination pour représenter un bouton dans la ligne du pagineur qui effectue la pagination. Pour spécifier l’opération de pagination, définissez la **CommandArgument** propriété du bouton « Suivant », « Précédent », « First », « Dernier » ou l’index de la page vers laquelle naviguer. Déclenche les événements PageIndexChanging et PageIndexChanged. |
 | Mise à jour | « Update » | Utilisé dans les opérations de mise à jour pour tenter de mettre à jour l’enregistrement affiché dans la source de données avec les valeurs fournies par l’utilisateur. Déclenche les événements ItemUpdating et ItemUpdated est attendu. |
 
 Contrairement à la suppression bouton (qui supprime immédiatement l’enregistrement affiché), lorsque l’utilisateur clique sur le bouton Modifier ou nouveau, le contrôle FormView contrôle passe à modifier ou mode d’insertion respectivement. En mode édition, le contenu de la **EditItemTemplate** propriété s’affiche pour l’élément de données actuel. En règle générale, le modèle d’élément de modification est défini tel que le bouton Modifier est remplacé par une mise à jour et un bouton Annuler. Les contrôles d’entrée qui sont appropriées pour le type de données du champ (par exemple, une zone de texte ou un contrôle de case à cocher) sont également généralement affichés avec la valeur d’un champ pour l’utilisateur à modifier. En cliquant sur le bouton de mise à jour met à jour l’enregistrement dans la source de données, alors que le bouton Annuler abandonne toutes les modifications.
@@ -341,7 +341,7 @@ Chaque ligne de données dans le contrôle DetailsView est créé en déclarant 
 
 Par défaut, la propriété AutoGenerateRows a la valeur **true**, ce qui génère automatiquement un objet de champ de ligne dépendant pour chaque champ d’un type pouvant être lié dans la source de données. Les types valides pouvant être liés sont String, DateTime, Decimal, Guid et l’ensemble des types primitifs. Chaque champ est ensuite affiché dans une ligne sous forme de texte, dans l’ordre dans lequel chaque champ apparaît dans la source de données.
 
-Génération automatique des lignes fournit un moyen simple et rapide d’afficher chaque champ dans l’enregistrement. Toutefois, pour utiliser le contrôle DetailsView contrôle des fonctionnalités avancées que vous devez déclarer explicitement les champs de ligne à inclure dans le contrôle DetailsView. Pour déclarer les champs de ligne, attribuez d’abord le **AutoGenerateRows** propriété **false**. Ensuite, ajoutez l’ouverture et de fermeture  **&lt;champs&gt;**  balises situées entre les balises d’ouverture et de fermeture du contrôle DetailsView. Enfin, répertoriez les champs de ligne que vous souhaitez inclure entre les balises  **&lt;champs&gt;**  balises. Les champs de ligne spécifiés sont ajoutés à la collection de champs dans l’ordre indiqué. Le **champs** collection vous permet de gérer par programme les champs de ligne dans le contrôle DetailsView.
+Génération automatique des lignes fournit un moyen simple et rapide d’afficher chaque champ dans l’enregistrement. Toutefois, pour utiliser le contrôle DetailsView contrôle des fonctionnalités avancées que vous devez déclarer explicitement les champs de ligne à inclure dans le contrôle DetailsView. Pour déclarer les champs de ligne, attribuez d’abord le **AutoGenerateRows** propriété **false**. Ensuite, ajoutez l’ouverture et de fermeture **&lt;champs&gt;** balises situées entre les balises d’ouverture et de fermeture du contrôle DetailsView. Enfin, répertoriez les champs de ligne que vous souhaitez inclure entre les balises **&lt;champs&gt;** balises. Les champs de ligne spécifiés sont ajoutés à la collection de champs dans l’ordre indiqué. Le **champs** collection vous permet de gérer par programme les champs de ligne dans le contrôle DetailsView.
 
 > [!NOTE]
 > Les champs ne sont pas ajoutés à la collection de champs de ligne générés automatiquement.
@@ -511,13 +511,13 @@ Le contrôle TreeView possède plusieurs propriétés qui affectent le fonctionn
 
 Le **ShowCheckBoxes** propriété affecte ou non de nœuds affichent une case à cocher lors du rendu. Les valeurs valides pour cette propriété sont **aucun**, **racine**, **Parent**, **feuille**, et **tous les**. Ces modifications concernent le contrôle TreeView comme suit :
 
-| **Valeur de propriété** | **Effet** |
+| **Valeur de propriété** | **Effect** |
 | --- | --- |
-| Aucune | Les cases à cocher ne sont pas affichés sur les nœuds. Il s'agit du paramètre par défaut. |
+| Aucun | Les cases à cocher ne sont pas affichés sur les nœuds. Il s'agit du paramètre par défaut. |
 | racine | Une case à cocher est affichée uniquement sur le nœud racine. |
 | Parent | Une case à cocher est affichée uniquement sur les nœuds dotés de nœuds enfants. Ces nœuds enfants peuvent être nœuds parents ou les nœuds terminaux. |
 | Feuille | Une case à cocher s’affiche uniquement sur les nœuds qui n’ont aucuns nœuds enfants. |
-| Tout | Une case à cocher s’affiche sur tous les nœuds. |
+| Tous | Une case à cocher s’affiche sur tous les nœuds. |
 
 Lorsque les cases à cocher sont utilisés, le **CheckedNodes** propriété retourne une collection de nœuds TreeView qui sont vérifiées lors de la publication.
 
@@ -701,16 +701,16 @@ Cet exercice part du principe que vous disposez de SQL Server s’exécutant loc
 16. Cliquez sur le **modifier les colonnes** lien et assurez-vous que **générer automatiquement les champs** est activée.
 17. Cliquez sur **OK**.
 18. Le contrôle GridView est sélectionné, cliquez sur le bouton en regard du **DataKeyNames** propriété dans le volet Propriétés.
-19. Sélectionnez **ProductID** à partir de la **des champs de données disponibles** liste et cliquez sur le  **&gt;**  bouton Ajouter.
+19. Sélectionnez **ProductID** à partir de la **des champs de données disponibles** liste et cliquez sur le **&gt;** bouton Ajouter.
 20. Cliquez sur OK.
 21. Ajouter un nouveau contrôle SqlDataSource à la page.
 22. Modifiez l’ID du contrôle SqlDataSource pour **détails**.
 23. Dans le menu Tâches SqlDataSource, choisissez **configurer la Source de données**.
 24. Choisissez **Northwind** dans la liste déroulante et cliquez sur **suivant**.
-25. Sélectionnez **produits** à partir de la **nom** liste déroulante et vérifiez la  **\***  case à cocher dans la **colonnes** listbox.
+25. Sélectionnez <strong>produits</strong> à partir de la <strong>nom</strong> liste déroulante et vérifiez la <strong> \</strong > * case à cocher dans la <strong>colonnes</strong> listbox.
 26. Cliquez sur le **où** bouton.
 27. Sélectionnez **ProductID** à partir de la **colonne** liste déroulante.
-28. Sélectionnez  **=**  dans la liste déroulante opérateur.
+28. Sélectionnez **=** dans la liste déroulante opérateur.
 29. Sélectionnez **contrôle** à partir de la **Source** liste déroulante.
 30. Sélectionnez **GridView1** à partir de la **ID de contrôle** liste déroulante.
 31. Cliquez sur le **ajouter** pour ajouter la clause WHERE.

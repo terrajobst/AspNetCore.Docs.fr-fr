@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
-title: "Partie 8 : Panier d’achat avec les mises à jour Ajax | Documents Microsoft"
+title: 'Partie 8 : Panier d’achat avec les mises à jour Ajax | Documents Microsoft'
 author: jongalloway
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 8 couvre le panier d’achat avec les mises à jour Ajax."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 8 couvre le panier d’achat avec les mises à jour Ajax.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 75e1dff96f8b56d74c28ff9d522f4766fbad669f
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 195c01ff0d71b2bfd0c00e71244d47a166330921
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-8-shopping-cart-with-ajax-updates"></a>Partie 8 : Panier avec les mises à jour Ajax
 ====================
@@ -81,7 +81,7 @@ Voici l’ensemble **ShoppingCart classe**:
 
 [!code-csharp[Main](mvc-music-store-part-8/samples/sample5.cs)]
 
-## <a name="viewmodels"></a>ViewModel
+## <a name="viewmodels"></a>ViewModels
 
 Notre contrôleur de panier d’achat doit communiquer des informations complexes à son point de vue qui n’est pas mappé correctement pour les objets de modèle. Nous ne voulons pas modifier les modèles en fonction de nos vues ; Classes de modèle doivent représenter le domaine, et pas l’interface utilisateur. Une solution consisterait à passer les informations à notre affichages à l’aide de la classe ViewBag, comme nous l’avons fait avec les informations de la liste déroulante directeur du magasin, mais en passant un grand nombre d’informations via ViewBag obtient difficile à gérer.
 
@@ -161,6 +161,6 @@ Après le chargement de votre panier d’achat, vous pouvez cliquer sur la suppr
 Nous avons mis au point un panier d’achat qui permet d’annuler l’inscription des utilisateurs ajouter des éléments dans leur panier d’achat en cours. Dans la section suivante, nous allons les autoriser à inscrire et terminer le processus de validation.
 
 
->[!div class="step-by-step"]
-[Précédent](mvc-music-store-part-7.md)
-[Suivant](mvc-music-store-part-9.md)
+> [!div class="step-by-step"]
+> [Précédent](mvc-music-store-part-7.md)
+> [Suivant](mvc-music-store-part-9.md)

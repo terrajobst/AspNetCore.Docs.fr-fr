@@ -1,7 +1,7 @@
 ---
-title: "En-têtes de contexte"
+title: En-têtes de contexte dans ASP.NET Core
 author: rick-anderson
-description: "Ce document décrit les détails d’implémentation des en-têtes de contexte de protection de données ASP.NET Core."
+description: Découvrez les détails d’implémentation des en-têtes de contexte de Protection des données ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: c047c54efdcdb6192e4d38d2822c1077ee0a73e1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 5ba247a74e11408145e1f6e87c7cfa251c66707f
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="context-headers"></a>En-têtes de contexte
+# <a name="context-headers-in-aspnet-core"></a>En-têtes de contexte dans ASP.NET Core
 
 <a name="data-protection-implementation-context-headers"></a>
 
@@ -27,7 +27,7 @@ Pour cela, la plupart des systèmes qui prennent en charge agilité de chiffreme
 
 Exécution pas à pas précédent, nous avons décidé que nous avons approche consistant à partir d’une direction incorrecte. Un OID vous indique ce que l’algorithme, mais nous ne se soucient réellement à ce sujet. Si nous avons besoin d’utiliser une seule valeur entropic en toute sécurité dans les deux algorithmes différents, il n’est pas nécessaire pour que nous puissions savoir quels sont les algorithmes. Ce que nous importantes est leur comportement. N’importe quel algorithme de chiffrement symétrique acceptable est également une permutation pseudo-aléatoire fort (PRP) : corrigez les entrées (clé, en texte clair, IV, le mode de chaînage des propriétés) et la sortie de texte chiffré sera différente de n’importe quel autre chiffrement symétrique avec la probabilité est surchargé algorithme étant donné les mêmes entrées. De même, n’importe quelle fonction de hachage à clé correcte est également une fonction pseudo-aléatoire fort (PRF), et un ensemble d’entrée fixe sa sortie sera extrêmement différente de toute autre fonction de hachage à clé.
 
-Ce concept de nom fort PRPs et PRF nous permet de créer un en-tête de contexte. Cet en-tête de contexte sert essentiellement une empreinte numérique stable sur les algorithmes utilisés pour toute opération donnée, et il fournit l’agilité de chiffrement requise par le système de protection des données. Cet en-tête est reproductible et qu’il est utilisé ultérieurement dans le cadre de la [processus de dérivation de la sous-clé](subkeyderivation.md#data-protection-implementation-subkey-derivation). Il existe deux façons de générer l’en-tête de contexte selon les modes de fonctionnement des algorithmes sous-jacent.
+Ce concept de nom fort PRPs et PRF nous permet de créer un en-tête de contexte. Cet en-tête de contexte sert essentiellement une empreinte numérique stable sur les algorithmes utilisés pour toute opération donnée, et il fournit l’agilité de chiffrement requise par le système de protection des données. Cet en-tête est reproductible et qu’il est utilisé ultérieurement dans le cadre de la [processus de dérivation de la sous-clé](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation). Il existe deux façons de générer l’en-tête de contexte selon les modes de fonctionnement des algorithmes sous-jacent.
 
 ## <a name="cbc-mode-encryption--hmac-authentication"></a>Le chiffrement en mode CBC + l’authentification HMAC
 

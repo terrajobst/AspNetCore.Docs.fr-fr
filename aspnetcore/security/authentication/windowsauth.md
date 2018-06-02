@@ -1,7 +1,7 @@
 ---
-title: "Configurer l’authentification Windows dans ASP.NET Core"
+title: Configurer l’authentification Windows dans ASP.NET Core
 author: ardalis
-description: "Cet article décrit comment configurer l’authentification Windows dans ASP.NET Core, à l’aide d’IIS Express, IIS, HTTP.sys et WebListener."
+description: Cet article décrit comment configurer l’authentification Windows dans ASP.NET Core, à l’aide d’IIS Express, IIS, HTTP.sys et WebListener.
 manager: wpickett
 ms.author: riande
 ms.date: 10/24/2017
@@ -9,13 +9,14 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/windowsauth
-ms.openlocfilehash: aaa14e2f2704a7cfa836c5524642d2138a3ae7c8
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: dbcef095561fe656bdd28c4fa6560c6b269a2db0
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34689007"
 ---
-# <a name="configure-windows-authentication-in-an-aspnet-core-app"></a>Configurer l’authentification Windows dans une application ASP.NET Core
+# <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com) et [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -25,7 +26,7 @@ L’authentification Windows peut être configurée pour les applications ASP.NE
 
 L’authentification Windows s’appuie sur le système d’exploitation pour authentifier les utilisateurs d’applications ASP.NET Core. Vous pouvez utiliser l’authentification Windows lorsque votre serveur s’exécute sur un réseau d’entreprise à l’aide des identités de domaine Active Directory ou d’autres comptes Windows pour identifier les utilisateurs. L’authentification Windows est idéale pour les environnements intranet dans lequel les utilisateurs, les applications clientes et les serveurs web appartiennent au même domaine Windows.
 
-[En savoir plus sur l’authentification Windows et l’installation pour IIS](https://docs.microsoft.com/iis/configuration/system.webServer/security/authentication/windowsAuthentication/).
+[En savoir plus sur l’authentification Windows et l’installation pour IIS](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/).
 
 ## <a name="enable-windows-authentication-in-an-aspnet-core-app"></a>Activer l’authentification Windows dans une application ASP.NET Core
 
@@ -38,7 +39,7 @@ Dans Visual Studio :
 1. Sélectionnez l’Application Web à partir de la liste des modèles.
 1. Sélectionnez le **modifier l’authentification** sélectionnez **l’authentification Windows**. 
 
-Exécutez l’application. Le nom d’utilisateur s’affiche dans le coin supérieur droit de l’application.
+Exécuter l’application. Le nom d’utilisateur s’affiche dans le coin supérieur droit de l’application.
 
 ![Capture d’écran de navigateur de l’authentification Windows](windowsauth/_static/browser-screenshot.png)
 
@@ -56,7 +57,7 @@ Vous pouvez également ces deux propriétés peuvent être configurées dans le 
 
 ## <a name="enable-windows-authentication-with-iis"></a>Activer l’authentification Windows avec IIS
 
-IIS utilise le [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) (ANCM) pour héberger des applications ASP.NET Core. La ANCM flux l’authentification Windows sur le serveur IIS par défaut. Configuration de l’authentification Windows est effectuée dans les services IIS, pas le projet d’application. Les sections suivantes montrent comment utiliser le Gestionnaire des services Internet pour configurer une application ASP.NET Core pour utiliser l’authentification Windows.
+IIS utilise le [ASP.NET Core Module](xref:fundamentals/servers/aspnet-core-module) pour les applications ASP.NET Core hôte. Le module permet l’authentification Windows à circuler vers IIS par défaut. L’authentification Windows est configurée dans IIS, pas l’application. Les sections suivantes montrent comment utiliser le Gestionnaire des services Internet pour configurer une application ASP.NET Core pour utiliser l’authentification Windows.
 
 ### <a name="create-a-new-iis-site"></a>Créer un nouveau site IIS
 
@@ -84,13 +85,13 @@ Lancez l’application pour vérifier l’utilisation de l’authentification Wi
 
 ## <a name="enable-windows-authentication-with-httpsys-or-weblistener"></a>Activer l’authentification Windows avec HTTP.sys ou WebListener
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 Bien que Kestrel ne prend pas en charge l’authentification Windows, vous pouvez utiliser [HTTP.sys](xref:fundamentals/servers/httpsys) pour prendre en charge les scénarios auto-hébergés sur Windows. L’exemple suivant configure l’hôte web de l’application pour utiliser HTTP.sys avec l’authentification Windows :
 
 [!code-csharp[](windowsauth/sample/Program2x.cs?highlight=9-14)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 Bien que Kestrel ne prend pas en charge l’authentification Windows, vous pouvez utiliser [WebListener](xref:fundamentals/servers/weblistener) pour prendre en charge les scénarios auto-hébergés sur Windows. L’exemple suivant configure l’hôte web de l’application pour utiliser WebListener avec l’authentification Windows :
 
@@ -111,6 +112,9 @@ Lorsque l’authentification Windows est activée et l’accès anonyme est dés
 Lorsque l’authentification Windows et l’accès anonyme sont activées, utiliser le `[Authorize]` et `[AllowAnonymous]` attributs. Le `[Authorize]` attribut vous permet de sécuriser des parties de l’application qui a réellement requièrent l’authentification de Windows. Le `[AllowAnonymous]` les substitutions d’attributs `[Authorize]` attribut d’utilisation dans les applications qui autorisent l’accès anonyme. Consultez [une autorisation Simple](xref:security/authorization/simple) pour des détails d’utilisation de l’attribut.
 
 Dans ASP.NET Core 2.x, le `[Authorize]` attribut nécessite une configuration supplémentaire dans *Startup.cs* contester les demandes anonymes pour l’authentification Windows. La configuration recommandée varie légèrement selon le serveur web utilisé.
+
+> [!NOTE]
+> Par défaut, les utilisateurs qui ne disposent pas d’autorisation pour accéder à une page sont présentées avec une réponse HTTP 403 vide. Le [StatusCodePages intergiciel (middleware)](xref:fundamentals/error-handling#configuring-status-code-pages) peut être configuré pour fournir aux utilisateurs une meilleure expérience « Accès refusé ».
 
 #### <a name="iis"></a>IIS
 

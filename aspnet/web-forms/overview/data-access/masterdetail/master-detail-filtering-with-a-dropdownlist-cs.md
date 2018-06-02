@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs
-title: "Filtrage avec une liste déroulante (c#) maître/détail | Documents Microsoft"
+title: Filtrage avec une liste déroulante (c#) maître/détail | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous verrons comment afficher les enregistrements maîtres dans un contrôle DropDownList et les détails de l’élément sélectionné dans un contrôle GridView."
+description: Dans ce didacticiel, nous verrons comment afficher les enregistrements maîtres dans un contrôle DropDownList et les détails de l’élément sélectionné dans un contrôle GridView.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cf3058ac095bc2ed728a716e70f962e260eef5a2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 42a6a76b0b05045bed1ada227b7c32a51600b760
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-with-a-dropdownlist-c"></a>Maître/détail, le filtrage avec une liste déroulante (c#)
 ====================
@@ -87,12 +87,12 @@ Cette dernière étape de notre rapport maître/détail consiste à répertorier
 **Figure 7**: sélectionnez le `GetProductsByCategoryID(categoryID)` (méthode) ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-cs/_static/image21.png))
 
 
-Après le choix de cette méthode, l’Assistant ObjectDataSource nous invite pour la valeur de la méthode  *`categoryID`*  paramètre. Pour utiliser la valeur de l’élément sélectionné `categories` DropDownList élément définie la source de paramètre pour le contrôle et le ControlID à `Categories`.
+Après le choix de cette méthode, l’Assistant ObjectDataSource nous invite pour la valeur de la méthode *`categoryID`* paramètre. Pour utiliser la valeur de l’élément sélectionné `categories` DropDownList élément définie la source de paramètre pour le contrôle et le ControlID à `Categories`.
 
 
 [![Affectez à la valeur de DropDownList catégories categoryID paramètre](master-detail-filtering-with-a-dropdownlist-cs/_static/image23.png)](master-detail-filtering-with-a-dropdownlist-cs/_static/image22.png)
 
-**Figure 8**: définir le  *`categoryID`*  paramètre à la valeur de la `Categories` DropDownList ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-cs/_static/image24.png))
+**Figure 8**: définir le *`categoryID`* paramètre à la valeur de la `Categories` DropDownList ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-cs/_static/image24.png))
 
 
 Prenez un moment à consulter notre progression dans un navigateur. Lors de la première visite de la page, les produits appartenant à la catégorie sélectionnée (boissons) sont affichées (comme indiqué dans la Figure 9), mais la modification DropDownList ne mettre à jour les données. Il s’agit, car une publication (postback) doit survenir pour que le contrôle GridView à mettre à jour. Pour ce faire, nous avons deux options (qui ne requiert l’écriture de code) :
@@ -145,11 +145,11 @@ Après ces modifications, lors de la première visite la page de l’option «--
 **Figure 13**: sur l’initiale Page charge non produits sont affichés ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-with-a-dropdownlist-cs/_static/image37.png))
 
 
-Est de la raison pour laquelle aucun produit n’est affichés lorsque, car l’élément de liste «--Choisir une catégorie-- » est sélectionné, car sa valeur est `-1` et il n’y aucun produit dans la base de données avec un `CategoryID` de `-1`. S’il s’agit du comportement voulu, puis que vous avez terminé à ce stade ! Si, toutefois, vous souhaitez afficher *tous les* des catégories lorsque l’élément de liste «--Choisir une catégorie-- » est sélectionné, revenir à la `ProductsBLL` de classe et de personnaliser la `GetProductsByCategoryID(categoryID)` méthode afin qu’elle appelle la `GetProducts()` (méthode) si passé dans  *`categoryID`*  paramètre est inférieur à zéro :
+Est de la raison pour laquelle aucun produit n’est affichés lorsque, car l’élément de liste «--Choisir une catégorie-- » est sélectionné, car sa valeur est `-1` et il n’y aucun produit dans la base de données avec un `CategoryID` de `-1`. S’il s’agit du comportement voulu, puis que vous avez terminé à ce stade ! Si, toutefois, vous souhaitez afficher *tous les* des catégories lorsque l’élément de liste «--Choisir une catégorie-- » est sélectionné, revenir à la `ProductsBLL` de classe et de personnaliser la `GetProductsByCategoryID(categoryID)` méthode afin qu’elle appelle la `GetProducts()` (méthode) si passé dans *`categoryID`* paramètre est inférieur à zéro :
 
 [!code-csharp[Main](master-detail-filtering-with-a-dropdownlist-cs/samples/sample2.cs)]
 
-La technique utilisée ici est similaire à l’approche que nous avons utilisé pour afficher tous les fournisseurs dans la [paramètres déclaratifs](../basic-reporting/declarative-parameters-cs.md) (didacticiel), bien que dans cet exemple, nous utilisons la valeur `-1` pour indiquer que tous les enregistrements doivent être au lieu de récupérer `null`. C’est parce que le  *`categoryID`*  paramètre de la `GetProductsByCategoryID(categoryID)` méthode attend comme valeur entière passée, tandis que dans le didacticiel de paramètres déclaratifs nous étions en passant un paramètre de chaîne d’entrée.
+La technique utilisée ici est similaire à l’approche que nous avons utilisé pour afficher tous les fournisseurs dans la [paramètres déclaratifs](../basic-reporting/declarative-parameters-cs.md) (didacticiel), bien que dans cet exemple, nous utilisons la valeur `-1` pour indiquer que tous les enregistrements doivent être au lieu de récupérer `null`. C’est parce que le *`categoryID`* paramètre de la `GetProductsByCategoryID(categoryID)` méthode attend comme valeur entière passée, tandis que dans le didacticiel de paramètres déclaratifs nous étions en passant un paramètre de chaîne d’entrée.
 
 La figure 14 illustre une capture d’écran de `FilterByDropDownList.aspx` lorsque l’option «--choisir une catégorie-- » est activée. Ici, tous les produits sont affichés par défaut, et l’utilisateur peut limiter l’affichage en choisissant une catégorie spécifique.
 
@@ -169,7 +169,7 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Next](master-detail-filtering-with-two-dropdownlists-cs.md)
+> [!div class="step-by-step"]
+> [Next](master-detail-filtering-with-two-dropdownlists-cs.md)

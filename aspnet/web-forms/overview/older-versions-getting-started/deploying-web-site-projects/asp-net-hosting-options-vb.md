@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
-title: "ASP.NET (VB) d’Options d’hébergement | Documents Microsoft"
+title: ASP.NET (VB) d’Options d’hébergement | Documents Microsoft
 author: rick-anderson
-description: "Les applications web ASP.NET sont généralement conçues, créé, testé dans un environnement de développement local et doivent être déployés vers un o d’environnement de production..."
+description: Les applications web ASP.NET sont généralement conçues, créé, testé dans un environnement de développement local et doivent être déployés vers un o d’environnement de production...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 54bac82a96a35d871d764849856c8e31f6570666
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0e99423ec803927d0f621c88f3d814578fec11f5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-hosting-options-vb"></a>Options d’hébergement ASP.NET (VB)
 ====================
@@ -61,7 +61,7 @@ Les informations de configuration pour une application web se trouve généralem
 En plus des modifications de configuration d’application web, étape 1 peut également impliquer le configuration pour le serveur web et la base de données. Par exemple, si une page ASP.NET crée ou supprime des fichiers à partir d’un répertoire sur le serveur web du serveur web doit être configuré pour autoriser ces modifications du système de fichiers. De même, il peut exister des paramètres d’autorisation ou d’authentification qui doivent être apportées à la base de données.
 
 
-Étape 2 implique la synchronisation de l’ensemble des pages ASP.NET essentiels et des fichiers de prise en charge entre les environnements de développement et de production. Le jeu d’ASP. Fichiers NET qui doivent être synchronisées entre les deux environnements varie selon le type de projet que vous avez créé dans Visual Studio et est la discussion dans le didacticiel suivant,  *[déterminer quels fichiers doivent être déployés](determining-what-files-need-to-be-deployed-vb.md)*. Les didacticiels troisième et quatrième -  *[déploiement de votre Site à l’aide de FTP](deploying-your-site-using-an-ftp-client-vb.md)*et  *[déploiement de votre Site à l’aide de Visual Studio](deploying-your-site-using-visual-studio-vb.md)*  -examiner différents outils et techniques pour la synchronisation de ces fichiers.
+Étape 2 implique la synchronisation de l’ensemble des pages ASP.NET essentiels et des fichiers de prise en charge entre les environnements de développement et de production. Le jeu d’ASP. Fichiers NET qui doivent être synchronisées entre les deux environnements varie selon le type de projet que vous avez créé dans Visual Studio et est la discussion dans le didacticiel suivant,  <em>[déterminer quels fichiers doivent être déployés](determining-what-files-need-to-be-deployed-vb.md)</em>. Les didacticiels troisième et quatrième -  <em>[déploiement de votre Site à l’aide de FTP](deploying-your-site-using-an-ftp-client-vb.md)</em>et <em>[déploiement de votre Site à l’aide de Visual Studio](deploying-your-site-using-visual-studio-vb.md)</em> -examiner différents outils et techniques pour la synchronisation de ces fichiers.
 
 Lors de la création d’applications pilotées par les données sont généralement deux bases de données utilisés : une pour le développement et l’autre sur la production. Pendant le développement, le schéma de la base de données développement peut-être être modifié pour inclure les nouvelles tables, colonnes, procédures stockées et déclencheurs ou peut être modifié pour supprimer ou renommer des objets de base de données existante. Entre l’heure à laquelle ces modifications sont apportées et l’heure de que l’application est déployée en production, les bases de données de développement et de production ne sont pas synchronisées. Ce comportement asynchrone doit être résolu pendant le processus de déploiement. Didacticiels futures nous étudierons ces défis.
 
@@ -95,6 +95,6 @@ Bonne programmation !
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Précédent](users-and-roles-on-the-production-website-cs.md)
-[Suivant](determining-what-files-need-to-be-deployed-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](users-and-roles-on-the-production-website-cs.md)
+> [Suivant](determining-what-files-need-to-be-deployed-vb.md)

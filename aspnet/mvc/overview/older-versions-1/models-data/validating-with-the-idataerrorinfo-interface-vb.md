@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-vb
-title: "Validation avec l’Interface IDataErrorInfo (VB) | Documents Microsoft"
+title: Validation avec l’Interface IDataErrorInfo (VB) | Documents Microsoft
 author: StephenWalther
-description: "Stephen Walther vous montre comment afficher des messages d’erreur de validation personnalisées en implémentant l’interface IDataErrorInfo dans une classe de modèle."
+description: Stephen Walther vous montre comment afficher des messages d’erreur de validation personnalisées en implémentant l’interface IDataErrorInfo dans une classe de modèle.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1439d470a7fa3cb1171dbdd0b7eec6a6aa52912d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 60df0f934432484e0c97e0caef25c15605beb14f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-with-the-idataerrorinfo-interface-vb"></a>Validation avec l’Interface IDataErrorInfo (VB)
 ====================
@@ -37,8 +37,8 @@ Dans ce didacticiel, je vais utiliser la base de données MoviesDB et la table d
 | **Nom de la colonne** | **Type de données** | **Autoriser les valeurs null** |
 | --- | --- | --- |
 | Id | Int | False |
-| Titre | Nvarchar (100) | False |
-| Directeur | Nvarchar (100) | False |
+| Titre | Nvarchar(100) | False |
+| Directeur | Nvarchar(100) | False |
 | DateReleased | DateTime | False |
 
 
@@ -59,7 +59,7 @@ Dans ce didacticiel, utiliser Microsoft Entity Framework pour générer des clas
 
 Nous utilisent le contrôleur Home cinéma de liste et créer de nouveaux films. Le code de cette classe est contenu dans la liste 1.
 
-**La liste 1 - Controllers\HomeController.vb**
+**Listing 1 - Controllers\HomeController.vb**
 
 [!code-vb[Main](validating-with-the-idataerrorinfo-interface-vb/samples/sample1.vb)]
 
@@ -157,10 +157,10 @@ Vous n’avez pas besoin de modifier le contrôleur Home de quelque manière d�
 
 Notez que la valeur DateReleased est automatiquement validée. Étant donné que la propriété DateReleased n’accepte pas les valeurs NULL, la DefaultModelBinder génère automatiquement une erreur de validation pour cette propriété lorsqu’il n’a pas de valeur. Si vous souhaitez modifier le message d’erreur pour la propriété DateReleased, vous devez créer un classeur de modèles personnalisés.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris à utiliser l’interface IDataErrorInfo pour générer des messages d’erreur de validation. Tout d’abord, nous avons créé une classe partielle de film qui étend les fonctionnalités de la classe partielle de vidéo générée par Entity Framework. Ensuite, nous avons ajouté la logique de validation pour les films classe OnTitleChanging() et OnDirectorChanging() méthodes partielles. Enfin, nous avons implémenté l’interface IDataErrorInfo afin d’exposer ces messages de validation de l’infrastructure ASP.NET MVC.
 
->[!div class="step-by-step"]
-[Précédent](performing-simple-validation-vb.md)
-[Suivant](validating-with-a-service-layer-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](performing-simple-validation-vb.md)
+> [Suivant](validating-with-a-service-layer-vb.md)

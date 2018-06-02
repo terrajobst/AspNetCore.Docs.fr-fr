@@ -1,19 +1,20 @@
 ---
-title: "Nouveautés d’ASP.NET Core 1.1"
+title: Nouveautés d’ASP.NET Core 1.1
 author: rick-anderson
-description: "Nouveautés d’ASP.NET Core 1.1"
-ms.author: riande
+description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 1.1.
 manager: wpickett
+monikerRange: = aspnetcore-1.1
+ms.author: riande
 ms.date: 02/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: aspnetcore-1.1
-ms.openlocfilehash: 56260241cd42eeb98b47277cd3f8a139a2a2fe50
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
+ms.openlocfilehash: 0e6d9be1798140dbe7a318e53531a26771653ccf
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Nouveautés d’ASP.NET Core 1.1
 
@@ -37,4 +38,4 @@ ASP.NET Core 1.1 a plus de fonctionnalités que la version 1.0. D’une façon g
 ## <a name="additional-information"></a>Informations supplémentaires
 
 - [Notes de publication d’ASP.NET Core 1.1.0](https://github.com/aspnet/Home/releases/tag/1.1.0)
-- Si vous voulez être tenu au courant de la progression et des plans de l’équipe de développement ASP.NET Core, participez chaque semaine à la [réunion de la communauté ASP.NET](https://live.asp.net/).
+- Pour être tenu au courant de la progression et des plans de l’équipe de développement ASP.NET Core, participez à la [réunion de la communauté ASP.NET](https://live.asp.net/).

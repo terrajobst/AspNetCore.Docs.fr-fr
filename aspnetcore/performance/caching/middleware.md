@@ -1,7 +1,7 @@
 ---
-title: "Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core"
+title: Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 author: guardrex
-description: "Découvrez comment configurer et utiliser un intergiciel (middleware) de réponse mise en cache dans ASP.NET Core."
+description: Découvrez comment configurer et utiliser un intergiciel (middleware) de réponse mise en cache dans ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.custom: mvc
@@ -9,11 +9,11 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 78fa8fbe70eb7d6461b6e7340c6d57e330157911
-ms.sourcegitcommit: f2a11a89037471a77ad68a67533754b7bb8303e2
+ms.openlocfilehash: 8296d535725d95682fa5904a43ab196e21b4f83c
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
@@ -31,11 +31,11 @@ Pour inclure l’intergiciel (middleware) dans un projet, ajoutez une référenc
 
 Dans `ConfigureServices`, ajoutez l’intergiciel (middleware) à la collection de service.
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
 
-Configurer l’application pour utiliser l’intergiciel (middleware) avec la `UseResponseCaching` méthode d’extension, qui ajoute l’intergiciel (middleware) au pipeline de traitement de la demande. L’exemple d’application ajoute un [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) en-tête dans la réponse qui met en cache les réponses de mise en cache pendant 10 secondes. L’exemple envoie une [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) en-tête pour configurer l’intergiciel (middleware) pour servir une réponse mise en cache d’uniquement si le [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) en-tête des demandes ultérieures correspond à celle de la demande d’origine.
+Configurer l’application pour utiliser l’intergiciel (middleware) avec la `UseResponseCaching` méthode d’extension, qui ajoute l’intergiciel (middleware) au pipeline de traitement de la demande. L’exemple d’application ajoute un [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) en-tête dans la réponse qui met en cache les réponses de mise en cache pendant 10 secondes. L’exemple envoie une [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) en-tête pour configurer l’intergiciel (middleware) pour servir une réponse mise en cache d’uniquement si le [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) en-tête des demandes ultérieures correspond à celle de la demande d’origine. Dans l’exemple de code qui suit, [CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue) et [HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames) nécessitent un `using` instruction pour le [Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers) espace de noms.
 
-[!code-csharp[Main](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
+[!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
 
 Intergiciel (middleware) de réponse mise en cache met uniquement en cache les réponses du serveur qui génèrent un code d’état 200 (OK). Autres réponses, y compris [les pages d’erreur](xref:fundamentals/error-handling), sont ignorées par l’intergiciel (middleware).
 
@@ -79,6 +79,8 @@ if (responseCachingFeature != null)
 }
 ```
 
+À l’aide d’une seule valeur égale à `*` dans `VaryByQueryKeys` varie en fonction du cache par tous les paramètres de requête de demande.
+
 ## <a name="http-headers-used-by-response-caching-middleware"></a>En-têtes HTTP utilisés par un intergiciel (middleware) de réponse mise en cache
 
 Réponse mise en cache par l’intergiciel (middleware) est configuré à l’aide d’en-têtes HTTP.
@@ -86,11 +88,11 @@ Réponse mise en cache par l’intergiciel (middleware) est configuré à l’ai
 | Header | Détails |
 | ------ | ------- |
 | Autorisation | La réponse n’est pas mis en cache si l’en-tête existe. |
-| Cache-Control | L’intergiciel (middleware) considère uniquement la mise en cache des réponses marqués avec la `public` directive de cache. Contrôler la mise en cache avec les paramètres suivants :<ul><li>max-age</li><li>max-stale&#8224;</li><li>frais de min</li><li>doit-revalidate.</li><li>no-cache</li><li>Aucun magasin</li><li>seul if-mise en cache</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-revalidate&#8225;</li></ul>&#8224; si aucune limite n’est spécifiée pour `max-stale`, l’intergiciel (middleware) n’effectue aucune action.<br>&#8225; `proxy-revalidate` a le même effet que `must-revalidate`.<br><br>Pour plus d’informations, consultez [7231 relative aux RFC : demander des Directives de Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| Cache-Control | L’intergiciel (middleware) considère uniquement la mise en cache des réponses marqués avec la `public` directive de cache. Contrôler la mise en cache avec les paramètres suivants :<ul><li>max-age</li><li>max périmée&#8224;</li><li>frais de min</li><li>doit-revalidate.</li><li>Aucun cache</li><li>Aucun magasin</li><li>seul if-mise en cache</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-revalidate.&#8225;</li></ul>&#8224;Si aucune limite n’est spécifiée pour `max-stale`, l’intergiciel (middleware) n’effectue aucune action.<br>&#8225;`proxy-revalidate`a le même effet que `must-revalidate`.<br><br>Pour plus d’informations, consultez [7231 relative aux RFC : demander des Directives de Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
 | Pragma | A `Pragma: no-cache` en-tête dans la requête produit le même effet que `Cache-Control: no-cache`. Cet en-tête est remplacé par les directives pertinentes dans le `Cache-Control` en-tête, le cas échéant. Pris en compte pour la compatibilité descendante avec HTTP/1.0. |
-| Set-Cookie | La réponse n’est pas mis en cache si l’en-tête existe. |
-| Varier | Le `Vary` en-tête est utilisé pour faire varier la réponse mise en cache par un autre en-tête. Par exemple, mettre en cache les réponses par l’encodage en incluant le `Vary: Accept-Encoding` en-tête, qui met en cache les réponses pour les demandes avec des en-têtes `Accept-Encoding: gzip` et `Accept-Encoding: text/plain` séparément. Une réponse avec une valeur d’en-tête de `*` n’est jamais stocké. |
-| Expires | Une réponse jugée obsolète par cet en-tête n’est pas enregistrer ou à récupérer, sauf si remplacées par d’autres `Cache-Control` en-têtes. |
+| Set-Cookie | La réponse n’est pas mis en cache si l’en-tête existe. Un intergiciel (middleware) dans le pipeline de traitement de la requête qui définit un ou plusieurs cookies empêche l’intergiciel (middleware) réponse mise en cache de la mise en cache la réponse (par exemple, le [fournisseur de TempData basé sur cookie](xref:fundamentals/app-state#tempdata)).  |
+| Vary | Le `Vary` en-tête est utilisé pour faire varier la réponse mise en cache par un autre en-tête. Par exemple, mettre en cache les réponses par l’encodage en incluant le `Vary: Accept-Encoding` en-tête, qui met en cache les réponses pour les demandes avec des en-têtes `Accept-Encoding: gzip` et `Accept-Encoding: text/plain` séparément. Une réponse avec une valeur d’en-tête de `*` n’est jamais stocké. |
+| Arrive à expiration | Une réponse jugée obsolète par cet en-tête n’est pas enregistrer ou à récupérer, sauf si remplacées par d’autres `Cache-Control` en-têtes. |
 | If-None-Match | La réponse complète est pris en charge à partir du cache si la valeur n’est pas `*` et `ETag` de la réponse ne correspond à aucune des valeurs fournies. Sinon, une réponse 304 (non modifié) est pris en charge. |
 | If-Modified-Since | Si le `If-None-Match` en-tête n’est pas présent, une réponse complet est pris en charge à partir du cache si la date de la réponse mise en cache est plus récente que la valeur fournie. Sinon, une réponse 304 (non modifié) est pris en charge. |
 | Date | Lorsque le traitement à partir du cache, le `Date` en-tête est défini par l’intergiciel (middleware) s’il n’a pas été fourni sur la réponse d’origine. |
@@ -103,8 +105,8 @@ L’intergiciel (middleware) respecte les règles de la [spécification de la mi
 
 Pour contrôler le comportement de mise en cache plus, Explorer d’autres fonctionnalités de mise en cache de ASP.NET Core. Consultez les rubriques suivantes :
 
-* [Mise en cache en mémoire](xref:performance/caching/memory)
-* [Utilisation d’un cache distribué](xref:performance/caching/distributed)
+* [Mettre en cache en mémoire](xref:performance/caching/memory)
+* [Utiliser un cache distribué](xref:performance/caching/distributed)
 * [Mettre en cache d’assistance de balise dans le cœur d’ASP.NET MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
 
@@ -123,25 +125,25 @@ Lorsque les tests et le dépannage du comportement de mise en cache, un navigate
 * La méthode de demande doit être GET ou HEAD.
 * Intergiciel Terminal, tel que [intergiciel (middleware) du fichier statique](xref:fundamentals/static-files), ne doit pas traiter la réponse avant de l’intergiciel (middleware) réponse mise en cache.
 * Le `Authorization` en-tête ne doit pas être présent.
-* `Cache-Control`paramètres de l’en-tête doivent être valides, et la réponse doit être marquée `public` et pas marquée `private`.
+* `Cache-Control` paramètres de l’en-tête doivent être valides, et la réponse doit être marquée `public` et pas marquée `private`.
 * Le `Pragma: no-cache` en-tête ne doit pas être présent si la `Cache-Control` en-tête n’est pas présent, comme le `Cache-Control` en-tête remplace le `Pragma` en-tête lorsqu’il est présent.
 * Le `Set-Cookie` en-tête ne doit pas être présent.
-* `Vary`paramètres de l’en-tête doivent être valide et non égal à `*`.
+* `Vary` paramètres de l’en-tête doivent être valide et non égal à `*`.
 * Le `Content-Length` valeur d’en-tête (si défini) doit correspondre à la taille du corps de réponse.
-* Le [IHttpSendFileFeature](/aspnet/core/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) n’est pas utilisé.
+* Le [IHttpSendFileFeature](/dotnet/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) n’est pas utilisé.
 * La réponse ne doit pas être périmée tel que spécifié par le `Expires` en-tête et le `max-age` et `s-maxage` directives de cache.
 * Mise en mémoire tampon de réponse doit être réussie et la taille de la réponse doit être inférieure à la configuration ou par défaut `SizeLimit`.
 * La réponse doit être mise en cache en fonction de la [RFC 7234](https://tools.ietf.org/html/rfc7234) spécifications. Par exemple, le `no-store` directive ne doit pas exister dans les champs d’en-tête de demande ou de réponse. Consultez *Section 3 : le stockage des réponses dans les Caches* de [RFC 7234](https://tools.ietf.org/html/rfc7234) pour plus d’informations.
 
 > [!NOTE]
-> Définit des attaques par le système de côté pour la génération de jetons sécurisés pour empêcher la falsification de demande d’intersites (CSRF) le `Cache-Control` et `Pragma` en-têtes `no-cache` afin que les réponses ne sont pas mises en cache.
+> Définit des attaques par le système de côté pour la génération de jetons sécurisés pour empêcher la falsification de demande d’intersites (CSRF) le `Cache-Control` et `Pragma` en-têtes `no-cache` afin que les réponses ne sont pas mises en cache. Pour plus d’informations sur la désactivation des jetons de côté pour les éléments de formulaire HTML, consultez [configuration côtée d’ASP.NET Core](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Démarrage d’une application](xref:fundamentals/startup)
 * [Intergiciel (middleware)](xref:fundamentals/middleware/index)
-* [Mise en cache en mémoire](xref:performance/caching/memory)
-* [Utilisation d’un cache distribué](xref:performance/caching/distributed)
+* [Mettre en cache en mémoire](xref:performance/caching/memory)
+* [Utiliser un cache distribué](xref:performance/caching/distributed)
 * [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
 * [Mise en cache des réponses](xref:performance/caching/response)
 * [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

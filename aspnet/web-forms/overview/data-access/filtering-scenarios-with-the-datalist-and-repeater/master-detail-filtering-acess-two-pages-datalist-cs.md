@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs
-title: "Le filtrage sur deux Pages (c#) maître/détail | Documents Microsoft"
+title: Le filtrage sur deux Pages (c#) maître/détail | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons comment séparer un rapport maître/détail sur deux pages. Dans la page « master », nous utilisons un contrôle du répéteur pour afficher une liste de categ..."
+description: Dans ce didacticiel, nous allons comment séparer un rapport maître/détail sur deux pages. Dans la page « master », nous utilisons un contrôle du répéteur pour afficher une liste de categ...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/30/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: bb86db509ca26dde0c24341dee402e7af4355507
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6a3783175218438f2a9f735c3861c56e039a248e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="masterdetail-filtering-across-two-pages-c"></a>Maître/détail, le filtrage entre les deux Pages (c#)
 ====================
@@ -59,7 +59,7 @@ Avec ce balisage terminé, prenez un moment pour afficher la progression via un 
 
 ## <a name="step-2-turning-the-category-name-into-a-link-to-the-details-page"></a>Étape 2 : Activer le nom de catégorie dans un lien vers la Page de détails
 
-Pour autoriser un utilisateur afficher les informations de « détails » pour une catégorie donnée, nous devons ajouter un lien à chaque liste à puces d’élément qui, lorsque vous cliquez sur, dirige l’utilisateur à la deuxième page (`ProductsForCategoryDetails.aspx`). Cette seconde page puis affichera les produits pour la catégorie sélectionnée à l’aide d’un contrôle DataList. Afin de déterminer la catégorie dont le lien de l’utilisateur a cliqué, vous devez transmettre la catégorie d’un clic sur `CategoryID` à la deuxième page via un mécanisme. La façon la plus simple, plus simple pour transférer des données scalaires à partir d’une page à l’autre est dans la chaîne de requête, qui est l’option que nous allons utiliser dans ce didacticiel. En particulier, la `ProductsForCategoryDetails.aspx` page attendra sélectionné  *`categoryID`*  valeur doit être passé à un champ de chaîne de requête nommé `CategoryID`. Par exemple, pour afficher les produits pour la catégorie boissons, qui a un `CategoryID` 1, un utilisateur visite `ProductsForCategoryDetails.aspx?CategoryID=1`.
+Pour autoriser un utilisateur afficher les informations de « détails » pour une catégorie donnée, nous devons ajouter un lien à chaque liste à puces d’élément qui, lorsque vous cliquez sur, dirige l’utilisateur à la deuxième page (`ProductsForCategoryDetails.aspx`). Cette seconde page puis affichera les produits pour la catégorie sélectionnée à l’aide d’un contrôle DataList. Afin de déterminer la catégorie dont le lien de l’utilisateur a cliqué, vous devez transmettre la catégorie d’un clic sur `CategoryID` à la deuxième page via un mécanisme. La façon la plus simple, plus simple pour transférer des données scalaires à partir d’une page à l’autre est dans la chaîne de requête, qui est l’option que nous allons utiliser dans ce didacticiel. En particulier, la `ProductsForCategoryDetails.aspx` page attendra sélectionné *`categoryID`* valeur doit être passé à un champ de chaîne de requête nommé `CategoryID`. Par exemple, pour afficher les produits pour la catégorie boissons, qui a un `CategoryID` 1, un utilisateur visite `ProductsForCategoryDetails.aspx?CategoryID=1`.
 
 Pour créer un lien hypertexte pour chaque élément de liste à puces dans le répéteur, nous devons ajouter un contrôle de lien hypertexte Web ou un élément d’ancrage HTML (`<a>`) pour le `ItemTemplate`. Dans les scénarios où le lien hypertexte est affichent la même pour chaque ligne, une de ces méthodes seront suffisante. Pour répéteurs, je préfère à l’aide de l’élément d’ancrage. Pour utiliser l’élément d’ancrage, mise à jour ItemTemplate de répéteur :
 
@@ -166,22 +166,22 @@ Après la mise à jour de la base de données en conséquence, revenir à la `Ca
 **Figure 9**: un Message s’affiche s’il n’y aucune faisant partie de produits à la catégorie sélectionnée ([cliquez pour afficher l’image en taille réelle](master-detail-filtering-acess-two-pages-datalist-cs/_static/image27.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Alors que les rapports maître/détail peuvent afficher les enregistrements maître et détail sur une seule page, dans de nombreux sites Web qu’ils sont séparés sur deux pages web. Dans ce didacticiel, nous avons étudié comment implémenter un tel rapport maître/détail en ayant des catégories répertoriées dans une liste à puces à l’aide d’un répéteur dans la page web « maître » et les produits associés, répertoriés dans la page « Détails ». Chaque élément de liste dans la page maître web contenait un lien vers la page de détails passé le long de la ligne `CategoryID` valeur.
 
-Dans la page Détails de la récupération de ces produits pour le fournisseur spécifié a été effectuée via la `ProductsBLL` la classe `GetProductsByCategoryID(categoryID)` (méthode). Le  *`categoryID`*  la valeur du paramètre a été spécifiée de façon déclarative à l’aide de la `CategoryID` valeur querystring comme source du paramètre. Nous avons étudié également comment afficher les détails de catégorie dans la page de détails à l’aide d’un FormView et comment afficher un message si aucun produit appartenant à la catégorie sélectionnée.
+Dans la page Détails de la récupération de ces produits pour le fournisseur spécifié a été effectuée via la `ProductsBLL` la classe `GetProductsByCategoryID(categoryID)` (méthode). Le *`categoryID`* la valeur du paramètre a été spécifiée de façon déclarative à l’aide de la `CategoryID` valeur querystring comme source du paramètre. Nous avons étudié également comment afficher les détails de catégorie dans la page de détails à l’aide d’un FormView et comment afficher un message si aucun produit appartenant à la catégorie sélectionnée.
 
 Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements particuliers à...
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Zack Jones et Liz Shulok. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
-[Suivant](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
+> [Suivant](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)

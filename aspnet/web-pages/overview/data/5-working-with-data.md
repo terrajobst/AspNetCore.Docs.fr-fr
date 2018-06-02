@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/data/5-working-with-data
-title: "Introduction à l’utilisation d’une base de données dans ASP.NET Web Pages (Razor) Sites | Documents Microsoft"
+title: Introduction à l’utilisation d’une base de données dans ASP.NET Web Pages (Razor) Sites | Documents Microsoft
 author: tfitzmac
-description: "Ce chapitre explique comment accéder aux données à partir d’une base de données et les afficher à l’aide d’ASP.NET Web Pages."
+description: Ce chapitre explique comment accéder aux données à partir d’une base de données et les afficher à l’aide d’ASP.NET Web Pages.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/5-working-with-data
 msc.type: authoredcontent
-ms.openlocfilehash: 460af471a1b0650f8d782d582ce6cd9a06664d5c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 563074cf3e60717c2e6c336a2c282b4203f73b8b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="introduction-to-working-with-a-database-in-aspnet-web-pages-razor-sites"></a>Introduction à l’utilisation d’une base de données dans ASP.NET Web Pages (Razor) Sites
 ====================
@@ -54,7 +54,7 @@ Imaginez un carnet d’adresses par défaut. Pour chaque entrée dans le carnet 
 
 Une façon classique données cette image consiste en tant que table avec des lignes et colonnes. En termes de base de données, chaque ligne est communément appelée un enregistrement. Chaque colonne (parfois en tant que champs) contient une valeur pour chaque type de données : prénom, nom du dernier et ainsi de suite.
 
-| **ID** | **Prénom** | **LastName** | **Adresse** | **Courrier électronique** | **Téléphone** |
+| **ID** | **FirstName** | **LastName** | **Address** | **Courrier électronique** | **Téléphone** |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Jim | Abrus | 210 100th St SE Orcas WA 98031 | jim@contoso.com | 555 0100 |
 | 2 | Terry | Adams | 1234 Main St. Seattle WA 99011 | terry@cohowinery.com | 555 0101 |
@@ -91,7 +91,7 @@ Cette procédure vous montre comment créer une base de données nommée SmallBa
     Comme son nom l’indique, **est la clé primaire** indique à la base de données qu’il s’agit de la clé primaire de table. **Est l’identité** indique à la base de données pour créer automatiquement un numéro d’identification pour chaque nouvel enregistrement et attribuez-lui le numéro séquentiel suivant (commence à 1).
 10. Cliquez sur la ligne suivante. L’éditeur ouvre une nouvelle définition de colonne.
 11. Pour la valeur du nom, entrez &quot;nom&quot;.
-12. Pour **Type de données**, choisissez &quot;nvarchar&quot; et la longueur de la valeur 50. Le *var* dans le cadre du `nvarchar` indique à la base de données que les données de cette colonne sera une chaîne dont la taille peut varier d’un enregistrement à l’autre. (Le  *n*  préfixe représente *national*, indiquant que le champ peut contenir des données de caractères qui représente n’importe quel alphabet ou l’écriture du système &#8212; autrement dit, que le champ contient Unicode données.)
+12. Pour **Type de données**, choisissez &quot;nvarchar&quot; et la longueur de la valeur 50. Le *var* dans le cadre du `nvarchar` indique à la base de données que les données de cette colonne sera une chaîne dont la taille peut varier d’un enregistrement à l’autre. (Le *n* préfixe représente *national*, indiquant que le champ peut contenir des données de type caractère représente n’importe quel alphabet ou système d’écriture &#8212; , autrement dit, que le champ contient des données Unicode.)
 13. Définir le **autoriser les valeurs null** option **non**. Cela qui applique le *nom* colonne n’est pas vide.
 14. À l’aide de ce même processus, créez une colonne nommée *Description*. Définissez **Type de données** à « nvarchar » et 50 pour la longueur et définissez **autoriser les valeurs null** avec la valeur false.
 15. Créez une colonne nommée *prix*. Définissez **Type de données à « Finances »** et **autoriser les valeurs null** avec la valeur false.
@@ -110,7 +110,7 @@ Maintenant, vous pouvez ajouter des exemples de données à votre base de donné
 2. Avec le bouton droit de la table Product, puis cliquez sur **données**.
 3. Dans le volet d’édition, entrez les enregistrements suivants :
 
-    | **Nom** | **Description** | **Prix** |
+    | **Name** | **Description** | **Prix** |
     | --- | --- | --- |
     | Pain | Cuite reconfigurer tous les jours. | 2.99 |
     | Fraise Shortcake | Effectuées avec fraises organiques à partir de notre domaine privé. | 9.99 |
@@ -145,7 +145,7 @@ Une fois que vous avez une base de données avec les données qu’elle contient
 
     [!code-sql[Main](5-working-with-data/samples/sample2.sql)]
 
-    Dans l’instruction, `Product` identifie la table à la requête. Le `*` caractère spécifie que la requête doit retourner toutes les colonnes de la table. (Vous pourriez également répertorier les colonnes individuellement, en les séparant par des virgules, si vous souhaitez consulter uniquement certaines colonnes.) Le `Order By` clause indique comment les données doivent être triées &#8212; dans ce cas, par le *nom* colonne. Cela signifie que les données sont triées par ordre alphabétique en fonction de la valeur de la *nom* colonne pour chaque ligne.
+    Dans l’instruction, `Product` identifie la table à la requête. Le `*` caractère spécifie que la requête doit retourner toutes les colonnes de la table. (Vous pourriez également répertorier les colonnes individuellement, en les séparant par des virgules, si vous souhaitez consulter uniquement certaines colonnes.) Le `Order By` clause indique la façon dont les données doivent être triées &#8212; dans ce cas, par le *nom* colonne. Cela signifie que les données sont triées par ordre alphabétique en fonction de la valeur de la *nom* colonne pour chaque ligne.
 
     Dans le corps de la page, le balisage crée une table HTML qui servira à afficher les données. À l’intérieur de la `<tbody>` élément, que vous utilisez un `foreach` boucle s’individuellement chaque ligne de données qui est retourné par la requête. Pour chaque ligne de données, vous créez une ligne de table HTML (`<tr>` élément). Puis vous créez des cellules de tableau HTML (`<td>` éléments) pour chaque colonne. Chaque fois que vous accédez via la boucle, la ligne suivante à partir de la base de données est dans le `row` variable (effectuer ce paramétrage dans la `foreach` instruction). Pour obtenir une colonne individuelle à partir de la ligne, vous pouvez utiliser `row.Name` ou `row.Description` ou le nom de votre choix est de la colonne que vous souhaitez.
 4. Exécutez la page dans un navigateur. (Assurez-vous que la page est sélectionnée dans le **fichiers** espace de travail avant de l’exécuter.) La page affiche une liste comme suit :
@@ -258,7 +258,7 @@ Une fois que les données ont été entrées dans une table, vous devrez peut-ê
 
     [!code-html[Main](5-working-with-data/samples/sample12.html)]
 
-    Notez que la `href` attribut a la valeur `UpdateProducts/n`, où  *n*  est un numéro de produit. Lorsqu’un utilisateur clique sur l’un de ces liens, l’URL résultante sera similaire à ceci :
+    Notez que la `href` attribut a la valeur `UpdateProducts/n`, où *n* est un numéro de produit. Lorsqu’un utilisateur clique sur l’un de ces liens, l’URL résultante sera similaire à ceci :
 
     `http://localhost:18816/UpdateProducts/6`
 
@@ -361,7 +361,7 @@ Cette section montre comment permettre aux utilisateurs de supprimer un produit 
 6. Cliquez sur le **supprimer** lien pour un de ces produits. Le *DeleteProduct.cshtml* page s’affiche pour confirmer que vous souhaitez supprimer l’enregistrement.
 7. Cliquez sur le **supprimer** bouton. L’enregistrement du produit est supprimé et la page est actualisée avec une liste de produits mis à jour.
 
-> [!TIP] 
+> [!TIP]
 > 
 > <a id="SB_ConnectingToADatabase"></a>
 > ### <a name="connecting-to-a-database"></a>Connexion à une base de données
@@ -384,7 +384,7 @@ Cette section montre comment permettre aux utilisateurs de supprimer un produit 
 > 
 > [!code-cshtml[Main](5-working-with-data/samples/sample28.cshtml)]
 > 
-> Comme indiqué, le `Database.Open` méthode vous permet de passer un nom de base de données ou une chaîne de connexion, et il allez déterminer laquelle utiliser. Cela est très utile lorsque vous déployez (publier) votre site Web. Vous pouvez utiliser un *.sdf* de fichiers dans le *application\_données* dossier lorsque vous développez et testez votre site. Lorsque vous déplacez votre site vers un serveur de production, vous pouvez utiliser une chaîne de connexion dans le *Web.config* fichier ayant le même nom que votre *.sdf* fichier mais qui pointe vers le fournisseur d’hébergement de base de données & # 8212 ; tout cela sans avoir à modifier votre code.
+> Comme indiqué, le `Database.Open` méthode vous permet de passer un nom de base de données ou une chaîne de connexion, et il allez déterminer laquelle utiliser. Cela est très utile lorsque vous déployez (publier) votre site Web. Vous pouvez utiliser un *.sdf* de fichiers dans le *application\_données* dossier lorsque vous développez et testez votre site. Lorsque vous déplacez votre site vers un serveur de production, vous pouvez utiliser une chaîne de connexion dans le *Web.config* fichier ayant le même nom que votre *.sdf* de fichiers, mais que les points sur le fournisseur d’hébergement de base de données &#8212;tout cela sans avoir à modifier votre code.
 > 
 > Enfin, si vous souhaitez travailler directement avec une chaîne de connexion, vous pouvez appeler la `Database.OpenConnectionString` méthode et passe il la connexion réelle de chaîne au lieu de simplement le nom de l’autre dans le *Web.config* fichier. Cela peut être utile dans les situations où pour une raison quelconque, vous n’avez pas accès à la chaîne de connexion (ou valeurs, telles que la *.sdf* nom de fichier) jusqu'à ce que la page est en cours d’exécution. Toutefois, la plupart des scénarios, vous pouvez utiliser `Database.Open` comme décrit dans cet article.
 
@@ -393,4 +393,4 @@ Cette section montre comment permettre aux utilisateurs de supprimer un produit 
 
 - [SQL Server Compact](https://www.microsoft.com/sqlserver/2008/en/us/compact.aspx)
 - [Connexion à une base de données MySQL dans WebMatrix ou SQL Server](https://go.microsoft.com/fwlink/?LinkId=208661)
-- [Validation des entrées d’utilisateur dans les Sites ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=253002)
+- [Validation des entrées utilisateur dans les sites ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=253002)

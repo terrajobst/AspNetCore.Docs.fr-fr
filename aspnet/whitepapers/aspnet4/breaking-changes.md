@@ -2,21 +2,21 @@
 uid: whitepapers/aspnet4/breaking-changes
 title: Modifications avec rupture 4 de ASP.NET | Documents Microsoft
 author: rick-anderson
-description: "Ce document décrit les modifications qui ont été apportées pour la version de .NET Framework version 4 qui est susceptible d’affecter les applications qui ont été créées à l’aide de..."
+description: Ce document décrit les modifications qui ont été apportées pour la version de .NET Framework version 4 qui est susceptible d’affecter les applications qui ont été créées à l’aide de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: d601c540-f86b-4feb-890c-20c806b3da6c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
-ms.openlocfilehash: d68723b52ae1ee80142fb1aca3b0b10de34332d1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7eea51add6b05684357314e3d6aa5087383c6408
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-4-breaking-changes"></a>Modifications avec rupture 4 de ASP.NET
 ====================
@@ -180,7 +180,7 @@ Dans ce scénario, le système de configuration native IIS 7 et IIS 7.5 renvoie 
 
 La solution de contournement pour le premier scénario consiste à mettre à jour le niveau de l’application `Web.config` fichier en incluant le texte de configuration standard d’un `Web.config` qui a été généré automatiquement par Visual Studio 2008.
 
-Solution de contournement pour le premier scénario consiste à installer le Service Pack 2 pour Vista ou Windows Server 2008 sur votre ordinateur ou pour installer le correctif logiciel KB958854 ([https://support.microsoft.com/kb/958854](https://support.microsoft.com/kb/958854)) pour corriger incorrect comportement de la fusion de la configuration du système de configuration IIS. Toutefois, après avoir effectué une de ces actions, votre application rencontre probablement en raison du problème décrit dans le second cas, une erreur de configuration.
+Solution de contournement pour le premier scénario consiste à installer le Service Pack 2 pour Vista ou Windows Server 2008 sur votre ordinateur ou pour installer le correctif logiciel KB958854 ([https://support.microsoft.com/kb/958854](https://support.microsoft.com/kb/958854)) pour corriger le comportement de la fusion de configuration incorrecte de la Système de configuration IIS. Toutefois, après avoir effectué une de ces actions, votre application rencontre probablement en raison du problème décrit dans le second cas, une erreur de configuration.
 
 La solution de contournement pour le deuxième scénario consiste à supprimer ou commenter tous les **system.web.extensions** définitions de section de configuration et de la section de configuration du groupe de définitions à partir du niveau de l’application `Web.config` fichier. Ces définitions sont généralement en haut du niveau de l’application `Web.config` de fichiers et peut être identifiée par le **configSections** élément et ses enfants.
 
@@ -192,8 +192,8 @@ Pour les deux scénarios, il est recommandé de supprimer manuellement le **syst
 
 Les applications ASP.NET 4 configurées comme enfants d’applications qui exécutent des versions antérieures d’ASP.NET risquent de ne pas démarrer en raison d’erreurs de configuration ou de compilation. L’exemple suivant montre une structure de répertoire pour une application affectée.
 
-`/parentwebapp`(configuré pour utiliser ASP.NET 2.0 ou ASP.NET 3.5)  
-`/childwebapp`(configuré pour utiliser ASP.NET 4)
+`/parentwebapp` (configuré pour utiliser ASP.NET 2.0 ou ASP.NET 3.5)  
+`/childwebapp` (configuré pour utiliser ASP.NET 4)
 
 L’application dans le `childwebapp` dossier ne pourront pas démarrer sur IIS 7 ou IIS 7.5 et signale une erreur de configuration. Le texte d’erreur inclut un message semblable au suivant :
 
@@ -272,15 +272,15 @@ Les versions précédentes d’ASP.NET inclus un **PathInfo** valeur dans la val
 
 Dans les versions antérieures d’ASP.NET, **HttpRequest** propriétés ont les valeurs suivantes :
 
-**HttpRequest.FilePath**:`/testapp/Action.mvc/SomeAction`
+**HttpRequest.FilePath**: `/testapp/Action.mvc/SomeAction`
 
 **HttpRequest.PathInfo**: (vide)
 
 Dans ASP.NET 4, **HttpRequest** à la place, propriétés ont les valeurs suivantes :
 
-**HttpRequest.FilePath**:`/testapp/Action.mvc`
+**HttpRequest.FilePath**: `/testapp/Action.mvc`
 
-**HttpRequest.PathInfo**:`SomeAction`
+**HttpRequest.PathInfo**: `SomeAction`
 
 <a id="0.1__Toc252995493"></a><a id="0.1__Toc255587642"></a><a id="0.1__Toc256770153"></a><a id="0.1__Toc245724861"></a>
 
@@ -323,13 +323,13 @@ S’il n’est pas pratique pour remapper le site Web pour ASP.NET 2.0 ou pour m
 
 ## <a name="event-handlers-might-not-be-not-raised-in-a-default-document-in-iis-7-or-iis-75-integrated-mode"></a>Gestionnaires d’événements ne peuvent pas être déclenchés pas dans un Document par défaut dans IIS 7 ou IIS 7.5 Mode intégré
 
-ASP.NET 4 inclut les modifications qui modifient la **action** attribut du code HTML **formulaire** élément est restitué quand une URL sans extension se traduit par un document par défaut. Un exemple d’une URL sans extension résolution à un document par défaut serait [http://contoso.com/](http://contoso.com/), se traduisant par une demande de [http://contoso.com/Default.aspx](http://contoso.com/Default.aspx).
+ASP.NET 4 inclut les modifications qui modifient la **action** attribut du code HTML **formulaire** élément est restitué quand une URL sans extension se traduit par un document par défaut. Un exemple d’une URL sans extension résolution à un document par défaut serait [ http://contoso.com/ ](http://contoso.com/), se traduisant par une demande de [ http://contoso.com/Default.aspx ](http://contoso.com/Default.aspx).
 
-ASP.NET 4 affiche maintenant le code HTML **formulaire** l’élément **action** valeur d’attribut comme une chaîne vide lorsqu’une demande est faite à une URL sans extension qui comporte un document par défaut mappé à elle. Par exemple, dans les versions antérieures d’ASP.NET, une demande de [http://contoso.com](http://contoso.com) entraînait une demande à `Default.aspx`. Dans ce document, l’ouverture **formulaire** balise serait restituée comme dans l’exemple suivant :
+ASP.NET 4 affiche maintenant le code HTML **formulaire** l’élément **action** valeur d’attribut comme une chaîne vide lorsqu’une demande est faite à une URL sans extension qui comporte un document par défaut mappé à elle. Par exemple, dans les versions antérieures d’ASP.NET, une demande de [ http://contoso.com ](http://contoso.com) entraînait une demande à `Default.aspx`. Dans ce document, l’ouverture **formulaire** balise serait restituée comme dans l’exemple suivant :
 
 `<form action="Default.aspx" />`
 
-Dans ASP.NET 4, une demande de [http://contoso.com](http://contoso.com) entraîne également une demande à `Default.aspx`. Toutefois, ASP.NET restitue maintenant l’ouverture HTML **formulaire** balise comme dans l’exemple suivant :
+Dans ASP.NET 4, une demande de [ http://contoso.com ](http://contoso.com) entraîne également une demande à `Default.aspx`. Toutefois, ASP.NET restitue maintenant l’ouverture HTML **formulaire** balise comme dans l’exemple suivant :
 
 `<form action="" />`
 
@@ -370,7 +370,7 @@ Lorsque vous rétablissez le modèle CAS hérité, les comportements d’autorit
 - Plusieurs jeux d’autorisations différents dans un seul domaine d’application est autorisées.
 - Assertions de l’autorisation explicite ne sont pas requises pour les assemblys dans le GAC qui sont invoquées lorsque ASP.NET ou tout autre code du .NET Framework se trouve sur la pile.
 
-Un scénario ne peut pas être annulée dans le .NET Framework 4 : applications de confiance partielle non Web peuvent n’appellent plus certaines API dans System.Web.dll et System.Web.Extensions.dll. Dans les versions précédentes du .NET Framework, il était possible pour les applications de confiance partielle non Web pouvoir être accordé explicitement **autorisation AspNetHostingPermission** autorisations. Utilisent ensuite ces applications **System.Web.HttpUtility**, les types dans les **System.Web.ClientServices.\***  des types et des espaces de noms liés à l’appartenance, les rôles et les profils. Appel de ces types à partir d’applications de confiance partielle de non Web est plus pris en charge dans le .NET Framework 4.
+Un scénario ne peut pas être annulée dans le .NET Framework 4 : applications de confiance partielle non Web peuvent n’appellent plus certaines API dans System.Web.dll et System.Web.Extensions.dll. Dans les versions précédentes du .NET Framework, il était possible pour les applications de confiance partielle non Web pouvoir être accordé explicitement <strong>autorisation AspNetHostingPermission</strong> autorisations. Utilisent ensuite ces applications <strong>System.Web.HttpUtility</strong>, les types dans les <strong>System.Web.ClientServices.\< /strong > * des types et des espaces de noms liés à l’appartenance, les rôles et les profils. Appel de ces types à partir d’applications de confiance partielle de non Web est plus pris en charge dans le .NET Framework 4.
 
 > [!NOTE]
 > Le **HtmlEncode** et **HtmlDecode** fonctionnalités de la **System.Web.HttpUtility** classe a été déplacé vers le nouveau .NET Framework 4  **System.Net.WebUtility** classe. Si c’était l’uniquement les fonctionnalités ASP.NET a été utilisée, modifier le code de l’application pour utiliser la nouvelle **WebUtility** classe à la place.

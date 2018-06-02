@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
-title: "Implémentation du référentiel et une unité de travail des modèles dans une Application ASP.NET MVC (9 10) | Documents Microsoft"
+title: Implémentation du référentiel et une unité de travail des modèles dans une Application ASP.NET MVC (9 10) | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 02b1de31b9513247facc92bc6b72247865d176f9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1f870b61658686769304a7809bde62e66da3bd0c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-the-repository-and-unit-of-work-patterns-in-an-aspnet-mvc-application-9-of-10"></a>Implémentation du référentiel et une unité de travail des modèles dans une Application ASP.NET MVC (9 sur 10)
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet terminé](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio 2012. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Vous pouvez démarrer la série de didacticiels à partir du début ou [télécharger un projet de démarrage pour ce chapitre](building-the-ef5-mvc4-chapter-downloads.md) et Démarrer ici.
+> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio 2012. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Vous pouvez démarrer la série de didacticiels à partir du début ou [télécharger un projet de démarrage pour ce chapitre](building-the-ef5-mvc4-chapter-downloads.md) et Démarrer ici.
 > 
 > > [!NOTE] 
 > > 
@@ -35,7 +35,7 @@ Dans le didacticiel précédent, vous avez utilisé l’héritage pour réduire 
 
 ## <a name="the-repository-and-unit-of-work-patterns"></a>Le référentiel et une unité de travail modèles
 
-Le référentiel et une unité de travail modèles sont destinés à créer une couche d’abstraction entre la couche d’accès aux données et la couche de logique métier d’une application. Implémentation de ces modèles peut permettre d’isoler votre application des modifications dans le magasin de données et peuvent faciliter le test unitaire automatisé ou développement piloté par test (TDD).
+Le référentiel et une unité de travail modèles sont destinés à créer une couche d’abstraction entre la couche d’accès aux données et la couche de logique métier d’une application. L’implémentation de ces modèles peut favoriser l’isolation de votre application face à des modifications dans le magasin de données et peut faciliter le test unitaire automatisé ou le développement piloté par les tests (TDD).
 
 Dans ce didacticiel, vous allez implémenter une classe de référentiel pour chaque type d’entité. Pour le `Student` type d’entité vous allez créer une interface de référentiel et une classe de référentiel. Lorsque vous instanciez l’espace de stockage dans votre contrôleur, vous allez utiliser l’interface afin que le contrôleur accepte une référence à un objet qui implémente l’interface de référentiel. Lorsque le contrôleur s’exécute sous un serveur web, il reçoit un référentiel qui fonctionne avec Entity Framework. Lorsque le contrôleur s’exécute sous une classe de test unitaire, il reçoit un référentiel qui fonctionne avec les données stockées d’une manière qui vous pouvez de manipuler facilement pour le test, par exemple une collection en mémoire.
 
@@ -78,7 +78,7 @@ Le référentiel implémente [IDisposable](https://msdn.microsoft.com/library/sy
 
 ## <a name="change-the-student-controller-to-use-the-repository"></a>Modifier le contrôleur de l’étudiant pour utiliser l’espace de stockage
 
-Dans *StudentController.cs*, remplacez le code actuellement dans la classe par le code suivant. Les modifications sont mises en surbrillance.
+Dans *StudentController.cs*, remplacez le code actuellement dans la classe par le code suivant. Les modifications apparaissent en surbrillance.
 
 [!code-csharp[Main](implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application/samples/sample4.cs?highlight=13-18,44,75,77,102-103,120,137-138,159,172-174,186)]
 
@@ -124,7 +124,7 @@ Seul le code en surbrillance a changé.
 
 Dans la version d’origine du code, `students` est typé comme un `IQueryable` objet. La requête n’est pas envoyée à la base de données jusqu'à ce qu’il est converti en une collection à l’aide d’une méthode comme `ToList`, qui ne se produit pas jusqu'à ce que la vue Index accède au modèle d’étudiant. Le `Where` méthode dans le code d’origine ci-dessus devient un `WHERE` clause dans la requête SQL qui est envoyée à la base de données. À son tour, cela signifie que seules les entités sélectionnées sont retournées par la base de données. Toutefois, suite à la modification `context.Students` à `studentRepository.GetStudents()`, le `students` variable après cette instruction est une `IEnumerable` collection qui contient tous les étudiants dans la base de données. Le résultat final de l’application de la `Where` méthode est la même, mais maintenant le travail est effectué dans la mémoire sur le serveur web et non par la base de données. Pour les requêtes qui retournent des volumes importants de données, cela peut être inefficace.
 
-> [!TIP] 
+> [!TIP]
 > 
 > **IQueryable vs. IEnumerable**
 > 
@@ -249,6 +249,6 @@ Vous avez maintenant implémenté le référentiel et l’unité de travail des 
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans le [ASP.NET Data Access Content Map](../../../../whitepapers/aspnet-data-access-content-map.md).
 
->[!div class="step-by-step"]
-[Précédent](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-[Suivant](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)
+> [!div class="step-by-step"]
+> [Précédent](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [Suivant](advanced-entity-framework-scenarios-for-an-mvc-web-application.md)

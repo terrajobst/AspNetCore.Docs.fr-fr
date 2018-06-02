@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/creating-a-basic-web-forms-page
-title: "Création d’une base ASP.NET Web 4.5 Page Forms dans Visual Studio 2013 | Documents Microsoft"
+title: Création d’une base ASP.NET Web 4.5 Page Forms dans Visual Studio 2013 | Documents Microsoft
 author: Erikre
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/03/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
-ms.openlocfilehash: 6b699cc939292b7ab0167dba7cfa6a00b681ef3a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0d44a8f607df3a45ef312820f85f269c7a2c9c1e
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a>Création d’une base ASP.NET Web 4.5 Page Forms dans Visual Studio 2013
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 Cette procédure pas à pas vous fournit une introduction à l’environnement de développement Web dans [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) et dans [Microsoft Visual Studio Express 2013 pour le Web](https://www.microsoft.com/visualstudio/11/downloads#express-web). Cette procédure pas à pas vous guide à travers la création d’une page Web Forms ASP.NET simple et illustre les techniques de base de la création d’une page, l’ajout de contrôles et l’écriture de code.
 
@@ -94,7 +94,7 @@ Examinez l’illustration ci-dessus et correspond au texte à la liste suivante,
 - Fenêtre de document. Affiche les documents que vous travaillez dans les fenêtres à onglets. Vous pouvez basculer entre les documents en cliquant sur les onglets.
 - **Propriétés** fenêtre. Permet de modifier les paramètres de la page, des éléments HTML, des contrôles et d’autres objets.
 - Afficher les onglets. Présenter des vues différentes du même document. **Conception** vue est une surface de modification proche du WYSIWYG. **Source** affichage est l’éditeur HTML de la page. **Fractionnement** affiche à la fois le **conception** affichage et le **Source** le document. Vous allez travailler avec les **conception** et **Source** vues plus loin dans cette procédure pas à pas. Si vous préférez ouvrir des pages Web dans **conception** afficher, dans le **outils** menu, cliquez sur **Options**, sélectionnez le **Concepteur HTML** nœud, puis remplacez le **Démarrer les Pages en** option.
-- **ToolBox**. Fournit des contrôles et des éléments HTML que vous pouvez faire glisser vers votre page. **Boîte à outils** éléments sont regroupés selon leur fonction.
+- **Boîte à outils**. Fournit des contrôles et des éléments HTML que vous pouvez faire glisser vers votre page. **Boîte à outils** éléments sont regroupés selon leur fonction.
 - S **erver Explorer**. Affiche les connexions de base de données. Si l’Explorateur de serveurs n’est pas visible, dans le menu Affichage, cliquez sur l’Explorateur de serveurs.
 
 
@@ -201,8 +201,8 @@ Visual Studio propose différentes façons de définir les propriétés des cont
 
     > [!NOTE] 
     > 
-    > Tous les contrôles sont à l’intérieur d’un **formulaire** élément qui possède également l’attribut **runat =&quot;server&quot;**. Le **runat =&quot;server&quot;**  attribut et la **asp :** préfixe des balises de contrôle marquent les contrôles afin qu’ils soient traités par ASP.NET sur le serveur lorsque la page s’exécute. Le code en dehors de  **&lt;écran runat =&quot;server&quot; &gt;**  et  **&lt;script runat =&quot;server&quot; &gt;**  éléments est envoyé sans modification dans le navigateur, c’est pourquoi le code ASP.NET doit être à l’intérieur d’un élément dont la balise ouvrante contient le **runat =&quot;server&quot;**  attribut.
-4. Ensuite, vous allez ajouter une propriété supplémentaire pour le [étiquette](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) contrôle. Placez le point d’insertion directement après **asp : Label** dans les  **&lt;asp : Label&gt;**  de balise, puis appuyez sur **espace**.
+    > Tous les contrôles sont à l’intérieur d’un **formulaire** élément qui possède également l’attribut **runat =&quot;server&quot;**. Le **runat =&quot;server&quot;**  attribut et la **asp :** préfixe des balises de contrôle marquent les contrôles afin qu’ils soient traités par ASP.NET sur le serveur lorsque la page s’exécute. Le code en dehors de **&lt;écran runat =&quot;server&quot; &gt;** et **&lt;script runat =&quot;server&quot; &gt;** éléments est envoyé sans modification dans le navigateur, c’est pourquoi le code ASP.NET doit être à l’intérieur d’un élément dont la balise ouvrante contient le **runat =&quot;server&quot;**  attribut.
+4. Ensuite, vous allez ajouter une propriété supplémentaire pour le [étiquette](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) contrôle. Placez le point d’insertion directement après **asp : Label** dans les **&lt;asp : Label&gt;** de balise, puis appuyez sur **espace**.
 
     Une liste déroulante apparaît qui affiche la liste des propriétés disponibles, vous pouvez définir pour un [étiquette](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) contrôle. Cette fonctionnalité, appelée **IntelliSense**, vous permet de **Source** vue avec la syntaxe des contrôles serveur, les éléments HTML et les autres éléments dans la page. L’illustration suivante montre le **IntelliSense** liste déroulante pour le [étiquette](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) contrôle.
 
@@ -214,7 +214,7 @@ Visual Studio propose différentes façons de définir les propriétés des cont
     > [!NOTE] 
     > 
     > Vous pouvez afficher un **IntelliSense** liste déroulante à tout moment en appuyant sur **CTRL + J** lors de l’affichage du code.
-6. Sélectionnez une couleur pour le  **[étiquette](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx)**  texte du contrôle. Assurez-vous que vous sélectionnez une couleur sombre suffisamment pour lire sur un arrière-plan blanc.
+6. Sélectionnez une couleur pour le **[étiquette](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx)** texte du contrôle. Assurez-vous que vous sélectionnez une couleur sombre suffisamment pour lire sur un arrière-plan blanc.
 
     Le **ForeColor** attribut est rempli avec la couleur que vous avez sélectionnées, y compris le guillemet fermant.
 
@@ -231,7 +231,7 @@ Pour cette procédure pas à pas, vous allez écrire du code qui lit le nom que 
 2. Double-cliquez sur le [bouton](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) contrôle.
 
     Par défaut, Visual Studio bascule vers un fichier code-behind et crée un gestionnaire d’événements squelette pour le [bouton](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) événement par défaut du contrôle le [cliquez sur](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx) événement. Le fichier code-behind sépare votre balisage de l’interface utilisateur (tels que HTML) à partir de votre code serveur (tel que c#).   
-Le curseur est positionné à ajouté du code pour ce gestionnaire d’événements.
+   Le curseur est positionné à ajouté du code pour ce gestionnaire d’événements.
 
     > [!NOTE] 
     > 
@@ -247,7 +247,7 @@ Le curseur est positionné à ajouté du code pour ce gestionnaire d’événeme
 
     [!code-vb[Main](creating-a-basic-web-forms-page/samples/sample2.vb?highlight=2)]
 5. Passer à l’affichage du **Source** affichage de votre balisage HTML en cliquant sur *PremièrePageWeb.aspx* dans les **l’Explorateur de solutions** et en sélectionnant **vue Balisage**.
-6. Faites défiler vers le  **&lt;asp : Button&gt;**  élément. Notez que la  **&lt;asp : Button&gt;**  élément a maintenant l’attribut **onclick =&quot;Button1\_cliquez sur&quot;**.
+6. Faites défiler vers le **&lt;asp : Button&gt;** élément. Notez que la **&lt;asp : Button&gt;** élément a maintenant l’attribut **onclick =&quot;Button1\_cliquez sur&quot;**.
 
     Cet attribut lie du bouton [cliquez sur](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx) événement à la méthode de gestionnaire que vous avez codé à l’étape précédente.
 
@@ -268,7 +268,7 @@ Vous pouvez maintenant tester les contrôles serveur sur la page.
     Le nom que vous avez entré est affiché dans le [étiquette](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) contrôle. Notez que lorsque vous cliquez sur le bouton, la page est publiée sur le serveur Web. ASP.NET puis recrée la page, exécute votre code (dans ce cas, le [bouton](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) du contrôle [cliquez sur](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx) séries de gestionnaire d’événements), puis envoie la nouvelle page au navigateur. Si vous regardez la barre d’état dans le navigateur, vous pouvez voir que la page fait un aller-retour vers le serveur Web chaque fois que vous cliquez sur le bouton.
 3. Dans le navigateur, affichez la source de la page en cours d’exécution en cliquant sur la page et en sélectionnant **afficher la source**.
 
-    Dans le code source de la page, vous consultez HTML sans code serveur. Plus précisément, vous ne voyez pas le  **&lt;asp :&gt;**  les éléments que vous utilisiez dans **Source** vue. Lorsque la page s’exécute, ASP.NET traite les contrôles serveur et restitue des éléments HTML à la page qui effectuent les fonctions qui représentent le contrôle. Par exemple, le  **&lt;asp : Button&gt;**  contrôle est restitué en tant que le code HTML  **&lt;type d’entrée =&quot;envoyer&quot; &gt;**  élément.
+    Dans le code source de la page, vous consultez HTML sans code serveur. Plus précisément, vous ne voyez pas le **&lt;asp :&gt;** les éléments que vous utilisiez dans **Source** vue. Lorsque la page s’exécute, ASP.NET traite les contrôles serveur et restitue des éléments HTML à la page qui effectuent les fonctions qui représentent le contrôle. Par exemple, le **&lt;asp : Button&gt;** contrôle est restitué en tant que le code HTML **&lt;type d’entrée =&quot;envoyer&quot; &gt;** élément.
 4. Fermez le navigateur.
 
 
@@ -297,7 +297,7 @@ Dans cette section, vous allez ajouter un [System.Web.UI.WebControls.Calendar](h
 4. À partir de la **sélectionner un schéma** , sélectionnez **Simple** puis cliquez sur **OK**.
 5. Basculez vers **Source** vue.
 
-    Vous pouvez voir les  **&lt;asp : Calendar&gt;**  élément. Cet élément est beaucoup plus long que les éléments des contrôles simples que vous avez créé précédemment. Il inclut également des sous-éléments, tels que  **&lt;WeekEndDayStyle&gt;**, qui représentent les différents paramètres de mise en forme. L’illustration suivante montre le [calendrier](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) contrôler dans **Source** vue. (La balise exacte que vous voyez dans **Source** vue peut différer légèrement de l’illustration.)
+    Vous pouvez voir les **&lt;asp : Calendar&gt;** élément. Cet élément est beaucoup plus long que les éléments des contrôles simples que vous avez créé précédemment. Il inclut également des sous-éléments, tels que  **&lt;WeekEndDayStyle&gt;**, qui représentent les différents paramètres de mise en forme. L’illustration suivante montre le [calendrier](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.aspx) contrôler dans **Source** vue. (La balise exacte que vous voyez dans **Source** vue peut différer légèrement de l’illustration.)
 
     ![Contrôle dans la vue de Source de calendrier](creating-a-basic-web-forms-page/_static/image15.png "contrôle dans la vue de Source de calendrier")
 
@@ -315,13 +315,12 @@ Dans cette section, vous programmerez le [calendrier](https://msdn.microsoft.com
     Un gestionnaire d’événements est créé et affiché dans le fichier code-behind nommé *FirstWebPage.aspx.cs*.
 2. Terminer la [SelectionChanged](https://msdn.microsoft.com/library/system.web.ui.webcontrols.calendar.selectionchanged.aspx) Gestionnaire d’événements avec le code suivant.
 
-
     [!code-csharp[Main](creating-a-basic-web-forms-page/samples/sample3.cs?highlight=3)]
 
 
     [!code-vb[Main](creating-a-basic-web-forms-page/samples/sample4.vb?highlight=2)]
 
- Le code ci-dessus définit le texte du contrôle label pour la date sélectionnée dans le contrôle calendar.
+    Le code ci-dessus définit le texte du contrôle label pour la date sélectionnée dans le contrôle calendar.
 
 
 ### <a name="running-the-page"></a>Exécution de la Page

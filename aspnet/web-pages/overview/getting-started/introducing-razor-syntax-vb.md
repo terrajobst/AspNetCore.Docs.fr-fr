@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-razor-syntax-vb
-title: "Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (Visual Basic) | Documents Microsoft"
+title: Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (Visual Basic) | Documents Microsoft
 author: tfitzmac
-description: "Cette annexe vous donne une vue d’ensemble de la programmation avec les pages Web ASP.NET dans Visual Basic, à l’aide de la syntaxe Razor."
+description: Cette annexe vous donne une vue d’ensemble de la programmation avec les pages Web ASP.NET dans Visual Basic, à l’aide de la syntaxe Razor.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/07/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8f5d223a5944d8adb9fe65c89e87829d18d1c7ee
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: aad951a0e4344dbaafbdcc3b3980307a26fa75fc
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (Visual Basic)
 ====================
@@ -121,7 +121,7 @@ Les lignes de code suivantes affectent une valeur à la variable `lastname` à l
 
 Le résultat est affiché dans un navigateur :
 
-![vb-syntax-5](introducing-razor-syntax-vb/_static/image5.jpg)
+![VB-syntaxe-5](introducing-razor-syntax-vb/_static/image5.jpg)
 
 ### <a name="7-much-of-your-coding-involves-working-with-objects"></a>7. Une grande partie de votre programmation implique de travailler avec des objets
 
@@ -180,11 +180,11 @@ Cette procédure vous montre comment créer une page qui illustre des techniques
 
 ## <a name="visual-basic-language-and-syntax"></a>Syntaxe et le langage Visual Basic
 
-Vous avez vu précédemment un exemple de base de la création d’une page web ASP.NET, et comment vous pouvez ajouter du code de serveur à la balise HTML. Ici, vous allez apprendre les principes fondamentaux de l’utilisation de Visual Basic pour écrire du code de serveur ASP.NET à l’aide de la syntaxe Razor &#8212; Autrement dit, les règles de langage programmation.
+Vous avez vu précédemment un exemple de base de la création d’une page web ASP.NET, et comment vous pouvez ajouter du code de serveur à la balise HTML. Ici, vous allez apprendre les principes fondamentaux de l’utilisation de Visual Basic pour écrire du code de serveur ASP.NET à l’aide de la syntaxe Razor &#8212; , autrement dit, les règles de langage programmation.
 
 Si vous êtes familiarisé avec la programmation (surtout si vous avez utilisé C, C++, c#, Visual Basic ou JavaScript), une grande partie de ce que vous lisez ici sera facile. Vous devrez probablement vous familiariser uniquement avec comment WebMatrix code est ajouté au balisage dans *.vbhtml* fichiers.
 
-### <a id="BM_CombiningTextMarkupAndCode"></a>Combinaison de texte, le balisage et le code dans les blocs de code
+### <a id="BM_CombiningTextMarkupAndCode"></a>  Combinaison de texte, le balisage et le code dans les blocs de code
 
 Dans des blocs de code serveur, vous souhaiterez souvent de sortie texte et le balisage à la page. Si un bloc de code serveur contient du texte qui ne s’est pas de code et qu’au lieu de cela doit être restituée en l’état, ASP.NET doit être capable de distinguer ce texte à partir du code. Pour ce faire, plusieurs méthodes sont possibles.
 
@@ -207,7 +207,7 @@ Dans des blocs de code serveur, vous souhaiterez souvent de sortie texte et le b
     [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample14.vbhtml)]
 
     > [!NOTE]
-    > Sortie de texte comme indiqué dans cette section &#8212; à l’aide d’un élément HTML, la `@:` (opérateur), ou le `<text>` , élément &#8212; ASP.NET ne pas coder en HTML la sortie. (Comme indiqué précédemment, ASP.NET n’encode pas la sortie des expressions de code serveur et les blocs de code de serveur qui sont précédés par `@`, sauf dans les cas spéciaux dans cette section.)
+    > Sortie de texte comme indiqué dans cette section &#8212; à l’aide d’un élément HTML, la `@:` (opérateur), ou le `<text>` élément &#8212; ASP.NET n’encoder en HTML la sortie. (Comme indiqué précédemment, ASP.NET n’encode pas la sortie des expressions de code serveur et les blocs de code de serveur qui sont précédés par `@`, sauf dans les cas spéciaux dans cette section.)
 
 ### <a name="whitespace"></a>Whitespace
 
@@ -275,31 +275,79 @@ Pour convertir les valeurs à des entiers, vous appelez le `AsInt` (méthode). S
 
 Le tableau suivant répertorie certaines méthodes courantes de conversion et de test pour les variables.
 
-| **Méthode** | **Description** | **Exemple** |
-| --- | --- | --- |
-| `AsInt(), IsInt()` | Convertit une chaîne qui représente un nombre entier (comme &quot;593&quot;) en un entier. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)] |
-| `AsBool(), IsBool()` | Convertit une chaîne like &quot;true&quot; ou &quot;false&quot; avec un type Boolean. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)] |
-| `AsFloat(), IsFloat()` | Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre à virgule flottante. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)] |
-| `AsDecimal(), IsDecimal()` | Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; en un nombre décimal. (Dans ASP.NET, un nombre décimal est plus précis que nombre à virgule flottante.) | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)] |
-| `AsDateTime(), IsDateTime()` | Convertit une chaîne qui représente une valeur de date et d’heure pour ASP.NET `DateTime` type. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)] |
-| `ToString()` | Convertit un autre type de données en une chaîne. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)] |
+
+::: ligne ::: ::: colonne ::: <strong>méthode</strong> ::: fin de la colonne ::: ::: colonne ::: <strong>Description</strong> ::: fin de la colonne ::: ::: colonne ::: <strong>exemple</strong> ::: fin de la colonne ::: ::: fin de ligne :::
+* * *
+::: ligne ::: ::: colonne ::: `AsInt(), IsInt()` : fin de la colonne ::: ::: colonne ::: convertit une chaîne qui représente un nombre entier (comme &quot;593&quot;) en un entier.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `AsBool(), IsBool()` : fin de la colonne ::: ::: colonne ::: convertit une chaîne comme &quot;true&quot; ou &quot;false&quot; avec un type Boolean.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `AsFloat(), IsFloat()` : fin de la colonne ::: ::: colonne ::: convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre à virgule flottante.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `AsDecimal(), IsDecimal()` : fin de la colonne ::: ::: colonne ::: convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; en un nombre décimal. (Dans ASP.NET, un nombre décimal est plus précis que nombre à virgule flottante.) : fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `AsDateTime(), IsDateTime()` : fin de la colonne ::: ::: colonne ::: convertit une chaîne qui représente une valeur de date et d’heure pour ASP.NET `DateTime` type.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `ToString()` : fin de la colonne ::: ::: colonne ::: convertit tout autre type de données en une chaîne.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+
 
 ## <a name="operators"></a>Opérateurs
 
 Un opérateur est un mot clé ou un caractère qui indique à ASP.NET de quel type de commande à exécuter dans une expression. Visual Basic prend en charge de nombreux opérateurs, mais vous devez seulement reconnaître quelques à commencer à développer des pages web ASP.NET. Le tableau suivant récapitule les opérateurs courants.
 
-| **Operator** | **Description** | **Exemples** |
-| --- | --- | --- |
-| `+ - * /` | Opérateurs mathématiques utilisés dans les expressions numériques. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)] |
-| `=` | Assignation et égalité. Selon le contexte, soit assigne la valeur située à droite d’une instruction à l’objet sur le côté gauche ou vérifie les valeurs sont égales. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)] |
-| `<>` | Inégalité Retourne `True` si les valeurs ne sont pas égales. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)] |
-| `< > <= >=` | Inférieur à, supérieur à, inférieur à ou égal et supérieur ou égal. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)] |
-| `&` | Concaténation, qui est utilisée pour joindre des chaînes. | [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)] |
-| `+= -=` | Les opérateurs incrémentation et de décrémentation, lequel ajouter ou soustraire 1 (respectivement) à partir d’une variable. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)] |
-| `.` | Point. Utilisé pour distinguer les objets et leurs propriétés et les méthodes. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)] |
-| `()` | Entre parenthèses. Utilisé pour les expressions de groupe, pour passer des paramètres aux méthodes et pour accéder aux membres des tableaux et collections. | [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)] |
-| `Not` | Non. Inverse la valeur true à false et vice versa. Généralement utilisé comme un moyen rapide pour tester le `False` (autrement dit, pour pas `True`). | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)] |
-| `AndAlso OrElse` | ET logique et ou des conditions qui servent à lier. | [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)] |
+
+::: ligne ::: ::: colonne ::: <strong>opérateur</strong> ::: fin de la colonne ::: ::: colonne ::: <strong>Description</strong> ::: fin de la colonne ::: ::: colonne ::: <strong>exemples</strong> ::: fin de la colonne ::: ::: fin de ligne :::
+* * *
+::: ligne ::: ::: colonne ::: `+ - * /` : fin de la colonne ::: ::: colonne ::: opérateurs mathématiques utilisés dans les expressions numériques.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `=` : fin de la colonne ::: ::: colonne ::: assignation et égalité. Selon le contexte, soit assigne la valeur située à droite d’une instruction à l’objet sur le côté gauche ou vérifie les valeurs sont égales.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `<>` : fin de la colonne ::: ::: colonne ::: inégalité. Retourne `True` si les valeurs ne sont pas égales.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `< > <= >=` : fin de la colonne ::: ::: colonne ::: inférieur à, supérieur à, inférieur à ou égal et supérieur ou égal.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `&` : fin de la colonne ::: ::: colonne ::: concaténation, qui est utilisée pour joindre des chaînes.
+: fin de la colonne ::: ::: colonne ::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `+= -=` : fin de la colonne ::: ::: colonne ::: opérateurs incrémentation et de décrémentation, lequel ajouter ou soustraire 1 (respectivement) à partir d’une variable.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `.` : fin de la colonne ::: ::: colonne ::: point. Utilisé pour distinguer les objets et leurs propriétés et les méthodes.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `()` : fin de la colonne ::: ::: colonne ::: entre parenthèses. Utilisé pour les expressions de groupe, pour passer des paramètres aux méthodes et pour accéder aux membres des tableaux et collections.
+: fin de la colonne ::: ::: colonne ::: [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `Not` : fin de la colonne ::: ::: colonne ::: pas. Inverse la valeur true à false et vice versa. Généralement utilisé comme un moyen rapide pour tester le `False` (autrement dit, pour pas `True`).
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
+* * *
+::: ligne ::: ::: colonne ::: `AndAlso OrElse` ::: fin de la colonne ::: ::: colonne ::: et logique et ou des conditions qui servent à lier.
+: fin de la colonne ::: ::: colonne ::: [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]
+    : fin de la colonne ::: ::: fin de ligne :
 
 ## <a name="working-with-file-and-folder-paths-in-code"></a>Utilisation des fichiers et des chemins d’accès de dossier dans le Code
 
@@ -443,7 +491,7 @@ Souvent, vous allez travailler avec des données dans des collections. Deux type
 
 [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample52.vbhtml)]
 
-Les tableaux, vous déclarez un type de données spécifique, tel que `String`, `Integer`, ou `DateTime`. Pour indiquer que la variable peut contenir un tableau, vous ajoutez des parenthèses pour le nom de variable dans la déclaration (tel que `Dim myVar() As String`). Vous pouvez accéder à des éléments dans un tableau à l’aide de leur position (index) ou en utilisant la `For Each` instruction. Tableau d’index sont de base zéro &#8212; Autrement dit, le premier élément est à position 0, le deuxième élément correspond à la position 1 et ainsi de suite.
+Les tableaux, vous déclarez un type de données spécifique, tel que `String`, `Integer`, ou `DateTime`. Pour indiquer que la variable peut contenir un tableau, vous ajoutez des parenthèses pour le nom de variable dans la déclaration (tel que `Dim myVar() As String`). Vous pouvez accéder à des éléments dans un tableau à l’aide de leur position (index) ou en utilisant la `For Each` instruction. Index de tableau sont de base zéro &#8212; , autrement dit, le premier élément est à position 0, le deuxième élément correspond à la position 1 et ainsi de suite.
 
 [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample53.vbhtml)]
 
@@ -475,7 +523,7 @@ Comme vous l’avez vu plus haut dans cet article, les objets que vous programme
 
 Cette méthode retourne le chemin d’accès physique sur le serveur qui correspond à un chemin d’accès virtuel spécifié. Les trois paramètres pour la méthode sont `virtualPath`, `baseVirtualDir`, et `allowCrossAppMapping`. (Notez que dans la déclaration, les paramètres sont répertoriés avec les types de données des données qu’ils vous acceptez). Lorsque vous appelez cette méthode, vous devez fournir des valeurs pour tous les trois paramètres.
 
-Lorsque vous utilisez Visual Basic avec la syntaxe Razor, vous avez deux options pour passer des paramètres à une méthode : *paramètres positionnels* ou *des paramètres nommés*. Pour appeler une méthode à l’aide de paramètres positionnels, vous transmettez les paramètres dans un ordre strict qui est spécifié dans la déclaration de méthode. (Vous généralement sauriez cet ordre en lisant la documentation de la méthode.) Vous devez suivre l’ordre, et vous ne pouvez pas ignorer les paramètres &#8212; Si nécessaire, vous passez une chaîne vide (`""`) ou null pour un paramètre positionnel que vous n’avez pas une valeur pour.
+Lorsque vous utilisez Visual Basic avec la syntaxe Razor, vous avez deux options pour passer des paramètres à une méthode : *paramètres positionnels* ou *des paramètres nommés*. Pour appeler une méthode à l’aide de paramètres positionnels, vous transmettez les paramètres dans un ordre strict qui est spécifié dans la déclaration de méthode. (Vous généralement sauriez cet ordre en lisant la documentation de la méthode.) Vous devez suivre l’ordre, et vous ne pouvez pas ignorer les paramètres &#8212; si nécessaire, vous passez une chaîne vide (`""`) ou null pour un paramètre positionnel que vous n’avez pas une valeur pour.
 
 L’exemple suivant suppose que vous avez un dossier nommé *scripts* sur votre site Web. Le code appelle la `Request.MapPath` méthode et passe les valeurs pour les trois paramètres dans l’ordre approprié. Il affiche ensuite le chemin d’accès résultant mappé.
 
@@ -493,7 +541,7 @@ Comme vous pouvez le voir, les paramètres sont passés dans un ordre différent
 
 ### <a name="try-catch-statements"></a>Instructions Try-Catch
 
-Vous aurez souvent des instructions dans votre code peut échouer pour des raisons en dehors de votre contrôle. Exemple :
+Vous aurez souvent des instructions dans votre code peut échouer pour des raisons en dehors de votre contrôle. Par exemple :
 
 - Si votre code essaie d’ouvrir, créer, lire ou écrire un fichier, que toutes sortes d’erreurs peuvent se produire. Le fichier n’existe ne peut-être pas, il est peut-être verrouillé, le code ne peut pas disposer des autorisations et ainsi de suite.
 - De même, si votre code essaie de mettre à jour des enregistrements dans une base de données, il peut y avoir des problèmes d’autorisations, la connexion à la base de données peut-être être supprimée, les données à enregistrer est peut-être non valide et ainsi de suite.

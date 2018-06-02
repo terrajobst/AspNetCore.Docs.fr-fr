@@ -2,21 +2,21 @@
 uid: whitepapers/mvc4-release-notes
 title: ASP.NET MVC 4 | Documents Microsoft
 author: rick-anderson
-description: "Ce document décrit la version de ASP.NET MVC 4."
+description: Ce document décrit la version de ASP.NET MVC 4.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/09/2011
 ms.topic: article
 ms.assetid: f014524f-25c0-4094-b8e1-886d99536f00
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/mvc4-release-notes
 msc.type: content
-ms.openlocfilehash: 399fbe3fa1e71a9ffa7c5e6dfeca7ccab7294d1b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dbcea6090a0376b8732e02c0891721672bfe50f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-4"></a>ASP.NET MVC 4
 ====================
@@ -103,7 +103,7 @@ ASP.NET Web API prend en charge les fonctionnalités suivantes :
 - **Modèle de projet Web API :** sélectionner le nouveau formulaire de projet l’Assistant Nouveau projet MVC 4 pour obtenir rapidement en cours d’exécution avec l’API Web ASP.NET Web API.
 - **Génération de modèles automatique :** utilisez la **ajouter un contrôleur** boîte de dialogue rapidement structurez un contrôleur d’API web basé sur un Entity Framework en fonction de type de modèle.
 
-Pour plus d’informations sur l’API Web ASP.NET, consultez [https://www.asp.net/web-api](../web-api/index.md).
+Pour plus d’informations sur l’API Web ASP.NET, consultez [ https://www.asp.net/web-api ](../web-api/index.md).
 
 <a id="_Toc303253808"></a>
 ### <a name="enhancements-to-default-project-templates"></a>Améliorations apportées aux modèles de projet par défaut
@@ -134,7 +134,7 @@ Si vous avez déjà un site orienté sur le bureau que vous souhaitez ajouter de
 
 La nouvelle fonctionnalité de Modes d’affichage permet à une application de sélectionner les vues selon le navigateur qui effectue la demande. Par exemple, si un navigateur demande la page d’accueil, l’application peut utiliser le modèle Views\Home\Index.cshtml. Si un navigateur mobile demande à la page d’accueil, l’application peut retourner le modèle Views\Home\Index.mobile.cshtml.
 
-Dispositions et aucun peut également être remplacées pour les types de navigateur particulier. Exemple :
+Dispositions et aucun peut également être remplacées pour les types de navigateur particulier. Par exemple :
 
 - Si votre dossier Views\Shared contient à la fois le \_Layout.cshtml et \_modèles Layout.mobile.cshtml, par défaut, l’application utilisera \_Layout.mobile.cshtml lors des demandes à partir de navigateurs mobiles et \_Layout.cshtml au cours des autres requêtes.
 - Si un dossier contient à la fois \_MyPartial.cshtml et \_MyPartial.mobile.cshtml, l’instruction @Html.Partial(«\_MyPartial ») sera rendue \_MyPartial.mobile.cshtml lors des demandes de mobile navigateurs, et \_MyPartial.cshtml au cours des autres requêtes.
@@ -230,7 +230,7 @@ Principales modifications apportées à partir d’ASP.NET MVC 4 Release Candida
 - **Par les gestionnaires de messages de routage :** vous pouvez maintenant spécifier le Gestionnaire de messages final dans la chaîne de requête pour un itinéraire donné. Cela permet la prise en charge des infrastructures le long de gestion utilise le routage pour la distribution à leur propre (non -*IHttpController*) points de terminaison.
 - **Notifications de progression :** le *ProgressMessageHandler* génère la notification de progression pour les entités de la demande en cours de téléchargement et des entités de réponse en cours de téléchargement. À l’aide de ce gestionnaire, il est possible d’effectuer le suivi de déterminer jusqu’où vous téléchargement d’un corps de demande ou téléchargement d’un corps de réponse.
 - **Contenu transféré :** le *PushStreamContent* classe permet des scénarios où un producteur de données souhaite écrire directement dans la demande ou la réponse (synchrone ou asynchrone) à l’aide d’un flux de données. Lorsque le *PushStreamContent* est prêt à accepter des données, il appelle un délégué d’action avec le flux de sortie. Le développeur peut ensuite écrire dans le flux pour aussi longtemps que nécessaire et fermer le flux de données lors de l’écriture est terminée. Le *PushStreamContent* détecte la fermeture du flux de données et se termine sous-jacent asynchrone *tâche* pour écrire le contenu.
-- **Création de réponses d’erreur :** utilisez la *HttpError* type pour représenter constamment des informations d’erreur à partir de tels que les erreurs de validation et d’exceptions tout en respectant encore le *IncludeErrorDetailPolicy* . Utilisez la nouvelle *CreateErrorResponse* les méthodes d’extension pour créer facilement des réponses d’erreur avec *HttpError* en tant que contenu. Le *HttpError* le contenu est entièrement contenu négocié.
+- **Création de réponses d’erreur :** utilisez la *HttpError* type pour représenter constamment des informations d’erreur à partir de tels que les erreurs de validation et d’exceptions tout en respectant encore la *IncludeErrorDetailPolicy*. Utilisez la nouvelle *CreateErrorResponse* les méthodes d’extension pour créer facilement des réponses d’erreur avec *HttpError* en tant que contenu. Le *HttpError* le contenu est entièrement contenu négocié.
 - **MediaRangeMapping supprimé :** plages de types de média sont désormais gérés par le négociateur de contenu par défaut.
 - **Liaison de paramètre par défaut pour les paramètres de type simple est désormais [FromUri] :** dans les versions précédentes d’ASP.NET Web API la liaison de paramètre par défaut pour les paramètres de type simple utilisé la liaison de modèle. La liaison de paramètre par défaut pour les paramètres de type simple est désormais *[FromUri]*.
 - **Sélection d’action respecte les paramètres requis :** Action dans ASP.NET Web API désormais uniquement sélectionne une action si tous les paramètres requis qui proviennent de l’URI sont fournis. Un paramètre peut être spécifié comme étant facultatifs en fournissant une valeur par défaut pour l’argument de la signature de méthode d’action.
@@ -245,7 +245,7 @@ Principales modifications apportées à partir d’ASP.NET MVC 4 Release Candida
 - **Lier des améliorations de génération :** le *UrlHelper* ne dépend plus *HttpControllerContext*. Vous pouvez désormais accéder à la *UrlHelper* à partir de n’importe quel contexte où le *HttpRequestMessage* n’est disponible.
 - **Changement d’ordre de l’exécution du Gestionnaire de messages :** gestionnaires de messages sont maintenant exécutées dans l’ordre dans lequel ils sont configurés dans l’ordre inverse à la place de.
 - **Application d’assistance pour l’écriture des gestionnaires de messages :** le nouveau *HttpClientFactory* qui peut associer *DelegatingHandlers* et créer un *HttpClient* avec le prêt à passer de pipeline souhaité. Il fournit également des fonctionnalités pour la création avec les autres gestionnaires internes (la valeur par défaut est *HttpClientHandler*) ainsi que pour effectuer le câblage lors de l’utilisation *HttpMessageInvoker* ou un autre  *DelegatingHandler* au lieu de *HttpClient* en tant que le demandeur de haut.
-- **Prise en charge pour le CDN dans ASP.NET Web optimisation :** ASP.NET Web optimisation prend désormais en charge pour le CDN autres chemins d’accès vous permettant de spécifier pour chaque regroupement d’une URL supplémentaire qui pointe vers cette ressource même sur un réseau de diffusion de contenu. Prise en charge CDN permet d’obtenir vos groupes de script et le style géographiquement proche aux consommateurs de fin de vos applications Web.
+- **Prise en charge pour le CDN dans ASP.NET Web optimisation :** ASP.NET Web optimisation prend désormais en charge pour le CDN autres chemins d’accès vous permettant de spécifier pour chaque regroupement d’une URL supplémentaire qui pointe vers cette ressource même sur un réseau de diffusion de contenu. Prise en charge CDN permet d’obtenir vos groupes de script et le style géographiquement proche aux consommateurs de fin de vos applications Web. Les applications de production doivent implémenter une stratégie de secours lorsque le CDN n’est pas disponible. Tester le basculement.
 - **Achemine les API Web ASP.NET et de configuration est déplacé vers *WebApiConfig.Register* une méthode statique qui peut être resused dans le code de test.** Itinéraires de l’API Web ASP.NET ont été précédemment ajoutés dans *RouteConfig.RegisterRoutes* , ainsi que le MVC standard route. La valeur par défaut de l’API Web ASP.NET achemine et la configuration sont maintenant gérées dans une fonction *WebApiConfig.Register* méthode pour faciliter le test.
 
 <a id="_Toc303253815"></a>
@@ -261,7 +261,7 @@ Principales modifications apportées à partir d’ASP.NET MVC 4 Release Candida
     - *MvcCSharpRazorCodeGenerator*
     - *MvcVBRazorCodeParser*
 
- Les méthodes suivantes ont été également supprimés : 
+  Les méthodes suivantes ont été également supprimés : 
 
     - *MvcCSharpRazorCodeParser.ParseInheritsStatement(System.Web.Razor.Parser.CodeBlockInfo)*
     - *MvcWebPageRazorHost.DecorateCodeGenerator(System.Web.Razor.Generator.RazorCodeGenerator)*
@@ -275,22 +275,23 @@ Principales modifications apportées à partir d’ASP.NET MVC 4 Release Candida
 
     **Mises à jour requises**
 
-    1. Dans le fichier racine Web.config, ajoutez un nouvel  *&lt;appSettings&gt;*  entrée avec la clé *webPages:Version* et la valeur *1.0.0.0*. 
+  1. Dans le fichier racine Web.config, ajoutez un nouvel *&lt;appSettings&gt;* entrée avec la clé *webPages:Version* et la valeur *1.0.0.0*. 
 
-        [!code-xml[Main](mvc4-release-notes/samples/sample7.xml)]
-    2. Dans l’Explorateur de solutions, cliquez sur le nom du projet, puis sélectionnez Décharger le projet. Cliquez à nouveau sur le nom, puis sélectionnez Modifier *nom_projet*.csproj.
-    3. Recherchez les références d’assembly suivantes : 
+      [!code-xml[Main](mvc4-release-notes/samples/sample7.xml)]
+  2. Dans l’Explorateur de solutions, cliquez sur le nom du projet, puis sélectionnez Décharger le projet. Cliquez à nouveau sur le nom, puis sélectionnez Modifier *nom_projet*.csproj.
+  3. Recherchez les références d’assembly suivantes : 
 
-        [!code-xml[Main](mvc4-release-notes/samples/sample8.xml)]
+      [!code-xml[Main](mvc4-release-notes/samples/sample8.xml)]
 
-        Remplacez-les par les éléments suivants :
+      Remplacez-les par les éléments suivants :
 
-        [!code-xml[Main](mvc4-release-notes/samples/sample9.xml)]
-    4. Enregistrer les modifications, fermez le fichier projet (.csproj) modifiiez, puis cliquez sur le projet et choisissez recharger.
+      [!code-xml[Main](mvc4-release-notes/samples/sample9.xml)]
+  4. Enregistrer les modifications, fermez le fichier projet (.csproj) modifiiez, puis cliquez sur le projet et choisissez recharger.
+
 - **La modification d’un projet ASP.NET MVC 4 à la cible 4.0 à partir de 4.5 ne met pas à jour la référence d’assembly EntityFramework :** si vous définissez un projet ASP.NET MVC 4 cible 4.0 après ciblé 4.5 pointe toujours vers la référence à l’assembly EntityFramework la version 4.5. Pour résoudre ce problème, désinstallez et réinstallez le package NuGet de EntityFramework.
-- **403 Interdit lors de l’exécution d’une application ASP.NET MVC 4 sur Azure après le passage cible 4.0 à partir de 4.5 :** si vous modifiez un projet ASP.NET MVC 4 à cibler 4.0 après ciblé 4.5 et que vous déployez ensuite sur Azure, vous pouvez voir une erreur 403 Interdit lors de l’exécution. Pour contourner ce problème, ajoutez le code suivant à votre fichier web.config :`<modules runAllManagedModulesForAllRequests="true" />`
+- **403 Interdit lors de l’exécution d’une application ASP.NET MVC 4 sur Azure après le passage cible 4.0 à partir de 4.5 :** si vous modifiez un projet ASP.NET MVC 4 à cibler 4.0 après ciblé 4.5 et que vous déployez ensuite sur Azure, vous pouvez voir une erreur 403 Interdit lors de l’exécution. Pour contourner ce problème, ajoutez le code suivant à votre fichier web.config : `<modules runAllManagedModulesForAllRequests="true" />`
 - **Visual Studio 2012 se bloque quand vous tapez un «\' dans un littéral de chaîne dans un fichier Razor.** Pour utiliser le problème, entrez le guillemet fermant de la chaîne littérale tout d’abord.
-- **Navigation à &quot;compte/gérer&quot; dans les résultats du modèle Internet dans une erreur d’exécution pour les langues CHS, TRK et CHT.** Pour résoudre le problème de modifier la page pour séparer des  *@User.Identity.Name*  en le plaçant en tant que seul le contenu dans le  *&lt;fort&gt;*  balise.
+- <strong>Navigation à &quot;compte/gérer&quot; dans les résultats du modèle Internet dans une erreur d’exécution pour les langues CHS, TRK et CHT.</strong> Pour résoudre le problème de modifier la page pour séparer des <em>@User.Identity.Name</em> en le plaçant en tant que seul le contenu dans le <em>&lt;fort&gt;</em> balise.
 - **Google et LinkedIn fournisseurs ne sont pas pris en charge dans les Sites Web Azure.** Utiliser les fournisseurs d’authentification autre lors du déploiement sur les Sites Web Azure.
 - **À l’aide de UriPathExtensionMapping avec IIS 8 Express/IIS, vous recevez des 404 erreurs introuvable lorsque vous essayez d’utiliser l’extension.** Le Gestionnaire de fichiers statiques interférera avec des demandes API web qui utilisent *UriPathExtensionMappings*. Définissez *runAllManagedModulesForAllRequests = true* dans le fichier web.config pour contourner le problème.
 - **Méthode de Controller.Execute n’est plus appelé.** Tous les contrôleurs MVC sont maintenant toujours exécutées de façon asynchrone.

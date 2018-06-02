@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
-title: "L’interface utilisateur et la Navigation | Documents Microsoft"
+title: L’interface utilisateur et la Navigation | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: 7f1d8a1a473820a7c8da4c8086904cc41c86fd2a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d2d4101455a85c53e016e567c0cf1337642f1863
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="ui-and-navigation"></a>L’interface utilisateur et la Navigation
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -54,7 +54,7 @@ Vous allez continuer cette série de didacticiels en modifiant le *Default.aspx*
     [!code-aspx[Main](ui_and_navigation/samples/sample2.aspx)]
 5. Enregistrer le *Default.aspx* page en sélectionnant **enregistrer de Default.aspx** à partir de la **fichier** menu.
 
- Résultant *Default.aspx* page s’affiche comme suit : 
+   Résultant *Default.aspx* page s’affiche comme suit : 
 
 [!code-aspx[Main](ui_and_navigation/samples/sample3.aspx)]
 
@@ -62,7 +62,7 @@ Dans l’exemple, vous avez défini le `Title` attribut de la `@Page` la directi
 
 L’exemple de page inclut les éléments de base qui constituent une page Web ASP.NET. La page contient du texte statique comme vous avez peut-être dans une page HTML, ainsi que les éléments qui sont spécifiques à ASP.NET. Le contenu de la *Default.aspx* page sera intégrée avec le contenu de la page maître, qui est expliqué plus loin dans ce didacticiel.
 
-### <a name="page-directive"></a>@PageDirective
+### <a name="page-directive"></a>@Page Directive
 
 ASP.NET Web Forms contiennent généralement des directives qui vous permettent de spécifier les informations de page de propriétés et la configuration de la page. Les directives sont utilisées par ASP.NET en tant qu’instructions pour savoir comment le processus de la page, mais ils ne sont pas rendus dans le cadre de la balise qui est envoyée au navigateur.
 
@@ -166,8 +166,8 @@ Dans ce didacticiel, vous allez modifier l’apparence de l’application Wingti
 2. Avec le bouton droit le *bootstrap.css* de fichiers et de le renommer *original.css-bootstrap*.
 3. Renommer le *bootstrap.min.css* à *original.min.css-bootstrap*.
 4. Dans **l’Explorateur de solutions**, cliquez sur le *contenu* et sélectionnez **ouvrir le dossier dans l’Explorateur de fichiers**.  
- L’Explorateur de fichiers s’affichera. Vous allez enregistrer un fichier CSS de démarrage téléchargé à cet emplacement.
-5. Dans votre navigateur, accédez à [http://Bootswatch.com](http://bootswatch.com/).
+   L’Explorateur de fichiers s’affichera. Vous allez enregistrer un fichier CSS de démarrage téléchargé à cet emplacement.
+5. Dans votre navigateur, accédez à [ http://Bootswatch.com ](http://bootswatch.com/).
 6. Faites défiler la fenêtre du navigateur jusqu'à ce que vous voyiez le thème Cerulean. 
 
     ![Navigation - Cerulean de thème et l’interface utilisateur](ui_and_navigation/_static/image5.png)
@@ -176,9 +176,9 @@ Dans ce didacticiel, vous allez modifier l’apparence de l’application Wingti
 
     ![Navigation - Explorateur de solutions et l’interface utilisateur](ui_and_navigation/_static/image6.png)
 
- Vous verrez deux nouveaux fichiers CSS dans le **contenu** dossier, mais notez que l’icône en regard de chaque nom de fichier est grisée. Cela signifie que le fichier n’a pas encore été ajouté au projet.
+   Vous verrez deux nouveaux fichiers CSS dans le **contenu** dossier, mais notez que l’icône en regard de chaque nom de fichier est grisée. Cela signifie que le fichier n’a pas encore été ajouté au projet.
 9. Avec le bouton droit le *bootstrap.css* et *bootstrap.min.css* fichiers et sélectionnez **inclure dans le projet**.   
- Lorsque vous exécutez l’application Wingtip Toys plus loin dans ce didacticiel, la nouvelle interface utilisateur s’affichera.
+   Lorsque vous exécutez l’application Wingtip Toys plus loin dans ce didacticiel, la nouvelle interface utilisateur s’affichera.
 
 > [!NOTE] 
 > 
@@ -292,6 +292,6 @@ Dans ce didacticiel de la série, vous avez ajouté une interface utilisateur de
 [Vue d’ensemble des contrôles serveur Web ASP.NET](https://msdn.microsoft.com/library/zsyt68f1.aspx)   
 [Didacticiel CSS](http://www.w3schools.com/css/default.asp)
 
->[!div class="step-by-step"]
-[Précédent](create_the_data_access_layer.md)
-[Suivant](display_data_items_and_details.md)
+> [!div class="step-by-step"]
+> [Précédent](create_the_data_access_layer.md)
+> [Suivant](display_data_items_and_details.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
-title: "Lot d’insertion (VB) | Documents Microsoft"
+title: Lot d’insertion (VB) | Documents Microsoft
 author: rick-anderson
-description: "Découvrez comment insérer plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous étendre le contrôle GridView pour autoriser l’utilisateur à entrer plusieurs de n..."
+description: Découvrez comment insérer plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous étendre le contrôle GridView pour autoriser l’utilisateur à entrer plusieurs de n...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3f09b5fd86c1cc6641fb42a466b07da161c1dd35
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a25c889784ccc6cee3ae01df59bd489b48114e74
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="batch-inserting-vb"></a>Lot d’insertion (VB)
 ====================
@@ -203,7 +203,7 @@ Ensuite, créez des gestionnaires d’événements pour l’ajout de produits à
 
 [!code-vb[Main](batch-inserting-vb/samples/sample5.vb)]
 
-Les deux `Click` gestionnaires d’événements simplement appellent le `ReturnToDisplayInterface` (méthode), bien que nous allons retourner à l’ajout de produits à partir de l’expédition `Click` Gestionnaire d’événements dans l’étape 4 et ajoutez le code pour enregistrer les produits. `ReturnToDisplayInterface`démarre en retournant le `Suppliers` et `Categories` compréhension des listes à leurs première options. Les deux constantes `firstControlID` et `lastControlID` marquer le début et fin des valeurs d’index de contrôle utilisés pour nommer le produit nom et le prix unitaire zones de texte de l’insertion de l’interface et sont utilisés dans les limites de la `For` boucle qui définit les `Text`sauvegarder des propriétés des contrôles de zone de texte à une chaîne vide. Enfin, les panneaux `Visible` des propriétés sont rétablies afin que l’interface d’insertion est masquée et l’interface d’affichage indiqué.
+Les deux `Click` gestionnaires d’événements simplement appellent le `ReturnToDisplayInterface` (méthode), bien que nous allons retourner à l’ajout de produits à partir de l’expédition `Click` Gestionnaire d’événements dans l’étape 4 et ajoutez le code pour enregistrer les produits. `ReturnToDisplayInterface` démarre en retournant le `Suppliers` et `Categories` compréhension des listes à leurs première options. Les deux constantes `firstControlID` et `lastControlID` marquer le début et fin des valeurs d’index de contrôle utilisés pour nommer le produit nom et le prix unitaire zones de texte de l’insertion de l’interface et sont utilisés dans les limites de la `For` boucle qui définit les `Text`sauvegarder des propriétés des contrôles de zone de texte à une chaîne vide. Enfin, les panneaux `Visible` des propriétés sont rétablies afin que l’interface d’insertion est masquée et l’interface d’affichage indiqué.
 
 Prenez un moment pour tester cette page dans un navigateur. Lors de la visite de tout d’abord la page, vous devez voir l’interface d’affichage comme illustré dans la Figure 5. Cliquez sur le bouton de la livraison du produit. La page est publiée et que vous devez maintenant voir l’interface insertion comme indiqué dans la Figure 12. En cliquant sur les deux produits ajouter à partir des boutons d’expédition ou sur Annuler pour revenir à l’interface d’affichage.
 
@@ -269,11 +269,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Responsable de réviseurs pour ce didacticiel ont été Hilton Giesenow et S ren Jacob Lauritsen. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](batch-deleting-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](batch-deleting-vb.md)

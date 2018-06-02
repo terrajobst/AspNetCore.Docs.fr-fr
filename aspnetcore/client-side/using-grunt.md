@@ -1,7 +1,7 @@
 ---
-title: "À l’aide de Grunt dans ASP.NET Core"
+title: Utiliser Grunt dans ASP.NET Core
 author: rick-anderson
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/using-grunt
-ms.openlocfilehash: c23f170b36ac1b9623835337020f2b5ac9514971
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 169552e9b5dd811884ce1c65952677ba83626b58
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="using-grunt-in-aspnet-core"></a>À l’aide de Grunt dans ASP.NET Core 
+# <a name="use-grunt-in-aspnet-core"></a>Utiliser Grunt dans ASP.NET Core
 
 Par [Noel riz](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
-Grunt est un exécuteur de tâches JavaScript qui automatise une minimisation du script, la compilation TypeScript, outils « lint » qualité du code, les processeurs avant CSS et pratiquement n’importe quel, répétitive qui doit effectuer pour prendre en charge le développement de clients. Grunt est entièrement pris en charge dans Visual Studio, bien que les modèles de projet ASP.NET utilisent Gulp par défaut (voir [à l’aide de Gulp](using-gulp.md)).
+Grunt est un exécuteur de tâches JavaScript qui automatise une minimisation du script, la compilation TypeScript, outils « lint » qualité du code, les processeurs avant CSS et pratiquement n’importe quel, répétitive qui doit effectuer pour prendre en charge le développement de clients. Grunt est entièrement pris en charge dans Visual Studio, bien que les modèles de projet ASP.NET utilisent Gulp par défaut (voir [utiliser Gulp](using-gulp.md)).
 
 Cet exemple utilise un projet ASP.NET Core vide comme point de départ, pour montrer comment automatiser le processus de génération de client à partir de zéro.
 
@@ -99,7 +99,7 @@ Ensuite, configurez NPM pour télécharger grunt et les tâches de grunt.
     ![grun Intellisense](using-grunt/_static/devdependencies-grunt.png)
     
     > [!NOTE]
-    > NPM utilise [contrôle de version sémantique](http://semver.org/) pour organiser les dépendances. Contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation <major>.<minor>. <patch>. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste Intellisense (0.4.5 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole du signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente. Consultez le [référence d’analyseur NPM semver version](https://www.npmjs.com/package/semver) comme guide pour l’expressivité complète qui fournit des SemVer.
+    > NPM utilise [contrôle de version sémantique](http://semver.org/) pour organiser les dépendances. Contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation <major>.<minor>. <patch>. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste Intellisense (0.4.5 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole de signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente. Consultez le [référence d’analyseur NPM semver version](https://www.npmjs.com/package/semver) comme guide pour l’expressivité complète qui fournit des SemVer.
 
 3. Ajouter plus de dépendances pour charger des grunt-cotisation -\* packages pour *propre*, *jshint*, *concat*, *uglify*et *espion* comme indiqué dans l’exemple ci-dessous. Les versions n’avez pas besoin de correspondre à l’exemple.
 
@@ -129,16 +129,16 @@ Les packages pour chaque élément devDependencies télécharge, ainsi que tous 
 
 Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui définit, charge et enregistre les tâches que vous peuvent exécuter manuellement ou configurés pour s’exécuter automatiquement en fonction des événements dans Visual Studio.
 
-1.  Cliquez sur le projet et sélectionnez **Ajouter > nouvel élément**. Sélectionnez le **fichier de Configuration de Grunt** option, laissez le nom par défaut, *Gruntfile.js*, puis cliquez sur le **ajouter** bouton.
+1. Cliquez sur le projet et sélectionnez **Ajouter > nouvel élément**. Sélectionnez le **fichier de Configuration de Grunt** option, laissez le nom par défaut, *Gruntfile.js*, puis cliquez sur le **ajouter** bouton.
 
-    Le code initial inclut une définition de module et le `grunt.initConfig()` (méthode). Le `initConfig()` est utilisé pour définir les options pour chaque package, et le reste du module est chargés et inscrire des tâches.
+   Le code initial inclut une définition de module et le `grunt.initConfig()` (méthode). Le `initConfig()` est utilisé pour définir les options pour chaque package, et le reste du module est chargés et inscrire des tâches.
     
-    ```javascript
-    module.exports = function (grunt) {
-      grunt.initConfig({
-      });
-    };
-    ```
+   ```javascript
+   module.exports = function (grunt) {
+     grunt.initConfig({
+     });
+   };
+   ```
 
 2. À l’intérieur de la `initConfig()` (méthode), ajouter des options pour le `clean` comme indiqué dans l’exemple de tâches *Gruntfile.js* ci-dessous. La tâche clean accepte un tableau de chaînes de répertoire. Cette tâche supprime les fichiers de wwwroot/lib et supprime le répertoire entier/temp.
 
@@ -207,16 +207,16 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     > [!NOTE]
     > L’option «-W069 » est une erreur générée par jshint lorsque JavaScript utilise crochet de syntaxe pour attribuer une propriété au lieu de la notation par points, c'est-à-dire `Tastes["Sweet"]` au lieu de `Tastes.Sweet`. L’option désactive l’avertissement pour autoriser le reste du processus pour continuer.
 
-10.  Ajouter le `uglify` de tâches en utilisant le code ci-dessous.
+10. Ajouter le `uglify` de tâches en utilisant le code ci-dessous.
 
     La tâche minimise le *combined.js* fichier trouvé dans le répertoire temporaire et crée le fichier de résultats en suivant la convention d’affectation de noms standard wwwroot/lib  *\<nom de fichier\>. min.js*.
     
     ```javascript
     uglify: {
-      all: {
-        src: ['temp/combined.js'],
-        dest: 'wwwroot/lib/combined.min.js'
-      }
+     all: {
+       src: ['temp/combined.js'],
+       dest: 'wwwroot/lib/combined.min.js'
+     }
     },
     ```
 
@@ -241,7 +241,7 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     ![une fois toutes les tâches de l’Explorateur de solutions](using-grunt/_static/solution-explorer-after-all-tasks.png)
     
     > [!NOTE]
-    > Pour plus d’informations sur les options pour chaque package, visitez [https://www.npmjs.com/](https://www.npmjs.com/) et recherche le nom du package dans la zone de recherche dans la page principale. Par exemple, vous pouvez rechercher le package nettoyer grunt-cotisation pour obtenir un lien de la documentation qui décrit tous les paramètres.
+    > Pour plus d’informations sur les options pour chaque package, visitez [ https://www.npmjs.com/ ](https://www.npmjs.com/) et recherche le nom du package dans la zone de recherche dans la page principale. Par exemple, vous pouvez rechercher le package nettoyer grunt-cotisation pour obtenir un lien de la documentation qui décrit tous les paramètres.
 
 ### <a name="all-together-now"></a>Récapitulons
 
@@ -255,7 +255,7 @@ La nouvelle tâche s’affiche dans l’Explorateur d’exécuteur de tâche sou
 
 ![tâches de grunt d’alias](using-grunt/_static/alias-tasks.png)
 
-## <a name="watching-for-changes"></a>La surveillance des modifications
+## <a name="watching-for-changes"></a>Détection des changements
 
 A `watch` tâche surveille les fichiers et répertoires. L’observation déclenche automatiquement des tâches s’il détecte des modifications. Ajoutez le code ci-dessous pour initConfig pour surveiller les modifications apportées aux \*fichiers .js dans le répertoire TypeScript. Si un fichier JavaScript est modifié, `watch` s’exécutera la `all` tâche.
 
@@ -292,4 +292,4 @@ Grunt est un exécuteur de tâches puissant qui peut être utilisé pour automat
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-   * [Utilisation de Gulp](using-gulp.md)
+   * [Utiliser Gulp](using-gulp.md)

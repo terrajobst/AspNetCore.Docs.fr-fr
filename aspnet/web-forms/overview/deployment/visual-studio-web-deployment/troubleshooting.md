@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : dépannage | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : dépannage | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/01/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: a7a66e7e67539e4b075da6fc054a7b53984b6ce1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 15bda09c59afaf9e5449c68c5206bb28de245541
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : résolution des problèmes
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -292,8 +292,8 @@ Code tout d’abord tente de créer la base de données, mais l’application\_d
 
 Vous avez été correctement à l’aide d’un seul clic publier pour déployer votre application et puis vous commencez à recevoir cette erreur :
 
-Échec de la tâche de déploiement Web. (Impossible de traiter la demande vers une URL de l’agent distant 'https://serverurl.com/msdeploy.axd?site=sitename').  
- N’a pas pu terminer la demande d’URL de l’agent distant 'https://url/msdeploy.axd?site=sitename'.  
+Échec de la tâche de déploiement Web. (Impossible de traiter la demande à l’URL de l’agent distant '<https://serverurl.com/msdeploy.axd?site=sitename>'.)  
+ Impossible de traiter la demande à l’URL de l’agent distant '<https://url/msdeploy.axd?site=sitename>'.  
 La demande a été abandonnée : la demande a été annulée.  
 Objet COM qui a été séparé de son RCW sous-jacent ne peut pas être utilisé.
 
@@ -309,7 +309,7 @@ Publication échoue avec une erreur indiquant que vous n’avez pas autorité po
 
 ### <a name="possible-cause-and-solution"></a>Cause possible et solution
 
-Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si vous savez que les autorisations par défaut sur les dossiers du site sont correctes et n’avez pas besoin être défini, vous désactivez ce comportement en ajoutant  **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;**  au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx).
+Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si vous savez que les autorisations par défaut sur les dossiers du site sont correctes et n’avez pas besoin être défini, vous désactivez ce comportement en ajoutant **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx).
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>Erreurs d’accès refusé lors de l’Application tente d’écrire dans un dossier d’Application
 
@@ -319,7 +319,7 @@ Erreurs de votre application lorsqu’il tente créer ou modifier un fichier dan
 
 ### <a name="possible-cause-and-solution"></a>Cause possible et solution
 
-Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si votre application requiert un accès en écriture à un sous-dossier, vous pouvez définir des autorisations pour ce dossier comme indiqué dans la définition des autorisations de dossier et le déploiement vers les didacticiels de l’environnement de Production de cette série. Si votre application requiert un accès en écriture au dossier racine du site, vous devez l’empêcher de la définition de l’accès en lecture seule sur le dossier racine en ajoutant  **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;**  au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx).
+Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si votre application requiert un accès en écriture à un sous-dossier, vous pouvez définir des autorisations pour ce dossier comme indiqué dans la définition des autorisations de dossier et le déploiement vers les didacticiels de l’environnement de Production de cette série. Si votre application requiert un accès en écriture au dossier racine du site, vous devez l’empêcher de la définition de l’accès en lecture seule sur le dossier racine en ajoutant **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx).
 
 <a id="aspnet45error"></a>
 
@@ -377,5 +377,5 @@ Le contenu demandé semble être un script et ne sera pas traité par le Gestion
 
 ASP.NET 4.5 ne peut pas être installé sur votre ordinateur. Consultez les étapes décrites dans le déploiement vers IIS comme un didacticiel de l’environnement de Test de cette série qui explique comment installer ASP.NET 4.5.
 
->[!div class="step-by-step"]
-[Précédent](deploying-extra-files.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-extra-files.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
-title: "Utilisation du contrôle ComboBox (VB) | Documents Microsoft"
+title: Utilisation du contrôle ComboBox (VB) | Microsoft Docs
 author: microsoft
-description: "Zone de liste déroulante est un contrôle ASP.NET AJAX qui combine la souplesse d’une zone de texte avec une liste d’options à partir de laquelle les utilisateurs peuvent choisir."
+description: Zone de liste déroulante est un contrôle ASP.NET AJAX qui combine la souplesse d’une zone de texte avec une liste d’options à partir de laquelle les utilisateurs peuvent choisir.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 54e36cf275dcc4b85253dc3b8bb5b0dbb027af77
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e42844e326cb190502a51c5a85195b4752d7e827
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-combobox-control-vb"></a>Utilisation du contrôle ComboBox (VB)
 ====================
@@ -168,9 +168,9 @@ La propriété ComboBox AutoCompleteMode vous permet de spécifier que se passe-
 **La figure 10**: ComboBox le suggère et ajoute ([cliquez pour afficher l’image en taille réelle](how-do-i-use-the-combobox-control-vb/_static/image20.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris à utiliser le contrôle de zone de liste déroulante pour afficher un ensemble fixe d’éléments. Nous lié le contrôle de zone de liste déroulante à la fois un ensemble d’éléments de statique et à une table de base de données. Enfin, vous avez appris comment modifier le comportement du contrôle ComboBox en définissant ses propriétés DropDownStyle et que AutoCompleteMode.
 
->[!div class="step-by-step"]
-[Précédent](how-do-i-use-the-combobox-control-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](how-do-i-use-the-combobox-control-cs.md)

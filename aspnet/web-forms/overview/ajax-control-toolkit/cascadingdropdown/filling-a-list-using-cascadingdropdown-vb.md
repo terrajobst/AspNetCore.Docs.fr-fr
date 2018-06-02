@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb
-title: "Remplissage d’une liste à l’aide de CascadingDropDown (VB) | Documents Microsoft"
+title: Remplissage d’une liste à l’aide de CascadingDropDown (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth..."
+description: Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/filling-a-list-using-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1c5cb23be4366365c73ce4774e6a53e452e2a6c0
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e488a30443970d5e2ce825abd96d8e4a027585d1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="filling-a-list-using-cascadingdropdown-vb"></a>Remplissage d’une liste à l’aide de CascadingDropDown (VB)
 ====================
@@ -68,6 +68,6 @@ Chargement de la page dans le navigateur déclenche la liste à remplir avec les
 
 La liste est remplie automatiquement ([cliquez pour afficher l’image en taille réelle](filling-a-list-using-cascadingdropdown-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](using-auto-postback-with-cascadingdropdown-cs.md)
-[Suivant](using-cascadingdropdown-with-a-database-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-auto-postback-with-cascadingdropdown-cs.md)
+> [Suivant](using-cascadingdropdown-with-a-database-vb.md)

@@ -1,7 +1,7 @@
 ---
-title: Performances
+title: Performances dans ASP.NET Core
 author: ardalis
-description: 
+description: Découvrez les rubriques relatives aux performances des applications ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,16 +9,16 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/index
-ms.openlocfilehash: ac8b1002ad30b53cd14ac4be3a65d36a83fedf50
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 7060c9a99f08bae24b06f963e082ff8ee791202e
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="performance"></a>Performances
+# <a name="performance-in-aspnet-core"></a>Performances dans ASP.NET Core
 
-*   [Mise en cache](caching/index.md)
-    *   [Mise en cache en mémoire](caching/memory.md)
+*   [Mettre en cache des réponses](caching/index.md)
+    *   [Mettre en cache en mémoire](caching/memory.md)
     *   [Utiliser un cache distribué](caching/distributed.md)
     *   [Mise en cache des réponses](caching/response.md)
 *   [Intergiciel (middleware) de compression des réponses](response-compression.md)

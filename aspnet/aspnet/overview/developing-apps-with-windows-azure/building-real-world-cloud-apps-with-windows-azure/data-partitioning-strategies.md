@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
-title: "Données (génération d’applications Cloud du monde réel avec Azure) de stratégies de partitionnement | Documents Microsoft"
+title: Données (génération d’applications Cloud du monde réel avec Azure) de stratégies de partitionnement | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 513837a7-cfea-4568-a4e9-1f5901245d24
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-partitioning-strategies
 msc.type: authoredcontent
-ms.openlocfilehash: dca016cb6293a346f5622cc272e510b182c86d58
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9ff7f37a03d8d3dfab50e8007a6645bb0d88f453
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-partitioning-strategies-building-real-world-cloud-apps-with-azure"></a>Données (génération d’applications Cloud du monde réel avec Azure) de stratégies de partitionnement
 ====================
@@ -113,6 +113,6 @@ Exemple de code :
 
 - [Cloud Service Fundamentals dans Windows Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Exemple d’application qui inclut une base de données partitionnée. Pour obtenir une description du schéma de partitionnement implémentée, consultez [DAL – partitionnement de SGBDR](https://blogs.msdn.com/b/windowsazure/archive/2013/09/05/dal-sharding-of-rdbms.aspx) sur le blog de Windows Azure.
 
->[!div class="step-by-step"]
-[Précédent](data-storage-options.md)
-[Suivant](unstructured-blob-storage.md)
+> [!div class="step-by-step"]
+> [Précédent](data-storage-options.md)
+> [Suivant](unstructured-blob-storage.md)

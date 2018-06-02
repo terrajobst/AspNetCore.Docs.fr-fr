@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs
-title: "Création de procédures stockées et fonctions définies par l’utilisateur avec le Code (c#) managé | Documents Microsoft"
+title: Création de procédures stockées et fonctions définies par l’utilisateur avec le Code (c#) managé | Documents Microsoft
 author: rick-anderson
-description: "Microsoft SQL Server 2005 s’intègre avec le Common Language Runtime .NET pour permettre aux développeurs de créer des objets de base de données via le code managé. Ce didacticiel..."
+description: Microsoft SQL Server 2005 s’intègre avec le Common Language Runtime .NET pour permettre aux développeurs de créer des objets de base de données via le code managé. Ce didacticiel...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: be3e3d61a6567da3c2cd696c01661146f2da7131
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5a860c8ab6ad7ff04de2175900491d532db782d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-c"></a>Création de procédures stockées et fonctions définies par l’utilisateur avec du Code managé (c#)
 ====================
@@ -31,7 +31,7 @@ par [Scott Mitchell](https://twitter.com/ScottOnWriting)
 
 Utilisent des bases de données comme s de Microsoft SQL Server 2005 le [Transact-Structured Query Language (T-SQL)](http://en.wikipedia.org/wiki/Transact-SQL) pour l’insertion, la modification et la récupération des données. La plupart des systèmes de base de données incluent des constructions de regroupement d’une série d’instructions SQL qui peut ensuite être exécutée en tant qu’une seule unité réutilisable. Les procédures stockées sont un exemple. Un autre est *les fonctions définies par l’utilisateur*(UDF), une construction qui nous allons examiner plus en détail à l’étape 9.
 
-Fondamentalement, SQL est conçu pour l’utilisation des jeux de données. Le `SELECT`, `UPDATE`, et `DELETE` par nature, les instructions s’appliquent à tous les enregistrements dans la table correspondante et sont limitées uniquement par leur `WHERE` clauses. Il existe encore des nombreuses fonctionnalités de langage conçues pour travailler avec un enregistrement à la fois et de manipulation des données scalaires. [`CURSOR`s](http://www.sqlteam.com/item.asp?ItemID=553) permettant à un ensemble d’enregistrements à être bouclée via un à la fois. Comme les fonctions de manipulation de chaîne `LEFT`, `CHARINDEX`, et `PATINDEX` fonctionnent avec des données scalaires. SQL inclut également des instructions de flux de contrôle comme `IF` et `WHILE`.
+Fondamentalement, SQL est conçu pour l’utilisation des jeux de données. Le `SELECT`, `UPDATE`, et `DELETE` par nature, les instructions s’appliquent à tous les enregistrements dans la table correspondante et sont limitées uniquement par leur `WHERE` clauses. Il existe encore des nombreuses fonctionnalités de langage conçues pour travailler avec un enregistrement à la fois et de manipulation des données scalaires. [`CURSOR` s](http://www.sqlteam.com/item.asp?ItemID=553) permettant à un ensemble d’enregistrements à être bouclée via un à la fois. Comme les fonctions de manipulation de chaîne `LEFT`, `CHARINDEX`, et `PATINDEX` fonctionnent avec des données scalaires. SQL inclut également des instructions de flux de contrôle comme `IF` et `WHILE`.
 
 Antérieures à Microsoft SQL Server 2005, les procédures stockées et les fonctions peut uniquement être définies comme une collection d’instructions T-SQL. SQL Server 2005, cependant, a été conçu pour permettre l’intégration avec les [Common Language Runtime (CLR)](https://msdn.microsoft.com/netframework/aa497266.aspx), qui est le runtime utilisé par tous les assemblys .NET. Par conséquent, les procédures stockées et les UDF dans une base de données SQL Server 2005 peuvent être créés à l’aide de code managé. Autrement dit, vous pouvez créer une procédure stockée ou fonction en tant que méthode dans une classe c#. Ainsi, ces procédures stockées et les UDF pour utiliser la fonctionnalité dans le .NET Framework et à partir de vos propres classes personnalisées.
 
@@ -420,12 +420,12 @@ Le code commence par créer un `SqlMoney` instance nommée `inventoryValue` qui 
 
 ## <a name="step-11-deploying-the-managed-udf"></a>Étape 11 : Déploiement de l’UDF géré
 
-Maintenant que que l’UDF managé a été créé, vous êtes prêt à déployer dans la base de données Northwind. Comme nous l’avons vu à l’étape 4, les objets gérés dans un projet SQL Server sont déployés en cliquant sur le nom du projet dans l’Explorateur de solutions et en choisissant l’option de déploiement dans le menu contextuel.
+Maintenant que l’UDF managé a été créé, nous sommes prêts à déployer dans la base de données Northwind. Comme nous l’avons vu à l’étape 4, les objets gérés dans un projet SQL Server sont déployés en cliquant sur le nom du projet dans l’Explorateur de solutions et en choisissant l’option de déploiement dans le menu contextuel.
 
 Une fois que vous avez déployé le projet, retournez à SQL Server Management Studio et actualisez le dossier de fonctions scalaires. Vous devez maintenant voir deux entrées :
 
-- `dbo.udf_ComputeInventoryValue`-l’UDF T-SQL créé à l’étape 9, et
-- `dbo.udf ComputeInventoryValue_Managed`-l’UDF géré créé à l’étape 10 que vous venez de déployer.
+- `dbo.udf_ComputeInventoryValue` -l’UDF T-SQL créé à l’étape 9, et
+- `dbo.udf ComputeInventoryValue_Managed` -l’UDF géré créé à l’étape 10 que vous venez de déployer.
 
 Pour tester cette UDF géré, exécutez la requête suivante à partir de Management Studio :
 
@@ -569,12 +569,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été S ren Jacob Lauritsen. En plus d’étudier de cet article, le S ren également créé le projet Visual c# Express inclus dans ce téléchargement de l’article %s pour compiler manuellement les objets de base de données managés. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](debugging-stored-procedures-cs.md)
-[Suivant](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](debugging-stored-procedures-cs.md)
+> [Suivant](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb.md)

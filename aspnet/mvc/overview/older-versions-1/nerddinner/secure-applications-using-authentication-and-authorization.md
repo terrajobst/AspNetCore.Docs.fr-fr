@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
-title: "Sécuriser des Applications à l’aide de l’authentification et autorisation | Documents Microsoft"
+title: Sécuriser des Applications à l’aide de l’authentification et autorisation | Documents Microsoft
 author: microsoft
-description: "Étape 9 montre comment ajouter l’authentification et l’autorisation pour sécuriser notre application NerdDinner, afin que les utilisateurs ont besoin inscrire et de la connexion au site pour créer..."
+description: Étape 9 montre comment ajouter l’authentification et l’autorisation pour sécuriser notre application NerdDinner, afin que les utilisateurs ont besoin inscrire et de la connexion au site pour créer...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: a23b2cf4d1728624698c0db49c25ea7efd3af67d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4a9b1e6d7d453bd8dc5a61b1f1cec4617af7d693
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="secure-applications-using-authentication-and-authorization"></a>Sécuriser des Applications à l’aide de l’authentification et autorisation
 ====================
@@ -155,6 +155,6 @@ Nous pouvons mettre à jour notre modèle d’affichage pour conditionnellement 
 
 Nous allons maintenant voir comment nous pouvons activer les utilisateurs authentifiés à RSVP pour préparés à l’aide d’AJAX.
 
->[!div class="step-by-step"]
-[Précédent](implement-efficient-data-paging.md)
-[Suivant](use-ajax-to-deliver-dynamic-updates.md)
+> [!div class="step-by-step"]
+> [Précédent](implement-efficient-data-paging.md)
+> [Suivant](use-ajax-to-deliver-dynamic-updates.md)

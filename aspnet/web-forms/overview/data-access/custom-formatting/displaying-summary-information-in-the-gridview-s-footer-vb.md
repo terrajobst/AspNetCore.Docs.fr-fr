@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb
-title: "Affichage des informations de synthèse dans pied de page du GridView (VB) | Documents Microsoft"
+title: Affichage des informations de synthèse dans pied de page du GridView (VB) | Documents Microsoft
 author: rick-anderson
-description: "Informations de résumé sont souvent affichées en bas du rapport dans une ligne de résumé. Le contrôle GridView peut inclure une ligne de pied de page dans des cellules dont nous pouvons pr..."
+description: Informations de résumé sont souvent affichées en bas du rapport dans une ligne de résumé. Le contrôle GridView peut inclure une ligne de pied de page dans des cellules dont nous pouvons pr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e5b7e39a44d43a857c62842ea3e1dddcacf05c9b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d9a1a3f3c680f367395f984254da6cdcdd3c08d4
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="displaying-summary-information-in-the-gridviews-footer-vb"></a>Affichage des informations de synthèse dans pied de page du GridView (VB)
 ====================
@@ -101,7 +101,7 @@ Configurer l’ObjectDataSource afin qu’il appelle le `ProductsBLL` la classe 
 
 [![Obtenir la valeur du paramètre categoryID dans la liste déroulante de catégories sélectionnées](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image23.png)](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image22.png)
 
-**Figure 8**: obtenir le  *`categoryID`*  valeur du paramètre dans la liste déroulante de catégories sélectionné ([cliquez pour afficher l’image en taille réelle](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image24.png))
+**Figure 8**: obtenir le *`categoryID`* valeur du paramètre dans la liste déroulante de catégories sélectionné ([cliquez pour afficher l’image en taille réelle](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image24.png))
 
 
 Après avoir terminé l’Assistant GridView aura un BoundField pour chacune des propriétés de produit. Nous allons nettoyer ces BoundFields de sorte que seuls les `ProductName`, `UnitPrice`, `UnitsInStock`, et `UnitsOnOrder` BoundFields sont affichés. Vous pouvez ajouter des paramètres au niveau du champ à la BoundFields restantes (telles que la mise en forme le `UnitPrice` sous forme de devise). Après avoir apporté ces modifications, la balise déclarative de GridView doit ressembler à ce qui suit :
@@ -114,7 +114,7 @@ Après avoir terminé l’Assistant GridView aura un BoundField pour chacune des
 
 [![Obtenir la valeur du paramètre categoryID dans la liste déroulante de catégories sélectionnées](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image26.png)](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image25.png)
 
-**Figure 9**: obtenir le  *`categoryID`*  valeur du paramètre dans la liste déroulante de catégories sélectionné ([cliquez pour afficher l’image en taille réelle](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image27.png))
+**Figure 9**: obtenir le *`categoryID`* valeur du paramètre dans la liste déroulante de catégories sélectionné ([cliquez pour afficher l’image en taille réelle](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image27.png))
 
 
 ## <a name="step-2-displaying-a-footer-in-the-gridview"></a>Étape 2 : Afficher un pied de page dans le contrôle GridView
@@ -177,10 +177,10 @@ Créer un `RowDataBound` Gestionnaire d’événements pour le contrôle GridVie
 
 Pour gérer un cumul, nous devons définir des variables en dehors de la portée du Gestionnaire d’événements. Créez les quatre variables au niveau des pages suivantes :
 
-- `_totalUnitPrice`, de type`Decimal`
-- `_totalNonNullUnitPriceCount`, de type`Integer`
-- `_totalUnitsInStock`, de type`Integer`
-- `_totalUnitsOnOrder`, de type`Integer`
+- `_totalUnitPrice`, de type `Decimal`
+- `_totalNonNullUnitPriceCount`, de type `Integer`
+- `_totalUnitsInStock`, de type `Integer`
+- `_totalUnitsOnOrder`, de type `Integer`
 
 Ensuite, écrivez le code pour incrémenter de ces trois variables pour chaque ligne de données a rencontré dans le `RowDataBound` Gestionnaire d’événements.
 
@@ -211,7 +211,7 @@ Figure 13 illustre le rapport une fois ce code a été ajouté. Notez comment le
 **Figure 13**: ligne de pied de page du GridView a maintenant une couleur d’arrière-plan tirent ([cliquez pour afficher l’image en taille réelle](displaying-summary-information-in-the-gridview-s-footer-vb/_static/image39.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Affichage des données de synthèse est une exigence courante de rapport, et le contrôle GridView facilite l’utilisation d’inclure ces informations dans sa ligne de pied de page. La ligne de pied de page s’affiche lors du contrôle GridView `ShowFooter` est définie sur `True` et peut avoir le texte dans ses cellules définies par programme via le `RowDataBound` Gestionnaire d’événements. Calculer les données de synthèse soit faire en interrogeant de nouveau la base de données ou à l’aide de code dans la classe code-behind de la page ASP.NET pour les données de synthèse de calcul par programmation.
 
@@ -221,7 +221,7 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](using-the-formview-s-templates-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-the-formview-s-templates-vb.md)

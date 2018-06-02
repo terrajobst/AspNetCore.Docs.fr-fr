@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/creating-custom-html-helpers-vb
-title: "Création de programmes d’assistance HTML personnalisé (VB) | Documents Microsoft"
+title: Création de programmes d’assistance HTML personnalisé (VB) | Documents Microsoft
 author: microsoft
-description: "L’objectif de ce didacticiel est de montrer comment vous pouvez créer des applications auxiliaires HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti du programme d’assistance HTML..."
+description: L’objectif de ce didacticiel est de montrer comment vous pouvez créer des applications auxiliaires HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti du programme d’assistance HTML...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-custom-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e389a03228995ce0a6926a53af38f26ad51372d5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 6980026e2653eacb71697f9b34def9bc38638726
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-custom-html-helpers-vb"></a>Création de programmes d’assistance HTML personnalisé (VB)
 ====================
@@ -57,7 +57,7 @@ Par exemple, considérez le formulaire dans la liste 1. Ce formulaire est affich
 **Figure 01**: Page rendue avec des programmes d’assistance HTML ([cliquez pour afficher l’image en taille réelle](creating-custom-html-helpers-vb/_static/image3.png))
 
 
-**La liste 1 :`Views\Home\Index.aspx`**
+**La liste 1 : `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample1.aspx)]
 
@@ -72,7 +72,7 @@ Le `Html.TextBox()` méthodes d’assistance sont utilisés dans la liste 1 pour
 
 L’infrastructure ASP.NET MVC contient un petit ensemble de programmes d’assistance. Très probablement, vous devez étendre l’infrastructure MVC avec des programmes d’assistance HTML personnalisé. Dans le reste de ce didacticiel, vous découvrez des deux méthodes de création des programmes d’assistance HTML personnalisé.
 
-**Liste 2 :`Index.aspx Source`**
+**Liste 2 : `Index.aspx Source`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample2.aspx)]
 
@@ -80,7 +80,7 @@ L’infrastructure ASP.NET MVC contient un petit ensemble de programmes d’assi
 
 Le moyen le plus simple pour créer un programme d’assistance HTML nouvelle est pour créer une méthode partagée qui retourne une chaîne. Par exemple, imaginez que vous décidez de créer un nouveau programme d’assistance HTML qui effectue le rendu HTML `<label>` balise. Vous pouvez utiliser la classe dans la liste 2 pour restituer un `<label>`.
 
-**Liste 2 :`Helpers\LabelHelper.vb`**
+**Liste 2 : `Helpers\LabelHelper.vb`**
 
 [!code-vb[Main](creating-custom-html-helpers-vb/samples/sample3.vb)]
 
@@ -88,7 +88,7 @@ Il n’a rien de spécial sur la classe dans la liste 2. Le `Label()` méthode r
 
 La vue Index modifiée dans la liste 3 utilise le `LabelHelper` pour le rendu HTML `<label>` balises. Notez que la vue inclut une `<%@ imports %>` directive qui importe l’espace de noms Application1.Helpers.
 
-**Liste 2 :`Views\Home\Index2.aspx`**
+**Liste 2 : `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample4.aspx)]
 
@@ -100,7 +100,7 @@ Le module Visual Basic dans la liste 3 ajoute une méthode d’extension nommée
 
 En second lieu, notez que le premier paramètre de la `Label()` méthode représente la `HtmlHelper` classe. Le premier paramètre d’une méthode d’extension indique la classe qui étend de la méthode d’extension.
 
-**La liste 3 :`Helpers\LabelExtensions.vb`**
+**La liste 3 : `Helpers\LabelExtensions.vb`**
 
 [!code-vb[Main](creating-custom-html-helpers-vb/samples/sample5.vb)]
 
@@ -114,16 +114,16 @@ Après avoir créé une méthode d’extension et que vous générez votre appli
 
 La vue Index modifiée sur la liste 4 utilise la méthode d’extension Html.Label() à restituer tous ses &lt;étiquette&gt; balises.
 
-**La liste 4 –`Views\Home\Index3.aspx`**
+**La liste 4 – `Views\Home\Index3.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample6.aspx)]
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris à deux méthodes de création des programmes d’assistance HTML personnalisé. Tout d’abord, vous avez appris à créer un personnalisé `Label()` programme d’assistance HTML en créant une méthode partagée qui retourne une chaîne. Ensuite, vous avez appris à créer un personnalisé `Label()` méthode du programme d’assistance HTML en créant une méthode d’extension sur la `HtmlHelper` classe.
 
 Dans ce didacticiel, I se concentre sur la création d’une méthode de programme d’assistance HTML extrêmement simple. Notez qu’une application d’assistance HTML peuvent être aussi complexe que vous le souhaitez. Vous pouvez générer des programmes d’assistance HTML qui restituent contenu riche, tels que les vues de l’arborescence, les menus ou les tables de base de données.
 
->[!div class="step-by-step"]
-[Précédent](asp-net-mvc-views-overview-vb.md)
-[Suivant](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](asp-net-mvc-views-overview-vb.md)
+> [Suivant](using-the-tagbuilder-class-to-build-html-helpers-vb.md)

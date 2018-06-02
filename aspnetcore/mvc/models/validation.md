@@ -1,21 +1,21 @@
 ---
-title: "Validation de modèle dans ASP.NET MVC de base"
+title: Validation de modèle dans ASP.NET Core MVC
 author: rachelappel
-description: "En savoir plus sur la validation de modèle dans ASP.NET MVC de base."
-ms.author: riande
+description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC.
 manager: wpickett
+ms.author: riande
 ms.date: 12/18/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/models/validation
-ms.openlocfilehash: 56928c61ae47d313145afadf3e0fa93a078b681b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 1ab19fad90eab9f2da58b4d62615a85d71894218
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>Introduction à la validation de modèle dans ASP.NET MVC de base
+# <a name="introduction-to-model-validation-in-aspnet-core-mvc"></a>Introduction à la validation de modèle dans ASP.NET Core MVC
 
 Par [Rachel Appel](https://github.com/rachelappel)
 

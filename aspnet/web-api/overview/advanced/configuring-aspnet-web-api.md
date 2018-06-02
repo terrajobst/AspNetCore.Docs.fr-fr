@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/configuring-aspnet-web-api
-title: "Configuration d’ASP.NET Web API 2 | Documents Microsoft"
+title: Configuration d’ASP.NET Web API 2 | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/configuring-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: f9b471fe2afdce278869a2e4d9b693a78030324b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: de2396710fb9434c84bf14a2faa37b98154f34d8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-aspnet-web-api-2"></a>Configuration d’ASP.NET Web API 2
 ====================
@@ -38,7 +38,7 @@ Paramètres de configuration d’API Web sont définies dans le [HttpConfigurati
 | Membre | Description |
 | --- | --- |
 | **DependencyResolver** | Permet l’injection de dépendances pour les contrôleurs. Consultez [à l’aide de la résolution des dépendances Web API](dependency-injection.md). |
-| **Filtres** | Filtres d’action. |
+| **Les filtres** | Filtres d’action. |
 | **Formatters** | [Formateurs de type de média](../formats-and-model-binding/media-formatters.md). |
 | **IncludeErrorDetailPolicy** | Spécifie si le serveur doit inclure les détails de l’erreur, telles que les messages d’exception et des traces de pile, dans les messages de réponse HTTP. Consultez [IncludeErrorDetailPolicy](https://msdn.microsoft.com/library/system.web.http.includeerrordetailpolicy(v=vs.108)). |
 | **Initialiseur** | Une fonction qui effectue l’initialisation finale de la **HttpConfiguration**. |
@@ -120,13 +120,13 @@ Services d’Instance unique
 Services de plusieurs instances
 
 
-| Service | Description |
-| --- | --- |
-| **IFilterProvider** | Retourne une liste de filtres pour une action de contrôleur. |
-| **ModelBinderProvider** | Retourne un classeur de modèles pour un type donné. |
-| **ModelMetadataProvider** | Fournit des métadonnées pour un modèle. |
-| **ModelValidatorProvider** | Fournit un validateur pour un modèle. |
-| **ValueProviderFactory** | Crée un fournisseur de valeur. Pour plus d’informations, voir blog de Mike Stall [la création d’un fournisseur de valeur personnalisée dans WebAPI](https://blogs.msdn.com/b/jmstall/archive/2012/04/23/how-to-create-a-custom-value-provider-in-webapi.aspx) |.
+|                 Service                 |                                                                                                              Description                                                                                                               |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    <strong>IFilterProvider</strong>     |                                                                                           Retourne une liste de filtres pour une action de contrôleur.                                                                                           |
+|  <strong>ModelBinderProvider</strong>   |                                                                                                Retourne un classeur de modèles pour un type donné.                                                                                                |
+| <strong>ModelMetadataProvider</strong>  |                                                                                                     Fournit des métadonnées pour un modèle.                                                                                                     |
+| <strong>ModelValidatorProvider</strong> |                                                                                                   Fournit un validateur pour un modèle.                                                                                                    |
+|  <strong>ValueProviderFactory</strong>  | Crée un fournisseur de valeur. Pour plus d’informations, voir blog de Mike Stall [la création d’un fournisseur de valeur personnalisée dans WebAPI](https://blogs.msdn.com/b/jmstall/archive/2012/04/23/how-to-create-a-custom-value-provider-in-webapi.aspx) |
 
 Pour ajouter une implémentation personnalisée à un service à plusieurs instances, appelez **ajouter** ou **insérer** sur la **Services** collection :
 

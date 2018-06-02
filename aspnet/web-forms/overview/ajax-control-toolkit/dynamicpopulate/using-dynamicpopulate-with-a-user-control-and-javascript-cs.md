@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
-title: "À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#) | Documents Microsoft"
+title: À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t..."
+description: Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3f78da3898d44cc2cf1db6623ebcaf6a73ebbf3e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: cced645733375de7ab6235efa46b8d20ed262e50
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-dynamicpopulate-with-a-user-control-and-javascript-c"></a>À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#)
 ====================
@@ -67,13 +67,13 @@ Enfin, ajoutez le contrôle utilisateur à la page. Il vous suffit de définir s
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-cs/samples/sample8.aspx)]
 
-Et voilà ! La page se comporte comme prévu : un utilisateur clique sur des boutons radio, le contrôle de la boîte à outils appelle le service web et affiche la date actuelle au format souhaité.
+Et voilà ! La page se comporte comme prévu : un utilisateur clique sur l’un des boutons radio, le contrôle de la boîte à outils appelle le service web et affiche la date actuelle au format souhaité.
 
 
 [![Les boutons de case d’option se trouvent dans un contrôle utilisateur](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image1.png)
 
 Les boutons de case d’option se trouvent dans un contrôle utilisateur ([cliquez pour afficher l’image en taille réelle](using-dynamicpopulate-with-a-user-control-and-javascript-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](dynamically-populating-a-control-using-javascript-code-cs.md)
-[Suivant](dynamically-populating-a-control-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](dynamically-populating-a-control-using-javascript-code-cs.md)
+> [Suivant](dynamically-populating-a-control-vb.md)

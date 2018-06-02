@@ -2,7 +2,7 @@
 uid: mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
 title: Creating Page Layouts with View Master Pages (VB) | Documents Microsoft
 author: microsoft
-description: "Dans ce didacticiel, vous allez apprendre à créer une disposition commune pour plusieurs pages dans votre application en tirant parti de la vue de pages maîtres. Vous pouvez utiliser un..."
+description: Dans ce didacticiel, vous allez apprendre à créer une disposition commune pour plusieurs pages dans votre application en tirant parti de la vue de pages maîtres. Vous pouvez utiliser un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5466ea8a33bd2ccfe36c0f01b6b474bbb8d540a3
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5208cedd8d24a290a0227bdcbaa84ae6210cd969
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-page-layouts-with-view-master-pages-vb"></a>Creating Page Layouts with View Master Pages (VB)
 ====================
@@ -51,7 +51,7 @@ Une page maître de vue ressemble fortement à une vue ASP.NET MVC standard. Tou
 
 Par exemple, la page maître de vue dans la liste 1 définit une disposition à deux colonnes. Il contient deux `<contentplaceholder>` balises. Un `<ContentPlaceHolder>` pour chaque colonne.
 
-**La liste 1 :`Views\Shared\Site.master`**
+**La liste 1 : `Views\Shared\Site.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample1.aspx)]
 
@@ -83,7 +83,7 @@ Après avoir cliqué sur le bouton Ajouter, une nouvelle boîte de dialogue s’
 
 Après avoir créé une nouvelle page de contenu de vue en fonction de la page maître Site.master, vous obtenez le fichier dans la liste 2.
 
-**Liste 2 :`Views\Home\Index.aspx`**
+**Liste 2 : `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample2.aspx)]
 
@@ -97,7 +97,7 @@ Vous n’avez pas besoin de remplacer chaque `<asp:ContentPlaceHolder>` étiquet
 
 Par exemple, la vue Index modifiée dans la liste 3 contient uniquement deux `<asp:Content>` balises. Chacun de la `<asp:Content>` balises inclut du texte.
 
-**La liste 3 :`Views\Home\Index.aspx (modified)`**
+**La liste 3 : `Views\Home\Index.aspx (modified)`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample3.aspx)]
 
@@ -127,7 +127,7 @@ Est une exigence importante répondant à une page de vue maître doit afin que 
 
 Une autre approche de la modification du contenu de la page maître à partir d’une page de contenu vue individuelle consiste à encapsuler la région que vous souhaitez modifier dans un `<asp:ContentPlaceHolder>` balise. Par exemple, imaginez que vous souhaitez modifier le titre, mais également les balises meta, rendues par une page de vue maître. La page de vue maître dans la liste 4 contient un `<asp:ContentPlaceHolder>` marquer son `<head>` balise.
 
-**La liste 4 –`Views\Shared\Site2.master`**
+**La liste 4 – `Views\Shared\Site2.master`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample5.aspx)]
 
@@ -135,14 +135,14 @@ Notez que le `<asp:ContentPlaceHolder>` balise sur la liste 4 inclut le contenu 
 
 La page d’affichage de contenu dans la liste 5 remplace le `<asp:ContentPlaceHolder>` balise afin d’afficher un titre personnalisé et des balises meta personnalisées.
 
-**La liste 5 :`Views\Home\Index2.aspx`**
+**La liste 5 : `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample6.aspx)]
 
-### <a name="summary"></a>Résumé
+### <a name="summary"></a>Récapitulatif
 
 Ce didacticiel vous a fourni avec une présentation générale pour afficher les pages maîtres et les pages de contenu. Vous avez appris comment faire pour créer des pages maîtres nouvelle vue et afficher les pages de contenu basés sur les. Aussi, nous avons examiné comment vous pouvez modifier le contenu d’une page maître de la vue à partir d’une page de contenu vue particulière.
 
->[!div class="step-by-step"]
-[Précédent](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
-[Suivant](passing-data-to-view-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
+> [Suivant](passing-data-to-view-master-pages-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages
-title: "Déploiement de Packages Web | Documents Microsoft"
+title: Déploiement de Packages Web | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment publier des packages de déploiement web à un serveur distant à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web..."
+description: Cette rubrique décrit comment publier des packages de déploiement web à un serveur distant à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/deploying-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: cd2bfa07262155b68ac4605fc7e9748d276d3193
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5d3af0fdcc6e7ae20194ba658e0cf72ad22c1234
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-web-packages"></a>Packages de déploiement Web
 ====================
@@ -43,10 +43,10 @@ par [Jason Lee](https://github.com/jrjlee)
 
 En cours d’exécution le [*nom du projet*]*. deploy.cmd* fichier est le moyen le plus simple pour déployer un package web. En particulier, à l’aide de la *. deploy.cmd* fichier offre les avantages suivants par rapport à l’aide de MSDeploy.exe directement :
 
-- Vous n’avez pas besoin de spécifier l’emplacement du package de déploiement web & #x 2014 ; le *. deploy.cmd* fichier sait déjà où il est.
-- Vous n’avez pas besoin de spécifier l’emplacement de la *SetParameters.xml* fichier & #x 2014 ; le *. deploy.cmd* fichier sait déjà où il est.
-- Vous n’avez pas besoin de spécifier la source et les fournisseurs de MSDeploy destination & #x 2014 ; le *. deploy.cmd* fichier connaît déjà les valeurs à utiliser.
-- Vous n’avez pas besoin de spécifier des paramètres d’opération MSDeploy & #x 2014 ; le *. deploy.cmd* fichier ajoute automatiquement les valeurs couramment requises à la commande MSDeploy.exe.
+- Vous n’avez pas besoin de spécifier l’emplacement du package de déploiement web&#x2014;le *. deploy.cmd* fichier sait déjà où il est.
+- Vous n’avez pas besoin de spécifier l’emplacement de la *SetParameters.xml* fichier&#x2014;le *. deploy.cmd* fichier sait déjà où il est.
+- Vous n’avez pas besoin de spécifier des fournisseurs de MSDeploy source et de destination&#x2014;le *. deploy.cmd* fichier connaît déjà les valeurs à utiliser.
+- Vous n’avez pas besoin de spécifier les paramètres d’opération MSDeploy&#x2014;le *. deploy.cmd* fichier ajoute automatiquement les valeurs couramment requises à la commande MSDeploy.exe.
 
 Avant d’utiliser le *. deploy.cmd* fichier pour déployer un package web, vous devez vous assurer que :
 
@@ -105,7 +105,7 @@ Pour plus d’informations sur l’utilisation de la *. deploy.cmd* fichier pour
 
 ## <a name="using-msdeployexe"></a>À l’aide de MSDeploy.exe
 
-Bien que l’utilisation du *. deploy.cmd* fichier plus généralement, simplifie le processus de déploiement, il existe certaines situations lorsqu’il est préférable d’utiliser directement les MSDeploy.exe. Exemple :
+Bien que l’utilisation du *. deploy.cmd* fichier plus généralement, simplifie le processus de déploiement, il existe certaines situations lorsqu’il est préférable d’utiliser directement les MSDeploy.exe. Par exemple :
 
 - Si vous souhaitez déployer sur le Gestionnaire de déploiement Web en tant qu’un utilisateur non-administrateur, vous ne pouvez pas utiliser le *. deploy.cmd* fichier. Il s’agit d’un bogue dans Web Deploy 2.0, comme indiqué dans **considérations sur le point de terminaison**.
 - Si vous souhaitez basculer manuellement entre différents *SetParameters.xml* fichiers dans différents emplacements, vous pouvez utiliser MSDeploy.exe directement.
@@ -117,12 +117,12 @@ Lorsque vous utilisez MSDeploy.exe, vous devez fournir trois éléments d’info
 - A **– dest** paramètre qui indique où vos données va.
 - A **– verbe** paramètre qui indique la [opération](https://technet.microsoft.com/library/dd568989(WS.10).aspx) vous souhaitez effectuer.
 
-MSDeploy.exe s’appuie sur [fournisseurs de Web Deploy](https://technet.microsoft.com/library/dd569040(WS.10).aspx) pour traiter les données source et de destination. Web Deploy comprend un grand nombre de fournisseurs qui représentent la plage d’applications et sources de données peut fonctionner avec & #x 2014 ; par exemple, il existe des fournisseurs pour les bases de données SQL Server, les serveurs web IIS, les certificats, les assemblys global assembly cache (GAC), différents différents fichiers de configuration et un grand nombre d’autres types de données. Les deux le **– source** paramètre et le **– dest** paramètre doit spécifier un fournisseur, sous la forme **– source**: [*providerName*] = [*emplacement*]. Lorsque vous déployez un package web vers un site Web IIS, vous devez utiliser ces valeurs :
+MSDeploy.exe s’appuie sur [fournisseurs de Web Deploy](https://technet.microsoft.com/library/dd569040(WS.10).aspx) pour traiter les données source et de destination. Web Deploy comprend un grand nombre de fournisseurs qui représentent la plage d’applications et sources de données peut fonctionner avec&#x2014;, par exemple, il existe des fournisseurs pour les bases de données SQL Server, les serveurs web IIS, les certificats, les assemblys global assembly cache (GAC), différents différents fichiers de configuration et un grand nombre d’autres types de données. Les deux le **– source** paramètre et le **– dest** paramètre doit spécifier un fournisseur, sous la forme **– source**: [*providerName*] = [*emplacement*]. Lorsque vous déployez un package web vers un site Web IIS, vous devez utiliser ces valeurs :
 
-- Le **– source** fournisseur est toujours [package](https://technet.microsoft.com/library/dd569019(WS.10).aspx). Exemple :
+- Le **– source** fournisseur est toujours [package](https://technet.microsoft.com/library/dd569019(WS.10).aspx). Par exemple :
 
     [!code-console[Main](deploying-web-packages/samples/sample4.cmd)]
-- Le **– dest** fournisseur est toujours [automatique](https://technet.microsoft.com/library/dd569016(WS.10).aspx). Exemple :
+- Le **– dest** fournisseur est toujours [automatique](https://technet.microsoft.com/library/dd569016(WS.10).aspx). Par exemple :
 
     [!code-console[Main](deploying-web-packages/samples/sample5.cmd)]
 - Le **– verbe** est toujours **synchronisation**.
@@ -213,6 +213,6 @@ Cette rubrique décrit comment vous pouvez déployer un package web en exécutan
 
 Pour obtenir des conseils sur la création et de paramétrer un package de déploiement web, consultez [génération et des projets d’Application Web Packaging](building-and-packaging-web-application-projects.md) et [configuration des paramètres pour le déploiement du Package Web](configuring-parameters-for-web-package-deployment.md). Pour obtenir des conseils sur la façon de créer et déployer des packages web à partir d’une instance de Team Foundation Server (TFS), consultez [configuration Team Foundation Server pour le déploiement Web automatisé](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md). Pour plus d’informations sur la façon de personnaliser et de dépannage du processus de déploiement, consultez [à l’exclusion des fichiers et dossiers de déploiement](../advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment.md).
 
->[!div class="step-by-step"]
-[Précédent](configuring-parameters-for-web-package-deployment.md)
-[Suivant](deploying-database-projects.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-parameters-for-web-package-deployment.md)
+> [Suivant](deploying-database-projects.md)

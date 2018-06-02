@@ -2,7 +2,7 @@
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-installing-web-packages
 title: Installation manuelle des Packages Web | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment importer manuellement un package de déploiement web dans Internet Information Services (IIS). La construction de la rubrique et l’empaquetage Web Applicati..."
+description: Cette rubrique décrit comment importer manuellement un package de déploiement web dans Internet Information Services (IIS). La construction de la rubrique et l’empaquetage Web Applicati...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/manually-installing-web-packages
 msc.type: authoredcontent
-ms.openlocfilehash: e06d37c01ab66f0723b687f4ed1ee72561099aef
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4a28ea92b22e4928e41a39a8a91b62bfa4f08175
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="manually-installing-web-packages"></a>Installation manuelle des Packages Web
 ====================
@@ -30,10 +30,10 @@ par [Jason Lee](https://github.com/jrjlee)
 > 
 > Une fois que vous avez créé un package de déploiement web, vous pouvez le publier sur un serveur IIS de différentes manières. Dans de nombreux scénarios, que vous souhaitez tirer parti des points d’intégration entre MSBuild, WPP et Web Deploy pour créer et installer des packages web à distance dans le cadre d’un processus de génération et de déploiement automatique ou seule étape. Ce processus est décrit dans [déploiement des Packages Web](deploying-web-packages.md). Toutefois, cela n’est pas toujours possible. Supposons que vous souhaitez déployer une application web dans un environnement de production sur Internet. Pour des raisons de sécurité, tel un environnement de production est à la moins susceptibles d’être derrière un pare-feu sur un sous-réseau qui est distinct du serveur de build, dans un réseau de périmètre (également appelé DMZ, zone démilitarisée et sous-réseau filtré). Dans de nombreux cas, l’environnement de production peut être sur un domaine distinct ou sur un réseau isolé physiquement.
 > 
-> Dans ces scénarios, votre seule option peut être déplacer le package web sur le serveur de destination et de l’importer manuellement dans IIS. Bien que cette approche vous empêche de déploiement automatisé, il est toujours une technique très efficace pour la publication d’une application web & le #x 2014 ; vous copiez simplement un fichier zip unique à votre serveur web, puis utilisez un Assistant pour vous guider tout au long du processus d’importation.
+> Dans ces scénarios, votre seule option peut être déplacer le package web sur le serveur de destination et de l’importer manuellement dans IIS. Bien que cette approche vous empêche de déploiement automatisé, il est toujours une technique très efficace pour la publication d’une application web&#x2014;vous copiez simplement un fichier zip unique à votre serveur web, puis utiliser un Assistant pour vous guider tout au long du processus d’importation.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -133,5 +133,5 @@ Cette rubrique décrit comment importer un package de déploiement web dans un s
 
 Pour obtenir des conseils sur la façon de configurer un serveur web d’IIS pour prendre en charge l’importation manuelle d’un package web, consultez [configurer un serveur Web pour déployer de publication Web (le déploiement en mode hors connexion)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment.md). Pour obtenir des instructions plus générales sur le déploiement des packages web, consultez [procédure pas à pas : déploiement d’un projet d’Application Web à l’aide d’un Package de déploiement Web (partie 1 sur 4)](https://msdn.microsoft.com/library/dd483479.aspx).
 
->[!div class="step-by-step"]
-[Précédent](creating-and-running-a-deployment-command-file.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-and-running-a-deployment-command-file.md)

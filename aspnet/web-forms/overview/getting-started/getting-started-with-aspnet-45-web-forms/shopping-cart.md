@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
-title: "Panier d’achat | Documents Microsoft"
+title: Panier d’achat | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
 msc.type: authoredcontent
-ms.openlocfilehash: 9fe6f28685d6a423b03f9c7abe753283b89344e1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a8e96da7737cdf649575711a464c4f7726cb6ded
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="shopping-cart"></a>Panier d’achat
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -43,7 +43,7 @@ Ce didacticiel décrit la logique métier nécessaire pour ajouter un panier d�
 1. Entity Framework Code First
 2. Annotations de données
 3. Fortement typée les contrôles de données
-4. Liaison de modèle
+4. Liaison de modèle (Model binding)
 
 ## <a name="creating-a-shopping-cart"></a>Création d’un panier d’achat
 
@@ -66,7 +66,7 @@ Plus haut dans cette série de didacticiels, vous défini le schéma pour les do
     ![Panier - ajouter la boîte de dialogue Nouvel élément](shopping-cart/_static/image2.png)
 3. Nommez cette nouvelle classe *CartItem.cs*.
 4. Cliquez sur **Ajouter**.  
- Le nouveau fichier de classe s’affiche dans l’éditeur.
+   Le nouveau fichier de classe s’affiche dans l’éditeur.
 5. Remplacez le code par défaut par le code suivant :   
 
     [!code-csharp[Main](shopping-cart/samples/sample1.cs)]
@@ -136,7 +136,7 @@ Comme mentionné précédemment, vous allez créer une page de traitement nommé
 #### <a name="to-create-the-add-to-cart-functionality"></a>Pour créer l’ajouter au panier fonctionnalités :
 
 1. Dans **l’Explorateur de solutions**, avec le bouton droit le **WingtipToys**de projet, cliquez sur **ajouter**  - &gt; **un nouvel élément**.  
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
 2. Ajouter une nouvelle page standard (formulaire Web) pour l’application nommée *AddToCart.aspx*. 
 
     ![Panier - ajouter le formulaire Web](shopping-cart/_static/image4.png)
@@ -154,7 +154,7 @@ Comme mentionné précédemment, un utilisateur `ID` est utilisé pour identifie
 Le *ShoppingCart.aspx* page affiche les produits dont l’utilisateur a ajouté à leur panier d’achat. Elle fournit également la possibilité d’ajouter, supprimer et mettre à jour des éléments dans le panier d’achat.
 
 1. Dans **l’Explorateur de solutions**, avec le bouton droit **WingtipToys**, cliquez sur **ajouter**  - &gt; **un nouvel élément**.  
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
 2. Ajouter une nouvelle page (formulaire Web) qui inclut une page maître en sélectionnant **Web Form avec Page maître**. Nommez la nouvelle page *ShoppingCart.aspx*.
 3. Sélectionnez **Site.Master** pour attacher la page maître à la nouvelle *.aspx* page.
 4. Dans le *ShoppingCart.aspx* page, remplacez la balise existante par le balisage suivant :   
@@ -323,6 +323,6 @@ Le panier d’achat prend en charge l’ajout, la suppression et la mise à jour
 
 [Vue d’ensemble de l’état de Session ASP.NET](https://msdn.microsoft.com/library/ms178581.aspx)
 
->[!div class="step-by-step"]
-[Précédent](display_data_items_and_details.md)
-[Suivant](checkout-and-payment-with-paypal.md)
+> [!div class="step-by-step"]
+> [Précédent](display_data_items_and_details.md)
+> [Suivant](checkout-and-payment-with-paypal.md)

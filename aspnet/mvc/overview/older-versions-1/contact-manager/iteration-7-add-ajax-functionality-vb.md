@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-vb
-title: "Itération #7 – des fonctionnalités Ajax d’ajouter (VB) | Documents Microsoft"
+title: 'Itération #7 – des fonctionnalités Ajax d’ajouter (VB) | Documents Microsoft'
 author: microsoft
-description: "Dans l’itération septième, nous améliorer la réactivité et les performances de votre application en ajoutant la prise en charge d’Ajax."
+description: Dans l’itération septième, nous améliorer la réactivité et les performances de votre application en ajoutant la prise en charge d’Ajax.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fa50fdea8ac165be3f8e96322ec049196a511ebe
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 35d961ee39d7b87a31c7208645148b45c7b0c563
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-7--add-ajax-functionality-vb"></a>Itération #7 – des fonctionnalités Ajax d’ajouter (VB)
 ====================
@@ -104,7 +104,7 @@ Permettent de commencer par modifier la vue d’Index afin qu’en cliquant sur 
 
 La première étape consiste à séparer la partie de la vue que vous souhaitez mettre à jour de façon asynchrone dans un partiel distinct (contrôle utilisateur). La section de la vue de l’Index qui affiche la table des contacts a été déplacée dans partielle dans la liste 1.
 
-**La liste 1 - Views\Contact\ContactList.ascx**
+**Listing 1 - Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-vb/samples/sample2.aspx)]
 
@@ -148,7 +148,7 @@ Il existe plusieurs méthodes que vous pouvez indiquer à un utilisateur dont le
 
 Nous allons utiliser la bibliothèque jQuery qui est incluse dans le framework Microsoft ASP.NET MVC, pour créer les effets d’animation. La vue Index mis à jour est contenue dans la liste 4.
 
-**La liste 4 - Views\Contact\Index.aspx**
+**Listing 4 - Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-vb/samples/sample6.aspx)]
 
@@ -176,7 +176,7 @@ L’historique du navigateur ASP.NET AJAX, vous devez effectuer trois actions :
 
 La vue Index mis à jour est contenue dans la liste 5.
 
-**La liste 5 - Views\Contact\Index.aspx**
+**Listing 5 - Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-vb/samples/sample8.aspx)]
 
@@ -206,7 +206,7 @@ Il est tentant d’ignorer la page de confirmation de suppression et de supprime
 
 Le lien Supprimer est contenu dans le ContactList partielle. Une version mise à jour de la ContactList partielle est contenue dans la liste 6.
 
-**La liste 6 - Views\Contact\ContactList.ascx**
+**Listing 6 - Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-vb/samples/sample10.aspx)]
 
@@ -223,7 +223,7 @@ Le paramètre AjaxOptions possède deux propriétés. Tout d’abord, la propri�
 
 La liste 7 contient une nouvelle action AjaxDelete() qui a été ajoutée au contrôleur de Contact.
 
-**La liste 7 - Controllers\ContactController.vb (AjaxDelete)**   
+**Listing 7 - Controllers\ContactController.vb (AjaxDelete)**   
 
 [!code-vb[Main](iteration-7-add-ajax-functionality-vb/samples/sample12.vb)]
 
@@ -231,7 +231,7 @@ L’action AjaxDelete() est décorée avec un attribut AcceptVerbs. Cet attribut
 
 Après avoir supprimé les enregistrements de base de données, vous devez afficher la liste de mises à jour des contacts qui ne contient-elle pas l’enregistrement supprimé. La méthode AjaxDelete() retourne le ContactList partielle et la liste de mises à jour des contacts.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous avons ajouté des fonctionnalités Ajax à notre application Gestionnaire de contacts. Nous avons utilisé Ajax pour améliorer la réactivité et les performances de notre application.
 
@@ -243,5 +243,5 @@ Nous avons également ajouté des navigateurs pris en charge de l’historique �
 
 Enfin, nous avons créé un lien de suppression qui prend en charge les opérations HTTP DELETE. Effectuez les suppressions Ajax, nous permettre aux utilisateurs de supprimer des enregistrements de la base de données sans que l’utilisateur demander une page de confirmation de suppression supplémentaires.
 
->[!div class="step-by-step"]
-[Précédent](iteration-6-use-test-driven-development-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-6-use-test-driven-development-vb.md)

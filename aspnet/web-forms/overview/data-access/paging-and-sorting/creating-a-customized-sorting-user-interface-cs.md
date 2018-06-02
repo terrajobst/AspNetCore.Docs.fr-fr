@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
-title: "Création d’une Interface utilisateur de tri personnalisées (c#) | Documents Microsoft"
+title: Création d’une Interface utilisateur de tri personnalisées (c#) | Documents Microsoft
 author: rick-anderson
-description: "Lors de l’affichage d’une longue liste de triée des données, il peut être très utile de regrouper les données associées en introduisant des lignes de séparation. Dans ce didacticiel, nous verrons comment cre..."
+description: Lors de l’affichage d’une longue liste de triée des données, il peut être très utile de regrouper les données associées en introduisant des lignes de séparation. Dans ce didacticiel, nous verrons comment cre...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: dbd2f6c8f1e21529da8a0fbffab212a29f615cc1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c2680f5e47883c9d5fa874a36eb666270c5e406a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a>Création d’une Interface utilisateur de tri personnalisées (c#)
 ====================
@@ -141,7 +141,7 @@ L’index de la colonne par laquelle les données sont triées, l’étape final
 
 [!code-csharp[Main](creating-a-customized-sorting-user-interface-cs/samples/sample4.cs)]
 
-Ce code commence par référencer par programme le `Table` de l’objet trouvé à la racine de la hiérarchie de contrôle GridView s et la création d’une variable chaîne nommée `lastValue`. `lastValue`permet de comparer la valeur de colonne s triées de ligne actuelle avec la valeur précédente de la ligne s. Ensuite, le contrôle GridView s `Rows` collection est énumérée, et pour chaque ligne, la valeur de la colonne triée est stockée dans le `currentValue` variable.
+Ce code commence par référencer par programme le `Table` de l’objet trouvé à la racine de la hiérarchie de contrôle GridView s et la création d’une variable chaîne nommée `lastValue`. `lastValue` permet de comparer la valeur de colonne s triées de ligne actuelle avec la valeur précédente de la ligne s. Ensuite, le contrôle GridView s `Rows` collection est énumérée, et pour chaque ligne, la valeur de la colonne triée est stockée dans le `currentValue` variable.
 
 > [!NOTE]
 > Pour déterminer la valeur de la colonne triée ligne particulière utiliser la cellule s `Text` propriété. Cela fonctionne bien pour BoundFields, mais ne sera pas fonctionnent comme vous le souhaitez pour TemplateField, CheckBoxFields et ainsi de suite. Nous allons examiner comment faire pour prendre en compte pour les autres champs de GridView peu de temps.
@@ -198,8 +198,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](sorting-custom-paged-data-cs.md)
-[Suivant](paging-and-sorting-report-data-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](sorting-custom-paged-data-cs.md)
+> [Suivant](paging-and-sorting-report-data-vb.md)

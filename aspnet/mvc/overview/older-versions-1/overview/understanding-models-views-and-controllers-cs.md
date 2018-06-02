@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-cs
-title: "Fonctionnement des modèles, vues et contrôleurs (c#) | Documents Microsoft"
+title: Fonctionnement des modèles, vues et contrôleurs (c#) | Documents Microsoft
 author: StephenWalther
-description: "Vous ne comprenez pas sur les modèles, vues et contrôleurs ? Dans ce didacticiel, Stephen Walther présente les différentes parties d’une application ASP.NET MVC."
+description: Vous ne comprenez pas sur les modèles, vues et contrôleurs ? Dans ce didacticiel, Stephen Walther présente les différentes parties d’une application ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008

@@ -1,7 +1,7 @@
 ---
-title: "Chiffrement à clé au repos"
+title: Chiffrement à clé au repos dans ASP.NET Core
 author: rick-anderson
-description: "Ce document décrit les détails d’implémentation ASP.NET Core protection des clés de cryptage des données au repos."
+description: Découvrez les détails d’implémentation de chiffrement de clé de Protection des données ASP.NET Core au repos.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,20 +9,20 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: c66430bfe547cf061e9e79a703ac665a968bbe0b
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: e5082d831dd4822fad0fb3211fe2b8c76ff967bf
+ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="key-encryption-at-rest"></a>Chiffrement à clé au repos
+# <a name="key-encryption-at-rest-in-aspnet-core"></a>Chiffrement à clé au repos dans ASP.NET Core
 
 <a name="data-protection-implementation-key-encryption-at-rest"></a>
 
 Par défaut, le système de protection des données [utilise une heuristique](xref:security/data-protection/configuration/default-settings) pour déterminer le mode de chiffrement matériel de clé doivent être chiffrées au repos. Le développeur peut substituer l’heuristique et spécifier manuellement la façon dont les clés doivent être chiffrées au repos.
 
 > [!NOTE]
-> Si vous spécifiez un chiffrement à clé explicit au mécanisme de rest, le système de protection de données sera annuler l’inscription le mécanisme de stockage de clés par défaut que l’heuristique fourni. Vous devez [spécifier un mécanisme de stockage de clés explicites](key-storage-providers.md#data-protection-implementation-key-storage-providers), sinon le système de protection des données ne démarre pas.
+> Si vous spécifiez un chiffrement à clé explicit au mécanisme de rest, le système de protection de données sera annuler l’inscription le mécanisme de stockage de clés par défaut que l’heuristique fourni. Vous devez [spécifier un mécanisme de stockage de clés explicites](xref:security/data-protection/implementation/key-storage-providers#data-protection-implementation-key-storage-providers), sinon le système de protection des données ne démarre pas.
 
 <a name="data-protection-implementation-key-encryption-at-rest-providers"></a>
 
@@ -95,7 +95,7 @@ Dans ce scénario, le contrôleur de domaine Active Directory est responsable de
 
 ## <a name="certificate-based-encryption-with-windows-dpapi-ng"></a>Basée sur certificat de chiffrement avec Windows DPAPI-NG.
 
-Si vous êtes en cours d’exécution sur Windows 8.1 / Windows Server 2012 R2 ou version ultérieure, vous pouvez utiliser Windows DPAPI-NG pour effectuer un chiffrement basée sur certificat, même si l’application est en cours d’exécution [.NET Core](https://www.microsoft.com/net/core). Pour tirer parti de cela, utilisez la chaîne de descripteur de règle « certificat = HashId:thumbprint », où l’empreinte numérique est l’empreinte numérique SHA1 codé en hexadécimal du certificat à utiliser. Voir ci-dessous pour obtenir un exemple.
+Si vous êtes en cours d’exécution sur Windows 8.1 / Windows Server 2012 R2 ou version ultérieure, vous pouvez utiliser Windows DPAPI-NG pour effectuer un chiffrement basée sur certificat, même si l’application est en cours d’exécution sur .NET Core. Pour tirer parti de cela, utilisez la chaîne de descripteur de règle « certificat = HashId:thumbprint », où l’empreinte numérique est l’empreinte numérique SHA1 codé en hexadécimal du certificat à utiliser. Voir ci-dessous pour obtenir un exemple.
 
 ```csharp
 sc.AddDataProtection()

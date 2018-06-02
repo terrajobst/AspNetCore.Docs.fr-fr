@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12
-title: "Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : résolution des problèmes (12 12) | Documents Microsoft"
+title: 'Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : résolution des problèmes (12 12) | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/17/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-creating-and-installing-deployment-packages-12-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: d8c4931a1d26af49ee61c896897fa6ddf12fccea
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 2a8342f026498a7cf3ff4a3c158ed177c15b7111
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-troubleshooting-12-of-12"></a>Déploiement d’Application Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : résolution des problèmes (12 12)
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://code.msdn.microsoft.com/Deploying-an-ASPNET-Web-4e31366b)
 
@@ -290,7 +290,7 @@ Publication échoue avec une erreur indiquant que vous n’avez pas autorité po
 
 ### <a name="possible-cause-and-solution"></a>Cause possible et solution
 
-Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si vous savez que les autorisations par défaut sur les dossiers du site sont correctes et n’avez pas besoin être défini, vous désactivez ce comportement en ajoutant  **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;**  au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). 
+Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si vous savez que les autorisations par défaut sur les dossiers du site sont correctes et n’avez pas besoin être défini, vous désactivez ce comportement en ajoutant **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). 
 
 ## <a name="access-denied-errors-when-the-application-tries-to-write-to-an-application-folder"></a>Erreurs d’accès refusé lors de l’Application tente d’écrire dans un dossier d’Application
 
@@ -300,7 +300,7 @@ Erreurs de votre application lorsqu’il tente créer ou modifier un fichier dan
 
 ### <a name="possible-cause-and-solution"></a>Cause possible et solution
 
-Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si votre application requiert un accès en écriture à un sous-dossier, vous pouvez définir des autorisations pour ce dossier comme indiqué dans le [définition des autorisations de dossier](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md) et [déploiement dans l’environnement de Production](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) didacticiels. Si votre application requiert un accès en écriture au dossier racine du site, vous devez l’empêcher de la définition de l’accès en lecture seule sur le dossier racine en ajoutant  **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;**  au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). <a id="aspnet45error"></a>
+Par défaut, Visual Studio définit autorisations de lecture sur le dossier racine du site et les autorisations en écriture sur l’application\_dossier de données. Si votre application requiert un accès en écriture à un sous-dossier, vous pouvez définir des autorisations pour ce dossier comme indiqué dans le [définition des autorisations de dossier](deployment-to-a-hosting-provider-setting-folder-permissions-6-of-12.md) et [déploiement dans l’environnement de Production](deployment-to-a-hosting-provider-deploying-to-the-production-environment-7-of-12.md) didacticiels. Si votre application requiert un accès en écriture au dossier racine du site, vous devez l’empêcher de la définition de l’accès en lecture seule sur le dossier racine en ajoutant **&lt;IncludeSetACLProviderOn Destination&gt;False&lt;/ IncludeSetACLProviderOnDestination&gt;** au fichier de profil de publication (pour affecter un profil unique) ou au fichier wpp.targets (à affecter tous les profils). Pour plus d’informations sur la façon de modifier ces fichiers, consultez [Comment : modifier les paramètres de déploiement dans les fichiers de profil (.pubxml)](https://msdn.microsoft.com/library/ff398069.aspx). <a id="aspnet45error"></a>
 
 ## <a name="configuration-error---targetframework-attribute-references-a-version-that-is-later-than-the-installed-version-of-the-net-framework"></a>Erreur de configuration - attribut targetFramework fait référence à une version ultérieure à la version installée du .NET Framework
 
@@ -320,5 +320,5 @@ Le serveur ne prend pas en charge ASP.NET 4.5. Contactez le fournisseur d’héb
 
 Le projet **propriétés** windows inclut une liste déroulante du framework cible, mais vous ne peut pas résoudre ce problème en modifiant simplement le celui de **.NET Framework 4.5** à **de.NETFramework4**. Si vous modifiez le framework cible pour une version antérieure de framework, le projet contiendra encore des références aux assemblys de la dernière version framework et ne s’exécutera pas. Vous devez manuellement modifier ces références ou créez un projet qui cible .NET Framework 4 ou version antérieure. Pour plus d’informations, consultez [ciblage de .NET Framework pour les Sites Web](https://msdn.microsoft.com/library/bb398791(v=vs.100).aspx).
 
->[!div class="step-by-step"]
-[Précédent](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)
+> [!div class="step-by-step"]
+> [Précédent](deployment-to-a-hosting-provider-deploying-a-sql-server-database-update-11-of-12.md)

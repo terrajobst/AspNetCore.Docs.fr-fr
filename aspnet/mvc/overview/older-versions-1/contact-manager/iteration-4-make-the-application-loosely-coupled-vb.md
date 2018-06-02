@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-vb
-title: "Itération #4 : rendre des applications faiblement couplées (VB) | Documents Microsoft"
+title: 'Itération #4 : rendre des applications faiblement couplées (VB) | Documents Microsoft'
 author: microsoft
-description: "Dans cette troisième itération, nous tirer parti de plusieurs modèles de conception de logiciel pour le rendre plus facile à gérer et modifier l’application Gestionnaire de contacts. Pré..."
+description: Dans cette troisième itération, nous tirer parti de plusieurs modèles de conception de logiciel pour le rendre plus facile à gérer et modifier l’application Gestionnaire de contacts. Pré...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-4-make-the-application-loosely-coupled-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9c11c89710723c133a306aaf56cc8797cc036475
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: d953a1b786c802c070619e553e27d88f2ded149c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-vb"></a>Itération #4 : rendre des applications faiblement couplées (VB)
 ====================
@@ -82,7 +82,7 @@ Implémentation du modèle de référentiel nous oblige à effectuer les deux é
 
 Tout d’abord, nous devons créer une interface qui décrit toutes les méthodes d’accès aux données que nous devons effectuer. L’interface IContactManagerRepository est contenue dans la liste 1. Décrit les cinq méthodes de cette interface : CreateContact(), DeleteContact(), EditContact(), GetContact et ListContacts().
 
-**La liste 1 - Models\IContactManagerRepository.vb**
+**Listing 1 - Models\IContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample1.vb)]
 
@@ -115,7 +115,7 @@ Maintenant que nous avons migré de notre code d’accès aux données à une cl
 
 Le contrôleur de Contact modifié est contenu dans la liste 3.
 
-**La liste 3 - Controllers\ContactController.vb**
+**Listing 3 - Controllers\ContactController.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample3.vb)]
 
@@ -140,7 +140,7 @@ Pour résoudre ce problème, nous pouvons créer un distinct [couche de service]
 
 Le ContactManagerService est contenue dans la liste 4. Il contient la logique de validation à partir de la classe de contrôleur du Contact.
 
-**La liste 4 - Models\ContactManagerService.vb**
+**Listing 4 - Models\ContactManagerService.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample4.vb)]
 
@@ -150,13 +150,13 @@ En outre, notez que le ContactManagerService implémente l’interface IContactM
 
 L’interface IContactManagerService est contenue dans la liste 5.
 
-**La liste 5 - Models\IContactManagerService.vb**
+**Listing 5 - Models\IContactManagerService.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample5.vb)]
 
 La classe de contrôleur Contact modifiée est contenue dans la liste 6. Notez que le contrôleur de Contact est n’est plus interagit avec le référentiel de ContactManager. Au lieu de cela, le contrôleur de Contact interagit avec le service ContactManager. Chaque couche est isolée autant que possible à partir d’autres couches.
 
-**La liste 6 - Controllers\ContactController.vb**
+**Listing 6 - Controllers\ContactController.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample6.vb)]
 
@@ -172,7 +172,7 @@ Un contrôleur utilise un ModelStateDictionary nommé ModelState pour représent
 
 Le modèle d’élément décoratif vous permet d’encapsuler une classe existante dans une nouvelle classe pour implémenter une interface. Notre projet de gestionnaire de contacts inclut la classe ModelStateWrapper contenue dans la liste 7. La classe ModelStateWrapper implémente l’interface dans la liste 8.
 
-**La liste 7 - Models\Validation\ModelStateWrapper.vb**
+**Listing 7 - Models\Validation\ModelStateWrapper.vb**
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample7.vb)]
 
@@ -184,7 +184,7 @@ Si vous examinez une liste 5 vous verrez alors que la couche de service ContactM
 
 [!code-vb[Main](iteration-4-make-the-application-loosely-coupled-vb/samples/sample9.vb)]
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous n’avez pas ajouté de nouvelles fonctionnalités à l’application Gestionnaire de contacts. L’objectif de cette itération a été de refactoriser l’application Gestionnaire de contacts pour qu’elle soit plus facile à gérer et modifier.
 
@@ -196,6 +196,6 @@ Lorsque nous avons créé la couche de service, nous avons tiré parti du modèl
 
 Enfin, nous avons pris parti d’un modèle de conception de logiciel nommé le modèle d’Injection de dépendances. Ce modèle permet de programmer des interfaces (abstractions) au lieu de classes concrètes. Implémentation du modèle de conception d’Injection de dépendances permet également de notre code des tests. Dans l’itération suivante, nous ajoutons des tests unitaires à notre projet.
 
->[!div class="step-by-step"]
-[Précédent](iteration-3-add-form-validation-vb.md)
-[Suivant](iteration-5-create-unit-tests-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-3-add-form-validation-vb.md)
+> [Suivant](iteration-5-create-unit-tests-vb.md)

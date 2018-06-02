@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
-title: "Protection des chaînes de connexion et d’autres informations de Configuration (VB) | Documents Microsoft"
+title: Protection des chaînes de connexion et d’autres informations de Configuration (VB) | Documents Microsoft
 author: rick-anderson
-description: "En général, une application ASP.NET stocke les informations de configuration dans un fichier Web.config. Certaines de ces informations est sensible et garantit la protection. Par def...."
+description: En général, une application ASP.NET stocke les informations de configuration dans un fichier Web.config. Certaines de ces informations est sensible et garantit la protection. Par def....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f1514c4b6d041f6bbd83788e2110a95d3d831ff6
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3372416dd9143afbfd442eaffb39cd807fae0de6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-vb"></a>Protection des chaînes de connexion et d’autres informations de Configuration (VB)
 ====================
@@ -31,7 +31,7 @@ par [Scott Mitchell](https://twitter.com/ScottOnWriting)
 
 Informations de configuration pour les applications ASP.NET sont généralement stockées dans un fichier XML nommé `Web.config`. Au cours de ces didacticiels nous avons mis à jour le `Web.config` un certain nombre de fois. Lors de la création du `Northwind` DataSet typé dans les [premier didacticiel](../introduction/creating-a-data-access-layer-vb.md), par exemple, les informations de chaîne de connexion a été ajoutées automatiquement à `Web.config` dans la `<connectionStrings>` section. Plus tard, dans le [les Pages maîtres et la Navigation sur le Site](../introduction/master-pages-and-site-navigation-vb.md) didacticiel, nous avons mis à jour manuellement `Web.config`, ajout un `<pages>` élément indiquant que toutes les pages ASP.NET dans notre projet doivent utiliser le `DataWebControls` thème.
 
-Étant donné que `Web.config` peut contenir des données sensibles telles que des chaînes de connexion, il est important que le contenu de `Web.config` être conservées en toute sécurité masqués des personnes non autorisées. Par défaut, n’importe quel HTTP demande à un fichier avec le `.config` extension est gérée par le moteur ASP.NET, qui retourne le *ce type de page n’est pas pris en charge* message indiqué dans la Figure 1. Cela signifie que les visiteurs ne peut pas afficher votre `Web.config` s le contenu du fichier en entrant simplement l’http://www.YourServer.com/Web.config dans la barre d’adresse de leur navigateur s.
+Étant donné que `Web.config` peut contenir des données sensibles telles que des chaînes de connexion, il est important que le contenu de `Web.config` être conservées en toute sécurité masqués des personnes non autorisées. Par défaut, n’importe quel HTTP demande à un fichier avec le `.config` extension est gérée par le moteur ASP.NET, qui retourne le *ce type de page n’est pas pris en charge* message indiqué dans la Figure 1. Cela signifie que les visiteurs ne peut pas afficher votre `Web.config` s le contenu du fichier en entrant simplement http://www.YourServer.com/Web.config dans la barre d’adresse de leur navigateur s.
 
 
 [![Visite Web.config via un navigateur retourne ce type de page non pris en charge Message](protecting-connection-strings-and-other-configuration-information-vb/_static/image2.png)](protecting-connection-strings-and-other-configuration-information-vb/_static/image1.png)
@@ -60,8 +60,8 @@ ASP.NET 2.0 comprend un système de configuration protégée pour chiffrer et d�
 
 Le .NET Framework est fourni avec deux fournisseurs de configuration protégée :
 
-- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx)-utilise l’asymétrique [algorithme RSA](http://en.wikipedia.org/wiki/Rsa) pour le chiffrement et le déchiffrement.
-- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx)-utilise les fenêtres [API de Protection des données (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) pour le chiffrement et le déchiffrement.
+- [`RSAProtectedConfigurationProvider`](https://msdn.microsoft.com/library/system.configuration.rsaprotectedconfigurationprovider.aspx) -utilise l’asymétrique [algorithme RSA](http://en.wikipedia.org/wiki/Rsa) pour le chiffrement et le déchiffrement.
+- [`DPAPIProtectedConfigurationProvider`](https://msdn.microsoft.com/system.configuration.dpapiprotectedconfigurationprovider.aspx) -utilise les fenêtres [API de Protection des données (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) pour le chiffrement et le déchiffrement.
 
 Étant donné que le système de configuration protégée implémente le modèle de conception du fournisseur, il est possible de créer votre propre fournisseur de configuration protégée et connectez-le à votre application. Consultez [implémentation d’un fournisseur de Configuration protégée](https://msdn.microsoft.com/library/wfc2t3az(VS.80).aspx) pour plus d’informations sur ce processus.
 
@@ -96,7 +96,7 @@ Ensuite, nous avons besoin d’écrire du code qui charge et affiche le contenu 
 
 [!code-vb[Main](protecting-connection-strings-and-other-configuration-information-vb/samples/sample1.vb)]
 
-Le `DisplayWebConfig` utilise le [ `File` classe](https://msdn.microsoft.com/library/system.io.file.aspx) pour ouvrir l’application s `Web.config` fichier, le [ `StreamReader` classe](https://msdn.microsoft.com/library/system.io.streamreader.aspx) pour lire son contenu dans une chaîne et la [ `Path` classe](https://msdn.microsoft.com/library/system.io.path.aspx) pour générer le chemin d’accès physique à le `Web.config` fichier. Ces trois classes sont trouvent dans le [ `System.IO` espace de noms](https://msdn.microsoft.com/library/system.io.aspx). Par conséquent, vous devez ajouter un `Imports``System.IO` instruction vers le haut de la classe code-behind, vous pouvez également préfixe ou ces noms de classe`System.IO.`
+Le `DisplayWebConfig` utilise le [ `File` classe](https://msdn.microsoft.com/library/system.io.file.aspx) pour ouvrir l’application s `Web.config` fichier, le [ `StreamReader` classe](https://msdn.microsoft.com/library/system.io.streamreader.aspx) pour lire son contenu dans une chaîne et la [ `Path` classe](https://msdn.microsoft.com/library/system.io.path.aspx) pour générer le chemin d’accès physique à le `Web.config` fichier. Ces trois classes sont trouvent dans le [ `System.IO` espace de noms](https://msdn.microsoft.com/library/system.io.aspx). Par conséquent, vous devez ajouter un `Imports``System.IO` instruction vers le haut de la classe code-behind, vous pouvez également préfixe ou ces noms de classe `System.IO.`
 
 Ensuite, nous devons ajouter des gestionnaires d’événements pour les deux contrôles bouton `Click` événements et ajoutez le code nécessaire pour chiffrer et déchiffrer les `<connectionStrings>` section à l’aide d’une clé au niveau de l’ordinateur avec le fournisseur DPAPI. Dans le concepteur, double-cliquez sur chaque bouton pour ajouter un `Click` Gestionnaire d’événements dans le code-behind de classe, puis ajoutez le code suivant :
 
@@ -228,12 +228,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Teresa Murphy et Randy Schmidt. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
-[Suivant](debugging-stored-procedures-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](configuring-the-data-access-layer-s-connection-and-command-level-settings-vb.md)
+> [Suivant](debugging-stored-procedures-vb.md)

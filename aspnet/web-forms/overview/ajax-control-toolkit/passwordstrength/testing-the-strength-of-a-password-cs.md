@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs
 title: Test de la force de mot de passe (c#) | Documents Microsoft
 author: wenz
-description: "Presque n’importe où, les mots de passe sont requis afin que les utilisateurs différées ont tendance à choisir des mots de passe simples, faciles à arrêter. Le contrôle PasswordStrength dans ASP. N...."
+description: Presque n’importe où, les mots de passe sont requis afin que les utilisateurs différées ont tendance à choisir des mots de passe simples, faciles à arrêter. Le contrôle PasswordStrength dans ASP. N....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-cs
 msc.type: authoredcontent
-ms.openlocfilehash: eda7baae1833b074ba34d8f10fa434df14cc592e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f5f4a7128f2edbef4fbe95faf9de19bdae5f436e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="testing-the-strength-of-a-password-c"></a>Test de la force de mot de passe (c#)
 ====================
@@ -35,10 +35,10 @@ Presque n’importe où, les mots de passe sont requis afin que les utilisateurs
 
 Le `PasswordStrength` contrôle étend une zone de texte et vérifie si le mot de passe est suffisant. Il offre de nombreuses options via des attributs ; Voici quelques-unes d'entre elles :
 
-- `MinimumNumericCharacters`nombre minimal de caractères numériques requis dans le mot de passe
-- `MinimumSymbolCharacters`nombre minimal de caractères de symbole (pas des lettres et chiffres) requis dans le mot de passe
-- `PreferredPasswordLength`longueur minimale du mot de passe
-- `RequiresUpperAndLowerCaseCharacters`Indique si le mot de passe doit utiliser des caractères majuscules et minuscules
+- `MinimumNumericCharacters` nombre minimal de caractères numériques requis dans le mot de passe
+- `MinimumSymbolCharacters` nombre minimal de caractères de symbole (pas des lettres et chiffres) requis dans le mot de passe
+- `PreferredPasswordLength` longueur minimale du mot de passe
+- `RequiresUpperAndLowerCaseCharacters` Indique si le mot de passe doit utiliser des caractères majuscules et minuscules
 
 Le `StrengthIndicatorType` fournit les informations comment présenter la force du mot de passe, sous forme de texte (valeur `"Text"`) ou comme une sorte de barre de progression (valeur `"BarIndicator"`). Dans la `DisplayPosition` attribut, vous configurez dans lequel les informations s’affichent. Voici un exemple complet, y compris ASP.NET AJAX `ScriptManager` (contrôle), le `PasswordStrength` contrôle et, bien sûr, une zone de texte dans lequel l’utilisateur peut entrer un mot de passe. Pour des raisons de démonstration, le champ de formulaire de ce dernier est un champ de texte standard et pas un champ de mot de passe afin que vous puissiez voir pendant le développement ce que vous tapez.
 
@@ -51,5 +51,5 @@ Exécuter la page et le type de suite : uniquement une fois que vous avez entr�
 
 À présent, le mot de passe () bien ([cliquez pour afficher l’image en taille réelle](testing-the-strength-of-a-password-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Next](testing-the-strength-of-a-password-vb.md)
+> [!div class="step-by-step"]
+> [Next](testing-the-strength-of-a-password-vb.md)

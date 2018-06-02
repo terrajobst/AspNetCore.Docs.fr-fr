@@ -2,7 +2,7 @@
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 title: Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013 | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels pas à pas, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express..."
+description: Cette série de didacticiels pas à pas, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 6ae398f94c0ac3872601bdc8fd935f6d285793db
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a3527b54d1936bc14e32a1828ac3a2be625107ba
+ms.sourcegitcommit: 2ab550f8c46e1a8a5d45e58be44d151c676af256
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -60,7 +60,7 @@ Est de cette série de didacticiels destiné aux développeurs expérimentés qu
 Si vous souhaitez parcourir les éléments mentionnés ci-dessus, examinez le contenu suivant :
 
 - [Prise en main de Visual c#](https://msdn.microsoft.com/library/a72418yk.aspx)
-- [Web Development](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
+- [Développement Web](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
 - [Base de données relationnelle](http://en.wikipedia.org/wiki/Relational_database)
 - [Architecture multiniveau](http://en.wikipedia.org/wiki/Multitier_architecture)
 
@@ -177,9 +177,9 @@ Après avoir installé les composants requis, vous êtes prêt à commencer à c
 
 [Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (c#) 
 
-Le téléchargement est un *.zip* fichier. Pour afficher le projet terminé cette série de didacticiels crée, recherchez et sélectionnez le *c#*dossier dans le *.zip* fichier. Enregistrer le *c#* dossier dans le dossier que vous utilisez pour travailler avec les projets Visual Studio 2013. Par défaut, le dossier de projets Visual Studio 2013 est le suivant :
+Le téléchargement est un <em>.zip</em> fichier. Pour afficher le projet terminé cette série de didacticiels crée, recherchez et sélectionnez le <em>c#</em>dossier dans le <em>.zip</em> fichier. Enregistrer le <em>c#</em> dossier dans le dossier que vous utilisez pour travailler avec les projets Visual Studio 2013. Par défaut, le dossier de projets Visual Studio 2013 est le suivant :
 
-**C:\Users\*****&lt;nom d’utilisateur&gt;*** \Documents\Visual Studio 2013\Projects**
+<strong>C:\Users&#92;</strong><strong><em>&lt;nom d’utilisateur&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
 
 Renommer le ***c#*** dossier ***WingtipToys***.
 
@@ -197,5 +197,5 @@ Commentaires sur cette série de didacticiels sont les bienvenus et lorsque la m
 
 Lorsqu’une erreur se produit pendant le développement, ou si le site Web ne fonctionne pas correctement, les messages d’erreur peuvent donner des indices complexes à la source du problème ou ne peuvent pas expliquer comment la corriger. Pour résoudre certains problèmes courants, vous pouvez également utiliser le [forums ASP.NET](https://forums.asp.net/) ou la section Q et r inclus avec le [prise en main de Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) () C#) exemple. Si vous obtenez un message d’erreur, ou quelque chose ne fonctionne pas lorsque vous parcourez les didacticiels, veillez à consulter les emplacements ci-dessus.
 
->[!div class="step-by-step"]
-[Next](create-the-project.md)
+> [!div class="step-by-step"]
+> [Next](create-the-project.md)

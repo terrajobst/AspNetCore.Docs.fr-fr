@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
-title: "Journalisation des détails de l’erreur avec ASP.NET contrôle d’état (VB) | Documents Microsoft"
+title: Journalisation des détails de l’erreur avec ASP.NET contrôle d’état (VB) | Documents Microsoft
 author: rick-anderson
-description: "Système de surveillance de l’intégrité de Microsoft fournit un moyen simple et personnalisable pour se connecter à différents événements web, y compris les exceptions non gérées. Ce didacticiel Guide transfert..."
+description: Système de surveillance de l’intégrité de Microsoft fournit un moyen simple et personnalisable pour se connecter à différents événements web, y compris les exceptions non gérées. Ce didacticiel Guide transfert...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 83f7504e3aeb02ed222712e7e51f612f7ffd5744
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0a457d4b8773f0f4ed343f5005c76f48a5cc178f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>Journalisation des détails de l’erreur avec le contrôle (VB) d’état ASP.NET
 ====================
@@ -154,6 +154,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Comment : Utiliser l’analyse du fonctionnement dans ASP.NET](https://msdn.microsoft.com/library/ms998306.aspx)
 - [Analyse d’intégrité dans ASP.NET](http://aspnet.4guysfromrolla.com/articles/031407-1.aspx)
 
->[!div class="step-by-step"]
-[Précédent](processing-unhandled-exceptions-vb.md)
-[Suivant](logging-error-details-with-elmah-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](processing-unhandled-exceptions-vb.md)
+> [Suivant](logging-error-details-with-elmah-vb.md)

@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
-title: "Annexe : Le correctif il exemple d’Application (création d’applications de Cloud du monde réel avec Azure) | Documents Microsoft"
+title: 'Annexe : Le correctif il exemple d’Application (création d’applications de Cloud du monde réel avec Azure) | Documents Microsoft'
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: c98e79bf8e9a1fe0899ed6d952c3e411ca472f7e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9a1fa36b34c4783b101bb27bc6931241e9251e10
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Annexe : Le correctif il exemple d’Application (création d’applications de Cloud du monde réel avec Azure)
 ====================
@@ -100,7 +100,7 @@ Le `FixItTaskRepository` classe doit disposer de l’Entity Framework `DbContext
 
 Notez que AutoFac supprimera automatiquement le `FixItTaskRepository` de l’instance, nous n’avez pas besoin de manière explicite de la suppression.
 
-Une autre option consiste à supprimer la `DbContext` variable membre à partir de `FixItTaskRepository`et à la place créer une variable locale `DbContext` variable dans chaque méthode de référentiel, à l’intérieur d’un `using` instruction. Exemple :
+Une autre option consiste à supprimer la `DbContext` variable membre à partir de `FixItTaskRepository`et à la place créer une variable locale `DbContext` variable dans chaque méthode de référentiel, à l’intérieur d’un `using` instruction. Par exemple :
 
 [!code-csharp[Main](the-fix-it-sample-application/samples/sample2.cs)]
 
@@ -245,18 +245,18 @@ Il existe deux façons d’exécuter l’application corriger :
 
     À l’aide de Visual Studio 2013 :
 
-    1. Appuyez sur F5 pour exécuter le projet de correctif.
-    2. Dans **l’Explorateur de solutions**, cliquez sur le projet MyFixItCloudService, puis cliquez sur **déboguer** -- **démarrer une nouvelle Instance**.
+   1. Appuyez sur F5 pour exécuter le projet de correctif.
+   2. Dans **l’Explorateur de solutions**, cliquez sur le projet MyFixItCloudService, puis cliquez sur **déboguer** -- **démarrer une nouvelle Instance**.
 
-    À l’aide de Visual Studio 2013 Express pour le Web :
+      À l’aide de Visual Studio 2013 Express pour le Web :
 
-    1. Dans l’Explorateur de solutions, cliquez sur la solution de réparation et sélectionnez **propriétés**.
-    2. Sélectionnez **plusieurs projets de démarrage**...
-    3. Dans le **Action** liste déroulante sous MyFixIt et MyFixItCloudService, sélectionnez **Démarrer**.
-    4. Cliquez sur **OK**.
-    5. Appuyez sur F5 pour exécuter les deux projets.
+   3. Dans l’Explorateur de solutions, cliquez sur la solution de réparation et sélectionnez **propriétés**.
+   4. Sélectionnez **plusieurs projets de démarrage**...
+   5. Dans le **Action** liste déroulante sous MyFixIt et MyFixItCloudService, sélectionnez **Démarrer**.
+   6. Cliquez sur **OK**.
+   7. Appuyez sur F5 pour exécuter les deux projets.
 
-    Lorsque vous exécutez le projet MyFixItCloudService, Visual Studio démarre l’émulateur de calcul Azure. Selon votre configuration de pare-feu, vous devrez peut-être autoriser l’émulateur à travers le pare-feu.
+      Lorsque vous exécutez le projet MyFixItCloudService, Visual Studio démarre l’émulateur de calcul Azure. Selon votre configuration de pare-feu, vous devrez peut-être autoriser l’émulateur à travers le pare-feu.
 
 <a id="deploybase"></a>
 ## <a name="how-to-deploy-the-base-app-to-azure-app-service-web-apps-by-using-the-windows-powershell-scripts"></a>Comment déployer l’application de base pour les applications Web de Azure App Service à l’aide de scripts Windows PowerShell
@@ -285,7 +285,7 @@ Ces instructions supposent que vous avez déjà téléchargé et exécutez la so
     Ces informations d’identification expirent après une période de temps et vous devez exécuter à nouveau le `Add-AzureAccount` applet de commande. Comme ce livre électronique est en cours d’écriture, le délai d’attente avant l’expirent des informations d’identification est de 12 heures.
 5. Si vous avez plusieurs abonnements, utilisez l’applet de commande Select-AzureSubscription pour spécifier l’abonnement que vous souhaitez créer dans l’environnement de test.
 6. Importer un certificat de gestion pour le même abonnement Azure à l’aide de la `Get-AzurePublishSettingsFile` et `Import-AzurePublishSettingsFile` applets de commande. Le premier de ces applets de commande télécharge un fichier de certificat et dans l’autre, vous spécifiez l’emplacement de ce fichier pour pouvoir pour l’importer. > [!IMPORTANT]
- > Conserver le fichier téléchargé dans un emplacement sécurisé ou supprimez-le lorsque vous avez terminé, car il contient un certificat qui peut être utilisé pour gérer vos services Azure.
+   > Conserver le fichier téléchargé dans un emplacement sécurisé ou supprimez-le lorsque vous avez terminé, car il contient un certificat qui peut être utilisé pour gérer vos services Azure.
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample22.cmd)]
 
@@ -326,7 +326,7 @@ Ces instructions supposent que vous avez déjà téléchargé et exécutez la so
     Si le script échoue ou qu’il génère des erreurs, telles que « New-AzureWebsite : appeler Set-AzureSubscription et Select-AzureSubscription tout d’abord, » vous n’avez ne peut-être pas terminé la configuration d’Azure PowerShell.
 
     Une fois le script terminé, vous pouvez utiliser le portail de gestion Azure pour voir les ressources qui ont été créées, comme indiqué dans le [automatiser tout](automate-everything.md) chapitre.
-10. Pour déployer le projet de correctif vers le nouvel environnement Azure, utilisez le *AzureWebsite.ps1* script. Exemple :
+10. Pour déployer le projet de correctif vers le nouvel environnement Azure, utilisez le *AzureWebsite.ps1* script. Par exemple :
 
     [!code-console[Main](the-fix-it-sample-application/samples/sample28.cmd)]
 
@@ -399,5 +399,5 @@ Dans MyFixItCloudService\ServiceConfiguration.Cloud.cscfg, remplacez les valeurs
 
 Vous êtes maintenant prêt à déployer le service cloud. Dans l’Explorateur de solutions, cliquez sur le projet MyFixItCloudService et sélectionnez **publier**. Pour plus d’informations, consultez «[déployer l’Application sur Azure](https://www.windowsazure.com/develop/net/tutorials/multi-tier-web-site/2-download-and-run/#deployAz)», qui est dans la partie 2 de [ce didacticiel](https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36).
 
->[!div class="step-by-step"]
-[Précédent](more-patterns-and-guidance.md)
+> [!div class="step-by-step"]
+> [Précédent](more-patterns-and-guidance.md)

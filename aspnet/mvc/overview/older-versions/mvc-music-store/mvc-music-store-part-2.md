@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2
-title: "Partie 2 : Contrôleurs | Documents Microsoft"
+title: 'Partie 2 : Contrôleurs | Documents Microsoft'
 author: jongalloway
-description: "Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 2 couvre les contrôleurs."
+description: Cette série de didacticiels détaille toutes les mesures prises pour générer l’exemple d’application de magasin de musique ASP.NET MVC. Partie 2 couvre les contrôleurs.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/21/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: bdafd751e996e759d516d0fa25b09eff21241ed7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 680cdea388d9b01961bd626643c0fd91c9205ed7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-2-controllers"></a>Partie 2 : contrôleurs
 ====================
@@ -63,7 +63,7 @@ La méthode doit maintenant ressembler à ceci :
 Maintenant, exécutez le site. Nous pouvons démarrer notre serveur web et tester le site en utilisant l’une des opérations suivantes :
 
 - Choisissez l’élément de menu Débogage ⇨ démarrer le débogage
-- Cliquez sur le bouton de flèche verte dans la barre d’outils![](mvc-music-store-part-2/_static/image2.jpg)
+- Cliquez sur le bouton de flèche verte dans la barre d’outils ![](mvc-music-store-part-2/_static/image2.jpg)
 - Utilisez le raccourci clavier, F5.
 
 En utilisant l’une des étapes ci-dessus Compiler notre projet et forcer le serveur de développement ASP.NET qui est intégrée à Visual Web Developer pour démarrer. Une notification s’affiche dans la partie inférieure de l’écran pour indiquer que le serveur de développement ASP.NET a démarré et affiche le numéro de port qu’il s’exécute sous.
@@ -102,8 +102,8 @@ Nous allons commencer notre implémentation StoreController en modifiant la mét
 
 Exécuter à nouveau le projet et parcourir les URL suivantes :
 
-- / Store
-- / Magasin/Parcourir
+- /Store
+- /Store/Browse
 - / / Détails du magasin
 
 L’accès à ces URL pour appeler les méthodes d’action dans notre contrôleur et renvoie des réponses de la chaîne :
@@ -116,7 +116,7 @@ Tout d’abord, nous allons modifier la méthode d’action Parcourir pour récu
 
 [!code-csharp[Main](mvc-music-store-part-2/samples/sample4.cs)]
 
-*Remarque : Nous utilisons la méthode utilitaire HttpUtility.HtmlEncode expurgation de l’entrée d’utilisateur. Cela empêche les utilisateurs à partir de Javascript injectant notre vue avec un lien comme /Store/Browse ? Genre =&lt;script&gt;window.location= 'http://hackersite.com'&lt;/script&gt;.*
+*Remarque : Nous utilisons la méthode utilitaire HttpUtility.HtmlEncode expurgation de l’entrée d’utilisateur. Cela empêche les utilisateurs à partir de Javascript injectant notre vue avec un lien comme /Store/Browse ? Genre =&lt;script&gt;window.location='http://hackersite.com'&lt;/script&gt;.*
 
 Maintenant nous allons accédez au magasin/Parcourir ? Genre = Disco
 
@@ -141,6 +141,6 @@ Récapitulons ce que nous avons faites jusqu'à présent :
 - Nous avons ajouté des méthodes d’Action à nos contrôleurs qui répondent aux demandes d’URL et retournent du texte dans le navigateur
 
 
->[!div class="step-by-step"]
-[Précédent](mvc-music-store-part-1.md)
-[Suivant](mvc-music-store-part-3.md)
+> [!div class="step-by-step"]
+> [Précédent](mvc-music-store-part-1.md)
+> [Suivant](mvc-music-store-part-3.md)

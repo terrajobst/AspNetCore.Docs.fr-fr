@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
-title: "Meilleures pratiques de développement (génération d’applications Cloud du monde réel avec Azure) de Web | Documents Microsoft"
+title: Meilleures pratiques de développement (génération d’applications Cloud du monde réel avec Azure) de Web | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: de536a0ca39cb752c0962f0c4ae36eb00b586bff
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4c43b256018d91e89b3427f90fc5c6cd018641f9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Développement Web meilleures pratiques (génération d’applications Cloud du monde réel avec Azure)
 ====================
@@ -165,6 +165,6 @@ Pour les meilleures pratiques de développement de serveur web supplémentaire, 
 - [Le correctif il exemple d’Application - meilleures pratiques](the-fix-it-sample-application.md#bestpractices). L’annexe de ce livre électronique répertorie des meilleures pratiques qui ont été implémentées dans l’application corriger.
 - [Liste de vérification de développeur Web](http://webdevchecklist.com/asp.net)
 
->[!div class="step-by-step"]
-[Précédent](continuous-integration-and-continuous-delivery.md)
-[Suivant](single-sign-on.md)
+> [!div class="step-by-step"]
+> [Précédent](continuous-integration-and-continuous-delivery.md)
+> [Suivant](single-sign-on.md)

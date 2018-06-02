@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
-title: "Intégration continue et livraison continue (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft"
+title: Intégration continue et livraison continue (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: eaece9f5-f80c-428b-b771-5db66d275b7d
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
 msc.type: authoredcontent
-ms.openlocfilehash: 4a5433a7dd70e27b59163822ba427b026c3f4ce0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4d482aaa0d25d6e6baaf196df4b4bb9335408e46
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="continuous-integration-and-continuous-delivery-building-real-world-cloud-apps-with-azure"></a>Intégration continue et livraison continue (génération d’applications Cloud du monde réel avec Azure)
 ====================
@@ -76,6 +76,6 @@ Consultez également les ressources suivantes :
 - [La livraison continue : Mises à jour de logiciels fiables via l’automatisation du déploiement, de Test et de Build](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1377126361). Livre Jez modeste.
 - [Il Release. Concevoir et déployer des logiciels de l’environnement de production](https://www.amazon.com/Release-It-Production-Ready-Pragmatic-Programmers/dp/0978739213). Livre Michael T. Nygard.
 
->[!div class="step-by-step"]
-[Précédent](source-control.md)
-[Suivant](web-development-best-practices.md)
+> [!div class="step-by-step"]
+> [Précédent](source-control.md)
+> [Suivant](web-development-best-practices.md)

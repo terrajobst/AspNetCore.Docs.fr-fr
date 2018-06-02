@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
-title: "À l’aide des valeurs de chaîne de requête pour filtrer les données avec la liaison de modèle et les web forms | Documents Microsoft"
+title: À l’aide des valeurs de chaîne de requête pour filtrer les données avec la liaison de modèle et les web forms | Documents Microsoft
 author: tfitzmac
-description: "Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-..."
+description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
 msc.type: authoredcontent
-ms.openlocfilehash: 2e5328ccda019462163b984da3661f7322b738df
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 03d20decf0eeff6062fbc6f8dd66f644b405c7cc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-query-string-values-to-filter-data-with-model-binding-and-web-forms"></a>À l’aide des valeurs de chaîne de requête pour filtrer les données avec la liaison de modèle et les web forms
 ====================
@@ -85,6 +85,6 @@ Dans ce didacticiel, vous avez ajouté un lien avec une valeur de chaîne de req
 
 Dans la prochaine [didacticiel](adding-business-logic-layer.md), vous allez déplacer le code à partir des fichiers code-behind dans une couche de logique métier et une couche d’accès aux données.
 
->[!div class="step-by-step"]
-[Précédent](integrating-jquery-ui.md)
-[Suivant](adding-business-logic-layer.md)
+> [!div class="step-by-step"]
+> [Précédent](integrating-jquery-ui.md)
+> [Suivant](adding-business-logic-layer.md)

@@ -1,7 +1,7 @@
 ---
-title: Groupement et la minimisation dans ASP.NET Core
+title: Regroupement et minifiy actifs statiques dans ASP.NET Core
 author: scottaddie
-description: "Découvrez comment optimiser les ressources statiques dans une application de web ASP.NET Core en appliquant le groupement et la minimisation des techniques."
+description: Découvrez comment optimiser les ressources statiques dans une application de web ASP.NET Core en appliquant le groupement et la minimisation des techniques.
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
@@ -11,13 +11,13 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 6c233d0957ce9974adbc6112e6194c072aab0b41
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a3d49315fbb62eb1a42eb1b30885dc19a81c0a91
+ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="bundling-and-minification"></a>Groupement et minimisation
+# <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>Regroupement et minifiy actifs statiques dans ASP.NET Core
 
 Par [Scott Addie](https://twitter.com/Scott_Addie)
 
@@ -33,7 +33,7 @@ Groupement et la minimisation principalement améliorent le premier temps de cha
 
 Regroupement de combine plusieurs fichiers dans un seul fichier. Regroupement réduit le nombre de demandes de serveur qui sont nécessaires pour afficher une ressource web, par exemple une page web. Vous pouvez créer n’importe quel nombre de lots individuels spécifiquement pour CSS, JavaScript, etc. Moins de fichiers signifie moins de demandes HTTP à partir du navigateur sur le serveur ou dans le service de fourniture de votre application. Il en résulte dans amélioration des performances de charge première page.
 
-### <a name="minification"></a>Minification
+### <a name="minification"></a>Minimisation
 
 Minimisation supprime les caractères inutiles à partir de code sans modifier les fonctionnalités. Il en résulte une réduction de taille importante de ressources demandées (par exemple, CSS, des images et des fichiers JavaScript). Les effets secondaires communs de minimisation incluent raccourcir les noms de variables pour un caractère et de suppression de commentaires et espaces inutiles.
 
@@ -77,15 +77,15 @@ Les modèles de projet MVC et les Pages Razor fournissent une *bundleconfig.json
 
 Options de configuration sont les suivantes :
 
-* `outputFileName`: Le nom du fichier d’offre groupée de sortie. Peut contenir un chemin d’accès relatif à partir de la *bundleconfig.json* fichier. **required**
+* `outputFileName`: Le nom du fichier d’offre groupée de sortie. Peut contenir un chemin d’accès relatif à partir de la *bundleconfig.json* fichier. **Obligatoire**
 * `inputFiles`: Un tableau de fichiers à regrouper. Voici les chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide entraîne un fichier de sortie vide. [la globalisation](http://www.tldp.org/LDP/abs/html/globbingref.html) modèles sont pris en charge.
-* `minify`: Options de réduction pour le type de sortie. **optional**, *default - `minify: { enabled: true }`*
+* `minify`: Options de réduction pour le type de sortie. **facultatif**, *par défaut : `minify: { enabled: true }`*
   * Options de configuration sont disponibles par type de fichier de sortie.
     * [Minimisation CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minimisation de JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minimisation de HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: Indicateur indiquant s’il faut ajouter les fichiers générés au fichier projet. **optional**, *default - false*
-* `sourceMap`: Indicateur précisant s’il faut générer une carte de code source pour le fichier regroupé. **optional**, *default - false*
+* `includeInProject`: Indicateur indiquant s’il faut ajouter les fichiers générés au fichier projet. **facultatif**, *par défaut : false*
+* `sourceMap`: Indicateur précisant s’il faut générer une carte de code source pour le fichier regroupé. **facultatif**, *par défaut : false*
 * `sourceMapRootPath`: Le chemin d’accès racine pour stocker le fichier de mappage de source.
 
 ## <a name="build-time-execution-of-bundling-and-minification"></a>Exécution du moment de la génération du groupement et minimisation
@@ -220,11 +220,11 @@ Spécifier les fichiers à inclure dans vos pages à l’aide de la [assistance 
 
 Les éléments suivants `environment` effectue le rendu lors de l’exécution les fichiers CSS non traités le `Development` environnement :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=21-24)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=9-12)]
 
@@ -232,11 +232,11 @@ Les éléments suivants `environment` effectue le rendu lors de l’exécution l
 
 Les éléments suivants `environment` effectue le rendu lors de l’exécution dans un environnement autre que les fichiers CSS groupées et réduites `Development`. Par exemple, en cours d’exécution `Production` ou `Staging` déclenche le rendu de ces feuilles de style :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=5&range=25-30)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 [!code-cshtml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/Pages/_Layout.cshtml?highlight=3&range=13-18)]
 
@@ -317,7 +317,7 @@ Dans cet exemple, toutes les tâches définies dans le `MyPreCompileTarget` cibl
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Utilisation de Gulp](xref:client-side/using-gulp)
-* [Utilisation de Grunt](xref:client-side/using-grunt)
-* [Utilisation de plusieurs environnements](xref:fundamentals/environments)
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Utiliser Gulp](xref:client-side/using-gulp)
+* [Utiliser Grunt](xref:client-side/using-grunt)
+* [Utiliser plusieurs environnements](xref:fundamentals/environments)
+* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)

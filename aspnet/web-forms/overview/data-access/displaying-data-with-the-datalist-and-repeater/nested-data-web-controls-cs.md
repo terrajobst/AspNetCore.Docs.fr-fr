@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-cs
-title: "Contrôles (c#) de Web de données imbriquées | Documents Microsoft"
+title: Contrôles (c#) de Web de données imbriquées | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, que nous allons examiner comment utiliser un répéteur imbriqués à l’intérieur d’un autre répéteur. Les exemples illustre comment remplir le répéteur interne à la fois d..."
+description: Dans ce didacticiel, que nous allons examiner comment utiliser un répéteur imbriqués à l’intérieur d’un autre répéteur. Les exemples illustre comment remplir le répéteur interne à la fois d...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 69fa0489ff8baed1423d29ee7bfaa3157d35a76b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4957f555691efaeaafa5bcf92141e0bef1cb1de9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="nested-data-web-controls-c"></a>Contrôles Web de données imbriquées (c#)
 ====================
@@ -93,14 +93,14 @@ Les données à lier au contrôle du répéteur interne soit accessibles de mani
 
 ## <a name="accessing-the-data-declaratively-with-an-objectdatasource-control-and-theitemdataboundevent-handler"></a>Accès aux données de façon déclarative avec un contrôle ObjectDataSource et`ItemDataBound`Gestionnaire d’événements
 
-Dans la mesure où la ve utilisé ObjectDataSource largement tout au long de cette série de didacticiels, le choix le plus naturel pour l’accès aux données pour cet exemple est à dire ObjectDataSource. Le `ProductsBLL` classe a un `GetProductsByCategoryID(categoryID)` méthode qui retourne des informations sur les produits qui appartiennent à l’objet  *`categoryID`* . Par conséquent, nous pouvons ajouter un ObjectDataSource à la `CategoryList` répéteur s `ItemTemplate` et configurez-le pour accéder à ses données à partir de cette méthode de classe s.
+Dans la mesure où la ve utilisé ObjectDataSource largement tout au long de cette série de didacticiels, le choix le plus naturel pour l’accès aux données pour cet exemple est à dire ObjectDataSource. Le `ProductsBLL` classe a un `GetProductsByCategoryID(categoryID)` méthode qui retourne des informations sur les produits qui appartiennent à l’objet *`categoryID`*. Par conséquent, nous pouvons ajouter un ObjectDataSource à la `CategoryList` répéteur s `ItemTemplate` et configurez-le pour accéder à ses données à partir de cette méthode de classe s.
 
 Malheureusement, t ne répéteur autoriser ses modèles d’être modifié via la vue de conception de sorte que nous devons ajouter la syntaxe déclarative pour ce contrôle ObjectDataSource manuellement. L’exemple de syntaxe suivant le `CategoryList` répéteur s `ItemTemplate` après l’ajout de cette nouvelle ObjectDataSource (`ProductsByCategoryDataSource`) :
 
 
 [!code-aspx[Main](nested-data-web-controls-cs/samples/sample3.aspx)]
 
-Lorsque vous utilisez l’approche ObjectDataSource nous devons définir le `ProductsByCategoryList` répéteur s `DataSourceID` propriété le `ID` de ObjectDataSource (`ProductsByCategoryDataSource`). Remarquez également que notre ObjectDataSource a un `<asp:Parameter>` élément qui spécifie le  *`categoryID`*  valeur qui sera passée dans le `GetProductsByCategoryID(categoryID)` (méthode). Mais comment spécifier cette valeur ? Dans l’idéal, nous d pouvoir définir uniquement les `DefaultValue` propriété de la `<asp:Parameter>` élément à l’aide de la syntaxe de liaison de données, comme suit :
+Lorsque vous utilisez l’approche ObjectDataSource nous devons définir le `ProductsByCategoryList` répéteur s `DataSourceID` propriété le `ID` de ObjectDataSource (`ProductsByCategoryDataSource`). Remarquez également que notre ObjectDataSource a un `<asp:Parameter>` élément qui spécifie le *`categoryID`* valeur qui sera passée dans le `GetProductsByCategoryID(categoryID)` (méthode). Mais comment spécifier cette valeur ? Dans l’idéal, nous d pouvoir définir uniquement les `DefaultValue` propriété de la `<asp:Parameter>` élément à l’aide de la syntaxe de liaison de données, comme suit :
 
 
 [!code-aspx[Main](nested-data-web-controls-cs/samples/sample4.aspx)]
@@ -133,7 +133,7 @@ Au lieu d’utiliser un ObjectDataSource pour extraire les produits pour la cat�
 
 Répéteur s `DataSource` propriété utilise la syntaxe de liaison de données pour indiquer que les données proviennent de la `GetProductsInCategory(categoryID)` (méthode). Étant donné que `Eval("CategoryID")` retourne une valeur de type `Object`, nous effectuer un cast de l’objet à un `Integer` avant de le transmettre dans le `GetProductsInCategory(categoryID)` (méthode). Notez que la `CategoryID` accessible via la liaison de données syntaxe Voici le `CategoryID` dans les *externe* répéteur (`CategoryList`), celui s liés aux enregistrements de la `Categories` table. Par conséquent, nous savons que `CategoryID` ne peut pas être une base de données `NULL` valeur, c’est pourquoi nous pouvons aveugle effectué le `Eval` méthode sans vérifier si nous re traiter un `DBNull`.
 
-Avec cette approche, nous devons créer la `GetProductsInCategory(categoryID)` (méthode) et de récupérer l’ensemble approprié de produits donné fourni  *`categoryID`* . Ce faire, nous pouvons simplement retourner la `ProductsDataTable` retournée par le `ProductsBLL` classe s `GetProductsByCategoryID(categoryID)` (méthode). S permettent de créer la `GetProductsInCategory(categoryID)` méthode dans la classe code-behind pour notre `NestedControls.aspx` page. Pour cela utiliser le code suivant :
+Avec cette approche, nous devons créer la `GetProductsInCategory(categoryID)` (méthode) et de récupérer l’ensemble approprié de produits donné fourni *`categoryID`*. Ce faire, nous pouvons simplement retourner la `ProductsDataTable` retournée par le `ProductsBLL` classe s `GetProductsByCategoryID(categoryID)` (méthode). S permettent de créer la `GetProductsInCategory(categoryID)` méthode dans la classe code-behind pour notre `NestedControls.aspx` page. Pour cela utiliser le code suivant :
 
 
 [!code-csharp[Main](nested-data-web-controls-cs/samples/sample7.cs)]
@@ -169,7 +169,7 @@ Cette amélioration n’introduit pas de toute modification apportée au balisag
 
 Comme toujours, lorsqu’il s’agit de l’analyse des performances de ces deux techniques, la mesure uniquement sûr consiste à exécuter les tests contrôlés adaptées pour votre application s cas des scénarios courants.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, nous avons vu comment imbriquer des données d’un contrôle Web dans une autre, plus particulièrement examiner comment utiliser un répéteur externe pour afficher un élément pour chaque catégorie avec un répéteur interne qui répertorie les produits pour chaque catégorie dans une liste à puces. Le principal défi de la création d’une interface utilisateur imbriqués se trouve dans l’accès et la liaison des données correctes pour le contrôle Web de données interne. Il existe de nombreuses techniques disponibles, que parmi lesquels nous avons examiné dans ce didacticiel. La première approche examinée utilisé un ObjectDataSource dans les données externes, le contrôle Web s `ItemTemplate` qui a été liée au contrôle Web interne de données via son `DataSourceID` propriété. La seconde technique accédé aux données via une méthode dans une classe code-behind de s de page ASP.NET. Cette méthode peut alors être liée aux données internes le contrôle Web s `DataSource` propriété via la syntaxe de liaison de données.
 
@@ -179,12 +179,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Zack Jones et Liz Shulok. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](showing-multiple-records-per-row-with-the-datalist-control-cs.md)
-[Suivant](displaying-data-with-the-datalist-and-repeater-controls-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](showing-multiple-records-per-row-with-the-datalist-control-cs.md)
+> [Suivant](displaying-data-with-the-datalist-and-repeater-controls-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb
-title: "Une vue d’ensemble de l’insertion, mise à jour et suppression de données (VB) | Documents Microsoft"
+title: Une vue d’ensemble de l’insertion, mise à jour et suppression de données (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous verrons comment mapper un ObjectDataSource Insert(), Update(), et des classes de méthodes Delete() aux méthodes de la couche BLL, ainsi que comment la configuration..."
+description: Dans ce didacticiel, nous verrons comment mapper un ObjectDataSource Insert(), Update(), et des classes de méthodes Delete() aux méthodes de la couche BLL, ainsi que comment la configuration...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/17/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/an-overview-of-inserting-updating-and-deleting-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e7552abb30aa26d3aaceb3312c00661c6d4d6cf8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: db77d9ec5b0d4b27259023363e786b26fe736d7b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-inserting-updating-and-deleting-data-vb"></a>Une vue d’ensemble de l’insertion, mise à jour et suppression de données (Visual Basic)
 ====================
@@ -238,7 +238,7 @@ Pour notre didacticiel, nous allons simplement supprimer tous les enregistrement
 - Augmenter la `DeleteProduct` pour inclure la logique permettant de supprimer les détails de la commande du produit spécifié (méthode)
 - Modifier la requête SQL utilisée par le TableAdapter pour inclure la suppression des détails de commande du produit spécifié
 
-Nous allons simplement supprimer tous les enregistrements à partir de la `Order Details` table contourner les mesures et la contrainte de clé étrangère. Accédez à l’Explorateur de serveurs dans Visual Studio, avec le bouton droit sur le `NORTHWND.MDF` nœud, puis choisissez la nouvelle requête. Puis, dans la fenêtre de requête, exécutez l’instruction SQL suivante :`DELETE FROM [Order Details]`
+Nous allons simplement supprimer tous les enregistrements à partir de la `Order Details` table contourner les mesures et la contrainte de clé étrangère. Accédez à l’Explorateur de serveurs dans Visual Studio, avec le bouton droit sur le `NORTHWND.MDF` nœud, puis choisissez la nouvelle requête. Puis, dans la fenêtre de requête, exécutez l’instruction SQL suivante : `DELETE FROM [Order Details]`
 
 
 [![Supprimer tous les enregistrements à partir de la Table Order Details](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image35.png)](an-overview-of-inserting-updating-and-deleting-data-vb/_static/image34.png)
@@ -441,8 +441,8 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](limiting-data-modification-functionality-based-on-the-user-cs.md)
-[Suivant](examining-the-events-associated-with-inserting-updating-and-deleting-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](limiting-data-modification-functionality-based-on-the-user-cs.md)
+> [Suivant](examining-the-events-associated-with-inserting-updating-and-deleting-vb.md)

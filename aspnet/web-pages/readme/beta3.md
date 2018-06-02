@@ -1,8 +1,8 @@
 ---
 uid: web-pages/readme/beta3
-title: "Matrice et ASP.NET Web Pages (Razor) version bêta 3 version Lisezmoi Web | Documents Microsoft"
+title: Matrice et ASP.NET Web Pages (Razor) version bêta 3 version Lisezmoi Web | Documents Microsoft
 author: rick-anderson
-description: "Matrice Web et Lisezmoi de version bêta 3 ASP.NET Web Pages (Razor)"
+description: Matrice Web et Lisezmoi de version bêta 3 ASP.NET Web Pages (Razor)
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/10/2011
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/readme/beta3
 msc.type: content
-ms.openlocfilehash: def2f4b3e54c8de539e10c1b526a1dababeca8fb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5ef7a6f44758cf94fc19d6fbab3cc4b7bce8e8e5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="web-matrix-and-aspnet-web-pages-razor-beta-3-release-readme"></a>Matrice Web et Lisezmoi de version bêta 3 ASP.NET Web Pages (Razor)
 ====================
@@ -283,9 +283,9 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 > Si vous désinstallez le Kit de développement .NET Framework version 4 et puis réinstallez, ASP.NET Web Pages avec syntaxe Razor est désactivées. Pages avec la *.cshtml* extension ne fonctionnent pas correctement. Les Pages Web ASP.NET enregistre un assembly dans la racine de l’ordinateur *Web.config* des fichiers et suppression de .NET Framework supprime ce fichier. Réinstallez le .NET Framework installe une nouvelle version du fichier de configuration, mais ne pas ajoute la référence de l’assembly ASP.NET Web Pages.
 > 
 > **Solution de contournement** après la réinstallation de .NET Framework, réinstallez ASP.NET Web Pages avec syntaxe Razor. Cette opération ajoute l’élément suivant à la *Web.config* fichier à la racine de l’ordinateur, qui correspond généralement à l’emplacement suivant :  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config (32-bit)`  
->   
+> 
 > `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config (64-bit)`
 > 
 > [!code-xml[Main](beta3/samples/sample6.xml)]
@@ -302,9 +302,9 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 #### <a name="issue-extensionless-urls-do-not-find-cshtmlvbhtml-files-on-iis-7-or-iis-75"></a>Problème : URL sans extension ne trouvent pas les fichiers.cshtml/.vbhtml sur IIS 7 ou IIS 7.5
 
 > Sur IIS 7 ou IIS 7.5, les demandes avec une URL semblable à la suivante ne sont pas en mesure de trouver les pages qui ont le *.cshtml* ou *.vbhtml* extension :  
->   
+> 
 > `http://www.example.com/ExampleSite/ExampleFile`  
->   
+> 
 > Le problème se produit car la réécriture d’URL n’est pas activée par défaut pour IIS 7 ou IIS 7.5. Le scénario voyez généralement cette est que vous ne voyez pas le problème lors du test localement à l’aide d’IIS Express, mais que vous le rencontrez lorsque vous déployez votre site Web sur un site Web d’hébergement.
 > 
 > **Workaround**
@@ -344,7 +344,7 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 >     - Copie *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\x86\\** **à** *\Bin\x86*
 >     - Copie *C:\Program Files\Microsoft SQL Server Compact Edition\v4.0\Private\amd64\\** **à** *\Bin\amd64*
 > 2. Dans le dossier racine du site Web, créez ou ouvrez un *Web.config* fichier. (Dans la version bêta 3 de WebMatrix, ce type de fichier est disponible si vous cliquez sur **tous les** dans les **choisir un Type de fichier** boîte de dialogue.)
-> 3. Ajoutez l’élément suivant en tant qu’enfant de la  **&lt;configuration&gt;**  élément (pas à l’intérieur de la  **&lt;system.web&gt;**  élément) :
+> 3. Ajoutez l’élément suivant en tant qu’enfant de la **&lt;configuration&gt;** élément (pas à l’intérieur de la **&lt;system.web&gt;** élément) :
 > 
 > 
 > [!code-xml[Main](beta3/samples/sample10.xml)]
@@ -366,21 +366,21 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 > 
 > **Workaround**  
 > Utilisez le `Encryption Mode` propriété de la `SqlCeConnection` classe pour chiffrer les fichiers de base de données SQL Server Compact 4.0. L’exemple suivant montre comment créer une base de données SQL Server Compact 4.0 chiffrées à l’aide du `Encryption Mode` propriété :
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample11.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample12.vb)]
 > 
 > Pour modifier le mode de chiffrement de base de données SQL Server Compact 4.0 existante, procédez comme suit :
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample13.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample14.vb)]
 > 
 > Pour chiffrer une base de données SQL Server Compact 4.0, procédez comme suit :
->  
+> 
 > [!code-csharp[Main](beta3/samples/sample15.cs)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample16.vb)]
 
 
@@ -537,7 +537,7 @@ Cette section du document décrit les nouvelles fonctionnalités, des modificati
 > Définir explicitement le type de données pour les paramètres tels que `SqlDbType` ou `DbType`. Ceci est très important dans le cas des types de données BLOB (`image` et `ntext`). Utilisez un code semblable au suivant :
 > 
 > [!code-sql[Main](beta3/samples/sample20.sql)]
->  
+> 
 > [!code-vb[Main](beta3/samples/sample21.vb)]
 
 

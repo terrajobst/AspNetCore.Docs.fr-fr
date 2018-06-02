@@ -1,35 +1,35 @@
 ---
-title: "Assistance de balise d’environnement dans ASP.NET Core"
+title: Tag Helper Environnement dans ASP.NET Core
 author: pkellner
-description: "Assistance de balise d’environnement ASP.NET Core définies, y compris toutes les propriétés"
-ms.author: riande
+description: "Tag Helper Environnement ASP.NET Core défini avec toutes les propriétés"
 manager: wpickett
+ms.author: riande
 ms.date: 07/14/2017
-ms.topic: article
-ms.technology: aspnet
 ms.prod: aspnet-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/environment-tag-helper
-ms.openlocfilehash: 32646f1fdaf840f796da1ec573459157a41a86d1
-ms.sourcegitcommit: 3e303620a125325bb9abd4b2d315c106fb8c47fd
-ms.translationtype: MT
+ms.openlocfilehash: 7a99ee0e59c7f49a3208d2c86c11cabce4294889
+ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/30/2018
 ---
-# <a name="environment-tag-helper-in-aspnet-core"></a>Assistance de balise d’environnement dans ASP.NET Core
+# <a name="environment-tag-helper-in-aspnet-core"></a>Tag Helper Environnement dans ASP.NET Core
 
 Par [Peter Kellner](http://peterkellner.net) et [Hisham Bin Ateya](https://twitter.com/hishambinateya)
 
-L’application d’assistance de balise environnement restitue conditionnelle son contenu délimité en fonction de l’environnement d’hébergement actuel. Son seul attribut `names` est une liste séparée par des virgules de l’environnement de noms, que si les mettre en correspondance avec l’environnement actuel, déclenche le contenu entre parenthèses à restituer.
+Le Tag Helper Environnement restitue de façon conditionnelle son contenu joint en fonction de l’environnement d’hébergement actuel. Son seul attribut `names` est une liste séparée par des virgules de noms d’environnement qui, s’ils correspondent à l’environnement actuel, déclenchent l’affichage du contenu joint.
 
-## <a name="environment-tag-helper-attributes"></a>Attributs d’assistance des balises d’environnement
+## <a name="environment-tag-helper-attributes"></a>Attributs de Tag Helper Environnement
 
 ### <a name="names"></a>noms
 
-Accepte un seul nom environnement d’hébergement ou d’une liste séparée par des virgules de noms d’environnement qui déclenchent le rendu du contenu entre parenthèses d’hébergement.
+Accepte un seul nom d’environnement d’hébergement ou une liste séparée par des virgules de noms d’environnement d’hébergement qui déclenchent l’affichage du contenu joint.
 
-Ces valeurs sont comparées à la valeur actuelle retournée à partir de la propriété statique ASP.NET Core `HostingEnvironment.EnvironmentName`.  Cette valeur est une des valeurs suivantes : **intermédiaire**; **Développement** ou **Production**. La comparaison ignore la casse.
+Ces valeurs sont comparées à la valeur actuelle retournée par la propriété statique ASP.NET Core `HostingEnvironment.EnvironmentName`.  Cette valeur est l’une des suivantes : **Préproduction**, **Développement** ou **Production**. La comparaison ignore la casse.
 
-Un exemple de valide `environment` d’assistance de balise est :
+Un exemple de Tag Helper `environment` valide est :
 
 ```cshtml
 <environment names="Staging,Production">
@@ -37,13 +37,13 @@ Un exemple de valide `environment` d’assistance de balise est :
 </environment>
 ```
 
-## <a name="include-and-exclude-attributes"></a>inclure et exclure des attributs
+## <a name="include-and-exclude-attributes"></a>Attributs include et exclude
 
-ASP.NET Core 2.x ajoute le `include`  &  `exclude` attributs. Ces attributs contrôlent rendu du contenu entre parenthèses basé sur les noms d’environnement hébergement inclus ou exclus.
+ASP.NET Core 2.x ajoute les attributs `include` & `exclude`. Ces attributs contrôlent le rendu du contenu joint en fonction des noms d’environnement d’hébergement inclus ou exclus.
 
-### <a name="include-aspnet-core-20-and-later"></a>inclure le cœur d’ASP.NET 2.0 et versions ultérieur
+### <a name="include-aspnet-core-20-and-later"></a>Propriété include ASP.NET Core 2.0 et ultérieur
 
-Le `include` propriété a un comportement semblable de la `names` attribut dans la version 1.0 de ASP.NET Core.
+La propriété `include` a un comportement semblable à l’attribut `names` dans ASP.NET Core 1.0.
 
 ```cshtml
 <environment include="Staging,Production">
@@ -51,9 +51,9 @@ Le `include` propriété a un comportement semblable de la `names` attribut dans
 </environment>
 ```
 
-### <a name="exclude-aspnet-core-20-and-later"></a>exclure le cœur d’ASP.NET 2.0 et versions ultérieur
+### <a name="exclude-aspnet-core-20-and-later"></a>Propriété exclude ASP.NET Core 2.0 et ultérieur
 
-En revanche, le `exclude` propriété permet la `EnvironmentTagHelper` restituer le contenu entre parenthèses pour tous les noms d’environnement hébergement à l’exception de l’enregistrement que vous avez spécifié.
+En revanche, la propriété `exclude` permet à `EnvironmentTagHelper` de restituer le contenu joint pour tous les noms d’environnement d’hébergement à l’exception de ceux que vous avez spécifiés.
 
 ```cshtml
 <environment exclude="Development">

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
-title: "Créer le projet | Documents Microsoft"
+title: Créer le projet | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: 094733dcbe31486385dda2f8b44ba77a17486c82
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7cfceb38204b6cfd3589a082761273e54ac122ca
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/03/2018
 ---
 <a name="create-the-project"></a>Créer le projet
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -52,7 +52,10 @@ Dans ce didacticiel vous créer, examiner et exécuter le projet par défaut dan
 
     > [!NOTE]
     > Le nom du projet dans cette série de didacticiels est **WingtipToys**. Il est recommandé d’utiliser ce *exacte* nom du projet afin que le code fourni dans l’ensemble de la série de didacticiels fonctionne comme prévu.
-6. Ensuite, sélectionnez le **Web Forms** modèle et choisissez la **créer un projet** bouton.  
+
+6. Cliquez sur le **modifier l’authentification** bouton. Sélectionnez **comptes d’utilisateur individuels** et cliquez sur le **OK** bouton.
+
+7. Sélectionnez le **Web Forms** modèle et cliquez sur le **OK** bouton.
 
     ![Créer le projet - modèle de projet](create-the-project/_static/image3.png)
 
@@ -150,7 +153,7 @@ Lorsqu’un serveur Web reçoit une demande pour une page, il recherche la page,
 > 
 > Pour les navigateurs qui ne prennent pas en charge HTML5, vous pouvez utiliser [Modernizr](http://www.modernizr.com/). Modernizr est une bibliothèque JavaScript open source qui peut détecter si un navigateur prend en charge les fonctionnalités HTML5 et les activer, si elle n’est pas le cas. Dans le modèle d’Application ASP.NET Web Forms, Modernizr est installé en tant que package NuGet.
 > 
-> **Bootstrap**
+> **programme d’amorçage**
 > 
 > Utilisent des modèles de projet Visual Studio 2013 [Bootstrap](http://getbootstrap.com/), une infrastructure de mise en page et des thèmes créée par Twitter. Programme d’amorçage utilise CSS3 pour fournir une conception réactive, ce qui signifie que les dispositions peuvent s’adapter dynamiquement aux tailles de fenêtre de navigateur différents. Vous pouvez également utiliser la fonctionnalité de thèmes du programme d’amorçage pour facilement effectuer un changement dans l’apparence de l’application. Par défaut, le modèle d’Application Web ASP.NET dans Visual Studio 2013 inclut Bootstrap comme package NuGet.
 > 
@@ -195,6 +198,6 @@ Dans ce didacticiel vous avez créé, révisé et exécuter l’application Web 
 [Projets d’Application Web et projets de Site Web](https://msdn.microsoft.com/library/dd547590.aspx)   
 [Vue d’ensemble des Pages de formulaires Web ASP.NET](https://msdn.microsoft.com/library/428509ah.aspx)
 
->[!div class="step-by-step"]
-[Précédent](introduction-and-overview.md)
-[Suivant](create_the_data_access_layer.md)
+> [!div class="step-by-step"]
+> [Précédent](introduction-and-overview.md)
+> [Suivant](create_the_data_access_layer.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-cs
-title: "Passer des données à afficher les Pages maîtres (c#) | Documents Microsoft"
+title: Passer des données à afficher les Pages maîtres (c#) | Documents Microsoft
 author: microsoft
-description: "L’objectif de ce didacticiel est d’expliquer comment vous pouvez passer des données à partir d’un contrôleur à une page maître de vue. Nous allons examiner deux stratégies pour passer des données à une vue m..."
+description: L’objectif de ce didacticiel est d’expliquer comment vous pouvez passer des données à partir d’un contrôleur à une page maître de vue. Nous allons examiner deux stratégies pour passer des données à une vue m...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: b8bc8ce0690d2e45877be75011d8883facbc74a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: bfb58cbe0c415c092f3a41e518281a7461d2803c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="passing-data-to-view-master-pages-c"></a>Passage de données à afficher les Pages maîtres (c#)
 ====================
@@ -53,7 +53,7 @@ Commençons par la solution la plus simple pour passer des données de la vue à
 
 Envisagez le contrôleur dans la liste 1. Il expose deux actions nommées `Index()` et `Details()`. Le `Index()` méthode d’action retourne chaque projet dans la table de base de données de films. Le `Details()` méthode d’action retourne chaque projet dans une catégorie particulière de film.
 
-**La liste 1 :`Controllers\HomeController.cs`**
+**La liste 1 : `Controllers\HomeController.cs`**
 
 [!code-csharp[Main](passing-data-to-view-master-pages-cs/samples/sample1.cs)]
 
@@ -69,13 +69,13 @@ L’action Details() ajoute également les deux clés nommé catégories et des 
 
 La vue Index se trouve dans la liste 2. Il parcourt simplement la liste de films représenté par l’élément de films dans les données d’affichage.
 
-**Liste 2 :`Views\Home\Index.aspx`**
+**Liste 2 : `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](passing-data-to-view-master-pages-cs/samples/sample2.aspx)]
 
 L’affichage de page maître est contenue dans la liste 3. La page maître de vue effectue une itération et restitue toutes les catégories de film représentés par l’élément de catégories à partir des données de la vue.
 
-**La liste 3 :`Views\Shared\Site.master`**
+**La liste 3 : `Views\Shared\Site.master`**
 
 [!code-aspx[Main](passing-data-to-view-master-pages-cs/samples/sample3.aspx)]
 
@@ -89,7 +89,7 @@ Dans cette section, nous examinons une solution de remplacement et mieux, pour p
 
 La classe ApplicationController est contenue dans la liste 4.
 
-**La liste 4 –`Controllers\ApplicationController.cs`**
+**La liste 4 – `Controllers\ApplicationController.cs`**
 
 [!code-csharp[Main](passing-data-to-view-master-pages-cs/samples/sample4.cs)]
 
@@ -101,7 +101,7 @@ Enfin, notez que le contrôleur de l’Application contient un constructeur qui 
 
 Le contrôleur de films de liste 5 hérite de contrôleur d’Application.
 
-**La liste 5 :`Controllers\MoviesController.cs`**
+**La liste 5 : `Controllers\MoviesController.cs`**
 
 [!code-csharp[Main](passing-data-to-view-master-pages-cs/samples/sample5.cs)]
 
@@ -109,12 +109,12 @@ Le contrôleur de films, tout comme le contrôleur Home présenté dans la secti
 
 Notez que cette solution à l’ajout de données d’affichage pour une page maître de vue ne viole pas le principe sec (ne pas se répéter). Le code pour ajouter la liste des catégories de film pour afficher des données est contenu dans un seul emplacement : le constructeur pour le contrôleur de l’Application.
 
-### <a name="summary"></a>Résumé
+### <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, nous avons abordé les deux approches pour passer des données de la vue à partir d’un contrôleur à une page maître de vue. Tout d’abord, nous avons examiné simple, mais difficile à maintenir l’approche. Dans la première section, nous avons indiqué comment vous pouvez ajouter des données d’affichage pour une page maître de vue dans chaque chaque action du contrôleur dans votre application. Nous avons conclu qu’il s’agissait d’une mauvaise approche car elle ne respecte pas le principe sec (ne pas se répéter).
 
 Ensuite, nous avons examiné une bien meilleure stratégie pour l’ajout de données requises par une page maître de vue pour afficher les données. Au lieu d’ajouter les données d’affichage de chaque action du contrôleur, nous avons ajouté les données d’affichage en une seule fois, au sein d’un contrôleur de l’Application. De cette façon, vous pouvez éviter le code en double lors du passage des données à une page maître de vue dans une application ASP.NET MVC.
 
->[!div class="step-by-step"]
-[Précédent](creating-page-layouts-with-view-master-pages-cs.md)
-[Suivant](asp-net-mvc-views-overview-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-page-layouts-with-view-master-pages-cs.md)
+> [Suivant](asp-net-mvc-views-overview-vb.md)

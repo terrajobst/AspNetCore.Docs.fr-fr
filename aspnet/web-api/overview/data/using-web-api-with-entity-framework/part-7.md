@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-7
-title: "Création de la vue (UI) | Documents Microsoft"
+title: Création de la vue (UI) | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-7
 msc.type: authoredcontent
-ms.openlocfilehash: 8c5cc662e2e3c9cb07ca9e30ff57eb084d58e1bb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5052d7cca4a5c12a9ea56eb929d4794b19e82603
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-view-ui"></a>Création de la vue (UI)
 ====================
@@ -32,7 +32,7 @@ Ouvrez le fichier Views/Home/Index.cshtml. Remplacez tout le contenu de ce fichi
 
 La plupart de la `div` sont les éléments de [Bootstrap](http://getbootstrap.com/) styles. Les éléments importants sont ceux avec `data-bind` attributs. Cet attribut lie le code HTML pour le modèle d’affichage.
 
-Exemple :
+Par exemple :
 
 [!code-html[Main](part-7/samples/sample2.html)]
 
@@ -42,7 +42,7 @@ Dans cet exemple, le &quot; `text` &quot; liaison provoque la `<p>` élément po
 
 Chaque fois qu’une nouvelle valeur est attribuée à `error`, Knockout met à jour le texte dans le `<p>` élément.
 
-Le `foreach` liaison indique Knockout pour parcourir le contenu de le `books` tableau. Pour chaque élément du tableau, Knockout crée un &lt;li&gt; élément. Les liaisons dans le contexte de la `foreach` font référence aux propriétés sur l’élément de tableau. Exemple :
+Le `foreach` liaison indique Knockout pour parcourir le contenu de le `books` tableau. Pour chaque élément du tableau, Knockout crée un &lt;li&gt; élément. Les liaisons dans le contexte de la `foreach` font référence aux propriétés sur l’élément de tableau. Par exemple :
 
 [!code-html[Main](part-7/samples/sample4.html)]
 
@@ -54,6 +54,6 @@ Si vous exécutez l’application maintenant, il doit ressembler à ceci :
 
 La liste des livres charge en mode asynchrone, une fois le chargement de la page. Actuellement, le &quot;détails&quot; liens ne sont pas fonctionnels. Nous allons ajouter cette fonctionnalité dans la section suivante.
 
->[!div class="step-by-step"]
-[Précédent](part-6.md)
-[Suivant](part-8.md)
+> [!div class="step-by-step"]
+> [Précédent](part-6.md)
+> [Suivant](part-8.md)

@@ -1,7 +1,7 @@
 ---
-title: Authentification
+title: Authentification dans ASP.NET Core
 author: rick-anderson
-description: "Ce document constitue la table des matières des différentes rubriques relatives à l’authentification ASP.NET Core."
+description: "Découvrez les rubriques relatives aux technologies d’authentification ASP.NET Core."
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,37 +9,39 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/index
-ms.openlocfilehash: fbef1545f3cdcbe3887a5dd9ceca0e9b420193f1
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 20a6d5ae598a0d1e8d7735cb1311fac1c10513eb
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/15/2018
 ---
-# <a name="authentication"></a>Authentification
+# <a name="authentication-in-aspnet-core"></a>Authentification dans ASP.NET Core
 
-* [Options d’authentification OOS de la communauté](community.md)
+* [Options d’authentification de la communauté Open Source](xref:security/authentication/community)
 
-* [Présentation d’Identity](identity.md)
+* [Présentation d’Identity](xref:security/authentication/identity)
 
-* [Activer l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes](social/index.md)
+* [Activer l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes](xref:security/authentication/social/index)
 
-* [Activer la génération de code QR dans Identity](identity-enable-qrcodes.md)
+* [Activer l’authentification avec WS-Federation](xref:security/authentication/ws-federation)
 
-* [Configurer l’authentification Windows](windowsauth.md)
+* [Activer la génération de code QR dans Identity](xref:security/authentication/identity-enable-qrcodes)
 
-* [Confirmation de compte et récupération de mot de passe](accconfirm.md)
+* [Configurer l’authentification Windows](xref:security/authentication/windowsauth)
 
-* [Authentification à deux facteurs avec SMS](2fa.md)
+* [Confirmation de compte et récupération de mot de passe](xref:security/authentication/accconfirm)
 
-* [Utiliser l’authentification par cookie sans Identity](cookie.md)
+* [Authentification à deux facteurs avec SMS](xref:security/authentication/2fa)
 
-* [Azure Active Directory](azure-active-directory/index.md)
+* [Utiliser l’authentification par cookie sans Identity](xref:security/authentication/cookie)
+
+* [Azure Active Directory](xref:security/authentication/azure-active-directory/index)
 
   * [Intégrer Azure AD dans une application web ASP.NET Core](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/)
 
-  * [Intégrer Azure AD B2C dans une application web ASP.NET Core orientée client](azure-ad-b2c.md)
+  * [Intégrer Azure AD B2C dans une application web ASP.NET Core orientée client](xref:security/authentication/azure-ad-b2c)
 
-  * [Intégrer Azure AD B2C dans une API web ASP.NET Core](azure-ad-b2c-webapi.md)
+  * [Intégrer Azure AD B2C dans une API web ASP.NET Core](xref:security/authentication/azure-ad-b2c-webapi)
 
   * [Appeler une API web ASP.NET Core à partir d’une application WPF via Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-native-aspnetcore/)
 
@@ -47,6 +49,6 @@ ms.lasthandoff: 01/30/2018
 
 * [Sécuriser les applications ASP.NET Core avec IdentityServer4](http://docs.identityserver.io/en/release/)
 
-* [Sécuriser les applications ASP.NET Core avec l’authentification Azure App Service (Easy Auth)](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)
+* [Sécuriser les applications ASP.NET Core avec l’authentification Azure App Service (Easy Auth)](/azure/app-service/app-service-authentication-overview)
 
 * [Articles basés sur les projets créés avec des comptes d’utilisateur individuels](xref:security/authentication/individual)

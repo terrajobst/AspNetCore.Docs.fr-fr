@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/setting-folder-permissions
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : définition des autorisations de dossier | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : définition des autorisations de dossier | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/setting-folder-permissions
 msc.type: authoredcontent
-ms.openlocfilehash: 19bef5ff97fd5b79135df8ca9bd6bd316594cc5e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7efe267975835e889950983126088f1b637c28fb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-setting-folder-permissions"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : définition des autorisations de dossier
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -67,7 +67,7 @@ Testez en provoquant une erreur à nouveau de la même façon (requête d’une 
 
 ![Page de journal d’erreurs ELMAH](setting-folder-permissions/_static/image4.png)
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Maintenant terminé toutes les tâches nécessaires pour obtenir de l’université Contoso fonctionne correctement dans IIS sur votre ordinateur local. Dans l’étape suivante du didacticiel, vous allez apporter au site disponible publiquement en la déployant sur Azure.
 
@@ -77,6 +77,6 @@ Dans cet exemple, la raison pour laquelle Elmah a été impossible d’enregistr
 
 Pour plus d’informations sur la façon d’accorder des autorisations pour les identités du pool d’applications, consultez [identités du Pool d’applications](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) et [le contenu sécurisé dans IIS via ACL du système de fichiers](https://www.iis.net/learn/get-started/planning-for-security/secure-content-in-iis-through-file-system-acls) sur le site IIS.net.
 
->[!div class="step-by-step"]
-[Précédent](deploying-to-iis.md)
-[Suivant](deploying-to-production.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-to-iis.md)
+> [Suivant](deploying-to-production.md)

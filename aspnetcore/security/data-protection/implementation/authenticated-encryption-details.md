@@ -1,7 +1,7 @@
 ---
-title: "Détails de chiffrement authentifié"
+title: Détails de chiffrement authentifié dans ASP.NET Core
 author: rick-anderson
-description: "Cette décrit document les détails d’implémentation de la protection des données ASP.NET Core authentifié de chiffrement."
+description: Découvrez les détails d’implémentation de chiffrement de la Protection des données ASP.NET Core authentifié.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/implementation/authenticated-encryption-details
-ms.openlocfilehash: b58f36a5f0353da69d6f1ef4db542aba8267027a
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 3ca5231e84156ede59793825e1a3e3bea0313055
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="authenticated-encryption-details"></a>Détails de chiffrement authentifié
+# <a name="authenticated-encryption-details-in-aspnet-core"></a>Détails de chiffrement authentifié dans ASP.NET Core
 
 <a name="data-protection-implementation-authenticated-encryption-details"></a>
 
@@ -31,7 +31,7 @@ Le format de charge utile protégé est constitué de trois composants principau
 
 * Id de clé de 128 bits qui identifie la clé utilisée pour protéger cette charge utile particulier.
 
-* Le reste de la charge utile protégé est [spécifique pour le chiffreur encapsulé par cette clé](subkeyderivation.md#data-protection-implementation-subkey-derivation). Dans l’exemple ci-dessous, la clé représente un AES-256-CBC + le chiffreur de HMACSHA256, et la charge utile est subdivisée comme suit : * modificateur de la touche A 128 bits. * Un vecteur d’initialisation de 128 bits. * 48 d’octets de sortie de AES-256-CBC. * Une balise d’authentification HMACSHA256.
+* Le reste de la charge utile protégé est [spécifique pour le chiffreur encapsulé par cette clé](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation). Dans l’exemple ci-dessous, la clé représente un AES-256-CBC + le chiffreur de HMACSHA256, et la charge utile est subdivisée comme suit : * modificateur de la touche A 128 bits. * Un vecteur d’initialisation de 128 bits. * 48 d’octets de sortie de AES-256-CBC. * Une balise d’authentification HMACSHA256.
 
 Une charge utile d’exemple protégé est illustrée ci-dessous.
 

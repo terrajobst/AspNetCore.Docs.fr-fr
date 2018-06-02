@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-vb
-title: "Imbriqué les Pages maîtres (VB) | Documents Microsoft"
+title: Imbriqué les Pages maîtres (VB) | Documents Microsoft
 author: rick-anderson
-description: "Montre comment imbriquer une page maître dans une autre."
+description: Montre comment imbriquer une page maître dans une autre.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/nested-master-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9059e358311cc80b6a64aa3ee1168f4ffcd4e94c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 8c0123c12bb653a7f680154e2155eae0eb129428
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="nested-master-pages-vb"></a>Pages maîtres imbriquées (VB)
 ====================
@@ -94,7 +94,7 @@ Cette balise affiche un lien intitulé « Pages maîtres imbriquées (Simple) 
 
 ## <a name="step-2-creating-a-simple-nested-master-page"></a>Étape 2 : Création d’une Page maître imbriquée Simple
 
-`Simple.master`contient deux contrôles ContentPlaceHolder : le `MainContent` ContentPlaceHolder que nous avons ajouté dans le formulaire Web avec la `head` ContentPlaceHolder dans le `<head>` élément. Si vous deviez créer une page de contenu et le lier à `Simple.master` la page de contenu aurait deux contrôles de contenu faisant référence aux deux ContentPlaceHolders. De même, si nous créer une page maître imbriquée, puis liez-le à `Simple.master` puis la page maître imbriquée aura deux contrôles de contenu.
+`Simple.master` contient deux contrôles ContentPlaceHolder : le `MainContent` ContentPlaceHolder que nous avons ajouté dans le formulaire Web avec la `head` ContentPlaceHolder dans le `<head>` élément. Si vous deviez créer une page de contenu et le lier à `Simple.master` la page de contenu aurait deux contrôles de contenu faisant référence aux deux ContentPlaceHolders. De même, si nous créer une page maître imbriquée, puis liez-le à `Simple.master` puis la page maître imbriquée aura deux contrôles de contenu.
 
 Vous allez ajouter une nouvelle page maître imbriquée à la `NestedMasterPages` dossier nommé `SimpleNested.master`. Avec le bouton droit sur le `NestedMasterPages` dossier et choisissez Ajouter un nouvel élément. Cela affiche la boîte de dialogue Ajouter un nouvel élément indiquée dans la Figure 2. Sélectionnez le type de modèle de Page maître et le nom de la nouvelle page maître. Pour indiquer que la nouvelle page maître doit être une page maître imbriquée, cochez la case à cocher « Sélectionnez page maître ».
 
@@ -126,7 +126,7 @@ Mettre à jour de cette page maître imbriquée afin qu’elle affiche le texte 
 
 [!code-aspx[Main](nested-master-pages-vb/samples/sample4.aspx)]
 
-Après avoir apporté cet ajout, enregistrez la page maître imbriquée et puis ajoutez une nouvelle page de contenu pour le `NestedMasterPages` dossier nommé `Default.aspx`, puis liez-le à le `SimpleNested.master` page maître. Lors de l’ajout de cette page vous serez peut-être surpris de voir qu’il contient sans contrôles de contenu (voir Figure 4) ! Une page de contenu peut accéder uniquement à son *parent* master ContentPlaceHolders de la page. `SimpleNested.master`ne contient pas tous les contrôles ContentPlaceHolder ; Par conséquent, n’importe quelle page de contenu liée à cette page maître ne peut pas contenir les contrôles de contenu.
+Après avoir apporté cet ajout, enregistrez la page maître imbriquée et puis ajoutez une nouvelle page de contenu pour le `NestedMasterPages` dossier nommé `Default.aspx`, puis liez-le à le `SimpleNested.master` page maître. Lors de l’ajout de cette page vous serez peut-être surpris de voir qu’il contient sans contrôles de contenu (voir Figure 4) ! Une page de contenu peut accéder uniquement à son *parent* master ContentPlaceHolders de la page. `SimpleNested.master` ne contient pas tous les contrôles ContentPlaceHolder ; Par conséquent, n’importe quelle page de contenu liée à cette page maître ne peut pas contenir les contrôles de contenu.
 
 
 [![La nouvelle Page de contenu ne contient pas les contrôles de contenu](nested-master-pages-vb/_static/image11.png)](nested-master-pages-vb/_static/image10.png)
@@ -258,7 +258,7 @@ La figure 10 illustre le `AdminNested.master` page maître imbriquée lorsqu’i
 
 Chaque fois que nous ajoutons une nouvelle page de contenu à la section Administration nous devez la lier à la `AdminNested.master` page maître que nous venons de créer. Mais qu’en est-il existants pages de contenu ? Actuellement, toutes les pages de contenu dans le site dérivent la `BasePage` classe, qui définit par programme le contenu de page maître lors de l’exécution. Cela n’est pas le comportement souhaité pour les pages de contenu dans la section Administration. Au lieu de cela, nous souhaitons ces pages de contenu à toujours utiliser le `AdminNested.master` page. Il s’agit de la responsabilité de la page maître imbriquée pour choisir la page de contenu à droite de niveau supérieur lors de l’exécution.
 
-À la meilleure façon d’obtenir ce souhaité consiste à créer une nouvelle classe de page de base personnalisée nommée `AdminBasePage` qui étend la `BasePage` classe. `AdminBasePage`peut passer outre le `SetMasterPageFile` et définir le `Page` l’objet `MasterPageFile` à la valeur codée en dur « ~ / Admin/AdminNested.master ». De cette façon, n’importe quelle page qui dérive de `AdminBasePage` utilisera `AdminNested.master`, alors que n’importe quelle page qui dérive de `BasePage` aura son `MasterPageFile` propriété la valeur dynamiquement » ~ / Site.master » ou « ~ / Alternate.master » selon la valeur de la `MyMasterPage` Variable de session.
+À la meilleure façon d’obtenir ce souhaité consiste à créer une nouvelle classe de page de base personnalisée nommée `AdminBasePage` qui étend la `BasePage` classe. `AdminBasePage` peut passer outre le `SetMasterPageFile` et définir le `Page` l’objet `MasterPageFile` à la valeur codée en dur « ~ / Admin/AdminNested.master ». De cette façon, n’importe quelle page qui dérive de `AdminBasePage` utilisera `AdminNested.master`, alors que n’importe quelle page qui dérive de `BasePage` aura son `MasterPageFile` propriété la valeur dynamiquement » ~ / Site.master » ou « ~ / Alternate.master » selon la valeur de la `MyMasterPage` Variable de session.
 
 Commencez par ajouter un nouveau fichier de classe pour le `App_Code` dossier nommé `AdminBasePage.vb`. Avoir `AdminBasePage` étendre `BasePage` puis substituer le `SetMasterPageFile` (méthode). Dans cette méthode affecter la `MasterPageFile` la valeur « ~ / Admin/AdminNested.master ». Après avoir apporté ces modifications à votre classe fichier doit ressembler à ce qui suit :
 
@@ -358,11 +358,11 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
-Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](specifying-the-master-page-programmatically-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](specifying-the-master-page-programmatically-vb.md)

@@ -2,7 +2,7 @@
 uid: web-pages/overview/data/working-with-files
 title: Utilisation des fichiers dans un Site de Web Pages (Razor) ASP.NET | Documents Microsoft
 author: tfitzmac
-description: "Ce chapitre explique comment lire, écrire, ajouter, supprimer et télécharger des fichiers."
+description: Ce chapitre explique comment lire, écrire, ajouter, supprimer et télécharger des fichiers.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2014
@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/data/working-with-files
 msc.type: authoredcontent
 ms.openlocfilehash: 0f119f8fb4873e55292203f21a2efd8f26793ae4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a>Utilisation des fichiers dans un Site de Pages (Razor) Web ASP.NET
 ====================
@@ -133,9 +133,9 @@ Cette procédure montre comment lire et afficher les données que vous avez cré
 
     Le code se trouve dans un `if` instruction. Lorsque vous souhaitez lire un fichier, il est judicieux d’utiliser le `File.Exists` méthode afin de déterminer tout d’abord si le fichier est disponible. Le code vérifie également si le fichier est vide.
 
-    Le corps de la page contient deux `foreach` boucles, imbriqués à l’intérieur de l’autre. Externe `foreach` boucle Obtient une ligne à la fois à partir du fichier de données. Dans ce cas, les lignes sont définies par les sauts de ligne dans le fichier &#8212; Autrement dit, chaque élément de données est sur sa propre ligne. La boucle externe crée un nouvel élément (`<li>` élément) à l’intérieur d’une liste ordonnée (`<ol>` élément).
+    Le corps de la page contient deux `foreach` boucles, imbriqués à l’intérieur de l’autre. Externe `foreach` boucle Obtient une ligne à la fois à partir du fichier de données. Dans ce cas, les lignes sont définies par les sauts de ligne dans le fichier &#8212; , autrement dit, chaque élément de données est sur sa propre ligne. La boucle externe crée un nouvel élément (`<li>` élément) à l’intérieur d’une liste ordonnée (`<ol>` élément).
 
-    La boucle interne fractionne chaque ligne de données en utilisant une virgule comme séparateur des éléments (champs). (En fonction de l’exemple précédent, cela signifie que chaque ligne contient trois champs &#8212; le prénom, le nom et l’adresse de messagerie, séparant par une virgule). La boucle interne crée également un `<ul>` liste et affiche une liste d’éléments pour chaque champ dans la ligne de données.
+    La boucle interne fractionne chaque ligne de données en utilisant une virgule comme séparateur des éléments (champs). (En fonction de l’exemple précédent, cela signifie que chaque ligne contienne les trois champs &#8212; le prénom, nom et adresse de messagerie, séparés par une virgule.) La boucle interne crée également un `<ul>` liste et affiche une liste d’éléments pour chaque champ dans la ligne de données.
 
     Le code illustre comment utiliser deux types de données, un tableau et le `char` type de données. Le tableau est nécessaire car le `File.ReadAllLines` méthode retourne les données sous forme de tableau. Le `char` type de données est nécessaire car le `Split` méthode retourne un `array` dans lequel chaque élément est de type `char`. (Pour plus d’informations sur les tableaux, consultez [Introduction à ASP.NET Web Programming à l’aide de la syntaxe Razor](https://go.microsoft.com/fwlink/?LinkId=202890#ID_CollectionsAndObjects).)
 3. Exécutez la page dans un navigateur. Les données que vous avez entré pour les exemples précédents sont affichées. 
@@ -194,7 +194,7 @@ Le `FileUpload` application auxiliaire permet aux utilisateurs de télécharger 
 
     Les propriétés que vous définissez pour le `FileUpload` helper spécifier que vous voulez qu’une zone unique pour le fichier à télécharger, et que vous souhaitez le bouton Envoyer pour lire **télécharger**. (Vous allez ajouter davantage de zones plus loin dans l’article).
 
-    Lorsque l’utilisateur clique sur **télécharger**, obtient le fichier et l’enregistre le code en haut de la page. Le `Request` objet que vous utilisez normalement pour obtenir les valeurs de champs de formulaire a également un `Files` tableau qui contient le fichier (ou fichiers) qui ont été téléchargés. Vous pouvez obtenir des fichiers individuels en dehors d’une position spécifique dans le tableau &#8212; par exemple, pour obtenir le premier fichier téléchargé, vous obtenez `Request.Files[0]`, afin d’obtenir le deuxième fichier, vous obtenez `Request.Files[1]`, et ainsi de suite. (N’oubliez pas que dans la programmation, en prenant en compte généralement commence à zéro).
+    Lorsque l’utilisateur clique sur **télécharger**, obtient le fichier et l’enregistre le code en haut de la page. Le `Request` objet que vous utilisez normalement pour obtenir les valeurs de champs de formulaire a également un `Files` tableau qui contient le fichier (ou fichiers) qui ont été téléchargés. Vous pouvez obtenir des fichiers individuels en dehors d’une position spécifique dans le tableau &#8212; , par exemple, pour obtenir le premier fichier téléchargé, vous obtenez `Request.Files[0]`, afin d’obtenir le deuxième fichier, vous obtenez `Request.Files[1]`, et ainsi de suite. (N’oubliez pas que dans la programmation, en prenant en compte généralement commence à zéro).
 
     Lorsque vous lisez un fichier téléchargé, placée dans une variable (ici, `uploadedFile`) afin que vous puissiez les manipuler. Pour déterminer le nom du fichier téléchargé, que vous venez d’obtenir ses `FileName` propriété. Toutefois, lorsque l’utilisateur télécharge un fichier, `FileName` contient le nom de l’utilisateur d’origine, qui inclut le chemin d’accès complet. Il peut ressembler à ceci :
 

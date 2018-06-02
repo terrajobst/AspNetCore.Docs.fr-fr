@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build
-title: "Déploiement d’une Build spécifique | Documents Microsoft"
+title: Déploiement d’une Build spécifique | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique décrit comment déployer des packages web et les scripts de base de données à partir d’une build précédente spécifique vers une nouvelle destination, comme un environnement intermédiaire ou de production..."
+description: Cette rubrique décrit comment déployer des packages web et les scripts de base de données à partir d’une build précédente spécifique vers une nouvelle destination, comme un environnement intermédiaire ou de production...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/deploying-a-specific-build
 msc.type: authoredcontent
-ms.openlocfilehash: be1000f0cbc2f509f5014789c2bc47ce2b12fb2f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 271d084b3c69016df5be28ada032973bf7fd5a49
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="deploying-a-specific-build"></a>Déploiement d’une Build spécifique
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit comment déployer des packages web et des scripts de base de données à partir d’une build précédente spécifique vers une nouvelle destination, comme un environnement intermédiaire ou de production.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération et de déploiement est contrôlé par deux fichiers projet & #x 2014 ; o ne contenant les instructions de génération qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération et de déploiement est contrôlé par deux fichiers de projet&#x2014;une qui contient les instructions de génération qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -54,13 +54,13 @@ Dans le [exemple de solution](../web-deployment-in-the-enterprise/the-contact-ma
 [!code-xml[Main](deploying-a-specific-build/samples/sample1.xml)]
 
 
-Si vous souhaitez que votre fichier projet pour déployer des packages web et des scripts de base de données à partir d’un autre emplacement & le #x 2014 ; par exemple, les sorties d’une build TFS antérieures de & #x 2014 ; vous devez simplement remplacer le **OutputRoot** propriété. Vous devez définir la valeur de propriété dans le dossier génération pertinentes sur le serveur Team Build. Si vous utilisiez MSBuild à partir de la ligne de commande, vous pouvez spécifier une valeur pour **OutputRoot** comme un argument de ligne de commande :
+Si vous souhaitez que votre fichier projet pour déployer des packages web et de scripts à partir d’un autre emplacement de base de données&#x2014;telles que les sorties d’une build TFS précédente&#x2014;vous suffit de remplacer le **OutputRoot** propriété. Vous devez définir la valeur de propriété dans le dossier génération pertinentes sur le serveur Team Build. Si vous utilisiez MSBuild à partir de la ligne de commande, vous pouvez spécifier une valeur pour **OutputRoot** comme un argument de ligne de commande :
 
 
 [!code-console[Main](deploying-a-specific-build/samples/sample2.cmd)]
 
 
-Dans la pratique, cependant, vous serez également ignorer le **générer** cible & #x 2014 ; il est inutile de la création de votre solution si vous ne prévoyez pas d’utiliser les sorties de génération. Vous pouvez effectuer ceci en spécifiant les cibles que vous souhaitez exécuter à partir de la ligne de commande :
+Dans la pratique, cependant, vous serez également ignorer le **générer** cible&#x2014;aucun point de la création de votre solution si vous ne prévoyez pas d’utiliser les sorties de génération. Vous pouvez effectuer ceci en spécifiant les cibles que vous souhaitez exécuter à partir de la ligne de commande :
 
 
 [!code-console[Main](deploying-a-specific-build/samples/sample3.cmd)]
@@ -72,7 +72,7 @@ Toutefois, dans la plupart des cas, que vous souhaitez intégrer votre logique d
 
 La procédure suivante décrit comment créer une définition de build qui permet aux utilisateurs de déploiements de déclencheur dans un environnement intermédiaire avec une seule commande.
 
-Dans ce cas, vous ne souhaitez pas générer réellement quoi que ce soit, la définition de build & #x 2014 ; vous souhaitiez qu’il s’exécute la logique de déploiement dans votre fichier projet personnalisé. Le *Publish.proj* fichier inclut une logique conditionnelle qui ignore le **générer** cible si le fichier est en cours d’exécution dans Team Build. Pour ce faire, il l’évaluation de la fonction intégrée **BuildingInTeamBuild** propriété, qui est automatiquement définie sur **true** si vous exécutez votre fichier projet dans Team Build. Par conséquent, vous pouvez ignorer le processus de génération et il suffit d’exécuter le fichier projet pour déployer une build existante.
+Dans ce cas, vous ne souhaitez pas la définition de build réellement la générer tout élément&#x2014;vous souhaitiez qu’il s’exécute la logique de déploiement dans votre fichier projet personnalisé. Le *Publish.proj* fichier inclut une logique conditionnelle qui ignore le **générer** cible si le fichier est en cours d’exécution dans Team Build. Pour ce faire, il l’évaluation de la fonction intégrée **BuildingInTeamBuild** propriété, qui est automatiquement définie sur **true** si vous exécutez votre fichier projet dans Team Build. Par conséquent, vous pouvez ignorer le processus de génération et il suffit d’exécuter le fichier projet pour déployer une build existante.
 
 **Pour créer une définition de build pour déclencher le déploiement manuellement**
 
@@ -113,7 +113,7 @@ Lorsque vous déclenchez une build, vous devez mettre à jour le **OutputRoot** 
 
     ![](deploying-a-specific-build/_static/image7.png)
 2. Dans le **file d’attente de** boîte de dialogue le **paramètres** onglet, développez le **avancé** section.
-3. Dans le **Arguments MSBuild** de ligne, remplacez la valeur de la **OutputRoot** propriété avec l’emplacement de votre dossier de build. Exemple :
+3. Dans le **Arguments MSBuild** de ligne, remplacez la valeur de la **OutputRoot** propriété avec l’emplacement de votre dossier de build. Par exemple :
 
     [!code-console[Main](deploying-a-specific-build/samples/sample5.cmd)]
 
@@ -133,6 +133,6 @@ Cette rubrique décrit comment publier des ressources de déploiement, telles qu
 
 Pour plus d’informations sur la création de définitions de build, consultez [créer une définition de Build](https://msdn.microsoft.com/library/ms181716.aspx) et [définir votre processus de génération](https://msdn.microsoft.com/library/ms181715.aspx). Pour plus d’informations sur les files d’attente de builds, consultez [une Build en file d’attente](https://msdn.microsoft.com/library/ms181722.aspx).
 
->[!div class="step-by-step"]
-[Précédent](creating-a-build-definition-that-supports-deployment.md)
-[Suivant](configuring-permissions-for-team-build-deployment.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-build-definition-that-supports-deployment.md)
+> [Suivant](configuring-permissions-for-team-build-deployment.md)

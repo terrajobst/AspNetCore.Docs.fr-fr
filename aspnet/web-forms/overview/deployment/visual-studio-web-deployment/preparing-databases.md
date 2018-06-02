@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : préparation pour le déploiement de la base de données | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : préparation pour le déploiement de la base de données | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: caa79725ede320c4bd3e87ac246966c57175eb8e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 61392af322de454687da522055005a670b34f510
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : préparation pour le déploiement de la base de données
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -171,7 +171,7 @@ Ici, vous préfèrent généralement les mêmes données en production que vous 
 Vous allez déployer les utilisateurs de développement à l’environnement de test et les utilisateurs de production à intermédiaire et de production. Vous allez créer deux scripts SQL dans ce didacticiel, un pour le développement et un environnement de production pour ce faire, et dans les didacticiels suivants vous configurerez le processus de publication pour les exécuter.
 
 > [!NOTE]
-> La base de données d’appartenance stocke un hachage des mots de passe de compte. Pour déployer des comptes à partir d’un ordinateur à un autre, il se peut que vous devez vous assurer que les routines de hachage ne génèrent pas hachages différents sur le serveur de destination et sur l’ordinateur source. Ils génèrent les hachages mêmes lorsque vous utilisez les fournisseurs universels ASP.NET, tant que vous ne modifiez pas l’algorithme par défaut. L’algorithme par défaut est HMACSHA256 et qu’il est spécifié dans le **validation** attribut de la  **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)**  élément dans le fichier Web.config.
+> La base de données d’appartenance stocke un hachage des mots de passe de compte. Pour déployer des comptes à partir d’un ordinateur à un autre, il se peut que vous devez vous assurer que les routines de hachage ne génèrent pas hachages différents sur le serveur de destination et sur l’ordinateur source. Ils génèrent les hachages mêmes lorsque vous utilisez les fournisseurs universels ASP.NET, tant que vous ne modifiez pas l’algorithme par défaut. L’algorithme par défaut est HMACSHA256 et qu’il est spécifié dans le **validation** attribut de la **[machineKey](https://msdn.microsoft.com/library/system.web.configuration.machinekeysection.aspx)** élément dans le fichier Web.config.
 
 
 Vous pouvez créer des scripts de déploiement de données manuellement, à l’aide de SQL Server Management Studio (SSMS), ou à l’aide d’un outil tiers. Cette suite de ce didacticiel, vous allez apprendre à le faire dans SSMS, mais si vous ne souhaitez pas installer et utiliser SSMS vous pouvez obtenir les scripts à partir de la version complète du projet et passez à la section où vous les stockez dans le dossier de solution.
@@ -215,11 +215,11 @@ Dans la première page du centre d’Installation de SQL Server, cliquez sur **n
 1. Dans SSMS **l’Explorateur d’objets**, avec le bouton droit **bases de données** et cliquez sur **attacher**.
 
     ![Attachement de SSMS](preparing-databases/_static/image15.png)
-- Dans le **attacher les bases de données** boîte de dialogue, cliquez sur **ajouter** , puis accédez à la *aspnet-ContosoUniversity-Prod.mdf* de fichiers dans le *application\_ Données* dossier.
+2. Dans le **attacher les bases de données** boîte de dialogue, cliquez sur **ajouter** , puis accédez à la *aspnet-ContosoUniversity-Prod.mdf* de fichiers dans le *application\_ Données* dossier.
 
-    ![SSMS ajouter le fichier .mdf à attacher](preparing-databases/_static/image16.png)
-- Cliquez sur **OK**.
-- Suivez la même procédure que vous avez utilisé précédemment pour créer un script pour le fichier de production. Nommez le fichier de script *aspnet-données-prod.sql*.
+     ![SSMS ajouter le fichier .mdf à attacher](preparing-databases/_static/image16.png)
+3. Cliquez sur **OK**.
+4. Suivez la même procédure que vous avez utilisé précédemment pour créer un script pour le fichier de production. Nommez le fichier de script *aspnet-données-prod.sql*.
 
 ## <a name="summary"></a>Récapitulatif
 
@@ -233,6 +233,6 @@ Dans ce didacticiel, vous configurez les paramètres de projet qui affectent le 
 
 Pour plus d’informations sur NuGet, consultez [gérer les bibliothèques de projets avec NuGet](https://msdn.microsoft.com/magazine/hh547106.aspx) et [Documentation de NuGet](http://docs.nuget.org/docs/start-here/overview). Si vous ne souhaitez pas utiliser NuGet, vous devez apprendre à analyser un package NuGet pour déterminer ce qu’il fait lorsqu’il est installé. (Par exemple, il peut configurer *Web.config* transformations, configurer des scripts PowerShell à exécuter au moment de la génération, etc..) Pour en savoir plus sur le fonctionne de NuGet, consultez [créer et publier un Package](http://docs.nuget.org/docs/creating-packages/creating-and-publishing-a-package) et [fichier de Configuration et des Transformations de Code Source](http://docs.nuget.org/docs/creating-packages/configuration-file-and-source-code-transformations).
 
->[!div class="step-by-step"]
-[Précédent](introduction.md)
-[Suivant](web-config-transformations.md)
+> [!div class="step-by-step"]
+> [Précédent](introduction.md)
+> [Suivant](web-config-transformations.md)

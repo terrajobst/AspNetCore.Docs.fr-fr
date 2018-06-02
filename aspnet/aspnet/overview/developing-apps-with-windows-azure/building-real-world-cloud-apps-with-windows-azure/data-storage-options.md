@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
-title: "Options de stockage de données (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft"
+title: Options de stockage de données (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 88f57244bfbfdf33df3bb265d8aa2c93689b2f24
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d638dca331cb24c340a4471e5964a00b75bb608a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Options de stockage de données (génération d’applications Cloud du monde réel avec Azure)
 ====================
@@ -155,7 +155,7 @@ Voici quelques questions à considérer lorsque vous choisissez une approche :
 
 Ce que nous déconseillons généralement est connaître la réponse aux questions dans chacune de ces catégories avant de choisir vos solutions de stockage de données.
 
-En outre, votre charge de travail peut avoir des exigences spécifiques prises en charge par certaines plateformes mieux que d’autres. Exemple :
+En outre, votre charge de travail peut avoir des exigences spécifiques prises en charge par certaines plateformes mieux que d’autres. Par exemple :
 
 - Exiger de votre application auditer des fonctions ?
 - Quels sont vos besoins en données longévité--des fonctions d’archivage ou purge automatisée avez-vous besoin ?
@@ -250,7 +250,7 @@ Voici quelques conseils sur le choix entre les deux modèles.
 | Base de données SQL Azure (PaaS) | SQL Server dans une Machine virtuelle (IaaS) |
 | --- | --- |
 | **Les professionnels de le** -vous n’êtes pas obligé de créer ou gérer des machines virtuelles, mettre à jour ou correctifs du système d’exploitation ou de SQL ; Azure fait pour vous. -Haute disponibilité intégrée, avec un contrat SLA de niveau base de données. -Faible coût total de possession (TCO), car vous payez uniquement ce que vous utilisez (aucune licence n’est requise). -Approprié pour traiter un grand nombre de bases de données plus petits (&lt;= 500 Go). -Permet de créer dynamiquement des nouvelles bases de données pour activer la montéent en puissance parallèle. | ***Les professionnels de le*** - fonctionnalité compatibles avec local SQL Server. -Peut implémenter SQL Server [haute disponibilité via AlwaysOn](https://www.microsoft.com/sqlserver/solutions-technologies/mission-critical-operations/high-availability.aspx) 2 + sur des machines virtuelles, avec un contrat SLA de niveau de la machine virtuelle. -Vous avez un contrôle complet sur la gestion de SQL. -Peut réutiliser vous possédez déjà ou payez par heure pour l’une des licences SQL. -Approprié pour la gestion des moins mais plus volumineux (1 To +) bases de données. |
-| **Cons** -certaines fonctionnalités des écarts par rapport à locale SQL Server (un manque de [intégration du CLR](https://technet.microsoft.com/library/ms131102.aspx), [TDE](https://technet.microsoft.com/library/bb934049.aspx), [prise en charge la compression](https://technet.microsoft.com/library/cc280449.aspx), [SQL Serveur Reporting Services](https://technet.microsoft.com/library/ms159106.aspx), etc.)-limite de taille de base de données de 500 Go. | ***Cons*** - mises à jour/correctifs (système d’exploitation et SQL) sont de votre responsabilité - création et gestion des bases de données sont de votre responsabilité - disque IOPS (opérations d’entrée/sortie par seconde), limité à 8000 (via des lecteurs de 16 données). |
+| **Cons** -certaines fonctionnalités des écarts par rapport à locale SQL Server (un manque de [intégration du CLR](https://technet.microsoft.com/library/ms131102.aspx), [TDE](https://technet.microsoft.com/library/bb934049.aspx), [prise en charge la compression](https://technet.microsoft.com/library/cc280449.aspx), [SQL Server Reporting Services](https://technet.microsoft.com/library/ms159106.aspx), etc.)-limite de taille de base de données de 500 Go. | ***Cons*** - mises à jour/correctifs (système d’exploitation et SQL) sont de votre responsabilité - création et gestion des bases de données sont de votre responsabilité - disque IOPS (opérations d’entrée/sortie par seconde), limité à 8000 (via des lecteurs de 16 données). |
 
 Si vous souhaitez utiliser SQL Server dans une machine virtuelle, vous pouvez utiliser votre propre licence SQL Server, ou vous pouvez payer pour l’une à l’heure. Par exemple, dans le portail ou via l’API REST, vous pouvez créer une nouvelle machine virtuelle à l’aide d’une image de SQL Server.
 
@@ -301,6 +301,6 @@ HDInsight (Hadoop sur Azure) :
 - [HDInsight et Hadoop : Big Data dans Azure](https://msdn.microsoft.com/magazine/dn385705.aspx). Article du MSDN Magazine en Bruno Terkaly et Ricardo Villalobos, présentation Hadoop sur Azure.
 - [Microsoft Patterns and Practices - Guide Azure](https://msdn.microsoft.com/library/dn568099.aspx). Voir MapReduce modèle.
 
->[!div class="step-by-step"]
-[Précédent](single-sign-on.md)
-[Suivant](data-partitioning-strategies.md)
+> [!div class="step-by-step"]
+> [Précédent](single-sign-on.md)
+> [Suivant](data-partitioning-strategies.md)

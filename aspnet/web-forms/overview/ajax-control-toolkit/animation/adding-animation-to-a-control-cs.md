@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-cs
-title: "Ajout d’une Animation à un contrôle (c#) | Documents Microsoft"
+title: Ajout d’une Animation à un contrôle (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Ce didacticiel montre comment..."
+description: Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Ce didacticiel montre comment...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7016ae3c92c665136579a8588818e6e4179a102a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ba122660045c3f5dd4b11f118df174a79de814a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-animation-to-a-control-c"></a>Ajout d’une Animation à un contrôle (c#)
 ====================
@@ -51,22 +51,22 @@ Ensuite, nous devons le `AnimationExtender`. Après avoir entré un `ID` et clas
 
 L’animation entière est appliquée de façon déclarative, en utilisant une syntaxe XML, malheureusement n’est pas entièrement pris en charge par IntelliSense de Visual Studio. Le nœud racine est `<Animations>;` au sein de ce nœud, plusieurs événements sont autorisés pour déterminer quand l’ou les animations prennent place :
 
-- `OnClick`(clic de souris)
-- `OnHoverOut`(lorsque la souris quitte un contrôle)
-- `OnHoverOver`(lorsque la souris pointe sur un contrôle, l’arrêt du `OnHoverOut` animation)
-- `OnLoad`(lorsque la page a été chargée)
-- `OnMouseOut`(lorsque la souris quitte un contrôle)
-- `OnMouseOver`(lorsque la souris pointe sur un contrôle, ne pas l’arrêt du `OnMouseOut` animation)
+- `OnClick` (clic de souris)
+- `OnHoverOut` (lorsque la souris quitte un contrôle)
+- `OnHoverOver` (lorsque la souris pointe sur un contrôle, l’arrêt du `OnHoverOut` animation)
+- `OnLoad` (lorsque la page a été chargée)
+- `OnMouseOut` (lorsque la souris quitte un contrôle)
+- `OnMouseOver` (lorsque la souris pointe sur un contrôle, ne pas l’arrêt du `OnMouseOut` animation)
 
 Le framework est fourni avec un jeu d’animations, chacun d’eux représenté par son propre élément XML. Voici une sélection :
 
-- `<Color>`(modification d’une couleur)
-- `<FadeIn>`(fondu dans)
-- `<FadeOut>`(fondu out)
-- `<Property>`(modification de propriété d’un contrôle)
-- `<Pulse>`(impulsions)
-- `<Resize>`(modification de la taille)
-- `<Scale>`(modification de la taille proportionnelle)
+- `<Color>` (modification d’une couleur)
+- `<FadeIn>` (fondu dans)
+- `<FadeOut>` (fondu out)
+- `<Property>` (modification de propriété d’un contrôle)
+- `<Pulse>` (impulsions)
+- `<Resize>` (modification de la taille)
+- `<Scale>` (modification de la taille proportionnelle)
 
 Dans cet exemple, le panneau de configuration doit disparaître. L’animation prennent 1,5 seconde (`Duration` attribut), affichage des 24 images (étapes de l’animation) par seconde (`Fps` attributs). Voici le balisage complet pour le `AnimationExtender` contrôle :
 
@@ -79,5 +79,5 @@ Lorsque vous exécutez ce script, le panneau de configuration s’affiche et fon
 
 Le panneau est atténuant progressivement ([cliquez pour afficher l’image en taille réelle](adding-animation-to-a-control-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Next](executing-several-animations-at-the-same-time-cs.md)
+> [!div class="step-by-step"]
+> [Next](executing-several-animations-at-the-same-time-cs.md)

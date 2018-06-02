@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/calling-a-web-api-from-a-net-client
-title: "Appeler une API Web à partir d’un Client .NET (c#) | Documents Microsoft"
+title: Appeler une API Web à partir d’un Client .NET (c#) | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/24/2017
@@ -11,17 +11,17 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 8156bd1c7cfc111a6a121a89d845ca284ee1b7af
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: fdb74b0eb74ce7f387f49a0b25ceebd3fc389da9
+ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/26/2018
 ---
 <a name="call-a-web-api-from-a-net-client-c"></a>Appeler une API Web à partir d’un Client .NET (c#)
 ====================
 par [Mike Wasson](https://github.com/MikeWasson) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Télécharger le projet terminé](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample)
+[Télécharger le projet terminé](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample). [Télécharger les instructions](/aspnet/core/tutorials/#how-to-download-a-sample). 
 
 Ce didacticiel montre comment appeler une API web à partir d’une application .NET, à l’aide de [System.Net.Http.HttpClient.](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)
 
@@ -29,10 +29,10 @@ Dans ce didacticiel, une application cliente est écrit qui utilise l’API de w
 
 | Action | Méthode HTTP | URI relatif |
 | --- | --- | --- |
-| Obtenir un produit par ID | GET | /api/products/*id* |
-| Créer un nouveau produit | POST | produits/api / |
-| Mettre à jour un produit | PUT | /api/products/*id* |
-| Supprimer un produit | SUPPR | /api/products/*id* |
+| Obtenir un produit par ID | GET | /API/produits/*id* |
+| Créer un nouveau produit | PUBLIER | produits/api / |
+| Mettre à jour un produit | PUT | /API/produits/*id* |
+| Supprimer un produit | SUPPR | /API/produits/*id* |
 
 Pour savoir comment implémenter cette API avec l’API Web ASP.NET, consultez [création d’une API Web qui prend en charge les opérations CRUD](xref:web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 ).
@@ -48,7 +48,7 @@ Dans Visual Studio, créez une nouvelle application de console Windows nommée *
 
 Le code précédent est l’application cliente complète.
 
-`RunAsync`s’exécute et des blocs jusqu'à son achèvement. La plupart des **HttpClient** méthodes sont asynchrones, car ils effectuent des e/s réseau. Toutes les tâches asynchrones sont effectuées à l’intérieur de `RunAsync`. Normalement une application ne bloque pas le thread principal, mais cette application n’autorise aucune intervention.
+`RunAsync` s’exécute et des blocs jusqu'à son achèvement. La plupart des **HttpClient** méthodes sont asynchrones, car ils effectuent des e/s réseau. Toutes les tâches asynchrones sont effectuées à l’intérieur de `RunAsync`. Normalement une application ne bloque pas le thread principal, mais cette application n’autorise aucune intervention.
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_run)]
 
@@ -109,14 +109,14 @@ Le code suivant envoie une demande GET pour un produit :
 
 Le **GetAsync** méthode envoie la demande HTTP GET. Lorsque la méthode se termine, elle retourne un **HttpResponseMessage** qui contient la réponse HTTP. Si le code d’état dans la réponse est un code de réussite, le corps de réponse contient la représentation JSON d’un produit. Appelez **ReadAsAsync** à désérialiser la charge utile JSON pour un `Product` instance. Le **ReadAsAsync** méthode est asynchrone, car le corps de réponse peut être arbitrairement grand.
 
-**HttpClient** ne lève pas d’exception lors de la réponse HTTP contient un code d’erreur. Au lieu de cela, le **IsSuccessStatusCode** propriété **false** si l’état est un code d’erreur. Si vous souhaitez traiter des codes d’erreur HTTP en tant qu’exceptions, appelez [HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) sur l’objet de réponse. `EnsureSuccessStatusCode`lève une exception si le code d’état se situe en dehors de la plage 200&ndash;299. Notez que **HttpClient** peut lever des exceptions pour d’autres raisons &mdash; par exemple, si la demande expire.
+**HttpClient** ne lève pas d’exception lors de la réponse HTTP contient un code d’erreur. Au lieu de cela, le **IsSuccessStatusCode** propriété **false** si l’état est un code d’erreur. Si vous souhaitez traiter des codes d’erreur HTTP en tant qu’exceptions, appelez [HttpResponseMessage.EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) sur l’objet de réponse. `EnsureSuccessStatusCode` lève une exception si le code d’état se situe en dehors de la plage 200&ndash;299. Notez que **HttpClient** peut lever des exceptions pour d’autres raisons &mdash; par exemple, si la demande expire.
 
 <a id="MediaTypeFormatters"></a>
 ### <a name="media-type-formatters-to-deserialize"></a>Formateurs de Type de média à désérialiser
 
 Lorsque **ReadAsAsync** est appelée sans paramètres, il utilise un ensemble par défaut de *formateurs de médias* pour lire le corps de réponse. Les formateurs par défaut prend en charge les données de forme codée en url JSON et XML.
 
-Au lieu d’utiliser les modules de formatage par défaut, vous pouvez fournir une liste de formateurs à la **ReadAsAsync** (méthode).  À l’aide une liste de formateurs est utile si vous avez un formateur de type de média personnalisé :
+Au lieu d’utiliser les modules de formatage par défaut, vous pouvez fournir une liste de formateurs à la **ReadAsAsync** (méthode).  À l’aide d’une liste de formateurs est utile si vous disposez d’un formateur de type de média personnalisé :
 
 ```csharp
 var formatters = new List<MediaTypeFormatter>() {
@@ -167,16 +167,16 @@ Comme GET, une demande de suppression n’a pas un corps de demande. Vous n’av
 
 Pour tester l’application cliente :
 
-1. [Télécharger](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) et exécuter l’application serveur. [Les instructions de téléchargement](https://docs.microsoft.com/aspnet/core/tutorials/#how-to-download-a-sample). Vérifiez que l’application serveur fonctionne. Pour exaxmple, `http://localhost:64195/api/products` doit retourner une liste de produits.
+1. [Télécharger](https://github.com/aspnet/Docs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) et exécuter l’application serveur. [Télécharger les instructions](/aspnet/core/tutorials/#how-to-download-a-sample). Vérifiez que l’application serveur fonctionne. Pour exaxmple, `http://localhost:64195/api/products` doit retourner une liste de produits.
 2. Définir l’URI de base pour les requêtes HTTP. Modifier le numéro de port pour le port utilisé dans l’application serveur.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 
 3. Exécutez l’application cliente. La sortie suivante est produite :
 
- ```console
- Created at http://localhost:64195/api/products/4
-Name: Gizmo     Price: 100.0    Category: Widgets
-Updating price...
-Name: Gizmo     Price: 80.0     Category: Widgets
-Deleted (HTTP Status = 204)
-```
+   ```console
+   Created at http://localhost:64195/api/products/4
+   Name: Gizmo     Price: 100.0    Category: Widgets
+   Updating price...
+   Name: Gizmo     Price: 80.0     Category: Widgets
+   Deleted (HTTP Status = 204)
+   ```

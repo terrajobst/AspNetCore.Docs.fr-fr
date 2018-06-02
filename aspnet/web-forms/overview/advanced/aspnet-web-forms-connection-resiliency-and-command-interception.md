@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/advanced/aspnet-web-forms-connection-resiliency-and-command-interception
-title: "L’Interception de commande et de résilience des connexions ASP.NET Web Forms | Documents Microsoft"
+title: L’Interception de commande et de résilience des connexions ASP.NET Web Forms | Documents Microsoft
 author: Erikre
-description: "Ce didacticiel décrit comment modifier un exemple d’application pour prendre en charge la résilience des connexions et l’interception de commande."
+description: Ce didacticiel décrit comment modifier un exemple d’application pour prendre en charge la résilience des connexions et l’interception de commande.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/advanced/aspnet-web-forms-connection-resiliency-and-command-interception
 msc.type: authoredcontent
-ms.openlocfilehash: e3347657fb5c7bf8c7bb4e51a2e810a1edde826a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: d5c4e46209e1b21a303fdf1fb16c6c868b3ca923
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-forms-connection-resiliency-and-command-interception"></a>Résilience des connexions ASP.NET Web Forms et l’Interception de commande
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 Dans ce didacticiel, vous allez modifier l’exemple d’application Wingtip Toys pour prendre en charge la résilience des connexions et l’interception de commande. En activant la résilience des connexions, l’exemple d’application Wingtip Toys va retenter automatiquement les appels de données lorsque des erreurs temporaires classiques d’un environnement de cloud se produisent. En outre, en implémentant l’interception de commande, l’exemple d’application Wingtip Toys intercepte toutes les requêtes SQL envoyées à la base de données afin d’ouvrir une session ou de les modifier.
 
@@ -102,9 +102,9 @@ Selon la procédure ci-dessus, vous avez téléchargé et ouvert le **WingtipToy
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample4.cs)]
 
- L’interface fournit trois niveaux de suivi pour indiquer l’importance relative des journaux et l’autre conçue pour fournir des informations de latence pour les appels de service externe telles que les requêtes de base de données. Les méthodes de journalisation ont des surcharges qui vous permettent de passer d’une exception. Il s’agit afin que les informations sur les exceptions, y compris la pile trace et les exceptions internes sont fiable enregistrées par la classe qui implémente l’interface, au lieu de compter sur une fois l’opération effectuée dans chaque appel de méthode de journalisation dans toute l’application.  
+   L’interface fournit trois niveaux de suivi pour indiquer l’importance relative des journaux et l’autre conçue pour fournir des informations de latence pour les appels de service externe telles que les requêtes de base de données. Les méthodes de journalisation ont des surcharges qui vous permettent de passer d’une exception. Il s’agit afin que les informations sur les exceptions, y compris la pile trace et les exceptions internes sont fiable enregistrées par la classe qui implémente l’interface, au lieu de compter sur une fois l’opération effectuée dans chaque appel de méthode de journalisation dans toute l’application.  
   
- Le `TraceApi` méthodes permettent d’effectuer le suivi de la latence de chaque appel à un service externe telles que de la base de données SQL.
+   Le `TraceApi` méthodes permettent d’effectuer le suivi de la latence de chaque appel à un service externe telles que de la base de données SQL.
 3. Dans le *journalisation* dossier, créez un fichier de classe nommé *Logger.cs* et remplacez le code par défaut par le code suivant :  
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample5.cs)]
@@ -121,20 +121,20 @@ Ensuite, vous allez créer les classes Entity Framework appelle chaque fois qu�
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample6.cs)]
 
- Pour les requêtes ayant réussi ou des commandes, ce code écrit un journal d’informations avec les informations de latence. Pour les exceptions, il crée un journal des erreurs.
+   Pour les requêtes ayant réussi ou des commandes, ce code écrit un journal d’informations avec les informations de latence. Pour les exceptions, il crée un journal des erreurs.
 2. Pour créer la classe de l’intercepteur qui génère des erreurs temporaires factices lorsque vous entrez &quot;lever&quot; dans les **nom** zone de texte dans la page appelée *AdminPage.aspx*, créez une classe fichier nommé *InterceptorTransientErrors.cs* dans les *logique* dossier et remplacer la valeur par défaut de code avec le code suivant :  
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample7.cs)]
 
     Ce code substitue uniquement le `ReaderExecuting` méthode, qui est appelée pour les requêtes qui peuvent retourner plusieurs lignes de données. Si vous souhaitez vérifier la résilience des connexions pour les autres types de requêtes, vous pouvez également substituer la `NonQueryExecuting` et `ScalarExecuting` méthodes, comme l’intercepteur de journalisation le fait.  
   
- Ultérieurement, vous allez ouvrir une session en tant que le « Admin » et sélectionnez le **Admin** lien dans la barre de navigation supérieure. Puis, dans le *AdminPage.aspx* page que vous allez ajouter un produit nommé &quot;lever&quot;. Le code crée une exception de base de données SQL factice pour le numéro d’erreur 20, un type connu pour être généralement transitoires. Autres numéros d’erreur actuellement reconnus comme transitoire sont 64 233, 10053, 10054, 10060, 10928, 10929, 40197, 40501 et 40613, mais ceux-ci sont susceptibles de changer dans les nouvelles versions de base de données SQL. Le produit sera renommé en « TransientErrorExample », vous pouvez suivre dans le code de la *InterceptorTransientErrors.cs* fichier.  
+   Ultérieurement, vous allez ouvrir une session en tant que le « Admin » et sélectionnez le **Admin** lien dans la barre de navigation supérieure. Puis, dans le *AdminPage.aspx* page que vous allez ajouter un produit nommé &quot;lever&quot;. Le code crée une exception de base de données SQL factice pour le numéro d’erreur 20, un type connu pour être généralement transitoires. Autres numéros d’erreur actuellement reconnus comme transitoire sont 64 233, 10053, 10054, 10060, 10928, 10929, 40197, 40501 et 40613, mais ceux-ci sont susceptibles de changer dans les nouvelles versions de base de données SQL. Le produit sera renommé en « TransientErrorExample », vous pouvez suivre dans le code de la *InterceptorTransientErrors.cs* fichier.  
   
- Le code retourne l’exception à Entity Framework au lieu de la requête en cours d’exécution et en passant les résultats. L’exception temporaire est retournée *quatre* fois, et reprend ensuite le code à la procédure normale de transmission de la requête à la base de données.
+   Le code retourne l’exception à Entity Framework au lieu de la requête en cours d’exécution et en passant les résultats. L’exception temporaire est retournée *quatre* fois, et reprend ensuite le code à la procédure normale de transmission de la requête à la base de données.
 
     Étant donné que tout est connecté, vous serez en mesure de voir qu’Entity Framework essaie d’exécuter la requête à quatre reprises avant de réussir et la seule différence dans l’application est qu’il est plus long pour restituer une page de résultats de la requête.  
   
- Le nombre de tentatives de Entity Framework est configurable ; le code spécifie quatre fois car il s’agit de la valeur par défaut pour la stratégie d’exécution de base de données SQL. Si vous modifiez la stratégie d’exécution, vous pouviez également modifier le code qui spécifie le nombre d’erreurs temporaires sont générés. Vous pouvez également modifier le code pour générer des exceptions plus afin que Entity Framework lèvera le `RetryLimitExceededException` exception.
+   Le nombre de tentatives de Entity Framework est configurable ; le code spécifie quatre fois car il s’agit de la valeur par défaut pour la stratégie d’exécution de base de données SQL. Si vous modifiez la stratégie d’exécution, vous pouviez également modifier le code qui spécifie le nombre d’erreurs temporaires sont générés. Vous pouvez également modifier le code pour générer des exceptions plus afin que Entity Framework lèvera le `RetryLimitExceededException` exception.
 3. Dans *Global.asax*, ajoutez le code suivant à l’aide des instructions :  
 
     [!code-csharp[Main](aspnet-web-forms-connection-resiliency-and-command-interception/samples/sample8.cs)]
@@ -158,16 +158,16 @@ Vous avez écrit le code d’erreur temporaire simulation d’une manière qui v
 2. Sélectionnez **Admin** à partir de la barre de navigation en haut.
 3. Entrez un nouveau produit nommé « Throw » avec le fichier de description, prix et image approprié.
 4. Appuyez sur la **ajouter un produit** bouton.  
- Vous remarquerez que le navigateur semble se bloquer pendant quelques secondes lors de l’Entity Framework retente la requête plusieurs fois. La première nouvelle tentative se produit très rapidement, puis l’attente augmente avant chaque nouvelle tentative supplémentaire. Ce processus d’attente plus avant chaque nouvelle tentative est appelée *interruption exponentielle* .
+   Vous remarquerez que le navigateur semble se bloquer pendant quelques secondes lors de l’Entity Framework retente la requête plusieurs fois. La première nouvelle tentative se produit très rapidement, puis l’attente augmente avant chaque nouvelle tentative supplémentaire. Ce processus d’attente plus avant chaque nouvelle tentative est appelée *interruption exponentielle* .
 5. Attendez que la page n’est plus atttempting à charger.
 6. Arrêtez le projet et examinez le Visual Studio **sortie** fenêtre pour afficher la sortie de traçage. Vous pouvez trouver la **sortie** en sélectionnant **déboguer**  - &gt; **Windows**  - &gt;  **Sortie**. Vous devrez peut-être défiler plusieurs autres journaux générés par votre journal.  
   
- Notez que vous pouvez voir les requêtes SQL réelles envoyées à la base de données. Vous consultez certaines requêtes initiales et les commandes qu’Entity Framework effectue pour la prise en main, la vérification de la table d’historique de version et de migration de base de données.   
+   Notez que vous pouvez voir les requêtes SQL réelles envoyées à la base de données. Vous consultez certaines requêtes initiales et les commandes qu’Entity Framework effectue pour la prise en main, la vérification de la table d’historique de version et de migration de base de données.   
     ![Sortie (fenêtre)](aspnet-web-forms-connection-resiliency-and-command-interception/_static/image1.png)   
- Notez que vous ne répétez ce test, sauf si vous arrêtez l’application et le redémarrez. Si vous souhaitez être en mesure de tester résilience des connexions à plusieurs reprises en une seule exécution de l’application, vous pouvez écrire du code pour réinitialiser le compteur d’erreurs dans `InterceptorTransientErrors` .
+   Notez que vous ne répétez ce test, sauf si vous arrêtez l’application et le redémarrez. Si vous souhaitez être en mesure de tester résilience des connexions à plusieurs reprises en une seule exécution de l’application, vous pouvez écrire du code pour réinitialiser le compteur d’erreurs dans `InterceptorTransientErrors` .
 7. Pour voir la différence la stratégie d’exécution (stratégie de nouvelle tentative) transforme, commentaire le `SetExecutionStrategy` dans la ligne *WingtipToysConfiguration.cs* de fichiers dans le *logique* dossier, exécutez la **Admin**  à nouveau la page en mode débogage et ajouter le produit nommé &quot;lever&quot; à nouveau.  
   
- Cette fois le débogueur s’arrête sur la première exception générée immédiatement lorsqu’il tente d’exécuter la requête de la première fois.  
+   Cette fois le débogueur s’arrête sur la première exception générée immédiatement lorsqu’il tente d’exécuter la requête de la première fois.  
     ![Débogage - afficher les détails](aspnet-web-forms-connection-resiliency-and-command-interception/_static/image2.png)
 8. Ne pas commenter le `SetExecutionStrategy` de ligne dans le *WingtipToysConfiguration.cs* fichier.
 

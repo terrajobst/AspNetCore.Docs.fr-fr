@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-vb
-title: "Lancement d’une fenêtre contextuelle modale à partir du Code serveur (VB) | Documents Microsoft"
+title: Lancement d’une fenêtre contextuelle modale à partir du Code serveur (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle ModalPopup dans la boîte à outils de contrôle AJAX offre un moyen simple de créer une fenêtre modale, à l’aide des moyens de côté client. Toutefois, certains scénarios requièrent que t..."
+description: Le contrôle ModalPopup dans la boîte à outils de contrôle AJAX offre un moyen simple de créer une fenêtre modale, à l’aide des moyens de côté client. Toutefois, certains scénarios requièrent que t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c4bcf3e32b3aa91bb73e01296bc1fc1a2e064711
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 46554dae60ad9cd13e97e5755e95cb2125d1fed9
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="launching-a-modal-popup-window-from-server-code-vb"></a>Lancement d’une fenêtre contextuelle modale à partir du Code serveur (VB)
 ====================
@@ -72,6 +72,6 @@ Le `$find()` fonction recherche un élément nommé dans la page et attend l’I
 
 La fenêtre contextuelle modale s’affiche lorsque vous cliquez sur un des boutons ([cliquez pour afficher l’image en taille réelle](launching-a-modal-popup-window-from-server-code-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](positioning-a-modalpopup-cs.md)
-[Suivant](using-modalpopup-with-a-repeater-control-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](positioning-a-modalpopup-cs.md)
+> [Suivant](using-modalpopup-with-a-repeater-control-vb.md)

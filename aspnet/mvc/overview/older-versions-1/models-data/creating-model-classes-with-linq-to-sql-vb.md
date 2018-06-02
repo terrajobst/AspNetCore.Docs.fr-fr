@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-vb
-title: "Création de Classes de modèle avec LINQ to SQL (VB) | Documents Microsoft"
+title: Création de Classes de modèle avec LINQ to SQL (VB) | Documents Microsoft
 author: microsoft
-description: "L’objectif de ce didacticiel est d’expliquer une méthode de création de classes de modèle pour une application ASP.NET MVC. Dans ce didacticiel, vous allez apprendre à générer le modèle c..."
+description: L’objectif de ce didacticiel est d’expliquer une méthode de création de classes de modèle pour une application ASP.NET MVC. Dans ce didacticiel, vous allez apprendre à générer le modèle c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 972d5b11049825e84e070ef1c4b2b90116654397
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5438838123c40d82afbda191a48878d6dca80736
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql-vb"></a>Création de Classes de modèle avec LINQ to SQL (VB)
 ====================
@@ -53,9 +53,10 @@ Dans ce didacticiel--afin d’illustrer comment vous pouvez générer des classe
 
 Après avoir créé la nouvelle base de données, vous pouvez ouvrir la base de données en double-cliquant sur le fichier dans l’application MoviesDB.mdf\_dossier de données. Double-cliquez sur le fichier MoviesDB.mdf ouvre la fenêtre de l’Explorateur de serveurs (voir Figure 2).
 
-|  | La fenêtre de l’Explorateur de serveurs est appelée à la fenêtre Explorateur de base de données lors de l’utilisation de Visual Web Developer. |
-| --- | --- |
 
+|   | La fenêtre de l’Explorateur de serveurs est appelée à la fenêtre Explorateur de base de données lors de l’utilisation de Visual Web Developer. |
+|---|----------------------------------------------------------------------------------------------------|
+|   |                                                                                                    |
 
 [![À l’aide de la fenêtre de l’Explorateur de serveurs](creating-model-classes-with-linq-to-sql-vb/_static/image5.png)](creating-model-classes-with-linq-to-sql-vb/_static/image4.png)
 
@@ -76,7 +77,7 @@ Nous devons ajouter les colonnes suivantes à notre table de base de données :
 | --- | --- | --- |
 | Id | Int | False |
 | Titre | Nvarchar(200) | False |
-| Directeur | nvarchar (50) | False |
+| Directeur | Nvarchar(50) | False |
 
 Vous devez effectuer deux opérations spéciales pour la colonne Id. Tout d’abord, vous devez marquer la colonne d’Id en tant que colonne clé primaire en sélectionnant la colonne dans le Concepteur de tables et en cliquant sur l’icône d’une clé. LINQ to SQL vous oblige à spécifier vos colonnes de clé primaire lorsque effectue insère ou met à jour par rapport à la base de données.
 
@@ -112,7 +113,7 @@ Maintenant que nous avons notre classes LINQ to SQL, nous pouvons utiliser ces c
 
 Tout d’abord, nous devons modifier la classe HomeController. Cette classe peut être trouvée dans le dossier contrôleurs de votre application. Modifiez la classe afin qu’il ressemble à la classe dans la liste 1.
 
-**La liste 1 :`Controllers\HomeController.vb`**
+**La liste 1 : `Controllers\HomeController.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample1.vb)]
 
@@ -122,7 +123,7 @@ Une requête LINQ est exécutée sur le DataContext pour récupérer tous les fi
 
 Pour afficher les films, nous devons ensuite modifier la vue Index. Vous trouverez la vue Index dans le dossier Views\Home\. Mettre à jour la vue Index afin qu’il ressemble à la vue dans la liste 2.
 
-**Liste 2 :`Views\Home\Index.aspx`**
+**Liste 2 : `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample2.aspx)]
 
@@ -164,19 +165,19 @@ Lorsque vous créez la classe de référentiel, vous créez une interface qui re
 
 L’interface dans la liste 3 est nommé IMovieRepository et qu’il représente une méthode unique nommée ListAll().
 
-**La liste 3 :`Models\IMovieRepository.vb`**
+**La liste 3 : `Models\IMovieRepository.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample3.vb)]
 
 La classe de référentiel dans la liste 4 implémente l’interface IMovieRepository. Notez qu’il contient une méthode nommée ListAll() qui correspond à la méthode requise par l’interface IMovieRepository.
 
-**La liste 4 –`Models\MovieRepository.vb`**
+**La liste 4 – `Models\MovieRepository.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample4.vb)]
 
 Enfin, la classe MoviesController dans la liste 5 utilise le modèle de référentiel. Il n’utilise plus LINQ aux classes SQL directement.
 
-**La liste 5 :`Controllers\MoviesController.vb`**
+**La liste 5 : `Controllers\MoviesController.vb`**
 
 [!code-vb[Main](creating-model-classes-with-linq-to-sql-vb/samples/sample5.vb)]
 
@@ -186,7 +187,7 @@ Le deuxième constructeur ayant un seul paramètre : un paramètre IMovieReposi
 
 La classe MoviesController bénéficie d’un modèle de conception de logiciel appelé le motif de l’Injection de dépendances. En particulier, il est à l’aide de ce que l'on appelle le constructeur d’Injection de dépendance. Vous pouvez en savoir plus sur ce modèle, lisez l’article suivant par Martin Fowler :
 
-[http://martinfowler.com/articles/injection.HTML](http://martinfowler.com/articles/injection.html)
+[http://martinfowler.com/articles/injection.html](http://martinfowler.com/articles/injection.html)
 
 Notez que tout le code dans la classe MoviesController (à l’exception du premier constructeur) interagit avec l’interface IMovieRepository au lieu de la classe MovieRepository réelle. Le code interagit avec une interface abstraite au lieu d’une implémentation concrète de l’interface.
 
@@ -194,12 +195,12 @@ Si vous souhaitez modifier la technologie d’accès aux données utilisée par 
 
 En outre, si vous souhaitez tester la classe MoviesController, vous pouvez passer une classe de référentiel de film factice pour le MoviesController. Vous pouvez implémenter la classe IMovieRepository avec une classe qui n’accède pas réellement à la base de données, mais contient toutes les méthodes de l’interface IMovieRepository requis. De cette façon, vous pouvez le test unitaire la classe MoviesController sans réellement l’accès à une base de données réel.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel a pour illustrer comment vous pouvez créer des classes du modèle MVC en tirant parti de Microsoft LINQ to SQL. Nous avons examiné les deux stratégies pour afficher les données de la base de données dans une application ASP.NET MVC. Tout d’abord, nous créé LINQ aux classes SQL et utiliser les classes directement au sein d’une action du contrôleur. À l’aide de LINQ aux classes SQL au sein d’un contrôleur vous permet de rapidement et facilement afficher des données de base de données dans une application MVC.
 
 Ensuite, nous a présenté un peu plus difficile, mais sans aucun doute plus vertueux, le chemin d’accès pour afficher les données de la base de données. Nous a tiré parti du modèle de référentiel et toute notre logique d’accès de base de données placé dans une classe de référentiels distincts. Dans notre contrôleur, nous a écrit tout notre code par rapport à une interface au lieu d’une classe concrète. L’avantage du modèle de référentiel est qu’il nous permet de modifier aisément les technologies d’accès de base de données dans le futur et il nous permet de tester facilement nos classes de contrôleur.
 
->[!div class="step-by-step"]
-[Précédent](creating-model-classes-with-the-entity-framework-vb.md)
-[Suivant](displaying-a-table-of-database-data-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-model-classes-with-the-entity-framework-vb.md)
+> [Suivant](displaying-a-table-of-database-data-vb.md)

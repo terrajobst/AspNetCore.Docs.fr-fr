@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
-title: "Ateliers pratiques : Générer une Application à Page unique (SPA) avec l’API Web ASP.NET et Angular.js | Documents Microsoft"
+title: 'Ateliers pratiques : Générer une Application à Page unique (SPA) avec l’API Web ASP.NET et Angular.js | Documents Microsoft'
 author: rick-anderson
-description: "Dans les applications web classiques, le client (navigateur) lance la communication avec le serveur en demandant à une page. Le serveur traite ensuite la demande..."
+description: Dans les applications web classiques, le client (navigateur) lance la communication avec le serveur en demandant à une page. Le serveur traite ensuite la demande...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/30/2015
@@ -153,13 +153,13 @@ Dans cette tâche commence la création d’un nouveau projet ASP.NET MVC avec p
 
     > [!NOTE]
     > Le **Authorize** filtre vérifie si l’utilisateur est authentifié. Si l’utilisateur n’est pas authentifié, il retourne le code d’état HTTP 401 (non autorisé) sans appeler l’action. Vous pouvez appliquer le filtre globalement, au niveau du contrôleur ou au niveau de différentes actions.
-9. Vous allez maintenant personnaliser la disposition des pages web et la personnalisation. Pour ce faire, ouvrez le  **\_Layout.cshtml** de fichiers à l’intérieur de la **vues | Partagé** dossier et mettre à jour le contenu de la  **&lt;titre&gt;**  élément en remplaçant *mon Application ASP.NET* avec *fou questionnaire* .
+9. Vous allez maintenant personnaliser la disposition des pages web et la personnalisation. Pour ce faire, ouvrez le  **\_Layout.cshtml** de fichiers à l’intérieur de la **vues | Partagé** dossier et mettre à jour le contenu de la **&lt;titre&gt;** élément en remplaçant *mon Application ASP.NET* avec *fou questionnaire* .
 
     [!code-cshtml[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample4.cshtml)]
 10. Dans le même fichier, vous devez mettre à jour la barre de navigation en supprimant le *sur* et *Contact* liens et renommer le *accueil* lier à *lire*. En outre, renommez le *nom de l’Application* lier à *fou questionnaire*. Le code HTML de la barre de navigation doit ressembler le code suivant.
 
     [!code-cshtml[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample5.cshtml)]
-11. Mettre à jour le pied de page de la page de disposition en remplaçant *mon Application ASP.NET* avec *fou questionnaire*. Pour ce faire, remplacez le contenu de la  **&lt;pied de page&gt;**  élément avec le code en surbrillance suivant.
+11. Mettre à jour le pied de page de la page de disposition en remplaçant *mon Application ASP.NET* avec *fou questionnaire*. Pour ce faire, remplacez le contenu de la **&lt;pied de page&gt;** élément avec le code en surbrillance suivant.
 
     [!code-html[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample6.html)]
 
@@ -421,7 +421,7 @@ Dans cette tâche, vous utiliserez les propriétés CSS3 pour effectuer des anim
 5. Recherchez le **masquer arrière volet au cours de retournement de** commentaire. Le style sous ce commentaire masque l’arrière des faces lorsqu’ils sont opposés à la visionneuse en définissant le **visibilité de la face arrière** propriété CSS *masqué*.
 
     [!code-css[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample23.css)]
-6. Ouvrir le **BundleConfig.cs** de fichiers à l’intérieur de la **application\_Démarrer** dossier et ajouter la référence à la **Flip.css** de fichiers dans le  **&quot;~/Content/css&quot;**  offre groupée de style
+6. Ouvrir le **BundleConfig.cs** de fichiers à l’intérieur de la **application\_Démarrer** dossier et ajouter la référence à la **Flip.css** de fichiers dans le **&quot;~/Content/css&quot;** offre groupée de style
 
     [!code-csharp[Main](build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs/samples/sample24.cs)]
 7. Appuyez sur **F5** pour exécuter la solution et connectez-vous avec vos informations d’identification.

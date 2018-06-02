@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
-title: "Déploiement de la configuration des autorisations de Team Build | Documents Microsoft"
+title: Déploiement de la configuration des autorisations de Team Build | Documents Microsoft
 author: jrjlee
-description: "Cette rubrique explique comment configurer les autorisations requises pour activer votre serveur de builds déployer du contenu vers les serveurs web et serveurs de base de données dans le cadre d’un b automatisé..."
+description: Cette rubrique explique comment configurer les autorisations requises pour activer votre serveur de builds déployer du contenu vers les serveurs web et serveurs de base de données dans le cadre d’un b automatisé...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: cb3d013d69e36f97335ea31dd6e4997772ba2d8e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4698349d664816ec49475bbfe71fb32af79ea96d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-permissions-for-team-build-deployment"></a>Déploiement de la configuration des autorisations de Team Build
 ====================
@@ -27,9 +27,9 @@ par [Jason Lee](https://github.com/jrjlee)
 > Cette rubrique décrit comment configurer des autorisations pour activer votre serveur de builds déployer du contenu vers les serveurs web et serveurs de base de données dans le cadre d’un processus de génération automatisé.
 
 
-Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution l’a & #x 2014 ; le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)& #x 2014 ; pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, Windows Service de communication Foundation (WCF) et un projet de base de données.
+Cette rubrique fait partie d’une série de didacticiels basées sur les spécifications de déploiement d’entreprise d’une société fictive nommée Fabrikam, Inc. Cette série de didacticiels utilise un exemple de solution&#x2014;le [solution Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;pour représenter une application web avec un niveau réaliste de complexité, y compris une application ASP.NET MVC 3, une Communication de Windows Service Foundation (WCF) et un projet de base de données.
 
-La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de & projet #x 2014 ; un contenant les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
+La méthode de déploiement au cœur de ces didacticiels est basée sur l’approche de fichier de projet de fractionnement décrite dans [présentation du fichier de projet](../web-deployment-in-the-enterprise/understanding-the-project-file.md), dans lequel le processus de génération est contrôlé par deux fichiers de projet&#x2014;contenant un seul les instructions qui s’appliquent à chaque environnement de destination et celui qui contient les paramètres de génération et de déploiement spécifiques à l’environnement de génération. Au moment de la génération, le fichier de projet spécifique à un environnement est fusionné dans le fichier de projet d’indépendant de l’environnement pour former un ensemble complet d’instructions de génération.
 
 ## <a name="task-overview"></a>Vue d’ensemble de la tâche
 
@@ -38,7 +38,7 @@ Lorsque vous installez le service de build de 2010 Team Foundation Server (TFS),
 Les tâches de déploiement qui nécessitent l’authentification Windows et que vous prévoyez d’automatiser à l’aide de Team Build, seront exécute à l’aide de l’identité de service de build. Par conséquent, vous devez accorder à l’identité de service de build toutes les autorisations requises sur vos serveurs web et vos serveurs de base de données.
 
 > [!NOTE]
-> Le compte Service réseau utilise le compte d’ordinateur pour s’authentifier auprès d’autres ordinateurs. Comptes d’ordinateur prennent la forme *[nom de domaine]\[nom de l’ordinateur]***$**& #x 2014 ; par exemple, **FABRIKAM\TFSBUILD$**. Par conséquent, si votre service de build s’exécute à l’aide de l’identité Service réseau, vous devriez toutes les autorisations requises pour l’identité du compte d’ordinateur pour votre serveur de builds.
+> Le compte Service réseau utilise le compte d’ordinateur pour s’authentifier auprès d’autres ordinateurs. Comptes d’ordinateur prennent la forme * [nom de domaine]\[nom de l’ordinateur] ***$**&#x2014;, par exemple, **FABRIKAM\TFSBUILD$**. Par conséquent, si votre service de build s’exécute à l’aide de l’identité Service réseau, vous devriez toutes les autorisations requises pour l’identité du compte d’ordinateur pour votre serveur de builds.
 
 
 ## <a name="configuring-web-server-permissions"></a>Configuration des autorisations de serveur Web
@@ -50,7 +50,7 @@ Comme décrit dans [en choisissant l’approche de droite pour le déploiement W
 
 L’agent distant a deux principales limitations dans ce cas :
 
-- L’agent distant prend en charge uniquement l’authentification NTLM. En d’autres termes, le déploiement doit utiliser l’identité de service de build & #x 2014 ; vous ne peut pas emprunter l’identité d’un autre compte.
+- L’agent distant prend en charge uniquement l’authentification NTLM. En d’autres termes, le déploiement doit utiliser l’identité de service de build&#x2014;vous ne peut pas emprunter l’identité d’un autre compte.
 - Pour utiliser l’agent distant, le compte qui exécute le déploiement doit être un administrateur sur le serveur cible.
 
 Ensemble, ces deux limitations rendent l’approche de l’agent distant pas souhaitable pour un déploiement automatisé Team Build. Pour utiliser cette approche, vous devez rendre le service de build le compte d’administrateur sur tous les serveurs web cible.
@@ -93,5 +93,5 @@ Pour plus d’informations détaillées sur la façon de configurer les autorisa
 
 Pour plus d’informations sur la configuration des environnements Windows server pour prendre en charge le déploiement à distance, consultez [configuration des environnements de serveur pour le déploiement Web](../configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment.md).
 
->[!div class="step-by-step"]
-[Précédent](deploying-a-specific-build.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-a-specific-build.md)
