@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
-title: "Prévention de XSRF/CSRF dans ASP.NET MVC et les Pages Web | Documents Microsoft"
+title: Prévention de XSRF/CSRF dans ASP.NET MVC et les Pages Web | Documents Microsoft
 author: Rick-Anderson
-description: "Falsification de requête (également appelé XSRF ou CSRF) est une attaque contre les applications hébergées par le web dans laquelle un site web malveillant peut influencer l’interacti..."
+description: Falsification de requête (également appelé XSRF ou CSRF) est une attaque contre les applications hébergées par le web dans laquelle un site web malveillant peut influencer l’interacti...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2013
@@ -13,14 +13,14 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 6cf30daa7ed966b11405cec715c5bc803b567249
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages"></a>Prévention de XSRF/CSRF dans ASP.NET MVC et les Pages Web
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Requête falsification (également appelé XSRF ou CSRF) est une attaque contre les applications hébergées par le web dans laquelle un site web malveillant peut influencer l’interaction entre un navigateur client et un site web approuvé par ce navigateur. Ces attaques sont possible parce que les navigateurs web envoie des jetons d’authentification automatiquement avec chaque demande à un site web. L’exemple canonique est un cookie d’authentification, tels que ASP. Ticket d’authentification par formulaire de NET. Toutefois, les sites web qui utilisent un mécanisme d’authentification persistant (par exemple, l’authentification Windows, Basic et ainsi de suite) peuvent être ciblés par ces attaques.
 > 
@@ -86,7 +86,7 @@ Les charges utiles des jetons anti-XSRF sont chiffrés et signés, donc vous ne 
 Pour générer les jetons anti-XSRF, appelez le [ @Html.AntiForgeryToken ](https://msdn.microsoft.com/library/dd470175.aspx) méthode à partir d’une vue MVC ou @AntiForgery.GetHtml() à partir d’une page Razor. Le runtime effectue ensuite les étapes suivantes :
 
 1. Si la requête HTTP actuelle contient déjà un jeton de session anti-XSRF (le cookie anti-XSRF \_ \_RequestVerificationToken), le jeton de sécurité est extraite à partir de celui-ci. Si la requête HTTP ne contient pas un jeton de session anti-XSRF ou si l’extraction du jeton de sécurité échoue, un nouveau jeton anti-XSRF aléatoire sera généré.
-2. Un jeton de champ anti-XSRF est généré à l’aide du jeton de sécurité de l’étape (1) et l’identité de l’utilisateur connecté actuel. (Pour plus d’informations sur la définition de l’identité de l’utilisateur, consultez la  **[des scénarios avec prise en charge spéciale](#_Scenarios_with_special)**  section ci-dessous.) En outre, si un [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx) est configuré, le runtime appelle sa [GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx) (méthode) et inclure la chaîne retournée dans le jeton de champ. (Consultez la  **[Configuration et l’extensibilité](#_Configuration_and_extensibility)**  section pour plus d’informations.)
+2. Un jeton de champ anti-XSRF est généré à l’aide du jeton de sécurité de l’étape (1) et l’identité de l’utilisateur connecté actuel. (Pour plus d’informations sur la définition de l’identité de l’utilisateur, consultez la **[des scénarios avec prise en charge spéciale](#_Scenarios_with_special)** section ci-dessous.) En outre, si un [IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/jj158328(v=vs.111).aspx) est configuré, le runtime appelle sa [GetAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.getadditionaldata(v=vs.111).aspx) (méthode) et inclure la chaîne retournée dans le jeton de champ. (Consultez la **[Configuration et l’extensibilité](#_Configuration_and_extensibility)** section pour plus d’informations.)
 3. Si un nouveau jeton anti-XSRF a été généré à l’étape (1), un jeton de session nouvelle sera créé pour contenir et sera ajouté à la collection de cookies HTTP sortante. Le jeton de champ de l’étape (2) à encapsuler dans un `<input type="hidden" />` élément et ce balisage HTML sera la valeur de retour de `Html.AntiForgeryToken()` ou `AntiForgery.GetHtml()`.
 
 ## <a name="validating-the-tokens"></a>Valide les jetons
@@ -108,9 +108,9 @@ En commençant par le Runtime de pile Web ASP.NET v2, de tout *HttpAntiForgeryEx
 - Le jeton de session et le jeton de champ ont été permutées.
 - Le jeton de session et le jeton de champ contiennent des jetons de sécurité ne correspondent pas.
 - Le nom d’utilisateur incorporée dans le jeton de champ ne correspond pas nom d’utilisateur connecté l’utilisateur actuel.
-- Le  *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)*  méthode retournée *false*.
+- Le *[IAntiForgeryAdditionalDataProvider.ValidateAdditionalData](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider.validateadditionaldata(v=vs.111).aspx)* méthode retournée *false*.
 
-Les installations d’anti-XSRF peuvent également effectuer une vérification supplémentaire pendant la génération de jetons ou de validation, et les échecs au cours de ces vérifications peuvent entraîner exceptions sont levées. Consultez le [WIF / ACS / basée sur les revendications authentification](#_WIF_ACS) et  **[Configuration et l’extensibilité](#_Configuration_and_extensibility)**  sections pour plus d’informations.
+Les installations d’anti-XSRF peuvent également effectuer une vérification supplémentaire pendant la génération de jetons ou de validation, et les échecs au cours de ces vérifications peuvent entraîner exceptions sont levées. Consultez le [WIF / ACS / basée sur les revendications authentification](#_WIF_ACS) et **[Configuration et l’extensibilité](#_Configuration_and_extensibility)** sections pour plus d’informations.
 
 <a id="_Scenarios_with_special"></a>
 
@@ -139,10 +139,10 @@ La plupart des déploiements qui utilisent l’authentification basée sur les r
 
 Lors de la génération ou de validation d’un jeton, le Runtime de pile Web ASP.NET essaiera lors de l’exécution pour les types de liaison de :
 
-- `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35`(Pour le SDK de WIF.)
-- `System.Security.Claims.ClaimsIdentity`(Pour .NET 4.5).
+- `Microsoft.IdentityModel.Claims.IClaimsIdentity, Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35` (Pour le SDK de WIF.)
+- `System.Security.Claims.ClaimsIdentity` (Pour .NET 4.5).
 
-Si ces types existent et si l’utilisateur actuel *IIIIdentity* implémente ou sous-classes un de ces types, la fonctionnalité anti-XSRF utilise (fournisseur d’identité, identificateur de nom) tuple à la place du nom d’utilisateur lors de la génération et valide les jetons. Si aucun tuple de ce type n’est présent, la demande échoue avec une erreur décrivant au développeur comment configurer le système anti-XSRF pour comprendre le mécanisme d’authentification basée sur les revendications particulier en cours d’utilisation. Consultez le  **[Configuration et l’extensibilité](#_Configuration_and_extensibility)**  section pour plus d’informations.
+Si ces types existent et si l’utilisateur actuel *IIIIdentity* implémente ou sous-classes un de ces types, la fonctionnalité anti-XSRF utilise (fournisseur d’identité, identificateur de nom) tuple à la place du nom d’utilisateur lors de la génération et valide les jetons. Si aucun tuple de ce type n’est présent, la demande échoue avec une erreur décrivant au développeur comment configurer le système anti-XSRF pour comprendre le mécanisme d’authentification basée sur les revendications particulier en cours d’utilisation. Consultez le **[Configuration et l’extensibilité](#_Configuration_and_extensibility)** section pour plus d’informations.
 
 ### <a name="oauth--openid-authentication"></a>OAuth / OpenID authentification
 
@@ -175,7 +175,7 @@ Le développeur peut configurer le système anti-XSRF à partir de l’Applicati
 
 ### <a name="iantiforgeryadditionaldataprovider"></a>IAntiForgeryAdditionalDataProvider
 
-Le  *[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)*  permet aux développeurs d’étendre le comportement du système anti-XSRF par des données supplémentaires aller-retour dans chaque jeton. Le *GetAdditionalData* méthode est appelée chaque fois qu’un jeton de champ est généré, et la valeur de retour est incorporée dans le jeton généré. Un implémenteur peut retourner un horodatage, une valeur à usage unique ou toute autre valeur si qu'elle veut à partir de cette méthode.
+Le *[IAntiForgeryAdditionalDataProvider](https://msdn.microsoft.com/library/system.web.helpers.iantiforgeryadditionaldataprovider(v=vs.111).aspx)* permet aux développeurs d’étendre le comportement du système anti-XSRF par des données supplémentaires aller-retour dans chaque jeton. Le *GetAdditionalData* méthode est appelée chaque fois qu’un jeton de champ est généré, et la valeur de retour est incorporée dans le jeton généré. Un implémenteur peut retourner un horodatage, une valeur à usage unique ou toute autre valeur si qu'elle veut à partir de cette méthode.
 
 De même, la *ValidateAdditionalData* méthode est appelée chaque fois qu’un jeton de champ est validé, et la chaîne « données supplémentaires » qui a été incorporée dans le jeton est passée à la méthode. La routine de validation peut implémenter un délai d’attente (en vérifiant l’heure actuelle par rapport à l’heure qui a été enregistrée lors de la création du jeton), si vous le souhaitez une valeur à usage unique, la vérification de la routine, ou toute autre logique.
 

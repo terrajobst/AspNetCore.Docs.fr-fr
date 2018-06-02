@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
-title: "URL dans les Pages maîtres (c#) | Documents Microsoft"
+title: URL dans les Pages maîtres (c#) | Documents Microsoft
 author: rick-anderson
-description: "Adresses comment URL dans la page maître peuvent provoquer des problèmes en raison du fichier de page maître en cours dans un autre répertoire relatif à la page de contenu. Examine la relocalisation..."
+description: Adresses comment URL dans la page maître peuvent provoquer des problèmes en raison du fichier de page maître en cours dans un autre répertoire relatif à la page de contenu. Examine la relocalisation...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/urls-in-master-pages-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8b01f0ac780121c4e0941df6016220a1cb1ed2d1
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 494338f1a0705c8d7e15bc693ae1ec6362b26d64
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="urls-in-master-pages-c"></a>URL dans les Pages maîtres (c#)
 ====================
@@ -182,12 +182,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
 Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Précédent](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
-[Suivant](control-id-naming-in-content-pages-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-cs.md)
+> [Suivant](control-id-naming-in-content-pages-cs.md)

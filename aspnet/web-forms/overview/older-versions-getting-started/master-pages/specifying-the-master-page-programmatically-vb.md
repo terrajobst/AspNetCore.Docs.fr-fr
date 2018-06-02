@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-vb
-title: "Spécification de la Page maître par programme (VB) | Documents Microsoft"
+title: Spécification de la Page maître par programme (VB) | Documents Microsoft
 author: rick-anderson
-description: "Recherche sur le contenu de page maître par programme via le Gestionnaire d’événements PreInit de paramètre."
+description: Recherche sur le contenu de page maître par programme via le Gestionnaire d’événements PreInit de paramètre.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/28/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 191de7546e2ba913fda0c8c8a8bfd3531b53336e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4ba2981e627199da89a25b0b59840f66521f2e78
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="specifying-the-master-page-programmatically-vb"></a>Spécification de la Page maître par programme (VB)
 ====================
@@ -282,12 +282,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de plusieurs manuels ASP/ASP.NET et de créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 3.5 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672329972/4guysfromrollaco). Scott peut être atteint à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
-Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Suchi Banerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à[mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
+Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Suchi Banerjee. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [mitchell@4GuysFromRolla.com](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](master-pages-and-asp-net-ajax-vb.md)
-[Suivant](nested-master-pages-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](master-pages-and-asp-net-ajax-vb.md)
+> [Suivant](nested-master-pages-vb.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-detailsview-control-cs
-title: "Utilisation de TemplateField dans le contrôle DetailsView (c#) | Documents Microsoft"
+title: Utilisation de TemplateField dans le contrôle DetailsView (c#) | Documents Microsoft
 author: rick-anderson
-description: "Les mêmes fonctionnalités TemplateField disponibles avec le contrôle GridView sont également disponibles avec le contrôle DetailsView. Dans ce didacticiel, nous affichons un produit..."
+description: Les mêmes fonctionnalités TemplateField disponibles avec le contrôle GridView sont également disponibles avec le contrôle DetailsView. Dans ce didacticiel, nous affichons un produit...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-templatefields-in-the-detailsview-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8004937b758ee1bdb2a2df84c5ea40d47e89dd1c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f1d2e8312451c0bd1b3aba448963317f5fe06029
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-templatefields-in-the-detailsview-control-c"></a>Utilisation de TemplateField dans le contrôle DetailsView (c#)
 ====================
@@ -129,7 +129,7 @@ De façon déclarative, la spécification de mise en forme est indiquée en tant
 
 Ajoutez le balisage statique, les contrôles Web Label et syntaxe de liaison de données afin que le prix et l’inventaire TemplateField affiche des informations de prix et d’inventaire comme suit :
 
-*Prix unitaire*  
+*UnitPrice*  
 (**En Stock / de commande :** *UnitsInStock* / *UnitsOnOrder*)
 
 Après avoir effectué cette tâche balisage déclaratif de votre contrôle DetailsView doit ressembler à ce qui suit :
@@ -183,7 +183,7 @@ Cela entraîne le `DisplayDiscontinuedAsYESorNO` méthode à appeler lors du ren
 **La figure 10**: valeurs Oui ou non sont maintenant affichés dans la ligne de fin de série ([cliquez pour afficher l’image en taille réelle](using-templatefields-in-the-detailsview-control-cs/_static/image30.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Le TemplateField dans le contrôle DetailsView permet un degré plus élevé de flexibilité dans l’affichage des données qu’est disponible avec les autres contrôles de champ et sont idéales pour les situations où :
 
@@ -199,12 +199,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Dan Jagers. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](using-templatefields-in-the-gridview-control-cs.md)
-[Suivant](using-the-formview-s-templates-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](using-templatefields-in-the-gridview-control-cs.md)
+> [Suivant](using-the-formview-s-templates-cs.md)

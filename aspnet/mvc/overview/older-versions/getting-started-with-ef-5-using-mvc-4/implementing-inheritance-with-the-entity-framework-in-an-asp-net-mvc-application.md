@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
-title: "Implémentation de l’héritage avec Entity Framework dans une Application ASP.NET MVC (8 sur 10) | Documents Microsoft"
+title: Implémentation de l’héritage avec Entity Framework dans une Application ASP.NET MVC (8 sur 10) | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/30/2013
@@ -12,19 +12,19 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 54e46c6f996b6fe86a227c851562e61678b02780
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ee088f841bdb68f4806b0b62be7d379b9eab9f8c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-inheritance-with-the-entity-framework-in-an-aspnet-mvc-application-8-of-10"></a>Implémentation de l’héritage avec Entity Framework dans une Application ASP.NET MVC (8 sur 10)
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet terminé](http://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
 
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio 2012. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Vous pouvez démarrer la série de didacticiels à partir du début ou [télécharger un projet de démarrage pour ce chapitre](building-the-ef5-mvc4-chapter-downloads.md) et Démarrer ici.
+> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio 2012. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Vous pouvez démarrer la série de didacticiels à partir du début ou [télécharger un projet de démarrage pour ce chapitre](building-the-ef5-mvc4-chapter-downloads.md) et Démarrer ici.
 > 
 > > [!NOTE] 
 > > 
@@ -33,7 +33,7 @@ Par [Tom Dykstra](https://github.com/tdykstra)
 
 Dans le didacticiel précédent vous gérée des exceptions d’accès concurrentiel. Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données.
 
-Dans la programmation orientée objet, vous pouvez utiliser l’héritage d’éliminer le code redondant. Dans ce didacticiel, vous allez modifier le `Instructor` et `Student` afin qu’ils dérivent des classes un `Person` classe qui contient les propriétés de base `LastName` qui sont communs aux instructeurs et les étudiants. Vous ne seront pas ajouter ou modifier des pages web, mais vous allez modifier la partie du code et ces modifications sont répercutées automatiquement dans la base de données.
+Dans la programmation orientée objet, vous pouvez utiliser l’héritage d’éliminer le code redondant. Dans ce didacticiel, vous allez modifier les classes `Instructor` et `Student` afin qu’elles dérivent d’une classe de base `Person` qui contient des propriétés telles que `LastName`, communes aux formateurs et aux étudiants. Vous n’ajouterez ni ne modifierez aucune page web, mais vous modifierez une partie du code et ces modifications seront automatiquement répercutées dans la base de données.
 
 ## <a name="table-per-hierarchy-versus-table-per-type-inheritance"></a>Table par hiérarchie et héritage Table par Type
 
@@ -41,19 +41,19 @@ Dans la programmation orientée objet, vous pouvez utiliser l’héritage pour l
 
 ![Student_and_Instructor_classes](https://asp.net/media/2578113/Windows-Live-Writer_58f5a93579b2_CC7B_Student_and_Instructor_classes_e7a32f99-8bc4-48ce-aeaf-216a18071a8b.png)
 
-Supposons que vous souhaitez éliminer le code redondant pour les propriétés qui sont partagées par les `Instructor` et `Student` entités. Vous pouvez créer un `Person` classe qui contient uniquement les propriétés partagées de base, puis apportez les `Instructor` et `Student` entités héritent de cette classe de base, comme indiqué dans l’illustration suivante :
+Supposons que vous souhaitez éliminer le code redondant pour les propriétés partagées par les entités `Instructor` et `Student`. Vous pouvez créer un `Person` classe qui contient uniquement les propriétés partagées de base, puis apportez les `Instructor` et `Student` entités héritent de cette classe de base, comme indiqué dans l’illustration suivante :
 
 ![Student_and_Instructor_classes_deriving_from_Person_class](https://asp.net/media/2578119/Windows-Live-Writer_58f5a93579b2_CC7B_Student_and_Instructor_classes_deriving_from_Person_class_671d708c-cbb8-454a-a8f8-c2d99439acd9.png)
 
-Il existe plusieurs façons que cette structure d’héritage peut être représentée dans la base de données. Vous pouvez avoir un `Person` table qui consacrée des informations sur les étudiants et instructeurs dans une table unique. Certaines colonnes pourraient s’appliquent uniquement aux instructeurs (`HireDate`), certains uniquement pour les étudiants (`EnrollmentDate`), certaines pour les deux (`LastName`, `FirstName`). En règle générale, vous devriez un *discriminateur* colonne afin d’indiquer le type de chaque ligne représente. Par exemple, la colonne de discriminateur peut-être « Formateur » pour les enseignants et « Étudiant » pour les étudiants.
+Il existe plusieurs façons de représenter cette structure d’héritage dans la base de données. Vous pouvez avoir un `Person` table qui consacrée des informations sur les étudiants et instructeurs dans une table unique. Certaines colonnes pourraient s’appliquent uniquement aux instructeurs (`HireDate`), certains uniquement pour les étudiants (`EnrollmentDate`), certaines pour les deux (`LastName`, `FirstName`). En règle générale, vous devriez un *discriminateur* colonne afin d’indiquer le type de chaque ligne représente. Par exemple, la colonne de discriminateur peut avoir « Instructor » pour les formateurs et « Student » pour les étudiants.
 
-![Table-par-hierarchy_example](https://asp.net/media/2578125/Windows-Live-Writer_58f5a93579b2_CC7B_Table-per-hierarchy_example_244067cd-b451-4e9b-9595-793b9afca505.png)
+![Table-per-hierarchy_example](https://asp.net/media/2578125/Windows-Live-Writer_58f5a93579b2_CC7B_Table-per-hierarchy_example_244067cd-b451-4e9b-9595-793b9afca505.png)
 
 Ce modèle de la génération d’une structure d’héritage d’entité à partir d’une table de base de données unique est appelé *table par hiérarchie* l’héritage (TPH).
 
-Une alternative consiste à rendre la base de données ressemble plus à la structure d’héritage. Par exemple, vous pouvez avoir seulement les champs de nom dans la `Person` table et avez distinct `Instructor` et `Student` tables avec des champs de date.
+Une alternative consiste à faire en sorte que la base de données ressemble plus à la structure d’héritage. Par exemple, vous pouvez avoir seulement les champs de nom dans la `Person` table et avez distinct `Instructor` et `Student` tables avec des champs de date.
 
-![Table-par-type_inheritance](https://asp.net/media/2578131/Windows-Live-Writer_58f5a93579b2_CC7B_Table-per-type_inheritance.png)
+![Table-per-type_inheritance](https://asp.net/media/2578131/Windows-Live-Writer_58f5a93579b2_CC7B_Table-per-type_inheritance.png)
 
 Ce modèle de configuration d’une table de base de données pour chaque classe d’entité est appelé *table par type* l’héritage (TPT).
 
@@ -71,7 +71,7 @@ Dans le *modèles* dossier, créez *Person.cs* et remplacez le code de modèle p
 
 [!code-csharp[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-Dans *Instructor.cs*, dériver le `Instructor` classe à partir de la `Person` classe et supprimez les champs de clé et le nom. Le code doit ressembler à l’exemple suivant :
+Dans *Instructor.cs*, dériver le `Instructor` classe à partir de la `Person` classe et supprimez les champs de clé et le nom. Le code ressemblera à l’exemple suivant :
 
 [!code-csharp[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
 
@@ -85,7 +85,7 @@ Dans *SchoolContext.cs*, ajoutez un `DbSet` propriété pour la `Person` type d�
 
 [!code-csharp[Main](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs)]
 
-C’est tout ce qui a besoin d’Entity Framework pour configurer l’héritage table par hiérarchie. Comme vous le verrez, lorsque la base de données est recréé, il aura un `Person` de table à la place de la `Student` et `Instructor` tables.
+C’est là tout ce dont Entity Framework a besoin pour configurer l’héritage TPH (table par hiérarchie). Comme vous le verrez, lorsque la base de données est recréé, il aura un `Person` de table à la place de la `Student` et `Instructor` tables.
 
 ## <a name="changing-instructorid-and-studentid-to-personid"></a>La modification InstructorID et StudentID à PersonID
 
@@ -100,7 +100,7 @@ Cette modification n’est pas nécessaire ; Il modifie uniquement le nom de la
 Ensuite, vous devez modifier `InstructorID` à `PersonID` et `StudentID` à `PersonID` tout au long du projet ***sauf*** dans les fichiers horodatés les migrations dans le *Migrations* dossier. Pour ce faire, vous allez trouver et ouvrir uniquement les fichiers qui doivent être modifiées, puis effectuer une modification globale sur les fichiers ouverts. Le seul fichier dans le *Migrations* dossier, vous devez modifier est *Migrations\Configuration.cs.*
 
 1. > [!IMPORTANT]
- > Commencez par fermer tous les fichiers ouverts dans Visual Studio.
+   > Commencez par fermer tous les fichiers ouverts dans Visual Studio.
 2. Cliquez sur **rechercher et remplacer--rechercher tous les fichiers** dans les **modifier** menu et recherchez tous les fichiers dans le projet contenant `InstructorID`.  
   
     ![](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
@@ -108,7 +108,7 @@ Ensuite, vous devez modifier `InstructorID` à `PersonID` et `StudentID` à `Per
   
     ![](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 4. Ouvrez le **remplacer dans les fichiers** boîte de dialogue et la modification **Regarder dans** à **tous les Documents ouverts**.
-5. Utilisez le **remplacer dans les fichiers** boîte de dialogue pour modifier toutes les `InstructorID` à`PersonID.`  
+5. Utilisez le **remplacer dans les fichiers** boîte de dialogue pour modifier toutes les `InstructorID` à `PersonID.`  
   
     ![](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
 6. Rechercher tous les fichiers dans le projet contenant `StudentID`.
@@ -149,13 +149,13 @@ Exécutez le `update-database` réexécutez la commande.
 
 ## <a name="testing"></a>Test
 
-Exécuter le site et essayez différentes pages. Tout fonctionne comme auparavant.
+Exécuter le site et essayez différentes pages. Tout fonctionne comme avant.
 
 Dans **l’Explorateur de serveurs** développez **SchoolContext** , puis **Tables**, et vous constatez que la **Student** et **formateur**  tables ont été remplacés par un **personne** table. Développez le **personne** table et que vous consultez dont toutes les colonnes utilisées dans les **Student** et **formateur** tables.
 
 ![Server_Explorer_showing_Person_table](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
-Avec le bouton droit de la table Person, puis cliquez sur **afficher les données de Table** pour afficher la colonne de discriminateur.
+Cliquez avec le bouton droit sur la table Person, puis cliquez sur **Afficher les données de la table** pour voir la colonne de discriminateur.
 
 ![](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
@@ -163,12 +163,12 @@ Le diagramme suivant illustre la structure de la base de données School :
 
 ![School_database_diagram](https://asp.net/media/2578143/Windows-Live-Writer_58f5a93579b2_CC7B_School_database_diagram_6350a801-7199-413f-bbac-4a2009ed19d7.png)
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’héritage table par hiérarchie a maintenant été implémentée pour le `Person`, `Student`, et `Instructor` classes. Pour plus d’informations sur cette modification et autres structures de l’héritage, consultez [stratégies de mappage d’héritage](https://weblogs.asp.net/manavi/archive/2010/12/24/inheritance-mapping-strategies-with-entity-framework-code-first-ctp5-part-1-table-per-hierarchy-tph.aspx) sur le blog de Morteza Manavi. Dans l’étape suivante du didacticiel, vous verrez quelques méthodes permettant d’implémenter le référentiel et une unité de travail des modèles.
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans le [ASP.NET Data Access Content Map](../../../../whitepapers/aspnet-data-access-content-map.md).
 
->[!div class="step-by-step"]
-[Précédent](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-[Suivant](implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application.md)
+> [!div class="step-by-step"]
+> [Précédent](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [Suivant](implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/membership/storing-additional-user-information-cs
-title: "Le stockage des informations utilisateur supplémentaires (c#) | Documents Microsoft"
+title: Le stockage des informations utilisateur supplémentaires (c#) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel nous répondrons à cette question par la création d’une application très rudimentaires or. Ce faisant, nous examinerons les différentes options pour modeli..."
+description: Dans ce didacticiel nous répondrons à cette question par la création d’une application très rudimentaires or. Ce faisant, nous examinerons les différentes options pour modeli...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/18/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 63aa9dce45ce7ac3e33f542f549b2ec620191d50
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: e484f63a82ad9ecf1f376143bdc1924e231e0801
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="storing-additional-user-information-c"></a>Le stockage des informations utilisateur supplémentaires (c#)
 ====================
@@ -107,13 +107,13 @@ Le `GuestbookComments` tableau illustre comment stocker des informations qui par
 
 Nous devons maintenant associer les trois colonnes à chaque compte d’utilisateur pour stocker la ville d’origine, page d’accueil et la signature, qui apparaîtra dans ses commentaires or l’utilisateur. Il existe de différentes façons d’y parvenir :
 
-- **Ajouter de nouvelles colonnes à la ***`aspnet_Users`*** ou ***`aspnet_Membership`*** tables.** Je ne recommande pas cette approche, car il modifie le schéma utilisé par le `SqlMembershipProvider`. Cette décision peut se retourner contre vous vers le bas de la feuille de route. Par exemple, que se passe-t-il si une future version de ASP.NET utilise un autre `SqlMembershipProvider` schéma. Microsoft peut inclure un outil pour migrer la version ASP.NET 2.0 `SqlMembershipProvider` données vers le nouveau schéma, mais si vous avez modifié le ASP.NET 2.0 `SqlMembershipProvider` schéma, une telle conversion sera peut-être pas possible.
+- <strong>Ajouter de nouvelles colonnes à la</strong><strong>`aspnet_Users`</strong><strong>ou</strong><strong>`aspnet_Membership`</strong><strong>tables.</strong> Je ne recommande pas cette approche, car il modifie le schéma utilisé par le `SqlMembershipProvider`. Cette décision peut se retourner contre vous vers le bas de la feuille de route. Par exemple, que se passe-t-il si une future version de ASP.NET utilise un autre `SqlMembershipProvider` schéma. Microsoft peut inclure un outil pour migrer la version ASP.NET 2.0 `SqlMembershipProvider` données vers le nouveau schéma, mais si vous avez modifié le ASP.NET 2.0 `SqlMembershipProvider` schéma, une telle conversion sera peut-être pas possible.
 
 - **Utilisez ASP. Framework de profil du .NET, définition d’une propriété de profil pour la ville d’origine, la page d’accueil et la signature.** ASP.NET inclut une infrastructure de profil qui est conçue pour stocker des données supplémentaires spécifiques à l’utilisateur. Comme l’infrastructure d’appartenance, l’infrastructure de profil est construit sur le modèle de fournisseur. Le .NET Framework est fourni avec un `SqlProfileProvider` disparaissent stocke les données de profil dans une base de données SQL Server. En fait, notre base de données a déjà la table utilisée par le `SqlProfileProvider` (`aspnet_Profile`), tel qu’il a été ajouté lorsque nous avons ajouté les services d’application de nouveau la <a id="_msoanchor_2"> </a> [ *création du schéma de l’appartenance dans SQL Serveur* ](creating-the-membership-schema-in-sql-server-cs.md) didacticiel.   
- Le principal avantage de l’infrastructure de profil est qu’il permet aux développeurs de définir les propriétés de profil dans `Web.config` – aucun code ne doive être écrites pour sérialiser les données de profil vers et depuis le magasin de données sous-jacent. En bref, il est très facile de définir un jeu de propriétés de profil et à les utiliser dans le code. Toutefois, le système de profil laisse beaucoup à désirer lorsqu’il s’agit du contrôle de version, si vous disposez d’une application où vous prévoyez de nouvelles propriétés spécifiques à l’utilisateur à ajouter à une date ultérieure ou existants à supprimer ou de modifier, puis l’infrastructure de profil ne peut pas être le  meilleure option. En outre, le `SqlProfileProvider` stocke les propriétés de profil de manière hautement dénormalisée, rend pratiquement impossible à exécuter des requêtes directement sur les données de profil (par exemple, le nombre d’utilisateurs ont une zone urbaine accueil de New York).   
- Pour plus d’informations sur l’infrastructure de profil, consultez la section « Autres lectures » à la fin de ce didacticiel.
+  Le principal avantage de l’infrastructure de profil est qu’il permet aux développeurs de définir les propriétés de profil dans `Web.config` – aucun code ne doive être écrites pour sérialiser les données de profil vers et depuis le magasin de données sous-jacent. En bref, il est très facile de définir un jeu de propriétés de profil et à les utiliser dans le code. Toutefois, le système de profil laisse beaucoup à désirer lorsqu’il s’agit du contrôle de version, si vous disposez d’une application où vous prévoyez de nouvelles propriétés spécifiques à l’utilisateur à ajouter à une date ultérieure ou existants à supprimer ou de modifier, puis l’infrastructure de profil ne peut pas être le  meilleure option. En outre, le `SqlProfileProvider` stocke les propriétés de profil de manière hautement dénormalisée, rend pratiquement impossible à exécuter des requêtes directement sur les données de profil (par exemple, le nombre d’utilisateurs ont une zone urbaine accueil de New York).   
+  Pour plus d’informations sur l’infrastructure de profil, consultez la section « Autres lectures » à la fin de ce didacticiel.
 
-- **Ajoutez ces trois colonnes dans une nouvelle table dans la base de données et établir une relation entre cette table et ***`aspnet_Users`***.** Cette approche implique un peu plus de travail qu’avec l’infrastructure de profil, mais offre une souplesse maximale dans la façon dont les propriétés de l’utilisateur supplémentaires sont modélisées dans la base de données. Il s’agit de l’option que nous allons utiliser dans ce didacticiel.
+- <strong>Ajoutez ces trois colonnes dans une nouvelle table dans la base de données et établir une relation entre cette table et</strong><strong>`aspnet_Users`</strong><strong>.</strong> Cette approche implique un peu plus de travail qu’avec l’infrastructure de profil, mais offre une souplesse maximale dans la façon dont les propriétés de l’utilisateur supplémentaires sont modélisées dans la base de données. Il s’agit de l’option que nous allons utiliser dans ce didacticiel.
 
 Nous allons créer une nouvelle table appelée `UserProfiles` pour enregistrer la ville d’origine, la page d’accueil et la signature pour chaque utilisateur. Avec le bouton droit sur le dossier Tables dans la fenêtre Explorateur de base de données et choisir de créer une nouvelle table. Nom de la première colonne `UserId` et définissez son type sur `uniqueidentifier`. Interdire `NULL` les valeurs et marquer la colonne comme clé primaire. Ensuite, ajoutez les colonnes nommées : `HomeTown` de type `nvarchar(50)`; `HomepageUrl` de type `nvarchar(100)`; et la Signature de type `nvarchar(500)`. Chacune de ces trois colonnes peut accepter un `NULL` valeur.
 
@@ -131,7 +131,7 @@ Maintenant que nous avons créé le modèle de données, nous sommes prêts à l
 
 Il existe plusieurs façons pour autoriser l’utilisateur actuellement connecté afficher et modifier ses informations ville, page d’accueil et la signature. Nous pouvons créer manuellement l’interface utilisateur avec la zone de texte et contrôles Label ou nous pouvons utiliser une des données des contrôles Web, tels que le contrôle DetailsView. Pour exécuter la base de données `SELECT` et `UPDATE` instructions ADO.NET, nous pouvons écrire le code dans la classe code-behind de notre page ou, vous pouvez également utiliser une approche déclarative avec le SqlDataSource. Dans l’idéal, notre application contient une architecture à plusieurs niveaux, nous pouvons appeler par programmation à partir de la classe code-behind de la page ou de façon déclarative via le contrôle ObjectDataSource.
 
-Étant donné que cette série de didacticiels se concentre sur l’authentification par formulaire, l’autorisation, les comptes d’utilisateurs et rôles, aucun ne sera une discussion détaillée de ces options d’accès des données différentes ou la raison pour laquelle une architecture à plusieurs niveaux est préférable à l’exécution des instructions SQL directement dans la page ASP.NET. Je vais permettant de parcourir en utilisant un contrôle DetailsView et le SqlDataSource : l’option simple et rapide – mais les concepts abordés certainement peuvent être appliqués à une autre logique d’accès aux données et les contrôles Web. Pour plus d’informations sur l’utilisation des données dans ASP.NET, reportez-vous à mon  *[utilisation des données dans ASP.NET 2.0](../../data-access/index.md)*  série de didacticiels.
+Étant donné que cette série de didacticiels se concentre sur l’authentification par formulaire, l’autorisation, les comptes d’utilisateurs et rôles, aucun ne sera une discussion détaillée de ces options d’accès des données différentes ou la raison pour laquelle une architecture à plusieurs niveaux est préférable à l’exécution des instructions SQL directement dans la page ASP.NET. Je vais permettant de parcourir en utilisant un contrôle DetailsView et le SqlDataSource : l’option simple et rapide – mais les concepts abordés certainement peuvent être appliqués à une autre logique d’accès aux données et les contrôles Web. Pour plus d’informations sur l’utilisation des données dans ASP.NET, reportez-vous à mon *[utilisation des données dans ASP.NET 2.0](../../data-access/index.md)* série de didacticiels.
 
 Ouvrir le `AdditionalUserInfo.aspx` page dans le `Membership` dossier et ajouter un contrôle DetailsView à la page, en définissant son `ID` propriété `UserProfile` et supprimant son `Width` et `Height` propriétés. Développez la balise active du DetailsView et choisissez Lier à un contrôle de source de données. Cette action lance l’Assistant Configuration de source de données (voir la Figure 7). La première étape vous invite à spécifier le type de source de données. Étant donné que nous allons connecter directement à la `SecurityTutorials` de base de données, cliquez sur l’icône de la base de données, en spécifiant le `ID` comme `UserProfileDataSource`.
 
@@ -353,7 +353,7 @@ J’ai terminait suivant `LayoutTemplate`, `ItemTemplate`, et `ItemSeparatorTemp
 
 Le `LayoutTemplate` définit le balisage émis par le contrôle, tandis que le `ItemTemplate` affiche chaque élément retourné par le SqlDataSource. Le `ItemTemplate`de balisage qui en résulte est placé dans le `LayoutTemplate`de `itemPlaceholder` contrôle. Outre la `itemPlaceholder`, le `LayoutTemplate` inclut un contrôle DataPager, ce qui limite le ListView pour afficher seulement 10 perso par page (la valeur par défaut) et restitue une interface de pagination.
 
-Mon `ItemTemplate` affiche l’objet de chaque commentaire or dans un `<h4>` élément avec le corps situé au-dessous de l’objet. Notez que cette syntaxe permettant d’afficher le corps prend les données retournées par le `Eval("Body")` instruction de la liaison de données, il convertit en une chaîne, et les sauts de ligne de la remplace par la `<br />` élément. Cette conversion est nécessaire pour afficher les sauts de ligne entrés lors de l’envoi du commentaire, car l’espace blanc est ignoré par le langage HTML. Signature de l’utilisateur est affiché sous le corps en caractères italiques, suivi par ville accueil de l’utilisateur, un lien vers sa page d’accueil, la date et heure que le commentaire a été effectué et le nom d’utilisateur de la personne qui l’a laissé le commentaire.
+Mon `ItemTemplate` affiche l’objet de chaque commentaire or dans un `<h4>` élément avec le corps situé au-dessous de l’objet. Notez que syntaxe permettant d’afficher le corps prend les données retournées par le `Eval("Body")` instruction de la liaison de données, il convertit en une chaîne, et les sauts de ligne de la remplace par la `<br />` élément. Cette conversion est nécessaire pour afficher les sauts de ligne entrés lors de l’envoi du commentaire, car l’espace blanc est ignoré par le langage HTML. Signature de l’utilisateur est affiché sous le corps en caractères italiques, suivi par ville accueil de l’utilisateur, un lien vers sa page d’accueil, la date et heure que le commentaire a été effectué et le nom d’utilisateur de la personne qui l’a laissé le commentaire.
 
 Prenez un moment pour afficher la page via un navigateur. Vous devez voir les commentaires que vous avez ajouté à l’or à l’étape 5 affichés ici.
 
@@ -428,9 +428,9 @@ La première `WizardStep`, `CreateUserWizardStep`, restitue l’interface qui vo
 
 Pour personnaliser l’interface du contrôle CreateUserWizard pour inclure d’autres champs du formulaire, vous pouvez :
 
-- **Créer un ou plusieurs ***`WizardStep`*** s pour contenir les éléments d’interface utilisateur**. Pour ajouter un nouveau `WizardStep` CreateUserWizard, cliquez sur le « Ajout/suppression `WizardSteps`« lien à partir de sa balise active pour lancer le `WizardStep` éditeur de collections. À partir de là, vous pouvez ajouter, supprimer ou réorganiser les étapes dans l’Assistant. Il s’agit de l’approche que nous allons utiliser pour ce didacticiel.
+- <strong>Créer un ou plusieurs</strong><strong>`WizardStep`</strong><strong>s pour contenir les éléments d’interface utilisateur</strong>. Pour ajouter un nouveau `WizardStep` CreateUserWizard, cliquez sur le « Ajout/suppression `WizardSteps`« lien à partir de sa balise active pour lancer le `WizardStep` éditeur de collections. À partir de là, vous pouvez ajouter, supprimer ou réorganiser les étapes dans l’Assistant. Il s’agit de l’approche que nous allons utiliser pour ce didacticiel.
 
-- **Convertir la ***`CreateUserWizardStep`*** dans un texte modifiable ***`WizardStep`***.** Cette opération remplace le `CreateUserWizardStep` avec un équivalent `WizardStep` dont balisage définit une interface utilisateur qui correspond à la `CreateUserWizardStep`' s. En convertissant le `CreateUserWizardStep` dans un `WizardStep` nous pouvons repositionner les contrôles ou ajouter des éléments d’interface utilisateur pour cette étape. Pour convertir le `CreateUserWizardStep` ou `CompleteWizardStep` dans un texte modifiable `WizardStep`, cliquez sur « Créer un utilisateur personnaliser étape » ou « Personnaliser l’étape » lien à partir de la balise du contrôle.
+- <strong>Convertir le</strong><strong>`CreateUserWizardStep`</strong><strong>dans un texte modifiable</strong><strong>`WizardStep`</strong><strong>.</strong> Cette opération remplace le `CreateUserWizardStep` avec un équivalent `WizardStep` dont balisage définit une interface utilisateur qui correspond à la `CreateUserWizardStep`' s. En convertissant le `CreateUserWizardStep` dans un `WizardStep` nous pouvons repositionner les contrôles ou ajouter des éléments d’interface utilisateur pour cette étape. Pour convertir le `CreateUserWizardStep` ou `CompleteWizardStep` dans un texte modifiable `WizardStep`, cliquez sur « Créer un utilisateur personnaliser étape » ou « Personnaliser l’étape » lien à partir de la balise du contrôle.
 
 - **Utilisez une combinaison des deux options ci-dessus.**
 
@@ -527,12 +527,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements particuliers à...
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4GuysFromRolla.com).
 
->[!div class="step-by-step"]
-[Précédent](user-based-authorization-cs.md)
-[Suivant](creating-the-membership-schema-in-sql-server-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](user-based-authorization-cs.md)
+> [Suivant](creating-the-membership-schema-in-sql-server-vb.md)

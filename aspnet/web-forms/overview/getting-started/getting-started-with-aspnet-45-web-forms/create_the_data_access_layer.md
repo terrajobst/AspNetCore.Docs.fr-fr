@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
-title: "Création de la couche d’accès aux données | Documents Microsoft"
+title: Création de la couche d’accès aux données | Documents Microsoft
 author: Erikre
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create_the_data_access_layer
 msc.type: authoredcontent
-ms.openlocfilehash: 809609155b06c4632bd4f450082d84c432c7a46f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 671d1bbf661dfb3e56c6ccd67ce0d383990918d6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-the-data-access-layer"></a>Création de la couche d’accès aux données
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger Wingtip Toys exemple de projet (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger des livres (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
@@ -68,13 +68,13 @@ Dans ce didacticiel, vous allez commencer par ajouter des classes d’entité si
 
     ![Créer la couche d’accès aux données - Menu nouvel élément](create_the_data_access_layer/_static/image1.png)
 
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
 2. Sous **Visual C#** à partir de la **installé** volet de gauche, sélectionnez **Code**. 
 
     ![Créer la couche d’accès aux données - Menu nouvel élément](create_the_data_access_layer/_static/image2.png)
 3. Sélectionnez **classe** dans le volet central et nommez cette nouvelle classe *Product.cs*.
 4. Cliquez sur **Ajouter**.  
- Le nouveau fichier de classe s’affiche dans l’éditeur.
+   Le nouveau fichier de classe s’affiche dans l’éditeur.
 5. Remplacez le code par défaut par le code suivant :   
 
     [!code-csharp[Main](create_the_data_access_layer/samples/sample1.cs)]
@@ -95,7 +95,7 @@ Pour commencer à utiliser les classes pour accéder aux données, vous devez d�
 Cette procédure ajoute une nouveau contexte classe c# pour le *modèles* dossier.
 
 1. Avec le bouton droit le *modèles* dossier, puis sélectionnez **ajouter**  - &gt; **un nouvel élément**.   
- La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
+   La boîte de dialogue **Ajouter un nouvel élément** s’affiche.
 2. Sélectionnez **classe** dans le volet central, nommez-le *ProductContext.cs* et cliquez sur **ajouter**.
 3. Remplacez le code par défaut contenu dans la classe par le code suivant :   
 
@@ -188,6 +188,6 @@ Dans l’étape suivante du didacticiel, vous allez mettre à jour l’interface
 [Code premier des Annotations de données](https://msdn.microsoft.com/data/gg193958)  
 [Améliorations de productivité pour Entity Framework](https://blogs.msdn.com/b/efdesign/archive/2010/06/21/productivity-improvements-for-the-entity-framework.aspx?wa=wsignin1.0)
 
->[!div class="step-by-step"]
-[Précédent](create-the-project.md)
-[Suivant](ui_and_navigation.md)
+> [!div class="step-by-step"]
+> [Précédent](create-the-project.md)
+> [Suivant](ui_and_navigation.md)

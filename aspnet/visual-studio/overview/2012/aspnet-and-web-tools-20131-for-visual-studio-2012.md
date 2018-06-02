@@ -2,13 +2,13 @@
 uid: visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 title: Notes de publication pour ASP.NET et outils Web 2013.1 pour Visual Studio 2012 | Documents Microsoft
 author: microsoft
-description: "Ce document décrit la version de ASP.NET et Web Tools 2013.1 pour Visual Studio 2012."
+description: Ce document décrit la version de ASP.NET et Web Tools 2013.1 pour Visual Studio 2012.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/13/2013
 ms.topic: article
 ms.assetid: ca26e5bb-630e-41d2-8512-2a9386c431cb
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
@@ -181,7 +181,7 @@ Après avoir apporté cette modification, en sélectionnant F5 accède à la rac
 
 Après la mise à niveau à 3 de Razor ASP.NET ou ASP.NET MVC 5, la notation tilde(~) peut ne plus fonctionner correctement si vous utilisez des URL réécritures. La réécriture d’URL affecte la notation tilde(~) dans les éléments HTML tels que &lt;A /&gt;, &lt;SCRIPT /&gt;, &lt;lien /&gt;, et par conséquent le tilde mappe n’est plus dans le répertoire racine.
 
-Par exemple, si vous réécrivez les requêtes pour **asp.net/content** à **asp.net**, l’attribut href de &lt;A href = « ~/content/ » /&gt; se résout en **/content/ contenu /** au lieu de  **/** . Pour supprimer cette modification, vous pouvez définir le **IIS\_WasUrlRewritten** contexte false dans chaque Page Web ou dans **Application\_BeginRequest** dans Global.asax.
+Par exemple, si vous réécrivez les requêtes pour **asp.net/content** à **asp.net**, l’attribut href de &lt;A href = « ~/content/ » /&gt; se résout en **/content/ contenu /** au lieu de **/**. Pour supprimer cette modification, vous pouvez définir le **IIS\_WasUrlRewritten** contexte false dans chaque Page Web ou dans **Application\_BeginRequest** dans Global.asax.
 
 <a id="templateissue"></a>
 ### <a name="templates"></a>Modèles

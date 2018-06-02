@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de Production | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement de Production | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: abd3f3f78dd9a9e6394e2f61aa9bd692810ca875
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f3b3898bd003ace100ba05619f2c45ca808462df
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement en Production
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -144,10 +144,10 @@ Maintenant que vous avez créé une application web et la base de données pour 
 9. 1. Sélectionnez **base de données de mise à jour**.
 
         Le **chaîne de connexion à distance** zone immédiatement sous **DefaultConnection** est remplie avec la chaîne de connexion à partir du fichier .publishsettings. La chaîne de connexion inclut des informations d’identification SQL Server, qui sont stockées en texte brut dans le *.pubxml* fichier. Si vous préférez ne pas définitivement y stocker, vous pouvez les supprimer à partir du profil de publication après avoir déployé la base de données et les stocker dans Azure. Pour plus d’informations, consultez [comment protéger votre base de données ASP.NET des chaînes de connexion lors du déploiement vers Azure à partir de la Source](http://www.hanselman.com/blog/HowToKeepYourASPNETDatabaseConnectionStringsSecureWhenDeployingToAzureFromSource.aspx) sur le blog de Scott Hanselman.
-    2. Cliquez sur **configurer des mises à jour de la base de données**.
-    3. Dans le **configurer les mises à jour de base de données** boîte de dialogue, cliquez sur **ajouter un Script SQL**.
-    4. Dans le **ajouter un Script SQL** , accédez à la *aspnet-données-prod.sql* script que vous avez enregistré précédemment dans le dossier de solution, puis cliquez sur **ouvrir**.
-    5. Fermer le **configurer les mises à jour de base de données** boîte de dialogue.
+      2. Cliquez sur **configurer des mises à jour de la base de données**.
+      3. Dans le **configurer les mises à jour de base de données** boîte de dialogue, cliquez sur **ajouter un Script SQL**.
+      4. Dans le **ajouter un Script SQL** , accédez à la *aspnet-données-prod.sql* script que vous avez enregistré précédemment dans le dossier de solution, puis cliquez sur **ouvrir**.
+      5. Fermer le **configurer les mises à jour de base de données** boîte de dialogue.
 10. Sous **SchoolContext** dans les **bases de données** section, sélectionnez **exécuter fonctionnalité Migrations Code First (s’exécute sur le démarrage de l’application)**.
 
     Visual Studio affiche **exécuter des Migrations Code First** au lieu de **mise à jour de la base de données** pour `DbContext` classes. Si vous souhaitez utiliser le fournisseur dbDacFx au lieu de Migrations pour déployer une base de données auxquels vous accédez à l’aide un `DbContext` de classe, consultez [comment déployer une base de données Code First sans Migrations ?](https://msdn.microsoft.com/library/ee942158.aspx#deploy_code_first_without_migrations) dans le Forum aux questions de déploiement Web pour Visual Studio et ASP.NET sur MSDN.
@@ -296,11 +296,11 @@ Dans l’étape suivante du didacticiel, vous allez mettre à jour le code de l�
 
 > [!NOTE]
 > Pendant que votre application est en cours d’utilisation dans l’environnement de production vous être devez implémenter un plan de récupération. Autrement dit, vous devez être sauvegarder régulièrement vos bases de données à partir de l’application de production vers un emplacement de stockage sécurisé, et vous devez conserver plusieurs générations de ces sauvegardes. Lorsque vous mettez à jour la base de données, vous devez vous une copie de sauvegarde à partir d’immédiatement avant la modification. Ensuite, si vous commettez une erreur et ne Découvrez qu’une fois que vous l’avez déployée en production, vous serez toujours en mesure de récupérer la base de données à l’état, qu'il se trouvait avant qu’il a été endommagé. Pour plus d’informations, consultez [sauvegarde de base de données SQL Azure et de restauration](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx).
-
-
+> 
+> 
 > [!NOTE]
 > Dans ce didacticiel, le serveur SQL Server Édition que vous déployez est la base de données SQL Azure. Pendant le processus de déploiement est similaire aux autres éditions de SQL Server, une application de production réel peut nécessiter un code spécial pour la base de données SQL Azure, dans certains scénarios. Pour plus d’informations, consultez [utilisation de base de données SQL Azure](../../../../whitepapers/aspnet-data-access-content-map.md#ssdb) et [choix entre SQL Server et la base de données SQL Azure](../../../../whitepapers/aspnet-data-access-content-map.md#ssdbchoosing).
-
->[!div class="step-by-step"]
-[Précédent](setting-folder-permissions.md)
-[Suivant](deploying-a-code-update.md)
+> 
+> [!div class="step-by-step"]
+> [Précédent](setting-folder-permissions.md)
+> [Suivant](deploying-a-code-update.md)

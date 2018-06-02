@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs
-title: "La précompilation de votre site Web (c#) | Documents Microsoft"
+title: La précompilation de votre site Web (c#) | Documents Microsoft
 author: rick-anderson
-description: "Visual Studio offre les développeurs ASP.NET deux types de projets : projets d’Application Web (WAP) et les projets de Site Web (WSPs). Parmi le principales différences betwe..."
+description: 'Visual Studio offre les développeurs ASP.NET deux types de projets : projets d’Application Web (WAP) et les projets de Site Web (WSPs). Parmi le principales différences betwe...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f31f470b4d2b6736b98c0b7d88ea7a53ad1438b9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: fe49029d09db99735a181b90e781396929f22d8d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="precompiling-your-website-c"></a>La précompilation de votre site Web (c#)
 ====================
@@ -97,7 +97,7 @@ Après avoir précompilé le site Web, accédez à l’emplacement cible que vou
 
 [![](precompiling-your-website-cs/_static/image5.png)](precompiling-your-website-cs/_static/image4.png)
 
-**Figure 2**: le répertoire du projet contient `.aspx` et `.aspx.cs` fichiers ; le `Bin` dossier inclut uniquement`Elmah.dll`  
+**Figure 2**: le répertoire du projet contient `.aspx` et `.aspx.cs` fichiers ; le `Bin` dossier inclut uniquement `Elmah.dll`  
  ([Cliquez pour afficher l’image en taille réelle](precompiling-your-website-cs/_static/image6.png))
 
 **Figure 3** affiche le dossier d’emplacement cible dont le contenu ont été créé par l’outil de compilation ASP.NET. Ce dossier ne contient pas tous les fichiers code-behind. En outre, de ce dossier `Bin` répertoire inclut plusieurs assemblys et deux `.compiled` fichiers à la `Elmah.dll` assembly.
@@ -190,6 +190,6 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Précompilation dans ASP.NET](http://www.odetocode.com/Articles/417.aspx)
 - [Options du Site précompilé dans ASP.NET](http://www.dotnetperls.com/precompiled)
 
->[!div class="step-by-step"]
-[Précédent](logging-error-details-with-elmah-cs.md)
-[Suivant](users-and-roles-on-the-production-website-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](logging-error-details-with-elmah-cs.md)
+> [Suivant](users-and-roles-on-the-production-website-cs.md)

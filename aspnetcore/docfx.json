@@ -1,5 +1,6 @@
 {
   "build": {
+    "markdownEngineName": "markdig",
     "content": [
       {
         "files": [
@@ -13,7 +14,9 @@
           "**/includes/**",
           "**/aspnet-core-conceptual/**",
           "_site/**"
-        ]
+        ],
+        "group": "group1",
+        "src": "."
       }
     ],
     "resource": [
@@ -27,7 +30,9 @@
           "aspnet/core/**",
           "**/includes/**",
           "_site/**"
-        ]
+        ],
+        "group": "group1",
+        "src": "."
       }
     ],
     "overwrite": [],
@@ -41,6 +46,12 @@
     },
     "fileMetadata": {},
     "template": [],
-    "dest": "_site"
+    "dest": "_site",
+    "groups": {
+      "group1": {
+        "dest": "group1-dest",
+        "moniker_range": ">= aspnetcore-1.0"
+      }
+    }  
   }
 }

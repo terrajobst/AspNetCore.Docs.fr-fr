@@ -1,21 +1,22 @@
 ---
-title: "Ajout d’une fonction de recherche à des pages Razor dans ASP.NET Core MVC"
+title: Ajouter une fonction de recherche aux pages Razor dans ASP.NET Core
 author: rick-anderson
-description: "Montre comment ajouter une fonction de recherche à des pages Razor dans ASP.NET Core MVC"
+description: Montre comment ajouter une fonction de recherche à des pages Razor dans ASP.NET Core MVC
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 9b0ddb630589374549934a1f0462f54e62af1772
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 545e1ce7d73b40a84d37684ee070f51e90e8b528
+ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="adding-search-to-a-razor-pages-app"></a>Ajout d’une recherche à une application de pages Razor
+# <a name="add-search-to-aspnet-core-razor-pages"></a>Ajouter une fonction de recherche aux pages Razor dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -23,9 +24,9 @@ Dans ce document, la fonction de recherche est ajoutée à la page d’index qui
 
 Mettez à jour la méthode `OnGetAsync` de la page d’index avec le code suivant :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_1stSearch)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_1stSearch)]
 
-La première ligne de la méthode `OnGetAsync` crée une requête [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) pour sélectionner les films :
+La première ligne de la méthode `OnGetAsync` crée une requête [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) pour sélectionner les films :
 
 ```csharp
 var movies = from m in _context.Movie
@@ -36,17 +37,17 @@ La requête est *seulement* définie à ce stade ; elle n’a **pas** été exé
 
 Si le paramètre `searchString` contient une chaîne, la requête de films est modifiée de façon à filtrer sur la chaîne de recherche :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchNull)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchNull)]
 
-Le code `s => s.Title.Contains()` est une [expression lambda](https://docs.microsoft.com/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Les expressions lambda sont utilisées dans les requêtes [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/) basées sur une méthode comme arguments pour les méthodes d’opérateur de requête standard, telles que la méthode [Where](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) ou `Contains` (utilisée dans le code précédent). Les requêtes LINQ ne sont pas exécutées quand elles sont définies ou quand elles sont modifiées en appelant une méthode (comme `Where`, `Contains` ou `OrderBy`). Au lieu de cela, l’exécution de la requête est différée. Cela signifie que l’évaluation d’une expression est retardée jusqu’à ce que sa valeur réalisée fasse l’objet d’une itération réelle ou que la méthode `ToListAsync` soit appelée. Pour plus d’informations, consultez [Exécution de requête](https://docs.microsoft.com/dotnet/framework/data/adonet/ef/language-reference/query-execution).
+Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Les expressions lambda sont utilisées dans les requêtes [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) basées sur une méthode comme arguments pour les méthodes d’opérateur de requête standard, telles que la méthode [Where](/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) ou `Contains` (utilisée dans le code précédent). Les requêtes LINQ ne sont pas exécutées quand elles sont définies ou quand elles sont modifiées en appelant une méthode (comme `Where`, `Contains` ou `OrderBy`). Au lieu de cela, l’exécution de la requête est différée. Cela signifie que l’évaluation d’une expression est retardée jusqu’à ce que sa valeur réalisée fasse l’objet d’une itération réelle ou que la méthode `ToListAsync` soit appelée. Pour plus d’informations, consultez [Exécution de requête](/dotnet/framework/data/adonet/ef/language-reference/query-execution).
 
-**Remarque :** La méthode [Contains](https://docs.microsoft.com//dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
+**Remarque :** La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
 
 Accédez à la page Movies, puis ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL (par exemple, `http://localhost:5000/Movies?searchString=Ghost`). Les films filtrés sont affichés.
 
 ![Vue Index](search/_static/ghost.png)
 
-Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `http://localhost:5000/Movies/ghost`).
+Si le modèle d’itinéraire suivant est ajouté à la page d’index, la chaîne de recherche peut être passée comme un segment d’URL (par exemple, `http://localhost:5000/Movies/Ghost`).
 
 ```cshtml
 @page "{searchString?}"
@@ -60,7 +61,7 @@ Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’U
 
 Ouvrez le fichier *Pages/Movies/Index.cshtml*, puis ajoutez la balise `<form>` mise en surbrillance dans le code suivant :
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index2.cshtml?highlight=14-19&range=1-22)]
 
 La balise HTML `<form>` utilise le [Tag Helper de formulaire](xref:mvc/views/working-with-forms#the-form-tag-helper). Quand le formulaire est envoyé, la chaîne de filtrage est envoyée à la page *Pages/Movies/Index*. Enregistrez les modifications apportées, puis testez le filtre.
 
@@ -70,7 +71,7 @@ La balise HTML `<form>` utilise le [Tag Helper de formulaire](xref:mvc/views/wor
 
 Ajoutez les propriétés en surbrillance suivantes à *Pages/Movies/Index.cshtml.cs* :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
 La propriété `SelectList Genres` contient la liste des genres. Cela permet à l’utilisateur de sélectionner un genre dans la liste.
 
@@ -78,20 +79,20 @@ La propriété `MovieGenre` contient le genre spécifique sélectionné par l’
 
 Mettez à jour la méthode `OnGetAsync` avec le code suivant :
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchGenre)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SearchGenre)]
 
 Le code suivant est une requête LINQ qui récupère tous les genres dans la base de données.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_LINQ)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_LINQ)]
 
 La liste `SelectList` de genres est créée en projetant des différents genres.
 
 <!-- BUG in OPS
-Tag snippet_selectlist's start line '75' should be less than end line '29' when resolving "[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]"
+Tag snippet_selectlist's start line '75' should be less than end line '29' when resolving "[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]"
 
 There's no start line.
 
-[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 -->
 
 ```csharp
@@ -102,10 +103,10 @@ Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
 
 Mettez à jour *Index.cshtml* comme suit :
 
-[!code-cshtml[Main](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
 Testez l’application en effectuant une recherche par genre, par titre de film et selon ces deux critères.
 
->[!div class="step-by-step"]
-[Précédent : Mise à jour des pages](xref:tutorials/razor-pages/da1)
-[Suivant : Ajout d’un nouveau champ](xref:tutorials/razor-pages/new-field)
+> [!div class="step-by-step"]
+> [Précédent : Mise à jour des pages](xref:tutorials/razor-pages/da1)
+> [Suivant : Ajout d’un nouveau champ](xref:tutorials/razor-pages/new-field)

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
-title: "Héberger des API Web ASP.NET 2 dans un rôle de travail Azure | Documents Microsoft"
+title: Héberger des API Web ASP.NET 2 dans un rôle de travail Azure | Documents Microsoft
 author: MikeWasson
-description: "Ce didacticiel montre comment héberger ASP.NET Web API dans un rôle de travail Azure, à l’aide de OWIN pour l’auto-hébergement l’infrastructure API Web. Ouvrir l’Interface Web pour les de .NET (OWIN)..."
+description: Ce didacticiel montre comment héberger ASP.NET Web API dans un rôle de travail Azure, à l’aide de OWIN pour l’auto-hébergement l’infrastructure API Web. Ouvrir l’Interface Web pour les de .NET (OWIN)...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/02/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api/host-aspnet-web-api-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 9a7f8242bf482e81513accfe05e10a64ae0ca0b2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7ba1dc850e2f9d9c88e6ddf263a796e1867a98be
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="host-aspnet-web-api-2-in-an-azure-worker-role"></a>Héberger des API Web ASP.NET 2 dans un rôle de travail Azure
 ====================
@@ -131,7 +131,7 @@ L’émulateur de calcul affecte une adresse IP locale pour le point de terminai
 
 [![](host-aspnet-web-api-in-an-azure-worker-role/_static/image11.png)](host-aspnet-web-api-in-an-azure-worker-role/_static/image10.png)
 
-Rechercher l’adresse IP dans les déploiements de Service, déploiement [id], détails du Service. Ouvrez un navigateur web et accédez à http://*adresse*/test/1, où *adresse* est l’adresse IP affectée par l’émulateur de calcul ; par exemple, `http://127.0.0.1:80/test/1`. Vous devez voir la réponse à partir du contrôleur Web API :
+Rechercher l’adresse IP dans les déploiements de Service, déploiement [id], détails du Service. Ouvrez un navigateur web et accédez à http://<em>adresse</em>/test/1, où <em>adresse</em> est l’adresse IP affectée par l’émulateur de calcul ; par exemple, `http://127.0.0.1:80/test/1`. Vous devez voir la réponse à partir du contrôleur Web API :
 
 ![](host-aspnet-web-api-in-an-azure-worker-role/_static/image12.png)
 

@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
-title: "Contrôle de code (génération d’applications Cloud du monde réel avec Azure) source | Documents Microsoft"
+title: Contrôle de code (génération d’applications Cloud du monde réel avec Azure) source | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/23/2015
 ms.topic: article
 ms.assetid: 2a0370d3-c2fb-4bf3-88b8-aad5a736c793
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
 msc.type: authoredcontent
-ms.openlocfilehash: e3ce68b949199db35c18a09771d99d38562b74e9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 0022458fa89a3be7ee8303750ad0e072df3b1bab
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="source-control-building-real-world-cloud-apps-with-azure"></a>Contrôle de code source (génération d’applications Cloud du monde réel avec Azure)
 ====================
@@ -66,7 +66,7 @@ La branche principale correspond toujours au code de production. Branches sous f
 
 Pour les grandes équipes peuvent être les branches distinctes pour chaque nouvelle fonctionnalité ; pour une plus petite équipe, vous pouvez avoir tout le monde archiver à la branche de développement.
 
-Si vous avez une branche pour chaque fonctionnalité, lors de la fonctionnalité A est prêt fusion vous ses modifications du code source dans le développement de créer des branches et vers le bas dans les autres branches de fonctionnalité. Ce code source des processus de fusion peut prendre du temps, et pour éviter ce travail tout en conservant les fonctionnalités distincts, certaines équipes implémentent une alternative appelée  *[Active ou désactive des fonctionnalités](http://en.wikipedia.org/wiki/Feature_toggle)*  (également appelée *fonctionnalité indicateurs*). Cela signifie que tout le code de toutes les fonctionnalités est dans la même branche, mais vous activer ou désactiver chaque fonctionnalité en utilisant des commutateurs dans le code. Par exemple, supposons que la fonctionnalité A est un nouveau champ pour les tâches d’application corriger et de fonctionnalité B ajoute des fonctionnalités de mise en cache. Le code pour les deux fonctionnalités peut être dans la branche de développement, mais l’affichage seul application le nouveau champ quand une variable est définie sur true et il utilise uniquement la mise en cache lorsqu’une variable différente est définie sur true. Si la fonctionnalité A n’est pas prête à être promu, mais la fonctionnalité B est prête, vous pouvez promouvoir le code en Production avec le commutateur de fonctionnalité A désactivé et activer la fonctionnalité B. Vous pouvez terminer la fonctionnalité A et promouvoir une version ultérieure, toutes avec aucune fusion de code source.
+Si vous avez une branche pour chaque fonctionnalité, lors de la fonctionnalité A est prêt fusion vous ses modifications du code source dans le développement de créer des branches et vers le bas dans les autres branches de fonctionnalité. Ce code source des processus de fusion peut prendre du temps, et pour éviter ce travail tout en conservant les fonctionnalités distincts, certaines équipes implémentent une alternative appelée *[Active ou désactive des fonctionnalités](http://en.wikipedia.org/wiki/Feature_toggle)* (également appelée *fonctionnalité indicateurs*). Cela signifie que tout le code de toutes les fonctionnalités est dans la même branche, mais vous activer ou désactiver chaque fonctionnalité en utilisant des commutateurs dans le code. Par exemple, supposons que la fonctionnalité A est un nouveau champ pour les tâches d’application corriger et de fonctionnalité B ajoute des fonctionnalités de mise en cache. Le code pour les deux fonctionnalités peut être dans la branche de développement, mais l’affichage seul application le nouveau champ quand une variable est définie sur true et il utilise uniquement la mise en cache lorsqu’une variable différente est définie sur true. Si la fonctionnalité A n’est pas prête à être promu, mais la fonctionnalité B est prête, vous pouvez promouvoir le code en Production avec le commutateur de fonctionnalité A désactivé et activer la fonctionnalité B. Vous pouvez terminer la fonctionnalité A et promouvoir une version ultérieure, toutes avec aucune fusion de code source.
 
 Si vous utilisez des branches ou Active/désactive des fonctionnalités, ou non une structure de branches, comme cela vous permet de flux de votre code à partir de développement vers la production d’une manière agile et reproductible.
 
@@ -221,6 +221,6 @@ Pour plus d’informations sur la gestion des informations sensibles qui ne doiv
 
 Pour plus d’informations sur les autres méthodes pour la conservation des informations sensibles en dehors du contrôle de code source, consultez [ASP.NET MVC : conserver privé paramètres de contrôle de code Source](http://typecastexception.com/post/2014/04/06/ASPNET-MVC-Keep-Private-Settings-Out-of-Source-Control.aspx).
 
->[!div class="step-by-step"]
-[Précédent](automate-everything.md)
-[Suivant](continuous-integration-and-continuous-delivery.md)
+> [!div class="step-by-step"]
+> [Précédent](automate-everything.md)
+> [Suivant](continuous-integration-and-continuous-delivery.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller
-title: "L’accès aux données de votre modèle à partir d’un contrôleur (c#) | Documents Microsoft"
+title: L’accès aux données de votre modèle à partir d’un contrôleur (c#) | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 5ee29dbc5b4566273592041d94458104e6e0f65e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 4218116eec6f177730087955b8fb69e5ecc0022f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="accessing-your-models-data-from-a-controller-c"></a>L’accès aux données de votre modèle à partir d’un contrôleur (c#)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -142,6 +142,6 @@ Lorsque vous avez terminé, fermez la connexion. (Si vous ne fermez pas la conne
 
 Vous avez maintenant la base de données et une page de liste simple pour afficher le contenu à partir de celui-ci. Dans l’étape suivante du didacticiel, nous allons examiner le reste du code du modèle généré automatiquement et ajouter un `SearchIndex` (méthode) et un `SearchIndex` vue qui vous permet de rechercher des vidéos dans cette base de données.
 
->[!div class="step-by-step"]
-[Précédent](adding-a-model.md)
-[Suivant](examining-the-edit-methods-and-edit-view.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-model.md)
+> [Suivant](examining-the-edit-methods-and-edit-view.md)

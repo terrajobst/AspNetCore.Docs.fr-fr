@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-vb
-title: "Insertion d’un nouvel enregistrement à partir d’un pied de page du GridView (VB) | Documents Microsoft"
+title: Insertion d’un nouvel enregistrement à partir d’un pied de page du GridView (VB) | Documents Microsoft
 author: rick-anderson
-description: "Alors que le contrôle GridView ne fournit pas de prise en charge intégrée pour l’insertion d’un nouvel enregistrement de données, ce didacticiel montre comment augmenter le contrôle GridView à inclure un..."
+description: Alors que le contrôle GridView ne fournit pas de prise en charge intégrée pour l’insertion d’un nouvel enregistrement de données, ce didacticiel montre comment augmenter le contrôle GridView à inclure un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/06/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4d452e15ced52fd9dcac8201598146cb9ef38d7b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 32f3cb23805813135bf463720e7479f5f819deb7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="inserting-a-new-record-from-the-gridviews-footer-vb"></a>Insertion d’un nouvel enregistrement à partir d’un pied de page du GridView (VB)
 ====================
@@ -140,18 +140,18 @@ Pour créer l’interface de modification, cliquez sur le lien Modifier les mod�
 
 La liste ci-dessous énumère les champs GridView, en spécifiant l’interface insertion à ajouter :
 
-- `ProductID`Aucun.
-- `ProductName`Ajoutez une zone de texte et définissez son `ID` à `NewProductName`. Ajoutez un contrôle RequiredFieldValidator pour vous assurer que l’utilisateur entre une valeur pour le nouveau nom de produit s.
-- `SupplierID`Aucun.
-- `CategoryID`Aucun.
-- `QuantityPerUnit`Ajouter une zone de texte, en définissant ses `ID` à `NewQuantityPerUnit`.
-- `UnitPrice`Ajouter une zone de texte nommé `NewUnitPrice` et un CompareValidator qui garantit que la valeur entrée est une valeur monétaire supérieure ou égale à zéro.
-- `UnitsInStock`utiliser une zone de texte dont `ID` a la valeur `NewUnitsInStock`. Inclure un CompareValidator qui garantit que la valeur entrée est une valeur entière supérieure ou égale à zéro.
-- `UnitsOnOrder`utiliser une zone de texte dont `ID` a la valeur `NewUnitsOnOrder`. Inclure un CompareValidator qui garantit que la valeur entrée est une valeur entière supérieure ou égale à zéro.
-- `ReorderLevel`utiliser une zone de texte dont `ID` a la valeur `NewReorderLevel`. Inclure un CompareValidator qui garantit que la valeur entrée est une valeur entière supérieure ou égale à zéro.
-- `Discontinued`Ajouter une case à cocher, la définition de sa `ID` à `NewDiscontinued`.
-- `CategoryName`Ajouter une liste déroulante et définir son `ID` à `NewCategoryID`. Lier à un nouveau ObjectDataSource nommé `CategoriesDataSource` et configurez-le pour utiliser le `CategoriesBLL` classe s `GetCategories()` (méthode). Avoir le s DropDownList `ListItem` complet de s la `CategoryName` données champ, à l’aide de la `CategoryID` champ de données en tant que leurs valeurs.
-- `SupplierName`Ajouter une liste déroulante et définir son `ID` à `NewSupplierID`. Lier à un nouveau ObjectDataSource nommé `SuppliersDataSource` et configurez-le pour utiliser le `SuppliersBLL` classe s `GetSuppliers()` (méthode). Avoir le s DropDownList `ListItem` complet de s la `CompanyName` données champ, à l’aide de la `SupplierID` champ de données en tant que leurs valeurs.
+- `ProductID` Aucun.
+- `ProductName` Ajoutez une zone de texte et définissez son `ID` à `NewProductName`. Ajoutez un contrôle RequiredFieldValidator pour vous assurer que l’utilisateur entre une valeur pour le nouveau nom de produit s.
+- `SupplierID` Aucun.
+- `CategoryID` Aucun.
+- `QuantityPerUnit` Ajouter une zone de texte, en définissant ses `ID` à `NewQuantityPerUnit`.
+- `UnitPrice` Ajouter une zone de texte nommé `NewUnitPrice` et un CompareValidator qui garantit que la valeur entrée est une valeur monétaire supérieure ou égale à zéro.
+- `UnitsInStock` utiliser une zone de texte dont `ID` a la valeur `NewUnitsInStock`. Inclure un CompareValidator qui garantit que la valeur entrée est une valeur entière supérieure ou égale à zéro.
+- `UnitsOnOrder` utiliser une zone de texte dont `ID` a la valeur `NewUnitsOnOrder`. Inclure un CompareValidator qui garantit que la valeur entrée est une valeur entière supérieure ou égale à zéro.
+- `ReorderLevel` utiliser une zone de texte dont `ID` a la valeur `NewReorderLevel`. Inclure un CompareValidator qui garantit que la valeur entrée est une valeur entière supérieure ou égale à zéro.
+- `Discontinued` Ajouter une case à cocher, la définition de sa `ID` à `NewDiscontinued`.
+- `CategoryName` Ajouter une liste déroulante et définir son `ID` à `NewCategoryID`. Lier à un nouveau ObjectDataSource nommé `CategoriesDataSource` et configurez-le pour utiliser le `CategoriesBLL` classe s `GetCategories()` (méthode). Avoir le s DropDownList `ListItem` complet de s la `CategoryName` données champ, à l’aide de la `CategoryID` champ de données en tant que leurs valeurs.
+- `SupplierName` Ajouter une liste déroulante et définir son `ID` à `NewSupplierID`. Lier à un nouveau ObjectDataSource nommé `SuppliersDataSource` et configurez-le pour utiliser le `SuppliersBLL` classe s `GetSuppliers()` (méthode). Avoir le s DropDownList `ListItem` complet de s la `CompanyName` données champ, à l’aide de la `SupplierID` champ de données en tant que leurs valeurs.
 
 Pour chacun des contrôles de validation, effacer le `ForeColor` propriété afin que le `FooterStyle` couleur de premier plan blanc classe s CSS sera utilisée à la place de la valeur par défaut est rouge. Également utiliser le `ErrorMessage` propriété pour obtenir une description détaillée, mais définissez la `Text` propriété un astérisque. Pour éviter que le texte du contrôle s validation à l’origine de l’interface d’insertion encapsuler à deux lignes, définissez la `FooterStyle` s `Wrap` à false pour chaque propriété le `FooterTemplate` qui utilisent un contrôle de validation. Enfin, ajoutez un contrôle ValidationSummary sous le GridView et son `ShowMessageBox` propriété `True` et son `ShowSummary` propriété `False`.
 
@@ -234,7 +234,7 @@ Le contrôle GridView utilisé dans ce didacticiel ne s’applique pas un ordre 
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample9.vb)]
 
-`SendUserToLastPage`est une variable booléenne au niveau de la page qui est initialement affectée à un `False`. Dans le GridView s `DataBound` Gestionnaire d’événements, si `SendUserToLastPage` a la valeur false, le `PageIndex` propriété est mise à jour pour envoyer l’utilisateur vers la dernière page.
+`SendUserToLastPage` est une variable booléenne au niveau de la page qui est initialement affectée à un `False`. Dans le GridView s `DataBound` Gestionnaire d’événements, si `SendUserToLastPage` a la valeur false, le `PageIndex` propriété est mise à jour pour envoyer l’utilisateur vers la dernière page.
 
 
 [!code-vb[Main](inserting-a-new-record-from-the-gridview-s-footer-vb/samples/sample10.vb)]
@@ -250,7 +250,7 @@ Pour ajuster les données collectées, nous pouvons utiliser une des deux approc
 
 Soit l’option fonctionnera également ainsi. Dans au-delà de didacticiels nous avons utilisé la dernière option, créer plusieurs surcharges pour la `ProductsBLL` classe s `UpdateProduct` (méthode).
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Le contrôle GridView ne dispose pas de fonctionnalités intégrées d’insertion trouvées dans le DetailsView et FormView, mais avec un peu d’effort, une interface d’insertion peut être ajoutée à la ligne de pied de page. Pour afficher la ligne de pied de page dans un GridView simplement définie sa `ShowFooter` propriété `True`. Le contenu de ligne de pied de page peut être personnalisé pour chaque champ, en convertissant le champ en TemplateField et ajout de l’insertion de l’interface pour le `FooterTemplate`. Comme nous l’avons vu dans ce didacticiel, le `FooterTemplate` peut contenir des boutons, zones de texte, compréhension des listes, les cases à cocher, les contrôles de source de données utilisé pour remplir les contrôles Web pilotés par les données (par exemple, la compréhension des listes) et des contrôles de validation. En même temps que les contrôles pour la collecte de l’entrée d’utilisateur s, un bouton Ajouter, LinkButton ou ImageButton est nécessaire.
 
@@ -262,11 +262,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Bernadette Leigh. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](adding-a-gridview-column-of-checkboxes-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-gridview-column-of-checkboxes-vb.md)

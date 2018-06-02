@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-vb
-title: "Remplissage dynamique d’un contrôle (VB) | Documents Microsoft"
+title: Remplissage dynamique d’un contrôle (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t..."
+description: Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ec0b6d429f3eb4a7243201c2a91adde462cf6345
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: e2031a80be71a406e632955583d83920dd0f3ef7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="dynamically-populating-a-control-vb"></a>Remplissage dynamique d’un contrôle (VB)
 ====================
@@ -55,12 +55,12 @@ Un bouton HTML (comme un contrôle HTML, étant donné que nous ne nécessitent 
 
 Enfin, nous devons le `DynamicPopulateExtender` contrôle pour associer les choses. Les attributs suivants seront définis (en dehors de celles évidents, `ID` et `runat` = `"server"`) :
 
-- `TargetControlID`où placer le résultat de l’appel de service web
-- `ServicePath`chemin d’accès au service web (omettre si vous souhaitez utiliser une méthode de page)
-- `ServiceMethod`nom de la méthode web ou d’une méthode de page
-- `ContextKey`informations de contexte à envoyer au service web
-- `PopulateTriggerControlID`élément qui déclenche l’appel de service web
-- `ClearContentsDuringUpdate`s’il faut vider l’élément cible lors de l’appel de service web
+- `TargetControlID` où placer le résultat de l’appel de service web
+- `ServicePath` chemin d’accès au service web (omettre si vous souhaitez utiliser une méthode de page)
+- `ServiceMethod` nom de la méthode web ou d’une méthode de page
+- `ContextKey` informations de contexte à envoyer au service web
+- `PopulateTriggerControlID` élément qui déclenche l’appel de service web
+- `ClearContentsDuringUpdate` s’il faut vider l’élément cible lors de l’appel de service web
 
 Comme vous pouvez le voir, le contrôle requiert des informations mais tout la mise en place est assez simple. Voici le balisage de la `DynamicPopulateExtender` contrôle dans le scénario en cours :
 
@@ -73,6 +73,6 @@ Exécutez la page ASP.NET dans le navigateur, puis cliquez sur le bouton ; vous
 
 Un clic sur le bouton récupère la date à partir du serveur ([cliquez pour afficher l’image en taille réelle](dynamically-populating-a-control-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)
-[Suivant](dynamically-populating-a-control-using-javascript-code-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)
+> [Suivant](dynamically-populating-a-control-using-javascript-code-vb.md)

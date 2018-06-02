@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
-title: "Ateliers pratiques : One ASP.NET : intégration ASP.NET Web Forms, MVC et API Web | Documents Microsoft"
+title: 'Ateliers pratiques : One ASP.NET : intégration ASP.NET Web Forms, MVC et API Web | Documents Microsoft'
 author: rick-anderson
-description: "ASP.NET est une infrastructure pour la création de sites Web, applications et services à l’aide de technologies spécialisées, telles que MVC, API Web et d’autres. À l’expansion de ASP.NET h..."
+description: ASP.NET est une infrastructure pour la création de sites Web, applications et services à l’aide de technologies spécialisées, telles que MVC, API Web et d’autres. À l’expansion de ASP.NET h...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/16/2014
 ms.topic: article
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
@@ -161,7 +161,7 @@ Dans cette tâche, vous allez exécuter la solution générée, explorez l’app
     *URL conviviales*
 
     > [!NOTE]
-    > Comme vous pouvez le voir, l’URL devient **/contactez**. À partir **ASP.NET 4**, les fonctionnalités de routage d’URL ont été ajoutées aux Web Forms, afin d’écrire des URL comme  *[http://www.mysite.com/products/software](http://www.mysite.com/products/software)*  au lieu de  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Pour plus d’informations, reportez-vous à [routage d’URL](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
+    > Comme vous pouvez le voir, l’URL devient **/contactez**. À partir **ASP.NET 4**, les fonctionnalités de routage d’URL ont été ajoutées aux Web Forms, afin d’écrire des URL comme *[http://www.mysite.com/products/software](http://www.mysite.com/products/software)* au lieu de  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Pour plus d’informations, reportez-vous à [routage d’URL](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
 3. Vous allez maintenant découvrir le flux d’authentification intégré dans l’application. Pour ce faire, cliquez sur **enregistrer** dans le coin supérieur droit de la page.
 
     ![L’inscription d’un nouvel utilisateur](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image8.png)

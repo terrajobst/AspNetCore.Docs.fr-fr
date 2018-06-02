@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
-title: "Rubriques avancées (VB) et Configuration de l’authentification Forms | Documents Microsoft"
+title: Rubriques avancées (VB) et Configuration de l’authentification Forms | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous examiner les différents paramètres de l’authentification de formulaires et voir comment les modifier dans l’élément de formulaire. Cela entraîne un détaillées..."
+description: Dans ce didacticiel, nous examiner les différents paramètres de l’authentification de formulaires et voir comment les modifier dans l’élément de formulaire. Cela entraîne un détaillées...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fe4c421f248e325b69be7cad6c10bcbedf59ae5f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c6ef046100cf4773da57f6693a88e9bc6ec1790f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>Configuration de l’authentification de formulaires et les rubriques avancées (VB)
 ====================
@@ -41,19 +41,20 @@ Le système d’authentification de formulaires dans ASP.NET offre un nombre de 
 
 Le tableau 1 résume les propriétés qui peuvent être personnalisées par le biais du &lt;forms&gt; élément. Étant donné que le fichier Web.config est un fichier XML, les noms d’attribut dans la colonne gauche respectent la casse.
 
-| **Attribut** | **Description** |
-| --- | --- |
-| sans cookie | Cet attribut spécifie les conditions dans lesquelles le ticket d’authentification est stocké dans un cookie et qui est incorporé dans l’URL. Les valeurs autorisées sont : UseCookies ; UseUri ; Détection automatique ; et UseDeviceProfile (la valeur par défaut). Étape 2 examine ce paramètre plus en détail. |
-| defaultUrl | Indique l’URL que les utilisateurs sont redirigés vers après s’être connecté à partir de la page de connexion s’il n’existe aucune valeur RedirectUrl spécifié dans la chaîne de requête. La valeur par défaut est default.aspx. |
-| de domaine | Lors de l’utilisation de tickets d’authentification basée sur les cookies, ce paramètre spécifie la valeur de domaine du cookie s. La valeur par défaut est une chaîne vide, ce qui entraîne le navigateur à utiliser le domaine à partir duquel il a été délivré (par exemple, www.yourdomain.com). Dans ce cas, le cookie sera **pas** envoyer lors de la fabrication des demandes à sous-domaines, telles que admin.yourdomain.com. Si vous souhaitez que le cookie doit être passé à tous les sous-domaines, que vous devez personnaliser l’attribut de domaine la valeur votredomaine.com. |
-| enableCrossAppRedirects | Valeur booléenne qui indique si les utilisateurs authentifiés sont mémorisés lorsque redirigés vers des URL dans d’autres applications web sur le même serveur. La valeur par défaut est false. |
-| loginUrl | L’URL de la page de connexion. La valeur par défaut est login.aspx. |
-| name | Lors de l’utilisation de tickets d’authentification basée sur un cookie, le nom du cookie. La valeur par défaut est. ASPXAUTH. |
-| path | Lors de l’utilisation de tickets d’authentification basée sur les cookies, ce paramètre spécifie l’attribut de chemin d’accès du cookie s. L’attribut de chemin d’accès permet au développeur limiter l’étendue d’un cookie pour une hiérarchie de répertoires particulière. La valeur par défaut est /, qui informe le navigateur à envoyer le cookie de ticket d’authentification pour toute demande adressée au domaine. |
-| protection | Indique quelles techniques sont utilisées pour protéger le ticket d’authentification de formulaires. Les valeurs autorisées sont : toutes les (la valeur par défaut) ; Chiffrement ; None ; et la Validation. Ces paramètres sont décrits en détail à l’étape 3. |
-| requireSSL | Valeur booléenne qui indique si une connexion SSL est requise pour transmettre le cookie d’authentification. La valeur par défaut est false. |
-| SlidingExpiration | Valeur booléenne qui indique si le délai d’expiration du cookie s de l’authentification est réinitialisé chaque fois que l’utilisateur visite le site pendant une session unique. La valeur par défaut est true. La stratégie de délai d’expiration du ticket d’authentification est décrite plus en détail dans la spécification le s section de la valeur de délai d’expiration du Ticket. |
-| délai d'expiration | Spécifie la durée, en minutes, après laquelle le cookie de ticket d’authentification expire. La valeur par défaut est 30. La stratégie de délai d’expiration du ticket d’authentification est décrite plus en détail dans la spécification le s section de la valeur de délai d’expiration du Ticket. |
+
+| <strong>Attribut</strong> |                                                                                                                                                                                                                                     <strong>Description</strong>                                                                                                                                                                                                                                      |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|         sans cookie         |                                                                                                                Cet attribut spécifie les conditions dans lesquelles le ticket d’authentification est stocké dans un cookie et qui est incorporé dans l’URL. Les valeurs autorisées sont : UseCookies ; UseUri ; Détection automatique ; et UseDeviceProfile (la valeur par défaut). Étape 2 examine ce paramètre plus en détail.                                                                                                                |
+|         defaultUrl         |                                                                                                                                                         Indique l’URL que les utilisateurs sont redirigés vers après s’être connecté à partir de la page de connexion s’il n’existe aucune valeur RedirectUrl spécifié dans la chaîne de requête. La valeur par défaut est default.aspx.                                                                                                                                                         |
+|           de domaine           | Lors de l’utilisation de tickets d’authentification basée sur les cookies, ce paramètre spécifie la valeur de domaine du cookie s. La valeur par défaut est une chaîne vide, ce qui entraîne le navigateur à utiliser le domaine à partir duquel il a été délivré (par exemple, www.yourdomain.com). Dans ce cas, le cookie sera <strong>pas</strong> envoyer lors de la fabrication des demandes à sous-domaines, telles que admin.yourdomain.com. Si vous souhaitez que le cookie doit être passé à tous les sous-domaines, que vous devez personnaliser l’attribut de domaine la valeur votredomaine.com. |
+|  enableCrossAppRedirects   |                                                                                                                                                                   Valeur booléenne qui indique si les utilisateurs authentifiés sont mémorisés lorsque redirigés vers des URL dans d’autres applications web sur le même serveur. La valeur par défaut est false.                                                                                                                                                                   |
+|          loginUrl          |                                                                                                                                                                                                                      L’URL de la page de connexion. La valeur par défaut est login.aspx.                                                                                                                                                                                                                      |
+|            name            |                                                                                                                                                                                                   Lors de l’utilisation de tickets d’authentification basée sur un cookie, le nom du cookie. La valeur par défaut est. ASPXAUTH.                                                                                                                                                                                                   |
+|            path            |                                                                             Lors de l’utilisation de tickets d’authentification basée sur les cookies, ce paramètre spécifie l’attribut de chemin d’accès du cookie s. L’attribut de chemin d’accès permet au développeur limiter l’étendue d’un cookie pour une hiérarchie de répertoires particulière. La valeur par défaut est /, qui informe le navigateur à envoyer le cookie de ticket d’authentification pour toute demande adressée au domaine.                                                                              |
+|         protection         |                                                                                                                                            Indique quelles techniques sont utilisées pour protéger le ticket d’authentification de formulaires. Les valeurs autorisées sont : toutes les (la valeur par défaut) ; Chiffrement ; None ; et la Validation. Ces paramètres sont décrits en détail à l’étape 3.                                                                                                                                            |
+|         requireSSL         |                                                                                                                                                                                Valeur booléenne qui indique si une connexion SSL est requise pour transmettre le cookie d’authentification. La valeur par défaut est false.                                                                                                                                                                                |
+|     SlidingExpiration      |                                                                                                 Valeur booléenne qui indique si le délai d’expiration du cookie s de l’authentification est réinitialisé chaque fois que l’utilisateur visite le site pendant une session unique. La valeur par défaut est true. La stratégie de délai d’expiration du ticket d’authentification est décrite plus en détail dans la spécification le s section de la valeur de délai d’expiration du Ticket.                                                                                                 |
+|          délai d'expiration           |                                                                                                                               Spécifie la durée, en minutes, après laquelle le cookie de ticket d’authentification expire. La valeur par défaut est 30. La stratégie de délai d’expiration du ticket d’authentification est décrite plus en détail dans la spécification le s section de la valeur de délai d’expiration du Ticket.                                                                                                                               |
 
 **Tableau 1**: un récapitulatif de le &lt;forms&gt; attributs de l’élément
 
@@ -166,7 +167,7 @@ Enregistrez les modifications dans Default.aspx, puis vous accédez il via un na
 
 `http://localhost:2448/ASPNET\_Security\_Tutorial\_03\_CS/(F(jaIOIDTJxIr12xYS-VVgkqKCVAuIoW30Bu0diWi6flQC-FyMaLXJfow\_Vd9GZkB2Cv-rfezq0gKadKX0YPZCkA2))/SomePage.aspx`
 
-L’URL SomePage.aspx dans le lien a été automatiquement convertie en une URL incluant le ticket d’authentification - nous n’aviez pas à écrire la moindre ligne de code ! Le ticket d’authentification par formulaire est incorporé automatiquement dans l’URL pour tous les liens hypertexte qui ne commencent pas par http:// ou /. Peu importe si le lien hypertexte s’affiche dans un appel de Response.Redirect, dans un contrôle de lien hypertexte ou dans un élément d’ancrage HTML (par exemple, &lt;un href = «... »&gt;... &lt;/a&gt;). Tant que l’URL n’est pas quelque chose comme http://www.someserver.com/SomePage.aspx ou /SomePage.aspx, le ticket d’authentification forms est incorporé pour nous.
+L’URL SomePage.aspx dans le lien a été automatiquement convertie en une URL incluant le ticket d’authentification - nous n’aviez pas à écrire la moindre ligne de code ! Le ticket d’authentification par formulaire est incorporé automatiquement dans l’URL pour tous les liens hypertexte qui ne commencent pas par http:// ou /. Peu importe si le lien hypertexte s’affiche dans un appel de Response.Redirect, dans un contrôle de lien hypertexte ou dans un élément d’ancrage HTML (par exemple, &lt;un href = «... »&gt;... &lt;/a&gt;). Tant que l’URL n’est pas un nom tel que http://www.someserver.com/SomePage.aspx ou /SomePage.aspx, les formulaires est incorporé ticket d’authentification pour nous.
 
 > [!NOTE]
 > Tickets d’authentification par formulaire sans cookies respectent les mêmes stratégies de délai d’attente que les tickets d’authentification basée sur le cookie. Toutefois, les tickets d’authentification sans cookies sont plus sujets aux attaques par relecture, car le ticket d’authentification est directement incorporé dans l’URL. Imaginez un utilisateur visite un site Web, se connecte, puis colle l’URL dans un message électronique à un collègue. Si la collègue clique sur ce lien avant l’expiration est atteint, elles seront enregistrées en tant que l’utilisateur qui a envoyé le message électronique !
@@ -432,11 +433,11 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Alicja Maziarz. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com ](mailto:mitchell@4guysfromrolla.com).
 
->[!div class="step-by-step"]
-[Précédent](an-overview-of-forms-authentication-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](an-overview-of-forms-authentication-vb.md)

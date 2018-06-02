@@ -1,7 +1,7 @@
 ---
-title: "API d’extensibilité"
+title: API d’extensibilité de la protection des données ASP.NET Core
 author: rick-anderson
-description: "Ce document constitue la table des matières des différentes rubriques relatives à l’extensibilité de la protection des données ASP.NET Core."
+description: Découvrez les différentes rubriques sur l’extensibilité de la protection des données ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,16 +9,16 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/extensibility/index
-ms.openlocfilehash: ca781bdecd258310e23ee78a1dcb37af012285e7
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 822f44b9aa2745278c3074f74f7f6f7972d5edd2
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
-# <a name="extensibility-apis"></a>API d’extensibilité
+# <a name="aspnet-core-data-protection-extensibility-apis"></a>API d’extensibilité de la protection des données ASP.NET Core
 
-* [Extensibilité du chiffrement de base](core-crypto.md)
+* [Extensibilité du chiffrement de base](xref:security/data-protection/extensibility/core-crypto)
 
-* [Extensibilité de la gestion de clés](key-management.md)
+* [Extensibilité de la gestion de clés](xref:security/data-protection/extensibility/key-management)
 
-* [API diverses](misc-apis.md)
+* [API diverses](xref:security/data-protection/extensibility/misc-apis)

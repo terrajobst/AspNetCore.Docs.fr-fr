@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
-title: "Ajout d’une méthode de création et créer la vue | Documents Microsoft"
+title: Ajout d’une méthode de création et créer la vue | Documents Microsoft
 author: shanselman
-description: "Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données."
+description: Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
 msc.type: authoredcontent
-ms.openlocfilehash: 36b3d6ef0432292f21ecd8f29ea2d88ee8867436
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 48e656a0c394b9db5baaec9c557ec38c4020d41b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="adding-a-create-method-and-create-view"></a>Ajout d’une méthode de création et créer la vue
 ====================
@@ -65,6 +65,6 @@ Cet objet de séquence a été passé ensuite à la version de [HttpPost] de la 
 
 Nous ne la vérification si notre films sont corrects, cependant, et la base de données ne sont pas à enregistrer une vidéo avec aucun titre. Il peut être intéressant si nous pourrions l’utilisateur a généré une erreur avant de la base de données. Nous nous chargeons ce qui suit en ajoutant la prise en charge de la validation à notre application.
 
->[!div class="step-by-step"]
-[Précédent](getting-started-with-mvc-part5.md)
-[Suivant](getting-started-with-mvc-part7.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started-with-mvc-part5.md)
+> [Suivant](getting-started-with-mvc-part7.md)

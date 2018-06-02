@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
-title: "Les utilisateurs et les rôles sur le site Web de Production (VB) | Documents Microsoft"
+title: Les utilisateurs et les rôles sur le site Web de Production (VB) | Documents Microsoft
 author: rick-anderson
-description: "L’outil d’Administration ASP.NET du site Web (WSAT) fournit une interface utilisateur basée sur le web pour la configuration des paramètres d’appartenance et de rôles et de créer, modifier, un..."
+description: L’outil d’Administration ASP.NET du site Web (WSAT) fournit une interface utilisateur basée sur le web pour la configuration des paramètres d’appartenance et de rôles et de créer, modifier, un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/09/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f3bfaa0e14e3e04a7faae1a78b566d7c2067785a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 611a54b9dd5f188fd64c7020bfbf8171fea27a71
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="users-and-roles-on-the-production-website-vb"></a>Les utilisateurs et les rôles sur le site Web de Production (VB)
 ====================
@@ -37,7 +37,7 @@ Un défi courant pour les développeurs qui utilisent les services d’appartena
 
 ## <a name="using-the-aspnet-web-site-administration-tool"></a>À l’aide de l’outil d’Administration de Site Web ASP.NET
 
-ASP.NET inclut un [outil Administration de Site Web](https://msdn.microsoft.com/library/yy40ytx0.aspx) (WSAT) qui facilite la tâche pour créer et gérer des rôles et des comptes d’utilisateur et pour spécifier des règles d’autorisation basées sur les utilisateurs et les rôles. Pour utiliser le WSAT, cliquez sur l’icône de Configuration ASP.NET dans l’Explorateur de solutions, ou dans le menu projet ou le site Web et choisissez l’option de Configuration ASP.NET. Chacune de ces approches lance un navigateur web et il pointe vers le WSAT à une adresse telle que :`http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
+ASP.NET inclut un [outil Administration de Site Web](https://msdn.microsoft.com/library/yy40ytx0.aspx) (WSAT) qui facilite la tâche pour créer et gérer des rôles et des comptes d’utilisateur et pour spécifier des règles d’autorisation basées sur les utilisateurs et les rôles. Pour utiliser le WSAT, cliquez sur l’icône de Configuration ASP.NET dans l’Explorateur de solutions, ou dans le menu projet ou le site Web et choisissez l’option de Configuration ASP.NET. Chacune de ces approches lance un navigateur web et il pointe vers le WSAT à une adresse telle que : `http://localhost:portNumber/asp.netwebadminfiles/default.aspx?applicationPhysicalPath=pathToApplication`
 
 Le WSAT est divisé en trois sections :
 
@@ -119,5 +119,5 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Présentation de l’outil Administration Site Web](https://msdn.microsoft.com/library/yy40ytx0.aspx)
 - [Didacticiels de sécurité de site Web](../../older-versions-security/introduction/security-basics-and-asp-net-support-cs.md)
 
->[!div class="step-by-step"]
-[Précédent](precompiling-your-website-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](precompiling-your-website-vb.md)

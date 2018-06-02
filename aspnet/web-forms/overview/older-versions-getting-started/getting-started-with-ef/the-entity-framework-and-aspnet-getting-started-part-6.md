@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-6
-title: "Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 6 | Documents Microsoft"
+title: Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 6 | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 164c2002a119420555d2c7065c5a79a5f433a725
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b76be25501275ba676c9a9acca8e73333439ee70
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-6"></a>Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 les Web Forms ASP.NET - partie 6
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide de l’Entity Framework 4.0 et Visual Studio 2010. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](the-entity-framework-and-aspnet-getting-started-part-1.md)
 
@@ -57,9 +57,9 @@ Modèles d’héritage TPH généralement offrent de meilleures performances dan
 
 ## <a name="adding-instructor-and-student-entities"></a>Ajout d’entités Instructor et Student
 
-Ouvrez le *SchoolModel.edmx* de fichiers, cliquez sur une zone libre dans le concepteur, sélectionnez **ajouter**, puis sélectionnez **entité***.*
+Ouvrez le <em>SchoolModel.edmx</em> de fichiers, cliquez sur une zone libre dans le concepteur, sélectionnez <strong>ajouter</strong>, puis sélectionnez <strong>entité</strong><em>.</em>
 
-[![Image01](the-entity-framework-and-aspnet-getting-started-part-6/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-6/_static/image5.png)
+[![image01](the-entity-framework-and-aspnet-getting-started-part-6/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-6/_static/image5.png)
 
 Dans le **ajouter une entité** boîte de dialogue, nom de l’entité `Instructor` et définir son **type de Base** option `Person`.
 
@@ -155,12 +155,12 @@ Mettre à jour les pages suivantes que vous avez créé dans les didacticiels an
 
     [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-6/samples/sample6.aspx)]
 
-    [![Image19](the-entity-framework-and-aspnet-getting-started-part-6/_static/image36.png)](the-entity-framework-and-aspnet-getting-started-part-6/_static/image35.png)
+    [![image19](the-entity-framework-and-aspnet-getting-started-part-6/_static/image36.png)](the-entity-framework-and-aspnet-getting-started-part-6/_static/image35.png)
 
 À la suite de ces modifications, vous avez amélioré la facilité de maintenance de l’application Contoso University de plusieurs façons. Vous avez déplacé la logique de sélection et validation hors de la couche d’interface utilisateur (*.aspx* balisage) et la partie intégrante de la couche d’accès aux données. Cela permet d’isoler votre code d’application des modifications que vous pouvez apporter à l’avenir pour le schéma de base de données ou le modèle de données. Par exemple, vous pouvez décider que les étudiants peuvent être engagés comme aides de professeurs et par conséquent, obtenez une date d’embauche. Vous pouvez ensuite ajouter une nouvelle propriété pour différencier les étudiants instructeurs et mettre à jour le modèle de données. Aucun code dans l’application web ne doit remplacer, sauf lorsque vous souhaitez afficher une date d’embauche pour les étudiants. Un autre avantage de l’ajout de `Instructor` et `Student` entités est que votre code est plus facilement compréhensible que lorsqu’il agit de `Person` les objets qui ont été réellement les étudiants ou les formateurs.
 
 Vous avez maintenant vu un moyen d’implémenter un modèle d’héritage dans Entity Framework. Dans ce didacticiel, vous allez apprendre comment utiliser des procédures stockées afin de mieux contrôler la façon dont l’Entity Framework accède à la base de données.
 
->[!div class="step-by-step"]
-[Précédent](the-entity-framework-and-aspnet-getting-started-part-5.md)
-[Suivant](the-entity-framework-and-aspnet-getting-started-part-7.md)
+> [!div class="step-by-step"]
+> [Précédent](the-entity-framework-and-aspnet-getting-started-part-5.md)
+> [Suivant](the-entity-framework-and-aspnet-getting-started-part-7.md)

@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
-title: "Création de Classes de modèle avec LINQ to SQL (c#) | Documents Microsoft"
+title: Création de Classes de modèle avec LINQ to SQL (c#) | Documents Microsoft
 author: microsoft
-description: "L’objectif de ce didacticiel est d’expliquer une méthode de création de classes de modèle pour une application ASP.NET MVC. Dans ce didacticiel, vous allez apprendre à générer le modèle c..."
+description: L’objectif de ce didacticiel est d’expliquer une méthode de création de classes de modèle pour une application ASP.NET MVC. Dans ce didacticiel, vous allez apprendre à générer le modèle c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
@@ -12,17 +12,17 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c640007a75f2421e0f6c1e86e525de4834bbc8e4
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9a56ceb9eab5774906ecc89ce9da570d4f691a82
+ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/27/2018
 ---
 <a name="creating-model-classes-with-linq-to-sql-c"></a>Création de Classes de modèle avec LINQ to SQL (c#)
 ====================
 par [Microsoft](https://github.com/microsoft)
 
-[Télécharger le PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
+[Télécharger PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_10_CS.pdf)
 
 > L’objectif de ce didacticiel est d’expliquer une méthode de création de classes de modèle pour une application ASP.NET MVC. Dans ce didacticiel, vous allez apprendre à générer des classes de modèle et d’effectuer un accès de base de données en tirant parti de Microsoft LINQ to SQL.
 
@@ -109,7 +109,7 @@ Maintenant que nous avons notre classes LINQ to SQL, nous pouvons utiliser ces c
 
 Tout d’abord, nous devons modifier la classe HomeController. Cette classe peut être trouvée dans le dossier contrôleurs de votre application. Modifiez la classe afin qu’il ressemble à la classe dans la liste 1.
 
-**La liste 1 :`Controllers\HomeController.cs`**
+**La liste 1 : `Controllers\HomeController.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample1.cs)]
 
@@ -119,7 +119,7 @@ Une requête LINQ est effectuée sur le DataContext pour récupérer tous les fi
 
 Pour afficher les films, nous devons ensuite modifier la vue Index. Vous pouvez trouver la vue de l’Index dans le `Views\Home\` dossier. Mettre à jour la vue Index afin qu’il ressemble à la vue dans la liste 2.
 
-**Liste 2 :`Views\Home\Index.aspx`**
+**Liste 2 : `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample2.aspx)]
 
@@ -149,7 +149,7 @@ Après avoir ajouté des enregistrements de base de données pour le `tblMovies`
 
 ## <a name="using-the-repository-pattern"></a>L’utilisation du modèle de référentiel
 
-Dans la section précédente, nous avons utilisé LINQ aux classes SQL directement dans une action du contrôleur. Nous avons utilisé le `MovieDataContex` classe t directement à partir de la `Index()` action du contrôleur. Il n’existe aucun problème avec cette opération dans le cas d’une application simple. Toutefois, l’utilisation directe des LINQ to SQL dans une classe de contrôleur crée des problèmes lorsque vous avez besoin pour générer une application plus complexe.
+Dans la section précédente, nous avons utilisé LINQ aux classes SQL directement dans une action du contrôleur. Nous avons utilisé le `MovieDataContext` classe directement à partir de la `Index()` action du contrôleur. Il n’existe aucun problème avec cette opération dans le cas d’une application simple. Toutefois, l’utilisation directe des LINQ to SQL dans une classe de contrôleur crée des problèmes lorsque vous avez besoin pour générer une application plus complexe.
 
 À l’aide de LINQ to SQL au sein d’une classe de contrôleur rend difficile de passer à l’avenir des technologies d’accès aux données. Par exemple, vous pouvez décider passer de l’utilisation de Microsoft LINQ to SQL à l’utilisation d’Entity Framework Microsoft en tant que votre technologie d’accès aux données. Dans ce cas, vous devez réécrire chaque contrôleur qui accède à la base de données dans votre application.
 
@@ -161,19 +161,19 @@ Lorsque vous créez la classe de référentiel, vous créez une interface qui re
 
 L’interface dans la liste 3 est nommé `IMovieRepository` et représente une méthode unique nommée `ListAll()`.
 
-**La liste 3 :`Models\IMovieRepository.cs`**
+**La liste 3 : `Models\IMovieRepository.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample3.cs)]
 
 La classe de référentiel dans la liste 4 implémente le `IMovieRepository` interface. Notez qu’il contient une méthode nommée `ListAll()` qui correspond à la méthode requise par le `IMovieRepository` interface.
 
-**La liste 4 –`Models\MovieRepository.cs`**
+**La liste 4 – `Models\MovieRepository.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample4.cs)]
 
 Enfin, la `MoviesController` classe dans la liste 5 utilise le modèle de référentiel. Il n’utilise plus LINQ aux classes SQL directement.
 
-**La liste 5 :`Controllers\MoviesController.cs`**
+**La liste 5 : `Controllers\MoviesController.cs`**
 
 [!code-csharp[Main](creating-model-classes-with-linq-to-sql-cs/samples/sample5.cs)]
 
@@ -183,7 +183,7 @@ Le deuxième constructeur ayant un seul paramètre : un `IMovieRepository` para
 
 La `MoviesController` classe bénéficie d’un modèle de conception de logiciel appelé le motif de l’Injection de dépendances. En particulier, il est à l’aide de ce que l'on appelle le constructeur d’Injection de dépendance. Vous pouvez en savoir plus sur ce modèle, lisez l’article suivant par Martin Fowler :
 
-[http://martinfowler.com/articles/injection.HTML](http://martinfowler.com/articles/injection.html)
+[http://martinfowler.com/articles/injection.html](http://martinfowler.com/articles/injection.html)
 
 Notez que tout le code dans le `MoviesController` classe (à l’exception du premier constructeur) interagit avec le `IMovieRepository` interface au lieu du réel `MovieRepository` classe. Le code interagit avec une interface abstraite au lieu d’une implémentation concrète de l’interface.
 
@@ -191,12 +191,12 @@ Si vous souhaitez modifier la technologie d’accès aux données utilisée par 
 
 En outre, si vous souhaitez tester le `MoviesController` classe, vous pouvez passer à une classe de référentiel de film fausse pour le `HomeController`. Vous pouvez implémenter la `IMovieRepository` classe avec une classe qui n’est pas réellement accès la base de données, mais contient toutes les méthodes requises de la `IMovieRepository` interface. De cette façon, vous pouvez test unitaire la `MoviesController` classe sans réellement l’accès à une base de données réel.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel a pour illustrer comment vous pouvez créer des classes du modèle MVC en tirant parti de Microsoft LINQ to SQL. Nous avons examiné les deux stratégies pour afficher les données de la base de données dans une application ASP.NET MVC. Tout d’abord, nous créé LINQ aux classes SQL et utiliser les classes directement au sein d’une action du contrôleur. À l’aide de LINQ aux classes SQL au sein d’un contrôleur vous permet de rapidement et facilement afficher des données de base de données dans une application MVC.
 
 Ensuite, nous a présenté un peu plus difficile, mais sans aucun doute plus vertueux, le chemin d’accès pour afficher les données de la base de données. Nous a tiré parti du modèle de référentiel et toute notre logique d’accès de base de données placé dans une classe de référentiels distincts. Dans notre contrôleur, nous a écrit tout notre code par rapport à une interface au lieu d’une classe concrète. L’avantage du modèle de référentiel est qu’il nous permet de modifier aisément les technologies d’accès de base de données dans le futur et il nous permet de tester facilement nos classes de contrôleur.
 
->[!div class="step-by-step"]
-[Précédent](creating-model-classes-with-the-entity-framework-cs.md)
-[Suivant](displaying-a-table-of-database-data-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-model-classes-with-the-entity-framework-cs.md)
+> [Suivant](displaying-a-table-of-database-data-cs.md)

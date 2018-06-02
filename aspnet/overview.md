@@ -1,22 +1,22 @@
 ---
 uid: overview
-title: "Vue d’ensemble d’ASP.NET | Documents Microsoft"
+title: Vue d’ensemble d’ASP.NET | Documents Microsoft
 author: rick-anderson
-description: "Introduction à ASP.NET, une infrastructure libre pour la création de sites Web, les applications web et les API web."
+description: Introduction à ASP.NET, une infrastructure libre pour la création de sites Web, les applications web et les API web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/12/2010
 ms.topic: article
 ms.assetid: 3a309468-f1ca-4e51-b9c3-536af79d7a8b
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
-msc.legacyurl: 
+msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 3d4c34a35e2e34ed78f481c759eda3718edb4da6
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0ba7814d4004b17e678eab9a2a41a6d6f34773e1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/10/2018
 ---
 # <a name="aspnet-overview"></a>Vue d’ensemble d’ASP.NET
 
@@ -26,7 +26,7 @@ ASP.NET est une infrastructure web gratuite pour la création de sites Web attra
 
 ## <a name="get-started"></a>Prise en main
 
-[Télécharger Visual Studio 2015](https://go.microsoft.com/fwlink/?LinkId=826064), un libre IDE pour ASP.NET sur Windows.
+[2017 de communauté Visual Studio](https://www.visualstudio.com/downloads/), un libre IDE pour ASP.NET sur Windows.
 
 ## <a name="websites-and-web-applications"></a>Sites et applications web
 

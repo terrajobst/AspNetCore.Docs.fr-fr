@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs
-title: "Vue d’ensemble de l’authentification par formulaire (c#) | Documents Microsoft"
+title: Vue d’ensemble de l’authentification par formulaire (c#) | Documents Microsoft
 author: rick-anderson
-description: "Création des itinéraires personnalisés"
+description: Création des itinéraires personnalisés
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d386a3b6328675fe21f989f8fd36bfc91fc08b32
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1f64384d403f3cf81ffa3327a81b635bc71e2b44
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-forms-authentication-c"></a>Vue d’ensemble de l’authentification par formulaire (c#)
 ====================
@@ -43,8 +43,8 @@ Lorsque le runtime ASP.NET traite une demande pour une ressource ASP.NET, tels q
 
 *Les Modules HTTP* sont des classes managées dont le code est exécuté en réponse à un événement spécifique dans le cycle de vie de demande. ASP.NET est fourni avec un nombre de Modules HTTP qui effectuent des tâches essentielles en arrière-plan. Deux Modules HTTP intégrés qui sont particulièrement pertinentes pour notre discussion sont :
 
-- **[`FormsAuthenticationModule`](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)**– authentifie l’utilisateur en inspectant le ticket d’authentification forms, qui est généralement inclus dans la collection de cookies de l’utilisateur. Si aucun ticket d’authentification de formulaires n’est présent, l’utilisateur est anonyme.
-- **[`UrlAuthorizationModule`](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)**– Détermine si l’utilisateur actuel est autorisé à accéder à l’URL demandée. Ce module détermine l’autorité en consultant les règles d’autorisation spécifiés dans les fichiers de configuration de l’application. ASP.NET inclut également le [ `FileAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.fileauthorizationmodule.aspx) qui détermine l’autorité en consultant les ou les fichiers requis ACL.
+- **[`FormsAuthenticationModule`](https://msdn.microsoft.com/library/system.web.security.formsauthenticationmodule.aspx)** – authentifie l’utilisateur en inspectant le ticket d’authentification forms, qui est généralement inclus dans la collection de cookies de l’utilisateur. Si aucun ticket d’authentification de formulaires n’est présent, l’utilisateur est anonyme.
+- **[`UrlAuthorizationModule`](https://msdn.microsoft.com/library/system.web.security.urlauthorizationmodule.aspx)** – Détermine si l’utilisateur actuel est autorisé à accéder à l’URL demandée. Ce module détermine l’autorité en consultant les règles d’autorisation spécifiés dans les fichiers de configuration de l’application. ASP.NET inclut également le [ `FileAuthorizationModule` ](https://msdn.microsoft.com/library/system.web.security.fileauthorizationmodule.aspx) qui détermine l’autorité en consultant les ou les fichiers requis ACL.
 
 Le `FormsAuthenticationModule` tente d’authentifier l’utilisateur avant le `UrlAuthorizationModule` (et `FileAuthorizationModule`) l’exécution. Si l’utilisateur qui effectue la demande n’est pas autorisé à accéder à la ressource demandée, le module d’autorisation met fin à la demande et retourne un [HTTP 401 non autorisé](http://www.checkupdown.com/status/E401.html) état. Dans les scénarios d’authentification Windows, l’état HTTP 401 est renvoyé au navigateur. Ce code d’état provoque le navigateur inviter l’utilisateur ses informations d’identification via une boîte de dialogue modale. L’authentification par formulaires, toutefois, l’état HTTP 401 non autorisé est jamais envoyée au navigateur car FormsAuthenticationModule détecte cet état et le modifie pour rediriger l’utilisateur vers la page de connexion à la place (via un [HTTPderedirection302](http://www.checkupdown.com/status/E302.html) état).
 
@@ -103,7 +103,7 @@ Ensuite, ajoutez une nouvelle Page maître au site dans le répertoire racine no
 **Figure 3**: ajouter un Site.master nommé de Page maître pour le site Web ([cliquez pour afficher l’image en taille réelle](an-overview-of-forms-authentication-cs/_static/image7.png))
 
 
-Définir la disposition de la page de l’échelle du site ici dans la page maître. Vous pouvez utiliser le mode Design et ajouter quelle que soit vous avez besoin des contrôles de disposition ou Web, ou vous pouvez ajouter manuellement le balisage manuellement dans la vue de Source. Je structuré mon maître mise en page pour reproduire la mise en page utilisée dans mon  *[utilisation des données dans ASP.NET 2.0](../../data-access/index.md)*  série de didacticiels (voir Figure 4). La page maître utilise [des feuilles de style en cascade](http://www.w3schools.com/css/default.asp) pour positionner et styles avec les paramètres de CSS définies dans le fichier Style.css (qui est incluse dans le téléchargement d’associé de ce didacticiel). Pendant que vous ne savez pas à partir du balisage illustré ci-dessous, les règles CSS sont définies telles que le volet de navigation &lt;div&gt;du contenu est positionné afin qu’il apparaît à gauche et a une largeur fixe de 200 pixels.
+Définir la disposition de la page de l’échelle du site ici dans la page maître. Vous pouvez utiliser le mode Design et ajouter quelle que soit vous avez besoin des contrôles de disposition ou Web, ou vous pouvez ajouter manuellement le balisage manuellement dans la vue de Source. Je structuré mon maître mise en page pour reproduire la mise en page utilisée dans mon *[utilisation des données dans ASP.NET 2.0](../../data-access/index.md)* série de didacticiels (voir Figure 4). La page maître utilise [des feuilles de style en cascade](http://www.w3schools.com/css/default.asp) pour positionner et styles avec les paramètres de CSS définies dans le fichier Style.css (qui est incluse dans le téléchargement d’associé de ce didacticiel). Pendant que vous ne savez pas à partir du balisage illustré ci-dessous, les règles CSS sont définies telles que le volet de navigation &lt;div&gt;du contenu est positionné afin qu’il apparaît à gauche et a une largeur fixe de 200 pixels.
 
 [!code-aspx[Main](an-overview-of-forms-authentication-cs/samples/sample1.aspx)]
 
@@ -240,7 +240,7 @@ En supposant que les informations d’identification fournies sont valides, nous
 
 - [GetAuthCookie (*nom d’utilisateur*, *persistCookie*)](https://msdn.microsoft.com/library/system.web.security.formsauthentication.getauthcookie.aspx) – crée un ticket d’authentification de formulaires pour le nom fourni *nom d’utilisateur*. Ensuite, cette méthode crée et retourne un objet HttpCookie qui contient le contenu du ticket d’authentification. Si *persistCookie* a la valeur true, un cookie persistant est créé.
 - [SetAuthCookie (*nom d’utilisateur*, *persistCookie*)](https://msdn.microsoft.com/library/system.web.security.formsauthentication.setauthcookie.aspx) : appelle le GetAuthCookie (*nom d’utilisateur*, *persistCookie*) méthode pour générer le cookie d’authentification de formulaires. Cette méthode ajoute ensuite le cookie retourné par GetAuthCookie à la collection de Cookies (en supposant que l’authentification de formulaires basés sur des cookies est utilisé ; sinon, cette méthode appelle une classe interne qui gère la logique de ticket cookieless).
-- [RedirectFromLoginPage (*nom d’utilisateur*, *persistCookie*)](https://msdn.microsoft.com/library/system.web.security.formsauthentication.redirectfromloginpage.aspx) – cette méthode appelle SetAuthCookie (*nom d’utilisateur*, *persistCookie* ), puis redirige l’utilisateur à la page appropriée.
+- [RedirectFromLoginPage (*nom d’utilisateur*, *persistCookie*)](https://msdn.microsoft.com/library/system.web.security.formsauthentication.redirectfromloginpage.aspx) – cette méthode appelle SetAuthCookie (*nom d’utilisateur*, *persistCookie*), puis redirige l’utilisateur à la page appropriée.
 
 GetAuthCookie est pratique lorsque vous devez modifier le ticket d’authentification avant d’écrire le cookie de la collection de Cookies. SetAuthCookie est utile si vous souhaitez créer les formulaires ticket d’authentification et l’ajouter à la collection de Cookies, mais vous ne souhaitez pas rediriger l’utilisateur vers la page appropriée. Vous voulez peut-être les conserver sur la page de connexion ou les envoyer vers une autre page.
 
@@ -459,7 +459,7 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 - [Contrôles de connexion ASP.NET](https://msdn.microsoft.com/library/d51ttbhx.aspx)
 - [Professionnel ASP.NET 2.0 sécurité, l’appartenance et la gestion des rôles](http://www.wrox.com/WileyCDA/WroxTitle/productCd-0764596985.html) (ISBN : 978-0-7645-9698 MSSQLServer-8)
 - [Le `<authentication>` élément](https://msdn.microsoft.com/library/532aee0e.aspx)
-- [Le `<forms>` , élément pour les`<authentication>`](https://msdn.microsoft.com/library/1d3t3c61.aspx)
+- [Le `<forms>` , élément pour les `<authentication>`](https://msdn.microsoft.com/library/1d3t3c61.aspx)
 
 ### <a name="video-training-on-topics-contained-in-this-tutorial"></a>Formations vidéo sur les rubriques contenues dans ce didacticiel
 
@@ -467,12 +467,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements particuliers à...
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été ce didacticiel série a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel incluent Alicja Maziarz, John Suru et Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](security-basics-and-asp-net-support-cs.md)
-[Suivant](forms-authentication-configuration-and-advanced-topics-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](security-basics-and-asp-net-support-cs.md)
+> [Suivant](forms-authentication-configuration-and-advanced-topics-cs.md)

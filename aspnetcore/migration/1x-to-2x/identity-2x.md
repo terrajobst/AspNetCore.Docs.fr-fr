@@ -1,7 +1,7 @@
 ---
-title: "Migration d’authentification et de l’identité au cœur d’ASP.NET 2.0"
+title: Migrer l’authentification et identité vers ASP.NET Core 2.0
 author: scottaddie
-description: "Cet article présente les étapes les plus courantes pour l’authentification de migration ASP.NET Core 1.x et l’identité pour ASP.NET 2.0 de base."
+description: Cet article présente les étapes les plus courantes pour l’authentification de migration ASP.NET Core 1.x et l’identité pour ASP.NET 2.0 de base.
 manager: wpickett
 ms.author: scaddie
 ms.date: 10/26/2017
@@ -9,13 +9,13 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: migration/1x-to-2x/identity-2x
-ms.openlocfilehash: dd48b2b027d22b570aa182e748ca91738e935f49
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0653906996f9f37d436ebefc6a738d2603788d53
+ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="migrating-authentication-and-identity-to-aspnet-core-20"></a>Migration de l’authentification et identité au cœur d’ASP.NET 2.0
+# <a name="migrate-authentication-and-identity-to-aspnet-core-20"></a>Migrer l’authentification et identité vers ASP.NET Core 2.0
 
 Par [Scott Addie](https://github.com/scottaddie) et [arts martiaux de Hao](https://github.com/HaoK)
 
@@ -238,7 +238,7 @@ Apportez les modifications suivantes dans *Startup.cs*:
     ```
 
 ### <a name="setting-default-authentication-schemes"></a>Définition des schémas d’authentification par défaut
-Dans 1.x, le `AutomaticAuthenticate` et `AutomaticChallenge` propriétés de la [AuthenticationOptions](https://docs.microsoft.com/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) classe de base a été conçue pour être définie sur un schéma d’authentification unique. Il n’existait aucun moyen de bonne pour appliquer ceci.
+Dans 1.x, le `AutomaticAuthenticate` et `AutomaticChallenge` propriétés de la [AuthenticationOptions](/dotnet/api/Microsoft.AspNetCore.Builder.AuthenticationOptions?view=aspnetcore-1.1) classe de base a été conçue pour être définie sur un schéma d’authentification unique. Il n’existait aucun moyen de bonne pour appliquer ceci.
 
 Dans la version 2.0, ces deux propriétés ont été supprimées en tant que propriétés sur chaque `AuthenticationOptions` instance. Ils peuvent être configurés dans le `AddAuthentication` appel de méthode dans le `ConfigureServices` méthode de *Startup.cs*:
 
@@ -271,11 +271,11 @@ Le `IAuthenticationManager` interface est le point d’entrée principal dans le
 
 Par exemple, les projets 1.x référence un `Authentication` propriété :
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
 Dans les 2.0 projets, vous devez importer le `Microsoft.AspNetCore.Authentication` espace de noms et supprimer la `Authentication` références de propriété :
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
 <a name="windows-auth-changes"></a>
 
@@ -301,15 +301,15 @@ Un effet secondaire des 2.0 modifications est le commutateur à l’aide de ces 
 
 Par exemple, des projets utilisent 1.x [injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour passer un `IdentityCookieOptions` paramètre dans *AccountController.cs*. Le schéma d’authentification externe cookie est accessible à partir de l’instance fournie :
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor&highlight=4,11)]
 
 L’injection de constructeur susmentionnés devienne inutile dans les 2.0 projets et le `_externalCookieScheme` champ peut être supprimé :
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AccountControllerConstructor)]
 
 Le `IdentityConstants.ExternalScheme` constante peut être utilisée directement :
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/AccountController.cs?name=snippet_AuthenticationProperty)]
 
 <a name="navigation-properties"></a>
 
@@ -371,30 +371,30 @@ protected override void OnModelCreating(ModelBuilder builder)
 ## <a name="replace-getexternalauthenticationschemes"></a>Remplacez GetExternalAuthenticationSchemes
 La méthode synchrone `GetExternalAuthenticationSchemes` a été supprimé en faveur d’une version asynchrone. les projets de 1.x ont le code suivant dans *ManageController.cs*:
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemes)]
 
 Cette méthode s’affiche dans *Login.cshtml* trop :
 
-[!code-cshtml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?range=62,75-84)]
+[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Views/Account/Login.cshtml?range=62,75-84)]
 
 Dans les 2.0 projets, utilisez la `GetExternalAuthenticationSchemesAsync` méthode :
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Controllers/ManageController.cs?name=snippet_GetExternalAuthenticationSchemesAsync)]
 
 Dans *Login.cshtml*, le `AuthenticationScheme` propriété accédée dans le `foreach` boucle devient `Name`:
 
-[!code-cshtml[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?range=62,75-84)]
+[!code-cshtml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Views/Account/Login.cshtml?range=62,75-84)]
 
 <a name="property-change"></a>
 
 ## <a name="manageloginsviewmodel-property-change"></a>Modification de la propriété ManageLoginsViewModel
 A `ManageLoginsViewModel` objet est utilisé dans le `ManageLogins` action de *ManageController.cs*. Dans les projets 1.x, l’objet `OtherLogins` propriété type de retour est `IList<AuthenticationDescription>`. Ce type de retour nécessite une importation de `Microsoft.AspNetCore.Http.Authentication`:
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
 Dans les 2.0 projets, le type de retour devient `IList<AuthenticationScheme>`. Ce nouveau type de retour nécessite en remplaçant le `Microsoft.AspNetCore.Http.Authentication` importer avec un `Microsoft.AspNetCore.Authentication` importer.
 
-[!code-csharp[Main](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
+[!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/Models/ManageViewModels/ManageLoginsViewModel.cs?name=snippet_ManageLoginsViewModel&highlight=2,11)]
 
 <a name="additional-resources"></a>
 

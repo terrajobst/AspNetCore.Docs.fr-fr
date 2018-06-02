@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb
-title: "La mise en cache des données avec ObjectDataSource (VB) | Documents Microsoft"
+title: La mise en cache des données avec ObjectDataSource (VB) | Documents Microsoft
 author: rick-anderson
-description: "La mise en cache peut signifier la différence entre une lente et une exécution rapide des applications Web. Ce didacticiel est la première des quatre détaillées examiner la mise en cache dans ASP.NET..."
+description: La mise en cache peut signifier la différence entre une lente et une exécution rapide des applications Web. Ce didacticiel est la première des quatre détaillées examiner la mise en cache dans ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/30/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ce0daabf8d68614c530115cc37b4f088f75dba4d
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a79ed980e28e2c20a73fa4193f8c0970c9dbdef8
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="caching-data-with-the-objectdatasource-vb"></a>La mise en cache des données avec ObjectDataSource (VB)
 ====================
@@ -236,12 +236,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été Teresa Murphy. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](using-sql-cache-dependencies-cs.md)
-[Suivant](caching-data-in-the-architecture-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-sql-cache-dependencies-cs.md)
+> [Suivant](caching-data-in-the-architecture-vb.md)

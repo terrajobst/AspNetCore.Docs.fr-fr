@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-2
-title: "Ajoutez des modèles et des contrôleurs | Documents Microsoft"
+title: Ajoutez des modèles et des contrôleurs | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-2
 msc.type: authoredcontent
-ms.openlocfilehash: 7e09316f0faaf0731e4cdda48040fdaedc0f244a
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 015bb9698d81387d03ea8f9629316fb53232e708
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="add-models-and-controllers"></a>Ajoutez des modèles et des contrôleurs
 ====================
@@ -84,8 +84,8 @@ Dans le **nouveau contexte de données** boîte de dialogue, conservez le nom pa
 
 Cliquez sur **ajouter** pour terminer le **ajouter un contrôleur** boîte de dialogue. La boîte de dialogue ajoute deux classes à votre projet :
 
-- `AuthorsController`définit un contrôleur d’API Web. Le contrôleur implémente l’API REST que les clients utilisent pour effectuer des opérations CRUD sur la liste des auteurs.
-- `BookServiceContext`gère des objets d’entité pendant l’exécution, ce qui inclut le remplissage des objets avec des données à partir d’une base de données, le suivi des modifications et conserver les données de la base de données. Il hérite de `DbContext`.
+- `AuthorsController` définit un contrôleur d’API Web. Le contrôleur implémente l’API REST que les clients utilisent pour effectuer des opérations CRUD sur la liste des auteurs.
+- `BookServiceContext` gère des objets d’entité pendant l’exécution, ce qui inclut le remplissage des objets avec des données à partir d’une base de données, le suivi des modifications et conserver les données de la base de données. Il hérite de `DbContext`.
 
 ![](part-2/_static/image7.png)
 
@@ -93,6 +93,6 @@ Cliquez sur **ajouter** pour terminer le **ajouter un contrôleur** boîte de di
 
 ![](part-2/_static/image8.png)
 
->[!div class="step-by-step"]
-[Précédent](part-1.md)
-[Suivant](part-3.md)
+> [!div class="step-by-step"]
+> [Précédent](part-1.md)
+> [Suivant](part-3.md)

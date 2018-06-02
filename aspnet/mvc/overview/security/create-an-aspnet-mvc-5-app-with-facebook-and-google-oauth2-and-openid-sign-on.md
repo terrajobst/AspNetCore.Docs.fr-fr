@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
-title: "Créer MVC 5 application avec Facebook, Twitter, LinkedIn et Google OAuth2 Sign-on (c#) | Documents Microsoft"
+title: Créer MVC 5 application avec Facebook, Twitter, LinkedIn et Google OAuth2 Sign-on (c#) | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel vous montre comment générer une application web ASP.NET MVC 5 qui permet aux utilisateurs de se connecter en utilisant OAuth 2.0 avec les informations d’identification à partir d’un authenti externe..."
+description: Ce didacticiel vous montre comment générer une application web ASP.NET MVC 5 qui permet aux utilisateurs de se connecter en utilisant OAuth 2.0 avec les informations d’identification à partir d’un authenti externe...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/03/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: ccf4329e6684d07570bfaabfaa1a570664fb2ca3
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/21/2018
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Créer une application ASP.NET MVC 5 avec Facebook, Twitter, LinkedIn et Google OAuth2 Sign-on (c#)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Ce didacticiel vous montre comment créer une application web ASP.NET MVC 5 qui permet aux utilisateurs de se connecter à l’aide de [OAuth 2.0](http://oauth.net/2/) avec les informations d’identification d’un fournisseur d’authentification externes, tels que Facebook, Twitter, LinkedIn, Microsoft ou Google. Par souci de simplicité, ce didacticiel se concentre sur l’utilisation des informations d’identification à partir de Facebook et Google.
 > 
@@ -34,7 +34,7 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
 <a id="start"></a>
 ## <a name="getting-started"></a>Prise en main
 
-Commencez par installer et exécuter [Visual Studio Express 2013 pour le Web](https://go.microsoft.com/fwlink/?LinkId=299058) ou [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Installation de Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521) ou une version ultérieure. Pour Dropbox, GitHub, Linkedin, Instagram, mémoire tampon, force de vente, le flux, pile Exchange, Tripit, twitch, Twitter, Yahoo et bien plus encore l’aide, consultez ce [un guide qui](http://www.oauthforaspnet.com/).
+Commencez par installer et exécuter [Visual Studio Express 2013 pour le Web](https://go.microsoft.com/fwlink/?LinkId=299058) ou [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Installation de Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521) ou une version ultérieure. Pour plus d’informations Dropbox, GitHub, Linkedin, Instagram, mémoire tampon, force de vente, le flux, pile Exchange, Tripit, Twitch, Twitter, Yahoo! et plus d’informations, consultez ce [exemple de projet](https://github.com/matthewdunsdon/oauthforaspnet).
 
 > [!NOTE]
 > Vous devez installer Visual Studio [2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390521) ou une version ultérieure pour utiliser Google OAuth 2 et déboguer localement sans avertissements de SSL.
@@ -114,10 +114,13 @@ Pour vous connecter à des fournisseurs d’authentification tels que Google et 
 <a id="goog"></a>
 ## <a name="creating-a-google-app-for-oauth-2-and-connecting-the-app-to-the-project"></a>Création d’une application de Google OAuth 2 et la connexion de l’application au projet
 
+> [!WARNING]
+> Pour obtenir des instructions de Google OAuth actuelles, consultez [Google de configuration de l’authentification dans ASP.NET Core](/aspnet/core/security/authentication/social/google-logins).
+
 1. Accédez à la [Console des développeurs Google](https://console.developers.google.com/).
-1. Si vous n’avez pas créé un projet, sélectionnez **informations d’identification** dans l’onglet gauche, puis sélectionnez **créer**.
-1. Dans l’onglet gauche, cliquez sur **informations d’identification**.
-1. Cliquez sur **créer les informations d’identification** puis **ID de client OAuth**. 
+2. Si vous n’avez pas créé un projet, sélectionnez **informations d’identification** dans l’onglet gauche, puis sélectionnez **créer**.
+3. Dans l’onglet gauche, cliquez sur **informations d’identification**.
+4. Cliquez sur **créer les informations d’identification** puis **ID de client OAuth**. 
 
     1. Dans le **créer un identifiant Client** boîte de dialogue, conservez la valeur par défaut **application Web** pour le type d’application.
     2. Définir le **autorisé de JavaScript** origine à l’URL SSL utilisée ci-dessus (`https://localhost:44300/` , sauf si vous avez créé d’autres projets SSL)
@@ -128,7 +131,7 @@ Pour vous connecter à des fournisseurs d’authentification tels que Google et 
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image15.png)  
   
- L’image ci-dessous montre les API activées.  
+   L’image ci-dessous montre les API activées.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image16.png)
 7. À partir du Gestionnaire d’API Google API, visitez le **informations d’identification** tab pour obtenir le **ID Client**. Téléchargement pour enregistrer un fichier JSON comportant des secrets de l’application. Copiez et collez le **ClientId** et **ClientSecret** dans le `UseGoogleAuthentication` méthode trouvée dans le *Startup.Auth.cs* de fichiers dans le *App_Start* dossier. Le **ClientId** et **ClientSecret** valeurs indiquées ci-dessous sont des exemples et ne fonctionnent pas.
@@ -145,8 +148,8 @@ Pour vous connecter à des fournisseurs d’authentification tels que Google et 
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image18.png)
 
     > [!NOTE]
-    > Si vous omettez une des étapes ci-dessus, vous obtiendrez une erreur HTTP 401. Revérifier les étapes ci-dessus. Si vous omettez un paramètre requis (par exemple **nom de produit**), ajouter manquants élément et d’enregistrer, peut prendre quelques minutes pour l’authentification à utiliser.
-10. Vous allez être redirigé vers le site de google où vous devrez entrer vos informations d’identification.   
+    > Si vous omettez une des étapes ci-dessus, vous obtiendrez une erreur HTTP 401. Revérifier les étapes ci-dessus. Si vous omettez un paramètre requis (par exemple **nom de produit**), ajoutez l’élément manquant et enregistrez ; il peut prendre quelques minutes pour l’authentification à utiliser.
+10. Vous allez être redirigé vers le site de Google où vous devrez entrer vos informations d’identification.   
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image19.png)
 11. Après avoir entré vos informations d’identification, vous devez accorder des autorisations à l’application web que vous venez de créer :
@@ -159,16 +162,19 @@ Pour vous connecter à des fournisseurs d’authentification tels que Google et 
 <a id="fb"></a>
 ## <a name="creating-the-app-in-facebook-and-connecting-the-app-to-the-project"></a>Création de l’application de Facebook et la connexion de l’application au projet
 
+> [!WARNING]
+> Pour obtenir des instructions de l’authentification Facebook OAuth2 actuelles, consultez [l’authentification Facebook de configuration](/aspnet/core/security/authentication/social/facebook-logins)
+
 Pour l’authentification Facebook OAuth2, vous devez copier certains paramètres dans votre projet à partir d’une application que vous créez dans Facebook.
 
-1. Dans votre navigateur, accédez à [https://developers.facebook.com/apps](https://developers.facebook.com/apps) et connectez-vous à entrer vos informations d’identification de Facebook.
+1. Dans votre navigateur, accédez à [ https://developers.facebook.com/apps ](https://developers.facebook.com/apps) et connectez-vous à entrer vos informations d’identification de Facebook.
 2. Si vous n’êtes pas déjà inscrit en tant qu’un développeur de Facebook, cliquez sur **enregistrer en tant que développeur** et suivez les instructions à inscrire.
 3. Sur le **applications** , cliquez sur **créer une application**.
 
     ![Créer une application](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
 4. Entrez un **nom de l’application** et **catégorie**, puis cliquez sur **créer application**.
 
-    Cela doit être unique dans Facebook. Le **application Namespace** est la partie de l’URL que votre application utilise pour accéder à l’application Facebook pour l’authentification (par exemple, https://apps.facebook.com/ {application Namespace}). Si vous ne spécifiez pas un **application Namespace**, le **ID d’application** sera utilisé pour l’URL. Le **ID d’application** est un nombre long généré par le système qui s’affiche dans l’étape suivante.
+    Cela doit être unique dans Facebook. Le <strong>application Namespace</strong> est la partie de l’URL que votre application utilise pour accéder à l’application Facebook pour l’authentification (par exemple, https://apps.facebook.com/{App Namespace}). Si vous ne spécifiez pas un <strong>application Namespace</strong>, le <strong>ID d’application</strong> sera utilisé pour l’URL. Le <strong>ID d’application</strong> est un nombre long généré par le système qui s’affiche dans l’étape suivante.
 
     ![Créer la boîte de dialogue nouvelle application](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
 5. Envoyer la vérification de sécurité standard.
@@ -255,7 +261,7 @@ Supprimer la base de données d’appartenance afin de pouvoir à nouveau enregi
 
 1. Enable-Migrations
 2. Migration ajouter Init
-3. Update-Database
+3. Base de données de mise à jour
 
 Exécutez l’application et utilisez FaceBook et Google pour vous connecter et d’inscrire certains utilisateurs.
 

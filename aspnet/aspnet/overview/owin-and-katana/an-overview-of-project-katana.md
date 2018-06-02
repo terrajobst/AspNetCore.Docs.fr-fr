@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/owin-and-katana/an-overview-of-project-katana
-title: "Une vue d’ensemble du projet Katana | Documents Microsoft"
+title: Une vue d’ensemble du projet Katana | Documents Microsoft
 author: howarddierking
-description: "L’infrastructure ASP.NET a été autour pendant plus de dix ans, et la plateforme a activé le développement d’innombrables sites et services Web. En tant qu’application de Web..."
+description: L’infrastructure ASP.NET a été autour pendant plus de dix ans, et la plateforme a activé le développement d’innombrables sites et services Web. En tant qu’application de Web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/30/2013
 ms.topic: article
 ms.assetid: 0ee21741-c1bf-4025-a9b0-24580cae24bc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/owin-and-katana/an-overview-of-project-katana
 msc.type: authoredcontent
-ms.openlocfilehash: 8f28116f88f3cf5143d3d5c9821519d62c4e5452
-ms.sourcegitcommit: 6541c8b11001dd617adf5eb04c814cda165070b9
+ms.openlocfilehash: 3c2bcbbc6e506af759f6d77af17d015278cc0bdf
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="an-overview-of-project-katana"></a>Une vue d’ensemble du projet Katana
 ====================
@@ -29,7 +29,7 @@ par [Howard Dierking](https://github.com/howarddierking)
 
  Qu’une traite un produit de framework ou de l’utilisateur final de développeur, il est important de comprendre les motivations sous-jacent pour la création du produit – et la partie qui inclut connaître le produit a été créé pour. ASP.NET a été créé avec les deux clients à l’esprit.   
   
-**Le premier groupe de clients a été les développeurs ASP classiques.** À l’heure, ASP a été une des principales technologies pour la création d’applications et des sites Web dynamiques, pilotés par les données par entrelacement de balisage et le script côté serveur. Le runtime ASP fourni un script côté serveur avec un ensemble d’objets qui extrait les principaux aspects du protocole HTTP sous-jacent et serveur Web et autant de l’accès à d’autres services telle session état des applications, mettre en cache, etc. Pendant puissant, les applications ASP classiques est devenue difficile à gérer comme elles ont augmenté en taille et en complexité. Ceci était due en grande partie de l’absence de structure figurant dans des environnements associées à la duplication de code qui résulte de l’entrelacement de code et de balises de script. Afin de profiter des avantages de ASP classique, tout en répondant à certaines de relever ces défis, ASP.NET a tiré parti de l’organisation de code fournie par les langages orientés objet du .NET Framework tout en conservant le modèle de programmation côté serveur pour le ASP classique développeurs avaient pris l’habitude.
+**Le premier groupe de clients a été les développeurs ASP classiques.** À l’heure, ASP a été une des principales technologies pour la création d’applications et des sites Web dynamiques, pilotés par les données par entrelacement de balisage et le script côté serveur. Le runtime ASP fourni un script côté serveur avec un ensemble d’objets qui extrait les principaux aspects du protocole HTTP sous-jacent et serveur Web et autant de l’accès à d’autres services telle session état des applications, mettre en cache, etc. Pendant puissant, les applications ASP classiques est devenue difficile à gérer comme elles ont augmenté en taille et en complexité. Ceci était due en grande partie de l’absence de structure trouvée dans les environnements associées à la duplication de code qui résulte de l’entrelacement de code et de balises de script. Afin de profiter des avantages de ASP classique, tout en répondant à certaines de relever ces défis, ASP.NET a tiré parti de l’organisation de code fournie par les langages orientés objet du .NET Framework tout en conservant le modèle de programmation côté serveur pour le ASP classique développeurs avaient pris l’habitude.
 
 **Le deuxième groupe de clients cibles pour ASP.NET a été les développeurs d’applications métier Windows.** Contrairement aux développeurs ASP classiques, qui ont été habitués à l’écriture de code HTML et le code pour générer un balisage HTML plus, les développeurs de WinForms (par exemple, les développeurs VB6 avant eux) ont été habitué à une expérience au moment du design qui incluait une zone de dessin et un ensemble complet de l’utilisateur contrôles d’interface. La première version de ASP.NET – également appelé « Web Forms » fourni une expérience au moment du design similaire avec un modèle d’événement du côté serveur pour les composants d’interface utilisateur et un ensemble de fonctions d’infrastructure (tels que ViewState) pour créer une expérience développeur transparente entre le client et la programmation du côté serveur. Web Forms hid efficacement la nature sans état du site Web sous un modèle d’événement avec état qui était familière aux développeurs de WinForms.
 
@@ -144,7 +144,7 @@ Pour illustrer l’objectif de la portabilité, le déplacement d’un hôte de 
 - La gestion des processus sous-jacent.
 - Orchestration de flux de travail qui entraîne la sélection d’un serveur et de la construction d’un pipeline OWIN via les demandes est traité.
 
- Actuellement, il existe 3 options d’hébergement principales pour les applications Katana :  
+  Actuellement, il existe 3 options d’hébergement principales pour les applications Katana :  
   
 **IIS/ASP.NET**: à l’aide des types standard HttpModule et HttpHandler, OWIN pipelines peuvent s’exécutent sur IIS dans le cadre d’un flux de demandes ASP.NET. Hébergement de prise en charge ASP.NET est activée en installant le package NuGet de Microsoft.AspNet.Host.SystemWeb dans un projet d’application Web. En outre, comme IIS agit comme un hôte et un serveur, la différence de serveur/hôte OWIN va de pair dans ce package NuGet, ce qui signifie que si vous utilisez l’hôte SystemWeb, un développeur ne peut pas remplacer une implémentation d’un autre serveur.  
   
@@ -173,7 +173,7 @@ La classe de démarrage sera abordée plus en détail plus loin dans l’article
 - **Microsoft.Owin.Host.SystemWeb**: comme indiqué précédemment, IIS de concert avec le pipeline ASP.NET agit comme un hôte et un serveur. Par conséquent, lors du choix de cette option d’hébergement, IIS à la fois gère des problèmes de niveau hôte, tels que l’activation de processus et écoute les requêtes HTTP. Pour les applications Web ASP.NET, il envoie ensuite les demandes dans le pipeline ASP.NET. L’hôte Katana SystemWeb inscrit une ASP.NET HttpModule et un HttpHandler pour intercepter les demandes qu’ils sont acheminées via le pipeline HTTP et les envoyer via le pipeline OWIN spécifié par l’utilisateur.
 - **Microsoft.Owin.Host.HttpListener**: comme son nom l’indique, ce serveur Katana utilise HttpListener (classe) du .NET Framework pour ouvrir un socket et envoyer des demandes dans un pipeline OWIN spécifié par le développeur. Il s’agit actuellement de la sélection du serveur par défaut pour les API d’auto-hébergement Katana et OwinHost.exe.
 
-## <a name="middlewareframework"></a>Intergiciel (middleware) / framework
+## <a name="middlewareframework"></a>Middleware/framework
 
  Comme mentionné précédemment, lorsque le serveur accepte une demande d’un client, il est chargé de passer par un pipeline de composants OWIN, qui sont spécifiées par le code de démarrage du développeur. Ces composants de pipeline sont appelées intergiciel (middleware).  
  À un niveau très simple, un composant d’intergiciel (middleware) OWIN doit simplement implémenter le délégué d’application OWIN afin qu’il soit pouvant être appelé.
@@ -221,7 +221,7 @@ Pour Katana 2.0, les composants d’intergiciel (middleware) sont principalement
 
 ## <a name="for-more-information-about-katana"></a>Pour plus d’informations sur les interconnexions
 
-- Le projet Katana sur GitHub : [https://github.com/aspnet/AspNetKatana/](https://github.com/aspnet/AspNetKatana/).
+- Le projet Katana sur GitHub : [ https://github.com/aspnet/AspNetKatana/ ](https://github.com/aspnet/AspNetKatana/).
 - Vidéo : [le projet Katana - OWIN pour ASP.NET](https://channel9.msdn.com/Shows/Web+Camps+TV/The-Katana-Project-OWIN-for-ASPNET), par Howard Dierking.
 
 ## <a name="acknowledgements"></a>Remerciements

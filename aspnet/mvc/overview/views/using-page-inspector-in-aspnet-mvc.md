@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/views/using-page-inspector-in-aspnet-mvc
-title: "À l’aide de l’inspecteur de Page dans ASP.NET MVC | Documents Microsoft"
+title: À l’aide de l’inspecteur de Page dans ASP.NET MVC | Documents Microsoft
 author: rick-anderson
-description: "L’inspecteur de page dans Visual Studio 2012 est un outil de développement web avec un navigateur intégré. Sélectionner un élément dans le navigateur intégré et l’inspecteur de Page i..."
+description: L’inspecteur de page dans Visual Studio 2012 est un outil de développement web avec un navigateur intégré. Sélectionner un élément dans le navigateur intégré et l’inspecteur de Page i...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -202,7 +202,7 @@ Maintenant modifiez la valeur de `background-color` « rouge ». La modificati
 
 L’éditeur de CSS dans Visual Studio 2012 a un sélecteur de couleurs qui permet de facilement choisir et insérer des couleurs. Le sélecteur de couleurs inclut une palette standard de couleurs, prend en charge les noms de couleurs standard, les codes de hachage, les couleurs RVB, RGBA, HSL et HSLA et conserve une liste des couleurs que vous avez utilisé le plus récemment dans le document.
 
-Dans la section précédente, vous avez modifié la valeur de la `background-color` propriété. Pour appeler le sélecteur de couleurs, placez le point d’insertion après le nom de la propriété et le type  **#**  ou **RVB (**.
+Dans la section précédente, vous avez modifié la valeur de la `background-color` propriété. Pour appeler le sélecteur de couleurs, placez le point d’insertion après le nom de la propriété et le type **#** ou **RVB (**.
 
 ![La barre de sélecteur de couleurs CSS](using-page-inspector-in-aspnet-mvc/_static/image36.png)
 

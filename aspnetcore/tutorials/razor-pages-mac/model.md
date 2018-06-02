@@ -1,23 +1,24 @@
 ---
-title: "Ajout d’un modèle à une application de pages Razor avec Visual Studio pour Mac"
+title: Ajouter un modèle à une application de pages Razor ASP.NET Core avec Visual Studio pour Mac
 author: rick-anderson
-description: "Ajout d’un modèle à une application de pages Razor dans ASP.NET Core à l’aide de Visual Studio pour Mac"
+description: Découvrez comment ajouter un modèle à une application de pages Razor dans ASP.NET Core à l’aide de Visual Studio pour Mac.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/model
-ms.openlocfilehash: b8e5d65e195f9824602ec15d05dc013faa2a8dc9
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 97bc9f14b8d6da958a7f587e54a37d2d0e0aabd4
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="adding-a-model-to-a-razor-pages-app-in-aspnet-core-with-visual-studio-for-mac"></a>Ajout d’un modèle à une application de pages Razor dans ASP.NET Core avec Visual Studio pour Mac
+# <a name="add-a-model-to-an-aspnet-core-razor-pages-app-with-visual-studio-for-mac"></a>Ajouter un modèle à une application de pages Razor ASP.NET Core avec Visual Studio pour Mac
 
-[!INCLUDE[model1](../../includes/RP/model1.md)]
+[!INCLUDE [model1](../../includes/RP/model1.md)]
 
 ## <a name="add-a-data-model"></a>Ajouter un modèle de données
 
@@ -29,10 +30,11 @@ ms.lasthandoff: 01/30/2018
   * Dans le volet central, sélectionnez **Classe vide**.
   * Nommez la classe **Movie**, puis sélectionnez **Nouveau**.
 
-[!INCLUDE[model 2](../../includes/RP/model2.md)]
-[!INCLUDE[model 2a](../../includes/RP/model2a.md)]
+[!INCLUDE [model 2](../../includes/RP/model2.md)]
 
-[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices2&highlight=3-6)]
+[!INCLUDE [model 2a](../../includes/RP/model2a.md)]
+
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices2&highlight=3-6)]
 
 Cliquez avec le bouton droit sur une ligne ondulée rouge, par exemple `MovieContext` à la ligne `services.AddDbContext<MovieContext>(options =>`. Sélectionnez **Correctif rapide > using RazorPagesMovie.Models;**. Visual Studio ajoute l’instruction using.
 
@@ -52,27 +54,28 @@ Pour modifier un fichier *.csproj* :
 
 ![Modifier le fichier csproj](model/csproj.png)
 
-Ajoutez la référence d’outil de `Microsoft.EntityFrameworkCore.Tools.DotNet` au deuxième **\<ItemGroup>** :
+Ajoutez la référence d’outil de `Microsoft.EntityFrameworkCore.Tools.DotNet` au deuxième **\<ItemGroup>**  :
 
-[!code-xml[Main](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
+[!code-xml[](../../tutorials/razor-pages/razor-pages-start/snapshot_cli_sample/RazorPagesMovie/RazorPagesMovie.cli.csproj?highlight=10)]
 
 Les numéros de version indiqués dans le code suivant étaient corrects au moment où ils ont été écrits.
 
-[!INCLUDE[model3](../../includes/RP/model3.md)]
-[!INCLUDE[model 4x](../../includes/RP/model4x.md)]
+[!INCLUDE [model3](../../includes/RP/model3.md)]
 
-[!INCLUDE[model 4 exit](../../includes/RP/model4exit.md)]
+[!INCLUDE [model 4x](../../includes/RP/model4x.md)]
 
-[!INCLUDE[model 4](../../includes/RP/model4.md)]
+[!INCLUDE [model 4 exit](../../includes/RP/model4exit.md)]
+
+[!INCLUDE [model 4](../../includes/RP/model4.md)]
 
 ### <a name="add-the-pagesmovies-files-to-the-project"></a>Ajouter les fichiers Pages/Movies au projet
 
 * Dans Visual Studio, cliquez avec le bouton droit sur le dossier *Pages*, puis sélectionnez **Ajouter > Ajouter un dossier existant**.
 * Sélectionnez le dossier *Movies*.
-* Dans la boîte de dialogue *Choisir les fichiers à inclure dans le projet*, sélectionnez **Inclure tout**.
+* Dans la boîte de dialogue *Choisir les fichiers à inclure dans le projet*, sélectionnez **Tout inclure**.
 
 Le prochain didacticiel décrit les fichiers créés par la génération de modèles automatique.
 
->[!div class="step-by-step"]
-[Précédent : Bien démarrer](xref:tutorials/razor-pages-mac/razor-pages-start)
-[Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages-mac/page)
+> [!div class="step-by-step"]
+> [Précédent : Bien démarrer](xref:tutorials/razor-pages-mac/razor-pages-start)
+> [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages-mac/page)

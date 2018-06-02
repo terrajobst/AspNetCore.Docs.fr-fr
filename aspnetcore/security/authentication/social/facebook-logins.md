@@ -1,7 +1,7 @@
 ---
-title: "Programme d’installation de Facebook connexion externe dans ASP.NET Core"
+title: Programme d’installation de Facebook connexion externe dans ASP.NET Core
 author: rick-anderson
-description: "Ce didacticiel illustre l’intégration de l’authentification d’utilisateur de compte Facebook dans une application ASP.NET Core existante."
+description: Ce didacticiel illustre l’intégration de l’authentification d’utilisateur de compte Facebook dans une application ASP.NET Core existante.
 manager: wpickett
 ms.author: riande
 ms.date: 08/01/2017
@@ -9,21 +9,22 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 283de1df68c45fa1b41ed75710fe9eb7925f815f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: cabb5acc6e593c02c20b3403b39c601ce26a4d99
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34688981"
 ---
-# <a name="configuring-facebook-authentication"></a>Configuration de l’authentification Facebook
+# <a name="facebook-external-login-setup-in-aspnet-core"></a>Programme d’installation de Facebook connexion externe dans ASP.NET Core
 
 Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce didacticiel vous montre comment permettre aux utilisateurs de se connecter avec leur compte Facebook à l’aide d’un exemple de projet ASP.NET Core 2.0 créé sur le [page précédente](index.md). Nous commençons par créer un ID d’application Facebook en suivant le [étapes officiels](https://developers.facebook.com).
+Ce didacticiel vous montre comment permettre aux utilisateurs de se connecter avec leur compte Facebook à l’aide d’un exemple de projet ASP.NET Core 2.0 créé sur le [page précédente](xref:security/authentication/social/index). L’authentification Facebook requiert le [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) package NuGet. Nous commençons par créer un ID d’application Facebook en suivant le [étapes officiels](https://developers.facebook.com).
 
 ## <a name="create-the-app-in-facebook"></a>Créer l’application en Facebook
 
-*  Accédez à la [aux développeurs de Facebook application](https://developers.facebook.com/apps/) page et vous connecter. Si vous n’avez pas déjà un compte Facebook, utilisez le **souscrire à Facebook** sur la page de connexion pour créer un lien.
+* Accédez à la [aux développeurs de Facebook application](https://developers.facebook.com/apps/) page et vous connecter. Si vous n’avez pas déjà un compte Facebook, utilisez le **souscrire à Facebook** sur la page de connexion pour créer un lien.
 
 * Appuyez sur la **ajouter une nouvelle application** bouton dans le coin supérieur droit pour créer un nouvel ID d’application.
 
@@ -36,7 +37,7 @@ Ce didacticiel vous montre comment permettre aux utilisateurs de se connecter av
 * Sur le **sélectionner un produit** , cliquez sur **Set Up** sur la **connexion Facebook** carte.
 
    ![Page de configuration de produit](index/_static/FBProductSetup.png)
-  
+
 * Le **Quickstart** Assistant lancera avec **choisir une plate-forme** en tant que la première page. Ignorer l’Assistant pour l’instant, en cliquant sur le **paramètres** lien dans le menu de gauche :
 
    ![Démarrage rapide de Skip](index/_static/FBSkipQuickStart.png)
@@ -70,7 +71,7 @@ dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 
 ## <a name="configure-facebook-authentication"></a>Configurer l’authentification Facebook
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 Ajoutez le service de Facebook dans le `ConfigureServices` méthode dans le *Startup.cs* fichier :
 
@@ -86,9 +87,11 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 });
 ```
 
-[!INCLUDE[default settings configuration](includes/default-settings.md)]
+[!INCLUDE [default settings configuration](includes/default-settings.md)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+[!INCLUDE[](~/includes/chain-auth-providers.md)]
+
+# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
 Installer le [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) package.
 
@@ -109,7 +112,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 ---
 
-Consultez le [FacebookOptions](https://docs.microsoft.com/aspnet/core/api/microsoft.aspnetcore.builder.facebookoptions) référence des API pour plus d’informations sur les options de configuration prises en charge par l’authentification Facebook. Options de configuration peuvent être utilisées pour :
+Consultez le [FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebookoptions) référence des API pour plus d’informations sur les options de configuration prises en charge par l’authentification Facebook. Options de configuration peuvent être utilisées pour :
 
 * Demander des informations différentes sur l’utilisateur.
 * Ajoutez des arguments de chaîne de requête pour personnaliser l’expérience de connexion.
@@ -141,7 +144,7 @@ Vous êtes désormais connecté à l’aide de vos informations d’identificati
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-* Cet article a montré comment vous pouvez vous authentifier avec Facebook. Vous pouvez suivre une approche similaire pour s’authentifier auprès d’autres fournisseurs répertoriés sur le [page précédente](index.md).
+* Cet article a montré comment vous pouvez vous authentifier avec Facebook. Vous pouvez suivre une approche similaire pour s’authentifier auprès d’autres fournisseurs répertoriés sur le [page précédente](xref:security/authentication/social/index).
 
 * Une fois que vous publiez votre site web à l’application web Azure, vous devez réinitialiser le `AppSecret` dans le portail des développeurs Facebook.
 

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2
-title: "Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 2 | Documents Microsoft"
+title: Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 2 | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-2
 msc.type: authoredcontent
-ms.openlocfilehash: a549bd62bd78573c368784fd1529a830e009b0d4
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: a6c95a92aa77e2bb73aa513a207e0469d1aedbd2
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-2"></a>Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 les Web Forms ASP.NET - partie 2
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide de l’Entity Framework 4.0 et Visual Studio 2010. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](the-entity-framework-and-aspnet-getting-started-part-1.md)
 
@@ -249,6 +249,6 @@ Exécutez la page, et vous pouvez sélectionner un service dans la liste déroul
 
 Cette étape termine l’introduction à l’utilisation de la `EntityDataSource` contrôle. Utilisation de ce contrôle est généralement pas différente de fonctionner avec d’autres données d’ASP.NET, les contrôles de source, sauf que vous référencez des entités et des propriétés au lieu de tables et colonnes. La seule exception est lorsque vous souhaitez accéder aux propriétés de navigation. Dans l’étape suivante du didacticiel, vous verrez que la syntaxe que vous utilisez avec `EntityDataSource` contrôle peut-être également différer des autres contrôles de source de données lorsque vous filtrez, regrouper et trier les données.
 
->[!div class="step-by-step"]
-[Précédent](the-entity-framework-and-aspnet-getting-started-part-1.md)
-[Suivant](the-entity-framework-and-aspnet-getting-started-part-3.md)
+> [!div class="step-by-step"]
+> [Précédent](the-entity-framework-and-aspnet-getting-started-part-1.md)
+> [Suivant](the-entity-framework-and-aspnet-getting-started-part-3.md)

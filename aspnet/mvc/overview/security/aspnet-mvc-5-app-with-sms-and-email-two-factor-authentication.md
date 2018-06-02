@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication
-title: "Application ASP.NET MVC 5 avec SMS et l’authentification à deux facteurs de messagerie | Documents Microsoft"
+title: Application ASP.NET MVC 5 avec SMS et l’authentification à deux facteurs de messagerie | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel vous montre comment créer une application de web ASP.NET MVC 5 avec l’authentification à deux facteurs. Vous devez exécuter l’application web de créer un sécurisé ASP.NET MVC 5 avec..."
+description: Ce didacticiel vous montre comment créer une application de web ASP.NET MVC 5 avec l’authentification à deux facteurs. Vous devez exécuter l’application web de créer un sécurisé ASP.NET MVC 5 avec...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/20/2015
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication
 msc.type: authoredcontent
-ms.openlocfilehash: d6bc92f3cbe6b61332e33e8a507b4516bf5c15a5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5e1c54b3901f2c8c85134445c1fa91ee9f2e0d59
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication"></a>Application ASP.NET MVC 5 avec SMS et par courrier électronique d’authentification à deux facteurs
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Ce didacticiel vous montre comment créer une application de web ASP.NET MVC 5 avec l’authentification à deux facteurs. Vous devez effectuer [créer une application de web ASP.NET MVC 5 sécurisée avec se connectent, réinitialisation de confirmation et le mot de passe de messagerie](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md) avant de continuer. Vous pouvez télécharger l’application terminée [ici](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952). Le téléchargement contient les programmes d’assistance de débogage qui vous permettent de tester une confirmation par courrier électronique et SMS sans configurer d’un courrier électronique ou le fournisseur SMS.
 > 
@@ -53,44 +53,44 @@ Ce didacticiel fournit des instructions relatives à l’aide de Twilio ou ASPSM
 
 1. **Création d’un compte d’utilisateur avec un fournisseur SMS**  
   
- Créer un [Twilio](https://www.twilio.com/try-twilio) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/testcredits/) compte.
+   Créer un [Twilio](https://www.twilio.com/try-twilio) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/testcredits/) compte.
 2. **Installation de packages supplémentaires ou l’ajout de références de service**  
   
- Twilio :  
- Dans la Console du Gestionnaire de Package, entrez la commande suivante :  
+   Twilio :  
+   Dans la Console du Gestionnaire de Package, entrez la commande suivante :  
     `Install-Package Twilio`  
   
- ASPSMS :  
- La référence de service suivant doit être ajouté :  
+   ASPSMS :  
+   La référence de service suivant doit être ajouté :  
   
     ![](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication/_static/image2.png)  
   
- Adresse :  
+   Adresse :  
     `https://webservice.aspsms.com/aspsmsx2.asmx?WSDL`  
   
- Espace de noms :  
+   Espace de noms :  
     `ASPSMSX2`
 3. **Déterminer les informations d’identification de l’utilisateur du fournisseur SMS**  
   
- Twilio :  
- À partir de la **tableau de bord** onglet de votre compte Twilio, copie le **SID de compte** et **Auth jeton**.  
+   Twilio :  
+   À partir de la **tableau de bord** onglet de votre compte Twilio, copie le **SID de compte** et **Auth jeton**.  
   
- ASPSMS :  
- À partir des paramètres de votre compte, accédez à **clé d’utilisateur a** et copiez-le avec votre définis par l’utilisateur **mot de passe**.  
+   ASPSMS :  
+   À partir des paramètres de votre compte, accédez à **clé d’utilisateur a** et copiez-le avec votre définis par l’utilisateur **mot de passe**.  
   
- Nous allons stocker ultérieurement ces valeurs dans le *web.config* fichier dans les clés de `"SMSAccountIdentification"` et `"SMSAccountPassword"` .
+   Nous allons stocker ultérieurement ces valeurs dans le *web.config* fichier dans les clés de `"SMSAccountIdentification"` et `"SMSAccountPassword"` .
 4. **Spécifiant l’ID d’expéditeur / donneur d’ordre**  
   
- Twilio :  
- À partir de la **numéros** , onglet de la copie de votre numéro de téléphone Twilio.  
+   Twilio :  
+   À partir de la **numéros** , onglet de la copie de votre numéro de téléphone Twilio.  
   
- ASPSMS :  
- Dans le **déverrouiller les expéditeurs** déverrouiller un ou plusieurs expéditeurs de Menu, ou choisissez un donneur d’ordre alphanumérique (non pris en charge par tous les réseaux).  
+   ASPSMS :  
+   Dans le **déverrouiller les expéditeurs** déverrouiller un ou plusieurs expéditeurs de Menu, ou choisissez un donneur d’ordre alphanumérique (non pris en charge par tous les réseaux).  
   
- Nous allons stocker ultérieurement cette valeur dans la *web.config* fichier au sein de la clé `"SMSAccountFrom"` .
+   Nous allons stocker ultérieurement cette valeur dans la *web.config* fichier au sein de la clé `"SMSAccountFrom"` .
 5. **Transfert des informations d’identification du fournisseur SMS dans l’application**  
   
- Vérifiez les informations d’identification et le numéro de téléphone de l’expéditeur disponible à l’application. Pour simplifier les choses, nous allons stocker ces valeurs dans le *web.config* fichier. Lorsque nous déployez dans Azure, nous pouvons stocker les valeurs de manière sécurisée dans le **paramètres de l’application** section sur le site web de l’onglet Configurer. 
+   Vérifiez les informations d’identification et le numéro de téléphone de l’expéditeur disponible à l’application. Pour simplifier les choses, nous allons stocker ces valeurs dans le *web.config* fichier. Lorsque nous déployez dans Azure, nous pouvons stocker les valeurs de manière sécurisée dans le **paramètres de l’application** section sur le site web de l’onglet Configurer. 
 
     [!code-xml[Main](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication/samples/sample1.xml?highlight=8-10)]
 
@@ -98,9 +98,9 @@ Ce didacticiel fournit des instructions relatives à l’aide de Twilio ou ASPSM
     > Sécurité - magasin jamais des données sensibles dans votre code source. Le compte et les informations d’identification sont ajoutées au code ci-dessus pour simplifier l’exemple. Consultez [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
 6. **Implémentation du transfert de données au fournisseur SMS**  
   
- Configurer le `SmsService` classe dans le *application\_Start\IdentityConfig.cs* fichier.  
+   Configurer le `SmsService` classe dans le *application\_Start\IdentityConfig.cs* fichier.  
   
- Selon le fournisseur SMS utilisé activer soit le **Twilio** ou **ASPSMS** section : 
+   Selon le fournisseur SMS utilisé activer soit le **Twilio** ou **ASPSMS** section : 
 
     [!code-csharp[Main](aspnet-mvc-5-app-with-sms-and-email-two-factor-authentication/samples/sample2.cs)]
 7. Mise à jour la *Views\Manage\Index.cshtml* vue Razor : (Remarque : ne pas simplement supprimer les commentaires dans le code de sortie, utilisez le code ci-dessous.)  

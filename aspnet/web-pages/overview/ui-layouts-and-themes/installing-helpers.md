@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/installing-helpers
-title: "L’installation d’un programme d’assistance dans une application Web Pages (Razor) Site | Documents Microsoft"
+title: L’installation d’un programme d’assistance dans une application Web Pages (Razor) Site | Documents Microsoft
 author: tfitzmac
-description: "Cet article décrit comment installer un programme d’assistance dans un site Web ASP.NET Web Pages (Razor). Un programme d’assistance est un composant réutilisable qui inclut le code et le balisage pour par..."
+description: Cet article décrit comment installer un programme d’assistance dans un site Web ASP.NET Web Pages (Razor). Un programme d’assistance est un composant réutilisable qui inclut le code et le balisage pour par...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-webpages
 ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/installing-helpers
 msc.type: authoredcontent
-ms.openlocfilehash: 842c5a56d14314217c1e6ad6d48ded28d3cc5b4e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 766fbb87ae8bcb8917eb8fa7f552c00792242cf6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a>L’installation d’un programme d’assistance dans un Site de Pages (Razor) Web ASP.NET
 ====================
@@ -49,10 +49,10 @@ Les Pages Web ASP.NET a plusieurs programmes d’assistance intégrées. Toutefo
 2. Cela lance le Gestionnaire de package NuGet et affiche les packages disponibles. Dans la zone de recherche, entrez un mot clé pour l’application d’assistance que vous souhaitez installer.
 
     ![Boîte de dialogue de la galerie NuGet dans WebMatrix](installing-helpers/_static/image2.png)
-- Sélectionnez le package, puis cliquez **installer**. Cliquez sur **Oui** lorsque vous êtes invité à installer le package et d’indiquer que vous acceptez les termes du contrat.
+3. Sélectionnez le package, puis cliquez **installer**. Cliquez sur **Oui** lorsque vous êtes invité à installer le package et d’indiquer que vous acceptez les termes du contrat.
 
-    S’il s’agit de la première fois que vous avez installé une application d’assistance, NuGet crée des dossiers dans votre site Web pour le code de l’application d’assistance.
-- Pour désinstaller un programme d’assistance, cliquez sur le **galerie** , sur le **installé** onglet et sélectionnez le package que vous souhaitez désinstaller.
+     S’il s’agit de la première fois que vous avez installé une application d’assistance, NuGet crée des dossiers dans votre site Web pour le code de l’application d’assistance.
+4. Pour désinstaller un programme d’assistance, cliquez sur le **galerie** , sur le **installé** onglet et sélectionnez le package que vous souhaitez désinstaller.
 
 ## <a name="installing-the-twitter-helper"></a>L’installation de l’application auxiliaire Twitter
 

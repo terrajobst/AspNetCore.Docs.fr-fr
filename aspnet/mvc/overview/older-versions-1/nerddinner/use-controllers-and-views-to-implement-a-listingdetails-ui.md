@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
-title: "Utiliser des contrôleurs et vues pour implémenter une interface utilisateur/détails de l’annonce | Documents Microsoft"
+title: Utiliser des contrôleurs et vues pour implémenter une interface utilisateur/détails de l’annonce | Documents Microsoft
 author: microsoft
-description: "Étape 4 montre comment ajouter un contrôleur à l’application qui tire parti de notre modèle pour fournir aux utilisateurs une expérience de navigation de référencement/données..."
+description: Étape 4 montre comment ajouter un contrôleur à l’application qui tire parti de notre modèle pour fournir aux utilisateurs une expérience de navigation de référencement/données...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 2f9148a2d419863229e2c5a2a0c98984001fcee5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ac3568941eeef24bd9857c5787471aadea15fc7f
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>Utiliser des contrôleurs et vues pour implémenter une interface utilisateur/détails de l’annonce
 ====================
@@ -62,7 +62,7 @@ Vous souhaitez activer à l’aide de notre application pour parcourir une liste
 | **URL** | **Fonction** |
 | --- | --- |
 | */Dinners/* | Afficher une liste HTML de préparés à venir |
-| */Dinners/détails / [id]* | Afficher des détails sur un dîner spécifique indiqué par un paramètre « id » incorporé dans l’URL qui correspond à la DinnerID du dîner dans la base de données. Par exemple : /Dinners/Details/2 affiche une page HTML avec des détails sur le dîner DinnerID dont la valeur est 2. |
+| */Dinners/Details/[id]* | Afficher des détails sur un dîner spécifique indiqué par un paramètre « id » incorporé dans l’URL qui correspond à la DinnerID du dîner dans la base de données. Par exemple : /Dinners/Details/2 affiche une page HTML avec des détails sur le dîner DinnerID dont la valeur est 2. |
 
 Nous publierons implémentations initiales de ces URL en ajoutant deux public « méthodes d’action » à la classe DinnersController comme ci-dessous :
 
@@ -92,14 +92,14 @@ Les règles de routage ASP.NET MVC par défaut sont enregistrés dans la méthod
 
 Les itinéraires ». MapRoute() » appel de méthode ci-dessus enregistre une règle de routage par défaut qui mappe les URL entrantes aux classes de contrôleur à l’aide du format d’URL : » / {controller} / {action} / {id} », où « contrôleur » est le nom de la classe de contrôleur à instancier, « action » est le nom d’un une méthode publique à appeler sur et « id » est un paramètre facultatif est incorporé dans l’URL qui peut être passé en tant qu’argument à la méthode. Le troisième paramètre passé à l’appel de méthode « MapRoute() » est un ensemble de valeurs par défaut à utiliser pour les valeurs de contrôleur / / id d’action dans le cas où elles ne sont pas présentes dans l’URL (contrôleur = « Home », Action = « Index », Id = « »).
 
-Voici une table qui montre comment une variété d’URL sont mappées à l’aide de la valeur par défaut «*/ {contrôleurs} / {action} / {id} »*règle de routage :
+Voici une table qui montre comment une variété d’URL sont mappées à l’aide de la valeur par défaut «<em>/ {contrôleurs} / {action} / {id} »</em>règle de routage :
 
 | **URL** | **Classe de contrôleur** | **Méthode d’action** | **Paramètres passés** |
 | --- | --- | --- | --- |
-| */ Préparés/détails/2* | DinnersController | Details(ID) | ID = 2 |
-| */ Préparés/modifier/5* | DinnersController | Edit(ID) | ID = 5 |
-| */ Préparés/créer* | DinnersController | Create() | N/A |
-| */ Préparés* | DinnersController | Index() | N/A |
+| */Dinners/Details/2* | DinnersController | Details(ID) | id=2 |
+| */Dinners/Edit/5* | DinnersController | Edit(ID) | id=5 |
+| */Dinners/Create* | DinnersController | Create() | N/A |
+| */Dinners* | DinnersController | Index() | N/A |
 | */ Home* | HomeController | Index() | N/A |
 | */* | HomeController | Index() | N/A |
 
@@ -301,6 +301,6 @@ Nous disposons désormais d’une jolie Dinner construit l’expérience de navi
 
 Nous allons à présent activer édition prise en charge du formulaire de données CRUD (création, lecture, mise à jour, suppression).
 
->[!div class="step-by-step"]
-[Précédent](build-a-model-with-business-rule-validations.md)
-[Suivant](provide-crud-create-read-update-delete-data-form-entry-support.md)
+> [!div class="step-by-step"]
+> [Précédent](build-a-model-with-business-rule-validations.md)
+> [Suivant](provide-crud-create-read-update-delete-data-form-entry-support.md)

@@ -1,21 +1,22 @@
 ---
-title: "Créer une API web avec ASP.NET Core et Visual Studio pour Windows"
+title: Créer une API web avec ASP.NET Core et Visual Studio pour Windows
 author: rick-anderson
-description: "Générer une API web avec ASP.NET Core MVC et Visual Studio pour Windows"
+description: Générer une API web avec ASP.NET Core MVC et Visual Studio pour Windows
 manager: wpickett
 ms.author: riande
-ms.date: 08/15/2017
+ms.custom: mvc
+ms.date: 05/17/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1146132693681eca8f92beb00ebabd7296534688
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 1680d5e0be0f4844c904d923af30634c53bd1b81
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/18/2018
 ---
-#<a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>Créer une API web avec ASP.NET Core et Visual Studio pour Windows
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio-for-windows"></a>Créer une API web avec ASP.NET Core et Visual Studio pour Windows
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Mike Wasson](https://github.com/mikewasson)
 
@@ -33,43 +34,40 @@ Il existe trois versions de ce didacticiel :
 
 ## <a name="prerequisites"></a>Prérequis
 
-[!INCLUDE[install 2.0](../includes/install2.0.md)]
-
-Consultez [ce fichier PDF](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/first-web-api/_static/_webAPI.pdf) pour la version ASP.NET Core 1.1.
+[!INCLUDE[](~/includes/net-core-prereqs-windows.md)]
 
 ## <a name="create-the-project"></a>Créer le projet
 
-Dans Visual Studio, sélectionnez **Fichier** Menu > **Nouveau** > **Projet**.
+Suivez ces étapes dans Visual Studio :
 
-Sélectionnez le modèle de projet **Application web ASP.NET Core (.NET Core)**. Nommez le projet `TodoApi` et sélectionnez **OK**.
-
-![Boîte de dialogue Nouveau projet](first-web-api/_static/new-project.png)
-
-Dans la boîte de dialogue **Nouvelle application web ASP.NET Core - TodoApi**, sélectionnez le modèle **API web**. Sélectionnez **OK**. Ne sélectionnez **pas** **Activer la prise en charge de Docker**.
-
-![Boîte de dialogue Nouvelle application web ASP.NET avec modèle de projet API web sélectionné parmi les modèles ASP.NET Core](first-web-api/_static/web-api-project.png)
+* Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
+* Sélectionnez le modèle **Application web ASP.NET Core**. Nommez le projet *TodoApi*, puis cliquez sur **OK**.
+* Dans la boîte de dialogue **Nouvelle application web ASP.NET Core - TodoApi**, choisissez la version ASP.NET Core. Sélectionnez le modèle **API** et cliquez sur **OK**. Ne sélectionnez **pas** **Activer la prise en charge de Docker**.
 
 ### <a name="launch-the-app"></a>Lancer l’application
 
-Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application. Visual Studio lance un navigateur et accède à `http://localhost:port/api/values`, où *port* est un numéro de port choisi au hasard. Chrome, Microsoft Edge et Firefox affichent la sortie suivante :
+Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application. Visual Studio lance un navigateur et accède à `http://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire. Chrome, Microsoft Edge et Firefox affichent la sortie suivante :
 
-```
+```json
 ["value1","value2"]
 ```
+
+Si vous utilisez Internet Explorer, vous êtes invité à enregistrer un fichier *values.json*.
 
 ### <a name="add-a-model-class"></a>Ajouter une classe de modèle
 
 Un modèle est un objet qui représente les données de l’application. Dans le cas présent, le seul modèle est une tâche.
 
-Ajoutez un dossier nommé « Models ». Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
+Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet. Sélectionnez **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 
-Remarque : Les classes de modèles vont n’importe où dans le projet. Le dossier *Modèles* est utilisé par convention pour les classes de modèles.
+> [!NOTE]
+> Les classes de modèles vont n’importe où dans le projet. Le dossier *Models* est utilisé par convention pour les classes de modèles.
 
-Ajoutez une classe `TodoItem`. Cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**. Nommez la classe `TodoItem` et sélectionnez **Ajouter**.
+Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**. Nommez la classe *TodoItem* et cliquez sur **Ajouter**.
 
 Ajoutez le code suivant à la classe `TodoItem` :
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoItem.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoItem.cs)]
 
 La base de données génère la valeur `Id` quand un `TodoItem` est créé.
 
@@ -77,17 +75,17 @@ La base de données génère la valeur `Id` quand un `TodoItem` est créé.
 
 Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données spécifié. Cette classe est créée en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`.
 
-Ajoutez une classe `TodoContext`. Cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**. Nommez la classe `TodoContext` et sélectionnez **Ajouter**.
+Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**. Nommez la classe *TodoContext* et cliquez sur **Ajouter**.
 
 Remplacez la classe par le code suivant :
 
-[!code-csharp[Main](first-web-api/sample/TodoApi/Models/TodoContext.cs)]
+[!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
 [!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
 
 ### <a name="add-a-controller"></a>Ajouter un contrôleur
 
-Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Contrôleurs*. Sélectionnez **Ajouter** > **Nouvel élément**. Dans la boîte de dialogue **Ajouter un nouvel élément**, sélectionnez le modèle **Classe de contrôleur des API web**. Nommez la classe `TodoController`.
+Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Contrôleurs*. Sélectionnez **Ajouter** > **Nouvel élément**. Dans la boîte de dialogue **Ajouter un nouvel élément**, sélectionnez le modèle **Classe de contrôleur d’API**. Nommez la classe *TodoController* et cliquez sur **Ajouter**.
 
 ![Boîte de dialogue Ajouter un nouvel élément avec contrôleur dans la zone de recherche et le contrôleur des API web sélectionné](first-web-api/_static/new_controller.png)
 
@@ -97,9 +95,10 @@ Remplacez la classe par le code suivant :
 
 ### <a name="launch-the-app"></a>Lancer l’application
 
-Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application. Visual Studio lance un navigateur et accède à `http://localhost:port/api/values`, où *port* est un numéro de port choisi au hasard. Accédez au contrôleur `Todo` à l’adresse `http://localhost:port/api/todo`.
+Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application. Visual Studio lance un navigateur et accède à `http://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire. Accédez au contrôleur `Todo` à l’adresse `http://localhost:<port>/api/todo`.
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 
-[!INCLUDE[next steps](../includes/webApi/next.md)]
+[!INCLUDE[jQuery](../includes/webApi/add-jquery.md)]
 
+[!INCLUDE[next steps](../includes/webApi/next.md)]

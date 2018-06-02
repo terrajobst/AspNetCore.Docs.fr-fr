@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-controller
-title: "Ajout d’un contrôleur (VB) | Documents Microsoft"
+title: Ajout d’un contrôleur (VB) | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 74113d76a74b1da27a7f9a33a13038a0c36ad036
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 9a433083c31c7929f7599e52800c887f301d7727
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-controller-vb"></a>Ajout d’un contrôleur (VB)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est une version gratuite de Microsoft Visual Studio. Avant de commencer, assurez-vous que vous avez installé les composants requis répertoriés ci-dessous. Vous pouvez installer tous les en cliquant sur le lien suivant : [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Vous pouvez également installer individuellement les conditions préalables à l’aide des liens suivants :
 > 
@@ -79,6 +79,6 @@ Exécuter votre application et accédez à `http://localhost:xxxx/HelloWorld/Wel
 
 Dans ces deux exemples le contrôleur a fait la partie VC de MVC, qui est le travail de la vue et contrôleur. Le contrôleur retourne HTML directement. En général, nous ne voulons contrôleurs renvoyant du HTML directement, étant donné que qui devient très lourde au code. Au lieu de cela, nous allons utiliser généralement un fichier de modèle de vue séparé afin de générer la réponse HTML. Voyons comment nous pouvons faire cela.
 
->[!div class="step-by-step"]
-[Précédent](intro-to-aspnet-mvc-3.md)
-[Suivant](adding-a-view.md)
+> [!div class="step-by-step"]
+> [Précédent](intro-to-aspnet-mvc-3.md)
+> [Suivant](adding-a-view.md)

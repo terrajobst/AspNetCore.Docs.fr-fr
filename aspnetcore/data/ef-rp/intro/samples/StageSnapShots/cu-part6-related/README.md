@@ -1,5 +1,5 @@
-La version finale... /CU et... /cuFinal contenir plus de code terminé.
+Les versions finales dans ../cu et ../cuFinal contiennent un code plus complet.
 
-Wwwroot copie à partir de... /CU/ ou à partir d’un nouveau projet de Pages Razor.
+Copiez wwwroot depuis ../cu/ ou depuis un nouveau projet Pages Razor.
 
 Exécutez `dotnet ef database update`.

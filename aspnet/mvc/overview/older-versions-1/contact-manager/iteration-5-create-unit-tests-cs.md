@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-cs
-title: "Les tests unitaires de créer l’itération #5 – (c#) | Documents Microsoft"
+title: 'Les tests unitaires de créer l’itération #5 – (c#) | Documents Microsoft'
 author: microsoft
-description: "Dans l’itération cinquième, nous faciliter notre application mettre à jour et modifier en ajoutant les tests unitaires. Nous simuler nos classes de modèle de données et générer des tests unitaires pour o..."
+description: Dans l’itération cinquième, nous faciliter notre application mettre à jour et modifier en ajoutant les tests unitaires. Nous simuler nos classes de modèle de données et générer des tests unitaires pour o...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-5-create-unit-tests-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f9b2d05ec8756d68f6bd2f387c85faf03abd167e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7a61b5791a40088df9d27f7b1bd37df1831ef22b
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-5--create-unit-tests-c"></a>Itération #5 : créer des tests unitaires (c#)
 ====================
@@ -105,9 +105,9 @@ Par exemple, vous pouvez utiliser une infrastructure de simuler un objet pour g�
 
 Visual Studio n’inclut pas d’une infrastructure de simuler un objet. Toutefois, il existe plusieurs infrastructures de simuler un objet commerciales et open source pour le .NET framework :
 
-1. Moq - cette infrastructure est disponible sous licence BSD open source. Vous pouvez télécharger Moq de [https://code.google.com/p/moq/](https://code.google.com/p/moq/).
-2. Rhino Mocks, cette infrastructure est disponible sous licence BSD open source. Vous pouvez télécharger Rhino Mocks de [http://ayende.com/projects/rhino-mocks.aspx](http://ayende.com/projects/rhino-mocks.aspx).
-3. Typemock isolant - il s’agit d’un cadre commercial. Vous pouvez télécharger une version d’évaluation de [http://www.typemock.com/](http://www.typemock.com/).
+1. Moq - cette infrastructure est disponible sous licence BSD open source. Vous pouvez télécharger Moq de [ https://code.google.com/p/moq/ ](https://code.google.com/p/moq/).
+2. Rhino Mocks, cette infrastructure est disponible sous licence BSD open source. Vous pouvez télécharger Rhino Mocks de [ http://ayende.com/projects/rhino-mocks.aspx ](http://ayende.com/projects/rhino-mocks.aspx).
+3. Typemock isolant - il s’agit d’un cadre commercial. Vous pouvez télécharger une version d’évaluation de [ http://www.typemock.com/ ](http://www.typemock.com/).
 
 Dans ce didacticiel, j’ai décidé d’utiliser Moq. Toutefois, vous pouvez utiliser tout aussi facilement Rhino Mocks ou isolant Typemock pour créer le fictifs objets pour l’application Gestionnaire de contacts.
 
@@ -158,7 +158,7 @@ Le premier test vérifie qu’un Contact valide ne génère pas d’une erreur d
 
 Le code pour ces tests est contenu dans la liste 1.
 
-**La liste 1 - Models\ContactManagerServiceTest.cs**
+**Listing 1 - Models\ContactManagerServiceTest.cs**
 
 [!code-csharp[Main](iteration-5-create-unit-tests-cs/samples/sample1.cs)]
 
@@ -231,7 +231,7 @@ Si vous n’êtes pas explicite lors du retour d’une vue de la propriété Vie
 
 [!code-csharp[Main](iteration-5-create-unit-tests-cs/samples/sample6.cs)]
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous avons créé des tests unitaires pour notre application Gestionnaire de contacts. Nous pouvons exécuter ces tests unitaires à tout moment pour vérifier que votre application se comporte toujours de la manière que nous espérons. Les tests unitaires agissent comme un filet de sécurité pour notre application nous permettant de modifier en toute sécurité de notre application à l’avenir.
 
@@ -239,6 +239,6 @@ Nous avons créé deux jeux de tests unitaires. Tout d’abord, nous avons test�
 
 Dans l’itération suivante, nous modifions l’application Gestionnaire de contacts afin qu’il prend en charge les groupes de Contact. Nous allons ajouter cette nouvelle fonctionnalité à notre application à l’aide d’un processus de conception de logiciel appelé développement piloté par test.
 
->[!div class="step-by-step"]
-[Précédent](iteration-4-make-the-application-loosely-coupled-cs.md)
-[Suivant](iteration-6-use-test-driven-development-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-4-make-the-application-loosely-coupled-cs.md)
+> [Suivant](iteration-6-use-test-driven-development-cs.md)

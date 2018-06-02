@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
-title: "Modèle de travail centré sur la file d’attente (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft"
+title: Modèle de travail centré sur la file d’attente (génération d’applications Cloud du monde réel avec Azure) | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2014
 ms.topic: article
 ms.assetid: cc1ad51b-40c3-4c68-8620-9aaa0fd1f6cf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
 msc.type: authoredcontent
-ms.openlocfilehash: ccfbaa26cbf610f847811e6f3c612458277046ed
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 124e673206ecea2eac5efb8c2802a32a690fa104
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="queue-centric-work-pattern-building-real-world-cloud-apps-with-azure"></a>Modèle de travail centré sur la file d’attente (génération d’applications Cloud du monde réel avec Azure)
 ====================
@@ -194,6 +194,6 @@ Vidéo :
 
 - [Prévention de défaillance : Création de Services de cloud computing évolutive et robuste](https://channel9.msdn.com/Series/FailSafe). Série de vidéos de neuf parties par Ulrich Homann, Marc Mercuri et Mark Simms. Présente les principaux concepts et les principes d’architecture de manière très accessible et intéressante, avec récits tirés de l’expérience de Microsoft Customer Advisory Team (CAT) avec des clients réels. Pour obtenir une présentation du service de stockage Azure et files d’attente, consultez épisode 5 en commençant à 35:13.
 
->[!div class="step-by-step"]
-[Précédent](distributed-caching.md)
-[Suivant](more-patterns-and-guidance.md)
+> [!div class="step-by-step"]
+> [Précédent](distributed-caching.md)
+> [Suivant](more-patterns-and-guidance.md)

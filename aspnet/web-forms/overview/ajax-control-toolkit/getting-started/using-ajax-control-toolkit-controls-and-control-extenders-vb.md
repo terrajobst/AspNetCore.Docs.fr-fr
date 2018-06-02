@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb
-title: "À l’aide de contrôles de boîte à outils de contrôle AJAX et extensions de contrôle (VB) | Documents Microsoft"
+title: À l’aide de contrôles de boîte à outils de contrôle AJAX et extensions de contrôle (VB) | Documents Microsoft
 author: microsoft
-description: "Découvrez comment ajouter des contrôles de boîte à outils de contrôle AJAX et aux extendeurs à vos pages ASP.NET."
+description: Découvrez comment ajouter des contrôles de boîte à outils de contrôle AJAX et aux extendeurs à vos pages ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7b248855a1b82f3e8f172b439ee36502f95a39ca
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 080dd65677d80fb75ab37a20f6c385a38af4e353
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-ajax-control-toolkit-controls-and-control-extenders-vb"></a>À l’aide de contrôles de boîte à outils de contrôle AJAX et extensions de contrôle (VB)
 ====================
@@ -106,6 +106,6 @@ Notez que vous normalement ne faites pas glisser un extendeur de contrôle sur u
 
 Un seul contrôle ASP.NET peut être étendu par plusieurs systèmes de contrôle. La feuille de propriétés pour le contrôle en cours d’extension répertorie tous les extendeurs de contrôle associés au contrôle.
 
->[!div class="step-by-step"]
-[Précédent](get-started-with-the-ajax-control-toolkit-vb.md)
-[Suivant](creating-a-custom-ajax-control-toolkit-control-extender-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](get-started-with-the-ajax-control-toolkit-vb.md)
+> [Suivant](creating-a-custom-ajax-control-toolkit-control-extender-vb.md)

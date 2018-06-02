@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs
-title: "Configuration des paramètres de la couche d’accès aux données au niveau de la connexion et de la commande (c#) | Documents Microsoft"
+title: Configuration des paramètres de la couche d’accès aux données au niveau de la connexion et de la commande (c#) | Documents Microsoft
 author: rick-anderson
-description: "Les TableAdapters dans un DataSet typé prend automatiquement en charge de la connexion à la base de données, émettre des commandes et remplir un DataTable avec les résultats..."
+description: Les TableAdapters dans un DataSet typé prend automatiquement en charge de la connexion à la base de données, émettre des commandes et remplir un DataTable avec les résultats...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/03/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-cs
 msc.type: authoredcontent
-ms.openlocfilehash: be81bde63d66c3a7070f31be830f7d10ba3a5f8e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f5f221fd792956fc21cb6eb5834299d3c5bfa80d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="configuring-the-data-access-layers-connection--and-command-level-settings-c"></a>Configuration des paramètres de la couche d’accès aux données au niveau de la connexion et de la commande (c#)
 ====================
@@ -93,7 +93,7 @@ Comme indiqué dans le [création d’une couche d’accès aux données](../int
 
 ![Ajouter un sous-dossier nommé ConnectionAndCommandSettings](configuring-the-data-access-layer-s-connection-and-command-level-settings-cs/_static/image5.png)
 
-**Figure 3**: ajouter un sous-dossier nommé`ConnectionAndCommandSettings`
+**Figure 3**: ajouter un sous-dossier nommé `ConnectionAndCommandSettings`
 
 
 Ajouter un nouveau fichier de classe nommé `ProductsTableAdapter.ConnectionAndCommandSettings.cs` et entrez le code suivant :
@@ -169,12 +169,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Burnadette Leigh, S ren Jacob Lauritsen, Teresa Murphy et Hilton Geisenow. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](working-with-computed-columns-cs.md)
-[Suivant](protecting-connection-strings-and-other-configuration-information-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](working-with-computed-columns-cs.md)
+> [Suivant](protecting-connection-strings-and-other-configuration-information-cs.md)

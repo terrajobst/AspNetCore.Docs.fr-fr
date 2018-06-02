@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs
-title: "Remplissage dynamique d’un contrôle à l’aide de Code JavaScript (c#) | Documents Microsoft"
+title: Remplissage dynamique d’un contrôle à l’aide de Code JavaScript (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t..."
+description: Le contrôle DynamicPopulate dans les outils de contrôle ASP.NET AJAX appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-using-javascript-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5b3b23e16f2e4dd26f50eb3e07f35d078dd19a19
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: c9fd11ea0348eb7fe9a7634f7b26031339146828
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="dynamically-populating-a-control-using-javascript-code-c"></a>Remplissage dynamique d’un contrôle à l’aide de Code JavaScript (c#)
 ====================
@@ -62,6 +62,6 @@ Notez que dans le contexte d’une case d’option, l’expression JavaScript `t
 
 Un clic sur le bouton récupère la date à partir du serveur, dans le format spécifié ([cliquez pour afficher l’image en taille réelle](dynamically-populating-a-control-using-javascript-code-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](dynamically-populating-a-control-cs.md)
-[Suivant](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](dynamically-populating-a-control-cs.md)
+> [Suivant](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)

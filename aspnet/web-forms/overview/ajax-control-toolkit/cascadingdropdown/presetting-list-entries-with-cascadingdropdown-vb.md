@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-vb
-title: "Prédéfinissez les entrées de la liste avec CascadingDropDown (VB) | Documents Microsoft"
+title: Prédéfinissez les entrées de la liste avec CascadingDropDown (VB) | Documents Microsoft
 author: wenz
-description: "Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth..."
+description: Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c28c7893c39d9ba9f828c34da7ffdce525ee248e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: f74e6ac80b756240870d9406a03db11c610093aa
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="presetting-list-entries-with-cascadingdropdown-vb"></a>Prédéfinissez les entrées de la liste avec CascadingDropDown (VB)
 ====================
@@ -60,6 +60,6 @@ Chargement de la page dans le navigateur remplit la liste déroulante avec trois
 
 La liste est remplie et présélectionnée automatiquement ([cliquez pour afficher l’image en taille réelle](presetting-list-entries-with-cascadingdropdown-vb/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](using-cascadingdropdown-with-a-database-vb.md)
-[Suivant](using-auto-postback-with-cascadingdropdown-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](using-cascadingdropdown-with-a-database-vb.md)
+> [Suivant](using-auto-postback-with-cascadingdropdown-vb.md)

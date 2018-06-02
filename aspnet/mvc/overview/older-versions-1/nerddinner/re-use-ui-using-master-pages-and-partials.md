@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
-title: "Réutilisation de l’interface utilisateur à l’aide de Pages maîtres et aucun | Documents Microsoft"
+title: Réutilisation de l’interface utilisateur à l’aide de Pages maîtres et aucun | Documents Microsoft
 author: microsoft
-description: "Étape 7 examine les méthodes que nous pouvons appliquer le principe de secs dans nos modèles de vue pour éliminer la duplication de code, à l’aide de pages maîtres et les modèles de vue partielle."
+description: Étape 7 examine les méthodes que nous pouvons appliquer le principe de secs dans nos modèles de vue pour éliminer la duplication de code, à l’aide de pages maîtres et les modèles de vue partielle.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/27/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/re-use-ui-using-master-pages-and-partials
 msc.type: authoredcontent
-ms.openlocfilehash: c42cd6aca40b08a9f8461532fbfd0589901b64ad
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ade655f3a4a429360b678d02fb564ac9cf255d42
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="re-use-ui-using-master-pages-and-partials"></a>Réutilisation de l’interface utilisateur à l’aide de Pages maîtres et aucun
 ====================
@@ -123,7 +123,7 @@ Nous allons mettre à jour section d’en-tête de notre Site.master afin que l�
 
 [!code-aspx[Main](re-use-ui-using-master-pages-and-partials/samples/sample7.aspx)]
 
-Lorsque nous enregistrez le fichier Site.master et actualiser notre navigateur nous verrons notre en-tête modifications afficher jusqu'à à toutes les vues dans une application. Exemple :
+Lorsque nous enregistrez le fichier Site.master et actualiser notre navigateur nous verrons notre en-tête modifications afficher jusqu'à à toutes les vues dans une application. Par exemple :
 
 ![](re-use-ui-using-master-pages-and-partials/_static/image6.png)
 
@@ -137,6 +137,6 @@ Aucun et les pages maîtres fournissent des options très flexibles qui vous per
 
 Nous allons maintenant revoir le scénario de liste que nous avons créé précédemment et activer la prise en charge de la pagination évolutive.
 
->[!div class="step-by-step"]
-[Précédent](use-viewdata-and-implement-viewmodel-classes.md)
-[Suivant](implement-efficient-data-paging.md)
+> [!div class="step-by-step"]
+> [Précédent](use-viewdata-and-implement-viewmodel-classes.md)
+> [Suivant](implement-efficient-data-paging.md)

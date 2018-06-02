@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb
-title: "Création d’une couche d’accès aux données (VB) | Documents Microsoft"
+title: Création d’une couche d’accès aux données (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel nous démarrer depuis le début et créer la couche DAL (Data Access), à l’aide de DataSets typés, accéder aux informations dans une base de données."
+description: Dans ce didacticiel nous démarrer depuis le début et créer la couche DAL (Data Access), à l’aide de DataSets typés, accéder aux informations dans une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/05/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ad578d5d5fb1ef0ac63d3cbde3f307535ea3d98c
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 5cf1a430d6fe94174a877beb04b930409bdbf084
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-data-access-layer-vb"></a>Création d’une couche d’accès aux données (Visual Basic)
 ====================
@@ -77,7 +77,7 @@ Lorsque vous travaillez avec une option de données consiste à incorporer la lo
 
 Tout le code qui est spécifique à la source de données sous-jacente telles que la création d’une connexion à la base de données émission `SELECT`, `INSERT`, `UPDATE`, et `DELETE` commandes et ainsi de suite doivent se trouver dans la couche DAL. La couche présentation ne doit pas contenir des références à ce code d’accès aux données, mais il doit effectuer à la place des appels dans la couche DAL pour les demandes de toutes les données. Les couches d’accès aux données contiennent généralement des méthodes pour accéder à la base de données sous-jacente. La base de données Northwind, par exemple, a `Products` et `Categories` les tables qui enregistrent les produits pour la vente et les catégories à laquelle ils appartiennent. Dans notre DAL, il nous faudra méthodes, telles que :
 
-- `GetCategories(),`qui retourne des informations sur toutes les catégories
+- `GetCategories(),` qui retourne des informations sur toutes les catégories
 - `GetProducts()`, qui retourne des informations sur tous les produits
 - `GetProductsByCategoryID(categoryID)`, qui retourne tous les produits qui appartiennent à une catégorie spécifiée
 - `GetProductByProductID(productID)`, qui retourne des informations sur un produit spécifique
@@ -403,48 +403,48 @@ Prenez quelques minutes pour créer des TableAdapters et les requêtes suivantes
 
 - **ProductsTableAdapter**
 
-    - **GetProducts**: 
+  - **GetProducts**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample10.sql)]
-    - **GetProductsByCategoryID**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample10.sql)]
+  - **GetProductsByCategoryID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample11.sql)]
-    - **GetProductsBySupplierID**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample11.sql)]
+  - **GetProductsBySupplierID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample12.sql)]
-    - **GetProductByProductID**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample12.sql)]
+  - **GetProductByProductID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample13.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample13.sql)]
 - **CategoriesTableAdapter**
 
-    - **GetCategories**: 
+  - **GetCategories**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample14.sql)]
-    - **GetCategoryByCategoryID**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample14.sql)]
+  - **GetCategoryByCategoryID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample15.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample15.sql)]
 - **SuppliersTableAdapter**
 
-    - **GetSuppliers**: 
+  - **GetSuppliers**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample16.sql)]
-    - **GetSuppliersByCountry**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample16.sql)]
+  - **GetSuppliersByCountry**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample17.sql)]
-    - **GetSupplierBySupplierID**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample17.sql)]
+  - **GetSupplierBySupplierID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample18.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample18.sql)]
 - **EmployeesTableAdapter**
 
-    - **GetEmployees**: 
+  - **GetEmployees**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample19.sql)]
-    - **GetEmployeesByManager**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample19.sql)]
+  - **GetEmployeesByManager**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample20.sql)]
-    - **GetEmployeeByEmployeeID**: 
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample20.sql)]
+  - **GetEmployeeByEmployeeID**: 
 
-        [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample21.sql)]
+      [!code-sql[Main](creating-a-data-access-layer-vb/samples/sample21.sql)]
 
 
 [![Le Concepteur de DataSet une fois que les quatre TableAdapters ont été ajoutés.](creating-a-data-access-layer-vb/_static/image84.png)](creating-a-data-access-layer-vb/_static/image83.png)
@@ -537,12 +537,12 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été Ron Green, Hilton Giesenow, Dennis Patterson, Liz Shulok, Abel Gomez et Carlos Santos. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](master-pages-and-site-navigation-cs.md)
-[Suivant](creating-a-business-logic-layer-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](master-pages-and-site-navigation-cs.md)
+> [Suivant](creating-a-business-logic-layer-vb.md)

@@ -1,23 +1,24 @@
 ---
-title: "Ajout d’un modèle à une application de pages Razor dans ASP.NET Core"
+title: Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 author: rick-anderson
-description: "Ajout d’un modèle à une application de pages Razor dans ASP.NET Core"
+description: Découvrez comment ajouter des classes pour gérer des films dans une base de données à l’aide d’Entity Framework Core (EF Core).
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 0ce7693bfdc37d930488304b329dbcd533a5ec1d
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 80b3aae661342ccde257805c370780cd6f5b4aa4
+ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 05/20/2018
 ---
-# <a name="adding-a-model-to-a-razor-pages-app"></a>Ajout d’un modèle à une application de pages Razor
+# <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
-[!INCLUDE[model1](../../includes/RP/model1.md)]
+[!INCLUDE [model1](../../includes/RP/model1.md)]
 
 ## <a name="add-a-data-model"></a>Ajouter un modèle de données
 
@@ -25,21 +26,21 @@ Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **
 
 Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :
 
-[!INCLUDE[model 2](../../includes/RP/model2.md)]
+[!INCLUDE [model 2](../../includes/RP/model2.md)]
 
 <a name="cs"></a>
 ### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
 
 Ajoutez une chaîne de connexion au fichier *appsettings.json*.
 
-[!code-json[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=8-10)]
+[!code-json[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=8-10)]
 
 <a name="reg"></a>
 ###  <a name="register-the-database-context"></a>Inscrire le contexte de base de données
 
-Inscrivez le contexte de base de données auprès du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) dans le fichier *Startup.cs*.
+Inscrivez le contexte de base de données auprès du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) dans la [méthode ConfigureServices de la classe Startup](xref:fundamentals/startup#the-startup-class) (*Startup.cs*) :
 
-[!code-csharp[Main](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
+[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
 
 Générez le projet pour vérifier qu’il ne comporte aucune erreur.
 
@@ -56,12 +57,20 @@ Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Con
 
   ![Menu Console du Gestionnaire de package](../first-mvc-app/adding-model/_static/pmc.png)
 
-Dans la console du gestionnaire de package, entrez les commandes suivantes :
+Dans la console du Gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
-Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
+Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design -Version 2.0.3
 Add-Migration Initial
 Update-Database
+```
+
+Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes :
+
+```console
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet ef migrations add Initial
+dotnet ef database update
 ```
 
 La commande `Install-Package` installe les outils nécessaires à l’exécution du moteur de génération de modèles automatique.
@@ -70,9 +79,9 @@ La commande `Add-Migration` génère le code nécessaire à la création du sch�
 
 La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/\<horodatage>_InitialCreate.cs*, ce qui entraîne la création de la base de données.
 
-[!INCLUDE[model 4windows](../../includes/RP/model4Win.md)]
+[!INCLUDE [model 4windows](../../includes/RP/model4Win.md)]
 
-[!INCLUDE[model 4](../../includes/RP/model4tbl.md)]
+[!INCLUDE [model 4](../../includes/RP/model4tbl.md)]
 
 <a name="test"></a>
 ### <a name="test-the-app"></a>Tester l’application
@@ -80,7 +89,7 @@ La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrati
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
 * Testez le lien **Créer**.
 
- ![Créer une page](../../tutorials/razor-pages/model/_static/conan.png)
+  ![Créer une page](../../tutorials/razor-pages/model/_static/conan.png)
 
 <a name="scaffold"></a>
 
@@ -90,6 +99,6 @@ Si vous obtenez une exception SQL, vérifiez que vous avez exécuté les migrati
 
 Le prochain didacticiel décrit les fichiers créés par la génération de modèles automatique.
 
->[!div class="step-by-step"]
-[Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
-[Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)    
+> [!div class="step-by-step"]
+> [Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
+> [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)    

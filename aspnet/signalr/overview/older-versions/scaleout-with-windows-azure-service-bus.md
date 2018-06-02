@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
-title: "Montée en charge SignalR avec Azure Service Bus (SignalR 1.x) | Documents Microsoft"
+title: Montée en charge SignalR avec Azure Service Bus (SignalR 1.x) | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/01/2013

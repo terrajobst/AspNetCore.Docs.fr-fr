@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb
-title: "Création de Tests unitaires pour les Applications ASP.NET MVC (VB) | Documents Microsoft"
+title: Création de Tests unitaires pour les Applications ASP.NET MVC (VB) | Documents Microsoft
 author: StephenWalther
-description: "Découvrez comment créer des tests unitaires pour les actions de contrôleur. Dans ce didacticiel, Stephen Walther montre comment tester si une action du contrôleur retourne une section..."
+description: Découvrez comment créer des tests unitaires pour les actions de contrôleur. Dans ce didacticiel, Stephen Walther montre comment tester si une action du contrôleur retourne une section...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/unit-testing/creating-unit-tests-for-asp-net-mvc-applications-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d92ee0c26787e5c482e8695001d8809d3ee9ee30
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 299665f45d72fee33f92344ed53c87dfb1a76d60
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-unit-tests-for-aspnet-mvc-applications-vb"></a>Création de Tests unitaires pour les Applications ASP.NET MVC (VB)
 ====================
@@ -33,7 +33,7 @@ L’objectif de ce didacticiel est d’illustrer le comment écrire des tests un
 
 Commençons par créer le contrôleur que nous voulons tester. Le nom du contrôleur, le `ProductController`, est contenue dans la liste 1.
 
-**La liste 1 :`ProductController.vb`**
+**La liste 1 : `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample1.vb)]
 
@@ -43,7 +43,7 @@ Le `ProductController` contient deux méthodes d’action `Index()` et `Details(
 
 Imaginez que vous voulez tester ou non la `ProductController` retourne la vue de droite. Nous voulons que quand le `ProductController.Details()` action est appelée, l’affichage des détails est retourné. La classe de test dans la liste 2 contienne un test unitaire pour tester la vue retournée par le `ProductController.Details()` action.
 
-**Liste 2 :`ProductControllerTest.vb`**
+**Liste 2 : `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample2.vb)]
 
@@ -74,11 +74,11 @@ Vous pouvez exécuter le test unitaire dans la liste 2 en entrant la combinaison
 
 ## <a name="testing-the-view-data-returned-by-a-controller"></a>La vue de données de test retourné par un contrôleur
 
-Contrôleur MVC transmet des données à une vue à l’aide d’un élément appelé  *`View Data`* . Par exemple, imaginez que vous souhaitez afficher les détails d’un produit particulier quand vous appelez le `ProductController Details()` action. Dans ce cas, vous pouvez créer une instance d’un `Product` classe (défini dans votre modèle) et passez l’instance à la `Details` vue en tirant parti des `View Data`.
+Contrôleur MVC transmet des données à une vue à l’aide d’un élément appelé *`View Data`*. Par exemple, imaginez que vous souhaitez afficher les détails d’un produit particulier quand vous appelez le `ProductController Details()` action. Dans ce cas, vous pouvez créer une instance d’un `Product` classe (défini dans votre modèle) et passez l’instance à la `Details` vue en tirant parti des `View Data`.
 
 Modifié `ProductController` dans la liste 3 inclut une mise à jour `Details()` action qui retourne un produit.
 
-**La liste 3 :`ProductController.vb`**
+**La liste 3 : `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample5.vb)]
 
@@ -86,7 +86,7 @@ Tout d’abord, le `Details()` action crée une nouvelle instance de la `Product
 
 Vous pouvez écrire des tests unitaires pour vérifier si les données attendues seront contenue dans la vue données. Le test unitaire dans les tests de liste 4 ou non un produit qui représente un ordinateur portable est retourné lorsque vous appelez le `ProductController Details()` méthode d’action.
 
-**La liste 4 –`ProductControllerTest.vb`**
+**La liste 4 – `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample6.vb)]
 
@@ -98,19 +98,19 @@ Une action de contrôleur plus complexe peut-être retourner différents types d
 
 Par exemple, la modification `Details()` action dans la liste 5 retourne le `Details` afficher quand vous passez un Id de produit valide à l’action. Si vous passez un produit non valide Id--un Id avec une valeur inférieure à 1, alors que vous êtes redirigé vers la `Index()` action.
 
-**La liste 5 :`ProductController.vb`**
+**La liste 5 : `ProductController.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample7.vb)]
 
 Vous pouvez tester le comportement de la `Details()` action avec le test unitaire dans la liste 6. Le test unitaire dans la liste 6 vérifie que vous êtes redirigé vers la `Index` afficher lorsqu’un Id avec la valeur -1 est passé à la `Details()` (méthode).
 
-**La liste 6 :`ProductControllerTest.vb`**
+**La liste 6 : `ProductControllerTest.vb`**
 
 [!code-vb[Main](creating-unit-tests-for-asp-net-mvc-applications-vb/samples/sample8.vb)]
 
 Lorsque vous appelez le `RedirectToAction()` méthode dans une action de contrôleur, l’action du contrôleur retourne un `RedirectToRouteResult`. Les contrôles de test si le `RedirectToRouteResult` redirige l’utilisateur à une action de contrôleur nommée `Index`.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez appris à créer des tests unitaires pour les actions de contrôleur MVC. Tout d’abord, vous avez appris comment vérifier si la vue de droite est retournée par une action de contrôleur. Vous avez appris à utiliser le `ViewResult.ViewName` propriété pour vérifier le nom d’une vue.
 
@@ -118,5 +118,5 @@ Ensuite, nous avons examiné comment vous pouvez tester le contenu de `View Data
 
 Enfin, nous avons expliqué comment vous pouvez tester si les différents types de résultats d’action sont renvoyées à partir d’une action du contrôleur. Vous avez appris comment tester si un contrôleur retourne un `ViewResult` ou `RedirectToRouteResult`.
 
->[!div class="step-by-step"]
-[Précédent](creating-unit-tests-for-asp-net-mvc-applications-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-unit-tests-for-asp-net-mvc-applications-cs.md)

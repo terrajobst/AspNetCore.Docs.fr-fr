@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
-title: "À l’aide de plusieurs contrôles de fenêtre contextuelle (c#) | Documents Microsoft"
+title: À l’aide de plusieurs contrôles de fenêtre contextuelle (c#) | Documents Microsoft
 author: wenz
-description: "L’extendeur PopupControl dans la boîte à outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Il est également possible d’utiliser m..."
+description: L’extendeur PopupControl dans la boîte à outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Il est également possible d’utiliser m...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d8c9742bb39b655115cb1862ff6e867989e63665
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7acd1b53e1b3e3e0d09d248b68941b166da3e81e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-multiple-popup-controls-c"></a>À l’aide de plusieurs contrôles de fenêtre contextuelle (c#)
 ====================
@@ -56,5 +56,5 @@ Maintenant lorsque vous cliquez dans un champ de texte, un calendrier s’affich
 
 Le calendrier s’affiche lorsque l’utilisateur clique dans la zone de texte ([cliquez pour afficher l’image en taille réelle](using-multiple-popup-controls-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Next](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)
+> [!div class="step-by-step"]
+> [Next](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)

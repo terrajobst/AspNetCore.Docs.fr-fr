@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-vb
-title: "Utilisation du contrôle de l’éditeur HTML (VB) | Documents Microsoft"
+title: Utilisation du contrôle de l’éditeur HTML (VB) | Microsoft Docs
 author: microsoft
-description: "HTMLEditor est un contrôle ASP.NET AJAX qui permet de facilement créer et modifier le contenu HTML via les boutons dans une barre d’outils."
+description: HTMLEditor est un contrôle ASP.NET AJAX qui permet de facilement créer et modifier le contenu HTML via les boutons dans une barre d’outils.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a34b3dd53f031856906eca923b6ad6f43a0aaecc
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 4833949a54fa9ae12eaf7b596a5fe1ddfd1f7b7a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="how-do-i-use-the-html-editor-control-vb"></a>Utilisation du contrôle de l’éditeur HTML (VB)
 ====================
@@ -59,7 +59,7 @@ Le contrôle de l’éditeur HTML se trouve dans la boîte à outils avec le res
 
 Une fois que vous faites glisser l’éditeur HTML sur une page, vous pouvez définir ses propriétés dans la feuille de propriétés. Par exemple, vous souhaitez normalement définir les propriétés Width et Height. La liste 1 contient la source d’une page ASP.NET qui contient un éditeur HTML.
 
-**La liste 1 - SimpleEditor.aspx**
+**Listing 1 - SimpleEditor.aspx**
 
 [!code-aspx[Main](how-do-i-use-the-html-editor-control-vb/samples/sample1.aspx)]
 
@@ -93,7 +93,7 @@ Vous devez ajouter la classe dans la liste 2 à votre application\_Code dossier 
 
 Après avoir créé un éditeur personnalisé, vous pouvez l’ajouter à une page ASP.NET de la même façon que vous ajoutez l’éditeur HTML normal (voir la liste 3).
 
-**La liste 3 - ShowCustomEditor.aspx**
+**Listing 3 - ShowCustomEditor.aspx**
 
 [!code-aspx[Main](how-do-i-use-the-html-editor-control-vb/samples/sample3.aspx)]
 
@@ -107,9 +107,9 @@ Si vous collectez des informations sensibles à partir de vos utilisateurs, tell
 
 Par exemple, imaginez que vous créez une application de blog. Dans ce cas, il est judicieux d’utiliser l’éditeur HTML en répartissant les billets de blog. Vous êtes la seule personne qui soumet un billet de blog et, sans doute, vous pouvez faire confiance vous-même afin de ne pas soumettre JavaScript malveillant. Toutefois, il est inutile d’utiliser l’éditeur HTML lorsque vous autorisez les utilisateurs anonymes à publier des commentaires. Vous devez être particulièrement prudent dans les situations dans lesquelles les utilisateurs soumettent des informations sensibles telles que les mots de passe. Potentiellement, un utilisateur malveillant peut publier un commentaire qui contient le droit JavaScript pour le vol d’un mot de passe.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous ont été fournies avec une brève vue d’ensemble du contrôle de l’éditeur HTML inclus dans la boîte à outils de contrôle AJAX. Vous avez appris à utiliser l’éditeur HTML pour accepter le contenu d’un utilisateur et envoyer le contenu sur le serveur. Nous avons abordé également comment vous pouvez personnaliser les boutons de barre d’outils qui sont affichent dans l’éditeur HTML. Enfin, vous avez appris comment éviter les attaques de script entre sites lors de l’utilisation de l’éditeur HTML pour accepter les entrées potentiellement nuisible.
 
->[!div class="step-by-step"]
-[Précédent](how-do-i-use-the-html-editor-control-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](how-do-i-use-the-html-editor-control-cs.md)

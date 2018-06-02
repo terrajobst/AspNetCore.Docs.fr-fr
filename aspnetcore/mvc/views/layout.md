@@ -1,19 +1,19 @@
 ---
-title: Mise en page
+title: Mise en page dans ASP.NET Core
 author: ardalis
-description: 
-ms.author: riande
+description: Apprenez à utiliser des dispositions communes, à partager des directives et à exécuter le code commun avant d’afficher les vues dans une application ASP.NET Core.
 manager: wpickett
+ms.author: riande
 ms.date: 10/14/2016
-ms.topic: article
-ms.technology: aspnet
 ms.prod: asp.net-core
+ms.technology: aspnet
+ms.topic: article
 uid: mvc/views/layout
-ms.openlocfilehash: e268f045e39188e9cc1e759ff7e6c553662dd669
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
-ms.translationtype: MT
+ms.openlocfilehash: 8e89c8e6cf18c47abb6bf432cdc6bb6b97e8aeb0
+ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="layout"></a>Mise en page
 

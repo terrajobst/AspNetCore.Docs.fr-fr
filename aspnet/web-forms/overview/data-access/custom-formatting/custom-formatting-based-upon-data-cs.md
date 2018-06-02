@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs
-title: "Mise en forme personnalisée en fonction des données (c#) | Documents Microsoft"
+title: Mise en forme personnalisée en fonction des données (c#) | Documents Microsoft
 author: rick-anderson
-description: "L’ajustement du format du GridView, DetailsView ou FormView basé sur les données qui lui est associées peut être accompli de plusieurs façons. Dans ce didacticiel, nous allons l..."
+description: L’ajustement du format du GridView, DetailsView ou FormView basé sur les données qui lui est associées peut être accompli de plusieurs façons. Dans ce didacticiel, nous allons l...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 606721b01fae34a7bce85d497a442cb110f1b51e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 31cf628baf2250c2e7e71ab38cd64b218dc927e7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="custom-formatting-based-upon-data-c"></a>Mise en forme personnalisée en fonction des données (c#)
 ====================
@@ -217,19 +217,19 @@ Ces trois étapes simples suffisent pour le contrôle DetailsView et FormView pa
 
 Dans l’étape 2, le contrôle GridView énumère la source de données et, pour chaque enregistrement, crée un `GridViewRow` de l’instance et lie l’enregistrement en cours à ce dernier. Pour chaque `GridViewRow` ajouté au contrôle GridView, deux événements sont déclenchés :
 
-- **`RowCreated`**se déclenche après la `GridViewRow` a été créé.
-- **`RowDataBound`**se déclenche lorsque l’enregistrement actif a été liée à la `GridViewRow`.
+- **`RowCreated`** se déclenche après la `GridViewRow` a été créé.
+- **`RowDataBound`** se déclenche lorsque l’enregistrement actif a été liée à la `GridViewRow`.
 
 Ensuite, pour le contrôle GridView, liaison de données est décrite plus précisément par la séquence d’étapes suivante :
 
 1. Le contrôle du GridView `DataBinding` se déclenche des événements.
 2. Les données sont liées au GridView.   
   
- Pour chaque enregistrement dans la source de données 
+   Pour chaque enregistrement dans la source de données 
 
     1. Créer un `GridViewRow` objet
     2. Déclencher la `RowCreated` événement
-    3. Lier l’enregistrement à la`GridViewRow`
+    3. Lier l’enregistrement à la `GridViewRow`
     4. Déclencher la `RowDataBound` événement
     5. Ajouter le `GridViewRow` à la `Rows` collection
 3. Le contrôle du GridView `DataBound` se déclenche des événements.
@@ -275,12 +275,12 @@ Lorsque le `RowDataBound` se déclenche des événements, le Gestionnaire d’é
 
 Lorsque vous travaillez avec le `RowDataBound` Gestionnaire d’événements qu’il est important de garder à l’esprit que le contrôle GridView est composé de différents types de lignes et que cet événement est déclenché pour *tous les* les types de lignes. A `GridViewRow`de type peut être déterminé par ses `RowType` propriété et peut prendre l’une des valeurs possibles :
 
-- `DataRow`une ligne qui est liée à un enregistrement à partir du contrôle de GridView`DataSource`
-- `EmptyDataRow`la ligne affichée si le contrôle de GridView `DataSource` est vide
-- `Footer`la ligne de pied de page ; affiché, si le contrôle de GridView `ShowFooter` est définie sur`true`
-- `Header`la ligne d’en-tête ; indiqué si le contrôle de GridView ShowHeader est définie sur `true` (la valeur par défaut)
-- `Pager`pour du contrôle GridView qui implémentent la pagination, la ligne qui affiche l’interface de pagination
-- `Separator`ne pas utilisé pour le contrôle GridView, mais par le `RowType` propriétés de DataList et répéteur des contrôles, deux contrôles Web nous discuterons avenir didacticiels de données
+- `DataRow` une ligne qui est liée à un enregistrement à partir du contrôle de GridView `DataSource`
+- `EmptyDataRow` la ligne affichée si le contrôle de GridView `DataSource` est vide
+- `Footer` la ligne de pied de page ; affiché, si le contrôle de GridView `ShowFooter` est définie sur `true`
+- `Header` la ligne d’en-tête ; indiqué si le contrôle de GridView ShowHeader est définie sur `true` (la valeur par défaut)
+- `Pager` pour du contrôle GridView qui implémentent la pagination, la ligne qui affiche l’interface de pagination
+- `Separator` ne pas utilisé pour le contrôle GridView, mais par le `RowType` propriétés de DataList et répéteur des contrôles, deux contrôles Web nous discuterons avenir didacticiels de données
 
 Étant donné que la `EmptyDataRow`, `Header`, `Footer`, et `Pager` lignes ne sont pas associées à un `DataSource` enregistrement, ils ont toujours une `null` valeur pour leur `DataItem` propriété. Pour cette raison, avant de tenter d’utiliser actuel `GridViewRow`de `DataItem` propriété, nous devons Assurez-vous d’abord que nous manipulons un `DataRow`. Cela peut être accompli en vérifiant la `GridViewRow`de `RowType` propriété comme suit :
 
@@ -319,11 +319,11 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Les réviseurs tête pour ce didacticiel ont été E.R. Gillain, Dennis Patterson et Dan Jagers. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Next](using-templatefields-in-the-gridview-control-cs.md)
+> [!div class="step-by-step"]
+> [Next](using-templatefields-in-the-gridview-control-cs.md)

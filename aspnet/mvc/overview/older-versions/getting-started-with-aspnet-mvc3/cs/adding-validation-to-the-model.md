@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
-title: "Ajout d’une Validation pour le modèle (c#) | Documents Microsoft"
+title: Ajout d’une Validation pour le modèle (c#) | Documents Microsoft
 author: Rick-Anderson
-description: "Création d’un contrôleur"
+description: Création d’un contrôleur
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-validation-to-the-model
 msc.type: authoredcontent
-ms.openlocfilehash: 6bce4a5d889f548cb1faec15842310703d7077b8
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cdfe76f440e34ca7356af193186f90d2231b9db6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-validation-to-the-model-c"></a>Ajout d’une Validation pour le modèle (c#)
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > > [!NOTE]
 > > Une version mise à jour de ce didacticiel est disponible [ici](../../../getting-started/introduction/getting-started.md) qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et illustre plusieurs fonctionnalités.
@@ -101,7 +101,7 @@ Notez comment le code utilise un `Html.EditorFor` application d’assistance pou
 
 Très intéressant, cette approche est que le contrôleur, ni le modèle créer une vue sait rien sur les règles de validation réelle appliquées ou sur les messages d’erreur affichés. Les règles de validation et les chaînes d’erreur sont spécifiées uniquement dans la classe `Movie`.
 
-Si vous souhaitez modifier la logique de validation par la suite, vous pouvez le faire dans exactement un seul emplacement. Vous n’aurez pas à vous soucier des différentes parties de l’application qui pourraient être incohérentes avec la façon dont les règles sont appliquées. Toute la logique de validation sera définie à un seul emplacement et utilisée partout. Le code est ainsi très propre, facile à mettre à jour et évolutif. Et il signifie que vous serez entièrement en respectant le principe sec.
+Si vous souhaitez modifier la logique de validation par la suite, vous pouvez le faire dans exactement un seul emplacement. Vous n’aurez pas à vous soucier des différentes parties de l’application qui pourraient être incohérentes avec la façon dont les règles sont appliquées. Toute la logique de validation sera définie à un seul emplacement et utilisée partout. Le code est ainsi très propre, facile à mettre à jour et évolutif. Et cela signifie que vous respecterez entièrement le principe DRY.
 
 ## <a name="adding-formatting-to-the-movie-model"></a>Ajout de mise en forme pour le modèle de film
 
@@ -127,6 +127,6 @@ Exécutez l’application et accédez à la `Movies` contrôleur.
 
 Dans la partie suivante de la série, nous allons examiner l’application et apporter des améliorations aux méthodes `Details` et `Delete` générées automatiquement.
 
->[!div class="step-by-step"]
-[Précédent](adding-a-new-field.md)
-[Suivant](improving-the-details-and-delete-methods.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-a-new-field.md)
+> [Suivant](improving-the-details-and-delete-methods.md)

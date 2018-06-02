@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/getting-started/recommended-resources-for-mvc
-title: "MVC recommandé ressources | Documents Microsoft"
+title: MVC recommandé ressources | Documents Microsoft
 author: Rick-Anderson
 description: Cette rubrique fournit des liens vers des ressources de documentation sur ASP.NET MVC 5. Si vous connaissez un excellent billet de blog, stackoverflow thread ou un autre lien serait...
 ms.author: aspnetcontent
@@ -12,20 +12,20 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: d08ee5c2bf56611caa483337af0ec1bd7cf982c0
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 7887d81366cc166ad89308b22ad7cc6af0263111
+ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/18/2018
 ---
 <a name="mvc-recommended-resources"></a>MVC recommandé de ressources
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Cette rubrique fournit des liens vers des ressources de documentation sur ASP.NET MVC 5. Si vous connaissez un excellent blog post, [stackoverflow](http://stackoverflow.com/) thread ou un autre lien qui serait utile, envoyer [me](mailto:aspnetue@microsoft.com?subject=Great ASP.NET MVC link) un message électronique avec le lien. Les liens fournis ici sont régulièrement mises à jour. Vous trouverez plus anciens (mais dans de nombreux cas toujours applicables) ASP.NET MVC les liens fournis sur le [plan du contenu MSDN](https://msdn.microsoft.com/library/gg416514(v=vs.108).aspx).
 > 
 > Un bon emplacement pour obtenir des réponses à vos questions ou pour trouver des solutions aux problèmes est le [forum ASP.NET MVC](https://forums.asp.net/1146.aspx/1?MVC) ou sur [stackoverflow](http://stackoverflow.com/questions/tagged/mvc+asp.net-mvc).
-<a id="gettingstarted"></a>
+> <a id="gettingstarted"></a>
 
 ## <a name="getting-started-with-aspnet-mvc"></a>Mise en route avec ASP.NET MVC
 
@@ -42,7 +42,6 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
 ## <a name="new-featured-content"></a>Nouveau contenu proposé
 
 - [Sélection des Cultures pour la localisation dans ASP.NET](http://weblog.west-wind.com/posts/2014/Mar/27/Auto-Selecting-Cultures-for-Localization-in-ASPNET)
-- [Dispositions d’imbrication dans MVC](http://astutelogic.com/nesting-layouts-in-mvc/) par Russell Waite
 - [Créer une application ASP.NET MVC 5 avec Facebook et Google OAuth2 Sign-on](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md)
 - [ASP.NET MVC de présentation des filtres et des attributs](http://www.dotnet-tricks.com/Tutorial/mvc/b11a280114-Understanding-ASP.NET-MVC-Filters-and-Attributes.html)
 - [Cycle de vie d’une Application ASP.NET MVC 5](lifecycle-of-an-aspnet-mvc-5-application.md) (PDF)

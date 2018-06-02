@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs
-title: "À l’aide d’ASP.NET MVC avec différentes Versions d’IIS (c#) | Documents Microsoft"
+title: À l’aide d’ASP.NET MVC avec différentes Versions d’IIS (c#) | Documents Microsoft
 author: microsoft
-description: "Dans ce didacticiel, vous allez apprendre à utiliser ASP.NET MVC et le routage d’URL, avec différentes versions d’Internet Information Services. Obtenir des informations différentes stratégies."
+description: Dans ce didacticiel, vous allez apprendre à utiliser ASP.NET MVC et le routage d’URL, avec différentes versions d’Internet Information Services. Obtenir des informations différentes stratégies.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/19/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8f2b98d5e5ae677fdac32336d542202a40290e21
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 73c129c1eaf85cb5b110248fe2a2c0faed0157bc
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-aspnet-mvc-with-different-versions-of-iis-c"></a>À l’aide d’ASP.NET MVC avec différentes Versions d’IIS (c#)
 ====================
@@ -33,7 +33,7 @@ Voici un résumé des différentes versions d’IIS :
 - IIS 7.0 (mode classique) - vous devez effectuer une configuration spéciale pour utiliser le routage ASP.NET.
 - IIS 6.0 ou ci-dessous - vous devez effectuer une configuration spéciale pour utiliser le routage ASP.NET.
 
-La dernière version d’IIS est la version 7.5 (sur Win7). IIS 7 d’IIS est inclus avec Windows Server 2008 et VISTA SP1 et versions ultérieures. Vous pouvez également installer IIS 7.0 sur n’importe quelle version du système d’exploitation Vista sauf Édition Familiale Basique (consultez [https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx)).
+La dernière version d’IIS est la version 7.5 (sur Win7). IIS 7 d’IIS est inclus avec Windows Server 2008 et VISTA SP1 et versions ultérieures. Vous pouvez également installer IIS 7.0 sur n’importe quelle version du système d’exploitation Vista sauf Édition Familiale Basique (consultez [ https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx ](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx)).
 
 IIS 7.0 prend en charge deux modes de traitement des demandes. Vous pouvez utiliser le mode intégré ou en mode classique. Vous n’avez pas besoin effectuer les étapes de configuration spéciales lors de l’utilisation d’IIS 7.0 en mode intégré. Toutefois, vous n’avez pas besoin effectuer une configuration supplémentaire lors de l’utilisation d’IIS 7.0 en mode classique.
 
@@ -62,8 +62,8 @@ Par défaut, IIS est configuré pour prendre en charge deux pools d’applicatio
 
 Notez que vous pouvez modifier le mode de traitement de la requête dans la boîte de dialogue Modifier l’Application. Cliquez sur le bouton Sélectionner et modifier le pool d’applications associé à l’application. Notez qu’il n’y a des problèmes de compatibilité lors de la modification d’une application ASP.NET à partir de classique vers le mode intégré. Pour plus d’informations, consultez les articles suivants :
 
-- Mise à niveau de ASP.NET 1.1 vers IIS 7.0 sur Windows Vista et Windows Server 2008-- [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008)
-- Intégration d’ASP.NET à IIS 7.0 - [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
+- Mise à niveau de ASP.NET 1.1 vers IIS 7.0 sur Windows Vista et Windows Server 2008 : [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008)
+- Intégration d’ASP.NET à IIS 7.0 : [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
 
 Si une application ASP.NET utilise DefaultAppPool, vous n’avez pas besoin effectuer les étapes supplémentaires pour obtenir le routage ASP.NET (et par conséquent, ASP.NET MVC) fonctionne. Toutefois, si l’application ASP.NET est configurée pour utiliser Classic .NET AppPool puis poursuivez votre lecture, vous avez plus de travail à effectuer.
 
@@ -103,7 +103,7 @@ Les versions antérieures d’IIS mappent uniquement certaines demandes à l’i
 
 Par conséquent, pour obtenir le routage ASP.NET fonctionne, nous devons modifier l’itinéraire par défaut afin qu’il inclue une extension de fichier qui est mappée à l’infrastructure ASP.NET.
 
-Cette opération est effectuée à l’aide d’un script nommé `registermvc.wsf`. Il a été inclus avec la version d’ASP.NET MVC 1 dans `C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`, mais à compter d’ASP.NET 2 ce script a été déplacé vers le ASP.NET Futures, disponible à l’adresse [http://aspnet.codeplex.com/releases/view/39978](http://aspnet.codeplex.com/releases/view/39978).
+Cette opération est effectuée à l’aide d’un script nommé `registermvc.wsf`. Il a été inclus avec la version d’ASP.NET MVC 1 dans `C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`, mais à compter d’ASP.NET 2 ce script a été déplacé vers le ASP.NET Futures, disponible à l’adresse [ http://aspnet.codeplex.com/releases/view/39978 ](http://aspnet.codeplex.com/releases/view/39978).
 
 L’exécution de ce script d’enregistre une nouvelle extension .mvc avec IIS. Après avoir inscrit l’extension .mvc, vous pouvez modifier votre itinéraires dans le fichier Global.asax afin que les itinéraires utilisent l’extension .mvc.
 
@@ -212,5 +212,5 @@ La première option vous oblige à modifier les URL utilisées dans votre applic
 
 La deuxième option consiste à créer un mappage de script générique. L’avantage de cette deuxième option est que vous n’avez pas besoin de modifier votre URL. L’inconvénient de cette deuxième option est qu’elle peut affecter les performances de votre application ASP.NET MVC.
 
->[!div class="step-by-step"]
-[Next](using-asp-net-mvc-with-different-versions-of-iis-vb.md)
+> [!div class="step-by-step"]
+> [Next](using-asp-net-mvc-with-different-versions-of-iis-vb.md)

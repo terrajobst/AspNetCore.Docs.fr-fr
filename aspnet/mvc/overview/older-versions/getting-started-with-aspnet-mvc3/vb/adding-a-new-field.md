@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-new-field
-title: "Ajout d’un nouveau champ à la Table de base de données (VB) et au modèle de film | Documents Microsoft"
+title: Ajout d’un nouveau champ à la Table de base de données (VB) et au modèle de film | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/12/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 377c667a56bb5c0d58ecef5c3550ca510ec52546
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 5927b7d977e375881fe618b4b844cbd708023ba1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-database-table-vb"></a>Ajout d’un nouveau champ à la Table de base de données (VB) et au modèle de film
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Ce didacticiel, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est une version gratuite de Microsoft Visual Studio. Avant de commencer, assurez-vous que vous avez installé les composants requis répertoriés ci-dessous. Vous pouvez installer tous les en cliquant sur le lien suivant : [Web Platform Installer](https://www.microsoft.com/web/gallery/install.aspx?appid=VWD2010SP1Pack). Vous pouvez également installer individuellement les conditions préalables à l’aide des liens suivants :
 > 
@@ -49,7 +49,7 @@ Recompiler l’application à l’aide de la **déboguer** &gt; **générer un f
 
 Maintenant que vous avez mis à jour le `Model` (classe), vous devez également mettre à jour le *\Views\Movies\Index.vbhtml* et *\Views\Movies\Create.vbhtml* afficher des modèles pour prendre en charge la nouvelle `Rating`propriété.
 
-Ouvrez le*\Views\Movies\Index.vbhtml* et ajoutez un `<th>Rating</th>` juste après l’en-tête de colonne le **prix** colonne. Ajoutez ensuite une `<td>` colonne vers la fin du modèle pour afficher le `@item.Rating` valeur. Voici quelles mis à jour *Index.vbhtml* afficher le modèle ressemble à :
+Ouvrez le<em>\Views\Movies\Index.vbhtml</em> et ajoutez un `<th>Rating</th>` juste après l’en-tête de colonne le <strong>prix</strong> colonne. Ajoutez ensuite une `<td>` colonne vers la fin du modèle pour afficher le `@item.Rating` valeur. Voici quelles mis à jour <em>Index.vbhtml</em> afficher le modèle ressemble à :
 
 [!code-vbhtml[Main](adding-a-new-field/samples/sample3.vbhtml)]
 
@@ -123,6 +123,6 @@ Cliquez sur **Créer**. La nouvelle séquence, y compris l’évaluation, figure
 
 Dans cette section, vous avez vu comment vous pouvez modifier les objets de modèle et synchroniser la base de données avec les modifications. Vous avez également appris une méthode pour remplir une base de données nouvellement créée avec les exemples de données permettent de tester des scénarios. Ensuite, nous allons voir comment vous pouvez ajouter la logique de validation plus riche pour les classes du modèle et activer des règles d’entreprise être appliqué.
 
->[!div class="step-by-step"]
-[Précédent](examining-the-edit-methods-and-edit-view.md)
-[Suivant](adding-validation-to-the-model.md)
+> [!div class="step-by-step"]
+> [Précédent](examining-the-edit-methods-and-edit-view.md)
+> [Suivant](adding-validation-to-the-model.md)

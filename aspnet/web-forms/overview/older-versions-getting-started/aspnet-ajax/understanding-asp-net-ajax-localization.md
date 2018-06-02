@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
-title: "Présentation d’ASP.NET AJAX localisation | Documents Microsoft"
+title: Présentation d’ASP.NET AJAX localisation | Documents Microsoft
 author: scottcate
-description: "La localisation est le processus de conception et de l’intégration de la prise en charge pour une langue spécifique et une culture dans une application ou un composant d’application. Le Mic..."
+description: La localisation est le processus de conception et de l’intégration de la prise en charge pour une langue spécifique et une culture dans une application ou un composant d’application. Le Mic...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/14/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-localization
 msc.type: authoredcontent
-ms.openlocfilehash: 5b801586ea77af78284f780fe47fe09cafb984af
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 565b0294f57b784bc592b286b3d8b28504110415
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/10/2018
 ---
 <a name="understanding-aspnet-ajax-localization"></a>Présentation d’ASP.NET AJAX localisation
 ====================
@@ -64,9 +64,9 @@ Le tableau suivant résume le conventions avec des exemples de nom de fichier :
 | Nom de fichier | Signification |
 | --- | --- |
 | Script.js | Un script de la culture neutre-version finale. |
-| Script.Debug.js | Un script indépendant de la culture de la version de débogage. |
+| Script.debug.js | Un script indépendant de la culture de la version de débogage. |
 | Script.en-US.js | Un script États-Unis de l’anglais, de version de mise en production. |
-| Script.Debug.es-CO.js | Un script de Columbia espagnol, version de débogage. |
+| Script.debug.es-CO.js | Un script de Columbia espagnol, version de débogage. |
 
 ## <a name="walkthrough-create-an-localized-embedded-script"></a>Procédure pas à pas : Créer un Script incorporé, localisé
 
@@ -143,7 +143,7 @@ ScriptManager permet plusieurs comportements automatiques pour les applications 
 
 Références de script peuvent être ajoutés au contrôle ScriptManager par programme ou par le balisage déclaratif. Balisage déclaratif est particulièrement utile lorsque vous travaillez avec des scripts incorporés dans des assemblys autres que le projet de site web lui-même, comme le nom du script ne sera probablement pas modifiée que révisions sont envoyées via.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Comme les applications web augmentent pour atteindre une audience plus large, la nécessité d’être en mesure d’atteindre le plus large des cultures et des Communautés devienne principal à un modèle d’entreprise ; applications web de commerce électronique doivent être en mesure de traiter les devises, les systèmes de gestion de contenu doivent être en mesure non seulement présent que leur contenu mais également les indicateurs de navigation et les champs de formulaire dans d’autres langues et les entreprises doivent savoir que ce besoin est accessible.
 
@@ -153,6 +153,6 @@ Le .NET Framework intrinsèquement prend en charge une infrastructure riche de l
 
 Scott caté travaille avec les technologies Microsoft Web depuis 1997 et est le directeur de myKB.com ([www.myKB.com](http://www.myKB.com)) où il est spécialisé dans l’écriture d’ASP.NET en fonction des applications axées sur les solutions logicielles de la Base de connaissances. Scott peut être contacté par courrier électronique en [ scott.cate@myKB.com ](mailto:scott.cate@myKB.com) ou son blog à [ScottCate.com](http://ScottCate.com)
 
->[!div class="step-by-step"]
-[Précédent](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
-[Suivant](understanding-asp-net-ajax-web-services.md)
+> [!div class="step-by-step"]
+> [Précédent](understanding-asp-net-ajax-authentication-and-profile-application-services.md)
+> [Suivant](understanding-asp-net-ajax-web-services.md)

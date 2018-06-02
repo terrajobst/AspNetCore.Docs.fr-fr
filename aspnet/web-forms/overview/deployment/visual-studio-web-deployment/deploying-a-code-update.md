@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement d’une mise à jour de Code | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement d’une mise à jour de Code | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-a-code-update
 msc.type: authoredcontent
-ms.openlocfilehash: f6861c702c1ccb19e5a4eee484a622079e205f86
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: dd02b5c627fbfbb0034030f4c21207d24f6aabce
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-deploying-a-code-update"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : déploiement d’une mise à jour du Code
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -207,6 +207,6 @@ Vous avez vu désormais plusieurs façons de déployer une mise à jour d’appl
 
 Le didacticiel suivant vous montre comment déployer une modification de la base de données : vous allez ajouter un champ de date de naissance à la base de données et à la page de formateurs.
 
->[!div class="step-by-step"]
-[Précédent](deploying-to-production.md)
-[Suivant](deploying-a-database-update.md)
+> [!div class="step-by-step"]
+> [Précédent](deploying-to-production.md)
+> [Suivant](deploying-a-database-update.md)

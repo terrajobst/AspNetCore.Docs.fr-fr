@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs
 title: Animation selon une Condition (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Si une animation est en cours..."
+description: Le contrôle de l’Animation dans la boîte à outils de contrôle ASP.NET AJAX n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Si une animation est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 13366a86be01f41e27db1869b93192520190387a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: b530239e76654bc68a8fa6ac900a20df1d5699b0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="animation-depending-on-a-condition-c"></a>Animation selon une Condition (c#)
 ====================
@@ -45,7 +45,7 @@ Dans la classe CSS associée pour le panneau de configuration, définir une coul
 
 [!code-css[Main](animation-depending-on-a-condition-cs/samples/sample3.css)]
 
-Ensuite, ajoutez le `AnimationExtender` à la page, en fournissant une `ID`, le `TargetControlID` attribut et le texte obligatoire`runat="server":`
+Ensuite, ajoutez le `AnimationExtender` à la page, en fournissant une `ID`, le `TargetControlID` attribut et le texte obligatoire `runat="server":`
 
 [!code-aspx[Main](animation-depending-on-a-condition-cs/samples/sample4.aspx)]
 
@@ -60,6 +60,6 @@ Notez que le signe inférieur à (`<`) dans le `ConditionScript` attribut doit �
 
 Le panneau est fondu sans redimensionnement, donc n’a pas de la deuxième animation s’exécute le ([cliquez pour afficher l’image en taille réelle](animation-depending-on-a-condition-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](executing-several-animations-after-each-other-cs.md)
-[Suivant](picking-one-animation-out-of-a-list-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](executing-several-animations-after-each-other-cs.md)
+> [Suivant](picking-one-animation-out-of-a-list-cs.md)

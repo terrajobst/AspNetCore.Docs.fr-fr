@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio : Transformations du fichier Web.config | Documents Microsoft"
+title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : Transformations du fichier Web.config | Documents Microsoft'
 author: tdykstra
-description: "Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments..."
+description: Cette série de didacticiels vous montre comment déployer (publier) ASP.NET web application Azure App Service Web Apps ou un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
-ms.openlocfilehash: a526275d76618c325a6b00f33cc550f28ab0cc00
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 77ed0d8b2fe85adb009a3f4759030b7fba8fb9d7
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : Transformations du fichier Web.config
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 [Télécharger le projet de démarrage](http://go.microsoft.com/fwlink/p/?LinkId=282627)
 
@@ -152,6 +152,6 @@ Dans ce didacticiel, vous devez prendre soin de tâches de configuration de dép
 
 Pour plus d’informations sur les sujets abordés dans ce didacticiel, consultez [transformations à l’aide de Web.config pour modifier des paramètres dans le fichier Web.config de destination ou le fichier app.config au cours du déploiement](https://go.microsoft.com/fwlink/p/?LinkId=282413#transforms) dans le plan de contenu de déploiement Web pour Visual Studio et ASP.NET.
 
->[!div class="step-by-step"]
-[Précédent](preparing-databases.md)
-[Suivant](project-properties.md)
+> [!div class="step-by-step"]
+> [Précédent](preparing-databases.md)
+> [Suivant](project-properties.md)

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
-title: "Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 8 | Documents Microsoft"
+title: Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 d’ASP.NET Web Forms - partie 8 | Documents Microsoft
 author: tdykstra
-description: "L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours..."
+description: L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/03/2010
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 323ee44f43f6d4081bd9ba50791755696bc9128f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 035cce022d1b3697b825a96487529dbc9675d90e
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-8"></a>Mise en route avec base de données Entity Framework 4.0 tout d’abord et 4 les Web Forms ASP.NET - partie 8
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide de l’Entity Framework 4.0 et Visual Studio 2010. Pour plus d’informations sur la série de didacticiels, consultez [le premier didacticiel de la série](the-entity-framework-and-aspnet-getting-started-part-1.md)
 
@@ -101,7 +101,7 @@ Ce code crée une classe partielle pour la `Student` entité. Le `MetadataType` 
 
 Les attributs appliqués aux propriétés dans la classe de métadonnées spécifient la mise en forme, les messages de validation, de règles et d’erreur. Les attributs affichés ici possède les résultats suivants :
 
-- `EnrollmentDate`affiche une date (sans heure).
+- `EnrollmentDate` affiche une date (sans heure).
 - Les deux champs de noms doivent être de 25 caractères ou moins, et un message d’erreur personnalisé est fourni.
 - Les deux champs de noms sont nécessaires, et un message d’erreur personnalisé est fourni.
 
@@ -132,5 +132,5 @@ Ceci conclut cette série de didacticiels sur la mise en route avec Entity Frame
 - [Entity Framework Forums MSDN](https://social.msdn.microsoft.com/forums/adodotnetentityframework/)
 - [Blog de Julie Lerman](http://thedatafarm.com/blog/)
 
->[!div class="step-by-step"]
-[Précédent](the-entity-framework-and-aspnet-getting-started-part-7.md)
+> [!div class="step-by-step"]
+> [Précédent](the-entity-framework-and-aspnet-getting-started-part-7.md)

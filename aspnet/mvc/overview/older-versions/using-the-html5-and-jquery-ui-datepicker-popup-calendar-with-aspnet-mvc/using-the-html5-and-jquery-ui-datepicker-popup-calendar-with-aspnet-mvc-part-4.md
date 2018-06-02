@@ -2,7 +2,7 @@
 uid: mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4
 title: Utilisation de HTML5 et du calendrier contextuel jQuery UI avec ASP.NET MVC - partie 4 | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel, vous allez apprendre les principes fondamentaux de l’utilisation des modèles de l’éditeur, modèles d’affichage et le calendrier contextuel jQuery UI datepicker dans un MV ASP.NET..."
+description: Ce didacticiel, vous allez apprendre les principes fondamentaux de l’utilisation des modèles de l’éditeur, modèles d’affichage et le calendrier contextuel jQuery UI datepicker dans un MV ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/29/2011
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 32211465adeb1353908daa1014d188b84389e1a7
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: c6df727107b0a045341badefbf99eec773cd4eff
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-4"></a>Utilisation de HTML5 et du calendrier contextuel jQuery UI avec ASP.NET MVC - partie 4
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Ce didacticiel, vous allez apprendre les principes fondamentaux de l’utilisation des modèles de l’éditeur, modèles d’affichage et le calendrier contextuel jQuery UI datepicker dans une application Web ASP.NET MVC.
 
@@ -178,5 +178,5 @@ Ce didacticiel a couvert les principes fondamentaux de l’application auxiliair
 - Pour plus d’informations sur la façon de localiser le contrôle de sélecteur de dates, consultez [UI/Datepicker/localisation](http://docs.jquery.com/UI/Datepicker/Localization).
 - Pour plus d’informations sur les modèles ASP.NET MVC, consultez la série du blog de Brad Wilson sur [modèles ASP.NET MVC 2](http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html). Bien que la série a été écrit pour ASP.NET MVC 2, le contenu s’applique toujours la version actuelle d’ASP.NET MVC.
 
->[!div class="step-by-step"]
-[Précédent](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3.md)
+> [!div class="step-by-step"]
+> [Précédent](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-3.md)

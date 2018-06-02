@@ -1,33 +1,30 @@
 ---
-title: "Bien démarrer avec des pages Razor dans ASP.NET Core avec Visual Studio Code"
+title: Bien démarrer avec les pages Razor ASP.NET Core dans Visual Studio Code
 author: rick-anderson
-description: "Bien démarrer avec des pages Razor dans ASP.NET Core à l’aide de Visual Studio Code"
+description: Découvrez les concepts de base de la génération d’applications web de pages Razor ASP.NET Core avec Visual Studio Code.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/razor-pages-start
-ms.openlocfilehash: 7c01d802e59951281c86c8eab64b7c6b9d646fbf
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 0ad008b4f2b2e74dcf7f3d6c83798d5f03d1d315
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-code"></a>Bien démarrer avec des pages Razor dans ASP.NET Core avec Visual Studio Code
+# <a name="get-started-with-aspnet-core-razor-pages-in-visual-studio-code"></a>Bien démarrer avec les pages Razor ASP.NET Core dans Visual Studio Code
 
-De [Rick Anderson](https://twitter.com/RickAndMSFT)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web de pages Razor dans ASP.NET Core. Nous vous recommandons d’effectuer l’étape [Présentation des pages Razor](xref:mvc/razor-pages/index) avant de commencer ce didacticiel. L’utilisation de pages Razor est la méthode recommandée pour générer l’IU d’applications web dans ASP.NET Core.
 
 ## <a name="prerequisites"></a>Prérequis
 
-Installez les éléments suivants :
-
-* [SDK .NET Core 2.0.0 ](https://www.microsoft.com/net/core) ou version ultérieure
-* [Visual Studio Code](https://code.visualstudio.com)
-* [Extension C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) VS Code 
+[!INCLUDE [](~/includes/net-core-prereqs-vscode.md)]
 
 ## <a name="create-a-razor-web-app"></a>Créer une application web Razor
 
@@ -39,11 +36,11 @@ cd RazorPagesMovie
 dotnet run
 ```
 
-Les commandes précédentes utilisent le [CLI .NET Core](https://docs.microsoft.com/dotnet/core/tools/dotnet) pour créer et exécuter un projet de pages Razor. Ouvrez un navigateur à l’adresse http://localhost:5000 pour afficher l’application.
+Les commandes précédentes utilisent le [CLI .NET Core](https://docs.microsoft.com/dotnet/core/tools/dotnet) pour créer et exécuter un projet de pages Razor. Ouvrez un navigateur sur http://localhost:5000 pour voir l’application.
 
 ![Page d’accueil ou page d’index](../razor-pages/razor-pages-start/_static/home.png)
 
-[!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
+[!INCLUDE [razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 ## <a name="open-the-project"></a>Ouvrir le projet
 
@@ -60,5 +57,5 @@ Appuyez sur Ctrl+F5 pour démarrer l’application sans débogage. Vous pouvez �
 
 Dans le prochain didacticiel, nous allons ajouter un modèle au projet. 
 
->[!div class="step-by-step"]
-[Suivant : Ajout d’un modèle](xref:tutorials/razor-pages-vsc/model)  
+> [!div class="step-by-step"]
+> [Suivant : Ajout d’un modèle](xref:tutorials/razor-pages-vsc/model)  

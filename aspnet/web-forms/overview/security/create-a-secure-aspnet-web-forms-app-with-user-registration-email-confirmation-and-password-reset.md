@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
-title: "Créer une application Web Forms ASP.NET sécurisée avec l’inscription des utilisateurs, envoyer par courrier électronique de confirmation et le mot de passe de la réinitialisation (c#) | Documents Microsoft"
+title: Créer une application Web Forms ASP.NET sécurisée avec l’inscription des utilisateurs, envoyer par courrier électronique de confirmation et le mot de passe de la réinitialisation (c#) | Documents Microsoft
 author: Erikre
-description: "Ce didacticiel vous montre comment créer une application Web Forms ASP.NET avec l’inscription utilisateur, de confirmation par courrier électronique et de mot de passe réinitialisé à l’aide du membre d’identité ASP.NET..."
+description: Ce didacticiel vous montre comment créer une application Web Forms ASP.NET avec l’inscription utilisateur, de confirmation par courrier électronique et de mot de passe réinitialisé à l’aide du membre d’identité ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/02/2014
@@ -12,15 +12,15 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: ed39295ed1bcaa924336a1faf52049e291abeadb
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 1dc7ace69473b45432fd942b9cf1ba32332cb707
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Créer une application Web Forms ASP.NET sécurisée avec l’inscription des utilisateurs, envoyer par courrier électronique de confirmation et le mot de passe de la réinitialisation (c#)
 ====================
-Par [Erik Reitan](https://github.com/Erikre)
+par [Erik Reitan](https://github.com/Erikre)
 
 > Ce didacticiel vous montre comment créer une application Web Forms ASP.NET avec l’inscription des utilisateurs, de confirmation par courrier électronique et de mot de passe réinitialisé à l’aide du système d’appartenance ASP.NET Identity. Ce didacticiel est basé sur de Rick Anderson [didacticiel MVC](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md).
 
@@ -90,7 +90,7 @@ Bien que ce didacticiel montre uniquement comment ajouter la notification par co
     [!code-xml[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample3.xml?highlight=2-5)]
 
     > [!WARNING]
-    > Sécurité - magasin jamais des données sensibles dans votre code source. Dans cet exemple, le compte et les informations d’identification sont stockées dans le **appSetting** section de la *Web.config* fichier. Sur Azure, vous pouvez stocker en toute sécurité des ces valeurs sur le  **[configurer](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)**  onglet dans le portail Azure. Pour plus d’informations, consultez rubrique de Rick Anderson [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
+    > Sécurité - magasin jamais des données sensibles dans votre code source. Dans cet exemple, le compte et les informations d’identification sont stockées dans le **appSetting** section de la *Web.config* fichier. Sur Azure, vous pouvez stocker en toute sécurité des ces valeurs sur le **[configurer](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** onglet dans le portail Azure. Pour plus d’informations, consultez rubrique de Rick Anderson [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
 6. Ajoutez les valeurs de service de messagerie afin de refléter les valeurs de l’authentification SendGrid (nom d’utilisateur et mot de passe) pour que vous puissiez réussie envoyer par courrier électronique à partir de votre application. Veillez à utiliser le nom de votre compte SendGrid plutôt que l’adresse de messagerie que vous avez fourni SendGrid.
 
 ### <a name="enable-email-confirmation"></a>Activer la Confirmation de courrier électronique
@@ -104,9 +104,9 @@ Bien que ce didacticiel montre uniquement comment ajouter la notification par co
 2. Dans **l’Explorateur de solutions**, avec le bouton droit *Default.aspx* et sélectionnez **définir comme Page de démarrage**.
 3. Exécutez l’application en appuyant sur **F5.** Une fois la page s’affiche, cliquez sur le **inscrire** lien pour afficher la page d’inscription.
 4. Entrez votre adresse électronique et un mot de passe, puis cliquez sur le **inscrire** bouton pour envoyer un message électronique via SendGrid.  
- L’état actuel de votre projet et le code permet à l’utilisateur pour se connecter une fois qu’elles terminent le formulaire d’inscription, même si elles n’ont pas confirmé son compte.
+   L’état actuel de votre projet et le code permet à l’utilisateur pour se connecter une fois qu’elles terminent le formulaire d’inscription, même si elles n’ont pas confirmé son compte.
 5. Vérifiez votre compte de messagerie, puis cliquez sur le lien pour confirmer votre adresse de messagerie.  
- Une fois que vous envoyez le formulaire d’inscription, vous serez connecté.  
+   Une fois que vous envoyez le formulaire d’inscription, vous serez connecté.  
     ![Exemple de site Web - connecté](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image4.png)
 
 <a id="require"></a>
@@ -146,9 +146,9 @@ Bien que vous avez confirmé le compte de messagerie, à ce stade vous serez inu
 4. Exécutez l’application en appuyant sur **F5.** Une fois la page s’affiche, cliquez sur le **connecter** lien.
 5. Cliquez sur le **votre mot de passe oublié ?** lien pour afficher le **mot de passe oublié** page.
 6. Entrez votre adresse de messagerie, cliquez sur le **Submit** bouton pour envoyer un courrier électronique à votre adresse de ce qui vous permet de réinitialiser votre mot de passe.   
- Vérifiez votre compte de messagerie et cliquez sur le lien pour afficher le **réinitialiser le mot de passe** page.
+   Vérifiez votre compte de messagerie et cliquez sur le lien pour afficher le **réinitialiser le mot de passe** page.
 7. Sur le **réinitialiser le mot de passe** , entrez votre messagerie, le mot de passe et le mot de passe confirmé. Ensuite, appuyez sur la **réinitialiser** bouton.  
- Quand vous réinitialisez votre mot de passe, le **mot de passe modifié** page s’affiche. Vous pouvez désormais vous connecter avec votre nouveau mot de passe.
+   Quand vous réinitialisez votre mot de passe, le **mot de passe modifié** page s’affiche. Vous pouvez désormais vous connecter avec votre nouveau mot de passe.
 
 <a id="rsend"></a>
 ## <a name="resend-email-confirmation-link"></a>Renvoyer le lien de Confirmation par courrier électronique
@@ -167,7 +167,7 @@ Une fois qu’un utilisateur crée un nouveau compte local, elles sont envoyées
 4. Supprimez tous les comptes dans le **AspNetUsers** table qui contient l’alias de messagerie électronique que vous souhaitez tester.
 5. Exécutez l’application (**F5**) et inscrire votre adresse de messagerie.
 6. Avant de confirmer votre nouveau compte via le message électronique qui a été envoyé uniquement, tentent de se connecter avec le nouveau compte.  
- Vous verrez que vous ne parvenez pas à se connecter et que vous devez posséder un compte de messagerie confirmée. En outre, vous pouvez désormais renvoyer un message de confirmation à votre compte de messagerie.
+   Vous verrez que vous ne parvenez pas à se connecter et que vous devez posséder un compte de messagerie confirmée. En outre, vous pouvez désormais renvoyer un message de confirmation à votre compte de messagerie.
 7. Entrez votre adresse de messagerie et le mot de passe, puis appuyez sur la **renvoyer de confirmation** bouton.
 8. Après avoir confirmé votre adresse de messagerie basée sur le message électronique qui vient d’être envoyé, connectez-vous à l’application.
 

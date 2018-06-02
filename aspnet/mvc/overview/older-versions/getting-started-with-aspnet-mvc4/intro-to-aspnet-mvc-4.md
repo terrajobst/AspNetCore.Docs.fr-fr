@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
-title: "Présentation d’ASP.NET MVC 4 | Documents Microsoft"
+title: Présentation d’ASP.NET MVC 4 | Documents Microsoft
 author: Rick-Anderson
-description: "Une version mise à jour si ce didacticiel est disponible ici à l’aide de Visual Studio 2013. Le nouveau didacticiel utilise ASP.NET MVC 5, qui fournit de nombreuses améliorations de t..."
+description: Une version mise à jour si ce didacticiel est disponible ici à l’aide de Visual Studio 2013. Le nouveau didacticiel utilise ASP.NET MVC 5, qui fournit de nombreuses améliorations de t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/15/2012
@@ -12,15 +12,15 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 92d9e583b6c26fa8c928d33e14593d280702a269
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 519bac22ba2607931c5f3123b9b567859a2b3d1c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="intro-to-aspnet-mvc-4"></a>Présentation d’ASP.NET MVC 4
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Une version mise à jour si ce didacticiel est disponible [ici](../../getting-started/introduction/getting-started.md) à l’aide de [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads). Le nouveau didacticiel utilise ASP.NET MVC 5, qui fournit de nombreuses améliorations de ce didacticiel.
 > 
@@ -88,5 +88,5 @@ F5 provoque Visual Studio pour démarrer IIS Express et exécuter votre applicat
 
 Emploi ce modèle par défaut vous donne les pages Accueil, Contact et sur. Il prend en charge l’inscription et la connexion et vous lie à Facebook et Twitter. L’étape suivante consiste à modifier le fonctionnement de cette application et en savoir un peu de ASP.NET MVC. Fermez votre navigateur et nous allons modifier du code.
 
->[!div class="step-by-step"]
-[Next](adding-a-controller.md)
+> [!div class="step-by-step"]
+> [Next](adding-a-controller.md)

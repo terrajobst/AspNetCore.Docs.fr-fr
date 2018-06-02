@@ -1,22 +1,22 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
-title: "(Génération d’applications Cloud du monde réel avec Azure) de mise en cache distribuée | Documents Microsoft"
+title: (Génération d’applications Cloud du monde réel avec Azure) de mise en cache distribuée | Documents Microsoft
 author: MikeWasson
-description: "Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il..."
+description: Les applications du Cloud monde réel construction avec Azure livres est basée sur une présentation développée par Scott Guthrie. Il explique 13 des modèles et des meilleures pratiques qui peuvent il...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/20/2015
 ms.topic: article
 ms.assetid: 406518e9-3817-49ce-8b90-e82bc461e2c0
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/distributed-caching
 msc.type: authoredcontent
-ms.openlocfilehash: 24ede9cb9289c84140f6e2573f9d526f19cac64b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 3600200f9bb705ccf66c859547668bdf8e89d97a
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="distributed-caching-building-real-world-cloud-apps-with-azure"></a>Mise en cache (construction Cloud réelle les applications distribuées avec Azure)
 ====================
@@ -111,6 +111,6 @@ Exemple de code
 
 - [Cloud Service Fundamentals dans Azure](https://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Exemple d’application qui implémente la mise en cache distribuée. Consultez le blog d’accompagnement [Cloud Service Fundamentals : principes fondamentaux de la mise en cache](https://blogs.msdn.com/b/windowsazure/archive/2013/10/03/cloud-service-fundamentals-caching-basics.aspx).
 
->[!div class="step-by-step"]
-[Précédent](transient-fault-handling.md)
-[Suivant](queue-centric-work-pattern.md)
+> [!div class="step-by-step"]
+> [Précédent](transient-fault-handling.md)
+> [Suivant](queue-centric-work-pattern.md)

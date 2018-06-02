@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
-title: "L’utilisation de publications (postback) avec ReorderList fournissant (c#) | Documents Microsoft"
+title: L’utilisation de publications (postback) avec ReorderList fournissant (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle ReorderList fournissant dans la boîte à outils de contrôle AJAX fournit une liste qui peut être réorganisée par l’utilisateur via la fonction glisser- déposer. Chaque fois que la liste est réorganisée, un bon de commande en cours..."
+description: Le contrôle ReorderList fournissant dans la boîte à outils de contrôle AJAX fournit une liste qui peut être réorganisée par l’utilisateur via la fonction glisser- déposer. Chaque fois que la liste est réorganisée, un bon de commande en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5f5c5e253f6d85203a488152c5ad908157e6ee0c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: ed01c30c0721c8f1cd8ccb3fea0735ea8fa4f0a1
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-postbacks-with-reorderlist-c"></a>L’utilisation de publications (postback) avec ReorderList fournissant (c#)
 ====================
@@ -69,5 +69,5 @@ Enfin, pour activer la fonctionnalité d’ASP.NET AJAX et les outils de contrô
 
 Chaque réorganisation déclenche une publication ([cliquez pour afficher l’image en taille réelle](using-postbacks-with-reorderlist-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Next](drag-and-drop-via-reorderlist-cs.md)
+> [!div class="step-by-step"]
+> [Next](drag-and-drop-via-reorderlist-cs.md)

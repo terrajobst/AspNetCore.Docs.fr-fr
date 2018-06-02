@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb
-title: "Vue d’ensemble du contrôleur ASP.NET MVC (VB) | Documents Microsoft"
+title: Vue d’ensemble du contrôleur ASP.NET MVC (VB) | Documents Microsoft
 author: StephenWalther
-description: "Dans ce didacticiel, Stephen Walther présente les contrôleurs ASP.NET MVC. Vous apprenez à créer de nouveaux contrôleurs et de retourner différents types de res d’action..."
+description: Dans ce didacticiel, Stephen Walther présente les contrôleurs ASP.NET MVC. Vous apprenez à créer de nouveaux contrôleurs et de retourner différents types de res d’action...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 452e2cf771e8b1f298ce9693ec2a707e7c1d4dd1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0a45630e8f2d5ae0548bb6b8496df08ca5877a40
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-mvc-controller-overview-vb"></a>Vue d’ensemble du contrôleur ASP.NET MVC (VB)
 ====================
@@ -100,11 +100,11 @@ Par conséquent, si vous souhaitez renvoyer un affichage dans le navigateur, vou
 
 Le résultat d’action ContentResult est spécial. Vous pouvez utiliser le résultat d’action ContentResult pour retourner un résultat d’action en tant que texte brut. Par exemple, la méthode Index() sur la liste 4 retourne un message en texte brut et pas au format HTML.
 
-**La liste 4 - Controllers\StatusController.vb**
+**Listing 4 - Controllers\StatusController.vb**
 
 > StatusController
-
-
+> 
+> 
 > System.Web.Mvc.Controller
 
 
@@ -120,10 +120,10 @@ Si une action du contrôleur retourne un résultat qui n’est pas un résultat 
 
 L’action dans la liste 5 Index() retourne un objet DateTime. L’infrastructure ASP.NET MVC convertit l’objet DateTime en une chaîne et la valeur DateTime est encapsulé dans un ContentResult automatiquement. Le navigateur reçoit la date et l’heure sous forme de texte brut.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel est de vous présenter les concepts de contrôleurs ASP.NET MVC, les actions de contrôleur et les résultats d’action de contrôleur. Dans la première section, vous avez appris comment ajouter de nouveaux contrôleurs pour un projet ASP.NET MVC. Ensuite, vous avez appris les méthodes publics d’un contrôleur sont exposées à l’univers en tant qu’actions de contrôleur. Enfin, nous avons abordé les différents types de résultats d’action qui peuvent être retournées à partir d’une action du contrôleur. En particulier, nous avons expliqué comment retourner un ViewResult, RedirectToActionResult et ContentResult à partir d’une action du contrôleur.
 
->[!div class="step-by-step"]
-[Précédent](creating-a-custom-route-constraint-cs.md)
-[Suivant](creating-custom-routes-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](creating-a-custom-route-constraint-cs.md)
+> [Suivant](creating-custom-routes-vb.md)

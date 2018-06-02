@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-cs
-title: "À l’aide de la publication automatique CascadingDropDown (c#) | Documents Microsoft"
+title: À l’aide de la publication automatique CascadingDropDown (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth..."
+description: Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cd103283f46223d5158e58227bb53c00c74bc7d9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 04e0914dd1057f9ce490f68ae3fa9c56766beafb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-auto-postback-with-cascadingdropdown-c"></a>À l’aide de la publication automatique CascadingDropDown (c#)
 ====================
@@ -64,6 +64,6 @@ De cette manière, une publication (postback) est exécutée uniquement lorsqu�
 
 Sélection d’un élément de liste entraîne une publication ([cliquez pour afficher l’image en taille réelle](using-auto-postback-with-cascadingdropdown-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Précédent](presetting-list-entries-with-cascadingdropdown-cs.md)
-[Suivant](filling-a-list-using-cascadingdropdown-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](presetting-list-entries-with-cascadingdropdown-cs.md)
+> [Suivant](filling-a-list-using-cascadingdropdown-vb.md)

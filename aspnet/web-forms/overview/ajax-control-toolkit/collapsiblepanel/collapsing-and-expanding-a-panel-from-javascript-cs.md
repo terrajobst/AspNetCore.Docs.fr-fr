@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs
-title: "Réduire et développer un panneau de configuration à partir de JavaScript (c#) | Documents Microsoft"
+title: Réduire et développer un panneau de configuration à partir de JavaScript (c#) | Documents Microsoft
 author: wenz
-description: "Le contrôle de CollapsiblePanel dans ASP.NET AJAX Control Toolkit étend un panneau de configuration et lui fournit la possibilité de réduire son contenu et le développer un..."
+description: Le contrôle de CollapsiblePanel dans ASP.NET AJAX Control Toolkit étend un panneau de configuration et lui fournit la possibilité de réduire son contenu et le développer un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/collapsiblepanel/collapsing-and-expanding-a-panel-from-javascript-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 666f3e212ccdd5b26b466f4672134ce751dc5dd1
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 7baa3be7144946bde7d11afd9b1cb5f14ad9dede
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="collapsing-and-expanding-a-panel-from-javascript-c"></a>Réduire et développer un panneau de configuration à partir de JavaScript (c#)
 ====================
@@ -53,7 +53,7 @@ Malheureusement, l’extendeur actuellement n’expose pas une API spécifique p
 
 [!code-aspx[Main](collapsing-and-expanding-a-panel-from-javascript-cs/samples/sample5.aspx)]
 
-Dans le code JavaScript côté client (main `<script type="text/javascript">`), la `$find()` méthode doit être utilisée pour accéder à la `CollapsiblePanelExtender`. `$find("cpe")`Retourne une référence à celui-ci. Ensuite, des méthodes spécifiques permettent de résoudre la tâche en cours.
+Dans le code JavaScript côté client (main `<script type="text/javascript">`), la `$find()` méthode doit être utilisée pour accéder à la `CollapsiblePanelExtender`. `$find("cpe")` Retourne une référence à celui-ci. Ensuite, des méthodes spécifiques permettent de résoudre la tâche en cours.
 
 La méthode d’ouverture (développement), le panneau de configuration est appelée `_doOpen()`; le code suivant implémente la `doOpen()` fonction appelée lorsque le premier bouton est activé :
 
@@ -72,5 +72,5 @@ Le troisième bouton bascule l’état du panneau : à partir de réduite en d�
 
 Le troisième bouton modifie l’état du panneau : à partir de réduite en arrière et développé ([cliquez pour afficher l’image en taille réelle](collapsing-and-expanding-a-panel-from-javascript-cs/_static/image3.png))
 
->[!div class="step-by-step"]
-[Next](collapsing-and-expanding-a-panel-from-javascript-vb.md)
+> [!div class="step-by-step"]
+> [Next](collapsing-and-expanding-a-panel-from-javascript-vb.md)

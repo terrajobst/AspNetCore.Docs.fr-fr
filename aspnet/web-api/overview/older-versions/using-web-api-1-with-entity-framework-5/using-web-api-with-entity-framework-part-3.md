@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
-title: "Partie 3 : Création d’un contrôleur de Admin | Documents Microsoft"
+title: 'Partie 3 : Création d’un contrôleur de Admin | Documents Microsoft'
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/04/2012
@@ -12,11 +12,11 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 6fadfb6e96ae287fc5f81516b7535e03853c7e6a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 588d9d1b5d27759692cd840faabf2c3549c309d6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="part-3-creating-an-admin-controller"></a>Partie 3 : Création d’un contrôleur de l’administrateur
 ====================
@@ -71,10 +71,10 @@ La `AdminController` classe définit cinq méthodes qui implémentent les foncti
 | Méthode de contrôleur | Description | URI | Méthode HTTP |
 | --- | --- | --- | --- |
 | GetProducts | Obtient tous les produits. | API/produits | GET |
-| GetProduct | Recherche d’un produit par ID. | API/produits/*id* | GET |
-| PutProduct | Met à jour un produit. | API/produits/*id* | PUT |
-| PostProduct | Crée un nouveau produit. | API/produits | PUBLIER |
-| DeleteProduct | Supprime un produit. | API/produits/*id* | SUPPR |
+| GetProduct | Recherche d’un produit par ID. | api/products/*id* | GET |
+| PutProduct | Met à jour un produit. | api/products/*id* | PUT |
+| PostProduct | Crée un nouveau produit. | API/produits | POST |
+| DeleteProduct | Supprime un produit. | api/products/*id* | SUPPR |
 
 Chaque méthode appelle `OrdersContext` pour interroger la base de données. Appellent des méthodes qui modifient la collection (PUT, POST et DELETE) `db.SaveChanges` pour rendre persistantes les modifications apportées à la base de données. Contrôleurs sont créés par la requête HTTP et ensuite supprimés, il est donc nécessaire de conserver les modifications avant le retour de méthode.
 
@@ -102,6 +102,6 @@ Envoyer une demande HTTP à «`http://localhost:*portnum*/api/admin`. La premiè
 
 [!code-console[Main](using-web-api-with-entity-framework-part-3/samples/sample6.cmd)]
 
->[!div class="step-by-step"]
-[Précédent](using-web-api-with-entity-framework-part-2.md)
-[Suivant](using-web-api-with-entity-framework-part-4.md)
+> [!div class="step-by-step"]
+> [Précédent](using-web-api-with-entity-framework-part-2.md)
+> [Suivant](using-web-api-with-entity-framework-part-4.md)

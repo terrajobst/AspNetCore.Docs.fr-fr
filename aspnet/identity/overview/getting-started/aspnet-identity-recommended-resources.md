@@ -1,26 +1,26 @@
 ---
 uid: identity/overview/getting-started/aspnet-identity-recommended-resources
-title: "Ressources recommandé d’identité ASP.NET | Documents Microsoft"
+title: Ressources recommandé d’identité ASP.NET | Documents Microsoft
 author: Rick-Anderson
-description: "Cette rubrique fournit des liens vers des ressources de documentation sur l’utilisation d’identité ASP.NET. Si vous connaissez un excellent billet de blog, stackoverflow thread ou n’importe quel autre lin..."
+description: Cette rubrique fournit des liens vers des ressources de documentation sur l’utilisation d’identité ASP.NET. Si vous connaissez un excellent billet de blog, stackoverflow thread ou n’importe quel autre lin...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2015
 ms.topic: article
 ms.assetid: 0f78aec2-f509-46fa-b20f-d5208425d8ec
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-recommended-resources
 msc.type: authoredcontent
-ms.openlocfilehash: cb6e378d6b1de7d43bbc4272b64f9029f4e92924
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: f2e1693a32fce6956ddb1e095e6f208b9f0faab6
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="aspnet-identity-recommended-resources"></a>Ressources recommandé d’identité ASP.NET
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
 > Cette rubrique fournit des liens vers des ressources de documentation sur l’utilisation d’identité ASP.NET.
 > 
@@ -94,7 +94,7 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
     - [Compréhension du Pipeline de l’authentification Owin externe](http://coding.abel.nu/2014/06/understanding-the-owin-external-authentication-pipeline/)
     - [ASP.NET Identity et vue d’ensemble Owin](http://coding.abel.nu/2014/06/asp-net-identity-and-owin-overview/)
 
- Par [K. Scott Allen](https://twitter.com/OdeToCode) sur Ode au Code
+  Par [K. Scott Allen](https://twitter.com/OdeToCode) sur Ode au Code
 
     - [ASP.NET Core Identity](http://odetocode.com/blogs/scott/archive/2013/11/25/asp-net-core-identity.aspx) ce billet de blog examine les abstractions principales, y compris IUser, IUserStore et le\*stocker des interfaces.
     - [Identité ASP.NET avec Entity Framework](http://odetocode.com/blogs/scott/archive/2014/01/03/asp-net-identity-with-the-entity-framework.aspx) dans les applications MVC 5, API Web et SPA, les chaînes de connexion et les contextes de la gestion des comptes d’utilisateur individuels
@@ -108,7 +108,7 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
 - [Pranav Rastogi](https://twitter.com/rustd)
 
     - [Obtenir plus d’informations à partir de réseaux sociaux fournisseurs](https://blogs.msdn.com/b/webdev/archive/2013/10/16/get-more-information-from-social-providers-used-in-the-vs-2013-project-templates.aspx)
-- [@beabigrockstar](https://twitter.com/beabigrockstar)(Jerrie Pelser)
+- [@beabigrockstar](https://twitter.com/beabigrockstar) (Jerrie Pelser)
 
     - [Authentification à 2 facteurs](http://www.beabigrockstar.com/blog/2-factor-authentication-with-asp-net-identity-2-0-beta-1/)
     - [À l’aide de Google Authenticator avec l’identité de ASP.NET](http://www.beabigrockstar.com/blog/using-google-authenticator-asp-net-identity/)
@@ -132,7 +132,7 @@ Par [Rick Anderson](https://github.com/Rick-Anderson)
 - Channel 9 [sécurisation de votre site Web avec ASP.NET Identity](https://channel9.msdn.com/Events/TechDays/Techdays-2014-the-Netherlands/Securing-your-website-with-ASP-NET-Identity) par Alex Thissen
 - [Utiliser l’identité de ASP.NET sur un modèle de base de données existant](https://www.youtube.com/watch?v=elfqejow5hM) par Alexander Schmidt
 - [ASP.NET une identité](https://www.youtube.com/watch?v=w8GD-QIusKk) par Ivaylo Kenov de Telerik
-- [Tchèque ASP.NET Identity](https://www.youtube.com/watch?v=tVbZp5brcpY) dans ce cours, nous allons montrer comment déployer l’authentification de base ajouter la prise en charge des fournisseurs d’identité externes tels que Twitter ou Facebook et comment utiliser les mots de passe à usage unique (OTP). [ASP.NET Identity JD nástupce appartenance d’un fournisseur de rôle &#367; v ASP.NET, tedy knihovna pro zajišt &#283; ní autentizace uživatel &#367;. V této p &#345; ednášce si ukážeme, jak nasad]
+- [Tchèque ASP.NET Identity](https://www.youtube.com/watch?v=tVbZp5brcpY) dans ce cours, nous allons montrer comment déployer l’authentification de base ajouter la prise en charge des fournisseurs d’identité externes tels que Twitter ou Facebook et comment utiliser les mots de passe à usage unique (OTP). [ASP.NET Identity JD nástupce appartenance d’un fournisseur de rôles&#367; v ASP.NET, tedy knihovna pro zajišt&#283;ní autentizace uživatel&#367;. V této p&#345;ednášce si ukážeme, jak nasad]
 
 <a id="cust"></a>
 ## <a name="custom-storage-providers-for-aspnet-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Identity

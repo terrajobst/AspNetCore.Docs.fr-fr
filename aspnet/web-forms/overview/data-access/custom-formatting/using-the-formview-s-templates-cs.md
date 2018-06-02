@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-cs
-title: "À l’aide de modèles FormView (c#) | Documents Microsoft"
+title: À l’aide de modèles FormView (c#) | Documents Microsoft
 author: rick-anderson
-description: "À la différence du DetailsView, le FormView n’est pas composé de champs. Au lieu de cela, le contrôle FormView est rendu à l’aide de modèles. Dans ce didacticiel, nous allons examiner à l’aide de la F...."
+description: À la différence du DetailsView, le FormView n’est pas composé de champs. Au lieu de cela, le contrôle FormView est rendu à l’aide de modèles. Dans ce didacticiel, nous allons examiner à l’aide de la F....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/31/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 18e76a763e22c0d1046acc60e095bbd11960c5e6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 0e1b36f0bfc244e39bb620c1c066b3e2403722cb
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="using-the-formviews-templates-c"></a>À l’aide de modèles FormView (c#)
 ====================
@@ -33,12 +33,12 @@ Dans les deux derniers didacticiels, nous avons vu comment personnaliser les sor
 
 À la différence du DetailsView, le FormView n’est pas composé de champs. Impossible d’ajouter un BoundField ou un TemplateField à un FormView. Au lieu de cela, le contrôle FormView est rendu à l’aide de modèles. Considérez le FormView comme un contrôle DetailsView contenant TemplateField unique. Le FormView prend en charge les modèles suivants :
 
-- `ItemTemplate`utilisé pour restituer l’enregistrement particulier affiché dans le contrôle FormView
-- `HeaderTemplate`permet de spécifier une ligne d’en-tête facultatif
-- `FooterTemplate`permet de spécifier une ligne de pied de page facultatif
-- `EmptyDataTemplate`Lorsque FormView `DataSource` ne dispose pas de tous les enregistrements, les `EmptyDataTemplate` est utilisé à la place de la `ItemTemplate` pour restituer le balisage du contrôle
-- `PagerTemplate`peut être utilisé pour personnaliser l’interface de pagination pour FormViews ayant une pagination activée
-- `EditItemTemplate` / `InsertItemTemplate`permet de personnaliser l’interface de modification ou une interface insertion pour FormViews qui prennent en charge ces fonctionnalités.
+- `ItemTemplate` utilisé pour restituer l’enregistrement particulier affiché dans le contrôle FormView
+- `HeaderTemplate` permet de spécifier une ligne d’en-tête facultatif
+- `FooterTemplate` permet de spécifier une ligne de pied de page facultatif
+- `EmptyDataTemplate` Lorsque FormView `DataSource` ne dispose pas de tous les enregistrements, les `EmptyDataTemplate` est utilisé à la place de la `ItemTemplate` pour restituer le balisage du contrôle
+- `PagerTemplate` peut être utilisé pour personnaliser l’interface de pagination pour FormViews ayant une pagination activée
+- `EditItemTemplate` / `InsertItemTemplate` permet de personnaliser l’interface de modification ou une interface insertion pour FormViews qui prennent en charge ces fonctionnalités.
 
 Dans ce didacticiel, que nous allons examiner utilisant le contrôle FormView pour présenter un affichage moins rigid de produits. Au lieu d’avoir des champs pour le nom, catégorie, fournisseur et d’ainsi de suite, le contrôle FormView `ItemTemplate` affichent ces valeurs à l’aide d’une combinaison d’un élément d’en-tête et un `<table>` (voir Figure 1).
 
@@ -101,7 +101,7 @@ Avec la `ItemTemplate` terminée, les informations de produit s’affichent de m
 **Figure 4**: la sortie de FormView fluide ([cliquez pour afficher l’image en taille réelle](using-the-formview-s-templates-cs/_static/image12.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Alors que les contrôles GridView et DetailsView peuvent avoir leur sortie personnalisé à l’aide de TemplateField, les deux présentent toujours leurs données dans un format de grille, bruts. Dans les cas lorsqu’un enregistrement unique doit être indiqué à l’aide d’une disposition moins rigide, le FormView est idéale. Comme le contrôle DetailsView, le FormView restitue un enregistrement unique à partir de son `DataSource`, mais à la différence du DetailsView est composé uniquement de modèles et ne prend pas en charge les champs.
 
@@ -111,12 +111,12 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
 ## <a name="special-thanks-to"></a>Remerciements
 
 Cette série de didacticiels a été révisée par plusieurs réviseurs utiles. Entraîner un réviseur pour ce didacticiel a été E.R. Gillain. Vous souhaitez consulter mes prochains articles MSDN ? Dans ce cas, me supprimer une ligne à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com)
 
->[!div class="step-by-step"]
-[Précédent](using-templatefields-in-the-detailsview-control-cs.md)
-[Suivant](displaying-summary-information-in-the-gridview-s-footer-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](using-templatefields-in-the-detailsview-control-cs.md)
+> [Suivant](displaying-summary-information-in-the-gridview-s-footer-cs.md)

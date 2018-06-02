@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb
-title: "Ajout et la réponse à des boutons pour un GridView (VB) | Documents Microsoft"
+title: Ajout et la réponse à des boutons pour un GridView (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons examiner comment ajouter des boutons personnalisés, pour un modèle et les champs d’un contrôle GridView ou DetailsView. En particulier, nous allons générateur..."
+description: Dans ce didacticiel, nous allons examiner comment ajouter des boutons personnalisés, pour un modèle et les champs d’un contrôle GridView ou DetailsView. En particulier, nous allons générateur...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/13/2006
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8a642a9a8e25d64028df0b5d8741da3008700652
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 58b570c897810eeaa182a201616a182c02e9d92c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-vb"></a>Ajout et la réponse à des boutons pour un GridView (VB)
 ====================
@@ -129,7 +129,7 @@ Configurer cette ObjectDataSource pour utiliser la classe ProductsBLL s `GetProd
 
 [![Indiquer que supplierID paramètre doit provenir le contrôle FormView de fournisseurs](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image25.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image24.png)
 
-**La figure 10**: indiquer que le  *`supplierID`*  paramètre doit provenir le `Suppliers` contrôle FormView ([cliquez pour afficher l’image en taille réelle](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image26.png))
+**La figure 10**: indiquer que le *`supplierID`* paramètre doit provenir le `Suppliers` contrôle FormView ([cliquez pour afficher l’image en taille réelle](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image26.png))
 
 
 À l’issue de l’Assistant ObjectDataSource, le contrôle GridView contiendra un BoundField ou le CheckBoxField pour chacun des champs de données produit s. S permettent de l’ajuster vers le bas pour afficher uniquement le `ProductName` et `UnitPrice` BoundFields avec la `Discontinued` CheckBoxField ; permettent en outre, de format s le `UnitPrice` BoundField telles que son texte est mis en forme comme une valeur monétaire. Votre GridView et `SuppliersProductsDataSource` balisage déclaratif de ObjectDataSource s doit être similaire à la balise suivante :
@@ -157,7 +157,7 @@ Comme nous l’avons fait dans nos didacticiels précédents, nous allons utilis
 **Figure 12**: créer la méthode de la couche DAL à l’aide une instruction SQL de Ad-Hoc ([cliquez pour afficher l’image en taille réelle](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image32.png))
 
 
-Ensuite, l’Assistant vous demande si nous concernant le type de requête à créer. Étant donné que la `DiscontinueAllProductsForSupplier(supplierID)` méthode devez mettre à jour le `Products` table de base de données, la définition la `Discontinued` 1 pour tous les produits fournis par le champ  *`supplierID`* , nous avons besoin créer une requête qui met à jour des données.
+Ensuite, l’Assistant vous demande si nous concernant le type de requête à créer. Étant donné que la `DiscontinueAllProductsForSupplier(supplierID)` méthode devez mettre à jour le `Products` table de base de données, la définition la `Discontinued` 1 pour tous les produits fournis par le champ *`supplierID`*, nous avons besoin créer une requête qui met à jour des données.
 
 
 [![Choisissez le Type de requête de mise à jour](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image34.png)](adding-and-responding-to-buttons-to-a-gridview-vb/_static/image33.png)
@@ -183,7 +183,7 @@ Avec la `DiscontinueAllProductsForSupplier(supplierID)` créé dans la couche d�
 
 [!code-vb[Main](adding-and-responding-to-buttons-to-a-gridview-vb/samples/sample5.vb)]
 
-Cette méthode appelle simplement jusqu'à la `DiscontinueAllProductsForSupplier(supplierID)` méthode dans la couche DAL, passant fourni  *`supplierID`*  la valeur du paramètre. S’il existe des règles d’entreprise uniquement un fournisseur produits s supprimée dans certaines circonstances, ces règles doivent être implémentées ici, dans la couche BLL.
+Cette méthode appelle simplement jusqu'à la `DiscontinueAllProductsForSupplier(supplierID)` méthode dans la couche DAL, passant fourni *`supplierID`* la valeur du paramètre. S’il existe des règles d’entreprise uniquement un fournisseur produits s supprimée dans certaines circonstances, ces règles doivent être implémentées ici, dans la couche BLL.
 
 > [!NOTE]
 > Contrairement à la `UpdateProduct` dans les surcharges de la `ProductsBLL` (classe), le `DiscontinueAllProductsForSupplier(supplierID)` signature de méthode n’inclut pas le `DataObjectMethodAttribute` attribut (`<System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Update, Boolean)>`). Cela empêche le `DiscontinueAllProductsForSupplier(supplierID)` méthode à partir de la liste de déroulante ObjectDataSource s s d’Assistant Configurer la Source de données dans l’onglet mise à jour. Je ve omis cet attribut, car nous allons appeler la `DiscontinueAllProductsForSupplier(supplierID)` (méthode) directement à partir d’un gestionnaire d’événements dans notre page ASP.NET.
@@ -203,7 +203,7 @@ Lorsque le bouton est activé par une visite de l’utilisateur s’ensuit de la
 
 Étant donné que le `ItemCommand` se déclenche, quelle que soit le bouton est activé, dans le gestionnaire, nous devons déterminer si utilisateur a cliqué sur le bouton Arrêter tous les produits des événements, ou s’il s’agissait d’une autre bouton. Pour ce faire, nous pouvons définir le contrôle de bouton Web s `CommandName` propriété à une valeur d’identification. Lorsque le bouton est activé, cela `CommandName` valeur passée dans le `ItemCommand` Gestionnaire d’événements, ce qui nous permet de déterminer si le bouton Arrêter tous les produits est le bouton cliqué. Définir le s interrompre le bouton tous les produits `CommandName` propriété DiscontinueProducts.
 
-Enfin, permettent de s utilisent une boîte de dialogue de confirmation du côté client pour vous assurer que l’utilisateur souhaite vraiment interrompre les produits du fournisseur sélectionné s. Comme nous l’avons vu dans la [Ajout côté Client Confirmation lors de la suppression](../editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-vb.md) didacticiel, cela peut être accompli avec un peu de JavaScript. En particulier, la valeur la propriété de OnClientClick s du contrôle bouton Web`return confirm('This will mark _all_ of this supplier\'s products as discontinued. Are you certain you want to do this?');`
+Enfin, permettent de s utilisent une boîte de dialogue de confirmation du côté client pour vous assurer que l’utilisateur souhaite vraiment interrompre les produits du fournisseur sélectionné s. Comme nous l’avons vu dans la [Ajout côté Client Confirmation lors de la suppression](../editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-vb.md) didacticiel, cela peut être accompli avec un peu de JavaScript. En particulier, la valeur la propriété de OnClientClick s du contrôle bouton Web `return confirm('This will mark _all_ of this supplier\'s products as discontinued. Are you certain you want to do this?');`
 
 Après avoir apporté ces modifications, la syntaxe déclarative de s FormView doit se présenter comme suit :
 
@@ -312,7 +312,7 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](adding-and-responding-to-buttons-to-a-gridview-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](adding-and-responding-to-buttons-to-a-gridview-cs.md)

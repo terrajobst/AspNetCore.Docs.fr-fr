@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
-title: "Création d’un MVC 3 Application avec Razor et JavaScript non Obstructif | Documents Microsoft"
+title: Création d’un MVC 3 Application avec Razor et JavaScript non Obstructif | Documents Microsoft
 author: microsoft
-description: "L’exemple d’application web liste utilisateur montre combien il est simple de créer des applications ASP.NET MVC 3 à l’aide du moteur d’affichage Razor. Exemple application s..."
+description: L’exemple d’application web liste utilisateur montre combien il est simple de créer des applications ASP.NET MVC 3 à l’aide du moteur d’affichage Razor. Exemple application s...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/01/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: 29b45c07b5498542abbf22c4c3001b1cee41edc9
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 9b273f6827cad2078b581d6da7b127198dfddaa5
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/10/2018
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>Création d’un MVC 3 Application avec Razor et JavaScript non Obstrusif
 ====================
@@ -54,7 +54,7 @@ Dans ce didacticiel vous ne serez pas utiliser le fournisseur d’appartenances 
 
 ![Soln Exp](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image5.png)
 
-Modifier la  *\_Layout.cshtml* de fichier et remplacez la balise à l’intérieur de la `<div>` élément nommé `logindisplay` avec le message  *&quot;* connexion désactivé&quot;. L’exemple suivant montre le balisage :
+Modifier la  <em>\_Layout.cshtml</em> de fichier et remplacez la balise à l’intérieur de la `<div>` élément nommé `logindisplay` avec le message <em>&quot;</em>connexion désactivé&quot;. L’exemple suivant montre le balisage :
 
 [!code-cshtml[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample1.cshtml)]
 
@@ -122,7 +122,7 @@ Ajoutez le code suivant `Details` méthode au contrôleur home :
 
 [!code-csharp[Main](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/samples/sample8.cs)]
 
-Avec le bouton droit à l’intérieur de la `Details` (méthode), puis sélectionnez **ajouter une vue**. Vérifiez que le **afficher la classe de données** boîte contient **Mvc3Razor.Models.UserModel***.* Définissez **afficher le contenu** à **détails** puis cliquez sur **ajouter**.
+Avec le bouton droit à l’intérieur de la `Details` (méthode), puis sélectionnez <strong>ajouter une vue</strong>. Vérifiez que le <strong>afficher la classe de données</strong> boîte contient <strong>Mvc3Razor.Models.UserModel</strong><em>.</em> Définissez <strong>afficher le contenu</strong> à <strong>détails</strong> puis cliquez sur <strong>ajouter</strong>.
 
 ![Ajouter la vue Détails](creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript/_static/image11.png)
 

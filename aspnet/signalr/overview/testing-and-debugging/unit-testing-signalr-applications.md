@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/testing-and-debugging/unit-testing-signalr-applications
-title: "Tests unitaires d’Applications de SignalR | Documents Microsoft"
+title: Tests unitaires d’Applications de SignalR | Documents Microsoft
 author: pfletcher
-description: "Cet article décrit comment utiliser les fonctionnalités de test unitaire de SignalR 2.0."
+description: Cet article décrit comment utiliser les fonctionnalités de test unitaire de SignalR 2.0.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 msc.type: authoredcontent
-ms.openlocfilehash: d767e1a9d27670387133e5a48a8f92f5bdd39d9e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: cff866716cb1179e02b930f33cb0f8c33d4a6cf0
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="unit-testing-signalr-applications"></a>Unité de test des Applications SignalR
 ====================
@@ -72,11 +72,11 @@ Dans cette section, vous allez ajouter un test unitaire pour l’application cr�
     ![Ajouter une référence de projet](unit-testing-signalr-applications/_static/image3.png)
 6. Ajouter les packages SignalR, Moq et XUnit le **TestLibrary** projet. Dans le **Package Manager Console**, définissez le **projet par défaut** menu déroulant pour **TestLibrary**. Exécutez les commandes suivantes dans la fenêtre de console :
 
-    - `Install-Package Microsoft.AspNet.SignalR`
-    - `Install-Package Moq`
-    - `Install-Package XUnit`
+   - `Install-Package Microsoft.AspNet.SignalR`
+   - `Install-Package Moq`
+   - `Install-Package XUnit`
 
-    ![Installer des Packages](unit-testing-signalr-applications/_static/image4.png)
+     ![Installer des Packages](unit-testing-signalr-applications/_static/image4.png)
 7. Créer le fichier de test. Cliquez sur le **TestLibrary** projet puis cliquez sur **ajouter...** , **Classe**. Nommez la nouvelle classe **Tests.cs**.
 8. Remplacez le contenu de Tests.cs par le code suivant.
 

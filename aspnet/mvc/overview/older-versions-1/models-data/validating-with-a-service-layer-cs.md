@@ -2,7 +2,7 @@
 uid: mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs
 title: Validation avec une couche de Service (c#) | Documents Microsoft
 author: StephenWalther
-description: "Découvrez comment déplacer votre logique de validation en dehors de vos actions de contrôleur et dans une couche de service distinct. Dans ce didacticiel, Stephen Walther explique comment vous..."
+description: Découvrez comment déplacer votre logique de validation en dehors de vos actions de contrôleur et dans une couche de service distinct. Dans ce didacticiel, Stephen Walther explique comment vous...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/02/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f36301aef4377c6c00cb4fc33dbc5c57b1c426a9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 06042ac197cc54da767a94a44c57eb09bb3db9fa
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="validating-with-a-service-layer-c"></a>Validation avec une couche de Service (c#)
 ====================
@@ -51,7 +51,7 @@ Une couche de service est une couche supplémentaire dans une application ASP.NE
 
 Par exemple, la couche de service de produit dans la liste 3 a une méthode CreateProduct(). La méthode CreateProduct() appelle la méthode de ValidateProduct() pour valider un nouveau produit avant de passer le produit dans le référentiel de produit.
 
-**La liste 3 - Models\ProductService.cs**
+**Listing 3 - Models\ProductService.cs**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample3.cs)]
 
@@ -71,7 +71,7 @@ Vous souhaitez isoler la couche de service à partir de notre couche contrôleur
 
 Dans la liste 5, la couche de service a été mise à jour afin qu’il n’utilise plus le modèle d’état. Au lieu de cela, il utilise n’importe quelle classe qui implémente l’interface IValidationDictionary.
 
-**La liste 5 - Models\ProductService.cs (dissocié)**
+**Listing 5 - Models\ProductService.cs (decoupled)**
 
 [!code-csharp[Main](validating-with-a-service-layer-cs/samples/sample5.cs)]
 
@@ -95,10 +95,10 @@ Enfin, le contrôleur de mise à jour dans la liste 8 utilise le ModelStateWrapp
 
 À l’aide de la IValidationDictionary interface et la classe ModelStateWrapper permet d’isoler totalement notre couche de service à partir de la couche de notre contrôleur. La couche de service n’est plus dépendante de l’état du modèle. Vous pouvez passer n’importe quelle classe qui implémente l’interface IValidationDictionary à la couche de service. Par exemple, une application WPF peut implémenter l’interface IValidationDictionary avec une classe de collection simple.
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 L’objectif de ce didacticiel a pour présenter une approche pour effectuer la validation dans une application ASP.NET MVC. Dans ce didacticiel, vous avez appris comment déplacer tout votre logique de validation en dehors de vos contrôleurs et dans une couche de service distinct. Vous avez également appris comment isoler votre couche de service à partir de votre couche de contrôleur en créant une classe ModelStateWrapper.
 
->[!div class="step-by-step"]
-[Précédent](validating-with-the-idataerrorinfo-interface-cs.md)
-[Suivant](validation-with-the-data-annotation-validators-cs.md)
+> [!div class="step-by-step"]
+> [Précédent](validating-with-the-idataerrorinfo-interface-cs.md)
+> [Suivant](validation-with-the-data-annotation-validators-cs.md)

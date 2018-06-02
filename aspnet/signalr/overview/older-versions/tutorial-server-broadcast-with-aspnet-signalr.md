@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
-title: "Didacticiel : Serveur de diffusion avec ASP.NET SignalR 1.x | Documents Microsoft"
+title: 'Didacticiel : Serveur de diffusion avec ASP.NET SignalR 1.x | Documents Microsoft'
 author: pfletcher
-description: "Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR pour fournir des fonctionnalités de diffusion de serveur. Serveur de diffusion signifie que communic..."
+description: Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR pour fournir des fonctionnalités de diffusion de serveur. Serveur de diffusion signifie que communic...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/10/2013
@@ -12,11 +12,11 @@ ms.technology: dotnet-signalr
 ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 3f641b53a9ed568132909114c6cceaa957064fa2
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 85d40e411a7ff974da5cc4fa7fbd789b83d92201
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Didacticiel : Serveur de diffusion avec ASP.NET SignalR 1.x
 ====================
@@ -39,7 +39,7 @@ L’application que vous allez créer dans la première partie de ce didacticiel
 
 ![Version initiale de StockTicker](tutorial-server-broadcast-with-aspnet-signalr/_static/image1.png)
 
-Régulièrement le serveur de façon aléatoire des actions des mises à jour et transmet les mises à jour pour tous les clients connectés. Dans le navigateur les nombres et les symboles dans le **modifier** et  **%**  colonnes changent dynamiquement en réponse à des notifications à partir du serveur. Si vous ouvrez des navigateurs supplémentaires à la même URL, elles affichent toutes les mêmes données et les mêmes modifications aux données simultanément.
+Régulièrement le serveur de façon aléatoire des actions des mises à jour et transmet les mises à jour pour tous les clients connectés. Dans le navigateur les nombres et les symboles dans le **modifier** et **%** colonnes changent dynamiquement en réponse à des notifications à partir du serveur. Si vous ouvrez des navigateurs supplémentaires à la même URL, elles affichent toutes les mêmes données et les mêmes modifications aux données simultanément.
 
 Ce didacticiel contient les sections suivantes :
 
@@ -217,7 +217,7 @@ Vous avez maintenant terminé la configuration du code serveur. Dans la section 
 
     Les balises de script spécifient le fichier de script jQuery, le fichier de script SignalR core, le fichier de script de proxy SignalR et un fichier de script StockTicker que vous allez créer ultérieurement. Le fichier de script de proxy SignalR, qui spécifie l’URL « concentrateurs signalr / / », est généré dynamiquement et définit les méthodes de proxy pour les méthodes sur la classe de concentrateur, dans ce cas pour StockTickerHub.GetAllStocks. Si vous préférez, vous pouvez générer manuellement ce fichier JavaScript en utilisant [SignalR utilitaires](http://nuget.org/packages/Microsoft.AspNet.SignalR.Utils/) et désactiver la création de fichier dynamique dans l’appel de méthode MapHubs.
 3. > [!IMPORTANT]
- > Assurez-vous que le fichier JavaScript fait référence dans *StockTicker.html* sont corrects. Autrement dit, vous assurer que la version de jQuery dans votre balise script (1.8.2 dans l’exemple) est identique à la version de votre projet jQuery *Scripts* dossier et vous assurer que la version SignalR dans votre balise script est le même que SignalR version de votre projet *Scripts* dossier. Modifier les noms de fichiers dans les balises de script, si nécessaire.
+   > Assurez-vous que le fichier JavaScript fait référence dans *StockTicker.html* sont corrects. Autrement dit, vous assurer que la version de jQuery dans votre balise script (1.8.2 dans l’exemple) est identique à la version de votre projet jQuery *Scripts* dossier et vous assurer que la version SignalR dans votre balise script est le même que SignalR version de votre projet *Scripts* dossier. Modifier les noms de fichiers dans les balises de script, si nécessaire.
 4. Dans **l’Explorateur de solutions**, avec le bouton droit *StockTicker.html*, puis cliquez sur **définir comme Page de démarrage**.
 5. Créez un nouveau fichier JavaScript dans le dossier du projet et nommez-le *StockTicker.js*...
 6. Remplacez le code du modèle par le code suivant :

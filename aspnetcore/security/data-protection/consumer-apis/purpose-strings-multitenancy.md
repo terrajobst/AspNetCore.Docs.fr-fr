@@ -1,7 +1,7 @@
 ---
-title: "Chaînes d’objectif dans ASP.NET Core"
+title: Hiérarchie d’objet et une architecture mutualisée dans ASP.NET Core
 author: rick-anderson
-description: "Ce document décrit la hiérarchie de chaîne de fin et une architecture mutualisée par rapport à l’API de protection des données ASP.NET Core."
+description: En savoir plus sur la hiérarchie de chaîne de fin et une architecture mutualisée en relation avec les API de Protection de données ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -9,17 +9,17 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
-ms.openlocfilehash: 490896563db514aba3904b01e69a23b61659d830
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: a1ca2c32f95a86b877cbbe94d106d23b86800443
+ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 03/22/2018
 ---
 # <a name="purpose-hierarchy-and-multi-tenancy-in-aspnet-core"></a>Hiérarchie d’objet et une architecture mutualisée dans ASP.NET Core
 
 Dans la mesure où un `IDataProtector` est également implicitement un `IDataProtectionProvider`, à des fins peuvent être chaînés ensemble. Dans ce sens, `provider.CreateProtector([ "purpose1", "purpose2" ])` équivaut à `provider.CreateProtector("purpose1").CreateProtector("purpose2")`.
 
-Ainsi, pour certaines relations hiérarchiques intéressantes via le système de protection des données. Dans l’exemple précédent de [Contoso.Messaging.SecureMessage](purpose-strings.md#data-protection-contoso-purpose), le composant SecureMessage peut appeler `provider.CreateProtector("Contoso.Messaging.SecureMessage")` fasse une seule fois et mettre en cache le résultat dans un privé `_myProvide` champ. Les protecteurs de futurs peuvent ensuite être créées via des appels à `_myProvider.CreateProtector("User: username")`, et ces protecteurs sont utilisées pour la sécurisation des messages individuels.
+Ainsi, pour certaines relations hiérarchiques intéressantes via le système de protection des données. Dans l’exemple précédent de [Contoso.Messaging.SecureMessage](xref:security/data-protection/consumer-apis/purpose-strings#data-protection-contoso-purpose), le composant SecureMessage peut appeler `provider.CreateProtector("Contoso.Messaging.SecureMessage")` fasse une seule fois et mettre en cache le résultat dans un privé `_myProvide` champ. Les protecteurs de futurs peuvent ensuite être créées via des appels à `_myProvider.CreateProtector("User: username")`, et ces protecteurs sont utilisées pour la sécurisation des messages individuels.
 
 Cela peut également être inversé. Envisagez une seule application logique qui héberge plusieurs clients (un CMS semble raisonnable) et chaque client peuvent être configuré avec son propre système de gestion de l’authentification et l’état. L’application couvrant possède un seul fournisseur de master, et il appelle `provider.CreateProtector("Tenant 1")` et `provider.CreateProtector("Tenant 2")` pour donner à chaque client de sa propre tranche isolé du système de protection des données. Les locataires peuvent ensuite dériver leurs propres protecteurs individuels en fonction de leurs propres besoins, mais quel que soit le manuels ils tentent ne peut pas créer protecteurs qui entrent en conflit avec n’importe quel autre client dans le système. Sous forme de graphique, il est représenté comme ci-dessous.
 

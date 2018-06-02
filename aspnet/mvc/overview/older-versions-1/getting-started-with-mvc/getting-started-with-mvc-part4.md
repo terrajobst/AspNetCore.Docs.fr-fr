@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
-title: "Création d’une base de données | Documents Microsoft"
+title: Création d’une base de données | Documents Microsoft
 author: shanselman
-description: "Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données."
+description: Il s’agit d’un didacticiel débutant qui présente les notions de base d’ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/14/2010
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part4
 msc.type: authoredcontent
-ms.openlocfilehash: 22f1042555d7cdd0ca8d75f1cbde65fbb65d81cc
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: ff2a41803cd31ce50bbf79e630d827b6de441ba3
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="creating-a-database"></a>Création d’une base de données
 ====================
@@ -87,6 +87,6 @@ Si vous n’aimez pas d’affectation de noms par défaut et de mappage des conv
 
 Maintenant, nous allons travailler avec des données réelles.
 
->[!div class="step-by-step"]
-[Précédent](getting-started-with-mvc-part3.md)
-[Suivant](getting-started-with-mvc-part5.md)
+> [!div class="step-by-step"]
+> [Précédent](getting-started-with-mvc-part3.md)
+> [Suivant](getting-started-with-mvc-part5.md)

@@ -1,21 +1,22 @@
 ---
-title: "Bien démarrer avec des pages Razor dans ASP.NET Core sur Mac"
+title: Bien démarrer avec les pages Razor dans ASP.NET Core sur macOS avec Visual Studio pour Mac
 author: rick-anderson
-description: "Bien démarrer avec des pages Razor dans ASP.NET Core à l’aide de Visual Studio pour Mac"
+description: Découvrez comment bien démarrer avec les pages Razor dans ASP.NET Core à l’aide de Visual Studio pour Mac.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/27/2017
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/razor-pages-start
-ms.openlocfilehash: 9e7d1db47e4cc9d753b1629e20345ca1f4403b2f
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 2da9b34f797758c02132d5cf6cc2f2fb2fe6f05a
+ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="getting-started-with-razor-pages-in-aspnet-core-with-visual-studio-for-mac"></a>Bien démarrer avec des pages Razor dans ASP.NET Core avec Visual Studio pour Mac
+# <a name="get-started-with-razor-pages-in-aspnet-core-on-macos-with-visual-studio-for-mac"></a>Bien démarrer avec les pages Razor dans ASP.NET Core sur macOS avec Visual Studio pour Mac
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -23,10 +24,7 @@ Ce didacticiel décrit les principes fondamentaux liés à la génération d’u
 
 ## <a name="prerequisites"></a>Prérequis
 
-Installez les éléments suivants :
-
-* [SDK .NET Core 2.0.0 ](https://www.microsoft.com/net/core) ou version ultérieure
-* [Visual Studio pour Mac](https://www.visualstudio.com/vs/visual-studio-mac/)
+[!INCLUDE [](~/includes/net-core-prereqs-macos.md)]
 
 ## <a name="create-a-razor-web-app"></a>Créer une application web Razor
 
@@ -38,11 +36,11 @@ cd RazorPagesMovie
 dotnet run
 ```
 
-Les commandes précédentes utilisent le [CLI .NET Core](https://docs.microsoft.com/dotnet/core/tools/dotnet) pour créer et exécuter un projet de pages Razor. Ouvrez un navigateur à l’adresse http://localhost:5000 pour afficher l’application.
+Les commandes précédentes utilisent le [CLI .NET Core](https://docs.microsoft.com/dotnet/core/tools/dotnet) pour créer et exécuter un projet de pages Razor. Ouvrez un navigateur sur http://localhost:5000 pour voir l’application.
 
 ![Page d’accueil ou page d’index](../razor-pages/razor-pages-start/_static/home.png)
 
-[!INCLUDE[razor-pages-start](../../includes/RP/razor-pages-start.md)]
+[!INCLUDE [razor-pages-start](../../includes/RP/razor-pages-start.md)]
 
 ## <a name="open-the-project"></a>Ouvrir le projet
 
@@ -52,9 +50,9 @@ Dans Visual Studio, sélectionnez **Fichier > Ouvrir**, puis sélectionnez le fi
 
 ### <a name="launch-the-app"></a>Lancer l’application
 
-Dans Visual Studio, sélectionnez **Exécuter > Exécuter sans débogage** pour lancer l’application. Visual Studio démarre [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview), lance un navigateur, puis accède à `http://localhost:5000`.
+Dans Visual Studio, sélectionnez **Exécuter > Exécuter sans débogage** pour lancer l’application. Visual Studio démarre [Kestrel](xref:fundamentals/servers/kestrel), lance un navigateur, puis accède à `http://localhost:5000`.
 
 Dans le prochain didacticiel, nous allons ajouter un modèle au projet.
 
->[!div class="step-by-step"]
-[Suivant : Ajout d’un modèle](xref:tutorials/razor-pages-mac/model)
+> [!div class="step-by-step"]
+> [Suivant : Ajout d’un modèle](xref:tutorials/razor-pages-mac/model)

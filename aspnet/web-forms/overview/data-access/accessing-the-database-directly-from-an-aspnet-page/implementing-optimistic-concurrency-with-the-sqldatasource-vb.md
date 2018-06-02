@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-vb
-title: "Implémentation de l’accès concurrentiel optimiste avec le SqlDataSource (VB) | Documents Microsoft"
+title: Implémentation de l’accès concurrentiel optimiste avec le SqlDataSource (VB) | Documents Microsoft
 author: rick-anderson
-description: "Dans ce didacticiel, nous allons examiner l’essentiel de contrôle d’accès concurrentiel optimiste et puis examiner comment implémenter à l’aide du contrôle SqlDataSource."
+description: Dans ce didacticiel, nous allons examiner l’essentiel de contrôle d’accès concurrentiel optimiste et puis examiner comment implémenter à l’aide du contrôle SqlDataSource.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2007
@@ -12,11 +12,11 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 974ea50a0d12aae09107470815214b20068ea553
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.openlocfilehash: 6e7e81b3f3a54596c033caa2cf75e5e3ec01764c
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-vb"></a>Implémentation de l’accès concurrentiel optimiste avec le SqlDataSource (VB)
 ====================
@@ -116,7 +116,7 @@ De même, la `DeleteCommand` propriété et `DeleteParameters` collection doit s
 
 En plus de l’augmentation de la `WHERE` clauses de la `UpdateCommand` et `DeleteCommand` propriétés (et ajout de paramètres supplémentaires pour les collections de paramètres respectifs), en sélectionnant l’utilisation optimiste option d’accès concurrentiel s’ajuste à deux autres propriétés :
 
-- Modifications du [ `ConflictDetection` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx) de `OverwriteChanges` (la valeur par défaut) pour`CompareAllValues`
+- Modifications du [ `ConflictDetection` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.conflictdetection.aspx) de `OverwriteChanges` (la valeur par défaut) pour `CompareAllValues`
 - Modifications du [ `OldValuesParameterFormatString` propriété](https://msdn.microsoft.com/library/system.web.ui.webcontrols.sqldatasource.oldvaluesparameterformatstring.aspx) à partir de {0} (la valeur par défaut) à original\_{0}.
 
 Lorsque les données de contrôle Web appelant le SqlDataSource s `Update()` ou `Delete()` (méthode), il transmet les valeurs d’origine. Si les opérations de mappage SqlDataSource `ConflictDetection` est définie sur `CompareAllValues`, ces valeurs d’origine sont ajoutées à la commande. Le `OldValuesParameterFormatString` propriété fournit le modèle d’affectation de noms utilisé pour ces paramètres à valeur d’origine. L’Assistant Configurer la Source de données utilise d’origine\_{0} et les noms de chaque paramètre d’origine dans le `UpdateCommand` et `DeleteCommand` propriétés et `UpdateParameters` et `DeleteParameters` collections en conséquence.
@@ -231,7 +231,7 @@ Bonne programmation !
 
 ## <a name="about-the-author"></a>À propos de l’auteur
 
-[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [http://ScottOnWriting.NET](http://ScottOnWriting.NET).
+[Scott Mitchell](http://www.4guysfromrolla.com/ScottMitchell.shtml), auteur de sept manuels ASP/ASP.NET et créateur de [4GuysFromRolla.com](http://www.4guysfromrolla.com), travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est [ *SAM animer vous-même ASP.NET 2.0 des dernières 24 heures*](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco). Il peut être atteint à [ mitchell@4GuysFromRolla.com.](mailto:mitchell@4GuysFromRolla.com) ou via son blog, qui se trouvent à [ http://ScottOnWriting.NET ](http://ScottOnWriting.NET).
 
->[!div class="step-by-step"]
-[Précédent](inserting-updating-and-deleting-data-with-the-sqldatasource-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](inserting-updating-and-deleting-data-with-the-sqldatasource-vb.md)

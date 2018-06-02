@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-vb
-title: "Itération #6 – Utilisez le développement piloté par test (VB) | Documents Microsoft"
+title: 'Itération #6 – Utilisez le développement piloté par test (VB) | Documents Microsoft'
 author: microsoft
-description: "Dans cette itération sixième, nous ajouter de nouvelles fonctionnalités à notre application en écrivant des tests unitaires tout d’abord et d’écrire du code pour les tests unitaires. Dans cette itération,..."
+description: Dans cette itération sixième, nous ajouter de nouvelles fonctionnalités à notre application en écrivant des tests unitaires tout d’abord et d’écrire du code pour les tests unitaires. Dans cette itération,...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2009
@@ -12,11 +12,11 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-6-use-test-driven-development-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9b558df9c0b44f5f76115270d361b6022658f9f9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 71b3425c5ca8cbfc1b89493c7afb26681f8bdc9d
+ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/06/2018
 ---
 <a name="iteration-6--use-test-driven-development-vb"></a>Itération #6 – Utilisez le développement piloté par test (VB)
 ====================
@@ -123,7 +123,7 @@ Créer un nouveau test unitaire en double-cliquant sur le dossier contrôleurs d
 
 Notre premier test unitaire est contenue dans la liste 1. Ce test vérifie que la méthode Index() du contrôleur de groupe renvoie un ensemble de groupes. Le test vérifie qu’une collection de groupes est retournée dans la vue données.
 
-**La liste 1 - Controllers\GroupControllerTest.vb**
+**Listing 1 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample1.vb)]
 
@@ -137,7 +137,7 @@ La classe de contrôleur de groupe dans la liste 2 contient au minimum de code r
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample2.vb)]
 
-**La liste 3 - Models\Group.vb**
+**Listing 3 - Models\Group.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample3.vb)]
 
@@ -155,7 +155,7 @@ Maintenant nous pouvons passer au deuxième récit utilisateur. Nous devons êtr
 
 Le test dans la liste 4 vérifie que l’appel de la méthode avec un nouveau groupe ajoute le groupe à la liste des groupes retournés par la méthode Index() de Create(). En d’autres termes, si vous créez un nouveau groupe puis dois-je être en mesure de récupérer le nouveau groupe dans la liste des groupes retournés par la méthode Index().
 
-**La liste 4 - Controllers\GroupControllerTest.vb**
+**Listing 4 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample4.vb)]
 
@@ -163,7 +163,7 @@ Le test dans la liste 4 appelle la méthode Create() avec un nouveau contact, gr
 
 Le contrôleur de groupe modifié dans la liste 5 contient au minimum de modifications requises pour transmettre le nouveau test.
 
-**La liste 5 - Controllers\GroupController.vb**
+**Listing 5 - Controllers\GroupController.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample5.vb)]
 
@@ -177,17 +177,17 @@ Cette exigence n’a pas été explicitement précisée dans le récit utilisate
 
 La liste 6 contienne un test qui exprime l’intention. Ce test vérifie que la tentative de création d’un groupe sans avoir à fournir un nom aboutit à un message d’erreur de validation dans l’état du modèle.
 
-**La liste 6 - Controllers\GroupControllerTest.vb**
+**Listing 6 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample6.vb)]
 
 Afin de répondre à ce test, que nous devons ajouter une propriété de nom à la classe groupe (voir la liste 7). En outre, nous devons ajouter une légère de logique de validation à notre contrôleur groupe s Create() action (voir liste 8).
 
-**La liste 7 - Models\Group.vb**
+**Listing 7 - Models\Group.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample7.vb)]
 
-**Liste 8 - Controllers\GroupController.vb**
+**Listing 8 - Controllers\GroupController.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample8.vb)]
 
@@ -207,15 +207,15 @@ La liste 10 contient les méthodes de nouveau ajoutés à la couche de service C
 
 La liste 11 contient une nouvelle classe FakeContactManagerRepository qui implémente l’interface IContactManagerRepository. Contrairement à la classe EntityContactManagerRepository qui implémente l’interface IContactManagerRepository, notre nouvelle classe FakeContactManagerRepository ne communique pas avec la base de données. La classe FakeContactManagerRepository utilise une collection en mémoire en tant que proxy pour la base de données. Nous allons utiliser cette classe dans nos tests unitaires comme une couche de référentiel fausse.
 
-**Liste 9 - Controllers\GroupController.vb**
+**Listing 9 - Controllers\GroupController.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample9.vb)]
 
-**La liste 10 - Controllers\ContactManagerService.vb**
+**Listing 10 - Controllers\ContactManagerService.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample10.vb)]
 
-**La liste 11 - Controllers\FakeContactManagerRepository.vb**
+**Listing 11 - Controllers\FakeContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample11.vb)]
 
@@ -227,7 +227,7 @@ Modifier la IContactManagerRepository interface requiert utiliser pour implémen
 
 Enfin, ces modifications à la conception de notre application nécessitent apporter certaines modifications au cours de nos tests unitaires. Nous devons maintenant utiliser le FakeContactManagerRepository lors de l’exécution des tests unitaires. La classe GroupControllerTest mis à jour est contenue dans la liste 12.
 
-**Liste des 12 - Controllers\GroupControllerTest.vb**
+**Listing 12 - Controllers\GroupControllerTest.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample13.vb)]
 
@@ -250,7 +250,7 @@ Nous devons créer une table de base de données de groupe. Procédez comme suit
 | **Nom de la colonne** | **Type de données** | **Autoriser les valeurs null** |
 | --- | --- | --- |
 | Id | int | False |
-| Nom | nvarchar (50) | False |
+| Name | nvarchar(50) | False |
 
 
 Ensuite, nous devons supprimer toutes les données à partir de la table Contacts (dans le cas contraire, nous a gagné t être en mesure de créer une relation entre les tables de Contacts et groupes). Procédez comme suit :
@@ -309,7 +309,7 @@ Après avoir effectué ces étapes, votre modèle de données représente les Co
 
 Ensuite, nous devons implémenter notre classe référentiel. Au cours de cette itération, nous avons ajouté plusieurs nouvelles méthodes à l’interface IContactManagerRepository lors de l’écriture de code pour satisfaire nos tests unitaires. La version finale de l’interface IContactManagerRepository est contenue dans la liste de 14.
 
-**Liste 14 - Models\IContactManagerRepository.vb**
+**Listing 14 - Models\IContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample14.vb)]
 
@@ -319,7 +319,7 @@ Nous vous n avez encore t réellement implémentées une des méthodes liées à
 
 Les méthodes stub nous permis de compiler notre application et les tests unitaires. Toutefois, il est maintenant temps réellement implémenter ces méthodes. La version finale de la classe EntityContactManagerRepository est contenue dans la liste 13.
 
-**Liste de 13 - Models\EntityContactManagerRepository.vb**
+**Listing 13 - Models\EntityContactManagerRepository.vb**
 
 [!code-vb[Main](iteration-6-use-test-driven-development-vb/samples/sample16.vb)]
 
@@ -352,7 +352,7 @@ Vous pouvez voir les vues modifiés en examinant l’application Visual Studio q
 **Figure 08**: affichage de l’Index de Contact ([cliquez pour afficher l’image en taille réelle](iteration-6-use-test-driven-development-vb/_static/image16.png))
 
 
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 Dans cette itération, nous avons ajouté les nouvelles fonctionnalités à notre application Gestionnaire de contacts en suivant une méthodologie de conception d’application développement piloté par test. Nous avons commencé en créant un ensemble de récits utilisateur. Nous avons créé un ensemble de tests unitaires qui correspond aux exigences exprimées par les récits utilisateur. Enfin, nous avons rédigé juste assez de code pour répondre aux exigences exprimées par les tests unitaires.
 
@@ -360,6 +360,6 @@ Une fois que nous avons terminé l’écriture de suffisamment de code pour rép
 
 Dans la prochaine itération--la dernière itération--nous réécrire notre application pour tirer parti d’Ajax. En tirant parti d’Ajax, nous allons améliorer la réactivité et les performances de l’application Gestionnaire de contacts.
 
->[!div class="step-by-step"]
-[Précédent](iteration-5-create-unit-tests-vb.md)
-[Suivant](iteration-7-add-ajax-functionality-vb.md)
+> [!div class="step-by-step"]
+> [Précédent](iteration-5-create-unit-tests-vb.md)
+> [Suivant](iteration-7-add-ajax-functionality-vb.md)
