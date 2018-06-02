@@ -1,7 +1,7 @@
 ---
-title: Appliquer HTTPS dans une base de ASP.NET
+title: Appliquer HTTPS dans ASP.NET Core
 author: rick-anderson
-description: Montre comment exiger HTTPS/TLS dans un cœur d’ASP.NET application web.
+description: Montre comment exiger HTTPS/TLS dans application web ASP.NET Core.
 manager: wpickett
 ms.author: riande
 ms.date: 2/9/2018
@@ -16,7 +16,7 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 05/31/2018
 ms.locfileid: "34687816"
 ---
-# <a name="enforce-https-in-an-aspnet-core"></a>Appliquer HTTPS dans une base de ASP.NET
+# <a name="enforce-https-in-an-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -26,10 +26,10 @@ Ce document montre comment :
 - Rediriger toutes les demandes HTTP vers HTTPS.
 
 > [!WARNING]
-> Faire **pas** utiliser `RequireHttpsAttribute` sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise les codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPS. Les clients d’API ne peuvent pas comprendre ou obéissent aux règles de redirections HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. API Web doit soit :
+> Ne **pas** utiliser `RequireHttpsAttribute` sur les API Web qui reçoivent des informations sensibles. `RequireHttpsAttribute` utilise les codes d’état HTTP pour rediriger les navigateurs de HTTP vers HTTPS. Les clients d’API ne peuvent pas comprendre ou obéir aux règles de redirections HTTP vers HTTPS. Ces clients peuvent envoyer des informations sur HTTP. Les APIs Web doivent soit :
 >
->* Pas écouter sur HTTP.
->* Fermer la connexion avec le code d’état 400 (demande incorrecte) et pas desservir la demande.
+>* Ne pas écouter sur HTTP.
+>* Fermer la connexion avec le code d’état 400 (demande incorrecte) et ne pas servir la demande.
 
 <a name="require"></a>
 ## <a name="require-https"></a>Exiger HTTPS
@@ -64,7 +64,7 @@ Le code en surbrillance précédent requiert que toutes les demandes utilisent `
 
 Pour plus d’informations, consultez [intergiciel (middleware) réécriture d’URL](xref:fundamentals/url-rewriting).
 
-Exiger le protocol HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. car vous ne pouvez pas garantir la sécurité aux nouveaux contrôleurs ajoutées à votre application il faudra penser à appliquer le `[RequireHttps]` attribut. Vous ne pouvez pas garantir la `[RequireHttps]` attribut est appliqué lors de l’ajout de nouveaux contrôleurs et les Pages Razor.
+Exiger le protocol HTTPS globalement (`options.Filters.Add(new RequireHttpsAttribute());`) est une meilleure pratique de sécurité. car vous ne pouvez pas garantir la sécurité aux nouveaux contrôleurs ajoutées à votre application il faudra penser à appliquer le `[RequireHttps]` attribut. Vous ne pouvez pas garantir que l'attribut `[RequireHttps]` est appliqué lors de l’ajout de nouveaux contrôleurs et les Pages Razor.
 
 ::: moniker-end
 
@@ -105,11 +105,11 @@ L’exemple précédent montre comment ajouter des hôtes supplémentaires.
 
 Les ASP.NET Core 2.1 et les modèles d’application web ultérieure (à partir de Visual Studio ou la ligne de commande dotnet) permettent [la redirection HTTPS](#require) et [HSTS](#hsts). Pour les déploiements qui n’ont pas besoin de HTTPS, vous pouvez annuler le protocole HTTPS. Par exemple, certains services principaux où HTTPS est traitée en externe à la périphérie, à l’aide de HTTPS sur chaque nœud n’est pas nécessaire.
 
-Pour s’en désengager de HTTPS :
+Pour se désengager de HTTPS :
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-Désactivez le **configurer pour le protocole HTTPS** case à cocher.
+Désactivez la case à cocher **configurer pour le protocole HTTPS**.
 
 ![Diagramme des entités](enforcing-ssl/_static/out.png)
 
