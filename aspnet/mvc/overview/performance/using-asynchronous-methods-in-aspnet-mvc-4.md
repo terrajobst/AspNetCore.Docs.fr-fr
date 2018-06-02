@@ -12,11 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: cee5fded4d8005df6054ab921f39882c3e5f21b8
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 5b3b9b82fa64155c1dfd2a49649def10d7dae87e
+ms.sourcegitcommit: a0b6319c36f41cdce76ea334372f6e14fc66507e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/02/2018
+ms.locfileid: "34729179"
 ---
 <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>Utilisation de méthodes asynchrones dans ASP.NET MVC 4
 ====================
@@ -43,7 +44,7 @@ Cela est peut-être pas un problème, car le pool de threads peut être établie
 
 ## <a name="processing-asynchronous-requests"></a>Traitement des requêtes asynchrones
 
-Dans les applications web qui peut voir un grand nombre de demandes simultanées au démarrage ou a une charge de rafale (où concurrence augmente soudainement), qui effectue ces appels de service web asynchrone augmentera la réactivité de votre application. Une demande asynchrone la même durée de traitement qu’une requête synchrone. Par exemple, si une demande appelle un service web qui nécessite deux secondes, la requête prend deux secondes qu’elle soit exécutée de façon synchrone ou asynchrone. Toutefois, lors d’un appel asynchrone, un thread n’est pas bloqué de répondre à d’autres demandes en attendant que la première requête. Par conséquent, des requêtes asynchrones empêchent la croissance de demande files d’attente et le thread de pool lorsqu’il existe de nombreuses demandes simultanées qui appellent des opérations de longue.
+Dans les applications web voir un grand nombre de demandes simultanées au démarrage ou a une charge de rafale (où concurrence augmente soudainement), qui effectue ces appels de service web asynchrone augmentera la réactivité de l’application. Une demande asynchrone la même durée de traitement qu’une requête synchrone. Par exemple, si une demande appelle un service web qui nécessite deux secondes, la requête prend deux secondes qu’elle soit exécutée de façon synchrone ou asynchrone. Toutefois, lors d’un appel asynchrone, un thread n’est pas bloqué de répondre à d’autres demandes en attendant que la première requête. Par conséquent, des requêtes asynchrones empêchent la croissance de demande files d’attente et le thread de pool lorsqu’il existe de nombreuses demandes simultanées qui appellent des opérations de longue.
 
 ## <a id="ChoosingSyncVasync"></a>  Choix de méthodes d’Action synchrones ou asynchrones
 
@@ -61,7 +62,7 @@ En général, utilisez les méthodes synchrones pour les conditions suivantes :
 - Les opérations sont liées au réseau ou aux e/S-et non le processeur.
 - Le parallélisme est plus important que la simplicité du code.
 - Vous souhaitez fournir un mécanisme qui permet aux utilisateurs d’annuler une demande d’exécution longue.
-- Lorsque l’avantage de commutation de threads out pondère le coût du commutateur de contexte. En règle générale, vous devez effectuer une méthode asynchrone si la méthode synchrone attend sur le thread de requête ASP.NET pendant cette opération aucun travail. En effectuant l’appel asynchrone, le thread de requête ASP.NET n’est pas bloqué en attendant que la demande de service web effectuer aucun travail.
+- Lorsque l’avantage de commutation de threads compense le coût du changement de contexte. En règle générale, vous devez effectuer une méthode asynchrone si la méthode synchrone attend sur le thread de requête ASP.NET pendant cette opération aucun travail. En effectuant l’appel asynchrone, le thread de requête ASP.NET n’est pas bloqué en attendant que la demande de service web effectuer aucun travail.
 - Les tests montrent que les opérations bloquantes forment un goulet d’étranglement des performances de site et qu’IIS peut traiter plus de requêtes à l’aide des méthodes asynchrones pour ces appels bloquants.
 
   L’exemple téléchargeable indique comment utiliser efficacement les méthodes d’action asynchrones. L’exemple fourni a été conçu pour fournir une démonstration simple de la programmation asynchrone dans ASP.NET MVC 4, à l’aide de .NET 4.5. L’exemple n’est pas destiné à être une architecture de référence pour la programmation asynchrone dans ASP.NET MVC. L’exemple de programme appelle [API Web ASP.NET](../../../web-api/index.md) méthodes qui appellent à leur tour [Task.Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx) pour simuler des appels de service web d’exécution longue. La plupart des applications de production n’affichent pas ces avantages exceptionnels en utilisant des méthodes d’action asynchrones.   
@@ -89,7 +90,7 @@ Le code suivant illustre la `GetGizmos` méthode du service gizmo.
 Le `GizmoService GetGizmos` méthode passe un URI à un service HTTP de l’API Web ASP.NET qui retourne une liste de données des trucs. Le *WebAPIpgw* projet contient l’implémentation de l’API Web `gizmos, widget` et `product` contrôleurs.  
 L’illustration suivante montre la vue trucs à partir de l’exemple de projet.
 
-![Gizmos](using-asynchronous-methods-in-aspnet-mvc-4/_static/image1.png)
+![Trucs](using-asynchronous-methods-in-aspnet-mvc-4/_static/image1.png)
 
 ## <a id="CreatingAsynchGizmos"></a>  Création d’une méthode d’Action asynchrone trucs
 
@@ -169,7 +170,7 @@ Pour profiter des avantages d’une application web asynchrone, vous devrez peut
 
     - Ouvrez le Gestionnaire des services Internet et accédez au volet de Pools d’applications.
     - Cliquez avec le bouton droit sur le pool d’applications cible et sélectionnez **paramètres avancés**.  
-        ![advanced](using-asynchronous-methods-in-aspnet-mvc-4/_static/image4.png)
+        ![Avancé](using-asynchronous-methods-in-aspnet-mvc-4/_static/image4.png)
     - Dans le **paramètres avancés** boîte de dialogue, *longueur de file d’attente* à partir de 1 000 à 5 000.  
         ![Longueur de file d’attente](using-asynchronous-methods-in-aspnet-mvc-4/_static/image5.png)  
   
