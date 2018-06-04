@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 397d8bf04abf6be811ad8c91d52565251ac61678
-ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
+ms.openlocfilehash: b6dbe234973431448c18d3cc82a6ac98d4f53a3b
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/31/2018
-ms.locfileid: "34688968"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34730449"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation du compte et récupération de mot de passe dans ASP.NET Core
 
@@ -110,7 +110,7 @@ Consultez [exiger HTTPS](xref:security/enforcing-ssl).
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>Demander confirmation de courrier électronique
 
-Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer par courrier électronique de confirmation permet de vérifier qu’ils empruntez pas une autre personne (autrement dit, ils n’ont pas inscrit avec par quelqu'un d’autre adresse de messagerie). Supposons que vous aviez un forum de discussion, et vous souhaitez empêcher «yli@example.com« lors de l’inscription en tant que »nolivetto@contoso.com. » Sans la confirmation par courrier électronique, «nolivetto@contoso.com» peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur inscrit par inadvertance en tant que «ylo@example.com» et vous n’aviez pas remarqué la faute d’orthographe de « yli ». Ils ne pourrez pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. E-mail de confirmation fournit uniquement une protection limitée de robots. E-mail de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
+Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer par courrier électronique de confirmation permet de vérifier qu’ils empruntez pas une autre personne (autrement dit, ils n’ont pas inscrit avec par quelqu'un d’autre adresse de messagerie). Supposons que vous aviez un forum de discussion, et vous souhaitez empêcher «yli@example.com« lors de l’inscription en tant que »nolivetto@contoso.com». Sans la confirmation par courrier électronique, «nolivetto@contoso.com» peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur inscrit par inadvertance en tant que «ylo@example.com» et vous n’aviez pas remarqué la faute d’orthographe de « yli ». Ils ne pourrez pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. E-mail de confirmation fournit uniquement une protection limitée de robots. E-mail de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
 
 En règle générale, vous souhaitez empêcher les nouveaux utilisateurs à partir de la validation des données à votre site web avant d’avoir un message électronique de confirmation.
 
@@ -307,7 +307,7 @@ Les deux comptes ont été combinés. Vous ne parvenez pas à vous connecter ave
 
 ## <a name="enable-account-confirmation-after-a-site-has-users"></a>Activer la confirmation du compte après qu’un site a des utilisateurs
 
-Confirmation du compte l’activation sur un site avec les utilisateurs verrouille tous les utilisateurs existants. Les utilisateurs existants sont verrouillés, car leurs comptes ne sont pas confirmées. Pour contourner le verrouillage de l’utilisateur en cours de fermeture, utilisez une des approches suivantes :
+Confirmation du compte l’activation sur un site avec les utilisateurs verrouille tous les utilisateurs existants. Les utilisateurs existants sont verrouillés, car leurs comptes ne sont pas confirmées. Pour contourner le verrouillage de l’utilisateur existant, utilisez une des approches suivantes :
 
-* Mise à jour de la base de données pour marquer tous les utilisateurs existants comme étant confirmée
+* Mettre à jour la base de données pour marquer tous les utilisateurs existants comme étant confirmée.
 * Confirmez les utilisateurs existants. Par exemple, lot-envoi des messages électroniques avec des liens de confirmation.
