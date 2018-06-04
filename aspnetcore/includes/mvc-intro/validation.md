@@ -16,7 +16,12 @@ Ouvrez le fichier *Movie.cs*. DataAnnotations fournit un ensemble intégré d’
 
 Mettez à jour la classe `Movie` pour tirer parti des attributs de validation intégrés `Required`, `StringLength`, `RegularExpression` et `Range`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie21/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker-end
 
 Les attributs de validation spécifient le comportement que vous souhaitez appliquer sur les propriétés du modèle sur lesquels ils sont appliqués. Les attributs `Required` et `MinimumLength` indiquent qu’une propriété doit avoir une valeur, mais rien n’empêche un utilisateur d’entrer un espace blanc pour satisfaire cette validation. L’attribut `RegularExpression` sert à limiter les caractères pouvant être entrés. Dans le code ci-dessus, `Genre` et `Rating` doivent utiliser uniquement des lettres (les espaces blancs, les chiffres et les caractères spéciaux ne sont pas autorisés). L’attribut `Range` contraint une valeur à une plage spécifiée. L’attribut `StringLength` vous permet de définir la longueur maximale d’une propriété de chaîne, et éventuellement sa longueur minimale. Les types valeur (tels que `decimal`, `int`, `float` et `DateTime`) sont obligatoires par nature et n’ont pas besoin de l’attribut `[Required]`.
 
@@ -28,7 +33,7 @@ Exécutez l’application et accédez au contrôleur Movies.
 
 Appuyez sur le lien **Create New** pour ajouter un nouveau film. Remplissez le formulaire avec des valeurs non valides. Dès que la validation côté client jQuery détecte l’erreur, elle affiche un message d’erreur.
 
-![Formulaire d’affichage de film avec plusieurs erreurs de validation côté client jQuery](../../tutorials/first-mvc-app/validation/_static/val.png)
+![Formulaire d’affichage de film avec plusieurs erreurs de validation côté client jQuery](~/tutorials/first-mvc-app/validation/_static/val.png)
 
 > [!NOTE]
 > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Consultez la page [GitHub problème 4076](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale. 
@@ -43,7 +48,7 @@ Les données de formulaire ne sont pas envoyées au serveur tant qu’il y a des
 
 Vous vous demandez peut-être comment l’interface utilisateur de validation a été générée sans aucune mise à jour du code dans le contrôleur ou dans les vues. Le code suivant montre les deux méthodes `Create`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
 
 La première méthode d’action (HTTP GET) `Create` affiche le formulaire de création initial. La deuxième version (`[HttpPost]`) gère la publication de formulaire. La seconde méthode `Create` (la version `[HttpPost]`) appelle `ModelState.IsValid` pour vérifier si le film a des erreurs de validation. L’appel de cette méthode évalue tous les attributs de validation qui ont été appliqués à l’objet. Si l’objet comporte des erreurs de validation, la méthode `Create` réaffiche le formulaire. S’il n’y a pas d’erreur, la méthode enregistre le nouveau film dans la base de données. Dans notre exemple de film, le formulaire n’est pas publié sur le serveur quand des erreurs de validation sont détectées côté client ; la seconde méthode `Create` n’est jamais appelée quand il y a des erreurs de validation côté client. Si vous désactivez JavaScript dans votre navigateur, la validation client est désactivée et vous pouvez tester la méthode `Create` HTTP POST `ModelState.IsValid` pour détecter les erreurs de validation.
 
@@ -51,19 +56,19 @@ Vous pouvez définir un point d’arrêt dans la méthode `[HttpPost] Create` et
 
 L’illustration suivante montre comment désactiver JavaScript dans le navigateur FireFox.
 
-![Firefox : dans Options, sous l’onglet Contenu, décochez la case Activer Javascript.](../../tutorials/first-mvc-app/validation/_static/ff.png)
+![Firefox : dans Options, sous l’onglet Contenu, décochez la case Activer Javascript.](~/tutorials/first-mvc-app/validation/_static/ff.png)
 
 L’illustration suivante montre comment désactiver JavaScript dans le navigateur Chrome.
 
-![Google Chrome : dans Paramètres de contenu, dans la section Javascript, sélectionnez Interdire à tous les sites d’exécuter JavaScript.](../../tutorials/first-mvc-app/validation/_static/chrome.png)
+![Google Chrome : dans Paramètres de contenu, dans la section Javascript, sélectionnez Interdire à tous les sites d’exécuter JavaScript.](~/tutorials/first-mvc-app/validation/_static/chrome.png)
 
 Après la désactivation de JavaScript, publiez les données non valides et parcourez le débogueur.
 
-![Pendant le débogage d’une publication de données non valides, Intellisense sur ModelState.IsValid indique que la valeur est false.](../../tutorials/first-mvc-app/validation/_static/ms.png)
+![Pendant le débogage d’une publication de données non valides, Intellisense sur ModelState.IsValid indique que la valeur est false.](~/tutorials/first-mvc-app/validation/_static/ms.png)
 
 Voici la partie du modèle de vue *Create.cshtml* pour lequel vous avez généré automatiquement des modèles précédemment dans le didacticiel. Il est utilisé par les méthodes d’action ci-dessus à la fois pour afficher le formulaire initial et pour le réafficher en cas d’erreur.
 
-[!code-HTML[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
+[!code-HTML[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
 
 Le [Tag Helper Input](xref:mvc/views/working-with-forms) utilise les attributs [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) et produit les attributs HTML nécessaires à la validation jQuery côté client. Le [Tag Helper Validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) affiche les erreurs de validation. Pour plus d’informations, consultez [Validation](xref:mvc/models/validation).
 
@@ -75,7 +80,7 @@ Quand vous devez changer la logique de validation, vous pouvez le faire à un se
 
 Ouvrez le fichier *Movie.cs* et examinez la classe `Movie`. L’espace de noms `System.ComponentModel.DataAnnotations` fournit des attributs de mise en forme en plus de l’ensemble intégré d’attributs de validation. Nous avons déjà appliqué une valeur d’énumération `DataType` aux champs de date de sortie et de prix. Le code suivant illustre les propriétés `ReleaseDate` et `Price` avec l’attribut `DataType` approprié.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
 Les attributs `DataType` fournissent uniquement des indices permettant au moteur de vue de mettre en forme les données (et fournissent des éléments/attributs tels que `<a>` pour les URL et `<a href="mailto:EmailAddress.com">` pour l’e-mail). Vous pouvez utiliser l’attribut `RegularExpression` pour valider le format des données. L’attribut `DataType` sert à spécifier un type de données qui est plus spécifique que le type intrinsèque de la base de données ; il ne s’agit pas d’un attribut de validation. Dans le cas présent, nous voulons uniquement effectuer le suivi de la date, et non de l’heure. L’énumération `DataType` fournit de nombreux types de données, telles que Date, Time, PhoneNumber, Currency ou EmailAddress. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple, vous pouvez créer un lien `mailto:` pour `DataType.EmailAddress`, et vous pouvez fournir un sélecteur de date pour `DataType.Date` dans les navigateurs qui prennent en charge HTML5. Les attributs `DataType` émettent des attributs HTML 5 `data-` compréhensibles par les navigateurs HTML 5. Les attributs `DataType` ne fournissent **aucune** validation.
 
@@ -107,9 +112,16 @@ Vous pouvez utiliser l’attribut `DisplayFormat` par lui-même, mais il est gé
 
 Vous devez désactiver la validation de date jQuery pour utiliser l’attribut `Range` avec `DateTime`. Il n’est généralement pas recommandé de compiler des dates dures dans vos modèles. Par conséquent, l’utilisation de l’attribut `Range` et de `DateTime` est déconseillée.
 
-Le code suivant illustre la combinaison d’attributs sur une seule ligne :
+Le code suivant illustre la combinaison d’attributs sur une seule ligne :
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+::: moniker-end
 
 Dans la partie suivante de la série, nous allons examiner l’application et apporter des améliorations aux méthodes `Details` et `Delete` générées automatiquement.
 

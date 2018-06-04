@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 067d9bd09f6d5e54bbafd953eea169d2df2be34e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 14c3d464773fe78a563a27776bfcd124c22df134
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566956"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -245,7 +246,7 @@ Les services disponibles au sein d’une requête ASP.NET à partir de `HttpCont
 
 Les services de requête représentent les services que vous configurez et demandez dans le cadre de votre application. Lorsque vos objets spécifient des dépendances, ceux-ci sont satisfaits par les types trouvés dans `RequestServices`, pas dans `ApplicationServices`.
 
-En règle générale, vous ne devez pas utiliser ces propriétés directement, mais plutôt préférer demander les types dont vos classes ont besoin par le biais du constructeur de votre classe et laisser le framework injecter ces dépendances. Vous obtenez ainsi des classes plus faciles à tester (consultez [Tester et déboguer](xref:testing/index)) et plus faiblement couplées.
+En règle générale, vous ne devez pas utiliser ces propriétés directement, mais plutôt préférer demander les types dont vos classes ont besoin par le biais du constructeur de votre classe et laisser le framework injecter ces dépendances. Vous obtenez ainsi des classes plus faciles à tester (consultez [Tester et déboguer](xref:test/index)) et plus faiblement couplées.
 
 > [!NOTE]
 > Préférez demander des dépendances en tant que paramètres de constructeur plutôt qu’accéder à la collection `RequestServices`.
@@ -361,7 +362,7 @@ L’injection de dépendances constitue une *alternative* aux modèles d’accè
 * [Injection de dépendances dans les contrôleurs](xref:mvc/controllers/dependency-injection)
 * [Injection de dépendances dans les gestionnaires d’exigences](xref:security/authorization/dependencyinjection)
 * [Démarrage d’une application](xref:fundamentals/startup)
-* [Test et débogage](xref:testing/index)
+* [Test et débogage](xref:test/index)
 * [Activation d’intergiciel (middleware) basée sur une fabrique](xref:fundamentals/middleware/extensibility)
 * [Écrire un code clair dans ASP.NET Core avec l’injection de dépendance (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Prélude à la conception d’une application gérée par conteneur : à qui appartient le conteneur ?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)

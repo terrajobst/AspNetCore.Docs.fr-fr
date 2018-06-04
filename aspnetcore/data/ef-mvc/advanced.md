@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 95500686052a3f75dd71244bc9da500300416dec
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: fffb78e4d66c8a798d5f952ba9e4506c8cb666ca
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566930"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC avec EF Core - Rubriques avancées - 10 sur 10
 
@@ -147,9 +148,9 @@ De nombreux développeurs écrivent du code pour implémenter les modèles d’u
 
 * EF inclut des fonctionnalités pour implémenter TDD sans écrire de code de référentiel.
 
-Pour plus d’informations sur la façon d’implémenter les modèles d’unité de travail et de référentiel, consultez [la version Entity Framework 5 de cette série de didacticiels](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application).
+Pour plus d’informations sur la façon d’implémenter les modèles d’unité de travail et de référentiel, consultez [la version Entity Framework 5 de cette série de didacticiels](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application).
 
-Entity Framework Core implémente un fournisseur de base de données en mémoire qui peut être utilisé pour les tests. Pour plus d’informations, consultez [Tester avec InMemory](https://docs.microsoft.com/ef/core/miscellaneous/testing/in-memory).
+Entity Framework Core implémente un fournisseur de base de données en mémoire qui peut être utilisé pour les tests. Pour plus d’informations, consultez [Tester avec InMemory](/ef/core/miscellaneous/testing/in-memory).
 
 ## <a name="automatic-change-detection"></a>Détection automatique des modifications
 

@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/controllers/testing
-ms.openlocfilehash: 51b7a02c697807c9e3504b70f89370126ee0e781
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: a0073e4de361c37a6854ceaf54ffd9eaea4837d4
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34567047"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Tester la logique des contrôleurs dans ASP.NET Core
 
@@ -74,7 +75,7 @@ Le second test vérifie que quand `ModelState` est valide, une nouvelle `Brainst
 
 Un autre contrôleur de l’application affiche les informations relatives à une session de brainstorming particulière. Il inclut une logique pour traiter les valeurs d’ID non valides :
 
-[!code-csharp[](./testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
+[!code-csharp[](testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs?highlight=19,20,21,22,25,26,27,28)]
 
 L’action du contrôleur a trois cas à tester, une pour chaque instruction `return` :
 
@@ -100,7 +101,7 @@ Le dernier test vérifie que la méthode `Update` du référentiel est appelée.
 
 ## <a name="integration-testing"></a>Tests d’intégration
 
-Les [tests d’intégration](../../testing/integration-testing.md) sont réalisés pour vérifier que les modules distincts de votre application fonctionnent correctement ensemble. En règle générale, tout ce que vous pouvez tester avec un test unitaire, vous pouvez également le tester avec un test d’intégration, alors que l’inverse n’est pas vrai. Cependant, les tests d’intégration tendent à être beaucoup plus lents que les tests unitaires. Par conséquent, il est préférable de tester tout ce que vous pouvez avec des tests unitaires, et d’utiliser des tests d’intégration pour les scénarios qui impliquent plusieurs collaborateurs.
+Les [tests d’intégration](xref:test/integration-tests) sont réalisés pour vérifier que les modules distincts de votre application fonctionnent correctement ensemble. En règle générale, tout ce que vous pouvez tester avec un test unitaire, vous pouvez également le tester avec un test d’intégration, alors que l’inverse n’est pas vrai. Cependant, les tests d’intégration tendent à être beaucoup plus lents que les tests unitaires. Par conséquent, il est préférable de tester tout ce que vous pouvez avec des tests unitaires, et d’utiliser des tests d’intégration pour les scénarios qui impliquent plusieurs collaborateurs.
 
 Bien qu’ils puissent toujours être utiles, les objets fictifs sont rarement utilisées dans les tests d’intégration. Dans les tests unitaires, les objets fictifs sont un moyen efficace de contrôler comment les collaborateurs qui se trouvent en dehors de l’unité testée doivent se comporter pour les besoins du test. Dans un test d’intégration, des collaborateurs réels sont utilisés pour vérifier que tout le sous-système fonctionne correctement.
 

@@ -1,6 +1,6 @@
 Remplacez le contenu de *Controllers/HelloWorldController.cs* par ceci :
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_1)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_1)]
 
 Chaque méthode `public` d’un contrôleur peut être appelée en tant que point de terminaison HTTP. Dans l’exemple ci-dessus, les deux méthodes retournent une chaîne.  Notez les commentaires qui précèdent chaque méthode.
 
@@ -10,7 +10,7 @@ Le premier commentaire indique qu’il s’agit d’une méthode [HTTP GET](http
 
 Exécutez l’application en mode de non-débogage et ajoutez « HelloWorld » au chemin dans la barre d’adresse. La méthode `Index` retourne une chaîne.
 
-![Fenêtre de navigateur montrant une réponse de l’application à l’action This is my default](../../tutorials/first-mvc-app/adding-controller/_static/hell1.png)
+![Fenêtre de navigateur montrant une réponse de l’application à l’action This is my default](~/tutorials/first-mvc-app/adding-controller/_static/hell1.png)
 
 MVC appelle les classes du contrôleur (et les méthodes d’action au sein de celles-ci) en fonction de l’URL entrante. La [logique de routage d’URL](xref:mvc/controllers/routing) par défaut utilisée par le modèle MVC utilise un format comme celui-ci pour déterminer le code à appeler :
 
@@ -18,7 +18,7 @@ MVC appelle les classes du contrôleur (et les méthodes d’action au sein de c
 
 Vous définissez le format pour le routage dans la méthode `Configure` du fichier *Startup.cs*.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 Quand vous exécutez l’application et que vous ne fournissez aucun segment d’URL, sa valeur par défaut est le contrôleur « Home » et la méthode « Index » spécifiée dans la ligne du modèle mise en surbrillance ci-dessus.
 
@@ -26,11 +26,11 @@ Le premier segment d’URL détermine la classe du contrôleur à exécuter. Ain
 
 Accédez à `http://localhost:xxxx/HelloWorld/Welcome`. La méthode `Welcome` s’exécute et retourne la chaîne « This is the Welcome action method... ». Pour cette URL, le contrôleur est `HelloWorld`, et `Welcome` est la méthode d’action. Vous n’avez pas encore utilisé la partie `[Parameters]` de l’URL.
 
-![Fenêtre de navigateur montrant une réponse de la méthode d’action « This is the Welcome action »](../../tutorials/first-mvc-app/adding-controller/_static/welcome.png)
+![Fenêtre de navigateur montrant une réponse de la méthode d’action « This is the Welcome action »](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
 Modifiez le code pour passer des informations sur les paramètres de l’URL au contrôleur. Par exemple, `/HelloWorld/Welcome?name=Rick&numtimes=4`. Modifiez la méthode `Welcome` en y incluant les deux paramètres, comme indiqué dans le code suivant. 
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_2)]
 
 Le code précédent :
 
@@ -44,20 +44,20 @@ Exécutez votre application et accédez à :
 
 (Remplacez xxxx par votre numéro de port.) Vous pouvez essayer différentes valeurs pour `name` et `numtimes` dans l’URL. Le système de [liaison de données](xref:mvc/models/model-binding) du modèle MVC mappe automatiquement les paramètres nommés provenant de la chaîne de requête dans la barre d’adresse aux paramètres de votre méthode. Pour plus d’informations, consultez [Liaison de données](xref:mvc/models/model-binding).
 
-![Fenêtre de navigateur montrant une réponse de l’application « Hello Rick, NumTimes is: 4 »](../../tutorials/first-mvc-app/adding-controller/_static/rick4.png)
+![Fenêtre de navigateur montrant une réponse de l’application « Hello Rick, NumTimes is: 4 »](~/tutorials/first-mvc-app/adding-controller/_static/rick4.png)
 
 Dans l’image ci-dessus, le segment d’URL (`Parameters`) n’est pas utilisé, les paramètres `name` et `numTimes` sont passés en tant que [chaînes de requête](https://wikipedia.org/wiki/Query_string). Le `?` (point d’interrogation) dans l’URL ci-dessus est un séparateur, qui est suivi des chaînes de requête. Le caractère `&` sépare les chaînes de requête.
 
 Remplacez la méthode `Welcome` par le code suivant :
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_3)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_3)]
 
 Exécutez l’application et entrez l’URL suivante : `http://localhost:xxx/HelloWorld/Welcome/3?name=Rick`
 
-![Fenêtre de navigateur montrant une réponse de l’application « Hello Rick, ID: 3 »](../../tutorials/first-mvc-app/adding-controller/_static/rick_routedata.png)
+![Fenêtre de navigateur montrant une réponse de l’application « Hello Rick, ID: 3 »](~/tutorials/first-mvc-app/adding-controller/_static/rick_routedata.png)
 
 Cette fois, le troisième segment de l’URL correspondait au paramètre de routage `id`. La méthode `Welcome` contient un paramètre `id` qui correspondait au modèle d’URL de la méthode `MapRoute`. Le `?` de fin (dans `id?`) indique que le paramètre `id` est facultatif.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 Dans ces exemples, le contrôleur a fait la partie « VC » du modèle MVC, autrement dit, la vue et le contrôleur fonctionnent. Le contrôleur retourne directement du HTML. En règle générale, vous ne souhaitez pas que les contrôleurs retournent directement du HTML, car le codage et la maintenance deviennent dans ce cas très laborieux. Au lieu de cela, vous utilisez généralement un fichier de modèle de vue Razor distinct pour faciliter la génération de la réponse HTML. Vous faites cela dans le didacticiel suivant.

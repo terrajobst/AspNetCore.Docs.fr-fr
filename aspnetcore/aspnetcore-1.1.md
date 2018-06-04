@@ -10,11 +10,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: aspnetcore-1.1
-ms.openlocfilehash: 0e6d9be1798140dbe7a318e53531a26771653ccf
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 6042fa2d5d05f37923adde1be7f8ce57b00196b9
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34566852"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Nouveautés d’ASP.NET Core 1.1
 
@@ -25,7 +26,7 @@ ASP.NET Core 1.1 inclut les nouvelles fonctionnalités suivantes :
 - [Afficher les composants sous forme de Tag Helpers](xref:mvc/views/view-components#invoking-a-view-component-as-a-tag-helper)
 - [Intergiciel en tant que filtres MVC](xref:mvc/controllers/filters#using-middleware-in-the-filter-pipeline)
 - [Fournisseur de TempData basé sur les cookies](xref:fundamentals/app-state#tempdata)
-- [Fournisseur de journalisation Azure App Service](xref:fundamentals/logging/index#appservice)
+- [Fournisseur de journalisation Azure App Service](xref:fundamentals/logging/index#azure-app-service-provider)
 - [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration)
 - [Référentiels des clés de protection des données du Stockage Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis)
 - [Serveur WebListener pour Windows](xref:fundamentals/servers/weblistener)
