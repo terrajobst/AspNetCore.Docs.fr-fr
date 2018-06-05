@@ -55,7 +55,7 @@ cd WebPWrecover
 
 ::: moniker-end
 
-* `--auth Individual` Spécifie le modèle de projet de comptes utilisateurs individuels.
+* `--auth Individual` Spécifie le modèle de projet Comptes d’utilisateur individuels.
 * Sur Windows, ajoutez l'option `-uld`. Elle spécifie que la base de données locale doit être utilisée au lieu de SQLite.
 * Exécutez `new mvc --help` pour obtenir de l’aide sur cette commande.
 
@@ -82,9 +82,9 @@ Vous pouvez également créer un nouveau projet ASP.NET Core avec Visual Studio�
 
 ![Nouvelle boîte de dialogue projet indiquant « Radio de comptes d’utilisateur individuels » sélectionnée](accconfirm/_static/2.png)
 
-## <a name="test-new-user-registration"></a>Tester une nouvelle inscription d’utilisateur
+## <a name="test-new-user-registration"></a>Tester l’inscription d’un nouvel utilisateur
 
-Exécuter l’application, sélectionnez le lien **S'inscrire** et inscrire un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour pour les nouveaux utilisateurs ne peuvent pas se connecter jusqu'à ce que leur courrier électronique ait été validé.
+Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce tutoriel, le code est mis à jour pour que les nouveaux utilisateurs ne puissent pas se connecter tant que leur e-mail n’a pas été validé.
 
 ## <a name="view-the-identity-database"></a>Afficher la base de données d’identité
 
@@ -93,13 +93,13 @@ Consultez [de travail dans un projet ASP.NET MVC de base avec SQLite](xref:tutor
 Pour Visual Studio :
 
 * À partir du menu **Affichage**, sélectionnez **l’Explorateur d’objets SQL Server** (SSOX).
-* Accédez à **(localdb) MSSQLLocalDB (SQL Server 13)**. Avec le bouton droit sur **dbo. AspNetUsers** > **Afficher les données** :
+* Accédez à **(localdb) MSSQLLocalDB (SQL Server 13)**. Cliquez avec le bouton droit sur **dbo. AspNetUsers** > **Afficher les données** :
 
 ![Menu contextuel sur la table AspNetUsers dans l’Explorateur d’objets SQL Server](accconfirm/_static/ssox.png)
 
 Notez que le champ `EmailConfirmed` de la table est à `False`.
 
-Vous pouvez souhaiter réutiliser ce courrier électronique à l’étape suivante lorsque l’application envoie un message électronique de confirmation. Cliquez avec le bouton droit sur la ligne, puis sélectionnez **Supprimer**. La suppression de l’alias de messagerie facilite dans les étapes suivantes.
+Vous pouvez souhaiter réutiliser cet e-mail à l’étape suivante quand l’application envoie un e-mail de confirmation. Cliquez avec le bouton droit sur la ligne, puis sélectionnez **Supprimer**. La suppression de l’alias d’e-mail facilite les étapes suivantes.
 
 ---
 
@@ -112,9 +112,9 @@ Consultez [Exiger HTTPS](xref:security/enforcing-ssl).
 
 Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous ayez un forum de discussion, et que vous souhaitiez empêcher "yli@example.com" de s’inscription en tant que "nolivetto@contoso.com". Sans la confirmation par courrier électronique, "nolivetto@contoso.com" peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur s'inscrit par inadvertance en tant que "ylo@example.com" et que vous n’avez pas remarqué la faute d’orthographe de "yli". Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. l'email de confirmation fournit uniquement une protection limitée contre les robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
 
-En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web avant d’avoir un message électronique de confirmation.
+En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web tant que leur adresse e-mail n’est pas confirmée.
 
-Mettez à jour `ConfigureServices` pour exiger un message électronique de confirmation :
+Mettez à jour `ConfigureServices` pour exiger une adresse e-mail confirmée :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet1&highlight=12-17)]
 
@@ -130,7 +130,7 @@ Créez une classe pour extraire la clé de messagerie électronique sécurisée.
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
-Définir `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
+Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
 
 ```console
 C:\WebAppl\src\WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT
@@ -139,7 +139,7 @@ info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 
 Sur Windows, le gestionnaire de secret stocke des paires de clés/valeur dans un fichier *secrets.json* dans le répertoire `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>`.
 
-Les contenus du fichier *secrets.json* ne sont pas chiffrés. Le fichier *secrets.json* est présenté ci-dessous (la valeur `SendGridKey` a été supprimée.)
+Le contenu du fichier *secrets.json* n’est pas chiffré. Le fichier *secrets.json* est présenté ci-dessous (la valeur `SendGridKey` a été supprimée.)
 
  ```json
   {
@@ -164,7 +164,7 @@ Ajouter `AuthMessageSenderOptions` au conteneur de service à la fin de la méth
 
 ### <a name="configure-the-authmessagesender-class"></a>Configurer la classe AuthMessageSender
 
-Ce didacticiel montre comment ajouter des notifications par courrier électronique via [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer par courrier électronique en utilisant SMTP et d'autres mécanismes.
+Ce didacticiel montre comment ajouter des notifications par courrier électronique via [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer des e-mails en utilisant SMTP et d'autres mécanismes.
 
 Installer le package NuGet `SendGrid` :
 
@@ -196,17 +196,17 @@ Pour configurer SendGrid, ajoutez du code semblable au suivant dans *Services/Em
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Activer la récupération de confirmation et le mot de passe du compte
 
-Le modèle a le code pour la récupération de confirmation et le mot de passe du compte. Rechercher la méthode `OnPostAsync` dans *Pages/Account/Register.cshtml.cs*.
+Le modèle contient du code pour la confirmation du compte et la récupération de mot de passe. Recherchez la méthode `OnPostAsync` dans *Pages/Account/Register.cshtml.cs*.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-Interdire les utilisateurs nouvellement inscrits d'être connectés automatiquement en supprimant la ligne suivante :
+Empêchez les utilisateurs nouvellement inscrits d'être connectés automatiquement en plaçant la ligne suivante en commentaire :
 
 ```csharp
 await _signInManager.SignInAsync(user, isPersistent: false);
 ```
 
-La méthode complète s’affiche avec la ligne modifiée mise en surbrillance :
+La méthode complète est montrée avec la ligne modifiée mise en surbrillance :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Pages/Account/Register.cshtml.cs?highlight=16&name=snippet_Register)]
 
@@ -216,13 +216,13 @@ Pour activer la confirmation du compte, supprimez le code suivant :
 
 [!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
 
-**Remarque :** le code empêche un utilisateur nouvellement inscrit d'ouvrir automatiquement une session en supprimant la ligne suivante :
+**Remarque :** le code empêche un utilisateur nouvellement inscrit d'ouvrir automatiquement une session via la mise en commentaire de la ligne suivante :
 
 ```csharp
 //await _signInManager.SignInAsync(user, isPersistent: false);
 ```
 
-Activez la récupération de mot de passe en commentant le code de l'action `ForgotPassword` de *Controllers/AccountController.cs*:
+Activez la récupération de mot de passe en décommentant le code dans l'action `ForgotPassword` de *Controllers/AccountController.cs*:
 
 [!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=17-23&name=snippet_ForgotPassword)]
 
@@ -232,15 +232,15 @@ Supprimez les commentaires de l’élément form *Views/Account/ForgotPassword.c
 
 ---
 
-## <a name="register-confirm-email-and-reset-password"></a>S'inscrire, confirmer le courrier électronique et réinitialiser le mot de passe
+## <a name="register-confirm-email-and-reset-password"></a>Inscrire, confirmer l’adresse e-mail et réinitialiser le mot de passe
 
-Exécuter l’application web et testez la confirmation du compte et le processus de récupération de mot de passe.
+Exécuter l’application web, et testez le flux de confirmation du compte et de récupération du mot de passe.
 
 * Exécutez l’application et inscrire un nouvel utilisateur
 
   ![Affichage du livre de comptes application Web](accconfirm/_static/loginaccconfirm1.png)
 
-* Vérifiez votre adresse de messagerie pour le lien de confirmation du compte. Consultez [déboguer la messagerie](#debug) si vous n’obtenez pas le message électronique.
+* Recherchez le lien de confirmation du compte dans votre messagerie. Consultez [Déboguer la messagerie](#debug) si vous ne recevez pas l’e-mail.
 * Cliquez sur le lien pour confirmer votre adresse de messagerie.
 * Connectez-vous avec votre adresse électronique et un mot de passe.
 * Fermez la session.
@@ -266,10 +266,10 @@ Cela est mentionné plus loin dans le didacticiel.
 
 ---
 
-### <a name="test-password-reset"></a>Test de réinitialisation de mot de passe
+### <a name="test-password-reset"></a>Tester la réinitialisation du mot de passe
 
 * Si vous êtes connecté, sélectionnez **Déconnexion**.
-* Sélectionnez le lien **Connexion** et sélectionnez le lien **Mot de passe oublié ?**.
+* Sélectionnez le lien **Connexion** et sélectionnez le lien **Vous avez oublié votre mot de passe ?**.
 * Entrez l’e-mail que vous avez utilisé pour enregistrer le compte.
 * Un message électronique contenant un lien pour réinitialiser votre mot de passe est envoyé. Vérifiez votre adresse de messagerie et cliquez sur le lien pour réinitialiser votre mot de passe. Une fois votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre adresse électronique et un nouveau mot de passe.
 
@@ -280,18 +280,18 @@ Cela est mentionné plus loin dans le didacticiel.
 Si vous ne parvenez à faire fonctionner l'email :
 
 * Créer une [application console pour envoyer un courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html).
-* Examinez la page[activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html).
+* Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html).
 * Vérifiez votre dossier courrier indésirable.
 * Essayez un autre alias de messagerie électronique sur un fournisseur de messagerie différents (Microsoft, Yahoo, Gmail, etc.).
 * Essayez d’envoyer à des comptes de messagerie différents.
 
-Une **meilleure pratique de sécurité** consiste à **ne pas** utiliser des secrets de production en développement et en test. Si vous publiez l’application sur Azure, vous pouvez définir les clés secrètes SendGrid en tant que paramètres de l’application dans le portail de l’application Web Azure. Le système de configuration est configuré pour lire les clés à partir de variables d’environnement.
+Une **bonne pratique de sécurité** consiste à **ne pas** utiliser des secrets de production en développement et en test. Si vous publiez l’application sur Azure, vous pouvez définir les secrets SendGrid en tant que paramètres d’application dans le portail Azure Web App. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.
 
 ## <a name="combine-social-and-local-login-accounts"></a>Combiner des comptes de connexion de réseaux sociaux et local
 
 Pour terminer cette section, vous devez d’abord activer un fournisseur d’authentification externe. Consultez [Facebook, Google et l’authentification du fournisseur externe](xref:security/authentication/social/index).
 
-Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre messagerie. Dans l’ordre suivant, "RickAndMSFT@gmail.com" est tout d’abord créé en tant que connexion locale; Toutefois, vous pouvez d’abord créer le compte en tant que connexion sociale, puis ajouter une connexion locale.
+Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur le lien de votre e-mail. Dans la séquence suivante, "RickAndMSFT@gmail.com" est d’abord créé en tant que connexion locale ; cependant, vous pouvez d’abord créer le compte en tant que connexion de réseau social, puis ajouter une connexion locale.
 
 ![Application Web : RickAndMSFT@gmail.com utilisateur authentifié](accconfirm/_static/rick.png)
 
@@ -299,15 +299,15 @@ Cliquez sur le lien **Gérer**. Notez la valeur 0 externe (connexions sociales) 
 
 ![Gérer les affichages](accconfirm/_static/manage.png)
 
-Cliquez sur le lien vers un autre service de connexion et accepter les demandes d’application. Dans l’image suivante, Facebook est le fournisseur d’authentification externe :
+Cliquez sur le lien vers un autre service de connexion et acceptez les demandes d’application. Dans l’image suivante, Facebook est le fournisseur d’authentification externe :
 
 ![Gestion de votre vue de logins externes répertoriant Facebook](accconfirm/_static/fb.png)
 
-Les deux comptes ont été combinés. Vous popuvez vous connecter avec l'un ou l'autre compte. Vous pourriez vouloir que vos utilisateurs ajoutent des comptes locaux au cas où leur service d’authentification de connexion sociale est arrêté, ou plus probable qu’ils aient perdu l’accès à leur compte social.
+Les deux comptes ont été combinés. Vous pouvez vous connecter avec l'un ou l'autre compte. Vous pouvez faire en sorte que vos utilisateurs ajoutent des comptes locaux au cas où leur service d’authentification de connexion sociale soit indisponible ou que, plus probablement, ils aient perdu l’accès à leur compte social.
 
 ## <a name="enable-account-confirmation-after-a-site-has-users"></a>Activer la confirmation du compte après qu’un site a des utilisateurs
 
-Activer la confirmation du compte sur un site avec des utilisateurs verrouille tous les utilisateurs existants. Les utilisateurs existants sont verrouillés, car leurs comptes ne sont pas confirmées. Pour contourner le verrouillage d’utilisateur existant, utilisez une des approches suivantes :
+Activer la confirmation du compte sur un site avec des utilisateurs bloque tous les utilisateurs existants. Ceux-ci sont bloqués, car leurs comptes ne sont pas confirmés. Pour contourner le blocage des utilisateurs existants, utilisez une des approches suivantes :
 
 * Mise à jour de la base de données pour marquer tous les utilisateurs existants comme étant confirmés.
-* Confirmez les utilisateurs existants. Par exemple, en envoyant en masse des messages électroniques avec des liens de confirmation.
+* Confirmation des utilisateurs existants. Par exemple, en envoyant par lot des e-mails avec des liens de confirmation.
