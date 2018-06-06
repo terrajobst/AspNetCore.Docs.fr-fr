@@ -12,12 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 5b3b9b82fa64155c1dfd2a49649def10d7dae87e
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
-ms.translationtype: HT
+ms.openlocfilehash: 65ba01dd1b0ed5a43ca5c868608f2858f86b4b59
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729179"
+ms.locfileid: "34734534"
 ---
 <a name="using-asynchronous-methods-in-aspnet-mvc-4"></a>Utilisation de méthodes asynchrones dans ASP.NET MVC 4
 ====================
@@ -44,7 +44,7 @@ Cela est peut-être pas un problème, car le pool de threads peut être établie
 
 ## <a name="processing-asynchronous-requests"></a>Traitement des requêtes asynchrones
 
-Dans les applications web voir un grand nombre de demandes simultanées au démarrage ou a une charge de rafale (où concurrence augmente soudainement), qui effectue ces appels de service web asynchrone augmentera la réactivité de l’application. Une demande asynchrone la même durée de traitement qu’une requête synchrone. Par exemple, si une demande appelle un service web qui nécessite deux secondes, la requête prend deux secondes qu’elle soit exécutée de façon synchrone ou asynchrone. Toutefois, lors d’un appel asynchrone, un thread n’est pas bloqué de répondre à d’autres demandes en attendant que la première requête. Par conséquent, des requêtes asynchrones empêchent la croissance de demande files d’attente et le thread de pool lorsqu’il existe de nombreuses demandes simultanées qui appellent des opérations de longue.
+Dans une application web qui peut voir un grand nombre de demandes simultanées au démarrage ou a une charge de rafale (où concurrence augmente soudainement), qui effectue les appels de service web asynchrone augmente la réactivité de l’application. Une demande asynchrone la même durée de traitement qu’une requête synchrone. Si une demande appelle un service web qui nécessite deux secondes, la requête prend deux secondes qu’elle soit exécutée de façon synchrone ou asynchrone. Toutefois lors d’un appel asynchrone, un thread n’est pas bloqué de répondre à d’autres demandes en attendant que la première requête. Par conséquent, des requêtes asynchrones empêchent la croissance de demande files d’attente et le thread de pool lorsqu’il existe de nombreuses demandes simultanées qui appellent des opérations de longue.
 
 ## <a id="ChoosingSyncVasync"></a>  Choix de méthodes d’Action synchrones ou asynchrones
 

@@ -3,39 +3,41 @@ title: Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 author: guardrex
 description: Découvrez comment configurer et utiliser un intergiciel (middleware) de réponse mise en cache dans ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 8296d535725d95682fa5904a43ab196e21b4f83c
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 7ceccffa39baf5f13d63c26e78c64a595bb42f60
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734495"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex) et [John Luo](https://github.com/JunTaoLuo)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Afficher ou télécharger l’exemple de code ASP.NET Core 2.1](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample))
 
 Cet article explique comment configurer un intergiciel (middleware) de réponse mise en cache dans une application ASP.NET Core. L’intergiciel (middleware) détermine quand les réponses sont mis en cache, les réponses de magasins et sert des réponses à partir du cache. Pour obtenir une présentation de la mise en cache HTTP et le `ResponseCache` d’attribut, consultez [réponse mise en cache](xref:performance/caching/response).
 
 ## <a name="package"></a>Package
 
-Pour inclure l’intergiciel (middleware) dans un projet, ajoutez une référence à la [ `Microsoft.AspNetCore.ResponseCaching` ](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) du package ou utilisez le [ `Microsoft.AspNetCore.All` ](https://www.nuget.org/packages/Microsoft.AspNetCore.All/) package (noyaux d’ASP.NET 2.0 ou version ultérieure, lorsque vous ciblez .NET Core).
+Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) du package ou utilisez le [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app), qui est disponible pour une utilisation dans ASP.NET Core 2.1 ou version ultérieure.
 
 ## <a name="configuration"></a>Configuration
 
 Dans `ConfigureServices`, ajoutez l’intergiciel (middleware) à la collection de service.
 
-[!code-csharp[](middleware/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet1&highlight=9)]
 
 Configurer l’application pour utiliser l’intergiciel (middleware) avec la `UseResponseCaching` méthode d’extension, qui ajoute l’intergiciel (middleware) au pipeline de traitement de la demande. L’exemple d’application ajoute un [ `Cache-Control` ](https://tools.ietf.org/html/rfc7234#section-5.2) en-tête dans la réponse qui met en cache les réponses de mise en cache pendant 10 secondes. L’exemple envoie une [ `Vary` ](https://tools.ietf.org/html/rfc7231#section-7.1.4) en-tête pour configurer l’intergiciel (middleware) pour servir une réponse mise en cache d’uniquement si le [ `Accept-Encoding` ](https://tools.ietf.org/html/rfc7231#section-5.3.4) en-tête des demandes ultérieures correspond à celle de la demande d’origine. Dans l’exemple de code qui suit, [CacheControlHeaderValue](/dotnet/api/microsoft.net.http.headers.cachecontrolheadervalue) et [HeaderNames](/dotnet/api/microsoft.net.http.headers.headernames) nécessitent un `using` instruction pour le [Microsoft.Net.Http.Headers](/dotnet/api/microsoft.net.http.headers) espace de noms.
 
-[!code-csharp[](middleware/sample/Startup.cs?name=snippet2&highlight=3,7-12)]
+[!code-csharp[](middleware/samples/2.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17,21-28)]
 
 Intergiciel (middleware) de réponse mise en cache met uniquement en cache les réponses du serveur qui génèrent un code d’état 200 (OK). Autres réponses, y compris [les pages d’erreur](xref:fundamentals/error-handling), sont ignorées par l’intergiciel (middleware).
 
@@ -46,10 +48,10 @@ Intergiciel (middleware) de réponse mise en cache met uniquement en cache les r
 
 L’intergiciel (middleware) offre trois options pour contrôler la réponse mise en cache.
 
-| Option                | Valeur par défaut |
-| --------------------- | ------------- |
-| UseCaseSensitivePaths | Détermine si les réponses sont mises en cache sur les chemins d’accès qui respecte la casse.</p><p>La valeur par défaut est `false`. |
-| MaximumBodySize       | La mise en cache plus grande taille pour le corps de réponse en octets.</p>La valeur par défaut est `64 * 1024 * 1024` (64 Mo). |
+| Option                | Description |
+| --------------------- | ----------- |
+| UseCaseSensitivePaths | Détermine si les réponses sont mises en cache sur les chemins d’accès qui respecte la casse. La valeur par défaut est `false`. |
+| MaximumBodySize       | La mise en cache plus grande taille pour le corps de réponse en octets. La valeur par défaut est `64 * 1024 * 1024` (64 Mo). |
 | SizeLimit             | La limite de taille pour l’intergiciel (middleware) du cache de la réponse en octets. La valeur par défaut est `100 * 1024 * 1024` (100 Mo). |
 
 L’exemple suivant configure l’intergiciel (middleware) pour :

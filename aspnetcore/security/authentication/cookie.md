@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/cookie
-ms.openlocfilehash: bdaa0e3a5ce54d3822615ac57e22f4fd6beacdcb
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: f84d69f84cb0b80418bbb6de6bfcd7e2172f65ef
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734612"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification de cookie sans ASP.NET Core Identity
 
@@ -23,23 +24,27 @@ Comme vous l’avez vu dans les rubriques précédentes de l’authentification,
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/cookie/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
+À titre de démonstration dans l’exemple d’application, le compte d’utilisateur pour l’utilisateur hypothétique, Maria Rodriguez, est codé en dur dans l’application. Utilisez le nom d’utilisateur de messagerie «maria.rodriguez@contoso.com» et n’importe quel mot de passe de l’utilisateur. L’utilisateur est authentifié dans le `AuthenticateUser` méthode dans le *Pages/Account/Login.cshtml.cs* fichier. L’utilisateur est un exemple concret, être authentifié par rapport à une base de données.
+
 Pour plus d’informations sur l’authentification basée sur le cookie de migration à partir de ASP.NET 1.x vers la version 2.0, consultez [migrer l’authentification et identité ASP.NET Core 2.0 rubrique (basée sur le Cookie d’authentification)](xref:migration/1x-to-2x/identity-2x#cookie-based-authentication).
+
+Pour utiliser ASP.NET Core Identity, consultez le [Introduction à identité](xref:security/authentication/identity) rubrique.
 
 ## <a name="configuration"></a>Configuration
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-Si vous n’utilisez pas le [Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage), installez la version 2.0 + de le [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) package NuGet.
+Si l’application n’utilise pas le [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app), créez une référence de package dans le fichier projet pour le [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) package (version 2.1.0 ou plus tard).
 
 Dans le `ConfigureServices` (méthode), créer le service de l’intergiciel (middleware) d’authentification avec le `AddAuthentication` et `AddCookie` méthodes :
 
-[!code-csharp[](cookie/sample/Startup.cs?name=snippet1)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet1)]
 
 `AuthenticationScheme` passé à `AddAuthentication` définit le schéma d’authentification par défaut pour l’application. `AuthenticationScheme` est utile lorsqu’il existe plusieurs instances de l’authentification de cookie et vous souhaitez [autoriser avec un schéma spécifique](xref:security/authorization/limitingidentitybyscheme). Définition de la `AuthenticationScheme` à `CookieAuthenticationDefaults.AuthenticationScheme` fournit une valeur de « Cookies » pour le schéma. Vous pouvez fournir une valeur de chaîne qui distingue le schéma.
 
 Dans le `Configure` méthode, utilisez la `UseAuthentication` méthode à appeler l’intergiciel (middleware) d’authentification qui définit la `HttpContext.User` propriété. Appelez le `UseAuthentication` méthode avant d’appeler `UseMvcWithDefaultRoute` ou `UseMvc`:
 
-[!code-csharp[](cookie/sample/Startup.cs?name=snippet2)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet2)]
 
 **Options de AddCookie**
 
@@ -163,7 +168,7 @@ Le paramètre de stratégie Middleware du Cookie de `MinimumSameSitePolicy` peuv
 | SameSiteMode.Lax      | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Lax<br>SameSiteMode.Lax<br>SameSiteMode.Strict |
 | SameSiteMode.Strict   | SameSiteMode.None<br>SameSiteMode.Lax<br>SameSiteMode.Strict | SameSiteMode.Strict<br>SameSiteMode.Strict<br>SameSiteMode.Strict |
 
-## <a name="creating-an-authentication-cookie"></a>Création d’un cookie d’authentification
+## <a name="create-an-authentication-cookie"></a>Créer un cookie d’authentification
 
 Pour créer un cookie contenant les informations de l’utilisateur, vous devez construire une [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal). Les informations de l’utilisateur sont sérialisées et stockées dans le cookie. 
 
@@ -171,7 +176,7 @@ Pour créer un cookie contenant les informations de l’utilisateur, vous devez 
 
 Créer un [ClaimsIdentity](/dotnet/api/system.security.claims.claimsidentity) avec tout [revendication](/dotnet/api/system.security.claims.claim)s et appelez [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-2.0) connecter l’utilisateur :
 
-[!code-csharp[](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet1)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet1)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -189,13 +194,13 @@ await HttpContext.Authentication.SignInAsync(
 
 En arrière-plan, le chiffrement utilisé est de ASP.NET Core [Protection des données](xref:security/data-protection/using-data-protection#security-data-protection-getting-started) système. Si vous hébergez une application sur plusieurs ordinateurs, l’équilibrage de charge entre les applications ou à l’aide d’une batterie de serveurs web, vous devez [configurer la protection des données](xref:security/data-protection/configuration/overview) pour utiliser le même anneau de clé et l’identificateur de l’application.
 
-## <a name="signing-out"></a>Déconnecter
+## <a name="sign-out"></a>Déconnexion
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
 Pour déconnecter l’utilisateur actuel et supprimer les cookies, appelez [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signoutasync?view=aspnetcore-2.0):
 
-[!code-csharp[](cookie/sample/Pages/Account/Login.cshtml.cs?name=snippet2)]
+[!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet2)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -210,7 +215,7 @@ await HttpContext.Authentication.SignOutAsync(
 
 Si vous n’utilisez pas `CookieAuthenticationDefaults.AuthenticationScheme` (ou « Cookies ») que le schéma (par exemple, « ContosoCookie »), indiquez le schéma que vous avez utilisé lors de la configuration du fournisseur d’authentification. Dans le cas contraire, le schéma par défaut est utilisé.
 
-## <a name="reacting-to-back-end-changes"></a>Réagir aux modifications du serveur principal
+## <a name="react-to-back-end-changes"></a>Réagir aux modifications du serveur principal
 
 Une fois qu’un cookie est créé, il devient la seule source d’identité. Même si vous désactivez un utilisateur dans vos systèmes principaux, le système d’authentification de cookie n’a aucune connaissance de ce, et un utilisateur reste connecté en tant que cookie est valide.
 
@@ -422,7 +427,7 @@ await HttpContext.Authentication.SignInAsync(
 
 ---
 
-## <a name="see-also"></a>Voir aussi
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Les modifications d’authentification 2.0 / annonce de Migration](https://github.com/aspnet/Announcements/issues/262)
 * [Limiter une identité par schéma](xref:security/authorization/limitingidentitybyscheme)

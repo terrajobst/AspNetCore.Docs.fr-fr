@@ -11,12 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: performance/response-compression
-ms.openlocfilehash: 152799500577dd09247bcee8c87cde39ca20aa79
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
-ms.translationtype: HT
+ms.openlocfilehash: e970e74547f1f3efaf719c1f9e26918f34788005
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729572"
+ms.locfileid: "34734625"
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Intergiciel (middleware) de Compression de réponse pour ASP.NET Core
 
@@ -83,21 +83,15 @@ Vous pouvez explorer les fonctionnalités de l’intergiciel de compression de r
 
 ## <a name="package"></a>Package
 
-::: moniker range="< aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.1"
 
 Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) package. Cette fonctionnalité est disponible pour les applications qui ciblent ASP.NET Core 1.1 ou versions ultérieures.
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-2.1"
 
-Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) du package ou utilisez le [Microsoft.AspNetCore.All metapackage](xref:fundamentals/metapackage).
-
-::: moniker-end
-
-::: moniker range="> aspnetcore-2.0"
-
-Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) du package ou utilisez le [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).
+Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) du package ou utilisez le [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 ou version ultérieure).
 
 ::: moniker-end
 
