@@ -1,4 +1,4 @@
-﻿---
+---
 title: Confirmation du compte et récupération de mot de passe dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment créer une application ASP.NET Core à la réinitialisation par courrier électronique de confirmation et le mot de passe.
@@ -20,7 +20,7 @@ ms.locfileid: "34730449"
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://twitter.com/joeaudette)
 
-Ce didacticiel vous montre comment créer une application ASP.NET Core avec confirmation par courrier électronique et réinitialisation de mot de passe. Ce didacticiel n'est **pas** un sujet pour débuter. Vous devez être familiarisé avec :
+Ce didacticiel vous montre comment créer une application ASP.NET Core à la réinitialisation par courrier électronique de confirmation et le mot de passe. Ce didacticiel est **pas** une rubrique de début. Vous devez être familiarisé avec :
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
 * [Authentification](xref:security/authentication/index)
@@ -33,7 +33,7 @@ Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore
 
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
 
-## <a name="create-a-new-aspnet-core-project-with-the-net-core-cli"></a>Créer un nouveau projet ASP.NET Core avec l’interface en ligne de commande .NET Core
+## <a name="create-a-new-aspnet-core-project-with-the-net-core-cli"></a>Créer un nouveau projet ASP.NET Core avec l’interface de ligne de base .NET
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -55,8 +55,8 @@ cd WebPWrecover
 
 ::: moniker-end
 
-* `--auth Individual` Spécifie le modèle de projet Comptes d’utilisateur individuels.
-* Sur Windows, ajoutez l'option `-uld`. Elle spécifie que la base de données locale doit être utilisée au lieu de SQLite.
+* `--auth Individual` Spécifie le modèle de projet de comptes d’utilisateur individuels.
+* Sur Windows, ajoutez le `-uld` option. Il spécifie la que base de données locale doit être utilisé au lieu de SQLite.
 * Exécutez `new mvc --help` pour obtenir de l’aide sur cette commande.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
@@ -82,9 +82,9 @@ Vous pouvez également créer un nouveau projet ASP.NET Core avec Visual Studio�
 
 ![Nouvelle boîte de dialogue projet indiquant « Radio de comptes d’utilisateur individuels » sélectionnée](accconfirm/_static/2.png)
 
-## <a name="test-new-user-registration"></a>Tester l’inscription d’un nouvel utilisateur
+## <a name="test-new-user-registration"></a>Nouvelle inscription de l’utilisateur de test
 
-Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce tutoriel, le code est mis à jour pour que les nouveaux utilisateurs ne puissent pas se connecter tant que leur e-mail n’a pas été validé.
+Exécuter l’application, sélectionnez le **inscrire** lier et inscrire un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour pour les nouveaux utilisateurs ne peuvent pas se connecter jusqu'à ce que leur courrier électronique a été validée.
 
 ## <a name="view-the-identity-database"></a>Afficher la base de données d’identité
 
@@ -92,45 +92,45 @@ Consultez [de travail dans un projet ASP.NET MVC de base avec SQLite](xref:tutor
 
 Pour Visual Studio :
 
-* À partir du menu **Affichage**, sélectionnez **l’Explorateur d’objets SQL Server** (SSOX).
-* Accédez à **(localdb) MSSQLLocalDB (SQL Server 13)**. Cliquez avec le bouton droit sur **dbo. AspNetUsers** > **Afficher les données** :
+* À partir de la **vue** menu, sélectionnez **l’Explorateur d’objets SQL Server** (SSOX).
+* Accédez à **(localdb) MSSQLLocalDB (SQL Server 13)**. Avec le bouton droit sur **dbo. AspNetUsers** > **afficher les données**:
 
 ![Menu contextuel sur la table AspNetUsers dans l’Explorateur d’objets SQL Server](accconfirm/_static/ssox.png)
 
-Notez que le champ `EmailConfirmed` de la table est à `False`.
+Notez la table `EmailConfirmed` champ est `False`.
 
-Vous pouvez souhaiter réutiliser cet e-mail à l’étape suivante quand l’application envoie un e-mail de confirmation. Cliquez avec le bouton droit sur la ligne, puis sélectionnez **Supprimer**. La suppression de l’alias d’e-mail facilite les étapes suivantes.
+Vous pouvez souhaiter réutiliser ce courrier électronique à l’étape suivante lors de l’application envoie un message électronique de confirmation. Avec le bouton droit sur la ligne, puis sélectionnez **supprimer**. Suppression de l’alias de messagerie facilite dans les étapes suivantes.
 
 ---
 
 ## <a name="require-https"></a>Exiger HTTPS
 
-Consultez [Exiger HTTPS](xref:security/enforcing-ssl).
+Consultez [exiger HTTPS](xref:security/enforcing-ssl).
 
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>Demander confirmation de courrier électronique
 
-Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous ayez un forum de discussion, et que vous souhaitiez empêcher "yli@example.com" de s’inscription en tant que "nolivetto@contoso.com". Sans la confirmation par courrier électronique, "nolivetto@contoso.com" peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur s'inscrit par inadvertance en tant que "ylo@example.com" et que vous n’avez pas remarqué la faute d’orthographe de "yli". Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. l'email de confirmation fournit uniquement une protection limitée contre les robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
+Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer par courrier électronique de confirmation permet de vérifier qu’ils empruntez pas une autre personne (autrement dit, ils n’ont pas inscrit avec par quelqu'un d’autre adresse de messagerie). Supposons que vous aviez un forum de discussion, et vous souhaitez empêcher «yli@example.com« lors de l’inscription en tant que »nolivetto@contoso.com». Sans la confirmation par courrier électronique, «nolivetto@contoso.com» peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur inscrit par inadvertance en tant que «ylo@example.com» et vous n’aviez pas remarqué la faute d’orthographe de « yli ». Ils ne pourrez pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. E-mail de confirmation fournit uniquement une protection limitée de robots. E-mail de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
 
-En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web tant que leur adresse e-mail n’est pas confirmée.
+En règle générale, vous souhaitez empêcher les nouveaux utilisateurs à partir de la validation des données à votre site web avant d’avoir un message électronique de confirmation.
 
-Mettez à jour `ConfigureServices` pour exiger une adresse e-mail confirmée :
+Mise à jour `ConfigureServices` pour exiger un message électronique de confirmation :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet1&highlight=12-17)]
 
-`config.SignIn.RequireConfirmedEmail = true;` empêche les utilisateurs enregistrés de se connecter jusqu'à ce que leur adresse de messagerie soit confirmée.
+`config.SignIn.RequireConfirmedEmail = true;` empêche les utilisateurs enregistrés de se connecter jusqu'à ce que leur adresse de messagerie est confirmée.
 
 ### <a name="configure-email-provider"></a>Configurer le fournisseur de messagerie
 
-Dans ce didacticiel, SendGrid est utilisé pour envoyer un courrier électronique. Vous avez besoin d’un compte SendGrid et une clé pour envoyer un courrier électronique. Vous pouvez utiliser d’autres fournisseurs de messagerie. ASP.NET Core 2.x inclut `System.Net.Mail`, qui vous permet d’envoyer par courrier électronique à partir de votre application. Nous vous recommandons d'utiliser SendGrid ou un autre service de messagerie pour envoyer un courrier électronique. SMTP est difficile à sécuriser et à correctement configurer.
+Dans ce didacticiel, SendGrid est utilisé pour envoyer un courrier électronique. Vous avez besoin d’un compte SendGrid et une clé pour envoyer un courrier électronique. Vous pouvez utiliser d’autres fournisseurs de messagerie. ASP.NET Core 2.x inclut `System.Net.Mail`, qui vous permet d’envoyer par courrier électronique à partir de votre application. Nous vous recommandons de qu'utiliser SendGrid ou un autre service de messagerie pour envoyer un courrier électronique. SMTP est difficile de sécuriser et correctement configuré.
 
 Le [modèle d’Options](xref:fundamentals/configuration/options) est utilisé pour accéder aux paramètres de compte et une clé utilisateur. Pour plus d’informations, consultez [configuration](xref:fundamentals/configuration/index).
 
-Créez une classe pour extraire la clé de messagerie électronique sécurisée. Pour cet exemple, la classe `AuthMessageSenderOptions` est créée dans le fichier *Services/AuthMessageSenderOptions.cs* :
+Créez une classe pour extraire la clé de sécuriser la messagerie électronique. Pour cet exemple, le `AuthMessageSenderOptions` classe est créée dans le *Services/AuthMessageSenderOptions.cs* fichier :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Services/AuthMessageSenderOptions.cs?name=snippet1)]
 
-Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
+Définir le `SendGridUser` et `SendGridKey` avec la [outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
 
 ```console
 C:\WebAppl\src\WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT
@@ -150,7 +150,7 @@ Le contenu du fichier *secrets.json* n’est pas chiffré. Le fichier *secrets.j
 
 ### <a name="configure-startup-to-use-authmessagesenderoptions"></a>Configurer le démarrage pour utiliser AuthMessageSenderOptions
 
-Ajouter `AuthMessageSenderOptions` au conteneur de service à la fin de la méthode `ConfigureServices` dans le fichier *Startup.cs* :
+Ajouter `AuthMessageSenderOptions` au conteneur de service à la fin de la méthode `ConfigureServices` dans le fichier *Startup.cs* :
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
@@ -166,7 +166,7 @@ Ajouter `AuthMessageSenderOptions` au conteneur de service à la fin de la méth
 
 Ce didacticiel montre comment ajouter des notifications par courrier électronique via [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer des e-mails en utilisant SMTP et d'autres mécanismes.
 
-Installer le package NuGet `SendGrid` :
+Installer le package NuGet `SendGrid` :
 
 * À partir de la ligne de commande :
 
@@ -216,7 +216,7 @@ Pour activer la confirmation du compte, supprimez le code suivant :
 
 [!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
 
-**Remarque :** le code empêche un utilisateur nouvellement inscrit d'ouvrir automatiquement une session via la mise en commentaire de la ligne suivante :
+**Remarque :** le code empêche un utilisateur nouvellement inscrit d'ouvrir automatiquement une session via la mise en commentaire de la ligne suivante :
 
 ```csharp
 //await _signInManager.SignInAsync(user, isPersistent: false);
@@ -277,10 +277,10 @@ Cela est mentionné plus loin dans le didacticiel.
 
 ### <a name="debug-email"></a>Déboguer le courrier électronique
 
-Si vous ne parvenez à faire fonctionner l'email :
+Si vous ne parvenez à faire fonctionner l'email :
 
 * Créer une [application console pour envoyer un courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html).
-* Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html).
+* Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) page.
 * Vérifiez votre dossier courrier indésirable.
 * Essayez un autre alias de messagerie électronique sur un fournisseur de messagerie différents (Microsoft, Yahoo, Gmail, etc.).
 * Essayez d’envoyer à des comptes de messagerie différents.
