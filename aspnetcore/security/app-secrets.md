@@ -5,16 +5,17 @@ description: Découvrez comment stocker et récupérer des informations sensible
 manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/16/2018
+ms.date: 05/23/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/app-secrets
-ms.openlocfilehash: 9e9b548e5572da2c347bc874c473a02d8691e738
-ms.sourcegitcommit: 300a1127957dcdbce1b6ad79a7b9dc676f571510
-ms.translationtype: HT
+ms.openlocfilehash: fd5cf5cdffd7281d7f4e0d96e8230b60be64a7c3
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819134"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application en cours de développement dans ASP.NET Core
 
@@ -48,7 +49,7 @@ L’outil Gestionnaire de secret principal stocke des données sensibles pendant
 
 ## <a name="how-the-secret-manager-tool-works"></a>Fonctionnement de l’outil Secret Manager
 
-L’outil Secret Manager élimine les détails d’implémentation, tels qu’où et comment les valeurs sont stockées. Vous pouvez utiliser l’outil sans connaître ces détails d’implémentation. Les valeurs sont stockées dans un [JSON](https://json.org/) fichier de configuration dans un dossier de profil utilisateur protégés par le système sur l’ordinateur local :
+L’outil Secret Manager élimine les détails d’implémentation, tels qu’où et comment les valeurs sont stockées. Vous pouvez utiliser l’outil sans connaître ces détails d’implémentation. Les valeurs sont stockées dans un fichier de configuration JSON dans un dossier de profil utilisateur protégés par le système sur l’ordinateur local :
 
 # <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
@@ -77,9 +78,18 @@ Ne pas écrire du code qui dépend de l’emplacement ou le format des données 
 ::: moniker range="<= aspnetcore-2.0"
 ## <a name="install-the-secret-manager-tool"></a>Installer le Gestionnaire de la clé secrète
 
-L’outil Gestionnaire de la clé secrète est fourni avec l’interface de ligne de base .NET dans .NET Core SDK 2.1. .NET Core SDK 2.0 ou version antérieure, l’installation de l’outil est nécessaire.
+L’outil Gestionnaire de la clé secrète est fourni avec l’interface de ligne de base .NET à partir du Kit de développement logiciel .NET Core 2.1.300. Pour les versions du Kit de développement .NET Core avant 2.1.300, l’installation de l’outil est nécessaire.
 
-Installer le [Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) package NuGet dans votre projet ASP.NET Core :
+> [!TIP]
+> Exécutez `dotnet --version` à partir d’une invite de commandes pour afficher le numéro de version de .NET Core SDK installé.
+
+Un avertissement s’affiche si le Kit de développement .NET Core utilisé inclut l’outil :
+
+```console
+The tool 'Microsoft.Extensions.SecretManager.Tools' is now included in the .NET Core SDK. Information on resolving this warning is available at (https://aka.ms/dotnetclitools-in-box).
+```
+
+Installer le [Microsoft.Extensions.SecretManager.Tools](https://www.nuget.org/packages/Microsoft.Extensions.SecretManager.Tools/) package NuGet dans votre projet ASP.NET Core. Exemple :
 
 [!code-xml[](app-secrets/samples/1.x/UserSecrets/UserSecrets.csproj?name=snippet_CsprojFile&highlight=13-14)]
 
@@ -137,7 +147,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 
 Dans l’exemple précédent, le signe deux-points indique que `Movies` est un objet littéral avec un `ServiceApiKey` propriété.
 
-L’outil Gestionnaire de la clé secrète peut servir à partir d’autres annuaires trop. Utilisez le `--project` option pour indiquer le chemin d’accès de système de fichiers auquel le *.csproj* fichier existe. Par exemple :
+L’outil Gestionnaire de la clé secrète peut servir à partir d’autres annuaires trop. Utilisez le `--project` option pour indiquer le chemin d’accès de système de fichiers auquel le *.csproj* fichier existe. Exemple :
 
 ```console
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -205,27 +215,27 @@ Secrets de l’utilisateur peuvent être récupérés via la `Configuration` API
 
 ## <a name="string-replacement-with-secrets"></a>Remplacement de chaîne avec les clés secrètes
 
-Il est risqué de stocker des mots de passe en texte brut. Par exemple, une chaîne de connexion de base de données stockées dans *appsettings.json* peut inclure un mot de passe pour l’utilisateur spécifié :
+Stocker les mots de passe en texte brut n’est pas sécurisée. Par exemple, une chaîne de connexion de base de données stockées dans *appsettings.json* peut inclure un mot de passe pour l’utilisateur spécifié :
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
-Une approche plus sécurisée consiste pour stocker le mot de passe en tant que secret. Par exemple :
+Une approche plus sécurisée consiste pour stocker le mot de passe en tant que secret. Exemple :
 
 ```console
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-Remplacez le mot de passe *appsettings.json* par un espace réservé. Dans l’exemple suivant, `{0}` est utilisé comme espace réservé pour former un [chaîne de Format Composite](/dotnet/standard/base-types/composite-formatting#composite-format-string).
+Supprimer le `Password` paire clé-valeur de la chaîne de connexion dans *appsettings.json*. Exemple :
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
-Valeur de la clé secrète peut être injectée dans l’espace réservé pour terminer la chaîne de connexion :
+Valeur de la clé secrète peut être définie sur une [SqlConnectionStringBuilder](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder) l’objet [mot de passe](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.password) propriété pour terminer la chaîne de connexion :
 
 ::: moniker range="<= aspnetcore-1.1"
-[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=23-25)]
+[!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=26-29)]
 ::: moniker-end
 ::: moniker range=">= aspnetcore-2.0"
-[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-16)]
+[!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-17)]
 ::: moniker-end
 
 ## <a name="list-the-secrets"></a>Répertorier les clés secrètes

@@ -11,11 +11,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/hubs
-ms.openlocfilehash: 5c477dd64c4cf8b7d6da1f121a290b00f3864f45
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 495aa156dd5e4641d688d7b16df1e5814c9607f4
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819082"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utilisation des hubs dans SignalR pour ASP.NET Core
 
@@ -63,12 +64,12 @@ En outre, `Hub.Clients` contient les méthodes suivantes :
 | `AllExcept` | Appelle une méthode sur tous les clients connectés à l’exception des connexions spécifiées |
 | `Client` | Appelle une méthode sur un client connecté spécifique |
 | `Clients` | Appelle une méthode sur les clients connectés spécifiques |
-| `Group` | Envoie un message à toutes les connexions dans le groupe spécifié  |
-| `GroupExcept` | Envoie un message à toutes les connexions dans le groupe spécifié, à l’exception des connexions spécifiées |
-| `Groups` | Envoie un message à plusieurs groupes de connexions  |
-| `OthersInGroup` | Envoie un message à un groupe de connexions, à l’exclusion du client qui a appelé la méthode de concentrateur  |
-| `User` | Envoie un message à toutes les connexions associées à un utilisateur spécifique |
-| `Users` | Envoie un message à toutes les connexions associées aux utilisateurs spécifiés |
+| `Group` | Appelle une méthode à toutes les connexions dans le groupe spécifié  |
+| `GroupExcept` | Appelle une méthode à toutes les connexions dans le groupe spécifié, à l’exception des connexions spécifiées |
+| `Groups` | Appelle une méthode à plusieurs groupes de connexions  |
+| `OthersInGroup` | Appelle une méthode à un groupe de connexions, à l’exclusion du client qui a appelé la méthode de concentrateur  |
+| `User` | Appelle une méthode à toutes les connexions associées à un utilisateur spécifique |
+| `Users` | Appelle une méthode à toutes les connexions associées aux utilisateurs spécifiés |
 
 Chaque méthode ou propriété dans les tables précédentes retourne un objet avec un `SendAsync` (méthode). Le `SendAsync` méthode vous permet de fournir le nom et les paramètres de la méthode du client à appeler.
 

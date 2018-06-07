@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 8933cf9c4063bd94f7f3a9ba53b5372b443eb7c8
-ms.sourcegitcommit: d4cefc0c63550c64a8040b11867cc05efcfb7e86
+ms.openlocfilehash: 6202cb4d28cc8d77c1f83c8cee8c90892deef26e
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34758750"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818975"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Identité de vue de structure dans les projets ASP.NET Core
 
@@ -27,7 +27,7 @@ Les applications qui effectuent **pas** incluent l’authentification peut appli
 
 Bien que le scaffolder génère la plupart du code nécessaire, vous devrez mettre à jour votre projet pour terminer le processus. Ce document explique les étapes nécessaires pour effectuer une mise à jour de la génération de modèles automatique identité.
 
-Lorsque le scaffolder d’identité est exécuté, un *ScaffoldingReadme.txt* fichier est créé dans le répertoire du projet. Le *ScaffoldingReadme.txt* fichier contient des instructions générales sur ce qui est nécessaire pour terminer la mise à jour de la génération de modèles automatique identité. Ce document contient des instructions détaillées de la lecture du *ScaffoldingReadme.txt* fichier.
+Lorsque le scaffolder d’identité est exécuté, un *ScaffoldingReadme.txt* fichier est créé dans le répertoire du projet. Le *ScaffoldingReadme.txt* fichier contient des instructions générales sur ce qui est nécessaire pour terminer la mise à jour de la génération de modèles automatique identité. Ce document contient des instructions détaillées que le *ScaffoldingReadme.txt* fichier.
 
 Nous recommandons d’utiliser un système de contrôle de source qui montre les différences entre les fichiers et vous permet d’annuler les modifications. Vérifiez que les modifications après avoir exécuté le scaffolder d’identité.
 

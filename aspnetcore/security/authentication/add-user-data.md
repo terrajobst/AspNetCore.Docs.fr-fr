@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 23fd792c0d93c038f31ce947e7885ad6e36d119e
-ms.sourcegitcommit: d4cefc0c63550c64a8040b11867cc05efcfb7e86
+ms.openlocfilehash: cc7b29499e9db702cab70be7c15eac53373d450d
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34758767"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819069"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer les données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core
 
@@ -116,7 +116,7 @@ Mise à jour le `IdentityUser` dérivée de la classe avec les propriétés pers
 
 Propriétés décorée avec le [PersonalData](/dotnet/api/microsoft.aspnetcore.identity.personaldataattribute?view=aspnetcore-2.1) attribut sont :
 
-* Sont supprimées lorsque le *Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml* Page Razor appelle `UserManager.Delete`.
+* Supprimé lorsque la *Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml* Page Razor appelle `UserManager.Delete`.
 * Inclus dans les données téléchargées par le *Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml* Page Razor.
 
 ### <a name="update-the-accountmanageindexcshtml-page"></a>Mise à jour de la page Account/Manage/Index.cshtml

@@ -12,11 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
 msc.type: authoredcontent
-ms.openlocfilehash: c289c209b50f0c2c1f2d8b15a3aedeaebf671d0b
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: aa4c91865f7b720846a5e8deb4281c3ca6933c8e
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/21/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819095"
 ---
 <a name="create-an-aspnet-mvc-5-app-with-facebook-twitter-linkedin-and-google-oauth2-sign-on-c"></a>Créer une application ASP.NET MVC 5 avec Facebook, Twitter, LinkedIn et Google OAuth2 Sign-on (c#)
 ====================
@@ -139,7 +140,7 @@ Pour vous connecter à des fournisseurs d’authentification tels que Google et 
     [!code-csharp[Main](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/samples/sample2.cs?highlight=37-39)]
 
     > [!WARNING]
-    > Sécurité - magasin jamais des données sensibles dans votre code source. Le compte et les informations d’identification sont ajoutées au code ci-dessus pour simplifier l’exemple. Consultez [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Service d’applications Azure](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
+    > Sécurité - Ne jamais stocker de données sensibles dans votre code source. Le compte et les informations d’identification sont ajoutées au code ci-dessus pour simplifier l’exemple. Consultez [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Service d’applications Azure](../../../identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md).
 8. Appuyez sur **CTRL + F5** pour générer et exécuter l’application. Cliquez sur le **connecter** lien.  
   
     ![](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image17.png)
@@ -174,7 +175,7 @@ Pour l’authentification Facebook OAuth2, vous devez copier certains paramètre
     ![Créer une application](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image22.png)
 4. Entrez un **nom de l’application** et **catégorie**, puis cliquez sur **créer application**.
 
-    Cela doit être unique dans Facebook. Le <strong>application Namespace</strong> est la partie de l’URL que votre application utilise pour accéder à l’application Facebook pour l’authentification (par exemple, https://apps.facebook.com/{App Namespace}). Si vous ne spécifiez pas un <strong>application Namespace</strong>, le <strong>ID d’application</strong> sera utilisé pour l’URL. Le <strong>ID d’application</strong> est un nombre long généré par le système qui s’affiche dans l’étape suivante.
+    Le <strong>application Namespace</strong> est la partie de l’URL que votre application utilise pour accéder à l’application Facebook pour l’authentification (par exemple, https\://apps.facebook.com/{App Namespace}). Si vous ne spécifiez pas un <strong>application Namespace</strong>, le <strong>ID d’application</strong> sera utilisé pour l’URL. Le <strong>ID d’application</strong> est un nombre long généré par le système qui s’affiche dans l’étape suivante.
 
     ![Créer la boîte de dialogue nouvelle application](create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on/_static/image23.png)
 5. Envoyer la vérification de sécurité standard.
