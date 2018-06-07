@@ -55,7 +55,7 @@ cd WebPWrecover
 
 ::: moniker-end
 
-* `--auth Individual` Spécifie le modèle de projet de comptes d’utilisateur individuels.
+* `--auth Individual` Spécifie le modèle de projet Comptes d’utilisateur individuels.
 * Sur Windows, ajoutez l'option `-uld`. Elle spécifie que la base de données locale doit être utilisée au lieu de SQLite.
 * Exécutez `new mvc --help` pour obtenir de l’aide sur cette commande.
 
@@ -67,7 +67,7 @@ Si vous utilisez l’interface CLI ou SQLite, exécutez la commande suivante dan
 dotnet new mvc --auth Individual
 ```
 
-* `--auth Individual` Spécifie le modèle de projet de comptes d’utilisateur individuels.
+* `--auth Individual` Spécifie le modèle de projet Comptes d’utilisateur individuels.
 * Sur Windows, ajoutez l'option `-uld`. Elle spécifie que la base de données locale doit être utilisée au lieu de SQLite.
 * Exécutez `new mvc --help` pour obtenir de l’aide sur cette commande.
 
@@ -82,7 +82,7 @@ Vous pouvez également créer un nouveau projet ASP.NET Core avec Visual Studio�
 
 ![Nouvelle boîte de dialogue projet indiquant « Radio de comptes d’utilisateur individuels » sélectionnée](accconfirm/_static/2.png)
 
-## <a name="test-new-user-registration"></a>Nouvelle inscription de l’utilisateur de test
+## <a name="test-new-user-registration"></a>Tester l’inscription d’un nouvel utilisateur
 
 Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce tutoriel, le code est mis à jour pour que les nouveaux utilisateurs ne puissent pas se connecter tant que leur e-mail n’a pas été validé.
 
@@ -112,9 +112,9 @@ Consultez [Exiger HTTPS](xref:security/enforcing-ssl).
 
 Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous ayez un forum de discussion, et que vous souhaitiez empêcher "yli@example.com" de s’inscription en tant que "nolivetto@contoso.com". Sans la confirmation par courrier électronique, "nolivetto@contoso.com" peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur s'inscrit par inadvertance en tant que "ylo@example.com" et que vous n’avez pas remarqué la faute d’orthographe de "yli". Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. l'email de confirmation fournit uniquement une protection limitée contre les robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
 
-En règle générale, vous souhaitez empêcher les nouveaux utilisateurs à partir de la validation des données à votre site web avant d’avoir un message électronique de confirmation.
+En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web tant que leur adresse e-mail n’est pas confirmée.
 
-Mise à jour `ConfigureServices` pour exiger un message électronique de confirmation :
+Mettez à jour `ConfigureServices` pour exiger une adresse e-mail confirmée :
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet1&highlight=12-17)]
 
