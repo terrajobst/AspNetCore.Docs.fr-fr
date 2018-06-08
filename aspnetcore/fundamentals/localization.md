@@ -61,13 +61,13 @@ Certains développeurs utilisent la classe `Startup` pour contenir des chaînes 
 
 [!code-csharp[](localization/sample/Localization/Controllers/InfoController.cs?range=9-26)]
 
-## <a name="view-localization"></a>Localisation de l’affichage
+## <a name="view-localization"></a>Localisation de vue
 
-Le service `IViewLocalizer` fournit des chaînes localisées à un [affichage](xref:mvc/views/overview). La classe `ViewLocalizer` implémente cette interface et recherche l’emplacement de la ressource à partir du chemin du fichier de l’affichage. Le code suivant montre comment utiliser l’implémentation par défaut de `IViewLocalizer` :
+Le service `IViewLocalizer` fournit des chaînes localisées à une [vue](xref:mvc/views/overview). La classe `ViewLocalizer` implémente cette interface et recherche l’emplacement de la ressource à partir du chemin du fichier de la vue. Le code suivant montre comment utiliser l’implémentation par défaut de `IViewLocalizer` :
 
 [!code-cshtml[](localization/sample/Localization/Views/Home/About.cshtml)]
 
-L’implémentation par défaut de `IViewLocalizer` recherche le fichier de ressources en fonction du nom de fichier de l’affichage. Il n’existe aucune option pour utiliser un fichier de ressources partagées globales. `ViewLocalizer` implémente le localiseur en utilisant `IHtmlLocalizer`, si bien que Razor n’encode pas en HTML la chaîne localisée. Vous pouvez paramétrer des chaînes de ressources pour que `IViewLocalizer` encode en HTML les paramètres, mais pas les chaînes de ressources. Examinez le balisage Razor suivant :
+L’implémentation par défaut de `IViewLocalizer` recherche le fichier de ressources en fonction du nom de fichier de la vue. Il n’existe aucune option pour utiliser un fichier de ressources partagées globales. `ViewLocalizer` implémente le localiseur en utilisant `IHtmlLocalizer`, si bien que Razor n’encode pas en HTML la chaîne localisée. Vous pouvez paramétrer des chaînes de ressources pour que `IViewLocalizer` encode en HTML les paramètres, mais pas les chaînes de ressources. Examinez le balisage Razor suivant :
 
 ```cshtml
 @Localizer["<i>Hello</i> <b>{0}!</b>", UserManager.GetUserName(User)]
@@ -79,11 +79,11 @@ Un fichier de ressources en français peut contenir ce qui suit :
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b> ` |
 
-L’affichage contient le balisage HTML provenant du fichier de ressources.
+La vue contient le balisage HTML provenant du fichier de ressources.
 
 **Remarque :** Vous avez généralement besoin de localiser uniquement le texte et pas le code HTML.
 
-Pour utiliser un fichier de ressources partagées dans un affichage, injectez `IHtmlLocalizer<T>` :
+Pour utiliser un fichier de ressources partagées dans une vue, injectez `IHtmlLocalizer<T>` :
 
 [!code-cshtml[](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
@@ -154,13 +154,13 @@ Dans l’exemple de projet, la méthode `ConfigureServices` affecte à `Resource
 | Resources/Controllers/HomeController.fr.resx  | Chemin d’accès |
 |    |     |
 
-Les fichiers de ressources qui utilisent `@inject IViewLocalizer` dans les affichages Razor suivent un modèle similaire. Le fichier de ressources d’un affichage peut être nommé selon la convention avec des points ou un chemin. Les fichiers de ressources d’un affichage Razor imitent le chemin de son fichier d’affichage associé. Si nous affectons à `ResourcesPath` la valeur « Resources », le fichier de ressources en français associé à l’affichage *Views/Home/About.cshtml* peut porter l’un des noms suivants :
+Les fichiers de ressources qui utilisent `@inject IViewLocalizer` dans les vues Razor suivent un modèle similaire. Le fichier de ressources d’une vue peut être nommé selon la convention avec des points ou un chemin. Les fichiers de ressources d’une vue Razor imitent le chemin de son fichier de vue associé. Si nous affectons à `ResourcesPath` la valeur « Resources », le fichier de ressources en français associé à la vue *Views/Home/About.cshtml* peut porter l’un des noms suivants :
 
 * Resources/Views/Home/About.fr.resx
 
 * Resources/Views.Home.About.fr.resx
 
-Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* d’un affichage se trouve dans le même dossier que l’affichage.
+Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* d’une vue se trouve dans le même dossier que la vue.
 
 ## <a name="culture-fallback-behavior"></a>Comportement de secours pour la culture
 
@@ -192,7 +192,7 @@ La localisation est configurée dans la méthode `ConfigureServices` :
 
 * `AddLocalization` ajoute les services de localisation au conteneur de services. Le code ci-dessus affecte également au chemin des ressources la valeur « Resources ».
 
-* `AddViewLocalization` ajoute la prise en charge des fichiers d’affichage localisés. Dans cet exemple d’affichage, la localisation se base sur le suffixe du fichier d’affichage. Par exemple, « fr » dans le fichier *Index.fr.cshtml*.
+* `AddViewLocalization` ajoute la prise en charge des fichiers de vues localisées. Dans cet exemple de vue, la localisation se base sur le suffixe du fichier de la vue. Par exemple, « fr » dans le fichier *Index.fr.cshtml*.
 
 * `AddDataAnnotationsLocalization` ajoute la prise en charge des messages de validation `DataAnnotations` localisés par le biais d’abstractions `IStringLocalizer`.
 
@@ -288,7 +288,7 @@ Cet exemple de projet **Localization.StarterWeb** sur [GitHub](https://github.co
 
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 
-Le fichier *Views/Shared/_SelectLanguagePartial.cshtml* est ajouté à la section `footer` du fichier de disposition afin d’être disponible pour tous les affichages :
+Le fichier *Views/Shared/_SelectLanguagePartial.cshtml* est ajouté à la section `footer` du fichier de disposition afin d’être disponible pour toutes les vues :
 
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_Layout.cshtml?range=43-56&highlight=10)]
 
