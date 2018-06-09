@@ -1,8 +1,8 @@
 ---
 uid: mvc/mvc3
-title: ASP.NET MVC 3 | Documents Microsoft
+title: ASP.NET MVC 3 | Microsoft Docs
 author: rick-anderson
-description: "(inclut avril 2011 mise à jour des outils) ASP.NET MVC 3 est une infrastructure pour générer des applications web évolutive basée sur des normes, à l’aide du modèle de conception bien établis..."
+description: (inclut avril 2011 mise à jour des outils) ASP.NET MVC 3 est une infrastructure pour générer des applications web évolutive basée sur des normes, à l’aide du modèle de conception bien établis...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2010
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/mvc3
 msc.type: content
 ms.openlocfilehash: c7eee987b28a5d7f8b40fe89a7bf7517ec06646f
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28034735"
 ---
 <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 ====================
@@ -128,8 +129,8 @@ ASP.NET MVC 3 est fourni avec un nouveau moteur d’affichage nommé Razor qui o
 
 Certaines nouvelles fonctionnalités de Razor sont les suivantes :
 
-- `@model`syntaxe pour spécifier le type passé à la vue.
-- `@* *@`syntaxe de commentaire.
+- `@model` syntaxe pour spécifier le type passé à la vue.
+- `@* *@` syntaxe de commentaire.
 - La possibilité de spécifier les valeurs par défaut (tel que `layoutpage`) une fois pour un site entier.
 - Le `Html.Raw` méthode pour afficher du texte sans codage HTML il.
 - Prise en charge pour le partage de code entre plusieurs vues (*\_viewstart.cshtml* ou  *\_viewstart.vbhtml* fichiers).
@@ -140,7 +141,7 @@ Razor inclut également les nouveaux programmes d’assistance HTML, tels que le
 - `WebGrid`. Affiche une grille de données, avec la fonctionnalité de pagination et de tri.
 - `Crypto`. Utilise le hachage d’algorithmes pour créer correctement salé et hacher les mots de passe.
 - `WebImage`. Restitue une image.
-- `WebMail`. Envoie un message électronique.
+- `WebMail`. Envoie un e-mail.
 
 Pour plus d’informations sur Razor, consultez les ressources suivantes :
 

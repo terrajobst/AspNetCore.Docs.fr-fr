@@ -13,14 +13,15 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs
 msc.type: authoredcontent
 ms.openlocfilehash: 9a748628d53878be380869ac5327de0111d2284d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507258"
 ---
 <a name="hands-on-lab-build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs"></a>Ateliers pratiques : Générer une Application à Page unique (SPA) avec l’API Web ASP.NET et Angular.js
 ====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
 [Télécharger Camps Web Kit de formation](http://aka.ms/webcamps-training-kit)
 
@@ -32,7 +33,7 @@ par [Web Camps équipe](https://twitter.com/webcamps)
 > 
 > Dans ce laboratoire dans main, vous tirera parti de ces technologies pour implémenter le questionnaire de fou, un site Web de nature basé sur le concept SPA. Vous allez tout d’abord implémenter la couche de service avec l’API Web ASP.NET pour exposer les points de terminaison requis pour récupérer les questions du test et de stocker les réponses. Ensuite, vous allez créer une interface utilisateur riche et réactive à l’aide d’AngularJS et CSS3 effets de transformation.
 > 
-> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 
 
 ## <a name="overview"></a>Vue d'ensemble
@@ -47,7 +48,7 @@ Dans cet atelier pratique, vous allez apprendre comment :
 - Améliorer l’expérience de l’interface utilisateur avec des transformations de CSS3
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Conditions préalables
+### <a name="prerequisites"></a>Prérequis
 
 Les éléments suivants sont nécessaire pour terminer cet atelier pratique :
 
@@ -307,7 +308,7 @@ Dans cette tâche, vous allez utiliser **AngularJS** pour implémenter le côté
 Vous allez commencer par installer AngularJS à partir de la Console du Gestionnaire de Package de Visual Studio. Ensuite, vous allez créer le contrôleur pour fournir le comportement de l’application de fou questionnaire et de la vue à restituer les questions du questionnaire et les réponses à l’aide du moteur de modèle AngularJS.
 
 > [!NOTE]
-> Pour plus d’informations sur AngularJS, reportez-vous à [ [http://angularjs.org/](http://angularjs.org/)](http://angularjs.org/).
+> Pour plus d’informations sur AngularJS, reportez-vous à [ [ http://angularjs.org/ ](http://angularjs.org/) ](http://angularjs.org/).
 
 
 1. Ouvrez **Visual Studio Express 2013 pour le Web** et ouvrez le **GeekQuiz.sln** solution situé dans le **Source/Ex2-CreatingASPAInterface/début** dossier. Ou bien, vous pouvez continuer avec la solution que vous avez obtenu dans l’exercice précédent.
@@ -439,7 +440,7 @@ Dans cette tâche, vous utiliserez les propriétés CSS3 pour effectuer des anim
 * * *
 
 <a id="Summary"></a>
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 À la fin de cet atelier pratique, vous avez appris comment :
 

@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
 ms.openlocfilehash: a3baa8e9af572d4c21813218ba394715a6db65cb
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30874744"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Examen des méthodes de modification et la vue d’édition
 ====================
@@ -106,7 +107,7 @@ Si vous utilisez un ordinateur en langue anglaise, vous pouvez ignorer cette sec
 1. À partir de la **outils** menu, cliquez sur **NuGetLibrary Package Manager**, puis cliquez sur **gérer les Packages NuGet pour la Solution**.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image5.png)
-2. Dans le volet gauche, sélectionnez <strong>Parcourir*.</strong>* (Voir l’image ci-dessous).
+2. Dans le volet gauche, sélectionnez <strong>Parcourir *.</strong>* (Voir l’image ci-dessous).
 3. Dans la zone d’entrée, tapez *Globalize* \*.  
   
     ![](examining-the-edit-methods-and-edit-view/_static/image6.png) Choisissez `jQuery.Validation.Globalize`, choisissez `MvcMovie` et cliquez sur **installer**. Le *Scripts\jquery.globalize\globalize.js* fichier sera ajouté à votre projet. Le *Scripts\jquery.globalize\cultures\* nombreux culture contiendra les fichiers JavaScript. Il peut prendre cinq minutes pour installer ce package.

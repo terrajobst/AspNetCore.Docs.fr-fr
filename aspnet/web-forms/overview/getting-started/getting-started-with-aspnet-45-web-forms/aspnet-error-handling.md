@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
 ms.openlocfilehash: ac5508334bf6d471471a719b98618bdcd3214fb5
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30888927"
 ---
 <a name="aspnet-error-handling"></a>Gestion des erreurs de ASP.NET
 ====================
@@ -335,13 +336,13 @@ En savoir plus sur le déploiement de votre application web sur Microsoft Azure,
 
 J’aimerais remercier les personnes suivantes qui a effectué des contributions significatives pour le contenu de cette série de didacticiels :
 
-- [Alberto Poblacion, MVP &amp; MCT, Spain](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
+- [Blog d’Alberto Poblacion, MVP &amp; MCT, Espagne](https://mvp.microsoft.com/mvp/Alberto%20Poblacion%20Bolano-36772)
 - [Alex Thissen, pays-bas](http://blog.alexthissen.nl/) (twitter : [ @alexthissen ](http://twitter.com/alexthissen))
 - [Andre Tournier, États-Unis](http://andret503.wordpress.com/)
 - Apurva Joshi, Microsoft
-- [Bojan Vrhovnik, Slovenia](http://twitter.com/bvrhovnik)
+- [Bojan Vrhovnik, Slovénie](http://twitter.com/bvrhovnik)
 - [Bruno Sonnino, Brésil](http://msmvps.com/blogs/bsonnino) (twitter : [ @bsonnino ](http://twitter.com/bsonnino))
-- [Carlos dos Santos, Brazil](http://www.carloscds.net/)
+- [Déni de service Carlos Santos, Brésil](http://www.carloscds.net/)
 - [Dave Campbell, États-Unis](http://www.wynapse.com/) (twitter : [ @windowsdevnews ](http://twitter.com/windowsdevnews))
 - [Jon Galloway, Microsoft](https://weblogs.asp.net/jgalloway) (twitter : [ @jongalloway ](http://twitter.com/jongalloway))
 - [Des dièses de Michael, États-Unis](http://www.930solutions.com/) (twitter : [ @mrsharps ](http://twitter.com/mrsharps))

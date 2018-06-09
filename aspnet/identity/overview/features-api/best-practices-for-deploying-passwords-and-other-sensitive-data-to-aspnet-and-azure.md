@@ -1,28 +1,29 @@
 ---
 uid: identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
-title: "Meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Service d’applications Azure | Documents Microsoft"
+title: Meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Service d’applications Azure | Documents Microsoft
 author: Rick-Anderson
-description: "Ce didacticiel montre comment votre code peut stocker en toute sécurité et accéder aux informations sécurisées. Le point le plus important est que vous ne devez jamais stocker les mots de passe ou autres voyer..."
+description: Ce didacticiel montre comment votre code peut stocker en toute sécurité et accéder aux informations sécurisées. Le point le plus important est que vous ne devez jamais stocker les mots de passe ou autres voyer...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/21/2015
 ms.topic: article
 ms.assetid: 97902c66-cb61-4d11-be52-73f962f2db0a
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
 ms.openlocfilehash: 995d9a088e3095f36a01d2adb19ec08e6a6d1b3e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28033019"
 ---
 <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Service d’applications Azure
 ====================
-Par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson](https://github.com/Rick-Anderson)
 
-> Ce didacticiel montre comment votre code peut stocker en toute sécurité et accéder aux informations sécurisées. Le point le plus important est de vous ne devez jamais stocker les mots de passe ou d’autres données sensibles dans le code source, et vous ne devez pas utiliser les clés secrètes de production en mode de développement et de test.
+> Ce didacticiel montre comment votre code peut stocker en toute sécurité et accéder aux informations sécurisées. Le point le plus important est que vous ne devez jamais stocker les mots de passe ou d’autres données sensibles dans le code source, et vous ne devez pas utiliser les clés secrètes de production en mode de développement et de test.
 > 
 > L’exemple de code est une application de console de la tâche Web simple et une application ASP.NET MVC qui doit accéder à une base de données chaîne mot de passe, Twilio, Google et SendGrid sécurisée clés de connexion.
 > 
@@ -90,7 +91,7 @@ Le *app.config* fichier utilisé par une application de console ne prend pas en 
 
 Lorsque vous déployez votre application web sur Azure, le *AppSettingsSecrets.config* fichier ne sera pas déployé (c’est ce que vous souhaitez). Vous pouvez accéder à la [portail de gestion Azure](https://azure.microsoft.com/services/management-portal/) et les définir manuellement, pour ce faire :
 
-1. Accédez à [https://portal.azure.com](https://portal.azure.com)et connectez-vous avec vos informations d’identification Azure.
+1. Accédez à [ https://portal.azure.com ](https://portal.azure.com)et connectez-vous avec vos informations d’identification Azure.
 2. Cliquez sur **Parcourir &gt; Web Apps**, puis cliquez sur le nom de votre application web.
 3. Cliquez sur **tous les paramètres &gt; paramètres de l’Application**.
 

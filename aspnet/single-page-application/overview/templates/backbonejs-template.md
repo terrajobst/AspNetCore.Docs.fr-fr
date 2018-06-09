@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/backbonejs-template
-title: "Modèle de réseau principal | Documents Microsoft"
+title: Modèle de réseau principal | Documents Microsoft
 author: madskristensen
-description: "Modèle SPA backbone.js"
+description: Modèle SPA backbone.js
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/04/2013
 ms.topic: article
 ms.assetid: 00aca413-f067-4108-9bd1-cf21e64a2646
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/backbonejs-template
 msc.type: authoredcontent
 ms.openlocfilehash: 3b8eabd3cefcb96dc40bbf6cc6e3ee81accb0d7c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506678"
 ---
 <a name="backbone-template"></a>Modèle de réseau principal
 ====================
@@ -61,7 +62,7 @@ Nous allons démarre avec le côté client. Les scripts d’application client s
 
 **Application**
 
-`Application`est défini dans application.ts. Cet objet initialise l’application et agit comme l’espace de noms racine. Il gère les informations de configuration et l’état qui sont partagées entre l’application, telles que si l’utilisateur est connecté.
+`Application` est défini dans application.ts. Cet objet initialise l’application et agit comme l’espace de noms racine. Il gère les informations de configuration et l’état qui sont partagées entre l’application, telles que si l’utilisateur est connecté.
 
 Le `application.start` méthode crée les affichages modaux et attache des gestionnaires d’événements pour les événements de niveau application, telles que l’authentification de l’utilisateur. Ensuite, il crée le routeur par défaut et vérifie si n’importe quelle URL côté client est spécifiée. Si non, il redirige vers l’url par défaut (#! /).
 

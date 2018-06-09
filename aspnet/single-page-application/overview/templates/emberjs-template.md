@@ -1,22 +1,23 @@
 ---
 uid: single-page-application/overview/templates/emberjs-template
-title: "Modèle de EmberJS | Documents Microsoft"
+title: Modèle de EmberJS | Documents Microsoft
 author: xqiu
-description: "Modèle de EmberJS"
+description: Modèle de EmberJS
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: 04d5f142-5f62-494a-b5ea-4f3d068d34cb
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/templates/emberjs-template
 msc.type: authoredcontent
 ms.openlocfilehash: 1fb7633aee288be648d4f9681b43c8911b7dbab9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26506798"
 ---
 <a name="emberjs-template"></a>Modèle de EmberJS
 ====================
@@ -124,7 +125,7 @@ Le contrôleur contient également un `error` propriété, qui contient un messa
 
 [!code-html[Main](emberjs-template/samples/sample9.html)]
 
-## <a name="routes"></a>Itinéraires
+## <a name="routes"></a>Routes
 
 Router.js définit les itinéraires et le modèle par défaut à afficher, de configurer l’état de l’application et correspond à des URL pour les itinéraires :
 
@@ -134,7 +135,7 @@ TodoListRoute.js charge les données pour le TodoListRoute en substituant la fon
 
 [!code-javascript[Main](emberjs-template/samples/sample11.js)]
 
-Ember utilise les conventions d’affectation de noms pour faire correspondre les URL, les noms d’itinéraires, les contrôleurs et les modèles. Pour plus d’informations, consultez [http://emberjs.com/guides/routing/defining-your-routes/](http://emberjs.com/guides/routing/defining-your-routes/) à la documentation EmberJS.
+Ember utilise les conventions d’affectation de noms pour faire correspondre les URL, les noms d’itinéraires, les contrôleurs et les modèles. Pour plus d’informations, consultez [ http://emberjs.com/guides/routing/defining-your-routes/ ](http://emberjs.com/guides/routing/defining-your-routes/) à la documentation EmberJS.
 
 ## <a name="templates"></a>Modèles
 
@@ -146,7 +147,7 @@ Le dossier de modèles contient quatre modèles :
 - todoList.hbs : le modèle pour le « / todo « itinéraire.
 - \_navbar.HBS : le modèle définit le menu de navigation.
 
-Le modèle d’application se comporte comme une page maître. Il contient un en-tête, un pied de page et une « {{prise}} » pour insérer d’autres modèles dans en fonction de l’itinéraire. Pour plus d’informations sur les modèles d’application dans Ember, consultez [http://guides.emberjs.com/v1.10.0/templates/the-application-template//](http://guides.emberjs.com/v1.10.0/templates/the-application-template/).
+Le modèle d’application se comporte comme une page maître. Il contient un en-tête, un pied de page et une « {{prise}} » pour insérer d’autres modèles dans en fonction de l’itinéraire. Pour plus d’informations sur les modèles d’application dans Ember, consultez [ http://guides.emberjs.com/v1.10.0/templates/the-application-template// ](http://guides.emberjs.com/v1.10.0/templates/the-application-template/).
 
 Le « / todoList « modèle contient deux expressions de boucle. La boucle externe est `{{#each controller}}`et la boucle est `{{#each todos}}`. Le code suivant montre un intégré `Ember.Checkbox` afficher un texte personnalisé `App.TodoItemEditView`, ainsi qu’un lien avec un `deleteTodo` action.
 

@@ -1,26 +1,27 @@
 ---
 uid: visual-studio/overview/2013/creating-web-projects-in-visual-studio
-title: "Création de projets Web ASP.NET dans Visual Studio 2013 | Documents Microsoft"
+title: Création de projets Web ASP.NET dans Visual Studio 2013 | Documents Microsoft
 author: tdykstra
-description: "Cette rubrique explique les options pour la création de projets web ASP.NET dans Visual Studio 2013 avec Update 3 ici sont les nouvelles fonctionnalités pour c de développement web..."
+description: Cette rubrique explique les options pour la création de projets web ASP.NET dans Visual Studio 2013 avec Update 3 ici sont les nouvelles fonctionnalités pour c de développement web...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/01/2014
 ms.topic: article
 ms.assetid: 61941e64-0c0d-4996-9270-cb8ccfd0cabc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
 ms.openlocfilehash: aacae7a9ccf483b21d3c6796c0411d558fa3c75b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28038863"
 ---
 <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Création de projets Web ASP.NET dans Visual Studio 2013
 ====================
-Par [Tom Dykstra](https://github.com/tdykstra)
+par [Tom Dykstra](https://github.com/tdykstra)
 
 > Cette rubrique décrit les options pour la création de projets web ASP.NET dans Visual Studio 2013 avec Update 3
 > 
@@ -112,7 +113,7 @@ Visual Studio 2013 propose les options suivantes pour les modèles de projet web
 - [Modèle MVC](#mvc)
 - [Modèle de l’API Web](#webapi)
 - [Modèle d’Application à Page unique](#spa)
-- [Azure Mobile Service template](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
+- [Modèle de Service Mobile Azure](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)
 - [Modèles de Visual Studio 2012](#vs2012)
 
 Vous pouvez également installer une extension Visual Studio qui fournit un [Facebook modèle](#facebook).
@@ -243,7 +244,7 @@ Restreindre un peu plus de la fenêtre, et le menu supérieur horizontal se tran
 
 Vous pouvez également utiliser la fonctionnalité de thèmes du programme d’amorçage pour facilement effectuer un changement dans l’apparence de l’application. Par exemple, vous pouvez effectuer les étapes suivantes pour modifier le thème.
 
-1. Dans votre navigateur, accédez à [http://Bootswatch.com](http://Bootswatch.com), choisissez un thème, puis cliquez sur **télécharger**. (Cela permet de télécharger *bootstrap.min.css* par défaut ; si vous souhaitez examiner le code CSS, obtenir *bootstrap.css* au lieu de la version réduite.)
+1. Dans votre navigateur, accédez à [ http://Bootswatch.com ](http://Bootswatch.com), choisissez un thème, puis cliquez sur **télécharger**. (Cela permet de télécharger *bootstrap.min.css* par défaut ; si vous souhaitez examiner le code CSS, obtenir *bootstrap.css* au lieu de la version réduite.)
 2. Copiez le contenu du fichier téléchargé CSS.
 3. Dans Visual Studio, créez un **feuille de Style** fichier nommé *bootstrap-Theme.CSS* dans les *contenu* de code dans ce dossier et coller le code CSS téléchargé.
 4. Ouvrez *application\_Start/Bundle.config* et modifiez *bootstrap.css* à *bootstrap-Theme.CSS*.
@@ -321,7 +322,7 @@ ASP.NET Identity est un bon choix si vous créez un site Internet qui est princi
 
 Pour plus d’informations sur l’option de comptes d’utilisateur individuels, consultez les ressources suivantes :
 
-- [www.asp.net/identity](../../../identity/index.md). Documentation sur ASP.NET Identity sur le site web ASP.NET.
+- [www.ASP.NET/Identity](../../../identity/index.md). Documentation sur ASP.NET Identity sur le site web ASP.NET.
 - [Créer une application ASP.NET MVC 5 avec Facebook et Google OAuth2 et authentification OpenID](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md). Montre également comment personnaliser les données de profil utilisateur.
 - [API - Web service d’authentification externe](../../../web-api/overview/security/external-authentication-services.md)
 - [Ajout de connexions externes à votre application ASP.NET dans Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/06/27/adding-external-logins-to-your-asp-net-application-in-visual-studio-2013.aspx)
@@ -426,4 +427,4 @@ Spécifiez un URI unique AD permettre utiliser pour identifier cette application
 <a id="nextsteps"></a>
 ## <a name="next-steps"></a>Étapes suivantes
 
-Ce document a fourni une aide de base pour la création d’un projet web ASP.NET dans Visual Studio 2013. Pour plus d’informations sur l’utilisation de Visual Studio pour le développement web, consultez [https://www.asp.net/visual-studio/](../../index.md).
+Ce document a fourni une aide de base pour la création d’un projet web ASP.NET dans Visual Studio 2013. Pour plus d’informations sur l’utilisation de Visual Studio pour le développement web, consultez [ https://www.asp.net/visual-studio/ ](../../index.md).

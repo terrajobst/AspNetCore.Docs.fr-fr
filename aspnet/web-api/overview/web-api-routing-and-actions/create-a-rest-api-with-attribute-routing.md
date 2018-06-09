@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
 ms.openlocfilehash: 1f1e90544c9dd8439a522f2196d81d020ea2f4f2
-ms.sourcegitcommit: 7f92990bad6a6cb901265d621dcbc136794f5f3f
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30223260"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Créer une API REST avec l’attribut de routage dans l’API Web ASP.NET 2
 ====================
@@ -26,12 +27,12 @@ API Web 2 prend en charge un nouveau type de routage, appelé *attribut routage*
 
 | Action | Exemple d’URI |
 | --- | --- |
-| Obtenir une liste de tous les livres. | /api/books |
-| Obtenir un livre par ID. | /api/books/1 |
-| Obtenir les détails d’un livre. | /api/books/1/details |
-| Obtenir une liste de livres par genre. | /api/books/fantasy |
+| Obtenir une liste de tous les livres. | documentation/api / |
+| Obtenir un livre par ID. | /API/Books/1 |
+| Obtenir les détails d’un livre. | /API/Books/1/Details |
+| Obtenir une liste de livres par genre. | /API/Books/fantasy |
 | Obtenir une liste de livres par date de publication. | /API/Books/date/2013-02-16 /api/books/date/2013/02/16 (autre forme) |
-| Obtenir une liste de livres publiés par un auteur particulier. | /api/authors/1/books |
+| Obtenir une liste de livres publiés par un auteur particulier. | /API/authors/1/Books |
 
 Toutes les méthodes sont en lecture seule (demandes HTTP GET).
 
@@ -167,8 +168,8 @@ Le modèle d’itinéraire pour chaque méthode de contrôleur est le préfixe a
 
 | Méthode | Modèle de routage | Exemple d’URI |
 | --- | --- | --- |
-| `GetBooks` | "api/books" | `http://localhost/api/books` |
-| `GetBook` | "api/books/{id:int}" | `http://localhost/api/books/5` |
+| `GetBooks` | « api/books » | `http://localhost/api/books` |
+| `GetBook` | « api/la documentation / {id : int} » | `http://localhost/api/books/5` |
 
 ## <a name="get-book-details"></a>Obtenir les détails de l’annuaire
 

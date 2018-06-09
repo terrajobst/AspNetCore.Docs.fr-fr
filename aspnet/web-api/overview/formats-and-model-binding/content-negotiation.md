@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/content-negotiation
-title: "Dans l’API Web ASP.NET la négociation de contenu | Documents Microsoft"
+title: Dans l’API Web ASP.NET la négociation de contenu | Documents Microsoft
 author: MikeWasson
-description: "Décrit comment ASP.NET Web API implémente la négociation de contenu HTTP."
+description: Décrit comment ASP.NET Web API implémente la négociation de contenu HTTP.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/20/2012
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/formats-and-model-binding/content-negotiation
 msc.type: authoredcontent
 ms.openlocfilehash: ca373af6754e82889dc100b63f73b76aaa4e4f27
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507018"
 ---
 <a name="content-negotiation-in-aspnet-web-api"></a>Négociation de contenu dans l’API Web ASP.NET
 ====================
@@ -95,7 +96,7 @@ Ensuite, le négociateur de contenu examine chaque formateur et évalue la mani�
 - Le **SupportedMediaTypes** collection qui contient une liste de types de médias pris en charge. Négociateur de contenu essaie de correspondre à cette liste par rapport à l’en-tête Accept de la demande. Notez que l’en-tête Accept peut inclure des plages. Par exemple, « text/plain » est une correspondance pour le texte /\* ou \* / \*.
 - Le **MediaTypeMappings** collection qui contient une liste de **MediaTypeMapping** objets. Le **MediaTypeMapping** classe fournit un moyen générique pour faire correspondre des requêtes HTTP avec les types de médias. Par exemple, il peut mapper un en-tête HTTP personnalisé à un type de média spécifique.
 
-S’il existe plusieurs correspond à, la correspondance avec le service wins de facteur de qualité la plus élevée. Exemple :
+S’il existe plusieurs correspond à, la correspondance avec le service wins de facteur de qualité la plus élevée. Exemple :
 
 [!code-console[Main](content-negotiation/samples/sample6.cmd)]
 

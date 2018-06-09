@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
 ms.openlocfilehash: 4cfa98144919c3f1bdb3608970af1a7952fe6ea7
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30878176"
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Validation, les formulaires et les programmes d’assistance ASP.NET MVC 4
 
@@ -605,7 +606,7 @@ Vous pouvez ajouter une validation à l’application en ajoutant des Annotation
 
 Dans cette tâche, vous allez ajouter au modèle Album qui permettront à la page Créer et modifier des Annotations de données afficher les messages de validation lorsque cela est approprié.
 
-Pour une classe de modèle simple, ajout d’une Annotation de données est uniquement géré en ajoutant un **à l’aide de** instruction pour **System.ComponentModel.DataAnnotation**, puis placer un **[obligatoire]**attribut sur les propriétés appropriées. L’exemple suivant rendrait la **nom** propriété un champ obligatoire dans la vue.
+Pour une classe de modèle simple, ajout d’une Annotation de données est uniquement géré en ajoutant un **à l’aide de** instruction pour **System.ComponentModel.DataAnnotation**, puis placer un **[obligatoire]** attribut sur les propriétés appropriées. L’exemple suivant rendrait la **nom** propriété un champ obligatoire dans la vue.
 
 [!code-csharp[Main](aspnet-mvc-4-helpers-forms-and-validation/samples/sample18.cs)]
 
@@ -709,7 +710,7 @@ Dans cette tâche, vous allez activer jQuery **validation client non obstructive
     > [!NOTE]
     > Vous pouvez également activer la validation côté client par le code à Global.asax.cs pour obtenir les mêmes résultats :
     > 
-    > **HtmlHelper.ClientValidationEnabled = true;**
+    > **HtmlHelper.ClientValidationEnabled = true ;**
     > 
     > En outre, vous pouvez affecter ClientValidationEnabled attribut dans n’importe quel contrôleur d’avoir un comportement personnalisé.
 2. Ouvrez **Create.cshtml** à **Views\StoreManager**.
@@ -742,9 +743,9 @@ Dans cette tâche, vous allez tester que le **StoreManager** créer la vue de mo
    > [!NOTE]
    > Pour chaque règle de validation client, jQuery non obstructive ajoute un attribut avec des données-val -*rulename*=&quot;*message*&quot;. Voici une liste de balises qui discrète jQuery insère dans le champ d’entrée html pour effectuer la validation côté client :
    > 
-   > - Data-val
-   > - Data-val-number
-   > - Data-val-range
+   > - Val de données
+   > - Numéro de données val
+   > - Plage de données val
    > - Données val plage min / données-val-range-max
    > - Données val requises
    > - Longueur de données val

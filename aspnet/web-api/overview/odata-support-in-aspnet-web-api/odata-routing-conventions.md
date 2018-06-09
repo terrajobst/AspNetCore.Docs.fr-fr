@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
 ms.openlocfilehash: 0ab99dd443040b90ffefd2f5b9261a63b91e9463
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28037319"
 ---
 <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>Conventions d’itinéraire dans ASP.NET Web API 2 Odata
 ====================
@@ -47,9 +48,9 @@ Avant que je décris les conventions d’itinéraire OData dans l’API Web, il 
 
 Pour le routage, le point essentiel est le chemin d’accès de ressource. Le chemin d’accès de ressource est divisée en segments. Par exemple, `/Products(1)/Supplier` a trois segments :
 
-- `Products`fait référence à un jeu d’entités nommé « Products ».
-- `1`est une clé d’entité, en sélectionnant une seule entité du jeu.
-- `Supplier`est une propriété de navigation qui sélectionne une entité associée.
+- `Products` fait référence à un jeu d’entités nommé « Products ».
+- `1` est une clé d’entité, en sélectionnant une seule entité du jeu.
+- `Supplier` est une propriété de navigation qui sélectionne une entité associée.
 
 Par conséquent, ce chemin d’accès sélectionne le fournisseur du produit 1.
 
@@ -67,7 +68,7 @@ Par conséquent, ce chemin d’accès sélectionne le fournisseur du produit 1.
 | --- | --- | --- | --- |
 | OBTENIR /entityset | / Produits | GetEntitySet ou Get | GetProducts |
 | OBTENIR /entityset(key) | /Products(1) | GetEntityType ou Get | GetProduct |
-| GET /entityset(key)/cast | /Products(1)/Models.Book | GetEntityType ou Get | GetBook |
+| OBTENIR /entityset (key) / effectué | / Produits (1) /Models.Book | GetEntityType ou Get | GetBook |
 
 Pour plus d’informations, consultez [créer un point de terminaison OData en lecture seule](odata-v3/creating-an-odata-endpoint.md).
 
@@ -75,20 +76,20 @@ Pour plus d’informations, consultez [créer un point de terminaison OData en l
 
 | Demande | Exemple d’URI | Nom de l’action | Exemple d’Action |
 | --- | --- | --- | --- |
-| POST /entityset | / Produits | PostEntityType ou Post | PostProduct |
+| VALIDER /entityset | / Produits | PostEntityType ou Post | PostProduct |
 | PUT /entityset(key) | /Products(1) | PutEntityType ou Put | PutProduct |
-| PUT /entityset (key) / effectué | /Products(1)/Models.Book | PutEntityType ou Put | PutBook |
+| PUT /entityset (key) / effectué | / Produits (1) /Models.Book | PutEntityType ou Put | PutBook |
 | Correctif logiciel /entityset(key) | /Products(1) | PatchEntityType ou un correctif | PatchProduct |
-| Correctif logiciel /entityset (key) / effectué | /Products(1)/Models.Book | PatchEntityType ou un correctif | PatchBook |
+| Correctif logiciel /entityset (key) / effectué | / Produits (1) /Models.Book | PatchEntityType ou un correctif | PatchBook |
 | SUPPRIMER /entityset(key) | /Products(1) | DeleteEntityType ou Delete | DeleteProduct |
-| SUPPRIMER des /entityset (key) ou effectuer un cast | /Products(1)/Models.Book | DeleteEntityType ou Delete | DeleteBook |
+| SUPPRIMER des /entityset (key) ou effectuer un cast | / Produits (1) /Models.Book | DeleteEntityType ou Delete | DeleteBook |
 
 **Interrogation d’une propriété de Navigation**
 
 | Demande | Exemple d’URI | Nom de l’action | Exemple d’Action |
 | --- | --- | --- | --- |
-| GET /entityset(key)/navigation | / Produits (1) / fournisseur | GetNavigationFromEntityType ou GetNavigation | GetSupplierFromProduct |
-| GET /entityset(key)/cast/navigation | /Products(1)/Models.Book/Author | GetNavigationFromEntityType ou GetNavigation | GetAuthorFromBook |
+| GET /entityset (key) / navigation | / Produits (1) / fournisseur | GetNavigationFromEntityType ou GetNavigation | GetSupplierFromProduct |
+| OBTENIR /entityset (key) / cast/de navigation | / Produits (1) /Models.Book/Author | GetNavigationFromEntityType ou GetNavigation | GetAuthorFromBook |
 
 Pour plus d’informations, consultez [utilisation des Relations d’entité](odata-v3/working-with-entity-relations.md).
 
@@ -96,10 +97,10 @@ Pour plus d’informations, consultez [utilisation des Relations d’entité](od
 
 | Demande | Exemple d’URI | Nom de l’action |
 | --- | --- | --- |
-| POST /entityset(key)/$links/navigation | /Products(1)/$links/Supplier | CreateLink |
-| PUT /entityset(key)/$links/navigation | /Products(1)/$links/Supplier | CreateLink |
-| DELETE /entityset(key)/$links/navigation | /Products(1)/$links/Supplier | DeleteLink |
-| DELETE /entityset(key)/$links/navigation(relatedKey) | /Products/(1)/$links/Suppliers(1) | DeleteLink |
+| POST /entityset (key) / $links/navigation | / Liens de (1) / $ produits/fournisseur | CreateLink |
+| PUT /entityset (key) / $links/navigation | / Liens de (1) / $ produits/fournisseur | CreateLink |
+| DELETE /entityset (key) / $links/navigation | / Liens de (1) / $ produits/fournisseur | DeleteLink |
+| SUPPRIMER /entityset(key)/$links/navigation(relatedKey) | /Products/(1)/$Links/Suppliers(1) | DeleteLink |
 
 Pour plus d’informations, consultez [utilisation des Relations d’entité](odata-v3/working-with-entity-relations.md).
 
@@ -109,15 +110,15 @@ Pour plus d’informations, consultez [utilisation des Relations d’entité](od
 
 | Demande | Exemple d’URI | Nom de l’action | Exemple d’Action |
 | --- | --- | --- | --- |
-| GET /entityset (key) / propriété | /Products(1)/Name | GetPropertyFromEntityType ou GetProperty | GetNameFromProduct |
-| OBTENIR/cast et des propriétés /entityset (clé) | /Products(1)/Models.Book/Author | GetPropertyFromEntityType ou GetProperty | GetTitleFromBook |
+| GET /entityset (key) / propriété | / (1) / nom du produit | GetPropertyFromEntityType ou GetProperty | GetNameFromProduct |
+| OBTENIR/cast et des propriétés /entityset (clé) | / Produits (1) /Models.Book/Author | GetPropertyFromEntityType ou GetProperty | GetTitleFromBook |
 
-**Actions**
+**actions**
 
 | Demande | Exemple d’URI | Nom de l’action | Exemple d’Action |
 | --- | --- | --- | --- |
-| POST /entityset(key)/action | / Produits (1) / taux | ActionNameOnEntityType ou ActionName | RateOnProduct |
-| POST /entityset(key)/cast/action | /Products(1)/Models.Book/CheckOut | ActionNameOnEntityType ou ActionName | CheckOutOnBook |
+| POST /entityset (key) / action | / Produits (1) / taux | ActionNameOnEntityType ou ActionName | RateOnProduct |
+| VALIDER /entityset (key) / cast/action | /Products(1)/Models.Book/CheckOut | ActionNameOnEntityType ou ActionName | CheckOutOnBook |
 
 Pour plus d’informations, consultez [Actions OData](odata-v3/odata-actions.md).
 
@@ -169,7 +170,7 @@ Remarques :
 
 1. Dériver une classe à partir de **EntitySetRoutingConvention**, car le **SelectController** méthode dans cette classe est appropriée pour cette nouvelle convention de routage. Cela signifie que vous n’avez pas besoin de réimplémenter **SelectController**.
 2. La convention s’applique uniquement aux demandes GET, et uniquement lorsque le modèle de chemin d’accès est &quot;~/entityset/key/navigation/key&quot;.
-3. Le nom d’action est &quot;obtenir {EntityType}&quot;, où *{EntityType}* est le type de la collection de navigation. Par exemple, &quot;GetSupplier&quot;. Vous pouvez utiliser n’importe quel convention d’affectation de noms que vous aimez & #8212 ; Assurez-vous que les actions de contrôleur correspondent.
+3. Le nom d’action est &quot;obtenir {EntityType}&quot;, où *{EntityType}* est le type de la collection de navigation. Par exemple, &quot;GetSupplier&quot;. Vous pouvez utiliser n’importe quel convention d’affectation de noms que vous aimez &#8212; Assurez-vous simplement que les actions de contrôleur correspondent.
 4. L’action prend deux paramètres nommés *clé* et *relatedKey*. (Pour obtenir la liste de certains noms de paramètres prédéfinies, consultez [ODataRouteConstants](https://msdn.microsoft.com/library/system.web.http.odata.routing.odatarouteconstants.aspx).)
 
 L’étape suivante ajoute la nouvelle convention à la liste des conventions d’itinéraire. Cela se produit lors de la configuration, comme indiqué dans le code suivant :

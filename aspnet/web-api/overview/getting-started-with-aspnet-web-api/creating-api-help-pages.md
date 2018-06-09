@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
-title: "Création de Pages d’aide pour l’API Web ASP.NET | Documents Microsoft"
+title: Création de Pages d’aide pour l’API Web ASP.NET | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/01/2013
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 37fd26ebaea192cb540c443eff8a07343ab8c15b
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28037901"
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>Création de Pages d’aide pour l’API Web ASP.NET
 ====================
@@ -60,9 +61,9 @@ Vous pouvez ajouter des pages d’aide à un projet d’API Web existant à l’
 
 À partir de la **outils** menu, sélectionnez **Gestionnaire de Package de bibliothèque**, puis sélectionnez **Package Manager Console**. Dans le [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) (fenêtre), tapez une des commandes suivantes :
 
-Pour un **c#** application :`Install-Package Microsoft.AspNet.WebApi.HelpPage`
+Pour un **c#** application : `Install-Package Microsoft.AspNet.WebApi.HelpPage`
 
-Pour un **Visual Basic** application :`Install-Package Microsoft.AspNet.WebApi.HelpPage.VB`
+Pour un **Visual Basic** application : `Install-Package Microsoft.AspNet.WebApi.HelpPage.VB`
 
 Il existe deux packages, une pour c# et une pour Visual Basic. Veillez à utiliser celui qui correspond à votre projet.
 
@@ -88,7 +89,7 @@ Sous **sortie**, vérifiez **fichier de documentation XML**. Dans la zone d’é
 
 ![](creating-api-help-pages/_static/image7.png)
 
-Ensuite, ouvrez le code pour le `ValuesController` contrôleur d’API, qui est définie dans /Controllers/ValuesControler.cs. Ajouter des commentaires de documentation pour les méthodes de contrôleur. Exemple :
+Ensuite, ouvrez le code pour le `ValuesController` contrôleur d’API, qui est définie dans /Controllers/ValuesControler.cs. Ajouter des commentaires de documentation pour les méthodes de contrôleur. Exemple :
 
 [!code-csharp[Main](creating-api-help-pages/samples/sample4.cs)]
 
@@ -107,8 +108,8 @@ La page d’aide lit les chaînes à partir du fichier XML en cours d’exécuti
 Les pages d’aide sont générés sur le **ApiExplorer** (classe), qui fait partie de l’infrastructure API Web. Le **ApiExplorer** classe fournit les matières premières pour la création d’une page d’aide. Pour chaque API, **ApiExplorer** contient un **ApiDescription** qui décrit l’API. Pour cela, une « API » est définie comme la combinaison de la méthode HTTP et un URI relatif. Par exemple, Voici certaines API distinctes :
 
 - OBTENIR /api/Products
-- GET /api/Products/{id}
-- POST /api/Products
+- OBTENIR/API/produits / {id}
+- VALIDER les produits/api /
 
 Si une action de contrôleur prend en charge plusieurs méthodes HTTP, le **ApiExplorer** traite chaque méthode comme une API distincte.
 

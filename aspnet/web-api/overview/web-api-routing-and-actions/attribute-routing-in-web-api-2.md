@@ -2,7 +2,7 @@
 uid: web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 title: Attribut de routage dans ASP.NET Web API 2 | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/20/2014
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
 ms.openlocfilehash: 173add73a150d3e13ae243d6548463da912dadee
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28038047"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>Routage d’attributs dans l’API Web ASP.NET 2
 ====================
@@ -151,7 +152,7 @@ Pour toutes les autres méthodes HTTP, y compris les méthodes non standard, uti
 <a id="prefixes"></a>
 ## <a name="route-prefixes"></a>Préfixes d’itinéraire
 
-Souvent, les itinéraires dans un contrôleur démarrent tous avec le même préfixe. Exemple :
+Souvent, les itinéraires dans un contrôleur démarrent tous avec le même préfixe. Exemple :
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample10.cs)]
 
@@ -170,7 +171,7 @@ Le préfixe d’itinéraire peut inclure des paramètres :
 <a id="constraints"></a>
 ## <a name="route-constraints"></a>Contraintes d’itinéraire
 
-Contraintes d’itinéraire vous permettent de limiter la correspondance des paramètres dans le modèle d’itinéraire. La syntaxe générale est &quot;{ : contrainte de paramètre}&quot;. Exemple :
+Contraintes d’itinéraire vous permettent de limiter la correspondance des paramètres dans le modèle d’itinéraire. La syntaxe générale est &quot;{ : contrainte de paramètre}&quot;. Exemple :
 
 [!code-csharp[Main](attribute-routing-in-web-api-2/samples/sample14.cs)]
 
@@ -180,22 +181,22 @@ Le tableau suivant répertorie les contraintes qui sont pris en charge.
 
 | Contrainte | Description | Exemple |
 | --- | --- | --- |
-| alpha | Les correspondances en majuscules ou minuscules de l’alphabet Latin (a-z, A-Z) | {x:alpha} |
+| Alpha | Les correspondances en majuscules ou minuscules de l’alphabet Latin (a-z, A-Z) | {x : alpha} |
 | bool | Correspond à une valeur booléenne. | {x : bool} |
-| datetime | Correspond à un **DateTime** valeur. | {x:datetime} |
-| decimal | Correspond à une valeur décimale. | {x:decimal} |
-| double | Correspond à une valeur à virgule flottante 64 bits. | {x:double} |
-| float | Correspond à une valeur à virgule flottante 32 bits. | {x:float} |
-| GUID | Correspond à une valeur GUID. | {x:guid} |
+| datetime | Correspond à un **DateTime** valeur. | {x : datetime} |
+| decimal | Correspond à une valeur décimale. | {x : decimal} |
+| double | Correspond à une valeur à virgule flottante 64 bits. | {x : double} |
+| float | Correspond à une valeur à virgule flottante 32 bits. | {x : float} |
+| GUID | Correspond à une valeur GUID. | {x : guid} |
 | int | Correspond à une valeur d’entier 32 bits. | {x : int} |
 | length | Correspond à une chaîne avec la longueur spécifiée ou dans une plage spécifiée de longueurs. | {x : length(6)} {x : length(1,20)} |
 | long | Correspond à une valeur d’entier 64 bits. | {x : long} |
-| max | Correspond à un entier avec une valeur maximale. | {x:max(10)} |
-| MaxLength | Correspond à une chaîne avec une longueur maximale. | {x:maxlength(10)} |
-| min | Correspond à un entier avec une valeur minimale. | {x:min(10)} |
+| max | Correspond à un entier avec une valeur maximale. | {x : max(10)} |
+| MaxLength | Correspond à une chaîne avec une longueur maximale. | {x : maxlength(10)} |
+| min | Correspond à un entier avec une valeur minimale. | {x : min(10)} |
 | minLength | Correspond à une chaîne avec une longueur minimale. | {x : minlength(10)} |
-| range | Correspond à un entier compris dans une plage de valeurs. | {x:range(10,50)} |
-| regex | Correspond à une expression régulière. | {x:regex(^\d{3}-\d{3}-\d{4}$)} |
+| range | Correspond à un entier compris dans une plage de valeurs. | {x : range(10,50)} |
+| regex | Correspond à une expression régulière. | {x : regex(^\d{3}-\d{3}-\d{4}$)} |
 
 Notez que certains des contraintes, telles que &quot;min&quot;, acceptent des arguments entre parenthèses. Vous pouvez appliquer plusieurs contraintes à un paramètre, séparé par un signe deux-points.
 
@@ -269,10 +270,10 @@ Voici un exemple : Supposons que vous définissez le contrôleur suivant :
 
 Ces itinéraires sont ordonnées comme suit.
 
-1. orders/details
+1. commandes/détails
 2. commandes / {id}
-3. orders/{customerName}
-4. orders/{\*date}
+3. commandes / {customerName}
+4. commandes / {\*date}
 5. commandes / en attente
 
 Notez que « détails » sont un segment de littéral et apparaît avant « {id} », mais « en attente » apparaît dernier, car le **RouteOrder** propriété est 1. (Cet exemple suppose qu’il n’est aucun client nommé « détails » ou « en attente ». En général, essayez d’éviter les itinéraires ambiguës. Dans cet exemple, un meilleur modèle d’itinéraire pour `GetByCustomer` est « clients / {customerName} »)

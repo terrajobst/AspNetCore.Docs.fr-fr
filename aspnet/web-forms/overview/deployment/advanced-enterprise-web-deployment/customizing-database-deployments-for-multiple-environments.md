@@ -13,16 +13,17 @@ ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
 ms.openlocfilehash: 06f22bc9a3068ee5621df62ee5ed1bea06d7e9e6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30881355"
 ---
 <a name="customizing-database-deployments-for-multiple-environments"></a>Personnalisation des déploiements de base de données pour plusieurs environnements
 ====================
 par [Jason Lee](https://github.com/jrjlee)
 
-[Télécharger le PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
+[Télécharger PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Cette rubrique décrit comment personnaliser les propriétés d’une base de données pour les environnements cibles spécifiques dans le cadre du processus de déploiement.
 > 
@@ -74,9 +75,9 @@ Ce tableau montre les paramètres de déploiement classiques pour différents en
 | **Classement de comparaison de déploiement** | Source | une cible | une cible |
 | **Déployer les propriétés de la base de données** | True | Uniquement la première fois | Uniquement la première fois |
 | **Toujours recréer la base de données** | True | False | False |
-| **Bloquer le déploiement incrémentiel si une perte de données peut se produire.** | False | Maybe | True |
+| **Bloquer le déploiement incrémentiel si une perte de données peut se produire.** | False | Peut-être | True |
 | **Exécutez le script de déploiement en mode mono-utilisateur** | False | True | True |
-| **Sauvegarder la base de données avant le déploiement** | False | Maybe | True |
+| **Sauvegarder la base de données avant le déploiement** | False | Peut-être | True |
 | **Générer des instructions DROP pour les objets qui se trouvent dans la base de données cible, mais qui ne sont pas dans le projet de base de données** | False | True | True |
 | **N’utilisez pas d’instructions ALTER ASSEMBLY pour mettre à jour les types CLR** | False | False | False |
   

@@ -13,16 +13,17 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
 msc.type: authoredcontent
 ms.openlocfilehash: ac3568941eeef24bd9857c5787471aadea15fc7f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30875732"
 ---
 <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>Utiliser des contrôleurs et vues pour implémenter une interface utilisateur/détails de l’annonce
 ====================
 par [Microsoft](https://github.com/microsoft)
 
-[Télécharger le PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
+[Télécharger PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
 > Il s’agit d’étape 4 a gratuit [« « l’application NerdDinner](introducing-the-nerddinner-tutorial.md) qui parcours à comment générer un petit, mais se termine, application web à l’aide d’ASP.NET MVC 1.
 > 
@@ -62,7 +63,7 @@ Vous souhaitez activer à l’aide de notre application pour parcourir une liste
 | **URL** | **Fonction** |
 | --- | --- |
 | */Dinners/* | Afficher une liste HTML de préparés à venir |
-| */Dinners/Details/[id]* | Afficher des détails sur un dîner spécifique indiqué par un paramètre « id » incorporé dans l’URL qui correspond à la DinnerID du dîner dans la base de données. Par exemple : /Dinners/Details/2 affiche une page HTML avec des détails sur le dîner DinnerID dont la valeur est 2. |
+| */Dinners/détails / [id]* | Afficher des détails sur un dîner spécifique indiqué par un paramètre « id » incorporé dans l’URL qui correspond à la DinnerID du dîner dans la base de données. Par exemple : /Dinners/Details/2 affiche une page HTML avec des détails sur le dîner DinnerID dont la valeur est 2. |
 
 Nous publierons implémentations initiales de ces URL en ajoutant deux public « méthodes d’action » à la classe DinnersController comme ci-dessous :
 
@@ -96,10 +97,10 @@ Voici une table qui montre comment une variété d’URL sont mappées à l’ai
 
 | **URL** | **Classe de contrôleur** | **Méthode d’action** | **Paramètres passés** |
 | --- | --- | --- | --- |
-| */Dinners/Details/2* | DinnersController | Details(ID) | id=2 |
-| */Dinners/Edit/5* | DinnersController | Edit(ID) | id=5 |
+| */ Préparés/détails/2* | DinnersController | Details(ID) | ID = 2 |
+| */ Préparés/modifier/5* | DinnersController | Edit(ID) | ID = 5 |
 | */Dinners/Create* | DinnersController | Create() | N/A |
-| */Dinners* | DinnersController | Index() | N/A |
+| */ Préparés* | DinnersController | Index() | N/A |
 | */ Home* | HomeController | Index() | N/A |
 | */* | HomeController | Index() | N/A |
 

@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
 msc.type: authoredcontent
 ms.openlocfilehash: 227faacd3f42731e08a4cd2b71075776309961b6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30874627"
 ---
 <a name="creating-an-odata-v3-endpoint-with-web-api-2"></a>Création d’un point de terminaison OData v3 avec l’API Web 2
 ====================
@@ -241,7 +242,7 @@ OData prend en charge plusieurs formats de sérialisation :
 
 - Atom Pub (XML)
 - JSON « light » (introduite dans OData v3)
-- JSON "verbose" (OData v2)
+- JSON « commentaires » (OData v2)
 
 Par défaut, API Web utilise le format de AtomPubJSON « light ». 
 

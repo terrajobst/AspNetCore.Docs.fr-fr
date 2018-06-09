@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/enabling-cross-origin-requests-in-web-api
-title: "L’activation de demandes Cross-Origin dans ASP.NET Web API 2 | Documents Microsoft"
+title: L’activation de demandes Cross-Origin dans ASP.NET Web API 2 | Documents Microsoft
 author: MikeWasson
-description: "Montre comment prendre en charge le partage de ressources Cross-Origin (CORS) dans l’API Web ASP.NET."
+description: Montre comment prendre en charge le partage de ressources Cross-Origin (CORS) dans l’API Web ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/15/2014
@@ -13,18 +13,19 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/security/enabling-cross-origin-requests-in-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 453ad29ff4f10f9660f3aa8bab358519b4cfd48b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26508378"
 ---
 <a name="enabling-cross-origin-requests-in-aspnet-web-api-2"></a>L’activation de demandes Cross-Origin dans ASP.NET Web API 2
 ====================
 par [Mike Wasson](https://github.com/MikeWasson)
 
-> Sécurité du navigateur empêche une page web d’effectuer des demandes AJAX vers un autre domaine. Cette restriction est appelée le *stratégie de même origine*et un site malveillant empêche de lire des données sensibles à partir d’un autre site. Toutefois, vous pouvez parfois permettent d’autres sites appeler votre API web.
+> La sécurité du navigateur empêche une page web d’effectuer des demandes AJAX vers un autre domaine. Cette restriction est appelée la *stratégie de même origine* et empêche un site malveillant de lire des données sensibles à partir d’un autre site. Toutefois, vous pouvez parfois permettent d’autres sites appeler votre API web.
 > 
-> [Cross-origine partage des ressources](http://www.w3.org/TR/cors/) (CORS) est une norme W3C qui permet à un serveur d’abaisser la stratégie de même origine. À l’aide de CORS, un serveur peut autoriser explicitement les certaines demandes cross-origin lors du refus d’autres. CORS est plus sûre et plus flexible qu’antérieures techniques telles que [JSONP](http://en.wikipedia.org/wiki/JSONP). Ce didacticiel montre comment activer les CORS dans votre application d’API Web.
+> [Cross-origine partage de ressources](http://www.w3.org/TR/cors/) (CORS) est une norme W3C qui permet à un serveur d’abaisser la stratégie de même origine. À l’aide de CORS, un serveur peut autoriser explicitement certaines demandes cross-origin lors du refus d’autres. CORS est plus sûre et plus flexible que des techniques antérieures telles que [JSONP](http://en.wikipedia.org/wiki/JSONP). Ce didacticiel montre comment activer les CORS dans votre application d’API Web.
 > 
 > ## <a name="software-versions-used-in-the-tutorial"></a>Versions du logiciel utilisées dans le didacticiel
 > 
@@ -49,12 +50,12 @@ Ces deux URL ayant la même origine :
 - `http://example.com/foo.html`
 - `http://example.com/bar.html`
 
-Ces URL ont des origines différentes à la précédente deux :
+Ces URL ont des origines différentes aux deux précédentes :
 
-- `http://example.net`-Autre domaine
-- `http://example.com:9000/foo.html`-Autre port
-- `https://example.com/foo.html`-Autre schéma
-- `http://www.example.com/foo.html`-Autre sous-domaine
+- `http://example.net` -Autre domaine
+- `http://example.com:9000/foo.html` -Autre port
+- `https://example.com/foo.html` -Autre schéma
+- `http://www.example.com/foo.html` -Autre sous-domaine
 
 > [!NOTE]
 > Internet Explorer ne considère pas le port lors de la comparaison des origines.
@@ -152,13 +153,13 @@ Le navigateur peut ignorer la demande préliminaire si les conditions suivantes 
 
 - La méthode de demande est GET, HEAD ou POST, *et*
 - L’application ne définit pas de tous les en-têtes de demande que Accept, Accept-Language, Content-Language, Content-Type ou dernier-ID d’événement, *et*
-- L’en-tête Content-Type (si défini) est une des opérations suivantes : 
+- L’en-tête `Content-Type` (si défini) est une des opérations suivantes : 
 
     - application/x-www-form-urlencoded
     - multipart/form-data
     - texte brut
 
-La règle sur les en-têtes de demande s’applique aux en-têtes de l’application définit en appelant **setRequestHeader** sur la **XMLHttpRequest** objet. (La spécification CORS appelle ces « en-têtes de demande auteur ».) La règle ne s’applique pas aux en-têtes de la *navigateur* pouvez définir, telles que l’Agent utilisateur, ordinateur hôte ou Content-Length.
+La règle sur les en-têtes de demande s’applique aux en-têtes de l’application définit en appelant **setRequestHeader** sur la **XMLHttpRequest** objet. (La spécification CORS les appelle « en-têtes de demande auteur ».) La règle ne s’applique pas aux en-têtes de la *navigateur* pouvez définir, telles que l’Agent utilisateur, ordinateur hôte ou Content-Length.
 
 Voici un exemple d’une requête préliminaire :
 
@@ -173,7 +174,7 @@ Voici un exemple de réponse, en supposant que le serveur autorise la demande :
 
 [!code-console[Main](enabling-cross-origin-requests-in-web-api/samples/sample9.cmd?highlight=6-7)]
 
-La réponse inclut un en-tête Access-contrôle-Allow-Methods qui répertorie les méthodes autorisées et éventuellement un en-tête Access-Control-autoriser-Headers, qui répertorie les en-têtes autorisés. Si la demande préliminaire réussit, le navigateur envoie la demande réelle, comme décrit précédemment.
+La réponse inclut un en-tête `Access-Control-Allow-Methods` qui répertorie les méthodes autorisées et éventuellement un en-tête `Access-Control-Allow-Headers`, qui répertorie les en-têtes autorisés. Si la demande préliminaire réussit, le navigateur envoie la demande réelle, comme décrit précédemment.
 
 <a id="scope"></a>
 ## <a name="scope-rules-for-enablecors"></a>Règles de portée pour [EnableCors]
@@ -213,7 +214,7 @@ Le *origines* paramètre de la **[EnableCors]** attribut spécifie les origines 
 
 Vous pouvez également utiliser la valeur de caractère générique «\*» pour autoriser les demandes à partir de toutes les origines.
 
-Réfléchissez bien avant d’autoriser des demandes à partir de n’importe quel origine. Cela signifie que tout site Web peut effectuer des appels d’AJAX à votre API web.
+Réfléchissez bien avant d’autoriser des demandes à partir de n’importe quelle origine. Cela signifie que tout site Web peut effectuer des appels d’AJAX à votre API web.
 
 [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample14.cs)]
 
@@ -247,7 +248,7 @@ Par défaut, le navigateur n’expose pas tous les en-têtes de réponse à l’
 - Dernière modification
 - Pragma
 
-La spécification CORS appelle ces [les en-têtes de réponse simple](https://dvcs.w3.org/hg/cors/raw-file/tip/Overview.html#simple-response-header). Pour rendre les autres en-têtes accessibles à l’application, définissez la *exposedHeaders* paramètre de **[EnableCors]**.
+La spécification CORS appelle ces en-têtes : [les en-têtes de réponse simple](https://dvcs.w3.org/hg/cors/raw-file/tip/Overview.html#simple-response-header). Pour rendre les autres en-têtes accessibles à l’application, définissez la *exposedHeaders* paramètre de **[EnableCors]**.
 
 Dans de l’exemple suivant, le contrôleur `Get` méthode définit un en-tête personnalisé nommé « En-tête X-personnalisé ». Par défaut, le navigateur expose pas cet en-tête dans une demande cross-origin. Pour libérer de l’en-tête, inclure 'En-tête X-personnalisé' dans *exposedHeaders*.
 
@@ -256,7 +257,7 @@ Dans de l’exemple suivant, le contrôleur `Get` méthode définit un en-tête 
 <a id="credentials"></a>
 ## <a name="passing-credentials-in-cross-origin-requests"></a>Informations d’identification de passage dans les demandes Cross-Origin
 
-Informations d’identification nécessitent un traitement particulier dans une demande CORS. Par défaut, le navigateur n’envoie pas d’informations d’identification avec une demande cross-origin. Informations d’identification incluent les cookies, ainsi que des schémas d’authentification HTTP. Pour envoyer des informations d’identification avec une demande cross-origin, le client doit définir **XMLHttpRequest.withCredentials** sur true.
+Les informations d’identification nécessitent un traitement particulier dans une demande CORS. Par défaut, le navigateur n’envoie pas d’informations d’identification avec une demande cross-origin. Les informations d’identification incluent les cookies, ainsi que des schémas d’authentification HTTP. Pour envoyer des informations d’identification avec une demande cross-origin, le client doit définir **XMLHttpRequest.withCredentials** sur true.
 
 À l’aide de **XMLHttpRequest** directement :
 

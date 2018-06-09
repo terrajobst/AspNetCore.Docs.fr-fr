@@ -13,14 +13,15 @@ ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 55109723e566a9f7c66c1a59414377b05dbec760
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "26507118"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>Ateliers pratiques : One ASP.NET : intégration ASP.NET Web Forms, MVC et API Web
 ====================
-par [Web Camps équipe](https://twitter.com/webcamps)
+Par [Web Camps équipe](https://twitter.com/webcamps)
 
 [Télécharger Camps Web Kit de formation](http://aka.ms/webcamps-training-kit)
 
@@ -28,7 +29,7 @@ par [Web Camps équipe](https://twitter.com/webcamps)
 > 
 > Visual Studio 2013 introduit un nouveau système de projet unifiée qui vous permet de créer une application et utiliser toutes les technologies ASP.NET dans un seul projet. Cette fonctionnalité élimine le besoin de choisir une technologie au début d’un projet et le stick avec lui et à la place encourage l’utilisation de plusieurs infrastructures d’ASP.NET au sein d’un projet.
 > 
-> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [http://aka.ms/webcamps-training-kit](http://aka.ms/webcamps-training-kit).
+> Tous les exemples de code et des extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
 
 
 <a id="Overview"></a>
@@ -46,7 +47,7 @@ Dans cet atelier pratique, vous allez apprendre comment :
 - Exposer le même ensemble d’informations dans des formats machine - et explicite à l’aide de l’outil approprié pour chaque tâche
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Conditions préalables
+### <a name="prerequisites"></a>Prérequis
 
 Les éléments suivants sont nécessaire pour terminer cet atelier pratique :
 
@@ -161,7 +162,7 @@ Dans cette tâche, vous allez exécuter la solution générée, explorez l’app
     *URL conviviales*
 
     > [!NOTE]
-    > Comme vous pouvez le voir, l’URL devient **/contactez**. À partir **ASP.NET 4**, les fonctionnalités de routage d’URL ont été ajoutées aux Web Forms, afin d’écrire des URL comme *[http://www.mysite.com/products/software](http://www.mysite.com/products/software)* au lieu de  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Pour plus d’informations, reportez-vous à [routage d’URL](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
+    > Comme vous pouvez le voir, l’URL devient **/contactez**. À partir **ASP.NET 4**, les fonctionnalités de routage d’URL ont été ajoutées aux Web Forms, afin d’écrire des URL comme *[ http://www.mysite.com/products/software ](http://www.mysite.com/products/software)* au lieu de  *[http://www.mysite.com/products.aspx?category=software](http://www.mysite.com/products.aspx?category=software)*. Pour plus d’informations, reportez-vous à [routage d’URL](../../../web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/url-routing.md).
 3. Vous allez maintenant découvrir le flux d’authentification intégré dans l’application. Pour ce faire, cliquez sur **enregistrer** dans le coin supérieur droit de la page.
 
     ![L’inscription d’un nouvel utilisateur](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api/_static/image8.png)
@@ -433,7 +434,7 @@ Lorsque vous créez une API Web, il est utile de créer une page d’aide afin q
 * * *
 
 <a id="Summary"></a>
-## <a name="summary"></a>Résumé
+## <a name="summary"></a>Récapitulatif
 
 À la fin de cet atelier pratique, vous avez appris comment :
 

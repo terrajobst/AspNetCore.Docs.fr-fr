@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/aspnet-and-web-tools-20131-for-visual-studio-2012
 msc.type: authoredcontent
 ms.openlocfilehash: c11e2ef9c33b0cae1f196690533094ce1c342da5
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28036425"
 ---
 <a name="release-notes-for-aspnet-and-web-tools-20131-for-visual-studio-2012"></a>Notes de version de ASP.NET et outils Web 2013.1 pour Visual Studio 2012
 ====================
@@ -168,7 +169,7 @@ Pour corriger ce problème, configurez Visual Studio Express pour travailler ave
 <a id="browseissue"></a>
 #### <a name="viewing-cshtml-file-withbrowse-withorf5causes-a-server-error"></a>Affichage cshtml fichier withBrowse WithorF5causes une erreur de serveur
 
-Lorsque vous créez un projet MVC 5 dans Visual Studio 2012 (ou ouvrir de projet Visual Studio 2012 un MVC 5 qui a été créé dans Visual Studio 2013) et que vous essayez d’afficher un fichier cshtml à l’aide de naviguer avec ou sur F5, vous recevrez une erreur indiquant - **erreur serveur dans Application '/'**. Le serveur tente d’accéder à`http://localhost:XXXX/Views/../XXXX.cshtml`
+Lorsque vous créez un projet MVC 5 dans Visual Studio 2012 (ou ouvrir de projet Visual Studio 2012 un MVC 5 qui a été créé dans Visual Studio 2013) et que vous essayez d’afficher un fichier cshtml à l’aide de naviguer avec ou sur F5, vous recevrez une erreur indiquant - **erreur serveur dans Application '/'**. Le serveur tente d’accéder à `http://localhost:XXXX/Views/../XXXX.cshtml`
 
 Pour résoudre ce problème, modifiez le **Action de démarrage** définition dans votre projet pour **Page spécifique**. Vous n’avez pas besoin fournir une valeur pour la page.
 

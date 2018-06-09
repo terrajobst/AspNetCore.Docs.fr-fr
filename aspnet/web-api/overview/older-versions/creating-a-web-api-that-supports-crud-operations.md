@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/creating-a-web-api-that-supports-crud-operations
 msc.type: authoredcontent
 ms.openlocfilehash: 69b7d5453b6ff36d6e28a69428b016cb8cfd06e9
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "29153006"
 ---
 <a name="enabling-crud-operations-in-aspnet-web-api-1"></a>Activation des opérations CRUD dans ASP.NET Web API 1
 ====================
@@ -42,11 +43,11 @@ Exposent les API de produits suivants méthodes.
 | Action | Méthode HTTP | URI relatif |
 | --- | --- | --- |
 | Obtenir une liste de tous les produits | GET | produits/api / |
-| Obtenir un produit par ID | GET | /api/products/*id* |
-| Obtenir un produit par catégorie | GET | /api/products?category=*category* |
-| Créer un nouveau produit | POST | produits/api / |
-| Mettre à jour un produit | PUT | /api/products/*id* |
-| Supprimer un produit | SUPPR | /api/products/*id* |
+| Obtenir un produit par ID | GET | /API/produits/*id* |
+| Obtenir un produit par catégorie | GET | produits/api / ? catégorie =*catégorie* |
+| Créer un nouveau produit | PUBLIER | produits/api / |
+| Mettre à jour un produit | PUT | /API/produits/*id* |
+| Supprimer un produit | SUPPR | /API/produits/*id* |
 
 Notez que certaines des URI incluent l’ID de produit dans le chemin d’accès. Par exemple, pour obtenir le produit dont l’ID est égal à 28, le client envoie une demande GET pour `http://hostname/api/products/28`.
 
@@ -57,7 +58,7 @@ Les API de produits définit l’URI pour les deux types de ressources :
 | Ressource | URI |
 | --- | --- |
 | La liste de tous les produits. | produits/api / |
-| Un produit individuel. | /api/products/*id* |
+| Un produit individuel. | /API/produits/*id* |
 
 ### <a name="methods"></a>Méthodes
 
@@ -158,14 +159,14 @@ L’API ProductStore expose plusieurs &quot;lire&quot; actions en tant que méth
 | Action | Méthode HTTP | URI relatif |
 | --- | --- | --- |
 | Obtenir une liste de tous les produits | GET | produits/api / |
-| Obtenir un produit par ID | GET | /api/products/*id* |
-| Obtenir un produit par catégorie | GET | /api/products?category=*category* |
+| Obtenir un produit par ID | GET | /API/produits/*id* |
+| Obtenir un produit par catégorie | GET | produits/api / ? catégorie =*catégorie* |
 
 Pour obtenir la liste de tous les produits, ajoutez cette méthode à la `ProductsController` classe :
 
 [!code-csharp[Main](creating-a-web-api-that-supports-crud-operations/samples/sample6.cs)]
 
-Le nom de la méthode commence par &quot;obtenir&quot;, par convention, il mappe aux demandes GET. En outre, étant donné que la méthode n’a aucun paramètre, il est mappé à un URI qui ne contient-elle pas un  *&quot;id&quot;*  segment dans le chemin d’accès.
+Le nom de la méthode commence par &quot;obtenir&quot;, par convention, il mappe aux demandes GET. En outre, étant donné que la méthode n’a aucun paramètre, il est mappé à un URI qui ne contient-elle pas un *&quot;id&quot;* segment dans le chemin d’accès.
 
 Pour obtenir un produit par ID, ajoutez cette méthode à la `ProductsController` classe :
 

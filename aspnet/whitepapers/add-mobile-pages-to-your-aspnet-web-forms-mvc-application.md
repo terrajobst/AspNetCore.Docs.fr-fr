@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application
 msc.type: content
 ms.openlocfilehash: a8358b91ca424f4f3e576057ab43d850081dda60
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30898981"
 ---
 <a name="how-to-add-mobile-pages-to-your-aspnet-web-forms--mvc-application"></a>Comment : Ajouter des Pages mobiles à ASP.NET Web Forms / Application MVC
 ====================
@@ -104,7 +105,7 @@ Le composant de clé requis pour toutes les techniques de côté serveur pour pr
 - Méthode d’entrée (de la souris et le clavier, tactile, clavier, manette,...)
 - Taille de l’écran (physiquement et en pixels)
 - Prise en charge multimédia et formats de données
-- Etc.
+- etc.
 
 Il est préférable de prendre des décisions basées sur les caractéristiques que le numéro de modèle, car, puis vous serez mieux équipées pour gérer les appareils.
 
