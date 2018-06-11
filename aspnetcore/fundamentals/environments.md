@@ -105,7 +105,7 @@ Les modifications apportées aux profils de projet peuvent ne prendre effet qu�
 
 Vous devez configurer l’environnement de production pour optimiser la sécurité, les performances et la robustesse de l’application. Voici quelques paramètres courants qui diffèrent du développement :
 
-* Mise en cache.
+* La mise en cache.
 * Les ressources côté client sont groupées, réduites et éventuellement servies à partir d’un CDN.
 * Les Pages d’erreur de diagnostic sont désactivées.
 * Les pages d’erreur conviviales sont activées.
@@ -122,7 +122,7 @@ La méthode de configuration de l’environnement dépend du système d’exploi
 Pour Azure App Service :
 
 * Sélectionnez le panneau **Paramètres de l’application**.
-* Ajouter la clé et la valeur dans **Paramètres de l’application**.
+* Ajoutez la clé et la valeur dans **Paramètres de l’application**.
 
 
 ### <a name="windows"></a>Windows
