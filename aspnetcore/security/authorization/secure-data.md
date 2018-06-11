@@ -9,12 +9,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 36475776966cfb0cb3bb40477798f6e24df9725d
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 1ffa44d1816284d563b80b2d9a02b7b816116ee1
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34688450"
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252111"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core et de données utilisateur protégées par l’autorisation
 
@@ -58,7 +58,7 @@ L’exemple contient les gestionnaires d’autorisation suivants :
 
 ## <a name="prerequisites"></a>Prérequis
 
-Ce didacticiel est avancé. Vous devez être familiarisé avec :
+Ce didacticiel est avancé. Vous devez être familiarisé avec :
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
 * [Authentification](xref:security/authentication/index)
@@ -309,6 +309,8 @@ Créer un contact dans le navigateur de l’administrateur. Copier l’URL pour 
   ```console
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
+
+  [!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ::: moniker-end
 

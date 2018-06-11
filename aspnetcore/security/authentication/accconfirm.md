@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/accconfirm
-ms.openlocfilehash: b6dbe234973431448c18d3cc82a6ac98d4f53a3b
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: d7c1aea2b533fc614eb25c537b72bea773e76077
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34730449"
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252280"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation du compte et récupération de mot de passe dans ASP.NET Core
 
@@ -43,6 +43,8 @@ Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore
 dotnet new webapp --auth Individual -o WebPWrecover
 cd WebPWrecover
 ```
+
+[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ::: moniker-end
 
