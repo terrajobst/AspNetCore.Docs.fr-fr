@@ -52,7 +52,7 @@ Pour en savoir plus sur `WebHostBuilder`, consultez la rubrique [Hébergement](x
 
 La méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) est :
 
-* Facultatif
+* Facultative
 * Appelée par l’hôte web avant la méthode `Configure` pour configurer les services de l’application.
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
