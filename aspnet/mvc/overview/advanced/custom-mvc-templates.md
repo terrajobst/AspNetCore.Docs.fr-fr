@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/advanced/custom-mvc-templates
-title: "Modèle MVC personnalisé | Documents Microsoft"
+title: Modèle MVC personnalisé | Documents Microsoft
 author: joeloff
-description: "Créer un modèle comme extension VSIX."
+description: Créer un modèle comme extension VSIX.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/10/2012
@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
 ms.openlocfilehash: c3ddd4e341511f520927e924b25d890088adb69e
-ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "28034605"
 ---
 <a name="custom-mvc-template"></a>Modèle MVC personnalisée
 ====================
@@ -63,13 +64,13 @@ Si vous envisagez de prendre en charge tous les les SKU Professional et versions
 
 Le **actifs** onglet est utilisé pour ajouter tous vos fichiers de contenu à l’extension VSIX. Étant donné que MVC requiert des métadonnées personnalisées que vous aurez à modifier le code XML brut du fichier manifeste VSIX au lieu d’utiliser le **actifs** onglet pour ajouter du contenu. Commencez par ajouter le contenu du modèle pour le projet VSIX. Il est important que la structure du dossier et le contenu de mise en miroir de la disposition du projet. L’exemple ci-dessous contient quatre modèles de projet qui ont été dérivées à partir du modèle de projet MVC de base. Assurez-vous que tous les fichiers qui composent votre modèle de projet (tous les éléments sous le dossier ProjectTemplates) sont ajoutés à la **contenu** itemgroup dans le VSIX fichier projet et que chaque élément contient le  **CopyToOutputDirectory** et **IncludeInVsix** métadonnées définies comme indiqué dans l’exemple ci-dessous.
 
-&lt;Content Include=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
+&lt;Inclure du contenu =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
 
 &lt;CopyToOutputDirectory&gt;Always&lt;/CopyToOutputDirectory&gt;
 
 &lt;IncludeInVSIX&gt;true&lt;/IncludeInVSIX&gt;
 
-&lt;/Content&gt;
+&lt;/ Contenu&gt;
 
 Si ce n’est pas le cas, l’IDE tente de se compiler le contenu du modèle lorsque vous générez l’extension VSIX et vous verrez probablement une erreur. Fichiers de code dans les modèles contiennent souvent spéciaux [les paramètres de modèle](https://msdn.microsoft.com/library/eehb4faa(v=vs.110).aspx) utilisé par Visual Studio lorsque le modèle de projet est instancié et par conséquent ne peut pas être compilé dans l’IDE.
 
@@ -79,11 +80,11 @@ Fermer le concepteur VSIX, cliquez avec le bouton droit sur le **source.extensio
 
 ![Ouvrir avec la boîte de dialogue](custom-mvc-templates/_static/image7.jpg)
 
-Créer un  **&lt;actifs&gt;**  élément et ajouter un  **&lt;Asset&gt;**  élément pour chaque fichier doit être inclus dans le VSIX. Le **Type** attribut de chaque  **&lt;Asset&gt;**  élément doit être défini sur **Microsoft.VisualStudio.Mvc.Template**. Il s’agit d’un espace de noms personnalisé seulement l’Assistant de projet MVC comprend. Reportez-vous à la documentation de schéma de VSIX 2.0 pour plus d’informations sur la structure et la disposition du fichier manifeste.
+Créer un **&lt;actifs&gt;** élément et ajouter un **&lt;Asset&gt;** élément pour chaque fichier doit être inclus dans le VSIX. Le **Type** attribut de chaque **&lt;Asset&gt;** élément doit être défini sur **Microsoft.VisualStudio.Mvc.Template**. Il s’agit d’un espace de noms personnalisé seulement l’Assistant de projet MVC comprend. Reportez-vous à la documentation de schéma de VSIX 2.0 pour plus d’informations sur la structure et la disposition du fichier manifeste.
 
-Ajouter simplement les fichiers à l’extension VSIX n’est pas suffisant pour enregistrer les modèles avec l’Assistant MVC. Vous devez fournir des informations telles que le nom du modèle, une description, moteurs d’affichage pris en charge et langage de programmation à l’Assistant MVC. Cette information est contenue dans les attributs personnalisés associés à la  **&lt;Asset&gt;**  élément pour chaque **vstemplate** fichier.
+Ajouter simplement les fichiers à l’extension VSIX n’est pas suffisant pour enregistrer les modèles avec l’Assistant MVC. Vous devez fournir des informations telles que le nom du modèle, une description, moteurs d’affichage pris en charge et langage de programmation à l’Assistant MVC. Cette information est contenue dans les attributs personnalisés associés à la **&lt;Asset&gt;** élément pour chaque **vstemplate** fichier.
 
-&lt;Asset d:VsixSubPath=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
+&lt;Asset d:VsixSubPath =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
 
 Type=&quot;Microsoft.VisualStudio.Mvc.Template&quot;
 
@@ -93,9 +94,9 @@ Path=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWe
 
 ProjectType=&quot;MVC&quot;
 
-Language=&quot;C#&quot;
+Language =&quot;c#&quot;
 
-ViewEngine=&quot;Aspx&quot;
+ViewEngine =&quot;Aspx&quot;
 
 TemplateId=&quot;MyMvcApplication&quot;
 
@@ -103,7 +104,7 @@ Titre =&quot;Application Web de base personnalisée&quot;
 
 Description =&quot;dérivée d’un modèle personnalisé à partir d’une application web de MVC de base (Razor)&quot;
 
-Version=&quot;4.0&quot;/&gt;
+Version =&quot;4.0&quot;/&gt;
 
 Voici une explication des attributs personnalisés qui doivent être présents :
 
@@ -114,7 +115,7 @@ Voici une explication des attributs personnalisés qui doivent être présents 
 - **Titre** désigne la description courte affichée dans l’Assistant MVC sous chaque modèle de projet.
 - **Description** désigne une description plus détaillée du modèle.
 
-Une fois que vous avez ajouté tous les fichiers du manifeste et enregistré, vous remarquerez que la **actifs** onglet dans le concepteur affiche tous les fichiers, mais pas les attributs personnalisés vous avez ajouté à la  **&lt;Asset&gt;**  éléments pour le **vstemplate** fichiers.
+Une fois que vous avez ajouté tous les fichiers du manifeste et enregistré, vous remarquerez que la **actifs** onglet dans le concepteur affiche tous les fichiers, mais pas les attributs personnalisés vous avez ajouté à la **&lt;Asset&gt;** éléments pour le **vstemplate** fichiers.
 
 ![Composants de Concepteur de projet](custom-mvc-templates/_static/image8.jpg)
 

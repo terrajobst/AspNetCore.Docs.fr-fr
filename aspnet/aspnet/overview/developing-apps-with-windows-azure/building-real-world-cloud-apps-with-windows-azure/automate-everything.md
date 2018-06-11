@@ -13,10 +13,11 @@ ms.prod: .net-framework
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
 ms.openlocfilehash: 2e30ab7831a10f215a08f74e61adf2d147e76543
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30875173"
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatiser tout (création d’applications de Cloud du monde réel avec Azure)
 ====================
@@ -90,7 +91,7 @@ Sur le **configurer** onglet pour l’application web, vous pouvez voir qu’il 
 
 ![appSettings et connectionStrings](automate-everything/_static/image6.png)
 
-Le *Automation* maintenant contient également un  *&lt;websitename&gt;.pubxml* fichier. Ce fichier stocke les paramètres que MSBuild utilisera pour déployer l’application à l’environnement Azure qui vient d’être créé. Par exemple :
+Le *Automation* maintenant contient également un  *&lt;websitename&gt;.pubxml* fichier. Ce fichier stocke les paramètres que MSBuild utilisera pour déployer l’application à l’environnement Azure qui vient d’être créé. Exemple :
 
 [!code-xml[Main](automate-everything/samples/sample1.xml)]
 
