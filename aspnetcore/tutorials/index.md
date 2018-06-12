@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/index
-ms.openlocfilehash: 9cd14a47a512c2a887614e617dd914dbdb25cb9d
-ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
+ms.openlocfilehash: 019224e86f1f5583ce0f212d8be70e8829274c7e
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/26/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34688430"
 ---
 # <a name="aspnet-core-tutorials"></a>Didacticiels ASP.NET Core
 
@@ -39,7 +40,7 @@ Les [pages Razor](xref:mvc/razor-pages/index) constituent l’approche recommand
 * [Bien démarrer avec ASP.NET Core et Entity Framework Core à l’aide de Visual Studio](xref:data/ef-mvc/index)
 * [Créer des Tag Helpers](xref:mvc/views/tag-helpers/authoring)
 * [Créer un composant de vue simple](xref:mvc/views/view-components#walkthrough-creating-a-simple-view-component)
-* [Développer des applications ASP.NET Core à l’aide de dotnet watch](xref:tutorials/dotnet-watch)
+* [Développer des applications à l’aide d’un observateur de fichier](xref:tutorials/dotnet-watch)
 
 ## <a name="build-web-apis"></a>Générer des API web
 * Créer une API web avec ASP.NET Core
