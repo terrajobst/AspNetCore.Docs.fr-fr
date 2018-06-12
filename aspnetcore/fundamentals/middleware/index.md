@@ -239,7 +239,7 @@ Les composants d’intergiciel peuvent résoudre leurs dépendances à partir de
 
 ### <a name="per-request-dependencies"></a>Dépendances par requête
 
-Étant donné que l’intergiciel est construit au démarrage de l’application, et non par requête, les services de durée de vie *délimités* utilisés par les constructeurs de l’intergiciel ne sont pas partagés avec d’autres types injectés par des dépendances lors de chaque requête. Si vous devez partager un service *délimité* entre votre intergiciel et d’autres types, ajoutez-le à la signature de la méthode `Invoke`. La méthode `Invoke` peut accepter des paramètres supplémentaires qui sont renseignés par injection de dépendances. Exemple :
+Étant donné que l’intergiciel est construit au démarrage de l’application, et non par requête, les services de durée de vie *Scoped* utilisés par les constructeurs de l’intergiciel ne sont pas partagés avec d’autres types injectés par des dépendances lors de chaque requête. Si vous devez partager un service *Scoped* entre votre intergiciel et d’autres types, ajoutez-le à la signature de la méthode `Invoke`. La méthode `Invoke` peut accepter des paramètres supplémentaires qui sont renseignés par injection de dépendances. Exemple :
 
 ```csharp
 public class MyMiddleware
