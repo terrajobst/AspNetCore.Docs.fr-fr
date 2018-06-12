@@ -21,7 +21,7 @@ ms.lasthandoff: 05/23/2018
 
 Par [Rachel Appel](http://twitter.com/rachelappel)
 
-Le client .NET SignalR d’ASP.NET Core peut être utilisé par les applications Xamarin, WPF, Windows Forms, Console et .NET Core. Comme le [client JavaScript](xref:signalr/javascript-client), le client .NET permet de recevoir et envoyer et recevoir des messages à un hub en temps réel.
+Le client .NET SignalR d’ASP.NET Core peut être utilisé par les applications Xamarin, WPF, Windows Forms, Console et .NET Core. Comme le [client JavaScript](xref:signalr/javascript-client), le client .NET permet de recevoir et d’envoyer des messages à un hub en temps réel.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/dotnet-client/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
@@ -29,7 +29,7 @@ L’exemple de code dans cet article est une application WPF qui utilise le clie
 
 ## <a name="setup-client"></a>Le programme d’installation de client
 
-Le package `Microsoft.AspNetCore.SignalR.Client` est requis pour que les clients .NET se connectent à des hubs SignalR. Pour installer la bibliothèque cliente, exécutez la commande suivante dans la fenêtre **Package Manager Console** :
+Le package `Microsoft.AspNetCore.SignalR.Client` est requis pour que les clients .NET se connectent à des hubs SignalR. Pour installer la bibliothèque cliente, exécutez la commande suivante dans la fenêtre **Console du Gestionnaire de package** :
 
 ```powershell
 Install-Package Microsoft.AspNetCore.SignalR.Client
@@ -37,11 +37,11 @@ Install-Package Microsoft.AspNetCore.SignalR.Client
 
 ## <a name="connect-to-a-hub"></a>Se connecter à un concentrateur
 
-Pour établir une connexion, créer un `HubConnectionBuilder` et appelez `Build`. L’URL du hub, le protocole, le type de transport, le niveau du journalisation, les en-têtes et les autres options peuvent être configurées lors de la création d’une connexion. Configurer les options requises en insérant les méthodes `HubConnectionBuilder` dans `Build`. Démarrer la connexion avec `StartAsync`.
+Pour établir une connexion, créez un `HubConnectionBuilder` et appelez `Build`. L’URL du hub, le protocole, le type de transport, le niveau du journalisation, les en-têtes et les autres options peuvent être configurées lors de la création d’une connexion. Configurez les options requises en insérant les méthodes `HubConnectionBuilder` dans `Build`. Démarrez la connexion avec `StartAsync`.
 
 [!code-csharp[Build hub connection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?highlight=15-17,33)]
 
-## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de hub du client
+## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de hub à partir du client
 
 `InvokeAsync` appelle des méthodes sur le hub. Passez le nom de la méthode de hub et de tous les arguments définis dans la méthode de hub à `InvokeAsync`. SignalR est asynchrone, par conséquent, utilisez `async` et `await` lors de l’appel.
 
@@ -49,17 +49,17 @@ Pour établir une connexion, créer un `HubConnectionBuilder` et appelez `Build`
 
 ## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir du hub
 
-Définir le hub appelle à l’aide des méthodes `connection.On` après sa création, mais avant de démarrer la connexion.
+Définissez les méthodes appelées par le hub en utilisant `connection.On` après la génération, mais avant de démarrer la connexion.
 
 [!code-csharp[Define client methods](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?range=22-29)]
 
-Le code précédent dans `connection.On` s’exécute lorsque le code côté serveur appelle en utilisant la méthode `SendAsync`.
+Le code précédent dans `connection.On` s’exécute lorsque le code côté serveur l’appelle en utilisant la méthode `SendAsync`.
 
 [!code-csharp[Call client method](dotnet-client/sample/signalrchat/hubs/chathub.cs?range=8-11)]
 
 ## <a name="error-handling-and-logging"></a>Journalisation et gestion des erreurs
 
-Gérer les erreurs avec une instruction try-catch. Inspecter l'objet `Exception` afin de déterminer l’action appropriée à entreprendre après qu'une erreur se produit.
+Gérez les erreurs avec une instruction try-catch. Inspectez l'objet `Exception` afin de déterminer l’action appropriée à entreprendre après qu'une erreur se produit.
 
 [!code-csharp[Logging](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?range=46-54)]
 
