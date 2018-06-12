@@ -24,9 +24,9 @@ Par [Rachel Appel](https://twitter.com/rachelappel) et [Kevin Griffin](https://t
 
 [Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(comment télécharger)](xref:tutorials/index#how-to-download-a-sample)
 
-## <a name="what-is-a-signalr-hub"></a>Qu’est un concentrateur SignalR
+<a name="what-is-a-signalr-hub"></a>Qu’est-ce qu’un hub SignalR ?
 
-L’API de concentrateurs SignalR vous permet d’appeler des méthodes sur les clients connectés à partir du serveur. Dans le code serveur, définir des méthodes qui sont appelées par le client. Dans le code client, définir des méthodes qui sont appelées à partir du serveur. SignalR prend en charge de tous les éléments en arrière-plan qui permet des communications client-serveur et client-server en temps réel.
+L’API Hubs de SignalR vous permet d’appeler des méthodes sur des clients connectés à partir du serveur. Dans le code serveur, vous définissez des méthodes qui sont appelées par le client. Dans le code client, vous définissez des méthodes qui sont appelées à partir du serveur. SignalR prend en charge tout ce qui se passe à l’arrière-plan et qui rend possibles les communications client-serveur et serveur-client en temps réel.
 
 ## <a name="configure-signalr-hubs"></a>Configurer les concentrateurs SignalR
 
@@ -34,13 +34,13 @@ L’intergiciel (middleware) SignalR requiert certains services, qui sont config
 
 [!code-csharp[Configure service](hubs/sample/startup.cs?range=38)]
 
-Lorsque vous ajoutez des fonctionnalités de SignalR pour une application ASP.NET Core, configurer les itinéraires SignalR en appelant `app.UseSignalR` dans le `Startup.Configure` (méthode).
+Quand vous ajoutez des fonctionnalités SignalR à une application ASP.NET Core, configurez les routes SignalR en appelant `app.UseSignalR` dans la méthode `Startup.Configure`.
 
 [!code-csharp[Configure routes to hubs](hubs/sample/startup.cs?range=57-60)]
 
-## <a name="create-and-use-hubs"></a>Créer et utiliser les concentrateurs
+## <a name="create-and-use-hubs"></a>Créer et utiliser les hubs
 
-Créer un hub en déclarant une classe qui hérite de `Hub`et lui ajouter des méthodes publiques. Les clients peuvent appeler des méthodes qui sont définies en tant que `public`.
+Créez un hub en déclarant une classe qui hérite de `Hub`et ajoutez-lui des méthodes publiques. Les clients peuvent appeler des méthodes qui sont définies en tant que `public`.
 
 [!code-csharp[Create and use hubs](hubs/sample/hubs/chathub.cs?range=8-37)]
 
@@ -48,12 +48,12 @@ Vous pouvez spécifier un type de retour et des paramètres, y compris les types
 
 ## <a name="the-clients-object"></a>L’objet de Clients
 
-Chaque instance de la `Hub` classe a une propriété nommée `Clients` qui contient les membres suivants pour la communication entre le serveur et le client :
+Chaque instance de la classe `Hub` a une propriété nommée `Clients` qui contient les membres suivants pour la communication entre le serveur et le client :
 
 | Propriété | Description |
 | ------ | ----------- |
 | `All` | Appelle une méthode sur tous les clients connectés |
-| `Caller` | Appelle une méthode sur le client qui a appelé la méthode de concentrateur |
+| `Caller` | Appelle une méthode sur le client qui a appelé la méthode de hub |
 | `Others` | Appelle une méthode sur tous les clients connectés à l’exception du client qui a appelé la méthode |
 
 
@@ -67,27 +67,27 @@ En outre, `Hub.Clients` contient les méthodes suivantes :
 | `Group` | Appelle une méthode à toutes les connexions dans le groupe spécifié  |
 | `GroupExcept` | Appelle une méthode à toutes les connexions dans le groupe spécifié, à l’exception des connexions spécifiées |
 | `Groups` | Appelle une méthode à plusieurs groupes de connexions  |
-| `OthersInGroup` | Appelle une méthode à un groupe de connexions, à l’exclusion du client qui a appelé la méthode de concentrateur  |
+| `OthersInGroup` | Appelle une méthode sur un groupe de connexions, à l’exclusion du client qui a appelé la méthode de hub |
 | `User` | Appelle une méthode à toutes les connexions associées à un utilisateur spécifique |
 | `Users` | Appelle une méthode à toutes les connexions associées aux utilisateurs spécifiés |
 
-Chaque méthode ou propriété dans les tables précédentes retourne un objet avec un `SendAsync` (méthode). Le `SendAsync` méthode vous permet de fournir le nom et les paramètres de la méthode du client à appeler.
+Chaque méthode ou propriété des tableaux précédents retourne un objet avec une méthode `SendAsync`. Le méthode `SendAsync` vous permet de fournir le nom et les paramètres de la méthode du client à appeler.
 
 ## <a name="send-messages-to-clients"></a>Envoyer des messages aux clients
 
-Pour effectuer des appels à des clients spécifiques, utilisez les propriétés de la `Clients` objet. Dans l’exemple suivant, la `SendMessageToCaller` méthode illustre l’envoi d’un message à la connexion qui a appelé la méthode de concentrateur. Le `SendMessageToGroups` méthode envoie un message pour les groupes stockés dans un `List` nommé `groups`.
+Pour effectuer des appels à des clients spécifiques, utilisez les propriétés de l'objet `Clients`. Dans l’exemple suivant, la méthode `SendMessageToCaller` illustre l’envoi d’un message à la connexion qui a appelé la méthode de hub. Le méthode `SendMessageToGroups` envoie un message pour les groupes stockés dans une `List` nommée `groups`.
 
 [!code-csharp[Send messages](hubs/sample/hubs/chathub.cs?range=15-24)]
 
 ## <a name="handle-events-for-a-connection"></a>Gérer les événements pour une connexion
 
-L’API de concentrateurs SignalR fournit le `OnConnectedAsync` et `OnDisconnectedAsync` méthodes virtuelles pour gérer et suivre les connexions. Remplacer la `OnConnectedAsync` méthode virtuelle pour effectuer des actions lorsqu’un client se connecte au concentrateur, telles que l’ajouter à un groupe.
+L’API Hubs de SignalR fournit les méthodes virtuelles `OnConnectedAsync` et `OnDisconnectedAsync` pour gérer et suivre les connexions. Remplacez la méthode virtuelle `OnConnectedAsync` pour effectuer des actions lorsqu’un client se connecte au hub, comme l’ajouter à un groupe.
 
 [!code-csharp[Handle events](hubs/sample/hubs/chathub.cs?range=26-36)]
 
 ## <a name="handle-errors"></a>Gérer les erreurs
 
-Les exceptions levées dans vos méthodes de concentrateur sont envoyées au client qui a appelé la méthode. Sur le client JavaScript, le `invoke` méthode retourne un [méthode JavaScript Promise](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises). Lorsque le client reçoit une erreur avec un gestionnaire attaché l’à l’aide de la promesse `catch`, elle a appelée et passée comme un code JavaScript `Error` objet.
+Les exceptions levées dans vos méthodes de hub sont envoyées au client qui a appelé la méthode. Sur le client JavaScript, la méthode `invoke` retourne une [promesse JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises). Lorsque le client reçoit une erreur avec un gestionnaire attaché à la promesse avec `catch`, elle est appelée et passée en tant qu’objet JavaScript `Error`.
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
