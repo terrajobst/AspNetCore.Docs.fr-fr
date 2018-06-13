@@ -24,7 +24,7 @@ Par [Rachel Appel](https://twitter.com/rachelappel) et [Kevin Griffin](https://t
 
 [Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubs/sample/ ) [(comment télécharger)](xref:tutorials/index#how-to-download-a-sample)
 
-<a name="what-is-a-signalr-hub"></a>Qu’est-ce qu’un hub SignalR ?
+## <a name="what-is-a-signalr-hub"></a>Qu’est-ce qu’un hub SignalR ?
 
 L’API Hubs de SignalR vous permet d’appeler des méthodes sur des clients connectés à partir du serveur. Dans le code serveur, vous définissez des méthodes qui sont appelées par le client. Dans le code client, vous définissez des méthodes qui sont appelées à partir du serveur. SignalR prend en charge tout ce qui se passe à l’arrière-plan et qui rend possibles les communications client-serveur et serveur-client en temps réel.
 
@@ -50,6 +50,7 @@ Vous pouvez spécifier un type de retour et des paramètres, y compris les types
 
 Chaque instance de la classe `Hub` a une propriété nommée `Clients` qui contient les membres suivants pour la communication entre le serveur et le client :
 
+
 | Propriété | Description |
 | ------ | ----------- |
 | `All` | Appelle une méthode sur tous les clients connectés |
@@ -67,7 +68,7 @@ En outre, `Hub.Clients` contient les méthodes suivantes :
 | `Group` | Appelle une méthode à toutes les connexions dans le groupe spécifié  |
 | `GroupExcept` | Appelle une méthode à toutes les connexions dans le groupe spécifié, à l’exception des connexions spécifiées |
 | `Groups` | Appelle une méthode à plusieurs groupes de connexions  |
-| `OthersInGroup` | Appelle une méthode sur un groupe de connexions, à l’exclusion du client qui a appelé la méthode de hub |
+| `OthersInGroup` | Appelle une méthode sur un groupe de connexions, à l’exclusion du client qui a appelé la méthode de hub  |
 | `User` | Appelle une méthode à toutes les connexions associées à un utilisateur spécifique |
 | `Users` | Appelle une méthode à toutes les connexions associées aux utilisateurs spécifiés |
 
@@ -83,11 +84,13 @@ Pour effectuer des appels à des clients spécifiques, utilisez les propriétés
 
 L’API Hubs de SignalR fournit les méthodes virtuelles `OnConnectedAsync` et `OnDisconnectedAsync` pour gérer et suivre les connexions. Remplacez la méthode virtuelle `OnConnectedAsync` pour effectuer des actions lorsqu’un client se connecte au hub, comme l’ajouter à un groupe.
 
+
 [!code-csharp[Handle events](hubs/sample/hubs/chathub.cs?range=26-36)]
 
 ## <a name="handle-errors"></a>Gérer les erreurs
 
 Les exceptions levées dans vos méthodes de hub sont envoyées au client qui a appelé la méthode. Sur le client JavaScript, la méthode `invoke` retourne une [promesse JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises). Lorsque le client reçoit une erreur avec un gestionnaire attaché à la promesse avec `catch`, elle est appelée et passée en tant qu’objet JavaScript `Error`.
+
 
 [!code-javascript[Error](hubs/sample/wwwroot/js/chat.js?range=23)]
 
