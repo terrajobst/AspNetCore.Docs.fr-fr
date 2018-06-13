@@ -1,4 +1,4 @@
----
+﻿---
 title: Prise en main de SignalR sur ASP.NET Core
 author: rachelappel
 description: Dans ce didacticiel, vous créez une application à l’aide de SignalR pour ASP.NET Core.
@@ -80,7 +80,7 @@ Visual Studio inclut le package `Microsoft.AspNetCore.SignalR` contenant ses bib
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-1. À partir de la **Terminal Server intégré**, exécutez la commande suivante :
+1. À partir du **Terminal intégré**, exécutez la commande suivante :
 
     ```console
     dotnet new webapp -o SignalRChat
@@ -107,21 +107,21 @@ Un hub est une classe servant de pipeline de haut niveau qui permet au client et
 
 1. Ajoutez une classe au projet en choisissant **Fichier** > **Nouveau** > **Fichier** et en sélectionnant **Classe Visual c#**. Nommez le fichier *ChatHub*. 
 
-2. Hériter de `Microsoft.AspNetCore.SignalR.Hub`. La `Hub` classe contient des propriétés et des événements pour la gestion des connexions et des groupes, ainsi que des données d’envoi et de réception.
+2. Héritez de `Microsoft.AspNetCore.SignalR.Hub`. La classe `Hub` contient des propriétés et des événements pour la gestion des connexions et des groupes, ainsi que pour l'envoi et la réception des données.
 
-3. Créer le `SendMessage` méthode qui envoie un message à tous les clients de conversation connecté. Notez qu’il renvoie un [tâche](https://msdn.microsoft.com/library/system.threading.tasks.task(v=vs.110).aspx), car SignalR est asynchrone. Code asynchrone évolue mieux.
+3. Créez la méthode `SendMessage` qui envoie un message à tous les clients connectés à la conversation. Notez qu’elle renvoie une [tâche](https://msdn.microsoft.com/library/system.threading.tasks.task(v=vs.110).aspx), car SignalR est asynchrone. Le Code asynchrone évolue mieux.
 
    [!code-csharp[Startup](get-started/sample/Hubs/ChatHub.cs)]
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-1. Ouvrez le *SignalRChat* dossier dans le Code de Visual Studio.
+1. Ouvrez le dossier *SignalRChat* dans Visual Studio Code.
 
-2. Ajoutez une classe au projet en sélectionnant **fichier** > **nouveau fichier** à partir du menu.
+2. Ajoutez une classe au projet en sélectionnant **Fichier** > **Nouveau fichier** à partir du menu.
 
-3. Hériter de `Microsoft.AspNetCore.SignalR.Hub`. La `Hub` classe contient des propriétés et des événements pour la gestion des connexions et les groupes, ainsi que d’envoyer et recevoir des données vers les clients.
+3. Héritez de `Microsoft.AspNetCore.SignalR.Hub`. La classe `Hub` contient des propriétés et des événements pour la gestion des connexions et des groupes, ainsi que pour l'envoi et la réception des données à des clients.
 
-4. Ajoutez une méthode `SendMessage` à la classe. Le `SendMessage` méthode envoie un message à tous les clients de conversation connecté. Notez qu’il renvoie un [tâche](/dotnet/api/system.threading.tasks.task), car SignalR est asynchrone. Code asynchrone évolue mieux.
+4. Ajoutez une méthode `SendMessage` à la classe. La méthode `SendMessage` envoie un message à tous les clients connectés à la conversation. Notez qu’elle renvoie une [tâche](/dotnet/api/system.threading.tasks.task), car SignalR est asynchrone. Le code asynchrone évolue mieux.
 
    [!code-csharp[Startup](get-started/sample/Hubs/ChatHub.cs?range=6-12)]
 
@@ -129,13 +129,13 @@ Un hub est une classe servant de pipeline de haut niveau qui permet au client et
 
 ## <a name="configure-the-project-to-use-signalr"></a>Configurer le projet pour utiliser SignalR
 
-Le serveur de SignalR doit être configuré de sorte qu’il sache pour transmettre les demandes à SignalR.
+Le serveur de SignalR doit être configuré de sorte qu’il sache transmettre les demandes à SignalR.
 
-1. Pour configurer un projet SignalR, modifiez du projet `Startup.ConfigureServices` (méthode).
+1. Pour configurer un projet SignalR, modifiez la méthode `Startup.ConfigureServices` du projet.
 
-   `services.AddSignalR` Ajoute SignalR dans le cadre de la [intergiciel (middleware)](xref:fundamentals/middleware/index) pipeline.
+   `services.AddSignalR` ajoute SignalR dans le cadre du pipeline de l'[intergiciel (middleware)](xref:fundamentals/middleware/index).
 
-2. Configurer des itinéraires à vos concentrateurs à l’aide de `UseSignalR`.
+2. Configurez des routes pour vos hubs en utilisant `UseSignalR`.
 
 
    [!code-csharp[Startup](get-started/sample/Startup.cs?highlight=37,57-60)]
@@ -143,7 +143,7 @@ Le serveur de SignalR doit être configuré de sorte qu’il sache pour transmet
 
 ## <a name="create-the-signalr-client-code"></a>Créer le code de client SignalR
 
-1. Ajouter un fichier JavaScript nommé *chat.js*, à la *wwwroot\js* dossier. Ajoutez-y le code suivant :
+1. Ajoutez un fichier JavaScript nommé *chat.js* au dossier *wwwroot\js*. Ajoutez-y le code suivant :
 
    [!code-javascript[Index](get-started/sample/wwwroot/js/chat.js)]
 
@@ -158,19 +158,19 @@ Le serveur de SignalR doit être configuré de sorte qu’il sache pour transmet
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Sélectionnez **déboguer** > **démarrer sans débogage** pour lancer un navigateur et de charger le site Web localement. Copiez l’URL de la barre d’adresses.
+1. Sélectionnez **Débogage** > **Démarrer sans débogage** pour lancer un navigateur et charger le site web localement. Copiez l’URL de la barre d’adresse.
 
 1. Ouvrez une autre instance du navigateur (n’importe quel navigateur) et collez l’URL dans la barre d’adresses.
 
-1. Choisissez un navigateur, entrez un nom et un message, puis cliquez sur le **envoyer** bouton. Le nom et le message sont affichés sur les deux pages instantanément.
+1. Choisissez un navigateur, entrez un nom et un message, puis cliquez sur le bouton **Envoyer**. Le nom et le message sont affichés sur les deux pages instantanément.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-1. Appuyez sur **Déboguer** (F5) pour générer et exécuter le programme. Le programme en cours d’exécution, une fenêtre de navigateur s’ouvre.
+1. Appuyez sur **Débogage** (F5) pour générer et exécuter le programme. L’exécution du programme ouvre une fenêtre de navigateur.
 
 1. Ouvrir une autre fenêtre de navigateur et de charger le site Web localement dans celui-ci.
 
-1. Choisissez un navigateur, entrez un nom et un message, puis cliquez sur le **envoyer** bouton. Le nom et le message sont affichés sur les deux pages instantanément.
+1. Choisissez un navigateur, entrez un nom et un message, puis cliquez sur le bouton **Envoyer**. Le nom et le message sont affichés sur les deux pages instantanément.
 
 ---
 
