@@ -42,7 +42,7 @@ Installez les logiciels suivants :
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [.NET core SDK 2.1 ou version ultérieure](https://www.microsoft.com/net/download/all)
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7 ou version ultérieure avec la charge de travail **développement web ASP.NET**
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) 15.7 ou version ultérieure avec la charge de travail **Développement ASP.NET et web**
 * [npm](https://www.npmjs.com/get-npm)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -54,7 +54,7 @@ Installez les logiciels suivants :
 
 -----
 
-## <a name="create-an-aspnet-core-project-that-hosts-signalr-client-and-server"></a>Créez un projet ASP.NET Core qui héberge le serveur et le client SignalR
+## <a name="create-an-aspnet-core-project-that-hosts-signalr-client-and-server"></a>Créer un projet ASP.NET Core qui héberge le serveur et le client SignalR
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
@@ -62,13 +62,13 @@ Installez les logiciels suivants :
 
    ![Boîte de dialogue Nouveau projet dans Visual Studio](get-started/_static/signalr-new-project-dialog.png)
 
-2. Sélectionnez **Web Application** pour créer un projet en utilisant des Pages Razor. Puis sélectionnez **OK**. Assurez-vous que **ASP.NET Core 2.1** est sélectionné dans le sélecteur de framework, même si SignalR peut s’exécuter sur des versions antérieures de .NET.
+2. Sélectionnez **Application web** pour créer un projet en utilisant des Pages Razor. Puis sélectionnez **OK**. Assurez-vous que **ASP.NET Core 2.1** est sélectionné dans le sélecteur de framework, même si SignalR peut s’exécuter sur des versions antérieures de .NET.
 
    ![Boîte de dialogue Nouveau projet dans Visual Studio](get-started/_static/signalr-new-project-choose-type.png)
 
-Visual Studio inclut le package `Microsoft.AspNetCore.SignalR` contenant ses bibliothèques du serveur dans son modèle **Application ASP.NET Core Web**. Toutefois, la bibliothèque cliente JavaScript pour SignalR doit être installée à l’aide de *npm*.
+Visual Studio inclut le package `Microsoft.AspNetCore.SignalR` contenant ses bibliothèques du serveur dans son modèle **Application web ASP.NET Core**. Toutefois, la bibliothèque cliente JavaScript pour SignalR doit être installée à l’aide de *npm*.
 
-3. Exécutez les commandes suivantes dans la fenêtre **Package Manager Console**, à partir de la racine du projet :
+3. Exécutez les commandes suivantes dans la fenêtre **Console du gestionnaire de package**, à partir de la racine du projet :
 
     ```console
     npm init -y
@@ -79,7 +79,7 @@ Visual Studio inclut le package `Microsoft.AspNetCore.SignalR` contenant ses bib
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-1. À partir du **Terminal Server intégré**, exécutez la commande suivante :
+1. À partir du **Terminal intégré**, exécutez la commande suivante :
 
     ```console
     dotnet new webapp -o SignalRChat
@@ -98,11 +98,11 @@ Visual Studio inclut le package `Microsoft.AspNetCore.SignalR` contenant ses bib
 
 ## <a name="create-the-signalr-hub"></a>Création du Hub SignalR
 
-Un hub est une classe qui sert d’un pipeline de haut niveau qui permet au client et le serveur d'appeler des méthodes entre eux.
+Un hub est une classe servant de pipeline de haut niveau qui permet au client et au serveur d'appeler des méthodes l’un sur l’autre.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. Ajoutez une classe au projet en choisissant **Fichier** > **Nouveau** > **Nichier** et en sélectionnant **Classe Visual c#**. Nommez le fichier *ChatHub*. 
+1. Ajoutez une classe au projet en choisissant **Fichier** > **Nouveau** > **Fichier** et en sélectionnant **Classe Visual c#**. Nommez le fichier *ChatHub*.
 
 2. Héritez de `Microsoft.AspNetCore.SignalR.Hub`. La classe `Hub` contient des propriétés et des événements pour la gestion des connexions et des groupes, ainsi que pour l'envoi et la réception des données.
 
@@ -112,11 +112,11 @@ Un hub est une classe qui sert d’un pipeline de haut niveau qui permet au clie
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-1. Ouvrez le dossier *SignalRChat* dans le Visual Studio Code.
+1. Ouvrez le dossier *SignalRChat* dans Visual Studio Code.
 
 2. Ajoutez une classe au projet en sélectionnant **Fichier** > **Nouveau fichier** à partir du menu.
 
-3. Héritez de `Microsoft.AspNetCore.SignalR.Hub`. La classe `Hub` contient des propriétés et des événements pour la gestion des connexions et les groupes, ainsi que l'envoi et la réception des données vers les clients.
+3. Héritez de `Microsoft.AspNetCore.SignalR.Hub`. La classe `Hub` contient des propriétés et des événements pour la gestion des connexions et des groupes, ainsi que pour l'envoi et la réception des données à des clients.
 
 4. Ajoutez une méthode `SendMessage` à la classe. La méthode `SendMessage` envoie un message à tous les clients connectés à la conversation. Notez qu’elle renvoie une [tâche](/dotnet/api/system.threading.tasks.task), car SignalR est asynchrone. Le code asynchrone évolue mieux.
 
@@ -140,7 +140,7 @@ Le serveur de SignalR doit être configuré de sorte qu’il sache transmettre l
 
 ## <a name="create-the-signalr-client-code"></a>Créer le code de client SignalR
 
-1. Ajouter un fichier JavaScript nommé *chat.js*, dans le dossier *wwwroot\js*. Ajoutez-y le code suivant :
+1. Ajoutez un fichier JavaScript nommé *chat.js* au dossier *wwwroot\js*. Ajoutez-y le code suivant :
 
    [!code-javascript[Index](get-started/sample/wwwroot/js/chat.js)]
 
@@ -155,7 +155,7 @@ Le serveur de SignalR doit être configuré de sorte qu’il sache transmettre l
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Sélectionnez **Débogage** > **Démarrer sans débogage** pour lancer un navigateur et de charger le site Web localement. Copiez l’URL de la barre d’adresse.
+1. Sélectionnez **Débogage** > **Démarrer sans débogage** pour lancer un navigateur et charger le site web localement. Copiez l’URL de la barre d’adresse.
 
 1. Ouvrez une autre instance du navigateur (n’importe quel navigateur) et collez l’URL dans la barre d’adresses.
 
@@ -163,7 +163,7 @@ Le serveur de SignalR doit être configuré de sorte qu’il sache transmettre l
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-1. Appuyez sur **Débogage** (F5) pour générer et exécuter le programme. Le programme en cours d’exécution, une fenêtre de navigateur s’ouvre.
+1. Appuyez sur **Débogage** (F5) pour générer et exécuter le programme. L’exécution du programme ouvre une fenêtre de navigateur.
 
 1. Ouvrir une autre fenêtre de navigateur et de charger le site Web localement dans celui-ci.
 
