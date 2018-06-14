@@ -80,14 +80,14 @@ La méthode `ConfigureServices` dans la classe `Startup` est chargée de défini
 | [Microsoft.AspNetCore.Hosting.IHostingEnvironment](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment) | Singleton |
 | [Microsoft.Extensions.Logging.ILoggerFactory](/dotnet/api/microsoft.extensions.logging.iloggerfactory) | Singleton |
 | [Microsoft.Extensions.Logging.ILogger&lt;T&gt;](/dotnet/api/microsoft.extensions.logging.ilogger) | Singleton |
-| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](/dotnet/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Temporaire |
-| [Microsoft.AspNetCore.Http.IHttpContextFactory](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextfactory) | Temporaire |
+| [Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory](/dotnet/api/microsoft.aspnetcore.hosting.builder.iapplicationbuilderfactory) | Transient |
+| [Microsoft.AspNetCore.Http.IHttpContextFactory](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextfactory) | Transient |
 | [Microsoft.Extensions.Options.IOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.ioptions-1) | Singleton |
 | [System.Diagnostics.DiagnosticSource](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticsource) | Singleton |
 | [System.Diagnostics.DiagnosticListener](https://docs.microsoft.com/dotnet/core/api/system.diagnostics.diagnosticlistener) | Singleton |
-| [Microsoft.AspNetCore.Hosting.IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) | Temporaire |
+| [Microsoft.AspNetCore.Hosting.IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) | Transient |
 | [Microsoft.Extensions.ObjectPool.ObjectPoolProvider](/dotnet/api/microsoft.extensions.objectpool.objectpoolprovider) | Singleton |
-| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) | Temporaire |
+| [Microsoft.Extensions.Options.IConfigureOptions&lt;T&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) | Transient |
 | [Microsoft.AspNetCore.Hosting.Server.IServer](/dotnet/api/microsoft.aspnetcore.hosting.server.iserver) | Singleton |
 | [Microsoft.AspNetCore.Hosting.IStartup](/dotnet/api/microsoft.aspnetcore.hosting.istartup) | Singleton |
 | [Microsoft.AspNetCore.Hosting.IApplicationLifetime](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime) | Singleton |
@@ -149,18 +149,18 @@ Vous pouvez configurer les services ASP.NET avec les durées de vie suivantes :
 
 **Transient**
 
-Des services à durée de vie temporaire sont créés chaque fois qu’ils sont demandés. Cette durée de vie convient parfaitement aux services légers et sans état.
+Des services à durée de vie temporaire (Transient) sont créés chaque fois qu’ils sont demandés. Cette durée de vie convient parfaitement aux services légers et sans état.
 
 **Scoped**
 
-Les services à durée de vie délimitée sont créés une seule fois par requête.
+Les services à durée de vie délimitée (Scoped) sont créés une seule fois par requête.
 
 > [!WARNING]
-> Si vous utilisez un service délimité dans un middleware, injectez le service dans la méthode `Invoke` ou `InvokeAsync`. Ne faites pas l’injection via l’injection du constructeur, car elle force le service à se comporter comme un singleton.
+> Si vous utilisez un service Scoped dans un middleware, injectez le service dans la méthode `Invoke` ou `InvokeAsync`. Ne faites pas l’injection via l’injection du constructeur, car elle force le service à se comporter comme un singleton.
 
 **Singleton**
 
-Les services à durée de vie singleton sont créés la première fois qu’ils sont demandés (ou lorsque `ConfigureServices` est exécuté si vous y spécifiez une instance), puis chaque requête suivante utilise la même instance. Si votre application exige un comportement singleton, il est recommandé d’autoriser le conteneur de services à gérer la durée de vie du service au lieu d’implémenter le modèle de conception singleton et de gérer la durée de vie de votre objet dans la classe vous-même.
+Les services à durée de vie Singleton sont créés la première fois qu’ils sont demandés (ou lorsque `ConfigureServices` est exécuté si vous y spécifiez une instance), puis chaque requête suivante utilise la même instance. Si votre application exige un comportement Singleton, il est recommandé d’autoriser le conteneur de services à gérer la durée de vie du service au lieu d’implémenter le modèle de conception Singleton et de gérer la durée de vie de votre objet dans la classe vous-même.
 
 Vous pouvez inscrire des services auprès du conteneur de plusieurs façons. Nous avons déjà vu comment inscrire une implémentation de service avec un type donné en spécifiant le type concret à utiliser. En outre, une fabrique peut être spécifiée. Elle est ensuite utilisée pour créer l’instance à la demande. La troisième méthode consiste à spécifier directement l’instance du type à utiliser, auquel cas le conteneur n’essaie jamais de créer une instance (ni d’en disposer).
 
@@ -184,21 +184,21 @@ Pour illustrer les durées de vie des objets dans et entre les requêtes individ
 
 Maintenant, deux requêtes distinctes sont effectuées auprès de cette action de contrôleur :
 
-![Affichage des opérations de l’exemple d’application web d’injection de dépendances en cours d’exécution dans Microsoft Edge présentant les valeurs d’ID d’opération (GUID) des opérations temporaires, délimitées, singleton du contrôleur d’instance et du service d’opération pour la première requête.](dependency-injection/_static/lifetimes_request1.png)
+![Affichage des opérations de l’exemple d’application web d’injection de dépendances en cours d’exécution dans Microsoft Edge présentant les valeurs d’ID d’opération (GUID) des opérations Transient, Scoped, Singleton du contrôleur d’instance et du service d’opération pour la première requête.](dependency-injection/_static/lifetimes_request1.png)
 
 ![Affichage des opérations montrant les valeurs d’ID d’opération pour une deuxième requête.](dependency-injection/_static/lifetimes_request2.png)
 
 Observez les valeurs `OperationId` qui varient au sein d’une requête et entre les requêtes.
 
-* Les objets *temporaires* sont toujours différents ; une nouvelle instance est fournie à chaque contrôleur et à chaque service.
+* Les objets *Transient* sont toujours différents ; une nouvelle instance est fournie à chaque contrôleur et à chaque service.
 
-* Les objets *délimités* sont les mêmes au sein d’une requête, mais ils diffèrent entre les différentes requêtes.
+* Les objets *Scoped* sont les mêmes au sein d’une requête, mais ils diffèrent entre les différentes requêtes.
 
-* Les objets *singleton* sont les mêmes pour chaque objet et chaque requête (qu’une instance soit fournie dans `ConfigureServices` ou non).
+* Les objets *Singleton* sont les mêmes pour chaque objet et chaque requête (qu’une instance soit fournie dans `ConfigureServices` ou non).
 
-## <a name="resolve-a-scoped-service-within-the-application-scope"></a>Résoudre un service délimité dans l’étendue de l’application
+## <a name="resolve-a-scoped-service-within-the-application-scope"></a>Résoudre un service Scoped dans le scope de l’application
 
-Créez un [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope) avec [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) pour résoudre un service délimité dans l’étendue de l’application. Cette approche est pratique pour accéder à un service délimité au démarrage pour exécuter des tâches d’initialisation. L’exemple suivant montre comment obtenir un contexte pour `MyScopedService` dans `Program.Main` :
+Créez un [IServiceScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescope) avec [IServiceScopeFactory.CreateScope](/dotnet/api/microsoft.extensions.dependencyinjection.iservicescopefactory.createscope) pour résoudre un service Scoped dans le scope de l’application. Cette approche est pratique pour accéder à un service Scoped au démarrage pour exécuter des tâches d’initialisation. L’exemple suivant montre comment obtenir un contexte pour `MyScopedService` dans `Program.Main` :
 
 ```csharp
 public static void Main(string[] args)
@@ -229,12 +229,12 @@ public static void Main(string[] args)
 
 Quand l’application s’exécute dans l’environnement de développement sur ASP.NET Core 2.0 ou ultérieur, le fournisseur de services par défaut effectue des contrôles pour vérifier que :
 
-* Les services délimités ne sont pas résolus directement ou indirectement à partir du fournisseur de services racine.
-* Les services délimités ne sont pas directement ou indirectement injectés dans des singletons.
+* Les services Scoped ne sont pas résolus directement ou indirectement à partir du fournisseur de services racine.
+* Les services Scoped ne sont pas directement ou indirectement injectés dans des singletons.
 
 Le fournisseur de services racine est créé quand [BuildServiceProvider](/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectioncontainerbuilderextensions.buildserviceprovider) est appelé. La durée de vie du fournisseur de services racine correspond à la durée de vie de l’application/du serveur quand le fournisseur démarre avec l’application et qu’il est supprimé quand l’application s’arrête.
 
-Les services délimités sont supprimés par le conteneur qui les a créés. Si un service délimité est créé dans le conteneur racine, la durée de vie du service est promue en singleton, car elle est supprimée par le conteneur racine seulement quand l’application/le serveur est arrêté. La validation des étendues du service permet de traiter ces situations quand `BuildServiceProvider` est appelé.
+Les services Scoped sont supprimés par le conteneur qui les a créés. Si un service Scoped est créé dans le conteneur racine, la durée de vie du service est promue en singleton, car elle est supprimée par le conteneur racine seulement quand l’application/le serveur est arrêté. La validation des étendues du service permet de traiter ces situations quand `BuildServiceProvider` est appelé.
 
 Pour plus d’informations, consultez la rubrique [Validation des étendues dans l’hôte web](xref:fundamentals/host/web-host#scope-validation).
 
@@ -336,7 +336,7 @@ Au moment de l’exécution, Autofac est utilisé pour résoudre les types et in
 
 ### <a name="thread-safety"></a>Sécurité des threads
 
-Les services singleton doivent être thread-safe. Si un service singleton a une dépendance vis-à-vis d’un service temporaire, ce dernier peut également avoir besoin d’être thread-safe selon la manière dont il est utilisé par le singleton.
+Les services singleton doivent être thread-safe. Si un service singleton a une dépendance vis-à-vis d’un service Transient, ce dernier peut également avoir besoin d’être thread-safe selon la manière dont il est utilisé par le singleton.
 
 ## <a name="recommendations"></a>Recommandations
 
