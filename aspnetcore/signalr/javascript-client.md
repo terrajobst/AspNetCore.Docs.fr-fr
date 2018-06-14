@@ -6,16 +6,17 @@ manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: rachelap
 ms.custom: mvc
-ms.date: 05/09/2018
+ms.date: 05/29/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: signalr/javascript-client
-ms.openlocfilehash: 1701d9ac5222bf64f9690c1cecdf54ef95fe4a49
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 6ff888d3337bb53d435744009f4cc24b327ebcda
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341936"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript client
 
@@ -58,7 +59,7 @@ Pour empêcher la lecture des données sensibles à partir d’un autre site, un
 
 [!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-35,56)]
 
-## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de concentrateur du client
+## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de hub à partir du client
 
 Les clients JavaScript appellent les méthodes publiques sur les concentrateurs par à l’aide de `connection.invoke`. Le `invoke` méthode accepte deux arguments :
 
@@ -76,9 +77,9 @@ Pour recevoir des messages à partir du concentrateur, définissez une méthode 
 
 [!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=14-19)]
 
-Le code précédent dans `connection.on` s’exécute lorsque le code côté serveur appelle à l’aide de la `SendAsync` (méthode).
+Le code précédent dans `connection.on` s’exécute lorsque le code côté serveur l’appelle en utilisant la méthode `SendAsync`.
 
-[!code-javascript[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
+[!code-csharp[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
 
 SignalR détermine la méthode de client à appeler en faisant correspondre le nom de méthode et les arguments définis dans `SendAsync` et `connection.on`.
 
@@ -104,5 +105,7 @@ Utilisez le `configureLogging` méthode sur `HubConnectionBuilder` pour configur
 
 ## <a name="related-resources"></a>Ressources connexes
 
-* [Concentrateurs SignalR ASP.NET Core](xref:signalr/hubs)
+* [Hubs](xref:signalr/hubs)
+* [Client .NET](xref:signalr/dotnet-client)
+* [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
 * [Activer les demandes Cross-Origin (CORS) dans ASP.NET Core](xref:security/cors)

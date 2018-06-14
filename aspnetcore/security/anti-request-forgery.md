@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/anti-request-forgery
-ms.openlocfilehash: ad50f8b261447d40ccc24c0ee006239aa976bf20
-ms.sourcegitcommit: 7d02ca5f5ddc2ca3eb0258fdd6996fbf538c129a
+ms.openlocfilehash: 3bca96f4a2e247eeeb93140df93221371d88d4d3
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341858"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Attaques empêcher Cross-Site Request Forgery (XSRF/CSRF) dans ASP.NET Core
 
@@ -43,11 +44,13 @@ Voici un exemple d’une attaque CSRF :
 1. L’utilisateur sélectionne le bouton Envoyer. Le navigateur d'où émane la demande et inclut automatiquement le cookie d’authentification pour le domaine demandé, `www.good-banking-site.com`.
 1. La requête s’exécute le `www.good-banking-site.com` serveur avec le contexte de l’utilisateur d’authentification et peut exécuter toute action qu’un utilisateur authentifié est autorisé à effectuer.
 
-Lorsque l’utilisateur sélectionne le bouton pour envoyer le formulaire, le site malveillant pourrait :
+Outre le scénario où l’utilisateur sélectionne le bouton pour envoyer le formulaire, le site malveillant pourrait :
 
 * Exécuter un script qui envoie automatiquement le formulaire.
-* Envoie un envoi de formulaire sous la forme d’une requête AJAX. 
-* Utiliser un formulaire masqué avec CSS. 
+* Envoyer l’envoi du formulaire sous la forme d’une requête AJAX.
+* Masquer le formulaire à l’aide de CSS.
+
+Ces scénarios ne nécessitent pas toute action ou une entrée d’utilisateur autre qu’initialement sur le site malveillant.
 
 Une attaque CSRF n’empêche pas à l’aide de HTTPS. Le site malveillant peut envoyer un `https://www.good-banking-site.com/` demander tout aussi facilement qu’il peut envoyer une demande non sécurisée.
 

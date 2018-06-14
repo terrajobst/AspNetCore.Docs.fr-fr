@@ -10,12 +10,12 @@ ms.date: 01/26/2017
 ms.prod: asp.net-core
 ms.topic: article
 uid: performance/caching/middleware
-ms.openlocfilehash: 7ceccffa39baf5f13d63c26e78c64a595bb42f60
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: abf07ec2d2692a8504caea243eacead6aa6e1a62
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734495"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341702"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
@@ -27,7 +27,7 @@ Cet article explique comment configurer un intergiciel (middleware) de réponse 
 
 ## <a name="package"></a>Package
 
-Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [Microsoft.AspNetCore.ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/) du package ou utilisez le [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app), qui est disponible pour une utilisation dans ASP.NET Core 2.1 ou version ultérieure.
+Pour inclure l’intergiciel (middleware) dans votre projet, ajoutez une référence à la [Microsoft.AspNetCore.ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/) du package ou utilisez le [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app), qui est disponible pour une utilisation dans ASP. Core NET 2.1 ou version ultérieure.
 
 ## <a name="configuration"></a>Configuration
 

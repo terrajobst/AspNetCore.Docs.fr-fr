@@ -9,12 +9,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authorization/secure-data
-ms.openlocfilehash: 1ffa44d1816284d563b80b2d9a02b7b816116ee1
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 0b67d4aef198aa418b54fb92db76d331ffa2785a
+ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252111"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35415031"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core et de données utilisateur protégées par l’autorisation
 
@@ -111,7 +111,7 @@ Si vous utilisez Visual Studio, activez le protocole HTTPS.
 
 Pour rediriger les demandes HTTP vers HTTPS, consultez [intergiciel (middleware) réécriture d’URL](xref:fundamentals/url-rewriting). Si vous êtes à l’aide de Visual Studio Code ou de test sur une plateforme locale qui n’inclut pas un certificat de test pour le protocole HTTPS :
 
-  Définissez `"LocalTest:skipSSL": true` dans le *appsettings. Developement.JSON* fichier.
+  Définissez `"LocalTest:skipHTTPS": true` dans le *appsettings. Developement.JSON* fichier.
 
 ### <a name="require-authenticated-users"></a>Demander aux utilisateurs authentifiés
 
@@ -273,7 +273,7 @@ Mettre à jour le modèle de page de détails :
 
 Si vous êtes à l’aide de Visual Studio Code ou de test sur une plateforme locale qui n’inclut pas un certificat de test pour le protocole HTTPS :
 
-* Définissez `"LocalTest:skipSSL": true` dans le *appsettings. Developement.JSON* fichiers à ignorer la spécification du protocole HTTPS. Skip HTTPS uniquement sur un ordinateur de développement.
+* Définissez `"LocalTest:skipHTTPS": true` dans le *appsettings. Developement.JSON* fichiers à ignorer la spécification du protocole HTTPS. Skip HTTPS uniquement sur un ordinateur de développement.
 
 Si l’application contient des contacts :
 

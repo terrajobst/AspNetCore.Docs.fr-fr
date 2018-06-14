@@ -1,21 +1,22 @@
 ---
 title: Protection de données générales règlement (PIBR) prend en charge dans ASP.NET Core
 author: rick-anderson
-description: Montre comment accéder aux points d’extension PIBR dans un cœur d’ASP.NET de l’application web.
+description: Découvrez comment accéder aux points d’extension PIBR dans une application de web ASP.NET Core.
 manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
-ms.date: 5/29/2018
+ms.custom: mvc
+ms.date: 05/29/2018
 ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/gdpr
-ms.openlocfilehash: 92a7000f4f8e4c2097065cb530fe106ef0e98545
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: c3c8a3fcd4a303aea65c57ff6be2ff0434383f33
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34688625"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341923"
 ---
 # <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>Prise en charge de l’Union européenne général données Protection règlement (PIBR) dans ASP.NET Core
 
@@ -24,7 +25,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 ASP.NET Core fournit des API et des modèles pour répondre à certaines de la [Europe général données Protection règlement (PIBR)](https://www.eugdpr.org/) configuration requise :
 
 * Les modèles de projet incluent des points d’extension et de stub balisage que vous pouvez remplacer par votre confidentialité et de la stratégie d’utilisation de cookies.
-* Une fonctionnalité de consentement de cookie vous permet demandera (et le suivi) consentement à partir de vos utilisateurs pour le stockage des informations personnelles. Si un utilisateur n’a pas accepté de collecte de données et l’application est configurée avec [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded?view=aspnetcore-2.1#Microsoft_AspNetCore_Builder_CookiePolicyOptions_CheckConsentNeeded) à `true`, les cookies non essentiels n’être envoyées au navigateur.
+* Une fonctionnalité de consentement de cookie vous permet demandera (et le suivi) consentement à partir de vos utilisateurs pour le stockage des informations personnelles. Si un utilisateur n’a pas accepté de collecte de données et l’application est configurée avec [CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded) à `true`, les cookies non essentiels n’être envoyées au navigateur.
 * Les cookies peuvent être marqués comme essentielles. Les cookies essentielles sont envoyés dans le navigateur même lorsque l’utilisateur n’a pas été accepté et le suivi est désactivé.
 * [Les cookies de Session et TempData](#tempdata) ne fonctionnent pas lorsque le suivi est désactivé.
 * Le [gérer les identités](#pd) page fournit un lien pour télécharger et supprimer des données de l’utilisateur.
@@ -37,18 +38,18 @@ Le [exemple d’application](https://github.com/aspnet/Docs/tree/live/aspnetcore
 
 Pages Razor et MVC projets créés avec les modèles de projet incluent la prise en charge PIBR suivante :
 
-* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions?view=aspnetcore-2.0) et [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_CookiePolicyAppBuilderExtensions_UseCookiePolicy_Microsoft_AspNetCore_Builder_IApplicationBuilder_) sont définies dans `Startup`.
+* [CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) et [UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) sont définies dans `Startup`.
 * Le *_CookieConsentPartial.cshtml* [vue partielle](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper).
 * Le *Pages/Privacy.cshtml* ou *Home/Privacy.cshtml* affichage fournit une page détaillé politique de confidentialité de votre site. Le *_CookieConsentPartial.cshtml* fichier génère un lien vers la page de la confidentialité.
 * Pour les applications créées avec des comptes d’utilisateur individuels, la page de gestion fournit des liens pour télécharger et supprimer [personnelle](#pd).
 
 ### <a name="cookiepolicyoptions-and-usecookiepolicy"></a>CookiePolicyOptions et UseCookiePolicy
 
-[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions?view=aspnetcore-2.0) sont initialisés dans le `Startup` classe `ConfigureServices` méthode :
+[CookiePolicyOptions](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions) sont initialisés dans le `Startup` classe `ConfigureServices` méthode :
 
 [!code-csharp[Main](gdpr/sample/Startup.cs?name=snippet1&highlight=14-20)]
 
-[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_CookiePolicyAppBuilderExtensions_UseCookiePolicy_Microsoft_AspNetCore_Builder_IApplicationBuilder_) est appelée dans le `Startup` classe `Configure` méthode :
+[UseCookiePolicy](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyappbuilderextensions.usecookiepolicy) est appelée dans le `Startup` classe `Configure` méthode :
 
 [!code-csharp[Main](gdpr/sample/Startup.cs?name=snippet1&highlight=49)]
 
@@ -94,7 +95,7 @@ Remarques :
 
 * Pour générer le `Account/Manage` de code, consultez [Scaffold identité](xref:security/authentication/scaffold-identity).
 * Supprimer et télécharger uniquement impact sur les données d’identité par défaut. Les données utilisateur personnalisées de création d’applications doivent être étendues pour supprimer/télécharger les données utilisateur personnalisées. Problème GitHub [comment ajouter/supprimer des données utilisateur personnalisées pour l’identité](https://github.com/aspnet/Docs/issues/6226) effectue le suivi d’un article proposé sur la création personnalisée/suppression/téléchargement des données utilisateur personnalisées. Si vous souhaitez voir cette rubrique hiérarchisée, laissez un pouce vers le haut la réaction dans le problème.
-* Enregistré des jetons pour l’utilisateur qui sont stockées dans la table de base de données d’identité `AspNetUserTokens` sont supprimés lorsque l’utilisateur est supprimé via le comportement de suppression en cascade due à la [clé étrangère](https://github.com/aspnet/Identity/blob/b4fc72c944e0589a7e1f076794d7e5d8dcf163bf/src/EF/IdentityUserContext.cs#L152).
+* Enregistré des jetons pour l’utilisateur qui sont stockées dans la table de base de données d’identité `AspNetUserTokens` sont supprimés lorsque l’utilisateur est supprimé via le comportement de suppression en cascade due à la [clé étrangère](https://github.com/aspnet/Identity/blob/release/2.1/src/EF/IdentityUserContext.cs#L152).
 
 ## <a name="encryption-at-rest"></a>Chiffrement au repos
 
@@ -107,17 +108,17 @@ Certaines bases de données et les mécanismes de stockage permettent un chiffre
 
 Exemple :
 
-* Microsoft SQL et SQL Azure fournissent [chiffrement Transparent des données](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) (TDE).
-* [SQL Azure chiffre de la base de données par défaut](https://azure.microsoft.com/en-us/updates/newly-created-azure-sql-databases-encrypted-by-default/)
-* [Objets BLOB, fichiers, Table Azure et stockage de file d’attente sont chiffrés par défaut](https://azure.microsoft.com/en-us/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+* Microsoft SQL et SQL Azure fournissent [chiffrement Transparent des données](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE).
+* [SQL Azure chiffre de la base de données par défaut](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
+* [Objets BLOB, fichiers, Table Azure et stockage de file d’attente sont chiffrés par défaut](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 
 Pour les bases de données qui ne fournissent pas un chiffrement intégré au repos vous pourrez peut-être utiliser le chiffrement de disque pour fournir le même niveau de protection. Exemple :
 
-* [BitLocker pour windows server](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
+* [BitLocker pour Windows Server](/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server)
 * Linux :
   * [eCryptfs](https://launchpad.net/ecryptfs)
   * [EncFS](https://github.com/vgough/encfs).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Microsoft.com/GDPR](https://www.microsoft.com/en-us/trustcenter/Privacy/GDPR)
+* [Microsoft.com/GDPR](https://www.microsoft.com/trustcenter/Privacy/GDPR)

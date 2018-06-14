@@ -10,12 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 005491168ba3e538991ed1bf8a53c320ecf2818d
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 3ebb709cc40f6c2477ac57325d035b9b461e2eaf
+ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35251981"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35414992"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer les données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core
 
@@ -125,7 +125,7 @@ Propriétés décorée avec le [PersonalData](/dotnet/api/microsoft.aspnetcore.i
 
 Mise à jour la `InputModel` dans *Areas/Identity/Pages/Account/Manage/Index.cshtml.cs* avec les éléments suivants en surbrillance le code :
 
-[!code-csharp[Main](add-user-data/sample/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=28-36,63-64,87-95)]
+[!code-csharp[Main](add-user-data/sample/Areas/Identity/Pages/Account/Manage/Index.cshtml.cs?name=snippet&highlight=28-36,63-64,87-95,120)]
 
 Mise à jour la *Areas/Identity/Pages/Account/Manage/Index.cshtml* avec le balisage mis en surbrillance suivant :
 

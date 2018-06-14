@@ -1,4 +1,4 @@
-﻿---
+---
 title: Prise en main de SignalR sur ASP.NET Core
 author: rachelappel
 description: Dans ce didacticiel, vous créez une application à l’aide de SignalR pour ASP.NET Core.
@@ -80,7 +80,7 @@ Visual Studio inclut le package `Microsoft.AspNetCore.SignalR` contenant ses bib
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-1. À partir du **Terminal intégré**, exécutez la commande suivante :
+1. À partir de la **Terminal Server intégré**, exécutez la commande suivante :
 
     ```console
     dotnet new webapp -o SignalRChat
@@ -109,7 +109,7 @@ Un hub est une classe servant de pipeline de haut niveau qui permet au client et
 
 2. Héritez de `Microsoft.AspNetCore.SignalR.Hub`. La classe `Hub` contient des propriétés et des événements pour la gestion des connexions et des groupes, ainsi que pour l'envoi et la réception des données.
 
-3. Créez la méthode `SendMessage` qui envoie un message à tous les clients connectés à la conversation. Notez qu’elle renvoie une [tâche](https://msdn.microsoft.com/library/system.threading.tasks.task(v=vs.110).aspx), car SignalR est asynchrone. Le Code asynchrone évolue mieux.
+3. Créez la méthode `SendMessage` qui envoie un message à tous les clients connectés à la conversation. Notez qu’elle renvoie une [tâche](https://msdn.microsoft.com/library/system.threading.tasks.task(v=vs.110).aspx), car SignalR est asynchrone. Le code asynchrone évolue mieux.
 
    [!code-csharp[Startup](get-started/sample/Hubs/ChatHub.cs)]
 
@@ -133,7 +133,7 @@ Le serveur de SignalR doit être configuré de sorte qu’il sache transmettre l
 
 1. Pour configurer un projet SignalR, modifiez la méthode `Startup.ConfigureServices` du projet.
 
-   `services.AddSignalR` ajoute SignalR dans le cadre du pipeline de l'[intergiciel (middleware)](xref:fundamentals/middleware/index).
+   `services.AddSignalR` SignalR dans le cadre du pipeline de l'[intergiciel (middleware)](xref:fundamentals/middleware/index).
 
 2. Configurez des routes pour vos hubs en utilisant `UseSignalR`.
 
@@ -143,7 +143,7 @@ Le serveur de SignalR doit être configuré de sorte qu’il sache transmettre l
 
 ## <a name="create-the-signalr-client-code"></a>Créer le code de client SignalR
 
-1. Ajoutez un fichier JavaScript nommé *chat.js* au dossier *wwwroot\js*. Ajoutez-y le code suivant :
+1. Ajoutez un fichier JavaScript nommé *chat.js* au dossier *wwwroot\js*. Ajoutez-y le code suivant : Ajoutez-y le code suivant :
 
    [!code-javascript[Index](get-started/sample/wwwroot/js/chat.js)]
 
