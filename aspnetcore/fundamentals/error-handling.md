@@ -47,7 +47,7 @@ Cette demande ne contenait pas de cookies, sinon ils apparaîtraient sous l’on
 
 ![En-têtes](error-handling/_static/developer-exception-page-headers.png)
 
-## <a name="configuring-a-custom-exception-handling-page"></a>Configuration d’une page de gestion des exceptions personnalisée
+## <a name="configuring-a-custom-exception-handling-page"></a>Configuration d’une page personnalisée de gestion des exceptions
 
 Il est judicieux de configurer une page de gestionnaire d’exceptions à utiliser quand l’application n’est pas en cours d’exécution dans l’environnement `Development`.
 
