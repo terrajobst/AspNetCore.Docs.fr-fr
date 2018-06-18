@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: a9bf7b49b1cfdfff65c639eed1e14c94c5432350
-ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
+ms.openlocfilehash: 46973f8a82034bd99a6e6634bbd6da06b1b14f25
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/31/2018
-ms.locfileid: "34689020"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35726028"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Programme d’installation de Microsoft Account connexion externe avec ASP.NET Core
 
@@ -46,9 +46,12 @@ Si vous n’avez pas déjà un compte Microsoft, appuyez sur  **[créez-en un !
 
 ![Boîte de dialogue plateforme ajouter](index/_static/MicrosoftDevAppPlatform.png)
 
-* Dans la nouvelle **Web** plateforme section, entrez votre URL de développement avec */signin-microsoft* ajoutées dans le **URL de redirection** champ (par exemple : `https://localhost:44320/signin-microsoft`). Le schéma d’authentification Microsoft configuré plus loin dans ce didacticiel va gérer automatiquement les demandes à */signin-microsoft* itinéraire pour implémenter le flux OAuth :
+* Dans la nouvelle **Web** plateforme section, entrez votre URL de développement avec `/signin-microsoft` ajoutées dans le **URL de redirection** champ (par exemple : `https://localhost:44320/signin-microsoft`). Le schéma d’authentification Microsoft configuré plus loin dans ce didacticiel va gérer automatiquement les demandes à `/signin-microsoft` itinéraire pour implémenter le flux OAuth :
 
 ![Section de plateforme Web](index/_static/MicrosoftRedirectUri.png)
+
+> [!NOTE]
+> Le segment d’URI `/signin-microsoft` est défini comme le rappel par défaut du fournisseur d’authentification de Microsoft. Vous pouvez modifier l’URI de rappel par défaut lors de la configuration de l’intergiciel (middleware) d’authentification de Microsoft via hérité [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) propriété de la [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions) classe.
 
 * Appuyez sur **ajouter une URL** afin de vérifier l’URL a été ajoutée.
 
@@ -143,4 +146,4 @@ Vous êtes désormais connecté à l’aide de vos informations d’identificati
 
 * Une fois que vous publiez votre site web à l’application web Azure, vous devez créer un nouveau `Password` dans le portail des développeurs Microsoft.
 
-* Définir le `Authentication:Microsoft:ApplicationId` et `Authentication:Microsoft:Password` en tant que paramètres de l’application dans le portail Azure. Le système de configuration est configuré pour lire les clés à partir de variables d’environnement.
+* Définir le `Authentication:Microsoft:ApplicationId` et `Authentication:Microsoft:Password` en tant que paramètres de l’application dans le portail Azure. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.

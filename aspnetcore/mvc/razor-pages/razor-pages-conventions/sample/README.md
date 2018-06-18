@@ -6,7 +6,7 @@ Cet exemple illustre l’utilisation des fournisseurs de modèles de pages et de
 
 | Scénario | Démonstration |
 | -------- | ----------- |
-| [Conventions de modèle](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#model-conventions) | Ajouter un en-tête et un attribut de route dans les pages de l’application. |
-| [Utiliser AddPageRoute pour ajouter une route de page](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#configure-a-page-route) | Ajouter la route spécifié dans la page, à la page spécifiée. |
-| [Conventions d’actions de modèle de page](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#page-model-action-conventions) | Ajouter un en-tête dans les pages d’un dossier, ajouter un en-tête dans une page unique et configurer une fabrique de filtres pour ajouter un en-tête dans les pages de l’application. |
-| [Remplacer le fournisseur de modèles d’applications de pages par défaut](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-convention-features#replace-the-default-page-app-model-provider) | Changer les conventions de nommage des gestionnaires. |
+| [Conventions de modèle](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-conventions#model-conventions) | Ajouter un en-tête et un attribut de route dans les pages de l’application. |
+| [Utiliser AddPageRoute pour ajouter une route de page](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-conventions#configure-a-page-route) | Ajouter la route spécifié dans la page, à la page spécifiée. |
+| [Conventions d’actions de modèle de page](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-conventions#page-model-action-conventions) | Ajouter un en-tête dans les pages d’un dossier, ajouter un en-tête dans une page unique et configurer une fabrique de filtres pour ajouter un en-tête dans les pages de l’application. |
+| [Remplacer le fournisseur de modèles d’applications de pages par défaut](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/razor-pages-conventions#replace-the-default-page-app-model-provider) | Changer les conventions de nommage des gestionnaires. |

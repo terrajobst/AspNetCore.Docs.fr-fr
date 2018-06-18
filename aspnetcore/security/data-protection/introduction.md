@@ -9,17 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/data-protection/introduction
-ms.openlocfilehash: 5526b517ba9f1ac4b041576156b2964217460726
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 56876f43ed48b577f4d870825fd9230f526baec3
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725950"
 ---
 # <a name="aspnet-core-data-protection"></a>Protection des données ASP.NET Core
 
 Les applications Web doivent souvent stocker les données sensibles pour la sécurité. Windows fournit DPAPI pour les applications de bureau, mais il ne convient pas pour les applications web. La pile de protection de données ASP.NET Core fournissent une API de chiffrement simple et facile à utiliser, un développeur peut utiliser pour protéger les données, y compris la rotation et gestion de clés.
 
-La pile de protection de données ASP.NET Core est conçue pour servir de remplacement à long terme pour le <machineKey> élément dans ASP.NET 1.x - 4.x. Il a été conçu pour traiter une bonne partie des lacunes de la pile de services de chiffrement ancien tout en fournissant une solution à l’emploi pour la majorité des cas d’utilisation des applications modernes sont susceptibles de rencontrer.
+La pile de protection de données ASP.NET Core est conçue pour servir de remplacement à long terme pour le &lt;machineKey&gt; élément dans ASP.NET 1.x - 4.x. Il a été conçu pour traiter une bonne partie des lacunes de la pile de services de chiffrement ancien tout en fournissant une solution à l’emploi pour la majorité des cas d’utilisation des applications modernes sont susceptibles de rencontrer.
 
 ## <a name="problem-statement"></a>Énoncé du problème
 
@@ -75,6 +76,6 @@ La pile de protection de données se compose de cinq packages.
 
 * Microsoft.AspNetCore.DataProtection.Extensions contient des API supplémentaires qui permet aux développeurs s’avérer utile, mais qui n’appartiennent pas dans le package de base. Par exemple, ce package contient une API simple « instancier le système pointant vers un répertoire de stockage de clés spécifique sans configuration d’injection de dépendance » (plus d’informations). Il contient également des méthodes d’extension pour limiter la durée de vie de charges utiles protégés (plus d’informations).
 
-* Microsoft.AspNetCore.DataProtection.SystemWeb peut être installé dans une application 4.x ASP.NET pour rediriger ses <machineKey> operations au lieu d’utiliser la nouvelle pile de protection des données. Consultez [compatibilité](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey) pour plus d’informations.
+* Microsoft.AspNetCore.DataProtection.SystemWeb peut être installé dans une application 4.x ASP.NET pour rediriger ses &lt;machineKey&gt; operations au lieu d’utiliser la nouvelle pile de protection des données. Consultez [compatibilité](xref:security/data-protection/compatibility/replacing-machinekey#compatibility-replacing-machinekey) pour plus d’informations.
 
 * Microsoft.AspNetCore.Cryptography.KeyDerivation fournit une implémentation du mot de passe PBKDF2 hachage routine et peut être utilisé par les systèmes qui doivent gérer les mots de passe utilisateur en toute sécurité. Consultez [de hachage des mots de passe](xref:security/data-protection/consumer-apis/password-hashing) pour plus d’informations.

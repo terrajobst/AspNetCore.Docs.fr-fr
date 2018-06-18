@@ -9,12 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: security/authentication/google-logins
-ms.openlocfilehash: ccb771dbefefb007aede1bdf05ab50ec363a3089
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 878c0b16e24f48a0ee84f93393af67af1728e284
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34689033"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "35725963"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>Programme d’installation de la connexion externe Google dans ASP.NET Core
 
@@ -61,7 +61,10 @@ Ce didacticiel vous montre comment permettre aux utilisateurs de se connecter av
 
 * Étant donné que nous allons créer un projet Google + avec simplement une fonction (connexion), nous pouvons entrer le même **nom** de l’ID de client OAuth 2.0 que celui que nous avons utilisé pour le projet.
 
-* Entrez votre développement URI avec */signin-google* ajoutées dans le **URI de redirection autorisés** champ (par exemple : `https://localhost:44320/signin-google`). L’authentification Google configurée plus loin dans ce didacticiel va gérer automatiquement les demandes à */signin-google* itinéraire pour implémenter le flux OAuth.
+* Entrez votre développement URI avec `/signin-google` ajoutées dans le **URI de redirection autorisés** champ (par exemple : `https://localhost:44320/signin-google`). L’authentification Google configurée plus loin dans ce didacticiel va gérer automatiquement les demandes à `/signin-google` itinéraire pour implémenter le flux OAuth.
+
+> [!NOTE]
+> Le segment d’URI `/signin-google` est défini comme le rappel par défaut du fournisseur d’authentification Google. Vous pouvez modifier l’URI de rappel par défaut lors de la configuration de l’intergiciel (middleware) d’authentification Google via hérité [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) propriété de la [GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions) classe.
 
 * Appuyez sur TAB pour ajouter le **URI de redirection autorisés** entrée.
 
@@ -158,4 +161,4 @@ Vous êtes désormais connecté à l’aide de vos informations d’identificati
 
 * Une fois que vous publiez votre site web à l’application web Azure, vous devez réinitialiser le `ClientSecret` dans la Console des API Google.
 
-* Définir le `Authentication:Google:ClientId` et `Authentication:Google:ClientSecret` en tant que paramètres de l’application dans le portail Azure. Le système de configuration est configuré pour lire les clés à partir de variables d’environnement.
+* Définir le `Authentication:Google:ClientId` et `Authentication:Google:ClientSecret` en tant que paramètres de l’application dans le portail Azure. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.
