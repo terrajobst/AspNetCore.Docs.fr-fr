@@ -190,7 +190,7 @@ Maintenant, deux requêtes distinctes sont effectuées auprès de cette action d
 
 Observez les valeurs `OperationId` qui varient au sein d’une requête et entre les requêtes.
 
-* Les objets *Transient* sont toujours différents ; une nouvelle instance est fournie à chaque contrôleur et à chaque service.
+* Les objets *Transient* sont toujours différents ; une nouvelle instance est fournie à chaque contrôleur et à chaque service.
 
 * Les objets *Scoped* sont les mêmes au sein d’une requête, mais ils diffèrent entre les différentes requêtes.
 

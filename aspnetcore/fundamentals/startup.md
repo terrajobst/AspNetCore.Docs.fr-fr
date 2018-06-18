@@ -11,10 +11,10 @@ ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/startup
 ms.openlocfilehash: 58ced0ae11f462bc309526b7db7bda7897c33009
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/18/2018
 ms.locfileid: "34233168"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
@@ -53,7 +53,7 @@ Pour en savoir plus sur `WebHostBuilder`, consultez la rubrique [Hébergement](x
 
 La méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) est :
 
-* Facultative
+* Facultatif
 * Appelée par l’hôte web avant la méthode `Configure` pour configurer les services de l’application.
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 

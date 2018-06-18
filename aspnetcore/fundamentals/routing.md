@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/routing
-ms.openlocfilehash: d9d5a26b08f67fe4ee39d6b974027826a93e5d5f
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: a23e2e1a1dd25a57e5d6189bbd5938c48078515b
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341780"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -262,7 +263,6 @@ Un texte littéral autre que les paramètres de routage (par exemple, `{id}`) et
 Les modèles d’URL qui tentent de capturer un nom de fichier avec une extension de fichier facultative font l’objet de considérations supplémentaires. Par exemple, l’utilisation du modèle `files/{filename}.{ext?}` : quand `filename` et `ext` existent tous les deux, les deux valeurs seront renseignées. Si seul `filename` existe dans l’URL, une correspondance est trouvée pour la route, car le point final `.` est facultatif. Les URL suivantes correspondraient à cette route :
 
 * `/files/myFile.txt`
-* `/files/myFile.`
 * `/files/myFile`
 
 Vous pouvez utiliser le caractère `*` comme préfixe d’un paramètre de routage à lier au reste de l’URI. Cela s’appelle un paramètre *fourre-tout*. Par exemple, `blog/{*slug}` établit une correspondance avec n’importe quel URI commençant par `/blog` et suivi de n’importe quelle valeur (affectée à la valeur de route `slug`). Les paramètres fourre-tout peuvent également établir une correspondance avec la chaîne vide.
