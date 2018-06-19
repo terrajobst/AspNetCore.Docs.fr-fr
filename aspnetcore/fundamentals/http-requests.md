@@ -16,6 +16,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33838759"
 ---
 # <a name="initiate-http-requests"></a>Lancer des requêtes HTTP
 

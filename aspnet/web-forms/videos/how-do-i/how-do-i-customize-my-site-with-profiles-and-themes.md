@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-customize-my-site-with-profiles-and-themes
-title: "[Comment faire] Personnaliser Mon Site avec des profils et des thèmes ? | Microsoft Docs"
+title: '[Comment faire] Personnaliser Mon Site avec des profils et des thèmes ? | Microsoft Docs'
 author: microsoft
-description: "Découvrez comment utiliser des profils pour collecter des informations de configuration par utilisateur et appliquer des thèmes pour étendre une apparence-et-cohérente dans tout le site Web."
+description: Découvrez comment utiliser des profils pour collecter des informations de configuration par utilisateur et appliquer des thèmes pour étendre une apparence-et-cohérente dans tout le site Web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/06/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526188"
 ---
 <a name="how-do-i-customize-my-site-with-profiles-and-themes"></a>[Comment faire] Personnaliser Mon Site avec des profils et des thèmes ?
 ====================

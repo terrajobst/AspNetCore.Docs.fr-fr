@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872063"
 ---
 <a name="picking-one-animation-out-of-a-list-vb"></a>Sélection d’une Animation dans une liste (VB)
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871556"
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table-c"></a>Ajout d’un nouveau champ à la Table (c#) et au modèle de film
 ====================

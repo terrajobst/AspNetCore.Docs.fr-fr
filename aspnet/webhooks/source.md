@@ -1,20 +1,21 @@
 ---
 uid: webhooks/source
-title: "Code source de WebHooks d’ASP.NET et les packages NuGet | Documents Microsoft"
+title: Code source de WebHooks d’ASP.NET et les packages NuGet | Documents Microsoft
 author: rick-anderson
-description: "Liens vers le code source de WebHooks d’ASP.NET et les packages NuGet"
+description: Liens vers le code source de WebHooks d’ASP.NET et les packages NuGet
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 91a62bfa-ea3a-41f9-a2e1-e90d2c8fc8ca
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 733a0839c77bcfc96214bdf235ce8fe22ee2d3cf
 ms.sourcegitcommit: 2d23ea501e0213bbacf65298acf1c8bd17209540
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/09/2018
+ms.locfileid: "27709968"
 ---
 # <a name="aspnet-webhooks-source-code-and-nuget-packages"></a>Code source de WebHooks d’ASP.NET et les packages NuGet
 

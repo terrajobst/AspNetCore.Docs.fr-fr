@@ -2,21 +2,22 @@
 uid: identity/overview/migrations/index
 title: Migration vers ASP.NET Identity | Documents Microsoft
 author: rick-anderson
-description: "Migration vers ASP.NET Identity à partir d’autres fournisseurs d’appartenances"
+description: Migration vers ASP.NET Identity à partir d’autres fournisseurs d’appartenances
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/02/2013
 ms.topic: article
 ms.assetid: 4a54fee1-d064-4d67-837a-87143a9205fd
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations
 msc.type: chapter
 ms.openlocfilehash: 7e7b3d999bac106959017e5c9562f81fad03a7b1
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26497918"
 ---
 <a name="migrating-to-aspnet-identity"></a>Migration vers ASP.NET Identity
 ====================
