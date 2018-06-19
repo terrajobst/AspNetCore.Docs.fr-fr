@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889789"
 ---
 <a name="security-basics-and-aspnet-support-c"></a><span data-ttu-id="4725b-103">Principes élémentaires de sécurité et la prise en charge ASP.NET (c#)</span><span class="sxs-lookup"><span data-stu-id="4725b-103">Security Basics and ASP.NET Support (C#)</span></span>
 ====================

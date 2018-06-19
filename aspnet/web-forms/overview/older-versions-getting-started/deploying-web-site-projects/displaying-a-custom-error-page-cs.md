@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30889070"
 ---
 <a name="displaying-a-custom-error-page-c"></a><span data-ttu-id="d0b37-104">Affichage d’une Page d’erreur personnalisés (c#)</span><span class="sxs-lookup"><span data-stu-id="d0b37-104">Displaying a Custom Error Page (C#)</span></span>
 ====================

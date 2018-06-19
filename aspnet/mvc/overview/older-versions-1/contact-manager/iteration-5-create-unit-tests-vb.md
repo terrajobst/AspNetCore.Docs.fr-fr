@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875277"
 ---
 <a name="iteration-5--create-unit-tests-vb"></a><span data-ttu-id="f0f27-104">Itération #5 : créer des tests unitaires (VB)</span><span class="sxs-lookup"><span data-stu-id="f0f27-104">Iteration #5 – Create unit tests (VB)</span></span>
 ====================

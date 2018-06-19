@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878410"
 ---
 <a name="aspnet-mvc-how-10-minute-technical-video-for-developers"></a><span data-ttu-id="87c18-104">ASP.NET MVC : comment ?</span><span class="sxs-lookup"><span data-stu-id="87c18-104">ASP.NET MVC: How?</span></span> <span data-ttu-id="87c18-105">vidéo de techniques de 10 minutes pour les développeurs</span><span class="sxs-lookup"><span data-stu-id="87c18-105">10 minute technical video for developers</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881147"
 ---
 <a name="how-do-i-perform-group-and-aggregate-queries"></a><span data-ttu-id="d6c0c-104">[Comment faire] Effectuer des requêtes d’agrégation et groupe ?</span><span class="sxs-lookup"><span data-stu-id="d6c0c-104">[How Do I:] Perform Group and Aggregate Queries?</span></span>
 ====================

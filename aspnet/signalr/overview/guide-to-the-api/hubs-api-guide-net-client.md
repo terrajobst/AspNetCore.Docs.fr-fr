@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-net-client
-title: "Guide d’API ASP.NET SignalR concentrateurs - Client .NET (c#) | Documents Microsoft"
+title: Guide d’API ASP.NET SignalR concentrateurs - Client .NET (c#) | Documents Microsoft
 author: pfletcher
-description: "Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 2, les clients .NET, tels que le Windows Store (WinRT), WPF, Silverlight et les inconvénients..."
+description: Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 2, les clients .NET, tels que le Windows Store (WinRT), WPF, Silverlight et les inconvénients...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28043936"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-c"></a><span data-ttu-id="1ca5d-103">Guide d’API ASP.NET SignalR concentrateurs - Client .NET (c#)</span><span class="sxs-lookup"><span data-stu-id="1ca5d-103">ASP.NET SignalR Hubs API Guide - .NET Client (C#)</span></span>
 ====================

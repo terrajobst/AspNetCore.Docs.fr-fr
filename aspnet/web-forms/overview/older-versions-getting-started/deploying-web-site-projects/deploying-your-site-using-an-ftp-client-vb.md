@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30888160"
 ---
 <a name="deploying-your-site-using-an-ftp-client-vb"></a><span data-ttu-id="f725a-104">Déploiement de votre Site à l’aide d’un Client FTP (VB)</span><span class="sxs-lookup"><span data-stu-id="f725a-104">Deploying Your Site Using an FTP Client (VB)</span></span>
 ====================

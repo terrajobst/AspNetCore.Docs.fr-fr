@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881719"
 ---
 <a name="how-do-i-create-a-master-page-in-visual-studio-2008"></a><span data-ttu-id="22001-103">[Comment faire] Créer une Page maître dans Visual Studio 2008</span><span class="sxs-lookup"><span data-stu-id="22001-103">[How Do I:] Create a Master Page in Visual Studio 2008</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/login-controls
-title: "Contrôles de connexion | Documents Microsoft"
+title: Contrôles de connexion | Documents Microsoft
 author: JoeStagner
-description: "Dans cet vidéo Joe vous présentent l’appartenance d’ASP.NET en vous montrant comment utiliser certains contrôles de connexion dans ASP.NET."
+description: Dans cet vidéo Joe vous présentent l’appartenance d’ASP.NET en vous montrant comment utiliser certains contrôles de connexion dans ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/04/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26520918"
 ---
 <a name="login-controls"></a><span data-ttu-id="0c358-103">Contrôles de connexion</span><span class="sxs-lookup"><span data-stu-id="0c358-103">Login Controls</span></span>
 ====================

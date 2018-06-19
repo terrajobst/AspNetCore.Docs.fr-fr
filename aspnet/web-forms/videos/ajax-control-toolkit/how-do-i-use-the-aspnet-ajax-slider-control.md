@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880048"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-slider-control"></a><span data-ttu-id="5b5b5-105">[Comment faire] Utiliser le contrôle de curseur ASP.NET AJAX ?</span><span class="sxs-lookup"><span data-stu-id="5b5b5-105">[How Do I:] Use the ASP.NET AJAX Slider Control?</span></span>
 ====================

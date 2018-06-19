@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879632"
 ---
 <a name="handling-postbacks-from-a-popup-control-with-an-updatepanel-c"></a><span data-ttu-id="4be3b-104">La gestion des publications (postback) à partir d’un contrôle Popup avec un UpdatePanel (c#)</span><span class="sxs-lookup"><span data-stu-id="4be3b-104">Handling Postbacks from A Popup Control With an UpdatePanel (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879528"
 ---
 <a name="part-4-adding-an-admin-view"></a><span data-ttu-id="b8dfe-102">Partie 4 : Ajout d’une vue de l’administrateur</span><span class="sxs-lookup"><span data-stu-id="b8dfe-102">Part 4: Adding an Admin View</span></span>
 ====================

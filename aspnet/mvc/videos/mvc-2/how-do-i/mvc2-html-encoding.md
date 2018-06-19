@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879359"
 ---
 <a name="mvc2---html-encoding"></a><span data-ttu-id="71ff1-103">MVC2 - CODAGE Html</span><span class="sxs-lookup"><span data-stu-id="71ff1-103">MVC2 - Html Encoding</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877968"
 ---
 <a name="building-a-custom-database-driven-site-map-provider-vb"></a><span data-ttu-id="b4a60-104">Création d’un fournisseur de plan de Site de piloté par base de données personnalisé (VB)</span><span class="sxs-lookup"><span data-stu-id="b4a60-104">Building a Custom Database-Driven Site Map Provider (VB)</span></span>
 ====================

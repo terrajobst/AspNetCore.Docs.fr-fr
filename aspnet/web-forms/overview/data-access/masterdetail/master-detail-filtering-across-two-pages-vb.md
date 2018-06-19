@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887003"
 ---
 <a name="masterdetail-filtering-across-two-pages-vb"></a><span data-ttu-id="f9c46-104">Maître/détail, le filtrage entre les deux Pages (VB)</span><span class="sxs-lookup"><span data-stu-id="f9c46-104">Master/Detail Filtering Across Two Pages (VB)</span></span>
 ====================

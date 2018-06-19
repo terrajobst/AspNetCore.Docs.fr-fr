@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874484"
 ---
 <a name="aspnet-mvc-storefront-part-2-the-repository-pattern"></a><span data-ttu-id="3671d-104">ASP.NET MVC généraliste, partie 2 : Le modèle de référentiel</span><span class="sxs-lookup"><span data-stu-id="3671d-104">ASP.NET MVC Storefront Part 2: The Repository Pattern</span></span>
 ====================

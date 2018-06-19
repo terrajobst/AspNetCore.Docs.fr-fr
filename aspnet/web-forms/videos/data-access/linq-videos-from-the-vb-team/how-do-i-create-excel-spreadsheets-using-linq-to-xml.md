@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891033"
 ---
 <a name="how-do-i-create-excel-spreadsheets-using-linq-to-xml"></a><span data-ttu-id="978ff-104">[Comment faire] Créer des feuilles de calcul Excel à l’aide de LINQ to XML ?</span><span class="sxs-lookup"><span data-stu-id="978ff-104">[How Do I:] Create Excel Spreadsheets using LINQ to XML?</span></span>
 ====================

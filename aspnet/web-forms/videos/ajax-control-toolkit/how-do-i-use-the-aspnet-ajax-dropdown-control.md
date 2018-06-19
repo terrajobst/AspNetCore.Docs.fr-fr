@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879827"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-dropdown-control"></a><span data-ttu-id="aebae-104">[Comment faire] Utiliser le contrôle de liste déroulante d’ASP.NET AJAX ?</span><span class="sxs-lookup"><span data-stu-id="aebae-104">[How Do I:] Use the ASP.NET AJAX DropDown Control?</span></span>
 ====================

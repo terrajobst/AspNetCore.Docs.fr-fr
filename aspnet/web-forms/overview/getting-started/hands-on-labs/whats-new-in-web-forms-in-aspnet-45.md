@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34306778"
 ---
 <a name="whats-new-in-web-forms-in-aspnet-45"></a><span data-ttu-id="e734b-104">Quelles sont les nouveautés dans les formulaires Web dans ASP.NET 4.5</span><span class="sxs-lookup"><span data-stu-id="e734b-104">What's New in Web Forms in ASP.NET 4.5</span></span>
 ====================

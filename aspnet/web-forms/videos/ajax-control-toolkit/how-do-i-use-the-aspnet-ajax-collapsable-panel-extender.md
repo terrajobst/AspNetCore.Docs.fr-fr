@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881228"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-collapsable-panel-extender"></a><span data-ttu-id="c31ae-104">[Comment faire] Utiliser l’extendeur ASP.NET AJAX COMPRESSIBLE Panneau de configuration ?</span><span class="sxs-lookup"><span data-stu-id="c31ae-104">[How Do I:] Use the ASP.NET AJAX Collapsable Panel Extender?</span></span>
 ====================

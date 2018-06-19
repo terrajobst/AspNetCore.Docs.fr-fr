@@ -15,6 +15,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33849986"
 ---
 # <a name="use-gulp-in-aspnet-core"></a><span data-ttu-id="6cbcc-103">Utilisation de Gulp dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="6cbcc-103">Use Gulp in ASP.NET Core</span></span>
 

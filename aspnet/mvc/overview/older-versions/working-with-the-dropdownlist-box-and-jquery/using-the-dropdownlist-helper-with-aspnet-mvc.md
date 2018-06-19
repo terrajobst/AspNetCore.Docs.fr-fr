@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875589"
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a><span data-ttu-id="ab25c-102">À l’aide du programme d’assistance DropDownList avec ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="ab25c-102">Using the DropDownList Helper with ASP.NET MVC</span></span>
 ====================

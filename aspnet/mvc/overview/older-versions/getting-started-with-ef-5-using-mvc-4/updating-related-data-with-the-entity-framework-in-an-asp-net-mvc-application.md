@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875082"
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application-6-of-10"></a><span data-ttu-id="fbbeb-103">Mise à jour des données associées avec Entity Framework dans une Application ASP.NET MVC (partie 6 sur 10)</span><span class="sxs-lookup"><span data-stu-id="fbbeb-103">Updating Related Data with the Entity Framework in an ASP.NET MVC Application (6 of 10)</span></span>
 ====================

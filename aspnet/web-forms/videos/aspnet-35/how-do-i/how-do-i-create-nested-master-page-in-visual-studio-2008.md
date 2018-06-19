@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884413"
 ---
 <a name="how-do-i-create-nested-master-page-in-visual-studio-2008"></a><span data-ttu-id="1bfa1-104">[Comment faire] Créer une Page maître imbriquée dans Visual Studio 2008</span><span class="sxs-lookup"><span data-stu-id="1bfa1-104">[How Do I:] Create Nested Master Page in Visual Studio 2008</span></span>
 ====================

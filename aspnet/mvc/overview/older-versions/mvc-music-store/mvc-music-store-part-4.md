@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879476"
 ---
 <a name="part-4-models-and-data-access"></a><span data-ttu-id="7259b-104">Partie 4 : Accès aux données et les modèles</span><span class="sxs-lookup"><span data-stu-id="7259b-104">Part 4: Models and Data Access</span></span>
 ====================

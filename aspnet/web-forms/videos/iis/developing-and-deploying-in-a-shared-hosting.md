@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885149"
 ---
 <a name="developing-and-deploying-in-a-shared-hosting"></a><span data-ttu-id="02d0b-103">Développement et le déploiement dans un hébergement partagé</span><span class="sxs-lookup"><span data-stu-id="02d0b-103">Developing and Deploying In a Shared Hosting</span></span>
 ====================

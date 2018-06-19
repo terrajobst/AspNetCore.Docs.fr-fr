@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30899199"
 ---
 <a name="customizing-site-wide-behavior-for-aspnet-web-pages-razor-sites"></a><span data-ttu-id="133ab-103">Personnalisation du comportement de l’échelle du Site pour les Sites ASP.NET Web Pages (Razor)</span><span class="sxs-lookup"><span data-stu-id="133ab-103">Customizing Site-Wide Behavior for ASP.NET Web Pages (Razor) Sites</span></span>
 ====================

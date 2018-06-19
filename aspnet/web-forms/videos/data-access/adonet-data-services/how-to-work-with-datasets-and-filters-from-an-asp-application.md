@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885391"
 ---
 <a name="how-to-work-with-datasets-and-filters-from-an-asp-application"></a><span data-ttu-id="01e47-104">Procédure : utiliser des jeux de données et les filtres à partir d’une Application ASP</span><span class="sxs-lookup"><span data-stu-id="01e47-104">How to Work with Datasets and Filters from an ASP Application</span></span>
 ====================

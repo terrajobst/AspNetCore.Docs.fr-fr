@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867591"
 ---
 <a name="aspnet-mvc-for-the-rest-of-us-part-3"></a><span data-ttu-id="a196f-103">ASP.NET MVC pour le reste de nous : partie 3</span><span class="sxs-lookup"><span data-stu-id="a196f-103">ASP.NET MVC For the Rest of Us: Part 3</span></span>
 ====================

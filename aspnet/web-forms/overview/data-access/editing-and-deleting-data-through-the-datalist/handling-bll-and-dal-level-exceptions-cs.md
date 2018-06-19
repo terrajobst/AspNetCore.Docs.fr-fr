@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892333"
 ---
 <a name="handling-bll--and-dal-level-exceptions-c"></a><span data-ttu-id="08607-103">La gestion des Exceptions de niveau BLL et DAL (c#)</span><span class="sxs-lookup"><span data-stu-id="08607-103">Handling BLL- and DAL-Level Exceptions (C#)</span></span>
 ====================

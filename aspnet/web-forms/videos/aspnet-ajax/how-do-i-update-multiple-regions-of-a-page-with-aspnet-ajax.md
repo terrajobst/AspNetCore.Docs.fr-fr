@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885103"
 ---
 <a name="how-do-i-update-multiple-regions-of-a-page-with-aspnet-ajax"></a><span data-ttu-id="50324-104">[Comment faire] Mettre à jour plusieurs régions d’une Page avec ASP.NET AJAX ?</span><span class="sxs-lookup"><span data-stu-id="50324-104">[How Do I:] Update Multiple Regions of a Page with ASP.NET AJAX?</span></span>
 ====================

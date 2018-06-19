@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895150"
 ---
 <a name="the-effects-of-caching"></a><span data-ttu-id="97ba9-103">Les effets de la mise en cache</span><span class="sxs-lookup"><span data-stu-id="97ba9-103">The Effects of Caching</span></span>
 ====================

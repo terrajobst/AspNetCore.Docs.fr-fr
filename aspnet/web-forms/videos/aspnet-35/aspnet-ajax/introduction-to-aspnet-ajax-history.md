@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30880828"
 ---
 <a name="introduction-to-aspnet-ajax-history"></a><span data-ttu-id="c2528-104">Introduction à l’historique de ASP.NET Ajax</span><span class="sxs-lookup"><span data-stu-id="c2528-104">Introduction to ASP.NET Ajax History</span></span>
 ====================

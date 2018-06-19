@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873938"
 ---
 <a name="iteration-4--make-the-application-loosely-coupled-vb"></a><span data-ttu-id="321d6-104">Itération #4 : rendre des applications faiblement couplées (VB)</span><span class="sxs-lookup"><span data-stu-id="321d6-104">Iteration #4 – Make the application loosely coupled (VB)</span></span>
 ====================

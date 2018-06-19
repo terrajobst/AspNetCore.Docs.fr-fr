@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882843"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-history-control"></a><span data-ttu-id="63dc2-105">[Comment faire] Utiliser le contrôle ASP.NET AJAX historique ?</span><span class="sxs-lookup"><span data-stu-id="63dc2-105">[How Do I:] Use the ASP.NET AJAX History Control?</span></span>
 ====================

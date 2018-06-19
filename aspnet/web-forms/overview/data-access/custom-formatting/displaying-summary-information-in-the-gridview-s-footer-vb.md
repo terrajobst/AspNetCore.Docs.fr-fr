@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877614"
 ---
 <a name="displaying-summary-information-in-the-gridviews-footer-vb"></a><span data-ttu-id="15f7c-104">Affichage des informations de synthèse dans pied de page du GridView (VB)</span><span class="sxs-lookup"><span data-stu-id="15f7c-104">Displaying Summary Information in the GridView's Footer (VB)</span></span>
 ====================

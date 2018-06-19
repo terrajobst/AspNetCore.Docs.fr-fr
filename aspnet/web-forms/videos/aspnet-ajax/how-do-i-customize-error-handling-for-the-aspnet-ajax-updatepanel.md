@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884270"
 ---
 <a name="how-do-i-customize-error-handling-for-the-aspnet-ajax-updatepanel"></a><span data-ttu-id="2d9b9-103">Comment faire : personnaliser le traitement des erreurs pour le UpdatePanel d’ASP.NET AJAX</span><span class="sxs-lookup"><span data-stu-id="2d9b9-103">How Do I: Customize Error Handling for the ASP.NET AJAX UpdatePanel</span></span>
 ====================

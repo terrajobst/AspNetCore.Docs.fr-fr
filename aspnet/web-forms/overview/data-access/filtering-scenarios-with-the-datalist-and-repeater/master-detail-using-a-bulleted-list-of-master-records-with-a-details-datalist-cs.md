@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888966"
 ---
 <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-c"></a><span data-ttu-id="85f4d-103">Maître/détail à l’aide d’une liste à puces des enregistrements principaux avec DataList détails (c#)</span><span class="sxs-lookup"><span data-stu-id="85f4d-103">Master/Detail Using a Bulleted List of Master Records with a Details DataList (C#)</span></span>
 ====================

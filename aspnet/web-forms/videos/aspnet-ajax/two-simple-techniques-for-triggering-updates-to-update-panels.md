@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882375"
 ---
 <a name="two-simple-techniques-for-triggering-updates-to-update-panels"></a><span data-ttu-id="3d5f2-104">Deux Techniques simples pour déclencher des mises à jour pour mettre à jour les panneaux</span><span class="sxs-lookup"><span data-stu-id="3d5f2-104">Two Simple Techniques for Triggering Updates to Update Panels</span></span>
 ====================

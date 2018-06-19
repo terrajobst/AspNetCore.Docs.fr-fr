@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871374"
 ---
 <a name="using-auto-postback-with-cascadingdropdown-vb"></a><span data-ttu-id="f7ed7-103">À l’aide de la publication automatique CascadingDropDown (VB)</span><span class="sxs-lookup"><span data-stu-id="f7ed7-103">Using Auto-Postback with CascadingDropDown (VB)</span></span>
 ====================

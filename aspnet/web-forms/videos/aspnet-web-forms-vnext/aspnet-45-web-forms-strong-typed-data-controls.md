@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884052"
 ---
 <a name="aspnet-45-web-forms-strong-typed-data-controls"></a><span data-ttu-id="b0dc8-103">ASP.NET 4.5 Web Forms fort typée les contrôles de données</span><span class="sxs-lookup"><span data-stu-id="b0dc8-103">ASP.NET 4.5 Web Forms Strong Typed Data Controls</span></span>
 ====================

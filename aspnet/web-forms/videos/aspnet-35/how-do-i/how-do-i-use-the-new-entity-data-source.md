@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881202"
 ---
 <a name="how-do-i-use-the-new-entity-data-source"></a><span data-ttu-id="0e17d-103">[Comment faire] Utilisez la nouvelle Source de données d’entité</span><span class="sxs-lookup"><span data-stu-id="0e17d-103">[How Do I:] Use the New Entity Data Source</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885066"
 ---
 <a name="intro-to-aspnet-for-jsp-developers-building-applications"></a><span data-ttu-id="3eac2-103">Introduction à ASP.NET pour les développeurs JSP : création d’Applications</span><span class="sxs-lookup"><span data-stu-id="3eac2-103">Intro to ASP.NET for JSP Developers: Building Applications</span></span>
 ====================

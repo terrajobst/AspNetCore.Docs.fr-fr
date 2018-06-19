@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887250"
 ---
 <a name="masterdetail-filtering-with-two-dropdownlists-c"></a><span data-ttu-id="7cdfa-103">Maître/détail, le filtrage avec la compréhension des deux listes (c#)</span><span class="sxs-lookup"><span data-stu-id="7cdfa-103">Master/Detail Filtering With Two DropDownLists (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873795"
 ---
 <a name="improving-performance-with-output-caching-c"></a><span data-ttu-id="039c9-104">Amélioration des performances avec la sortie mise en cache (c#)</span><span class="sxs-lookup"><span data-stu-id="039c9-104">Improving Performance with Output Caching (C#)</span></span>
 ====================

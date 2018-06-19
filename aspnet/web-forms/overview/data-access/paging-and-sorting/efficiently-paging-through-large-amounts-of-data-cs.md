@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889655"
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-c"></a><span data-ttu-id="3368f-103">Efficacement la pagination des grandes quantités de données (c#)</span><span class="sxs-lookup"><span data-stu-id="3368f-103">Efficiently Paging Through Large Amounts of Data (C#)</span></span>
 ====================

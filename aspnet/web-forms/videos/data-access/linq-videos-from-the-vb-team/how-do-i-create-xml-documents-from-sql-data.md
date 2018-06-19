@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30885719"
 ---
 <a name="how-do-i-create-xml-documents-from-sql-data"></a><span data-ttu-id="44097-104">[Comment faire] Créer des Documents XML à partir de données SQL ?</span><span class="sxs-lookup"><span data-stu-id="44097-104">[How Do I:] Create XML Documents from SQL Data?</span></span>
 ====================

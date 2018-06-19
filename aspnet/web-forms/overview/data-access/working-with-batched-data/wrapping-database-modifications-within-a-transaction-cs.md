@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888953"
 ---
 <a name="wrapping-database-modifications-within-a-transaction-c"></a><span data-ttu-id="73488-104">Modifications de base de données de renvoi à la ligne d’une Transaction (c#)</span><span class="sxs-lookup"><span data-stu-id="73488-104">Wrapping Database Modifications within a Transaction (C#)</span></span>
 ====================

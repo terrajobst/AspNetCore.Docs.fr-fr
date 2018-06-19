@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879983"
 ---
 <a name="performing-a-what-if-deployment"></a><span data-ttu-id="57280-103">Exécution d’un déploiement « Que se passe-t-il si »</span><span class="sxs-lookup"><span data-stu-id="57280-103">Performing a "What If" Deployment</span></span>
 ====================

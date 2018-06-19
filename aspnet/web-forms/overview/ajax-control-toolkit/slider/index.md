@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/slider/index
 title: Curseur | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel montre comment utiliser le contrôle Slider pour afficher un contrôle slider graphique que les utilisateurs peuvent contrôler à l’aide de la souris."
+description: Ce didacticiel montre comment utiliser le contrôle Slider pour afficher un contrôle slider graphique que les utilisateurs peuvent contrôler à l’aide de la souris.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider
 msc.type: chapter
 ms.openlocfilehash: 52b6fda01b6ef9931c3557b57b5ebd216a7f2eda
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26511628"
 ---
 <a name="slider"></a><span data-ttu-id="b216a-103">Curseur</span><span class="sxs-lookup"><span data-stu-id="b216a-103">Slider</span></span>
 ====================

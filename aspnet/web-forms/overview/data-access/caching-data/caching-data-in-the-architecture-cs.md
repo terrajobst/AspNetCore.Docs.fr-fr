@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879216"
 ---
 <a name="caching-data-in-the-architecture-c"></a><span data-ttu-id="28991-104">La mise en cache des données dans l’Architecture (c#)</span><span class="sxs-lookup"><span data-stu-id="28991-104">Caching Data in the Architecture (C#)</span></span>
 ====================

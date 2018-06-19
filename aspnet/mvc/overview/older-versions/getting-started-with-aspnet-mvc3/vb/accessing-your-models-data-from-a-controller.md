@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873142"
 ---
 <a name="accessing-your-models-data-from-a-controller-vb"></a><span data-ttu-id="3472c-103">L’accès aux données de votre modèle à partir d’un contrôleur (VB)</span><span class="sxs-lookup"><span data-stu-id="3472c-103">Accessing your Model's Data from a Controller (VB)</span></span>
 ====================

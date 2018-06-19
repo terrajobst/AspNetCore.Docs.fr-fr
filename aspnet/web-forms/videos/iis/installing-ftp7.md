@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884663"
 ---
 <a name="installing-ftp7"></a><span data-ttu-id="c20fa-104">FTP7 lors de l’installation</span><span class="sxs-lookup"><span data-stu-id="c20fa-104">Installing FTP7</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879710"
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="9e6b0-104">Options de stockage de données (génération d’applications Cloud du monde réel avec Azure)</span><span class="sxs-lookup"><span data-stu-id="9e6b0-104">Data Storage Options (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

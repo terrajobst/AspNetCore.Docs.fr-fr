@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30882115"
 ---
 <a name="how-do-i-get-started-with-aspnet-ajax"></a><span data-ttu-id="4ac7f-104">[Comment faire] Pour démarrer avec ASP.NET AJAX ?</span><span class="sxs-lookup"><span data-stu-id="4ac7f-104">[How Do I:] Get Started with ASP.NET AJAX?</span></span>
 ====================

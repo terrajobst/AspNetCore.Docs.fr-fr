@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886535"
 ---
 <a name="how-do-i-implement-the-ajax-paging-pattern"></a><span data-ttu-id="46ca8-104">[Comment faire] Implémenter le modèle d’échange AJAX ?</span><span class="sxs-lookup"><span data-stu-id="46ca8-104">[How Do I:] Implement the AJAX Paging Pattern?</span></span>
 ====================

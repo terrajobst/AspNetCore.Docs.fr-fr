@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875225"
 ---
 <a name="how-do-i-use-the-combobox-control-c"></a><span data-ttu-id="60f23-104">Utilisation du contrôle ComboBox</span><span class="sxs-lookup"><span data-stu-id="60f23-104">How do I use the ComboBox Control?</span></span> <span data-ttu-id="60f23-105">(C#)</span><span class="sxs-lookup"><span data-stu-id="60f23-105">(C#)</span></span>
 ====================

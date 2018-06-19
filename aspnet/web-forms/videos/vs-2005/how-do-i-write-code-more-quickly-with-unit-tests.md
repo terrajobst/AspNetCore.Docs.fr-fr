@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895863"
 ---
 <a name="how-do-i-write-code-more-quickly-with-unit-tests"></a><span data-ttu-id="97f44-105">[Comment faire] Écrire du Code plus rapidement avec des Tests unitaires ?</span><span class="sxs-lookup"><span data-stu-id="97f44-105">[How Do I:] Write Code More Quickly with Unit Tests?</span></span>
 ====================

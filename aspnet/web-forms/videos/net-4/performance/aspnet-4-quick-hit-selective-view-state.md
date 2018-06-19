@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896993"
 ---
 <a name="aspnet-4-quick-hit---selective-view-state"></a><span data-ttu-id="f4551-103">ASP.NET 4 « Rapide Hit » - état d’affichage sélectif</span><span class="sxs-lookup"><span data-stu-id="f4551-103">ASP.NET 4 "Quick Hit" - Selective View State</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883064"
 ---
 <a name="sorting-custom-paged-data-vb"></a><span data-ttu-id="ee3f2-104">Tri personnalisé paginée des données (VB)</span><span class="sxs-lookup"><span data-stu-id="ee3f2-104">Sorting Custom Paged Data (VB)</span></span>
 ====================

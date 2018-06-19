@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872118"
 ---
 <a name="aspnet-mvc-storefront-part-6-finishing-the-repository-and-initial-ui-work"></a><span data-ttu-id="62cf3-103">ASP.NET MVC généraliste, partie 6 : Terminer le référentiel et le travail de l’interface utilisateur initiale</span><span class="sxs-lookup"><span data-stu-id="62cf3-103">ASP.NET MVC Storefront Part 6: Finishing The Repository, and Initial UI Work</span></span>
 ====================

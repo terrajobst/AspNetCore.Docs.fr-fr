@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879502"
 ---
 <a name="part-7-membership-and-authorization"></a><span data-ttu-id="2e62d-104">Partie 7 : L’appartenance et l’autorisation</span><span class="sxs-lookup"><span data-stu-id="2e62d-104">Part 7: Membership and Authorization</span></span>
 ====================

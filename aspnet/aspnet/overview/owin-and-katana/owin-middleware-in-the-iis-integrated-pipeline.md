@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871491"
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a><span data-ttu-id="69f8b-104">Intergiciel OWIN dans le pipeline intégré IIS</span><span class="sxs-lookup"><span data-stu-id="69f8b-104">OWIN Middleware in the IIS integrated pipeline</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872941"
 ---
 <a name="using-modalpopup-with-a-repeater-control-c"></a><span data-ttu-id="2b88e-104">À l’aide de ModalPopup avec un contrôle du répéteur (c#)</span><span class="sxs-lookup"><span data-stu-id="2b88e-104">Using ModalPopup with a Repeater Control (C#)</span></span>
 ====================
