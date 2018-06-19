@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30076986"
 ---
 # <a name="get-started-with-the-data-protection-apis-in-aspnet-core"></a>Prise en main les API de Protection des données dans ASP.NET Core
 

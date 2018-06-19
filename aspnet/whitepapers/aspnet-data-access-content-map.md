@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/aspnet-data-access-content-map
-title: "Accès aux données ASP.NET - recommandé ressources | Documents Microsoft"
+title: Accès aux données ASP.NET - recommandé ressources | Documents Microsoft
 author: rick-anderson
-description: "Cette rubrique fournit des liens vers des ressources de documentation sur la façon d’accéder aux données dans les applications web ASP.NET, principalement à l’aide de l’Entity Framework et SQL Se..."
+description: Cette rubrique fournit des liens vers des ressources de documentation sur la façon d’accéder aux données dans les applications web ASP.NET, principalement à l’aide de l’Entity Framework et SQL Se...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/25/2013
 ms.topic: article
 ms.assetid: f8157be1-4ab9-469e-ad3a-0ccc80b56c00
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/aspnet-data-access-content-map
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28048257"
 ---
 <a name="aspnet-data-access---recommended-resources"></a>Accès aux données ASP.NET - recommandé de ressources
 ====================

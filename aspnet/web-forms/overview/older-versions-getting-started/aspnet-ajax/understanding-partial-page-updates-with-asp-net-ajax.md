@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891319"
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Page partielle de présentation des mises à jour avec ASP.NET AJAX
 ====================

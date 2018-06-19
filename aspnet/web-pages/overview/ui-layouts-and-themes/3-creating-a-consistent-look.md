@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/3-creating-a-consistent-look
-title: "Création d’une disposition cohérente dans ASP.NET Web Pages (Razor) Sites | Documents Microsoft"
+title: Création d’une disposition cohérente dans ASP.NET Web Pages (Razor) Sites | Documents Microsoft
 author: tfitzmac
-description: "Pour le rendre plus efficace de créer des pages web pour votre site, vous pouvez créer des blocs réutilisables de contenu (par exemple, les en-têtes et pieds de page) pour votre site Web, puis vous c..."
+description: Pour le rendre plus efficace de créer des pages web pour votre site, vous pouvez créer des blocs réutilisables de contenu (par exemple, les en-têtes et pieds de page) pour votre site Web, puis vous c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530238"
 ---
 <a name="creating-a-consistent-layout-in-aspnet-web-pages-razor-sites"></a>Création d’une disposition cohérente dans les Sites ASP.NET Web Pages (Razor)
 ====================

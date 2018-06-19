@@ -17,6 +17,7 @@ ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/21/2018
+ms.locfileid: "30075527"
 ---
 <a name="jquery-validate-16"></a>jQuery validation 1.6
 ====================

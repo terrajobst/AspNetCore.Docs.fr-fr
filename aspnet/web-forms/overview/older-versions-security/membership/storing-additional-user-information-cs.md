@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30892164"
 ---
 <a name="storing-additional-user-information-c"></a>Le stockage des informations utilisateur supplémentaires (c#)
 ====================

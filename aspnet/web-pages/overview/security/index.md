@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/security/index
-title: "Sécurité | Documents Microsoft"
+title: Sécurité | Documents Microsoft
 author: rick-anderson
-description: "Comment ajouter des fonctionnalités de connexion à une application ASP.NET Web Pages et aider à protéger l’application des robots."
+description: Comment ajouter des fonctionnalités de connexion à une application ASP.NET Web Pages et aider à protéger l’application des robots.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/security
 msc.type: chapter
 ms.openlocfilehash: 6b493fb9afaa894ec805ebd6684180c33a33b1b0
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529528"
 ---
 <a name="security"></a>Sécurité
 ====================

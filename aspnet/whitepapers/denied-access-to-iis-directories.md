@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30070769"
 ---
 <a name="aspnet-denied-access-to-iis-directories"></a>Accès refusé à ASP.NET pour les répertoires IIS
 ====================

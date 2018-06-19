@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-provider-for-logging-health-monitoring-events
-title: "[Comment faire] Créer un fournisseur personnalisé pour le contrôle d’intégrité de journalisation des événements d’analyse | Documents Microsoft"
+title: '[Comment faire] Créer un fournisseur personnalisé pour le contrôle d’intégrité de journalisation des événements d’analyse | Documents Microsoft'
 author: rick-anderson
-description: "Chris Pels montre comment créer un fournisseur personnalisé pour le contrôle d’intégrité ASP.NET analyse système, qui enregistre les événements dans un fichier journal basé sur le texte de contrôle d’intégrité. Le..."
+description: Chris Pels montre comment créer un fournisseur personnalisé pour le contrôle d’intégrité ASP.NET analyse système, qui enregistre les événements dans un fichier journal basé sur le texte de contrôle d’intégrité. Le...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/06/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524968"
 ---
 <a name="how-do-i-create-a-custom-provider-for-logging-health-monitoring-events"></a>[Comment faire] Créer un fournisseur personnalisé pour le contrôle d’intégrité de journalisation des événements d’analyse
 ====================

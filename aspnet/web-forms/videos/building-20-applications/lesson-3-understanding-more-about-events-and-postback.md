@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886145"
 ---
 <a name="lesson-3--understanding-more-about-events-and-postback"></a>[Leçon 3 :]  Description des événements et de publication (postback)
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895889"
 ---
 <a name="more-about-column-data-types-and-other-properties"></a>En savoir plus sur les Types de données de colonne et d’autres propriétés
 ====================

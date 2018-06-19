@@ -17,6 +17,7 @@ ms.sourcegitcommit: 5ae0c125ee3bbd324edef3818d1d160f4dd84602
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34224724"
 ---
 <a name="model-validation-in-aspnet-web-api"></a>Validation de modèle dans l’API Web ASP.NET
 ====================

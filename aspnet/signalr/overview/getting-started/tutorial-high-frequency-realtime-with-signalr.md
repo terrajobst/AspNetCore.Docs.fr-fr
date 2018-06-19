@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28036113"
 ---
 <a name="tutorial-high-frequency-realtime-with-signalr-2"></a>Didacticiel : En temps réel de haute fréquence avec SignalR 2
 ====================

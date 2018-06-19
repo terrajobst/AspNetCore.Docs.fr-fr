@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-aspnet-to-send-email-from-a-web-site
-title: "[Comment faire] ASP.NET permet d’envoyer un courrier électronique à partir d’un Site Web | Documents Microsoft"
+title: '[Comment faire] ASP.NET permet d’envoyer un courrier électronique à partir d’un Site Web | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo montre comment créer et envoyer un courrier électronique dans un site web ASP.NET. Tout d’abord, en savoir plus sur les classes principales dans f espace de noms System.Net.Mail..."
+description: Dans cette Chris Pels vidéo montre comment créer et envoyer un courrier électronique dans un site web ASP.NET. Tout d’abord, en savoir plus sur les classes principales dans f espace de noms System.Net.Mail...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/28/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526048"
 ---
 <a name="how-do-i-use-aspnet-to-send-email-from-a-web-site"></a>[Comment faire] ASP.NET permet d’envoyer un courrier électronique à partir d’un Site Web
 ====================

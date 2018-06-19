@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878449"
 ---
 <a name="aspnet-mvc-storefront-part-3-pipes-and-filters"></a>ASP.NET MVC généraliste, partie 3 : Canaux nommés et les filtres
 ====================

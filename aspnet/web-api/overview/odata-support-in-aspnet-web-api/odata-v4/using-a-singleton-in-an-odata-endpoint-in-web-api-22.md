@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22
-title: "Créer un Singleton dans OData v4, à l’aide des API 2.2 Web | Documents Microsoft"
+title: Créer un Singleton dans OData v4, à l’aide des API 2.2 Web | Documents Microsoft
 author: rick-anderson
-description: "Cette rubrique montre comment définir un singleton dans un point de terminaison OData 2.2 d’API Web."
+description: Cette rubrique montre comment définir un singleton dans un point de terminaison OData 2.2 d’API Web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/27/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508208"
 ---
 <a name="create-a-singleton-in-odata-v4-using-web-api-22"></a>Créer un Singleton dans OData v4, à l’aide de Web API 2.2
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30076273"
 ---
 <a name="jquery-ui-190-on-the-microsoft-ajax-cdn"></a>jQuery UI à 1.9.0 dans le CDN Microsoft Ajax
 ====================

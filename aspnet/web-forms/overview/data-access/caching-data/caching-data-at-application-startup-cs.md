@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879164"
 ---
 <a name="caching-data-at-application-startup-c"></a>Mise en cache de données au démarrage de l’Application (c#)
 ====================

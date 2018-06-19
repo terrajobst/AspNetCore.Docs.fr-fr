@@ -1,7 +1,7 @@
 ---
-title: "Scénarios pour la Protection des données dans ASP.NET Core non-DI"
+title: Scénarios pour la Protection des données dans ASP.NET Core non-DI
 author: rick-anderson
-description: "Découvrez comment prendre en charge les scénarios de protection de données où vous ne peut pas ou ne souhaitez pas utiliser un service fourni par injection de dépendances."
+description: Découvrez comment prendre en charge les scénarios de protection de données où vous ne peut pas ou ne souhaitez pas utiliser un service fourni par injection de dépendances.
 manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29727244"
 ---
 # <a name="non-di-aware-scenarios-for-data-protection-in-aspnet-core"></a>Scénarios pour la Protection des données dans ASP.NET Core non-DI
 
