@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869021"
 ---
 <a name="adding-a-controller"></a><span data-ttu-id="99d8e-104">Ajour d’un contrôleur</span><span class="sxs-lookup"><span data-stu-id="99d8e-104">Adding a Controller</span></span>
 ====================

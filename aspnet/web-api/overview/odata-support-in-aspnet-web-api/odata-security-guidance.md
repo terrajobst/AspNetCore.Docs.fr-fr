@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868706"
 ---
 <a name="security-guidance-for-aspnet-web-api-2-odata"></a><span data-ttu-id="9ab32-102">Guide de sécurité pour ASP.NET Web API 2 OData</span><span class="sxs-lookup"><span data-stu-id="9ab32-102">Security Guidance for ASP.NET Web API 2 OData</span></span>
 ====================

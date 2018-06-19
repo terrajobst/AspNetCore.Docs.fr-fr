@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893955"
 ---
 <a name="using-sql-server-management-studio"></a><span data-ttu-id="c01ca-104">À l’aide de SQL Server Management Studio</span><span class="sxs-lookup"><span data-stu-id="c01ca-104">Using SQL Server Management Studio</span></span>
 ====================

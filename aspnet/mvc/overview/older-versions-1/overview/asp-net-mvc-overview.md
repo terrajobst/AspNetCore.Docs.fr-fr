@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/asp-net-mvc-overview
-title: "Vue d’ensemble d’ASP.NET MVC | Documents Microsoft"
+title: Vue d’ensemble d’ASP.NET MVC | Documents Microsoft
 author: microsoft
-description: "En savoir plus sur les différences entre l’application ASP.NET MVC et les applications Web Forms ASP.NET. Découvrez comment déterminer quand créer une application ASP.NET MVC."
+description: En savoir plus sur les différences entre l’application ASP.NET MVC et les applications Web Forms ASP.NET. Découvrez comment déterminer quand créer une application ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500868"
 ---
 <a name="aspnet-mvc-overview"></a><span data-ttu-id="81b42-104">Vue d’ensemble d’ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="81b42-104">ASP.NET MVC Overview</span></span>
 ====================

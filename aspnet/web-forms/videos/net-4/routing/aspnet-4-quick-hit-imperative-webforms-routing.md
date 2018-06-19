@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892827"
 ---
 <a name="aspnet-4-quick-hit---imperative-webforms-routing"></a><span data-ttu-id="c140b-103">ASP.NET 4 « Rapide Hit » - WebForms impératif routage</span><span class="sxs-lookup"><span data-stu-id="c140b-103">ASP.NET 4 "Quick Hit" - Imperative WebForms Routing</span></span>
 ====================

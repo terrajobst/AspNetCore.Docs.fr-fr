@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892853"
 ---
 <a name="getting-started-with-reporting-services"></a><span data-ttu-id="bda24-104">Prise en main de Reporting Services</span><span class="sxs-lookup"><span data-stu-id="bda24-104">Getting Started with Reporting Services</span></span>
 ====================

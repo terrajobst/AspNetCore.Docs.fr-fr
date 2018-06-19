@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875823"
 ---
 <a name="using-the-formviews-templates-c"></a><span data-ttu-id="30e4d-105">À l’aide de modèles FormView (c#)</span><span class="sxs-lookup"><span data-stu-id="30e4d-105">Using the FormView's Templates (C#)</span></span>
 ====================

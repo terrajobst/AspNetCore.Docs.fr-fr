@@ -15,6 +15,7 @@ ms.sourcegitcommit: 01db73f2f7ac22b11ea48a947131d6176b0fe9ad
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "32006126"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a><span data-ttu-id="f1c1b-103">Charger des fichiers dans une page Razor dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="f1c1b-103">Upload files to a Razor Page in ASP.NET Core</span></span>
 

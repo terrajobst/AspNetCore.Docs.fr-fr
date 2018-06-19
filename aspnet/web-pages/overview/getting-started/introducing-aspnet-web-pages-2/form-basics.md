@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898919"
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a><span data-ttu-id="ebe3b-104">Présentation des Pages Web ASP.NET - notions de base de formulaire HTML</span><span class="sxs-lookup"><span data-stu-id="ebe3b-104">Introducing ASP.NET Web Pages - HTML Form Basics</span></span>
 ====================

@@ -1,14 +1,14 @@
 ---
 uid: whitepapers/request-validation
-title: "Validation - prévention des attaques de Script de requête | Documents Microsoft"
+title: Validation - prévention des attaques de Script de requête | Documents Microsoft
 author: rick-anderson
-description: "Ce document décrit la fonctionnalité de validation de demande d’ASP.NET où, par défaut, l’application ne peut pas le traitement non codé soumettre des contenus de HTML..."
+description: Ce document décrit la fonctionnalité de validation de demande d’ASP.NET où, par défaut, l’application ne peut pas le traitement non codé soumettre des contenus de HTML...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/10/2010
 ms.topic: article
 ms.assetid: fa429113-5f8f-4ef4-97c5-5c04900a19fa
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /whitepapers/request-validation
 msc.type: content
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28883553"
 ---
 <a name="request-validation---preventing-script-attacks"></a><span data-ttu-id="c5698-103">Validation - prévention des attaques de Script de requête</span><span class="sxs-lookup"><span data-stu-id="c5698-103">Request Validation - Preventing Script Attacks</span></span>
 ====================

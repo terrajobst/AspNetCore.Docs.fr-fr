@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30894205"
 ---
 <a name="how-do-i-use-the-viewstatemode-property-for-managing-viewstate"></a><span data-ttu-id="460fb-104">Comment faire : utiliser la propriété ViewStateMode pour la gestion d’état d’affichage ?</span><span class="sxs-lookup"><span data-stu-id="460fb-104">How Do I: Use the ViewStateMode Property for Managing ViewState?</span></span>
 ====================

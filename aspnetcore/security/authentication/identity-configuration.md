@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094627"
 ---
 # <a name="configure-aspnet-core-identity"></a><span data-ttu-id="23fd7-103">Configurer l’identité de ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="23fd7-103">Configure ASP.NET Core Identity</span></span>
 

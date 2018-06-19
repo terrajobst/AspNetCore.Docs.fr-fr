@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877981"
 ---
 <a name="using-sql-cache-dependencies-c"></a><span data-ttu-id="ed9a4-104">À l’aide de dépendances de Cache SQL (c#)</span><span class="sxs-lookup"><span data-stu-id="ed9a4-104">Using SQL Cache Dependencies (C#)</span></span>
 ====================

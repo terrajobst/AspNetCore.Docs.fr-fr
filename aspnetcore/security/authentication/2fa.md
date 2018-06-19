@@ -15,6 +15,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33850920"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a><span data-ttu-id="3760f-103">Authentification à deux facteurs avec SMS dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="3760f-103">Two-factor authentication with SMS in ASP.NET Core</span></span>
 

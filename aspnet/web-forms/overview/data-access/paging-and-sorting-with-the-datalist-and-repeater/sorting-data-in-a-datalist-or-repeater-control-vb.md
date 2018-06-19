@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891524"
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-vb"></a><span data-ttu-id="9d440-103">Tri des données dans un contrôle DataList ou d’un contrôle de répéteur (VB)</span><span class="sxs-lookup"><span data-stu-id="9d440-103">Sorting Data in a DataList or Repeater Control (VB)</span></span>
 ====================

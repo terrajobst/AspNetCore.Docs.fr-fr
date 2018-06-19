@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-make-use-of-caching
-title: "[Comment faire] Assurez-vous d’utiliser la mise en cache ? | Microsoft Docs"
+title: '[Comment faire] Assurez-vous d’utiliser la mise en cache ? | Microsoft Docs'
 author: microsoft
-description: "Regarder une démonstration de la mise en cache de sortie de pages suivie d’une vue d’ensemble de la mise en cache de la base de données prise en charge de SQL Server 2000 et SQL Server 2005."
+description: Regarder une démonstration de la mise en cache de sortie de pages suivie d’une vue d’ensemble de la mise en cache de la base de données prise en charge de SQL Server 2000 et SQL Server 2005.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526298"
 ---
 <a name="how-do-i-make-use-of-caching"></a><span data-ttu-id="d099f-104">[Comment faire] Assurez-vous d’utiliser la mise en cache ?</span><span class="sxs-lookup"><span data-stu-id="d099f-104">[How Do I:] Make use of Caching?</span></span>
 ====================

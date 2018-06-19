@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30075322"
 ---
 # <a name="aspnet-core-data-protection-implementation"></a><span data-ttu-id="650d5-103">Implémentation de la protection des données ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="650d5-103">ASP.NET Core Data Protection implementation</span></span>
 

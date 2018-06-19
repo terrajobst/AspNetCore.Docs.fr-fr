@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881462"
 ---
 <a name="create-the-data-access-layer"></a><span data-ttu-id="95162-103">Création de la couche d’accès aux données</span><span class="sxs-lookup"><span data-stu-id="95162-103">Create the Data Access Layer</span></span>
 ====================

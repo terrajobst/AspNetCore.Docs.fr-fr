@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891137"
 ---
 <a name="master-pages-and-aspnet-ajax-vb"></a><span data-ttu-id="cdbe6-104">Les Pages maîtres et ASP.NET AJAX (VB)</span><span class="sxs-lookup"><span data-stu-id="cdbe6-104">Master Pages and ASP.NET AJAX (VB)</span></span>
 ====================

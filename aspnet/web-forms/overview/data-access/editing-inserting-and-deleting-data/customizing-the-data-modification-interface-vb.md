@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30888628"
 ---
 <a name="customizing-the-data-modification-interface-vb"></a><span data-ttu-id="9edc3-103">Personnalisation de l’Interface de Modification de données (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="9edc3-103">Customizing the Data Modification Interface (VB)</span></span>
 ====================

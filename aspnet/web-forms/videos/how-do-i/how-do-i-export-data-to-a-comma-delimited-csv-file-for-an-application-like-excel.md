@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-export-data-to-a-comma-delimited-csv-file-for-an-application-like-excel
-title: "[Comment faire] Exporter des données dans un fichier délimité (CSV) une virgule pour une Application comme Excel | Documents Microsoft"
+title: '[Comment faire] Exporter des données dans un fichier délimité (CSV) une virgule pour une Application comme Excel | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo, Chris Pels montre comment extraire des données d’une base de données ou une autre source et l’exporter dans un fichier délimitée par des virgules qui peut être utilisé dans une application li..."
+description: Dans cette vidéo, Chris Pels montre comment extraire des données d’une base de données ou une autre source et l’exporter dans un fichier délimitée par des virgules qui peut être utilisé dans une application li...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/22/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525638"
 ---
 <a name="how-do-i-export-data-to-a-comma-delimited-csv-file-for-an-application-like-excel"></a><span data-ttu-id="da838-103">[Comment faire] Exporter des données dans un fichier délimité (CSV) une virgule pour une Application comme Excel.</span><span class="sxs-lookup"><span data-stu-id="da838-103">[How Do I:] Export Data to a Comma Delimited (CSV) File for an Application Like Excel</span></span>
 ====================

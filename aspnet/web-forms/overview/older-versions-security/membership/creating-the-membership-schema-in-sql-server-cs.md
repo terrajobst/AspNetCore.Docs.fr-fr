@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "30891791"
 ---
 <a name="creating-the-membership-schema-in-sql-server-c"></a><span data-ttu-id="db4ef-104">Création du schéma de l’appartenance dans SQL Server (c#)</span><span class="sxs-lookup"><span data-stu-id="db4ef-104">Creating the Membership Schema in SQL Server (C#)</span></span>
 ====================

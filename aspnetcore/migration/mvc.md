@@ -14,6 +14,7 @@ ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33851025"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a><span data-ttu-id="10f5c-103">Migrer à partir de ASP.NET MVC à cœur d’ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="10f5c-103">Migrate from ASP.NET MVC to ASP.NET Core MVC</span></span>
 

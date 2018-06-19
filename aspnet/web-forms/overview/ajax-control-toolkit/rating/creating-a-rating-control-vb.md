@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868410"
 ---
 <a name="creating-a-rating-control-vb"></a><span data-ttu-id="8aa82-104">Création d’un contrôle d’évaluation (VB)</span><span class="sxs-lookup"><span data-stu-id="8aa82-104">Creating a Rating Control (VB)</span></span>
 ====================

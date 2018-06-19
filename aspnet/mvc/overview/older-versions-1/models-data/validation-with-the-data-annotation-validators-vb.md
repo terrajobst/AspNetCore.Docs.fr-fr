@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870165"
 ---
 <a name="validation-with-the-data-annotation-validators-vb"></a><span data-ttu-id="ff6bc-104">Validation avec les validateurs d’Annotation de données (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="ff6bc-104">Validation with the Data Annotation Validators (VB)</span></span>
 ====================

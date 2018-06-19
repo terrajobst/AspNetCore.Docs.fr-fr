@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890842"
 ---
 <a name="interacting-with-the-master-page-from-the-content-page-c"></a><span data-ttu-id="1f585-103">Interagir avec la Page maître à partir de la Page de contenu (c#)</span><span class="sxs-lookup"><span data-stu-id="1f585-103">Interacting with the Master Page from the Content Page (C#)</span></span>
 ====================

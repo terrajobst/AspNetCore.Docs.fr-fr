@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877500"
 ---
 <a name="adding-additional-datatable-columns-c"></a><span data-ttu-id="04e7f-104">Ajout de colonnes de la table de données supplémentaires (c#)</span><span class="sxs-lookup"><span data-stu-id="04e7f-104">Adding Additional DataTable Columns (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30875459"
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a><span data-ttu-id="af55e-103">Examen des méthodes de modification et la vue d’édition (VB)</span><span class="sxs-lookup"><span data-stu-id="af55e-103">Examining the Edit Methods and Edit View (VB)</span></span>
 ====================

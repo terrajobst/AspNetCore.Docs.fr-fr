@@ -1,7 +1,7 @@
 ---
-title: "Développement côté client dans ASP.NET Core"
+title: Développement côté client dans ASP.NET Core
 author: rick-anderson
-description: 
+description: ''
 manager: wpickett
 ms.author: riande
 ms.date: 02/21/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 49fb3b7669b504d35edad34db8285e56b958a9fc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29526403"
 ---
 # <a name="client-side-development-in-aspnet-core"></a><span data-ttu-id="8d877-102">Développement côté client dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8d877-102">Client-side development in ASP.NET Core</span></span>
 

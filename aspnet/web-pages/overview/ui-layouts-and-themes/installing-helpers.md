@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30896774"
 ---
 <a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a><span data-ttu-id="81cd4-104">L’installation d’un programme d’assistance dans un Site de Pages (Razor) Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="81cd4-104">Installing a Helper in an ASP.NET Web Pages (Razor) Site</span></span>
 ====================

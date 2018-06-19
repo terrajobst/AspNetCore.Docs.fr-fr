@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30887923"
 ---
 <a name="configuring-the-production-web-application-to-use-the-production-database-vb"></a><span data-ttu-id="4ef56-104">Configuration de l’Application Web de Production à utiliser la base de données de Production (VB)</span><span class="sxs-lookup"><span data-stu-id="4ef56-104">Configuring the Production Web Application to Use the Production Database (VB)</span></span>
 ====================

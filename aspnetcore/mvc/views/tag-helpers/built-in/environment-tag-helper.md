@@ -1,7 +1,7 @@
 ---
 title: Tag Helper Environnement dans ASP.NET Core
 author: pkellner
-description: "Tag Helper Environnement ASP.NET Core défini avec toutes les propriétés"
+description: Tag Helper Environnement ASP.NET Core défini avec toutes les propriétés
 manager: wpickett
 ms.author: riande
 ms.date: 07/14/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28901181"
 ---
 # <a name="environment-tag-helper-in-aspnet-core"></a><span data-ttu-id="8af8b-103">Tag Helper Environnement dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8af8b-103">Environment Tag Helper in ASP.NET Core</span></span>
 

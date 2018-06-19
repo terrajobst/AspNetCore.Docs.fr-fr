@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871725"
 ---
 <a name="using-postbacks-with-reorderlist-c"></a><span data-ttu-id="0c51f-104">L’utilisation de publications (postback) avec ReorderList fournissant (c#)</span><span class="sxs-lookup"><span data-stu-id="0c51f-104">Using Postbacks with ReorderList (C#)</span></span>
 ====================

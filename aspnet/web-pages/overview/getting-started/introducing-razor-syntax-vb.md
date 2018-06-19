@@ -17,6 +17,7 @@ ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31483482"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a><span data-ttu-id="735e9-103">Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="735e9-103">Introduction to ASP.NET Web Programming Using the Razor Syntax (Visual Basic)</span></span>
 ====================

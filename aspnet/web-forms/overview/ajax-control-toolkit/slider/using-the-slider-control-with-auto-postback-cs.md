@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879242"
 ---
 <a name="using-the-slider-control-with-auto-postback-c"></a><span data-ttu-id="c06d9-104">Utilisation du contrôle de curseur avec publication automatique (c#)</span><span class="sxs-lookup"><span data-stu-id="c06d9-104">Using the Slider Control With Auto-Postback (C#)</span></span>
 ====================

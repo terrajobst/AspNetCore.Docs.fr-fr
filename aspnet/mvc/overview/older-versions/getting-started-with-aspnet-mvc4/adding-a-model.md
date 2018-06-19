@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30871959"
 ---
 <a name="adding-a-model"></a><span data-ttu-id="b14ea-104">Ajout d’un modèle</span><span class="sxs-lookup"><span data-stu-id="b14ea-104">Adding a Model</span></span>
 ====================

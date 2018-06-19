@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-work-with-master-pages-declaratively-and-programmatically
-title: "[Comment faire] Travailler avec des Pages maîtres de façon déclarative et par programme | Documents Microsoft"
+title: '[Comment faire] Travailler avec des Pages maîtres de façon déclarative et par programme | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo affichent plusieurs aspects de la définition et utilisation des pages maîtres dans un site web ASP.NET. Tout d’abord, consultez Comment créer des pages maîtres declarati..."
+description: Dans cette Chris Pels vidéo affichent plusieurs aspects de la définition et utilisation des pages maîtres dans un site web ASP.NET. Tout d’abord, consultez Comment créer des pages maîtres declarati...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526518"
 ---
 <a name="how-do-i-work-with-master-pages-declaratively-and-programmatically"></a><span data-ttu-id="518c9-104">[Comment faire] Travailler avec des Pages maîtres de façon déclarative et par programme</span><span class="sxs-lookup"><span data-stu-id="518c9-104">[How Do I:] Work with Master Pages Declaratively and Programmatically</span></span>
 ====================

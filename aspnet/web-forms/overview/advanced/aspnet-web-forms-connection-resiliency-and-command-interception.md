@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879697"
 ---
 <a name="aspnet-web-forms-connection-resiliency-and-command-interception"></a><span data-ttu-id="fdb16-103">Résilience des connexions ASP.NET Web Forms et l’Interception de commande</span><span class="sxs-lookup"><span data-stu-id="fdb16-103">ASP.NET Web Forms Connection Resiliency and Command Interception</span></span>
 ====================

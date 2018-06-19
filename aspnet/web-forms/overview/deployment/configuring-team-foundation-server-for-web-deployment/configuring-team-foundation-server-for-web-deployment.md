@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892645"
 ---
 <a name="configuring-team-foundation-server-for-web-deployment"></a><span data-ttu-id="618ba-104">Configuration de Team Foundation Server pour le déploiement Web</span><span class="sxs-lookup"><span data-stu-id="618ba-104">Configuring Team Foundation Server for Web Deployment</span></span>
 ====================

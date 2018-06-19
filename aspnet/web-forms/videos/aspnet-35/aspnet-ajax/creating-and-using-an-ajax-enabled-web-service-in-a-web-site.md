@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890162"
 ---
 <a name="creating-and-using-an-ajax-enabled-web-service-in-a-web-site"></a><span data-ttu-id="b36c9-104">Création et utilisation d’un Service Web compatibles AJAX dans un Site Web</span><span class="sxs-lookup"><span data-stu-id="b36c9-104">Creating and Using an AJAX-enabled Web Service in a Web Site</span></span>
 ====================

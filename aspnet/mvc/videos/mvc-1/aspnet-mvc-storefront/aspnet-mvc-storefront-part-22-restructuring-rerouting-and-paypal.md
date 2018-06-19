@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878397"
 ---
 <a name="aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal"></a><span data-ttu-id="e13b9-105">ASP.NET MVC vitrine partie 22 : Restructuration, redirection et PayPal</span><span class="sxs-lookup"><span data-stu-id="e13b9-105">ASP.NET MVC Storefront Part 22: Restructuring, Rerouting, and PayPal</span></span>
 ====================

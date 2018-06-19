@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891485"
 ---
 <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-c"></a><span data-ttu-id="6ddad-103">Spécifier le titre, les balises Meta et les autres en-têtes HTML dans la Page maître (c#)</span><span class="sxs-lookup"><span data-stu-id="6ddad-103">Specifying the Title, Meta Tags, and Other HTML Headers in the Master Page (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883870"
 ---
 <a name="how-do-i-implement-the-ajax-incremental-page-display-pattern"></a><span data-ttu-id="163a3-104">[Comment faire] Implémenter le modèle d’affichage de la Page incrémentielle AJAX ?</span><span class="sxs-lookup"><span data-stu-id="163a3-104">[How Do I:] Implement the AJAX Incremental Page Display Pattern?</span></span>
 ====================

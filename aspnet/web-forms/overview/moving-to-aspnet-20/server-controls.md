@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/server-controls
-title: "Contrôles serveur | Documents Microsoft"
+title: Contrôles serveur | Documents Microsoft
 author: microsoft
-description: "ASP.NET 2.0 améliore les contrôles de serveur de nombreuses manières. Dans ce module, nous aborderons certaines des modifications architecturales au moyen d’ASP.NET 2.0 et Visual Studio 200..."
+description: ASP.NET 2.0 améliore les contrôles de serveur de nombreuses manières. Dans ce module, nous aborderons certaines des modifications architecturales au moyen d’ASP.NET 2.0 et Visual Studio 200...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885191"
 ---
 <a name="server-controls"></a><span data-ttu-id="168eb-104">Contrôles serveur</span><span class="sxs-lookup"><span data-stu-id="168eb-104">Server Controls</span></span>
 ====================

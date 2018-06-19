@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-send-templated-emails-for-health-monitoring-events-in-aspnet
-title: "[Comment faire] Envoyer des courriers électroniques basé sur un modèle d’intégrité de l’analyse des événements dans ASP.NET | Documents Microsoft"
+title: '[Comment faire] Envoyer des courriers électroniques basé sur un modèle d’intégrité de l’analyse des événements dans ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo Chris Pels montre comment utiliser le TemplatedEmailWebEventProvider pour envoyer des messages électroniques lorsque des événements de contrôle d’intégrité produisent, qui utilisent un modèle pour t..."
+description: Dans cette vidéo Chris Pels montre comment utiliser le TemplatedEmailWebEventProvider pour envoyer des messages électroniques lorsque des événements de contrôle d’intégrité produisent, qui utilisent un modèle pour t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/18/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521788"
 ---
 <a name="how-do-i-send-templated-emails-for-health-monitoring-events-in-aspnet"></a><span data-ttu-id="7fde5-103">[Comment faire] Envoyer des courriers électroniques basé sur un modèle d’intégrité de l’analyse des événements dans ASP.NET</span><span class="sxs-lookup"><span data-stu-id="7fde5-103">[How Do I:] Send Templated Emails for Health Monitoring Events in ASP.NET</span></span>
 ====================

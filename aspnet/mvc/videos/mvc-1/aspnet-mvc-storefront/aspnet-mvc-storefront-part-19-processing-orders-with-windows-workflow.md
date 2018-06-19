@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879658"
 ---
 <a name="aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow"></a><span data-ttu-id="a7a50-103">Partie vitrine ASP.NET MVC MVC 19 : Traitement des commandes un flux de travail Windows</span><span class="sxs-lookup"><span data-stu-id="a7a50-103">ASP.NET MVC MVC Storefront Part 19: Processing Orders With Windows Workflow</span></span>
 ====================
