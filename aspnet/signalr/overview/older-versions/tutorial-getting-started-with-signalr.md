@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28044732"
 ---
 <a name="tutorial-getting-started-with-signalr-1x"></a>Didacticiel : Mise en route avec SignalR 1.x
 ====================

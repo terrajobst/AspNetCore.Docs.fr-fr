@@ -1,20 +1,21 @@
 ---
 uid: webhooks/receiving/handlers
-title: "Gestionnaires d’ASP.NET WebHooks | Documents Microsoft"
+title: Gestionnaires d’ASP.NET WebHooks | Documents Microsoft
 author: rick-anderson
-description: "Comment gérer les demandes de WebHooks de ASP.NET."
+description: Comment gérer les demandes de WebHooks de ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: a55b0d20-9c90-4bd3-a471-20da6f569f0c
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 4cf5770a731ef77842eb29b0a66ee0aac5d85d85
 ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28883669"
 ---
 # <a name="aspnet-webhooks-handlers"></a>Gestionnaires d’ASP.NET WebHooks
 

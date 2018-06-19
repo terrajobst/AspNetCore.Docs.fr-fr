@@ -16,6 +16,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "29905034"
 ---
 <a name="get-started-with-aspnet-web-api-2-c"></a>Démarrer avec ASP.NET Web API 2 (c#)
 ====================

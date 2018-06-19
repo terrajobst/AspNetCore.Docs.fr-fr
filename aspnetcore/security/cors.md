@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077546"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Activer les demandes Cross-Origin (CORS) dans ASP.NET Core
 

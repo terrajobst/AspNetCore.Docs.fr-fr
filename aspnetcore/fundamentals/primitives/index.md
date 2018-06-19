@@ -1,7 +1,7 @@
 ---
 title: Primitives dans ASP.NET Core
 author: guardrex
-description: "Consultez les articles relatifs aux modules ASP.NET Core partagés par des extensions de framework, que vous pouvez utiliser dans votre propre code."
+description: Consultez les articles relatifs aux modules ASP.NET Core partagés par des extensions de framework, que vous pouvez utiliser dans votre propre code.
 manager: wpickett
 ms.author: riande
 ms.date: 10/28/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28882709"
 ---
 # <a name="primitives-in-aspnet-core"></a>Primitives dans ASP.NET Core
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30076960"
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>Règle de Protection des données à l’échelle de l’ordinateur prend en charge dans ASP.NET Core
 
