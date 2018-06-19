@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/enhancing-the-gridview/index
-title: "Améliorer le contrôle GridView | Documents Microsoft"
+title: Améliorer le contrôle GridView | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels montrent comment ajouter une colonne de cases d’option à un contrôle GridView pour fournir un moyen intuitif pour sélectionner une seule ligne."
+description: Ces didacticiels montrent comment ajouter une colonne de cases d’option à un contrôle GridView pour fournir un moyen intuitif pour sélectionner une seule ligne.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview
 msc.type: chapter
 ms.openlocfilehash: 04dbfe7fcc66e4e946b1807c3480d7c796af11df
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514078"
 ---
 <a name="enhancing-the-gridview"></a><span data-ttu-id="165ca-103">Améliorer le contrôle GridView</span><span class="sxs-lookup"><span data-stu-id="165ca-103">Enhancing the GridView</span></span>
 ====================

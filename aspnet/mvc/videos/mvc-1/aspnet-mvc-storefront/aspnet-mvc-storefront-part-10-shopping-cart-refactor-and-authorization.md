@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876330"
 ---
 <a name="aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization"></a><span data-ttu-id="60759-103">ASP.NET MVC partie vitrine 10 : Refactorisation de panier d’achat et l’autorisation</span><span class="sxs-lookup"><span data-stu-id="60759-103">ASP.NET MVC Storefront Part 10: Shopping Cart Refactor and Authorization</span></span>
 ====================

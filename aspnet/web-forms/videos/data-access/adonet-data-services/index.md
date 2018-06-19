@@ -2,7 +2,7 @@
 uid: web-forms/videos/data-access/adonet-data-services/index
 title: ADO.NET Data Services | Documents Microsoft
 author: rick-anderson
-description: "Ces vidéos vous montrent comment créer une couche d’accès aux données à l’aide d’un jeu de données typé pour une application ASP.NET simple."
+description: Ces vidéos vous montrent comment créer une couche d’accès aux données à l’aide d’un jeu de données typé pour une application ASP.NET simple.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/04/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/data-access/adonet-data-services
 msc.type: chapter
 ms.openlocfilehash: 07181564ee701c71ce74ac7cea3d8cfd0f9f4ffd
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525098"
 ---
 <a name="adonet-data-services"></a><span data-ttu-id="5f5e3-103">ADO.NET Data Services</span><span class="sxs-lookup"><span data-stu-id="5f5e3-103">ADO.NET Data Services</span></span>
 ====================

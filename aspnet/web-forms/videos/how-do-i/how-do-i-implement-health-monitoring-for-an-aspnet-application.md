@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-health-monitoring-for-an-aspnet-application
-title: "[Comment faire]  Implémenter le contrôle d’intégrité pour une Application ASP.NET ? | Microsoft Docs"
+title: '[Comment faire]  Implémenter le contrôle d’intégrité pour une Application ASP.NET ? | Microsoft Docs'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo indiquera comment implémenter le contrôle d’intégrité de l’analyse pour obtenir des informations détaillées sur l’exécution d’une application ASP.NET. Découvrez le puissant et..."
+description: Dans cette Chris Pels vidéo indiquera comment implémenter le contrôle d’intégrité de l’analyse pour obtenir des informations détaillées sur l’exécution d’une application ASP.NET. Découvrez le puissant et...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526248"
 ---
 <a name="how-do-i--implement-health-monitoring-for-an-aspnet-application"></a><span data-ttu-id="7dab8-105">[Comment faire]  Implémenter le contrôle d’intégrité pour une Application ASP.NET ?</span><span class="sxs-lookup"><span data-stu-id="7dab8-105">[How Do I:]  Implement Health Monitoring for an ASP.NET Application?</span></span>
 ====================

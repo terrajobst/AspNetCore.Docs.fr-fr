@@ -2,7 +2,7 @@
 uid: web-pages/content-guide
 title: Guide de WebMatrix contenu | Documents Microsoft
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/13/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528678"
 ---
 <a name="webmatrix-content-guide"></a><span data-ttu-id="97ae8-102">Guide de contenu de WebMatrix</span><span class="sxs-lookup"><span data-stu-id="97ae8-102">WebMatrix Content Guide</span></span>
 ====================

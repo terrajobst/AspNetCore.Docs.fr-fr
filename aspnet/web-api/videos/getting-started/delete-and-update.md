@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/delete-and-update
-title: "API Web ASP.NET, partie 3 : Supprimer et mettre à jour | Documents Microsoft"
+title: 'API Web ASP.NET, partie 3 : Supprimer et mettre à jour | Documents Microsoft'
 author: jongalloway
-description: "Remarque : Cette vidéo contient des informations à partir d’une version préliminaire de l’API Web ASP.NET"
+description: 'Remarque : Cette vidéo contient des informations à partir d’une version préliminaire de l’API Web ASP.NET'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26509018"
 ---
 <a name="aspnet-web-api-part-3-delete-and-update"></a><span data-ttu-id="c28ea-103">API Web ASP.NET, partie 3 : Supprimer et mettre à jour</span><span class="sxs-lookup"><span data-stu-id="c28ea-103">ASP.NET Web API, Part 3: Delete and Update</span></span>
 ====================

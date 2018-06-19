@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/index
-title: "Les Versions antérieures - accès aux données | Documents Microsoft"
+title: Les Versions antérieures - accès aux données | Documents Microsoft
 author: rick-anderson
-description: "Comment effectuer diverses tâches liées aux données à l’aide de contrôles de données de Web Forms ASP.NET."
+description: Comment effectuer diverses tâches liées aux données à l’aide de contrôles de données de Web Forms ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access
 msc.type: chapter
 ms.openlocfilehash: 9356c58db6ef5d57babdc7c6e6c09b7cc78a8167
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514198"
 ---
 <a name="older-versions---data-access"></a><span data-ttu-id="e2009-103">Versions antérieures - accès aux données</span><span class="sxs-lookup"><span data-stu-id="e2009-103">Older Versions - Data Access</span></span>
 ====================

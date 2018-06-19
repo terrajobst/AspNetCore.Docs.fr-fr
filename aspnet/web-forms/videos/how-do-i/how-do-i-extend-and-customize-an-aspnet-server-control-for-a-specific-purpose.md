@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose
-title: "[Comment faire] Étendre et personnaliser un contrôle serveur ASP.NET dans un but spécifique | Documents Microsoft"
+title: '[Comment faire] Étendre et personnaliser un contrôle serveur ASP.NET dans un but spécifique | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo indiquera comment étendre un contrôle de serveur ASP.NET standard et le personnaliser dans un but spécifique. Contrôles spécialisés fournissent un c..."
+description: Dans cette Chris Pels vidéo indiquera comment étendre un contrôle de serveur ASP.NET standard et le personnaliser dans un but spécifique. Contrôles spécialisés fournissent un c...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/20/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526498"
 ---
 <a name="how-do-i-extend-and-customize-an-aspnet-server-control-for-a-specific-purpose"></a><span data-ttu-id="dd973-104">[Comment faire] Étendre et personnaliser un contrôle serveur ASP.NET dans un but spécifique</span><span class="sxs-lookup"><span data-stu-id="dd973-104">[How Do I:] Extend and Customize an ASP.NET Server Control for a Specific Purpose</span></span>
 ====================

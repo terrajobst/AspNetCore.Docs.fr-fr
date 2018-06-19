@@ -2,7 +2,7 @@
 uid: web-forms/videos/vs-2005/index
 title: Visual Studio 2005 | Documents Microsoft
 author: rick-anderson
-description: "Explique comment travailler avec Visual Studio 2005 Team System et les compléments pour effectuer des tests, de déploiement et d’autres tâches."
+description: Explique comment travailler avec Visual Studio 2005 Team System et les compléments pour effectuer des tests, de déploiement et d’autres tâches.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/vs-2005
 msc.type: chapter
 ms.openlocfilehash: e3918119baf1e2fb0f1fb9d56627e7b7894f33fe
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528508"
 ---
 <a name="visual-studio-2005"></a><span data-ttu-id="c2f45-103">Visual Studio 2005</span><span class="sxs-lookup"><span data-stu-id="c2f45-103">Visual Studio 2005</span></span>
 ====================

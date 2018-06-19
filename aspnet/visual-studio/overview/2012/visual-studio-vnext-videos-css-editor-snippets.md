@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2012/visual-studio-vnext-videos-css-editor-snippets
-title: "Visual Studio vNext vidéos : des extraits de code CSS | Documents Microsoft"
+title: 'Visual Studio vNext vidéos : des extraits de code CSS | Documents Microsoft'
 author: madskristensen
-description: "Dans cette vidéo, Kristensen de Mads illustre une amélioration de l’éditeur de CSS Visual Studio vNext qui ajoute certains extraits de code utiles pour les transformations CSS3, q de support..."
+description: Dans cette vidéo, Kristensen de Mads illustre une amélioration de l’éditeur de CSS Visual Studio vNext qui ajoute certains extraits de code utiles pour les transformations CSS3, q de support...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/30/2011
 ms.topic: article
 ms.assetid: a87af3be-589d-4b0c-846d-4de60a8745c0
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2012/visual-studio-vnext-videos-css-editor-snippets
 msc.type: video
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506468"
 ---
 <a name="visual-studio-vnext-videos-css-snippets"></a><span data-ttu-id="ee1c0-103">Visual Studio vNext vidéos : des extraits de code CSS</span><span class="sxs-lookup"><span data-stu-id="ee1c0-103">Visual Studio vNext Videos: CSS Snippets</span></span>
 ====================

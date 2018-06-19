@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/performance-and-traffic/bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site
-title: "Groupement et réduction des ressources dans une application Web Pages (Razor) Site | Documents Microsoft"
+title: Groupement et réduction des ressources dans une application Web Pages (Razor) Site | Documents Microsoft
 author: microsoft
-description: "Regroupement et la minimisation manières pour accélérer votre site. Regroupement vous permet de combiner plusieurs fichiers JavaScript (.js) ou plusieurs styles CSS (...)"
+description: Regroupement et la minimisation manières pour accélérer votre site. Regroupement vous permet de combiner plusieurs fichiers JavaScript (.js) ou plusieurs styles CSS (...)
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/21/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528548"
 ---
 <a name="bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site"></a><span data-ttu-id="c6c2e-104">Groupement et réduction des ressources dans un Site de Web Pages (Razor) ASP.NET</span><span class="sxs-lookup"><span data-stu-id="c6c2e-104">Bundling and Minifying Assets in an ASP.NET Web Pages (Razor) Site</span></span>
 ====================

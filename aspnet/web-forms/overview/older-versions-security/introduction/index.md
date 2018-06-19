@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/introduction/index
-title: "ASP.NET 3.5 - Introduction à la sécurité | Documents Microsoft"
+title: ASP.NET 3.5 - Introduction à la sécurité | Documents Microsoft
 author: rick-anderson
-description: "Cette série de didacticiels explore les techniques d’authentification des utilisateurs à l’aide d’un formulaire de connexion (l’authentification par formulaire) et d’autoriser l’accès à des pages individuelles dans..."
+description: Cette série de didacticiels explore les techniques d’authentification des utilisateurs à l’aide d’un formulaire de connexion (l’authentification par formulaire) et d’autoriser l’accès à des pages individuelles dans...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/04/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security/introduction
 msc.type: chapter
 ms.openlocfilehash: f964a35693e781451db24ae6ed7ca8d5aa7a6917
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519058"
 ---
 <a name="aspnet-35---introduction-to-security"></a><span data-ttu-id="4a909-103">ASP.NET 3.5 - Introduction à la sécurité</span><span class="sxs-lookup"><span data-stu-id="4a909-103">ASP.NET 3.5 - Introduction to Security</span></span>
 ====================

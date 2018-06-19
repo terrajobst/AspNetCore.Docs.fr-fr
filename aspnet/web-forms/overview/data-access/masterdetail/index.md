@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/index
-title: "Maître/détail | Documents Microsoft"
+title: Maître/détail | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels montrent comment afficher des enregistrements principaux dans une liste déroulante et les détails dans un contrôle GridView."
+description: Ces didacticiels montrent comment afficher des enregistrements principaux dans une liste déroulante et les détails dans un contrôle GridView.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/masterdetail
 msc.type: chapter
 ms.openlocfilehash: d0e8193c008f5457a62cd009873883acc0c5c237
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514438"
 ---
 <a name="masterdetail"></a><span data-ttu-id="257d1-103">Maître/détail</span><span class="sxs-lookup"><span data-stu-id="257d1-103">Master/Detail</span></span>
 ====================

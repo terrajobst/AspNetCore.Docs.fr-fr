@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872895"
 ---
 <a name="launching-a-modal-popup-window-from-server-code-c"></a><span data-ttu-id="27887-104">Lancement d’une fenêtre contextuelle modale à partir du Code serveur (c#)</span><span class="sxs-lookup"><span data-stu-id="27887-104">Launching a Modal Popup Window from Server Code (C#)</span></span>
 ====================

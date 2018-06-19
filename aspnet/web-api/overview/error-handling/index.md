@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/error-handling/index
-title: "Gestion des erreurs dans l’API Web ASP.NET | Documents Microsoft"
+title: Gestion des erreurs dans l’API Web ASP.NET | Documents Microsoft
 author: rick-anderson
-description: "Comment gérer des exceptions dans l’API Web ASP.NET."
+description: Comment gérer des exceptions dans l’API Web ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/23/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/error-handling
 msc.type: chapter
 ms.openlocfilehash: 955c334f1e11b9dc28e2cc0a0fc055226fa0607f
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506778"
 ---
 <a name="error-handling-in-aspnet-web-api"></a><span data-ttu-id="97f33-103">Gestion des erreurs dans l’API Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="97f33-103">Error Handling in ASP.NET Web API</span></span>
 ====================

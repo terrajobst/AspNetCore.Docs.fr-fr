@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-button-actions-with-the-datalist-and-repeater/index
-title: "Les Actions de bouton personnalisé avec le contrôle DataList et répéteur | Documents Microsoft"
+title: Les Actions de bouton personnalisé avec le contrôle DataList et répéteur | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels montrent comment ajouter des boutons pour les contrôles DataList et répéteur pour ajouter des fonctionnalités personnalisées."
+description: Ces didacticiels montrent comment ajouter des boutons pour les contrôles DataList et répéteur pour ajouter des fonctionnalités personnalisées.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/custom-button-actions-with-the-da
 msc.type: chapter
 ms.openlocfilehash: b9ec5df400ce445e703119b398e9f7a26d3f5446
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512678"
 ---
 <a name="custom-button-actions-with-the-datalist-and-repeater"></a><span data-ttu-id="6d100-103">Actions de bouton personnalisé avec le contrôle DataList et répéteur</span><span class="sxs-lookup"><span data-stu-id="6d100-103">Custom Button Actions with the DataList and Repeater</span></span>
 ====================

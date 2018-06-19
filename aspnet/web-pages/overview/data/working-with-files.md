@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "28040221"
 ---
 <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a><span data-ttu-id="51ca4-103">Utilisation des fichiers dans un Site de Pages (Razor) Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="51ca4-103">Working with Files in an ASP.NET Web Pages (Razor) Site</span></span>
 ====================

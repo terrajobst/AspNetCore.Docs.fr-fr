@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-simple-file-uploads-in-aspnet
-title: "[Comment faire]  Téléchargements de fichier simple dans ASP.NET | Documents Microsoft"
+title: '[Comment faire]  Téléchargements de fichier simple dans ASP.NET | Documents Microsoft'
 author: JoeStagner
-description: "Dans cette vidéo nous verrons, à l’aide d’ASP.NET, le téléchargement d’un fichier unique à partir de l’ordinateur client à votre serveur. Il s’agit de la première d’une série de téléchargement..."
+description: Dans cette vidéo nous verrons, à l’aide d’ASP.NET, le téléchargement d’un fichier unique à partir de l’ordinateur client à votre serveur. Il s’agit de la première d’une série de téléchargement...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/12/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526108"
 ---
 <a name="how-do-i--simple-file-uploads-in-aspnet"></a><span data-ttu-id="96ee8-104">[Comment faire]  Téléchargements de fichier simple dans ASP.NET</span><span class="sxs-lookup"><span data-stu-id="96ee8-104">[How Do I:]  Simple File Uploads in ASP.NET</span></span>
 ====================

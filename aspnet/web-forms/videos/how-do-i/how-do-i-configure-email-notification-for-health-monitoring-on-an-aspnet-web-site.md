@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site
-title: "[Comment faire] Configurer la Notification par courrier électronique pour le contrôle d’intégrité sur un Site Web ASP.NET | Documents Microsoft"
+title: '[Comment faire] Configurer la Notification par courrier électronique pour le contrôle d’intégrité sur un Site Web ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo montre comment configurer la notification par courrier électronique pour l’analyse d’intégrité dans un site web ASP.NET. Tout d’abord, consultez Comment configurer l’envoi de e..."
+description: Dans cette Chris Pels vidéo montre comment configurer la notification par courrier électronique pour l’analyse d’intégrité dans un site web ASP.NET. Tout d’abord, consultez Comment configurer l’envoi de e...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/11/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521758"
 ---
 <a name="how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site"></a><span data-ttu-id="cb935-104">[Comment faire] Configurer la Notification par courrier électronique pour l’intégrité de l’analyse sur un Site Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="cb935-104">[How Do I:] Configure Email Notification for Health Monitoring on an ASP.NET Web Site</span></span>
 ====================

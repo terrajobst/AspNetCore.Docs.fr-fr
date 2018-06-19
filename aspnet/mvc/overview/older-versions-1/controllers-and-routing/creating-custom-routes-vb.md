@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872323"
 ---
 <a name="creating-custom-routes-vb"></a><span data-ttu-id="f5b35-104">Création des itinéraires personnalisés (VB)</span><span class="sxs-lookup"><span data-stu-id="f5b35-104">Creating Custom Routes (VB)</span></span>
 ====================

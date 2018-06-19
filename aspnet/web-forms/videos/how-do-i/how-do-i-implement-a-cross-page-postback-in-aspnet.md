@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-a-cross-page-postback-in-aspnet
-title: "[Comment faire] Implémenter une publication (postback) entre pages dans ASP.NET | Documents Microsoft"
+title: '[Comment faire] Implémenter une publication (postback) entre pages dans ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo montre comment créer une publication de Page Cross dans ASP.NET, où un contrôle sur une page de la source déclenche un événement de publication vers une autre cible..."
+description: Dans cette Chris Pels vidéo montre comment créer une publication de Page Cross dans ASP.NET, où un contrôle sur une page de la source déclenche un événement de publication vers une autre cible...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/10/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526308"
 ---
 <a name="how-do-i-implement-a-cross-page-postback-in-aspnet"></a><span data-ttu-id="362be-103">[Comment faire] Implémenter une publication (postback) entre pages dans ASP.NET</span><span class="sxs-lookup"><span data-stu-id="362be-103">[How Do I:] Implement a Cross Page PostBack in ASP.NET</span></span>
 ====================

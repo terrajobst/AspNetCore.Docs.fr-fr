@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-3/mvc-3-razor-view-engine
-title: "MVC 3 : le moteur d’affichage Razor | Documents Microsoft"
+title: 'MVC 3 : le moteur d’affichage Razor | Documents Microsoft'
 author: jongalloway
-description: "Dans cette vidéo, vous allez apprendre les notions de base du nouveau moteur d’affichage Razor inclus dans ASP.NET MVC 3."
+description: Dans cette vidéo, vous allez apprendre les notions de base du nouveau moteur d’affichage Razor inclus dans ASP.NET MVC 3.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/04/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503818"
 ---
 <a name="mvc-3---razor-view-engine"></a><span data-ttu-id="a7521-103">MVC 3 : le moteur d’affichage Razor</span><span class="sxs-lookup"><span data-stu-id="a7521-103">MVC 3 - Razor View Engine</span></span>
 ====================

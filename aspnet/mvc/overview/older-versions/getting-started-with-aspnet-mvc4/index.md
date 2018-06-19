@@ -2,7 +2,7 @@
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc4/index
 title: Mise en route avec ASP.NET MVC 4 | Documents Microsoft
 author: rick-anderson
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, w..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4
 msc.type: chapter
 ms.openlocfilehash: 2d53060133e982e01e371407fc18ac62188c36b7
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26501828"
 ---
 <a name="getting-started-with-aspnet-mvc-4"></a><span data-ttu-id="db5ee-103">Mise en route avec ASP.NET MVC 4</span><span class="sxs-lookup"><span data-stu-id="db5ee-103">Getting Started with ASP.NET MVC 4</span></span>
 ====================

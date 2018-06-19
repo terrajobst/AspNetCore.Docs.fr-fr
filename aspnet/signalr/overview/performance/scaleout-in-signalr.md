@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/scaleout-in-signalr
-title: "Introduction à la montée en puissance parallèle dans SignalR | Documents Microsoft"
+title: Introduction à la montée en puissance parallèle dans SignalR | Documents Microsoft
 author: MikeWasson
-description: "Versions du logiciel utilisé dans cette rubrique Visual Studio 2013 .NET 4.5 SignalR les versions précédentes de la version 2 de cette rubrique pour plus d’informations sur les versions antérieures de..."
+description: Versions du logiciel utilisé dans cette rubrique Visual Studio 2013 .NET 4.5 SignalR les versions précédentes de la version 2 de cette rubrique pour plus d’informations sur les versions antérieures de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28034592"
 ---
 <a name="introduction-to-scaleout-in-signalr"></a><span data-ttu-id="714d3-103">Introduction à la montée en puissance parallèle dans SignalR</span><span class="sxs-lookup"><span data-stu-id="714d3-103">Introduction to Scaleout in SignalR</span></span>
 ====================

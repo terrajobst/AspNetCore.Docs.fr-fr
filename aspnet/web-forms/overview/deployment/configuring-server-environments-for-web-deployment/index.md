@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/index
-title: "ASP.NET 4 : serveurs de configuration de série 2 Enterprise déploiement | Documents Microsoft"
+title: 'ASP.NET 4 : serveurs de configuration de série 2 Enterprise déploiement | Documents Microsoft'
 author: rick-anderson
-description: "Ce didacticiel va vous montrer comment configurer des environnements de serveur pour la prise en charge en un clic ou automatisé, le déploiement de site Web et la publication dans différentes du scénario de différentes..."
+description: Ce didacticiel va vous montrer comment configurer des environnements de serveur pour la prise en charge en un clic ou automatisé, le déploiement de site Web et la publication dans différentes du scénario de différentes...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-fo
 msc.type: chapter
 ms.openlocfilehash: 48281541d8337daf9cf252bc4601c8b1e75fd398
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515228"
 ---
 <a name="aspnet-4---enterprise-deployment-series-2-configuring-servers"></a><span data-ttu-id="fe3ce-103">ASP.NET 4 : serveurs de configuration de série 2 Enterprise déploiement</span><span class="sxs-lookup"><span data-stu-id="fe3ce-103">ASP.NET 4 - Enterprise Deployment Series 2 Configuring Servers</span></span>
 ====================

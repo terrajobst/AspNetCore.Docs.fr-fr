@@ -2,7 +2,7 @@
 uid: web-pages/overview/getting-started/index
 title: Getting Started with ASP.NET Web Pages | Documents Microsoft
 author: rick-anderson
-description: "En savoir plus sur ASP.NET Web Pages ASP.NET Web Pages et la nouvelle syntaxe Razor fournissent un moyen rapide et abordable léger pour combiner du code serveur avec HTML t..."
+description: En savoir plus sur ASP.NET Web Pages ASP.NET Web Pages et la nouvelle syntaxe Razor fournissent un moyen rapide et abordable léger pour combiner du code serveur avec HTML t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 879110bba5e3465dd413764816603bcdb56eac31
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528588"
 ---
 <a name="getting-started-with-aspnet-web-pages"></a><span data-ttu-id="7dc7e-103">Mise en route avec les Pages Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="7dc7e-103">Getting Started with ASP.NET Web Pages</span></span>
 ====================

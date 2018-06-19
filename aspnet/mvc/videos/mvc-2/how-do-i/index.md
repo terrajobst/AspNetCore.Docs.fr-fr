@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/index
-title: "Procédure--I | Documents Microsoft"
+title: Procédure--I | Documents Microsoft
 author: rick-anderson
-description: "Vidéos de cette section couvrent ASP.NET MVC, y compris la création d’une application de commerce électronique entières du début à la fin 'La vitrine -'."
+description: Vidéos de cette section couvrent ASP.NET MVC, y compris la création d’une application de commerce électronique entières du début à la fin 'La vitrine -'.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/15/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/videos/mvc-2/how-do-i
 msc.type: chapter
 ms.openlocfilehash: 54d09894c61d8be19ab6b8a1ceb37312c47497a7
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26504258"
 ---
 <a name="how-do-i"></a><span data-ttu-id="92835-103">Procédure--I</span><span class="sxs-lookup"><span data-stu-id="92835-103">How-Do-I</span></span>
 ====================

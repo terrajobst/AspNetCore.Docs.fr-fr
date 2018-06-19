@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870737"
 ---
 <a name="executing-animations-using-client-side-code-c"></a><span data-ttu-id="a4851-104">Animations en cours d’exécution à l’aide de Code côté Client (c#)</span><span class="sxs-lookup"><span data-stu-id="a4851-104">Executing Animations Using Client-Side Code (C#)</span></span>
 ====================

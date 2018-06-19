@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34094280"
 ---
 # <a name="resource-based-authorization-in-aspnet-core"></a><span data-ttu-id="edbd8-103">Autorisation basée sur les ressources dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="edbd8-103">Resource-based authorization in ASP.NET Core</span></span>
 

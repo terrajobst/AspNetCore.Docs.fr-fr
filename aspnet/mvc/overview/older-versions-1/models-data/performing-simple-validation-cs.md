@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869658"
 ---
 <a name="performing-simple-validation-c"></a><span data-ttu-id="abb6c-104">Exécution de la Validation Simple (c#)</span><span class="sxs-lookup"><span data-stu-id="abb6c-104">Performing Simple Validation (C#)</span></span>
 ====================

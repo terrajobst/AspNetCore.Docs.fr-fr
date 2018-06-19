@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/build-your-first-asp-net-application-with-asp-net-mvc
-title: "Créer votre première Application ASP.NET avec ASP.NET MVC | Documents Microsoft"
+title: Créer votre première Application ASP.NET avec ASP.NET MVC | Documents Microsoft
 author: lmoroney
-description: "Microsoft Laurence Moroney vous montre comment créer votre première application ASP.NET avec ASP.NET MVC."
+description: Microsoft Laurence Moroney vous montre comment créer votre première application ASP.NET avec ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525168"
 ---
 <a name="build-your-first-aspnet-application-with-aspnet-mvc"></a><span data-ttu-id="2cc46-103">Créer votre première Application ASP.NET avec ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="2cc46-103">Build Your First ASP.NET Application with ASP.NET MVC</span></span>
 ====================

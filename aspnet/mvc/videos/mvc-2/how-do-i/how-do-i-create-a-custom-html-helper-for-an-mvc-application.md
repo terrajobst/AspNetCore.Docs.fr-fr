@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870100"
 ---
 <a name="how-do-i-create-a-custom-html-helper-for-an-mvc-application"></a><span data-ttu-id="de4a4-105">Comment faire pour créer un programme d’assistance HTML personnalisé pour une Application MVC ?</span><span class="sxs-lookup"><span data-stu-id="de4a4-105">How Do I: Create a Custom HTML Helper for an MVC Application?</span></span>
 ====================

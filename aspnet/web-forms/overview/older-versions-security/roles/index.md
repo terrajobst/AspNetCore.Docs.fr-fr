@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/roles/index
-title: "ASP.NET 3.5 - rôles | Documents Microsoft"
+title: ASP.NET 3.5 - rôles | Documents Microsoft
 author: rick-anderson
-description: "Cette série de didacticiels décrit comment créer et supprimer des rôles, comment affecter des utilisateurs aux rôles et comment autoriser par rôle."
+description: Cette série de didacticiels décrit comment créer et supprimer des rôles, comment affecter des utilisateurs aux rôles et comment autoriser par rôle.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security/roles
 msc.type: chapter
 ms.openlocfilehash: 9fc5695f18d3624d07e2457c1bb33f15911eac96
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519488"
 ---
 <a name="aspnet-35---roles"></a><span data-ttu-id="9ca60-103">ASP.NET 3.5 - rôles</span><span class="sxs-lookup"><span data-stu-id="9ca60-103">ASP.NET 3.5 - Roles</span></span>
 ====================

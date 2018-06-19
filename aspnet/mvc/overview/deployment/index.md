@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/deployment/index
-title: "Déploiement | Documents Microsoft"
+title: Déploiement | Documents Microsoft
 author: rick-anderson
-description: "Comment déployer des projets ASP.NET MVC sur un serveur."
+description: Comment déployer des projets ASP.NET MVC sur un serveur.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/18/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/deployment
 msc.type: chapter
 ms.openlocfilehash: 8efbf5ee2e24ea6e302177a64e751b00809250fb
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26497878"
 ---
 # <a name="aspnet-mvc-deployment"></a><span data-ttu-id="236f5-103">Déploiement d’ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="236f5-103">ASP.NET MVC Deployment</span></span>
 

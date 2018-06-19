@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/authorization
-title: "ASP.NET Web API, partie 6 : Autorisation | Documents Microsoft"
+title: 'ASP.NET Web API, partie 6 : Autorisation | Documents Microsoft'
 author: jongalloway
-description: "Remarque : Cette vidéo contient des informations à partir d’une version préliminaire de l’API Web ASP.NET"
+description: 'Remarque : Cette vidéo contient des informations à partir d’une version préliminaire de l’API Web ASP.NET'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508968"
 ---
 <a name="aspnet-web-api-part-6-authorization"></a><span data-ttu-id="5383f-103">ASP.NET Web API, partie 6 : autorisation</span><span class="sxs-lookup"><span data-stu-id="5383f-103">ASP.NET Web API, Part 6: Authorization</span></span>
 ====================

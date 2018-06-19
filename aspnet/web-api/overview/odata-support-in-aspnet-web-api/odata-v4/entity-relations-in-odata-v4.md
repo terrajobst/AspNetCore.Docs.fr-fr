@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/entity-relations-in-odata-v4
-title: "Relations d’entité dans OData v4 à l’aide d’ASP.NET Web API 2.2 | Documents Microsoft"
+title: Relations d’entité dans OData v4 à l’aide d’ASP.NET Web API 2.2 | Documents Microsoft
 author: MikeWasson
-description: "La plupart des jeux de données définissent les relations entre des entités : les clients ont passé des commandes ; les livres peuvent avoir auteurs ; les produits ont des fournisseurs. L’utilisation d’OData, les clients peuvent naviguer sur..."
+description: 'La plupart des jeux de données définissent les relations entre des entités : les clients ont passé des commandes ; les livres peuvent avoir auteurs ; les produits ont des fournisseurs. L’utilisation d’OData, les clients peuvent naviguer sur...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508098"
 ---
 <a name="entity-relations-in-odata-v4-using-aspnet-web-api-22"></a><span data-ttu-id="ac3b9-104">Relations d’entité dans OData v4 à l’aide d’ASP.NET Web API 2.2</span><span class="sxs-lookup"><span data-stu-id="ac3b9-104">Entity Relations in OData v4 Using ASP.NET Web API 2.2</span></span>
 ====================

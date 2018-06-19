@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-1/conference-presentations/americas-next-top-model-view-controller-framework
-title: "Suivant supérieur modèle Vue contrôleur Framework d’Amérique | Documents Microsoft"
+title: Suivant supérieur modèle Vue contrôleur Framework d’Amérique | Documents Microsoft
 author: Haacked
-description: "Découvrez comment créer une application simple qui met en évidence certaines des fonctionnalités clés d’ASP.NET MVC. En outre, découvrez comment améliorer la productivité de l’utilisation de certains le..."
+description: Découvrez comment créer une application simple qui met en évidence certaines des fonctionnalités clés d’ASP.NET MVC. En outre, découvrez comment améliorer la productivité de l’utilisation de certains le...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503438"
 ---
 <a name="americas-next-top-model-view-controller-framework"></a><span data-ttu-id="ee27b-104">Suivant supérieur modèle Vue contrôleur Framework d’Amérique</span><span class="sxs-lookup"><span data-stu-id="ee27b-104">America's Next Top Model View Controller Framework</span></span>
 ====================

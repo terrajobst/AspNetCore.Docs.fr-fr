@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-learn-the-tips-and-tricks-of-experts
-title: "[Comment faire] Découvrez les conseils et astuces d’Experts ? | Microsoft Docs"
+title: '[Comment faire] Découvrez les conseils et astuces d’Experts ? | Microsoft Docs'
 author: microsoft
-description: "Afficher les conseils et astuces, notamment le chiffrement des informations sensibles stockées dans le fichier web.config, publier du contenu à une autre page, ce qui simplifie les URL complexes..."
+description: Afficher les conseils et astuces, notamment le chiffrement des informations sensibles stockées dans le fichier web.config, publier du contenu à une autre page, ce qui simplifie les URL complexes...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525758"
 ---
 <a name="how-do-i-learn-the-tips-and-tricks-of-experts"></a><span data-ttu-id="aa9cb-104">[Comment faire] Découvrez les conseils et astuces d’Experts ?</span><span class="sxs-lookup"><span data-stu-id="aa9cb-104">[How Do I:] Learn the Tips and Tricks of Experts?</span></span>
 ====================

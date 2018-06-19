@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/index
-title: "Des scénarios d’accès aux données avancés | Documents Microsoft"
+title: Des scénarios d’accès aux données avancés | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels abordent l’utilisation des procédures stockées et des colonnes calculées, l’utilisation de jointures avec les tables de base de données et le chiffrement des informations de connexion de données..."
+description: Ces didacticiels abordent l’utilisation des procédures stockées et des colonnes calculées, l’utilisation de jointures avec les tables de base de données et le chiffrement des informations de connexion de données...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios
 msc.type: chapter
 ms.openlocfilehash: e773ced66465ab99e9b662d84e1cdb8e607918e7
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512288"
 ---
 <a name="advanced-data-access-scenarios"></a><span data-ttu-id="62cea-103">Scénarios d’accès de données avancés</span><span class="sxs-lookup"><span data-stu-id="62cea-103">Advanced Data Access Scenarios</span></span>
 ====================

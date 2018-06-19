@@ -13,6 +13,7 @@ ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34153720"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a><span data-ttu-id="13a74-103">ASP.NET Core MVC avec EF Core - Tri, filtre, changement de page - 3 sur 10</span><span class="sxs-lookup"><span data-stu-id="13a74-103">ASP.NET Core MVC with EF Core - Sort, Filter, Paging - 3 of 10</span></span>
 

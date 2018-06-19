@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/net-4/data/index
-title: "Données | Microsoft Docs"
+title: Données | Microsoft Docs
 author: rick-anderson
-description: "Cette vidéo vous montre des nouvelles fonctionnalités pour les contrôles de données ASP.NET 4."
+description: Cette vidéo vous montre des nouvelles fonctionnalités pour les contrôles de données ASP.NET 4.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/net-4/data
 msc.type: chapter
 ms.openlocfilehash: c35a2b5338f8f34b076c5449c3784b8241ecb807
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526148"
 ---
 <a name="data"></a><span data-ttu-id="07d3a-103">Données</span><span class="sxs-lookup"><span data-stu-id="07d3a-103">Data</span></span>
 ====================

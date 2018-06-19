@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/index
-title: "Création de 3.5 Applications | Documents Microsoft"
+title: Création de 3.5 Applications | Documents Microsoft
 author: rick-anderson
-description: "Les principes fondamentaux de la création d’applications Web Forms ASP.NET."
+description: Les principes fondamentaux de la création d’applications Web Forms ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/building-35-applications
 msc.type: chapter
 ms.openlocfilehash: 3a0c07ec2b8bd47e37dcce750a003ac6c0e824d8
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526398"
 ---
 <a name="building-35-applications"></a><span data-ttu-id="32d05-103">Création de 3.5 Applications</span><span class="sxs-lookup"><span data-stu-id="32d05-103">Building 3.5 Applications</span></span>
 ====================

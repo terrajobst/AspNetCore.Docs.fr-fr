@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500988"
 ---
 <a name="understanding-models-views-and-controllers-vb"></a><span data-ttu-id="ebffa-104">Fonctionnement des modèles, vues et contrôleurs (VB)</span><span class="sxs-lookup"><span data-stu-id="ebffa-104">Understanding Models, Views, and Controllers (VB)</span></span>
 ====================

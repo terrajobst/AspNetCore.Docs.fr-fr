@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-client-script-event-handlers-controls-on-an-aspnet-page
-title: "[Comment] : ajouter des contrôles de gestionnaires d’événements de Script Client sur une Page ASP.NET ? | Microsoft Docs"
+title: '[Comment] : ajouter des contrôles de gestionnaires d’événements de Script Client sur une Page ASP.NET ? | Microsoft Docs'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo montre comment ajouter des événements de script client à des contrôles sur une page ASP.NET. Tout d’abord, plusieurs contrôles ASP.NET sont ajoutés à la page et un e..."
+description: Dans cette Chris Pels vidéo montre comment ajouter des événements de script client à des contrôles sur une page ASP.NET. Tout d’abord, plusieurs contrôles ASP.NET sont ajoutés à la page et un e...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/23/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525158"
 ---
 <a name="how-do-i-add-client-script-event-handlers-controls-on-an-aspnet-page"></a><span data-ttu-id="c006c-105">[Comment] : ajouter des contrôles de gestionnaires d’événements de Script Client sur une Page ASP.NET ?</span><span class="sxs-lookup"><span data-stu-id="c006c-105">[How Do I]: Add Client Script Event Handlers Controls on an ASP.NET Page?</span></span>
 ====================

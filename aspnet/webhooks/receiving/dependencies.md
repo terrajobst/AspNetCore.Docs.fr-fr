@@ -1,20 +1,21 @@
 ---
 uid: webhooks/receiving/dependencies
-title: "Dépendances de récepteur ASP.NET WebHooks | Documents Microsoft"
+title: Dépendances de récepteur ASP.NET WebHooks | Documents Microsoft
 author: rick-anderson
-description: "Dépendances du récepteur et injection de dépendances dans ASP.NET WebHooks."
+description: Dépendances du récepteur et injection de dépendances dans ASP.NET WebHooks.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 5125e483-c2bb-435b-8cd1-21d3499bfaaf
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: f9726c746c8934594e26f2871f9b867c192374bb
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529908"
 ---
 # <a name="aspnet-webhooks-receiver-dependencies"></a><span data-ttu-id="2f127-103">Dépendances de récepteur ASP.NET WebHooks</span><span class="sxs-lookup"><span data-stu-id="2f127-103">ASP.NET WebHooks receiver dependencies</span></span>
 

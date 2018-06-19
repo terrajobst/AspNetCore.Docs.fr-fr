@@ -2,7 +2,7 @@
 uid: mvc/videos/mvc-1/conference-presentations/ninja-on-fire-black-belt-tips
 title: Ninja sur incendie noir roulant conseils | Documents Microsoft
 author: Haacked
-description: "Consultez une procédure pas à pas de plusieurs trucs et astuces pour obtenir le meilleur parti de l’infrastructure ASP.NET MVC."
+description: Consultez une procédure pas à pas de plusieurs trucs et astuces pour obtenir le meilleur parti de l’infrastructure ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/12/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503898"
 ---
 <a name="ninja-on-fire-black-belt-tips"></a><span data-ttu-id="8f803-103">Ninja sur incendie noir roulant conseils</span><span class="sxs-lookup"><span data-stu-id="8f803-103">Ninja on Fire Black Belt Tips</span></span>
 ====================

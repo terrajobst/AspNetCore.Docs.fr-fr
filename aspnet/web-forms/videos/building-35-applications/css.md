@@ -2,7 +2,7 @@
 uid: web-forms/videos/building-35-applications/css
 title: CSS | Documents Microsoft
 author: JoeStagner
-description: "Feuilles de Style en cascade sont partie intégrante du développement web moderne et Visual Web Developer 2008 inclut une collection de puissantes CSS générer des fonctionnalités pour aider à..."
+description: Feuilles de Style en cascade sont partie intégrante du développement web moderne et Visual Web Developer 2008 inclut une collection de puissantes CSS générer des fonctionnalités pour aider à...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/30/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521478"
 ---
 <a name="css"></a><span data-ttu-id="26b15-103">CSS</span><span class="sxs-lookup"><span data-stu-id="26b15-103">CSS</span></span>
 ====================

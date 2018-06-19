@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883370"
 ---
 <a name="how-do-i-implement-the-predictive-fetch-pattern-for-ajax"></a><span data-ttu-id="850e4-104">[Comment faire] Implémenter le modèle d’extraction prédictif pour AJAX ?</span><span class="sxs-lookup"><span data-stu-id="850e4-104">[How Do I:] Implement the Predictive Fetch Pattern for AJAX?</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/index
-title: "Sérialisation et la liaison de modèle dans ASP.NET Web API | Documents Microsoft"
+title: Sérialisation et la liaison de modèle dans ASP.NET Web API | Documents Microsoft
 author: rick-anderson
-description: "Manière dont les API Web ASP.NET lie les messages HTTP pour les modèles de domaine, et comment travailler avec un support formats dans l’API Web."
+description: Manière dont les API Web ASP.NET lie les messages HTTP pour les modèles de domaine, et comment travailler avec un support formats dans l’API Web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/formats-and-model-binding
 msc.type: chapter
 ms.openlocfilehash: 8aa061c2cdf4c65a1e0718e2ab146a0220fd8ee6
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506768"
 ---
 <a name="serialization-and-model-binding-in-aspnet-web-api"></a><span data-ttu-id="331ea-103">Sérialisation et la liaison de modèle dans l’API Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="331ea-103">Serialization and Model Binding in ASP.NET Web API</span></span>
 ====================

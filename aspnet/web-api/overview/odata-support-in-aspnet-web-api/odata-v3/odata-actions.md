@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508388"
 ---
 <a name="supporting-odata-actions-in-aspnet-web-api-2"></a><span data-ttu-id="8c0fd-104">Prise en charge des Actions OData dans ASP.NET Web API 2</span><span class="sxs-lookup"><span data-stu-id="8c0fd-104">Supporting OData Actions in ASP.NET Web API 2</span></span>
 ====================

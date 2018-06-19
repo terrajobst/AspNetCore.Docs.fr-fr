@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/aspnet-data-access-technologies-an-introduction-to-linq
-title: "Technologies d’accès aux données ASP.NET, une Introduction à LINQ | Documents Microsoft"
+title: Technologies d’accès aux données ASP.NET, une Introduction à LINQ | Documents Microsoft
 author: JoeStagner
-description: "LINQ est que les développeurs ASP.NET par défaut le mécanisme d’accès aux données. Cette vidéo est une introduction à la programmation avec LINQ et compare les données simple accès betwee..."
+description: LINQ est que les développeurs ASP.NET par défaut le mécanisme d’accès aux données. Cette vidéo est une introduction à la programmation avec LINQ et compare les données simple accès betwee...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/13/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525418"
 ---
 <a name="aspnet-data-access-technologies-an-introduction-to-linq"></a><span data-ttu-id="12dd1-104">Technologies d’accès aux données ASP.NET, une Introduction à LINQ</span><span class="sxs-lookup"><span data-stu-id="12dd1-104">ASP.NET Data Access Technologies, an Introduction to LINQ</span></span>
 ====================

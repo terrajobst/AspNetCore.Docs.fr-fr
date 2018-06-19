@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/index
-title: "Outils de contrôle AJAX | Documents Microsoft"
+title: Outils de contrôle AJAX | Documents Microsoft
 author: rick-anderson
-description: "Comment créer très réactive ASP.NET Web pages à l’aide de la boîte à outils de contrôle Ajax."
+description: Comment créer très réactive ASP.NET Web pages à l’aide de la boîte à outils de contrôle Ajax.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/ajax-control-toolkit
 msc.type: chapter
 ms.openlocfilehash: fad690c40cac7a344a445dae722ae2a1e89adf6b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521828"
 ---
 <a name="ajax-control-toolkit"></a><span data-ttu-id="17b05-103">Ajax Control Toolkit</span><span class="sxs-lookup"><span data-stu-id="17b05-103">Ajax Control Toolkit</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/index
-title: "Introduction aux Pages Web vidéos | Documents Microsoft"
+title: Introduction aux Pages Web vidéos | Documents Microsoft
 author: rick-anderson
-description: "Les vidéos, vous pouvez consulter pour en savoir plus les principes de base sur les Pages et WebMatrix."
+description: Les vidéos, vous pouvez consulter pour en savoir plus les principes de base sur les Pages et WebMatrix.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/videos/introduction
 msc.type: chapter
 ms.openlocfilehash: d128715483de83125166d75988181e729d5207bf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529968"
 ---
 <a name="introduction-to-web-pages-videos"></a><span data-ttu-id="1ab8e-103">Introduction aux vidéos de Pages Web</span><span class="sxs-lookup"><span data-stu-id="1ab8e-103">Introduction to Web Pages Videos</span></span>
 ====================

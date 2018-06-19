@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/iis/index
-title: "Conseils généraux de IIS | Documents Microsoft"
+title: Conseils généraux de IIS | Documents Microsoft
 author: rick-anderson
 description: Comment configurer IIS pour travailler avec les applications ASP.NET.
 ms.author: aspnetcontent
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/iis
 msc.type: chapter
 ms.openlocfilehash: 2fb4da58fd5e0fc6bce8f042a9811d4ef30c1eb4
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525598"
 ---
 <a name="general-iis-tips"></a><span data-ttu-id="76f0c-103">Conseils généraux de IIS</span><span class="sxs-lookup"><span data-stu-id="76f0c-103">General IIS Tips</span></span>
 ====================

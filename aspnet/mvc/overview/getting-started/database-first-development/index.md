@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/index
-title: "Prise en main de la base de données Entity Framework 6 à l’aide de MVC 5 | Documents Microsoft"
+title: Prise en main de la base de données Entity Framework 6 à l’aide de MVC 5 | Documents Microsoft
 author: rick-anderson
-description: "Cette série illustre l’utilisation de développement première base de données pour la création d’une application MVC 5 avec Entity Framework"
+description: Cette série illustre l’utilisation de développement première base de données pour la création d’une application MVC 5 avec Entity Framework
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/17/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/getting-started/database-first-development
 msc.type: chapter
 ms.openlocfilehash: 5d31e4527305c4efd47f706c70a700d62d3d0896
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26498038"
 ---
 <a name="getting-started-with-entity-framework-6-database-first-using-mvc-5"></a><span data-ttu-id="72ef5-103">Prise en main de la base de données Entity Framework 6 à l’aide de MVC 5</span><span class="sxs-lookup"><span data-stu-id="72ef5-103">Getting Started with Entity Framework 6 Database First Using MVC 5</span></span>
 ====================

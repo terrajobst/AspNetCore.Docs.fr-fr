@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/10/2018
+ms.locfileid: "26507128"
 ---
 <a name="hands-on-lab-visual-studio-2013-web-tools"></a><span data-ttu-id="3d5a3-104">Ateliers pratiques : Outils de Web Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="3d5a3-104">Hands On Lab: Visual Studio 2013 Web Tools</span></span>
 ====================

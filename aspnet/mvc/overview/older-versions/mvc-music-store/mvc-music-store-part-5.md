@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874910"
 ---
 <a name="part-5-edit-forms-and-templating"></a><span data-ttu-id="da3a6-104">Partie 5 : Modification de formulaires et création de modèles</span><span class="sxs-lookup"><span data-stu-id="da3a6-104">Part 5: Edit Forms and Templating</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-35-applications/debugging
-title: "Débogage | Documents Microsoft"
+title: Débogage | Documents Microsoft
 author: JoeStagner
-description: "Description : Visual Web Developer offre une expérience enrichie de débogage pour les débutants et les développeurs expérimentés similaires. Dans cette vidéo, Jacques sera Parcourir via le VW..."
+description: 'Description : Visual Web Developer offre une expérience enrichie de débogage pour les débutants et les développeurs expérimentés similaires. Dans cette vidéo, Jacques sera Parcourir via le VW...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/30/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528148"
 ---
 <a name="debugging"></a><span data-ttu-id="12078-104">Débogage</span><span class="sxs-lookup"><span data-stu-id="12078-104">Debugging</span></span>
 ====================

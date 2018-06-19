@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30883766"
 ---
 <a name="control-extenders"></a><span data-ttu-id="68872-103">Extensions de contrôle</span><span class="sxs-lookup"><span data-stu-id="68872-103">Control Extenders</span></span>
 ====================

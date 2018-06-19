@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/index
-title: "Filtrage des scénarios avec le contrôle DataList et répéteur | Documents Microsoft"
+title: Filtrage des scénarios avec le contrôle DataList et répéteur | Documents Microsoft
 author: rick-anderson
-description: "Dans ces didacticiels vous allez apprendre à afficher les rapports maître/détail à l’aide des listes déroulantes pour les enregistrements principaux et les détails du contrôle DataList."
+description: Dans ces didacticiels vous allez apprendre à afficher les rapports maître/détail à l’aide des listes déroulantes pour les enregistrements principaux et les détails du contrôle DataList.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-data
 msc.type: chapter
 ms.openlocfilehash: a8a1c2301dc287b49149bc5afe85a7dedad54d58
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514098"
 ---
 <a name="filtering-scenarios-with-the-datalist-and-repeater"></a><span data-ttu-id="17f9d-103">Scénarios de filtrage des répéteur DataList</span><span class="sxs-lookup"><span data-stu-id="17f9d-103">Filtering Scenarios with the DataList and Repeater</span></span>
 ====================

@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/dropshadow/index
 title: DropShadow | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel montre comment utiliser le contrôle DropShadow qui dessine une ombre derrière un panneau de configuration."
+description: Ce didacticiel montre comment utiliser le contrôle DropShadow qui dessine une ombre derrière un panneau de configuration.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dropshadow
 msc.type: chapter
 ms.openlocfilehash: 60725a1fa9d23831ecbe639d09b54ab57384e384
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510408"
 ---
 <a name="dropshadow"></a><span data-ttu-id="dcb50-103">DropShadow</span><span class="sxs-lookup"><span data-stu-id="dcb50-103">DropShadow</span></span>
 ====================

@@ -14,6 +14,7 @@ ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34153639"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a><span data-ttu-id="21e0b-103">ASP.NET Core MVC avec EF Core - Mettre à jour les données associées - 7 sur 10</span><span class="sxs-lookup"><span data-stu-id="21e0b-103">ASP.NET Core MVC with EF Core - Update Related Data - 7 of 10</span></span>
 

@@ -2,7 +2,7 @@
 uid: mvc/overview/getting-started/index
 title: ASP.NET MVC est prise en main | Documents Microsoft
 author: rick-anderson
-description: "En savoir plus sur ASP.NET MVC ASP.NET MVC offre un moyen puissant, basé sur des modèles pour créer des sites Web dynamiques qui permet une séparation claire des problèmes et ce g..."
+description: En savoir plus sur ASP.NET MVC ASP.NET MVC offre un moyen puissant, basé sur des modèles pour créer des sites Web dynamiques qui permet une séparation claire des problèmes et ce g...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/31/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 37d374d01ca122046f9fcd7b72331fc7cfe569cf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26499208"
 ---
 <a name="aspnet-mvc-getting-started"></a><span data-ttu-id="b1b49-103">Mise en route de ASP.NET MVC</span><span class="sxs-lookup"><span data-stu-id="b1b49-103">ASP.NET MVC Getting Started</span></span>
 ====================

@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/filteredtextbox/index
 title: FilteredTextBox | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel montre comment utiliser le contrôle FilteredTextBox, ce qui vous permet de spécifier quels caractères sont autorisés dans l’entrée d’utilisateur."
+description: Ce didacticiel montre comment utiliser le contrôle FilteredTextBox, ce qui vous permet de spécifier quels caractères sont autorisés dans l’entrée d’utilisateur.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox
 msc.type: chapter
 ms.openlocfilehash: 04197e6348ac97f8ea668591c894f25774966cae
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510388"
 ---
 <a name="filteredtextbox"></a><span data-ttu-id="b2a16-103">FilteredTextBox</span><span class="sxs-lookup"><span data-stu-id="b2a16-103">FilteredTextBox</span></span>
 ====================

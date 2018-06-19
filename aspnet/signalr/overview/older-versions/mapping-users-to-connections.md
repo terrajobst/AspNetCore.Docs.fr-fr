@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28037010"
 ---
 <a name="mapping-signalr-users-to-connections-in-signalr-1x"></a><span data-ttu-id="c2ee0-103">Mappage des utilisateurs de SignalR pour les connexions SignalR 1.x</span><span class="sxs-lookup"><span data-stu-id="c2ee0-103">Mapping SignalR Users to Connections in SignalR 1.x</span></span>
 ====================

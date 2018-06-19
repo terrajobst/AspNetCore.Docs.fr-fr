@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site
-title: "[Comment faire] Utilisation d’enveloppes avec CSS pour un Site Web ASP.NET Flexible et facile à gérer | Documents Microsoft"
+title: '[Comment faire] Utilisation d’enveloppes avec CSS pour un Site Web ASP.NET Flexible et facile à gérer | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo montre comment créer des apparences pour les contrôles serveur ASP.NET et puis incorporer les styles CSS pour contrôler l’apparence de l’apparence contr..."
+description: Dans cette Chris Pels vidéo montre comment créer des apparences pour les contrôles serveur ASP.NET et puis incorporer les styles CSS pour contrôler l’apparence de l’apparence contr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/07/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521768"
 ---
 <a name="how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site"></a><span data-ttu-id="12fd1-103">[Comment faire] Utilisation d’enveloppes avec CSS pour un Site Web d’ASP.NET Flexible et facile à gérer</span><span class="sxs-lookup"><span data-stu-id="12fd1-103">[How Do I:] Use Skins with CSS for a Flexible and Maintainable ASP.NET Web Site</span></span>
 ====================

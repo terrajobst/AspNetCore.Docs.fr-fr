@@ -1,8 +1,8 @@
 ---
 uid: web-api/videos/getting-started/index
-title: "Présentation de l’API Web ASP.NET et la prise en main des vidéos | Documents Microsoft"
+title: Présentation de l’API Web ASP.NET et la prise en main des vidéos | Documents Microsoft
 author: rick-anderson
-description: "Il s’agit d’une série de vidéos pour vous familiariser avec l’API Web ASP.NET."
+description: Il s’agit d’une série de vidéos pour vous familiariser avec l’API Web ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/videos/getting-started
 msc.type: chapter
 ms.openlocfilehash: c06a3e5670839af357a515331cd864521d260c0e
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508988"
 ---
 <a name="aspnet-web-api-overview-and-getting-started-videos"></a><span data-ttu-id="d0d77-103">Présentation de l’API Web ASP.NET et la prise en main des vidéos</span><span class="sxs-lookup"><span data-stu-id="d0d77-103">ASP.NET Web API Overview and Getting Started Videos</span></span>
 ====================

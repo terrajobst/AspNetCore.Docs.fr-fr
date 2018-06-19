@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v3/index
-title: "Prise en charge d’OData v3 dans ASP.NET Web API | Documents Microsoft"
+title: Prise en charge d’OData v3 dans ASP.NET Web API | Documents Microsoft
 author: rick-anderson
-description: "Utilisez l’API Web ASP.NET pour créer des points de terminaison qui prennent en charge OData Version 3."
+description: Utilisez l’API Web ASP.NET pour créer des points de terminaison qui prennent en charge OData Version 3.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/26/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3
 msc.type: chapter
 ms.openlocfilehash: 0876a1aba05ce087e1e9fe7fa7c64a70b42827df
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508248"
 ---
 <a name="supporting-odata-v3-in-aspnet-web-api"></a><span data-ttu-id="759bc-103">Prise en charge d’OData v3 dans l’API Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="759bc-103">Supporting OData v3 in ASP.NET Web API</span></span>
 ====================

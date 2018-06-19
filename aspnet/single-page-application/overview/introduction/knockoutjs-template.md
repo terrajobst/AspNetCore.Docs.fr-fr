@@ -1,14 +1,14 @@
 ---
 uid: single-page-application/overview/introduction/knockoutjs-template
-title: "Application à Page unique : Modèle KnockoutJS | Documents Microsoft"
+title: 'Application à Page unique : Modèle KnockoutJS | Documents Microsoft'
 author: MikeWasson
-description: "Modèle de Knockout"
+description: Modèle de Knockout
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/30/2013
 ms.topic: article
 ms.assetid: f9c07af0-4b20-4b08-af8f-47fc3df169a2
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/15/2018
+ms.locfileid: "28036893"
 ---
 <a name="single-page-application-knockoutjs-template"></a><span data-ttu-id="9a3a1-103">Application à Page unique : Modèle de KnockoutJS</span><span class="sxs-lookup"><span data-stu-id="9a3a1-103">Single Page Application: KnockoutJS template</span></span>
 ====================

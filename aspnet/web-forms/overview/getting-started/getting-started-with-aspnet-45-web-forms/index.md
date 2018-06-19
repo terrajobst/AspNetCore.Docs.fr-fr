@@ -2,7 +2,7 @@
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/index
 title: Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013 | Documents Microsoft
 author: rick-anderson
-description: "Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Visual Studio 2013 Express pour le Web. Un Visua..."
+description: Cette série de didacticiels, vous allez apprendre les principes fondamentaux de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Visual Studio 2013 Express pour le Web. Un Visua...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/09/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-4
 msc.type: chapter
 ms.openlocfilehash: 1c6e6f08c94d025c3643938de2c6ca2326402f90
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26516538"
 ---
 <a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a><span data-ttu-id="740bf-104">Prise en main 4.5 Web Forms ASP.NET et Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="740bf-104">Getting Started with ASP.NET 4.5 Web Forms and Visual Studio 2013</span></span>
 ====================

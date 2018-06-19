@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26505838"
 ---
 <a name="high-frequency-realtime-with-signalr-1x"></a><span data-ttu-id="b08cd-104">En temps réel de haute fréquence avec SignalR 1.x</span><span class="sxs-lookup"><span data-stu-id="b08cd-104">High-Frequency Realtime with SignalR 1.x</span></span>
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: signalr/videos/getting-started/index
-title: "Les vidéos ASP.NET SignalR | Documents Microsoft"
+title: Les vidéos ASP.NET SignalR | Documents Microsoft
 author: rick-anderson
-description: "Ces permettent de vidéos que vous en arrière-plan et des exemples d’application pour l’utilisation de SignalR pour ajouter des fonctionnalités en temps réel aux applications web."
+description: Ces permettent de vidéos que vous en arrière-plan et des exemples d’application pour l’utilisation de SignalR pour ajouter des fonctionnalités en temps réel aux applications web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/12/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /signalr/videos/getting-started
 msc.type: chapter
 ms.openlocfilehash: 509d5475650e758960da3116b53cd21c0b628edf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26505618"
 ---
 <a name="aspnet-signalr-videos"></a><span data-ttu-id="6bff6-103">Vidéos ASP.NET SignalR</span><span class="sxs-lookup"><span data-stu-id="6bff6-103">ASP.NET SignalR Videos</span></span>
 ====================

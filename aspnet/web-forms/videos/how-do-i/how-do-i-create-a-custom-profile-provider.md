@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-profile-provider
-title: "[Comment faire] Créer un fournisseur de profils personnalisée ? | Microsoft Docs"
+title: '[Comment faire] Créer un fournisseur de profils personnalisée ? | Microsoft Docs'
 author: rick-anderson
-description: "Dans cette vidéo vous apprendre comment créer un fournisseur de profil personnalisé pour stocker et récupérer des données associées à un profil utilisateur dans les tables SQL Server distincts de t..."
+description: Dans cette vidéo vous apprendre comment créer un fournisseur de profil personnalisé pour stocker et récupérer des données associées à un profil utilisateur dans les tables SQL Server distincts de t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526408"
 ---
 <a name="how-do-i-create-a-custom-profile-provider"></a><span data-ttu-id="f4507-104">[Comment faire] Créer un fournisseur de profils personnalisée ?</span><span class="sxs-lookup"><span data-stu-id="f4507-104">[How Do I:] Create a Custom Profile Provider?</span></span>
 ====================

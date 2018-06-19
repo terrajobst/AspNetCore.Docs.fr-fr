@@ -1,22 +1,23 @@
 ---
 uid: ajax/index
-title: "ASP.NET Ajax : Amélioré l’interactivité et la réactivité | Documents Microsoft"
+title: 'ASP.NET Ajax : Amélioré l’interactivité et la réactivité | Documents Microsoft'
 author: rick-anderson
-description: "Ajouter des fonctionnalités Ajax à vos applications ASP.NET, jQuery ou les outils de contrôle Ajax. Améliorer les performances de vos applications Ajax avec le Micro..."
+description: Ajouter des fonctionnalités Ajax à vos applications ASP.NET, jQuery ou les outils de contrôle Ajax. Améliorer les performances de vos applications Ajax avec le Micro...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/15/2009
 ms.topic: article
 ms.assetid: 42b0bd66-bf2f-4993-8b5a-bac3028201fc
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /ajax
 msc.type: content
 ms.openlocfilehash: 529206622ee05f019bb6251f5af1a98e0df83030
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26496088"
 ---
 <a name="aspnet-ajax--enhanced-interactivity-and-responsiveness"></a><span data-ttu-id="b196b-104">ASP.NET Ajax : Améliorer l’interactivité et la réactivité</span><span class="sxs-lookup"><span data-stu-id="b196b-104">ASP.NET Ajax : Enhanced Interactivity and Responsiveness</span></span>
 ====================

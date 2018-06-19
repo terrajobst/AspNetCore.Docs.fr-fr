@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874653"
 ---
 <a name="adding-aspnet-identity-to-an-empty-or-existing-web-forms-project"></a><span data-ttu-id="32288-104">Projet de formulaires Ajout ASP.NET Identity, à un site Web vide ou existant</span><span class="sxs-lookup"><span data-stu-id="32288-104">Adding ASP.NET Identity to an Empty or Existing Web Forms Project</span></span>
 ====================

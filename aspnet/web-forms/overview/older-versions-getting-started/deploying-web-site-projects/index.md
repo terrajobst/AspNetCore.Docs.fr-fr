@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/index
-title: "Déploiement de projets de Site Web dans Visual Studio 2008 et versions antérieures | Documents Microsoft"
+title: Déploiement de projets de Site Web dans Visual Studio 2008 et versions antérieures | Documents Microsoft
 author: rick-anderson
-description: "Les applications web ASP.NET sont généralement conçues, créé, testé dans un environnement de développement local et doivent être déployés vers un o d’environnement de production..."
+description: Les applications web ASP.NET sont généralement conçues, créé, testé dans un environnement de développement local et doivent être déployés vers un o d’environnement de production...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-
 msc.type: chapter
 ms.openlocfilehash: a5a332a226efe4c549ce123d611c58ce01439452
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26517408"
 ---
 <a name="deploying-web-site-projects-in-visual-studio-2008-and-earlier"></a><span data-ttu-id="53861-103">Déploiement de projets de Site Web dans Visual Studio 2008 et versions antérieures</span><span class="sxs-lookup"><span data-stu-id="53861-103">Deploying Web Site Projects in Visual Studio 2008 and earlier</span></span>
 ====================

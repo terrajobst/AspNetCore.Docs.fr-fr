@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889460"
 ---
 <a name="examining-the-events-associated-with-inserting-updating-and-deleting-vb"></a><span data-ttu-id="456ee-104">Examiner les événements liés à l’insertion, de mise à jour et de suppression (VB)</span><span class="sxs-lookup"><span data-stu-id="456ee-104">Examining the Events Associated with Inserting, Updating, and Deleting (VB)</span></span>
 ====================

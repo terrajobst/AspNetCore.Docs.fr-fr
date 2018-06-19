@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30869983"
 ---
 <a name="dynamically-populating-a-control-using-javascript-code-vb"></a><span data-ttu-id="7bdf3-103">Remplissage dynamique d’un contrôle à l’aide du Code JavaScript (VB)</span><span class="sxs-lookup"><span data-stu-id="7bdf3-103">Dynamically Populating a Control Using JavaScript Code (VB)</span></span>
 ====================

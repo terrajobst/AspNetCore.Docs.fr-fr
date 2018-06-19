@@ -2,7 +2,7 @@
 uid: web-forms/videos/aspnet-ajax/index
 title: ASP.NET AJAX | Documents Microsoft
 author: rick-anderson
-description: "Comment travailler avec ASP.NET AJAX pour créer des pages très réactifs, même si vous n’êtes pas un expert en JavaScript."
+description: Comment travailler avec ASP.NET AJAX pour créer des pages très réactifs, même si vous n’êtes pas un expert en JavaScript.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/aspnet-ajax
 msc.type: chapter
 ms.openlocfilehash: ef5d267a6a19382369fc877b3776d9dcdc0fd2d5
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26522498"
 ---
 <a name="aspnet-ajax"></a><span data-ttu-id="fcb10-103">AJAX ASP.NET</span><span class="sxs-lookup"><span data-stu-id="fcb10-103">ASP.NET AJAX</span></span>
 ====================

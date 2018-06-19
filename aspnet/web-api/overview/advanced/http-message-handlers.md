@@ -2,7 +2,7 @@
 uid: web-api/overview/advanced/http-message-handlers
 title: Gestionnaires de messages HTTP dans ASP.NET Web API | Documents Microsoft
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506948"
 ---
 <a name="http-message-handlers-in-aspnet-web-api"></a><span data-ttu-id="d2f8e-102">Gestionnaires de messages HTTP dans l’API Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="d2f8e-102">HTTP Message Handlers in ASP.NET Web API</span></span>
 ====================

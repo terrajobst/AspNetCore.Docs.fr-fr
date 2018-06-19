@@ -17,6 +17,7 @@ ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/27/2018
+ms.locfileid: "34555558"
 ---
 # <a name="use-the-single-page-application-templates-with-aspnet-core"></a><span data-ttu-id="e2b77-103">Utiliser les modèles d’applications monopages avec ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="e2b77-103">Use the Single Page Application templates with ASP.NET Core</span></span>
 

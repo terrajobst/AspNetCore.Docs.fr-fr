@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-validation-controls-in-aspnet
-title: "[Comment faire]  Utilisez les contrôles de Validation dans ASP.NET ? | Microsoft Docs"
+title: '[Comment faire]  Utilisez les contrôles de Validation dans ASP.NET ? | Microsoft Docs'
 author: rick-anderson
-description: "Dans cette vidéo, découvrez comment utiliser les contrôles de validation disponibles dans ASP.NET pour implémenter la validation sur vos pages web. Tous les principale contrôles de validation par..."
+description: Dans cette vidéo, découvrez comment utiliser les contrôles de validation disponibles dans ASP.NET pour implémenter la validation sur vos pages web. Tous les principale contrôles de validation par...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/26/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525948"
 ---
 <a name="how-do-i--use-validation-controls-in-aspnet"></a><span data-ttu-id="e4ce9-105">[Comment faire]  Utilisez les contrôles de Validation dans ASP.NET ?</span><span class="sxs-lookup"><span data-stu-id="e4ce9-105">[How Do I:]  Use Validation Controls in ASP.NET?</span></span>
 ====================

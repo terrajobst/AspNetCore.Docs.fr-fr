@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876499"
 ---
 <a name="debugging-stored-procedures-c"></a><span data-ttu-id="ae7a9-103">Débogage des procédures stockées (c#)</span><span class="sxs-lookup"><span data-stu-id="ae7a9-103">Debugging Stored Procedures (C#)</span></span>
 ====================
