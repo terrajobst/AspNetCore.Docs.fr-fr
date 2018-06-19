@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876161"
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-c"></a><span data-ttu-id="99265-103">Implémentation de l’accès concurrentiel optimiste avec le SqlDataSource (c#)</span><span class="sxs-lookup"><span data-stu-id="99265-103">Implementing Optimistic Concurrency with the SqlDataSource (C#)</span></span>
 ====================

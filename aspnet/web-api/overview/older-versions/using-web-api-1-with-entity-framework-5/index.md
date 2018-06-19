@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/index
-title: "À l’aide d’ASP.NET Web API 1 avec Entity Framework 5 | Documents Microsoft"
+title: À l’aide d’ASP.NET Web API 1 avec Entity Framework 5 | Documents Microsoft
 author: rick-anderson
-description: "Comment créer une application Web API 1 qui utilise Entity Framework pour la persistance de la base de données."
+description: Comment créer une application Web API 1 qui utilise Entity Framework pour la persistance de la base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/16/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-fram
 msc.type: chapter
 ms.openlocfilehash: 30fc6619da6ac16599eed9de18aaf558c248e980
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508118"
 ---
 <a name="using-aspnet-web-api-1-with-entity-framework-5"></a><span data-ttu-id="30ce6-103">À l’aide d’ASP.NET Web API 1 avec Entity Framework 5</span><span class="sxs-lookup"><span data-stu-id="30ce6-103">Using ASP.NET Web API 1 with Entity Framework 5</span></span>
 ====================

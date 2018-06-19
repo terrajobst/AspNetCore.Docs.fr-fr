@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30867734"
 ---
 <a name="displaying-a-table-of-database-data"></a><span data-ttu-id="cd43c-105">Affichage d’une Table de base de données</span><span class="sxs-lookup"><span data-stu-id="cd43c-105">Displaying a Table of Database Data</span></span>
 ====================

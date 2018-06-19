@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/index
-title: "Modification, d’insertion et de suppression de données | Documents Microsoft"
+title: Modification, d’insertion et de suppression de données | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels vous permet de voir comment mapper les méthodes du contrôle ObjectDataSource aux méthodes de la couche BLL et comment configurer le GridView, DetailsView et FormView co..."
+description: Ces didacticiels vous permet de voir comment mapper les méthodes du contrôle ObjectDataSource aux méthodes de la couche BLL et comment configurer le GridView, DetailsView et FormView co...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-da
 msc.type: chapter
 ms.openlocfilehash: 424781d445443ff2df3b5fda359dadc5243e1ea9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26513808"
 ---
 <a name="editing-inserting-and-deleting-data"></a><span data-ttu-id="72eeb-103">Modification, d’insertion et de suppression des données</span><span class="sxs-lookup"><span data-stu-id="72eeb-103">Editing, Inserting, and Deleting Data</span></span>
 ====================

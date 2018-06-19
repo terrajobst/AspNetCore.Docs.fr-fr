@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881735"
 ---
 <a name="how-to-change-the-forms-authentication-properties"></a><span data-ttu-id="81a86-104">Comment modifier les propriétés d’authentification de formulaires</span><span class="sxs-lookup"><span data-stu-id="81a86-104">How to Change the Forms Authentication Properties</span></span>
 ====================

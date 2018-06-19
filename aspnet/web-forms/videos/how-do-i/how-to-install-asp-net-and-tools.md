@@ -2,7 +2,7 @@
 uid: web-forms/videos/how-do-i/how-to-install-asp-net-and-tools
 title: Comment installer ASP.NET et outils | Documents Microsoft
 author: shanselman
-description: "Microsoft Scott Hanselman vous montre comment télécharger et installer ASP.NET et outils pour que vous puissiez développer vos applications web."
+description: Microsoft Scott Hanselman vous montre comment télécharger et installer ASP.NET et outils pour que vous puissiez développer vos applications web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/10/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526288"
 ---
 <a name="how-to-install-aspnet-and-tools"></a><span data-ttu-id="09705-103">Comment installer ASP.NET et outils</span><span class="sxs-lookup"><span data-stu-id="09705-103">How to Install ASP.NET and Tools</span></span>
 ====================

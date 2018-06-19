@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874107"
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a><span data-ttu-id="79f6e-104">Concevoir pour faire face aux défaillances (génération d’applications Cloud du monde réel avec Azure)</span><span class="sxs-lookup"><span data-stu-id="79f6e-104">Design to Survive Failures (Building Real-World Cloud Apps with Azure)</span></span>
 ====================

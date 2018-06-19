@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870633"
 ---
 <a name="adding-animation-to-a-control-vb"></a><span data-ttu-id="b90af-104">Ajout d’une Animation à un contrôle (VB)</span><span class="sxs-lookup"><span data-stu-id="b90af-104">Adding Animation to a Control (VB)</span></span>
 ====================

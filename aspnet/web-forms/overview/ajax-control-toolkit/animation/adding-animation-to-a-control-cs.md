@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30872116"
 ---
 <a name="adding-animation-to-a-control-c"></a><span data-ttu-id="ff4a7-104">Ajout d’une Animation à un contrôle (c#)</span><span class="sxs-lookup"><span data-stu-id="ff4a7-104">Adding Animation to a Control (C#)</span></span>
 ====================

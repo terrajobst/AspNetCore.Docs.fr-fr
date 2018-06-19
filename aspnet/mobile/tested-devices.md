@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30877838"
 ---
 <a name="aspnet-mobile-controls-tested-devices"></a><span data-ttu-id="17554-104">Périphériques de contrôles mobiles ASP.NET</span><span class="sxs-lookup"><span data-stu-id="17554-104">ASP.NET Mobile Controls Tested Devices</span></span>
 ====================

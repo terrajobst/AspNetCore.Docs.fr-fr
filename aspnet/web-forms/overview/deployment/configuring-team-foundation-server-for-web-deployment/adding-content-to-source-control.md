@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890432"
 ---
 <a name="adding-content-to-source-control"></a><span data-ttu-id="d6eb9-104">Ajout de contenu au contrôle de code Source</span><span class="sxs-lookup"><span data-stu-id="d6eb9-104">Adding Content to Source Control</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30876564"
 ---
 <a name="querying-data-with-the-sqldatasource-control-vb"></a><span data-ttu-id="4978d-104">Interrogation des données avec le contrôle SqlDataSource (VB)</span><span class="sxs-lookup"><span data-stu-id="4978d-104">Querying Data with the SqlDataSource Control (VB)</span></span>
 ====================

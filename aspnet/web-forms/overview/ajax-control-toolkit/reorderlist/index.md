@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/index
 title: ReorderList fournissant | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel montre comment utiliser le contrôle ReorderList fournissant pour afficher une liste que les utilisateurs peuvent réorganiser en faisant glisser des éléments."
+description: Ce didacticiel montre comment utiliser le contrôle ReorderList fournissant pour afficher une liste que les utilisateurs peuvent réorganiser en faisant glisser des éléments.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist
 msc.type: chapter
 ms.openlocfilehash: 14ad3527a17b0853dd10a07aba28d60867f79169
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26511618"
 ---
 <a name="reorderlist"></a><span data-ttu-id="7913d-103">ReorderList fournissant</span><span class="sxs-lookup"><span data-stu-id="7913d-103">ReorderList</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30870997"
 ---
 <a name="authenticating-users-with-forms-authentication-vb"></a><span data-ttu-id="242f6-104">L’authentification des utilisateurs avec l’authentification par formulaire (VB)</span><span class="sxs-lookup"><span data-stu-id="242f6-104">Authenticating Users with Forms Authentication (VB)</span></span>
 ====================

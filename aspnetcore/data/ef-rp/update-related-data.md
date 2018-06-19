@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740372"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a><span data-ttu-id="50298-103">Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8</span><span class="sxs-lookup"><span data-stu-id="50298-103">Razor Pages with EF Core in ASP.NET Core - Update Related Data - 7 of 8</span></span>
 

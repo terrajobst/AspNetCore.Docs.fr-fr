@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892762"
 ---
 <a name="creating-a-business-logic-layer-vb"></a><span data-ttu-id="a8f10-103">Création d’une couche de logique métier (VB)</span><span class="sxs-lookup"><span data-stu-id="a8f10-103">Creating a Business Logic Layer (VB)</span></span>
 ====================

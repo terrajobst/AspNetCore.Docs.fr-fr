@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30874939"
 ---
 <a name="build-a-model-with-business-rule-validations"></a><span data-ttu-id="4404d-103">Générer un modèle avec les Validations de règle d’entreprise</span><span class="sxs-lookup"><span data-stu-id="4404d-103">Build a Model with Business Rule Validations</span></span>
 ====================

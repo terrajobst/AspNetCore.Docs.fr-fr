@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34306882"
 ---
 <a name="build-restful-apis-with-aspnet-web-api"></a><span data-ttu-id="af7a0-104">Générer une API RESTful avec l’API Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="af7a0-104">Build RESTful APIs with ASP.NET Web API</span></span>
 ====================

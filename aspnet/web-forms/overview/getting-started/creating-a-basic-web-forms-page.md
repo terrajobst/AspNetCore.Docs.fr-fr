@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3a893ae05f010656d99d6ddf55e82f1b5b6933bc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34306791"
 ---
 <a name="creating-a-basic-aspnet-45-web-forms-page-in-visual-studio-2013"></a><span data-ttu-id="037f9-102">Création d’une base ASP.NET Web 4.5 Page Forms dans Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="037f9-102">Creating a Basic ASP.NET 4.5 Web Forms Page in Visual Studio 2013</span></span>
 ====================

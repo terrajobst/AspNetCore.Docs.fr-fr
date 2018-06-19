@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30078048"
 ---
 # <a name="purpose-hierarchy-and-multi-tenancy-in-aspnet-core"></a><span data-ttu-id="4515f-103">Hiérarchie d’objet et une architecture mutualisée dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="4515f-103">Purpose hierarchy and multi-tenancy in ASP.NET Core</span></span>
 

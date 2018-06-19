@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30898211"
 ---
 <a name="fix-for-server-application-unavailable-error-after-applying-security-update-for-ie"></a><span data-ttu-id="88d52-103">Corrigez d’erreur de « Application serveur non disponible » après avoir appliqué la mise à jour de sécurité pour Internet Explorer</span><span class="sxs-lookup"><span data-stu-id="88d52-103">Fix for 'Server Application Unavailable' Error after Applying Security Update for IE</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873116"
 ---
 <a name="collapsing-and-expanding-a-panel-from-javascript-vb"></a><span data-ttu-id="8bec8-103">Réduire et développer un panneau de configuration à partir de JavaScript (VB)</span><span class="sxs-lookup"><span data-stu-id="8bec8-103">Collapsing and Expanding a Panel from JavaScript (VB)</span></span>
 ====================

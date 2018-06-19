@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891719"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-vb"></a><span data-ttu-id="dc9d4-104">Configuration de l’authentification de formulaires et les rubriques avancées (VB)</span><span class="sxs-lookup"><span data-stu-id="dc9d4-104">Forms Authentication Configuration and Advanced Topics (VB)</span></span>
 ====================

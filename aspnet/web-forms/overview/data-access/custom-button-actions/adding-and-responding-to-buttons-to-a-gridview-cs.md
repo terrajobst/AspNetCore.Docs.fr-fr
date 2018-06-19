@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30878293"
 ---
 <a name="adding-and-responding-to-buttons-to-a-gridview-c"></a><span data-ttu-id="306bc-104">Ajout et la réponse à des boutons pour un GridView (c#)</span><span class="sxs-lookup"><span data-stu-id="306bc-104">Adding and Responding to Buttons to a GridView (C#)</span></span>
 ====================
