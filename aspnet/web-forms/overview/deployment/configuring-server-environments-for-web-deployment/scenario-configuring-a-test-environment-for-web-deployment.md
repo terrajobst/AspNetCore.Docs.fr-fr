@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879853"
 ---
 <a name="scenario-configuring-a-test-environment-for-web-deployment"></a>Scénario : Configuration d’un environnement de Test pour le déploiement Web
 ====================

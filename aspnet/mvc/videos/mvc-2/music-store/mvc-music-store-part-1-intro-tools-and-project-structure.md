@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30879684"
 ---
 <a name="mvc-music-store-part-1-intro-tools-and-project-structure"></a>Magasin de musique MVC, partie 1 : Introduction, des outils et Structure de projet
 ====================

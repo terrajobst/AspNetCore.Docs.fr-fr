@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30889551"
 ---
 <a name="sorting-data-in-a-datalist-or-repeater-control-c"></a>Tri des données dans un contrôle DataList ou le contrôle du répéteur (c#)
 ====================

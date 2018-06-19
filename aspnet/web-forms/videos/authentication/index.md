@@ -2,7 +2,7 @@
 uid: web-forms/videos/authentication/index
 title: Authentification | Documents Microsoft
 author: rick-anderson
-description: "Comment implémenter et gérer la sécurité (authentification) dans une application ASP.NET."
+description: Comment implémenter et gérer la sécurité (authentification) dans une application ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/authentication
 msc.type: chapter
 ms.openlocfilehash: b9cd2d86bce12795802302b822e945762690a57b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521728"
 ---
 <a name="authentication"></a>Authentification
 ====================

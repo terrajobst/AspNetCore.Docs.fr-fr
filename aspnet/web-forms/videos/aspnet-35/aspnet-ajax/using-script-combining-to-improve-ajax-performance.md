@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30886795"
 ---
 <a name="using-script-combining-to-improve-ajax-performance"></a>À l’aide de la combinaison de Script pour améliorer les performances d’AJAX
 ====================

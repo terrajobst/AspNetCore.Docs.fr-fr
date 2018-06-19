@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/visual-studio-web-deployment/index
-title: "Déploiement de Web ASP.NET à l’aide de Visual Studio | Documents Microsoft"
+title: Déploiement de Web ASP.NET à l’aide de Visual Studio | Documents Microsoft
 author: rick-anderson
-description: "Cette série de didacticiels montre comment créer une application web ASP.NET qui utilise SQL Server (pas SQL Server Compact) disponibles sur internet en la déployant t..."
+description: Cette série de didacticiels montre comment créer une application web ASP.NET qui utilise SQL Server (pas SQL Server Compact) disponibles sur internet en la déployant t...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/15/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment
 msc.type: chapter
 ms.openlocfilehash: de7898f13c132f82b64403061558ba04684f523c
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515198"
 ---
 <a name="aspnet-web-deployment-using-visual-studio"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio
 ====================

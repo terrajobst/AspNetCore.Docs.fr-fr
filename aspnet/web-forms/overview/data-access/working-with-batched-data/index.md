@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/working-with-batched-data/index
-title: "Utilisation des données par lots | Documents Microsoft"
+title: Utilisation des données par lots | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels examiner de mise à jour, suppression et l’insertion des lots de données à l’aide de transactions."
+description: Ces didacticiels examiner de mise à jour, suppression et l’insertion des lots de données à l’aide de transactions.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data
 msc.type: chapter
 ms.openlocfilehash: 1a6af028c2d4ac8b6085a34bec16893d1e1632af
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514758"
 ---
 <a name="working-with-batched-data"></a>Utilisation des données par lot
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30873584"
 ---
 <a name="using-cascadingdropdown-with-a-database-vb"></a>À l’aide de CascadingDropDown avec une base de données (Visual Basic)
 ====================

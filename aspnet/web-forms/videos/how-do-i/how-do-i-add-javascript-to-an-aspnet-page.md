@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-javascript-to-an-aspnet-page
-title: "[Comment faire] Ajouter JavaScript à une Page ASP.NET | Documents Microsoft"
+title: '[Comment faire] Ajouter JavaScript à une Page ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo, Chris Pels affichera l’inclusion de JavaScript dans une page ASP.NET pour une utilisation sur la page du client pour fournir une expérience utilisateur plus riche et plus robuste..."
+description: Dans cette vidéo, Chris Pels affichera l’inclusion de JavaScript dans une page ASP.NET pour une utilisation sur la page du client pour fournir une expérience utilisateur plus riche et plus robuste...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/13/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525548"
 ---
 <a name="how-do-i-add-javascript-to-an-aspnet-page"></a>[Comment faire] Ajouter JavaScript à une Page ASP.NET
 ====================

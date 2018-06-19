@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/caching-data/index
-title: "Mise en cache de données | Documents Microsoft"
+title: Mise en cache de données | Documents Microsoft
 author: rick-anderson
-description: "Cet ensemble de didacticiel explique la mise en cache, ce qui peut améliorer les performances du site et comment appliquer la mise en cache à la couche de présentation à l’aide du contrôle ObjectDataSource..."
+description: Cet ensemble de didacticiel explique la mise en cache, ce qui peut améliorer les performances du site et comment appliquer la mise en cache à la couche de présentation à l’aide du contrôle ObjectDataSource...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/caching-data
 msc.type: chapter
 ms.openlocfilehash: 0b14ecdd4a8cab1d61bf9b7c238fc32330d54e52
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26512618"
 ---
 <a name="caching-data"></a>Mise en cache des données
 ====================

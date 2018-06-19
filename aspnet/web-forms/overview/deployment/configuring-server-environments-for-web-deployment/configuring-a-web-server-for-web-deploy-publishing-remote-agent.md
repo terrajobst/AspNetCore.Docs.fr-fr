@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/24/2018
+ms.locfileid: "34473205"
 ---
 <a name="configuring-a-web-server-for-web-deploy-publishing-remote-agent"></a>Configuration d’un serveur Web pour la publication (Agent distant) de déploiement Web
 ====================

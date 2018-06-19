@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30884715"
 ---
 <a name="lesson-7-databinding-to-user-interface-controls"></a>[Leçon 7 :] Liaison de données aux contrôles d’Interface utilisateur
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30881023"
 ---
 <a name="aspnet-dynamic-data-custom-form-formatting"></a>Mise en forme du formulaire personnalisé données dynamiques d’ASP.NET
 ====================
