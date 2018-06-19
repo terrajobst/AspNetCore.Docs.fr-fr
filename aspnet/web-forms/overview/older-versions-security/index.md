@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/older-versions-security/index
-title: "Les Versions antérieures - sécurité | Documents Microsoft"
+title: Les Versions antérieures - sécurité | Documents Microsoft
 author: rick-anderson
-description: "Rubriques de sécurité, l’authentification et d’autorisation pour ASP.NET 4 et les applications Web Forms antérieures."
+description: Rubriques de sécurité, l’authentification et d’autorisation pour ASP.NET 4 et les applications Web Forms antérieures.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/18/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security
 msc.type: chapter
 ms.openlocfilehash: 2a21be5f59e1893ce5a85d0ec801abf6750024b9
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519068"
 ---
 <a name="older-versions---security"></a>Versions antérieures - sécurité
 ====================

@@ -1,20 +1,21 @@
 ---
 uid: webhooks/index
-title: "Vue d’ensemble ASP.NET WebHooks | Documents Microsoft"
+title: Vue d’ensemble ASP.NET WebHooks | Documents Microsoft
 author: rick-anderson
-description: "Introduction à ASP.NET WebHooks."
+description: Introduction à ASP.NET WebHooks.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 5e2843f0-f499-448f-a712-33d4e9858321
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 ms.openlocfilehash: 52399c23cdf393a2f7f94661fd48098ced65948c
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26530048"
 ---
 # <a name="aspnet-webhooks-overview"></a>Vue d’ensemble d’ASP.NET WebHooks
 

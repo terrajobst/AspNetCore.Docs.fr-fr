@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/views/index
-title: "Vues d’ASP.NET MVC | Documents Microsoft"
+title: Vues d’ASP.NET MVC | Documents Microsoft
 author: rick-anderson
-description: "Cet ensemble de didacticiels fournit une brève introduction aux vues ASP.NET MVC, les données de la vue et les programmes d’assistance HTML."
+description: Cet ensemble de didacticiels fournit une brève introduction aux vues ASP.NET MVC, les données de la vue et les programmes d’assistance HTML.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/views
 msc.type: chapter
 ms.openlocfilehash: ba9f94794f1a53d9b3a027b1cfdf2e97b5544488
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500828"
 ---
 <a name="aspnet-mvc-views"></a>Vues ASP.NET MVC
 ====================

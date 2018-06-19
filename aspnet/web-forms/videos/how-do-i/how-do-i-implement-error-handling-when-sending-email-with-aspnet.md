@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-error-handling-when-sending-email-with-aspnet
-title: "[Comment faire] Implémenter la gestion des erreurs lors de l’envoi de courrier électronique avec ASP.NET | Documents Microsoft"
+title: '[Comment faire] Implémenter la gestion des erreurs lors de l’envoi de courrier électronique avec ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Chris Pels montre comment implémenter lors de l’envoi d’un message électronique avec ASP.NET de gestion des erreurs. Il crée une page web d’ASP.NET pour envoyer un courrier électronique, montre comment configurer & lt...."
+description: Chris Pels montre comment implémenter lors de l’envoi d’un message électronique avec ASP.NET de gestion des erreurs. Il crée une page web d’ASP.NET pour envoyer un courrier électronique, montre comment configurer & lt....
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/06/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526428"
 ---
 <a name="how-do-i-implement-error-handling-when-sending-email-with-aspnet"></a>[Comment faire] Implémenter la gestion des erreurs lors de l’envoi de courrier électronique avec ASP.NET
 ====================

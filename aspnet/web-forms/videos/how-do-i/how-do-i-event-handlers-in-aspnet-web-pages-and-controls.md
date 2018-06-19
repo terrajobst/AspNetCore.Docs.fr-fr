@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-event-handlers-in-aspnet-web-pages-and-controls
-title: "[Comment faire] Gestionnaires d’événements dans les Pages Web ASP.NET et des contrôles | Documents Microsoft"
+title: '[Comment faire] Gestionnaires d’événements dans les Pages Web ASP.NET et des contrôles | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo indiquera comment créer des gestionnaires d’événements pour les contrôles serveur web et les pages web ASP.NET. Tout d’abord, découvrez comment créer f d’événements de niveau page..."
+description: Dans cette Chris Pels vidéo indiquera comment créer des gestionnaires d’événements pour les contrôles serveur web et les pages web ASP.NET. Tout d’abord, découvrez comment créer f d’événements de niveau page...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/17/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526038"
 ---
 <a name="how-do-i-event-handlers-in-aspnet-web-pages-and-controls"></a>[Comment faire] Gestionnaires d’événements dans les Pages Web ASP.NET et des contrôles
 ====================

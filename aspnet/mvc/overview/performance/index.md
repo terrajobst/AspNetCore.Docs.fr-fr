@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/performance/index
-title: "Performances d’ASP.NET MVC | Documents Microsoft"
+title: Performances d’ASP.NET MVC | Documents Microsoft
 author: rick-anderson
 description: Ressources pour optimiser les performances des applications ASP.NET MVC.
 ms.author: aspnetcontent
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/performance
 msc.type: chapter
 ms.openlocfilehash: 9c0e41e7356dca788f4e144dd211fd1483da8465
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503178"
 ---
 <a name="aspnet-mvc-performance"></a>Performances d’ASP.NET MVC
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-make-html-elements-accessible-from-server-side-code
-title: "[Comment faire] Rendre des éléments HTML accessible à partir du code côté serveur | Documents Microsoft"
+title: '[Comment faire] Rendre des éléments HTML accessible à partir du code côté serveur | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo sera montrent comment créer des éléments HTML standards dans une page .aspx accessible à partir du code côté serveur pour qu’ils puissent être utilisées dans la page processin..."
+description: Dans cette Chris Pels vidéo sera montrent comment créer des éléments HTML standards dans une page .aspx accessible à partir du code côté serveur pour qu’ils puissent être utilisées dans la page processin...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/29/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521548"
 ---
 <a name="how-do-i-make-html-elements-accessible-from-server-side-code"></a>[Comment faire] Rendre des éléments HTML accessible à partir du code côté serveur
 ====================

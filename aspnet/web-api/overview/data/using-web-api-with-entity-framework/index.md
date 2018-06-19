@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/index
-title: "À l’aide des API Web 2 avec Entity Framework 6 | Documents Microsoft"
+title: À l’aide des API Web 2 avec Entity Framework 6 | Documents Microsoft
 author: rick-anderson
-description: "Comment créer une application d’API Web qui utilise Entity Framework pour la persistance de la base de données."
+description: Comment créer une application d’API Web qui utilise Entity Framework pour la persistance de la base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/03/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework
 msc.type: chapter
 ms.openlocfilehash: 560a12f2625366947efa2afd00bbb184d9060e1e
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506648"
 ---
 <a name="using-web-api-2-with-entity-framework-6"></a>À l’aide des API Web 2 avec Entity Framework 6
 ====================

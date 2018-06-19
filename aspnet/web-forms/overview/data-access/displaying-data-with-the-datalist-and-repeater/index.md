@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/index
-title: "Affichage des données avec le contrôle DataList et répéteur | Documents Microsoft"
+title: Affichage des données avec le contrôle DataList et répéteur | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels montrent d’autres méthodes pour afficher des données en utilisant les contrôles DataList et répéteur."
+description: Ces didacticiels montrent d’autres méthodes pour afficher des données en utilisant les contrôles DataList et répéteur.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist
 msc.type: chapter
 ms.openlocfilehash: 99d24bafb594df2005ba4a7ca9326524e713f25f
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26513098"
 ---
 <a name="displaying-data-with-the-datalist-and-repeater"></a>Affichage des données avec le contrôle DataList et répéteur
 ====================

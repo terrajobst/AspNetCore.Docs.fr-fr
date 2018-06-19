@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-command-buttons-for-individual-items
-title: "[Comment faire] Implémenter des boutons de commande pour des éléments individuels | Documents Microsoft"
+title: '[Comment faire] Implémenter des boutons de commande pour des éléments individuels | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo, Chris Pels affichera la gestion des événements associés à un contrôle de bouton dans chaque élément d’un contrôle lié aux données comme un contrôle ListView. Premier..."
+description: Dans cette vidéo, Chris Pels affichera la gestion des événements associés à un contrôle de bouton dans chaque élément d’un contrôle lié aux données comme un contrôle ListView. Premier...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/24/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525558"
 ---
 <a name="how-do-i-implement-command-buttons-for-individual-items"></a>[Comment faire] Implémenter des boutons de commande pour des éléments individuels
 ====================

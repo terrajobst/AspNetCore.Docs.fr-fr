@@ -1,8 +1,8 @@
 ---
 uid: mvc/videos/mvc-3/mvc-3-razor-helpers
-title: "MVC 3 - d’applications auxiliaires Razor | Documents Microsoft"
+title: MVC 3 - d’applications auxiliaires Razor | Documents Microsoft
 author: jongalloway
-description: "Dans cette vidéo, vous allez apprendre à utiliser les deux méthodes d’extension et déclarative @helper syntaxe dans les vues Razor."
+description: Dans cette vidéo, vous allez apprendre à utiliser les deux méthodes d’extension et déclarative @helper syntaxe dans les vues Razor.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/23/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26503658"
 ---
 <a name="mvc-3---razor-helpers"></a>MVC 3 - d’applications auxiliaires Razor
 ====================

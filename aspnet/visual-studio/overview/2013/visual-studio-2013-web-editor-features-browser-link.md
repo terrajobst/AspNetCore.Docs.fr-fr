@@ -1,14 +1,14 @@
 ---
 uid: visual-studio/overview/2013/visual-studio-2013-web-editor-features-browser-link
-title: "Visual Studio 2013 Web fonctionnalités de l’éditeur - lien du navigateur | Documents Microsoft"
+title: Visual Studio 2013 Web fonctionnalités de l’éditeur - lien du navigateur | Documents Microsoft
 author: shanselman
-description: "Scott Hanselman illustre un lien de navigateur dans Visual Studio 2013, ce qui permet la communication bidirectionnelle entre Visual Studio et plusieurs navigateurs connectés..."
+description: Scott Hanselman illustre un lien de navigateur dans Visual Studio 2013, ce qui permet la communication bidirectionnelle entre Visual Studio et plusieurs navigateurs connectés...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/17/2013
 ms.topic: article
 ms.assetid: 45bf07c6-145f-435e-a703-3233e710d528
-ms.technology: 
+ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013/visual-studio-2013-web-editor-features-browser-link
 msc.type: video
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506558"
 ---
 <a name="visual-studio-2013-web-editor-features---browser-link"></a>Visual Studio 2013 Web fonctionnalités de l’éditeur - lien du navigateur
 ====================

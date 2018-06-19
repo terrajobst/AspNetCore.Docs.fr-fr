@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-precompile-an-aspnet-website
-title: "[Comment faire] Précompilation d’un site Web ASP.NET | Documents Microsoft"
+title: '[Comment faire] Précompilation d’un site Web ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Chris Pels montre la précompilation d’un site Web ASP.NET, ce qui augmente les performances de la première exécution et renforce la sécurité de l’application."
+description: Chris Pels montre la précompilation d’un site Web ASP.NET, ce qui augmente les performances de la première exécution et renforce la sécurité de l’application.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/18/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521698"
 ---
 <a name="how-do-i-precompile-an-aspnet-website"></a>[Comment faire] Précompilation d’un site Web ASP.NET
 ====================

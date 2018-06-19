@@ -1,8 +1,8 @@
 ---
 uid: web-forms/what-is-web-forms
-title: "Nouveautés des Web Forms | Documents Microsoft"
+title: Nouveautés des Web Forms | Documents Microsoft
 author: rick-anderson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528608"
 ---
 <a name="what-is-web-forms"></a>Nouveautés de Web Forms
 ====================

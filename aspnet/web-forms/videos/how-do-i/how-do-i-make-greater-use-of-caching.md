@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-make-greater-use-of-caching
-title: "[Comment faire] Utiliser davantage de mise en cache ? | Microsoft Docs"
+title: '[Comment faire] Utiliser davantage de mise en cache ? | Microsoft Docs'
 author: microsoft
-description: "Regarder une démonstration de la mise en cache de sortie de Page partielle, suivie d’une vue d’ensemble de l’API de Cache qui montre comment lier des efficacement une présentation des données..."
+description: Regarder une démonstration de la mise en cache de sortie de Page partielle, suivie d’une vue d’ensemble de l’API de Cache qui montre comment lier des efficacement une présentation des données...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526448"
 ---
 <a name="how-do-i-make-greater-use-of-caching"></a>[Comment faire] Utiliser davantage de mise en cache ?
 ====================

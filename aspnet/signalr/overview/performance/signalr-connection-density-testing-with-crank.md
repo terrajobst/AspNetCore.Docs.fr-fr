@@ -1,8 +1,8 @@
 ---
 uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
-title: "Densité de connexion SignalR test avec manivelle | Documents Microsoft"
+title: Densité de connexion SignalR test avec manivelle | Documents Microsoft
 author: tfitzmac
-description: "Densité de connexion SignalR manivelle de test"
+description: Densité de connexion SignalR manivelle de test
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/22/2015
@@ -17,6 +17,7 @@ ms.sourcegitcommit: fe880bf4ed1c8116071c0e47c0babf3623b7f44a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/21/2017
+ms.locfileid: "26535328"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>Densité de connexion SignalR manivelle de test
 ====================

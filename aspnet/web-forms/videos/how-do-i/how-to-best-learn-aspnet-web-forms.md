@@ -2,7 +2,7 @@
 uid: web-forms/videos/how-do-i/how-to-best-learn-aspnet-web-forms
 title: Comment mieux apprendre des Web Forms ASP.NET | Documents Microsoft
 author: JoeStagner
-description: "Microsoft Joe Stagner vous montre ce que vous devez savoir comment utiliser les Web Forms ASP.NET pour développer vos applications web."
+description: Microsoft Joe Stagner vous montre ce que vous devez savoir comment utiliser les Web Forms ASP.NET pour développer vos applications web.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/03/2010
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521738"
 ---
 <a name="how-to-best-learn-aspnet-web-forms"></a>Comment mieux apprendre des Web Forms ASP.NET
 ====================

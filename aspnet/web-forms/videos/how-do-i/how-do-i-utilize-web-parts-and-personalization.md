@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-utilize-web-parts-and-personalization
-title: "[Comment faire] Utiliser des composants WebPart et personnalisation ? | Microsoft Docs"
+title: '[Comment faire] Utiliser des composants WebPart et personnalisation ? | Microsoft Docs'
 author: microsoft
-description: "Découvrez comment utiliser les nouvelles fonctionnalités de personnalisation et de composants WebPart pour générer des pages web personnalisables dont le contenu et la disposition peut être modifiée par l’utilisateur."
+description: Découvrez comment utiliser les nouvelles fonctionnalités de personnalisation et de composants WebPart pour générer des pages web personnalisables dont le contenu et la disposition peut être modifiée par l’utilisateur.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526128"
 ---
 <a name="how-do-i-utilize-web-parts-and-personalization"></a>[Comment faire] Utiliser des composants WebPart et personnalisation ?
 ====================

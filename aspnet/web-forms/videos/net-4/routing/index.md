@@ -2,7 +2,7 @@
 uid: web-forms/videos/net-4/routing/index
 title: Routage | Documents Microsoft
 author: rick-anderson
-description: "Cette vidéo vous montre comment créer intuitive et URL de compatibles avec les moteurs de recherche pour vos applications Web Forms."
+description: Cette vidéo vous montre comment créer intuitive et URL de compatibles avec les moteurs de recherche pour vos applications Web Forms.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/net-4/routing
 msc.type: chapter
 ms.openlocfilehash: 71bf4ff11d5cead001ce381324bea8fb6de9d8bf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525388"
 ---
 <a name="routing"></a>Routage
 ====================

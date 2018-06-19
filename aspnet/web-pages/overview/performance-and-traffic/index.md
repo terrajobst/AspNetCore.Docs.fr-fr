@@ -2,7 +2,7 @@
 uid: web-pages/overview/performance-and-traffic/index
 title: Performances | Documents Microsoft
 author: rick-anderson
-description: "Comment le contenu du cache pour améliorer les performances et comment mesurer le trafic du site."
+description: Comment le contenu du cache pour améliorer les performances et comment mesurer le trafic du site.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/08/2014
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/performance-and-traffic
 msc.type: chapter
 ms.openlocfilehash: fffeb7c5b5a202a273bfd8b144ad1f63d5743087
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528518"
 ---
 <a name="performance"></a>Performances
 ====================

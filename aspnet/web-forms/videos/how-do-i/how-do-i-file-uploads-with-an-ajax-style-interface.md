@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-file-uploads-with-an-ajax-style-interface
-title: "[Comment faire]  Téléchargements avec une Interface de Style AJAX de fichiers | Documents Microsoft"
+title: '[Comment faire]  Téléchargements avec une Interface de Style AJAX de fichiers | Documents Microsoft'
 author: JoeStagner
-description: "Dans cette vidéo nous verrons, à l’aide d’ASP.NET, un style AJAX de téléchargement des fichiers à partir de l’ordinateur client à votre serveur. Style d’AJAX dire, car il existe un..."
+description: Dans cette vidéo nous verrons, à l’aide d’ASP.NET, un style AJAX de téléchargement des fichiers à partir de l’ordinateur client à votre serveur. Style d’AJAX dire, car il existe un...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/12/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526208"
 ---
 <a name="how-do-i--file-uploads-with-an-ajax-style-interface"></a>[Comment faire]  Téléchargements de fichiers avec une Interface de Style AJAX
 ====================

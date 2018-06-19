@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-custom-membership-provider
-title: "[Comment faire] Créer un fournisseur d’appartenances personnalisé ? | Microsoft Docs"
+title: '[Comment faire] Créer un fournisseur d’appartenances personnalisé ? | Microsoft Docs'
 author: rick-anderson
-description: "Un fournisseur d’appartenances permet à une application web stocker et récupérer des données d’appartenance pour un utilisateur, et les utilisations de fournisseur d’appartenances ASP.NET standards prédéfinissent..."
+description: Un fournisseur d’appartenances permet à une application web stocker et récupérer des données d’appartenance pour un utilisateur, et les utilisations de fournisseur d’appartenances ASP.NET standards prédéfinissent...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525518"
 ---
 <a name="how-do-i-create-a-custom-membership-provider"></a>[Comment faire] Créer un fournisseur d’appartenances personnalisé ?
 ====================

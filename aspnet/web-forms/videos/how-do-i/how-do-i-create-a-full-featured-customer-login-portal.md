@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-full-featured-customer-login-portal
-title: "[Comment faire] Créer un portail de compte de connexion client complet ? | Microsoft Docs"
+title: '[Comment faire] Créer un portail de compte de connexion client complet ? | Microsoft Docs'
 author: microsoft
-description: "Suivre le long de la création d’un portail client fictif pour en savoir plus sur les pages maîtres, thèmes, l’appartenance, rôles, la navigation de site, les profils utilisateur, et..."
+description: Suivre le long de la création d’un portail client fictif pour en savoir plus sur les pages maîtres, thèmes, l’appartenance, rôles, la navigation de site, les profils utilisateur, et...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/05/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525298"
 ---
 <a name="how-do-i-create-a-full-featured-customer-login-portal"></a>[Comment faire] Créer un portail de compte de connexion client complet ?
 ====================

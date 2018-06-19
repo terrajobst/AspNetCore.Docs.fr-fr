@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/sending-html-form-data-part-1
-title: "Envoi de données de formulaire HTML dans l’API Web ASP.NET : les données de formulaire-urlencoded | Documents Microsoft"
+title: 'Envoi de données de formulaire HTML dans l’API Web ASP.NET : les données de formulaire-urlencoded | Documents Microsoft'
 author: MikeWasson
-description: 
+description: ''
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/15/2012
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26506938"
 ---
 <a name="sending-html-form-data-in-aspnet-web-api-form-urlencoded-data"></a>Envoi de données de formulaire HTML dans l’API Web ASP.NET : les données de formulaire-urlencoded
 ====================

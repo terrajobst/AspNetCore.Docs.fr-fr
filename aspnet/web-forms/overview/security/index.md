@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/security/index
-title: "Sécurité, l’authentification et l’autorisation dans ASP.NET Web Forms | Documents Microsoft"
+title: Sécurité, l’authentification et l’autorisation dans ASP.NET Web Forms | Documents Microsoft
 author: rick-anderson
-description: "Comment permettre aux utilisateurs de se connecter à votre site (et éventuellement être attribués aux rôles) à l’aide de l’authentification Windows ou un formulaire de connexion."
+description: Comment permettre aux utilisateurs de se connecter à votre site (et éventuellement être attribués aux rôles) à l’aide de l’authentification Windows ou un formulaire de connexion.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/security
 msc.type: chapter
 ms.openlocfilehash: 48bc147288f7bbe2ee78e6b271e7090a99d35af8
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519878"
 ---
 <a name="security-authentication-and-authorization-in-aspnet-web-forms"></a>Sécurité, l’authentification et autorisation dans les formulaires Web ASP.NET
 ====================

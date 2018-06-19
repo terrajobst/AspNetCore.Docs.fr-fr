@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-use-a-custom-configuration-section-in-an-aspnet-configuration-file
-title: "[Comment faire] Créer et utiliser une Section de Configuration personnalisée dans un fichier de Configuration ASP.NET | Documents Microsoft"
+title: '[Comment faire] Créer et utiliser une Section de Configuration personnalisée dans un fichier de Configuration ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo, Chris Pels indiquera comment étendre le jeu standard de paramètres de configuration ASP.NET avec vos propres éléments de configuration XML. Tout d’abord, voyez comment..."
+description: Dans cette vidéo, Chris Pels indiquera comment étendre le jeu standard de paramètres de configuration ASP.NET avec vos propres éléments de configuration XML. Tout d’abord, voyez comment...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/16/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528168"
 ---
 <a name="how-do-i-create-and-use-a-custom-configuration-section-in-an-aspnet-configuration-file"></a>[Comment faire] Créer et utiliser une Section de Configuration personnalisée dans un fichier de Configuration ASP.NET
 ====================

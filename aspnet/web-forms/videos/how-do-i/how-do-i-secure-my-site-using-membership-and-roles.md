@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-secure-my-site-using-membership-and-roles
-title: "[Comment faire] Sécuriser mon Site à l’aide de l’appartenance et les rôles ? | Microsoft Docs"
+title: '[Comment faire] Sécuriser mon Site à l’aide de l’appartenance et les rôles ? | Microsoft Docs'
 author: microsoft
-description: "Découvrez comment sécuriser un site web utilisant les nouvelles fonctionnalités de l’appartenance et les rôles d’ASP.NET 2.0. Rubriques incluent l’enregistrement de l’utilisateur, la récupération de mot de passe et restricti..."
+description: Découvrez comment sécuriser un site web utilisant les nouvelles fonctionnalités de l’appartenance et les rôles d’ASP.NET 2.0. Rubriques incluent l’enregistrement de l’utilisateur, la récupération de mot de passe et restricti...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/09/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526098"
 ---
 <a name="how-do-i-secure-my-site-using-membership-and-roles"></a>[Comment faire] Sécuriser mon Site à l’aide de l’appartenance et les rôles ?
 ====================

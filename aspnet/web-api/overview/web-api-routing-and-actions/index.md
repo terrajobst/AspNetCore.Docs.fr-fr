@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/index
-title: "Routage d’API Web | Documents Microsoft"
+title: Routage d’API Web | Documents Microsoft
 author: rick-anderson
-description: "Comment API Web ASP.NET achemine les requêtes HTTP pour les contrôleurs et les actions."
+description: Comment API Web ASP.NET achemine les requêtes HTTP pour les contrôleurs et les actions.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/26/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-api/overview/web-api-routing-and-actions
 msc.type: chapter
 ms.openlocfilehash: eee9d853e67cf8e13541a8ae570108a3564f8a51
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508978"
 ---
 <a name="web-api-routing"></a>Routage d’API Web
 ====================

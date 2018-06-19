@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/index
-title: "Contrôleurs et routage | Documents Microsoft"
+title: Contrôleurs et routage | Documents Microsoft
 author: rick-anderson
-description: "Dans le jeu de ce didacticiel, vous en savoir plus sur le routage ASP.NET, qui mappe les demandes du navigateur pour les actions de contrôleur ASP.NET MVC."
+description: Dans le jeu de ce didacticiel, vous en savoir plus sur le routage ASP.NET, qui mappe les demandes du navigateur pour les actions de contrôleur ASP.NET MVC.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/28/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing
 msc.type: chapter
 ms.openlocfilehash: fe42077c119599bd169464ec2a7cdc4a0dd008a3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26499948"
 ---
 <a name="controllers-and-routing"></a>Contrôleurs et routage
 ====================

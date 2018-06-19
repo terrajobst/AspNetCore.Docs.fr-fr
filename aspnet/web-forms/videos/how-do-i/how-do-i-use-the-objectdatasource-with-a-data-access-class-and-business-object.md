@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-the-objectdatasource-with-a-data-access-class-and-business-object
-title: "[Comment faire] Utilisez ObjectDataSource avec une classe d’accès aux données et un objet métier | Documents Microsoft"
+title: '[Comment faire] Utilisez ObjectDataSource avec une classe d’accès aux données et un objet métier | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo Chris Pels affiche l’utilisation de ObjectDataSource comme une couche intermédiaire entre les éléments d’interface utilisateur liée aux données et des données personnalisées compte..."
+description: Dans cette vidéo Chris Pels affiche l’utilisation de ObjectDataSource comme une couche intermédiaire entre les éléments d’interface utilisateur liée aux données et des données personnalisées compte...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526118"
 ---
 <a name="how-do-i-use-the-objectdatasource-with-a-data-access-class-and-business-object"></a>[Comment faire] Utilisez ObjectDataSource avec une classe d’accès aux données et un objet métier
 ====================

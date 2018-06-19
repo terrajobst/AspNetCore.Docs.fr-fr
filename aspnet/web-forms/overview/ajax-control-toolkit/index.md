@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/index
-title: "Les Versions antérieures - outils de contrôle Ajax | Documents Microsoft"
+title: Les Versions antérieures - outils de contrôle Ajax | Documents Microsoft
 author: rick-anderson
-description: "Comment démarrer avec les outils de contrôle Ajax et comment utiliser certains de ces contrôles les plus populaires. DevExpress maintient que libre et open source Ajax contr..."
+description: Comment démarrer avec les outils de contrôle Ajax et comment utiliser certains de ces contrôles les plus populaires. DevExpress maintient que libre et open source Ajax contr...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit
 msc.type: chapter
 ms.openlocfilehash: 75fef51d40352c4bd600bb63056f1d1d5c74cbd6
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510848"
 ---
 <a name="older-versions---ajax-control-toolkit"></a>Versions antérieures - outils de contrôle Ajax
 ====================

@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/index
 title: ASP.NET 4 - mise en route avec Entity Framework 4 et les Web Forms | Documents Microsoft
 author: rick-anderson
-description: "Les principes fondamentaux de l’utilisation d’Entity Framework pour afficher et modifier des données dans une application Web Forms ASP.NET."
+description: Les principes fondamentaux de l’utilisation d’Entity Framework pour afficher et modifier des données dans une application Web Forms ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-starte
 msc.type: chapter
 ms.openlocfilehash: 4a25fa435613fa099b4ec411f0381d7481d2e228
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26518128"
 ---
 <a name="aspnet-4---getting-started-with-entity-framework-4-and-web-forms"></a>ASP.NET 4 - mise en route avec Entity Framework 4 et les Web Forms
 ====================

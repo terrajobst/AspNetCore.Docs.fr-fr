@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-persist-the-state-of-a-user-control-during-a-postback
-title: "[Comment] : rendre persistant l’état d’un contrôle utilisateur au cours d’une publication (postback) | Documents Microsoft"
+title: '[Comment] : rendre persistant l’état d’un contrôle utilisateur au cours d’une publication (postback) | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo montre comment rendre persistant l’état d’un ou plusieurs objets dans un contrôle utilisateur. Tout d’abord, un contrôle utilisateur est créé qui représente l’abilit..."
+description: Dans cette Chris Pels vidéo montre comment rendre persistant l’état d’un ou plusieurs objets dans un contrôle utilisateur. Tout d’abord, un contrôle utilisateur est créé qui représente l’abilit...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/02/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525968"
 ---
 <a name="how-do-i-persist-the-state-of-a-user-control-during-a-postback"></a>[Comment] : rendre persistant l’état d’un contrôle utilisateur au cours d’une publication (postback)
 ====================

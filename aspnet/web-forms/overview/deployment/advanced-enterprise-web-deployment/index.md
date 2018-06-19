@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/index
-title: "ASP.NET 4 - série de déploiement d’entreprise 4 rubriques avancées | Documents Microsoft"
+title: ASP.NET 4 - série de déploiement d’entreprise 4 rubriques avancées | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel vous indiquera comment effectuer diverses tâches requises ou souhaitable dans de nombreux scénarios de déploiement d’entreprise."
+description: Ce didacticiel vous indiquera comment effectuer diverses tâches requises ou souhaitable dans de nombreux scénarios de déploiement d’entreprise.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/16/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment
 msc.type: chapter
 ms.openlocfilehash: 42e80df6040dec0194bc1a5ba6ccc79c09c65ea6
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26515148"
 ---
 <a name="aspnet-4---enterprise-deployment-series-4-advanced-topics"></a>ASP.NET 4 - série de déploiement d’entreprise 4 rubriques avancées
 ====================

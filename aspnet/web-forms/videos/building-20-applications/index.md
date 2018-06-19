@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/building-20-applications/index
-title: "Création de 2.0 Applications | Documents Microsoft"
+title: Création de 2.0 Applications | Documents Microsoft
 author: rick-anderson
-description: "Création d’ASP.NET 2.0 Applications"
+description: Création d’ASP.NET 2.0 Applications
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/videos/building-20-applications
 msc.type: chapter
 ms.openlocfilehash: 7260e5ba8bc913729c21245a3904a684d94086dd
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521588"
 ---
 <a name="building-20-applications"></a>Création de 2.0 Applications
 ====================

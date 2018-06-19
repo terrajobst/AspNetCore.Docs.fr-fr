@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/getting-started/mvc-learning-sequence
-title: "MVC recommandé didacticiels et articles | Documents Microsoft"
+title: MVC recommandé didacticiels et articles | Documents Microsoft
 author: Rick-Anderson
-description: "Cette page contient des liens vers les didacticiels ASP.NET MVC et une séquence suggérée pour les appliquer."
+description: Cette page contient des liens vers les didacticiels ASP.NET MVC et une séquence suggérée pour les appliquer.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/22/2015
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28032639"
 ---
 <a name="mvc-recommended-tutorials-and-articles"></a>MVC recommandé didacticiels et articles
 ====================

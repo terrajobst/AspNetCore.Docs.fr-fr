@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/getting-started/index
 title: Prise en main | Documents Microsoft
 author: rick-anderson
-description: "Cette page décrit comment télécharger les outils de contrôle Ajax et ajouter ses contrôles à la boîte à outils Visual Studio ou Visual Web Developer."
+description: Cette page décrit comment télécharger les outils de contrôle Ajax et ajouter ses contrôles à la boîte à outils Visual Studio ou Visual Web Developer.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started
 msc.type: chapter
 ms.openlocfilehash: a2bee0fa190a0215546bd5ac72e14df23b2be87b
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510498"
 ---
 <a name="getting-started"></a>Commencer
 ====================

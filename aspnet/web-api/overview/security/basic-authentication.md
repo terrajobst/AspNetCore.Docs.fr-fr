@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/security/basic-authentication
-title: "L’authentification de base dans l’API Web ASP.NET | Documents Microsoft"
+title: L’authentification de base dans l’API Web ASP.NET | Documents Microsoft
 author: MikeWasson
-description: "Décrit l’utilisation de l’authentification de base dans l’API Web ASP.NET."
+description: Décrit l’utilisation de l’authentification de base dans l’API Web ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/02/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26508128"
 ---
 <a name="basic-authentication-in-aspnet-web-api"></a>Authentification de base dans l’API Web ASP.NET
 ====================

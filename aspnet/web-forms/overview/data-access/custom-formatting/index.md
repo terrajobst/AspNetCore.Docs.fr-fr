@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/index
-title: "Mise en forme personnalisée | Documents Microsoft"
+title: Mise en forme personnalisée | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels examiner comment personnaliser l’affichage des données lors de la liaison de données à l’aide de gestionnaires d’événements dans les contrôles GridView, DetailsView et FormView."
+description: Ces didacticiels examiner comment personnaliser l’affichage des données lors de la liaison de données à l’aide de gestionnaires d’événements dans les contrôles GridView, DetailsView et FormView.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/custom-formatting
 msc.type: chapter
 ms.openlocfilehash: afced0e5c310d8843107dde48d97e55e5242dd13
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26513018"
 ---
 <a name="custom-formatting"></a>Mise en forme personnalisée
 ====================

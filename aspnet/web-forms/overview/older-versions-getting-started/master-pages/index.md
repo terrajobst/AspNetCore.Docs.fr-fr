@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-getting-started/master-pages/index
 title: ASP.NET 3.5 - les Pages Web Forms Master | Documents Microsoft
 author: rick-anderson
-description: "Comment créer et utiliser des pages maîtres ASP.NET et des pages de contenu pour créer une disposition cohérente dans les applications Web Forms."
+description: Comment créer et utiliser des pages maîtres ASP.NET et des pages de contenu pour créer une disposition cohérente dans les applications Web Forms.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/04/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages
 msc.type: chapter
 ms.openlocfilehash: 7db12550902920339d3bbacdf0a13b2081edc580
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26518038"
 ---
 <a name="aspnet-35---web-forms-master-pages"></a>ASP.NET 3.5 - les Pages maître Web Forms
 ====================

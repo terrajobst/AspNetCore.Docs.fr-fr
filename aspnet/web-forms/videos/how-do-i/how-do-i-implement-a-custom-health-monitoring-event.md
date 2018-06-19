@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-a-custom-health-monitoring-event
-title: "[Comment faire] Implémenter un événement de contrôle d’état personnalisé | Documents Microsoft"
+title: '[Comment faire] Implémenter un événement de contrôle d’état personnalisé | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo affichera la création d’un événement qui étend un dans ASP.NET, les événements d’analyse du fonctionnement standard de contrôle d’état personnalisé. Le pro personnalisé..."
+description: Dans cette Chris Pels vidéo affichera la création d’un événement qui étend un dans ASP.NET, les événements d’analyse du fonctionnement standard de contrôle d’état personnalisé. Le pro personnalisé...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/17/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524958"
 ---
 <a name="how-do-i-implement-a-custom-health-monitoring-event"></a>[Comment faire] Implémenter un événement de contrôle d’état personnalisé
 ====================

@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/index
-title: "Présentation des Pages Web ASP.NET | Documents Microsoft"
+title: Présentation des Pages Web ASP.NET | Documents Microsoft
 author: rick-anderson
-description: "Présentation d'ASP.NET Web Pages 2"
+description: Présentation d'ASP.NET Web Pages 2
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/18/2012
@@ -14,9 +14,10 @@ msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-
 msc.type: chapter
 ms.openlocfilehash: 03dd1be4651b95c8f7a496378af33e371cead64f
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26528558"
 ---
 <a name="introducing-aspnet-web-pages"></a>Présentation des Pages Web ASP.NET
 ====================

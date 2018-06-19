@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30868813"
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-c"></a>Création de contrôle vers le haut/bas numérique avec un service principal de Service Web (c#)
 ====================

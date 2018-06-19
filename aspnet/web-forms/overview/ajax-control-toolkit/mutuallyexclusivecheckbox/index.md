@@ -2,7 +2,7 @@
 uid: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/index
 title: MutuallyExclusiveCheckbox | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel montre comment utiliser le contrôle MutuallyExclusiveCheckbox pour créer des cases à cocher qui fonctionnent comme des boutons radio (mutuellement exclusif), mais qui peut être en cours..."
+description: Ce didacticiel montre comment utiliser le contrôle MutuallyExclusiveCheckbox pour créer des cases à cocher qui fonctionnent comme des boutons radio (mutuellement exclusif), mais qui peut être en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbo
 msc.type: chapter
 ms.openlocfilehash: bea70dbaeb855c586cc0180511c454bf4ffd6e5f
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510458"
 ---
 <a name="mutuallyexclusivecheckbox"></a>MutuallyExclusiveCheckbox
 ====================

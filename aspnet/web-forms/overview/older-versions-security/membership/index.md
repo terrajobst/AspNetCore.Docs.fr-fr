@@ -2,7 +2,7 @@
 uid: web-forms/overview/older-versions-security/membership/index
 title: ASP.NET 3.5 - appartenance | Documents Microsoft
 author: rick-anderson
-description: "Cette série de didacticiels examine les techniques d’utilisation du système d’appartenance intégrées (sécurité) pour créer des comptes d’utilisateur et configurer des règles d’autorisation."
+description: Cette série de didacticiels examine les techniques d’utilisation du système d’appartenance intégrées (sécurité) pour créer des comptes d’utilisateur et configurer des règles d’autorisation.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/older-versions-security/membership
 msc.type: chapter
 ms.openlocfilehash: bcd354111798d45c6207f0eead00647f6a031fcc
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519098"
 ---
 <a name="aspnet-35---membership"></a>ASP.NET 3.5 - appartenance
 ====================

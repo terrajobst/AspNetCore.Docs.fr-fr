@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/change-the-visual-style-of-a-web-page
-title: "Modifier le Style visuel d’une Page Web | Documents Microsoft"
+title: Modifier le Style visuel d’une Page Web | Documents Microsoft
 author: rick-anderson
-description: "Partie 3 vous permet de vous familiariser avec des feuilles de style et de CSS afin de vérifier votre page et plus attrayantes."
+description: Partie 3 vous permet de vous familiariser avec des feuilles de style et de CSS afin de vérifier votre page et plus attrayantes.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529978"
 ---
 <a name="change-the-visual-style-of-a-web-page"></a>Modifier le Style visuel d’une Page Web
 ====================

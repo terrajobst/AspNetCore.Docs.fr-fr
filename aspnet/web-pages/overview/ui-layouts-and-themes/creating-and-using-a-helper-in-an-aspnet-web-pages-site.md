@@ -1,8 +1,8 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/creating-and-using-a-helper-in-an-aspnet-web-pages-site
-title: "Création et à l’aide d’un programme d’assistance dans ASP.NET Web Pages (Razor) Site | Documents Microsoft"
+title: Création et à l’aide d’un programme d’assistance dans ASP.NET Web Pages (Razor) Site | Documents Microsoft
 author: tfitzmac
-description: "Cet article décrit comment créer un programme d’assistance dans un site Web ASP.NET Web Pages (Razor). Un programme d’assistance est un composant réutilisable qui inclut le code et le balisage perf..."
+description: Cet article décrit comment créer un programme d’assistance dans un site Web ASP.NET Web Pages (Razor). Un programme d’assistance est un composant réutilisable qui inclut le code et le balisage perf...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/17/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529998"
 ---
 <a name="creating-and-using-a-helper-in-an-aspnet-web-pages-razor-site"></a>Création et utilisation d’un programme d’assistance dans un Site de Web Pages (Razor) ASP.NET
 ====================

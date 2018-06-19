@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-set-up-the-sql-membership-provider
-title: "[Comment faire] Configurer le fournisseur d’appartenances SQL | Documents Microsoft"
+title: '[Comment faire] Configurer le fournisseur d’appartenances SQL | Documents Microsoft'
 author: rick-anderson
-description: "Joindre Patrick Hynds explique comment configurer le fournisseur d’appartenances SQL pour ajouter l’authentification par formulaire à votre site Web ASP.NET 2.0. Il existe quelques Conseil..."
+description: Joindre Patrick Hynds explique comment configurer le fournisseur d’appartenances SQL pour ajouter l’authentification par formulaire à votre site Web ASP.NET 2.0. Il existe quelques Conseil...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/12/2007
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526088"
 ---
 <a name="how-do-i-set-up-the-sql-membership-provider"></a>[Comment faire] Configurer le fournisseur d’appartenances SQL
 ====================

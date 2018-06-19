@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-call-a-simple-web-service-in-aspnet
-title: "[Comment faire] Créer et appeler un Service Web Simple dans ASP.NET | Documents Microsoft"
+title: '[Comment faire] Créer et appeler un Service Web Simple dans ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo montrerai créer un service web dans ASP.NET, puis appelez le service à partir d’un autre site web ASP.NET. Tout d’abord, apprendre à créer..."
+description: Dans cette Chris Pels vidéo montrerai créer un service web dans ASP.NET, puis appelez le service à partir d’un autre site web ASP.NET. Tout d’abord, apprendre à créer...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/27/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26526458"
 ---
 <a name="how-do-i-create-and-call-a-simple-web-service-in-aspnet"></a>[Comment faire] Créer et appeler un Service Web Simple dans ASP.NET
 ====================

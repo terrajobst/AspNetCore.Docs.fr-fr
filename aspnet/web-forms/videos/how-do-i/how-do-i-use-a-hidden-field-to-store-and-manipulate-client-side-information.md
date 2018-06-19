@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information
-title: "[Comment faire] Utiliser un champ masqué pour stocker et manipuler des informations côté Client | Documents Microsoft"
+title: '[Comment faire] Utiliser un champ masqué pour stocker et manipuler des informations côté Client | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo, Chris Pels indiquera comment utiliser un champ masqué comme une méthode de gestion d’état simple sur une page ASP.NET et la communication côté client..."
+description: Dans cette vidéo, Chris Pels indiquera comment utiliser un champ masqué comme une méthode de gestion d’état simple sur une page ASP.NET et la communication côté client...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 07/24/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525078"
 ---
 <a name="how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information"></a>[Comment faire] Utiliser un champ masqué pour stocker et manipuler des informations côté Client
 ====================

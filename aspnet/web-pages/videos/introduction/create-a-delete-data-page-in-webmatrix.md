@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/create-a-delete-data-page-in-webmatrix
-title: "Créer une Page de données de suppression dans WebMatrix | Documents Microsoft"
+title: Créer une Page de données de suppression dans WebMatrix | Documents Microsoft
 author: rick-anderson
-description: "Partie 8 se termine l’application en vous montrant comment créer une page de suppression pour vos données."
+description: Partie 8 se termine l’application en vous montrant comment créer une page de suppression pour vos données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529958"
 ---
 <a name="create-a-delete-data-page-in-webmatrix"></a>Créer une Page de données de suppression dans WebMatrix
 ====================

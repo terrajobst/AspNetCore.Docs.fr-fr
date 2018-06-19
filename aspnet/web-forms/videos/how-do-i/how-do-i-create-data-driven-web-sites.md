@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-data-driven-web-sites
-title: "[Comment faire] Créer des Sites Web pilotés par les données ? | Microsoft Docs"
+title: '[Comment faire] Créer des Sites Web pilotés par les données ? | Microsoft Docs'
 author: microsoft
-description: "Voir combien il est simple de créer des sites web pilotés par les données à l’aide d’ASP.NET 2.0, Visual Web Developer 2005 Express Edition et SQL Server 2005 Express Edition. En savoir plus..."
+description: Voir combien il est simple de créer des sites web pilotés par les données à l’aide d’ASP.NET 2.0, Visual Web Developer 2005 Express Edition et SQL Server 2005 Express Edition. En savoir plus...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/16/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26524908"
 ---
 <a name="how-do-i-create-data-driven-web-sites"></a>[Comment faire] Créer des Sites Web pilotés par les données ?
 ====================

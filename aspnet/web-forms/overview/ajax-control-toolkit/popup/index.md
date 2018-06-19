@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/index
-title: "Fenêtre contextuelle | Documents Microsoft"
+title: Fenêtre contextuelle | Documents Microsoft
 author: rick-anderson
-description: "Ce didacticiel montre comment utiliser le contrôle de menu contextuel pour afficher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé."
+description: Ce didacticiel montre comment utiliser le contrôle de menu contextuel pour afficher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup
 msc.type: chapter
 ms.openlocfilehash: f0d9ab97c0d04b0fd6b8798d08676755bda43cdf
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26510578"
 ---
 <a name="popup"></a>Fenêtre contextuelle
 ====================

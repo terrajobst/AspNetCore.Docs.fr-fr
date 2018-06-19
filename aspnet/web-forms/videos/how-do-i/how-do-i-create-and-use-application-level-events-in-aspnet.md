@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-and-use-application-level-events-in-aspnet
-title: "[Comment faire]  Créer et utiliser des événements de niveau Application dans ASP.NET | Documents Microsoft"
+title: '[Comment faire]  Créer et utiliser des événements de niveau Application dans ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette Chris Pels vidéo affichera la création d’un fichier de classe d’Application (Global.asax) qui contient les gestionnaires d’événements de niveau application tels que Application_S..."
+description: Dans cette Chris Pels vidéo affichera la création d’un fichier de classe d’Application (Global.asax) qui contient les gestionnaires d’événements de niveau application tels que Application_S...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/28/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26521178"
 ---
 <a name="how-do-i--create-and-use-application-level-events-in-aspnet"></a>[Comment faire]  Créer et utiliser des événements de niveau Application dans ASP.NET
 ====================

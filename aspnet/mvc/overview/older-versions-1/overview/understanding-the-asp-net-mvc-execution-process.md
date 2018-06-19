@@ -1,8 +1,8 @@
 ---
 uid: mvc/overview/older-versions-1/overview/understanding-the-asp-net-mvc-execution-process
-title: "Comprendre le processus de l’exécution d’ASP.NET MVC | Documents Microsoft"
+title: Comprendre le processus de l’exécution d’ASP.NET MVC | Documents Microsoft
 author: microsoft
-description: "Découvrez comment l’infrastructure ASP.NET MVC traite une demande de navigateur pas à pas."
+description: Découvrez comment l’infrastructure ASP.NET MVC traite une demande de navigateur pas à pas.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/27/2009
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26500728"
 ---
 <a name="understanding-the-aspnet-mvc-execution-process"></a>Comprendre le processus de l’exécution d’ASP.NET MVC
 ====================

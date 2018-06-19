@@ -2,7 +2,7 @@
 uid: signalr/overview/security/persistent-connection-authorization
 title: Authentification et autorisation pour les connexions persistantes SignalR | Documents Microsoft
 author: pfletcher
-description: "Cette rubrique décrit comment appliquer l’autorisation sur une connexion persistante. Pour plus d’informations sur l’intégration de sécurité dans une application SignalR,..."
+description: Cette rubrique décrit comment appliquer l’autorisation sur une connexion persistante. Pour plus d’informations sur l’intégration de sécurité dans une application SignalR,...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/10/2014
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 060879fcf3f73d2366b5c811986f8695fff65db8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28042197"
 ---
 <a name="authentication-and-authorization-for-signalr-persistent-connections"></a>Authentification et autorisation pour les connexions persistantes SignalR
 ====================

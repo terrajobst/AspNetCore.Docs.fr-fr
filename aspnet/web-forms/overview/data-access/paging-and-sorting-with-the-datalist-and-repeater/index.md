@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/data-access/paging-and-sorting-with-the-datalist-and-repeater/index
-title: "La pagination et le tri avec le contrôle DataList et répéteur | Documents Microsoft"
+title: La pagination et le tri avec le contrôle DataList et répéteur | Documents Microsoft
 author: rick-anderson
-description: "Ces didacticiels montrent comment ajouter la prise en charge la pagination au contrôle DataList ou répéteur pour créer une interface utilisateur très flexible pour la pagination et le tri."
+description: Ces didacticiels montrent comment ajouter la prise en charge la pagination au contrôle DataList ou répéteur pour créer une interface utilisateur très flexible pour la pagination et le tri.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/05/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting-with-the-datal
 msc.type: chapter
 ms.openlocfilehash: e05b1a691a3a6378859847d4530f11bbe4d8c1d3
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26514418"
 ---
 <a name="paging-and-sorting-with-the-datalist-and-repeater"></a>La pagination et le tri avec le contrôle DataList et répéteur
 ====================

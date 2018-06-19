@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-contact-us-page
-title: "Création d’une section nous contacter"
+title: Création d’une section nous contacter
 author: microsoft
-description: "Générer une page web pour collecter des informations à partir de l’utilisateur avec le contrôle de l’Assistant, valider ces informations et les classes System.Net.Mail permet d’envoyer un confi..."
+description: Générer une page web pour collecter des informations à partir de l’utilisateur avec le contrôle de l’Assistant, valider ces informations et les classes System.Net.Mail permet d’envoyer un confi...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/24/2006
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26525458"
 ---
 <a name="how-do-i-create-a-contact-us-page"></a>[Comment faire] Créer une Page « Nous contacter » ?
 ====================

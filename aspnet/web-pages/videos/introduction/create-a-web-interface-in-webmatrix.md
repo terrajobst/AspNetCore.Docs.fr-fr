@@ -1,8 +1,8 @@
 ---
 uid: web-pages/videos/introduction/create-a-web-interface-in-webmatrix
-title: "Créer une Interface Web dans WebMatrix | Documents Microsoft"
+title: Créer une Interface Web dans WebMatrix | Documents Microsoft
 author: rick-anderson
-description: "Partie 6 vous montre comment créer une page qui permet à vos utilisateurs ajouter des données à votre base de données, votre site peut rendre."
+description: Partie 6 vous montre comment créer une page qui permet à vos utilisateurs ajouter des données à votre base de données, votre site peut rendre.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 04/12/2011
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26529738"
 ---
 <a name="create-a-web-interface-in-webmatrix"></a>Créer une Interface Web dans WebMatrix
 ====================

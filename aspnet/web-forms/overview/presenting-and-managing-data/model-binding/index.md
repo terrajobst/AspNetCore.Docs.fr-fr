@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/index
-title: "Modèle de liaison et les Web Forms dans Visual Studio 2013 | Documents Microsoft"
+title: Modèle de liaison et les Web Forms dans Visual Studio 2013 | Documents Microsoft
 author: rick-anderson
-description: "L’utilisation des données à l’aide de la liaison de modèle et les Web Forms."
+description: L’utilisation des données à l’aide de la liaison de modèle et les Web Forms.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/13/2013
@@ -14,9 +14,10 @@ msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding
 msc.type: chapter
 ms.openlocfilehash: f653a1394af8bfc562c244dad00ff35bc4744647
 ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "26519768"
 ---
 <a name="model-binding-and-web-forms-in-visual-studio-2013"></a>Liaison de modèle et les Web Forms dans Visual Studio 2013
 ====================
