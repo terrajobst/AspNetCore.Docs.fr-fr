@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891865"
 ---
 <a name="batch-deleting-c"></a><span data-ttu-id="87996-104">Traitement par lots de suppression (c#)</span><span class="sxs-lookup"><span data-stu-id="87996-104">Batch Deleting (C#)</span></span>
 ====================

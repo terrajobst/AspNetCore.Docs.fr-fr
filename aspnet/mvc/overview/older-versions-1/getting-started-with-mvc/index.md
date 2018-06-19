@@ -2,7 +2,7 @@
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/index
 title: Mise en route avec MVC | Documents Microsoft
 author: rick-anderson
-description: "Il s’agit d’une série de didacticiels débutant qui présente ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données."
+description: Il s’agit d’une série de didacticiels débutant qui présente ASP.NET MVC. Créez une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/08/2011
@@ -14,9 +14,10 @@ msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc
 msc.type: chapter
 ms.openlocfilehash: b2e2f167de1e4c1c197bb0a8d37c1a1aed047f14
 ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28883294"
 ---
 <a name="getting-started-with-mvc"></a><span data-ttu-id="870bf-104">Mise en route avec MVC</span><span class="sxs-lookup"><span data-stu-id="870bf-104">Getting Started With MVC</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893984"
 ---
 <a name="how-do-i-enable-code-coverage-and-profiling-in-production-applications"></a><span data-ttu-id="c6371-104">[Comment faire] Activer la couverture du Code et le profilage dans les Applications de Production ?</span><span class="sxs-lookup"><span data-stu-id="c6371-104">[How Do I:] Enable Code Coverage and Profiling in Production Applications?</span></span>
 ====================

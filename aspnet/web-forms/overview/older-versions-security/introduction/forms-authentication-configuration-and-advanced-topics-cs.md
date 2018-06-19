@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891778"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-c"></a><span data-ttu-id="85c47-104">Configuration de l’authentification de formulaires et les rubriques avancées (c#)</span><span class="sxs-lookup"><span data-stu-id="85c47-104">Forms Authentication Configuration and Advanced Topics (C#)</span></span>
 ====================

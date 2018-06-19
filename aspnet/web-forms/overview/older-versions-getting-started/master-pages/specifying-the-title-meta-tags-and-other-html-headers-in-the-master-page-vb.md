@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891443"
 ---
 <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb"></a><span data-ttu-id="c185a-103">Spécifier le titre, les balises Meta et les autres en-têtes HTML dans la Page maître (VB)</span><span class="sxs-lookup"><span data-stu-id="c185a-103">Specifying the Title, Meta Tags, and Other HTML Headers in the Master Page (VB)</span></span>
 ====================

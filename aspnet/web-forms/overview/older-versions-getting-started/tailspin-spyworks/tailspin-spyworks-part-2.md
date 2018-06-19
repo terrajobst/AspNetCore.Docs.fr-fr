@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890487"
 ---
 <a name="part-2-data-access-layer"></a><span data-ttu-id="4ee4b-104">Partie 2 : Couche d’accès aux données</span><span class="sxs-lookup"><span data-stu-id="4ee4b-104">Part 2: Data Access Layer</span></span>
 ====================

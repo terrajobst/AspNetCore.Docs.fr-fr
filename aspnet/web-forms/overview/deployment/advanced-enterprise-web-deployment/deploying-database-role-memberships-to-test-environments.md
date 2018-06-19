@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892554"
 ---
 <a name="deploying-database-role-memberships-to-test-environments"></a><span data-ttu-id="d8670-104">Déploiement des appartenances aux rôles de base de données dans les environnements de Test</span><span class="sxs-lookup"><span data-stu-id="d8670-104">Deploying Database Role Memberships to Test Environments</span></span>
 ====================

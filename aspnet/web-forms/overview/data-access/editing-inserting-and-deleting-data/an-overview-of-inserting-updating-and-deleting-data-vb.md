@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30890819"
 ---
 <a name="an-overview-of-inserting-updating-and-deleting-data-vb"></a><span data-ttu-id="adcf8-103">Une vue d’ensemble de l’insertion, mise à jour et suppression de données (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="adcf8-103">An Overview of Inserting, Updating, and Deleting Data (VB)</span></span>
 ====================

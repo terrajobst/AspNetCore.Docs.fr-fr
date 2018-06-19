@@ -17,6 +17,7 @@ ms.sourcegitcommit: d8aa1d314891e981460b5e5c912afb730adbb3ad
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 02/05/2018
+ms.locfileid: "28988079"
 ---
 <a name="how-do-i-utilize-the-css-friendly-control-adapters"></a><span data-ttu-id="e6e9d-105">[Comment faire] Utiliser les adaptateurs de contrôle convivial CSS ?</span><span class="sxs-lookup"><span data-stu-id="e6e9d-105">[How Do I:] Utilize the CSS Friendly Control Adapters?</span></span>
 ====================

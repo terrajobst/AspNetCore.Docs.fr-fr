@@ -1,8 +1,8 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/membership
-title: "L’appartenance | Documents Microsoft"
+title: L’appartenance | Documents Microsoft
 author: microsoft
-description: "L’appartenance d’ASP.NET s’appuie sur la réussite du modèle d’authentification de formulaires à partir de ASP.NET 1.x. Authentification par formulaire ASP.NET fournit un moyen pratique d’incorp..."
+description: L’appartenance d’ASP.NET s’appuie sur la réussite du modèle d’authentification de formulaires à partir de ASP.NET 1.x. Authentification par formulaire ASP.NET fournit un moyen pratique d’incorp...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/20/2005
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28885562"
 ---
 <a name="membership"></a><span data-ttu-id="41a5b-104">Appartenance</span><span class="sxs-lookup"><span data-stu-id="41a5b-104">Membership</span></span>
 ====================

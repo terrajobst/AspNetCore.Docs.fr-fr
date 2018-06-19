@@ -17,6 +17,7 @@ ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29152863"
 ---
 <a name="mocking-entity-framework-when-unit-testing-aspnet-web-api-2"></a><span data-ttu-id="04252-104">Simulation d’Entity Framework lorsque l’API Web ASP.NET 2 de tests unitaires</span><span class="sxs-lookup"><span data-stu-id="04252-104">Mocking Entity Framework when Unit Testing ASP.NET Web API 2</span></span>
 ====================

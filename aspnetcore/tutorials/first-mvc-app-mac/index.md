@@ -14,6 +14,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893158"
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc-on-macos-with-visual-studio-for-mac"></a><span data-ttu-id="c6345-103">Créer une application web avec ASP.NET Core MVC sur macOS avec Visual Studio pour Mac</span><span class="sxs-lookup"><span data-stu-id="c6345-103">Create a web app with ASP.NET Core MVC on macOS with Visual Studio for Mac</span></span>
 

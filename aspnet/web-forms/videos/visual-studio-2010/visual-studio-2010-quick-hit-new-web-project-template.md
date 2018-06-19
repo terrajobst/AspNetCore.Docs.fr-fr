@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30893766"
 ---
 <a name="visual-studio-2010-quick-hit---new-web-project-template"></a><span data-ttu-id="8dbb6-103">Visual Studio 2010 « Rapide Hit » - nouveau modèle de projet Web</span><span class="sxs-lookup"><span data-stu-id="8dbb6-103">Visual Studio 2010 "Quick Hit" - New Web Project Template</span></span>
 ====================

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32740073"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a><span data-ttu-id="9ad22-103">Pages Razor avec EF Core dans ASP.NET Core - Migrations - 4 sur 8</span><span class="sxs-lookup"><span data-stu-id="9ad22-103">Razor Pages with EF Core in ASP.NET Core - Migrations - 4 of 8</span></span>
 

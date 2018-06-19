@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29724569"
 ---
 # <a name="file-providers-in-aspnet-core"></a><span data-ttu-id="fdf43-103">Fournisseurs de fichiers dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="fdf43-103">File Providers in ASP.NET Core</span></span>
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30070431"
 ---
 <a name="jquery-validation-1120"></a><span data-ttu-id="95fc6-102">jQuery Validation 1.12.0</span><span class="sxs-lookup"><span data-stu-id="95fc6-102">jQuery Validation 1.12.0</span></span>
 ====================

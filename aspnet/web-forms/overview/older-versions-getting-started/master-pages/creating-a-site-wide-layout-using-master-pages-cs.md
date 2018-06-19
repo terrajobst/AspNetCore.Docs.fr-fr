@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891267"
 ---
 <a name="creating-a-site-wide-layout-using-master-pages-c"></a><span data-ttu-id="67991-104">Création d’une disposition à l’échelle du Site à l’aide de Pages maîtres (c#)</span><span class="sxs-lookup"><span data-stu-id="67991-104">Creating a Site-Wide Layout Using Master Pages (C#)</span></span>
 ====================

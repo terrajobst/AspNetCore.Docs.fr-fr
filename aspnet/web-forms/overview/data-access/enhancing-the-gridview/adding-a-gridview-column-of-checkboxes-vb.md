@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892736"
 ---
 <a name="adding-a-gridview-column-of-checkboxes-vb"></a><span data-ttu-id="a5e23-103">Ajout d’une colonne de GridView des cases à cocher (VB)</span><span class="sxs-lookup"><span data-stu-id="a5e23-103">Adding a GridView Column of Checkboxes (VB)</span></span>
 ====================

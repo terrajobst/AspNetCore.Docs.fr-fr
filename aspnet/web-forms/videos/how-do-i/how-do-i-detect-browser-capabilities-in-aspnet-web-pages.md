@@ -1,8 +1,8 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-detect-browser-capabilities-in-aspnet-web-pages
-title: "[Comment faire] Détecter les fonctionnalités du navigateur dans les Pages Web ASP.NET | Documents Microsoft"
+title: '[Comment faire] Détecter les fonctionnalités du navigateur dans les Pages Web ASP.NET | Documents Microsoft'
 author: rick-anderson
-description: "Dans cette vidéo, Chris Pels indiquera comment déterminer les fonctionnalités dont dispose de navigateur de l’utilisateur lors de l’affichage des pages dans un site web ASP.NET. Tout d’abord, découvrez comment compte..."
+description: Dans cette vidéo, Chris Pels indiquera comment déterminer les fonctionnalités dont dispose de navigateur de l’utilisateur lors de l’affichage des pages dans un site web ASP.NET. Tout d’abord, découvrez comment compte...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/19/2008
@@ -17,6 +17,7 @@ ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 01/30/2018
+ms.locfileid: "28884089"
 ---
 <a name="how-do-i-detect-browser-capabilities-in-aspnet-web-pages"></a><span data-ttu-id="cc905-104">[Comment faire] Détecter les fonctionnalités du navigateur dans les Pages Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="cc905-104">[How Do I:] Detect Browser Capabilities in ASP.NET Web Pages</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30895846"
 ---
 <a name="displaying-data-in-a-chart-part-2"></a><span data-ttu-id="47494-103">Affichage des données dans un graphique (partie 2)</span><span class="sxs-lookup"><span data-stu-id="47494-103">Displaying Data in a Chart (Part 2)</span></span>
 ====================

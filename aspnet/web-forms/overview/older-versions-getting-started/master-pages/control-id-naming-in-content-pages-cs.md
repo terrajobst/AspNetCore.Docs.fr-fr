@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891345"
 ---
 <a name="control-id-naming-in-content-pages-c"></a><span data-ttu-id="65640-103">ID de contrôle d’affectation de noms dans les Pages de contenu (c#)</span><span class="sxs-lookup"><span data-stu-id="65640-103">Control ID Naming in Content Pages (C#)</span></span>
 ====================

@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30891046"
 ---
 <a name="implementing-optimistic-concurrency-c"></a><span data-ttu-id="84ed8-104">Implémentation de l’accès concurrentiel optimiste (c#)</span><span class="sxs-lookup"><span data-stu-id="84ed8-104">Implementing Optimistic Concurrency (C#)</span></span>
 ====================

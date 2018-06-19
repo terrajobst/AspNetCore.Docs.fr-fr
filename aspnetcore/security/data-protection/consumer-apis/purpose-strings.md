@@ -14,6 +14,7 @@ ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/22/2018
+ms.locfileid: "30077651"
 ---
 # <a name="purpose-strings-in-aspnet-core"></a><span data-ttu-id="dc072-103">Chaînes d’objectif dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="dc072-103">Purpose strings in ASP.NET Core</span></span>
 

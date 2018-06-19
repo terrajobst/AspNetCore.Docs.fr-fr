@@ -17,6 +17,7 @@ ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30892684"
 ---
 <a name="troubleshooting-the-packaging-process"></a><span data-ttu-id="00823-103">Le processus d’empaquetage de résolution des problèmes</span><span class="sxs-lookup"><span data-stu-id="00823-103">Troubleshooting the Packaging Process</span></span>
 ====================
