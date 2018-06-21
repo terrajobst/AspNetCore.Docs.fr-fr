@@ -2,20 +2,16 @@
 title: Créer une application web de pages Razor avec ASP.NET Core sur macOS et Visual Studio pour Mac
 author: rick-anderson
 description: Créer une application web de pages Razor avec ASP.NET Core et EF Core.
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 07/26/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/razor-pages-mac/index
-ms.openlocfilehash: 3e7af4b3cc29bdd86fc780c94a81f7e822a65971
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 469eec966696aa763d701b0019a75d7d6c8b9ec4
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483904"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276709"
 ---
 # <a name="create-a-razor-pages-web-app-with-aspnet-core-on-macos-with-visual-studio-for-mac"></a>Créer une application web de pages Razor avec ASP.NET Core sur macOS et Visual Studio pour Mac
 

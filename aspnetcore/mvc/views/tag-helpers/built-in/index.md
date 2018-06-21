@@ -2,19 +2,15 @@
 title: Tag Helpers intégrés d’ASP.NET Core
 author: pkellner
 description: Découvrez comment les Tag Helpers intégrés d’ASP.NET Core augmentent votre productivité.
-manager: wpickett
 ms.author: riande
 ms.date: 09/13/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: f539f96a87b125c0f55855f780bbff005db8c0d9
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4f2ebf1600f42847db1c1f9517787b020d2e86c9
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
-ms.locfileid: "29903206"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279166"
 ---
 # <a name="aspnet-core-built-in-tag-helpers"></a>Tag Helpers intégrés d’ASP.NET Core
 
@@ -64,4 +60,4 @@ ASP.NET Core inclut de nombreux Tag Helpers intégrés permettant d’augmenter 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Développement côté client](xref:client-side/index)
-* [Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)
