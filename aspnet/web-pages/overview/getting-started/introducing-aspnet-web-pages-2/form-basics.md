@@ -13,10 +13,10 @@ ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
 ms.openlocfilehash: 6f44f74774c2fa6338524987779e15f3940d1830
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/20/2018
 ms.locfileid: "30898919"
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>Présentation des Pages Web ASP.NET - notions de base de formulaire HTML
@@ -168,7 +168,7 @@ Ce bloc définit l’étape de création d’une requête qui utilise le terme d
 > 
 > `var someValue = Request["name"];`
 > 
-> Le `Request` objet expose réellement plusieurs sous-ensembles. Par exemple :
+> Le `Request` objet expose réellement plusieurs sous-ensembles. Exemple :
 > 
 > - `Request.Form` vous donne les valeurs à partir des éléments à l’intérieur de l’élément soumis `<form>` élément si la demande est un `POST` demande.
 > - `Request.QueryString` permet que les valeurs dans la chaîne de requête URL. (Dans une URL telle que `http://mysite/myapp/page?searchGenre=action&page=2`, le `?searchGenre=action&page=2` section de l’URL est la chaîne de requête.)
