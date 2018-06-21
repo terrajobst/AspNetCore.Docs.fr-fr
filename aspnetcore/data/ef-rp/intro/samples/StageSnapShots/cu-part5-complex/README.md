@@ -1,3 +1,3 @@
-Copiez wwwroot depuis ../cu/ ou depuis un nouveau projet Pages Razor.
+<span data-ttu-id="244f2-101">Copiez wwwroot depuis ../cu/ ou depuis un nouveau projet Pages Razor.</span><span class="sxs-lookup"><span data-stu-id="244f2-101">Copy wwwroot from ../cu/ or from a new Razor Pages project.</span></span>
 
-Exécutez `dotnet ef database update`.
+<span data-ttu-id="244f2-102">Exécutez `dotnet ef database update`.</span><span class="sxs-lookup"><span data-stu-id="244f2-102">Run `dotnet ef database update`</span></span>
