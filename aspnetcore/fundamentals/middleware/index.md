@@ -2,19 +2,15 @@
 title: Intergiciel (middleware) ASP.NET Core
 author: rick-anderson
 description: Découvrez le middleware ASP.NET Core et le pipeline de requête.
-manager: wpickett
 ms.author: riande
 ms.date: 01/22/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: c6d362cf15b5d4611f0e544c5092a18f32ed7dfc
-ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.openlocfilehash: d22c7208390ed2de2ca31ead46ecb21bc41671bf
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34819043"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279582"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
