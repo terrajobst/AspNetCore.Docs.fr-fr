@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 016f15c13470db53252941acafa25a3c6caf8db5
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: c6d362cf15b5d4611f0e544c5092a18f32ed7dfc
+ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34819043"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -196,10 +197,13 @@ ASP.NET Core est fourni avec les composants d’intergiciel suivants et une desc
 | [Authentification](xref:security/authentication/identity) | Prend en charge l’authentification. | Avant que `HttpContext.User` ne soit nécessaire. Terminal pour les rappels OAuth. |
 | [CORS](xref:security/cors) | Configure le partage des ressources cross-origin (CORS). | Avant les composants qui utilisent CORS. |
 | [Diagnostics](xref:fundamentals/error-handling) | Configure les diagnostics. | Avant les composants qui génèrent des erreurs. |
-| [ForwardedHeaders/HttpOverrides](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Transfère les en-têtes en proxy vers la requête actuelle. | Avant les composants qui consomment les champs mis à jour (exemples : Schéma, Hôte, IP client, Méthode). |
+| [En-têtes transférés](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions) | Transfère les en-têtes en proxy vers la requête actuelle. | Avant les composants qui consomment les champs mis à jour (exemples : schéma, hôte, IP client, méthode). |
+| [Remplacement de la méthode HTTP](/dotnet/api/microsoft.aspnetcore.builder.httpmethodoverrideextensions) | Autorise une requête POST entrante à remplacer la méthode. | Avant les composants qui consomment la méthode mise à jour. |
+| [Redirection HTTPS](xref:security/enforcing-ssl#require-https) | Redirige toutes les requêtes HTTP vers HTTPS (ASP.NET Core 2.1 ou ultérieur). | Avant les composants qui consomment l’URL. |
+| [HSTS (HTTP Strict Transport Security)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | Middleware d’amélioration de la sécurité qui ajoute un en-tête de réponse spécial (ASP.NET Core 2.1 ou ultérieur). | Avant l’envoi des réponses et après les composants qui modifient les requêtes (par exemple, en-têtes transférés, réécriture d’URL). |
 | [Mise en cache des réponses](xref:performance/caching/middleware) | Prend en charge la mise en cache des réponses. | Avant les composants qui nécessitent la mise en cache. |
 | [Compression des réponses](xref:performance/response-compression) | Prend en charge la compression des réponses. | Avant les composants qui nécessitent la compression. |
-| [RequestLocalization](xref:fundamentals/localization) | Prend en charge la localisation. | Avant la localisation des composants sensibles. |
+| [Localisation des requêtes](xref:fundamentals/localization) | Prend en charge la localisation. | Avant la localisation des composants sensibles. |
 | [Le routage](xref:fundamentals/routing) | Définit et contraint des routes de requête. | Terminal pour les routes correspondantes. |
 | [Session](xref:fundamentals/app-state) | Prend en charge la gestion des sessions utilisateur. | Avant les composants qui nécessitent la session. |
 | [Fichiers statiques](xref:fundamentals/static-files) | Prend en charge le traitement des fichiers statiques et l’exploration des répertoires. | Terminal si une requête correspond à des fichiers. |
@@ -239,7 +243,7 @@ Les composants d’intergiciel peuvent résoudre leurs dépendances à partir de
 
 ### <a name="per-request-dependencies"></a>Dépendances par requête
 
-Étant donné que l’intergiciel est construit au démarrage de l’application, et non par requête, les services de durée de vie *Scoped* utilisés par les constructeurs de l’intergiciel ne sont pas partagés avec d’autres types injectés par des dépendances lors de chaque requête. Si vous devez partager un service *Scoped* entre votre intergiciel et d’autres types, ajoutez-le à la signature de la méthode `Invoke`. La méthode `Invoke` peut accepter des paramètres supplémentaires qui sont renseignés par injection de dépendances. Exemple :
+Étant donné que l’intergiciel est construit au démarrage de l’application, et non par requête, les services de durée de vie *délimités* utilisés par les constructeurs de l’intergiciel ne sont pas partagés avec d’autres types injectés par des dépendances lors de chaque requête. Si vous devez partager un service *délimité* entre votre intergiciel et d’autres types, ajoutez-le à la signature de la méthode `Invoke`. La méthode `Invoke` peut accepter des paramètres supplémentaires qui sont renseignés par injection de dépendances. Exemple :
 
 ```csharp
 public class MyMiddleware

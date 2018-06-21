@@ -2,22 +2,17 @@
 title: Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 author: rick-anderson
 description: Ce didacticiel montre comment générer une application ASP.NET Core 2.x à l’aide d’OAuth 2.0 avec des fournisseurs d’authentification externes.
-manager: wpickett
 ms.author: riande
 ms.date: 11/01/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/social/index
-ms.openlocfilehash: 93fa42be9c551f5bbdf3851aec1d9e01139fdb76
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 58045504ce4588f854428273273d3ea8f181e12e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277996"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
-
-<a name="security-authentication-social-logins"></a>
 
 Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -78,13 +73,15 @@ Utilisez les rubriques suivantes pour configurer votre application pour utiliser
 * Instructions pour [Microsoft](xref:security/authentication/microsoft-logins)
 * Instructions pour les [autres fournisseurs](xref:security/authentication/otherlogins)
 
+[!INCLUDE[](~/includes/chain-auth-providers.md)]
+
 ## <a name="optionally-set-password"></a>Définition facultative d’un mot de passe
 
 Quand vous vous inscrivez auprès d’un fournisseur de connexion externe, vous n’avez pas de mot de passe inscrit auprès de l’application. Ceci vous évite de devoir créer et mémoriser un mot de passe pour le site, mais vous rend aussi dépendant du fournisseur de connexion externe. Si le fournisseur de connexion externe est indisponible, vous ne pouvez pas vous connecter au site web.
 
 Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous avez défini lors du processus de connexion avec des fournisseurs externes :
 
-* Appuyez sur le lien **Bonjour <email alias>** en haut à droite pour accéder à la vue **Gérer**.
+* Appuyez sur le lien **Bonjour &lt;alias d’e-mail&gt;** en haut à droite pour accéder à la vue **Gérer**.
 
 ![Vue Gérer de l’application web](index/_static/pass1a.png)
 
