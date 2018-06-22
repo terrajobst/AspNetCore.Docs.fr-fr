@@ -2,18 +2,15 @@
 title: Empêcher intersites script (XSS) dans ASP.NET Core
 author: rick-anderson
 description: En savoir plus sur les scripts entre sites (XSS) et techniques pour traiter cette vulnérabilité dans une application ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/cross-site-scripting
-ms.openlocfilehash: d9263a2c1bb6a376008b7d8a55864e4d15e77cee
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: ce6bb273034c56890e0cd98b890436602b5acc69
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272446"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher intersites script (XSS) dans ASP.NET Core
 
@@ -60,7 +57,7 @@ Cette vue renvoie le contenu de la variable *untrustedInput*. Cette variable inc
 
 ## <a name="javascript-encoding-using-razor"></a>Encodage de JavaScript à l’aide de Razor
 
-Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Le moyen le plus sûr pour insérer des valeurs simples consiste à placer la valeur dans un attribut de données d’une balise et de récupérer dans le code JavaScript. Par exemple :
+Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Le moyen le plus sûr pour insérer des valeurs consiste à placer la valeur dans un attribut de données d’une balise et de récupérer dans JavaScript. Exemple :
 
 ```none
 @{
@@ -228,4 +225,4 @@ Les pratiques générales acceptées est que l'encodage intervienne au point de 
 
 ## <a name="validation-as-an-xss-prevention-technique"></a>Validation comme une technique de prévention XSS
 
-La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, une chaîne numérique simple contenant uniquement les caractères 0-9 ne peut pas déclencher une attaque XSS. La validation devient plus complexe si vous souhaitez accepter HTML dans l’entrée d’utilisateur - l’analyse d’entrée HTML est difficile, voire impossible. Le MarkDown et les autres formats de texte sont une option plus sûre pour l’entrée riche. Vous ne devez jamais vous appuyer sur la validation uniquement. Encodez toujours une entrée non approuvée avant le rendu, quel que soit le quel type de validation que vous avez effectué.
+La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, un type numérique string contenant uniquement les caractères 0-9 ne sont pas déclencher une attaque XSS. La validation devient plus complexe si vous souhaitez accepter HTML dans l’entrée d’utilisateur - l’analyse d’entrée HTML est difficile, voire impossible. Le MarkDown et les autres formats de texte sont une option plus sûre pour l’entrée riche. Vous ne devez jamais vous appuyer sur la validation uniquement. Encodez toujours une entrée non approuvée avant le rendu, quel que soit le quel type de validation que vous avez effectué.

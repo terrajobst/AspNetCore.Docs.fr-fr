@@ -2,19 +2,15 @@
 title: Règle de Protection des données à l’échelle de l’ordinateur prend en charge dans ASP.NET Core
 author: rick-anderson
 description: En savoir plus sur la prise en charge pour la définition d’une stratégie d’ordinateur à l’échelle par défaut pour toutes les applications qui utilisent la Protection des données ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/configuration/machine-wide-policy
-ms.openlocfilehash: c2d5760cd18f4e3ecaf0261f36414c9298e3f4c5
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 70aaca7afcd3df22cebb4466fbd9845a2277688c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30076960"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275186"
 ---
 # <a name="data-protection-machine-wide-policy-support-in-aspnet-core"></a>Règle de Protection des données à l’échelle de l’ordinateur prend en charge dans ASP.NET Core
 
@@ -50,7 +46,7 @@ Si EncryptionType est CNG-CBC, le système est configuré pour utiliser un chiff
 | EncryptionAlgorithm         | chaîne | Le nom d’un algorithme de chiffrement symétrique compris par CNG. Cet algorithme est ouvert en mode CBC. |
 | EncryptionAlgorithmProvider | chaîne | Le nom de l’implémentation du fournisseur CNG qui permet de créer l’algorithme EncryptionAlgorithm. |
 | EncryptionAlgorithmKeySize  | DWORD  | La longueur (en bits) de la clé à dériver pour l’algorithme de chiffrement symétrique. |
-| HashAlgorithm               | chaîne | Le nom d’un algorithme de hachage compris par CNG. Cet algorithme est ouvert en mode HMAC. |
+| Élément HashAlgorithm Impossible               | chaîne | Le nom d’un algorithme de hachage compris par CNG. Cet algorithme est ouvert en mode HMAC. |
 | HashAlgorithmProvider       | chaîne | Le nom de l’implémentation du fournisseur CNG qui permet de créer l’algorithme HashAlgorithm. |
 
 Si EncryptionType est CNG-GCM, le système est configuré pour utiliser un chiffrement par blocs symétrique Mode Galois/compteur pour la confidentialité et l’authenticité avec les services fournis par CNG de Windows (voir [spécifiant les algorithmes CNG de Windows personnalisés](xref:security/data-protection/configuration/overview#specifying-custom-windows-cng-algorithms) Pour plus d’informations). Les valeurs supplémentaires suivantes sont prises en charge, chacune d’elles correspondant à une propriété sur le type CngGcmAuthenticatedEncryptionSettings.

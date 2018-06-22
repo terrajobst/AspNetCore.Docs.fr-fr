@@ -2,19 +2,15 @@
 title: Programme d’installation de Microsoft Account connexion externe avec ASP.NET Core
 author: rick-anderson
 description: Ce didacticiel illustre l’intégration de l’authentification d’utilisateur de compte Microsoft dans une application ASP.NET Core existante.
-manager: wpickett
 ms.author: riande
 ms.date: 08/24/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 46973f8a82034bd99a6e6634bbd6da06b1b14f25
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: cc4fe8c71b97d29cc6697e2aebf04694afb753ec
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35726028"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272774"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Programme d’installation de Microsoft Account connexion externe avec ASP.NET Core
 

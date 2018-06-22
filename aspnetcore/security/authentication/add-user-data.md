@@ -2,20 +2,16 @@
 title: Ajouter, télécharger et supprimer les données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ajouter des données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core. Suppression des données par PIBR.
-manager: wpickett
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/add-user-data
-ms.openlocfilehash: 3ebb709cc40f6c2477ac57325d035b9b461e2eaf
-ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
+ms.openlocfilehash: ecd0e6d1c71b24309fab70fbb06af7731463bb0e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35414992"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36271955"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer les données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core
 

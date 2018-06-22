@@ -3,19 +3,15 @@ title: Authentification de cloud de site web d’API avec Azure Active Directory
 author: camsoper
 description: Découvrez comment configurer l’authentification d’Azure Active Directory B2C avec l’API Web ASP.NET principale. Tester l’API avec Postman de web authentifié.
 ms.author: casoper
-manager: wpickett
 ms.date: 01/25/2018
-ms.topic: tutorial
-ms.technology: aspnet
-ms.prod: asp.net-core
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 621290f7e303f9157577b5c1b32646b750ed5159
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 82179e52e2c292ec3b7e618b3c61eef6494abc7c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30897802"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273416"
 ---
 # <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification de cloud de site web d’API avec Azure Active Directory B2C dans ASP.NET Core
 

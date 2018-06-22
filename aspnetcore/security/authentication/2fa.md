@@ -2,20 +2,16 @@
 title: Authentification à deux facteurs avec SMS dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment configurer une authentification à deux facteurs (2FA) avec une application ASP.NET Core.
-manager: wpickett
 monikerRange: < aspnetcore-2.0
 ms.author: riande
 ms.date: 08/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/2fa
-ms.openlocfilehash: 20f00c2307e140d81e716304c96a143340d934d0
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 335edfd5cd4dfbb9d223ba0ae888a6d2386cd4a5
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33850920"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272307"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Authentification à deux facteurs avec SMS dans ASP.NET Core
 
@@ -64,7 +60,7 @@ Nous allons utiliser la [modèle d’Options](xref:fundamentals/configuration/op
 
 [!code-csharp[](2fa/sample/Web2FA/Services/SMSoptions.cs)]
 
-Définir le `SMSAccountIdentification`, `SMSAccountPassword` et `SMSAccountFrom` avec la [outil Gestionnaire de secret](xref:security/app-secrets). Par exemple :
+Définir le `SMSAccountIdentification`, `SMSAccountPassword` et `SMSAccountFrom` avec la [outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
 
 ```none
 C:/Web2FA/src/WebApp1>dotnet user-secrets set SMSAccountIdentification 12345

@@ -2,19 +2,15 @@
 title: En-têtes de contexte dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les détails d’implémentation des en-têtes de contexte de Protection des données ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 5ba247a74e11408145e1f6e87c7cfa251c66707f
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 2343e59898c024eba420390d7fb0bce2fc82a895
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30077852"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274467"
 ---
 # <a name="context-headers-in-aspnet-core"></a>En-têtes de contexte dans ASP.NET Core
 
@@ -71,11 +67,11 @@ B7 92 3D BF 59 90 00 A9
 
 Ensuite, calcul Enc_CBC (K_E, IV, « ») pour AES-192-CBC donné IV = 0 * et K_E comme indiqué ci-dessus.
 
-result := F474B1872B3B53E4721DE19C0841DB6F
+résultat : = F474B1872B3B53E4721DE19C0841DB6F
 
 Ensuite, calcul MAC (K_H, « ») pour HMACSHA256 donné K_H comme indiqué ci-dessus.
 
-result := D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
+résultat : = D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
 
 Cela génère l’en-tête de contexte complet ci-dessous :
 
@@ -118,11 +114,11 @@ D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
 
 Ensuite, calcul Enc_CBC (K_E, IV, « ») pour 3DES-192-CBC donné IV = 0 * et K_E comme indiqué ci-dessus.
 
-result := ABB100F81E53E10E
+résultat : = ABB100F81E53E10E
 
 Ensuite, calcul MAC (K_H, « ») pour HMACSHA1 donné K_H comme indiqué ci-dessus.
 
-result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
+résultat : = 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
 
 Cela génère l’en-tête de contexte complet qui est une empreinte numérique de l’authentifié paire d’algorithme de chiffrement (le chiffrement 3DES-192-CBC + HMACSHA1 validation), illustré ci-dessous :
 
@@ -176,7 +172,7 @@ K_E := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
 
 Ensuite, la balise d’authentification de Enc_GCM de calcul (K_E, la valeur à usage unique, « ») pour AES-256-GCM donné nonce = 096 et K_E comme indiqué ci-dessus.
 
-result := E7DCCE66DF855A323A6BB7BD7A59BE45
+résultat : = E7DCCE66DF855A323A6BB7BD7A59BE45
 
 Cela génère l’en-tête de contexte complet ci-dessous :
 

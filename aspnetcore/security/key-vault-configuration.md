@@ -2,18 +2,15 @@
 title: Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 author: guardrex
 description: Découvrez comment utiliser le fournisseur de Configuration du coffre de clé Azure pour configurer une application à l’aide de paires nom-valeur chargées pendant l’exécution.
-manager: wpickett
 ms.author: riande
 ms.date: 08/09/2017
-ms.prod: asp.net-core
-ms.topic: article
 uid: security/key-vault-configuration
-ms.openlocfilehash: cf56515a2a7116f399af7e671547fc81b616619c
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: 433a9cee917a36ff7aa950dbe2a631d127c74821
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734703"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273435"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 

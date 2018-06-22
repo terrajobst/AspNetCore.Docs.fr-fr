@@ -2,19 +2,15 @@
 title: Activer la génération de Code QR pour les applications d’authentification dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment activer la génération de code QR pour les applications d’authentification qui fonctionnent avec l’authentification à deux facteurs ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 09/24/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 463c1c7b3aef624622e34943f1a7a518e658a037
-ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
+ms.openlocfilehash: 7604371eef1e8dcf35a5c47ef11b66c0669cacc5
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35613032"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274727"
 ---
 # <a name="enable-qr-code-generation-for-authenticator-apps-in-aspnet-core"></a>Activer la génération de Code QR pour les applications d’authentification dans ASP.NET Core
 

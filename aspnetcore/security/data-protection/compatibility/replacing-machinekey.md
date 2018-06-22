@@ -2,19 +2,15 @@
 title: Remplacez la méthode ASP.NET machineKey dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment remplacer machineKey dans ASP.NET pour autoriser l’utilisation d’un système de protection de données nouvelles et plus sécurisée.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 18d14099786929058b17bac2a653eaa1489de7d2
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 5f9e5cec02b66e1315548c4e7c18fe168ad161eb
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071598"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278822"
 ---
 # <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>Remplacez la méthode ASP.NET machineKey dans ASP.NET Core
 
@@ -22,7 +18,7 @@ ms.locfileid: "30071598"
 
 L’implémentation de la `<machineKey>` élément dans ASP.NET [remplaçable](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/). Ainsi, la plupart des appels aux routines de chiffrement ASP.NET puissent être acheminés via un mécanisme de protection des données de remplacement, y compris le nouveau système de protection des données.
 
-## <a name="package-installation"></a>Installation du package
+## <a name="package-installation"></a>Installation de package
 
 > [!NOTE]
 > Le nouveau système de protection de données peut uniquement être installé dans une application ASP.NET existante ciblant .NET 4.5.1 ou version ultérieure. Installation échoueront si l’application cible .NET 4.5 ou inférieur.

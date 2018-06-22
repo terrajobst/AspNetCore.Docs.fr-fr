@@ -2,19 +2,15 @@
 title: Autorisation basée sur des rôles dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment restreindre l’accès de contrôleur et d’action ASP.NET Core en passant des rôles à l’attribut Authorize.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/roles
-ms.openlocfilehash: f1e7209cae1e2a58ad536547d655dd744ca0d3f7
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 0d39a457782061a57779bacb0d3a255be352bd2d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32740034"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276430"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>Autorisation basée sur des rôles dans ASP.NET Core
 

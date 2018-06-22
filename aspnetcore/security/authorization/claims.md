@@ -2,19 +2,15 @@
 title: Autorisation basée sur les revendications dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ajouter des vérifications de revendications d’autorisation dans une application ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/claims
-ms.openlocfilehash: 2464f8cac720dcf5de02f2679e9450e8b77de3ee
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: 6b60ae5515819b017ab577f655ed91ee4d8ed0dd
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34336302"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275225"
 ---
 # <a name="claims-based-authorization-in-aspnet-core"></a>Autorisation basée sur les revendications dans ASP.NET Core
 
@@ -108,7 +104,7 @@ Si la valeur de revendication n’est pas une valeur unique ou une transformatio
 
 ## <a name="multiple-policy-evaluation"></a>Évaluation des stratégies
 
-Si vous appliquez plusieurs stratégies à un contrôleur ou d’action, toutes les stratégies doivent passer avant que l’accès est accordé. Par exemple :
+Si vous appliquez plusieurs stratégies à un contrôleur ou d’action, toutes les stratégies doivent passer avant que l’accès est accordé. Exemple :
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]

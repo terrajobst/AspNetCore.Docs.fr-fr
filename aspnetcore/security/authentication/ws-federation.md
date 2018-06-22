@@ -2,20 +2,16 @@
 title: Authentifier les utilisateurs avec WS-Federation dans ASP.NET Core
 author: chlowell
 description: Ce didacticiel montre comment utiliser WS-Federation dans une application ASP.NET Core.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/27/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/ws-federation
-ms.openlocfilehash: d4621c7b97678903b9f2562e353da3883334b599
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 55504ed28cf8ef1095bf16c101c09a6f374f038c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30898802"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277437"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>Authentifier les utilisateurs avec WS-Federation dans ASP.NET Core
 
@@ -26,7 +22,7 @@ Pour les applications ASP.NET Core 2.0, la prise en charge de WS-Federation est 
 Par défaut, l’intergiciel (middleware) nouvelle :
 
 * N’autorise pas les connexions non sollicitées. Cette fonctionnalité du protocole WS-Federation est vulnérable aux attaques XSRF. Toutefois, il peut être activé avec le `AllowUnsolicitedLogins` option.
-* Ne vérifie pas chaque publication de formulaire pour les messages de connexion. Demande seulement à la `CallbackPath` sont vérifiées pour l’authentification-ins. `CallbackPath` par défaut est `/signin-wsfed` mais peut être modifié. Ce chemin d’accès peut être partagée avec d’autres fournisseurs d’authentification en activant la `SkipUnrecognizedRequests` option.
+* Ne vérifie pas chaque publication de formulaire pour les messages de connexion. Demande seulement à la `CallbackPath` sont vérifiées pour l’authentification-ins. `CallbackPath` par défaut est `/signin-wsfed` mais peut être modifié via la [RemoteAuthenticationOptions.CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath) propriété de la [ WsFederationOptions](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions) classe. Ce chemin d’accès peut être partagée avec d’autres fournisseurs d’authentification en activant le [SkipUnrecognizedRequests](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions.skipunrecognizedrequests) option.
 
 ## <a name="register-the-app-with-active-directory"></a>Inscription de l’application avec Active Directory
 
@@ -126,7 +122,7 @@ Une réussite sign-in pour un nouvel utilisateur redirige vers la page d’inscr
 
 ## <a name="use-ws-federation-without-aspnet-core-identity"></a>Utiliser WS-Federation sans ASP.NET Core identité
 
-L’intergiciel (middleware) WS-Federation peut être utilisé sans identité. Par exemple :
+L’intergiciel (middleware) WS-Federation peut être utilisé sans identité. Exemple :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

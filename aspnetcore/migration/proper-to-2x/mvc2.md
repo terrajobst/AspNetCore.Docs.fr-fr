@@ -2,19 +2,15 @@
 title: Migrer d’ASP.NET vers ASP.NET Core 2.0
 author: isaac2004
 description: Recevoir des conseils de migration d'applications ASP.NET MVC ou Web API existantes vers ASP.NET Core 2.0.
-manager: wpickett
 ms.author: scaddie
 ms.date: 08/27/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: migration/mvc2
-ms.openlocfilehash: f8e9d3c222bdd5491e946f286bbdf71a2d26ab10
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 68b00ead1b0bf785211638692cdbeab226a2cb4e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33851038"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278633"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Migrer d’ASP.NET vers ASP.NET Core 2.0
 
@@ -32,7 +28,7 @@ Installer **un** des opérations suivantes à partir de [téléchargements .NET�
   * **.NET core le développement multiplateforme** la charge de travail
 
 ## <a name="target-frameworks"></a>Versions cibles de .NET Framework
-Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choisir entre .NET Core et .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
+Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choix entre le .NET Core et le .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
 
 Quand vous ciblez le .NET Framework, les projets doivent référencer des packages NuGet individuels.
 
@@ -55,7 +51,7 @@ Le format de fichier *.csproj* a été simplifié dans ASP.NET Core. Voici certa
     ![Option de menu contextuel de modification du CSPROJ dans Visual Studio 2017](_static/EditProjectVs2017.png)
 
 ## <a name="globalasax-file-replacement"></a>Remplacement du fichier Global.asax
-ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax*. Les tâches telles que la configuration du routing ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax*.
+ASP.NET Core a introduit un nouveau mécanisme pour le démarrage d’une application. Le point d’entrée des applications ASP.NET est le fichier *Global.asax*. Les tâches telles que la configuration de l’itinéraire ou l’inscription des filtres et des zones sont traitées dans le fichier *Global.asax*.
 
 [!code-csharp[](samples/globalasax-sample.cs)]
 
@@ -63,7 +59,7 @@ Cette approche couple l’application au serveur sur lequel elle est déployée 
 
 [!code-csharp[](samples/webapi-owin.cs)]
 
-Cela permet de configurer vos routes par défaut, et de privilégier la XmlSerialization à JSON. Ajoutez d’autres intergiciels (middleware) à ce pipeline selon les besoins (services de chargement, paramètres de configuration, fichiers statiques, etc.).
+Cela permet de configurer vos itinéraires par défaut, et de privilégier XmlSerialization à JSON. Ajoutez d’autres intergiciels (middleware) à ce pipeline selon les besoins (services de chargement, paramètres de configuration, fichiers statiques, etc.).
 
 ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour prendre en charge l’entrée. À la place, l’opération est effectuée via la méthode `Main` de *Program.cs* (un peu comme pour les applications console) et `Startup` est chargé à partir de là.
 

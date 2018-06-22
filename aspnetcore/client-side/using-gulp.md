@@ -2,20 +2,16 @@
 title: Utilisation de Gulp dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment utiliser Gulp dans ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 02/28/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/using-gulp
-ms.openlocfilehash: 13f30be7670983bd65f8402404b841039bdacb09
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 35f62bf276d3708df0e2c8b56a44c34c178d8ff8
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33849986"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278250"
 ---
 # <a name="use-gulp-in-aspnet-core"></a>Utilisation de Gulp dans ASP.NET Core
 

@@ -2,19 +2,15 @@
 title: Gestion de clés de Protection des données et la durée de vie dans ASP.NET Core
 author: rick-anderson
 description: En savoir plus sur la gestion de clés de Protection des données et la durée de vie dans ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: b43c14af015d5e03f46200c51a1218a581b1de0c
-ms.sourcegitcommit: a510f38930abc84c4b302029d019a34dfe76823b
+ms.openlocfilehash: 54259b1e2f37cdbbd551038e80f2b0fa1d77f196
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2018
-ms.locfileid: "28887288"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277803"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Gestion de clés de Protection des données et la durée de vie dans ASP.NET Core
 
@@ -24,10 +20,10 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 L’application tente de détecter son environnement d’exploitation et de gérer la configuration de la clé sur son propre.
 
-1. Si l’application est hébergée dans [applications Azure](https://azure.microsoft.com/services/app-service/), les clés sont rendues persistantes dans le *%HOME%\ASP.NET\DataProtection-Keys* dossier. Ce dossier est sauvegardé par le stockage réseau et est synchronisé sur tous les ordinateurs hébergeant l’application.
+1. Si l’application est hébergée dans [applications Azure](https://azure.microsoft.com/services/app-service/), les clés sont rendues persistantes dans le *%HOME%\ASP.NET\DataProtection-Keys* dossier. Ce dossier est alimenté par le stockage réseau et synchronisé sur tous les ordinateurs hébergeant l’application.
    * Les clés ne sont pas protégées au repos.
    * Le *DataProtection-clés* dossier fournit l’anneau de clé à toutes les instances d’une application dans un emplacement de déploiement.
-   * Les emplacements de déploiement distinct, telles que les intermédiaires et de Production, ne partagent pas un anneau de clé. Lorsque vous échangez entre les emplacements de déploiement, par exemple le remplacement intermédiaire en Production ou à l’aide de / B test, n’importe quelle application à l’aide de la Protection des données ne pourra plus être déchiffrer les données stockées à l’aide de l’anneau de clé à l’intérieur de l’emplacement précédent. Cela conduit aux utilisateurs est enregistrés en dehors d’une application qui utilise l’authentification de cookie ASP.NET Core standard, car elle utilise la Protection des données à protéger ses cookies. Si vous le souhaitez, indépendant de l’emplacement de clé anneaux utilisent un fournisseur de l’anneau de clé externe, telles que le stockage Blob Azure, Azure Key Vault, un magasin SQL, ou le cache Redis.
+   * Les emplacements de déploiement distincts, tels que Préproduction et Production, ne partagent pas de porte-clés. Lorsque vous échangez entre les emplacements de déploiement, par exemple le remplacement intermédiaire en Production ou à l’aide de / B test, n’importe quelle application à l’aide de la Protection des données ne pourra plus être déchiffrer les données stockées à l’aide de l’anneau de clé à l’intérieur de l’emplacement précédent. Cela conduit aux utilisateurs est enregistrés en dehors d’une application qui utilise l’authentification de cookie ASP.NET Core standard, car elle utilise la Protection des données à protéger ses cookies. Si vous le souhaitez, indépendant de l’emplacement de clé anneaux utilisent un fournisseur de l’anneau de clé externe, telles que le stockage Blob Azure, Azure Key Vault, un magasin SQL, ou le cache Redis.
 
 1. Si le profil utilisateur est disponible, les clés sont rendues persistantes dans le *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* dossier. Si le système d’exploitation est Windows, les clés sont chiffrées au repos à l’aide de DPAPI.
 

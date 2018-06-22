@@ -2,19 +2,15 @@
 title: Hachage des mots de passe dans ASP.NET Core
 author: rick-anderson
 description: En savoir plus sur le hachage des mots de passe à l’aide de l’API de Protection de données ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/data-protection/consumer-apis/password-hashing
-ms.openlocfilehash: f44e66789bf348ef6d99f6d862fb34c2d943a0b2
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: aef22ab91e76afdb5f54dc37bcee7128420b6f3b
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32740099"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272985"
 ---
 # <a name="hash-passwords-in-aspnet-core"></a>Hachage des mots de passe dans ASP.NET Core
 

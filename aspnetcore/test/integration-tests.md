@@ -1,21 +1,17 @@
 ---
 title: Tests d’intégration dans ASP.NET Core
 author: guardrex
-description: Découvrez comment les tests d’intégration garantissent que les composants d’une application fonctionnent correctement au niveau de l’infrastructure, y compris la base de données, le système de fichiers et le réseau.
-manager: wpickett
+description: Découvrez comment les tests d’intégration garantissent le bon fonctionnement des composants d’une application au niveau de l’infrastructure, notamment la base de données, le système de fichiers et le réseau.
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: test/integration-tests
-ms.openlocfilehash: a402c3f5f6a75917eba4058e6cc6926f25b214d4
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: 1895b06f1af9a9eb66c14aa5c7834497fc95d583
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35217587"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277694"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -29,9 +25,9 @@ Cette rubrique suppose une connaissance élémentaire de tests unitaires. Si êt
 
 L’exemple d’application est une application de Pages Razor et suppose une connaissance élémentaire de Pages Razor. Si êtes pas familiarisé avec les Pages Razor, consultez les rubriques suivantes :
 
-* [Présentation des pages Razor](xref:mvc/razor-pages/index)
+* [Présentation des pages Razor](xref:razor-pages/index)
 * [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
-* [Tests unitaires de Pages Razor](xref:test/razor-pages-tests)
+* [Tests unitaires Pages Razor](xref:test/razor-pages-tests)
 
 ## <a name="introduction-to-integration-tests"></a>Introduction aux tests d’intégration
 
@@ -314,6 +310,6 @@ L’exemple d’application basée sur la base de données avec trois messages d
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Tests unitaires](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-* [Tests unitaires de Pages Razor](xref:test/razor-pages-tests)
+* [Tests unitaires Pages Razor](xref:test/razor-pages-tests)
 * [Intergiciel (middleware)](xref:fundamentals/middleware/index)
 * [Contrôleurs de test](xref:mvc/controllers/testing)

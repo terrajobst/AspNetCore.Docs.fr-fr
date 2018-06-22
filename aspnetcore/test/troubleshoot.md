@@ -1,20 +1,16 @@
 ---
 title: Résoudre les problèmes des projets ASP.NET Core
 author: Rick-Anderson
-description: Comprendre et résoudre les avertissements et erreurs avec les projets ASP.NET Core.
-manager: wpickett
+description: Comprenez et résolvez les avertissements et les erreurs avec les projets ASP.NET Core.
 ms.author: riande
 ms.date: 04/05/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: content
 uid: test/troubleshoot
-ms.openlocfilehash: 8ff8ddaf4a35a02db650ff429ffbbf4e76a53ecf
-ms.sourcegitcommit: 4e3497bda0c3e5011ffba3717eb61a1d46c61c15
+ms.openlocfilehash: ae4e6f191d8f856de60ecf21cb882b5ee9b02064
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/14/2018
-ms.locfileid: "35613003"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274591"
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>Résoudre les problèmes des projets ASP.NET Core
 

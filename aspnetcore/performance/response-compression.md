@@ -2,21 +2,17 @@
 title: Intergiciel (middleware) de Compression de réponse pour ASP.NET Core
 author: guardrex
 description: En savoir plus sur la compression de la réponse et comment utiliser un intergiciel (middleware) de Compression de réponse dans les applications ASP.NET Core.
-manager: wpickett
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/20/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: performance/response-compression
-ms.openlocfilehash: e970e74547f1f3efaf719c1f9e26918f34788005
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: 585a08d4a6c6e03785e87578d10f6050be8bb73c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734625"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278217"
 ---
 # <a name="response-compression-middleware-for-aspnet-core"></a>Intergiciel (middleware) de Compression de réponse pour ASP.NET Core
 

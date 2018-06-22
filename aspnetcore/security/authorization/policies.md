@@ -2,20 +2,16 @@
 title: Autorisation basée sur des stratégies dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment créer et utiliser des gestionnaires de stratégie d’autorisation pour mettre en œuvre les spécifications d’autorisation dans une application ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authorization/policies
-ms.openlocfilehash: 411fee90bdccfb45c33f5d4ccd7864c83c614e70
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 81ca6ad9ddba3de094762f5608bb6a5719bca7a1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30072859"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277980"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorisation basée sur des stratégies dans ASP.NET Core
 
@@ -27,11 +23,11 @@ Une stratégie d’autorisation se compose d’une ou plusieurs conditions. Il e
 
 Dans l’exemple précédent, une stratégie de « AtLeast21 » est créée. Il a une seule exigence&mdash;celle d’un minimum d’ancienneté, qui est fournie en tant que paramètre à la spécification.
 
-Les stratégies sont appliquées à l’aide de la `[Authorize]` attribut avec le nom de la stratégie. Par exemple :
+Les stratégies sont appliquées à l’aide de la `[Authorize]` attribut avec le nom de la stratégie. Exemple :
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="requirements"></a>Spécifications
+## <a name="requirements"></a>Configuration requise
 
 Une demande d’autorisation est une collection de paramètres de données une stratégie peut utiliser pour évaluer le principal utilisateur actuel. Dans notre stratégie « AtLeast21 », la spécification est un paramètre unique&mdash;l’ancienneté minimale. Une exigence implémente [IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement), qui est une interface de marqueur vide. Une spécification de l’ancienneté minimale paramétrable peut être implémentée comme suit :
 
@@ -70,7 +66,7 @@ Le code précédent traverse [PendingRequirements](/dotnet/api/microsoft.aspnetc
 
 ### <a name="handler-registration"></a>Inscription du Gestionnaire
 
-Les gestionnaires sont enregistrés dans la collection de services lors de la configuration. Par exemple :
+Les gestionnaires sont enregistrés dans la collection de services lors de la configuration. Exemple :
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63-65,72)]
 

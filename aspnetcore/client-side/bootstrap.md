@@ -2,19 +2,15 @@
 title: Créer des sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
 author: ardalis
 description: Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/bootstrap
-ms.openlocfilehash: a11ed13c709830795ebfd0e658d3f2fd2fd5a458
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: c7a4dc193f52532b1046853d98ae5c838c8b1723
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31483709"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279543"
 ---
 # <a name="build-beautiful-responsive-sites-with-bootstrap-and-aspnet-core"></a>Créer des sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
 
@@ -124,7 +120,7 @@ col-lg - | Affiche de bureau plus grande | > = 1200px
 
 Lors de la spécification des deux colonnes avec "col-md-6", la mise en page obtenue sera constituée de deux colonnes avec des résolutions de bureau, mais ces deux colonnes seront empilées verticalement lors du rendu sur les appareils de petite taille (ou une fenêtre de navigateur plus étroite sur un ordinateur de bureau), permettant aux utilisateurs d’afficher facilement le contenu sans avoir besoin de faire défiler horizontalement.
 
-Bootstrap utilise toujours par défaut une disposition à une seule colonne : vous devez donc spécifier des colonnes seulement quand vous voulez avoir plusieurs colonnes. Le seul cas où vous devez spécifier explicitement qu’un`<div>`occupe les 12 colonnes est pour remplacer le comportement d’un niveau pour un  appareil plus grand. Lorsque vous spécifiez plusieurs classes de niveau de périphérique, vous devrez peut-être réinitialiser le rendu des colonnes à certains points.  L'ajout d’un élément clearfix div visible seulement dans une certaine fenêtre d’affichage permet cela, comme montré ici :
+Bootstrap utilise toujours par défaut une disposition à une seule colonne : vous devez donc spécifier des colonnes seulement quand vous voulez avoir plusieurs colonnes. Le seul cas où vous devez spécifier explicitement qu’un`<div>`occupe les 12 colonnes est pour remplacer le comportement d’un niveau pour un  appareil plus grand. Lorsque vous spécifiez plusieurs classes de niveau de périphérique, vous devrez peut-être réinitialiser le rendu des colonnes à certains points.  Ajout d’un élément div clearfix qui est uniquement visible dans une certaine fenêtre d’affichage permettre effectuer cette opération, comme indiqué ici :
 
 ![grille de la fenêtre d’affichage étroites et étendues](bootstrap/_static/narrow-and-wide-viewport-grid.png)
 
@@ -165,7 +161,7 @@ Notre disposition inclut déjà une barre de navigation standard, mais le thème
 
 ![poste à thème](bootstrap/_static/theme-tabstrips.png)
 
-Les barres de navigation sont générées de la même façon, mais sont un peu plus complexes. Elles commencent par un élément `<nav>` ou `<div>` avec une classe "nav-bar", où un élément div avec la classe "container" conserve le reste des éléments. Notre page inclut déjà une barre de navigation dans son en-tête, celui qui est montré ci-dessous ajoute simplement la prise en charge d'un menu déroulant :
+Les barres de navigation sont générées de la même façon, mais sont un peu plus complexes. Elles commencent par `<nav>` ou `<div>` avec une classe "navbar", dans laquelle un élément div container conserve le reste des éléments. Notre page inclut déjà une barre de navigation dans son en-tête, celui qui est montré ci-dessous ajoute simplement la prise en charge d'un menu déroulant :
 
 ![barres de navigation à thème](bootstrap/_static/theme-navbars.png)
 

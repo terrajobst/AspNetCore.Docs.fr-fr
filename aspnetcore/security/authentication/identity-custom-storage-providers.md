@@ -2,18 +2,15 @@
 title: Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 author: ardalis
 description: Découvrez comment configurer les fournisseurs de stockage personnalisés pour ASP.NET Core Identity.
-manager: wpickett
 ms.author: riande
 ms.date: 05/24/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: a50069586c702152e81961773114ea75901ab23d
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 11c49d630c922b0aa91678277e9553bf0c25134d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278425"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -25,7 +22,7 @@ Identité de ASP.NET Core est un système extensible qui vous permet de créer u
 
 ## <a name="introduction"></a>Introduction
 
-Par défaut, le système d’identité de base ASP.NET stocke les informations utilisateur dans une base de données SQL Server à l’aide d’Entity Framework Core. Pour de nombreuses applications, cette approche fonctionne bien. Toutefois, vous pouvez utiliser un mécanisme de persistance différent ou un schéma de données. Par exemple :
+Par défaut, le système d’identité de base ASP.NET stocke les informations utilisateur dans une base de données SQL Server à l’aide d’Entity Framework Core. Pour de nombreuses applications, cette approche fonctionne bien. Toutefois, vous pouvez utiliser un mécanisme de persistance différent ou un schéma de données. Exemple :
 
 * Vous utilisez [Azure Table Storage](https://docs.microsoft.com/azure/storage/) ou une autre banque de données.
 * Votre base de données ont une structure différente. 
@@ -170,9 +167,9 @@ Dans le `UserStore` (classe), vous utilisez les classes d’accès aux données 
 - **IUserLockoutStore**  
  Le [IUserLockoutStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1) interface définit les méthodes que vous implémentez pour stocker des informations sur le verrouillage d’un compte. Il contient des méthodes pour le suivi des tentatives d’accès ayant échoué et de verrouillages.
 - **IQueryableUserStore**  
- Le [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) interface définit l’implémentation de membres pour fournir un magasin d’utilisateurs utilisable.
+ Le [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) interface définit les membres que vous implémentez pour fournir un magasin d’utilisateurs utilisable.
 
-Vous implémentez uniquement les interfaces qui sont nécessaires dans votre application. Par exemple :
+Vous implémentez uniquement les interfaces qui sont nécessaires dans votre application. Exemple :
 
 ```csharp
 public class UserStore : IUserStore<IdentityUser>,
