@@ -2,21 +2,16 @@
 title: Regroupement et minifiy actifs statiques dans ASP.NET Core
 author: scottaddie
 description: Découvrez comment optimiser les ressources statiques dans une application de web ASP.NET Core en appliquant le groupement et la minimisation des techniques.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/10/2018
-ms.devlang: csharp
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: a3d49315fbb62eb1a42eb1b30885dc19a81c0a91
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: ae9836a6ad0ff0bc834bf2eb10ff5fd97c3c659a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34094643"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279569"
 ---
 # <a name="bundle-and-minifiy-static-assets-in-aspnet-core"></a>Regroupement et minifiy actifs statiques dans ASP.NET Core
 
