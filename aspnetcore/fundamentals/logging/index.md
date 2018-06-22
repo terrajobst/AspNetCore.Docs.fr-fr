@@ -40,7 +40,7 @@ Appelez ensuite des méthodes de journalisation sur cet objet logger :
 
 Cet exemple crée des journaux en utilisant la classe `TodoController` comme *catégorie*. Les catégories sont décrites [plus loin dans cet article](#log-category).
 
-ASP.NET Core ne fournit pas de méthodes logger asynchrones, car la journalisation étant normalement très rapide, l’utilisation de méthodes asynchrones est inutile. Si ce n’est pas votre cas, envisagez plutôt de changer de processus de journalisation. Si votre magasin de données est lent, écrivez d’abord les messages de journal dans un magasin plus rapide, puis déplacez-les ensuite dans un magasin lent. Par exemple, enregistrez les messages dans une file d’attente qui est lue et conservée dans le stockage lent par un autre processus.
+ASP.NET Core ne fournit pas de méthodes logger asynchrones, car la journalisation étant normalement très rapide, l’utilisation de méthodes asynchrones est inutile. Si ce n’est pas votre cas, envisagez plutôt de changer de processus de journalisation. Si votre magasin de données est lent, écrivez d’abord les messages de log dans un magasin plus rapide, puis déplacez-les ensuite dans un magasin lent. Par exemple, enregistrez les messages dans une file d’attente qui est lue et conservée dans le stockage lent par un autre processus.
 
 ## <a name="how-to-add-providers"></a>Comment ajouter des fournisseurs
 
