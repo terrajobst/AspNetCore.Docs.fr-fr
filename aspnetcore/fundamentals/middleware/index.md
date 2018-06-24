@@ -208,7 +208,7 @@ ASP.NET Core est fourni avec les composants d’intergiciel suivants et une desc
 
 <a name="middleware-writing-middleware"></a>
 
-## <a name="writing-middleware"></a>Intergiciel (middleware) d’écriture
+## <a name="writing-middleware"></a>Écriture d'un intergiciel (middleware)
 
 Les intergiciels sont généralement encapsulés dans une classe et exposés avec une méthode d’extension. Prenez en compte l’intergiciel suivant, qui définit la culture de la requête actuelle à partir de la chaîne de requête :
 
