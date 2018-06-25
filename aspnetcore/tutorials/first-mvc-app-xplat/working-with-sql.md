@@ -2,23 +2,19 @@
 title: Utilisation de SQLite
 author: rick-anderson
 description: Utilisation de SQLite avec une application MVC simple
-manager: wpickett
 ms.author: riande
 ms.date: 04/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-mvc-app-xplat/working-with-sql
-ms.openlocfilehash: 191045d392e71858c7db4425a9fc1242ef309e41
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 34cb64e21d8d9b25daeca827a8bed3e2d17ba3ae
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30895036"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279101"
 ---
 [!INCLUDE [adding-model](../../includes/mvc-intro/sql.md)]
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="42801-103">[Précédent - Ajouter un modèle](adding-model.md)
-> [Suivant - Méthodes et vues du contrôleur](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="42801-103">[Previous - Add a model](adding-model.md)
+> <span data-ttu-id="74bdc-103">[Précédent - Ajouter un modèle](adding-model.md)
+> [Suivant - Méthodes et vues du contrôleur](controller-methods-views.md)</span><span class="sxs-lookup"><span data-stu-id="74bdc-103">[Previous - Add a model](adding-model.md)
 [Next - Controller methods and views](controller-methods-views.md)</span></span>
