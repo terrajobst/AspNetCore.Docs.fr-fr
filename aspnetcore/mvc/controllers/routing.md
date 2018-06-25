@@ -2,19 +2,15 @@
 title: Routage vers les actions du contrôleur dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ASP.NET Core MVC utilise le middleware (intergiciel) de routage pour mettre en correspondance les URL des requêtes entrantes et les mapper à des actions.
-manager: wpickett
 ms.author: riande
 ms.date: 03/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/routing
-ms.openlocfilehash: 28fe62128d0a094fa08e866a270aed26080b1e51
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 795ca13674f85b6e8c1f84718c225613a7a7125a
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
-ms.locfileid: "29905203"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278409"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 

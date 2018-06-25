@@ -2,19 +2,15 @@
 title: Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 author: rick-anderson
 description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
-manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 2eff6cd5f4bb737cb79875c9b04c889914376cd0
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: e987971f60e5c5a9fb79e30440c7c986df64447e
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32740372"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275292"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 
@@ -95,8 +91,6 @@ Le balisage précédent apporte les modifications suivantes :
 * Affiche l’identificateur du cours. En général la clé primaire (PK) d’une entité n’est pas affichée. Les clés primaires sont généralement sans signification pour les utilisateurs. Dans ce cas, la clé est le numéro de cours.
 * Modifie la légende de **DepartmentID** en **Department**. 
 * Il remplace `"ViewBag.DepartmentID"` par `DepartmentNameSL` (à partir de la classe de base).
-* Il ajoute l’option « Select Department ». Cette modification entraîne l’affichage de « Select Department » plutôt que du premier département.
-* Il ajoute un message de validation quand le département n’est pas sélectionné.
 
 La page contient un champ masqué (`<input type="hidden">`) pour le numéro de cours. L’ajout d’un Tag Helper `<label>` avec `asp-for="Course.CourseID"` n’élimine pas la nécessité de la présence du champ masqué. `<input type="hidden">` est obligatoire pour que le numéro de cours soit inclus dans les données publiées quand l’utilisateur clique sur **Save**.
 

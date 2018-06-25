@@ -2,19 +2,15 @@
 title: Vues partielles dans ASP.NET Core
 author: ardalis
 description: Découvrez ce qu’est une vue partielle, une vue rendue dans une autre vue, et quand l’utiliser dans les applications ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 03/14/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/partial
-ms.openlocfilehash: 3deaaeb666e5443d0784f2ac6977e58e1b25d711
-ms.sourcegitcommit: 71b93b42cbce8a9b1a12c4d88391e75a4dfb6162
+ms.openlocfilehash: f3782961a63c08293a483ec7a75dadff2031b131
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2018
-ms.locfileid: "30000900"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279530"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 

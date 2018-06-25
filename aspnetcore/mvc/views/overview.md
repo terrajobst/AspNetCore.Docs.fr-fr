@@ -2,25 +2,21 @@
 title: Vues dans ASP.NET Core MVC
 author: ardalis
 description: Découvrez comment les vues gèrent la présentation des données et les interactions utilisateur dans les applications ASP.NET Core MVC.
-manager: wpickett
 ms.author: riande
 ms.date: 12/12/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/overview
-ms.openlocfilehash: b9947de03942bd71616e4bf12263befd9f784915
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 4d5cb6288711cdef145ebb0b52e4e645c535bdf2
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33965723"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278347"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
 Par [Steve Smith](https://ardalis.com/) et [Luke Latham](https://github.com/guardrex)
 
-Ce document explique l’utilisation des vues dans les applications ASP.NET Core MVC. Pour plus d’informations sur les pages Razor, consultez [Présentation des pages Razor](xref:mvc/razor-pages/index).
+Ce document explique l’utilisation des vues dans les applications ASP.NET Core MVC. Pour plus d’informations sur les pages Razor, consultez [Présentation des pages Razor](xref:razor-pages/index).
 
 Selon le schéma MVC (Modèle-Vue-Contrôleur), la *vue* gère la présentation des données et les interactions utilisateur dans l’application. Une vue est un modèle HTML dans lequel est incorporé un [balisage Razor](xref:mvc/views/razor). Le balisage Razor est du code qui interagit avec le balisage HTML pour générer une page web qui est envoyée au client.
 

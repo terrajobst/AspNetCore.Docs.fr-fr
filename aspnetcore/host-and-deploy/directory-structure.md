@@ -2,20 +2,16 @@
 title: Structure de répertoires ASP.NET Core
 author: guardrex
 description: Découvrez la structure de répertoires des applications ASP.NET Core publiées.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: a5cc1f23d624643facddc9e2006fb246e5ae66dc
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 06d3f097cd93ceb2a23b9f6516a9b7a1f3ca3089
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33838434"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273671"
 ---
 # <a name="aspnet-core-directory-structure"></a>Structure de répertoires ASP.NET Core
 

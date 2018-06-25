@@ -2,19 +2,15 @@
 title: Tester la logique des contrôleurs dans ASP.NET Core
 author: ardalis
 description: Découvrez plus d’informations sur le test de la logique des contrôleurs dans ASP.NET Core avec Moq et xUnit.
-manager: wpickett
 ms.author: riande
 ms.date: 10/14/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/testing
-ms.openlocfilehash: a0073e4de361c37a6854ceaf54ffd9eaea4837d4
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: fc5f10b4d5947a6af114bf00f8b1d955b083a44d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34567047"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273921"
 ---
 # <a name="test-controller-logic-in-aspnet-core"></a>Tester la logique des contrôleurs dans ASP.NET Core
 

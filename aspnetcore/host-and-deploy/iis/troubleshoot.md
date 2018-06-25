@@ -2,20 +2,16 @@
 title: Résoudre les problèmes liés à ASP.NET Core sur IIS
 author: guardrex
 description: Découvrez comment diagnostiquer les problèmes liés aux déploiements Internet Information Services (IIS) d’applications ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: e44892d2022ca1a176cee9d027e220e196c6572d
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: d57196693feb6413560ec25e09cf74e9babf93bf
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30073891"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276163"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes liés à ASP.NET Core sur IIS
 
@@ -50,17 +46,17 @@ La page d’erreur d’un *échec de processus 502.5* est retournée quand une e
 **Erreur de serveur interne 500**  
 L’application démarre, mais une erreur empêche le serveur de répondre à la requête.
 
-Cette erreur se produit dans le code de l’application pendant le démarrage ou durant la création d’une réponse. La réponse peut être dépourvue de contenu ou apparaître sous la forme d’une *erreur de serveur interne 500* dans le navigateur. Le Journal des événements de l’application indique généralement que l’application a démarré normalement. Du point de vue du serveur, cela est correct. L’application a démarré, mais elle ne peut pas générer de réponse valide. [Exécutez l’application depuis une invite de commandes](#run-the-app-at-a-command-prompt) sur le serveur ou [activez le journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log) pour résoudre le problème.
+Cette erreur se produit dans le code de l’application pendant le démarrage ou durant la création d’une réponse. La réponse peut être dépourvue de contenu ou apparaître sous la forme d’une *erreur de serveur interne 500* dans le navigateur. Le Journal des événements de l’application indique généralement qu’elle a démarré normalement. Du point de vue du serveur, c’est exact. L’application a démarré, mais elle ne peut pas générer de réponse valide. [Exécutez l’application depuis une invite de commandes](#run-the-app-at-a-command-prompt) sur le serveur ou [activez le journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log) pour résoudre le problème.
 
 **Réinitialisation de la connexion**
 
-Si une erreur se produit après l’envoi des en-têtes, il est trop tard pour que le serveur puisse envoyer une **erreur de serveur interne 500**. Il en est souvent ainsi quand une erreur se produit pendant la sérialisation des objets complexes d’une réponse. Ce type d’erreur apparaît en tant qu’erreur de *réinitialisation de la connexion* sur le client. La [journalisation des applications](xref:fundamentals/logging/index) peut aider à résoudre ces types d’erreurs.
+Si une erreur se produit après l’envoi des en-têtes, il est trop tard pour que le serveur puisse envoyer une **erreur de serveur interne 500**. C’est souvent le cas quand une erreur se produit pendant la sérialisation des objets complexes d’une réponse. Ce type d’erreur apparaît en tant qu’erreur de *réinitialisation de la connexion* sur le client. La [journalisation des applications](xref:fundamentals/logging/index) peut aider à le résoudre.
 
 ## <a name="default-startup-limits"></a>Limites de démarrage par défaut
 
-Le module ASP.NET Core est configuré avec une valeur *startupTimeLimit* par défaut de 120 secondes. Quand cette valeur par défaut est conservée, une application peut mettre jusqu’à deux minutes à démarrer avant que le module journalise un échec d’un processus. Pour plus d’informations sur la configuration du module, consultez [Attributs de l’élément aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
+Le module ASP.NET Core est configuré avec une valeur *startupTimeLimit* par défaut de 120 secondes. Quand cette valeur par défaut est conservée, une application peut mettre jusqu’à deux minutes à démarrer avant que le module ne consigne un échec de processus. Pour plus d’informations sur la configuration du module, voir [Attributs de l’élément aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
 
-## <a name="troubleshoot-app-startup-errors"></a>Résoudre les erreurs de démarrage d’application
+## <a name="troubleshoot-app-startup-errors"></a>Résoudre les erreurs de démarrage des applications
 
 ### <a name="application-event-log"></a>Journal des événements de l'application
 
@@ -103,7 +99,7 @@ Pour activer et afficher les journaux stdout :
 1. Accédez au dossier *logs*. Recherchez et ouvrez le journal stdout le plus récent.
 1. Déterminez si le journal contient des erreurs.
 
-**Important !** Désactivez la journalisation stdout une fois la résolution des problèmes effectuée.
+**Important !** Désactivez la journalisation stdout une fois les problèmes résolus.
 
 1. Modifiez le fichier *web.config*.
 1. Définissez **stdoutLogEnabled** sur `false`.
@@ -112,7 +108,7 @@ Pour activer et afficher les journaux stdout :
 > [!WARNING]
 > Si vous ne désactivez pas le journal stdout, l’application ou le serveur risque d’échouer. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés.
 >
-> Pour les opérations de journalisation courantes dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et appliquez une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+> Pour les opérations de journalisation courantes dans une application ASP.NET Core, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et applique une rotation aux journaux. Pour plus d’informations, consultez [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
 ## <a name="enabling-the-developer-exception-page"></a>Activation de la page d’exception de développeur
 
@@ -133,7 +129,7 @@ La définition de la variable d’environnement `ASPNETCORE_ENVIRONMENT` est rec
 
 ## <a name="common-startup-errors"></a>Erreurs de démarrage courantes 
 
-Consultez les [informations de référence sur les erreurs ASP.NET Core courantes](xref:host-and-deploy/azure-iis-errors-reference). La plupart des problèmes courants qui empêchent le démarrage de l’application sont traités dans la rubrique de référence.
+Voir [Informations de référence sur les erreurs ASP.NET Core courantes](xref:host-and-deploy/azure-iis-errors-reference). La plupart des problèmes courants qui empêchent le démarrage de l’application sont traités dans la rubrique de référence.
 
 ## <a name="slow-or-hanging-app"></a>Application lente ou bloquée
 

@@ -2,19 +2,15 @@
 title: Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 author: rick-anderson
 description: Montre comment créer une application Pages Razor à l’aide d’Entity Framework Core.
-manager: wpickett
 ms.author: riande
 ms.date: 11/15/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-rp/intro
-ms.openlocfilehash: d7cf4740f31f1e0ae56461efc4c1b3d91238270f
-ms.sourcegitcommit: 9a35906446af7ffd4ccfc18daec38874b5abbef7
+ms.openlocfilehash: cadf36f4e1ff3776ad4139e1d7c4e9b73687bc5c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35726015"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279228"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 
@@ -30,7 +26,7 @@ L’exemple d’application est un site web pour une université Contoso fictive
 
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
 
-Connaissance des [Pages Razor](xref:mvc/razor-pages/index). Les programmeurs débutants doivent lire [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start) avant de démarrer cette série.
+Connaissance des [Pages Razor](xref:razor-pages/index). Les programmeurs débutants doivent lire [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start) avant de démarrer cette série.
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
@@ -57,7 +53,7 @@ Le style de l’interface utilisateur de ce site est proche de ce qui est géné
 * Créez une application web ASP.NET Core. Nommez le projet **ContosoUniversity**. Il est important de nommer le projet *ContosoUniversity* afin que les espaces de noms correspondent quand le code est copié/collé.
  ![Nouvelle application web ASP.NET Core](intro/_static/np.png)
 * Sélectionnez **ASP.NET Core 2.0** dans la liste déroulante, puis sélectionnez **Application web**.
- ![Application web (pages Razor)](../../mvc/razor-pages/index/_static/np2.png)
+ ![Application web (pages Razor)](../../razor-pages/index/_static/np2.png)
 
 Appuyez sur **F5** pour exécuter l’application en mode débogage ou sur **Ctrl+F5** pour l’exécuter sans attachement du débogueur
 

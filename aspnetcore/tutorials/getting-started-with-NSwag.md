@@ -2,20 +2,16 @@
 title: Bien démarrer avec NSwag et ASP.NET Core
 author: zuckerthoben
 description: Découvrez comment utiliser NSwag pour générer des pages d’aide et de documentation pour une API web ASP.NET Core.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 05/08/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 0f0aa0eeaa174ef40f03aab2500a8b3ce37e9448
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: f4cc9ec1f32ef2bd0056ba8d0cbbbe9228834d85
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34094890"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279195"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Bien démarrer avec NSwag et ASP.NET Core
 

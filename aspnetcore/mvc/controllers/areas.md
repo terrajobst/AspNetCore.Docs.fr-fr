@@ -2,19 +2,15 @@
 title: Zones dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues).
-manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/areas
-ms.openlocfilehash: 61527eb350b5aba9cb37b1de5acdeae1287bf073
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 3e998af42cd6209271495dd8dd97a8aed35717a4
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30072719"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274825"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 

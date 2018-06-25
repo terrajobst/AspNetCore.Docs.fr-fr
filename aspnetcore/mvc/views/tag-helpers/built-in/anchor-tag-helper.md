@@ -2,20 +2,16 @@
 title: Tag Helper Ancre dans ASP.NET Core
 author: pkellner
 description: Découvrez les attributs ASP.NET Core Tag Helper Ancre et le rôle joué par chaque attribut dans l’extension du comportement de la balise d’ancrage HTML.
-manager: wpickett
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/31/2018
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 31ff62b6bedb5e577a51f341c89d241d06a83ad3
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 6bdf71eaf38f134cb15b5950d2cae6ab67f861a4
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30899406"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273882"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Tag Helper Ancre dans ASP.NET Core
 
@@ -272,4 +268,4 @@ Code HTML généré :
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Les zones (areas)](xref:mvc/controllers/areas)
-* [Présentation des Pages Razor](xref:mvc/razor-pages/index)
+* [Présentation des Pages Razor](xref:razor-pages/index)

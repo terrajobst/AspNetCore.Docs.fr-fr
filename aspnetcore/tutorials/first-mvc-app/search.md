@@ -2,19 +2,15 @@
 title: Ajout d’une fonction de recherche
 author: rick-anderson
 description: Montre comment ajouter une fonction de recherche à une application ASP.NET MVC simple
-manager: wpickett
 ms.author: riande
 ms.date: 03/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: aee1682755385d9fa292f9ba0814d5d3602f3881
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: fb93d9688c9abf76ad0057c646c4b7662d003108
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729906"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36274838"
 ---
 [!INCLUDE [adding-model](~/includes/mvc-intro/search1.md)]
 

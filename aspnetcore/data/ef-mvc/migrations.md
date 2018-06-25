@@ -2,19 +2,15 @@
 title: ASP.NET Core MVC avec EF Core - Migrations - 4 sur 10
 author: rick-anderson
 description: Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d’EF Core pour gérer les modifications du modèle de données dans une application ASP.NET Core MVC.
-manager: wpickett
 ms.author: tdykstra
 ms.date: 03/15/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 0a3ff28c9edefd2c7f96222060a0df76d538012b
-ms.sourcegitcommit: a19261eb82b948af6e4a1664fcfb8dabb16150e3
+ms.openlocfilehash: d8b92aeedb252b93e1dc1aca424d26a377305da2
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34153733"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273583"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC avec EF Core - Migrations - 4 sur 10
 

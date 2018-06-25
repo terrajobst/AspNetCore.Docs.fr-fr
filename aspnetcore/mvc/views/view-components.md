@@ -2,19 +2,15 @@
 title: Composants de vue dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment les composants de vue sont utilisés dans ASP.NET Core et comment les ajouter à des applications.
-manager: wpickett
 ms.author: riande
 ms.date: 02/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/view-components
-ms.openlocfilehash: cdf44fc15ac64497b2589e8b7b289beb94c5b2c4
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 2b196d8d46942604d1c85eb5f2f073661e5acb30
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33962682"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278360"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 

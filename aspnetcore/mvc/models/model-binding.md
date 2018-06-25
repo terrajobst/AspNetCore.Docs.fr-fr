@@ -2,20 +2,16 @@
 title: Liaison de données dans ASP.NET Core
 author: rachelappel
 description: Découvrez comment la liaison de modèle dans ASP.NET Core MVC mappe les données des requêtes HTTP à des paramètres de méthode d’action.
-manager: wpickett
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: rachelap
 ms.date: 01/22/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/models/model-binding
-ms.openlocfilehash: f416bda1d7bccdfa922ba598a411ef1d150e3111
-ms.sourcegitcommit: 493a215355576cfa481773365de021bcf04bb9c7
+ms.openlocfilehash: 4c1cfddf82e077e22e9069777393bc5e6086de83
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/15/2018
-ms.locfileid: "29904558"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278383"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 

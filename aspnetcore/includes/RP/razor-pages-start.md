@@ -9,9 +9,9 @@ Testez les liens. Les liens **RazorPagesMovie** et **Home** permettent d’accé
 Le tableau suivant répertorie les fichiers et dossiers du projet. Pour ce didacticiel, le fichier *Startup.cs* est le plus important à comprendre. Vous n’avez pas besoin de passer en revue chaque lien ci-dessous. Les liens sont fournis en guise de référence quand vous avez besoin d’informations supplémentaires sur un fichier ou un dossier du projet.
 
 | Fichier ou dossier              | Objectif |
-| ----------------- | ------------ | 
+| ----------------- | ------------ |
 | wwwroot | Contient des fichiers statiques. Consultez [Fichiers statiques](xref:fundamentals/static-files). |
-| Pages | Dossier pour [Pages Razor](xref:mvc/razor-pages/index). | 
+| Pages | Dossier pour [Pages Razor](xref:razor-pages/index). |
 | *appsettings.json* | [Configuration](xref:fundamentals/configuration/index) |
 | *Program.cs* | [Héberge](xref:fundamentals/host/index) l’application ASP.NET Core.|
 | *Startup.cs* | Configure les services et le pipeline de requête. Voir [Démarrage](xref:fundamentals/startup).|
