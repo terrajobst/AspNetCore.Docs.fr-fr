@@ -12,12 +12,12 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 2790f32bc74cecf450f5a258fc1ff5b280a63923
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 1766c11dabec3931ec2bfc4ae2e15332427d7855
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30874991"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36314011"
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migration d’un site Web existant à partir de l’appartenance SQL pour ASP.NET Identity
 ====================
@@ -90,7 +90,7 @@ Pour les classes d’identité ASP.NET fonctionne directement avec les données 
 | **IdentityUser** | **Type** | **IdentityRole** | **IdentityUserRole** | **IdentityUserLogin** | **IdentityUserClaim** |
 | --- | --- | --- | --- | --- | --- |
 | Id | chaîne | Id | RoleId | ProviderKey | Id |
-| Utilisateur | chaîne | Name | UserId | UserId | ClaimType |
+| Utilisateur | chaîne | Name | ID d’utilisateur | ID d’utilisateur | ClaimType |
 | PasswordHash | chaîne |  |  | LoginProvider | ClaimValue |
 | SecurityStamp | chaîne |  |  |  | Utilisateur\_Id |
 | Messagerie | chaîne |  |  |  |  |
@@ -103,19 +103,21 @@ Pour les classes d’identité ASP.NET fonctionne directement avec les données 
 
 Nous devons disposer des tables pour chacun de ces modèles avec des colonnes correspondant aux propriétés. Le mappage entre les classes et les tables est défini dans le `OnModelCreating` méthode de la `IdentityDBContext`. Il s’agit de la configuration de la méthode d’API fluent et peut trouver plus d’informations [ici](https://msdn.microsoft.com/data/jj591617.aspx). La configuration pour les classes est comme indiqué ci-dessous
 
-| **Classe** | **Table** | **Clé primaire** | **clé étrangère** |
+| **Classe** | **Table** | **clé primaire** | **clé étrangère** |
 | --- | --- | --- | --- |
 | IdentityUser | AspnetUsers | Id |  |
 | IdentityRole | AspnetRoles | Id |  |
-| IdentityUserRole | AspnetUserRole | UserId + RoleId | User\_Id-&gt;AspnetUsers RoleId-&gt;AspnetRoles |
-| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId-&gt;AspnetUsers |
-| IdentityUserClaim | AspnetUserClaims | Id | User\_Id-&gt;AspnetUsers |
+| IdentityUserRole | AspnetUserRole | UserId + RoleId | Utilisateur\_Id -&gt;AspnetUsers RoleId -&gt;AspnetRoles |
+| IdentityUserLogin | AspnetUserLogins | ProviderKey + UserId + LoginProvider | UserId -&gt;AspnetUsers |
+| IdentityUserClaim | AspnetUserClaims | Id | Utilisateur\_Id -&gt;AspnetUsers |
 
 Avec ces informations nous pouvons créer des instructions SQL pour créer des tables. Nous pouvons écrire chaque instruction individuellement ou générer la totalité du script à l’aide des commandes EntityFramework PowerShell que nous pouvons ensuite modifier en fonction des besoins. Pour ce faire, dans Visual Studio open le **Package Manager Console** à partir de la **vue** ou **outils** menu
 
 - Exécutez la commande « Enable-Migrations » pour activer les migrations de EntityFramework.
 - Exécutez la commande « Add-migration initial », qui crée le code de la configuration initiale pour créer la base de données en C# / VB.
 - L’étape finale consiste à exécuter « base de données de mise à jour – Script « commande qui génère le script SQL basé sur les classes du modèle.
+
+[!INCLUDE[](../../../includes/identity/alter-command-exception.md)]
 
 Ce script de génération de base de données peut être utilisé comme un point de départ où nous allons apporter des modifications supplémentaires à ajouter de nouvelles colonnes et copier des données. L’avantage de cela est que nous générons le `_MigrationHistory` table qui est utilisé par EntityFramework pour modifier le schéma de base de données lorsque le modèle de modification pour les versions futures de versions de l’identité des classes. 
 
@@ -146,11 +148,11 @@ Ce fichier de script est spécifique à cet exemple. Pour les applications qui o
 
     Voici comment les informations contenues dans les tables d’appartenances SQL sont mappés vers le nouveau système d’identité.
 
-    aspnet\_Roles --&gt; AspNetRoles
+    ASPNET\_rôles--&gt; AspNetRoles
 
     ASP\_netUsers et asp\_netMembership--&gt; AspNetUsers
 
-    aspnet\_UserInRoles --&gt; AspNetUserRoles
+    ASPNET\_UserInRoles--&gt; AspNetUserRoles
 
     Comme expliqué dans la section ci-dessus, les tables AspNetUserClaims et AspNetUserLogins sont vides. Le champ 'Discriminateur' dans la table AspNetUser doit correspondre au nom de classe de modèle qui est défini comme une étape suivante. La colonne PasswordHash est également sous la forme ' mot de passe chiffré | salt du mot de passe | format de mot de passe '. Cela vous permet d’utiliser une logique de chiffrement d’appartenance SQL spéciale afin que vous puissiez réutiliser des anciens mots de passe. Dans, qui est expliquée plus loin dans l’article.
 

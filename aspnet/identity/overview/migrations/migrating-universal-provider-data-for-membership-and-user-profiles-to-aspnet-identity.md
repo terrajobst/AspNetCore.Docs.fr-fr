@@ -12,12 +12,12 @@ ms.technology: ''
 ms.prod: .net-framework
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: f65f93b20543d06ea70a9009b6921e297477c99e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 75d273d9fdb5d8ff0f7a910f42abe8bcce6e397d
+ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871569"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36313998"
 ---
 <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>Migration de données universel de fournisseur pour l’appartenance et les profils utilisateur à l’identité de ASP.NET (c#)
 ====================
@@ -106,6 +106,8 @@ Collez le script SQL à partir de [ https://raw.github.com/suhasj/UniversalProvi
    Notez que le « ProfileInfo » est désormais une propriété sur la classe d’utilisateur. Par conséquent, nous pouvons utiliser la classe d’utilisateur pour travailler directement avec les données de profil.
 
 Copiez les fichiers dans le **IdentityModels** et **IdentityAccount** dossiers à partir de la source de téléchargement ( [ https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations ](https://github.com/suhasj/UniversalProviders-Identity-Migrations/tree/master/UniversalProviders-Identity-Migrations) ). Ceux-ci ont les autres classes de modèle et les nouvelles pages nécessaires pour l’utilisateur et la gestion des rôles à l’aide de l’API d’identité ASP.NET. L’approche utilisée est similaire à l’appartenance de SQL et une explication détaillée peut être trouvée [ici](migrating-an-existing-website-from-sql-membership-to-aspnet-identity.md).
+
+[!INCLUDE[](../../../includes/identity/alter-command-exception.md)]
 
 ## <a name="copying-profile-data-to-the-new-tables"></a>Copie les données de profil pour les nouvelles tables
 

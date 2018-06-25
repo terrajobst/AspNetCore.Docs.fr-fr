@@ -181,7 +181,7 @@ Dans cet exercice, vous allez explorer les améliorations dans les modèles de p
 
        Parcourir les vues de modèle pour déterminer le balisage de thème.
 
-       ![Nouveau modèle, à l’aide de Razor et HTML5 balisage About.cshtml. ] (whats-new-in-aspnet-mvc-4/_static/image10.png "Nouveau modèle, à l’aide de Razor et HTML5 balisage About.cshtml.")
+       ![Nouveau modèle, à l’aide de Razor et HTML5 balisage About.cshtml. ](whats-new-in-aspnet-mvc-4/_static/image10.png "Nouveau modèle, à l’aide de Razor et HTML5 balisage About.cshtml.")
 
        *Nouveau modèle, à l’aide de balisage Razor et HTML5 (About.cshtml).*
    - **Bibliothèques JavaScript mis à jour**
