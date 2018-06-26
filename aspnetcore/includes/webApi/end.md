@@ -14,7 +14,7 @@ Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut 
 ::: moniker range=">= aspnetcore-2.1"
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). MVC obtient la valeur de la tâche à partir du corps de la requête HTTP.
+Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). MVC obtient la valeur de la tâche dans le corps de la requête HTTP.
 ::: moniker-end
 
 La méthode `CreatedAtRoute` :
@@ -38,10 +38,10 @@ La méthode `CreatedAtRoute` :
 ![Console Postman](../../tutorials/first-web-api/_static/pmc.png)
 
 * Mettez à jour le numéro de port dans l’URL localhost.
-* Définissez la méthode HTTP avec la valeur *POST*.
+* Définissez la méthode HTTP sur *POST*.
 * Cliquez sur l’onglet **Body** (Corps).
 * Sélectionnez la case d’option **raw** (données brutes).
-* Définissez le type avec la valeur *JSON (application/json)*.
+* Définissez le type sur *JSON (application/json)*.
 * Entrez un corps de requête avec une tâche similaire au code JSON suivant :
 
 ```json
