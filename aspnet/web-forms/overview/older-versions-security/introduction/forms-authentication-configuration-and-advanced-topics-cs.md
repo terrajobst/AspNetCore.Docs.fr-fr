@@ -12,12 +12,12 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d6578737478fb86f64be261925becc3adec33247
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 58d87bd6211ae1b1eea227d34c001239efcf5f1d
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30891778"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961397"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-c"></a>Configuration de l’authentification de formulaires et les rubriques avancées (c#)
 ====================
@@ -54,7 +54,7 @@ Le tableau 1 résume les propriétés qui peuvent être personnalisées par le b
 |            path            |                                                                             Lors de l’utilisation de tickets d’authentification basée sur les cookies, ce paramètre spécifie attribut de chemin d’accès du cookie. L’attribut de chemin d’accès permet au développeur limiter l’étendue d’un cookie pour une hiérarchie de répertoires particulière. La valeur par défaut est /, qui informe le navigateur à envoyer le cookie de ticket d’authentification pour toute demande adressée au domaine.                                                                              |
 |         protection         |                                                                                                                                            Indique quelles techniques sont utilisées pour protéger le ticket d’authentification de formulaires. Les valeurs autorisées sont : toutes les (la valeur par défaut) ; Chiffrement ; None ; et la Validation. Ces paramètres sont décrits en détail à l’étape 3.                                                                                                                                            |
 |         requireSSL         |                                                                                                                                                                                Valeur booléenne qui indique si une connexion SSL est requise pour transmettre le cookie d’authentification. La valeur par défaut est false.                                                                                                                                                                                |
-|     SlidingExpiration      |                                                                                                 Valeur booléenne qui indique si le délai d’expiration du cookie d’authentification est réinitialisé chaque fois que l’utilisateur visite le site pendant une session unique. La valeur par défaut est true. La stratégie de délai d’expiration du ticket d’authentification est décrite plus en détail dans la spécification section sur les valeurs de délai d’expiration du Ticket.                                                                                                 |
+|     slidingExpiration      |                                                                                                 Valeur booléenne qui indique si le délai d’expiration du cookie d’authentification est réinitialisé chaque fois que l’utilisateur visite le site pendant une session unique. La valeur par défaut est true. La stratégie de délai d’expiration du ticket d’authentification est décrite plus en détail dans la spécification section sur les valeurs de délai d’expiration du Ticket.                                                                                                 |
 |          délai d'expiration           |                                                                                                                               Spécifie la durée, en minutes, après laquelle le cookie de ticket d’authentification expire. La valeur par défaut est 30. La stratégie de délai d’expiration du ticket d’authentification est décrite plus en détail dans la spécification section sur les valeurs de délai d’expiration du Ticket.                                                                                                                               |
 
 **Tableau 1**: un récapitulatif de le &lt;forms&gt; attributs de l’élément
@@ -168,7 +168,7 @@ Enregistrez les modifications dans Default.aspx, puis vous accédez il via un na
 
 `http://localhost:2448/ASPNET\_Security\_Tutorial\_03\_CS/(F(jaIOIDTJxIr12xYS-VVgkqKCVAuIoW30Bu0diWi6flQC-FyMaLXJfow\_Vd9GZkB2Cv-rfezq0gKadKX0YPZCkA2))/SomePage.aspx`
 
-L’URL SomePage.aspx dans le lien a été automatiquement convertie en une URL incluant le ticket d’authentification - nous n’aviez pas à écrire la moindre ligne de code ! Le ticket d’authentification par formulaire est incorporé automatiquement dans l’URL pour tous les liens hypertexte qui ne commencent pas par http:// ou /. Peu importe si le lien hypertexte s’affiche dans un appel de Response.Redirect, dans un contrôle de lien hypertexte ou dans un élément d’ancrage HTML (par exemple, &lt;un href = «... »&gt;... &lt;/a&gt;). Tant que l’URL n’est pas un nom tel que http://www.someserver.com/SomePage.aspx ou /SomePage.aspx, les formulaires est incorporé ticket d’authentification pour nous.
+L’URL SomePage.aspx dans le lien a été automatiquement convertie en une URL incluant le ticket d’authentification - nous n’aviez pas à écrire la moindre ligne de code ! Le ticket d’authentification par formulaire est incorporé automatiquement dans l’URL pour tous les liens hypertexte qui ne commencent pas par `http://` ou `/`. Peu importe si le lien hypertexte s’affiche dans un appel de Response.Redirect, dans un contrôle de lien hypertexte ou dans un élément d’ancrage HTML (par exemple, `<a href="...">...</a>`). Tant que l’URL n’est pas un nom tel que `http://www.someserver.com/SomePage.aspx` ou `/SomePage.aspx`, le ticket d’authentification forms est incorporé pour nous.
 
 > [!NOTE]
 > Tickets d’authentification par formulaire sans cookies respectent les mêmes stratégies de délai d’attente que les tickets d’authentification basée sur le cookie. Toutefois, les tickets d’authentification sans cookies sont plus sujets aux attaques par relecture, car le ticket d’authentification est directement incorporé dans l’URL. Imaginez un utilisateur visite un site Web, se connecte, puis colle l’URL dans un message électronique à un collègue. Si la collègue clique sur ce lien avant l’expiration est atteint, elles seront enregistrées en tant que l’utilisateur qui a envoyé le message électronique !
@@ -265,7 +265,7 @@ Dans le didacticiel précédent, si les informations d’identification valides.
 
 Ces étapes sont répliqués dans le code ci-dessus. Tout d’abord, la chaîne que nous allons finalement stocker dans la propriété UserData est formée en combinant le nom de la société et le titre, délimitant les deux valeurs avec une barre verticale (|).
 
-string userDataString = string.Concat(companyName[i], "|", titleAtCompany[i]);
+chaîne userDataString = chaîne. Concat (companyName [i], « | », titleAtCompany[i]) ;
 
 Ensuite, le FormsAuthentication.GetAuthCookie méthode est appelée, ce qui crée le ticket d’authentification, chiffre valide selon les paramètres de configuration et le place dans un objet HttpCookie.
 
@@ -273,15 +273,15 @@ HttpCookie authCookie = FormsAuthentication.GetAuthCookie (UserName.Text, Rememb
 
 Afin de travailler avec le FormAuthenticationTicket incorporé dans le cookie, il faut appeler la classe FormAuthentication [déchiffrer méthode](https://msdn.microsoft.com/library/system.web.security.formsauthentication.decrypt.aspx), en passant la valeur du cookie.
 
-FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value) ;
 
 Ensuite, nous créons un *nouvelle* FormsAuthenticationTicket instance selon les valeurs de FormsAuthenticationTicket existant. Toutefois, ce nouveau ticket inclut les informations spécifiques à l’utilisateur (userDataString).
 
-FormsAuthenticationTicket newTicket = new FormsAuthenticationTicket(ticket.Version, ticket.Name, ticket.IssueDate, ticket.Expiration, ticket.IsPersistent, userDataString);
+FormsAuthenticationTicket newTicket = nouveau FormsAuthenticationTicket (ticket. Version, le ticket. Nom, le ticket. IssueDate, de ticket. Expiration, le ticket. IsPersistent userDataString) ;
 
 Nous puis chiffrer (et valider) la nouvelle instance de FormsAuthenticationTicket en appelant le [chiffrer méthode](https://msdn.microsoft.com/library/system.web.security.formsauthentication.encrypt.aspx)et remettre ces données chiffrées (et validées) dans authCookie.
 
-authCookie.Value = FormsAuthentication.Encrypt(newTicket);
+authCookie.Value = FormsAuthentication.Encrypt(newTicket) ;
 
 Enfin, authCookie est ajouté à la collection Response.Cookies et la méthode GetRedirectUrl est appelée pour déterminer la page appropriée à envoyer à l’utilisateur.
 
@@ -434,7 +434,7 @@ Pour plus d’informations sur les sujets abordés dans ce didacticiel, consulte
 
 ### <a name="about-the-author"></a>À propos de l’auteur
 
-Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est  *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [ mitchell@4guysfromrolla.com ](mailto:mitchell@4guysfromrolla.com) ou via son blog à [ http://ScottOnWriting.NET ](http://scottonwriting.net/).
+Scott Mitchell, auteur de plusieurs livres sur ASP/ASP.NET et créateur de 4GuysFromRolla.com, travaille avec les technologies Web Microsoft depuis 1998. Scott fonctionne comme un consultant indépendant, formateur et writer. Son dernier ouvrage est *[SAM animer vous-même ASP.NET 2.0 des dernières 24 heures](https://www.amazon.com/exec/obidos/ASIN/0672327384/4guysfromrollaco)*. Scott peut être atteint à [mitchell@4guysfromrolla.com](mailto:mitchell@4guysfromrolla.com) ou via son blog à [http://ScottOnWriting.NET](http://scottonwriting.net/).
 
 ### <a name="special-thanks-to"></a>Remerciements
 

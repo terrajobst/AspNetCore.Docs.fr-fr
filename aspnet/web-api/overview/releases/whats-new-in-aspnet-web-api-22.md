@@ -12,12 +12,12 @@ ms.technology: dotnet-webapi
 ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/releases/whats-new-in-aspnet-web-api-22
 msc.type: authoredcontent
-ms.openlocfilehash: 400329dd852ca3c527387ee45e3e902b725e771b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 89b065fccd0e4864f4a24c37b4caa29a1e127840
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26508398"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961297"
 ---
 <a name="whats-new-in-aspnet-web-api-22"></a>Quelles sont les nouveautés dans ASP.NET Web API 2.2
 ====================
@@ -131,7 +131,7 @@ Par exemple, les littéraux de chaîne peuvent être utilisés dans les chemins 
 
 Lorsque les services reçoivent ces demandes hôtes va annuler-d’échappement les séquences d’échappement avant leur transmission à l’exécution de l’API Web. Cela protège contre les attaques comme suit :  
   
- http://www.contoso.com/..%2f..%2f/Windows/System32/cmd.exe?/c+dir+c :
+`http://www.contoso.com/..%2F..%2F/Windows/System32/cmd.exe?/c+dir+c:`
 
 Cela provoque la pile Web API OData retourner une erreur 404 (introuvable). Pour éviter cette erreur, votre client doit utiliser les séquences de double échappement pour une barre oblique (% 252F) et une barre oblique inverse (% 255C). Cela ne se produit pas pour les chaînes de requête tels que /Employees ? $filter = Name eq 'Nom % 2F'
 
@@ -158,7 +158,7 @@ Une autre solution consiste à utiliser le code suivant dans votre configuration
 Problème : Liaison de modèle de type complexe qui est décorée avec l’attribut de FromUri se comporte différemment lorsque vous utilisez le routage d’attributs.
 
 Lien suivant consiste à suivre le problème et aussi des informations sur une solution de contournement.  
-[http://aspnetwebstack.codeplex.com/WorkItem/1944](http://aspnetwebstack.codeplex.com/workitem/1944)
+[http://aspnetwebstack.codeplex.com/workitem/1944](http://aspnetwebstack.codeplex.com/workitem/1944)
 
 Problème : Génération de modèles automatique/Web MVC API dans un projet avec 5.2.0 résultats packages dans 5.1.2 packages pour ceux qui n’existent pas déjà dans le projet
 

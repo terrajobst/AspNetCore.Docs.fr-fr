@@ -12,18 +12,18 @@ ms.technology: dotnet-webforms
 ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-team-project-in-tfs
 msc.type: authoredcontent
-ms.openlocfilehash: 79c069a601c0eafd84ae142241895428052acd29
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 96e0ee5fd0b74e7b22b8e346aa8462f7558a3ddc
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30880425"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960692"
 ---
 <a name="creating-a-team-project-in-tfs"></a>Création d’un projet d’équipe dans TFS
 ====================
 par [Jason Lee](https://github.com/jrjlee)
 
-[Télécharger le PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
+[Télécharger PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
 > Cette rubrique décrit comment créer un nouveau projet d’équipe dans Team Foundation Server (TFS) 2010.
 
@@ -110,9 +110,8 @@ Ensuite, vous devez donner à l’utilisateur l’autorisation de créer de nouv
 
    > [!NOTE]
    > Vous pouvez recevoir un <strong>HTTP 404 introuvable</strong> erreur en raison d’un bogue de codage HTTP double. Si cela se produit, remplacez l’URL par ceci :   
-   > [<em>URL de collection de site</em>] /\_layouts/permsetup.aspx  
-   > Par exemple :  
-   > http://tfs/sites/Fabrikam%20Web%20Projects/\_layouts/permsetup.aspx
+   > `[site_collection_URL]/_layouts/permsetup.aspx` Par exemple :  
+   > `http://tfs/sites/Fabrikam%20Web%20Projects/_layouts/permsetup.aspx` 
 8. Sur le **configurer les groupes pour ce Site** page, ajoutez l’utilisateur qui doivent créer des projets d’équipe pour le **propriétaires** de groupe, puis cliquez sur **OK**.
 
     ![](creating-a-team-project-in-tfs/_static/image10.png)
