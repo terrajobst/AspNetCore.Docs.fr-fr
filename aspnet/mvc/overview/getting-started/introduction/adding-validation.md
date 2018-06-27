@@ -12,12 +12,12 @@ ms.technology: dotnet-mvc
 ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 946d4d5e5a506fb437232f9f4440c98e33a1a9b3
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 96dc6724b48daf77034c0741be970be11b81ab37
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33966557"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961514"
 ---
 <a name="adding-validation"></a>Ajout de la validation
 ====================
@@ -57,7 +57,7 @@ Une fois cette commande, Visual Studio ouvre le fichier de classe qui définit l
 
 [!code-csharp[Main](adding-validation/samples/sample3.cs)]
 
-Le `Genre` est de champ ne sont plus nullable (autrement dit, vous devez entrer une valeur). Le `Rating` champ a une longueur maximale de 5 et `Title` a une longueur maximale de 60. La longueur minimale de 3 sur `Title` et la plage sur `Price` n’a pas créé de modifications de schéma.
+Le `Genre` champ n’est plus nullable (autrement dit, vous devez entrer une valeur). Le `Rating` champ a une longueur maximale de 5 et `Title` a une longueur maximale de 60. La longueur minimale de 3 sur `Title` et la plage sur `Price` n’a pas créé de modifications de schéma.
 
 Examinez le schéma de film :
 
