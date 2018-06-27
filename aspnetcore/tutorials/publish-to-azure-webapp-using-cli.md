@@ -2,50 +2,45 @@
 title: Publier une application ASP.NET Core sur Azure avec des outils en ligne de commande
 author: camsoper
 description: Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide du client de ligne de commande Git.
-manager: wpickett
 ms.author: casoper
 ms.custom: mvc
 ms.date: 11/03/2017
-ms.devlang: dotnet
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 services: multiple
 uid: tutorials/publish-to-azure-webapp-using-cli
-ms.openlocfilehash: 3fc068096a4b8696340787aa15120a2f97d10164
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: 526ceef469d473706f39cdc3ee645280e99315b1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252436"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36279244"
 ---
-# <a name="publish-an-aspnet-core-app-to-azure-with-command-line-tools"></a><span data-ttu-id="85228-103">Publier une application ASP.NET Core sur Azure avec des outils en ligne de commande</span><span class="sxs-lookup"><span data-stu-id="85228-103">Publish an ASP.NET Core app to Azure with command line tools</span></span>
+# <a name="publish-an-aspnet-core-app-to-azure-with-command-line-tools"></a><span data-ttu-id="64d9e-103">Publier une application ASP.NET Core sur Azure avec des outils en ligne de commande</span><span class="sxs-lookup"><span data-stu-id="64d9e-103">Publish an ASP.NET Core app to Azure with command line tools</span></span>
 
-<span data-ttu-id="85228-104">Auteur : [Cam Soper](https://twitter.com/camsoper)</span><span class="sxs-lookup"><span data-stu-id="85228-104">By [Cam Soper](https://twitter.com/camsoper)</span></span>
+<span data-ttu-id="64d9e-104">Auteur : [Cam Soper](https://twitter.com/camsoper)</span><span class="sxs-lookup"><span data-stu-id="64d9e-104">By [Cam Soper](https://twitter.com/camsoper)</span></span>
 
 [!INCLUDE [Azure App Service Preview Notice](../includes/azure-apps-preview-notice.md)]
 
-<span data-ttu-id="85228-105">Ce didacticiel vous montrera comment générer et déployer une application ASP.NET Core sur Microsoft Azure App Service à l’aide d’outils en ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="85228-105">This tutorial will show you how to build and deploy an ASP.NET Core app to Microsoft Azure App Service using command line tools.</span></span> <span data-ttu-id="85228-106">Quand vous aurez terminé, vous disposerez d’une application web Razor Pages créée dans ASP.NET Core et hébergée en tant qu’application web Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="85228-106">When finished, you'll have a Razor Pages web app built in ASP.NET Core hosted as an Azure App Service Web App.</span></span> <span data-ttu-id="85228-107">Ce didacticiel est écrit avec des outils en ligne de commande Windows, mais il peut également s’appliquer à des environnements macOS et Linux.</span><span class="sxs-lookup"><span data-stu-id="85228-107">This tutorial is written using Windows command line tools, but can be applied to macOS and Linux environments, as well.</span></span>
+<span data-ttu-id="64d9e-105">Ce didacticiel vous montrera comment générer et déployer une application ASP.NET Core sur Microsoft Azure App Service à l’aide d’outils en ligne de commande.</span><span class="sxs-lookup"><span data-stu-id="64d9e-105">This tutorial will show you how to build and deploy an ASP.NET Core app to Microsoft Azure App Service using command line tools.</span></span> <span data-ttu-id="64d9e-106">Quand vous aurez terminé, vous disposerez d’une application web Razor Pages créée dans ASP.NET Core et hébergée en tant qu’application web Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="64d9e-106">When finished, you'll have a Razor Pages web app built in ASP.NET Core hosted as an Azure App Service Web App.</span></span> <span data-ttu-id="64d9e-107">Ce didacticiel est écrit avec des outils en ligne de commande Windows, mais il peut également s’appliquer à des environnements macOS et Linux.</span><span class="sxs-lookup"><span data-stu-id="64d9e-107">This tutorial is written using Windows command line tools, but can be applied to macOS and Linux environments, as well.</span></span>
 
-<span data-ttu-id="85228-108">Dans ce didacticiel, vous apprendrez à :</span><span class="sxs-lookup"><span data-stu-id="85228-108">In this tutorial, you learn how to:</span></span>
+<span data-ttu-id="64d9e-108">Dans ce didacticiel, vous apprendrez à :</span><span class="sxs-lookup"><span data-stu-id="64d9e-108">In this tutorial, you learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="85228-109">créer un site web Azure App Service à l’aide de l’interface Azure CLI ;</span><span class="sxs-lookup"><span data-stu-id="85228-109">Create an Azure App Service website using Azure CLI</span></span>
-> * <span data-ttu-id="85228-110">déployer une application ASP.NET Core sur Azure App Service à l’aide de l’outil en ligne de commande Git.</span><span class="sxs-lookup"><span data-stu-id="85228-110">Deploy an ASP.NET Core app to Azure App Service using the Git command line tool</span></span>
+> * <span data-ttu-id="64d9e-109">créer un site web Azure App Service à l’aide de l’interface Azure CLI ;</span><span class="sxs-lookup"><span data-stu-id="64d9e-109">Create an Azure App Service website using Azure CLI</span></span>
+> * <span data-ttu-id="64d9e-110">déployer une application ASP.NET Core sur Azure App Service à l’aide de l’outil en ligne de commande Git.</span><span class="sxs-lookup"><span data-stu-id="64d9e-110">Deploy an ASP.NET Core app to Azure App Service using the Git command line tool</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="85228-111">Prérequis</span><span class="sxs-lookup"><span data-stu-id="85228-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="64d9e-111">Prérequis</span><span class="sxs-lookup"><span data-stu-id="64d9e-111">Prerequisites</span></span>
 
-<span data-ttu-id="85228-112">Pour suivre ce didacticiel, vous aurez besoin des éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="85228-112">To complete this tutorial, you'll need:</span></span>
+<span data-ttu-id="64d9e-112">Pour suivre ce didacticiel, vous aurez besoin des éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="64d9e-112">To complete this tutorial, you'll need:</span></span>
 
-* <span data-ttu-id="85228-113">Un [abonnement Microsoft Azure](https://azure.microsoft.com/free/)</span><span class="sxs-lookup"><span data-stu-id="85228-113">A [Microsoft Azure subscription](https://azure.microsoft.com/free/)</span></span>
+* <span data-ttu-id="64d9e-113">Un [abonnement Microsoft Azure](https://azure.microsoft.com/free/)</span><span class="sxs-lookup"><span data-stu-id="64d9e-113">A [Microsoft Azure subscription](https://azure.microsoft.com/free/)</span></span>
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
-* <span data-ttu-id="85228-114">Un client de ligne de commande [Git](https://www.git-scm.com/)</span><span class="sxs-lookup"><span data-stu-id="85228-114">[Git](https://www.git-scm.com/) command line client</span></span>
+* <span data-ttu-id="64d9e-114">Un client de ligne de commande [Git](https://www.git-scm.com/)</span><span class="sxs-lookup"><span data-stu-id="64d9e-114">[Git](https://www.git-scm.com/) command line client</span></span>
 
-## <a name="create-a-web-app"></a><span data-ttu-id="85228-115">Créer une application web</span><span class="sxs-lookup"><span data-stu-id="85228-115">Create a web app</span></span>
+## <a name="create-a-web-app"></a><span data-ttu-id="64d9e-115">Créer une application web</span><span class="sxs-lookup"><span data-stu-id="64d9e-115">Create a web app</span></span>
 
-<span data-ttu-id="85228-116">Créez un répertoire pour l’application web, créez une application Razor Pages ASP.NET Core, puis exécutez le site web en local.</span><span class="sxs-lookup"><span data-stu-id="85228-116">Create a new directory for the web app, create a new ASP.NET Core Razor Pages app, and then run the website locally.</span></span>
+<span data-ttu-id="64d9e-116">Créez un répertoire pour l’application web, créez une application Razor Pages ASP.NET Core, puis exécutez le site web en local.</span><span class="sxs-lookup"><span data-stu-id="64d9e-116">Create a new directory for the web app, create a new ASP.NET Core Razor Pages app, and then run the website locally.</span></span>
 
-# <a name="windowstabwindows"></a>[<span data-ttu-id="85228-117">Fenêtres</span><span class="sxs-lookup"><span data-stu-id="85228-117">Windows</span></span>](#tab/windows)
+# <a name="windowstabwindows"></a>[<span data-ttu-id="64d9e-117">Fenêtres</span><span class="sxs-lookup"><span data-stu-id="64d9e-117">Windows</span></span>](#tab/windows)
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -79,7 +74,7 @@ dotnet run
 
 ::: moniker-end
 
-# <a name="othertabother"></a>[<span data-ttu-id="85228-119">Autre</span><span class="sxs-lookup"><span data-stu-id="85228-119">Other</span></span>](#tab/other)
+# <a name="othertabother"></a>[<span data-ttu-id="64d9e-119">Autre</span><span class="sxs-lookup"><span data-stu-id="64d9e-119">Other</span></span>](#tab/other)
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -117,13 +112,13 @@ dotnet run
 
 ![Sortie de la ligne de commande](publish-to-azure-webapp-using-cli/_static/new_prj.png)
 
-<span data-ttu-id="85228-122">Testez l’application en accédant à `http://localhost:5000`.</span><span class="sxs-lookup"><span data-stu-id="85228-122">Test the app by browsing to `http://localhost:5000`.</span></span>
+<span data-ttu-id="64d9e-122">Testez l’application en accédant à `http://localhost:5000`.</span><span class="sxs-lookup"><span data-stu-id="64d9e-122">Test the app by browsing to `http://localhost:5000`.</span></span>
 
 ![Le site web en cours d’exécution en local](publish-to-azure-webapp-using-cli/_static/app_test.png)
 
-## <a name="create-the-azure-app-service-instance"></a><span data-ttu-id="85228-124">Créer l’instance Azure App Service</span><span class="sxs-lookup"><span data-stu-id="85228-124">Create the Azure App Service instance</span></span>
+## <a name="create-the-azure-app-service-instance"></a><span data-ttu-id="64d9e-124">Créer l’instance Azure App Service</span><span class="sxs-lookup"><span data-stu-id="64d9e-124">Create the Azure App Service instance</span></span>
 
-<span data-ttu-id="85228-125">À l’aide [d’Azure Cloud Shell](/azure/cloud-shell/quickstart), créez un groupe de ressources, un plan App Service et une application web App Service.</span><span class="sxs-lookup"><span data-stu-id="85228-125">Using the [Azure Cloud Shell](/azure/cloud-shell/quickstart), create a resource group, App Service plan, and an App Service web app.</span></span>
+<span data-ttu-id="64d9e-125">À l’aide [d’Azure Cloud Shell](/azure/cloud-shell/quickstart), créez un groupe de ressources, un plan App Service et une application web App Service.</span><span class="sxs-lookup"><span data-stu-id="64d9e-125">Using the [Azure Cloud Shell](/azure/cloud-shell/quickstart), create a resource group, App Service plan, and an App Service web app.</span></span>
 
 ```azurecli-interactive
 # Generate a unique Web App name
@@ -140,28 +135,28 @@ az appservice plan create --name $webappname --resource-group DotNetAzureTutoria
 az webapp create --name $webappname --resource-group DotNetAzureTutorial --plan $webappname
 ```
 
-<span data-ttu-id="85228-126">Avant le déploiement, définissez les identifiants de déploiement au niveau du compte à l’aide de la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="85228-126">Before deployment, set the account-level deployment credentials using the following command:</span></span>
+<span data-ttu-id="64d9e-126">Avant le déploiement, définissez les identifiants de déploiement au niveau du compte à l’aide de la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="64d9e-126">Before deployment, set the account-level deployment credentials using the following command:</span></span>
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <desired user name> --password <desired password>
 ```
 
-<span data-ttu-id="85228-127">Une URL de déploiement est nécessaire pour déployer l’application à l’aide de Git.</span><span class="sxs-lookup"><span data-stu-id="85228-127">A deployment URL is needed to deploy the app using Git.</span></span> <span data-ttu-id="85228-128">Récupérez l’URL ainsi.</span><span class="sxs-lookup"><span data-stu-id="85228-128">Retrieve the URL like this.</span></span>
+<span data-ttu-id="64d9e-127">Une URL de déploiement est nécessaire pour déployer l’application à l’aide de Git.</span><span class="sxs-lookup"><span data-stu-id="64d9e-127">A deployment URL is needed to deploy the app using Git.</span></span> <span data-ttu-id="64d9e-128">Récupérez l’URL ainsi.</span><span class="sxs-lookup"><span data-stu-id="64d9e-128">Retrieve the URL like this.</span></span>
 
 ```azurecli-interactive
 az webapp deployment source config-local-git -n $webappname -g DotNetAzureTutorial --query [url] -o tsv
 ```
 
-<span data-ttu-id="85228-129">Notez l’URL qui s’affiche ; elle se termine par `.git`.</span><span class="sxs-lookup"><span data-stu-id="85228-129">Note the displayed URL ending in `.git`.</span></span> <span data-ttu-id="85228-130">Elle est utilisée dans l’étape suivante.</span><span class="sxs-lookup"><span data-stu-id="85228-130">It's used in the next step.</span></span>
+<span data-ttu-id="64d9e-129">Notez l’URL qui s’affiche ; elle se termine par `.git`.</span><span class="sxs-lookup"><span data-stu-id="64d9e-129">Note the displayed URL ending in `.git`.</span></span> <span data-ttu-id="64d9e-130">Elle est utilisée dans l’étape suivante.</span><span class="sxs-lookup"><span data-stu-id="64d9e-130">It's used in the next step.</span></span>
 
-## <a name="deploy-the-app-using-git"></a><span data-ttu-id="85228-131">Déployer l’application à l’aide de Git</span><span class="sxs-lookup"><span data-stu-id="85228-131">Deploy the app using Git</span></span>
+## <a name="deploy-the-app-using-git"></a><span data-ttu-id="64d9e-131">Déployer l’application à l’aide de Git</span><span class="sxs-lookup"><span data-stu-id="64d9e-131">Deploy the app using Git</span></span>
 
-<span data-ttu-id="85228-132">Vous pouvez maintenant effectuer le déploiement avec Git à partir de votre ordinateur local.</span><span class="sxs-lookup"><span data-stu-id="85228-132">You're ready to deploy from your local machine using Git.</span></span>
+<span data-ttu-id="64d9e-132">Vous pouvez maintenant effectuer le déploiement avec Git à partir de votre ordinateur local.</span><span class="sxs-lookup"><span data-stu-id="64d9e-132">You're ready to deploy from your local machine using Git.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="85228-133">Il est possible d’ignorer sans risque les avertissements de Git sur les fins de ligne.</span><span class="sxs-lookup"><span data-stu-id="85228-133">It's safe to ignore any warnings from Git about line endings.</span></span>
+> <span data-ttu-id="64d9e-133">Il est possible d’ignorer sans risque les avertissements de Git sur les fins de ligne.</span><span class="sxs-lookup"><span data-stu-id="64d9e-133">It's safe to ignore any warnings from Git about line endings.</span></span>
 
-# <a name="windowstabwindows"></a>[<span data-ttu-id="85228-134">Fenêtres</span><span class="sxs-lookup"><span data-stu-id="85228-134">Windows</span></span>](#tab/windows)
+# <a name="windowstabwindows"></a>[<span data-ttu-id="64d9e-134">Fenêtres</span><span class="sxs-lookup"><span data-stu-id="64d9e-134">Windows</span></span>](#tab/windows)
 
 ```cmd
 REM Initialize the local Git repository
@@ -180,7 +175,7 @@ REM Push the local repository to the remote
 git push azure master
 ```
 
-# <a name="othertabother"></a>[<span data-ttu-id="85228-135">Autre</span><span class="sxs-lookup"><span data-stu-id="85228-135">Other</span></span>](#tab/other)
+# <a name="othertabother"></a>[<span data-ttu-id="64d9e-135">Autre</span><span class="sxs-lookup"><span data-stu-id="64d9e-135">Other</span></span>](#tab/other)
 
 ```bash
 # Initialize the local Git repository
@@ -201,13 +196,13 @@ git push azure master
 
 ---
 
-<span data-ttu-id="85228-136">Git vous demande les identifiants de déploiement définis précédemment.</span><span class="sxs-lookup"><span data-stu-id="85228-136">Git prompts for the deployment credentials that were set earlier.</span></span> <span data-ttu-id="85228-137">Après l’authentification, l’application sera envoyée sur l’emplacement distant, générée et déployée.</span><span class="sxs-lookup"><span data-stu-id="85228-137">After authenticating, the app will be pushed to the remote location, built, and deployed.</span></span>
+<span data-ttu-id="64d9e-136">Git vous demande les identifiants de déploiement définis précédemment.</span><span class="sxs-lookup"><span data-stu-id="64d9e-136">Git prompts for the deployment credentials that were set earlier.</span></span> <span data-ttu-id="64d9e-137">Après l’authentification, l’application sera envoyée sur l’emplacement distant, générée et déployée.</span><span class="sxs-lookup"><span data-stu-id="64d9e-137">After authenticating, the app will be pushed to the remote location, built, and deployed.</span></span>
 
 ![Sortie du déploiement Git](publish-to-azure-webapp-using-cli/_static/post_deploy.png)
 
-## <a name="test-the-app"></a><span data-ttu-id="85228-139">Tester l’application</span><span class="sxs-lookup"><span data-stu-id="85228-139">Test the app</span></span>
+## <a name="test-the-app"></a><span data-ttu-id="64d9e-139">Tester l’application</span><span class="sxs-lookup"><span data-stu-id="64d9e-139">Test the app</span></span>
 
-<span data-ttu-id="85228-140">Testez l’application en accédant à `https://<web app name>.azurewebsites.net`.</span><span class="sxs-lookup"><span data-stu-id="85228-140">Test the app by browsing to `https://<web app name>.azurewebsites.net`.</span></span> <span data-ttu-id="85228-141">Pour afficher l’adresse dans Cloud Shell (ou Azure CLI), utilisez les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="85228-141">To display the address in the Cloud Shell (or Azure CLI), use the following:</span></span>
+<span data-ttu-id="64d9e-140">Testez l’application en accédant à `https://<web app name>.azurewebsites.net`.</span><span class="sxs-lookup"><span data-stu-id="64d9e-140">Test the app by browsing to `https://<web app name>.azurewebsites.net`.</span></span> <span data-ttu-id="64d9e-141">Pour afficher l’adresse dans Cloud Shell (ou Azure CLI), utilisez les éléments suivants :</span><span class="sxs-lookup"><span data-stu-id="64d9e-141">To display the address in the Cloud Shell (or Azure CLI), use the following:</span></span>
 
 ```azurecli-interactive
 az webapp show -n $webappname -g DotNetAzureTutorial --query defaultHostName -o tsv
@@ -215,23 +210,23 @@ az webapp show -n $webappname -g DotNetAzureTutorial --query defaultHostName -o 
 
 ![L’application en cours d’exécution dans Azure](publish-to-azure-webapp-using-cli/_static/app_deployed.png)
 
-## <a name="clean-up"></a><span data-ttu-id="85228-143">Nettoyer</span><span class="sxs-lookup"><span data-stu-id="85228-143">Clean up</span></span>
+## <a name="clean-up"></a><span data-ttu-id="64d9e-143">Nettoyer</span><span class="sxs-lookup"><span data-stu-id="64d9e-143">Clean up</span></span>
 
-<span data-ttu-id="85228-144">Lorsque vous avez terminé de tester l’application et d’inspecter le code et les ressources, supprimez l’application web et le plan en supprimant le groupe de ressources.</span><span class="sxs-lookup"><span data-stu-id="85228-144">When finished testing the app and inspecting the code and resources, delete the web app and plan by deleting the resource group.</span></span>
+<span data-ttu-id="64d9e-144">Lorsque vous avez terminé de tester l’application et d’inspecter le code et les ressources, supprimez l’application web et le plan en supprimant le groupe de ressources.</span><span class="sxs-lookup"><span data-stu-id="64d9e-144">When finished testing the app and inspecting the code and resources, delete the web app and plan by deleting the resource group.</span></span>
 
 ```azurecli-interactive
 az group delete -n DotNetAzureTutorial
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="85228-145">Étapes suivantes</span><span class="sxs-lookup"><span data-stu-id="85228-145">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="64d9e-145">Étapes suivantes</span><span class="sxs-lookup"><span data-stu-id="64d9e-145">Next steps</span></span>
 
-<span data-ttu-id="85228-146">Dans ce didacticiel, vous avez appris à :</span><span class="sxs-lookup"><span data-stu-id="85228-146">In this tutorial, you learned how to:</span></span>
+<span data-ttu-id="64d9e-146">Dans ce didacticiel, vous avez appris à :</span><span class="sxs-lookup"><span data-stu-id="64d9e-146">In this tutorial, you learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="85228-147">créer un site web Azure App Service à l’aide de l’interface Azure CLI ;</span><span class="sxs-lookup"><span data-stu-id="85228-147">Create an Azure App Service website using Azure CLI</span></span>
-> * <span data-ttu-id="85228-148">déployer une application ASP.NET Core sur Azure App Service à l’aide de l’outil en ligne de commande Git.</span><span class="sxs-lookup"><span data-stu-id="85228-148">Deploy an ASP.NET Core app to Azure App Service using the Git command line tool</span></span>
+> * <span data-ttu-id="64d9e-147">créer un site web Azure App Service à l’aide de l’interface Azure CLI ;</span><span class="sxs-lookup"><span data-stu-id="64d9e-147">Create an Azure App Service website using Azure CLI</span></span>
+> * <span data-ttu-id="64d9e-148">déployer une application ASP.NET Core sur Azure App Service à l’aide de l’outil en ligne de commande Git.</span><span class="sxs-lookup"><span data-stu-id="64d9e-148">Deploy an ASP.NET Core app to Azure App Service using the Git command line tool</span></span>
 
-<span data-ttu-id="85228-149">Apprenez maintenant à utiliser la ligne de commande pour déployer une application web existante qui utilise CosmosDB.</span><span class="sxs-lookup"><span data-stu-id="85228-149">Next, learn to use the command line to deploy an existing web app that uses CosmosDB.</span></span>
+<span data-ttu-id="64d9e-149">Apprenez maintenant à utiliser la ligne de commande pour déployer une application web existante qui utilise CosmosDB.</span><span class="sxs-lookup"><span data-stu-id="64d9e-149">Next, learn to use the command line to deploy an existing web app that uses CosmosDB.</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="85228-150">Déployer sur Azure en ligne de commande avec .NET Core</span><span class="sxs-lookup"><span data-stu-id="85228-150">Deploy to Azure from the command line with .NET Core</span></span>](/dotnet/azure/dotnet-quickstart-xplat)
+> [<span data-ttu-id="64d9e-150">Déployer sur Azure en ligne de commande avec .NET Core</span><span class="sxs-lookup"><span data-stu-id="64d9e-150">Deploy to Azure from the command line with .NET Core</span></span>](/dotnet/azure/dotnet-quickstart-xplat)
