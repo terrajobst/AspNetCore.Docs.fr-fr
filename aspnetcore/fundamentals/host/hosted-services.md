@@ -3,6 +3,7 @@ title: Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 author: guardrex
 description: Découvrez comment implémenter des tâches d’arrière-plan avec des services hébergés dans ASP.NET Core.
 manager: wpickett
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/15/2018
@@ -10,11 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/hosted-services
-ms.openlocfilehash: cc39d125b639719599eca68d627fda014fb107e0
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 13ac7e266b657bc186188b2b6f40204cfd936fca
+ms.sourcegitcommit: 7e87671fea9a5f36ca516616fe3b40b537f428d2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/27/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35341819"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tâches d’arrière-plan avec des services hébergés dans ASP.NET Core
 
@@ -45,7 +47,7 @@ Les services hébergés implémentent l’interface [IHostedService](/dotnet/api
 
 * [StopAsync(CancellationToken)](/dotnet/api/microsoft.extensions.hosting.ihostedservice.stopasync), déclenchée quand l’hôte effectue un arrêt approprié. `StopAsync` contient la logique pour mettre fin à la tâche d’arrière-plan et pour supprimer les ressources non managées. Si l’application s’arrête inopinément (par exemple en cas d’échec du processus de l’application), `StopAsync` n’est probablement pas appelée.
 
-Le service hébergé est un singleton qui est activé une seule fois au démarrage de l’application et qui s’arrête de façon appropriée lors de l’arrêt de l’application. Quand [IDisposable](/dotnet/api/system.idisposable) est implémentée, les ressources peuvent être supprimées quand le conteneur du service est supprimé. Si une erreur est levée pendant l’exécution des tâches d’arrière-plan, `Dispose` doit être appelée même si `StopAsync` n’est pas appelée.
+Le service hébergé est activé une seule fois au démarrage de l’application et s’arrête de façon appropriée à l’arrêt de l’application. Quand [IDisposable](/dotnet/api/system.idisposable) est implémentée, les ressources peuvent être supprimées quand le conteneur du service est supprimé. Si une erreur est levée pendant l’exécution des tâches d’arrière-plan, `Dispose` doit être appelée même si `StopAsync` n’est pas appelée.
 
 ## <a name="timed-background-tasks"></a>Tâche d’arrière-plan avec minuteur
 
@@ -53,9 +55,21 @@ Une tâche d’arrière-plan avec minuteur utilise la classe [System.Threading.T
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/TimedHostedService.cs?name=snippet1&highlight=15-16,30,37)]
 
-Le service est inscrit dans `Startup.ConfigureServices` :
+::: moniker range=">= aspnetcore-2.1"
+
+Le service est inscrit dans `Startup.ConfigureServices` avec la méthode d’extension `AddHostedService` :
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Le service est inscrit dans `Startup.ConfigureServices` :
+
+[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet1)]
+
+::: moniker-end
 
 ## <a name="consuming-a-scoped-service-in-a-background-task"></a>Utilisation d’un service délimité dans une tâche d’arrière-plan
 
@@ -69,13 +83,25 @@ Le service hébergé crée une étendue pour résoudre le service des tâches d�
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=29-36)]
 
-Les services sont inscrits dans `Startup.ConfigureServices` :
+::: moniker range=">= aspnetcore-2.1"
+
+Les services sont inscrits dans `Startup.ConfigureServices`. L’implémentation `IHostedService` est inscrite avec la méthode d’extension `AddHostedService` :
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
 
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Les services sont inscrits dans `Startup.ConfigureServices` :
+
+[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet2)]
+
+::: moniker-end
+
 ## <a name="queued-background-tasks"></a>Tâches d’arrière-plan en file d’attente
 
-Une file d’attente de tâches d’arrière-plan est basée sur [QueueBackgroundWorkItem](/dotnet/api/system.web.hosting.hostingenvironment.queuebackgroundworkitem) de .NET 4.x ([dont l’intégration dans ASP.NET Core 2.2 est provisoirement planifiée](https://github.com/aspnet/Hosting/issues/1280)) :
+Une file d’attente de tâches d’arrière-plan est basée sur [QueueBackgroundWorkItem](/dotnet/api/system.web.hosting.hostingenvironment.queuebackgroundworkitem) de .NET 4.x ([dont l’intégration dans ASP.NET Core 3.0 est provisoirement planifiée](https://github.com/aspnet/Hosting/issues/1280)) :
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/BackgroundTaskQueue.cs?name=snippet1)]
 
@@ -83,9 +109,21 @@ Dans `QueueHostedService`, les tâches d’arrière-plan (`workItem`) de la file
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Services/QueuedHostedService.cs?name=snippet1&highlight=30-31,35)]
 
-Les services sont inscrits dans `Startup.ConfigureServices` :
+::: moniker range=">= aspnetcore-2.1"
+
+Les services sont inscrits dans `Startup.ConfigureServices`. L’implémentation `IHostedService` est inscrite avec la méthode d’extension `AddHostedService` :
 
 [!code-csharp[](hosted-services/samples/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Les services sont inscrits dans `Startup.ConfigureServices` :
+
+[!code-csharp[](hosted-services/samples-snapshot/2.x/BackgroundTasksSample-WebHost/Startup.cs?name=snippet3)]
+
+::: moniker-end
 
 Dans la classe de modèle de page Index, la `IBackgroundTaskQueue` est injectée dans le constructeur et affectée à `Queue` :
 

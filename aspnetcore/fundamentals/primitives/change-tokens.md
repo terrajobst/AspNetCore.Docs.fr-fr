@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: 06751e713fbd579a944333cc3c3b2c0c0ad51eba
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: d132747cb7c92ef5afac4664c91634a4ad290e5f
+ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34734521"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
 
@@ -26,7 +27,7 @@ Un *jeton de modification* est un module à usage général de bas niveau, utili
 
 ## <a name="ichangetoken-interface"></a>Interface d’IChangeToken
 
-[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) propage des notifications indiquant qu’une modification s’est produite. `IChangeToken` se trouve dans l’espace de noms [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Pour les applications qui n’utilisent pas le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), référencez le package NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) dans le fichier projet.
+[IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken) propage des notifications indiquant qu’une modification s’est produite. `IChangeToken` se trouve dans l’espace de noms [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Pour les applications qui n’utilisent pas le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 ou version ultérieure), référencez le package NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) dans le fichier projet.
 
 `IChangeToken` a deux propriétés :
 
@@ -37,9 +38,10 @@ L’interface a une méthode, [RegisterChangeCallback(Action&lt;objet&gt;, Objec
 
 ## <a name="changetoken-class"></a>Classe ChangeToken
 
-`ChangeToken` est une classe statique utilisée pour propager des notifications indiquant qu’une modification s’est produite. `ChangeToken` se trouve dans l’espace de noms [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Pour les applications qui n’utilisent pas le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), référencez le package NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) dans le fichier projet.
+`ChangeToken` est une classe statique utilisée pour propager des notifications indiquant qu’une modification s’est produite. `ChangeToken` se trouve dans l’espace de noms [Microsoft.Extensions.Primitives](/dotnet/api/microsoft.extensions.primitives). Pour les applications qui n’utilisent pas le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app), référencez le package NuGet [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) dans le fichier projet.
 
 La méthode `ChangeToken` [OnChange(Func&lt;IChangeToken&gt;, Action)](/dotnet/api/microsoft.extensions.primitives.changetoken.onchange?view=aspnetcore-2.0#Microsoft_Extensions_Primitives_ChangeToken_OnChange_System_Func_Microsoft_Extensions_Primitives_IChangeToken__System_Action_) inscrit une `Action` à appeler chaque fois que le jeton change :
+
 * `Func<IChangeToken>` produit le jeton.
 * `Action` est appelée quand le jeton change.
 
@@ -196,7 +198,7 @@ var compositeChangeToken =
 
 `HasChanged` sur le jeton composite indique `true` si l’élément `HasChanged` d’un jeton représenté est `true`. `ActiveChangeCallbacks` sur le jeton composite indique `true` si l’élément `ActiveChangeCallbacks` d’un jeton représenté est `true`. Si plusieurs modifications simultanées se produisent, le rappel de modification composite n’est appelé qu’une seule fois.
 
-## <a name="see-also"></a>Voir aussi
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Mettre en cache en mémoire](xref:performance/caching/memory)
 * [Utiliser un cache distribué](xref:performance/caching/distributed)

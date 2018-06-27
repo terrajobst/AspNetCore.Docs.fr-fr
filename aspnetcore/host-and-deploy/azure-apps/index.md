@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 9e438cef9db61e725b5385da53e8aa2b407218c3
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 4cf81a3e269500a5108f280348fbddd172df10a0
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34687501"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Héberger ASP.NET Core sur Azure App Service
 
@@ -103,25 +104,29 @@ Si un problème se produit quand vous utilisez l’extension de site de version 
 
 ### <a name="install-the-preview-site-extension"></a>Installer l’extension de site de version Preview
 
-* Dans le portail Azure, accédez au panneau App Service.
-* Entrez « ex » dans la zone de recherche.
-* Sélectionner **Extensions**.
-* Sélectionner « Ajouter ».
+1. Dans le portail Azure, accédez au panneau App Service.
+1. Sélectionnez l’application web.
+1. Entrez « ex » dans la zone de recherche ou faites défiler la liste des volets de gestion jusqu’à **OUTILS DE DEVELOPPEMENT**.
+1. Sélectionnez **OUTILS DE DEVELOPPEMENT** > **Extensions**.
+1. Sélectionnez **Ajouter**.
 
-![Panneau de l’application Azure avec les étapes précédentes](index/_static/x1.png)
+   ![Panneau de l’application Azure avec les étapes précédentes](index/_static/x1.png)
 
-* Sélectionnez **ASP.NET Core 2.1 (x86) Runtime** ou **ASP.NET Core 2.1 (x64) Runtime**.
-* Sélectionnez **OK**. Resélectionnez **OK**.
+1. Sélectionnez **Extensions ASP.NET Core**.
+1. Sélectionnez **OK** pour accepter les conditions légales.
+1. Sélectionnez **OK** pour installer l’extension.
 
-Quand les opérations d’ajout sont terminées, la dernière version Preview 2.1 de .NET Core est installée. Vérifiez l’installation en exécutant `dotnet --info` dans la console. Dans le panneau **App Service** :
+Quand les opérations d’ajout sont terminées, la dernière préversion de .NET Core est installée. Vérifiez l’installation en exécutant `dotnet --info` dans la console. Dans le panneau **App Service** :
 
-* Entrez « con » dans la zone de recherche.
-* Sélectionnez **Console**.
-* Entrez `dotnet --info` dans la console.
+1. Entrez « con » dans la zone de recherche ou faites défiler la liste des volets de gestion jusqu’à **OUTILS DE DEVELOPPEMENT**.
+1. Sélectionnez **OUTILS DE DEVELOPPEMENT** > **Console**.
+1. Entrez `dotnet --info` dans la console.
+
+Si la version `2.1.300-preview1-008174` est la dernière préversion, vous obtenez le résultat suivant en exécutant `dotnet --info` depuis l’invite de commandes :
 
 ![Panneau de l’application Azure avec les étapes précédentes](index/_static/cons.png)
 
-L’image précédente date du moment où ceci a été écrit. La version que vous voyez peut être différente.
+La version d’ASP.NET Core indiquée dans l’image précédente, `2.1.300-preview1-008174`, est un exemple. La dernière préversion d’ASP.NET Core au moment de la configuration de l’extension de site s’affiche quand vous exécutez `dotnet --info`.
 
 La commande `dotnet --info` affiche le chemin de l’extension de site où la version préliminaire a été installée. Il indique que l’application s’exécute depuis l’extension de site au lieu de l’emplacement de *ProgramFiles* par défaut. Si vous voyez *ProgramFiles*, redémarrez le site et exécutez `dotnet --info`.
 
@@ -142,7 +147,7 @@ Les applications autonomes sont une option pour toutes les applications ASP.NET 
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>Utiliser Docker avec Web Apps pour conteneurs
 
-[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) contient les dernières images de Docker 2.1 en version préliminaire. Les images peuvent être utilisées comme images de base. Utilisez l’image pour effectuer un déploiement sur Web Apps pour conteneurs normalement.
+[Docker Hub](https://hub.docker.com/r/microsoft/aspnetcore/) contient les dernières images de Docker en préversion. Les images peuvent être utilisées comme images de base. Utilisez l’image pour effectuer un déploiement sur Web Apps pour conteneurs normalement.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

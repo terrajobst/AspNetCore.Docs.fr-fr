@@ -2,19 +2,16 @@
 title: Gérer les erreurs dans ASP.NET Core
 author: ardalis
 description: Découvrez comment gérer les erreurs dans les applications ASP.NET Core.
-manager: wpickett
 ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
 ms.date: 11/30/2016
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/error-handling
-ms.openlocfilehash: 3ff3a17d14d9ed7c438399191ffe3cf93d555d49
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: 2fe46ecc32d61a7fafb2ad6e2a35456476608251
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273707"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -49,17 +46,21 @@ Cette demande ne contenait pas de cookies, sinon ils apparaîtraient sous l’on
 
 ## <a name="configuring-a-custom-exception-handling-page"></a>Configuration d’une page personnalisée de gestion des exceptions
 
-Il est judicieux de configurer une page de gestionnaire d’exceptions à utiliser quand l’application n’est pas en cours d’exécution dans l’environnement `Development`.
+Configurez une page de gestionnaire d’exceptions à utiliser quand l’application n’est pas en cours d’exécution dans l’environnement `Development`.
 
 [!code-csharp[](error-handling/sample/Startup.cs?name=snippet_DevExceptionPage&highlight=11)]
 
-Dans une application MVC, ne décorez pas explicitement la méthode d’action du gestionnaire d’erreurs avec des attributs de méthode HTTP, tels que `HttpGet`. Utiliser des verbes explicites peut empêcher certaines demandes d’atteindre la méthode.
+Dans une application Razor Pages, le modèle Razor Pages [dotnet new](/dotnet/core/tools/dotnet-new) fournit une page Error et une classe de modèle de page `ErrorModel` dans le dossier *Pages*.
+
+Dans une application MVC, ne décorez pas la méthode d’action du gestionnaire d’erreurs avec des attributs de méthode HTTP, tels que `HttpGet`. Les verbes explicites empêchent certaines demandes d’atteindre la méthode. Autorisez l’accès anonyme à la méthode afin que les utilisateurs non authentifiés puissent recevoir la vue des erreurs.
+
+Par exemple, la méthode de gestionnaire d’erreurs suivante est fournie par le modèle MVC [dotnet new](/dotnet/core/tools/dotnet-new) et apparaît dans le contrôleur Home :
 
 ```csharp
-[Route("/Error")]
-public IActionResult Index()
+[AllowAnonymous]
+public IActionResult Error()
 {
-    // Handle error here
+    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
 ```
 
@@ -106,6 +107,53 @@ if (statusCodePagesFeature != null)
 }
 ```
 
+Si vous utilisez une surcharge `UseStatusCodePages*` qui pointe vers un point de terminaison dans l’application, créez une vue MVC ou Razor Page pour le point de terminaison. Par exemple, le modèle [dotnet new](/dotnet/core/tools/dotnet-new) pour une application Razor Pages génère les page et classe de modèle de page suivantes :
+
+*Error.cshtml* :
+
+```cshtml
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Development Mode</h3>
+<p>
+    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
+</p>
+<p>
+    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
+</p>
+```
+
+*Error.cshtml.cs* :
+
+```csharp
+public class ErrorModel : PageModel
+{
+    public string RequestId { get; set; }
+
+    public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public void OnGet()
+    {
+        RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+    }
+}
+```
+
 ## <a name="exception-handling-code"></a>Code de gestion des exceptions
 
 Le code dans les pages de gestion des exceptions peut lever des exceptions. Il est souvent judicieux de mettre dans les pages d’erreur de production du contenu purement statique.
@@ -132,7 +180,7 @@ Les applications [MVC](xref:mvc/overview) ont des options supplémentaires pour 
 
 Vous pouvez configurer les filtres d’exception globalement ou en fonction d’un contrôleur ou d’une action dans une application MVC. Ces filtres sont uniquement appelés pour gérer les exceptions non prises en charge qui se produisent pendant l’exécution d’une action de contrôleur ou d’un autre filtre. Découvrez-en plus sur les filtres d’exception dans [Filtres](xref:mvc/controllers/filters).
 
->[!TIP]
+> [!TIP]
 > Les filtres d’exception sont adaptés pour intercepter les exceptions qui se produisent dans les actions MVC, mais n’offrent pas la même souplesse que l’intergiciel (middleware) de gestion des erreurs. En règle générale, préférez l’intergiciel (middleware), et n’utilisez des filtres que si vous devez gérer les erreurs *différemment* en fonction de l’action MVC choisie.
 
 ### <a name="handling-model-state-errors"></a>Gestion des erreurs d’état de modèle
@@ -140,6 +188,3 @@ Vous pouvez configurer les filtres d’exception globalement ou en fonction d’
 La [validation de modèle](xref:mvc/models/validation) se produit avant l’appel de chaque action du contrôleur ; il appartient à la méthode d’action d’inspecter `ModelState.IsValid` et de réagir de façon appropriée.
 
 Certaines applications choisissent de suivre une convention standard pour traiter les erreurs de validation de modèle ; dans ce cas, un [filtre](xref:mvc/controllers/filters) peut être un emplacement approprié pour implémenter une telle stratégie. Vous devez tester le comportement de vos actions avec les états de modèles non valide. Pour plus d’informations, consultez [Tester la logique du contrôleur](xref:mvc/controllers/testing).
-
-
-

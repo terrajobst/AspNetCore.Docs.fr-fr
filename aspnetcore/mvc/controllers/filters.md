@@ -2,18 +2,15 @@
 title: Filtres dans ASP.NET Core
 author: ardalis
 description: Découvrez comment les filtres fonctionnent et comment les utiliser dans ASP.NET Core MVC.
-manager: wpickett
 ms.author: riande
 ms.date: 4/10/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/controllers/filters
-ms.openlocfilehash: 49e51a867e47ce375a5048cae5979360c4103365
-ms.sourcegitcommit: 466300d32f8c33e64ee1b419a2cbffe702863cdf
+ms.openlocfilehash: 24551382847fee0896fe6620d52c30a03aca69d1
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/27/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36275643"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -22,10 +19,10 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://gith
 Les *filtres* dans ASP.NET Core MVC vous permettent d’exécuter du code avant ou après des étapes spécifiques du pipeline de traitement des requêtes.
 
 > [!IMPORTANT]
-> Cette rubrique **ne s’applique pas** aux pages Razor. ASP.NET Core 2.1 et ultérieur prend en charge [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) et [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) pour les pages Razor. Pour plus d’informations, consultez [Méthodes de filtre pour les pages Razor](xref:mvc/razor-pages/filter).
+> Cette rubrique **ne s’applique pas** aux pages Razor. ASP.NET Core 2.1 et ultérieur prend en charge [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter?view=aspnetcore-2.0) et [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter?view=aspnetcore-2.0) pour les pages Razor. Pour plus d’informations, consultez [Méthodes de filtre pour les pages Razor](xref:razor-pages/filter).
 
  Les filtres intégrés gèrent notamment les tâches suivantes :
- 
+
  * Autorisation (empêcher un utilisateur non autorisé d’accéder à des ressources).
  * Vérification de l’utilisation du protocole HTTPS par toutes les requêtes.
  * Mise en cache des réponses (court-circuitage du pipeline de requêtes pour retourner une réponse mise en cache). 
@@ -77,7 +74,7 @@ Vous pouvez implémenter des interfaces pour plusieurs étapes de filtres dans u
 
 ### <a name="ifilterfactory"></a>IFilterFactory
 
-L'objet `IFilterFactory` implémente l'objet `IFilter`. Par conséquent, une instance de `IFilterFactory` peut être utilisée comme instance de `IFilter` n’importe où dans le pipeline de filtres. Quand le framework se prépare à appeler le filtre, il tente d’effectuer un cast en `IFilterFactory`. Si ce cast réussit, la méthode `CreateInstance` est appelée pour créer l’instance de `IFilter` qui sera appelée. La conception est flexible, car il n’est pas nécessaire de définir explicitement le pipeline de filtres exact quand l’application démarre.
+[IFilterFactory](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory) implémente [IFilterMetadata](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifiltermetadata). Par conséquent, une instance de `IFilterFactory` peut être utilisée comme instance de `IFilterMetadata` n’importe où dans le pipeline de filtres. Quand le framework se prépare à appeler le filtre, il tente d’effectuer un cast en `IFilterFactory`. Si ce cast réussit, la méthode [CreateInstance](/dotnet/api/microsoft.aspnetcore.mvc.filters.ifilterfactory.createinstance) est appelée pour créer l’instance de `IFilterMetadata` qui sera appelée. La conception est flexible, car il n’est pas nécessaire de définir explicitement le pipeline de filtres exact quand l’application démarre.
 
 Une autre approche pour la création de filtres est d’implémenter `IFilterFactory` sur vos propres implémentations d’attributs :
 
@@ -220,7 +217,7 @@ System.InvalidOperationException: No service for type
 'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
 ```
 
-L'objet `ServiceFilterAttribute` implémente l'objet `IFilterFactory`. `IFilterFactory` expose la méthode `CreateInstance` pour la création d’une instance `IFilter`. La méthode `CreateInstance` charge le type spécifié à partir du conteneur de services (injection de dépendances).
+L'objet `ServiceFilterAttribute` implémente l'objet `IFilterFactory`. `IFilterFactory` expose la méthode `CreateInstance` pour la création d’une instance `IFilterMetadata`. La méthode `CreateInstance` charge le type spécifié à partir du conteneur de services (injection de dépendances).
 
 ### <a name="typefilterattribute"></a>TypeFilterAttribute
 

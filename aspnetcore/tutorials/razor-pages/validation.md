@@ -10,11 +10,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: bf3cfd8ce7616807bae4bcacf09b63e54c8fae55
-ms.sourcegitcommit: 74be78285ea88772e7dad112f80146b6ed00e53e
+ms.openlocfilehash: 39c4d8997a46472f082b234bdc8c0f12298266d4
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34582828"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -34,7 +35,16 @@ Ouvrez le fichier *Movie.cs*. [DataAnnotations](https://docs.microsoft.com/aspne
 
 Mettez à jour la classe `Movie` pour tirer parti des attributs de validation `Required`, `StringLength`, `RegularExpression` et `Range`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDA.cs)]
+
+::: moniker-end
 
 Les attributs de validation spécifient un comportement qui est appliqué sur les propriétés du modèle :
 
@@ -106,6 +116,10 @@ L’énumération `DataType` fournit de nombreux types de données, tels que Dat
 
 `DataType.Date` ne spécifie pas le format de la date qui s’affiche. Par défaut, le champ de données est affiché conformément aux formats par défaut basés sur le `CultureInfo` du serveur.
 
+::: moniker range=">= aspnetcore-2.1"
+L’annotation de données `[Column(TypeName = "decimal(18, 2)")]` est nécessaire pour qu’Entity Framework Core puisse correctement mapper `Price` en devise dans la base de données. Pour plus d’informations, consultez [Types de données](/ef/core/modeling/relational/data-types).
+::: moniker-end
+
 L’attribut `DisplayFormat` est utilisé pour spécifier explicitement le format de date :
 
 ```csharp
@@ -131,9 +145,17 @@ Il n’est généralement pas recommandé de compiler des dates en dur dans vos 
 
 Le code suivant illustre la combinaison d’attributs sur une seule ligne :
 
+::: moniker range="= aspnetcore-2.0"
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-La rubrique [Bien démarrer avec les pages Razor et Entity Framework Core](xref:data/ef-rp/intro) présente des opérations EF Core plus avancées avec les pages Razor.
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]
+
+::: moniker-end
+
+La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data/ef-rp/intro) présente des opérations EF Core avancées avec Razor Pages.
 
 ### <a name="publish-to-azure"></a>Publier sur Azure
 

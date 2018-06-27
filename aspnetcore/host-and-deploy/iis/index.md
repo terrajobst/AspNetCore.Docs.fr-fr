@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 6b2c3334798861ebdb14787205480422d7d536ea
-ms.sourcegitcommit: 1b94305cc79843e2b0866dae811dab61c21980ad
+ms.openlocfilehash: 0cb9bc7d8bf415e5a0125c3798f2430c9e861c98
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/24/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729650"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -43,7 +44,7 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-Le module ASP.NET Core génère un port dynamique à assigner au processus backend. La méthode `UseIISIntegration` récupère le port dynamique et configure Kestrel pour écouter sur `http://localhost:{dynamicPort}/`. Ceci remplace d’autres configurations URL, comme les appels à `UseUrls` ou à [l’API d’écoute de Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). L’utilisation du module évite donc les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur le port spécifié lors de l’exécution de l’application sans IIS.
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle La méthode [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration), qui récupère le port dynamique et configure Kestrel pour écouter sur `http://localhost:{dynamicPort}/`. Ceci remplace d’autres configurations URL, comme les appels à `UseUrls` ou à [l’API d’écoute de Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). L’utilisation du module évite donc les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur le port spécifié lors de l’exécution de l’application sans IIS.
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
@@ -89,7 +90,7 @@ L’intergiciel (middleware) d’intégration IIS, qui configure l’intergiciel
 
 ### <a name="webconfig-file"></a>fichier web.config
 
-Le fichier *web.config* configure le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). La création, la transformation et la publication de *web.config* sont gérées par le Kit de développement logiciel (SDK) web .NET Core (`Microsoft.NET.Sdk.Web`). Le Kit de développement logiciel (SDK) est défini en haut du fichier projet :
+Le fichier *web.config* configure le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). La création, la transformation et la publication du fichier *web.config* sont gérées par une cible MSBuild (`_TransformWebConfig`) quand le projet est publié. Cette cible est présente dans les cibles du SDK web (`Microsoft.NET.Sdk.Web`). Le SDK est défini en haut du fichier projet :
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -172,8 +173,9 @@ Activez la **Console de gestion IIS** et les **Services World Wide Web**.
 1. Installez le *bundle d’hébergement .NET Core* sur le système hôte. Le bundle installe le Runtime .NET Core, la bibliothèque .NET Core et le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Le module crée le proxy inverse entre IIS et le serveur Kestrel. Si le système n’a pas de connexion Internet, obtenez et installez [Microsoft Visual C++ 2015 Redistributable](https://www.microsoft.com/download/details.aspx?id=53840) avant d’installer le bundle d’hébergement .NET Core.
 
    1. Accédez à la [page All Downloads de .NET](https://www.microsoft.com/net/download/all).
-   1. Sélectionnez le runtime .NET Core non préliminaire le plus récent dans la liste (**.NET Core** > **Runtime** > **.NET Core Runtime x.y.z**). Sauf si vous avez l’intention d’utiliser un logiciel en préversion, évitez un runtime dont le texte du lien contient le mot « preview » (préversion) ou « rc » (Release Candidate).
-   1. Dans la page de téléchargement du runtime .NET Core, sous **Windows**, sélectionnez le lien **Hosting Bundle Installer** (programme d’installation du bundle d’hébergement) pour télécharger le *bundle d’hébergement .NET Core*.
+   1. Dans la colonne **Runtime** de la table, sélectionnez le runtime .NET Core le plus récent qui n’est pas une préversion (téléchargements **X.Y Runtime (vX.Y.Z)**). Le runtime le plus récent porte l’étiquette **Actuel**. Sauf si vous avez l’intention d’utiliser un logiciel en préversion, évitez un runtime dont le texte du lien contient le mot « preview » (préversion) ou « rc » (Release Candidate).
+   1. Dans la page de téléchargement du runtime .NET Core, sous **Windows**, sélectionnez le lien **Hosting Bundle Installer** (programme d’installation du bundle d’hébergement) pour télécharger le programme d’installation du *bundle d’hébergement .NET Core*.
+   1. Exécutez le programme d’installation sur le serveur.
 
    **Important !** Si le bundle d’hébergement est installé avant IIS, l’installation du bundle doit être réparée. Après avoir installé IIS, réexécutez le programme d’installation du bundle d’hébergement.
    

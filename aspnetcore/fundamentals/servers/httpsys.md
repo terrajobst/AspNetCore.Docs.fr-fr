@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 89d9a51334bdd50b72213d32fa194808ac6a93b9
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: dff798b19ad6d10a8ce93001ed4cebe732c54320
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729313"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
@@ -63,7 +64,7 @@ HTTP.sys est une technologie aboutie qui assure une protection contre de nombreu
 
 ### <a name="configure-the-aspnet-core-app-to-use-httpsys"></a>Configurer l’application ASP.NET Core afin d’utiliser HTTP.sys
 
-1. Il n’est pas nécessaire d’ajouter une référence de package dans le fichier projet dès lors que le [métapaquet Microsoft.AspNetCore.All](xref:fundamentals/metapackage) ([nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.All/)) est utilisé (ASP.NET Core 2.0 et versions ultérieures). Si vous n'utilisez pas le métapaquet `Microsoft.AspNetCore.All`, ajoutez une référence de package à [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/).
+1. Il n’est pas nécessaire d’ajouter une référence de package dans le fichier projet dès lors que le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ([nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)) est utilisé (ASP.NET Core 2.1 ou ultérieur). Si vous n'utilisez pas le métapaquet `Microsoft.AspNetCore.App`, ajoutez une référence de package à [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/).
 
 2. Appelez la méthode d’extension [UseHttpSys](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderhttpsysextensions.usehttpsys) au moment de générer l’hôte web, en spécifiant les [options HTTP.sys](/dotnet/api/microsoft.aspnetcore.server.httpsys.httpsysoptions) requises :
 
@@ -167,7 +168,6 @@ HTTP.sys est une technologie aboutie qui assure une protection contre de nombreu
    2. Créez des certificats X.509 auto-signés, si nécessaire.
 
       [!INCLUDE [How to make an X.509 cert](../../includes/make-x509-cert.md)]
-
 
 4. Ouvrez des ports du pare-feu pour autoriser le trafic à atteindre HTTP.sys. Utilisez *netsh.exe* ou les [cmdlets PowerShell](https://technet.microsoft.com/library/jj554906).
 

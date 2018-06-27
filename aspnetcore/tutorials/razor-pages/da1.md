@@ -2,19 +2,16 @@
 title: Mettre à jour les pages générées dans une application ASP.NET Core
 author: rick-anderson
 description: Découvrez comment mettre à jour les pages générées dans une application ASP.NET Core.
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
+ms.date: 05/30/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 5c188799b7a42bcd5e9d5eab8dfe8cdad8002fe5
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 55ff98712da314e28e50a1b1b1e04530d5b3fedd
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278068"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>Mettre à jour les pages générées dans une application ASP.NET Core
 
@@ -28,9 +25,15 @@ Nous avons une bonne ébauche de l’application de films, mais sa présentation
 
 Ouvrez le fichier *Models/Movie.cs*, puis ajoutez les lignes affichées en surbrillance dans le code suivant :
 
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDate.cs?name=snippet_1&highlight=10-11)]
+::: moniker range="= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/MovieDate.cs?name=snippet_1&highlight=10-11)]
+::: moniker-end
 
-Cliquez avec le bouton droit sur une ligne ondulée rouge > ** Actions rapides et refactorisations**.
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDate.cs?name=snippet_1&highlight=10-11,15)]
+::: moniker-end
+
+Cliquez avec le bouton droit sur une ligne ondulée rouge > **Actions rapides et refactorisations**.
 
   ![Le menu contextuel affiche **> Actions rapides et refactorisations**.](da1/qa.png)
 
@@ -40,7 +43,7 @@ Sélectionnez `using System.ComponentModel.DataAnnotations;`.
 
   Visual studio ajoute `using System.ComponentModel.DataAnnotations;`.
 
-[!INCLUDE [model1](../../includes/RP/da2.md)]
+[!INCLUDE [model1](~/includes/RP/da2.md)]
 
 > [!div class="step-by-step"]
 > [Précédent : Utilisation de SQL Server LocalDB](xref:tutorials/razor-pages/sql)

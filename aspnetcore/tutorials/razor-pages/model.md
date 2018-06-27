@@ -3,22 +3,24 @@ title: Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ajouter des classes pour gérer des films dans une base de données à l’aide d’Entity Framework Core (EF Core).
 manager: wpickett
-monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 07/27/2017
+ms.date: 5/30/2018
 ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 80b3aae661342ccde257805c370780cd6f5b4aa4
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: 50b1b01448ad870a2889db7dfe8367ab9e661840
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729961"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
-[!INCLUDE [model1](../../includes/RP/model1.md)]
+::: moniker range=">= aspnetcore-2.1"
+
+[!INCLUDE [model1](~/includes/RP/model1.md)]
 
 ## <a name="add-a-data-model"></a>Ajouter un modèle de données
 
@@ -26,7 +28,91 @@ Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **
 
 Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :
 
-[!INCLUDE [model 2](../../includes/RP/model2.md)]
+Remplacez le contenu de la classe `Movie` par le code suivant :
+
+[!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie21/Models/Movie1.cs?name=snippet)]
+
+## <a name="scaffold-the-movie-model"></a>Générer automatiquement le modèle de film
+
+Dans cette section, le modèle de film est généré automatiquement. Autrement dit, l’outil de génération de modèles automatique génère des pages pour les opérations de création, de lecture, de mise à jour et de suppression (CRUD) pour le modèle de film.
+
+Créer un dossier *Pages/Movies* :
+
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages*, puis choisissez **Ajouter** > **Nouveau dossier**.
+* Nommez le dossier *Movies*.
+
+Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Movies*, puis choisissez **Ajouter** > **Nouvel élément généré automatiquement**.
+
+![Image illustrant les instructions précédentes.](model/_static/sca.png)
+
+Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Pages Razor avec Entity Framework (CRUD)** > **AJOUTER**.
+
+![Image illustrant les instructions précédentes.](model/_static/add_scaffold.png)
+
+Renseignez la boîte de dialogue **Pages Razor avec Entity Framework (CRUD)** :
+
+* Dans la liste déroulante **Classe de modèle**, sélectionnez **Film (RazorPagesMovie.Models)**.
+* Dans la ligne **Classe du contexte de données**, sélectionnez le signe (plus) **+** et acceptez le nom généré **RazorPagesMovie.Models.RazorPagesMovieContext**.
+* Dans la liste déroulante **Classe du contexte de données**, sélectionnez **RazorPagesMovie.Models.RazorPagesMovieContext**.
+* Sélectionnez **Ajouter** .
+
+![Image illustrant les instructions précédentes.](model/_static/arp.png)
+
+<a name="pmc"></a>
+## <a name="perform-initial-migration"></a>Effectuer la migration initiale
+
+Dans cette section, effectuez les tâches suivantes à l’aide de la console du gestionnaire de package :
+
+* Ajouter une migration initiale
+* Mettez à jour la base de données avec la migration initiale.
+
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.
+
+  ![Menu Console du Gestionnaire de package](../first-mvc-app/adding-model/_static/pmc.png)
+
+Dans la console du Gestionnaire de package, entrez les commandes suivantes :
+
+```PMC
+Add-Migration Initial
+Update-Database
+```
+
+Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes :
+
+```console
+dotnet ef migrations add Initial
+dotnet ef database update
+```
+
+Ignorez le message d’avertissement suivant ; vous le traiterez dans le prochain tutoriel :
+
+`Microsoft.EntityFrameworkCore.Model.Validation[30000]`
+
+      *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'.*
+
+La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans le fichier `DbContext` (dans *Models/MovieContext.cs*). L’argument `Initial` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, choisissez un nom qui décrit la migration. Pour plus d’informations, consultez [Présentation des migrations](xref:data/ef-mvc/migrations#introduction-to-migrations).
+
+La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
+
+Si vous obtenez l’erreur :
+
+SqlException: impossible d’ouvrir la base de données 'RazorPagesMovieContext-GUID' demandée par la connexion. La connexion a échoué.
+Échec de la connexion de l’utilisateur 'nom utilisateur'.
+
+Vous avez manqué [l’étape des migrations](#pmc).
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+[!INCLUDE [model1](~/includes/RP/model1.md)]
+
+## <a name="add-a-data-model"></a>Ajouter un modèle de données
+
+Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie** > **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
+
+Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :
+
+[!INCLUDE [model 2](~/includes/RP/model2.md)]
 
 <a name="cs"></a>
 ### <a name="add-a-database-connection-string"></a>Ajouter une chaîne de connexion de base de données
@@ -73,17 +159,28 @@ dotnet ef migrations add Initial
 dotnet ef database update
 ```
 
+Ignorez le message suivant :
+
+    `Microsoft.EntityFrameworkCore.Model.Validation[30000]`
+
+      *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'*
+
+Vous le traiterez dans le prochain tutoriel.
+
 La commande `Install-Package` installe les outils nécessaires à l’exécution du moteur de génération de modèles automatique.
 
 La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans le fichier `DbContext` (dans *Models/MovieContext.cs*). L’argument `Initial` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, choisissez un nom qui décrit la migration. Pour plus d’informations, consultez [Présentation des migrations](xref:data/ef-mvc/migrations#introduction-to-migrations).
 
-La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/\<horodatage>_InitialCreate.cs*, ce qui entraîne la création de la base de données.
+La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.
 
-[!INCLUDE [model 4windows](../../includes/RP/model4Win.md)]
+[!INCLUDE [model 4windows](~/includes/RP/model4Win.md)]
 
-[!INCLUDE [model 4](../../includes/RP/model4tbl.md)]
+[!INCLUDE [model 4](~/includes/RP/model4tbl.md)]
+
+::: moniker-end
 
 <a name="test"></a>
+
 ### <a name="test-the-app"></a>Tester l’application
 
 * Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
@@ -95,7 +192,7 @@ La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrati
 
 * Testez les liens **Modifier**, **Détails** et **Supprimer**.
 
-Si vous obtenez une exception SQL, vérifiez que vous avez exécuté les migrations et mis à jour la base de données :
+Si vous obtenez une exception SQL, vérifiez que vous avez exécuté les migrations et mis à jour la base de données.
 
 Le prochain didacticiel décrit les fichiers créés par la génération de modèles automatique.
 

@@ -14,9 +14,9 @@ Le diagramme suivant illustre la conception de base de l’application.
 
 ![Le client, représenté par une zone située à gauche, soumet une requête et reçoit une réponse de l’application, représentée par une zone dessinée sur la droite. Dans la zone de l’application, trois zones représentent le contrôleur, le modèle et la couche d’accès aux données. La requête provient du contrôleur de l’application, et les opérations de lecture/écriture se produisent entre le contrôleur et la couche d’accès aux données. Le modèle est sérialisé et retourné au client dans la réponse.](../../tutorials/first-web-api/_static/architecture.png)
 
-* Le client correspond à tout ce qui consomme l’API web (application mobile, navigateur, etc.). Ce didacticiel ne crée pas de client. [Postman](https://www.getpostman.com/) ou [curl](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/curl.1.html) est utilisé comme client pour tester l’application.
+* Le client correspond à tout ce qui consomme l’API web (application mobile, navigateur, etc.). Ce didacticiel ne crée pas de client. [Postman](https://www.getpostman.com/) ou [curl](https://curl.haxx.se/docs/manpage.html) est utilisé comme client pour tester l’application.
 
-* Un *modèle* est un objet qui représente les données de l’application. Dans le cas présent, le seul modèle est une tâche. Les modèles sont représentés sous forme de classes C#, également appelées objets POCO (**P**lain **O**ld **C**# **O**bject).
+* Un *modèle* est un objet qui représente les données de l’application. Dans le cas présent, le seul modèle est une tâche. Les modèles sont représentés sous forme de classes C#, également appelées objets POCO (**P**lain **O**ld **C**LR **O**bject).
 
 * Un *contrôleur* est un objet qui gère les requêtes HTTP et crée la réponse HTTP. Cette application comporte un seul contrôleur.
 

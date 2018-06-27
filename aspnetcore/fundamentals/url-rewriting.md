@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 336a097c2186bc195854bd54211d4554a577ed14
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: a4ffa512825fedafdc58ade9929097e255593fa9
+ms.sourcegitcommit: 40b102ecf88e53d9d872603ce6f3f7044bca95ce
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35652212"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
@@ -22,15 +23,16 @@ Par [Luke Latham](https://github.com/guardrex) et [Mikael Mengistu](https://gith
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
 La réécriture d’URL consiste à modifier des URL de requête en fonction d’une ou de plusieurs règles prédéfinies. La réécriture d’URL crée une abstraction entre les emplacements de ressources et leurs adresses afin que les emplacements et les adresses ne soient pas étroitement liés. Il existe plusieurs scénarios dans lesquels la réécriture d’URL est utile :
-* Déplacement ou remplacement temporaire ou permanent de ressources serveur tout en maintenant les localisateurs stables pour ces ressources
-* Fractionnement du traitement des requêtes entre différentes applications ou entre des zones d’une application
-* Suppression, ajout ou réorganisation de segments d’URL sur des requêtes entrantes
-* Optimisation d’URL publiques pour l’optimisation du référencement d’un site auprès d’un moteur de recherche (SEO)
-* Autorisation d’utiliser une URL publique conviviale pour permettre aux utilisateurs de prévoir le contenu qu’ils trouveront en suivant un lien
-* Redirection des requêtes non sécurisées pour sécuriser des points de terminaison
-* Prévention des liens réactifs d’images
 
-Vous pouvez définir des règles pour changer l’URL de plusieurs façons, notamment une expression régulière (regex), des règles de module mod_rewrite Apache, des règles du module de réécriture IIS et l’utilisation d’une logique de règles personnalisée. Ce document présente la réécriture d’URL avec des instructions sur la façon d’utiliser l’intergiciel (middleware) de réécriture d’URL dans les applications ASP.NET Core.
+* Déplacement ou remplacement temporaire ou permanent de ressources serveur tout en maintenant les localisateurs stables pour ces ressources.
+* Fractionnement du traitement des requêtes entre différentes applications ou entre des zones d’une application.
+* Suppression, ajout ou réorganisation de segments d’URL sur des requêtes entrantes.
+* Optimisation d’URL publiques pour l’optimisation du référencement d’un site auprès d’un moteur de recherche (SEO).
+* Autorisation d’utiliser une URL publique conviviale pour permettre aux utilisateurs de prévoir le contenu qu’ils trouveront en suivant un lien.
+* Redirection des requêtes non sécurisées pour sécuriser des points de terminaison.
+* Prévention des liens réactifs d’images.
+
+Vous pouvez définir des règles pour changer l’URL de plusieurs façons, notamment une expression régulière (Regex), des règles de module mod_rewrite Apache, des règles du module de réécriture IIS et l’utilisation d’une logique de règles personnalisée. Ce document présente la réécriture d’URL avec des instructions sur la façon d’utiliser l’intergiciel (middleware) de réécriture d’URL dans les applications ASP.NET Core.
 
 > [!NOTE]
 > La réécriture d’URL peut réduire les performances d’une application. Si possible, vous devez limiter le nombre et la complexité des règles.
@@ -127,8 +129,8 @@ La partie de l’expression entre parenthèses est appelée *groupe de capture*.
 
 Dans la chaîne de remplacement, les groupes capturés sont injectés dans la chaîne avec le signe dollar (`$`) suivi du numéro de séquence de la capture. La valeur du premier groupe de capture est obtenue avec `$1`, la deuxième avec `$2`, et ainsi de suite en séquence pour les groupes de capture de votre expression régulière. Comme il n’y a qu’un seul groupe capturé dans l’expression régulière de la règle de redirection de l’exemple d’application, un seul groupe est injecté dans la chaîne de remplacement, à savoir `$1`. Quand la règle est appliquée, l’URL devient `/redirected/1234/5678`.
 
-<a name="url-redirect-to-secure-endpoint"></a>
 ### <a name="url-redirect-to-a-secure-endpoint"></a>Redirection d’URL vers un point de terminaison sécurisé
+
 Utilisez `AddRedirectToHttps` pour rediriger les requêtes HTTP vers le même hôte et chemin à l’aide de HTTPS (`https://`). Si le code d’état n’est pas fourni, la valeur par défaut de l’intergiciel est 302 (Trouvé). Si le port n’est pas fourni, la valeur par défaut de l’intergiciel est `null`, ce qui signifie que le protocole devient `https://` et que le client accède à la ressource sur le port 443. L’exemple montre comment définir le code d’état sur 301 (Déplacé de façon permanente) et remplacer le port par 5001.
 
 ```csharp
@@ -153,13 +155,16 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-L’exemple d’application peut montrer comment utiliser `AddRedirectToHttps` ou `AddRedirectToHttpsPermanent`. Ajoutez la méthode d’extension à `RewriteOptions`. Effectuez une requête non sécurisée à l’application à n’importe quelle URL. Ignorez l’avertissement de sécurité du navigateur indiquant que le certificat auto-signé n’est pas approuvé.
+> [!NOTE]
+> Si vous effectuez une redirection vers HTTPS et que vous n’avez pas besoin de règles de redirection supplémentaires, privilégiez l’utilisation du middleware (intergiciel) de redirection HTTPS. Pour plus d’informations, consultez la rubrique [Appliquer HTTPS](xref:security/enforcing-ssl#require-https).
 
-Requête d’origine utilisant `AddRedirectToHttps(301, 5001)` : `/secure`
+L’exemple d’application peut montrer comment utiliser `AddRedirectToHttps` ou `AddRedirectToHttpsPermanent`. Ajoutez la méthode d’extension à `RewriteOptions`. Effectuez une requête non sécurisée à l’application à n’importe quelle URL. Ignorez l’avertissement de sécurité du navigateur indiquant que le certificat auto-signé n’est pas approuvé ou créez une exception pour approuver le certificat.
+
+Requête d’origine utilisant `AddRedirectToHttps(301, 5001)` : `http://localhost:5000/secure`
 
 ![Fenêtre de navigateur avec les requêtes et les réponses suivies par les Outils de développement](url-rewriting/_static/add_redirect_to_https.png)
 
-Requête d’origine utilisant `AddRedirectToHttpsPermanent` : `/secure`
+Requête d’origine utilisant `AddRedirectToHttpsPermanent` : `http://localhost:5000/secure`
 
 ![Fenêtre de navigateur avec les requêtes et les réponses suivies par les Outils de développement](url-rewriting/_static/add_redirect_to_https_permanent.png)
 
@@ -254,6 +259,7 @@ Requête d’origine : `/apache-mod-rules-redirect/1234`
 ##### <a name="supported-server-variables"></a>Variables serveur prises en charge
 
 L’intergiciel prend en charge les variables de serveur Apache mod_rewrite suivantes :
+
 * CONN_REMOTE_ADDR
 * HTTP_ACCEPT
 * HTTP_CONNECTION
@@ -325,6 +331,7 @@ Si vous avez un module de réécriture IIS actif pour lequel des règles au nive
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
 L’intergiciel intégré à ASP.NET Core 2.x ne prend pas en charge les fonctionnalités de module de réécriture d’URL IIS suivantes :
+
 * Règles de trafic sortant
 * Variables serveur personnalisées
 * Caractères génériques
@@ -333,6 +340,7 @@ L’intergiciel intégré à ASP.NET Core 2.x ne prend pas en charge les fonctio
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
 L’intergiciel intégré à ASP.NET Core 1.x ne prend pas en charge les fonctionnalités de module de réécriture d’URL IIS suivantes :
+
 * Règles globales
 * Règles de trafic sortant
 * Tables de réécriture
@@ -347,6 +355,7 @@ L’intergiciel intégré à ASP.NET Core 1.x ne prend pas en charge les fonctio
 #### <a name="supported-server-variables"></a>Variables serveur prises en charge
 
 L’intergiciel prend en charge les variables serveur du module de réécriture d’URL IIS suivantes :
+
 * CONTENT_LENGTH
 * CONTENT_TYPE
 * HTTP_ACCEPT

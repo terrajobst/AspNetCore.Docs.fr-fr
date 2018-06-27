@@ -2,24 +2,21 @@
 title: Journalisation avancée avec LoggerMessage dans ASP.NET Core
 author: guardrex
 description: Découvrez comment utiliser LoggerMessage pour créer des délégués pouvant être mis en cache et nécessitant moins d’allocations d’objets pour les scénarios de journalisation à hautes performances.
-manager: wpickett
 ms.author: riande
 ms.date: 11/03/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: fundamentals/logging/loggermessage
-ms.openlocfilehash: 24a75cfacfa61ca66e78deeb743baa75718dfb76
-ms.sourcegitcommit: 7ac15eaae20b6d70e65f3650af050a7880115cbf
+ms.openlocfilehash: e952591bac29868d87d765820e88c74b50a1fe88
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36272433"
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>Journalisation avancée avec LoggerMessage dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-Les fonctionnalités [LoggerMessage](/dotnet/api/microsoft.extensions.logging.loggermessage) créent des délégués pouvant être mis en cache qui nécessitent moins d’allocations d’objet et de charge de calcul que les [méthodes d’extension de journaliseur](/dotnet/api/Microsoft.Extensions.Logging.LoggerExtensions), telles que `LogInformation`, `LogDebug` et `LogError`. Pour les scénarios de journalisation hautes performances, utilisez le modèle `LoggerMessage`.
+Les fonctionnalités [LoggerMessage](/dotnet/api/microsoft.extensions.logging.loggermessage) créent des délégués pouvant être mis en cache qui nécessitent moins d’allocations d’objet et de charge de calcul par rapport aux [méthodes d’extension de journaliseur](/dotnet/api/Microsoft.Extensions.Logging.LoggerExtensions), telles que `LogInformation`, `LogDebug` et `LogError`. Pour les scénarios de journalisation hautes performances, utilisez le modèle `LoggerMessage`.
 
 `LoggerMessage` procure les avantages suivants en termes de performances par rapport aux méthodes d’extension de journaliseur :
 
@@ -143,13 +140,9 @@ Définissez une [étendue de journal](xref:fundamentals/logging/index#log-scopes
 
 L’exemple d’application a un bouton **Clear All** (Effacer tout) pour supprimer toutes les citations de la base de données. Les citations sont supprimées une par une. Chaque fois qu’une citation est supprimée, la méthode `QuoteDeleted` est appelée sur le journaliseur. Une étendue de journal est ajoutée à ces messages de journal.
 
-Activez `IncludeScopes` dans les options du journaliseur de la console :
+Activez `IncludeScopes` dans la section du journaliseur de console *d’appsettings.json* :
 
-[!code-csharp[](loggermessage/sample/Program.cs?name=snippet1&highlight=10)]
-
-Définir `IncludeScopes` est requis dans les applications ASP.NET Core 2.0 pour activer les étendues de journal. Définir `IncludeScopes` par le biais de fichiers de configuration *appsettings* est une fonctionnalité qui est planifiée pour ASP.NET Core 2.1.
-
-L’exemple d’application efface les autres fournisseurs et ajoute des filtres afin de réduire la sortie de la journalisation. Ainsi, vous pouvez voir plus facilement les messages de journal de l’exemple qui illustrent les fonctionnalités `LoggerMessage`.
+[!code-csharp[](loggermessage/sample/appsettings.json?highlight=3-5)]
 
 Pour créer une étendue de journal, ajoutez un champ destiné à contenir un délégué `Func` pour l’étendue. L’exemple d’application crée un champ intitulé `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*) :
 
@@ -181,6 +174,6 @@ info: LoggerMessageSample.Pages.IndexModel[4]
       Quote deleted (Quote = 'Quote 3' Id = 4)
 ```
 
-## <a name="see-also"></a>Voir aussi
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Journalisation](xref:fundamentals/logging/index)

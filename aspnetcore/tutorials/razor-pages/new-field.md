@@ -2,33 +2,42 @@
 title: Ajouter un nouveau champ à une page Razor dans ASP.NET Core
 author: rick-anderson
 description: Montre comment ajouter un nouveau champ à une page Razor avec Entity Framework Core
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: get-started-article
+ms.date: 05/30/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 45a39defc9480b0e4fe85ae7ed6bfa654a35264a
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: d9bf8c7cea20bf38aacf432465d7b33514bcd64d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277291"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Ajouter un nouveau champ à une page Razor dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Dans cette section, vous allez utiliser la fonctionnalité Migrations Code First [d’Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) pour ajouter un nouveau champ au modèle et migrer ce changement dans la base de données.
+Dans cette section, vous utilisez la fonctionnalité Migrations Code First [d’Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) pour ajouter un nouveau champ au modèle et migrer ce changement dans la base de données.
 
-Quand vous utilisez EF Code First pour créer automatiquement une base de données, Code First ajoute une table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré. S’ils ne sont pas synchronisés, EF lève une exception. Cela facilite la recherche de problèmes d’incohérence de code/de bases de données.
+Quand vous utilisez EF Code First pour créer automatiquement une base de données, Code First :
+
+* Ajoute une table à la base de données pour déterminer si le schéma de la base de données est synchronisé avec les classes de modèle à partir desquelles il a été généré.
+* Si les classes de modèle ne sont pas synchronisées avec la base de données, EF lève une exception. 
+
+La vérification automatique de la synchronisation du schéma et du modèle facilite la détection des problèmes d’incohérence et de code de base de données.
 
 ## <a name="adding-a-rating-property-to-the-movie-model"></a>Ajout d’une propriété Rating au modèle Movie
 
 Ouvrez le fichier *Models/Movie.cs* et ajoutez une propriété `Rating` :
-
+::: moniker range="= aspnetcore-2.0"
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieDateRating.cs?highlight=11&range=7-18)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRating.cs?highlight=13&name=snippet)]
+
+::: moniker-end
 
 Générez l’application (Ctrl+Maj+B).
 
@@ -70,7 +79,13 @@ Mettez à jour la classe `SeedData` pour qu’elle fournisse une valeur pour la 
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs?name=snippet1&highlight=8)]
 
+::: moniker range="= aspnetcore-2.0"
 Consultez le [fichier SeedData.cs complet](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/SeedDataRating.cs).
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+Consultez le [fichier SeedData.cs complet](https://github.com/aspnet/Docs/blob/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/SeedDataRating.cs).
+::: moniker-end
 
 Générez la solution.
 

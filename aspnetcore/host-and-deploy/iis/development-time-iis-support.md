@@ -2,20 +2,16 @@
 title: Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 author: shirhatti
 description: Découvrez la prise en charge du débogage des applications ASP.NET Core pendant l’exécution derrière IIS sur Windows Server.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/14/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 0bf4585d44e61c5e7e5b89ce9d8dfdfa10d5460e
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: eb8b4369d6d5434adbac187f59b18d7a2b80055c
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34233077"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36277652"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
@@ -25,7 +21,10 @@ Cet article décrit la prise en charge de [Visual Studio](https://www.visualstud
 
 ## <a name="prerequisites"></a>Prérequis
 
-[!INCLUDE[](~/includes/net-core-prereqs-windows.md)]
+* [Visual Studio pour Windows](https://www.microsoft.com/net/download/windows)
+* Charge de travail **Développement web et ASP.NET**
+* Charge de travail **Développement multiplateforme .NET Core**
+* Certificat de sécurité X.509
 
 ## <a name="enable-iis"></a>Activer IIS
 

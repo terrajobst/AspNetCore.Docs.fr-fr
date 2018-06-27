@@ -10,23 +10,24 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/host/web-host
-ms.openlocfilehash: ced2a766359894b9b83164c12a3ab69aa13c93a0
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: ce95599ec8e940635ca63c3bf9a3c28784a3f371
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34687488"
 ---
 # <a name="aspnet-core-web-host"></a>Hôte web ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-Les applications ASP.NET Core configurent et lancent un *hôte*. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. Au minimum, l’hôte configure un serveur ainsi qu’un pipeline de traitement des requêtes. Cette rubrique traite de l’hôte web ASP.NET Core ([WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder)), qui est utile pour l’hébergement d’applications web. Pour découvrir l’hôte générique .NET ([HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder)), consultez la rubrique [Hôte générique](xref:fundamentals/host/generic-host).
+Les applications ASP.NET Core configurent et lancent un *hôte*. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. Au minimum, l’hôte configure un serveur ainsi qu’un pipeline de traitement des requêtes. Cette rubrique traite de l’hôte web ASP.NET Core ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)), qui est utile pour l’hébergement d’applications web. Pour découvrir l’hôte générique .NET ([IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder)), consultez la rubrique [Hôte générique](xref:fundamentals/host/generic-host).
 
 ## <a name="set-up-a-host"></a>Configurer un hôte
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-Créez un hôte en utilisant une instance de [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder). Cette opération est généralement effectuée au point d’entrée de l’application, à savoir la méthode `Main`. Dans les modèles de projet, `Main` se trouve dans *Program.cs*. Un fichier *Program.cs* standard appelle [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) pour commencer la configuration d’un hôte :
+Créez un hôte en utilisant une instance de [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder). Cette opération est généralement effectuée au point d’entrée de l’application, à savoir la méthode `Main`. Dans les modèles de projet, `Main` se trouve dans *Program.cs*. Un fichier *Program.cs* standard appelle [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) pour commencer la configuration d’un hôte :
 
 ```csharp
 public class Program
@@ -44,12 +45,12 @@ public class Program
 
 `CreateDefaultBuilder` effectue les tâches suivantes :
 
-* Configure [Kestrel](xref:fundamentals/servers/kestrel) en tant que serveur web. Pour connaître les options Kestrel par défaut, consultez la [section sur les options Kestrel dans Implémentation du serveur web Kestrel dans ASP.NET Core](xref:fundamentals/servers/kestrel#kestrel-options).
+* Configure [Kestrel](xref:fundamentals/servers/kestrel) en tant que serveur web et configure le serveur à l’aide des fournisseurs de configuration d’hébergement de l’application. Pour connaître les options Kestrel par défaut, consultez la [section sur les options Kestrel dans Implémentation du serveur web Kestrel dans ASP.NET Core](xref:fundamentals/servers/kestrel#kestrel-options).
 * Définit le chemin retourné par [Directory.GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory) comme racine de contenu.
-* Charge la configuration facultative à partir des éléments suivants :
+* Charge la configuration facultative [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) à partir des éléments suivants :
   * *appsettings.json*
   * *appsettings.{Environment}.json*
-  * Les [secrets utilisateur](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development`
+  * Les [secrets utilisateur](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée
   * Variables d'environnement.
   * Arguments de ligne de commande
 * Configure la [journalisation](xref:fundamentals/logging/index) des sorties de la console et du débogage. La journalisation inclut les règles de [filtrage de journal](xref:fundamentals/logging/index#log-filtering) qui sont spécifiées dans une section de configuration de la journalisation dans un fichier *appsettings.json* ou *appsettings.{Environment}.json*.
@@ -878,7 +879,7 @@ public class Startup
 }
 ```
 
-[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requête l’arrêt de l’application. La classe suivante utilise `StopApplication` pour arrêter normalement une application lors de l’appel de la méthode `Shutdown` de la classe :
+[StopApplication](/dotnet/api/microsoft.aspnetcore.hosting.iapplicationlifetime.stopapplication) requête l’arrêt de l’application. La classe suivante utilise `StopApplication` pour arrêter normalement une application quand la méthode `Shutdown` de la classe est appelée :
 
 ```csharp
 public class MyClass

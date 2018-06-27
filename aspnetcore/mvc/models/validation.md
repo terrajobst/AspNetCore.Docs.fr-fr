@@ -9,11 +9,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: mvc/models/validation
-ms.openlocfilehash: 1ab19fad90eab9f2da58b4d62615a85d71894218
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: f6748ef6df865919e43cdd9ee86fcc64dbe9651a
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252358"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>Validation de modèle dans ASP.NET Core MVC
 
@@ -99,9 +100,13 @@ Les attributs de validation fonctionnent pour la plupart des besoins de validati
 
 Dans l’exemple suivant, une règle métier stipule que les utilisateurs ne peuvent pas définir le genre sur *Classic* pour un film sorti après 1960. L’attribut `[ClassicMovie]` vérifie d’abord le genre et, s’il s’agit d’un classique, vérifie ensuite si date de sortie est postérieure à 1960. Si la sortie est postérieure à 1960, la validation échoue. L’attribut accepte un paramètre entier qui représente l’année que vous pouvez utiliser pour valider les données. Vous pouvez capturer la valeur du paramètre dans le constructeur de l’attribut, comme illustré ici :
 
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=9-29)]
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=9-28)]
 
-La variable `movie` ci-dessus représente un objet `Movie` qui contient les données de l’envoi du formulaire à valider. Dans ce cas, le code de validation vérifie la date et le genre dans la méthode `IsValid` de la classe `ClassicMovieAttribute` selon les règles définies. Si la validation réussit, `IsValid` retourne un code `ValidationResult.Success` et, si la validation échoue, un `ValidationResult` avec un message d’erreur. Quand un utilisateur modifie le champ `Genre` et envoie le formulaire, la méthode `IsValid` de la classe `ClassicMovieAttribute` doit vérifier si le film est un classique. Comme pour tout attribut prédéfini, appliquez `ClassicMovieAttribute` à une propriété comme `ReleaseDate` pour garantir que la validation se produit, comme illustré dans l’exemple de code précédent. Étant donné que l’exemple fonctionne seulement avec les types `Movie`, une meilleure option consiste à utiliser `IValidatableObject` comme illustré dans le paragraphe suivant.
+La variable `movie` ci-dessus représente un objet `Movie` qui contient les données de l’envoi du formulaire à valider. Dans ce cas, le code de validation vérifie la date et le genre dans la méthode `IsValid` de la classe `ClassicMovieAttribute` selon les règles définies. Si la validation réussit, `IsValid` retourne un code `ValidationResult.Success`. Quand la validation échoue, un `ValidationResult` avec un message d’erreur est retourné :
+
+[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?range=55-58)]
+
+Quand un utilisateur modifie le champ `Genre` et envoie le formulaire, la méthode `IsValid` de la classe `ClassicMovieAttribute` doit vérifier si le film est un classique. Comme pour tout attribut prédéfini, appliquez `ClassicMovieAttribute` à une propriété comme `ReleaseDate` pour garantir que la validation se produit, comme illustré dans l’exemple de code précédent. Étant donné que l’exemple fonctionne seulement avec les types `Movie`, une meilleure option consiste à utiliser `IValidatableObject` comme illustré dans le paragraphe suivant.
 
 Vous pouvez aussi placer ce même code dans le modèle en implémentant la méthode `Validate` sur l’interface `IValidatableObject`. Si les attributs de validation personnalisés fonctionnent bien pour la validation de propriétés individuelles, vous pouvez aussi utiliser l’implémentation de `IValidatableObject` pour implémenter une validation au niveau de la classe, comme illustré ci-après.
 

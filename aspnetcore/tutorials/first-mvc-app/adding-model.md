@@ -9,27 +9,40 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 4204d4e2d474db51692d42751a9f82373e9f0c0d
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 802cb458cb05579b97256022b56d6f97a03d2f1a
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34687790"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Ajouter un modèle dans une application ASP.NET Core MVC
 
-[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model1.md)]
-
-Remarque : Les modèles ASP.NET Core 2.0 contiennent le dossier *Models*.
+[!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model1.md)]
 
 Cliquez avec le bouton droit sur le dossier *Models* > **Ajouter** > **Classe**. Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
 Le champ `ID` est nécessaire à la base de données pour la clé primaire. 
 
 Générez le projet pour vérifier qu’il ne comporte aucune erreur. Vous avez désormais un **M**odèle dans votre application **M**VC.
 
 ## <a name="scaffolding-a-controller"></a>Génération de modèles automatique pour un contrôleur
+
+::: moniker range=">= aspnetcore-2.1"
+
+Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Contrôleurs*, puis choisissez **Ajouter > Nouvel élément généré automatiquement**.
+
+![affichage de l’étape ci-dessus](adding-model/_static/add_controller21.png)
+
+Dans la boîte de dialogue **Ajouter un modèle automatique**, appuyez sur **Contrôleur MVC avec vues, utilisant Entity Framework > Ajouter**.
+
+![Boîte de dialogue Ajouter un modèle automatique](adding-model/_static/add_scaffold21.png)
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
 
 Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Contrôleurs* **> Ajouter > Contrôleur**.
 
@@ -43,6 +56,8 @@ Si la boîte de dialogue **Ajouter des dépendances MVC** apparaît :
 Dans la boîte de dialogue **Ajouter un modèle automatique**, appuyez sur **Contrôleur MVC avec vues, utilisant Entity Framework > Ajouter**.
 
 ![Boîte de dialogue Ajouter un modèle automatique](adding-model/_static/add_scaffold2.png)
+
+::: moniker-end
 
 Renseignez la boîte de dialogue **Ajouter un contrôleur** :
 
@@ -67,7 +82,7 @@ La création automatique du contexte de base de données et de méthodes d’act
 
 Si vous exécutez l’application et que vous cliquez sur le lien **Mvc Movie**, vous recevez une erreur semblable à la suivante :
 
-```
+``` error
 An unhandled exception occurred while processing the request.
 
 SqlException: Cannot open database "MvcMovieContext-<GUID removed>" requested by the login. The login failed.
@@ -93,6 +108,20 @@ Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console
 
 Dans la console du Gestionnaire de package, entrez les commandes suivantes :
 
+::: moniker range=">= aspnetcore-2.1"
+``` PMC
+Add-Migration Initial
+Update-Database
+```
+
+Ignorez le message d’erreur suivant ; nous le traiterons dans le prochain tutoriel :
+
+*Microsoft.EntityFrameworkCore.Model.Validation[30000]*  
+      *Aucun type n’a été spécifié pour la colonne décimale 'Price' sur le type d’entité 'Movie'. Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'ForHasColumnType()'.*
+
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+
 ``` PMC
 Install-Package Microsoft.EntityFrameworkCore.Tools
 Add-Migration Initial
@@ -100,6 +129,8 @@ Update-Database
 ```
 
 **Remarque :** Si vous recevez une erreur avec la commande `Install-Package`, ouvrez le Gestionnaire de Package NuGet et recherchez le package `Microsoft.EntityFrameworkCore.Tools`. Ceci vous permet d’installer le package ou de vérifier s’il est déjà installé. Vous pouvez aussi appliquer [l’approche CLI](#cli) si vous rencontrez des problèmes avec la console du Gestionnaire de package.
+
+::: moniker-end
 
 La commande `Add-Migration` crée le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans le fichier `DbContext` (dans *Data/MvcMovieContext.cs*). L’argument `Initial` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, choisissez un nom qui décrit la migration. Pour plus d’informations, consultez [Présentation des migrations](xref:data/ef-mvc/migrations#introduction-to-migrations).
 
@@ -113,23 +144,28 @@ La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrati
   ```console
   dotnet ef migrations add Initial
   dotnet ef database update
-  ```     
-  
+  ```
+
   Si vous exécutez l’application et que vous obtenez l’erreur :
-  
+
   ```text
   SqlException: Cannot open database "Movie" requested by the login.
   The login failed.
   Login failed for user 'user name'.
   ```
 
-Vous n’avez probablement pas exécuté ` dotnet ef database update`.
-  
-[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model3.md)]
+Vous n’avez probablement pas exécuté `dotnet ef database update`.
 
-[!code-csharp[](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+[!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model3.md)]
 
-[!INCLUDE [adding-model](../../includes/mvc-intro/adding-model4.md)]
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Startup.cs?name=ConfigureServices&highlight=13-99)]
+::: moniker-end
+::: moniker range="<= aspnetcore-2.0"
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=ConfigureServices&highlight=6-7)]
+::: moniker-end
+
+[!INCLUDE [adding-model](~/Includes/mvc-intro/adding-model4.md)]
 
 ![Menu contextuel d’IntelliSense sur un élément de modèle qui répertorie les propriétés disponibles pour ID, Price, Release Date et Title.](adding-model/_static/ints.png)
 

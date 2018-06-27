@@ -2,19 +2,16 @@
 title: Tag Helpers dans ASP.NET Core
 author: rick-anderson
 description: Découvrez ce que sont les Tag Helpers et comment les utiliser dans ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 0c66b700f9bb3e6349fe2e0c8a7e254b8e7903a5
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: be75667f34eed7ba601eee331e3451c5738ef223
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36273567"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Tag Helpers dans ASP.NET Core
 
@@ -67,11 +64,11 @@ L’étendue des Tag Helpers est contrôlée par une combinaison de `@addTagHelp
 
 ### <a name="addtaghelper-makes-tag-helpers-available"></a>`@addTagHelper` rend les Tag Helpers disponibles
 
-Si vous créez une application web ASP.NET Core nommée *AuthoringTagHelpers*  (avec aucune authentification), le fichier qui suit *Views/_ViewImports.cshtml* sera ajouté à votre projet :
+Si vous créez une application web ASP.NET Core nommée *AuthoringTagHelpers*, le fichier qui suit *Views/_ViewImports.cshtml* est ajouté à votre projet :
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-La directive `@addTagHelper` rend les Tag Helpers disponibles dans l’affichage. Dans cet exemple, le fichier d’affichage est *Views/_ViewImports.cshtml*, qui est hérité par défaut par tous les fichiers d’affichage dans le dossier et les sous-répertoires *Views* ; les Tag Helpers sont ainsi disponibles. Le code ci-dessus utilise la syntaxe d’expressions génériques (« \* ») pour spécifier que tous les Tag Helpers dans l’assembly spécifié (*Microsoft.AspNetCore.Mvc.TagHelpers*) sont disponibles pour chaque fichier d’affichage du répertoire ou sous-répertoire *Views*. Le premier paramètre après `@addTagHelper` spécifie les Tag Helpers à charger (nous utilisons « \* » pour tous les Tag Helpers), et le deuxième paramètre « Microsoft.AspNetCore.Mvc.TagHelpers » spécifie l’assembly qui contient les Tag Helpers. *Microsoft.AspNetCore.Mvc.TagHelpers* est l’assembly des Tag Helpers ASP.NET Core intégrés.
+La directive `@addTagHelper` rend les Tag Helpers disponibles dans l’affichage. Dans cet exemple, le fichier d’affichage est *Pages/_ViewImports.cshtml*, qui est hérité par défaut par tous les fichiers dans le dossier et les sous-dossiers *Pages* ; les Tag Helpers sont ainsi disponibles. Le code ci-dessus utilise la syntaxe d’expressions génériques (« \* ») pour spécifier que tous les Tag Helpers dans l’assembly spécifié (*Microsoft.AspNetCore.Mvc.TagHelpers*) sont disponibles pour chaque fichier d’affichage du répertoire ou sous-répertoire *Views*. Le premier paramètre après `@addTagHelper` spécifie les Tag Helpers à charger (nous utilisons « \* » pour tous les Tag Helpers), et le deuxième paramètre « Microsoft.AspNetCore.Mvc.TagHelpers » spécifie l’assembly qui contient les Tag Helpers. *Microsoft.AspNetCore.Mvc.TagHelpers* est l’assembly des Tag Helpers ASP.NET Core intégrés.
 
 Pour exposer tous les Tag Helpers inclus dans ce projet (ce qui crée un assembly nommé *AuthoringTagHelpers*), utilisez ce qui suit :
 

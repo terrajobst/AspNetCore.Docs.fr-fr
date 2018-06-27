@@ -11,12 +11,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 618cb4349dcff696db37012af3aee844b82974f2
-ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
+ms.openlocfilehash: 47d3a64ce0cc543162a066eeeaa0aaaf7dc96a5f
+ms.sourcegitcommit: 0d6f151e69c159d776ed0142773279e645edbc0a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34729049"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35415006"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>Améliorer une application à partir d’un assembly externe dans ASP.NET Core avec IHostingStartup
 
@@ -57,7 +57,7 @@ Un attribut [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingsta
 
 [!code-csharp[](platform-specific-configuration/snapshot_sample/StartupEnhancement.cs?name=snippet1)]
 
-Une classe implémente `IHostingStartup`. La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) de la classe utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des améliorations à une application :
+Une classe implémente `IHostingStartup`. La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) de la classe utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des améliorations à une application. `IHostingStartup.Configure` dans l’assembly de démarrage de l’hébergement est appelé par le runtime avant `Startup.Configure` dans le code utilisateur, ce qui permet au code utilisateur de remplacer toute configuration fournie par l’assembly de démarrage de l’hébergement.
 
 [!code-csharp[](platform-specific-configuration/snapshot_sample/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
@@ -99,31 +99,33 @@ En cas de déploiement de l’assembly dans le magasin de runtime, le fichier de
 
 Le fichier *\*.deps.json* de l’implémentation doit se trouver dans un emplacement accessible.
 
-Pour une utilisation par utilisateur, placez le fichier dans le dossier `additonalDeps` des paramètres `.dotnet` du profil utilisateur : 
+Pour une utilisation par utilisateur, placez le fichier dans le dossier `additonalDeps` des paramètres `.dotnet` du profil utilisateur :
 
 ```
-<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
+<DRIVE>\Users\<USER>\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
 ```
 
 Pour une utilisation globale, placez le fichier dans le dossier `additonalDeps` de l’installation .NET Core :
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
 ```
 
-Notez que la version, `2.1.0`, reflète la version du runtime partagé qu’utilise l’application cible. Le runtime partagé est indiqué dans le fichier *\*.runtimeconfig.json*. Dans l’exemple d’application, le runtime partagé est spécifié dans le fichier *HostingStartupSample.runtimeconfig.json*.
+La version de framework partagé reflète la version du runtime partagé qu’utilise l’application cible. Le runtime partagé est indiqué dans le fichier *\*.runtimeconfig.json*. Dans l’exemple d’application, le runtime partagé est spécifié dans le fichier *HostingStartupSample.runtimeconfig.json*.
 
 **Définir des variables d’environnement**
 
 Définissez les variables d’environnement suivantes dans le contexte de l’application qui utilise l’amélioration.
 
-ASPNETCORE\_HOSTINGSTARTUPASSEMBLIES
+ASPNETCORE_HOSTINGSTARTUPASSEMBLIES
 
 Seuls les assemblys d’hébergement au démarrage sont analysés à la recherche de `HostingStartupAttribute`. Le nom d’assembly de l’implémentation est fourni dans cette variable d’environnement. L’exemple d’application définit la valeur `StartupDiagnostics`.
 
 Vous pouvez également définir la valeur à l’aide du paramètre de configuration d’hôte [Assemblys d’hébergement au démarrage](xref:fundamentals/host/web-host#hosting-startup-assemblies).
 
-DOTNET\_ADDITIONAL\_DEPS
+Quand plusieurs assemblys de démarrage d’hébergement sont présents, leurs méthodes [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) sont exécutées dans l’ordre dans lequel ils sont répertoriés.
+
+DOTNET_ADDITIONAL_DEPS
 
 L’emplacement du fichier *\*.deps.json* de l’implémentation.
 
@@ -136,7 +138,7 @@ Si le fichier est placé dans le dossier *.dotnet* du profil utilisateur pour un
 Si le fichier est placé dans l’installation .NET Core pour une utilisation globale, fournissez le chemin complet au fichier :
 
 ```
-<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\2.1.0\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
+<DRIVE>\Program Files\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
 ```
 
 L’exemple d’application définit la valeur suivante :

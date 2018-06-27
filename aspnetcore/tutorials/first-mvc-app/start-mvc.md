@@ -9,17 +9,18 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 1dba6eaceb6b69cf92cb8a831df9dc8d70a005d4
-ms.sourcegitcommit: 9bc34b8269d2a150b844c3b8646dcb30278a95ea
+ms.openlocfilehash: 3272700c7739778a6a341ae8ee424fd69605ca53
+ms.sourcegitcommit: 43bd79667bbdc8a07bd39fb4cd6f7ad3e70212fb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34729715"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[!INCLUDE [consider RP](../../includes/razor.md)]
+[!INCLUDE [consider RP](~/includes/razor.md)]
 
 Il existe trois versions de ce didacticiel :
 
@@ -29,9 +30,64 @@ Il existe trois versions de ce didacticiel :
 
 ## <a name="install-visual-studio-and-net-core"></a>Installer Visual Studio et .NET Core
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!INCLUDE [](~/includes/net-core-prereqs-windows.md) [](~/includes/net-core-prereqs-windows.md)]
+
+## <a name="create-a-web-app"></a>Créer une application web
+
+Dans Visual Studio, sélectionnez **Fichier > Nouveau > Projet**.
+
+![Fichier > Nouveau > Projet](start-mvc/_static/alt_new_project.png)
+
+Renseignez la boîte de dialogue **Nouveau projet** :
+
+* Dans le volet gauche, cliquez sur **.NET Core**.
+* Dans le volet central, cliquez sur **Application web ASP.NET Core (.NET Core)**.
+* Nommez le projet « MvcMovie » (ceci est important pour que l’espace de noms corresponde quand vous copierez le code).
+* Appuyez sur **OK**.
+
+![Boîte de dialogue Nouveau projet, .Net Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project2-21.png)
+
+Renseignez la boîte de dialogue **Nouvelle application web ASP.NET Core (.NET Core) - MvcMovie** :
+
+* Dans la zone de liste déroulante du sélecteur de version, sélectionnez **ASP.NET Core 2.1**.
+* Sélectionnez **Application web (Model-View-Controller)**
+* Appuyez sur **OK**.
+
+![Boîte de dialogue Nouveau projet, .Net Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project22-21.png)
+
+Visual Studio a utilisé un modèle par défaut pour le projet MVC que vous venez de créer. Vous disposez maintenant d’une application fonctionnelle en entrant un nom de projet et en sélectionnant quelques options. Il s’agit d’un projet de démarrage de base qui constitue un bon point de départ.
+
+Appuyez sur **F5** pour exécuter l’application en mode débogage ou sur **Ctrl-F5** pour l’exécuter en mode non-débogage.
+<!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
+![application en cours d’exécution](start-mvc/_static/1.png)
+
+* Visual Studio démarre [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute votre application. Notez que la barre d’adresse affiche `localhost:port#`, et non quelque chose comme `example.com`. C’est parce que `localhost` est le nom d’hôte standard de votre ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web. Dans l’image ci-dessus, le numéro de port est 5000. L’URL dans le navigateur affiche `localhost:5000`. Quand vous exécutez l’application, vous voyez un autre numéro de port.
+* Si vous lancez l’application avec **Ctrl+F5** (mode sans débogage), vous pouvez effectuer des modifications du code, enregistrer le fichier, actualiser le navigateur et afficher les modifications du code. De nombreux développeurs préfèrent utiliser le mode non-débogage pour lancer rapidement l’application et voir les modifications.
+* Vous pouvez lancer l’application en mode débogage ou non-débogage à partir de l’élément de menu **Déboguer** :
+
+![Menu Déboguer](start-mvc/_static/debug_menu.png)
+
+* Vous pouvez déboguer l’application en appuyant sur le bouton **IIS Express**.
+
+![IIS Express](start-mvc/_static/iis_express.png)
+
+Le modèle par défaut donne des liens **Accueil, À propos** et **Contact** fonctionnels. L’image de navigateur ci-dessus ne montre pas ces liens. En fonction de la taille de votre navigateur, vous devrez peut-être cliquer sur l’icône de navigation pour les afficher.
+
+![Icône de navigation en haut à droite](start-mvc/_static/2.png)
+
+Si vous exécutiez l’application en mode débogage, appuyez sur **Maj-F5** pour arrêter le débogage.
+
+Dans la prochaine partie de ce didacticiel, nous allons découvrir MVC et commencer à écrire du code.
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
@@ -88,7 +144,7 @@ Renseignez la boîte de dialogue **Nouvelle application web ASP.NET Core (.NET 
 
 ---
 
-Visual Studio a utilisé un modèle par défaut pour le projet MVC que vous venez de créer. Vous disposez maintenant d’une application fonctionnelle en entrant un nom de projet et en sélectionnant quelques options. Il s’agit d’un projet de démarrage simple qui constitue un bon point de départ.
+Visual Studio a utilisé un modèle par défaut pour le projet MVC que vous venez de créer. Vous disposez maintenant d’une application fonctionnelle en entrant un nom de projet et en sélectionnant quelques options. Il s’agit d’un projet de démarrage de base qui constitue un bon point de départ.
 
 Appuyez sur **F5** pour exécuter l’application en mode débogage ou sur **Ctrl-F5** pour l’exécuter en mode non-débogage.
 <!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
@@ -112,5 +168,6 @@ Si vous exécutiez l’application en mode débogage, appuyez sur **Maj-F5** pou
 
 Dans la prochaine partie de ce didacticiel, nous allons découvrir MVC et commencer à écrire du code.
 
+::: moniker-end
 > [!div class="step-by-step"]
 > [Next](adding-controller.md)  

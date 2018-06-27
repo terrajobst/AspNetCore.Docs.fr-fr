@@ -10,11 +10,12 @@ ms.prod: asp.net-core
 ms.technology: aspnet
 ms.topic: article
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 800ff2039e7cc1fa37315ed55a77711dc9f47504
-ms.sourcegitcommit: 477d38e33530a305405eaf19faa29c6d805273aa
+ms.openlocfilehash: 11f3e0b0cc1356db4c5fb9a2ce948099ed9f85b5
+ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/10/2018
+ms.locfileid: "35252384"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
@@ -25,11 +26,11 @@ Le modèle d’options utilise des classes pour représenter les groupes de para
 * [Principe de séparation des interfaces](http://deviq.com/interface-segregation-principle/) : les fonctionnalités (classes) qui dépendent de paramètres de configuration dépendent uniquement de ceux qu’elles utilisent.
 * [Séparation des préoccupations](http://deviq.com/separation-of-concerns/) : les paramètres des différentes parties de l’application ne sont pas dépendants ou associés les uns aux autres.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample)) Cet article est plus facile à suivre avec l’exemple d’application.
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample)) Cet article est plus facile à suivre avec l’exemple d’application.
 
 ## <a name="basic-options-configuration"></a>Configuration des options de base
 
-La configuration des options de base est illustrée dans l’exemple &num;1 de [l’exemple d’application](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+La configuration des options de base est illustrée dans l’exemple &num;1 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 Une classe d’options doit être non abstraite avec un constructeur public sans paramètre. La classe suivante, `MyOptions`, a deux propriétés : `Option1` et `Option2`. Définir des valeurs par défaut est facultatif, mais le constructeur de classe dans l’exemple suivant définit la valeur par défaut `Option1`. `Option2` a une valeur par défaut définie par l’initialisation directe de la propriété (*Models/MyOptions.cs*) :
 
@@ -49,7 +50,7 @@ Le modèle de page suivant utilise une [injection de dépendances de constructeu
 
 Le fichier *appsettings.json* de l’exemple spécifie des valeurs pour `option1` et `option2` :
 
-[!code-json[](options/sample/appsettings.json)]
+[!code-json[](options/sample/appsettings.json?highlight=2-3)]
 
 Quand l’application est exécutée, la méthode `OnGet` du modèle de page retourne une chaîne indiquant les valeurs de la classe d’options :
 
@@ -59,7 +60,7 @@ option1 = value1_from_json, option2 = -1
 
 ## <a name="configure-simple-options-with-a-delegate"></a>Configurer des options simples avec un délégué
 
-La configuration d’options simples avec un délégué est illustrée dans l’exemple &num;2 de [l’exemple d’application](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+La configuration d’options simples avec un délégué est illustrée dans l’exemple &num;2 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 Utilisez un délégué pour définir les valeurs des options. L’exemple d’application utilise la classe `MyOptionsWithDelegateConfig` (*Models/MyOptionsWithDelegateConfig.cs*) :
 
@@ -89,7 +90,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 ## <a name="suboptions-configuration"></a>Configuration des sous-options
 
-La configuration des sous-options est illustrée dans l’exemple &num;3 de [l’exemple d’application](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+La configuration des sous-options est illustrée dans l’exemple &num;3 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 Les applications doivent créer des classes d’options qui appartiennent à des groupes de fonctionnalités spécifiques (classes) dans l’application. Les parties de l’application qui requièrent des valeurs de configuration ne doivent avoir accès qu’aux valeurs de configuration qu’elles utilisent.
 
@@ -99,7 +100,7 @@ Dans le code suivant, un troisième service `IConfigureOptions<TOptions>` est aj
 
 [!code-csharp[](options/sample/Startup.cs?name=snippet_Example3)]
 
-La méthode d’extension `GetSection` requiert le package NuGet [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/). Si l’application utilise le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All/), le package est automatiquement inclus.
+La méthode d’extension `GetSection` requiert le package NuGet [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/). Si l’application utilise le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) (ASP.NET Core 2.1 ou version ultérieure), le package est automatiquement inclus.
 
 Le fichier *appsettings.json* de l’exemple définit un membre `subsection` avec des clés pour `suboption1` et `suboption2` :
 
@@ -125,7 +126,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a>Options fournies par un modèle d’affichage ou avec une injection de vue directe
 
-Les options fournies par un modèle d’affichage ou avec une injection de vue directe sont illustrées dans l’exemple &num;4 de [l’exemple d’application](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Les options fournies par un modèle d’affichage ou avec une injection de vue directe sont illustrées dans l’exemple &num;4 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 Vous pouvez fournir les options dans un modèle d’affichage ou en injectant `IOptions<TOptions>` directement dans une vue (*Pages/Index.cshtml.cs*) :
 
@@ -145,7 +146,7 @@ Quand l’application est exécutée, les valeurs d’options sont affichées da
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>Recharger les données de configuration avec IOptionsSnapshot
 
-Le rechargement des données de configuration avec `IOptionsSnapshot` est illustré dans l’exemple &num;5 de [l’exemple d’application](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+Le rechargement des données de configuration avec `IOptionsSnapshot` est illustré dans l’exemple &num;5 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 *Nécessite ASP.NET Core 1.1 ou version ultérieure.*
 
@@ -173,7 +174,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>Prise en charge des options nommées avec IConfigureNamedOptions
 
-La prise en charge des options nommées avec [IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) est illustrée dans l’exemple &num;6 de [l’exemple d’application](https://github.com/aspnet/docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
+La prise en charge des options nommées avec [IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) est illustrée dans l’exemple &num;6 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
 *Nécessite ASP.NET Core 2.0 ou version ultérieure.*
 

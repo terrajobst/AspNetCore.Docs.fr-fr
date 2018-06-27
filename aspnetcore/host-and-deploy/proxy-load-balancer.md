@@ -2,20 +2,16 @@
 title: Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
 author: guardrex
 description: Découvrez la configuration des applications hébergées derrière des serveurs proxy et des équilibreurs de charge, qui masquent souvent des informations de requête importantes.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/26/2018
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: f18a5c518edc739e0fe667f3aef6ffd38c06366c
-ms.sourcegitcommit: 5130b3034165f5cf49d829fe7475a84aa33d2693
+ms.openlocfilehash: 1797962d6eada9c48b31cd94e2c7481380301a0d
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32740944"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36276774"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
 
@@ -38,7 +34,7 @@ Par convention, les proxys transfèrent les informations dans des en-têtes HTTP
 | X-Forwarded-Proto | Valeur du schéma d’origine (HTTP/HTTPS). La valeur peut également être une liste de schémas si la requête a franchi plusieurs proxys. |
 | X-Forwarded-Host | Valeur d’origine du champ d’en-tête de l’hôte. En règle générale, les proxys ne modifient pas l’en-tête de l’hôte. Consultez le document [Microsoft Security Advisory CVE-2018-0787](https://github.com/aspnet/Announcements/issues/295) pour plus d’informations sur une vulnérabilité par élévation de privilèges qui affecte les systèmes où le proxy ne valide pas les en-têtes d’hôte ou ne les limite pas à des valeurs correctes connues. |
 
-Le middleware (intergiciel) des en-têtes transférés, dans le package [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/), lit ces en-têtes et renseigne les champs associés sur [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext). 
+Le middleware (intergiciel) des en-têtes transférés, dans le package [Microsoft.AspNetCore.HttpOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/), lit ces en-têtes et renseigne les champs associés sur [HttpContext](/dotnet/api/microsoft.aspnetcore.http.httpcontext).
 
 Le middleware met à jour les éléments suivants :
 
@@ -67,7 +63,7 @@ Configurez le middleware avec [ForwardedHeadersOptions](/dotnet/api/microsoft.as
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
-    
+
     services.Configure<ForwardedHeadersOptions>(options =>
     {
         options.ForwardedHeaders = 
@@ -97,6 +93,14 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 > [!NOTE]
 > Si aucune option [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) n’est spécifiée dans `Startup.ConfigureServices` ou directement dans la méthode d’extension avec [UseForwardedHeaders(IApplicationBuilder, ForwardedHeadersOptions)](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders?view=aspnetcore-2.0#Microsoft_AspNetCore_Builder_ForwardedHeadersExtensions_UseForwardedHeaders_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Builder_ForwardedHeadersOptions_), les en-têtes par défaut à transférer ont pour valeur [ForwardedHeaders.None](/dotnet/api/microsoft.aspnetcore.httpoverrides.forwardedheaders). La propriété [ForwardedHeadersOptions.ForwardedHeaders](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions.forwardedheaders) doit être configurée avec les en-têtes à transférer.
+
+## <a name="nginx-configuration"></a>Configuration de Nginx
+
+Pour transférer les en-têtes `X-Forwarded-For` et `X-Forwarded-Proto`, consultez [Host on Linux with Nginx: Configure Nginx](xref:host-and-deploy/linux-nginx#configure-nginx) (Héberger sur Linux avec Nginx : configurer Nginx). Pour plus d’informations, consultez [NGINX: Using the Forwarded header](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/) (NGINX : utilisation de l’en-tête Forwarded).
+
+## <a name="apache-configuration"></a>Configuration d’Apache
+
+`X-Forwarded-For` est ajouté automatiquement (consultez [Module Apache mod_proxy : en-têtes de requête du mandataire inverse](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#x-headers)). Pour plus d’informations sur la façon de transférer l’en-tête `X-Forwarded-Proto`, consultez [Héberger sur Linux avec Apache : configurer Apache](xref:host-and-deploy/linux-apache#configure-apache).
 
 ## <a name="forwarded-headers-middleware-options"></a>Options du middleware des en-têtes transférés
 

@@ -1,35 +1,37 @@
-# <a name="custom-webhost-service-sample"></a>Exemple de Service WebHost personnalisé
+# <a name="custom-webhost-service-sample"></a>Exemple de service WebHost personnalisé
 
-Cet exemple montre la méthode recommandée pour héberger une application ASP.NET Core sur Windows sans utiliser IIS comme un Service Windows. Cet exemple illustre les fonctionnalités décrites dans [héberger une application ASP.NET Core dans un Service Windows](https://docs.microsoft.com/aspnet/core/host-and-deploy/windows-service).
+Cet exemple montre comment héberger une application ASP.NET Core en tant que service Windows sans utiliser IIS. Cet exemple illustre le scénario décrit dans [Héberger une application ASP.NET Core dans un service Windows](https://docs.microsoft.com/aspnet/core/host-and-deploy/windows-service).
 
 ## <a name="instructions"></a>Instructions
 
-L’exemple d’application est une application web MVC simple modifiée en suivant les instructions de [héberger une application ASP.NET Core dans un Service Windows](https://docs.microsoft.com/aspnet/core/host-and-deploy/windows-service).
+L’exemple d’application est une application Razor Pages simple modifiée selon les instructions indiquées dans [Héberger une application ASP.NET Core dans un service Windows](https://docs.microsoft.com/aspnet/core/host-and-deploy/windows-service).
 
-Pour exécuter l’application dans un service, procédez comme suit :
+Pour exécuter l’application dans un service, effectuez les étapes suivantes :
 
-1. Créer un dossier au *c:\svc*.
+1. Créez un dossier à l’emplacement *c:\svc*.
 
-1. Publier l’application dans le dossier avec `dotnet publish --configuration Release --output c:\\svc`. La commande déplacera les ressources de l’application dans le dossier, y compris les `appsettings.json` fichier et le `wwwroot` dossier avec son contenu.
+1. Publiez l’application sur le dossier à l’aide de la commande `dotnet publish --configuration Release --output c:\\svc`. La commande déplace les ressources de l’application vers le dossier *svc*, notamment le fichier `appsettings.json` requis et le dossier `wwwroot`.
 
-1. Ouvrir un **administrateur** interface de commande.
+1. Ouvrez une invite de commandes **administrateur**.
 
 1. Exécutez les commandes suivantes :
 
    ```console
-   sc create MyService binPath="c:\svc\aspnetcoreservice.exe"
+   sc create MyService binPath= "c:\svc\aspnetcoreservice.exe"
    sc start MyService
    ```
 
-1. Dans un navigateur, accédez à `http://localhost:5000` pour vérifier que le service est en cours d’exécution.
+  *L’espace entre le signe égal et le début de la chaîne de chemin est requis.*
 
-1. Pour arrêter le service, utilisez la commande :
+1. Dans un navigateur, accédez à `http://localhost:5000` et vérifiez que le service est en cours d’exécution. L’application redirige vers le point de terminaison sécurisé `https://localhost:5001`.
+
+1. Pour arrêter le service, utilisez la commande suivante :
 
    ```console
    sc stop MyService
    ```
 
-Si l’application ne démarre pas comme prévu lors de l’exécution dans un service, un moyen rapide pour rendre les messages d’erreur accessible est pour ajouter un fournisseur de journalisation, tels que les [fournisseur du journal des événements Windows](https://docs.microsoft.com/aspnet/core/fundamentals/logging/index#eventlog). Une autre option consiste à vérifier le journal des événements à l’aide de l’Observateur d’événements sur le système. Par exemple, voici une exception non prise en charge pour une erreur de fichier introuvable dans le journal des événements Application :
+Si l’application ne démarre pas comme prévu, une façon rapide de rendre les messages d’erreur accessibles consiste à ajouter un fournisseur de journalisation, tel que le [fournisseur EventLog Windows](https://docs.microsoft.com/aspnet/core/fundamentals/logging/index#eventlog). Une autre option consiste à vérifier le Journal des événements de l’application à l’aide de l’observateur d’événements sur le système. Par exemple, voici une exception non prise en charge pour une erreur FileNotFound dans le Journal des événements de l’application :
 
 ```console
 Application: AspNetCoreService.exe

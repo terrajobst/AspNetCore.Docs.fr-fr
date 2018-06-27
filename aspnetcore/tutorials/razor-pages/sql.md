@@ -10,11 +10,12 @@ ms.prod: aspnet-core
 ms.technology: aspnet
 ms.topic: get-started-article
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: d1a345fe8c61f6e07ebbe53de6d53e18d6f4c851
-ms.sourcegitcommit: c79fd3592f444d58e17518914f8873d0a11219c0
+ms.openlocfilehash: 92a5965e7a535ca729c0bec13911b6bf051a7b19
+ms.sourcegitcommit: 545ff5a632e2281035c1becec1f99137298e4f5c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34582867"
 ---
 # <a name="work-with-sql-server-localdb-and-aspnet-core"></a>Utilisation de SQL Server LocalDB et d’ASP.NET Core
 
@@ -22,9 +23,22 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://tw
 
 L’objet `MovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
+::: moniker range="= aspnetcore-2.0"
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=7-8)]
 
-Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NET Core lit `ConnectionString`. Pour un développement local, il obtient la chaîne de connexion à partir du fichier *appsettings.json* :
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
+
+Pour plus d’informations sur les méthodes utilisées dans `ConfigureServices`, consultez :
+
+* [Prise en charge du règlement général sur la protection des données (RGPD) de l’Union Européenne dans ASP.NET Core](xref:security/gdpr) pour `CookiePolicyOptions`.
+* [SetCompatibilityVersion](xref:fundamentals/startup#setcompatibilityversion-for-aspnet-core-mvc)
+
+::: moniker-end
+
+Le système de [configuration](xref:fundamentals/configuration/index) d’ASP.NET Core lit `ConnectionString`. Pour un développement local, il obtient la chaîne de connexion à partir du fichier *appsettings.json*. La valeur du nom de la base de données (`Database={Database name}`) est différent pour votre code généré. La valeur du nom est arbitraire.
 
 [!code-json[](razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=2&range=8-10)]
 
@@ -55,7 +69,17 @@ Notez l’icône de clé en regard de `ID`. Par défaut, EF crée une propriét�
 
 Créez une classe nommée `SeedData` dans l’espace de noms *Modèles*. Remplacez le code généré par ce qui suit :
 
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/SeedData.cs?name=snippet_1)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/SeedData.cs?name=snippet_1)]
+
+::: moniker-end
 
 Si la base de données contient des films, l’initialiseur de valeur initiale retourne une valeur et aucun film n’est ajouté.
 
@@ -68,11 +92,32 @@ if (context.Movie.Any())
 <a name="si"></a>
 ### <a name="add-the-seed-initializer"></a>Ajouter l’initialiseur de valeur initiale
 
-Ajoutez l’initialiseur de valeur initiale à la fin de la méthode `Main` dans le fichier *Program.cs* :
+Dans *Program.cs*, modifiez la méthode `Main` pour effectuer les opérations suivantes :
+
+* Obtenir une instance de contexte de base de données à partir du conteneur d’injection de dépendances.
+* Appeler la méthode seed et la passer au contexte.
+* Supprimer le contexte une fois la méthode seed terminée.
+
+Le code suivant montre le fichier *Program.cs* mis à jour.
+
+::: moniker range="= aspnetcore-2.0"
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Program.cs)]
 
-Tester l’application
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Program.cs)]
+
+::: moniker-end
+
+Une application de production n’appelle pas `Database.Migrate`. Il est ajouté au code précédent afin d’éviter l’exception suivante quand `Update-Database` n’a pas été exécutée :
+
+SqlException: impossible d’ouvrir la base de données 'RazorPagesMovieContext-21' demandée par la connexion. La connexion a échoué.
+Échec de la connexion de l’utilisateur 'nom utilisateur'.
+
+### <a name="test-the-app"></a>Tester l’application
 
 * Supprimez tous les enregistrements de la base de données. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 * Forcez l’application à s’initialiser (appelez les méthodes de la classe `Startup`) pour que la méthode seed s’exécute. Pour forcer l’initialisation, IIS Express doit être arrêté et redémarré. Pour cela, adoptez l’une des approches suivantes :
