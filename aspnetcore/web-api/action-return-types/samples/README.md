@@ -1,0 +1,11 @@
+# <a name="aspnet-core-web-api-sample"></a><span data-ttu-id="252e0-101">Exemple d’API web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="252e0-101">ASP.NET Core Web API sample</span></span>
+
+<span data-ttu-id="252e0-102">Le tableau suivant fournit une description des différents dossiers constituant l’exemple de solution :</span><span class="sxs-lookup"><span data-stu-id="252e0-102">The following table provides a description of the various folders making up the sample solution:</span></span>
+
+
+|              <span data-ttu-id="252e0-103">Dossier</span><span class="sxs-lookup"><span data-stu-id="252e0-103">Folder</span></span>              |                                        <span data-ttu-id="252e0-104">Objectif</span><span class="sxs-lookup"><span data-stu-id="252e0-104">Purpose</span></span>                                        |
+|----------------------------------|---------------------------------------------------------------------------------------|
+|   <span data-ttu-id="252e0-105"><em>WebApiSample.Api.21</em></span><span class="sxs-lookup"><span data-stu-id="252e0-105"><em>WebApiSample.Api.21</em></span></span>   |                         <span data-ttu-id="252e0-106">Projet d’API web ASP.NET Core 2.1</span><span class="sxs-lookup"><span data-stu-id="252e0-106">An ASP.NET Core 2.1 Web API project.</span></span>                          |
+| <span data-ttu-id="252e0-107"><em>WebApiSample.Api.Pre21</em></span><span class="sxs-lookup"><span data-stu-id="252e0-107"><em>WebApiSample.Api.Pre21</em></span></span>  |                         <span data-ttu-id="252e0-108">Projet d’API web ASP.NET Core 2.0</span><span class="sxs-lookup"><span data-stu-id="252e0-108">An ASP.NET Core 2.0 Web API project.</span></span>                          |
+| <span data-ttu-id="252e0-109"><em>WebApiSample.DataAccess</em></span><span class="sxs-lookup"><span data-stu-id="252e0-109"><em>WebApiSample.DataAccess</em></span></span> | <span data-ttu-id="252e0-110">Projet de couche d’accès aux données .NET Standard 2.0 qui est utilisé par les deux projets d’API web.</span><span class="sxs-lookup"><span data-stu-id="252e0-110">A .NET Standard 2.0 data access layer project which is used by both Web API projects.</span></span> |
+
