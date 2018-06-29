@@ -2,18 +2,15 @@
 title: Mise en cache de la réponse dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment utiliser la mise en cache de réponse pour diminuer la bande passante et améliorer les performances des applications ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.date: 09/20/2017
-ms.prod: asp.net-core
-ms.topic: article
 uid: performance/caching/response
-ms.openlocfilehash: e5a3877c68f8475e7dd49d44f4a92cf7b09ac7f5
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: c53ae3f6ab8d26588533772dd4fdacb36ec12059
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734508"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077762"
 ---
 # <a name="response-caching-in-aspnet-core"></a>Mise en cache de la réponse dans ASP.NET Core
 
@@ -98,9 +95,9 @@ L’intergiciel (middleware) réponse mise en cache doit être activé pour déf
 
 | Demande                          | Résultat                   |
 | -------------------------------- | ------------------------ |
-| `http://example.com?key1=value1` | retourné à partir du serveur     |
-| `http://example.com?key1=value1` | retourné à partir de l’intergiciel (middleware) |
-| `http://example.com?key1=value2` | retourné à partir du serveur     |
+| `http://example.com?key1=value1` | Retourné à partir du serveur     |
+| `http://example.com?key1=value1` | Retourné à partir de l’intergiciel (middleware) |
+| `http://example.com?key1=value2` | Retourné à partir du serveur     |
 
 La première requête est retournée par le serveur et mis en cache dans l’intergiciel (middleware). La deuxième demande est retournée par l’intergiciel (middleware), car la chaîne de requête correspond à la demande précédente. La troisième requête n’est pas dans le cache de l’intergiciel (middleware), car la valeur de chaîne de requête ne correspond pas à une demande précédente. 
 

@@ -2,20 +2,16 @@
 title: Travailler avec un cache distribué dans ASP.NET Core
 author: ardalis
 description: Découvrez comment utiliser la mise en cache distribué afin d’améliorer les performances et l'évolutivité des applications ASP.NET Core, en particulier lorsqu'elles sont hébergées dans un environnement cloud ou dans une batterie de serveurs.
-manager: wpickett
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/14/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: article
 uid: performance/caching/distributed
-ms.openlocfilehash: 6c595572641604d241c0c8f702d4f392afe34f71
-ms.sourcegitcommit: 726ffab258070b4fe6cf950bf030ce10c0c07bb4
+ms.openlocfilehash: 5ddc3a6927652f773ab38f93db1e222c5a1900b3
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34734456"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077697"
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Travailler avec un cache distribué dans ASP.NET Core
 

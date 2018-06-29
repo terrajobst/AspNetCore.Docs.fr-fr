@@ -2,16 +2,16 @@
 title: Personnalisation de modèle d’identité
 author: ajcvickers
 description: Cet article décrit comment personnaliser le modèle de données Entity Framework Core sous-jacent pour ASP.NET Core Identity.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: avickers
 ms.date: 04/12/2018
-ms.prod: asp.net-core
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: b44b4fd0f24d245b969588a7226ea6aacbe2a722
-ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
+ms.openlocfilehash: 41ea125414c5997ee36f4e312beba4ff318a4a8d
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036892"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077675"
 ---
 # <a name="identity-model-customization"></a>Personnalisation de modèle d’identité
 
