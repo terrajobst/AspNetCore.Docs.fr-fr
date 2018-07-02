@@ -5,14 +5,18 @@ description: Ce didacticiel montre comment gérer les conflits quand plusieurs u
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 77e5fba176835f7da9be6c7057084ed017d34bec
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9bf65621213c9657232dfff1701c9937d5105a9c
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278396"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093021"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC avec EF Core - Accès concurrentiel - 8 sur 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -207,7 +211,7 @@ Dans *DepartmentsController.cs*, remplacez la méthode HttpGet `Delete` par le c
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_DeleteGet&highlight=1,10,14-17,21-29)]
 
-La méthode accepte un paramètre facultatif qui indique si la page est réaffichée après une erreur d’accès concurrentiel. Si cet indicateur a la valeur true et que le département spécifié n’existe plus, c’est qu’il a été supprimé par un autre utilisateur. Dans ce cas, le code redirige vers la page Index.  Si cet indicateur a la valeur true et que le département existe, c’est qu’il a été modifié par un autre utilisateur. Dans ce cas, le code envoie un message d’erreur à la vue en utilisant `ViewData`.  
+La méthode accepte un paramètre facultatif qui indique si la page est réaffichée après une erreur d’accès concurrentiel. Si cet indicateur a la valeur true et que le département spécifié n’existe plus, c’est qu’il a été supprimé par un autre utilisateur. Dans ce cas, le code redirige vers la page Index.  Si cet indicateur a la valeur true et que le département existe, c’est qu’il a été modifié par un autre utilisateur. Dans ce cas, le code envoie un message d’erreur à la vue en utilisant `ViewData`.
 
 Remplacez le code de la méthode HttpPost `Delete` (nommée `DeleteConfirmed`) par le code suivant :
 
@@ -276,6 +280,8 @@ Remplacez le code de *Views/Departments/Create.cshtml* pour ajouter une option d
 
 Ceci termine l’introduction à la gestion des conflits d’accès concurrentiel. Pour plus d’informations sur la gestion de l’accès concurrentiel dans EF Core, consultez [Conflits d’accès concurrentiel](https://docs.microsoft.com/ef/core/saving/concurrency). Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
 
+::: moniker-end
+
 > [!div class="step-by-step"]
 > [Précédent](update-related-data.md)
-> [Suivant](inheritance.md)  
+> [Suivant](inheritance.md)

@@ -5,14 +5,18 @@ description: Dans ce didacticiel, vous allez mettre à jour des données associ�
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 53f1607d96a9a1db98f4e80e9582c124cedf6c8d
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ef8cb3916e5d1542e4d36cad694351462b94ed32
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272648"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093057"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC avec EF Core - Mettre à jour les données associées - 7 sur 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -134,7 +138,7 @@ Le code effectue les actions suivantes :
         "",
         i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
     ```
-    
+
 -   Si l’emplacement du bureau est vide, il définit la propriété Instructor.OfficeAssignment sur null, de façon que la ligne correspondante dans la table OfficeAssignment soit supprimée.
 
     <!-- Snippets don't play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
@@ -213,7 +217,7 @@ Si la case pour un cours a été cochée mais que le cours est dans la propriét
 Dans *Views/Instructors/Edit.cshtml*, ajoutez un champ **Courses** avec un tableau de cases à cocher, en ajoutant le code suivant immédiatement après le code les éléments `div` pour le champ **Office** et avant l’élément `div` pour le bouton **Save**.
 
 <a id="notepad"></a>
-> [!NOTE] 
+> [!NOTE]
 > Quand vous collez le code dans Visual Studio, les sauts de ligne seront changés d’une façon qui va déstructurer le code.  Appuyez une fois sur Ctrl+Z pour annuler la mise en forme automatique.  Ceci permet de corriger les sauts de ligne de façon à ce qu’ils apparaissent comme ce que vous voyez ici. L’indentation ne doit pas nécessairement être parfaite, mais les lignes `@</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune tenir sur une seule ligne comme dans l’illustration, sinon vous recevrez une erreur d’exécution. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur la touche Tab pour aligner le nouveau code avec le code existant. Vous pouvez vérifier l’état de ce problème [ici](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
@@ -228,7 +232,7 @@ Exécutez l’application, sélectionnez l’onglet **Instructors**, puis clique
 
 Changez quelques affectations de cours et cliquez sur Save. Les modifications que vous apportez sont reflétées dans la page Index.
 
-> [!NOTE] 
+> [!NOTE]
 > L’approche adoptée ici pour modifier les données des cours des formateurs fonctionne bien le nombre de cours est limité. Pour les collections qui sont beaucoup plus volumineuses, une autre interface utilisateur et une autre méthode de mise à jour seraient nécessaires.
 
 ## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
@@ -282,7 +286,7 @@ Dans *Views/Instructor/Create.cshtml*, ajoutez une zone de texte pour l’emplac
 
 [!code-html[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
-Testez en exécutant l’application et en créant un formateur. 
+Testez en exécutant l’application et en créant un formateur.
 
 ## <a name="handling-transactions"></a>Gestion des transactions
 
@@ -292,6 +296,8 @@ Comme expliqué dans le [didacticiel CRUD](crud.md), Entity Framework implément
 
 Vous avez maintenant terminé l’introduction à l’utilisation des données associées. Dans le didacticiel suivant, vous verrez comment gérer les conflits d’accès concurrentiel.
 
+::: moniker-end
+
 > [!div class="step-by-step"]
 > [Précédent](read-related-data.md)
-> [Suivant](concurrency.md)  
+> [Suivant](concurrency.md)

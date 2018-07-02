@@ -5,14 +5,18 @@ description: Ce didacticiel vous indiquera comment implémenter l’héritage da
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 818af711c23d37810b29eda8915b3c195a3e48f8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: a71954297f44f936893a7f1e9d3b0685f81378b9
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272852"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092995"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC avec EF Core - Héritage - 9 sur 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -50,7 +54,7 @@ Les modèles d’héritage TPC et TPH fournissent généralement de meilleures p
 
 Ce didacticiel montre comment implémenter l’héritage TPH. TPH est le seul modèle d’héritage pris en charge par Entity Framework Core.  Vous allez créer une classe `Person`, modifier les classes `Instructor` et `Student` à dériver de `Person`, ajouter la nouvelle classe à `DbContext` et créer une migration.
 
-> [!TIP] 
+> [!TIP]
 > Pensez à enregistrer une copie du projet avant d’apporter les modifications suivantes.  Ensuite, si vous rencontrez des problèmes et devez recommencer, il sera plus facile de démarrer à partir du projet enregistré que d’annuler les étapes effectuées pour ce didacticiel ou de retourner au début de la série entière.
 
 ## <a name="create-the-person-class"></a>Créer la classe Person
@@ -121,7 +125,7 @@ dotnet ef database update
 
 (Dans un système de production, vous apporteriez les modifications correspondantes à la méthode `Down` au cas où vous auriez à l’utiliser pour revenir à la version précédente de la base de données. Pour ce didacticiel, vous n’utiliserez pas la méthode `Down`.)
 
-> [!NOTE] 
+> [!NOTE]
 > Vous pouvez obtenir d’autres erreurs en apportant des modifications au schéma dans une base de données qui comporte déjà des données. Si vous obtenez des erreurs de migration que vous ne pouvez pas résoudre, vous pouvez changer le nom de la base de données dans la chaîne de connexion ou supprimer la base de données. Avec une nouvelle base de données, il n’y a pas de données à migrer et la commande de mise à jour de base de données a plus de chances de s’exécuter sans erreur. Pour supprimer la base de données, utilisez SSOX ou exécutez la commande CLI `database drop`.
 
 ## <a name="test-with-inheritance-implemented"></a>Tester avec l’héritage implémenté
@@ -140,6 +144,8 @@ Cliquez avec le bouton droit sur la table Person, puis cliquez sur **Afficher le
 
 Vous avez implémenté l’héritage TPH (table par hiérarchie) pour les classes `Person`, `Student` et `Instructor`. Pour plus d’informations sur l’héritage dans Entity Framework Core, consultez [Héritage](https://docs.microsoft.com/ef/core/modeling/inheritance). Dans le prochain didacticiel, vous allez apprendre à gérer divers scénarios Entity Framework relativement avancés.
 
+::: moniker-end
+
 > [!div class="step-by-step"]
 > [Précédent](concurrency.md)
-> [Suivant](advanced.md)  
+> [Suivant](advanced.md)

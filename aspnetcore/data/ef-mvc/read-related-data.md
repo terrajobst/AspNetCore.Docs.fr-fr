@@ -5,14 +5,18 @@ description: Dans ce didacticiel, vous allez lire et afficher les données assoc
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 8c634bb1ae715776e18b847574ce03791f2ede03
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d5c9b665a80003ef5029754d7ad1780b3254e97e
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277210"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092982"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC avec EF Core - Lire les données associées - 6 sur 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -238,6 +242,8 @@ Exécutez l’application, accédez à la page d’index des formateurs et vous 
 
 Vous avez maintenant utilisé le chargement hâtif avec une seule requête et avec plusieurs requêtes pour lire les données associées dans les propriétés de navigation. Dans le didacticiel suivant, vous apprendrez à mettre à jour les données associées.
 
+::: moniker-end
+
 >[!div class="step-by-step"]
 >[Précédent](complex-data-model.md)
->[Suivant](update-related-data.md)  
+>[Suivant](update-related-data.md)

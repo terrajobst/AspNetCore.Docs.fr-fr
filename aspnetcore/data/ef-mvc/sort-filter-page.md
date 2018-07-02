@@ -5,14 +5,18 @@ description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 34097eacad16c0ffb989efb3b6a8656be4a076cd
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 1f80faf0e36332c28e8337ddc331cc8b4c4970d7
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273648"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093086"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a>ASP.NET Core MVC avec EF Core - Tri, filtre, changement de page - 3 sur 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -228,7 +232,7 @@ Remplacez la méthode `About` par le code suivant :
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
 L’instruction LINQ regroupe les entités Student par date d’inscription, calcule le nombre d’entités dans chaque groupe et stocke les résultats dans une collection d’objets de modèle de vue `EnrollmentDateGroup`.
-> [!NOTE] 
+> [!NOTE]
 > Dans la version 1.0 d’Entity Framework Core, le jeu de résultats entier est renvoyé au client et le regroupement est effectué sur le client. Dans certains scénarios, cela peut générer des problèmes de performances. Veillez à tester les performances avec des volumes de données de production et, si nécessaire, utilisez des requêtes SQL brutes pour effectuer le regroupement sur le serveur. Pour obtenir des informations sur la façon d’utiliser des requêtes SQL brutes, consultez [le dernier didacticiel de cette série](advanced.md).
 
 ### <a name="modify-the-about-view"></a>Modifier la vue About
@@ -245,6 +249,8 @@ Exécutez l’application et accédez à la page About. Le nombre d’étudiants
 
 Dans ce didacticiel, vous avez vu comment effectuer un tri, un filtrage, un changement de page et un regroupement. Dans le prochain didacticiel, vous allez apprendre à gérer les modifications du modèle de données à l’aide de migrations.
 
+::: moniker-end
+
 > [!div class="step-by-step"]
 > [Précédent](crud.md)
-> [Suivant](migrations.md)  
+> [Suivant](migrations.md)

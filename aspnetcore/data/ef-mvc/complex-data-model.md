@@ -5,14 +5,18 @@ description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vo
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: d89ca44917fac57febc2f8b0d632ae004ca7216c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 1d3c69c8c658b5ca2f0253b790b0dc75d44d3064
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277385"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093112"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC avec EF Core - Modèle de données - 5 sur 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -351,7 +355,7 @@ Chaque ligne de relation comporte un 1 à une extrémité et un astérisque (*) 
 
 Si la table Enrollment n’incluait pas d’informations de notes, elle aurait uniquement besoin de contenir les deux clés étrangères CourseID et StudentID. Dans ce cas, ce serait une table de jointure plusieurs-à-plusieurs sans charge utile (ou une table de jointure pure) dans la base de données. Les entités Instructor and Course ont ce type de relation plusieurs-à-plusieurs, et l’étape suivante consiste à créer une classe d’entité qui fonctionnera comme une table de jointure sans charge utile.
 
-(EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais EF Core ne le fait pas. Pour plus d’informations, consultez la [discussion dans le dépôt GitHub EF Core](https://github.com/aspnet/EntityFramework/issues/1368).) 
+(EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais EF Core ne le fait pas. Pour plus d’informations, consultez la [discussion dans le dépôt GitHub EF Core](https://github.com/aspnet/EntityFramework/issues/1368).)
 
 ## <a name="the-courseassignment-entity"></a>Entité CourseAssignment
 
@@ -437,7 +441,7 @@ Parfois, lorsque vous exécutez des migrations avec des données existantes, vou
 
 Pour faire en sorte que cette migration fonctionne avec les données existantes, vous devez modifier le code pour attribuer à la nouvelle colonne une valeur par défaut et créer un département stub nommé « Temp » qui agira en tant que département par défaut. Par conséquent, les lignes Course existantes seront toutes associées au département « Temp » après l’exécution de la méthode `Up`.
 
-* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs*. 
+* Ouvrez le fichier *{timestamp}_ComplexDataModel.cs*.
 
 * Commentez la ligne de code qui ajoute la colonne DepartmentID à la table Course.
 
@@ -491,7 +495,8 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 ## <a name="summary"></a>Récapitulatif
 
 Vous avez maintenant un modèle de données plus complexe et une base de données correspondante. Dans le didacticiel suivant, vous en apprendrez davantage sur la façon d’accéder aux données associées.
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Précédent](migrations.md)
-> [Suivant](read-related-data.md)  
+> [Suivant](read-related-data.md)

@@ -5,14 +5,18 @@ description: Dans ce didacticiel, vous utilisez la fonctionnalité Migrations d�
 ms.author: tdykstra
 ms.date: 03/15/2018
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: d8b92aeedb252b93e1dc1aca424d26a377305da2
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f710b33ac1a6017b0e3d7e8c3e528675a41424bb
+ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273583"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37092940"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC avec EF Core - Migrations - 4 sur 10
+
+[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
+
+::: moniker range="= aspnetcore-2.0"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -34,7 +38,7 @@ Les outils EF de l’interface de ligne de commande (CLI) sont fournis dans [Mic
 
 [!code-xml[](intro/samples/cu/ContosoUniversity.csproj?range=12-15&highlight=2)]
   
-(Les numéros de version de cet exemple étaient les plus récents lors de la rédaction de ce didacticiel.) 
+(Les numéros de version de cet exemple étaient les plus récents lors de la rédaction de ce didacticiel.)
 
 ## <a name="change-the-connection-string"></a>Changer la chaîne de connexion
 
@@ -154,14 +158,15 @@ Les commandes EF pour la console du Gestionnaire de package se trouvent dans le 
 
 **Important :** Il ne s’agit pas du même package que celui que vous installez pour l’interface CLI en modifiant le fichier *.csproj*. Le nom de celui-ci se termine par `Tools`, contrairement au nom du package CLI qui se termine par `Tools.DotNet`.
 
-Pour plus d’informations sur les commandes CLI, consultez [Interface CLI .NET Core](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet). 
+Pour plus d’informations sur les commandes CLI, consultez [Interface CLI .NET Core](https://docs.microsoft.com/ef/core/miscellaneous/cli/dotnet).
 
 Pour plus d’informations sur les commandes de la console du Gestionnaire de package, consultez [Console du Gestionnaire de package (Visual Studio)](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell).
 
 ## <a name="summary"></a>Récapitulatif
 
 Dans ce didacticiel, vous avez vu comment créer et appliquer votre première migration. Dans le didacticiel suivant, vous allez aborder des sujets plus avancés en développant le modèle de données. Au cour de ce processus, vous allez créer et appliquer d’autres migrations.
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Précédent](sort-filter-page.md)
-> [Suivant](complex-data-model.md)  
+> [Suivant](complex-data-model.md)
