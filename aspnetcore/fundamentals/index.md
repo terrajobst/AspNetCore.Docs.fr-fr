@@ -2,20 +2,16 @@
 title: Notions de base d’ASP.NET Core
 author: rick-anderson
 description: Découvrez les concepts de base permettant de créer des applications ASP.NET Core.
-manager: wpickett
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 09/30/2017
-ms.prod: asp.net-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: fundamentals/index
-ms.openlocfilehash: 97c0b289b259332d57f8175e05020fe03d505723
-ms.sourcegitcommit: a66f38071e13685bbe59d48d22aa141ac702b432
+ms.openlocfilehash: b51d7b62525944d9924ecb4ce5964312f30a7835
+ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34233308"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36278867"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -33,7 +29,7 @@ La méthode `Main` appelle `WebHost.CreateDefaultBuilder`, qui suit le modèle d
 
 [!code-csharp[](../getting-started/sample/aspnetcoreapp/Program.cs)]
 
-La méthode `Main` utilise `WebHostBuilder`, qui suit le modèle de conception builder pour créer un hôte d’application web. Le builder a des méthodes qui définissent le serveur web (par exemple `UseKestrel`) et la classe de démarrage (`UseStartup`). Dans l’exemple précédent, le serveur web [Kestrel](xref:fundamentals/servers/kestrel) est utilisé. D’autres serveurs web, tels que [WebListener](xref:fundamentals/servers/weblistener), peuvent être utilisés via l’appel de la méthode d’extension appropriée. `UseStartup` est expliqué de manière plus détaillée dans la section suivante.
+La méthode `Main` utilise `WebHostBuilder`, qui suit le modèle du générateur pour créer un hôte d’application web. Le builder a des méthodes qui définissent le serveur web (par exemple `UseKestrel`) et la classe de démarrage (`UseStartup`). Dans l’exemple précédent, le serveur web [Kestrel](xref:fundamentals/servers/kestrel) est utilisé. D’autres serveurs web, tels que [WebListener](xref:fundamentals/servers/weblistener), peuvent être utilisés via l’appel de la méthode d’extension appropriée. `UseStartup` est expliqué de manière plus détaillée dans la section suivante.
 
 `WebHostBuilder` fournit de nombreuses méthodes facultatives, notamment `UseIISIntegration` pour l’hébergement dans IIS et IIS Express et `UseContentRoot` pour la spécification du répertoire de contenu racine. Les méthodes `Build` et `Run` génèrent l’objet `IWebHost`, qui héberge l’application et démarre l’écoute des requêtes HTTP.
 
@@ -78,7 +74,7 @@ Pour plus d’informations, consultez [Démarrage de l’application](xref:funda
 
 ## <a name="content-root"></a>Racine de contenu
 
-La racine de contenu est le chemin de base de tout contenu utilisé par l’application, par exemple les vues, les [pages Razor](xref:mvc/razor-pages/index) et les composants statiques. Par défaut, la racine de contenu est identique au chemin de base de l’application pour l’exécutable qui héberge l’application.
+La racine de contenu est le chemin de base de tout contenu utilisé par l’application, par exemple les vues, les [pages Razor](xref:razor-pages/index) et les composants statiques. Par défaut, la racine de contenu est identique au chemin de base de l’application pour l’exécutable qui héberge l’application.
 
 ## <a name="web-root"></a>Racine web
 
@@ -106,9 +102,13 @@ L’intergiciel (middleware) [OWIN](http://owin.org) est disponible pour les app
 
 Pour plus d’informations, consultez [Intergiciel (middleware)](xref:fundamentals/middleware/index) et [OWIN (Open Web Interface pour .NET)](xref:fundamentals/owin).
 
+::: moniker range=">= aspnetcore-2.1"
+
 ## <a name="initiate-http-requests"></a>Lancer des requêtes HTTP
 
 Pour plus d’informations sur l’utilisation de `IHttpClientFactory` pour accéder à des instances `HttpClient` afin d’effectuer des requêtes HTTP, consultez [Lancement de requêtes HTTP](xref:fundamentals/http-requests).
+
+::: moniker-end
 
 ## <a name="environments"></a>Environnements
 
@@ -126,7 +126,7 @@ Pour plus d’informations, consultez [Configuration](xref:fundamentals/configur
 
 ASP.NET Core prend en charge une API de journalisation qui fonctionne avec divers fournisseurs de journalisation. Les fournisseurs intégrés prennent en charge l’envoi de journaux à une ou plusieurs destinations. Des frameworks de journalisation tiers peuvent être utilisés.
 
-[Journalisation](xref:fundamentals/logging/index)
+Pour plus d’informations, consultez [Journalisation](xref:fundamentals/logging/index).
 
 ## <a name="error-handling"></a>Gestion des erreurs
 
@@ -158,9 +158,9 @@ Les applications ASP.NET Core configurent et lancent un *hôte*, qui est respons
 
 Pour plus d’informations, consultez [Héberger dans ASP.NET Core](xref:fundamentals/host/index).
 
-## <a name="session-and-application-state"></a>État de session et d’application
+## <a name="session-and-app-state"></a>État de session et d’application
 
-L’état de session est une fonctionnalité ASP.NET Core que vous pouvez utiliser pour enregistrer et stocker des données utilisateur pendant que l’utilisateur navigue dans votre application web.
+ASP.NET Core offre plusieurs approches pour conserver l’état de session et d’application pendant que l’utilisateur parcourt une application web.
 
 Pour plus d’informations, consultez [État de session et d’application](xref:fundamentals/app-state).
 
