@@ -1,6 +1,6 @@
 ---
 uid: mvc/overview/views/dynamic-v-strongly-typed-views
-title: Dynamique v. Que les vues fortement typées | Documents Microsoft
+title: Vues fortement typées. Fortement typées vues | Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,27 +9,26 @@ ms.date: 01/27/2011
 ms.topic: article
 ms.assetid: 0cbd88da-0da6-4605-b222-2835c6478304
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/views/dynamic-v-strongly-typed-views
 msc.type: authoredcontent
-ms.openlocfilehash: 8a96d43e04a0a50d5176c10c26aa49918a0e56ef
-ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.openlocfilehash: 7622ca8248374da27f4190075df5a6bfc32bb2e6
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "26504088"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37389083"
 ---
-<a name="dynamic-v-strongly-typed-views"></a>Dynamique v. Vues fortement typées
+<a name="dynamic-v-strongly-typed-views"></a>Vues fortement typées. Vues fortement typées
 ====================
 par [Rick Anderson](https://github.com/Rick-Anderson)
 
-Il existe trois façons de passer des informations à partir d’un contrôleur à une vue dans ASP.NET MVC 3 :
+Il existe trois façons pour passer des informations à partir d’un contrôleur à une vue dans ASP.NET MVC 3 :
 
 1. En tant qu’objet modèle fortement typé.
-2. En tant que type dynamique (à l’aide de @model dynamique)
-3. À l’aide de l’élément ViewBag
+2. Comme un type dynamique (à l’aide de @model dynamique)
+3. À l’aide de ViewBag
 
-J’ai écrit une application MVC 3 haut Blog simple pour comparer des vues dynamiques et fortement typées. Le contrôleur démarre avec une simple liste de blogs :
+J’ai écrit une application MVC 3 haut Blog simple de comparer ou différencier des vues dynamiques et fortement typées. Le contrôleur commence par une liste de blogs simple :
 
 [!code-csharp[Main](dynamic-v-strongly-typed-views/samples/sample1.cs)]
 
@@ -37,28 +36,28 @@ Cliquez avec le bouton droit dans la méthode IndexNotStonglyTyped() et ajouter 
 
 [![8475.NotStronglyTypedView [1]](dynamic-v-strongly-typed-views/_static/image2.png)](dynamic-v-strongly-typed-views/_static/image1.png)
 
-Assurez-vous que le **créer une vue fortement typée** case n’est pas activée. La vue résultante ne contient pas une grande partie :
+Assurez-vous que le **créer une vue fortement typée** case n’est pas cochée. La vue résultante ne contient pas une grande partie :
 
 [!code-cshtml[Main](dynamic-v-strongly-typed-views/samples/sample2.cshtml)]
 
 [!code-cshtml[Main](dynamic-v-strongly-typed-views/samples/sample3.cshtml)]
 
-Étant donné que nous utilisons un dynamique et non une vue fortement typée, intellisense ne nous aider à. Le code complet est indiqué ci-dessous :
+Étant donné que nous utilisons une dynamique et non une vue fortement typée, intellisense ne nous aider à. Le code complet est indiqué ci-dessous :
 
 [!code-cshtml[Main](dynamic-v-strongly-typed-views/samples/sample4.cshtml)]
 
 [![6646.NotStronglyTypedView_5F00_IE [1]](dynamic-v-strongly-typed-views/_static/image4.png)](dynamic-v-strongly-typed-views/_static/image3.png)
 
-Maintenant, nous allons ajouter une vue fortement typée. Ajoutez le code suivant pour le contrôleur :
+Nous allons maintenant ajouter une vue fortement typée. Ajoutez le code suivant pour le contrôleur :
 
 [!code-csharp[Main](dynamic-v-strongly-typed-views/samples/sample5.cs)]
 
 
-Notez qu’il est exactement le View(topBlogs) retour même ; appeler en tant que la vue non fortement typée. Cliquez avec le bouton droit à l’intérieur de *StonglyTypedIndex()* et sélectionnez **ajouter une vue**. Cette fois-ci, sélectionnez le **Blog** classe de modèle et sélectionnez **liste** que le modèle de vue de structure.
+Notez qu’il est exactement le View(topBlogs) retour même ; appeler en tant que la vue non fortement typée. Cliquez avec le bouton droit à l’intérieur de *StonglyTypedIndex()* et sélectionnez **ajouter une vue**. Cette fois-ci, sélectionnez le **Blog** classe de modèle et sélectionnez **liste** en tant que le modèle de structure.
 
 [![5658.StrongView [1]](dynamic-v-strongly-typed-views/_static/image6.png)](dynamic-v-strongly-typed-views/_static/image5.png)
 
-Dans le modèle d’affichage, nous obtenons prise en charge intellisense.
+Dans le nouveau modèle de vue, nous obtenons prise en charge intellisense.
 
 [![7002.intellesince [1]](dynamic-v-strongly-typed-views/_static/image8.png)](dynamic-v-strongly-typed-views/_static/image7.png)
 
