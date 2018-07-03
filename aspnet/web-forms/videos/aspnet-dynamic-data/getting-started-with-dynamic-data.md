@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/getting-started-with-dynamic-data
-title: Mise en route avec Dynamic Data | Documents Microsoft
+title: Mise en route avec Dynamic Data | Microsoft Docs
 author: JoeStagner
-description: Dans cette vidéo nous allons construire un ensemble de l’application ASP.NET Dynamic Data ASP.NET à l’aide de données Northwind à l’aide de code de données dynamiques génération, scaffoldi...
+description: Dans cette vidéo nous allons créer un ensemble de l’application ASP.NET avec ASP.NET Dynamic Data à l’aide de données Northwind à l’aide de code de données dynamiques génération, scaffoldi...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/23/2008
 ms.topic: article
 ms.assetid: 2011925a-789d-4160-af31-4667097727f1
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/getting-started-with-dynamic-data
 msc.type: video
-ms.openlocfilehash: 07ddc2435293873b9c5bef9ebc08da22e700660d
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: eca479a859813c01dfe854f729198ef84143b212
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30883565"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37376081"
 ---
-<a name="getting-started-with-dynamic-data"></a>Prise en main des données dynamiques
+<a name="getting-started-with-dynamic-data"></a>Mise en route avec Dynamic Data
 ====================
 par [Joe Stagner](https://github.com/JoeStagner)
 
-Dans cette vidéo nous allons construire un ensemble de l’application ASP.NET Dynamic Data ASP.NET à l’aide de données Northwind à l’aide dynamique des données génération de code, la structure et les modèles. L’application terminée est terminée avec des comportements AJAX et une couche de base de données avec des fonctionnalités complètes de CRUD.
+Dans cette vidéo nous allons créer un ensemble de l’application ASP.NET avec ASP.NET Dynamic Data à l’aide de données Northwind à l’aide de données dynamiques génération de code, la structure et des modèles. L’application terminée est terminée avec des comportements AJAX et une couche de base de données avec des fonctionnalités complètes de CRUD.
 
-[&#9654;Regardez la vidéo (minutes 23)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/getting-started-with-dynamic-data)
+[&#9654;Regardez la vidéo (23 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/getting-started-with-dynamic-data)
 
 > [!div class="step-by-step"]
 > [Précédent](how-do-i-use-a-dynamiccontrol-in-listview-and-detailsview-controls.md)

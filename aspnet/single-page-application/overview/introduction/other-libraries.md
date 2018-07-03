@@ -1,74 +1,73 @@
 ---
 uid: single-page-application/overview/introduction/other-libraries
-title: Savoir une bibliothèque de Knockout ? | Microsoft Docs
+title: Connaître les bibliothèques autres que Knockout ? | Microsoft Docs
 author: madskristensen
-description: Savoir une bibliothèque de Knockout ?
+description: Connaître les bibliothèques autres que Knockout ?
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/05/2013
 ms.topic: article
 ms.assetid: a8367c6d-ef94-4dff-a010-5eff9e6eea96
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /single-page-application/overview/introduction/other-libraries
 msc.type: authoredcontent
-ms.openlocfilehash: 6ac260e88fd156bad4b414e93325d5a04c490c88
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0424d209cbd24756d1a840788bb3dc5b48d905ff
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30872583"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37375238"
 ---
-<a name="know-a-library-other-than-knockout"></a>Savoir une bibliothèque de Knockout ?
+<a name="know-a-library-other-than-knockout"></a>Connaître les bibliothèques autres que Knockout ?
 ====================
 par [Mads Kristensen](https://github.com/madskristensen)
 
-Le [modèle d’Application de Page unique (SPA)](knockoutjs-template.md) est un excellent moyen pour commencer à écrire des applications à page unique. Le modèle utilise [KnockoutJS](http://knockoutjs.com/) pour lier des données d’application pour les éléments DOM.
+Le [modèle d’Application à Page unique (SPA)](knockoutjs-template.md) est un excellent moyen pour commencer à écrire des applications à page unique. Le modèle utilise [KnockoutJS](http://knockoutjs.com/) pour lier des données d’application aux éléments DOM.
 
-Mais Knockout n’est pas la bibliothèque JavaScript uniquement pour la création d’applications clientes riches. Autres bibliothèques de relever les défis similaires de différentes façons. Vous préférerez peut-être une une bibliothèque vers un autre, donc nous avons apporté plusieurs modèles créés par la Communauté disponibles en téléchargement. Chacun de ces modèles utilise une combinaison différente des bibliothèques JavaScript client.
+Mais, Knockout n’est pas la seule bibliothèque JavaScript pour créer des applications client riche. Autres bibliothèques de relever des défis similaires de différentes façons. Vous préférerez peut-être une une bibliothèque plutôt qu’un autre, donc nous avons apporté plusieurs modèles créés par la Communauté disponible au téléchargement. Chacun de ces modèles utilise une combinaison différente des bibliothèques JavaScript client.
 
 Pour installer un modèle créés par la Communauté, visitez l’un du modèle de pages répertoriées ci-dessous et cliquez sur le bouton Télécharger. Les modèles sont fournis en tant que fichiers VSIX.
 
 ## <a name="backbonejs"></a>BackboneJS
 
-[Modèle SPA backbone.js](../templates/backbonejs-template.md). Ce modèle fournit une structure initiale pour le développement d’un [Backbone.js](http://backbonejs.org/) application dans ASP.NET MVC. Prêtes à l’emploi, il fournit les fonctionnalités de connexion utilisateur de base, y compris la réinitialisation de mot de passe d’abonnement, connectez-vous, l’utilisateur et la confirmation de l’utilisateur avec les modèles de messagerie de base.
+[Modèle SPA backbone.js](../templates/backbonejs-template.md). Ce modèle fournit un squelette initial pour le développement d’un [Backbone.js](http://backbonejs.org/) application dans ASP.NET MVC. Prêt à l’emploi, il fournit les fonctionnalités de connexion utilisateur de base, y compris la réinitialisation de mot de passe d’inscription, la connexion, l’utilisateur et la confirmation de l’utilisateur avec des modèles de messagerie de base.
 
 ## <a name="breezejs"></a>BreezeJS
 
-[BreezeJS](http://www.breezejs.com/?utm_source=ms-spa) est une bibliothèque open source pour la gestion des données riches dans un client JavaScript. Est très simple gère l’interrogation, la mise en cache, le suivi des modifications, la validation et bien plus encore. Deux modèles de fonctionnalités est très simple :
+[BreezeJS](http://www.breezejs.com/?utm_source=ms-spa) est une bibliothèque open source pour la gestion des données riches dans un client JavaScript. Breeze gère l’interrogation, la mise en cache, le suivi des modifications, validation et bien plus encore. Deux modèles dotés d’un jeu d’enfant :
 
-- Le [est très simple/Knockout](../templates/breezeknockout-template.md) modèle étend le modèle de Knockout SPA, montrant comment facilement, vous pouvez générer une application de page unique avec un jeu d’enfant pour la gestion des données et KnockoutJS pour la liaison de données.
-- Le [est très simple/angulaire](../templates/breezeangular-template.md) modèle permet également d’étendre le modèle de Knockout SPA avec est très simple, mais à l’aide de la [AngularJS](http://angularjs.org) bibliothèque pour la liaison de données, l’injection de dépendances et la gestion de l’écran.
+- Le [Breeze/Knockout](../templates/breezeknockout-template.md) modèle étend le modèle SPA de Knockout, montrant comment facilement, vous pouvez créer une application à page unique avec Breeze pour la gestion des données et KnockoutJS pour la liaison de données.
+- Le [Breeze/Angular](../templates/breezeangular-template.md) modèle permet également d’étendre le modèle SPA de Knockout Breeze, mais en utilisant le [AngularJS](http://angularjs.org) bibliothèque pour la liaison de données, l’injection de dépendances et la gestion de l’écran.
 
-En outre, le [modèle d’à chaud linge SPA](../templates/hottowel-template.md) utilise BreezeJS.
+En outre, le [les modèle Hot Towel SPA](../templates/hottowel-template.md) utilise BreezeJS.
 
 ## <a name="emberjs"></a>EmberJS
 
-[Modèle de EmberJS SPA](../templates/emberjs-template.md). Ce modèle utilise [Ember](http://emberjs.com/), une bibliothèque MVC JavaScript puissante qui permet de résoudre un grand nombre de difficultés de création d’applications clientes riches.
+[Modèle de EmberJS SPA](../templates/emberjs-template.md). Ce modèle utilise [Ember](http://emberjs.com/), une bibliothèque JavaScript de MVC puissante qui permet de résoudre un large éventail de défis pour les applications clientes riches.
 
-Le modèle les SPA est une implémentation de nouveau du modèle Knockout SPA, à l’aide de la création de modèles EmberJS et guidons.
+Le modèle de Ember SPA est une nouvelle implémentation du modèle Knockout SPA, à l’aide de la création de modèles EmberJS et Handlebars.
 
-## <a name="hot-towel"></a>Linge à chaud
+## <a name="hot-towel"></a>Hot Towel
 
-[Modèle de linge SPA à chaud](../templates/hottowel-template.md). Ce modèle permet de plusieurs bibliothèques de JavaScript, y compris les est très simple, Knockout, RequireJS et programme d’amorçage Twitter.
+[Modèle de serviette SPA à chaud](../templates/hottowel-template.md). Ce modèle permet d’utiliser plusieurs bibliothèques JavaScript, notamment Breeze et Knockout, RequireJS Twitter Bootstrap.
 
-Comparaison avec les autres modèles répertoriés ici, la teample linge à chaud fournit une application plus complète à partir de laquelle vous pouvez créer vos propres. Il existe plusieurs concepts à connaître, mais une fois que vous comprenez les, ce modèle peut être simplement ce que vous recherchez. Si vous souhaitez générer un SPA mais que vous ne peut pas choisir l’emplacement Démarrer, utilisez linge à chaud et en secondes, vous aurez un SPA et tous les outils que vous deviez générer sur celui-ci.
+Comparaison avec les autres modèles répertoriés ici, le teample Hot Towel fournit une application plus complète à partir de laquelle vous pouvez créer vos propres. Il existe plusieurs concepts à connaître, mais une fois que vous comprenez les, ce modèle peut être simplement ce que vous recherchez. Si vous souhaitez générer un projet SPA mais que vous ne pouvez pas décider de l’emplacement Démarrer, utilisez Hot Towel et en quelques secondes, vous aurez une application SPA et tous les outils que vous deviez générer sur celui-ci.
 
 ## <a name="feature-table"></a>Tableau des fonctionnalités
 
 Voici les fonctionnalités fournies par chaque modèle SPA :
 
 
-|                        | Application à page unique ASP.NET | Réseau principal | Jeu d’enfant/angulaire | Jeu d’enfant/KO |  Ember   | Linge à chaud |
+|                        | Application à page unique ASP.NET | Réseau principal | Breeze/Angular | Breeze/KO |  Ember   | Hot Towel |
 |------------------------|-------------|----------|----------------|-----------|----------|-----------|
-|      Exemple de tâches       |  &#10003;   |          |    &#10003;    | &#10003;  | &#10003; |           |
+|      Exemple ToDo       |  &#10003;   |          |    &#10003;    | &#10003;  | &#10003; |           |
 |     Modèle de récupération      |             | &#10003; |                |           |          | &#10003;  |
-| Navigation et l’historique |             | &#10003; |    &#10003;    |           | &#10003; | &#10003;  |
+| Navigation et historique |             | &#10003; |    &#10003;    |           | &#10003; | &#10003;  |
 |        Suivies        |             |          |                |           |          |           |
-|        angulaire         |             |          |    &#10003;    |           |          |           |
-|    &#8195;Backbone     |             | &#10003; |                |           |          |           |
-|         Jeu d’enfant         |             |          |    &#10003;    | &#10003;  |          | &#10003;  |
-|        durandal        |             |          |                |           |          | &#10003;  |
+|        Angular         |             |          |    &#10003;    |           |          |           |
+|    &#8195;Réseau principal     |             | &#10003; |                |           |          |           |
+|         Breeze         |             |          |    &#10003;    | &#10003;  |          | &#10003;  |
+|        Durandal        |             |          |                |           |          | &#10003;  |
 |         Ember          |             |          |                |           | &#10003; |           |
 |        Knockout        |  &#10003;   |          |                | &#10003;  |          | &#10003;  |
 

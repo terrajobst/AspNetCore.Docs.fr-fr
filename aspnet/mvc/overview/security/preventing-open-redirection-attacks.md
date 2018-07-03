@@ -1,125 +1,124 @@
 ---
 uid: mvc/overview/security/preventing-open-redirection-attacks
-title: Prévention des attaques de Redirection ouvert (c#) | Documents Microsoft
+title: Prévention des attaques par Redirection ouverte (c#) | Microsoft Docs
 author: jongalloway
-description: Ce didacticiel explique comment vous pouvez empêcher des attaques de redirection ouvert dans vos applications ASP.NET MVC. Ce didacticiel décrit les modifications qui ont été apportées en cours...
+description: Ce didacticiel explique comment vous pouvez empêcher les attaques par redirection ouverte dans vos applications ASP.NET MVC. Ce didacticiel décrit les modifications qui ont été apportées...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
 ms.topic: article
 ms.assetid: 69fb02e0-f5b7-4c35-878c-fa87164fc785
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/preventing-open-redirection-attacks
 msc.type: authoredcontent
-ms.openlocfilehash: ec1cd1791eb6d32e7c1ea50bc6626929cad2960e
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 27921e23d38d34332b81fb85dcc795c8f9ff0352
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30879671"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37375468"
 ---
-<a name="preventing-open-redirection-attacks-c"></a>Prévention des attaques de Redirection ouvert (c#)
+<a name="preventing-open-redirection-attacks-c"></a>Prévention des attaques par Redirection ouverte (c#)
 ====================
 par [Jon Galloway](https://github.com/jongalloway)
 
-> Ce didacticiel explique comment vous pouvez empêcher des attaques de redirection ouvert dans vos applications ASP.NET MVC. Ce didacticiel décrit les modifications qui ont été apportées dans le AccountController dans ASP.NET MVC 3 et montre comment vous pouvez appliquer ces modifications dans votre ASP.NET MVC 1.0 existant et les applications de 2.
+> Ce didacticiel explique comment vous pouvez empêcher les attaques par redirection ouverte dans vos applications ASP.NET MVC. Ce didacticiel décrit les modifications qui ont été apportées dans le contrôle AccountController dans ASP.NET MVC 3 et montre comment vous pouvez appliquer ces modifications dans votre ASP.NET MVC 1.0 existante et 2 applications.
 
 
-## <a name="what-is-an-open-redirection-attack"></a>Qu’est une attaque de Redirection ouvrir ?
+## <a name="what-is-an-open-redirection-attack"></a>Qu’est une attaque de Redirection ouverte ?
 
-Toutes les applications web qui redirige vers une URL qui est spécifiée via la demande tels que les données de chaîne de requête ou un formulaire peuvent potentiellement être falsifiées rediriger les utilisateurs vers une URL externe, malveillante. Cette manipulation est appelée une attaque de redirection ouverte.
+N’importe quelle application web qui redirige vers une URL qui est spécifiée par le biais de la demande tels que les données de chaîne de requête ou un formulaire peut potentiellement être falsifiée rediriger les utilisateurs vers une URL externe, malveillante. Cette manipulation est appelée une attaque de redirection ouverte.
 
-Chaque fois que votre logique d’application redirige vers une URL spécifiée, vous devez vérifier que l’URL de redirection n’a pas été falsifiée. La connexion utilisée dans la valeur par défaut AccountController pour ASP.NET MVC 1.0 et ASP.NET MVC 2 est vulnérable aux attaques de redirection d’ouvrir. Heureusement, il est facile de mettre à jour vos applications existantes pour utiliser les corrections à partir de la version préliminaire de ASP.NET MVC 3.
+Chaque fois que votre logique d’application redirige vers une URL spécifiée, vous devez vérifier que l’URL de redirection n’a pas été falsifiée. La connexion utilisée dans la valeur par défaut AccountController pour ASP.NET MVC 1.0 et ASP.NET MVC 2 est vulnérable aux attaques par redirection d’ouvrir. Heureusement, il est facile de mettre à jour vos applications existantes pour utiliser les corrections à partir de la version préliminaire de ASP.NET MVC 3.
 
-Pour comprendre la vulnérabilité, examinons le fonctionne de la redirection de connexion dans un projet d’Application Web de ASP.NET MVC 2 par défaut. Dans cette application, essayez de visiter une action du contrôleur qui a l’attribut [Authorize] redirige les utilisateurs non autorisés à la vue /Account/LogOn. Cette redirection vers /Account/LogOn inclut un paramètre de chaîne de requête returnUrl afin que l’utilisateur peut être retourné à l’URL demandée à l’origine une fois qu’ils ont connecté avec succès.
+Pour comprendre la vulnérabilité, examinons le fonctionnement de la redirection de connexion dans un projet d’Application Web de ASP.NET MVC 2 par défaut. Dans cette application, essayez de visiter une action de contrôleur qui possède l’attribut [Authorize] redirigera les utilisateurs non autorisés à la vue /Account/LogOn. Cette redirection vers /Account/LogOn inclut un paramètre de chaîne de requête returnUrl afin que l’utilisateur peut être retournée à l’URL demandée à l’origine une fois qu’ils ont connecté avec succès.
 
-Dans la capture d’écran ci-dessous, nous constatons qu’une tentative d’accéder à la vue /Account/ChangePassword quand ne pas connecté entraîne une redirection pour /Account/LogOn ? ReturnUrl = % 2fAccount % 2fChangePassword % 2f.
+Dans la capture d’écran ci-dessous, nous constatons qu’une tentative d’accès de la vue /Account/ChangePassword lorsque vous n’êtes ne pas connecté entraîne une redirection vers /Account/LogOn ? ReturnUrl = % 2fAccount % 2fChangePassword % 2f.
 
 [![](preventing-open-redirection-attacks/_static/image2.png)](preventing-open-redirection-attacks/_static/image1.png)
 
 **Figure 01**: page de connexion avec une redirection ouverte
 
-Étant donné que le paramètre de chaîne de requête ReturnUrl n’est pas validé, un intrus peut modifier pour injecter de n’importe quelle adresse URL dans le paramètre pour effectuer une attaque de redirection ouvert. Pour illustrer cela, nous pouvons modifier le paramètre ReturnUrl [ http://bing.com ](http://bing.com), de sorte que l’URL de connexion résultant sera/Account / d’ouverture de session ? ReturnUrl =<http://www.bing.com/>. Lors de la connexion avec succès au site, nous allons redirigés vers [ http://bing.com ](http://bing.com). Étant donné que cette redirection n’est pas validée, elle peut pointer à la place à un site malveillant qui tente d’amener l’utilisateur.
+Dans la mesure où le paramètre de chaîne de requête ReturnUrl n’est pas validé, une personne malveillante peut le modifier pour injecter de n’importe quelle adresse URL dans le paramètre pour mener une attaque par redirection ouverte. Pour illustrer cela, nous pouvons modifier le paramètre ReturnUrl à [ http://bing.com ](http://bing.com), de sorte que l’URL de connexion qui en résulte sera/compte / d’ouverture de session ? ReturnUrl =<http://www.bing.com/>. Lors de la connexion avec succès vers le site, nous sommes redirigés vers [ http://bing.com ](http://bing.com). Dans la mesure où cette redirection n’est pas validée, il pourrait pointer à la place vers un site malveillant qui tente de tromper l’utilisateur.
 
-### <a name="a-more-complex-open-redirection-attack"></a>Une attaque de Redirection ouvert plus complexes
+### <a name="a-more-complex-open-redirection-attack"></a>Une attaque de Redirection ouverte plus complexes
 
-Les attaques par redirection ouverts sont particulièrement dangereux, car un utilisateur malveillant sait que nous essayons de se connecter à un site Web spécifique, ce qui nous rend vulnérables à un [hameçonnage](https://www.microsoft.com/protect/fraud/phishing/symptoms.aspx). Par exemple, un attaquant pourrait envoyer des messages électroniques malveillants pour les utilisateurs du site Web afin de capturer leur mot de passe. Examinons ce fonctionnement sur le site NerdDinner. (Notez que le site de NerdDinner actif a été mis à jour pour vous protéger contre les attaques de redirection ouvert).
+Attaques par redirection ouverte sont particulièrement dangereuses, car un attaquant sait que nous essayons pour vous connecter à un site Web spécifique, ce qui nous rend vulnérable à un [attaque par phishing](https://www.microsoft.com/protect/fraud/phishing/symptoms.aspx). Par exemple, un attaquant pourrait envoyer des messages électroniques malveillants pour les utilisateurs du site Web dans une tentative pour capturer leurs mots de passe. Nous allons voir comment cela fonctionnerait sur le site de NerdDinner. (Notez que le site de NerdDinner actif a été mis à jour pour vous protéger contre les attaques par redirection ouverte).
 
-Tout d’abord, un attaquant nous envoie un lien vers la page de connexion sur NerdDinner qui inclut une redirection pour leurs pages contrefaites :
+Tout d’abord, une personne malveillante nous envoie un lien vers la page de connexion sur NerdDinner qui inclut une redirection vers leurs pages contrefaites :
 
 [http://nerddinner.com/Account/LogOn?returnUrl=http://nerddiner.com/Account/LogOn](http://nerddinner.com/Account/LogOn?returnUrl=http://nerddiner.com/Account/LogOn)
 
-Notez que l’URL de retour pointe vers nerddiner.com, ce qui n’a pas un « n » à partir du dîner de word. Dans cet exemple, il s’agit d’un domaine qu’il contrôle. Lorsque nous accéder au lien ci-dessus, nous mettons dirigés vers la page de connexion NerdDinner.com légitime.
+Notez que l’URL de retour pointe vers nerddiner.com, ce qui n’a pas un « n » à partir du dîner de word. Dans cet exemple, il s’agit d’un domaine qui contrôle l’attaquant. Lorsque nous accédez le lien ci-dessus, nous allons dirigés vers la page de connexion NerdDinner.com légitime.
 
 [![](preventing-open-redirection-attacks/_static/image4.png)](preventing-open-redirection-attacks/_static/image3.png)
 
 **Figure 02**: page de connexion de NerdDinner avec une redirection ouverte
 
-Lorsque nous connecter correctement, action d’ouverture de session de l’ASP.NET MVC AccountController nous redirige vers l’URL spécifiée dans le paramètre de chaîne de requête returnUrl. Dans ce cas, il est l’URL qui est passé à la personne malveillante, qui est [ http://nerddiner.com/Account/LogOn ](http://nerddiner.com/Account/LogOn). À moins que nous sommes sont extrêmement, qu'il est très probable que nous ne remarquerez, en particulier, car la personne malveillante a été prudent pour vous assurer que leurs pages contrefaites est identique à la page de connexion légitimes. Cette page de connexion inclut un message d’erreur demandant que nous connecter à nouveau. Maladroit us, nous devons avoir saisi correctement votre mot de passe.
+Lorsque nous connecter correctement, action d’ouverture de session de l’ASP.NET MVC du contrôle AccountController nous redirige vers l’URL spécifiée dans le paramètre de chaîne de requête returnUrl. Dans ce cas, il est l’URL qui est passée à l’attaquant, qui est [ http://nerddiner.com/Account/LogOn ](http://nerddiner.com/Account/LogOn). À moins que nous sommes extrêmement sont, qu'il est très probable que nous ne remarquerez pas cela, notamment parce que l’attaquant a veillé à vous assurer que leurs pages contrefaites est identique à la page de connexion légitime. Cette page de connexion inclut un message d’erreur demandant que nous connecter à nouveau. Maladroit nous, nous devons la saisie incorrecte notre mot de passe.
 
 [![](preventing-open-redirection-attacks/_static/image6.png)](preventing-open-redirection-attacks/_static/image5.png)
 
 **Figure 03**: écran de connexion de NerdDinner falsifiées
 
-Lorsque nous retapez votre nom d’utilisateur et un mot de passe, la page de connexion falsifiées enregistre les informations et nous envoie vers le site NerdDinner.com légitime. À ce stade, le site NerdDinner.com a déjà authentifié, afin de la page de connexion falsifiées permettre rediriger directement à cette page. Le résultat final est que la personne malveillante a notre nom d’utilisateur et un mot de passe, et nous ne savent pas que nous vous avons fourni il leur.
+Lorsque nous retapez notre nom d’utilisateur et le mot de passe, la page de connexion falsifiées enregistre les informations et nous envoie vers le site de NerdDinner.com légitime. À ce stade, le site de NerdDinner.com a déjà authentifié us, afin de la page de connexion falsifiées permettre rediriger directement vers cette page. Le résultat final est que l’attaquant a notre nom d’utilisateur et le mot de passe, et nous ne savent pas que nous vous avons fourni il leur.
 
 ## <a name="looking-at-the-vulnerable-code-in-the-accountcontroller-logon-action"></a>Le code vulnérable à une Action d’ouverture de session AccountController
 
-Le code de l’action d’ouverture de session dans une application ASP.NET MVC 2 est indiqué ci-dessous. Notez que lors d’une connexion réussie, le contrôleur retourne une redirection vers le returnUrl. Vous pouvez voir qu’aucune validation n’est effectuée sur le paramètre returnUrl.
+Le code pour l’action d’ouverture de session dans une application ASP.NET MVC 2 est indiqué ci-dessous. Notez que lors d’une connexion réussie, le contrôleur retourne une redirection vers l’élément returnUrl. Vous pouvez voir qu’aucune validation n’est effectuée sur le paramètre returnUrl.
 
-**Affichage de 1 – action d’ouverture de session ASP.NET MVC 2 dans la liste `AccountController.cs`**
+**Liste 1 – action d’ouverture de session ASP.NET MVC 2 dans `AccountController.cs`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample1.cs)]
 
-Maintenant nous allons examiner les modifications apportées à l’action d’ouverture de session ASP.NET MVC 3. Ce code a été modifié pour valider le paramètre returnUrl en appelant une méthode dans la classe d’assistance System.Web.Mvc.Url nommée `IsLocalUrl()`.
+Maintenant nous allons examiner les modifications apportées à l’action d’ouverture de session ASP.NET MVC 3. Ce code a été modifié pour valider le paramètre returnUrl en appelant une nouvelle méthode dans la classe d’assistance System.Web.Mvc.Url nommée `IsLocalUrl()`.
 
-**Affichage de 2 – action d’ouverture de session ASP.NET MVC 3 dans la liste `AccountController.cs`**
+**Listing 2 – action d’ouverture de session ASP.NET MVC 3 dans `AccountController.cs`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample2.cs)]
 
-Cela a été modifié pour valider le paramètre URL de retour en appelant une méthode dans la classe d’assistance System.Web.Mvc.Url, `IsLocalUrl()`.
+Cela a été modifié pour valider le paramètre URL de retour en appelant une nouvelle méthode dans la classe d’assistance System.Web.Mvc.Url, `IsLocalUrl()`.
 
-## <a name="protecting-your-aspnet-mvc-10-and-mvc-2-applications"></a>Protection de la version 1.0 de ASP.NET MVC et MVC 2 Applications
+## <a name="protecting-your-aspnet-mvc-10-and-mvc-2-applications"></a>Protection ASP.NET MVC 1.0 et MVC 2 vos Applications
 
-Nous pouvons profiter des modifications d’ASP.NET MVC 3 dans notre ASP.NET MVC 1.0 existant et 2 applications en ajoutant la méthode d’assistance IsLocalUrl() et de mise à jour de l’action d’ouverture de session pour valider le paramètre returnUrl.
+Nous pouvons tirer parti des modifications d’ASP.NET MVC 3 dans notre ASP.NET MVC 1.0 existante et 2 applications en ajoutant la méthode d’assistance IsLocalUrl() et de la mise à jour de l’action d’ouverture de session pour valider le paramètre returnUrl.
 
-La méthode UrlHelper IsLocalUrl() fait appel à une méthode dans System.Web.WebPages, en tant que cette validation est également utilisée par les applications ASP.NET Web Pages.
+La méthode UrlHelper IsLocalUrl() en fait appel à une méthode dans System.Web.WebPages, en tant que cette validation est également utilisée par les applications ASP.NET Web Pages.
 
-**La liste 3 – la méthode IsLocalUrl() à partir de la UrlHelper de 3 ASP.NET MVC `class`**
+**Liste 3 – la méthode IsLocalUrl() à partir de la UrlHelper de 3 ASP.NET MVC `class`**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample3.cs)]
 
-La méthode IsUrlLocalToHost contient la logique de validation réelle, comme indiqué dans la liste 4.
+La méthode IsUrlLocalToHost contient la logique de validation réelle, comme indiqué sur la liste 4.
 
-**La liste 4 – IsUrlLocalToHost() à partir de la classe System.Web.WebPages RequestExtensions (méthode)**
+**Liste 4 – méthode IsUrlLocalToHost() à partir de la classe System.Web.WebPages RequestExtensions**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample4.cs)]
 
-Dans notre version 1.0 de ASP.NET MVC ou l’application 2, nous allons ajouter une méthode IsLocalUrl() à la AccountController, mais vous êtes invités à ajouter à une classe d’assistance distincte si possible. Nous sera apportée deux petite à la version d’ASP.NET MVC 3 de IsLocalUrl() afin qu’il fonctionne à l’intérieur du AccountController. Tout d’abord, nous allons modifier il à partir d’une méthode publique à une méthode privée, étant donné que les méthodes publiques dans des contrôleurs est accessible en tant qu’actions de contrôleur. Ensuite, nous allons modifier l’appel qui vérifie l’hôte de l’URL par rapport à l’hôte d’application. Qu’appel utilise un RequestContext local de la classe UrlHelper. Au lieu d’utiliser cela. RequestContext.HttpContext.Request.Url.Host, nous pourrons alors. Request.Url.Host. Le code suivant montre la méthode IsLocalUrl() modifiée pour une utilisation avec une classe de contrôleur dans ASP.NET MVC 1.0 et les applications de 2.
+Dans notre ASP.NET MVC 1.0 ou une application 2, nous allons ajouter une méthode IsLocalUrl() à contrôle AccountController, mais vous êtes invités à ajouter à une classe d’assistance distincte si possible. Nous apporterons deux petites modifications à la version d’ASP.NET MVC 3 de IsLocalUrl() pour qu’il fonctionne à l’intérieur du contrôle AccountController. Tout d’abord, nous allons modifier cela à partir d’une méthode publique à une méthode privée, étant donné que les méthodes publiques dans les contrôleurs sont accessibles en tant qu’actions de contrôleur. Ensuite, nous allons modifier l’appel qui vérifie l’hôte de l’URL par rapport à l’hôte d’application. Qu’appel utilise un RequestContext local champ dans la classe UrlHelper. Au lieu d’utiliser cela. RequestContext.HttpContext.Request.Url.Host, nous utiliserons ce. Request.Url.Host. Le code suivant montre la méthode IsLocalUrl() modifiée pour une utilisation avec une classe de contrôleur dans ASP.NET MVC 1.0 et 2 applications.
 
-**La liste 5 – IsLocalUrl() (méthode), qui est modifié pour une utilisation avec une classe de contrôleur MVC**
+**Liste 5 – IsLocalUrl() (méthode), qui est modifiée pour une utilisation avec une classe de contrôleur MVC**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample5.cs)]
 
 Maintenant que la méthode IsLocalUrl() est en place, nous pouvons l’appeler à partir de notre action d’ouverture de session pour valider le paramètre returnUrl, comme indiqué dans le code suivant.
 
-**La liste 6 – méthode d’ouverture de session de mise à jour qui valide le paramètre returnUrl**
+**Liste 6 – méthode d’ouverture de session de mise à jour qui valide le paramètre returnUrl**
 
 [!code-csharp[Main](preventing-open-redirection-attacks/samples/sample6.cs)]
 
-Maintenant, nous pouvons tester une attaque de redirection ouvert en essayant de se connecter à l’aide d’une URL de retournée externe. Nous allons utiliser /Account/LogOn ? ReturnUrl =<http://www.bing.com/> à nouveau.
+Maintenant, nous pouvons tester une attaque par redirection ouverte à une tentative de connexion à l’aide d’une URL de retournée externe. Nous allons utiliser /Account/LogOn ? ReturnUrl =<http://www.bing.com/> à nouveau.
 
 [![](preventing-open-redirection-attacks/_static/image8.png)](preventing-open-redirection-attacks/_static/image7.png)
 
-**Figure 04**: pour tester l’Action d’ouverture de session de mise à jour
+**Figure 04**: test de l’Action d’ouverture de session de mise à jour
 
-Une fois connecté, nous allons redirigés à l’action du contrôleur d’accueil ou d’Index plutôt qu’à l’URL externe.
+Après vous être connecté avec succès, nous sommes redirigés à l’action du contrôleur de Home/Index plutôt qu’à l’URL externe.
 
 [![](preventing-open-redirection-attacks/_static/image10.png)](preventing-open-redirection-attacks/_static/image9.png)
 
-**Figure 05**: attaque Redirection ouvrir mises en échec
+**Figure 05**: attaque par Redirection ouverte vaincu
 
 ## <a name="summary"></a>Récapitulatif
 
-Les attaques par redirection ouvert peuvent se produire lors de la redirection des URL sont passés comme paramètres dans l’URL pour une application. Attaques de redirection d’ouvrir le modèle inclut le code pour vous protéger contre ASP.NET MVC 3. Vous pouvez ajouter ce code avec quelques modifications de la version 1.0 de ASP.NET MVC et les applications de 2. Pour protéger contre les attaques de redirection ouvert lors de la journalisation dans ASP.NET 1.0 et 2 applications, ajoutez une méthode IsLocalUrl() et valider le paramètre returnUrl dans l’action d’ouverture de session.
+Attaques par redirection ouverte peuvent se produire lors de la redirection URL lui sont passées en tant que paramètres dans l’URL pour une application. ASP.NET MVC 3, modèle inclut le code pour vous protéger contre les attaques par redirection d’ouvrir. Vous pouvez ajouter ce code avec quelques modifications à ASP.NET MVC 1.0 et 2 applications. Pour vous protéger contre les attaques par redirection ouverte lors de la journalisation dans ASP.NET 1.0 et 2 applications, ajoutez une méthode IsLocalUrl() et valider le paramètre returnUrl dans l’action d’ouverture de session.

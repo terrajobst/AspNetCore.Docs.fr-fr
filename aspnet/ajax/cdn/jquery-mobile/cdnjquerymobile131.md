@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile131
-title: jQuery Mobile 1.3.1 sur le CDN Microsoft Ajax | Documents Microsoft
+title: jQuery Mobile 1.3.1 sur le CDN Microsoft Ajax | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,15 +9,14 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: b5c41c56-f5df-489e-9389-25e2523cdd28
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile131
 msc.type: content
-ms.openlocfilehash: 981d0240122aaaed3df2fec02f2f340b49e34c88
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: e606f7087caebcf2e4ea78d461dc02ba44d33583
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071614"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37375445"
 ---
 <a name="jquery-mobile-131-on-the-microsoft-ajax-cdn"></a>jQuery Mobile 1.3.1 sur le CDN Microsoft Ajax
 ====================
