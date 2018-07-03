@@ -5,12 +5,12 @@ description: Liste des guides pas à pas pour apprendre à développer des appli
 ms.author: riande
 ms.date: 10/14/2017
 uid: tutorials/index
-ms.openlocfilehash: 2ec362ea546d7bdb493665fe836bdf9ddb68b1b3
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d103c351595f0d61e5f0ee14492f9f46b8c17e86
+ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279517"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37144948"
 ---
 # <a name="aspnet-core-tutorials"></a>Didacticiels ASP.NET Core
 
@@ -28,6 +28,7 @@ Les [pages Razor](xref:razor-pages/index) constituent l’approche recommandée 
    * [Pages Razor avec VS Code](xref:tutorials/razor-pages-vsc/index)  
 
 * [Créer une application web SignalR en temps réel](xref:tutorials/signalr)
+* [Créer une application web SignalR avec TypeScript](xref:tutorials/signalr-typescript-webpack)
 
 * Créer une application web ASP.NET Core MVC
 

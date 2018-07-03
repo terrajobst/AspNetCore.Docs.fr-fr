@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez les concepts de base permettant de créer des applications ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 09/30/2017
+ms.date: 07/02/2018
 uid: fundamentals/index
-ms.openlocfilehash: b51d7b62525944d9924ecb4ce5964312f30a7835
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 33786bf78567a1aa12a1ac97d44d1a596ec4c3be
+ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278867"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37144974"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -204,15 +204,23 @@ Pour plus d’informations, consultez [Interface Open Web pour .NET (OWIN)](xref
 
 Pour plus d’informations, consultez [WebSockets](xref:fundamentals/websockets).
 
+::: moniker range=">= aspnetcore-2.1"
+## <a name="microsoftaspnetcoreapp-metapackage"></a>Métapackage Microsoft.AspNetCore.App
+
+Le métapackage [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) simplifie la gestion des packages. Pour plus d’informations, consultez [Métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
+::: moniker-end
+::: moniker range="= aspnetcore-2.0"
 ## <a name="microsoftaspnetcoreall-metapackage"></a>Métapackage Microsoft.AspNetCore.All
 
 Le métapackage [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) pour ASP.NET Core comprend :
 
 * Tous les packages pris en charge par l’équipe ASP.NET Core.
-* Tous les packages pris en charge par Entity Framework Core. 
+* Tous les packages pris en charge par Entity Framework Core.
 * Les dépendances internes et tierces utilisées par ASP.NET Core et Entity Framework Core.
 
 Pour plus d’informations, consultez [Métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
+::: moniker-end
 
 ## <a name="net-core-vs-net-framework-runtime"></a>Runtime .NET Core et runtime .NET Framework
 
