@@ -1,36 +1,35 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-vb
-title: Liaison de données du contrôle de curseur (VB) | Documents Microsoft
+title: Liaison de données le contrôle Slider (VB) | Microsoft Docs
 author: wenz
-description: Le contrôle de curseur dans la boîte à outils de contrôle AJAX fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position en cours...
+description: Le contrôle Slider dans AJAX Control Toolkit fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position en cours...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 4f3ba53f-d166-422d-b29c-403348057836
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/databinding-the-slider-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3ecd8598cd7fdcbbb4812e501bb30fa1f563a054
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: aeaca2ebf61f49a5c081a3a1df188aa1541192d9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30879138"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37376305"
 ---
-<a name="databinding-the-slider-control-vb"></a>Liaison de données du contrôle de curseur (VB)
+<a name="databinding-the-slider-control-vb"></a>Liaison de données le contrôle Slider (VB)
 ====================
 par [Christian Wenz](https://github.com/wenz)
 
 [Télécharger le Code](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/Slider0.vb.zip) ou [télécharger le PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/slider0VB.pdf)
 
-> Le contrôle de curseur dans la boîte à outils de contrôle AJAX fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position actuelle du curseur sur un autre contrôle ASP.NET.
+> Le contrôle Slider dans AJAX Control Toolkit fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position actuelle du curseur vers un autre contrôle ASP.NET.
 
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Le contrôle de curseur dans la boîte à outils de contrôle AJAX fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position actuelle du curseur sur un autre contrôle ASP.NET.
+Le contrôle Slider dans AJAX Control Toolkit fournit un contrôle slider graphique qui peut être contrôlé à l’aide de la souris. Il est possible de lier la position actuelle du curseur vers un autre contrôle ASP.NET.
 
 ## <a name="steps"></a>Étapes
 
@@ -38,11 +37,11 @@ Pour activer la fonctionnalité d’ASP.NET AJAX et les outils de contrôle, le 
 
 [!code-aspx[Main](databinding-the-slider-control-vb/samples/sample1.aspx)]
 
-Ensuite, ajoutez deux `TextBox` contrôles à la page. Un est transformé en un contrôle slider graphique et autre contiendra la position du curseur.
+Ensuite, ajoutez deux `TextBox` contrôles à la page. Un est transformé en un contrôle slider graphique et autres celui contiendra la position du curseur.
 
 [!code-aspx[Main](databinding-the-slider-control-vb/samples/sample2.aspx)]
 
-L’étape suivante est déjà à la dernière étape. Le `SliderExtender` contrôle à partir de la boîte à outils de contrôle ASP.NET AJAX rend un curseur en dehors de la zone de texte et met à jour automatiquement la deuxième zone de texte lorsque le changement de position du curseur. Dans l’ordre pour que cela fonctionne, le `SliderExtender`de `TargetControlID` attribut doit être défini à l’ID de la première zone de texte ; le `BoundControlID` attribut doit être défini à l’ID de la deuxième zone de texte.
+L’étape suivante est déjà la dernière étape. Le `SliderExtender` rend un curseur en dehors de la première zone de texte de contrôle à partir d’ASP.NET AJAX Control Toolkit et met à jour automatiquement la deuxième zone de texte lorsque le curseur de position des modifications. Dans l’ordre pour que cela fonctionne, le `SliderExtender`de `TargetControlID` attribut doit être défini à l’ID de la première zone de texte ; le `BoundControlID` attribut doit être défini à l’ID de la deuxième zone de texte.
 
 [!code-aspx[Main](databinding-the-slider-control-vb/samples/sample3.aspx)]
 
@@ -51,7 +50,7 @@ Comme vous pouvez le voir dans le navigateur, la liaison de données fonctionne 
 
 [![Curseur et zone de texte sont synchronisés](databinding-the-slider-control-vb/_static/image2.png)](databinding-the-slider-control-vb/_static/image1.png)
 
-Curseur et zone de texte sont synchronisées ([cliquez pour afficher l’image en taille réelle](databinding-the-slider-control-vb/_static/image3.png))
+Curseur et zone de texte sont synchronisés ([cliquez pour afficher l’image en taille réelle](databinding-the-slider-control-vb/_static/image3.png))
 
 > [!div class="step-by-step"]
 > [Précédent](using-the-slider-control-with-auto-postback-vb.md)
