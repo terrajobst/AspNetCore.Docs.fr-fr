@@ -1,33 +1,32 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment
-title: Configuration d’environnements de serveur pour le déploiement Web | Documents Microsoft
+title: Configuration d’environnements de serveur pour le déploiement Web | Microsoft Docs
 author: jrjlee
-description: Ce didacticiel va vous montrer comment configurer des environnements de serveur pour la prise en charge en un clic ou automatisé, le déploiement de site Web et la publication dans différentes du scénario de différentes...
+description: Ce didacticiel vous explique comment configurer des environnements de serveur pour la prise en charge un seul clic, ou automatisé, de déploiement de site Web et de publication dans différents du scénario de différentes...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/04/2012
 ms.topic: article
 ms.assetid: 0bf0959b-4ca8-45de-bd13-b15347543b5a
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: ff6118be618a170ac76d66a9de24a7b5cc2d840a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 520239c926b853b91638ed2687daebfb561fb99a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30892294"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37365268"
 ---
 <a name="configuring-server-environments-for-web-deployment"></a>Configuration d’environnements de serveur pour le déploiement Web
 ====================
 par [Jason Lee](https://github.com/jrjlee)
 
-[Télécharger le PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
+[Télécharger PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Ce didacticiel vous indiquera comment configurer des environnements de serveur pour la prise en charge en un clic ou automatisé, de déploiement de site Web et de publication dans divers scénarios différents. Le didacticiel inclut des rubriques pour vous guider dans diverses tâches, telles que la configuration d’un serveur web pour prendre en charge les approches spécifiques pour le déploiement et la configuration d’une batterie de serveurs Web Farm Framework (WFF), ainsi que des vues d’ensemble scénario qui fournissent à la fin conseils de bout en bout plus haut niveau.
+> Ce didacticiel vous explique comment configurer des environnements de serveur pour la prise en charge un seul clic, ou automatisé, de déploiement de site Web et de publication dans divers scénarios différents. Le didacticiel inclut des rubriques pour vous guider dans diverses tâches, telles que la configuration d’un serveur web pour prendre en charge les approches spécifiques pour le déploiement et la configuration d’une batterie de serveurs Web Farm Framework (WFF), ainsi que des présentations basées sur des scénarios qui fournissent à la fin conseils de bout en bout plus haut niveau.
 > 
-> Ce didacticiel utilise le scénario de déploiement de Fabrikam, Inc. décrit dans [déploiement Web d’entreprise : vue d’ensemble du scénario](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md) en tant que point de référence pour l’infrastructure réseau et des exemples.
+> Ce didacticiel utilise le scénario de déploiement de Fabrikam, Inc. décrit dans [déploiement Web d’entreprise : vue d’ensemble du scénario](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md) comme point de référence pour l’infrastructure réseau et des exemples.
 > 
 > Pour obtenir une traduction italienne de ces didacticiels, visitez [ http://www.lucamorelli.it ](http://www.lucamorelli.it).
 
@@ -45,11 +44,11 @@ Ce didacticiel inclut les rubriques suivantes :
 - [Création d’une batterie de serveurs avec le framework de batterie de serveurs web](creating-a-server-farm-with-the-web-farm-framework.md)
 - [Configuration des propriétés de déploiement pour un environnement cible](configuring-deployment-properties-for-a-target-environment.md)
 
-La première rubrique [en choisissant l’approche de droite pour le déploiement Web](choosing-the-right-approach-to-web-deployment.md), décrit les méthodes principales que vous pouvez utiliser pour publier des applications web à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy) 2.0. Il identifie également les scénarios correspondant à chaque approche. À ce stade, chaque rubrique scénario fournit une vue d’ensemble des tâches que vous devez effectuer et identifie les rubriques que vous devez réaliser pour vous aider à effectuer ces tâches.
+La première rubrique [choix de l’approche de droite pour le déploiement Web](choosing-the-right-approach-to-web-deployment.md), décrit les approches principales que vous pouvez utiliser pour publier des applications web à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy) 2.0. Il identifie également les scénarios correspondant à chaque approche. À ce stade, chaque rubrique scénario fournit une vue d’ensemble des tâches que vous devez suivre et identifie les rubriques que vous aurez besoin de travailler pour vous aider à effectuer ces tâches.
 
-Si vous utilisez l’approche de fichier de projet de fractionnement décrite dans [comprendre le processus de génération](../web-deployment-in-the-enterprise/understanding-the-build-process.md) pour générer et déployer votre solution, la dernière rubrique [configuration des propriétés de déploiement pour un environnement cible](configuring-deployment-properties-for-a-target-environment.md), explique comment configurer les fichiers de projet spécifique à un environnement pour le déploiement dans les environnements de destination différents.
+Si vous utilisez l’approche de fichier de projet de fractionnement décrite dans [comprendre le processus de génération](../web-deployment-in-the-enterprise/understanding-the-build-process.md) pour générer et déployer votre solution, la dernière rubrique, [configuration des propriétés de déploiement pour un environnement cible](configuring-deployment-properties-for-a-target-environment.md), explique comment configurer les fichiers de projet spécifique à l’environnement pour le déploiement pour différents environnements de destination.
 
-## <a name="key-technologies"></a>Technologies de clé
+## <a name="key-technologies"></a>Technologies clés
 
 Ce didacticiel se concentre sur l’utilisation de ces produits et technologies pour prendre en charge le déploiement web :
 
@@ -58,16 +57,16 @@ Ce didacticiel se concentre sur l’utilisation de ces produits et technologies 
 - WFF 2.x
 - Service de gestion IIS Web (WMSvc)
 
-Ce didacticiel aborde également l’utilisation d’ASP.NET MVC 3, ASP.NET 4.0, Windows Server 2008 R2 et SQL Server 2008 R2.
+Il aborde également le didacticiel sur l’utilisation de Windows Server 2008 R2, SQL Server 2008 R2, ASP.NET 4.0 et ASP.NET MVC 3.
 
 ## <a name="other-tutorials-in-this-series"></a>Autres didacticiels de cette série
 
-Cela fait partie d’une série de cinq didacticiels sur le déploiement web de l’échelle de l’entreprise. Voici les autres didacticiels dans la série :
+Cela fait partie d’une série de cinq didacticiels sur le déploiement de web-échelle de l’entreprise. Voici les autres didacticiels de la série :
 
-- [Déployer des Applications Web dans les scénarios d’entreprise](../deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md). Ce contenu introduction fournit l’arrière-plan contextuel pour la série de didacticiels. Il décrit le scénario du didacticiel, et illustre comment les tâches et les procédures pas à pas décrites dans l’ensemble de la série s’intègrent dans un processus d’Application Lifecycle Management (ALM) plus large.
-- [Le déploiement de l’entreprise Web](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md). Ce didacticiel fournit une présentation conceptuelle pour les fichiers de projet Microsoft Build Engine (MSBuild), le Pipeline de publication Web, Web Deploy et autres technologies connexes. Il explique comment vous pouvez utiliser ces outils ensemble pour gérer les processus de déploiement complexe.
-- [Configuration de Team Foundation Server pour le déploiement Web](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md). Ce didacticiel explique comment configurer Team Foundation Server (TFS) pour prendre en charge différents scénarios de déploiement, y compris le déploiement automatisé en tant que partie d’un processus d’intégration continue (CI) et déclencher manuellement les déploiements des builds spécifiques.
-- [Avancé de déploiement Web d’entreprise](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md). Ce didacticiel explique comment effectuer différentes tâches de déploiement plus avancées, telles que la personnalisation des déploiements de base de données pour plusieurs environnements, à l’exclusion des fichiers et dossiers de déploiement et en prenant des applications web en mode hors connexion pendant le processus de déploiement .
+- [Déploiement d’Applications Web dans les scénarios d’entreprise](../deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md). Ce contenu introduction fournit l’arrière-plan contextuel de la série de didacticiels. Elle décrit le scénario du didacticiel, et illustre comment les tâches et les procédures pas à pas décrit tout au long de la série s’intègrent à un processus d’Application Lifecycle Management (ALM) plus large.
+- [Déploiement de l’entreprise Web](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md). Ce didacticiel fournit une présentation conceptuelle de fichiers de projet Microsoft Build Engine (MSBuild), le Pipeline de publication Web, Web Deploy et autres technologies apparentées. Il explique comment vous pouvez utiliser ces outils ensemble pour gérer les processus de déploiement complexes.
+- [Configuration de Team Foundation Server pour le déploiement de Web](../configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment.md). Ce didacticiel explique comment configurer Team Foundation Server (TFS) pour prendre en charge différents scénarios de déploiement, y compris le déploiement automatisé en tant que partie d’un processus d’intégration continue (CI) et déclenché manuellement des déploiements des builds spécifiques.
+- [Avancées de déploiement Web d’entreprise](../advanced-enterprise-web-deployment/advanced-enterprise-web-deployment.md). Ce didacticiel explique comment effectuer diverses tâches de déploiement plus avancées, telles que la personnalisation des déploiements de base de données pour plusieurs environnements, à l’exclusion de fichiers et dossiers de déploiement et en prenant des applications web en mode hors connexion pendant le processus de déploiement .
 
 > [!div class="step-by-step"]
 > [Next](choosing-the-right-approach-to-web-deployment.md)

@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-datatables/cdnjquerydatatables193
-title: jQuery DataTables 1.9.3 | Documents Microsoft
+title: 1.9.3 des DataTables jQuery | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 90ba3e9a-ff80-4049-9ad4-08571cdf3880
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables193
 msc.type: content
-ms.openlocfilehash: 253ce2d0fd6bb417e256df86780945c720304a17
-ms.sourcegitcommit: 24c32648ab0c6f0be15333d7c23c1bf680858c43
+ms.openlocfilehash: 6e5d567fc1f76dbb93160b82244bbcbdc1b4a490
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/21/2018
-ms.locfileid: "30074542"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37365186"
 ---
-<a name="jquery-datatables-193"></a>jQuery DataTables 1.9.3
+<a name="jquery-datatables-193"></a>1.9.3 des DataTables jQuery
 ====================
-Les fichiers suivants pour la plug-ins DataTables de jQuery sont hébergés sur le CDN :
+Les fichiers suivants pour le plug-ins de DataTables de jQuery sont hébergés sur le CDN :
 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.3/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.3/jquery.dataTables.min.js

@@ -4,14 +4,14 @@ author: guardrex
 description: Liens vers des ressources pour tester et déboguer les applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/13/2018
+ms.date: 07/03/2018
 uid: test/index
-ms.openlocfilehash: c5925d55a1b7d50d44d6bea4013331416ce3cec8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 20f6804c1db588a88abb0d5686f894b7463ff6a9
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278799"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433959"
 ---
 # <a name="test-debug-and-troubleshoot-in-aspnet-core"></a>Tester, déboguer et résoudre les problèmes dans ASP.NET Core
 
@@ -30,6 +30,12 @@ Découvrez comment créer des tests unitaires pour les applications Razor Pages.
 Découvrez plus d’informations sur le test de la logique des contrôleurs dans ASP.NET Core avec Moq et xUnit.
 
 ## <a name="debug"></a>Débogage
+
+[Apprendre à déboguer avec Visual Studio](/visualstudio/debugger/getting-started-with-the-debugger)  
+Découvrez étape par étape les fonctionnalités du débogueur Visual Studio.
+
+[Débogage avec Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging)  
+Découvrez la prise en charge du débogage intégrée à Visual Studio Code.
 
 [Déboguer une source ASP.NET Core 2.x](https://github.com/aspnet/Docs/issues/4155)  
 Découvrez comment déboguer les sources .NET Core et ASP.NET Core.

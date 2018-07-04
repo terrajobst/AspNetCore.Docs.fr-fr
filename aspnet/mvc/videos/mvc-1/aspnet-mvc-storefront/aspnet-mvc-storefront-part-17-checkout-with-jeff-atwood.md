@@ -1,29 +1,28 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood
-title: 'ASP.NET MVC, partie vitrine 17 : Extraction avec Jeff Atwood | Documents Microsoft'
+title: 'ASP.NET MVC, partie 17 Storefront : Validation avec Jeff Atwood | Microsoft Docs'
 author: robconery
-description: Dans cet épisode, je prêt le processus d’extraction et parlez avec CodingHorror M. lui-même, Jeff Atwood. Nous parlons de toutes sortes de choses mais principalement discuter ouvrir...
+description: Dans cet épisode, je prêt inscrire le processus de validation et discuter avec CodingHorror M. lui-même, Jeff Atwood. Nous parlons de toutes sortes d’opérations mais principalement discuter ouvrir...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
 ms.topic: article
 ms.assetid: a39182f9-a82c-41fa-9be0-92c2291a3a96
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood
 msc.type: video
-ms.openlocfilehash: ccb6b6bb76598c1aef2321e22eb0cfc2846f53a4
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3c5acf743757a088b22de63f5882e0b3f425c3c1
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30867149"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37365157"
 ---
-<a name="aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood"></a>ASP.NET MVC, partie vitrine 17 : Extraction avec Jeff Atwood
+<a name="aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood"></a>ASP.NET MVC, partie 17 Storefront : Validation avec Jeff Atwood
 ====================
-par [dérober Conery](https://github.com/robconery)
+par [Rob Conery](https://github.com/robconery)
 
-Dans cet épisode, je prêt le processus d’extraction et parlez avec CodingHorror M. lui-même, Jeff Atwood. Nous parlons de toutes sortes de choses, mais principalement abordent Open ID, CardSpace et comment Jeff aimeriez voir le processus d’extraction de travail dans un monde idéal. J’ai ensuite vous guident tout paramétrage CardSpace sur votre ordinateur local.
+Dans cet épisode, je prêt inscrire le processus de validation et discuter avec CodingHorror M. lui-même, Jeff Atwood. Nous parlons de toutes sortes d’opérations mais principalement discuter Open ID, CardSpace et comment Jeff aimeriez voir le processus de validation fonctionne dans un monde idéal. Je vous guide alors configuration CardSpace sur votre ordinateur local.
 
 [&#9654;Regardez la vidéo (34 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood)
 
