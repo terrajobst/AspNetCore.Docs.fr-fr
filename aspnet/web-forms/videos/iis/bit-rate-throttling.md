@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/iis/bit-rate-throttling
-title: Bit Rate Throttling | Documents Microsoft
+title: Bit Rate Throttling | Microsoft Docs
 author: JoeStagner
-description: Cette vidéo va apprendre à installer et configurer une fonctionnalité nouvelle IIS7 intéressante – Bit Rate Throttling. Avec BRT vous servir des fichiers multimédias ou les téléchargements big withou...
+description: Cette vidéo vous apprendront à installer et configurer un nouveau IIS7 excellente – Bit Rate Throttling. Avec BRT, vous pouvez distribuer des fichiers multimédias ou les téléchargements big withou...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2009
 ms.topic: article
 ms.assetid: 8dc90862-97d6-48d1-8bfc-79c70d622474
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/iis/bit-rate-throttling
 msc.type: video
-ms.openlocfilehash: 65511ccc49bda216b422334787cc6e0e032117d4
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 7eed091306f157c71a9a8d46fcfb3a21814c3e51
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30881173"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402536"
 ---
 <a name="bit-rate-throttling"></a>Bit Rate Throttling
 ====================
 par [Joe Stagner](https://github.com/JoeStagner)
 
-Cette vidéo va apprendre à installer et configurer une fonctionnalité nouvelle IIS7 intéressante – Bit Rate Throttling. Avec BRT vous pouvez servir des fichiers multimédias ou les téléchargements big sans entachant vos performances de l’interface utilisateur de sites.
+Cette vidéo vous apprendront à installer et configurer un nouveau IIS7 excellente – Bit Rate Throttling. Avec BRT, vous pouvez distribuer les fichiers multimédias ou les téléchargements big sans ruinent vos performances de l’interface utilisateur de sites.
 
 [&#9654;Regardez la vidéo (6 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/bit-rate-throttling)
 

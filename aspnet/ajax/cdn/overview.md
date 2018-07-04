@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/overview
-title: Réseau de diffusion de contenu Microsoft Ajax | Documents Microsoft
+title: Microsoft Ajax Content Delivery Network | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,56 +9,56 @@ ms.date: 10/14/2017
 ms.topic: article
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: bc5f40746ad6b1ed8a74bcb75def9ff8f08fb789
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: bf770191e013487927d3f947dfb29f7ea5b11390
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403060"
 ---
-<a name="microsoft-ajax-content-delivery-network"></a>Réseau de diffusion de contenu Microsoft Ajax
+<a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
 ====================
 > [!WARNING]
-> Applications de production doivent prendront une dépendance dure sur les ressources CDN. Applications doivent vérifier la présence de l’élément multimédia CDN référencé et utiliser une ressource de secours lorsque le CDN n’est pas disponible. 
+> Les applications de production doivent prendront une dépendance dure sur les ressources CDN. Les applications doivent tester pour la ressource CDN référencée et utiliser une ressource de secours lorsque le CDN n’est pas disponible. 
 >
-> Le CDN Microsoft Ajax n’a pas de contrat SLA au-dessus et au-delà de l’aide d’un CDN Azure.
+> Le CDN Microsoft Ajax n’a aucun SLA au-delà à l’aide d’un CDN Azure.
 >
 > Utilisez [ce problème GitHub](https://github.com/aspnet/Docs/issues/5832) pour signaler des problèmes avec le CDN Microsoft Ajax.
 
 ## <a name="table-of-contents"></a>Sommaire
 
-**[AJAX.Microsoft.com renommé ajax.aspnetcdn.com](#ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18)**  
+**[AJAX.Microsoft.com renommé en ajax.aspnetcdn.com](#ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18)**  
 **[Prise en charge de Visual Studio .vsdoc](#Visual_Studio_vsdoc_Support_19)**  
-**[À l’aide d’ASP.NET Ajax du CDN](#Using_ASPNET_Ajax_from_the_CDN_20)**  
-**[À l’aide de jQuery du CDN](#Using_jQuery_from_the_CDN_21)**  
-**[À l’aide de jQuery UI du CDN](#Using_jQuery_UI_from_the_CDN_22)**  
-**[Fichiers de tiers dans le CDN](#Third-Party_Files_on_the_CDN_23)**  
+**[À l’aide d’ASP.NET Ajax à partir du CDN](#Using_ASPNET_Ajax_from_the_CDN_20)**  
+**[À l’aide de jQuery à partir du CDN](#Using_jQuery_from_the_CDN_21)**  
+**[À l’aide de jQuery UI à partir du CDN](#Using_jQuery_UI_from_the_CDN_22)**  
+**[Les fichiers tiers sur le CDN](#Third-Party_Files_on_the_CDN_23)**  
   
  [Versions de jQuery sur le CDN](#jQuery_Releases_on_the_CDN_0)  
  [jQuery migrer des versions sur le CDN](#jQuery_Migrate_Releases_on_the_CDN_1)  
- [jQuery UI mises en production sur le CDN](#jQuery_UI_Releases_on_the_CDN_2)  
- [jQuery Validation mises en production sur le CDN](#jQuery_Validation_Releases_on_the_CDN_3)  
- [jQuery Mobile mises en production sur le CDN](#jQuery_Mobile_Releases_on_the_CDN_4)  
- [jQuery versions de modèles sur le CDN](#jQuery_Templates_Releases_on_the_CDN_5)  
+ [jQuery UI des versions sur le CDN](#jQuery_UI_Releases_on_the_CDN_2)  
+ [jQuery Validation des versions sur le CDN](#jQuery_Validation_Releases_on_the_CDN_3)  
+ [jQuery Mobile des versions sur le CDN](#jQuery_Mobile_Releases_on_the_CDN_4)  
+ [jQuery versions des modèles sur le CDN](#jQuery_Templates_Releases_on_the_CDN_5)  
  [jQuery Cycle des versions sur le CDN](#jQuery_Cycle_Releases_on_the_CDN_6)  
- [jQuery versions de tables de données sur le CDN](#jQuery_DataTables_Releases_on_the_CDN_7)  
+ [sur le CDN, les versions de DataTables de jQuery](#jQuery_DataTables_Releases_on_the_CDN_7)  
  [Versions de Modernizr sur le CDN](#Modernizr_Releases_on_the_CDN_8)  
- [Versions de JSHint sur le CDN](#JSHint_Releases_on_the_CDN_10)  
+ [Versions JSHint sur le CDN](#JSHint_Releases_on_the_CDN_10)  
  [Versions de Knockout sur le CDN](#Knockout_Releases_on_the_CDN_11)  
  [Globaliser des versions sur le CDN](#Globalize_Releases_on_the_CDN_12)  
- [Répondre versions sur le CDN](#Respond_Releases_on_the_CDN_13)  
+ [Répondre mises en production sur le CDN](#Respond_Releases_on_the_CDN_13)  
  [Versions d’amorçage sur le CDN](#Bootstrap_Releases_on_the_CDN_14)  
  [Versions TouchCarousel d’amorçage sur le CDN](#BootstrapTouchCarousel_Releases_on_the_CDN_18)  
- [Versions de Hammer.js sur le CDN](#Hammerjs_Releases_on_the_CDN_19)  
- [Web Forms ASP.NET et Ajax mises en production sur le CDN](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
- [ASP.NET MVC publie le CDN](#ASPNET_MVC_Releases_on_the_CDN_16)  
- [ASP.NET SignalR publie le CDN](#ASPNET_SignalR_Releases_on_the_CDN_17)
+ [Versions hammer.js sur le CDN](#Hammerjs_Releases_on_the_CDN_19)  
+ [ASP.NET Web Forms et les versions Ajax sur le CDN](#ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15)  
+ [ASP.NET MVC versions sur le CDN](#ASPNET_MVC_Releases_on_the_CDN_16)  
+ [ASP.NET SignalR libère sur le CDN](#ASPNET_SignalR_Releases_on_the_CDN_17)
 
-Le contenu remise réseau CDN Microsoft Ajax () héberge des bibliothèques JavaScript de tiers populaires tels que jQuery et vous permet de facilement les ajouter à vos applications Web. Par exemple, commencer à l’aide de jQuery, qui est hébergé sur ce CDN en ajoutant simplement un &lt;script&gt; balise à votre page qui pointe vers ajax.aspnetcdn.com.
+Le Microsoft Ajax Content Delivery Network (CDN) héberge des bibliothèques de JavaScript tiers populaires telles que jQuery et vous permet de les ajouter facilement à vos applications Web. Par exemple, commencer à utiliser jQuery qui est hébergé sur ce CDN en ajoutant simplement un &lt;script&gt; balise à votre page qui pointe vers ajax.aspnetcdn.com.
 
-En tirant parti du CDN, vous pouvez considérablement améliorer les performances de vos applications Ajax. Le contenu du CDN est mis en cache sur les serveurs situés dans le monde entier. En outre, le CDN permet aux navigateurs de réutiliser des fichiers JavaScript mis en cache tiers pour les sites web qui se trouvent dans des domaines différents.
+En tirant parti du CDN, vous pouvez considérablement améliorer les performances de vos applications Ajax. Le contenu du CDN est mis en cache sur les serveurs situés dans le monde entier. En outre, le CDN permet aux navigateurs de réutiliser des fichiers de JavaScript tiers mis en cache pour les sites web qui se trouvent dans des domaines différents.
 
 Le CDN prend en charge SSL (HTTPS) au cas où vous deviez traiter une page web à l’aide de Secure Sockets Layer.
 
@@ -69,23 +69,23 @@ Le CDN héberge les bibliothèques de scripts tiers suivants qui ont été tél�
 - jQuery Mobile (www.jquerymobile.com)
 - jQuery Validation (www.jquery.com)
 - jQuery Cycle (www.malsup.com/jquery/cycle/)
-- jQuery DataTables)http://datatables.net/)
+- (de DataTables de jQueryhttp://datatables.net/)
 
 Le CDN Microsoft Ajax inclut également les bibliothèques suivantes qui ont été téléchargés par Microsoft :
 
 - ASP.NET Ajax
-- Fichiers JavaScript ASP.NET MVC
-- Les fichiers ASP.NET SignalR JavaScript
+- Fichiers de JavaScript d’ASP.NET MVC
+- Fichiers ASP.NET SignalR JavaScript
 
-Microsoft ne revendique pas la propriété de toutes les bibliothèques tierces hébergées sur ce CDN. Les propriétaires de copyright des bibliothèques de licence ces bibliothèques pour vous. Les droits que vous devrez peut-être télécharger et utiliser ces bibliothèques sont accordées exclusivement par les propriétaires de copyright respectifs. Étant donné que celles-ci ne sont pas des bibliothèques de Microsoft, Microsoft ne fournit aucune garantie ou les licences de droits de propriété intellectuelle (y compris sans droits de brevet implicites) pour les bibliothèques tierces hébergées sur ce CDN.
+Microsoft ne revendique pas la propriété de n’importe quel des bibliothèques tierces hébergées sur ce CDN. Les propriétaires de copyright des bibliothèques utilisent les licences de ces bibliothèques pour vous. Les droits que vous devrez peut-être télécharger et utiliser ces bibliothèques sont accordées exclusivement par les propriétaires des droits d’auteur respectifs. Étant donné que ceux-ci ne sont pas des bibliothèques de Microsoft, Microsoft ne fournit aucune garantie ou les licences de droits de propriété intellectuelle (y compris sans droits de brevet implicites) pour les bibliothèques tierces hébergées sur ce CDN.
 
-Si vous souhaitez soumettre votre bibliothèque JavaScript et votre bibliothèque est une des bibliothèques JavaScript supérieur (tel qu’indiqué dans http://trends.builtwith.com) ou extensions/plug-ins pour ces bibliothèques qui sont (a) populaires ; ou (b) utile pour une utilisation sur ASP.NET, puis contactez AjaxCDNSubmission@Microsoft.com.
+Si vous souhaitez soumettre votre bibliothèque JavaScript et votre bibliothèque est une des bibliothèques JavaScript supérieurs (comme indiqué sur http://trends.builtwith.com) ou extensions/plug-ins pour ces bibliothèques qui sont (a) populaires ; ou (b) utile pour une utilisation sur ASP.NET, puis contactez AjaxCDNSubmission@Microsoft.com.
 
 <a id="ajaxmicrosoftcom_renamed_to_ajaxaspnetcdncom_18"></a>
 
-## <a name="ajaxmicrosoftcom-renamed-to-ajaxaspnetcdncom"></a>AJAX.Microsoft.com renommé ajax.aspnetcdn.com
+## <a name="ajaxmicrosoftcom-renamed-to-ajaxaspnetcdncom"></a>AJAX.Microsoft.com renommé en ajax.aspnetcdn.com
 
-Le CDN permet d’utiliser le nom de domaine microsoft.com et a été modifié pour utiliser le nom de domaine aspnetcdn.com. Cette modification a été apportée pour augmenter les performances, car lorsqu’un navigateur référencé le domaine microsoft.com il envoie tous les cookies à partir de ce domaine sur le réseau avec chaque demande. En renommant à un nom de domaine différent de microsoft.com performances peuvent être augmenté par autant de 25 %. Remarque ajax.microsoft.com continuera de fonctionner mais ajax.aspnetcdn.com est recommandé.
+Le CDN permet d’utiliser le nom de domaine microsoft.com et a été modifié pour utiliser le nom de domaine aspnetcdn.com. Cette modification a été apportée pour augmenter les performances, car lorsqu’un navigateur référencé le domaine microsoft.com il envoie tous les cookies à partir de ce domaine sur le réseau avec chaque requête. En renommant un nom de domaine différent microsoft.com performances peuvent être augmentée en autant à 25 %. Remarque ajax.microsoft.com continuera à fonctionner mais ajax.aspnetcdn.com est recommandé.
 
 - Ancien Format : https://ajax.microsoft.com/ajax/jQuery/jquery-1.8.0.js
 - Nouveau Format : https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
@@ -94,28 +94,28 @@ Le CDN permet d’utiliser le nom de domaine microsoft.com et a été modifié p
 
 ## <a name="visual-studio-vsdoc-support"></a>Prise en charge de Visual Studio .vsdoc
 
-Pour utiliser les fichiers .vsdoc correctement avec Visual Studio 2008, vous devez vous assurer que vous disposez de Visual Studio 2008 SP1 installé et le correctif logiciel pour les fichiers vsdoc installé. Vous pouvez obtenir à partir d’ici :
+Pour utiliser les fichiers .vsdoc correctement avec Visual Studio 2008, vous devez vous assurer que vous disposez de Visual Studio 2008 SP1 installé et le correctif logiciel pour les fichiers de vsdoc installé. Vous pouvez obtenir à partir d’ici :
 
 - [Télécharger Visual Studio 2008 SP1](https://www.microsoft.com/downloads/en/details.aspx?FamilyId=FBEE1648-7106-44A7-9649-6D9F6D58056E&amp;displaylang=en "télécharger Visual Studio 2008 SP1")
-- [Télécharger le correctif logiciel de .vsdoc pour Visual Studio 2008 SP1](https://code.msdn.microsoft.com/KB958502/Release/ProjectReleases.aspx?ReleaseId=1736 "télécharger .vsdoc correctif pour Visual Studio 2008 SP1")
+- [Télécharger le correctif logiciel .vsdoc pour Visual Studio 2008 SP1](https://code.msdn.microsoft.com/KB958502/Release/ProjectReleases.aspx?ReleaseId=1736 "télécharger le correctif logiciel .vsdoc pour Visual Studio 2008 SP1")
 
-Visual Studio 2010 prend en charge les fichiers .vsdoc sans les correctifs supplémentaires.
+Visual Studio 2010 prend en charge les fichiers .vsdoc sans tous les correctifs supplémentaires.
 
 <a id="Using_ASPNET_Ajax_from_the_CDN_20"></a>
 
-## <a name="using-aspnet-ajax-from-the-cdn"></a>À l’aide d’ASP.NET Ajax du CDN
+## <a name="using-aspnet-ajax-from-the-cdn"></a>À l’aide d’ASP.NET Ajax à partir du CDN
 
-Lorsque vous utilisez ASP.NET 4, vous pouvez rediriger toutes les demandes pour les scripts du framework ASP.NET vers le CDN. La récupération des scripts à partir du CDN au lieu de votre serveur web local peuvent considérablement améliorer les performances des sites Web ASP.NET publics.
+Lorsque vous utilisez ASP.NET 4, vous pouvez rediriger toutes les demandes pour les scripts d’infrastructure ASP.NET vers le CDN. Récupération des scripts à partir du CDN au lieu de votre serveur web local peuvent considérablement améliorer les performances des sites Web ASP.NET publics.
 
-Utilisez la propriété ScriptManager EnableCDN pour rediriger toutes les demandes de script framework ASP.NET pour le CDN Microsoft Ajax :
+Utilisez la propriété ScriptManager EnableCDN pour rediriger toutes les demandes de script framework ASP.NET vers le CDN Microsoft Ajax :
 
 [!code-aspx[Main](overview/samples/sample1.aspx)]
 
 <a id="Using_jQuery_from_the_CDN_21"></a>
 
-## <a name="using-jquery-from-the-cdn"></a>À l’aide de jQuery du CDN
+## <a name="using-jquery-from-the-cdn"></a>À l’aide de jQuery à partir du CDN
 
-Vous pouvez utiliser des scripts jQuery hébergés sur CDN dans votre application Web en ajoutant l’élément de script suivant à une page :
+Vous pouvez utiliser des scripts jQuery hébergées sur le CDN dans votre application Web en ajoutant l’élément de script suivant à une page :
 
 [!code-html[Main](overview/samples/sample2.html)]
 
@@ -123,11 +123,11 @@ Le CDN inclut également la version réduite du script jQuery, que vous pouvez o
 
 [!code-html[Main](overview/samples/sample3.html)]
 
-Pour permettre à votre page à revenir au chargement jQuery à partir d’un chemin d’accès local sur votre propre site Web si le CDN est indisponible, ajoutez l’élément suivant immédiatement après l’élément référençant le CDN :
+Pour permettre à votre page à revenir au chargement de jQuery à partir d’un chemin d’accès local sur votre propre site Web si le CDN est indisponible, ajoutez l’élément suivant immédiatement après l’élément référençant le CDN :
 
 [!code-html[Main](overview/samples/sample4.html)]
 
-L’exemple de page suivant utilise la version CDN de la bibliothèque jQuery (avec basculement vers une copie locale) pour afficher le contenu d’un élément div lorsqu’un clic est effectué.
+L’exemple de page suivant utilise la version CDN de la bibliothèque jQuery (avec le recours à une copie locale) pour afficher le contenu d’un élément div lorsqu’un clic est effectué.
 
 [!code-html[Main](overview/samples/sample5.html)]
 
@@ -135,31 +135,31 @@ Vous pouvez en savoir plus sur jQuery et télécharger une copie locale de jQuer
 
 <a id="Using_jQuery_UI_from_the_CDN_22"></a>
 
-## <a name="using-jquery-ui-from-the-cdn"></a>À l’aide de jQuery UI du CDN
+## <a name="using-jquery-ui-from-the-cdn"></a>À l’aide de jQuery UI à partir du CDN
 
-Le CDN héberge également la bibliothèque jQuery UI. La bibliothèque jQuery UI comprend un ensemble complet de widgets et les effets que vous pouvez utiliser dans vos applications ASP.NET. Par exemple, la page suivante illustre comment vous pouvez utiliser la sélecteur de dates de l’interface utilisateur jQuery dans le contexte d’une application Web Forms ASP.NET pour afficher un calendrier contextuel :
+Le CDN héberge également la bibliothèque jQuery UI. La bibliothèque jQuery UI inclut un ensemble complet de widgets et les effets que vous pouvez utiliser dans vos applications ASP.NET. Par exemple, la page suivante illustre comment vous pouvez utiliser le sélecteur de dates de l’interface utilisateur jQuery dans le contexte d’une application Web Forms ASP.NET pour afficher un calendrier contextuel :
 
 [!code-aspx[Main](overview/samples/sample6.aspx)]
 
 Lorsque vous déplacez le focus vers la zone de texte à l’aide de votre clavier, un calendrier s’affiche :
 
-![Calendrier contextuel créé avec le sélecteur de dates](overview/_static/image1.png)
+![Calendrier contextuel créé par Datepicker](overview/_static/image1.png)
 
-Notez que vous devez inclure les trois fichiers du CDN dans le code ci-dessus :
+Notez que vous devez inclure les trois fichiers à partir du CDN dans le code ci-dessus :
 
 - La bibliothèque jQuery &mdash; la bibliothèque jQuery UI dépend de la bibliothèque jQuery. Vous devez ajouter la bibliothèque jQuery à votre page avant d’ajouter la bibliothèque jQuery UI.
-- La bibliothèque jQuery UI &mdash; la bibliothèque jQuery UI contient tous les effets d’interface utilisateur jQuery et widgets tels que le widget de sélecteur de dates utilisées dans la page ci-dessus.
-- Un thème de l’interface utilisateur jQuery &mdash; jQuery UI prend en charge différents thèmes. La page ci-dessus inclut un lien vers un fichier CSS pour importer le thème de Redmond.
+- La bibliothèque jQuery UI &mdash; la bibliothèque jQuery UI contient tous les effets de l’interface utilisateur jQuery et widgets tels que le widget sélecteur utilisé dans la page ci-dessus.
+- Un thème de l’interface utilisateur jQuery &mdash; prend en charge de l’interface utilisateur jQuery différents thèmes. La page ci-dessus inclut un lien vers un fichier CSS pour importer le thème de Redmond.
 
-Tous les thèmes de l’interface utilisateur jQuery standard sont hébergés sur le CDN. [Visitez cette page](jquery-ui/cdnjqueryui1910.md "jQuery UI 1.8.10 dans le CDN Microsoft Ajax") pour afficher les miniatures pour chaque thème.
+Tous les thèmes de l’interface utilisateur jQuery standard sont hébergés sur le CDN. [Visitez cette page](jquery-ui/cdnjqueryui1910.md "jQuery UI 1.8.10 sur le CDN Microsoft Ajax") d’afficher des miniatures pour chaque thème.
 
-Pour plus d’informations sur la bibliothèque jQuery UI, visitez officielle [site Web de l’interface utilisateur jQuery](http://jQueryUI.com "site Web de l’interface utilisateur jQuery").
+Pour en savoir plus sur la bibliothèque jQuery UI, visitez le fonctionnaire [site Web de l’interface utilisateur jQuery](http://jQueryUI.com "site Web de l’interface utilisateur jQuery").
 
 <a id="Third-Party_Files_on_the_CDN_23"></a>
 
-## <a name="third-party-files-on-the-cdn"></a>Fichiers de tiers dans le CDN
+## <a name="third-party-files-on-the-cdn"></a>Les fichiers tiers sur le CDN
 
-Le CDN héberge certains des bibliothèques JavaScript tiers les plus populaires. Microsoft ne revendique pas la propriété de toutes les bibliothèques tierces hébergées sur ce CDN. Les propriétaires de copyright des bibliothèques de licence ces bibliothèques pour vous. Les droits que vous devrez peut-être télécharger et utiliser ces bibliothèques sont accordées exclusivement par les propriétaires de copyright respectifs. Étant donné que celles-ci ne sont pas des bibliothèques de Microsoft, Microsoft ne fournit aucune garantie ou les licences de droits de propriété intellectuelle (y compris sans droits de brevet implicites) pour les bibliothèques tierces hébergées sur ce CDN.
+Le CDN héberge certaines des bibliothèques JavaScript tierces populaires. Microsoft ne revendique pas la propriété de n’importe quel des bibliothèques tierces hébergées sur ce CDN. Les propriétaires de copyright des bibliothèques utilisent les licences de ces bibliothèques pour vous. Les droits que vous devrez peut-être télécharger et utiliser ces bibliothèques sont accordées exclusivement par les propriétaires des droits d’auteur respectifs. Étant donné que ceux-ci ne sont pas des bibliothèques de Microsoft, Microsoft ne fournit aucune garantie ou les licences de droits de propriété intellectuelle (y compris sans droits de brevet implicites) pour les bibliothèques tierces hébergées sur ce CDN.
 
 <a id="jQuery_Releases_on_the_CDN_0"></a>
 
@@ -210,7 +210,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.slim.min.map
 
-#### <a name="jquery-version-300"></a>version de jQuery 3.0.0
+#### <a name="jquery-version-300"></a>jQuery version 3.0.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js
@@ -225,13 +225,13 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.map
 
-#### <a name="jquery-version-223"></a>version de jQuery 2.2.3
+#### <a name="jquery-version-223"></a>jQuery version 2.2.3
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.map
 
-#### <a name="jquery-version-222"></a>version de jQuery 2.2.2
+#### <a name="jquery-version-222"></a>jQuery version 2.2.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.2.min.js
@@ -243,7 +243,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.map
 
-#### <a name="jquery-version-220"></a>jQuery version2.2.0
+#### <a name="jquery-version-220"></a>jQuery version 2.2.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js
@@ -255,13 +255,13 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.map
 
-#### <a name="jquery-version-213"></a>version de jQuery 2.1.3
+#### <a name="jquery-version-213"></a>jQuery version 2.1.3
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.3.min.map
 
-#### <a name="jquery-version-212"></a>version de jQuery 2.1.2
+#### <a name="jquery-version-212"></a>jQuery version 2.1.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.2.min.js
@@ -272,7 +272,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.map
 
-#### <a name="jquery-version-210"></a>version de jQuery 2.1.0
+#### <a name="jquery-version-210"></a>jQuery version 2.1.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.min.js
@@ -293,7 +293,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.2.min.map
 
-#### <a name="jquery-version-201"></a>version de jQuery 2.0.1
+#### <a name="jquery-version-201"></a>jQuery version 2.0.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.1.min.js
@@ -355,7 +355,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.map
 
-#### <a name="jquery-version-1110"></a>version de jQuery 1.11.0
+#### <a name="jquery-version-1110"></a>jQuery version 1.11.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js
@@ -390,7 +390,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1-vsdoc.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.map
 
-#### <a name="jquery-version-190"></a>version de jQuery à 1.9.0
+#### <a name="jquery-version-190"></a>jQuery version 1.9.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js
@@ -415,7 +415,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.1-vsdoc.js
 
-#### <a name="jquery-version-180"></a>version de jQuery 1.8.0
+#### <a name="jquery-version-180"></a>jQuery version 1.8.0
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js
@@ -432,7 +432,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1-vsdoc.js
 
-#### <a name="jquery-version-17"></a>jQuery version 1.7
+#### <a name="jquery-version-17"></a>version de jQuery 1.7
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js
@@ -456,7 +456,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2-vsdoc.js
 
-#### <a name="jquery-version-161"></a>version de jQuery 1.6.1
+#### <a name="jquery-version-161"></a>jQuery version 1.6.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js
@@ -474,7 +474,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2-vsdoc.js
 
-#### <a name="jquery-version-151"></a>version de jQuery 1.5.1
+#### <a name="jquery-version-151"></a>jQuery version 1.5.1
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js
@@ -498,7 +498,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3.min.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.3-vsdoc.js
 
-#### <a name="jquery-version-142"></a>version de jQuery 1.4.2
+#### <a name="jquery-version-142"></a>dans la version jQuery 1.4.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.2.min.js
@@ -515,7 +515,7 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.min.js
 
-#### <a name="jquery-version-132"></a>version de jQuery 1.3.2
+#### <a name="jquery-version-132"></a>jQuery version 1.3.2
 
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.js
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.3.2.min.js
@@ -528,27 +528,27 @@ Les versions suivantes de jQuery sont hébergées sur le CDN :
 
 Les versions suivantes de jQuery migrer sont hébergées sur le CDN :
 
-#### <a name="jquery-migrate-version-300"></a>jQuery migration version 3.0.0
+#### <a name="jquery-migrate-version-300"></a>jQuery Migrate version 3.0.0
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-3.0.0.min.js
 
-#### <a name="jquery-migrate-version-121"></a>jQuery migration version 1.2.1
+#### <a name="jquery-migrate-version-121"></a>Migrer la version 1.2.1 de jQuery
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js
 
-jQuery migration version 1.2.0
+jQuery version 1.2.0 de migration
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.0.min.js
 
-#### <a name="jquery-migrate-version-111"></a>jQuery migration version 1.1.1
+#### <a name="jquery-migrate-version-111"></a>Migrer la version 1.1.1 de jQuery
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.1.min.js
 
-#### <a name="jquery-migrate-version-110"></a>jQuery migration version 1.1.0.
+#### <a name="jquery-migrate-version-110"></a>jQuery Migrate version 1.1.0.
 
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.0.js
 - https://ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.1.0.min.js
@@ -560,75 +560,75 @@ jQuery migration version 1.2.0
 
 <a id="jQuery_UI_Releases_on_the_CDN_2"></a>
 
-### <a name="jquery-ui-releases-on-the-cdn"></a>jQuery UI mises en production sur le CDN
+### <a name="jquery-ui-releases-on-the-cdn"></a>jQuery UI des versions sur le CDN
 
-Les versions suivantes de la bibliothèque jQuery UI sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
+Les versions suivantes de la bibliothèque de l’interface utilisateur jQuery sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
 
-- [jQuery UI 1.12.1](jquery-ui/cdnjqueryui1121.md "jQuery UI 1.12.1 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.12.0](jquery-ui/cdnjqueryui1120.md "jQuery UI 1.12.0 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.11.4](jquery-ui/cdnjqueryui1114.md "jQuery UI 1.11.4 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.11.3](jquery-ui/cdnjqueryui1113.md "jQuery UI 1.11.3 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.11.2](jquery-ui/cdnjqueryui1112.md "jQuery UI 1.11.2 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.11.1](jquery-ui/cdnjqueryui1111.md "jQuery UI 1.11.1 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.11.0](jquery-ui/cdnjqueryui1110.md "jQuery UI 1.11.0 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.10.4](jquery-ui/cdnjqueryui1104.md "jQuery UI 1.10.4 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.10.3](jquery-ui/cdnjqueryui1103.md "jQuery UI 1.10.3 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.10.2](jquery-ui/cdnjqueryui1102.md "jQuery UI 1.10.2 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.10.1](jquery-ui/cdnjqueryui1101.md "jQuery UI 1.10.1 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.10.0](jquery-ui/cdnjqueryui1100.md "jQuery UI 1.10.0 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.9.2](jquery-ui/cdnjqueryui192.md "jQuery UI 1.9.2 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.9.1](jquery-ui/cdnjqueryui191.md "jQuery UI 1.9.1 dans le CDN Microsoft Ajax")
-- [jQuery UI à 1.9.0](jquery-ui/cdnjqueryui190.md "jQuery UI à 1.9.0 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.24](jquery-ui/cdnjqueryui1824.md "jQuery UI 1.8.24 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.23](jquery-ui/cdnjqueryui1823.md "jQuery UI 1.8.23 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.22](jquery-ui/cdnjqueryui1822.md "jQuery UI 1.8.22 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.21](jquery-ui/cdnjqueryui1821.md "jQuery UI 1.8.21 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.20](jquery-ui/cdnjqueryui1820.md "jQuery UI 1.8.20 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.19](jquery-ui/cdnjqueryui1819.md "jQuery UI 1.8.19 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.18](jquery-ui/cdnjqueryui1818.md "jQuery UI 1.8.18 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.17](jquery-ui/cdnjqueryui1817.md "jQuery UI 1.8.17 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.16](jquery-ui/cdnjqueryui1816.md "jQuery UI 1.8.16 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.15](jquery-ui/cdnjqueryui1815.md "jQuery UI 1.8.15 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.14](jquery-ui/cdnjqueryui1814.md "jQuery UI 1.8.14 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.13](jquery-ui/cdnjqueryui1813.md "jQuery UI 1.8.13 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.12](jquery-ui/cdnjqueryui1812.md "jQuery UI 1.8.12 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.11](jquery-ui/cdnjqueryui1811.md "jQuery UI 1.8.11 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.10](jquery-ui/cdnjqueryui1910.md "jQuery UI 1.8.10 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.9](jquery-ui/cdnjqueryui189.md "jQuery UI 1.8.9 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.8](jquery-ui/cdnjqueryui188.md "jQuery UI 1.8.8 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.7](jquery-ui/cdnjqueryui187.md "jQuery UI 1.8.7 dans le CDN Microsoft Ajax")
-- [jQuery UI 1.8.6](jquery-ui/cdnjqueryui186.md "jQuery UI 1.8.6 dans le CDN Microsoft Ajax")
+- [jQuery UI 1.12.1](jquery-ui/cdnjqueryui1121.md "jQuery UI 1.12.1 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.12.0](jquery-ui/cdnjqueryui1120.md "jQuery UI 1.12.0 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.11.4](jquery-ui/cdnjqueryui1114.md "jQuery UI 1.11.4 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.11.3](jquery-ui/cdnjqueryui1113.md "jQuery UI 1.11.3 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.11.2](jquery-ui/cdnjqueryui1112.md "jQuery UI 1.11.2 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.11.1](jquery-ui/cdnjqueryui1111.md "jQuery UI 1.11.1 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.11.0](jquery-ui/cdnjqueryui1110.md "jQuery UI 1.11.0 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.10.4](jquery-ui/cdnjqueryui1104.md "jQuery UI 1.10.4 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.10.3](jquery-ui/cdnjqueryui1103.md "jQuery UI 1.10.3 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.10.2](jquery-ui/cdnjqueryui1102.md "jQuery UI 1.10.2 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.10.1](jquery-ui/cdnjqueryui1101.md "jQuery UI 1.10.1 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.10.0](jquery-ui/cdnjqueryui1100.md "jQuery UI 1.10.0 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.9.2](jquery-ui/cdnjqueryui192.md "jQuery UI 1.9.2 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.9.1](jquery-ui/cdnjqueryui191.md "jQuery UI 1.9.1 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.9.0](jquery-ui/cdnjqueryui190.md "jQuery UI 1.9.0 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.24](jquery-ui/cdnjqueryui1824.md "jQuery UI 1.8.24 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.23](jquery-ui/cdnjqueryui1823.md "jQuery UI 1.8.23 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.22](jquery-ui/cdnjqueryui1822.md "jQuery UI 1.8.22 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.21](jquery-ui/cdnjqueryui1821.md "jQuery UI 1.8.21 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.20](jquery-ui/cdnjqueryui1820.md "jQuery UI 1.8.20 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.19](jquery-ui/cdnjqueryui1819.md "jQuery UI 1.8.19 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.18](jquery-ui/cdnjqueryui1818.md "jQuery UI 1.8.18 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.17](jquery-ui/cdnjqueryui1817.md "jQuery UI 1.8.17 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.16](jquery-ui/cdnjqueryui1816.md "jQuery UI 1.8.16 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.15](jquery-ui/cdnjqueryui1815.md "jQuery UI 1.8.15 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.14](jquery-ui/cdnjqueryui1814.md "jQuery UI 1.8.14 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.13](jquery-ui/cdnjqueryui1813.md "jQuery UI 1.8.13 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.12](jquery-ui/cdnjqueryui1812.md "jQuery UI 1.8.12 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.11](jquery-ui/cdnjqueryui1811.md "jQuery UI 1.8.11 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.10](jquery-ui/cdnjqueryui1910.md "jQuery UI 1.8.10 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.9](jquery-ui/cdnjqueryui189.md "jQuery UI 1.8.9 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.8](jquery-ui/cdnjqueryui188.md "jQuery UI 1.8.8 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.7](jquery-ui/cdnjqueryui187.md "jQuery UI 1.8.7 sur le CDN Microsoft Ajax")
+- [jQuery UI 1.8.6](jquery-ui/cdnjqueryui186.md "jQuery UI 1.8.6 sur le CDN Microsoft Ajax")
 - [jQuery UI 1.8.5](jquery-ui/cdnjqueryui185.md "jQuery UI 1.8.5")
 
 <a id="jQuery_Validation_Releases_on_the_CDN_3"></a>
 
-### <a name="jquery-validation-releases-on-the-cdn"></a>jQuery Validation mises en production sur le CDN
+### <a name="jquery-validation-releases-on-the-cdn"></a>jQuery Validation des versions sur le CDN
 
 Les versions suivantes de la bibliothèque de Validation jQuery sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
 
-- [jQuery validation 1.17.0](jquery-validate/cdnjqueryvalidate1170.md "jQuery Validation 1.17.0")
-- [jQuery validation 1.16.0](jquery-validate/cdnjqueryvalidate1160.md "jQuery Validation 1.16.0")
-- [jQuery validation 1.15.1](jquery-validate/cdnjqueryvalidate1151.md "jQuery Validation 1.15.1")
-- [jQuery validation 1.15.0](jquery-validate/cdnjqueryvalidate1150.md "jQuery Validation 1.15.0")
-- [jQuery validation 1.14.0](jquery-validate/cdnjqueryvalidate1140.md "jQuery Validation 1.14.0")
-- [jQuery validation 1.13.1](jquery-validate/cdnjqueryvalidate1131.md "jQuery Validation 1.13.1")
-- [jQuery validation 1.13.0](jquery-validate/cdnjqueryvalidate1130.md "jQuery Validation 1.13.0")
-- [jQuery validation 1.12.0](jquery-validate/cdnjqueryvalidate1120.md "jQuery Validation 1.12.0")
-- [jQuery validation 1.11.1](jquery-validate/cdnjqueryvalidate1111.md "jQuery Validation 1.11.1")
-- [jQuery validation 1.11.0](jquery-validate/cdnjqueryvalidate111.md "jQuery Validation 1.11.0")
-- [jQuery validation 1.10.0](jquery-validate/cdnjqueryvalidate110.md "jQuery Validation 1.10.0")
-- [jQuery validation 1.9](jquery-validate/cdnjqueryvalidate19.md "jquery.validate version 1.9")
-- [jQuery validation 1.8.1](jquery-validate/cdnjqueryvalidate181.md "jquery.validate version 1.8.1")
-- [jQuery validation 1.8](jquery-validate/cdnjqueryvalidate18.md "jquery.validate version 1.8")
-- [jQuery validation 1.7](jquery-validate/cdnjqueryvalidate17.md "jquery.validate version 1.7")
-- [jQuery validation 1.6](jquery-validate/cdnjqueryvalidate16.md "jQuery validation 1.6")
-- [jQuery validation 1.5.5](jquery-validate/cdnjqueryvalidate155.md "jQuery validation 1.5.5")
+- [jQuery Validate 1.17.0](jquery-validate/cdnjqueryvalidate1170.md "jQuery Validation 1.17.0")
+- [jQuery Validate 1.16.0](jquery-validate/cdnjqueryvalidate1160.md "jQuery Validation 1.16.0")
+- [jQuery Validate 1.15.1](jquery-validate/cdnjqueryvalidate1151.md "jQuery Validation 1.15.1")
+- [jQuery Validate 1.15.0](jquery-validate/cdnjqueryvalidate1150.md "jQuery Validation 1.15.0")
+- [jQuery Validate 1.14.0](jquery-validate/cdnjqueryvalidate1140.md "jQuery Validation 1.14.0")
+- [jQuery Validate 1.13.1](jquery-validate/cdnjqueryvalidate1131.md "jQuery Validation 1.13.1")
+- [jQuery Validate 1.13.0](jquery-validate/cdnjqueryvalidate1130.md "jQuery Validation 1.13.0")
+- [jQuery Validate 1.12.0](jquery-validate/cdnjqueryvalidate1120.md "jQuery Validation 1.12.0")
+- [jQuery Validate 1.11.1](jquery-validate/cdnjqueryvalidate1111.md "jQuery Validation 1.11.1")
+- [jQuery Validate 1.11.0](jquery-validate/cdnjqueryvalidate111.md "jQuery Validation 1.11.0")
+- [jQuery Validate 1.10.0](jquery-validate/cdnjqueryvalidate110.md "jQuery Validation 1.10.0")
+- [jQuery Validate 1.9](jquery-validate/cdnjqueryvalidate19.md "jquery.validate version 1.9")
+- [jQuery Validate 1.8.1](jquery-validate/cdnjqueryvalidate181.md "jquery.validate version 1.8.1")
+- [jQuery Validate 1.8](jquery-validate/cdnjqueryvalidate18.md "jquery.validate version 1.8")
+- [jQuery Validate 1.7](jquery-validate/cdnjqueryvalidate17.md "jquery.validate version 1.7")
+- [jQuery Validate 1.6](jquery-validate/cdnjqueryvalidate16.md "jQuery Validate 1.6")
+- [jQuery Validate 1.5.5](jquery-validate/cdnjqueryvalidate155.md "jQuery Validate 1.5.5")
 
 <a id="jQuery_Mobile_Releases_on_the_CDN_4"></a>
 
-### <a name="jquery-mobile-releases-on-the-cdn"></a>jQuery Mobile mises en production sur le CDN
+### <a name="jquery-mobile-releases-on-the-cdn"></a>jQuery Mobile des versions sur le CDN
 
-Les versions suivantes de la bibliothèque de jQuery Mobile sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
+Les versions suivantes de la bibliothèque Mobile jQuery sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
 
 - [jQuery Mobile 1.4.5](jquery-mobile/cdnjquerymobile145.md "jQuery Mobile 1.4.5 sur le CDN Microsoft Ajax")
 - [jQuery Mobile 1.4.2](jquery-mobile/cdnjquerymobile142.md "jQuery Mobile 1.4.2 sur le CDN Microsoft Ajax")
@@ -636,7 +636,7 @@ Les versions suivantes de la bibliothèque de jQuery Mobile sont hébergées sur
 - [jQuery Mobile 1.4.0](jquery-mobile/cdnjquerymobile140.md "jQuery Mobile 1.4.0 sur le CDN Microsoft Ajax")
 - [jQuery Mobile 1.3.2](jquery-mobile/cdnjquerymobile132.md "jQuery Mobile 1.3.2 sur le CDN Microsoft Ajax")
 - [jQuery Mobile 1.3.1](jquery-mobile/cdnjquerymobile131.md "jQuery Mobile 1.3.1 sur le CDN Microsoft Ajax")
-- [jQuery Mobile version 1.3.0](jquery-mobile/cdnjquerymobile130.md "jQuery Mobile version 1.3.0 sur le CDN Microsoft Ajax")
+- [jQuery Mobile 1.3.0](jquery-mobile/cdnjquerymobile130.md "jQuery Mobile 1.3.0 sur le CDN Microsoft Ajax")
 - [jQuery Mobile 1.2.0](jquery-mobile/cdnjquerymobile120.md "jQuery Mobile 1.2.0 sur le CDN Microsoft Ajax")
 - [jQuery Mobile 1.1.2](jquery-mobile/cdnjquerymobile112.md "jQuery Mobile 1.1.2 sur le CDN Microsoft Ajax")
 - [jQuery Mobile 1.1.1](jquery-mobile/cdnjquerymobile111.md "jQuery Mobile 1.1.1 sur le CDN Microsoft Ajax")
@@ -650,11 +650,11 @@ Les versions suivantes de la bibliothèque de jQuery Mobile sont hébergées sur
 
 <a id="jQuery_Templates_Releases_on_the_CDN_5"></a>
 
-### <a name="jquery-templates-releases-on-the-cdn"></a>jQuery versions de modèles sur le CDN
+### <a name="jquery-templates-releases-on-the-cdn"></a>jQuery versions des modèles sur le CDN
 
 Les versions suivantes du plug-in de modèles jQuery sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
 
-- [jQuery modèles bêta 1](jquery-templates/cdnjquerytemplatesbeta1.md "jQuery modèles bêta 1")
+- [jQuery Templates bêta 1](jquery-templates/cdnjquerytemplatesbeta1.md "jQuery Templates bêta 1")
 
 <a id="jQuery_Cycle_Releases_on_the_CDN_6"></a>
 
@@ -663,23 +663,23 @@ Les versions suivantes du plug-in de modèles jQuery sont hébergées sur ce CDN
 Les versions suivantes du plug-in du Cycle de jQuery sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
 
 - [jQuery Cycle 2,99](jquery-cycle/cdnjquerycycle299.md "jQuery 2,99 de Cycle")
-- [jQuery Cycle 2.94](jquery-cycle/cdnjquerycycle294.md "jQuery Cycle 2.94")
+- [jQuery Cycle 2.94](jquery-cycle/cdnjquerycycle294.md "jQuery 2.94 de Cycle")
 - [jQuery Cycle 2,88](jquery-cycle/cdnjquerycycle288.md "jQuery 2,88 de Cycle")
 
 <a id="jQuery_DataTables_Releases_on_the_CDN_7"></a>
 
-### <a name="jquery-datatables-releases-on-the-cdn"></a>jQuery versions de tables de données sur le CDN
+### <a name="jquery-datatables-releases-on-the-cdn"></a>sur le CDN, les versions de DataTables de jQuery
 
 Les versions suivantes du plug-in DataTables de jQuery sont hébergées sur ce CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
 
-- [jQuery DataTables 1.10.5](jquery-datatables/cdnjquerydatatables105.md "jQuery DataTables 1.10.5")
-- [jQuery DataTables 1.10.4](jquery-datatables/cdnjquerydatatables104.md "jQuery DataTables 1.10.4")
-- [jQuery DataTables 1.9.4](jquery-datatables/cdnjquerydatatables194.md "jQuery DataTables 1.9.4")
-- [jQuery DataTables 1.9.3](jquery-datatables/cdnjquerydatatables193.md "jQuery DataTables 1.9.3")
-- [jQuery DataTables 1.9.2](jquery-datatables/cdnjquerydatatables192.md "jQuery DataTables 1.9.2")
-- [jQuery DataTables 1.9.1](jquery-datatables/cdnjquerydatatables191.md "jQuery DataTables 1.9.1")
-- [jQuery DataTables à 1.9.0](jquery-datatables/cdnjquerydatatables190.md "jQuery DataTables à 1.9.0")
-- [jQuery DataTables 1.8.2](jquery-datatables/cdnjquerydatatables182.md "jQuery DataTables 1.8.2")
+- [1.10.5 des DataTables jQuery](jquery-datatables/cdnjquerydatatables105.md "1.10.5 des DataTables jQuery")
+- [1.10.4 des DataTables jQuery](jquery-datatables/cdnjquerydatatables104.md "1.10.4 des DataTables jQuery")
+- [1.9.4 des DataTables jQuery](jquery-datatables/cdnjquerydatatables194.md "1.9.4 des DataTables jQuery")
+- [1.9.3 des DataTables jQuery](jquery-datatables/cdnjquerydatatables193.md "1.9.3 des DataTables jQuery")
+- [1.9.2 des DataTables jQuery](jquery-datatables/cdnjquerydatatables192.md "1.9.2 des DataTables jQuery")
+- [1.9.1 des DataTables jQuery](jquery-datatables/cdnjquerydatatables191.md "1.9.1 des DataTables jQuery")
+- [1.9.0 des DataTables jQuery](jquery-datatables/cdnjquerydatatables190.md "1.9.0 des DataTables jQuery")
+- [1.8.2 des DataTables jQuery](jquery-datatables/cdnjquerydatatables182.md "1.8.2 des DataTables jQuery")
 
 <a id="Modernizr_Releases_on_the_CDN_8"></a>
 
@@ -696,7 +696,7 @@ Les versions suivantes de [Modernizr](http://www.modernizr.com "Modernizr") sont
 
 <a id="JSHint_Releases_on_the_CDN_10"></a>
 
-### <a name="jshint-releases-on-the-cdn"></a>Versions de JSHint sur le CDN
+### <a name="jshint-releases-on-the-cdn"></a>Versions JSHint sur le CDN
 
 Les versions suivantes de [JSHint](http://www.jshint.com "JSHint") sont hébergés sur le CDN :
 
@@ -735,7 +735,7 @@ Les versions suivantes de [Knockout](http://www.knockoutjs.com "Knockout") sont 
 
 Les versions suivantes de [Globalize](https://github.com/jquery/globalize "Globalize") sont hébergés sur le CDN :
 
-#### <a name="globalize-version-100"></a>La version 1.0.0 de globalisation
+#### <a name="globalize-version-100"></a>Globaliser version 1.0.0
 
 - https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/globalize.js
 - https://ajax.aspnetcdn.com/ajax/globalize/1.0.0/node-main.js
@@ -755,15 +755,15 @@ Les versions suivantes de [Globalize](https://github.com/jquery/globalize "Globa
     - toutes les cultures
 - https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/cultures/globalize.culture.{culture-code}.js
 
-    - Remplacez « {-code de culture} » avec le code de culture de votre choix, par exemple, les fichiers sur le CDN globalize.culture.en-GB.js== Microsoft == ces bibliothèques ont été téléchargés par Microsoft.
+    - Remplacez « {-code de culture} » par le code de culture souhaitée, par exemple, les fichiers de globalize.culture.en-GB.js== Microsoft sur le CDN == ces bibliothèques ont été téléchargés par Microsoft.
 
 <a id="Respond_Releases_on_the_CDN_13"></a>
 
-### <a name="respond-releases-on-the-cdn"></a>Répondre versions sur le CDN
+### <a name="respond-releases-on-the-cdn"></a>Répondre mises en production sur le CDN
 
 Les versions suivantes de [ https://github.com/scottjehl/Respond ] (https://github.com/scottjehl/Respond " https://github.com/scottjehl/Respond ") répondre sont hébergés sur le CDN :
 
-#### <a name="respond-version-142"></a>Répondre version 1.4.2
+#### <a name="respond-version-142"></a>Dans la version 1.4.2 de répondre
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.2/respond.min.js
@@ -777,18 +777,18 @@ Les versions suivantes de [ https://github.com/scottjehl/Respond ] (https://gith
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.1/respond.matchmedia.addListener.min.js
 
-#### <a name="respond-version-140"></a>Répondre version1.4.0
+#### <a name="respond-version-140"></a>Répondre version 1.4.0
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.min.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.js
 - https://ajax.aspnetcdn.com/ajax/respond/1.4.0/respond.matchmedia.addListener.min.js
 
-#### <a name="respond-version-130"></a>Répondre version version 1.3.0
+#### <a name="respond-version-130"></a>Version 1.3.0 de répondre
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.3.0/respond.js
 
-#### <a name="respond-version-120"></a>Répondre version 1.2.0
+#### <a name="respond-version-120"></a>Version 1.2.0 de répondre
 
 - https://ajax.aspnetcdn.com/ajax/respond/1.2.0/respond.js
 
@@ -798,18 +798,19 @@ Les versions suivantes de [ https://github.com/scottjehl/Respond ] (https://gith
 
 Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstrap.com") bootstrap sont hébergés sur le CDN :
 
-#### <a name="bootstrap-version-400"></a>Amorçage version 4.0.0
+#### <a name="bootstrap-version-400"></a>Démarrer la version 4.0.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.css.map
 - https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap.min.css
-- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.eot
-- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.svg
-- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.ttf
-- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff
-- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/fonts/glyphicons-halflings-regular.woff2
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-grid.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-grid.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-grid.css.map
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-reboot.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-reboot.min.css
+- https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/css/bootstrap-reboot.css.map
 
 #### <a name="bootstrap-version-337"></a>Version d’amorçage 3.3.7
 
@@ -843,7 +844,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-335"></a>Amorçage version 3.3.5
+#### <a name="bootstrap-version-335"></a>Démarrer la version 3.3.5
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js
@@ -891,7 +892,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/fonts/glyphicons-halflings-regular.woff2
 
-#### <a name="bootstrap-version-331"></a>Version d’amorçage 3.3.1
+#### <a name="bootstrap-version-331"></a>Démarrer la version 3.3.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/bootstrap.min.js
@@ -906,7 +907,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.1/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-330"></a>Version d’amorçage 3.3.0
+#### <a name="bootstrap-version-330"></a>Démarrer la version 3.3.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.0/bootstrap.min.js
@@ -951,7 +952,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.1/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-310"></a>Amorçage version 3.1.0
+#### <a name="bootstrap-version-310"></a>Démarrer la version 3.1.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.1.0/bootstrap.min.js
@@ -992,7 +993,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.2/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-301"></a>Version d’amorçage 3.0.1
+#### <a name="bootstrap-version-301"></a>Démarrer la version 3.0.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/bootstrap.min.js
@@ -1005,7 +1006,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.1/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-300"></a>Version d’amorçage 3.0.0
+#### <a name="bootstrap-version-300"></a>Démarrer la version 3.0.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js
@@ -1018,7 +1019,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.ttf
 - https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/fonts/glyphicons-halflings-regular.woff
 
-#### <a name="bootstrap-version-232"></a>Amorçage version 2.3.2
+#### <a name="bootstrap-version-232"></a>Démarrer la version 2.3.2
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/bootstrap.min.js
@@ -1029,7 +1030,7 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings.png
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.2/img/glyphicons-halflings-white.png
 
-#### <a name="bootstrap-version-231"></a>Amorçage version 2.3.1
+#### <a name="bootstrap-version-231"></a>Démarrer la version 2.3.1
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.js
 - https://ajax.aspnetcdn.com/ajax/bootstrap/2.3.1/bootstrap.min.js
@@ -1044,16 +1045,16 @@ Les versions suivantes de [getbootstrap.com](http://getbootstrap.com "getbootstr
 
 ### <a name="bootstrap-touchcarousel-releases-on-the-cdn"></a>Versions TouchCarousel d’amorçage sur le CDN
 
-Les versions suivantes de [ https://github.com/ixisio/bootstrap-touch-carousel ] (https://github.com/ixisio/bootstrap-touch-carousel " https://github.com/ixisio/bootstrap-touch-carousel ") TouchCarousel du programme d’amorçage versions sont hébergées sur le CDN :
+Les versions suivantes de [ https://github.com/ixisio/bootstrap-touch-carousel ] (https://github.com/ixisio/bootstrap-touch-carousel " https://github.com/ixisio/bootstrap-touch-carousel ") Bootstrap TouchCarousel versions sont hébergées sur le CDN :
 
-#### <a name="bootstrap-touchcarousel-version-080"></a>Amorçage TouchCarousel version 0.8.0
+#### <a name="bootstrap-touchcarousel-version-080"></a>Démarrage TouchCarousel version 0.8.0
 
 - https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/css/bootstrap-touch-carousel.css
 - https://ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js
 
 <a id="Hammerjs_Releases_on_the_CDN_19"></a>
 
-### <a name="hammerjs-releases-on-the-cdn"></a>Versions de Hammer.js sur le CDN
+### <a name="hammerjs-releases-on-the-cdn"></a>Versions hammer.js sur le CDN
 
 Les versions suivantes de [ http://hammerjs.github.io/ ] (http://hammerjs.github.io/ " http://hammerjs.github.io/ ") Hammer.js versions sont hébergées sur le CDN :
 
@@ -1065,19 +1066,19 @@ Les versions suivantes de [ http://hammerjs.github.io/ ] (http://hammerjs.github
 
 <a id="ASPNET_Web_Forms_and_Ajax_Releases_on_the_CDN_15"></a>
 
-### <a name="aspnet-web-forms-and-ajax-releases-on-the-cdn"></a>Web Forms ASP.NET et Ajax mises en production sur le CDN
+### <a name="aspnet-web-forms-and-ajax-releases-on-the-cdn"></a>ASP.NET Web Forms et les versions Ajax sur le CDN
 
-Les versions suivantes de la bibliothèque ASP.NET Ajax sont hébergées sur le CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
+Les versions suivantes de la bibliothèque Ajax ASP.NET sont hébergées sur le CDN. Cliquez sur chaque lien pour afficher la liste réelle des fichiers.
 
-- [Version de Web Forms ASP.NET et Ajax 4.5.2](cdnajax452.md "Web Forms ASP.NET et Ajax 4.5.2")
-- [Version de Web Forms ASP.NET et Ajax 4](cdnajax4.md "Web Forms ASP.NET et Ajax 4")
-- [ASP.NET Ajax version 3.5](cdnajax35.md "ASP.NET Ajax 3.5")
+- [Version de Web Forms ASP.NET et Ajax 4.5.2](cdnajax452.md "ASP.NET Web Forms et Ajax 4.5.2")
+- [Version de Web Forms ASP.NET et Ajax 4](cdnajax4.md "ASP.NET Web Forms et Ajax 4")
+- [ASP.NET Ajax version 3.5](cdnajax35.md "Ajax d’ASP.NET 3.5")
 
 <a id="ASPNET_MVC_Releases_on_the_CDN_16"></a>
 
-### <a name="aspnet-mvc-releases-on-the-cdn"></a>ASP.NET MVC publie le CDN
+### <a name="aspnet-mvc-releases-on-the-cdn"></a>ASP.NET MVC versions sur le CDN
 
-Les fichiers ASP.NET MVC JavaScript suivants sont hébergés sur ce CDN :
+Les fichiers JavaScript d’ASP.NET MVC suivants sont hébergés sur ce CDN :
 
 #### <a name="aspnet-mvc-523"></a>ASP.NET MVC 5.2.3
 
@@ -1103,8 +1104,12 @@ Les fichiers ASP.NET MVC JavaScript suivants sont hébergés sur ce CDN :
 
 - https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.js
 - https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.js
+- https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js 
 - https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.js
 - https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js
+- https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.js 
+- https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js
 - https://ajax.aspnetcdn.com/ajax/mvc/3.0/MicrosoftMvcAjax.js
 - https://ajax.aspnetcdn.com/ajax/mvc/3.0/MicrosoftMvcAjax.debug.js
 
@@ -1120,7 +1125,7 @@ Les fichiers ASP.NET MVC JavaScript suivants sont hébergés sur ce CDN :
 
 <a id="ASPNET_SignalR_Releases_on_the_CDN_17"></a>
 
-### <a name="aspnet-signalr-releases-on-the-cdn"></a>ASP.NET SignalR publie le CDN
+### <a name="aspnet-signalr-releases-on-the-cdn"></a>ASP.NET SignalR libère sur le CDN
 
 Les fichiers ASP.NET SignalR JavaScript suivants sont hébergés sur ce CDN :
 
@@ -1129,7 +1134,7 @@ Les fichiers ASP.NET SignalR JavaScript suivants sont hébergés sur ce CDN :
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.js
 
-#### <a name="aspnet-signalr-221"></a>ASP.NET SignalR 2.2.1
+#### <a name="aspnet-signalr-221"></a>SignalR ASP.NET 2.2.1
 
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.min.js
 - https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.1.js

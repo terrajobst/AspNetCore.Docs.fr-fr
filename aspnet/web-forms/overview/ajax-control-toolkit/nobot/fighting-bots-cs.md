@@ -1,56 +1,55 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
-title: Lutte contre robots (c#) | Documents Microsoft
+title: Lutte contre les robots (c#) | Microsoft Docs
 author: wenz
-description: Robots automatisés coller les blogs et autres sites Web avec courrier indésirable, l’envoi de formulaires de commentaire sans intervention de l’utilisateur. Le contrôle NoBot dans la Con AJAX ASP.NET...
+description: Les robots automatisés plâtre weblogs et autres sites Web indésirable, envoyer des formulaires de commentaire sans interaction de l’utilisateur. Le contrôle nobot de dans la Con AJAX ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 0a1917e0-884a-4576-8e93-9ed660faae51
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1ea3aaa5461c2f58a927ae975568f18a34a4729b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 41e8fda5138e4a94e7b8c4af0a5c2bd68e50e9e1
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30872011"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37402718"
 ---
-<a name="fighting-bots-c"></a>Lutte contre robots (c#)
+<a name="fighting-bots-c"></a>Lutte contre les robots (c#)
 ====================
 par [Christian Wenz](https://github.com/wenz)
 
 [Télécharger le Code](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/NoBot0.cs.zip) ou [télécharger le PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/nobot0CS.pdf)
 
-> Robots automatisés coller les blogs et autres sites Web avec courrier indésirable, l’envoi de formulaires de commentaire sans intervention de l’utilisateur. Le contrôle NoBot dans les outils de contrôle ASP.NET AJAX permettent de combattre les robots.
+> Les robots automatisés plâtre weblogs et autres sites Web indésirable, envoyer des formulaires de commentaire sans interaction de l’utilisateur. Le contrôle nobot de dans ASP.NET AJAX Control Toolkit peut aider à lutter contre ces robots.
 
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Robots automatisés coller les blogs et autres sites Web avec courrier indésirable, l’envoi de formulaires de commentaire sans intervention de l’utilisateur. Le contrôle NoBot dans les outils de contrôle ASP.NET AJAX permettent de combattre les robots.
+Les robots automatisés plâtre weblogs et autres sites Web indésirable, envoyer des formulaires de commentaire sans interaction de l’utilisateur. Le contrôle nobot de dans ASP.NET AJAX Control Toolkit peut aider à lutter contre ces robots.
 
 ## <a name="steps"></a>Étapes
 
-Une approche commune pour lutter robots est CAPTCHAs entièrement automatisée publique Turing test permet d’indiquer les uns des autres utilisateurs et ordinateurs. Un test Turing a été initialement un test sur lequel un utilisateur nécessaires pour déterminer si un partenaire de communication est un être humain ou un ordinateur. Dans le site web, un test CAPTCHA se compose généralement d’une image avec certaines lettres déformées sur celui-ci. L’idée est que seulement une personne peut lire les lettres de l’image, tandis que les algorithmes OCR échouera.
+Une approche courante pour passer outre les robots consiste à utiliser des CAPTCHAs entièrement automatisée publique Turing test pour indiquer les ordinateurs et les uns des autres êtres humains. Un test Turing a été initialement un test où quelqu'un nécessaire pour décider si un partenaire de communication est un être humain ou un ordinateur. Dans le site web, un CAPTCHA se compose généralement d’une image avec certaines lettres déformées dessus. L’idée est qu’uniquement un humain peut lire les lettres de l’image, tandis que les algorithmes de reconnaissance optique de caractères échoue.
 
-Il existe plusieurs avantages et inconvénients de cette approche, mais une discussion de ce est dépasse le cadre de ce didacticiel. Il existe toutefois un contrôle dans les outils de contrôle ASP.NET AJAX qui fournit une approche similaire : `NoBot`. Il est plus facile de résoudre à un test CAPTCHA, mais est très facile à utiliser et tarifs parfaitement sur les sites Web tels que des blogs, où il est considéré comme un succès si la plupart des tentatives de spam invalidées, ce qui le `NoBot` peut faire.
+Il existe plusieurs avantages et inconvénients de cette approche, mais une discussion de ce est dépasse le cadre de ce didacticiel. Il existe cependant un contrôle dans ASP.NET AJAX Control Toolkit qui offre une approche similaire : `NoBot`. Il est plus facile à surmonter à un test CAPTCHA, mais il est très facile à utiliser et tarifs très bien sur les sites Web tels que des blogs où il est considéré comme un succès si la plupart des tentatives de spam sont vaincus, ce qui le `NoBot` peut faire.
 
-`NoBot` intercepte la publication du formulaire web ASP.NET en cours si au moins une des conditions suivantes est remplie :
+`NoBot` intercepte la publication (postback) du formulaire web ASP.NET en cours si au moins une des conditions suivantes est remplie :
 
-- Le navigateur ne parvient pas à résoudre un puzzle JavaScript (par exemple lorsque JavaScript est désactivé)
+- Le navigateur ne parvient pas à résoudre un puzzle JavaScript (par exemple quand JavaScript est désactivé)
 - L’utilisateur a envoyé le formulaire à rapide
-- L’adresse IP du client a envoyé le formulaire trop souvent dans un certain temps.
+- L’adresse IP du client a envoyé le formulaire trop souvent dans un certain laps de temps.
 
-Pour vérifier ces conditions, la `NoBot` contrôle requiert ces attributs (tous les facultatif) :
+Pour vérifier ces conditions, la `NoBot` contrôle nécessite ces attributs (d'entre eux facultatif) :
 
 - `ResponseMinimumDelaySeconds` quantité minimale de secondes entre les publications (postback)
 - `CutoffWindowSeconds` longueur d’intervalle de temps dans laquelle les publications (postback) à partir d’une adresse IP est des mesures
 - `CutoffMaximumInstances` quantité maximale de l’intervalle de temps, en secondes
 
-Les demandes de balisage suivant au moins deux secondes s’écoulent entre publications (postback) et qu’il existe cinq publications (postback) ou moins dans un intervalle de 30 secondes :
+Les demandes de balisage suivant au moins deux secondes s’écoulent entre publications (postback) et qu’il existe des publications que cinq maximum dans un intervalle de 30 secondes :
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample1.aspx)]
 
@@ -58,20 +57,20 @@ Comme d’habitude veillez à inclure le `ScriptManager` dans la page afin que l
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample2.aspx)]
 
-Puisque la majorité des contrôles `NoBot` fait se produisent sur le côté serveur, vous devez vérifier le résultat de ces validations. Cela peut être effectué en appelant `NoBot`de `IsValid()` (méthode). Il possède un seul argument (comme un `out` paramètre /`ByRef` paramètre) qui est de type `NoBotState`. Représentation sous forme de chaîne contient la raison lorsque la vérification échoue et `Valid` dans le cas contraire. Le code suivant génère un message en fonction de `NoBot`du résultat :
+Car la plupart des vérifications `NoBot` fait se produisent sur le côté serveur, vous devez vérifier le résultat de ces validations. Cela est possible en appelant `NoBot`de `IsValid()` (méthode). Il possède un seul argument (comme un `out` paramètre /`ByRef` paramètre) qui est de type `NoBotState`. Sa représentation sous forme de chaîne contient la raison en cas d’échec de la vérification et `Valid` dans le cas contraire. Le code suivant génère un message en fonction de `NoBot`du résultat :
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample3.aspx)]
 
-Enfin, vous avez besoin d’un formulaire à envoyer et un élément de l’étiquette pour le message de sortie, et que vous avez terminé !
+Enfin, vous avez besoin d’un formulaire à envoyer et un élément d’étiquette pour le message de sortie, et que vous avez terminé !
 
 [!code-aspx[Main](fighting-bots-cs/samples/sample4.aspx)]
 
-Lorsque vous exécutez ce script et désactivez JavaScript ou envoyez le formulaire dans les deux premières secondes ou envoyez le formulaire sept fois dans les 30 secondes, vous obtiendrez un message d’erreur. Toutefois utiliser judicieusement ce contrôle, environ 90-95 % des utilisateurs ayant JavaScript activé, par conséquent, 5 et 10 % des utilisateurs ne sera pas `NoBot`du test.
+Lorsque vous exécutez ce script et désactivez JavaScript ou envoyez le formulaire dans les deux premières secondes ou soumettez le formulaire sept fois au sein de trente secondes, vous obtiendrez un message d’erreur. Toutefois utiliser ce contrôle avec soin, puisque qu’environ 90 à 95 % des utilisateurs ont JavaScript activated, par conséquent 5-10 % des utilisateurs ne sera pas `NoBot`du test.
 
 
-[![Ce message d’erreur peut être dû à un bot](fighting-bots-cs/_static/image2.png)](fighting-bots-cs/_static/image1.png)
+[![Ce message d’erreur peut être dû à un robot](fighting-bots-cs/_static/image2.png)](fighting-bots-cs/_static/image1.png)
 
-Ce message d’erreur peut être dû à un bot ([cliquez pour afficher l’image en taille réelle](fighting-bots-cs/_static/image3.png))
+Ce message d’erreur peut être dû à un robot ([cliquez pour afficher l’image en taille réelle](fighting-bots-cs/_static/image3.png))
 
 > [!div class="step-by-step"]
 > [Next](fighting-bots-vb.md)

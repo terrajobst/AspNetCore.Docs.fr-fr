@@ -7,16 +7,15 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.topic: article
-ms.prod: .net-framework
 ms.technology: dotnet-mvc
 ms.devlang: dotnet
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 7a580c6c6236b375ea54ef4e9978fff6993d885a
-ms.sourcegitcommit: b83a5f731a9c02bdb1cc1e3f9a8bf273eb5b33e0
+ms.openlocfilehash: fa010e795878b26c79dbe04ef0017373283c4269
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29143187"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37403017"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Migration d’applications ASP.NET MVC vers des conteneurs Windows
 
@@ -75,7 +74,7 @@ Cliquez sur **Publier** ; Visual Studio copie alors toutes les ressources néce
 Définissez votre image Docker dans un fichier Dockerfile. Ce fichier contient des instructions pour l’image de base, des composants supplémentaires, l’application que vous souhaitez exécuter et d’autres images de configuration.  Le fichier Dockerfile est le paramètre d’entrée de la commande `docker build`, qui crée l’image.
 
 Vous allez générer une image basée sur l’image `microsoft/aspnet` qui se trouve sur le [Hub Docker](https://hub.docker.com/r/microsoft/aspnet/).
-L’image de base, `microsoft/aspnet`, est une image Windows Server. Il contient Windows Server Core, IIS et ASP.NET 4.6.2. Quand vous exécutez cette image dans votre conteneur, elle démarre automatiquement IIS et tous les sites web installés.
+L’image de base, `microsoft/aspnet`, est une image Windows Server. Elle contient Windows Server Core, IIS et ASP.NET 4.6.2. Quand vous exécutez cette image dans votre conteneur, elle démarre automatiquement IIS et tous les sites web installés.
 
 Le fichier Dockerfile qui crée votre image ressemble à ceci :
 
@@ -89,7 +88,7 @@ FROM microsoft/aspnet
 COPY ./bin/Release/PublishOutput/ /inetpub/wwwroot
 ```
 
-Ce fichier Dockerfile ne comprend pas de commande `ENTRYPOINT`. Vous n’en avez pas besoin. Lorsque vous exécutez Windows Server avec les services IIS, le processus IIS est le point d’entrée, qui est configuré pour démarrer dans l’image de base aspnet.
+Ce fichier Dockerfile ne comprend pas de commande `ENTRYPOINT`. Vous n’en avez pas besoin. Lorsque vous exécutez Windows Server avec IIS, le processus IIS est le point d’entrée, qui est configuré pour démarrer dans l’image de base aspnet.
 
 Exécutez la commande de génération Docker pour créer l’image qui exécute votre application ASP.NET. Pour ce faire, ouvrez une fenêtre PowerShell dans le répertoire de votre projet et tapez la commande suivante dans le répertoire de solution :
 
@@ -127,7 +126,7 @@ La portion `--name randomanswers` donne un nom au conteneur en cours d’exécut
 ## <a name="verify-in-the-browser"></a>Vérifier dans le navigateur
 
 > [!NOTE]
-> Avec la version actuelle de conteneur Windows, vous ne pouvez pas rechercher `http://localhost`.
+> Avec la version actuelle de conteneur de Windows, vous ne pouvez pas accéder à `http://localhost`.
 > Il s’agit d’un comportement connu dans WinNAT qui va être résolu. En attendant, vous devez utiliser l’adresse IP du conteneur.
 
 Une fois le conteneur démarré, recherchez son adresse IP pour pouvoir vous connecter à votre conteneur en cours d’exécution à partir d’un navigateur :
@@ -137,7 +136,7 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" randomanswers
 172.31.194.61
 ```
 
-Se connecter au conteneur en cours d’exécution à l’aide de l’adresse IPv4, `http://172.31.194.61` dans l’exemple suivant. Tapez cette URL dans votre navigateur ; vous devriez voir le site en cours d’exécution.
+Connectez-vous au conteneur en cours d’exécution à l’aide de l’adresse IPv4, `http://172.31.194.61` dans l’exemple indiqué. Tapez cette URL dans votre navigateur ; vous devriez voir le site en cours d’exécution.
 
 > [!NOTE]
 > Certains logiciels VPN ou proxy peuvent vous empêcher d’accéder à votre site.

@@ -1,68 +1,67 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/installing-helpers
-title: L’installation d’un programme d’assistance dans une application Web Pages (Razor) Site | Documents Microsoft
+title: Installation d’un Helper dans une application Web Pages (Razor) Site | Microsoft Docs
 author: tfitzmac
-description: Cet article décrit comment installer un programme d’assistance dans un site Web ASP.NET Web Pages (Razor). Un programme d’assistance est un composant réutilisable qui inclut le code et le balisage pour par...
+description: Cet article décrit comment installer une application auxiliaire dans un site Web ASP.NET Web Pages (Razor). Une application d’assistance est un composant réutilisable qui inclut le code et la balise par...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/18/2014
 ms.topic: article
 ms.assetid: 5e968ead-906a-45ea-ac2a-c70e57e1a9b1
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/installing-helpers
 msc.type: authoredcontent
-ms.openlocfilehash: 766fbb87ae8bcb8917eb8fa7f552c00792242cf6
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 38290fd47355e7893eddd1f867f47b113b54ca7e
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30896774"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37361804"
 ---
-<a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a>L’installation d’un programme d’assistance dans un Site de Pages (Razor) Web ASP.NET
+<a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a>Installation d’un Helper dans un Site ASP.NET Web Pages (Razor)
 ====================
 par [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Cet article décrit comment installer un programme d’assistance dans un site Web ASP.NET Web Pages (Razor). A *assistance* est un composant réutilisable qui inclut le code et le balisage pour effectuer une tâche qui peut être fastidieux ou complexe.
+> Cet article décrit comment installer une application auxiliaire dans un site Web ASP.NET Web Pages (Razor). Un *helper* est un composant réutilisable qui inclut le code et le balisage pour effectuer une tâche qui peut être fastidieux ou complexes.
 > 
 > Ce que vous allez apprendre :
 > 
-> - Comment installer un programme d’assistance d’un site Web créé à l’aide de WebMatrix 3.
+> - Comment installer une application auxiliaire dans un site Web créé à l’aide de WebMatrix 3.
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>Versions du logiciel utilisées dans le didacticiel
+> ## <a name="software-versions-used-in-the-tutorial"></a>Versions des logiciels utilisées dans le didacticiel
 > 
 > 
 > - WebMatrix 3
 
 
-## <a name="overview-of-helpers"></a>Vue d’ensemble des applications d’assistance
+## <a name="overview-of-helpers"></a>Vue d’ensemble des programmes d’assistance
 
-Certaines tâches que les utilisateurs souhaitent souvent sur les pages web nécessitent une grande quantité de code ou nécessitent des connaissances supplémentaires. Exemples incluent l’affichage d’un graphique pour les données ; placer un bouton « Suivre » de Twitter sur une page ; envoi de courrier électronique à partir de votre site Web ; rognage ou redimensionner des images ; à l’aide de PayPal pour votre site. Pour faciliter la faire de ces types d’éléments différents, les Pages Web ASP.NET vous permet d’utiliser *programmes d’assistance*. Il s’agit de composants que vous installez pour un site et qui permettent de vous effectuent les tâches classiques à l’aide de seulement une ou deux lignes de code Razor.
+Certaines tâches que les gens souhaitent souvent à faire sur les pages web ont besoin de beaucoup de code ou requièrent des connaissances supplémentaires. Exemples incluent l’affichage d’un graphique pour les données ; placer un bouton « Suivre » de Twitter sur une page ; envoi d’e-mails à partir de votre site Web ; rognage ou redimensionnement d’images ; à l’aide de PayPal pour votre site. Pour le rendre facile à réaliser ce types d’éléments différents, les Pages Web ASP.NET vous permet d’utiliser *helpers*. Programmes d’assistance sont des composants que vous installez pour un site et qui permettent de vous effectuent les tâches standard en utilisant simplement une ou deux lignes de code Razor.
 
-Les Pages Web ASP.NET a plusieurs programmes d’assistance intégrées. Toutefois, les nombreuses applications auxiliaires sont disponibles dans des packages (compléments) qui sont fournies à l’aide du Gestionnaire de package NuGet. NuGet vous permet de sélectionner un package à installer et puis elle s’occupe de tous les détails de l’installation.
+Les Pages Web ASP.NET a quelques helpers intégrés. Toutefois, nombreux helpers sont disponibles dans les packages (compléments) qui sont fournies à l’aide du Gestionnaire de package NuGet. NuGet vous permet de sélectionner un package à installer, et il s’occupe ensuite de tous les détails de l’installation.
 
-## <a name="installing-a-helper-in-webmatrix-3"></a>L’installation d’un programme d’assistance dans WebMatrix 3
+## <a name="installing-a-helper-in-webmatrix-3"></a>Installation d’un Helper dans WebMatrix 3
 
-1. Dans WebMatrix, 3, cliquez sur le **NuGet** bouton.
+1. Dans WebMatrix 3, cliquez sur le **NuGet** bouton.
 
-    ![Boîte de dialogue de la galerie NuGet dans WebMatrix](installing-helpers/_static/image1.png)
+    ![Boîte de dialogue galerie NuGet dans WebMatrix](installing-helpers/_static/image1.png)
 2. Cela lance le Gestionnaire de package NuGet et affiche les packages disponibles. Dans la zone de recherche, entrez un mot clé pour l’application d’assistance que vous souhaitez installer.
 
-    ![Boîte de dialogue de la galerie NuGet dans WebMatrix](installing-helpers/_static/image2.png)
+    ![Boîte de dialogue galerie NuGet dans WebMatrix](installing-helpers/_static/image2.png)
 3. Sélectionnez le package, puis cliquez **installer**. Cliquez sur **Oui** lorsque vous êtes invité à installer le package et d’indiquer que vous acceptez les termes du contrat.
 
      S’il s’agit de la première fois que vous avez installé une application d’assistance, NuGet crée des dossiers dans votre site Web pour le code de l’application d’assistance.
-4. Pour désinstaller un programme d’assistance, cliquez sur le **galerie** , sur le **installé** onglet et sélectionnez le package que vous souhaitez désinstaller.
+4. Pour désinstaller un programme d’assistance, cliquez sur le **galerie** bouton, cliquez sur le **installé** onglet et sélectionnez le package que vous souhaitez désinstaller.
 
-## <a name="installing-the-twitter-helper"></a>L’installation de l’application auxiliaire Twitter
+## <a name="installing-the-twitter-helper"></a>L’installation du programme d’assistance de Twitter
 
-La dernière version de l’API Twitter n’est pas compatible avec l’application d’assistance Twitter qu'installer via NuGet. Au lieu de cela, consultez le [application auxiliaire Twitter avec WebMatrix](twitter-helper.md) rubrique pour plus d’informations sur la façon de configurer l’application d’assistance de Twitter dans votre projet.
+La dernière version de l’API Twitter n’est pas compatible avec l’application d’assistance Twitter que vous installez via NuGet. Au lieu de cela, consultez le [application auxiliaire Twitter avec WebMatrix](twitter-helper.md) rubrique pour plus d’informations sur la configuration du programme d’assistance de Twitter dans votre projet.
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 
-[Présentation ASP.NET Web Pages 2 - notions de base de programmation](../getting-started/introducing-razor-syntax-c.md)
+[Présentation d’ASP.NET Web Pages 2 - notions de programmation](../getting-started/introducing-razor-syntax-c.md)
 
-[Application auxiliaire WebMatrix Twitter](twitter-helper.md)
+[Helper Twitter avec WebMatrix](twitter-helper.md)
