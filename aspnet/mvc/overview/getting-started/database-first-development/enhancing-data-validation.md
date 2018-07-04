@@ -1,38 +1,37 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/enhancing-data-validation
-title: 'Base de données EF tout d’abord avec ASP.NET MVC : amélioration de la Validation des données | Documents Microsoft'
+title: 'EF Database First avec ASP.NET MVC : amélioration de la Validation des données | Microsoft Docs'
 author: tfitzmac
-description: À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
+description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/29/2014
 ms.topic: article
 ms.assetid: 0ed5e67a-34c0-4b57-84a6-802b0fb3cd00
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/enhancing-data-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 8ea2e94db7956b76c5ccf0a139ac024e38910b49
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: a328aa8aec2c512d77ddabec31b3785b8742e018
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30879606"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37376712"
 ---
-<a name="ef-database-first-with-aspnet-mvc-enhancing-data-validation"></a>Base de données EF tout d’abord avec ASP.NET MVC : amélioration de la Validation des données
+<a name="ef-database-first-with-aspnet-mvc-enhancing-data-validation"></a>EF Database First avec ASP.NET MVC : amélioration de la Validation des données
 ====================
 par [Tom FitzMacken](https://github.com/tfitzmac)
 
-> À l’aide de la structure d’ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment automatiquement générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer des données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données.
+> À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer automatiquement les données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données.
 > 
-> Cette partie de la série se concentre sur l’ajout d’annotations de données au modèle de données pour spécifier les exigences de validation et afficher la mise en forme. Il a été améliorée en fonction des commentaires des utilisateurs dans la section commentaires.
+> Cette partie de la série se concentre sur l’ajout d’annotations de données au modèle de données pour spécifier les exigences de validation et afficher la mise en forme. Il a été amélioré en se basant sur les commentaires des utilisateurs dans la section commentaires.
 
 
 ## <a name="add-data-annotations"></a>Ajouter des annotations de données
 
-Comme vous l’avez vu dans une rubrique précédente, certaines règles de validation de données sont automatiquement appliquées à l’entrée d’utilisateur. Par exemple, vous pouvez fournir uniquement un nombre pour la propriété de classe. Pour spécifier plusieurs règles de validation de données, vous pouvez ajouter des annotations de données à votre classe de modèle. Ces annotations sont appliquées dans l’ensemble de votre application web pour la propriété spécifiée. Vous pouvez également appliquer des attributs de mise en forme qui modifient la façon dont les propriétés sont affichées ; comme la modification de la valeur utilisée pour les étiquettes de texte.
+Comme vous l’avez vu dans une rubrique précédente, certaines règles de validation de données sont automatiquement appliquées à l’entrée utilisateur. Par exemple, vous pouvez fournir uniquement un nombre pour la propriété de classe. Pour spécifier plusieurs règles de validation de données, vous pouvez ajouter des annotations de données à votre classe de modèle. Ces annotations sont appliquées dans toute votre application web pour la propriété spécifiée. Vous pouvez également appliquer des attributs de mise en forme qui modifient la façon dont les propriétés sont affichées ; comme la modification de la valeur utilisée pour les étiquettes de texte.
 
-Dans ce didacticiel, vous allez ajouter des annotations de données pour limiter la longueur des valeurs fournies pour les propriétés FirstName, LastName et MiddleName. Dans la base de données, ces valeurs sont limités à 50 caractères. Toutefois, dans votre application web ce caractère est actuellement pas appliqué. Si un utilisateur fournit plus de 50 caractères pour l’une de ces valeurs, la page se bloque quand vous tentez d’enregistrer la valeur dans la base de données. Vous allez également restreindre le niveau pour les valeurs comprises entre 0 et 4.
+Dans ce didacticiel, vous allez ajouter des annotations de données pour limiter la longueur des valeurs fournies pour les propriétés FirstName, LastName et MiddleName. Dans la base de données, ces valeurs sont limitées à 50 caractères ; Toutefois, dans votre application web cette limite de caractère n’est actuellement pas appliquée. Si un utilisateur fournit plus de 50 caractères pour l’une de ces valeurs, la page se bloque lorsque vous tentez d’enregistrer la valeur dans la base de données. Vous allez également restreindre le niveau pour les valeurs comprises entre 0 et 4.
 
 Ouvrez le **Student.cs** de fichiers dans le **modèles** dossier. Ajoutez le code en surbrillance suivant à la classe.
 
@@ -48,27 +47,27 @@ Accédez à une page de modification ou de création d’un étudiant. Si vous e
 
 ![afficher le message d’erreur](enhancing-data-validation/_static/image1.png)
 
-Accédez à la page de modification des inscriptions et tentent de fournir un niveau au-dessus de 4.
+Accédez à la page à modifier les inscriptions et tente de fournir un niveau au-dessus de 4.
 
-![Erreur de plage de niveau](enhancing-data-validation/_static/image2.png)
+![Erreur de plage de qualité](enhancing-data-validation/_static/image2.png)
 
 Pour obtenir une liste complète des annotations de validation de données que vous pouvez appliquer aux classes et propriétés, consultez [System.ComponentModel.DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx).
 
 ## <a name="add-metadata-classes"></a>Ajouter des classes de métadonnées
 
-Ajout d’attributs de validation directement à la classe de modèle fonctionne lorsque vous ne prévoyez pas de la base de données pour modifier ; Toutefois, si vos modifications de la base de données et que vous devez régénérer la classe de modèle, vous perdrez tous les attributs que vous aviez appliqué à la classe de modèle. Cette approche peut être très inefficace et sujette à la perte des règles de validation importantes.
+Ajout d’attributs de validation directement à la classe de modèle fonctionne lorsque vous ne prévoyez pas de la base de données pour modifier ; Toutefois, si vos modifications de base de données et vous devez régénérer la classe de modèle, vous allez perdre tous les attributs que vous aviez appliqué à la classe de modèle. Cette approche peut être très inefficace et sujette à la perte de règles de validation important.
 
-Pour éviter ce problème, vous pouvez ajouter une classe de métadonnées qui contient les attributs. Lorsque vous associez la classe de modèle pour la classe de métadonnées, ces attributs sont appliqués au modèle. Dans cette approche, la classe de modèle peut être régénérée sans perte de tous les attributs qui ont été appliqués à la classe de métadonnées.
+Pour éviter ce problème, vous pouvez ajouter une classe de métadonnées qui contient les attributs. Lorsque vous associez la classe de modèle à la classe de métadonnées, ces attributs sont appliqués au modèle. Dans cette approche, la classe de modèle peut être régénérée sans perdre tous les attributs qui ont été appliqués à la classe de métadonnées.
 
 Dans le **modèles** dossier, ajoutez une classe nommée **Metadata.cs**.
 
-![ajouter la classe de métadonnées](enhancing-data-validation/_static/image3.png)
+![Ajouter une classe de métadonnées](enhancing-data-validation/_static/image3.png)
 
-Remplacez le code dans Metadata.cs par le code suivant.
+Remplacez le code dans le fichier Metadata.cs par le code suivant.
 
 [!code-csharp[Main](enhancing-data-validation/samples/sample3.cs)]
 
-Ces classes de métadonnées contiennent tous les attributs de validation que vous aviez précédemment appliqué aux classes de modèle. Le **affichage** attribut est utilisé pour modifier la valeur utilisée pour les étiquettes de texte.
+Ces classes de métadonnées contient tous les attributs de validation que vous aviez précédemment appliqués aux classes de modèle. Le **affichage** attribut est utilisé pour modifier la valeur utilisée pour les étiquettes de texte.
 
 Maintenant, vous devez associer les classes de modèle avec les classes de métadonnées.
 
@@ -78,7 +77,7 @@ Remplacez le contenu du fichier par le code suivant.
 
 [!code-csharp[Main](enhancing-data-validation/samples/sample4.cs)]
 
-Notez que chaque classe est marquée comme un `partial` classe et chacun correspond au nom et l’espace de noms que la classe qui est générée automatiquement. En appliquant l’attribut de métadonnées à la classe partielle, vous assurez que les attributs de validation de données seront être appliquées à la classe générée automatiquement. Ces attributs ne seront pas perdues lorsque vous régénérez les classes du modèle, car l’attribut de métadonnées est appliqué dans des classes partielles qui ne sont pas régénérées.
+Notez que chaque classe est marquée comme un `partial` classe et chacune correspond au nom et l’espace de noms que la classe qui est générée automatiquement. En appliquant l’attribut de métadonnées à la classe partielle, vous assurer que les attributs de validation de données seront être appliqués à la classe générée automatiquement. Ces attributs ne seront pas perdues lorsque vous régénérez les classes de modèle, car l’attribut de métadonnées est appliqué dans des classes partielles qui ne sont pas régénérées.
 
 Pour régénérer les classes générées automatiquement, ouvrez le fichier ContosoModel.edmx. Une fois encore, avec le bouton droit sur l’aire de conception et sélectionnez **modèle de mise à jour à partir de la base de données**. Même si vous n’avez pas modifié la base de données, ce processus sera régénérer les classes. Dans le **Actualiser** onglet, sélectionnez **Tables** et **Terminer**.
 
@@ -86,7 +85,7 @@ Pour régénérer les classes générées automatiquement, ouvrez le fichier Con
 
 Enregistrez le fichier ContosoModel.edmx pour appliquer les modifications.
 
-Ouvrez le fichier Student.cs ou le fichier Enrollment.cs et notez que les attributs de validation de données que vous appliqué précédemment ne sont plus dans le fichier. Toutefois, exécutez l’application et notez que les règles de validation sont toujours appliquées lorsque vous entrez des données.
+Ouvrez le fichier Student.cs ou Enrollment.cs et notez que les attributs de validation de données que vous avez appliqué précédemment ne sont plus dans le fichier. Toutefois, exécutez l’application et notez que les règles de validation sont toujours appliqués lorsque vous entrez des données.
 
 > [!div class="step-by-step"]
 > [Précédent](customizing-a-view.md)

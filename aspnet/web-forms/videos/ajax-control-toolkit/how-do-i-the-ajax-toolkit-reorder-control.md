@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-the-ajax-toolkit-reorder-control
-title: '[Comment faire] Le contrôle de commande de la boîte à outils AJAX | Documents Microsoft'
+title: '[Comment faire] Le contrôle de la réorganisation de la boîte à outils AJAX | Microsoft Docs'
 author: JoeStagner
-description: Dans cette vidéo, j’illustrera l’utilisation du contrôle qui est fourni avec le Kit d’outils AJAX réorganiser les. Le contrôle de commande vous permet de présenter aux utilisateurs un liste du...
+description: Dans cette vidéo, je vais vous montrer l’utilisation du contrôle de renouvellement de commande qui est fourni avec le Kit d’outils AJAX. Le contrôle de renouvellement de commande vous permet de présenter à vos utilisateurs un o liste...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/21/2008
 ms.topic: article
 ms.assetid: 1bc7e41a-633c-4ade-ba7a-486c9484a0ba
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-the-ajax-toolkit-reorder-control
 msc.type: video
-ms.openlocfilehash: 6df7975feb5d3121b836af0e7457e867f6e0d972
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: dbe8bd79bbd0ccaa0a9639aadb9eb8d7e5b7759e
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30883432"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37390530"
 ---
-<a name="how-do-i-the-ajax-toolkit-reorder-control"></a>[Comment faire] Le contrôle de commande de la boîte à outils AJAX
+<a name="how-do-i-the-ajax-toolkit-reorder-control"></a>[Comment faire] Le contrôle de la réorganisation de la boîte à outils AJAX
 ====================
 par [Joe Stagner](https://github.com/JoeStagner)
 
-Dans cette vidéo, j’illustrera l’utilisation du contrôle qui est fourni avec le Kit d’outils AJAX réorganiser les. Le contrôle de commande permet de que vous présentez à vos utilisateurs une liste d’éléments de données qui peuvent être réorganisées en tant que l’utilisateur préfère.
+Dans cette vidéo, je vais vous montrer l’utilisation du contrôle de renouvellement de commande qui est fourni avec le Kit d’outils AJAX. La réorganisation control permet de que vous présenter à vos utilisateurs une liste d’éléments de données qui peuvent être réorganisées en tant que l’utilisateur préfère.
 
-[&#9654;Regardez la vidéo (minutes 21)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-the-ajax-toolkit-reorder-control)
+[&#9654;Regardez la vidéo (21 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-the-ajax-toolkit-reorder-control)
 
 > [!div class="step-by-step"]
 > [Précédent](how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender.md)

@@ -1,45 +1,44 @@
 ---
 uid: mvc/pluralsight
-title: Formation Pluralsight vidéo MVC | Documents Microsoft
+title: MVC vidéo de formation Pluralsight | Microsoft Docs
 author: rick-anderson
-description: Formation Pluralsight cette formation vidéo libre vidéo MVC disposer en cours d’exécution avec ASP.NET MVC. Il traite tous les éléments de la configuration d’un développement...
+description: Formations vidéo de MVC à partir de cette formation vidéo gratuite de Pluralsight vous aidera à en cours d’exécution avec ASP.NET MVC. Il couvre tous les éléments de la configuration d’un environnement de développement...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/09/2011
 ms.topic: article
 ms.assetid: 87612fe1-258c-4f50-88d8-c3047dec3f14
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/pluralsight
 msc.type: content
-ms.openlocfilehash: 60f14176111ee7dbb2ddd2cc4af17d6df559654e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
+ms.openlocfilehash: 94faa3b9026ff1ef34c16698de823566c809ea52
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26503888"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37376323"
 ---
-<a name="mvc-video-training-from-pluralsight"></a>Formation Pluralsight vidéo MVC
+<a name="mvc-video-training-from-pluralsight"></a>MVC vidéo de formation Pluralsight
 ====================
 ### <a name="videos"></a>Vidéos
 
-- [Présentation et configuration requise](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m1-introduction&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [Introduction et conditions préalables](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m1-introduction&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [OWIN et Katana](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m2-katana&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [Identité et sécurité](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m3-identity&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [Programme d’amorçage](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m4-bootstrap&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [API Web 2](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m5-webapi2&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [Identité et la sécurité](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m3-identity&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [Bootstrap](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m4-bootstrap&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [Web API 2](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m5-webapi2&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [Entity Framework 6](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m6-ef6&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 - [SignalR](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m7-signalr&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [Outils de développement Web et de Visual Studio 2013](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m8-visualstudio&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [Outils de développement Web et Visual Studio 2013](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m8-visualstudio&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 
 
-« Ce cours MVC 5 enregistré par K. Scott Allen Pluralsight fournit un excellent moyen d’être rapidement opérationnel sur la dernière version de ASP.NET MVC. Style de présentation de Scott est facile de suivre et techniquement agréables et cours, lecteur vidéo et à la cadence globale sont brillante. Plus, c’est gratuit, donc il n’existe aucun prétend ne pas à apprendre MVC 5 aujourd'hui ! »
+« Ce cours de MVC 5 enregistré par K. Scott Allen Pluralsight fournit un excellent moyen d’être rapidement opérationnel sur la dernière version d’ASP.NET MVC. Style de présentation de Scott est facile à suivre et techniquement attrayantes et cours lecteur vidéo et à la cadence générale sont vraiment très utiles. Plus – c’est gratuit, donc il n’existe aucune excuse ne pas pour en savoir plus de MVC 5 dès aujourd'hui ! »
 
-Groupe de Scott Guthrie, vice-président, Microsoft Cloud et Enterprise, Microsoft
+Groupe de Scott Guthrie, vice-président exécutif, Microsoft Cloud and Enterprise, Microsoft
 
 
 ![Pluralsight-logo-playbutton](pluralsight/_static/image1.png)
 
-Déverrouiller l’accès à 3 000 + dev, informatique et creative cours que vous pouvez regarder à tout moment, n’importe où
+Déverrouiller l’accès à 3 000 + dev, informatique et des cours creative que vous pouvez regarder à tout moment et en tout lieu
 
-**En commençant à 29 $ / Mo.**[démarrer gratuite](https://pluralsight.com/microsoft/OLT/subscribe/Subscribe1.aspx?freetrial=true&planHint=Monthly&utm_source=microsoft&utm_medium=sponsored-page&utm_content=aspdotnet-mvc5-fundamentals&utm_campaign=microsoft-sponsored-course) [souscrire](https://pluralsight.com/microsoft/olt/subscriptions.aspx?utm_source=microsoft&utm_medium=sponsored-page&utm_content=aspdotnet-mvc5-fundamentals&utm_campaign=microsoft-sponsored-course)
+**En commençant à 29 $ / Mo.**[démarrer la version d’évaluation gratuite](https://pluralsight.com/microsoft/OLT/subscribe/Subscribe1.aspx?freetrial=true&planHint=Monthly&utm_source=microsoft&utm_medium=sponsored-page&utm_content=aspdotnet-mvc5-fundamentals&utm_campaign=microsoft-sponsored-course) [Abonnez-vous dès maintenant](https://pluralsight.com/microsoft/olt/subscriptions.aspx?utm_source=microsoft&utm_medium=sponsored-page&utm_content=aspdotnet-mvc5-fundamentals&utm_campaign=microsoft-sponsored-course)

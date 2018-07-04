@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow
-title: 'Partie vitrine ASP.NET MVC MVC 19 : Traitement des commandes avec les flux de travail Windows | Documents Microsoft'
+title: 'ASP.NET MVC Storefront MVC, partie 19 : Traitement des commandes avec les flux de travail Windows | Microsoft Docs'
 author: robconery
-description: Dans cet épisode, j’introduire des flux de travail Windows et surutilisation pour voir comment il fonctionne pour les différents processus dans le site.
+description: Dans cet épisode, j’introduire des flux de travail Windows et pics pour voir comment il fonctionne pour divers processus dans le site.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/16/2008
 ms.topic: article
 ms.assetid: 3d08b4c5-a92f-4f75-aa10-5c2e9da8c114
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow
 msc.type: video
-ms.openlocfilehash: 9e6682c47367428414319c5c8418f6b118f42e50
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: fa9edd274c995bfbf73b932c7ac20eb6dfa22576
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30879658"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378136"
 ---
-<a name="aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow"></a>Partie vitrine ASP.NET MVC MVC 19 : Traitement des commandes un flux de travail Windows
+<a name="aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow"></a>ASP.NET MVC Storefront MVC, partie 19 : Traitement des commandes avec Windows Workflow
 ====================
-par [dérober Conery](https://github.com/robconery)
+par [Rob Conery](https://github.com/robconery)
 
-Dans cet épisode, j’introduire des flux de travail Windows et surutilisation pour voir comment il fonctionne pour les différents processus dans le site.
+Dans cet épisode, j’introduire des flux de travail Windows et pics pour voir comment il fonctionne pour divers processus dans le site.
 
-[&#9654;Regardez la vidéo (minutes 43)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow)
+[&#9654;Regardez la vidéo (43 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-mvc-storefront-part-19-processing-orders-with-windows-workflow)
 
 > [!div class="step-by-step"]
 > [Précédent](aspnet-mvc-storefront-part-18-creating-an-experience.md)

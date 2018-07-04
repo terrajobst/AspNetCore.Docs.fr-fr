@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-perform-group-and-aggregate-queries
-title: '[Comment faire] Effectuer des requêtes d’agrégation et groupe ? | Microsoft Docs'
+title: '[Comment faire] Effectuer des requêtes groupées et agrégées ? | Microsoft Docs'
 author: bethmassi
-description: Les programmeurs Visual Basic apprendrez comment effectuer des requêtes d’agrégation et groupe sur les collections d’objets métier et les afficher dans les grilles connexes.
+description: Les programmeurs Visual Basic apprendrez comment effectuer des requêtes groupées et agrégées sur les collections d’objets métier et les afficher dans les grilles connexes.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
 ms.topic: article
 ms.assetid: 8d07ae36-c4f3-48d7-87d3-cfe9a5bb336e
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-perform-group-and-aggregate-queries
 msc.type: video
-ms.openlocfilehash: b209d7f85669a68f157affe1504a49a6e45d16d2
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 34a9ae7c035126ca8d868f0fc18ebfce5f967bf4
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30881147"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37390502"
 ---
-<a name="how-do-i-perform-group-and-aggregate-queries"></a>[Comment faire] Effectuer des requêtes d’agrégation et groupe ?
+<a name="how-do-i-perform-group-and-aggregate-queries"></a>[Comment faire] Effectuer des requêtes groupées et agrégées ?
 ====================
 par [Beth Massi](https://github.com/bethmassi)
 
-Les programmeurs Visual Basic apprendrez comment effectuer des requêtes d’agrégation et groupe sur les collections d’objets métier et les afficher dans les grilles connexes.
+Les programmeurs Visual Basic apprendrez comment effectuer des requêtes groupées et agrégées sur les collections d’objets métier et les afficher dans les grilles connexes.
 
 [&#9654;Regardez la vidéo (17 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-perform-group-and-aggregate-queries)
 

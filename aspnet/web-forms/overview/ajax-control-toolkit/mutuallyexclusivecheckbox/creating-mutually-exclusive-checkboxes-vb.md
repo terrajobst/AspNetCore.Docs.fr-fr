@@ -1,54 +1,53 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-vb
-title: Création de cases à cocher s’excluent mutuellement (VB) | Documents Microsoft
+title: Création de cases à cocher mutuellement exclusives (VB) | Microsoft Docs
 author: wenz
-description: 'Lorsque seul un ensemble d’options peut être sélectionné, cases d’option sont généralement utilisées. Il existe cependant un inconvénient, : une fois qu’une case d’option dans un groupe est sélectionnée,...'
+description: 'Lorsque seul un ensemble d’options peuvent être sélectionnés, les cases d’option sont généralement utilisées. Il y a cependant un inconvénient, : une fois sélectionnée, une case d’option dans un groupe...'
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: e9dd1d5a-a1db-4114-981d-6a91acb1d709
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cdb93a080fb62cfdc7e3ff0604a1447e2bb99071
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: c71ba157a52335078a01dc8419370db33a37c43e
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30874250"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37391377"
 ---
-<a name="creating-mutually-exclusive-checkboxes-vb"></a>Création de cases à cocher s’excluent mutuellement (VB)
+<a name="creating-mutually-exclusive-checkboxes-vb"></a>Création de cases à cocher mutuellement exclusives (VB)
 ====================
 par [Christian Wenz](https://github.com/wenz)
 
 [Télécharger le Code](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/MutuallyExclusiveCheckBox0.vb.zip) ou [télécharger le PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/mutuallyexclusivecheckbox0VB.pdf)
 
-> Lorsque seul un ensemble d’options peut être sélectionné, cases d’option sont généralement utilisées. Il existe cependant un inconvénient, : une fois qu’une case d’option dans un groupe est sélectionnée, il n’est pas possible de désactiver toutes les cases d’option. Cases à cocher ne peut être désactivés à tout moment, toutefois, ne sont pas mutuellement exclusives. Ce didacticiel offre le meilleur des deux approches : les cases à cocher qui s’excluent mutuellement.
+> Lorsque seul un ensemble d’options peuvent être sélectionnés, les cases d’option sont généralement utilisées. Il y a cependant un inconvénient, : une fois qu’une case d’option dans un groupe est sélectionnée, il n’est pas possible de désactiver toutes les cases d’option. Cases à cocher peut être désactivées à tout moment, toutefois, ne sont pas mutuellement exclusives. Ce didacticiel offre le meilleur des deux approches : cases à cocher qui s’excluent mutuellement.
 
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Lorsque seul un ensemble d’options peut être sélectionné, cases d’option sont généralement utilisées. Il existe cependant un inconvénient, : une fois qu’une case d’option dans un groupe est sélectionnée, il n’est pas possible de désactiver toutes les cases d’option. Cases à cocher ne peut être désactivés à tout moment, toutefois, ne sont pas mutuellement exclusives. Ce didacticiel offre le meilleur des deux approches : les cases à cocher qui s’excluent mutuellement.
+Lorsque seul un ensemble d’options peuvent être sélectionnés, les cases d’option sont généralement utilisées. Il y a cependant un inconvénient, : une fois qu’une case d’option dans un groupe est sélectionnée, il n’est pas possible de désactiver toutes les cases d’option. Cases à cocher peut être désactivées à tout moment, toutefois, ne sont pas mutuellement exclusives. Ce didacticiel offre le meilleur des deux approches : cases à cocher qui s’excluent mutuellement.
 
 ## <a name="steps"></a>Étapes
 
-Les outils de contrôle ASP.NET AJAX contient l’extendeur MutuallyExclusiveCheckBox. Cela permet aux programmeurs d’affecter les case à cocher à un nom de groupe (`Key` attribut). À partir de toutes les cases à cocher dans le même groupe, une seule peut être sélectionnée à la fois.
+ASP.NET AJAX Control Toolkit contient les extendeurs MutuallyExclusiveCheckBox. Cela permet aux programmeurs d’affecter n’importe quel case à cocher à un nom de groupe (`Key` attribut). À partir de toutes les cases à cocher dans le même groupe, seul l’un peut être sélectionné à la fois.
 
-Commençons par placer les deux cases à cocher sur une page ASP.NET. Il peut y avoir plusieurs, mais deux d'entre eux suffit pour illustrer le principe :
+Commençons par placer les deux cases à cocher sur une page ASP.NET. Il peut y avoir plus, mais deux d'entre eux suffit pour illustrer le principe :
 
 [!code-aspx[Main](creating-mutually-exclusive-checkboxes-vb/samples/sample1.aspx)]
 
-Pour les deux cases à cocher, un contrôle MutuallyExclusiveCheckBoxExtender doit être mis sur la page. Les deux attributs de clé doivent avoir la même valeur, tout comme la valeur d’attributs d’éléments de bouton radio HTML doivent être identiques pour indiquer le groupe qu'auquel ils appartiennent. La propriété TargetControlID de l’extendeur pointe vers l’ID de la case à cocher.
+Pour les deux cases à cocher, vous devez placer un contrôle MutuallyExclusiveCheckBoxExtender sur la page. Les deux attributs de clé doivent ont la même valeur, tout comme la valeur d’attributs des éléments de bouton de case d’option HTML doivent être identiques à indiquer le groupe qu'auquel ils appartiennent. La propriété TargetControlID de l’extendeur pointe vers l’ID de la case à cocher.
 
 [!code-aspx[Main](creating-mutually-exclusive-checkboxes-vb/samples/sample2.aspx)]
 
-Enfin, inclure ASP.NET AJAX `ScriptManager` requis par tous les éléments de la boîte à outils de contrôle ASP.NET AJAX :
+Enfin, inclure ASP.NET AJAX `ScriptManager` qui est requis par tous les éléments d’ASP.NET AJAX Control Toolkit :
 
 [!code-aspx[Main](creating-mutually-exclusive-checkboxes-vb/samples/sample3.aspx)]
 
-Enregistrez et exécutez la page : vous pouvez vérifier et désactivez les cases à cocher, toutefois à aucun moment peut les deux cases à cocher est activées.
+Enregistrez et exécutez la page : vous pouvez vérifier et décochez les deux cases à cocher, toutefois à aucun moment peut les deux cases à cocher être vérifiées.
 
 
 [![Case à cocher qu’une seule peut être vérifiée à la fois](creating-mutually-exclusive-checkboxes-vb/_static/image2.png)](creating-mutually-exclusive-checkboxes-vb/_static/image1.png)
