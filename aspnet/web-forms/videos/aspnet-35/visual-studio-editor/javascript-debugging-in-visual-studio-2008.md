@@ -1,33 +1,32 @@
 ---
 uid: web-forms/videos/aspnet-35/visual-studio-editor/javascript-debugging-in-visual-studio-2008
-title: Débogage de JavaScript dans Visual Studio 2008 | Documents Microsoft
+title: Débogage de JavaScript dans Visual Studio 2008 | Microsoft Docs
 author: JoeStagner
-description: À l’aide d’une application web existante, je sera vous montrer comment utiliser Visual Studio 2008 pour déboguer du code JavaScript dans une application web.
+description: À l’aide d’une application web existante, je vais montrer vous permet de déboguer du code JavaScript dans une application web Visual Studio 2008.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/15/2007
 ms.topic: article
 ms.assetid: 8b726bc6-b718-43a8-b019-7ea7f26944ca
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/visual-studio-editor/javascript-debugging-in-visual-studio-2008
 msc.type: video
-ms.openlocfilehash: 9663992bbaae720dc7b192ad32f480c4e3842e24
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: d5de13e8605b45f3d18603dd88b2d18041c2a2f7
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30882538"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37392069"
 ---
-<a name="javascript-debugging-in-visual-studio-2008"></a><span data-ttu-id="c0a0d-103">Débogage de JavaScript dans Visual Studio 2008</span><span class="sxs-lookup"><span data-stu-id="c0a0d-103">JavaScript Debugging in Visual Studio 2008</span></span>
+<a name="javascript-debugging-in-visual-studio-2008"></a><span data-ttu-id="80447-103">Débogage de JavaScript dans Visual Studio 2008</span><span class="sxs-lookup"><span data-stu-id="80447-103">JavaScript Debugging in Visual Studio 2008</span></span>
 ====================
-<span data-ttu-id="c0a0d-104">par [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="c0a0d-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="80447-104">par [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="80447-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="c0a0d-105">À l’aide d’une application web existante, je sera vous montrer comment utiliser Visual Studio 2008 pour déboguer du code JavaScript dans une application web.</span><span class="sxs-lookup"><span data-stu-id="c0a0d-105">Using an existing web application, I will show you how to use Visual Studio 2008 to debug JavaScript in a web application.</span></span>
+<span data-ttu-id="80447-105">À l’aide d’une application web existante, je vais montrer vous permet de déboguer du code JavaScript dans une application web Visual Studio 2008.</span><span class="sxs-lookup"><span data-stu-id="80447-105">Using an existing web application, I will show you how to use Visual Studio 2008 to debug JavaScript in a web application.</span></span>
 
-[<span data-ttu-id="c0a0d-106">&#9654;Regardez la vidéo (minutes 9)</span><span class="sxs-lookup"><span data-stu-id="c0a0d-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/javascript-debugging-in-visual-studio-2008)
+[<span data-ttu-id="80447-106">&#9654;Regardez la vidéo (9 minutes)</span><span class="sxs-lookup"><span data-stu-id="80447-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/javascript-debugging-in-visual-studio-2008)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="c0a0d-107">[Précédent](javascript-intellisense-support-in-visual-studio-2008.md)
-> [Suivant](multi-targeting-support-in-visual-studio-2008.md)</span><span class="sxs-lookup"><span data-stu-id="c0a0d-107">[Previous](javascript-intellisense-support-in-visual-studio-2008.md)
+> <span data-ttu-id="80447-107">[Précédent](javascript-intellisense-support-in-visual-studio-2008.md)
+> [Suivant](multi-targeting-support-in-visual-studio-2008.md)</span><span class="sxs-lookup"><span data-stu-id="80447-107">[Previous](javascript-intellisense-support-in-visual-studio-2008.md)
 [Next](multi-targeting-support-in-visual-studio-2008.md)</span></span>
