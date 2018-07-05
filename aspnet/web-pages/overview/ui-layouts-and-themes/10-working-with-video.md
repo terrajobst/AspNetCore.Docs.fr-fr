@@ -1,6 +1,6 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/10-working-with-video
-title: Affichant la vidéo dans ASP.NET Web Pages (Razor) Site | Documents Microsoft
+title: Affichage de vidéo dans une application Web Pages (Razor) Site | Microsoft Docs
 author: tfitzmac
 description: Ce chapitre explique comment afficher la vidéo dans un ASP.NET Web Pages avec la page de syntaxe Razor.
 ms.author: aspnetcontent
@@ -9,37 +9,36 @@ ms.date: 02/20/2014
 ms.topic: article
 ms.assetid: 332fb3da-e2a5-460d-bb90-dd911e1e2c95
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/10-working-with-video
 msc.type: authoredcontent
-ms.openlocfilehash: 4e7dc50fb60546d1e1f10a16ed863c0b812ec82b
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
+ms.openlocfilehash: d80fd8ab54bf1c049fa4ee6b7592925ebe0549f8
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29153678"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37369384"
 ---
-<a name="displaying-video-in-an-aspnet-web-pages-razor-site"></a>Affichant la vidéo dans un Site de Pages (Razor) Web ASP.NET
+<a name="displaying-video-in-an-aspnet-web-pages-razor-site"></a>Affichage de vidéo dans un Site ASP.NET Web Pages (Razor)
 ====================
 par [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Cet article explique comment utiliser un lecteur vidéo (multimédia) dans un site Web ASP.NET Web Pages (Razor) pour permettre aux utilisateurs d’afficher les vidéos qui sont stockés sur le site. ASP.NET Web Pages avec syntaxe Razor vous permet de lire le disque mémoire Flash (*.swf*), Media Player (*.wmv*) et Silverlight (*.xap*) vidéos.
+> Cet article explique comment utiliser un lecteur vidéo (média) dans un site Web ASP.NET Web Pages (Razor) pour permettre aux utilisateurs d’afficher les vidéos sont stockés sur le site. ASP.NET Web Pages avec syntaxe Razor vous permet de lire le Flash (*.swf*), Media Player (*.wmv*) et Silverlight (*.xap*) vidéos.
 > 
 > Ce que vous allez apprendre :
 > 
 > - Comment choisir un lecteur vidéo.
 > - Comment ajouter une vidéo à une page web.
-> - Comment définir les attributs de lecteur vidéo.
+> - Guide pratique pour définir les attributs de lecteur vidéo.
 > 
-> Il s’agit de Razor ASP.NET pages fonctionnalités introduites dans l’article :
+> Il s’agit de l’ASP.NET Razor pages fonctionnalités introduites dans l’article :
 > 
 > - Le `Video` helper.
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>Versions du logiciel utilisées dans le didacticiel
+> ## <a name="software-versions-used-in-the-tutorial"></a>Versions des logiciels utilisées dans le didacticiel
 > 
 > 
-> - Pages Web ASP.NET (Razor) 2
+> - ASP.NET Web Pages (Razor) 2
 > - WebMatrix 2
 >   
 > 
@@ -48,16 +47,16 @@ par [Tom FitzMacken](https://github.com/tfitzmac)
 
 ## <a name="introduction"></a>Introduction
 
-Vous pouvez souhaiter afficher une vidéo sur votre site. Une manière de procéder consiste à lier à un site qui a déjà la vidéo, comme YouTube. Si vous souhaitez incorporer une vidéo à partir de ces sites directement dans vos propres pages, vous pouvez généralement obtenir le balisage HTML à partir du site et copiez-le dans votre page. Par exemple, l’exemple suivant montre comment incorporer un YouTube vidéo :
+Vous souhaiterez peut-être afficher une vidéo sur votre site. Un moyen d’y parvenir consiste à lier à un site qui possède déjà la vidéo, comme YouTube. Si vous souhaitez incorporer une vidéo à partir de ces sites directement dans vos propres pages, vous pouvez généralement obtenir le balisage HTML à partir du site et ensuite les copier dans votre page. Par exemple, l’exemple suivant montre comment incorporer une YouTube vidéo :
 
 [!code-html[Main](10-working-with-video/samples/sample1.html?highlight=10-14)]
 
-Si vous souhaitez lire une vidéo qui se trouve sur votre site Web (et non sur un site de partage de vidéo public), vous ne peut pas lier directement à l’aide du balisage incorporé comme suit. Toutefois, vous pouvez lire des vidéos à partir de votre site à l’aide de la `Video` assistance, qui restitue un lecteur multimédia directement dans une page.
+Si vous souhaitez lire une vidéo qui se trouve sur votre propre site Web (pas sur un site de partage vidéo public), vous ne pouvez pas lier directement à l’aide de balisage incorporé comme suit. Toutefois, vous pouvez lire des vidéos à partir de votre site à l’aide de la `Video` helper, qui restitue un lecteur multimédia directement dans une page.
 
 <a id="Choosing_a_Video_Player"></a>
 ## <a name="choosing-a-video-player"></a>Choix d’un lecteur vidéo
 
-Il existe un grand nombre de formats pour les fichiers vidéo, et chaque format nécessite généralement un autre lecteur et une manière différente pour configurer le lecteur. Dans les pages ASP.NET Razor, vous pouvez lire une vidéo dans une page web à l’aide de la `Video` helper. Le `Video` helper simplifie le processus d’incorporation de vidéos dans une page web, car il génère automatiquement le `object` et `embed` des éléments HTML qui sont normalement utilisés pour ajouter une vidéo à la page.
+Il existe un grand nombre de formats pour les fichiers vidéo, et chaque format nécessite généralement un autre lecteur et un autre moyen pour configurer le lecteur. Dans les pages ASP.NET Razor, vous pouvez lire une vidéo dans une page web à l’aide de la `Video` helper. Le `Video` helper simplifie le processus d’incorporation de vidéos dans une page web, car il génère automatiquement le `object` et `embed` des éléments HTML qui sont normalement utilisés pour ajouter une vidéo à la page.
 
 Le `Video` helper prend en charge les lecteurs multimédias suivants :
 
@@ -67,40 +66,40 @@ Le `Video` helper prend en charge les lecteurs multimédias suivants :
 
 ### <a name="the-flash-player"></a>Le lecteur Flash
 
-Le `Flash` lecteur de la `Video` assistance vous permettent de lire des vidéos Flash (*.swf* fichiers) dans une page web. Au minimum, vous devez fournir un chemin d’accès au fichier vidéo. Si vous spécifiez rien d’autre que le chemin d’accès, le lecteur utilise les valeurs par défaut qui sont définies par la version actuelle de Flash. Les paramètres par défaut sont :
+Le `Flash` acteur de le `Video` helper vous permettre de lire des vidéos Flash (*.swf* fichiers) dans une page web. Au minimum, vous devez fournir un chemin d’accès au fichier vidéo. Si vous spécifiez rien d’autre que le chemin d’accès, le lecteur utilise les valeurs par défaut qui sont définies par la version actuelle de Flash. Les paramètres par défaut sont :
 
-- La vidéo est affichée à l’aide de la largeur de la valeur par défaut et sa hauteur et sans une couleur d’arrière-plan.
-- La vidéo est lue automatiquement lors de la charge de la page.
-- Les boucles de la vidéo en continu jusqu'à ce qu’il est arrêté de manière explicite.
-- La vidéo est mis à l’échelle pour afficher l’intégralité de la vidéo, au lieu de rognage pour s’ajuster à une taille spécifique.
+- La vidéo est affichée à l’aide de la largeur par défaut et sa hauteur et sans une couleur d’arrière-plan.
+- La vidéo est lue automatiquement lorsque la page se charge.
+- La vidéo effectue une boucle en continu jusqu'à ce qu’il soit explicitement arrêté.
+- La vidéo est à l’échelle pour afficher l’intégralité de la vidéo, au lieu de rognage de la vidéo pour s’ajuster à une taille spécifique.
 - La vidéo est lue dans une fenêtre.
 
-### <a name="the-mediaplayer-player"></a>Le lecteur MediaPlayer
+### <a name="the-mediaplayer-player"></a>Le lecteur de MediaPlayer
 
-Le `MediaPlayer` lecteur de la `Video` assistance vous permet de lire les vidéos Windows Media (*.wmv* fichiers), Windows Media audio (*.wma* fichiers) et MP3 (*.mp3* les fichiers) dans une page web. Vous devez inclure le chemin d’accès du fichier multimédia à lire ; tous les autres paramètres sont facultatifs. Si vous spécifiez uniquement un chemin d’accès, le lecteur utilise les paramètres par défaut définies par la version actuelle de MediaPlayer, telle que :
+Le `MediaPlayer` acteur de le `Video` helper vous permet de lire des vidéos de Windows Media (*.wmv* fichiers), Windows Media audio (*.wma* fichiers) et MP3 (*.mp3* les fichiers) dans une page web. Vous devez inclure le chemin d’accès du fichier multimédia à lire ; tous les autres paramètres sont facultatifs. Si vous spécifiez uniquement un chemin d’accès, le lecteur utilise les paramètres par défaut définies par la version actuelle de MediaPlayer, telles que :
 
-- La vidéo est affichée à l’aide de la largeur de la valeur par défaut et sa hauteur.
-- La vidéo est lue automatiquement lors de la charge de la page.
-- La vidéo est lue une fois (elle ne de boucle).
+- La vidéo est affichée à l’aide de la largeur par défaut et sa hauteur.
+- La vidéo est lue automatiquement lorsque la page se charge.
+- La vidéo est lue une fois (il ne de boucle).
 - Le lecteur affiche l’ensemble des contrôles dans l’interface utilisateur.
 - La vidéo est lue dans une fenêtre.
 
 ### <a name="the-silverlight-player"></a>Le lecteur Silverlight
 
-Le `Silverlight` lecteur de la `Video` assistance vous permet de lire la vidéo Windows Media (*.wmv* fichiers), Windows Media Audio (*.wma* fichiers) et MP3 (*.mp3* fichiers). Vous devez définir le paramètre de chemin d’accès pointe vers un package d’application basée sur Silverlight (*.xap* fichier). Vous devez également définir les paramètres de largeur et hauteur. Tous les autres paramètres sont facultatifs. Lorsque vous utilisez le lecteur Silverlight pour la vidéo, si vous affectez uniquement les paramètres requis, le lecteur Silverlight affiche la vidéo sans une couleur d’arrière-plan.
+Le `Silverlight` acteur de le `Video` helper vous permet de lire la vidéo de Windows Media (*.wmv* fichiers), Windows Media Audio (*.wma* fichiers) et MP3 (*.mp3* fichiers). Vous devez définir le paramètre path pour pointer vers un package d’application basée sur Silverlight (*.xap* fichier). Vous devez également définir les paramètres de largeur et hauteur. Tous les autres paramètres sont facultatifs. Lorsque vous utilisez le lecteur Silverlight pour la vidéo, si vous définissez uniquement les paramètres requis, le lecteur Silverlight affiche la vidéo sans une couleur d’arrière-plan.
 
 > [!NOTE]
-> Dans le cas où vous ne connaissez pas déjà Silverlight : le *.xap* fichier est un fichier compressé qui contient des instructions de mise en page dans un *.xaml* de fichiers, le code managé dans des assemblys et des ressources facultatives. Vous pouvez créer un *.xap* fichier dans Visual Studio en tant qu’un projet d’application Silverlight.
+> Dans le cas où vous ne connaissez pas déjà Silverlight : le *.xap* fichier est un fichier compressé qui contient des instructions de mise en page dans un *.xaml* de fichiers, le code managé dans les assemblys et les ressources facultatives. Vous pouvez créer un *.xap* fichier dans Visual Studio en tant qu’un projet d’application Silverlight.
 
 
-Le `Silverlight` lecteur vidéo utilise à la fois les paramètres que vous fournissez pour le lecteur et les paramètres qui sont fournis dans le *.xap* fichier.
+Le `Silverlight` lecteur vidéo utilise à la fois les paramètres que vous fournissez pour le joueur et les paramètres qui sont fournis dans le *.xap* fichier.
 
 > [!TIP] 
 > 
 > <a id="SB_MimeTypes"></a>
 > ### <a name="mime-types"></a>Types MIME
 > 
-> Lorsqu’un navigateur télécharge un fichier, le navigateur permet de s’assurer que le type de fichier correspond au type MIME spécifié pour le document qui est rendu. Le type MIME est le type de contenu de type ou le support d’un fichier. Le `Video` assistance utilise les types MIME suivants :
+> Quand un navigateur télécharge un fichier, le navigateur permet de s’assurer que le type de fichier correspond au type MIME qui est spécifié pour le document qui est rendu. Le type MIME est le type de contenu de type ou un support d’un fichier. Le `Video` helper utilise les types MIME suivants :
 > 
 > - `application/x-shockwave-flash`
 > - `application/x-mplayer2`
@@ -108,11 +107,11 @@ Le `Silverlight` lecteur vidéo utilise à la fois les paramètres que vous four
 
 
 <a id="Playing_Flash"></a>
-## <a name="playing-flash-swf-videos"></a>Lecture de vidéos de Flash (.swf)
+## <a name="playing-flash-swf-videos"></a>Lecture des vidéos de Flash (.swf)
 
 Cette procédure vous montre comment lire une vidéo Flash nommée *sample.swf*. La procédure suppose que vous avez sélectionné un dossier nommé *Media* sur votre site et que le *.swf* fichier se trouve dans ce dossier.
 
-1. Ajoutez la bibliothèque de programmes d’assistance ASP.NET Web à votre site Web, comme décrit dans [programmes d’assistance de l’installation dans un Site de Pages Web ASP.NET](https://go.microsoft.com/fwlink/?LinkId=252372), si vous n’avez pas déjà ajouté.
+1. Ajoutez la bibliothèque de programmes d’assistance de Web ASP.NET à votre site Web, comme décrit dans [l’installation des programmes d’assistance dans un Site ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), si vous n’avez pas déjà ajouté.
 2. Dans le site Web, ajoutez une page et nommez-le *FlashVideo.cshtml*.
 3. Ajoutez le balisage suivant à la page : 
 
@@ -121,29 +120,29 @@ Cette procédure vous montre comment lire une vidéo Flash nommée *sample.swf*.
 
     ![[image]](10-working-with-video/_static/image1.jpg "ch08_video-1.jpg")
 
-Vous pouvez définir le `quality` paramètre pour une vidéo Flash à `low`, `autolow`, `autohigh`, `medium`, `high`, et `best`:
+Vous pouvez définir le `quality` paramètre pour une vidéo Flash pour `low`, `autolow`, `autohigh`, `medium`, `high`, et `best`:
 
 [!code-cshtml[Main](10-working-with-video/samples/sample3.cshtml)]
 
-Vous pouvez modifier la disque mémoire Flash vidéo est lue à une taille spécifique à l’aide de le `scale` paramètre que vous pouvez définir pour les éléments suivants :
+Vous pouvez modifier la vidéo Flash pour lire à une taille spécifique à l’aide de le `scale` paramètre que vous pouvez définir à ce qui suit :
 
-- `showall`. Cela rend la vidéo complète visible tout en conservant les proportions d’origine. Toutefois, vous pouvez obtenir des bordures de chaque côté.
-- `noorder`. Cela met à l’échelle la vidéo tout en conservant les proportions d’origine, mais il peut être tronqué.
-- `exactfit`. Cela rend la vidéo complète visible sans conserver les proportions d’origine, mais la distorsion peut se produire.
+- `showall`. La vidéo complète deviennent alors visibles tout en conservant les proportions d’origine. Toutefois, vous risquez d’obtenir des bordures de chaque côté.
+- `noorder`. Cela met la vidéo à l’échelle tout en conservant les proportions d’origine, mais il peut être tronqué.
+- `exactfit`. Cela rend la vidéo complète visible sans conserver les proportions d’origine, mais une distorsion peut-être se produire.
 
 Si vous ne spécifiez pas un `scale` paramètre, la vidéo complète sera visible et les proportions d’origine est conservée sans découpage. L’exemple suivant montre comment utiliser le `scale` paramètre :
 
 [!code-cshtml[Main](10-working-with-video/samples/sample4.cshtml)]
 
-Le lecteur Flash prend en charge un paramètre nommé de mode vidéo `windowMode`. Vous pouvez définir cette option `window`, `opaque`, et `transparent`. Par défaut, le `windowMode` a la valeur `window`, qui affiche la vidéo dans une fenêtre distincte sur la page web. Le `opaque` paramètre masque tout derrière la vidéo sur la page web. Le `transparent` paramètre permet l’arrière-plan de la page web dans la vidéo, en supposant que n’importe quelle partie de la vidéo est transparente.
+Le Flash player prend en charge un mode vidéo paramètre nommé `windowMode`. Vous pouvez définir ici `window`, `opaque`, et `transparent`. Par défaut, le `windowMode` a la valeur `window`, qui affiche la vidéo dans une fenêtre distincte sur la page web. Le `opaque` paramètre masque tout derrière la vidéo sur la page web. Le `transparent` paramètre vous permet de l’arrière-plan de la page web transparaissent à travers la vidéo, en supposant que n’importe quelle partie de la vidéo est transparente.
 
 <a id="Playing_MediaPlayer"></a>
-## <a name="playing-mediaplayer-wmv-videos"></a>Lecture MediaPlayer (*.wmv*) vidéos
+## <a name="playing-mediaplayer-wmv-videos"></a>Lecture de MediaPlayer (*.wmv*) vidéos
 
-La procédure suivante vous montre comment lire une vidéo de la fenêtre support nommée *sample.wmv* qui se trouve dans le *Media* dossier.
+La procédure suivante vous montre comment lire une vidéo de la fenêtre Media nommée *sample.wmv* qui se trouve dans le *Media* dossier.
 
-1. Ajoutez la bibliothèque de programmes d’assistance ASP.NET Web à votre site Web, comme décrit dans [programmes d’assistance de l’installation dans un Site de Pages Web ASP.NET](https://go.microsoft.com/fwlink/?LinkId=252372), si vous n’avez pas encore.
-2. Créer une nouvelle page nommée *MediaPlayerVideo.cshtml*.
+1. Ajoutez la bibliothèque de programmes d’assistance de Web ASP.NET à votre site Web, comme décrit dans [l’installation des programmes d’assistance dans un Site ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), si vous n’avez pas déjà.
+2. Créer une page nommée *MediaPlayerVideo.cshtml*.
 3. Ajoutez le balisage suivant à la page : 
 
     [!code-cshtml[Main](10-working-with-video/samples/sample5.cshtml)]
@@ -159,21 +158,21 @@ Le `uiMode` paramètre vous permet de spécifier les contrôles qui apparaissent
 
 [!code-cshtml[Main](10-working-with-video/samples/sample7.cshtml)]
 
-Par défaut, audio est activé lorsque la vidéo est lue. Vous pouvez désactiver l’audio en définissant le `mute` valeur true au paramètre :
+Par défaut, audio est activé lorsque la vidéo est lue. Vous pouvez couper le son en définissant le `mute` paramètre sur true :
 
 [!code-cshtml[Main](10-working-with-video/samples/sample8.cshtml)]
 
-Vous pouvez contrôler le niveau audio de la vidéo MediaPlayer en définissant le `volume` paramètre à une valeur comprise entre 0 et 100. La valeur par défaut est 50. Voici un exemple :
+Vous pouvez contrôler le niveau sonore de la vidéo de MediaPlayer en définissant le `volume` paramètre une valeur comprise entre 0 et 100. La valeur par défaut est 50. Voici un exemple :
 
 [!code-cshtml[Main](10-working-with-video/samples/sample9.cshtml)]
 
 <a id="Playing_Silverlight"></a>
-## <a name="playing-silverlight-videos"></a>Lecture de vidéos de Silverlight
+## <a name="playing-silverlight-videos"></a>Lecture des vidéos de Silverlight
 
-Cette procédure vous montre comment lire une vidéo de contenu dans un Silverlight *.xap* page se trouve dans un dossier nommée *Media*.
+Cette procédure vous montre comment lire la vidéo contenue dans un Silverlight *.xap* page qui se trouve dans un dossier nommé *Media*.
 
-1. Ajoutez la bibliothèque de programmes d’assistance ASP.NET Web à votre site Web, comme décrit dans [programmes d’assistance de l’installation dans un Site de Pages Web ASP.NET](https://go.microsoft.com/fwlink/?LinkId=252372), si vous n’avez pas encore.
-2. Créer une nouvelle page nommée *SilverlightVideo.cshtml*.
+1. Ajoutez la bibliothèque de programmes d’assistance de Web ASP.NET à votre site Web, comme décrit dans [l’installation des programmes d’assistance dans un Site ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=252372), si vous n’avez pas déjà.
+2. Créer une page nommée *SilverlightVideo.cshtml*.
 3. Ajoutez le balisage suivant à la page : 
 
     [!code-cshtml[Main](10-working-with-video/samples/sample10.cshtml)]
@@ -185,8 +184,8 @@ Cette procédure vous montre comment lire une vidéo de contenu dans un Silverli
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 
-[Vue d’ensemble de Silverlight](https://msdn.microsoft.com/library/bb404700(VS.95).aspx)
+[Présentation de Silverlight](https://msdn.microsoft.com/library/bb404700(VS.95).aspx)
 
-[Attributs de balise d’objet et incorporer un périphérique flash](http://kb2.adobe.com/cps/127/tn_12701.html)
+[Attributs de balise d’objet et l’incorporation de Flash](http://kb2.adobe.com/cps/127/tn_12701.html)
 
-[Les balises PARAM de kit de développement logiciel Windows Media Player 11](https://msdn.microsoft.com/library/aa392321(VS.85).aspx)
+[Balises PARAM de kit de développement logiciel Windows Media Player 11](https://msdn.microsoft.com/library/aa392321(VS.85).aspx)

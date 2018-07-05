@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/building-20-applications/lesson-3-understanding-more-about-events-and-postback
-title: '[Leçon 3 :]  Présentation des événements et publication (postback) | Documents Microsoft'
+title: '[Leçon 3 :]  Présentation des événements et publication (postback) | Microsoft Docs'
 author: microsoft
 description: Dans cette leçon, vous allez apprendre comment les événements peuvent être utilisés dans votre code et comment réagir lorsque ces événements se produisent.
 ms.author: aspnetcontent
@@ -9,15 +9,14 @@ ms.date: 11/28/2005
 ms.topic: article
 ms.assetid: 59f0bccd-b604-47fa-a42b-71d8ab187bd2
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/building-20-applications/lesson-3-understanding-more-about-events-and-postback
 msc.type: video
-ms.openlocfilehash: 4ae4d1d282d44ec15a68fdc345d7a2d7e5a7aa58
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: c54c91f9aec9898296d68f4f81c4197daba32934
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30886145"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37372972"
 ---
 <a name="lesson-3--understanding-more-about-events-and-postback"></a>[Leçon 3 :]  Description des événements et de publication (postback)
 ====================

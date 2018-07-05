@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/sql-2005/enabling-full-text-search-in-your-text-data
-title: Activation de la recherche en texte intégral dans vos données de texte | Documents Microsoft
+title: Activation de la recherche en texte intégral dans vos données de texte | Microsoft Docs
 author: microsoft
-description: Recherche en texte intégral permet d’enregistrer de grandes parties de texte - même documents Microsoft Word ou autres formats de fichier - dans votre base de données et effectuer qu. complexes...
+description: Recherche en texte intégral permet d’enregistrer de grandes quantités de texte - même des documents Microsoft Word ou autres formats de fichier - dans votre base de données et effectuer qu. complexe...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 11/14/2006
 ms.topic: article
 ms.assetid: f42dba2b-7efd-4f1e-8bed-f3816edcf44a
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/sql-2005/enabling-full-text-search-in-your-text-data
 msc.type: video
-ms.openlocfilehash: 18f0de299d61d6f8851b1843fb11c9d694d6b718
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 4bb13a832de8a80baf0e254f838678e3f5d0e638
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30893493"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37374715"
 ---
 <a name="enabling-full-text-search-in-your-text-data"></a>Activation de la recherche en texte intégral dans vos données de texte
 ====================
 par [Microsoft](https://github.com/microsoft)
 
-Recherche en texte intégral permet d’enregistrer de grandes parties de texte - même documents Microsoft Word ou autres formats de fichier - dans votre base de données et exécuter des requêtes complexes basées sur des données textuelles attendu hautes performances. Cette leçon montre comment configurer la recherche en texte intégral en faisant particulièrement attention à nuances de configuration dans SQL Server Express. Ensuite, nous avons déplacés vers la création d’index de recherche en texte intégral, configurer les paramètres de remplissage d’index et effectuer des requêtes qui illustrent la puissance du prédicat CONTAINS et ses variantes de nombreuses.
+Recherche en texte intégral vous permet d’enregistrer des grandes quantités de texte - même des documents Microsoft Word ou autres formats de fichier - dans votre base de données et exécuter des requêtes complexes basées sur des données textuelles attendu d’excellentes performances. Cette leçon montre comment configurer la recherche en texte intégral en faisant particulièrement attention à nuances de configuration dans SQL Server Express. Nous allons à la création d’index de recherche en texte intégral, configuration des paramètres de remplissage d’index et exécution de requêtes qui illustrent la puissance du prédicat CONTAINS et ses variantes bien.
 
 [&#9654;Regardez la vidéo (38 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/enabling-full-text-search-in-your-text-data)
 

@@ -1,29 +1,28 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization
-title: 'ASP.NET MVC partie vitrine 10 : Shopping Cart refactoriser et autorisation | Documents Microsoft'
+title: 'ASP.NET Storefront MVC, partie 10 : Shopping Cart refactoriser et autorisation | Microsoft Docs'
 author: robconery
-description: Rob refactorise l’initial aller au panier d’achat et implémente le cœur d’un système d’appartenance à l’aide de l’appartenance d’ASP.NET.
+description: Rob refactorise déplacement initiale au panier d’achat et implémente l’essentiel d’un système d’appartenance à l’aide de l’appartenance ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
 ms.topic: article
 ms.assetid: 24ee3167-c5ae-45e1-9636-299231e5eae0
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization
 msc.type: video
-ms.openlocfilehash: 54fa6acfdeeec63f6ea9d3a18e89c23ecf9b0c7b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 62fac3251ea998665cc6a4d279c97e2f7d7705ee
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30876330"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37393210"
 ---
-<a name="aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization"></a>ASP.NET MVC partie vitrine 10 : Refactorisation de panier d’achat et l’autorisation
+<a name="aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization"></a>ASP.NET Storefront MVC, partie 10 : Refactorisation du panier d’achat et l’autorisation
 ====================
-par [dérober Conery](https://github.com/robconery)
+par [Rob Conery](https://github.com/robconery)
 
-Rob refactorise l’initial aller au panier d’achat et implémente le cœur d’un système d’appartenance à l’aide de l’appartenance d’ASP.NET.
+Rob refactorise déplacement initiale au panier d’achat et implémente l’essentiel d’un système d’appartenance à l’aide de l’appartenance ASP.NET.
 
 [&#9654;Regardez la vidéo (25 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-10-shopping-cart-refactor-and-authorization)
 

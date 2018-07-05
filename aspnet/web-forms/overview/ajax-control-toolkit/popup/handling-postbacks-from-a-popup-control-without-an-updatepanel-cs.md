@@ -1,42 +1,41 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
-title: La gestion des publications (postback) à partir d’un contrôle Popup sans UpdatePanel (c#) | Documents Microsoft
+title: Gestion des publications (postback) à partir d’un contrôle Popup sans un UpdatePanel (c#) | Microsoft Docs
 author: wenz
-description: L’extendeur PopupControl dans la boîte à outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Si une publication (postback) se produit dans su...
+description: L’extendeur PopupControl dans les outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Lorsqu’une publication (postback) se produit en unités de recherche...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: 25444121-5a72-4dac-8e50-ad2b7ac667af
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 59ffa05945289de6e01e2c21dd5a0f82ca1fa374
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: d74a44a277bdcb460dc20b78bad3e5ed68445b4a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30879541"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37370981"
 ---
-<a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-c"></a>La gestion des publications (postback) à partir d’un contrôle Popup sans UpdatePanel (c#)
+<a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-c"></a>Gestion des publications (postback) à partir d’un contrôle Popup sans un UpdatePanel (c#)
 ====================
 par [Christian Wenz](https://github.com/wenz)
 
 [Télécharger le Code](http://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/PopupControl3.cs.zip) ou [télécharger le PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/popupcontrol3CS.pdf)
 
-> L’extendeur PopupControl dans la boîte à outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Lorsqu’une publication (postback) se produit dans un panneau de ce type et il existe plusieurs panneaux dans la page, il est difficile de déterminer le panneau qui a été activé.
+> L’extendeur PopupControl dans les outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Lorsqu’une publication (postback) se produit dans un tel panneau et il existe plusieurs panneaux sur la page, il est difficile de déterminer le panneau qui a été cliqué.
 
 
 ## <a name="overview"></a>Vue d'ensemble
 
-L’extendeur PopupControl dans la boîte à outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Lorsqu’une publication (postback) se produit dans un panneau de ce type et il existe plusieurs panneaux dans la page, il est difficile de déterminer le panneau qui a été activé.
+L’extendeur PopupControl dans les outils de contrôle AJAX offre un moyen simple de déclencher une fenêtre contextuelle lorsque n’importe quel autre contrôle est activé. Lorsqu’une publication (postback) se produit dans un tel panneau et il existe plusieurs panneaux sur la page, il est difficile de déterminer le panneau qui a été cliqué.
 
 ## <a name="steps"></a>Étapes
 
-Lorsque vous utilisez un `PopupControl` avec une publication (postback), mais sans avoir un `UpdatePanel` sur la page, la boîte à outils de contrôle n’offre pas un moyen de déterminer quel élément client a déclenché la fenêtre contextuelle qui à son tour a provoqué la publication (postback). Toutefois, une petite astuce fournit une solution de contournement pour ce scénario.
+Lorsque vous utilisez un `PopupControl` avec une publication (postback), mais sans avoir un `UpdatePanel` dans la page, les outils de contrôle n’offre pas un moyen de déterminer quel élément client a déclenché la fenêtre contextuelle qui à son tour a provoqué la publication (postback). Toutefois, une petite astuce fournit une solution de contournement pour ce scénario.
 
-Tout d’abord, voici la configuration de base : deux zones de texte qui déclenchent le même message, un calendrier. Deux `PopupControlExtenders` rassembler les zones de texte et de la fenêtre contextuelle.
+Tout d’abord, voici la configuration de base : deux zones de texte qui tous deux de déclenchent la fenêtre contextuelle même, un calendrier. Deux `PopupControlExtenders` rassembler les zones de texte et la fenêtre contextuelle.
 
 [!code-aspx[Main](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/samples/sample1.aspx)]
 
@@ -48,7 +47,7 @@ Lorsque la page est chargée, le code JavaScript ajoute un gestionnaire d’év�
 
 [!code-html[Main](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/samples/sample3.html)]
 
-Dans le code côté serveur, la valeur du champ masqué doit être lues. Étant donné que les champs de formulaire masqués sont très facile à manipuler, une approche d’autorisation pour valider la valeur masquée est requise. Une fois que la zone de texte correct a été identifiée, la date du calendrier est écrit.
+Dans le code côté serveur, la valeur du champ masqué doit être lues. Dans la mesure où les champs de formulaire masqués sont faciles à manipuler, une approche de la liste verte pour valider la valeur masquée est requise. Une fois que la zone de texte correct a été identifiée, la date dans le calendrier est écrit dedans.
 
 [!code-aspx[Main](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/samples/sample4.aspx)]
 
@@ -58,9 +57,9 @@ Dans le code côté serveur, la valeur du champ masqué doit être lues. Étant 
 Le calendrier s’affiche lorsque l’utilisateur clique dans la zone de texte ([cliquez pour afficher l’image en taille réelle](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image3.png))
 
 
-[![En cliquant sur une date place dans la zone de texte](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image5.png)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image4.png)
+[![En cliquant sur une date de la place dans la zone de texte](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image5.png)](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image4.png)
 
-En cliquant sur une date place dans la zone de texte ([cliquez pour afficher l’image en taille réelle](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image6.png))
+En cliquant sur une date de la place dans la zone de texte ([cliquez pour afficher l’image en taille réelle](handling-postbacks-from-a-popup-control-without-an-updatepanel-cs/_static/image6.png))
 
 > [!div class="step-by-step"]
 > [Précédent](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)

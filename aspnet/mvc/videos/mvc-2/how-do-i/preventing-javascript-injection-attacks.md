@@ -1,31 +1,30 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/preventing-javascript-injection-attacks
-title: Prévention des attaques d’injection de code JavaScript | Documents Microsoft
+title: Prévention des attaques par Injection de JavaScript | Microsoft Docs
 author: StephenWalther
-description: Empêcher les attaques par Injection de JavaScript et les attaques de script entre sites pour vous. Dans ce didacticiel, Stephen Walther explique comment vous pouvez facilement de...
+description: Empêcher les attaques par Injection de JavaScript et attaques de script entre sites pour vous. Dans ce didacticiel, Stephen Walther explique comment vous pouvez facilement de...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 08/20/2008
 ms.topic: article
 ms.assetid: 012a91e7-fd88-4d4f-8f95-57a9043c47d9
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/preventing-javascript-injection-attacks
 msc.type: video
-ms.openlocfilehash: 9bd3222d4ecc8a0a5a339d794291f859c72b2055
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 49f9138a4b1c5d17b3e0abf7bfea8f07c0f024b9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30872401"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37381901"
 ---
-<a name="preventing-javascript-injection-attacks"></a>Prévention des attaques d’injection de code JavaScript
+<a name="preventing-javascript-injection-attacks"></a>Prévention des attaques par Injection de JavaScript
 ====================
 par [Stephen Walther](https://github.com/StephenWalther)
 
-Empêcher les attaques par Injection de JavaScript et les attaques de script entre sites pour vous. Dans ce didacticiel, Stephen Walther explique comment vous pouvez anéantir facilement ces types d’attaques par le codage de votre contenu HTML. Pour obtenir des informations supplémentaires sur cette vidéo, consultez le didacticiel « Empêcher des attaques d’Injection JavaScript » ([c#](../../../overview/older-versions-1/security/preventing-javascript-injection-attacks-cs.md), [VB](../../../overview/older-versions-1/security/preventing-javascript-injection-attacks-vb.md)).
+Empêcher les attaques par Injection de JavaScript et attaques de script entre sites pour vous. Dans ce didacticiel, Stephen Walther explique comment vous pouvez facilement mettre en échec ces types d’attaques par codage votre contenu HTML. Pour obtenir des informations supplémentaires relatives à cette vidéo, lisez le didacticiel « Empêchant des attaques d’injection de code JavaScript » ([c#](../../../overview/older-versions-1/security/preventing-javascript-injection-attacks-cs.md), [VB](../../../overview/older-versions-1/security/preventing-javascript-injection-attacks-vb.md)).
 
-[&#9654;Regardez la vidéo (minutes 11)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/preventing-javascript-injection-attacks)
+[&#9654;Regardez la vidéo (11 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/preventing-javascript-injection-attacks)
 
 > [!div class="step-by-step"]
 > [Précédent](an-introduction-to-url-routing.md)

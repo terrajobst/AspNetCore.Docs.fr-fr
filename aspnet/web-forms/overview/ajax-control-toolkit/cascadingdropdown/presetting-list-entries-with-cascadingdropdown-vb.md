@@ -1,36 +1,35 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-vb
-title: Prédéfinissez les entrées de la liste avec CascadingDropDown (VB) | Documents Microsoft
+title: Prédéfinition des entrées de liste avec CascadingDropDown (VB) | Microsoft Docs
 author: wenz
-description: Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans anoth...
+description: Le contrôle CascadingDropDown dans AJAX Control Toolkit étend un contrôle DropDownList afin que les modifications dans un DropDownList charges associés à des valeurs dans anoth...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: ec61ced7-bbca-4bdd-aa3b-80878f295181
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/presetting-list-entries-with-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f74e6ac80b756240870d9406a03db11c610093aa
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 2361d12aa66db55dacd7e034306dcbbda21570b8
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30869892"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37397613"
 ---
-<a name="presetting-list-entries-with-cascadingdropdown-vb"></a>Prédéfinissez les entrées de la liste avec CascadingDropDown (VB)
+<a name="presetting-list-entries-with-cascadingdropdown-vb"></a>Prédéfinition des entrées de liste avec CascadingDropDown (VB)
 ====================
 par [Christian Wenz](https://github.com/wenz)
 
 [Télécharger le Code](http://download.microsoft.com/download/9/0/7/907760b1-2c60-4f81-aeb6-ca416a573b0d/cascadingdropdown2.vb.zip) ou [télécharger le PDF](http://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/CascadingDropDown2VB.pdf)
 
-> Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans une autre DropDownList. Avec un peu de code, il est possible qu’un élément de liste est présélectionné une fois que les données ont été chargées dynamiquement.
+> Le contrôle CascadingDropDown dans AJAX Control Toolkit étend un contrôle DropDownList afin que les modifications dans un DropDownList charges associés à des valeurs dans un autre objet DropDownList. Avec un peu de code, il est possible qu’un élément de liste est présélectionné une fois que les données ont été chargées dynamiquement.
 
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Le contrôle CascadingDropDown dans la boîte à outils de contrôle AJAX étend un contrôle DropDownList afin que les modifications apportées à une charge de DropDownList associés à des valeurs dans une autre DropDownList. (Par exemple, une seule liste fournit une liste des États, et la liste suivante est ensuite remplie de grandes villes dans cet état.) Avec un peu de code, il est possible qu’un élément de liste est présélectionné une fois que les données ont été chargées dynamiquement.
+Le contrôle CascadingDropDown dans AJAX Control Toolkit étend un contrôle DropDownList afin que les modifications dans un DropDownList charges associés à des valeurs dans un autre objet DropDownList. (Par exemple, une liste fournit une liste des États, et la liste suivante est ensuite remplie de grandes villes dans cet état.) Avec un peu de code, il est possible qu’un élément de liste est présélectionné une fois que les données ont été chargées dynamiquement.
 
 ## <a name="steps"></a>Étapes
 
@@ -46,15 +45,15 @@ Pour cette liste, un extendeur CascadingDropDown est ajouté, qui fournit des in
 
 [!code-aspx[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample3.aspx)]
 
-L’extendeur CascadingDropDown puis asynchrone appelle un service web avec la signature de méthode suivante :
+L’extendeur CascadingDropDown puis appelle de façon asynchrone un service web avec la signature de méthode suivante :
 
 [!code-vb[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample4.vb)]
 
-La méthode retourne un tableau de type CascadingDropDown valeur. Le constructeur du type attend la première légende de l’entrée liste, puis la valeur (HTML `value` attribut). Si le troisième argument est défini sur true, la liste élément est sélectionné automatiquement dans le navigateur.
+La méthode retourne un tableau de type valeur de CascadingDropDown. Le constructeur du type attend tout d’abord légende de l’entrée liste, puis la valeur (HTML `value` attribut). Si le troisième argument est défini sur true, la liste élément est automatiquement sélectionné dans le navigateur.
 
 [!code-aspx[Main](presetting-list-entries-with-cascadingdropdown-vb/samples/sample5.aspx)]
 
-Chargement de la page dans le navigateur remplit la liste déroulante avec trois fournisseurs, l’autre est présélectionnée.
+Chargement de la page dans le navigateur remplira la liste déroulante avec trois fournisseurs, l’autre qui est présélectionnée.
 
 
 [![La liste est remplie et présélectionnée automatiquement](presetting-list-entries-with-cascadingdropdown-vb/_static/image2.png)](presetting-list-entries-with-cascadingdropdown-vb/_static/image1.png)

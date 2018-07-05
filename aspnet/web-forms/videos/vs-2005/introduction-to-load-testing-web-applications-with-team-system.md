@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/vs-2005/introduction-to-load-testing-web-applications-with-team-system
-title: Introduction à charger le test d’Applications Web avec Team System | Documents Microsoft
+title: Introduction à charger le test des Applications Web avec Team System | Microsoft Docs
 author: rick-anderson
-description: Dans cette vidéo, nous constatons comment vous pouvez charger les tests vos applications web à l’aide de la charge de tester les fonctionnalités de Visual Studio Team System.
+description: Dans cette vidéo, nous voyons comment vous pouvez charger test vos applications web à l’aide des fonctionnalités de Visual Studio Team System de test de charge.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/09/2007
 ms.topic: article
 ms.assetid: c2a80ef9-3dc4-4051-8103-495ddf1b8a46
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/vs-2005/introduction-to-load-testing-web-applications-with-team-system
 msc.type: video
-ms.openlocfilehash: 012eb24699da82bbf335e00e2cb92889704fd77a
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: bd67b66dda728656b5b087a0a488cea91ed765b9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30894218"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37387255"
 ---
-<a name="introduction-to-load-testing-web-applications-with-team-system"></a>Introduction à charger le test d’Applications Web avec Team System
+<a name="introduction-to-load-testing-web-applications-with-team-system"></a>Introduction à charger le test des Applications Web avec Team System
 ====================
 par Eric Lee
 
-Dans cette vidéo, nous constatons comment vous pouvez charger les tests vos applications web à l’aide de la charge de tester les fonctionnalités de Visual Studio Team System.
+Dans cette vidéo, nous voyons comment vous pouvez charger test vos applications web à l’aide des fonctionnalités de Visual Studio Team System de test de charge.
 
-[&#9654;Regardez la vidéo (minutes 9)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/introduction-to-load-testing-web-applications-with-team-system)
+[&#9654;Regardez la vidéo (9 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/introduction-to-load-testing-web-applications-with-team-system)
 
 > [!div class="step-by-step"]
 > [Précédent](introduction-to-testing-web-applications-with-team-system.md)

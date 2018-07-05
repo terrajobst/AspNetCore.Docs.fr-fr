@@ -1,58 +1,57 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
-title: À l’aide des valeurs de chaîne de requête pour filtrer les données avec la liaison de modèle et les web forms | Documents Microsoft
+title: À l’aide des valeurs de chaîne de requête pour filtrer les données avec la liaison de modèle et web forms | Microsoft Docs
 author: tfitzmac
-description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus droites-...
+description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle rend l’interaction des données plus simple-...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 02/27/2014
 ms.topic: article
 ms.assetid: b90978bd-795d-4871-9ade-1671caff5730
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/using-query-string-values-to-retrieve-data
 msc.type: authoredcontent
-ms.openlocfilehash: 03d20decf0eeff6062fbc6f8dd66f644b405c7cc
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 495489479ef912afcb89c267b56fb11e07f959ec
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30886821"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37374728"
 ---
 <a name="using-query-string-values-to-filter-data-with-model-binding-and-web-forms"></a>À l’aide des valeurs de chaîne de requête pour filtrer les données avec la liaison de modèle et les web forms
 ====================
 par [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle permet une interaction de données plus simple que vous traitez des données des objets de source (comme ObjectDataSource ou SqlDataSource). Cette série commence par la partie introductive et déplace vers des concepts plus avancés dans des didacticiels ultérieurs.
+> Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle rend interaction des données plus simple que vous traitez des données des objets de source (tels que ObjectDataSource ou SqlDataSource). Cette série commence par une partie introductive et progresse vers des concepts plus avancés dans les didacticiels suivants.
 > 
 > Ce didacticiel montre comment passer une valeur dans la chaîne de requête et utilisez cette valeur pour récupérer des données via la liaison de modèle.
 > 
 > Ce didacticiel s’appuie sur le projet créé dans le [antérieures](retrieving-data.md) parties de la série.
 > 
-> Vous pouvez [télécharger](https://go.microsoft.com/fwlink/?LinkId=286116) le projet complet en c# ou VB. Le code téléchargeable fonctionne avec Visual Studio 2012 ou Visual Studio 2013. Elle utilise le modèle Visual Studio 2012, qui est légèrement différent de celle du modèle de Visual Studio 2013 indiqué dans ce didacticiel.
+> Vous pouvez [télécharger](https://go.microsoft.com/fwlink/?LinkId=286116) le projet complet en c# ou VB. Le code téléchargeable fonctionne avec Visual Studio 2012 ou Visual Studio 2013. Elle utilise le modèle Visual Studio 2012, qui est légèrement différent de celle du modèle de Visual Studio 2013 présentée dans ce didacticiel.
 
 
 ## <a name="what-youll-build"></a>Vous allez générer
 
-Dans ce didacticiel, vous effectuerez les tâches suivantes :
+Dans ce didacticiel, vous allez :
 
-1. Ajouter une nouvelle page pour afficher les cours inscrits pour un étudiant
-2. Récupérer les cours inscrits pour l’étudiant sélectionné selon une valeur dans la chaîne de requête
+1. Ajoutez une nouvelle page pour afficher les cours inscrits pour un étudiant
+2. Récupérer les cours inscrits de l’étudiant sélectionné selon une valeur dans la chaîne de requête
 3. Ajouter un lien hypertexte avec une valeur de chaîne de requête à partir de l’affichage de grille vers la nouvelle page
 
-Les étapes décrites dans ce didacticiel sont relativement similaires à ce que vous avez fait dans la plus antérieure [didacticiel](sorting-paging-and-filtering-data.md) pour filtrer les étudiants affichées en fonction de la sélection de l’utilisateur dans une zone de liste déroulante. Dans ce didacticiel, vous avez utilisé le **contrôle** attribut dans la méthode select pour spécifier que la valeur du paramètre provient d’un contrôle. Dans ce didacticiel, vous allez utiliser le **QueryString** attribut dans la méthode select pour spécifier que la valeur du paramètre provient de la chaîne de requête.
+Les étapes décrites dans ce didacticiel sont assez semblables à ce que vous l’avez fait dans l’ancien [didacticiel](sorting-paging-and-filtering-data.md) pour filtrer les étudiants affichées en fonction de la sélection de l’utilisateur dans une zone de liste déroulante. Dans ce didacticiel, vous avez utilisé le **contrôle** attribut dans la méthode select pour spécifier que la valeur du paramètre provient d’un contrôle. Dans ce didacticiel, vous allez utiliser le **QueryString** attribut dans la méthode select pour spécifier que la valeur du paramètre provient de la chaîne de requête.
 
-## <a name="add-new-page-for-displaying-a-students-courses"></a>Ajouter une nouvelle page pour afficher le cours de l’un étudiant
+## <a name="add-new-page-for-displaying-a-students-courses"></a>Ajouter une nouvelle page pour afficher les cours d’un étudiant
 
 Ajoutez un nouveau formulaire web qui utilise la page maître Site.master et nommez la page **cours**.
 
-Dans le **Courses.aspx** , ajoutez un affichage de grille pour afficher les cours pour les étudiants sélectionné.
+Dans le **Courses.aspx** , ajoutez un affichage de grille pour afficher les cours de l’étudiant sélectionné.
 
 [!code-aspx[Main](using-query-string-values-to-retrieve-data/samples/sample1.aspx)]
 
 ## <a name="define-the-select-method"></a>Définir la méthode select
 
-Dans **Courses.aspx.cs**, vous allez ajouter la méthode select avec le nom spécifié dans l’affichage de grille **SelectMethod** propriété. Dans cette méthode, vous allez définir la requête pour récupérer le cours de l’un étudiant et spécifier que le paramètre provient d’une valeur de chaîne de requête avec le même nom que le paramètre.
+Dans **Courses.aspx.cs**, vous allez ajouter la méthode select avec le nom spécifié dans l’affichage de grille **SelectMethod** propriété. Dans cette méthode, vous allez définir la requête pour récupérer les cours d’un étudiant et spécifier que le paramètre provient d’une valeur de chaîne de requête avec le même nom que le paramètre.
 
 Vous devez tout d’abord, ajoutez le code suivant **à l’aide de** instructions.
 
@@ -62,23 +61,23 @@ Ensuite, ajoutez le code suivant à Courses.aspx.cs :
 
 [!code-csharp[Main](using-query-string-values-to-retrieve-data/samples/sample3.cs)]
 
-L’attribut de chaîne de requête signifie qu’une valeur de chaîne de requête nommée StudentID est automatiquement affectée au paramètre de cette méthode.
+L’attribut de chaîne de requête signifie qu’une valeur de chaîne de requête nommée StudentID est automatiquement affectée au paramètre dans cette méthode.
 
 ## <a name="add-hyperlink-with-query-string-value"></a>Ajouter un lien hypertexte avec la valeur de chaîne de requête
 
-Dans l’affichage de grille sur Students.aspx, vous allez ajouter un champ de lien hypertexte qui établit un lien vers votre nouvelle page de cours. Le lien hypertexte inclut une valeur de chaîne de requête avec l’id de l’étudiant.
+Dans l’affichage de grille sur Students.aspx, vous allez ajouter un champ de lien hypertexte qui établit un lien vers votre nouvelle page de cours. Le lien hypertexte inclura une valeur de chaîne de requête avec l’id de l’étudiant.
 
-Dans Students.aspx, ajoutez le champ suivant pour les colonnes de la vue grille juste en dessous du champ de Total des crédits.
+Dans Students.aspx, ajoutez le champ suivant pour les colonnes d’affichage de grille juste en dessous du champ de Total des crédits.
 
 [!code-aspx[Main](using-query-string-values-to-retrieve-data/samples/sample4.aspx?highlight=7-8)]
 
-Exécutez l’application et remarquez que l’affichage de grille inclut désormais le lien du cours.
+Exécutez l’application et notez que l’affichage de grille inclut désormais le lien de cours.
 
 ![Ajouter un lien hypertexte](using-query-string-values-to-retrieve-data/_static/image1.png)
 
-Lorsque vous cliquez sur un des liens, vous verrez les cours inscrits que student.
+Lorsque vous cliquez sur un des liens, vous verrez les cours de cette étudiant inscrits.
 
-![afficher en cours](using-query-string-values-to-retrieve-data/_static/image2.png)
+![afficher les cours](using-query-string-values-to-retrieve-data/_static/image2.png)
 
 ## <a name="conclusion"></a>Conclusion
 

@@ -1,6 +1,6 @@
 ---
 uid: web-pages/videos/aspnet-razor-pages/adding-email-to-your-web-site
-title: Ajout de courrier électronique à votre Site Web | Documents Microsoft
+title: Ajout de courrier électronique à votre Site Web | Microsoft Docs
 author: JoeStagner
 description: Ajout de courrier électronique à votre Site Web (partie 1)
 ms.author: aspnetcontent
@@ -9,15 +9,14 @@ ms.date: 02/25/2011
 ms.topic: article
 ms.assetid: a0eb31aa-068b-4214-8a2b-16576a616aca
 ms.technology: dotnet-webpages
-ms.prod: .net-framework
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/adding-email-to-your-web-site
 msc.type: video
-ms.openlocfilehash: 2516503658c178d5579311a9866edf61688d1427
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: d14b434ed757fe74955c72c21043d15c7ab3031a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30895257"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37382018"
 ---
 <a name="adding-email-to-your-web-site"></a>Ajout de courrier électronique à votre Site Web
 ====================

@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-6
-title: Créer le Client JavaScript | Documents Microsoft
+title: Créer le Client JavaScript | Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
@@ -9,15 +9,14 @@ ms.date: 06/16/2014
 ms.topic: article
 ms.assetid: 20360326-b123-4b1e-abae-1d350edf4ce4
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 29d50e448e6d282c7db06b9d1946ac221347e1ea
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: b0b8ef9bd44bbce5102f2b12717e330f72a9e0c9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30879307"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37400932"
 ---
 <a name="create-the-javascript-client"></a>Créer le Client JavaScript
 ====================
@@ -25,50 +24,50 @@ par [Mike Wasson](https://github.com/MikeWasson)
 
 [Télécharger le projet terminé](https://github.com/MikeWasson/BookService)
 
-Dans cette section, vous allez créer le client pour l’application, à l’aide de HTML, JavaScript et le [Knockout.js](http://knockoutjs.com/) bibliothèque. Nous allons construire l’application cliente en étapes :
+Dans cette section, vous allez créer le client pour l’application, à l’aide de HTML, JavaScript et le [Knockout.js](http://knockoutjs.com/) bibliothèque. Nous créerons l’application cliente dans les étapes suivantes :
 
-- Affichage d’une liste de livres.
+- Affiche une liste de livres.
 - Affiche un détail de livre.
 - Ajout d’un nouveau livre.
 
-La bibliothèque de Knockout utilise le modèle Model-View-ViewModel (MVVM) :
+La bibliothèque Knockout utilise le modèle Model-View-ViewModel (MVVM) :
 
-- Le **modèle** est la représentation sous forme de côté serveur des données dans le domaine d’entreprise (dans notre cas, la documentation et d’auteurs).
+- Le **modèle** est la représentation sous forme de côté serveur des données dans le domaine d’entreprise (dans notre cas, les livres et les auteurs).
 - Le **vue** est la couche de présentation (HTML).
-- Le **le modèle de vue** est un objet JavaScript qui contient les modèles. Le modèle d’affichage est une abstraction de code de l’interface utilisateur. Il n’a aucune connaissance de la représentation sous forme de code HTML. Au lieu de cela, il représente fonctionnalités abstraites de la vue, telles que &quot;une liste de livres&quot;.
+- Le **modèle de vue** est un objet JavaScript qui contient les modèles. Le modèle de vue est une abstraction de code de l’interface utilisateur. Elle n’a aucune connaissance de la représentation HTML. Au lieu de cela, il représente les fonctionnalités abstraites de la vue, tel que &quot;une liste de livres&quot;.
 
-La vue est lié aux données pour le modèle d’affichage. Mises à jour le modèle d’affichage sont automatiquement reflétées dans la vue. Le modèle d’affichage obtient également les événements à partir de la vue, tels que les clics de bouton.
+La vue est lié aux données au modèle de vue. Mises à jour au modèle de vue sont automatiquement répercutées dans la vue. Le modèle de vue obtient également les événements à partir de la vue, tels que les clics de bouton.
 
 ![](part-6/_static/image1.png)
 
-Cette approche facilite modifier la disposition et l’interface utilisateur de votre application, comme vous pouvez modifier les liaisons, sans réécrire le code. Par exemple, vous pouvez afficher une liste d’éléments en tant qu’un `<ul>`, puis le modifier ultérieurement à une table.
+Cette approche rend plus facile à modifier la disposition et l’interface utilisateur de votre application, comme vous pouvez modifier les liaisons, sans réécrire le code. Par exemple, vous pouvez afficher une liste d’éléments comme une `<ul>`, puis le modifier ultérieurement à une table.
 
 ## <a name="add-the-knockout-library"></a>Ajoutez la bibliothèque Knockout
 
-Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Gestionnaire de Package de bibliothèque**. Puis sélectionnez **Package Manager Console**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
+Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Library Package Manager**. Puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
 
 [!code-console[Main](part-6/samples/sample1.cmd)]
 
-Cette commande ajoute les fichiers Knockout dans le dossier Scripts.
+Cette commande ajoute les fichiers de Knockout dans le dossier Scripts.
 
-## <a name="create-the-view-model"></a>Créer le modèle d’affichage
+## <a name="create-the-view-model"></a>Créer le modèle de vue
 
-Ajouter un fichier JavaScript nommé app.js dans le dossier Scripts. (Dans l’Explorateur de solutions, cliquez sur le dossier Scripts, sélectionnez **ajouter**, puis sélectionnez **fichier JavaScript**.) Collez le code suivant :
+Ajoutez un fichier JavaScript nommé app.js dans le dossier Scripts. (Dans l’Explorateur de solutions, cliquez sur le dossier Scripts, sélectionnez **ajouter**, puis sélectionnez **fichier JavaScript**.) Collez le code suivant :
 
 [!code-javascript[Main](part-6/samples/sample2.js)]
 
-Dans Knockout, la `observable` classe permet la liaison de données. Lorsque le contenu d’un observable change, l’observable avertit tous les contrôles liés aux données, ils peuvent mettre à jour eux-mêmes. (Le `observableArray` classe est la version du tableau de *observable*.) Pour commencer, notre modèle de vue possède deux observables :
+Dans Knockout, la `observable` classe permet la liaison de données. Lorsque le contenu d’un observable change, l’observable avertit tous les contrôles liés aux données, ils peuvent mettre à jour eux-mêmes. (Le `observableArray` classe est la version du tableau de *observable*.) Pour commencer, notre modèle de vue a deux observables :
 
 - `books` contient la liste de livres.
 - `error` contient un message d’erreur si un appel AJAX échoue.
 
-Le `getAllBooks` méthode effectue un appel AJAX pour obtenir la liste de livres. Puis il exécute un push du résultat dans la `books` tableau.
+Le `getAllBooks` méthode effectue un appel AJAX pour obtenir la liste de livres. Puis il transmet les résultats sur le `books` tableau.
 
-Le `ko.applyBindings` méthode fait partie de la bibliothèque de masquage. Il prend le modèle d’affichage en tant que paramètre et configure la liaison de données.
+Le `ko.applyBindings` méthode fait partie de la bibliothèque Knockout. Il prend le modèle de vue en tant que paramètre et définit la liaison de données.
 
-## <a name="add-a-script-bundle"></a>Ajouter un regroupement de Script
+## <a name="add-a-script-bundle"></a>Ajouter un groupe de scripts
 
-Regroupement est une fonctionnalité de ASP.NET 4.5 qui vous permettent de combiner ou de regrouper plusieurs fichiers dans un seul fichier. Regroupement permet de réduire le nombre de demandes au serveur, ce qui peut améliorer les temps de chargement de page.
+Le regroupement est une fonctionnalité de ASP.NET 4.5 qui permet de facilement combiner ou regrouper plusieurs fichiers dans un seul fichier. Regroupement réduit le nombre de demandes au serveur, ce qui peut améliorer les temps de chargement de page.
 
 Ouvrez le fichier App\_Start/BundleConfig.cs. Ajoutez le code suivant à la méthode RegisterBundles.
 

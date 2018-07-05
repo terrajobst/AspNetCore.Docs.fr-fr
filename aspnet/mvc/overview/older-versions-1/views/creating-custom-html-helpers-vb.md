@@ -1,42 +1,41 @@
 ---
 uid: mvc/overview/older-versions-1/views/creating-custom-html-helpers-vb
-title: Création de programmes d’assistance HTML personnalisé (VB) | Documents Microsoft
+title: Création de Helpers HTML personnalisés (VB) | Microsoft Docs
 author: microsoft
-description: L’objectif de ce didacticiel est de montrer comment vous pouvez créer des applications auxiliaires HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti du programme d’assistance HTML...
+description: L’objectif de ce didacticiel consiste à montrer comment vous pouvez créer des programmes d’assistance HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti du programme d’assistance HTML...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/07/2008
 ms.topic: article
 ms.assetid: f96f4800-19ef-44c0-b457-55e777eb5de8
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-custom-html-helpers-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6980026e2653eacb71697f9b34def9bc38638726
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0b1f4a6afc62eb23d4591d515e973298da4630f9
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30871504"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37396596"
 ---
-<a name="creating-custom-html-helpers-vb"></a>Création de programmes d’assistance HTML personnalisé (VB)
+<a name="creating-custom-html-helpers-vb"></a>Création de Helpers HTML personnalisés (VB)
 ====================
 par [Microsoft](https://github.com/microsoft)
 
-[Télécharger le PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_9_VB.pdf)
+[Télécharger PDF](http://download.microsoft.com/download/1/1/f/11f721aa-d749-4ed7-bb89-a681b68894e6/ASPNET_MVC_Tutorial_9_VB.pdf)
 
-> L’objectif de ce didacticiel est de montrer comment vous pouvez créer des applications auxiliaires HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti des programmes d’assistance HTML, vous pouvez réduire la quantité de saisie fastidieux de balises HTML que vous devez effectuer pour créer une page HTML standard.
+> L’objectif de ce didacticiel consiste à montrer comment vous pouvez créer des programmes d’assistance HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti des programmes d’assistance HTML, vous pouvez réduire la quantité de frappe fastidieux de balises HTML que vous devez effectuer pour créer une page HTML standard.
 
 
-L’objectif de ce didacticiel est de montrer comment vous pouvez créer des applications auxiliaires HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti des programmes d’assistance HTML, vous pouvez réduire la quantité de saisie fastidieux de balises HTML que vous devez effectuer pour créer une page HTML standard.
+L’objectif de ce didacticiel consiste à montrer comment vous pouvez créer des programmes d’assistance HTML personnalisé que vous pouvez utiliser dans vos vues MVC. En tirant parti des programmes d’assistance HTML, vous pouvez réduire la quantité de frappe fastidieux de balises HTML que vous devez effectuer pour créer une page HTML standard.
 
-Dans la première partie de ce didacticiel, je décris parmi les programmes d’assistance HTML existant, inclus avec l’infrastructure ASP.NET MVC. Ensuite, je décris deux méthodes de création des programmes d’assistance HTML personnalisé : vous expliquent comment créer des programmes d’assistance HTML personnalisé en créant une méthode partagée et en créant une méthode d’extension.
+Dans la première partie de ce didacticiel, je décris certaines des programmes d’assistance HTML existant inclus avec l’infrastructure ASP.NET MVC. Ensuite, je décris les deux méthodes de création de programmes d’assistance HTML personnalisée : j’explique comment créer des programmes d’assistance HTML personnalisée en créant une méthode partagée et en créant une méthode d’extension.
 
 ## <a name="understanding-html-helpers"></a>Présentation des programmes d’assistance HTML
 
-Une application d’assistance HTML est simplement une méthode qui retourne une chaîne. La chaîne peut représenter n’importe quel type de contenu que vous souhaitez. Par exemple, vous pouvez utiliser des programmes d’assistance HTML pour restituer des balises HTML standard tels que HTML `<input>` et `<img>` balises. Vous pouvez également utiliser des programmes d’assistance HTML pour restituer le contenu plus complexe telles que la bande d’onglets ou d’une table HTML de base de données.
+Une application d’assistance HTML est simplement une méthode qui retourne une chaîne. La chaîne peut représenter n’importe quel type de contenu que vous souhaitez. Par exemple, vous pouvez utiliser des programmes d’assistance HTML pour restituer des balises HTML standard comme HTML `<input>` et `<img>` balises. Vous pouvez également utiliser assistances HTML à afficher le contenu comme un contrôle onglet ou une table HTML de base de données plus complexe.
 
-L’infrastructure ASP.NET MVC inclut l’ensemble des programmes d’assistance de HTML standard (il ne s’agit pas d’une liste complète) suivantes :
+L’infrastructure ASP.NET MVC inclut l’ensemble des programmes d’assistance HTML standard (cela n’est pas une liste complète) suivantes :
 
 - Html.ActionLink()
 - Html.BeginForm()
@@ -50,7 +49,7 @@ L’infrastructure ASP.NET MVC inclut l’ensemble des programmes d’assistance
 - Html.TextArea()
 - Html.TextBox()
 
-Par exemple, considérez le formulaire dans la liste 1. Ce formulaire est affiché à l’aide de deux des programmes d’assistance HTML standard (voir Figure 1). Ce formulaire utilise la `Html.BeginForm()` et `Html.TextBox()` méthodes d’assistance.
+Par exemple, considérez le formulaire dans le Listing 1. Ce formulaire est restitué à l’aide de deux des programmes d’assistance HTML standard (voir Figure 1). Ce formulaire utilise la `Html.BeginForm()` et `Html.TextBox()` méthodes d’assistance.
 
 
 [![Page rendue avec des programmes d’assistance HTML](creating-custom-html-helpers-vb/_static/image2.png)](creating-custom-html-helpers-vb/_static/image1.png)
@@ -58,54 +57,54 @@ Par exemple, considérez le formulaire dans la liste 1. Ce formulaire est affich
 **Figure 01**: Page rendue avec des programmes d’assistance HTML ([cliquez pour afficher l’image en taille réelle](creating-custom-html-helpers-vb/_static/image3.png))
 
 
-**La liste 1 : `Views\Home\Index.aspx`**
+**Liste 1 : `Views\Home\Index.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample1.aspx)]
 
-Le `Html.BeginForm()` méthode d’assistance est utilisé pour créer l’ouverture et de fermeture HTML `<form>` balises. Notez que le `Html.BeginForm()` méthode est appelée au sein d’un à l’aide de déclaration. L’à l’aide d’instruction garantit que le `<form>` balise est fermé à la fin de l’utilisation bloc.
+Le `Html.BeginForm()` méthode d’assistance est utilisée pour créer le code HTML ouvrant et fermant `<form>` balises. Notez que le `Html.BeginForm()` méthode est appelée au sein d’un à l’aide de déclaration. L’instruction using assure que le `<form>` balise se ferme à la fin de l’à l’aide de bloc.
 
-Si vous préférez, au lieu de créer un à l’aide de bloc, vous pouvez appeler la méthode d’assistance de Html.EndForm() pour fermer la `<form>` balise. Utiliser l’approche de création d’ouverture et fermeture `<form>` balise semble plus intuitif.
+Si vous préférez, au lieu de créer un à l’aide de bloc, vous pouvez appeler la méthode d’assistance Html.EndForm() pour fermer la `<form>` balise. Utiliser l’approche de création d’ouverture et fermeture `<form>` balise qui semble la plus intuitive.
 
-Le `Html.TextBox()` méthodes d’assistance sont utilisés dans la liste 1 pour le rendu HTML `<input>` balises. Si vous sélectionnez Afficher la source dans votre navigateur affiche la source HTML dans le Listing 2. Notez que la source contient des balises HTML standard.
+Le `Html.TextBox()` méthodes d’assistance sont utilisés dans le Listing 1 pour le rendu HTML `<input>` balises. Si vous sélectionnez Afficher la source dans votre navigateur, vous verrez la source HTML dans le Listing 2. Notez que la source contient des balises HTML standard.
 
 > [!IMPORTANT]
-> Notez que la `Html.TextBox()`-HTML rendue avec application d’assistance `<%= %>` balises au lieu de `<% %>` balises. Si vous n’incluez pas le signe égal, puis rien n’est restitué dans le navigateur.
+> Notez que le `Html.TextBox()`-HTML Helper est rendue avec `<%= %>` balises au lieu de `<% %>` balises. Si vous n’incluez pas le signe égal, rien n’est rendu dans le navigateur.
 
-L’infrastructure ASP.NET MVC contient un petit ensemble de programmes d’assistance. Très probablement, vous devez étendre l’infrastructure MVC avec des programmes d’assistance HTML personnalisé. Dans le reste de ce didacticiel, vous découvrez des deux méthodes de création des programmes d’assistance HTML personnalisé.
+L’infrastructure ASP.NET MVC contient un petit ensemble de programmes d’assistance. Vous devrez très probablement, étendre l’infrastructure MVC avec des programmes d’assistance HTML personnalisée. Dans le reste de ce didacticiel, vous allez les deux méthodes de création de programmes d’assistance HTML personnalisée.
 
-**Liste 2 : `Index.aspx Source`**
+**Listing 2 : `Index.aspx Source`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample2.aspx)]
 
-### <a name="creating-html-helpers-with-shared-methods"></a>Création de programmes d’assistance HTML avec des méthodes partagées
+### <a name="creating-html-helpers-with-shared-methods"></a>Création de Helpers HTML avec des méthodes partagées
 
-Le moyen le plus simple pour créer un programme d’assistance HTML nouvelle est pour créer une méthode partagée qui retourne une chaîne. Par exemple, imaginez que vous décidez de créer un nouveau programme d’assistance HTML qui effectue le rendu HTML `<label>` balise. Vous pouvez utiliser la classe dans la liste 2 pour restituer un `<label>`.
+Pour créer un nouveau programme d’assistance HTML, le plus simple consiste à créer une méthode partagée qui retourne une chaîne. Par exemple, imaginez que vous décidez de créer un nouveau programme d’assistance HTML qui assure un rendu HTML `<label>` balise. Vous pouvez utiliser la classe dans la liste 2 pour restituer un `<label>`.
 
-**Liste 2 : `Helpers\LabelHelper.vb`**
+**Listing 2 : `Helpers\LabelHelper.vb`**
 
 [!code-vb[Main](creating-custom-html-helpers-vb/samples/sample3.vb)]
 
-Il n’a rien de spécial sur la classe dans la liste 2. Le `Label()` méthode retourne simplement une chaîne.
+Il n’a rien de spécial à la classe dans le Listing 2. Le `Label()` méthode retourne simplement une chaîne.
 
 La vue Index modifiée dans la liste 3 utilise le `LabelHelper` pour le rendu HTML `<label>` balises. Notez que la vue inclut une `<%@ imports %>` directive qui importe l’espace de noms Application1.Helpers.
 
-**Liste 2 : `Views\Home\Index2.aspx`**
+**Listing 2 : `Views\Home\Index2.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample4.aspx)]
 
-### <a name="creating-html-helpers-with-extension-methods"></a>Création de programmes d’assistance HTML avec les méthodes d’Extension
+### <a name="creating-html-helpers-with-extension-methods"></a>Création de Helpers HTML avec les méthodes d’Extension
 
-Si vous souhaitez créer des programmes d’assistance HTML qui fonctionnent comme les programmes d’assistance HTML standard inclus dans l’infrastructure ASP.NET MVC, vous devez créer des méthodes d’extension. Méthodes d’extension permettent d’ajouter de nouvelles méthodes à une classe existante. Lorsque vous créez une méthode de programme d’assistance HTML, vous ajoutez de nouvelles méthodes pour la `HtmlHelper` classe représentée par la propriété de Html d’un affichage.
+Si vous souhaitez créer des programmes d’assistance HTML qui fonctionnent comme les programmes d’assistance HTML standard inclus dans l’infrastructure ASP.NET MVC, vous devez créer des méthodes d’extension. Méthodes d’extension permettent d’ajouter de nouvelles méthodes à une classe existante. Lorsque vous créez une méthode d’assistance HTML, vous ajoutez de nouvelles méthodes pour la `HtmlHelper` classe représentée par la propriété de Html d’un affichage.
 
-Le module Visual Basic dans la liste 3 ajoute une méthode d’extension nommée `Label()` à la `HtmlHelper` classe. Il existe plusieurs choses que vous devez remarquer sur ce module. Tout d’abord, notez que le module est décoré avec le `<Extension()>` attribut. Pour utiliser cet attribut, vous devez importer le `System.Runtime.CompilerServices` espace de noms
+Le module Visual Basic dans la liste 3 ajoute une méthode d’extension nommée `Label()` à la `HtmlHelper` classe. Il existe plusieurs choses que vous devriez remarquer sur ce module. Tout d’abord, notez que le module est décoré avec le `<Extension()>` attribut. Pour utiliser cet attribut, vous devez importer le `System.Runtime.CompilerServices` espace de noms
 
-En second lieu, notez que le premier paramètre de la `Label()` méthode représente la `HtmlHelper` classe. Le premier paramètre d’une méthode d’extension indique la classe qui étend de la méthode d’extension.
+En second lieu, notez que le premier paramètre de la `Label()` méthode représente la `HtmlHelper` classe. Le premier paramètre d’une méthode d’extension indique la classe qui étend la méthode d’extension.
 
-**La liste 3 : `Helpers\LabelExtensions.vb`**
+**Liste 3 : `Helpers\LabelExtensions.vb`**
 
 [!code-vb[Main](creating-custom-html-helpers-vb/samples/sample5.vb)]
 
-Après avoir créé une méthode d’extension et que vous générez votre application avec succès, la méthode d’extension s’affiche dans Visual Studio Intellisense, telles que toutes les autres méthodes d’une classe (voir Figure 2). La seule différence est qu’extension méthodes apparaissent avec un symbole spécial en regard des (il s’agit d’une icône de flèche vers le bas).
+Après avoir créé une méthode d’extension et que vous générez votre application avec succès, la méthode d’extension s’affiche dans Intellisense dans Visual Studio comme tous les autres méthodes d’une classe (voir Figure 2). La seule différence est qu’extension méthodes apparaissent avec un symbole spécial en regard (il s’agit d’une icône d’une flèche vers le bas).
 
 
 [![À l’aide de la méthode d’extension Html.Label()](creating-custom-html-helpers-vb/_static/image5.png)](creating-custom-html-helpers-vb/_static/image4.png)
@@ -113,17 +112,17 @@ Après avoir créé une méthode d’extension et que vous générez votre appli
 **Figure 02**: à l’aide de la méthode d’extension Html.Label() ([cliquez pour afficher l’image en taille réelle](creating-custom-html-helpers-vb/_static/image6.png))
 
 
-La vue Index modifiée sur la liste 4 utilise la méthode d’extension Html.Label() à restituer tous ses &lt;étiquette&gt; balises.
+La vue Index modifiée sur la liste 4 utilise la méthode d’extension Html.Label() pour restituer tous ses &lt;étiquette&gt; balises.
 
-**La liste 4 – `Views\Home\Index3.aspx`**
+**Liste 4 – `Views\Home\Index3.aspx`**
 
 [!code-aspx[Main](creating-custom-html-helpers-vb/samples/sample6.aspx)]
 
 ## <a name="summary"></a>Récapitulatif
 
-Dans ce didacticiel, vous avez appris à deux méthodes de création des programmes d’assistance HTML personnalisé. Tout d’abord, vous avez appris à créer un personnalisé `Label()` programme d’assistance HTML en créant une méthode partagée qui retourne une chaîne. Ensuite, vous avez appris à créer un personnalisé `Label()` méthode du programme d’assistance HTML en créant une méthode d’extension sur la `HtmlHelper` classe.
+Dans ce didacticiel, vous avez appris de deux méthodes de création de programmes d’assistance HTML personnalisée. Tout d’abord, vous avez appris à créer un personnalisé `Label()` programme d’assistance HTML en créant une méthode partagée qui retourne une chaîne. Ensuite, vous avez appris à créer un personnalisé `Label()` méthode d’assistance HTML en créant une méthode d’extension sur la `HtmlHelper` classe.
 
-Dans ce didacticiel, I se concentre sur la création d’une méthode de programme d’assistance HTML extrêmement simple. Notez qu’une application d’assistance HTML peuvent être aussi complexe que vous le souhaitez. Vous pouvez générer des programmes d’assistance HTML qui restituent contenu riche, tels que les vues de l’arborescence, les menus ou les tables de base de données.
+Dans ce didacticiel, je me suis concentré sur la création d’une méthode d’assistance HTML extrêmement simple. Notez qu’une application d’assistance HTML peuvent être aussi complexe que vous le souhaitez. Vous pouvez créer des programmes d’assistance HTML qui restituent contenu riche, tels que les vues de l’arborescence, des menus ou des tables de base de données.
 
 > [!div class="step-by-step"]
 > [Précédent](asp-net-mvc-views-overview-vb.md)

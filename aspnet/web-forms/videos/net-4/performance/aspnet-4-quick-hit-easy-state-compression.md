@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/net-4/performance/aspnet-4-quick-hit-easy-state-compression
-title: Compression état facile | Documents Microsoft
+title: Compression d’état facile | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo que vous allez apprendre à utiliser l’option de configuration compressionEnabled pour compresser (et décompresser) sérialisé l’état de session.
 ms.author: aspnetcontent
@@ -9,17 +9,16 @@ ms.date: 11/16/2009
 ms.topic: article
 ms.assetid: 8e2c66c5-1b67-483a-9e74-ed67b3d85051
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/performance/aspnet-4-quick-hit-easy-state-compression
 msc.type: video
-ms.openlocfilehash: acc59336040d0e0eaee9251ab86d088f250bbd22
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 5b2bf65acfb0e018360036d0678e751e4e5a882b
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30894104"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37373713"
 ---
-<a name="aspnet-4-quick-hit--easy-state-compression"></a>ASP.NET 4 « Rapide Hit » – Compression état facile
+<a name="aspnet-4-quick-hit--easy-state-compression"></a>ASP.NET 4 « Rapide Hit » – Compression d’état facile
 ====================
 par [Joe Stagner](https://github.com/JoeStagner)
 
