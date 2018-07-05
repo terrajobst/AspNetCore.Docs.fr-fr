@@ -1,42 +1,41 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
-title: Autoriser uniquement certains caractères dans une zone de texte (c#) | Documents Microsoft
+title: Autoriser seulement certains caractères dans une zone de texte (c#) | Microsoft Docs
 author: wenz
-description: Contrôles de validation ASP.NET peuvent garantir que seuls certains caractères sont autorisés dans l’entrée d’utilisateur. Toutefois cela toujours n’empêche pas les utilisateurs de la saisie non valides...
+description: Contrôles de validation ASP.NET peuvent garantir que seulement certains caractères sont autorisés dans l’entrée d’utilisateur. Toutefois cela toujours n’empêche pas les utilisateurs de taper non valides...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: fd2a1c52-d717-44af-8a61-67c8279bb26e
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d2ffc4b741bd0c7f9c456b6e76017f5350ab6378
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: dd7203d7f367f275d2d80c86119edc9645c9d24c
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30869736"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37400728"
 ---
-<a name="allowing-only-certain-characters-in-a-text-box-c"></a>Autoriser uniquement certains caractères dans une zone de texte (c#)
+<a name="allowing-only-certain-characters-in-a-text-box-c"></a>Autoriser seulement certains caractères dans une zone de texte (c#)
 ====================
 par [Christian Wenz](https://github.com/wenz)
 
 [Télécharger le Code](http://download.microsoft.com/download/4/c/2/4c2def7a-0d23-4055-91f9-1f18504167d7/FilteredTextBox0.cs.zip) ou [télécharger le PDF](http://download.microsoft.com/download/b/6/a/b6ae89ee-df69-4c87-9bfb-ad1eb2b23373/filteredtextbox0CS.pdf)
 
-> Contrôles de validation ASP.NET peuvent garantir que seuls certains caractères sont autorisés dans l’entrée d’utilisateur. Toutefois cela toujours n’empêche pas les utilisateurs de taper des caractères non valides et essayez d’envoyer le formulaire.
+> Contrôles de validation ASP.NET peuvent garantir que seulement certains caractères sont autorisés dans l’entrée d’utilisateur. Toutefois cette toujours n’empêche pas les utilisateurs de taper des caractères non valides et essayez d’envoyer le formulaire.
 
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Contrôles de validation ASP.NET peuvent garantir que seuls certains caractères sont autorisés dans l’entrée d’utilisateur. Toutefois cela toujours n’empêche pas les utilisateurs de taper des caractères non valides et essayez d’envoyer le formulaire.
+Contrôles de validation ASP.NET peuvent garantir que seulement certains caractères sont autorisés dans l’entrée d’utilisateur. Toutefois cette toujours n’empêche pas les utilisateurs de taper des caractères non valides et essayez d’envoyer le formulaire.
 
 ## <a name="steps"></a>Étapes
 
-Les outils de contrôle ASP.NET AJAX contient le `FilteredTextBox` contrôle qui étend une zone de texte. Une fois activé, uniquement un certain jeu de caractères peut être entré dans le champ.
+ASP.NET AJAX Control Toolkit contient le `FilteredTextBox` contrôle qui étend une zone de texte. Une fois activé, uniquement un certain ensemble de caractères peut-être être entré dans le champ.
 
-Pour ce faire, nous devons comme d’habitude ASP.NET AJAX `ScriptManager` qui charge les bibliothèques JavaScript qui sont également utilisés par les outils de contrôle ASP.NET AJAX :
+Pour ce faire, nous devons abord comme d’habitude ASP.NET AJAX `ScriptManager` qui charge les bibliothèques JavaScript qui sont également utilisés par ASP.NET AJAX Control Toolkit :
 
 [!code-aspx[Main](allowing-only-certain-characters-in-a-text-box-cs/samples/sample1.aspx)]
 
@@ -44,20 +43,20 @@ Ensuite, nous avons besoin d’une zone de texte :
 
 [!code-aspx[Main](allowing-only-certain-characters-in-a-text-box-cs/samples/sample2.aspx)]
 
-Enfin, le `FilteredTextBoxExtender` contrôle prend en charge de limiter les caractères que l’utilisateur est autorisé à taper. Tout d’abord, définissez le `TargetControlID` d’attribut pour le `ID` de la `TextBox` contrôle. Ensuite, choisissez une des `FilterType` valeurs :
+Enfin, le `FilteredTextBoxExtender` contrôle s’occupe de limiter les caractères que l’utilisateur est autorisé à taper. Tout d’abord, définissez le `TargetControlID` attribut le `ID` de la `TextBox` contrôle. Ensuite, choisissez une des `FilterType` valeurs :
 
-- `Custom` valeur par défaut ; Vous devez fournir une liste de caractères valides
-- `LowercaseLetters` lettres minuscules uniquement
-- `Numbers` uniquement des chiffres
+- `Custom` par défaut ; Vous devez fournir une liste de caractères valides
+- `LowercaseLetters` uniquement des lettres minuscules
+- `Numbers` chiffres uniquement
 - `UppercaseLetters` uniquement des lettres majuscules
 
-Si le `Custom FilterType` est utilisé, le `ValidChars` propriété doit être défini et fournir une liste de caractères qui peuvent être tapés. La façon dont : Si vous essayez de coller du texte dans la zone de texte, tous les caractères non valides sont supprimés.
+Si le `Custom FilterType` est utilisé, le `ValidChars` propriété doit être défini et fournir une liste de caractères qui peuvent être tapés. À propos : Si vous essayez de coller du texte dans la zone de texte, tous les caractères non valides sont supprimés.
 
-Voici le balisage de la `FilteredTextBoxExtender` contrôle qui permet uniquement de chiffres (ce qui aurait également été possible avec `FilterType="Numbers"`) :
+Voici le balisage pour le `FilteredTextBoxExtender` contrôle qui autorise uniquement des chiffres (quelque chose qui aurait également été possible avec `FilterType="Numbers"`) :
 
 [!code-aspx[Main](allowing-only-certain-characters-in-a-text-box-cs/samples/sample3.aspx)]
 
-Exécutez la page, puis réessayez d’entrer une lettre si JavaScript est activé, il ne fonctionnera pas. Toutefois, les chiffres s’affichent dans la page. Notez, cependant que la protection `FilteredTextBox` fournit n’est pas à toute épreuve : si JavaScript est activé, toutes les données peuvent être entrées dans la zone de texte, donc vous devez utiliser une validation supplémentaire signifie, par exemple, ASP. Contrôles de validation du réseau.
+Exécutez la page, puis réessayez d’entrer une lettre si JavaScript est activé, il ne fonctionnera pas ; Toutefois, les chiffres apparaissent dans la page. Toutefois Notez que la protection `FilteredTextBox` fournit n’est pas absolument : si JavaScript est activé, toutes les données peuvent être entrées dans la zone de texte, donc vous devez utiliser une validation supplémentaire signifie que, par exemple, ASP. Contrôles de validation du NET.
 
 
 [![Seuls les chiffres peuvent être entrés.](allowing-only-certain-characters-in-a-text-box-cs/_static/image2.png)](allowing-only-certain-characters-in-a-text-box-cs/_static/image1.png)
