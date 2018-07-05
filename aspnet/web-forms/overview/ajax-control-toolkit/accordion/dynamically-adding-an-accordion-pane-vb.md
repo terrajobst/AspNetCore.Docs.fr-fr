@@ -1,44 +1,43 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-vb
-title: Ajout dynamique d’un volet Accordéon (VB) | Documents Microsoft
+title: Ajout dynamique d’un volet Accordion (VB) | Microsoft Docs
 author: wenz
-description: Le contrôle Accordéon dans la boîte à outils de contrôle AJAX fournit plusieurs volets et permet à l’utilisateur afficher l’un d'entre eux à la fois. Panneaux est généralement déclaré w...
+description: Le contrôle Accordion dans AJAX Control Toolkit fournit plusieurs volets et permet à l’utilisateur afficher un d’eux à la fois. Panneaux sont généralement déclarés w...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/02/2008
 ms.topic: article
 ms.assetid: fae968c9-1902-487d-b053-86a46dd52c3f
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 68c60ba6d4be5eb6709f7558d6be4165f8232a4f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 3dd82fab03e06aa5dd3baba7dd24734fa964b350
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30868722"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37378960"
 ---
-<a name="dynamically-adding-an-accordion-pane-vb"></a>Ajout dynamique d’un volet Accordéon (VB)
+<a name="dynamically-adding-an-accordion-pane-vb"></a>Ajout dynamique d’un volet Accordion (VB)
 ====================
 par [Christian Wenz](https://github.com/wenz)
 
 [Télécharger le Code](http://download.microsoft.com/download/5/6/d/56d50cef-2011-4c8f-9891-7edc6dc57df9/Accordion2.vb.zip) ou [télécharger le PDF](http://download.microsoft.com/download/6/7/1/6718d452-ff89-4d3f-a90e-c74ec2d636a3/accordion2VB.pdf)
 
-> Le contrôle Accordéon dans la boîte à outils de contrôle AJAX fournit plusieurs volets et permet à l’utilisateur afficher l’un d'entre eux à la fois. Panneaux est généralement déclaré dans la page elle-même, mais le code côté serveur peut être utilisé pour obtenir le même résultat.
+> Le contrôle Accordion dans AJAX Control Toolkit fournit plusieurs volets et permet à l’utilisateur afficher un d’eux à la fois. Panneaux sont généralement déclarés dans la page elle-même, mais le code côté serveur peut être utilisé pour obtenir le même résultat.
 
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Le contrôle Accordéon dans la boîte à outils de contrôle AJAX fournit plusieurs volets et permet à l’utilisateur afficher l’un d'entre eux à la fois. Panneaux est généralement déclaré dans la page elle-même, mais le code côté serveur peut être utilisé pour obtenir le même résultat.
+Le contrôle Accordion dans AJAX Control Toolkit fournit plusieurs volets et permet à l’utilisateur afficher un d’eux à la fois. Panneaux sont généralement déclarés dans la page elle-même, mais le code côté serveur peut être utilisé pour obtenir le même résultat.
 
 ## <a name="steps"></a>Étapes
 
-Le contrôle Accordéon expose toutes les propriétés importantes pour le code côté serveur. Entre autres choses, le `Panes` propriété accorde l’accès à la collection de volets qui composent l’accordéon. Chaque volet est de type `AccordionPane`. Par conséquent, il est facile pour créer un volet de ce type :
+Le contrôle Accordion expose toutes les propriétés importantes pour le code côté serveur. Entre autres choses, le `Panes` propriété accorde l’accès à la collection de volets qui composent la Accordion. Chaque volet, il est de type `AccordionPane`. Par conséquent, il est facile de créer un volet de ce type :
 
 [!code-vb[Main](dynamically-adding-an-accordion-pane-vb/samples/sample1.vb)]
 
-Le `HeaderContainer` propriété du `AccordionPane` fournit l’accès aux contrôles ASP.NET dans la section d’en-tête du volet ; le `ContentContainer` propriété de `AccordionPane` fait de même pour la section de contenu du volet. Cela permet au code ASP.NET ajouter du contenu vers les volets :
+Le `HeaderContainer` propriété du `AccordionPane` fournit l’accès aux contrôles ASP.NET dans la section d’en-tête du volet ; le `ContentContainer` propriété de `AccordionPane` fait de même pour la section de contenu du volet. Cela permet de code ASP.NET ajouter du contenu dans les volets :
 
 [!code-vb[Main](dynamically-adding-an-accordion-pane-vb/samples/sample2.vb)]
 
@@ -46,15 +45,15 @@ Enfin, la pane(s) doit être ajouté à la `Panes` collection de l’accordéon�
 
 [!code-vb[Main](dynamically-adding-an-accordion-pane-vb/samples/sample3.vb)]
 
-Voici un code côté serveur complet qui ajoute deux volets à un contrôle Accordéon :
+Voici un code côté serveur complet qui ajoute deux volets à un contrôle Accordion :
 
 [!code-aspx[Main](dynamically-adding-an-accordion-pane-vb/samples/sample4.aspx)]
 
-Le seul élément manquant est Accordéon lui-même, ce qui dépend de la présence de ASP.NET `ScriptManager` contrôle :
+Le seul élément manquant est Accordion lui-même, ce qui dépend de la présence de l’ASP.NET `ScriptManager` contrôle :
 
 [!code-aspx[Main](dynamically-adding-an-accordion-pane-vb/samples/sample5.aspx)]
 
-Pour terminer l’exemple, les deux classes CSS référencés dans le contrôle Accordéon fournissent des informations de style pour le navigateur :
+Pour terminer l’exemple, les deux classes CSS référencés dans le contrôle Accordion fournissent des informations de style pour le navigateur :
 
 [!code-css[Main](dynamically-adding-an-accordion-pane-vb/samples/sample6.css)]
 

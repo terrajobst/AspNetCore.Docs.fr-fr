@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-a-demonstration-of-aspnet-ajax
-title: 'ASP.NET AJAX : Une démonstration d’ASP.NET AJAX | Documents Microsoft'
+title: 'ASP.NET AJAX : Une démonstration d’ASP.NET AJAX | Microsoft Docs'
 author: JoeStagner
 description: Voir combien il est facile de générer à partir de zéro, une application de gestion « Liste des tâches » à l’aide d’ASP.NET 2.0 et améliorer l’expérience utilisateur à l’aide d’ASP.NET AJAX...
 ms.author: aspnetcontent
@@ -9,15 +9,14 @@ ms.date: 02/24/2009
 ms.topic: article
 ms.assetid: f2b4fff1-523f-4636-aa70-63fcc1257a1f
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-a-demonstration-of-aspnet-ajax
 msc.type: video
-ms.openlocfilehash: 5e274fd029e6f0e4fac0e65b929a9a0185e61ff3
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 527f4378aedfe3f2fda155a4f38749d39edc727a
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30890032"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37392164"
 ---
 <a name="aspnet-ajax-a-demonstration-of-aspnet-ajax"></a>ASP.NET AJAX : Une démonstration d’ASP.NET AJAX
 ====================

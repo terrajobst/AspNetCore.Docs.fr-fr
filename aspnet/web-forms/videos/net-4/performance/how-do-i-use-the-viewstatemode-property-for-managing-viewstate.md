@@ -1,29 +1,28 @@
 ---
 uid: web-forms/videos/net-4/performance/how-do-i-use-the-viewstatemode-property-for-managing-viewstate
-title: 'Comment faire : utiliser la propriété ViewStateMode pour la gestion d’état d’affichage ? | Microsoft Docs'
+title: Comment faire pour utiliser la propriété ViewStateMode pour la gestion de ViewState ? | Microsoft Docs
 author: rick-anderson
-description: Dans cette Chris Pels vidéo montre comment utiliser la propriété ViewStateMode lors de la conception d’état d’affichage d’un site web dans ASP.NET.
+description: Dans cette vidéo Chris Pels montre comment utiliser la propriété ViewStateMode lors de la conception d’état d’affichage pour un site web dans ASP.NET.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 09/17/2010
 ms.topic: article
 ms.assetid: e5b1cc5e-fe11-4ede-9e28-af6477277b0c
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/performance/how-do-i-use-the-viewstatemode-property-for-managing-viewstate
 msc.type: video
-ms.openlocfilehash: 0d663cc58f655aa4439071ebd5f895feafc6e898
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 9e31f7826be4905d250b12dc050e1ae2b2d24913
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30894205"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37379204"
 ---
-<a name="how-do-i-use-the-viewstatemode-property-for-managing-viewstate"></a>Comment faire : utiliser la propriété ViewStateMode pour la gestion d’état d’affichage ?
+<a name="how-do-i-use-the-viewstatemode-property-for-managing-viewstate"></a>Comment faire pour utiliser la propriété ViewStateMode pour la gestion de ViewState ?
 ====================
-par [Chris PEL](https://twitter.com/chrispels)
+par [Chris Pels](https://twitter.com/chrispels)
 
-Dans cette vidéo [Chris Pels](http://www.idevtech.com) montre comment utiliser la propriété ViewStateMode lors de la conception d’état d’affichage d’un site web dans ASP.NET. Tout d’abord, la fonctionnalité de gestion ViewState dans ASP.NET avant ASP.NET 4 est traitée. Ensuite, la propriété ViewStateMode ajoutée dans ASP.NET 4 est illustrée à la fois au niveau de la page et un exemple de page avec des contrôles enfants imbriqués. L’importance de l’héritage hiérarchique de la propriété ViewStateMode est présenté. Enfin, un exemple de scénario pour minimiser l’état d’affichage sur les pages ASP.NET est illustrée.
+Dans cette vidéo [Chris Pels](http://www.idevtech.com) montre comment utiliser la propriété ViewStateMode lors de la conception d’état d’affichage pour un site web dans ASP.NET. Tout d’abord, les fonctionnalités de gestion d’état d’affichage dans ASP.NET avant ASP.NET 4 sont abordée. Ensuite, la propriété ViewStateMode ajoutée dans ASP.NET 4 est illustrée à la fois au niveau de la page et un exemple de page avec contrôles enfants imbriqués. L’importance de l’héritage hiérarchique de la propriété ViewStateMode est abordée. Enfin, un exemple de scénario pour réduire l’état d’affichage sur les pages ASP.NET est illustrée.
 
 [&#9654;Regardez la vidéo (16 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-viewstatemode-property-for-managing-viewstate)
 

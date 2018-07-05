@@ -1,25 +1,24 @@
 ---
 uid: web-forms/videos/aspnet-35/aspnet-ajax/introduction-to-aspnet-ajax-history
-title: Introduction à l’historique de ASP.NET Ajax | Documents Microsoft
+title: Introduction à ASP.NET Ajax historique | Microsoft Docs
 author: bleroy
-description: Découvrez comment l’aperçu d’Extensions ASP.NET permet un contrôle sur le bouton précédent du navigateur dans Ajax. ASP.NET AJAX Extensions sont disponibles dans le Extens 3.5 ASP.NET...
+description: Découvrez comment l’aperçu d’Extensions ASP.NET permet un contrôle sur le bouton précédent du navigateur dans Ajax. Les Extensions ASP.NET AJAX sont disponibles dans le Extens 3.5 ASP.NET...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 12/20/2007
 ms.topic: article
 ms.assetid: fd3db529-601a-4a6e-b91a-d9cbe1ff7bd4
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/introduction-to-aspnet-ajax-history
 msc.type: video
-ms.openlocfilehash: 455099914c12b425b172d00b0e8dfc62d5c74a6c
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 2bd37691a4a250a4699b66b0b262c5c54ae65869
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30880828"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37392407"
 ---
-<a name="introduction-to-aspnet-ajax-history"></a>Introduction à l’historique de ASP.NET Ajax
+<a name="introduction-to-aspnet-ajax-history"></a>Introduction à ASP.NET Ajax historique
 ====================
 par [Bertrand Le Roy](https://github.com/bleroy)
 

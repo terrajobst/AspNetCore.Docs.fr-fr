@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile110rc2
-title: jQuery Mobile 1.1.0 RC2 sur le CDN Microsoft Ajax | Documents Microsoft
+title: jQuery Mobile 1.1.0 RC2 sur le CDN Microsoft Ajax | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,15 +9,14 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: 50a56675-fb2e-4a5b-b756-ec4e7a9dad61
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile110rc2
 msc.type: content
-ms.openlocfilehash: 2f6423cb58388bf440e33c2df2011c998fca4a12
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 70d158374a8767add187f5010d99d5278e726c81
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30071257"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37365657"
 ---
 <a name="jquery-mobile-110-rc2-on-the-microsoft-ajax-cdn"></a>jQuery Mobile 1.1.0 RC2 sur le CDN Microsoft Ajax
 ====================
