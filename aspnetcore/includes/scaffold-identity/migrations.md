@@ -1,8 +1,8 @@
-Le code de base de données d’identité généré nécessite [Entity Framework Core Migrations](/ef/core/managing-schemas/migrations/). Créer une migration et mise à jour de la base de données. Par exemple, exécutez les commandes suivantes :
+Le code de base de données d’identité généré nécessite [Migrations Entity Framework Core](/ef/core/managing-schemas/migrations/). Créer une migration et mettre à jour de la base de données. Par exemple, exécutez les commandes suivantes :
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Dans Visual Studio **Package Manager Console**:
+Dans Visual Studio **Console du Gestionnaire de Package**:
 
 ```PMC
 Add-Migration CreateIdentitySchema

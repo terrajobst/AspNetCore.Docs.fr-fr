@@ -4,19 +4,16 @@ title: '[Comment faire] Une Application Web de Test de charge ? | Microsoft Doc
 author: rick-anderson
 description: Cette vidéo vous guide tout au long du processus d’enregistrement d’un Test Web et puis la relecture en tant qu’un Test de charge simulant plusieurs utilisateurs. Nous voyons comment Visual Studio...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/01/2007
-ms.topic: article
 ms.assetid: 2b0649d3-d072-446a-9918-b2648de26472
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-load-test-a-web-application
 msc.type: video
-ms.openlocfilehash: 2efe8beddbe369f047e1e81467f4d48b5bcde333
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6adc67a30890792da9b8337e18b6f2bb4a58cf07
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393799"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830101"
 ---
 <a name="how-do-i-load-test-a-web-application"></a>[Comment faire] Une Application Web de Test de charge ?
 ====================

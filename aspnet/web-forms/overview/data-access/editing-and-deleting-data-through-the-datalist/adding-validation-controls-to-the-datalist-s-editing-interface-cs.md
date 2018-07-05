@@ -4,19 +4,16 @@ title: Ajout de contrôles de Validation pour le contrôle DataList d’édition
 author: rick-anderson
 description: Dans ce didacticiel, nous allons voir combien il est facile pour ajouter des contrôles de validation pour le contrôle de DataList EditItemTemplate afin de fournir une édition plus infaillible utilisateur type int....
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/30/2006
-ms.topic: article
 ms.assetid: 3ecc21c5-da0e-40ab-abb4-fac1e47398ad
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/adding-validation-controls-to-the-datalist-s-editing-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 23b7a0a4fd5786d5bbc2905022a76dfc048d44bf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8a9fe298b7b9cc9fadc4dfd131a7a61d6029da04
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389945"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842703"
 ---
 <a name="adding-validation-controls-to-the-datalists-editing-interface-c"></a>Ajout de contrôles de Validation à la de modification DataList (c#)
 ====================

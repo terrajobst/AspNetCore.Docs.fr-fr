@@ -4,19 +4,16 @@ title: Configuration de Team Foundation Server pour le déploiement de Web | Mic
 author: jrjlee
 description: Ce didacticiel vous explique comment configurer Team Foundation Server (TFS) 2010 pour créer des solutions et de déployer le contenu web dans différents environnements cibles. Ceci...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: ff55233a-e795-4007-a4fc-861fe1bb590b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-team-foundation-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 6430a96a8e430a8a30d062ec22868de829680806
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0155f8dc4ca05a91ed8921f83aa6fa1b0b59c1a5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365339"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829685"
 ---
 <a name="configuring-team-foundation-server-for-web-deployment"></a>Configuration de Team Foundation Server pour le déploiement Web
 ====================

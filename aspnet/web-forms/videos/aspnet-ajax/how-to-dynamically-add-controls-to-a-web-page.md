@@ -4,19 +4,16 @@ title: Comment ajouter dynamiquement des contrôles à une Page Web | Microsoft 
 author: JoeStagner
 description: Dans cette vidéo, je vais vous montrer une technique pour ajouter dynamiquement un nombre indéterminé de contrôles à votre page web.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/16/2008
-ms.topic: article
 ms.assetid: 718e7b1d-e02c-41fe-85d5-44c0d288201f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-to-dynamically-add-controls-to-a-web-page
 msc.type: video
-ms.openlocfilehash: 4c3bbfa9fc15e0560f879de8ad5a4aa61e802165
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3849e844616247ac9fad3482ed3cd27969c86acf
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386315"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829734"
 ---
 <a name="how-to-dynamically-add-controls-to-a-web-page"></a>Comment ajouter dynamiquement des contrôles à une Page Web
 ====================

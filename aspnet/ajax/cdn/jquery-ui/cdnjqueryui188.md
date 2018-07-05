@@ -4,19 +4,16 @@ title: jQuery UI 1.8.8 sur le CDN Microsoft Ajax | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/23/2014
-ms.topic: article
 ms.assetid: 437b0347-c5d6-4525-9208-39239f2d1ecd
-ms.technology: ''
 msc.legacyurl: /ajax/cdn/jquery-ui/cdnjqueryui188
 msc.type: content
-ms.openlocfilehash: 6652e1c1420bc859ada4ceb9ad6ceaa0e738c9b4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 253a09b1649532d52ef4af5ffb0d209e9f5ba699
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387173"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815092"
 ---
 <a name="jquery-ui-188-on-the-microsoft-ajax-cdn"></a>jQuery UI 1.8.8 sur le CDN Microsoft Ajax
 ====================

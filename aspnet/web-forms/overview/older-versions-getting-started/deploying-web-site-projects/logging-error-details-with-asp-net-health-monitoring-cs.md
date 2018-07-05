@@ -4,19 +4,16 @@ title: Journalisation des détails de l’erreur avec l’intégrité ASP.NET an
 author: rick-anderson
 description: Système de surveillance de l’intégrité de Microsoft fournit un moyen facile et personnalisable pour vous connecter divers événements web, y compris les exceptions non gérées. Ce didacticiel décrit le transfert...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: b1abb452-642a-4ff3-8504-37b85590ff79
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 73b78b99f68dc32f37bcd16865091deebdb1399a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bd6b89f63c6d0634e6d6b809d8285b9870485c43
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363479"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842641"
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-c"></a>Journalisation des détails de l’erreur avec l’intégrité ASP.NET analyse (c#)
 ====================

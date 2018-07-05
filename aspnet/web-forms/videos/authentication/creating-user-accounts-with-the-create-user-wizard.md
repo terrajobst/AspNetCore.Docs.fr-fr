@@ -4,19 +4,16 @@ title: Création de comptes d’utilisateur avec l’Assistant Création d’uti
 author: JoeStagner
 description: Dans cette vidéo, Joe Stagner montre comment créer des utilisateurs avec l’Assistant Création d’utilisateur qui est fourni avec la Collection de contrôles de connexion dans ASP.NET et Visual Studio. F...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2008
-ms.topic: article
 ms.assetid: fe023ad0-a25e-48e6-a43a-304e113f1fca
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/creating-user-accounts-with-the-create-user-wizard
 msc.type: video
-ms.openlocfilehash: f78737238679075d049e40dc0222e80803689a22
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 992e5488e5586416a3f9079f98de14e825cefef7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397065"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842294"
 ---
 <a name="creating-user-accounts-with-the-create-user-wizard"></a>Création de comptes d’utilisateur avec l’Assistant Création d’utilisateur
 ====================

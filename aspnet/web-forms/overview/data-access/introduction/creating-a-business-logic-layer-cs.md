@@ -4,19 +4,16 @@ title: Création d’une couche de logique métier (c#) | Microsoft Docs
 author: rick-anderson
 description: Dans ce didacticiel, nous allons voir comment centraliser vos règles d’entreprise dans une couche BLL (Business Logic) qui sert d’intermédiaire pour l’échange de données entre t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 85554606-47cb-4e4f-9848-eed9da579056
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 191b85b4e57055041d3fc281a9ff30e397b51ec7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1e9fc60d9f6867063c3d4dc4faa8d73a683ec87c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373144"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803134"
 ---
 <a name="creating-a-business-logic-layer-c"></a>Création d’une couche de logique métier (c#)
 ====================

@@ -4,19 +4,16 @@ title: Présentation des Pages Web ASP.NET - mise à jour de la base de données
 author: tfitzmac
 description: Ce didacticiel vous montre comment mettre à jour (modifier) une base de données entrée lorsque vous utilisez les Pages Web ASP.NET (Razor). Il part du principe que vous avez terminé la série e...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/02/2018
-ms.topic: article
 ms.assetid: ac86ec9c-6b69-485b-b9e0-8b9127b13e6b
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/updating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 259034a795b9dff7001165a182bc0e84bb690491
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 948f5b5933669a43bf37dc0317ad644660dc67e9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377049"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842900"
 ---
 <a name="introducing-aspnet-web-pages---updating-database-data"></a>Présentation des Pages Web ASP.NET - mise à jour de la base de données
 ====================

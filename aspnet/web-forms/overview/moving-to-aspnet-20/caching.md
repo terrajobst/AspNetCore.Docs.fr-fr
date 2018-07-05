@@ -4,19 +4,16 @@ title: La mise en cache | Microsoft Docs
 author: microsoft
 description: Il est important pour une application ASP.NET performante de comprendre de mise en cache. ASP.NET 1.x proposé trois options différentes pour la mise en cache ; la mise en cache, de sortie...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2005
-ms.topic: article
 ms.assetid: 2bb109d2-e299-46ea-9054-fa0263b59165
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/caching
 msc.type: authoredcontent
-ms.openlocfilehash: 4f52a88680db54de6271b17bd52cbdace66425e9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0c38092c47060e6d02791f9672df6703852f4b5a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387697"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829484"
 ---
 <a name="caching"></a>Mise en cache
 ====================

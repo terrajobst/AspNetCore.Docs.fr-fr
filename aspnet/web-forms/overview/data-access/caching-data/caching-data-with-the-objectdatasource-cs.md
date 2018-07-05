@@ -4,19 +4,16 @@ title: La mise en cache des données avec ObjectDataSource (c#) | Microsoft Docs
 author: rick-anderson
 description: La mise en cache peut signifier la différence entre une lente et une application Web rapide. Ce didacticiel est le premier des quatre examine en détail à la mise en cache dans ASP.NET...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/30/2007
-ms.topic: article
 ms.assetid: bd87413c-8160-4520-a8a2-43b555c4183a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-with-the-objectdatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 149ef94edfdf83832f1ec8a80859045e798a3ee6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f6ca84dc11eb8ecd03aee91198e74b723cfdce7c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374190"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803043"
 ---
 <a name="caching-data-with-the-objectdatasource-c"></a>La mise en cache des données avec ObjectDataSource (c#)
 ====================

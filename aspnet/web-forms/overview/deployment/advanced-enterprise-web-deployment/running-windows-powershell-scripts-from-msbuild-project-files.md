@@ -4,19 +4,16 @@ title: En cours d’exécution des Scripts Windows PowerShell à partir de fichi
 author: jrjlee
 description: Cette rubrique décrit comment exécuter un script Windows PowerShell en tant que partie d’un processus de génération et de déploiement. Vous pouvez exécuter un script localement (en d’autres termes, sur la b...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 55f1ae45-fcb5-43a9-8415-fa5b935fc9c9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 msc.type: authoredcontent
-ms.openlocfilehash: ddb658d8a8f224a7c417321df3e17ce0610d2473
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: faedcee480b6c50dc560055206fedbe7af4d5f67
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362893"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803147"
 ---
 <a name="running-windows-powershell-scripts-from-msbuild-project-files"></a>En cours d’exécution des Scripts Windows PowerShell à partir de fichiers de projet MSBuild
 ====================
@@ -59,7 +56,7 @@ Cette rubrique sera vous montrent comment effectuer ces procédures. Les tâches
 Les tâches de cette rubrique utilisent un exemple de script Windows PowerShell nommé **LogDeploy.ps1** pour illustrer comment exécuter des scripts à partir de MSBuild. Le **LogDeploy.ps1** script contient une fonction simple qui écrit une entrée à ligne unique dans un fichier journal :
 
 
-[!code-javascript[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample1.js)]
+[!code-powershell[Main](running-windows-powershell-scripts-from-msbuild-project-files/samples/sample1.ps1)]
 
 
 Le **LogDeploy.ps1** script accepte deux paramètres. Le premier paramètre représente le chemin d’accès complet au fichier journal à laquelle vous souhaitez ajouter une entrée, et le deuxième paramètre représente la destination du déploiement que vous souhaitez enregistrer dans le fichier journal. Lorsque vous exécutez le script, il ajoute une ligne dans le fichier journal au format suivant :

@@ -4,19 +4,16 @@ title: ASP.NET-accès refusé aux répertoires IIS | Microsoft Docs
 author: rick-anderson
 description: Ce livre blanc décrit la marche à suivre si une demande à votre application ASP.NET renvoie l’erreur « accès refusé au répertoire DirectoryName. Échec de s...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2010
-ms.topic: article
 ms.assetid: 3cb27b8a-354f-4332-bfe0-232b13bbf8aa
-ms.technology: ''
 msc.legacyurl: /whitepapers/denied-access-to-iis-directories
 msc.type: content
-ms.openlocfilehash: 22868738e02472f5f433c729967ac324131a0fdc
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4853ee29d2468c4b67375123c5b2ec15089fe09b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37383060"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842408"
 ---
 <a name="aspnet-denied-access-to-iis-directories"></a>ASP.NET-accès refusé aux répertoires IIS
 ====================
