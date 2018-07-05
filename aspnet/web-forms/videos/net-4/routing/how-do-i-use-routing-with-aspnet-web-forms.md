@@ -2,32 +2,31 @@
 uid: web-forms/videos/net-4/routing/how-do-i-use-routing-with-aspnet-web-forms
 title: Comment faire De routage avec ASP.NET Web Forms ? | Microsoft Docs
 author: rick-anderson
-description: Dans cette vidéo, Chris Pels montre comment implémenter le routage de Web Forms d’ASP.NET 4. Tout d’abord, le concept d’une URL de routage est comparé à l’URL de mappage à un p...
+description: Dans cette vidéo, Chris Pels montre comment implémenter le routage pour les Web Forms dans ASP.NET 4. Tout d’abord, le concept d’une URL de routage est comparé au mappage de l’URL à un p...
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 10/15/2010
 ms.topic: article
 ms.assetid: a3ab6cd9-8f71-4b73-9336-21c0de078269
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/routing/how-do-i-use-routing-with-aspnet-web-forms
 msc.type: video
-ms.openlocfilehash: b268bd628d3b0108d783023cd30d21b43c1b3758
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 8ef8edd68d9918817df564227d1f37716d49d132
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30896239"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37383449"
 ---
-<a name="how-do-i-use-routing-with-aspnet-web-forms"></a><span data-ttu-id="a03d0-105">Comment faire De routage avec ASP.NET Web Forms ?</span><span class="sxs-lookup"><span data-stu-id="a03d0-105">How Do I: Use Routing with ASP.NET Web Forms?</span></span>
+<a name="how-do-i-use-routing-with-aspnet-web-forms"></a><span data-ttu-id="84fb5-105">Comment faire De routage avec ASP.NET Web Forms ?</span><span class="sxs-lookup"><span data-stu-id="84fb5-105">How Do I: Use Routing with ASP.NET Web Forms?</span></span>
 ====================
-<span data-ttu-id="a03d0-106">par [Chris PEL](https://twitter.com/chrispels)</span><span class="sxs-lookup"><span data-stu-id="a03d0-106">by [Chris Pels](https://twitter.com/chrispels)</span></span>
+<span data-ttu-id="84fb5-106">par [Chris Pels](https://twitter.com/chrispels)</span><span class="sxs-lookup"><span data-stu-id="84fb5-106">by [Chris Pels](https://twitter.com/chrispels)</span></span>
 
-<span data-ttu-id="a03d0-107">Dans cette vidéo, Chris Pels montre comment implémenter le routage de Web Forms d’ASP.NET 4.</span><span class="sxs-lookup"><span data-stu-id="a03d0-107">In this video Chris Pels shows how to implement routing for Web Forms in ASP.NET 4.</span></span> <span data-ttu-id="a03d0-108">Tout d’abord, le concept d’une URL de routage est comparé à l’URL de mappage à un fichier physique du site.</span><span class="sxs-lookup"><span data-stu-id="a03d0-108">First, the concept of routing a URL is compared to mapping the URL to a physical file in the site.</span></span> <span data-ttu-id="a03d0-109">Ensuite, un exemple d’itinéraire pour une URL est définie dans le fichier global.asax du fichier Application\_Gestionnaire d’événements de début.</span><span class="sxs-lookup"><span data-stu-id="a03d0-109">Then, a sample route for a URL is defined in the global.asax file Application\_Start event handler.</span></span> <span data-ttu-id="a03d0-110">L’itinéraire contient une valeur paramétrée que l’utilisateur peut entrer dans l’URL.</span><span class="sxs-lookup"><span data-stu-id="a03d0-110">The route contains a parameterized value that the user can enter in the URL.</span></span> <span data-ttu-id="a03d0-111">Un exemple de page est ensuite créé et la valeur de paramètre d’itinéraire est extraite dans la Page\_Gestionnaire d’événements de chargement.</span><span class="sxs-lookup"><span data-stu-id="a03d0-111">A sample page is then created and the route parameter value is extracted in the Page\_Load event handler.</span></span> <span data-ttu-id="a03d0-112">Ensuite, un second itinéraire est défini qui possède plusieurs paramètres et les itinéraires vers la même page que l’itinéraire initial.</span><span class="sxs-lookup"><span data-stu-id="a03d0-112">Next, a second route is defined that has multiple parameters and routes to the same page as the initial route.</span></span> <span data-ttu-id="a03d0-113">La Page\_Gestionnaire d’événements de charge est développée pour extraire la valeur de paramètre d’itinéraire supplémentaires et d’afficher des informations différentes selon les valeurs qui ont été passées à la page.</span><span class="sxs-lookup"><span data-stu-id="a03d0-113">The Page\_Load event handler is expanded to extract the additional route parameter value and display different information depending upon what values have been passed to the page.</span></span>
+<span data-ttu-id="84fb5-107">Dans cette vidéo, Chris Pels montre comment implémenter le routage pour les Web Forms dans ASP.NET 4.</span><span class="sxs-lookup"><span data-stu-id="84fb5-107">In this video Chris Pels shows how to implement routing for Web Forms in ASP.NET 4.</span></span> <span data-ttu-id="84fb5-108">Tout d’abord, le concept d’une URL de routage est comparé au mappage de l’URL à un fichier physique dans le site.</span><span class="sxs-lookup"><span data-stu-id="84fb5-108">First, the concept of routing a URL is compared to mapping the URL to a physical file in the site.</span></span> <span data-ttu-id="84fb5-109">Ensuite, un exemple d’itinéraire pour une URL est définie dans global.asax d’Application de fichiers\_Gestionnaire d’événements de début.</span><span class="sxs-lookup"><span data-stu-id="84fb5-109">Then, a sample route for a URL is defined in the global.asax file Application\_Start event handler.</span></span> <span data-ttu-id="84fb5-110">L’itinéraire contient une valeur paramétrée que l’utilisateur peut entrer dans l’URL.</span><span class="sxs-lookup"><span data-stu-id="84fb5-110">The route contains a parameterized value that the user can enter in the URL.</span></span> <span data-ttu-id="84fb5-111">Un exemple de page est ensuite créé et la valeur de paramètre d’itinéraire est extrait dans la Page\_Gestionnaire d’événements Load.</span><span class="sxs-lookup"><span data-stu-id="84fb5-111">A sample page is then created and the route parameter value is extracted in the Page\_Load event handler.</span></span> <span data-ttu-id="84fb5-112">Ensuite, un deuxième itinéraire qui a plusieurs paramètres et les itinéraires vers la même page que l’itinéraire initial est défini.</span><span class="sxs-lookup"><span data-stu-id="84fb5-112">Next, a second route is defined that has multiple parameters and routes to the same page as the initial route.</span></span> <span data-ttu-id="84fb5-113">La Page\_Gestionnaire d’événements Load est développé pour extraire la valeur de paramètre d’itinéraire supplémentaires et afficher des informations différentes en fonction des valeurs qui ont été transmis à la page.</span><span class="sxs-lookup"><span data-stu-id="84fb5-113">The Page\_Load event handler is expanded to extract the additional route parameter value and display different information depending upon what values have been passed to the page.</span></span>
 
-[<span data-ttu-id="a03d0-114">&#9654;Regardez la vidéo (15 minutes)</span><span class="sxs-lookup"><span data-stu-id="a03d0-114">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-routing-with-aspnet-web-forms)
+[<span data-ttu-id="84fb5-114">&#9654;Regardez la vidéo (15 minutes)</span><span class="sxs-lookup"><span data-stu-id="84fb5-114">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-routing-with-aspnet-web-forms)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="a03d0-115">[Précédent](aspnet-4-quick-hit-outbound-webforms-routing.md)
-> [Suivant](how-do-i-work-with-urls-in-aspnet-routing.md)</span><span class="sxs-lookup"><span data-stu-id="a03d0-115">[Previous](aspnet-4-quick-hit-outbound-webforms-routing.md)
+> <span data-ttu-id="84fb5-115">[Précédent](aspnet-4-quick-hit-outbound-webforms-routing.md)
+> [Suivant](how-do-i-work-with-urls-in-aspnet-routing.md)</span><span class="sxs-lookup"><span data-stu-id="84fb5-115">[Previous](aspnet-4-quick-hit-outbound-webforms-routing.md)
 [Next](how-do-i-work-with-urls-in-aspnet-routing.md)</span></span>
