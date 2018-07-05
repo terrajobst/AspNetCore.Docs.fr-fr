@@ -10,15 +10,14 @@ ms.date: 03/26/2015
 ms.topic: article
 ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: bfa5d52019be81374c7a544e255ab7ffb301fa7b
-ms.sourcegitcommit: 6784510cfb589308c3875ccb5113eb31031766b4
+ms.openlocfilehash: 56c1a5c414fdcece8d827d1187144b4948d8eb93
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34452566"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37387041"
 ---
 <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Créer une application web ASP.NET MVC 5 sécurisée avec connexion, confirmation par courrier électronique et réinitialisation de mot de passe (C#)
 
@@ -33,10 +32,10 @@ par [Rick Anderson](https://github.com/Rick-Anderson)
 <a id="createMvc"></a>
 ## <a name="create-an-aspnet-mvc-app"></a>Créer une application ASP.NET MVC
 
-Commencez par installer et exécuter [Visual Studio Express 2013 pour le Web](https://go.microsoft.com/fwlink/?LinkId=299058) ou [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Installer [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) ou une version ultérieure.
+Démarrez en installant et en cours d’exécution [Visual Studio Express 2013 pour le Web](https://go.microsoft.com/fwlink/?LinkId=299058) ou [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Installer [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) ou une version ultérieure.
 
 > [!NOTE]
-> Avertissement : Vous devez installer [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) ou une version ultérieure pour effectuer ce didacticiel.
+> Avertissement : Vous devez installer [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) ou une version ultérieure pour suivre ce didacticiel.
 
 
 1. Créez un projet Web ASP.NET et sélectionnez le modèle MVC. Web Forms prend également en charge ASP.NET Identity : vous pouvez donc suivre des étapes similaires dans une application Web Forms.  
@@ -53,11 +52,11 @@ Commencez par installer et exécuter [Visual Studio Express 2013 pour le Web](ht
     ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image3.png)  
  À ce stade, l’adresse de messagerie n’a pas été confirmée.
 
-7. Cliquez sur la ligne et sélectionnez Supprimer. Vous allez ajouter cette adresse de messagerie à nouveau à l’étape suivante et envoyer un message électronique de confirmation.
+7. Cliquez sur la ligne, puis sélectionnez Supprimer. Vous ajoutez de nouveau ce courrier électronique à l’étape suivante et envoyer un e-mail de confirmation.
 
 ## <a name="email-confirmation"></a>E-mail de confirmation
 
-Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur pour vérifier qu’ils n’empruntent pas l'identité d'une autre personne (autrement dit, qu'ils ne se sont pas inscrits avec par l'adresse de messagerie de quelqu'un d’autre). Supposons que vous ayez un forum de discussion : vous voudriez empêcher `"bob@example.com"` de s'inscrire en tant que `"joe@contoso.com"`. ans la confirmation par courrier électronique, `"joe@contoso.com"` pourrait recevoir du courrier indésirable à partir de votre application. Supposons que Bob se soit accidentellement inscrit en tant que `"bib@example.com"` et ne l'ait pas remarqué, il ne serait pas en mesure d’utiliser le mot de passe de récupération, car l’application n’. E-mail de confirmation offre uniquement une protection limitée de robots et ne fournit la protection à partir des expéditeurs déterminés, ils ont plusieurs alias de messagerie de travail qu’ils peuvent utiliser pour enregistrer.
+Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur pour vérifier qu’ils n’empruntent pas l'identité d'une autre personne (autrement dit, qu'ils ne se sont pas inscrits avec par l'adresse de messagerie de quelqu'un d’autre). Supposons que vous ayez un forum de discussion : vous voudriez empêcher `"bob@example.com"` de s'inscrire en tant que `"joe@contoso.com"`. ans la confirmation par courrier électronique, `"joe@contoso.com"` pourrait recevoir du courrier indésirable à partir de votre application. Supposons que Bob se soit accidentellement inscrit en tant que `"bib@example.com"` et ne l'ait pas remarqué, il ne serait pas en mesure d’utiliser le mot de passe de récupération, car l’application n’. E-mail de confirmation fournit uniquement une protection limitée des robots et ne fournit pas une protection à partir des expéditeurs de courrier indésirable déterminés, ils ont des alias de messagerie travail nombreux, qu'ils peuvent utiliser pour inscrire.
 
 En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web avant qu’ils soient confirmés par courrier électronique, par SMS ou via un autre mécanisme. <a id="build"></a>Dans les sections ci-dessous, nous allons activer la confirmation de courrier électronique et modifier le code pour empêcher les utilisateurs qui viennent d’être inscrits de se connecter jusqu'à ce que leur courrier électronique ait été confirmé.
 
@@ -89,7 +88,7 @@ Pour simplifier cet exemple, nous allons stocker les paramètres d’application
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample5.cs?highlight=16-21)]
 
-Vérifiez que le fichier *Views\Account\ConfirmEmail.cshtml* a une syntaxe razor correcte. (Le @ caractère dans la première ligne peut être manquant. )
+Vérifiez que le fichier *Views\Account\ConfirmEmail.cshtml* a une syntaxe razor correcte. (Le @ caractère dans la première ligne est peut-être manquant. )
 
 [!code-cshtml[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample6.cshtml?highlight=1)]
 
@@ -112,7 +111,7 @@ Créez un fichier `Views\Shared\Info.cshtml` et ajoutez le balisage razor suivan
 
 [!code-cshtml[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample8.cshtml)]
 
-Ajoutez l' [attribut Authorize](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.118).aspx) à la méthode d’action `Contact` du contrôleur Home. Vous pouvez cliquer sur le **Contact** lien pour vérifier les utilisateurs anonymes n’ont accès et les utilisateurs authentifiés n’ont pas accès.
+Ajoutez l' [attribut Authorize](https://msdn.microsoft.com/library/system.web.mvc.authorizeattribute(v=vs.118).aspx) à la méthode d’action `Contact` du contrôleur Home. Vous pouvez cliquer sur le **Contact** lien pour vérifier les utilisateurs anonymes n’ont accès et les utilisateurs authentifiés ont accès.
 
 [!code-csharp[Main](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/samples/sample9.cs?highlight=1)]
 
@@ -127,7 +126,7 @@ Mettez à jour la vue *Views\Shared\Error.cshtml* pour afficher le message d’e
 Supprimez les comptes de la table **AspNetUsers** qui contiennent l’alias d’e-mail que vous voulez tester. Exécutez l’application et vérifiez que vous ne pouvez pas vous connecter avant d’avoir confirmé votre adresse e-mail. Après avoir confirmé votre adresse e-mail, cliquez sur le lien **Contact**.
 
 <a id="reset"></a>
-## <a name="password-recoveryreset"></a>Récupération/réinitialisation de mot de passe
+## <a name="password-recoveryreset"></a>Récupération de mot de passe/réinitialisation
 
 Supprimez les caractères de commentaire de la `HttpPost ForgotPassword` méthode d’action dans le contrôleur de compte :
 
@@ -140,7 +139,7 @@ Supprimez les caractères de commentaire de la méthode `ForgotPassword` [Action
 La page de connexion affiche maintenant un lien pour réinitialiser le mot de passe.
 
 <a id="rsend"></a>
-## <a name="resend-email-confirmation-link"></a>Renvoyer le lien de confirmation par courrier électronique
+## <a name="resend-email-confirmation-link"></a>Renvoyer le lien de confirmation de courrier électronique
 
 Une fois qu’un utilisateur crée un compte local, un lien de confirmation lui est envoyé par e-mail, qu’il doit utiliser avant de pouvoir se connecter. Si l’utilisateur supprime accidentellement l’e-mail de confirmation ou si l’e-mail n’arrive jamais, le lien de confirmation doit lui être renvoyé. Les modifications suivantes du code montrent comment faire cela.
 
@@ -178,7 +177,7 @@ Le fait de cliquer sur **Choisir un mot de passe** vous permet d’ajouter une c
 
 ![](create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset/_static/image8.png)
 
-## <a name="email-confirmation-in-more-depth"></a>E-mail de confirmation de manière plus approfondie
+## <a name="email-confirmation-in-more-depth"></a>E-mail de confirmation de façon plus approfondie
 
 Mon didacticiel [Confirmation du compte et récupération de mot de passe avec ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md) aborde ce sujet avec plus de détails.
 
@@ -188,7 +187,7 @@ Mon didacticiel [Confirmation du compte et récupération de mot de passe avec A
 Si vous n’obtenez pas un message électronique contenant le lien :
 
 - Vérifiez votre dossier des courriers indésirables.
-- Connectez-vous à votre compte SendGrid, puis cliquez sur le [lien de l’activité de messagerie](https://sendgrid.com/logs/index).
+- Connectez-vous à votre compte SendGrid, puis cliquez sur le [lien activité de messagerie](https://sendgrid.com/logs/index).
 
 Pour tester le lien de vérification sans e-mail, vous devez télécharger l'[exemple terminé](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952). Le lien de confirmation et les codes de confirmation seront affichés dans la page.
 

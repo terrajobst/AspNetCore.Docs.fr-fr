@@ -1,31 +1,30 @@
 ---
 uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-items-to-the-shopping-cart
-title: Spyworks Tailspin - ajouter des éléments au panier d’achat | Documents Microsoft
+title: Tailspin Spyworks - Ajout d’éléments au panier d’achat | Microsoft Docs
 author: JoeStagner
-description: Joe Stagner génère l’ajouter à la fonction d’achat pour l’application Web Forms d’exemple Tailspin Spyworks.
+description: Joe Stagner génère l’ajouter à la fonction de panier Tailspin Spyworks notre exemple d’application Web Forms.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 06/29/2010
 ms.topic: article
 ms.assetid: a408449b-4fc5-4659-8bb6-801404cfbd8f
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-items-to-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: c1a7cfdd42f882200ee9fee94d5969de2e55505f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: ec9dc96f3cbf31e8a068522e6ed31d7c6b08e9c7
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30892814"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37396115"
 ---
-<a name="tailspin-spyworks---adding-items-to-the-shopping-cart"></a>Spyworks Tailspin - ajouter des éléments au panier d’achat
+<a name="tailspin-spyworks---adding-items-to-the-shopping-cart"></a>Tailspin Spyworks - Ajout d’éléments au panier d’achat
 ====================
 par [Joe Stagner](https://github.com/JoeStagner)
 
-Joe Stagner génère l’ajouter à la fonction d’achat pour l’application Web Forms d’exemple Tailspin Spyworks.
+Joe Stagner génère l’ajouter à la fonction de panier Tailspin Spyworks notre exemple d’application Web Forms.
 
-[&#9654;Regardez la vidéo (minutes 24)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-adding-items-to-the-shopping-cart)
+[&#9654;Regardez la vidéo (24 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/tailspin-spyworks-adding-items-to-the-shopping-cart)
 
 > [!div class="step-by-step"]
 > [Précédent](tailspin-spyworks-display-per-product-details.md)

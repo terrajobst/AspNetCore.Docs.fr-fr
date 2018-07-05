@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/data/using-web-api-with-entity-framework/part-10
-title: Publier l’application dans Azure App Service de Azure | Documents Microsoft
+title: Publier l’application dans Azure App Service Azure | Microsoft Docs
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
@@ -9,46 +9,45 @@ ms.date: 06/16/2014
 ms.topic: article
 ms.assetid: 10fd812b-94d6-4967-be97-a31ce9c45e2c
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-10
 msc.type: authoredcontent
-ms.openlocfilehash: cc8a9199144e9fac041435938ea8899374ea199f
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 0290b392c1b292d0f3cc080dbfa25ec6103b2751
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30867812"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37400802"
 ---
-<a name="publish-the-app-to-azure-azure-app-service"></a>Publier l’application dans Azure App Service de Azure
+<a name="publish-the-app-to-azure-azure-app-service"></a>Publier l’application dans Azure App Service Azure
 ====================
 par [Mike Wasson](https://github.com/MikeWasson)
 
 [Télécharger le projet terminé](https://github.com/MikeWasson/BookService)
 
-La dernière étape, vous allez publier l’application sur Azure. Dans l’Explorateur de solutions, cliquez sur le projet et sélectionnez **publier**.
+La dernière étape, vous allez publier l’application dans Azure. Dans l’Explorateur de solutions, cliquez sur le projet et sélectionnez **publier**.
 
 ![](part-10/_static/image1.png)
 
-En cliquant sur **publier** appelle la **publier le site Web** boîte de dialogue. Si vous avez coché **hôte du Cloud** lorsque vous avez créé le projet, puis la connexion et les paramètres sont déjà configurés. Dans ce cas, cliquez simplement sur le **paramètres** et vérifiez &quot;exécuter des Migrations Code First&quot;. (Si vous n’avez pas vérifier **hôte du Cloud** au début, puis suivez les étapes de la [section suivante](#new-website).)
+En cliquant sur **publier** appelle le **publier le site Web** boîte de dialogue. Si vous avez coché **hôte dans le Cloud** lorsque vous avez créé le projet, puis la connexion et paramètres sont déjà configurés. Dans ce cas, cliquez simplement sur le **paramètres** et vérifiez &quot;Execute Code First Migrations&quot;. (Si vous n’avez pas activé **hôte dans le Cloud** au début, puis suivez les étapes décrites dans le [section suivante](#new-website).)
 
 [![](part-10/_static/image3.png)](part-10/_static/image2.png)
 
-Pour déployer l’application, cliquez sur **publier**. Vous pouvez afficher la progression de la publication dans le **de l’activité de publication Web** fenêtre. (À partir de la **vue** menu, sélectionnez **autres fenêtres**, puis sélectionnez **de l’activité de publication Web**.)
+Pour déployer l’application, cliquez sur **publier**. Vous pouvez afficher la progression de la publication dans le **activité de publication Web** fenêtre. (À partir de la **vue** menu, sélectionnez **Windows autres**, puis sélectionnez **activité de publication Web**.)
 
 ![](part-10/_static/image4.png)
 
-Visual Studio après déploiement de l’application, le navigateur par défaut s’ouvre automatiquement à l’URL du site Web déployé, et l’application que vous avez créé est en cours d’exécution dans le cloud. L’URL dans la barre d’adresse de navigateur montre que le site est chargé à partir d’Internet.
+Lorsque Visual Studio a terminé le déploiement de l’application, le navigateur par défaut ouvre automatiquement l’URL du site Web déployé, et l’application que vous avez créé est maintenant en cours d’exécution dans le cloud. L’URL dans la barre d’adresses du navigateur montre que le site est chargé à partir d’Internet.
 
 [![](part-10/_static/image6.png)](part-10/_static/image5.png)
 
 <a id="new-website"></a>
 ## <a name="deploying-to-a-new-website"></a>Déploiement vers un nouveau site Web
 
-Si vous n’avez pas coché **hôte du Cloud** lors de la création du projet, vous pouvez désormais configurer une application web. Dans l’Explorateur de solutions, cliquez sur le projet et sélectionnez **publier**. Sélectionnez le **profil** onglet et cliquez sur **Microsoft Azure Websites**. Si vous n’êtes pas actuellement connecté à Azure, vous devrez vous connecter.
+Si vous n’avez pas coché **hôte dans le Cloud** lorsque vous avez créé le projet, vous pouvez désormais configurer une nouvelle application web. Dans l’Explorateur de solutions, cliquez sur le projet et sélectionnez **publier**. Sélectionnez le **profil** onglet et cliquez sur **sites Web Microsoft Azure**. Si vous n’êtes pas actuellement connecté à Azure, vous devrez vous connecter.
 
 [![](part-10/_static/image8.png)](part-10/_static/image7.png)
 
-Dans le **sites Web existants** boîte de dialogue, cliquez sur **nouveau**.
+Dans le **sites Web existants** boîte de dialogue, cliquez sur **New**.
 
 ![](part-10/_static/image9.png)
 
@@ -56,7 +55,7 @@ Entrez un nom de site. Sélectionnez votre abonnement Azure et la région. Sous 
 
 [![](part-10/_static/image11.png)](part-10/_static/image10.png)
 
-Cliquez sur le **paramètres** et vérifiez &quot;exécuter des Migrations Code First&quot;. Puis cliquez sur **publier**.
+Cliquez sur le **paramètres** et vérifiez &quot;Execute Code First Migrations&quot;. Puis cliquez sur **publier**.
 
 > [!div class="step-by-step"]
 > [Précédent](part-9.md)

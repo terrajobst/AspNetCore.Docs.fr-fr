@@ -1,29 +1,28 @@
 ---
 uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-3-pipes-and-filters
-title: 'ASP.NET MVC généraliste, partie 3 : Canaux nommés et les filtres | Documents Microsoft'
+title: 'ASP.NET Storefront MVC, partie 3 : Canaux et filtres | Microsoft Docs'
 author: robconery
-description: Rob Conery traite les commentaires des parties 1 et 2 et puis approfondir l’implémentation de canaux et les filtres sur le référentiel IQueryable.
+description: Rob Conery traite les commentaires des parties 1 et 2 et puis Explorez l’implémentation de canaux et filtres sur le référentiel IQueryable.
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 05/27/2008
 ms.topic: article
 ms.assetid: 69de22ba-0129-4bb9-b32a-e99319ee8021
 ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-3-pipes-and-filters
 msc.type: video
-ms.openlocfilehash: 3666acf556f49232f7e403a40ada08884694c611
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 574dd039a4266ef4ef235ace0b1480cfc7e13691
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30878449"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37386847"
 ---
-<a name="aspnet-mvc-storefront-part-3-pipes-and-filters"></a>ASP.NET MVC généraliste, partie 3 : Canaux nommés et les filtres
+<a name="aspnet-mvc-storefront-part-3-pipes-and-filters"></a>ASP.NET Storefront MVC, partie 3 : Canaux et filtres
 ====================
-par [dérober Conery](https://github.com/robconery)
+par [Rob Conery](https://github.com/robconery)
 
-Rob Conery traite les commentaires des parties 1 et 2 et puis approfondir l’implémentation de canaux et les filtres sur le référentiel IQueryable.
+Rob Conery traite les commentaires des parties 1 et 2 et puis Explorez l’implémentation de canaux et filtres sur le référentiel IQueryable.
 
 [&#9654;Regardez la vidéo (16 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-mvc-storefront-part-3-pipes-and-filters)
 

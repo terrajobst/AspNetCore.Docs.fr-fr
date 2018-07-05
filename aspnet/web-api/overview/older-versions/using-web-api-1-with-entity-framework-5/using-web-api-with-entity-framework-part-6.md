@@ -1,6 +1,6 @@
 ---
 uid: web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-6
-title: 'Partie 6 : Création de produit et les contrôleurs de commande | Documents Microsoft'
+title: 'Partie 6 : Création de produit et les contrôleurs d’ordre | Microsoft Docs'
 author: MikeWasson
 description: ''
 ms.author: aspnetcontent
@@ -9,17 +9,16 @@ ms.date: 07/04/2012
 ms.topic: article
 ms.assetid: 91ee29ee-0689-40ee-914a-e7dd733b6622
 ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/older-versions/using-web-api-1-with-entity-framework-5/using-web-api-with-entity-framework-part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 6bd485d29821af12b9ebe31b2d04a2d9ab826731
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: 08abc66624526f4b1931231d114158afe8b63247
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30869385"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37382846"
 ---
-<a name="part-6-creating-product-and-order-controllers"></a>Partie 6 : Création d’un produit et contrôleurs de commande
+<a name="part-6-creating-product-and-order-controllers"></a>Partie 6 : Création d’un produit et les contrôleurs de commande
 ====================
 par [Mike Wasson](https://github.com/MikeWasson)
 
@@ -27,23 +26,23 @@ par [Mike Wasson](https://github.com/MikeWasson)
 
 ## <a name="add-a-products-controller"></a>Ajouter un contrôleur de produits
 
-Le contrôleur de l’administrateur est pour les utilisateurs disposant des privilèges d’administrateur. Clients, quant à eux, peuvent afficher les produits, mais ne peut pas créer, mettre à jour ou supprimez-les.
+Le contrôleur de l’administrateur est pour les utilisateurs disposant des privilèges d’administrateur. Les clients, quant à eux, peuvent afficher les produits, mais ne peut pas créer, mettre à jour ou supprimez-les.
 
-Nous pouvons facilement restreindre l’accès aux méthodes Post, Put et Delete, en laissant les méthodes Get ouvert. Mais les données retournées pour un produit :
+Nous pouvons facilement restreindre l’accès aux méthodes Post, Put et Delete, en laissant les méthodes Get ouvert. Mais, examiner les données retournées pour un produit :
 
 [!code-json[Main](using-web-api-with-entity-framework-part-6/samples/sample1.json?highlight=1)]
 
-Le `ActualCost` propriété ne doit pas être visible pour les clients ! La solution consiste à définir un *objet de transfert de données* (DTO) qui inclut un sous-ensemble de propriétés qui doivent être visibles aux clients. Nous allons utiliser LINQ au projet `Product` instances à `ProductDTO` instances.
+Le `ActualCost` propriété ne doit pas être visible par les clients ! La solution consiste à définir un *objet de transfert de données* (DTO) qui inclut un sous-ensemble de propriétés qui doivent être visibles aux clients. Nous allons utiliser LINQ pour projet `Product` instances à `ProductDTO` instances.
 
-Ajoutez une classe nommée `ProductDTO` dans le dossier de modèles.
+Ajoutez une classe nommée `ProductDTO` dans le dossier Modèles.
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample2.cs)]
 
-Maintenant, ajoutez le contrôleur. Dans l’Explorateur de solutions, cliquez sur le dossier contrôleurs. Sélectionnez **ajouter**, puis sélectionnez **contrôleur**. Dans le **ajouter un contrôleur** boîte de dialogue, le nom du contrôleur &quot;ProductsController&quot;. Sous **modèle**, sélectionnez **contrôleur d’API vide**.
+Ajoutez maintenant le contrôleur. Dans l’Explorateur de solutions, cliquez sur le dossier contrôleurs. Sélectionnez **ajouter**, puis sélectionnez **contrôleur**. Dans le **ajouter un contrôleur** boîte de dialogue, nommez le contrôleur &quot;ProductsController&quot;. Sous **modèle**, sélectionnez **contrôleur d’API vide**.
 
 ![](using-web-api-with-entity-framework-part-6/_static/image1.png)
 
-Remplacer tous les éléments dans le fichier source avec le code suivant :
+Remplacez tous les éléments dans le fichier source avec le code suivant :
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample3.cs)]
 
@@ -51,7 +50,7 @@ Le contrôleur utilise toujours le `OrdersContext` pour interroger la base de do
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample4.cs?highlight=1)]
 
-Le `MapProducts` méthode retourne un **IQueryable**, de sorte que nous pouvons composer le résultat avec les autres paramètres de requête. Vous pouvez le constater dans le `GetProduct` méthode, qui ajoute un **où** clause à la requête :
+Le `MapProducts` méthode retourne un **IQueryable**, de sorte que nous pouvons composer le résultat avec d’autres paramètres de requête. Vous pouvez le constater dans le `GetProduct` (méthode), qui ajoute un **où** clause à la requête :
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample5.cs?highlight=2)]
 
@@ -59,22 +58,22 @@ Le `MapProducts` méthode retourne un **IQueryable**, de sorte que nous pouvons 
 
 Ensuite, ajoutez un contrôleur qui permet aux utilisateurs de créer et afficher les commandes.
 
-Nous allons commencer par une autre DTO. Dans l’Explorateur de solutions, cliquez sur le dossier Modèles et ajoutez une classe nommée `OrderDTO` utiliser l’implémentation suivante :
+Nous allons commencer par un autre objet DTO. Dans l’Explorateur de solutions, cliquez sur le dossier Models et ajoutez une classe nommée `OrderDTO` utiliser l’implémentation suivante :
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample6.cs)]
 
-Maintenant, ajoutez le contrôleur. Dans l’Explorateur de solutions, cliquez sur le dossier contrôleurs. Sélectionnez **ajouter**, puis sélectionnez **contrôleur**. Dans le **ajouter un contrôleur** boîte de dialogue, définissez les options suivantes :
+Ajoutez maintenant le contrôleur. Dans l’Explorateur de solutions, cliquez sur le dossier contrôleurs. Sélectionnez **ajouter**, puis sélectionnez **contrôleur**. Dans le **ajouter un contrôleur** boîte de dialogue, définissez les options suivantes :
 
-- Sous **nom de contrôleur**, entrez « OrdersController ».
+- Sous **nom du contrôleur**, entrez « OrdersController ».
 - Sous **modèle**, sélectionnez « Contrôleur d’API avec actions en lecture/écriture, à l’aide d’Entity Framework ».
 - Sous **classe de modèle**, sélectionnez &quot;ordre (ProductStore.Models)&quot;.
 - Sous **classe de contexte de données**, sélectionnez &quot;OrdersContext (ProductStore.Models)&quot;.
 
 ![](using-web-api-with-entity-framework-part-6/_static/image2.png)
 
-Cliquez sur **Ajouter**. Cela ajoute un fichier nommé OrdersController.cs. Ensuite, nous avons besoin de modifier l’implémentation par défaut du contrôleur.
+Cliquez sur **Ajouter**. Cette opération ajoute un fichier nommé OrdersController.cs. Ensuite, nous devons modifier l’implémentation par défaut du contrôleur.
 
-Supprimez d’abord le `PutOrder` et `DeleteOrder` méthodes. Pour cet exemple, les clients ne peuvent pas modifier ou supprimer des commandes existantes. Dans une application réelle, vous devez beaucoup de logique principal pour gérer ces cas. (Par exemple, la commande déjà expédiée ?)
+Tout d’abord, supprimez le `PutOrder` et `DeleteOrder` méthodes. Pour cet exemple, les clients ne peuvent pas modifier ou supprimer des commandes existantes. Dans une application réelle, vous devez beaucoup de logique back-end pour gérer ces cas. (Par exemple, l’ordre déjà expédié ?)
 
 Modifier la `GetOrders` méthode pour retourner uniquement les commandes qui appartiennent à l’utilisateur :
 
@@ -84,35 +83,35 @@ Modifier la `GetOrder` méthode comme suit :
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample8.cs)]
 
-Voici les modifications que nous avons apporté à la méthode :
+Voici les modifications que nous avons apportées à la méthode :
 
 - La valeur de retour est un `OrderDTO` instance, au lieu d’un `Order`.
-- Lorsque nous interroger la base de données pour la commande, nous utilisons le [DbQuery.Include](https://msdn.microsoft.com/library/gg696395) méthode pour extraire le `OrderDetail` et `Product` entités.
-- Nous aplatir le résultats à l’aide d’une projection.
+- Lorsque nous interroger la base de données pour la commande, nous utilisons le [DbQuery.Include](https://msdn.microsoft.com/library/gg696395) méthode pour extraire les informations connexes `OrderDetail` et `Product` entités.
+- Nous aplatir le résultat à l’aide d’une projection.
 
-La réponse HTTP contient un tableau de produits et quantités :
+La réponse HTTP contient un tableau de produits avec des quantités :
 
 [!code-json[Main](using-web-api-with-entity-framework-part-6/samples/sample9.json)]
 
-Ce format est plus facile pour les clients à utiliser que le graphique d’objet d’origine, qui contient les entités imbriquées (ordre, les détails et produits).
+Ce format est plus facile pour les clients à utiliser que le graphique d’objet d’origine, qui contient des entités imbriquées (ordre, les détails et produits).
 
-La dernière méthode de prendre en compte `PostOrder`. Actuellement, cette méthode prend un `Order` instance. Voyons ce qui se passe si un client envoie un corps de demande comme suit :
+La dernière méthode de prendre en compte `PostOrder`. Pour l’instant, cette méthode prend un `Order` instance. Mais que se passe-t-il si un client envoie un corps de demande comme suit :
 
 [!code-json[Main](using-web-api-with-entity-framework-part-6/samples/sample10.json)]
 
-Il s’agit d’un ordre bien structuré et Entity Framework sera heureusement insérer dans la base de données. Mais il contient une entité Product qui n’existe pas encore. Le client venez de créer un nouveau produit dans notre base de données ! Il s’agit une surprise au service Fulfillment ordre, lorsqu’ils voient un ordre pour koala porte. La morale est, vous méfier réellement les données que vous acceptez une demande POST ou PUT.
+Il s’agit d’un ordre bien structuré et Entity Framework est heureusement insérer dans la base de données. Mais il contient une entité de produit qui n’existait pas précédemment. Le client venez de créer un nouveau produit dans notre base de données ! Il s’agit une surprise pour le département d’imprimerie ordre lorsqu’ils voient une commande pour koala ours. Est la morale, soyez très prudent sur les données que vous acceptez une demande POST ou PUT.
 
-Pour éviter ce problème, modifiez le `PostOrder` méthode prendre une `OrderDTO` instance. Utilisez le `OrderDTO` pour créer le `Order`.
+Pour éviter ce problème, modifiez le `PostOrder` méthode entrent en un `OrderDTO` instance. Utilisez le `OrderDTO` pour créer le `Order`.
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample11.cs)]
 
-Notez que nous utilisons le `ProductID` et `Quantity` propriétés et nous ignorer toutes les valeurs que le client a envoyé pour nom de produit ou de prix. Si l’ID de produit n’est pas valide, il enfreint la contrainte de clé étrangère dans la base de données, et l’instruction insert échouera, comme il le devrait.
+Notez que nous utilisons le `ProductID` et `Quantity` propriétés et nous ignorer toutes les valeurs envoyés par le client pour le nom de produit ou de prix. Si l’ID de produit n’est pas valide, il enfreint la contrainte de clé étrangère dans la base de données, et l’insertion échoue, comme il le devrait.
 
 Voici l’ensemble `PostOrder` méthode :
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample12.cs)]
 
-Enfin, ajoutez le **Authorize** d’attribut pour le contrôleur :
+Enfin, ajoutez le **Authorize** attribut au contrôleur :
 
 [!code-csharp[Main](using-web-api-with-entity-framework-part-6/samples/sample13.cs)]
 

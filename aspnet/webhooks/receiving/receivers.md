@@ -1,33 +1,32 @@
 ---
 uid: webhooks/receiving/receivers
-title: Récepteurs d’ASP.NET WebHooks | Documents Microsoft
+title: WebHooks ASP.NET récepteurs | Microsoft Docs
 author: rick-anderson
-description: Récepteurs d’ASP.NET WebHooks
+description: Récepteurs de WebHooks ASP.NET
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 01/17/2012
 ms.topic: article
 ms.assetid: 6cdea089-15b2-4732-8c68-921ca561a8f1
 ms.technology: ''
-ms.prod: .net-framework
-ms.openlocfilehash: a8e42521f201f88b0ed433550e8786411b4487b0
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: be1f7dcef60642231af9c593eb7329ede7c2094f
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30896294"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37374741"
 ---
-# <a name="aspnet-webhooks-receivers"></a>Récepteurs d’ASP.NET WebHooks
+# <a name="aspnet-webhooks-receivers"></a>Récepteurs de WebHooks ASP.NET
 
-Réception de WebHooks dépend de qui est l’expéditeur. Il existe parfois des étapes supplémentaires que l’inscription d’un WebHook vérifier que l’abonné est réellement à l’écoute. Certains WebHooks fournissent un modèle de pousser à tirer où la requête HTTP POST contient uniquement une référence pour les informations d’événement qui est ensuite être récupérés séparément. Fréquence à laquelle le modèle de sécurité varie légèrement.
+Réception de WebHooks dépend de qui est l’expéditeur. Il y a parfois l’inscription d’un WebHook vérification que l’abonné est vraiment à l’écoute des étapes supplémentaires. Certains WebHooks fournissent un modèle de push et pull où la requête HTTP POST contient uniquement une référence pour les informations d’événement qui est ensuite être récupérés séparément. Fréquence à laquelle le modèle de sécurité varie un peu.
 
-L’objectif de Microsoft ASP.NET WebHooks est plus simple et plus cohérente pour rattacher votre API sans perdre beaucoup de temps à déterminer comment gérer une variante particulière de WebHooks.
+L’objectif de Microsoft ASP.NET WebHooks consiste à rendre plus simple et plus cohérente pour rattacher votre API sans perdre trop de temps à deviner comment gérer toute variante particulier de WebHooks.
 
-Un récepteur de WebHook est responsable de l’acceptation et la vérification de WebHooks à partir d’un expéditeur particulier. Un récepteur de WebHook peut prendre en charge un nombre quelconque de WebHooks, chacune avec sa propre configuration. Par exemple, le récepteur GitHub WebHook peut accepter des WebHooks à partir de n’importe quel nombre de dépôts GitHub.
+Un récepteur de WebHook est chargé d’accepter et de vérification des WebHooks à partir d’un expéditeur particulier. Un récepteur de WebHook peut prendre en charge un nombre quelconque de WebHooks, chacun avec sa propre configuration. Par exemple, le récepteur de GitHub WebHook peut accepter des WebHooks à partir de n’importe quel nombre de dépôts GitHub.
 
-## <a name="webhook-receiver-uris"></a>URI du récepteur WebHook
+## <a name="webhook-receiver-uris"></a>URI de récepteur de WebHook
 
-En installant Microsoft ASP.NET WebHooks, vous obtenez un contrôleur de WebHook général qui accepte les requêtes de WebHook à partir d’un nombre très flexible de services. Lorsqu’une demande arrive, il choisit le récepteur approprié que vous avez installés pour gérer un expéditeur WebHook.
+En installant Microsoft ASP.NET WebHooks, vous obtenez un contrôleur de WebHook général qui accepte les requêtes de WebHook à partir d’un nombre très flexible de services. Lorsqu’une requête arrive, il choisit le destinataire approprié que vous avez installés pour gérer un expéditeur particulier de WebHook.
 
 L’URI de ce contrôleur est l’URI du WebHook qui vous inscrivez auprès du service et du formulaire :
 
@@ -35,11 +34,11 @@ L’URI de ce contrôleur est l’URI du WebHook qui vous inscrivez auprès du s
 https://<host>/api/webhooks/incoming/<receiver>/{id}
 ```
 
-Pour des raisons de sécurité, les différents destinataires WebHook nécessitent que l’URI est un *https* URI et dans certains cas, il doit également contenir un paramètre de requête supplémentaire qui est utilisé pour garantir que seul le destinataire prévu peut envoyer des WebHooks à l’URI ci-dessus .
+Pour des raisons de sécurité, les nombreux destinataires WebHook nécessitent que l’URI est un *https* URI et dans certains cas, il doit également contenir un paramètre de requête supplémentaire qui est utilisé pour garantir que seul le destinataire prévu peut envoyer des WebHooks à l’URI ci-dessus .
 
-Le <em> <receiver> </em> composant est le nom du destinataire, par exemple <em>github</em> ou <em>slack</em>.
+Le <em> <receiver> </em> composant est le nom du récepteur, par exemple <em>github</em> ou <em>slack</em>.
 
-Le *{id}* est un identificateur facultatif qui peut servir à identifier une configuration de récepteur WebHook particulière. Cela peut servir à inscrire le WebHooks N avec un récepteur spécifique. Par exemple, les URI suivants de trois utilisable pour vous inscrire à trois WebHooks indépendants :
+Le *{id}* est un identificateur facultatif qui peut être utilisé pour identifier une configuration de récepteur de WebHook particulière. Cela peut servir à inscrire N WebHooks avec un destinataire particulier. Par exemple, les URI suivants trois utilisable pour vous inscrire à trois WebHooks indépendants :
 
 ```
 https://<host>/api/webhooks/incoming/github
@@ -49,25 +48,25 @@ https://<host>/api/webhooks/incoming/github/54321
 
 ## <a name="installing-a-webhook-receiver"></a>L’installation d’un récepteur de WebHook
 
-Pour recevoir le WebHooks à l’aide de Microsoft ASP.NET WebHooks, vous d’abord installez le package Nuget pour l’ou les fournisseurs de que vous souhaitez recevoir des WebHooks à partir WebHook. Les packages Nuget sont nommés [Microsoft.AspNet.WebHooks.Receivers.*](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers) où la dernière partie indique le service de prise en charge. Exemple :
+Pour recevoir des WebHooks à l’aide de Microsoft ASP.NET WebHooks, vous installez tout d’abord le package Nuget pour le fournisseur de WebHook ou les fournisseurs que vous souhaitez recevoir depuis. Les packages Nuget sont nommés [Microsoft.AspNet.WebHooks.Receivers.*](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers) où la dernière partie indique le service pris en charge. Exemple :
 
-[Microsoft.AspNet.WebHooks.Receivers.GitHub](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.GitHub) fournit la prise en charge pour la réception de WebHooks à partir de GitHub et [Microsoft.AspNet.WebHooks.Receivers.Custom](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.Custom) fournit la prise en charge pour la réception des WebHooks généré par ASP. NET WebHooks.
+[Microsoft.AspNet.WebHooks.Receivers.GitHub](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.GitHub) prend en charge pour la réception des WebHooks à partir de GitHub et [Microsoft.AspNet.WebHooks.Receivers.Custom](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers.Custom) prend en charge pour la réception générés par ASP des WebHooks. NET WebHooks.
 
-Prêtes à l’emploi, vous pouvez trouver la prise en charge pour l’échange, GitHub, MailChimp, PayPal, Pusher, force de vente, la marge, Stripe, Trello et WordPress, mais il est possible de prendre en charge de n’importe quel nombre d’autres fournisseurs.
+Prêt à l’emploi, vous pouvez trouver la prise en charge pour Dropbox, GitHub, MailChimp, PayPal, Pusher, Salesforce, Slack, Stripe, Trello et WordPress, mais il est possible prendre en charge n’importe quel nombre d’autres fournisseurs.
 
 ## <a name="configuring-a-webhook-receiver"></a>Configuration d’un récepteur de WebHook
 
-Les récepteurs de WebHook sont configurés via la [IWebHookReceiverConfig](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/IWebHookReceiverConfig.cs) l’interface et les implémentations de cette interface particuliers peuvent être inscrit à l’aide de n’importe quel modèle d’injection de dépendance. L’implémentation par défaut utilise les paramètres d’Application qui peut être défini dans le fichier Web.config, ou, si vous utilisez des applications Web Azure, peut être défini via la [Azure Portal](https://portal.azure.com/).
+Les récepteurs de WebHook sont configurés via la [IWebHookReceiverConfig](https://github.com/aspnet/WebHooks/blob/master/src/Microsoft.AspNet.WebHooks.Receivers/WebHooks/IWebHookReceiverConfig.cs) interface et des implémentations particulières de cette interface peuvent être inscrit à l’aide de n’importe quel modèle d’injection de dépendance. L’implémentation par défaut utilise les paramètres d’Application qui peut être définie dans le fichier Web.config, ou, si vous utilisez Azure Web Apps, peut être définie via la [Azure Portal](https://portal.azure.com/).
 
-![Paramètres de l’application Azure](_static/AzureAppSettings.png)
+![Paramètres d’application Azure](_static/AzureAppSettings.png)
 
-Le format pour les clés de paramètre d’Application est la suivante :
+Le format pour les clés de paramètre d’Application est le suivant :
 
 ```
 MS_WebHookReceiverSecret_<receiver>
 ```
 
-La valeur est une liste séparée par des virgules des valeurs correspondant à la *{id}* valeurs pour lesquelles WebHooks ont été enregistrées, par exemple :
+La valeur est une liste séparée par des virgules de valeurs correspondant à la *{id}* valeurs pour lesquelles WebHooks ont été enregistrées, par exemple :
 
 ```
 MS_WebHookReceiverSecret_GitHub = <secret1>, 12345=<secret2>, 54321=<secret3>
@@ -75,7 +74,7 @@ MS_WebHookReceiverSecret_GitHub = <secret1>, 12345=<secret2>, 54321=<secret3>
 
 ## <a name="initializing-a-webhook-receiver"></a>L’initialisation d’un récepteur de WebHook
 
-Les récepteurs de WebHook sont initialisés en les enregistrant, généralement dans le *WebApiConfig* classe statique, par exemple :
+Les récepteurs de WebHook sont initialisés en les inscrivant, généralement dans le *WebApiConfig* classe statique, par exemple :
 
 ```csharp
 namespace WebHookReceivers

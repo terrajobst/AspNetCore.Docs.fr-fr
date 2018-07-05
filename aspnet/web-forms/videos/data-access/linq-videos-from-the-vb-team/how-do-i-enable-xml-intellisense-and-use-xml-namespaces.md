@@ -9,15 +9,14 @@ ms.date: 11/15/2007
 ms.topic: article
 ms.assetid: cdccd601-c0fe-4e56-9c38-7ef027de3481
 ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-enable-xml-intellisense-and-use-xml-namespaces
 msc.type: video
-ms.openlocfilehash: ebcee538a74b466e65907880e84677c587081d0b
-ms.sourcegitcommit: f8852267f463b62d7f975e56bea9aa3f68fbbdeb
+ms.openlocfilehash: e4de1242f66791f71564272f6878c3b1fe849cab
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30885895"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37398431"
 ---
 <a name="how-do-i-enable-xml-intellisense-and-use-xml-namespaces"></a>[Comment faire] Activer XML IntelliSense et utiliser des espaces de noms XML ?
 ====================
