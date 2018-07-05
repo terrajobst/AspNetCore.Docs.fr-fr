@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile10b3
-title: jQuery Mobile 1.0 bêta 3 sur le CDN Microsoft Ajax | Documents Microsoft
+title: jQuery Mobile 1.0 bêta 3 sur le CDN Microsoft Ajax | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
@@ -9,19 +9,18 @@ ms.date: 07/23/2014
 ms.topic: article
 ms.assetid: f71316df-b4f4-4cf5-8511-c0415391231c
 ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile10b3
 msc.type: content
-ms.openlocfilehash: 72ce19ff657cac9a6aeaeb5a313940cc8d144d8e
-ms.sourcegitcommit: 48beecfe749ddac52bc79aa3eb246a2dcdaa1862
+ms.openlocfilehash: 8c63f6b65985d2d35e7a8f0e836733e3fe87ed8c
+ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/22/2018
-ms.locfileid: "30073904"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37383076"
 ---
-<a name="jquery-mobile-10-beta-3-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="ec4a9-102">jQuery Mobile 1.0 bêta 3 sur le CDN Microsoft Ajax</span><span class="sxs-lookup"><span data-stu-id="ec4a9-102">jQuery Mobile 1.0 Beta 3 on the Microsoft Ajax CDN</span></span>
+<a name="jquery-mobile-10-beta-3-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="fcfcc-102">jQuery Mobile 1.0 bêta 3 sur le CDN Microsoft Ajax</span><span class="sxs-lookup"><span data-stu-id="fcfcc-102">jQuery Mobile 1.0 Beta 3 on the Microsoft Ajax CDN</span></span>
 ====================
-<span data-ttu-id="ec4a9-103">La bibliothèque jQuery Mobile 1.0 bêta 3 comprend les fichiers suivants :</span><span class="sxs-lookup"><span data-stu-id="ec4a9-103">The jQuery Mobile 1.0 Beta 3 library includes the following files:</span></span>
+<span data-ttu-id="fcfcc-103">La bibliothèque jQuery Mobile 1.0 bêta 3 inclut les fichiers suivants :</span><span class="sxs-lookup"><span data-stu-id="fcfcc-103">The jQuery Mobile 1.0 Beta 3 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0b3/jquery.mobile-1.0b3.js
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0b3/jquery.mobile-1.0b3.min.js
