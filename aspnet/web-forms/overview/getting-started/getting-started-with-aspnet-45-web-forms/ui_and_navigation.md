@@ -4,19 +4,16 @@ title: L’interface utilisateur et Navigation | Microsoft Docs
 author: Erikre
 description: Cette série de didacticiels vous apprend les notions de base de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: 5c76891d-e515-4885-b576-76bd2c494efe
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: f8570942c094edc0a2825613be634fbfb447b13c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ef1b226d673d18ec333c35f193dbe6bd21e54225
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394276"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842913"
 ---
 <a name="ui-and-navigation"></a>L’interface utilisateur et Navigation
 ====================

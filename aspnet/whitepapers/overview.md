@@ -4,19 +4,16 @@ title: Livres blancs | Microsoft Docs
 author: rick-anderson
 description: Sur cette page, vous trouverez des livres blancs pour vous aider à installer et configurer ASP.NET et pour vous aider à écrire des applications ASP.NET sécurisées, rapides et flexibles.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2011
-ms.topic: article
 ms.assetid: d5e79470-01f2-4d65-8077-11c3e10a6784
-ms.technology: ''
 msc.legacyurl: /whitepapers
 msc.type: content
-ms.openlocfilehash: 3f0c56ed0871df7985a93dd75653e599ea4be582
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b2650c9a396b9049d9919a675be40df1ac1338c9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363330"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802930"
 ---
 <a name="whitepapers"></a>Livres blancs
 ====================

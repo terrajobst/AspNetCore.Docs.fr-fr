@@ -4,19 +4,16 @@ title: Panier d’achat | Microsoft Docs
 author: Erikre
 description: Cette série de didacticiels vous apprend les notions de base de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: 6898c601-6c31-432f-8388-e6843f8a17cb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
 msc.type: authoredcontent
-ms.openlocfilehash: 22253b8708efd9ce505c9fbeb9cb2e942588b37d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 00fd00778477bea21add76c799dbfe24dfdec1dc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375776"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817000"
 ---
 <a name="shopping-cart"></a>Panier d’achat
 ====================

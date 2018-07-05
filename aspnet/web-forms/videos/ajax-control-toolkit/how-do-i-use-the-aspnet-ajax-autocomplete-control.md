@@ -4,19 +4,16 @@ title: '[Comment faire] Utiliser le contrôle de saisie semi-automatique d’ASP
 author: JoeStagner
 description: Le contrôle d’extendeur AutoComplete à partir d’ASP.NET AJAX Control Toolkit fournit des suggestions en temps réel à l’utilisateur en tant que types il dans une zone de texte sur la nous...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/20/2007
-ms.topic: article
 ms.assetid: 636a88fa-bafa-4310-8163-dba4a3461ce3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-autocomplete-control
 msc.type: video
-ms.openlocfilehash: 5a22d8f91af4d8b114722f1fbb2321c6c3a2ac76
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a27aec4220bb2c20dfdfb63c5fa434ba343347b7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392579"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842690"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-autocomplete-control"></a>[Comment faire] Utiliser le contrôle de saisie semi-automatique d’ASP.NET AJAX
 ====================

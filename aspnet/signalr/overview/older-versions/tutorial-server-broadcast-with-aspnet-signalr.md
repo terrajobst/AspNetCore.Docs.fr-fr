@@ -4,19 +4,16 @@ title: 'Didacticiel : Diffusion par le serveur avec ASP.NET SignalR 1.x | Micro
 author: pfletcher
 description: Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR pour fournir des fonctionnalités de diffusion de serveur. Serveur de diffusion signifie autrement communic...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/10/2013
-ms.topic: article
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: caaafd0ff353b180b0f71a1e1f9522cfa574d854
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1f98b35236812aac1362f1e36e60971ff8d896bc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369933"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816192"
 ---
 <a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Didacticiel : Diffusion par le serveur avec ASP.NET SignalR 1.x
 ====================

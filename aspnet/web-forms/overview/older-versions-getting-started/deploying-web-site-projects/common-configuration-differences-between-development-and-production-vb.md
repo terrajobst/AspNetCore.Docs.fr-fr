@@ -4,19 +4,16 @@ title: Les différences de Configuration courantes entre le développement et de
 author: rick-anderson
 description: Dans les didacticiels précédents, nous avons déployé notre site Web en copiant tous les fichiers pertinentes à partir de l’environnement de développement dans l’environnement de production. Toutefois, j’ai...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 548e75f6-4d6c-4cb4-8da8-417915eb8393
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/common-configuration-differences-between-development-and-production-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0e587853e77c1d6e21e787aae417c0978b1b957d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 083c07a42fab1f655798f8cfb444ed0e6aa38ff0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362737"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842803"
 ---
 <a name="common-configuration-differences-between-development-and-production-vb"></a>Différences de Configuration courantes entre le développement et de Production (VB)
 ====================

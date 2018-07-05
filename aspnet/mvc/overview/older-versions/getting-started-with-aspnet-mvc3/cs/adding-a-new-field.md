@@ -4,19 +4,16 @@ title: Ajoutez un nouveau champ à la Table (c#) et le modèle Movie | Microsoft
 author: Rick-Anderson
 description: Ce didacticiel vous apprend les bases de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: b4e76c1a-f66e-43a0-aa72-f39df79c07c1
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 3408afe6665d353e9570acc2740b5f1b7ba916da
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 91b02f9991b714f8da2aa736c9ba5e58a7228350
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367155"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37829070"
 ---
 <a name="adding-a-new-field-to-the-movie-model-and-table-c"></a>Ajoutez un nouveau champ à la Table (c#) et le modèle Movie
 ====================

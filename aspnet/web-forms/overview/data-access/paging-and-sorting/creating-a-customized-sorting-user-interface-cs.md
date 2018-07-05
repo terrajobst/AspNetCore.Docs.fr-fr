@@ -4,19 +4,16 @@ title: Création d’une Interface utilisateur de tri personnalisée (c#) | Micr
 author: rick-anderson
 description: Lors de l’affichage d’une longue liste des données triées, il peut être très utile de regrouper les données associées en introduisant des lignes du séparateur. Dans ce didacticiel, nous verrons comment cre...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: 6f81b633-9d01-4e52-ae4a-2ea6bc109475
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7671c86d105f7d8a4ef5ce65da500250dce47db0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 96f52b3caf812fcfe82012c2de091acb91b8e0ae
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369552"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842330"
 ---
 <a name="creating-a-customized-sorting-user-interface-c"></a>Création d’une Interface utilisateur de tri personnalisée (c#)
 ====================

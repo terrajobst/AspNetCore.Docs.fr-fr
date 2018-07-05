@@ -4,19 +4,16 @@ title: Protection des chaînes de connexion et d’autres informations de Config
 author: rick-anderson
 description: Une application ASP.NET stocke habituellement les informations de configuration dans un fichier Web.config. Certaines de ces informations est sensible et garantit la protection. Par déf....
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/03/2007
-ms.topic: article
 ms.assetid: ad8dd396-30f7-4abe-ac02-a0b84422e5be
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/protecting-connection-strings-and-other-configuration-information-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e5ce4459a1b62fe851ce8a4cae50aed798f0d508
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 24a066a4c9d60e3dc1897bd3143b382b876e027c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378973"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842219"
 ---
 <a name="protecting-connection-strings-and-other-configuration-information-c"></a>Protection des chaînes de connexion et d’autres informations de Configuration (c#)
 ====================

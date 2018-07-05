@@ -4,19 +4,16 @@ title: ASP.NET 4 dernières modifications | Microsoft Docs
 author: rick-anderson
 description: Ce document décrit les modifications qui ont été apportées pour la version de .NET Framework version 4 qui peut potentiellement affecter les applications qui ont été créées à l’aide de...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2010
-ms.topic: article
 ms.assetid: d601c540-f86b-4feb-890c-20c806b3da6c
-ms.technology: ''
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
-ms.openlocfilehash: bf9968c49e904c064338d7123405cb6578a915f2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e6d7972c333e302bb8b6b2d23ea7123b8757b2f4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378648"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37842511"
 ---
 <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 dernières modifications
 ====================
