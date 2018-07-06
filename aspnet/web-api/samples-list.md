@@ -4,19 +4,16 @@ title: Exemples de l’API Web liste | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/18/2012
-ms.topic: article
 ms.assetid: 8cbd9d7f-7027-4390-b098-cb81a63ecd6f
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/samples-list
 msc.type: content
-ms.openlocfilehash: 6c9fff024df6c485b8d904d39cb0a4e5b5bf7e44
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2b8376c89565ac258247425edce06e48be9846dc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362562"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824242"
 ---
 <a name="web-api-samples-list"></a>Liste d’exemples d’API Web
 ====================

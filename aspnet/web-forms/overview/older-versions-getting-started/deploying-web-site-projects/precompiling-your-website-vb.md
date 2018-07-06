@@ -4,19 +4,16 @@ title: Précompilation de votre site Web (VB) | Microsoft Docs
 author: rick-anderson
 description: 'Visual Studio offre aux développeurs ASP.NET deux types de projets : projets d’Application Web (WAP) et les projets de Site Web (WSP). Parmi le principales différences betwe...'
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: c285dc6f-a1c6-46e6-ac03-3830947f57e3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/precompiling-your-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ab13f162af8dab679010c63d8c0005b525473a34
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a5d7820bf99348ec9d1014264de5779bb7aead01
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371114"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809561"
 ---
 <a name="precompiling-your-website-vb"></a>Précompilation de votre site Web (VB)
 ====================

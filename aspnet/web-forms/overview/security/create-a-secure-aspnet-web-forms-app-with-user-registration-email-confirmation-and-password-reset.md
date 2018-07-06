@@ -4,19 +4,16 @@ title: Créer une application Web Forms ASP.NET sécurisée avec inscription des
 author: Erikre
 description: Ce didacticiel vous montre comment créer une application Web Forms ASP.NET avec inscription utilisateur, confirmation par courrier électronique et mot de passe réinitialisé à l’aide du membre de l’identité ASP.NET...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/02/2014
-ms.topic: article
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: 79755282f5f146ac6969c3adfeb285610db530ee
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1c230c3f33bd8261312485e9d77f6f88adb49e9e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391276"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812767"
 ---
 <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Créer une application Web Forms ASP.NET sécurisée avec inscription des utilisateurs, par e-mail de réinitialisation de mot de passe et de confirmation (c#)
 ====================

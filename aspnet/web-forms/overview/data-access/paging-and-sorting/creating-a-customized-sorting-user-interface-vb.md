@@ -4,19 +4,16 @@ title: Création d’une Interface d’utilisateur de tri personnalisée (VB) | 
 author: rick-anderson
 description: Lors de l’affichage d’une longue liste des données triées, il peut être très utile de regrouper les données associées en introduisant des lignes du séparateur. Dans ce didacticiel, nous verrons comment cre...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: f3897a74-cc6a-4032-8f68-465f155e296a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 27ff1efb47f8e74c3b9f090af646229a9121661b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8e94bbda0ca89b409515db1e223637e3a554cd31
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394558"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835866"
 ---
 <a name="creating-a-customized-sorting-user-interface-vb"></a>Création d’une Interface d’utilisateur de tri personnalisée (VB)
 ====================

@@ -4,19 +4,16 @@ title: Mappage des utilisateurs SignalR aux connexions | Microsoft Docs
 author: tfitzmac
 description: Cette rubrique montre comment conserver des informations sur les utilisateurs et de leurs connexions. Patrick Fletcher a permis à écrire cette rubrique. Versions des logiciels utilisées dans cette rubrique...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/30/2014
-ms.topic: article
 ms.assetid: f80c08b1-3f1f-432c-980c-c7b6edeb31b1
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/guide-to-the-api/mapping-users-to-connections
 msc.type: authoredcontent
-ms.openlocfilehash: bd7c0cd9a645ab5b65c5c1446b51ea1646e43799
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bee743c5b201f4eef04cb80aa860ec67c4afe773
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391530"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840432"
 ---
 <a name="mapping-signalr-users-to-connections"></a>Mappage des utilisateurs SignalR aux connexions
 ====================

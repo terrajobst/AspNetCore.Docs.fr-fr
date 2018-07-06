@@ -4,19 +4,16 @@ title: Utiliser les fonctionnalités de disposition dans WebMatrix | Microsoft D
 author: rick-anderson
 description: Partie 4 vous apprend à disposition et comment vous pouvez utiliser disposition dans WebMatrix code commun dans vos pages.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/12/2011
-ms.topic: article
 ms.assetid: 37504e9f-3c62-41ac-88c3-9daf9fdd5d9a
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/videos/introduction/use-the-layout-features-in-webmatrix
 msc.type: video
-ms.openlocfilehash: 334ef60b0a8ccb02a177e5bf034ce7d87327764f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0fdfee948971009ea9fa3c7b5d9ac64e34061168
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394646"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812858"
 ---
 <a name="use-the-layout-features-in-webmatrix"></a>Utiliser les fonctionnalités de disposition dans WebMatrix
 ====================

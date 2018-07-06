@@ -4,19 +4,16 @@ title: '[Comment faire] Localiser une Application ASP.NET AJAX ? | Microsoft Do
 author: rick-anderson
 description: Dans cette vidéo, nous commencer par une vue d’ensemble des fonctionnalités de localisation de l’infrastructure ASP.NET standard et examinez les fonctionnalités de localisation de la...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/10/2007
-ms.topic: article
 ms.assetid: 62188875-159b-4d9e-98b7-7fda3fdd5b76
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-localize-an-aspnet-ajax-application
 msc.type: video
-ms.openlocfilehash: f8ecbb0ac312ea707b79fedf667fb31f8375185f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cc4ab86fd609c660cf8daec32d31ad8d43bd344f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390690"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805841"
 ---
 <a name="how-do-i-localize-an-aspnet-ajax-application"></a>[Comment faire] Localiser une Application ASP.NET AJAX ?
 ====================

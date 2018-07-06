@@ -4,19 +4,16 @@ title: 'EF Database First avec ASP.NET MVC : modification de la base de donnée
 author: tfitzmac
 description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/01/2014
-ms.topic: article
 ms.assetid: cfd5c083-a319-482e-8f25-5b38caa93954
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/changing-the-database
 msc.type: authoredcontent
-ms.openlocfilehash: 7c9bca87c51bee35be2c5b533916255be80056b0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0176274694426a527ed0862b5138919d4cf5c319
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385432"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840938"
 ---
 <a name="ef-database-first-with-aspnet-mvc-changing-the-database"></a>EF Database First avec ASP.NET MVC : modification de la base de données
 ====================

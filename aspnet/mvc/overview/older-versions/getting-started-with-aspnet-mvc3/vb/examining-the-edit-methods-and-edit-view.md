@@ -4,19 +4,16 @@ title: Examen des méthodes de modification et de la vue Edit (VB) | Microsoft D
 author: Rick-Anderson
 description: Ce didacticiel vous apprend les bases de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: 5cb3c59b-1e96-464b-b3a8-c55607201872
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: 9f99981b41d0e67514f5667b00640ad9174d1e4d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4c0478f077ef22a301d21a5a8ce65d4117ee2348
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362665"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815260"
 ---
 <a name="examining-the-edit-methods-and-edit-view-vb"></a>Examen des méthodes de modification et de la vue Edit (VB)
 ====================

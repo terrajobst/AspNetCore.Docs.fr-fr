@@ -4,19 +4,16 @@ title: Mise à jour le TableAdapter à utiliser des jointures (c#) | Microsoft D
 author: rick-anderson
 description: Lorsque vous travaillez avec une base de données, il est courant pour demander des données qui sont réparties sur plusieurs tables. Pour récupérer des données à partir de deux tables différentes, nous pouvons utiliser soit...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/18/2007
-ms.topic: article
 ms.assetid: 675531a7-cb54-4dd6-89ac-2636e4c285a5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 5ff63f1dc7c01f2be66dd99e1e00e2c2bb70058d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: c59ab13eb5e5e548055c6c8c9343a8d5c4cabe7d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390999"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841119"
 ---
 <a name="updating-the-tableadapter-to-use-joins-c"></a>Mise à jour le TableAdapter à utiliser des jointures (c#)
 ====================

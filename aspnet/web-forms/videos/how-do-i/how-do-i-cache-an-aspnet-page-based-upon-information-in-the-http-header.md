@@ -4,19 +4,16 @@ title: '[Comment faire]  Cache une Page ASP.NET en fonction des informations dan
 author: rick-anderson
 description: Dans cette vidéo Chris Pels montre comment conserver une page dans le cache de sortie ASP.NET en fonction des informations dans l’en-tête HTTP de la page. Tout d’abord, le potentiel Affich HTTP...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/26/2009
-ms.topic: article
 ms.assetid: 0f8df1bd-080a-4eeb-980c-c2fbb05d30c2
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-cache-an-aspnet-page-based-upon-information-in-the-http-header
 msc.type: video
-ms.openlocfilehash: 3987e6ea1e5ea5575813bdf5598d0499ba37db20
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 64c5c1d82376b1a3ef7c4423c3b3a372ce5ab238
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395251"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821455"
 ---
 <a name="how-do-i--cache-an-aspnet-page-based-upon-information-in-the-http-header"></a>[Comment faire]  Cache une Page ASP.NET en fonction des informations dans l’en-tête HTTP
 ====================

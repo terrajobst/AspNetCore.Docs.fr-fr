@@ -4,19 +4,16 @@ title: Création d’un MVC 3 Application avec Razor et JavaScript non Obstrusif
 author: microsoft
 description: L’exemple d’application web liste utilisateur montre combien il est simple de créer des applications ASP.NET MVC 3 à l’aide du moteur de vue Razor. Les opérations de mappage application exemple...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/01/2010
-ms.topic: article
 ms.assetid: 658b149b-d770-46bf-8b4b-4e47cca242f3
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript
 msc.type: authoredcontent
-ms.openlocfilehash: 39ed35c1b7d5c702ffea6908daeac5ca12f1693e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 136c87cba70525da53c1f74576c50c12f8759539
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398011"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840462"
 ---
 <a name="creating-a-mvc-3-application-with-razor-and-unobtrusive-javascript"></a>Création d’un MVC 3 Application avec Razor et JavaScript non Obstrusif
 ====================

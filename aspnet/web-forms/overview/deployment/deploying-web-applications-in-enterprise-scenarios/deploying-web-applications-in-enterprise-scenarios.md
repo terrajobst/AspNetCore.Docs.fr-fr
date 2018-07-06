@@ -4,19 +4,16 @@ title: Déploiement d’Applications Web dans les scénarios d’entreprise à l
 author: jrjlee
 description: Cette série de didacticiels décrit les outils et techniques que vous pouvez utiliser pour déployer des applications web dans différents scénarios d’entreprise. Elle explique comment tirer meilleur parti...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/03/2012
-ms.topic: article
 ms.assetid: 48cfe378-d62a-48c6-a4db-6be3cead6898
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios
 msc.type: authoredcontent
-ms.openlocfilehash: 8412000e150f59911bb38f0147b1a487bef60c18
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b55aeb863694ca3ac71f2a1a46d11981e178dcb4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376836"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37816585"
 ---
 <a name="deploying-web-applications-in-enterprise-scenarios-using-visual-studio-2010"></a>Déploiement d’Applications Web dans les scénarios d’entreprise à l’aide de Visual Studio 2010
 ====================

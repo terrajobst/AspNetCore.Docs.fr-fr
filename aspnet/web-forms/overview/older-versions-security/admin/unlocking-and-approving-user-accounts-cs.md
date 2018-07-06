@@ -4,19 +4,16 @@ title: Le déverrouillage et l’approbation des comptes d’utilisateur (c#) | 
 author: rick-anderson
 description: Ce didacticiel montre comment créer une page web pour les administrateurs gérer les utilisateurs verrouillés et approuvé les États. Nous verrons également comment approuver les nouveaux utilisateurs o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2008
-ms.topic: article
 ms.assetid: 5346aab1-9974-489f-a065-ae3883b8a350
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: f6bf76579898a8ff36b18380100ce4ab2e74fc8d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ab6fa1b460de671559dc16ca85f2a4df1e3d5922
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392710"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818302"
 ---
 <a name="unlocking-and-approving-user-accounts-c"></a>Déblocage et approbation des comptes d’utilisateur (c#)
 ====================

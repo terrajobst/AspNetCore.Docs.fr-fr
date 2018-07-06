@@ -4,19 +4,16 @@ title: Création d’une Action (VB) | Microsoft Docs
 author: microsoft
 description: Découvrez comment ajouter une nouvelle action à un contrôleur ASP.NET MVC. En savoir plus sur la configuration requise pour une méthode devant subir une action.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/02/2009
-ms.topic: article
 ms.assetid: c8d93e11-ef78-4a30-afbc-f30419000a60
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-an-action-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 64bc75eaccdd71ebff59f34a824c9b6c520a27ef
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6ec69f5aa9f7a789cb533a8dc04dca952adf35d0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367866"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824044"
 ---
 <a name="creating-an-action-vb"></a>Création d’une Action (VB)
 ====================

@@ -4,19 +4,16 @@ title: À l’aide de la publication (Postback) automatique avec CascadingDropDo
 author: wenz
 description: Le contrôle CascadingDropDown dans AJAX Control Toolkit étend un contrôle DropDownList afin que les modifications dans un DropDownList charges associés à des valeurs dans anoth...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 0b34f7f6-a0cc-4b9f-9761-643fb0bb3ece
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown/using-auto-postback-with-cascadingdropdown-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 274189184b82734e89a30c9450079d7e07971f3c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f0ed4c88789504c09649254ea98a89b01bdd20c5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378159"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813839"
 ---
 <a name="using-auto-postback-with-cascadingdropdown-vb"></a>À l’aide de la publication (Postback) automatique avec CascadingDropDown (VB)
 ====================
