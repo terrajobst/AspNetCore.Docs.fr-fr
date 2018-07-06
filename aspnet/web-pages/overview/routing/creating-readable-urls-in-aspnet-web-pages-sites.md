@@ -4,19 +4,16 @@ title: Création d’URL lisibles dans ASP.NET Web Pages (Razor) Sites | Microso
 author: tfitzmac
 description: Cet article décrit le routage dans un site Web ASP.NET Web Pages (Razor), et comment vous pouvez ainsi utiliser des URL qui sont plus lisible et une meilleure pratique pour le référencement. Vous allez...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/17/2014
-ms.topic: article
 ms.assetid: a8aac1ac-89de-4415-afe0-97a41c6423d2
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites
 msc.type: authoredcontent
-ms.openlocfilehash: d027be2924f24c1080deb4ee2deacc235bbd1001
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3304a226e374618a567e69ac72448a9964a34c47
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385746"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809869"
 ---
 <a name="creating-readable-urls-in-aspnet-web-pages-razor-sites"></a>Création d’URL lisibles dans les Sites ASP.NET Web Pages (Razor)
 ====================

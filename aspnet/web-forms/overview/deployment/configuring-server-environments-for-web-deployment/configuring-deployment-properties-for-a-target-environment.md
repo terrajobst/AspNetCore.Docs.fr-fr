@@ -4,19 +4,16 @@ title: Configuration des propriétés de déploiement pour un environnement cibl
 author: jrjlee
 description: Cette rubrique décrit comment configurer les propriétés spécifiques à l’environnement pour déployer l’exemple de solution de gestionnaire de contacts dans un environnement cible spécifique...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: b5b86e03-b8ed-46e6-90fa-e1da88ef34e9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment
 msc.type: authoredcontent
-ms.openlocfilehash: 8e0a050b2fec272fec3922d1c2f3afff4aee7fca
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 205a60ee8695f84054bf2139baa3eeb88728d28a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387684"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817763"
 ---
 <a name="configuring-deployment-properties-for-a-target-environment"></a>Configuration des propriétés de déploiement pour un environnement cible
 ====================

@@ -4,19 +4,16 @@ title: Présentation des Services Web ASP.NET AJAX | Microsoft Docs
 author: scottcate
 description: Services Web font partie intégrante du .NET framework qui fournissent une solution multiplateforme pour échanger des données entre les systèmes distribués. Bien que Web...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/28/2008
-ms.topic: article
 ms.assetid: 3332d6e7-e2e1-4144-b805-e71d51e7e415
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-web-services
 msc.type: authoredcontent
-ms.openlocfilehash: c3874e19ef55ffd4949f9bc280d32a3da7a00271
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b98ef4c27ab7b4b729e9e5b68e7d2642a6418ab6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376383"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838599"
 ---
 <a name="understanding-aspnet-ajax-web-services"></a>Présentation des Services Web ASP.NET AJAX
 ====================

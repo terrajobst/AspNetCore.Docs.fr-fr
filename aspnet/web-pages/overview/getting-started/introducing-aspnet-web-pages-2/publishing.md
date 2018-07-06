@@ -4,19 +4,16 @@ title: 'Présentation des Pages Web ASP.NET : publication d’un Site à l’ai
 author: tfitzmac
 description: Ce didacticiel est le dernier volet de l’ensemble de didacticiels qui présente ASP.NET Web Pages et WebMatrix de Microsoft. Il explique comment publier votre site t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: 7e85c70e-1a88-4408-8b3d-29611c7713ed
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 msc.type: authoredcontent
-ms.openlocfilehash: c6fa7692527b7aa65e93cd57ed5bd56f42e54bd6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: a20adc0b42d39424abf301e0b0f4094ef04932fb
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373485"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836983"
 ---
 <a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>Présentation des Pages Web ASP.NET - publication d’un Site à l’aide de WebMatrix
 ====================

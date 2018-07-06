@@ -4,19 +4,16 @@ title: Source de contrôle (génération d’applications Cloud réalistes avec 
 author: MikeWasson
 description: Building Real World Cloud Apps with Azure e-book est basé sur une présentation développée par Scott Guthrie. Il explique 13 modèles et pratiques qui peuvent il...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/23/2015
-ms.topic: article
 ms.assetid: 2a0370d3-c2fb-4bf3-88b8-aad5a736c793
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
 msc.type: authoredcontent
-ms.openlocfilehash: 12c695b65a21452fdc4a31e821854253bccec0d7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 045dc654057802be4ad96f5ecc3ed6c3d7a1ccb1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37368973"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823311"
 ---
 <a name="source-control-building-real-world-cloud-apps-with-azure"></a>Contrôle de code source (génération d’applications Cloud réalistes avec Azure)
 ====================

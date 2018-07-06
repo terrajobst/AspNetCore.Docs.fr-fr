@@ -4,19 +4,16 @@ title: Option incluant un fichier de téléchargement lorsque vous ajoutez un no
 author: rick-anderson
 description: Ce didacticiel montre comment créer une interface Web qui permet à l’utilisateur à entrer des données de texte et télécharger les fichiers binaires. Pour illustrer l’options disponibles de t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/27/2007
-ms.topic: article
 ms.assetid: 5776281d-4637-4d1e-a65b-2621d2cade44
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 30cfdcf8e9b65f92b267509b4289d828b2532e65
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: eac86318136d6f28ecf6551b8b8a6b691a8969d7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363143"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807750"
 ---
 <a name="including-a-file-upload-option-when-adding-a-new-record-vb"></a>Y compris une Option de chargement de fichier lors de l’ajout d’un nouvel enregistrement (VB)
 ====================

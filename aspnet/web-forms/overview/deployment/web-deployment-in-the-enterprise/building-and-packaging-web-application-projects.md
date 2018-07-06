@@ -4,19 +4,16 @@ title: Génération et empaquetage des projets d’Application Web | Microsoft D
 author: jrjlee
 description: Lorsque vous souhaitez déployer un projet d’application web dans un environnement de serveur distant, votre première tâche consiste à générer le projet et générer un packa de déploiement web...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 94e92f80-a7e3-4d18-9375-ff8be5d666ac
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/building-and-packaging-web-application-projects
 msc.type: authoredcontent
-ms.openlocfilehash: ff8312d16dff2a9eec9ae909bca5e72d52f17094
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b5342443fefd712aa95ac08a8edf708d55253816
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382606"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37810515"
 ---
 <a name="building-and-packaging-web-application-projects"></a>Génération et empaquetage des projets d’Application Web
 ====================

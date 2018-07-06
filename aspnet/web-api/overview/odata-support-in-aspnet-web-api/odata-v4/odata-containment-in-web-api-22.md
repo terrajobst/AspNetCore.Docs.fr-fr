@@ -4,19 +4,16 @@ title: Relation contenant-contenu dans OData v4 à l’aide de Web API 2.2 | Mic
 author: rick-anderson
 description: En règle générale, une entité est uniquement accessible si elle a été encapsulée dans un jeu d’entités. Mais OData v4 fournit deux options supplémentaires, Singleton et Con...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/27/2014
-ms.topic: article
 ms.assetid: 5fbfefad-a17a-4c46-8646-f1ccd154cd56
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/odata-containment-in-web-api-22
 msc.type: authoredcontent
-ms.openlocfilehash: 33ff49f69d70dd3a8179445d2895c418d2185e49
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 56e550b56e9ad237dbf4fab04f2bd545164ee90a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365605"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824910"
 ---
 <a name="containment-in-odata-v4-using-web-api-22"></a>Relation contenant-contenu dans OData v4 à l’aide de Web API 2.2
 ====================

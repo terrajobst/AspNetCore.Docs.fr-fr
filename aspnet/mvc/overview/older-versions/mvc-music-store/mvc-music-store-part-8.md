@@ -4,19 +4,16 @@ title: 'Partie 8 : Panier d’achat avec des mises à jour Ajax | Microsoft Doc
 author: jongalloway
 description: Cette série de didacticiels décrit en détail les étapes prises pour générer l’exemple d’application ASP.NET MVC Music Store. Partie 8 couvre le panier d’achat avec des mises à jour Ajax.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/21/2011
-ms.topic: article
 ms.assetid: 26b2f55e-ed42-4277-89b0-c941eb754145
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-8
 msc.type: authoredcontent
-ms.openlocfilehash: 327b7ee4e302188323c229c231ae750cbed709a1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 881d47b5b4df5a4d310a1b3a7eec6ee97b0d42ea
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369794"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823837"
 ---
 <a name="part-8-shopping-cart-with-ajax-updates"></a>Partie 8 : Panier d’achat avec des mises à jour Ajax
 ====================

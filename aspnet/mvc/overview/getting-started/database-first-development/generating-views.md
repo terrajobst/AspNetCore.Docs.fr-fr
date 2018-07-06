@@ -4,19 +4,16 @@ title: 'EF Database First avec ASP.NET MVC : génération de vues | Microsoft D
 author: tfitzmac
 description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/29/2014
-ms.topic: article
 ms.assetid: 669367cf-8e30-4eb6-821d-10a7d9bb906c
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/generating-views
 msc.type: authoredcontent
-ms.openlocfilehash: 58f8be181f80f5b27353e9ef5cafe48bcb370e29
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9c85b330ac415d8c73d58b31a5108197b754669f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37399608"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835326"
 ---
 <a name="ef-database-first-with-aspnet-mvc-generating-views"></a>EF Database First avec ASP.NET MVC : génération de vues
 ====================

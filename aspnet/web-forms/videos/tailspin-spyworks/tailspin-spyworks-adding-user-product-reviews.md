@@ -4,19 +4,16 @@ title: Tailspin Spyworks - Ajout d’évaluations de produits utilisateur | Micr
 author: JoeStagner
 description: Joe Stagner ajoute des révisions à partir de clients à la page Détails du produit dans l’application Web Forms Tailspin Spyworks.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/21/2010
-ms.topic: article
 ms.assetid: b2e8c3af-7dcf-432b-b01b-4740bcb00897
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-user-product-reviews
 msc.type: video
-ms.openlocfilehash: 95481f2190d231aa0b50308dde7efe350b7712e8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b933c04b87fb831120e098fa254c4b115299ad52
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384866"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825241"
 ---
 <a name="tailspin-spyworks---adding-user-product-reviews"></a>Tailspin Spyworks - Ajout d’évaluations de produits d’utilisateur
 ====================

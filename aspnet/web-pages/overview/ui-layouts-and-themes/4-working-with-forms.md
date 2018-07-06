@@ -4,19 +4,16 @@ title: Utilisation des formulaires HTML dans des Sites ASP.NET Web Pages (Razor)
 author: tfitzmac
 description: Un formulaire est une section d’un document HTML dans laquelle vous placez des contrôles d’entrée de l’utilisateur, telles que les zones de texte, les cases à cocher, les cases d’option et les listes déroulantes. Vous utilisez des formulaires lorsqu...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/10/2014
-ms.topic: article
 ms.assetid: f3f4b8c8-e8f6-4474-ad94-69228a6c01ee
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/4-working-with-forms
 msc.type: authoredcontent
-ms.openlocfilehash: 8d52cb6406859c77687622b7a101cf67781b863d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4658e80d63c9c3665f197071f3f3d1420362e4a3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380345"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820283"
 ---
 <a name="working-with-html-forms-in-aspnet-web-pages-razor-sites"></a>Utilisation des formulaires HTML dans les Sites ASP.NET Web Pages (Razor)
 ====================

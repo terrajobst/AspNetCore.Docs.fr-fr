@@ -4,19 +4,16 @@ title: Validation avec les validateurs d’Annotation de données (c#) | Microso
 author: microsoft
 description: Tirez parti du Binder de modèle de Annotation de données pour effectuer la validation au sein d’une application ASP.NET MVC. Découvrez comment utiliser les différents types de programme de validation...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/29/2009
-ms.topic: article
 ms.assetid: 7ca8013e-9dfc-4e33-8336-cdccfd5f9414
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validation-with-the-data-annotation-validators-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 484d836c3865ca3df684a379585b71138d42ab7a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 47314f3989b90b1f5d59bda135ea1f9836f2be63
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378215"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812812"
 ---
 <a name="validation-with-the-data-annotation-validators-c"></a>Validation avec les validateurs d’Annotation de données (c#)
 ====================

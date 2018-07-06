@@ -4,19 +4,16 @@ title: Introduction au routage d’URL | Microsoft Docs
 author: StephenWalther
 description: Dans ce didacticiel, Stephen Walther montre comment les demandes du navigateur sont mappées aux actions de contrôleur via le routage d’URL. Vous allez également apprendre à créer un client...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/20/2008
-ms.topic: article
 ms.assetid: ad0f4d26-6366-4464-968f-a24a380e6dc6
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/an-introduction-to-url-routing
 msc.type: video
-ms.openlocfilehash: 3b5c9a5db8e6886a0b319b5c4b65aef6e946dc97
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f239bc6e781cf45090e16a197ff5adf9849f6f92
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366172"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839045"
 ---
 <a name="an-introduction-to-url-routing"></a>Introduction au routage d’URL
 ====================

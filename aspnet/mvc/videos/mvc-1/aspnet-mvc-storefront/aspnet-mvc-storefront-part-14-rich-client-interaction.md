@@ -4,19 +4,16 @@ title: 'ASP.NET MVC, partie 14 Storefront : Interaction avec le Client | Micros
 author: robconery
 description: Interaction de Client riche se concentre spécifiquement sur AJAX. Rob Conery a documenté à chaque étape du processus de développement sur son blog.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/10/2008
-ms.topic: article
 ms.assetid: 28e3602f-34f8-4123-bf6d-235857202b5e
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-14-rich-client-interaction
 msc.type: video
-ms.openlocfilehash: cdfcf0db0fd4773c0951e56038e1c3a75184744e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 664bbc9002a97ddcc19b93a23d4a41dcefda0876
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387885"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818532"
 ---
 <a name="aspnet-mvc-storefront-part-14-rich-client-interaction"></a>ASP.NET MVC, partie Storefront 14 : Interaction avec le Client
 ====================

@@ -4,19 +4,16 @@ title: Configuration des paramètres de déploiement du Package Web | Microsoft 
 author: jrjlee
 description: Cette rubrique décrit comment définir des valeurs de paramètre, telles que les noms d’application web Internet Information Services (IIS), les chaînes de connexion et les points de terminaison de service...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 37947d79-ab1e-4ba9-9017-52e7a2757414
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: e6db7a8351e01bbbc14eb2b993248ee7d5a84f7e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: dd8924b0b0055bd32ef55a9ec3a139c4d9b4eb81
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386547"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825113"
 ---
 <a name="configuring-parameters-for-web-package-deployment"></a>Configuration des paramètres de déploiement de Package Web
 ====================

@@ -4,19 +4,16 @@ title: Web des meilleures pratiques de développement (génération d’applicat
 author: MikeWasson
 description: Building Real World Cloud Apps with Azure e-book est basé sur une présentation développée par Scott Guthrie. Il explique 13 modèles et pratiques qui peuvent il...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: 52d6c941-2cd9-442f-9872-2c798d6d90cd
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices
 msc.type: authoredcontent
-ms.openlocfilehash: f31798032c3b690fcb6dfa8326580255f3412826
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 054fcad387608e136e8171f5d511ee7af1082bd0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371036"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824427"
 ---
 <a name="web-development-best-practices-building-real-world-cloud-apps-with-azure"></a>Web Development Best Practices (génération d’applications Cloud réalistes avec Azure)
 ====================

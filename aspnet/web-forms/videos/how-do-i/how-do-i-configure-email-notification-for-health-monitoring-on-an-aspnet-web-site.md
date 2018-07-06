@@ -4,19 +4,16 @@ title: '[Comment faire] Configurer la Notification par courrier électronique po
 author: rick-anderson
 description: Dans cette vidéo Chris Pels montre comment configurer la notification par courrier électronique pour l’intégrité de la surveillance dans un site web ASP.NET. Tout d’abord, consultez Comment configurer l’envoi de e...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/11/2008
-ms.topic: article
 ms.assetid: 1fa884c0-582e-4dc6-abb6-a5ec70d43ffb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site
 msc.type: video
-ms.openlocfilehash: d368a5a064ff2379e1d5d42e6083180b75c22092
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8bf71273a953edcd61f33af9b40bdd9dd9ff6e9f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401365"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822740"
 ---
 <a name="how-do-i-configure-email-notification-for-health-monitoring-on-an-aspnet-web-site"></a>[Comment faire] Configurer la Notification par courrier électronique pour l’intégrité de l’analyse sur un Site Web ASP.NET
 ====================

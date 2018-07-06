@@ -4,19 +4,16 @@ title: Changement d’une Animation à l’aide de Code côté Client (c#) | Mic
 author: wenz
 description: Le contrôle d’Animation dans ASP.NET AJAX Control Toolkit n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. L’animation peut également...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 2bfbc5cc-f942-44b7-a62d-a29520f1da9a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 4bf480401e244661e2c316adcde3cbde647a6dc3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9711e93ee6f119ec1825e32bdad64535435970c9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393072"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808954"
 ---
 <a name="changing-an-animation-using-client-side-code-c"></a>Changement d’une Animation à l’aide de Code côté Client (c#)
 ====================

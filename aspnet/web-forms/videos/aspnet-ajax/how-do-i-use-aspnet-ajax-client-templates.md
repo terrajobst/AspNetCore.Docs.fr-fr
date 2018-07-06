@@ -4,19 +4,16 @@ title: 'Comment faire : utiliser ASP.NET AJAX Client des modèles | Microsoft D
 author: rick-anderson
 description: Il existe deux principales étapes impliquées dans la création d’interactions d’AJAX, appeler des services de manière asynchrone et mise à jour de la page avec les données résultantes. ASP.NET AJAX h...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/18/2009
-ms.topic: article
 ms.assetid: 2ab9d1eb-25b7-4bb6-b334-b83e45e9fcbb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-aspnet-ajax-client-templates
 msc.type: video
-ms.openlocfilehash: f2873c9ec4ae57f34f7e41bdf7662d890df40d0f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6bbeaf163ddba014ece439e22a2aaae0831a3e43
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367520"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820173"
 ---
 <a name="how-do-i-use-aspnet-ajax-client-templates"></a>Comment faire : utiliser ASP.NET AJAX Client des modèles
 ====================

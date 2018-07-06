@@ -4,19 +4,16 @@ title: Développement et le déploiement dans un hébergement partagé | Microso
 author: JoeStagner
 description: Cette vidéo présente le développement d’applications ASP.NET dans un environnement d’hébergement partagé en démontrant &quot;Live modification&quot; et &quot;Publication distant &...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/09/2009
-ms.topic: article
 ms.assetid: fb6b54c6-5459-4528-98a0-1fb16144836a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/iis/developing-and-deploying-in-a-shared-hosting
 msc.type: video
-ms.openlocfilehash: 86e7720052048831f180c411ee9b768ec2083c37
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 102b18fa7c6b0d04d49389cb8a59c4eb390681e8
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400374"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820997"
 ---
 <a name="developing-and-deploying-in-a-shared-hosting"></a>Développement et le déploiement dans un hébergement partagé
 ====================

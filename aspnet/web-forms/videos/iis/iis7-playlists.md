@@ -4,19 +4,16 @@ title: IIS7 Playlists | Microsoft Docs
 author: JoeStagner
 description: Si vous hébergez des fichiers multimédias sur votre site web, listes de lecture vous permet de définir des séquences de votre média et éventuellement empêcher les utilisateurs d’ignorer les parties de t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/10/2009
-ms.topic: article
 ms.assetid: b61968ac-6d9b-4b75-ab2a-934b609acba4
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/iis/iis7-playlists
 msc.type: video
-ms.openlocfilehash: 8f62ce6966d379ff9b00b828683ef274e479ddc9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1570842a618a832c81bd7a2976c53aa4aba07756
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390593"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806983"
 ---
 <a name="iis7-playlists"></a>Playlists IIS7
 ====================

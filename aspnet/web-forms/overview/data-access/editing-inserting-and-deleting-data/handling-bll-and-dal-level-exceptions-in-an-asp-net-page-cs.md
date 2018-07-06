@@ -4,19 +4,16 @@ title: Gestion des Exceptions de niveau BLL et DAL dans une Page ASP.NET (c#) | 
 author: rick-anderson
 description: Dans ce didacticiel, nous verrons comment afficher un message d’erreur convivial et éducative doit se faire une exception pendant une insertion, mise à jour ou opération de suppression de...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: 49d8a66c-3ea8-4087-839f-179d1d94512a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c971b69605055e587aefe92fb4fc755176e6b53f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 13d33251a8552409a17b5ff9a1dcc07d78506b12
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393110"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819495"
 ---
 <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Gestion des Exceptions de niveau BLL et DAL dans une Page ASP.NET (c#)
 ====================

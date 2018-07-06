@@ -4,19 +4,16 @@ title: Implémentation d’un fournisseur de stockage ASP.NET Identity MySQL per
 author: raquelsa
 description: ASP.NET Identity est un système extensible qui vous permet de créer votre propre fournisseur de stockage et le connecter à votre application sans utiliser de nouveau l’appli...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/22/2015
-ms.topic: article
 ms.assetid: 248f5fe7-39ba-40ea-ab1e-71a69b0bd649
-ms.technology: ''
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 44c21b749377c5df445a20deee3f1b689c7c84c0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e5784991a95dcff0db38d87707bc83555da716df
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381125"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805673"
 ---
 <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>Implémentation d’un fournisseur de stockage ASP.NET Identity MySQL personnalisé
 ====================

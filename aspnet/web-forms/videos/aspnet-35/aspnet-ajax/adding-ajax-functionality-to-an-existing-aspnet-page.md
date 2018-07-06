@@ -4,19 +4,16 @@ title: Ajout de fonctionnalités AJAX à une Page ASP.NET existante | Microsoft 
 author: tmiranda
 description: À l’aide d’AJAX dans les pages ASP.NET, vous pouvez augmenter les performances et améliorer l’expérience utilisateur globale d’une application. Il n’est pas nécessaire de réécrire les pages existantes...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: a4eb03b2-8efa-42ea-848d-b26918b80c33
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/adding-ajax-functionality-to-an-existing-aspnet-page
 msc.type: video
-ms.openlocfilehash: ccbe52fe35d9cdecec9d18a34bfb06db2082b1b1
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b2f7abca23e6b25e0b83edbe25ac9d58caad5149
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392466"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822271"
 ---
 <a name="adding-ajax-functionality-to-an-existing-aspnet-page"></a>Ajout de la fonctionnalité AJAX à une Page ASP.NET existante
 ====================

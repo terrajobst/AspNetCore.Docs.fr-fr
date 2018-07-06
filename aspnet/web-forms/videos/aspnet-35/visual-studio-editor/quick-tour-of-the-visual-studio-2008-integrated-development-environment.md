@@ -4,19 +4,16 @@ title: Environnement de développement intégré de visite guidée de Visual Stu
 author: rick-anderson
 description: Visite guidée des nouvelles fonctionnalités et modifications de l’IDE dans Visual Studio 2008. Consultez l’éditeur de page web mise à jour, Concepteur de formulaires WPF, l’éditeur CSS et bien plus encore.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: f20c5f1c-e49c-4909-b18f-8b5a442eafe3
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-35/visual-studio-editor/quick-tour-of-the-visual-studio-2008-integrated-development-environment
 msc.type: video
-ms.openlocfilehash: 1d5565ba33d38bf90282dfd29d76c406b1069082
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f25baf2dac16473be97c3c25d01d8a004ee3759e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374874"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822106"
 ---
 <a name="quick-tour-of-the-visual-studio-2008-integrated-development-environment"></a>Visite guidée de l’environnement de développement intégré Visual Studio 2008
 ====================

@@ -4,19 +4,16 @@ title: 'ASP.NET MVC-fonctionnalité nous contacter : partie 3 | Microsoft Docs'
 author: JoeStagner
 description: Dans cette vidéo Microsoft Joe Stagner reconstruit la fonctionnalité « Nous contacter » pour une application ASP.NET MVC à l’aide de Microsoft Entity Framework et un ty fortement...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/22/2010
-ms.topic: article
 ms.assetid: 36e519b9-c786-4819-beda-2af72f088623
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-3
 msc.type: video
-ms.openlocfilehash: f09910a498fd83607ea87347608f81cd493d0795
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1451efb593367895eebb5d303ba8771c15e31845
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377377"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824310"
 ---
 <a name="aspnet-mvc-for-the-rest-of-us-part-3"></a>ASP.NET MVC-fonctionnalité nous contacter : partie 3
 ====================

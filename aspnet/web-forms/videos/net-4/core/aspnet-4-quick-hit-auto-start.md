@@ -4,19 +4,16 @@ title: Démarrage automatique | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo, vous allez découvrir la nouvelle fonctionnalité d’extensibilité de démarrage automatique qui fournit une approche contrôlée pour le démarrage d’un pool d’applications, initializ...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/11/2009
-ms.topic: article
 ms.assetid: ff2bba8e-4dbb-4b73-95fe-0bba17152ef5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/net-4/core/aspnet-4-quick-hit-auto-start
 msc.type: video
-ms.openlocfilehash: 9981d6c62b42f07ac1bcdddaf0502aa1d80f0bfb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: de8ddc85510b5ae2699cd91eb51fa80ad2db4533
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384892"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823814"
 ---
 <a name="aspnet-4-quick-hit---auto-start"></a>ASP.NET 4 « Accès rapide » - démarrage automatique
 ====================

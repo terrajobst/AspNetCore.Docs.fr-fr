@@ -4,19 +4,16 @@ title: Créer une base de données | Microsoft Docs
 author: microsoft
 description: Étape 2 montre les étapes pour créer la base de données contenant tous le dîner et RSVP des données pour notre application NerdDinner.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: 983f3ffa-08b8-4868-b8c9-aa34593fc683
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-database
 msc.type: authoredcontent
-ms.openlocfilehash: 01c6d3c63780e492b97aa54a92f3982d4c18f9e5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2a2ed8c91aa3ec0da63cd8e8686ff601f6e66374
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37371747"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37818964"
 ---
 <a name="create-a-database"></a>Créer une base de données
 ====================

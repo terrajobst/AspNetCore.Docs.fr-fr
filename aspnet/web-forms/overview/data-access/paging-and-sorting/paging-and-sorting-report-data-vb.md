@@ -4,19 +4,16 @@ title: Pagination et tri des données (VB) de rapports | Microsoft Docs
 author: rick-anderson
 description: Pagination et tri sont deux fonctionnalités très courantes lors de l’affichage des données dans une application en ligne. Dans ce didacticiel, nous allons un premier aperçu de l’ajout du tri et...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: b895e37e-0e69-45cc-a7e4-17ddd2e1b38d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6de1f78bab795ef191553bf0d58b3b29c26d7d85
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e8e33bc11074815b5beacd92c49c95f8ea9da2c0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37387648"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808458"
 ---
 <a name="paging-and-sorting-report-data-vb"></a>La pagination et tri des données de rapport (VB)
 ====================

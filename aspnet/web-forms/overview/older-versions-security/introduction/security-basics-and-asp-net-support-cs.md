@@ -4,19 +4,16 @@ title: Principes élémentaires de sécurité et la prise en charge ASP.NET (c#)
 author: rick-anderson
 description: Ceci est le premier didacticiel dans une série de didacticiels présentant des techniques pour l’authentification des visiteurs via un formulaire web, autoriser l’accès à partic...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/13/2008
-ms.topic: article
 ms.assetid: 07e15538-2f29-40c6-b2e7-e6115075ac83
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs
 msc.type: authoredcontent
-ms.openlocfilehash: cbc2da996726c6e1d838624726e7323ba947ce1e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9600dc0c5bee5fa81cbe19a35dab7fb35e01df1b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374848"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37815806"
 ---
 <a name="security-basics-and-aspnet-support-c"></a>Principes élémentaires de sécurité et la prise en charge ASP.NET (c#)
 ====================

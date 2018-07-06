@@ -4,19 +4,16 @@ title: À l’aide de l’inspecteur de Page dans Visual Studio 2012 | Microsoft
 author: rick-anderson
 description: Dans cet atelier pratique, vous allez découvrir un nouvel outil pour rechercher et corriger les problèmes de la page web dans Visual Studio - l’inspecteur de Page. Inspecteur de page est un nouvel outil que b...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/18/2013
-ms.topic: article
 ms.assetid: 73232292-a5fe-4720-82a1-8f6553effd1f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/hands-on-labs/using-page-inspector-in-visual-studio-2012
 msc.type: authoredcontent
-ms.openlocfilehash: 236b739abb8c9073535361040dd7d921da9dba6e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: ac945a23dc6ef060340320d047f13c8e81057138
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365722"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833670"
 ---
 <a name="using-page-inspector-in-visual-studio-2012"></a>À l’aide de l’inspecteur de Page dans Visual Studio 2012
 ====================

@@ -4,19 +4,16 @@ title: ASP.NET Web Pages (Razor) FAQ | Microsoft Docs
 author: tfitzmac
 description: Cet article répertorie certaines questions fréquemment posées sur les Pages Web ASP.NET (Razor) et WebMatrix. Versions des logiciels utilisées dans le didacticiel ASP.NET Web Pages (R...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/07/2014
-ms.topic: article
 ms.assetid: b137bd04-25e1-47cb-9d96-ef2e179ecf1f
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/aspnet-web-pages-razor-faq
 msc.type: authoredcontent
-ms.openlocfilehash: 9546a5639da6baeadf9f01dfbe7da59d3dc4d6c6
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1f97056c952757ea2d009eaca57d904791e80ca3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374754"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814234"
 ---
 <a name="aspnet-web-pages-razor-faq"></a>ASP.NET Web Pages (Razor) FAQ
 ====================

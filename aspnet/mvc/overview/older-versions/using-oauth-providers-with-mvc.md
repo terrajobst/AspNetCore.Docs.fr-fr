@@ -4,19 +4,16 @@ title: À l’aide de fournisseurs OAuth avec MVC 4 | Microsoft Docs
 author: tfitzmac
 description: Ce didacticiel vous montre comment créer une application web ASP.NET MVC 4 qui permet aux utilisateurs de se connecter avec leurs informations d’identification à partir d’un fournisseur externe, tel que Facebo...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/19/2013
-ms.topic: article
 ms.assetid: 7a87f16f-0e19-4f15-a88a-094ae866c4a2
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: b023d3d78bd703db93deb2e23661c9041fe74694
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 15f6b45706c0711d68b0780a7474d4c939a85fba
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372312"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823324"
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>À l’aide de fournisseurs OAuth avec MVC 4
 ====================

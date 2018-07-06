@@ -4,19 +4,16 @@ title: Ajout de colonnes de DataTable supplémentaires (c#) | Microsoft Docs
 author: rick-anderson
 description: Lorsque vous utilisez l’Assistant TableAdapter pour créer un DataSet typé, le DataTable contient les colonnes retournées par la requête de base de données principale. Mais là...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/18/2007
-ms.topic: article
 ms.assetid: 615f3361-f21f-4338-8bc1-fce8ae071de9
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/adding-additional-datatable-columns-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 373ba6d3ec86ea2ab26bfecf39647776694960de
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4b99b1c01056b8e06e925eca65371a90d2831326
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393981"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813263"
 ---
 <a name="adding-additional-datatable-columns-c"></a>Ajout de colonnes de DataTable supplémentaires (c#)
 ====================

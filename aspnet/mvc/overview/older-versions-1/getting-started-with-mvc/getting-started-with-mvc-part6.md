@@ -4,19 +4,16 @@ title: Ajout d’une méthode de création et créer la vue | Microsoft Docs
 author: shanselman
 description: Il s’agit d’un didacticiel de débutant qui présente les principes de base d’ASP.NET MVC. Créer une application web simple qui lit et écrit à partir d’une base de données.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/14/2010
-ms.topic: article
 ms.assetid: a3a90963-0286-4fa0-9b3d-c230cc18b0a3
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
 msc.type: authoredcontent
-ms.openlocfilehash: 976df78ea22c30c094f70a57792d287f15d2c62d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: cf0d721b551c38e8c38e35f82b73ee1b14cd068f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400906"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840964"
 ---
 <a name="adding-a-create-method-and-create-view"></a>Ajout d’une méthode de création et créer la vue
 ====================

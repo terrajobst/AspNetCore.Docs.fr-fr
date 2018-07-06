@@ -4,19 +4,16 @@ title: Mise en forme personnalisée en fonction des données (c#) | Microsoft Do
 author: rick-anderson
 description: Ajustement du format de la GridView, DetailsView ou FormView basé sur les données liées à l’il est possible de plusieurs façons. Dans ce didacticiel, nous allons l...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 871a4574-f89c-4214-b786-79253ed3653b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/custom-formatting-based-upon-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 505081890ac0eb7a1f248569fda1b14351119275
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 05f83fc178cb3f79a86638d0159e692aef4410ca
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397982"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37819264"
 ---
 <a name="custom-formatting-based-upon-data-c"></a>Mise en forme personnalisée en fonction des données (c#)
 ====================

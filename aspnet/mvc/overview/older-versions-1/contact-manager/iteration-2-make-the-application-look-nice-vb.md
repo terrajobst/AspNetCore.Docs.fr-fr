@@ -4,19 +4,16 @@ title: 'Itération #2 : donner l’application une apparence agréable (VB) | M
 author: microsoft
 description: Dans cette itération, nous améliorer l’apparence de l’application en modifiant la valeur par défaut de page maître de vue ASP.NET MVC et en cascade de feuille de style.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2009
-ms.topic: article
 ms.assetid: f65cb436-e493-46fd-9608-384b27385aa1
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-2-make-the-application-look-nice-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c1209a925a43bd7846a9dc07ce557c55bb1827ae
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d3db23204555f8e341fa975c788ba820986a0902
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381103"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828609"
 ---
 <a name="iteration-2--make-the-application-look-nice-vb"></a>Itération #2 : donner l’application une apparence agréable (VB)
 ====================

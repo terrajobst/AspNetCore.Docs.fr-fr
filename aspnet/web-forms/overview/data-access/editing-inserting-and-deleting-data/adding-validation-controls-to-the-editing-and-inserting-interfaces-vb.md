@@ -4,19 +4,16 @@ title: Ajout de contrôles de Validation à la modification des Interfaces et d�
 author: rick-anderson
 description: Dans ce didacticiel, nous allons voir combien il est facile pour ajouter des contrôles de validation aux EditItemTemplate et InsertItemTemplate d’un contrôle Web, des données pour fournir une plus...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: e3d7028a-7a22-4a4f-babe-d53afc41c0e2
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a2fc00426022513c6e2adc49b0df30f943403302
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a9527cad45e506268a9d5f19a445cae939345540
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366227"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839974"
 ---
 <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-vb"></a>Ajout de contrôles de Validation à la modification des Interfaces et d’insertion (VB)
 ====================

@@ -4,19 +4,16 @@ title: Affichage des informations récapitulatives dans le pied de page du GridV
 author: rick-anderson
 description: Informations de résumé sont souvent affichées en bas du rapport dans une ligne de résumé. Le contrôle GridView peut inclure une ligne de pied de page dans des cellules dont nous pouvons pr...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/31/2010
-ms.topic: article
 ms.assetid: 41c818b7-603a-402b-8847-890a63547b6f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/displaying-summary-information-in-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4299cf7dc684c1080600789a91349011e495d391
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a625211555d0e4351305c92b10559a4019d7e8bf
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37400637"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837141"
 ---
 <a name="displaying-summary-information-in-the-gridviews-footer-vb"></a>Affichage des informations récapitulatives dans le pied de page du GridView (VB)
 ====================

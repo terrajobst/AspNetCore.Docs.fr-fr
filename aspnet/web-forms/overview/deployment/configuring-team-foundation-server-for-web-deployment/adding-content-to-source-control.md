@@ -4,19 +4,16 @@ title: Ajout de contenu au contrôle de code Source | Microsoft Docs
 author: jrjlee
 description: Cette rubrique explique comment ajouter du contenu à un contrôle de code source Team Foundation Server (TFS) 2010. Il décrit comment ajouter des solutions et des projets à un projet d’équipe...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 86c14aab-c2dd-4f73-b40c-c6d52fa44950
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/adding-content-to-source-control
 msc.type: authoredcontent
-ms.openlocfilehash: b4cbe16915919bcdbabcc3f9769beb15720af5eb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9fdb2e37f2925273b457157b634865d93e865098
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362993"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838369"
 ---
 <a name="adding-content-to-source-control"></a>Ajout de contenu à un contrôle de code Source
 ====================

@@ -4,19 +4,16 @@ title: Fournir CRUD (créer, lire, mettre à jour, supprimer) les formulaires de
 author: microsoft
 description: Étape 5 montre comment faire passer notre classe DinnersController davantage à prise en charge de l’activer pour modification, la création et la suppression dîners avec lui aussi.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/27/2010
-ms.topic: article
 ms.assetid: bbb976e5-6150-4283-a374-c22fbafe29f5
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/provide-crud-create-read-update-delete-data-form-entry-support
 msc.type: authoredcontent
-ms.openlocfilehash: 821684c0753967fc1a693b061d5d539951cd7c23
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bfb8446ec8b39ad6fc88a0d5b747f0cec33bbd25
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388806"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817634"
 ---
 <a name="provide-crud-create-read-update-delete-data-form-entry-support"></a>Fournir CRUD (créer, lire, mettre à jour, supprimer) les formulaires de données prise en charge de l’entrée
 ====================

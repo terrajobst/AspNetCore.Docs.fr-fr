@@ -4,19 +4,16 @@ title: Service d’authentification externe avec l’API Web ASP.NET (c#) | Micr
 author: rmcmurray
 description: Décrit l’utilisation des Services d’authentification externe dans l’API Web ASP.NET.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2013
-ms.topic: article
 ms.assetid: 3bb8eb15-b518-44f5-a67d-a27e051aedc6
-ms.technology: dotnet-webapi
 msc.legacyurl: /web-api/overview/security/external-authentication-services
 msc.type: authoredcontent
-ms.openlocfilehash: 9cfb8022670497f7552820e9df2ad5e0cf6f9f46
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fe821384a195e69c102aad95e534d543de705a00
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391403"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822785"
 ---
 <a name="external-authentication-services-with-aspnet-web-api-c"></a>Service d’authentification externe avec l’API Web ASP.NET (c#)
 ====================

@@ -4,19 +4,16 @@ title: '[Comment faire] Utiliser l’extendeur ListSearch d’ASP.NET AJAX ? | 
 author: JoeStagner
 description: Cette vidéo illustre l’utilisation du contrôle d’extendeur ListSearch d’ASP.NET AJAX Control Toolkit. L’extendeur ListSearch améliore DropDownList et L....
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/25/2007
-ms.topic: article
 ms.assetid: 459490f0-79cb-4859-9fd2-885dae4d23fd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-listsearch-extender
 msc.type: video
-ms.openlocfilehash: fb671210b4a4fe84fa982de1b3aebcccadc7a0af
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f1f647309db15f73714b2012c3d57bf25fdcea72
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401790"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825148"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-listsearch-extender"></a>[Comment faire] Utiliser l’extendeur ListSearch d’ASP.NET AJAX ?
 ====================

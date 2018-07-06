@@ -4,19 +4,16 @@ title: 'Atelier pratique : One ASP.NET : l’intégration d’ASP.NET Web Form
 author: rick-anderson
 description: ASP.NET est une infrastructure pour la création de sites Web, applications et services à l’aide de technologies spécialisées telles que MVC, API Web et d’autres. Avec le développement ASP.NET h...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/16/2014
-ms.topic: article
 ms.assetid: 4fe2558d-67cc-4d12-a5c1-6fb9f6f16137
-ms.technology: ''
 msc.legacyurl: /visual-studio/overview/2013/one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 7dec4daffa66621acaee1c76fda7b2e7550ad925
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 276207a6e7d2388ce53778928665c35de9327318
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382944"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837303"
 ---
 <a name="hands-on-lab-one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api"></a>Atelier pratique : One ASP.NET : l’intégration d’ASP.NET Web Forms, MVC et API Web
 ====================

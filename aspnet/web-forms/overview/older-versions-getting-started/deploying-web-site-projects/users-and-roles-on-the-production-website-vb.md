@@ -4,19 +4,16 @@ title: Utilisateurs et rôles sur le site Web de Production (VB) | Microsoft Doc
 author: rick-anderson
 description: L’outil d’Administration de Microsoft ASP.NET du site Web (WSAT) fournit une interface utilisateur web pour la configuration des paramètres d’appartenance et de rôles et de création, modification, un...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: 491ed5ae-9be1-4191-87be-65e4e1c57690
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/users-and-roles-on-the-production-website-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 5b2a5ea84c5c16ad5bf4e3041d31ad29660d965f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0b4b5edef5c0b78abefb007f05d856fddd567b5f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380374"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820900"
 ---
 <a name="users-and-roles-on-the-production-website-vb"></a>Utilisateurs et rôles sur le site Web de Production (VB)
 ====================

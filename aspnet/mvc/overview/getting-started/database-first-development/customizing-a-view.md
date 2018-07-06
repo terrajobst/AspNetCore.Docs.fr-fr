@@ -4,19 +4,16 @@ title: 'EF Database First avec ASP.NET MVC : personnaliser un affichage | Micro
 author: tfitzmac
 description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/01/2014
-ms.topic: article
 ms.assetid: 269380ff-d7e1-4035-8ad1-fe1316a25f76
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/customizing-a-view
 msc.type: authoredcontent
-ms.openlocfilehash: bfbcfd39dd1cf0abe89a00d2958ca010f0e5e109
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7359b8daddc74e375675d73126d7d76b288e853d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376496"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817186"
 ---
 <a name="ef-database-first-with-aspnet-mvc-customizing-a-view"></a>EF Database First avec ASP.NET MVC : personnalisation d’une vue
 ====================

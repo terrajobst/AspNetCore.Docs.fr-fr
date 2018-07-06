@@ -4,19 +4,16 @@ title: '[Comment faire] Créer des Documents XML à partir de données SQL ? | 
 author: bethmassi
 description: Les développeurs Visual Basic indique comment interroger leur base de données SQL Server afin de créer facilement des documents XML et HTML directement dans l’éditeur de Visual Basic...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: 32c8ddfd-1e12-4bd9-9420-44478dfb0ca1
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-create-xml-documents-from-sql-data
 msc.type: video
-ms.openlocfilehash: 7938e0c6bfd9cc938569ccc7f3487fb6a586d064
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 025f0a29d9f1779d140695193357114d2d802679
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378635"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825552"
 ---
 <a name="how-do-i-create-xml-documents-from-sql-data"></a>[Comment faire] Créer des Documents XML à partir de données SQL ?
 ====================

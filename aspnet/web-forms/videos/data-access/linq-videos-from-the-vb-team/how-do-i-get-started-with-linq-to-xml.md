@@ -4,19 +4,16 @@ title: '[Comment faire] Bien démarrer avec LINQ to XML ? | Microsoft Docs'
 author: bethmassi
 description: Les développeurs Visual Basic indique comment travailler avec XML en Visual Basic à l’aide de littéraux XML, les expressions incorporées et les propriétés d’axe XML pour créer, interroger et...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/15/2007
-ms.topic: article
 ms.assetid: dc3dedcd-5daf-4f0e-9afa-9ccad94f2ce0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/data-access/linq-videos-from-the-vb-team/how-do-i-get-started-with-linq-to-xml
 msc.type: video
-ms.openlocfilehash: f824018c4795a576afd8f47b9bfa79178a5a6b56
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: d2e27e0049078ade239b79ee55f9a74a3131e321
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373995"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817094"
 ---
 <a name="how-do-i-get-started-with-linq-to-xml"></a>[Comment faire] Bien démarrer avec LINQ to XML ?
 ====================

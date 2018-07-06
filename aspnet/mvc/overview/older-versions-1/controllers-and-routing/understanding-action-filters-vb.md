@@ -4,19 +4,16 @@ title: Présentation des filtres d’Action (VB) | Microsoft Docs
 author: microsoft
 description: L’objectif de ce didacticiel est d’expliquer les filtres d’action. Un filtre d’action est un attribut que vous pouvez appliquer à une action de contrôleur--ou l’ensemble du contrôleur...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: e83812f2-c53e-4a43-a7c1-d64c59ecf694
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/understanding-action-filters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 6f65a6b3d5f53e3fd74081c42ab2b327f4c8b133
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 07e02330747b3b8f8bb318d30c7a984aa15baeef
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37403004"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811180"
 ---
 <a name="understanding-action-filters-vb"></a>Présentation des filtres d’Action (VB)
 ====================

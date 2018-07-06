@@ -4,19 +4,16 @@ title: Examen des méthodes Details et Delete | Microsoft Docs
 author: Rick-Anderson
 description: 'Remarque : Une version mise à jour de ce didacticiel est disponible ici qui utilise ASP.NET MVC 5 et Visual Studio 2013. Il est plus sécurisé, beaucoup plus simple à suivre et de démonstration...'
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/28/2012
-ms.topic: article
 ms.assetid: 11425ff3-09fc-4efa-be9a-b53bce503460
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc4/examining-the-details-and-delete-methods
 msc.type: authoredcontent
-ms.openlocfilehash: fc007c7c0a6fdb818e39ef01437f5f9cf3d14513
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 98aa7b0b198f43bc28d7181af0f0808438d6ef76
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375326"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834949"
 ---
 <a name="examining-the-details-and-delete-methods"></a>Examen des méthodes Details et Delete
 ====================

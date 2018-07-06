@@ -4,19 +4,16 @@ title: 'Didacticiel : Diffusion par le serveur avec SignalR 2 | Microsoft Docs'
 author: tdykstra
 description: Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR 2 pour fournir des fonctionnalités de diffusion de serveur. Diffusion de serveur signifie que commun...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/13/2014
-ms.topic: article
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: ff1eeee407ac7628afd587ca8b9102d0191ea356
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0e86fbea9c5668e20fce7a494c76c52f9c089c09
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367924"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820695"
 ---
 <a name="tutorial-server-broadcast-with-signalr-2"></a>Didacticiel : Diffusion par le serveur avec SignalR 2
 ====================
@@ -196,7 +193,7 @@ Vous voulez uniquement une instance de la classe StockTicker exécutés sur le s
 
 ### <a name="register-the-signalr-route"></a>Inscrire l’itinéraire de SignalR
 
-Le serveur doit connaître l’URL à intercepter et diriger vers SignalR. Pour ce faire, vous allez ajouter et de classe de démarrage OWIN.
+Le serveur doit connaître l’URL à intercepter et diriger vers SignalR. Pour ce faire, ajoutez une classe de démarrage OWIN :
 
 1. Dans **l’Explorateur de solutions**, cliquez sur le projet, puis cliquez sur **ajouter | Classe de démarrage OWIN**. Nommez la classe **Startup.cs**.
 2. Remplacez le code dans **Startup.cs** par le code suivant.

@@ -4,19 +4,16 @@ title: Ressources recommandées de déploiement Web ASP.NET - | Microsoft Docs
 author: rick-anderson
 description: Cette rubrique fournit des liens vers la documentation de ressources sur le déploiement (publier) ASP.NET web applications vers IIS à l’aide de Visual Studio 2010, Visual Web De...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/14/2014
-ms.topic: article
 ms.assetid: 58b583cd-c4ab-47a3-8527-8c92c298c91f
-ms.technology: ''
 msc.legacyurl: /whitepapers/aspnet-web-deployment-content-map
 msc.type: content
-ms.openlocfilehash: d29ea65ee5b7056d04f2aa637c36b8216fdff411
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f46a588144fb1af958737b07b73acbff60318fe6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363181"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809418"
 ---
 <a name="aspnet-web-deployment---recommended-resources"></a>Ressources recommandées de déploiement Web ASP.NET-
 ====================

@@ -4,19 +4,16 @@ title: À l’aide de SignalR avec Web Apps dans Azure App Service | Microsoft D
 author: pfletcher
 description: Ce document décrit comment configurer une application de SignalR qui s’exécute sur Microsoft Azure. Versions des logiciels utilisaient dans le didacticiel Visual Studio 2013 ou vis...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/01/2015
-ms.topic: article
 ms.assetid: 2a7517a0-b88c-4162-ade3-9bf6ca7062fd
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/deployment/using-signalr-with-azure-web-sites
 msc.type: authoredcontent
-ms.openlocfilehash: dabf0f6cfed401e10d2c1134c260022d94c3ab92
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 03db2debe6bf5935ced926ae8278df8b9d47c86a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389571"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822164"
 ---
 <a name="using-signalr-with-web-apps-in-azure-app-service"></a>À l’aide de SignalR avec Web Apps dans Azure App Service
 ====================

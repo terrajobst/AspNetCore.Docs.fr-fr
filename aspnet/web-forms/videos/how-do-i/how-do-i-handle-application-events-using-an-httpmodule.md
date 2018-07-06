@@ -4,19 +4,16 @@ title: '[Comment faire] Gérer les événements d’Application à l’aide d’
 author: rick-anderson
 description: Découvrez comment créer une classe HttpModule qui gère les événements de l’application pendant le traitement d’une demande de page. Le module d’exemple écrit les informations dans un journal...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/13/2007
-ms.topic: article
 ms.assetid: a4adedeb-92f9-4d08-a068-fdcdedbae069
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-handle-application-events-using-an-httpmodule
 msc.type: video
-ms.openlocfilehash: 1180a94e26f7a28fd5cba12b0e28bf8fbcc2849e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8e06d5f6bb0a038411db6f5f8a65c89ed11254e6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381284"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37814120"
 ---
 <a name="how-do-i-handle-application-events-using-an-httpmodule"></a>[Comment faire] Gérer les événements d’Application à l’aide d’un HttpModule ?
 ====================

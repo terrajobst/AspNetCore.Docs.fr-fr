@@ -4,19 +4,16 @@ title: Bien démarrer avec ASP.NET MVC 5 | Microsoft Docs
 author: Rick-Anderson
 description: 'Remarque : Une version mise à jour de ce didacticiel est disponible ici à l’aide de Visual Studio 2015. Le nouveau didacticiel utilise ASP.NET Core MVC 6, qui fournit de nombreuses improvem...'
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: f3d8adbe-55e7-4fd4-84a8-7155bc45c676
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/introduction/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 0585e3a841aef72a17d966041029ff7be129a2b3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 85d5d3292ff99ade6995c710e2728c41255def4c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402121"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37823214"
 ---
 <a name="getting-started-with-aspnet-mvc-5"></a>Bien démarrer avec ASP.NET MVC 5
 ====================

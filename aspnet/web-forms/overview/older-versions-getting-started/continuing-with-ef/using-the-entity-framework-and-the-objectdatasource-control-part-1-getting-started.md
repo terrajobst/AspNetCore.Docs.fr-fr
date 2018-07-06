@@ -4,19 +4,16 @@ title: 'À l’aide d’Entity Framework 4.0 et le contrôle ObjectDataSource, p
 author: tdykstra
 description: Cette série de didacticiels s’appuie sur l’application web Contoso University créé par la mise en route avec la série de didacticiels Entity Framework. Si yo...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/26/2011
-ms.topic: article
 ms.assetid: 244278c1-fec8-4255-8a8a-13bde491c4f5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: ba3b65dededeca3534b9273bfd3ae48429711fce
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9eb39d0cf57e114537c76f33e2f4647196b0ff30
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369749"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837676"
 ---
 <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-1-getting-started"></a>À l’aide d’Entity Framework 4.0 et le contrôle ObjectDataSource, partie 1 : mise en route
 ====================

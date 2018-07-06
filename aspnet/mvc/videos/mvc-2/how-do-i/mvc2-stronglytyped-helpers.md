@@ -4,19 +4,16 @@ title: MVC2 - Helpers de StronglyTyped | Microsoft Docs
 author: microsoft
 description: Dans cette vidéo que vous allez découvrir comment vous pouvez utiliser fortement typées que les programmes d’assistance HTML afin d’obtenir la vérification lors de la création des éléments d’interface utilisateur HTML du type de compilation.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/23/2010
-ms.topic: article
 ms.assetid: 017e87d7-a44e-423a-b3e9-ba44df99388b
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/mvc2-stronglytyped-helpers
 msc.type: video
-ms.openlocfilehash: 6ca8ff386f98ab8c6a6d9aa89491bd732617b7ce
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fb54b5cde960e805fa9dccb22ce309f7a28722f2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366970"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841048"
 ---
 <a name="mvc2---stronglytyped-helpers"></a>MVC2 - Helpers de StronglyTyped
 ====================

@@ -4,19 +4,16 @@ title: '[Comment faire] Implémentez Navigation de Site dans ASP.NET ? | Micros
 author: rick-anderson
 description: Dans cette vidéo, nous apprendre à définir un plan de site et l’utiliser avec les contrôles serveur Menu, TreeView et Sitemap. Nous expliquons comment utiliser un plan de site sur une page maître...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/18/2007
-ms.topic: article
 ms.assetid: 889e8100-a80c-41c0-bfeb-7d466c754548
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-site-navigation-in-aspnet
 msc.type: video
-ms.openlocfilehash: dd11d5b44e44f56e6268838c918dd12e448cdb19
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1995ce735698f0c7827e2721c07c1d98922a7ba3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374767"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822429"
 ---
 <a name="how-do-i-implement-site-navigation-in-aspnet"></a>[Comment faire] Implémentez Navigation de Site dans ASP.NET ?
 ====================

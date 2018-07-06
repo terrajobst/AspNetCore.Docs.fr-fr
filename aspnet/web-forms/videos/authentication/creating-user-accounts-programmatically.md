@@ -4,19 +4,16 @@ title: Création de comptes d’utilisateur par programmation | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo, Joe Stagner montre comment créer un personnalisé créer par programmation de formulaire web de l’utilisateur tout en ne pas à l’aide de l’Assistant créer un utilisateur. Pour plus je...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2008
-ms.topic: article
 ms.assetid: 33087707-9876-4575-9042-42e0d0947fa5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/authentication/creating-user-accounts-programmatically
 msc.type: video
-ms.openlocfilehash: ac8a0210368873c357fb9ee50626b07a0521f0cd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8d99f769f6bf04fa05b3dd85dec6dc3a2e5618fc
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374919"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813412"
 ---
 <a name="creating-user-accounts-programmatically"></a>Création de comptes d’utilisateur par programme
 ====================

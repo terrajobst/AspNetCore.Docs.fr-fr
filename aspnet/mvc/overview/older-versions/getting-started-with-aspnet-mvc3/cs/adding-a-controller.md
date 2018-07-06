@@ -4,19 +4,16 @@ title: Ajout d’un contrôleur (c#) | Microsoft Docs
 author: Rick-Anderson
 description: Ce didacticiel vous apprend les notions de base de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express cette Pack 1, qui, je...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: 0b8c56b5-fdf3-42dd-a866-98fbe0ab78a0
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: ba6cc715f8c8eaf624ab5314e3afbfd68da11485
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0c13248960384e8d773f9c5ba3d927b6a8502938
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370890"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805857"
 ---
 <a name="adding-a-controller-c"></a>Ajout d’un contrôleur (c#)
 ====================

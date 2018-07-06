@@ -4,19 +4,16 @@ title: Ressources recommandées pour MVC | Microsoft Docs
 author: Rick-Anderson
 description: Cette rubrique fournit des liens vers des ressources de documentation d’ASP.NET MVC 5. Si vous connaissez un excellent billet de blog, stackoverflow thread ou un autre lien serait...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/10/2014
-ms.topic: article
 ms.assetid: 7958d725-e958-4566-a85b-535eeb985f94
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/getting-started/recommended-resources-for-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 2098dc48e2c253f146e270866765a509e302081f
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2b9ec425654307a6685537cc058bfd25ff2ca8de
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363282"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37821746"
 ---
 <a name="mvc-recommended-resources"></a>Ressources recommandées pour MVC
 ====================
