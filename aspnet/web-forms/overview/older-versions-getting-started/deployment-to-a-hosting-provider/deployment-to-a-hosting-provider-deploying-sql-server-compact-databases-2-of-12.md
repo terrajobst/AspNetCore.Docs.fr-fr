@@ -4,19 +4,16 @@ title: 'Déploiement d’une Application de Web ASP.NET avec SQL Server Compact 
 author: tdykstra
 description: Cette série de didacticiels vous montre comment déployer une ASP.NET (publier) projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/17/2011
-ms.topic: article
 ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: d52a8b8555f2f4accd628a5e24f2e1705fe8d9aa
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: dc094211df77e6d3ff5eacb878be901e3552fd13
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364774"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803056"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>Déploiement d’une Application de Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : déploiement de SQL Server Compact bases de données - 2 de 12
 ====================
@@ -93,7 +90,7 @@ Dans les versions antérieures de Code First avant la parution de Migrations, il
 
 Cliquez sur les crédits de mise à jour
 
-[![School_database_diagram](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image5.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image4.png)
+[![Le [connectez-vous![ page s’affiche, car le ](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image5.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image4.png)crédits de la mise à jour page requiert des privilèges administratifs.](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image5.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image4.png)
 
 Entrez `Student`administrateur`Enrollment` comme nom d’utilisateur et devpwd comme le mot de passe et cliquez sur connectez-vous. Page de connexion
 
@@ -115,11 +112,11 @@ La première étape consiste à vous assurer que le projet de ContosoUniversity 
 
 À partir de la **outils** menu, cliquez sur **Library Package Manager** , puis **Console du Gestionnaire de Package**.
 
-![Selecting_Package_Manager_Console](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image6.png)
+![La base de données d’appartenances stocke un hachage des mots de passe de compte.](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image6.png)
 
 En haut de la fenêtre **de la console du gestionnaire** de packages, sélectionnez ContosoUniversity.DAL comme projet par défaut, puis à l'invite `PM>`, entrez "enable-migrations".
 
-![enable-migrations_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image7.png)
+![Enable-migrations_command](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image7.png)
 
 Cette commande crée un *Configuration.cs* fichier dans un nouveau *Migrations* dossier dans le projet ContosoUniversity.DAL.
 
@@ -133,7 +130,7 @@ Ouvrez le fichier Configuration.cs et remplacez les commentaires dans le `Seed` 
 
 Dans le `List`générer et publier des Scripts`using` boîte de dialogue, le nom de fichier zone spécifie où le script doit être créé. Modifier le chemin d’accès à votre dossier de solution (le dossier contenant votre fichier ContosoUniversity.sln) et le nom de fichier à `List`aspnet-data-dev.sql **.
 
-![Résoudre avec l'utilisation de la déclaration](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image9.png)
+![Cliquez sur suivant pour accéder à la Résumé onglet, puis cliquez sur suivant à nouveau pour créer le script.](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image9.png)
 
 Cette sélection de menu ajoute le code suivant aux `using` instructions situées en haut du fil
 
@@ -235,7 +232,7 @@ Ouvrez le fichier Web.config de l’application et recherchez les chaînes de co
 
 [!code-xml[Main](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/samples/sample5.xml)]
 
-Change "aspnet.sdf" to "aspnet-Dev.sdf", and change "School.sdf" to "School-Dev.sdf":
+Remplacez « aspnet.sdf » par « aspnet-Dev.sdf » et remplacez « School.sdf » par « School Dev.sdf » :
 
 [!code-xml[Main](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/samples/sample6.xml?highlight=4-5)]
 
