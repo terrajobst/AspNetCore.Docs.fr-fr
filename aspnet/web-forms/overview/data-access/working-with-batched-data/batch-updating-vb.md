@@ -4,19 +4,16 @@ title: Traitement par lots (VB) de la mise à jour | Microsoft Docs
 author: rick-anderson
 description: Découvrez comment mettre à jour plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous créons un GridView où chaque ligne est modifiable. Dans les données...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: d191a204-d7ea-458d-b81c-0b9049ecb55f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 7830e010ea8dbf6ce9bd59154c10eb4c30a3dceb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7e5062898ca683571df2929eba5d824f9d77accd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363311"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37833399"
 ---
 <a name="batch-updating-vb"></a>Traitement par lots de la mise à jour (VB)
 ====================

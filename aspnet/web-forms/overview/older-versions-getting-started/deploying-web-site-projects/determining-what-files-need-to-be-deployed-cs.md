@@ -4,19 +4,16 @@ title: Détermination des fichiers qui doivent être déployés (c#) | Microsoft
 author: rick-anderson
 description: Fichiers qui doivent être déployées à partir de l’environnement de développement à l’environnement de production dépend en partie indique si l’application ASP.NET de génération nous...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: f8d78a88-cc91-40d8-bce3-3d7954f6033b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 750e2e19fdaaf2b11304b2227e7c582668d1a567
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3fb54feb32c3c4a4903c65751bf1a4ae4f016a22
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363071"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831033"
 ---
 <a name="determining-what-files-need-to-be-deployed-c"></a>Détermination des fichiers qui doivent être déployés (c#)
 ====================

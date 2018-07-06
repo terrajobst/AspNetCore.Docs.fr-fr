@@ -4,19 +4,16 @@ title: Création de Classes de modèle avec LINQ to SQL (VB) | Microsoft Docs
 author: microsoft
 description: L’objectif de ce didacticiel est d’expliquer une méthode de création de classes de modèle pour une application ASP.NET MVC. Dans ce didacticiel, vous allez apprendre à créer le modèle c...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/07/2008
-ms.topic: article
 ms.assetid: a4a25a75-d71f-4509-98b4-df72e748985a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c7a3e0b02ea14d2fbed9cb64ccad15eff7a04270
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2073ef716763f746f315a2131c4aa049bbdeec22
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393259"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841352"
 ---
 <a name="creating-model-classes-with-linq-to-sql-vb"></a>Création de Classes de modèle avec LINQ to SQL (VB)
 ====================

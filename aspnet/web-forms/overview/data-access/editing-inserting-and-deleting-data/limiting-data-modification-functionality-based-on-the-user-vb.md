@@ -4,19 +4,16 @@ title: Limitation des fonctionnalités de Modification de données basé sur l�
 author: rick-anderson
 description: Dans une application web qui permet aux utilisateurs de modifier des données, différents comptes d’utilisateur peuvent avoir des privilèges de modification de données différents. Dans ce didacticiel, nous allons examiner comment t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/17/2006
-ms.topic: article
 ms.assetid: 9dc264a6-feb8-474b-8b91-008c50708065
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 8530dfd37570ed5fcc45ef4d6c30750c5d4d2152
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 23e23c288ccceab7f7e1c07aa9a902bef4045de0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37377113"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836808"
 ---
 <a name="limiting-data-modification-functionality-based-on-the-user-vb"></a>Limitation des fonctionnalités de Modification de données en fonction de l’utilisateur (VB)
 ====================

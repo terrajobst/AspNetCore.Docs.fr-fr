@@ -4,19 +4,16 @@ title: Déployer des bases de données d’appartenance pour les environnements 
 author: jrjlee
 description: Cette rubrique explique les considérations essentielles et les défis que vous devrez relever lorsque vous configurez les bases de données ASP.NET application services (plus fréquent...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 3cf765df-d311-4f68-a295-c9685ceea830
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/deploying-membership-databases-to-enterprise-environments
 msc.type: authoredcontent
-ms.openlocfilehash: 432951b54fc7cc6b0384dfb4dbd255b16a546e76
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9df152866b54f55c2b00611331e868f98bd2f3e4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370324"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827186"
 ---
 <a name="deploying-membership-databases-to-enterprise-environments"></a>Déployer des bases de données d’appartenance pour les environnements d’entreprise
 ====================

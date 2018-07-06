@@ -4,19 +4,16 @@ title: '[Comment faire] Utiliser OutputCache pour mettre en Cache une Page ASP.N
 author: rick-anderson
 description: Dans cette vidéo Chris Pels montre comment utiliser la mise en cache intégrée d’ASP.NET afin de stocker une page dans le cache afin qu’il ne devra pas être restitué. Tout d’abord, le...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/05/2009
-ms.topic: article
 ms.assetid: 651c54da-becb-467e-9076-d6ace7456351
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-outputcache-to-cache-an-aspnet-page
 msc.type: video
-ms.openlocfilehash: 6c7b2070c68636c3e109c1b6606e64fe297138d4
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f5f36a5267cff7631b78c15f2456736929701e33
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37373872"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805912"
 ---
 <a name="how-do-i-use-outputcache-to-cache-an-aspnet-page"></a>[Comment faire] Utiliser OutputCache pour mettre en Cache une Page ASP.NET
 ====================

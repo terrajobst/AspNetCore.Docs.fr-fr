@@ -4,19 +4,16 @@ title: '[Comment faire] Passer des informations à partir d’une Page à un aut
 author: rick-anderson
 description: Dans cette vidéo Chris Pels vous montrer comment les informations peuvent être passées à partir d’une page à un autre à l’aide d’une chaîne de requête. Tout d’abord, consultez comment construire une chaîne de requête dans...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2008
-ms.topic: article
 ms.assetid: 81bd2d32-53c5-4bd9-8d09-dd8a2c734f3b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-pass-information-from-one-page-to-another-using-a-query-string
 msc.type: video
-ms.openlocfilehash: c6fec0b28d996cb5e01bb76cee60f4444e4dd871
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6d6116739fa3aa444468ceff27b9404fa88e09df
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367413"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830841"
 ---
 <a name="how-do-i-pass-information-from-one-page-to-another-using-a-query-string"></a>[Comment faire] Transmettre des informations à partir d’une Page à un autre à l’aide d’une chaîne de requête
 ====================

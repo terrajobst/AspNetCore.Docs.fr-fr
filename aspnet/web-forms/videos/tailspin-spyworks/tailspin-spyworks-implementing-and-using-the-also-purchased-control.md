@@ -4,19 +4,16 @@ title: Tailspin Spyworks - implémentation et l’utilisation du contrôle égal
 author: JoeStagner
 description: Joe Stagner implémente et utilise le contrôle également acheté dans l’application Web Forms Tailspin Spyworks.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/26/2010
-ms.topic: article
 ms.assetid: a95daf2f-aae4-4ad5-a142-8c58cc7a056d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-implementing-and-using-the-also-purchased-control
 msc.type: video
-ms.openlocfilehash: 8fd43dfd4769ddfe2537fc4272227ad3e29e707b
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3857b9eb2f9a603a7bd3fb30e1acf468cbbbe956
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364412"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840951"
 ---
 <a name="tailspin-spyworks---implementing-and-using-the-also-purchased-control"></a>Tailspin Spyworks - implémentation et l’utilisation du contrôle également acheté
 ====================

@@ -4,19 +4,16 @@ title: Les effets de ViewState | Microsoft Docs
 author: rick-anderson
 description: L’infrastructure ASP.NET fournit le mécanisme de l’état d’affichage pour conserver automatiquement l’état de l’application en effectuant des données vers l’avant et vers l’arrière entre navigateur RE...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/26/2007
-ms.topic: article
 ms.assetid: 112e3efc-6865-4296-80a0-35910c4b3b12
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/the-effects-of-viewstate
 msc.type: video
-ms.openlocfilehash: a5ea15eb05917db5935b04c9ce2aa20e1cb8e196
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e03eba9f1f9ae300c6bb1a4efbde39a2715e6fd2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37391794"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37802378"
 ---
 <a name="the-effects-of-viewstate"></a>Les effets de ViewState
 ====================

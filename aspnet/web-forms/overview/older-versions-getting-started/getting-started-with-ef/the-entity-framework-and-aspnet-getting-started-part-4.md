@@ -4,19 +4,16 @@ title: Bien démarrer avec Entity Framework 4.0 Database First et 4 d’ASP.NET 
 author: tdykstra
 description: L’exemple d’application web Contoso University montre comment créer des applications Web Forms ASP.NET à l’aide d’Entity Framework. L’exemple d’application est en cours...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/03/2010
-ms.topic: article
 ms.assetid: ceb9e60f-957c-4d25-9331-cc527de96a33
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 9783e30fdabe17958690d178ef95616cb72a8164
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5f8b1c15fbfd2d65b603013db3902b42faa40665
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380326"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37836786"
 ---
 <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-4"></a>Bien démarrer avec Entity Framework 4.0 Database First et 4 les Web Forms ASP.NET - partie 4
 ====================

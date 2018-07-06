@@ -4,19 +4,16 @@ title: 'Déploiement d’une Application de Web ASP.NET avec SQL Server Compact 
 author: tdykstra
 description: Cette série de didacticiels vous montre comment déployer une ASP.NET (publier) projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/17/2011
-ms.topic: article
 ms.assetid: 493b2a66-816c-485c-8315-952ed1085ccc
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-to-iis-as-a-test-environment-5-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: 70bc1b8e3c5d01470c2cebfbabd0c119e8f6d360
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 46d986aad52b0ab5a235eade2e17b0cf9f8cdb9f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394714"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835199"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-to-iis-as-a-test-environment---5-of-12"></a>Déploiement d’une Application de Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : déploiement vers IIS comme environnement de Test - 5 de 12
 ====================

@@ -4,19 +4,16 @@ title: Rubriques avancées (VB) et Configuration de l’authentification de form
 author: rick-anderson
 description: Dans ce didacticiel, nous examiner les différents paramètres d’authentification de formulaires et voir comment les modifier dans l’élément de formulaires. Cette suppression entraîne une détaillées...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/14/2008
-ms.topic: article
 ms.assetid: 829d2f56-5c48-445b-b826-3418a450c788
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 493cb81271ea1c0439f7b499c5b48e659d3589b5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: d740694772b0fc5ad1c9c4eb5763004523586631
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390859"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831140"
 ---
 <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>Configuration de l’authentification de formulaires et les rubriques avancées (VB)
 ====================

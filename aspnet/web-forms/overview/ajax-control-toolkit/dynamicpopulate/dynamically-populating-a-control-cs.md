@@ -4,19 +4,16 @@ title: Remplissage dynamique d’un contrôle (c#) | Microsoft Docs
 author: wenz
 description: Le contrôle de DynamicPopulate dans ASP.NET AJAX Control Toolkit appelle un service web (ou une méthode de page) et remplit la valeur obtenue dans un contrôle cible sur t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: e1fec43e-1daf-49d2-b0c7-7f1b930455cc
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 560bcf261c7c621b130f4c3585d5d3df2f5eaf27
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a78e2800b119db61965f9922ba99a2f90e6be948
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392926"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827325"
 ---
 <a name="dynamically-populating-a-control-c"></a>Remplissage dynamique d’un contrôle (c#)
 ====================

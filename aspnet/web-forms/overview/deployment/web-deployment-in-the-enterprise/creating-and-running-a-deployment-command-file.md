@@ -4,19 +4,16 @@ title: Création et exécution d’un déploiement de fichier de commandes | Mic
 author: jrjlee
 description: Cette rubrique décrit comment créer un fichier de commandes qui vous permettent d’exécuter un déploiement à l’aide de fichiers de projet Microsoft Build Engine (MSBuild) en tant qu’une seule étape, re...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: c61560e9-9f6c-4985-834a-08a3eabf9c3c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/creating-and-running-a-deployment-command-file
 msc.type: authoredcontent
-ms.openlocfilehash: fc59920feb5eb48bc8150606b58a1ed4ba60ee92
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6b2a75e0740f648a3a6e4f39c00bd30609325728
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395371"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830300"
 ---
 <a name="creating-and-running-a-deployment-command-file"></a>Création et exécution d’un fichier de commande de déploiement
 ====================

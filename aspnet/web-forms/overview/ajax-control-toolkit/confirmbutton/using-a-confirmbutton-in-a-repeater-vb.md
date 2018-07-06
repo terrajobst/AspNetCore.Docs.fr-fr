@@ -4,19 +4,16 @@ title: Utilisation d’un ConfirmButton dans un répéteur (VB) | Microsoft Docs
 author: wenz
 description: L’extendeur ConfirmButton dans AJAX Control Toolkit crée un Oui/pas de fenêtre contextuelle lorsque l’utilisateur clique sur un bouton (y compris contrôle LinkButton). Uniquement si Oui est...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 18c31709-3f9d-4d93-8b01-f1356bf610b4
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/confirmbutton/using-a-confirmbutton-in-a-repeater-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ce403e84766f586eca36ef6bc513d9fbf7bd1d40
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 72c9493582f7b952d1efcb45d3bc95bc130a38e1
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396417"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826943"
 ---
 <a name="using-a-confirmbutton-in-a-repeater-vb"></a>Utilisation d’un ConfirmButton dans un répéteur (VB)
 ====================

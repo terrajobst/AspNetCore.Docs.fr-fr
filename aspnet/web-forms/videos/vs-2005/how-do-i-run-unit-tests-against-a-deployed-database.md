@@ -4,19 +4,16 @@ title: '[Comment faire] Exécuter des Tests unitaires sur une base de données d
 author: pjhacker
 description: Si votre application ASP.NET est configurée pour déployer une base de données, ainsi que le site Web, comment pouvez-vous vérifier qu’une instance de base de données valide a été déployée ?...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/22/2007
-ms.topic: article
 ms.assetid: 83792674-f769-4c9a-889b-701cfc52de8b
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-run-unit-tests-against-a-deployed-database
 msc.type: video
-ms.openlocfilehash: c82222a2ab77e6821af631d90be051cec0ac73cf
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e624a46a4ff01eb63dccbe282f3a12ddd0793abb
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37374593"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831552"
 ---
 <a name="how-do-i-run-unit-tests-against-a-deployed-database"></a>[Comment faire] Exécuter des Tests unitaires sur une base de données déployée ?
 ====================

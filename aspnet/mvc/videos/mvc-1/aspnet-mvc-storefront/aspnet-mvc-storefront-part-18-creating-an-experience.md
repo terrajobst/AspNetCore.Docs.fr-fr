@@ -4,19 +4,16 @@ title: 'ASP.NET MVC, partie 18 Storefront : Création d’une expérience | Mic
 author: robconery
 description: Dans cet épisode, je travaille sur l’extraction de tous les éléments techniques pour former un cohérent « rencontrer » pour le client.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/16/2008
-ms.topic: article
 ms.assetid: 1636464e-900e-4926-bd5a-88adb5315ff9
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience
 msc.type: video
-ms.openlocfilehash: e468c836cac44ac1ed3bfce00b5fc91827df7456
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fd061364bfc5419e43fa4b4cba15c013ccf07310
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366888"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804330"
 ---
 <a name="aspnet-mvc-storefront-part-18-creating-an-experience"></a>ASP.NET MVC, partie 18 Storefront : Création d’une expérience
 ====================

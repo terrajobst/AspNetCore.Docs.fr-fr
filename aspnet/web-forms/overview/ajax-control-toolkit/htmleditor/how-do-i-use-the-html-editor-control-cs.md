@@ -4,19 +4,16 @@ title: Comment utiliser le contrôle de l’éditeur HTML ? (C#) | Microsoft Do
 author: microsoft
 description: HTMLEditor est un contrôle ASP.NET AJAX qui vous permet de facilement créer et modifier le contenu HTML via des boutons dans une barre d’outils.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/12/2009
-ms.topic: article
 ms.assetid: f47e6224-c2e5-4472-b069-b6c7b6115200
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/htmleditor/how-do-i-use-the-html-editor-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 1ef8fba82a77ed570c800dce0b1c1378fd36ea56
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 775cb113ea11e582806b0bd9397778cff6761940
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397617"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809405"
 ---
 <a name="how-do-i-use-the-html-editor-control-c"></a>Comment utiliser le contrôle de l’éditeur HTML ? (C#)
 ====================

@@ -4,19 +4,16 @@ title: Gestion des erreurs ASP.NET | Microsoft Docs
 author: Erikre
 description: Cette série de didacticiels vous apprend les notions de base de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour nous...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 09/08/2014
-ms.topic: article
 ms.assetid: 423498f7-1a4b-44a1-b342-5f39d0bcf94f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 4db91929b78e882b2a8a95fb36ba97db4d29d240
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 8d6c19be7c77079b870261d1c4cf0ea62e0e2fd6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37392721"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807588"
 ---
 <a name="aspnet-error-handling"></a>Gestion des erreurs ASP.NET
 ====================

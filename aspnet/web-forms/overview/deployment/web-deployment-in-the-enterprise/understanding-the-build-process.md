@@ -4,19 +4,16 @@ title: Comprendre le processus de génération | Microsoft Docs
 author: jrjlee
 description: Cette rubrique fournit une procédure pas à pas d’un processus de génération et de déploiement de l’échelle de l’entreprise. L’approche décrite dans cette rubrique utilise du Microsoft Build moteur personnalisé...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 5b982451-547b-4a2f-a5dc-79bc64d84d40
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-build-process
 msc.type: authoredcontent
-ms.openlocfilehash: 6c9c901e23342c49a7bb8f1c9fe0e0dd09230cbd
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 581b7e996bf5aa4c76a6bf3d55a758677c0bf897
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37366823"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37804314"
 ---
 <a name="understanding-the-build-process"></a>Comprendre le processus de génération
 ====================

@@ -4,19 +4,16 @@ title: Journalisation des détails des erreurs avec ELMAH (c#) | Microsoft Docs
 author: rick-anderson
 description: Erreur de journalisation des Modules et gestionnaires (ELMAH) offre une autre approche pour la journalisation des erreurs d’exécution dans un environnement de production. ELMAH une erreur s’est gratuit et open source...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/09/2009
-ms.topic: article
 ms.assetid: 11f6fe44-64ef-4a38-a3b4-35c7bb992352
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 0b9b91b54f50ddd86e102fea3b0dfd5505e3f594
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 2432b22bd5dec1668fdb134eaeb92e372062ddda
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388475"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834122"
 ---
 <a name="logging-error-details-with-elmah-c"></a>Journalisation des détails des erreurs avec ELMAH (c#)
 ====================

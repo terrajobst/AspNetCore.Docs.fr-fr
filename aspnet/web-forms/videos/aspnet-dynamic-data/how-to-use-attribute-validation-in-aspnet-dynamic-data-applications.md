@@ -4,19 +4,16 @@ title: Comment utiliser la Validation des attributs dans les Applications ASP.NE
 author: JoeStagner
 description: Cette vidéo présente modifiant les Classes partielles dans la couche d’accès aux données de notre Application de données dynamique et commencer à l’aide d’attributs par focalisation o...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/23/2008
-ms.topic: article
 ms.assetid: dcaaaa8d-7dbd-4f5f-be2a-226c2517872a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-use-attribute-validation-in-aspnet-dynamic-data-applications
 msc.type: video
-ms.openlocfilehash: ac668078772fbef243bfbcb3bdb96a4d55a30d08
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 601d8a2749e319ba6fe3a112ac82576f4f3d92f0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385187"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831772"
 ---
 <a name="how-to-use-attribute-validation-in-aspnet-dynamic-data-applications"></a>Comment utiliser la Validation des attributs dans les Applications ASP.NET Dynamic Data
 ====================

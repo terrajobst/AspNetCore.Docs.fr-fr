@@ -4,19 +4,16 @@ title: Création d’une définition de Build qui prend en charge les déploieme
 author: jrjlee
 description: Si vous souhaitez effectuer n’importe quel type de build dans Team Foundation Server (TFS) 2010, vous devez créer une définition de build dans votre projet d’équipe. De cette rubrique...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: fe47a018-f6d0-4979-80e7-5b1fa75a5865
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: d0220ee5c7c066d107311c1235949cec5049cc27
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 18f88cff032bd0694ef98f0b19849f0edf1681ee
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37370281"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827386"
 ---
 <a name="creating-a-build-definition-that-supports-deployment"></a>Création d’une définition de Build qui prend en charge le déploiement
 ====================

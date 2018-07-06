@@ -4,19 +4,16 @@ title: Test de la force de mot de passe (VB) | Microsoft Docs
 author: wenz
 description: Presque n’importe où, les mots de passe sont requis afin que les utilisateurs différés ont tendance à choisir des mots de passe simples qui sont faciles à arrêter. Le contrôle PasswordStrength dans ASP. N....
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 9215a37f-3133-4887-8ed2-3689f3a53551
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 3faf9996c73fb5aaa427b515d396f36663cf1801
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 7073a06186ba3ff6c6a12d558445d75d9301589a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379700"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805899"
 ---
 <a name="testing-the-strength-of-a-password-vb"></a>Test de la force de mot de passe (VB)
 ====================

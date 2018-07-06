@@ -1,18 +1,18 @@
 ---
-title: Confirmation du compte et récupération de mot de passe dans ASP.NET Core
+title: Confirmation de compte et de récupération de mot de passe dans ASP.NET Core
 author: rick-anderson
-description: Découvrez comment créer une application ASP.NET Core à la réinitialisation par courrier électronique de confirmation et le mot de passe.
+description: Découvrez comment créer une application ASP.NET Core avec la réinitialisation de confirmation et le mot de passe de messagerie.
 ms.author: riande
 ms.date: 2/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: db41dd47518fa8b35c006b3291068e7724cf6cca
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 12265903f60ff6d62befc445434db025c244c178
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275078"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803270"
 ---
-# <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation du compte et récupération de mot de passe dans ASP.NET Core
+# <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation de compte et de récupération de mot de passe dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://twitter.com/joeaudette)
 
@@ -20,10 +20,9 @@ Ce didacticiel vous montre comment créer une application ASP.NET Core avec conf
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
 * [Authentification](xref:security/authentication/index)
-* [Confirmation de compte et récupération de mot de passe](xref:security/authentication/accconfirm)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
-Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) de la version 1.1 de MVC ASP.NET Core et 2.x.
+Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) pour les versions d’ASP.NET Core MVC 1.1 et 2.x.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -73,12 +72,12 @@ dotnet new mvc --auth Individual
 
 Vous pouvez également créer un nouveau projet ASP.NET Core avec Visual Studio :
 
-* Dans Visual Studio, créez un **Application Web** projet.
+* Dans Visual Studio, créez un nouveau **Web Application** projet.
 * Sélectionnez **ASP.NET Core 2.0**. **.NET core** est sélectionné dans l’image suivante, mais vous pouvez sélectionner **.NET Framework**.
 * Sélectionnez **modifier l’authentification** et la valeur **comptes d’utilisateur individuels**.
-* Conservez la valeur par défaut **dans l’application des comptes d’utilisateurs de magasin**.
+* Conservez la valeur par défaut **dans l’application des comptes d’utilisateurs de Store**.
 
-![Nouvelle boîte de dialogue projet indiquant « Radio de comptes d’utilisateur individuels » sélectionnée](accconfirm/_static/2.png)
+![Nouvelle boîte de dialogue projet affichant « Radio de comptes d’utilisateur individuels » sélectionnée](accconfirm/_static/2.png)
 
 ## <a name="test-new-user-registration"></a>Tester l’inscription d’un nouvel utilisateur
 
@@ -86,7 +85,7 @@ Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un 
 
 ## <a name="view-the-identity-database"></a>Afficher la base de données d’identité
 
-Consultez [de travail dans un projet ASP.NET MVC de base avec SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql) pour obtenir des instructions sur l’affichage de la base de données SQLite.
+Consultez [utiliser SQLite dans un projet ASP.NET Core MVC](xref:tutorials/first-mvc-app-xplat/working-with-sql) pour obtenir des instructions sur l’affichage de la base de données SQLite.
 
 Pour Visual Studio :
 
@@ -101,12 +100,12 @@ Vous pouvez souhaiter réutiliser cet e-mail à l’étape suivante quand l’ap
 
 ---
 
-## <a name="require-https"></a>Exiger HTTPS
+## <a name="require-https"></a>Exiger s-http
 
 Consultez [Exiger HTTPS](xref:security/enforcing-ssl).
 
 <a name="prevent-login-at-registration"></a>
-## <a name="require-email-confirmation"></a>Demander confirmation de courrier électronique
+## <a name="require-email-confirmation"></a>Demander confirmation de l’e-mail
 
 Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous ayez un forum de discussion, et que vous souhaitiez empêcher "yli@example.com" de s’inscription en tant que "nolivetto@contoso.com". Sans la confirmation par courrier électronique, "nolivetto@contoso.com" peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur s'inscrit par inadvertance en tant que "ylo@example.com" et que vous n’avez pas remarqué la faute d’orthographe de "yli". Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. l'email de confirmation fournit uniquement une protection limitée contre les robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
 
@@ -122,7 +121,7 @@ Mettez à jour `ConfigureServices` pour exiger une adresse e-mail confirmée :
 
 Dans ce didacticiel, SendGrid est utilisé pour envoyer un courrier électronique. Vous avez besoin d’un compte SendGrid et une clé pour envoyer un courrier électronique. Vous pouvez utiliser d’autres fournisseurs de messagerie. ASP.NET Core 2.x inclut `System.Net.Mail`, qui vous permet d’envoyer par courrier électronique à partir de votre application. Nous vous recommandons d'utiliser SendGrid ou un autre service de messagerie pour envoyer un courrier électronique. SMTP est difficile à sécuriser et à correctement configurer.
 
-Le [modèle d’Options](xref:fundamentals/configuration/options) est utilisé pour accéder aux paramètres de compte et une clé utilisateur. Pour plus d’informations, consultez [configuration](xref:fundamentals/configuration/index).
+Le [modèle Options](xref:fundamentals/configuration/options) est utilisé pour accéder aux paramètres de compte et clé utilisateur. Pour plus d’informations, consultez [configuration](xref:fundamentals/configuration/index).
 
 Créez une classe pour extraire la clé de messagerie électronique sécurisée. Pour cet exemple, la classe `AuthMessageSenderOptions` est créée dans le fichier *Services/AuthMessageSenderOptions.cs* :
 
@@ -176,11 +175,11 @@ Installer le package NuGet `SendGrid` :
 
 Consultez [Débuter avec SendGrid gratuitement](https://sendgrid.com/free/) pour vous inscrire pour un compte SendGrid gratuit.
 
-#### <a name="configure-sendgrid"></a>Configurer SendGrid
+#### <a name="configure-sendgrid"></a>Configuration de SendGrid
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
 
-Pour configurer SendGrid, ajoutez du code semblable au suivant dans *Services/EmailSender.cs*:
+Pour configurer SendGrid, ajoutez le code similaire à ce qui suit dans *Services/EmailSender.cs*:
 
 [!code-csharp[](accconfirm/sample/WebPWrecover/Services/EmailSender.cs)]
 
@@ -210,7 +209,7 @@ La méthode complète est montrée avec la ligne modifiée mise en surbrillance 
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
 
-Pour activer la confirmation du compte, supprimez le code suivant :
+Pour activer la confirmation de compte, les commentaires du code suivant :
 
 [!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
 
@@ -224,7 +223,7 @@ Activez la récupération de mot de passe en décommentant le code dans l'action
 
 [!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=17-23&name=snippet_ForgotPassword)]
 
-Supprimez les commentaires de l’élément form *Views/Account/ForgotPassword.cshtml*. Vous souhaiterez peut-être supprimer le `<p> For more information on how to enable reset password ... </p>` élément, qui contient un lien vers cet article.
+Supprimez les commentaires de l’élément de formulaire dans *Views/Account/ForgotPassword.cshtml*. Vous souhaiterez peut-être supprimer le `<p> For more information on how to enable reset password ... </p>` élément, qui contient un lien vers cet article.
 
 [!code-cshtml[](accconfirm/sample/WebApp1/Views/Account/ForgotPassword.cshtml?highlight=7-10,12,28)]
 
@@ -240,7 +239,7 @@ Exécuter l’application web, et testez le flux de confirmation du compte et de
 
 * Recherchez le lien de confirmation du compte dans votre messagerie. Consultez [Déboguer la messagerie](#debug) si vous ne recevez pas l’e-mail.
 * Cliquez sur le lien pour confirmer votre adresse de messagerie.
-* Connectez-vous avec votre adresse électronique et un mot de passe.
+* Connectez-vous à votre e-mail et un mot de passe.
 * Fermez la session.
 
 ### <a name="view-the-manage-page"></a>Afficher la page de gestion
@@ -259,7 +258,7 @@ La page de gestion s’affiche avec l'onglet **profil** sélectionné. L'**Email
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Cela est mentionné plus loin dans le didacticiel.
+Cela est indiqué plus loin dans le didacticiel.
 ![page Gérer](accconfirm/_static/rick2.png)
 
 ---
@@ -268,8 +267,8 @@ Cela est mentionné plus loin dans le didacticiel.
 
 * Si vous êtes connecté, sélectionnez **Déconnexion**.
 * Sélectionnez le lien **Connexion** et sélectionnez le lien **Vous avez oublié votre mot de passe ?**.
-* Entrez l’e-mail que vous avez utilisé pour enregistrer le compte.
-* Un message électronique contenant un lien pour réinitialiser votre mot de passe est envoyé. Vérifiez votre adresse de messagerie et cliquez sur le lien pour réinitialiser votre mot de passe. Une fois votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre adresse électronique et un nouveau mot de passe.
+* Entrez l’adresse e-mail que vous avez utilisé pour inscrire le compte.
+* Un e-mail avec un lien pour réinitialiser votre mot de passe est envoyé. Vérifier votre adresse e-mail et cliquez sur le lien pour réinitialiser votre mot de passe. Une fois que votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre e-mail et votre nouveau mot de passe.
 
 <a name="debug"></a>
 
@@ -280,8 +279,8 @@ Si vous ne parvenez à faire fonctionner l'email :
 * Créer une [application console pour envoyer un courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html).
 * Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) page.
 * Vérifiez votre dossier courrier indésirable.
-* Essayez un autre alias de messagerie électronique sur un fournisseur de messagerie différents (Microsoft, Yahoo, Gmail, etc.).
-* Essayez d’envoyer à des comptes de messagerie différents.
+* Essayez un autre alias de messagerie sur un fournisseur de messagerie différents (Microsoft, Yahoo, Gmail, etc.).
+* Essayer d’envoyer à différents comptes e-mail.
 
 Une **bonne pratique de sécurité** consiste à **ne pas** utiliser des secrets de production en développement et en test. Si vous publiez l’application sur Azure, vous pouvez définir les secrets SendGrid en tant que paramètres d’application dans le portail Azure Web App. Le système de configuration est conçu pour lire les clés à partir de variables d’environnement.
 
@@ -293,17 +292,17 @@ Vous pouvez combiner des comptes locaux et de réseaux sociaux en cliquant sur l
 
 ![Application Web : RickAndMSFT@gmail.com utilisateur authentifié](accconfirm/_static/rick.png)
 
-Cliquez sur le lien **Gérer**. Notez la valeur 0 externe (connexions sociales) associé à ce compte.
+Cliquez sur le lien **Gérer**. Notez la valeur 0 externes (connexions sociales) associé à ce compte.
 
-![Gérer les affichages](accconfirm/_static/manage.png)
+![Gérer la vue](accconfirm/_static/manage.png)
 
 Cliquez sur le lien vers un autre service de connexion et acceptez les demandes d’application. Dans l’image suivante, Facebook est le fournisseur d’authentification externe :
 
-![Gestion de votre vue de logins externes répertoriant Facebook](accconfirm/_static/fb.png)
+![Gérer votre vue de logins externes répertoriant Facebook](accconfirm/_static/fb.png)
 
 Les deux comptes ont été combinés. Vous pouvez vous connecter avec l'un ou l'autre compte. Vous pouvez faire en sorte que vos utilisateurs ajoutent des comptes locaux au cas où leur service d’authentification de connexion sociale soit indisponible ou que, plus probablement, ils aient perdu l’accès à leur compte social.
 
-## <a name="enable-account-confirmation-after-a-site-has-users"></a>Activer la confirmation du compte après qu’un site a des utilisateurs
+## <a name="enable-account-confirmation-after-a-site-has-users"></a>Activer la confirmation de compte après qu’un site a des utilisateurs
 
 Activer la confirmation du compte sur un site avec des utilisateurs bloque tous les utilisateurs existants. Ceux-ci sont bloqués, car leurs comptes ne sont pas confirmés. Pour contourner le blocage des utilisateurs existants, utilisez une des approches suivantes :
 

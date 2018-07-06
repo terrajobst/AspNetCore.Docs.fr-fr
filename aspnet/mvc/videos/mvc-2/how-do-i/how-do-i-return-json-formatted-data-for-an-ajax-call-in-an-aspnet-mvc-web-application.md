@@ -4,19 +4,16 @@ title: 'Comment faire : retourner données au format JSON pour un appel AJAX da
 author: rick-anderson
 description: Dans cette vidéo, que Chris Pels montre comment utiliser les classes JsonResult et Json pour retourner des instances de classes en tant que JSON les données mises en forme. Tout d’abord, un échantillon MVC web appl...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/22/2009
-ms.topic: article
 ms.assetid: 7ed06ca2-fab6-41a3-a1cc-a3ccebb639f6
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application
 msc.type: video
-ms.openlocfilehash: 3f52f4161ae6689a14ddac69149dfaad41a4d90e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5bb38259c1beda0059bf20aec5a4bac4901efbec
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363752"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825659"
 ---
 <a name="how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application"></a>Comment faire : retourner données au format JSON pour un appel AJAX dans une Application Web ASP.NET MVC ?
 ====================

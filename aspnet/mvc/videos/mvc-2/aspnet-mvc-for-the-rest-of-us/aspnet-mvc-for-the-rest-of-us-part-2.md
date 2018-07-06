@@ -4,19 +4,16 @@ title: 'ASP.NET MVC-fonctionnalité nous contacter : partie 2 | Microsoft Docs'
 author: JoeStagner
 description: Dans cette vidéo Microsoft Joe Stagner génère une fonctionnalité « Nous contacter » pour une application ASP.NET MVC en ajoutant une vue logique du contrôleur et un modèle personnalisé à t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/22/2010
-ms.topic: article
 ms.assetid: d27fbb54-353f-4d79-b465-403ff8e0538b
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-2
 msc.type: video
-ms.openlocfilehash: 8af7b74b89d60aeabe86de55506784642f048231
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 13938846caae482eef32f12d3d4db86d5a1d498d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393197"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37834217"
 ---
 <a name="aspnet-mvc-for-the-rest-of-us-part-2"></a>ASP.NET MVC-fonctionnalité nous contacter : partie 2
 ====================

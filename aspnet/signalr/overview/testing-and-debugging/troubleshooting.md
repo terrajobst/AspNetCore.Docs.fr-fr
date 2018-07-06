@@ -4,19 +4,16 @@ title: Résolution des problèmes de SignalR | Microsoft Docs
 author: pfletcher
 description: Cet article décrit les problèmes courants avec le développement des applications SignalR.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: dee7be9d7b347bc1db174b7e20dd1c0679d4be14
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: fbe1ffe7dc816f6470f8bf93e592f0ff4b299145
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367034"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803945"
 ---
 <a name="signalr-troubleshooting"></a>Résolution des problèmes de SignalR
 ====================

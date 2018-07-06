@@ -4,19 +4,16 @@ title: '[Comment faire] Utiliser le contrôle de nobot d’ASP.NET AJAX ? | Mic
 author: JoeStagner
 description: Le contrôle nobot d’à partir d’ASP.NET AJAX Control Toolkit vous aide à empêcher certains types d’accès non autorisé à vos applications Web. Dans cette vidéo, nous voyons comment...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/29/2007
-ms.topic: article
 ms.assetid: 15282963-2ec5-4013-b6bc-f1fcf272818e
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-nobot-control
 msc.type: video
-ms.openlocfilehash: 6b0fb59988b69746514c56bad148da036aedc303
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 56276b427197459c916361c3f5652491e1f175c5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398982"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37811858"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-nobot-control"></a>[Comment faire] Utiliser le contrôle de nobot d’ASP.NET AJAX ?
 ====================

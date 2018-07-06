@@ -4,19 +4,16 @@ title: En effectuant un que si déploiement | Microsoft Docs
 author: jrjlee
 description: Cette rubrique explique comment effectuer « que se passe-t-il si » (ou simulés) déploiements à l’aide de l’outil de déploiement Web Internet Information Services (IIS) (Web Deploy) et V...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: c711b453-01ac-4e65-a48c-93d99bf22e58
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/performing-a-what-if-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: f50053c3b231a1d174df51ce7aa4c6013192bca8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f54a4d91ea0f735d3cd5b99c0dda5d83cbb5e5d4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378097"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830647"
 ---
 <a name="performing-a-what-if-deployment"></a>Exécution d’un déploiement « What If »
 ====================

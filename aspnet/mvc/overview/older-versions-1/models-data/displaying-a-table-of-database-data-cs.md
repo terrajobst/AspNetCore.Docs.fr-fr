@@ -4,19 +4,16 @@ title: Affichage d’une Table de base de données (c#) | Microsoft Docs
 author: microsoft
 description: Dans ce didacticiel, je vais montrer deux méthodes d’affichage d’un ensemble d’enregistrements de base de données. Je montrerai des deux méthodes de mise en forme un jeu d’enregistrements de base de données dans le code HTML ta...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/07/2008
-ms.topic: article
 ms.assetid: d6e758b6-6571-484d-a132-34ee6c47747a
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 06dc5c9398adb45d5a5ff8f57ff42816c983ee04
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8409df940e0b5276c4f108531423aadeb2545ca3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395978"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828177"
 ---
 <a name="displaying-a-table-of-database-data-c"></a>Affichage d’une Table de base de données (c#)
 ====================

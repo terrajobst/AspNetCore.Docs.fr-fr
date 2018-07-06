@@ -4,19 +4,16 @@ title: Affichage d’une Table de base de données (VB) | Microsoft Docs
 author: microsoft
 description: Dans ce didacticiel, je vais montrer deux méthodes d’affichage d’un ensemble d’enregistrements de base de données. Je montrerai des deux méthodes de mise en forme un jeu d’enregistrements de base de données dans le code HTML ta...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/07/2008
-ms.topic: article
 ms.assetid: 5bb4587f-5bcd-44f5-b368-3c1709162b35
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-vb
 msc.type: authoredcontent
-ms.openlocfilehash: f5d9062d901f28b1d64f400e13ed5eb0ca788ab8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0b796c424cfe3fb03f3d6eddd8812438ceea2026
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362490"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830271"
 ---
 <a name="displaying-a-table-of-database-data-vb"></a>Affichage d’une Table de base de données (VB)
 ====================

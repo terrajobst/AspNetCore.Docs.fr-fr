@@ -4,19 +4,16 @@ title: 'Didacticiel : Bien démarrer avec SignalR 2 et MVC 5 | Microsoft Docs'
 author: pfletcher
 description: Ce didacticiel montre comment utiliser ASP.NET SignalR 2 pour créer une application de conversation en temps réel. Vous ajouter SignalR à une application MVC 5 et créer une vue de la conversation...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/10/2014
-ms.topic: article
 ms.assetid: 80bfe5fb-bdfc-41fe-ac43-2132e5d69fac
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr-and-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 903319040c9ac938cea5dce2e6579d88e0d80bb5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4a4c013ff047f18f9d9b88595af7951577f3f200
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384049"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838648"
 ---
 <a name="tutorial-getting-started-with-signalr-2-and-mvc-5"></a>Didacticiel : Bien démarrer avec SignalR 2 et MVC 5
 ====================

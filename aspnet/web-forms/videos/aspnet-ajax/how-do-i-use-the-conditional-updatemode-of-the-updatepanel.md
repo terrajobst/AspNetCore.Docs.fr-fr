@@ -4,19 +4,16 @@ title: '[Comment faire] Utilisez l’UpdateMode conditionnel du contrôle Update
 author: JoeStagner
 description: Le contrôle UpdatePanel d’ASP.NET AJAX inclut une propriété UpdateMode qui peut être définie sur « Toujours » ou « Conditionnel ». La valeur par défaut est toujours, auquel cas la UpdatePan...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/01/2007
-ms.topic: article
 ms.assetid: 10b5bad3-4c18-464f-9454-0b3e60b7b8be
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-use-the-conditional-updatemode-of-the-updatepanel
 msc.type: video
-ms.openlocfilehash: a63c5687e52dd89e1a967bdd7d0dd0539e32ff37
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 04b37874bcbdd580edc9182b54eecc9a6f77cb61
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37397381"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826803"
 ---
 <a name="how-do-i-use-the-conditional-updatemode-of-the-updatepanel"></a>[Comment faire] Utilisez l’UpdateMode conditionnel du contrôle UpdatePanel ?
 ====================

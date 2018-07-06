@@ -4,19 +4,16 @@ title: Ajout d’un contrôleur (VB) | Microsoft Docs
 author: Rick-Anderson
 description: Ce didacticiel vous apprend les bases de la création d’une application Web ASP.NET MVC à l’aide de Microsoft Visual Web Developer 2010 Express Service Pack 1, qui est en cours...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2011
-ms.topic: article
 ms.assetid: 741259e1-54ac-4f71-b4e8-2bd5560bb950
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/vb/adding-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: 75451be20bd39f37bb692a06389ed7f04bc75a2a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 00ffe14deef71c2b22ed4edbf3d03f0835d68cc9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367850"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831979"
 ---
 <a name="adding-a-controller-vb"></a>Ajout d’un contrôleur (VB)
 ====================

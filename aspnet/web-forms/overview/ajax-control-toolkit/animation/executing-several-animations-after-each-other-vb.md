@@ -4,19 +4,16 @@ title: Exécution de plusieurs Animations après l’autre (VB) | Microsoft Docs
 author: wenz
 description: Le contrôle d’Animation dans ASP.NET AJAX Control Toolkit n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Il permet d’exécuter la chute...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 21ece509-79cc-4d9d-892d-7b6e9c4d3502
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0d9e1ce0c156752ce0e97b91f253ced26360a721
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3d94619ca40d288f8a5a391ef02103902bd2550c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364751"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835953"
 ---
 <a name="executing-several-animations-after-each-other-vb"></a>Exécution de plusieurs Animations après l’autre (VB)
 ====================

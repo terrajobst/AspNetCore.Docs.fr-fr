@@ -4,19 +4,16 @@ title: Débogage des procédures stockées (c#) | Microsoft Docs
 author: rick-anderson
 description: Les éditions Visual Studio Professional et Team System permettent de définir des points d’arrêt et de participer à des procédures stockées dans SQL Server, ainsi tout débogage stockées...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/03/2007
-ms.topic: article
 ms.assetid: c655c324-2ffa-4c21-8265-a254d79a693d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 988de3cfea16eb623351288ab103e77230625a17
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e1eb9f6ea7d1704061157cca6898ad8330780929
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37380731"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37824210"
 ---
 <a name="debugging-stored-procedures-c"></a>Débogage des procédures stockées (c#)
 ====================

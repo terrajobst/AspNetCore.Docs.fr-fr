@@ -4,19 +4,16 @@ title: Personnalisation du contrôle DataList d’édition Interface (VB) | Micr
 author: rick-anderson
 description: Dans ce didacticiel, nous allons créer une interface plus riche de modification pour le contrôle DataList, qui inclut DropDownList et une case à cocher.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/30/2006
-ms.topic: article
 ms.assetid: 718628e2-224c-455f-b33a-a41efd48d5a0
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/customizing-the-datalist-s-editing-interface-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 4ba5f532d3098eee269d97f7a317dfde7ad51680
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 78001e977a4696e905317eab35604518d059e66d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386655"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828755"
 ---
 <a name="customizing-the-datalists-editing-interface-vb"></a>Personnalisation de l’Interface de modification du contrôle DataList (VB)
 ====================

@@ -4,19 +4,16 @@ title: Avancées de déploiement Web d’entreprise | Microsoft Docs
 author: jrjlee
 description: Ce didacticiel vous explique comment effectuer diverses tâches sont obligatoires ou souhaitable dans de nombreux scénarios de déploiement d’entreprise. Pour un translati italien...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 7dcaba80-f2ec-4db3-ad98-daadc3afdb49
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/advanced-enterprise-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 7b4546079d15649ff2371ced6746a29a90bdfc85
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: adadd921a96b5643eb54cd6f6384ef881ca6ba50
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401871"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835069"
 ---
 <a name="advanced-enterprise-web-deployment"></a>Déploiement Web d’entreprise avancées
 ====================

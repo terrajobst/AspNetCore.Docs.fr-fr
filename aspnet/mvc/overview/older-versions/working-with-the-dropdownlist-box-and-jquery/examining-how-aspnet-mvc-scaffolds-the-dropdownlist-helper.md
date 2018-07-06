@@ -4,19 +4,16 @@ title: Examiner la façon dont ASP.NET MVC structure du programme d’assistance
 author: Rick-Anderson
 description: ''
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/12/2012
-ms.topic: article
 ms.assetid: 8921d7f2-21f0-427a-8b27-2df7251174b0
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/examining-how-aspnet-mvc-scaffolds-the-dropdownlist-helper
 msc.type: authoredcontent
-ms.openlocfilehash: ece3645f2b37550058a5c93bdd9badbc088ae11c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 8e407d5426ed93388b3c6f7bdb125be5356c002c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37382963"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837128"
 ---
 <a name="examining--how--aspnet-mvc-scaffolds-the-dropdownlist-helper"></a>Examiner la façon dont ASP.NET MVC structure du programme d’assistance DropDownList
 ====================

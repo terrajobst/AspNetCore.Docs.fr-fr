@@ -4,19 +4,16 @@ title: Affichage des données dans une grille | Microsoft Docs
 author: JoeStagner
 description: Accompagnement de vidéo à l’affichage des données dans un didacticiel de grille
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/25/2011
-ms.topic: article
 ms.assetid: 76ac6b38-ca93-4d8f-8a72-9e46c82054ab
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/displaying-data-in-a-grid
 msc.type: video
-ms.openlocfilehash: 5071d0ca527743b62ebe211eb31e878c18395f91
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 092dbfbfe27a1751802904ad254f1e08d49e401a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37396196"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37838043"
 ---
 <a name="displaying-data-in-a-grid"></a>Affichage des données dans une grille
 ====================

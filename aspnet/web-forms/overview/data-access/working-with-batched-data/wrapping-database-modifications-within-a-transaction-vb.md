@@ -4,19 +4,16 @@ title: Habillage des Modifications de base de données dans une Transaction (VB)
 author: rick-anderson
 description: Ce didacticiel est le premier des quatre examine la mise à jour, suppression et l’insertion des lots de données. Ce didacticiel explique comment autoriser des transactions de base de données...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/26/2007
-ms.topic: article
 ms.assetid: 7d821db5-6cbb-4b38-af14-198f9155fc82
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cf87dd0e677a73dc81cc430157be22b01ff0f7a8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 877174bad08970eed0cab52d0f1d8a521f7d2cc0
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390160"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37840743"
 ---
 <a name="wrapping-database-modifications-within-a-transaction-vb"></a>Inclusion de Modifications de base de données dans une Transaction (VB)
 ====================

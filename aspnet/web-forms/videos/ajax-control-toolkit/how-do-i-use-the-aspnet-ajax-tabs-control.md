@@ -4,19 +4,16 @@ title: '[Comment faire] Utiliser le contrôle Tabs d’ASP.NET AJAX ? | Microso
 author: JoeStagner
 description: Cette vidéo montre les principes de base du contrôle d’onglets à partir d’ASP.NET AJAX Control Toolkit, avec laquelle vous pouvez créer un jeu d’onglets pour organiser le contenu sur...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/01/2007
-ms.topic: article
 ms.assetid: f85fcce9-a897-4f43-b12f-5c6f5f2733cd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-tabs-control
 msc.type: video
-ms.openlocfilehash: 049320f4981563a846b319fa1e7017be5098d2ac
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 23fa24c15f6aafaecb22aa7a44ea2b2659640f20
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37398959"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37807244"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-tabs-control"></a>[Comment faire] Utiliser le contrôle Tabs d’ASP.NET AJAX ?
 ====================

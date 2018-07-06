@@ -4,19 +4,16 @@ title: '[Comment faire]  Implémenter le suivi dans un Site Web ASP.NET ? | Mic
 author: rick-anderson
 description: Dans cette vidéo Chris Pels sera vous montrer comment implémenter le suivi dans un site web ASP.NET de surveiller ou de mesurer les performances et de diagnostiquer les erreurs. Découvrez comment...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/05/2007
-ms.topic: article
 ms.assetid: b3abbbef-ddac-4c8e-a068-5bab31db5931
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-tracing-in-an-aspnet-web-site
 msc.type: video
-ms.openlocfilehash: 82a73a51a1f4d34ef237cb5dcd67c6a094191fe2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 308777a764fb175d45c24f893884dc8e6bda1393
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37393819"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835772"
 ---
 <a name="how-do-i--implement-tracing-in-an-aspnet-web-site"></a>[Comment faire]  Implémenter le suivi dans un Site Web ASP.NET ?
 ====================

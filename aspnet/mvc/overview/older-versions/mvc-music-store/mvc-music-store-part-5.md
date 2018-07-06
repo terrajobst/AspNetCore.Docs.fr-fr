@@ -4,19 +4,16 @@ title: 'Partie 5 : Formulaires de modification et création de modèles | Micro
 author: jongalloway
 description: Cette série de didacticiels décrit en détail les étapes prises pour générer l’exemple d’application ASP.NET MVC Music Store. Partie 5 couvre les formulaires de modification et de création de modèles.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/21/2011
-ms.topic: article
 ms.assetid: 6b09413a-6d6a-425a-87c9-629f91b91b28
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-5
 msc.type: authoredcontent
-ms.openlocfilehash: f799c4d492e88f3edcf3800e66e0a1bae3845ba2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: acb4a4c427870e375ff19823f0bdfa208438e899
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395199"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835999"
 ---
 <a name="part-5-edit-forms-and-templating"></a>Partie 5 : Formulaires de modification et création de modèles
 ====================

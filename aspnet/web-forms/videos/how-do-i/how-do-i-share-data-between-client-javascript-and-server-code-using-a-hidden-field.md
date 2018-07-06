@@ -4,19 +4,16 @@ title: '[Comment faire] Partager des données entre le Client JavaScript et le C
 author: rick-anderson
 description: Dans cette vidéo Chris Pels explique comment partager des données entre JavaScript et du code côté serveur à l’aide d’un champ masqué dans une page ASP.NET. Ensuite, découvrez comment t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/13/2008
-ms.topic: article
 ms.assetid: bf0a7434-a017-4506-a240-2bd27e360a2f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-share-data-between-client-javascript-and-server-code-using-a-hidden-field
 msc.type: video
-ms.openlocfilehash: 255774886772af585b859dcbe8268ec3c07d5f67
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 980cf1264b67b8fced0bf5e51cf9d4880dcfde15
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37384905"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835118"
 ---
 <a name="how-do-i-share-data-between-client-javascript-and-server-code-using-a-hidden-field"></a>[Comment faire] Partager des données entre le Client JavaScript et le Code de serveur à l’aide d’un champ masqué
 ====================

@@ -4,19 +4,16 @@ title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : résolution 
 author: tdykstra
 description: Cette série de didacticiels vous montre comment déployer (publier) un ASP.NET web application dans Azure App Service Web Apps ou à un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/01/2015
-ms.topic: article
 ms.assetid: c0090595-ab3b-4b9b-9e16-7a1891e8cb2f
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 0b57a91c29ba15463e6c534693b951aee8286ad2
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: b2be5d2f5aa0b7628f7b9338c860593660ef5893
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364000"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830890"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-troubleshooting"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : résolution des problèmes
 ====================

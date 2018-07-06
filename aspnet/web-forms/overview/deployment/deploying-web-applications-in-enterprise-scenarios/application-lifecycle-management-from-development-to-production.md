@@ -4,19 +4,16 @@ title: 'Gestion du cycle de vie des applications : Du développement à la Prod
 author: jrjlee
 description: Cette rubrique illustre comment une entreprise fictive gère le déploiement d’une application de web ASP.NET dans les environnements de test, intermédiaire et de production en tant que par...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: f97a1145-6470-4bca-8f15-ccfb25fb903c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production
 msc.type: authoredcontent
-ms.openlocfilehash: fdd51d2b6836c7fed04132f7c05bbede772d21e0
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 47af9504bdef294b987cdd23ab1bcefbeadd4681
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362808"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808977"
 ---
 <a name="application-lifecycle-management-from-development-to-production"></a>Gestion du cycle de vie des applications : Du développement à la Production
 ====================

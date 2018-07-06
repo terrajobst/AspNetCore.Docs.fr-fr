@@ -4,19 +4,16 @@ title: Authentification et autorisation pour SignalR Hubs (SignalR 1.x) | Micros
 author: pfletcher
 description: Cette rubrique décrit comment faire pour restreindre les utilisateurs ou les rôles peuvent accéder aux méthodes de concentrateur.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/17/2013
-ms.topic: article
 ms.assetid: 3d2dfc0e-eac2-4076-a468-325d3d01cc7b
-ms.technology: dotnet-signalr
 msc.legacyurl: /signalr/overview/older-versions/hub-authorization
 msc.type: authoredcontent
-ms.openlocfilehash: ac25a332e4efaa18eb8fff1ce7fa5d283f10a98d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 1bb10a49a0d783300c145c30ad09e31f8e6055d6
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37394623"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37808277"
 ---
 <a name="authentication-and-authorization-for-signalr-hubs-signalr-1x"></a>Authentification et autorisation pour SignalR Hubs (SignalR 1.x)
 ====================

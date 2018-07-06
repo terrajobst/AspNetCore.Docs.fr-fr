@@ -4,19 +4,16 @@ title: Animation en réponse à une Interaction utilisateur (c#) | Microsoft Doc
 author: wenz
 description: Le contrôle d’Animation dans ASP.NET AJAX Control Toolkit n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. Les animations peuvent étoiles...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: ea26549d-fbbf-4973-a108-b14cd1d6de26
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9dea9daf3df76558eb19a524475cedd8e2085297
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5e8ebf5ec7fc0875e0eb43923321513bf0a08899
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379817"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37826129"
 ---
 <a name="animating-in-response-to-user-interaction-c"></a>Animation en réponse à une Interaction utilisateur (c#)
 ====================

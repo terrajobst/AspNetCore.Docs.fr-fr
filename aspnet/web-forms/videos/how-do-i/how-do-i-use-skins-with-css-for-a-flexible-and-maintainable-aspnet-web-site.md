@@ -4,19 +4,16 @@ title: '[Comment faire] Utiliser des apparences avec CSS pour un Site Web ASP.NE
 author: rick-anderson
 description: Dans cette vidéo Chris Pels montre comment créer des apparences pour les contrôles serveur ASP.NET, puis incorporez les styles CSS pour contrôler l’apparence de la contr. apparences...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/07/2008
-ms.topic: article
 ms.assetid: aaada05a-5735-4d90-b52d-b58e746a1074
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site
 msc.type: video
-ms.openlocfilehash: 074c9e37b155add737afb7d2628f466a3de64bec
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 0515cd707911b2ea444f02baf9999a72e7c8107a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37402562"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37837115"
 ---
 <a name="how-do-i-use-skins-with-css-for-a-flexible-and-maintainable-aspnet-web-site"></a>[Comment faire] Utiliser des apparences avec CSS pour un Site Web de ASP.NET Flexible et facile à gérer
 ====================

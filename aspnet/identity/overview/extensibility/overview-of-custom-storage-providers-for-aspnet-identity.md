@@ -4,19 +4,16 @@ title: Vue d’ensemble des fournisseurs de stockage personnalisés pour ASP.NET
 author: tfitzmac
 description: ASP.NET Identity est un système extensible qui vous permet de créer votre propre fournisseur de stockage et le connecter à votre application sans utiliser de nouveau l’appli...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 10/13/2014
-ms.topic: article
 ms.assetid: 681a9204-462e-4260-9a0b-19f0644d6ad7
-ms.technology: ''
 msc.legacyurl: /identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: c0f4badabb9c6886bceb2e084f39276a07359dbb
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 35c8986024279bf66f239dbd969fba5ca02f3d01
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37364473"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37831732"
 ---
 <a name="overview-of-custom-storage-providers-for-aspnet-identity"></a>Vue d’ensemble des fournisseurs de stockage personnalisés pour ASP.NET Identity
 ====================

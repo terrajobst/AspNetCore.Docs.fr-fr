@@ -4,19 +4,16 @@ title: Une vue d’ensemble de l’authentification par formulaire (VB) | Micros
 author: rick-anderson
 description: Dans ce didacticiel nous activera à partir de la discussion simple pour implémentation ; en particulier, nous allons examiner l’implémentation de l’authentification par formulaire. Le w d’application web...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/14/2008
-ms.topic: article
 ms.assetid: 83267f7d-64d9-41ee-82cf-da91b1bf534d
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-vb
 msc.type: authoredcontent
-ms.openlocfilehash: df8b0595cbc02a99a39c5b39be9ddb2e92bc34aa
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 757cdebc436a4cb799f92374744ee9cb69eb0e0b
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37385889"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809457"
 ---
 <a name="an-overview-of-forms-authentication-vb"></a>Une vue d’ensemble de l’authentification par formulaire (VB)
 ====================

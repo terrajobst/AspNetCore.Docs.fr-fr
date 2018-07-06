@@ -4,19 +4,16 @@ title: Création d’un numérique haut/bas contrôle avec un Backend de Service
 author: wenz
 description: Au lieu de laisser un utilisateur de taper une valeur dans une case à cocher, contrôle (qui existe sur Windows et d’autres systèmes d’exploitation) haut/bas numérique peut s’avérer plus que c...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: afa59dfa-fef1-43d3-8fdd-aea3be36ed3c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 9e63c76a69002e7cc66f7a8a1bc28e36796eb42c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: bebf70093dacb81331c009c6642c2f2d649b8567
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375484"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37805371"
 ---
 <a name="creating-a-numeric-updown-control-with-a-web-service-backend-vb"></a>Création d’un contrôle haut/bas numérique avec un Backend de Service Web (VB)
 ====================

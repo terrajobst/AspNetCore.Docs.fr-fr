@@ -4,19 +4,16 @@ title: Déploiement de votre Site à l’aide d’un Client FTP (VB) | Microsoft
 author: rick-anderson
 description: Pour déployer une application ASP.NET, le plus simple consiste à copier manuellement les fichiers nécessaires à partir de l’environnement de développement à l’environnement de production. THI...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 04/01/2009
-ms.topic: article
 ms.assetid: 09279194-bcf9-4b59-a09d-c68e5926a758
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-an-ftp-client-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e886e07309654f34c7890f1e3ac79c7732a2e015
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9b4d39ceb19e1a916775948c531c3e017e2d1a2d
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367759"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835986"
 ---
 <a name="deploying-your-site-using-an-ftp-client-vb"></a>Déploiement de votre Site à l’aide d’un Client FTP (VB)
 ====================

@@ -4,19 +4,16 @@ title: Gestion des accès concurrentiels avec Entity Framework dans une Applicat
 author: tdykstra
 description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 4 à l’aide de l’Entity Framework 5 Code First et Visual Studio...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/30/2013
-ms.topic: article
 ms.assetid: b83f47c4-8521-4d0a-8644-e8f77e39733e
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 15dfce05d808a8af5ddfa6bbeb0b0baf449c7691
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: eadadd1ac98191d0f802dc742294938eb48d86b3
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37378357"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37809003"
 ---
 <a name="handling-concurrency-with-the-entity-framework-in-an-aspnet-mvc-application-7-of-10"></a>Gestion des accès concurrentiels avec Entity Framework dans une Application ASP.NET MVC (7 sur 10)
 ====================

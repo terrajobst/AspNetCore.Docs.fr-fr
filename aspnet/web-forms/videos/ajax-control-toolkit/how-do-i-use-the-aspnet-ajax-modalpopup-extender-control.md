@@ -4,19 +4,16 @@ title: '[Comment faire] Utiliser le contrôle d’extendeur ModalPopup d’ASP.N
 author: JoeStagner
 description: Découvrez comment utiliser le contrôle d’extendeur ModalPopup d’AJAX ASP.NET est fourni avec ASP.NET AJAX Control Toolkit. Dans cette vidéo le ModalPopup extendeur sert...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/26/2007
-ms.topic: article
 ms.assetid: 37c50e6c-e34d-4fd0-b272-01950ada7667
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-modalpopup-extender-control
 msc.type: video
-ms.openlocfilehash: ddd8a1c00343b75ebbf2112a5b1589bfe69fbc6d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: f872c0f858d636acf92790dc9b1a5135633e1a7e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37401764"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37841501"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-modalpopup-extender-control"></a>[Comment faire] Utiliser le contrôle d’extendeur ModalPopup d’ASP.NET AJAX ?
 ====================

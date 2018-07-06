@@ -4,19 +4,16 @@ title: Configuration d’environnements de serveur pour le déploiement Web | Mi
 author: jrjlee
 description: Ce didacticiel vous explique comment configurer des environnements de serveur pour la prise en charge un seul clic, ou automatisé, de déploiement de site Web et de publication dans différents du scénario de différentes...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/04/2012
-ms.topic: article
 ms.assetid: 0bf0959b-4ca8-45de-bd13-b15347543b5a
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 520239c926b853b91638ed2687daebfb561fb99a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: df40cc9d16b9e6b3fe0b659b405106e68cee62b5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37365268"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835561"
 ---
 <a name="configuring-server-environments-for-web-deployment"></a>Configuration d’environnements de serveur pour le déploiement Web
 ====================

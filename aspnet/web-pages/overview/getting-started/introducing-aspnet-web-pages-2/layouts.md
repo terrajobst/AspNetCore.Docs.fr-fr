@@ -4,19 +4,16 @@ title: Présentation des Pages Web ASP.NET - création d’une disposition cohé
 author: tfitzmac
 description: Ce didacticiel vous montre comment utiliser des dispositions pour créer une apparence cohérente pour les pages sur un site qui utilise ASP.NET Web Pages. Il suppose que vous avez effectué le...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/28/2015
-ms.topic: article
 ms.assetid: c85ec591-f8d7-4882-b763-de6ab9f3df7a
-ms.technology: dotnet-webpages
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
 msc.type: authoredcontent
-ms.openlocfilehash: 3368a3e3c9dc56b98ca0adddf4ffb181c7b34863
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 5641b65ab1053ccc039a94f7a591185ff00ff1c9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379445"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37806544"
 ---
 <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>Présentation des Pages Web ASP.NET - création d’une disposition cohérente
 ====================

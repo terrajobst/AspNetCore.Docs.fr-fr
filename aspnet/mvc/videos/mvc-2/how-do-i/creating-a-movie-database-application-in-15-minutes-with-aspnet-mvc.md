@@ -4,19 +4,16 @@ title: Création d’une Application de base de données de films en 15 minutes 
 author: StephenWalther
 description: Stephen Walther génère une application ASP.NET MVC entière à partir du début à la fin. Cette vidéo est une excellente introduction pour les personnes qui découvrent le f de MVC ASP.NET...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/17/2009
-ms.topic: article
 ms.assetid: c742a7c2-11ed-4f39-b658-960676494db9
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc
 msc.type: video
-ms.openlocfilehash: f1f7b9d1feedc4e1d8a0ab424300d9bbfce681e8
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a65656cfc071d37d1b1ff2b88101c2344c716fc2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369920"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839906"
 ---
 <a name="creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc"></a>Création d’une Application de base de données de films en 15 minutes avec ASP.NET MVC
 ====================

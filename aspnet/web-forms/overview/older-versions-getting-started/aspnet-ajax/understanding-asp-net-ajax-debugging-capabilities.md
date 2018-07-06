@@ -4,19 +4,16 @@ title: Présentation des fonctionnalités de débogage d’ASP.NET AJAX | Micros
 author: scottcate
 description: La possibilité de déboguer du code est une compétence tous les développeurs doivent être placés dans leur arsenal quelle que soit la technologie qu’ils utilisent. Bien que de nombreux développeurs sont en cours...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/28/2008
-ms.topic: article
 ms.assetid: 7f9380c6-19f7-4c82-a019-916ec6dffc9c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
 msc.type: authoredcontent
-ms.openlocfilehash: 533eb8d2faf735915fa5cf5044db09d0ab636938
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 9d420a41f50d06541d04a1dd3cb78a2e6beaaa9a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390970"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813826"
 ---
 <a name="understanding-aspnet-ajax-debugging-capabilities"></a>Présentation des fonctionnalités de débogage d’ASP.NET AJAX
 ====================

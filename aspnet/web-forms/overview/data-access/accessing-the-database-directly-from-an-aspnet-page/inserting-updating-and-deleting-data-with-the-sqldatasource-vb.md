@@ -4,19 +4,16 @@ title: Insertion, mise à jour et suppression de données avec SqlDataSource (VB
 author: rick-anderson
 description: Dans les didacticiels précédents, nous avons appris comment le contrôle ObjectDataSource autorisé pour l’insertion, la mise à jour et suppression de données. Le contrôle SqlDataSource prend en charge t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/20/2007
-ms.topic: article
 ms.assetid: 9673bef3-892c-45ba-a7d8-0da3d6f48ec5
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/inserting-updating-and-deleting-data-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 2d4c98da314a5a774d9c82280fe9b1949ef4c337
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 6914f0f30702f2943ed60ee6ec48bfac57fa90d5
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363939"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37835678"
 ---
 <a name="inserting-updating-and-deleting-data-with-the-sqldatasource-vb"></a>Insertion, mise à jour et suppression de données avec SqlDataSource (VB)
 ====================

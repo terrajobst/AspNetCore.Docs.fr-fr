@@ -4,19 +4,16 @@ title: Prévention des attaques par Injection de JavaScript | Microsoft Docs
 author: StephenWalther
 description: Empêcher les attaques par Injection de JavaScript et attaques de script entre sites pour vous. Dans ce didacticiel, Stephen Walther explique comment vous pouvez facilement de...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/20/2008
-ms.topic: article
 ms.assetid: 012a91e7-fd88-4d4f-8f95-57a9043c47d9
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/preventing-javascript-injection-attacks
 msc.type: video
-ms.openlocfilehash: 49f9138a4b1c5d17b3e0abf7bfea8f07c0f024b9
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: a6c082db671eea7627481bca383c6d1d7e98554c
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37381901"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37813498"
 ---
 <a name="preventing-javascript-injection-attacks"></a>Prévention des attaques par Injection de JavaScript
 ====================

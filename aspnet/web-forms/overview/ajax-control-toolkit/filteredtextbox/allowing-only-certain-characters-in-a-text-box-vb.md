@@ -4,19 +4,16 @@ title: Autoriser seulement certains caractères dans une zone de texte (VB) | Mi
 author: wenz
 description: Contrôles de validation ASP.NET peuvent garantir que seulement certains caractères sont autorisés dans l’entrée d’utilisateur. Toutefois cela toujours n’empêche pas les utilisateurs de taper non valides...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 33af23f1-4016-4740-8fb2-37d1773452cd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/filteredtextbox/allowing-only-certain-characters-in-a-text-box-vb
 msc.type: authoredcontent
-ms.openlocfilehash: e44b69a4f7d46f1f1278f7de07a2e6c025f5c316
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: e53d7282237c94b88c712e53bf607dcb94ccf1f2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37386758"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830744"
 ---
 <a name="allowing-only-certain-characters-in-a-text-box-vb"></a>Autoriser seulement certains caractères dans une zone de texte (VB)
 ====================

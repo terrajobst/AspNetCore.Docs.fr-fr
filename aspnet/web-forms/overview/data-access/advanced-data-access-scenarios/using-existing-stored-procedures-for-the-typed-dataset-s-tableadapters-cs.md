@@ -4,19 +4,16 @@ title: Utilisation existante des procédures stockées pour les TableAdapters de
 author: rick-anderson
 description: Dans le didacticiel précédent, nous avons appris à utiliser l’Assistant TableAdapter pour générer de nouvelles procédures stockées. Dans ce didacticiel vous apprendre comment le TableAdapter même...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 07/18/2007
-ms.topic: article
 ms.assetid: 440bef2a-1641-4238-99e3-8e2d44e7d94c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 74d52343f7840243cf48999b2729afb10e2610e3
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 3057b7c296c82b3db740d9fd345aaa222ca31328
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37390023"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828868"
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-c"></a>Utilisation existante des procédures stockées pour les TableAdapters de DataSet typé (c#)
 ====================

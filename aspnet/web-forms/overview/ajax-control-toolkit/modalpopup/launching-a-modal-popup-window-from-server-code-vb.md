@@ -4,19 +4,16 @@ title: Lancement d’une fenêtre contextuelle modale à partir du Code serveur 
 author: wenz
 description: Le contrôle ModalPopup dans AJAX Control Toolkit offre un moyen simple de créer une contextuelle modale à l’aide de moyens de côté client. Toutefois, certains scénarios nécessitent que t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/02/2008
-ms.topic: article
 ms.assetid: 36ca81d7-906d-4db2-952b-add18a4ff421
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/launching-a-modal-popup-window-from-server-code-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ea5149e9dece5393bb4c431bfc440a745611496d
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 52eec262a9241aa7b11cbb892bdf2142c7a2b83a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37362837"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37822766"
 ---
 <a name="launching-a-modal-popup-window-from-server-code-vb"></a>Lancement d’une fenêtre contextuelle modale à partir du Code serveur (VB)
 ====================
