@@ -5,12 +5,12 @@ description: Découvrez comment configurer les fournisseurs de stockage personna
 ms.author: riande
 ms.date: 05/24/2017
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: d7baa8ed142a7d3337adceff2dc93274604bde4c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: bdde9b93449c2f3f8d43cc4ff86472ed8a60ed1c
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831334"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889166"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -51,7 +51,7 @@ Pour créer un fournisseur de stockage personnalisé, créez la source de donné
 
 Lorsque vous créez une nouvelle instance de `UserManager` ou `RoleManager` vous fournir le type de la classe d’utilisateur et passez une instance de la classe store en tant qu’argument. Cette approche vous permet de brancher vos classes personnalisées dans ASP.NET Core. 
 
-[Reconfigurer l’application pour utiliser le nouveau fournisseur de stockage](#reconfigure-app-to-use-new-storage-provider) montre comment instancier `UserManager` et `RoleManager` avec un magasin personnalisé.
+[Reconfigurer l’application pour utiliser le nouveau fournisseur de stockage](#reconfigure-app-to-use-a-new-storage-provider) montre comment instancier `UserManager` et `RoleManager` avec un magasin personnalisé.
 
 ## <a name="aspnet-core-identity-stores-data-types"></a>ASP.NET Core Identity stocke des types de données
 
