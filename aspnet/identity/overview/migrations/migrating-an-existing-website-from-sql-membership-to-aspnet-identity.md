@@ -4,19 +4,16 @@ title: Migration d’un site Web existant à partir de l’appartenance SQL vers
 author: Rick-Anderson
 description: Ce didacticiel illustre les étapes pour migrer une application web existante avec les données d’utilisateur et rôle créées à l’aide de l’appartenance SQL vers la nouvelle identité ASP.NET s...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 12/19/2014
-ms.topic: article
 ms.assetid: 220d3d75-16b2-4240-beae-a5b534f06419
-ms.technology: ''
 msc.legacyurl: /identity/overview/migrations/migrating-an-existing-website-from-sql-membership-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 7df2c9a6cccefd3c4f3022c14627394557543258
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 4acb8c82c9b05de9d587466170f8fac4ef9b6dde
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389128"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37812249"
 ---
 <a name="migrating-an-existing-website-from-sql-membership-to-aspnet-identity"></a>Migration d’un site Web existant à partir de l’appartenance SQL vers ASP.NET Identity
 ====================

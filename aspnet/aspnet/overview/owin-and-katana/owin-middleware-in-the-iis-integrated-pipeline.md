@@ -4,19 +4,16 @@ title: Intergiciel (middleware) OWIN dans IIS intégré pipeline | Microsoft Doc
 author: Praburaj
 description: Cet article explique comment exécuter les composants d’intergiciel (middleware) OWIN (OMCs) dans le pipeline intégré IIS, et comment définir l’événement de pipeline un OMC s’exécute sur. Tu devrais...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 11/07/2013
-ms.topic: article
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 1c2f7a9b948331eae2f5b44f25219adb76a0c745
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: e78ded1dcafd40097d6477a757406c7170dd1bb7
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37379058"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828096"
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>Intergiciel (middleware) OWIN dans le pipeline intégré IIS
 ====================

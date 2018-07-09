@@ -4,19 +4,16 @@ title: Automatiser tout (création d’applications de Cloud réalistes avec Azu
 author: MikeWasson
 description: Building Real World Cloud Apps with Azure e-book est basé sur une présentation développée par Scott Guthrie. Il explique 13 modèles et pratiques qui peuvent il...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
-ms.openlocfilehash: 45d3d72454852217303050d17b678c4a5710dcb5
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 87b697847845ab88943e7a659ccd9487b9408d5a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37376781"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37839633"
 ---
 <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatiser tout (création d’applications de Cloud réalistes avec Azure)
 ====================

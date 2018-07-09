@@ -4,19 +4,16 @@ title: Conception pour surmonter les défaillances (génération d’application
 author: MikeWasson
 description: Building Real World Cloud Apps with Azure e-book est basé sur une présentation développée par Scott Guthrie. Il explique 13 modèles et pratiques qui peuvent il...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
-ms.openlocfilehash: db7398cfd9ed51d716cb595d977b482fd0da131e
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 29a430a223fb62d9530ea00a60d458a6dbc5199a
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37372460"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820653"
 ---
 <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>Concevoir pour surmonter les défaillances (génération d’applications Cloud réalistes avec Azure)
 ====================

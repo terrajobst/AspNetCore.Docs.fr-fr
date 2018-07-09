@@ -4,19 +4,16 @@ title: Insertion d’un nouvel enregistrement à partir du pied de page du GridV
 author: rick-anderson
 description: Tandis que le contrôle GridView ne fournit pas de prise en charge intégrée pour l’insertion d’un nouvel enregistrement de données, ce didacticiel montre comment augmenter le contrôle GridView à inclure un...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 03/06/2007
-ms.topic: article
 ms.assetid: 528acc48-f20c-4b4e-aa16-4cc02f068ebb
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/inserting-a-new-record-from-the-gridview-s-footer-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c228128e551f58aa003af10cf787875d26b1fab7
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
+ms.openlocfilehash: 69aa6659a6c18ed6d16e2916f0f9088ef38a453f
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37375173"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828317"
 ---
 <a name="inserting-a-new-record-from-the-gridviews-footer-vb"></a>Insertion d’un nouvel enregistrement à partir du pied de page du GridView (VB)
 ====================

@@ -6,45 +6,45 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/02/2018
 uid: security/authorization/iauthorizationpolicyprovider
-ms.openlocfilehash: 218d7a495655598046671093c0cfe7b9622aca5e
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 6e46172ec8c5271ffcbad87e4ea5cc98465b78b0
+ms.sourcegitcommit: 41d3c4b27309d56f567fd1ad443929aab6587fb1
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077600"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37910248"
 ---
 # <a name="custom-authorization-policy-providers-using-iauthorizationpolicyprovider-in-aspnet-core"></a>Fournisseurs de stratégie d’autorisation personnalisés à l’aide de IAuthorizationPolicyProvider dans ASP.NET Core 
 
 Par [Mike Rousos](https://github.com/mjrousos)
 
-En général, lors de l’utilisation [d’autorisation basée sur la stratégie](xref:security/authorization/policies), les stratégies sont enregistrés en appelant `AuthorizationOptions.AddPolicy` dans le cadre de la configuration du service d’autorisation. Dans certains scénarios, il ne peut pas être possible (ou souhaitable) pour enregistrer toutes les stratégies d’autorisation de cette façon. Dans ce cas, vous pouvez utiliser une personnalisée `IAuthorizationPolicyProvider` pour contrôler la façon dont les stratégies d’autorisation sont fournies.
+En général, lorsque vous utilisez [autorisation basée sur la stratégie](xref:security/authorization/policies), stratégies sont inscrits en appelant `AuthorizationOptions.AddPolicy` dans le cadre de la configuration du service d’autorisation. Dans certains scénarios, il peut être pas possible (ou souhaitable) pour enregistrer toutes les stratégies d’autorisation de cette façon. Dans ce cas, vous pouvez utiliser un personnalisé `IAuthorizationPolicyProvider` pour contrôler la façon dont les stratégies d’autorisation sont fournis.
 
-Exemples de scénarios où une personnalisée [IAuthorizationPolicyProvider](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider) peuvent être utiles incluent :
+Exemples de scénarios où un personnalisé [IAuthorizationPolicyProvider](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider) peuvent être utiles incluent :
 
 * À l’aide d’un service externe pour fournir l’évaluation de la stratégie.
-* À l’aide d’une grande plage de stratégies (pour les numéros de pièce ou ans, par exemple), par conséquent, il n’a aucune signification pour ajouter chaque stratégie d’autorisation individuels avec un `AuthorizationOptions.AddPolicy` appeler.
-* Création de stratégies lors de l’exécution en fonction des informations dans une source de données externe (par exemple, une base de données) ou déterminer dynamiquement les exigences d’autorisation via un autre mécanisme.
+* À l’aide d’une grande plage de stratégies (pour les nombres de pièce ou âges, par exemple), par conséquent, il est inutile pour ajouter chaque stratégie d’autorisation individuels avec une `AuthorizationOptions.AddPolicy` appeler.
+* Création de stratégies lors de l’exécution en fonction des informations dans une source de données externe (par exemple, une base de données) ou la détermination des exigences d’autorisation dynamiquement via un autre mécanisme.
 
-## <a name="customizing-policy-retrieval"></a>Récupération de la stratégie de personnalisation
+## <a name="customizing-policy-retrieval"></a>Récupération de stratégie de personnalisation
 
-Applications ASP.NET Core utilisent une implémentation de la `IAuthorizationPolicyProvider` interface pour récupérer les stratégies d’autorisation. Par défaut, [DefaultAuthorizationPolicyProvider](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.defaultauthorizationpolicyprovider) est enregistré et utilisé. `DefaultAuthorizationPolicyProvider` Retourne les stratégies à partir de la `AuthorizationOptions` fourni dans une `IServiceCollection.AddAuthorization` appeler.
+Les applications ASP.NET Core utilisent une implémentation de la `IAuthorizationPolicyProvider` interface pour récupérer les stratégies d’autorisation. Par défaut, [DefaultAuthorizationPolicyProvider](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.authorization.defaultauthorizationpolicyprovider) est enregistré et utilisé. `DefaultAuthorizationPolicyProvider` Retourne les stratégies à partir de la `AuthorizationOptions` fourni dans un `IServiceCollection.AddAuthorization` appeler.
 
-Vous pouvez personnaliser ce comportement en enregistrant une autre `IAuthorizationPolicyProvider` mise en œuvre dans l’application [injection de dépendance](xref:fundamentals/dependency-injection) conteneur. 
+Vous pouvez personnaliser ce comportement en enregistrant une autre `IAuthorizationPolicyProvider` implémentation de l’application [l’injection de dépendances](xref:fundamentals/dependency-injection) conteneur. 
 
 Le `IAuthorizationPolicyProvider` interface contient deux API :
 
 * [GetPolicyAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider.getpolicyasync?view=aspnetcore-2.0#Microsoft_AspNetCore_Authorization_IAuthorizationPolicyProvider_GetPolicyAsync_System_String_) renvoie une stratégie d’autorisation pour un nom donné.
 * [GetDefaultPolicyAsync](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationpolicyprovider.getdefaultpolicyasync?view=aspnetcore-2.0) renvoie la stratégie d’autorisation par défaut (la stratégie utilisée pour `[Authorize]` attributs sans une stratégie spécifiée). 
 
-En implémentant ces deux API, vous pouvez personnaliser la manière dont les stratégies d’autorisation sont fournis.
+En implémentant ces deux API, vous pouvez personnaliser la façon dont les stratégies d’autorisation sont fournies.
 
-## <a name="parameterized-authorize-attribute-example"></a>Paramétrable autoriser l’exemple d’attribut
+## <a name="parameterized-authorize-attribute-example"></a>Paramétrables autoriser l’exemple d’attribut
 
-Dans un scénario où `IAuthorizationPolicyProvider` est utile est de l’activation personnalisée `[Authorize]` attributs dont les spécifications dépendent d’un paramètre. Par exemple, dans [d’autorisation basée sur la stratégie](xref:security/authorization/policies) documentation, une tranche d’âge (« AtLeast21 ») stratégie a été utilisée en tant qu’exemple. Si les actions de contrôleur différent dans une application doivent être accessibles aux utilisateurs de *différents* âges, il peut être utile d’avoir de nombreuses stratégies autres tranche d’âge. Au lieu d’inscrire toutes les différentes tranche d’âge stratégies que l’application devra dans `AuthorizationOptions`, vous pouvez générer les stratégies dynamiquement avec un personnalisé `IAuthorizationPolicyProvider`. Pour rendre à l’aide des stratégies plus facile, vous pouvez annoter les actions avec l’attribut d’autorisation personnalisée comme `[MinimumAgeAuthorize(20)]`.
+Un scénario où `IAuthorizationPolicyProvider` est utile est l’activation personnalisé `[Authorize]` attributs dont les exigences dépendent d’un paramètre. Par exemple, dans [autorisation basée sur la stratégie](xref:security/authorization/policies) documentation, une tranche d’âge (« AtLeast21 ») stratégie a été utilisée en tant qu’exemple. Si les actions de contrôleur différent dans une application doivent être accessibles aux utilisateurs de *différents* âges, il peut être utile d’avoir de nombreuses stratégies différentes de tranche d’âge. Au lieu d’inscrire toutes les différentes tranche d’âge stratégies que l’application devra dans `AuthorizationOptions`, vous pouvez générer les stratégies dynamiquement avec un personnalisé `IAuthorizationPolicyProvider`. Pour rendre à l’aide de stratégies plus facile, vous pouvez annoter des actions avec l’attribut d’autorisation personnalisé comme `[MinimumAgeAuthorize(20)]`.
 
 ## <a name="custom-authorization-attributes"></a>Attributs d’autorisation personnalisée
 
-Stratégies d’autorisation sont identifiés par leurs noms. Personnalisée `MinimumAgeAuthorizeAttribute` décrite précédemment doit mettre en correspondance des arguments dans une chaîne qui peut être utilisée pour récupérer la stratégie d’autorisation correspondant. Ce faire, vous pouvez dérivant de `AuthorizeAttribute` et le `Age` retour à la propriété le `AuthorizeAttribute.Policy` propriété.
+Stratégies d’autorisation sont identifiés par leurs noms. Personnalisé `MinimumAgeAuthorizeAttribute` décrit précédemment doit mettre en correspondance d’arguments dans une chaîne qui peut être utilisée pour récupérer la stratégie d’autorisation correspondant. Ce faire, vous pouvez dérivant `AuthorizeAttribute` et en rendant le `Age` habillage de la propriété le `AuthorizeAttribute.Policy` propriété.
 
 ```CSharp
 internal class MinimumAgeAuthorizeAttribute : AuthorizeAttribute
@@ -72,9 +72,9 @@ internal class MinimumAgeAuthorizeAttribute : AuthorizeAttribute
 }
 ```
 
-Ce type d’attribut a un `Policy` chaîne basée sur le préfixe codée en dur (`"MinimumAge"`) et un entier transmis via le constructeur.
+Ce type d’attribut a un `Policy` chaîne basée sur le préfixe codées en dur (`"MinimumAge"`) et un entier transmis via le constructeur.
 
-Vous pouvez l’appliquer aux actions de la même façon que d’autres `Authorize` des attributs, sauf qu’il accepte un entier en tant que paramètre.
+Vous pouvez l’appliquer aux actions de la même façon que les autres `Authorize` attributs, à ceci près qu’elle prend un entier en tant que paramètre.
 
 ```CSharp
 [MinimumAgeAuthorize(10)]
@@ -83,13 +83,13 @@ public IActionResult RequiresMinimumAge10()
 
 ## <a name="custom-iauthorizationpolicyprovider"></a>IAuthorizationPolicyProvider personnalisé
 
-Personnalisé `MinimumAgeAuthorizeAttribute` facilite les stratégies de demande d’autorisation pour n’importe quel âge minimal que vous le souhaitez. Résoudre le problème suivant consiste à s’assurer que les stratégies d’autorisation sont disponibles pour toutes les différentes tranches d’âge. C’est là un `IAuthorizationPolicyProvider` est utile.
+Personnalisé `MinimumAgeAuthorizeAttribute` facilite pour les stratégies de demande d’autorisation pour n’importe quel âge minimal souhaité. Le problème suivant à résoudre consiste à s’assurer que les stratégies d’autorisation sont disponibles pour l’ensemble de ces différentes tranches d’âge. C’est là une `IAuthorizationPolicyProvider` est utile.
 
-Lorsque vous utilisez `MinimumAgeAuthorizationAttribute`, les noms de la stratégie d’autorisation suivront le modèle `"MinimumAge" + Age`, de sorte que personnalisé `IAuthorizationPolicyProvider` doit générer des stratégies d’autorisation par :
+Lorsque vous utilisez `MinimumAgeAuthorizationAttribute`, les noms de la stratégie d’autorisation suivra le modèle `"MinimumAge" + Age`, de sorte que personnalisé `IAuthorizationPolicyProvider` doit générer des stratégies d’autorisation par :
 
-* L’analyse de la durée de vie à partir du nom de la stratégie.
+* L’analyse de l’âge à partir du nom de la stratégie.
 * À l’aide de `AuthorizationPolicyBuilder` pour créer un nouveau `AuthorizationPolicy`
-* Ajout de conditions à la stratégie basée sur la durée de vie avec `AuthorizationPolicyBuilder.AddRequirements`. Dans d’autres scénarios, vous pouvez utiliser `RequireClaim`, `RequireRole`, ou `RequireUserName` à la place.
+* Ajouter des exigences à la stratégie selon l’âge avec `AuthorizationPolicyBuilder.AddRequirements`. Dans d’autres scénarios, vous pouvez utiliser `RequireClaim`, `RequireRole`, ou `RequireUserName` à la place.
 
 ```CSharp
 internal class MinimumAgePolicyProvider : IAuthorizationPolicyProvider
@@ -117,38 +117,38 @@ internal class MinimumAgePolicyProvider : IAuthorizationPolicyProvider
 
 ## <a name="multiple-authorization-policy-providers"></a>Plusieurs fournisseurs de stratégie d’autorisation
 
-Lorsque vous utilisez personnalisé `IAuthorizationPolicyProvider` implémentations, gardez à l’esprit que ASP.NET Core utilise uniquement une seule instance de `IAuthorizationPolicyProvider`. Si un fournisseur personnalisé n’est pas en mesure de fournir des stratégies d’autorisation pour tous les noms de stratégie, il doit revenir à un fournisseur de sauvegarde. Les noms de stratégie peuvent inclure ceux qui proviennent d’une stratégie par défaut pour `[Authorize]` attributs sans nom.
+Lorsque vous utilisez personnalisé `IAuthorizationPolicyProvider` implémentations, n’oubliez pas que ASP.NET Core utilise uniquement une seule instance de `IAuthorizationPolicyProvider`. Si un fournisseur personnalisé n’est pas en mesure de fournir des stratégies d’autorisation pour tous les noms de stratégie, il doit revenir à un fournisseur de sauvegarde. Les noms de stratégie, citons ceux qui proviennent d’une stratégie par défaut pour `[Authorize]` attributs sans nom.
 
-Par exemple, considérez qu'une application nécessaire à la fois les stratégies de vieillissement personnalisé et plus traditionnelle de récupération de stratégie basée sur le rôle. Une telle application peut utiliser un fournisseur de stratégie d’autorisation personnalisée qui :
+Par exemple, considérez qu'une application nécessaire les stratégies de vieillissement personnalisé et l’extraction de stratégie en fonction du rôle plus traditionnelle. Une telle application peut utiliser un fournisseur de stratégie d’autorisation personnalisée qui :
 
-* Tentatives d’analyse des noms de la stratégie. 
+* Tente d’analyser les noms de stratégie. 
 * Appelle un fournisseur de stratégie différent (comme `DefaultAuthorizationPolicyProvider`) si le nom de la stratégie ne contient pas d’âge.
 
 ## <a name="default-policy"></a>Stratégie par défaut
 
-En plus de fournir des stratégies d’autorisation nommée, personnalisé `IAuthorizationPolicyProvider` doit implémenter `GetDefaultPolicyAsync` pour fournir une stratégie d’autorisation pour `[Authorize]` attributs sans un nom de la stratégie spécifiée.
+En plus de fournir des stratégies d’autorisation nommés, personnalisé `IAuthorizationPolicyProvider` doit implémenter `GetDefaultPolicyAsync` pour fournir une stratégie d’autorisation pour `[Authorize]` attributs sans un nom de la stratégie spécifiée.
 
-Dans de nombreux cas, cet attribut d’autorisation ne requiert qu’un utilisateur authentifié, afin de vérifier la stratégie requise par un appel à `RequireAuthenticatedUser`:
+Dans de nombreux cas, cet attribut d’autorisation requiert uniquement un utilisateur authentifié, vous pouvez effectuer la stratégie nécessaire avec un appel à `RequireAuthenticatedUser`:
 
 ```CSharp
 public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => 
     Task.FromResult(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build());
 ```
 
-Comme avec tous les aspects de personnalisé `IAuthorizationPolicyProvider`, vous pouvez personnaliser, si nécessaire. Dans certains cas :
+Comme avec tous les aspects de personnalisé `IAuthorizationPolicyProvider`, vous pouvez personnaliser ceci, en fonction des besoins. Dans certains cas :
 
 * Les stratégies d’autorisation par défaut ne peuvent pas être utilisés.
-* La récupération de la stratégie par défaut peut être déléguée à une stratégie de secours `IAuthorizationPolicyProvider`.
+* Récupération de la stratégie par défaut peut être déléguée à une procédure de secours `IAuthorizationPolicyProvider`.
 
 ## <a name="using-a-custom-iauthorizationpolicyprovider"></a>À l’aide d’un IAuthorizationPolicyProvider personnalisé
 
-Pour utiliser les stratégies personnalisées à partir d’un `IAuthorizationPolicyProvider`, vous devez :
+Pour utiliser des stratégies personnalisées à partir d’un `IAuthorizationPolicyProvider`, vous devez :
 
-* Inscrire les `AuthorizationHandler` types avec l’injection de dépendances (décrit dans [d’autorisation basée sur la stratégie](xref:security/authorization/policies#authorization-handlers)), comme avec tous les scénarios d’autorisation basée sur la stratégie.
-* Inscrire personnalisé `IAuthorizationPolicyProvider` type dans la collection de service de d’injection de dépendances de l’application (dans `Startup.ConfigureServices`) pour remplacer le fournisseur de stratégie par défaut.
+* Inscrire approprié `AuthorizationHandler` types avec l’injection de dépendance (décrit dans [autorisation basée sur la stratégie](xref:security/authorization/policies#authorization-handlers)), à l’instar de tous les scénarios d’autorisation basée sur la stratégie.
+* Inscrire personnalisé `IAuthorizationPolicyProvider` type dans la collection de service de l’injection de dépendances de l’application (dans `Startup.ConfigureServices`) pour remplacer le fournisseur de stratégie par défaut.
 
 ```CSharp
 services.AddTransient<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
 ```
 
-Personnalisé complet `IAuthorizationPolicyProvider` exemple est disponible dans le [référentiel GitHub d’aspnet/AuthSamples](https://github.com/aspnet/AuthSamples/tree/dev/samples/CustomPolicyProvider).
+Personnalisé complet `IAuthorizationPolicyProvider` exemple est disponible dans le [référentiel aspnet/AuthSamples](https://github.com/aspnet/AuthSamples/tree/master/samples/CustomPolicyProvider).

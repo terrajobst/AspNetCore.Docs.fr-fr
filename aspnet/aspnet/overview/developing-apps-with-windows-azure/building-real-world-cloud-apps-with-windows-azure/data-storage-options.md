@@ -4,19 +4,16 @@ title: Options de stockage de données (création d’applications Cloud réalis
 author: MikeWasson
 description: Building Real World Cloud Apps with Azure e-book est basé sur une présentation développée par Scott Guthrie. Il explique 13 modèles et pratiques qui peuvent il...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 06/12/2014
-ms.topic: article
 ms.assetid: e51fcecb-cb33-4f9e-8428-6d2b3d0fe1bf
-ms.technology: ''
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
 msc.type: authoredcontent
-ms.openlocfilehash: 43e7a03f3bebcca820452ea10e13459d8d275b5a
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 16388bf00c291ee21eec7bc72a9c01c33cec9371
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37363505"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37820332"
 ---
 <a name="data-storage-options-building-real-world-cloud-apps-with-azure"></a>Options de stockage de données (création d’applications Cloud réalistes avec Azure)
 ====================
