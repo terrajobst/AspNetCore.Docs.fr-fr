@@ -5,12 +5,12 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 508cca07fa96c20e228d2c55c9fb101f7fc3cb02
-ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
+ms.openlocfilehash: ed8faf8b3049adc7bcc7953d63ad805b0a836bd9
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36327550"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961173"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -49,10 +49,40 @@ Renseignez la boîte de dialogue **Pages Razor avec Entity Framework (CRUD)** :
 
 * Dans la liste déroulante **Classe de modèle**, sélectionnez **Film (RazorPagesMovie.Models)**.
 * Dans la ligne **Classe du contexte de données**, sélectionnez le signe (plus) **+** et acceptez le nom généré **RazorPagesMovie.Models.RazorPagesMovieContext**.
-* Dans la liste déroulante **Classe du contexte de données**, sélectionnez **RazorPagesMovie.Models.RazorPagesMovieContext**.
-* Sélectionnez **Ajouter** .
+* Dans la liste déroulante **Classe du contexte de données**, sélectionnez **RazorPagesMovie.Models.RazorPagesMovieContext**
+* Sélectionnez **Ajouter**.
 
 ![Image illustrant les instructions précédentes.](model/_static/arp.png)
+
+Le processus de génération de modèles automatique a créé et changé les fichiers suivants :
+
+### <a name="files-created"></a>Fichiers créés
+
+* *Pages/Movies* Create, Delete, Details, Edit, Index. Ces pages sont détaillées dans le tutoriel suivant.
+* *Data/RazorPagesMovieContext.cs*
+
+### <a name="files-updates"></a>Mises à jour de fichiers
+
+* *Startup.cs* : Les changements de ce fichier sont détaillés dans la section suivante.
+* *appSettings.JSON* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.
+
+## <a name="examine-the-context-registered-with-dependency-injection"></a>Examiner le contexte inscrit avec l’injection de dépendances
+
+ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependency-injection). Des services (tels que le contexte de base de données EF Core) sont inscrits avec l’injection de dépendances au démarrage de l’application. Ces services sont affectés aux composants qui les nécessitent (par exemple les Pages Razor) par le biais de paramètres de constructeur. Le code du constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le tutoriel.
+
+L’outil de génération de modèles automatique a créé automatiquement un contexte de base de données et l’a inscrit dans le conteneur d’injection de dépendances.
+
+Examinez la méthode `Startup.ConfigureServices`. La ligne en surbrillance a été ajoutée par l’outil de génération de modèles automatique :
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
+
+La classe principale qui coordonne les fonctionnalités d’EF Core pour un modèle de données spécifié est la classe de contexte de base de données. Le contexte de données est dérivé de [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext). Il spécifie les entités qui sont incluses dans le modèle de données. Dans ce projet, la classe est nommée `RazorPagesMovieContext`.
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Data/RazorPagesMovieContext.cs)]
+
+Le code précédent crée une propriété [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) pour le jeu d’entités. Dans la terminologie Entity Framework, un jeu d’entités correspond généralement à une table de base de données. Une entité correspond à une ligne dans la table.
+
+Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions). Pour le développement local, le [système de configuration ASP.NET Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir du fichier *appsettings.json*.
 
 <a name="pmc"></a>
 ## <a name="perform-initial-migration"></a>Effectuer la migration initiale
@@ -194,4 +224,4 @@ Le prochain didacticiel décrit les fichiers créés par la génération de mod�
 
 > [!div class="step-by-step"]
 > [Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
-> [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)    
+> [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)

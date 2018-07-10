@@ -3,20 +3,24 @@ title: Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 
 author: rick-anderson
 description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de changement de page à une page à l’aide d’ASP.NET Core et d’Entity Framework Core.
 ms.author: riande
-ms.date: 10/22/2017
+ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: abbd8337ed62428982a6c52cdaab684ea2c7d329
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: fce524a5cb386fbf286907be42e920be13115ca6
+ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275000"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37089865"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
+[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
+
+::: moniker range=">= aspnetcore-2.1"
+
 Par [Tom Dykstra](https://github.com/tdykstra), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Jon P Smith](https://twitter.com/thereformedprog)
 
-[!INCLUDE [about the series](../../includes/RP-EF/intro.md)]
+[!INCLUDE [about the series](~/includes/RP-EF/intro.md)]
 
 Dans ce didacticiel, nous allons ajouter des fonctionnalités de tri, de filtrage, de regroupement et de pagination.
 
@@ -24,18 +28,17 @@ L’illustration suivante présente une page complète. Les en-têtes de colonne
 
 ![Page d’index des étudiants](sort-filter-page/_static/paging.png)
 
-Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée pour cette phase](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).
+Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="add-sorting-to-the-index-page"></a>Ajouter le tri à la page Index
 
-Ajouter des chaînes au `PageModel` *Students/Index.cshtml.cs* pour contenir les paramètres de tri :
+Ajouter des chaînes à `PageModel` dans *Students/Index.cshtml.cs* pour contenir les paramètres de tri :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet1&highlight=10-13)]
-
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet1&highlight=10-13)]
 
 Mettez à jour le `OnGetAsync` *Students/Index.cshtml.cs* avec le code suivant :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly)]
 
 Le code précédent reçoit un paramètre `sortOrder` à partir de la chaîne de requête dans l’URL. L’URL (y compris la chaîne de requête) est générée par le [Tag Helper d’ancre](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
 ).
@@ -46,11 +49,11 @@ Quand la page Index est demandée à partir du lien **Students**, il n’existe 
 
 `NameSort` et `DateSort` sont utilisés par la page Razor pour configurer les liens hypertexte d’en-tête de colonne avec les valeurs de chaîne de requête appropriées :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
-Le code suivant contient [l’opérateur ?:](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/conditional-operator) C#.
+Le code suivant contient [l’opérateur ?:](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/conditional-operator) conditionnel C# :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
 
 La première ligne indique que quand `sortOrder` est null ou vide, `NameSort` prend la valeur « name_desc ». Si `sortOrder` n’est **pas** null ou vide, `NameSort` prend pour valeur une chaîne vide.
 
@@ -65,21 +68,21 @@ Ces deux instructions permettent à la page de définir les liens hypertexte d�
 | Date croissante       | ascending           | descending     |
 | Date décroissante      | ascending           | ascending      |
 
-La méthode utilise LINQ to Entities pour spécifier la colonne d’après laquelle effectuer le tri. Le code initialise un `IQueryable<Student> ` avant l’instruction switch, et le modifie dans l’instruction switch :
+La méthode utilise LINQ to Entities pour spécifier la colonne d’après laquelle effectuer le tri. Le code initialise un `IQueryable<Student>` avant l’instruction switch, et le modifie dans l’instruction switch :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=6-999)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=6-999)]
 
  Quand un `IQueryable` est créé ou modifié, aucune requête n’est envoyée à la base de données. La requête n’est pas exécutée tant que l’objet `IQueryable` n’a pas été converti en collection. Les `IQueryable` sont convertis en collection en appelant une méthode telle que `ToListAsync`. Ainsi, le code `IQueryable` génère une requête unique qui n’est pas exécutée avant l’instruction suivante :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortOnlyRtn)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnlyRtn)]
 
-`OnGetAsync` peut contenir un grand nombre de colonnes.
+`OnGetAsync` peut contenir un grand nombre de colonnes triables.
 
 ### <a name="add-column-heading-hyperlinks-to-the-student-index-page"></a>Ajouter des liens hypertexte d’en-tête de colonne à la page d’index des étudiants
 
 Remplacez le code dans *Students/Index.cshtml* par le code en surbrillance suivant :
 
-[!code-html[](intro/samples/cu/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
+[!code-html[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
 
 Le code précédent :
 
@@ -111,7 +114,7 @@ Pour ajouter le filtrage à la page d’index des étudiants :
 
 Mettez à jour le `OnGetAsync` *Students/Index.cshtml.cs* avec le code suivant :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilter&highlight=1,5,9-13)]
 
 Le code précédent :
 
@@ -135,7 +138,7 @@ Il existe un coût en matière de performances en cas d’appel à `ToUpper`. Le
 
 Dans *Pages/Students/Index.cshtml*, ajoutez le code en surbrillance suivant pour créer un bouton **Search** et le chrome assorti.
 
-[!code-html[](intro/samples/cu/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
+[!code-html[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
 Le code précédent utilise le [Tag Helper](xref:mvc/views/tag-helpers/intro) `<form>` pour ajouter le bouton et la zone de texte de recherche. Par défaut, le Tag Helper `<form>` envoie les données de formulaire avec un POST. Avec POST, les paramètres sont passés dans le corps du message HTTP et non dans l’URL. Quand HTTP GET est utilisé, les données du formulaire sont transmises dans l’URL sous forme de chaînes de requête. La transmission des données avec des chaînes de requête permet aux utilisateurs d’ajouter l’URL aux favoris. Les [recommandations du W3C](https://www.w3.org/2001/tag/doc/whenToUseGet.html) stipulent que GET doit être utilisé quand l’action ne produit pas de mise à jour.
 
@@ -162,7 +165,7 @@ Dans cette section, nous allons créer une classe `PaginatedList` pour prendre e
 
 Dans le dossier du projet, créez `PaginatedList.cs` avec le code suivant :
 
-[!code-csharp[](intro/samples/cu/PaginatedList.cs)]
+[!code-csharp[](intro/samples/cu21/PaginatedList.cs)]
 
 La méthode `CreateAsync` dans le code précédent prend la taille de page et le numéro de page, et applique les instructions `Skip` et `Take` appropriées au `IQueryable`. Quand `ToListAsync` est appelée sur le `IQueryable`, elle retourne une liste contenant uniquement la page demandée. Les propriétés `HasPreviousPage` et `HasNextPage` sont utilisées pour activer ou désactiver les boutons de pagination **Previous** et **Next**.
 
@@ -172,15 +175,15 @@ La méthode `CreateAsync` est utilisée pour créer le `PaginatedList<T>`. Un co
 
 Dans *Students/Index.cshtml.cs*, mettez à jour le type de `Student` en remplaçant `IList<Student>` par `PaginatedList<Student>` :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPageType)]
 
 Mettez à jour le `OnGetAsync` *Students/Index.cshtml.cs* avec le code suivant :
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage&highlight=1-4,7-14,41-999)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage&highlight=1-4,7-14,41-999)]
 
 Le code précédent ajoute l’index de page, le `sortOrder` actuel et le `currentFilter` à la signature de méthode.
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage2)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage2)]
 
 Tous les paramètres sont null quand :
 
@@ -201,11 +204,11 @@ Si la chaîne de recherche est modifiée pendant la pagination, la page est réi
 * La chaîne de recherche est changée.
 * Le paramètre `searchString` n’est pas null.
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage3)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage3)]
 
 La méthode `PaginatedList.CreateAsync` convertit la requête d’étudiant en une seule page d’étudiants dans un type de collection qui prend en charge la pagination. Cette page unique d’étudiants est passée à la page Razor.
 
-[!code-csharp[](intro/samples/cu/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage4)]
+[!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage4)]
 
 Les deux points d’interrogation dans `PaginatedList.CreateAsync` représentent [l’opérateur de fusion de Null](https://docs.microsoft.com/ dotnet/csharp/language-reference/operators/null-conditional-operator). L’opérateur de fusion de Null définit une valeur par défaut pour un type nullable. L’expression `(pageIndex ?? 1)` signifie qu’il faut retourner la valeur de `pageIndex` s’il a une valeur. Si `pageIndex` n’a pas de valeur, il faut retourner 1.
 
@@ -213,15 +216,15 @@ Les deux points d’interrogation dans `PaginatedList.CreateAsync` représentent
 
 Mettez à jour le balisage dans *Students/Index.cshtml*. Les modifications sont mises en surbrillance :
 
-[!code-html[](intro/samples/cu/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
+[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
 Les liens d’en-tête de colonne utilisent la chaîne de requête pour passer la chaîne de recherche actuelle à la méthode `OnGetAsync` afin que l’utilisateur puisse trier dans les résultats du filtrage :
 
-[!code-html[](intro/samples/cu/Pages/Students/Index.cshtml?range=28-31)]
+[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
 
 Les boutons de pagination sont affichés par des Tag Helpers :
 
-[!code-html[](intro/samples/cu/Pages/Students/Index.cshtml?range=72-)]
+[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
 
 Exécutez l’application et accédez à la page des étudiants.
 
@@ -242,22 +245,22 @@ Effectuez un pas à pas détaillé dans le débogueur.
 
 Lors de cette étape, nous allons mettre à jour *Pages/About.cshtml* afin d’afficher le nombre d’étudiants qui se sont inscrits pour chaque date d’inscription. La mise à jour utilise le regroupement et comprend les étapes suivantes :
 
-* Créer une classe de modèle d’affichage pour les données utilisées par la page **About**.
-* Modifier la page Razor About et le modèle de page.
+* Créer un modèle de vue pour les données utilisées par la page **About**.
+* Mettre à jour la page About pour utiliser le modèle de vue.
 
-### <a name="create-the-view-model"></a>Créer le modèle d’affichage
+### <a name="create-the-view-model"></a>Créer le modèle de vue
 
 Créez un dossier *SchoolViewModels* dans le dossier *Models*.
 
 Dans le dossier *SchoolViewModels*, ajoutez un *EnrollmentDateGroup.cs* avec le code suivant :
 
-[!code-csharp[](intro/samples/cu/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
+[!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="update-the-about-page-model"></a>Mettre à jour le modèle de page About
 
 Mettez à jour le fichier *Pages/About.cshtml.cs* avec le code suivant :
 
-[!code-csharp[](intro/samples/cu/Pages/About.cshtml.cs)]
+[!code-csharp[](intro/samples/cu21/Pages/About.cshtml.cs)]
 
 L’instruction LINQ regroupe les entités student par date d’inscription, calcule le nombre d’entités dans chaque groupe, et stocke les résultats dans une collection d’objets de modèle d’affichage `EnrollmentDateGroup`.
 
@@ -267,7 +270,7 @@ Remarque : La commande LINQ `group` n’est pas prise en charge actuellement par
 
 Remplacez le code du fichier *Pages/About.cshtml* par le code suivant :
 
-[!code-html[](intro/samples/cu/Pages/About.cshtml)]
+[!code-html[](intro/samples/cu21/Pages/About.cshtml)]
 
 Exécutez l’application et accédez à la page About. Le nombre d’étudiants pour chaque date d’inscription s’affiche dans une table.
 
@@ -280,6 +283,7 @@ Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, télécharge
 * [Débogage d’une source ASP.NET Core 2.x](https://github.com/aspnet/Docs/issues/4155)
 
 Dans le didacticiel suivant, l’application utilise des migrations pour mettre à jour le modèle de données.
+::: moniker-end
 
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/crud)

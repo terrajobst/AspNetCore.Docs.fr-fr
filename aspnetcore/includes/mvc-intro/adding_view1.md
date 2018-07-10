@@ -1,4 +1,4 @@
-# <a name="adding-a-view-to-an-aspnet-core-mvc-app"></a>Ajout d’une vue dans une application ASP.NET Core MVC
+# <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2018
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 06d3f097cd93ceb2a23b9f6516a9b7a1f3ca3089
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 8e2693397f826d0e9a36ff52aa1d1d623b31043d
+ms.sourcegitcommit: 356c8d394aaf384c834e9c90cabab43bfe36e063
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273671"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960825"
 ---
 # <a name="aspnet-core-directory-structure"></a>Structure de répertoires ASP.NET Core
 
@@ -22,8 +22,8 @@ Dans ASP.NET Core, le répertoire des applications publiées, *publish*, se comp
 
 | Type d’application | Structure de répertoires |
 | -------- | ------------------- |
-| [Déploiement dépendant du framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>logs&dagger; (facultatif, sauf si nécessaire pour recevoir des journaux stdout)</li><li>Views&dagger; (applications MVC, si les vues ne sont pas précompilées)</li><li>Pages&dagger; (applications de pages Razor ou MVC, si les pages ne sont pas précompilées)</li><li>wwwroot&dagger;</li><li>Fichiers *\.dll</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.dll</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
-| [Déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>logs&dagger; (facultatif, sauf si nécessaire pour recevoir des journaux stdout)</li><li>refs&dagger;</li><li>Views&dagger; (applications MVC, si les vues ne sont pas précompilées)</li><li>Pages&dagger; (applications de pages Razor ou MVC, si les pages ne sont pas précompilées)</li><li>wwwroot&dagger;</li><li>Fichiers \*.dll</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.exe</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
+| [Déploiement dépendant du framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (facultatif, sauf si nécessaire pour recevoir des journaux stdout)</li><li>Views&dagger; (applications MVC, si les vues ne sont pas précompilées)</li><li>Pages&dagger; (applications de pages Razor ou MVC, si les pages ne sont pas précompilées)</li><li>wwwroot&dagger;</li><li>Fichiers *\.dll</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.dll</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
+| [Déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>Logs&dagger; (facultatif, sauf si nécessaire pour recevoir des journaux stdout)</li><li>refs&dagger;</li><li>Views&dagger; (applications MVC, si les vues ne sont pas précompilées)</li><li>Pages&dagger; (applications de pages Razor ou MVC, si les pages ne sont pas précompilées)</li><li>wwwroot&dagger;</li><li>Fichiers \*.dll</li><li>\<assembly-name>.deps.json</li><li>\<assembly-name>.exe</li><li>\<assembly-name>.pdb</li><li>\<assembly-name>.PrecompiledViews.dll</li><li>\<assembly-name>.PrecompiledViews.pdb</li><li>\<assembly-name>.runtimeconfig.json</li><li>web.config (déploiements IIS)</li></ul></li></ul> |
 
 &dagger;Indique un répertoire
 
@@ -31,7 +31,7 @@ Le répertoire *publish* représente le *chemin racine du contenu*, également a
 
 Le répertoire *wwwroot*, s’il existe, contient uniquement des ressources statiques.
 
-Vous pouvez créer le répertoire *logs* stdout pour le déploiement à l’aide d’une des deux méthodes suivantes :
+Vous pouvez créer le répertoire *Logs* stdout pour le déploiement à l’aide d’une des deux approches suivantes :
 
 * Ajoutez l’élément `<Target>` suivant au fichier projet :
 

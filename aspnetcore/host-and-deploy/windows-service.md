@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 0149039f69539b7c69d7ba45efcf09d80ffcba79
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 718cc83bb29c0cff323853d22c107e00616b1dd1
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275096"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126233"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -54,29 +54,39 @@ Les modifications minimales suivantes sont requises pour configurer un projet AS
 
      ::: moniker-end
 
-1. Publiez l’application sur un dossier. Utilisez [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) ou un [profil de publication Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles) qui publie sur un dossier.
+1. Publiez l’application. Utilisez [dotnet publish](/dotnet/articles/core/tools/dotnet-publish) ou un [profil de publication Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles).
 
    Pour publier l’exemple d’application à partir de la ligne de commande, exécutez la commande suivante dans une fenêtre de console à partir du dossier de projet :
 
    ```console
-   dotnet publish --configuration Release --output c:\svc
+   dotnet publish --configuration Release
    ```
 
-1. Utilisez l’outil en ligne de commande [sc.exe](https://technet.microsoft.com/library/bb490995) pour créer le service (`sc create <SERVICE_NAME> binPath= "<PATH_TO_SERVICE_EXECUTABLE>"`). La valeur `binPath` est le chemin du fichier exécutable de l’application, qui inclut le nom du fichier exécutable. **L’espace entre le signe égal et le caractère guillemet qui commence le chemin est requis.**
+1. Utilisez l’outil en ligne de commande [sc.exe](https://technet.microsoft.com/library/bb490995) pour créer le service. La valeur `binPath` est le chemin du fichier exécutable de l’application, qui inclut le nom du fichier exécutable. **L’espace entre le signe égal et le guillemet au début du chemin est obligatoire.**
 
-   Pour l’exemple d’application et de commande qui suit, le service :
+   ```console
+   sc create <SERVICE_NAME> binPath= "<PATH_TO_SERVICE_EXECUTABLE>"
+   ```
+
+   Pour un service publié dans le dossier du projet, utilisez le chemin du dossier *publish* pour créer le service. Dans l’exemple suivant, le service est :
 
    * S’appelle **MyService**.
-   * Est publié dans le dossier *c:\\svc*.
-   * A un exécutable d’application nommé *AspNetCoreService.exe*.
+   * Publié dans le dossier *c:\\my_services\\AspNetCoreService\\bin\\Release\\&lt;FRAMEWORK_CIBLE&gt;\\publish*.
+   * Représenté par un exécutable d’application nommé *AspNetCoreService.exe*.
 
    Ouvrez une invite de commandes avec des privilèges administratifs et exécutez la commande suivante :
 
    ```console
-   sc create MyService binPath= "c:\svc\aspnetcoreservice.exe"
+   sc create MyService binPath= "c:\my_services\aspnetcoreservice\bin\release\<TARGET_FRAMEWORK>\publish\aspnetcoreservice.exe"
    ```
-
-   **Vérifiez que l’espace est présent entre l’argument `binPath=` et sa valeur.**
+   
+   > [!IMPORTANT]
+   > Vérifiez que l’espace est présent entre l’argument `binPath=` et sa valeur.
+   
+   Pour publier et démarrer le service à partir d’un autre dossier :
+   
+   1. Utilisez l’option [--output &lt;RÉPERTOIRE_SORTIE&gt;](/dotnet/core/tools/dotnet-publish#options) dans la commande `dotnet publish`.
+   1. Créez le service avec la commande `sc.exe` en utilisant le chemin du dossier de sortie. Ajoutez le nom de l’exécutable du service dans le chemin fourni dans `binPath`.
 
 1. Démarrez le service avec la commande `sc start <SERVICE_NAME>`.
 

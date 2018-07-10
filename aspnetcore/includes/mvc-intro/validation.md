@@ -1,4 +1,4 @@
-# <a name="adding-validation"></a>Ajout de la validation
+# <a name="add-validation-to-an-aspnet-core-mvc-app"></a>Ajouter une validation à une application ASP.NET Core MVC
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -112,7 +112,7 @@ Vous pouvez utiliser l’attribut `DisplayFormat` par lui-même, mais il est gé
 
 Vous devez désactiver la validation de date jQuery pour utiliser l’attribut `Range` avec `DateTime`. Il n’est généralement pas recommandé de compiler des dates dures dans vos modèles. Par conséquent, l’utilisation de l’attribut `Range` et de `DateTime` est déconseillée.
 
-Le code suivant illustre la combinaison d’attributs sur une seule ligne :
+Le code suivant illustre la combinaison d’attributs sur une seule ligne :
 
 ::: moniker range=">= aspnetcore-2.1"
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie21/Models/MovieDateRatingDAmult.cs?name=snippet1)]

@@ -4,24 +4,29 @@ author: zuckerthoben
 description: Découvrez comment utiliser NSwag pour générer des pages d’aide et de documentation pour une API web ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/08/2018
+ms.date: 06/29/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: f4cc9ec1f32ef2bd0056ba8d0cbbbe9228834d85
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c0811593609b7d1e3529d5253e8b053f180281f3
+ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279195"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37126272"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Bien démarrer avec NSwag et ASP.NET Core
 
 Par [Christoph Nienaber](https://twitter.com/zuckerthoben) et [Rico Suter](https://rsuter.com)
 
-::: moniker range="<= aspnetcore-2.0"
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
-::: moniker-end
 ::: moniker range=">= aspnetcore-2.1"
+
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.0"
+
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+
 ::: moniker-end
 
 L’utilisation de [NSwag](https://github.com/RSuter/NSwag) avec un intergiciel (middleware) ASP.NET Core nécessite le package NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/). Le package se compose d’un générateur Swagger, de l’IU Swagger (v2 et v3) et de [l’IU ReDoc](https://github.com/Rebilly/ReDoc).
@@ -194,19 +199,55 @@ Vous pouvez activer les commentaires XML de l’une des façons suivantes :
 
 # <a name="visual-studiotabvisual-studio-xml"></a>[Visual Studio](#tab/visual-studio-xml/)
 
+::: moniker range=">= aspnetcore-2.0"
+
+* Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions**, puis sélectionnez **Modifier <nom_projet>.csproj**.
+* Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
 * Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions**, puis sélectionnez **Propriétés**.
 * Cochez la case **Fichier de documentation XML** dans la section **Sortie** sous l’onglet **Générer**.
 
+::: moniker-end
+
 # <a name="visual-studio-for-mactabvisual-studio-mac-xml"></a>[Visual Studio pour Mac](#tab/visual-studio-mac-xml/)
 
-* Ouvrez la boîte de dialogue **Options du projet** > **Générer** > **Compilateur**.
+::: moniker range=">= aspnetcore-2.0"
+
+* Dans le *Panneau Solutions*, appuyez sur **contrôle** et cliquez sur le nom du projet. Accédez à **Outils** > **Modifier le fichier**.
+* Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+* Ouvrez la boîte de dialogue **Options du projet** > **Générer**>**Compilateur**
 * Cochez la case **Générer la documentation XML** dans la section **Options générales**.
+
+::: moniker-end
 
 # <a name="visual-studio-codetabvisual-studio-code-xml"></a>[Visual Studio Code](#tab/visual-studio-code-xml/)
 
-Ajoutez manuellement l’extrait de code suivant au fichier *.csproj* :
+Ajoutez manuellement les lignes en surbrillance au fichier *.csproj* :
 
-[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement)]
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-1.1"
+
+[!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
+
+::: moniker-end
 
 ---
 

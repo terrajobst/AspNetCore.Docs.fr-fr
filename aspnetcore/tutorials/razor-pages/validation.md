@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 569c5b977d832aec3657321cad8d0f9520aae031
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: cabf3d955ef2eb17b3bcb40170a9de7b53ffd107
+ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277772"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37077629"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -45,7 +45,7 @@ Mettez à jour la classe `Movie` pour tirer parti des attributs de validation `R
 Les attributs de validation spécifient un comportement qui est appliqué sur les propriétés du modèle :
 
 * Les attributs `Required` et `MinimumLength` indiquent qu’une propriété doit avoir une valeur. Toutefois, rien n’empêche un utilisateur d’entrer un espace blanc pour satisfaire la contrainte de validation pour un type Nullable. Les [types valeur](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) non Nullable (tels que `decimal`, `int`, `float` et `DateTime`) sont obligatoires par nature et n’ont pas besoin de l’attribut `Required`.
-* L’attribut `RegularExpression` limite les caractères que l’utilisateur peut entrer. Dans le code précédent, `Genre` et `Rating` doivent utiliser uniquement des lettres (les espaces blancs, les chiffres et les caractères spéciaux ne sont pas autorisés).
+* L’attribut `RegularExpression` limite les caractères que l’utilisateur peut entrer. Dans le code précédent, `Genre` doit commencer par une ou plusieurs lettres majuscules, puis zéro ou plusieurs lettres, guillemets simples ou doubles, espaces ou tirets. `Rating` doit commencer par une ou plusieurs lettres majuscules, puis zéro ou plusieurs lettres, chiffres, guillemets simples ou doubles, espaces ou tirets.
 * L’attribut `Range` contraint une valeur à une plage spécifiée.
 * L’attribut `StringLength` définit la longueur maximale d’une chaîne, et éventuellement la longueur minimale. 
 
