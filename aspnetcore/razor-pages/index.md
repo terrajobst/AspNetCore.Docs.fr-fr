@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: 9d7d4d49dbb55e327a208df99a0e3ca744de8609
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 49bed6cc150a74ff8b72848f276c55c2490b6fa5
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077746"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889140"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -322,7 +322,7 @@ La propriété [Layout](xref:mvc/views/layout#specifying-a-layout) est définie 
 
 ::: moniker range=">= aspnetcore-2.1"
 
-La disposition est dans le dossier *Shared/Pages*. Les pages recherchent d’autres vues (dispositions, modèles, partiels) hiérarchiquement, en commençant dans le même dossier que la page active. Une disposition dans le dossier *Shared/Pages* peut être utilisée à partir de n’importe quelle page Razor sous le dossier *Pages*.
+La disposition est dans le dossier *Pages/Shared*. Les pages recherchent d’autres vues (dispositions, modèles, partiels) hiérarchiquement, en commençant dans le même dossier que la page active. Une disposition dans le dossier *Pages/Shared* peut être utilisée à partir de n’importe quelle page Razor sous le dossier *Pages*.
 
 Le fichier de disposition doit être placé dans le dossier *Pages/Shared*.
 

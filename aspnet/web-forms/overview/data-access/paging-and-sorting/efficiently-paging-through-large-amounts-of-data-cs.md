@@ -4,19 +4,16 @@ title: Pagination efficace dans de grandes quantités de données (c#) | Microso
 author: rick-anderson
 description: Ne convient pas l’option de la pagination par défaut d’un contrôle de présentation des données lorsque vous travaillez avec grandes quantités de données, comme son retriev de contrôle de source données sous-jacent...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 08/15/2006
-ms.topic: article
 ms.assetid: 59c01998-9326-4ecb-9392-cb9615962140
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a6d023f299d3c36e0b9f0d00f2b531d73657135c
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: bb10524e7973894ea60663da3813673742ae4ab4
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37367879"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37825838"
 ---
 <a name="efficiently-paging-through-large-amounts-of-data-c"></a>Pagination efficace dans de grandes quantités de données (c#)
 ====================

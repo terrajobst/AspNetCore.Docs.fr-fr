@@ -132,7 +132,7 @@ Notez qu’aucune de ces requêtes retournent le `Categories` table s `Picture` 
 Commencez par ajouter ces deux colonnes à la `CategoriesDataTable`. Avec le bouton droit sur le `CategoriesDataTable` en-tête s, sélectionnez Ajouter dans le menu contextuel et choisissez ensuite l’option de colonne. Cela créera un nouveau `DataColumn` dans le DataTable nommé `Column1`. Renommer cette colonne `Picture`. À partir de la fenêtre Propriétés, définissez la `DataColumn` s `DataType` propriété `System.Byte[]` (cela n’est pas une option dans la liste déroulante ; vous devez le saisir dans).
 
 
-[![Créer une image de nommé DataColumn dont DataType est System.Byte]](uploading-files-vb/_static/image6.gif)](uploading-files-vb/_static/image7.png)
+[![Créer une image de nommé DataColumn dont DataType est System.Byte](uploading-files-vb/_static/image6.gif)](uploading-files-vb/_static/image7.png)
 
 **Figure 6**: créer un `DataColumn` nommé `Picture` dont `DataType` est `System.Byte[]` ([cliquez pour afficher l’image en taille réelle](uploading-files-vb/_static/image8.png))
 

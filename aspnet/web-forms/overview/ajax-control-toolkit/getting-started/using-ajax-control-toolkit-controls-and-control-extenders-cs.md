@@ -4,19 +4,16 @@ title: À l’aide de contrôles AJAX Control Toolkit et extendeurs de contrôle
 author: microsoft
 description: Découvrez comment ajouter des contrôles AJAX Control Toolkit et extendeurs à vos pages ASP.NET.
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 05/12/2009
-ms.topic: article
 ms.assetid: c1e6b51c-3bc3-4bf7-9916-9991197af3dd
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/getting-started/using-ajax-control-toolkit-controls-and-control-extenders-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 54e3ec3cc608c4fab877b4135e3c180319ea8432
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: 2c978bec3780ef2e83aee32a084d1baf5066e0e2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37389963"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37817224"
 ---
 <a name="using-ajax-control-toolkit-controls-and-control-extenders-c"></a>À l’aide de contrôles AJAX Control Toolkit et extendeurs de contrôle (c#)
 ====================

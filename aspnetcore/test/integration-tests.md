@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
 uid: test/integration-tests
-ms.openlocfilehash: 2893ff41a104b4bef1277675afaf7dd1c758ecd6
-ms.sourcegitcommit: 79d2457989fc5b08925582dab0f1511ab11ad741
+ms.openlocfilehash: e18c5704c9d4db9669d8f831f1b556d1723a0fc1
+ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347250"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37894164"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -96,10 +96,16 @@ Il n’existe pratiquement aucune différence entre la configuration pour les te
 
 Le projet de test doit :
 
-* Disposez d’une référence de package pour [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/).
-* Utiliser le Kit de développement Web dans le fichier projet (`<Project Sdk="Microsoft.NET.Sdk.Web">`).
+* Référencer les packages suivants :
+  - [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
+  - [Microsoft.AspNetCore.Mvc.Testing](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
+* Spécifiez le Kit de développement Web dans le fichier projet (`<Project Sdk="Microsoft.NET.Sdk.Web">`). Le Kit de développement Web est requis lorsque vous référencez le [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app).
 
-Ces prerequesities peuvent être consultés dans le [exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspecter le *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj* fichier.
+Ces conditions préalables sont consultables dans la [exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples/). Inspecter le *tests/RazorPagesProject.Tests/RazorPagesProject.Tests.csproj* fichier. L’exemple d’application utilise le [xUnit](https://xunit.github.io/) infrastructure de test et le [AngleSharp](https://anglesharp.github.io/) bibliothèque de l’analyseur, donc fait également référence à l’exemple d’application :
+
+* [xUnit](https://www.nuget.org/packages/xunit/)
+* [xUnit.Runner.VisualStudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
+* [AngleSharp](https://www.nuget.org/packages/AngleSharp/)
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>Tests de base avec la valeur par défaut WebApplicationFactory
 

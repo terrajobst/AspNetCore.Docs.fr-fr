@@ -4,19 +4,16 @@ title: Validation des informations d’identification de l’utilisateur sur le 
 author: rick-anderson
 description: Dans ce didacticiel, nous allons examiner comment valider les informations d’identification d’un utilisateur par rapport au magasin d’utilisateur d’appartenance à l’aide de moyens de programmation et le contrôle de connexion...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 01/18/2008
-ms.topic: article
 ms.assetid: 61aa4e08-aa81-4aeb-8ebe-19ba7a65e04c
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-cs
 msc.type: authoredcontent
-ms.openlocfilehash: e0675bc814d293c6b7eff1789622158f907ebdff
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: e8c46d09a7ebab19204f7c439ec4333e0c36b73e
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37395277"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37828953"
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-c"></a>Validation des informations d’identification de l’utilisateur sur le Store d’utilisateur d’appartenance (c#)
 ====================

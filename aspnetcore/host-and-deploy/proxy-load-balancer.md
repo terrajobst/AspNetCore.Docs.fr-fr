@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/26/2018
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 1797962d6eada9c48b31cd94e2c7481380301a0d
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 1623c6dbe377ce24c380b75a828c3ec5653dd7dd
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276774"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827496"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
 
@@ -232,7 +232,7 @@ public void Configure(IApplicationBuilder app, ILoggerFactory loggerfactory)
         // Connection: RemoteIp
         await context.Response.WriteAsync(
             $"Request RemoteIp: {context.Connection.RemoteIpAddress}");
-    }
+    });
 }
 ```
 

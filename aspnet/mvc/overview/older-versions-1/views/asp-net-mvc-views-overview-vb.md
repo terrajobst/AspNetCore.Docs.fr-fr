@@ -4,19 +4,16 @@ title: Vue d’ensemble (VB) des vues ASP.NET MVC | Microsoft Docs
 author: StephenWalther
 description: Qu’est une vue de MVC ASP.NET, et en quoi est-il différent d’une page HTML ? Dans ce didacticiel, Stephen Walther présente les vues et montre comment vous pouvez t...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/16/2008
-ms.topic: article
 ms.assetid: c28ba88d-3a93-47f5-a306-049bd766714d
-ms.technology: dotnet-mvc
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 12039a799b71c88e012831f6eefb01c668142a75
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: eeba2bd251e837d6d6eb43fd1506eba9e3d18680
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37369271"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37827921"
 ---
 <a name="aspnet-mvc-views-overview-vb"></a>Vue d’ensemble (VB) des vues ASP.NET MVC
 ====================
