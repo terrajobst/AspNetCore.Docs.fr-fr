@@ -9,11 +9,11 @@ ms.assetid: 276552b5-f349-4fcf-8f40-6d042f7aa88e
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-model
 msc.type: authoredcontent
 ms.openlocfilehash: 2d99a9c553ba79922cb0c5e852709ab97ea2e22b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818461"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38211052"
 ---
 <a name="adding-a-model"></a>Ajout d’un modèle
 ====================

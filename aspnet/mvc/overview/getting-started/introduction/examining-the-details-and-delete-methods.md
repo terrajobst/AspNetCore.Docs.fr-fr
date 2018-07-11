@@ -9,11 +9,11 @@ ms.assetid: f1d2a916-626c-4a54-8df4-77e6b9fff355
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-details-and-delete-methods
 msc.type: authoredcontent
 ms.openlocfilehash: ce4413f81e49c1467b574347f69f855ae4ba5bf8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839041"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38212783"
 ---
 <a name="examining-the-details-and-delete-methods"></a>Examen des méthodes Details et Delete
 ====================

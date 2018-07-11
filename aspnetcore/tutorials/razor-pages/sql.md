@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 1fd86fb61b7f5ddb760992ac10f9bee43ab831cf
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 255faf12064aa424d51fb6faa801884c474bd288
+ms.sourcegitcommit: a09820f91e71a7d98b7347bf93210abb9e995e22
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272141"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37889481"
 ---
 # <a name="work-with-sql-server-localdb-and-aspnet-core"></a>Utilisation de SQL Server LocalDB et d’ASP.NET Core
 
@@ -108,7 +108,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 ::: moniker-end
 
-Une application de production n’appelle pas `Database.Migrate`. Il est ajouté au code précédent afin d’éviter l’exception suivante quand `Update-Database` n’a pas été exécutée :
+Une application de production n’appelle pas `Database.Migrate`. Il est ajouté au code précédent afin d’éviter l’exception suivante quand `Update-Database` n’a pas été exécutée :
 
 SqlException: impossible d’ouvrir la base de données 'RazorPagesMovieContext-21' demandée par la connexion. La connexion a échoué.
 Échec de la connexion de l’utilisateur 'nom utilisateur'.

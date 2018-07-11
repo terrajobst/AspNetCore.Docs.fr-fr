@@ -5,12 +5,12 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 0f48490af5805e4351c983f3ae519268c8e9c7a7
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 9647b605d4b9a23b365085e3677fb0e9b93f0da4
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274129"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434011"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -157,7 +157,28 @@ Les fichiers de ressources qui utilisent `@inject IViewLocalizer` dans les vues 
 
 * Resources/Views.Home.About.fr.resx
 
-Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* d’un affichage se trouve dans le même dossier que l’affichage.
+Si vous n’utilisez pas l’option `ResourcesPath`, le fichier *.resx* d’une vue se trouve dans le même dossier que la vue.
+
+### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
+
+L’attribut [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) fournit l’espace de noms racine d’un assembly quand il est différent du nom de l’assembly. 
+
+Si l’espace de noms racine d’un assembly est différent du nom de l’assembly :
+
+* La localisation ne fonctionne pas par défaut.
+* La localisation échoue en raison du mode de recherche des ressources dans l’assembly. `RootNamespace` est une valeur de build qui n’est pas accessible au processus exécutant. 
+
+Si `RootNamespace` est différent de `AssemblyName`, incluez ce qui suit dans *AssemblyInfo.cs* (en remplaçant les valeurs des paramètres par les valeurs réelles) :
+
+```Csharp
+using System.Reflection;
+using Microsoft.Extensions.Localization;
+
+[assembly: ResourceLocation("Resource Folder Name")]
+[assembly: RootNamespace("App Root Namespace")]
+```
+
+Le code précédent permet de résoudre correctement les fichiers resx.
 
 ## <a name="culture-fallback-behavior"></a>Comportement de secours pour la culture
 

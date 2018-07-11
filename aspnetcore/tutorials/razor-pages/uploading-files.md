@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment charger des fichiers sur une page Razor.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 09/12/2017
+ms.date: 07/03/2018
 uid: tutorials/razor-pages/uploading-files
-ms.openlocfilehash: 43268e24b67279b57c990a6289922ae38d883221
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 62e20ef33e2da44657aba19dab938913147d9bfe
+ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275955"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37433917"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Charger des fichiers dans une page Razor dans ASP.NET Core
 
@@ -45,7 +45,17 @@ Vous devez être vigilant lorsque vous fournissez aux utilisateurs la possibilit
 
 Créez une page Razor qui gère deux chargements de fichiers. Ajoutez une classe `FileUpload` liée à la page pour obtenir les données de planification. Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **FileUpload** et ajoutez les propriétés suivantes :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/FileUpload.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/FileUpload.cs)]
+
+::: moniker-end
 
 La classe compte une propriété pour le titre de la planification et une propriété pour chacune des deux versions de la planification. Les trois propriétés sont obligatoires, et le titre doit comprendre entre 3 et 60 caractères.
 
@@ -53,7 +63,17 @@ La classe compte une propriété pour le titre de la planification et une propri
 
 Pour éviter la duplication de code dans le traitement des fichiers de planification chargés, ajoutez d’abord une méthode d’assistance statique. Créez un dossier *Utilities* dans l’application et ajoutez un fichier *FileHelpers.cs* avec le contenu suivant. La méthode d’assistance, `ProcessFormFile`, prend un [IFormFile](/dotnet/api/microsoft.aspnetcore.http.iformfile) et un [ModelStateDictionary](/api/microsoft.aspnetcore.mvc.modelbinding.modelstatedictionary), puis retourne une chaîne contenant la taille et le contenu du fichier. Le type de contenu et la longueur sont vérifiés. Si le fichier échoue à la vérification de validation, une erreur est ajoutée dans `ModelState`.
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Utilities/FileHelpers.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Utilities/FileHelpers.cs)]
+
+::: moniker-end
 
 ### <a name="save-the-file-to-disk"></a>Enregistrer le fichier sur le disque
 
@@ -100,15 +120,39 @@ Pour charger le contenu du fichier dans le stockage Blob Azure, consultez [Bien 
 
 Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **Schedule**, puis ajoutez les propriétés suivantes :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Models/Schedule.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/Schedule.cs)]
 
+::: moniker-end
+
 La classe utilise les attributs `Display` et `DisplayFormat` qui donnent une mise en forme et des titres conviviaux quand les données de planification sont restituées.
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="update-the-razorpagesmoviecontext"></a>Mettre à jour RazorPagesMovieContext
+
+Spécifiez `DbSet` dans `RazorPagesMovieContext` (*Data/RazorPagesMovieContext.cs*) pour les planifications :
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Data/RazorPagesMovieContext.cs?highlight=17)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
 
 ## <a name="update-the-moviecontext"></a>Mettre à jour MovieContext
 
 Spécifiez `DbSet` dans `MovieContext` (*Models/MovieContext.cs*) pour les planifications :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Models/MovieContext.cs?highlight=13)]
+
+::: moniker-end
 
 ## <a name="add-the-schedule-table-to-the-database"></a>Ajouter la table Schedule à la base de données
 
@@ -127,7 +171,17 @@ Update-Database
 
 Dans le dossier *Pages*, créez un dossier *Schedules*. Dans le dossier *Schedules*, créez une page nommée *Index.cshtml* pour charger une planification avec le contenu suivant :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Index.cshtml)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Index.cshtml)]
+
+::: moniker-end
 
 Chaque groupe de formulaires inclut un élément **\<label>** qui affiche le nom de chaque propriété de classe. Les attributs `Display` du modèle `FileUpload` fournissent les valeurs d’affichage des étiquettes. Par exemple, le nom d’affichage de la propriété `UploadPublicSchedule` est défini avec `[Display(Name="Public Schedule")]` et affiche donc « Public Schedule » sur l’étiquette, quand le formulaire est restitué.
 
@@ -137,43 +191,132 @@ Chaque groupe de formulaires comprend un élément **\<span>** de validation. Si
 
 Ajoutez le modèle de page (*Index.cshtml.cs*) au dossier *Schedules* :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Index.cshtml.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs)]
+
+::: moniker-end
 
 Le modèle de page (`IndexModel` dans *Index.cshtml.cs*) relie la classe `FileUpload` :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet1)]
+
+::: moniker-end
 
 Le modèle utilise également la liste des planifications (`IList<Schedule>`) pour afficher les planifications stockées dans la base de données sur la page :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet2)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet2)]
+
+::: moniker-end
 
 Quand la page est chargée avec `OnGetAsync`, `Schedules` est rempli à partir de la base de données et permet de générer une table HTML des planifications chargées :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet3)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet3)]
+
+::: moniker-end
 
 Quand le formulaire est publié sur le serveur, `ModelState` est vérifié. S’il n’est pas valide, `Schedule` est regénéré et la page s’affiche avec un ou plusieurs messages de validation indiquant pourquoi la validation de la page a échoué. S’il est valide, les propriétés `FileUpload` sont utilisées dans *OnPostAsync* pour effectuer le chargement de fichier pour les deux versions de la planification et créer un objet `Schedule` afin de stocker les données. La planification est ensuite enregistrée dans la base de données :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index21.cshtml.cs?name=snippet4)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Index.cshtml.cs?name=snippet4)]
+
+::: moniker-end
 
 ## <a name="link-the-file-upload-razor-page"></a>Lier la page Razor de chargement de fichiers
 
-Ouvrez *_Layout.cshtml* et ajoutez un lien vers la barre de navigation pour accéder à la page de chargement de fichiers :
+Ouvrez *Pages/Shared/_Layout.cshtml* et ajoutez un lien vers la barre de navigation pour accéder à la page de planifications :
 
-[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/_Layout.cshtml?range=31-38&highlight=4)]
+```cshtml
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a asp-page="/Index">Home</a></li>
+        <li><a asp-page="/Schedules/Index">Schedules</a></li>
+        <li><a asp-page="/About">About</a></li>
+        <li><a asp-page="/Contact">Contact</a></li>
+    </ul>
+</div>
+```
 
 ## <a name="add-a-page-to-confirm-schedule-deletion"></a>Ajouter une page pour confirmer la suppression de la planification
 
 Quand l’utilisateur clique pour supprimer une planification, il existe la possibilité d’annuler l’opération. Ajoutez une page de confirmation de suppression (*Delete.cshtml*) au dossier *Schedules* :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-cshtml[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Delete.cshtml)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml)]
+
+::: moniker-end
 
 Le modèle de page (*Delete.cshtml.cs*) charge une seule planification identifiée par `id` dans les données de routage de la demande. Ajoutez le fichier *Delete.cshtml.cs* au dossier *Schedules* :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Schedules/Delete.cshtml.cs)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml.cs)]
+
+::: moniker-end
 
 La méthode `OnPostAsync` gère la suppression de la planification par son `id` :
 
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Delete21.cshtml.cs?name=snippet1&highlight=8,12-13)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Schedules/Delete.cshtml.cs?name=snippet1&highlight=8,12-13)]
+
+::: moniker-end
 
 Après avoir supprimé la planification, `RedirectToPage` renvoie l’utilisateur à la page *Index.cshtml* des planifications.
 
