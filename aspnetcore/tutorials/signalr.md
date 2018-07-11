@@ -7,12 +7,12 @@ ms.author: rachelap
 ms.custom: mvc
 ms.date: 05/22/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 62cef2d6f032caa2f048cfdd49a225d975dad10d
-ms.sourcegitcommit: 7003d27b607e529642ded0400aa48ae692a0e666
+ms.openlocfilehash: 6b8222ee04573ca7157b4e1125ed5a4453b2b9a9
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033340"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37830553"
 ---
 # <a name="get-started-with-signalr-on-aspnet-core"></a>Bien démarrer avec SignalR sur ASP.NET Core
 
@@ -38,7 +38,7 @@ Installez les logiciels suivants :
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Kit SDK .NET Core 2.1 ou version ultérieure](https://www.microsoft.com/net/download/all)
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) version 15.7 ou ultérieure avec la charge de travail **ASP.NET et développement web**
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) version 15.7.3 ou ultérieure avec la charge de travail **ASP.NET et développement web**
 * [npm](https://www.npmjs.com/get-npm)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -128,9 +128,9 @@ Vous devez configurer le serveur SignalR pour qu’il sache qu’il doit transme
 
 1. Pour configurer un projet SignalR, modifiez la méthode `Startup.ConfigureServices` du projet.
 
-   `services.AddSignalR` Ajoute SignalR dans le cadre du pipeline d’[intergiciel (middleware)](xref:fundamentals/middleware/index).
+   `services.AddSignalR` rend les services SignalR accessibles au système d’[injection de dépendances](xref:fundamentals/dependency-injection).
 
-2. Configurez des routes vers vos hubs à l’aide de `UseSignalR`.
+1. Configurez des itinéraires vers vos hubs avec `UseSignalR` dans la méthode `Configure`. `app.UseSignalR` ajoute SignalR au pipeline d’[intergiciel (middleware)](xref:fundamentals/middleware/index).
 
    [!code-csharp[Startup](signalr/sample/Startup.cs?highlight=37,57-60)]
 
