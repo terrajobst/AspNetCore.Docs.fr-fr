@@ -5,12 +5,12 @@ description: Fournit des conseils sur la migration de différents aspects d’AS
 ms.author: riande
 ms.date: 05/04/2018
 uid: migration/index
-ms.openlocfilehash: 0d622e47f2031d9e473819af52d387c7e01838cb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 709e6434e4b3083d4262bc1f89748ca163474888
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275708"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938153"
 ---
 # <a name="migration-to-aspnet-core"></a>Migration vers ASP.NET Core
 

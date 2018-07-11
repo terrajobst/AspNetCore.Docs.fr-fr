@@ -1,6 +1,6 @@
-# <a name="how-to-buildrun-secure-user-data-sample"></a>Comment faire pour générer/exécuter l’exemple de données utilisateur sécurisé
+# <a name="how-to-buildrun-secure-user-data-sample"></a>L’échantillon de données utilisateur sécurisée d’exécution/de build
 
-* Définir le mot de passe avec l’outil Gestionnaire de Secret :
+* Définir le mot de passe avec l’outil Secret Manager :
 
   `dotnet user-secrets set SeedUserPW <pw>`
 

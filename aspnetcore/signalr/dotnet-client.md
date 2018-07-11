@@ -7,12 +7,12 @@ ms.author: rachelap
 ms.custom: mvc
 ms.date: 05/29/2018
 uid: signalr/dotnet-client
-ms.openlocfilehash: faa4368988971a3e7fcdcd1b044971e16d70f19a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 35dc1d3abf0d35e17d1835ec462f8cc4feb728eb
+ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273293"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37938252"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Client .NET SignalR ASP.NET Core 
 
@@ -24,7 +24,7 @@ Le client .NET SignalR d’ASP.NET Core peut être utilisé par les applications
 
 L’exemple de code dans cet article est une application WPF qui utilise le client .NET SignalR ASP.NET Core.
 
-## <a name="install-the-signalr-net-client-package"></a>Installez le package de client SignalR .NET
+## <a name="install-the-signalr-net-client-package"></a>Installer le package du client SignalR .NET
 
 Le package `Microsoft.AspNetCore.SignalR.Client` est requis pour que les clients .NET se connectent à des hubs SignalR. Pour installer la bibliothèque cliente, exécutez la commande suivante dans la fenêtre **Console du Gestionnaire de package** :
 
@@ -44,7 +44,7 @@ Pour établir une connexion, créez un `HubConnectionBuilder` et appelez `Build`
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?range=48-49)]
 
-## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir du hub
+## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir de hub
 
 Définissez les méthodes appelées par le hub en utilisant `connection.On` après la génération, mais avant de démarrer la connexion.
 
