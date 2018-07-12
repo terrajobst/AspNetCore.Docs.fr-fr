@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: cd378ecd-3e9e-4236-b902-65916d85a048
 msc.legacyurl: /signalr/overview/guide-to-the-api/working-with-groups
 msc.type: authoredcontent
-ms.openlocfilehash: c1df772c19bfa89c1d780d09d56c6bc4a79967c6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ea396764bfba0a20347dc231acf40cb36adc1e37
+ms.sourcegitcommit: 260abb706ed17f07a53288d8a0c3e69fc13e7468
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806191"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38966729"
 ---
 <a name="working-with-groups-in-signalr"></a>Utilisation de groupes dans SignalR
 ====================
@@ -73,7 +73,7 @@ Si vous souhaitez ajouter un client à un groupe et d’envoyer immédiatement u
 
 [!code-csharp[Main](working-with-groups/samples/sample2.cs?highlight=1,3)]
 
-En règle générale, vous ne devez pas inclure `await` lors de l’appel le `Groups.Remove` (méthode), car l’id de connexion que vous cherchez à supprimer peut ne plus être disponible. Dans ce cas, `TaskCanceledException` est levée après l’expiration de la demande. Si votre application doit garantir que l’utilisateur a été supprimé du groupe avant d’envoyer un message au groupe, vous pouvez ajouter `await` avant Groups.Remove et catch puis le `TaskCanceledException` exception qui peut être levée.
+En règle générale, vous ne devez pas inclure `await` lors de l’appel le `Groups.Remove` (méthode), car l’id de connexion que vous cherchez à supprimer peut ne plus être disponible. Dans ce cas, `TaskCanceledException` est levée après l’expiration de la demande. Si votre application doit garantir que l’utilisateur a été supprimé du groupe avant d’envoyer un message au groupe, vous pouvez ajouter `await` avant `Groups.Remove`et puis d’intercepter le `TaskCanceledException` exception qui peut être levée.
 
 <a id="call"></a>
 
