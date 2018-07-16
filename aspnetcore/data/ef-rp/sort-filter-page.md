@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
 ms.openlocfilehash: fce524a5cb386fbf286907be42e920be13115ca6
-ms.sourcegitcommit: 1faf2525902236428dae6a59e375519bafd5d6d7
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37089865"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38216276"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 

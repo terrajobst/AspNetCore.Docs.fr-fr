@@ -6,11 +6,11 @@ ms.author: tdykstra
 ms.date: 03/15/2018
 uid: data/ef-mvc/migrations
 ms.openlocfilehash: f710b33ac1a6017b0e3d7e8c3e528675a41424bb
-ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37092940"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38194168"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---migrations---4-of-10"></a>ASP.NET Core MVC avec EF Core - Migrations - 4 sur 10
 

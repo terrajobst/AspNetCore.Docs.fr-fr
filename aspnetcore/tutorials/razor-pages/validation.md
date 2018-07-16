@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: cabf3d955ef2eb17b3bcb40170a9de7b53ffd107
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 0d35de827ca6fea530229f1ef263ea7b9351e5ad
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077629"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992826"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -157,6 +157,8 @@ La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data
 
 Consultez [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour obtenir des instructions sur la publication de cette application sur Azure.
 
+Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec MVC et EF Core](xref:data/ef-mvc/intro).
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Utilisation des formulaires](xref:mvc/views/working-with-forms)
@@ -166,4 +168,3 @@ Consultez [Publier une application web ASP.NET Core sur Azure App Service à l�
 
 > [!div class="step-by-step"]
 > [Précédent : Ajout d’un nouveau champ](xref:tutorials/razor-pages/new-field)
-> [Suivant : Chargement de fichiers](xref:tutorials/razor-pages/uploading-files)

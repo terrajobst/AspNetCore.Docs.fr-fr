@@ -1,4 +1,4 @@
-Si vous obtenez cette erreur :
+Si vous obtenez l’erreur :
   ```
   The process cannot access the file 
  'RazorPagesMovie/bin/Debug/netcoreapp2.0/RazorPagesMovie.dll' 

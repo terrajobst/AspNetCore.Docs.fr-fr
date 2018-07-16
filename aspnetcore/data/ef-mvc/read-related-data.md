@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez lire et afficher les données assoc
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: d5c9b665a80003ef5029754d7ad1780b3254e97e
-ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
+ms.openlocfilehash: a310c9e4b9cec6e2ab2477461f395c9bbd3fa364
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37092982"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063284"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC avec EF Core - Lire les données associées - 6 sur 10
 
@@ -155,7 +155,7 @@ Vous utilisez la méthode `Single` sur une collection lorsque vous savez que la 
 À la place de :
 
 ```csharp
-.Where(I => i.ID == id.Value).Single()
+.Where(i => i.ID == id.Value).Single()
 ```
 
 Ensuite, si un cours a été sélectionné, le cours sélectionné est récupéré à partir de la liste des cours dans le modèle de vue. Ensuite, la propriété `Enrollments` du modèle de vue est chargée avec les entités Enrollment à partir de la propriété de navigation `Enrollments` de ce cours.

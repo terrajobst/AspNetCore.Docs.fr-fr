@@ -2,26 +2,22 @@
 title: Bien démarrer avec les pages Razor ASP.NET Core dans Visual Studio Code
 author: rick-anderson
 description: Découvrez les concepts de base de la génération d’applications web de pages Razor ASP.NET Core avec Visual Studio Code.
-manager: wpickett
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/27/2017
-ms.prod: aspnet-core
-ms.technology: aspnet
-ms.topic: get-started-article
 uid: tutorials/razor-pages-vsc/razor-pages-start
-ms.openlocfilehash: 17ab52b80a40f6204e2bf2cf9048071c55c0a708
-ms.sourcegitcommit: 63fb07fb3f71b32daf2c9466e132f2e7cc617163
+ms.openlocfilehash: b1f1dcc1401d707cff79f3269ab70b900e9fc21c
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/10/2018
-ms.locfileid: "35252215"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38123381"
 ---
 # <a name="get-started-with-aspnet-core-razor-pages-in-visual-studio-code"></a>Bien démarrer avec les pages Razor ASP.NET Core dans Visual Studio Code
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web de pages Razor dans ASP.NET Core. Nous vous recommandons d’effectuer l’étape [Présentation des pages Razor](xref:mvc/razor-pages/index) avant de commencer ce didacticiel. L’utilisation de pages Razor est la méthode recommandée pour générer l’IU d’applications web dans ASP.NET Core.
+Ce didacticiel décrit les principes fondamentaux liés à la génération d’une application web de pages Razor dans ASP.NET Core. Nous vous recommandons d’effectuer l’étape [Présentation des pages Razor](xref:razor-pages/index) avant de commencer ce didacticiel. L’utilisation de pages Razor est la méthode recommandée pour générer l’IU d’applications web dans ASP.NET Core.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -29,7 +25,7 @@ Ce didacticiel décrit les principes fondamentaux liés à la génération d’u
 
 ## <a name="create-a-razor-web-app"></a>Créer une application web Razor
 
-À partir d’un terminal, exécutez les commandes suivantes :
+À partir d’un terminal, exécutez les commandes suivantes :
 
 ::: moniker range=">= aspnetcore-2.1"
 

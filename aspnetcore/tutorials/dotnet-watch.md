@@ -5,12 +5,12 @@ description: Ce tutoriel montre comment installer et utiliser l’outil Observat
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: 2a59267b36faf1e00ea2f0cc7e2b9ceb9828f791
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: fc08efa433f688a0b9009aed35fdee2b0c228619
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278851"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063297"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
@@ -179,4 +179,4 @@ VSTest s’exécute quand n’importe quel fichier change dans un des projets de
 
 ## <a name="dotnet-watch-in-github"></a>`dotnet-watch` dans GitHub
 
-`dotnet-watch` fait partie du [dépôt DotNetTools](https://github.com/aspnet/DotNetTools/tree/dev/src/dotnet-watch) GitHub.
+`dotnet-watch` fait partie du [dépôt DotNetTools](https://github.com/aspnet/DotNetTools/tree/master/src/dotnet-watch) GitHub.

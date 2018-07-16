@@ -5,12 +5,12 @@ description: Dans ce didacticiel, nous allons lire et afficher des données asso
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 4e0aa7151cc54f666202458ba60500a7c04f5ebb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: fa3147cc4ad121784911eef802e04ca91f16448f
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276758"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063310"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -74,19 +74,11 @@ Pour afficher le nom du département affecté dans une liste de cours
 * Exécutez la commande suivante :
 
   ```console
+  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
 
 La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
-
-Générez le projet. La build génère des erreurs telles que celle-ci :
-
-`1>Pages/Courses/Index.cshtml.cs(26,37,26,43): error CS1061: 'SchoolContext' does not
- contain a definition for 'Course' and no extension method 'Course' accepting a first
- argument of type 'SchoolContext' could be found (are you missing a using directive or
- an assembly reference?)`
-
- Remplacez globalement `_context.Course` par `_context.Courses` (autrement dit, ajoutez un « s » à `Course`). 7 occurrences sont trouvées et mises à jour.
 
 Ouvrez *Pages/Courses/Index.cshtml.cs* et examinez la méthode `OnGetAsync`. Le moteur de génération de modèles automatique a spécifié le chargement hâtif pour la propriété de navigation `Department`. La méthode `Include` spécifie le chargement hâtif.
 

@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
 ms.openlocfilehash: e987971f60e5c5a9fb79e30440c7c986df64447e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275292"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38189300"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 
