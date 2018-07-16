@@ -18,7 +18,6 @@
 ### [Ajouter une recherche](xref:tutorials/razor-pages/search)
 ### [Ajouter un nouveau champ](xref:tutorials/razor-pages/new-field)
 ### [Ajouter la validation](xref:tutorials/razor-pages/validation)
-### [Charger des fichiers](xref:tutorials/razor-pages/uploading-files)
 ## [Créer une application web SignalR en temps réel](xref:tutorials/signalr)
 ## [Créer une application web SignalR avec TypeScript](xref:tutorials/signalr-typescript-webpack)
 ## [Créer une application web MVC](tutorials/first-mvc-app/index.md)
@@ -159,6 +158,7 @@
 ## [Méthodes de filtre pour les pages Razor](xref:razor-pages/filter)
 ## [Créer une bibliothèque de classes Razor](xref:razor-pages/ui-class)
 ## [Conventions de routage et d’application](xref:razor-pages/razor-pages-conventions)
+## [Charger des fichiers sur une page Razor](xref:razor-pages/upload-files)
 ## [SDK Razor](xref:razor-pages/sdk)
 
 # [MVC](xref:mvc/overview)
