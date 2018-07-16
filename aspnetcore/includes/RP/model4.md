@@ -1,31 +1,31 @@
-Le tableau suivant détaille les paramètres des générateurs de code ASP.NET Core :
+<span data-ttu-id="2e68a-101">Le tableau suivant détaille les paramètres des générateurs de code ASP.NET Core :</span><span class="sxs-lookup"><span data-stu-id="2e68a-101">The following table details the ASP.NET Core code generators\` parameters:</span></span>
 
-| Paramètre               | Description|
+| <span data-ttu-id="2e68a-102">Paramètre</span><span class="sxs-lookup"><span data-stu-id="2e68a-102">Parameter</span></span>               | <span data-ttu-id="2e68a-103">Description</span><span class="sxs-lookup"><span data-stu-id="2e68a-103">Description</span></span>|
 | ----------------- | ------------ |
-| -m  | Nom du modèle. |
-| -dc  | Contexte de données. |
-| -udl | Utiliser la disposition par défaut. |
-| -outDir | Chemin du dossier de sortie relatif pour créer les vues. |
-| --referenceScriptLibraries | Ajoute `_ValidationScriptsPartial` aux pages Modifier et Créer. |
+| <span data-ttu-id="2e68a-104">-m</span><span class="sxs-lookup"><span data-stu-id="2e68a-104">-m</span></span>  | <span data-ttu-id="2e68a-105">Nom du modèle.</span><span class="sxs-lookup"><span data-stu-id="2e68a-105">The name of the model.</span></span> |
+| <span data-ttu-id="2e68a-106">-dc</span><span class="sxs-lookup"><span data-stu-id="2e68a-106">-dc</span></span>  | <span data-ttu-id="2e68a-107">Contexte de données.</span><span class="sxs-lookup"><span data-stu-id="2e68a-107">The data context.</span></span> |
+| <span data-ttu-id="2e68a-108">-udl</span><span class="sxs-lookup"><span data-stu-id="2e68a-108">-udl</span></span> | <span data-ttu-id="2e68a-109">Utiliser la disposition par défaut.</span><span class="sxs-lookup"><span data-stu-id="2e68a-109">Use the default layout.</span></span> |
+| <span data-ttu-id="2e68a-110">-outDir</span><span class="sxs-lookup"><span data-stu-id="2e68a-110">-outDir</span></span> | <span data-ttu-id="2e68a-111">Chemin du dossier de sortie relatif pour créer les vues.</span><span class="sxs-lookup"><span data-stu-id="2e68a-111">The relative output folder path to create the views.</span></span> |
+| <span data-ttu-id="2e68a-112">--referenceScriptLibraries</span><span class="sxs-lookup"><span data-stu-id="2e68a-112">--referenceScriptLibraries</span></span> | <span data-ttu-id="2e68a-113">Ajoute `_ValidationScriptsPartial` aux pages Modifier et Créer.</span><span class="sxs-lookup"><span data-stu-id="2e68a-113">Adds `_ValidationScriptsPartial` to Edit and Create pages</span></span> |
 
-Utilisez le commutateur `h` pour obtenir de l’aide sur la commande `aspnet-codegenerator razorpage` :
+<span data-ttu-id="2e68a-114">Utilisez le commutateur `h` pour obtenir de l’aide sur la commande `aspnet-codegenerator razorpage` :</span><span class="sxs-lookup"><span data-stu-id="2e68a-114">Use the `h` switch to get help on the `aspnet-codegenerator razorpage` command:</span></span>
 
 ```console
 dotnet aspnet-codegenerator razorpage -h
 ```
 <a name="test"></a>
-### <a name="test-the-app"></a>Tester l’application
+### <a name="test-the-app"></a><span data-ttu-id="2e68a-115">Tester l’application</span><span class="sxs-lookup"><span data-stu-id="2e68a-115">Test the app</span></span>
 
-* Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).
-* Testez le lien **Créer**.
+* <span data-ttu-id="2e68a-116">Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).</span><span class="sxs-lookup"><span data-stu-id="2e68a-116">Run the app and append `/Movies` to the URL in the browser (`http://localhost:port/movies`).</span></span>
+* <span data-ttu-id="2e68a-117">Testez le lien **Créer**.</span><span class="sxs-lookup"><span data-stu-id="2e68a-117">Test the **Create** link.</span></span>
 
   ![Créer une page](../../tutorials/razor-pages/model/_static/conan.png)
 
 <a name="scaffold"></a>
 
-* Testez les liens **Modifier**, **Détails** et **Supprimer**.
+* <span data-ttu-id="2e68a-119">Testez les liens **Modifier**, **Détails** et **Supprimer**.</span><span class="sxs-lookup"><span data-stu-id="2e68a-119">Test the **Edit**, **Details**, and **Delete** links.</span></span>
 
-Si vous obtenez l’erreur suivante, vérifiez que vous avez exécuté les migrations et mis à jour la base de données :
+<span data-ttu-id="2e68a-120">Si vous obtenez l’erreur suivante, vérifiez que vous avez exécuté les migrations et mis à jour la base de données :</span><span class="sxs-lookup"><span data-stu-id="2e68a-120">If you get the error similar to the following, verify you have run migrations and updated the database:</span></span>
 
 ```
 An unhandled exception occurred while processing the request.
