@@ -1,4 +1,6 @@
-Ce didacticiel vous permet de découvrir le développement web ASP.NET Core MVC avec des contrôleurs et des vues. Les pages Razor sont une nouvelle alternative dans ASP.NET Core 2.0 et versions ultérieures. Il s’agit d’un modèle de programmation basé sur les pages qui permet de créer une interface utilisateur web de manière plus facile et plus efficace. Nous vous recommandons de suivre le didacticiel sur les [pages Razor](xref:tutorials/razor-pages/razor-pages-start) avant la version MVC. Le didacticiel sur les pages Razor :
+Ce didacticiel vous permet de découvrir le développement web ASP.NET Core MVC avec des contrôleurs et des vues. Razor Pages est une fonctionnalité du framework ASP.NET Core MVC qui rend la génération et le test de l’interface utilisateur web plus faciles et plus productifs. Vous pouvez utiliser Razor Pages parallèlement à des contrôleurs et des vues dans le même projet.
+
+Après avoir utilisé Razor Pages, de nombreux développeurs le préfèrent sur des contrôleurs et des vues. Nous vous recommandons de suivre le tutoriel [Razor Pages](xref:tutorials/razor-pages/razor-pages-start) avant d’essayer la version MVC/Controller/Views. Le didacticiel sur les pages Razor :
 
 * représente la meilleure approche pour le développement de nouvelles applications.
 * est plus facile à suivre ;
