@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/07/2017
 uid: host-and-deploy/index
-ms.openlocfilehash: 31444475e39a12d526dd624bb508770429e414ca
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e62b68c4cfad29bb8bea3b9fbb2c231a4afeccea
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277148"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095666"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 
@@ -71,6 +71,10 @@ Les applications peuvent être déployées directement à partir de Visual Studi
 ## <a name="publishing-to-azure"></a>Publication sur Azure
 
 Consultez la page [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour savoir comment publier une application sur Azure à l’aide de Visual Studio. Il est également possible de la publier sur Azure à partir de la [ligne de commande](xref:tutorials/publish-to-azure-webapp-using-cli).
+
+## <a name="host-in-a-web-farm"></a>Héberger dans une batterie de serveurs web
+
+Pour plus d’informations sur la configuration pour héberger des applications ASP.NET Core dans un environnement de batterie de serveurs web (par exemple, le déploiement de plusieurs instances de votre application pour la scalabilité), consultez <xref:host-and-deploy/web-farm>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
