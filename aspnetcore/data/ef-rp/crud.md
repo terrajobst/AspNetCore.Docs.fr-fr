@@ -5,12 +5,12 @@ description: Montre comment créer, lire, mettre à jour et supprimer avec EF Co
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: dfc79964cc4f15851b42822bb97d14800f54b878
-ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
+ms.openlocfilehash: 0a8d386104d9c62f37d0a94e66344d3f1e23bae9
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37093008"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063349"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -88,7 +88,7 @@ Ne changez pas `@page` en `@page "{id:int}"` globalement, cela casserait les lie
 
 Le code généré automatiquement pour la page Index des étudiants n’inclut pas la propriété `Enrollments`. Dans cette section, le contenu de la collection `Enrollments` s’affiche dans la page Details.
 
-Le méthode `OnGetAsync` de *Pages/Students/Details.cshtml.cs* utilise la méthode `FirstOrDefaultAsync` pour récupérer une seule entité `Student`. Ajoutez le code en surbrillance suivant :
+La méthode `OnGetAsync` de *Pages/Students/Details.cshtml.cs* utilise la méthode `FirstOrDefaultAsync` pour récupérer une seule entité `Student`. Ajoutez le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Details.cshtml.cs?name=snippet_Details&highlight=8-12)]
 
@@ -236,9 +236,9 @@ Testez la suppression.
 
 ## <a name="common-errors"></a>Erreurs courantes
 
-Les liens Student/Home ou autres ne fonctionnent pas :
+Les liens Student/Index ou autres ne fonctionnent pas :
 
-Vérifiez que la Page Razor contient la bonne directive `@page`. Par exemple, la page Razor Student/Home ne doit **pas** contenir de modèle de route :
+Vérifiez que la Page Razor contient la bonne directive `@page`. Par exemple, la page Razor Student/Index ne doit **pas** contenir de modèle de route :
 
 ```cshtml
 @page "{id:int}"

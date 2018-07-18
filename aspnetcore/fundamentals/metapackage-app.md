@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 09/20/2017
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: 4840d0a7536b1e9d8da835690b285ac2074967f5
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e82c219635bbbebe1d6f5639308490c37361b286
+ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277470"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37952953"
 ---
 # <a name="microsoftaspnetcoreapp-metapackage-for-aspnet-core-21"></a>Métapackage Microsoft.AspNetCore.App pour ASP.NET Core 2.1
 
@@ -33,9 +33,9 @@ L’utilisation du métapackage `Microsoft.AspNetCore.App` offre des restriction
 * Les autres packages ajoutés à votre application ne peuvent pas changer la version des packages inclus dans `Microsoft.AspNetCore.App`.
 * La cohérence des versions garantit une expérience fiable. `Microsoft.AspNetCore.App` a été conçu pour empêcher des combinaisons de versions non testées de bits associés d’être utilisées ensemble dans la même application.
 
-Les applications qui utilisent le métapackage `Microsoft.AspNetCore.App` tirent automatiquement parti du framework partagé ASP.NET Core. Quand vous utilisez le métapackage `Microsoft.AspNetCore.App`, **aucune** des ressources des packages NuGet ASP.NET Core référencés n’est déployée avec l’application &mdash; le framework partagé ASP.NET Core contient ces ressources. Les ressources présentes dans le framework partagé sont précompilées afin d’améliorer la vitesse de démarrage des applications. Pour plus d’informations, consultez « framework partagé » dans [Empaquetage de la distribution de .NET Core](/dotnet/core/build/distribution-packaging).
+Les applications qui utilisent le métapackage `Microsoft.AspNetCore.App` tirent automatiquement parti du framework partagé ASP.NET Core. Quand vous utilisez le métapackage `Microsoft.AspNetCore.App`, **aucune** des ressources des packages NuGet ASP.NET Core référencés n’est déployée avec l’application : le framework partagé ASP.NET Core contient ces ressources. Les ressources présentes dans le framework partagé sont précompilées afin d’améliorer la vitesse de démarrage des applications. Pour plus d’informations, consultez « framework partagé » dans [Empaquetage de la distribution de .NET Core](/dotnet/core/build/distribution-packaging).
 
-Le fichier projet *.csproj* suivant référence le métapackage `Microsoft.AspNetCore.App` pour ASP.NET Core :
+Le fichier de projet suivant référence le métapackage `Microsoft.AspNetCore.App` pour ASP.NET Core et représente un modèle ASP.NET Core 2.1 standard :
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -45,25 +45,14 @@ Le fichier projet *.csproj* suivant référence le métapackage `Microsoft.AspNe
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.1" />
   </ItemGroup>
 
 </Project>
-
 ```
 
-La balise précédente représente un modèle ASP.NET Core 2.1 et ultérieur typique. Il ne spécifie pas de numéro de version pour la référence du package `Microsoft.AspNetCore.App`. Lorsque la version n’est pas spécifiée, une version [implicite](https://github.com/dotnet/core/blob/master/release-notes/1.0/sdk/1.0-rc3-implicit-package-refs.md) est spécifiée par le kit SDK, autrement dit, `Microsoft.NET.Sdk.Web`. Nous vous recommandons de garder la version implicite spécifiée par le kit SDK et de ne pas définir de façon explicite le numéro de version sur la référence de package. Vous pouvez laisser un commentaire GitHub dans [Discussion for the Microsoft.AspNetCore.App implicit version](https://github.com/aspnet/Docs/issues/6430).
-
-La version implicite est définie sur `major.minor.0` pour les applications portables. Le mécanisme de restauration par progression des frameworks partagés exécute l’application sur la dernière version compatible parmi les frameworks partagés installés. Pour garantir l’utilisation de la même version en développement, test et production, vérifiez que la même version du framework partagé est installée dans tous les environnements. Pour les applications autonomes, le numéro de version implicite est défini sur le `major.minor.patch` du framework partagé inclus dans le kit SDK installé.
-
-La spécification d’un numéro de version sur la référence `Microsoft.AspNetCore.App` ne garantit **pas** que la version du framework partagé sera choisie. Par exemple, supposons que la version « 2.1.1 » est spécifiée, mais que la version « 2.1.3 » est installée. Dans ce cas, l’application utilise « 2.1.3 ». Même si ce n’est pas recommandé, vous pouvez désactiver la restauration par progression (correctif et/ou mineur). Pour plus d’informations sur la restauration par progression de l’hôte dotnet et sur la configuration de son comportement, consultez [dotnet host roll forward](https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/roll-forward-on-no-candidate-fx.md).
+Le numéro de version sur la référence `Microsoft.AspNetCore.App` ne garantit **pas** que la version du framework partagé sera utilisée. Par exemple, supposons que la version `2.1.1` est spécifiée, mais que la version `2.1.3` est installée. Dans ce cas, l’application utilise `2.1.3`. Même si ce n’est pas recommandé, vous pouvez désactiver le comportement de restauration par progression (correctif et/ou mineur). Pour plus d’informations sur le comportement de restauration par progression de la version de package, consultez [dotnet host roll forward](https://github.com/dotnet/core-setup/blob/master/Documentation/design-docs/roll-forward-on-no-candidate-fx.md).
 
 Le [métapackage](/dotnet/core/packages#metapackages) `Microsoft.AspNetCore.App` n’est pas un package traditionnel qui est mis à jour à partir de NuGet. Semblable à `Microsoft.NETCore.App`, `Microsoft.AspNetCore.App` représente un runtime partagé avec une sémantique de version spéciale gérée en dehors de NuGet. Pour plus d’informations, consultez [Packages, métapackages et frameworks](/dotnet/core/packages).
-
-`<Project Sdk` doit avoir la valeur `Microsoft.NET.Sdk.Web` pour utiliser la version implicite `Microsoft.AspNetCore.App`.  Quand `<Project Sdk="Microsoft.NET.Sdk">` est utilisé, les avertissements suivants sont générés :
-
-*Avertissement NU1604 : La dépendance du projet Microsoft.AspNetCore.App ne contient pas de limite inférieure inclusive. Incluez une limite inférieure dans la version de dépendance pour assurer des résultats de restauration cohérents.*
-
-*Avertissement NU1602 : [Nom du projet] ne fournit pas de limite inférieure inclusive pour la dépendance Microsoft.AspNetCore.App. Une meilleure correspondance approximative de Microsoft.AspNetCore.App 2.1.0 a été résolue.*
 
 Si votre application utilisait `Microsoft.AspNetCore.All`, consultez [Migration de Microsoft.AspNetCore.All vers Microsoft.AspNetCore.App](xref:fundamentals/metapackage#migrate).

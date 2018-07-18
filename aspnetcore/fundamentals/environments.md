@@ -5,12 +5,12 @@ description: Découvrez comment contrôler le comportement de l’application da
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: 8983a0ce81beb16d68c799d30bfbfce6e7b693b1
-ms.sourcegitcommit: 18339e3cb5a891a3ca36d8146fa83cf91c32e707
+ms.openlocfilehash: 3394113de37da2571ab6398405751961117f12d2
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37433946"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992871"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
@@ -204,19 +204,50 @@ set ASPNETCORE_ENVIRONMENT=Development
 $Env:ASPNETCORE_ENVIRONMENT = "Development"
 ```
 
-Ces commandes prennent effet uniquement pour la fenêtre active. Quand la fenêtre est fermée, le paramètre `ASPNETCORE_ENVIRONMENT` reprend la valeur de machine ou la valeur par défaut. Pour définir la valeur globalement dans Windows, ouvrez le **Panneau de configuration** > **Système** > **Paramètres système avancés** et ajoutez ou modifiez la valeur `ASPNETCORE_ENVIRONMENT` :
+Ces commandes prennent effet uniquement pour la fenêtre active. Quand la fenêtre est fermée, le paramètre `ASPNETCORE_ENVIRONMENT` reprend la valeur de machine ou la valeur par défaut.
 
-![Propriétés système avancées](environments/_static/systemsetting_environment.png)
+Pour définir la valeur globalement dans Windows, utilisez l’une des approches suivantes :
 
-![Variable d’environnement ASPNET Core](environments/_static/windows_aspnetcore_environment.png)
+* Ouvrez le **Panneau de configuration** > **Système** > **Paramètres système avancés**, puis ajoutez ou modifiez la valeur `ASPNETCORE_ENVIRONMENT` :
+
+  ![Propriétés système avancées](environments/_static/systemsetting_environment.png)
+
+  ![Variable d’environnement ASPNET Core](environments/_static/windows_aspnetcore_environment.png)
+
+* Ouvrez une invite de commandes d’administration, puis utilisez la commande `setx`, ou ouvrez une invite de commandes PowerShell d’administration et utilisez `[Environment]::SetEnvironmentVariable` :
+
+  **Invite de commandes**
+
+  ```console
+  setx ASPNETCORE_ENVIRONMENT=Development /M
+  ```
+
+  Le commutateur `/M` indique de définir la variable d’environnement au niveau du système. Si le commutateur `/M` n’est pas utilisé, la variable d’environnement est définie pour le compte d’utilisateur.
+
+  **PowerShell**
+
+  ```powershell
+  [Environment]::SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development", "Machine")
+  ```
+
+  La valeur d’option `Machine` indique de définir la variable d’environnement au niveau du système. Si la valeur d’option est remplacée par `User`, la variable d’environnement est définie pour le compte d’utilisateur.
+
+Quand la variable d’environnement `ASPNETCORE_ENVIRONMENT` est définie globalement, elle prend effet pour `dotnet run` dans n’importe quelle fenêtre Commande ouverte une fois la valeur définie.
 
 **web.config**
 
-Consultez la section *Définition des variables d’environnement* de la rubrique [Informations de référence sur la configuration du module ASP.NET Core](xref:host-and-deploy/aspnet-core-module#setting-environment-variables).
+Pour définir la variable d’environnement `ASPNETCORE_ENVIRONMENT` avec *web.config*, consultez la section *Définition des variables d’environnement* à l’adresse <xref:host-and-deploy/aspnet-core-module#setting-environment-variables>. Quand la variable d’environnement `ASPNETCORE_ENVIRONMENT` est définie avec *web.config*, sa valeur remplace un paramètre au niveau du système.
 
 **Par pool d’applications IIS**
 
-Pour définir des variables d’environnement pour des applications qui s’exécutent dans des pools d’applications isolés (prise en charge sur IIS 10.0+), consultez la section *Commande AppCmd.exe* de la rubrique [Variables d’environnement &lt;environmentVariables&gt;](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe).
+Pour définir la variables d’environnement `ASPNETCORE_ENVIRONMENT` pour une application qui s’exécute dans un pool d’applications isolé (prie en charge sur IIS 10.0 ou versions ultérieures), consultez la section *Commande AppCmd.exe* de la rubrique [Variables d’environnement &lt;environmentVariables&gt;](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe). Quand la variable d’environnement `ASPNETCORE_ENVIRONMENT` est définie pour un pool d’applications, sa valeur remplace un paramètre au niveau du système.
+
+> [!IMPORTANT]
+> Lors de l’hébergement d’une application dans IIS et de l’ajout ou du changement de la variable d’environnement `ASPNETCORE_ENVIRONMENT`, utilisez l’une des approches suivantes pour que la nouvelle valeur soit récupérée par des applications :
+>
+> * Redémarrez le pool d’applications d’une application.
+> * Exécutez la commande `net stop was /y` suivie de `net start w3svc` à partir d’une invite de commandes.
+> * Redémarrez le serveur.
 
 ### <a name="macos"></a>macOS
 
@@ -244,17 +275,125 @@ Pour les versions Linux, exécutez la commande `export` à une invite de command
 
 ### <a name="configuration-by-environment"></a>Configuration par environnement
 
-Pour plus d’informations, consultez [Configuration par environnement](xref:fundamentals/configuration/index#configuration-by-environment).
+Consultez la section*Configuration par environnement* à l’adresse <xref:fundamentals/configuration/index#configuration-by-environment>.
 
 ## <a name="environment-based-startup-class-and-methods"></a>Classe et méthodes Startup en fonction de l’environnement
 
-Quand une application ASP.NET Core démarre, la [classe Startup](xref:fundamentals/startup) amorce l’application. Si une classe `Startup{EnvironmentName}` existe, elle est appelée pour cet `EnvironmentName` :
+### <a name="startup-class-conventions"></a>Conventions de la classe Startup
 
-[!code-csharp[](environments/sample/EnvironmentsSample/StartupDev.cs?name=snippet&highlight=1)]
+Quand une application ASP.NET Core démarre, la [classe Startup](xref:fundamentals/startup) amorce l’application. L’application peut définir différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), et la classe `Startup` appropriée est sélectionnée au moment de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si aucune classe `Startup{EnvironmentName}` correspondante n’est trouvée, la classe `Startup` est utilisée.
 
-[WebHostBuilder.UseStartup&lt;TStartup&gt;](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup#Microsoft_AspNetCore_Hosting_WebHostBuilderExtensions_UseStartup__1_Microsoft_AspNetCore_Hosting_IWebHostBuilder_) remplace les sections de configuration.
+Pour implémenter des classes `Startup` basées sur l’environnement, créez une classe `Startup{EnvironmentName}` pour chaque environnement en cours d’utilisation et une classe `Startup` de base :
 
-[Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) et [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) prennent en charge les versions propres à l’environnement de la forme `Configure{EnvironmentName}` et `Configure{EnvironmentName}Services` :
+```csharp
+// Startup class to use in the Development environment
+public class StartupDevelopment
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        ...
+    }
+}
+
+// Startup class to use in the Production environment
+public class StartupProduction
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        ...
+    }
+}
+
+// Fallback Startup class
+// Selected if the environment doesn't match a Startup{EnvironmentName} class
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        ...
+    }
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        ...
+    }
+}
+```
+
+Utilisez la surcharge [UseStartup (IWebHostBuilder, String)](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usestartup) qui accepte un nom d’assembly :
+
+::: moniker range=">= aspnetcore-2.1"
+
+```csharp
+public static void Main(string[] args)
+{
+    CreateWebHostBuilder(args).Build().Run();
+}
+
+public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+{
+    var assemblyName = typeof(Startup).GetTypeInfo().Assembly.FullName;
+
+    return WebHost.CreateDefaultBuilder(args)
+        .UseStartup(assemblyName);
+}
+```
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+```csharp
+public static void Main(string[] args)
+{
+    CreateWebHost(args).Run();
+}
+
+public static IWebHost CreateWebHost(string[] args)
+{
+    var assemblyName = typeof(Startup).GetTypeInfo().Assembly.FullName;
+
+    return WebHost.CreateDefaultBuilder(args)
+        .UseStartup(assemblyName)
+        .Build();
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var assemblyName = typeof(Startup).GetTypeInfo().Assembly.FullName;
+
+        var host = new WebHostBuilder()
+            .UseStartup(assemblyName)
+            .Build();
+
+        host.Run();
+    }
+}
+```
+
+::: moniker-end
+
+### <a name="startup-method-conventions"></a>Conventions de la méthode Startup
+
+[Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) et [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices) prennent en charge les versions propres à l’environnement de la forme `Configure<EnvironmentName>` et `Configure<EnvironmentName>Services` :
 
 [!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet_all&highlight=15,51)]
 

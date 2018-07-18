@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: f0b907e4322809dfe2bcd287bb064f35f5ebe150
-ms.sourcegitcommit: 79b756ea03eae77a716f500ef88253ee9b1464d2
+ms.openlocfilehash: 285d74c0d12e3aca4d8c33d39467dfda02712993
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36314118"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063258"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -41,7 +41,7 @@ Le constructeur de la classe `Startup` accepte les dépendances définies par l�
 
 [!code-csharp[](startup/snapshot_sample/Startup2.cs)]
 
-Une alternative à l’injection de `IHostingEnvironment` consiste à utiliser une approche basée sur les conventions. L’application peut définir différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), et la classe de démarrage appropriée est sélectionnée lors de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et comprend à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments#environment-based-startup-class-and-methods).
+Une alternative à l’injection de `IHostingEnvironment` consiste à utiliser une approche basée sur les conventions. L’application peut définir différentes classes `Startup` pour différents environnements (par exemple, `StartupDevelopment`), et la classe `Startup` appropriée est sélectionnée au moment de l’exécution. La classe dont le suffixe du nom correspond à l'environnement actuel est prioritaire. Si l’application est exécutée dans l’environnement de développement et comprend à la fois une classe `Startup` et une classe `StartupDevelopment`, la classe `StartupDevelopment` est utilisée. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments#environment-based-startup-class-and-methods).
 
 Pour en savoir plus sur `WebHostBuilder`, consultez la rubrique [Hébergement](xref:fundamentals/host/index). Pour plus d’informations sur la gestion des erreurs lors du démarrage, consultez [Gestion des exceptions de démarrage](xref:fundamentals/error-handling#startup-exception-handling).
 
@@ -84,8 +84,8 @@ La compatibilité par défaut pour les applications ASP.NET Core 2.1 et les vers
 
 Le code suivant définit le mode de compatibilité sur ASP.NET Core 2.1, sauf pour les comportements suivants :
 
-* [AllowCombiningAuthorizeFilters](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
-* [InputFormatterExceptionPolicy](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
+* [AllowCombiningAuthorizeFilters](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
+* [InputFormatterExceptionPolicy](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
 
 [!code-csharp[Main](startup/sampleCompatibility/Startup2.cs?name=snippet1)]
 
@@ -94,7 +94,7 @@ Pour les applications qui rencontrent des changements de comportement cassants, 
 * Vous permet d’utiliser la dernière version et de refuser des changements de comportement cassants spécifiques.
 * Vous laisse le temps de mettre à jour votre application pour qu’elle fonctionne avec les derniers changements.
 
-Les commentaires dans la source de la classe [MvcOptions](https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs) expliquent clairement ce qui a changé et pourquoi les changements représentent une amélioration pour la plupart des utilisateurs.
+Les commentaires dans la source de la classe [MvcOptions](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs) expliquent clairement ce qui a changé et pourquoi les changements représentent une amélioration pour la plupart des utilisateurs.
 
 À une date ultérieure, il y aura une [version d’ASP.NET Core 3.0](https://github.com/aspnet/Home/wiki/Roadmap). Les comportements anciens pris en charge par les commutateurs de compatibilité seront supprimés dans la version 3.0. Nous pensons que ce sont des changements positifs, qui vont bénéficier à presque tous les utilisateurs. Comme nous introduisons ces changements maintenant, la plupart des applications peuvent en profiter tout de suite. Pour les autres applications, les développeurs ont du temps pour les mettre à jour.
 

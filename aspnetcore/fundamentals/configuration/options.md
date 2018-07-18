@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 96d7d2956fa9bf72706cde0532ee7f4ff753b72c
-ms.sourcegitcommit: 2941e24d7f3fd3d5e88d27e5f852aaedd564deda
+ms.openlocfilehash: c996ac6ab05b98bcca72d0993fe412f553b58106
+ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126259"
+ms.lasthandoff: 07/12/2018
+ms.locfileid: "38992962"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
@@ -154,13 +154,29 @@ Quand l’application est exécutée, les valeurs d’options sont affichées da
 
 ![Les valeurs d’options Option1: value1_from_json et Option2: -1 sont chargées à partir du modèle et par injection dans la vue.](options/_static/view.png)
 
+::: moniker range=">= aspnetcore-1.1"
+
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>Recharger les données de configuration avec IOptionsSnapshot
 
 Le rechargement des données de configuration avec `IOptionsSnapshot` est illustré dans l’exemple &num;5 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
-*Nécessite ASP.NET Core 1.1 ou version ultérieure.*
+[IOptionsSnapshot](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1) prend en charge le rechargement des options avec une charge de traitement minimale.
 
-[IOptionsSnapshot](/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1) prend en charge le rechargement des options avec une charge de traitement minimale. Dans ASP.NET Core 1.1, `IOptionsSnapshot` est un instantané [d’IOptionsMonitor&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) et se met à jour automatiquement chaque fois que le moniteur déclenche des changements liés à la modification de la source de données. Dans ASP.NET Core 2.0 et versions ultérieures, les options sont calculées une fois par demande quand le système y accède et sont mises en cache pour toute la durée de vie de la demande.
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
+Les options sont calculées une fois par requête quand le système y accède et sont mises en cache pour toute la durée de vie de la requête.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+`IOptionsSnapshot` est un instantané d’[IOptionsMonitor&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) et se met à jour automatiquement chaque fois que le moniteur déclenche des changements liés à la modification de la source de données.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-1.1"
 
 Dans l’exemple suivant, un `IOptionsSnapshot` est créé à la suite de la modification du fichier *appsettings.json* (*Pages/Index.cshtml.cs*). Plusieurs demandes adressées au serveur retournent des valeurs constantes fournies par le fichier *appsettings.json* tant que ce dernier n’est pas changé et que la configuration n’est pas rechargée.
 
@@ -182,11 +198,13 @@ Changez les valeurs dans le fichier *appsettings.json* en `value1_from_json UPDA
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 ```
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
 ## <a name="named-options-support-with-iconfigurenamedoptions"></a>Prise en charge des options nommées avec IConfigureNamedOptions
 
 La prise en charge des options nommées avec [IConfigureNamedOptions](/dotnet/api/microsoft.extensions.options.iconfigurenamedoptions-1) est illustrée dans l’exemple &num;6 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
-
-*Nécessite ASP.NET Core 2.0 ou version ultérieure.*
 
 La prise en charge des *options nommées* permet à l’application de faire la distinction entre les configurations d’options nommées. Dans l’exemple d’application, les options nommées sont déclarées avec [OptionsServiceCollectionExtensions.Configure&lt;TOptions&gt;(IServiceCollection, String, Action&lt;TOptions&gt;)](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configure), qui appelle ensuite la méthode d’extension [ConfigureNamedOptions&lt;TOptions&gt;.Configure](/dotnet/api/microsoft.extensions.options.configurenamedoptions-1.configure) :
 
@@ -229,11 +247,9 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 ```
 
 > [!NOTE]
-> Dans ASP.NET Core 2.0 et versions ultérieures, toutes les options sont des instances nommées. Les instances `IConfigureOption` existantes sont traitées comme ciblant l’instance `Options.DefaultName`, qui est `string.Empty`. En outre, `IConfigureNamedOptions` implémente `IConfigureOptions`. L’implémentation par défaut de [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) ([source de référence](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) a une logique qui permet de les utiliser chacune de façon appropriée. L’option nommée `null` est utilisée pour cibler toutes les instances nommées au lieu d’une instance nommée spécifique ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) et [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) utilisent cette convention).
+> Toutes les options sont des instances nommées. Les instances `IConfigureOption` existantes sont traitées comme ciblant l’instance `Options.DefaultName`, qui est `string.Empty`. En outre, `IConfigureNamedOptions` implémente `IConfigureOptions`. L’implémentation par défaut de [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) ([source de référence](https://github.com/aspnet/Options/blob/release/2.0/src/Microsoft.Extensions.Options/IOptionsFactory.cs)) a une logique qui permet de les utiliser chacune de façon appropriée. L’option nommée `null` est utilisée pour cibler toutes les instances nommées au lieu d’une instance nommée spécifique ([ConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.configureall) et [PostConfigureAll](/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigureall) utilisent cette convention).
 
 ## <a name="ipostconfigureoptions"></a>IPostConfigureOptions
-
-*Nécessite ASP.NET Core 2.0 ou version ultérieure.*
 
 Définir la post-configuration avec [IPostConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ipostconfigureoptions-1). La post-configuration s’exécute après la totalité de la configuration [IConfigureOptions&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.iconfigureoptions-1) :
 
@@ -262,13 +278,19 @@ services.PostConfigureAll<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
+::: moniker-end
+
 ## <a name="options-factory-monitoring-and-cache"></a>Fabrique d’options, surveillance et cache
 
 [IOptionsMonitor](/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1) est utilisé pour les notifications quand des instances `TOptions` changent. `IOptionsMonitor` prend en charge les options rechargeables, les notifications de modifications et `IPostConfigureOptions`.
 
-La classe [IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) (ASP.NET Core 2.0 ou version ultérieure) est chargée de créer les instances d’options. Elle dispose d’une seule méthode ([Create](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create)). L’implémentation par défaut prend toutes les `IConfigureOptions` et `IPostConfigureOptions` inscrites et exécute toutes les configurations, puis les post-configurations. Elle fait la distinction entre `IConfigureNamedOptions` et `IConfigureOptions` et n’appelle que l’interface appropriée.
+::: moniker range=">= aspnetcore-2.0"
 
-[IOptionsMonitorCache&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) (ASP.NET Core 2.0 ou version ultérieure) est utilisé par `IOptionsMonitor` pour la mise en cache des instances `TOptions`. `IOptionsMonitorCache` invalide les instances des options dans le moniteur afin que la valeur soit recalculée ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove)). Les valeurs peuvent aussi être introduites manuellement avec [TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd). La méthode [Clear](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear) est utilisée quand toutes les instances nommées doivent être recréées à la demande.
+[IOptionsFactory&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1) est chargé de créer les instances d’options. Elle dispose d’une seule méthode ([Create](/dotnet/api/microsoft.extensions.options.ioptionsfactory-1.create)). L’implémentation par défaut prend toutes les `IConfigureOptions` et `IPostConfigureOptions` inscrites et exécute toutes les configurations, puis les post-configurations. Elle fait la distinction entre `IConfigureNamedOptions` et `IConfigureOptions` et n’appelle que l’interface appropriée.
+
+[IOptionsMonitorCache&lt;TOptions&gt;](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1) est utilisé par `IOptionsMonitor` pour la mise en cache des instances `TOptions`. `IOptionsMonitorCache` invalide les instances des options dans le moniteur afin que la valeur soit recalculée ([TryRemove](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryremove)). Les valeurs peuvent aussi être introduites manuellement avec [TryAdd](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.tryadd). La méthode [Clear](/dotnet/api/microsoft.extensions.options.ioptionsmonitorcache-1.clear) est utilisée quand toutes les instances nommées doivent être recréées à la demande.
+
+::: moniker-end
 
 ## <a name="accessing-options-during-startup"></a>Accès aux options au démarrage
 
