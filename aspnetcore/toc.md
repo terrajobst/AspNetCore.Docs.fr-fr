@@ -287,6 +287,7 @@
 ### [Visual Studio Tools pour Docker](xref:host-and-deploy/docker/visual-studio-tools-for-docker)
 ### [Publier sur une image Docker](https://azure.microsoft.com/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker/)
 ## [Configuration des proxys et des équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer)
+## [Héberger dans une batterie de serveurs web](xref:host-and-deploy/web-farm)
 ## [Profils de publication Visual Studio](xref:host-and-deploy/visual-studio-publish-profiles)
 ## [Structure de répertoires](xref:host-and-deploy/directory-structure)
 ## [Informations de référence sur les erreurs courantes pour Azure App Service et IIS](xref:host-and-deploy/azure-iis-errors-reference)
