@@ -1,17 +1,17 @@
 ---
 title: ASP.NET Core SignalR
-author: rachelappel
+author: tdykstra
 description: Découvrez les rubriques qui se rapportent à ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: rachelap
+ms.author: tdykstra
 ms.date: 07/03/2018
 uid: signalr/index
-ms.openlocfilehash: 5c5c8c9af159a187cdb5c6be38dc3249addae597
-ms.sourcegitcommit: 32626efaa7316c9b283c96be6516e637d548c5e5
+ms.openlocfilehash: b150ec08638503db5b377b4357516d64e49ed653
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39025470"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095364"
 ---
 # <a name="aspnet-core-signalr"></a>ASP.NET Core SignalR
 

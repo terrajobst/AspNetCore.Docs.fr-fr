@@ -6,25 +6,24 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/14/2017
 uid: performance/caching/distributed
-ms.openlocfilehash: 5ddc3a6927652f773ab38f93db1e222c5a1900b3
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: 861664fcad576c11abe052837b72367eb2b9479a
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077697"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095679"
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Travailler avec un cache distribué dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
-Les caches distribués peuvent améliorer les performances et la scalabilité des applications ASP.NET Core, en particulier lorsqu'ils sont hébergés dans un environnement cloud ou dans une ferme de serveurs. Cet article explique comment utiliser les abstractions et les implémentations de cache distribué intégrées dans ASP.NET Core.
-
+Les caches distribués peuvent améliorer les performances et l’évolutivité des applications ASP.NET Core, en particulier lorsque hébergé dans le cloud ou une batterie de serveurs.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="what-is-a-distributed-cache"></a>Qu’est un cache distribué
 
-Un cache distribué est partagé par plusieurs serveurs d’application (consultez [principes de base du Cache](memory.md#caching-basics)). Les informations contenues dans le cache ne sont pas isolées dans la mémoire de chaque serveur de site web, mais les données mises en cache sont disponibles pour tous les serveurs de l’application. Cela présente plusieurs avantages :
+Un cache distribué est partagé par plusieurs serveurs d’applications (consultez [principes fondamentaux du Cache](memory.md#caching-basics)). Les informations contenues dans le cache ne sont pas isolées dans la mémoire de chaque serveur de site web, mais les données mises en cache sont disponibles pour tous les serveurs de l’application. Cela présente plusieurs avantages :
 
 1. Les données mises en cache sont cohérentes sur tous les serveurs web. Les utilisateurs ne voient pas des résultats différents selon le serveur web qui gère leur demande
 
@@ -55,13 +54,13 @@ Ajoute un élément (comme `byte[]`) dans le cache à l’aide d’une clé de t
 
 Actualise un élément dans le cache en fonction de sa clé, la réinitialisation de son délai d’expiration est décalée (si défini).
 
-**Supprimer, RemoveAsync**
+**Remove, RemoveAsync**
 
 Supprime une entrée de cache en fonction de sa clé.
 
 Pour utiliser l'interface `IDistributedCache` :
 
-   1. Ajouter les packages NuGet nécessaires à votre fichier projet.
+   1. Ajoutez les packages NuGet nécessaires à votre fichier projet.
 
    2. Configurer l’implémentation spécifique de `IDistributedCache` dans la méthode `ConfigureServices` de votre classe `Startup` et l’ajouter au conteneur.
 
@@ -81,7 +80,7 @@ Le code suivant du fichier *Startup.cs* affiche la valeur :
 [!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet1)]
 
 > [!NOTE]
-> Étant donné que `IDistributedCache` est configuré dans la méthode `ConfigureServices`, elle est disponible pour la méthode `Configure` en tant que paramètre. Afin de pouvoir injecter sous forme de dépendance l'instance configurée, ajoutez-la en tant que paramètre. Pour permettre à l’instance configurée être fourni via DI, ajoutez-le en tant que paramètre.
+> Étant donné que `IDistributedCache` est configuré dans la méthode `ConfigureServices`, elle est disponible pour la méthode `Configure` en tant que paramètre. Afin de pouvoir injecter sous forme de dépendance l'instance configurée, ajoutez-la en tant que paramètre. Ajouter en tant que paramètre permettra l’instance configurée être fourni via l’injection de dépendances.
 
 ## <a name="using-a-redis-distributed-cache"></a>Utiliser un cache distribué Redis
 
@@ -102,7 +101,7 @@ L’implémentation proposée par SqlServerCache permet l'utilisation d'une base
 
 ::: moniker range="< aspnetcore-2.1"
 
-Ajouter `SqlConfig.Tools` à la `<ItemGroup>` élément du fichier de projet et exécuter `dotnet restore`.
+Ajouter `SqlConfig.Tools` à la `<ItemGroup>` élément du fichier projet et exécutez `dotnet restore`.
 
 ```xml
 <ItemGroup>
@@ -113,7 +112,7 @@ Ajouter `SqlConfig.Tools` à la `<ItemGroup>` élément du fichier de projet et 
 
 ::: moniker-end
 
-Test SqlConfig.Tools en exécutant la commande suivante :
+Testez SqlConfig.Tools en exécutant la commande suivante :
 
 ```console
 dotnet sql-cache create --help
@@ -121,7 +120,7 @@ dotnet sql-cache create --help
 
 SqlConfig.Tools affiche l’utilisation, options et l’aide de la commande.
 
-Créer une table dans SQL Server en exécutant le `sql-cache create` commande :
+Créer une table dans SQL Server en exécutant la `sql-cache create` commande :
 
 ```console
 dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
@@ -129,7 +128,7 @@ info: Microsoft.Extensions.Caching.SqlConfig.Tools.Program[0]
 Table and index were created successfully.
 ```
 
-Le tableau présente le schéma suivant :
+La table créée présente le schéma suivant :
 
 ![Table de Cache de SQL Server](distributed/_static/SqlServerCacheTable.png)
 
@@ -146,11 +145,12 @@ Lorsque vous décidez quelle implémentation de `IDistributedCache` est adaptée
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Cache dans Azure redis](https://azure.microsoft.com/documentation/services/redis-cache/)
-* [Base de données SQL Azure](https://azure.microsoft.com/documentation/services/sql-database/)
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
-* [Mise en cache des réponses](xref:performance/caching/response)
-* [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
-* [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* [Redis Cache sur Azure](https://azure.microsoft.com/documentation/services/redis-cache/)
+* [Base de données SQL sur Azure](https://azure.microsoft.com/documentation/services/sql-database/)
+* <xref:performance/caching/memory>
+* <xref:fundamentals/primitives/change-tokens>
+* <xref:performance/caching/response>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
+* <xref:host-and-deploy/web-farm>

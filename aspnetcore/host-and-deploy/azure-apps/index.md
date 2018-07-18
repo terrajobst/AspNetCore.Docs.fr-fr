@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/29/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 2890b2e6cdb536850b3764b5a78084cca335b489
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 83965e69249ca8196d0f226528735444936567ad
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275760"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095611"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Héberger ASP.NET Core sur Azure App Service
 
@@ -151,11 +151,12 @@ Les applications autonomes sont une option pour toutes les applications ASP.NET 
 * [Azure App Service: The Best Place to Host your .NET Apps (55-minute overview video)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
 * [Azure Friday: Azure App Service Diagnostic and Troubleshooting Experience (12-minute video)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Vue d’ensemble des diagnostics Azure App Service](/azure/app-service/app-service-diagnostics)
+* <xref:host-and-deploy/web-farm>
 
 Azure App Service sur Windows Server utilise [IIS (Internet Information Services)](https://www.iis.net/). Les rubriques suivantes se rapportent à la technologie IIS sous-jacente :
 
-* [Héberger ASP.NET Core sur Windows avec IIS](xref:host-and-deploy/iis/index)
-* [Introduction au Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
-* [Informations de référence sur la configuration du Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
-* [Modules IIS avec ASP.NET Core](xref:host-and-deploy/iis/modules)
+* <xref:host-and-deploy/iis/index>
+* <xref:fundamentals/servers/aspnet-core-module>
+* <xref:host-and-deploy/aspnet-core-module>
+* <xref:host-and-deploy/iis/modules>
 * [Bibliothèque Microsoft TechNet : Windows Server](/windows-server/windows-server-versions)

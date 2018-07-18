@@ -1,18 +1,18 @@
 ---
 title: Utilisation des hubs dans ASP.NET Core SignalR
-author: rachelappel
-description: En savoir plus sur l’utilisation des hubs dans ASP.NET Core SignalR.
+author: tdykstra
+description: Découvrez comment utiliser des hubs dans ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: rachelap
+ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/01/2018
 uid: signalr/hubs
-ms.openlocfilehash: 5558a5787396c3aa8055175486369eb2534c1fa2
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: be39666373e2b099054bb71f4a7fcf17aeb9a01c
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277668"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095279"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utilisation des hubs dans SignalR pour ASP.NET Core
 
@@ -26,7 +26,7 @@ L’API Hubs de SignalR vous permet d’appeler des méthodes sur des clients co
 
 ## <a name="configure-signalr-hubs"></a>Configurer les concentrateurs SignalR
 
-L’intergiciel (middleware) SignalR requiert certains services, qui sont configurés en appelant `services.AddSignalR`.
+Le middleware SignalR requiert certains services, qui sont configurés en appelant `services.AddSignalR`.
 
 [!code-csharp[Configure service](hubs/sample/startup.cs?range=38)]
 
@@ -40,7 +40,7 @@ Créez un hub en déclarant une classe qui hérite de `Hub`et ajoutez-lui des m�
 
 [!code-csharp[Create and use hubs](hubs/sample/hubs/chathub.cs?range=8-37)]
 
-Vous pouvez spécifier un type de retour et des paramètres, y compris les types complexes et les tableaux, comme vous le feriez dans n’importe quelle méthode c#. SignalR gère la sérialisation et désérialisation d’objets complexes et les tableaux dans vos paramètres et les valeurs de retour.
+Vous pouvez spécifier un type de retour et paramètres, y compris les types complexes et les tableaux, comme vous le feriez dans n’importe quelle méthode c#. SignalR gère la sérialisation et désérialisation des objets complexes et des tableaux dans vos paramètres et valeurs de retournés.
 
 ## <a name="the-clients-object"></a>L’objet de Clients
 
@@ -60,13 +60,13 @@ En outre, `Hub.Clients` contient les méthodes suivantes :
 | ------ | ----------- |
 | `AllExcept` | Appelle une méthode sur tous les clients connectés à l’exception des connexions spécifiées |
 | `Client` | Appelle une méthode sur un client connecté spécifique |
-| `Clients` | Appelle une méthode sur les clients connectés spécifiques |
+| `Clients` | Appelle une méthode sur des clients connectés spécifiques |
 | `Group` | Appelle une méthode à toutes les connexions dans le groupe spécifié  |
 | `GroupExcept` | Appelle une méthode à toutes les connexions dans le groupe spécifié, à l’exception des connexions spécifiées |
 | `Groups` | Appelle une méthode à plusieurs groupes de connexions  |
 | `OthersInGroup` | Appelle une méthode sur un groupe de connexions, à l’exclusion du client qui a appelé la méthode de hub  |
-| `User` | Appelle une méthode à toutes les connexions associées à un utilisateur spécifique |
-| `Users` | Appelle une méthode à toutes les connexions associées aux utilisateurs spécifiés |
+| `User` | Appelle une méthode pour toutes les connexions associées à un utilisateur spécifique |
+| `Users` | Appelle une méthode pour toutes les connexions associées aux utilisateurs spécifiés |
 
 Chaque méthode ou propriété des tableaux précédents retourne un objet avec une méthode `SendAsync`. Le méthode `SendAsync` vous permet de fournir le nom et les paramètres de la méthode du client à appeler.
 
@@ -92,6 +92,6 @@ Les exceptions levées dans vos méthodes de hub sont envoyées au client qui a 
 
 ## <a name="related-resources"></a>Ressources connexes
 
-* [Présentation d’ASP.NET Core SignalR](xref:signalr/introduction)
+* [Introduction à ASP.NET Core SignalR](xref:signalr/introduction)
 * [Client JavaScript](xref:signalr/javascript-client)
 * [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
