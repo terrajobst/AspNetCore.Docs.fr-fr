@@ -6,26 +6,26 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/17/2017
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: b2fa1921120d297f4b0dbb0294a00e0e573f4e04
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f3cac3541ffe633886f82cec8180a219272c24d6
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272577"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095598"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Configurer la Protection des données ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Lorsque le système de Protection des données est initialisé, il s’applique [paramètres par défaut](xref:security/data-protection/configuration/default-settings) en fonction de l’environnement d’exploitation. Ces paramètres sont généralement appropriés pour les applications qui s’exécutent sur un seul ordinateur. Il existe des cas où un développeur peut souhaiter modifier les paramètres par défaut :
+Lorsque le système de Protection des données est initialisé, il s’applique [paramètres par défaut](xref:security/data-protection/configuration/default-settings) selon l’environnement d’exploitation. Ces paramètres sont généralement appropriés pour les applications exécutées sur un seul ordinateur. Il existe des cas où un développeur peut souhaiter modifier les paramètres par défaut :
 
 * L’application est répartie sur plusieurs ordinateurs.
-* Pour des raisons de compatibilité.
+* Pour des raisons de conformité.
 
-Pour ces scénarios, le système de Protection des données offre une API de configuration complet.
+Pour ces scénarios, le système de Protection des données offre une API de configuration riche.
 
 > [!WARNING]
-> Comme pour les fichiers de configuration, l’anneau de clé de protection de données doivent être protégée à l’aide des autorisations appropriées. Vous pouvez choisir de chiffrer les clés au repos, mais cela n’empêche pas les personnes malveillantes de créer de nouvelles clés. Par conséquent, la sécurité de votre application est affectée. L’emplacement de stockage configuré avec la Protection des données doit avoir son accès limité à l’application elle-même, similaire à celle que vous feriez protéger des fichiers de configuration. Par exemple, si vous choisissez de stocker votre clé d’anneau sur le disque, utilisez les autorisations de système de fichiers. Vérifiez seulement l’identité sous laquelle votre application web s’exécute dispose de lecture, écriture et création de l’accès à ce répertoire. Si vous utilisez le stockage de tables Azure, seule l’application web doit avoir la possibilité de lire, écrire ou créer de nouvelles entrées dans le magasin de tables, etc.
+> Comme pour les fichiers de configuration, le key ring de protection de données doivent être protégé à l’aide des autorisations appropriées. Vous pouvez choisir de chiffrer les clés au repos, mais cela n’empêche pas les pirates de créer de nouvelles clés. Par conséquent, la sécurité de votre application est affectée. L’emplacement de stockage configuré avec la Protection des données doit avoir son accès limité à l’application elle-même, similaire à la façon dont vous protégera les fichiers de configuration. Par exemple, si vous choisissez de stocker votre porte-clés sur le disque, utilisez des autorisations de système de fichiers. Vérifiez seulement l’identité sous laquelle s’exécute votre application web a lire, écrire et créer l’accès à ce répertoire. Si vous utilisez le stockage Table Azure, seule l’application web doit avoir la possibilité de lire, écrire ou créer de nouvelles entrées dans le magasin de tables, etc.
 >
 > La méthode d’extension [AddDataProtection](/dotnet/api/microsoft.extensions.dependencyinjection.dataprotectionservicecollectionextensions.adddataprotection) retourne un [IDataProtectionBuilder](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotectionbuilder). `IDataProtectionBuilder` expose des méthodes d’extension que vous pouvez chaîner des options pour configurer la Protection des données.
 
@@ -44,21 +44,21 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Définir l’emplacement de stockage en anneau de clé (par exemple, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). L’emplacement doit être défini, car l’appel `ProtectKeysWithAzureKeyVault` implémente un [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) qui désactive les paramètres de protection automatique des données, y compris l’emplacement de stockage de clé anneau. L’exemple précédent utilise le stockage d’objets Blob Azure pour conserver l’anneau de clé. Pour plus d’informations, consultez [les fournisseurs de stockage de clés : Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Vous pouvez rendre l’anneau de clé à l’aide de [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
+Définir l’emplacement de stockage de porte-clés (par exemple, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). L’emplacement doit être défini, car l’appel `ProtectKeysWithAzureKeyVault` implémente un [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) qui désactive les paramètres de protection automatique des données, y compris l’emplacement de stockage de porte-clés. L’exemple précédent utilise le stockage Blob Azure pour conserver le key ring. Pour plus d’informations, consultez [les fournisseurs de stockage de clés : Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Vous pouvez également conserver le key ring localement avec [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
 
 Le `keyIdentifier` est l’identificateur de clé de coffre de clés utilisée pour le chiffrement de clé (par exemple, `https://contosokeyvault.vault.azure.net/keys/dataprotection/`).
 
 `ProtectKeysWithAzureKeyVault` surcharges :
 
-* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, KeyVaultClient, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_) permet d’utiliser un [KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient) pour activer le système de protection de données à utiliser le coffre de clés.
-* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, String, String, X509Certificate2)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_) permet d’utiliser un `ClientId` et [X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) pour activer le système de protection de données à utiliser le coffre de clés.
+* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, KeyVaultClient, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_Microsoft_Azure_KeyVault_KeyVaultClient_System_String_) permet d’utiliser un [KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient) pour permettre au système de protection des données à utiliser le coffre de clés.
+* [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, String, String, X509Certificate2)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_Security_Cryptography_X509Certificates_X509Certificate2_) permet d’utiliser un `ClientId` et [X509Certificate](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) pour permettre au système de protection des données à utiliser le coffre de clés.
 * [ProtectKeysWithAzureKeyVault (IDataProtectionBuilder, String, String, String)](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault#Microsoft_AspNetCore_DataProtection_AzureDataProtectionBuilderExtensions_ProtectKeysWithAzureKeyVault_Microsoft_AspNetCore_DataProtection_IDataProtectionBuilder_System_String_System_String_System_String_) permet d’utiliser un `ClientId` et `ClientSecret` pour permettre au système de protection des données à utiliser le coffre de clés.
 
 ::: moniker-end
 
 ## <a name="persistkeystofilesystem"></a>PersistKeysToFileSystem
 
-Pour stocker les clés sur un partage UNC plutôt qu’à la *%LocalAppData%* emplacement par défaut, configurez le système avec [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):
+Pour stocker les clés sur un partage UNC plutôt qu’à la *% LocalAppData%* emplacement par défaut, configurez le système avec [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem):
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -69,7 +69,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!WARNING]
-> Si vous modifiez l’emplacement de la persistance des clés, le système n’est plus automatiquement chiffre au repos, car il ne sait pas si DPAPI est un mécanisme de chiffrement appropriés.
+> Si vous modifiez l’emplacement de la persistance des clés, le système chiffre n’est plus automatiquement les clés au repos, dans la mesure où il ne sait pas si DPAPI est un mécanisme de chiffrement approprié.
 
 ## <a name="protectkeyswith"></a>ProtectKeysWith\*
 
@@ -84,11 +84,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Consultez [clé de chiffrement à l’arrêt](xref:security/data-protection/implementation/key-encryption-at-rest) pour plus d’exemples et une discussion sur les mécanismes de chiffrement à clé intégrés.
+Consultez [clé de chiffrement au repos](xref:security/data-protection/implementation/key-encryption-at-rest) pour obtenir des exemples et des discussions sur les mécanismes de chiffrement de clé intégrée.
 
 ## <a name="setdefaultkeylifetime"></a>SetDefaultKeyLifetime
 
-Permet de configurer le système pour utiliser une durée de vie de clé de 14 jours au lieu de la valeur par défaut de 90 jours, [SetDefaultKeyLifetime](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime):
+Pour configurer le système pour utiliser une durée de vie de clé de 14 jours au lieu de la valeur par défaut de 90 jours, utilisez [SetDefaultKeyLifetime](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setdefaultkeylifetime):
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -100,7 +100,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="setapplicationname"></a>SetApplicationName
 
-Par défaut, le système de Protection des données isole les applications à partir d’une autre, même si elles partagent le même référentiel clé physique. Cela empêche les applications à partir de la présentation des charges protégé de l’autre. Pour partager les charges utiles de protégé entre deux applications, utilisez [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) avec la même valeur pour chaque application :
+Par défaut, le système de Protection des données isole les applications à partir d’une autre, même si elles le partagent le même référentiel clé physique. Cela empêche les applications de la compréhension des charges protégé entre eux. Pour partager les charges utiles protégées entre les deux applications, utilisez [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) avec la même valeur pour chaque application :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -112,7 +112,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="disableautomatickeygeneration"></a>DisableAutomaticKeyGeneration
 
-Vous pouvez avoir un scénario dans lequel vous souhaitez une application pour restaurer automatiquement les clés (créer des clés) qu’ils approchent d’expiration. Un exemple peut être définies dans une relation principal/secondaire, où le principal de l’application est responsable de problèmes de gestion de clés et des applications secondaires ont simplement une vue en lecture seule de l’anneau de clé des applications. Les applications secondaires peuvent être configurées pour traiter l’anneau de clé comme étant en lecture seule en configurant le système avec [DisableAutomaticKeyGeneration](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.disableautomatickeygeneration):
+Vous pouvez avoir un scénario dans lequel vous voulez une application à déployer automatiquement des clés (créer des clés) qu’ils approchent d’expiration. Un exemple de ce peut être définies dans une relation principal/secondaire, où le principal de l’application est responsable de problèmes de gestion des clés et des applications secondaires ont simplement une vue en lecture seule de l’anneau de clé des applications. Les applications secondaire peuvent être configurées pour traiter le key ring en lecture seule en configurant le système avec [DisableAutomaticKeyGeneration](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.disableautomatickeygeneration):
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -122,25 +122,25 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="per-application-isolation"></a>Isolation d’application
+## <a name="per-application-isolation"></a>Isolation par application
 
-Lorsque le système de Protection des données est fourni par un hôte ASP.NET Core, elle isole automatiquement les applications à partir d’une autre, même si ces applications sont en cours d’exécution sous le même compte de processus de travail et utilisent le même matériel de gestion de clés maître. Cela est quelque peu similaire au modificateur IsolateApps à partir de System.Web  **\<machineKey >** élément.
+Lorsque le système de Protection des données est fourni par un hôte ASP.NET Core, elle isole automatiquement les applications à partir d’une autre, même si ces applications sont exécutent sous le même compte de processus de travail et que vous utilisez le même matériel de gestion de clés principal. Cela s’apparente au modificateur IsolateApps à partir de System.Web  **\<machineKey >** élément.
 
-Le mécanisme d’isolation fonctionne en tenant compte de chaque application sur l’ordinateur local en tant qu’un client unique, donc le [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) racine pour une application donnée inclut automatiquement l’ID d’application en tant que discriminateur. ID unique de l’application provient d’un des deux emplacements :
+Le mécanisme d’isolation fonctionne en tenant compte de chaque application sur l’ordinateur local en tant qu’un locataire unique, donc le [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) rooté pour une application donnée inclut automatiquement l’ID d’application en tant que discriminateur. ID unique de l’application provient d’un des deux emplacements :
 
-1. Si l’application est hébergée dans IIS, l’identificateur unique est le chemin d’accès de l’application configuration. Si une application est déployée dans un environnement de batterie de serveurs web, cette valeur doit être stable, en supposant que les environnements d’IIS sont configurés de la même manière sur tous les ordinateurs dans la batterie de serveurs web.
+1. Si l’application est hébergée dans IIS, l’identificateur unique est le chemin d’accès de l’application configuration. Si une application est déployée dans un environnement de batterie de serveurs web, cette valeur doit être stable, en supposant que les environnements d’IIS sont configurés de façon similaire sur tous les ordinateurs dans la batterie de serveurs web.
 
 2. Si l’application n’est pas hébergée dans IIS, l’identificateur unique est le chemin d’accès physique de l’application.
 
-L’identificateur unique est conçu pour résister aux réinitialisations &mdash; à la fois de l’application individuelle et de l’ordinateur lui-même.
+L’identificateur unique est conçu pour résister aux réinitialisations &mdash; de l’application individuelle et de la machine elle-même.
 
-Ce mécanisme d’isolation suppose que les applications ne sont pas malveillantes. Une application malveillante peut toujours avoir un impact sur toute autre application en cours d’exécution sous le même compte de processus de travail. Dans un environnement d’hébergement partagé où les applications sont mutuellement non approuvées, le fournisseur d’hébergement doit prennent des mesures pour garantir une isolation au niveau du système d’exploitation entre les applications, y compris la séparation des applications sous-jacent référentiels clés.
+Ce mécanisme d’isolation part du principe que les applications ne sont pas malveillantes. Une application malveillante peut toujours avoir un impact sur n’importe quel autre application en cours d’exécution sous le même compte de processus de travail. Dans un environnement d’hébergement partagé où les applications sont mutuellement non approuvées, le fournisseur d’hébergement doit prendre étapes pour garantir l’isolation au niveau du système d’exploitation entre les applications, notamment pour séparer les applications sous-jacentes référentiels des clés.
 
-Si le système de Protection des données n’est pas fourni par un hôte ASP.NET Core (par exemple, si vous instanciez via la `DataProtectionProvider` type concret) le niveau d’isolement d’application est désactivé par défaut. Lorsque le niveau d’isolement d’application est désactivé, soutenues par le même jeu de clés de toutes les applications peuvent partager les charges utiles tant qu’ils fournissent les [à des fins](xref:security/data-protection/consumer-apis/purpose-strings). Pour assurer l’isolation d’application dans cet environnement, appelez le [SetApplicationName](#setapplicationname) méthode sur la configuration de l’objet et fournissez un nom unique pour chaque application.
+Si le système de Protection des données n’est pas fourni par un hôte ASP.NET Core (par exemple, si vous instanciez via la `DataProtectionProvider` type concret) isolation de l’application est désactivée par défaut. Lors de l’isolation de l’application est désactivée, soutenues par le même jeu de clés de toutes les applications peuvent partager les charges utiles tant qu’ils fournissent approprié [à des fins](xref:security/data-protection/consumer-apis/purpose-strings). Pour assurer l’isolation d’application dans cet environnement, appelez le [SetApplicationName](#setapplicationname) méthode sur la configuration de l’objet et fournissez un nom unique pour chaque application.
 
 ## <a name="changing-algorithms-with-usecryptographicalgorithms"></a>Modification des algorithmes avec UseCryptographicAlgorithms
 
-La pile de Protection des données vous permet de modifier l’algorithme par défaut utilisé par les clés qui vient d’être générées. La façon la plus simple pour ce faire consiste à appeler [UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms) à partir du rappel de configuration :
+La pile de Protection des données vous permet de modifier l’algorithme par défaut utilisé par les clés qui vient d’être généré. La façon la plus simple pour ce faire consiste à appeler [UseCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecryptographicalgorithms) à partir du rappel de configuration :
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -168,16 +168,16 @@ services.AddDataProtection()
 
 ---
 
-La valeur par défaut EncryptionAlgorithm est AES-256-CBC, et la valeur par défaut ValidationAlgorithm est HMACSHA256. La stratégie par défaut peut être définie par un administrateur système via une [stratégie au niveau machine](xref:security/data-protection/configuration/machine-wide-policy), mais un appel explicite à `UseCryptographicAlgorithms` remplace la stratégie par défaut.
+La valeur par défaut EncryptionAlgorithm est AES-256-CBC, et la valeur par défaut ValidationAlgorithm est HMACSHA256. La stratégie par défaut peut être définie par un administrateur système via une [-échelle de l’ordinateur stratégie](xref:security/data-protection/configuration/machine-wide-policy), mais un appel explicite à `UseCryptographicAlgorithms` substitue la stratégie par défaut.
 
-Appel de `UseCryptographicAlgorithms` permet de spécifier l’algorithme de votre choix dans une liste prédéfinie d’intégrés. Vous n’avez pas besoin de vous soucier de l’implémentation de l’algorithme. Dans le scénario ci-dessus, le système de Protection de données tente d’utiliser l’implémentation CNG de AES s’exécutant sur Windows. Sinon, il revient à managé [System.Security.Cryptography.Aes](/dotnet/api/system.security.cryptography.aes) classe.
+Appel `UseCryptographicAlgorithms` vous permet de spécifier l’algorithme souhaité à partir d’une liste prédéfinie intégrée. Vous n’avez pas besoin de vous soucier de l’implémentation de l’algorithme. Dans le scénario ci-dessus, le système de Protection de données tente d’utiliser l’implémentation CNG de AES si s’exécutant sur Windows. Sinon, il repasse automatiquement managé [System.Security.Cryptography.Aes](/dotnet/api/system.security.cryptography.aes) classe.
 
 Vous pouvez spécifier manuellement une implémentation via un appel à [UseCustomCryptographicAlgorithms](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.usecustomcryptographicalgorithms).
 
 > [!TIP]
-> Algorithmes de modification n’affecte pas les clés existantes dans l’anneau de clé. Il affecte uniquement les clés qui vient d’être générées.
+> Algorithmes de modification n’affecte pas les clés existantes dans le key ring. Il affecte uniquement les clés qui vient d’être générées.
 
-### <a name="specifying-custom-managed-algorithms"></a>Spécification des algorithmes personnalisés gérés
+### <a name="specifying-custom-managed-algorithms"></a>En spécifiant des algorithmes personnalisés gérés
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
@@ -221,16 +221,16 @@ serviceCollection.AddDataProtection()
 
 ---
 
-En général le \*les propriétés de Type doivent pointer vers concrète, implémentations instanciables (via un constructeur sans paramètre public) de [SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm) et [KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm), même si le système spéciaux-cas des valeurs telles que `typeof(Aes)` pour des raisons pratiques.
+En règle générale le \*propriétés de Type doivent pointer vers concret, implémentations instanciables (via un constructeur sans paramètre public) de [SymmetricAlgorithm](/dotnet/api/system.security.cryptography.symmetricalgorithm) et [KeyedHashAlgorithm](/dotnet/api/system.security.cryptography.keyedhashalgorithm), bien que le système spécial cas certaines valeurs telles que `typeof(Aes)` pour des raisons pratiques.
 
 > [!NOTE]
-> Le SymmetricAlgorithm doit avoir une longueur de clé de ≥ 128 bits et une taille de bloc de ≥ 64 bits, et il doit prendre en charge le chiffrement en mode CBC avec le remplissage PKCS #7. L’élément KeyedHashAlgorithm impossible doit avoir une taille de condensat de > = 128 bits, et il doit prendre en charge les clés de longueur égale à la longueur de résumé de l’algorithme de hachage. L’élément KeyedHashAlgorithm impossible n’est pas strictement obligatoire pour être HMAC.
+> Le SymmetricAlgorithm doit avoir une longueur de clé de ≥ 128 bits et une taille de bloc de ≥ 64 bits, et il doit prendre en charge le chiffrement en mode CBC avec un remplissage de PKCS #7. L’élément KeyedHashAlgorithm impossible doit avoir une taille de condensat de > = 128 bits, et il doit prendre en charge les clés de longueur égale à la longueur du résumé de l’algorithme de hachage. L’élément KeyedHashAlgorithm impossible n’est pas strictement obligatoire d’être HMAC.
 
 ### <a name="specifying-custom-windows-cng-algorithms"></a>En spécifiant les algorithmes CNG de Windows personnalisés
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Pour spécifier un algorithme CNG de Windows personnalisé avec le chiffrement d’en mode CBC et validation de HMAC, créez un [CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration) instance qui contient les informations algorithmiques :
+Pour spécifier un algorithme CNG de Windows personnalisé à l’aide du chiffrement en mode CBC avec validation de HMAC, créez un [CngCbcAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cngcbcauthenticatedencryptorconfiguration) instance qui contient les informations algorithmiques :
 
 ```csharp
 services.AddDataProtection()
@@ -252,7 +252,7 @@ services.AddDataProtection()
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Pour spécifier un algorithme CNG de Windows personnalisé avec le chiffrement d’en mode CBC et validation de HMAC, créez un [CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings) instance qui contient les informations algorithmiques :
+Pour spécifier un algorithme CNG de Windows personnalisé à l’aide du chiffrement en mode CBC avec validation de HMAC, créez un [CngCbcAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cngcbcauthenticatedencryptionsettings) instance qui contient les informations algorithmiques :
 
 ```csharp
 services.AddDataProtection()
@@ -275,11 +275,11 @@ services.AddDataProtection()
 ---
 
 > [!NOTE]
-> L’algorithme de chiffrement symétrique doit avoir une longueur de clé > = 128 bits, une taille de bloc de > = 64 bits, et il doit prendre en charge le chiffrement en mode CBC avec le remplissage PKCS #7. L’algorithme de hachage doit avoir une taille de condensat de > = 128 bits et doivent prendre en charge en cours d’ouverture avec le BCRYPT\_ALG\_gérer\_HMAC\_drapeau. Le \*propriétés du fournisseur peuvent être définies sur la valeur null pour utiliser le fournisseur par défaut pour l’algorithme spécifié. Consultez le [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) documentation pour plus d’informations.
+> L’algorithme de chiffrement symétrique doit avoir une longueur de clé > = 128 bits, une taille de bloc de > = 64 bits, et il doit prendre en charge le chiffrement en mode CBC avec un remplissage de PKCS #7. L’algorithme de hachage doit avoir une taille de condensat de > = 128 bits et doit prendre en charge en cours d’ouverture avec le BCRYPT\_ALG\_gérer\_HMAC\_indicateur d’indicateur. Le \*propriétés de fournisseur peuvent être définies sur la valeur null pour utiliser le fournisseur par défaut pour l’algorithme spécifié. Consultez le [BCryptOpenAlgorithmProvider](https://msdn.microsoft.com/library/windows/desktop/aa375479(v=vs.85).aspx) documentation pour plus d’informations.
 
 # <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
 
-Pour spécifier un algorithme CNG de Windows personnalisé à l’aide de chiffrement de compteur/Galois Mode avec validation, créez un [CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration) instance qui contient les informations algorithmiques :
+Pour spécifier un algorithme CNG de Windows personnalisé à l’aide de compteur Galois/Mode de chiffrement avec la validation, créez un [CngGcmAuthenticatedEncryptorConfiguration](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.configurationmodel.cnggcmauthenticatedencryptorconfiguration) instance qui contient les informations algorithmiques :
 
 ```csharp
 services.AddDataProtection()
@@ -297,7 +297,7 @@ services.AddDataProtection()
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
 
-Pour spécifier un algorithme CNG de Windows personnalisé à l’aide de chiffrement de compteur/Galois Mode avec validation, créez un [CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings) instance qui contient les informations algorithmiques :
+Pour spécifier un algorithme CNG de Windows personnalisé à l’aide de compteur Galois/Mode de chiffrement avec la validation, créez un [CngGcmAuthenticatedEncryptionSettings](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.cnggcmauthenticatedencryptionsettings) instance qui contient les informations algorithmiques :
 
 ```csharp
 services.AddDataProtection()
@@ -320,16 +320,17 @@ services.AddDataProtection()
 
 ### <a name="specifying-other-custom-algorithms"></a>Spécification d’autres algorithmes personnalisés
 
-Bien que ne pas exposées en tant qu’une API de première classe, le système de Protection des données est suffisamment extensible pour autoriser la spécification de presque n’importe quel type d’algorithme. Par exemple, il est possible de conserver toutes les clés contenues dans un Module de sécurité matériel (HSM) et pour fournir une implémentation personnalisée de la base de routines de chiffrement et le déchiffrement. Consultez [IAuthenticatedEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor) dans [extensibilité de chiffrement de base](xref:security/data-protection/extensibility/core-crypto) pour plus d’informations.
+Bien que ne pas exposée comme une API de première classe, le système de Protection des données est suffisamment extensible pour autoriser la spécification de presque n’importe quel type d’algorithme. Par exemple, il est possible de conserver toutes les clés contenues dans un Module de sécurité matériel (HSM) et de fournir une implémentation personnalisée de la base les routines de chiffrement et le déchiffrement. Consultez [IAuthenticatedEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.authenticatedencryption.iauthenticatedencryptor) dans [extensibilité de chiffrement de base](xref:security/data-protection/extensibility/core-crypto) pour plus d’informations.
 
 ## <a name="persisting-keys-when-hosting-in-a-docker-container"></a>Clés de persistance lors de l’hébergement dans un conteneur Docker
 
-Lors de l’hébergement dans un [Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/) , conteneur de clés doivent être conservées, que ce soit :
+Lorsque vous hébergez dans un [Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/) , conteneur de clés doivent être conservées dans le :
 
-* Un dossier qui est un volume de Docker qui persiste au-delà de la durée de vie du conteneur, comme un volume partagé ou un volume monté d’hôte.
+* Un dossier qui est un volume Docker qui persiste au-delà de durée de vie du conteneur, comme un volume partagé ou un volume monté par l’hôte.
 * Un fournisseur externe, tel que [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ou [Redis](https://redis.io/).
 
 ## <a name="see-also"></a>Voir aussi
 
-* [Scénarios non compatibles avec l’injection de dépendances](xref:security/data-protection/configuration/non-di-scenarios)
-* [Stratégie à l’échelle de la machine](xref:security/data-protection/configuration/machine-wide-policy)
+* <xref:security/data-protection/configuration/non-di-scenarios>
+* <xref:security/data-protection/configuration/machine-wide-policy>
+* <xref:host-and-deploy/web-farm>

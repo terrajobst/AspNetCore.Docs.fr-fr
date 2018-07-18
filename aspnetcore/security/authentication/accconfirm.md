@@ -5,89 +5,82 @@ description: Découvrez comment créer une application ASP.NET Core avec la réi
 ms.author: riande
 ms.date: 2/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 12265903f60ff6d62befc445434db025c244c178
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
-ms.translationtype: MT
+ms.openlocfilehash: 8e175cd19ca4a9de1e7cf6b330b3d82f309b6501
+ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803270"
+ms.lasthandoff: 07/15/2018
+ms.locfileid: "39063336"
 ---
+::: moniker range="<= aspnetcore-2.0"
+
+Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) pour l’ASP.NET Core 1.1 et la version 2.1.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation de compte et de récupération de mot de passe dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://twitter.com/joeaudette)
 
-Ce didacticiel vous montre comment créer une application ASP.NET Core avec confirmation par courrier électronique et réinitialisation de mot de passe. Ce didacticiel n'est **pas** un sujet pour débuter. Vous devez être familiarisé avec :
+Ce didacticiel montre comment créer une application ASP.NET Core avec la réinitialisation de confirmation et le mot de passe de messagerie. Ce didacticiel n'est **pas** un sujet pour débuter. Vous devez être familiarisé avec :
 
-* [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
+* [ASP.NET Core](xref:tutorials/razor-pages/razor-pages-start)
 * [Authentification](xref:security/authentication/index)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
-Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) pour les versions d’ASP.NET Core MVC 1.1 et 2.x.
+<!-- see C:/Dropbox/wrk/Code/SendGridConsole/Program.cs -->
 
 ## <a name="prerequisites"></a>Prérequis
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/2.1-SDK.md) [](~/includes/2.1-SDK.md)]
 
-## <a name="create-a-new-aspnet-core-project-with-the-net-core-cli"></a>Créer un nouveau projet ASP.NET Core avec l’interface en ligne de commande .NET Core
+## <a name="create-a-web--app-and-scaffold-identity"></a>Créer une application web et de structurer des identités
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
-::: moniker range=">= aspnetcore-2.1"
-
-```console
-dotnet new webapp --auth Individual -o WebPWrecover
-cd WebPWrecover
-```
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-```console
-dotnet new razor --auth Individual -o WebPWrecover
-cd WebPWrecover
-```
-
-::: moniker-end
-
-* `--auth Individual` Spécifie le modèle de projet Comptes d’utilisateur individuels.
-* Sur Windows, ajoutez l'option `-uld`. Elle spécifie que la base de données locale doit être utilisée au lieu de SQLite.
-* Exécutez `new mvc --help` pour obtenir de l’aide sur cette commande.
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-Si vous utilisez l’interface CLI ou SQLite, exécutez la commande suivante dans une fenêtre de commande :
-
-```console
-dotnet new mvc --auth Individual
-```
-
-* `--auth Individual` Spécifie le modèle de projet Comptes d’utilisateur individuels.
-* Sur Windows, ajoutez l'option `-uld`. Elle spécifie que la base de données locale doit être utilisée au lieu de SQLite.
-* Exécutez `new mvc --help` pour obtenir de l’aide sur cette commande.
-
----
-
-Vous pouvez également créer un nouveau projet ASP.NET Core avec Visual Studio :
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 * Dans Visual Studio, créez un nouveau **Web Application** projet.
-* Sélectionnez **ASP.NET Core 2.0**. **.NET core** est sélectionné dans l’image suivante, mais vous pouvez sélectionner **.NET Framework**.
-* Sélectionnez **modifier l’authentification** et la valeur **comptes d’utilisateur individuels**.
-* Conservez la valeur par défaut **dans l’application des comptes d’utilisateurs de Store**.
+* Sélectionnez **ASP.NET Core 2.1**.
+* Conservez la valeur par défaut **authentification** définie sur **aucune authentification**. L’authentification est ajoutée à l’étape suivante.
 
-![Nouvelle boîte de dialogue projet affichant « Radio de comptes d’utilisateur individuels » sélectionnée](accconfirm/_static/2.png)
+Dans l’étape suivante :
+
+* La valeur est la page de disposition *~/Pages/Shared/_Layout.cshtml*
+* Sélectionnez *compte/inscrire*
+* Créer un nouveau **classe de contexte de données**
+
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+
+```console
+dotnet new webapp -o WebPWrecover
+cd WebPWrecover
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet restore
+dotnet aspnet-codegenerator identity -fi Account.Register -dc WebPWrecover.Models.WebPWrecoverContext
+dotnet ef migrations add CreateIdentitySchema
+dotnet ef database drop -f
+dotnet ef database update
+dotnet build
+```
+
+Exécutez `dotnet aspnet-codegenerator identity --help` pour obtenir de l’aide sur l’outil de génération de modèles automatique.
+
+------
+
+Suivez les instructions de [activer l’authentification](xref:security/authentication/scaffold-identity#useauthentication):
+
+* Ajouter `app.UseAuthentication();` à `Startup.Configure`
+* Ajouter `<partial name="_LoginPartial" />` pour le fichier de disposition.
 
 ## <a name="test-new-user-registration"></a>Tester l’inscription d’un nouvel utilisateur
 
-Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. Suivez les instructions pour exécuter les migrations d’Entity Framework Core. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce tutoriel, le code est mis à jour pour que les nouveaux utilisateurs ne puissent pas se connecter tant que leur e-mail n’a pas été validé.
+Exécutez l’application, sélectionnez le lien **S'inscrire** et inscrivez un utilisateur. À ce stade, la seule validation sur l’adresse e-mail se fait avec l'attribut [[EmailAddress]](/dotnet/api/system.componentmodel.dataannotations.emailaddressattribute). Après avoir soumis l’inscription, vous êtes connecté à l’application. Plus loin dans ce didacticiel, le code est mis à jour pour les nouveaux utilisateurs ne peuvent pas se connecter jusqu'à ce que leur courrier électronique est validé.
 
 ## <a name="view-the-identity-database"></a>Afficher la base de données d’identité
 
-Consultez [utiliser SQLite dans un projet ASP.NET Core MVC](xref:tutorials/first-mvc-app-xplat/working-with-sql) pour obtenir des instructions sur l’affichage de la base de données SQLite.
-
-Pour Visual Studio :
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 * À partir du menu **Affichage**, sélectionnez **l’Explorateur d’objets SQL Server** (SSOX).
 * Accédez à **(localdb) MSSQLLocalDB (SQL Server 13)**. Cliquez avec le bouton droit sur **dbo. AspNetUsers** > **Afficher les données** :
@@ -98,39 +91,45 @@ Notez que le champ `EmailConfirmed` de la table est à `False`.
 
 Vous pouvez souhaiter réutiliser cet e-mail à l’étape suivante quand l’application envoie un e-mail de confirmation. Cliquez avec le bouton droit sur la ligne, puis sélectionnez **Supprimer**. La suppression de l’alias d’e-mail facilite les étapes suivantes.
 
----
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-## <a name="require-https"></a>Exiger s-http
+Consultez [utiliser SQLite dans un projet ASP.NET Core MVC](xref:tutorials/first-mvc-app-xplat/working-with-sql) pour obtenir des instructions sur l’affichage de la base de données SQLite.
 
-Consultez [Exiger HTTPS](xref:security/enforcing-ssl).
+------
 
 <a name="prevent-login-at-registration"></a>
 ## <a name="require-email-confirmation"></a>Demander confirmation de l’e-mail
 
-Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous ayez un forum de discussion, et que vous souhaitiez empêcher "yli@example.com" de s’inscription en tant que "nolivetto@contoso.com". Sans la confirmation par courrier électronique, "nolivetto@contoso.com" peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur s'inscrit par inadvertance en tant que "ylo@example.com" et que vous n’avez pas remarqué la faute d’orthographe de "yli". Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. l'email de confirmation fournit uniquement une protection limitée contre les robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
+Il est recommandé de confirmer l’adresse de messagerie d’un nouvel enregistrement d’utilisateur. Envoyer un courrier électronique de confirmation permet de vérifier qu’ils n'empruntent pas l'identité d'une autre personne (autrement dit, ils ne se sont pas inscrits avec l'adresse de messageriedquelqu'un d’autre). Supposons que vous ayez un forum de discussion, et que vous souhaitiez empêcher "yli@example.com" de s’inscription en tant que "nolivetto@contoso.com". Sans la confirmation par courrier électronique, "nolivetto@contoso.com" peut recevoir un e-mail indésirable de votre application. Supposons que l’utilisateur s'inscrit par inadvertance en tant que "ylo@example.com" et que vous n’avez pas remarqué la faute d’orthographe de "yli". Ils ne pourraient pas utiliser la récupération de mot de passe, car l’application n’a pas leur courrier électronique correct. E-mail de confirmation offre une protection limitée contre les robots. L'email de confirmation ne fournit pas une protection contre les utilisateurs malveillants avec plusieurs comptes de messagerie.
 
 En règle générale, vous souhaitez empêcher les nouveaux utilisateurs d'envoyer des données à votre site web tant que leur adresse e-mail n’est pas confirmée.
 
-Mettez à jour `ConfigureServices` pour exiger une adresse e-mail confirmée :
+Mise à jour *Areas/Identity/IdentityHostingStartup.cs* pour exiger un e-mail de confirmation :
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet1&highlight=12-17)]
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/IdentityHostingStartup.cs?name=snippet1&highlight=10-13)]
 
 `config.SignIn.RequireConfirmedEmail = true;` empêche les utilisateurs enregistrés de se connecter jusqu'à ce que leur adresse de messagerie soit confirmée.
 
 ### <a name="configure-email-provider"></a>Configurer le fournisseur de messagerie
 
-Dans ce didacticiel, SendGrid est utilisé pour envoyer un courrier électronique. Vous avez besoin d’un compte SendGrid et une clé pour envoyer un courrier électronique. Vous pouvez utiliser d’autres fournisseurs de messagerie. ASP.NET Core 2.x inclut `System.Net.Mail`, qui vous permet d’envoyer par courrier électronique à partir de votre application. Nous vous recommandons d'utiliser SendGrid ou un autre service de messagerie pour envoyer un courrier électronique. SMTP est difficile à sécuriser et à correctement configurer.
+Dans ce didacticiel, [SendGrid](https://sendgrid.com) est utilisé pour envoyer un courrier électronique. Vous avez besoin d’un compte SendGrid et une clé pour envoyer un courrier électronique. Vous pouvez utiliser d’autres fournisseurs de messagerie. ASP.NET Core 2.x inclut `System.Net.Mail`, qui vous permet d’envoyer par courrier électronique à partir de votre application. Nous vous recommandons d'utiliser SendGrid ou un autre service de messagerie pour envoyer un courrier électronique. SMTP est difficile à sécuriser et à correctement configurer.
 
 Le [modèle Options](xref:fundamentals/configuration/options) est utilisé pour accéder aux paramètres de compte et clé utilisateur. Pour plus d’informations, consultez [configuration](xref:fundamentals/configuration/index).
 
-Créez une classe pour extraire la clé de messagerie électronique sécurisée. Pour cet exemple, la classe `AuthMessageSenderOptions` est créée dans le fichier *Services/AuthMessageSenderOptions.cs* :
+Créez une classe pour extraire la clé de messagerie électronique sécurisée. Pour cet exemple, créez *Services/AuthMessageSenderOptions.cs*:
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Services/AuthMessageSenderOptions.cs?name=snippet1)]
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/AuthMessageSenderOptions.cs?name=snippet1)]
+
+#### <a name="configure-sendgrid-user-secrets"></a>Configurez des secrets utilisateur SendGrid
+
+Ajouter une valeur unique `<UserSecretsId>` valeur pour le `<PropertyGroup>` élément du fichier projet :
+
+[!code-xml[](accconfirm/sample/WebPWrecover21/WebPWrecover.csproj?highlight=5)]
 
 Définissez `SendGridUser` et `SendGridKey` avec l'[outil Gestionnaire de secret](xref:security/app-secrets). Exemple :
 
 ```console
-C:\WebAppl\src\WebApp1>dotnet user-secrets set SendGridUser RickAndMSFT
+C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
 info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
@@ -145,57 +144,49 @@ Le contenu du fichier *secrets.json* n’est pas chiffré. Le fichier *secrets.j
   }
   ```
 
-### <a name="configure-startup-to-use-authmessagesenderoptions"></a>Configurer le démarrage pour utiliser AuthMessageSenderOptions
-
-Ajouter `AuthMessageSenderOptions` au conteneur de service à la fin de la méthode `ConfigureServices` dans le fichier *Startup.cs* :
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
-
-[!code-csharp[](accconfirm/sample/WebPWrecover/Startup.cs?name=snippet2&highlight=28)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-[!code-csharp[](accconfirm/sample/WebApp1/Startup.cs?name=snippet1&highlight=26)]
-
----
-
-### <a name="configure-the-authmessagesender-class"></a>Configurer la classe AuthMessageSender
+### <a name="install-sendgrid"></a>Installer SendGrid
 
 Ce didacticiel montre comment ajouter des notifications par courrier électronique via [SendGrid](https://sendgrid.com/), mais vous pouvez envoyer des e-mails en utilisant SMTP et d'autres mécanismes.
 
 Installer le package NuGet `SendGrid` :
 
-* À partir de la ligne de commande :
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-    `dotnet add package SendGrid`
+À partir de la Console du Gestionnaire de Package, entrez la commande suivante :
 
-* À partir de la Console du Gestionnaire de Package, entrez la commande suivante :
+``` PMC
+Install-Package SendGrid
+```
 
-  `Install-Package SendGrid`
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+
+À partir de la console, entrez la commande suivante :
+
+```cli
+dotnet add package SendGrid
+```
+
+------
 
 Consultez [Débuter avec SendGrid gratuitement](https://sendgrid.com/free/) pour vous inscrire pour un compte SendGrid gratuit.
+### <a name="implement-iemailsender"></a>Implémenter IEmailSender
 
-#### <a name="configure-sendgrid"></a>Configuration de SendGrid
+L’implémentation `IEmailSender`, créer *Services/EmailSender.cs* avec un code similaire à ce qui suit :
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Services/EmailSender.cs)]
 
-Pour configurer SendGrid, ajoutez le code similaire à ce qui suit dans *Services/EmailSender.cs*:
+### <a name="configure-startup-to-support-email"></a>Configurer le démarrage pour prendre en charge de messagerie
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Services/EmailSender.cs)]
+Ajoutez le code suivant à la `ConfigureServices` méthode dans le *Startup.cs* fichier :
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+* Ajouter `EmailSender` comme un service singleton.
+* Inscrire le `AuthMessageSenderOptions` instance de configuration.
 
-* Ajoutez le code dans *Services/MessageServices.cs* similaire à ce qui suit pour configurer SendGrid :
-
-[!code-csharp[](accconfirm/sample/WebApp1/Services/MessageServices.cs)]
-
----
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Startup.cs?name=snippet2&highlight=12-99)]
 
 ## <a name="enable-account-confirmation-and-password-recovery"></a>Activer la récupération de confirmation et le mot de passe du compte
 
-Le modèle contient du code pour la confirmation du compte et la récupération de mot de passe. Recherchez la méthode `OnPostAsync` dans *Pages/Account/Register.cshtml.cs*.
-
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+Le modèle contient du code pour la confirmation du compte et la récupération de mot de passe. Rechercher la `OnPostAsync` méthode dans *Areas/Identity/Pages/Account/Register.cshtml.cs*.
 
 Empêchez les utilisateurs nouvellement inscrits d'être connectés automatiquement en plaçant la ligne suivante en commentaire :
 
@@ -205,29 +196,7 @@ await _signInManager.SignInAsync(user, isPersistent: false);
 
 La méthode complète est montrée avec la ligne modifiée mise en surbrillance :
 
-[!code-csharp[](accconfirm/sample/WebPWrecover/Pages/Account/Register.cshtml.cs?highlight=16&name=snippet_Register)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-Pour activer la confirmation de compte, les commentaires du code suivant :
-
-[!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=16-25&name=snippet_Register)]
-
-**Remarque :** le code empêche un utilisateur nouvellement inscrit d'ouvrir automatiquement une session via la mise en commentaire de la ligne suivante :
-
-```csharp
-//await _signInManager.SignInAsync(user, isPersistent: false);
-```
-
-Activez la récupération de mot de passe en décommentant le code dans l'action `ForgotPassword` de *Controllers/AccountController.cs*:
-
-[!code-csharp[](accconfirm/sample/WebApp1/Controllers/AccountController.cs?highlight=17-23&name=snippet_ForgotPassword)]
-
-Supprimez les commentaires de l’élément de formulaire dans *Views/Account/ForgotPassword.cshtml*. Vous souhaiterez peut-être supprimer le `<p> For more information on how to enable reset password ... </p>` élément, qui contient un lien vers cet article.
-
-[!code-cshtml[](accconfirm/sample/WebApp1/Views/Account/ForgotPassword.cshtml?highlight=7-10,12,28)]
-
----
+[!code-csharp[](accconfirm/sample/WebPWrecover21/Areas/Identity/Pages/Account/Register.cshtml.cs?highlight=22&name=snippet_Register)]
 
 ## <a name="register-confirm-email-and-reset-password"></a>Inscrire, confirmer l’adresse e-mail et réinitialiser le mot de passe
 
@@ -250,18 +219,7 @@ Vous devrez peut-être développer la barre de navigation pour afficher le nom d
 
 ![barre de navigation](accconfirm/_static/x.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
 La page de gestion s’affiche avec l'onglet **profil** sélectionné. L'**Email** affiche une case à cocher indiquant que l’adresse de messagerie a été confirmée.
-
-![page Gérer](accconfirm/_static/rick2.png)
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-Cela est indiqué plus loin dans le didacticiel.
-![page Gérer](accconfirm/_static/rick2.png)
-
----
 
 ### <a name="test-password-reset"></a>Tester la réinitialisation du mot de passe
 
@@ -276,7 +234,8 @@ Cela est indiqué plus loin dans le didacticiel.
 
 Si vous ne parvenez à faire fonctionner l'email :
 
-* Créer une [application console pour envoyer un courrier électronique](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html).
+* Définir un point d’arrêt dans `EmailSender.Execute` pour vérifier `SendGridClient.SendEmailAsync` est appelée.
+* Créer un [application console pour envoyer un e-mail](https://sendgrid.com/docs/Integrate/Code_Examples/v2_Mail/csharp.html) à l’aide d’un code similaire à `EmailSender.Execute`.
 * Examinez la page [Activité de la messagerie](https://sendgrid.com/docs/User_Guide/email_activity.html) page.
 * Vérifiez votre dossier courrier indésirable.
 * Essayez un autre alias de messagerie sur un fournisseur de messagerie différents (Microsoft, Yahoo, Gmail, etc.).
@@ -308,3 +267,5 @@ Activer la confirmation du compte sur un site avec des utilisateurs bloque tous 
 
 * Mise à jour de la base de données pour marquer tous les utilisateurs existants comme étant confirmés.
 * Confirmation des utilisateurs existants. Par exemple, en envoyant par lot des e-mails avec des liens de confirmation.
+
+::: moniker-end
