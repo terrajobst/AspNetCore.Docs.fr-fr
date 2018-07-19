@@ -19,11 +19,11 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Daniel Roth](https://gith
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/app-secrets/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-Ce document explique les techniques permettant de stocker et de récupérer des données sensibles pendant le développement d’une application ASP.NET Core. Ne stockez jamais de mots de passe ou d’autres données sensibles dans le code source, et n'utilisez pas de secrets de fabrication en mode développement ou test. Vous pouvez stocker et protéger les secrets de test et de production Azure avec le [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration).
+Ce document explique les techniques permettant de stocker et récupérer des données sensibles pendant le développement d’une application ASP.NET Core. Vous devez jamais stocker des mots de passe ou d’autres données sensibles dans le code source, et vous ne doivent pas utiliser les secrets de fabrication dans le développement ou en mode de test. Vous pouvez stocker et protéger les secrets de test et de production Azure avec le [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration).
 
 ## <a name="environment-variables"></a>Variables d’environnement
 
-Les variables d’environnement permettent d’éviter le stockage de secrets d’application dans le code ou dans des fichiers de configuration locaux. Les variables d’environnement remplacent les valeurs de configuration pour toutes les sources de configuration spécifiées précédemment.
+Variables d’environnement sont utilisées afin d’éviter le stockage des secrets d’application dans le code ou dans les fichiers de configuration local. Variables d’environnement remplacent les valeurs de configuration pour toutes les sources de configuration spécifié précédemment.
 
 ::: moniker range="<= aspnetcore-1.1"
 Configurer la lecture des valeurs de variable d’environnement en appelant [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables) dans le `Startup` constructeur :
@@ -31,10 +31,10 @@ Configurer la lecture des valeurs de variable d’environnement en appelant [Add
 [!code-csharp[](app-secrets/samples/1.x/UserSecrets/Startup.cs?name=snippet_StartupConstructor&highlight=10)]
 ::: moniker-end
 
-Imaginez une application web ASP.NET Core dans laquelle la sécurité **Comptes d’utilisateur individuels** est activée. Une chaîne de connexion de base de données par défaut est incluse dans le fichier *appsettings.json* du projet avec la clé `DefaultConnection`. La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas de mot de passe. Durant le déploiement de l’application, la valeur de la clé `DefaultConnection` peut être remplacée par la valeur d’une variable d’environnement. La variable d’environnement peut stocker la chaîne de connexion complète avec les informations d’identification sensibles.
+Imaginez une application web de ASP.NET Core dans lequel **comptes d’utilisateur individuels** la sécurité est activée. Une chaîne de connexion de base de données par défaut est incluse dans le projet *appsettings.json* fichier avec la clé `DefaultConnection`. La chaîne de connexion par défaut est pour la base de données locale, qui s’exécute en mode utilisateur et ne nécessite pas un mot de passe. Au cours du déploiement de l’application, le `DefaultConnection` valeur de clé peut être remplacée par la valeur d’une variable d’environnement. La variable d’environnement peut stocker la chaîne de connexion complète avec les informations d’identification sensibles.
 
 > [!WARNING]
-> Les variables d’environnement sont généralement stockées au format texte brut non chiffré. Si l’ordinateur ou le processus est compromis, des tiers non approuvés peuvent y accéder. Il peut donc être nécessaire de prendre des mesures supplémentaires pour empêcher la divulgation des secrets utilisateur.
+> Variables d’environnement sont généralement stockés en texte brut et non chiffré. Si l’ordinateur ou le processus est compromis, les variables d’environnement accessibles par des tiers non approuvés. Des mesures supplémentaires pour empêcher la divulgation de secrets utilisateur peuvent être nécessaires.
 
 ## <a name="secret-manager"></a>L'outil Secret Manager (Gestionnaire de secrets)
 
@@ -153,7 +153,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 Un lot de secrets peut être défini en dirigeant JSON pour le `set` commande. Dans l’exemple suivant, le *input.json* contenu du fichier est dirigés vers le `set` commande.
 
-# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 Ouvrez une invite de commandes et exécutez la commande suivante :
 

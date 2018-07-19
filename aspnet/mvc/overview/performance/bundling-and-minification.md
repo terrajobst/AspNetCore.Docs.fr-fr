@@ -8,12 +8,12 @@ ms.date: 08/23/2012
 ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
-ms.openlocfilehash: 090bb58f762302e0f58db7b8c005fe584e5ec419
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4e72804593c07318af8cc577f9d43ab96be4de05
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37827373"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123786"
 ---
 <a name="bundling-and-minification"></a>Regroupement et minimisation
 ====================
@@ -69,7 +69,7 @@ Le tableau suivant montre plusieurs différences importantes entre la liste de t
 | **Ko reçus** | 388.51 | 530 | 36% |
 | **Temps de chargement** | 510 MS | 780 MS | 53% |
 
-Les octets envoyés avaient une réduction significative avec regroupement comme navigateurs sont assez détaillés avec les en-têtes HTTP qu'elles s’appliquent sur les demandes. La réduction du nombre d’octets reçus n’est pas aussi volumineuse, car les fichiers les plus volumineux (*Scripts\jquery-ui-1.8.11.min.js* et *Scripts\jquery-1.7.1.min.js*) étant déjà minimisés. Remarque : Le minutage sur l’exemple de programme utilisé le [Fiddler](http://www.fiddler2.com/fiddler2/) outil pour simuler un réseau lent. (À partir de la Fiddler **règles** menu, sélectionnez **performances** puis **simuler les vitesses de Modem**.)
+Les octets envoyés avaient une réduction significative avec regroupement comme navigateurs sont assez détaillés avec les en-têtes HTTP qu'elles s’appliquent sur les demandes. La réduction du nombre d’octets reçus n’est pas aussi volumineuse, car les fichiers les plus volumineux (*Scripts\\jquery-ui-1.8.11.min.js* et *Scripts\\jquery-1.7.1.min.js*) étant déjà minimisés . Remarque : Le minutage sur l’exemple de programme utilisé le [Fiddler](http://www.fiddler2.com/fiddler2/) outil pour simuler un réseau lent. (À partir de la Fiddler **règles** menu, sélectionnez **performances** puis **simuler les vitesses de Modem**.)
 
 ## <a name="debugging-bundled-and-minified-javascript"></a>Débogage regroupés et minimisés JavaScript
 
@@ -79,7 +79,7 @@ Il est facile de déboguer votre code JavaScript dans un environnement de dével
 2. Sélectionnez le groupe qui contient la fonction JavaScript que vous souhaitez déboguer à l’aide du bouton de ressources.  
     ![](bundling-and-minification/_static/image4.png)
 3. Mettre en forme le code JavaScript minimisée en sélectionnant le **bouton Configuration** ![](bundling-and-minification/_static/image5.png), puis en sélectionnant **Format JavaScript**.
-4. Dans le **recherche script** zone d’entrée de t, sélectionnez le nom de la fonction que vous souhaitez déboguer. Dans l’image suivante, **AddAltToImg** a été entré dans le **recherche script** zone d’entrée de t.  
+4. Dans le **recherche Script** zone d’entrée, sélectionnez le nom de la fonction que vous souhaitez déboguer. Dans l’image suivante, **AddAltToImg** a été entré dans le **recherche Script** zone d’entrée.  
     ![](bundling-and-minification/_static/image6.png)
 
 Pour plus d’informations sur le débogage avec les outils de développement F12, consultez l’article MSDN [à l’aide des outils de développement F12 pour déboguer les erreurs JavaScript](https://msdn.microsoft.com/library/ie/gg699336(v=vs.85).aspx).
@@ -107,15 +107,15 @@ Pour activer le regroupement et minimisation, définissez la `debug` valeur « 
 
 Dans cette section, nous allons créer un ASP.NET MVC projet pour examiner le regroupement et minimisation. Tout d’abord, créez un nouveau projet ASP.NET MVC internet nommé **MvcBM** sans modifier les valeurs par défaut.
 
-Ouvrir le *application\_Start\BundleConfig.cs* de fichiers et d’examiner le `RegisterBundles` méthode qui est utilisée pour créer, enregistrer et configurer des offres groupées. Le code suivant montre une partie de la `RegisterBundles` (méthode).
+Ouvrir le *application\\\_Démarrer\\BundleConfig.cs* de fichiers et d’examiner le `RegisterBundles` méthode qui est utilisée pour créer, enregistrer et configurer des offres groupées. Le code suivant montre une partie de la `RegisterBundles` (méthode).
 
 [!code-csharp[Main](bundling-and-minification/samples/sample5.cs)]
 
 Le code précédent crée un nouveau lot de JavaScript nommé *~/bundles/jquery* qui inclut toutes les approprié (qui est le débogage ou réduites, mais pas. *VSDoc*) des fichiers dans le *Scripts* dossier qui correspond à la chaîne de caractère générique « ~/Scripts/jquery-{version} .js ». Pour ASP.NET MVC 4, cela signifie qu’avec une configuration debug, le fichier *jquery-1.7.1.js* seront ajoutés au regroupement. Dans une configuration release, *jquery-1.7.1.min.js* sera ajouté. L’infrastructure de regroupement suit plusieurs conventions courantes telles que :
 
-- Sélection d’un fichier « .min » pour la mise en production lorsque « FileX.min.js » et « FileX.js » se trouvent.
+- En sélectionnant « .min » fichier pour la version quand *FileX.min.js* et *FileX.js* existe.
 - Sélectionner la version de .min « non » pour le débogage.
-- En ignorant »-vsdoc » (par exemple, jquery-1.7.1-vsdoc.js), les fichiers qui sont uniquement utilisés par IntelliSense.
+- En ignorant »-vsdoc « fichiers (tels que *jquery-1.7.1-vsdoc.js*), qui sont uniquement utilisé par IntelliSense.
 
 Le `{version}` correspondance générique indiqué ci-dessus est utilisé pour créer automatiquement un bundle jQuery avec la version appropriée de jQuery dans votre *Scripts* dossier. Dans cet exemple, à l’aide d’un caractère générique offre les avantages suivants :
 
@@ -134,7 +134,7 @@ Dans le code ci-dessus, jQuery sera demandé à partir du CDN, tandis que dans l
 
 ## <a name="creating-a-bundle"></a>Création d’un regroupement
 
-Le [Bundle](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) classe `Include` méthode prend un tableau de chaînes, où chaque chaîne est un chemin d’accès virtuel à la ressource. Le code suivant à partir de la méthode RegisterBundles dans le *application\_Start\BundleConfig.cs* fichier montre comment plusieurs fichiers sont ajoutés à un regroupement :
+Le [Bundle](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=VS.110).aspx) classe `Include` méthode prend un tableau de chaînes, où chaque chaîne est un chemin d’accès virtuel à la ressource. Le code suivant à partir de la `RegisterBundles` méthode dans le *application\\\_Démarrer\\BundleConfig.cs* fichier montre comment plusieurs fichiers sont ajoutés à un regroupement :
 
 [!code-csharp[Main](bundling-and-minification/samples/sample8.cs)]
 
@@ -142,7 +142,7 @@ Le [Bundle](https://msdn.microsoft.com/library/system.web.optimization.bundle(v=
 
 [!code-csharp[Main](bundling-and-minification/samples/sample9.cs)]
 
-Offres groupées sont référencées dans les vues à l’aide de la méthode Render, ( `Styles.Render` pour CSS et `Scripts.Render` pour JavaScript). Le balisage suivant à partir de la *Views\Shared\\_Layout.cshtml* fichier montre comment les vues de projet par défaut ASP.NET internet référencent les offres groupées CSS et JavaScript.
+Offres groupées sont référencées dans les vues à l’aide de la méthode Render, (`Styles.Render` pour CSS et `Scripts.Render` pour JavaScript). Le balisage suivant à partir de la *vues\\partagé\\\_Layout.cshtml* fichier montre comment les vues de projet par défaut ASP.NET internet référencent les offres groupées CSS et JavaScript.
 
 [!code-cshtml[Main](bundling-and-minification/samples/sample10.cshtml?highlight=5-6,11)]
 
@@ -156,10 +156,10 @@ Le chemin d’accès virtuel spécifié dans le `Include` (méthode) et la reche
 
 Prenez un projet avec les fichiers JavaScript suivants :
 
-- *Scripts\Common\AddAltToImg.js*
-- *Scripts\Common\ToggleDiv.js*
-- *Scripts\Common\ToggleImg.js*
-- *Scripts\Common\Sub1\ToggleLinks.js*
+- *Scripts\\commune\\AddAltToImg.js*
+- *Scripts\\commune\\ToggleDiv.js*
+- *Scripts\\commune\\ToggleImg.js*
+- *Scripts\\commune\\Sub1\\ToggleLinks.js*
 
 ![dir imag](bundling-and-minification/_static/image7.png)
 
@@ -167,13 +167,13 @@ Le tableau suivant présente les fichiers ajoutés à un ensemble en utilisant l
 
 | **Call** | **Fichiers ajoutés ou Exception levée** |
 | --- | --- |
-| Inclure (« ~/Scripts/Common/\*.js ») | *AddAltToImg.js, ToggleDiv.js, ToggleImg.js* |
+| Inclure (« ~/Scripts/Common/\*.js ») | *AddAltToImg.js*, *ToggleDiv.js*, *ToggleImg.js* |
 | Inclure (« ~/Scripts/Common/T\*.js ») | Exception de modèle non valide. Le caractère générique est uniquement autorisé sur le préfixe ou le suffixe. |
 | Inclure (« ~/Scripts/Common/\*og.\*») | Exception de modèle non valide. Qu’un seul caractère générique est autorisé. |
-| « Inclure (« ~/Scripts/Common/T\*») | *ToggleDiv.js, ToggleImg.js* |
-| « Inclure (« ~/Scripts/Common/\*») | Exception de modèle non valide. Un segment de caractère générique pure n’est pas valide. |
-| IncludeDirectory("~/Scripts/Common", "T\*") | *ToggleDiv.js, ToggleImg.js* |
-| IncludeDirectory("~/Scripts/Common", "T\*",true) | *ToggleDiv.js, ToggleImg.js, ToggleLinks.js* |
+| Inclure (« ~/Scripts/Common/T\*») | *ToggleDiv.js*, *ToggleImg.js* |
+| Inclure (« ~/Scripts/Common/\*») | Exception de modèle non valide. Un segment de caractère générique pure n’est pas valide. |
+| IncludeDirectory("~/Scripts/Common", "T\*") | *ToggleDiv.js*, *ToggleImg.js* |
+| IncludeDirectory (« ~/Scripts/Common », « T\*", true) | *ToggleDiv.js*, *ToggleImg.js*, *ToggleLinks.js* |
 
 Ajouter explicitement chaque fichier pour un regroupement est généralement la préférée sur le chargement de caractère générique de fichiers pour les raisons suivantes :
 
@@ -183,7 +183,7 @@ Ajouter explicitement chaque fichier pour un regroupement est généralement la 
 
     [!code-csharp[Main](bundling-and-minification/samples/sample12.cs)]
 
-  Le sélecteur de caractère générique «\*.css » apporte dans chaque fichier CSS dans le dossier, y compris le *Content\themes\base\jquery.ui.all.css* fichier. Le *jquery.ui.all.css* fichier importe les autres fichiers CSS.
+  Le sélecteur de caractère générique «\*.css » apporte dans chaque fichier CSS dans le dossier, y compris le *contenu\\thèmes\\base\\jquery.ui.all.css* fichier. Le *jquery.ui.all.css* fichier importe les autres fichiers CSS.
 
 ## <a name="bundle-caching"></a>Regrouper la mise en cache
 
@@ -195,7 +195,7 @@ L’illustration suivante montre le **mise en cache** onglet du volet de répons
 
 La demande   
 `http://localhost/MvcBM_time/bundles/AllMyScripts?v=r0sLDicvP58AIXN_mc3QdyVvVj5euZNzdsa2N1PKvb81`  
- est pour le regroupement **AllMyScripts** et contient une paire de chaîne de requête **v = r0sLDicvP58AIXN\_mc3QdyVvVj5euZNzdsa2N1PKvb81**. La chaîne de requête **v** a la valeur de jeton qui est un identificateur unique utilisé pour la mise en cache. Tant que l’application ne change pas, l’application ASP.NET demande le **AllMyScripts** regrouper à l’aide de ce jeton. Si n’importe quel fichier dans le regroupement change, l’infrastructure d’optimisation ASP.NET génère un nouveau jeton, ce qui garantit que les demandes du navigateur pour le regroupement obtiennent le dernier groupe.
+ est pour le regroupement **AllMyScripts** et contient une paire de chaîne de requête **v = r0sLDicvP58AIXN\\\_mc3QdyVvVj5euZNzdsa2N1PKvb81**. La chaîne de requête **v** a la valeur de jeton qui est un identificateur unique utilisé pour la mise en cache. Tant que l’application ne change pas, l’application ASP.NET demande le **AllMyScripts** regrouper à l’aide de ce jeton. Si n’importe quel fichier dans le regroupement change, l’infrastructure d’optimisation ASP.NET génère un nouveau jeton, ce qui garantit que les demandes du navigateur pour le regroupement obtiennent le dernier groupe.
 
 Si vous exécutez les outils de développement F12 d’Internet Explorer 9 et que vous accédez à une page précédemment chargée, IE incorrectement montre les demandes GET conditionnelles apportées à chaque groupe et le serveur de renvoi HTTP 304. Vous pouvez lire Pourquoi Internet Explorer 9 a des problèmes de détermination si une demande conditionnelle a été effectuée dans le billet de blog [à l’aide de CDN et Expires pour améliorer les performances de Site Web](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx).
 
@@ -203,13 +203,13 @@ Si vous exécutez les outils de développement F12 d’Internet Explorer 9 et qu
 
 L’infrastructure de regroupement et minimisation fournit un mécanisme permettant de traiter les langages intermédiaires telle que [SCSS](http://sass-lang.com/), [Sass](http://sass-lang.com/), [moins](http://www.dotlesscss.org/) ou [Coffeescript ](http://coffeescript.org/)et appliquer des transformations telles que la minimisation à l’offre groupée qui en résulte. Par exemple, pour ajouter [.less](http://www.dotlesscss.org/) fichiers à votre projet MVC 4 :
 
-1. Créez un dossier pour moins de votre contenu. L’exemple suivant utilise le *Content\MyLess* dossier.
+1. Créez un dossier pour moins de votre contenu. L’exemple suivant utilise le *contenu\\MyLess* dossier.
 2. Ajouter le [.less](http://www.dotlesscss.org/) package NuGet **sans point** à votre projet.  
     ![Installation de NuGet sans point](bundling-and-minification/_static/image9.png)
 3. Ajouter une classe qui implémente le [IBundleTransform](https://msdn.microsoft.com/library/system.web.optimization.ibundletransform(VS.110).aspx) interface. Pour la transformation .less, ajoutez le code suivant à votre projet.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample13.cs)]
-4. Créer un groupe de fichiers LESS avec le `LessTransform` et [CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx) transformer. Ajoutez le code suivant à la `RegisterBundles` méthode dans le *application\_Start\BundleConfig.cs* fichier.
+4. Créer un groupe de fichiers LESS avec le `LessTransform` et [CssMinify](https://msdn.microsoft.com/library/system.web.optimization.cssminify(VS.110).aspx) transformer. Ajoutez le code suivant à la `RegisterBundles` méthode dans le *application\\_démarrer\\BundleConfig.cs* fichier.
 
     [!code-csharp[Main](bundling-and-minification/samples/sample14.cs)]
 5. Ajoutez le code suivant à toutes les vues qui fait référence à l’offre moins.
@@ -228,7 +228,7 @@ La limitation de navigateur de six connexions simultanées par chaque nom d’h�
 
 Offres groupées doivent être partitionnées par les pages qui en ont besoin. Par exemple, le modèle ASP.NET MVC pour une application internet par défaut crée un groupement de Validation jQuery distinct de jQuery. Étant donné que les affichages par défaut créés ne possèdent aucune entrée et ne validez pas les valeurs, elles n’incluent pas le groupe de validation.
 
-Le `System.Web.Optimization` espace de noms est implémenté dans System.Web.Optimization.DLL. Il s’appuie sur la bibliothèque WebGrease (WebGrease.dll) pour les fonctionnalités de la minimisation, qui à son tour utilise Antlr3.Runtime.dll.
+Le `System.Web.Optimization` espace de noms est implémenté dans *System.Web.Optimization.dll*. Il tire parti de la bibliothèque WebGrease (*WebGrease.dll*) pour les fonctionnalités de la minimisation, qui à son tour utilise *Antlr3.Runtime.dll*.
 
 *Utiliser Twitter pour effectuer des publications rapides et de partager des liens. Mon pseudo Twitter est*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 

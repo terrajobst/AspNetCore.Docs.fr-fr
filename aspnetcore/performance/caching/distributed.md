@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/14/2017
 uid: performance/caching/distributed
-ms.openlocfilehash: 861664fcad576c11abe052837b72367eb2b9479a
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 9c41a6e008045231bd2e1c1f53a9161e11daafa9
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095679"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123838"
 ---
 # <a name="work-with-a-distributed-cache-in-aspnet-core"></a>Travailler avec un cache distribué dans ASP.NET Core
 
@@ -79,12 +79,13 @@ Le code suivant du fichier *Startup.cs* affiche la valeur :
 
 [!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet1)]
 
-> [!NOTE]
-> Étant donné que `IDistributedCache` est configuré dans la méthode `ConfigureServices`, elle est disponible pour la méthode `Configure` en tant que paramètre. Afin de pouvoir injecter sous forme de dépendance l'instance configurée, ajoutez-la en tant que paramètre. Ajouter en tant que paramètre permettra l’instance configurée être fourni via l’injection de dépendances.
+Étant donné que `IDistributedCache` est configuré dans la méthode `ConfigureServices`, elle est disponible pour la méthode `Configure` en tant que paramètre. Afin de pouvoir injecter sous forme de dépendance l'instance configurée, ajoutez-la en tant que paramètre. Ajouter en tant que paramètre permettra l’instance configurée être fourni via l’injection de dépendances.
 
 ## <a name="using-a-redis-distributed-cache"></a>Utiliser un cache distribué Redis
 
 [Redis](https://redis.io/) est un magasin de données en mémoire open source, qui est souvent utilisé comme un cache distribué. Vous pouvez l’utiliser localement, et vous pouvez configurer un [Cache Redis Azure](https://azure.microsoft.com/services/cache/) pour vos applications ASP.NET Core hébergées sur Azure. Votre application ASP.NET Core configure l’implémentation de cache via une instance de type `RedisDistributedCache`.
+
+Le cache Redis requiert [Microsoft.Extensions.Caching.Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Redis/)
 
 Vous configurez l’implémentation de Redis dans `ConfigureServices` et y accédez dans le code de votre application en demandant une instance de `IDistributedCache` (voir le code ci-dessus).
 
@@ -92,8 +93,7 @@ Dans l’exemple de code, une implémentation de type `RedisCache` est utilisée
 
 [!code-csharp[](distributed/sample/src/DistCacheSample/Startup.cs?name=snippet2)]
 
-> [!NOTE]
-> Pour installer Redis sur votre ordinateur local, installez le package chocolatey [ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/) et exécutez `redis-server` à partir d’une invite de commandes.
+Pour installer Redis sur votre ordinateur local, installez le package chocolatey [ https://chocolatey.org/packages/redis-64/ ](https://chocolatey.org/packages/redis-64/) et exécutez `redis-server` à partir d’une invite de commandes.
 
 ## <a name="using-a-sql-server-distributed-cache"></a>Utiliser un cache distribué SQL Server
 

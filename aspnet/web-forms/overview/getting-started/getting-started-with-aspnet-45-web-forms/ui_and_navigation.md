@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 5c76891d-e515-4885-b576-76bd2c494efe
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/ui_and_navigation
 msc.type: authoredcontent
-ms.openlocfilehash: ef1b226d673d18ec333c35f193dbe6bd21e54225
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2807560484d03122ed68ee3efb49a50e45150e12
+ms.sourcegitcommit: cb0c27fa0184f954fce591d417e6ab2a51d8bb22
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842913"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "39123799"
 ---
 <a name="ui-and-navigation"></a>L’interface utilisateur et Navigation
 ====================
@@ -164,7 +164,7 @@ Dans ce didacticiel, vous allez modifier l’apparence de l’application Wingti
 3. Renommer le *Bootstrap.min.CSS* à *bootstrap-original.min.css*.
 4. Dans **l’Explorateur de solutions**, avec le bouton droit le *contenu* dossier et sélectionnez **ouvrir le dossier dans l’Explorateur de fichiers**.  
    L’Explorateur de fichiers s’affiche. Vous allez enregistrer un fichier CSS bootstrap téléchargé à cet emplacement.
-5. Dans votre navigateur, accédez à [ http://Bootswatch.com ](http://bootswatch.com/).
+5. Dans votre navigateur, accédez à [ https://bootswatch.com/3/ ](https://bootswatch.com/3/).
 6. Faites défiler la fenêtre du navigateur jusqu'à ce que vous voyiez le thème Cerulean. 
 
     ![L’interface utilisateur et Navigation - thème Cerulean](ui_and_navigation/_static/image5.png)
