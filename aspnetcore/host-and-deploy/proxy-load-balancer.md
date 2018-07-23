@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/26/2018
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: b04219803477c9dc1c25077cde117fc629f8b6fb
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 6b24dd4b4b400625a9dcb647dbbac1d8bd0f7a6a
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938496"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095773"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge
 
@@ -259,4 +259,5 @@ L’adresse IP distante d’origine de la requête doit correspondre à une entr
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-[Microsoft Security Advisory CVE-2018-0787 : vulnérabilité d’élévation de privilèges ASP.NET Core](https://github.com/aspnet/Announcements/issues/295)
+* <xref:host-and-deploy/web-farm>
+* [Microsoft Security Advisory CVE-2018-0787 : vulnérabilité d’élévation de privilèges ASP.NET Core](https://github.com/aspnet/Announcements/issues/295)

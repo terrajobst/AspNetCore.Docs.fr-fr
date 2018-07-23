@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2018
 uid: fundamentals/app-state
-ms.openlocfilehash: 9c63d9313acb055e6c692a7fef3d28e94cb37093
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 072699113a45056ec3ea79436ad56896ba0a4197
+ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272881"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39095812"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>État de session et d’application dans ASP.NET Core
 
@@ -70,7 +70,7 @@ L’état de session présente les comportements suivants :
 
 Le fournisseur de cache en mémoire stocke les données de session dans la mémoire du serveur où réside l’application. Dans un scénario de batterie de serveurs :
 
-* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions persistantes peuvent impacter la scalabilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d’informations, consultez [Utiliser un cache distribué](xref:performance/caching/distributed).
+* Utilisez des *sessions persistantes* pour lier chaque session à une instance d’application spécifique sur un serveur donné. [Azure App Service](https://azure.microsoft.com/services/app-service/) utilise [Application Request Routing (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) pour appliquer les sessions persistantes par défaut. Toutefois, les sessions rémanentes peuvent impacter l’extensibilité et compliquer les mises à jour des applications web. Une meilleure approche consiste à utiliser le cache distribué Redis ou SQL Server, qui ne nécessite pas de sessions persistantes. Pour plus d’informations, consultez [Utiliser un cache distribué](xref:performance/caching/distributed).
 * Le cookie de session est chiffré par le biais d’[IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector). La protection des données doit être configurée correctement pour lire les cookies de session sur chaque ordinateur. Pour plus d’informations, consultez [Protection des données dans ASP.NET Core](xref:security/data-protection/index) et [Fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers).
 
 ### <a name="configure-session-state"></a>Configurer l’état de session
@@ -174,7 +174,7 @@ L’état de session est accessible à partir d’une classe Razor Pages [PageMo
 
 ::: moniker range=">= aspnetcore-2.0"
 
-L’implémentation `ISession` fournit plusieurs méthodes d’extension pour définir et récupérer des valeurs de chaîne et des valeurs entières. Les méthodes d’extension se trouvent dans l’espace de noms [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) (ajoutez une instruction `using Microsoft.AspNetCore.Http;` pour accéder aux méthodes d’extension) quand le package [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) est référencé par le projet. Les deux packages sont inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+L’implémentation `ISession` fournit plusieurs méthodes d’extension pour définir et récupérer des valeurs de chaîne et des entiers. Les méthodes d’extension se trouvent dans l’espace de noms [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) (ajoutez une instruction `using Microsoft.AspNetCore.Http;` pour accéder aux méthodes d’extension) quand le package [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) est référencé par le projet. Les deux packages sont inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 ::: moniker-end
 
@@ -368,7 +368,7 @@ Tout autre code peut accéder à la valeur stockée dans `HttpContext.Items` à 
 
 Cette approche a également l’avantage d’éliminer l’utilisation des chaînes de clés dans le code.
 
-## <a name="cache"></a>Cache
+## <a name="cache"></a>d'instance/de clé
 
 La mise en cache est un moyen efficace de stocker et récupérer des données. L’application peut contrôler la durée de vie des éléments mis en cache.
 
@@ -441,3 +441,7 @@ Utilisez [l’injection de dépendances](xref:fundamentals/dependency-injection)
   Par exemple, imaginez qu’un utilisateur stocke un panier d’achat dans la session. Il ajoute un élément au panier, mais la validation échoue. L’application n’a pas connaissance de l’échec et signale donc à l’utilisateur que l’élément a été ajouté au panier, ce qui est faux.
 
   L’approche recommandée pour rechercher les erreurs de ce type consiste à appeler `await feature.Session.CommitAsync();` à partir du code d’application quand l’application a terminé d’écrire dans la session. `CommitAsync` lève une exception si le magasin de stockage n’est pas disponible. Si `CommitAsync` échoue, l’application peut traiter l’exception. `LoadAsync` lève une exception dans les mêmes conditions, quand le magasin de données n’est pas disponible.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+<xref:host-and-deploy/web-farm>

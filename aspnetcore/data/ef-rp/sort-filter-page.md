@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: fce524a5cb386fbf286907be42e920be13115ca6
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 86321538f02ccf1a36ee9e50729e63e007f10327
+ms.sourcegitcommit: ee2b26c7d08b38c908c668522554b52ab8efa221
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38216276"
+ms.lasthandoff: 07/19/2018
+ms.locfileid: "39146895"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -210,7 +210,7 @@ La méthode `PaginatedList.CreateAsync` convertit la requête d’étudiant en u
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortFilterPage4)]
 
-Les deux points d’interrogation dans `PaginatedList.CreateAsync` représentent [l’opérateur de fusion de Null](https://docs.microsoft.com/ dotnet/csharp/language-reference/operators/null-conditional-operator). L’opérateur de fusion de Null définit une valeur par défaut pour un type nullable. L’expression `(pageIndex ?? 1)` signifie qu’il faut retourner la valeur de `pageIndex` s’il a une valeur. Si `pageIndex` n’a pas de valeur, il faut retourner 1.
+Les deux points d’interrogation dans `PaginatedList.CreateAsync` représentent [l’opérateur de fusion de Null](/dotnet/csharp/language-reference/operators/null-conditional-operator). L’opérateur de fusion de Null définit une valeur par défaut pour un type nullable. L’expression `(pageIndex ?? 1)` signifie qu’il faut retourner la valeur de `pageIndex` s’il a une valeur. Si `pageIndex` n’a pas de valeur, il faut retourner 1.
 
 ## <a name="add-paging-links-to-the-student-razor-page"></a>Ajouter des liens de pagination à la page Razor d’étudiant
 
