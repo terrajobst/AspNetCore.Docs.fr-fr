@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/30/2018
 uid: signalr/configuration
-ms.openlocfilehash: fac0226c939f4cf446c876b1c0b359d6c5b9dfd3
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: f5a345795f17dafd482e359e77a151d5b0a15688
+ms.sourcegitcommit: 8b68e144aab75374af52605a71717c77345a28b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095400"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39182588"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Configuration d’ASP.NET Core SignalR
 
@@ -62,7 +62,7 @@ Le tableau suivant décrit les options de configuration de concentrateurs Signal
 
 | Option | Description |
 | ------ | ----------- |
-| `HandshakeTimeout` | Si le client n’envoie un message de négociation initiale au sein de cet intervalle de temps, la connexion est fermée. |
+| `HandshakeTimeout` | Si le client n’envoie un message de négociation initiale au sein de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
 | `KeepAliveInterval` | Si le serveur n’a pas envoyé un message au sein de cet intervalle, un message ping est envoyé automatiquement pour maintenir ouverte la connexion. |
 | `SupportedProtocols` | Protocoles pris en charge par ce concentrateur. Par défaut, tous les protocoles inscrits sur le serveur sont autorisés, mais protocoles peuvent être supprimés de cette liste pour désactiver les protocoles spécifiques pour les hubs individuels. |
 | `EnableDetailedErrors` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de concentrateur. La valeur par défaut est `false`, que ces messages d’exception peuvent contenir des informations sensibles. |
@@ -216,10 +216,10 @@ Options supplémentaires pour configurer le comportement de conservation et de d
 
 | Option de .NET | Option de JavaScript | Description |
 | ----------- | ----------------- | ----------- |
-| `ServerTimeout` | `serverTimeoutInMilliseconds` | Délai d’expiration pour l’activité du serveur. Si le serveur n’a pas envoyé un message dans cet intervalle, le client considère que le serveur déconnecté et le déclencheur le `Closed` événement (`onclose` dans JavaScript). |
-| `HandshakeTimeout` | Non configurable | Délai d’attente pour la négociation initiale du serveur. Si le serveur n’envoie une réponse de négociation dans cet intervalle, le client annule le négociation et déclencher le `Closed` événement (`onclose` dans JavaScript). |
+| `ServerTimeout` | `serverTimeoutInMilliseconds` | Délai d’expiration pour l’activité du serveur. Si le serveur n’a pas envoyé un message dans cet intervalle, le client considère que le serveur déconnecté et les déclencheurs le `Closed` événement (`onclose` dans JavaScript). |
+| `HandshakeTimeout` | Non configurable | Délai d’attente pour la négociation initiale du serveur. Si le serveur n’envoie une réponse de négociation dans cet intervalle, le client annule le protocole de négociation et déclencheurs le `Closed` événement (`onclose` dans JavaScript). Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
 
-Dans le Client .NET, les valeurs de délai d’attente sont spécifiées en tant que `TimeSpan` valeurs. Dans le client JavaScript, les valeurs de délai d’attente sont spécifiées sous forme de nombres. Les nombres représentent les valeurs de temps en millisecondes.
+Dans le Client .NET, les valeurs de délai d’attente sont spécifiées en tant que `TimeSpan` valeurs. Dans le client JavaScript, les valeurs de délai d’attente sont spécifiées en tant que nombre indiquant la durée en millisecondes.
 
 ### <a name="configure-additional-options"></a>Configurer des options supplémentaires
 

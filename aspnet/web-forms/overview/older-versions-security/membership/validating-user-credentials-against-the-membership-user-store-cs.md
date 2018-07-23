@@ -219,7 +219,7 @@ Figure 9 offre un organigramme du flux de travail de l’authentification.
 
 ### <a name="creating-theauthenticateevent-handler"></a>Création de la`Authenticate`Gestionnaire d’événements
 
-Pour incorporer notre logique d’authentification personnalisée, nous devons créer un gestionnaire d’événements pour le contrôle Login `Authenticate` événement. Création d’un gestionnaire d’événements pour le `Authenticate` événement génère la définition de gestionnaire d’événements suivantes :
+Pour incorporer notre logique d’authentification personnalisée, nous devons créer un gestionnaire d’événements pour le contrôle Login `Authenticate` événement. Création d’un gestionnaire d’événements pour le `Authenticate` événement génère la définition de gestionnaire d’événements suivantes:
 
 [!code-csharp[Main](validating-user-credentials-against-the-membership-user-store-cs/samples/sample3.cs)]
 
