@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 86321538f02ccf1a36ee9e50729e63e007f10327
-ms.sourcegitcommit: ee2b26c7d08b38c908c668522554b52ab8efa221
+ms.openlocfilehash: ee5a0dae41ba0afba518f0bd6fbd379fdbbfb1c1
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146895"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202612"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -262,9 +262,7 @@ Mettez à jour le fichier *Pages/About.cshtml.cs* avec le code suivant :
 
 [!code-csharp[](intro/samples/cu21/Pages/About.cshtml.cs)]
 
-L’instruction LINQ regroupe les entités student par date d’inscription, calcule le nombre d’entités dans chaque groupe, et stocke les résultats dans une collection d’objets de modèle d’affichage `EnrollmentDateGroup`.
-
-Remarque : La commande LINQ `group` n’est pas prise en charge actuellement par EF Core. Dans le code précédent, tous les enregistrements d’étudiants sont retournés à partir de SQL Server. La commande `group` est appliquée dans l’application Pages Razor, et non sur le serveur SQL Server. EF Core 2.1 prendra en charge cet opérateur LINQ `group`, et le regroupement se produira sur le serveur SQL Server. Consultez [Relational: Support translating GroupBy() to SQL](https://github.com/aspnet/EntityFrameworkCore/issues/2341) (Relationnel : Prendre en charge la traduction de GroupBy() vers SQL). [EF Core 2.1](https://github.com/aspnet/EntityFrameworkCore/wiki/roadmap) sera publié avec .NET Core 2.1. Pour plus d’informations, consultez la [Feuille de route .NET Core](https://github.com/dotnet/core/blob/master/roadmap.md).
+L’instruction LINQ regroupe les entités Student par date d’inscription, calcule le nombre d’entités dans chaque groupe et stocke les résultats dans une collection d’objets de modèle de vue `EnrollmentDateGroup`.
 
 ### <a name="modify-the-about-razor-page"></a>Modifier la page Razor About
 

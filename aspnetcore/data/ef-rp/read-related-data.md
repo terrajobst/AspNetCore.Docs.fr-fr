@@ -5,12 +5,12 @@ description: Dans ce didacticiel, nous allons lire et afficher des données asso
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: fa3147cc4ad121784911eef802e04ca91f16448f
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: bcea6aa6018a937979b8e0aaa2edcdd96da41559
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063310"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202677"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -168,7 +168,7 @@ Exécutez l’application et accédez à la page des formateurs.
 
 Remplacez *Pages/Instructors/Index.cshtml.cs* par le code suivant :
 
-[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,20-99)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,18-99)]
 
 La méthode `OnGetAsync` accepte des données de route facultatives pour l’ID du formateur sélectionné.
 
@@ -298,7 +298,7 @@ Actualisez la page et sélectionnez un formateur. Sélectionnez un cours pour af
 
 La méthode `Single` peut passer la condition `Where` au lieu d’appeler la méthode `Where` séparément :
 
-[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21,28-29)]
+[!code-csharp[](intro/samples/cu/Pages/Instructors/IndexSingle.cshtml.cs?name=snippet_single&highlight=21-22,30-31)]
 
 L’approche précédente faisant appel à `Single` ne présente aucun avantage par rapport à l’utilisation de `Where`. Certains développeurs préfèrent le style d’approche `Single`.
 
