@@ -4,19 +4,16 @@ title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : préparation
 author: tdykstra
 description: Cette série de didacticiels vous montre comment déployer (publier) un ASP.NET web application dans Azure App Service Web Apps ou à un fournisseur d’hébergement tiers, en utilisant des éléments...
 ms.author: aspnetcontent
-manager: wpickett
 ms.date: 02/15/2013
-ms.topic: article
 ms.assetid: ae4def81-fa37-4883-a13e-d9896cbf6c36
-ms.technology: dotnet-webforms
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
-ms.openlocfilehash: 21b4a924115daff6ee79ce045330c748b58246ee
-ms.sourcegitcommit: 953ff9ea4369f154d6fd0239599279ddd3280009
-ms.translationtype: HT
+ms.openlocfilehash: a9ddeda3bfe4315c835cd447f6178669797dceb2
+ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37388532"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37803189"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : préparation pour le déploiement de la base de données
 ====================
@@ -64,93 +61,93 @@ La base de données application Contoso University est géré par Code First, et
 
 Lorsque vous déployez une base de données d’application, en général, vous ne simplement déployer votre base de données de développement avec toutes les données qu’il contient en production, car une grande partie des données qu’il contient existe-t-il probablement uniquement à des fins de test. Par exemple, les noms d’étudiants dans une base de données de test sont fictifs. En revanche, vous souvent impossible de déployer uniquement la structure de base de données sans données qu’il contient tout. Certaines des données dans votre base de données de test peuvent être des données réelles et doivent être il lorsque les utilisateurs commencent à utiliser l’application. Par exemple, votre base de données peut avoir une table qui contient les valeurs de niveau valide ou les noms de service réel.
 
-Pour simuler ce scénario courant, vous allez configurer un Code First Migrations `Seed` méthode qui insère dans la base de données uniquement les données que vous souhaitez être il en production. Par exemple, si vous ajoutiez une colonne de Budget pour la table Department et que vous voulez initialiser tous les budgets de département à 1 000,00 $ dans le cadre d’une migration, vous pouvez ajouter la ligne suivant montre du code pour le `Seed` méthode pour que la migration :
+Pour simuler ce scénario courant, vous allez configurer un Code First Migrations `Seed` méthode qui insère dans la base de données uniquement les données que vous souhaitez être il en production. Cela `Seed` méthode ne doit pas insérer des données de test, car il s’exécutera en production une fois que le Code First crée la base de données en production.
 
-Créer des scripts pour le déploiement de base de données d’appartenance L’application Contoso University utilise l’authentification de formulaires et de système de l’appartenance ASP.NET pour authentifier et autoriser les utilisateurs. Le `Seed`mise à jour crédits page est accessible uniquement aux utilisateurs qui se trouvent dans le rôle d’administrateur. Exécutez l’application et cliquez sur `enable Migrations. Then you'll update the `cours, puis cliquez sur crédits de la mise à jour.
+Dans les versions antérieures de Code First avant la parution de Migrations, il était courant pour `Seed` méthodes pour insérer des données de test en outre, étant donné qu’à chaque modification de modèle au cours du développement la base de données a dû être complètement supprimé et recréé à partir de zéro. Avec les Migrations Code First, test, les données sont conservées après les modifications de la base de données, par conséquent, y compris les données de test dans le `Seed` méthode n’est pas nécessaire. Le projet que vous avez téléchargé utilise la méthode d’inclusion de toutes les données dans le `Seed` méthode d’une classe d’initialiseur. Dans ce didacticiel, vous allez désactiver cette classe d’initialiseur et `enable Migrations. Then you'll update the `valeur initiale » de la méthode dans la configuration de Migrations classe afin qu’il insère uniquement les données que vous souhaitez insérer dans la production.
 
-Cliquez sur les crédits de mise à jour
+Le diagramme suivant illustre le schéma de la base de données d’application :
 
-[![Le [connectez-vous![ page s’affiche, car le ](preparing-databases/_static/image2.png)](preparing-databases/_static/image1.png)crédits de la mise à jour page requiert des privilèges administratifs.](preparing-databases/_static/image2.png)](preparing-databases/_static/image1.png)
+[![School_database_diagram](preparing-databases/_static/image2.png)](preparing-databases/_static/image1.png)
 
-Entrez `Student`administrateur`Enrollment` comme nom d’utilisateur et devpwd comme le mot de passe et cliquez sur connectez-vous. Page de connexion
+Pour ces didacticiels, vous allez supposer que le `Student` et `Enrollment` tables doivent être vides lorsque le site est tout d’abord déployé. Les autres tables contiennent des données qui doit être préchargée lors de l’application est publiée.
 
-### <a name="disable-the-initializer"></a>Le mise à jour crédits page s’affiche.
+### <a name="disable-the-initializer"></a>Désactiver l’initialiseur
 
-Page de crédits de mise à jour Les informations utilisateur et le rôle se trouvent dans le *aspnet-ContosoUniversity* base de données spécifiée par le DefaultConnection chaîne de connexion dans le Web.config fichier. Cette base de données n’est pas géré par Entity Framework Code First, vous ne pouvez pas utiliser les Migrations au pour déployer.
+Dans la mesure où vous allez utiliser Migrations Code First, il est inutile d’utiliser le `DropCreateDatabaseIfModelChanges` initialiseurs Code First. Le code pour cet initialiseur se trouve dans le *SchoolInitializer.cs* fichier dans le projet ContosoUniversity.DAL. Un paramètre dans le `appSettings` élément de la *Web.config* fichier entraîne cet initialiseur exécuter chaque fois que l’application tente d’accéder à la base de données pour la première fois :
 
 [!code-xml[Main](preparing-databases/samples/sample1.xml?highlight=3)]
 
-Vous utiliserez le fournisseur dbDacFx pour déployer le schéma de base de données, et vous allez configurer le profil de publication pour exécuter un script qui insérera initiale des données dans des tables de base de données. Un nouveau système d’appartenance ASP.NET (maintenant appelé ASP.NET Identity) a été introduit avec Visual Studio 2013.
+Ouvrez l’application *Web.config* de fichiers et supprimez ou commentez le `add` élément qui spécifie la classe d’initialiseur de Code First. Le `appSettings` élément ressemble maintenant à ceci :
 
 [!code-xml[Main](preparing-databases/samples/sample2.xml)]
 
 > [!NOTE]
-> Une autre façon de spécifier une classe d'initialisation est de le faire en appelant `Database.SetInitializer` dans la méthode `Application_Start` du fichier *Global.asax* L’exemple d’application utilise le système d’appartenance ASP.NET antérieures, ce qui ne peut pas être déployé à l’aide des Migrations Code First.
+> Une autre façon de spécifier une classe d'initialisation est de le faire en appelant `Database.SetInitializer` dans la méthode `Application_Start` du fichier *Global.asax* Si vous activez les Migrations dans un projet qui utilise cette méthode pour spécifier l’initialiseur, supprimez cette ligne de code.
 
 
 > [!NOTE]
-> Les procédures de déploiement de cette base de données d’appartenance s’appliquent également à tout autre scénario dans lequel votre application a besoin déployer une base de données SQL Server qui n’est pas créé par Entity Framework Code First. Ici aussi, vous préfèrent généralement les mêmes données en production que vous avez dans le développement. Lorsque vous déployez un site pour la première fois, il est courant d’exclure la plupart ou tous les comptes d’utilisateur que vous créez pour le test.
+> Si vous utilisez Visual Studio 2013, ajoutez les étapes suivantes entre les étapes 2 et 3 : (a) PMC dans Entrez « update-package entityframework-version 6.1.1 » pour obtenir la version actuelle d’EF. Puis créez de (b) le projet pour obtenir une liste d’erreurs de build et de les corriger. Supprimer à l’aide des instructions pour les espaces de noms qui n’existent plus, avec le bouton droit et cliquez sur résoudre pour ajouter à l’aide d’instructions où elles sont nécessaires et remplacez les occurrences de System.Data.EntityState à System.Data.Entity.EntityState.
 
 
-### <a name="enable-code-first-migrations"></a>Par conséquent, le projet téléchargé a deux bases de données d’appartenance : aspnet-ContosoUniversity.mdf avec les utilisateurs de développement et aspnet-ContosoUniversity-Prod.mdf avec les utilisateurs en production.
+### <a name="enable-code-first-migrations"></a>Activer Code First Migrations
 
-1. Pour ce didacticiel, les noms d’utilisateur sont les mêmes dans les deux bases de données : administrateur et nonadmin. Les deux utilisateurs ont le mot de passe **devpwd** dans la base de données de développement et **prodpwd** dans la base de données de production. Vous allez déployer les utilisateurs de développement vers l’environnement de test et les utilisateurs de production à intermédiaire et de production.
-2. Pour ce faire vous allez créer deux scripts SQL dans ce didacticiel, un pour le développement et un pour la production, et dans les didacticiels suivants, vous allez configurer le processus de publication pour les exécuter.
+1. Assurez-vous que le projet de ContosoUniversity (pas ContosoUniversity.DAL) est défini comme projet de démarrage. Dans **l’Explorateur de solutions**, cliquez sur le projet ContosoUniversity et sélectionnez **définir comme projet de démarrage**. Migrations Code First recherchera dans le projet de démarrage pour rechercher la chaîne de connexion de base de données.
+2. À partir de la **outils** menu, cliquez sur **Library Package Manager** (ou **Gestionnaire de Package NuGet**), puis **Console du Gestionnaire de Package**.
 
-    ![La base de données d’appartenances stocke un hachage des mots de passe de compte.](preparing-databases/_static/image3.png)
+    ![Selecting_Package_Manager_Console](preparing-databases/_static/image3.png)
 3. En haut de la fenêtre **de la console du gestionnaire** de packages, sélectionnez ContosoUniversity.DAL comme projet par défaut, puis à l'invite `PM>`, entrez "enable-migrations".
 
-    ![Ils génèrent les hachages mêmes lorsque vous utilisez les fournisseurs universels ASP.NET, tant que vous ne modifiez pas l’algorithme par défaut.](preparing-databases/_static/image4.png)
+    ![commande d’Enable-migrations](preparing-databases/_static/image4.png)
 
-    L’algorithme par défaut est HMACSHA256 et qu’il est spécifié dans le *validation* attribut de la ** machineKey  élément dans le fichier Web.config.
+    (Si vous obtenez un message d’erreur indiquant la *enable-migrations* commande n’est pas reconnue, entrez la commande *update-package EntityFramework-réinstaller* et essayez à nouveau.)
 
-    Vous pouvez créer des scripts de déploiement de données manuellement, à l’aide de SQL Server Management Studio (SSMS), ou à l’aide d’un outil tiers.
+    Cette commande crée un *Migrations* dossier dans le projet ContosoUniversity.DAL et il place dans ce dossier, deux fichiers : un *Configuration.cs* fichier que vous pouvez utiliser pour configurer les Migrations et un *InitialCreate.cs* fichier pour la première migration qui crée la base de données.
 
-    ![Cette suite de ce didacticiel vous montrera comment le faire dans SSMS, mais si vous ne souhaitez pas installer et utiliser SSMS vous pouvez obtenir les scripts à partir de la version complète du projet et passer à la section où les stocker dans le dossier de solution.](preparing-databases/_static/image5.png)
+    ![Dossier migrations](preparing-databases/_static/image5.png)
 
-    Pour installer SSMS, installez-le à partir de **centre de téléchargement : Microsoft SQL Server 2012 Express** en cliquant sur **ENU\x64\SQLManagementStudio**x64`enable-migrations`ENU.exe ou  ENU\x86\SQLManagementStudiox86ENU.exe. Si vous choisissez une autre pour votre système, il n’est pas installer et vous pouvez essayez-en un autre. (Notez qu’il s’agit d’un téléchargement de 600 mégaoctets. Il peut prendre beaucoup de temps à installer et nécessitera un redémarrage de votre ordinateur.) Dans la première page du centre d’Installation de SQL Server, cliquez sur `get-help enable-migrations`nouvelle installation SQL Server autonome ou ajout de fonctionnalités à une installation existanteet suivez les instructions en acceptant les choix par défaut.
+    Vous avez sélectionné le projet de la couche DAL dans le **projet par défaut** liste déroulante de la **Console du Gestionnaire de Package** , car le `enable-migrations` commande doit être exécutée dans le projet qui contient le Code First classe de contexte. Lorsque cette classe est dans un projet de bibliothèque de classes, les Migrations Code First recherche la chaîne de connexion de base de données dans le projet de démarrage pour la solution. Dans la solution ContosoUniversity, le projet web a été défini comme projet de démarrage. Si vous ne souhaitez pas désigner le projet dont la chaîne de connexion en tant que projet de démarrage dans Visual Studio, vous pouvez spécifier le projet de démarrage dans la commande PowerShell. Pour afficher la syntaxe de commande, entrez la commande `get-help enable-migrations`.
 
-    Créer le script de base de données de développement Exécutez SSMS. Dans le **se connecter au serveur** boîte de dialogue, entrez **(localdb) \v11.0** en tant que le nom du serveur, laissez authentification défini sur L’authentification Windows, puis cliquez sur Connect. SSMS se connecter au serveur Dans le Explorateur d’objets fenêtre, développez bases de données, avec le bouton droit aspnet-ContosoUniversity, cliquez sur tâches, puis cliquez sur Générer des Scripts.
+    Le `enable-migrations` commande créé automatiquement la première migration, car la base de données existe déjà. Une alternative consiste à demander les Migrations à créer la base de données. Pour cela, utilisez **Explorateur de serveurs** ou **Explorateur d’objets SQL Server** pour supprimer la base de données ContosoUniversity avant d’activer les Migrations. Après avoir activé les migrations, créez la première migration manuellement en entrant la commande « add-migration InitialCreate ». Vous pouvez ensuite créer la base de données en entrant la commande « update-database ».
 
-### <a name="set-up-the-seed-method"></a>Générer des Scripts SSMS
+### <a name="set-up-the-seed-method"></a>Configurer la méthode Seed
 
-Dans le `Seed`générer et publier des Scripts`Configuration` boîte de dialogue, cliquez sur définir les Options de script. Vous pouvez ignorer la `Seed`choisir objets étape car la valeur par défaut est base de données entière et tous les objets de base de données de Script et c’est ce que vous souhaitez.
+Pour ce didacticiel, vous ajouterez des données fixes en ajoutant du code pour le `Seed` méthode les Migrations Code First `Configuration` classe. Code First Migrations appelle la `Seed` méthode après chaque migration.
 
-Options de script de SSMS Dans le `AddOrUpdate`Options de script avancées boîte de dialogue, faites défiler jusqu'à Types de données à scripter, puis cliquez sur le uniquement les données option dans la liste déroulante. La méthode `AddOrUpdate` peut ne pas être le meilleur choix pour votre scénario. UTILISER des instructions ne sont pas valides pour la base de données SQL Azure et ne sont pas nécessaires pour le déploiement sur SQL Server Express dans l’environnement de test.
+Dans la mesure où le `Seed` méthode s’exécute après chaque migration, données déjà dans les tables après la première migration. Pour gérer cette situation, vous allez utiliser le `AddOrUpdate` méthode pour mettre à jour les lignes qui ont déjà été insérés, ou les insérer si elles n’existent pas encore. La méthode `AddOrUpdate` peut ne pas être le meilleur choix pour votre scénario. Pour plus d'informations, voir [ Faites attention avec la méthode AddOrUpdate d'EF 4.3 ](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/) sur le blog de Julie Lerman.
 
-1. SSMS Script uniquement les données, aucune instruction USE
+1. Ouvrez le *Configuration.cs* fichier et remplacez les commentaires dans le `Seed` méthode avec le code suivant :
 
     [!code-csharp[Main](preparing-databases/samples/sample3.cs)]
-2. Dans le `List`générer et publier des Scripts`using` boîte de dialogue, le nom de fichier zone spécifie où le script doit être créé. Modifier le chemin d’accès à votre dossier de solution (le dossier contenant votre fichier ContosoUniversity.sln) et le nom de fichier à `List`aspnet-data-dev.sql **.
+2. Les références à `List` ont des lignes ondulées rouges sous les, car vous n’avez pas un `using` instruction encore pour son espace de noms. Cliquez sur un des instances de `List` et cliquez sur **résoudre**, puis cliquez sur **using System.Collections.Generic**.
 
-    ![Cliquez sur suivant pour accéder à la Résumé onglet, puis cliquez sur suivant à nouveau pour créer le script.](preparing-databases/_static/image6.png)
+    ![Résoudre avec l’instruction using](preparing-databases/_static/image6.png)
 
-    Script SSMS créé
+    Cette sélection de menu ajoute le code suivant aux `using` instructions situées en haut du fil
 
     [!code-csharp[Main](preparing-databases/samples/sample4.cs)]
-3. Créer le script de base de données de production
+3. Appuyez sur CTRL-MAJ-B pour générer le projet.
 
-Étant donné que vous n’avez pas exécuté le projet avec la base de données de production, il n’est pas encore attaché à l’instance de base de données locale. Par conséquent, vous devez attacher la base de données tout d’abord.
+Le projet est maintenant prêt à déployer le *ContosoUniversity* base de données. After you deploy the application, the first time you run it and navigate to a page that accesses the database, Code First will create the database and run this `Seed` method.
 
 > [!NOTE]
-> Dans SSMS `Seed`Explorateur d’objets, avec le bouton droit bases de données et cliquez sur attacher. Attachement de SSMS Les méthodes `Up` et `Down` contiennent du code qui implémente les modifications de base de données. Vous en trouverez des exemples dans le didacticiel [Déploiement d'une base de données Update](deploying-a-database-update.md).
+> Dans SSMS `Seed`Explorateur d’objets, avec le bouton droit bases de données et cliquez sur attacher. Une alternative consiste à ajouter du code aux méthodes `Up` et `Down` de chaque classe de migration. Les méthodes `Up` et `Down` contiennent du code qui implémente les modifications de base de données. Vous en trouverez des exemples dans le didacticiel [Déploiement d'une base de données Update](deploying-a-database-update.md).
 > 
-> Suivez la même procédure que vous avez utilisé précédemment pour créer un script pour le fichier de production. Nommez le fichier de script `Up`aspnet-data-prod.sql.
+> Vous pouvez également écrire du code qui exécute des instructions SQL à l'aide de la méthode `Sql`. Par exemple, si vous ajoutez une colonne Budget à la table Department et souhaitez initialiser tous les budgets de département à 1 000,00 $ dans le cadre d'une migration, vous pouvez ajouter la ligne de code suivante à la méthode `Up` pour cette migration:
 > 
 > `Sql("UPDATE Department SET Budget = 1000");`
 
 
-## <a name="create-scripts-for-membership-database-deployment"></a>Les deux bases de données sont désormais prêtes à être déployée et vous avez deux scripts de déploiement de données dans votre dossier de solution.
+## <a name="create-scripts-for-membership-database-deployment"></a>Créer des scripts pour le déploiement de base de données d’appartenance
 
-Scripts de déploiement de données Dans ce didacticiel, vous configurez les paramètres de projet qui affectent le déploiement, et vous configurez automatique **Web.config** transformations de fichiers pour les paramètres qui doivent être différents dans l’application déployée.
+L’application Contoso University utilise l’authentification de formulaires et de système de l’appartenance ASP.NET pour authentifier et autoriser les utilisateurs. Le **mise à jour crédits** page est accessible uniquement aux utilisateurs qui se trouvent dans le rôle d’administrateur.
 
-Pour plus d’informations sur NuGet, consultez **gérer les bibliothèques de projets avec NuGet** et **Documentation de NuGet**.
+Exécutez l’application et cliquez sur **cours**, puis cliquez sur **crédits de la mise à jour**.
 
-![Si vous ne souhaitez pas utiliser NuGet, vous devrez apprendre à analyser un package NuGet pour déterminer ce qu’il fait lorsqu’il est installé.](preparing-databases/_static/image7.png)
+![Cliquez sur les crédits de mise à jour](preparing-databases/_static/image7.png)
 
-(Par exemple, il peut configurer **Web.config** transformations, configurer des scripts PowerShell à exécuter au moment de la génération, etc..)
+Le **connectez-vous** page s’affiche, car le **crédits de la mise à jour** page requiert des privilèges administratifs.
 
-Pour en savoir plus sur le fonctionne de NuGet, consultez *créer et publier un Package* et **fichier de Configuration et des Transformations de Code Source**.
+Entrez *administrateur* comme nom d’utilisateur et *devpwd* comme le mot de passe et cliquez sur **connectez-vous**.
 
 ![Page de connexion](preparing-databases/_static/image8.png)
 
