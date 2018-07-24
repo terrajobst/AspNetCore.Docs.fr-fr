@@ -5,12 +5,12 @@ description: Découvrez comment créer une application ASP.NET Core avec la réi
 ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: af3ba8b27148d94c4a905c688b8165f49b9f2927
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 84eb3580107572f66f0c3b565b8e76ba401c0ddb
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095744"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219405"
 ---
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -34,13 +34,13 @@ Ce didacticiel montre comment créer une application ASP.NET Core avec la réini
 
 ## <a name="prerequisites"></a>Prérequis
 
-[!INCLUDE [](~/includes/2.1-SDK.md) [](~/includes/2.1-SDK.md)]
+[!INCLUDE [](~/includes/2.1-SDK.md)]
 
 ## <a name="create-a-web--app-and-scaffold-identity"></a>Créer une application web et de structurer des identités
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
-* Dans Visual Studio, créez un nouveau **Web Application** projet.
+* Dans Visual Studio, créez un nouveau **Web Application** projet nommé **WebPWrecover**.
 * Sélectionnez **ASP.NET Core 2.1**.
 * Conservez la valeur par défaut **authentification** définie sur **aucune authentification**. L’authentification est ajoutée à l’étape suivante.
 
