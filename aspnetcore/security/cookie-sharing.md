@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/19/2017
 uid: security/cookie-sharing
-ms.openlocfilehash: f8347b52f68165cdbe4ab77a76664e4767bc4cdf
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: ed3496db3f7a63a704f0e57faef6b2f6c085a8bd
+ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095475"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39228596"
 ---
 # <a name="share-cookies-among-apps-with-aspnet-and-aspnet-core"></a>Partager des cookies entre applications avec ASP.NET et ASP.NET Core
 
@@ -51,6 +51,12 @@ Dans le `ConfigureServices` (méthode), utilisez le [ConfigureApplicationCookie]
 
 Clés de protection des données et le nom de l’application doivent être partagés entre les applications. Dans les exemples d’applications, `GetKeyRingDirInfo` retourne l’emplacement de stockage de clés communes à la [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) (méthode). Utilisez [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) pour configurer un nom d’application partagé commun (`SharedCookieApp` dans l’exemple). Pour plus d’informations, consultez [Protection des données de configuration](xref:security/data-protection/configuration/overview).
 
+Lorsque vous hébergez des applications qui partagent des cookies entre les sous-domaines, spécifiez un domaine commun dans le [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain) propriété. Pour partager des cookies entre applications à `contoso.com`, tel que `first_subdomain.contoso.com` et `second_subdomain.contoso.com`, spécifiez la `Cookie.Domain` comme `.contoso.com`:
+
+```csharp
+options.Cookie.Domain = ".contoso.com";
+```
+
 Consultez le *CookieAuthWithIdentity.Core* de projet dans le [exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)).
 
 # <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
@@ -89,7 +95,13 @@ Lorsque vous utilisez directement les cookies :
 
 [!code-csharp[](cookie-sharing/sample/CookieAuth.Core/Startup.cs?name=snippet1)]
 
-Clés de protection des données et le nom de l’application doivent être partagés entre les applications. Dans les exemples d’applications, `GetKeyRingDirInfo` retourne l’emplacement de stockage de clés communes à la [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) (méthode). Utilisez [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) pour configurer un nom d’application partagé commun (`SharedCookieApp` dans l’exemple). Pour plus d’informations, consultez [Protection des données de configuration](xref:security/data-protection/configuration/overview). 
+Clés de protection des données et le nom de l’application doivent être partagés entre les applications. Dans les exemples d’applications, `GetKeyRingDirInfo` retourne l’emplacement de stockage de clés communes à la [PersistKeysToFileSystem](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.persistkeystofilesystem) (méthode). Utilisez [SetApplicationName](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.setapplicationname) pour configurer un nom d’application partagé commun (`SharedCookieApp` dans l’exemple). Pour plus d’informations, consultez [Protection des données de configuration](xref:security/data-protection/configuration/overview).
+
+Lorsque vous hébergez des applications qui partagent des cookies entre les sous-domaines, spécifiez un domaine commun dans le [Cookie.Domain](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.domain) propriété. Pour partager des cookies entre applications à `contoso.com`, tel que `first_subdomain.contoso.com` et `second_subdomain.contoso.com`, spécifiez la `Cookie.Domain` comme `.contoso.com`:
+
+```csharp
+options.Cookie.Domain = ".contoso.com";
+```
 
 Consultez le *CookieAuth.Core* de projet dans le [exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cookie-sharing/sample/) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample)).
 
