@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 0d35de827ca6fea530229f1ef263ea7b9351e5ad
-ms.sourcegitcommit: 19cbda409bdbbe42553dc385ea72d2a8e246509c
+ms.openlocfilehash: ea3f26f9377715ea27f19908932d2dcf3cfcbea6
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992826"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202599"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -38,7 +38,7 @@ Mettez à jour la classe `Movie` pour tirer parti des attributs de validation `R
 
 ::: moniker range=">= aspnetcore-2.1"
 
-[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDA.cs)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie21/Models/MovieDateRatingDA.cs?name=snippet1)]
 
 ::: moniker-end
 
@@ -157,7 +157,7 @@ La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data
 
 Consultez [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour obtenir des instructions sur la publication de cette application sur Azure.
 
-Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec MVC et EF Core](xref:data/ef-mvc/intro).
+Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

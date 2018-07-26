@@ -5,15 +5,13 @@ description: Ce didacticiel montre comment gérer les conflits quand plusieurs u
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: c6ec07eb7bf484490bd7730edc44bf2d89e8fb2a
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: ff9e52df63f9c9f47ee659a68beb28b773a114a1
+ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38150481"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39202690"
 ---
-fr-fr/
-
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra) et [Jon P Smith](https://twitter.com/thereformedprog)
@@ -54,17 +52,21 @@ L’accès concurrentiel optimiste comprend les options suivantes :
 
 * Vous pouvez effectuer le suivi des propriétés modifiées par un utilisateur et mettre à jour seulement les colonnes correspondantes dans la base de données.
 
-  Dans le scénario, aucune donnée ne serait perdue. Des propriétés différentes ont été mises à jour par les deux utilisateurs. La prochaine fois que quelqu’un consultera le département « English », il verra à la fois les modifications de Jane et de John. Cette méthode de mise à jour peut réduire le nombre de conflits susceptibles d’entraîner une perte de données. Cette approche : * ne peut pas éviter une perte de données si des modifications concurrentes sont apportées à la même propriété.
-        * N’est généralement pas pratique dans une application web. Elle nécessite la tenue à jour d’un état significatif afin d’effectuer le suivi de toutes les valeurs récupérées et des nouvelles valeurs. La maintenance de grandes quantités d’état peut affecter les performances de l’application.
-        * Peut augmenter la complexité de l’application par rapport à la détection de l’accès concurrentiel sur une entité.
+  Dans le scénario, aucune donnée ne serait perdue. Des propriétés différentes ont été mises à jour par les deux utilisateurs. La prochaine fois que quelqu’un consultera le département « English », il verra à la fois les modifications de Jane et de John. Cette méthode de mise à jour peut réduire le nombre de conflits susceptibles d’entraîner une perte de données. Cette approche a les caractéristiques suivantes :
+ 
+  * Elle ne peut pas éviter une perte de données si des modifications concurrentes sont apportées à la même propriété.
+  * Elle n’est généralement pas pratique dans une application web. Elle nécessite la tenue à jour d’un état significatif afin d’effectuer le suivi de toutes les valeurs récupérées et des nouvelles valeurs. La maintenance de grandes quantités d’état peut affecter les performances de l’application.
+  * Elle peut augmenter la complexité de l’application par rapport à la détection de l’accès concurrentiel sur une entité.
 
-* Vous pouvez laisser les modifications de John remplacer celles de Jane.
+* Vous pouvez laisser les modifications de John remplacer les modifications de Jane.
 
   La prochaine fois que quelqu’un consultera le département « English », il verra la date 01/09/2013 et la valeur 350 000,00 $ récupérée. Cette approche est un scénario *Priorité au client* ou *Priorité au dernier*. (Toutes les valeurs du client sont prioritaires par rapport au contenu du magasin de données.) Si vous n’écrivez pas de code pour la gestion de l’accès concurrentiel, la Priorité au client est appliquée automatiquement.
 
-* Vous pouvez empêcher les modifications de John d’être mises à jour dans la base de données. En règle générale, l’application : * Afficherait un message d’erreur.
-        * Afficherait l’état actuel de l’état.
-        * Autoriserait l’utilisateur à réappliquer les modifications.
+* Vous pouvez empêcher les modifications de John d’être mises à jour dans la base de données. En règle générale, l’application :
+
+  * affiche un message d’erreur ;
+  * indique l’état actuel des données ;
+  * autorise l’utilisateur à réappliquer les modifications.
 
   Il s’agit alors d’un scénario *Priorité au magasin*. (Les valeurs du magasin de données sont prioritaires par rapport à celles soumises par le client.) Nous allons implémenter le scénario Priorité au magasin dans ce didacticiel. Cette méthode garantit qu’aucune modification n’est remplacée sans qu’un utilisateur soit averti.
 
@@ -144,7 +146,7 @@ Les commandes précédentes :
 * Ajoutent le fichier de migration *Migrations/{horodatage}_RowVersion.cs*.
 * Mettent à jour le fichier *Migrations/SchoolContextModelSnapshot.cs*. La mise à jour ajoute le code en surbrillance suivant à la méthode `BuildModel` :
 
-[!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
+  [!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot2.cs?name=snippet&highlight=14-16)]
 
 * Exécutent des migrations pour mettre à jour la base de données.
 
