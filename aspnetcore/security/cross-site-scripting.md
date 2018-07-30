@@ -1,30 +1,30 @@
 ---
-title: Empêcher intersites script (XSS) dans ASP.NET Core
+title: Empêcher de Cross-Site script (XSS) dans ASP.NET Core
 author: rick-anderson
-description: En savoir plus sur les scripts entre sites (XSS) et techniques pour traiter cette vulnérabilité dans une application ASP.NET Core.
+description: En savoir plus sur Cross-Site Scripting (XSS) et les techniques pour résoudre cette vulnérabilité dans une application ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/cross-site-scripting
-ms.openlocfilehash: ce6bb273034c56890e0cd98b890436602b5acc69
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 4784b1775d955f0ef00526e50b960fc873ea218d
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272446"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342209"
 ---
-# <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher intersites script (XSS) dans ASP.NET Core
+# <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher de Cross-Site script (XSS) dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet à une personne malveillante de placer les scripts côté client (généralement JavaScript) dans les pages web. Lorsque les autres utilisateurs chargent les pages concernées les scripts des personnes malveillantes s’exécutent, donnant ainsi la possibilité à la personne malveillante de voler des cookies et des jetons, modifier le contenu de la page web via la manipulation du modèle DOM ou de rediriger le navigateur vers une autre page. Les vulnérabilités XSS se produisent généralement lorsqu’une application accepte l’entrée d'un utilisateur et lui en donne en retour une page sans validation, encodage ou échappement.
 
-## <a name="protecting-your-application-against-xss"></a>Protection de votre application par rapport à XSS
+## <a name="protecting-your-application-against-xss"></a>Protéger votre application contre XSS
 
 À un niveau de base, XSS fonctionne par ruses dans votre application en insérant une balise `<script>` dans le rendu de la page ou en insérant un événement `On*` dans un élément. Les développeurs doivent utiliser les étapes de prévention suivantes pour éviter d’introduire des failles XSS dans leur application.
 
 1. Ne placez jamais des données non fiables dans votre entrée HTML, sauf si vous suivez le reste des étapes ci-dessous. Les données non approuvées sont toutes les données qui peuvent être contrôlées par une personne malveillante, des entrées de formulaire HTML, chaînes de requête, les en-têtes HTTP, même les données provenant d’une base de données, car une personne malveillante peut être en mesure d'attaquer votre base de données même si elle ne cause pas des failles dans votre application.
 
-2. Avant de placer des données non fiables à l’intérieur d’un élément HTML, assurez-vous qu’il est encodé au format HTML. L’encodage HTML accepte les caractères comme &lt; et les transforme en un formulaire sécurisé comme &amp;lt ;
+2. Avant de placer des données non fiables à l’intérieur d’un élément HTML, assurez-vous qu’il est encodé au format HTML. L’encodage HTML utilise des caractères tel que &lt; et les transforme en un formulaire sécurisé comme &amp;lt ;
 
 3. Avant de placer des données non fiables dans un attribut HTML, assurez-vous qu’il est l’attribut HTML encodé. L'Encodage d’attribut HTML est un sur-ensemble de l’encodage HTML et encode les caractères supplémentaires tels que « et ».
 
@@ -36,7 +36,7 @@ L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet
 
 Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise les règles d'encodage d’attribut HTML chaque fois que vous utilisez la directive *@*. L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez @ uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
 
-Prenez l’affichage Razor suivant ;
+Prendre la vue Razor suivante ;
 
 ```none
 @{
@@ -57,7 +57,7 @@ Cette vue renvoie le contenu de la variable *untrustedInput*. Cette variable inc
 
 ## <a name="javascript-encoding-using-razor"></a>Encodage de JavaScript à l’aide de Razor
 
-Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Le moyen le plus sûr pour insérer des valeurs consiste à placer la valeur dans un attribut de données d’une balise et de récupérer dans JavaScript. Exemple :
+Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Pour insérer des valeurs, la plus sûre consiste à placer la valeur dans un attribut de données d’une balise et récupérez-la dans votre code JavaScript. Exemple :
 
 ```none
 @{
@@ -142,7 +142,7 @@ Cela s'affichera dans le navigateur comme suit :
 
 ## <a name="accessing-encoders-in-code"></a>L’accès à des encodeurs dans le code
 
-Les encodeurs HTML, JavaScript et URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via [injection de dépendance](xref:fundamentals/dependency-injection#fundamentals-dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l'espace de noms `System.Text.Encodings.Web`. Si vous utilisez les encodeurs par défaut, alors les encodeurs que vous avez appliqués aux plages de caractères considérés comme sécurisées ne prendront pas effet - les encodeurs par défaut utilisent les règles d'encodage les plus sûres possible.
+Les encodeurs HTML, JavaScript et URL sont disponibles pour votre code de deux manières, vous pouvez les injecter via [injection de dépendance](xref:fundamentals/dependency-injection) ou vous pouvez utiliser les encodeurs par défaut contenus dans l'espace de noms `System.Text.Encodings.Web`. Si vous utilisez les encodeurs par défaut, alors les encodeurs que vous avez appliqués aux plages de caractères considérés comme sécurisées ne prendront pas effet - les encodeurs par défaut utilisent les règles d'encodage les plus sûres possible.
 
 Pour utiliser les encodeurs configurables via DI votre constructeur doit prendre un paramètre *HtmlEncoder*, *JavaScriptEncoder* et *UrlEncoder* selon les besoins. Par exemple :
 
@@ -164,7 +164,7 @@ public class HomeController : Controller
    }
    ```
 
-## <a name="encoding-url-parameters"></a>Paramètres d’encodage URL
+## <a name="encoding-url-parameters"></a>Codage des paramètres d’URL
 
 Si vous souhaitez générer une chaîne de requête URL avec une entrée non approuvée en tant que valeur, utilisez la classe `UrlEncoder` pour encoder la valeur. Par exemple :
 
@@ -214,7 +214,7 @@ Cet exemple étend la liste sécurisée pour inclure la plage Unicode CjkUnified
 <p>This link text is in Chinese: <a href="/">汉语/漢語</a></p>
    ```
 
-Les plages de liste verte sont spécifiées sous forme de graphiques de code Unicode, pas les langues. Le [norme Unicode](http://unicode.org/) possède une liste de [code graphiques](http://www.unicode.org/charts/index.html) que vous pouvez utiliser pour rechercher le graphique qui contient les caractères. Chaque encodeur, Html, JavaScript et Url, doit être configuré séparément.
+Plages de la liste verte sont spécifiés sous forme de graphiques de code Unicode, pas les langues. Le [norme Unicode](http://unicode.org/) possède une liste de [code graphiques](http://www.unicode.org/charts/index.html) vous pouvez utiliser pour rechercher le graphique contenant vos caractères. Chaque encodeur, Html, JavaScript et Url, doit être configuré séparément.
 
 > [!NOTE]
 > La personnalisation de la liste n’affecte que les encodeurs provenant de DI. Si vous accédez directement à un encodeur via `System.Text.Encodings.Web.*Encoder.Default` ealors seule la liste fiable par défaut, Basic Latin sera utilisée.
@@ -223,6 +223,6 @@ Les plages de liste verte sont spécifiées sous forme de graphiques de code Uni
 
 Les pratiques générales acceptées est que l'encodage intervienne au point de rendu et les valeurs encodées ne doivent jamais être stockées dans une base de données. L'encodage dans la phase de rendu vous permet de modifier l’utilisation des données, par exemple, à partir de HTML à une valeur de chaîne de requête. Aussi, il vous permet de rechercher facilement vos données sans avoir à encoder les valeurs avant de les rechercher et vous permet de tirer parti des modifications ou des correctifs de bogues apportés aux encodeurs.
 
-## <a name="validation-as-an-xss-prevention-technique"></a>Validation comme une technique de prévention XSS
+## <a name="validation-as-an-xss-prevention-technique"></a>Validation en tant qu’une technique de prévention XSS
 
-La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, un type numérique string contenant uniquement les caractères 0-9 ne sont pas déclencher une attaque XSS. La validation devient plus complexe si vous souhaitez accepter HTML dans l’entrée d’utilisateur - l’analyse d’entrée HTML est difficile, voire impossible. Le MarkDown et les autres formats de texte sont une option plus sûre pour l’entrée riche. Vous ne devez jamais vous appuyer sur la validation uniquement. Encodez toujours une entrée non approuvée avant le rendu, quel que soit le quel type de validation que vous avez effectué.
+La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, une chaîne numérique contenant uniquement les caractères 0-9 ne déclenche pas une attaque XSS. La validation devient plus complexe si vous souhaitez accepter HTML dans l’entrée d’utilisateur - l’analyse d’entrée HTML est difficile, voire impossible. Le MarkDown et les autres formats de texte sont une option plus sûre pour l’entrée riche. Vous ne devez jamais vous appuyer sur la validation uniquement. Encodez toujours une entrée non approuvée avant le rendu, quel que soit le quel type de validation que vous avez effectué.

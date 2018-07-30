@@ -1,20 +1,20 @@
 ---
-title: Autorisation basée sur le mode dans ASP.NET MVC de base
+title: Autorisation basée sur l’affichage dans ASP.NET Core MVC
 author: rick-anderson
 description: Ce document montre comment injecter et utiliser le service d’autorisation à l’intérieur d’une vue ASP.NET Core Razor.
 ms.author: riande
 ms.date: 10/30/2017
 uid: security/authorization/views
-ms.openlocfilehash: f25bab61afc93ff14bfd9c36d95a6d2e54b06dfb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: e497c41d4dca29fed8733f18cf727804e3f06d8c
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277809"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342534"
 ---
-# <a name="view-based-authorization-in-aspnet-core-mvc"></a>Autorisation basée sur le mode dans ASP.NET MVC de base
+# <a name="view-based-authorization-in-aspnet-core-mvc"></a>Autorisation basée sur l’affichage dans ASP.NET Core MVC
 
-Un développeur souhaite souvent afficher, masquer ou modifier une interface utilisateur basée sur l’identité de l’utilisateur actuel. Vous pouvez accéder au service de l’autorisation au sein de vues MVC via [l'injection de dépendance](xref:fundamentals/dependency-injection#fundamentals-dependency-injection). Pour insérer le service d’autorisation dans une vue Razor, utilisez la directive `@inject`:
+Un développeur souhaite souvent afficher, masquer ou modifier une interface utilisateur basée sur l’identité de l’utilisateur actuel. Vous pouvez accéder au service de l’autorisation au sein de vues MVC via [l'injection de dépendance](xref:fundamentals/dependency-injection). Pour insérer le service d’autorisation dans une vue Razor, utilisez la directive `@inject`:
 
 ```cshtml
 @using Microsoft.AspNetCore.Authorization
@@ -72,4 +72,4 @@ Dans certains cas, la ressource sera votre modèle de Vue. Utilisez `AuthorizeAs
 Dans le code précédent, le modèle est transmis en tant que ressource que l’évaluation de stratégie doit prendre en considération.
 
 > [!WARNING]
-> Ne vous fiez pas bascule de visibilité des éléments d’interface utilisateur de votre application en tant que le contrôle d’autorisation unique. Le masquage d’un élément d’interface utilisateur peuvent ne pas complètement empêche l’accès à son action de contrôleur associé. Par exemple, considérez le bouton dans l’extrait de code précédent. Un utilisateur peut appeler le `Edit` URL de la méthode d’action si il connaît la ressource relative est */Document/Edit/1*. Pour cette raison, la `Edit` méthode d’action doit effectuer son propre contrôle d’autorisation.
+> Ne vous fiez bascule si celle-ci visibilité des éléments d’interface utilisateur de votre application en tant que le contrôle d’autorisation unique. Masquer un élément d’interface utilisateur ne peut-être pas complètement empêcher l’accès à son action de contrôleur associé. Par exemple, considérez le bouton dans l’extrait de code précédent. Un utilisateur peut appeler le `Edit` URL de la méthode d’action si il connaisse la ressource relative est */Document/Edit/1*. Pour cette raison, le `Edit` méthode d’action doit exécuter son propre contrôle d’autorisation.
