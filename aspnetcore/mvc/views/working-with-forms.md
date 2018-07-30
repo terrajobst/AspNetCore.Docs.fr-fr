@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 02/14/2017
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: 3e4e597fde829ae2e2ce4dbd19a4ec0b42d078df
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 34a553c7ff8a18c367bf5e8079e2ea71f968bf3b
+ms.sourcegitcommit: 75bf5fdbfdcb6a7cfe8fe207b9ff37655ccbacd4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274851"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39219418"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Tag Helpers dans les formulaires dans ASP.NET Core
 
@@ -169,7 +169,7 @@ Les annotations de données appliquées aux propriétés `Email` et `Password` g
 
 ### <a name="expression-names"></a>Noms d’expressions
 
-La valeur de l’attribut `asp-for` est un `ModelExpression` et correspond au côté droit d’une expression lambda. Ainsi, `asp-for="Property1"` devient `m => m.Property1` dans le code généré, ce qui explique pourquoi vous n’avez pas besoin de le faire commencer par `Model`. Vous pouvez utiliser le caractère « @ » pour débuter une expression inline avant `m.` :
+La valeur de l’attribut `asp-for` est un `ModelExpression` et correspond au côté droit d’une expression lambda. Ainsi, `asp-for="Property1"` devient `m => m.Property1` dans le code généré, ce qui explique pourquoi vous n’avez pas besoin de le faire commencer par `Model`. Vous pouvez utiliser le caractère « \@ » pour débuter une expression inline avant `m.` :
 
 ```HTML
 @{
