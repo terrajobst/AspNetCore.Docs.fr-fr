@@ -5,12 +5,12 @@ description: Découvrez plus en détail le framework de journalisation dans ASP.
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: 0181566aeab1fa055435ac90887c019eef52878c
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: f629b062afb5c17cd05040a9ef0281aa7121aabc
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228635"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320750"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -56,7 +56,7 @@ Pour utiliser un fournisseur, appelez la méthode d’extension `Add<ProviderNam
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_ExpandDefault&highlight=16,17)]
 
-Le modèle de projet par défaut active la journalisation avec la méthode [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder?view=aspnetcore-2.0#Microsoft_AspNetCore_WebHost_CreateDefaultBuilder_System_String___) :
+Le modèle de projet par défaut permet la journalisation pour les fournisseurs Console et Debug avec un appel à la méthode d’extension [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) dans *Program.cs* :
 
 [!code-csharp[](index/sample2/Program.cs?name=snippet_TemplateCode&highlight=7)]
 
@@ -77,11 +77,21 @@ Le conteneur [injection de dépendance](xref:fundamentals/dependency-injection) 
 
 ::: moniker-end
 
-Vous trouverez des informations sur chaque [fournisseur de journalisation intégré](#built-in-logging-providers) et des liens vers des [fournisseurs de journalisation tiers](#third-party-logging-providers) plus loin dans cet article.
+Vous trouverez des informations sur les [fournisseurs de journalisation intégrés](#built-in-logging-providers) et des liens vers des [fournisseurs de journalisation tiers](#third-party-logging-providers) plus loin dans cet article.
 
-## <a name="settings-file-configuration"></a>Configuration du fichier de paramètres
+## <a name="configuration"></a>Configuration
 
-Chacun des exemples précédents de la section [Comment ajouter des fournisseurs](#how-to-add-providers) charge une configuration de fournisseur de journalisation de la section `Logging` des fichiers de paramètres d’application. L’exemple suivant montre le contenu d’un fichier *appsettings.Development.json* standard :
+La configuration de fournisseur de journalisation est fournie par un ou plusieurs fournisseurs de configuration :
+
+* Formats de fichiers (INI, JSON et XML).
+* Arguments de ligne de commande
+* Variables d'environnement.
+* Objets .NET en mémoire.
+* Stockage [Secret Manager](xref:security/app-secrets) non chiffré.
+* Magasin utilisateur chiffré comme [Azure Key Vault](xref:security/key-vault-configuration).
+* Fournisseurs personnalisés (installés ou créés).
+
+Par exemple, la configuration de journalisation est généralement fournie par la section `Logging` des fichiers de paramètres d’application. L’exemple suivant montre le contenu d’un fichier *appsettings.Development.json* standard :
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -122,6 +132,8 @@ Les clés `LogLevel` représentent des noms de journal. La clé `Default` s’ap
 Les clés `LogLevel` représentent des noms de journal. La clé `Default` s’applique aux journaux qui ne sont pas explicitement répertoriés. La valeur représente le [niveau de journal](#log-level) appliqué au journal donné.
 
 ::: moniker-end
+
+Pour plus d’informations sur l’implémentation des fournisseurs de configuration, consultez <xref:fundamentals/configuration/index>.
 
 ## <a name="sample-logging-output"></a>Exemple de sortie de la journalisation
 
@@ -436,7 +448,7 @@ Le code suivant active les étendues pour le fournisseur Console :
 > [!NOTE]
 > La configuration de l’option logger `IncludeScopes` pour la console est nécessaire pour activer la journalisation basée sur des étendues.
 >
-> `IncludeScopes` peut être configuré au moyen des fichiers de configuration *appsettings*. Pour plus d’informations, consultez la section [Configuration du fichier de paramètres](#settings-file-configuration).
+> Pour plus d'informations sur la configuration, reportez-vous à la section [Configuration](#Configuration).
 
 ::: moniker-end
 

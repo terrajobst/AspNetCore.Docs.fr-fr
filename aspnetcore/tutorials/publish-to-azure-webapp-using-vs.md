@@ -5,12 +5,12 @@ description: Découvrez comment publier une application ASP.NET Core sur Azure A
 ms.author: riande
 ms.date: 12/16/2017
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: b6ff7d4873e6863fe2c64f48952e59fe3593bd9e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 7211da268c1c52e7b859e6f98ce433fd19b218ff
+ms.sourcegitcommit: 516d0645c35ea784a3ae807be087ae70446a46ee
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273895"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39320724"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio
 
@@ -24,7 +24,7 @@ Pour résoudre un problème de déploiement App Service, consultez [Résoudre le
 
 ## <a name="set-up"></a>Installer
 
-* Ouvrez un [compte Azure gratuit](https://aka.ms/K5y5yh) si vous n’en avez pas. 
+* Ouvrez un [compte Azure gratuit](https://azure.microsoft.com/free/dotnet/) si vous n’en avez pas. 
 
 ## <a name="create-a-web-app"></a>Créer une application web
 
