@@ -5,12 +5,12 @@ description: Recevoir des conseils de migration d’applications ASP.NET MVC ou 
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 285f252767e4eacbb6a9ccc50bd98d1916e26bd4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2f42ca6f9da8d9941e5bab40afc36c95360c3550
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273506"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342183"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Migrer d’ASP.NET vers ASP.NET Core
 
@@ -136,7 +136,7 @@ Dans la mesure où l’injection de dépendances fait partie d’ASP.NET Core, v
 Vous pouvez injecter le dépôt à l’emplacement de votre choix, comme c’était le cas avec Unity.
 
 > [!NOTE]
-> Pour obtenir des informations de référence sur l’injection de dépendances dans ASP.NET Core, consultez [Injection de dépendances dans ASP.NET Core](xref:fundamentals/dependency-injection#replacing-the-default-services-container)
+> Pour plus d’informations sur l’injection de dépendances, consultez [Injection de dépendances](xref:fundamentals/dependency-injection).
 
 ## <a name="serve-static-files"></a>Délivrer des fichiers statiques
 
