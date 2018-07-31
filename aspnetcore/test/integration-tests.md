@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/30/2018
 uid: test/integration-tests
-ms.openlocfilehash: e18c5704c9d4db9669d8f831f1b556d1723a0fc1
-ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
+ms.openlocfilehash: 2a5adafd30aeca163063ea76857378e97163d0b9
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37894164"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342079"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -292,7 +292,7 @@ Le st est un système de message de Pages Razor avec les caractéristiques suiva
 
 &#8224;La rubrique EF, [Test avec InMemory](/ef/core/miscellaneous/testing/in-memory), explique comment utiliser une base de données en mémoire pour les tests avec MSTest. Cette rubrique utilise le [xUnit](https://xunit.github.io/) infrastructure de test. Concepts des tests et des implémentations de test entre les frameworks de test différentes sont similaires mais pas identiques.
 
-Bien que l’application n’utilise pas le [modèle dépôt](http://martinfowler.com/eaaCatalog/repository.html) et n’est pas un exemple effectif de la [modèle unité de travail (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Pages Razor prend en charge ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance d’infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), [implémentant le référentiel et les modèles d’unité de travail dans une Application ASP.NET MVC](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application), et [contrôleur de Test logique](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
+Bien que l’application n’utilise pas le [modèle dépôt](xref:fundamentals/repository-pattern) et n’est pas un exemple effectif de la [modèle unité de travail (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Pages Razor prend en charge ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance d’infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), [implémentant le référentiel et les modèles d’unité de travail dans une Application ASP.NET MVC](/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application), et [contrôleur de Test logique](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
 
 ### <a name="test-app-organization"></a>Organisation de l’application de test
 

@@ -5,12 +5,12 @@ description: Recevoir des conseils de migration d'applications ASP.NET MVC ou We
 ms.author: scaddie
 ms.date: 08/27/2017
 uid: migration/mvc2
-ms.openlocfilehash: 68b00ead1b0bf785211638692cdbeab226a2cb4e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: d8a3f76bb5125a1ec76d0435ff3317f939a4ec67
+ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278633"
+ms.lasthandoff: 07/30/2018
+ms.locfileid: "39342255"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>Migrer d’ASP.NET vers ASP.NET Core 2.0
 
@@ -24,8 +24,8 @@ Installer **un** des opérations suivantes à partir de [téléchargements .NET�
 
 * SDK .NET Core
 * Visual Studio pour Windows
-  * **Développement web ASP.NET et** la charge de travail
-  * **.NET core le développement multiplateforme** la charge de travail
+  * Charge de travail **Développement web et ASP.NET**
+  * Charge de travail **Développement multiplateforme .NET Core**
 
 ## <a name="target-frameworks"></a>Versions cibles de .NET Framework
 Les projets ASP.NET Core 2.0 permettent aux développeurs de cibler le .NET Core, le .NET Framework ou les deux. Consultez [Choix entre le .NET Core et le .NET Framework pour les applications serveur](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) afin de déterminer quel est le framework cible le plus approprié.
@@ -110,11 +110,12 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 **Remarque :** Pour obtenir des informations de référence plus approfondies sur la configuration d’ASP.NET Core, consultez [Configuration dans ASP.NET Core](xref:fundamentals/configuration/index).
 
 ## <a name="native-dependency-injection"></a>Injection de dépendances native
-Quand vous générez des applications majeures et scalables, il est important d’avoir un couplage faible entre les composants et les services. L’[injection de dépendances](xref:fundamentals/dependency-injection) est une technique répandue qui permet d’y parvenir. Elle représente un composant natif d’ASP.NET Core.
 
-Dans les applications ASP.NET, les développeurs s’appuient sur une bibliothèque tierce pour implémenter l’injection de dépendances. L’une de ces bibliothèques, [Unity](https://github.com/unitycontainer/unity), est fournie par Microsoft Patterns & Practices. 
+Quand vous générez des applications majeures et scalables, il est important d’avoir un couplage faible entre les composants et les services. [L’injection de dépendances](xref:fundamentals/dependency-injection) est une technique répandue qui permet d’y parvenir, et il est un composant natif d’ASP.NET Core.
 
-L’implémentation de `IDependencyResolver` qui inclut `UnityContainer` dans un wrapper est un exemple de configuration d’une injection de dépendances avec Unity :
+Dans les applications ASP.NET, les développeurs s’appuient sur une bibliothèque tierce pour implémenter l’injection de dépendance. L’une de ces bibliothèques, [Unity](https://github.com/unitycontainer/unity), est fournie par Microsoft Patterns & Practices.
+
+Implémentation d’un exemple de configuration de l’injection de dépendances avec Unity `IDependencyResolver` qui encapsule un `UnityContainer`:
 
 [!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample8.cs)]
 
@@ -126,15 +127,16 @@ Injectez `IProductRepository` aux emplacements nécessaires :
 
 [!code-csharp[](../../../aspnet/web-api/overview/advanced/dependency-injection/samples/sample5.cs)]
 
-Dans la mesure où l’injection de dépendances fait partie d’ASP.NET Core, vous pouvez ajouter votre service à la méthode `ConfigureServices` de *Startup.cs* :
+Étant donné que l’injection de dépendances fait partie d’ASP.NET Core, vous pouvez ajouter votre service dans le `Startup.ConfigureServices`:
 
 [!code-csharp[](samples/configure-services.cs)]
 
 Vous pouvez injecter le dépôt à l’emplacement de votre choix, comme c’était le cas avec Unity.
 
-**Remarque :** Pour obtenir des informations de référence sur l’injection de dépendances dans ASP.NET Core, consultez [Injection de dépendances dans ASP.NET Core](xref:fundamentals/dependency-injection#replacing-the-default-services-container)
+Pour plus d’informations sur l’injection de dépendances dans ASP.NET Core, consultez [l’injection de dépendances](xref:fundamentals/dependency-injection).
 
 ## <a name="serving-static-files"></a>Fichiers statiques
+
 Une partie importante du développement web réside dans la capacité de traitement des composants statiques, côté client. Les fichiers HTML, CSS, JavaScript et image sont les exemples les plus courants de fichiers statiques. Ces fichiers doivent être enregistrés à l’emplacement publié de l’application (ou CDN) et référencés pour pouvoir être chargés par une requête. Ce processus a changé avec ASP.NET Core.
 
 Avec ASP.NET, les fichiers statiques sont stockés dans différents répertoires et référencés dans des vues.
@@ -147,7 +149,7 @@ Avec ASP.NET Core, les fichiers statiques sont stockés à la « racine web »
 
 Par exemple, un composant image dans le dossier *wwwroot/images* est accessible au navigateur à un emplacement tel que `http://<app>/images/<imageFileName>`.
 
-**Remarque :** pour des informations plus détaillées pour servir les fichiers statiques dans ASP.NET Core, consultez [fichiers statiques](xref:fundamentals/static-files).
+**Remarque :** pour obtenir une référence plus approfondie sur le traitement des fichiers statiques dans ASP.NET Core, consultez [fichiers statiques](xref:fundamentals/static-files).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
