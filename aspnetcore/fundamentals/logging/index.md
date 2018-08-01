@@ -5,12 +5,12 @@ description: Découvrez plus en détail le framework de journalisation dans ASP.
 ms.author: tdykstra
 ms.date: 07/24/2018
 uid: fundamentals/logging/index
-ms.openlocfilehash: 5d31c5609c0e98a81d76ce0581f1c63f349d14d0
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 60777d4f8664b7f02c806abb6ca40a29602d207f
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342469"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378649"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -448,7 +448,7 @@ Le code suivant active les étendues pour le fournisseur Console :
 > [!NOTE]
 > La configuration de l’option logger `IncludeScopes` pour la console est nécessaire pour activer la journalisation basée sur des étendues.
 >
-> Pour plus d'informations sur la configuration, reportez-vous à la section [Configuration](#Configuration).
+> Pour plus d'informations sur la configuration, reportez-vous à la section [Configuration](#configuration).
 
 ::: moniker-end
 
