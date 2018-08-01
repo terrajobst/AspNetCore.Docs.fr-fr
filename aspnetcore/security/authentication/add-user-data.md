@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 6/16/2018
 uid: security/authentication/add-user-data
-ms.openlocfilehash: ecd0e6d1c71b24309fab70fbb06af7731463bb0e
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 6f583d65460803c816bf1ccd314216952710cd55
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38215933"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378613"
 ---
 # <a name="add-download-and-delete-custom-user-data-to-identity-in-an-aspnet-core-project"></a>Ajouter, télécharger et supprimer des données utilisateur personnalisées pour l’identité dans un projet ASP.NET Core
 
@@ -57,12 +57,12 @@ dotnet new webapp -o WebApp1
 * À partir de **l’Explorateur de solutions**, avec le bouton droit sur le projet > **ajouter** > **nouvel élément structuré**.
 * Dans le volet gauche de la **ajouter une structure** boîte de dialogue, sélectionnez **identité** > **ajouter**.
 * Dans le **identité ADD** boîte de dialogue, les options suivantes :
-  * Sélectionnez votre fichier de disposition existant *~/Pages/Shared/_Layout.cshtml*
+  * Sélectionnez le fichier de disposition existante *~/Pages/Shared/_Layout.cshtml*
   * Sélectionnez les fichiers suivants pour remplacer :
     * **Compte/inscrire**
     * **Compte/gérer/Index**
-  * Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**. Acceptez le type (**WebApp1.Models.WebApp1Context** si vous avez nommé le projet **application Web 1**).
-  * Sélectionnez le **+** bouton pour créer un nouveau **classe utilisateur**. Acceptez le type (**WebApp1User** si vous avez nommé le projet **application Web 1**) > **ajouter**.
+  * Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**. Acceptez le type (**WebApp1.Models.WebApp1Context** si le projet est nommé **application Web 1**).
+  * Sélectionnez le **+** bouton pour créer un nouveau **classe utilisateur**. Acceptez le type (**WebApp1User** si le projet est nommé **application Web 1**) > **ajouter**.
 * Sélectionnez **ajouter**.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -108,7 +108,7 @@ Suivez les instructions de [Migrations, UseAuthentication et disposition](xref:s
 
 ## <a name="add-custom-user-data-to-the-identity-db"></a>Ajouter des données utilisateur personnalisées pour la base de données d’identité
 
-Mise à jour le `IdentityUser` dérivée de la classe avec des propriétés personnalisées. Si vous avez nommé votre projet d’application Web 1, le fichier est nommé *Areas/Identity/Data/WebApp1User.cs*. Mettre à jour le fichier avec le code suivant :
+Mise à jour le `IdentityUser` dérivée de la classe avec des propriétés personnalisées. Si vous avez nommé le projet d’application Web 1, le fichier est nommé *Areas/Identity/Data/WebApp1User.cs*. Mettre à jour le fichier avec le code suivant :
 
 [!code-csharp[Main](add-user-data/sample/Areas/Identity/Data/WebApp1User.cs)]
 
