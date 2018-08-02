@@ -5,12 +5,12 @@ description: Ce didacticiel montre comment gérer les conflits quand plusieurs u
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: ff9e52df63f9c9f47ee659a68beb28b773a114a1
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: a010e2ed660bea56b112799e850f2fb0ff37579e
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202690"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219392"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -153,24 +153,23 @@ Les commandes précédentes :
 <a name="scaffold"></a>
 ## <a name="scaffold-the-departments-model"></a>Générer automatiquement le modèle Departments
 
-* Quittez Visual Studio.
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
-* Exécutez la commande suivante :
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-the-student-model) et utilisez `Department` pour la classe de modèle.
+
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+
+ Exécutez la commande suivante :
 
   ```console
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
   ```
 
+------
+
 La commande précédente génère automatiquement le modèle `Department`. Ouvrez le projet dans Visual Studio.
 
-Générez le projet. La build génère des erreurs telles que celle-ci :
-
-`1>Pages/Departments/Index.cshtml.cs(26,37,26,43): error CS1061: 'SchoolContext' does not
- contain a definition for 'Department' and no extension method 'Department' accepting a first
- argument of type 'SchoolContext' could be found (are you missing a using directive or
- an assembly reference?)`
-
- Remplacez globalement `_context.Department` par `_context.Departments` (autrement dit, ajoutez un « s » à `Department`). 7 occurrences sont trouvées et mises à jour.
+Générez le projet.
 
 ### <a name="update-the-departments-index-page"></a>Mettre à jour la page d’index des départements
 

@@ -5,12 +5,12 @@ description: Dans ce didacticiel, nous allons lire et afficher des données asso
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: bcea6aa6018a937979b8e0aaa2edcdd96da41559
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: bb1d087a5449c6e26c40e572d161dd9644ac2323
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202677"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219340"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -69,14 +69,19 @@ Pour afficher le nom du département affecté dans une liste de cours
 <a name="scaffold"></a>
 ### <a name="scaffold-the-course-model"></a>Génération automatique du modèle Course
 
-* Quittez Visual Studio.
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
-* Exécutez la commande suivante :
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-the-student-model) et utilisez `Course` pour la classe de modèle.
+
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+
+ Exécutez la commande suivante :
 
   ```console
-  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.1.0
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
+
+------
 
 La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
 
@@ -150,21 +155,21 @@ Dans le dossier *SchoolViewModels*, créez *InstructorIndexData.cs* avec le code
 
 ### <a name="scaffold-the-instructor-model"></a>Générer automatiquement le modèle Instructor
 
-* Quittez Visual Studio.
-* Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
-* Exécutez la commande suivante :
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
+
+Suivez les instructions fournies dans [Générer automatiquement le modèle d’étudiant](xref:data/ef-rp/intro#scaffold-the-student-model) et utilisez `Instructor` pour la classe de modèle.
+
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+
+ Exécutez la commande suivante :
 
   ```console
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
   ```
 
-La commande précédente génère automatiquement le modèle `Instructor`. Ouvrez le projet dans Visual Studio.
+------
 
-Générez le projet. La build génère des erreurs.
-
-Remplacez globalement `_context.Instructor` par `_context.Instructors` (autrement dit, ajoutez un « s » à `Instructor`). 7 occurrences sont trouvées et mises à jour.
-
-Exécutez l’application et accédez à la page des formateurs.
+La commande précédente génère automatiquement le modèle `Instructor`. Exécutez l’application et accédez à la page des formateurs.
 
 Remplacez *Pages/Instructors/Index.cshtml.cs* par le code suivant :
 

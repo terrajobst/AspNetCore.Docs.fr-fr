@@ -5,12 +5,12 @@ description: Découvrez comment les vues gèrent la présentation des données e
 ms.author: riande
 ms.date: 12/12/2017
 uid: mvc/views/overview
-ms.openlocfilehash: 4d5cb6288711cdef145ebb0b52e4e645c535bdf2
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 276540a5d77b1d65119d1b2104508d77f45d5588
+ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278347"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39219366"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
@@ -39,7 +39,7 @@ Les vues facilitent l’implémentation du principe de conception basé sur la s
 * L’application est plus facile à gérer, car elle est mieux organisée. Les vues sont généralement regroupées par fonctionnalité dans l’application. Vous pouvez ainsi trouver plus rapidement les vues associées quand vous utilisez une fonctionnalité.
 * Les différentes parties de l’application sont faiblement couplées. Vous pouvez générer et mettre à jour les vues de l’application séparément de la logique métier et des composants d’accès aux données. Vous pouvez modifier les vues de l’application sans avoir nécessairement besoin de mettre à jour d’autres parties de l’application.
 * Il est plus facile de tester les parties de l’interface utilisateur de l’application, car les vues constituent des unités individuelles séparées.
-* Du fait que l’application est mieux organisée, vous risquez moins de répéter par inadvertance certaines sections de l’interface utilisateur.
+* Du fait d’une meilleure organisation, vous risquez moins de répéter par inadvertance certaines sections de l’interface utilisateur.
 
 ## <a name="creating-a-view"></a>Création d’une vue
 
@@ -122,10 +122,10 @@ Suivez les bonnes pratiques en matière d’organisation de la structure des fic
 
 Plusieurs approches sont possibles pour passer des données aux vues :
 
-* Données fortement typées : viewmodel
+* Données fortement typées : viewmodel
 * Données faiblement typées
-  - `ViewData` (`ViewDataAttribute`)
-  - `ViewBag`
+  * `ViewData` (`ViewDataAttribute`)
+  * `ViewBag`
 
 ### <a name="strongly-typed-data-viewmodel"></a>Données fortement typées (viewmodel)
 
@@ -247,6 +247,7 @@ Utilisation des données dans une vue :
 ```
 
 ::: moniker range=">= aspnetcore-2.1"
+
 **Attribut ViewData**
 
 Une autre approche qui utilise le [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) est [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Les valeurs des propriétés définies sur des contrôleurs ou sur des modèles de page Razor décorés avec `[ViewData]` sont stockées dans le dictionnaire et chargées à partir de celui-ci.
@@ -284,6 +285,7 @@ Dans la disposition, le titre est lu à partir du dictionnaire ViewData :
     <title>@ViewData["Title"] - WebApplication</title>
     ...
 ```
+
 ::: moniker-end
 
 **ViewBag**

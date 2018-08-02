@@ -5,12 +5,12 @@ description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vo
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 6888df174e92ab2ddf8add7b8927250be320bff8
-ms.sourcegitcommit: a3675f9704e4e73ecc7cbbbf016a13d2a5c4d725
+ms.openlocfilehash: 88d727b0545f1dacb56ea889e45b02f947867b19
+ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39202651"
+ms.lasthandoff: 07/24/2018
+ms.locfileid: "39220597"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -400,9 +400,9 @@ Si les règles d’entreprise exigent que la propriété `InstructorID` soit non
 
 Le code précédent désactive la suppression en cascade sur la relation formateur-département.
 
-## <a name="update-the-enrollment-entityupdate-the-enrollment-entity"></a>Mettre à jour l’entité Enrollment
+## <a name="update-the-enrollment-entity"></a>Mettre à jour l’entité Enrollment
 
-Un enregistrement d’inscription concerne un seul cours suivi par un seul étudiant.
+Un enregistrement d’inscription correspond à un cours suivi par un étudiant.
 
 ![Entité Enrollment](complex-data-model/_static/enrollment-entity.png)
 

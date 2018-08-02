@@ -3,14 +3,14 @@ title: Routage dans ASP.NET Core
 author: ardalis
 description: Découvrez comment la fonctionnalité de routage ASP.NET Core est chargée du mappage d’une requête entrante à un gestionnaire de routage.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 07/25/2018
 uid: fundamentals/routing
-ms.openlocfilehash: 4482c865671eb4f5decbd5f1cd6e26f2e68e5c25
-ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
+ms.openlocfilehash: 19265ac4d19915462c50628061600b1fde04694b
+ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36314134"
+ms.lasthandoff: 07/25/2018
+ms.locfileid: "39254881"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -73,7 +73,7 @@ Conseil : Considérez `Values` comme un ensemble de substitutions pour les `Ambi
 
 La sortie de `GetVirtualPath` est un `VirtualPathData`. `VirtualPathData` est l’équivalent de `RouteData` ; il contient le `VirtualPath` de l’URL de sortie et des propriétés supplémentaires qui doivent être définies par la route.
 
-La propriété `VirtualPathData.VirtualPath` contient le *chemin virtuel* produit par la route. En fonction de vos besoins, vous aurez peut-être besoin de traiter davantage le chemin. Par exemple, si vous souhaitez afficher l’URL générée au format HTML, vous devez ajouter un préfixe au chemin de base de l’application.
+La propriété `VirtualPathData.VirtualPath` contient le *chemin virtuel* produit par la route. Selon vos besoins, vous devrez peut-être traiter plus avant le chemin. Par exemple, si vous souhaitez afficher l’URL générée au format HTML, vous devez ajouter un préfixe au chemin de base de l’application.
 
 `VirtualPathData.Router` est une référence à la route qui a généré avec succès l’URL.
 
@@ -322,26 +322,33 @@ Le tableau suivant illustre certaines contraintes de routage et leur comportemen
 | `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | La chaîne doit correspondre à l’expression régulière (voir les conseils relatifs à la définition d’une expression régulière) |
 | `required`  | `{name:required}` | `Rick` |  Utilisé pour garantir qu’une valeur autre qu’un paramètre est présente pendant la génération de l’URL |
 
+Il est possible d’appliquer plusieurs contraintes séparées par un point-virgule à un même paramètre. Par exemple, la contrainte suivante limite un paramètre à une valeur entière supérieure ou égale à 1 :
+
+```csharp
+[Route("users/{id:int:min(1)}")]
+public User GetUserById(int id) { }
+```
+
 >[!WARNING]
 > Les contraintes de routage qui vérifient que l’URL peut être convertie en type CLR (comme `int` ou `DateTime`) utilisent toujours la culture invariant : elles supposent que l’URL n’est pas localisable. Les contraintes de routage fournies par le framework ne modifient pas les valeurs stockées dans les valeurs de route. Toutes les valeurs de route analysées à partir de l’URL sont stockées sous forme de chaînes. Par exemple, la [contrainte de routage Float](https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60) tente de convertir la valeur de route en valeur float, mais la valeur convertie est utilisée uniquement pour vérifier qu’elle peut être convertie en valeur float.
 
-## <a name="regular-expressions"></a>Expressions régulières 
+## <a name="regular-expressions"></a>Expressions régulières
 
 Le framework ASP.NET Core ajoute `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` au constructeur d’expression régulière. Pour obtenir une description de ces membres, consultez [RegexOptions, énumération](/dotnet/api/system.text.regularexpressions.regexoptions).
 
-Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Par exemple, pour utiliser l’expression régulière `^\d{3}-\d{2}-\d{4}$` dans le service de routage, elle doit avoir les caractères `\` tapés sous la forme `\\` dans le fichier source C# pour placer dans une séquence d’échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/string). Les caractères `{` , `}` , '[' et ']' doivent être placés dans une séquence d’échappement en les doublant afin de placer les caractères de délimiteur de paramètre du service de routage dans une séquence d’échappement.  Le tableau ci-dessous montre une expression régulière et la version placée dans une séquence d’échappement.
+Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Par exemple, pour utiliser l’expression régulière `^\d{3}-\d{2}-\d{4}$` dans le service de routage, elle doit avoir les caractères `\` tapés sous la forme `\\` dans le fichier source C# pour placer dans une séquence d’échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string). Les caractères `{` , `}` , '[' et ']' doivent être placés dans une séquence d’échappement en les doublant afin de placer les caractères de délimiteur de paramètre du service de routage dans une séquence d’échappement.  Le tableau ci-dessous montre une expression régulière et la version placée dans une séquence d’échappement.
 
 | Expression               | Remarque |
-| ----------------- | ------------ | 
+| ----------------- | ------------ |
 | `^\d{3}-\d{2}-\d{4}$` | Expression régulière |
 | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` | Dans une séquence d’échappement  |
 | `^[a-z]{2}$` | Expression régulière |
 | `^[[a-z]]{{2}}$` | Dans une séquence d’échappement  |
 
-Souvent, les expressions régulières utilisées dans le routage commencent par le caractère `^` (position de départ de correspondance de la chaîne) et se terminent par le caractère `$` (position de fin de correspondance de la chaîne). Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière établit une correspondance avec n’importe quelle sous-chaîne de la chaîne, ce qui n’est souvent pas ce que vous voulez. Le tableau ci-dessous présente des exemples et explique pourquoi ils établissent, ou non, une correspondance.
+Souvent, les expressions régulières utilisées dans le routage commencent par le caractère `^` (position de départ de correspondance de la chaîne) et se terminent par le caractère `$` (position de fin de correspondance de la chaîne). Les caractères `^` et `$` garantissent que l’expression régulière établit une correspondance avec la totalité de la valeur du paramètre de route. Sans les caractères `^` et `$`, l’expression régulière peut correspondre à n’importe quelle sous-chaîne dans la chaîne, ce qui n’est souvent pas ce que vous voulez. Le tableau ci-dessous présente des exemples et explique pourquoi ils établissent, ou non, une correspondance.
 
 | Expression               | Chaîne | Faire correspondre à | Commentaire |
-| ----------------- | ------------ |  ------------ |  ------------ | 
+| ----------------- | ------------ |  ------------ |  ------------ |
 | `[a-z]{2}` | hello | oui | correspondances de sous-chaînes |
 | `[a-z]{2}` | 123abc456 | oui | correspondances de sous-chaînes |
 | `[a-z]{2}` | mz | oui | correspondance avec l’expression |
