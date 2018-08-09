@@ -8,12 +8,12 @@ ms.date: 03/28/2008
 ms.assetid: 7f9380c6-19f7-4c82-a019-916ec6dffc9c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
 msc.type: authoredcontent
-ms.openlocfilehash: 9d420a41f50d06541d04a1dd3cb78a2e6beaaa9a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 95c2487f26109cbdd8c76dc6f269f37264f5e34b
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813826"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655444"
 ---
 <a name="understanding-aspnet-ajax-debugging-capabilities"></a>Présentation des fonctionnalités de débogage d’ASP.NET AJAX
 ====================
@@ -55,8 +55,8 @@ Figure 1 montre quels Internet Explorer avancé de boîte de dialogue doit resse
 
 Une fois que le débogage a été activé, vous verrez un nouvel élément de menu s’affichent dans le menu affichage nommé débogueur de Script. Il propose deux options disponibles, notamment les ouvrir et de saut à la prochaine instruction. Lors de l’ouverture est activée vous devrez faire pour déboguer la page dans Visual Studio 2008 (Notez que Visual Web Developer Express peut également être utilisée pour le débogage). Si Visual Studio .NET est en cours d’exécution, vous pouvez choisir d’utiliser cette instance ou pour créer une nouvelle instance. Lors de l’arrêt à l’instruction suivante est sélectionnée, vous allez invité pour déboguer la page lors de l’exécution de code JavaScript. Si le code JavaScript s’exécute dans l’événement onLoad de la page, vous pouvez actualiser la page pour déclencher une session de débogage. Si le code JavaScript est exécuté après qu’un clic est effectué le débogueur exécute immédiatement après un clic sur le bouton.
 
-> *> [!NOTE] Si vous exécutez sur Windows Vista avec accès contrôle utilisateur (UAC) est activée, et que Visual Studio 2008 configuré pour s’exécuter en tant qu’administrateur, Visual Studio échoue à attacher au processus lorsque vous êtes invité à joindre. Pour contourner ce problème, démarrez Visual Studio tout d’abord et utiliser cette instance pour déboguer.*
-
+> [!NOTE]
+> Si vous exécutez sur Windows Vista avec accès contrôle utilisateur (UAC) est activée, et vous avez configuré pour s’exécuter en tant qu’administrateur de Visual Studio 2008, Visual Studio échoue à attacher au processus lorsque vous êtes invité à joindre. Pour contourner ce problème, démarrez Visual Studio tout d’abord et utiliser cette instance pour déboguer.
 
 Bien que la section suivante va vous montrer comment déboguer une page ASP.NET AJAX directement à partir de Visual Studio 2008, à l’aide de l’option du débogueur de Script Internet Explorer est utile quand une page est déjà ouverte et vous souhaitez examiner plus en détail.
 
@@ -98,8 +98,8 @@ Une fois qu’une session de débogage est démarrée et commencer à parcourir 
 
 Cette boîte de dialogue est affichée, car Visual Studio .NET ne sait pas comment obtenir le code source de certains scripts référencés par la page. Bien que cela peut s’avérer très contrariant dans un premier temps, il existe un correctif simple. Une fois que vous avez démarré une session de débogage et atteindre un point d’arrêt, accédez à la fenêtre Explorateur de scripts Windows déboguer dans le menu de Visual Studio 2008 ou utilisez le raccourci clavier Ctrl + Alt + N.
 
-> *> [!NOTE] Si vous ne voyez pas le menu Explorateur de scripts répertorié, accédez à outils* *personnaliser* *commandes du menu de Visual Studio .NET. Recherchez l’entrée de débogage dans la section de catégories et cliquez dessus pour afficher toutes les entrées de menu disponibles. Dans la liste de commandes, faites défiler jusqu'à l’Explorateur de scripts et puis la faire glisser sur le débogage* *menu Windows mentionné précédemment. Cela rend l’entrée de menu Explorateur de scripts disponibles chaque fois que vous exécutez Visual Studio .NET.*
-
+> [!NOTE]
+> Si vous ne voyez pas le menu Explorateur de scripts répertorié, accédez à **outils** > **personnaliser** > **commandes** dans le menu de Visual Studio .NET. Recherchez le **déboguer** entrée dans les catégories de section et cliquez dessus pour afficher toutes les entrées de menu disponibles. Dans la liste de commandes, faites défiler jusqu'à l’Explorateur de scripts et puis la faire glisser sur le Windows déboguer menu mentionné précédemment. Cela rend l’entrée de menu Explorateur de scripts disponibles chaque fois que vous exécutez Visual Studio .NET.
 
 L’Explorateur de scripts peut être utilisé pour afficher tous les scripts utilisés dans une page et de les ouvrir dans l’éditeur de code. Une fois que l’Explorateur de scripts est ouvert, double-cliquez sur la page .aspx en cours de débogage pour l’ouvrir dans la fenêtre d’éditeur de code. Effectuer la même action pour tous les autres scripts indiqués dans l’Explorateur de scripts. Une fois que tous les scripts sont ouverts dans la fenêtre de code que vous pouvez appuyez sur F11 (et utilisez les autres touches de raccourci de débogage) pour parcourir votre code. Figure 3 montre un exemple de l’Explorateur de scripts. Il répertorie le fichier actuel en cours de débogage (Demo.aspx), ainsi que deux scripts personnalisés et les deux scripts injectés de façon dynamique dans la page par ScriptManager ASP.NET AJAX.
 

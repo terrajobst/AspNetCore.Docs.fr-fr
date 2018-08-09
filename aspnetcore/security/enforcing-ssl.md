@@ -5,12 +5,12 @@ description: Montre comment exiger HTTPS/TLS dans application web ASP.NET Core.
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: d8bf11d7d2df8d8b197f001570a8fab1f3262814
-ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
+ms.openlocfilehash: 3bea8661e17fec5128e822d98741d1f8ed7434e5
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514802"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655496"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -112,7 +112,10 @@ Exiger le protocole HTTPS globalement (`options.Filters.Add(new RequireHttpsAttr
 <a name="hsts"></a>
 ## <a name="http-strict-transport-security-protocol-hsts"></a>Protocole de sécurité Strict Transport HTTP (HSTS)
 
-Par [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) est une amélioration de sécurité à accepter qui est spécifiée par une application web via l’utilisation d’un en-tête de réponse spécial. Lorsqu’un navigateur qui prend en charge HSTS reçoit cet en-tête, il stocke la configuration pour le domaine qui empêche l’envoi de toutes les communications via HTTP et au lieu de cela force toutes les communications via le protocole HTTPS. Il empêche également l’utilisateur à l’aide de certificats non approuvés ou non valides, désactiver les invites de navigateur qui permettent un utilisateur de confiance à ce certificat.
+Par [OWASP](https://www.owasp.org/index.php/About_The_Open_Web_Application_Security_Project), [HTTP Strict Transport Security (HSTS)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) est une amélioration de sécurité à accepter qui est spécifiée par une application web via l’utilisation d’un en-tête de réponse. Quand un navigateur qui prend en charge HSTS reçoit cet en-tête :
+
+* Le navigateur stocke la configuration pour le domaine qui empêche l’envoi de toutes les communications via HTTP. Le navigateur force toutes les communications via le protocole HTTPS. 
+* Le navigateur empêche l’utilisateur de l’utilisation de certificats non approuvés ou non valides. Le navigateur désactive les invites qui permettent à un utilisateur de confiance à ce certificat.
 
 ASP.NET Core 2.1 ou ultérieure implémente HSTS avec la `UseHsts` méthode d’extension. Le code suivant appelle `UseHsts` lorsque l’application n’est pas dans [mode de développement](xref:fundamentals/environments):
 
