@@ -5,12 +5,12 @@ description: ASP.NET Core MVC est une infrastructure riche pour la création d�
 ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
-ms.openlocfilehash: aca34f91e8c7efaa34263ddf830b1662a2518969
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 7f8aab02c0ee37dad49ff224b182ec455e837a7a
+ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272590"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39378636"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble d’ASP.NET Core MVC
 
@@ -165,8 +165,7 @@ Votre application peut également utiliser l’[injection de dépendances dans l
 
 ### <a name="filters"></a>Filtres
 
-Les [filtres](controllers/filters.md) permettent aux développeurs d’intégrer des problèmes transversaux, par exemple la prise en charge des exceptions ou les autorisations. Les filtres permettent d’exécuter une logique de prétraitement et de posttraitement personnalisée pour les méthodes d’action. Vous pouvez les configurer pour qu’ils se lancent à certaines étapes du pipeline d’exécution d’une requête donnée. Vous pouvez appliquer les filtres aux contrôleurs ou aux actions en tant qu’attributs (ou vous pouvez les exécuter de manière globale). Plusieurs filtres (tels que `Authorize`) sont inclus dans le framework.
-
+Les [filtres](controllers/filters.md) permettent aux développeurs d’intégrer des problèmes transversaux, par exemple la prise en charge des exceptions ou les autorisations. Les filtres permettent d’exécuter une logique de prétraitement et de posttraitement personnalisée pour les méthodes d’action. Vous pouvez les configurer pour qu’ils se lancent à certaines étapes du pipeline d’exécution d’une requête donnée. Vous pouvez appliquer les filtres aux contrôleurs ou aux actions en tant qu’attributs (ou vous pouvez les exécuter de manière globale). Plusieurs filtres (tels que `Authorize`) sont inclus dans le framework. `[Authorize]` est l’attribut qui est utilisé pour créer des filtres d’autorisation MVC.
 
 ```csharp
 [Authorize]
