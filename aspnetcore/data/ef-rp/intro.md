@@ -5,12 +5,12 @@ description: Montre comment créer une application Pages Razor à l’aide d’E
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/intro
-ms.openlocfilehash: 2f6408f2381721c450519818a5973bad0f86ccad
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: b954c1ab4774ceab3ac0ebb190b162b112ff1307
+ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938405"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39655334"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 
@@ -30,11 +30,11 @@ L’exemple d’application est un site web pour une université Contoso fictive
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE [](~/includes/net-core-prereqs-windows.md) [](~/includes/net-core-prereqs-windows.md)]
+[!INCLUDE [](~/includes/net-core-prereqs-windows.md)]
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-[!INCLUDE [](~/includes/2.1-SDK.md) [](~/includes/2.1-SDK.md)]
+[!INCLUDE [](~/includes/2.1-SDK.md)]
 
 ------
 
@@ -185,7 +185,7 @@ Le processus de génération de modèles automatique a créé et changé les fic
 ### <a name="files-created"></a>Fichiers créés
 
 * *Pages/Students* Create, Delete, Details, Edit, Index.
-* *Data/ContosoUniversityContext.cs*
+* *Data/SchoolContext.cs*
 
 ### <a name="files-updates"></a>Mises à jour de fichiers
 
