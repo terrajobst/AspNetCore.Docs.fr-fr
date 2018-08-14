@@ -1,4 +1,4 @@
----
+﻿---
 title: Créer des sites et attrayantes et réactives avec les données d’amorçage et ASP.NET Core
 author: ardalis
 description: Découvrez comment utiliser des données d’amorçage pour le développement d’applications web réactives avec ASP.NET Core.
