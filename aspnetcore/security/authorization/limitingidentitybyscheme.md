@@ -1,4 +1,4 @@
----
+﻿---
 title: Autoriser avec un modèle spécifique dans ASP.NET Core
 author: rick-anderson
 description: Cet article explique comment limiter l’identité à un schéma spécifique lorsque vous travaillez avec plusieurs méthodes d’authentification.
