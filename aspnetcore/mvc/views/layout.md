@@ -1,4 +1,4 @@
----
+﻿---
 title: Disposition dans ASP.NET Core
 author: ardalis
 description: Apprenez à utiliser des dispositions communes, à partager des directives et à exécuter le code commun avant d’afficher les vues dans une application ASP.NET Core.
