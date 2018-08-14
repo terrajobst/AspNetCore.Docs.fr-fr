@@ -1,4 +1,4 @@
----
+﻿---
 title: Validation de modèle dans ASP.NET Core MVC
 author: tdykstra
 description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC.
