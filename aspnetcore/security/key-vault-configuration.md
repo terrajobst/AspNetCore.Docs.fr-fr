@@ -1,4 +1,4 @@
----
+﻿---
 title: Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 author: guardrex
 description: Découvrez comment utiliser le fournisseur de Configuration de coffre de clés Azure pour configurer une application à l’aide de paires nom-valeur chargées pendant l’exécution.
