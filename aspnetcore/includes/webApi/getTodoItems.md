@@ -6,7 +6,12 @@ Le code précédent définit une classe de contrôleur d’API sans méthodes. D
 ::: moniker range=">= aspnetcore-2.1"
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController2.cs?name=snippet_todo1)]
 
-Le code précédent définit une classe de contrôleur d’API sans méthodes. Dans les sections suivantes, des méthodes sont ajoutées pour implémenter l’API. La classe est annotée avec un attribut `[ApiController]` pour activer certaines fonctionnalités utiles. Pour plus d’informations sur les fonctionnalités activées par l’attribut, consultez [Annoter la classe avec ApiControllerAttribute](xref:web-api/index#annotate-class-with-apicontrollerattribute).
+Le code précédent :
+
+* Définit une classe de contrôleur d’API sans méthodes.
+* Crée un nouvel élément Todo lorsque `TodoItems` est vide. Vous ne pourrez pas supprimer tous les éléments Todo, car le constructeur en crée un nouveau lorsque `TodoItems` est vide.
+
+Dans les sections suivantes, des méthodes sont ajoutées pour implémenter l’API. La classe est annotée avec un attribut `[ApiController]` pour activer certaines fonctionnalités utiles. Pour plus d’informations sur les fonctionnalités activées par l’attribut, consultez [Annoter la classe avec ApiControllerAttribute](xref:web-api/index#annotate-class-with-apicontrollerattribute).
 ::: moniker-end
 
 Le constructeur du contrôleur utilise une [injection de dépendances](xref:fundamentals/dependency-injection) pour injecter le contexte de base de données (`TodoContext`) dans le contrôleur. Le contexte de base de données est utilisé dans chacune des méthodes la [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) du contrôleur. Le constructeur ajoute un élément à la base de données en mémoire s’il n’existe pas.

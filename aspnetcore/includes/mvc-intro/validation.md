@@ -6,7 +6,7 @@ Dans cette section, vous allez ajouter la logique de validation au modèle `Movi
 
 ## <a name="keeping-things-dry"></a>Ne vous répétez pas
 
-L’un des principes de conception de MVC est « Ne vous répétez pas » (désigné par l’acronyme [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself), Don’t Repeat Yourself). ASP.NET MVC vous encourage à spécifier les fonctionnalités ou les comportements une seule fois, puis à utiliser la réflexion partout dans une application. Cela réduit la quantité de code à écrire, et rend le code que vous écrivez moins susceptible aux erreurs et plus facile à tester et à gérer.
+L’un des principes de conception de MVC est « Ne vous répétez pas » (désigné par l’acronyme [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself), Don’t Repeat Yourself). ASP.NET Core MVC vous encourage à spécifier les fonctionnalités ou les comportements une seule fois, puis à utiliser la réflexion partout dans une application. Cela réduit la quantité de code à écrire, et rend le code que vous écrivez moins susceptible aux erreurs et plus facile à tester et à gérer.
 
 La prise en charge de la validation fournie par MVC et Entity Framework Core Code First est un bon exemple du principe DRY en action. Vous pouvez spécifier de façon déclarative des règles de validation à un seul emplacement (dans la classe de modèle), et les règles sont appliquées partout dans l’application.
 
@@ -25,7 +25,7 @@ Mettez à jour la classe `Movie` pour tirer parti des attributs de validation in
 
 Les attributs de validation spécifient le comportement que vous souhaitez appliquer sur les propriétés du modèle sur lesquels ils sont appliqués. Les attributs `Required` et `MinimumLength` indiquent qu’une propriété doit avoir une valeur, mais rien n’empêche un utilisateur d’entrer un espace blanc pour satisfaire cette validation. L’attribut `RegularExpression` sert à limiter les caractères pouvant être entrés. Dans le code ci-dessus, `Genre` et `Rating` doivent utiliser uniquement des lettres (la première lettre en majuscule, les espaces blancs, les chiffres et les caractères spéciaux ne sont pas autorisés). L’attribut `Range` contraint une valeur à une plage spécifiée. L’attribut `StringLength` vous permet de définir la longueur maximale d’une propriété de chaîne, et éventuellement sa longueur minimale. Les types valeur (tels que `decimal`, `int`, `float` et `DateTime`) sont obligatoires par nature et n’ont pas besoin de l’attribut `[Required]`.
 
-L’application automatique des règles de validation par ASP.NET permet d’accroître la fiabilité de votre application. Cela garantit également que vous n’oublierez pas de valider un élément et que vous n’autoriserez pas par inadvertance l’insertion de données incorrectes dans la base de données.
+L’application automatique des règles de validation par ASP.NET Core permet d’accroître la fiabilité de votre application. Cela garantit également que vous n’oublierez pas de valider un élément et que vous n’autoriserez pas par inadvertance l’insertion de données incorrectes dans la base de données.
 
 ## <a name="validation-error-ui-in-mvc"></a>Interface utilisateur d’erreur de validation dans MVC
 
