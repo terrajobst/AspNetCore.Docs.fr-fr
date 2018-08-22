@@ -3,17 +3,17 @@ uid: ajax/cdn/jquery-datatables/cdnjquerydatatables193
 title: 1.9.3 des DataTables jQuery | Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/23/2014
 ms.assetid: 90ba3e9a-ff80-4049-9ad4-08571cdf3880
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables193
 msc.type: content
-ms.openlocfilehash: ba219fbf51dedb8b924fea04213d55d1a37de5ed
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9b085159861e49ddfb2d24917832f2ea4d28bdad
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824717"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829555"
 ---
 <a name="jquery-datatables-193"></a>1.9.3 des DataTables jQuery
 ====================

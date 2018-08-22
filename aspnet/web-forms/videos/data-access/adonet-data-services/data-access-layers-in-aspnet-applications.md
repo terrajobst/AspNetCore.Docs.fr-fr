@@ -3,17 +3,17 @@ uid: web-forms/videos/data-access/adonet-data-services/data-access-layers-in-asp
 title: Couches d’accès aux données dans les Applications ASP.NET | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo, partie 1 sur 3, Joe Stagner crée une couche d’accès aux données à l’aide d’un jeu de données typé pour une application ASP.NET simple. Pour plus d’informations sur...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/07/2008
 ms.assetid: 536aa7a6-84fb-487c-a14f-6ca3eb8a4a33
 msc.legacyurl: /web-forms/videos/data-access/adonet-data-services/data-access-layers-in-aspnet-applications
 msc.type: video
-ms.openlocfilehash: 7da39466777ba4aaec0c40d813fd31750f623bf2
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f084f54c32cb31c5787b073751764efbe1643fbc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838027"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833845"
 ---
 <a name="data-access-layers-in-aspnet-applications"></a>Couches d’accès aux données dans les Applications ASP.NET
 ====================

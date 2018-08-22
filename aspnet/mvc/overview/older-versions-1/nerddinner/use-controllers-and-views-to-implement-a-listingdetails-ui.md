@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-imple
 title: Utiliser des contrôleurs et des vues pour implémenter une interface utilisateur liste/détails | Microsoft Docs
 author: microsoft
 description: Étape 4 montre comment ajouter un contrôleur à l’application qui tire parti de notre modèle pour fournir aux utilisateurs une expérience de navigation de données liste/détails...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 64116e56-1c9a-4f07-8097-bb36cbb6e57f
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
 msc.type: authoredcontent
-ms.openlocfilehash: 7a0a057efb52a869a72722b24d7283cb883db858
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 203a12473f79f38f7162d360d2179ca7c4a30303
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838583"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833844"
 ---
 <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>Utiliser des contrôleurs et des vues pour implémenter une interface utilisateur liste/détails
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/presenting-and-managing-data/model-binding/sorting-pagin
 title: Tri, la pagination et filtrage des données avec la liaison de modèle et les web forms | Microsoft Docs
 author: tfitzmac
 description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle rend l’interaction des données plus simple-...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 266e7866-e327-4687-b29d-627a0925e87d
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
 msc.type: authoredcontent
-ms.openlocfilehash: ded398bcbbb8d7d9e5c882a598bf9d6faa6ea81e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 86ddedb68b8d18057cd2f7d68e795efda33734b1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833874"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827912"
 ---
 <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>Tri, la pagination et filtrage des données avec la liaison de modèle et les web forms
 ====================
@@ -53,7 +53,7 @@ Il est également très facile de l’activation de la pagination. Dans le contr
 
 Exécuter l’application web et notez que maintenant les enregistrements sont réparties sur plusieurs pages avec pas plus de 4 enregistrements affichés sur une seule page.
 
-![ajouter la pagination](sorting-paging-and-filtering-data/_static/image4.png)
+![Ajouter la pagination](sorting-paging-and-filtering-data/_static/image4.png)
 
 Exécution de requête différée améliore l’efficacité de l’application. Au lieu de récupérer l’ensemble de données, le contrôle GridView modifie la requête pour récupérer uniquement les enregistrements de la page actuelle.
 

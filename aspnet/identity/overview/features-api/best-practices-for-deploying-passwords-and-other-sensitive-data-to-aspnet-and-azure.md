@@ -3,17 +3,17 @@ uid: identity/overview/features-api/best-practices-for-deploying-passwords-and-o
 title: Meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure App Service | Microsoft Docs
 author: Rick-Anderson
 description: Ce didacticiel montre comment votre code peut stocker en toute sécurité et accéder aux informations sécurisées. Le point le plus important est que vous ne devez jamais stocker les mots de passe ou autres sen...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/21/2015
 ms.assetid: 97902c66-cb61-4d11-be52-73f962f2db0a
 msc.legacyurl: /identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
 msc.type: authoredcontent
-ms.openlocfilehash: 445e7c32baf4316273b0a5901a776684a6c5d73f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: eda2277a4baad8f2a63aa2fdf6ab84f57f1eb0e0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832453"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829218"
 ---
 <a name="best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure-app-service"></a>Meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure App Service
 ====================

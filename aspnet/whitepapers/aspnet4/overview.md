@@ -3,17 +3,17 @@ uid: whitepapers/aspnet4/overview
 title: ASP.NET 4 et présentation de développement Web Visual Studio 2010 | Microsoft Docs
 author: rick-anderson
 description: Ce document fournit une vue d’ensemble d’un grand nombre des nouvelles fonctionnalités pour ASP.NET qui sont inclus dans le.NET Framework 4 et Visual Studio 2010.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
-ms.openlocfilehash: 5c7aa95b18bc0a97f42cc981476c110830286fa5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 775286df610df9040cbf04125b1742b6befa055b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829041"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829527"
 ---
 <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 et Visual Studio 2010 Web présentation du développement
 ====================
@@ -982,7 +982,7 @@ Vous pouvez ensuite définir une classe CSS qui s’applique uniquement à la *m
 Par défaut, les contrôles serveur Web ASP.NET suivants qui prennent en charge les modèles sont automatiquement encapsulées dans une table externe qui est utilisée pour appliquer des styles inline :
 
 - *FormView*
-- *Connexion*
+- *connexion*
 - *PasswordRecovery*
 - *ChangePassword*
 - *Assistant*

@@ -3,17 +3,17 @@ uid: web-forms/videos/sql-2005/creating-and-using-stored-procedures
 title: Création et utilisation de procédures stockées | Microsoft Docs
 author: microsoft
 description: Cette vidéo se développe sur la rubrique de procédures stockées qui a été introduit il y a de plusieurs leçons. Dans cette vidéo, nous expliquons la syntaxe de base pour créer et mettre à jour...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/14/2006
 ms.assetid: 817bc763-7faa-4ac5-880b-b3f5531e9d07
 msc.legacyurl: /web-forms/videos/sql-2005/creating-and-using-stored-procedures
 msc.type: video
-ms.openlocfilehash: f1fc8fc6acda45352d24684d6f21adaf565d8d6e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f8397bfa9a6d162cfc6158fbd138dccf90d7e8a3
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816630"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834190"
 ---
 <a name="creating-and-using-stored-procedures"></a>Création et utilisation de procédures stockées
 ====================

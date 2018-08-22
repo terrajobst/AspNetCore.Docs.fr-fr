@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-de
 title: Configuration d’un serveur TFS du serveur de builds pour le déploiement Web | Microsoft Docs
 author: jrjlee
 description: Cette rubrique décrit comment préparer un serveur de builds de Team Foundation Server (TFS) pour générer et déployer vos solutions à l’aide de Team Build et les inform Internet...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: f8400241-4f4b-4bbd-9994-54fb64909e6e
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-a-tfs-build-server-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 7f57ad0392a068964bb910fbbaafea105fdbb3d3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 534a0edf5c26dd2daec3c44e41410f8c5de96c15
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841339"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834605"
 ---
 <a name="configuring-a-tfs-build-server-for-web-deployment"></a>Configuration d’un serveur de builds TFS pour le déploiement Web
 ====================

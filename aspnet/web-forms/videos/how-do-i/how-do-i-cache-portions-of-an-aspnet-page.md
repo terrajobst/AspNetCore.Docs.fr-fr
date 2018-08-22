@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-cache-portions-of-an-aspnet-page
 title: '[Comment faire] Mettre en cache des parties d’une Page ASP.NET | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo Chris Pels montre comment mettre en cache un ou plusieurs parties d’une page ASP.NET en implémentant la directive OutputCache pour les contrôles utilisateur sur la page. Tout d’abord, un...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/12/2009
 ms.assetid: b20b2b30-a557-4567-8e27-56f1e04235e2
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-cache-portions-of-an-aspnet-page
 msc.type: video
-ms.openlocfilehash: 795dd88b5f45acefcdb4dffabce1285071b68092
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9446109178ee4be61f19559b47f5cecff8cc9483
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838330"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830144"
 ---
 <a name="how-do-i-cache-portions-of-an-aspnet-page"></a>[Comment faire] Cacher des parties d’une Page ASP.NET
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/basic-aspnet-authentication-in-an-ajax-enabled
 title: Authentification de base ASP.NET dans AJAX Application compatible | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo, je vais vous montrer l’authentification basée sur l’authentification dans votre application web d’activer AJAX à l’aide de formes de base ASP.NET.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/10/2008
 ms.assetid: 782eca6d-51d6-4c8e-b2ea-59dfa567740a
 msc.legacyurl: /web-forms/videos/aspnet-ajax/basic-aspnet-authentication-in-an-ajax-enabled-application
 msc.type: video
-ms.openlocfilehash: 19e93fc79fd7cfa3d6442b8a2b749a99f3ce4af9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 02454f4d6b9f728fe7bf3a7627dbe5c26d857927
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806430"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823611"
 ---
 <a name="basic-aspnet-authentication-in-an-ajax-enabled-application"></a>Application activée de l’authentification de base ASP.NET dans AJAX
 ====================

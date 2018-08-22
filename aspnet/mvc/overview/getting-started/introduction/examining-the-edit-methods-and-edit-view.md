@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/examining-the-edit-methods-and-ed
 title: Examen des méthodes de modification et de la vue Edit | Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/22/2015
 ms.assetid: 52a4d5fe-aa31-4471-b3cb-a064f82cb791
 msc.legacyurl: /mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
 msc.type: authoredcontent
-ms.openlocfilehash: a166f6c4450c72adc23f7d36113ceba7e04f1929
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 950af5fad99bebc5f9d49f30c2ce1e9e4e5c0f25
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38170272"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824899"
 ---
 <a name="examining-the-edit-methods-and-edit-view"></a>Examen des méthodes de modification et de la vue de modification
 ====================
@@ -97,7 +97,7 @@ Si vous utilisez un ordinateur de l’anglais des États-Unis, vous pouvez ignor
 
 
 > [!NOTE]
-> Pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et votre propre  *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et JavaScript pour utiliser `Globalize.parseFloat`. Vous pouvez obtenir la validation non anglaises de jQuery à partir de NuGet. (N’installez pas Globalize si vous utilisez des paramètres régionaux anglais.)
+> pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et votre propre  *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et JavaScript pour utiliser `Globalize.parseFloat`. Vous pouvez obtenir la validation non anglaises de jQuery à partir de NuGet. (N’installez pas Globalize si vous utilisez des paramètres régionaux anglais.)
 
 
 1. À partir de la **outils** menu, cliquez sur **Gestionnaire de Package NuGetLibrary**, puis cliquez sur **gérer les Packages NuGet pour la Solution**.  

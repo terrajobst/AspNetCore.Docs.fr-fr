@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspn
 title: Implémentation de l’accès concurrentiel optimiste avec SqlDataSource (c#) | Microsoft Docs
 author: rick-anderson
 description: Dans ce didacticiel, nous passez en revue les éléments essentiels de contrôle d’accès concurrentiel optimiste et puis Explorez comment l’implémenter à l’aide du contrôle SqlDataSource.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2007
 ms.assetid: df999966-ac48-460e-b82b-4877a57d6ab9
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/implementing-optimistic-concurrency-with-the-sqldatasource-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 2907e05dfa82d44d38217b90d85d5c2192613560
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f2590e8e7712d719eb89403ef839f03066a93d2b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811463"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829543"
 ---
 <a name="implementing-optimistic-concurrency-with-the-sqldatasource-c"></a>Implémentation de l’accès concurrentiel optimiste avec SqlDataSource (c#)
 ====================

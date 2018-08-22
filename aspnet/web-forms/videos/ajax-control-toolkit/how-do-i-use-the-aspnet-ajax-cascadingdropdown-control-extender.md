@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-cascadin
 title: '[Comment faire] Utiliser l’extendeur du contrôle CascadingDropDown d’ASP.NET AJAX ? | Microsoft Docs'
 author: JoeStagner
 description: Cette vidéo montre comment ASP. DropDownList standard du NET peut devenir à l’aide de l’extendeur du contrôle CascadingDropDown à partir du contrôle de code AJAX ASP.NET compatibles AJAX...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/24/2007
 ms.assetid: 7dca3704-474b-4b0b-8294-5599279964d9
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-cascadingdropdown-control-extender
 msc.type: video
-ms.openlocfilehash: f2160bfc9905adbe5b9c206237fb8066068ad6cc
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f88c1fa08cfa08e6f8d890c3de69bfdca9b8230d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806294"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41828903"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-cascadingdropdown-control-extender"></a>[Comment faire] Utiliser l’extendeur du contrôle CascadingDropDown d’ASP.NET AJAX ?
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/multiple-con
 title: ContentPlaceHolders multiples et contenu par défaut (c#) | Microsoft Docs
 author: rick-anderson
 description: Examine comment ajouter plusieurs espaces réservés contenu à une page maître, ainsi que comment spécifier le contenu par défaut dans les espaces réservés contenu.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/21/2008
 ms.assetid: b9b9798b-027d-46cc-9636-473378e437ac
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8e3a9146b22557691899bbfe299bc44682d1efae
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 86b01fd7ccf08c656c8d8dc5f17be01fcd463fca
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804156"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829247"
 ---
 <a name="multiple-contentplaceholders-and-default-content-c"></a>ContentPlaceHolders multiples et contenu par défaut (c#)
 ====================

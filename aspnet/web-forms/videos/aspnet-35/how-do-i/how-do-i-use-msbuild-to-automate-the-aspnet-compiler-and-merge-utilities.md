@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-use-msbuild-to-automate-the-as
 title: '[Comment faire] Utiliser MSBuild pour automatiser le compilateur ASP.NET et les utilitaires de fusion | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo Chris Pels montre comment créer un projet MSBuild qui orchestre l’exécution des utilitaires aspnet_compiler et aspnet_merge pour un ASP...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/07/2008
 ms.assetid: 14f2b333-59f5-4ae4-88db-2a78f809cef3
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-use-msbuild-to-automate-the-aspnet-compiler-and-merge-utilities
 msc.type: video
-ms.openlocfilehash: 8414489f495ae2b194a503bf3129467c3219ce8c
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: bed850b06b69e101d34f6987c9e6c66ab928543c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818189"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833821"
 ---
 <a name="how-do-i-use-msbuild-to-automate-the-aspnet-compiler-and-merge-utilities"></a>[Comment faire] Utiliser MSBuild pour automatiser le compilateur ASP.NET et les utilitaires de fusion
 ====================

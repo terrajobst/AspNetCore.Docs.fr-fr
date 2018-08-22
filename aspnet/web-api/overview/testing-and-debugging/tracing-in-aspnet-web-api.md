@@ -3,17 +3,17 @@ uid: web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 title: Le traçage dans ASP.NET Web API 2 | Microsoft Docs
 author: MikeWasson
 description: Montre comment activer le suivi dans l’API Web ASP.NET.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 0fabb9bcd0293ba88a41ad9d070958dbbb0c4749
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 697e7e91ae2d9d5712d9306a291635793063117b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838107"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824555"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>Le traçage dans ASP.NET Web API 2
 ====================

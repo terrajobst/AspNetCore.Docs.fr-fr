@@ -3,17 +3,17 @@ uid: signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 title: Tests unitaires d’Applications de SignalR | Microsoft Docs
 author: pfletcher
 description: Cet article décrit comment utiliser les fonctionnalités Unit Testing de SignalR 2.0.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: d1983524-e0d5-4ee6-9d87-1f552f7cb964
 msc.legacyurl: /signalr/overview/testing-and-debugging/unit-testing-signalr-applications
 msc.type: authoredcontent
-ms.openlocfilehash: f46c6edd2002bcc6e62f4e4fe313c9e50e35aaff
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c6c57026a54775857921075b176e893b5449d4a5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840905"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824286"
 ---
 <a name="unit-testing-signalr-applications"></a>Unité test des Applications SignalR
 ====================

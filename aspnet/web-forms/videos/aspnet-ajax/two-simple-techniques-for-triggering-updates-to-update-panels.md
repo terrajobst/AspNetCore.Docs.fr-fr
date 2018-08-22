@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/two-simple-techniques-for-triggering-updates-t
 title: Deux Techniques simples pour déclencher des mises à jour pour mettre à jour les panneaux | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo, je vais vous montrer deux techniques de mise à jour simple. Tout d’abord, à l’aide de l’index sélectionné événement de modification dans la liste déroulante contrôle de liste comme un trigonométrie événement...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/13/2008
 ms.assetid: c844da8a-10e6-45c9-a9e2-331a3b8d3e03
 msc.legacyurl: /web-forms/videos/aspnet-ajax/two-simple-techniques-for-triggering-updates-to-update-panels
 msc.type: video
-ms.openlocfilehash: 2eec9ca1efdb1f05f493a3ca0ae43e31074f1b45
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8f6b4a2120f9b1a68f3ebdef929d78c480172302
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816987"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831123"
 ---
 <a name="two-simple-techniques-for-triggering-updates-to-update-panels"></a>Deux Techniques simples pour déclencher des mises à jour pour mettre à jour les panneaux
 ====================

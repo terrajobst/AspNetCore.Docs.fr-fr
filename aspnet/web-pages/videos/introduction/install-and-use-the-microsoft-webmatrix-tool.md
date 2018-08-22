@@ -3,17 +3,17 @@ uid: web-pages/videos/introduction/install-and-use-the-microsoft-webmatrix-tool
 title: Installer et utiliser l’outil Microsoft WebMatrix | Microsoft Docs
 author: rick-anderson
 description: Partie 1 présente WebMatrix et comment vous pouvez installer et l’utiliser.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/12/2011
 ms.assetid: c0087185-82eb-40fd-b3fd-9d0c6937ee9a
 msc.legacyurl: /web-pages/videos/introduction/install-and-use-the-microsoft-webmatrix-tool
 msc.type: video
-ms.openlocfilehash: 376f6365af02f820f1b1b6f670ca93cb3b22edd7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 21453fffffa7322d1d211aee0f747e3624a5110f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804644"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834028"
 ---
 <a name="install-and-use-the-microsoft-webmatrix-tool"></a>Installer et utiliser l’outil Microsoft WebMatrix
 ====================

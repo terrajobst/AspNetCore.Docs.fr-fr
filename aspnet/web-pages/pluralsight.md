@@ -3,17 +3,17 @@ uid: web-pages/pluralsight
 title: WebMatrix et Web Pages vidéo de formation à Pluralsight | Microsoft Docs
 author: rick-anderson
 description: WebMatrix &amp; formation de Pages Web à partir de ce cours approfondi de Pluralsight vous aidera à en cours d’exécution avec WebMatrix et ASP.NET Web Pages. Il couvre everythi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/18/2012
 ms.assetid: 79eca52c-e7ad-44ab-a3e4-d8093e9da5a7
 msc.legacyurl: /web-pages/pluralsight
 msc.type: content
-ms.openlocfilehash: 07fe95b0b7779988fc80639777402930f5af5334
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e4b60da0bb4e1d8fce0640516fa4f127dcc30f37
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819693"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833798"
 ---
 <a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>WebMatrix et Web Pages vidéo de formation à Pluralsight
 ====================

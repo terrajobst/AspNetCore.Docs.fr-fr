@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-
 title: Bien démarrer avec Entity Framework 6 Code First avec MVC 5 | Microsoft Docs
 author: tdykstra
 description: 'Une version plus récente de cette série de didacticiels est disponible : bien démarrer avec ASP.NET Core et Entity Framework Core à l’aide de Visual Studio 2015. Le Contoso Universi...'
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/22/2015
 ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: f03ddcf7dcc8b5d20c5459a7fb0015ab20f340c5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 29004ec2271dbf77395f07e030533e23662b67c1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837167"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834431"
 ---
 <a name="getting-started-with-entity-framework-6-code-first-using-mvc-5"></a>Bien démarrer avec Entity Framework 6 Code First en utilisant MVC 5
 ====================

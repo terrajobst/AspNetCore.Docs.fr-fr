@@ -1,16 +1,16 @@
-﻿---
+---
 title: Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 author: guardrex
 description: Découvrez comment utiliser le fournisseur de Configuration de coffre de clés Azure pour configurer une application à l’aide de paires nom-valeur chargées pendant l’exécution.
 ms.author: riande
 ms.date: 08/01/2018
 uid: security/key-vault-configuration
-ms.openlocfilehash: 6474b9f5cb9e441854565a7891c4aac7f781c810
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: 829c6c7e2750879b51bf3ce8225c6e472900f2ad
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410128"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835877"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de configuration Azure Key Vault dans ASP.NET Core
 
@@ -155,7 +155,7 @@ Les secrets désactivés et expirés lèvent une exception `KeyVaultClientExcept
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
-Lorsque l’application ne parvient pas à charger la configuration de l’utilisation du fournisseur, un message d’erreur est écrite à la [infrastructure de journalisation ASP.NET](xref:fundamentals/logging/index). Les conditions suivantes empêchent le chargement de la configuration :
+Lorsque l’application ne parvient pas à charger la configuration de l’utilisation du fournisseur, un message d’erreur est écrite à la [infrastructure de journalisation ASP.NET Core](xref:fundamentals/logging/index). Les conditions suivantes empêchent le chargement de la configuration :
 
 * L’application n’est pas configurée correctement dans Azure Active Directory.
 * Le coffre de clés n’existe pas dans Azure Key Vault.

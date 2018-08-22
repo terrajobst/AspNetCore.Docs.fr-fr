@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-deploy-a-web-application-during-a-team-bu
 title: '[Comment faire] Déployer une Application Web pendant une Build d’équipe ? | Microsoft Docs'
 author: pjhacker
 description: Cette vidéo montre comment créer une nouvelle build d’équipe et comment déployer votre application Web dans le cadre du processus de génération. Nous voyons qu’y compris la déployez...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/01/2007
 ms.assetid: 3c81ee94-4561-4267-864d-2656b33d95c9
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-deploy-a-web-application-during-a-team-build
 msc.type: video
-ms.openlocfilehash: f4fc140947c28c54e02967a6611bbe59576e3ada
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6d608b7173ccd4e5f3e8cd9575387056b9f2f6bf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823146"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824686"
 ---
 <a name="how-do-i-deploy-a-web-application-during-a-team-build"></a>[Comment faire] Déployer une Application Web pendant une Build d’équipe ?
 ====================

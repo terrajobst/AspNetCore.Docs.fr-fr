@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/implemen
 title: Implémentation de l’accès concurrentiel optimiste (VB) | Microsoft Docs
 author: rick-anderson
 description: Pour une application web qui permet à plusieurs utilisateurs de modifier des données, il existe un risque que deux utilisateurs peuvent modifier les mêmes données en même temps. Dans cette tutori...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/17/2006
 ms.assetid: 2646968c-2826-4418-b1d0-62610ed177e3
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 63b5a274103851b4b60c92d5fe46125cc4a1b0be
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e33e4b401d957f4aa5560193dd8af0e53ca3b631
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832964"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833457"
 ---
 <a name="implementing-optimistic-concurrency-vb"></a>Implémentation de l’accès concurrentiel optimiste (VB)
 ====================

@@ -3,17 +3,17 @@ uid: web-api/overview/older-versions/self-host-a-web-api
 title: Self-Host ASP.NET Web API 1 (c#) | Microsoft Docs
 author: MikeWasson
 description: API Web ASP.NET ne nécessite pas d’IIS. Vous pouvez Self-host une API web dans votre propre processus hôte. Ce didacticiel montre comment héberger une API web à l’intérieur d’une console appl...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/26/2012
 ms.assetid: be5ab1e2-4140-4275-ac59-ca82a1bac0c1
 msc.legacyurl: /web-api/overview/older-versions/self-host-a-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 50681dcd89dfed480cf343f753371af384fd3e68
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: cac0d5aeaf49f45051d062935e0e9207ce59c7eb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811735"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833437"
 ---
 <a name="self-host-aspnet-web-api-1-c"></a>Self-Host ASP.NET Web API 1 (c#)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/visual-studio-web-deployment/web-config-trans
 title: 'Déploiement de Web ASP.NET à l’aide de Visual Studio : Transformations du fichier Web.config | Microsoft Docs'
 author: tdykstra
 description: Cette série de didacticiels vous montre comment déployer (publier) un ASP.NET web application dans Azure App Service Web Apps ou à un fournisseur d’hébergement tiers, en utilisant des éléments...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/15/2013
 ms.assetid: 5a2a927b-14cb-40bc-867a-f0680f9febd7
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/web-config-transformations
 msc.type: authoredcontent
-ms.openlocfilehash: 0a52530396efa3612d19817eeaa0498cffdac38f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 58f3daac5e9fbe6d327f19b6ae78ea17a26cd7e7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842437"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829232"
 ---
 <a name="aspnet-web-deployment-using-visual-studio-webconfig-file-transformations"></a>Déploiement de Web ASP.NET à l’aide de Visual Studio : Transformations du fichier Web.config
 ====================

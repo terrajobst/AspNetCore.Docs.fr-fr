@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reord
 title: Glisser -déplacer via ReorderList (VB) | Microsoft Docs
 author: wenz
 description: /Data-Access/Tutorials/Master-Detail-Using-a-Bulleted-List-of-Master-Records-with-a-Details-DataList-VB
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 848e6bcf-4c3f-4d14-974d-e45b9444ab79
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 78cdb53ce6cbf32ccdf913f30439734f94922e8f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 12c5aa60aa6bb71c99e267a1a71b40ed718df8cf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814208"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829259"
 ---
 <a name="drag-and-drop-via-reorderlist-vb"></a>Glisser -déplacer via ReorderList (VB)
 ====================

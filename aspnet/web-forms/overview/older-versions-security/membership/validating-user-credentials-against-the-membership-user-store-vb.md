@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/membership/validating-user-crede
 title: Validation des informations d’identification de l’utilisateur sur le Store d’utilisateur d’appartenance (VB) | Microsoft Docs
 author: rick-anderson
 description: Dans ce didacticiel, nous allons examiner comment valider les informations d’identification d’un utilisateur par rapport au magasin d’utilisateur d’appartenance à l’aide de moyens de programmation et le contrôle de connexion...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: 17772912-b47b-4557-9ce9-80f22df642f7
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c5eeb67c8d175173f38ffcbc1b01fd5a5931866e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f5f1121bacdf287e346419d70ac155f47bc826ac
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821402"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829255"
 ---
 <a name="validating-user-credentials-against-the-membership-user-store-vb"></a>Validation des informations d’identification de l’utilisateur sur le Store d’utilisateur d’appartenance (VB)
 ====================
@@ -219,7 +219,7 @@ Figure 9 offre un organigramme du flux de travail de l’authentification.
 
 ### <a name="creating-theauthenticateevent-handler"></a>Création de la`Authenticate`Gestionnaire d’événements
 
-Pour incorporer notre logique d’authentification personnalisée, nous devons créer un gestionnaire d’événements pour le contrôle Login `Authenticate` événement. Création d’un gestionnaire d’événements pour le `Authenticate` événement génère la définition de gestionnaire d’événements suivantes :
+Pour incorporer notre logique d’authentification personnalisée, nous devons créer un gestionnaire d’événements pour le contrôle Login `Authenticate` événement. Création d’un gestionnaire d’événements pour le `Authenticate` événement génère la définition de gestionnaire d’événements suivantes:
 
 [!code-vb[Main](validating-user-credentials-against-the-membership-user-store-vb/samples/sample3.vb)]
 

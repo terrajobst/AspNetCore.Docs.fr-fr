@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/database-first-development/publish-to-azure
 title: Publier le site MVC Database First sur Azure | Microsoft Docs
 author: tfitzmac
 description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/22/2014
 ms.assetid: 7131f1c1-cef3-4396-ab44-ed4519676546
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/publish-to-azure
 msc.type: authoredcontent
-ms.openlocfilehash: 0aaa8e2a586a89f6ea5eaeb4f3d280993342b2f9
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 45dd2c127e3ba0644e8168e293006fa9eadd776d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835746"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41823689"
 ---
 <a name="publish-mvc-database-first-site-to-azure"></a>Publier le site MVC Database First sur Azure
 ====================

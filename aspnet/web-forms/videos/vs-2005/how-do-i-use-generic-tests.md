@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-use-generic-tests
 title: '[Comment faire] Utiliser des Tests génériques ? | Microsoft Docs'
 author: rick-anderson
 description: Un test générique est un programme existant qui est encapsulé et disponibles en tant que test dans Visual Studio Team System. Dans cette vidéo, nous voir une démonstration de la...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/16/2007
 ms.assetid: e129b2c2-8587-4ff1-b455-7f14cb28bcf9
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-use-generic-tests
 msc.type: video
-ms.openlocfilehash: e50ab271328145a0fde80d857b1416f733bcf712
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fabeff4743a28015b55c98071e8df40015710dd1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807133"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829268"
 ---
 <a name="how-do-i-use-generic-tests"></a>[Comment faire] Utiliser des Tests génériques ?
 ====================

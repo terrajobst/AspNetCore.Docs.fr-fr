@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/database-first-development/creating-the-web-ap
 title: 'EF Database First avec ASP.NET MVC : création de l’Application Web et les modèles de données | Microsoft Docs'
 author: tfitzmac
 description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/01/2014
 ms.assetid: bc8f2bd5-ff57-4dcd-8418-a5bd517d8953
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: b4c30b12d2b62b71c0f80546d8a537c80d514d79
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 343131d45ed0b2442f1b0b557c5b63f3877e5d0e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802894"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830140"
 ---
 <a name="ef-database-first-with-aspnet-mvc-creating-the-web-application-and-data-models"></a>EF Database First avec ASP.NET MVC : création de l’Application Web et les modèles de données
 ====================

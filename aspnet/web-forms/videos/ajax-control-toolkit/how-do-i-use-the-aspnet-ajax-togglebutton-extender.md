@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-togglebu
 title: '[Comment faire] Utiliser l’extendeur ToggleButton d’ASP.NET AJAX ? | Microsoft Docs'
 author: JoeStagner
 description: Illustre l’utilisation du contrôle d’extendeur ToggleButton pour modifier le comportement et l’apparence du contrôle de case à cocher ASP.NET standard pour améliorer l’utilisateur inter...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/01/2007
 ms.assetid: 3116e9bc-681c-48f9-813e-1bcfcec145da
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-togglebutton-extender
 msc.type: video
-ms.openlocfilehash: bd1b58d843839a60b24513796359d0bd502e5e6f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 44fe6258c0973a9598a3fe586aa18a9a7ea909ff
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802941"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825094"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-togglebutton-extender"></a>[Comment faire] Utiliser l’extendeur ToggleButton d’ASP.NET AJAX ?
 ====================

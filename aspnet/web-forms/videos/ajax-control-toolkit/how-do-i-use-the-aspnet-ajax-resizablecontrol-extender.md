@@ -3,17 +3,17 @@ uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-resizabl
 title: '[Comment faire] Utiliser l’extendeur ResizableControl d’ASP.NET AJAX ? | Microsoft Docs'
 author: JoeStagner
 description: L’extendeur ResizableControl d’ASP.NET AJAX Control Toolkit permet au développeur de spécifier une région de la page Web que l’utilisateur peut redimensionner dynamique...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/01/2007
 ms.assetid: 99b23369-dac6-458b-b002-56be35f43236
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-resizablecontrol-extender
 msc.type: video
-ms.openlocfilehash: da3f54e84602bd9276f4b063ebdddab099f03691
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d597b8bbb60827e3cbcea16c49e5deb9d20ee357
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808114"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824321"
 ---
 <a name="how-do-i-use-the-aspnet-ajax-resizablecontrol-extender"></a>[Comment faire] Utiliser l’extendeur ResizableControl d’ASP.NET AJAX ?
 ====================

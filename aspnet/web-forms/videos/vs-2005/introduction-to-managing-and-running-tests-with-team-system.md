@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/introduction-to-managing-and-running-tests-with-te
 title: Introduction à la gestion et en cours d’exécution de Tests avec Team System | Microsoft Docs
 author: rick-anderson
 description: Dans cette vidéo, nous voyons comment vous pouvez gérer tous ou vos différents en utilisant les fonctionnalités de gestion de test de Visual Studio Team System de cas de test. Nous verrons également...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/09/2007
 ms.assetid: e262ca69-55e5-4ec2-b278-78ee129b4649
 msc.legacyurl: /web-forms/videos/vs-2005/introduction-to-managing-and-running-tests-with-team-system
 msc.type: video
-ms.openlocfilehash: 9a3a4a2248ef9c350980c7cb4541749474b1299a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1b9ea5277253395ba16b3a4480b61fb522327d75
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805945"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41829592"
 ---
 <a name="introduction-to-managing-and-running-tests-with-team-system"></a>Introduction à la gestion et l’exécution de Tests avec Team System
 ====================

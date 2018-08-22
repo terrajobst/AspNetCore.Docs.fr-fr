@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-
 title: '[Comment faire] Utiliser un projet de déploiement Web de Visual Studio 2008 | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo, Chris Pels montre comment utiliser le module complémentaire de déploiement Web de Visual Studio 2008 pour créer des projets de déploiement avec un degré plus fin de contrôle sur la façon...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/11/2008
 ms.assetid: 9517a342-e414-4c93-b0a6-5b52b391c908
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project
 msc.type: video
-ms.openlocfilehash: 183ac4543fb294ca9815ec99f4c8c017fe637e8f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9649c76496c186b13521f6e4de787a00bca89e02
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803481"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834376"
 ---
 <a name="how-do-i-use-a-visual-studio-2008-web-deployment-project"></a>[Comment faire] Utiliser un projet de déploiement Web de Visual Studio 2008
 ====================

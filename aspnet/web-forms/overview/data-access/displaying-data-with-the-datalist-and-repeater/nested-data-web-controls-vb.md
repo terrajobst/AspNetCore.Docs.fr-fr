@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeat
 title: Contrôles (VB) de Web de données imbriquées | Microsoft Docs
 author: rick-anderson
 description: Dans ce didacticiel, nous explorerons comment utiliser un répéteur imbriquée dans une autre Repeater. Les exemples illustre comment remplir le Repeater interne à la fois d...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 09/13/2006
 ms.assetid: 8b7fcf7b-722b-498d-a4e4-7c93701e0c95
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 45e460edb09fe9398d204e0f280dfb088a44946d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 297d76da5bf049ec68a351562f96f3587b059b55
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803176"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833192"
 ---
 <a name="nested-data-web-controls-vb"></a>Contrôles Web de données imbriquées (VB)
 ====================
