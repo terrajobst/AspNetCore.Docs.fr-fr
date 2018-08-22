@@ -3,17 +3,17 @@ uid: web-pages/overview/data/7-displaying-data-in-a-chart
 title: Affichage des données dans un graphique avec des Pages Web ASP.NET (Razor) | Microsoft Docs
 author: microsoft
 description: Ce chapitre explique comment afficher des données dans un graphique. Dans les chapitres précédents, vous avez appris à afficher des données dans une grille et manuellement. Ce chapitre explique...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/22/2012
 ms.assetid: f889fd46-4dac-4ecb-83d8-60e64c22036e
 msc.legacyurl: /web-pages/overview/data/7-displaying-data-in-a-chart
 msc.type: authoredcontent
-ms.openlocfilehash: 161dfa1b2c0676c79baebb00e303e8cb9df1d4e8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 00529355476e88c47ab790121ae77202aa5e7b76
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812579"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835000"
 ---
 <a name="displaying-data-in-a-chart-with-aspnet-web-pages-razor"></a>Affichage des données dans un graphique avec les Pages Web ASP.NET (Razor)
 ====================

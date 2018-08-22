@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 09/22/2017
 uid: client-side/using-browserlink
-ms.openlocfilehash: 5ab15c841c472e6c9d47bad70fcf5e0c6dc3010f
-ms.sourcegitcommit: ea7ec8d47f94cfb8e008d771f647f86bbb4baa44
+ms.openlocfilehash: 452ba5149563c186750466f471c7b950f0017614
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37894177"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835672"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Lien du navigateur dans ASP.NET Core
 
@@ -139,7 +139,7 @@ Lorsque la synchronisation automatique CSS est activée, les navigateurs connect
 
 ## <a name="how-it-works"></a>Son fonctionnement
 
-Browser Link utilise SignalR pour créer un canal de communication entre Visual Studio et le navigateur. Quand le lien du navigateur est activé, Visual Studio fait office de serveur SignalR auquel plusieurs clients (navigateurs) peuvent se connecter.  Browser Link enregistre également un composant d’intergiciel (middleware) dans le pipeline de demande ASP.NET. Ce composant injecte des références `<script>` dans chaque demande de page à partir du serveur. Pour voir les références de script, sélectionnez **Afficher la source** dans le navigateur et faites défiler jusqu’à la fin du contenu de la balise `<body>` :
+Browser Link utilise SignalR pour créer un canal de communication entre Visual Studio et le navigateur. Quand le lien du navigateur est activé, Visual Studio fait office de serveur SignalR auquel plusieurs clients (navigateurs) peuvent se connecter.  Lien du navigateur enregistre également un composant d’intergiciel (middleware) dans le pipeline de demande ASP.NET Core. Ce composant injecte des références `<script>` dans chaque demande de page à partir du serveur. Pour voir les références de script, sélectionnez **Afficher la source** dans le navigateur et faites défiler jusqu’à la fin du contenu de la balise `<body>` :
 
 ```html
     <!-- Visual Studio Browser Link -->

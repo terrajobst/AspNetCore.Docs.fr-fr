@@ -3,17 +3,17 @@ uid: signalr/overview/testing-and-debugging/enabling-signalr-tracing
 title: Activation du traçage SignalR | Microsoft Docs
 author: tfitzmac
 description: Ce document décrit comment activer et configurer le traçage des clients et serveurs de SignalR. Le suivi vous permet de vous permettent d’afficher des informations sur les événements de diagnostic...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/08/2014
 ms.assetid: 30060acb-be3e-4347-996f-3870f0c37829
 msc.legacyurl: /signalr/overview/testing-and-debugging/enabling-signalr-tracing
 msc.type: authoredcontent
-ms.openlocfilehash: 3bc8e4c81a6efa1b02d2b3e633ddb92c8ff6c2e3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ee62a7b01ff357262aa89dbac4f49180b4c58fe0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809195"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836174"
 ---
 <a name="enabling-signalr-tracing"></a>Activation du traçage SignalR
 ====================

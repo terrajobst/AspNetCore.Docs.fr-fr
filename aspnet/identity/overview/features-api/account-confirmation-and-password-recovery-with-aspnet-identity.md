@@ -3,17 +3,17 @@ uid: identity/overview/features-api/account-confirmation-and-password-recovery-w
 title: Confirmation de compte et récupération de mot de passe avec ASP.NET Identity (c#) | Microsoft Docs
 author: HaoK
 description: Avant d’effectuer ce didacticiel, que vous devez effectuer tout d’abord créer une application web de ASP.NET MVC 5 sécurisée avec connexion, réinitialisation de confirmation et le mot de passe de messagerie. Ce didacticiel...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/26/2015
 ms.assetid: 8d54180d-f826-4df7-b503-7debf5ed9fb3
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 08a954f8fab4a92b84bd79b4f644bcc1f55b1bc6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 77a3e9d5e8b2698d2464e33520d779febd4533bd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831081"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835849"
 ---
 <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Confirmation de compte et de récupération de mot de passe avec ASP.NET Identity (c#)
 ====================
@@ -90,7 +90,7 @@ Démarrez en installant et en cours d’exécution [Visual Studio Express 2013 p
 
 Le magasin de données par défaut pour ASP.NET Identity est Entity Framework, mais vous pouvez le configurer pour utiliser d’autres magasins de données et ajouter des champs supplémentaires. Consultez [des ressources supplémentaires](#addRes) section à la fin de ce didacticiel.
 
-Le [classe de démarrage OWIN](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md) ( *Startup.cs* ) est appelée lorsque l’application démarre et appelle le `ConfigureAuth` méthode dans *application\_Start\Startup.Auth.cs*, qui configure le pipeline OWIN et initialise l’identité ASP.NET. Examiner le `ConfigureAuth` (méthode). Chaque `CreatePerOwinContext` appel enregistre un rappel (enregistré dans le `OwinContext`) qui sera appelé une fois par demande pour créer une instance du type spécifié. Vous pouvez définir un point d’arrêt dans le constructeur et `Create` de chaque type (méthode) (`ApplicationDbContext, ApplicationUserManager`) et vérifiez qu’ils sont appelés à chaque demande. Une instance de `ApplicationDbContext` et `ApplicationUserManager` est stocké dans le contexte OWIN, qui est accessible dans toute l’application. ASP.NET Identity raccorde le pipeline OWIN via middleware de cookie. Pour plus d’informations, consultez [par la gestion des demandes de durée de vie pour la classe UserManager dans ASP.NET Identity](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx).
+Le [classe de démarrage OWIN](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md) ( *Startup.cs* ) est appelée lorsque l’application démarre et appelle le `ConfigureAuth` méthode dans *application\_Start\Startup.Auth.cs*, qui configure le pipeline OWIN et initialise l’identité ASP.NET. Examinez la méthode `ConfigureAuth`. Chaque `CreatePerOwinContext` appel enregistre un rappel (enregistré dans le `OwinContext`) qui sera appelé une fois par demande pour créer une instance du type spécifié. Vous pouvez définir un point d’arrêt dans le constructeur et `Create` de chaque type (méthode) (`ApplicationDbContext, ApplicationUserManager`) et vérifiez qu’ils sont appelés à chaque demande. Une instance de `ApplicationDbContext` et `ApplicationUserManager` est stocké dans le contexte OWIN, qui est accessible dans toute l’application. ASP.NET Identity raccorde le pipeline OWIN via middleware de cookie. Pour plus d’informations, consultez [par la gestion des demandes de durée de vie pour la classe UserManager dans ASP.NET Identity](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx).
 
 Lorsque vous modifiez votre profil de sécurité, un nouvel horodatage de sécurité est généré et stocké dans le `SecurityStamp` champ la *AspNetUsers* table. Notez que le `SecurityStamp` champ diffère le cookie de sécurité. Le cookie de sécurité n’est pas stocké dans le `AspNetUsers` table (ou tout autre emplacement de la base de données d’identité). Le jeton de cookie de sécurité est auto-signé à l’aide de [DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx) et est créé avec le `UserId, SecurityStamp` et les informations d’heure d’expiration.
 

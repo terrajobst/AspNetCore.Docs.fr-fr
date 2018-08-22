@@ -3,17 +3,17 @@ uid: web-forms/videos/net-4/ajax/aspnet-4-quick-hit-jquery-syntax-for-microsoft-
 title: Visual Studio 2010 rapide positionnement-la syntaxe jQuery pour Microsoft Ajax | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo, vous allez découvrir la syntaxe jQuery pour Microsoft Ajax.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/16/2009
 ms.assetid: 997897e3-8fe2-46ca-8a86-b59dbf93e65e
 msc.legacyurl: /web-forms/videos/net-4/ajax/aspnet-4-quick-hit-jquery-syntax-for-microsoft-ajax
 msc.type: video
-ms.openlocfilehash: 5df989698b1d312fec06f0e5a318f57f532e0d13
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: edd1002926a098cb1ad0153c8e6e7d1a480b156c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831759"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830787"
 ---
 <a name="aspnet-4-quick-hit---jquery-syntax-for-microsoft-ajax"></a>ASP.NET 4 « Rapide d’accès » - jQuery syntaxe pour Microsoft Ajax
 ====================

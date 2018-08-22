@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-p
 title: 'Déploiement d’une Application de Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : déploiement de SQL Server Compact bases de données - 2 de 12 | Microsoft Docs'
 author: tdykstra
 description: Cette série de didacticiels vous montre comment déployer une ASP.NET (publier) projet d’application web qui inclut une base de données SQL Server Compact à l’aide de Visual Stu...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/17/2011
 ms.assetid: c3c76516-4c48-4153-bd03-d70e3a3edbb0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12
 msc.type: authoredcontent
-ms.openlocfilehash: dc094211df77e6d3ff5eacb878be901e3552fd13
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 378bcc038335ee852cd1a6c6e545eb72c6e0c78b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803056"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835083"
 ---
 <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-deploying-sql-server-compact-databases---2-of-12"></a>Déploiement d’une Application de Web ASP.NET avec SQL Server Compact à l’aide de Visual Studio ou Visual Web Developer : déploiement de SQL Server Compact bases de données - 2 de 12
 ====================
@@ -88,11 +88,11 @@ Pour simuler ce scénario courant, vous allez configurer une méthode de la vale
 
 Dans les versions antérieures de Code First avant la parution de Migrations, il était courant pour les méthodes de valeur initiale insérer des données de test en outre, étant donné qu’à chaque modification de modèle au cours du développement la base de données a dû être complètement supprimé et recréé à partir de zéro. Avec les Migrations Code First, les données de test sont conservées après les modifications de la base de données, y compris les données de test dans la méthode Seed n’est pas nécessaire. Le projet que vous avez téléchargé utilise la méthode de Migrations préalable d’inclusion de toutes les données dans la méthode Seed d’une classe d’initialiseur. Dans ce didacticiel, vous allez désactiver l’initialiseur de classe et permettre des Migrations. Puis vous mettrons à jour la méthode Seed dans la classe de configuration de Migrations afin qu’il insère uniquement les données que vous souhaitez insérer dans la production.
 
-Cliquez sur les crédits de mise à jour
+Le diagramme suivant illustre le schéma de la base de données d’application :
 
-[![Le [connectez-vous![ page s’affiche, car le ](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image5.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image4.png)crédits de la mise à jour page requiert des privilèges administratifs.](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image5.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image4.png)
+[![School_database_diagram](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image5.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image4.png)
 
-Entrez `Student`administrateur`Enrollment` comme nom d’utilisateur et devpwd comme le mot de passe et cliquez sur connectez-vous. Page de connexion
+Pour ces didacticiels, vous allez supposer que le `Student` et `Enrollment` tables doivent être vides lorsque le site est tout d’abord déployé. Les autres tables contiennent des données qui doit être préchargée lors de l’application est publiée.
 
 Dans la mesure où vous allez utiliser Migrations Code First, vous n’avez plus à utiliser le **DropCreateDatabaseIfModelChanges** initialiseurs Code First. Le code pour cet initialiseur est dans le fichier SchoolInitializer.cs dans le projet ContosoUniversity.DAL. Un paramètre dans le **appSettings** élément du fichier Web.config entraîne cet initialiseur exécuter chaque fois que l’application tente d’accéder à la base de données pour la première fois :
 
@@ -103,16 +103,16 @@ Ouvrez le fichier Web.config de l’application et supprimez l’élément qui s
 [!code-xml[Main](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/samples/sample2.xml)]
 
 > [!NOTE]
-> Une autre façon de spécifier une classe d'initialisation est de le faire en appelant `Database.SetInitializer` dans la méthode `Application_Start` du fichier *Global.asax* L’exemple d’application utilise le système d’appartenance ASP.NET antérieures, ce qui ne peut pas être déployé à l’aide des Migrations Code First.
+> Une autre façon de spécifier une classe d'initialisation est de le faire en appelant `Database.SetInitializer` dans la méthode `Application_Start` du fichier *Global.asax* Si vous activez les Migrations dans un projet qui utilise cette méthode pour spécifier l’initialiseur, supprimez cette ligne de code.
 
 
 Ensuite, activez les Migrations Code First.
 
-La première étape consiste à vous assurer que le projet de ContosoUniversity est défini comme projet de démarrage. Les deux utilisateurs ont le mot de passe **devpwd** dans la base de données de développement et **prodpwd** dans la base de données de production. Vous allez déployer les utilisateurs de développement vers l’environnement de test et les utilisateurs de production à intermédiaire et de production.
+La première étape consiste à vous assurer que le projet de ContosoUniversity est défini comme projet de démarrage. Dans **l’Explorateur de solutions**, cliquez sur le projet ContosoUniversity et sélectionnez **définir comme projet de démarrage**. Migrations Code First recherchera dans le projet de démarrage pour rechercher la chaîne de connexion de base de données.
 
 À partir de la **outils** menu, cliquez sur **Library Package Manager** , puis **Console du Gestionnaire de Package**.
 
-![La base de données d’appartenances stocke un hachage des mots de passe de compte.](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image6.png)
+![Selecting_Package_Manager_Console](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image6.png)
 
 En haut de la fenêtre **de la console du gestionnaire** de packages, sélectionnez ContosoUniversity.DAL comme projet par défaut, puis à l'invite `PM>`, entrez "enable-migrations".
 
@@ -122,15 +122,15 @@ Cette commande crée un *Configuration.cs* fichier dans un nouveau *Migrations* 
 
 ![Migrations_folder_in_Solution_Explorer](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image8.png)
 
-Vous avez sélectionné le projet de la couche DAL, car la commande « enable-migrations » doit être exécutée dans le projet qui contient la classe de contexte de Code First. Si vous choisissez une autre pour votre système, il n’est pas installer et vous pouvez essayez-en un autre. (Notez qu’il s’agit d’un téléchargement de 600 mégaoctets. (Si vous ne voulez pas que désigner le projet dont la chaîne de connexion en tant que projet de démarrage dans Visual Studio, vous pouvez spécifier le projet de démarrage dans la commande PowerShell. Pour afficher la syntaxe de commande pour la commande enable-migrations, vous pouvez entrer les commande « get-help enable-migrations ».)
+Vous avez sélectionné le projet de la couche DAL, car la commande « enable-migrations » doit être exécutée dans le projet qui contient la classe de contexte de Code First. Lorsque cette classe est dans un projet de bibliothèque de classes, les Migrations Code First recherche la chaîne de connexion de base de données dans le projet de démarrage pour la solution. Dans la solution ContosoUniversity, le projet web a été défini comme projet de démarrage. (Si vous ne voulez pas que désigner le projet dont la chaîne de connexion en tant que projet de démarrage dans Visual Studio, vous pouvez spécifier le projet de démarrage dans la commande PowerShell. Pour afficher la syntaxe de commande pour la commande enable-migrations, vous pouvez entrer les commande « get-help enable-migrations ».)
 
 Ouvrez le fichier Configuration.cs et remplacez les commentaires dans le `Seed` méthode avec le code suivant :
 
 [!code-csharp[Main](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/samples/sample3.cs)]
 
-Dans le `List`générer et publier des Scripts`using` boîte de dialogue, le nom de fichier zone spécifie où le script doit être créé. Modifier le chemin d’accès à votre dossier de solution (le dossier contenant votre fichier ContosoUniversity.sln) et le nom de fichier à `List`aspnet-data-dev.sql **.
+Les références à `List` ont des lignes ondulées rouges sous les, car vous n’avez pas un `using` instruction encore pour son espace de noms. Cliquez sur un des instances de `List` et cliquez sur **résoudre**, puis cliquez sur **using System.Collections.Generic**.
 
-![Cliquez sur suivant pour accéder à la Résumé onglet, puis cliquez sur suivant à nouveau pour créer le script.](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image9.png)
+![Résoudre avec l’instruction using](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image9.png)
 
 Cette sélection de menu ajoute le code suivant aux `using` instructions situées en haut du fil
 
@@ -146,7 +146,7 @@ Cette sélection de menu ajoute le code suivant aux `using` instructions située
 > Cet exemple indiqué pour ce didacticiel utilise le `AddOrUpdate` méthode dans le `Seed` méthode les Migrations Code First `Configuration` classe. Code First Migrations appelle la `Seed` méthode après chaque migration et cette méthode met à jour les lignes qui ont déjà été insérés, ou les insère si elles n’existent pas encore. La méthode `AddOrUpdate` peut ne pas être le meilleur choix pour votre scénario. Pour plus d'informations, voir [ Faites attention avec la méthode AddOrUpdate d'EF 4.3 ](http://thedatafarm.com/blog/data-access/take-care-with-ef-4-3-addorupdate-method/) sur le blog de Julie Lerman.
 
 
-Créer le script de base de données de production
+Appuyez sur CTRL-MAJ-B pour générer le projet.
 
 L’étape suivante consiste à créer un `DbMigration` classe pour la migration initiale. Vous souhaitez que cette migration pour créer une nouvelle base de données, donc vous devez supprimer la base de données qui existe déjà. Bases de données SQL Server Compact sont contenues dans *.sdf* des fichiers dans le *application\_données* dossier. Dans **l’Explorateur de solutions**, développez *application\_données* dans le projet ContosoUniversity pour voir les deux bases de données SQL Server Compact, qui sont représenté par *.sdf*fichiers.
 
@@ -176,7 +176,7 @@ Le projet est maintenant prêt à déployer le *School* base de données.
 
 ## <a name="creating-a-membership-database-for-deployment"></a>Création d’une base de données d’appartenance pour le déploiement
 
-Scripts de déploiement de données Un de ses pages est accessible uniquement aux administrateurs. Pour afficher cette page, exécutez l’application et sélectionnez **crédits de la mise à jour** à partir du menu menu volant sous **cours**. L’application affiche le **Log In** page, étant donné que seuls les administrateurs sont autorisés à utiliser le **crédits de la mise à jour** page.
+L’application Contoso University utilise l’authentification de formulaires et de système de l’appartenance ASP.NET pour authentifier et autoriser les utilisateurs. Un de ses pages est accessible uniquement aux administrateurs. Pour afficher cette page, exécutez l’application et sélectionnez **crédits de la mise à jour** à partir du menu menu volant sous **cours**. L’application affiche le **Log In** page, étant donné que seuls les administrateurs sont autorisés à utiliser le **crédits de la mise à jour** page.
 
 [![Log_in_page](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image16.png)](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12/_static/image15.png)
 

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 title: Activer les tests unitaires automatisés | Microsoft Docs
 author: microsoft
 description: Étape 12 montre comment développer une suite de tests d’unités automatisés qui vérifient les nos fonctionnalités de NerdDinner, et qui nous donnera la confiance nécessaire pour apporter des modifications...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: a19ff2ce-3f7e-4358-9a51-a1403da9c63e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
-ms.openlocfilehash: 2247dc2e6d22cc0d5ddba97dfe6c7d2d1b0e49be
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 74abf391bb4aab3ff0d5079e0a24ba20287e18fb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819405"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830774"
 ---
 <a name="enable-automated-unit-testing"></a>Activer les tests d’unités automatisés
 ====================

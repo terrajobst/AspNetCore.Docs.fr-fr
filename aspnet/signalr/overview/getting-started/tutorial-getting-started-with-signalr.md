@@ -3,17 +3,17 @@ uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
 title: 'Didacticiel : Bien démarrer avec SignalR 2 | Microsoft Docs'
 author: pfletcher
 description: Ce didacticiel montre comment utiliser SignalR pour créer une application de conversation en temps réel. Vous ajouter SignalR à une application de web ASP.NET vide et créerez un pa HTML...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 798838af099cceb12652b7c6c66633a03a73e538
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 647dab496acd63dc774236ed448bd6b37b19c707
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841840"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834856"
 ---
 <a name="tutorial-getting-started-with-signalr-2"></a>Didacticiel : Bien démarrer avec SignalR 2
 ====================

@@ -3,17 +3,17 @@ uid: web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 title: Conventions d’itinéraire dans ASP.NET Web API 2 Odata | Microsoft Docs
 author: MikeWasson
 description: Cet article décrit les conventions de routage qui utilise des API Web pour les points de terminaison OData.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/31/2013
 ms.assetid: adbc175a-14eb-4ab2-a441-d056ffa8266f
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-routing-conventions
 msc.type: authoredcontent
-ms.openlocfilehash: 645e820d3b03d1e3d2ac088973f6296efa5c2f40
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0199ccde100c8c3ab70db912b8ab984e0617f9dd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818263"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825522"
 ---
 <a name="routing-conventions-in-aspnet-web-api-2-odata"></a>Conventions d’itinéraire dans ASP.NET Web API 2 Odata
 ====================

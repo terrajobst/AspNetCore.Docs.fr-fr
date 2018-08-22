@@ -3,17 +3,17 @@ uid: web-api/overview/error-handling/exception-handling
 title: Gestion des exceptions dans l’API Web ASP.NET | Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/12/2012
 ms.assetid: cbebeb37-2594-41f2-b71a-f4f26520d512
 msc.legacyurl: /web-api/overview/error-handling/exception-handling
 msc.type: authoredcontent
-ms.openlocfilehash: 2db00c1ab241e0dad051c2a3bcd3b0e4bbf4d5c4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 62e6187cd82252e7d30f21e03cc4d08418fa39ee
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807659"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825118"
 ---
 <a name="exception-handling-in-aspnet-web-api"></a>Gestion des exceptions dans l’API Web ASP.NET
 ====================

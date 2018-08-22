@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-determine-whether-an-asynchronous-pos
 title: '[Comment faire] Déterminer que si une publication d’asynchrone s’est produite ? | Microsoft Docs'
 author: JoeStagner
 description: La méthode Page_Load d’un formulaire Web ASP.NET s’exécutera pendant une publication (postback) pleine page standard ou une publication de page partielle asychnronous. Dans cette vidéo...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/25/2007
 ms.assetid: aabc168b-582a-4668-90b1-3d700285aa1a
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-determine-whether-an-asynchronous-postback-has-occurred
 msc.type: video
-ms.openlocfilehash: f2d6e00521937b1bf31b9e5111260ab588c23e5e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 60f2145c1d77dd0cc51dae77873017303d3d4a5a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37830054"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835634"
 ---
 <a name="how-do-i-determine-whether-an-asynchronous-postback-has-occurred"></a>[Comment faire] Déterminer que si une publication d’asynchrone s’est produite ?
 ====================

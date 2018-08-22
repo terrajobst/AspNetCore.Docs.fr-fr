@@ -3,17 +3,17 @@ uid: web-pages/overview/testing-and-debugging/introduction-to-debugging
 title: Introduction au débogage ASP.NET Web Pages (Razor) Sites | Microsoft Docs
 author: tfitzmac
 description: Le débogage est le processus de recherche et correction des erreurs dans vos pages de code. Ce chapitre vous explique certains outils et techniques que vous pouvez utiliser pour déboguer et analyser...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: 68de4326-7611-4b9b-b5f6-79b7adc3069f
 msc.legacyurl: /web-pages/overview/testing-and-debugging/introduction-to-debugging
 msc.type: authoredcontent
-ms.openlocfilehash: b8a492b065902fa10d3e4c5cccd50e63ea356709
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: da04158c58054a8c0b8e31d3a55bea2dcbae7a05
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823801"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830526"
 ---
 <a name="introduction-to-debugging-aspnet-web-pages-razor-sites"></a>Introduction au débogage ASP.NET Web Pages (Razor) Sites
 ====================

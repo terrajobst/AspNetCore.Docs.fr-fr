@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-enforce-coding-standards-with-code-analys
 title: '[Comment faire] Appliquer des normes de codage avec l’analyse du Code ? | Microsoft Docs'
 author: rick-anderson
 description: Avec Visual Studio Team System, vous avez un contrôle précis sur les règles d’analyse de code qui s’appliquent aux projets bibliothèque de classes, les projets de site web et les co de code source...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/09/2007
 ms.assetid: ab2eedbc-79b5-4b63-a1df-935940c1545b
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-enforce-coding-standards-with-code-analysis
 msc.type: video
-ms.openlocfilehash: 6a3260c4427cb3f895da29a1b280c71333e87faa
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 609f91090520cc36f312a68d63ba6d7356bb008d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832266"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830723"
 ---
 <a name="how-do-i-enforce-coding-standards-with-code-analysis"></a>[Comment faire] Appliquer des normes de codage avec l’analyse du Code ?
 ====================

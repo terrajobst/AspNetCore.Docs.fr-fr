@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-
 title: Création de procédures stockées pour les TableAdapters de DataSet typé (c#) | Microsoft Docs
 author: rick-anderson
 description: Dans les didacticiels précédents, nous avons créé des instructions SQL dans notre code et passé les instructions à la base de données doit être exécuté. Une autre approche consiste à utiliser s...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/18/2007
 ms.assetid: 751282ca-5870-4d66-84e4-6cefae23eb4a
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 420c4f33a6df2d7d99daeaac7682ede12adfb122
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0932749d6cf1665eedd5f452ab5dd63ed8678962
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824768"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835045"
 ---
 <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-c"></a>Création de procédures stockées pour les TableAdapters de DataSet typé (c#)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-cascading-style-sheets-in-visu
 title: '[Comment faire] Les feuilles de Style en cascade dans Visual Studio 2008 | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo, nous allons examiner les outils améliorés pour la création de feuilles de Style en cascade externes. CSS sont vitales à n’importe quel site de web bien conçue et le 2 de Visual Studio...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/14/2008
 ms.assetid: fa9c74b0-c692-4553-805c-b89f8bf2c4da
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-cascading-style-sheets-in-visual-studio-2008
 msc.type: video
-ms.openlocfilehash: 7ff360f32265235d679dad973fb065f8fbc20545
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6d3566fa7267b389d0b2ac0ecd31ff368e659e5a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813469"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835867"
 ---
 <a name="how-do-i-cascading-style-sheets-in-visual-studio-2008"></a>[Comment faire] Feuilles de Style en cascade dans Visual Studio 2008
 ====================

@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-sca
 title: Génération de modèles automatique ASP.NET MVC 4 Entity Framework et les Migrations | Microsoft Docs
 author: rick-anderson
 description: Si vous êtes familiarisé avec les méthodes de contrôleur ASP.NET MVC 4, ou s’est terminé le &quot;Helpers, formulaires et la Validation&quot; atelier pratique, vous devez être conscient...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: 093c1362-f10b-407c-a708-be370f4b62b0
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 31f593f294c4865f621a8556cb43d0d9c42f2660
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 10a61b70ef52aa9f5bb9004df3dba9e323d021db
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814116"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830731"
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Migrations et la génération de modèles automatique ASP.NET MVC 4 Entity Framework
 
@@ -187,7 +187,7 @@ Dans cette tâche, vous mettrez à jour la base de données à l’aide des Migr
 
     ![Dossier migrations](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image12.png "dossier Migrations")
 
-    *Cette suite de ce didacticiel vous montrera comment le faire dans SSMS, mais si vous ne souhaitez pas installer et utiliser SSMS vous pouvez obtenir les scripts à partir de la version complète du projet et passer à la section où les stocker dans le dossier de solution.*
+    *Dossier migrations*
 3. Ouvrez le **Configuration.cs** fichier dans le dossier Migrations. Recherchez le constructeur de classe et modifiez le **AutomaticMigrationsEnabled** valeur *true*.
 
     [!code-csharp[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample3.cs)]

@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-ajax/how-do-i-associate-ajax-client-behavior-with-a
 title: '[Comment faire] Associer un comportement Client AJAX à un contrôle serveur ASP.NET ? | Microsoft Docs'
 author: rick-anderson
 description: Découvrez comment créer un comportement client en fonction de Microsoft AJAX qui peuvent être associés à un contrôle de serveur ASP.NET sur une page .aspx. Le comportement du client e...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/18/2007
 ms.assetid: 3a75ac02-225d-4e30-8669-0156c3ef06c7
 msc.legacyurl: /web-forms/videos/aspnet-ajax/how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control
 msc.type: video
-ms.openlocfilehash: 00d45c3dcf9092dbb51b7e162c2b9fb190090c5d
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 35ffec97c7652622ae69c443f741114758ef95b4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816000"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830931"
 ---
 <a name="how-do-i-associate-ajax-client-behavior-with-an-aspnet-server-control"></a>[Comment faire] Associer un comportement Client AJAX à un contrôle serveur ASP.NET ?
 ====================

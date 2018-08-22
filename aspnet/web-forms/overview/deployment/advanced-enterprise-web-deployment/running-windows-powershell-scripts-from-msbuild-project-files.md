@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/running-wi
 title: En cours d’exécution des Scripts Windows PowerShell à partir de fichiers de projet MSBuild | Microsoft Docs
 author: jrjlee
 description: Cette rubrique décrit comment exécuter un script Windows PowerShell en tant que partie d’un processus de génération et de déploiement. Vous pouvez exécuter un script localement (en d’autres termes, sur la b...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 55f1ae45-fcb5-43a9-8415-fa5b935fc9c9
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/running-windows-powershell-scripts-from-msbuild-project-files
 msc.type: authoredcontent
-ms.openlocfilehash: faedcee480b6c50dc560055206fedbe7af4d5f67
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 018a962c3bac774a770b83b2fd1f44f72b6f5b09
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803147"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830715"
 ---
 <a name="running-windows-powershell-scripts-from-msbuild-project-files"></a>En cours d’exécution des Scripts Windows PowerShell à partir de fichiers de projet MSBuild
 ====================

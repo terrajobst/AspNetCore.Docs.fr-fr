@@ -3,17 +3,17 @@ uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-items-to-the-sh
 title: Tailspin Spyworks - Ajout d’éléments au panier d’achat | Microsoft Docs
 author: JoeStagner
 description: Joe Stagner génère l’ajouter à la fonction de panier Tailspin Spyworks notre exemple d’application Web Forms.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/29/2010
 ms.assetid: a408449b-4fc5-4659-8bb6-801404cfbd8f
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-adding-items-to-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: e896a6dce294e271c38cb9003e120cfd8994d788
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 0901cc3c7933ed1b935913c68c2121bb4fa02044
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37801598"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825108"
 ---
 <a name="tailspin-spyworks---adding-items-to-the-shopping-cart"></a>Tailspin Spyworks - Ajout d’éléments au panier d’achat
 ====================

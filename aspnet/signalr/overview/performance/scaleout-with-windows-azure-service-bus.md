@@ -3,17 +3,17 @@ uid: signalr/overview/performance/scaleout-with-windows-azure-service-bus
 title: Montée en puissance parallèle de SignalR avec Azure Service Bus | Microsoft Docs
 author: MikeWasson
 description: Versions des logiciels utilisés dans cette version de Visual Studio 2013, .NET 4.5 SignalR rubrique 2 Previous versions du serveur de cette rubrique pour le SignalR 1.x de cette rubrique...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2014
 ms.assetid: ce1305f9-30fd-49e3-bf38-d0a78dfb06c3
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: 0aaed1d6235688563a446a6834b5188dc9e45aff
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b87eb9f2df82d92c07ea0c86873849a44660e5c2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808847"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830936"
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>Montée en puissance parallèle de SignalR avec Azure Service Bus
 ====================

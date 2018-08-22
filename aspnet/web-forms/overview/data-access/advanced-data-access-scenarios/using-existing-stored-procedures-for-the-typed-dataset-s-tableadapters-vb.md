@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/advanced-data-access-scenarios/using-existin
 title: Utilisation existante des procédures stockées pour les TableAdapters de DataSet typé (VB) | Microsoft Docs
 author: rick-anderson
 description: Dans le didacticiel précédent, nous avons appris à utiliser l’Assistant TableAdapter pour générer de nouvelles procédures stockées. Dans ce didacticiel vous apprendre comment le TableAdapter même...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/18/2007
 ms.assetid: 2da25f6a-757e-4e7b-a812-1575288d8f7a
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 586b46acf1df19cb1bdd56c4242e92d2019c7b8a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8860f0ac9c3026fcf83a3eb7e6baecf2163964d1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37805624"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41830716"
 ---
 <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Utilisation existante des procédures stockées pour les TableAdapters de DataSet typé (VB)
 ====================
