@@ -3,118 +3,118 @@ uid: web-api/overview/getting-started-with-aspnet-web-api/action-results
 title: Résultats de l’action dans Web API 2 | Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/03/2014
 ms.assetid: 2fc4797c-38ef-4cc7-926c-ca431c4739e8
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
-ms.openlocfilehash: 74a837cb9f606d78fb516968343d498d3c37c4ed
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b2b5ae5e5cef19e75a184aa28ac838a31e5ef1fd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808925"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833450"
 ---
-<a name="action-results-in-web-api-2"></a><span data-ttu-id="a5e94-102">Résultats d’action dans Web API 2</span><span class="sxs-lookup"><span data-stu-id="a5e94-102">Action Results in Web API 2</span></span>
+<a name="action-results-in-web-api-2"></a><span data-ttu-id="a47e9-102">Résultats d’action dans Web API 2</span><span class="sxs-lookup"><span data-stu-id="a47e9-102">Action Results in Web API 2</span></span>
 ====================
-<span data-ttu-id="a5e94-103">par [Mike Wasson](https://github.com/MikeWasson)</span><span class="sxs-lookup"><span data-stu-id="a5e94-103">by [Mike Wasson](https://github.com/MikeWasson)</span></span>
+<span data-ttu-id="a47e9-103">par [Mike Wasson](https://github.com/MikeWasson)</span><span class="sxs-lookup"><span data-stu-id="a47e9-103">by [Mike Wasson](https://github.com/MikeWasson)</span></span>
 
-<span data-ttu-id="a5e94-104">Cette rubrique décrit comment les API Web ASP.NET convertit la valeur de retour à partir d’une action de contrôleur dans un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a5e94-104">This topic describes how ASP.NET Web API converts the return value from a controller action into an HTTP response message.</span></span>
+<span data-ttu-id="a47e9-104">Cette rubrique décrit comment les API Web ASP.NET convertit la valeur de retour à partir d’une action de contrôleur dans un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a47e9-104">This topic describes how ASP.NET Web API converts the return value from a controller action into an HTTP response message.</span></span>
 
-<span data-ttu-id="a5e94-105">Une action de contrôleur d’API Web peut renvoyer la valeur d’une des opérations suivantes :</span><span class="sxs-lookup"><span data-stu-id="a5e94-105">A Web API controller action can return any of the following:</span></span>
+<span data-ttu-id="a47e9-105">Une action de contrôleur d’API Web peut renvoyer la valeur d’une des opérations suivantes :</span><span class="sxs-lookup"><span data-stu-id="a47e9-105">A Web API controller action can return any of the following:</span></span>
 
-1. <span data-ttu-id="a5e94-106">void</span><span class="sxs-lookup"><span data-stu-id="a5e94-106">void</span></span>
-2. <span data-ttu-id="a5e94-107">**HttpResponseMessage**</span><span class="sxs-lookup"><span data-stu-id="a5e94-107">**HttpResponseMessage**</span></span>
-3. <span data-ttu-id="a5e94-108">**IHttpActionResult**</span><span class="sxs-lookup"><span data-stu-id="a5e94-108">**IHttpActionResult**</span></span>
-4. <span data-ttu-id="a5e94-109">Un autre type</span><span class="sxs-lookup"><span data-stu-id="a5e94-109">Some other type</span></span>
+1. <span data-ttu-id="a47e9-106">void</span><span class="sxs-lookup"><span data-stu-id="a47e9-106">void</span></span>
+2. <span data-ttu-id="a47e9-107">**HttpResponseMessage**</span><span class="sxs-lookup"><span data-stu-id="a47e9-107">**HttpResponseMessage**</span></span>
+3. <span data-ttu-id="a47e9-108">**IHttpActionResult**</span><span class="sxs-lookup"><span data-stu-id="a47e9-108">**IHttpActionResult**</span></span>
+4. <span data-ttu-id="a47e9-109">Un autre type</span><span class="sxs-lookup"><span data-stu-id="a47e9-109">Some other type</span></span>
 
-<span data-ttu-id="a5e94-110">En fonction de ces est retourné, API Web utilise un mécanisme différent pour créer la réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a5e94-110">Depending on which of these is returned, Web API uses a different mechanism to create the HTTP response.</span></span>
+<span data-ttu-id="a47e9-110">En fonction de ces est retourné, API Web utilise un mécanisme différent pour créer la réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a47e9-110">Depending on which of these is returned, Web API uses a different mechanism to create the HTTP response.</span></span>
 
-| <span data-ttu-id="a5e94-111">Type de retour</span><span class="sxs-lookup"><span data-stu-id="a5e94-111">Return type</span></span> | <span data-ttu-id="a5e94-112">Comment les API Web crée la réponse</span><span class="sxs-lookup"><span data-stu-id="a5e94-112">How Web API creates the response</span></span> |
+| <span data-ttu-id="a47e9-111">Type de retour</span><span class="sxs-lookup"><span data-stu-id="a47e9-111">Return type</span></span> | <span data-ttu-id="a47e9-112">Comment les API Web crée la réponse</span><span class="sxs-lookup"><span data-stu-id="a47e9-112">How Web API creates the response</span></span> |
 | --- | --- |
-| <span data-ttu-id="a5e94-113">void</span><span class="sxs-lookup"><span data-stu-id="a5e94-113">void</span></span> | <span data-ttu-id="a5e94-114">Retour 204 vide (aucun contenu)</span><span class="sxs-lookup"><span data-stu-id="a5e94-114">Return empty 204 (No Content)</span></span> |
-| <span data-ttu-id="a5e94-115">**HttpResponseMessage**</span><span class="sxs-lookup"><span data-stu-id="a5e94-115">**HttpResponseMessage**</span></span> | <span data-ttu-id="a5e94-116">Convertir directement en un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a5e94-116">Convert directly to an HTTP response message.</span></span> |
-| <span data-ttu-id="a5e94-117">**IHttpActionResult**</span><span class="sxs-lookup"><span data-stu-id="a5e94-117">**IHttpActionResult**</span></span> | <span data-ttu-id="a5e94-118">Appelez **ExecuteAsync** pour créer un **HttpResponseMessage**, puis convertir un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a5e94-118">Call **ExecuteAsync** to create an **HttpResponseMessage**, then convert to an HTTP response message.</span></span> |
-| <span data-ttu-id="a5e94-119">Autre type</span><span class="sxs-lookup"><span data-stu-id="a5e94-119">Other type</span></span> | <span data-ttu-id="a5e94-120">Écrire la valeur de retour sérialisée dans le corps de réponse ; retourner 200 (OK).</span><span class="sxs-lookup"><span data-stu-id="a5e94-120">Write the serialized return value into the response body; return 200 (OK).</span></span> |
+| <span data-ttu-id="a47e9-113">void</span><span class="sxs-lookup"><span data-stu-id="a47e9-113">void</span></span> | <span data-ttu-id="a47e9-114">Retour 204 vide (aucun contenu)</span><span class="sxs-lookup"><span data-stu-id="a47e9-114">Return empty 204 (No Content)</span></span> |
+| <span data-ttu-id="a47e9-115">**HttpResponseMessage**</span><span class="sxs-lookup"><span data-stu-id="a47e9-115">**HttpResponseMessage**</span></span> | <span data-ttu-id="a47e9-116">Convertir directement en un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a47e9-116">Convert directly to an HTTP response message.</span></span> |
+| <span data-ttu-id="a47e9-117">**IHttpActionResult**</span><span class="sxs-lookup"><span data-stu-id="a47e9-117">**IHttpActionResult**</span></span> | <span data-ttu-id="a47e9-118">Appelez **ExecuteAsync** pour créer un **HttpResponseMessage**, puis convertir un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a47e9-118">Call **ExecuteAsync** to create an **HttpResponseMessage**, then convert to an HTTP response message.</span></span> |
+| <span data-ttu-id="a47e9-119">Autre type</span><span class="sxs-lookup"><span data-stu-id="a47e9-119">Other type</span></span> | <span data-ttu-id="a47e9-120">Écrire la valeur de retour sérialisée dans le corps de réponse ; retourner 200 (OK).</span><span class="sxs-lookup"><span data-stu-id="a47e9-120">Write the serialized return value into the response body; return 200 (OK).</span></span> |
 
-<span data-ttu-id="a5e94-121">Le reste de cette rubrique décrit chaque option plus en détail.</span><span class="sxs-lookup"><span data-stu-id="a5e94-121">The rest of this topic describes each option in more detail.</span></span>
+<span data-ttu-id="a47e9-121">Le reste de cette rubrique décrit chaque option plus en détail.</span><span class="sxs-lookup"><span data-stu-id="a47e9-121">The rest of this topic describes each option in more detail.</span></span>
 
-## <a name="void"></a><span data-ttu-id="a5e94-122">void</span><span class="sxs-lookup"><span data-stu-id="a5e94-122">void</span></span>
+## <a name="void"></a><span data-ttu-id="a47e9-122">void</span><span class="sxs-lookup"><span data-stu-id="a47e9-122">void</span></span>
 
-<span data-ttu-id="a5e94-123">Si le type de retour est `void`, API Web renvoie simplement une réponse HTTP vide avec le code d’état 204 (aucun contenu).</span><span class="sxs-lookup"><span data-stu-id="a5e94-123">If the return type is `void`, Web API simply returns an empty HTTP response with status code 204 (No Content).</span></span>
+<span data-ttu-id="a47e9-123">Si le type de retour est `void`, API Web renvoie simplement une réponse HTTP vide avec le code d’état 204 (aucun contenu).</span><span class="sxs-lookup"><span data-stu-id="a47e9-123">If the return type is `void`, Web API simply returns an empty HTTP response with status code 204 (No Content).</span></span>
 
-<span data-ttu-id="a5e94-124">Exemple de contrôleur :</span><span class="sxs-lookup"><span data-stu-id="a5e94-124">Example controller:</span></span>
+<span data-ttu-id="a47e9-124">Exemple de contrôleur :</span><span class="sxs-lookup"><span data-stu-id="a47e9-124">Example controller:</span></span>
 
 [!code-csharp[Main](action-results/samples/sample1.cs)]
 
-<span data-ttu-id="a5e94-125">Réponse HTTP :</span><span class="sxs-lookup"><span data-stu-id="a5e94-125">HTTP response:</span></span>
+<span data-ttu-id="a47e9-125">Réponse HTTP :</span><span class="sxs-lookup"><span data-stu-id="a47e9-125">HTTP response:</span></span>
 
 [!code-console[Main](action-results/samples/sample2.cmd)]
 
-## <a name="httpresponsemessage"></a><span data-ttu-id="a5e94-126">HttpResponseMessage</span><span class="sxs-lookup"><span data-stu-id="a5e94-126">HttpResponseMessage</span></span>
+## <a name="httpresponsemessage"></a><span data-ttu-id="a47e9-126">HttpResponseMessage</span><span class="sxs-lookup"><span data-stu-id="a47e9-126">HttpResponseMessage</span></span>
 
-<span data-ttu-id="a5e94-127">Si l’action retourne un [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), API Web convertit la valeur de retour directement dans un message de réponse HTTP, en utilisant les propriétés de la **HttpResponseMessage** objet à remplir le réponse.</span><span class="sxs-lookup"><span data-stu-id="a5e94-127">If the action returns an [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), Web API converts the return value directly into an HTTP response message, using the properties of the **HttpResponseMessage** object to populate the response.</span></span>
+<span data-ttu-id="a47e9-127">Si l’action retourne un [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), API Web convertit la valeur de retour directement dans un message de réponse HTTP, en utilisant les propriétés de la **HttpResponseMessage** objet à remplir le réponse.</span><span class="sxs-lookup"><span data-stu-id="a47e9-127">If the action returns an [HttpResponseMessage](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.aspx), Web API converts the return value directly into an HTTP response message, using the properties of the **HttpResponseMessage** object to populate the response.</span></span>
 
-<span data-ttu-id="a5e94-128">Cette option vous donne un contrôle important sur le message de réponse.</span><span class="sxs-lookup"><span data-stu-id="a5e94-128">This option gives you a lot of control over the response message.</span></span> <span data-ttu-id="a5e94-129">Par exemple, l’action du contrôleur suivant définit l’en-tête Cache-Control.</span><span class="sxs-lookup"><span data-stu-id="a5e94-129">For example, the following controller action sets the Cache-Control header.</span></span>
+<span data-ttu-id="a47e9-128">Cette option vous donne un contrôle important sur le message de réponse.</span><span class="sxs-lookup"><span data-stu-id="a47e9-128">This option gives you a lot of control over the response message.</span></span> <span data-ttu-id="a47e9-129">Par exemple, l’action du contrôleur suivant définit l’en-tête Cache-Control.</span><span class="sxs-lookup"><span data-stu-id="a47e9-129">For example, the following controller action sets the Cache-Control header.</span></span>
 
 [!code-csharp[Main](action-results/samples/sample3.cs)]
 
-<span data-ttu-id="a5e94-130">Réponse :</span><span class="sxs-lookup"><span data-stu-id="a5e94-130">Response:</span></span>
+<span data-ttu-id="a47e9-130">Réponse :</span><span class="sxs-lookup"><span data-stu-id="a47e9-130">Response:</span></span>
 
 [!code-console[Main](action-results/samples/sample4.cmd?highlight=2)]
 
-<span data-ttu-id="a5e94-131">Si vous passez d’un modèle de domaine pour le **CreateResponse** (méthode), API Web utilise un [formateur média](../formats-and-model-binding/media-formatters.md) pour écrire le modèle sérialisé dans le corps de réponse.</span><span class="sxs-lookup"><span data-stu-id="a5e94-131">If you pass a domain model to the **CreateResponse** method, Web API uses a [media formatter](../formats-and-model-binding/media-formatters.md) to write the serialized model into the response body.</span></span>
+<span data-ttu-id="a47e9-131">Si vous passez d’un modèle de domaine pour le **CreateResponse** (méthode), API Web utilise un [formateur média](../formats-and-model-binding/media-formatters.md) pour écrire le modèle sérialisé dans le corps de réponse.</span><span class="sxs-lookup"><span data-stu-id="a47e9-131">If you pass a domain model to the **CreateResponse** method, Web API uses a [media formatter](../formats-and-model-binding/media-formatters.md) to write the serialized model into the response body.</span></span>
 
 [!code-csharp[Main](action-results/samples/sample5.cs)]
 
-<span data-ttu-id="a5e94-132">API Web utilise l’en-tête Accept dans la demande de choisir le formateur.</span><span class="sxs-lookup"><span data-stu-id="a5e94-132">Web API uses the Accept header in the request to choose the formatter.</span></span> <span data-ttu-id="a5e94-133">Pour plus d’informations, consultez [négociation de contenu](../formats-and-model-binding/content-negotiation.md).</span><span class="sxs-lookup"><span data-stu-id="a5e94-133">For more information, see [Content Negotiation](../formats-and-model-binding/content-negotiation.md).</span></span>
+<span data-ttu-id="a47e9-132">API Web utilise l’en-tête Accept dans la demande de choisir le formateur.</span><span class="sxs-lookup"><span data-stu-id="a47e9-132">Web API uses the Accept header in the request to choose the formatter.</span></span> <span data-ttu-id="a47e9-133">Pour plus d’informations, consultez [négociation de contenu](../formats-and-model-binding/content-negotiation.md).</span><span class="sxs-lookup"><span data-stu-id="a47e9-133">For more information, see [Content Negotiation](../formats-and-model-binding/content-negotiation.md).</span></span>
 
-## <a name="ihttpactionresult"></a><span data-ttu-id="a5e94-134">IHttpActionResult</span><span class="sxs-lookup"><span data-stu-id="a5e94-134">IHttpActionResult</span></span>
+## <a name="ihttpactionresult"></a><span data-ttu-id="a47e9-134">IHttpActionResult</span><span class="sxs-lookup"><span data-stu-id="a47e9-134">IHttpActionResult</span></span>
 
-<span data-ttu-id="a5e94-135">Le **IHttpActionResult** interface a été introduite dans Web API 2.</span><span class="sxs-lookup"><span data-stu-id="a5e94-135">The **IHttpActionResult** interface was introduced in Web API 2.</span></span> <span data-ttu-id="a5e94-136">En fait, il définit un **HttpResponseMessage** factory.</span><span class="sxs-lookup"><span data-stu-id="a5e94-136">Essentially, it defines an **HttpResponseMessage** factory.</span></span> <span data-ttu-id="a5e94-137">Voici quelques avantages de la **IHttpActionResult** interface :</span><span class="sxs-lookup"><span data-stu-id="a5e94-137">Here are some advantages of using the **IHttpActionResult** interface:</span></span>
+<span data-ttu-id="a47e9-135">Le **IHttpActionResult** interface a été introduite dans Web API 2.</span><span class="sxs-lookup"><span data-stu-id="a47e9-135">The **IHttpActionResult** interface was introduced in Web API 2.</span></span> <span data-ttu-id="a47e9-136">En fait, il définit un **HttpResponseMessage** factory.</span><span class="sxs-lookup"><span data-stu-id="a47e9-136">Essentially, it defines an **HttpResponseMessage** factory.</span></span> <span data-ttu-id="a47e9-137">Voici quelques avantages de la **IHttpActionResult** interface :</span><span class="sxs-lookup"><span data-stu-id="a47e9-137">Here are some advantages of using the **IHttpActionResult** interface:</span></span>
 
-- <span data-ttu-id="a5e94-138">Simplifie la [tests unitaires](../testing-and-debugging/unit-testing-controllers-in-web-api.md) vos contrôleurs.</span><span class="sxs-lookup"><span data-stu-id="a5e94-138">Simplifies [unit testing](../testing-and-debugging/unit-testing-controllers-in-web-api.md) your controllers.</span></span>
-- <span data-ttu-id="a5e94-139">Déplace une logique commune pour la création de réponses HTTP dans des classes séparées.</span><span class="sxs-lookup"><span data-stu-id="a5e94-139">Moves common logic for creating HTTP responses into separate classes.</span></span>
-- <span data-ttu-id="a5e94-140">Rend l’objectif de l’action de contrôleur plus claire, en masquant les détails de bas niveau de la construction de la réponse.</span><span class="sxs-lookup"><span data-stu-id="a5e94-140">Makes the intent of the controller action clearer, by hiding the low-level details of constructing the response.</span></span>
+- <span data-ttu-id="a47e9-138">Simplifie la [tests unitaires](../testing-and-debugging/unit-testing-controllers-in-web-api.md) vos contrôleurs.</span><span class="sxs-lookup"><span data-stu-id="a47e9-138">Simplifies [unit testing](../testing-and-debugging/unit-testing-controllers-in-web-api.md) your controllers.</span></span>
+- <span data-ttu-id="a47e9-139">Déplace une logique commune pour la création de réponses HTTP dans des classes séparées.</span><span class="sxs-lookup"><span data-stu-id="a47e9-139">Moves common logic for creating HTTP responses into separate classes.</span></span>
+- <span data-ttu-id="a47e9-140">Rend l’objectif de l’action de contrôleur plus claire, en masquant les détails de bas niveau de la construction de la réponse.</span><span class="sxs-lookup"><span data-stu-id="a47e9-140">Makes the intent of the controller action clearer, by hiding the low-level details of constructing the response.</span></span>
 
-<span data-ttu-id="a5e94-141">**IHttpActionResult** contient une méthode unique, **ExecuteAsync**, ce qui crée de façon asynchrone un **HttpResponseMessage** instance.</span><span class="sxs-lookup"><span data-stu-id="a5e94-141">**IHttpActionResult** contains a single method, **ExecuteAsync**, which asynchronously creates an **HttpResponseMessage** instance.</span></span>
+<span data-ttu-id="a47e9-141">**IHttpActionResult** contient une méthode unique, **ExecuteAsync**, ce qui crée de façon asynchrone un **HttpResponseMessage** instance.</span><span class="sxs-lookup"><span data-stu-id="a47e9-141">**IHttpActionResult** contains a single method, **ExecuteAsync**, which asynchronously creates an **HttpResponseMessage** instance.</span></span>
 
 [!code-csharp[Main](action-results/samples/sample6.cs)]
 
-<span data-ttu-id="a5e94-142">Si une action de contrôleur retourne un **IHttpActionResult**, API Web appelle le **ExecuteAsync** méthode pour créer un **HttpResponseMessage**.</span><span class="sxs-lookup"><span data-stu-id="a5e94-142">If a controller action returns an **IHttpActionResult**, Web API calls the **ExecuteAsync** method to create an **HttpResponseMessage**.</span></span> <span data-ttu-id="a5e94-143">Il convertit le **HttpResponseMessage** dans un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a5e94-143">Then it converts the **HttpResponseMessage** into an HTTP response message.</span></span>
+<span data-ttu-id="a47e9-142">Si une action de contrôleur retourne un **IHttpActionResult**, API Web appelle le **ExecuteAsync** méthode pour créer un **HttpResponseMessage**.</span><span class="sxs-lookup"><span data-stu-id="a47e9-142">If a controller action returns an **IHttpActionResult**, Web API calls the **ExecuteAsync** method to create an **HttpResponseMessage**.</span></span> <span data-ttu-id="a47e9-143">Il convertit le **HttpResponseMessage** dans un message de réponse HTTP.</span><span class="sxs-lookup"><span data-stu-id="a47e9-143">Then it converts the **HttpResponseMessage** into an HTTP response message.</span></span>
 
-<span data-ttu-id="a5e94-144">Voici une simple implémentation n’a de **IHttpActionResult** qui crée une réponse de texte brut :</span><span class="sxs-lookup"><span data-stu-id="a5e94-144">Here is a simple implementaton of **IHttpActionResult** that creates a plain text response:</span></span>
+<span data-ttu-id="a47e9-144">Voici une simple implémentation n’a de **IHttpActionResult** qui crée une réponse de texte brut :</span><span class="sxs-lookup"><span data-stu-id="a47e9-144">Here is a simple implementaton of **IHttpActionResult** that creates a plain text response:</span></span>
 
 [!code-csharp[Main](action-results/samples/sample7.cs)]
 
-<span data-ttu-id="a5e94-145">Action de contrôleur d’exemple :</span><span class="sxs-lookup"><span data-stu-id="a5e94-145">Example controller action:</span></span>
+<span data-ttu-id="a47e9-145">Action de contrôleur d’exemple :</span><span class="sxs-lookup"><span data-stu-id="a47e9-145">Example controller action:</span></span>
 
 [!code-csharp[Main](action-results/samples/sample8.cs)]
 
-<span data-ttu-id="a5e94-146">Réponse :</span><span class="sxs-lookup"><span data-stu-id="a5e94-146">Response:</span></span>
+<span data-ttu-id="a47e9-146">Réponse :</span><span class="sxs-lookup"><span data-stu-id="a47e9-146">Response:</span></span>
 
 [!code-console[Main](action-results/samples/sample9.cmd)]
 
-<span data-ttu-id="a5e94-147">Plus souvent, vous utiliserez le **IHttpActionResult** implémentations définies dans le **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** espace de noms.</span><span class="sxs-lookup"><span data-stu-id="a5e94-147">More often, you will use the **IHttpActionResult** implementations defined in the **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** namespace.</span></span> <span data-ttu-id="a5e94-148">Le **ApiController** classe définit des méthodes d’assistance qui retournent des résultats de ces action intégrée.</span><span class="sxs-lookup"><span data-stu-id="a5e94-148">The **ApiController** class defines helper methods that return these built-in action results.</span></span>
+<span data-ttu-id="a47e9-147">Plus souvent, vous utiliserez le **IHttpActionResult** implémentations définies dans le **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** espace de noms.</span><span class="sxs-lookup"><span data-stu-id="a47e9-147">More often, you will use the **IHttpActionResult** implementations defined in the **[System.Web.Http.Results](https://msdn.microsoft.com/library/system.web.http.results.aspx)** namespace.</span></span> <span data-ttu-id="a47e9-148">Le **ApiController** classe définit des méthodes d’assistance qui retournent des résultats de ces action intégrée.</span><span class="sxs-lookup"><span data-stu-id="a47e9-148">The **ApiController** class defines helper methods that return these built-in action results.</span></span>
 
-<span data-ttu-id="a5e94-149">Dans l’exemple suivant, si la demande ne correspond pas à un ID de produit existant, le contrôleur appelle [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) pour créer une réponse 404 (introuvable).</span><span class="sxs-lookup"><span data-stu-id="a5e94-149">In the following example, if the request does not match an existing product ID, the controller calls [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) to create a 404 (Not Found) response.</span></span> <span data-ttu-id="a5e94-150">Sinon, le contrôleur appelle [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), ce qui crée une réponse HTTP 200 (OK) qui contient le produit.</span><span class="sxs-lookup"><span data-stu-id="a5e94-150">Otherwise, the controller calls [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), which creates a 200 (OK) response that contains the product.</span></span>
+<span data-ttu-id="a47e9-149">Dans l’exemple suivant, si la demande ne correspond pas à un ID de produit existant, le contrôleur appelle [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) pour créer une réponse 404 (introuvable).</span><span class="sxs-lookup"><span data-stu-id="a47e9-149">In the following example, if the request does not match an existing product ID, the controller calls [ApiController.NotFound](https://msdn.microsoft.com/library/system.web.http.apicontroller.notfound.aspx) to create a 404 (Not Found) response.</span></span> <span data-ttu-id="a47e9-150">Sinon, le contrôleur appelle [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), ce qui crée une réponse HTTP 200 (OK) qui contient le produit.</span><span class="sxs-lookup"><span data-stu-id="a47e9-150">Otherwise, the controller calls [ApiController.OK](https://msdn.microsoft.com/library/dn314591.aspx), which creates a 200 (OK) response that contains the product.</span></span>
 
 [!code-csharp[Main](action-results/samples/sample10.cs)]
 
-## <a name="other-return-types"></a><span data-ttu-id="a5e94-151">Autres Types de retour</span><span class="sxs-lookup"><span data-stu-id="a5e94-151">Other Return Types</span></span>
+## <a name="other-return-types"></a><span data-ttu-id="a47e9-151">Autres Types de retour</span><span class="sxs-lookup"><span data-stu-id="a47e9-151">Other Return Types</span></span>
 
-<span data-ttu-id="a5e94-152">Pour tous les autres types de retour, les API Web utilise un [formateur média](../formats-and-model-binding/media-formatters.md) pour sérialiser la valeur de retour.</span><span class="sxs-lookup"><span data-stu-id="a5e94-152">For all other return types, Web API uses a [media formatter](../formats-and-model-binding/media-formatters.md) to serialize the return value.</span></span> <span data-ttu-id="a5e94-153">API Web écrit la valeur sérialisée dans le corps de réponse.</span><span class="sxs-lookup"><span data-stu-id="a5e94-153">Web API writes the serialized value into the response body.</span></span> <span data-ttu-id="a5e94-154">Le code d’état de réponse est 200 (OK).</span><span class="sxs-lookup"><span data-stu-id="a5e94-154">The response status code is 200 (OK).</span></span>
+<span data-ttu-id="a47e9-152">Pour tous les autres types de retour, les API Web utilise un [formateur média](../formats-and-model-binding/media-formatters.md) pour sérialiser la valeur de retour.</span><span class="sxs-lookup"><span data-stu-id="a47e9-152">For all other return types, Web API uses a [media formatter](../formats-and-model-binding/media-formatters.md) to serialize the return value.</span></span> <span data-ttu-id="a47e9-153">API Web écrit la valeur sérialisée dans le corps de réponse.</span><span class="sxs-lookup"><span data-stu-id="a47e9-153">Web API writes the serialized value into the response body.</span></span> <span data-ttu-id="a47e9-154">Le code d’état de réponse est 200 (OK).</span><span class="sxs-lookup"><span data-stu-id="a47e9-154">The response status code is 200 (OK).</span></span>
 
 [!code-csharp[Main](action-results/samples/sample11.cs)]
 
-<span data-ttu-id="a5e94-155">L’inconvénient de cette approche est que vous ne pouvez pas retourner directement un code d’erreur, tels que 404.</span><span class="sxs-lookup"><span data-stu-id="a5e94-155">A disadvantage of this approach is that you cannot directly return an error code, such as 404.</span></span> <span data-ttu-id="a5e94-156">Toutefois, vous pouvez lever une **HttpResponseException** pour les codes d’erreur.</span><span class="sxs-lookup"><span data-stu-id="a5e94-156">However, you can throw an **HttpResponseException** for error codes.</span></span> <span data-ttu-id="a5e94-157">Pour plus d’informations, consultez [exceptions dans l’API Web ASP.NET](../error-handling/exception-handling.md).</span><span class="sxs-lookup"><span data-stu-id="a5e94-157">For more information, see [Exception Handling in ASP.NET Web API](../error-handling/exception-handling.md).</span></span>
+<span data-ttu-id="a47e9-155">L’inconvénient de cette approche est que vous ne pouvez pas retourner directement un code d’erreur, tels que 404.</span><span class="sxs-lookup"><span data-stu-id="a47e9-155">A disadvantage of this approach is that you cannot directly return an error code, such as 404.</span></span> <span data-ttu-id="a47e9-156">Toutefois, vous pouvez lever une **HttpResponseException** pour les codes d’erreur.</span><span class="sxs-lookup"><span data-stu-id="a47e9-156">However, you can throw an **HttpResponseException** for error codes.</span></span> <span data-ttu-id="a47e9-157">Pour plus d’informations, consultez [exceptions dans l’API Web ASP.NET](../error-handling/exception-handling.md).</span><span class="sxs-lookup"><span data-stu-id="a47e9-157">For more information, see [Exception Handling in ASP.NET Web API](../error-handling/exception-handling.md).</span></span>
 
-<span data-ttu-id="a5e94-158">API Web utilise l’en-tête Accept dans la demande de choisir le formateur.</span><span class="sxs-lookup"><span data-stu-id="a5e94-158">Web API uses the Accept header in the request to choose the formatter.</span></span> <span data-ttu-id="a5e94-159">Pour plus d’informations, consultez [négociation de contenu](../formats-and-model-binding/content-negotiation.md).</span><span class="sxs-lookup"><span data-stu-id="a5e94-159">For more information, see [Content Negotiation](../formats-and-model-binding/content-negotiation.md).</span></span>
+<span data-ttu-id="a47e9-158">API Web utilise l’en-tête Accept dans la demande de choisir le formateur.</span><span class="sxs-lookup"><span data-stu-id="a47e9-158">Web API uses the Accept header in the request to choose the formatter.</span></span> <span data-ttu-id="a47e9-159">Pour plus d’informations, consultez [négociation de contenu](../formats-and-model-binding/content-negotiation.md).</span><span class="sxs-lookup"><span data-stu-id="a47e9-159">For more information, see [Content Negotiation](../formats-and-model-binding/content-negotiation.md).</span></span>
 
-<span data-ttu-id="a5e94-160">Exemple de demande</span><span class="sxs-lookup"><span data-stu-id="a5e94-160">Example request</span></span>
+<span data-ttu-id="a47e9-160">Exemple de demande</span><span class="sxs-lookup"><span data-stu-id="a47e9-160">Example request</span></span>
 
 [!code-console[Main](action-results/samples/sample12.cmd)]
 
-<span data-ttu-id="a5e94-161">Exemple de réponse :</span><span class="sxs-lookup"><span data-stu-id="a5e94-161">Example response:</span></span>
+<span data-ttu-id="a47e9-161">Exemple de réponse :</span><span class="sxs-lookup"><span data-stu-id="a47e9-161">Example response:</span></span>
 
 [!code-console[Main](action-results/samples/sample13.cmd)]
