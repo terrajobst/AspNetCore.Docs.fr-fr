@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-va
 title: Applications auxiliaires ASP.NET MVC 4, formulaires et la Validation | Microsoft Docs
 author: rick-anderson
 description: Dans ASP.NET MVC 4 modèles et pratiques de données Access, vous avez été le chargement et affichage des données à partir de la base de données. Dans cet atelier pratique, vous allez ajouter à la...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: 187ee9cd-bc70-479b-bfed-f568b8da96eb
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-helpers-forms-and-validation
 msc.type: authoredcontent
-ms.openlocfilehash: a84e35695fa08ac1bd4834d2803d2be76f863e5b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 8671ae8e9408e6f05135fa27d56480477521c4ba
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815919"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837441"
 ---
 # <a name="aspnet-mvc-4-helpers-forms-and-validation"></a>Applications auxiliaires ASP.NET MVC 4, formulaires et validation
 

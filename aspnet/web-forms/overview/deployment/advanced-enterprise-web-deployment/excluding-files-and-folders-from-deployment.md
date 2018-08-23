@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-
 title: Exclusion de fichiers et dossiers du déploiement | Microsoft Docs
 author: jrjlee
 description: Cette rubrique décrit comment vous pouvez exclure des fichiers et dossiers à partir d’un package de déploiement web lorsque vous générez et empaqueter un projet d’application web.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: f4cc2d40-6a78-429b-b06f-07d000d4caad
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/excluding-files-and-folders-from-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: 33eecfea86842a93eac705e7823f1eba9519670e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: fd7357a94ab09effcec86f3725a37cfb2ef4746a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37816676"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838418"
 ---
 <a name="excluding-files-and-folders-from-deployment"></a>Exclusion de fichiers et dossiers du déploiement
 ====================

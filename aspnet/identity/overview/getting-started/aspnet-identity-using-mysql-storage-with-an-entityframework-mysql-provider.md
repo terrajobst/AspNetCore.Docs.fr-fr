@@ -3,17 +3,17 @@ uid: identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-
 title: 'ASP.NET Identity : Utilisation du stockage MySQL avec un fournisseur MySQL Entity Framework (c#) | Microsoft Docs'
 author: maumar
 description: Ce didacticiel vous montre comment remplacer le mécanisme de stockage de données par défaut pour ASP.NET Identity avec Entity Framework (fournisseur SQL client) avec un être accrus ou MySQL...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/10/2013
 ms.assetid: 15253312-a92c-43ba-908e-b5dacd3d08b8
 msc.legacyurl: /identity/overview/getting-started/aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider
 msc.type: authoredcontent
-ms.openlocfilehash: 13cb1d9a862429bfb4e20a8d9700fc17eb721c6b
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3856b40b31a3deb6ad1c6c5d2cd678e183f012d7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37812673"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838055"
 ---
 <a name="aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider-c"></a>ASP.NET Identity : Utilisation du stockage MySQL avec un fournisseur MySQL Entity Framework (c#)
 ====================
@@ -71,7 +71,7 @@ Pour effectuer les étapes décrites dans cette section du didacticiel, vous dev
   
    [Cliquez sur l’image suivante pour la développer. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image14.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image13.png)
-4. Dans le **nouveau projet ASP.NET** boîte de dialogue, sélectionnez le **MVC** templatewith les options par défaut ; cela va configurer **comptes d’utilisateur individuels** comme méthode d’authentification. Cliquez sur **OK**:  
+4. Dans le **nouveau projet ASP.NET** boîte de dialogue, sélectionnez le **MVC** templatewith les options par défaut ; cela va configurer **comptes d’utilisateur individuels** comme méthode d’authentification. Cliquez sur **OK** :  
   
    [Cliquez sur l’image suivante pour la développer. ]  
     [![](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image16.png)](aspnet-identity-using-mysql-storage-with-an-entityframework-mysql-provider/_static/image15.png)

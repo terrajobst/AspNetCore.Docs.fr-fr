@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 title: Créer un nouveau projet ASP.NET MVC | Microsoft Docs
 author: microsoft
 description: Étape 1 vous montre comment mettre en place de la structure d’application NerdDinner base.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 7e0e9928-8fdc-4b74-9882-55fac0976628
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/create-a-new-aspnet-mvc-project
 msc.type: authoredcontent
-ms.openlocfilehash: 88ef850503725cc57c92a11952729b4bd2205a69
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3f34f17aa35dbfed2d52daf615c8dc81be6e7847
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835080"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837134"
 ---
 <a name="create-a-new-aspnet-mvc-project"></a>Créer un nouveau projet ASP.NET MVC
 ====================

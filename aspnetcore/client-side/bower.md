@@ -1,26 +1,26 @@
 ---
 title: Gérer les dépendances côté client avec Bower dans ASP.NET Core
 author: rick-anderson
-description: Gestion des packages Bower côté client.
+description: La gestion des packages côté client avec Bower.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 02/14/2017
+ms.date: 08/09/2018
 uid: client-side/bower
-ms.openlocfilehash: 23f3dcd06f012f3cf8d9509280b91c4bd1dc84e1
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 8606c21596a5d9d6ada9c60b55b2f54da21c601b
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272515"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902717"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Gérer les dépendances côté client avec Bower dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/), et [Scott Addie](https://scottaddie.com) 
+Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/), et [Scott Addie](https://scottaddie.com)
 
 > [!IMPORTANT]
-> Tandis que Bower est conservé, son chargés de maintenance est recommandé d’utiliser une autre solution. [Le Gestionnaire de bibliothèque](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/) (LibMan en abrégé) est le système de gestion de contenu statique côté client nouvelles de Visual Studio (Visual Studio vous conservez 15,8 ou version ultérieure). Pour plus d’informations, consultez [Gestionnaire de bibliothèque : Gestionnaire de contenu côté Client pour les applications web](https://blogs.msdn.microsoft.com/webdev/2018/04/17/library-manager-client-side-content-manager-for-web-apps/). Bower est pris en charge dans Visual Studio version 15.5.
+> Tandis que Bower est conservé, son chargés de maintenance vous recommandons d’utiliser une autre solution. [Gestionnaire de bibliothèque](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/) (LibMan en abrégé) est outil de Visual Studio nouvelle bibliothèque côté client acquisition (Visual Studio 15,8 ou version ultérieure). Pour plus d'informations, consultez <xref:client-side/libman/index>. Bower est pris en charge dans Visual Studio jusqu'à la version 15.5.
 >
-> L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles. 
+> L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles.
 
 [Bower](https://bower.io/) se définit lui-même comme "Un gestionnaire de paquets pour le web". Dans l’écosystème .NET, il remplit le vide laissé par l’impossibilité d'inclure des fichiers de contenu statique avec NuGet. Pour les projets ASP.NET Core, ces fichiers statiques sont inhérents aux bibliothèques côté client comme[jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/). Pour les bibliothèques .NET, vous utilisez toujours le gestionnaire de package [NuGet](https://www.nuget.org/)
 
@@ -30,7 +30,7 @@ Les packages côté client sont répertoriés dans le fichier *bower.json*. Les 
 
 Dans ce didacticiel, nous allons ajouter la prise en charge de [Font Awesome](http://fontawesome.io). Les packages Bower peuvent être installés avec l'interface graphique **Gérer les packages Bower** ou manuellement dans le fichier *bower.json*.
 
-### <a name="installation-via-manage-bower-packages-ui"></a>Installation via gérer les Packages Bower l’interface utilisateur
+### <a name="installation-via-manage-bower-packages-ui"></a>Installation par le biais de gérer les Packages Bower l’interface utilisateur
 
 * Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)**. Sélectionnez **Application Web** et **Aucune authentification**.
 
@@ -110,7 +110,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 [!code-csharp[](bower/sample/Startup.cs?highlight=9)]
 
-### <a name="reference-packages"></a>Packages de référence
+### <a name="reference-packages"></a>Référence à des packages
 
 Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut accéder aux packages déployés.
 
@@ -122,4 +122,4 @@ Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut 
 
 * Exécutez l’application et accédez à `http://localhost:<port>/Index.html`. Vous pouvez également, à partir du fichier *Index.html* ouvert, appuyer sur `Ctrl+Shift+W`. Vérifiez que le style jumbotron est appliqué, que le code jQuery répond quand le bouton fait l'objet d'un clic et que le bouton Bootstrap change d’état.
 
-  ![style de JumboTron appliqué](bower/_static/jumbotron.png)
+  ![style JumboTron appliqué](bower/_static/jumbotron.png)

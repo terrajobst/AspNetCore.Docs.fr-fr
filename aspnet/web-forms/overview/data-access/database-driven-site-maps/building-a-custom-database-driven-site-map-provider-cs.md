@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/database-driven-site-maps/building-a-custom-
 title: Création d’un fournisseur de plan de Site personnalisé piloté sur la base de données (c#) | Microsoft Docs
 author: rick-anderson
 description: Le fournisseur de plan de site par défaut dans ASP.NET 2.0 récupère ses données à partir d’un fichier XML statique. Tandis que le fournisseur basé sur XML est adapté à de nombreuses petites et moyennes-siz...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: 04b7591d-106f-4f05-87e9-d416cb65a8a6
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-cs
 msc.type: authoredcontent
-ms.openlocfilehash: fdc6ddeac800279a638911f1f64772c49fff5449
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4db59ed13aef81e94feba61299e710bfddd78a76
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807110"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837150"
 ---
 <a name="building-a-custom-database-driven-site-map-provider-c"></a>Création d’un fournisseur de plan de Site personnalisé piloté sur la base de données (c#)
 ====================

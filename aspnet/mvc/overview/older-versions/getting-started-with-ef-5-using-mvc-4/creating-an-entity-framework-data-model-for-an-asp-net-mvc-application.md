@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-
 title: Création d’un modèle de données Entity Framework pour une Application ASP.NET MVC (1 sur 10) | Microsoft Docs
 author: tdykstra
 description: Une version plus récente de cette série de didacticiels est disponible pour Visual Studio 2013, Entity Framework 6 et MVC 5. Le dé Contoso University exemple web application...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/30/2013
 ms.assetid: 4ba029b6-ee7c-4e45-a0e7-b703c37e5d9a
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: ae9a4f0f13b01d8e093030bb1def2f21580a9e48
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 037f67d679762a037eaef9f0a4060156b94d97b1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815157"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836847"
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>Création d’un modèle de données Entity Framework pour une Application ASP.NET MVC (1 sur 10)
 ====================
@@ -208,20 +208,20 @@ Le `connectionStrings` collection possède également une chaîne de connexion n
 
 Lorsque vous commencez à développer une application, votre modèle de données change fréquemment et chaque fois qu’il est désynchronisé avec la base de données les modifications du modèle. Vous pouvez configurer Entity Framework pour supprimer et recréer la base de données chaque fois que vous modifiez le modèle de données automatiquement. Cela n’est pas un problème très tôt dans le développement, car les données de test sont recréées facilement, mais une fois que vous avez déployé en production vous souhaitez généralement mettre à jour le schéma de base de données sans supprimer la base de données. Permet à la fonctionnalité Migrations Code First mettre à jour de la base de données sans devoir supprimer et recréer. Au début du cycle de développement d’un nouveau projet, vous souhaiterez utiliser [DropCreateDatabaseIfModelChanges](https://msdn.microsoft.com/library/gg679604(v=vs.103).aspx) supprimer et recréer la ré-alimentera la base de données chaque fois que le modèle change. Une vous êtes prêt à déployer votre application, vous pouvez convertir l’approche de migrations. Pour ce didacticiel, vous allez uniquement utiliser migrations. Pour plus d’informations, consultez [Migrations Code First](https://msdn.microsoft.com/data/jj591621) et [série de screencasts Migrations](https://blogs.msdn.com/b/adonet/archive/2014/03/12/migrations-screencast-series.aspx).
 
-### <a name="enable-code-first-migrations"></a>Par conséquent, le projet téléchargé a deux bases de données d’appartenance : aspnet-ContosoUniversity.mdf avec les utilisateurs de développement et aspnet-ContosoUniversity-Prod.mdf avec les utilisateurs en production.
+### <a name="enable-code-first-migrations"></a>Activer Code First Migrations
 
 1. À partir de la **outils** menu, cliquez sur **Library Package Manager** , puis **Console du Gestionnaire de Package**.
 
-    ![La base de données d’appartenances stocke un hachage des mots de passe de compte.](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image10.png)
+    ![Selecting_Package_Manager_Console](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image10.png)
 2. À la `PM>` invite Entrez la commande suivante :
 
     [!code-powershell[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample9.ps1)]
 
-    ![Ils génèrent les hachages mêmes lorsque vous utilisez les fournisseurs universels ASP.NET, tant que vous ne modifiez pas l’algorithme par défaut.](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image11.png)
+    ![commande d’Enable-migrations](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image11.png)
 
     Cette commande crée un *Migrations* dossier dans le projet ContosoUniversity et il place dans ce dossier un *Configuration.cs* fichier que vous pouvez modifier pour configurer les Migrations.
 
-    ![Cette suite de ce didacticiel vous montrera comment le faire dans SSMS, mais si vous ne souhaitez pas installer et utiliser SSMS vous pouvez obtenir les scripts à partir de la version complète du projet et passer à la section où les stocker dans le dossier de solution.](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image12.png)
+    ![Dossier migrations](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image12.png)
 
     Le `Configuration` classe inclut un `Seed` méthode est appelée lorsque la base de données est créé et chaque fois qu’il est mis à jour après modification du modèle de données.
 

@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/editing-and-deleting-data-through-the-datali
 title: Une vue d’ensemble de la modification et suppression de données dans le contrôle DataList (VB) | Microsoft Docs
 author: rick-anderson
 description: Tandis que le contrôle DataList ne dispose pas de modification intégrée et la suppression de fonctionnalités, que vous dans ce didacticiel, nous allons voir comment créer un contrôle DataList qui prend en charge la modification et suppression o...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/30/2006
 ms.assetid: 9410a23c-9697-4f07-bd71-e62b0ceac655
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/an-overview-of-editing-and-deleting-data-in-the-datalist-vb
 msc.type: authoredcontent
-ms.openlocfilehash: aa1e07be5b634a0e66f7c6f03f80a1aa2c741189
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b1c7834e67f7682f82ecd0b2b5140260d104aecc
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804496"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838619"
 ---
 <a name="an-overview-of-editing-and-deleting-data-in-the-datalist-vb"></a>Une vue d’ensemble de la modification et suppression de données dans le contrôle DataList (VB)
 ====================

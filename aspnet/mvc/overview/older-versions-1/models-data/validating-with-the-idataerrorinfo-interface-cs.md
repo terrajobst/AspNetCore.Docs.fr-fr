@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinf
 title: Validation avec l’Interface IDataErrorInfo (c#) | Microsoft Docs
 author: StephenWalther
 description: Stephen Walther vous montre comment afficher des messages d’erreur de validation personnalisée en implémentant l’interface IDataErrorInfo dans une classe de modèle.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: 4733b9f1-9999-48fb-8b73-6038fbcc5ecb
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
 msc.type: authoredcontent
-ms.openlocfilehash: d3d3e379e5b2cfdd1385d724c0d9bf2a83ce339a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b80535db32c4567135407aeb99967bb40c279ddb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836025"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838681"
 ---
 <a name="validating-with-the-idataerrorinfo-interface-c"></a>Validation avec l’Interface IDataErrorInfo (c#)
 ====================

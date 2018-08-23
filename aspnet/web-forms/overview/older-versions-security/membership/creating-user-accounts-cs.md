@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/membership/creating-user-account
 title: Création de comptes d’utilisateur (c#) | Microsoft Docs
 author: rick-anderson
 description: Dans ce didacticiel, nous allons Explorer à l’aide de l’infrastructure de l’appartenance (via SqlMembershipProvider) pour créer de nouveaux comptes d’utilisateur. Nous verrons comment créer de nouveaux nous...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/18/2008
 ms.assetid: f175278c-6079-4d91-b9b4-2493ed43d9ec
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-user-accounts-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 7caa6b614bbe6545929a9b201de7f30fe95e6481
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 34d9229e9b49e0022b1e40d10444c2f4aff2161d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37842622"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838070"
 ---
 <a name="creating-user-accounts-c"></a>Création de comptes d’utilisateur (c#)
 ====================

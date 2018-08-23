@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/configuring-server-environments-for-web-deplo
 title: 'Scénario : Configuration d’un environnement de Test pour le déploiement Web | Microsoft Docs'
 author: jrjlee
 description: Cette rubrique décrit un scénario de déploiement web typique pour un développeur ou environnements de test et décrit les tâches que vous devez suivre pour configurer un incident de service...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 44a22ac7-1fc7-4174-b946-c6129fb6a19b
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: ba77c944378245ed82d1cee92b668e31acc51a81
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3c6c8850e77f4a3cbb71db4353487c8a5e9c097d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822368"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838416"
 ---
 <a name="scenario-configuring-a-test-environment-for-web-deployment"></a>Scénario : Configuration d’un environnement de Test pour le déploiement Web
 ====================

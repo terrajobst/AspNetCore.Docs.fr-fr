@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-automate-testing-using-team-build
 title: '[Comment faire] Automatiser les tests avec Team Build ? | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo, nous apprendre à utiliser Visual Studio Team System pour définir les tests automatisés qui seront exécute pendant une build d’équipe, et comment nous pouvons descendre à...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/01/2007
 ms.assetid: 8e8fd5a9-0e98-415a-93f5-9ad7524ae9bb
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-automate-testing-using-team-build
 msc.type: video
-ms.openlocfilehash: 8d1e75ed391a34771d247330a984c5de2e0fbc99
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 95a02d8eaaeaa06b2323eaecc03fda58c2acb397
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829112"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827705"
 ---
 <a name="how-do-i-automate-testing-using-team-build"></a>[Comment faire] Automatiser les tests avec Team Build ?
 ====================

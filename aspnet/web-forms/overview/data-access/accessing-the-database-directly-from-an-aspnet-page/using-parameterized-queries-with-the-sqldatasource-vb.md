@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/accessing-the-database-directly-from-an-aspn
 title: À l’aide de requêtes paramétrables avec SqlDataSource (VB) | Microsoft Docs
 author: rick-anderson
 description: Dans ce didacticiel, nous continuer notre apparence au contrôle SqlDataSource et découvrez comment définir des requêtes paramétrables. Les paramètres peuvent être spécifiés à la fois la Décla...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2007
 ms.assetid: e322f34c-83b7-41ea-ab65-ab1e0bdcc609
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
 msc.type: authoredcontent
-ms.openlocfilehash: fd4964bbdfe7662513025086a6cc3a59a6d63782
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1dffaf59c6519f288dc36519897e51efa22c6a26
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37813813"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837176"
 ---
 <a name="using-parameterized-queries-with-the-sqldatasource-vb"></a>À l’aide de requêtes paramétrables avec SqlDataSource (VB)
 ====================

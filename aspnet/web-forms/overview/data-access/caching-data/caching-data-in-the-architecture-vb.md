@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/caching-data/caching-data-in-the-architectur
 title: La mise en cache des données dans l’Architecture (VB) | Microsoft Docs
 author: rick-anderson
 description: Dans le didacticiel précédent, nous avons appris à appliquer la mise en cache au niveau de la couche de présentation. Dans ce didacticiel, nous apprendre à tirer parti de notre architectu en couche...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/30/2007
 ms.assetid: 5e189dd7-f4f9-4f28-9b3a-6cb7d392e9c7
 msc.legacyurl: /web-forms/overview/data-access/caching-data/caching-data-in-the-architecture-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a8431c2b516a1a41f1d096b1bdb1071cc8a5ab66
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 45a717f9b68a1465d3446b06358a062f6b640c9e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37835371"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837462"
 ---
 <a name="caching-data-in-the-architecture-vb"></a>La mise en cache des données dans l’Architecture (VB)
 ====================

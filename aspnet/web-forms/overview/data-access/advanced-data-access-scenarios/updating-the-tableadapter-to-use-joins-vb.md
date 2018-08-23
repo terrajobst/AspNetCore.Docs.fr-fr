@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-
 title: Mise à jour le TableAdapter à l’utilisation de jointures (VB) | Microsoft Docs
 author: rick-anderson
 description: Lorsque vous travaillez avec une base de données, il est courant pour demander des données qui sont réparties sur plusieurs tables. Pour récupérer des données à partir de deux tables différentes, nous pouvons utiliser soit...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/18/2007
 ms.assetid: e624a3e0-061b-4efc-8b0e-5877f9ff6714
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/updating-the-tableadapter-to-use-joins-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 43e0caf63600858f7f2211f3d2e98aa2c6425820
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d5a7b61d447631f5e65ca8a3dfac9c58c108643f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37832378"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41838949"
 ---
 <a name="updating-the-tableadapter-to-use-joins-vb"></a>Mise à jour le TableAdapter à l’utilisation de jointures (VB)
 ====================

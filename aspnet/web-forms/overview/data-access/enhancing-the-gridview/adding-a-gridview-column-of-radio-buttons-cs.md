@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-col
 title: Ajout d’une colonne GridView de cases d’option (c#) | Microsoft Docs
 author: rick-anderson
 description: Ce didacticiel explique comment ajouter une colonne de cases d’option à un contrôle GridView à permettre aux utilisateurs de la sélection d’une ligne unique de façon plus intuitive...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/06/2007
 ms.assetid: 32377145-ec25-4715-8370-a1c590a331d5
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-radio-buttons-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 83e7a938d9860b8f31cb391e07497def8854310f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e1ac64a3c5023d83259f6e2d6facd8e248768c2d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811832"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41835641"
 ---
 <a name="adding-a-gridview-column-of-radio-buttons-c"></a>Ajout d’une colonne GridView de cases d’option (c#)
 ====================
