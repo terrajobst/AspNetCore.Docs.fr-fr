@@ -4,40 +4,50 @@ author: tdykstra
 description: Différences entre SignalR et ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
-ms.date: 06/30/2018
+ms.date: 08/20/2018
 uid: signalr/version-differences
-ms.openlocfilehash: 6ed7e2e1ecadef08d71c4d7a7c3469738d07bcda
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: b904f57af3700b6e1e2143913dfa08da9bf8bbd2
+ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095006"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41836864"
 ---
-# <a name="differences-between-signalr-and-aspnet-core-signalr"></a><span data-ttu-id="e4ec0-103">Différences entre SignalR et ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="e4ec0-103">Differences between SignalR and ASP.NET Core SignalR</span></span>
+# <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a><span data-ttu-id="65f4b-103">Différences entre ASP.NET SignalR et ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="65f4b-103">Differences between ASP.NET SignalR and ASP.NET Core SignalR</span></span>
 
-<span data-ttu-id="e4ec0-104">ASP.NET Core SignalR n’est pas compatible avec les clients ou serveurs pour ASP.NET SignalR.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-104">ASP.NET Core SignalR is not compatible with clients or servers for ASP.NET SignalR.</span></span> <span data-ttu-id="e4ec0-105">Cet article décrit en détail les fonctionnalités qui ont été supprimées ou modifiées dans ASP.NET Core SignalR.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-105">This article details the features which have been removed or changed in the ASP.NET Core SignalR.</span></span>
+<span data-ttu-id="65f4b-104">ASP.NET Core SignalR n’est pas compatible avec les clients ou serveurs pour ASP.NET SignalR.</span><span class="sxs-lookup"><span data-stu-id="65f4b-104">ASP.NET Core SignalR isn't compatible with clients or servers for ASP.NET SignalR.</span></span> <span data-ttu-id="65f4b-105">Cet article décrit en détail les fonctionnalités qui ont été supprimées ou modifiées dans ASP.NET Core SignalR.</span><span class="sxs-lookup"><span data-stu-id="65f4b-105">This article details features which have been removed or changed in ASP.NET Core SignalR.</span></span>
 
-## <a name="feature-differences"></a><span data-ttu-id="e4ec0-106">Différences de fonctionnalités</span><span class="sxs-lookup"><span data-stu-id="e4ec0-106">Feature differences</span></span>
+## <a name="how-to-identify-the-signalr-version"></a><span data-ttu-id="65f4b-106">Comment identifier la version de SignalR</span><span class="sxs-lookup"><span data-stu-id="65f4b-106">How to identify the SignalR version</span></span>
 
-### <a name="automatic-reconnects"></a><span data-ttu-id="e4ec0-107">Reconnexions automatique</span><span class="sxs-lookup"><span data-stu-id="e4ec0-107">Automatic reconnects</span></span>
+|                      | <span data-ttu-id="65f4b-107">SignalR ASP.NET</span><span class="sxs-lookup"><span data-stu-id="65f4b-107">ASP.NET SignalR</span></span> | <span data-ttu-id="65f4b-108">ASP.NET Core SignalR</span><span class="sxs-lookup"><span data-stu-id="65f4b-108">ASP.NET Core SignalR</span></span> |
+| -------------------- | --------------- | -------------------- |
+| <span data-ttu-id="65f4b-109">Package NuGet de serveur</span><span class="sxs-lookup"><span data-stu-id="65f4b-109">Server NuGet Package</span></span> | [<span data-ttu-id="65f4b-110">Microsoft.AspNet.SignalR</span><span class="sxs-lookup"><span data-stu-id="65f4b-110">Microsoft.AspNet.SignalR</span></span>](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | <span data-ttu-id="65f4b-111">[Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) (.NET Core)</span><span class="sxs-lookup"><span data-stu-id="65f4b-111">[Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) (.NET Core)</span></span><br><span data-ttu-id="65f4b-112">[Microsoft.AspNetCore.SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) (.NET Framework)</span><span class="sxs-lookup"><span data-stu-id="65f4b-112">[Microsoft.AspNetCore.SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) (.NET Framework)</span></span> |
+| <span data-ttu-id="65f4b-113">Packages NuGet clients</span><span class="sxs-lookup"><span data-stu-id="65f4b-113">Client NuGet Packages</span></span> | [<span data-ttu-id="65f4b-114">Microsoft.AspNet.SignalR.Client</span><span class="sxs-lookup"><span data-stu-id="65f4b-114">Microsoft.AspNet.SignalR.Client</span></span>](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[<span data-ttu-id="65f4b-115">Microsoft.AspNet.SignalR.JS</span><span class="sxs-lookup"><span data-stu-id="65f4b-115">Microsoft.AspNet.SignalR.JS</span></span>](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [<span data-ttu-id="65f4b-116">Microsoft.AspNetCore.SignalR.Client</span><span class="sxs-lookup"><span data-stu-id="65f4b-116">Microsoft.AspNetCore.SignalR.Client</span></span>](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
+| <span data-ttu-id="65f4b-117">Client npm Package</span><span class="sxs-lookup"><span data-stu-id="65f4b-117">Client npm Package</span></span> | [<span data-ttu-id="65f4b-118">SignalR</span><span class="sxs-lookup"><span data-stu-id="65f4b-118">signalr</span></span>](https://www.npmjs.com/package/signalr) | [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) |
+| <span data-ttu-id="65f4b-119">Type d’application serveur</span><span class="sxs-lookup"><span data-stu-id="65f4b-119">Server App Type</span></span> | <span data-ttu-id="65f4b-120">ASP.NET (System.Web) ou l’auto-hébergement OWIN</span><span class="sxs-lookup"><span data-stu-id="65f4b-120">ASP.NET (System.Web) or OWIN Self-Host</span></span> | <span data-ttu-id="65f4b-121">ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="65f4b-121">ASP.NET Core</span></span> |
+| <span data-ttu-id="65f4b-122">Plateformes de serveur pris en charge</span><span class="sxs-lookup"><span data-stu-id="65f4b-122">Supported Server Platforms</span></span> | <span data-ttu-id="65f4b-123">.NET framework 4.5 ou version ultérieure</span><span class="sxs-lookup"><span data-stu-id="65f4b-123">.NET Framework 4.5 or later</span></span> | <span data-ttu-id="65f4b-124">.NET Framework 4.6.1 ou ultérieur</span><span class="sxs-lookup"><span data-stu-id="65f4b-124">.NET Framework 4.6.1 or later</span></span><br><span data-ttu-id="65f4b-125">.NET core 2.1 ou version ultérieure</span><span class="sxs-lookup"><span data-stu-id="65f4b-125">.NET Core 2.1 or later</span></span> |
 
-<span data-ttu-id="e4ec0-108">Reconnexions automatique ne sont plus prises en charge.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-108">Automatic reconnects are no longer supported.</span></span> <span data-ttu-id="e4ec0-109">Auparavant, SignalR a tenté de se reconnecter au serveur si la connexion a été supprimée.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-109">Previously, SignalR tried to reconnect to the server if the connection was dropped.</span></span> <span data-ttu-id="e4ec0-110">Maintenant, si le client est déconnecté l’utilisateur doit démarrer explicitement une nouvelle connexion s’ils souhaitent se reconnecter.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-110">Now, if the client is disconnected the user must explicitly start a new connection if they want to reconnect.</span></span>
+## <a name="feature-differences"></a><span data-ttu-id="65f4b-126">Différences de fonctionnalités</span><span class="sxs-lookup"><span data-stu-id="65f4b-126">Feature differences</span></span>
 
-### <a name="protocol-support"></a><span data-ttu-id="e4ec0-111">Prise en charge du protocole</span><span class="sxs-lookup"><span data-stu-id="e4ec0-111">Protocol support</span></span>
+### <a name="automatic-reconnects"></a><span data-ttu-id="65f4b-127">Reconnexions automatique</span><span class="sxs-lookup"><span data-stu-id="65f4b-127">Automatic reconnects</span></span>
 
-<span data-ttu-id="e4ec0-112">ASP.NET Core SignalR prend en charge JSON, mais aussi un nouveau protocole binaire selon [MessagePack](xref:signalr/messagepackhubprotocol).</span><span class="sxs-lookup"><span data-stu-id="e4ec0-112">ASP.NET Core SignalR supports JSON, as well as a new binary protocol based on [MessagePack](xref:signalr/messagepackhubprotocol).</span></span> <span data-ttu-id="e4ec0-113">En outre, les protocoles personnalisés peuvent être créés.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-113">Additionally, custom protocols can be created.</span></span>
+<span data-ttu-id="65f4b-128">Reconnexions automatique ne sont plus prises en charge.</span><span class="sxs-lookup"><span data-stu-id="65f4b-128">Automatic reconnects are no longer supported.</span></span> <span data-ttu-id="65f4b-129">Auparavant, SignalR a tenté de se reconnecter au serveur si la connexion a été supprimée.</span><span class="sxs-lookup"><span data-stu-id="65f4b-129">Previously, SignalR tried to reconnect to the server if the connection was dropped.</span></span> <span data-ttu-id="65f4b-130">Maintenant, si le client est déconnecté l’utilisateur doit démarrer explicitement une nouvelle connexion s’ils souhaitent se reconnecter.</span><span class="sxs-lookup"><span data-stu-id="65f4b-130">Now, if the client is disconnected the user must explicitly start a new connection if they want to reconnect.</span></span>
 
-## <a name="differences-on-the-server"></a><span data-ttu-id="e4ec0-114">Différences sur le serveur</span><span class="sxs-lookup"><span data-stu-id="e4ec0-114">Differences on the server</span></span>
+### <a name="protocol-support"></a><span data-ttu-id="65f4b-131">Prise en charge du protocole</span><span class="sxs-lookup"><span data-stu-id="65f4b-131">Protocol support</span></span>
 
-<span data-ttu-id="e4ec0-115">Les bibliothèques de côté serveur SignalR sont incluses dans le `Microsoft.AspNetCore.App` package qui fait partie de la **Application Web ASP.NET Core** modèle pour les projets Razor et MVC.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-115">The SignalR server-side libraries are included in the `Microsoft.AspNetCore.App` package that is part of the **ASP.NET Core Web Application** template for both Razor and MVC projects.</span></span>
+<span data-ttu-id="65f4b-132">ASP.NET Core SignalR prend en charge JSON, mais aussi un nouveau protocole binaire selon [MessagePack](xref:signalr/messagepackhubprotocol).</span><span class="sxs-lookup"><span data-stu-id="65f4b-132">ASP.NET Core SignalR supports JSON, as well as a new binary protocol based on [MessagePack](xref:signalr/messagepackhubprotocol).</span></span> <span data-ttu-id="65f4b-133">En outre, les protocoles personnalisés peuvent être créés.</span><span class="sxs-lookup"><span data-stu-id="65f4b-133">Additionally, custom protocols can be created.</span></span>
 
-<span data-ttu-id="e4ec0-116">SignalR est un intergiciel (middleware) ASP.NET Core, donc il doit être configuré en appelant `AddSignalR` dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-116">SignalR is an ASP.NET Core middleware, so it must be configured by calling `AddSignalR` in `Startup.ConfigureServices`.</span></span>
+## <a name="differences-on-the-server"></a><span data-ttu-id="65f4b-134">Différences sur le serveur</span><span class="sxs-lookup"><span data-stu-id="65f4b-134">Differences on the server</span></span>
+
+<span data-ttu-id="65f4b-135">Les bibliothèques de côté serveur ASP.NET Core SignalR sont incluses dans le [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app) package qui fait partie de la **Application Web ASP.NET Core** modèle pour Razor et MVC projets.</span><span class="sxs-lookup"><span data-stu-id="65f4b-135">The ASP.NET Core SignalR server-side libraries are included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) package that's part of the **ASP.NET Core Web Application** template for both Razor and MVC projects.</span></span>
+
+<span data-ttu-id="65f4b-136">ASP.NET Core SignalR est un intergiciel (middleware) ASP.NET Core, donc il doit être configuré en appelant [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="65f4b-136">ASP.NET Core SignalR is an ASP.NET Core middleware, so it must be configured by calling [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) in `Startup.ConfigureServices`.</span></span>
 
 ```csharp
-services.AddSignalR();
+services.AddSignalR()
 ```
 
-<span data-ttu-id="e4ec0-117">Pour configurer le routage, mapper les itinéraires aux hubs à l’intérieur de la `UseSignalR` appel de méthode dans le `Startup.Configure` (méthode).</span><span class="sxs-lookup"><span data-stu-id="e4ec0-117">To configure routing, map routes to hubs inside the `UseSignalR` method call in the `Startup.Configure` method.</span></span>
+<span data-ttu-id="65f4b-137">Pour configurer le routage, mapper les itinéraires aux hubs à l’intérieur de la [UseSignalR](/dotnet/api/microsoft.aspnetcore.builder.signalrappbuilderextensions.usesignalr) appel de méthode dans le `Startup.Configure` (méthode).</span><span class="sxs-lookup"><span data-stu-id="65f4b-137">To configure routing, map routes to hubs inside the [UseSignalR](/dotnet/api/microsoft.aspnetcore.builder.signalrappbuilderextensions.usesignalr) method call in the `Startup.Configure` method.</span></span>
 
 ```csharp
 app.UseSignalR(routes =>
@@ -46,44 +56,44 @@ app.UseSignalR(routes =>
 });
 ```
 
-### <a name="sticky-sessions-now-required"></a><span data-ttu-id="e4ec0-118">Sessions rémanentes désormais requises</span><span class="sxs-lookup"><span data-stu-id="e4ec0-118">Sticky sessions now required</span></span>
+### <a name="sticky-sessions-now-required"></a><span data-ttu-id="65f4b-138">Sessions rémanentes désormais requises</span><span class="sxs-lookup"><span data-stu-id="65f4b-138">Sticky sessions now required</span></span>
 
-<span data-ttu-id="e4ec0-119">En raison de la montée en puissance travaillé dans les versions précédentes de SignalR, les clients peuvent se reconnecter et envoyer des messages à n’importe quel serveur dans la batterie de serveurs.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-119">Because of how scale-out worked in the previous versions of SignalR, clients could reconnect and send messages to any server in the farm.</span></span> <span data-ttu-id="e4ec0-120">En raison de modifications pour le modèle de montée en puissance, mais aussi ne prenant ne pas en charge se reconnecte, il est n’est plus pris en charge.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-120">Due to changes to the scale-out model, as well as not supporting reconnects, this is no longer supported.</span></span> <span data-ttu-id="e4ec0-121">À présent, une fois que le client se connecte au serveur, il doit interagir avec le même serveur pour la durée de la connexion.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-121">Now, once the client connects to the server it needs to interact with the same server for the duration of the connection.</span></span>
+<span data-ttu-id="65f4b-139">En raison de la montée en puissance travaillé dans ASP.NET SignalR, les clients peuvent se reconnecter et envoyer des messages à n’importe quel serveur dans la batterie de serveurs.</span><span class="sxs-lookup"><span data-stu-id="65f4b-139">Because of how scale-out worked in ASP.NET SignalR, clients could reconnect and send messages to any server in the farm.</span></span> <span data-ttu-id="65f4b-140">En raison de modifications pour le modèle de montée en puissance, mais aussi ne prenant ne pas en charge se reconnecte, il est n’est plus pris en charge.</span><span class="sxs-lookup"><span data-stu-id="65f4b-140">Due to changes to the scale-out model, as well as not supporting reconnects, this is no longer supported.</span></span> <span data-ttu-id="65f4b-141">Une fois que le client se connecte au serveur, il doit interagir avec le même serveur pour la durée de la connexion.</span><span class="sxs-lookup"><span data-stu-id="65f4b-141">Once the client connects to the server, it must interact with the same server for the duration of the connection.</span></span>
 
-### <a name="single-hub-per-connection"></a><span data-ttu-id="e4ec0-122">Hub unique par connexion</span><span class="sxs-lookup"><span data-stu-id="e4ec0-122">Single hub per connection</span></span>
+### <a name="single-hub-per-connection"></a><span data-ttu-id="65f4b-142">Hub unique par connexion</span><span class="sxs-lookup"><span data-stu-id="65f4b-142">Single hub per connection</span></span>
 
-<span data-ttu-id="e4ec0-123">Dans ASP.NET Core SignalR, le modèle de connexion a été simplifié.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-123">In ASP.NET Core SignalR, the connection model has been simplified.</span></span> <span data-ttu-id="e4ec0-124">Les connexions sont apportées directement à un concentrateur unique, plutôt que d’une connexion unique utilisé pour partager l’accès à plusieurs concentrateurs.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-124">Connections are made directly to a single hub, rather than a single connection being used to share access to multiple hubs.</span></span>
+<span data-ttu-id="65f4b-143">Dans ASP.NET Core SignalR, le modèle de connexion a été simplifié.</span><span class="sxs-lookup"><span data-stu-id="65f4b-143">In ASP.NET Core SignalR, the connection model has been simplified.</span></span> <span data-ttu-id="65f4b-144">Les connexions sont apportées directement à un concentrateur unique, plutôt que d’une connexion unique utilisé pour partager l’accès à plusieurs concentrateurs.</span><span class="sxs-lookup"><span data-stu-id="65f4b-144">Connections are made directly to a single hub, rather than a single connection being used to share access to multiple hubs.</span></span>
 
-### <a name="streaming"></a><span data-ttu-id="e4ec0-125">Diffusion en continu</span><span class="sxs-lookup"><span data-stu-id="e4ec0-125">Streaming</span></span>
+### <a name="streaming"></a><span data-ttu-id="65f4b-145">Diffusion en continu</span><span class="sxs-lookup"><span data-stu-id="65f4b-145">Streaming</span></span>
 
-<span data-ttu-id="e4ec0-126">SignalR prend désormais en charge [diffusion en continu des données](xref:signalr/streaming) à partir du concentrateur au client.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-126">SignalR now supports [streaming data](xref:signalr/streaming) from the hub to the client.</span></span>
+<span data-ttu-id="65f4b-146">Prend en charge ASP.NET Core SignalR [diffusion en continu des données](xref:signalr/streaming) à partir du concentrateur au client.</span><span class="sxs-lookup"><span data-stu-id="65f4b-146">ASP.NET Core SignalR now supports [streaming data](xref:signalr/streaming) from the hub to the client.</span></span>
 
-### <a name="state"></a><span data-ttu-id="e4ec0-127">État</span><span class="sxs-lookup"><span data-stu-id="e4ec0-127">State</span></span>
+### <a name="state"></a><span data-ttu-id="65f4b-147">État</span><span class="sxs-lookup"><span data-stu-id="65f4b-147">State</span></span>
 
-<span data-ttu-id="e4ec0-128">La possibilité de passer l’état arbitraire entre les clients et le concentrateur (souvent appelé HubState) a été supprimée, ainsi que la prise en charge pour les messages de progression.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-128">The ability to pass arbitrary state between clients and the hub (often called HubState) has been removed, as well as support for progress messages.</span></span> <span data-ttu-id="e4ec0-129">Il n’existe aucun équivalent de proxy de hub pour le moment.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-129">There is no counterpart of hub proxies at the moment.</span></span>
+<span data-ttu-id="65f4b-148">La possibilité de passer l’état arbitraire entre les clients et le concentrateur (souvent appelé HubState) a été supprimée, ainsi que la prise en charge pour les messages de progression.</span><span class="sxs-lookup"><span data-stu-id="65f4b-148">The ability to pass arbitrary state between clients and the hub (often called HubState) has been removed, as well as support for progress messages.</span></span> <span data-ttu-id="65f4b-149">Il n’existe aucun équivalent de proxy de hub pour le moment.</span><span class="sxs-lookup"><span data-stu-id="65f4b-149">There is no counterpart of hub proxies at the moment.</span></span>
 
-## <a name="differences-on-the-client"></a><span data-ttu-id="e4ec0-130">Connaître les différences entre le client</span><span class="sxs-lookup"><span data-stu-id="e4ec0-130">Differences on the client</span></span>
+## <a name="differences-on-the-client"></a><span data-ttu-id="65f4b-150">Connaître les différences entre le client</span><span class="sxs-lookup"><span data-stu-id="65f4b-150">Differences on the client</span></span>
 
-### <a name="typescript"></a><span data-ttu-id="e4ec0-131">TypeScript</span><span class="sxs-lookup"><span data-stu-id="e4ec0-131">TypeScript</span></span>
+### <a name="typescript"></a><span data-ttu-id="65f4b-151">TypeScript</span><span class="sxs-lookup"><span data-stu-id="65f4b-151">TypeScript</span></span>
 
-<span data-ttu-id="e4ec0-132">La version d’ASP.NET Core de SignalR est écrit [TypeScript](https://www.typescriptlang.org/).</span><span class="sxs-lookup"><span data-stu-id="e4ec0-132">The ASP.NET Core version of SignalR is written in [TypeScript](https://www.typescriptlang.org/).</span></span> <span data-ttu-id="e4ec0-133">Vous pouvez écrire en JavaScript ou TypeScript lorsque vous utilisez le [client JavaScript](xref:signalr/javascript-client).</span><span class="sxs-lookup"><span data-stu-id="e4ec0-133">You can write in JavaScript or TypeScript when using the [JavaScript client](xref:signalr/javascript-client).</span></span>
+<span data-ttu-id="65f4b-152">Le client d’ASP.NET Core SignalR est écrit [TypeScript](https://www.typescriptlang.org/).</span><span class="sxs-lookup"><span data-stu-id="65f4b-152">The ASP.NET Core SignalR client is written in [TypeScript](https://www.typescriptlang.org/).</span></span> <span data-ttu-id="65f4b-153">Vous pouvez écrire en JavaScript ou TypeScript lorsque vous utilisez le [client JavaScript](xref:signalr/javascript-client).</span><span class="sxs-lookup"><span data-stu-id="65f4b-153">You can write in JavaScript or TypeScript when using the [JavaScript client](xref:signalr/javascript-client).</span></span>
 
-### <a name="the-javascript-client-is-hosted-at-npmhttpswwwnpmjscom"></a><span data-ttu-id="e4ec0-134">Le client JavaScript est hébergé à [npm](https://www.npmjs.com/)</span><span class="sxs-lookup"><span data-stu-id="e4ec0-134">The JavaScript client is hosted at [npm](https://www.npmjs.com/)</span></span>
+### <a name="the-javascript-client-is-hosted-at-npmhttpswwwnpmjscom"></a><span data-ttu-id="65f4b-154">Le client JavaScript est hébergé à [npm](https://www.npmjs.com/)</span><span class="sxs-lookup"><span data-stu-id="65f4b-154">The JavaScript client is hosted at [npm](https://www.npmjs.com/)</span></span>
 
-<span data-ttu-id="e4ec0-135">Dans les versions précédentes, le client JavaScript a été obtenu via un package NuGet dans Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-135">In previous versions, the JavaScript client was obtained through a NuGet package in Visual Studio.</span></span> <span data-ttu-id="e4ec0-136">Pour les versions Core, le [ @aspnet/signalr package npm](https://www.npmjs.com/package/@aspnet/signalr) contient les bibliothèques JavaScript.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-136">For the Core versions, the [@aspnet/signalr npm package](https://www.npmjs.com/package/@aspnet/signalr) contains the JavaScript libraries.</span></span> <span data-ttu-id="e4ec0-137">Ce package n’est pas inclus dans le **Application Web ASP.NET Core** modèle.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-137">This package isn't included in the **ASP.NET Core Web Application** template.</span></span> <span data-ttu-id="e4ec0-138">Utiliser npm pour obtenir et installer le `@aspnet/signalr` package npm.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-138">Use npm to obtain and install the `@aspnet/signalr` npm package.</span></span>
+<span data-ttu-id="65f4b-155">Dans les versions précédentes, le client JavaScript a été obtenu via un package NuGet dans Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="65f4b-155">In previous versions, the JavaScript client was obtained through a NuGet package in Visual Studio.</span></span> <span data-ttu-id="65f4b-156">Pour les versions Core, le [ @aspnet/signalr ](https://www.npmjs.com/package/@aspnet/signalr) package npm contient les bibliothèques JavaScript.</span><span class="sxs-lookup"><span data-stu-id="65f4b-156">For the Core versions, the [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) npm package contains the JavaScript libraries.</span></span> <span data-ttu-id="65f4b-157">Ce package n’est pas inclus dans le **Application Web ASP.NET Core** modèle.</span><span class="sxs-lookup"><span data-stu-id="65f4b-157">This package isn't included in the **ASP.NET Core Web Application** template.</span></span> <span data-ttu-id="65f4b-158">Utiliser npm pour obtenir et installer le `@aspnet/signalr` package npm.</span><span class="sxs-lookup"><span data-stu-id="65f4b-158">Use npm to obtain and install the `@aspnet/signalr` npm package.</span></span>
 
 ```console
 npm init -y
 npm install @aspnet/signalr
 ```
 
-### <a name="jquery"></a><span data-ttu-id="e4ec0-139">jQuery</span><span class="sxs-lookup"><span data-stu-id="e4ec0-139">jQuery</span></span>
+### <a name="jquery"></a><span data-ttu-id="65f4b-159">jQuery</span><span class="sxs-lookup"><span data-stu-id="65f4b-159">jQuery</span></span>
 
-<span data-ttu-id="e4ec0-140">La dépendance sur jQuery a été supprimée, mais les projets peuvent toujours utiliser jQuery.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-140">The dependency on jQuery has been removed, however projects can still use jQuery.</span></span>
+<span data-ttu-id="65f4b-160">La dépendance sur jQuery a été supprimée, mais les projets peuvent toujours utiliser jQuery.</span><span class="sxs-lookup"><span data-stu-id="65f4b-160">The dependency on jQuery has been removed, however projects can still use jQuery.</span></span>
 
-### <a name="javascript-client-method-syntax"></a><span data-ttu-id="e4ec0-141">Syntaxe de méthode JavaScript client</span><span class="sxs-lookup"><span data-stu-id="e4ec0-141">JavaScript client method syntax</span></span>
+### <a name="javascript-client-method-syntax"></a><span data-ttu-id="65f4b-161">Syntaxe de méthode JavaScript client</span><span class="sxs-lookup"><span data-stu-id="65f4b-161">JavaScript client method syntax</span></span>
 
-<span data-ttu-id="e4ec0-142">La syntaxe de JavaScript a changé depuis la précédente version de SignalR.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-142">The JavaScript syntax has changed from the previous version of SignalR.</span></span> <span data-ttu-id="e4ec0-143">Au lieu d’utiliser le `$connection` d’objet, de créer une connexion en utilisant le `HubConnectionBuilder` API.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-143">Rather than using the `$connection` object, create a connection using the `HubConnectionBuilder` API.</span></span>
+<span data-ttu-id="65f4b-162">La syntaxe de JavaScript a changé depuis la précédente version de SignalR.</span><span class="sxs-lookup"><span data-stu-id="65f4b-162">The JavaScript syntax has changed from the previous version of SignalR.</span></span> <span data-ttu-id="65f4b-163">Au lieu d’utiliser le `$connection` d’objet, de créer une connexion en utilisant le [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) API.</span><span class="sxs-lookup"><span data-stu-id="65f4b-163">Rather than using the `$connection` object, create a connection using the [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) API.</span></span>
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -91,7 +101,7 @@ const connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-<span data-ttu-id="e4ec0-144">Utilisez `connection.on` pour spécifier les méthodes de client que le hub peut appeler.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-144">Use `connection.on` to specify client methods that the hub can call.</span></span>
+<span data-ttu-id="65f4b-164">Utilisez le [sur](/javascript/api/@aspnet/signalr/HubConnection#on) méthode pour spécifier les méthodes de client que le hub peut appeler.</span><span class="sxs-lookup"><span data-stu-id="65f4b-164">Use the [on](/javascript/api/@aspnet/signalr/HubConnection#on) method to specify client methods that the hub can call.</span></span>
 
 ```javascript
 connection.on("ReceiveMessage", (user, message) => {
@@ -101,21 +111,21 @@ connection.on("ReceiveMessage", (user, message) => {
 });
 ```
 
-<span data-ttu-id="e4ec0-145">Après avoir créé la méthode du client, démarrez la connexion du concentrateur.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-145">After creating the client method, start the hub connection.</span></span> <span data-ttu-id="e4ec0-146">Chaîne un `catch` méthode pour vous connecter ou gérer les erreurs.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-146">Chain a `catch` method to log or handle errors.</span></span>
+<span data-ttu-id="65f4b-165">Après avoir créé la méthode du client, démarrez la connexion du concentrateur.</span><span class="sxs-lookup"><span data-stu-id="65f4b-165">After creating the client method, start the hub connection.</span></span> <span data-ttu-id="65f4b-166">Chaîne un [catch](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch) méthode pour vous connecter ou gérer les erreurs.</span><span class="sxs-lookup"><span data-stu-id="65f4b-166">Chain a [catch](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch) method to log or handle errors.</span></span>
 
 ```javascript
 connection.start().catch(err => console.error(err.toString()));
 ```
 
-### <a name="hub-proxies"></a><span data-ttu-id="e4ec0-147">Serveurs proxy de hub</span><span class="sxs-lookup"><span data-stu-id="e4ec0-147">Hub proxies</span></span>
+### <a name="hub-proxies"></a><span data-ttu-id="65f4b-167">Serveurs proxy de hub</span><span class="sxs-lookup"><span data-stu-id="65f4b-167">Hub proxies</span></span>
 
-<span data-ttu-id="e4ec0-148">Serveurs proxy de Hub est générées ne sont plus automatiquement.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-148">Hub proxies are no longer automatically generated.</span></span> <span data-ttu-id="e4ec0-149">Au lieu de cela, le nom de méthode est passé dans le `invoke` API sous forme de chaîne.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-149">Instead, the method name is passed into the `invoke` API as a string.</span></span>
+<span data-ttu-id="65f4b-168">Serveurs proxy de Hub est générées ne sont plus automatiquement.</span><span class="sxs-lookup"><span data-stu-id="65f4b-168">Hub proxies are no longer automatically generated.</span></span> <span data-ttu-id="65f4b-169">Au lieu de cela, le nom de méthode est passé dans le [appeler](/javascript/api/%40aspnet/signalr/hubconnection#invoke) API sous forme de chaîne.</span><span class="sxs-lookup"><span data-stu-id="65f4b-169">Instead, the method name is passed into the [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) API as a string.</span></span>
 
-### <a name="net-and-other-clients"></a><span data-ttu-id="e4ec0-150">.NET et autres clients</span><span class="sxs-lookup"><span data-stu-id="e4ec0-150">.NET and other clients</span></span>
+### <a name="net-and-other-clients"></a><span data-ttu-id="65f4b-170">.NET et autres clients</span><span class="sxs-lookup"><span data-stu-id="65f4b-170">.NET and other clients</span></span>
 
-<span data-ttu-id="e4ec0-151">Le `Microsoft.AspNetCore.SignalR.Client` package NuGet contient les bibliothèques de client .NET pour ASP.NET Core SignalR.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-151">The `Microsoft.AspNetCore.SignalR.Client` NuGet package contains the .NET client libraries for ASP.NET Core SignalR.</span></span>
+<span data-ttu-id="65f4b-171">Le `Microsoft.AspNetCore.SignalR.Client` package NuGet contient les bibliothèques de client .NET pour ASP.NET Core SignalR.</span><span class="sxs-lookup"><span data-stu-id="65f4b-171">The `Microsoft.AspNetCore.SignalR.Client` NuGet package contains the .NET client libraries for ASP.NET Core SignalR.</span></span>
 
-<span data-ttu-id="e4ec0-152">Utilisez le `HubConnectionBuilder` pour créer et générer une instance d’une connexion à un concentrateur.</span><span class="sxs-lookup"><span data-stu-id="e4ec0-152">Use the `HubConnectionBuilder` to create and build an instance of a connection to a hub.</span></span>
+<span data-ttu-id="65f4b-172">Utilisez le [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder) pour créer et générer une instance d’une connexion à un concentrateur.</span><span class="sxs-lookup"><span data-stu-id="65f4b-172">Use the [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder) to create and build an instance of a connection to a hub.</span></span>
 
 ```csharp
 connection = new HubConnectionBuilder()
@@ -123,9 +133,9 @@ connection = new HubConnectionBuilder()
     .Build();
 ```
 
-## <a name="additional-resources"></a><span data-ttu-id="e4ec0-153">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="e4ec0-153">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="65f4b-173">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="65f4b-173">Additional resources</span></span>
 
-* [<span data-ttu-id="e4ec0-154">Hubs</span><span class="sxs-lookup"><span data-stu-id="e4ec0-154">Hubs</span></span>](xref:signalr/hubs)
-* [<span data-ttu-id="e4ec0-155">Client JavaScript</span><span class="sxs-lookup"><span data-stu-id="e4ec0-155">JavaScript client</span></span>](xref:signalr/javascript-client)
-* [<span data-ttu-id="e4ec0-156">Client .NET</span><span class="sxs-lookup"><span data-stu-id="e4ec0-156">.NET client</span></span>](xref:signalr/dotnet-client)
-* [<span data-ttu-id="e4ec0-157">Plateformes prises en charge</span><span class="sxs-lookup"><span data-stu-id="e4ec0-157">Supported platforms</span></span>](xref:signalr/supported-platforms)
+* [<span data-ttu-id="65f4b-174">Hubs</span><span class="sxs-lookup"><span data-stu-id="65f4b-174">Hubs</span></span>](xref:signalr/hubs)
+* [<span data-ttu-id="65f4b-175">Client JavaScript</span><span class="sxs-lookup"><span data-stu-id="65f4b-175">JavaScript client</span></span>](xref:signalr/javascript-client)
+* [<span data-ttu-id="65f4b-176">Client .NET</span><span class="sxs-lookup"><span data-stu-id="65f4b-176">.NET client</span></span>](xref:signalr/dotnet-client)
+* [<span data-ttu-id="65f4b-177">Plateformes prises en charge</span><span class="sxs-lookup"><span data-stu-id="65f4b-177">Supported platforms</span></span>](xref:signalr/supported-platforms)
