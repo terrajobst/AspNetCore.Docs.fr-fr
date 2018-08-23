@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-4
 title: 'Partie 4 : Accès aux données et des modèles | Microsoft Docs'
 author: jongalloway
 description: Cette série de didacticiels décrit en détail les étapes prises pour générer l’exemple d’application ASP.NET MVC Music Store. Partie 4 couvre l’accès aux données et modèles.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: ab55ca81-ab9b-44a0-8700-dc6da2599335
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-4
 msc.type: authoredcontent
-ms.openlocfilehash: 023350e882afe049ce3800921825b1b2bec8e415
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6a07bf6c8a3fb926ae25fe1f6c9359e64cd7a290
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37818951"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41834391"
 ---
 <a name="part-4-models-and-data-access"></a>Partie 4 : Modèles et accès aux données
 ====================

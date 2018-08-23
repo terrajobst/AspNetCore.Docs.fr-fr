@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: Création d’applications de Cloud réalistes avec Azure | Microsoft Docs
 author: MikeWasson
 description: Ce livre électronique vous présente une approche basée sur des modèles pour créer des solutions de cloud réalistes. Ces modèles s’appliquent au processus de développement, ainsi que pour un...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
-ms.openlocfilehash: 11388b9c58d2d21c7a337a343c10d33c7257ccf1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: eade14bc27e2bface84fb0bdd2f3c5bf8ef28432
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37840496"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836815"
 ---
 <a name="building-real-world-cloud-apps-with-azure"></a>Création d’applications Cloud réalistes avec Azure
 ====================

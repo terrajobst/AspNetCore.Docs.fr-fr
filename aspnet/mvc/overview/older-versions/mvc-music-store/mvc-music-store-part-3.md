@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 title: 'Partie 3 : Vues et ViewModels | Microsoft Docs'
 author: jongalloway
 description: Cette série de didacticiels décrit en détail les étapes prises pour générer l’exemple d’application ASP.NET MVC Music Store. La partie 3 explique Views et ViewModels.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: 94297aa0-1f2d-4d72-bbcb-63f64653e0c0
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 msc.type: authoredcontent
-ms.openlocfilehash: 8fd89c2a448877bf13a7828f545ffcd400f63bb1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 828ff18abcc5932f82be71a45ebde589eeb051fa
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837408"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824896"
 ---
 <a name="part-3-views-and-viewmodels"></a>Partie 3 : Vues et ViewModels
 ====================
@@ -214,7 +214,7 @@ Notez que nous avons une prise en charge IntelliSense complète comme nous Entre
 
 ![](mvc-music-store-part-3/_static/image18.png)
 
-Dans notre boucle « foreach », Visual Web Developer sait que chaque élément est de type Genre, nous voir IntelliSence pour chaque type de Genre.
+Dans notre boucle « foreach », Visual Web Developer sait que chaque élément est de type Genre, nous voir IntelliSense pour chaque type de Genre.
 
 ![](mvc-music-store-part-3/_static/image19.png)
 

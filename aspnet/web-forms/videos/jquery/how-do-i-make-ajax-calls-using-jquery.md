@@ -3,17 +3,17 @@ uid: web-forms/videos/jquery/how-do-i-make-ajax-calls-using-jquery
 title: 'Comment faire : Vérifiez les appels Ajax utilisant jQuery ? | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo Chris Pels montre comment effectuer des appels Ajax à l’aide de la bibliothèque jQuery. Un exemple de site web est créé qui contient un service web simple qui retourne...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/12/2010
 ms.assetid: 112b6255-ec37-4311-b967-c1aacce78bc8
 msc.legacyurl: /web-forms/videos/jquery/how-do-i-make-ajax-calls-using-jquery
 msc.type: video
-ms.openlocfilehash: 2ae43ad45fd823a814156ab1f863484e2d113a63
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 91a959da3405926980fb69aaeaa230ddec6cdc4e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37807201"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824923"
 ---
 <a name="how-do-i-make-ajax-calls-using-jquery"></a>Comment faire : Vérifiez les appels Ajax utilisant jQuery ?
 ====================

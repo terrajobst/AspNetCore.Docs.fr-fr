@@ -3,17 +3,17 @@ uid: mvc/overview/advanced/custom-mvc-templates
 title: Modèle MVC personnalisé | Microsoft Docs
 author: joeloff
 description: Créer un modèle comme extension VSIX.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/10/2012
 ms.assetid: b0a214c7-2f38-4dbc-b47f-bd7bd9df97bd
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
-ms.openlocfilehash: 67cb01e0fae036f01b1851695ae5a4358136d28e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 3c14bc6feb144a52773bf7bd4c23df24966a9ebb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809775"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831382"
 ---
 <a name="custom-mvc-template"></a>Modèle MVC personnalisé
 ====================
