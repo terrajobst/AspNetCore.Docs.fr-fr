@@ -3,17 +3,17 @@ uid: visual-studio/overview/2013/aspnet-scaffolding-overview
 title: Génération de modèles automatique ASP.NET dans Visual Studio 2013 | Microsoft Docs
 author: tfitzmac
 description: Génération de modèles automatique ASP.NET est une nouvelle fonctionnalité qui est incluse dans Visual Studio 2013.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/09/2014
 ms.assetid: a41ec9d4-8287-4f31-9e2a-460e7b7f04be
 msc.legacyurl: /visual-studio/overview/2013/aspnet-scaffolding-overview
 msc.type: authoredcontent
-ms.openlocfilehash: 2fcfc31069e8fee79eb217ef6bad746f85a085e0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c554f592e57f2e6017f7fcfcc9b4c98051e21b37
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839566"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826806"
 ---
 <a name="aspnet-scaffolding-in-visual-studio-2013"></a>Génération de modèles automatique ASP.NET dans Visual Studio 2013
 ====================

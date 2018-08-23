@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/us
 title: Utilisation du DropDownList Helper avec ASP.NET MVC | Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/12/2012
 ms.assetid: 53767e05-c8ab-42e1-a94b-22d906195200
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 6dbffe715990de5c0b3b834e354379e414925816
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 600a8ad409d55f0b01eedc8168eaec2b39c88a3b
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219054"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832627"
 ---
 <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>Utilisation du DropDownList Helper avec ASP.NET MVC
 ====================

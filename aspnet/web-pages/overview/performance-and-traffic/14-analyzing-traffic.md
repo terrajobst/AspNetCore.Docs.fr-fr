@@ -3,17 +3,17 @@ uid: web-pages/overview/performance-and-traffic/14-analyzing-traffic
 title: Suivi des informations sur les visiteurs (Analytique) pour un ASP.NET Web Pages (Razor) Site | Microsoft Docs
 author: tfitzmac
 description: Une fois que vous avez obtenu votre site Web accédant, vous souhaiterez peut-être analyser le trafic de votre site Web.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/17/2014
 ms.assetid: 360bc6e1-84c5-4b8e-a84c-ea48ab807aa4
 msc.legacyurl: /web-pages/overview/performance-and-traffic/14-analyzing-traffic
 msc.type: authoredcontent
-ms.openlocfilehash: 4e065e5223d2f996779ab47de4823962a9aa852e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: aabe3177ba9479bfafafe81e1ea99a58f29d5271
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37831094"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836479"
 ---
 <a name="tracking-visitor-information-analytics-for-an-aspnet-web-pages-razor-site"></a>Informations de suivi visiteur (Analytique) pour un Site ASP.NET Web Pages (Razor)
 ====================

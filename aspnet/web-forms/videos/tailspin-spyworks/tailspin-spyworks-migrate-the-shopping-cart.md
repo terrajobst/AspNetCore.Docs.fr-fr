@@ -3,17 +3,17 @@ uid: web-forms/videos/tailspin-spyworks/tailspin-spyworks-migrate-the-shopping-c
 title: Tailspin Spyworks - migrer le panier d’achat | Microsoft Docs
 author: JoeStagner
 description: Joe Stagner montre comment convertir le panier d’achat d’un utilisateur anonyme à un autre authentifié avant la dernière extraction de l’exemple de Tailspin Spyworks F. Web...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/29/2010
 ms.assetid: 1dcc27a0-f9a9-4e34-94bf-7c35190ea08d
 msc.legacyurl: /web-forms/videos/tailspin-spyworks/tailspin-spyworks-migrate-the-shopping-cart
 msc.type: video
-ms.openlocfilehash: 65c38bcac9963ebd88ada6b75464bd629df7f905
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d96b3bba8013c984ae0f2df12085e0e9bd1813cd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820728"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825975"
 ---
 <a name="tailspin-spyworks---migrate-the-shopping-cart"></a>Tailspin Spyworks - migrer le panier d’achat
 ====================

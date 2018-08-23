@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web
 title: Passage d’Applications Web en mode hors connexion avec Web déployer | Microsoft Docs
 author: jrjlee
 description: Cette rubrique explique comment prendre une application web en mode hors connexion pendant la durée d’un déploiement automatisé à l’aide du dépl Web Internet Information Services (IIS)...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 3e9f6e7d-8967-4586-94d5-d3a122f12529
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/taking-web-applications-offline-with-web-deploy
 msc.type: authoredcontent
-ms.openlocfilehash: b8dc1ff26bbbe7dee1ee90fd929b2e98de5360db
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9b18a48914a74a7fea85278d0e601f6f84376b23
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37829513"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826100"
 ---
 <a name="taking-web-applications-offline-with-web-deploy"></a>Passage d’Applications Web en mode hors connexion avec Web déployer
 ====================

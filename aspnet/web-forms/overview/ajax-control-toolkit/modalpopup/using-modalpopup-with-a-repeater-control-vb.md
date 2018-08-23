@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-
 title: Utilisation de ModalPopup avec un contrôle Repeater (VB) | Microsoft Docs
 author: wenz
 description: Le contrôle ModalPopup dans AJAX Control Toolkit offre un moyen simple de créer une contextuelle modale à l’aide de moyens de côté client. Il est également possible d’utiliser cette contr...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 0c8e74f1-b3ba-4ca9-a1c5-f5c4831a359a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/using-modalpopup-with-a-repeater-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: c51ddd4b2bcc17c7d8c5dee0926903bea6ac749f
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4915883ce50512a0a612060ba9543705abcc5f00
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37826612"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826572"
 ---
 <a name="using-modalpopup-with-a-repeater-control-vb"></a>Utilisation de ModalPopup avec un contrôle Repeater (VB)
 ====================

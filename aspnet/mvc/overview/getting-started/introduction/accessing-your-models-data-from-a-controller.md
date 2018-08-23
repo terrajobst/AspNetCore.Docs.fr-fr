@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/accessing-your-models-data-from-a
 title: L’accès aux données de votre modèle à partir d’un contrôleur | Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: caa1ba4a-f9f0-4181-ba21-042e3997861d
 msc.legacyurl: /mvc/overview/getting-started/introduction/accessing-your-models-data-from-a-controller
 msc.type: authoredcontent
-ms.openlocfilehash: a3f3f4a030650ff65b070528c5efa1605be764a0
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 16f4a61d048e90b7962f038e90e0721883726c44
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38120151"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832999"
 ---
 <a name="accessing-your-models-data-from-a-controller"></a>L’accès aux données de votre modèle à partir d’un contrôleur
 ====================
@@ -61,7 +61,7 @@ Sélectionnez le lien **Créer nouveau**. Entrez des détails sur un film, puis 
 ![](accessing-your-models-data-from-a-controller/_static/image5.png)
 
 > [!NOTE]
-> Vous n’êtes peut-être pas en mesure d’entrer des séparateurs décimaux ou des virgules dans le champ prix. Pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et votre propre  *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et JavaScript pour utiliser `Globalize.parseFloat`. Je montrerai comment effectuer cette opération dans le didacticiel suivant. Pour le moment, entrez simplement des nombres entiers tels que 10.
+> Vous n’êtes peut-être pas en mesure d’entrer des séparateurs décimaux ou des virgules dans le champ prix. pour prendre en charge la validation jQuery pour les paramètres régionaux non anglais qui utilisent une virgule (&quot;,&quot;) pour une virgule décimale et les formats de date non anglais des États-Unis, vous devez inclure *globalize.js* et votre propre  *cultures/globalize.cultures.js* fichier (à partir de [ https://github.com/jquery/globalize ](https://github.com/jquery/globalize) ) et JavaScript pour utiliser `Globalize.parseFloat`. Je montrerai comment effectuer cette opération dans le didacticiel suivant. Pour le moment, entrez simplement des nombres entiers tels que 10.
 
 
 En cliquant sur le **créer** bouton provoque le formulaire à être publié sur le serveur, où les informations de film sont enregistrées dans la base de données. Vous êtes ensuite redirigé vers le */Movies* URL, où vous pouvez voir le film nouvellement créé dans la liste.

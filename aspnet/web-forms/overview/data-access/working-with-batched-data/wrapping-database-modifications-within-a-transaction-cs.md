@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-batched-data/wrapping-database-
 title: Habillage des Modifications de base de données dans une Transaction (c#) | Microsoft Docs
 author: rick-anderson
 description: Ce didacticiel est le premier des quatre examine la mise à jour, suppression et l’insertion des lots de données. Ce didacticiel explique comment autoriser des transactions de base de données...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: b45fede3-c53a-4ea1-824b-20200808dbae
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/wrapping-database-modifications-within-a-transaction-cs
 msc.type: authoredcontent
-ms.openlocfilehash: a87ba758abd6b3e89be4f5aa64d658b734f99d9e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ab1ffa147545ab0d4fa0a3cce6f7dca91dfe3ffb
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37810924"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41825759"
 ---
 <a name="wrapping-database-modifications-within-a-transaction-c"></a>Inclusion de Modifications de base de données dans une Transaction (c#)
 ====================

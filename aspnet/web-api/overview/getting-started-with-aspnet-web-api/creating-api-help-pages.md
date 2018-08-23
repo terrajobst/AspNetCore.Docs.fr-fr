@@ -3,17 +3,17 @@ uid: web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-page
 title: Création de Pages d’aide pour l’API Web ASP.NET | Microsoft Docs
 author: MikeWasson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2013
 ms.assetid: 0150e67b-c50d-4613-83ea-7b4ef8cacc5a
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 3e8a0e6c4555e2b8d880118ca499b801ac8be63e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 2d8758034ca4339ed7e9699cf2f2643bfab87ba4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37811942"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831366"
 ---
 <a name="creating-help-pages-for-aspnet-web-api"></a>Création de Pages d’aide pour l’API Web ASP.NET
 ====================

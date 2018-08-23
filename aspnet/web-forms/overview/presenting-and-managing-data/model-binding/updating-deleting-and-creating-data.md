@@ -3,17 +3,17 @@ uid: web-forms/overview/presenting-and-managing-data/model-binding/updating-dele
 title: La mise à jour, la suppression et la création des données avec la liaison de modèle et les web forms | Microsoft Docs
 author: tfitzmac
 description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle rend l’interaction des données plus simple-...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 602baa94-5a4f-46eb-a717-7a9e539c1db4
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/updating-deleting-and-creating-data
 msc.type: authoredcontent
-ms.openlocfilehash: 1cf9873db177b67927b579def1eedd08e3e9a762
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a3e098d7b10ba6218ffa1818ccf8fc8df6912a9e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37821630"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831799"
 ---
 <a name="updating-deleting-and-creating-data-with-model-binding-and-web-forms"></a>La mise à jour, la suppression et la création des données avec la liaison de modèle et les web forms
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-35/how-do-i/how-do-i-advance-cascading-style-sheet-
 title: '[Comment faire] Passez la gestion et fonctionnalités de feuille de Style en cascade | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo, nous allons créer lors de la feuille de Style en cascade base à partir d’une vidéo précédente. Nous passera à l’échelon où nous venons de créer éléments et...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/14/2008
 ms.assetid: 6a7e8bea-2a0d-4011-ad71-3f3b5f152fe4
 msc.legacyurl: /web-forms/videos/aspnet-35/how-do-i/how-do-i-advance-cascading-style-sheet-features-and-management
 msc.type: video
-ms.openlocfilehash: 0a2094ceef8973cf0c9445bff8fb400c1d5612c1
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b670ed68bf75d52df9696288e628d6ae07eedb3e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836517"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831326"
 ---
 <a name="how-do-i-advance-cascading-style-sheet-features-and-management"></a>[Comment faire] Passez la gestion et les fonctionnalités de feuille de Style en cascade
 ====================

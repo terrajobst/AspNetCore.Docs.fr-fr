@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-r
 title: Résilience des connexions et Interception des commandes avec Entity Framework dans une Application ASP.NET MVC | Microsoft Docs
 author: tdykstra
 description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/13/2015
 ms.assetid: c89d809f-6c65-4425-a3fa-c9f6e8ac89f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: c88247df39460575c28bf827d6a7d2924e9c0ef3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 9b326ec22fc70a8c1746c5cd2c302c7f04fa8d3e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815741"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831194"
 ---
 <a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Résilience des connexions et Interception des commandes avec Entity Framework dans une Application ASP.NET MVC
 ====================

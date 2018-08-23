@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 7/22/2018
 uid: performance/caching/memory
-ms.openlocfilehash: b57e29965edc791ad4ecfe1b6b863a4a3dbe3f09
-ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
+ms.openlocfilehash: 468e85d3b9fddfa045de1725687a464dd2438ca4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/28/2018
-ms.locfileid: "39332299"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832384"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Cache in-memory dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Le cache en mémoire permet de stocker n’importe quel objet ; l’interface de
 ### <a name="cache-guidelines"></a>Recommandations de cache
 
 * Code doit systématiquement posséder une option de secours pour extraire des données et **pas** dépendent d’une valeur mise en cache qui est disponible.
-* Le cache utilise une ressource effrayer, la mémoire. Limiter la croissance de cache :
+* Le cache utilise une ressource rare, la mémoire. Limiter la croissance de cache :
   * Faire **pas** utiliser entrée externe en tant que clés de cache.
   * Utiliser des délais d’expiration pour limiter la croissance du cache.
   * [Permet de limiter la taille du cache SetSize, la taille et SizeLimit](#use-setsize-size-and-sizelimit-to-limit-cache-size)

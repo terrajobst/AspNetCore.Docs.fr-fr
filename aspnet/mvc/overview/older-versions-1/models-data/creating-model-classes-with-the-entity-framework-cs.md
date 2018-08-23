@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-e
 title: Création de Classes de modèle avec Entity Framework (c#) | Microsoft Docs
 author: microsoft
 description: Dans ce didacticiel, vous allez apprendre à utiliser ASP.NET MVC avec Entity Framework de Microsoft. Vous allez apprendre à utiliser l’Assistant pour créer un Da d’entité ADO.NET...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 61644169-e8b1-45dd-bf96-9c2301b69879
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-the-entity-framework-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 8b88aaaae21323fe3e3e8548cc04110c9caafef7
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: d1cf97a7f1dc9bae2774518cdfc13da48fc7ada2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808140"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826374"
 ---
 <a name="creating-model-classes-with-the-entity-framework-c"></a>Création de Classes de modèle avec Entity Framework (c#)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/how-do-i/how-do-i-deploy-a-web-site-using-the-copy-web-sit
 title: '[Comment faire] Déployer un Site Web à l’aide de l’outil Copier le Site Web | Microsoft Docs'
 author: rick-anderson
 description: Dans cette vidéo Chris Pels sera montrent comment déployer un site web à l’aide de l’outil Copier le Site Web dans Visual Studio. Tout d’abord voir comment se connecter à un site web à distance et...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/03/2008
 ms.assetid: 4926a73c-fa70-4f47-b57d-b33556447377
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-deploy-a-web-site-using-the-copy-web-site-tool
 msc.type: video
-ms.openlocfilehash: b922996542fd11c1c0b13913a8d8ed48acf1bbf5
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c4f50cd08a0700b1fcffd4a5c7f0f3a25a8b9688
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824807"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833159"
 ---
 <a name="how-do-i-deploy-a-web-site-using-the-copy-web-site-tool"></a>[Comment faire] Déployer un Site Web à l’aide de l’outil Copier le Site Web
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/videos/vs-2005/how-do-i-publish-and-analyze-test-results
 title: '[Comment faire] Publier et analyser les résultats des tests ? | Microsoft Docs'
 author: rick-anderson
 description: Visual Studio Team System vous permet de graphique change dans la qualité du code d’un projet en tant que le projet progresse. Cette vidéo fournit des instructions sur comment publ....
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 07/16/2007
 ms.assetid: 9fb155e0-1379-482c-963d-af7dc0397d76
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-publish-and-analyze-test-results
 msc.type: video
-ms.openlocfilehash: eb59591d32191ed736786fda236f74b5104ef868
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: a575dd0af20bb1565606c93e5a189b7a3e35ff3d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37833074"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831735"
 ---
 <a name="how-do-i-publish-and-analyze-test-results"></a>[Comment faire] Publier et analyser les résultats des tests ?
 ====================

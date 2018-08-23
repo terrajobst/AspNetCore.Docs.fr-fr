@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/introduction/creating-a-connection-string
 title: Création d’une chaîne de connexion et l’utilisation de SQL Server LocalDB | Microsoft Docs
 author: Rick-Anderson
 description: ''
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/17/2013
 ms.assetid: 6127804d-c1a9-414d-8429-7f3dd0f56e97
 msc.legacyurl: /mvc/overview/getting-started/introduction/creating-a-connection-string
 msc.type: authoredcontent
-ms.openlocfilehash: 8c8db3fc121b2ff263ab033404211e167e19cd71
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 73a3149c8c789221baa2e3804ebf15ed5a509ddf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38168374"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832386"
 ---
 <a name="creating-a-connection-string-and-working-with-sql-server-localdb"></a>Création d’une chaîne de connexion et l’utilisation de SQL Server LocalDB
 ====================

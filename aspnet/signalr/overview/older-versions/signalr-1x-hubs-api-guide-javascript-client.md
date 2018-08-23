@@ -3,17 +3,17 @@ uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 title: Guide de API SignalR 1.x Hubs - Client JavaScript | Microsoft Docs
 author: pfletcher
 description: Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 1.1 dans JavaScript clients, tels que les navigateurs et Windows Store (WinJS) appl...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/17/2013
 ms.assetid: dcd4593b-1118-418a-af71-d12ff33fb36d
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 17b1088ca71f206e08bec62f3b13c43ad4bcc158
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 993ad7924d8335f79aa2c3e41c00ddfa8bc26874
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37828930"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826827"
 ---
 <a name="signalr-1x-hubs-api-guide---javascript-client"></a>Guide de API SignalR 1.x Hubs - Client JavaScript
 ====================

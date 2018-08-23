@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 title: Lot d’insertion (VB) | Microsoft Docs
 author: rick-anderson
 description: Découvrez comment insérer plusieurs enregistrements de base de données en une seule opération. Dans la couche d’Interface utilisateur, nous étendons le contrôle GridView pour autoriser l’utilisateur à entrer plusieurs n...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/26/2007
 ms.assetid: 48e2a4ae-77ca-4208-a204-c38c690ffb59
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 0ec5c35417f4f986c662201da58ca3441e8944ca
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 58338d8bfdd782167aafaa440f2d549d6eeb838e
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824294"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832991"
 ---
 <a name="batch-inserting-vb"></a>Lot d’insertion (VB)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/presenting-and-managing-data/model-binding/retrieving-da
 title: Récupération et affichage des données avec les formulaires web et de la liaison de modèle | Microsoft Docs
 author: tfitzmac
 description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle rend l’interaction des données plus simple-...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 9f24fb82-c7ac-48da-b8e2-51b3da17e365
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
-ms.openlocfilehash: 8153642762cf7032f335d21c8c67eac9b52ed2f8
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c04e4c94378c8143c919e83af90312dd003b8c84
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823921"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832958"
 ---
 <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Récupération et affichage des données avec la liaison de modèle et les web forms
 ====================

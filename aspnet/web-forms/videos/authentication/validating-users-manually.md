@@ -3,17 +3,17 @@ uid: web-forms/videos/authentication/validating-users-manually
 title: Validation manuelle des utilisateurs | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo Joe Stagner vous montre comment créer votre propre formulaire web et le processus de la demande d’authentification manuellement. Pour plus d’informations sur cette vi...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/22/2008
 ms.assetid: c11eec26-25a2-41fb-9330-ddc123c0423a
 msc.legacyurl: /web-forms/videos/authentication/validating-users-manually
 msc.type: video
-ms.openlocfilehash: 421ba60b1fcb6672771c0a832b87f148d1b18291
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: b530963dbaad8c03eef87004fb8536063ebc2534
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837054"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831424"
 ---
 <a name="validating-users-manually"></a>Validation manuelle des utilisateurs
 ====================

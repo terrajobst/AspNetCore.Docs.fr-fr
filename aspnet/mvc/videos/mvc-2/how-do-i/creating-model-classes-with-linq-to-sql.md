@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-2/how-do-i/creating-model-classes-with-linq-to-sql
 title: Création de Classes de modèle avec LINQ to SQL | Microsoft Docs
 author: StephenWalther
 description: Découvrez comment créer des classes d’accès aux données en tirant parti de Microsoft LINQ to SQL. Dans ce didacticiel vidéo, vous allez apprendre à utiliser un DataContext LINQ to SQL...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/20/2008
 ms.assetid: d33d89ca-bb2a-4fb2-a0fa-0b423d710acb
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i/creating-model-classes-with-linq-to-sql
 msc.type: video
-ms.openlocfilehash: 793d89e6ca6f19ee36de38fa8941aef6c7b0d0ac
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: e5fd578859fa9cc0d70a12379fc931ad0b9e4d84
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37815406"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826793"
 ---
 <a name="creating-model-classes-with-linq-to-sql"></a>Création de Classes de modèle avec LINQ to SQL
 ====================

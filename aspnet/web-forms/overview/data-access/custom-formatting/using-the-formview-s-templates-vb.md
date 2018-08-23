@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/custom-formatting/using-the-formview-s-templ
 title: À l’aide de modèles de FormView (VB) | Microsoft Docs
 author: rick-anderson
 description: Contrairement à DetailsView, FormView n’est pas composé de champs. Au lieu de cela, le contrôle FormView est restitué à l’aide de modèles. Dans ce didacticiel, nous allons examiner à l’aide de la F....
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/31/2010
 ms.assetid: 67b25f4c-2823-42b6-b07d-1d650b3fd711
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-vb
 msc.type: authoredcontent
-ms.openlocfilehash: bb613158343e6845e583ed823e2a2c16f958b720
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6d16ef7ef8a3d5fce10e0d0b88421be294e9fc8d
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838152"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831756"
 ---
 <a name="using-the-formviews-templates-vb"></a>À l’aide de modèles de FormView (VB)
 ====================

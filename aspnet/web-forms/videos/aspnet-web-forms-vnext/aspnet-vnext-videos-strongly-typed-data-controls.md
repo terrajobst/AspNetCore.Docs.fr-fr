@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-web-forms-vnext/aspnet-vnext-videos-strongly-typed-
 title: 'ASP.NET vNext vidéos : fortement typées les contrôles de données | Microsoft Docs'
 author: DamianEdwards
 description: Dans cette vidéo, Damian Edwards montre les contrôles de données fortement typées dans Visual Studio vNext, qui fournissent IntelliSense et la vérification au moment de la compilation.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/22/2011
 ms.assetid: 4eda33a1-54f8-4cb6-8cc4-4be78f5fdc00
 msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext/aspnet-vnext-videos-strongly-typed-data-controls
 msc.type: video
-ms.openlocfilehash: bcd03f87b85782cd2b8de70370557ed628608925
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 88fabaca90473fb217a7965f0e58c3902fa9e0c9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803932"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832986"
 ---
 <a name="aspnet-vnext-videos-strongly-typed-data-controls"></a>ASP.NET vNext vidéos : fortement typées les contrôles de données
 ====================

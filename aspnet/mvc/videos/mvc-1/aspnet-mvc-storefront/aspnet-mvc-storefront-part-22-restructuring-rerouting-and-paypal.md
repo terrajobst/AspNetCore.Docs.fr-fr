@@ -3,17 +3,17 @@ uid: mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-22-restru
 title: 'ASP.NET MVC, partie Storefront 22 : Restructuration, redirection et PayPal | Microsoft Docs'
 author: robconery
 description: Dans cet épisode restructurer un peu afin de nettoyer certaines choses. J’ai également modifier les itinéraires pour être beaucoup plus simple. Enfin, j’ai ajouter PayPal comme un optio extraction...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 10/16/2008
 ms.assetid: 81190124-d0f6-4e4b-a48f-2613cc5a6aa7
 msc.legacyurl: /mvc/videos/mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal
 msc.type: video
-ms.openlocfilehash: 3dee2980ccc9b01c18d35b9d57a9ead82bebf702
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 189125563764d4eb8e8bc42befb21239be1bd8d5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37806573"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831335"
 ---
 <a name="aspnet-mvc-storefront-part-22-restructuring-rerouting-and-paypal"></a>ASP.NET MVC, partie Storefront 22 : Restructuration, redirection et PayPal
 ====================

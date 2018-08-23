@@ -3,17 +3,17 @@ uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/understandin
 title: Présentation du fichier de projet | Microsoft Docs
 author: jrjlee
 description: Fichiers de projet Microsoft Build Engine (MSBuild) se trouvent au cœur du processus de génération et de déploiement. Cette rubrique commence par une vue d’ensemble conceptuelle de MSBuild...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 07978d9d-341c-4524-bcba-62976f390f77
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
 msc.type: authoredcontent
-ms.openlocfilehash: 7e117459f5953be7bac53267700dfb9f69802aec
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 114dd21002ef41627f3a101c0197a85fd5208887
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37836841"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832970"
 ---
 <a name="understanding-the-project-file"></a>Présentation du fichier de projet
 ====================

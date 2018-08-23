@@ -3,17 +3,17 @@ uid: web-pages/overview/data/working-with-files
 title: Utilisation des fichiers dans un Site ASP.NET Web Pages (Razor) | Microsoft Docs
 author: tfitzmac
 description: Ce chapitre explique comment lire, écrire, ajouter, supprimer et télécharger des fichiers.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: eee916e4-ba4c-439a-a24e-68df7d45a569
 msc.legacyurl: /web-pages/overview/data/working-with-files
 msc.type: authoredcontent
-ms.openlocfilehash: 3778bc0041c56fe7164265fe565996aea5564bdf
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 20fdbfda7d3e4b214a8e201c4a815a29c5bb7061
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37841602"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831129"
 ---
 <a name="working-with-files-in-an-aspnet-web-pages-razor-site"></a>Utilisation des fichiers dans un Site ASP.NET Web Pages (Razor)
 ====================

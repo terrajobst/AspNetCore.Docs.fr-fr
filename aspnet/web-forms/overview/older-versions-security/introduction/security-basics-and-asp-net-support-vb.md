@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/introduction/security-basics-and
 title: Principes élémentaires de sécurité et la prise en charge de ASP.NET (VB) | Microsoft Docs
 author: rick-anderson
 description: Ceci est le premier didacticiel dans une série de didacticiels présentant des techniques pour l’authentification des visiteurs via un formulaire web, autoriser l’accès à partic...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 01/13/2008
 ms.assetid: ab68a92b-fc81-40a4-a7dc-406625d2c5d4
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-vb
 msc.type: authoredcontent
-ms.openlocfilehash: ebd4e52720fc36bfcf86b7ef4205afcca7e2bc4a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: c293f4946001d0940c7e12b67f4fbc63cf5ca18c
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37820874"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833233"
 ---
 <a name="security-basics-and-aspnet-support-vb"></a>Principes élémentaires de sécurité et la prise en charge de ASP.NET (VB)
 ====================

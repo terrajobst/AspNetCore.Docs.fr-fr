@@ -3,17 +3,17 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-a
 title: Code First Migrations et le déploiement avec Entity Framework dans une Application ASP.NET MVC | Microsoft Docs
 author: tdykstra
 description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 11/07/2014
 ms.assetid: d4dfc435-bda6-4621-9762-9ba270f8de4e
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 7c7092b770231b26fd666786af2e202acd70bc8a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4c1f852bab5e8f77b35239c356d11b5058cbdaef
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37838684"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826366"
 ---
 <a name="code-first-migrations-and-deployment-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Code First Migrations et le déploiement avec Entity Framework dans une Application ASP.NET MVC
 ====================
@@ -32,7 +32,7 @@ Le didacticiel contient les sections suivantes :
 
 Nous recommandons que vous utilisez un processus d’intégration continue avec contrôle de code source pour le déploiement, mais ce didacticiel ne couvre pas ces rubriques. Pour plus d’informations, consultez le [contrôle de code source](xref:aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control) et [intégration continue](xref:aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) chapitres de la [développement d’applications Cloud réalistes avec Azure](xref:aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction) e-book.
 
-## <a name="enable-code-first-migrations"></a>Par conséquent, le projet téléchargé a deux bases de données d’appartenance : aspnet-ContosoUniversity.mdf avec les utilisateurs de développement et aspnet-ContosoUniversity-Prod.mdf avec les utilisateurs en production.
+## <a name="enable-code-first-migrations"></a>Activer Code First Migrations
 
 Quand vous développez une nouvelle application, votre modèle de données change fréquemment et, chaque fois que le modèle change, il n’est plus en synchronisation avec la base de données. Vous avez configuré l’Entity Framework pour supprimer et recréer la base de données chaque fois que vous modifiez le modèle de données automatiquement. Lorsque vous ajouter, supprimer ou modifier des classes d’entité ou modifier votre `DbContext` classe, la prochaine fois que vous exécutez l’application elle supprime de votre base de données existante, crée un nouveau qui correspond au modèle et l’alimente avec les données de test d’automatiquement.
 
@@ -48,19 +48,19 @@ Cette méthode pour conserver la base de données en synchronisation avec le mod
     Cette modification configure le projet de façon à ce que la première migration crée une nouvelle base de données. Cela n’est pas obligatoire, mais vous verrez plus tard pourquoi c’est une bonne idée.
 3. À partir de la **outils** menu, cliquez sur **Library Package Manager** , puis **Console du Gestionnaire de Package**.
 
-    ![La base de données d’appartenances stocke un hachage des mots de passe de compte.](https://asp.net/media/4336350/1pm.png)
+    ![Selecting_Package_Manager_Console](https://asp.net/media/4336350/1pm.png)
 4. À la `PM>` invite Entrez les commandes suivantes :
 
     `enable-migrations`  
     `add-migration InitialCreate`
 
-    ![Ils génèrent les hachages mêmes lorsque vous utilisez les fournisseurs universels ASP.NET, tant que vous ne modifiez pas l’algorithme par défaut.](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
+    ![commande d’Enable-migrations](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
     Le `enable-migrations` commande crée un *Migrations* dossier dans le projet ContosoUniversity et il place dans ce dossier un *Configuration.cs* fichier que vous pouvez modifier pour configurer les Migrations.
 
     (Si vous avez manqué l’étape précédente qui vous indique comment modifier le nom de la base de données, Migrations recherche la base de données existante et effectuer automatiquement la `add-migration` commande. C’est OK, cela signifie simplement que vous n’exécutez un test du code de migrations avant de déployer la base de données. Par la suite lorsque vous exécutez le `update-database` commande rien ne se produira, car la base de données existe déjà.)
 
-    ![Cette suite de ce didacticiel vous montrera comment le faire dans SSMS, mais si vous ne souhaitez pas installer et utiliser SSMS vous pouvez obtenir les scripts à partir de la version complète du projet et passer à la section où les stocker dans le dossier de solution.](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
+    ![Dossier migrations](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
     Tout comme la classe d’initialiseur qui vous l’avez vu précédemment, le `Configuration` classe inclut un `Seed` (méthode).
 

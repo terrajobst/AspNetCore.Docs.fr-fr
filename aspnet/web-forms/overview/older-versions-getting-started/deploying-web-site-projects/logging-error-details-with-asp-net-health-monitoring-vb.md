@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: Journalisation des détails de l’erreur avec l’intégrité ASP.NET (VB) de surveillance | Microsoft Docs
 author: rick-anderson
 description: Système de surveillance de l’intégrité de Microsoft fournit un moyen facile et personnalisable pour vous connecter divers événements web, y compris les exceptions non gérées. Ce didacticiel décrit le transfert...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: 09a6c74e-936a-4c04-8547-5bb313a4e4a3
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-vb
 msc.type: authoredcontent
-ms.openlocfilehash: a19c1dc6ad5b3b45501befded4d8f14f7549b019
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: f9aeeb0b3d21707324d239efad4deffcf0f7fead
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37809921"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41832623"
 ---
 <a name="logging-error-details-with-aspnet-health-monitoring-vb"></a>Journalisation des détails de l’erreur avec l’intégrité ASP.NET analyse (VB)
 ====================

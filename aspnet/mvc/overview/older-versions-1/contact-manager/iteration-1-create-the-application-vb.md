@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-applic
 title: 'Itération #1 : créer l’Application (VB) | Microsoft Docs'
 author: microsoft
 description: 'Dans la première itération, nous créons le Gestionnaire de Contact de la façon la plus simple possible. Nous ajoutons la prise en charge pour les opérations de base de données : création, lecture, mise à jour et D....'
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 02/20/2009
 ms.assetid: 5b033582-1646-42c2-b20d-7edc8814e970
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-1-create-the-application-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1a61699ef3ac2936df85ea38cd472ad3f107c070
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: 9369f843719d7198716ff83c5bbd5d3995f70973
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396125"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831388"
 ---
 <a name="iteration-1--create-the-application-vb"></a>Itération #1 : créer l’Application (VB)
 ====================

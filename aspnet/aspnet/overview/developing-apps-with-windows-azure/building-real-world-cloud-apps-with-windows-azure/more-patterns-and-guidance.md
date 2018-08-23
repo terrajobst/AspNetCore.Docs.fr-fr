@@ -3,17 +3,17 @@ uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-clou
 title: Autres modèles et conseils (génération d’applications Cloud réalistes avec Azure) | Microsoft Docs
 author: MikeWasson
 description: Building Real World Cloud Apps with Azure e-book est basé sur une présentation développée par Scott Guthrie. Il explique 13 modèles et pratiques qui peuvent il...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/12/2014
 ms.assetid: 7e97cfc3-d830-4002-8ff7-5790d1ff49e6
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/more-patterns-and-guidance
 msc.type: authoredcontent
-ms.openlocfilehash: 648d797d6e7c38f938a91c90cfd7e18cc9fd3f19
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 071ac0246411d02006e9df84adc154775b110248
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37822672"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826127"
 ---
 <a name="more-patterns-and-guidance-building-real-world-cloud-apps-with-azure"></a>Autres modèles et conseils (génération d’applications Cloud réalistes avec Azure)
 ====================

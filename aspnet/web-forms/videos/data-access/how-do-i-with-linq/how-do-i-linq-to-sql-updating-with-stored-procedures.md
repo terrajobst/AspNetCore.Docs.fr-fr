@@ -3,17 +3,17 @@ uid: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updati
 title: 'Comment faire De LINQ to SQL : mise à jour avec des procédures stockées | Microsoft Docs'
 author: scottstanfield
 description: Remplacer la logique de mise à jour, delete ou insert ORM générée par les vôtres via des procédures stockées. La vidéo montre également en détail comment utiliser le SQL Profiler à...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/13/2008
 ms.assetid: b041ea07-a174-4a57-b2a8-4ce64232bdae
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures
 msc.type: video
-ms.openlocfilehash: a8150937aff608c866b5fb8b0da1544f602594a3
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ab88bf56d3f63a562a121dc7523ad221dc5c68cf
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825825"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41831177"
 ---
 <a name="how-do-i-linq-to-sql-updating-with-stored-procedures"></a>Comment faire De LINQ to SQL : mise à jour avec des procédures stockées
 ====================

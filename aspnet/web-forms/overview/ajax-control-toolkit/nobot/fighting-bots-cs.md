@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
 title: Lutte contre les robots (c#) | Microsoft Docs
 author: wenz
 description: Les robots automatisés plâtre weblogs et autres sites Web indésirable, envoyer des formulaires de commentaire sans interaction de l’utilisateur. Le contrôle nobot de dans la Con AJAX ASP.NET...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 0a1917e0-884a-4576-8e93-9ed660faae51
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ed03b46c8a4859a79322290106a5181867392d0a
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 52ed34e7640cd125a3b4c3b50ab760a7c1d713f1
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37824197"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826378"
 ---
 <a name="fighting-bots-c"></a>Lutte contre les robots (c#)
 ====================

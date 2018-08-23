@@ -3,17 +3,17 @@ uid: web-forms/videos/aspnet-dynamic-data/aspnet-dynamic-data-custom-form-format
 title: Formulaire de données personnalisé ASP.NET Dynamic Data mise en forme | Microsoft Docs
 author: JoeStagner
 description: Dans cette vidéo vous bénéficierez de performances des détails sur la façon dont vous pouvez configurer l’esthétique d’une application de données dynamiques sur les spécificités très de chaque champ...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 12/11/2008
 ms.assetid: acd329de-7676-41b4-8638-189f3e1039f7
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/aspnet-dynamic-data-custom-form-formatting
 msc.type: video
-ms.openlocfilehash: f5998ef697fa0b3249e016f482c6360fa147ddf4
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4969ad4ff4c804d78fe6deeed5ccb9ed8d1faae8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37825520"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827673"
 ---
 <a name="aspnet-dynamic-data-custom-form-formatting"></a>Formulaire de données personnalisé ASP.NET Dynamic Data mise en forme
 ====================

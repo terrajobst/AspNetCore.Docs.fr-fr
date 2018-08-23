@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-col
 title: Ajout d’une colonne GridView de cases à cocher (VB) | Microsoft Docs
 author: rick-anderson
 description: Ce didacticiel explique comment ajouter une colonne de cases à cocher à un contrôle GridView à permettre aux utilisateurs de manière intuitive de la sélection de plusieurs lignes de G....
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 03/06/2007
 ms.assetid: 39253d05-75c0-41c7-b9d4-a6c58ecf69ce
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 01515e0034d69c563cbc96dceb6ae2ee481cc1a0
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: be7fc4fe93d15e7550f873adffa15e82384d25be
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37819568"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41826152"
 ---
 <a name="adding-a-gridview-column-of-checkboxes-vb"></a>Ajout d’une colonne GridView de cases à cocher (VB)
 ====================

@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/master-pages/control-id-n
 title: Contrôler l’ID d’affectation de noms dans les Pages de contenu (VB) | Microsoft Docs
 author: rick-anderson
 description: Explique comment les contrôles ContentPlaceHolder servent de conteneur d’attribution de noms et par conséquent facilitez l’utilisation par programmation un contrôle difficile (via FindConrol)...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/10/2008
 ms.assetid: dbb024a6-f043-4fc5-ad66-56556711875b
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 500f0e729ee73382ba05d38ed0a0bdba2c3c1e11
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 6e9a751538ca28250e4e776ff2c6c3f0185ffbe6
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37808335"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41827484"
 ---
 <a name="control-id-naming-in-content-pages-vb"></a>ID de contrôle d’affectation de noms dans les Pages de contenu (VB)
 ====================

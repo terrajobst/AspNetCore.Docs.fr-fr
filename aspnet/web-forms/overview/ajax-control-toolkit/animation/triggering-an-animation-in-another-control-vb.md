@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-i
 title: Déclenchement d’une Animation dans un autre contrôle (VB) | Microsoft Docs
 author: wenz
 description: Le contrôle d’Animation dans ASP.NET AJAX Control Toolkit n’est pas simplement un contrôle, mais une infrastructure entière pour ajouter des animations à un contrôle. En règle générale, en lançant un...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 06/02/2008
 ms.assetid: 25ebaf1f-5a9f-423d-98c7-1d694e93664f
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-vb
 msc.type: authoredcontent
-ms.openlocfilehash: d9ef7d35e34bd4f2b1433f7fb02d0c48834b2357
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 132f9f85eccabc890308984b9e78ed1d2212c57a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37804890"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833005"
 ---
 <a name="triggering-an-animation-in-another-control-vb"></a>Déclenchement d’une Animation dans un autre contrôle (VB)
 ====================
