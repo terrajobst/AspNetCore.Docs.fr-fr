@@ -5,12 +5,12 @@ description: Découvrez les concepts de base de l’authentification, de l’aut
 ms.author: tdykstra
 ms.date: 11/01/2017
 uid: security/index
-ms.openlocfilehash: ed64594c85d555d8417903947fc3ce927dc04cec
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 3a1c1ea1ad28fccbe5ae91b0be193938b095f60b
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095760"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41749887"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Vue d’ensemble de la sécurité ASP.NET Core
 
@@ -35,9 +35,9 @@ ASP.NET Core et Entity Framework contiennent des fonctionnalités qui vous aiden
 * [Falsification de requête intersites (CSRF, Cross Site Request Forgery)](xref:security/anti-request-forgery)
 * [Attaques par redirection ouverte](xref:security/preventing-open-redirects)
 
-Il existe d’autres failles de sécurité que vous devez connaître. Pour plus d’informations, consultez la section de ce document relative à la *Documentation sur la sécurité ASP.NET*.
+Il existe d’autres failles de sécurité que vous devez connaître. Pour plus d’informations, consultez la section de ce document relative à la *Documentation sur la sécurité ASP.NET Core*.
 
-## <a name="aspnet-security-documentation"></a>Documentation sur la sécurité ASP.NET
+## <a name="aspnet-core-security-documentation"></a>Documentation sur la sécurité ASP.NET Core
 
 *   [Authentification](xref:security/authentication/index)
     *   [Présentation d’Identity](xref:security/authentication/identity)
