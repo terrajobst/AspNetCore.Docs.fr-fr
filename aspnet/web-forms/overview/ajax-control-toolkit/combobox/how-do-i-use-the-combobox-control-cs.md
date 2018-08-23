@@ -3,17 +3,17 @@ uid: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-
 title: Comment utiliser le contrôle de zone de liste déroulante ? (C#) | Microsoft Docs
 author: microsoft
 description: Zone de liste déroulante est un contrôle ASP.NET AJAX qui combine la souplesse d’une zone de texte avec une liste d’options à partir de laquelle les utilisateurs peuvent choisir.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: 0bbf4134-04df-4226-8930-d5bb99e27128
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 07da594647c9b43bd31644aa8c7fedb256a12916
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: edf3786600a8ec7b58422e1ec20e71e2b749d6e4
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37839279"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41836487"
 ---
 <a name="how-do-i-use-the-combobox-control-c"></a>Comment utiliser le contrôle de zone de liste déroulante ? (C#)
 ====================

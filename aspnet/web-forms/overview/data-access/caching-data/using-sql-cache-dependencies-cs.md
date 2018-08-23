@@ -3,17 +3,17 @@ uid: web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-cs
 title: À l’aide de dépendances de Cache SQL (c#) | Microsoft Docs
 author: rick-anderson
 description: La stratégie de mise en cache la plus simple consiste à autoriser les données mises en cache expirent après une période spécifiée. Mais cette approche simple signifie que le données mises en cache maintai...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 05/30/2007
 ms.assetid: 0e91842c-7f10-4aed-8c23-4ee3e2774014
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 3401babaa3541bcf214f778b5ad4f1ea4ae76b38
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: ddd0ce9e8e0f69da6f9c0f65165e4842d460f0c0
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37802583"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41833446"
 ---
 <a name="using-sql-cache-dependencies-c"></a>À l’aide de dépendances de Cache SQL (c#)
 ====================

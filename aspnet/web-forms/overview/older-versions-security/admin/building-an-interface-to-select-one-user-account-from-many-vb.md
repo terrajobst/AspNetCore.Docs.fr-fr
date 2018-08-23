@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-security/admin/building-an-interface-to-s
 title: Création d’une Interface pour sélectionner un compte d’utilisateur à partir de nombreux (VB) | Microsoft Docs
 author: rick-anderson
 description: Dans ce didacticiel, nous allons créer une interface utilisateur avec une grille paginée, filtrable. En particulier, l’interface utilisateur se compose d’une série de type LinkButton pour...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/01/2008
 ms.assetid: da53380c-a16b-41c7-a20d-24343c735c52
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-vb
 msc.type: authoredcontent
-ms.openlocfilehash: af2a9692e03f147dfc1389f8c13b7d4fd758d62e
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: bb30c5d3ce6e04f60d8192e8ed0404b89031b4b9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37803250"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824531"
 ---
 <a name="building-an-interface-to-select-one-user-account-from-many-vb"></a>Création d’une Interface pour sélectionner un compte d’utilisateur à partir de nombreux (VB)
 ====================

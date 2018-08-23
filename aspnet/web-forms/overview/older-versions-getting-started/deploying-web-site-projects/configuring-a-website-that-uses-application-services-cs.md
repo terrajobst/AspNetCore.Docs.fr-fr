@@ -3,17 +3,17 @@ uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projec
 title: Configuration d’un site Web qui utilise les Services d’Application (c#) | Microsoft Docs
 author: rick-anderson
 description: ASP.NET version 2.0 a introduit une série de services d’application, qui font partie du .NET Framework et de répondre à une suite de bloc de construction de services qui yo...
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 04/23/2009
 ms.assetid: 1e33d1c6-3f9f-4c26-81e2-2a8f8907bb05
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-a-website-that-uses-application-services-cs
 msc.type: authoredcontent
-ms.openlocfilehash: 9bbf6d84c3ca25a3476901ec3d7996d5ca197446
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 4cec939795c2b3abfd51c894f985dfd2eb7bc361
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37837650"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41837125"
 ---
 <a name="configuring-a-website-that-uses-application-services-c"></a>Configuration d’un site Web qui utilise les Services d’Application (c#)
 ====================

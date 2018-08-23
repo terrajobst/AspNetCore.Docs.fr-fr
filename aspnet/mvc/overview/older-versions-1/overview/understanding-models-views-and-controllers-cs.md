@@ -3,17 +3,17 @@ uid: mvc/overview/older-versions-1/overview/understanding-models-views-and-contr
 title: Présentation des modèles, vues et contrôleurs (c#) | Microsoft Docs
 author: StephenWalther
 description: Des doutes quant aux modèles, vues et contrôleurs ? Dans ce didacticiel, Stephen Walther vous présente les différentes parties d’une application ASP.NET MVC.
-ms.author: aspnetcontent
+ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: 87313792-0a96-4caf-89fc-1457d54e5c1e
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-models-views-and-controllers-cs
 msc.type: authoredcontent
-ms.openlocfilehash: c4c5247ac4b880c1be60f0419ebc9fc9b790c639
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 5e9186a6c261266de8f1a1509a49b84b359bd920
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37823392"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41824326"
 ---
 <a name="understanding-models-views-and-controllers-c"></a>Présentation des modèles, vues et contrôleurs (c#)
 ====================
@@ -120,15 +120,15 @@ Cette URL est analysée dans les trois paramètres comme suit :
 
 Contrôleur = employé
 
-Action = Index
+action = Index
 
 ID =
 
 Enfin, si vous ouvrez une Application ASP.NET MVC sans fournir n’importe quelle URL (par exemple, `http://localhost`), l’URL est analysé comme suit :
 
-Contrôleur = Home
+contrôleur = Home
 
-Action = Index
+action = Index
 
 ID =
 
