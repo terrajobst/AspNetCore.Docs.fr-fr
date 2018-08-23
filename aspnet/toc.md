@@ -953,7 +953,7 @@
 ##### [État sélectif d’une vue](web-forms/videos/net-4/performance/aspnet-4-quick-hit-selective-view-state.md)
 ##### [Compression d’état facile](web-forms/videos/net-4/performance/aspnet-4-quick-hit-easy-state-compression.md)
 ##### [Utiliser la propriété ViewStateMode pour la gestion de ViewState](web-forms/videos/net-4/performance/how-do-i-use-the-viewstatemode-property-for-managing-viewstate.md)
-#### [Routage](web-forms/videos/net-4/routing/index.md)
+#### [Le routage](web-forms/videos/net-4/routing/index.md)
 ##### [Redirection permanente](web-forms/videos/net-4/routing/aspnet-4-quick-hit-permanent-redirect.md)
 ##### [Routage WebForms impératif](web-forms/videos/net-4/routing/aspnet-4-quick-hit-imperative-webforms-routing.md)
 ##### [Routage WebForms déclaratif](web-forms/videos/net-4/routing/aspnet-4-quick-hit-declarative-webforms-routing.md)
@@ -1318,7 +1318,7 @@
 #### [Utilisation de l’API web avec ASP.NET Web Forms](web-api/overview/getting-started-with-aspnet-web-api/using-web-api-with-aspnet-web-forms.md)
 #### [Création de pages d’aide de l’API web](web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages.md)
 #### [Atelier pratique : Créer une application à une seule page avec l’API web ASP.NET et Angular.js](web-api/overview/getting-started-with-aspnet-web-api/build-a-single-page-application-spa-with-aspnet-web-api-and-angularjs.md)
-### [Routage](web-api/overview/web-api-routing-and-actions/index.md)
+### [Le routage](web-api/overview/web-api-routing-and-actions/index.md)
 #### [Routage dans l’API web](web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api.md)
 #### [Routage et sélection des actions dans l’API web](web-api/overview/web-api-routing-and-actions/routing-and-action-selection.md)
 #### [Routage d’attributs dans Web API 2](web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2.md)
@@ -1449,7 +1449,7 @@
 ##### [Suppression de données de la base de données](web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data.md)
 ##### [Création d’une disposition cohérente](web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts.md)
 ##### [Publication d’un site avec WebMatrix](web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing.md)
-### [Routage](web-pages/overview/routing/index.md)
+### [Le routage](web-pages/overview/routing/index.md)
 #### [Création d’URL lisibles dans les sites ASP.NET Web Pages](web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites.md)
 ### [Interface utilisateur, dispositions et thèmes](web-pages/overview/ui-layouts-and-themes/index.md)
 #### [Utilisation des formulaires](web-pages/overview/ui-layouts-and-themes/4-working-with-forms.md)
@@ -1640,7 +1640,8 @@
 
 
 
-
+# [Visual Studio 2017](visual-studio/overview/2017/index.md)
+## [Optimiser les performances de génération de solution](xref:visual-studio/overview/2017/optimize-build-perf)
 
 # [Visual Studio 2013](visual-studio/overview/2013/index.md)
 ## [Création de projets web ASP.NET dans Visual Studio 2013](visual-studio/overview/2013/creating-web-projects-in-visual-studio.md)
