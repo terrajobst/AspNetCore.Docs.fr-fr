@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/24/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: ece61a3e362ec5e2ff8f415351a0f9257fc72098
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: 9a7d20378cac597b748d8a60eb0f0bf17c9ba082
+ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228609"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41746417"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Héberger ASP.NET Core sur Azure App Service
 
@@ -99,7 +99,7 @@ Pour plus d’informations, consultez [Fournisseurs de stockage de clés](xref:s
 Les applications basées sur la version préliminaire d’ASP.NET Core peuvent être déployées sur Azure App Service avec les approches suivantes :
 
 * [Installer l’extension de site de version Preview](#install-the-preview-site-extension)
-* [Déployer l’application autonome](#deploy-the-app-self-contained)
+<!-- * [Deploy the app self-contained](#deploy-the-app-self-contained) -->
 * [Utiliser Docker avec Web Apps pour conteneurs](#use-docker-with-web-apps-for-containers)
 
 Si un problème se produit quand vous utilisez l’extension de site de version Preview, ouvrez un problème sur [GitHub](https://github.com/aspnet/azureintegration/issues/new).
@@ -130,7 +130,7 @@ Si la version `2.1.300-preview1-008174` est la dernière préversion, vous obten
 
 La version d’ASP.NET Core indiquée dans l’image précédente, `2.1.300-preview1-008174`, est un exemple. La dernière préversion d’ASP.NET Core au moment de la configuration de l’extension de site s’affiche quand vous exécutez `dotnet --info`.
 
-La commande `dotnet --info` affiche le chemin de l’extension de site où la version préliminaire a été installée. Il indique que l’application s’exécute depuis l’extension de site au lieu de l’emplacement de *ProgramFiles* par défaut. Si vous voyez *ProgramFiles*, redémarrez le site et exécutez `dotnet --info`.
+La commande `dotnet --info` affiche le chemin de l’extension de site où la préversion a été installée. Il indique que l’application s’exécute depuis l’extension de site au lieu de l’emplacement de *ProgramFiles* par défaut. Si vous voyez *ProgramFiles*, redémarrez le site et exécutez `dotnet --info`.
 
 **Utiliser l’extension de site de la version Preview avec un modèle ARM**
 
@@ -138,14 +138,16 @@ Si un modèle ARM est utilisé pour créer et déployer des applications, le typ
 
 [!code-json[Main](index/sample/arm.json?highlight=2)]
 
-### <a name="deploy-the-app-self-contained"></a>Déployer l’application autonome
+<!--
+### Deploy the app self-contained
 
-Vous pouvez déployer une [application autonome](/dotnet/core/deploying/#self-contained-deployments-scd) qui emporte avec elle la version Preview dans le déploiement. Pendant le déploiement d’une application autonome :
+A [self-contained app](/dotnet/core/deploying/#self-contained-deployments-scd) can be deployed that carries the preview runtime in the deployment. When deploying a self-contained app:
 
-* Le site n’a pas besoin d’être préparé.
-* L’application doit être publiée autrement que dans le cadre d’un déploiement dépendant du framework avec le runtime partagé et l’hôte sur le serveur.
+* The site doesn't need to be prepared.
+* The app must be published differently than when publishing for a framework-dependent deployment with the shared runtime and host on the server.
 
-Les applications autonomes sont une option pour toutes les applications ASP.NET Core.
+Self-contained apps are an option for all ASP.NET Core apps.
+-->
 
 ### <a name="use-docker-with-web-apps-for-containers"></a>Utiliser Docker avec Web Apps pour conteneurs
 
