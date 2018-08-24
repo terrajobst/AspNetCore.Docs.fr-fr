@@ -31,7 +31,7 @@ La bibliothèque de client SignalR JavaScript est remise en tant qu’un [npm](h
   npm install @aspnet/signalr
   ```
 
-npm installe le contenu du package dans le *node_modules\\ @aspnet\signalr\dist\browser*  dossier. Créez un dossier nommé *signalr* sous le *wwwroot\\lib* dossier. Copie le *signalr.js* de fichiers à la *wwwroot\lib\signalr* dossier.
+npm installe le contenu du package dans le *node_modules\\ @aspnet\signalr\dist\browser* dossier. Créez un dossier nommé *signalr* sous le *wwwroot\\lib* dossier. Copie le *signalr.js* de fichiers à la *wwwroot\lib\signalr* dossier.
 
 ## <a name="use-the-signalr-javascript-client"></a>Utilisez le client SignalR JavaScript
 
