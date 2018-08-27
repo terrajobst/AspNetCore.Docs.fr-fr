@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment créer des Tag Helpers dans ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 01/19/2018
+ms.date: 08/20/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 5873c6dbdeba1b5f2bf7ac85d8992480228b7125
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2d39488caeea0c87d2efc79f265de7feb200f096
+ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275315"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41751483"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
@@ -35,7 +35,7 @@ Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mai
 
 ```html
 <email>Support</email>
-   ```
+```
 
 Le serveur utilise notre Tag Helper e-mail pour convertir ce balisage en code suivant :
 
@@ -179,7 +179,7 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
 
 ```csharp
 [HtmlTargetElement("MyBold")]
-   ```
+```
 
 ## <a name="pass-a-model-to-a-tag-helper"></a>Passer un modèle à un Tag Helper
 
@@ -245,26 +245,8 @@ Le Tag Helper Condition restitue la sortie quand une valeur true lui est transmi
 
 2. Remplacez le contenu du fichier *Views/Home/Index.cshtml* par le balisage suivant :
 
-   ```cshtml
-   @using AuthoringTagHelpers.Models
-   @model WebsiteContext
-    
-   @{
-       ViewData["Title"] = "Home Page";
-   }
-    
-   <div>
-       <h3>Information about our website (outdated):</h3>
-       <website-information info=@Model />
-       <div condition="@Model.Approved">
-           <p>
-               This website has <strong surround="em"> @Model.Approved </strong> been approved yet.
-               Visit www.contoso.com for more information.
-           </p>
-       </div>
-   </div>
-   ```
-    
+   [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
+
 3. Remplacez la méthode `Index` dans le contrôleur `Home` par le code suivant :
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Controllers/HomeController.cs?range=9-18)]

@@ -5,12 +5,12 @@ description: Découvrez les concepts de base de génération d’une application
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 10e9174b0bf094f7a4ea820a5afcf2705f900327
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: bc18ec3ad3bb7e3afe38030a34b2e748ce9e341b
+ms.sourcegitcommit: 74c09caec8992635825b45b7f065f871d33c077a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38157170"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42634975"
 ---
 # <a name="get-started-with-razor-pages-in-aspnet-core"></a>Bien démarrer avec des pages Razor dans ASP.NET Core
 
@@ -65,6 +65,8 @@ L’illustration suivante montre l’application une fois le suivi accepté :
 * Si vous lancez l’application avec **Ctrl+F5** (mode sans débogage), vous pouvez effectuer des modifications du code, enregistrer le fichier, actualiser le navigateur et afficher les modifications du code. De nombreux développeurs préfèrent utiliser le mode sans débogage pour lancer rapidement l’application et afficher les changements.
 
 [!INCLUDE [razor-pages-start](~/includes/RP/2.1/razor-pages-start.md)]
+
+[!INCLUDE [F7](~/includes/RP/F7.md)]
 
 ::: moniker-end
 
