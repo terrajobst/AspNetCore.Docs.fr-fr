@@ -8,12 +8,12 @@ ms.date: 02/21/2014
 ms.assetid: 5fa1daf9-1161-4cfa-bd4c-658f48b2c229
 msc.legacyurl: /web-forms/what-is-web-forms
 msc.type: content
-ms.openlocfilehash: ccb0e6096b0281e5ef8af63bfd84b172e7f209b9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e135cfa2945b9e7e5269eb436ff0c1dff20aacdf
+ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836523"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055710"
 ---
 <a name="what-is-web-forms"></a>Nouveautés de Web Forms
 ====================
@@ -21,7 +21,7 @@ ASP.NET Web Forms fait partie de l’infrastructure d’application web ASP.NET 
 
 Web Forms sont des pages qui demandent de vos utilisateurs à l’aide de leur navigateur. Ces pages peuvent être écrites à l’aide d’une combinaison de HTML, client-script, de contrôles serveur et de code serveur. Lorsque des utilisateurs demandent une page, il est compilé et exécuté sur le serveur par l’infrastructure, et l’infrastructure génère ensuite le balisage HTML qui peut être rendus par le navigateur. Une page Web Forms ASP.NET présente des informations à l’utilisateur dans n’importe quel navigateur ou l’appareil client.
 
-À l’aide de Visual Studio, vous pouvez créer des pages Web Forms ASP.NET. L’environnement de développement intégré de Visual Studio (IDE) vous permet de faire glisser des contrôles de serveur pour présenter votre page Web Forms. Vous pouvez ensuite facilement définir propriétés, méthodes et événements pour les contrôles sur la page ou pour la page elle-même. Ces propriétés, les méthodes et les événements sont utilisés pour définir la page web comportement, apparence et ainsi de suite. Pour écrire du code serveur pour gérer la logique de la page, vous pouvez utiliser un langage .NET tels que Visual Basic ou c#.
+À l’aide de Visual Studio, vous pouvez créer des pages Web Forms ASP.NET. L’environnement de développement intégré de Visual Studio (IDE) vous permet de faire glisser des contrôles de serveur pour présenter votre page Web Forms. Vous pouvez ensuite facilement définir propriétés, méthodes et événements pour les contrôles sur la page ou de la page elle-même. Ces propriétés, les méthodes et les événements sont utilisés pour définir la page web comportement, apparence et ainsi de suite. Pour écrire du code serveur pour gérer la logique de la page, vous pouvez utiliser un langage .NET tels que Visual Basic ou c#.
 
 > [!NOTE] 
 > 
