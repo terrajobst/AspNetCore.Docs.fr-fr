@@ -1,467 +1,1545 @@
 ---
 title: Configuration dans ASP.NET Core
-author: rick-anderson
+author: guardrex
 description: Découvrez comment utiliser l’API de configuration pour configurer une application ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/11/2018
+ms.date: 08/13/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 59ab0cd0f6975d15bd01ce7e4128521938182c24
-ms.sourcegitcommit: b4c7b1a4c48dec0865f27874275c73da1f75e918
+ms.openlocfilehash: a0c57e75b28bc7c5590d20a8fa59b00b6bb9af4e
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228622"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927876"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Mark Michaelis](http://intellitect.com/author/mark-michaelis/), [Steve Smith](https://ardalis.com/), [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)
+Par [Luke Latham](https://github.com/guardrex)
 
-L’API de configuration fournit un moyen de configurer une application web ASP.NET Core basé sur une liste de paires nom/valeur. La configuration est lue au moment de l’exécution à partir de plusieurs sources. Les paires nom/valeur peuvent être regroupées dans une hiérarchie à plusieurs niveaux.
-
-Il existe des fournisseurs de configuration pour les éléments suivants :
-
-* Formats de fichiers (INI, JSON et XML).
-* Arguments de ligne de commande
-* Variables d'environnement.
-* Objets .NET en mémoire.
-* Stockage [Secret Manager](xref:security/app-secrets) non chiffré.
-* Magasin utilisateur chiffré comme [Azure Key Vault](xref:security/key-vault-configuration).
-* Fournisseurs personnalisés (installés ou créés).
-
-Chaque valeur de configuration correspond à une clé de chaîne. Une liaison intégrée est prise en charge pour désérialiser les paramètres dans un objet [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object) personnalisé (une classe .NET simple avec des propriétés).
-
-Le modèle d’options utilise des classes d’options pour représenter les groupes de paramètres associés. Pour plus d’informations sur l’utilisation du modèle d’options, consultez la rubrique [Options](xref:fundamentals/configuration/options).
-
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+La configuration d’application dans ASP.NET Core est basée sur des paires clé-valeur établies par les *fournisseurs de configuration*. Les fournisseurs de configuration lisent les données de configuration dans les paires clé-valeur à partir de diverses sources de configuration :
 
 ::: moniker range=">= aspnetcore-2.1"
 
+* Azure Key Vault
+* Arguments de ligne de commande
+* Fournisseurs personnalisés (installés ou créés)
+* Fichiers de répertoire
+* Variables d’environnement
+* Objets .NET en mémoire
+* Fichiers de paramètres
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0 || aspnetcore-1.1"
+
+* Azure Key Vault
+* Arguments de ligne de commande
+* Fournisseurs personnalisés (installés ou créés)
+* Variables d’environnement
+* Objets .NET en mémoire
+* Fichiers de paramètres
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.0"
+
+* Arguments de ligne de commande
+* Fournisseurs personnalisés (installés ou créés)
+* Variables d’environnement
+* Objets .NET en mémoire
+* Fichiers de paramètres
+
+::: moniker-end
+
+Le *modèle d’options* est une extension des concepts de configuration décrits dans cette rubrique. Le modèle d’options utilise des classes pour représenter les groupes de paramètres associés. Pour plus d’informations sur l’utilisation du modèle d’options, consultez <xref:fundamentals/configuration/options>.
+
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+
 Les exemples fournis dans cette rubrique s’appuient sur :
 
-* Définition du chemin de base de l’application avec [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath). `SetBasePath` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
-* Résolution des sections des fichiers de configuration avec [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection). `GetSection` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
-* Configuration de liaison avec [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind). `Bind` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/).
+* Définition du chemin de base de l’application avec <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>. `SetBasePath` est mis à la disposition d’une application en référençant le package [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
+* Résolution des sections des fichiers de configuration avec <xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetSection*>. `GetSection` est mis à la disposition d’une application en référençant le package [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
+* Liaison de la configuration aux classes .NET avec <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> et [Get&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*). `Bind` et `Get<T>` sont mis à la disposition d’une application en référençant le package [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/). `Get<T>` est disponible dans ASP.NET Core 1.1 et versions ultérieures.
 
-Ces packages sont inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+::: moniker range=">= aspnetcore-2.1"
+
+Ces trois packages sont inclus dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-Les exemples fournis dans cette rubrique s’appuient sur :
-
-* Définition du chemin de base de l’application avec [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath). `SetBasePath` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
-* Résolution des sections des fichiers de configuration avec [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection). `GetSection` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
-* Configuration de liaison avec [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind). `Bind` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/).
-
-Ces packages sont inclus dans le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
+Ces trois packages sont inclus dans le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-1.1"
+## <a name="host-vs-app-configuration"></a>Configuration de l’hôte ou configuration de l’application
 
-Les exemples fournis dans cette rubrique s’appuient sur :
+Avant que l’application ne soit configurée et démarrée, un *hôte* est configuré et lancé. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. L’application et l’hôte sont configurés à l’aide des fournisseurs de configuration décrits dans cette rubrique. Les paires clé-valeur de la configuration de l’hôte font partie de la configuration générale de l’application. Pour plus d’informations sur l’utilisation des fournisseurs de configuration lors de la génération de l’hôte et l’impact des sources de configuration sur la configuration de l’hôte, consultez <xref:fundamentals/host/index>.
 
-* Définition du chemin de base de l’application avec [SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath). `SetBasePath` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.FileExtensions/).
-* Résolution des sections des fichiers de configuration avec [GetSection](/dotnet/api/microsoft.extensions.configuration.configurationsection.getsection). `GetSection` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration/).
-* Configuration de liaison avec [Bind](/dotnet/api/microsoft.extensions.configuration.configurationbinder.bind). `Bind` est mis à la disposition de l’application en référençant le package [Microsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder/).
+## <a name="security"></a>Sécurité
 
-::: moniker-end
+Adoptez les meilleures pratiques suivantes :
 
-## <a name="json-configuration"></a>Configuration JSON
+* Ne stockez jamais des mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte clair.
+* N’utilisez aucun secret de production dans les environnements de développement ou de test.
+* Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source.
 
-L’application console suivante utilise le fournisseur de configuration JSON :
+En savoir plus sur [l’utilisation de plusieurs environnements](xref:fundamentals/environments) et la gestion du [stockage sécurisé des secrets d’application dans le développement avec Secret Manager](xref:security/app-secrets) (contient des conseils sur l’utilisation des variables d’environnement pour stocker les données sensibles). Secret Manager utilise le fournisseur de configuration de fichier pour stocker les secrets utilisateur dans un fichier JSON sur le système local. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
 
-[!code-csharp[](index/sample/ConfigJson/Program.cs)]
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) constitue une option pour le stockage sécurisé des secrets d’application. Pour plus d'informations, consultez <xref:security/key-vault-configuration>.
 
-L’application lit et affiche les paramètres de configuration suivants :
+## <a name="hierarchical-configuration-data"></a>Données de configuration hiérarchiques
 
-[!code-json[](index/sample/ConfigJson/appsettings.json)]
+L’API Configuration est capable de maintenir des données de configuration hiérarchiques en aplanissant les données hiérarchiques à l’aide d’un délimiteur dans les clés de configuration.
 
-La configuration est constituée d’une liste hiérarchique de paires nom/valeur, dans laquelle les nœuds sont séparés par un signe deux-points (`:`). Pour récupérer une valeur, accédez à l’indexeur `Configuration` avec la clé de l’élément correspondant :
+Dans le fichier JSON suivant, quatre clés existent dans une structure hiérarchique à deux sections :
 
-[!code-csharp[](index/sample/ConfigJson/Program.cs?range=21-22)]
-
-Pour utiliser des tableaux dans des sources de configuration au format JSON, utilisez un index de tableau comme partie d’une chaîne séparée par des signes deux-points. L’exemple suivant obtient le nom du premier élément dans le tableau `wizards` précédent :
-
-```csharp
-Console.Write($"{Configuration["wizards:0:Name"]}");
-// Output: Gandalf
-```
-
-Les paires nom/valeur écrites dans les fournisseurs [Configuration](/dotnet/api/microsoft.extensions.configuration) intégrés ne sont **pas** conservées. Toutefois, un fournisseur personnalisé qui enregistre les valeurs peut être créé. Consultez la section relative à la création d’un [fournisseur de configuration personnalisé](xref:fundamentals/configuration/index#custom-config-providers).
-
-L’exemple précédent utilise l’indexeur de configuration pour lire des valeurs. Pour accéder à la configuration en dehors de `Startup`, utilisez le *modèle d’options*. Pour plus d’informations, consultez la rubrique [Options](xref:fundamentals/configuration/options).
-
-## <a name="xml-configuration"></a>Configuration XML
-
-Pour utiliser des tableaux dans des sources de configuration au format XML, fournissez un index `name` à chaque élément. Utilisez l’index pour accéder aux valeurs :
-
-```xml
-<wizards>
-  <wizard name="Gandalf">
-    <age>1000</age>
-  </wizard>
-  <wizard name="Harry">
-    <age>17</age>
-  </wizard>
-</wizards>
-```
-
-```csharp
-Console.Write($"{Configuration["wizard:Harry:age"]}");
-// Output: 17
-```
-
-## <a name="configuration-by-environment"></a>Configuration par environnement
-
-Il est courant d’avoir des paramètres de configuration différents pour différents environnements, par exemple pour l’environnement de développement, de test et de production. La méthode d’extension `CreateDefaultBuilder` dans une application ASP.NET Core 2.x (ou l’utilisation de `AddJsonFile` et de `AddEnvironmentVariables` directement dans une application ASP.NET Core 1.x) ajoute des fournisseurs de configuration pour la lecture des fichiers JSON et des sources de configuration système :
-
-* *appsettings.json*
-* *appsettings.\<nom_environnement>.json*
-* Variables d’environnement
-
-Les applications ASP.NET Core 1.x doivent appeler `AddJsonFile` et [AddEnvironmentVariables](/dotnet/api/microsoft.extensions.configuration.environmentvariablesextensions.addenvironmentvariables#Microsoft_Extensions_Configuration_EnvironmentVariablesExtensions_AddEnvironmentVariables_Microsoft_Extensions_Configuration_IConfigurationBuilder_System_String_).
-
-Consultez [AddJsonFile](/dotnet/api/microsoft.extensions.configuration.jsonconfigurationextensions) pour obtenir une explication des paramètres. `reloadOnChange` est pris en charge uniquement dans ASP.NET Core 1.1 et ultérieur.
-
-Les sources de configuration sont lues dans l’ordre où elles sont spécifiées. Dans le code précédent, les variables d’environnement sont lues en dernier. Toutes les valeurs de configuration définies dans l’environnement remplacent celles définies dans les deux fournisseurs précédents.
-
-Considérez le fichier *appsettings.Staging.json* suivant :
-
-[!code-json[](index/sample/appsettings.Staging.json)]
-
-Dans le code suivant, `Configure` lit la valeur de `MyConfig` :
-
-[!code-csharp[](index/sample/StartupConfig.cs?name=snippet&highlight=3,4)]
-
-L’environnement est généralement défini sur `Development`, `Staging` ou `Production`. Pour plus d’informations, consultez [Utiliser plusieurs environnements](xref:fundamentals/environments).
-
-Points à prendre en considération pour la configuration :
-
-* [IOptionsSnapshot](xref:fundamentals/configuration/options#reload-configuration-data-with-ioptionssnapshot) peut recharger les données de configuration quand elles changent.
-* Les clés de configuration ne respectent **pas** la casse.
-* Ne stockez **jamais** des mots de passe ou d’autres données sensibles dans le code du fournisseur de configuration ou dans les fichiers de configuration en texte clair. N’utilisez aucun secret de production dans les environnements de développement ou de test. Spécifiez les secrets en dehors du projet afin qu’ils ne puissent pas être validés par inadvertance dans un référentiel de code source. Découvrez plus en détail comment [utiliser plusieurs environnements](xref:fundamentals/environments) et gérer le [stockage sécurisé des secrets des applications lors du développement](xref:security/app-secrets).
-* Pour les valeurs de configuration hiérarchiques spécifiées dans des variables d’environnement, un signe deux-points (`:`) peut ne pas fonctionner sur toutes les plateformes. Le trait de soulignement double (`__`) est pris en charge par toutes les plateformes.
-* Pour l’interaction avec l’API de configuration, un signe deux-points (`:`) fonctionne sur toutes les plateformes.
-
-## <a name="in-memory-provider-and-binding-to-a-poco-class"></a>Fournisseur en mémoire et liaison à une classe POCO
-
-L’exemple suivant montre comment utiliser le fournisseur en mémoire et le lier à une classe :
-
-[!code-csharp[](index/sample/InMemory/Program.cs)]
-
-Les valeurs de configuration sont retournées sous forme de chaînes, mais la liaison permet la construction d’objets. En effet, la liaison permet la récupération des objets POCO ou même des graphes d’objets entiers.
-
-### <a name="getvalue"></a>GetValue
-
-L’exemple suivant illustre la méthode d’extension [GetValue&lt;T&gt;](/dotnet/api/microsoft.extensions.configuration.configurationbinder.get?view=aspnetcore-2.0#Microsoft_Extensions_Configuration_ConfigurationBinder_Get__1_Microsoft_Extensions_Configuration_IConfiguration_) :
-
-[!code-csharp[](index/sample/InMemoryGetValue/Program.cs?highlight=31)]
-
-La méthode `GetValue<T>` de ConfigurationBinder permet de spécifier une valeur par défaut (80 dans l’exemple). `GetValue<T>` est destiné aux scénarios simples et n’établit pas de liaison à des sections entières. `GetValue<T>` obtient les valeurs scalaires de `GetSection(key).Value` converties en un type spécifique.
-
-## <a name="bind-to-an-object-graph"></a>Établir une liaison à un graphe d’objets
-
-Chaque objet d’une classe peut se voir établir une liaison récursive. Considérez la classe `AppSettings` suivante :
-
-[!code-csharp[](index/sample/ObjectGraph/AppSettings.cs)]
-
-L’exemple suivant crée une liaison à la classe `AppSettings` :
-
-[!code-csharp[](index/sample/ObjectGraph/Program.cs?highlight=15-16)]
-
-**ASP.NET Core 1.1** et les versions ultérieures peuvent utiliser `Get<T>`, qui fonctionne avec des sections entières. Il peut être plus pratique d’utiliser `Get<T>` que `Bind`. Le code suivant montre comment utiliser `Get<T>` avec l’exemple précédent :
-
-```csharp
-var appConfig = config.GetSection("App").Get<AppSettings>();
-```
-
-En utilisant le fichier *appsettings.json* suivant :
-
-[!code-json[](index/sample/ObjectGraph/appsettings.json)]
-
-Le programme affiche `Height 11`.
-
-Le code suivant peut être utilisé pour effectuer un test unitaire sur la configuration :
-
-```csharp
-[Fact]
-public void CanBindObjectTree()
+```json
 {
-    var dict = new Dictionary<string, string>
-        {
-            {"App:Profile:Machine", "Rick"},
-            {"App:Connection:Value", "connectionstring"},
-            {"App:Window:Height", "11"},
-            {"App:Window:Width", "11"}
-        };
-    var builder = new ConfigurationBuilder();
-    builder.AddInMemoryCollection(dict);
-    var config = builder.Build();
-
-    var settings = new AppSettings();
-    config.GetSection("App").Bind(settings);
-
-    Assert.Equal("Rick", settings.Profile.Machine);
-    Assert.Equal(11, settings.Window.Height);
-    Assert.Equal(11, settings.Window.Width);
-    Assert.Equal("connectionstring", settings.Connection.Value);
+  "section0": {
+    "key0": "value",
+    "key1": "value"
+  },
+  "section1": {
+    "key0": "value",
+    "key1": "value"
+  }
 }
 ```
 
-<a name="custom-config-providers"></a>
+Lorsque le fichier est lu dans la configuration, des clés uniques sont créées pour gérer la structure des données hiérarchiques d’origine de la source de configuration. Les sections et les clés sont aplanies à l’aide d’un signe deux-points (`:`) pour conserver la structure d’origine :
 
-## <a name="create-an-entity-framework-custom-provider"></a>Créer un fournisseur personnalisé Entity Framework
+* section0:key0
+* section0:key1
+* section1:key0
+* section1:key1
 
-Dans cette section, un fournisseur de configuration de base qui lit des paires nom/valeur à partir d’une base de données utilisant Entity Framework est créé.
+Les méthodes <xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetSection*> et <xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*> sont disponibles pour isoler les sections et les enfants d’une section dans les données de configuration. Ces méthodes sont décrites plus loin dans [GetSection, GetChildren et Exists](#getsection-getchildren-and-exists).
 
-Définissez une entité `ConfigurationValue` pour le stockage des valeurs de configuration dans la base de données :
+## <a name="conventions"></a>Conventions
 
-[!code-csharp[](index/sample/CustomConfigurationProvider/ConfigurationValue.cs)]
+Au démarrage de l’application, les sources de configuration sont lues dans l’ordre où leurs fournisseurs de configuration sont spécifiés.
 
-Ajoutez un `ConfigurationContext` pour stocker les valeurs configurées et y accéder :
+Les fournisseurs de configuration de fichier peuvent recharger la configuration lorsqu’un fichier de paramètres sous-jacent est modifié après le démarrage de l’application. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
 
-[!code-csharp[](index/sample/CustomConfigurationProvider/ConfigurationContext.cs?name=snippet1)]
+<xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur [Dependency Injection (DI)](xref:fundamentals/dependency-injection) de l’application. Les fournisseurs de configuration ne peuvent pas utiliser le DI, car celui-ci n’est pas disponible lorsque les fournisseurs sont configurés par l’hôte.
 
-Créez une classe qui implémente [IConfigurationSource](/dotnet/api/Microsoft.Extensions.Configuration.IConfigurationSource) :
+Les clés de configuration adoptent les conventions suivantes :
 
-[!code-csharp[](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationSource.cs?highlight=7)]
+* Les clés ne respectent pas la casse. Par exemple, `ConnectionString` et `connectionstring` sont traités en tant que clés équivalentes.
+* Si une valeur pour la même clé est définie par des fournisseurs de configuration identiques ou différents, la valeur utilisée est la dernière valeur définie sur la clé.
+* Clés hiérarchiques
+  * Dans l’API Configuration, un séparateur sous forme de signe deux-points (`:`) fonctionne sur toutes les plateformes.
+  * Dans les variables d’environnement, un séparateur sous forme de signe deux-points peut ne pas fonctionner sur toutes les plateformes. Un trait de soulignement double (`__`) est pris en charge par toutes les plateformes et converti en signe deux-points.
+  * Dans Azure Key Vault, les clés hiérarchiques utilisent `--` (deux tirets) comme séparateur. Vous devez fournir du code pour remplacer les tirets par un signe deux-points lorsque les secrets sont chargés dans la configuration de l’application.
+* <xref:Microsoft.Extensions.Configuration.ConfigurationBinder> prend en charge la liaison de tableaux à des objets à l’aide d’index de tableau dans les clés de configuration. La liaison de tableau est décrite dans la section [Lier un tableau à une classe](#bind-an-array-to-a-class).
 
-Créez le fournisseur de configuration personnalisé en héritant de [ConfigurationProvider](/dotnet/api/Microsoft.Extensions.Configuration.ConfigurationProvider). Le fournisseur de configuration initialise la base de données quand elle est vide :
+Les valeurs de configuration adoptent les conventions suivantes :
 
-[!code-csharp[](index/sample/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs?highlight=9,18-31,38-39)]
+* Les valeurs sont des chaînes.
+* Les valeurs NULL ne peuvent pas être stockées dans la configuration ou liées à des objets.
 
-Les valeurs en surbrillance provenant de la base de données ("value_from_ef_1" et "value_from_ef_2") sont affichées quand l’exemple est exécuté.
+## <a name="providers"></a>Fournisseurs
 
-Vous pouvez utiliser une méthode d’extension `EFConfigSource` pour l’ajout de la source de configuration :
+Le tableau suivant présente les fournisseurs de configuration disponibles pour les applications ASP.NET Core.
 
-[!code-csharp[](index/sample/CustomConfigurationProvider/EntityFrameworkExtensions.cs?highlight=12)]
+::: moniker range=">= aspnetcore-2.1"
 
-Le code suivant montre comment utiliser l’`EFConfigProvider` personnalisé :
+| Fournisseur | Fournit la configuration à partir de&hellip; |
+| -------- | ----------------------------------- |
+| [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) (rubrique *Sécurité*) | Azure Key Vault |
+| [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider) | Paramètres de ligne de commande |
+| [Fournisseur de configuration personnalisé](#custom-configuration-provider) | Source personnalisée |
+| [Fournisseur de configuration de variables d’environnement](#environment-variables-configuration-provider) | Variables d’environnement |
+| [Fournisseur de configuration de fichier](#file-configuration-provider) | Fichiers (INI, JSON, XML) |
+| [Fournisseur de configuration clé par fichier](#key-per-file-configuration-provider) | Fichiers de répertoire |
+| [Fournisseur de configuration de mémoire](#memory-configuration-provider) | Collections en mémoire |
+| [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (rubrique *Sécurité*) | Fichier dans le répertoire de profil utilisateur |
 
-[!code-csharp[](index/sample/CustomConfigurationProvider/Program.cs?highlight=21-26)]
+::: moniker-end
 
-Notez que l’exemple ajoute l’`EFConfigProvider` personnalisé après le fournisseur JSON. Par conséquent, tous les paramètres de la base de données substituent les paramètres du fichier *appsettings.json*.
+::: moniker range="= aspnetcore-2.0 || aspnetcore-1.1"
 
-En utilisant le fichier *appsettings.json* suivant :
+| Fournisseur | Fournit la configuration à partir de&hellip; |
+| -------- | ----------------------------------- |
+| [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) (rubrique *Sécurité*) | Azure Key Vault |
+| [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider) | Paramètres de ligne de commande |
+| [Fournisseur de configuration personnalisé](#custom-configuration-provider) | Source personnalisée |
+| [Fournisseur de configuration de variables d’environnement](#environment-variables-configuration-provider) | Variables d’environnement |
+| [Fournisseur de configuration de fichier](#file-configuration-provider) | Fichiers (INI, JSON, XML) |
+| [Fournisseur de configuration de mémoire](#memory-configuration-provider) | Collections en mémoire |
+| [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (rubrique *Sécurité*) | Fichier dans le répertoire de profil utilisateur |
 
-[!code-json[](index/sample/CustomConfigurationProvider/appsettings.json)]
+::: moniker-end
 
-La sortie suivante s’affiche :
+::: moniker range="= aspnetcore-1.0"
 
-```console
-key1=value_from_ef_1
-key2=value_from_ef_2
-key3=value_from_json_3
+| Fournisseur | Fournit la configuration à partir de&hellip; |
+| -------- | ----------------------------------- |
+| [Fournisseur de configuration de ligne de commande](#command-line-configuration-provider) | Paramètres de ligne de commande |
+| [Fournisseur de configuration personnalisé](#custom-configuration-provider) | Source personnalisée |
+| [Fournisseur de configuration de variables d’environnement](#environment-variables-configuration-provider) | Variables d’environnement |
+| [Fournisseur de configuration de fichier](#file-configuration-provider) | Fichiers (INI, JSON, XML) |
+| [Fournisseur de configuration de mémoire](#memory-configuration-provider) | Collections en mémoire |
+| [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (rubrique *Sécurité*) | Fichier dans le répertoire de profil utilisateur |
+
+::: moniker-end
+
+Au démarrage, les sources de configuration sont lues dans l’ordre où leurs fournisseurs de configuration sont spécifiés. Les fournisseurs de configuration décrits dans cette rubrique sont décrits dans l’ordre alphabétique, et non dans l’ordre où votre code peut les organiser. Organisez les fournisseurs de configuration dans votre code en fonction de vos priorités pour les sources de configuration sous-jacentes.
+
+Une séquence type des fournisseurs de configuration est la suivante :
+
+1. Fichiers (*appsettings.json*, *appsettings.&lt; Environnement&gt;.json*, où `<Environment>` est l’environnement d’hébergement actuel de l’application)
+1. [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement uniquement)
+1. Variables d’environnement
+1. Arguments de ligne de commande
+
+Une pratique courante consiste à placer le Fournisseur de configuration de ligne de commande en dernier dans une série de fournisseurs pour permettre aux arguments de ligne de commande de remplacer la configuration définie par les autres fournisseurs.
+
+::: moniker range=">= aspnetcore-2.0"
+
+Cette séquence de fournisseurs est mise en place lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fundamentals/host/web-host#set-up-a-host).
+
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte web pour spécifier les fournisseurs de configuration de l’application :
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
+
+`ConfigureAppConfiguration` *est disponible dans ASP.NET Core 2.1 et versions ultérieures.*
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Cette séquence de fournisseurs peut être créée pour l’application (pas l’hôte) avec un <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> et un appel à sa méthode <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder.Build*> dans `Startup` :
+
+```csharp
+public Startup(IHostingEnvironment env)
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, 
+            reloadOnChange: true);
+
+    var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
+
+    if (appAssembly != null)
+    {
+        builder.AddUserSecrets(appAssembly, optional: true);
+    }
+
+    builder.AddEnvironmentVariables();
+
+    Configuration = builder.Build();
+}
+
+public IConfiguration Configuration { get; }
+
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<IConfiguration>(Configuration);
+}
 ```
 
-## <a name="commandline-configuration-provider"></a>Fournisseur de configuration CommandLine
+Dans l’exemple précédent, le nom de l’environnement (`env.EnvironmentName`) et le nom de l’assembly d’application (`env.ApplicationName`) sont fournis par <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>. Pour plus d'informations, consultez <xref:fundamentals/environments>.
 
-Le [fournisseur de configuration CommandLine](/dotnet/api/microsoft.extensions.configuration.commandline.commandlineconfigurationprovider) reçoit des paires clé/valeur d’arguments de ligne de commande pour la configuration au moment de l’exécution.
+::: moniker-end
 
-[Afficher ou télécharger l’exemple de configuration CommandLine](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample/CommandLine)
+## <a name="command-line-configuration-provider"></a>Fournisseur de configuration de ligne de commande
 
-### <a name="setup-and-use-the-commandline-configuration-provider"></a>Configurer et utiliser le fournisseur de configuration CommandLine
+<xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> charge la configuration à partir des paires clé-valeur de l’argument de ligne de commande lors de l’exécution.
 
-# <a name="basic-configurationtabbasicconfiguration"></a>[Configuration de base](#tab/basicconfiguration/)
+::: moniker range=">= aspnetcore-2.0"
 
-Pour activer la configuration en ligne de commande, appelez la méthode d’extension `AddCommandLine` sur une instance de [ConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.configurationbuilder) :
+Pour activer la configuration en ligne de commande, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
 
-[!code-csharp[](index/sample_snapshot//CommandLine/Program.cs?highlight=18,21)]
+`AddCommandLine` est appelé automatiquement lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fundamentals/host/web-host#set-up-a-host).
 
-Quand le code est exécuté, la sortie suivante s’affiche :
+`CreateDefaultBuilder` charge également :
 
-```console
-MachineName: MairaPC
-Left: 1980
+* Configuration facultative à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+* [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement).
+* Variables d'environnement.
+
+`CreateDefaultBuilder` ajoute en dernier le Fournisseur de configuration de ligne de commande. Les arguments de ligne de commande passés lors de l’exécution remplacent la configuration définie par les autres fournisseurs.
+
+`CreateDefaultBuilder` agit lors de la construction de l’hôte. Par conséquent, la configuration de ligne de commande activée par `CreateDefaultBuilder` peut affecter la façon dont l’hôte est configuré.
+
+Lors de la génération de l’hôte manuellement sans appeler `CreateDefaultBuilder`, appelez la méthode d’extension `AddCommandLine` sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Pour activer la configuration en ligne de commande, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+
+Appelez le fournisseur en dernier pour permettre aux arguments de ligne de commande passés au moment de l’exécution de remplacer la configuration définie par les autres fournisseurs de configuration.
+
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> :
+
+::: moniker-end
+
+```csharp
+var config = new ConfigurationBuilder()
+    .AddCommandLine(args)
+    .Build();
+
+var host = new WebHostBuilder()
+    .UseConfiguration(config)
+    .UseKestrel()
+    .UseStartup<Startup>();
 ```
 
-Le passage de paires clé/valeur d’arguments sur la ligne de commande modifie les valeurs de `Profile:MachineName` et de `App:MainWindow:Left` :
+**Exemple**
 
-```console
-dotnet run Profile:MachineName=BartPC App:MainWindow:Left=1979
-```
+::: moniker range=">= aspnetcore-2.0"
 
-La fenêtre de console s’affiche :
+L’exemple d’application 2.x tire parti de la méthode pratique statique `CreateDefaultBuilder` pour générer l’hôte, qui inclut un appel à <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>.
 
-```console
-MachineName: BartPC
-Left: 1979
-```
+::: moniker-end
 
-Pour substituer la configuration fournie par d’autres fournisseurs de configuration avec la configuration en ligne de commande, appelez `AddCommandLine` en dernier sur `ConfigurationBuilder` :
+::: moniker range="< aspnetcore-2.0"
 
-[!code-csharp[](index/sample_snapshot//CommandLine/Program2.cs?range=11-16&highlight=1,5)]
+L’exemple d’application 1.x appelle <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> sur un <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker-end
 
-Les applications ASP.NET Core 2.x classiques utilisent la méthode pratique statique `CreateDefaultBuilder` pour générer l’hôte :
-
-[!code-csharp[](index/sample_snapshot//Program.cs?highlight=12)]
-
-`CreateDefaultBuilder` charge une configuration facultative à partir d’*appsettings.json*, d’*appsettings.{Environment}.json*, de [secrets d’utilisateur](xref:security/app-secrets) (dans l’environnement `Development`), de variables d’environnement et d’arguments de ligne de commande. Le fournisseur de configuration CommandLine est appelé en dernier. Le fait d’appeler le fournisseur en dernier permet aux arguments de ligne de commande passés au moment de l’exécution de substituer la configuration définie par les autres fournisseurs de configuration appelés précédemment.
-
-Pour les fichiers *appsettings* où :
-
-* `reloadOnChange` est activé.
-* Contiennent le même paramètre dans les arguments de ligne de commande et un fichier *appsettings*.
-* Le fichier *appsettings* contenant l’argument de ligne de commande correspondant est modifié après le démarrage de l’application.
-
-Si toutes les conditions précédentes sont remplies, les arguments de ligne de commande sont remplacés.
-
-L’application ASP.NET Core 2.x peut utiliser [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) au lieu de `CreateDefaultBuilder`. Lorsque vous utilisez `WebHostBuilder`, définissez manuellement la configuration avec [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder). Pour plus d’informations, consultez l’onglet ASP.NET Core 1.x.
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-Créez un [ConfigurationBuilder](/api/microsoft.extensions.configuration.configurationbuilder) et appelez la méthode `AddCommandLine` pour utiliser le fournisseur de configuration CommandLine. Le fait d’appeler le fournisseur en dernier permet aux arguments de ligne de commande passés au moment de l’exécution de substituer la configuration définie par les autres fournisseurs de configuration appelés précédemment. Appliquez la configuration à [WebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilder) avec la méthode `UseConfiguration` :
-
-[!code-csharp[](index/sample_snapshot//CommandLine/Program2.cs?highlight=11,15,19)]
-
----
+1. Ouvrez une invite de commandes dans le répertoire du projet.
+1. Fournissez un argument de ligne de commande à la commande `dotnet run`, `dotnet run CommandLineKey=CommandLineValue`.
+1. Une fois que l’application est en cours d’exécution, ouvrez un navigateur à l’application à l’adresse `http://localhost:5000`.
+1. Notez que la sortie contient la paire clé-valeur pour l’argument de ligne de commande de configuration fourni à `dotnet run`.
 
 ### <a name="arguments"></a>Arguments
 
-Les arguments passés sur la ligne de commande doivent être conformes à l’un des deux formats indiqués dans le tableau suivant :
+La valeur doit suivre un signe égal (`=`) ou la clé doit avoir un préfixe (`--` ou `/`) lorsque la valeur suit un espace. La valeur peut être null si un signe égal est utilisé (par exemple, `CommandLineKey=`).
 
-| Format d’argument                                                     | Exemple        |
-| ------------------------------------------------------------------- | :------------: |
-| Argument unique : une paire clé/valeur séparée par un signe égal (`=`) | `key1=value`   |
-| Séquence de deux arguments : une paire clé/valeur séparée par un espace    | `/key1 value1` |
+| Préfixe de clé               | Exemple                                                |
+| ------------------------ | ------------------------------------------------------ |
+| Aucun préfixe                | `CommandLineKey1=value1`                               |
+| Deux tirets (`--`)        | `--CommandLineKey2=value2`, `--CommandLineKey2 value2` |
+| Barre oblique (`/`)      | `/CommandLineKey3=value3`, `/CommandLineKey3 value3`   |
 
-**Argument unique**
+Dans la même commande, ne mélangez pas des paires clé-valeur de l’argument de ligne de commande qui utilisent un signe égal avec des paires clé-valeur qui utilisent un espace.
 
-La valeur doit suivre un signe égal (`=`). La valeur peut être null (par exemple, `mykey=`).
-
-La clé peut avoir un préfixe.
-
-| Préfixe de clé               | Exemple         |
-| ------------------------ | :-------------: |
-| Aucun préfixe                | `key1=value1`   |
-| Un seul tiret (`-`)&#8224; | `-key2=value2`  |
-| Deux tirets (`--`)        | `--key3=value3` |
-| Barre oblique (`/`)      | `/key4=value4`  |
-
-&#8224;Une clé avec un préfixe composé d’un seul préfixe (`-`) doit être fournie dans les [correspondances de commutateur](#switch-mappings), décrits ci-dessous.
-
-Exemple de commande :
+Exemples de commandes :
 
 ```console
-dotnet run key1=value1 -key2=value2 --key3=value3 /key4=value4
+dotnet run CommandLineKey1=value --CommandLineKey2=value /CommandLineKey2=value
+dotnet run --CommandLineKey1 value /CommandLineKey2 value
+dotnet run CommandLineKey1= CommandLineKey2=value
 ```
-
-Remarque : Si `-key2` n’est pas présent dans les [correspondances de commutateur](#switch-mappings) donnés au fournisseur de configuration, un `FormatException` est levé.
-
-**Séquence de deux arguments**
-
-La valeur ne peut pas être null et doit suivre la clé, séparée par un espace.
-
-La clé doit avoir un préfixe.
-
-| Préfixe de clé               | Exemple         |
-| ------------------------ | :-------------: |
-| Un seul tiret (`-`)&#8224; | `-key1 value1`  |
-| Deux tirets (`--`)        | `--key2 value2` |
-| Barre oblique (`/`)      | `/key3 value3`  |
-
-&#8224;Une clé avec un préfixe composé d’un seul préfixe (`-`) doit être fournie dans les [correspondances de commutateur](#switch-mappings), décrits ci-dessous.
-
-Exemple de commande :
-
-```console
-dotnet run -key1 value1 --key2 value2 /key3 value3
-```
-
-Remarque : Si `-key1` n’est pas présent dans les [correspondances de commutateur](#switch-mappings) donnés au fournisseur de configuration, un `FormatException` est levé.
-
-### <a name="duplicate-keys"></a>Clés en double
-
-Si des clés en double sont fournies, la dernière paire clé/valeur est utilisée.
 
 ### <a name="switch-mappings"></a>Correspondances de commutateur
 
-Lors de la génération manuelle d’une configuration avec `ConfigurationBuilder`, un dictionnaire de correspondances de commutateur peut être ajouté à la méthode `AddCommandLine`. Les correspondances de commutateur permettent une logique de remplacement des noms de clés.
+Les correspondances de commutateur permettent une logique de remplacement des noms de clés. Lorsque vous générez manuellement la configuration avec un <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>, vous pouvez fournir un dictionnaire des remplacements de commutateur à la méthode <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*>.
 
-Quand le dictionnaire de correspondances de commutateur est utilisé, il est vérifié afin de déterminer s’il contient une clé correspondant à celle fournie par un argument de ligne de commande. Si la clé de ligne de commande est trouvée dans le dictionnaire, la valeur du dictionnaire (le remplacement de la clé) est repassée pour définir la configuration. Une correspondance de commutateur est nécessaire pour chaque clé de ligne de commande préfixée avec un tiret unique (`-`).
+Quand le dictionnaire de correspondances de commutateur est utilisé, il est vérifié afin de déterminer s’il contient une clé correspondant à celle fournie par un argument de ligne de commande. Si la clé de ligne de commande est trouvée dans le dictionnaire, la valeur du dictionnaire (le remplacement de la clé) est repassée pour définir la paire clé-valeur dans la configuration de l’application. Une correspondance de commutateur est nécessaire pour chaque clé de ligne de commande préfixée avec un tiret unique (`-`).
 
 Règles des clés du dictionnaire de correspondances de commutateur :
 
 * Les commutateurs doivent commencer par un tiret (`-`) ou un double tiret (`--`).
 * Le dictionnaire de correspondances de commutateur ne doit pas contenir de clés en double.
 
-Dans l’exemple suivant, la méthode `GetSwitchMappings` permet aux arguments de ligne de commande d’utiliser un préfixe de clé composé d’un tiret unique (`-`) et d’éviter les préfixes de sous-clés.
+::: moniker range=">= aspnetcore-2.0"
 
-[!code-csharp[](index/sample/CommandLine/Program.cs?highlight=10-19,32)]
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
 
-Si aucun argument de ligne de commande n’est spécifié, le dictionnaire fourni à `AddInMemoryCollection` définit les valeurs de configuration. Exécutez l’application avec la commande suivante :
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var switchMappings = new Dictionary<string, string>
+            {
+                { "-CLKey1", "CommandLineKey1" },
+                { "-CLKey2", "CommandLineKey2" }
+            };
 
-```console
-dotnet run
+        var config = new ConfigurationBuilder()
+            .AddCommandLine(args, switchMappings)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder()
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
 ```
 
-La fenêtre de console s’affiche :
+Comme indiqué dans l’exemple précédent, l’appel à `CreateDefaultBuilder` ne doit pas passer des arguments lorsque des correspondances de commutateur sont utilisées. L’appel `AddCommandLine` de la méthode `CreateDefaultBuilder` n’inclut pas de commutateurs mappés et il n’existe aucun moyen de transmettre le dictionnaire de correspondance de commutateur à `CreateDefaultBuilder`. Si les arguments incluent un commutateur mappé et sont passés à `CreateDefaultBuilder`, son fournisseur `AddCommandLine` ne parvient pas à s’initialiser avec un <xref:System.FormatException>. La solution ne consiste pas à transmettre les arguments à `CreateDefaultBuilder` mais de permettre plutôt à la méthode `AddCommandLine` de la méthode `ConfigurationBuilder` de traiter les arguments et le dictionnaire de correspondance de commutateur.
 
-```console
-MachineName: RickPC
-Left: 1980
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+```csharp
+public static void Main(string[] args)
+{
+    var switchMappings = new Dictionary<string, string>
+        {
+            { "-CLKey1", "CommandLineKey1" },
+            { "-CLKey2", "CommandLineKey2" }
+        };
+
+    var config = new ConfigurationBuilder()
+        .AddCommandLine(args, switchMappings)
+        .Build();
+
+    var host = new WebHostBuilder()
+        .UseConfiguration(config)
+        .UseKestrel()
+        .UseStartup<Startup>()
+        .Start();
+
+    using (host)
+    {
+        Console.ReadLine();
+    }
+}
 ```
 
-Utilisez le code suivant pour passer des paramètres de configuration :
+::: moniker-end
+
+Une fois le dictionnaire de correspondances de commutateur créé, il contient les données affichées dans le tableau suivant.
+
+| Touche       | Value             |
+| --------- | ----------------- |
+| `-CLKey1` | `CommandLineKey1` |
+| `-CLKey2` | `CommandLineKey2` |
+
+Si les clés mappées au commutateur sont utilisées lors du démarrage de l’application, la configuration reçoit la valeur de configuration sur la clé fournie par le dictionnaire :
 
 ```console
-dotnet run /Profile:MachineName=DahliaPC /App:MainWindow:Left=1984
+dotnet run -CLKey1=value1 -CLKey2=value2
 ```
 
-La fenêtre de console s’affiche :
+Après avoir exécuté la commande précédente, la configuration contient les valeurs indiquées dans le tableau suivant.
 
-```console
-MachineName: DahliaPC
-Left: 1984
+| Touche               | Value    |
+| ----------------- | -------- |
+| `CommandLineKey1` | `value1` |
+| `CommandLineKey2` | `value2` |
+
+## <a name="environment-variables-configuration-provider"></a>Fournisseur de configuration de variables d’environnement
+
+<xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> charge la configuration à partir des paires clé-valeur de la variable d’environnement lors de l’exécution.
+
+Pour activer la configuration des variables d’environnement, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.EnvironmentVariablesExtensions.AddEnvironmentVariables*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+
+Lors de l’utilisation de clés hiérarchiques dans les variables d’environnement, un séparateur sous forme de signe deux-points (`:`) peut ne pas fonctionner sur toutes les plateformes. Un trait de soulignement double (`__`) est pris en charge par toutes les plateformes et remplacé par un signe deux-points.
+
+[Azure App Service](https://azure.microsoft.com/services/app-service/) vous permet de définir des variables d’environnement dans le portail Azure capables de remplacer la configuration d’application à l’aide du Fournisseur de configuration de variables d’environnement. Pour plus d’informations, consultez [Azure Apps : remplacer la configuration de l’application à l’aide du portail Azure](xref:host-and-deploy/azure-apps/index#override-app-configuration-using-the-azure-portal).
+
+::: moniker range=">= aspnetcore-2.0"
+
+`AddEnvironmentVariables` est appelé automatiquement lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fundamentals/host/web-host#set-up-a-host).
+
+`CreateDefaultBuilder` charge également :
+
+* Configuration facultative à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+* [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement).
+* Arguments de ligne de commande
+
+Le Fournisseur de configuration de variable d’environnement est appelé une fois que la configuration est établie à partir des secrets utilisateur et des fichiers *appsettings*. Le fait d’appeler le fournisseur ainsi permet de lire les variables d’environnement pendant l’exécution pour substituer la configuration définie par les secrets utilisateur et les fichiers *appsettings*.
+
+Vous pouvez aussi appeler directement la méthode d’extension `AddEnvironmentVariables` sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+
+::: moniker-end
+
+```csharp
+var config = new ConfigurationBuilder()
+    .AddEnvironmentVariables()
+    .Build();
+
+var host = new WebHostBuilder()
+    .UseConfiguration(config)
+    .UseKestrel()
+    .UseStartup<Startup>();
 ```
 
-Une fois le dictionnaire de correspondances de commutateur créé, il contient les données affichées dans le tableau suivant :
+**Exemple**
 
-| Touche            | Value                 |
-| -------------- | --------------------- |
-| `-MachineName` | `Profile:MachineName` |
-| `-Left`        | `App:MainWindow:Left` |
+::: moniker range=">= aspnetcore-2.0"
 
-Pour illustrer le remplacement des clés à l’aide du dictionnaire, exécutez la commande suivante :
+L’exemple d’application 2.x tire parti de la méthode pratique statique `CreateDefaultBuilder` pour générer l’hôte, qui inclut un appel à `AddEnvironmentVariables`.
 
-```console
-dotnet run -MachineName=ChadPC -Left=1988
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+L’exemple d’application 1.x appelle `AddEnvironmentVariables` sur un `ConfigurationBuilder`.
+
+::: moniker-end
+
+1. Exécutez l’exemple d’application. Ouvrez un navigateur vers l’application avec l’adresse `http://localhost:5000`.
+1. Notez que la sortie contient la paire clé-valeur pour la variable d’environnement `ENVIRONMENT`. La valeur reflète l’environnement dans lequel l’application est en cours d’exécution, en général `Development` lors de l’exécution locale.
+
+Pour que la liste des variables d’environnement restituée par l’application soit courte, l’application filtre les variables d’environnement en fonction de celles qui commencent par :
+
+* ASPNETCORE_
+* urls
+* Journalisation
+* ENVIRONMENT
+* contentRoot
+* AllowedHosts
+* applicationName
+* CommandLine
+
+::: moniker range=">= aspnetcore-2.0"
+
+Si vous souhaitez exposer toutes les variables d’environnement disponibles pour l’application, remplacez `FilteredConfiguration` dans *Pages/Index.cshtml.cs* par ce qui suit :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Si vous souhaitez exposer toutes les variables d’environnement disponibles pour l’application, remplacez `FilteredConfiguration` dans *Controllers/HomeController.cs* par ce qui suit :
+
+::: moniker-end
+
+```csharp
+FilteredConfiguration = _config.AsEnumerable();
 ```
 
-Les clés de ligne de commande sont remplacées. La fenêtre de console affiche les valeurs de configuration pour `Profile:MachineName` et `App:MainWindow:Left` :
+### <a name="prefixes"></a>Préfixes
 
-```console
-MachineName: ChadPC
-Left: 1988
+Les variables d’environnement chargées dans la configuration de l’application sont filtrées lorsque vous fournissez un préfixe pour la méthode `AddEnvironmentVariables`. Par exemple, pour filtrer les variables d’environnement sur le préfixe `CUSTOM_`, fournissez le préfixe au fournisseur de configuration :
+
+```csharp
+var config = new ConfigurationBuilder()
+    .AddEnvironmentVariables("CUSTOM_")
+    .Build();
 ```
 
-## <a name="webconfig-file"></a>fichier web.config
+Le préfixe est supprimé lorsque les paires clé-valeur de la configuration sont créées.
 
-Un fichier *web.config* est nécessaire pour héberger l’application dans IIS ou IIS Express. Les paramètres de *web.config* permettent au [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) de lancer l’application et de configurer d’autres modules et paramètres IIS. Si le fichier *web.config* n’est pas présent et que le fichier projet contient `<Project Sdk="Microsoft.NET.Sdk.Web">`, la publication du projet crée un fichier *web.config* dans la sortie publiée (le dossier *publish*). Pour plus d’informations, consultez [Héberger ASP.NET Core sur Windows avec IIS](xref:host-and-deploy/iis/index#webconfig-file).
+::: moniker range=">= aspnetcore-2.0"
+
+La méthode pratique statique `CreateDefaultBuilder` crée un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> pour établir l’hôte de l’application. Lorsque `WebHostBuilder` est créé, il trouve la configuration de son hôte dans les variables d’environnement avec le préfixe `ASPNETCORE_`.
+
+::: moniker-end
+
+**Préfixes des chaînes de connexion**
+
+L’API Configuration possède des règles de traitement spéciales pour quatre variables d’environnement de chaîne de connexion impliquées dans la configuration des chaînes de connexion Azure pour l’environnement de l’application. Les variables d’environnement avec les préfixes indiqués dans le tableau sont chargées dans l’application si aucun préfixe n’est fourni à `AddEnvironmentVariables`.
+
+| Préfixe de la chaîne de connexion | Fournisseur |
+| ------------------------ | -------- |
+| `CUSTOMCONNSTR_` | Fournisseur personnalisé |
+| `MYSQLCONNSTR_` | [MySQL](https://www.mysql.com/) |
+| `SQLAZURECONNSTR_` | [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) |
+| `SQLCONNSTR_` | [SQL Server](https://www.microsoft.com/sql-server/) |
+
+Quand une variable d’environnement est découverte et chargée dans la configuration avec l’un des quatre préfixes indiqués dans le tableau :
+
+* La clé de configuration est créée en supprimant le préfixe de la variable d’environnement et en ajoutant une section de clé de configuration (`ConnectionStrings`).
+* Une nouvelle paire clé-valeur de configuration est créée qui représente le fournisseur de connexion de base de données (à l’exception de `CUSTOMCONNSTR_`, qui ne possède aucun fournisseur indiqué).
+
+| Clé de variable d’environnement | Clé de configuration convertie | Entrée de configuration de fournisseur                                                    |
+| ------------------------ | --------------------------- | ------------------------------------------------------------------------------- |
+| `CUSTOMCONNSTR_<KEY>`    | `ConnectionStrings:<KEY>`   | Entrée de configuration non créée.                                                |
+| `MYSQLCONNSTR_<KEY>`     | `ConnectionStrings:<KEY>`   | Clé : `ConnectionStrings:<KEY>_ProviderName` :<br>Valeur : `MySql.Data.MySqlClient` |
+| `SQLAZURECONNSTR_<KEY>`  | `ConnectionStrings:<KEY>`   | Clé : `ConnectionStrings:<KEY>_ProviderName` :<br>Valeur : `System.Data.SqlClient`  |
+| `SQLCONNSTR_<KEY>`       | `ConnectionStrings:<KEY>`   | Clé : `ConnectionStrings:<KEY>_ProviderName` :<br>Valeur : `System.Data.SqlClient`  |
+
+## <a name="file-configuration-provider"></a>Fournisseur de configuration de fichier
+
+<xref:Microsoft.Extensions.Configuration.FileConfigurationProvider> est la classe de base pour charger la configuration à partir du système de fichiers. Les fournisseurs de configuration suivants sont dédiés à des types de fichiers spécifiques :
+
+* [Fournisseur de configuration INI](#ini-configuration-provider)
+* [Fournisseur de configuration JSON](#json-configuration-provider)
+* [Fournisseur de configuration XML](#xml-configuration-provider)
+
+### <a name="ini-configuration-provider"></a>Fournisseur de configuration INI
+
+<xref:Microsoft.Extensions.Configuration.Ini.IniConfigurationProvider> charge la configuration à partir des paires clé-valeur du fichier INI lors de l’exécution.
+
+Pour activer la configuration du fichier INI, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.IniConfigurationExtensions.AddIniFile*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+
+Le signe deux-points peut servir de délimiteur de section dans la configuration d’un fichier INI.
+
+Les surcharges permettent de spécifier :
+
+* Si le fichier est facultatif.
+* Si la configuration est rechargée quand le fichier est modifié.
+* Le <xref:Microsoft.Extensions.FileProviders.IFileProvider> utilisé pour accéder au fichier.
+
+::: moniker range=">= aspnetcore-2.0"
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddIniFile("config.ini", optional: true, reloadOnChange: true)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+
+::: moniker-end
+
+```csharp
+var config = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddIniFile("config.ini", optional: true, reloadOnChange: true)
+    .Build();
+
+var host = new WebHostBuilder()
+    .UseConfiguration(config)
+    .UseKestrel()
+    .UseStartup<Startup>();
+```
+
+Exemple générique d’un fichier de configuration INI :
+
+```ini
+[section0]
+key0=value
+key1=value
+
+[section1]
+subsection:key=value
+
+[section2:subsection0]
+key=value
+
+[section2:subsection1]
+key=value
+```
+
+Le fichier de configuration précédent charge les clés suivantes avec `value` :
+
+* section0:key0
+* section0:key1
+* section1:subsection:key
+* section2:subsection0:key
+* section2:subsection1:key
+
+### <a name="json-configuration-provider"></a>Fournisseur de configuration JSON
+
+<xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider> charge la configuration à partir des paires clé-valeur du fichier JSON lors de l’exécution.
+
+Pour activer la configuration du fichier JSON, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+
+Les surcharges permettent de spécifier :
+
+* Si le fichier est facultatif.
+* Si la configuration est rechargée quand le fichier est modifié.
+* Le <xref:Microsoft.Extensions.FileProviders.IFileProvider> utilisé pour accéder au fichier.
+
+::: moniker range=">= aspnetcore-2.0"
+
+`AddJsonFile` est appelé automatiquement deux fois lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. La méthode est appelée pour charger la configuration à partir de :
+
+* *appSettings.JSON* &ndash; Ce fichier est lu en premier. La version de l’environnement du fichier peut remplacer les valeurs fournies par le fichier *appsettings.json*.
+* *appsettings.&lt;Environment&gt;.json* &ndash; La version de l’environnement du fichier est chargée en fonction de [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).
+
+Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fundamentals/host/web-host#set-up-a-host).
+
+`CreateDefaultBuilder` charge également :
+
+* Variables d'environnement.
+* [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement).
+* Arguments de ligne de commande
+
+Le Fournisseur de configuration JSON est établi en premier. Par conséquent, les secrets utilisateur, les variables d’environnement et les arguments de ligne de commande remplacent la configuration définie par les fichiers *appsettings*.
+
+Vous pouvez aussi appeler directement la méthode d’extension `AddJsonFile` sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("config.json", optional: true, reloadOnChange: true)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+
+::: moniker-end
+
+```csharp
+var config = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("config.json", optional: true, reloadOnChange: true)
+    .Build();
+
+var host = new WebHostBuilder()
+    .UseConfiguration(config)
+    .UseKestrel()
+    .UseStartup<Startup>();
+```
+
+**Exemple**
+
+::: moniker range=">= aspnetcore-2.0"
+
+L’exemple d’application 2.x tire parti de la méthode pratique statique `CreateDefaultBuilder` pour générer l’hôte, qui inclut deux appels à `AddJsonFile`. La configuration est chargée à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+L’exemple d’application 1.x appelle `AddJsonFile` deux fois sur un `ConfigurationBuilder`. La configuration est chargée à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+
+::: moniker-end
+
+1. Exécutez l’exemple d’application. Ouvrez un navigateur vers l’application avec l’adresse `http://localhost:5000`.
+1. Notez que la sortie contient des paires clé-valeur pour la configuration représentée dans le tableau en fonction de l’environnement. Les clés de configuration de la journalisation utilisent le signe deux-points (`:`) comme séparateur hiérarchique.
+
+| Touche                        | Valeur de développement | Valeur de production |
+| -------------------------- | :---------------: | :--------------: |
+| Logging:LogLevel:System    | Information       | Information      |
+| Logging:LogLevel:Microsoft | Information       | Information      |
+| Logging:LogLevel:Default   | Débogage             | Error            |
+| AllowedHosts               | *                 | *                |
+
+### <a name="xml-configuration-provider"></a>Fournisseur de configuration XML
+
+<xref:Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider> charge la configuration à partir des paires clé-valeur du fichier XML lors de l’exécution.
+
+Pour activer la configuration du fichier XML, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.XmlConfigurationExtensions.AddXmlFile*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+
+Les surcharges permettent de spécifier :
+
+* Si le fichier est facultatif.
+* Si la configuration est rechargée quand le fichier est modifié.
+* Le <xref:Microsoft.Extensions.FileProviders.IFileProvider> utilisé pour accéder au fichier.
+
+Le nœud racine du fichier de configuration est ignoré lorsque les paires clé-valeur de la configuration sont créées. Ne spécifiez pas une définition de type de document (DTD) ou un espace de noms dans le fichier.
+
+::: moniker range=">= aspnetcore-2.0"
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddXmlFile("config.xml", optional: true, reloadOnChange: true)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+
+::: moniker-end
+
+```csharp
+var config = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddXmlFile("config.xml", optional: true, reloadOnChange: true)
+    .Build();
+
+var host = new WebHostBuilder()
+    .UseConfiguration(config)
+    .UseKestrel()
+    .UseStartup<Startup>();
+```
+
+Les fichiers de configuration XML peuvent utiliser des noms d’éléments distincts pour les sections répétitives :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <section0>
+    <key0>value</key0>
+    <key1>value</key1>
+  </section0>
+  <section1>
+    <key0>value</key0>
+    <key1>value</key1>
+  </section1>
+</configuration>
+```
+
+Le fichier de configuration précédent charge les clés suivantes avec `value` :
+
+* section0:key0
+* section0:key1
+* section1:key0
+* section1:key1
+
+Les éléments répétitifs qui utilisent le même nom d’élément fonctionnent si l’attribut `name` est utilisé pour distinguer les éléments :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <section name="section0">
+    <key name="key0">value</key>
+    <key name="key1">value</key>
+  </section>
+  <section name="section1">
+    <key name="key0">value</key>
+    <key name="key1">value</key>
+  </section>
+</configuration>
+```
+
+Le fichier de configuration précédent charge les clés suivantes avec `value` :
+
+* section:section0:key:key0
+* section:section0:key:key1
+* section:section1:key:key0
+* section:section1:key:key1
+
+Les attributs peuvent être utilisés pour fournir des valeurs :
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <key attribute="value" />
+  <section>
+    <key attribute="value" />
+  </section>
+</configuration>
+```
+
+Le fichier de configuration précédent charge les clés suivantes avec `value` :
+
+* key:attribute
+* section:key:attribute
+
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="key-per-file-configuration-provider"></a>Fournisseur de configuration clé par fichier
+
+Le <xref:Microsoft.Extensions.Configuration.KeyPerFile.KeyPerFileConfigurationProvider> utilise les fichiers d’un répertoire en tant que paires clé-valeur de configuration. La clé est le nom de fichier. La valeur contient le contenu du fichier. Le Fournisseur de configuration Clé par fichier est utilisé dans les scénarios d’hébergement de Docker.
+
+Pour activer la configuration clé par fichier, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.KeyPerFileConfigurationBuilderExtensions.AddKeyPerFile*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>. Le `directoryPath` aux fichiers doit être un chemin d’accès absolu.
+
+Les surcharges permettent de spécifier :
+
+* Un délégué `Action<KeyPerFileConfigurationSource>` qui configure la source.
+* Si le répertoire est facultatif et le chemin d’accès au répertoire.
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "path/to/files");
+        var config = new ConfigurationBuilder()
+            .AddKeyPerFile(directoryPath: path, optional: true)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+
+```csharp
+var path = Path.Combine(Directory.GetCurrentDirectory(), "path/to/files");
+var config = new ConfigurationBuilder()
+    .AddKeyPerFile(directoryPath: path, optional: true)
+    .Build();
+
+var host = new WebHostBuilder()
+    .UseConfiguration(config)
+    .UseKestrel()
+    .UseStartup<Startup>();
+```
+
+::: moniker-end
+
+## <a name="memory-configuration-provider"></a>Fournisseur de configuration de mémoire
+
+Le <xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationProvider> utilise une collection en mémoire en tant que paires clé-valeur de configuration.
+
+Pour activer la configuration de la collection en mémoire, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+
+Le fournisseur de configuration peut être initialisé avec un `IEnumerable<KeyValuePair<String,String>>`.
+
+::: moniker range=">= aspnetcore-2.0"
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var dict = new Dictionary<string, string>
+            {
+                {"MemoryCollectionKey1", "value1"},
+                {"MemoryCollectionKey2", "value2"}
+            };
+
+        var config = new ConfigurationBuilder()
+            .AddInMemoryCollection(dict)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+
+::: moniker-end
+
+```csharp
+var dict = new Dictionary<string, string>
+    {
+        {"MemoryCollectionKey1", "value1"},
+        {"MemoryCollectionKey2", "value2"}
+    };
+
+var config = new ConfigurationBuilder()
+    .AddInMemoryCollection(dict)
+    .Build();
+
+var host = new WebHostBuilder()
+    .UseConfiguration(config)
+    .UseKestrel()
+    .UseStartup<Startup>();
+```
+
+## <a name="getvalue"></a>GetValue
+
+[ConfigurationBinder.GetValue&lt;T&gt; ](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrait une valeur à partir de la configuration avec une clé spécifiée et la convertit selon le type spécifié. Une surcharge vous permet de fournir une valeur par défaut si la clé est introuvable.
+
+L’exemple suivant extrait la valeur de la chaîne à partir de la configuration avec la clé `NumberKey`, tape la valeur en tant que `int` et stocke la valeur dans la variable `intValue`. Si `NumberKey` est introuvable dans les clés de configuration, `intValue` reçoit la valeur par défaut `99` :
+
+```csharp
+var intValue = config.GetValue<int>("NumberKey", 99);
+```
+
+## <a name="getsection-getchildren-and-exists"></a>GetSection, GetChildren et Exists
+
+Pour les exemples qui suivent, utilisez le fichier JSON suivant. Quatre clés se trouvent dans deux sections, dont l’une inclut deux sous-sections :
+
+```json
+{
+  "section0": {
+    "key0": "value",
+    "key1": "value"
+  },
+  "section1": {
+    "key0": "value",
+    "key1": "value"
+  },
+  "section2": {
+    "subsection0" : {
+      "key0": "value",
+      "key1": "value"
+    },
+    "subsection1" : {
+      "key0": "value",
+      "key1": "value"
+    }
+  }
+}
+```
+
+Lorsque le fichier est lu dans la configuration, les clés hiérarchiques uniques suivantes sont créées pour stocker les valeurs de la configuration :
+
+* section0:key0
+* section0:key1
+* section1:key0
+* section1:key1
+* section2:subsection0:key0
+* section2:subsection0:key1
+* section2:subsection1:key0
+* section2:subsection1:key1
+
+### <a name="getsection"></a>GetSection
+
+[IConfiguration.GetSection](xref:Microsoft.Extensions.Configuration.IConfiguration.GetSection*) extrait une sous-section de la configuration avec la clé de sous-section spécifiée.
+
+Pour retourner un <xref:Microsoft.Extensions.Configuration.IConfigurationSection> contenant uniquement les paires clé-valeur dans `section1`, appelez `GetSection` et fournissez le nom de section :
+
+```csharp
+var configSection = _config.GetSection("section1");
+```
+
+De même, pour obtenir les valeurs des clés dans `section2:subsection0`, appelez `GetSection` et fournissez le chemin d’accès de la section :
+
+```csharp
+var configSection = _config.GetSection("section2:subsection0");
+```
+
+`GetSection` ne retourne jamais `null`. Si aucune section correspondante n’est trouvée, une valeur `IConfigurationSection` vide est retournée.
+
+### <a name="getchildren"></a>GetChildren
+
+Un appel à [IConfiguration.GetChildren](xref:Microsoft.Extensions.Configuration.IConfiguration.GetChildren*) sur `section2` obtient un `IEnumerable<IConfigurationSection>` qui inclut :
+
+* `subsection0`
+* `subsection1`
+
+```csharp
+var configSection = _config.GetSection("section2");
+
+var children = configSection.GetChildren();
+```
+
+::: moniker range=">= aspnetcore-2.0"
+
+### <a name="exists"></a>Existe
+
+Utilisez [ConfigurationExtensions.Exists](xref:Microsoft.Extensions.Configuration.ConfigurationExtensions.Exists*) pour déterminer si une section de configuration existe :
+
+```csharp
+var sectionExists = _config.GetSection("section2:subsection2").Exists();
+```
+
+Compte tenu des données d’exemple, `sectionExists` est `false`, car il n’y a pas de section `section2:subsection2` dans les données de configuration.
+
+::: moniker-end
+
+## <a name="bind-to-a-class"></a>Lier à une classe
+
+La configuration peut être liée à des classes qui représentent des groupes de paramètres associés à l’aide du *modèle d’options*. Pour plus d'informations, consultez <xref:fundamentals/configuration/options>.
+
+Les valeurs de configuration sont retournées sous forme de chaînes, mais le fait d’appeler <xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> permet la construction d’objets [POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object).
+
+L’exemple d’application contient un modèle `Starship` (*Models/Starship.cs*) :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Models/Starship.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/Starship.cs?name=snippet1)]
+
+::: moniker-end
+
+La section `starship` du fichier *starship.json* crée la configuration lorsque l’exemple d’application utilise le Fournisseur de configuration JSON pour charger la configuration :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-json[](index/samples/2.x/ConfigurationSample/starship.json)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-json[](index/samples/1.x/ConfigurationSample/starship.json)]
+
+::: moniker-end
+
+Les paires clé-valeur de configuration suivantes sont créées :
+
+| Touche                   | Value                                             |
+| --------------------- | ------------------------------------------------- |
+| starship:name         | USS Enterprise                                    |
+| starship:registry     | NCC-1701                                          |
+| starship:class        | Constitution                                      |
+| starship:length       | 304.8                                             |
+| starship:commissioned | False                                             |
+| trademark             | Paramount Pictures Corp. http://www.paramount.com |
+
+L’exemple d’application appelle `GetSection` avec la clé `starship`. Les paires clé-valeur `starship` sont isolées. La méthode `Bind` est appelée sur la sous-section passant une instance de la classe `Starship`. Après avoir lié les valeurs d’instance, l’instance est affectée à une propriété pour le rendu :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_starship)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Controllers/HomeController.cs?name=snippet_starship)]
+
+::: moniker-end
+
+## <a name="bind-to-an-object-graph"></a>Établir une liaison à un graphe d’objets
+
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> est capable de lier l’intégralité d’un graphe d’objets POCO.
+
+L’exemple contient un modèle `TvShow` dont le graphe d’objets inclut les classes `Metadata` et `Actors` (*Models/TvShow.cs*) :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/TvShow.cs?name=snippet1)]
+
+::: moniker-end
+
+L’exemple d’application a un fichier *tvshow.xml* contenant les données de configuration :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-xml[](index/samples/2.x/ConfigurationSample/tvshow.xml)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-xml[](index/samples/1.x/ConfigurationSample/tvshow.xml)]
+
+::: moniker-end
+
+La configuration est liée à l’intégralité du graphe d’objets `TvShow` avec la méthode `Bind`. L’instance liée est affectée à une propriété pour le rendu :
+
+::: moniker range=">= aspnetcore-2.0"
+
+```csharp
+var tvShow = new TvShow();
+_config.GetSection("tvshow").Bind(tvShow);
+TvShow = tvShow;
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+```csharp
+var tvShow = new TvShow();
+_config.GetSection("tvshow").Bind(tvShow);
+viewModel.TvShow = tvShow;
+```
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-1.1"
+
+[ConfigurationBinder.Get&lt;T&gt; ](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) lie et retourne le type spécifié. Il est plus pratique d’utiliser `Get<T>` que `Bind`. Le code suivant montre comment utiliser `Get<T>` avec l’exemple précédent, ce qui permet à l’instance liée d’être directement affectée à la propriété utilisée pour le rendu :
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_tvshow)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.1"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Controllers/HomeController.cs?name=snippet_tvshow)]
+
+::: moniker-end
+
+## <a name="bind-an-array-to-a-class"></a>Lier un tableau à une classe
+
+*L’exemple d’application illustre les concepts abordés dans cette section.*
+
+<xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*> prend en charge la liaison de tableaux à des objets à l’aide d’index de tableau dans les clés de configuration. Tout format de tableau qui expose un segment de clé numérique (`:0:`, `:1:`, &hellip; `:{n}:`) est capable d’effectuer la liaison de tableau avec un tableau de classes POCO.
+
+> [!NOTE]
+> La liaison est fournie par convention. Les fournisseurs de configuration personnalisés ne sont pas obligés d’implémenter la liaison de tableau.
+
+**Traitement de tableau en mémoire**
+
+Observez les valeurs et les clés de configuration indiquées dans le tableau suivant.
+
+| Touche     | Value  |
+| :-----: | :----: |
+| array:0 | value0 |
+| array:1 | value1 |
+| array:2 | value2 |
+| array:4 | value4 |
+| array:5 | value5 |
+
+Ces clés et valeurs sont chargées dans l’exemple d’application à l’aide du Fournisseur de configuration de mémoire :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=3-10,22)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Startup.cs?name=snippet_Startup&highlight=5-12,16)]
+
+::: moniker-end
+
+Le tableau ignore une valeur pour l’index &num;3. Le binder de configuration n’est pas capable de lier des valeurs null ou de créer des entrées null dans les objets liés, ce qui deviendra clair dans un moment lorsque le résultat de liaison de ce tableau à un objet est illustré.
+
+Dans l’exemple d’application, une classe POCO est disponible pour contenir les données de configuration liées :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Models/ArrayExample.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/ArrayExample.cs?name=snippet1)]
+
+::: moniker-end
+
+Les données de configuration sont liées à l’objet :
+
+```csharp
+var arrayExample = new ArrayExample();
+_config.GetSection("array").Bind(arrayExample);
+```
+
+::: moniker range=">= aspnetcore-1.1"
+
+La syntaxe [ConfigurationBinder.Get&lt;T&gt;](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) peut également être utilisée, ce qui aboutit à un code plus compact :
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Pages/Index.cshtml.cs?name=snippet_array)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-1.1"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Controllers/HomeController.cs?name=snippet_array)]
+
+::: moniker-end
+
+L’objet lié, une instance de `ArrayExample`, reçoit les données de tableau à partir de la configuration.
+
+| Index `ArrayExamples.Entries` | Valeur `ArrayExamples.Entries` |
+| :---------------------------: | :---------------------------: |
+| 0                             | value0                        |
+| 1                             | value1                        |
+| 2                             | value2                        |
+| 3                             | value4                        |
+| 4                             | value5                        |
+
+L’index &num;3 dans l’objet lié contient les données de configuration pour la clé de configuration `array:4` et sa valeur de `value4`. Lorsque des données de configuration contenant un tableau sont liées, les index de tableau dans les clés de configuration sont simplement utilisés pour itérer les données de configuration lors de la création de l’objet. Une valeur null ne peut pas être conservée dans des données de configuration, et une entrée à valeur null n’est pas créée dans un objet lié quand un tableau dans des clés de configuration ignore un ou plusieurs index.
+
+L’élément de configuration manquant pour l’index &num;3 peut être fourni avant la liaison à l’instance `ArrayExamples` par n’importe quel fournisseur de configuration qui génère la paire clé-valeur correcte dans la configuration. Si l’exemple inclut un Fournisseur de configuration JSON supplémentaire avec la paire clé-valeur manquante, `ArrayExamples.Entries` correspond à l’intégralité du tableau de configuration :
+
+*missing_value.json* :
+
+```json
+{
+  "array:entries:3": "value3"
+}
+```
+
+::: moniker range=">= aspnetcore-2.0"
+
+Dans `ConfigureAppConfiguration` :
+
+```csharp
+config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false);
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Dans le constructeur `Startup` :
+
+```csharp
+.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false);
+```
+
+::: moniker-end
+
+La paire clé-valeur indiquée dans le tableau est chargée dans la configuration.
+
+| Touche             | Value  |
+| :-------------: | :----: |
+| array:entries:3 | valeur3 |
+
+Si l’instance de classe `ArrayExamples` est liée une fois que le Fournisseur de configuration JSON inclut l’entrée pour l’index &num;3, le tableau `ArrayExamples.Entries` inclut la valeur.
+
+| Index `ArrayExamples.Entries` | Valeur `ArrayExamples.Entries` |
+| :---------------------------: | :---------------------------: |
+| 0                             | value0                        |
+| 1                             | value1                        |
+| 2                             | value2                        |
+| 3                             | valeur3                        |
+| 4                             | value4                        |
+| 5                             | value5                        |
+
+**Traitement de tableau JSON**
+
+Si un fichier JSON contient un tableau, les clés de configuration sont créés pour les éléments du tableau avec un index de section basé sur zéro. Dans le fichier de configuration suivant, `subsection` est un tableau :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-json[](index/samples/2.x/ConfigurationSample/json_array.json)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-json[](index/samples/1.x/ConfigurationSample/json_array.json)]
+
+::: moniker-end
+
+Le Fournisseur de configuration JSON lit les données de configuration dans les paires clé-valeur suivantes :
+
+| Touche                     | Value  |
+| ----------------------- | :----: |
+| json_array:key          | valueA |
+| json_array:subsection:0 | valueB |
+| json_array:subsection:1 | valueC |
+| json_array:subsection:2 | valueD |
+
+Dans l’exemple d’application, la classe POCO suivante est disponible pour lier les paires clé-valeur de configuration :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Models/JsonArrayExample.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/JsonArrayExample.cs?name=snippet1)]
+
+::: moniker-end
+
+Après la liaison, `JsonArrayExample.Key` contient la valeur `valueA`. Les valeurs de la sous-section sont stockées dans la propriété de tableau POCO, `Subsection`.
+
+| Index `JsonArrayExample.Subsection` | Valeur `JsonArrayExample.Subsection` |
+| :---------------------------------: | :---------------------------------: |
+| 0                                   | valueB                              |
+| 1                                   | valueC                              |
+| 2                                   | valueD                              |
+
+## <a name="custom-configuration-provider"></a>Fournisseur de configuration personnalisé
+
+L’exemple d’application montre comment créer un fournisseur de configuration de base qui lit les paires clé-valeur de configuration à partir d’une base de données à l’aide [d’Entity Framework (EF)](/ef/core/).
+
+Le fournisseur présente les caractéristiques suivantes :
+
+* La base de données en mémoire EF est utilisée à des fins de démonstration. Pour utiliser une base de données qui nécessite une chaîne de connexion, implémentez un autre `ConfigurationBuilder` pour fournir la chaîne de connexion à partir d’un autre fournisseur de configuration.
+* Le fournisseur lit une table de base de données dans la configuration au démarrage. Le fournisseur n’interroge pas la base de données par clé.
+* Le rechargement en cas de changement n’est pas implémenté, par conséquent, la mise à jour la base de données après le démarrage de l’application n’a aucun effet sur la configuration de l’application.
+
+Définissez une entité `EFConfigurationValue` pour le stockage des valeurs de configuration dans la base de données.
+
+*Models/EFConfigurationValue.cs* :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Models/EFConfigurationValue.cs?name=snippet1)]
+
+::: moniker-end
+
+Ajoutez un `EFConfigurationContext` pour stocker les valeurs configurées et y accéder.
+
+*EFConfigurationProvider/EFConfigurationContext.cs* :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationContext.cs?name=snippet1)]
+
+::: moniker-end
+
+Créez une classe qui implémente <xref:Microsoft.Extensions.Configuration.IConfigurationSource>.
+
+*EFConfigurationProvider/EFConfigurationSource.cs* :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationSource.cs?name=snippet1)]
+
+::: moniker-end
+
+Créez le fournisseur de configuration personnalisé en héritant de <xref:Microsoft.Extensions.Configuration.ConfigurationProvider>. Le fournisseur de configuration initialise la base de données quand elle est vide.
+
+*EFConfigurationProvider/EFConfigurationProvider.cs* :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationProvider.cs?name=snippet1)]
+
+::: moniker-end
+
+Une méthode d’extension `AddEFConfiguration` permet d’ajouter la source de configuration à un `ConfigurationBuilder`.
+
+*EFConfigurationProvider/EFConfigurationExtensions.cs* :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationExtensions.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/EFConfigurationProvider/EFConfigurationExtensions.cs?name=snippet1)]
+
+::: moniker-end
+
+Le code suivant montre comment utiliser le `EFConfigurationProvider` personnalisé dans *Program.cs* :
+
+::: moniker range=">= aspnetcore-2.0"
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=26)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+[!code-csharp[](index/samples/1.x/ConfigurationSample/Startup.cs?name=snippet_Startup&highlight=24)]
+
+::: moniker-end
 
 ## <a name="access-configuration-during-startup"></a>Accéder à la configuration lors du démarrage
 
-Pour accéder à la configuration dans `ConfigureServices` ou `Configure` au démarrage, consultez les exemples dans la rubrique [Démarrage de l’application](xref:fundamentals/startup).
+Injectez `IConfiguration` dans le constructeur `Startup` pour accéder aux valeurs de configuration dans `Startup.ConfigureServices`. Pour accéder à la configuration dans `Startup.Configure`, injectez `IConfiguration` directement dans la méthode ou utilisez l’instance à partir du constructeur :
 
-## <a name="adding-configuration-from-an-external-assembly"></a>Ajout de la configuration à partir d’un assembly externe
+```csharp
+public class Startup
+{
+    private readonly IConfiguration _config;
 
-L’implémentation de [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez [Améliorer une application à partir d’un assembly externe](xref:fundamentals/configuration/platform-specific-configuration).
+    public Startup(IConfiguration config)
+    {
+        _config = config;
+    }
 
-## <a name="access-configuration-in-a-razor-page-or-mvc-view"></a>Accéder à la configuration dans une page Razor ou une vue MVC
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var value = _config["key"];
+    }
 
-Pour accéder aux paramètres de configuration dans une page Pages Razor ou une vue MVC, ajoutez une [directive using](xref:mvc/views/razor#using) ([Informations de référence sur C# : directive using](/dotnet/csharp/language-reference/keywords/using-directive)) pour [l’espace de noms Microsoft.Extensions.Configuration](/dotnet/api/microsoft.extensions.configuration) et injectez [IConfiguration](/dotnet/api/microsoft.extensions.configuration.iconfiguration) dans la page ou la vue.
+    public void Configure(IApplicationBuilder app, IConfiguration config)
+    {
+        var value = config["key"];
+    }
+}
+```
+
+Pour obtenir un exemple d’accès à la configuration à l’aide des méthodes pratiques de démarrage, consultez [Démarrage de l’application : méthodes pratiques](xref:fundamentals/startup#convenience-methods).
+
+## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>Accéder à la configuration dans une page Razor Pages ou une vue MVC
+
+Pour accéder aux paramètres de configuration dans une page Pages Razor ou une vue MVC, ajoutez une [directive using](xref:mvc/views/razor#using) ([Informations de référence sur C# : directive using](/dotnet/csharp/language-reference/keywords/using-directive)) pour [l’espace de noms Microsoft.Extensions.Configuration](xref:Microsoft.Extensions.Configuration) et injectez <xref:Microsoft.Extensions.Configuration.IConfiguration> dans la page ou la vue.
 
 Dans une page Pages Razor :
 
 ```cshtml
 @page
 @model IndexModel
-
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
@@ -472,7 +1550,7 @@ Dans une page Pages Razor :
 </head>
 <body>
     <h1>Access configuration in a Razor Pages page</h1>
-    <p>Configuration[&quot;key&quot;]: @Configuration["key"]</p>
+    <p>Configuration value for 'key': @Configuration["key"]</p>
 </body>
 </html>
 ```
@@ -490,25 +1568,16 @@ Dans une vue MVC :
 </head>
 <body>
     <h1>Access configuration in an MVC view</h1>
-    <p>Configuration[&quot;key&quot;]: @Configuration["key"]</p>
+    <p>Configuration value for 'key': @Configuration["key"]</p>
 </body>
 </html>
 ```
 
-## <a name="additional-notes"></a>Remarques supplémentaires
+## <a name="add-configuration-from-an-external-assembly"></a>Ajouter la configuration à partir d’un assembly externe
 
-* L’injection de dépendances n’est pas définie tant que `ConfigureServices` n’est pas appelé.
-* Le système de configuration ne prend pas en charge l’injection de dépendances.
-* `IConfiguration` a deux spécialisations :
-  * `IConfigurationRoot` Utilisé pour le nœud racine. Peut déclencher un rechargement.
-  * `IConfigurationSection` Représente une section de valeurs de configuration. Les méthodes `GetSection` et `GetChildren` retournent un `IConfigurationSection`.
-  * Utilisez [IConfigurationRoot](/dotnet/api/microsoft.extensions.configuration.iconfigurationroot) quand vous rechargez la configuration ou accéder à chaque fournisseur. Aucune de ces situations n’est courante.
+Une implémentation de <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d'informations, consultez <xref:fundamentals/configuration/platform-specific-configuration>.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Options](xref:fundamentals/configuration/options)
-* [Utiliser plusieurs environnements](xref:fundamentals/environments)
-* [Stockage sécurisé des secrets des applications lors du développement](xref:security/app-secrets)
-* [Héberger dans ASP.NET Core](xref:fundamentals/host/index)
-* [Injection de dépendances](xref:fundamentals/dependency-injection)
-* [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration)
+* <xref:fundamentals/configuration/options>
+* [Présentation approfondie de la Configuration Microsoft](https://www.paraesthesia.com/archive/2018/06/20/microsoft-extensions-configuration-deep-dive/)
