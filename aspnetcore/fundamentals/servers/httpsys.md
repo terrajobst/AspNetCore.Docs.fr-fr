@@ -2,16 +2,16 @@
 title: Implémentation du serveur web HTTP.sys dans ASP.NET Core
 author: guardrex
 description: Découvrez HTTP.sys, un serveur web pour ASP.NET Core sous Windows. Basé sur le pilote en mode noyau HTTP.sys, HTTP.sys est une solution qui permet d’établir une connexion directe à Internet sans IIS ni Kestrel.
+monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
-ms.custom: mvc
-ms.date: 03/13/2018
+ms.date: 08/15/2018
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: aabfd99b7a28e80c665798fab86264b2b11954c2
-ms.sourcegitcommit: 7097dba14d5b858e82758ee031ac62dbe3611339
+ms.openlocfilehash: 58f71596b8ad54dd500699265ab022dc57c4f7a3
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39138569"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751408"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
@@ -54,7 +54,11 @@ HTTP.sys est utile pour les déploiements lorsque :
 
   ![HTTP.sys communique directement avec le réseau interne](httpsys/_static/httpsys-to-internal.png)
 
-HTTP.sys est une technologie aboutie qui assure une protection contre de nombreux types d’attaques et offre la robustesse, la sécurité et l’extensibilité d’un serveur web haut de gamme. Pour sa part, IIS s’exécute en tant qu’écouteur HTTP sur HTTP.sys. 
+HTTP.sys est une technologie aboutie qui assure une protection contre de nombreux types d’attaques et offre la robustesse, la sécurité et l’extensibilité d’un serveur web haut de gamme. Pour sa part, IIS s’exécute en tant qu’écouteur HTTP sur HTTP.sys.
+
+## <a name="kernel-mode-authentication-with-kerberos"></a>Authentification en mode noyau avec Kerberos
+
+HTTP.sys délègue l’authentification en mode noyau avec le protocole d’authentification Kerberos. L’authentification en mode utilisateur n’est pas prise en charge avec Kerberos et HTTP.sys. Le compte d’ordinateur doit être utilisé pour déchiffrer le ticket/jeton Kerberos obtenu à partir d’Active Directory et transféré par le client au serveur afin d’authentifier l’utilisateur. Inscrivez le nom de principal du service (SPN) pour l’hôte, et non l’utilisateur de l’application.
 
 ## <a name="how-to-use-httpsys"></a>Comment utiliser HTTP.sys
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: be75667f34eed7ba601eee331e3451c5738ef223
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c2af9099fe439e1cdbf9ba86ffae3b2b0f67391e
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273567"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751589"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Tag Helpers dans ASP.NET Core
 
@@ -130,7 +130,7 @@ Les mêmes règles de hiérarchie qui s’appliquent à `@addTagHelper` s’appl
 
 ## <a name="intellisense-support-for-tag-helpers"></a>Prise en charge IntelliSense des Tag Helpers
 
-Lorsque vous créez une application web ASP.NET dans Visual Studio, le package NuGet « Microsoft.AspNetCore.Razor.Tools » est ajouté. Il s’agit du package qui ajoute les outils de Tag Helper.
+Quand vous créez une application web ASP.NET Core dans Visual Studio, le package NuGet « Microsoft.AspNetCore.Razor.Tools » est ajouté. Il s’agit du package qui ajoute les outils de Tag Helper.
 
 Envisagez d’écrire un élément `<label>` HTML. Dès que vous entrez `<l` dans l’éditeur Visual Studio, IntelliSense affiche les éléments correspondants :
 

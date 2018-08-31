@@ -4,14 +4,14 @@ author: tdykstra
 description: Découvrez comment la liaison de modèle dans ASP.NET Core MVC mappe les données des requêtes HTTP à des paramètres de méthode d’action.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 01/22/2018
+ms.date: 08/14/2018
 uid: mvc/models/model-binding
-ms.openlocfilehash: 200e2c22e02ec9e24b7cdb3883cf6f2f93f2f4b7
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 0ce20a8040c6b19da1f57e1c053a7ef81d8bcb23
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095731"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751630"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -99,6 +99,31 @@ MVC contient plusieurs attributs que vous pouvez utiliser pour spécifier son co
 
 Les attributs sont très utiles quand vous devez remplacer le comportement par défaut de la liaison de modèle.
 
+## <a name="customize-model-binding-and-validation-globally"></a>Personnaliser la validation et la liaison de modèle de manière globale
+
+Le comportement du système de validation et de liaison de modèle est régi par [ModelMetadata](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.modelmetadata) qui décrit :
+
+* Comment un modèle doit être lié.
+* Comment a lieu la validation sur le type et ses propriétés.
+
+Vous pouvez configurer les aspects du comportement du système de manière globale en ajoutant un fournisseur de détails à [MvcOptions.ModelMetadataDetailsProviders](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions.modelmetadatadetailsproviders#Microsoft_AspNetCore_Mvc_MvcOptions_ModelMetadataDetailsProviders). MVC compte quelques fournisseurs de détails intégrés qui autorisent la configuration du comportement telle que la désactivation de la validation ou de la liaison de modèle pour certains types.
+
+Pour désactiver la liaison de modèle sur tous les modèles d’un certain type, ajoutez un [ExcludeBindingMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.excludebindingmetadataprovider) dans `Startup.ConfigureServices`. Par exemple, pour désactiver la liaison de modèle sur tous les modèles de type `System.Version` :
+
+```csharp
+services.AddMvc().AddMvcOptions(options =>
+    options.ModelMetadataDetailsProviders.Add(
+        new ExcludeBindingMetadataProvider(typeof(System.Version))));
+```
+
+Pour désactiver la validation sur les propriétés d’un certain type, ajoutez un [SuppressChildValidationMetadataProvider](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.suppresschildvalidationmetadataprovider) dans `Startup.ConfigureServices`. Par exemple, pour désactiver la validation sur les propriétés de type `System.Guid` :
+
+```csharp
+services.AddMvc().AddMvcOptions(options =>
+    options.ModelMetadataDetailsProviders.Add(
+        new SuppressChildValidationMetadataProvider(typeof(System.Guid))));
+```
+
 ## <a name="bind-formatted-data-from-the-request-body"></a>Lier des données mises en forme du corps de la requête
 
 Les données des requêtes peuvent exister dans différents formats, notamment JSON, XML et beaucoup d’autres. Quand vous utilisez l’attribut [FromBody] pour indiquer que vous voulez lier un paramètre à des données du corps de la requête, MVC utilise un ensemble de formateurs configuré pour gérer les données de la requête en fonction du type de contenu. Par défaut, MVC inclut une classe `JsonInputFormatter` pour la gestion des données JSON, mais vous pouvez ajouter des formateurs supplémentaires pour la gestion du format XML et d’autres formats personnalisés.
@@ -109,7 +134,7 @@ Les données des requêtes peuvent exister dans différents formats, notamment J
 > [!NOTE]
 > `JsonInputFormatter` est le formateur par défaut et est basé sur [Json.NET](https://www.newtonsoft.com/json).
 
-ASP.NET sélectionne les formateurs d’entrée en fonction de l’en-tête [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) et du type de paramètre, sauf si un attribut lui est appliqué qui spécifie un autre formateur. Si vous voulez utiliser XML ou un autre format, vous devez le configurer dans le fichier *Startup.cs*, mais il peut être nécessaire d’obtenir d’abord une référence à `Microsoft.AspNetCore.Mvc.Formatters.Xml` en utilisant NuGet. Votre code de démarrage doit ressembler à ceci :
+ASP.NET Core sélectionne les formateurs d’entrée en fonction de l’en-tête [Content-Type](https://www.w3.org/Protocols/rfc1341/4_Content-Type.html) et du type de paramètre, sauf si un attribut qui lui est appliqué spécifie un autre formateur. Si vous voulez utiliser XML ou un autre format, vous devez le configurer dans le fichier *Startup.cs*, mais il peut être nécessaire d’obtenir d’abord une référence à `Microsoft.AspNetCore.Mvc.Formatters.Xml` en utilisant NuGet. Votre code de démarrage doit ressembler à ceci :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -119,7 +144,7 @@ public void ConfigureServices(IServiceCollection services)
    }
 ```
 
-Le code du fichier *Startup.cs*contient une méthode `ConfigureServices` avec un argument `services`, que vous pouvez utiliser pour créer des services pour votre application ASP.NET. Dans l’exemple, nous ajoutons un formateur XML en tant que service, que MVC fournira pour cette application. L’argument `options` passé dans la méthode `AddMvc` vous permet d’ajouter et de gérer des filtres, des formateurs et d’autres options du système depuis MVC dès le démarrage de l’application. Appliquez ensuite l’attribut `Consumes` aux classes de contrôleur ou aux méthodes d’action pour travailler avec le format souhaité.
+Le code du fichier *Startup.cs* contient une méthode `ConfigureServices` avec un argument `services`, que vous pouvez utiliser pour créer des services pour votre application ASP.NET Core. Dans l’exemple, nous ajoutons un formateur XML en tant que service, que MVC fournira pour cette application. L’argument `options` passé dans la méthode `AddMvc` vous permet d’ajouter et de gérer des filtres, des formateurs et d’autres options du système depuis MVC dès le démarrage de l’application. Appliquez ensuite l’attribut `Consumes` aux classes de contrôleur ou aux méthodes d’action pour travailler avec le format souhaité.
 
 ### <a name="custom-model-binding"></a>Liaison de modèle personnalisée
 

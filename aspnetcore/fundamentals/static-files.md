@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 7ecbcc81423af20f8da79ebc026b1ac01a250b90
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 33fad930e617c74d9a8c07f850764a6b81fa8ab5
+ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279215"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41751521"
 ---
 # <a name="static-files-in-aspnet-core"></a>Fichiers statiques dans ASP.NET Core
 
@@ -102,7 +102,7 @@ Un objet [StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfile
 
 La méthode [HeaderDictionaryExtensions.Append](/dotnet/api/microsoft.aspnetcore.http.headerdictionaryextensions.append) se trouve dans le package [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/).
 
-Les fichiers peuvent être mis en cache publiquement pendant 10 minutes (600 secondes) :
+Les fichiers peuvent être mis en cache publiquement pendant 10 minutes (600 secondes) dans l’environnement de développement :
 
 ![En-têtes de réponse montrant que l’en-tête Cache-Control a été ajouté](static-files/_static/add-header.png)
 

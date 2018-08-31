@@ -5,12 +5,12 @@ description: Ce tutoriel présente plusieurs rubriques pratiques pour aller au-d
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: be44ef115ce72e1571bbdea2c609ea6c53792c59
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 25916365b4e682a8e296e0affbcddd4f1e5846b1
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194040"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751444"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC avec EF Core - Rubriques avancées - 10 sur 10
 
@@ -187,7 +187,7 @@ Le [troisième didacticiel de cette série](sort-filter-page.md) montre comment 
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Cette étape termine cette série de didacticiels sur l’utilisation d’Entity Framework Core dans une application ASP.NET MVC.
+Cette étape termine cette série de tutoriels sur l’utilisation d’Entity Framework Core dans une application ASP.NET Core MVC.
 
 Pour plus d’informations sur EF Core, consultez la [documentation sur Entity Framework Core](https://docs.microsoft.com/ef/core). Un ouvrage est également disponible : [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action).
 

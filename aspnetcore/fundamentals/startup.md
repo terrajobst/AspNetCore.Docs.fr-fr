@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: a576f3840e66fc4ed877f7575aa3f3e36b37ae4d
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: 465d33cc1f19428d5189b3a6fa7088ac402a9751
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356748"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927969"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -64,50 +64,11 @@ Pour les fonctionnalités qui nécessitent une installation substantielle, il ex
 
 [!code-csharp[](../common/samples/WebApplication1/Startup.cs?highlight=4,7,11&start=40&end=55)]
 
-::: moniker range=">= aspnetcore-2.1"
-
-<a name="setcompatibilityversion"></a>
-
-### <a name="setcompatibilityversion-for-aspnet-core-mvc"></a>SetCompatibilityVersion pour ASP.NET Core MVC
-
-La méthode `SetCompatibilityVersion` permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants qui ont été introduits dans ASP.NET MVC Core 2.1+. Ces changements de comportement potentiellement cassants concernent en général la façon dont le sous-système MVC se comporte et la façon dont **votre code** est appelé par le runtime. En acceptant, vous obtenez le comportement le plus récent et le comportement à long terme d’ASP.NET Core.
-
-Le code suivant définit le mode de compatibilité sur ASP.NET Core 2.1 :
-
-[!code-csharp[Main](startup/sampleCompatibility/Startup.cs?name=snippet1)]
-
-Nous vous recommandons de tester votre application avec la version la plus récente (`CompatibilityVersion.Version_2_1`). Nous pensons que la plupart des applications ne connaîtront pas de changements de comportement cassants avec la version la plus récente.
-
-Les applications qui appellent `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)` sont protégées contre les changements de comportement potentiellement cassants qui ont été introduits dans ASP.NET Core 2.1 MVC et dans les versions 2.x ultérieures. Cette protection :
-
-* Ne s’applique pas à tous les changements de 2.1 et ultérieur. Elle est destinée aux changements de comportement potentiellement cassants du runtime ASP.NET Core dans le sous-système MVC.
-* Ne s’étend pas à la version majeure suivante.
-
-La compatibilité par défaut pour les applications ASP.NET Core 2.1 et les versions 2.x ultérieures qui n’appellent **pas** `SetCompatibilityVersion` est la compatibilité 2.0. Autrement dit, ne pas appeler `SetCompatibilityVersion` revient à appeler `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`.
-
-Le code suivant définit le mode de compatibilité sur ASP.NET Core 2.1, sauf pour les comportements suivants :
-
-* [AllowCombiningAuthorizeFilters](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
-* [InputFormatterExceptionPolicy](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs)
-
-[!code-csharp[Main](startup/sampleCompatibility/Startup2.cs?name=snippet1)]
-
-Pour les applications qui rencontrent des changements de comportement cassants, l’utilisation des commutateurs de compatibilité appropriés :
-
-* Vous permet d’utiliser la dernière version et de refuser des changements de comportement cassants spécifiques.
-* Vous laisse le temps de mettre à jour votre application pour qu’elle fonctionne avec les derniers changements.
-
-Les commentaires dans la source de la classe [MvcOptions](https://github.com/aspnet/Mvc/blob/master/src/Microsoft.AspNetCore.Mvc.Core/MvcOptions.cs) expliquent clairement ce qui a changé et pourquoi les changements représentent une amélioration pour la plupart des utilisateurs.
-
-À une date ultérieure, il y aura une [version d’ASP.NET Core 3.0](https://github.com/aspnet/Home/wiki/Roadmap). Les comportements anciens pris en charge par les commutateurs de compatibilité seront supprimés dans la version 3.0. Nous pensons que ce sont des changements positifs, qui vont bénéficier à presque tous les utilisateurs. Comme nous introduisons ces changements maintenant, la plupart des applications peuvent en profiter tout de suite. Pour les autres applications, les développeurs ont du temps pour les mettre à jour.
-
-::: moniker-end
-
 ## <a name="the-configure-method"></a>Méthode Configure
 
 La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) est utilisée pour spécifier la façon dont l’application répond aux requêtes HTTP. Le pipeline de requête est configuré en ajoutant des composants [d’intergiciel (middleware)](xref:fundamentals/middleware/index) à une instance [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` est disponible pour la méthode `Configure`, mais elle n’est pas inscrite dans le conteneur de service. L’hébergement crée un `IApplicationBuilder` et le passe directement à `Configure` ([source de référence](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
 
-Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeline avec la prise en charge d’une page d’exception de développeur, de [BrowserLink](http://vswebessentials.com/features/browserlink), des pages d’erreurs, des fichiers statiques et d’ASP.NET MVC :
+Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeline avec la prise en charge d’une page d’exception de développeur, de [BrowserLink](http://vswebessentials.com/features/browserlink), des pages d’erreurs, des fichiers statiques et d’ASP.NET Core MVC :
 
 [!code-csharp[](../common/samples/WebApplication1DotNetCore2.0App/Startup.cs?range=28-48&highlight=5,6,10,13,15)]
 
@@ -129,7 +90,7 @@ Les méthodes pratiques [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hos
 
 Utilisez [IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) pour configurer un intergiciel au début ou à la fin du pipeline de l’intergiciel de la méthode [Configure](#the-configure-method) d’une application. `IStartupFilter` est utile pour s’assurer qu’un intergiciel s’exécute avant ou après l’intergiciel ajouté par des bibliothèques au début ou à la fin du pipeline de traitement de requête de l’application.
 
-`IStartupFilter` implémente une méthode unique, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), qui reçoit et retourne un `Action<IApplicationBuilder>`. Un [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) définit une classe pour configurer le pipeline de requête d’une application. Pour plus d’informations, consultez [Créer un pipeline de middlewares avec IApplicationBuilder](xref:fundamentals/middleware/index#creating-a-middleware-pipeline-with-iapplicationbuilder).
+`IStartupFilter` implémente une méthode unique, [Configure](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter.configure), qui reçoit et retourne un `Action<IApplicationBuilder>`. Un [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder) définit une classe pour configurer le pipeline de requête d’une application. Pour plus d’informations, consultez [Créer un pipeline de middlewares avec IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder).
 
 Chaque `IStartupFilter` implémente un ou plusieurs intergiciels dans le pipeline de requête. Les filtres sont appelés dans l’ordre dans lequel ils ont été ajoutés au conteneur de service. Les filtres peuvent ajouter l’intergiciel avant ou après la transmission du contrôle au filtre suivant. Par conséquent, ils s’ajoutent au début ou à la fin du pipeline de l’application.
 
@@ -154,7 +115,7 @@ L’ordre d’exécution de l’intergiciel est défini par l’ordre des inscri
 * Plusieurs implémentations d’`IStartupFilter` peuvent interagir avec les mêmes objets. Si l’ordre est important, définissez l’ordre des inscriptions de leurs services `IStartupFilter` pour qu’il corresponde à l’ordre dans lequel leurs intergiciels doivent s’exécuter.
 * Les bibliothèques peuvent ajouter des intergiciels avec une ou plusieurs implémentations `IStartupFilter` qui s’exécutent avant ou après l’autre intergiciel d’application inscrit avec `IStartupFilter`. Pour appeler un intergiciel `IStartupFilter` avant un intergiciel ajouté à l’`IStartupFilter` d’une bibliothèque, placez l’inscription du service avant l’ajout de la bibliothèque au conteneur de service. Pour l’appeler par la suite, placez l’inscription du service après l’ajout de la bibliothèque.
 
-## <a name="adding-configuration-at-startup-from-an-external-assembly"></a>Ajout de la configuration au démarrage à partir d’un assembly externe
+## <a name="add-configuration-at-startup-from-an-external-assembly"></a>Ajouter la configuration au démarrage à partir d’un assembly externe
 
 L’implémentation de [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) permet d’ajouter des améliorations à une application au démarrage à partir d’un assembly externe, en dehors de la classe `Startup` de l’application. Pour plus d’informations, consultez [Améliorer une application à partir d’un assembly externe](xref:fundamentals/configuration/platform-specific-configuration).
 

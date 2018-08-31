@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 9355d467ca819ea8c6292963b31367ad5ca36d55
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 05ebc2b51401f8ce8d76d7d121e351cd9ca42c80
+ms.sourcegitcommit: 67a0a04ebb3b21c826e5b9600bacfc897abd6a46
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938535"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42899855"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Compilation de fichiers Razor dans ASP.NET Core
 
@@ -39,9 +39,12 @@ Les effets secondaires de la précompilation des fichiers Razor sont les suivant
 ## <a name="deploy-precompiled-files"></a>Déployer les fichiers précompilés
 
 ::: moniker range=">= aspnetcore-2.1"
+
 La compilation au moment de la génération et de la publication des fichiers Razor est activée par défaut par le kit SDK Razor. La modification des fichiers Razor une fois que ceux-ci sont mis à jour est prise en charge au moment de la génération. Par défaut, seul le fichier *Views.dll* compilé est déployé avec votre application. Aucun fichier *.cshtml* n’est déployé.
 
 > [!IMPORTANT]
+> L’outil de précompilation sera supprimé dans ASP.NET Core 3.0. Nous vous recommandons de migrer vers le [SDK Razor](xref:razor-pages/sdk).
+>
 > Le kit SDK Razor est actif seulement si aucune propriété spécifique à la précompilation n’est définie dans le fichier projet. Par exemple, la définition de la propriété `MvcRazorCompileOnPublish` du fichier *.csproj* sur la valeur `true` désactive le kit SDK Razor.
 ::: moniker-end
 
@@ -55,6 +58,8 @@ Si votre projet cible .NET Core, aucune modification n’est nécessaire.
 Les modèles de projet ASP.NET Core 2.x définissent implicitement la propriété `MvcRazorCompileOnPublish` sur la valeur `true` par défaut. Par conséquent, cet élément peut être supprimé sans problème du fichier *.csproj*.
 
 > [!IMPORTANT]
+> L’outil de précompilation sera supprimé dans ASP.NET Core 3.0. Nous vous recommandons de migrer vers le [SDK Razor](xref:razor-pages/sdk).
+>
 > La précompilation de fichiers Razor n’est pas disponible quand vous effectuez un [déploiement autonome (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) dans ASP.NET Core 2.0.
 ::: moniker-end
 

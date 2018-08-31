@@ -5,12 +5,12 @@ description: Montre comment utiliser un Tag Helper Cache
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 969716e21211513053f52049368a0a7190ffba47
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 425d8c2235f0070665bc0c967d2498f2cff2a4a6
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276550"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751443"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Tag Helper Cache dans ASP.NET Core MVC
 
@@ -181,7 +181,7 @@ routes.MapRoute(
 | Chaîne            | ".AspNetCore.Identity.Application"                |
 |                   | ".AspNetCore.Identity.Application,HairColor" |
 
-Accepte une seule valeur d’en-tête ou une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand les valeurs d’en-tête changent. L’exemple suivant examine le cookie associé à ASP.NET Identity. Quand un utilisateur est authentifié, cookie de la demande à définir qui déclenche une actualisation du cache.
+Accepte une seule valeur d’en-tête ou une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand les valeurs d’en-tête changent. L’exemple suivant examine le cookie associé à ASP.NET Core Identity. Quand un utilisateur est authentifié, cookie de la demande à définir qui déclenche une actualisation du cache.
 
 Exemple :
 

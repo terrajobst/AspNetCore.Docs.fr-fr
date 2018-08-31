@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: cbbdee6849768004476d94c58be4a0e7cc2d6f9e
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: f22914c9b0d6d1902dd37c9b21b80a18894c97e7
+ms.sourcegitcommit: d1c4580f56656b503cf528ec9f5ba570d790b57d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938470"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41751435"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes liés à ASP.NET Core sur IIS
 
@@ -97,6 +97,7 @@ Pour activer et afficher les journaux stdout :
 1. Accédez au dossier de déploiement du site sur le système hôte.
 1. Si le dossier *logs* n’est pas présent, créez-le. Pour obtenir des instructions sur l’activation de MSBuild et créer le dossier *logs* dans le déploiement automatiquement, consultez la rubrique [Structure des répertoires](xref:host-and-deploy/directory-structure).
 1. Modifiez le fichier *web.config*. Définissez **stdoutLogEnabled** sur `true` et faites pointer le chemin **stdoutLogFile** vers le dossier *logs* (par exemple, `.\logs\stdout`). Dans le chemin, `stdout` est le préfixe du nom du fichier journal. Un horodatage, un ID de processus et une extension de fichier sont ajoutés automatiquement quand le journal est créé. Si `stdout` est utilisé comme préfixe du nom de fichier, un fichier journal classique porte le nom *stdout_20180205184032_5412.log*. 
+1. Vérifiez que l’identité de votre pool d’applications dispose des autorisations d’écriture sur le dossier *logs*.
 1. Enregistrez le fichier *web.config* mis à jour.
 1. Adressez une requête à l’application.
 1. Accédez au dossier *logs*. Recherchez et ouvrez le journal stdout le plus récent.

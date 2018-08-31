@@ -1,22 +1,22 @@
-﻿---
+---
 title: Disposition dans ASP.NET Core
 author: ardalis
 description: Apprenez à utiliser des dispositions communes, à partager des directives et à exécuter le code commun avant d’afficher les vues dans une application ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/views/layout
-ms.openlocfilehash: a99b239a0aeeb14492b1eee962dc1149f056f0eb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: ad0b339572f387be8a636204015ffc361947acb8
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274116"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751569"
 ---
 # <a name="layout-in-aspnet-core"></a>Disposition dans ASP.NET Core
 
 Par [Steve Smith](https://ardalis.com/)
 
-Les vues ont souvent des objets visuels et des éléments de programme en commun. Dans cet article, vous allez apprendre à utiliser des dispositions communes, à partager des directives et à exécuter le code commun avant d’afficher les vues dans votre application ASP.NET.
+Les vues ont souvent des objets visuels et des éléments de programme en commun. Dans cet article, vous allez découvrir comment utiliser des dispositions communes, partager des directives et exécuter le code commun avant d’afficher les vues dans votre application ASP.NET Core.
 
 ## <a name="what-is-a-layout"></a>Qu’est-ce qu’une disposition ?
 
@@ -26,7 +26,7 @@ La plupart des applications web ont une disposition commune pour offrir aux util
 
 Les structures HTML communes comme les scripts et les feuilles de style sont aussi fréquemment utilisées par bon nombre de pages dans une application. Tous ces éléments partagés peuvent être définis dans un fichier de *disposition*, qui peut ensuite être référencé par n’importe quelle vue utilisée dans l’application. Les dispositions réduisent la répétition de code dans les vues, selon le [principe Ne vous répétez pas (DRY, Don’t Repeat Yourself)](http://deviq.com/don-t-repeat-yourself/).
 
-Par convention, la disposition par défaut d’une application ASP.NET est nommée `_Layout.cshtml`. Le modèle de projet Visual Studio ASP.NET Core MVC stocke ce fichier de disposition dans le dossier `Views/Shared` :
+Par convention, la disposition par défaut d’une application ASP.NET Core se nomme `_Layout.cshtml`. Le modèle de projet Visual Studio ASP.NET Core MVC stocke ce fichier de disposition dans le dossier `Views/Shared` :
 
 ![Dossier Vues dans l’Explorateur de solutions](layout/_static/web-project-views.png)
 

@@ -1,16 +1,16 @@
-﻿---
+---
 title: ASP.NET Core MVC avec Entity Framework Core - Didacticiel 1 sur 10
 author: rick-anderson
 description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 4e0bcffd1162681aa4d31c4fe74acac5a7e981f1
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: cbef7e5edf2950a87a4cd4155c63a22fff2990fe
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38216310"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751615"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC avec Entity Framework Core - Didacticiel 1 sur 10
 
@@ -35,7 +35,7 @@ EF Core 2.0 est la dernière version d’EF mais elle ne dispose pas encore de t
 
 ## <a name="prerequisites"></a>Prérequis
 
-[!INCLUDE [](~/includes/net-core-prereqs.md) [](~/includes/net-core-prereqs.md)]
+[!INCLUDE [](~/includes/net-core-prereqs.md)]
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
@@ -80,7 +80,7 @@ Ouvrez Visual Studio et créez un nouveau projet web C# ASP.NET Core, nommé « 
 
 * Cliquez sur **OK**.
 
-  ![Boîte de dialogue Nouveau projet ASP.NET](intro/_static/new-aspnet.png)
+  ![Boîte de dialogue Nouveau projet ASP.NET Core](intro/_static/new-aspnet.png)
 
 ## <a name="set-up-the-site-style"></a>Configurer le style du site
 
@@ -273,7 +273,7 @@ Vous pouvez remarquer que le contrôleur accepte un `SchoolContext` comme param�
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Context&highlight=5,7,9)]
 
-L’injection de dépendance ASP.NET s’occupe de la transmission d’une instance de `SchoolContext` dans le contrôleur. Vous avez configuré cela dans le fichier *Startup.cs* précédemment.
+L’injection de dépendance ASP.NET Core s’occupe de la transmission d’une instance de `SchoolContext` dans le contrôleur. Vous avez configuré cela dans le fichier *Startup.cs* précédemment.
 
 Le contrôleur contient une méthode d’action `Index`, qui affiche tous les étudiants dans la base de données. La méthode obtient la liste des étudiants du jeu d’entités Students en lisant la propriété `Students` de l’instance de contexte de base de données :
 

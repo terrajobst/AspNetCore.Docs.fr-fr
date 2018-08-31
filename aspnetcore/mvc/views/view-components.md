@@ -5,12 +5,12 @@ description: Découvrez comment les composants de vue sont utilisés dans ASP.NE
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/view-components
-ms.openlocfilehash: 2b196d8d46942604d1c85eb5f2f073661e5acb30
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: c4e4de6e4ffb634a636bccdb2a929a524baebecf
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278360"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751751"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -75,8 +75,9 @@ Un composant de vue définit sa logique dans une méthode `InvokeAsync` qui reto
 
 Le Runtime recherche la vue dans les chemins suivants :
 
-   * Views/\<nom_contrôleur>/Components/\<nom_composant_vue>/\<nom_vue>
-   * Views/Shared/Components/\<nom_composant_vue>/\<nom_vue>
+* /Pages/Components/<component name>/\<nom_vue>
+* Views/\<nom_contrôleur>/Components/\<nom_composant_vue>/\<nom_vue>
+* Views/Shared/Components/\<nom_composant_vue>/\<nom_vue>
 
 Le nom de la vue par défaut pour un composant de vue est *Default*. Votre fichier de vue est donc normalement appelé *Default.cshtml*. Vous pouvez spécifier un nom de vue différent quand vous créez le résultat du composant de vue ou quand vous appelez la méthode `View`.
 

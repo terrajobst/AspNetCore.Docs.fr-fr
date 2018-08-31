@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/10/2018
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 280599ab4b4f0a70d154cc4408e7232aaf766d8e
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 2958b83de13207b93790004a4fa60b0509af3cd2
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36279556"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902584"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 
@@ -505,3 +505,4 @@ Sélectionnez l’élément de menu [Console de débogage](https://github.com/pr
 
 * [Web Deploy](https://www.iis.net/downloads/microsoft/web-deploy) (MSDeploy) simplifie le déploiement des applications web et des sites web sur les serveurs IIS.
 * [https://github.com/aspnet/websdk](https://github.com/aspnet/websdk/issues) : soumettez vos problèmes et demandez des fonctionnalités pour le déploiement.
+* [Publier une application web ASP.NET sur une machine virtuelle Azure à partir de Visual Studio](/azure/virtual-machines/windows/publish-web-app-from-visual-studio)

@@ -2,16 +2,17 @@
 title: Activation d’un intergiciel (middleware) basé sur une fabrique dans ASP.NET Core
 author: guardrex
 description: Découvrez comment utiliser un middleware fortement typé avec une implémentation de l’activation basée sur une fabrique dans ASP.NET Core.
+monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2018
+ms.date: 08/14/2018
 uid: fundamentals/middleware/extensibility
-ms.openlocfilehash: 44987dbc20b0419865a23e64b60a5dc3f436743a
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 346f5e7b28a9cd17a03a864772ed8b2e4be9455b
+ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277070"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41751522"
 ---
 # <a name="factory-based-middleware-activation-in-aspnet-core"></a>Activation d’un intergiciel (middleware) basé sur une fabrique dans ASP.NET Core
 
@@ -47,7 +48,7 @@ Middleware activé par convention :
 
 Middleware activé par `MiddlewareFactory` :
 
-[!code-csharp[](extensibility/sample/Middleware/IMiddlewareMiddleware.cs?name=snippet1)]
+[!code-csharp[](extensibility/sample/Middleware/FactoryActivatedMiddleware.cs?name=snippet1)]
 
 Des extensions sont créées pour les middleware :
 
@@ -56,11 +57,11 @@ Des extensions sont créées pour les middleware :
 Il n’est pas possible de passer des objets au middleware activé par fabrique avec `UseMiddleware` :
 
 ```csharp
-public static IApplicationBuilder UseIMiddlewareMiddleware(
+public static IApplicationBuilder UseFactoryActivatedMiddleware(
     this IApplicationBuilder builder, bool option)
 {
     // Passing 'option' as an argument throws a NotSupportedException at runtime.
-    return builder.UseMiddleware<IMiddlewareMiddleware>(option);
+    return builder.UseMiddleware<FactoryActivatedMiddleware>(option);
 }
 ```
 
@@ -70,15 +71,15 @@ Le middleware activé par fabrique est ajouté au conteneur intégré dans *Star
 
 Les deux middlewares sont inscrits dans le pipeline de traitement des requêtes dans `Configure` :
 
-[!code-csharp[](extensibility/sample/Startup.cs?name=snippet2&highlight=13-14)]
+[!code-csharp[](extensibility/sample/Startup.cs?name=snippet2&highlight=14-15)]
 
 ## <a name="imiddlewarefactory"></a>IMiddlewareFactory
 
 [IMiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.imiddlewarefactory) fournit des méthodes pour créer un middleware. L’implémentation de la fabrique de middlewares est inscrite dans le conteneur comme service délimité.
 
-L’implémentation par défaut de `IMiddlewareFactory`, [MiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.middlewarefactory), se trouve dans le package [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/) ([source de référence](https://github.com/aspnet/HttpAbstractions/blob/release/2.0/src/Microsoft.AspNetCore.Http/MiddlewareFactory.cs)).
+L’implémentation par défaut de `IMiddlewareFactory`, [MiddlewareFactory](/dotnet/api/microsoft.aspnetcore.http.middlewarefactory), se trouve dans le package [Microsoft.AspNetCore.Http](https://www.nuget.org/packages/Microsoft.AspNetCore.Http/).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Intergiciel (middleware)](xref:fundamentals/middleware/index)
-* [Activation d’intergiciel (middleware) avec un conteneur tiers](xref:fundamentals/middleware/extensibility-third-party-container)
+* <xref:fundamentals/middleware/index>
+* <xref:fundamentals/middleware/extensibility-third-party-container>

@@ -6,23 +6,43 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2017
 uid: fundamentals/configuration/options
-ms.openlocfilehash: ef6b0117b88c4c79771f0280267bd99993028ac8
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: 6258530beedced9570111478fea630b1556e1a1e
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655418"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927956"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-Le modèle d’options utilise des classes pour représenter les groupes de paramètres associés. Quand les paramètres de configuration sont isolés par fonctionnalité dans des classes distinctes, l’application est conforme à deux principes d’ingénierie logicielle importants :
+Le modèle d’options utilise des classes pour représenter les groupes de paramètres associés. Quand les [paramètres de configuration](xref:fundamentals/configuration/index) sont isolés par scénario dans des classes distinctes, l’application est conforme à deux principes d’ingénierie logicielle importants :
 
-* [Principe de séparation des interfaces](http://deviq.com/interface-segregation-principle/) : les fonctionnalités (classes) qui dépendent de paramètres de configuration dépendent uniquement de ceux qu’elles utilisent.
+* [Principe de séparation des interfaces](http://deviq.com/interface-segregation-principle/) : les scénarios (classes) qui dépendent de paramètres de configuration dépendent uniquement de ceux qu’ils utilisent.
 * [Séparation des préoccupations](http://deviq.com/separation-of-concerns/) : les paramètres des différentes parties de l’application ne sont pas dépendants ou associés les uns aux autres.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample)) Cet article est plus facile à suivre avec l’exemple d’application.
+
+## <a name="prerequisites"></a>Prérequis
+
+::: moniker range=">= aspnetcore-2.1"
+
+Référencer le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Référencer le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage) ou ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Ajouter une référence de package au package [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/).
+
+::: moniker-end
 
 ## <a name="basic-options-configuration"></a>Configuration des options de base
 
@@ -102,7 +122,7 @@ delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
 
 La configuration des sous-options est illustrée dans l’exemple &num;3 de [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/options/sample).
 
-Les applications doivent créer des classes d’options qui appartiennent à des groupes de fonctionnalités spécifiques (classes) dans l’application. Les parties de l’application qui requièrent des valeurs de configuration ne doivent avoir accès qu’aux valeurs de configuration qu’elles utilisent.
+Les applications doivent créer des classes d’options qui appartiennent à des groupes de scénarios spécifiques (classes) dans l’application. Les parties de l’application qui requièrent des valeurs de configuration ne doivent avoir accès qu’aux valeurs de configuration qu’elles utilisent.
 
 Au moment de la liaison des options à la configuration, chaque propriété du type options est liée à une clé de configuration sous la forme `property[:sub-property:]`. Par exemple, la propriété `MyOptions.Option1` est liée à la clé `Option1`, qui est lue à partir de la propriété `option1` dans *appsettings.json*.
 

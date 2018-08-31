@@ -5,12 +5,12 @@ description: ASP.NET Core MVC est une infrastructure riche pour la création d�
 ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
-ms.openlocfilehash: 7f8aab02c0ee37dad49ff224b182ec455e837a7a
-ms.sourcegitcommit: e955a722c05ce2e5e21b4219f7d94fb878e255a6
+ms.openlocfilehash: d2a50e48c20fe69b1fe691bfc9c91a27d4219922
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39378636"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "41902597"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble d’ASP.NET Core MVC
 
@@ -251,3 +251,9 @@ Les Tag Helpers fournissent une expérience utilisateur de développement HTML e
 ### <a name="view-components"></a>Composants de vues
 
 Les [composants de vues](views/view-components.md) vous permettent de compresser la logique de rendu et de la réutiliser dans l’application. Ils sont similaires aux [vues partielles](views/partial.md), mais avec une logique associée.
+
+## <a name="compatibility-version"></a>Version de compatibilité
+
+La méthode <xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> permet à une application d’accepter ou de refuser les changements de comportement potentiellement cassants introduits dans ASP.NET Core MVC 2.1 ou version ultérieure.
+
+Pour plus d'informations, consultez <xref:mvc/compatibility-version>.

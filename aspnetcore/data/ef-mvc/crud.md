@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 1c724da918640c514acbc24c390de4e735f8bf49
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 626b828e2391d3982ff2cf393f0c9e0748c12810
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342430"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751480"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
 
@@ -117,7 +117,7 @@ Dans *StudentsController.cs*, modifiez la méthode HttpPost `Create` en ajoutant
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Create&highlight=4,6-7,14-21)]
 
-Ce code ajoute l’entité Student créée par le classeur de modèles ASP.NET MVC au jeu d’entités Students, puis enregistre les modifications dans la base de données. (Le classeur de modèles référence la fonctionnalité d’ASP.NET MVC qui facilite l’utilisation des données envoyées par un formulaire ; un classeur de modèles convertit les valeurs de formulaire envoyées en types CLR et les passe à la méthode d’action dans des paramètres. Dans ce cas, le classeur de modèles instancie une entité Student pour vous avec des valeurs de propriété provenant de la collection Form.)
+Ce code ajoute l’entité Student créée par le classeur de modèles ASP.NET Core MVC au jeu d’entités Students, puis enregistre les modifications dans la base de données. (Le classeur de modèles référence la fonctionnalité d’ASP.NET Core MVC qui facilite l’utilisation des données envoyées par un formulaire ; un classeur de modèles convertit les valeurs de formulaire envoyées en types CLR et les passe à la méthode d’action dans des paramètres. Dans ce cas, le classeur de modèles instancie une entité Student pour vous avec des valeurs de propriété provenant de la collection Form.)
 
 Vous avez supprimé `ID` de l’attribut `Bind`, car ID est la valeur de clé primaire définie automatiquement par SQL Server lors de l’insertion de la ligne. L’entrée de l’utilisateur ne définit pas la valeur de l’ID.
 
@@ -273,7 +273,7 @@ Cliquez sur **Delete**. La page Index s’affiche sans l’étudiant supprimé. 
 
 Pour libérer les ressources détenues par une connexion de base de données, l’instance du contexte doit être supprimée dès que possible quand vous en avez terminé avec celle-ci. [L’injection de dépendances](../../fundamentals/dependency-injection.md) intégrée d’ASP.NET Core prend en charge cette tâche pour vous.
 
-Dans *Startup.cs*, vous appelez la [méthode d’extension AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) pour provisionner la classe `DbContext` dans le conteneur d’injection de dépendances d’ASP.NET. Cette méthode définit par défaut la durée de vie du service sur `Scoped`. `Scoped` signifie que la durée de vie de l’objet de contexte coïncide avec la durée de vie de la demande web, et que la méthode `Dispose` sera appelée automatiquement à la fin de la requête web.
+Dans *Startup.cs*, vous appelez la [méthode d’extension AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) pour provisionner la classe `DbContext` dans le conteneur d’injection de dépendances d’ASP.NET Core. Cette méthode définit par défaut la durée de vie du service sur `Scoped`. `Scoped` signifie que la durée de vie de l’objet de contexte coïncide avec la durée de vie de la demande web, et que la méthode `Dispose` sera appelée automatiquement à la fin de la requête web.
 
 ## <a name="handling-transactions"></a>Gestion des transactions
 

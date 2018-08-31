@@ -5,12 +5,12 @@ description: Découvrez comment contrôler le comportement de l’application da
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: eaa6fa44ed90d0c85a11f5e67a4bb9a91e84c196
-ms.sourcegitcommit: c8e62aa766641aa55105f7db79cdf2b27a6e5977
+ms.openlocfilehash: 720e5ef9fb63b83499ce1801a1c3f9df4786d748
+ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39254868"
+ms.lasthandoff: 08/25/2018
+ms.locfileid: "42927940"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
@@ -275,7 +275,11 @@ Pour les versions Linux, exécutez la commande `export` à une invite de command
 
 ### <a name="configuration-by-environment"></a>Configuration par environnement
 
-Consultez la section*Configuration par environnement* à l’adresse <xref:fundamentals/configuration/index#configuration-by-environment>.
+Pour charger la configuration par environnement, nous vous recommandons de disposer des éléments suivants :
+
+* Fichiers *appSettings* (*appsettings.&lt;<Environment>&gt;.json). Consultez [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider).
+* Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Voir [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) et [Stockage sécurisé des secrets d’application lors du développement : variables d’environnement](xref:security/app-secrets#environment-variables).
+* Secret Manager (dans l’environnement de développement uniquement). Consultez <xref:security/app-secrets>.
 
 ## <a name="environment-based-startup-class-and-methods"></a>Classe et méthodes Startup en fonction de l’environnement
 

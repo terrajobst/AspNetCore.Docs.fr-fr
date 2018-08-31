@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: d7e60c0f615841461a17b093bffe5fb3f82f8616
-ms.sourcegitcommit: 506a199274e9fe5fb4070b273ba94f29f14cb619
+ms.openlocfilehash: ff04ebeb6a682ec924afe896fd6716010a63f7cd
+ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/28/2018
-ms.locfileid: "39332273"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41751612"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -195,7 +195,7 @@ La couche d’hébergement ne peut afficher une page d’erreur pour une erreur 
 
 En cas d’exécution sur [IIS](/iis) ou [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview), une réponse *502.5 Échec du processus* est retournée par le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) si le processus ne peut pas être a démarré. Pour plus d’informations sur la résolution des problèmes de démarrage lors de l’hébergement avec IIS, consultez le site <xref:host-and-deploy/iis/troubleshoot>. Pour plus d’informations sur la résolution des problèmes de démarrage lors de l’hébergement avec Azure App Service, consultez le site <xref:host-and-deploy/azure-apps/troubleshoot>.
 
-## <a name="aspnet-mvc-error-handling"></a>Gestion des erreurs MVC ASP.NET
+## <a name="aspnet-core-mvc-error-handling"></a>Gestion des erreurs MVC ASP.NET MVC
 
 Les applications [MVC](xref:mvc/overview) ont des options supplémentaires pour la gestion des erreurs, telles que la configuration de filtres d’exception et l’exécution d’une validation de modèle.
 

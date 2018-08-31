@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: b156cd0755d7918d5f8433fcbe5c870ad04ac13e
-ms.sourcegitcommit: a25b572eaed21791230c85416f449f66a405ec19
+ms.openlocfilehash: 68afe77b05a717cffecc32188f18e9fde208b81f
+ms.sourcegitcommit: 3ca20ed63bf1469f4365f0c1fbd00c98a3191c84
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396219"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41751657"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -72,7 +72,7 @@ Les modifications minimales suivantes sont requises pour configurer un projet AS
 
      ::: moniker range=">= aspnetcore-2.0"
 
-     [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=ServiceOnly&highlight=8-9,12)]
+     [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=ServiceOnly&highlight=8-9,16)]
 
      ::: moniker-end
 
@@ -205,7 +205,7 @@ Pour gérer les événements [OnStarting](/dotnet/api/microsoft.aspnetcore.hosti
 
    ::: moniker range=">= aspnetcore-2.0"
 
-   [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=HandleStopStart&highlight=14)]
+   [!code-csharp[](windows-service/samples/2.x/AspNetCoreService/Program.cs?name=HandleStopStart&highlight=17)]
 
    > [!NOTE]
    > `isService` n’est pas passé de `Main` vers `CreateWebHostBuilder`, car la signature de `CreateWebHostBuilder` doit être `CreateWebHostBuilder(string[])` afin que les [tests d’intégration](xref:test/integration-tests) fonctionnent correctement.
@@ -229,6 +229,13 @@ Les services qui interagissent avec les requêtes provenant d’Internet ou d’
 ## <a name="configure-https"></a>Configurer HTTPS
 
 Spécifiez la [configuration de point de terminaison HTTPS d’un serveur Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration).
+
+## <a name="current-directory-and-content-root"></a>Répertoire actif et racine du contenu
+
+Le répertoire de travail actif retourné par l’appel à `Directory.GetCurrentDirectory()` pour un service Windows est le dossier *C:\WINDOWS\system32*. Le dossier *system32* n’est pas un emplacement approprié pour stocker les fichiers d’un service (tels que les fichiers de paramètres). Adoptez l’une des approches suivantes pour tenir à jour et accéder aux ressources et aux fichiers de paramètres d’un service avec [FileConfigurationExtensions.SetBasePath](/dotnet/api/microsoft.extensions.configuration.fileconfigurationextensions.setbasepath) quand vous utilisez un [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder) :
+
+* Utilisez le chemin racine du contenu. `IHostingEnvironment.ContentRootPath` est le même chemin que celui fourni à l’argument `binPath` quand le service est créé. Au lieu d’utiliser `Directory.GetCurrentDirectory()` pour créer des chemins aux fichiers de paramètres, utilisez le chemin racine du contenu et tenez à jour les fichiers dans la racine du contenu de l’application.
+* Stockez les fichiers à un emplacement approprié sur le disque. Spécifiez un chemin absolu avec `SetBasePath` au dossier contenant les fichiers.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

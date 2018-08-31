@@ -5,12 +5,12 @@ description: Apprenez à utiliser les composants d’application, c’est-à-dir
 ms.author: riande
 ms.date: 01/04/2017
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: e0290ceadc159d7c3608ec4420d95cd219407d32
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 377217870743e70f5e20544da43cb80c2c916c42
+ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276823"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41751409"
 ---
 # <a name="application-parts-in-aspnet-core"></a>Composants d’application dans ASP.NET Core
 
