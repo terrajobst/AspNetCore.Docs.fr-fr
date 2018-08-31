@@ -5,12 +5,12 @@ description: Cet article décrit comment configurer l’authentification Windows
 ms.author: riande
 ms.date: 08/18/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 93b1a1de74ef6554d48709b04870f7e23738846b
-ms.sourcegitcommit: 15d7bd0b2c4e6fe9ac335d658bab71a45ca5bc72
+ms.openlocfilehash: a8066d248c0d4db1d1f61b2a14bdb4656a2f4265
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41835378"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312410"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
@@ -97,7 +97,7 @@ Bien que Kestrel ne prend pas en charge l’authentification Windows, vous pouve
 [!code-csharp[](windowsauth/sample/Program2x.cs?highlight=9-14)]
 
 > [!NOTE]
-> Délégués HTTP.sys pour l’authentification du mode noyau avec le protocole d’authentification Kerberos. Mode d’authentification utilisateur n’est pas pris en charge avec Kerberos et HTTP.sys. Le compte d’ordinateur doit être utilisé pour déchiffrer le jeton/ticket Kerberos obtenu à partir d’Active Directory et transmis par le client auprès du serveur pour authentifier l’utilisateur. Inscrire le nom de Principal du Service (SPN) pour l’hôte, et non à l’utilisateur de l’application.
+> HTTP.sys délègue l’authentification en mode noyau avec le protocole d’authentification Kerberos. L’authentification en mode utilisateur n’est pas prise en charge avec Kerberos et HTTP.sys. Le compte d’ordinateur doit être utilisé pour déchiffrer le ticket/jeton Kerberos obtenu à partir d’Active Directory et transféré par le client au serveur afin d’authentifier l’utilisateur. Inscrivez le nom de principal du service (SPN) pour l’hôte, et non l’utilisateur de l’application.
 
 ::: moniker-end
 
@@ -110,7 +110,7 @@ Bien que Kestrel ne prend pas en charge l’authentification Windows, vous pouve
 [!code-csharp[](windowsauth/sample/Program1x.cs?highlight=6-11)]
 
 > [!NOTE]
-> Délégués WebListener pour l’authentification du mode noyau avec le protocole d’authentification Kerberos. Mode d’authentification utilisateur n’est pas pris en charge avec Kerberos et WebListener. Le compte d’ordinateur doit être utilisé pour déchiffrer le jeton/ticket Kerberos obtenu à partir d’Active Directory et transmis par le client auprès du serveur pour authentifier l’utilisateur. Inscrire le nom de Principal du Service (SPN) pour l’hôte, et non à l’utilisateur de l’application.
+> WebListener délègue l’authentification en mode noyau avec le protocole d’authentification Kerberos. L’authentification en mode utilisateur n’est pas prise en charge avec Kerberos et WebListener. Le compte d’ordinateur doit être utilisé pour déchiffrer le ticket/jeton Kerberos obtenu à partir d’Active Directory et transféré par le client au serveur afin d’authentifier l’utilisateur. Inscrivez le nom de principal du service (SPN) pour l’hôte, et non l’utilisateur de l’application.
 
 ::: moniker-end
 
@@ -129,7 +129,7 @@ Lorsque l’authentification Windows et l’accès anonyme sont activées, utili
 Dans ASP.NET Core 2.x, le `[Authorize]` attribut nécessite une configuration supplémentaire dans *Startup.cs* en question les demandes anonymes pour l’authentification Windows. La configuration recommandée varie légèrement selon le serveur web utilisé.
 
 > [!NOTE]
-> Par défaut, les utilisateurs qui ne disposent pas d’autorisation pour accéder à une page sont présentées avec une réponse HTTP 403 vide. Le [StatusCodePages intergiciel (middleware)](xref:fundamentals/error-handling#configuring-status-code-pages) peut être configuré pour fournir aux utilisateurs une meilleure expérience « Accès refusé ».
+> Par défaut, les utilisateurs qui ne disposent pas d’autorisation pour accéder à une page sont présentées avec une réponse HTTP 403 vide. Le [StatusCodePages intergiciel (middleware)](xref:fundamentals/error-handling#configure-status-code-pages) peut être configuré pour fournir aux utilisateurs une meilleure expérience « Accès refusé ».
 
 #### <a name="iis"></a>IIS
 
