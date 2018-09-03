@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/04/2018
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 1ff0fdcaae066b493eeebf6a061e383f88c81052
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 40af94f9cbb83f27f22d90b6b0f2854090687d34
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272735"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312344"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
 
@@ -30,7 +30,7 @@ Le tableau indique les modules IIS natifs qui sont opérationnels sur les requê
 | **Authentification par mappage de certification cliente**<br>`CertificateMappingAuthenticationModule` | Oui | |
 | **CGI**<br>`CgiModule` | Non | |
 | **Validation de configuration**<br>`ConfigurationValidationModule` | Oui | |
-| **Erreurs HTTP**<br>`CustomErrorModule` | Non | [Middleware (intergiciel) de pages de codes d’état](xref:fundamentals/error-handling#configuring-status-code-pages) |
+| **Erreurs HTTP**<br>`CustomErrorModule` | Non | [Middleware (intergiciel) de pages de codes d’état](xref:fundamentals/error-handling#configure-status-code-pages) |
 | **Journalisation personnalisée**<br>`CustomLoggingModule` | Oui | |
 | **Document par défaut**<br>`DefaultDocumentModule` | Non | [Middleware de fichiers par défaut](xref:fundamentals/static-files#serve-a-default-document) |
 | **Authentification Digest**<br>`DigestAuthenticationModule` | Oui | |
