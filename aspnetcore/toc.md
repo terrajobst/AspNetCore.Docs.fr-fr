@@ -265,6 +265,7 @@
 ## [Utiliser Gulp](xref:client-side/using-gulp)
 ## [Utiliser Grunt](xref:client-side/using-grunt)
 ## [Utiliser LibMan](xref:client-side/libman/index)
+### [LibMan CLI](xref:client-side/libman/libman-cli)
 ### [LibMan dans Visual Studio](xref:client-side/libman/libman-vs)
 ## [Gérer les dépendances côté client avec Bower](xref:client-side/bower)
 ## [Créer des sites au rendu adaptatif avec Bootstrap](xref:client-side/bootstrap)
