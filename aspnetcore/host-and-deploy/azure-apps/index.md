@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment héberger des applications ASP.NET Core dans Azure App Service avec des liens vers des ressources utiles.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/24/2018
+ms.date: 08/29/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 42775bf4d3e88893260a5973f6f7bc9d3a006b5a
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: bc2a686c5ddc44fded135c9eed5caf676218773a
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927826"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312068"
 ---
 # <a name="host-aspnet-core-on-azure-app-service"></a>Héberger ASP.NET Core sur Azure App Service
 
@@ -110,35 +110,55 @@ Les applications basées sur la version préliminaire d’ASP.NET Core peuvent �
 <!-- * [Deploy the app self-contained](#deploy-the-app-self-contained) -->
 * [Utiliser Docker avec Web Apps pour conteneurs](#use-docker-with-web-apps-for-containers)
 
-Si un problème se produit quand vous utilisez l’extension de site de version Preview, ouvrez un problème sur [GitHub](https://github.com/aspnet/azureintegration/issues/new).
-
 ### <a name="install-the-preview-site-extension"></a>Installer l’extension de site de version Preview
+
+Si un problème se produit quand vous utilisez l’extension de site de version Preview, ouvrez un problème sur [GitHub](https://github.com/aspnet/azureintegration/issues/new).
 
 1. Dans le portail Azure, accédez au panneau App Service.
 1. Sélectionnez l’application web.
-1. Entrez « ex » dans la zone de recherche ou faites défiler la liste des volets de gestion jusqu’à **OUTILS DE DEVELOPPEMENT**.
+1. Tapez « ex » dans la zone de recherche, ou faites défiler la liste des sections de gestion jusqu’à **OUTILS DE DÉVELOPPEMENT**.
 1. Sélectionnez **OUTILS DE DEVELOPPEMENT** > **Extensions**.
 1. Sélectionnez **Ajouter**.
-
-   ![Panneau de l’application Azure avec les étapes précédentes](index/_static/x1.png)
-
-1. Sélectionnez **Extensions ASP.NET Core**.
+1. Sélectionnez l’extension **ASP.NET Core &lt;x.y&gt; (x86) Runtime** dans la liste, où `<x.y>` correspond à la préversion d’ASP.NET Core (par exemple **ASP.NET Core 2.2 (x86) Runtime**). Le runtime x86 convient aux [déploiements dépendants du framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), qui reposent sur un hébergement hors processus effectué par le module ASP.NET Core.
 1. Sélectionnez **OK** pour accepter les conditions légales.
 1. Sélectionnez **OK** pour installer l’extension.
 
-Quand les opérations d’ajout sont terminées, la dernière préversion de .NET Core est installée. Vérifiez l’installation en exécutant `dotnet --info` dans la console. Dans le panneau **App Service** :
+Une fois l’opération effectuée, la dernière préversion de .NET Core est installée. Vérifiez l’installation :
 
-1. Entrez « con » dans la zone de recherche ou faites défiler la liste des volets de gestion jusqu’à **OUTILS DE DEVELOPPEMENT**.
-1. Sélectionnez **OUTILS DE DEVELOPPEMENT** > **Console**.
-1. Entrez `dotnet --info` dans la console.
+1. Sélectionnez **Outils avancés** sous **OUTILS DE DÉVELOPPEMENT**.
+1. Sélectionnez **OK** dans le panneau **Outils avancés**.
+1. Sélectionnez l’élément de menu **Console de débogage** > **PowerShell**.
+1. À l’invite PowerShell, exécutez la commande suivante. Remplacez `<x.y>` par la version du runtime ASP.NET Core dans la commande :
 
-Si la version `2.1.300-preview1-008174` est la dernière préversion, vous obtenez le résultat suivant en exécutant `dotnet --info` depuis l’invite de commandes :
+   ```powershell
+   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.<x.y>.x86\
+   ```
+   Si le runtime de la préversion installée est ASP.NET Core 2.2, la commande est la suivante :
+   ```powershell
+   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.2.2.x86\
+   ```
+   La commande retourne `True` quand le runtime de la préversion x64 est installée.
 
-![Panneau de l’application Azure avec les étapes précédentes](index/_static/cons.png)
+::: moniker range=">= aspnetcore-2.2"
 
-La version d’ASP.NET Core indiquée dans l’image précédente, `2.1.300-preview1-008174`, est un exemple. La dernière préversion d’ASP.NET Core au moment de la configuration de l’extension de site s’affiche quand vous exécutez `dotnet --info`.
+> [!NOTE]
+> L’architecture de plateforme (x86/x64) d’une application App Services est définie dans le panneau **Paramètres de l’application** sous **Paramètres généraux** pour les applications hébergées sur une instance de calcul de série A ou supérieure. Si l’application s’exécute en mode in-process et si la plateforme est configurée pour une architecture 64 bits (x64), le module ASP.NET Core utilise le runtime de la préversion 64 bits, le cas échéant. Installez l’extension **ASP.NET Core &lt;x.y&gt; (x64) Runtime** (par exemple **ASP.NET Core 2.2 (x64) Runtime**).
+>
+> Après avoir installé le runtime de la préversion x64, exécutez la commande suivante dans la fenêtre Commande Kudu PowerShell pour vérifier l’installation. Remplacez `<x.y>` par la version du runtime ASP.NET Core dans la commande :
+>
+> ```powershell
+> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.<x.y>.x64\
+> ```
+> Si le runtime de la préversion installée est ASP.NET Core 2.2, la commande est la suivante :
+> ```powershell
+> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.2.2.x64\
+> ```
+> La commande retourne `True` quand le runtime de la préversion x64 est installée.
 
-La commande `dotnet --info` affiche le chemin de l’extension de site où la préversion a été installée. Il indique que l’application s’exécute depuis l’extension de site au lieu de l’emplacement de *ProgramFiles* par défaut. Si vous voyez *ProgramFiles*, redémarrez le site et exécutez `dotnet --info`.
+::: moniker-end
+
+> [!NOTE]
+> Les **extensions ASP.NET Core** permettent d’activer des fonctionnalités supplémentaires pour ASP.NET Core sur Azure App Services, par exemple la journalisation Azure. L’extension est installée automatiquement quand vous effectuez le déploiement à partir de Visual Studio. Si l’extension n’est pas installée, installez-la pour l’application.
 
 **Utiliser l’extension de site de la version Preview avec un modèle ARM**
 

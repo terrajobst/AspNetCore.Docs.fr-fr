@@ -5,12 +5,12 @@ description: Ce didacticiel montre comment générer une application ASP.NET Cor
 ms.author: riande
 ms.date: 11/01/2016
 uid: security/authentication/social/index
-ms.openlocfilehash: b2176ef40faaee02c5ef53dbb92a802212e58e8b
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: 48a01ab241f9a6ad6ad3fb2ee9e210f459075c33
+ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063323"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336118"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
@@ -97,3 +97,5 @@ Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous
 * Cet article a présenté l’authentification externe et expliqué les prérequis nécessaires pour ajouter des connexions externes à votre application ASP.NET Core.
 
 * Référencez les pages spécifiques au fournisseur pour configurer les connexions pour les fournisseurs nécessaires à votre application.
+
+* Vous souhaiterez peut-être conserver des données supplémentaires relatives à l’utilisateur et à ses jetons d’accès et d’actualisation. Pour plus d'informations, consultez <xref:security/authentication/social/additional-claims>.
