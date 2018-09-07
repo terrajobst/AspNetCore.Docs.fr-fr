@@ -5,12 +5,12 @@ description: Découvrez les concepts de base de l’authentification, de l’aut
 ms.author: tdykstra
 ms.date: 11/01/2017
 uid: security/index
-ms.openlocfilehash: 3a1c1ea1ad28fccbe5ae91b0be193938b095f60b
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: d371d37690b6d641f8e584f5e51dcc074a581622
+ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41749887"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44040080"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Vue d’ensemble de la sécurité ASP.NET Core
 
@@ -104,3 +104,4 @@ Il existe d’autres failles de sécurité que vous devez connaître. Pour plus 
 *   [Bloquer les scripts intersites](xref:security/cross-site-scripting)
 *   [Activer les requêtes d’origines différentes](xref:security/cors)
 *   [Partager des cookies entre applications](xref:security/cookie-sharing)
+*   [Liste fiable d’adresses IP](xref:security/ip-safelist)
