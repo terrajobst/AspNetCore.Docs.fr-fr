@@ -5,14 +5,14 @@ description: Découvrez comment configurer des applications ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 07/31/2018
+ms.date: 09/06/2018
 uid: signalr/configuration
-ms.openlocfilehash: eac1202828edbcd295d7e52aa424cd625ee70e34
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: fee6e3382c14e818dff408f95770e711603f769d
+ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722462"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44039989"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Configuration d’ASP.NET Core SignalR
 
@@ -63,7 +63,7 @@ Le tableau suivant décrit les options de configuration de concentrateurs Signal
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
 | `HandshakeTimeout` | 15 secondes | Si le client n’envoie un message de négociation initiale au sein de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
-| `KeepAliveInterval` | 15 secondes | Si le serveur n’a pas envoyé un message au sein de cet intervalle, un message ping est envoyé automatiquement pour maintenir ouverte la connexion. |
+| `KeepAliveInterval` | 15 secondes | Si le serveur n’a pas envoyé un message au sein de cet intervalle, un message ping est envoyé automatiquement pour maintenir ouverte la connexion. Lorsque vous modifiez `KeepAliveInterval`, modifiez le `ServerTimeout` / `serverTimeoutInMilliseconds` paramètre sur le client. L’architecture recommandée `ServerTimeout` / `serverTimeoutInMilliseconds` valeur est double la `KeepAliveInterval` valeur.  |
 | `SupportedProtocols` | Tous les protocoles installés | Protocoles pris en charge par ce concentrateur. Par défaut, tous les protocoles inscrits sur le serveur sont autorisés, mais protocoles peuvent être supprimés de cette liste pour désactiver les protocoles spécifiques pour les hubs individuels. |
 | `EnableDetailedErrors` | `false` | Si `true`et détaillée des messages d’exception sont retournées aux clients quand une exception est levée dans une méthode de concentrateur. La valeur par défaut est `false`, que ces messages d’exception peuvent contenir des informations sensibles. |
 
@@ -216,7 +216,7 @@ Options supplémentaires pour configurer le comportement de conservation et de d
 
 | Option de .NET | Option de JavaScript | Valeur par défaut | Description |
 | ----------- | ----------------- | ------------- | ----------- |
-| `ServerTimeout` | `serverTimeoutInMilliseconds` | 30 secondes (30 000 millisecondes) | Délai d’expiration pour l’activité du serveur. Si le serveur n’a pas envoyé un message dans cet intervalle, le client considère que le serveur déconnecté et les déclencheurs le `Closed` événement (`onclose` dans JavaScript). |
+| `ServerTimeout` | `serverTimeoutInMilliseconds` | 30 secondes (30 000 millisecondes) | Délai d’expiration pour l’activité du serveur. Si le serveur n’a pas envoyé un message dans cet intervalle, le client considère que le serveur déconnecté et les déclencheurs le `Closed` événement (`onclose` dans JavaScript). Cette valeur doit être suffisamment grande pour un message ping à envoyer à partir du serveur **et** reçues par le client dans l’intervalle de délai d’attente. La valeur recommandée est un nombre au moins deux fois sur le serveur `KeepAliveInterval` valeur, de prévoir un délai pour les tests ping arrivée. |
 | `HandshakeTimeout` | Non configurable | 15 secondes | Délai d’attente pour la négociation initiale du serveur. Si le serveur n’envoie une réponse de négociation dans cet intervalle, le client annule le protocole de négociation et déclencheurs le `Closed` événement (`onclose` dans JavaScript). Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
 
 Dans le Client .NET, les valeurs de délai d’attente sont spécifiées en tant que `TimeSpan` valeurs. Dans le client JavaScript, les valeurs de délai d’attente sont spécifiées en tant que nombre indiquant la durée en millisecondes.
