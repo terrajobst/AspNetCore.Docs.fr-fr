@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 07/05/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: ff04ebeb6a682ec924afe896fd6716010a63f7cd
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 7ea944bc423001aa47ce684443b96104cf9174bf
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751612"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312245"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -25,19 +25,19 @@ Cet article aborde des approches courantes pour gérer les erreurs dans les appl
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Pour configurer une application pour afficher une page qui fournit des informations détaillées sur les exceptions, utilisez la *page d’exception de développeur*. Cette page est mise à disposition par le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), qui est disponible dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Ajoutez une ligne à la méthode `Startup.Configure` :
+Pour configurer une application afin qu’elle affiche une page contenant des informations détaillées sur les exceptions, utilisez la *page d’exception de développeur*. Cette page est mise à disposition par le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), qui est disponible dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Ajoutez une ligne à la méthode `Startup.Configure` :
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-Pour configurer une application pour afficher une page qui fournit des informations détaillées sur les exceptions, utilisez la *page d’exception de développeur*. Cette page est mise à disposition par le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), qui est disponible dans le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage). Ajoutez une ligne à la méthode `Startup.Configure` :
+Pour configurer une application afin qu’elle affiche une page contenant des informations détaillées sur les exceptions, utilisez la *page d’exception de développeur*. Cette page est mise à disposition par le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), qui est disponible dans le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage). Ajoutez une ligne à la méthode `Startup.Configure` :
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-Pour configurer une application pour afficher une page qui fournit des informations détaillées sur les exceptions, utilisez la *page d’exception de développeur*. Cette page est accessible en ajoutant une référence de package pour le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) dans le fichier projet. Ajoutez une ligne à la méthode `Startup.Configure` :
+Pour configurer une application afin qu’elle affiche une page contenant des informations détaillées sur les exceptions, utilisez la *page d’exception de développeur*. Cette page est accessible en ajoutant une référence de package pour le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) dans le fichier projet. Ajoutez une ligne à la méthode `Startup.Configure` :
 
 ::: moniker-end
 
@@ -45,7 +45,7 @@ Pour configurer une application pour afficher une page qui fournit des informati
 
 Placez l’appel à [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) devant tout intergiciel (middleware) où vous souhaitez intercepter des exceptions, tel que `app.UseMvc`.
 
->[!WARNING]
+> [!WARNING]
 > Activez la page d’exception de développeur **uniquement quand l’application est en cours d’exécution dans l’environnement de développement**. Il n’est pas souhaitable de partager publiquement des informations détaillées sur les exceptions quand l’application s’exécute en production. [Découvrez en plus sur la configuration d’environnements](xref:fundamentals/environments).
 
 Pour afficher la page d’exception de développeur, exécutez l’exemple d’application avec l’environnement défini sur `Development` et ajoutez `?throw=true` à l’URL de base de l’application. Cette page inclut plusieurs onglets avec des informations sur l’exception et la demande. Le premier onglet inclut une trace de pile :
@@ -60,7 +60,7 @@ Si la requête a des cookies, ceux-ci apparaissent sous l’onglet **Cookies**. 
 
 ![En-têtes](error-handling/_static/developer-exception-page-headers.png)
 
-## <a name="configuring-a-custom-exception-handling-page"></a>Configuration d’une page personnalisée de gestion des exceptions
+## <a name="configure-a-custom-exception-handling-page"></a>Configurer une page personnalisée de gestion des exceptions
 
 Configurez une page de gestionnaire d’exceptions à utiliser quand l’application ne s’exécute pas dans l’environnement `Development` :
 
@@ -81,13 +81,35 @@ public IActionResult Error()
 }
 ```
 
-## <a name="configuring-status-code-pages"></a>Configuration des pages de codes d’état
+## <a name="configure-status-code-pages"></a>Configurer des pages de codes d’état
 
-Par défaut, une application ne fournit pas de page de codes d’état très complète pour les codes d’état HTTP, comme *404 (introuvable)*. Pour fournir des pages de codes d’état, configurez le middleware de pages de codes d’état en ajoutant une ligne à la méthode `Startup.Configure` :
+Par défaut, une application ne fournit pas de page de codes d’état très complète pour les codes d’état HTTP, comme *404 (introuvable)*. Pour fournir des pages de codes d’état, utilisez le middleware (intergiciel) de pages de codes d’état.
+
+::: moniker range=">= aspnetcore-2.1"
+
+Le middleware est mis à disposition par le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), qui est disponible dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app).
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Le middleware est mis à disposition par le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/), qui est disponible dans le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Le middleware est mis à disposition en ajoutant une référence de package pour le package [Microsoft.AspNetCore.Diagnostics](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics/) dans le fichier projet.
+
+::: moniker-end
+
+Ajoutez une ligne à la méthode `Startup.Configure` :
 
 ```csharp
 app.UseStatusCodePages();
 ```
+
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> doit être appelé avant les middleware de gestion des requêtes dans le pipeline (comme le middleware des fichiers statiques et le middleware MVC).
 
 Par défaut, le middleware de pages de codes d’état ajoute des gestionnaires de texte uniquement pour les codes d’état courants, comme 404 :
 

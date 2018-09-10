@@ -5,12 +5,12 @@ description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pou
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/controllers/areas
-ms.openlocfilehash: 3e998af42cd6209271495dd8dd97a8aed35717a4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: b78bb5146f1ab9039fa9ff015471654510718ed6
+ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274825"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312216"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -30,13 +30,13 @@ Envisagez l’utilisation de zones dans un projet MVC quand :
 
 Caractéristiques des zones :
 
-* Une application ASP.NET Core MVC peut avoir un nombre quelconque de zones.
+* Une application ASP.NET Core MVC peut contenir n’importe quel nombre de zones.
 
 * Chaque zone a ses propres contrôleurs, modèles et vues.
 
-* Vous permet d’organiser des projets MVC de grande taille en plusieurs composants de haut niveau sur lesquels vous pouvez travailler indépendamment
+* Les zones vous permettent d’organiser des projets MVC de grande taille en plusieurs composants généraux sur lesquels vous pouvez travailler indépendamment.
 
-* Prend en charge plusieurs contrôleurs portant le même nom, pour autant qu’ils soient dans des *zones* différentes
+* Les zones prennent en charge plusieurs contrôleurs de même nom, à condition que ces contrôleurs soient dans des *zones* différentes.
 
 Examinons un exemple pour illustrer la façon dont les zones sont créées et utilisées. Supposons que vous avez une application de magasin avec deux regroupements distincts de contrôleurs et de vues : Produits et Services. Voici une structure de dossiers classique pour ce type d’application avec des zones MVC :
 

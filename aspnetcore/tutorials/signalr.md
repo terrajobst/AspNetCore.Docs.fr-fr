@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: tutorials/signalr
-ms.openlocfilehash: db7f31963f6a4280069f1f4f82a547e2879e64bb
-ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
+ms.openlocfilehash: a2573e2817a2d8921954264ca17bc3a7e2a010a8
+ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41751697"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43055830"
 ---
 # <a name="tutorial-get-started-with-signalr-on-aspnet-core"></a>Tutoriel : Bien démarrer avec SignalR sur ASP.NET Core
 
@@ -95,7 +95,7 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 ## <a name="add-the-signalr-client-library"></a>Ajouter la bibliothèque de client SignalR
 
-La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). En revanche, vous devez obtenir la bibliothèque de client JavaScript à partir de npm, le gestionnaire de package Node.js.
+La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). En revanche, vous devez obtenir la bibliothèque de client JavaScript à partir de [npm, le gestionnaire de package Node.js](https://www.npmjs.com/get-npm).
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 

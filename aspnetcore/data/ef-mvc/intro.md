@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/intro
-ms.openlocfilehash: cbef7e5edf2950a87a4cd4155c63a22fff2990fe
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 46cc5144a289637a0fb1c1c2ac22aba2d881af52
+ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751615"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336105"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC avec Entity Framework Core - Didacticiel 1 sur 10
 
@@ -132,7 +132,7 @@ Dans le dossier *Models*, créez un fichier de classe nommé *Student.cs* et rem
 
 La propriété `ID` devient la colonne de clé primaire de la table de base de données qui correspond à cette classe. Par défaut, Entity Framework interprète une propriété nommée `ID` ou `classnameID` comme clé primaire.
 
-La propriété `Enrollments` est une propriété de navigation. Les propriétés de navigation contiennent d’autres entités qui sont associées à cette entité. Dans ce cas, la propriété `Enrollments` d’un `Student entity` contient toutes les entités `Enrollment` associées à l’entité `Student`. En d’autres termes, si une ligne Student donnée dans la base de données a deux lignes Enrollment associées (lignes qui contiennent la valeur de clé primaire de cet étudiant dans la colonne de clé étrangère StudentID), la propriété de navigation `Enrollments` de cette entité `Student` contiendra ces deux entités `Enrollment`.
+La propriété `Enrollments` est une [propriété de navigation](/ef/core/modeling/relationships). Les propriétés de navigation contiennent d’autres entités qui sont associées à cette entité. Dans ce cas, la propriété `Enrollments` d’un `Student entity` contient toutes les entités `Enrollment` associées à l’entité `Student`. En d’autres termes, si une ligne Student donnée dans la base de données a deux lignes Enrollment associées (lignes qui contiennent la valeur de clé primaire de cet étudiant dans la colonne de clé étrangère StudentID), la propriété de navigation `Enrollments` de cette entité `Student` contiendra ces deux entités `Enrollment`.
 
 Si une propriété de navigation peut contenir plusieurs entités (comme dans des relations plusieurs à plusieurs ou un -à-plusieurs), son type doit être une liste dans laquelle les entrées peuvent être ajoutées, supprimées et mises à jour, telle que `ICollection<T>`. Vous pouvez spécifier `ICollection<T>` ou un type tel que `List<T>` ou `HashSet<T>`. Si vous spécifiez `ICollection<T>`, EF crée une collection `HashSet<T>` par défaut.
 
