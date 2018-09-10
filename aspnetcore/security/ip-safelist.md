@@ -6,21 +6,22 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: security/ip-safelist
-ms.openlocfilehash: 40fe7b67359efd1692490099c3fb529ba4a6148f
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: 362d1ded00bda3f328e029fb467f2b3eeaa01396
+ms.sourcegitcommit: 8268cc67beb1bb1ca470abb0e28b15a7a71b8204
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040108"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44126707"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>Listes d’IP client fiables pour ASP.NET Core
 
 Par [Damien Bowden](https://twitter.com/damien_bod) et [Tom Dykstra](https://github.com/tdykstra)
  
-Cet article montre deux façons d’implémenter un safelist IP (également appelé liste blanche) :
+Cet article montre trois façons d’implémenter un safelist IP (également appelé liste blanche) dans une application ASP.NET Core. Vous pouvez utiliser :
 
-* En utilisant des intergiciels (middleware) ASP.NET Core pour vérifier l’adresse IP distante de chaque demande.
-* En utilisant des filtres d’action ASP.NET Core pour vérifier l’adresse IP distante de requêtes pour les méthodes d’action spécifique.
+* Intergiciel (middleware) pour vérifier l’adresse IP distante de chaque demande.
+* Filtres d’action pour vérifier l’adresse IP distante de requêtes pour des contrôleurs spécifiques ou des méthodes d’action.
+* Filtres de Pages Razor pour vérifier l’adresse IP distante de requêtes pour les pages Razor.
 
 L’exemple d’application illustre les deux approches. Dans chaque cas, une chaîne contenant les adresses IP de client approuvé est stockée dans un paramètre d’application. L’intergiciel (middleware) ou le filtre analyse la chaîne dans une liste et vérifie si l’adresse IP distante est dans la liste. Si ce n’est pas le cas, un code d’état HTTP 403 Interdit retourné.
 
