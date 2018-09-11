@@ -5,27 +5,27 @@ description: Un guide qui fournit des conseils de bout en bout sur la création 
 ms.author: scaddie
 ms.date: 08/17/2018
 uid: azure/devops/cicd
-ms.openlocfilehash: e084a6115dc7e176c17b2b318233b7a003b39a83
-ms.sourcegitcommit: 1cf65c25ed16495e27f35ded98b3952a30c68f36
+ms.openlocfilehash: 0bfe1545da4c0778055d7c81c1588d3267d2e711
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42909969"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340106"
 ---
 # <a name="continuous-integration-and-deployment"></a>Intégration et déploiement continus
 
-Dans le chapitre précédent, vous avez créé un référentiel Git local pour l’application de lecteur de flux Simple. Dans ce chapitre, vous allez publier ce code à un référentiel GitHub et construire un pipeline DevOps de Visual Studio Team Services (VSTS). Le pipeline permet des déploiements de l’application et des builds continus. Toute validation vers le dépôt GitHub déclenche une build et un déploiement vers l’emplacement intermédiaire de l’application Web Azure.
+Dans le chapitre précédent, vous avez créé un référentiel Git local pour l’application de lecteur de flux Simple. Dans ce chapitre, vous allez publier ce code à un référentiel GitHub et construire un pipeline Azure DevOps Services à l’aide de Pipelines d’Azure. Le pipeline permet des déploiements de l’application et des builds continus. Toute validation vers le dépôt GitHub déclenche une build et un déploiement vers l’emplacement intermédiaire de l’application Web Azure.
 
 Dans cette section, vous allez effectuer les tâches suivantes :
 
 * Publier du code de l’application sur GitHub
 * Déconnecter le déploiement Git local
-* Créer un compte VSTS
-* Créer un projet d’équipe dans VSTS
+* Création d’une organisation Azure DevOps
+* Créer un projet d’équipe dans les Services Azure DevOps
 * Créer une définition de build
 * Créer un pipeline de mise en production
 * Valider les modifications à GitHub et déployer automatiquement vers Azure
-* Examinez votre pipeline DevOps de VSTS
+* Examiner le pipeline de Pipelines d’Azure
 
 ## <a name="publish-the-apps-code-to-github"></a>Publier du code de l’application sur GitHub
 
@@ -53,7 +53,7 @@ Dans cette section, vous allez effectuer les tâches suivantes :
 
 ## <a name="disconnect-local-git-deployment"></a>Déconnecter le déploiement Git local
 
-Supprimer le déploiement Git local en procédant comme suit. VSTS à la fois remplace et étend cette fonctionnalité.
+Supprimer le déploiement Git local en procédant comme suit. Les Pipelines Azure (un service Azure DevOps) à la fois remplace et étend cette fonctionnalité.
 
 1. Ouvrir le [portail Azure](https://portal.azure.com/)et accédez à la *intermédiaire (mywebapp\<unique_number\>/intermédiaire)* application Web. L’application Web peut se trouver rapidement en entrant *intermédiaire* dans la zone de recherche du portail :
 
@@ -63,26 +63,26 @@ Supprimer le déploiement Git local en procédant comme suit. VSTS à la fois re
 1. Accédez à la *mywebapp < unique_number >* App Service. En guise de rappel, zone de recherche du portail peut être utilisé pour localiser rapidement le Service d’application.
 1. Cliquez sur **options de déploiement**. Un nouveau panneau s’affiche. Cliquez sur **déconnexion** pour supprimer la configuration de contrôle d’une source de Git locale qui a été ajoutée dans le chapitre précédent. Confirmer l’opération de suppression en cliquant sur le **Oui** bouton.
 
-## <a name="create-a-vsts-account"></a>Créer un compte VSTS
+## <a name="create-an-azure-devops-organization"></a>Création d’une organisation Azure DevOps
 
-1. Ouvrez un navigateur et accédez à la [page de création de compte VSTS](https://go.microsoft.com/fwlink/?LinkId=307137).
-1. Tapez un nom unique dans le **choisir un nom facile à mémoriser** zone de texte pour former l’URL pour accéder à votre compte VSTS.
+1. Ouvrez un navigateur et accédez à la [page de création Azure DevOps organisation](https://go.microsoft.com/fwlink/?LinkId=307137).
+1. Tapez un nom unique dans le **choisir un nom facile à mémoriser** zone de texte pour former l’URL pour accéder à votre organisation d’Azure DevOps.
 1. Sélectionnez le **Git** bouton radio, étant donné que le code est hébergé dans un référentiel GitHub.
 1. Cliquez sur le bouton **Continuer**. Après un court délai d’attente, un compte et un projet d’équipe, nommé *MyFirstProject*, sont créés.
 
-    ![Page de création de compte VSTS](media/cicd/vsts-account-creation.png)
+    ![Page de création d’organisation DevOps Azure](media/cicd/vsts-account-creation.png)
 
-1. Ouvrez le courrier électronique de confirmation indiquant que le compte VSTS et un projet sont prêt à être utilisé. Cliquez sur le **démarrez votre projet** bouton :
+1. Ouvrez l’e-mail de confirmation indiquant que le projet et l’organisation d’Azure DevOps sont prêtes pour une utilisation. Cliquez sur le **démarrez votre projet** bouton :
 
     ![Démarrez votre bouton de projet](media/cicd/vsts-start-project.png)
 
 1. Un navigateur s’ouvre à  *\<account_name\>. visualstudio.com*. Cliquez sur le *MyFirstProject* lien pour commencer à configurer le pipeline de DevOps du projet.
 
-## <a name="configure-the-devops-pipeline"></a>Configurer le pipeline DevOps
+## <a name="configure-the-azure-pipelines-pipeline"></a>Configurer le pipeline de Pipelines d’Azure
 
 Il existe trois étapes distinctes pour terminer. Les étapes dans les résultats de trois sections suivantes dans un pipeline DevOps opérationnels.
 
-### <a name="grant-vsts-access-to-the-github-repository"></a>Accorder l’accès VSTS vers le dépôt GitHub
+### <a name="grant-azure-devops-access-to-the-github-repository"></a>Accès Grant Azure DevOps dans le référentiel GitHub
 
 1. Développez le **ou générer le code à partir d’un dépôt externe** accordion. Cliquez sur le **générer le programme d’installation** bouton :
 
@@ -92,12 +92,12 @@ Il existe trois étapes distinctes pour terminer. Les étapes dans les résultat
 
     ![Sélectionnez une source - GitHub](media/cicd/vsts-select-source.png)
 
-1. L’autorisation est requise que VSTS puisse accéder à votre référentiel GitHub. Entrez *< GitHub_username > connexion GitHub* dans le **nom de la connexion** zone de texte. Exemple :
+1. L’autorisation est requise que Azure DevOps puisse accéder à votre référentiel GitHub. Entrez *< GitHub_username > connexion GitHub* dans le **nom de la connexion** zone de texte. Exemple :
 
     ![Nom de la connexion GitHub](media/cicd/vsts-repo-authz.png)
 
 1. Si l’authentification à deux facteurs est activée sur votre compte GitHub, un jeton d’accès personnel est requis. Dans ce cas, cliquez sur le **Authorize avec un jeton d’accès personnel GitHub** lien. Consultez le [instructions de création d’un jeton accès personnel GitHub officielles](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) de l’aide. Uniquement les *référentiel* étendue des autorisations est nécessaire. Sinon, cliquez sur le **autoriser l’utilisation d’OAuth** bouton.
-1. Lorsque vous y êtes invité, connectez-vous à votre compte GitHub. Ensuite, sélectionnez Autoriser pour accorder l’accès à votre compte VSTS. Si l’opération réussit, un nouveau point de terminaison de service est créé.
+1. Lorsque vous y êtes invité, connectez-vous à votre compte GitHub. Ensuite, sélectionnez Autoriser pour accorder l’accès à votre organisation d’Azure DevOps. Si l’opération réussit, un nouveau point de terminaison de service est créé.
 1. Cliquez sur le bouton de sélection en regard du **référentiel** bouton. Sélectionnez le *< GitHub_username > / lecture de flux simple* référentiel à partir de la liste. Cliquez sur le **sélectionnez** bouton.
 1. Sélectionnez le *master* créer une branche à partir de la **branche par défaut pour les builds manuelles et planifiées** liste déroulante. Cliquez sur le bouton **Continuer**. La page Sélection du modèle s’affiche.
 
@@ -205,7 +205,7 @@ Il existe trois étapes distinctes pour terminer. Les étapes dans les résultat
 
     ![Activer l’intégration continue](media/cicd/enable-ci.png)
 
-1. Accédez à la **en file d’attente** onglet de la **Build et de publication** > **génère** page dans VSTS. La build en file d’attente affiche la branche et la validation qui a déclenché la génération :
+1. Accédez à la **en file d’attente** onglet de la **Azure Pipelines** > **génère** page dans les Services Azure DevOps. La build en file d’attente affiche la branche et la validation qui a déclenché la génération :
 
     ![build en file d’attente](media/cicd/build-queued.png)
 
@@ -213,7 +213,7 @@ Il existe trois étapes distinctes pour terminer. Les étapes dans les résultat
 
     ![application mise à jour](media/cicd/updated-app-v4.png)
 
-## <a name="examine-the-vsts-devops-pipeline"></a>Examinez votre pipeline DevOps de VSTS
+## <a name="examine-the-azure-pipelines-pipeline"></a>Examiner le pipeline de Pipelines d’Azure
 
 ### <a name="build-definition"></a>Définition de build
 
@@ -275,6 +275,6 @@ L’abonnement, groupe de ressources, type de service, nom de l’application we
 
 ## <a name="additional-reading"></a>Lecture supplémentaire
 
-* [Générer votre application ASP.NET Core](https://docs.microsoft.com/vsts/build-release/apps/aspnet/build-aspnet-core)
-* [Créer et déployer dans une application Web Azure](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp)
-* [Définir un processus de génération CI pour votre référentiel GitHub](https://docs.microsoft.com/vsts/pipelines/build/ci-build-github)
+* [Créer son premier pipeline avec Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
+* [Projet de build et de .NET Core](/azure/devops/pipelines/languages/dotnet-core)
+* [Déployer une application web avec les Pipelines d’Azure](/azure/devops/pipelines/targets/webapp)

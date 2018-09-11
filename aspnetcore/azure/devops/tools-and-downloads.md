@@ -5,12 +5,12 @@ description: Un guide qui fournit des conseils de bout en bout sur la création 
 ms.author: casoper
 ms.date: 08/07/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: a63e97d9ab9eb0ed2fbd30e8c2e033f0c048d33e
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 5529068b83db475315784571fbf4151d7ecd0d5d
+ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312299"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44340158"
 ---
 # <a name="tools-and-downloads"></a>Outils et téléchargements
 
@@ -21,7 +21,7 @@ Azure offre plusieurs interfaces pour l’approvisionnement et la gestion des re
 Les abonnements suivants sont requis :
 
 * Azure &mdash; si vous n’avez pas un compte, [obtenir un essai gratuit](https://azure.microsoft.com/free/).
-* Visual Studio Team Services (VSTS) &mdash; ce compte est créé dans le chapitre 4.
+* Les Services Azure DevOps &mdash; votre abonnement d’Azure DevOps et votre organisation est créée dans le chapitre 4.
 * GitHub &mdash; si vous n’avez pas un compte, [Inscrivez-vous gratuitement](https://github.com/join).
 
 Les outils suivants sont requis :
