@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 05/01/2018
 uid: signalr/hubs
-ms.openlocfilehash: be39666373e2b099054bb71f4a7fcf17aeb9a01c
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: e583676ab0eed45aeaf6391d8cdf8c1485aa914e
+ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095279"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44510335"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utilisation des hubs dans SignalR pour ASP.NET Core
 
@@ -42,10 +42,29 @@ Créez un hub en déclarant une classe qui hérite de `Hub`et ajoutez-lui des m�
 
 Vous pouvez spécifier un type de retour et paramètres, y compris les types complexes et les tableaux, comme vous le feriez dans n’importe quelle méthode c#. SignalR gère la sérialisation et désérialisation des objets complexes et des tableaux dans vos paramètres et valeurs de retournés.
 
+## <a name="the-context-object"></a>L’objet de contexte
+
+Le `Hub` classe a un `Context` propriété qui contient les propriétés suivantes avec des informations sur la connexion :
+
+| Propriété | Description |
+| ------ | ----------- |
+| `ConnectionId` | Obtient l’ID unique pour la connexion affectée par SignalR. Il existe un identifiant de connexion pour chaque connexion.|
+| `UserIdentifier` | Obtient le [identificateur d’utilisateur](xref:signalr/groups). Par défaut, SignalR utilise le `ClaimTypes.NameIdentifier` à partir de la `ClaimsPrincipal` associé à la connexion comme identificateur d’utilisateur. |
+| `User` | Obtient le `ClaimsPrincipal` associé à l’utilisateur actuel. |
+| `Items` | Obtient une collection clé/valeur qui peut être utilisée pour partager des données dans le cadre de cette connexion. Données peuvent être stockées dans cette collection et il persistera pour la connexion entre les appels de méthode de concentrateur différents. |
+| `Features` | Obtient la collection de fonctionnalités disponibles sur la connexion. Pour l’instant, cette collection n’est pas nécessaire dans la plupart des scénarios, donc il n’est pas encore documentée en détail. |
+| `ConnectionAborted` | Obtient un `CancellationToken` qui avertit de la connexion est abandonnée. |
+
+`Hub.Context` contient également les méthodes suivantes :
+
+| Méthode | Description |
+| ------ | ----------- |
+| `GetHttpContext` | Retourne le `HttpContext` pour la connexion, ou `null` si la connexion n’est pas associée à une requête HTTP. Pour les connexions HTTP, vous pouvez utiliser cette méthode pour obtenir des informations telles que les en-têtes HTTP et les chaînes de requête. |
+| `Abort` | Abandonne la connexion. |
+
 ## <a name="the-clients-object"></a>L’objet de Clients
 
-Chaque instance de la classe `Hub` a une propriété nommée `Clients` qui contient les membres suivants pour la communication entre le serveur et le client :
-
+Le `Hub` classe a un `Clients` propriété qui contient les propriétés suivantes pour la communication entre client et serveur :
 
 | Propriété | Description |
 | ------ | ----------- |
@@ -54,7 +73,7 @@ Chaque instance de la classe `Hub` a une propriété nommée `Clients` qui conti
 | `Others` | Appelle une méthode sur tous les clients connectés à l’exception du client qui a appelé la méthode |
 
 
-En outre, `Hub.Clients` contient les méthodes suivantes :
+`Hub.Clients` contient également les méthodes suivantes :
 
 | Méthode | Description |
 | ------ | ----------- |

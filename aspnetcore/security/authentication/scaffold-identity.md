@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 08/16/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: e35836fa9c20729da7c857243410833749b3a595
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: 4237e9084abe6575b1f69b143885e94196902965
+ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055846"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44510348"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Identité d’une structure de projets ASP.NET Core
 
@@ -89,6 +89,10 @@ Facultatif : Ajouter la connexion partielle (`_LoginPartial`) pour le fichier d
 <!--
 Use >=2.1: dotnet new webapp -au Individual -o RPauth
 Use = 2.0: dotnet new razor -au Individual -o RPauth
+
+dotnet new webapp -au Individual -o RPauth
+
+dotnet new razor -au Individual -o RPauth
 cd RPauth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
@@ -169,3 +173,9 @@ Ce qui suit le code définit le [LoginPath](/dotnet/api/microsoft.aspnetcore.aut
 Inscrire un `IEmailSender` implémentation, par exemple :
 
 [!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet4)]
+
+[!code-csharp[](scaffold-identity/sample/StartupFull.cs?name=snippet)]
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Modifications apportées au code d’authentification pour ASP.NET Core 2.1 et versions ultérieures](xref:migration/20_21#changes-to-authentication-code)
