@@ -19,7 +19,7 @@ Remarque : Si vous créez un nouveau contexte utilisateur, il est inutile de s�
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
-Si vous n’avez pas encore installé le Générateur de modèles automatique ASP.NET, vous pouvez l’installer maintenant :
+Si vous n’avez pas encore installé le Générateur de modèles automatique ASP.NET Core, vous pouvez l’installer maintenant :
 
 ```cli
 dotnet tool install -g dotnet-aspnet-codegenerator
@@ -44,4 +44,9 @@ Dans le dossier du projet, exécutez le Générateur de modèles automatique ide
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
+PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous utilisez powershell, les points-virgules dans la liste des fichiers de séquence d’échappement ou placez la liste des fichiers dans des guillemets doubles. Exemple :
+
+```cli
+dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+```
 -------------
