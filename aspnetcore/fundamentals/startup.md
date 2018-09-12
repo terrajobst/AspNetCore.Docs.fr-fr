@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 4/13/2018
 uid: fundamentals/startup
-ms.openlocfilehash: 465d33cc1f19428d5189b3a6fa7088ac402a9751
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 923d17be9c2bb1a9d338599d1cdc4c34302cddab
+ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927969"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44040093"
 ---
 # <a name="application-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -56,7 +56,9 @@ La méthode [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startup
 * Appelée par l’hôte web avant la méthode `Configure` pour configurer les services de l’application.
 * L’emplacement où les [options de configuration](xref:fundamentals/configuration/index) sont définies par convention.
 
-L’ajout de services au conteneur de service les rend disponibles dans l’application et dans la méthode `Configure`. Les services sont résolus à l’aide de [l’injection de dépendances](xref:fundamentals/dependency-injection) ou à partir [d’IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
+Le modèle par défaut consiste à appeler toutes les méthodes `Add{Service}`, puis toutes les méthodes `services.Configure{Service}`. Par exemple, consultez [Configurer les services d’identité](xref:security/authentication/identity#pw).
+
+L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services sont résolus à l’aide de [l’injection de dépendances](xref:fundamentals/dependency-injection) ou à partir [d’IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices).
 
 L’hôte web peut configurer certains services avant que les méthodes `Startup` soient appelées. Vous trouverez plus de détails dans la rubrique [Héberger dans ASP.NET Core](xref:fundamentals/host/index).
 
@@ -66,7 +68,7 @@ Pour les fonctionnalités qui nécessitent une installation substantielle, il ex
 
 ## <a name="the-configure-method"></a>Méthode Configure
 
-La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) est utilisée pour spécifier la façon dont l’application répond aux requêtes HTTP. Le pipeline de requête est configuré en ajoutant des composants [d’intergiciel (middleware)](xref:fundamentals/middleware/index) à une instance [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` est disponible pour la méthode `Configure`, mais elle n’est pas inscrite dans le conteneur de service. L’hébergement crée un `IApplicationBuilder` et le passe directement à `Configure` ([source de référence](https://github.com/aspnet/Hosting/blob/release/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/WebHost.cs#L179-L192)).
+La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configure) est utilisée pour spécifier la façon dont l’application répond aux requêtes HTTP. Le pipeline de requête est configuré en ajoutant des composants [d’intergiciel (middleware)](xref:fundamentals/middleware/index) à une instance [IApplicationBuilder](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder). `IApplicationBuilder` est disponible pour la méthode `Configure`, mais elle n’est pas inscrite dans le conteneur de service. L’hébergement crée un `IApplicationBuilder` et le passe directement à `Configure`.
 
 Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeline avec la prise en charge d’une page d’exception de développeur, de [BrowserLink](http://vswebessentials.com/features/browserlink), des pages d’erreurs, des fichiers statiques et d’ASP.NET Core MVC :
 
@@ -86,7 +88,7 @@ Les méthodes pratiques [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hos
 
 [!code-csharp[](startup/snapshot_sample/Program.cs?highlight=18,22)]
 
-## <a name="startup-filters"></a>Filtres Startup
+## <a name="extend-startup-with-startup-filters"></a>Étendre le démarrage avec les filtres de démarrage
 
 Utilisez [IStartupFilter](/dotnet/api/microsoft.aspnetcore.hosting.istartupfilter) pour configurer un intergiciel au début ou à la fin du pipeline de l’intergiciel de la méthode [Configure](#the-configure-method) d’une application. `IStartupFilter` est utile pour s’assurer qu’un intergiciel s’exécute avant ou après l’intergiciel ajouté par des bibliothèques au début ou à la fin du pipeline de traitement de requête de l’application.
 
@@ -102,9 +104,9 @@ Chaque `IStartupFilter` implémente un ou plusieurs intergiciels dans le pipelin
 
 [!code-csharp[](startup/sample/RequestSetOptionsStartupFilter.cs?name=snippet1&highlight=7)]
 
-`IStartupFilter` est inscrit dans le conteneur de service dans `ConfigureServices` :
+`IStartupFilter` est inscrit dans le conteneur de service dans [IWebHostBuilder.ConfigureServices](xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder.ConfigureServices*) pour illustrer la façon dont le filtre de démarrage augmente `Startup` en dehors de la classe `Startup` :
 
-[!code-csharp[](startup/sample/Startup.cs?name=snippet1&highlight=3)]
+[!code-csharp[](startup/sample/Program.cs?name=snippet1&highlight=4-5)]
 
 Quand un paramètre de chaîne de requête pour `option` est fourni, l’intergiciel traite l’affectation de valeur avant que l’intergiciel MVC affiche la réponse :
 
@@ -126,4 +128,3 @@ L’implémentation de [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hostin
 * <xref:fundamentals/middleware/index>
 * <xref:fundamentals/logging/index>
 * <xref:fundamentals/configuration/index>
-* [Classe StartupLoader : méthode FindStartupType (source de référence)](https://github.com/aspnet/Hosting/blob/rel/2.0.0/src/Microsoft.AspNetCore.Hosting/Internal/StartupLoader.cs#L66-L116)

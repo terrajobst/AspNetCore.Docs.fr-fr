@@ -8,6 +8,6 @@ Vous utilisez ces classes avec [Entity Framework Core](/ef/core) (EF Core) pour 
 
 Les classes de modèle que vous créez portent le nom de classes OCT (« Objet CLR Traditionnel »), car elles n’ont pas de dépendances envers EF Core. Elles définissent simplement les propriétés des données stockées dans la base de données.
 
-Dans ce didacticiel, vous écrivez d’abord les classes du modèle, puis EF Core crée la base de données. Une autre approche que nous ne décrivons pas ici consiste à générer les classes du modèle à partir d’une base de données déjà existante. Pour plus d’informations sur cette approche, consultez [Getting Started with EF Core on ASP.NET Core with an Existing Database](/ef/core/get-started/aspnetcore/existing-db).
+Dans ce didacticiel, vous écrivez d’abord les classes du modèle, puis EF Core crée la base de données. Une autre approche que nous ne décrivons pas ici consiste à générer les classes du modèle à partir d’une base de données déjà existante. Pour plus d’informations sur cette approche, consultez [ASP.NET Core - Base de données existante](/ef/core/get-started/aspnetcore/existing-db).
 
 ## <a name="add-a-data-model-class"></a>Ajouter une classe de modèle de données

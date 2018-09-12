@@ -5,14 +5,14 @@ description: Dans ce tutoriel, vous allez créer une application de conversation
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 08/20/2018
+ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: a2573e2817a2d8921954264ca17bc3a7e2a010a8
-ms.sourcegitcommit: 847cc1de5526ff42a7303491e6336c2dbdb45de4
+ms.openlocfilehash: 6d96331a4630f766ca11edb056fd3e13b52b6ae4
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43055830"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893163"
 ---
 # <a name="tutorial-get-started-with-signalr-on-aspnet-core"></a>Tutoriel : Bien démarrer avec SignalR sur ASP.NET Core
 
@@ -34,22 +34,19 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* [Visual Studio 2017 version 15.7.3 ou ultérieure](https://www.visualstudio.com/downloads/) avec la charge de travail **ASP.NET et développement web**
+* [Visual Studio 2017 version 15.8 ou ultérieure](https://www.visualstudio.com/downloads/) avec la charge de travail **ASP.NET et développement web**
 * [Kit SDK .NET Core 2.1 ou version ultérieure](https://www.microsoft.com/net/download/all)
-* [npm](https://www.npmjs.com/get-npm) (Gestionnaire de package pour Node.js, utilisé pour la bibliothèque de client JavaScript SignalR.)
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Visual Studio Code](https://code.visualstudio.com/download)
 * [Kit SDK .NET Core 2.1 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [C# pour Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
-* [npm](https://www.npmjs.com/get-npm) (Gestionnaire de package pour Node.js, utilisé pour la bibliothèque de client JavaScript SignalR.)
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * [Visual Studio pour Mac version 7.5.4 ou ultérieure](https://www.visualstudio.com/downloads/)
 * [.NET Core SDK 2.1 ou version ultérieure](https://www.microsoft.com/net/download/all) (inclus dans l’installation de Visual Studio)
-* [npm](https://www.npmjs.com/get-npm) (Gestionnaire de package pour Node.js, utilisé pour la bibliothèque de client JavaScript SignalR.)
 
 ---
 
@@ -95,76 +92,85 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 ## <a name="add-the-signalr-client-library"></a>Ajouter la bibliothèque de client SignalR
 
-La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). En revanche, vous devez obtenir la bibliothèque de client JavaScript à partir de [npm, le gestionnaire de package Node.js](https://www.npmjs.com/get-npm).
+La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). La bibliothèque cliente JavaScript n’est pas incluse automatiquement dans le projet. Pour ce tutoriel, vous utilisez le [Gestionnaire de bibliothèque (LibMan)](xref:client-side/libman/index) pour obtenir la bibliothèque cliente à partir de *unpkg*. [unpkg](https://unpkg.com/#/) est un [réseau de distribution de contenu](https://wikipedia.org/wiki/Content_delivery_network) qui peut fournir tout ce qui est trouvé dans [npm, le Gestionnaire de package Node.js](https://www.npmjs.com/get-npm).
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* Dans la **Console du Gestionnaire de package**, accédez au dossier de projet (celui qui contient le fichier *SignalRChat.csproj*).
+* Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le projet, puis sélectionnez **Ajouter** > **Bibliothèque côté client**.
 
-  ```console
-  cd SignalRChat
-  ```
+* Dans la boîte de dialogue **Ajouter une bibliothèque côté Client**, pour **Fournisseur** sélectionnez **unpkg**. 
+
+* Pour **Bibliothèque**, entrez _@aspnet/signalr@1_, puis sélectionnez la version la plus récente qui n’est pas en préversion.
+
+  ![Boîte de dialogue Ajouter une bibliothèque côté client - sélectionner la bibliothèque](signalr/_static/libman1.png)
+
+* Sélectionnez **Choisir des fichiers spécifiques**, développez le dossier *dist/browser*, puis sélectionnez *signalr.js* et *signalr.min.js*.
+
+* Définissez **Emplacement cible** sur *wwwroot/lib/signalr/*, puis sélectionnez **Installer**.
+
+  ![Boîte de dialogue Ajouter une bibliothèque côté client - sélectionner les fichiers et la destination](signalr/_static/libman2.png)
+
+  [LibMan](xref:client-side/libman/index) crée un dossier *wwwroot/lib/signalr* et y copie les fichiers sélectionnés.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-2. Basculez vers le nouveau dossier de projet.
+* Dans le **Terminal intégré**, exécutez la commande suivante pour installer LibMan.
 
   ```console
-  cd SignalRChat
-  ``` 
+  dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+  ```
+
+* Accédez au dossier du projet (celui qui contient le fichier *SignalRChat.csproj*).
+
+* Exécutez la commande suivante pour obtenir la bibliothèque cliente SignalR à l’aide de LibMan. Vous devrez peut-être attendre quelques secondes avant que la sortie ne s’affiche.
+
+  ```console
+  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  ```
+
+  Les paramètres spécifient les options suivantes :
+  * Utilisez le fournisseur unpkg.
+  * Copiez les fichiers vers la destination *wwwroot/lib/signalr*.
+  * Copiez uniquement les fichiers spécifiés.
+
+  La sortie se présente comme suit :
+
+  ```console
+  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
+  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-* Dans le **Terminal**, accédez au dossier du projet (celui qui contient le fichier *SignalRChat.csproj*).
+* Dans le **Terminal**, exécutez la commande suivante pour installer LibMan.
+
+  ```console
+  dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+  ```
+
+* Accédez au dossier du projet (celui qui contient le fichier *SignalRChat.csproj*).
+
+* Exécutez la commande suivante pour obtenir la bibliothèque cliente SignalR à l’aide de LibMan.
+
+  ```console
+  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  ```
+
+  Les paramètres spécifient les options suivantes :
+  * Utilisez le fournisseur unpkg.
+  * Copiez les fichiers vers la destination *wwwroot/lib/signalr*.
+  * Copiez uniquement les fichiers spécifiés.
+
+  La sortie se présente comme suit :
+
+  ```console
+  wwwroot/lib/signalr/dist/browser/signalr.js written to disk
+  wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  ```
 
 ---
-
-* Exécutez l’initialiseur npm pour créer un fichier *package.json* :
-
-  ```console
-  npm init -y
-  ```
-
-  La commande crée une sortie similaire à l’exemple suivant :
-
-  ```console
-  Wrote to C:\tmp\SignalRChat\package.json:
-  {
-    "name": "SignalRChat",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"0
-  }
-  ```
-
-* Installez le package de bibliothèque de client :
-
-  ```console
-  npm install @aspnet/signalr
-  ```
-
-  La commande crée une sortie similaire à l’exemple suivant :
-
-  ```
-  npm notice created a lockfile as package-lock.json. You should commit this file.
-  npm WARN signalrchat@1.0.0 No description
-  npm WARN signalrchat@1.0.0 No repository field.
-
-  + @aspnet/signalr@1.0.2
-  added 1 package in 0.98s
-  ```
-
-La commande `npm install` a téléchargé la bibliothèque de client JavaScript dans un sous-dossier sous *node_modules*. Copiez-la depuis cet emplacement vers un dossier sous *wwwroot* que vous pouvez référencer à partir de la page web de l’application de conversation.
-
-* Créez un dossier *signalr* dans *wwwroot/lib*.
-
-* Copiez le fichier *signalr.js* de *node_modules/@aspnet/signalr/dist/browser* vers le nouveau dossier *wwwroot/lib/signalr*.
 
 ## <a name="create-the-signalr-hub"></a>Créer le hub SignalR
 
@@ -192,7 +198,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 ## <a name="create-the-signalr-client-code"></a>Créer le code client SignalR
 
-* Remplacez le contenu de *Pages\Index.cshtml* par ce qui suit :
+* Remplacez le contenu de *Pages\Index.cshtml* par le code suivant :
 
   [!code-cshtml[Index](signalr/sample/Pages/Index.cshtml)]
 

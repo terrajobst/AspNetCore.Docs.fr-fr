@@ -5,12 +5,12 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 9e0fd0ee98c84bb2336749640b2a3c103e4639b6
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: fb3a287725fa68ff9feb9935d7e6c5c2b8316517
+ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938324"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43893118"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -103,14 +103,14 @@ Add-Migration Initial
 Update-Database
 ```
 
-Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes :
+Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes à partir du dossier de projet :
 
 ```console
 dotnet ef migrations add Initial
 dotnet ef database update
 ```
 
-Ignorez le message d’avertissement suivant ; vous le traiterez dans le prochain tutoriel :
+Ignorez le message d’avertissement suivant ; vous le traiterez dans un prochain tutoriel :
 
 `Microsoft.EntityFrameworkCore.Model.Validation[30000]`
 
