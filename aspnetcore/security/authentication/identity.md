@@ -5,12 +5,12 @@ description: Utiliser Identity à une application ASP.NET Core Découvrez commen
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 96f446ad9ec1ef5d807a8648e68308ee20583365
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: af07adcc7f9513845bb91eb233f0a9840e1bd6f4
+ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44040026"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44749306"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
@@ -23,6 +23,21 @@ Identité peut être configurée à l’aide d’une base de données SQL Server
 [Afficher ou télécharger l’exemple de code.](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) [(Comment télécharger)](xref:tutorials/index#how-to-download-a-sample)
 
 Dans cette rubrique, vous allez apprendre à utiliser l’identité pour vous inscrire, connectez-vous et déconnecter un utilisateur. Pour obtenir des instructions plus détaillées sur la création d’applications qui utilisent l’identité, consultez la section étapes suivantes à la fin de cet article.
+
+::: moniker range=">= aspnetcore-2.1"
+
+<a name="adi"></a>
+## <a name="adddefaultidentity-and-addidentity"></a>AddDefaultIdentity et AddIdentity
+
+[AddDefaultIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionuiextensions.adddefaultidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionUIExtensions_AddDefaultIdentity__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__) a été introduite dans ASP. Core 2.1. Appel `AddDefaultIdentity` revient à appeler ce qui suit :
+
+* [AddIdentity](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.addidentity?view=aspnetcore-2.1#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_AddIdentity__2_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Identity_IdentityOptions__)
+* [AddDefaultUI](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderuiextensions.adddefaultui?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderUIExtensions_AddDefaultUI_Microsoft_AspNetCore_Identity_IdentityBuilder_)
+* [AddDefaultTokenProviders](/dotnet/api/microsoft.aspnetcore.identity.identitybuilderextensions.adddefaulttokenproviders?view=aspnetcore-2.1#Microsoft_AspNetCore_Identity_IdentityBuilderExtensions_AddDefaultTokenProviders_Microsoft_AspNetCore_Identity_IdentityBuilder_)
+
+Consultez [AddDefaultIdentity source](https://github.com/aspnet/Identity/blob/2634637fd535b229762b5e4a49cdd128f4d8f12e/src/UI/IdentityServiceCollectionUIExtensions.cs#L47-L64) pour plus d’informations.
+
+::: moniker-end
 
 ## <a name="create-a-web-app-with-authentication"></a>Créer une application Web avec l’authentification
 
@@ -56,7 +71,7 @@ Exécutez l’application et inscrire un utilisateur. Selon la taille de votre �
 <a name="pw"></a>
 ### <a name="configure-identity-services"></a>Configurer les services d’identité
 
-Les services sont ajoutés dans `ConfigureServices`. Le modèle par défaut consiste à appeler tous les le `Add{Service}` méthodes, puis appelez toutes les le `services.Configure{Service}` méthodes. Le code suivant n’inclut pas le modèle généré `CookiePolicyOptions`:
+Les services sont ajoutés dans `ConfigureServices`. Le modèle par défaut consiste à appeler toutes les méthodes `Add{Service}`, puis toutes les méthodes `services.Configure{Service}`. Le code suivant n’inclut pas le modèle généré `CookiePolicyOptions`:
 
 ::: moniker range=">= aspnetcore-2.1"
 
