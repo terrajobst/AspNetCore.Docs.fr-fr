@@ -5,12 +5,12 @@ description: Découvrez comment créer une application Pages Razor avec des donn
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: a263b092194763ae4ff3360fc0d76e8ee494b5a6
-ms.sourcegitcommit: e7e1e531b80b3f4117ff119caadbebf4dcf5dcb7
+ms.openlocfilehash: e4a54c95aa8131441d29a835751ce6241aac2ed3
+ms.sourcegitcommit: 70fb7c9d5f2ddfcf4747382a9f7159feca7a6aa7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44510361"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45601767"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -269,9 +269,12 @@ Mettre à jour le modèle de page de détails :
 
 [!code-csharp[](secure-data/samples/final2.1/Pages/Contacts/Details.cshtml.cs?name=snippet)]
 
-## <a name="add-a-user-to-a-role"></a>Ajouter un utilisateur à un rôle
+## <a name="add-or-remove-a-user-to-a-role"></a>Ajouter ou supprimer un utilisateur à un rôle
 
-Rôles sont stockés dans le cookie d’identité. Modifications apportées aux rôles ne sont pas conservés dans le cookie jusqu'à ce que le cookie est régénéré soit l’utilisateur ou se déconnecte et se connecte. Les applications qui ajoutent des utilisateurs à un rôle doivent appeler `SignInManager.RefreshSignInAsync(user)` pour mettre à jour le cookie.
+Consultez [ce problème](https://github.com/aspnet/Docs/issues/8502) pour plus d’informations sur :
+
+* Suppression de privilèges à partir d’un utilisateur. Désactivation par exemple un utilisateur dans une application de conversation.
+* Ajout des privilèges à un utilisateur.
 
 ## <a name="test-the-completed-app"></a>Tester l’application terminée
 
