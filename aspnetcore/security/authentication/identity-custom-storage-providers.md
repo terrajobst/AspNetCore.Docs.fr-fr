@@ -3,14 +3,14 @@ title: Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 author: ardalis
 description: Découvrez comment configurer les fournisseurs de stockage personnalisés pour ASP.NET Core Identity.
 ms.author: riande
-ms.date: 05/24/2017
+ms.date: 09/17/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 4b210a52ae9761bb838dd5611e86ce8f71345499
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: db51c39cc700f93917f54c80adbfe7922ffcd67e
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837181"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011259"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -59,7 +59,7 @@ Lorsque vous créez une nouvelle instance de `UserManager` ou `RoleManager` vous
 
 ### <a name="users"></a>Utilisateurs
 
-Utilisateurs inscrits de votre site web. Le [IdentityUser](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuser) type peut être étendu ou utilisé comme exemple pour votre propre type personnalisé. Vous n’avez pas besoin d’hériter d’un type particulier d’implémenter votre propre solution de stockage d’identité personnalisée.
+Utilisateurs inscrits de votre site web. Le [IdentityUser](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser) type peut être étendu ou utilisé comme exemple pour votre propre type personnalisé. Vous n’avez pas besoin d’hériter d’un type particulier d’implémenter votre propre solution de stockage d’identité personnalisée.
 
 ### <a name="user-claims"></a>Revendications d’utilisateur
 
@@ -67,11 +67,11 @@ Un ensemble d’instructions (ou [revendications](/dotnet/api/system.security.cl
 
 ### <a name="user-logins"></a>Connexions utilisateur
 
-Informations sur le fournisseur d’authentification externes (tels que Facebook ou un compte Microsoft) à utiliser lors de la connexion d’un utilisateur. [Exemple](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuserlogin)
+Informations sur le fournisseur d’authentification externes (tels que Facebook ou un compte Microsoft) à utiliser lors de la connexion d’un utilisateur. [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin)
 
 ### <a name="roles"></a>Rôles
 
-Groupes d’autorisations pour votre site. Inclut le nom Id et le rôle du rôle (par exemple, « Admin » ou « Employee »). [Exemple](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityrole)
+Groupes d’autorisations pour votre site. Inclut le nom Id et le rôle du rôle (par exemple, « Admin » ou « Employee »). [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.identityrole)
 
 ## <a name="the-data-access-layer"></a>La couche d’accès aux données
 
@@ -83,11 +83,11 @@ La couche d’accès aux données fournit la logique pour enregistrer les donné
 
 ### <a name="context-class"></a>Context (classe)
 
-Encapsule les informations pour vous connecter à votre mécanisme de persistance et d’exécuter des requêtes. Plusieurs classes de données nécessitent une instance de cette classe, généralement fournie via l’injection de dépendances. [Exemple](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1).
+Encapsule les informations pour vous connecter à votre mécanisme de persistance et d’exécuter des requêtes. Plusieurs classes de données nécessitent une instance de cette classe, généralement fournie via l’injection de dépendances. [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.identitydbcontext-1).
 
 ### <a name="user-storage"></a>Stockage de l’utilisateur
 
-Stocke et récupère les informations de l’utilisateur (par exemple, le hachage du nom et mot de passe utilisateur). [Exemple](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Stocke et récupère les informations de l’utilisateur (par exemple, le hachage du nom et mot de passe utilisateur). [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="role-storage"></a>Stockage de rôle
 
@@ -95,15 +95,15 @@ Stocke et récupère les informations de rôle (par exemple, le nom du rôle). [
 
 ### <a name="userclaims-storage"></a>Stockage d’userclaims.
 
-Stocke et récupère les informations de revendication d’utilisateur (par exemple, le type de revendication et la valeur). [Exemple](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Stocke et récupère les informations de revendication d’utilisateur (par exemple, le type de revendication et la valeur). [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="userlogins-storage"></a>Stockage d’userlogins.
 
-Stocke et récupère des informations de connexion d’utilisateur (par exemple, un fournisseur d’authentification externe). [Exemple](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Stocke et récupère des informations de connexion d’utilisateur (par exemple, un fournisseur d’authentification externe). [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 ### <a name="userrole-storage"></a>Stockage du rôle d’utilisateur
 
-Stocke et récupère les rôles sont attribués à quels utilisateurs. [Exemple](/aspnet/core/api/microsoft.aspnet.identity.corecompat.userstore-1)
+Stocke et récupère les rôles sont attribués à quels utilisateurs. [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
 **Conseil :** uniquement implémenter les classes que vous souhaitez utiliser dans votre application.
 
@@ -115,7 +115,7 @@ La logique d’implémentation pour la création de l’utilisateur est dans le 
 
 ## <a name="customize-the-user-class"></a>Personnaliser la classe d’utilisateur
 
-Lorsque vous implémentez un fournisseur de stockage, créez une classe d’utilisateur qui est équivalente à la [ `IdentityUser` classe](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuser).
+Lorsque vous implémentez un fournisseur de stockage, créez une classe d’utilisateur qui est équivalente à la [IdentityUser classe](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuser).
 
 Au minimum, votre classe d’utilisateur doit inclure un `Id` et un `UserName` propriété.
 
@@ -185,7 +185,7 @@ public class UserStore : IUserStore<IdentityUser>,
 
 ### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim, IdentityUserLogin et IdentityUserRole
 
-Le `Microsoft.AspNet.Identity.EntityFramework` espace de noms contient des implémentations de la [IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [IdentityUserLogin](/aspnet/core/api/microsoft.aspnet.identity.corecompat.identityuserlogin), et [IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) classes. Si vous utilisez ces fonctionnalités, vous souhaiterez créer vos propres versions de ces classes et de définir les propriétés de votre application. Toutefois, il est parfois plus efficace de ne charger pas ces entités en mémoire lors de l’exécution des opérations de base (par exemple, ajout ou suppression de revendication de l’utilisateur). Au lieu de cela, les classes de magasin principal peuvent exécuter ces opérations directement sur la source de données. Par exemple, le `UserStore.GetClaimsAsync` méthode peut appeler le `userClaimTable.FindByUserId(user.Id)` méthode pour exécuter une requête sur table directement et retourner une liste de revendications.
+Le `Microsoft.AspNet.Identity.EntityFramework` espace de noms contient des implémentations de la [IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin), et [IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) classes. Si vous utilisez ces fonctionnalités, vous souhaiterez créer vos propres versions de ces classes et de définir les propriétés de votre application. Toutefois, il est parfois plus efficace de ne charger pas ces entités en mémoire lors de l’exécution des opérations de base (par exemple, ajout ou suppression de revendication de l’utilisateur). Au lieu de cela, les classes de magasin principal peuvent exécuter ces opérations directement sur la source de données. Par exemple, le `UserStore.GetClaimsAsync` méthode peut appeler le `userClaimTable.FindByUserId(user.Id)` méthode pour exécuter une requête sur table directement et retourner une liste de revendications.
 
 ## <a name="customize-the-role-class"></a>Personnaliser la classe de rôle
 

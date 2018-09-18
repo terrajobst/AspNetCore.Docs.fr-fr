@@ -5,12 +5,12 @@ description: Montre comment exiger HTTPS/TLS dans application web ASP.NET Core.
 ms.author: riande
 ms.date: 2/9/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 838cd00545f36736461616f806942249aaf6eee0
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 06ff89d30fb3586c69274cc7cb3e6c75065b098a
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893176"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011324"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -167,6 +167,7 @@ L'exemple de code suivant :
 * `[::1]` : L’adresse de bouclage IPv6.
 
 L’exemple précédent montre comment ajouter des hôtes supplémentaires.
+
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"

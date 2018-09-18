@@ -5,12 +5,12 @@ description: Utiliser Identity à une application ASP.NET Core Découvrez commen
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: af07adcc7f9513845bb91eb233f0a9840e1bd6f4
-ms.sourcegitcommit: 4db337bd47d70c06fff91000c58bc048a491ccec
+ms.openlocfilehash: ca83d07f7d93bd0cc61cd17cc373096b8e6aa2e1
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44749306"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46010973"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
@@ -143,6 +143,7 @@ PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous 
    [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Register.cshtml.cs?name=snippet&highlight=7,22)]
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
 
    Lorsqu’un utilisateur clique sur le **inscrire** lien, le `Register` action est appelée sur `AccountController`. Le `Register` action crée l’utilisateur en appelant `CreateAsync` sur le `_userManager` objet (fourni à `AccountController` par injection de dépendances) :
@@ -171,6 +172,7 @@ Lors de l’envoi du formulaire sur la page de connexion, le `OnPostAsync` actio
    La base de `Controller` classe expose un `User` propriété auxquelles vous pouvez accéder à partir de méthodes de contrôleur. Par exemple, vous pouvez énumérer `User.Claims` et prendre des décisions d’autorisation. Pour plus d’informations, consultez [autorisation](xref:security/authorization/index).
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
 
 Le formulaire de connexion s’affiche lorsque les utilisateurs sélectionnent le **connectez-vous** lier ou sont redirigés lorsqu’ils accèdent à une page qui requiert une authentification. Lorsque l’utilisateur soumet le formulaire sur la page de connexion, le `AccountController` `Login` action est appelée.
@@ -198,12 +200,15 @@ POST est spécifié dans le *Pages/Shared/_LoginPartial.cshtml*:
 [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/_LoginPartial.cshtml?highlight=10)]
 
 ::: moniker-end
+
 ::: moniker range="= aspnetcore-2.0"
+
    En cliquant sur le **déconnecter** lien appelle le `LogOut` action.
 
    [!code-csharp[](identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs?name=snippet_logout&highlight=7)]
 
    Le code précédent appelle la `_signInManager.SignOutAsync` (méthode). Le `SignOutAsync` méthode efface les revendications de l’utilisateur stockées dans un cookie.
+
 ::: moniker-end
 
 ## <a name="test-identity"></a>Tester l’identité
@@ -230,6 +235,7 @@ Pour Explorer d’identité plus en détail :
 ::: moniker range=">= aspnetcore-2.1"
 
 Tous les identités NuGet packages dépendants sont inclus dans le [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app).
+
 ::: moniker-end
 
 Le package principal pour l’identité est [Microsoft.AspNetCore.Identity](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/). Ce package contient l’ensemble principal d’interfaces pour ASP.NET Core Identity et est inclus par `Microsoft.AspNetCore.Identity.EntityFrameworkCore`.

@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment les conventions du fournisseur de modèles de routes et d’applications vous permettent de gérer le routage, la découverte et le traitement des pages.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 04/12/2018
+ms.date: 09/17/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 5a5d580b4260767e411571ccacc19d6e8fe12559
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: ea4f785dc8a64b430e312fd122a4d3184b61949e
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "42909854"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011860"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Conventions de routes et d’applications pour les pages Razor dans ASP.NET Core
 
@@ -69,6 +69,26 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+## <a name="route-order"></a>Ordre de l’itinéraire
+
+Itinéraires spécifient un <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> pour le traitement (itinéraire correspondant).
+
+| Trier            | Comportement |
+| :--------------: | -------- |
+| -1               | L’itinéraire est traité avant le traitement des autres itinéraires. |
+| 0                | Ordre n’est pas spécifié (valeur par défaut). Ne pas attribuer `Order` (`Order = null`) par défaut est l’itinéraire `Order` à 0 (zéro) pour le traitement. |
+| 1, 2, &hellip; n | Spécifie l’ordre de traitement d’itinéraire. |
+
+Traitement de l’itinéraire est établi par convention :
+
+* Les itinéraires sont traités dans un ordre séquentiel (-1, 0, 1, 2, &hellip; n).
+* Lorsque les itinéraires ont les mêmes `Order`, le meilleur itinéraire spécifique est mis en correspondance en fonction des itinéraires moins spécifiques.
+* Lorsque les itinéraires avec le même `Order` et le même nombre de paramètres correspond à une URL de demande, les itinéraires sont traités dans l’ordre dans lequel elles sont ajoutées à la <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection>.
+
+Si possible, évitez selon un ordre de traitement itinéraire établi. En règle générale, le routage sélectionne la route correcte avec correspondance d’URL. Si vous devez définir des itinéraires `Order` propriétés pour acheminer les demandes correctement, schéma de routage de l’application est probablement à confusion pour les clients et fragiles pour mettre à jour. Pour simplifier le schéma de routage de l’application de recherche. L’exemple d’application nécessite un itinéraire explicite afin de montrer plusieurs scénarios de routage à l’aide d’une seule application de traitement. Toutefois, vous devez essayer d’éviter la pratique de l’itinéraire du paramètre `Order` dans les applications de production.
+
+Pages Razor routage et le partage de routage de contrôleur MVC une implémentation. Informations sur l’ordre de routage dans les rubriques MVC sont disponibles à l’adresse [routage vers les actions de contrôleur : classement des routes d’attribut](xref:mvc/controllers/routing#ordering-attribute-routes).
+
 ## <a name="model-conventions"></a>Conventions de modèle
 
 Ajoutez un délégué pour [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) afin d’ajouter des [conventions de modèles](xref:mvc/controllers/application-model#conventions) qui s’appliquent aux pages Razor.
@@ -81,8 +101,13 @@ L’exemple d’application ajoute un modèle de routage `{globalTemplate?}` à 
 
 [!code-csharp[](razor-pages-conventions/sample/Conventions/GlobalTemplatePageRouteModelConvention.cs?name=snippet1)]
 
-> [!NOTE]
-> La propriété `Order` de `AttributeRouteModel` a la valeur `-1`. Ce modèle se voit ainsi affecter en priorité la première position « RouteDataValue » quand une valeur de route unique est fournie et l’emporte sur les routes de pages Razor générées automatiquement. Par exemple, un modèle de routage `{aboutTemplate?}` est ajouté plus loin dans cette rubrique. Le modèle `{aboutTemplate?}` reçoit l’ordre `Order` avec la valeur `1`. Quand la page About est demandée sur `/About/RouteDataValue`, « RouteDataValue » est chargé dans `RouteData.Values["globalTemplate"]` (`Order = -1`) et non `RouteData.Values["aboutTemplate"]` (`Order = 1`) en raison de la définition de la propriété `Order`.
+La propriété <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> de <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> a la valeur `1`. Cela garantit l’itinéraire suivant comportement dans l’exemple d’application de correspondance :
+
+* Un modèle d’itinéraire pour `TheContactPage/{text?}` est ajouté ultérieurement dans cette rubrique. L’itinéraire de la Page Contact a un ordre par défaut de `null` (`Order = 0`), afin qu’il corresponde à avant le `{globalTemplate?}` modèle d’itinéraire.
+* Un `{aboutTemplate?}` modèle d’itinéraire est ajouté ultérieurement dans cette rubrique. Le modèle `{aboutTemplate?}` reçoit l’ordre `Order` avec la valeur `2`. Quand la page About est demandée sur `/About/RouteDataValue`, « RouteDataValue » est chargé dans `RouteData.Values["globalTemplate"]` (`Order = 1`) et non `RouteData.Values["aboutTemplate"]` (`Order = 2`) en raison de la définition de la propriété `Order`.
+* Un `{otherPagesTemplate?}` modèle d’itinéraire est ajouté ultérieurement dans cette rubrique. Le modèle `{otherPagesTemplate?}` reçoit l’ordre `Order` avec la valeur `2`. Quand une page dans le *Pages/OtherPages* est demandée avec un paramètre d’itinéraire (par exemple, `/OtherPages/Page1/RouteDataValue`), « RouteDataValue » est chargé dans `RouteData.Values["globalTemplate"]` (`Order = 1`) et non `RouteData.Values["otherPagesTemplate"]` (`Order = 2`) en raison du paramètre le `Order` propriété.
+
+Dans la mesure du possible, ne définissez pas la `Order`, ce qui entraîne des `Order = 0`. S’appuient sur le routage pour sélectionner l’itinéraire correct.
 
 Les options des pages Razor, comme l’ajout de [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions), sont ajoutées au moment de l’ajout de MVC à la collection de services dans `Startup.ConfigureServices`. Pour obtenir un exemple, consultez [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/).
 
@@ -111,6 +136,7 @@ Demandez la page About de l’exemple sur `localhost:5000/About` et examinez les
 ![Les en-têtes de réponse de la page About montrent que GlobalHeader a été ajouté.](razor-pages-conventions/_static/about-page-global-header.png)
 
 ::: moniker range=">= aspnetcore-2.1"
+
 **Ajouter une convention de modèle de gestionnaire à toutes les pages**
 
 Utilisez [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions) pour créer et ajouter un [IPageHandlerModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipagehandlermodelconvention) à la collection des instances [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) qui sont appliquées durant la construction d’un modèle de gestionnaire de pages.
@@ -135,6 +161,7 @@ services.AddMvc()
             options.Conventions.Add(new GlobalPageHandlerModelConvention());
         });
 ```
+
 ::: moniker-end
 
 ## <a name="page-route-action-conventions"></a>Conventions d’actions de routage de pages
@@ -149,8 +176,9 @@ L’exemple d’application utilise `AddFolderRouteModelConvention` pour ajouter
 
 [!code-csharp[](razor-pages-conventions/sample/Startup.cs?name=snippet3)]
 
-> [!NOTE]
-> La propriété `Order` de `AttributeRouteModel` a la valeur `1`. Cela permet de garantir que le modèle de `{globalTemplate?}` (défini plus tôt dans cette rubrique) est prioritaire pour la première position de la valeur des données de routage quand une valeur de routage unique est fournie. Si la page Page1 est demandée sur `/OtherPages/Page1/RouteDataValue`, « RouteDataValue » est chargé dans `RouteData.Values["globalTemplate"]` (`Order = -1`) et non `RouteData.Values["otherPagesTemplate"]` (`Order = 1`) en raison de la définition de la propriété `Order`.
+La propriété <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> de <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> a la valeur `2`. Cela garantit que le modèle pour `{globalTemplate?}` (définie plus haut dans la rubrique à `1`) est prioritaire pour les données d’itinéraire première position de la valeur lorsqu’une valeur de routage unique est fournie. Si une page dans le *Pages/OtherPages* est demandée avec une valeur de paramètre d’itinéraire (par exemple, `/OtherPages/Page1/RouteDataValue`), « RouteDataValue » est chargé dans `RouteData.Values["globalTemplate"]` (`Order = 1`) et non `RouteData.Values["otherPagesTemplate"]` (`Order = 2`) en raison du paramètre le `Order` propriété.
+
+Dans la mesure du possible, ne définissez pas la `Order`, ce qui entraîne des `Order = 0`. S’appuient sur le routage pour sélectionner l’itinéraire correct.
 
 Demandez la page Page1 de l’exemple sur `localhost:5000/OtherPages/Page1/GlobalRouteValue/OtherPagesRouteValue` et examinez le résultat :
 
@@ -164,8 +192,9 @@ L’exemple d’application utilise `AddPageRouteModelConvention` pour ajouter u
 
 [!code-csharp[](razor-pages-conventions/sample/Startup.cs?name=snippet4)]
 
-> [!NOTE]
-> La propriété `Order` de `AttributeRouteModel` a la valeur `1`. Cela permet de garantir que le modèle de `{globalTemplate?}` (défini plus tôt dans cette rubrique) est prioritaire pour la première position de la valeur des données de routage quand une valeur de routage unique est fournie. Si la page About est demandée sur `/About/RouteDataValue`, « RouteDataValue » est chargé dans `RouteData.Values["globalTemplate"]` (`Order = -1`) et non `RouteData.Values["aboutTemplate"]` (`Order = 1`) en raison de la définition de la propriété `Order`.
+La propriété <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel.Order*> de <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.AttributeRouteModel> a la valeur `2`. Cela garantit que le modèle pour `{globalTemplate?}` (définie plus haut dans la rubrique à `1`) est prioritaire pour les données d’itinéraire première position de la valeur lorsqu’une valeur de routage unique est fournie. Si la page About est demandée avec une valeur de paramètre d’itinéraire à `/About/RouteDataValue`, « RouteDataValue » est chargé dans `RouteData.Values["globalTemplate"]` (`Order = 1`) et non `RouteData.Values["aboutTemplate"]` (`Order = 2`) en raison du paramètre le `Order` propriété.
+
+Dans la mesure du possible, ne définissez pas la `Order`, ce qui entraîne des `Order = 0`. S’appuient sur le routage pour sélectionner l’itinéraire correct.
 
 Demandez la page About de l’exemple sur `localhost:5000/About/GlobalRouteValue/AboutRouteValue` et examinez le résultat :
 

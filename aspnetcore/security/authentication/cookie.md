@@ -5,12 +5,12 @@ description: Une explication de l’authentification par cookie sans ASP.NET Cor
 ms.author: riande
 ms.date: 10/11/2017
 uid: security/authentication/cookie
-ms.openlocfilehash: ac1eec297d3efd1403990722f59c414ba4e5ddd9
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 8045a1bf27853ff5f03166e7cf10d89e2ad38fd1
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095799"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011834"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification par cookie sans ASP.NET Core Identity
 
@@ -37,6 +37,8 @@ Dans le `ConfigureServices` (méthode), créez le service de l’intergiciel d�
 [!code-csharp[](cookie/samples/2.x/CookieSample/Startup.cs?name=snippet1)]
 
 `AuthenticationScheme` passé à `AddAuthentication` définit le schéma d’authentification par défaut pour l’application. `AuthenticationScheme` est utile quand il existe plusieurs instances de l’authentification des cookies et que vous souhaitez [autoriser avec un schéma spécifique](xref:security/authorization/limitingidentitybyscheme). Définition de la `AuthenticationScheme` à `CookieAuthenticationDefaults.AuthenticationScheme` fournit une valeur de « Cookies » pour le schéma. Vous pouvez fournir n’importe quelle valeur de chaîne qui distingue le schéma.
+
+Schéma d’authentification de l’application est différent de schéma d’authentification de cookie de l’application. Lorsqu’un schéma d’authentification de cookie n’est pas fourni pour <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*>, elle utilise [CookieAuthenticationDefaults.AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) (« Cookies »).
 
 Dans le `Configure` (méthode), utilisez le `UseAuthentication` méthode à appeler l’intergiciel d’authentification qui définit le `HttpContext.User` propriété. Appelez le `UseAuthentication` méthode avant d’appeler `UseMvcWithDefaultRoute` ou `UseMvc`:
 

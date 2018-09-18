@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 04/05/2018
 uid: razor-pages/filter
-ms.openlocfilehash: 70f762f32a9e4fda01418a47e3eb7d7224639a0a
-ms.sourcegitcommit: c6ed2f00c7a08223d79090396b85793718b0dd69
+ms.openlocfilehash: d9d4ea65a9357d19c283036e7ab9417e0deaeda2
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "42909409"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011716"
 ---
 # <a name="filter-methods-for-razor-pages-in-aspnet-core"></a>Méthodes de filtre pour les pages Razor dans ASP.NET Core
 
@@ -76,6 +76,7 @@ Le code suivant active le filtre `SamplePageFilter` :
 [!code-csharp[Main](filter/sample/PageFilter/StartupSync.cs?name=snippet2&highlight=11)]
 
 ::: moniker range=">= aspnetcore-2.1"
+
 ## <a name="implement-razor-page-filters-by-overriding-filter-methods"></a>Implémenter des filtres de page Razor en substituant les méthodes de filtre
 
 Le code suivant se substitue aux filtres de page Razor synchrones :
