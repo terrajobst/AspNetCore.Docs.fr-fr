@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/06/2018
 uid: signalr/configuration
-ms.openlocfilehash: b7c9c3713faa952c2b5bd142ab4887ccbc120ea2
-ms.sourcegitcommit: 1a2fc47fb5d3da0f2a3c3269613ab20eb3b0da2c
+ms.openlocfilehash: 72fc53cad7caf55e85d0668c9dbea1a70fc8674b
+ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44373369"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46292334"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Configuration d’ASP.NET Core SignalR
 
@@ -43,7 +43,8 @@ var connection = new HubConnectionBuilder()
     .AddJsonProtocol(options => {
         options.PayloadSerializerSettings.ContractResolver = 
             new DefaultContractResolver();
-    });
+    })
+    .Build();
 ```
 
 > [!NOTE]
@@ -76,7 +77,7 @@ public void ConfigureServices(IServiceCollection services)
     {
         hubOptions.EnableDetailedErrors = true;
         hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(1);
-    })
+    });
 }
 ```
 
@@ -86,7 +87,7 @@ Options pour un seul hub remplacent les options globales fournies dans `AddSigna
 services.AddSignalR().AddHubOptions<MyHub>(options =>
 {
     options.EnableDetailedErrors = true;
-}
+});
 ```
 
 Utilisez `HttpConnectionDispatcherOptions` pour configurer les paramètres avancés liées aux transports et gestion de la mémoire tampon. Ces options sont configurées en passant un délégué à [MapHub\<T >](/dotnet/api/microsoft.aspnetcore.signalr.hubroutebuilder.maphub).
@@ -191,7 +192,7 @@ var connection = new HubConnectionBuilder()
     .WithUrl("https://example.com/myhub", options => {
         options.AccessTokenProvider = async () => {
             // Get and return the access token.
-        }
+        };
     })
     .Build();
 ```
@@ -260,7 +261,7 @@ let connection = new signalR.HubConnectionBuilder()
     .withUrl("/myhub", {
         skipNegotiation: true,
         transport: signalR.HttpTransportType.WebSockets
-    });
+    })
     .build();
 ```
 
