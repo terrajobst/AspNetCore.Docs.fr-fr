@@ -1,0 +1,1 @@
+Nouveau développement d’applications web, nous vous recommandons de Pages Razor. Pour plus d’informations, consultez [bien démarrer avec les Pages Razor](/aspnet/core/tutorials/razor-pages/razor-pages-start).

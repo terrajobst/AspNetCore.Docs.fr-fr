@@ -7,12 +7,12 @@ ms.author: mimengis
 ms.custom: mvc
 ms.date: 09/06/2018
 uid: signalr/java-client
-ms.openlocfilehash: f110f5391ac34f5cb4a72f64c16d86c8a37369a2
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 0eba59a05ea6fd3fed46fcab86ac20caf40ebb65
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43995413"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46482916"
 ---
 # <a name="aspnet-core-signalr-java-client"></a>ASP.NET Core SignalR Java Client
 
@@ -26,12 +26,12 @@ L’exemple d’application de console Java référencé dans cet article utilis
 
 ## <a name="install-the-signalr-java-client-package"></a>Installer le package du client Java de SignalR
 
-Le *signalr-0.1.0-preview1-35029* fichier JAR permet aux clients pour se connecter à des concentrateurs SignalR. Pour rechercher le dernier numéro de version de fichier JAR, consultez le [résultats de la recherche Maven](https://search.maven.org/search?q=g:com.microsoft.aspnet%20AND%20a:signalr&core=gav).
+Le *signalr-0.1.0-preview2-35174* fichier JAR permet aux clients pour se connecter à des concentrateurs SignalR. Pour rechercher le dernier numéro de version de fichier JAR, consultez le [résultats de la recherche Maven](https://search.maven.org/search?q=g:com.microsoft.aspnet%20AND%20a:signalr&core=gav).
 
 Si vous utilisez Gradle, ajoutez la ligne suivante à la `dependencies` section de votre *build.gradle* fichier :
 
 ```gradle
-implementation 'com.microsoft.aspnet:signalr:0.1.0-preview1-35029'
+implementation 'com.microsoft.aspnet:signalr:0.1.0-preview2-35174'
 ```
 
 Si à l’aide de Maven, ajoutez les lignes suivantes à l’intérieur de la `<dependencies>` élément de votre *pom.xml* fichier :
@@ -63,12 +63,12 @@ Il s’agit d’une version préliminaire du client Java. Il existe de nombreuse
 * Seuls les types primitifs peuvent être acceptés en tant que paramètres et types de retour.
 * Les API sont synchrones.
 * Seul le type d’appel « Envoyer » est pris en charge pour l’instant. « Appeler » et la diffusion en continu des valeurs de retour ne sont pas pris en charge.
-* Le client ne prend actuellement en charge la [Service Azure SignalR](/azure/azure-signalr/).
 * Seul le protocole JSON est pris en charge.
 * Uniquement le transport WebSocket est pris en charge.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* [Référence de l’API Java](/java/api/com.microsoft.aspnet.signalr?view=aspnet-signalr-java)
 * <xref:signalr/hubs>
 * <xref:signalr/javascript-client>
 * <xref:signalr/publish-to-azure-web-app>

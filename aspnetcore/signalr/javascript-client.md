@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: 639c30f1d145a3da5e4f5857f32c1b573c1bfce2
-ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
+ms.openlocfilehash: 10958c414aa4a285c8a2810bb99e278f719c5b7f
+ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41825706"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46483047"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript client
 
@@ -99,9 +99,9 @@ Utilisez le [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbu
 
 [!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
 
-## <a name="related-resources"></a>Ressources connexes
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Référence de l’API JavaScript](/javascript/api/)
+* [Référence de l’API JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Hubs](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)
 * [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
