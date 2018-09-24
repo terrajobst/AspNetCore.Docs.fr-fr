@@ -1,4 +1,5 @@
 ::: moniker range=">= aspnetcore-2.1"
+
 Cliquez avec le bouton droit sur une ligne ondulée rouge > **Actions rapides et refactorisations** sur l’attribut `[Column]` et sélectionnez `using System.ComponentModel.DataAnnotations.Schema;`.
 
 L’annotation de données `[Column(TypeName = "decimal(18, 2)")]` est nécessaire pour qu’Entity Framework Core puisse correctement mapper `Price` en devise dans la base de données. Pour plus d’informations, consultez [Types de données](/ef/core/modeling/relational/data-types).
@@ -75,11 +76,13 @@ Le code de production détecte généralement les conflits d’accès concurrent
 Examinez le fichier *Pages/Movies/Edit.cshtml.cs* :
 
 ::: moniker range="= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit.cshtml.cs?name=snippet2)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
 
 ::: moniker-end

@@ -7,14 +7,19 @@ Dans les sections suivantes, les méthodes `Create`, `Update` et `Delete` sont a
 Ajoutez la méthode `Create` suivante :
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
 Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). L’attribut [[FromBody]](/dotnet/api/microsoft.aspnetcore.mvc.frombodyattribute) indique à MVC qu’il faut obtenir la valeur de la tâche à partir du corps de la requête HTTP.
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
 Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut [[HttpPost]](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute). MVC obtient la valeur de la tâche dans le corps de la requête HTTP.
+
 ::: moniker-end
 
 La méthode `CreatedAtRoute` :
@@ -24,10 +29,15 @@ La méthode `CreatedAtRoute` :
 * Utilise l’itinéraire nommé « GetTodo » pour créer l’URL. L’itinéraire nommé « GetTodo » est défini dans `GetById` :
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
+
 ::: moniker-end
 
 ### <a name="use-postman-to-send-a-create-request"></a>Utiliser Postman pour envoyer une requête Create
@@ -54,8 +64,10 @@ La méthode `CreatedAtRoute` :
 * Cliquez sur le bouton **Send** (Envoyer).
 
 ::: moniker range=">= aspnetcore-2.1"
+
 > [!TIP]
 > Si vous ne recevez pas de réponse après avoir cliqué sur **Send** (Envoyer), désactivez l’option **SSL certification verification** (Vérification de la certification SSL). Celle-ci se trouve sous **File** (Fichier) > **Settings** (Paramètres). Cliquez à nouveau sur le bouton **Send** (Envoyer) une fois le paramètre désactivé.
+
 ::: moniker-end
 
 Cliquez sur l’onglet **Headers** (En-têtes) dans le volet **Response** (Réponse), puis copiez la valeur de l’en-tête **Location** (Emplacement) :
@@ -69,10 +81,15 @@ L’URI d’en-tête d’emplacement permet d’accéder au nouvel élément.
 Ajoutez la méthode `Update` suivante :
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.0/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+
 ::: moniker-end
+
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](../../tutorials/first-web-api/samples/2.1/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
+
 ::: moniker-end
 
 `Update` est similaire à `Create`, à la différence près qu’il utilise HTTP PUT. La réponse est [204 (Pas de contenu)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). D’après la spécification HTTP, une requête PUT nécessite que le client envoie toute l’entité mise à jour, et pas seulement les différences. Pour prendre en charge les mises à jour partielles, utilisez HTTP PATCH.

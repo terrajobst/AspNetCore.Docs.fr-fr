@@ -5,12 +5,12 @@ description: Découvrez comment utiliser des méthodes et des vues de contrôleu
 ms.author: riande
 ms.date: 03/07/2017
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: e94cb877576a68540a565225b2b3d79f9be53327
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 42a63044cd14873ff334a728c6c8304214ee8575
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38194012"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011337"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>Méthodes et vues de contrôleur dans ASP.NET Core
 
@@ -23,10 +23,15 @@ Nous avons une bonne ébauche de l’application de films, mais sa présentation
 Ouvrez le fichier *Models/Movie.cs*, puis ajoutez les lignes en surbrillance ci-dessous :
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](start-mvc/sample/MvcMovie21/Models/MovieDateFixed.cs?name=snippet_1&highlight=2,3,12-13,17)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](start-mvc/sample/MvcMovie/Models/MovieDateWithExtraUsings.cs?name=snippet_1&highlight=13-14)]
+
 ::: moniker-end
 
 [!INCLUDE [adding-model](~/includes/mvc-intro/controller-methods-views.md)]

@@ -21,12 +21,15 @@ Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifi
 Dans l’élément de titre, remplacez `MvcMovie` par `Movie App`. Remplacez le texte d’ancrage présent dans le modèle de disposition `MvcMovie` par `Movie App` et le contrôleur `Home` par `Movies`, comme illustré ci-dessous :
 
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout.cshtml?highlight=7,31)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/_Layout21.cshtml?highlight=7,31)]
+
 ::: moniker-end
 
 >[!WARNING]

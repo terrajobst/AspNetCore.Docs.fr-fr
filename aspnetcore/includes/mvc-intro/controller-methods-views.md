@@ -32,18 +32,23 @@ Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) sont l’une des nouvelles f
 Ouvrez le contrôleur `Movies` et examinez les deux méthodes d’action `Edit`. Le code suivant montre la méthode `HTTP GET Edit`, qui extrait le film et renseigne le formulaire de modification généré par le fichier Razor *Edit.cshtml*.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit1)]
 
 Le code suivant montre la méthode `HTTP POST Edit`, qui traite les valeurs de film publiées :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
 
 Le code suivant montre la méthode `HTTP POST Edit`, qui traite les valeurs de film publiées :
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
 
 L’attribut `[Bind]` est l’un des moyens qui permettent d’assurer une protection contre la [sur-publication](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost). Vous devez inclure dans l’attribut `[Bind]` uniquement les propriétés que vous souhaitez modifier. Pour plus d’informations, consultez [Protect your controller from over-posting (Protéger votre contrôleur contre la sur-publication)](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application). Les [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/) fournissent une alternative pour empêcher la sur-publication.
@@ -51,10 +56,15 @@ L’attribut `[Bind]` est l’un des moyens qui permettent d’assurer une prote
 Notez que la deuxième méthode d’action `Edit` est précédée de l’attribut `[HttpPost]`.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit2&highlight=1)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2&highlight=4)]
+
 ::: moniker-end
 
 L’attribut `HttpPost` indique que cette méthode `Edit` peut être appelée *uniquement* pour les requêtes `POST`. Vous pouvez appliquer l’attribut `[HttpGet]` à la première méthode Edit, mais cela n’est pas nécessaire car `[HttpGet]` est la valeur par défaut.
@@ -68,10 +78,15 @@ Le [Tag Helper Form](xref:mvc/views/working-with-forms) génère un jeton anti-c
 La méthode `HttpGet Edit` prend le paramètre `ID` du film, recherche le film à l’aide de la méthode Entity Framework `SingleOrDefaultAsync`, et retourne le film sélectionné à la vue Edit. Si un film est introuvable, l’erreur `NotFound` (HTTP 404) est retournée.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit1)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit1)]
+
 ::: moniker-end
 
 Quand le système de génération de modèles automatique a créé la vue Edit, il a examiné la classe `Movie` et a créé le code pour restituer les éléments `<label>` et `<input>` de chaque propriété de la classe. L’exemple suivant montre la vue Edit qui a été générée par le système de génération de modèles automatique de Visual Studio :
@@ -93,10 +108,15 @@ Les éléments `<input>` sont dans un élément `HTML <form>` dont l’attribut 
 Le code suivant montre la version `[HttpPost]` de la méthode d’action `Edit`.
 
 ::: moniker range=">= aspnetcore-2.1"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie21/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
+
 ::: moniker range="<= aspnetcore-2.0"
+
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_edit2)]
+
 ::: moniker-end
 
 L’attribut `[ValidateAntiForgeryToken]` valide le jeton [XSRF](xref:security/anti-request-forgery) masqué généré par le générateur de jetons anti-contrefaçon dans le [Tag Helper Form](xref:mvc/views/working-with-forms)

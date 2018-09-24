@@ -14,4 +14,5 @@ Le tutoriel de la version 2.0 décrit ASP.NET Core MVC et Entity Framework Core 
 * représente la meilleure approche pour le développement de nouvelles applications.
 
 Si vous choisissez ce tutoriel plutôt que la version [Razor Pages](xref:data/ef-rp/intro), indiquez-nous pourquoi dans [cette discussion GitHub](https://github.com/aspnet/Docs/issues/6146).
+
 ::: moniker-end
