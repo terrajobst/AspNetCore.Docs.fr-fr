@@ -1,37 +1,37 @@
 ---
-title: Authentification de cloud de site web d’API avec Azure Active Directory B2C dans ASP.NET Core
+title: Authentification cloud dans web API avec Azure Active Directory B2C dans ASP.NET Core
 author: camsoper
-description: Découvrez comment configurer l’authentification d’Azure Active Directory B2C avec l’API Web ASP.NET principale. Tester l’API avec Postman de web authentifié.
+description: Découvrez comment configurer l’authentification Azure Active Directory B2C avec l’API Web ASP.NET Core. Tester l’API avec Postman de web authentifié.
 ms.author: casoper
-ms.date: 01/25/2018
+ms.date: 09/21/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: c56efda28c668b8f88d28334705b4c26f288870f
-ms.sourcegitcommit: e22097b84d26a812cd1380a6b2d12c93e522c125
+ms.openlocfilehash: 0efc95f508ef84d2728f503f1edd886ce6ae7a79
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36314160"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028256"
 ---
-# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification de cloud de site web d’API avec Azure Active Directory B2C dans ASP.NET Core
+# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification cloud dans web API avec Azure Active Directory B2C dans ASP.NET Core
 
 Auteur : [Cam Soper](https://twitter.com/camsoper)
 
-[Azure B2C Active Directory](/azure/active-directory-b2c/active-directory-b2c-overview) (B2C Active Directory de Azure) est une solution de gestion des identités de cloud pour les applications web et mobiles. Le service fournit l’authentification pour les applications hébergées dans le cloud et locales. Types d’authentification, les comptes individuels, les comptes de réseau social et fédérés des comptes d’entreprise. En outre, Azure AD B2C peut fournir l’authentification multifacteur avec une configuration minimale.
+[Azure B2C Active de répertoire](/azure/active-directory-b2c/active-directory-b2c-overview) (Azure AD B2C) est une solution de gestion des identités de cloud pour les applications web et mobiles. Le service fournit une authentification pour les applications hébergées dans le cloud et sur site. Types d’authentification, les comptes individuels, les comptes de réseau social et fédérés comptes d’entreprise. En outre, Azure AD B2C peut fournir une authentification multifacteur avec une configuration minimale.
 
 > [!TIP]
-> Azure Active Directory (Azure AD) et Azure AD B2C sont des offres de produits distincts. Un locataire Azure AD représente une organisation, alors qu’un locataire Azure AD B2C représente une collection d’identités à utiliser avec les applications de confiance. Pour plus d’informations, consultez [Azure AD B2C : Forum aux questions (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
+> Azure Active Directory (Azure AD) et Azure AD B2C sont des offres de produits distinctes. Un locataire Azure AD représente une organisation, alors qu’un locataire Azure AD B2C représente une collection d’identités qui doivent être utilisées avec les applications de confiance. Pour plus d’informations, consultez [Azure AD B2C : Forum aux questions (FAQ)](/azure/active-directory-b2c/active-directory-b2c-faqs).
 
-Étant donné que l’API web ont aucune interface utilisateur, ils ne peuvent pas rediriger l’utilisateur vers un service de jeton sécurisé comme Azure AD B2C. Au lieu de cela, l’API est passé un jeton de support à partir de l’application appelante qui a déjà authentifié l’utilisateur avec Azure Active Directory B2C. L’API puis valide le jeton sans intervention de l’utilisateur directe.
+Dans la mesure où les API web ont pas d’interface utilisateur, ils ne peuvent pas rediriger l’utilisateur vers un service de jeton sécurisé comme Azure AD B2C. Au lieu de cela, l’API est passé un jeton du porteur à partir de l’application appelante, qui a déjà authentifié l’utilisateur avec Azure AD B2C. L’API valide ensuite le jeton sans intervention de l’utilisateur directement.
 
-Dans ce didacticiel, vous devez savoir comment :
+Dans ce didacticiel, découvrez comment :
 
 > [!div class="checklist"]
 > * Créer un locataire Azure Active Directory B2C.
-> * Enregistrer une API Web dans Azure AD B2C.
+> * Inscrire une API Web dans Azure AD B2C.
 > * Utiliser Visual Studio pour créer une API Web configuré pour utiliser le locataire Azure AD B2C pour l’authentification.
-> * Configurer des stratégies de contrôle du comportement du client Azure Active Directory B2C.
-> * Postman utilisé pour simuler une application web qui présente une boîte de dialogue de connexion, récupère un jeton et l’utilise pour effectuer une demande dans l’API web.
+> * Configurer des stratégies de contrôle du comportement du locataire Azure AD B2C.
+> * Utiliser Postman pour simuler une application web qui présente une boîte de dialogue de connexion, récupère un jeton et l’utilise pour effectuer une demande sur l’API web.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -43,28 +43,28 @@ Les éléments suivants sont requis pour cette procédure pas à pas :
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Créer le client Azure Active Directory B2C
 
-Créer un client Azure AD B2C [comme décrit dans la documentation](/azure/active-directory-b2c/active-directory-b2c-get-started). Lorsque vous y êtes invité, associant le locataire d’un abonnement Azure est facultatif pour ce didacticiel.
+Créer un locataire Azure AD B2C [comme décrit dans la documentation](/azure/active-directory-b2c/active-directory-b2c-get-started). Lorsque vous y êtes invité, associer le locataire à un abonnement Azure est facultative pour ce didacticiel.
 
-## <a name="configure-a-sign-up-or-sign-in-policy"></a>Configurer une stratégie d’inscription ou de la connexion
+## <a name="configure-a-sign-up-or-sign-in-policy"></a>Configurer une stratégie d’inscription ou connexion
 
-Utilisez les étapes de la documentation d’Azure AD B2C à [créer une stratégie d’inscription ou connectez-vous](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-sign-up-or-sign-in-policy). Nom de la stratégie **SiUpIn**.  Utilisez les valeurs de l’exemple fournis dans la documentation de **fournisseurs d’identité**, **des attributs d’abonnement**, et **revendications de l’Application**. À l’aide de la **exécuter maintenant** bouton pour tester la stratégie, comme décrit dans la documentation est facultative.
+Utilisez les étapes de la documentation d’Azure AD B2C pour [créer une stratégie d’inscription ou connexion](/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-sign-up-or-sign-in-policy). Nommez la stratégie **SiUpIn**.  Utilisez les exemples de valeurs fournies dans la documentation pour **fournisseurs d’identité**, **attributs d’inscription**, et **des revendications d’Application**. À l’aide de la **exécuter maintenant** bouton pour tester la stratégie, comme décrit dans la documentation est facultatif.
 
-## <a name="register-the-api-in-azure-ad-b2c"></a>Registre de l’API dans Azure AD B2C
+## <a name="register-the-api-in-azure-ad-b2c"></a>Inscrire l’API dans Azure AD B2C
 
-Dans le locataire Azure AD B2C nouvellement créé, inscrire votre à l’aide de l’API [les étapes décrites dans la documentation](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-api) sous le **enregistrer une API web** section.
+Dans le locataire Azure AD B2C nouvellement créé, inscrire votre API à l’aide [les étapes décrites dans la documentation](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-api) sous le **inscrire une API web** section.
 
 Utilisez les valeurs suivantes :
 
 | Paramètre                       | Value               | Notes                                                                                  |
 |-------------------------------|---------------------|----------------------------------------------------------------------------------------|
-| **Name**                      | *&lt;Nom de l’API&gt;*  | Entrez un **nom** pour l’application qui décrivent votre application aux consommateurs.                     |
-| **Inclure l’application web ou des API** | Oui                 |                                                                                        |
-| **Autoriser les flux implicites**       | Oui                 |                                                                                        |
-| **URL de réponse**                 | `https://localhost` | URL de réponse sont les points de terminaison où Azure AD B2C retourne tout jeton de demande de votre application. |
-| **URI ID d’application**                | *api*               | L’URI n’a pas besoin de correspondre à une adresse physique. Il doit être unique.     |
+| **Name**                      | *&lt;Nom de l’API&gt;*  | Entrez un **nom** pour l’application qui décrit votre application aux consommateurs.                     |
+| **Inclure l’application web / API web** | Oui                 |                                                                                        |
+| **Autoriser un flux implicite**       | Oui                 |                                                                                        |
+| **URL de réponse**                 | `https://localhost` | URL de réponse sont des points de terminaison auxquels Azure AD B2C retourne les jetons demandés par votre application. |
+| **URI ID d’application**                | *api*               | L’URI n’a pas besoin résoudre une adresse physique. Il doit être unique.     |
 | **Inclure le client natif**     | Non                  |                                                                                        |
 
-Une fois que l’API est inscrit, la liste des applications et des API dans le client s’affiche. Sélectionnez l’API a été enregistré. Sélectionnez le **copie** icône à droite de la **ID d’Application** champ pour le copier dans le Presse-papiers. Sélectionnez **publié étendues** et vérifiez la valeur par défaut *user_impersonation* étendue est présente.
+Une fois que l’API est inscrite, la liste des applications et des API dans le client s’affiche. Sélectionnez l’API que vous venez d’inscrire. Sélectionnez le **copie** icône à droite de la **ID d’Application** champ pour le copier dans le Presse-papiers. Sélectionnez **étendues publiées** et vérifiez la valeur par défaut *user_impersonation* étendue est présente.
 
 ## <a name="create-an-aspnet-core-app-in-visual-studio-2017"></a>Créer une application ASP.NET Core dans Visual Studio 2017
 
@@ -76,9 +76,9 @@ Dans Visual Studio :
 2. Sélectionnez **API Web** à partir de la liste des modèles.
 3. Sélectionnez le **modifier l’authentification** bouton.
 
-    ![Bouton de modifier l’authentification](./azure-ad-b2c-webapi/change-auth-button.png)
+    ![Bouton de l’authentification de modification](./azure-ad-b2c-webapi/change-auth-button.png)
 
-4. Dans le **modifier l’authentification** boîte de dialogue, sélectionnez **comptes d’utilisateur individuels**, puis sélectionnez **se connecter à un magasin d’utilisateur existant dans le cloud** dans la liste déroulante. 
+4. Dans le **modifier l’authentification** boîte de dialogue, sélectionnez **comptes d’utilisateur individuels**, puis sélectionnez **se connecter à un magasin d’utilisateurs existant dans le cloud** dans la liste déroulante. 
 
     ![Boîte de dialogue Modifier l’authentification](./azure-ad-b2c-webapi/change-auth-dialog.png)
 
@@ -88,51 +88,51 @@ Dans Visual Studio :
     |-------------------------------|-------------------------------------------------------|
     | **Nom de domaine**               | *&lt;le nom de domaine de votre client B2C&gt;*          |
     | **ID d’application**            | *&lt;Collez l’ID d’Application à partir du Presse-papiers&gt;* |
-    | **Stratégie d’inscription ou de la connexion** | `B2C_1_SiUpIn`                                        |
+    | **Stratégie d’inscription ou connexion** | `B2C_1_SiUpIn`                                        |
 
     Sélectionnez **OK** pour fermer la **modifier l’authentification** boîte de dialogue. Sélectionnez **OK** pour créer l’application web.
 
-Visual Studio crée l’API web avec un contrôleur nommé *le fichier ValuesController.cs* qui retourne des valeurs codées en dur pour les demandes GET. La classe est décorée avec le [attribut Authorize](xref:security/authorization/simple), de sorte que toutes les demandes nécessitent l’authentification.
+Visual Studio crée l’API web avec un contrôleur nommé *ValuesController.cs* qui retourne des valeurs codées en dur pour les requêtes GET. La classe est décorée avec le [attribut Authorize](xref:security/authorization/simple), de sorte que toutes les demandes nécessitent l’authentification.
 
-## <a name="run-the-web-api"></a>Exécution de l’API web
+## <a name="run-the-web-api"></a>Exécuter l’API web
 
 Dans Visual Studio, exécutez l’API. Visual Studio lance un navigateur pointé URL racine de l’API. Notez l’URL dans la barre d’adresses et laissez l’API en cours d’exécution en arrière-plan.
 
 > [!NOTE]
-> Comme il n’existe aucun contrôleur défini pour l’URL racine, le navigateur affiche alors une erreur 404 (page introuvable). Ce comportement est normal.
+> Puisqu’il n’existe aucun contrôleur défini pour l’URL racine, le navigateur peut afficher alors une erreur 404 (page introuvable). Ce comportement est normal.
 
-## <a name="use-postman-to-get-a-token-and-test-the-api"></a>Postman permet d’obtenir un jeton et l’API de test
+## <a name="use-postman-to-get-a-token-and-test-the-api"></a>Utiliser Postman pour obtenir un jeton et tester l’API
 
-[Postman](https://getpostman.com/postman) est un outil de test web API. Pour ce didacticiel, Postman simule une application web qui accède à l’API web part de l’utilisateur.
+[Postman](https://getpostman.com/postman) est un outil de test des API web. Pour ce didacticiel, Postman simule une application web qui accède à l’API web part de l’utilisateur.
 
 ### <a name="register-postman-as-a-web-app"></a>Inscrire Postman comme une application web
 
-Étant donné que Postman simule une application web qui peut obtenir des jetons provenant du locataire Azure AD B2C, elle doit être inscrite dans le client comme une application web. Enregistrer à l’aide de Postman [les étapes décrites dans la documentation](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-app) sous le **inscrire une application web** section. Arrêter à la **créer une question secrète du client web application** section. Une clé secrète client n’est pas nécessaire pour ce didacticiel. 
+Étant donné que Postman simule une application web qui obtiennent des jetons à partir du locataire Azure AD B2C, elle doit être inscrite dans le client comme une application web. S’inscrire à l’aide de Postman [les étapes décrites dans la documentation](/azure/active-directory-b2c/active-directory-b2c-app-registration#register-a-web-app) sous le **inscrire une application web** section. Arrêter à la **créer un secret de client d’application web** section. Une clé secrète client n’est pas nécessaire pour ce didacticiel. 
 
 Utilisez les valeurs suivantes :
 
 | Paramètre                       | Value                            | Notes                           |
 |-------------------------------|----------------------------------|---------------------------------|
 | **Name**                      | Postman                          |                                 |
-| **Inclure l’application web ou des API** | Oui                              |                                 |
-| **Autoriser les flux implicites**       | Oui                              |                                 |
+| **Inclure l’application web / API web** | Oui                              |                                 |
+| **Autoriser un flux implicite**       | Oui                              |                                 |
 | **URL de réponse**                 | `https://getpostman.com/postman` |                                 |
-| **URI ID d’application**                | *&lt;Laissez vide&gt;*            | Non requis pour ce didacticiel. |
+| **URI ID d’application**                | *&lt;Laisser vide&gt;*            | Non requis pour ce didacticiel. |
 | **Inclure le client natif**     | Non                               |                                 |
 
-L’application web qui vient d’être inscrit nécessite une autorisation pour accéder à l’API web part de l’utilisateur.  
+L’application web qui vient d’être inscrite a besoin d’autorisation pour accéder à l’API web part de l’utilisateur.  
 
-1. Sélectionnez **Postman** dans la liste des applications, puis sélectionnez **l’accès aux API** à partir du menu de gauche.
+1. Sélectionnez **Postman** dans la liste des applications, puis sélectionnez **accès à l’API** dans le menu de gauche.
 2. Sélectionnez **+ ajouter**.
 3. Dans le **sélectionner une API** liste déroulante, sélectionnez le nom de l’API web.
-4. Dans le **étendues** liste déroulante, assurez-vous que toutes les étendues sont sélectionnées.
+4. Dans le **sélectionner les étendues** liste déroulante, assurez-vous que toutes les étendues sont sélectionnées.
 5. Sélectionnez **Ok**.
 
-Notez l’ID d’Application de l’application Postman, est nécessaire pour obtenir un jeton de support.
+Notez l’ID d’Application de l’application Postman, est nécessaire pour obtenir un jeton du porteur.
 
-### <a name="create-a-postman-request"></a>Créer une demande de Postman
+### <a name="create-a-postman-request"></a>Créer une demande Postman
 
-Lancez Postman. Par défaut, Postman affiche le **créer un nouveau** boîte de dialogue après le lancement. Si la boîte de dialogue n’est pas affichée, sélectionnez le **+ nouveau** bouton dans le coin supérieur gauche.
+Lancez Postman. Par défaut, Postman affiche la **créer un nouveau** boîte de dialogue lors du lancement. Si la boîte de dialogue n’apparaît pas, sélectionnez le **+ nouveau** bouton dans le coin supérieur gauche.
 
 À partir de la **créer un nouveau** boîte de dialogue :
 
@@ -140,10 +140,10 @@ Lancez Postman. Par défaut, Postman affiche le **créer un nouveau** boîte de 
 
     ![Bouton de demande](./azure-ad-b2c-webapi/postman-create-new.png)
 
-2. Entrez *obtenir les valeurs* dans les **nom de la demande** boîte.
-3. Sélectionnez **+ créer une Collection de** pour créer une nouvelle collection pour stocker la demande. Nom de la collection *les didacticiels ASP.NET Core* , puis sélectionnez la coche.
+2. Entrez *obtenir les valeurs* dans le **nom de la demande** boîte.
+3. Sélectionnez **+ créer une Collection** pour créer une nouvelle collection pour stocker la demande. Nommer la collection *didacticiels ASP.NET Core* , puis sélectionnez la coche.
 
-    ![Créer un nouveau regroupement](./azure-ad-b2c-webapi/postman-create-collection.png)
+    ![Créer une nouvelle collection](./azure-ad-b2c-webapi/postman-create-collection.png)
 
 4. Sélectionnez le **enregistrer dans les didacticiels ASP.NET Core** bouton.
 
@@ -151,19 +151,22 @@ Lancez Postman. Par défaut, Postman affiche le **créer un nouveau** boîte de 
 
 Pour vérifier que l’API web nécessite une authentification, tout d’abord effectuer une demande sans authentification.
 
-1. Dans le **Entrez l’URL de demande** , entrez l’URL pour `ValuesController`. L’URL est identique à celle affichée dans le navigateur avec **api/valeurs** ajouté. Un exemple serait `https://localhost:44375/api/values`.
+1. Dans le **Entrez l’URL de la demande** , entrez l’URL pour `ValuesController`. L’URL est identique à celui affiché dans le navigateur avec **api/values** ajouté. Un exemple serait `https://localhost:44375/api/values`.
 2. Sélectionnez le **envoyer** bouton.
 3. Notez l’état de la réponse est *401 non autorisé*.
 
-    ![réponse non autorisé 401](./azure-ad-b2c-webapi/postman-401-status.png)
+    ![réponse 401 non autorisé](./azure-ad-b2c-webapi/postman-401-status.png)
 
-### <a name="obtain-a-bearer-token"></a>Obtenir un jeton de support
+> [!IMPORTANT]
+> Si vous obtenez une erreur « Pas pu obtenir de réponse », vous devrez peut-être désactiver la vérification du certificat SSL dans le [les paramètres de Postman](https://learning.getpostman.com/docs/postman/launching_postman/settings). 
+ 
+### <a name="obtain-a-bearer-token"></a>Obtenir un jeton du porteur
 
-Pour rendre une demande authentifiée à l’API web, un jeton de support est nécessaire. Postman permet de facilement se connecter au locataire Azure AD B2C et obtenir un jeton.
+Pour faire une demande authentifiée à l’API web, un jeton du porteur est requis. Postman permet de facilement se connecter au locataire Azure AD B2C et obtenir un jeton.
 
-1. Sur le **autorisation** sous l’onglet du **TYPE** liste déroulante, sélectionnez **OAuth 2.0**. Dans le **ajouter des données d’autorisation** liste déroulante, sélectionnez **en-têtes de la requête**. Sélectionnez **accéder nouveau jeton**.
+1. Sur le **autorisation** sous l’onglet le **TYPE** liste déroulante, sélectionnez **OAuth 2.0**. Dans le **ajouter des données d’autorisation** liste déroulante, sélectionnez **en-têtes de requête**. Sélectionnez **accéder nouveau jeton**.
 
-    ![Onglet autorisation avec des paramètres](./azure-ad-b2c-webapi/postman-auth-tab.png)
+    ![Onglet d’autorisation avec les paramètres](./azure-ad-b2c-webapi/postman-auth-tab.png)
 
 2. Terminer la **obtenir nouveau jeton d’accès** boîte de dialogue comme suit :
 
@@ -171,12 +174,12 @@ Pour rendre une demande authentifiée à l’API web, un jeton de support est n�
    |                Paramètre                 |                                             Value                                             |                                                                                                                                    Notes                                                                                                                                     |
    |----------------------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
    |      <strong>Nom du jeton</strong>       |                                  <em>&lt;nom du jeton&gt;</em>                                  |                                                                                                                   Entrez un nom descriptif pour le jeton.                                                                                                                    |
-   |      <strong>Type d’accès</strong>       |                                           Implicite                                            |                                                                                                                                                                                                                                                                              |
+   |      <strong>Type d’octroi</strong>       |                                           Implicite                                            |                                                                                                                                                                                                                                                                              |
    |     <strong>URL de rappel</strong>      |                               `https://getpostman.com/postman`                                |                                                                                                                                                                                                                                                                              |
-   |       <strong>URL d’authentification</strong>        | `https://login.microsoftonline.com/tfp/<tenant domain name>/B2C_1_SiUpIn/oauth2/v2.0/authorize` |                                                                                                  Remplacez <em>&lt;nom_domaine_client&gt;</em> avec le nom de domaine du locataire.                                                                                                  |
+   |       <strong>URL d’authentification</strong>        | `https://login.microsoftonline.com/tfp/<tenant domain name>/B2C_1_SiUpIn/oauth2/v2.0/authorize` |                                                                                                  Remplacez <em>&lt;nom de domaine client&gt;</em> avec le nom de domaine du locataire.                                                                                                  |
    |       <strong>ID de client</strong>       |                <em>&lt;Entrez l’application Postman <b>ID d’Application</b>&gt;</em>                 |                                                                                                                                                                                                                                                                              |
-   |     <strong>Question secrète du client</strong>     |                                 <em>&lt;Laissez vide&gt;</em>                                  |                                                                                                                                                                                                                                                                              |
-   |         <strong>Portée</strong>         |         `https://<tenant domain name>/<api>/user_impersonation openid offline_access`         | Remplacez <em>&lt;nom_domaine_client&gt;</em> avec le nom de domaine du locataire. Remplacez <em>&lt;api&gt;</em> avec le nom du projet Web API. Vous pouvez également utiliser les ID d’Application. Le modèle de l’URL est : <em>https://{tenant}.onmicrosoft.com/{app_name_or_id}/{scope nom}</em>. |
+   |         <strong>Portée</strong>         |         `https://<tenant domain name>/<api>/user_impersonation openid offline_access`         | Remplacez <em>&lt;nom de domaine client&gt;</em> avec le nom de domaine du locataire. Remplacez <em>&lt;api&gt;</em> avec l’URI ID d’application vous avez donné à l’API web quand vous avez inscrit (dans ce cas, `api`). Le modèle de l’URL est : <em>https://{tenant}.onmicrosoft.com/{api-id-uri}/{scope nom}</em>. |
+   |         <strong>État</strong>         |                                 <em>&lt;Laisser vide&gt;</em>                                  |                                                                                                                                                                                                                                                                              |
    | <strong>Authentification du client</strong> |                                Envoyer des informations d’identification du client dans le corps                                |                                                                                                                                                                                                                                                                              |
 
 
@@ -184,15 +187,15 @@ Pour rendre une demande authentifiée à l’API web, un jeton de support est n�
 
 4. Postman ouvre une nouvelle fenêtre contenant la boîte de dialogue de connexion du locataire Azure AD B2C. Connectez-vous avec un compte existant (si un a été créé les stratégies de test) ou sélectionnez **s’inscrire maintenant** pour créer un nouveau compte. Le **votre mot de passe oublié ?** lien est utilisé pour réinitialiser un mot de passe oublié.
 
-5. Une fois connecté avec succès, la fenêtre se ferme et le **gérer les jetons d’accès** boîte de dialogue s’affiche. Faites défiler vers le bas et sélectionnez le **utilisez jeton** bouton.
+5. Après vous être connecté avec succès, la fenêtre se ferme et le **gérer les jetons d’accès** boîte de dialogue apparaît. Faites défiler jusqu'à la bas, puis sélectionnez le **utilisez jeton** bouton.
 
     ![Où trouver le bouton « Token usage »](./azure-ad-b2c-webapi/postman-access-token.png)
 
-### <a name="test-the-web-api-with-authentication"></a>L’API web avec l’authentification de test
+### <a name="test-the-web-api-with-authentication"></a>Tester l’API web avec l’authentification
 
-Sélectionnez le **envoyer** bouton Envoyer la demande à nouveau. Cette fois, l’état de réponse est *200 OK* et la charge utile JSON est visible sur la réponse **corps** onglet.
+Sélectionnez le **envoyer** bouton pour envoyer la demande à nouveau. Cette fois, l’état de réponse est *200 OK* et la charge utile JSON est visible sur la réponse **corps** onglet.
 
-![État de réussite et de charge utile](./azure-ad-b2c-webapi/postman-success.png)
+![État de réussite et la charge utile](./azure-ad-b2c-webapi/postman-success.png)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
@@ -200,17 +203,17 @@ Dans ce didacticiel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un locataire Azure Active Directory B2C.
-> * Enregistrer une API Web dans Azure AD B2C.
+> * Inscrire une API Web dans Azure AD B2C.
 > * Utiliser Visual Studio pour créer une API Web configuré pour utiliser le locataire Azure AD B2C pour l’authentification.
-> * Configurer des stratégies de contrôle du comportement du client Azure Active Directory B2C.
-> * Postman utilisé pour simuler une application web qui présente une boîte de dialogue de connexion, récupère un jeton et l’utilise pour effectuer une demande dans l’API web.
+> * Configurer des stratégies de contrôle du comportement du locataire Azure AD B2C.
+> * Utiliser Postman pour simuler une application web qui présente une boîte de dialogue de connexion, récupère un jeton et l’utilise pour effectuer une demande sur l’API web.
 
-Continuer à développer votre API par l’apprentissage à :
+Continuer à développer votre API en apprenant à :
 
-* [Sécuriser une ASP.NET Core application web à l’aide d’Azure AD B2C](xref:security/authentication/azure-ad-b2c).
-* [Appeler une API web de .NET à partir d’une application web de .NET à l’aide d’Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet).
+* [Sécuriser un ASP.NET Core application web à l’aide d’Azure AD B2C](xref:security/authentication/azure-ad-b2c).
+* [Appeler une API web .NET à partir d’une application web de .NET à l’aide d’Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet).
 * [Personnaliser l’interface utilisateur de Azure AD B2C](/azure/active-directory-b2c/active-directory-b2c-reference-ui-customization).
 * [Configurer les exigences de complexité de mot de passe](/azure/active-directory-b2c/active-directory-b2c-reference-password-complexity).
 * [Activer l’authentification multifacteur](/azure/active-directory-b2c/active-directory-b2c-reference-mfa).
 * Configurer les fournisseurs d’identité supplémentaires, telles que [Microsoft](/azure/active-directory-b2c/active-directory-b2c-setup-msa-app), [Facebook](/azure/active-directory-b2c/active-directory-b2c-setup-fb-app), [Google](/azure/active-directory-b2c/active-directory-b2c-setup-goog-app), [Amazon](/azure/active-directory-b2c/active-directory-b2c-setup-amzn-app), [Twitter ](/azure/active-directory-b2c/active-directory-b2c-setup-twitter-app)et d’autres.
-* [Utiliser l’API Azure AD Graph](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) pour récupérer des informations supplémentaires, telles que l’appartenance au groupe, du locataire Azure AD B2C.
+* [Utiliser l’API Azure AD Graph](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) pour récupérer des informations supplémentaires, telles que l’appartenance au groupe, à partir du locataire Azure AD B2C.
