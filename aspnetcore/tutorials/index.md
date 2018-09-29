@@ -5,12 +5,12 @@ description: Liste des guides pas à pas pour apprendre à développer des appli
 ms.author: riande
 ms.date: 10/14/2017
 uid: tutorials/index
-ms.openlocfilehash: d103c351595f0d61e5f0ee14492f9f46b8c17e86
-ms.sourcegitcommit: 08f1a9baa97060da5168840b332c9c0805b5f901
+ms.openlocfilehash: 3d2fbb453c8f6510806d8dc263ea344023aa4cda
+ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37144948"
+ms.lasthandoff: 09/29/2018
+ms.locfileid: "47454789"
 ---
 # <a name="aspnet-core-tutorials"></a>Didacticiels ASP.NET Core
 
@@ -82,7 +82,7 @@ Les [pages Razor](xref:razor-pages/index) constituent l’approche recommandée 
 ## <a name="host-and-deploy"></a>Héberger et déployer
 
 * [Déployer une application web ASP.NET Core sur Azure à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)
-* [Déployer une application web ASP.NET Core sur Azure avec une ligne de commande](xref:tutorials/publish-to-azure-webapp-using-cli)
+* [Déployer une application web ASP.NET Core sur Azure avec une ligne de commande](/azure/app-service/app-service-web-get-started-dotnet)
 * [Publier vers une application web Azure avec déploiement continu](xref:host-and-deploy/azure-apps/azure-continuous-deployment)
 * [Déployer un conteneur ASP.NET sur un hôte Docker distant](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
 * [ASP.NET Core et Azure Service Fabric](/azure/service-fabric/service-fabric-add-a-web-frontend)

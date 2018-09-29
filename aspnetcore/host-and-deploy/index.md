@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/07/2017
 uid: host-and-deploy/index
-ms.openlocfilehash: eb3a4846775fa53132d3692f56bb1b628257ca8f
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 024275be3fc5db3f2ed2f7cea1582a1a5f12bda7
+ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340210"
+ms.lasthandoff: 09/29/2018
+ms.locfileid: "47454752"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Héberger et déployer ASP.NET Core
 
@@ -70,7 +70,7 @@ Les applications peuvent être déployées directement à partir de Visual Studi
 
 ## <a name="publishing-to-azure"></a>Publication sur Azure
 
-Consultez la page [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour savoir comment publier une application sur Azure à l’aide de Visual Studio. Il est également possible de la publier sur Azure à partir de la [ligne de commande](xref:tutorials/publish-to-azure-webapp-using-cli).
+Consultez la page [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour savoir comment publier une application sur Azure à l’aide de Visual Studio. Il est également possible de la publier sur Azure à partir de la [ligne de commande](/azure/app-service/app-service-web-get-started-dotnet).
 
 ## <a name="host-in-a-web-farm"></a>Héberger dans une batterie de serveurs web
 
