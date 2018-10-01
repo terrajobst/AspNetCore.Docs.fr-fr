@@ -1,7 +1,7 @@
 ---
 title: SignalR HubContext
 author: tdykstra
-description: Découvrez comment utiliser le service ASP.NET Core SignalR HubContext pour envoyer des notifications aux clients à partir en dehors d’un concentrateur.
+description: Découvrez comment utiliser le service ASP.NET Core SignalR HubContext pour envoyer des notifications aux clients à partir en dehors d’un hub.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
@@ -14,20 +14,20 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 09/10/2018
 ms.locfileid: "44339976"
 ---
-# <a name="send-messages-from-outside-a-hub"></a>Envoyer des messages depuis en dehors d’un concentrateur
+# <a name="send-messages-from-outside-a-hub"></a>Envoyer des messages depuis en dehors d’un hub
 
 Par [Mikael Mengistu](https://twitter.com/MikaelM_12)
 
-Le concentrateur SignalR est l’abstraction core pour envoyer des messages aux clients connectés au serveur SignalR. Il est également possible d’envoyer des messages à partir d’autres emplacements dans votre application en utilisant la `IHubContext` service. Cet article explique comment accéder à un SignalR `IHubContext` pour envoyer des notifications aux clients à partir en dehors d’un concentrateur.
+Le hub SignalR est l’abstraction pour envoyer des messages aux clients connectés au serveur SignalR. Il est également possible d’envoyer des messages à partir d’autres emplacements dans votre application en utilisant un service `IHubContext`. Cet article explique comment accéder à un SignalR `IHubContext` pour envoyer des notifications aux clients en dehors d’un hub.
 
 [Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(comment télécharger)](xref:tutorials/index#how-to-download-a-sample)
 
 ## <a name="get-an-instance-of-ihubcontext"></a>Obtenir une instance de `IHubContext`
 
-ASP.NET Core SignalR, vous pouvez accéder à une instance de `IHubContext` via l’injection de dépendance. Vous pouvez injecter une instance de `IHubContext` dans un contrôleur, intergiciel (middleware) ou un autre service de l’injection de dépendances. Utilisez l’instance pour envoyer des messages aux clients.
+ASP.NET Core SignalR, vous pouvez accéder à une instance de `IHubContext` via l’injection de dépendance. Vous pouvez injecter une instance de `IHubContext` dans un contrôleur, un intergiciel (middleware) ou un autre service de l’injection de dépendances. Utilisez l’instance pour envoyer des messages aux clients.
 
 > [!NOTE]
-> Cela diffère d’ASP.NET 4.x SignalR qui permet de fournir un accès aux GlobalHost le `IHubContext`. ASP.NET Core offre une infrastructure d’injection de dépendance qui n’est plus nécessaire pour ce singleton global.
+> Cela diffère d’ASP.NET 4.x SignalR qui utilisait GlobalHost pour accéder au `IHubContext`. ASP.NET Core offre une infrastructure d’injection de dépendance qui supprime le besoin de ce singleton global.
 
 ### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>Injecter une instance de `IHubContext` dans un contrôleur
 
@@ -41,7 +41,7 @@ Maintenant, avec accès à une instance de `IHubContext`, vous pouvez appeler de
 
 ### <a name="get-an-instance-of-ihubcontext-in-middleware"></a>Obtenir une instance de `IHubContext` dans l’intergiciel (middleware)
 
-Accès le `IHubContext` dans le pipeline d’intergiciel (middleware) comme suit :
+Accéder au `IHubContext` dans le pipeline d’intergiciel (middleware) comme suit :
 
 ```csharp
 app.Use(next => async (context) =>
@@ -53,7 +53,7 @@ app.Use(next => async (context) =>
 ```
 
 > [!NOTE]
-> Lorsque les méthodes de concentrateur sont appelées à partir d’en dehors de la `Hub` classe, il n’existe aucun appelant associé à l’appel. Par conséquent, il n’existe aucun accès à la `ConnectionId`, `Caller`, et `Others` propriétés.
+> Lorsque les méthodes du hub sont appelées à partir d’en dehors de la classe `Hub`, il n’existe aucun appelant associé à l’appel. Par conséquent, il n’existe aucun accès aux propriétés `ConnectionId`, `Caller`, et `Others`.
 
 ## <a name="related-resources"></a>Ressources connexes
 
