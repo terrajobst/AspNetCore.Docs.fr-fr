@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 8581628b3f0cf878b8cc1d0684046d22a8374af9
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: 6f93d6dc664f68425ef0fa0d02f9011e4875bc33
+ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523218"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47402131"
 ---
 # <a name="tutorial-get-started-with-signalr-on-aspnet-core"></a>Tutoriel : Bien démarrer avec SignalR sur ASP.NET Core
 
@@ -123,7 +123,7 @@ La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft
 * Exécutez la commande suivante pour obtenir la bibliothèque cliente SignalR à l’aide de LibMan. Vous devrez peut-être attendre quelques secondes avant que la sortie ne s’affiche.
 
   ```console
-  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
   ```
 
   Les paramètres spécifient les options suivantes :
@@ -136,7 +136,7 @@ La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft
   ```console
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"
   ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
@@ -152,7 +152,7 @@ La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft
 * Exécutez la commande suivante pour obtenir la bibliothèque cliente SignalR à l’aide de LibMan.
 
   ```console
-  libman install @aspnet/signalr -p unpkg -d wwwroot\lib\signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
+  libman install @aspnet/signalr -p unpkg -d wwwroot/lib/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
   ```
 
   Les paramètres spécifient les options suivantes :
@@ -165,7 +165,7 @@ La bibliothèque de serveur SignalR est comprise dans le [métapackage Microsoft
   ```console
   wwwroot/lib/signalr/dist/browser/signalr.js written to disk
   wwwroot/lib/signalr/dist/browser/signalr.min.js written to disk
-  Installed library "@aspnet/signalr@1.0.3" to "wwwroot\lib\signalr"
+  Installed library "@aspnet/signalr@1.0.3" to "wwwroot/lib/signalr"
   ```
 
 ---

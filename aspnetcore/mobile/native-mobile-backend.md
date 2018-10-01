@@ -5,12 +5,12 @@ description: Découvrez comment créer des services backend en utilisant ASP.NET
 ms.author: riande
 ms.date: 10/14/2016
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 27051cd3c4e2c3aa1ebf6d5510db4645651120e8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 3ebd30ad1ffbd66b256e7f3954a07d682f76a754
+ms.sourcegitcommit: 517bb1366da2a28b0014e384fa379755c21b47d8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276124"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47230176"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>Créer des services backend pour les applications mobiles natives avec ASP.NET Core
 
@@ -151,3 +151,7 @@ Notez que quand vous testez les fonctionnalités de suppression, rien n’est ob
 Quand vous développez des services backend pour votre application, vous souhaitez obtenir un ensemble cohérent de conventions ou de stratégies pour gérer les problèmes transversaux. Par exemple, dans le service montré ci-dessus, les requêtes pour des enregistrements spécifiques qui n’ont pas été trouvés ont reçu une réponse `NotFound` et non pas une réponse `BadRequest`. De même, les commandes envoyées à ce service qui ont passé des types liés au modèle ont toujours vérifié `ModelState.IsValid` et retourné un `BadRequest` pour les types de modèle non valide.
 
 Une fois que vous avez identifié une stratégie commune pour vos API, vous pouvez en général l’encapsuler dans un [filtre](../mvc/controllers/filters.md). Découvrez plus d’informations sur [la façon d’encapsuler des stratégies d’API courantes dans les applications ASP.NET Core MVC](https://msdn.microsoft.com/magazine/mt767699.aspx).
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Authentification et autorisation](/xamarin/xamarin-forms/enterprise-application-patterns/authentication-and-authorization)
