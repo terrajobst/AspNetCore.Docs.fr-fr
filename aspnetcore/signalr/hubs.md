@@ -22,9 +22,9 @@ Par [Rachel Appel](https://twitter.com/rachelappel) et [Kevin Griffin](https://t
 
 ## <a name="what-is-a-signalr-hub"></a>Qu’est-ce qu’un hub SignalR ?
 
-L’API Hubs de SignalR vous permet d’appeler des méthodes sur des clients connectés à partir du serveur. Dans le code serveur, vous définissez des méthodes qui sont appelées par le client. Dans le code client, vous définissez des méthodes qui sont appelées à partir du serveur. SignalR prend en charge tout ce qui se passe à l’arrière-plan et qui rend possibles les communications client-serveur et serveur-client en temps réel.
+L’API Hubs de SignalR vous permet d’appeler des méthodes sur des clients connectés à partir du serveur. Dans le code serveur, vous définissez des méthodes qui sont appelées par le client. Dans le code client, vous définissez des méthodes qui sont appelées à partir du serveur. SignalR prend en charge tout ce qui se passe en arrière-plan et qui rend possible les communications client-serveur et serveur-client en temps réel.
 
-## <a name="configure-signalr-hubs"></a>Configurer les concentrateurs SignalR
+## <a name="configure-signalr-hubs"></a>Configurer les hubs SignalR
 
 Le middleware SignalR requiert certains services, qui sont configurés en appelant `services.AddSignalR`.
 
@@ -40,20 +40,20 @@ Créez un hub en déclarant une classe qui hérite de `Hub`et ajoutez-lui des m�
 
 [!code-csharp[Create and use hubs](hubs/sample/hubs/chathub.cs?range=8-37)]
 
-Vous pouvez spécifier un type de retour et paramètres, y compris les types complexes et les tableaux, comme vous le feriez dans n’importe quelle méthode c#. SignalR gère la sérialisation et désérialisation des objets complexes et des tableaux dans vos paramètres et valeurs de retournés.
+Vous pouvez spécifier un type de retour et des paramètres, y compris les types complexes et les tableaux, comme vous le feriez dans n’importe quelle méthode c#. SignalR gère la sérialisation et désérialisation des objets complexes et des tableaux dans vos paramètres et valeurs de retournés.
 
 ## <a name="the-context-object"></a>L’objet de contexte
 
-Le `Hub` classe a un `Context` propriété qui contient les propriétés suivantes avec des informations sur la connexion :
+La classe `Hub` a une propriété `Context` qui contient les propriétés suivantes avec des informations sur la connexion :
 
 | Propriété | Description |
 | ------ | ----------- |
 | `ConnectionId` | Obtient l’ID unique pour la connexion affectée par SignalR. Il existe un identifiant de connexion pour chaque connexion.|
-| `UserIdentifier` | Obtient le [identificateur d’utilisateur](xref:signalr/groups). Par défaut, SignalR utilise le `ClaimTypes.NameIdentifier` à partir de la `ClaimsPrincipal` associé à la connexion comme identificateur d’utilisateur. |
+| `UserIdentifier` | Obtient l'[identificateur d’utilisateur](xref:signalr/groups). Par défaut, SignalR utilise le `ClaimTypes.NameIdentifier` à partir du `ClaimsPrincipal` associé à la connexion comme identificateur d’utilisateur. |
 | `User` | Obtient le `ClaimsPrincipal` associé à l’utilisateur actuel. |
-| `Items` | Obtient une collection clé/valeur qui peut être utilisée pour partager des données dans le cadre de cette connexion. Données peuvent être stockées dans cette collection et il persistera pour la connexion entre les appels de méthode de concentrateur différents. |
-| `Features` | Obtient la collection de fonctionnalités disponibles sur la connexion. Pour l’instant, cette collection n’est pas nécessaire dans la plupart des scénarios, donc il n’est pas encore documentée en détail. |
-| `ConnectionAborted` | Obtient un `CancellationToken` qui avertit de la connexion est abandonnée. |
+| `Items` | Obtient une collection clé/valeur qui peut être utilisée pour partager des données dans le cadre de cette connexion. Les données peuvent être stockées dans cette collection et il persistera pour la connexion entre les appels de méthode de hub différents. |
+| `Features` | Obtient la collection de fonctionnalités disponibles sur la connexion. Pour l’instant, cette collection n’est pas nécessaire dans la plupart des scénarios, donc elle n’est pas encore documentée en détail. |
+| `ConnectionAborted` | Obtient un `CancellationToken` qui avertit que connexion est abandonnée. |
 
 `Hub.Context` contient également les méthodes suivantes :
 
@@ -64,7 +64,7 @@ Le `Hub` classe a un `Context` propriété qui contient les propriétés suivant
 
 ## <a name="the-clients-object"></a>L’objet de Clients
 
-Le `Hub` classe a un `Clients` propriété qui contient les propriétés suivantes pour la communication entre client et serveur :
+La classe `Hub` a une propriété `Clients` qui contient les propriétés suivantes pour la communication entre client et serveur :
 
 | Propriété | Description |
 | ------ | ----------- |
@@ -97,19 +97,19 @@ Pour effectuer des appels à des clients spécifiques, utilisez les propriétés
 
 ## <a name="strongly-typed-hubs"></a>Hubs fortement typés
 
-Un inconvénient de l’utilisation de `SendAsync` est qu’elle s’appuie sur une chaîne magique pour spécifier la méthode de client à appeler. Cela laisse ouvrir du code pour les erreurs d’exécution si le nom de la méthode est mal orthographié ou manquant à partir du client.
+Un inconvénient de l’utilisation de `SendAsync` est qu’elle s’appuie sur une chaîne en dur pour spécifier la méthode de client à appeler. Cela laisse le code ouvert à des erreurs d’exécution si le nom de la méthode est mal orthographié ou manquant à partir du client.
 
-Une alternative à l’utilisation de `SendAsync` est pour typer fortement les `Hub` avec <xref:Microsoft.AspNetCore.SignalR.Hub`1>. Dans l’exemple suivant, le `ChatHub` méthodes client ont été extraite et placées dans une interface appelée `IChatClient`.  
+Une alternative à l’utilisation de `SendAsync` est de typer fortement les `Hubs` avec <xref:Microsoft.AspNetCore.SignalR.Hub`1>. Dans l’exemple suivant, la méthode `ChatHub` client a été extraite et placée dans une interface appelée `IChatClient`.  
 
 [!code-csharp[Interface for IChatClient](hubs/sample/hubs/ichatclient.cs?name=snippet_IChatClient)]
 
-Cette interface peut être utilisée pour refactoriser l’exemple précédent `ChatHub` exemple.
+Cette interface peut être utilisée pour refactoriser l’exemple précédent `ChatHub` .
 
 [!code-csharp[Strongly typed ChatHub](hubs/sample/hubs/StronglyTypedChatHub.cs?range=8-18,36)]
 
-À l’aide de `Hub<IChatClient>` Active la vérification de la compilation des méthodes client. Cela évite les problèmes provoqués par l’utilisation de chaînes magiques, étant donné que `Hub<T>` permettent uniquement d’accéder aux méthodes définies dans l’interface.
+En utilisant `Hub<IChatClient>` cela active la vérification de la compilation des méthodes client. Cela évite les problèmes provoqués par l’utilisation de chaînes en dur, étant donné que `Hub<T>` permet uniquement d’accéder aux méthodes définies dans l’interface.
 
-À l’aide de fortement typé `Hub<T>` désactive la possibilité d’utiliser `SendAsync`.
+Utiliser le `Hub<T>` fortement typé désactive la possibilité d’utiliser `SendAsync`.
 
 ## <a name="handle-events-for-a-connection"></a>Gérer les événements pour une connexion
 
