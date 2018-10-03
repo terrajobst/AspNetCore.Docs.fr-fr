@@ -1,7 +1,7 @@
 ---
 title: Introduction à ASP.NET Core SignalR
 author: tdykstra
-description: Découvrez comment la librairie ASP.NET Core SignalR simplifie l’ajout de fonctionnalités en temps réel aux applications.
+description: Découvrez comment la bibliothèque ASP.NET Core SignalR simplifie l’ajout de fonctionnalités en temps réel aux applications.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
@@ -18,7 +18,7 @@ ms.locfileid: "39342547"
 
 ## <a name="what-is-signalr"></a>Nouveautés SignalR
 
-ASP.NET Core SignalR est une librairie open source qui simplifie l’ajout de fonctionnalités web en temps réel aux applications. Les fonctionnalités web en temps réel permet au code côté serveur de transmettre le contenu aux clients instantanément.
+ASP.NET Core SignalR est une bibliothèque open source qui simplifie l’ajout de fonctionnalités web en temps réel aux applications. Les fonctionnalités web en temps réel permettent au code côté serveur de transmettre le contenu aux clients instantanément.	
 
 De bons candidats pour SignalR sont :
 
@@ -52,7 +52,7 @@ SignalR choisit automatiquement la meilleure méthode de transport qui se trouve
 
 SignalR utilise des *hubs* pour communiquer entre les clients et serveurs.
 
-Un hub est un pipeline de haut niveau qui permet à un client et le serveur d'appeler des méthodes entre eux. SignalR gère la distribution au-delà des limites de machine automatiquement, autorisant les clients à appeler des méthodes sur le serveur et vice versa. Vous pouvez passer des paramètres fortement typés aux méthodes, ce qui permet la liaison de modèle. SignalR fournit deux protocoles hub intégrés : un protocole de texte basé sur JSON et un protocole binaire basé sur [MessagePack](https://msgpack.org/).  MessagePack crée généralement des messages plus petits par rapport au format JSON. Les navigateurs plus anciens doivent prendre en charge [niveau XHR 2](https://caniuse.com/#feat=xhr2) pour prendre en charge le protocole MessagePack.
+Un hub est un pipeline de haut niveau qui permet à un client et au serveur d'appeler des méthodes entre eux. SignalR gère la distribution au-delà des limites de machine automatiquement, autorisant les clients à appeler des méthodes sur le serveur et vice versa. Vous pouvez passer des paramètres fortement typés aux méthodes, ce qui permet la liaison de modèle. SignalR fournit deux protocoles hub intégrés : un protocole de texte basé sur JSON et un protocole binaire basé sur [MessagePack](https://msgpack.org/).  MessagePack crée généralement des messages plus petits par rapport au format JSON. Les navigateurs plus anciens doivent prendre en charge [niveau XHR 2](https://caniuse.com/#feat=xhr2) pour prendre en charge le protocole MessagePack.
 
 Les hubs appellent le code côté client en envoyant des messages qui contiennent le nom et les paramètres de la méthode côté client. Les objets envoyés comme paramètres de méthode sont désérialisés en utilisant le protocole configuré. Le client essaie de faire correspondre le nom à une méthode dans le code côté client. Lorsque le client trouve une correspondance, il appelle la méthode et lui passe les données de paramètre désérialisées.
 
