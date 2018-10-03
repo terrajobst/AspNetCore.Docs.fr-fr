@@ -5,12 +5,12 @@ description: Utiliser Identity à une application ASP.NET Core Découvrez commen
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: ca83d07f7d93bd0cc61cd17cc373096b8e6aa2e1
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: d427932bb175c09105534379be4d71760f4e04e5
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010973"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47860951"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
@@ -45,7 +45,7 @@ Créer un projet d’Application Web ASP.NET Core avec des comptes d’utilisate
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez **Fichier** > **Nouveau** > **Projet**. 
+* Sélectionnez **Fichier** > **Nouveau** > **Projet**.
 * Sélectionnez **Nouvelle application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms en tant que le téléchargement du projet. Cliquez sur **OK**.
 * Sélectionnez une ASP.NET Core **Web Application** pour ASP.NET Core 2.1, puis sélectionnez **modifier l’authentification**.
 * Sélectionnez **comptes d’utilisateur individuels** et cliquez sur **OK**.
@@ -119,15 +119,12 @@ Suivez le [structurer d’identité dans un projet Razor avec l’autorisation](
 
 Ajoutez les fichiers de Registre, de connexion et de déconnexion.
 
-
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Si vous avez créé le projet avec le nom **application Web 1**, exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour le `ApplicationDbContext`:
 
-
 ```cli
 dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
-
 ```
 
 PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous utilisez PowerShell, les points-virgules dans la liste des fichiers de séquence d’échappement ou placez la liste des fichiers dans des guillemets doubles, comme le montre l’exemple précédent.
@@ -163,7 +160,7 @@ PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous 
 Le formulaire de connexion s’affiche lorsque :
 
 * Le **connectez-vous** lien est sélectionné.
-* Lorsqu’un utilisateur accède à une page où ils ne sont pas authentifiés **ou** autorisés, ils sont redirigés vers la page de connexion. 
+* Lorsqu’un utilisateur accède à une page où ils ne sont pas authentifiés **ou** autorisés, ils sont redirigés vers la page de connexion.
 
 Lors de l’envoi du formulaire sur la page de connexion, le `OnPostAsync` action est appelée. `PasswordSignInAsync` est appelée sur le `_signInManager` objet (fourni par l’injection de dépendances).
 
@@ -254,7 +251,6 @@ Consultez [Configuration](#pw) pour obtenir un exemple qui définit les exigence
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>
-* [Configurer le type de données de clés primaires identité](xref:security/authentication/identity-primary-key-configuration).
 * <xref:migration/identity>
 * <xref:security/authentication/accconfirm>
 * <xref:security/authentication/2fa>

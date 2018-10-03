@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/05/2018
 uid: security/cors
-ms.openlocfilehash: f654260411f1bd5725a0e3d14951c7e9bbc893e8
-ms.sourcegitcommit: 08bf41d4b3e696ab512b044970e8304816f8cc56
+ms.openlocfilehash: cfbf24edb1dae76f676d51738b0d57266688d53e
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44039976"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045586"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Autoriser les demandes de Cross-Origin (CORS) dans ASP.NET Core
 
@@ -270,7 +270,7 @@ Pour certaines requêtes CORS, le navigateur envoie une demande supplémentaire 
 
 * La méthode de demande est GET, HEAD ou POST.
 * L’application ne définit pas les en-têtes de demande autre que `Accept`, `Accept-Language`, `Content-Language`, `Content-Type`, ou `Last-Event-ID`.
-* Le `Content-Type` en-tête, si définis, dispose d’un de l’une des valeurs suivantes :
+* Le `Content-Type` en-tête, si définis, dispose d’une des valeurs suivantes :
   * `application/x-www-form-urlencoded`
   * `multipart/form-data`
   * `text/plain`
