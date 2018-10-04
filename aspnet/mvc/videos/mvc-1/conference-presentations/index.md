@@ -1,29 +1,25 @@
 ---
 uid: mvc/videos/mvc-1/conference-presentations/index
-title: Entretiens | Documents Microsoft
+title: Discussions | Microsoft Docs
 author: rick-anderson
-description: ASP.NET MVC 1 entretiens
-ms.author: aspnetcontent
-manager: wpickett
+description: Communique avec ASP.NET MVC 1
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: 276507d5-e9bd-46ba-8e98-32a8957504fa
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/conference-presentations
 msc.type: chapter
-ms.openlocfilehash: ed730075f5c4232ff48406a2cc047d85f16c2244
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: e95a05cb4403fd373a2e0e2e4591bec3e4da2df7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26503368"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254150"
 ---
-<a name="talks"></a><span data-ttu-id="b7338-103">Entretiens</span><span class="sxs-lookup"><span data-stu-id="b7338-103">Talks</span></span>
+<a name="talks"></a><span data-ttu-id="d8ea8-103">Discussions</span><span class="sxs-lookup"><span data-stu-id="d8ea8-103">Talks</span></span>
 ====================
-> <span data-ttu-id="b7338-104">ASP.NET MVC 1 entretiens</span><span class="sxs-lookup"><span data-stu-id="b7338-104">ASP.NET MVC 1 Talks</span></span>
+> <span data-ttu-id="d8ea8-104">Communique avec ASP.NET MVC 1</span><span class="sxs-lookup"><span data-stu-id="d8ea8-104">ASP.NET MVC 1 Talks</span></span>
 
 
-- [<span data-ttu-id="b7338-105">Création de NerdDinner.com avec Microsoft ASP.NET Model View Controller (MVC)</span><span class="sxs-lookup"><span data-stu-id="b7338-105">Creating NerdDinner.com with Microsoft ASP.NET Model View Controller (MVC)</span></span>](creating-nerddinnercom-with-microsoft-aspnet-model-view-controller-mvc.md)
-- [<span data-ttu-id="b7338-106">Suivant supérieur modèle Vue contrôleur Framework d’Amérique</span><span class="sxs-lookup"><span data-stu-id="b7338-106">America's Next Top Model View Controller Framework</span></span>](americas-next-top-model-view-controller-framework.md)
-- [<span data-ttu-id="b7338-107">Ninja sur incendie noir roulant conseils</span><span class="sxs-lookup"><span data-stu-id="b7338-107">Ninja on Fire Black Belt Tips</span></span>](ninja-on-fire-black-belt-tips.md)
+- [<span data-ttu-id="d8ea8-105">Création de NerdDinner.com avec Microsoft ASP.NET MVC (Modèle Vue Contrôleur)</span><span class="sxs-lookup"><span data-stu-id="d8ea8-105">Creating NerdDinner.com with Microsoft ASP.NET Model View Controller (MVC)</span></span>](creating-nerddinnercom-with-microsoft-aspnet-model-view-controller-mvc.md)
+- [<span data-ttu-id="d8ea8-106">Framework MVC</span><span class="sxs-lookup"><span data-stu-id="d8ea8-106">America's Next Top Model View Controller Framework</span></span>](americas-next-top-model-view-controller-framework.md)
+- [<span data-ttu-id="d8ea8-107">Conseils et astuces</span><span class="sxs-lookup"><span data-stu-id="d8ea8-107">Ninja on Fire Black Belt Tips</span></span>](ninja-on-fire-black-belt-tips.md)

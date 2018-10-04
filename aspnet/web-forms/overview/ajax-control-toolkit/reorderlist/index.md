@@ -1,30 +1,26 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/reorderlist/index
-title: ReorderList fournissant | Documents Microsoft
+title: ReorderList | Microsoft Docs
 author: rick-anderson
-description: Ce didacticiel montre comment utiliser le contrôle ReorderList fournissant pour afficher une liste que les utilisateurs peuvent réorganiser en faisant glisser des éléments.
-ms.author: aspnetcontent
-manager: wpickett
+description: Ce didacticiel montre comment utiliser le contrôle ReorderList pour afficher une liste que les utilisateurs peuvent réorganiser en faisant glisser des éléments.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 25df8150-7999-4ab6-b401-0cad5f396d6c
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist
 msc.type: chapter
-ms.openlocfilehash: 14ad3527a17b0853dd10a07aba28d60867f79169
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: f429dac4352a5d0e469a7e3721f4b1a9396cd8f9
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26511618"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254082"
 ---
-<a name="reorderlist"></a><span data-ttu-id="7913d-103">ReorderList fournissant</span><span class="sxs-lookup"><span data-stu-id="7913d-103">ReorderList</span></span>
+<a name="reorderlist"></a><span data-ttu-id="82ebc-103">ReorderList</span><span class="sxs-lookup"><span data-stu-id="82ebc-103">ReorderList</span></span>
 ====================
-> <span data-ttu-id="7913d-104">Ce didacticiel montre comment utiliser le contrôle ReorderList fournissant pour afficher une liste que les utilisateurs peuvent réorganiser en faisant glisser des éléments.</span><span class="sxs-lookup"><span data-stu-id="7913d-104">This tutorial shows how to use the ReorderList control to display a list that users can reorder by dragging items.</span></span>
+> <span data-ttu-id="82ebc-104">Ce didacticiel montre comment utiliser le contrôle ReorderList pour afficher une liste que les utilisateurs peuvent réorganiser en faisant glisser des éléments.</span><span class="sxs-lookup"><span data-stu-id="82ebc-104">This tutorial shows how to use the ReorderList control to display a list that users can reorder by dragging items.</span></span>
 
 
-- [<span data-ttu-id="7913d-105">L’utilisation de publications (postback) avec ReorderList fournissant (c#)</span><span class="sxs-lookup"><span data-stu-id="7913d-105">Using Postbacks with ReorderList (C#)</span></span>](using-postbacks-with-reorderlist-cs.md)
-- [<span data-ttu-id="7913d-106">Faites glisser et déposez via ReorderList fournissant (c#)</span><span class="sxs-lookup"><span data-stu-id="7913d-106">Drag and Drop via ReorderList (C#)</span></span>](drag-and-drop-via-reorderlist-cs.md)
-- [<span data-ttu-id="7913d-107">L’utilisation de publications (postback) avec ReorderList fournissant (VB)</span><span class="sxs-lookup"><span data-stu-id="7913d-107">Using Postbacks with ReorderList (VB)</span></span>](using-postbacks-with-reorderlist-vb.md)
-- [<span data-ttu-id="7913d-108">Faites glisser et déposez via ReorderList fournissant (VB)</span><span class="sxs-lookup"><span data-stu-id="7913d-108">Drag and Drop via ReorderList (VB)</span></span>](drag-and-drop-via-reorderlist-vb.md)
+- [<span data-ttu-id="82ebc-105">Utilisation de publications (postback) avec ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="82ebc-105">Using Postbacks with ReorderList (C#)</span></span>](using-postbacks-with-reorderlist-cs.md)
+- [<span data-ttu-id="82ebc-106">Glisser-déplacer via ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="82ebc-106">Drag and Drop via ReorderList (C#)</span></span>](drag-and-drop-via-reorderlist-cs.md)
+- [<span data-ttu-id="82ebc-107">Utilisation de publications (postback) avec ReorderList (VB)</span><span class="sxs-lookup"><span data-stu-id="82ebc-107">Using Postbacks with ReorderList (VB)</span></span>](using-postbacks-with-reorderlist-vb.md)
+- [<span data-ttu-id="82ebc-108">Glisser-déplacer via ReorderList (VB)</span><span class="sxs-lookup"><span data-stu-id="82ebc-108">Drag and Drop via ReorderList (VB)</span></span>](drag-and-drop-via-reorderlist-vb.md)

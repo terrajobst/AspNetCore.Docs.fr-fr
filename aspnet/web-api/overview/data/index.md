@@ -1,38 +1,34 @@
 ---
 uid: web-api/overview/data/index
-title: Utilisation des données dans ASP.NET Web API | Documents Microsoft
+title: Utilisation des données dans l’API Web ASP.NET | Microsoft Docs
 author: rick-anderson
 description: Comment le programme CRUD (créer, lire, mettre à jour, supprimer) les opérations dans l’API Web.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 10/23/2014
-ms.topic: article
 ms.assetid: 995cbe38-7dbd-4c36-a5d0-a761944c7636
-ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data
 msc.type: chapter
-ms.openlocfilehash: d10b37ffcbaf4124bab05045f0c0608e437bd74d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: e926c82e84b7cac2ba69a8baa62d2719647523d2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26506658"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254039"
 ---
-<a name="working-with-data-in-aspnet-web-api"></a><span data-ttu-id="2d3f8-103">Utilisation des données dans l’API Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="2d3f8-103">Working with Data in ASP.NET Web API</span></span>
+<a name="working-with-data-in-aspnet-web-api"></a><span data-ttu-id="3a62c-103">Utilisation des données dans l’API Web ASP.NET</span><span class="sxs-lookup"><span data-stu-id="3a62c-103">Working with Data in ASP.NET Web API</span></span>
 ====================
-> <span data-ttu-id="2d3f8-104">Comment le programme CRUD (créer, lire, mettre à jour, supprimer) les opérations dans l’API Web.</span><span class="sxs-lookup"><span data-stu-id="2d3f8-104">How to program CRUD (create, read, update, delete) operations in Web API.</span></span>
+> <span data-ttu-id="3a62c-104">Comment le programme CRUD (créer, lire, mettre à jour, supprimer) les opérations dans l’API Web.</span><span class="sxs-lookup"><span data-stu-id="3a62c-104">How to program CRUD (create, read, update, delete) operations in Web API.</span></span>
 
 
-- [<span data-ttu-id="2d3f8-105">À l’aide des API Web 2 avec Entity Framework 6</span><span class="sxs-lookup"><span data-stu-id="2d3f8-105">Using Web API 2 with Entity Framework 6</span></span>](using-web-api-with-entity-framework/index.md)
+- [<span data-ttu-id="3a62c-105">Utilisation de Web API 2 avec Entity Framework 6</span><span class="sxs-lookup"><span data-stu-id="3a62c-105">Using Web API 2 with Entity Framework 6</span></span>](using-web-api-with-entity-framework/index.md)
 
-    - [<span data-ttu-id="2d3f8-106">Créer le projet</span><span class="sxs-lookup"><span data-stu-id="2d3f8-106">Create the Project</span></span>](using-web-api-with-entity-framework/part-1.md)
-    - [<span data-ttu-id="2d3f8-107">Ajoutez des modèles et des contrôleurs</span><span class="sxs-lookup"><span data-stu-id="2d3f8-107">Add Models and Controllers</span></span>](using-web-api-with-entity-framework/part-2.md)
-    - [<span data-ttu-id="2d3f8-108">Valeur initiale de la base de données</span><span class="sxs-lookup"><span data-stu-id="2d3f8-108">Seed the Database</span></span>](using-web-api-with-entity-framework/part-3.md)
-    - [<span data-ttu-id="2d3f8-109">Gestion des Relations d’entité</span><span class="sxs-lookup"><span data-stu-id="2d3f8-109">Handling Entity Relations</span></span>](using-web-api-with-entity-framework/part-4.md)
-    - [<span data-ttu-id="2d3f8-110">Créer des objets de transfert de données (DTO)</span><span class="sxs-lookup"><span data-stu-id="2d3f8-110">Create Data Transfer Objects (DTOs)</span></span>](using-web-api-with-entity-framework/part-5.md)
-    - [<span data-ttu-id="2d3f8-111">Créer le Client JavaScript</span><span class="sxs-lookup"><span data-stu-id="2d3f8-111">Create the JavaScript Client</span></span>](using-web-api-with-entity-framework/part-6.md)
-    - [<span data-ttu-id="2d3f8-112">Création de la vue (UI)</span><span class="sxs-lookup"><span data-stu-id="2d3f8-112">Create the View (UI)</span></span>](using-web-api-with-entity-framework/part-7.md)
-    - [<span data-ttu-id="2d3f8-113">Affichage des détails d’élément</span><span class="sxs-lookup"><span data-stu-id="2d3f8-113">Display Item Details</span></span>](using-web-api-with-entity-framework/part-8.md)
-    - [<span data-ttu-id="2d3f8-114">Ajouter un nouvel élément à la base de données</span><span class="sxs-lookup"><span data-stu-id="2d3f8-114">Add a New Item to the Database</span></span>](using-web-api-with-entity-framework/part-9.md)
-    - [<span data-ttu-id="2d3f8-115">Publier l’application dans des sites Web Azure</span><span class="sxs-lookup"><span data-stu-id="2d3f8-115">Publish the App to Azure Websites</span></span>](using-web-api-with-entity-framework/part-10.md)
+    - [<span data-ttu-id="3a62c-106">Créer le projet</span><span class="sxs-lookup"><span data-stu-id="3a62c-106">Create the Project</span></span>](using-web-api-with-entity-framework/part-1.md)
+    - [<span data-ttu-id="3a62c-107">Ajouter des modèles et des contrôleurs</span><span class="sxs-lookup"><span data-stu-id="3a62c-107">Add Models and Controllers</span></span>](using-web-api-with-entity-framework/part-2.md)
+    - [<span data-ttu-id="3a62c-108">Amorcer la base de données</span><span class="sxs-lookup"><span data-stu-id="3a62c-108">Seed the Database</span></span>](using-web-api-with-entity-framework/part-3.md)
+    - [<span data-ttu-id="3a62c-109">Gestion des relations d’entité</span><span class="sxs-lookup"><span data-stu-id="3a62c-109">Handling Entity Relations</span></span>](using-web-api-with-entity-framework/part-4.md)
+    - [<span data-ttu-id="3a62c-110">Créer des objets de transfert de données (DTO)</span><span class="sxs-lookup"><span data-stu-id="3a62c-110">Create Data Transfer Objects (DTOs)</span></span>](using-web-api-with-entity-framework/part-5.md)
+    - [<span data-ttu-id="3a62c-111">Créer le client JavaScript</span><span class="sxs-lookup"><span data-stu-id="3a62c-111">Create the JavaScript Client</span></span>](using-web-api-with-entity-framework/part-6.md)
+    - [<span data-ttu-id="3a62c-112">Créer la vue (Interface utilisateur)</span><span class="sxs-lookup"><span data-stu-id="3a62c-112">Create the View (UI)</span></span>](using-web-api-with-entity-framework/part-7.md)
+    - [<span data-ttu-id="3a62c-113">Afficher les détails des éléments</span><span class="sxs-lookup"><span data-stu-id="3a62c-113">Display Item Details</span></span>](using-web-api-with-entity-framework/part-8.md)
+    - [<span data-ttu-id="3a62c-114">Ajouter un nouvel élément à la base de données</span><span class="sxs-lookup"><span data-stu-id="3a62c-114">Add a New Item to the Database</span></span>](using-web-api-with-entity-framework/part-9.md)
+    - [<span data-ttu-id="3a62c-115">Publier l’application sur Azure Web Sites</span><span class="sxs-lookup"><span data-stu-id="3a62c-115">Publish the App to Azure Websites</span></span>](using-web-api-with-entity-framework/part-10.md)
