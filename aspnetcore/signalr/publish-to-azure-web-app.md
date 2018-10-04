@@ -1,7 +1,7 @@
 ---
-title: Publier une application ASP.NET Core SignalR vers Azure Web App
+title: Publier une application ASP.NET Core SignalR sur Azure Web App
 author: tdykstra
-description: Publier une application ASP.NET Core SignalR vers Azure Web App
+description: Publier une application ASP.NET Core SignalR sur Azure Web App
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
@@ -14,7 +14,7 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 09/29/2018
 ms.locfileid: "47454724"
 ---
-# <a name="publish-an-aspnet-core-signalr-app-to-an-azure-web-app"></a>Publier une application ASP.NET Core SignalR vers Azure Web App
+# <a name="publish-an-aspnet-core-signalr-app-to-an-azure-web-app"></a>Publier une application ASP.NET Core SignalR sur Azure Web App
 
 [Azure Web App](/azure/app-service/app-service-web-overview) est une plateforme de services de [Cloud computing de Microsoft](https://azure.microsoft.com/) pour l’hébergement d’applications web, y compris ASP.NET Core.
 
@@ -23,9 +23,9 @@ ms.locfileid: "47454724"
 
 ## <a name="publish-the-app"></a>Publier l'application
 
-Visual Studio fournit des outils intégrés pour la publication vers une application Web Azure. Un utilisateur de Visual Studio Code peut utiliser les commandes [Azure CLI](/cli/azure) pour publier des applications sur Azure. Cet article couvre la publication avec les outils dans Visual Studio. Pour publier une application à l’aide d’Azure CLI, consultez [publier une application ASP.NET Core sur Azure avec les outils de ligne de commande](/azure/app-service/app-service-web-get-started-dotnet).
+Visual Studio fournit des outils intégrés pour la publication sur Azure Web App. Un utilisateur de Visual Studio Code peut utiliser les commandes [Azure CLI](/cli/azure) pour publier des applications sur Azure. Cet article couvre la publication avec les outils dans Visual Studio. Pour publier une application à l’aide d’Azure CLI, consultez [publier une application ASP.NET Core sur Azure avec les outils de ligne de commande](/azure/app-service/app-service-web-get-started-dotnet).
 
-Avec le bouton droit sur le projet dans **l’Explorateur de solutions** et sélectionnez **Publier**. Vérifiez que **Créer un nouveau** est coché dans la boîte de dialogue **Choisir une cible de publication**, puis sélectionnez **Publier**.
+Avec le bouton droit sur le projet dans **l’Explorateur de solutions** et sélectionnez **publier**. Vérifiez que **créer** est archivé le **choisir une cible de publication** boîte de dialogue, puis sélectionnez **publier**.
 
 ![Choix de publication cible](publish-to-azure-web-app/_static/pick-publish-target-dialog.png)
 
@@ -53,9 +53,9 @@ Si une erreur HTTP 502.2 se produit, consultez [préversion déployer ASP.NET Co
 
 ## <a name="configure-signalr-web-app"></a>Configurer l’application web de SignalR
 
-Les applications ASP.NET Core SignalR qui sont publiées comme une application Web Azure doivent avoir [ARR Affinity](https://en.wikipedia.org/wiki/Application_Request_Routing) d'activé. Les [WebSockets](xref:fundamentals/websockets) doivent être activée pour permettre que le transport WebSocket fonctionne.
+Les applications ASP.NET Core SignalR qui sont publiées comme une application Web Azure doit avoir [affinité ARR](https://en.wikipedia.org/wiki/Application_Request_Routing) activé. [WebSockets](xref:fundamentals/websockets) doit être activée pour permettre le transport WebSocket de la fonction.
 
-Dans le portail Azure, accédez aux **paramètres de l’application** pour votre application web. Définissez **WebSockets** à **On** et vérifiez que **ARR Affinity** est à **On**.
+Dans le portail Azure, accédez à **paramètres de l’application** pour votre application web. Définissez **WebSockets** à **sur**et vérifiez **affinité ARR** est **sur**.
 
 ![Paramètres de l’application Web Azure dans le portail Azure](publish-to-azure-web-app/_static/azure-web-app-settings.png)
 
