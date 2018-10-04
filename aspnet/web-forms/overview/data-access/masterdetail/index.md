@@ -1,34 +1,30 @@
 ---
 uid: web-forms/overview/data-access/masterdetail/index
-title: Maître/détail | Documents Microsoft
+title: Maître/détail | Microsoft Docs
 author: rick-anderson
-description: Ces didacticiels montrent comment afficher des enregistrements principaux dans une liste déroulante et les détails dans un contrôle GridView.
-ms.author: aspnetcontent
-manager: wpickett
+description: Ces didacticiels montrent comment afficher les enregistrements maîtres dans une liste déroulante et les détails dans un contrôle GridView.
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: 104e4d22-22cf-44a4-aefe-f604f62e0cf8
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/masterdetail
 msc.type: chapter
-ms.openlocfilehash: d0e8193c008f5457a62cd009873883acc0c5c237
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 756cc2082338a13888fb146734dc75a5fbbf777f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26514438"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253275"
 ---
 <a name="masterdetail"></a>Maître/détail
 ====================
-> Ces didacticiels montrent comment afficher des enregistrements principaux dans une liste déroulante et les détails dans un contrôle GridView.
+> Ces didacticiels montrent comment afficher les enregistrements maîtres dans une liste déroulante et les détails dans un contrôle GridView.
 
 
-- [Maître/détail, le filtrage avec une liste déroulante (c#)](master-detail-filtering-with-a-dropdownlist-cs.md)
-- [Maître/détail, le filtrage avec la compréhension des deux listes (c#)](master-detail-filtering-with-two-dropdownlists-cs.md)
-- [Maître/détail, le filtrage entre les deux Pages (c#)](master-detail-filtering-across-two-pages-cs.md)
-- [Maître/détail à l’aide d’un GridView maître avec un DetailView détail (c#)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
-- [Maître/détail, le filtrage avec une liste déroulante (VB)](master-detail-filtering-with-a-dropdownlist-vb.md)
-- [Le filtrage avec compréhension (VB) des deux listes maître/détail](master-detail-filtering-with-two-dropdownlists-vb.md)
-- [Maître/détail, le filtrage entre les deux Pages (VB)](master-detail-filtering-across-two-pages-vb.md)
-- [Maître/détail à l’aide d’un GridView maître avec un DetailView détail (VB)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
+- [Filtrage maître/détail avec une DropDownList (C#)](master-detail-filtering-with-a-dropdownlist-cs.md)
+- [Filtrage maître/détail avec deux DropDownList (C#)](master-detail-filtering-with-two-dropdownlists-cs.md)
+- [Filtrage maître/détail sur deux pages (C#)](master-detail-filtering-across-two-pages-cs.md)
+- [Représentation maître/détail utilisant un GridView maître pouvant être sélectionné avec une DetailView des détails (C#)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
+- [Filtrage maître/détail avec une DropDownList (VB)](master-detail-filtering-with-a-dropdownlist-vb.md)
+- [Filtrage maître/détail avec deux DropDownList (VB)](master-detail-filtering-with-two-dropdownlists-vb.md)
+- [Filtrage maître/détail sur deux pages (VB)](master-detail-filtering-across-two-pages-vb.md)
+- [Représentation maître/détail utilisant un GridView maître pouvant être sélectionné avec une DetailView des détails (VB)](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)

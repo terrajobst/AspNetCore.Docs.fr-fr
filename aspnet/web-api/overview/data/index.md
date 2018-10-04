@@ -1,38 +1,34 @@
 ---
 uid: web-api/overview/data/index
-title: Utilisation des données dans ASP.NET Web API | Documents Microsoft
+title: Utilisation des données dans l’API Web ASP.NET | Microsoft Docs
 author: rick-anderson
 description: Comment le programme CRUD (créer, lire, mettre à jour, supprimer) les opérations dans l’API Web.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 10/23/2014
-ms.topic: article
 ms.assetid: 995cbe38-7dbd-4c36-a5d0-a761944c7636
-ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/data
 msc.type: chapter
-ms.openlocfilehash: d10b37ffcbaf4124bab05045f0c0608e437bd74d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: e926c82e84b7cac2ba69a8baa62d2719647523d2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26506658"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254039"
 ---
 <a name="working-with-data-in-aspnet-web-api"></a>Utilisation des données dans l’API Web ASP.NET
 ====================
 > Comment le programme CRUD (créer, lire, mettre à jour, supprimer) les opérations dans l’API Web.
 
 
-- [À l’aide des API Web 2 avec Entity Framework 6](using-web-api-with-entity-framework/index.md)
+- [Utilisation de Web API 2 avec Entity Framework 6](using-web-api-with-entity-framework/index.md)
 
     - [Créer le projet](using-web-api-with-entity-framework/part-1.md)
-    - [Ajoutez des modèles et des contrôleurs](using-web-api-with-entity-framework/part-2.md)
-    - [Valeur initiale de la base de données](using-web-api-with-entity-framework/part-3.md)
-    - [Gestion des Relations d’entité](using-web-api-with-entity-framework/part-4.md)
+    - [Ajouter des modèles et des contrôleurs](using-web-api-with-entity-framework/part-2.md)
+    - [Amorcer la base de données](using-web-api-with-entity-framework/part-3.md)
+    - [Gestion des relations d’entité](using-web-api-with-entity-framework/part-4.md)
     - [Créer des objets de transfert de données (DTO)](using-web-api-with-entity-framework/part-5.md)
-    - [Créer le Client JavaScript](using-web-api-with-entity-framework/part-6.md)
-    - [Création de la vue (UI)](using-web-api-with-entity-framework/part-7.md)
-    - [Affichage des détails d’élément](using-web-api-with-entity-framework/part-8.md)
+    - [Créer le client JavaScript](using-web-api-with-entity-framework/part-6.md)
+    - [Créer la vue (Interface utilisateur)](using-web-api-with-entity-framework/part-7.md)
+    - [Afficher les détails des éléments](using-web-api-with-entity-framework/part-8.md)
     - [Ajouter un nouvel élément à la base de données](using-web-api-with-entity-framework/part-9.md)
-    - [Publier l’application dans des sites Web Azure](using-web-api-with-entity-framework/part-10.md)
+    - [Publier l’application sur Azure Web Sites](using-web-api-with-entity-framework/part-10.md)

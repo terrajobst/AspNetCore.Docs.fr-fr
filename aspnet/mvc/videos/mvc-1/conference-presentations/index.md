@@ -1,29 +1,25 @@
 ---
 uid: mvc/videos/mvc-1/conference-presentations/index
-title: Entretiens | Documents Microsoft
+title: Discussions | Microsoft Docs
 author: rick-anderson
-description: ASP.NET MVC 1 entretiens
-ms.author: aspnetcontent
-manager: wpickett
+description: Communique avec ASP.NET MVC 1
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: 276507d5-e9bd-46ba-8e98-32a8957504fa
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-1/conference-presentations
 msc.type: chapter
-ms.openlocfilehash: ed730075f5c4232ff48406a2cc047d85f16c2244
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: e95a05cb4403fd373a2e0e2e4591bec3e4da2df7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26503368"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254150"
 ---
-<a name="talks"></a>Entretiens
+<a name="talks"></a>Discussions
 ====================
-> ASP.NET MVC 1 entretiens
+> Communique avec ASP.NET MVC 1
 
 
-- [Création de NerdDinner.com avec Microsoft ASP.NET Model View Controller (MVC)](creating-nerddinnercom-with-microsoft-aspnet-model-view-controller-mvc.md)
-- [Suivant supérieur modèle Vue contrôleur Framework d’Amérique](americas-next-top-model-view-controller-framework.md)
-- [Ninja sur incendie noir roulant conseils](ninja-on-fire-black-belt-tips.md)
+- [Création de NerdDinner.com avec Microsoft ASP.NET MVC (Modèle Vue Contrôleur)](creating-nerddinnercom-with-microsoft-aspnet-model-view-controller-mvc.md)
+- [Framework MVC](americas-next-top-model-view-controller-framework.md)
+- [Conseils et astuces](ninja-on-fire-black-belt-tips.md)

@@ -1,32 +1,28 @@
 ---
 uid: web-forms/videos/net-4/routing/index
-title: Routage | Documents Microsoft
+title: Routage | Microsoft Docs
 author: rick-anderson
-description: Cette vidéo vous montre comment créer intuitive et URL de compatibles avec les moteurs de recherche pour vos applications Web Forms.
-ms.author: aspnetcontent
-manager: wpickett
+description: Cette vidéo vous montre comment créer intuitive et URL adaptées au SEO pour vos applications Web Forms.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 8a1cfb18-df04-4607-ae93-2bebd2d3fa31
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/routing
 msc.type: chapter
-ms.openlocfilehash: 71bf4ff11d5cead001ce381324bea8fb6de9d8bf
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: f9ac951d9ea8153d95b57e8053749db76de0d0c7
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26525388"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253811"
 ---
 <a name="routing"></a>Routage
 ====================
-> Cette vidéo vous montre comment créer intuitive et URL de compatibles avec les moteurs de recherche pour vos applications Web Forms.
+> Cette vidéo vous montre comment créer intuitive et URL adaptées au SEO pour vos applications Web Forms.
 
 
 - [Redirection permanente](aspnet-4-quick-hit-permanent-redirect.md)
-- [Impératif WebForms routage](aspnet-4-quick-hit-imperative-webforms-routing.md)
-- [WebForms déclarative routage](aspnet-4-quick-hit-declarative-webforms-routing.md)
-- [WebForms sortant routage](aspnet-4-quick-hit-outbound-webforms-routing.md)
-- [Utiliser le routage ASP.NET Web Forms](how-do-i-use-routing-with-aspnet-web-forms.md)
+- [Routage WebForms impératif](aspnet-4-quick-hit-imperative-webforms-routing.md)
+- [Routage WebForms déclaratif](aspnet-4-quick-hit-declarative-webforms-routing.md)
+- [Routage WebForms sortant](aspnet-4-quick-hit-outbound-webforms-routing.md)
+- [Utiliser le routage avec ASP.NET Web Forms](how-do-i-use-routing-with-aspnet-web-forms.md)
 - [Utiliser des URL dans le routage ASP.NET](how-do-i-work-with-urls-in-aspnet-routing.md)

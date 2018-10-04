@@ -1,28 +1,24 @@
 ---
 uid: web-forms/overview/data-access/database-driven-site-maps/index
-title: Base de données pilotée par les plans de sites | Documents Microsoft
+title: Base de données pilotée par les plans de sites | Microsoft Docs
 author: rick-anderson
-description: Ce didacticiel explique comment créer un plan de site dynamiquement en fonction des informations dans la base de données.
-ms.author: aspnetcontent
-manager: wpickett
+description: Ce didacticiel explique comment créer un plan de site dynamiquement en fonction des informations contenues dans la base de données.
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: c31f540a-0117-4bf2-9235-eb32a3e23529
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps
 msc.type: chapter
-ms.openlocfilehash: a237409281885cbec652de091c6e1d690b24061c
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 34053bb62ded6d7ae1b24d1a6a7bc9137dfb1156
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26513028"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253994"
 ---
-<a name="database-driven-site-maps"></a>Mappages de Site piloté par base de données
+<a name="database-driven-site-maps"></a>Plans de Site pilotés par base de données
 ====================
-> Ce didacticiel explique comment créer un plan de site dynamiquement en fonction des informations dans la base de données.
+> Ce didacticiel explique comment créer un plan de site dynamiquement en fonction des informations contenues dans la base de données.
 
 
-- [Création d’un fournisseur de carte personnalisée Site piloté par base de données (c#)](building-a-custom-database-driven-site-map-provider-cs.md)
-- [Création d’un fournisseur de plan de Site de piloté par base de données personnalisé (VB)](building-a-custom-database-driven-site-map-provider-vb.md)
+- [Création d’un fournisseur de plan de site personnalisé piloté par une base de données (C#)](building-a-custom-database-driven-site-map-provider-cs.md)
+- [Création d’un fournisseur de plan de site personnalisé piloté par une base de données (VB)](building-a-custom-database-driven-site-map-provider-vb.md)

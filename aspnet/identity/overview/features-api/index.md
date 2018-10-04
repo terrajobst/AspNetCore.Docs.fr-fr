@@ -1,29 +1,25 @@
 ---
 uid: identity/overview/features-api/index
-title: Fonctionnalités d’identité ASP.NET et de l’API | Documents Microsoft
+title: Les API et les fonctionnalités de ASP.NET Identity | Microsoft Docs
 author: rick-anderson
-description: Fonctionnalités et l’API
-ms.author: aspnetcontent
-manager: wpickett
+description: Fonctionnalités et API
+ms.author: riande
 ms.date: 05/09/2014
-ms.topic: article
 ms.assetid: 70f7c0ac-aeb9-4e21-ae05-deb10640b1b3
-ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /identity/overview/features-api
 msc.type: chapter
-ms.openlocfilehash: b82c2757123efbcb906afaa29a7df9cab654351e
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 39d8029c577cc3af742d33c974ad6fcfc826f130
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26497868"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253390"
 ---
-<a name="aspnet-identity-features--api"></a>API et des fonctionnalités d’identité ASP.NET
+<a name="aspnet-identity-features--api"></a>API et des fonctionnalités de ASP.NET Identity
 ====================
-> Fonctionnalités et l’API
+> Fonctionnalités et API
 
 
-- [Meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Service d’applications Azure](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)
-- [Confirmation du compte et la récupération de mot de passe avec l’identité de ASP.NET (c#)](account-confirmation-and-password-recovery-with-aspnet-identity.md)
-- [Authentification à deux facteurs avec l’identité de ASP.NET à l’aide de SMS et par courrier électronique](two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)
+- [Bonnes pratiques pour le déploiement des mots de passe et d’autres données sensibles sur ASP.NET et Azure App Service](best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure.md)
+- [Confirmation de compte et récupération de mot de passe avec ASP.NET Identity (C#)](account-confirmation-and-password-recovery-with-aspnet-identity.md)
+- [Authentification à deux facteurs par SMS et e-mail avec ASP.NET Identity](two-factor-authentication-using-sms-and-email-with-aspnet-identity.md)

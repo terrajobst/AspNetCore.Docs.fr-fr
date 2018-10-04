@@ -1,23 +1,19 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/cascadingdropdown/index
-title: CascadingDropdown | Documents Microsoft
+title: CascadingDropdown | Microsoft Docs
 author: rick-anderson
-description: Ce didacticiel montre comment utiliser le le contrôle CascadingDropDown pour créer la liste déroulante connexe répertorie cette mise à jour lorsque les utilisateurs effectuer une sélection.
-ms.author: aspnetcontent
-manager: wpickett
+description: Ce didacticiel montre comment utiliser le contrôle CascadingDropDown pour créer des listes déroulantes associées qui mettent à jour lorsque les utilisateurs effectuer une sélection.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 5cc304e2-0013-4c26-8fe6-e897a533809f
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/cascadingdropdown
 msc.type: chapter
-ms.openlocfilehash: 200dc5ce3f27b5123edea2ac63f0a86b8502605d
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: HT
+ms.openlocfilehash: 1bda628940da180288875c43ade92aad45101596
+ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29152850"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "48254274"
 ---
 <a name="cascadingdropdown"></a>CascadingDropdown
 ====================

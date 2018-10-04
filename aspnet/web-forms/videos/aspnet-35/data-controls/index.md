@@ -1,27 +1,23 @@
 ---
 uid: web-forms/videos/aspnet-35/data-controls/index
-title: Les contrôles de données | Documents Microsoft
+title: Contrôles de données | Microsoft Docs
 author: rick-anderson
-description: Cette série de vidéos explore l’utilisation des nouvelles fonctionnalités de contrôle de données avec ASP.NET 3.5
-ms.author: aspnetcontent
-manager: wpickett
+description: Cette série de vidéos explique en détail comment utiliser les nouvelles fonctionnalités de contrôle de données avec ASP.NET 3.5
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 62fc223f-9c29-4af9-bdb7-902103d5cff1
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/data-controls
 msc.type: chapter
-ms.openlocfilehash: aa4214c52a60559ace33c688fb251a3f26302997
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 4425c5f2ebeb327e251db1309f397a1b54438833
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26520508"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253354"
 ---
 <a name="data-controls"></a>Contrôles de données
 ====================
-> Cette série de vidéos explore l’utilisation des nouvelles fonctionnalités de contrôle de données avec ASP.NET 3.5
+> Cette série de vidéos explique en détail comment utiliser les nouvelles fonctionnalités de contrôle de données avec ASP.NET 3.5
 
 
 - [Contrôle ListView](the-listview-control.md)

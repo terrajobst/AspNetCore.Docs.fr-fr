@@ -1,33 +1,29 @@
 ---
 uid: web-forms/videos/aspnet-35/aspnet-ajax/index
-title: ASP.NET Ajax | Documents Microsoft
+title: ASP.NET Ajax | Microsoft Docs
 author: rick-anderson
-description: Cette série de vidéos explique comment ajouter des fonctionnalités Ajax à une application ASP.NET.
-ms.author: aspnetcontent
-manager: wpickett
+description: Cette série de vidéos explique en détail comment ajouter la fonctionnalité Ajax à une application ASP.NET.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 93486ab8-7a8c-4075-935a-83900817b3db
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax
 msc.type: chapter
-ms.openlocfilehash: 1731f8611bbd3593f3add89d7765c07a0fbe6c2b
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: ac46b096c549e0e582801a6db7134c9396eb26e5
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26520228"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253839"
 ---
 <a name="aspnet-ajax"></a>ASP.NET Ajax
 ====================
-> Cette série de vidéos explique comment ajouter des fonctionnalités Ajax à une application ASP.NET.
+> Cette série de vidéos explique en détail comment ajouter la fonctionnalité Ajax à une application ASP.NET.
 
 
 - [Prise en charge d’ASP.NET AJAX dans Visual Studio 2008](aspnet-ajax-support-in-visual-studio-2008.md)
-- [Ajout de fonctionnalités AJAX à une Page ASP.NET existante](adding-ajax-functionality-to-an-existing-aspnet-page.md)
-- [Création et utilisation d’un Service Web compatibles AJAX dans un Site Web](creating-and-using-an-ajax-enabled-web-service-in-a-web-site.md)
-- [ASP.NET AJAX : Une démonstration d’ASP.NET AJAX](aspnet-ajax-a-demonstration-of-aspnet-ajax.md)
-- [ADO.NET Data Services prenant en charge d’AJAX ASP.NET](adonet-data-services-with-aspnet-ajax-support.md)
-- [Introduction à l’historique de ASP.NET Ajax](introduction-to-aspnet-ajax-history.md)
-- [À l’aide de la combinaison de Script pour améliorer les performances d’AJAX](using-script-combining-to-improve-ajax-performance.md)
+- [Ajout de la fonctionnalité AJAX à une page ASP.NET existante](adding-ajax-functionality-to-an-existing-aspnet-page.md)
+- [Création et utilisation d’un service Web activé pour AJAX dans un site web](creating-and-using-an-ajax-enabled-web-service-in-a-web-site.md)
+- [ASP.NET AJAX : Une démonstration d’ASP.NET AJAX](aspnet-ajax-a-demonstration-of-aspnet-ajax.md)
+- [ADO.NET Data Services avec prise en charge d’ASP.NET AJAX](adonet-data-services-with-aspnet-ajax-support.md)
+- [Introduction à l’histoire d’ASP.NET Ajax](introduction-to-aspnet-ajax-history.md)
+- [Utilisation de la combinaison de scripts pour améliorer les performances d’AJAX](using-script-combining-to-improve-ajax-performance.md)

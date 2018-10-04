@@ -1,27 +1,23 @@
 ---
 uid: visual-studio/overview/2013/index
-title: ASP.NET et Visual Studio 2013 | Documents Microsoft
+title: ASP.NET et Visual Studio 2013 | Microsoft Docs
 author: rick-anderson
 description: Visual Studio 2013
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 06/25/2013
-ms.topic: article
 ms.assetid: 646edfc7-dc62-4fa0-84c2-926996c92aeb
-ms.technology: ''
-ms.prod: .net-framework
 msc.legacyurl: /visual-studio/overview/2013
 msc.type: chapter
-ms.openlocfilehash: fad379374814c794754605a2aab193ec625e2182
-ms.sourcegitcommit: 3625e4f7a667641b058d23126f0d9d1844fee886
-ms.translationtype: HT
+ms.openlocfilehash: 74793becba663d163a31cb1b02654b7b6cb021af
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/20/2018
-ms.locfileid: "27980161"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253747"
 ---
 <a name="aspnet-and-visual-studio-2013"></a>ASP.NET et Visual Studio 2013
 ====================
-> Développement d’applications web ASP.NET avec Visual Studio 2013
+> Développer des applications web ASP.NET avec Visual Studio 2013
 
 
 - [Création de projets web ASP.NET dans Visual Studio 2013](creating-web-projects-in-visual-studio.md)
@@ -35,6 +31,6 @@ ms.locfileid: "27980161"
 - [Génération de modèles automatique ASP.NET dans Visual Studio 2013](aspnet-scaffolding-overview.md)
 - [Lien du navigateur](using-browser-link.md)
 - [ASP.NET et Web Tools pour Visual Studio 2013 - Notes de publication](release-notes.md)
-- [ASP.NET et outils Web 2013.2 pour les Notes de publication Visual Studio 2013](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes.md)
+- [ASP.NET et Web Tools 2013.2 pour Visual Studio 2013 Release Notes de publication](aspnet-and-web-tools-20132-preview-for-visual-studio-2013-release-notes.md)
 - [Atelier pratique : Visual Studio 2013 Web Tools](visual-studio-2013-web-tools.md)
 - [Atelier pratique : One ASP.NET : Intégration d’ASP.NET Web Forms, MVC et Web API](one-aspnet-integrating-aspnet-web-forms-mvc-and-web-api.md)

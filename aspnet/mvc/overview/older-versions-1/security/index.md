@@ -1,32 +1,28 @@
 ---
 uid: mvc/overview/older-versions-1/security/index
-title: Sécurité | Documents Microsoft
+title: Sécurité | Microsoft Docs
 author: rick-anderson
-description: Ce didacticiel définie couvre comment protéger certaines pages de votre application ASP.NET MVC et comment créer et gérer des utilisateurs et des rôles à un mot de passe.
-ms.author: aspnetcontent
-manager: wpickett
+description: Ce didacticiel définie couvre protection certaines pages dans votre application ASP.NET MVC et comment créer et gérer les utilisateurs et rôles par mot de passe.
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: 346c6b44-0ff4-49af-ac94-6e74d952b4eb
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/security
 msc.type: chapter
-ms.openlocfilehash: 827802db011995cb8728f51d5c967e50669045e2
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: d2579a917e9f83fbc16a649d37bcf23d4324e3dd
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26500648"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253678"
 ---
 <a name="security"></a>Sécurité
 ====================
-> Ce didacticiel définie couvre comment protéger certaines pages de votre application ASP.NET MVC et comment créer et gérer des utilisateurs et des rôles à un mot de passe.
+> Ce didacticiel définie couvre protection certaines pages dans votre application ASP.NET MVC et comment créer et gérer les utilisateurs et rôles par mot de passe.
 
 
-- [L’authentification des utilisateurs avec l’authentification par formulaire (c#)](authenticating-users-with-forms-authentication-cs.md)
-- [L’authentification des utilisateurs avec l’authentification Windows (c#)](authenticating-users-with-windows-authentication-cs.md)
-- [Prévention des attaques d’injection de code JavaScript (c#)](preventing-javascript-injection-attacks-cs.md)
-- [L’authentification des utilisateurs avec l’authentification par formulaire (VB)](authenticating-users-with-forms-authentication-vb.md)
-- [L’authentification des utilisateurs avec l’authentification Windows (VB)](authenticating-users-with-windows-authentication-vb.md)
-- [Prévention des attaques d’injection de code JavaScript (VB)](preventing-javascript-injection-attacks-vb.md)
+- [Authentification des utilisateurs avec l’authentification par formulaire (C#)](authenticating-users-with-forms-authentication-cs.md)
+- [Authentification des utilisateurs avec l’authentification Windows (C#)](authenticating-users-with-windows-authentication-cs.md)
+- [Prévention des attaques par injection de code JavaScript (C#)](preventing-javascript-injection-attacks-cs.md)
+- [Authentification des utilisateurs avec l’authentification par formulaire (VB)](authenticating-users-with-forms-authentication-vb.md)
+- [Authentification des utilisateurs avec l’authentification Windows (VB)](authenticating-users-with-windows-authentication-vb.md)
+- [Prévention des attaques par injection de code JavaScript (VB)](preventing-javascript-injection-attacks-vb.md)

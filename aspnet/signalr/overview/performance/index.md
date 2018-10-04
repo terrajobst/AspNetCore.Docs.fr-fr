@@ -1,33 +1,29 @@
 ---
 uid: signalr/overview/performance/index
-title: SignalR performances | Documents Microsoft
+title: Performances de SignalR | Microsoft Docs
 author: rick-anderson
-description: Comment optimiser les performances des applications SignalR.
-ms.author: aspnetcontent
-manager: wpickett
+description: Comment optimiser les performances des applications de SignalR.
+ms.author: riande
 ms.date: 09/19/2014
-ms.topic: article
 ms.assetid: fda81611-b67b-4c62-915e-8adc1924a401
-ms.technology: dotnet-signalr
-ms.prod: .net-framework
 msc.legacyurl: /signalr/overview/performance
 msc.type: chapter
-ms.openlocfilehash: efbdb0a329972a56d8518c35dc1ead1bcb8305e6
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: d37efcd81074099cf26cb7f4048e350bbefc152a
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26505598"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254155"
 ---
 <a name="signalr-performance"></a>Performances de SignalR
 ====================
-> Comment optimiser les performances des applications SignalR.
+> Comment optimiser les performances des applications de SignalR.
 
 
 - [Performances de SignalR](signalr-performance.md)
 - [Introduction à la montée en puissance parallèle dans SignalR](scaleout-in-signalr.md)
-- [Montée en charge SignalR avec Azure Service Bus](scaleout-with-windows-azure-service-bus.md)
-- [Montée en charge SignalR avec Redis](scaleout-with-redis.md)
-- [Montée en charge SignalR avec SQL Server](scaleout-with-sql-server.md)
-- [Densité de connexion SignalR manivelle de test](signalr-connection-density-testing-with-crank.md)
-- [À l’aide des compteurs de Performance SignalR dans un rôle Web Azure](using-signalr-performance-counters-in-an-azure-web-role.md)
+- [Montée en puissance parallèle de SignalR avec Azure Service Bus](scaleout-with-windows-azure-service-bus.md)
+- [Montée en puissance parallèle de SignalR avec Redis](scaleout-with-redis.md)
+- [Montée en puissance parallèle de SignalR avec SQL Server](scaleout-with-sql-server.md)
+- [Test de la densité des connexions SignalR avec Crank](signalr-connection-density-testing-with-crank.md)
+- [Utilisation des compteurs de performance SignalR dans un rôle web Azure](using-signalr-performance-counters-in-an-azure-web-role.md)

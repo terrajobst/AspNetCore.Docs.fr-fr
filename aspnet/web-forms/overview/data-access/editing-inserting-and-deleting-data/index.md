@@ -1,42 +1,38 @@
 ---
 uid: web-forms/overview/data-access/editing-inserting-and-deleting-data/index
-title: Modification, d’insertion et de suppression de données | Documents Microsoft
+title: Modification, insertion et suppression de données | Microsoft Docs
 author: rick-anderson
 description: Ces didacticiels vous permet de voir comment mapper les méthodes du contrôle ObjectDataSource aux méthodes de la couche BLL et comment configurer le GridView, DetailsView et FormView co...
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: 9fc60498-ced4-47c6-b2cf-8d464e6aeef8
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data
 msc.type: chapter
-ms.openlocfilehash: 424781d445443ff2df3b5fda359dadc5243e1ea9
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: e1eeed7541ad9c088cb87784ac33cc2f53fb8ed2
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26513808"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254003"
 ---
-<a name="editing-inserting-and-deleting-data"></a>Modification, d’insertion et de suppression des données
+<a name="editing-inserting-and-deleting-data"></a>Modification, insertion et suppression de données
 ====================
 > Dans ces didacticiels, vous voyez comment mapper les méthodes du contrôle ObjectDataSource aux méthodes de la couche BLL et comment configurer le contrôle GridView, DetailsView, et FormView contrôle pour permettre aux utilisateurs de modifier des données.
 
 
-- [Vue d’ensemble de l’insertion, mise à jour et suppression de données (c#)](an-overview-of-inserting-updating-and-deleting-data-cs.md)
-- [Examiner les événements liés à l’insertion, de mise à jour et de suppression (c#)](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
-- [La gestion des Exceptions au niveau de la couche BLL et de la couche DAL dans une Page ASP.NET (c#)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md)
-- [Ajout de contrôles de Validation à la modification et l’insertion des Interfaces (c#)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
-- [Personnalisation de l’Interface de Modification de données (c#)](customizing-the-data-modification-interface-cs.md)
-- [Implémentation de l’accès concurrentiel optimiste (c#)](implementing-optimistic-concurrency-cs.md)
-- [Ajout de Confirmation côté Client lors de la suppression (c#)](adding-client-side-confirmation-when-deleting-cs.md)
-- [Limitant les fonctionnalités de Modification de données en fonction de l’utilisateur (c#)](limiting-data-modification-functionality-based-on-the-user-cs.md)
-- [Vue d’ensemble de l’insertion, mise à jour et suppression de données (Visual Basic)](an-overview-of-inserting-updating-and-deleting-data-vb.md)
-- [Examiner les événements liés à l’insertion, de mise à jour et de suppression (VB)](examining-the-events-associated-with-inserting-updating-and-deleting-vb.md)
-- [La gestion des Exceptions au niveau de la couche BLL et de la couche DAL dans une Page ASP.NET (VB)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb.md)
-- [Ajout de contrôles de Validation à la modification et l’insertion des Interfaces (VB)](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md)
-- [Personnalisation de l’Interface de Modification de données (Visual Basic)](customizing-the-data-modification-interface-vb.md)
+- [Vue d’ensemble de l’insertion, de la mise à jour et de la suppression de données (C#)](an-overview-of-inserting-updating-and-deleting-data-cs.md)
+- [Examen des événements associés à l’insertion, à la mise à jour et à la suppression (C#)](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
+- [Gestion des exceptions de niveau BLL et DAL dans une page ASP.NET (C#)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs.md)
+- [Ajout de contrôles Validation aux interfaces de modification et d’insertion (C#)](adding-validation-controls-to-the-editing-and-inserting-interfaces-cs.md)
+- [Personnalisation de l’interface de modification des données (C#)](customizing-the-data-modification-interface-cs.md)
+- [Implémentation de l’accès concurrentiel optimiste (C#)](implementing-optimistic-concurrency-cs.md)
+- [Ajout d’une confirmation côté client lors de la suppression (C#)](adding-client-side-confirmation-when-deleting-cs.md)
+- [Limitation des fonctionnalités de modification des données en fonction de l’utilisateur (C#)](limiting-data-modification-functionality-based-on-the-user-cs.md)
+- [Vue d’ensemble de l’insertion, de la mise à jour et de la suppression de données (VB)](an-overview-of-inserting-updating-and-deleting-data-vb.md)
+- [Examen des événements associés à l’insertion, à la mise à jour et à la suppression (VB)](examining-the-events-associated-with-inserting-updating-and-deleting-vb.md)
+- [Gestion des exceptions de niveau BLL et DAL dans une page ASP.NET (VB)](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-vb.md)
+- [Ajout de contrôles Validation aux interfaces de modification et d’insertion (VB)](adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md)
+- [Personnalisation de l’interface de modification des données (VB)](customizing-the-data-modification-interface-vb.md)
 - [Implémentation de l’accès concurrentiel optimiste (VB)](implementing-optimistic-concurrency-vb.md)
-- [Ajout de Confirmation côté Client lors de la suppression (VB)](adding-client-side-confirmation-when-deleting-vb.md)
-- [Limitant les fonctionnalités de Modification de données en fonction de l’utilisateur (VB)](limiting-data-modification-functionality-based-on-the-user-vb.md)
+- [Ajout d’une confirmation côté client lors de la suppression (VB)](adding-client-side-confirmation-when-deleting-vb.md)
+- [Limitation des fonctionnalités de modification des données en fonction de l’utilisateur (VB)](limiting-data-modification-functionality-based-on-the-user-vb.md)

@@ -1,30 +1,26 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/accordion/index
-title: Accordéon | Documents Microsoft
+title: Accordion | Microsoft Docs
 author: rick-anderson
-description: Ce didacticiel montre comment utiliser le contrôle Accordéon, qui contient plusieurs volets et permet aux utilisateurs d’afficher un d’eux à la fois.
-ms.author: aspnetcontent
-manager: wpickett
+description: Ce didacticiel montre comment utiliser le contrôle Accordion, qui contient plusieurs volets et permet aux utilisateurs d’afficher un d’eux à la fois.
+ms.author: riande
 ms.date: 11/11/2011
-ms.topic: article
 ms.assetid: afd41278-b4c5-43ee-9845-2b665932dcff
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion
 msc.type: chapter
-ms.openlocfilehash: 6d21104c82419da4a6445d505fab549eba686efb
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 86e1e368165d40b8d0fc1e2c24dde862c1691822
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26509068"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253838"
 ---
-<a name="accordion"></a>Accordéon
+<a name="accordion"></a>Accordion
 ====================
-> Ce didacticiel montre comment utiliser le contrôle Accordéon, qui contient plusieurs volets et permet aux utilisateurs d’afficher un d’eux à la fois.
+> Ce didacticiel montre comment utiliser le contrôle Accordion, qui contient plusieurs volets et permet aux utilisateurs d’afficher un d’eux à la fois.
 
 
-- [Liaison de données à Accordion (c#)](databinding-to-an-accordion-cs.md)
-- [Ajout dynamique de volet Accordéon (c#)](dynamically-adding-an-accordion-pane-cs.md)
-- [Liaison de données à Accordion (VB)](databinding-to-an-accordion-vb.md)
-- [Ajout dynamique de volet Accordéon (VB)](dynamically-adding-an-accordion-pane-vb.md)
+- [Liaison de données à un Accordion (C#)](databinding-to-an-accordion-cs.md)
+- [Ajout dynamique du volet Accordion (C#)](dynamically-adding-an-accordion-pane-cs.md)
+- [Liaison de données à un Accordion (VB)](databinding-to-an-accordion-vb.md)
+- [Ajout dynamique du volet Accordion (VB)](dynamically-adding-an-accordion-pane-vb.md)

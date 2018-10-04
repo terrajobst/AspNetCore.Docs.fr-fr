@@ -1,28 +1,24 @@
 ---
 uid: web-api/overview/hosting-aspnet-web-api/index
-title: 'ASP.NET Web API : Déploiement et l’hébergement | Documents Microsoft'
+title: 'ASP.NET Web API : Déploiement et l’hébergement | Microsoft Docs'
 author: rick-anderson
-description: Explique comment héberger votre API web.
-ms.author: aspnetcontent
-manager: wpickett
+description: Guide pratique pour héberger votre API web.
+ms.author: riande
 ms.date: 01/26/2012
-ms.topic: article
 ms.assetid: 500be045-e1e1-478a-97fc-0374645dd95f
-ms.technology: dotnet-webapi
-ms.prod: .net-framework
 msc.legacyurl: /web-api/overview/hosting-aspnet-web-api
 msc.type: chapter
-ms.openlocfilehash: 903e533d96c5187e1c7875f5bfcfdc4eba0ae98d
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 76e5df0e67dee23df3cd0114f50011aa41e45e51
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26506898"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254071"
 ---
 <a name="aspnet-web-api-deployment-and-hosting"></a>ASP.NET Web API : Déploiement et l’hébergement
 ====================
-> Explique comment héberger votre API web.
+> Guide pratique pour héberger votre API web.
 
 
-- [Utiliser OWIN pour l’auto-hébergement API Web 2](use-owin-to-self-host-web-api.md)
-- [Héberger des API Web 2 dans un rôle de travail Azure](host-aspnet-web-api-in-an-azure-worker-role.md)
+- [Utiliser OWIN pour l’auto-hébergement de Web API 2](use-owin-to-self-host-web-api.md)
+- [Héberger Web API 2 dans un rôle Azure Worker](host-aspnet-web-api-in-an-azure-worker-role.md)

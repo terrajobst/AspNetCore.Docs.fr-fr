@@ -1,36 +1,32 @@
 ---
 uid: mvc/overview/older-versions-1/views/index
-title: Vues d’ASP.NET MVC | Documents Microsoft
+title: Des vues ASP.NET MVC | Microsoft Docs
 author: rick-anderson
-description: Cet ensemble de didacticiels fournit une brève introduction aux vues ASP.NET MVC, les données de la vue et les programmes d’assistance HTML.
-ms.author: aspnetcontent
-manager: wpickett
+description: Cette série de didacticiels fournit une brève introduction aux vues ASP.NET MVC, afficher les données et programmes d’assistance HTML.
+ms.author: riande
 ms.date: 09/28/2011
-ms.topic: article
 ms.assetid: c2dea264-0d8c-4216-bbe5-70d2421597b0
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/overview/older-versions-1/views
 msc.type: chapter
-ms.openlocfilehash: ba9f94794f1a53d9b3a027b1cfdf2e97b5544488
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 05f49ffb2bb6bb4a0a04d673845f8e9901d138f8
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26500828"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253415"
 ---
 <a name="aspnet-mvc-views"></a>Vues ASP.NET MVC
 ====================
-> Cet ensemble de didacticiels fournit une brève introduction aux vues ASP.NET MVC, les données de la vue et les programmes d’assistance HTML.
+> Cette série de didacticiels fournit une brève introduction aux vues ASP.NET MVC, afficher les données et programmes d’assistance HTML.
 
 
-- [ASP.NET MVC affiche la vue d’ensemble (c#)](asp-net-mvc-views-overview-cs.md)
-- [Création des programmes d’assistance HTML personnalisés (c#)](creating-custom-html-helpers-cs.md)
-- [Classe TagBuilder pour générer des programmes d’assistance HTML (c#)](using-the-tagbuilder-class-to-build-html-helpers-cs.md)
-- [Creating Page Layouts with View Master Pages (c#)](creating-page-layouts-with-view-master-pages-cs.md)
-- [Passage de données à afficher les Pages maîtres (c#)](passing-data-to-view-master-pages-cs.md)
-- [ASP.NET MVC affiche la vue d’ensemble (VB)](asp-net-mvc-views-overview-vb.md)
-- [Création de programmes d’assistance HTML personnalisé (VB)](creating-custom-html-helpers-vb.md)
-- [Classe TagBuilder pour générer des programmes d’assistance HTML (VB)](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
-- [Creating Page Layouts with View Master Pages (VB)](creating-page-layouts-with-view-master-pages-vb.md)
-- [Passage de données à afficher les Pages maîtres (VB)](passing-data-to-view-master-pages-vb.md)
+- [Vue d’ensemble des vues ASP.NET MVC (C#)](asp-net-mvc-views-overview-cs.md)
+- [Création de helpers HTML personnalisés (C#)](creating-custom-html-helpers-cs.md)
+- [Classe TagBuilder pour générer des helpers HTML (C#)](using-the-tagbuilder-class-to-build-html-helpers-cs.md)
+- [Création de dispositions de page avec des pages maîtres de vue (C#)](creating-page-layouts-with-view-master-pages-cs.md)
+- [Passage de données à des pages maîtres de vue (C#)](passing-data-to-view-master-pages-cs.md)
+- [Vue d’ensemble des vues ASP.NET MVC (VB)](asp-net-mvc-views-overview-vb.md)
+- [Création de helpers HTML personnalisés (VB)](creating-custom-html-helpers-vb.md)
+- [Classe TagBuilder pour générer des helpers HTML (VB)](using-the-tagbuilder-class-to-build-html-helpers-vb.md)
+- [Création de dispositions de page avec des pages maîtres de vue (VB)](creating-page-layouts-with-view-master-pages-vb.md)
+- [Passage de données à des pages maîtres de vue (VB)](passing-data-to-view-master-pages-vb.md)

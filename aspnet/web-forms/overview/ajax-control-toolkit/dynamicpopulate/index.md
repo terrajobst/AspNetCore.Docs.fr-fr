@@ -1,32 +1,28 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/dynamicpopulate/index
-title: DynamicPopulate | Documents Microsoft
+title: DynamicPopulate | Microsoft Docs
 author: rick-anderson
 description: Ce didacticiel montre comment utiliser le contrôle DynamicPopulate qui appelle un service web et affiche la valeur obtenue dans un contrôle sur la page.
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: 68c6e54f-87ed-4768-b140-d0e3e76af841
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate
 msc.type: chapter
-ms.openlocfilehash: 1d16b9e1b1f24e21bbc05c31c30c59fbe923b6c5
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: a277d0ded0af677e7c1249de07c34521869ad576
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26510558"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254015"
 ---
 <a name="dynamicpopulate"></a>DynamicPopulate
 ====================
 > Ce didacticiel montre comment utiliser le contrôle DynamicPopulate qui appelle un service web et affiche la valeur obtenue dans un contrôle sur la page.
 
 
-- [Remplissage dynamique d’un contrôle (c#)](dynamically-populating-a-control-cs.md)
-- [Remplissage dynamique d’un contrôle à l’aide de Code JavaScript (c#)](dynamically-populating-a-control-using-javascript-code-cs.md)
-- [À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (c#)](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)
+- [Remplissage dynamique d’un contrôle (C#)](dynamically-populating-a-control-cs.md)
+- [Remplissage dynamique d’un contrôle avec du code JavaScript (C#)](dynamically-populating-a-control-using-javascript-code-cs.md)
+- [Utilisation de DynamicPopulate avec un contrôle utilisateur et JavaScript (C#)](using-dynamicpopulate-with-a-user-control-and-javascript-cs.md)
 - [Remplissage dynamique d’un contrôle (VB)](dynamically-populating-a-control-vb.md)
-- [Remplissage dynamique d’un contrôle à l’aide du Code JavaScript (VB)](dynamically-populating-a-control-using-javascript-code-vb.md)
-- [À l’aide de DynamicPopulate avec un contrôle utilisateur et le JavaScript (VB)](using-dynamicpopulate-with-a-user-control-and-javascript-vb.md)
+- [Remplissage dynamique d’un contrôle avec du code JavaScript (VB)](dynamically-populating-a-control-using-javascript-code-vb.md)
+- [Utilisation de DynamicPopulate avec un contrôle utilisateur et JavaScript (VB)](using-dynamicpopulate-with-a-user-control-and-javascript-vb.md)

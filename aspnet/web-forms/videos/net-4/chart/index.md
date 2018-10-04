@@ -1,27 +1,23 @@
 ---
 uid: web-forms/videos/net-4/chart/index
-title: Graphique | Documents Microsoft
+title: Graphique | Microsoft Docs
 author: rick-anderson
-description: Cette série de vidéos montre comment utiliser le contrôle de graphique ASP.NET pour créer visuellement agréables affichage des données.
-ms.author: aspnetcontent
-manager: wpickett
+description: Cette série de vidéos montre comment utiliser le contrôle Chart d’ASP.NET pour créer l’affichage de données visuellement attrayante.
+ms.author: riande
 ms.date: 11/14/2011
-ms.topic: article
 ms.assetid: c7ec18e5-45a1-4c18-b2d9-31f377d23a3f
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/videos/net-4/chart
 msc.type: chapter
-ms.openlocfilehash: 4bb94f23b0428cc3431b84e556e55fc789587d4a
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: dedceff57be8704a688206347c4852c98456547f
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26521888"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254030"
 ---
 <a name="chart"></a>Graphique
 ====================
-> Cette série de vidéos montre comment utiliser le contrôle de graphique ASP.NET pour créer visuellement agréables affichage des données.
+> Cette série de vidéos montre comment utiliser le contrôle Chart d’ASP.NET pour créer l’affichage de données visuellement attrayante.
 
 
 - [Chart, contrôle](aspnet-4-quick-hit-chart-control.md)

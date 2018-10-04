@@ -1,23 +1,19 @@
 ---
 uid: mvc/videos/index
-title: Vidéos | Documents Microsoft
+title: Vidéos | Microsoft Docs
 author: rick-anderson
 description: ''
-ms.author: aspnetcontent
-manager: wpickett
+ms.author: riande
 ms.date: 06/24/2011
-ms.topic: article
 ms.assetid: e618c37c-68f3-49aa-9fda-f86cb3b578b9
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos
 msc.type: book
-ms.openlocfilehash: 03e8129816a2fb8b9261618207b0e1795fb7cf23
-ms.sourcegitcommit: 016f4d58663bcd442930227022de23fb3abee0b3
-ms.translationtype: HT
+ms.openlocfilehash: 1f284bb52bb45880d656592f173b3e57fbc47118
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29152961"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254046"
 ---
 <a name="videos"></a>Vidéos
 ====================
@@ -50,7 +46,7 @@ ms.locfileid: "29152961"
         - [Utilisation d’ASP.NET MVC - Vidéo technique de 10 minutes pour les développeurs](mvc-2/how-do-i/aspnet-mvc-how-10-minute-technical-video-for-developers.md)
         - [Retourner des données au format JSON pour un appel AJAX dans une application web ASP.NET MVC](mvc-2/how-do-i/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
         - [Utiliser des données dans des vues partielles ASP.NET MVC](mvc-2/how-do-i/how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
-        - [Implémenter des modèles de vue pour gérer des données pour des vues ASP.NET MVC](mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
+        - [Implémenter des modèles de vue pour gérer les données des vues ASP.NET MVC](mvc-2/how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
         - [Créer un helper HTML personnalisé pour une application MVC](mvc-2/how-do-i/how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)
         - [Utiliser des classeurs de modèles dans une application MVC](mvc-2/how-do-i/how-do-i-work-with-model-binders-in-an-mvc-application.md)
         - [Utiliser des attributs HttpVerbs dans une application MVC](mvc-2/how-do-i/how-do-i-use-httpverbs-attributes-in-an-mvc-application.md)
@@ -95,7 +91,7 @@ ms.locfileid: "29152961"
         - [Application Storefront ASP.NET MVC, partie 16 : Reconception de l’appartenance avec OpenID](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-16-membership-redo-with-openid.md)
         - [Application Storefront ASP.NET MVC, partie 17 : Validation avec Jeff Atwood](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-17-checkout-with-jeff-atwood.md)
         - [Application Storefront ASP.NET MVC, partie 18 : Création de l’expérience](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-18-creating-an-experience.md)
-        - [ASP.NET MVC, partie vitrine 19 : Traitement des commandes avec Windows Workflow](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
+        - [Application Storefront ASP.NET MVC, partie 19 : Traitement des commandes avec un workflow Windows](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19-processing-orders-with-windows-workflow.md)
         - [Application Storefront ASP.NET MVC, partie 19a : Suite concernant le workflow Windows](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-19a-windows-workflow-followup.md)
         - [Application Storefront ASP.NET MVC, partie 20 : Journalisation](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-20-logging.md)
         - [Application Storefront ASP.NET MVC, partie 21 : Gestionnaire de commandes et personnalisation](mvc-1/aspnet-mvc-storefront/aspnet-mvc-storefront-part-21-order-manager-and-personalization.md)

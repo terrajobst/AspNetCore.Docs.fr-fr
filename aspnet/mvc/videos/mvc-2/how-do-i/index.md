@@ -1,55 +1,51 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/index
-title: Procédure--I | Documents Microsoft
+title: Procédure--je | Microsoft Docs
 author: rick-anderson
-description: Vidéos de cette section couvrent ASP.NET MVC, y compris la création d’une application de commerce électronique entières du début à la fin 'La vitrine -'.
-ms.author: aspnetcontent
-manager: wpickett
+description: Vidéos de cette section couvrent ASP.NET MVC, y compris la création d’une application de commerce électronique entières du début à la fin « La vitrine - ».
+ms.author: riande
 ms.date: 09/15/2011
-ms.topic: article
 ms.assetid: 9bc6c53a-3e54-4f9d-8bef-0f3359aecf7b
-ms.technology: dotnet-mvc
-ms.prod: .net-framework
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i
 msc.type: chapter
-ms.openlocfilehash: 54d09894c61d8be19ab6b8a1ceb37312c47497a7
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 09b8b31059ed6a238414714847d191426e28db28
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26504258"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48254115"
 ---
 <a name="how-do-i"></a>Procédure--I
 ====================
-> Vidéos de cette section couvrent ASP.NET MVC, y compris la création d’une application de commerce électronique entières du début à la fin « La vitrine ».
+> Vidéos de cette section couvrent ASP.NET MVC, y compris la création d’une application de commerce électronique entières du début à la fin « La vitrine - ».
 
 
-- [Création d’une Application de liste des tâches avec ASP.NET MVC](creating-a-tasklist-application-with-aspnet-mvc.md)
-- [Création d’une Application de base de données de film avec ASP.NET MVC des 15 dernières minutes](creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc.md)
-- [Fonctionnement des modèles, des vues et des contrôleurs](understanding-models-views-and-controllers.md)
+- [Création d’une application de liste de tâches avec ASP.NET MVC](creating-a-tasklist-application-with-aspnet-mvc.md)
+- [Création d’une application de base de données de films en 15 minutes avec ASP.NET MVC](creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc.md)
+- [Présentation des modèles, des vues et des contrôleurs](understanding-models-views-and-controllers.md)
 - [Vue d’ensemble du contrôleur ASP.NET MVC](aspnet-mvc-controller-overview.md)
-- [Présentation des contrôleurs, les Actions de contrôleur et les résultats d’Action](understanding-controllers-controller-actions-and-action-results.md)
-- [Présentation des vues, afficher les données et programmes d’assistance HTML](understanding-views-view-data-and-html-helpers.md)
+- [Présentation des contrôleurs, des actions de contrôleur et des résultats des actions](understanding-controllers-controller-actions-and-action-results.md)
+- [Présentation des vues, des données des vues et des helpers HTML](understanding-views-view-data-and-html-helpers.md)
 - [Introduction au routage d’URL](an-introduction-to-url-routing.md)
-- [Prévention des attaques d’injection de code JavaScript](preventing-javascript-injection-attacks.md)
-- [Création de Tests unitaires pour les Applications ASP.NET MVC](creating-unit-tests-for-aspnet-mvc-applications.md)
-- [Création de programmes d’assistance HTML personnalisé](creating-custom-html-helpers.md)
-- [Création de Classes de modèle avec LINQ to SQL](creating-model-classes-with-linq-to-sql.md)
-- [Affichage d’une Table de base de données](displaying-a-table-of-database-data.md)
-- [Quelle est la vidéo technique minute de ASP.NET MVC 80 pour les développeurs, génération de NerdDinner](what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner.md)
-- [Pourquoi ASP.NET MVC 3 minutes vidéo de présentation pour les décideurs](why-aspnet-mvc-3-minute-overview-video-for-decision-makers.md)
-- [ASP.NET MVC : Comment 10 minutes vidéo technique pour les développeurs](aspnet-mvc-how-10-minute-technical-video-for-developers.md)
-- [Return JSON les données mises en forme d’un appel AJAX dans une Application ASP.NET MVC](how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
-- [Utiliser des données dans les vues partielles ASP.NET MVC](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
-- [Implémenter des modèles de vue pour gérer des données pour des vues ASP.NET MVC](how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
-- [Créer un programme d’assistance HTML personnalisé pour une Application MVC](how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)
-- [Travailler avec des classeurs de modèles dans une Application MVC](how-do-i-work-with-model-binders-in-an-mvc-application.md)
-- [Utilisation des attributs HttpVerbs dans une Application MVC](how-do-i-use-httpverbs-attributes-in-an-mvc-application.md)
-- [MVC2 - CODAGE Html](mvc2-html-encoding.md)
-- [MVC2 - programmes d’assistance StronglyTyped](mvc2-stronglytyped-helpers.md)
+- [Prévention des attaques par injection de code JavaScript](preventing-javascript-injection-attacks.md)
+- [Création de tests unitaires pour les applications ASP.NET MVC](creating-unit-tests-for-aspnet-mvc-applications.md)
+- [Création de helpers HTML personnalisés](creating-custom-html-helpers.md)
+- [Création de classes de modèle avec LINQ to SQL](creating-model-classes-with-linq-to-sql.md)
+- [Affichage d’une table de données de la base de données](displaying-a-table-of-database-data.md)
+- [Présentation d’ASP.NET MVC - Vidéo technique de 80 minutes pour les développeurs, création de NerdDinner](what-is-aspnet-mvc-80-minute-technical-video-for-developers-building-nerddinner.md)
+- [Pourquoi ASP.NET MVC ? - Vidéo de présentation de 3 minutes pour les décideurs](why-aspnet-mvc-3-minute-overview-video-for-decision-makers.md)
+- [Utilisation d’ASP.NET MVC - Vidéo technique de 10 minutes pour les développeurs](aspnet-mvc-how-10-minute-technical-video-for-developers.md)
+- [Retourner des données au format JSON pour un appel AJAX dans une application web ASP.NET MVC](how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
+- [Utiliser des données dans des vues partielles ASP.NET MVC](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
+- [Implémenter des modèles de vue pour gérer les données des vues ASP.NET MVC](how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
+- [Créer un helper HTML personnalisé pour une application MVC](how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)
+- [Utiliser des classeurs de modèles dans une application MVC](how-do-i-work-with-model-binders-in-an-mvc-application.md)
+- [Utiliser des attributs HttpVerbs dans une application MVC](how-do-i-use-httpverbs-attributes-in-an-mvc-application.md)
+- [MVC2 - Codage du HTML](mvc2-html-encoding.md)
+- [MVC2 - Helpers StronglyTyped](mvc2-stronglytyped-helpers.md)
 - [MVC2 - Validation du modèle](mvc2-model-validation.md)
-- [MVC2 - personnalisation du modèle](mvc2-template-customization.md)
-- [ASP.NET MVC 2 - zones](aspnet-mvc-2-areas.md)
+- [MVC2 - Personnalisation du modèle](mvc2-template-customization.md)
+- [ASP.NET MVC 2 - Zones](aspnet-mvc-2-areas.md)
 - [ASP.NET MVC 2 - Action de rendu](aspnet-mvc-2-render-action.md)
-- [Présentation de 5 minutes d’ASP.NET MVC](5-minute-introduction-to-aspnet-mvc.md)
-- [Mieux savoir ASP.NET MVC](how-to-best-learn-asp-net-mvc.md)
+- [Introduction à ASP.NET MVC (5 minutes)](5-minute-introduction-to-aspnet-mvc.md)
+- [Meilleurs parcours d’apprentissage d’ASP.NET MVC](how-to-best-learn-asp-net-mvc.md)

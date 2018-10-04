@@ -1,32 +1,28 @@
 ---
 uid: web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/index
-title: Filtrage des scénarios avec le contrôle DataList et répéteur | Documents Microsoft
+title: Scénarios de filtrage avec les contrôles DataList et Repeater | Microsoft Docs
 author: rick-anderson
-description: Dans ces didacticiels vous allez apprendre à afficher les rapports maître/détail à l’aide des listes déroulantes pour les enregistrements principaux et les détails du contrôle DataList.
-ms.author: aspnetcontent
-manager: wpickett
+description: Dans ces didacticiels, vous allez apprendre à afficher les rapports maître/détail à l’aide des listes déroulantes pour les enregistrements maîtres et un contrôle DataList pour plus d’informations.
+ms.author: riande
 ms.date: 10/05/2011
-ms.topic: article
 ms.assetid: 80b17464-8395-4b82-8f11-5d8ee1351d53
-ms.technology: dotnet-webforms
-ms.prod: .net-framework
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater
 msc.type: chapter
-ms.openlocfilehash: a8a1c2301dc287b49149bc5afe85a7dedad54d58
-ms.sourcegitcommit: 9a9483aceb34591c97451997036a9120c3fe2baf
-ms.translationtype: HT
+ms.openlocfilehash: 12d8faeb9c1087cbb67812eba5b2cca7854205be
+ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "26514098"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "48253970"
 ---
-<a name="filtering-scenarios-with-the-datalist-and-repeater"></a>Scénarios de filtrage des répéteur DataList
+<a name="filtering-scenarios-with-the-datalist-and-repeater"></a>Scénarios de filtrage avec les contrôles DataList et Repeater
 ====================
-> Dans ces didacticiels vous allez apprendre à afficher les rapports maître/détail à l’aide des listes déroulantes pour les enregistrements principaux et les détails du contrôle DataList.
+> Dans ces didacticiels, vous allez apprendre à afficher les rapports maître/détail à l’aide des listes déroulantes pour les enregistrements maîtres et un contrôle DataList pour plus d’informations.
 
 
-- [Maître/détail, le filtrage avec une liste déroulante (c#)](master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
-- [Maître/détail, le filtrage entre les deux Pages (c#)](master-detail-filtering-acess-two-pages-datalist-cs.md)
-- [Maître/détail à l’aide d’une liste à puces des enregistrements principaux avec DataList détails (c#)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-- [Maître/détail, le filtrage avec une liste déroulante (VB)](master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
-- [Maître/détail, le filtrage entre les deux Pages (VB)](master-detail-filtering-acess-two-pages-datalist-vb.md)
-- [Maître/détail à l’aide d’une liste à puces des enregistrements principaux avec détails DataList (VB)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
+- [Filtrage maître/détail avec une DropDownList (C#)](master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
+- [Filtrage maître/détail sur deux pages (C#)](master-detail-filtering-acess-two-pages-datalist-cs.md)
+- [Représentation maître/détail avec une liste à puces des enregistrements maîtres avec une DataList des détails (C#)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
+- [Filtrage maître/détail avec une DropDownList (VB)](master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+- [Filtrage maître/détail sur deux pages (VB)](master-detail-filtering-acess-two-pages-datalist-vb.md)
+- [Représentation maître/détail avec une liste à puces des enregistrements maîtres avec une DataList des détails (VB)](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
