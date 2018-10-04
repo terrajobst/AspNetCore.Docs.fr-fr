@@ -8,37 +8,34 @@ ms.date: 06/24/2014
 ms.assetid: 1e1927c0-ded1-4752-80fd-a146628d2f09
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
 msc.type: authoredcontent
-ms.openlocfilehash: 7f2d0b8fa8ac290e5018cb5237b1fedb5f40eeb0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 48c1a78c96cb0ebfa0b053dfef84e76433112650
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834440"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795416"
 ---
 <a name="create-an-odata-v4-endpoint-using-aspnet-web-api-22"></a>Créer un point de terminaison OData v4 à l’aide d’ASP.NET Web API 2.2
 ====================
 par [Mike Wasson](https://github.com/MikeWasson)
 
 > L’Open Data Protocol (OData) est un protocole d’accès aux données pour le web. OData offre un moyen uniforme pour interroger et manipuler des jeux de données via des opérations CRUD (créer, lire, mettre à jour et supprimer).
-> 
+>
 > API Web ASP.NET prend en charge v3 et v4 du protocole. Vous pouvez même disposer d’un point de terminaison v4 qui s’exécute côte à côte avec un point de terminaison v3.
-> 
+>
 > Ce didacticiel montre comment créer un point de terminaison OData v4 qui prend en charge les opérations CRUD.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Versions des logiciels utilisées dans le didacticiel
-> 
-> 
+>
 > - Web API 2.2
 > - OData v4
-> - [Visual Studio 2013 Update 2](https://www.visualstudio.com/downloads/download-visual-studio-vs)
+> - Visual Studio 2013 (Téléchargez Visual Studio 2017 [ici](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017))
 > - Entity Framework 6
 > - .NET 4.5
-> 
-> 
+>
 > ## <a name="tutorial-versions"></a>Versions de didacticiels
-> 
+>
 > Pour la Version 3 d’OData, consultez [création d’un point de terminaison OData v3](../odata-v3/creating-an-odata-endpoint.md).
-
 
 ## <a name="create-the-visual-studio-project"></a>Créer le projet Visual Studio
 

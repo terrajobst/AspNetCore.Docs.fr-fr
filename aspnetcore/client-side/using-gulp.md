@@ -1,23 +1,23 @@
 ---
-title: Utilisation de Gulp dans ASP.NET Core
+title: Utiliser Gulp dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment utiliser Gulp dans ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 02/28/2017
+ms.date: 10/04/2018
 uid: client-side/using-gulp
-ms.openlocfilehash: 35f62bf276d3708df0e2c8b56a44c34c178d8ff8
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 4f383be0498b5b861bd43cc0f0685b1e62c7571b
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36278250"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795516"
 ---
-# <a name="use-gulp-in-aspnet-core"></a>Utilisation de Gulp dans ASP.NET Core
+# <a name="use-gulp-in-aspnet-core"></a>Utiliser Gulp dans ASP.NET Core
 
-Par [Erik Reitan](https://github.com/Erikre), [Scott Addie](https://scottaddie.com), [Michel Roth](https://github.com/danroth27), et [Shayne Boyer](https://twitter.com/spboyer)
+Par [Scott Addie](https://scottaddie.com), [Shayne Boyer](https://twitter.com/spboyer), et [David PIN](https://twitter.com/davidpine7)
 
-Dans une application web moderne classique, le processus de génération peut :
+Dans une application web moderne typique, le processus de génération peut :
 
 * Regrouper et minimiser les fichiers JavaScript et CSS.
 * Exécuter les outils pour appeler les tâches de regroupement et de minimisation avant chaque build.
@@ -26,21 +26,21 @@ Dans une application web moderne classique, le processus de génération peut :
 
 Un *exécuteur de tâches* est un outil qui automatise les tâches de développement de routine et bien plus encore. Visual Studio fournit la prise en charge intégrée pour deux exécuteurs de tâches de base de JavaScript populaires: [Gulp](https://gulpjs.com/) et [Grunt](using-grunt.md).
 
-## <a name="gulp"></a>gulp
+## <a name="gulp"></a>Gulp
 
 Gulp est un toolkit de build en continu basé sur JavaScript pour le code côté client. Il est couramment utilisé pour diffuser des fichiers côté client via une série de processus de déclenchement d’un événement spécifique dans un environnement de génération. Par exemple, Gulp peut être utilisé pour automatiser [le regroupement et la minimisation](bundling-and-minification.md) ou le nettoyage d’un environnement de développement avant une nouvelle build.
 
-Un ensemble de tâches de Gulp est défini dans *gulpfile.js*. Le code JavaScript suivant inclut les modules Gulp et spécifie les chemins d’accès des fichiers référencés dans les tâches à venir :
+Un ensemble de tâches Gulp est défini dans *gulpfile.js*. Le code JavaScript suivant inclut les modules Gulp et spécifie les chemins d’accès de fichier pour être référencé dans les tâches à venir :
 
 ```javascript
 /// <binding Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),
-  rimraf = require("rimraf"),
-  concat = require("gulp-concat"),
-  cssmin = require("gulp-cssmin"),
-  uglify = require("gulp-uglify");
+    rimraf = require("rimraf"),
+    concat = require("gulp-concat"),
+    cssmin = require("gulp-cssmin"),
+    uglify = require("gulp-uglify");
 
 var paths = {
   webroot: "./wwwroot/"
@@ -60,39 +60,38 @@ Le code ci-dessus spécifie quels modules de nœud sont requis. La fonction `req
 | ----------- | ----------- |
 | gulp        | Système de génération en continu Gulp. Pour plus d’informations, consultez [gulp](https://www.npmjs.com/package/gulp). |
 | rimraf      | Un module Node de suppression. Pour plus d’informations, consultez [rimraf](https://www.npmjs.com/package/rimraf). |
-| gulp-concat | Un module qui concatène des fichiers en fonction de caractère de saut de ligne du système d’exploitation. Pour plus d’informations, consultez [gulp-concat](https://www.npmjs.com/package/gulp-concat). |
-| gulp-cssmin | Un module qui minimise les fichiers CSS. Pour plus d’informations, consultez [gulp-cssmin](https://www.npmjs.com/package/gulp-cssmin). |
-| gulp-uglify | Un module qui minimise les fichiers *.js*. Pour plus d’informations, consultez [gulp-uglify](https://www.npmjs.com/package/gulp-uglify). |
+| concat de gulp | Un module qui concatène les fichiers en fonction de caractère de saut de ligne du système d’exploitation. Pour plus d’informations, consultez [gulp-concat](https://www.npmjs.com/package/gulp-concat). |
+| cssmin de gulp | Un module qui minimise les fichiers CSS. Pour plus d’informations, consultez [gulp-cssmin](https://www.npmjs.com/package/gulp-cssmin). |
+| uglify de gulp | Un module qui minimise les fichiers *.js*. Pour plus d’informations, consultez [uglify de gulp](https://www.npmjs.com/package/gulp-uglify). |
 
 Une fois que les modules requis sont importés, les tâches peuvent être spécifiées. Ici, il existe six tâches enregistrées, représentées par le code suivant :
 
 ```javascript
-gulp.task("clean:js", function (cb) {
-  rimraf(paths.concatJsDest, cb);
-});
+gulp.task("clean:js", done => rimraf(paths.concatJsDest, done));
+gulp.task("clean:css", done => rimraf(paths.concatCssDest, done));
+gulp.task("clean", gulp.series(["clean:js", "clean:css"]));
 
-gulp.task("clean:css", function (cb) {
-  rimraf(paths.concatCssDest, cb);
-});
-
-gulp.task("clean", ["clean:js", "clean:css"]);
-
-gulp.task("min:js", function () {
+gulp.task("min:js", () => {
   return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
     .pipe(concat(paths.concatJsDest))
     .pipe(uglify())
     .pipe(gulp.dest("."));
 });
 
-gulp.task("min:css", function () {
+gulp.task("min:css", () => {
   return gulp.src([paths.css, "!" + paths.minCss])
     .pipe(concat(paths.concatCssDest))
     .pipe(cssmin())
     .pipe(gulp.dest("."));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+gulp.task("min", gulp.series(["min:js", "min:css"]));
+    
+// A 'default' task is required by Gulp v4
+gulp.task("default", gulp.series(["min"]));
 ```
+
+---
 
 Le tableau suivant fournit une explication des tâches spécifiées dans le code ci-dessus :
 
@@ -101,27 +100,41 @@ Le tableau suivant fournit une explication des tâches spécifiées dans le code
 |nettoyer : js|Une tâche qui utilise le module Node de suppression rimraf pour supprimer la version réduite du fichier site.js.|
 |nettoyer : css|Une tâche qui utilise le module Node de suppression de rimraf pour supprimer la version réduite du fichier site.css.|
 |Nettoyer|Une tâche qui appelle la tâche `clean:js`, suivie par la tâche `clean:css`.|
-|min:js|Une tâche qui minimise et concatène tous les fichiers .js dans le dossier js. Le. les fichiers min.js sont exclus.|
+|min:js|Une tâche qui minimise et concatène tous les fichiers .js dans le dossier js. Le. min.js fichiers sont exclus.|
 |min:CSS|Une tâche qui minimise et concatène tous les fichiers .css dans le dossier css. Le. les fichiers min.css sont exclus.|
 |min|Une tâche qui appelle la tâche `min:js`suivi par la tâche `min:css`.|
 
-## <a name="running-default-tasks"></a>Exécution des tâches par défaut
+## <a name="running-default-tasks"></a>Tâches en cours d’exécution par défaut
 
-Si vous n’avez pas déjà créé une application Web, créez un nouveau projet d’Application Web ASP.NET dans Visual Studio.
+Si vous n’avez pas déjà créé une nouvelle application Web, créez un nouveau projet d’Application Web ASP.NET dans Visual Studio.
 
-1.  Ajouter un nouveau fichier JavaScript à votre projet et nommez-le *gulpfile.js*, puis copiez le code suivant.
+1.  Ouvrez le fichier *package.json* (ajoutez-le s'il n'existe pas) et ajoutez le code suivant.
+
+    ```json
+    {
+      "devDependencies": {
+        "gulp": "^4.0.0",
+        "gulp-concat": "2.6.1",
+        "gulp-cssmin": "0.2.0",
+        "gulp-uglify": "3.0.0",
+        "rimraf": "2.6.1"
+      }
+    }
+    ```
+
+2.  Ajoutez un nouveau fichier JavaScript à votre projet et nommez-le *gulpfile.js*, puis copiez le code suivant.
 
     ```javascript
     /// <binding Clean='clean' />
     "use strict";
     
-    var gulp = require("gulp"),
-      rimraf = require("rimraf"),
-      concat = require("gulp-concat"),
-      cssmin = require("gulp-cssmin"),
-      uglify = require("gulp-uglify");
+    const gulp = require("gulp"),
+          rimraf = require("rimraf"),
+          concat = require("gulp-concat"),
+          cssmin = require("gulp-cssmin"),
+          uglify = require("gulp-uglify");
     
-    var paths = {
+    const paths = {
       webroot: "./wwwroot/"
     };
     
@@ -132,45 +145,28 @@ Si vous n’avez pas déjà créé une application Web, créez un nouveau projet
     paths.concatJsDest = paths.webroot + "js/site.min.js";
     paths.concatCssDest = paths.webroot + "css/site.min.css";
     
-    gulp.task("clean:js", function (cb) {
-      rimraf(paths.concatJsDest, cb);
-    });
-    
-    gulp.task("clean:css", function (cb) {
-      rimraf(paths.concatCssDest, cb);
-    });
-    
-    gulp.task("clean", ["clean:js", "clean:css"]);
-    
-    gulp.task("min:js", function () {
+    gulp.task("clean:js", done => rimraf(paths.concatJsDest, done));
+    gulp.task("clean:css", done => rimraf(paths.concatCssDest, done));
+    gulp.task("clean", gulp.series(["clean:js", "clean:css"]));
+
+    gulp.task("min:js", () => {
       return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
         .pipe(concat(paths.concatJsDest))
         .pipe(uglify())
         .pipe(gulp.dest("."));
     });
-    
-    gulp.task("min:css", function () {
+
+    gulp.task("min:css", () => {
       return gulp.src([paths.css, "!" + paths.minCss])
         .pipe(concat(paths.concatCssDest))
         .pipe(cssmin())
         .pipe(gulp.dest("."));
     });
+
+    gulp.task("min", gulp.series(["min:js", "min:css"]));
     
-    gulp.task("min", ["min:js", "min:css"]);
-    ```
-
-2.  Ouvrez le fichier *package.json* (ajoutez-le s'il n'existe pas) et ajoutez le code suivant.
-
-    ```json
-    {
-      "devDependencies": {
-        "gulp": "3.9.1",
-        "gulp-concat": "2.6.1",
-        "gulp-cssmin": "0.1.7",
-        "gulp-uglify": "2.0.1",
-        "rimraf": "2.6.1"
-      }
-    }
+    // A 'default' task is required by Gulp v4
+    gulp.task("default", gulp.series(["min"]));
     ```
 
 3.  Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur *gulpfile.js*, puis sélectionnez **Task Runner Explorer**.
@@ -192,7 +188,7 @@ Si vous n’avez pas déjà créé une application Web, créez un nouveau projet
 
 5.  Cliquer avec le bouton droit sur la tâche **clean**, puis sélectionnez **Bindings**  >  **Before Build**.
 
-    ![Liaison BeforeBuild Task Runner Explorer](using-gulp/_static/05-TaskRunner-BeforeBuild.png)
+    ![Task Runner Explorer BeforeBuild de liaison](using-gulp/_static/05-TaskRunner-BeforeBuild.png)
 
     La liaison **avant la build** configure la tâche clean pour qu'elle s’exécute automatiquement avant chaque génération du projet.
 
@@ -213,8 +209,9 @@ Pour définir une nouvelle tâche Gulp, modifier *gulpfile.js*.
 1.  Ajoutez le code JavaScript suivant à la fin de *gulpfile.js*:
 
     ```javascript
-    gulp.task("first", function () {
+    gulp.task('first', done => {
       console.log('first task! <-----');
+      done(); // signal completion
     });
     ```
 
@@ -228,24 +225,28 @@ Pour définir une nouvelle tâche Gulp, modifier *gulpfile.js*.
 
     ![Exécutez la tâche first de Task Runner Explorer](using-gulp/_static/06-TaskRunner-First.png)
 
-    Le texte de sortie s’affiche. Pour voir des exemples basés sur des scénarios courants, consultez [Gulp les recettes](#gulp-recipes).
+    Le texte de sortie s’affiche. Pour voir des exemples basés sur des scénarios courants, consultez [recettes Gulp](#gulp-recipes).
 
-## <a name="defining-and-running-tasks-in-a-series"></a>Définition et l’exécution de tâches dans une série
+## <a name="defining-and-running-tasks-in-a-series"></a>Définition et l’exécution des tâches dans une série
 
 Lorsque vous exécutez plusieurs tâches, les tâches sont exécutées simultanément par défaut. Toutefois, si vous avez besoin d'exécuter des tâches dans un ordre spécifique, vous devez spécifier quand chaque tâche est terminée, ainsi que les tâches qui dépendent de l’achèvement d’une autre tâche.
 
 1.  Pour définir une série de tâches à exécuter dans l’ordre, remplacez la tâche `first` que vous avez ajoutée ci-dessus dans *gulpfile.js* avec les éléments suivants :
 
     ```javascript
-    gulp.task("series:first", function () {
+    gulp.task('series:first', done => {
       console.log('first task! <-----');
+      done(); // signal completion
     });
- 
-    gulp.task("series:second", ["series:first"], function () {
+    gulp.task('series:second', done => {
       console.log('second task! <-----');
+      done(); // signal completion
     });
- 
-    gulp.task("series", ["series:first", "series:second"], function () {});
+
+    gulp.task('series', gulp.series(['series:first', 'series:second']), () => { });
+
+    // A 'default' task is required by Gulp v4
+    gulp.task('default', gulp.series('series'));
     ```
  
     Vous disposez maintenant de trois tâches : `series:first`, `series:second`, et `series`. La tâche `series:second` inclut un deuxième paramètre qui spécifie un tableau de tâches à exécuter et terminées avant que la tâche `series:second` tâche exécutera. Comme indiqué dans le code ci-dessus, seule la tâche `series:first` doit être réalisée avant que la tâche `series:second`s'exécute.
@@ -260,7 +261,7 @@ Lorsque vous exécutez plusieurs tâches, les tâches sont exécutées simultan�
 
 ## <a name="intellisense"></a>IntelliSense
 
-IntelliSense fournit l’exécution de code, des descriptions de paramètre et d’autres fonctionnalités pour améliorer la productivité et réduire les erreurs. Les tâches de gulp sont écrites en JavaScript ; Par conséquent, IntelliSense peut fournir une assistance lors du développement. Lorsque vous travaillez avec JavaScript, IntelliSense répertorie les objets, les fonctions, les propriétés et paramètres qui sont disponibles en fonction de votre contexte actuel. Sélectionnez une option de programmation dans la liste contextuelle fournie par IntelliSense pour compléter le code.
+IntelliSense propose la saisie semi-automatique de code, des descriptions de paramètres et d’autres fonctionnalités pour augmenter la productivité et réduire les erreurs. Tâches gulp sont écrits en JavaScript ; Par conséquent, IntelliSense peut fournir une assistance lors du développement. Lorsque vous travaillez avec JavaScript, IntelliSense répertorie les objets, les fonctions, les propriétés et paramètres qui sont disponibles en fonction de votre contexte actuel. Sélectionnez une option de codage dans la liste contextuelle fournie par IntelliSense pour compléter le code.
 
 ![gulp IntelliSense](using-gulp/_static/08-IntelliSense.png)
 
@@ -268,7 +269,7 @@ Pour plus d’informations sur IntelliSense, consultez [JavaScript IntelliSense]
 
 ## <a name="development-staging-and-production-environments"></a>Environnements de développement, de staging et de production
 
-Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour intermédiaire et de production, les fichiers traités sont enregistrés dans un emplacement intermédiaire et de production local. Le *_Layout.cshtml* fichier utilise le **environnement** balise d’assistance pour fournir deux versions différentes de fichiers CSS. Une version des fichiers CSS est pour le développement et l’autre version est optimisée pour la préparation et de production. Dans Visual Studio 2017, lorsque vous modifiez le **ASPNETCORE_ENVIRONMENT** variable d’environnement `Production`, Visual Studio génère l’application Web et un lien vers les fichiers CSS sous forme réduites. La balise suivante montre la **environnement** programmes d’assistance qui contient des balises de liens à la balise la `Development` CSS le réduite et fichiers `Staging, Production` fichiers CSS.
+Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour la préproduction et production, les fichiers traités sont enregistrés dans un emplacement intermédiaire et de production local. Le *_Layout.cshtml* fichier utilise le **environnement** balise d’assistance pour fournir deux versions différentes de fichiers CSS. Une version des fichiers CSS est pour le développement et l’autre version est optimisée pour l’environnement intermédiaire et de production. Dans Visual Studio 2017, lorsque vous modifiez le **ASPNETCORE_ENVIRONMENT** variable d’environnement `Production`, Visual Studio génère l’application Web et un lien vers les fichiers CSS réduites. L’exemple de balisage suivant le **environnement** tag helpers contenant des balises de liens à la `Development` CSS fichiers et le minimisés `Staging, Production` fichiers CSS.
 
 ```html
 <environment names="Development">
@@ -293,7 +294,7 @@ Lorsque Gulp est utilisé pour optimiser les fichiers côté client pour interm�
 </environment>
 ```
 
-## <a name="switching-between-environments"></a>Basculer entre les environnements
+## <a name="switching-between-environments"></a>Changer d’environnement
 
 Pour basculer entre la compilation pour des environnements différents, vous devez modifier la valeur de la variable d'environnement **ASPNETCORE_ENVIRONMENT**.
 

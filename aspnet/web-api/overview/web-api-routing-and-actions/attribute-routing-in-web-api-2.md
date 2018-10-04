@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: f13720c5e9de99fb4ae5b27a757c257cac881f89
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 35cf3bf555218b6b49b30f48186e4c67aff4ff7b
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824556"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795549"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>Routage par attributs dans ASP.NET Web API 2
 ====================
@@ -25,10 +25,9 @@ Le style antérieures de routage, appelé conventionnelle routage, est toujours 
 
 Cette rubrique montre comment activer le routage par attributs et décrit les différentes options de routage par attributs. Pour obtenir un didacticiel de bout en bout qui utilise le routage par attributs, consultez [créer une API REST avec le routage par attributs dans Web API 2](create-a-rest-api-with-attribute-routing.md).
 
-
 ## <a name="prerequisites"></a>Prérequis
 
-[Visual Studio 2017](https://www.visualstudio.com/vs/) Community, Professional ou Enterprise Edition
+[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community, Professional ou Enterprise edition
 
 Vous pouvez également utiliser Gestionnaire de Package NuGet pour installer les packages nécessaires. À partir de la **outils** menu dans Visual Studio, sélectionnez **Library Package Manager**, puis sélectionnez **Console du Gestionnaire de Package**. Entrez la commande suivante dans la fenêtre de Console du Gestionnaire de Package :
 
@@ -55,21 +54,21 @@ Voici d’autres modèles de cet attribut routage rend facile.
 
 Dans cet exemple, « / api/v1/products » serait routé vers un contrôleur différent de « / v2/api/produits ».
 
-`/api/v1/products`  
+`/api/v1/products`
 `/api/v2/products`
 
 **Segments URI surchargés**
 
 Dans cet exemple, « 1 » est un numéro de commande, mais « en attente » correspond à une collection.
 
-`/orders/1`  
+`/orders/1`
 `/orders/pending`
 
 **Plusieurs types de paramètres**
 
 Dans cet exemple, « 1 » est un numéro de commande, mais « 2013/06/16 » spécifie une date.
 
-`/orders/1`  
+`/orders/1`
 `/orders/2013/06/16`
 
 <a id="enable"></a>
@@ -251,7 +250,7 @@ Lorsque le framework tente de faire correspondre un URI avec un itinéraire, il 
 Voici comment le classement total est déterminé :
 
 1. Comparer la **RouteOrder** propriété de l’attribut d’itinéraire.
-2. Examinez chaque segment d’URI dans le modèle d’itinéraire. Pour chaque segment, commande comme suit : 
+2. Examinez chaque segment d’URI dans le modèle d’itinéraire. Pour chaque segment, commande comme suit :
 
     1. Segments de littéral.
     2. Paramètres d’itinéraire avec des contraintes.

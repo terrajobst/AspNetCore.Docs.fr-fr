@@ -8,30 +8,28 @@ ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 02805eda4f8dceb467547fa4e00aef8ea956f228
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 426e3500c504a651a325eec021e2d9e8b9cc1d32
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292282"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795278"
 ---
 <a name="tracing-in-aspnet-web-api-2"></a>Le traçage dans ASP.NET Web API 2
 ====================
 par [Mike Wasson](https://github.com/MikeWasson)
 
 > Lorsque vous essayez de déboguer une application basée sur le web, rien ne vaut pour un bon jeu de journaux de suivi. Ce didacticiel montre comment activer le suivi dans l’API Web ASP.NET. Vous pouvez utiliser cette fonctionnalité pour effectuer le suivi de ce que fait l’infrastructure API Web avant et après que qu’il appelle votre contrôleur. Vous pouvez également l’utiliser pour effectuer le suivi de votre propre code.
-> 
+>
 > ## <a name="software-versions-used-in-the-tutorial"></a>Versions des logiciels utilisées dans le didacticiel
-> 
-> 
-> - [Visual Studio 2017](https://www.visualstudio.com/downloads/) (fonctionne également avec Visual Studio 2015)
+>
+> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) (fonctionne également avec Visual Studio 2015)
 > - Web API 2
 > - [Microsoft.AspNet.WebApi.Tracing](http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Tracing)
 
-
 ## <a name="enable-systemdiagnostics-tracing-in-web-api"></a>Activer System.Diagnostics Tracing in Web API
 
-Tout d’abord, nous allons créer un nouveau projet d’Application Web ASP.NET. Dans Visual Studio, à partir de la **fichier** menu, sélectionnez **New**, puis **projet**. Sous **modèles**, **Web**, sélectionnez **Application Web ASP.NET**.
+Tout d’abord, nous allons créer un nouveau projet d’Application Web ASP.NET. Dans Visual Studio, à partir de la **fichier** menu, sélectionnez **New** > **projet**. Sous **modèles**, **Web**, sélectionnez **Application Web ASP.NET**.
 
 [![](tracing-in-aspnet-web-api/_static/image2.png)](tracing-in-aspnet-web-api/_static/image1.png)
 

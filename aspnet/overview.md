@@ -9,12 +9,12 @@ ms.date: 03/12/2010
 ms.technology: aspnet
 msc.legacyurl: ''
 msc.type: content
-ms.openlocfilehash: 5bdebcc226050afc2469840dc4a4dc97ec6b80b2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 2dc48e1262b1807a77a9889f7e0e62c9b9ea463e
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825749"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48794809"
 ---
 # <a name="aspnet-overview"></a>Vue d’ensemble d’ASP.NET
 
@@ -24,7 +24,7 @@ ASP.NET est une infrastructure web gratuite pour créer des sites Web attrayants
 
 ## <a name="get-started"></a>Prise en main
 
-[Visual Studio Community 2017](https://www.visualstudio.com/downloads/), un gratuit IDE pour ASP.NET sur Windows.
+Installer [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) Community edition, un IDE gratuit pour ASP.NET sur Windows.
 
 ## <a name="websites-and-web-applications"></a>Sites et applications web
 
@@ -34,7 +34,7 @@ Chaque framework cible un style de développement différents. Celle que vous ch
 
 Voici une vue d’ensemble de chacun des frameworks et quelques idées pour savoir comment choisir entre eux. Si vous préférez une présentation vidéo, consultez [rendre les sites Web avec ASP.NET](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/Making-Websites-with-ASPNET) et [What ' s Web Tools ?](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-web-tools)
 
-|   | Si vous êtes habitué | Style de développement | Expertise | 
+|   | Si vous êtes habitué | Style de développement | Expertise |
 |-----------|----------------------|-----------------------------------------------------|----------------|
 | Web Forms | Win Forms, WPF, .NET | Développement rapide à l’aide d’une riche bibliothèque de contrôles qui encapsulent le balisage HTML | RAD de niveau intermédiaire et avancée |
 | MVC       | Ruby on Rails, .NET  | Contrôle total sur le balisage HTML, code et de balise séparé et facile à écrire des tests. Le meilleur choix pour les applications mobiles et de page unique (SPA). | Niveau intermédiaire et avancée |
@@ -42,13 +42,13 @@ Voici une vue d’ensemble de chacun des frameworks et quelques idées pour savo
 
 ### <a name="web-forms"></a>Web Forms
 
-Avec ASP.NET Web Forms, vous pouvez créer des sites Web dynamiques à l’aide d’un modèle familier de glisser-déplacer, pilotée par événements. Une aire de conception et des centaines de composants et contrôles vous permettent de créer rapidement des sites gérés par l’interface utilisateur sophistiqués et puissants avec accès aux données. 
+Avec ASP.NET Web Forms, vous pouvez créer des sites Web dynamiques à l’aide d’un modèle familier de glisser-déplacer, pilotée par événements. Une aire de conception et des centaines de composants et contrôles vous permettent de créer rapidement des sites gérés par l’interface utilisateur sophistiqués et puissants avec accès aux données.
 
 [En savoir plus sur Web Forms](web-forms/index.md)
 
 ### <a name="mvc"></a>MVC
 
-ASP.NET MVC offre un moyen puissant, basé sur des modèles pour créer des sites Web dynamiques qui permet une séparation claire des préoccupations et qui vous donne un contrôle total sur le balisage pour le développement agile et plus agréable. ASP.NET MVC inclut de nombreuses fonctionnalités qui permettent un développement rapide TDD rapide et convivial pour la création d’applications sophistiquées qui utilisent les dernières normes web. 
+ASP.NET MVC offre un moyen puissant, basé sur des modèles pour créer des sites Web dynamiques qui permet une séparation claire des préoccupations et qui vous donne un contrôle total sur le balisage pour le développement agile et plus agréable. ASP.NET MVC inclut de nombreuses fonctionnalités qui permettent un développement rapide TDD rapide et convivial pour la création d’applications sophistiquées qui utilisent les dernières normes web.
 
 [En savoir plus sur MVC](mvc/index.md)
 
@@ -80,7 +80,7 @@ ASP.NET SignalR est une nouvelle bibliothèque pour les développeurs ASP.NET qu
 
 <!-- Put first under SignalR TOC:  Watch video (6 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/signalr-and-the-real-time-web -->
 
-## <a name="mobile-apps-and-sites"></a>Sites et applications mobiles 
+## <a name="mobile-apps-and-sites"></a>Sites et applications mobiles
 
 ASP.NET peut alimenter des applications mobiles natives avec une API Web principale, ainsi que des sites web mobiles à l’aide des infrastructures de conception réactive comme Twitter Bootstrap. Si vous générez une application mobile native, il est facile de créer une API Web JSON pour le handle de l’accès aux données, l’authentification et notifications push pour votre application. Si vous créez un site mobile réactif, vous pouvez utiliser toute infrastructure CSS ou un système de grille open vous préférez, ou sélectionnez un système puissant mobile comme jQuery Mobile ou Sencha et des applications mobiles avec PhoneGap.
 
@@ -88,7 +88,7 @@ ASP.NET peut alimenter des applications mobiles natives avec une API Web princip
 
 <!-- Put first under mobile TOC:  Watch video (11 minutes) https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-and-mobile -->
 
-## <a name="single-page-applications"></a>Applications à page unique 
+## <a name="single-page-applications"></a>Applications à page unique
 
 Application de Page ASP.NET unique (SPA) vous permet de créer des applications qui incluent des interactions côté client significatives à l’aide de HTML 5, 3 de CSS et JavaScript. Visual Studio comprend un modèle pour la création d’applications à page unique à l’aide de knockout.js et API Web ASP.NET. Outre le modèle SPA intégré, créés par la Communauté modèles sont également disponibles au téléchargement.
 

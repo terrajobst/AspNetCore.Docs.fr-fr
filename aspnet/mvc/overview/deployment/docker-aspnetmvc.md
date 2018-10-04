@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: c2374e7c9ac89c2af26436529c7fa58a2d2d6ba6
-ms.sourcegitcommit: b28cd0313af316c051c2ff8549865bff67f2fbb4
+ms.openlocfilehash: 1343bd100f521326477ecd831aa627b4394bad44
+ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37814156"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48795351"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Migration d’applications ASP.NET MVC vers des conteneurs Windows
 
@@ -35,16 +35,16 @@ L’[application terminée](https://github.com/dotnet/docs/tree/master/samples/f
 
 ## <a name="prerequisites"></a>Prérequis
 
-L’ordinateur de développement doit être en cours d’exécution
+L’ordinateur de développement doit avoir les logiciels suivants :
 
-- [Mise à jour anniversaire Windows 10](https://www.microsoft.com/software-download/windows10/) (ou version ultérieure) ou [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (ou version ultérieure).
+- [Mise à jour anniversaire de Windows 10](https://www.microsoft.com/software-download/windows10/) (ou version ultérieure) ou [Windows Server 2016](https://www.microsoft.com/cloud-platform/windows-server) (ou version ultérieure)
 - [Docker pour Windows](https://docs.docker.com/docker-for-windows/), version stable 1.13.0 ou 1.12 bêta 26 (ou versions plus récentes)
-- [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx).
+- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 
 > [!IMPORTANT]
 > Si vous utilisez Windows Server 2016, suivez les instructions indiquées dans [Déploiement d’un hôte de conteneurs – Windows Server](https://msdn.microsoft.com/virtualization/windowscontainers/deployment/deployment).
 
-Après avoir installé et démarré Docker, cliquez avec le bouton droit sur l’icône de barre d’état système et sélectionnez **Basculer vers les conteneurs Windows**. Cette opération est nécessaire pour exécuter des images Docker basées sur Windows. Cette commande prend quelques secondes :
+Une fois installé et démarré Docker, avec le bouton droit sur l’icône de barre d’état, sélectionnez **basculer vers les conteneurs Windows**. Cette opération est nécessaire pour exécuter des images Docker basées sur Windows. Cette commande prend quelques secondes :
 
 ![Conteneur Windows][windows-container]
 
@@ -114,7 +114,7 @@ docker run -d --name randomanswers mvcrandomanswers
 
 L’argument `-d` indique à Docker de démarrer l’image en mode détaché. Cela signifie que l’image Docker s’exécute déconnectée de l’interpréteur de commandes actuel.
 
-Dans de nombreux exemples de docker, vous pouvez voir -p pour mapper les ports de conteneur et l’hôte. L’image d’aspnet par défaut a déjà configuré le conteneur pour écouter sur le port 80 et l’exposer. 
+Dans de nombreux exemples de docker, vous pouvez voir -p pour mapper les ports de conteneur et l’hôte. L’image d’aspnet par défaut a déjà configuré le conteneur pour écouter sur le port 80 et l’exposer.
 
 La portion `--name randomanswers` donne un nom au conteneur en cours d’exécution. Vous pouvez utiliser ce nom au lieu de l’ID de conteneur dans la plupart des commandes.
 
