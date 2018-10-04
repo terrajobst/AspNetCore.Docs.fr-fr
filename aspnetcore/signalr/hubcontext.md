@@ -1,7 +1,7 @@
 ---
 title: SignalR HubContext
 author: tdykstra
-description: Découvrez comment utiliser le service ASP.NET Core SignalR HubContext pour envoyer des notifications aux clients à partir en dehors d’un hub.
+description: Découvrez comment utiliser le service ASP.NET Core SignalR HubContext pour envoyer des notifications aux clients à partir en dehors d’un concentrateur.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
@@ -14,17 +14,17 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 09/10/2018
 ms.locfileid: "44339976"
 ---
-# <a name="send-messages-from-outside-a-hub"></a>Envoyer des messages depuis en dehors d’un hub
+# <a name="send-messages-from-outside-a-hub"></a>Envoyer des messages depuis en dehors d’un concentrateur
 
 Par [Mikael Mengistu](https://twitter.com/MikaelM_12)
 
-Le hub SignalR est l’abstraction pour envoyer des messages aux clients connectés au serveur SignalR. Il est également possible d’envoyer des messages à partir d’autres emplacements dans votre application en utilisant un service `IHubContext`. Cet article explique comment accéder à un SignalR `IHubContext` pour envoyer des notifications aux clients en dehors d’un hub.
+Le hub SignalR est l’abstraction pour envoyer des messages aux clients connectés au serveur SignalR. Il est également possible d’envoyer des messages à partir d’autres emplacements dans votre application en utilisant le service `IHubContext`. Cet article explique comment accéder à un `IHubContext` SignalR pour envoyer des notifications aux clients en dehors d’un hub.
 
 [Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [(comment télécharger)](xref:tutorials/index#how-to-download-a-sample)
 
 ## <a name="get-an-instance-of-ihubcontext"></a>Obtenir une instance de `IHubContext`
 
-ASP.NET Core SignalR, vous pouvez accéder à une instance de `IHubContext` via l’injection de dépendance. Vous pouvez injecter une instance de `IHubContext` dans un contrôleur, un intergiciel (middleware) ou un autre service de l’injection de dépendances. Utilisez l’instance pour envoyer des messages aux clients.
+ASP.NET Core SignalR, vous pouvez accéder à une instance de `IHubContext` via l’injection de dépendance. Vous pouvez injecter une instance de `IHubContext` dans un contrôleur, intergiciel (middleware) ou un autre service de l’injection de dépendances. Utilisez l’instance pour envoyer des messages aux clients.
 
 > [!NOTE]
 > Cela diffère d’ASP.NET 4.x SignalR qui utilisait GlobalHost pour accéder au `IHubContext`. ASP.NET Core offre une infrastructure d’injection de dépendance qui supprime le besoin de ce singleton global.
@@ -53,7 +53,7 @@ app.Use(next => async (context) =>
 ```
 
 > [!NOTE]
-> Lorsque les méthodes du hub sont appelées à partir d’en dehors de la classe `Hub`, il n’existe aucun appelant associé à l’appel. Par conséquent, il n’existe aucun accès aux propriétés `ConnectionId`, `Caller`, et `Others`.
+> Lorsque les méthodes du hub sont appelées d’en dehors de la classe `Hub`, il n'y a aucun appelant associé à l’appel. Par conséquent, il n'y a aucun accès aux propriétés `ConnectionId`, `Caller` et `Others`.
 
 ## <a name="related-resources"></a>Ressources connexes
 
