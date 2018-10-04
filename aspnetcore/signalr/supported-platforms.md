@@ -16,11 +16,11 @@ ms.locfileid: "39095347"
 ---
 # <a name="aspnet-core-signalr-supported-platforms"></a>Plateformes prises en charge par ASP.NET Core SignalR
 
-## <a name="server-system-requirements"></a>Configuration requise par le serveur
+## <a name="server-system-requirements"></a>Configuration requise du système serveur
 
 SignalR pour ASP.NET Core prend en charge n’importe quelle plateforme de serveur qu'ASP.NET Core prend en charge.
 
-## <a name="client-system-requirements"></a>Configuration requise par le client
+## <a name="client-system-requirements"></a>Configuration requise du client
 
 ### <a name="browser-support"></a>Prise en charge du navigateur
 
@@ -29,11 +29,11 @@ Le client JavaScript SignalR pour ASP.NET Core prend en charge les navigateurs s
 | Visiteur | Version |
 | ------- | ------- |
 | Microsoft Internet Explorer | 11 |
-| Microsoft Edge | actuel |
-| Mozilla Firefox | actuel |
-| Google Chrome ; inclut Android | actuel |
-| Safari ; inclut iOS | actuel |
+| Microsoft Edge | actuelle |
+| Mozilla Firefox | actuelle |
+| Google Chrome ; inclut Android | actuelle |
+| Safari ; inclut iOS | actuelle |
  
 ### <a name="net-client-support"></a>Prise en charge du client .NET
 
-N’importe quelle plateforme de serveur prise en charge par ASP.NET Core. Lorsque vous utilisez IIS, le transport WebSocket requiert IIS 8.0 ou version ultérieure, sur Windows Server 2012 ou version ultérieure. Les autres transports sont pris en charge sur toutes les plateformes.
+N’importe quelle plateforme de serveur prise en charge par ASP.NET Core. Lorsque vous utilisez IIS, le transport WebSocket requiert IIS 8.0 ou une version ultérieure, sur Windows Server 2012 ou une version ultérieure. Les autres transports sont pris en charge sur toutes les plateformes.
