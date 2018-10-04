@@ -8,16 +8,16 @@ ms.date: 02/03/2014
 ms.assetid: bffd7863-f63b-4b23-a13c-372b5492e9fb
 msc.legacyurl: /web-api/overview/error-handling/web-api-global-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: a52c2a1589327421b7f498ff551145676c80e3e8
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3e371760d2b34eb2be492e6ebbb33a5f9f7eff10
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836452"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577169"
 ---
 <a name="global-error-handling-in-aspnet-web-api-2"></a>Global Gestion des erreurs dans ASP.NET Web API 2
 ====================
-par [David Matson](https://github.com/davidmatson), [Rick Anderson](https://github.com/Rick-Anderson)
+par [David Matson](https://github.com/davidmatson), [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 Aujourd'hui il n’existe aucun moyen facile dans l’API Web pour vous connecter ou gérer les erreurs dans le monde entier. Certaines exceptions non gérées peuvent être traitées via [filtres d’exception](exception-handling.md), mais il existe un nombre de cas qui ne peut pas gérer les filtres d’exception. Exemple :
 

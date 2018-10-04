@@ -8,16 +8,16 @@ ms.date: 08/15/2012
 ms.assetid: 27dc4fc8-1b51-43b0-933f-fc1b52476523
 msc.legacyurl: /mvc/overview/older-versions/aspnet-mvc-4-mobile-features
 msc.type: authoredcontent
-ms.openlocfilehash: a3cb2414775b2c29617296dcf0c2dc5729153cdd
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8b82b8b9b1ee6646072931da889c643afb34d474
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833014"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578157"
 ---
 <a name="aspnet-mvc-4-mobile-features"></a>Fonctionnalités mobiles ASP.NET MVC 4
 ====================
-par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Il existe désormais une version de MVC 5 de ce didacticiel avec des exemples de code à [déployer une Application Web de Mobile dans ASP.NET MVC 5 sur les Sites Web Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/).
 
@@ -122,7 +122,7 @@ Une nouvelle fonctionnalité importante dans ASP.NET MVC 4 est un mécanisme sim
 
 Dans cette section, vous allez créer un fichier de disposition mobile.
 
-Pour commencer, copiez *Views\Shared\\_Layout.cshtml* à *Views\Shared\\_Layout.Mobile.cshtml*. Ouvrez  *\_Layout.Mobile.cshtml* et remplacez le titre **MVC4 conférence** à **conférence (Mobile)**.
+Pour commencer, copiez *Views\Shared\\_Layout.cshtml* à *Views\Shared\\_Layout.Mobile.cshtml*. Ouvrez * \_Layout.Mobile.cshtml* et remplacez le titre **MVC4 conférence** à **conférence (Mobile)**.
 
 Dans chaque `Html.ActionLink` appeler, supprimez « Parcourir par » dans chaque lien *ActionLink*. Le code suivant montre la section de corps complet du fichier de disposition mobile.
 
@@ -180,7 +180,7 @@ Dans cette section, vous allez installer le *jQuery.Mobile.MVC* package NuGet, q
 
 Pour commencer, supprimez le *partagé\\_Layout.Mobile.cshtml* et *partagé\\_Layout.iPhone.cshtml* les fichiers que vous avez créé précédemment.
 
-Renommer *Views\Home\AllTags.Mobile.cshtml* et *Views\Home\AllTags.iPhone.cshtml* fichiers *Views\Home\AllTags.iPhone.cshtml.hide* et  *Views\Home\AllTags.Mobile.cshtml.Hide*. Étant donné que les fichiers n’ont plus un *.cshtml* extension, ils ne sont pas utilisés par le runtime ASP.NET MVC pour restituer le *AllTags* vue.
+Renommer *Views\Home\AllTags.Mobile.cshtml* et *Views\Home\AllTags.iPhone.cshtml* fichiers *Views\Home\AllTags.iPhone.cshtml.hide* et * Views\Home\AllTags.Mobile.cshtml.Hide*. Étant donné que les fichiers n’ont plus un *.cshtml* extension, ils ne sont pas utilisés par le runtime ASP.NET MVC pour restituer le *AllTags* vue.
 
 Installer le *jQuery.Mobile.MVC* package NuGet en procédant ainsi :
 
@@ -212,7 +212,7 @@ Le code suivant montre l’ensemble *Global.asax* fichier.
 [!code-csharp[Main](aspnet-mvc-4-mobile-features/samples/sample11.cs?highlight=26)]
 
 > [!NOTE]
-> Si vous utilisez Internet Explorer 9 et vous ne voyez pas le `BundleMobileConfig` ligne ci-dessus dans la mise en surbrillance jaune, cliquez sur le [bouton Affichage de compatibilité](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![image du bouton Affichage de compatibilité (désactivé)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg " Image du bouton Affichage de compatibilité (désactivé)") dans Internet Explorer pour modifier l’icône à partir d’un plan ![image du bouton Affichage de compatibilité (désactivé)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "image du bouton Affichage de compatibilité (désactivé) ") à une couleur unie ![image du bouton Affichage de compatibilité (on)](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "image du bouton Affichage de compatibilité (on)"). Vous pouvez également afficher ce didacticiel dans FireFox ou Chrome.
+> Si vous utilisez Internet Explorer 9 et vous ne voyez pas le `BundleMobileConfig` ligne ci-dessus dans la mise en surbrillance jaune, cliquez sur le [bouton Affichage de compatibilité](https://windows.microsoft.com/windows7/How-to-use-Compatibility-View-in-Internet-Explorer-9)![image du bouton Affichage de compatibilité (désactivé)] (http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg " Image du bouton Affichage de compatibilité (désactivé)") dans Internet Explorer pour modifier l’icône à partir d’un plan ![image du bouton Affichage de compatibilité (désactivé)](http://res2.windows.microsoft.com/resbox/en/Windows 7/main/f080e77f-9b66-4ac8-9af0-803c4f8a859c_15.jpg "image du bouton Affichage de compatibilité (désactivé) ") à une couleur unie ![image du bouton Affichage de compatibilité (on)](http://res1.windows.microsoft.com/resbox/en/Windows 7/main/156805ff-3130-481b-a12d-4d3a96470f36_14.jpg "image du bouton Affichage de compatibilité (on)"). Vous pouvez également afficher ce didacticiel dans FireFox ou Chrome.
 
 
 Ouvrez le *MvcMobile\Views\Shared\\_Layout.Mobile.cshtml* fichier, puis ajoutez le balisage suivant directement après le `Html.Partial` appeler :
@@ -259,7 +259,7 @@ Accédez à la *AllTags* page dans un navigateur de bureau. Le widget sélecteur
 
 ## <a name="improving-the-speakers-list"></a>Amélioration de la liste intervenants
 
-Dans le navigateur mobile, sélectionnez le **haut-parleurs** lien. Car il n’existe aucune vue mobile (*AllSpeakers.Mobile.cshtml*), affichent les haut-parleurs par défaut (*AllSpeakers.cshtml*) est restitué à l’aide de la vue disposition mobile ( *\_ Layout.Mobile.cshtml*).
+Dans le navigateur mobile, sélectionnez le **haut-parleurs** lien. Car il n’existe aucune vue mobile (*AllSpeakers.Mobile.cshtml*), affichent les haut-parleurs par défaut (*AllSpeakers.cshtml*) est restitué à l’aide de la vue disposition mobile (* \_ Layout.Mobile.cshtml*).
 
 [![p3_speakersDeskTop](aspnet-mvc-4-mobile-features/_static/image31.png)](aspnet-mvc-4-mobile-features/_static/image30.png)
 

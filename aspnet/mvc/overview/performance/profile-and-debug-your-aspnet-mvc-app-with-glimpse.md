@@ -8,16 +8,16 @@ ms.date: 03/26/2015
 ms.assetid: c205805f-efdd-4fa7-9616-f26eab180611
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
-ms.openlocfilehash: f5d174ff6823d654a24dcb2c90f10a3cbd24f1e7
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 94a72f22cbcd7fa84528dde502cceaa1e26dcaa1
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836225"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577286"
 ---
 <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Profiler et déboguer votre application ASP.NET MVC avec Glimpse
 ====================
-par [Rick Anderson](https://github.com/Rick-Anderson)
+par [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Aperçu est plein essor et en constante évolution de la famille de packages NuGet d’open source qui fournit les données de performances détaillées, débogage et des informations de diagnostic pour les applications ASP.NET. Il est très facile à installer, léger et ultra rapide et affiche les mesures de performances clés en bas de chaque page. Il vous permet d’approfondir votre application lorsque vous avez besoin savoir ce qui se passait au niveau du serveur. Aperçu fournit des informations précieuses tellement que nous vous recommandons de qu'utiliser cela dans votre cycle de développement, y compris votre environnement de test Azure. Tandis que [Fiddler](http://www.telerik.com/fiddler) et [les outils de développement F-12](https://msdn.microsoft.com/library/ie/gg589512(v=vs.85).aspx) fournissent un côté client vue Aperçu fournit une vue détaillée à partir du serveur. Ce didacticiel aborde l’utilisation de l’aperçu ASP.NET MVC et les packages d’EF, mais de nombreux autres packages sont disponibles. Lorsque cela est possible de lier sera à approprié [apercevoir docs](http://getglimpse.com/Docs/) dont j’ai aider à maintenir. Aperçu est un projet open source, vous pouvez trop contribuer au code source et la documentation.
 

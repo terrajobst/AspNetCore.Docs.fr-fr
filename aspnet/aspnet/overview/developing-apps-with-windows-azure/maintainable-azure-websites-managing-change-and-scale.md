@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
-ms.openlocfilehash: a26f22a7cf39593ee068fb8e8d57200120c97ccb
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 05181ae1b2d857eea45983d378b28011c1cd755a
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825515"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578131"
 ---
 <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Laboratoire pratique : sites Web Azure faciles à gérer : gestion des modifications et mise à l’échelle
 ====================
@@ -22,17 +22,17 @@ par [Web Camps Team](https://twitter.com/webcamps)
 [Télécharger le Kit de formation de Web Camps](http://aka.ms/webcamps-training-kit)
 
 > Microsoft Azure rend plus facile créer et déployer des sites Web en production. Mais vous n’avez pas terminé lorsque votre application est en ligne, vous n’êtes pas familiarisé ! Vous devrez gérer variation exigences, mises à jour de la base de données, mise à l’échelle et bien plus encore. Heureusement, Azure App Service a prévu, avec de nombreuses fonctionnalités pour vous aider à conserver vos sites en cours d’exécution sans heurts.
-> 
+>
 > Azure offre développement sécurisé et flexible, de déploiement et de mise à l’échelle des options pour n’importe quelle application web de taille. Tirer parti de vos outils existants pour créer et déployer des applications sans vous préoccuper des contraintes de gestion de l’infrastructure.
-> 
+>
 > Approvisionner une application web de production vous-même en quelques minutes par déployer facilement du contenu créé à l’aide de votre outil de développement favori. Vous pouvez déployer un site existant directement à partir de contrôle de code source avec prise en charge de **Git**, **GitHub**, **Bitbucket**, **TFS**et même  **DropBox**. Déployer directement à partir de votre IDE favori ou à partir de scripts à l’aide de **PowerShell** dans Windows ou **CLI** outils s’exécutant sur n’importe quel système d’exploitation. Une fois déployé, maintenir vos sites constamment à jour avec la prise en charge pour le déploiement continu.
-> 
+>
 > Azure fournit des solutions de récupération, de sauvegarde et de stockage cloud évolutives et durables pour toutes les données, volumineuses ou non. Lorsque vous déployez des applications pour un environnement de production, les services de stockage tels que les Tables, les objets BLOB et les bases de données SQL, vous aider à faire évoluer votre application dans le cloud.
-> 
+>
 > Les bases de données SQL, il est important de tenir votre base de données productive lors du déploiement de nouvelles versions de votre application. Merci à **Migrations Entity Framework Code First**, le développement et le déploiement de votre modèle de données a été simplifié pour mettre à jour de vos environnements en quelques minutes. Ce laboratoire pratique vous montrera les différentes rubriques que vous pouvez rencontrer lors du déploiement de votre application web pour les environnements de production dans Microsoft Azure.
-> 
+>
 > Tous les exemples de code et extraits de code sont inclus dans le Kit de formation Camps Web, disponible à l’adresse [ http://aka.ms/webcamps-training-kit ](http://aka.ms/webcamps-training-kit).
-> 
+>
 > Pour plus de couverture approfondie de cette rubrique, consultez le [développement d’applications Cloud réalistes avec Azure e-book](building-real-world-cloud-apps-with-windows-azure/introduction.md).
 
 
@@ -60,7 +60,7 @@ Les éléments suivants sont nécessaire pour terminer ce laboratoire pratique 
 - [Visual Studio Express 2013 pour le Web](https://www.microsoft.com/visualstudio/) ou supérieur
 - [Azure SDK pour .NET 2.2](https://www.microsoft.com/windowsazure/sdk/)
 - [Système de contrôle de Version GIT](http://git-scm.com/download)
-- Un abonnement Microsoft Azure 
+- Un abonnement Microsoft Azure
 
     - Inscrivez-vous pour un [version d’évaluation gratuite](http://aka.ms/watk-freetrial)
     - Si vous êtes abonné à MSDN ou plateformes MSDN un Visual Studio Professional, Test Professional, Premium ou Ultimate, activer votre [avantage MSDN](http://aka.ms/watk-msdn) maintenant pour commencer à développer et tester sur Azure
@@ -202,10 +202,10 @@ Dans cette tâche, vous allez utiliser **Migrations Entity Framework Code First*
 
     > [!NOTE]
     > Un fichier de Migration se compose de deux méthodes, **des** et **vers le bas**.
-    > 
+    >
     > - Le **des** méthode permet de spécifier ce qui modifie la version actuelle de nos besoins de l’application à appliquer à la base de données.
     > - Le **vers le bas** est utilisé pour annuler les modifications que nous avons ajouté à la **des** (méthode).
-    > 
+    >
     > Lors de la Migration de base de données met à jour la base de données, il s’exécutera toutes les migrations dans l’ordre d’horodatage et ceux qui n’ont pas été utilisés depuis la dernière mise à jour (la \_MigrationHistory table effectue le suivi des migrations qui ont été appliquées). Le **des** méthode de toutes les migrations sera appelé et va effectuer les modifications que nous avons spécifié à la base de données. Si nous décidons de revenir à une migration précédente, le **vers le bas** méthode sera appelée pour rétablir les modifications dans l’ordre inverse.
 4. Dans le **Console du Gestionnaire de Package**, entrez la commande suivante et appuyez sur **entrée**.
 
@@ -298,15 +298,15 @@ Dans cette tâche, vous allez créer une application web dans **Azure App Servic
 
     > [!NOTE]
     > Par défaut, Azure fournit les domaines au *azurewebsites.net* , mais vous donne également la possibilité de définir des domaines personnalisés à l’aide du portail de gestion Azure. Toutefois, vous pouvez uniquement gérer des domaines personnalisés si vous utilisez certains modes d’Azure App Service.
-    > 
+    >
     > Azure App Service est disponible dans les éditions gratuit, partagé, Basic, Standard et Premium. En mode gratuit et partagé, toutes les applications web s’exécutent dans un environnement mutualisé et possèdent des quotas pour l’utilisation du processeur, mémoire et réseau. Le nombre maximal d’applications gratuites peut-être varier avec votre plan. En mode Standard, vous choisissez les applications qui s’exécutent sur des machines virtuelles dédiées qui correspondent à Azure standard des ressources de calcul. Vous pouvez trouver la configuration de mode d’application web dans le **mise à l’échelle** menu de votre application web.
-    > 
+    >
     > ![Modes d’Azure App Service](maintainable-azure-websites-managing-change-and-scale/_static/image19.png "Modes Azure App Service")
-    > 
+    >
     > Si vous utilisez **partagé** ou **Standard** mode, vous serez en mesure de gérer les domaines personnalisés pour votre application web en accédant à votre application **configurer** menu et en cliquant sur **Gérer les domaines** sous *des noms de domaine*.
-    > 
+    >
     > ![Gérer les domaines](maintainable-azure-websites-managing-change-and-scale/_static/image20.png "gérer les domaines")
-    > 
+    >
     > ![Gérer les domaines personnalisés](maintainable-azure-websites-managing-change-and-scale/_static/image21.png "gérer les domaines personnalisés")
 9. Une fois que l’application web est créée, cliquez sur le lien situé sous le **URL** colonne pour vérifier que la nouvelle application web est en cours d’exécution.
 
@@ -754,7 +754,7 @@ Dans cette tâche vous allez utiliser le portail de gestion Azure pour activer l
 
     > [!NOTE]
     > Cette plage représente l’utilisation moyenne du processeur de votre application web. Azure ajoutera ou retirera des instances pour maintenir votre application web dans cette plage. Le nombre minimal et maximal d’instances utilisées pour la mise à l’échelle est spécifié dans le **nombre d’instances** configuration. Azure n’ira jamais au-dessus ou au-delà de cette limite.
-    > 
+    >
     > La valeur par défaut **unité centrale cible** les valeurs sont modifiées uniquement dans le cadre de ce laboratoire. En configurant la plage des UC avec petites valeurs, vous augmentez les chances de déclencheur de mise à l’échelle lorsqu’une charge modérée est placé sur l’application.
 
     ![Modification de la cible du processeur pour être comprise entre 20 et 40 pour cent](maintainable-azure-websites-managing-change-and-scale/_static/image78.png "modification de la cible du processeur pour être comprise entre 20 et 40 pour cent")
@@ -869,7 +869,7 @@ Maintenant que **mise à l’échelle** a été configuré, vous allez créer un
 20. Dans **l’Explorateur de solutions**, double-cliquez sur le **Local.settings** fichier pour Explorer les paramètres de test. Par défaut, Visual Studio utilise votre ordinateur local pour exécuter les tests.
 
     > [!NOTE]
-    > Vous pouvez également configurer votre projet de test pour exécuter les tests de charge dans le cloud à l’aide **Visual Studio Online (VSO)**. Visual Studio Online fournit une charge de cloud service qui simule une charge plus réaliste de test, en évitant les limites de l’environnement local, comme la capacité de l’UC, de mémoire disponible et de bande passante réseau. Pour plus d’informations sur l’utilisation de Visual Studio Online pour exécuter des tests de charge, consultez [cet article](https://www.visualstudio.com/get-started/load-test-your-app-vs).
+    > Vous pouvez également configurer votre projet de test pour exécuter les tests de charge dans le cloud à l’aide **Plans de Test Azure**. Plans de Test Azure fournit une charge de cloud service qui simule une charge plus réaliste de test, en évitant les limites de l’environnement local, comme la capacité de l’UC, la mémoire disponible et la bande passante réseau. Pour plus d’informations sur l’utilisation de Plans de Test Azure pour exécuter des tests de charge, consultez [les scénarios de tests de charge](/azure/devops/test/load-test/overview?view=vsts).
 
     ![Paramètres de test](maintainable-azure-websites-managing-change-and-scale/_static/image98.png)
 
@@ -904,10 +904,10 @@ Maintenant vous exécutez le test de charge que vous avez créé dans la tâche 
 
     > [!NOTE]
     > Il peut prendre plusieurs minutes pour que les modifications apparaissent dans le graphique (appuyez sur **CTRL + F5** régulièrement pour actualiser la page). Si vous ne voyez pas toutes les modifications, vous pouvez essayer ce qui suit :
-    > 
+    >
     > - Augmentez la durée du test de charge (par exemple, pour **10 minutes**)
     > - Réduire les valeurs minimale et maximales de la **unité centrale cible** plage dans la configuration de mise à l’échelle de votre application web
-    > - Exécuter le test de charge dans le cloud avec **Visual Studio Online**. Plus d’informations [ici](https://www.visualstudio.com/get-started/load-test-your-app-vs.aspx)
+    > - Exécuter le test de charge dans le cloud avec **Plans de Test Azure**. Plus d’informations [ici](/azure/devops/test/load-test/index?view=vsts)
 
 * * *
 

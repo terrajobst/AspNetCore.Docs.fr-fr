@@ -8,23 +8,22 @@ ms.date: 06/23/2015
 ms.assetid: 2a0370d3-c2fb-4bf3-88b8-aad5a736c793
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
 msc.type: authoredcontent
-ms.openlocfilehash: 8402b73f5f9d063d958df39f98267468e4aef746
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 5df863762523b62759bb4f7849ca2635e5241b0a
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832603"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577793"
 ---
 <a name="source-control-building-real-world-cloud-apps-with-azure"></a>Contrôle de code source (génération d’applications Cloud réalistes avec Azure)
 ====================
-par [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson](https://github.com/Rick-Anderson), [Tom Dykstra](https://github.com/tdykstra)
+par [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Tom Dykstra](https://github.com/tdykstra)
 
 [Téléchargement Fix It projet](http://code.msdn.microsoft.com/Fix-It-app-for-Building-cdd80df4) ou [télécharger l’E-book](http://blogs.msdn.com/b/microsoft_press/archive/2014/07/23/free-ebook-building-cloud-apps-with-microsoft-azure.aspx)
 
 > Le **Building Real World Cloud Apps with Azure** e-book est basé sur une présentation développée par Scott Guthrie. Il explique 13 modèles et pratiques qui peuvent vous aider à réussir le développement d’applications web pour le cloud. Pour plus d’informations sur l’e-book, consultez [le premier chapitre](introduction.md).
 
-
-Contrôle de code source est essentiel pour tous les projets de développement cloud, pas seulement les environnements d’équipe. Vous ne pensez de modification du code source, ou même un document Word sans une fonction d’annulation et de sauvegardes automatiques et de contrôle de code source vous donne ces fonctions au niveau du projet où ils peuvent gagner du temps quand une erreur survient. Avec les services de contrôle de source de cloud, vous n’avez plus à vous soucier de configuration complexe, et vous pouvez utiliser gratuitement jusqu'à 5 utilisateurs de contrôle de code source Visual Studio Online.
+Contrôle de code source est essentiel pour tous les projets de développement cloud, pas seulement les environnements d’équipe. Vous ne pensez de modification du code source, ou même un document Word sans une fonction d’annulation et de sauvegardes automatiques et de contrôle de code source vous donne ces fonctions au niveau du projet où ils peuvent gagner du temps quand une erreur survient. Avec les services de contrôle de source de cloud, vous n’avez plus à vous soucier de configuration complexe, et vous pouvez utiliser le contrôle de code source les référentiels Azure gratuit jusqu'à 5 utilisateurs.
 
 La première partie de ce chapitre explique les trois meilleures pratiques clés à prendre en compte :
 
@@ -32,11 +31,11 @@ La première partie de ce chapitre explique les trois meilleures pratiques clés
 - [Ne jamais rechercher dans les secrets](#secrets) (des données sensibles telles que des informations d’identification) dans un référentiel de code source.
 - [Configurer les branches source](#devops) pour activer le flux de travail DevOps.
 
-Le reste de ce chapitre donne des exemples d’implémentation de ces modèles dans Visual Studio, Azure et Visual Studio Online :
+Le reste de ce chapitre donne des exemples d’implémentation de ces modèles dans Visual Studio, Azure et les référentiels Azure :
 
 - [Ajouter des scripts pour le contrôle de code source dans Visual Studio](#vsscripts)
 - [Store les données sensibles dans Azure](#appsettings)
-- [Utiliser Git dans Visual Studio et Visual Studio Online](#gittfs)
+- [Utilisez Git dans Visual Studio et les référentiels Azure](#gittfs)
 
 <a id="scripts"></a>
 ## <a name="treat-automation-scripts-as-source-code"></a>Traiter les scripts d’automatisation comme code source
@@ -73,7 +72,7 @@ Cette structure vous permet également de réagir rapidement aux commentaires de
 
 Sans une structure de branches ainsi sa séparation des branches de développement et de production, un problème de production est susceptible de vous en position d’avoir à promouvoir le nouveau code de fonction, ainsi que votre correctif de production. Le nouveau code de fonction n’est peut-être pas entièrement testée et prête pour production et vous devrez peut-être faire beaucoup de travail de sauvegarde les modifications qui ne sont pas prêtes. Ou bien, vous devrez peut-être retarder votre correctif afin de tester les modifications et préparez-vous au déploiement.
 
-Vous verrez ensuite des exemples montrant comment implémenter ces trois modèles dans Visual Studio, Azure et Visual Studio Online. Il s’agit d’exemples plutôt que des instructions détaillées de how-to--informatique ; Pour obtenir des instructions détaillées qui procurent toutes le contexte nécessaire, consultez le [ressources](#resources) section à la fin de ce chapitre.
+Vous verrez ensuite des exemples montrant comment implémenter ces trois modèles dans Visual Studio, Azure et les référentiels Azure. Il s’agit d’exemples plutôt que des instructions détaillées de how-to--informatique ; Pour obtenir des instructions détaillées qui procurent toutes le contexte nécessaire, consultez le [ressources](#resources) section à la fin de ce chapitre.
 
 <a id="vsscripts"></a>
 ## <a name="add-scripts-to-source-control-in-visual-studio"></a>Ajouter des scripts pour le contrôle de code source dans Visual Studio
@@ -128,17 +127,17 @@ Notez que les scripts sont paramétrés de sorte que les valeurs réelles n’ob
 Lorsque vous exécutez localement dans votre environnement de développement, l’application lit votre fichier Web.config local et votre connexion pointe de chaîne vers une base de données de base de données locale SQL Server dans le *application\_données* dossier de votre projet web. Lorsque vous exécutez l’application dans Azure et l’application tente de lire ces valeurs dans le fichier Web.config, il récupère et utilise sont les valeurs stockées pour le Site Web, pas ce qui est réellement dans le fichier Web.config.
 
 <a id="gittfs"></a>
-## <a name="use-git-in-visual-studio-and-visual-studio-online"></a>Utiliser Git dans Visual Studio et Visual Studio Online
+## <a name="use-git-in-visual-studio-and-azure-devops"></a>Utilisez Git dans Visual Studio et DevOps Azure
 
 Vous pouvez utiliser n’importe quel environnement de contrôle de code source pour implémenter la structure en branches DevOps présentée précédemment. Pour les équipes multisites un [système de contrôle de version distribué](http://en.wikipedia.org/wiki/Distributed_revision_control) (gérer) peut fonctionner mieux ; pour les autres équipes un [système centralisé](http://en.wikipedia.org/wiki/Revision_control) peuvent mieux fonctionner.
 
-[GIT](http://git-scm.com/) est un gérer est est devenu très populaire. Lorsque vous utilisez Git pour le contrôle de code source, vous avez une copie complète du référentiel avec l’ensemble de son historique sur votre ordinateur local. De nombreuses personnes préfèrent que car il est plus facile pour continuer à utiliser lorsque vous n’êtes pas connecté au réseau, vous pouvez continuer à effectuer est validée et restaurations, créer et changer de branches et ainsi de suite. Même lorsque vous êtes connecté au réseau, il est plus facile et plus rapide de créer des branches et changer de branches lorsque tout est local. Vous pouvez également effectuer des validations locales et des restaurations sans avoir un impact sur les autres développeurs. Et vous pouvez créer des lots validations avant de les envoyer au serveur.
+[GIT](http://git-scm.com/) est un système de contrôle de version distribué populaires. Lorsque vous utilisez Git pour le contrôle de code source, vous avez une copie complète du référentiel avec l’ensemble de son historique sur votre ordinateur local. De nombreuses personnes préfèrent que car il est plus facile pour continuer à utiliser lorsque vous n’êtes pas connecté au réseau, vous pouvez continuer à effectuer est validée et restaurations, créer et changer de branches et ainsi de suite. Même lorsque vous êtes connecté au réseau, il est plus facile et plus rapide de créer des branches et changer de branches lorsque tout est local. Vous pouvez également effectuer des validations locales et des restaurations sans avoir un impact sur les autres développeurs. Et vous pouvez créer des lots validations avant de les envoyer au serveur.
 
-[Microsoft Visual Studio Online](https://www.visualstudio.com/)(VSO), anciennement connu en tant que Team Foundation Service, propose les deux Git et [Team Foundation Version Control](https://msdn.microsoft.com/library/ms181237(v=vs.120).aspx) (TFVC ; centralisé de contrôle de code source). Ici, chez Microsoft dans le groupe Azure certaines équipes utilisent contrôle de source centralisé, certaines utilisent distribuée, et certaines utilisent une combinaison (centralisée pour certains projets et distribuée pour d’autres projets). Le service de Visual Studio Online est gratuit jusqu'à 5 utilisateurs. Vous pouvez vous inscrire pour un plan gratuit [ici](https://go.microsoft.com/fwlink/?LinkId=307137).
+[Référentiels Azure](/azure/devops/repos/index?view=vsts) propose les deux [Git](/azure/devops/repos/git/?view=vsts) et [Team Foundation Version Control](/azure/devops/repos/tfvc/index?view=vsts) (TFVC ; centralisé de contrôle de code source). Prise en main Azure DevOps [ici](https://app.vsaex.visualstudio.com/signup).
 
-Visual Studio 2013 inclut intégrées de première classe [prise en charge Git](https://msdn.microsoft.com/library/hh850437.aspx); Voici une rapide démonstration de son fonctionnement.
+Visual Studio 2017 inclut intégré, la première classe [prise en charge Git](https://msdn.microsoft.com/library/hh850437.aspx). Voici une rapide démonstration de son fonctionnement.
 
-Avec un projet ouvert dans Visual Studio 2013, cliquez sur la solution dans **l’Explorateur de solutions**, puis choisissez **ajouter la Solution au contrôle de code Source**.
+Avec un projet ouvert dans Visual Studio, cliquez sur la solution dans **l’Explorateur de solutions**, puis choisissez **ajouter la Solution au contrôle de code Source**.
 
 ![Ajoutez la Solution au contrôle de code Source](source-control/_static/image9.png)
 
@@ -184,7 +183,7 @@ Si vous basculez vers le contrôleur de créer une branche, le contenu de la  *\
 
 Présente un exemple simple de la façon dont vous pouvez rapidement créer une branche et retourner dans les deux sens entre les branches. Cette fonctionnalité permet à un flux de travail hautement agile à l’aide de la structure de branche et de scripts d’automatisation présentée dans le [automatiser tout](automate-everything.md) chapitre. Par exemple, vous pouvez être travailler dans la branche de développement, créer une branche de correctif logiciel depuis master, basculez vers la nouvelle branche, apportez vos modifications il et les valider, puis revenez à la branche de développement et continuer ce que vous faisiez.
 
-Ce que vous avez vu ici est la façon dont vous travaillez avec un référentiel Git dans Visual Studio. Dans un environnement d’équipe vous généralement également transmettre modifications à un référentiel commun. Les outils de Visual Studio vous permettent également pointer vers un référentiel Git distant. Vous pouvez utiliser GitHub.com à cette fin, ou vous pouvez utiliser [Git dans Visual Studio Online](https://msdn.microsoft.com/library/hh850437.aspx) intégré avec toutes les autres fonctionnalités Visual Studio Online tels que l’élément de travail et de suivi des bogues.
+Ce que vous avez vu ici est la façon dont vous travaillez avec un référentiel Git dans Visual Studio. Dans un environnement d’équipe vous généralement également transmettre modifications à un référentiel commun. Les outils de Visual Studio vous permettent également pointer vers un référentiel Git distant. Vous pouvez utiliser GitHub.com à cette fin, ou vous pouvez utiliser [Git et les référentiels Azure](/azure/devops/repos/git/overview?view=vsts) intégré avec toutes les autres fonctionnalités de Azure DevOps telles que l’élément de travail et de suivi des bogues.
 
 Ce n’est pas la seule façon, vous pouvez implémenter une stratégie de création de branche agile, bien sûr. Vous pouvez activer le même flux de travail agile à l’aide d’un référentiel de contrôle de code source centralisé.
 
@@ -194,13 +193,6 @@ Mesurer la réussite de votre système de contrôle de code source en fonction d
 
 <a id="resources"></a>
 ## <a name="resources"></a>Ressources
-
-Le [Visual Studio Online](https://www.visualstudio.com/) portail fournit des services de documentation et de prise en charge, et vous pouvez vous inscrire pour un compte. Si vous disposez de Visual Studio 2012 et que vous souhaitez utiliser Git, consultez [Visual Studio Tools pour Git](https://visualstudiogallery.msdn.microsoft.com/abafc7d6-dcaa-40f4-8a5e-d6724bdb980c).
-
-Pour plus d’informations sur TFVC (contrôle de version centralisé) et Git (contrôle de version distribué), consultez les ressources suivantes :
-
-- [Quel système de contrôle de version dois-je utiliser : TFVC ou Git ?](https://msdn.microsoft.com/library/vstudio/ms181368.aspx#tfvc_or_git_summary) Documentation MSDN, inclut un tableau récapitulant les différences entre TFVC et Git.
-- [Eh bien, j’aime Team Foundation Server et j’aime Git, mais qui est mieux ?](https://blogs.msdn.com/b/visualstudiouk/archive/2013/08/05/well-i-like-team-foundation-server-and-i-like-git-but-which-is-better.aspx) Comparaison de Git et TFVC.
 
 Pour plus d’informations sur les stratégies de création de branche, consultez les ressources suivantes :
 

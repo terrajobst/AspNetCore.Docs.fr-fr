@@ -3,14 +3,14 @@ title: Empêcher de Cross-Site script (XSS) dans ASP.NET Core
 author: rick-anderson
 description: En savoir plus sur Cross-Site Scripting (XSS) et les techniques pour résoudre cette vulnérabilité dans une application ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: 4784b1775d955f0ef00526e50b960fc873ea218d
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: e937ce47b7151155197cd607832eeb6bf62e3a19
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342209"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48577442"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher de Cross-Site script (XSS) dans ASP.NET Core
 
@@ -36,9 +36,9 @@ L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet
 
 Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise les règles d'encodage d’attribut HTML chaque fois que vous utilisez la directive *@*. L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez @ uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
 
-Prendre la vue Razor suivante ;
+Prenez la vue Razor suivante :
 
-```none
+```cshtml
 @{
        var untrustedInput = "<\"123\">";
    }
@@ -59,7 +59,7 @@ Cette vue renvoie le contenu de la variable *untrustedInput*. Cette variable inc
 
 Il peut arriver que vous souhaitiez insérer une valeur JavaScript à traiter dans votre affichage. Il existe deux manières de procéder. Pour insérer des valeurs, la plus sûre consiste à placer la valeur dans un attribut de données d’une balise et récupérez-la dans votre code JavaScript. Exemple :
 
-```none
+```cshtml
 @{
        var untrustedInput = "<\"123\">";
    }
@@ -114,9 +114,9 @@ Qui, lorsqu’il s’exécute, apparaîtra comme suit.
    <"123">
    ```
 
-Vous pouvez également appeler l’encodeur JavaScript directement,
+Vous pouvez également appeler l’encodeur JavaScript directement :
 
-```none
+```cshtml
 @using System.Text.Encodings.Web;
    @inject JavaScriptEncoder encoder;
 
@@ -225,4 +225,4 @@ Les pratiques générales acceptées est que l'encodage intervienne au point de 
 
 ## <a name="validation-as-an-xss-prevention-technique"></a>Validation en tant qu’une technique de prévention XSS
 
-La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, une chaîne numérique contenant uniquement les caractères 0-9 ne déclenche pas une attaque XSS. La validation devient plus complexe si vous souhaitez accepter HTML dans l’entrée d’utilisateur - l’analyse d’entrée HTML est difficile, voire impossible. Le MarkDown et les autres formats de texte sont une option plus sûre pour l’entrée riche. Vous ne devez jamais vous appuyer sur la validation uniquement. Encodez toujours une entrée non approuvée avant le rendu, quel que soit le quel type de validation que vous avez effectué.
+La validation peut être un outil utile dans limitation des attaques XSS. Par exemple, une chaîne numérique contenant uniquement les caractères 0-9 ne déclenche pas une attaque XSS. Validation devient plus complexe lors de l’acceptation de HTML dans l’entrée d’utilisateur. L’analyse d’entrée HTML est difficile, voire impossible. Markdown, associé à un analyseur qui supprime et HTML incorporé, est une option plus sûre pour accepter une entrée riche. Jamais vous appuyer sur la validation uniquement. Toujours encoder des entrées non approuvées avant la sortie, quel que soit le nettoyage ou validation a été effectuée.

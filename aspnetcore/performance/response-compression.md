@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: performance/response-compression
-ms.openlocfilehash: 3a01c2d572c0026944347f736f9658a7872e6c35
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: d5e0b6ed21c14f2e76396cde846c69a76ad40794
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028282"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48578144"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses dans ASP.NET Core
 
@@ -150,9 +150,21 @@ Soumettez une requête à l’exemple d’application sans l’en-tête `Accept-
 
 ![Fenêtre Fiddler indiquant le résultat d’une requête sans l’en-tête Accept-Encoding. La réponse n’est pas compressée.](response-compression/_static/request-uncompressed.png)
 
+::: moniker range=">= aspnetcore-2.2"
+
+Soumettre une demande de l’exemple d’application avec le `Accept-Encoding: br` en-tête (compression Brotli) et observez que la réponse est compressée. Les en-têtes `Content-Encoding` et `Vary` sont présents sur la réponse.
+
+![Fenêtre Fiddler montrant le résultat d’une demande avec l’en-tête Accept-Encoding et la valeur br. Les en-têtes Vary et Content-Encoding sont ajoutés à la réponse. La réponse est compressée.](response-compression/_static/request-compressed-br.png)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
 Soumettez une requête à l’exemple d’application avec l’en-tête `Accept-Encoding: gzip` et observez que la réponse est compressée. Les en-têtes `Content-Encoding` et `Vary` sont présents sur la réponse.
 
 ![Fenêtre Fiddler montrant le résultat d’une demande avec l’en-tête Accept-Encoding et la valeur gzip. Les en-têtes Vary et Content-Encoding sont ajoutés à la réponse. La réponse est compressée.](response-compression/_static/request-compressed.png)
+
+::: moniker-end
 
 ## <a name="providers"></a>Fournisseurs
 
