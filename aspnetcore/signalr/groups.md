@@ -1,4 +1,4 @@
----
+﻿---
 title: Gérer les utilisateurs et groupes dans SignalR
 author: tdykstra
 description: Vue d’ensemble de la gestion des utilisateurs et des groupes dans ASP.NET Core SignalR.
@@ -14,7 +14,7 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 07/17/2018
 ms.locfileid: "39095019"
 ---
-# <a name="manage-users-and-groups-in-signalr"></a>Gérer les utilisateurs et groupes dans SignalR
+# <a name="manage-users-and-groups-in-signalr"></a>Gérer les utilisateurs et des groupes dans SignalR
 
 Par [Brennan Conroy](https://github.com/BrennanConroy)
 
@@ -26,7 +26,7 @@ SignalR permet d'envoyer des messages à toutes les connexions associées à un 
 
 SignalR vous permet d’envoyer des messages à toutes les connexions associées à un utilisateur spécifique. Par défaut, SignalR utilise le `ClaimTypes.NameIdentifier` du `ClaimsPrincipal` associé à la connexion comme identificateur d’utilisateur. Un utilisateur peut avoir plusieurs connexions à une application SignalR. Par exemple, il peut être connecté sur son ordinateur de bureau et sur son téléphone. Chaque appareil a une connexion SignalR distincte, mais ils sont tous associés au même utilisateur. Si un message est envoyé à l’utilisateur, toutes les connexions associées à cet utilisateur reçoivent le message. L’identificateur d’utilisateur pour une connexion est accessible au moyen de la propriété `Context.UserIdentifier` dans votre hub.
 
-Envoyez un message à un utilisateur spécifique en passant l’identificateur d’utilisateur à la fonction `User` dans la méthode de votre hub, comme indiqué dans l’exemple suivant :
+Envoyez un message à un utilisateur spécifique en passant l’identificateur d’utilisateur à la fonction `User` dans la méthode de votre hub, comme indiqué dans l’exemple suivant :
 
 > [!NOTE]
 > L’identificateur d’utilisateur respecte la casse.
