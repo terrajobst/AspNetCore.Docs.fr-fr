@@ -41,7 +41,7 @@ Maintenant, avec accès à une instance de `IHubContext`, vous pouvez appeler de
 
 ### <a name="get-an-instance-of-ihubcontext-in-middleware"></a>Obtenir une instance de `IHubContext` dans l’intergiciel (middleware)
 
-Accéder au `IHubContext` dans le pipeline d’intergiciel (middleware) comme suit :
+Accès le `IHubContext` dans le pipeline d’intergiciel (middleware) comme suit :
 
 ```csharp
 app.Use(next => async (context) =>

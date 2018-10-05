@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core SignalR plateformes prises en charge
+title: Plateformes prises en charge par ASP.NET Core SignalR
 author: tdykstra
 description: Plateformes prises en charge pour ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
@@ -14,11 +14,11 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 10/04/2018
 ms.locfileid: "48577624"
 ---
-# <a name="aspnet-core-signalr-supported-platforms"></a>ASP.NET Core SignalR plateformes prises en charge
+# <a name="aspnet-core-signalr-supported-platforms"></a>Plateformes prises en charge par ASP.NET Core SignalR
 
 ## <a name="server-system-requirements"></a>Configuration requise du système serveur
 
-SignalR pour ASP.NET Core prend en charge n’importe quelle plateforme de serveur QU'ASP.NET Core prend en charge.
+SignalR pour ASP.NET Core prend en charge n’importe quelle plateforme de serveur qu'ASP.NET Core prend en charge.
 
 ## <a name="javascript-client"></a>Client JavaScript
 
@@ -26,10 +26,10 @@ Le [client JavaScript](https://www.npmjs.com/package/@aspnet/signalr) s’exécu
 
 | Visiteur | Version |
 | ------- | ------- |
-| Microsoft Edge | actuels |
-| Mozilla Firefox | actuels |
-| Google Chrome ; inclut Android | actuels |
-| Safari ; inclut iOS | actuels |
+| Microsoft Edge | actuelle |
+| Mozilla Firefox | actuelle |
+| Google Chrome ; inclut Android | actuelle |
+| Safari ; inclut iOS | actuelle |
 | Microsoft Internet Explorer | 11 |
  
 ## <a name="net-client"></a>Client .NET

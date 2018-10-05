@@ -44,7 +44,7 @@ Vous pouvez spécifier un type de retour et paramètres, y compris les types com
 
 ## <a name="the-context-object"></a>L’objet de contexte
 
-La classe `Hub` a une propriété `Context` qui contient les propriétés suivantes avec des informations sur la connexion :
+Le `Hub` classe a un `Context` propriété qui contient les propriétés suivantes avec des informations sur la connexion :
 
 | Propriété | Description |
 | ------ | ----------- |
@@ -64,7 +64,7 @@ La classe `Hub` a une propriété `Context` qui contient les propriétés suivan
 
 ## <a name="the-clients-object"></a>L’objet de Clients
 
-La classe `Hub` a une propriété `Clients` qui contient les propriétés suivantes pour la communication entre client et serveur :
+Le `Hub` classe a un `Clients` propriété qui contient les propriétés suivantes pour la communication entre client et serveur :
 
 | Propriété | Description |
 | ------ | ----------- |
@@ -99,7 +99,7 @@ Pour effectuer des appels à des clients spécifiques, utilisez les propriétés
 
 Un inconvénient de l’utilisation de `SendAsync` est qu’elle s’appuie sur une chaîne en dur pour spécifier la méthode de client à appeler. Cela laisse le code ouvert à des erreurs d’exécution si le nom de la méthode est mal orthographié ou manquant à partir du client.
 
-Une alternative à l’utilisation de `SendAsync` est pour typer fortement les `Hub` avec <xref:Microsoft.AspNetCore.SignalR.Hub`1>. Dans l’exemple suivant, le `ChatHub` méthodes client ont été extraite et placées dans une interface appelée `IChatClient`. 
+Une alternative à l’utilisation de `SendAsync` est pour typer fortement les `Hub` avec <xref:Microsoft.AspNetCore.SignalR.Hub`1>. Dans l’exemple suivant, le `ChatHub` méthodes client ont été extraite et placées dans une interface appelée `IChatClient`.  
 
 [!code-csharp[Interface for IChatClient](hubs/sample/hubs/ichatclient.cs?name=snippet_IChatClient)]
 

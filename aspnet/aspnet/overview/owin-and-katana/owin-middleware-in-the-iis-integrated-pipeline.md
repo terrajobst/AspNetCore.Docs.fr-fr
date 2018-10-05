@@ -8,16 +8,16 @@ ms.date: 11/07/2013
 ms.assetid: d031c021-33c2-45a5-bf9f-98f8fa78c2ab
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-middleware-in-the-iis-integrated-pipeline
 msc.type: authoredcontent
-ms.openlocfilehash: 56bd145688e1ab0a70710cc80cb8f5fa10ee8968
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 6124bcdaeeb0d4342cbde0d3ca52d55f76a953ab
+ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827381"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48576457"
 ---
 <a name="owin-middleware-in-the-iis-integrated-pipeline"></a>Intergiciel (middleware) OWIN dans le pipeline intégré IIS
 ====================
-par [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson](https://github.com/Rick-Anderson)
+par [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Cet article explique comment exécuter les composants d’intergiciel (middleware) OWIN (OMCs) dans le pipeline intégré IIS, et comment définir l’événement de pipeline un OMC s’exécute sur. Vous devez examiner [une vue d’ensemble du projet Katana](an-overview-of-project-katana.md) et [détection de classe de démarrage OWIN](owin-startup-class-detection.md) avant la lecture de ce didacticiel. Ce didacticiel a été rédigé par Rick Anderson ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ), Howard Dierking, Chris Ross et Praburaj Thiagarajan ( [ @howard \_dierking](https://twitter.com/howard_dierking) ).
 
