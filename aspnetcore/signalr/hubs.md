@@ -44,7 +44,7 @@ Vous pouvez spécifier un type de retour et paramètres, y compris les types com
 
 ## <a name="the-context-object"></a>L’objet de contexte
 
-Le `Hub` classe a un `Context` propriété qui contient les propriétés suivantes avec des informations sur la connexion :
+La classe `Hub` a une propriété `Context` qui contient les propriétés suivantes avec des informations sur la connexion :
 
 | Propriété | Description |
 | ------ | ----------- |
@@ -64,7 +64,7 @@ Le `Hub` classe a un `Context` propriété qui contient les propriétés suivant
 
 ## <a name="the-clients-object"></a>L’objet de Clients
 
-Le `Hub` classe a un `Clients` propriété qui contient les propriétés suivantes pour la communication entre client et serveur :
+La classe `Hub` a une propriété `Clients` qui contient les propriétés suivantes pour la communication entre client et serveur :
 
 | Propriété | Description |
 | ------ | ----------- |
