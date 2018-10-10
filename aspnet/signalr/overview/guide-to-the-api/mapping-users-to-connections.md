@@ -8,36 +8,36 @@ ms.date: 12/30/2014
 ms.assetid: f80c08b1-3f1f-432c-980c-c7b6edeb31b1
 msc.legacyurl: /signalr/overview/guide-to-the-api/mapping-users-to-connections
 msc.type: authoredcontent
-ms.openlocfilehash: 765f85a4e07966d32bdfc9a0b533040f14a2843e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a3598eee30b29a95673cbc313adfb8f5b068ea24
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831765"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912577"
 ---
 <a name="mapping-signalr-users-to-connections"></a>Mappage des utilisateurs SignalR aux connexions
 ====================
 par [Tom FitzMacken](https://github.com/tfitzmac)
 
 > Cette rubrique montre comment conserver des informations sur les utilisateurs et de leurs connexions.
-> 
+>
 > Patrick Fletcher a permis à écrire cette rubrique.
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>Versions des logiciels utilisées dans cette rubrique
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR version 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Versions précédentes de cette rubrique
-> 
+>
 > Pour plus d’informations sur les versions antérieures de SignalR, consultez [les Versions antérieures de SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Questions et commentaires
-> 
+>
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
 
 

@@ -8,34 +8,34 @@ ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: 9ef69ece2558260f0409e9388751f77ac84a06f1
-ms.sourcegitcommit: c12ebdab65853f27fbb418204646baf6ce69515e
+ms.openlocfilehash: bdb0562955f3bde56a95ce937c27fdbe4aa94823
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/21/2018
-ms.locfileid: "46523075"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911681"
 ---
 <a name="signalr-troubleshooting"></a>Résolution des problèmes de SignalR
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher)
 
 > Ce document décrit la résolution des problèmes courants avec SignalR.
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>Versions des logiciels utilisées dans cette rubrique
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR version 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Versions précédentes de cette rubrique
-> 
+>
 > Pour plus d’informations sur les versions antérieures de SignalR, consultez [les Versions antérieures de SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Questions et commentaires
-> 
+>
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -294,7 +294,7 @@ Cette erreur peut être dû à l’aide des types de données qui ne peut pas ê
 
 ## <a name="compilation-and-server-side-errors"></a>Erreurs de compilation et côté serveur
 
- La section suivante contient des solutions possibles au compilateur et les erreurs d’exécution du côté serveur. 
+ La section suivante contient des solutions possibles au compilateur et les erreurs d’exécution du côté serveur.
 
 ### <a name="reference-to-hub-instance-is-null"></a>Référence à l’instance de concentrateur a la valeur null
 

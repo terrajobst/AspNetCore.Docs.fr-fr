@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: db0d02d9-58e8-4a0b-8d7d-b8df8ea97b88
 msc.legacyurl: /mvc/overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: d6fb40741c5f7b992e907a462ac92972fe603624
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 2566e201e44ccd9642abda7c7996056c73178fd6
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578365"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912850"
 ---
 <a name="how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2"></a>Comment mettre à jour un ASP.NET MVC 4 et le projet d’API Web ASP.NET MVC 5 et API Web 2
 ====================
@@ -71,8 +71,8 @@ par [Rick Anderson]((https://twitter.com/RickAndMSFT))
     > Applications auxiliaires Web de Microsoft a été remplacée par Microsoft.AspNet.WebHelpers. Votre doit d’abord supprimer l’ancien package, puis installer le package plus récent.   
     >   
     > Il n’existe aucune compatibilité entre versions parmi les principaux packages d’ASP.NET. Par exemple, MVC 5 est compatible avec uniquement Razor 3 et pas Razor 2.
-4. Ouvrez votre projet dans Visual Studio 2013.
-5. Supprimer tous les packages NuGet ASP.NET suivants qui sont installés. Vous allez supprimer à l’aide de la Console de gestionnaire de Package (PMC). Pour ouvrir le PMC, sélectionnez le **outils** , puis sélectionnez **Library Package Manager,** puis sélectionnez **Console du Gestionnaire de Package**. Votre projet ne peut pas inclure tous ces éléments.
+4. Ouvrez votre projet dans Visual Studio.
+5. Supprimer tous les packages NuGet ASP.NET suivants qui sont installés. Vous allez supprimer à l’aide de la Console de gestionnaire de Package (PMC). Pour ouvrir le PMC, sélectionnez le **outils** , puis sélectionnez **Gestionnaire de Package NuGet,** puis sélectionnez **Console du Gestionnaire de Package**. Votre projet ne peut pas inclure tous ces éléments.
 
     1. `Microsoft.AspNet.WebPages.Administration`  
    Ce package est généralement ajouté lorsque la mise à niveau à partir de MVC 3 vers MVC 4. Pour le supprimer, exécutez la commande suivante dans PMC :  

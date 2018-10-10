@@ -8,21 +8,20 @@ ms.date: 01/13/2015
 ms.assetid: c89d809f-6c65-4425-a3fa-c9f6e8ac89f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9b326ec22fc70a8c1746c5cd2c302c7f04fa8d3e
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ab6a553100d704746840eaad512ec140d4576c44
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831194"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911784"
 ---
 <a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Résilience des connexions et Interception des commandes avec Entity Framework dans une Application ASP.NET MVC
 ====================
 par [Tom Dykstra](https://github.com/tdykstra)
 
-[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) ou [télécharger le PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio 2013. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 Jusqu'à présent, l’application a été exécuté localement dans IIS Express sur votre ordinateur de développement. Pour rendre une application réelle disponible pour d’autres personnes à utiliser sur Internet, vous devez déployer sur un fournisseur d’hébergement web, et vous devez déployer la base de données à un serveur de base de données.
 
@@ -73,7 +72,7 @@ Vous pouvez également utiliser l’interception de requête pour mettre en œuv
 
 ### <a name="create-a-logging-interface-and-class"></a>Créer une interface de journalisation et de la classe
 
-Un [meilleures pratiques pour la journalisation](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log) est de le faire à l’aide d’une interface plutôt que de coder en dur des appels à System.Diagnostics.Trace ou à une classe de journalisation. Cela facilite la modifier ultérieurement votre mécanisme de journalisation si vous avez besoin pour ce faire. Donc dans cette section, vous allez créer l’interface de journalisation et d’une classe pour implémenter de celui-ci. / p > 
+Un [meilleures pratiques pour la journalisation](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry.md#log) est de le faire à l’aide d’une interface plutôt que de coder en dur des appels à System.Diagnostics.Trace ou à une classe de journalisation. Cela facilite la modifier ultérieurement votre mécanisme de journalisation si vous avez besoin pour ce faire. Donc dans cette section, vous allez créer l’interface de journalisation et d’une classe pour implémenter de celui-ci. / p >
 
 1. Créez un dossier dans le projet et nommez-le *journalisation*.
 2. Dans le *journalisation* dossier, créez un fichier de classe nommé *ILogger.cs*et remplacez le code du modèle par le code suivant :
@@ -138,7 +137,7 @@ Ensuite, vous allez créer les classes Entity Framework appellera chaque fois qu
 
 ## <a name="test-logging-and-connection-resiliency"></a>Résilience des connexions et de journalisation de test
 
-1. Appuyez sur F5 pour exécuter l’application en mode débogage, puis cliquez sur le **étudiants** onglet.
+1. Appuyez sur **F5** à exécuter l’application en mode débogage, puis cliquez sur le **étudiants** onglet.
 2. Examinez le Visual Studio **sortie** fenêtre pour afficher la sortie de traçage. Vous devrez peut-être défiler vers le haut au-delà de certaines erreurs JavaScript pour obtenir les journaux écrits par votre journal.
 
     Notez que vous pouvez voir les requêtes SQL réelles envoyées à la base de données. Vous consultez certaines requêtes initiales et de commandes qui Entity Framework effectue pour commencer, une vérification de la version de base de données et de table d’historique de migration (vous allez en savoir plus sur les migrations dans le didacticiel suivant). Et vous voyez une requête pour la pagination, pour connaître les étudiants combien il existe, et enfin vous voyez la requête qui obtient les données de l’étudiant.
@@ -172,7 +171,7 @@ Ensuite, vous allez créer les classes Entity Framework appellera chaque fois qu
 
 Dans ce didacticiel, vous avez vu comment activer la résilience des connexions et enregistrer les commandes SQL qui Entity Framework compose et envoie à la base de données. Dans le didacticiel suivant, vous allez déployer l’application à Internet, à l’aide des Migrations Code First pour déployer la base de données.
 
-Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer. Vous pouvez également demander de nouvelles rubriques à [afficher les leçons de Code](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code).
+Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer.
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans [accès aux données ASP.NET - ressources recommandées](../../../../whitepapers/aspnet-data-access-content-map.md).
 

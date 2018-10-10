@@ -8,12 +8,12 @@ ms.date: 07/03/2013
 ms.assetid: 9594d644-66b6-4223-acdd-23e29a6e4c46
 msc.legacyurl: /signalr/overview/older-versions/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 4fba0cc79046f5f3fd1dc50e5b69ddb78d98c23d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3ac62639617e1ff83761d0a1d45c27303d0b820d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838646"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912759"
 ---
 <a name="signalr-performance-signalr-1x"></a>Performances de SignalR (SignalR 1.x)
 ====================
@@ -119,7 +119,7 @@ Cette section décrit comment activer et utiliser des compteurs de performances 
 
 Compteurs de performances peuvent être ajoutés au serveur à l’aide d’un utilitaire appelé SignalR.exe. Pour installer cet utilitaire, procédez comme suit :
 
-1. Dans votre application Visual Studio, sélectionnez **outils**, **Library Package Manager**, **gérer les Packages NuGet pour la Solution...**
+1. Dans Visual Studio, sélectionnez **outils** > **Gestionnaire de Package NuGet** > **gérer les Packages NuGet pour la Solution**
 2. Recherchez **signalr.utils**et sélectionnez Installer.
 
     ![](signalr-performance/_static/image1.png)

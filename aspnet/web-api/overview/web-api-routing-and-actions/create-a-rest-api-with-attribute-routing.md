@@ -8,12 +8,12 @@ ms.date: 06/26/2013
 ms.assetid: 23fc77da-2725-4434-99a0-ff872d96336b
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
 msc.type: authoredcontent
-ms.openlocfilehash: 191452204d4347396b1d339d9b82d583a2ce9f3c
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 3b66f02c9be6441ff7d6c38d6180cc8556c6b8b9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795512"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912889"
 ---
 <a name="create-a-rest-api-with-attribute-routing-in-aspnet-web-api-2"></a>Créer une API REST avec routage d’attributs dans ASP.NET Web API 2
 ====================
@@ -104,7 +104,7 @@ Cliquez sur **ajouter** dans le **ajouter un contrôleur** boîte de dialogue. L
 
 ### <a name="seed-the-database"></a>Valeur initiale de la base de données
 
-Dans le menu Outils, sélectionnez **Library Package Manager**, puis sélectionnez **Console du Gestionnaire de Package**.
+Dans le menu Outils, sélectionnez **Gestionnaire de Package NuGet**, puis sélectionnez **Console du Gestionnaire de Package**.
 
 Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
 
@@ -171,7 +171,7 @@ Le modèle d’itinéraire pour chaque méthode de contrôleur est le préfixe a
 
 Pour obtenir les détails des livres, le client envoie une demande GET à `/api/books/{id}/details`, où *{id}* est l’ID du livre.
 
-Ajoutez la méthode suivante à la classe `BooksController`.
+Ajoutez la méthode suivante à la classe `BooksController` .
 
 [!code-csharp[Main](create-a-rest-api-with-attribute-routing/samples/sample13.cs)]
 

@@ -8,12 +8,12 @@ ms.date: 06/16/2014
 ms.assetid: 20360326-b123-4b1e-abae-1d350edf4ce4
 msc.legacyurl: /web-api/overview/data/using-web-api-with-entity-framework/part-6
 msc.type: authoredcontent
-ms.openlocfilehash: 4967e21190c34f698e9c28fd9b921f07bef2ffaf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: b5cb4d93c30ef80a48da48ffc51dd51411b1d0d0
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830966"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912650"
 ---
 <a name="create-the-javascript-client"></a>Créer le Client JavaScript
 ====================
@@ -41,7 +41,7 @@ Cette approche rend plus facile à modifier la disposition et l’interface util
 
 ## <a name="add-the-knockout-library"></a>Ajoutez la bibliothèque Knockout
 
-Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Library Package Manager**. Puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
+Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet**. Puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
 
 [!code-console[Main](part-6/samples/sample1.cmd)]
 

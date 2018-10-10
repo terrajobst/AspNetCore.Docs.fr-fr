@@ -8,20 +8,20 @@ ms.date: 05/01/2015
 ms.assetid: 7ba88418-5d0a-437d-b6dc-7c3816d4ec07
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: e7f5fd725a0d151f19f49be9ceaf52b049d459c0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 647793a65dec8feaf37de561ad77b4585bb869a8
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834441"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912213"
 ---
 <a name="updating-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Mise à jour des données associées avec Entity Framework dans une Application ASP.NET MVC
 ====================
 par [Tom Dykstra](https://github.com/tdykstra)
 
-[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8) ou [télécharger le PDF](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20Entity%20Framework%206%20Code%20First%20using%20MVC%205.pdf)
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio 2013. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 
 
 Dans le didacticiel précédent, vous avez affiché les données associées ; Dans ce didacticiel, vous allez mettre à jour les données associées. Pour la plupart des relations, cela est possible en mettant à jour les champs de clé étrangère ou de propriétés de navigation. Pour les relations plusieurs-à-plusieurs, Entity Framework n’expose pas la table de jointure directement, afin que vous ajoutez et supprimez des entités à partir des propriétés de navigation.
@@ -214,8 +214,8 @@ Cliquez sur **modifier** sur un formateur pour voir la page de modification.
 
 Changez certaines affectations de cours et cliquez sur **enregistrer**. Les modifications que vous apportez sont reflétées dans la page Index.
 
- Remarque : L’approche adoptée ici pour modifier les données de formation de formateurs fonctionne bien quand il y a un nombre limité de cours. Pour les collections qui sont beaucoup plus volumineuses, une autre interface utilisateur et une autre méthode de mise à jour seraient nécessaires.  
- 
+ Remarque : L’approche adoptée ici pour modifier les données de formation de formateurs fonctionne bien quand il y a un nombre limité de cours. Pour les collections qui sont beaucoup plus volumineuses, une autre interface utilisateur et une autre méthode de mise à jour seraient nécessaires.
+
 
 ## <a name="update-the-deleteconfirmed-method"></a>Mettre à jour de la méthode DeleteConfirmed
 
@@ -269,7 +269,7 @@ Comme expliqué dans la [didacticiel de base fonctionnalité CRUD](implementing-
 
 Vous avez maintenant terminé cette introduction à l’utilisation des données liées. Jusqu'à présent dans ces didacticiels, vous avez travaillé avec un code qui effectue des e/s synchrones. Vous pouvez rendre l’application d’utiliser plus efficacement les ressources du serveur web en implémentant le code asynchrone, et c’est ce que vous allez faire dans le didacticiel suivant.
 
-Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer. Vous pouvez également demander de nouvelles rubriques à [afficher les leçons de Code](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code).
+Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer.
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans [accès aux données ASP.NET - ressources recommandées](../../../../whitepapers/aspnet-data-access-content-map.md).
 

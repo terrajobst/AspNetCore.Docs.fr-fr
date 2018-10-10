@@ -8,34 +8,34 @@ ms.date: 06/10/2014
 ms.assetid: ed562717-8591-4936-8e10-c7e63dcb570a
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: 62f835349697d02ebe7363b00a032a5353d3dfc2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 765abd36c5182f291499042e787bcb4fcc727997
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826808"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910851"
 ---
 <a name="introduction-to-signalr-security"></a>Introduction à la sécurité de SignalR
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom FitzMacken](https://github.com/tfitzmac)
 
-> Cet article décrit les problèmes de sécurité que vous devez prendre en compte lorsque vous développez une application de SignalR. 
-> 
+> Cet article décrit les problèmes de sécurité que vous devez prendre en compte lorsque vous développez une application de SignalR.
+>
 > ## <a name="software-versions-used-in-this-topic"></a>Versions des logiciels utilisées dans cette rubrique
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR version 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Versions précédentes de cette rubrique
-> 
+>
 > Pour plus d’informations sur les versions antérieures de SignalR, consultez [les Versions antérieures de SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Questions et commentaires
-> 
+>
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -108,7 +108,7 @@ Voici un exemple d’une attaque CSRF :
 
 1. Un utilisateur se connecte www.example.com, à l’aide de l’authentification par formulaire.
 2. Le serveur authentifie l’utilisateur. La réponse du serveur inclut un cookie d’authentification.
-3. Sans la déconnexion, l’utilisateur visite un site web malveillant. Ce site malveillant contient le formulaire HTML suivant : 
+3. Sans la déconnexion, l’utilisateur visite un site web malveillant. Ce site malveillant contient le formulaire HTML suivant :
 
     [!code-html[Main](introduction-to-security/samples/sample1.html)]
 
@@ -124,12 +124,9 @@ En règle générale, les attaques CSRF sont possibles contre les sites web qui 
 
 SignalR entreprend les actions suivantes afin d’éviter un site malveillant à partir de la création de demandes de valides à votre application. SignalR prend ces étapes par défaut, vous n’avez pas besoin de rien à faire dans votre code.
 
-- **Désactiver des requêtes entre domaines**  
- SignalR désactive des requêtes entre domaines pour empêcher les utilisateurs à partir de l’appel d’un point de terminaison SignalR à partir d’un domaine externe. SignalR considère que toute demande à partir d’un domaine externe n’est pas valide et bloque la demande. Nous vous recommandons de conserver ce comportement par défaut ; Sinon, un site malveillant pourrait tromper les utilisateurs d’envoyer des commandes à votre site. Si vous avez besoin d’utiliser des requêtes entre domaines, consultez [comment établir une connexion entre domaines](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain) .
-- **Passer un jeton de connexion dans la chaîne de requête, pas de cookie**  
- SignalR transmet le jeton de connexion en tant que valeur de chaîne de requête, plutôt que sous forme de cookie. Il est risqué de stocker le jeton de connexion dans un cookie, car le navigateur peut transférer par inadvertance le jeton de connexion lorsqu’un code malveillant est détecté. En outre, en passant le jeton de connexion dans la chaîne de requête empêche le jeton de connexion persistantes au-delà de la connexion actuelle. Par conséquent, un utilisateur malveillant ne peut pas effectuer une requête avec informations d’identification de l’authentification d’un autre utilisateur.
-- **Vérifier le jeton de connexion**  
- Comme décrit dans la [jeton de connexion](#connectiontoken) section, le serveur sait quels id de connexion est associé à chaque utilisateur authentifié. Le serveur ne traite pas de toute demande d’un id de connexion qui ne correspond pas le nom d’utilisateur. Il est peu probable qu'un utilisateur malveillant permettant de deviner une requête valide, car l’utilisateur malveillant devra connaître le nom d’utilisateur et l’id généré de façon aléatoire la connexion actuelle. Cet id de connexion n’est plus valide dès que la connexion est terminée. Les utilisateurs anonymes ne doivent pas avoir accès à toutes les informations sensibles.
+- **Désactiver des requêtes entre domaines** SignalR désactive des requêtes entre domaines pour empêcher les utilisateurs à partir de l’appel d’un point de terminaison SignalR à partir d’un domaine externe. SignalR considère que toute demande à partir d’un domaine externe n’est pas valide et bloque la demande. Nous vous recommandons de conserver ce comportement par défaut ; Sinon, un site malveillant pourrait tromper les utilisateurs d’envoyer des commandes à votre site. Si vous avez besoin d’utiliser des requêtes entre domaines, consultez [comment établir une connexion entre domaines](../guide-to-the-api/hubs-api-guide-javascript-client.md#crossdomain) .
+- **Passez le jeton de connexion dans la chaîne de requête, pas le cookie** SignalR transmet le jeton de connexion en tant que valeur de chaîne de requête, plutôt que sous forme de cookie. Il est risqué de stocker le jeton de connexion dans un cookie, car le navigateur peut transférer par inadvertance le jeton de connexion lorsqu’un code malveillant est détecté. En outre, en passant le jeton de connexion dans la chaîne de requête empêche le jeton de connexion persistantes au-delà de la connexion actuelle. Par conséquent, un utilisateur malveillant ne peut pas effectuer une requête avec informations d’identification de l’authentification d’un autre utilisateur.
+- **Vérifier le jeton de connexion** comme décrit dans la [jeton de connexion](#connectiontoken) section, le serveur sait quels id de connexion est associé à chaque utilisateur authentifié. Le serveur ne traite pas de toute demande d’un id de connexion qui ne correspond pas le nom d’utilisateur. Il est peu probable qu'un utilisateur malveillant permettant de deviner une requête valide, car l’utilisateur malveillant devra connaître le nom d’utilisateur et l’id généré de façon aléatoire la connexion actuelle. Cet id de connexion n’est plus valide dès que la connexion est terminée. Les utilisateurs anonymes ne doivent pas avoir accès à toutes les informations sensibles.
 
 <a id="recommendations"></a>
 

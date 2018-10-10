@@ -8,40 +8,40 @@ ms.date: 06/10/2014
 ms.assetid: 03960de2-8d95-4444-9169-4426dcc64913
 msc.legacyurl: /signalr/overview/guide-to-the-api/handling-connection-lifetime-events
 msc.type: authoredcontent
-ms.openlocfilehash: 42cf7faf9112875e15072993b6210348d0c42534
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 1783a3ab292a5460d5cc1b7ad78073071d65d379
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825721"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911939"
 ---
 <a name="understanding-and-handling-connection-lifetime-events-in-signalr"></a>Compréhension et gestion des événements de durée de vie de connexion dans SignalR
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
 
 > Cet article présente les événements de connexion et déconnexion reconnexion SignalR que vous pouvez gérer et les paramètres de délai d’expiration et keepalive que vous pouvez configurer.
-> 
+>
 > Cet article suppose que vous connaissez déjà des événements de durée de vie de SignalR et de connexion. Pour une introduction à SignalR, consultez [Introduction à SignalR](../getting-started/introduction-to-signalr.md). Pour obtenir la liste des événements de durée de vie de connexion, consultez les ressources suivantes :
-> 
+>
 > - [Comment gérer les événements de durée de vie de connexion dans la classe de concentrateur](hubs-api-guide-server.md#connectionlifetime)
 > - [Comment gérer les événements de durée de vie de connexion dans les clients JavaScript](hubs-api-guide-javascript-client.md#connectionlifetime)
 > - [Comment gérer les événements de durée de vie de connexion dans les clients .NET](hubs-api-guide-net-client.md#connectionlifetime)
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>Versions des logiciels utilisées dans cette rubrique
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR version 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Versions précédentes de cette rubrique
-> 
+>
 > Pour plus d’informations sur les versions antérieures de SignalR, consultez [les Versions antérieures de SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Questions et commentaires
-> 
+>
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -144,8 +144,8 @@ Les interruptions de connexion de transport qui ne sont pas détectées par l’
 
 Certains environnements réseau délibérément fermer les connexions inactives, et une autre fonction des paquets keepalive consiste à résoudre ce problème en vous permettant de que ces réseaux savoir qu’une connexion de SignalR est en cours d’utilisation. Dans les cas extrêmes la fréquence par défaut de keepalive pings sans réponse peut-être pas suffisant pour empêcher les connexions fermées. Dans ce cas, vous pouvez configurer les pings de keepalive doit être envoyé plus souvent. Pour plus d’informations, consultez [les paramètres de délai d’expiration et keepalive](#timeoutkeepalive) plus loin dans cette rubrique.
 
-> [!NOTE] 
-> 
+> [!NOTE]
+>
 > **Important**: la séquence d’événements décrites ici n’est pas garantie. SignalR effectue chaque tentative pour déclencher des événements de durée de vie de connexion de manière prévisible en fonction de ce schéma, mais il existe de nombreuses variations des événements de réseau et dans lequel les infrastructures de communications sous-jacentes telles que les API de transport les gérer de nombreuses façons. Par exemple, le `Reconnected` événement ne peut pas être déclenché lorsque le client se reconnecte, ou le `OnConnected` gestionnaire sur le serveur peut s’exécuter lorsque la tentative pour établir une connexion échoue. Cette rubrique décrit uniquement les effets qui seraient normalement produits par certains des circonstances normales.
 
 

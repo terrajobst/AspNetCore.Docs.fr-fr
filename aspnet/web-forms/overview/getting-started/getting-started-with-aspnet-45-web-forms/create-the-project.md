@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 2ce36f78-8ecb-4ab1-b748-6d0ab633ea3f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/create-the-project
 msc.type: authoredcontent
-ms.openlocfilehash: de0f8092342a8ba8979a31e9a97b603e44e6a85d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 754f085e3e43f7efa155f410d02a0d29d3349612
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831403"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912291"
 ---
 <a name="create-the-project"></a>Créer le projet
 ====================
@@ -174,8 +174,7 @@ Lorsqu’un serveur Web reçoit une demande pour une page, il recherche la page,
 > 
 > Outre les fonctionnalités dans le modèle d’Application ASP.NET Web Forms, l’application Wingtip Toys utilise [Entity Framework Code First](https://weblogs.asp.net/scottgu/archive/2010/12/08/announcing-entity-framework-code-first-ctp5-release.aspx), qui est une bibliothèque NuGet qui permet le développement centrée sur le code lorsque vous travaillez avec des données. En réalité, il crée la partie de la base de données de votre application pour vous selon le code que vous écrivez. À l’aide d’Entity Framework, récupérer et manipuler des données en tant qu’objets fortement typés. Ainsi vous concentrer sur la logique métier dans votre application plutôt que les détails de la façon dont les données sont accessibles.
 > 
-> Pour plus d’informations sur les bibliothèques installées et les packages inclus avec le modèle Web Forms ASP.NET, consultez la liste des packages NuGet installés. Pour ce faire, dans Visual Studio créer un nouveau projet Web Forms, sélectionnez **outils**  - &gt; **Library Package Manager**  - &gt; **gérer Les Packages NuGet pour la Solution**, puis sélectionnez **packages installés** dans le **gérer les Packages NuGet** boîte de dialogue.
-
+> Pour plus d’informations sur les bibliothèques installées et les packages inclus avec le modèle Web Forms ASP.NET, consultez la liste des packages NuGet installés. Pour ce faire, dans Visual Studio créer un nouveau projet Web Forms, sélectionnez **outils** > **Gestionnaire de Package NuGet** > **gérer les Packages NuGet pour la Solution**, puis sélectionnez **packages installés** dans le **gérer les Packages NuGet** boîte de dialogue.
 
 ### <a name="touring-visual-studio"></a>Touring Visual Studio
 

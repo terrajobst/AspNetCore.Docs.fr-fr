@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 647dab496acd63dc774236ed448bd6b37b19c707
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 676dc0854ef6f041e705ed6b39432e11dd8643ed
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834856"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910900"
 ---
 <a name="tutorial-getting-started-with-signalr-2"></a>Didacticiel : Bien démarrer avec SignalR 2
 ====================
@@ -102,7 +102,7 @@ Les étapes suivantes utilisent Visual Studio 2013 pour créer une Application W
 3. Dans **l’Explorateur de solutions**, cliquez sur le projet, sélectionnez **ajouter | Classe de concentrateur SignalR (v2)**. Nommez la classe **ChatHub.cs** et ajoutez-le au projet. Cette étape crée la **ChatHub** classe et l’ajoute au projet un ensemble de fichiers de script et les références d’assembly qui prennent en charge SignalR.
 
     > [!NOTE]
-    > Vous pouvez également ajouter SignalR à un projet en ouvrant le **outils | Gestionnaire de Package de bibliothèque | Console du Gestionnaire de package** et en exécutant une commande :
+    > Vous pouvez également ajouter SignalR à un projet en ouvrant le **Outils > Gestionnaire de Package NuGet > Console du Gestionnaire de Package** et en exécutant une commande :
 
     `install-package Microsoft.AspNet.SignalR`
 

@@ -8,32 +8,32 @@ ms.date: 06/10/2014
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: c99b38e9326ee60bfedbd7ec2f383685343cf3c0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 7d9acfc8ed2dd692f36528a8a9700d92d86a4203
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838624"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910445"
 ---
 <a name="signalr-scaleout-with-sql-server"></a>Montée en puissance parallèle de SignalR avec SQL Server
 ====================
 par [Mike Wasson](https://github.com/MikeWasson), [Patrick Fletcher](https://github.com/pfletcher)
 
 > ## <a name="software-versions-used-in-this-topic"></a>Versions des logiciels utilisées dans cette rubrique
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR version 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Versions précédentes de cette rubrique
-> 
+>
 > Pour plus d’informations sur les versions antérieures de SignalR, consultez [les Versions antérieures de SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Questions et commentaires
-> 
+>
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -50,16 +50,16 @@ Microsoft SQL Server 2005 ou version ultérieure. Le fond de panier prend en cha
 Avant de passer au didacticiel détaillé, Voici un aperçu rapide de la procédure à suivre.
 
 1. Créer une nouvelle base de données vide. Le fond de panier créera les tables nécessaires dans cette base de données.
-2. Ajoutez ces packages NuGet à votre application : 
+2. Ajoutez ces packages NuGet à votre application :
 
     - [Microsoft.AspNet.SignalR](http://nuget.org/packages/Microsoft.AspNet.SignalR)
     - [Microsoft.AspNet.SignalR.SqlServer](http://nuget.org/packages/Microsoft.AspNet.SignalR.SqlServer)
 3. Créez une application de SignalR.
-4. Ajoutez le code suivant à Startup.cs pour configurer le fond de panier : 
+4. Ajoutez le code suivant à Startup.cs pour configurer le fond de panier :
 
     [!code-csharp[Main](scaleout-with-sql-server/samples/sample1.cs)]
 
-   Ce code configure le fond de panier avec les valeurs par défaut [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) et [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Pour plus d’informations sur la modification de ces valeurs, consultez [les performances de SignalR : métriques de montée en puissance parallèle](signalr-performance.md#scaleout_metrics). 
+   Ce code configure le fond de panier avec les valeurs par défaut [TableCount](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.sqlscaleoutconfiguration.tablecount(v=vs.118).aspx) et [MaxQueueLength](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.messaging.scaleoutconfiguration.maxqueuelength(v=vs.118).aspx). Pour plus d’informations sur la modification de ces valeurs, consultez [les performances de SignalR : métriques de montée en puissance parallèle](signalr-performance.md#scaleout_metrics).
 
 ## <a name="configure-the-database"></a>Configurer la base de données
 
@@ -96,7 +96,7 @@ Créez une application de SignalR en suivant une de ces didacticiels :
 - [Bien démarrer avec SignalR 2.0](../getting-started/tutorial-getting-started-with-signalr.md)
 - [Bien démarrer avec SignalR 2.0 et MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md)
 
-Ensuite, nous allons modifier l’application de conversation pour prendre en charge la montée en puissance parallèle avec SQL Server. Tout d’abord, ajoutez le package NuGet de SignalR.SqlServer à votre projet. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Library Package Manager**, puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
+Ensuite, nous allons modifier l’application de conversation pour prendre en charge la montée en puissance parallèle avec SQL Server. Tout d’abord, ajoutez le package NuGet de SignalR.SqlServer à votre projet. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet**, puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
 
 [!code-powershell[Main](scaleout-with-sql-server/samples/sample4.ps1)]
 

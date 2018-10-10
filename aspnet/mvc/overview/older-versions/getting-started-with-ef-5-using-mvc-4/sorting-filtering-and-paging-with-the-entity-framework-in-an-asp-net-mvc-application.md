@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 8af630e0-fffa-4110-9eca-c96e201b2724
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 72180686ea1ee6f6695b24fcedf3af90c1eddcfa
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8bea3d4bc19a5a47240abeb2cc015116814a8fdf
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41824315"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911817"
 ---
 <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application-3-of-10"></a>Tri, filtrage et pagination avec Entity Framework dans une Application ASP.NET MVC (3 sur 10)
 ====================
@@ -117,7 +117,7 @@ Pour ajouter la pagination à la page d’Index des étudiants, nous allons comm
 
 Le package NuGet **PagedList.Mvc** package installe automatiquement le **PagedList** package en tant que dépendance. Le **PagedList** package installe un `PagedList` les méthodes de type et extension de collecte pour `IQueryable` et `IEnumerable` collections. Les méthodes d’extension créent une seule page de données dans un `PagedList` collection hors de votre `IQueryable` ou `IEnumerable`et le `PagedList` collection fournit plusieurs propriétés et méthodes qui facilitent la pagination. Le **PagedList.Mvc** package installe une application d’assistance de pagination qui affiche les boutons de pagination.
 
-À partir de la **outils** menu, sélectionnez **Library Package Manager** , puis **gérer les Packages NuGet pour la Solution**.
+À partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet** , puis **gérer les Packages NuGet pour la Solution**.
 
 Dans le **gérer les Packages NuGet** boîte de dialogue, cliquez sur le **Online** onglet sur la gauche, puis entrez « paginée » dans la zone de recherche. Lorsque vous voyez le **PagedList.Mvc** du package, cliquez sur **installer**.
 

@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 4ba029b6-ee7c-4e45-a0e7-b703c37e5d9a
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 037f67d679762a037eaef9f0a4060156b94d97b1
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: b691f718258f98e03513a089ca26b286f284765e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836847"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913232"
 ---
 <a name="creating-an-entity-framework-data-model-for-an-aspnet-mvc-application-1-of-10"></a>Création d’un modèle de données Entity Framework pour une Application ASP.NET MVC (1 sur 10)
 ====================
@@ -142,7 +142,7 @@ Dans le *modèles* dossier, créez *Student.cs* et remplacez le code existant pa
 
 La propriété `StudentID` devient la colonne de clé primaire de la table de base de données qui correspond à cette classe. Par défaut, Entity Framework interprète une propriété nommée `ID` ou *classname* `ID` comme clé primaire.
 
-Le `Enrollments` propriété est un *propriété de navigation*. Les propriétés de navigation contiennent d’autres entités qui sont associées à cette entité. Dans ce cas, le `Enrollments` propriété d’un `Student` entité contiendra tous le `Enrollment` entités associées à ce `Student` entité. En d’autres termes, si une donnée `Student` ligne dans la base de données comporte deux liées `Enrollment` lignes (valeur des lignes qui contiennent la clé primaire de cette étudiant dans leurs `StudentID` colonne clé étrangère), qui `Student` l’entité `Enrollments` propriété de navigation contiendra ces deux `Enrollment` entités.
+La propriété `Enrollments` est une *propriété de navigation*. Les propriétés de navigation contiennent d’autres entités qui sont associées à cette entité. Dans ce cas, le `Enrollments` propriété d’un `Student` entité contiendra tous le `Enrollment` entités associées à ce `Student` entité. En d’autres termes, si une donnée `Student` ligne dans la base de données comporte deux liées `Enrollment` lignes (valeur des lignes qui contiennent la clé primaire de cette étudiant dans leurs `StudentID` colonne clé étrangère), qui `Student` l’entité `Enrollments` propriété de navigation contiendra ces deux `Enrollment` entités.
 
 Propriétés de navigation sont généralement définies en tant que `virtual` afin qu’ils peuvent tirer parti de certaines fonctionnalités Entity Framework comme *le chargement différé*. (Le chargement différé est expliqué plus loin, dans le [lecture de données connexes](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) didacticiel plus loin dans cette série.
 
@@ -210,7 +210,7 @@ Lorsque vous commencez à développer une application, votre modèle de données
 
 ### <a name="enable-code-first-migrations"></a>Activer Code First Migrations
 
-1. À partir de la **outils** menu, cliquez sur **Library Package Manager** , puis **Console du Gestionnaire de Package**.
+1. À partir de la **outils** menu, cliquez sur **Gestionnaire de Package NuGet** , puis **Console du Gestionnaire de Package**.
 
     ![Selecting_Package_Manager_Console](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image10.png)
 2. À la `PM>` invite Entrez la commande suivante :

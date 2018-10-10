@@ -8,12 +8,12 @@ ms.date: 05/01/2013
 ms.assetid: 6abecf80-8ffa-41ba-b0d9-1d9edbe7687b
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-redis
 msc.type: authoredcontent
-ms.openlocfilehash: 4f587b129a1a22e64625d2ab0fc7655984262ebe
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 90f1f1429dcdf8f1015365e5aa337371c6307715
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826763"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910718"
 ---
 <a name="signalr-scaleout-with-redis-signalr-1x"></a>Montée en puissance parallèle de SignalR avec Redis (SignalR 1.x)
 ====================
@@ -94,7 +94,7 @@ Créez une application de SignalR en suivant une de ces didacticiels :
 - [Bien démarrer avec SignalR](../getting-started/tutorial-getting-started-with-signalr.md)
 - [Bien démarrer avec SignalR et MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md)
 
-Ensuite, nous allons modifier l’application de conversation pour prendre en charge la montée en puissance parallèle avec Redis. Tout d’abord, ajoutez le package NuGet de SignalR.Redis à votre projet. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Library Package Manager**, puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
+Ensuite, nous allons modifier l’application de conversation pour prendre en charge la montée en puissance parallèle avec Redis. Tout d’abord, ajoutez le package NuGet de SignalR.Redis à votre projet. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet**, puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
 
 [!code-powershell[Main](scaleout-with-redis/samples/sample5.ps1)]
 

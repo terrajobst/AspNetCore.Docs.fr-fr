@@ -8,12 +8,12 @@ ms.date: 04/16/2013
 ms.assetid: ad2a5da5-2e79-40ea-bc84-028d327f5982
 msc.legacyurl: /signalr/overview/older-versions/tutorial-high-frequency-realtime-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 53cc35d819c0d3a9bd84e8bfc44098a3b62e6db3
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c677bcbc78eac6056c035c2b34fe659caac9c6fa
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835596"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912278"
 ---
 <a name="high-frequency-realtime-with-signalr-1x"></a>En temps réel haute fréquence avec SignalR 1.x
 ====================
@@ -79,7 +79,7 @@ Dans cette section, nous allons créer le projet dans Visual Studio.
 
 Vous pouvez ajouter des fonctionnalités de SignalR à un projet en installant un package NuGet. Ce didacticiel utilise également le package JQuery.UI permettant d’attribuer la forme pour faire glisser et animée.
 
-1. Cliquez sur **outils | Gestionnaire de Package de bibliothèque | Console du Gestionnaire de package**.
+1. Cliquez sur **outils | Gestionnaire de Package NuGet | Console du Gestionnaire de package**.
 2. Entrez la commande suivante dans le Gestionnaire de package.
 
     [!code-powershell[Main](tutorial-high-frequency-realtime-with-signalr/samples/sample1.ps1)]

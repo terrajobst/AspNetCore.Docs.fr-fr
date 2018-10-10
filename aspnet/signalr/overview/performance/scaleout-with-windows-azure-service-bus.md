@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: ce1305f9-30fd-49e3-bf38-d0a78dfb06c3
 msc.legacyurl: /signalr/overview/performance/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: b87eb9f2df82d92c07ea0c86873849a44660e5c2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 3adc8768eb7271de32180ba98f67864b22283510
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830936"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910796"
 ---
 <a name="signalr-scaleout-with-azure-service-bus"></a>Montée en puissance parallèle de SignalR avec Azure Service Bus
 ====================
@@ -94,7 +94,7 @@ L’Assistant de projet crée deux projets :
 
 Pour créer l’application de conversation, suivez les étapes dans le didacticiel [bien démarrer avec SignalR et MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md).
 
-Utilisez NuGet pour installer les bibliothèques requises. À partir de la **outils** menu, sélectionnez **Library Package Manager**, puis sélectionnez **Console du Gestionnaire de Package**. Dans le **Console du Gestionnaire de Package** fenêtre, entrez les commandes suivantes :
+Utilisez NuGet pour installer les bibliothèques requises. À partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet**, puis sélectionnez **Console du Gestionnaire de Package**. Dans le **Console du Gestionnaire de Package** fenêtre, entrez les commandes suivantes :
 
 [!code-powershell[Main](scaleout-with-windows-azure-service-bus/samples/sample2.ps1)]
 

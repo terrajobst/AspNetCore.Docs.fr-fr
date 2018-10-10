@@ -8,12 +8,12 @@ ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: a3f6174049ffddae4bb2a1819e3684bcdec1b55f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 59831fb8497c86ec5e02de3912b36a15f416597c
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836456"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913231"
 ---
 <a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Atelier pratique : Les Applications Web en temps réel avec SignalR
 ====================
@@ -148,7 +148,7 @@ Dans cette tâche, vous allez passer par l’application et vérifier la façon 
 
 Dans cette tâche, vous ajoutez SignalR à la solution et envoyer automatiquement des mises à jour aux clients quand une nouvelle réponse est envoyée au serveur.
 
-1. À partir de la **outils** menu dans Visual Studio, sélectionnez **Library Package Manager**, puis cliquez sur **Console du Gestionnaire de Package**.
+1. À partir de la **outils** menu dans Visual Studio, sélectionnez **Gestionnaire de Package NuGet**, puis cliquez sur **Console du Gestionnaire de Package**.
 2. Dans le **Console du Gestionnaire de Package** fenêtre, exécutez la commande suivante :
 
     [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample1.ps1)]
@@ -362,7 +362,7 @@ Dans cette tâche, vous allez créer une base de données qui servira de fond de
 
 Dans cette tâche, vous allez configurer **Geek questionnaire** pour se connecter à l’infrastructure d’intégration SQL Server. Vous allez tout d’abord ajouter le **SignalR.SqlServer** package NuGet et définissez la connexion à votre base de données de fond de panier de chaîne.
 
-1. Ouvrez le **Console du Gestionnaire de Package** de **outils** | **Library Package Manager**. Assurez-vous que l’option **GeekQuiz** projet est sélectionné dans le **projet par défaut** liste déroulante. Tapez la commande suivante pour installer le **Microsoft.AspNet.SignalR.SqlServer** package NuGet.
+1. Ouvrez le **Console du Gestionnaire de Package** de **outils** > **Gestionnaire de Package NuGet**. Assurez-vous que l’option **GeekQuiz** projet est sélectionné dans le **projet par défaut** liste déroulante. Tapez la commande suivante pour installer le **Microsoft.AspNet.SignalR.SqlServer** package NuGet.
 
     [!code-powershell[Main](real-time-web-applications-with-signalr/samples/sample13.ps1)]
 2. Répétez l’étape précédente, mais cette fois pour projet **GeekQuiz2**.

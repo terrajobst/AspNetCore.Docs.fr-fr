@@ -5,12 +5,12 @@ description: Découvrez comment créer une application Pages Razor avec des donn
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 2fb13f0772a1f8aa4ed2ff3ece2a2c5d3b7360c9
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 71b7855958b530b8bac32843a8d1e7db0113ffd9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010934"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912629"
 ---
 ::: moniker range="<= aspnetcore-1.1"
 
@@ -350,6 +350,7 @@ Tester l’application d’amorçage la base de données. S’il existe des lign
 
 ### <a name="additional-resources"></a>Ressources supplémentaires
 
+* [Créer une application web .NET Core et SQL Database dans Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.NET Core d’autorisation Lab](https://github.com/blowdart/AspNetAuthorizationWorkshop). Ce laboratoire présente plus en détails sur les fonctionnalités de sécurité présentées dans ce didacticiel.
 * [Autorisation dans ASP.NET Core : Simple, rôle, basée sur les revendications et personnalisée](xref:security/authorization/index)
 * [Autorisation basée sur une stratégie personnalisée](xref:security/authorization/policies)

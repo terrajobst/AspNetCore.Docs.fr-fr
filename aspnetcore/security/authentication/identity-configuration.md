@@ -5,12 +5,12 @@ description: Comprendre les valeurs par défaut de ASP.NET Core Identity et déc
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 0faab001b981c79f6afa16b2a8cf80c1ef141b11
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 02441cd28c2a99eda7b50ed54f4437d4b52ca5d9
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011298"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911935"
 ---
 # <a name="configure-aspnet-core-identity"></a>Configurer ASP.NET Core Identity
 
@@ -79,18 +79,30 @@ Par défaut, Identity requiert que les mots de passe contiennent une majuscule, 
 
 [IdentityOptions.Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password) Spécifie le [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) avec les propriétés affichées dans la table.
 
+::: moniker range=">= aspnetcore-2.0"
+
 | Propriété | Description | Par défaut |
 | -------- | ----------- | :-----: |
 | [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | Nécessite un nombre compris entre 0-9 dans le mot de passe. | `true` |
 | [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | La longueur minimale du mot de passe. | 6 |
-
-::: moniker range=">= aspnetcore-2.0"
-
+| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | Nécessite un caractère minuscule dans le mot de passe. | `true` |
+| [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | Nécessite un caractère non alphanumérique dans le mot de passe. | `true` |
 | [RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireduniquechars) | S’applique uniquement à ASP.NET Core 2.0 ou version ultérieure.<br><br> Requiert un nombre de caractères distincts dans le mot de passe. | 1 |
+| [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | Nécessite un caractère majuscule dans le mot de passe. | `true` |
 
 ::: moniker-end
 
-| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | Nécessite un caractère minuscule dans le mot de passe. | `true` | | [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | Nécessite un caractère non alphanumérique dans le mot de passe. | `true` | | [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | Nécessite un caractère majuscule dans le mot de passe. | `true` |
+::: moniker range="< aspnetcore-2.0"
+
+| Propriété | Description | Par défaut |
+| -------- | ----------- | :-----: |
+| [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | Nécessite un nombre compris entre 0-9 dans le mot de passe. | `true` |
+| [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | La longueur minimale du mot de passe. | 6 |
+| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | Nécessite un caractère minuscule dans le mot de passe. | `true` |
+| [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | Nécessite un caractère non alphanumérique dans le mot de passe. | `true` |
+| [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | Nécessite un caractère majuscule dans le mot de passe. | `true` |
+
+::: moniker-end
 
 ### <a name="sign-in"></a>Connectez-vous
 
@@ -137,7 +149,7 @@ Le code suivant définit `SignIn` paramètres (pour les valeurs par défaut) :
 
 | Propriété | Description | Par défaut |
 | -------- | ----------- | :-----: |
-| [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | Caractères autorisés dans le nom d’utilisateur. | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-._@+ |
+| [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | Caractères autorisés dans le nom d’utilisateur. | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-.\_@+ |
 | [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | Chaque utilisateur doit avoir un e-mail unique. | `false` |
 
 ### <a name="cookie-settings"></a>Paramètres de cookies

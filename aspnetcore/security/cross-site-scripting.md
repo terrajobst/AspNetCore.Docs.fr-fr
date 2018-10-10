@@ -5,18 +5,18 @@ description: En savoir plus sur Cross-Site Scripting (XSS) et les techniques pou
 ms.author: riande
 ms.date: 10/02/2018
 uid: security/cross-site-scripting
-ms.openlocfilehash: e937ce47b7151155197cd607832eeb6bf62e3a19
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 50f0211a2c64708d9b788dd10ce9064e66014d55
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577442"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48910523"
 ---
 # <a name="prevent-cross-site-scripting-xss-in-aspnet-core"></a>Empêcher de Cross-Site script (XSS) dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet à une personne malveillante de placer les scripts côté client (généralement JavaScript) dans les pages web. Lorsque les autres utilisateurs chargent les pages concernées les scripts des personnes malveillantes s’exécutent, donnant ainsi la possibilité à la personne malveillante de voler des cookies et des jetons, modifier le contenu de la page web via la manipulation du modèle DOM ou de rediriger le navigateur vers une autre page. Les vulnérabilités XSS se produisent généralement lorsqu’une application accepte l’entrée d'un utilisateur et lui en donne en retour une page sans validation, encodage ou échappement.
+L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet à une personne malveillante de placer les scripts côté client (généralement JavaScript) dans les pages web. Lorsque vous chargez des pages concernées, les scripts de l’attaquant s’exécuteront autres utilisateurs, l’activation de l’attaquant de voler des cookies et des jetons de session, modifier le contenu de la page web via la manipulation DOM ou rediriger le navigateur vers une autre page. Les vulnérabilités XSS se produisent généralement lorsqu’une application utilise l’entrée utilisateur et l’exporte vers une page sans validation, d’encodage ou d’échappement.
 
 ## <a name="protecting-your-application-against-xss"></a>Protéger votre application contre XSS
 
@@ -26,15 +26,15 @@ L'écriture de scripts entre sites (XSS) est une faille de sécurité qui permet
 
 2. Avant de placer des données non fiables à l’intérieur d’un élément HTML, assurez-vous qu’il est encodé au format HTML. L’encodage HTML utilise des caractères tel que &lt; et les transforme en un formulaire sécurisé comme &amp;lt ;
 
-3. Avant de placer des données non fiables dans un attribut HTML, assurez-vous qu’il est l’attribut HTML encodé. L'Encodage d’attribut HTML est un sur-ensemble de l’encodage HTML et encode les caractères supplémentaires tels que « et ».
+3. Avant de placer des données non fiables dans un attribut HTML vous assurer qu’il est encodé au format HTML. L'Encodage d’attribut HTML est un sur-ensemble de l’encodage HTML et encode les caractères supplémentaires tels que « et ».
 
-4. Avant de mettre des données non fiables en JavaScript placez les données dans un élément HTML dont le contenu sera récupéré lors de son exécution. Si ce n’est pas possible, vérifiez que les données sont encodées en JavaScript. L'encodage de JavaScript prend des caractères dangereux pour le JavaScript et les remplace par leur valeur hexadécimale, par exemple &lt; serait codée en tant que `\u003C`.
+4. Avant de mettre des données non fiables en JavaScript placez les données dans un élément HTML dont le contenu sera récupéré lors de son exécution. Si ce n’est pas possible, puis vérifiez que les données sont codée de JavaScript. L'encodage de JavaScript prend des caractères dangereux pour le JavaScript et les remplace par leur valeur hexadécimale, par exemple &lt; serait codée en tant que `\u003C`.
 
 5. Avant de placer des données non fiables dans une chaîne de requête URL assurez-vous qu'elles soient encodées URL.
 
 ## <a name="html-encoding-using-razor"></a>Encodage HTML à l’aide de Razor
 
-Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise les règles d'encodage d’attribut HTML chaque fois que vous utilisez la directive *@*. L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez @ uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
+Le moteur Razor automatiquement utilisé dans MVC encode toute sortie provenant de variables, sauf si vous travaillez dur pour empêcher cette opération. Il utilise des règles d’encodage HTML attribut chaque fois que vous utilisez le *@* directive. L'encodage d’attribut HTML est un sur-ensemble de l'encodage HTML et cela signifie que vous n’êtes pas obligé de vous préoccuper si vous devez utiliser l’encodage HTML ou l'encodage d’attribut HTML. Vous devez vous assurer que vous utilisez @ uniquement dans un contexte HTML, et non pour tenter d’insérer des entrées non approuvées directement dans JavaScript. Les programmes d’assistance de balises encoderont également m’entrée que vous utilisez dans les paramètres de la balise.
 
 Prenez la vue Razor suivante :
 
@@ -107,7 +107,7 @@ Cela génère le code HTML suivant
    </script>
    ```
 
-Qui, lorsqu’il s’exécute, apparaîtra comme suit.
+Qui, quand elle s’exécute, restitue les éléments suivants :
 
 ```none
 <"123">
@@ -129,7 +129,7 @@ Vous pouvez également appeler l’encodeur JavaScript directement :
    </script>
    ```
 
-Cela s'affichera dans le navigateur comme suit :
+Cela s’affiche dans le navigateur comme suit :
 
 ```html
 <script>

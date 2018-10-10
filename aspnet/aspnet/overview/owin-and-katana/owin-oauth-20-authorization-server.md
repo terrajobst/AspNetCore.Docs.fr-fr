@@ -8,33 +8,33 @@ ms.date: 03/20/2014
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: 2dd4af4543713ab08ad9427d183f667e2dc04f1f
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 095dad49a8e9f963d941a84398afe9da0f46ce0b
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578040"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912265"
 ---
 <a name="owin-oauth-20-authorization-server"></a>Serveur de d’autorisation OAuth 2.0 OWIN
 ====================
 par [Hongye Sun](https://github.com/hongyes), [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Ce didacticiel vous guide sur la façon d’implémenter un serveur d’autorisation OAuth 2.0 à l’aide d’intergiciel (middleware) OWIN OAuth. Il s’agit d’un didacticiel avancé qui ne présente les étapes pour créer un serveur d’autorisation de OWIN OAuth 2.0. Cela n’est pas un didacticiel étape par étape. [Télécharger l’exemple de code](https://code.msdn.microsoft.com/OWIN-OAuth-20-Authorization-ba2b8783/file/114932/1/AuthorizationServer.zip).
-> 
+>
 > > [!NOTE]
 > > Ce plan ne doit pas être destiné à utiliser pour la création d’une application de production sécurisé. Ce didacticiel vise à fournir uniquement un plan d’implémentation d’un serveur d’autorisation OAuth 2.0 à l’aide d’intergiciel (middleware) OWIN OAuth.
-> 
-> 
+>
+>
 > ## <a name="software-versions"></a>Versions des logiciels
-> 
+>
 > | **Indiqué dans le didacticiel** | **Fonctionne également avec** |
 > | --- | --- |
 > | Windows 8.1 | Windows 8, Windows 7 |
-> | [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads) | [Visual Studio 2013 Express pour Desktop](https://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express). Visual Studio 2012 avec la dernière mise à jour devrait fonctionner, mais le didacticiel n’a pas été testé avec lui et des sélections de menu et les boîtes de dialogue sont différents. |
+> | [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) | [Visual Studio 2013 Express pour Desktop](https://my.visualstudio.com/Downloads?q=visual%20studio%202013#d-2013-express). Visual Studio 2012 avec la dernière mise à jour devrait fonctionner, mais le didacticiel n’a pas été testé avec lui et des sélections de menu et les boîtes de dialogue sont différents. |
 > | .NET 4.5 |  |
-> 
+>
 > ## <a name="questions-and-comments"></a>Questions et commentaires
-> 
+>
 > Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à [projet Katana sur GitHub](https://github.com/aspnet/AspNetKatana/). Pour les questions et commentaires concernant ce didacticiel, consultez la section des commentaires en bas de la page.
 
 
@@ -81,11 +81,11 @@ Le `UseOAuthAuthorizationServer` méthode d’extension consiste à configurer l
 
 - `AuthorizeEndpointPath`: Le chemin d’accès de requête où les applications clientes redirigeront l’agent utilisateur afin d’obtenir les utilisateurs de consentement pour émettre un jeton ou du code. Il doit commencer par une barre oblique, par exemple, «`/Authorize`».
 - `TokenEndpointPath`: Les applications de client de chemin d’accès de requête communiquent directement pour obtenir le jeton d’accès. Il doit commencer par une barre oblique, par exemple « /Token ». Si le client reçoit un [client\_secret](http://tools.ietf.org/html/rfc6749#appendix-A.2), elle doit être fournie à ce point de terminaison.
-- `ApplicationCanDisplayErrors`: Défini sur `true` si l’application web veut générer une page d’erreur personnalisée pour les erreurs de validation client sur `/Authorize` point de terminaison. Ce paramètre est uniquement nécessaire pour les cas où le navigateur n’est pas redirigé sauvegarder à l’application cliente, par exemple, lorsque le `client_id` ou `redirect_uri` sont incorrectes. Le `/Authorize` point de terminaison doit s’attendre à voir le « oauth. Erreur «, « oauth. ErrorDescription » et « oauth. Propriétés de ErrorUri » sont ajoutées à l’environnement OWIN. 
+- `ApplicationCanDisplayErrors`: Défini sur `true` si l’application web veut générer une page d’erreur personnalisée pour les erreurs de validation client sur `/Authorize` point de terminaison. Ce paramètre est uniquement nécessaire pour les cas où le navigateur n’est pas redirigé sauvegarder à l’application cliente, par exemple, lorsque le `client_id` ou `redirect_uri` sont incorrectes. Le `/Authorize` point de terminaison doit s’attendre à voir le « oauth. Erreur «, « oauth. ErrorDescription » et « oauth. Propriétés de ErrorUri » sont ajoutées à l’environnement OWIN.
 
     > [!NOTE]
     > Si ce n’est pas le cas, la valeur est true, le serveur d’autorisation renverra une page d’erreur par défaut avec les détails de l’erreur.
-- `AllowInsecureHttp`: True pour autoriser l’autoriser et demandes de jetons pour arriver sur des adresses URI HTTP et pour autoriser le trafic entrant `redirect_uri` autoriser les paramètres de la demande d’avoir des adresses URI HTTP. 
+- `AllowInsecureHttp`: True pour autoriser l’autoriser et demandes de jetons pour arriver sur des adresses URI HTTP et pour autoriser le trafic entrant `redirect_uri` autoriser les paramètres de la demande d’avoir des adresses URI HTTP.
 
     > [!WARNING]
     > Sécurité - Il s’agit uniquement pour le développement.
@@ -107,9 +107,9 @@ La page de connexion est indiquée ci-dessous :
 
 ![](owin-oauth-20-authorization-server/_static/image1.png)
 
-Passez en revue OAuth 2 l’IETF [octroi de Code d’autorisation](http://tools.ietf.org/html/rfc6749#section-4.1) section maintenant. 
+Passez en revue OAuth 2 l’IETF [octroi de Code d’autorisation](http://tools.ietf.org/html/rfc6749#section-4.1) section maintenant.
 
-**Fournisseur** (dans le tableau ci-dessous) est [OAuthAuthorizationServerOptions](https://msdn.microsoft.com/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx). Fournisseur, qui est de type `OAuthAuthorizationServerProvider`, qui contient tous les événements de serveur OAuth. 
+**Fournisseur** (dans le tableau ci-dessous) est [OAuthAuthorizationServerOptions](https://msdn.microsoft.com/library/microsoft.owin.security.oauth.oauthauthorizationserveroptions(v=vs.111).aspx). Fournisseur, qui est de type `OAuthAuthorizationServerProvider`, qui contient tous les événements de serveur OAuth.
 
 | Étapes du flux à partir de la section d’octroi de Code d’autorisation | Téléchargement de l’exemple effectue ces étapes avec : |
 | --- | --- |
@@ -134,13 +134,13 @@ Le `Authorize` action vérifie d’abord si l’utilisateur s’est connecté au
 
 ![](owin-oauth-20-authorization-server/_static/image2.png)
 
-Si le **Grant** bouton est sélectionné, le `Authorize` action crée une nouvelle identité de « Porteur » et connectez-vous avec elle. Il déclenche le serveur d’autorisation pour générer un jeton du porteur et l’envoyer au client avec une charge utile JSON. 
+Si le **Grant** bouton est sélectionné, le `Authorize` action crée une nouvelle identité de « Porteur » et connectez-vous avec elle. Il déclenche le serveur d’autorisation pour générer un jeton du porteur et l’envoyer au client avec une charge utile JSON.
 
 ### <a name="implicit-grant"></a>Octroi implicite
 
 Reportez-vous à OAuth 2 l’IETF [octroi implicite](http://tools.ietf.org/html/rfc6749#section-4.2) section maintenant.
 
- Le [octroi implicite](http://tools.ietf.org/html/rfc6749#section-4.2) flux illustré Figure 4 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).  
+ Le [octroi implicite](http://tools.ietf.org/html/rfc6749#section-4.2) flux illustré Figure 4 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).
 
 | Étapes du flux à partir de la section d’octroi implicite | Téléchargement de l’exemple effectue ces étapes avec : |
 | --- | --- |
@@ -159,7 +159,7 @@ Reportez-vous à OAuth 2 l’IETF [octroi implicite](http://tools.ietf.org/html/
 
 Reportez-vous à OAuth 2 l’IETF [octroi des informations de mot de passe propriétaire de la ressource](http://tools.ietf.org/html/rfc6749#section-4.3) section maintenant.
 
- Le [octroi des informations de mot de passe propriétaire de la ressource](http://tools.ietf.org/html/rfc6749#section-4.3) flux illustré Figure 5 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).  
+ Le [octroi des informations de mot de passe propriétaire de la ressource](http://tools.ietf.org/html/rfc6749#section-4.3) flux illustré Figure 5 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).
 
 | Étapes du flux à partir de la section d’octroi des informations de mot de passe propriétaire de la ressource | Téléchargement de l’exemple effectue ces étapes avec : |
 | --- | --- |
@@ -182,7 +182,7 @@ Voici l’exemple d’implémentation pour `Provider.GrantResourceOwnerCredentia
 
 Reportez-vous à OAuth 2 l’IETF [octroi des informations d’identification du Client](http://tools.ietf.org/html/rfc6749#section-4.4) section maintenant.
 
- Le [octroi des informations d’identification du Client](http://tools.ietf.org/html/rfc6749#section-4.4) flux indiqué dans la Figure 6 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).  
+ Le [octroi des informations d’identification du Client](http://tools.ietf.org/html/rfc6749#section-4.4) flux indiqué dans la Figure 6 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).
 
 | Étapes du flux à partir de la section d’octroi des informations d’identification du Client | Téléchargement de l’exemple effectue ces étapes avec : |
 | --- | --- |
@@ -203,7 +203,7 @@ Voici l’exemple d’implémentation pour `Provider.GrantClientCredentials`:
 
 Reportez-vous à OAuth 2 l’IETF [jeton d’actualisation](http://tools.ietf.org/html/rfc6749#section-1.5) section maintenant.
 
- Le [jeton d’actualisation](http://tools.ietf.org/html/rfc6749#section-1.5) flux indiqué dans la Figure 2 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).  
+ Le [jeton d’actualisation](http://tools.ietf.org/html/rfc6749#section-1.5) flux indiqué dans la Figure 2 est le flux et le OAuth OWIN de mappage qui la suit intergiciel (middleware).
 
 | Étapes du flux à partir de la section d’octroi des informations d’identification du Client | Téléchargement de l’exemple effectue ces étapes avec : |
 | --- | --- |
@@ -212,7 +212,7 @@ Reportez-vous à OAuth 2 l’IETF [jeton d’actualisation](http://tools.ietf.or
 |  |  |
 | (H) le serveur d’autorisation authentifie le client et valide le jeton d’actualisation et s’il est valide, émet un nouveau jeton d’accès (et, éventuellement, un nouveau jeton d’actualisation). |  |
 
-Voici l’exemple d’implémentation pour `Provider.GrantRefreshToken`: 
+Voici l’exemple d’implémentation pour `Provider.GrantRefreshToken`:
 
 [!code-csharp[Main](owin-oauth-20-authorization-server/samples/sample9.cs)]
 

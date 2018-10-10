@@ -8,38 +8,38 @@ ms.date: 09/28/2015
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: de47593e7f54757d4f91a6e92485567e74b829ed
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9edb7fd100a3f4c5331454045ac206d2f7a81961
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41825347"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912447"
 ---
 <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>Guide de l’API ASP.NET SignalR Hubs - Client JavaScript
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
 
 > Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 2 dans les clients JavaScript, telles que des navigateurs et des applications du Windows Store (WinJS).
-> 
+>
 > L’API de concentrateurs SignalR vous permet de vous permettent d’effectuer des appels de procédure distante (RPC) à partir d’un serveur aux clients connectés et à partir de clients sur le serveur. Dans le code serveur, vous définissez des méthodes qui peuvent être appelées par les clients, et vous appelez des méthodes qui s’exécutent sur le client. Dans le code client, vous définissez des méthodes qui peuvent être appelées à partir du serveur, et vous appelez des méthodes qui s’exécutent sur le serveur. SignalR s’occupe de tous les éléments client-serveur pour vous.
-> 
+>
 > SignalR offre également une API de niveau inférieur appelée connexions persistantes. Pour une introduction à SignalR Hubs et connexions persistantes, consultez [Introduction à SignalR](../getting-started/introduction-to-signalr.md).
-> 
+>
 > ## <a name="software-versions-used-in-this-topic"></a>Versions des logiciels utilisées dans cette rubrique
-> 
-> 
-> - [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/2013-downloads)
+>
+>
+> - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
 > - .NET 4.5
 > - SignalR version 2
->   
-> 
-> 
+>
+>
+>
 > ## <a name="previous-versions-of-this-topic"></a>Versions précédentes de cette rubrique
-> 
+>
 > Pour plus d’informations sur les versions antérieures de SignalR, consultez [les Versions antérieures de SignalR](../older-versions/index.md).
-> 
+>
 > ## <a name="questions-and-comments"></a>Questions et commentaires
-> 
+>
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
 
 
@@ -234,7 +234,7 @@ Cette commande ajoutera le 2.1.0 version du package à votre projet.
 
 ### <a name="calling-usecors"></a>Appeler UseCors
 
- L’extrait de code suivant montre comment implémenter des connexions inter-domaines dans SignalR 2. 
+ L’extrait de code suivant montre comment implémenter des connexions inter-domaines dans SignalR 2.
 
 **Implémentation de demandes inter-domaines dans SignalR 2**
 
@@ -242,12 +242,12 @@ Le code suivant montre comment activer CORS ou JSONP dans un projet de SignalR 2
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample11.cs)]
 
-> [!NOTE] 
-> 
+> [!NOTE]
+>
 > - Ne définissez pas `jQuery.support.cors` sur true dans votre code.
-> 
+>
 >     ![Ne définissez pas jQuery.support.cors sur true](hubs-api-guide-javascript-client/_static/image7.png)
-> 
+>
 >     SignalR gère l’utilisation de CORS. Paramètre `jQuery.support.cors` à la valeur true désactive JSONP, car elle force SignalR à assumer le navigateur prend en charge CORS.
 > - Lorsque vous vous connectez à une URL localhost, Internet Explorer 10 ne considérez-la comme une connexion entre domaines, pour l’application fonctionne localement avec IE 10 même si vous n’avez pas activé les connexions inter-domaines sur le serveur.
 > - Pour plus d’informations sur l’utilisation de connexions inter-domaines avec Internet Explorer 9, consultez [ce thread Stack Overflow](http://stackoverflow.com/questions/13573397/siganlr-ie9-cross-domain-request-dont-work).

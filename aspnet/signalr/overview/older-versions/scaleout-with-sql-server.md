@@ -8,12 +8,12 @@ ms.date: 05/01/2013
 ms.assetid: 1dca7967-8296-444a-9533-837eb284e78c
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: cd0e3d4bdb4d2eb78e5c41167a17f8673584f654
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d68196aa8e4d0c60570a0e36ccc75a2a080d57bc
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41832972"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912746"
 ---
 <a name="signalr-scaleout-with-sql-server-signalr-1x"></a>Montée en puissance parallèle de SignalR avec SQL Server (SignalR 1.x)
 ====================
@@ -66,7 +66,6 @@ Pour activer Service Broker, utilisez la requête SQL suivante :
 > [!NOTE]
 > Si cette requête s’affiche en interblocage, vérifiez qu’il n’existe aucune application connectée à la base de données.
 
-
 Si vous avez activé le suivi, les traces montrera également si Service Broker est activé.
 
 ## <a name="create-a-signalr-application"></a>Créer une Application de SignalR
@@ -76,7 +75,7 @@ Créez une application de SignalR en suivant une de ces didacticiels :
 - [Bien démarrer avec SignalR](../getting-started/tutorial-getting-started-with-signalr.md)
 - [Bien démarrer avec SignalR et MVC 4](tutorial-getting-started-with-signalr-and-mvc-4.md)
 
-Ensuite, nous allons modifier l’application de conversation pour prendre en charge la montée en puissance parallèle avec SQL Server. Tout d’abord, ajoutez le package NuGet de SignalR.SqlServer à votre projet. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Library Package Manager**, puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
+Ensuite, nous allons modifier l’application de conversation pour prendre en charge la montée en puissance parallèle avec SQL Server. Tout d’abord, ajoutez le package NuGet de SignalR.SqlServer à votre projet. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet**, puis sélectionnez **Console du Gestionnaire de Package**. Dans la fenêtre de Console du Gestionnaire de Package, entrez la commande suivante :
 
 [!code-powershell[Main](scaleout-with-sql-server/samples/sample4.ps1)]
 

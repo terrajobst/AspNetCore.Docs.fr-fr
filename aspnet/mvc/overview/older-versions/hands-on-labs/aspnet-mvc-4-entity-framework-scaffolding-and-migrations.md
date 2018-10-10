@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 093c1362-f10b-407c-a708-be370f4b62b0
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 10a61b70ef52aa9f5bb9004df3dba9e323d021db
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: bfb1edfcb756706e44126e7e96803bd2e9ce99fb
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830731"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911017"
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Migrations et la génération de modèles automatique ASP.NET MVC 4 Entity Framework
 
@@ -172,7 +172,7 @@ Dans cet exercice, vous allez apprendre à utiliser la structure ASP.NET MVC 4 a
 
 Dans cette tâche, vous mettrez à jour la base de données à l’aide des Migrations Entity Framework. Vous allez découvrir combien il est facile à modifier le modèle et de refléter les modifications dans vos bases de données à l’aide de la fonctionnalité de Migrations Entity Framework.
 
-1. Ouvrez la Console du Gestionnaire de Package. Sélectionnez **outils | Gestionnaire de Package de bibliothèque | Console du Gestionnaire de package**.
+1. Ouvrez la Console du Gestionnaire de Package. Sélectionnez **outils** > **Gestionnaire de Package NuGet** > **Console du Gestionnaire de Package**.
 2. Dans la Console du Gestionnaire de Package, entrez la commande suivante :
 
     PMC
