@@ -8,12 +8,12 @@ ms.date: 09/08/2014
 ms.assetid: 423498f7-1a4b-44a1-b342-5f39d0bcf94f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
-ms.openlocfilehash: ed5d7b9b4e61b0289734f4cdef1039b31ddda7a7
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: af5e5a9c8d211b07b57aa50238b02cabe249aef8
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830929"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48911838"
 ---
 <a name="aspnet-error-handling"></a>Gestion des erreurs ASP.NET
 ====================
@@ -275,7 +275,7 @@ ELMAH (Modules de journalisation des erreurs et des gestionnaires) est une fonct
 
 Avant de pouvoir travailler avec le ELMAH, vous devez l’installer. Cette opération est facile à l’aide de la *NuGet* programme d’installation du package. Comme mentionné plus haut dans cette série de didacticiels, NuGet est une extension Visual Studio qui le rend facile à installer et mettre à jour des bibliothèques open source et les outils de Visual Studio.
 
-1. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Library Package Manager**  - &gt; **gérer les Packages NuGet pour la Solution**. 
+1. Dans Visual Studio, à partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet** > **gérer les Packages NuGet pour la Solution**. 
 
     ![Gestion des erreurs ASP.NET - gérer les Packages NuGet pour la Solution](aspnet-error-handling/_static/image6.png)
 2. Le **gérer les Packages NuGet** boîte de dialogue s’affiche dans Visual Studio.
@@ -286,7 +286,7 @@ Avant de pouvoir travailler avec le ELMAH, vous devez l’installer. Cette opér
 5. Dans le **sélectionner les projets** boîte de dialogue zone, assurez-vous que le **WingtipToys** sélection est sélectionné, puis cliquez sur **OK**. 
 
     ![Gestion des erreurs ASP.NET - projets de boîte de dialogue Sélectionner](aspnet-error-handling/_static/image8.png)
-6. Cliquez sur **fermer** dans **Manage NuGet Packages** boîte de dialogue si nécessaire.
+6. Cliquez sur **fermer** dans le **gérer les Packages NuGet** boîte de dialogue si nécessaire.
 7. Si Visual Studio demande recharger tous les fichiers ouverts, sélectionnez «**Oui pour tout**».
 8. Le package ELMAH ajoute des entrées pour lui-même dans le *Web.config* fichier à la racine de votre projet. Si Visual Studio vous demande si vous souhaitez recharger modifié *Web.config* de fichiers, cliquez sur **Oui**.
 

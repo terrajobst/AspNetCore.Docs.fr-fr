@@ -8,12 +8,12 @@ ms.date: 02/18/2013
 ms.assetid: 48f7feb3-872f-485d-b96f-e30011ff8c4a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: b1d80928d765bc71ea1579272662b6697371c47b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9d5a51a5887ecbbc96fce1416b88aa849bc3674e
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831168"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912720"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Quelles sont les nouveautés dans ASP.NET MVC 4
 
@@ -382,7 +382,7 @@ Les mises à jour de clés dans ASP.NET MVC 4 est la prise en charge pour le dé
 
       > [!NOTE]
       > Un des avantages de l’utilisation de NuGet est que vous n’êtes pas obligé expédier toutes les bibliothèques dans votre projet, ce qui réduit la taille du projet. Avec NuGet Power Tools, en spécifiant les versions de package dans le fichier Packages.config, vous serez en mesure de télécharger toutes les bibliothèques nécessaires à la première fois que vous exécutez le projet. C’est pourquoi vous devrez exécuter ces étapes après avoir ouvert une solution existante à partir de ce laboratoire.
-2. Ouvrez le **Console du Gestionnaire de Package** en cliquant sur le **outils** &gt; **Library Package Manager** &gt; **Gestionnaire de Package Console** option de menu.
+2. Ouvrez le **Console du Gestionnaire de Package** en cliquant sur le **outils** > **Gestionnaire de Package NuGet** > **Console du Gestionnaire de Package**  option de menu.
 
     ![Ouverture de la Console du Gestionnaire de Package NuGet](whats-new-in-aspnet-mvc-4/_static/image22.png "ouverture de la Console du Gestionnaire de Package NuGet")
 
