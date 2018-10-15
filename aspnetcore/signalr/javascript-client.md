@@ -1,7 +1,7 @@
 ---
 title: Client JavaScript ASP.NET Core SignalR
 author: tdykstra
-description: Vue d’ensemble du client JavaScript d’ASP.NET Core SignalR.
+description: Vue d’ensemble du client JavaScript ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
@@ -24,18 +24,18 @@ La bibliothèque cliente JavaScript ASP.NET Core SignalR permet aux développeur
 
 ## <a name="install-the-signalr-client-package"></a>Installer le package du client SignalR
 
-La bibliothèque cliente JavaScript SignalR est fournie en tant qu’un [npm](https://www.npmjs.com/) package. Si vous utilisez Visual Studio, exécutez `npm install` à partir de la **Console du Gestionnaire de Package** lorsque vous êtes dans le dossier racine. Pour Visual Studio Code, exécutez la commande depuis le **Terminal intégré**.
+La bibliothèque de client SignalR JavaScript est remise en tant qu’un [npm](https://www.npmjs.com/) package. Si vous utilisez Visual Studio, exécutez `npm install` à partir de la **Console du Gestionnaire de Package** lorsque vous êtes dans le dossier racine. Pour Visual Studio Code, exécutez la commande depuis le **Terminal intégré**.
 
   ```console
   npm init -y
   npm install @aspnet/signalr
   ```
 
-npm installe le contenu du package dans le dossier *node_modules\\@aspnet\signalr\dist\browser*. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copie le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
+npm installe le contenu du package dans le dossier *node_modules\\@aspnet\signalr\dist\browser*. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
 
-## <a name="use-the-signalr-javascript-client"></a>Utilisez le client JavaScript SignalR
+## <a name="use-the-signalr-javascript-client"></a>Utiliser le client JavaScript SignalR
 
-Référencer le client JavaScript SignalR dans l'élément `<script>`.
+Référencez le client JavaScript SignalR dans l'élément `<script>`.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -43,7 +43,7 @@ Référencer le client JavaScript SignalR dans l'élément `<script>`.
 
 ## <a name="connect-to-a-hub"></a>Se connecter à un hub
 
-Le code suivant crée et démarre une connexion. Le nom du hub respecte la casse.
+Le code suivant crée et démarre une connexion. Nom de concentrateur respecte la casse.
 
 [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-12,28)]
 
@@ -51,7 +51,7 @@ Le code suivant crée et démarre une connexion. Le nom du hub respecte la casse
 
 En règle générale, les navigateurs chargent des connexions à partir du même domaine que la page demandée. Toutefois, il existe des cas où une connexion à un autre domaine est nécessaire.
 
-Pour empêcher qu'un site malveillant lise données sensibles à partir d’un autre site, [les connexions cross-origin](xref:security/cors) sont désactivées par défaut. Pour autoriser une demande cross-origin, activez-la dans le classe `Startup`.
+Pour empêcher la lecture des données sensibles à partir d’un autre site, un site malveillant [cross-origin connexions](xref:security/cors) sont désactivés par défaut. Pour autoriser une demande de cross-origin, activez-la dans le `Startup` classe.
 
 [!code-csharp[Cross-origin connections](javascript-client/sample/Startup.cs?highlight=29-35,56)]
 
@@ -66,14 +66,14 @@ Les clients JavaScript appellent les méthodes publiques sur les hubs via la mé
 
 ## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir de hub
 
-Pour recevoir des messages à partir du hub, définir une méthode à l’aide de la méthode [on](/javascript/api/%40aspnet/signalr/hubconnection#on) de la `HubConnection`.
+Pour recevoir des messages à partir du hub, définissez une méthode à l’aide de la méthode [on](/javascript/api/%40aspnet/signalr/hubconnection#on) de la `HubConnection`.
 
 * Le nom de la méthode du client JavaScript. Dans l’exemple suivant, le nom de la méthode est `ReceiveMessage`.
 * Les arguments que le hub passe à la méthode. Dans l’exemple suivant, la valeur d’argument est `message`.
 
 [!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=14-19)]
 
-Le code précédent dans `connection.on` s’exécute lorsque le code côté serveur appelle en utilisant la méthode [SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync).
+Le code précédent dans `connection.on` s’exécute lorsque le code côté serveur appelle à l’aide de la [SendAsync](/dotnet/api/microsoft.aspnetcore.signalr.clientproxyextensions.sendasync) (méthode).
 
 [!code-csharp[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
 
@@ -88,14 +88,14 @@ Chaînez une méthode `catch` à la fin de la méthode `start` pour gérer les e
 
 [!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=28)]
 
-Configurez le suivi du journal côté client en passant un enregistreur d’événements et le type d’événement pour vous connecter lorsque la connexion est établie. Les messages sont enregistrés avec le niveau de journalisation spécifié et les niveaux supérieurs. Les niveaux de journalisation disponibles sont les suivants :
+Configurer le suivi du journal côté client en passant un enregistreur d’événements et le type d’événement pour vous connecter lorsque la connexion est établie. Les messages sont enregistrés avec le niveau de journalisation spécifié et versions ultérieures. Niveaux de consignation disponibles sont les suivantes :
 
-* `signalR.LogLevel.Error` &ndash; Messages d’erreur. Messages `Error` uniquement.
-* `signalR.LogLevel.Warning` &ndash; Messages d’avertissement concernant les erreurs potentielles. Messages `Warning` et `Error`.
-* `signalR.LogLevel.Information` &ndash; Messages d’état sans erreurs. Messages `Information`, `Warning` et `Error`.
-* `signalR.LogLevel.Trace` &ndash; Messages de trace. Journalise tout, y compris les données transportées entre le hub et le client.
+* `signalR.LogLevel.Error` &ndash; Messages d’erreur. Journaux `Error` messages uniquement.
+* `signalR.LogLevel.Warning` &ndash; Messages d’avertissement concernant les erreurs potentielles. Journaux `Warning`, et `Error` messages.
+* `signalR.LogLevel.Information` &ndash; Messages d’état sans erreurs. Journaux `Information`, `Warning`, et `Error` messages.
+* `signalR.LogLevel.Trace` &ndash; Messages de trace. Consigne tout, y compris les données transportées entre le hub et le client.
 
-Utilisez la méthode [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) de [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) pour configurer le niveau de journalisation. Les messages sont enregistrés dans la console du navigateur.
+Utilisez le [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging) méthode sur [HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder) pour configurer le niveau de journalisation. Les messages sont enregistrés dans la console du navigateur.
 
 [!code-javascript[Logging levels](javascript-client/sample/wwwroot/js/chat.js?range=9-12)]
 
