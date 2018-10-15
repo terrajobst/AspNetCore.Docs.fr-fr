@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: 512229cfe7d7efdcd9050fa13dbdbf793be29a0b
-ms.sourcegitcommit: 571d76fbbff05e84406b6d909c8fe9cbea2c8ff1
+ms.openlocfilehash: a0d326f5fc995cb903380315879d39a8ce851d06
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39410154"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48913214"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -38,7 +38,7 @@ L’interface principale est [IFileProvider](/dotnet/api/microsoft.extensions.fi
 
 * [Existe](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.exists)
 * [IsDirectory](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.isdirectory)
-* [Nom](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.name)
+* [Name](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.name)
 * [Longueur](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.length) (en octets)
 * Date [LastModified](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo.lastmodified)
 
@@ -141,7 +141,7 @@ Dans l’exemple d’application, la classe `HomeController` reçoit une instanc
 [ManifestEmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider) est utilisé pour accéder à des fichiers incorporés dans des assemblys. `ManifestEmbeddedFileProvider` utilise un manifeste compilé dans l’assembly pour reconstruire les chemins d’accès d’origine des fichiers intégrés.
 
 > [!NOTE]
-> `ManifestEmbeddedFileProvider` est disponible dans ASP.NET Core 2.1 et versions ultérieures. Pour accéder aux fichiers incorporés dans des assemblys dans ASP.NET Core 2.0 ou versions antérieures, consultez la [version d’ASP.NET Core 1.x de cette rubrique](xref:fundamentals/file-providers?view=aspnetcore-1.1).
+> `ManifestEmbeddedFileProvider` est disponible dans ASP.NET Core 2.1 et versions ultérieures. Pour accéder aux fichiers incorporés dans des assemblys dans ASP.NET Core 2.0 ou versions antérieures, consultez la [version d’ASP.NET Core 1.x de cette rubrique](/aspnet/core/fundamentals/file-providers?view=aspnetcore-1.1).
 
 Pour générer un manifeste des fichiers incorporés, définissez la propriété `<GenerateEmbeddedFilesManifest>` sur `true`. Spécifiez les fichiers à incorporer avec [ &lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) :
 
