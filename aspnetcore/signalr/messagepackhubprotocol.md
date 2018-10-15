@@ -7,36 +7,36 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: c04834b0d395d08782b51b56e79badba078a5b91
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 0874afc5493eca5d43dfde30bb28aedc1f193744
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48794835"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325575"
 ---
 # <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>Utiliser le protocole MessagePack Hub dans SignalR pour ASP.NET Core
 
 Par [Brennan Conroy](https://github.com/BrennanConroy)
 
-Cet article suppose que le lecteur est familiarisé avec les sujets abordés dans la [prise en main](xref:tutorials/signalr).
+Cet article suppose que le lecteur est familiarisé avec les sujets abordés dans [prise en main](xref:tutorials/signalr).
 
 ## <a name="what-is-messagepack"></a>Qu’est MessagePack ?
 
-[MessagePack](https://msgpack.org/index.html) est un format de sérialisation binaire qui est rapide et compact. Il est utile lorsque la bande passante et les performances sont un critère important, car il crée des messages plus petits comparé au [JSON](https://www.json.org/). S’agissant d’un format binaire, les messages sont illisibles lorsque vous examinez les journaux et traces réseau, sauf si les octets sont transmis via un analyseur MessagePack. SignalR prend en charge le format MessagePack et fournit des API  à utiliser par le client et le serveur.
+[MessagePack](https://msgpack.org/index.html) est un format de sérialisation binaire est rapide et compact. Il est utile lorsque la bande passante et les performances sont un critère important, car il crée des messages plus petits par rapport à [JSON](https://www.json.org/). S’agissant d’un format binaire, les messages sont illisibles lorsque vous examinez les journaux et traces réseau, sauf si les octets sont transmises via un analyseur MessagePack. SignalR prend en charge le format MessagePack et fournit des API pour le client et le serveur à utiliser.
 
 ## <a name="configure-messagepack-on-the-server"></a>Configurer MessagePack sur le serveur
 
-Pour activer le protocole de Hub MessagePack sur le serveur, installez le package `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` dans votre application. Dans le fichier Startup.cs ajoutez `AddMessagePackProtocol` à l'appel à `AddSignalR` pour activer la prise en charge MessagePack sur le serveur.
+Pour activer le protocole de Hub MessagePack sur le serveur, installez le `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` package dans votre application. Dans le fichier Startup.cs ajoutez `AddMessagePackProtocol` à la `AddSignalR` appel pour activer la prise en charge MessagePack sur le serveur.
 
 > [!NOTE]
-> JSON est activé par défaut. Ajouter de MessagePack permet la prise en charge pour les clients JSON et MessagePack.
+> JSON est activé par défaut. Ajout de MessagePack permet la prise en charge pour les clients JSON et MessagePack.
 
 ```csharp
 services.AddSignalR()
     .AddMessagePackProtocol();
 ```
 
-Pour personnaliser la façon dont MessagePack met en forme vos données, `AddMessagePackProtocol` prend un délégué pour la configuration des options. Dans ce délégué, la propriété `FormatterResolvers` peut être utilisée pour configurer les options de sérialisation MessagePack. Pour plus d’informations sur la façon dont les programmes de résolution fonctionne, consultez la bibliothèque de MessagePack à [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp). Les attributs peuvent être utilisés sur les objets que vous souhaitez sérialiser pour définir comment ils doivent être traités.
+Pour personnaliser la façon dont MessagePack met en forme vos données, `AddMessagePackProtocol` prend un délégué pour la configuration des options. Dans ce délégué, le `FormatterResolvers` propriété peut être utilisée pour configurer les options de sérialisation MessagePack. Pour plus d’informations sur la façon dont les programmes de résolution, consultez la bibliothèque de MessagePack à [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp). Attributs peuvent être utilisés sur les objets que vous souhaitez sérialiser pour définir comment ils doivent être traités.
 
 ```csharp
 services.AddSignalR()
@@ -52,11 +52,11 @@ services.AddSignalR()
 ## <a name="configure-messagepack-on-the-client"></a>Configurer MessagePack sur le client
 
 > [!NOTE]
-> JSON est activé par défaut pour les clients pris en charge. Les clients peuvent prendre uniquement en charge un seul protocole. L'ajout de prise en charge MessagePack remplacera les protocoles précédemment configurés.
+> JSON est activé par défaut pour les clients pris en charge. Les clients peuvent prendre uniquement en charge un seul protocole. Ajout de prise en charge MessagePack remplacera les précédemment configuré protocoles.
 
 ### <a name="net-client"></a>Client .NET
 
-Pour activer MessagePack dans le Client .NET, installez le package `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` et appelez `AddMessagePackProtocol` sur `HubConnectionBuilder`.
+Pour activer MessagePack dans le Client .NET, installez le `Microsoft.AspNetCore.SignalR.Protocols.MessagePack` package et appelez `AddMessagePackProtocol` sur `HubConnectionBuilder`.
 
 ```csharp
 var hubConnection = new HubConnectionBuilder()
@@ -66,20 +66,20 @@ var hubConnection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> Cet appel `AddMessagePackProtocol` prend un délégué pour la configuration des options comme le serveur.
+> Cela `AddMessagePackProtocol` appel prend un délégué pour la configuration des options comme le serveur.
 
 ### <a name="javascript-client"></a>Client JavaScript
 
-La prise en charge de MessagePack pour le client Javascript est fournie par le package NPM `@aspnet/signalr-protocol-msgpack`.
+MessagePack pour le client Javascript est prise en charge par le `@aspnet/signalr-protocol-msgpack` package NPM.
 
 ```console
 npm install @aspnet/signalr-protocol-msgpack
 ```
 
-Après avoir installé le package npm, le module peut être utilisé directement par le biais d’un chargeur de module JavaScript ou importé dans le navigateur en référençant le fichier *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*. Dans un navigateur, la bibliothèque `msgpack5` doit également être référencée. Utilisez un `<script>` balise pour créer une référence. La bibliothèque, consultez *node_modules\msgpack5\dist\msgpack5.js*.
+Après avoir installé le package npm, le module peut être utilisé directement par le biais d’un chargeur de module JavaScript ou importé dans le navigateur en référençant le *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* fichier. Dans un navigateur, le `msgpack5` bibliothèque doit également être référencée. Utilisez un `<script>` balise pour créer une référence. La bibliothèque, consultez *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> Lorsque vous utilisez l'élément `<script>`, l’ordre est important. Si *signalr-protocol-msgpack.js* est référencé avant *msgpack5.js*, une erreur se produit lorsque vous tentez de vous connecter avec MessagePack. *SignalR.js* est également requis avant *signalr-protocol-msgpack.js*.
+> Lorsque vous utilisez le `<script>` élément, l’ordre est important. Si *signalr-protocol-msgpack.js* est référencé avant *msgpack5.js*, une erreur se produit lorsque vous tentez de vous connecter avec MessagePack. *SignalR.js* est également requise avant *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -87,7 +87,7 @@ Après avoir installé le package npm, le module peut être utilisé directement
 <script src="~/lib/signalr/signalr-protocol-msgpack.js"></script>
 ```
 
-L'jout de `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` à `HubConnectionBuilder` configurera le client pour utiliser le protocole MessagePack lors de la connexion à un serveur.
+Ajout de `.withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())` à la `HubConnectionBuilder` configurera le client pour utiliser le protocole MessagePack lors de la connexion à un serveur.
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
