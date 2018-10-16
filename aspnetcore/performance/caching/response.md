@@ -17,7 +17,7 @@ ms.locfileid: "37077762"
 Par [John Luo](https://github.com/JunTaoLuo), [Rick Anderson](https://twitter.com/RickAndMSFT), [Steve Smith](https://ardalis.com/), et [Luke Latham](https://github.com/guardrex)
 
 > [!NOTE]
-> Réponse mise en cache dans les Pages Razor est disponible dans ASP.NET Core 2.1 ou version ultérieure.
+> La mise en cache de la réponse dans les Pages Razor est disponible dans ASP.NET Core 2.1 ou version ultérieure.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/response/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
@@ -27,7 +27,7 @@ Le serveur web peut mettre en cache les réponses lorsque vous ajoutez [l'interg
 
 ## <a name="http-based-response-caching"></a>Mise en cache de la réponse HTTP
 
-Le [spécification de la mise en cache à HTTP 1.1](https://tools.ietf.org/html/rfc7234) décrit le comportement de caches d’Internet. L’en-tête HTTP principal utilisé pour la mise en cache est [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2), qui est utilisé pour spécifier le cache *directives*. Les directives de contrôlent le comportement de mise en comme les demandes de parvenir à partir de clients aux serveurs et les réponses de parvenir à partir de serveurs aux clients. Déplacent des demandes et réponses via des serveurs proxy et les serveurs proxy doivent être conforme à la spécification de la mise en cache à HTTP 1.1.
+Le [spécification de la mise en cache à HTTP 1.1](https://tools.ietf.org/html/rfc7234) décrit le comportement des caches sur Internet. L’en-tête HTTP principal utilisé pour la mise en cache est [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2), qui est utilisé pour spécifier des *directives* de cache. Les directives contrôlent le comportement de mise en cache comme les demandes transitent des clients vers les serveurs et les réponses transitent des serveurs aux clients. Les demandes et réponses transitent via des serveurs proxy et les serveurs proxy doivent être conformes à la spécification de mise en cache à HTTP 1.1.
 
 Les directives `Cache-Control` courantes sont affichées dans le tableau suivant.
 
@@ -54,7 +54,7 @@ La [spécification de la mise en cache HTTP 1.1 pour l’en-tête Cache-Control]
 
 Le fait de toujours respecter les en-têtes de demande `Cache-Control` du client a du sens si vous avez pour objectif la mise en cache HTTP. Sous la spécification officielle, la mise en cache vise à réduire la latence et la charge réseau pour satisfaire les demandes sur un réseau via les clients, les proxies et les serveurs. Ce n’est pas nécessairement un moyen de contrôler la charge sur un serveur d’origine.
 
-Aucun contrôle n’est en cours développeur sur ce comportement de mise en cache lorsque vous utilisez la [intergiciel (middleware) de réponse mise en cache](xref:performance/caching/middleware) , car l’intergiciel (middleware) est conforme à la mise en cache de la spécification officielle. [Améliorations futures de l’intergiciel (middleware)](https://github.com/aspnet/ResponseCaching/issues/96) autorise la configuration de l’intergiciel (middleware) pour ignorer une demande de `Cache-Control` en-tête lorsque vous décidez de traiter une réponse mise en cache. Cela vous propose une opportunité afin de mieux contrôler la charge sur votre serveur lorsque vous utilisez l’intergiciel (middleware).
+Il n'existe aucun contrôle actuel par le développeur sur ce comportement de mise en cache lorsque vous utilisez l'[intergiciel (middleware) de réponse mise en cache](xref:performance/caching/middleware), car l’intergiciel (middleware) est conforme à la mise en cache de la spécification officielle. [Les améliorations futures de l’intergiciel (middleware)](https://github.com/aspnet/ResponseCaching/issues/96) autoriseront la configuration de l’intergiciel (middleware) pour ignorer une demande de l'en-tête `Cache-Control` lorsque vous décidez de traiter une réponse mise en cache. Cela vous propose une opportunité afin de mieux contrôler la charge sur votre serveur lorsque vous utilisez l’intergiciel (middleware).
 
 ## <a name="other-caching-technology-in-aspnet-core"></a>Autres technologies de mise en cache dans ASP.NET Core
 
@@ -62,7 +62,7 @@ Aucun contrôle n’est en cours développeur sur ce comportement de mise en cac
 
 La mise en cache utilise la mémoire serveur pour stocker les données mises en cache. Ce type de mise en cache est adapté à un ou plusieurs serveurs à l’aide de *sessions rémanentes*. Les sessions rémanentes signifient que les demandes des clients sont toujours acheminées vers le même serveur pour traitement.
 
-Pour plus d’informations, consultez [mettre en Cache en mémoire](xref:performance/caching/memory).
+Pour plus d’informations, consultez [Mise en Cache en mémoire](xref:performance/caching/memory).
 
 ### <a name="distributed-cache"></a>Cache distribué
 
@@ -72,13 +72,13 @@ Pour plus d’informations, consultez [fonctionne avec un cache distribué](xref
 
 ### <a name="cache-tag-helper"></a>Tag helper de cache
 
-Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou d'une page Razor avec Tag helper de cache. Tag helper de cache utilise la mise en cache en mémoire pour stocker les données.
+Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou d'une page Razor avec Tag helper de cache. Le tag helper de cache utilise la mise en cache en mémoire pour stocker les données.
 
 Pour plus d’informations, consultez [Tag helper de cache dans ASP.NET Core MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper).
 
 ### <a name="distributed-cache-tag-helper"></a>Tag Helper Cache distribué
 
-Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou d'une page Razor dans des scénarios de cloud distribué ou des scénarios de batterie de serveurs web avec Tag helper de cache distribué. Tag helper de cache distribué utilise SQL Server ou Redis pour stocker les données.
+Vous pouvez mettre en cache le contenu à partir d’une vue MVC ou d'une page Razor dans des scénarios de cloud distribué ou des scénarios de batterie de serveurs web avec le tag helper de cache distribué. Le tag helper de cache distribué utilise SQL Server ou Redis pour stocker les données.
 
 Pour plus d’informations, consultez [assistance de balise de Cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper).
 
@@ -91,7 +91,7 @@ Le [ResponseCacheAttribute](/dotnet/api/Microsoft.AspNetCore.Mvc.ResponseCacheAt
 
 [VaryByQueryKeys](/dotnet/api/microsoft.aspnetcore.mvc.responsecacheattribute.varybyquerykeys) varie en fonction de la réponse stockée en fonction des valeurs de la liste donnée des clés de requête. Lorsqu’une valeur unique de `*` n’est fourni, l’intergiciel (middleware) varie par toutes les réponses de demandent des paramètres de chaîne de requête. `VaryByQueryKeys` nécessite ASP.NET Core 1.1 ou version ultérieure.
 
-L’intergiciel (middleware) réponse mise en cache doit être activé pour définir le `VaryByQueryKeys` propriété ; sinon, une exception runtime est levée. Il n’est pas un en-tête HTTP correspondant pour le `VaryByQueryKeys` propriété. La propriété est une fonctionnalité HTTP gérée par l’intergiciel (middleware) réponse mise en cache. Pour l’intergiciel (middleware) servir une réponse mise en cache, la chaîne de requête et la valeur de chaîne de requête doivent correspondre à une demande précédente. Par exemple, considérez la séquence des demandes et les résultats présentés dans le tableau suivant.
+L’intergiciel (middleware) de mise en cache de réponse doit être activé pour définir la propriété `VaryByQueryKeys` ; sinon, une exception runtime est levée. Ce n’est pas un en-tête HTTP correspondant pour la propriété `VaryByQueryKeys`. La propriété est une fonctionnalité HTTP gérée par l’intergiciel (middleware) de mise en cache de réponse. Pour que l’intergiciel (middleware) serve une réponse mise en cache, la chaîne de requête et la valeur de chaîne de requête doivent correspondre à une demande précédente. Par exemple, considérez la séquence des demandes et les résultats présentés dans le tableau suivant.
 
 | Demande                          | Résultat                   |
 | -------------------------------- | ------------------------ |
@@ -157,12 +157,12 @@ Cache-Control: no-store,no-cache
 Pragma: no-cache
 ```
 
-### <a name="location-and-duration"></a>Emplacement et la durée
+### <a name="location-and-duration"></a>Emplacement et durée
 
 Pour activer la mise en cache, `Duration` doit être définie sur une valeur positive et `Location` doit avoir la valeur `Any` (la valeur par défaut) ou `Client`. Dans ce cas, le `Cache-Control` en-tête est défini sur la valeur de l’emplacement suivie du `max-age` de la réponse.
 
 > [!NOTE]
-> `Location`d’options de `Any` et `Client` traduire en `Cache-Control` les valeurs d’en-tête de `public` et `private`, respectivement. Comme mentionné précédemment, le paramètre `Location` à `None` définit les deux `Cache-Control` et `Pragma` en-têtes à `no-cache`.
+> Les options `Location` de `Any` et `Client` se traduirsnt en `Cache-Control` valeurs d’en-tête de `public` et `private`, respectivement. Comme mentionné précédemment, le paramètre `Location` à `None` définit les deux en-têtes `Cache-Control` et `Pragma` à `no-cache`.
 
 Vous trouverez ci-dessous un exemple montrant les en-têtes produits en définissant `Duration` et en conservant la valeur `Location` par défaut :
 
@@ -202,7 +202,7 @@ Configuration d’un profil de cache :
 
 ::: moniker-end
 
-Faisant référence à un profil de cache :
+En faisant référence à un profil de cache :
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -230,7 +230,7 @@ Cache-Control: public,max-age=60
 
 * [Stockage en mémoire cache des réponses](https://tools.ietf.org/html/rfc7234#section-3)
 * [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
+* [Mise en cache en mémoire](xref:performance/caching/memory)
 * [Utiliser un cache distribué](xref:performance/caching/distributed)
 * [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
 * [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
