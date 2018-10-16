@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment les conventions du fournisseur de modèles de routes et d’applications vous permettent de gérer le routage, la découverte et le traitement des pages.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 09/17/2018
+ms.date: 10/12/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: ea4f785dc8a64b430e312fd122a4d3184b61949e
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 13fd6c156afd5ab62739b09296a929120ce3450f
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011860"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348531"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Conventions de routes et d’applications pour les pages Razor dans ASP.NET Core
 
@@ -93,7 +93,7 @@ Pages Razor routage et le partage de routage de contrôleur MVC une implémentat
 
 Ajoutez un délégué pour [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) afin d’ajouter des [conventions de modèles](xref:mvc/controllers/application-model#conventions) qui s’appliquent aux pages Razor.
 
-**Ajouter une convention de modèle de routage à toutes les pages**
+### <a name="add-a-route-model-convention-to-all-pages"></a>Ajouter une convention de modèle d’itinéraire à toutes les pages
 
 Utilisez [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions) pour créer et ajouter un [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention) à la collection des instances de [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) qui sont appliquées durant la construction d’un modèle de route de page.
 
@@ -117,7 +117,7 @@ Demandez la page About de l’exemple sur `localhost:5000/About/GlobalRouteValue
 
 ![La page About est demandée avec un segment de routage pour GlobalRouteValue. La page affichée montre que la valeur des données de routage est capturée dans la méthode OnGet de la page.](razor-pages-conventions/_static/about-page-global-template.png)
 
-**Ajouter une convention de modèle d’application à toutes les pages**
+### <a name="add-an-app-model-convention-to-all-pages"></a>Ajouter une convention de modèle d’application à toutes les pages
 
 Utilisez [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions) pour créer et ajouter un [IPageApplicationModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageapplicationmodelconvention) à la collection des instances [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) qui sont appliquées durant la construction d’une application basée sur des pages.
 
@@ -137,12 +137,12 @@ Demandez la page About de l’exemple sur `localhost:5000/About` et examinez les
 
 ::: moniker range=">= aspnetcore-2.1"
 
-**Ajouter une convention de modèle de gestionnaire à toutes les pages**
+### <a name="add-a-handler-model-convention-to-all-pages"></a>Ajouter une convention de modèle de gestionnaire à toutes les pages
 
 Utilisez [Conventions](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.razorpagesoptions.conventions) pour créer et ajouter un [IPageHandlerModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipagehandlermodelconvention) à la collection des instances [IPageConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageconvention) qui sont appliquées durant la construction d’un modèle de gestionnaire de pages.
 
 ```csharp
-public class GlobalPageHandlerModelConvention 
+public class GlobalPageHandlerModelConvention
     : IPageHandlerModelConvention
 {
     public void Apply(PageHandlerModel model)
@@ -168,7 +168,7 @@ services.AddMvc()
 
 Le fournisseur de modèles de routages par défaut, qui dérive de [IPageRouteModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelprovider), appelle des conventions conçues pour fournir des points d’extensibilité permettant de configurer les routages de pages.
 
-**Convention de modèle de routage de dossier**
+### <a name="folder-route-model-convention"></a>Convention de modèle de routage de dossier
 
 Utilisez [AddFolderRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection.addfolderroutemodelconvention) pour créer et ajouter un [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention) qui appelle une action sur le [PageRouteModel](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageroutemodel) pour toutes les pages situées dans le dossier spécifié.
 
@@ -184,7 +184,7 @@ Demandez la page Page1 de l’exemple sur `localhost:5000/OtherPages/Page1/Globa
 
 ![La page Page1 du dossier OtherPages est demandée avec un segment de routage pour GlobalRouteValue et OtherPagesRouteValue. La page affichée montre que les valeurs des données de routage sont capturées dans la méthode OnGet de la page.](razor-pages-conventions/_static/otherpages-page1-global-and-otherpages-templates.png)
 
-**Convention de modèle de routage de page**
+### <a name="page-route-model-convention"></a>Convention de modèle de routage de page
 
 Utilisez [AddPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageconventioncollection.addpageroutemodelconvention) pour créer et ajouter un [IPageRouteModelConvention](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.ipageroutemodelconvention) qui appelle une action sur le [PageRouteModel](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.pageroutemodel) pour la page ayant le nom spécifié.
 
@@ -199,6 +199,44 @@ Dans la mesure du possible, ne définissez pas la `Order`, ce qui entraîne des 
 Demandez la page About de l’exemple sur `localhost:5000/About/GlobalRouteValue/AboutRouteValue` et examinez le résultat :
 
 ![La page About est demandée avec des segments de routage pour GlobalRouteValue et AboutRouteValue. La page affichée montre que les valeurs des données de routage sont capturées dans la méthode OnGet de la page.](razor-pages-conventions/_static/about-page-global-and-about-templates.png)
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="use-a-parameter-transformer-to-customize-page-routes"></a>Utiliser un transformateur de paramètre pour personnaliser les routages de pages
+
+Les routages de pages générées par ASP.NET Core peuvent être personnalisés à l’aide d’un transformateur de paramètre. Implémente un transformateur de paramètre `IOutboundParameterTransformer` et transforme la valeur des paramètres. Par exemple, un personnalisé `SlugifyParameterTransformer` modifications transformateur de paramètre le `SubscriptionManagement` acheminer la valeur à `subscription-management`.
+
+Le `PageRouteTransformerConvention` convention de modèle de routage de page s’applique un transformateur de paramètre pour les segments de nom de dossier et fichier d’itinéraires de page généré automatiquement dans une application. Par exemple, les Pages Razor fichier */Pages/SubscriptionManagement/ViewAll.cshtml* aurait son itinéraire réécrite depuis `/SubscriptionManagement/ViewAll` à `/subscription-management/view-all`.
+
+`PageRouteTransformerConvention` transforme uniquement les segments générés automatiquement d’un itinéraire de page qui sont fournis à partir du dossier de Pages Razor et le nom de fichier. Il ne transforme pas les segments de routage ajoutés avec la `@page` directive. La convention ne transforme les itinéraires ajoutés par <xref:Microsoft.Extensions.DependencyInjection.PageConventionCollectionExtensions.AddPageRoute*>.
+
+Le `PageRouteTransformerConvention` est inscrit en tant qu’option dans `Startup.ConfigureServices`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc()
+        .AddRazorPagesOptions(options =>
+            {
+                options.Conventions.Add(
+                    new PageRouteTransformerConvention(
+                        new SlugifyParameterTransformer()));
+            });
+}
+
+public class SlugifyParameterTransformer : IOutboundParameterTransformer
+{
+    public string TransformOutbound(object value)
+    {
+        if (value == null) { return null; }
+
+        // Slugify value
+        return Regex.Replace(value.ToString(), "([a-z])([A-Z])", "$1-$2").ToLower();
+    }
+}
+```
+
+::: moniker-end
 
 ## <a name="configure-a-page-route"></a>Configurer un routage de page
 

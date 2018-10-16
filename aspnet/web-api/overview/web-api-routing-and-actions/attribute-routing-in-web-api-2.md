@@ -8,12 +8,12 @@ ms.date: 01/20/2014
 ms.assetid: 979d6c9f-0129-4e5b-ae56-4507b281b86d
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
 msc.type: authoredcontent
-ms.openlocfilehash: d16dcc618bf6c60714179601db14f4dd2a9e41ce
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 22eb2fd748d52ec95e813ada8b1bf3b4826ad573
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912150"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348479"
 ---
 <a name="attribute-routing-in-aspnet-web-api-2"></a>Routage par attributs dans ASP.NET Web API 2
 ====================
@@ -245,11 +245,11 @@ Pour spécifier le nom d’itinéraire, définissez le **nom** propriété sur l
 <a id="order"></a>
 ## <a name="route-order"></a>Ordre de l’itinéraire
 
-Lorsque le framework tente de faire correspondre un URI avec un itinéraire, il évalue les itinéraires dans un ordre particulier. Pour spécifier l’ordre, définissez le **RouteOrder** propriété sur l’attribut d’itinéraire. Des valeurs plus faibles sont évalués en premier. La valeur d’ordre par défaut est égale à zéro.
+Lorsque le framework tente de faire correspondre un URI avec un itinéraire, il évalue les itinéraires dans un ordre particulier. Pour spécifier l’ordre, définissez le **ordre** propriété sur l’attribut d’itinéraire. Des valeurs plus faibles sont évalués en premier. La valeur d’ordre par défaut est égale à zéro.
 
 Voici comment le classement total est déterminé :
 
-1. Comparer la **RouteOrder** propriété de l’attribut d’itinéraire.
+1. Comparer la **ordre** propriété de l’attribut d’itinéraire.
 2. Examinez chaque segment d’URI dans le modèle d’itinéraire. Pour chaque segment, commande comme suit :
 
     1. Segments de littéral.
@@ -271,4 +271,4 @@ Ces itinéraires sont classés comme suit.
 4. commandes / {\*date}
 5. commandes / en attente
 
-Notez que « détails » sont un segment littéral et apparaît avant « {id} », mais « en attente » apparaît dernier, car le **RouteOrder** propriété est 1. (Cet exemple suppose qu’il n’est aucun client nommé « détails » ou « en attente ». En général, essayez d’éviter des itinéraires ambigus. Dans cet exemple, un meilleur modèle d’itinéraire pour `GetByCustomer` est « clients / {customerName} »)
+Notez que « détails » sont un segment littéral et apparaît avant « {id} », mais « en attente » apparaît dernier, car le **ordre** propriété est 1. (Cet exemple suppose qu’il n’est aucun client nommé « détails » ou « en attente ». En général, essayez d’éviter des itinéraires ambigus. Dans cet exemple, un meilleur modèle d’itinéraire pour `GetByCustomer` est « clients / {customerName} »)
