@@ -1,5 +1,5 @@
 ---
-title: Mettre en cache les réponses dans ASP.NET Core
+title: Mise en cache des réponses en ASP.NET Core
 author: ardalis
 description: Découvrez comment utiliser la mise en cache pour améliorer les performances des applications ASP.NET Core.
 ms.author: riande
@@ -12,9 +12,9 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 06/28/2018
 ms.locfileid: "37077676"
 ---
-# <a name="cache-responses-in-aspnet-core"></a>Mettre en cache les réponses dans ASP.NET Core
+# <a name="cache-responses-in-aspnet-core"></a>Mise en cache des réponses en ASP.NET Core
 
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
+* [Mise en cache en mémoire](xref:performance/caching/memory)
 * [Utiliser un cache distribué](xref:performance/caching/distributed)
 * [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
 * [Mise en cache des réponses](xref:performance/caching/response)
