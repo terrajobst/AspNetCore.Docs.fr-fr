@@ -31,7 +31,7 @@ La bibliothèque de client SignalR JavaScript est remise en tant qu’un [npm](h
   npm install @aspnet/signalr
   ```
 
-npm installe le contenu du package dans le *node_modules\\@aspnet\signalr\dist\browser* dossier. Créez un dossier nommé *signalr* sous le *wwwroot\\lib* dossier. Copie le *signalr.js* de fichiers à la *wwwroot\lib\signalr* dossier.
+npm installe le contenu du package dans le dossier *node_modules\\@aspnet\signalr\dist\browser*. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
 
 ## <a name="use-the-signalr-javascript-client"></a>Utiliser le client JavaScript SignalR
 
@@ -57,7 +57,7 @@ Pour empêcher la lecture des données sensibles à partir d’un autre site, un
 
 ## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de hub à partir du client
 
-Les clients JavaScript appellent les méthodes publiques sur les hubs via le [appeler](/javascript/api/%40aspnet/signalr/hubconnection#invoke) méthode de la [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). Le `invoke` méthode accepte deux arguments :
+Les clients JavaScript appellent les méthodes publiques sur les hubs via la méthode [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) de la [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). La méthode `invoke` accepte deux arguments :
 
 * Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode sur le hub est `SendMessage`.
 * Tous les arguments définis dans la méthode de hub. Dans l’exemple suivant, le nom de l’argument est `message`.
