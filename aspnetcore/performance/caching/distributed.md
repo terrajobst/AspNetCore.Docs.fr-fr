@@ -21,7 +21,7 @@ Les caches distribués peuvent améliorer les performances et l’évolutivité 
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/distributed/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
-## <a name="what-is-a-distributed-cache"></a>Qu’est un cache distribué
+## <a name="what-is-a-distributed-cache"></a>Qu’est-ce qu'un cache distribué
 
 Un cache distribué est partagé par plusieurs serveurs d’applications (consultez [principes fondamentaux du Cache](memory.md#caching-basics)). Les informations contenues dans le cache ne sont pas isolées dans la mémoire de chaque serveur de site web, mais les données mises en cache sont disponibles pour tous les serveurs de l’application. Cela présente plusieurs avantages :
 
@@ -101,7 +101,7 @@ L’implémentation proposée par SqlServerCache permet l'utilisation d'une base
 
 ::: moniker range="< aspnetcore-2.1"
 
-Ajouter `SqlConfig.Tools` à la `<ItemGroup>` élément du fichier projet et exécutez `dotnet restore`.
+Ajouter `SqlConfig.Tools` à l'élément `<ItemGroup>` du fichier projet et exécutez `dotnet restore`.
 
 ```xml
 <ItemGroup>
@@ -118,9 +118,9 @@ Testez SqlConfig.Tools en exécutant la commande suivante :
 dotnet sql-cache create --help
 ```
 
-SqlConfig.Tools affiche l’utilisation, options et l’aide de la commande.
+SqlConfig.Tools affiche l’utilisation, les options et l’aide de la commande.
 
-Créer une table dans SQL Server en exécutant la `sql-cache create` commande :
+Créer une table dans SQL Server en exécutant la commande `sql-cache create` :
 
 ```console
 dotnet sql-cache create "Data Source=(localdb)\v11.0;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache
