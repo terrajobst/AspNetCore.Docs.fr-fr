@@ -24,16 +24,16 @@ ASP.NET Core SignalR prend en charge la diffusion en continu des valeurs de reto
 
 ## <a name="set-up-the-hub"></a>Configurer le hub
 
-Une méthode de hub devient automatiquement une méthode de hub de diffusion en continu quand elle retourne un `ChannelReader<T>` ou un `Task<ChannelReader<T>>`. Voici un exemple qui montre les principes de diffusion en continu vers le client. Chaque fois qu’un objet est écrit dans le `ChannelReader` cet objet est immédiatement envoyé au client. À la fin, le `ChannelReader` est terminée pour indiquer au client le flux est fermé.
+Une méthode de hub devient automatiquement une méthode de hub de diffusion en continu quand elle retourne un `ChannelReader<T>` ou un `Task<ChannelReader<T>>`. Voici un exemple qui montre les principes de diffusion en continu vers le client. Chaque fois qu’un objet est écrit dans le `ChannelReader` cet objet est immédiatement envoyé au client. À la fin, le `ChannelReader` est terminé pour indiquer au client que le flux est fermé.
 
 > [!NOTE]
-> Écrivez dans le `ChannelReader` sur un thread d’arrière-plan, puis revenez sur le `ChannelReader` dès que possible. Les autres appels de concentrateur seront bloqués jusqu'à un `ChannelReader` est retourné.
+> Écrivez dans le `ChannelReader` sur un thread d’arrière-plan, puis revenez sur le `ChannelReader` dès que possible. Les autres appels du hub seront bloqués jusqu'à ce qu'un `ChannelReader` soit retourné.
 
 [!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?range=10-34)]
 
 ## <a name="net-client"></a>Client .NET
 
-La méthode `StreamAsChannelAsync` sur `HubConnection` est utilisée pour appeler une méthode de diffusion en continu. Passez le nom de la méthode hub et les arguments définis dans la méthode de hub pour `StreamAsChannelAsync`. Le paramètre générique sur `StreamAsChannelAsync<T>` spécifie le type d’objets retournés par la méthode de diffusion en continu. Un `ChannelReader<T>` est retourné à partir de l’appel de flux de données et représente le flux sur le client. Pour lire les données, il est courant d’utiliser une boucle sur `WaitToReadAsync` et appelez `TryRead` lorsque les données sont disponibles. La boucle s’arrête lorsque le flux a été fermée par le serveur ou lorsque le jeton d’annulation passé à `StreamAsChannelAsync` est annulé.
+La méthode `StreamAsChannelAsync` sur `HubConnection` est utilisée pour appeler une méthode de diffusion en continu. Passez le nom de la méthode hub et les arguments définis dans la méthode de hub pour `StreamAsChannelAsync`. Le paramètre générique sur `StreamAsChannelAsync<T>` spécifie le type d’objets retournés par la méthode de diffusion en continu. Un `ChannelReader<T>` est retourné à partir de l’appel de flux de données et représente le flux sur le client. Pour lire les données, il est courant d’utiliser une boucle sur `WaitToReadAsync` et d'appeler `TryRead` lorsque les données sont disponibles. La boucle s’arrête lorsque le flux a été fermé par le serveur ou lorsque le jeton d’annulation passé à `StreamAsChannelAsync` est annulé.
 
 ```csharp
 var channel = await hubConnection.StreamAsChannelAsync<int>("Counter", 10, 500, CancellationToken.None);
