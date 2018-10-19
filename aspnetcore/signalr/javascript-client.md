@@ -1,7 +1,7 @@
 ---
-title: ASP.NET Core SignalR JavaScript client
+title: Client JavaScript ASP.NET Core SignalR
 author: tdykstra
-description: Vue d’ensemble du client d’ASP.NET Core SignalR JavaScript.
+description: Vue d’ensemble du client JavaScript ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
@@ -14,11 +14,11 @@ ms.contentlocale: fr-FR
 ms.lasthandoff: 09/20/2018
 ms.locfileid: "46483047"
 ---
-# <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript client
+# <a name="aspnet-core-signalr-javascript-client"></a>Client JavaScript ASP.NET Core SignalR
 
 Par [Rachel Appel](http://twitter.com/rachelappel)
 
-La bibliothèque cliente ASP.NET Core SignalR JavaScript permet aux développeurs d’appeler du code de concentrateur côté serveur.
+La bibliothèque cliente JavaScript ASP.NET Core SignalR permet aux développeurs d’appeler un hub à partir de code côté serveur.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/javascript-client/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
@@ -31,25 +31,25 @@ La bibliothèque de client SignalR JavaScript est remise en tant qu’un [npm](h
   npm install @aspnet/signalr
   ```
 
-npm installe le contenu du package dans le *node_modules\\@aspnet\signalr\dist\browser* dossier. Créez un dossier nommé *signalr* sous le *wwwroot\\lib* dossier. Copie le *signalr.js* de fichiers à la *wwwroot\lib\signalr* dossier.
+npm installe le contenu du package dans le dossier *node_modules\\@aspnet\signalr\dist\browser*. Créez un dossier nommé *signalr* sous le dossier *wwwroot\\lib*. Copiez le fichier *signalr.js* dans le dossier *wwwroot\lib\signalr*.
 
-## <a name="use-the-signalr-javascript-client"></a>Utilisez le client SignalR JavaScript
+## <a name="use-the-signalr-javascript-client"></a>Utiliser le client JavaScript SignalR
 
-Référencer le client SignalR JavaScript dans les `<script>` élément.
+Référencez le client JavaScript SignalR dans l'élément `<script>`.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
 ```
 
-## <a name="connect-to-a-hub"></a>Se connecter à un concentrateur
+## <a name="connect-to-a-hub"></a>Se connecter à un hub
 
 Le code suivant crée et démarre une connexion. Nom de concentrateur respecte la casse.
 
 [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=9-12,28)]
 
-### <a name="cross-origin-connections"></a>Connexions de cross-origin
+### <a name="cross-origin-connections"></a>Connexions cross-origin
 
-En règle générale, les navigateurs chargent des connexions à partir du même domaine que la page demandée. Toutefois, il existe des occasions lorsqu’une connexion à un autre domaine est requise.
+En règle générale, les navigateurs chargent des connexions à partir du même domaine que la page demandée. Toutefois, il existe des cas où une connexion à un autre domaine est nécessaire.
 
 Pour empêcher la lecture des données sensibles à partir d’un autre site, un site malveillant [cross-origin connexions](xref:security/cors) sont désactivés par défaut. Pour autoriser une demande de cross-origin, activez-la dans le `Startup` classe.
 
@@ -57,19 +57,19 @@ Pour empêcher la lecture des données sensibles à partir d’un autre site, un
 
 ## <a name="call-hub-methods-from-client"></a>Appeler des méthodes de hub à partir du client
 
-Les clients JavaScript appellent les méthodes publiques sur les hubs via le [appeler](/javascript/api/%40aspnet/signalr/hubconnection#invoke) méthode de la [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). Le `invoke` méthode accepte deux arguments :
+Les clients JavaScript appellent les méthodes publiques sur les hubs via la méthode [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) de la [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). La méthode `invoke` accepte deux arguments :
 
-* Le nom de la méthode de concentrateur. Dans l’exemple suivant, le nom de méthode sur le concentrateur est `SendMessage`.
-* Tous les arguments définis dans la méthode de concentrateur. Dans l’exemple suivant, le nom de l’argument est `message`.
+* Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode sur le hub est `SendMessage`.
+* Tous les arguments définis dans la méthode de hub. Dans l’exemple suivant, le nom de l’argument est `message`.
 
   [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 
 ## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir de hub
 
-Pour recevoir des messages à partir du concentrateur, définir une méthode à l’aide de la [sur](/javascript/api/%40aspnet/signalr/hubconnection#on) méthode de la `HubConnection`.
+Pour recevoir des messages à partir du hub, définissez une méthode à l’aide de la méthode [on](/javascript/api/%40aspnet/signalr/hubconnection#on) de la `HubConnection`.
 
 * Le nom de la méthode du client JavaScript. Dans l’exemple suivant, le nom de la méthode est `ReceiveMessage`.
-* Arguments du hub passe à la méthode. Dans l’exemple suivant, la valeur d’argument est `message`.
+* Les arguments que le hub passe à la méthode. Dans l’exemple suivant, la valeur d’argument est `message`.
 
 [!code-javascript[Receive calls from hub](javascript-client/sample/wwwroot/js/chat.js?range=14-19)]
 
@@ -77,14 +77,14 @@ Le code précédent dans `connection.on` s’exécute lorsque le code côté ser
 
 [!code-csharp[Call client-side](javascript-client/sample/hubs/chathub.cs?range=8-11)]
 
-SignalR détermine la méthode de client à appeler en faisant correspondre le nom de méthode et arguments définis dans `SendAsync` et `connection.on`.
+SignalR détermine la méthode de client à appeler en faisant correspondre le nom de méthode et les arguments définis dans `SendAsync` et `connection.on`.
 
 > [!NOTE]
-> Comme meilleure pratique, appelez le [Démarrer](/javascript/api/%40aspnet/signalr/hubconnection#start) méthode sur le `HubConnection` après `on`. Ainsi, que vos gestionnaires sont enregistrés avant tous les messages sont reçus.
+> Comme meilleure pratique, appelez la méthode [start](/javascript/api/%40aspnet/signalr/hubconnection#start) sur le `HubConnection` après `on`. En procédant comme ceci, vos gestionnaires sont enregistrés avant que tous les messages soient reçus.
 
 ## <a name="error-handling-and-logging"></a>Journalisation et gestion des erreurs
 
-Chaîne un `catch` méthode à la fin de la `start` méthode pour gérer les erreurs côté client. Utilisez `console.error` pour les erreurs de sortie à la console du navigateur.
+Chaînez une méthode `catch` à la fin de la méthode `start` pour gérer les erreurs côté client. Utilisez `console.error` pour envoyer les erreurs vers la console du navigateur.
 
 [!code-javascript[Error handling](javascript-client/sample/wwwroot/js/chat.js?range=28)]
 

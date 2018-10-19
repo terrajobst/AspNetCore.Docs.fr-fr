@@ -8,12 +8,12 @@ ms.date: 06/10/2014
 ms.assetid: ed562717-8591-4936-8e10-c7e63dcb570a
 msc.legacyurl: /signalr/overview/security/introduction-to-security
 msc.type: authoredcontent
-ms.openlocfilehash: 765abd36c5182f291499042e787bcb4fcc727997
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 6336d9608f41c367c46d5b9552141546bc782b7d
+ms.sourcegitcommit: 12a8bdb8e83ca9c23c06f3bc6507c9e1a60ea7e5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910851"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49401866"
 ---
 <a name="introduction-to-signalr-security"></a>Introduction à la sécurité de SignalR
 ====================
@@ -85,6 +85,14 @@ Pour chaque demande, le serveur valide le contenu du jeton pour vous assurer que
 ![](introduction-to-security/_static/image4.png)
 
 Car l’id de connexion fait partie du processus de vérification, pas révéler l’id de connexion d’un utilisateur à d’autres utilisateurs ou si vous stockez la valeur sur le client, comme dans un cookie.
+
+#### <a name="connection-tokens-vs-other-token-types"></a>Jetons de connexion et autres types de jetons
+
+Les jetons de connexion sont parfois signalés par les outils de sécurité, car elles semblent être des jetons de session ou des jetons d’authentification, ce qui entraîne un risque si exposées.
+
+Jeton de connexion de SignalR n’est pas un jeton d’authentification. Il est utilisé pour confirmer que l’utilisateur qui effectue cette demande est le même que celui qui a créé la connexion. Le jeton de connexion est nécessaire, car ASP.NET SignalR autorise les connexions à déplacer entre des serveurs. Le jeton associe la connexion à un utilisateur particulier, mais ne garantissent l’identité de l’utilisateur qui effectue la requête. Pour une demande de SignalR être authentifié correctement, il doit avoir un autre jeton qui déclare l’identité de l’utilisateur, comme un cookie ou jeton du porteur. Toutefois, la connexion de jeton lui-même fait aucune revendication de la demande a été effectuée par cet utilisateur uniquement que l’ID de connexion contenue dans le jeton n’est associée à cet utilisateur.
+
+Étant donné que le jeton de connexion ne fournit aucune revendication d’authentification qui lui sont propres, il n’est pas considéré comme un « session » ou « authentification » de jeton. Prendre la jeton de connexion d’un utilisateur donné et de le relire dans une requête authentifiée en tant qu’autre utilisateur (ou une demande non authentifiée) échoue, car l’identité de l’utilisateur de la demande et l’identité stockée dans le jeton ne correspondent pas.
 
 <a id="rejoingroup"></a>
 

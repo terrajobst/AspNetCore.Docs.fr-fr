@@ -8,12 +8,12 @@ ms.date: 06/06/2012
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: eeb8ac4402b5e3d233082a749ad16ed98d4a71fc
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 61bb977af9dca6fc080151ffd6ea3d966f1b1592
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577806"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325417"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>À l’aide de méthodes asynchrones dans ASP.NET 4.5
 ====================
@@ -62,7 +62,7 @@ En général, utilisez les méthodes synchrones pour les conditions suivantes :
 - Simplicité est plus importante que l’efficacité.
 - Les opérations sont essentiellement des opérations UC plutôt que des opérations qui impliquent de disque complet ou la charge réseau. À l’aide de méthodes asynchrones sur les opérations de processeur de manière intensive ne présente aucun avantage et entraîne une surcharge plus.
 
-  En règle générale, utilisez les méthodes asynchrones pour les conditions suivantes :
+En règle générale, utilisez les méthodes asynchrones pour les conditions suivantes :
 
 - Vous appelez les services qui peuvent être consommées par le biais des méthodes asynchrones, et à l’aide de .NET 4.5 ou version ultérieure.
 - Les opérations sont gourmandes en réseau ou/O-e et non le processeur.
