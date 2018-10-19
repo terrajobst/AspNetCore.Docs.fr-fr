@@ -33,7 +33,7 @@ Le package `Microsoft.AspNetCore.SignalR.Client` est requis pour que les clients
 Install-Package Microsoft.AspNetCore.SignalR.Client
 ```
 
-## <a name="connect-to-a-hub"></a>Se connecter à un  .NET
+## <a name="connect-to-a-hub"></a>Se connecter à un hub
 
 Pour établir une connexion, créez un `HubConnectionBuilder` et appelez-le `Build`. L’URL du hub, le protocole, le type de transport, le niveau du journalisation, les en-têtes et les autres options peuvent être configurés lors de la création d’une connexion. Configurez les options requises en insérant les méthodes du `HubConnectionBuilder` dans `Build`. Démarrez la connexion avec `StartAsync`.
 
