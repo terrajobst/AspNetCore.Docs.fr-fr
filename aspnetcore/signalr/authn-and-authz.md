@@ -28,7 +28,7 @@ SignalR peut être utilisé avec [ASP.NET Core authentification](xref:security/a
 
 Dans une application basée sur navigateur, l’authentification par cookie permet à vos informations d’identification utilisateur existantes de circuler automatiquement vers les connexions SignalR. Lorsque vous utilisez le navigateur client, aucune configuration supplémentaire n'est nécessaire. Si l’utilisateur est connecté à votre application, la connexion SignalR hérite automatiquement de cette authentification.
 
-L’authentification par cookie n’est pas recommandée, sauf si l’application a uniquement besoin d’authentifier les utilisateurs à partir du navigateur client . Lorsque vous utilisez le [Client .NET](xref:signalr/dotnet-client), la propriété `Cookies` peut être configurée dans l'appel à `.WithUrl` afin de fournir un cookie. Toutefois, utiliser l’authentification par cookie à partir du Client .NET nécessite que l’application fournisse une API pour échanger des données d’authentification pour un cookie.
+L’authentification par cookie n’est pas recommandée, sauf si l’application a uniquement besoin d’authentifier les utilisateurs à partir du navigateur client. Lorsque vous utilisez le [Client .NET](xref:signalr/dotnet-client), la propriété `Cookies` peut être configurée dans l'appel à `.WithUrl` afin de fournir un cookie. Toutefois, utiliser l’authentification par cookie à partir du Client .NET nécessite que l’application fournisse une API pour échanger des données d’authentification pour un cookie.
 
 ### <a name="bearer-token-authentication"></a>Authentification du jeton du porteur
 
@@ -50,7 +50,7 @@ var connection = new HubConnectionBuilder()
 ```
 
 > [!NOTE]
-> La fonction jeton d’accès que vous fournissez est appelée avant **chaque** demande HTTP adressée par SignalR. Si vous devez renouveler le jeton afin de maintenir la connexion active (car il peut expirer pendant la connexion), faîtes-le à partir de cette fonction et retournez le jeton mis à jour.
+> La fonction jeton d’accès que vous fournissez est appelée avant **chaque** demande HTTP adressée par SignalR. Si vous devez renouveler le jeton afin de maintenir la connexion active (car il peut expirer pendant la connexion), faites-le à partir de cette fonction et retournez le jeton mis à jour.
 
 Dans l’API web standard, les jetons du porteur sont envoyés dans un en-tête HTTP. Toutefois, SignalR est impossible de définir ces en-têtes dans les navigateurs lors de l’utilisation de certains transports. Lorsque vous utilisez le protocole WebSocket et les événements, le jeton est transmis comme paramètre de chaîne de requête. Pour prendre en charge cela sur le serveur, une configuration supplémentaire est requise :
 
@@ -58,7 +58,7 @@ Dans l’API web standard, les jetons du porteur sont envoyés dans un en-tête 
 
 ### <a name="windows-authentication"></a>Authentification Windows
 
-Si [l’authentification Windows](xref:security/authentication/windowsauth) est configuré dans votre application, SignalR permet d'utiliser cette identité pour sécuriser les hubs. Toutefois, pour pouvoir envoyer des messages à des utilisateurs individuels, vous devez ajouter un fournisseur d’ID d’utilisateur personnalisé. C'est parce que le système d’authentification Windows ne fournit pas le claim « Name Identifier » que SignalR utilise pour déterminer le nom d’utilisateur.
+Si [l’authentification Windows](xref:security/authentication/windowsauth) est configuré dans votre application, SignalR permet d'utiliser cette identité pour sécuriser les hubs. Toutefois, pour pouvoir envoyer des messages à des utilisateurs individuels, vous devez ajouter un fournisseur d’ID d’utilisateur personnalisé. C'est parce que le système d’authentification Windows ne fournit pas la demande « Name Identifier » que SignalR utilise pour déterminer le nom d’utilisateur.
 
 Ajoutez une nouvelle classe qui implémente `IUserIdProvider` et récupérer une des revendications à partir de l’utilisateur à utiliser comme identificateur. Par exemple, pour utiliser le claim « Name » (qui est le nom d’utilisateur Windows sous la forme `[Domain]\[Username]`), créez la classe suivante :
 
