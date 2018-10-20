@@ -54,7 +54,7 @@ connection.Closed += (error) => {
 
 La principale raison de la prise en charge asynchrone est de pouvoir redémarrer la connexion. Le démarrage d’une connexion est une action asynchrone.
 
-Dans un gestionnaire `Closed` qui redémarre la connexion, envisagez d’attendre un délai aléatoire afin d'éviter de surcharger le serveur, comme indiqué dans l’exemple suivant :
+Dans un `Closed` gestionnaire qui redémarre la connexion, envisagez d’attendre un délai aléatoire éviter de surcharger le serveur, comme indiqué dans l’exemple suivant :
 
 [!code-csharp[Use Closed event handler to automate reconnection](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_ClosedRestart)]
 

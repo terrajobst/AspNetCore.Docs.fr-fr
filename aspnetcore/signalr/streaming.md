@@ -1,4 +1,4 @@
-﻿---
+---
 title: Utiliser la diffusion en continu dans ASP.NET Core SignalR
 author: tdykstra
 description: ''
@@ -53,7 +53,7 @@ Console.WriteLine("Streaming completed");
 
 ## <a name="javascript-client"></a>Client JavaScript
 
-Les clients JavaScript appellent des méthodes de diffusion en continu sur les hubs à l’aide de `connection.stream`. La méthode `stream` accepte deux arguments :
+Les clients JavaScript appellent des méthodes de diffusion en continu sur les hubs à l’aide de `connection.stream`. Le `stream` méthode accepte deux arguments :
 
 * Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode de hub est `Counter`.
 * Les arguments définis dans la méthode de hub. Dans l’exemple suivant, les arguments sont : un nombre pour le nombre d’éléments de flux de données à recevoir et le délai entre les éléments de flux de données.
@@ -62,7 +62,7 @@ Les clients JavaScript appellent des méthodes de diffusion en continu sur les h
 
 [!code-javascript[Streaming javascript](streaming/sample/wwwroot/js/stream.js?range=19-36)]
 
-Pour terminer le flux à partir du client, appelez la méthode `dispose` sur le `ISubscription` qui est retourné à partir de la méthode `subscribe`.
+Pour terminer le flux à partir du client, appelez le `dispose` méthode sur le `ISubscription` qui est retourné à partir de la `subscribe` (méthode).
 
 ## <a name="related-resources"></a>Ressources connexes
 
