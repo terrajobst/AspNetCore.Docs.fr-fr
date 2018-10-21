@@ -5,12 +5,12 @@ description: Découvrez comment configurer les fournisseurs de stockage personna
 ms.author: riande
 ms.date: 09/17/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: db51c39cc700f93917f54c80adbfe7922ffcd67e
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: e206cf584d92a17d61676d71abc6fb577ae63453
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011259"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477616"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -41,7 +41,7 @@ dotnet new webapi -au Individual
 
 ## <a name="the-aspnet-core-identity-architecture"></a>L’architecture d’ASP.NET Core Identity
 
-ASP.NET Core Identity se compose de classes appelée responsables et les magasins. *Gestionnaires de* sont des classes de haut niveau qui utilise le développeur d’applications pour effectuer des opérations, telles que la création d’un utilisateur de l’identité. *Magasins* sont des classes de niveau inférieur qui spécifient le mode de conservation des entités, telles que les utilisateurs et les rôles. Magasins de suivent le [modèle de référentiel](xref:fundamentals/repository-pattern) et sont étroitement couplées avec le mécanisme de persistance. Gestionnaires sont dissociés des magasins, ce qui signifie que vous pouvez remplacer le mécanisme de persistance sans modifier votre code d’application (à l’exception de configuration).
+ASP.NET Core Identity se compose de classes appelée responsables et les magasins. *Gestionnaires de* sont des classes de haut niveau qui utilise le développeur d’applications pour effectuer des opérations, telles que la création d’un utilisateur de l’identité. *Magasins* sont des classes de niveau inférieur qui spécifient le mode de conservation des entités, telles que les utilisateurs et les rôles. Magasins de suivent le modèle de référentiel et sont étroitement couplées avec le mécanisme de persistance. Gestionnaires sont dissociés des magasins, ce qui signifie que vous pouvez remplacer le mécanisme de persistance sans modifier votre code d’application (à l’exception de configuration).
 
 Le diagramme suivant montre comment une application web interagit avec les gestionnaires, tandis que les magasins interagissent avec la couche d’accès aux données.
 

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 uid: performance/caching/middleware
-ms.openlocfilehash: f4e5a414b92e3ca65e19188ebd2bfaef6f32fee7
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: d991bc48ed07ee71b0decaa0bee4df811fdc74c4
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893088"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477525"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
@@ -159,7 +159,7 @@ Lorsque le test et résolution des problèmes de comportement de mise en cache, 
 * [Intergiciel (middleware)](xref:fundamentals/middleware/index)
 * [Mettre en cache en mémoire](xref:performance/caching/memory)
 * [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
+* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/change-tokens)
 * [Mise en cache des réponses](xref:performance/caching/response)
 * [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 * [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
