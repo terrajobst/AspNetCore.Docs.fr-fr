@@ -38,7 +38,7 @@ Dans le client JavaScript, le jeton peut être fourni à l’aide de l'option [a
 
 [!code-typescript[Configure Access Token](authn-and-authz/sample/wwwroot/js/chat.ts?range=63-65)]
 
-Dans le client .NET, il revient un [AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication) propriété qui peut être utilisée pour configurer le jeton :
+Dans le client .NET, il y a une propriété [AccessTokenProvider](xref:signalr/configuration#configure-bearer-authentication) similaire qui peut être utilisée pour configurer le jeton :
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -58,9 +58,9 @@ Dans l’API web standard, les jetons du porteur sont envoyés dans un en-tête 
 
 ### <a name="windows-authentication"></a>Authentification Windows
 
-Si [l’authentification Windows](xref:security/authentication/windowsauth) est configuré dans votre application, SignalR permettre utiliser cette identité pour sécuriser les hubs. Toutefois, pour pouvoir envoyer des messages à des utilisateurs individuels, vous devez ajouter un fournisseur d’ID d’utilisateur personnalisé. Il s’agit, car le système d’authentification Windows ne fournit pas la revendication de « Identificateur de nom » SignalR utilise pour déterminer le nom d’utilisateur.
+Si [l’authentification Windows](xref:security/authentication/windowsauth) est configuré dans votre application, SignalR permet d'utiliser cette identité pour sécuriser les hubs. Toutefois, pour pouvoir envoyer des messages à des utilisateurs individuels, vous devez ajouter un fournisseur d’ID d’utilisateur personnalisé. C'est parce que le système d’authentification Windows ne fournit pas la demande « Name Identifier » que SignalR utilise pour déterminer le nom d’utilisateur.
 
-Ajoutez une nouvelle classe qui implémente `IUserIdProvider` et récupérer une des revendications à partir de l’utilisateur à utiliser comme identificateur. Par exemple, pour utiliser la revendication « Name » (qui est le nom d’utilisateur Windows sous la forme `[Domain]\[Username]`), créez la classe suivante :
+Ajoutez une nouvelle classe qui implémente `IUserIdProvider` et récupérez une des demandes à partir de l’utilisateur à utiliser comme identificateur. Par exemple, pour utiliser la demande « Name » (le nom d’utilisateur Windows sous la forme `[Domain]\[Username]`), créez la classe suivante :
 
 ```csharp
 public class NameUserIdProvider : IUserIdProvider
@@ -89,7 +89,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Dans le Client .NET, l’authentification Windows doit être activée en définissant le [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) propriété :
+Dans le Client .NET, l’authentification Windows doit être activée en définissant la propriété [UseDefaultCredentials](/dotnet/api/microsoft.aspnetcore.http.connections.client.httpconnectionoptions.usedefaultcredentials) :
 
 ```csharp
 var connection = new HubConnectionBuilder()
@@ -104,7 +104,7 @@ L’authentification Windows est uniquement prise en charge par le navigateur cl
 
 ## <a name="authorize-users-to-access-hubs-and-hub-methods"></a>Autoriser les utilisateurs à accéder à des hubs et à des méthodes de hub
 
-Par défaut, toutes les méthodes dans un concentrateur peuvent être appelées par un utilisateur non authentifié. Pour exiger l’authentification, appliquer la [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) attribut au hub :
+Par défaut, toutes les méthodes d'un hub peuvent être appelées par un utilisateur non authentifié. Pour exiger l’authentification, appliquez l'attribut [Authorize](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) sur le hub :
 
 [!code-csharp[Restrict a hub to only authorized users](authn-and-authz/sample/Hubs/ChatHub.cs?range=8-10,32)]
 
