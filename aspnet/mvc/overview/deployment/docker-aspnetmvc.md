@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 1343bd100f521326477ecd831aa627b4394bad44
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 2e7b2a2e9d915aec0814def56daab860e1efa8af
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795351"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348414"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Migration d’applications ASP.NET MVC vers des conteneurs Windows
 
@@ -31,7 +31,7 @@ Le déplacement de votre application implique les étapes suivantes :
 1. [Démarrage d’un conteneur Docker qui exécute votre image](#start-a-container)
 1. [Vérification de l’application à l’aide de votre navigateur](#verify-in-the-browser)
 
-L’[application terminée](https://github.com/dotnet/docs/tree/master/samples/framework/docker/MVCRandomAnswerGenerator) se trouve sur GitHub.
+L’[application terminée](https://github.com/dotnet/samples/tree/master/framework/docker/MVCRandomAnswerGenerator) se trouve sur GitHub.
 
 ## <a name="prerequisites"></a>Prérequis
 

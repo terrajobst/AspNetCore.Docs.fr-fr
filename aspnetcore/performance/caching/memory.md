@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/15/2018
 uid: performance/caching/memory
-ms.openlocfilehash: 2570ad7d939d67530b3de8cd0147815c2e25ecc8
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: be2e81d1aa6a89d65414d53a70ca2d2fb5d2d3a3
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46482981"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477187"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Cache in-memory dans ASP.NET Core
 
@@ -27,7 +27,11 @@ ASP.NET Core prend en charge plusieurs caches différents. Le cache la plus simp
 
 Les sessions non persistantes dans une batterie de serveurs Web nécessitent un [cache distribué](distributed.md) pour éviter les problèmes de cohérence du cache.  Pour certaines applications, un cache distribué peut prendre en charge plus élevée montée en puissance à un cache en mémoire. Il permet de décharger la mémoire cache vers un processus externe.
 
+::: moniker range="< aspnetcore-2.0"
+
 Le `IMemoryCache` cache supprime les entrées du cache mémoire insuffisante, sauf si le [cache priorité](/dotnet/api/microsoft.extensions.caching.memory.cacheitempriority) est défini sur `CacheItemPriority.NeverRemove`. Vous pouvez définir le `CacheItemPriority` d’ajuster la priorité avec laquelle le cache évince des éléments avec une mémoire insuffisante.
+
+::: moniker-end
 
 Le cache en mémoire permet de stocker n’importe quel objet ; l’interface de cache distribué est limitée à `byte[]`.
 
@@ -169,7 +173,7 @@ Utiliser un `CancellationTokenSource` permet à plusieurs entrées de cache d'ê
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
+* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/change-tokens)
 * [Mise en cache des réponses](xref:performance/caching/response)
 * [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
 * [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)

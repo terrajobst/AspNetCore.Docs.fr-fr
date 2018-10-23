@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 03/15/2017
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 626b828e2391d3982ff2cf393f0c9e0748c12810
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: de9b0bd1e0346d4c12f256e6226353f1ab47ed11
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751480"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477577"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
 
@@ -25,7 +25,7 @@ L’exemple d’application web Contoso University montre comment créer des app
 Dans le didacticiel précédent, vous avez créé une application MVC qui stocke et affiche les données en utilisant Entity Framework et SQL Server LocalDB. Dans ce didacticiel, vous allez examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) que la génération de modèles automatique MVC a créé automatiquement pour vous dans des contrôleurs et des vues.
 
 > [!NOTE]
-> Il est courant d’implémenter le [modèle de référentiel](xref:fundamentals/repository-pattern) pour créer une couche d’abstraction entre votre contrôleur et la couche d’accès aux données. Pour conserver ces didacticiels simples et orientés vers l’apprentissage de l’utilisation d’Entity Framework proprement dit, ils n’utilisent pas de référentiels. Pour plus d’informations sur les référentiels avec EF, consultez [le dernier didacticiel de cette série](advanced.md).
+> Il est courant d’implémenter le modèle de référentiel pour créer une couche d’abstraction entre votre contrôleur et la couche d’accès aux données. Pour conserver ces didacticiels simples et orientés vers l’apprentissage de l’utilisation d’Entity Framework proprement dit, ils n’utilisent pas de référentiels. Pour plus d’informations sur les référentiels avec EF, consultez [le dernier didacticiel de cette série](advanced.md).
 
 Dans ce didacticiel, vous utilisez les pages web suivantes :
 

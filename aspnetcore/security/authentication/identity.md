@@ -5,12 +5,12 @@ description: Utiliser Identity à une application ASP.NET Core Découvrez commen
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: d427932bb175c09105534379be4d71760f4e04e5
-ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
+ms.openlocfilehash: e0494afd807080f4cd71127abce7bdb93f952dca
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47860951"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325508"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
@@ -160,7 +160,7 @@ PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous 
 Le formulaire de connexion s’affiche lorsque :
 
 * Le **connectez-vous** lien est sélectionné.
-* Lorsqu’un utilisateur accède à une page où ils ne sont pas authentifiés **ou** autorisés, ils sont redirigés vers la page de connexion.
+* Un utilisateur tente d’accéder à une page restreinte qu’ils ne sont pas autorisés à accéder aux **ou** lorsqu’ils n’ont pas été authentifiés par le système.
 
 Lors de l’envoi du formulaire sur la page de connexion, le `OnPostAsync` action est appelée. `PasswordSignInAsync` est appelée sur le `_signInManager` objet (fourni par l’injection de dépendances).
 

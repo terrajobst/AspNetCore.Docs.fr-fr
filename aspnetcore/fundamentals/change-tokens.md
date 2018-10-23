@@ -4,13 +4,13 @@ author: guardrex
 description: Découvrez comment utiliser des jetons de modification pour effectuer le suivi des modifications.
 ms.author: riande
 ms.date: 11/10/2017
-uid: fundamentals/primitives/change-tokens
-ms.openlocfilehash: ac80e4c9da6d38e5f1acf8aa6f7ac3f4803ffb33
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+uid: fundamentals/change-tokens
+ms.openlocfilehash: 1cf3693764919a8fd064584ab7b7ad237e8465b3
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927850"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391375"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
 
@@ -18,7 +18,7 @@ Par [Luke Latham](https://github.com/guardrex)
 
 Un *jeton de modification* est un module à usage général de bas niveau, utilisé pour effectuer le suivi des modifications.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/primitives/change-tokens/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/change-tokens/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Interface d’IChangeToken
 
