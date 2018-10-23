@@ -39,7 +39,7 @@ ASP.NET Core SignalR prend en charge JSON, mais aussi un nouveau protocole binai
 
 ## <a name="differences-on-the-server"></a>Différences sur le serveur
 
-Les bibliothèques de côté serveur ASP.NET Core SignalR sont incluses dans le package [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app) qui fait partie du modèle **Application Web ASP.NET Core** pour Razor et MVC projets.
+Les bibliothèques côté serveur ASP.NET Core SignalR sont incluses dans le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) qui fait partie du modèle de l'**Application Web ASP.NET Core** pour les projets Razor et MVC.
 
 ASP.NET Core SignalR est un intergiciel (middleware) ASP.NET Core, donc il doit être configuré en appelant [AddSignalR](/dotnet/api/microsoft.extensions.dependencyinjection.signalrdependencyinjectionextensions.addsignalr) dans `Startup.ConfigureServices`.
 
@@ -58,7 +58,7 @@ app.UseSignalR(routes =>
 
 ### <a name="sticky-sessions-now-required"></a>Sessions rémanentes désormais requises
 
-En raison de la façon dont la montée en puissance fonctionnait dans ASP.NET SignalR, les clients pouvaient se reconnecter et envoyer des messages à n’importe quel serveur dans la batterie de serveurs. En raison de modifications pour le modèle de montée en puissance, mais aussi de la no prise en charge de la reconnexion, ceci n’est plus pris en charge. Une fois que le client se connecte au serveur, il doit interagir avec le même serveur pour la durée de la connexion.
+En raison de la façon dont la montée en puissance fonctionnait dans ASP.NET SignalR, les clients pouvaient se reconnecter et envoyer des messages à n’importe quel serveur dans la batterie de serveurs. En raison de modifications pour le modèle de montée en puissance, mais aussi de la non prise en charge de la reconnexion, ceci n’est plus pris en charge. Une fois que le client se connecte au serveur, il doit interagir avec le même serveur pour la durée de la connexion.
 
 ### <a name="single-hub-per-connection"></a>Hub unique par connexion
 
@@ -119,7 +119,7 @@ connection.start().catch(err => console.error(err.toString()));
 
 ### <a name="hub-proxies"></a>Serveurs proxy de hub
 
-Les erveurs proxy de Hub ne sont plus générés automatiquement. Au lieu de cela, le nom de méthode est passé dans l' [appel](/javascript/api/%40aspnet/signalr/hubconnection#invoke) à l'API sous forme de chaîne.
+Les serveurs proxy de hub ne sont plus générés automatiquement. Au lieu de cela, le nom de méthode est passé dans l'[appel](/javascript/api/%40aspnet/signalr/hubconnection#invoke) à l'API sous forme de chaîne.
 
 ### <a name="net-and-other-clients"></a>.NET et autres clients
 
@@ -133,15 +133,15 @@ connection = new HubConnectionBuilder()
     .Build();
 ```
 
-## <a name="scaleout-differences"></a>Différences de montée en puissance en parallèle
+## <a name="scaleout-differences"></a>Différences de montée en puissance parallèle
 
 ASP.NET SignalR prend en charge SQL Server et Redis. ASP.NET Core SignalR prend en charge le Service Azure SignalR et Redis.
 
 ### <a name="aspnet"></a>ASP.NET
 
-* [Montée en puissance en parallèle de SignalR avec Azure Service Bus](/aspnet/signalr/overview/performance/scaleout-with-windows-azure-service-bus)
-* [Montée en puissance en parallèle de SignalR avec Redis](/aspnet/signalr/overview/performance/scaleout-with-redis)
-* [Montée en puissance en parallèle de SignalR avec SQL Server](/aspnet/signalr/overview/performance/scaleout-with-sql-server)
+* [Montée en puissance parallèle de SignalR avec Azure Service Bus](/aspnet/signalr/overview/performance/scaleout-with-windows-azure-service-bus)
+* [Montée en puissance parallèle de SignalR avec Redis](/aspnet/signalr/overview/performance/scaleout-with-redis)
+* [Montée en puissance parallèle de SignalR avec SQL Server](/aspnet/signalr/overview/performance/scaleout-with-sql-server)
 
 ### <a name="aspnet-core"></a>ASP.NET Core
 
