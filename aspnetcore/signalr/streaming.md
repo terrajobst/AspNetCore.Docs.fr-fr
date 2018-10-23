@@ -53,7 +53,7 @@ Console.WriteLine("Streaming completed");
 
 ## <a name="javascript-client"></a>Client JavaScript
 
-Les clients JavaScript appellent des méthodes de diffusion en continu sur les hubs à l’aide de `connection.stream`. Le `stream` méthode accepte deux arguments :
+Les clients JavaScript appellent des méthodes de diffusion en continu sur les hubs à l’aide de `connection.stream`. La méthode `stream` accepte deux arguments :
 
 * Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode de hub est `Counter`.
 * Les arguments définis dans la méthode de hub. Dans l’exemple suivant, les arguments sont : un nombre pour le nombre d’éléments de flux de données à recevoir et le délai entre les éléments de flux de données.
