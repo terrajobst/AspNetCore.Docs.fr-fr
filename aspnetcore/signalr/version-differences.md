@@ -1,4 +1,4 @@
----
+﻿---
 title: Différences entre SignalR et ASP.NET Core SignalR
 author: tdykstra
 description: Différences entre SignalR et ASP.NET Core SignalR
@@ -31,7 +31,7 @@ ASP.NET Core SignalR n’est pas compatible avec les clients ou serveurs pour AS
 
 ### <a name="automatic-reconnects"></a>Reconnexions automatiques
 
-Reconnexions automatique ne sont pas pris en charge dans ASP.NET Core SignalR. Si le client est déconnecté, l’utilisateur doit démarrer explicitement une nouvelle connexion s’ils souhaitent se reconnecter. Dans ASP.NET SignalR, SignalR tente de se reconnecter au serveur si la connexion est abandonnée. 
+Les reconnexions automatiques ne sont plus prises en charge. Auparavant, SignalR tentait de se reconnecter au serveur si la connexion était supprimée. Maintenant, si le client est déconnecté, l’utilisateur doit démarrer explicitement une nouvelle connexion s’il souhaite se reconnecter.
 
 ### <a name="protocol-support"></a>Prise en charge de protocole
 
@@ -119,13 +119,13 @@ connection.start().catch(err => console.error(err.toString()));
 
 ### <a name="hub-proxies"></a>Serveurs proxy de hub
 
-Serveurs proxy de Hub est générées ne sont plus automatiquement. Au lieu de cela, le nom de méthode est passé dans le [appeler](/javascript/api/%40aspnet/signalr/hubconnection#invoke) API sous forme de chaîne.
+Les serveurs proxy de hub ne sont plus générés automatiquement. Au lieu de cela, le nom de méthode est passé dans l'[appel](/javascript/api/%40aspnet/signalr/hubconnection#invoke) à l'API sous forme de chaîne.
 
 ### <a name="net-and-other-clients"></a>.NET et autres clients
 
-Le `Microsoft.AspNetCore.SignalR.Client` package NuGet contient les bibliothèques de client .NET pour ASP.NET Core SignalR.
+Le package NuGet `Microsoft.AspNetCore.SignalR.Client` contient les bibliothèques de client .NET pour ASP.NET Core SignalR.
 
-Utilisez le [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder) pour créer et générer une instance d’une connexion à un concentrateur.
+Utilisez le [HubConnectionBuilder](/dotnet/api/microsoft.aspnetcore.signalr.client.hubconnectionbuilder) pour créer et générer une instance d’une connexion à un hub.
 
 ```csharp
 connection = new HubConnectionBuilder()
