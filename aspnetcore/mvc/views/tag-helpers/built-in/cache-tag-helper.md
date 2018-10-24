@@ -1,16 +1,16 @@
 ---
 title: Tag Helper Cache dans ASP.NET Core MVC
 author: pkellner
-description: Montre comment utiliser un Tag Helper Cache
+description: Découvrez comment utiliser le Tag Helper Cache.
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 425d8c2235f0070665bc0c967d2498f2cff2a4a6
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 11754d2858d8f02c7eb9baac8feda9b50ddb3d79
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751443"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028153"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Tag Helper Cache dans ASP.NET Core MVC
 

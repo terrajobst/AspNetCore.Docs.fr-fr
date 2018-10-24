@@ -5,12 +5,12 @@ description: Montre comment créer, lire, mettre à jour et supprimer avec EF Co
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: e3a0ec2e21ae9e9eeaae1eb7c17f1604897fb6f9
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 25493f93daf3fe5e874ad1d06b918196cd1f074d
+ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342456"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48912811"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -26,7 +26,7 @@ Dans ce didacticiel, nous allons examiner et personnaliser le code CRUD (créer,
 
 Pour que ces tutoriels soient moins complexes et traitent exclusivement d’EF Core, nous avons utilisé le code EF Core dans les modèles de page. Certains développeurs utilisent une couche de service ou un [modèle de référentiel](xref:fundamentals/repository-pattern) pour créer une couche d’abstraction entre l’interface utilisateur (Razor Pages) et la couche d’accès aux données.
 
-Dans ce tutoriel, nous examinons les pages Razor Create, Edit, Delete et Details dans le dossier *Student*.
+Dans ce tutoriel, nous examinons les pages Create, Edit, Delete et Details de Razor Pages, qui sont dans le dossier *Students*.
 
 Le code généré automatiquement utilise le modèle suivant pour les pages Create, Edit et Delete :
 
@@ -236,9 +236,9 @@ Testez la suppression.
 
 ## <a name="common-errors"></a>Erreurs courantes
 
-Les liens Student/Index ou autres ne fonctionnent pas :
+Students/Index ou d’autres liens ne fonctionnent pas :
 
-Vérifiez que la Page Razor contient la bonne directive `@page`. Par exemple, la page Razor Student/Index ne doit **pas** contenir de modèle de route :
+Vérifiez que la Page Razor contient la bonne directive `@page`. Par exemple, la page Student/Index Razor Page ne doit **pas** contenir de modèle d’itinéraire :
 
 ```cshtml
 @page "{id:int}"

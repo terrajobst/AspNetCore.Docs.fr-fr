@@ -5,12 +5,12 @@ description: Découvrez comment les composants de vue sont utilisés dans ASP.NE
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/view-components
-ms.openlocfilehash: c4e4de6e4ffb634a636bccdb2a929a524baebecf
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: cf2cfcdb07271503b844e31940e90b7376db0a6f
+ms.sourcegitcommit: 599ebae5c2d6fcb22dfa6ae7d1f4bdfcacb79af4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751751"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47211063"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -75,9 +75,9 @@ Un composant de vue définit sa logique dans une méthode `InvokeAsync` qui reto
 
 Le Runtime recherche la vue dans les chemins suivants :
 
-* /Pages/Components/<component name>/\<nom_vue>
-* Views/\<nom_contrôleur>/Components/\<nom_composant_vue>/\<nom_vue>
-* Views/Shared/Components/\<nom_composant_vue>/\<nom_vue>
+* /Pages/Components/\<nom_composant_vue>/\<nom_vue>
+* /Views/\<nom_contrôleur>/Components/\<nom_composant_vue>/\<nom_vue>
+* /Views/Shared/Components/\<nom_composant_vue>/\<nom_vue>
 
 Le nom de la vue par défaut pour un composant de vue est *Default*. Votre fichier de vue est donc normalement appelé *Default.cshtml*. Vous pouvez spécifier un nom de vue différent quand vous créez le résultat du composant de vue ou quand vous appelez la méthode `View`.
 
@@ -95,6 +95,8 @@ Les paramètres sont passés à la méthode `InvokeAsync`. Le composant de vue `
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexFinal.cshtml?range=35)]
 
+::: moniker range=">= aspnetcore-1.1"
+
 ## <a name="invoking-a-view-component-as-a-tag-helper"></a>Appel d’un composant de vue en tant que Tag Helper
 
 Dans ASP.NET Core 1.1 et les versions ultérieures, vous pouvez appeler un composant de vue en tant que [Tag Helper](xref:mvc/views/tag-helpers/intro) :
@@ -110,13 +112,13 @@ Les paramètres de méthode et de classe de casse Pascal pour les Tag Helpers so
 </vc:[view-component-name]>
 ```
 
-Remarque : Pour pouvoir utiliser un composant de vue en tant que Tag Helper, vous devez inscrire l’assembly contenant le composant de vue à l’aide de la directive `@addTagHelper`. Par exemple, si votre composant de vue se trouve dans un assembly appelé MyWebApp, ajoutez la directive suivante dans le fichier `_ViewImports.cshtml` :
+Pour utiliser un composant de vue en tant que Tag Helper, inscrivez l’assembly contenant le composant de vue à l’aide de la directive `@addTagHelper`. Si votre composant de vue se trouve dans un assembly appelé `MyWebApp`, ajoutez la directive suivante dans le fichier *_ViewImports.cshtml* :
 
 ```cshtml
 @addTagHelper *, MyWebApp
 ```
 
-Vous pouvez inscrire un composant de vue en tant que Tag Helper dans n’importe quel fichier qui fait référence à ce composant. Pour plus d’informations sur l’inscription des Tag Helpers, consultez [Gestion de l’étendue des Tag Helpers](xref:mvc/views/tag-helpers/intro#managing-tag-helper-scope).
+Vous pouvez inscrire un composant de vue en tant que Tag Helper dans n’importe quel fichier qui référence ce composant. Pour plus d’informations sur l’inscription des Tag Helpers, consultez [Gestion de l’étendue des Tag Helpers](xref:mvc/views/tag-helpers/intro#managing-tag-helper-scope).
 
 Méthode `InvokeAsync` utilisée dans ce didacticiel :
 
@@ -127,6 +129,8 @@ Dans le balisage Tag Helper :
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexTagHelper.cshtml?range=37-38)]
 
 Dans l’exemple ci-dessus, le composant de vue `PriorityList` devient `priority-list`. Les paramètres sont passés au composant de vue sous forme d’attributs dans la casse kebab en minuscules.
+
+::: moniker-end
 
 ### <a name="invoking-a-view-component-directly-from-a-controller"></a>Appel d’un composant de vue directement à partir d’un contrôleur
 
@@ -243,6 +247,76 @@ Pour éviter d’éventuels problèmes au moment de la compilation, vous pouvez 
 Ajoutez une instruction `using` dans votre fichier de vue Razor et utilisez l’opérateur `nameof` :
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Todo/IndexNameof.cshtml?range=1-6,35-)]
+
+## <a name="perform-synchronous-work"></a>Effectuer un travail synchrone
+
+Le framework gère l’appel d’une méthode `Invoke` synchrone si vous n’avez pas besoin d’effectuer un travail asynchrone. La méthode suivante crée un composant de vue `Invoke` synchrone :
+
+```csharp
+public class PriorityList : ViewComponent
+{
+    public IViewComponentResult Invoke(int maxPriority, bool isDone)
+    {
+        var items = new List<string> { $"maxPriority: {maxPriority}", $"isDone: {isDone}" };
+        return View(items);
+    }
+}
+```
+
+Le fichier Razor du composant de vue contient les chaînes passées à la méthode `Invoke` (*Views/Home/Components/PriorityList/Default.cshtml*) :
+
+```cshtml
+@model List<string>
+
+<h3>Priority Items</h3>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item</li>
+    }
+</ul>
+```
+
+::: moniker range=">= aspnetcore-1.1"
+
+Le composant de vue est appelé dans un fichier Razor (par exemple, *Views/Home/Index.cshtml*) à l’aide d’une des approches suivantes :
+
+* <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
+* [Tag Helper](xref:mvc/views/tag-helpers/intro)
+
+Pour utiliser l’approche <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>, appelez `Component.InvokeAsync` :
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-1.1"
+
+Le composant de vue est appelé dans un fichier Razor (par exemple, *Views/Home/Index.cshtml*) avec <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>.
+
+Appelez `Component.InvokeAsync` :
+
+::: moniker-end
+
+```cshtml
+@await Component.InvokeAsync(nameof(PriorityList), new { maxPriority = 4, isDone = true })
+```
+
+::: moniker range=">= aspnetcore-1.1"
+
+Pour utiliser le Tag Helper, inscrivez l’assembly contenant le composant de vue à l’aide de la directive `@addTagHelper` (le composant de vue se trouve dans un assembly appelé `MyWebApp`) :
+
+```cshtml
+@addTagHelper *, MyWebApp
+```
+
+Utilisez le Tag Helper du composant de vue dans le fichier de balisage Razor :
+
+```cshtml
+<vc:priority-list max-priority="999" is-done="false">
+</vc:priority-list>
+```
+::: moniker-end
+
+La signature de méthode de `PriorityList.Invoke` est synchrone, mais Razor trouve et appelle la méthode avec `Component.InvokeAsync` dans le fichier de balisage.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

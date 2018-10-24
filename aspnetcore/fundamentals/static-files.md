@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 33fad930e617c74d9a8c07f850764a6b81fa8ab5
-ms.sourcegitcommit: 2c158fcfd325cad97ead608a816e525fe3dcf757
+ms.openlocfilehash: 52c7916b9fc55c875d56acd49c01f76dd2053817
+ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41751521"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47861003"
 ---
 # <a name="static-files-in-aspnet-core"></a>Fichiers statiques dans ASP.NET Core
 
@@ -216,7 +216,7 @@ Consultez [Types de contenu MIME](http://www.iana.org/assignments/media-types/me
 
 ## <a name="non-standard-content-types"></a>Types de contenu non standard
 
-Le middleware de fichiers statiques comprend près de 400 types de contenu de fichier. Si l’utilisateur demande un fichier d’un type inconnu, le middleware de fichiers statiques retourne une réponse HTTP 404 (Introuvable). Si l’exploration des répertoires est activée, un lien vers le fichier est affiché. L’URI retourne une erreur HTTP 404.
+Static File Middleware comprend près de 400 types connus de contenu de fichier. Si l’utilisateur demande un fichier d’un type inconnu, Static File Middleware transmet la requête à l’intergiciel (middleware) suivant dans le pipeline. Si aucun intergiciel ne gère la requête, une réponse *404 introuvable* est retournée. Si l’exploration des répertoires est activée, un lien vers le fichier est affiché dans la liste de répertoires.
 
 Le code suivant permet de délivrer des types inconnus et rend le fichier inconnu en tant qu’image :
 

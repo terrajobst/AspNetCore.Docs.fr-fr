@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 08/07/2017
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: e27253e3f02fa808136494ed5373059ef6e0df0d
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: cd958b9c084de4b3e12784774544610873a519f9
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011585"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045521"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -27,7 +27,7 @@ La prise en charge de la validation fournie par les pages Razor et Entity Framew
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>Ajout de règles de validation au modèle Movie
 
-Ouvrez le fichier *Movie.cs*. [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) fournit un ensemble intégré d’attributs de validation qui sont appliqués de manière déclarative à une classe ou une propriété. DataAnnotations contient également des attributs de mise en forme comme `DataType` qui aident à effectuer la mise en forme et ne fournissent aucune validation.
+Ouvrez le fichier *Models/Movie.cs*. [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) fournit un ensemble intégré d’attributs de validation qui sont appliqués de manière déclarative à une classe ou une propriété. DataAnnotations contient également des attributs de mise en forme comme `DataType` qui aident à effectuer la mise en forme et ne fournissent aucune validation.
 
 Mettez à jour la classe `Movie` pour tirer parti des attributs de validation `Required`, `StringLength`, `RegularExpression` et `Range`.
 
@@ -79,7 +79,7 @@ Quand JavaScript est désactivé dans le navigateur, l’envoi du formulaire ave
 
 Facultatif : Testez la validation côté serveur :
 
-* Désactivez JavaScript dans le navigateur. Si vous ne pouvez pas désactiver JavaScript dans le navigateur, essayez un autre navigateur.
+* Désactivez JavaScript dans le navigateur. Pour cela, utilisez les outils de développement de votre navigateur. Si vous ne pouvez pas désactiver JavaScript dans le navigateur, essayez un autre navigateur.
 * Définissez un point d’arrêt dans la méthode `OnPostAsync` de la page Créer ou Modifier.
 * Envoyez un formulaire avec des erreurs de validation.
 * Vérifiez que l’état de modèle n’est pas valide :
@@ -160,7 +160,7 @@ La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data
 
 ### <a name="publish-to-azure"></a>Publier sur Azure
 
-Consultez [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour obtenir des instructions sur la publication de cette application sur Azure.
+Pour plus d’informations sur le déploiement sur Azure, consultez [Tutoriel : Créer une application ASP.NET dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Les instructions s’appliquent à une application ASP.NET, pas à une application ASP.NET Core, mais les étapes sont les mêmes.
 
 Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
 

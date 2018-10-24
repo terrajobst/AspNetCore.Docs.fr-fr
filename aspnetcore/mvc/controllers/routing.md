@@ -3,14 +3,14 @@ title: Routage vers les actions du contrôleur dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ASP.NET Core MVC utilise le middleware (intergiciel) de routage pour mettre en correspondance les URL des requêtes entrantes et les mapper à des actions.
 ms.author: riande
-ms.date: 03/14/2017
+ms.date: 09/17/2018
 uid: mvc/controllers/routing
-ms.openlocfilehash: 0d328d930ecb932c22fec524babb1c856b656b95
-ms.sourcegitcommit: 4e34ce61e1e7f1317102b16012ce0742abf2cca6
+ms.openlocfilehash: d66c2f14adf55dd0c4a7c3adfad7e5737e4deda1
+ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/04/2018
-ms.locfileid: "39514776"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46011651"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
@@ -376,6 +376,8 @@ Les routes d’attribut peuvent configurer un ordre en utilisant la propriété 
 
 > [!TIP]
 > Évitez de dépendre de `Order`. Si votre espace d’URL nécessite des valeurs d’ordre explicites pour router correctement, il est probable qu’il prête également à confusion pour les clients. D’une façon générale, le routage par attributs sélectionne la route correcte avec la mise en correspondance d’URL. Si l’ordre par défaut utilisé pour la génération d’URL ne fonctionne pas, l’utilisation à titre de remplacement d’un nom de route est généralement plus simple que d’appliquer la propriété `Order`.
+
+Le routage de Razor Pages et celui du contrôleur MVC partagent une implémentation. Les informations relatives à l’ordre d’itinéraire dans les rubriques de Razor Pages sont disponibles à la page [Conventions d’itinéraires et d’applications Razor Pages : ordre d’itinéraire](xref:razor-pages/razor-pages-conventions#route-order).
 
 <a name="routing-token-replacement-templates-ref-label"></a>
 

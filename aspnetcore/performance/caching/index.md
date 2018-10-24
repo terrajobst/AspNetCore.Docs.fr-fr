@@ -1,23 +1,33 @@
 ---
-title: Mise en cache des réponses en ASP.NET Core
-author: ardalis
-description: Découvrez comment utiliser la mise en cache pour améliorer les performances des applications ASP.NET Core.
+title: Mettre en cache les réponses dans ASP.NET Core
+author: guardrex
+description: Découvrez comment utiliser la mise en cache des données et la mise en cache des réponses pour améliorer les performances des applications ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 09/16/2018
 uid: performance/caching/index
-ms.openlocfilehash: 3600d5be18e35901fba23e4e507435741ab4d14d
-ms.sourcegitcommit: 931b6a2d7eb28a0f1295e8a95690b8c4c5f58477
+ms.openlocfilehash: bb188f598f3acdbc6eca59d58d26e1b8382f5701
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37077676"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028113"
 ---
-# <a name="cache-responses-in-aspnet-core"></a>Mise en cache des réponses en ASP.NET Core
+# <a name="cache-responses-in-aspnet-core"></a>Mettre en cache les réponses dans ASP.NET Core
 
-* [Mise en cache en mémoire](xref:performance/caching/memory)
-* [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
-* [Mise en cache des réponses](xref:performance/caching/response)
-* [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
-* [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+[Mettre en cache en mémoire](xref:performance/caching/memory)  
+Découvrez comment mettre en cache les données en mémoire dans ASP.NET Core.
+
+[Utiliser un cache distribué](xref:performance/caching/distributed)  
+Découvrez comment utiliser le cache distribué ASP.NET Core pour améliorer les performances et la scalabilité des applications, en particulier dans un environnement de batterie de serveurs ou cloud.
+
+[Mise en cache des réponses](xref:performance/caching/response)  
+Découvrez comment utiliser la mise en cache des réponses pour réduire les besoins en bande passante et accroître les performances des applications ASP.NET Core.
+
+[Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)  
+Découvrez comment configurer et utiliser le middleware de mise en cache des réponses dans ASP.NET Core.
+
+[Tag Helper Cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)  
+Découvrez comment utiliser le Tag Helper Cache.
+
+[Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)  
+Découvrez comment utiliser le Tag Helper Cache distribué.

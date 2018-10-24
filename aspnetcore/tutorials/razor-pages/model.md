@@ -5,12 +5,12 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: de82738509bb009f030a02e28904e3155088fa6a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 5cd1e08ac52d352be23a280419d7456f685a03ad
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011356"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045599"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -22,9 +22,7 @@ ms.locfileid: "46011356"
 
 Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie** > **Ajouter** > **Nouveau dossier**. Nommez le dossier *Models*.
 
-Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :
-
-Remplacez le contenu de la classe `Movie` par le code suivant :
+Cliquez avec le bouton droit sur le dossier *Models*. Sélectionnez **Ajouter** > **Classe**. Nommez la classe **Movie** et remplacez le contenu de la classe `Movie` par le code suivant :
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie21/Models/Movie1.cs?name=snippet)]
 
@@ -41,7 +39,7 @@ Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossi
 
 ![Image illustrant les instructions précédentes.](model/_static/sca.png)
 
-Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Pages Razor avec Entity Framework (CRUD)** > **AJOUTER**.
+Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Razor Pages avec Entity Framework (CRUD)** > **Ajouter**.
 
 ![Image illustrant les instructions précédentes.](model/_static/add_scaffold.png)
 
@@ -58,10 +56,10 @@ Le processus de génération de modèles automatique a créé et changé les fic
 
 ### <a name="files-created"></a>Fichiers créés
 
-* *Pages/Movies* Create, Delete, Details, Edit, Index. Ces pages sont détaillées dans le tutoriel suivant.
+* *Pages/Movies* : Create, Delete, Details, Edit, Index. Ces pages sont détaillées dans le tutoriel suivant.
 * *Data/RazorPagesMovieContext.cs*
 
-### <a name="files-updates"></a>Mises à jour de fichiers
+### <a name="file-updates"></a>Mises à jour du fichier
 
 * *Startup.cs* : Les changements apportés à ce fichier sont détaillés dans la section suivante.
 * *appSettings.JSON* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.
@@ -122,8 +120,8 @@ La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrati
 
 Si vous obtenez l’erreur :
 
-SqlException: impossible d’ouvrir la base de données 'RazorPagesMovieContext-GUID' demandée par la connexion. La connexion a échoué.
-Échec de la connexion de l’utilisateur 'nom utilisateur'.
+`SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
+Login failed for user 'User-name'.`
 
 Vous avez manqué [l’étape des migrations](#pmc).
 

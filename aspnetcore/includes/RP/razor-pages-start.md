@@ -20,10 +20,10 @@ Le tableau suivant répertorie les fichiers et dossiers du projet. Pour ce didac
 
 Le fichier *_Layout.cshtml* contient des éléments HTML communs (scripts et feuilles de style) et définit la disposition de l’application. Par exemple, quand vous cliquez sur **RazorPagesMovie**, **Home**, **About** ou **Contact**, les mêmes éléments apparaissent. Les éléments communs incluent le menu de navigation en haut et l’en-tête en bas de la fenêtre. Pour plus d’informations, consultez [Disposition](xref:mvc/views/layout).
 
-Le fichier *_ViewStart.cshtml* définit la propriété `Layout` des pages Razor pour qu’elle utilise le fichier *_Layout.cshtml*. Pour plus d’informations, consultez [Disposition](xref:mvc/views/layout).
-
 Le fichier *_ViewImports.cshtml* contient des directives Razor qui sont importées dans chaque page Razor. Pour plus d’informations, consultez [Importation de directives partagées](xref:mvc/views/layout#importing-shared-directives).
+
+Le fichier *_ViewStart.cshtml* définit la propriété `Layout` des pages Razor pour qu’elle utilise le fichier *_Layout.cshtml*. Pour plus d’informations, consultez [Disposition](xref:mvc/views/layout).
 
 Le fichier *_ValidationScriptsPartial.cshtml* fournit une référence aux scripts de validation [jQuery](https://jquery.com/). Quand nous ajouterons des pages `Create` et `Edit` plus loin dans ce didacticiel, le fichier *_ValidationScriptsPartial.cshtml* sera utilisé.
 
-Les pages `About`, `Contact` et `Index` sont des pages de base que vous pouvez utiliser pour démarrer une application. La page `Error` sert à afficher des informations d’erreur.
+Les pages `About`, `Contact` et `Index` sont des pages de base que vous pouvez utiliser pour démarrer une application. La page `Error` sert à afficher des informations d’erreur. La page `Privacy` vous permet de spécifier plus d’informations sur la politique de confidentialité de votre site.
