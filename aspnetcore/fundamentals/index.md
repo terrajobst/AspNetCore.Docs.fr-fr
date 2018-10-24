@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: fundamentals/index
-ms.openlocfilehash: 68760f179c4d6e806510b727e2284f8c2c4a4ff6
-ms.sourcegitcommit: d27317c16f113e7c111583042ec7e4c5a26adf6f
+ms.openlocfilehash: 83dfb5707700da01c45bae3c0c00e67ca397d402
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41746077"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325469"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -119,7 +119,7 @@ Pour plus d'informations, consultez <xref:fundamentals/host/index>.
 
 ## <a name="servers"></a>Serveurs
 
-Le modèle d’hébergement ASP.NET Core n’écoute pas directement les requêtes. Le modèle d’hébergement s’appuie sur une implémentation de serveur HTTP pour transférer la requête à l’application. La requête transférée est enveloppée (wrap) dans un ensemble d’objets de fonctionnalités auxquels vous pouvez accéder via des interfaces. ASP.NET Core inclut un serveur web multiplateforme géré, appelé [Kestrel](xref:fundamentals/servers/kestrel). Kestrel est généralement exécuté derrière un serveur web de production, tel qu’[IIS](https://www.iis.net/) ou [Nginx](http://nginx.org) dans une configuration de proxy inverse. Kestrel peut également être exécuté en tant que serveur Edge exposé directement à Internet dans ASP.NET Core 2.0 ou version ultérieure.
+Le modèle d’hébergement ASP.NET Core n’écoute pas directement les requêtes. Le modèle d’hébergement s’appuie sur une implémentation de serveur HTTP pour transférer la requête à l’application. La requête transférée est enveloppée (wrap) dans un ensemble d’objets de fonctionnalités auxquels vous pouvez accéder via des interfaces. ASP.NET Core inclut un serveur web multiplateforme géré, appelé [Kestrel](xref:fundamentals/servers/kestrel). Kestrel est généralement exécuté derrière un serveur web de production, tel qu’[IIS](https://www.iis.net/) ou [Nginx](http://nginx.org) dans une configuration de proxy inverse. Kestrel peut également être exécuté en tant que serveur périphérique public exposé directement à Internet dans ASP.NET Core 2.0 ou version ultérieure.
 
 Pour plus d'informations, consultez <xref:fundamentals/servers/index>.
 

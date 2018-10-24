@@ -5,12 +5,12 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 6e8c4723ab0105b8c756221d3e3c5eebba6cc4e2
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 375d09d9bef59cf18b7805cbefe500aeb2e0cde7
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912030"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326002"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -206,9 +206,9 @@ Chaque combinaison de langue et de culture (autres que la langue par défaut) n�
 
 ### <a name="configure-localization"></a>Configurer la localisation
 
-La localisation est configurée dans la méthode `ConfigureServices` :
+La localisation est configurée dans la méthode `Startup.ConfigureServices` :
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet1)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet1)]
 
 * `AddLocalization` ajoute les services de localisation au conteneur de services. Le code ci-dessus affecte également au chemin des ressources la valeur « Resources ».
 
@@ -218,9 +218,9 @@ La localisation est configurée dans la méthode `ConfigureServices` :
 
 ### <a name="localization-middleware"></a>Intergiciel (middleware) de localisation
 
-La culture actuelle sur une requête est définie dans l’[intergiciel (middleware)](xref:fundamentals/middleware/index) de localisation. L’intergiciel de localisation est activé dans la méthode `Configure`. L’intergiciel de localisation doit être configuré avant tout intergiciel susceptible de vérifier la culture de la requête (par exemple, `app.UseMvcWithDefaultRoute()`).
+La culture actuelle sur une requête est définie dans l’[intergiciel (middleware)](xref:fundamentals/middleware/index) de localisation. L’intergiciel de localisation est activé dans la méthode `Startup.Configure`. L’intergiciel de localisation doit être configuré avant tout intergiciel susceptible de vérifier la culture de la requête (par exemple, `app.UseMvcWithDefaultRoute()`).
 
-[!code-csharp[](localization/sample/Localization/Program.cs?name=snippet2)]
+[!code-csharp[](localization/sample/Localization/Startup.cs?name=snippet2)]
 
 `UseRequestLocalization` initialise un objet `RequestLocalizationOptions`. Sur chaque requête, la liste de `RequestCultureProvider` dans `RequestLocalizationOptions` est énumérée et le premier fournisseur capable de déterminer correctement la culture de la requête est utilisé. Les fournisseurs par défaut proviennent de la classe `RequestLocalizationOptions` :
 

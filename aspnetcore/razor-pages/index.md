@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: f5549a24c5b5fe2e6b33bd55960f87a8bf86bd19
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 7bd597acedade65f2be53f4f50a436981e576b1f
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41870878"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326119"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
@@ -41,8 +41,6 @@ Pour obtenir des instructions détaillées sur la création d’un projet de pag
 
 Exécutez `dotnet new webapp` à partir de la ligne de commande.
 
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
@@ -59,8 +57,6 @@ Ouvrez le fichier *.csproj* généré à partir de Visual Studio pour Mac.
 
 Exécutez `dotnet new webapp` à partir de la ligne de commande.
 
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
-
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
@@ -74,8 +70,6 @@ Exécutez `dotnet new razor` à partir de la ligne de commande.
 ::: moniker range=">= aspnetcore-2.1"
 
 Exécutez `dotnet new webapp` à partir de la ligne de commande.
-
-[!INCLUDE[](~/includes/webapp-alias-notice.md)]
 
 ::: moniker-end
 
@@ -252,7 +246,9 @@ Pour plus d’informations, consultez [Validation de modèle](xref:mvc/models/va
 
 ## <a name="manage-head-requests-with-the-onget-handler"></a>Gérer des demandes HEAD avec le gestionnaire OnGet
 
-En règle générale, un gestionnaire HEAD est créé et appelé pour des demandes HEAD :
+Les requêtes HEAD vous permettent de récupérer les en-têtes pour une ressource spécifique. Contrairement aux requêtes GET, les requêtes HEAD ne renvoient un corps de réponse. 
+
+En règle générale, un gestionnaire HEAD est créé et appelé pour des demandes HEAD : 
 
 ```csharp
 public void OnHead()
@@ -261,12 +257,14 @@ public void OnHead()
 }
 ```
 
-si aucun gestionnaire HEAD (`OnHead`) n’est défini, les pages Razor reviennent à l’appel du gestionnaire de page GET (`OnGet`) dans ASP.NET Core 2.1 ou une version ultérieure. Accepter ce comportement avec la [méthode SetCompatibilityVersion](xref:mvc/compatibility-version) dans `Startup.Configure` pour ASP.NET Core 2.1 à 2.x :
+si aucun gestionnaire HEAD (`OnHead`) n’est défini, les pages Razor reviennent à l’appel du gestionnaire de page GET (`OnGet`) dans ASP.NET Core 2.1 ou une version ultérieure. Dans ASP.NET Core 2.1 et 2.2, ce comportement se produit avec la version [SetCompatibilityVersion](xref:mvc/compatibility-version) dans `Startup.Configure` :
 
 ```csharp
 services.AddMvc()
     .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
 ```
+
+Les modèles par défaut génèrent l'appel `SetCompatibilityVersion` dans ASP.NET Core 2.1 et 2.2.
 
 `SetCompatibilityVersion` définit efficacement l’option Pages Razor `AllowMappingHeadRequestsToGetHandler` sur `true`.
 
@@ -376,6 +374,8 @@ Le fichier vue *Pages/Create.cshtml* mis à jour :
 
 Le [projet de démarrage de pages Razor](#rpvs17) contient *Pages/_ValidationScriptsPartial.cshtml*, qui connecte la validation côté client.
 
+Pour plus d'informations sur les affichages partiels, consultez <xref:mvc/views/partial>.
+
 <a name="url_gen"></a>
 
 ## <a name="url-generation-for-pages"></a>Génération d’URL pour les pages
@@ -417,6 +417,7 @@ La génération d’URL pour les pages prend en charge les noms relatifs. Le tab
 La liaison de nom relatif est utile lors de la création de sites avec une structure complexe. Si vous utilisez des noms relatifs pour établir une liaison entre les pages d’un dossier, vous pouvez renommer ce dossier. Tous les liens fonctionneront encore (car ils n’incluent pas le nom du dossier).
 
 ::: moniker range=">= aspnetcore-2.1"
+
 ## <a name="viewdata-attribute"></a>Attribut ViewData
 
 Les données peuvent être passées à une page avec [ViewDataAttribute](/dotnet/api/microsoft.aspnetcore.mvc.viewdataattribute). Les valeurs des propriétés définies sur des contrôleurs ou sur des modèles de page Razor décorés avec `[ViewData]` sont stockées et chargées à partir de [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary).
@@ -450,6 +451,7 @@ Dans la disposition, le titre est lu à partir du dictionnaire ViewData :
     <title>@ViewData["Title"] - WebApplication</title>
     ...
 ```
+
 ::: moniker-end
 
 ## <a name="tempdata"></a>TempData
@@ -558,11 +560,12 @@ services.AddMvc()
     .WithRazorPagesRoot("/path/to/razor/pages");
 ```
 
-## <a name="see-also"></a>Voir aussi
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Présentation d’ASP.NET Core](xref:index)
-* [Syntaxe Razor](xref:mvc/views/razor)
-* [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
-* [Conventions d’autorisation des pages Razor](xref:security/authorization/razor-pages-authorization)
-* [Itinéraire personnalisé des pages Razor et fournisseurs de modèle de page](xref:razor-pages/razor-pages-conventions)
-* [Tests unitaires Pages Razor](xref:test/razor-pages-tests)
+* <xref:index>
+* <xref:mvc/views/razor>
+* <xref:tutorials/razor-pages/razor-pages-start>
+* <xref:security/authorization/razor-pages-authorization>
+* <xref:razor-pages/razor-pages-conventions>
+* <xref:test/razor-pages-tests>
+* <xref:mvc/views/partial>

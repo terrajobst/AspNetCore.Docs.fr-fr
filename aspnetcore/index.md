@@ -5,12 +5,12 @@ description: Découvrez une introduction à ASP.NET Core, framework multiplatefo
 ms.author: riande
 ms.date: 9/28/2018
 uid: index
-ms.openlocfilehash: 69ab702e9d9f8d746b7bc546d4f2bbb831ff59c7
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 3bb86fa255548ff66592ac14c1020e0c6b47959c
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911687"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391155"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -43,7 +43,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 
 ## <a name="client-side-development"></a>Développement côté client
 
-ASP.NET Core s’intègre parfaitement avec les frameworks et les bibliothèques populaires côté client, notamment [Angular](xref:spa/angular), [React](xref:spa/react) et [Bootstrap](xref:client-side/bootstrap). Pour plus d’informations, consultez [Développement côté client](xref:client-side/index).
+ASP.NET Core s’intègre parfaitement avec les frameworks et les bibliothèques populaires côté client, notamment [Angular](xref:spa/angular), [React](xref:spa/react) et [Bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez [Développement côté client](xref:client-side/index).
 
 <a name="target-framework"></a>
 

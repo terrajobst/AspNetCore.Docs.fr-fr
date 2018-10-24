@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment utiliser l’API de configuration pour configurer une application ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/13/2018
+ms.date: 10/09/2018
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 288f8ba5b45cdecd8c9eae060fee2c2c25dec7f9
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 35f283becd156da22a4d9d2034055ee79b75ffda
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893244"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326171"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -191,7 +191,8 @@ Au démarrage, les sources de configuration sont lues dans l’ordre où leurs f
 
 Une séquence type des fournisseurs de configuration est la suivante :
 
-1. Fichiers (*appsettings.json*, *appsettings.&lt; Environnement&gt;.json*, où `<Environment>` est l’environnement d’hébergement actuel de l’application)
+1. Fichiers (*appsettings.json*, *appsettings.{Environment}.json*, où `{Environment}` est l'environnement d’hébergement actuel de l'application)
+1. [Azure Key Vault](xref:security/key-vault-configuration)
 1. [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement uniquement)
 1. Variables d’environnement
 1. Arguments de ligne de commande
@@ -201,12 +202,6 @@ Une pratique courante consiste à placer le Fournisseur de configuration de lign
 ::: moniker range=">= aspnetcore-2.0"
 
 Cette séquence de fournisseurs est mise en place lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fundamentals/host/web-host#set-up-a-host).
-
-Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte web pour spécifier les fournisseurs de configuration de l’application :
-
-[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
-
-`ConfigureAppConfiguration` *est disponible dans ASP.NET Core 2.1 et versions ultérieures.*
 
 ::: moniker-end
 
@@ -247,19 +242,29 @@ Dans l’exemple précédent, le nom de l’environnement (`env.EnvironmentName`
 
 ::: moniker-end
 
+::: moniker range=">= aspnetcore-2.1"
+
+## <a name="configureappconfiguration"></a>ConfigureAppConfiguration
+
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l'hôte web pour spécifier les fournisseurs de configuration de l'application en plus de ceux ajoutés automatiquement par <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> :
+
+[!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
+
+::: moniker-end
+
 ## <a name="command-line-configuration-provider"></a>Fournisseur de configuration de ligne de commande
 
 <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> charge la configuration à partir des paires clé-valeur de l’argument de ligne de commande lors de l’exécution.
 
-::: moniker range=">= aspnetcore-2.0"
+Pour activer la configuration en ligne de commande, la méthode d’extension <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> est appelée sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
 
-Pour activer la configuration en ligne de commande, appelez la méthode d’extension <xref:Microsoft.Extensions.Configuration.CommandLineConfigurationExtensions.AddCommandLine*> sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
+::: moniker range=">= aspnetcore-2.0"
 
 `AddCommandLine` est appelé automatiquement lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fundamentals/host/web-host#set-up-a-host).
 
 `CreateDefaultBuilder` charge également :
 
-* Configuration facultative à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+* Configuration facultative à partir d’*appsettings.json* et d’*appsettings.{Environment}.json*.
 * [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement).
 * Variables d'environnement.
 
@@ -267,7 +272,66 @@ Pour activer la configuration en ligne de commande, appelez la méthode d’exte
 
 `CreateDefaultBuilder` agit lors de la construction de l’hôte. Par conséquent, la configuration de ligne de commande activée par `CreateDefaultBuilder` peut affecter la façon dont l’hôte est configuré.
 
-Lors de la génération de l’hôte manuellement sans appeler `CreateDefaultBuilder`, appelez la méthode d’extension `AddCommandLine` sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> :
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application.
+
+`AddCommandLine` a déjà été appelé par `CreateDefaultBuilder`. Si vous devez fournir la configuration de l'application tout en étant capable de remplacer cette configuration par des arguments de ligne de commande, appelez les fournisseurs supplémentaires de l'application dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> et appelez `AddCommandLine` en dernier.
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                // Call other providers here and call AddCommandLine last.
+                config.AddCommandLine(args)
+            })
+            .UseStartup<Startup>();
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>.
+
+`AddCommandLine` a déjà été appelé par `CreateDefaultBuilder` lorsque `UseConfiguration` est appelé. Si vous devez fournir la configuration de l'application tout en étant capable de remplacer cette configuration par des arguments de ligne de commande, appelez les fournisseurs supplémentaires de l'application sur un `ConfigurationBuilder` et appelez `AddCommandLine` en dernier.
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            // Call other providers here and call AddCommandLine last.
+            .AddCommandLine(args)
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ::: moniker-end
 
@@ -283,6 +347,8 @@ Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>
 
 ```csharp
 var config = new ConfigurationBuilder()
+    // Call additional providers here as needed.
+    // Call AddCommandLine last to allow arguments to override other configuration.
     .AddCommandLine(args)
     .Build();
 
@@ -342,7 +408,41 @@ Règles des clés du dictionnaire de correspondances de commutateur :
 * Les commutateurs doivent commencer par un tiret (`-`) ou un double tiret (`--`).
 * Le dictionnaire de correspondances de commutateur ne doit pas contenir de clés en double.
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-2.1"
+
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application :
+
+```csharp
+public class Program
+{
+    public static readonly Dictionary<string, string> _switchMappings = 
+        new Dictionary<string, string>
+        {
+            { "-CLKey1", "CommandLineKey1" },
+            { "-CLKey2", "CommandLineKey2" }
+        };
+
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    // Do not pass the args to CreateDefaultBuilder
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder()
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.AddCommandLine(args, _switchMappings)
+            })
+            .UseStartup<Startup>();
+}
+```
+
+Comme indiqué dans l’exemple précédent, l’appel à `CreateDefaultBuilder` ne doit pas passer des arguments lorsque des correspondances de commutateur sont utilisées. L’appel `AddCommandLine` de la méthode `CreateDefaultBuilder` n’inclut pas de commutateurs mappés et il n’existe aucun moyen de transmettre le dictionnaire de correspondance de commutateur à `CreateDefaultBuilder`. Si les arguments incluent un commutateur mappé et sont passés à `CreateDefaultBuilder`, son fournisseur `AddCommandLine` ne parvient pas à s’initialiser avec un <xref:System.FormatException>. La solution ne consiste pas à transmettre les arguments à `CreateDefaultBuilder`, mais plutôt à permettre à la méthode `AddCommandLine` de la méthode `ConfigurationBuilder` de traiter les arguments et le dictionnaire de mappage de commutateur.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
 
 ```csharp
 public class Program
@@ -364,6 +464,7 @@ public class Program
             .AddCommandLine(args, switchMappings)
             .Build();
 
+        // Do not pass the args to CreateDefaultBuilder
         return WebHost.CreateDefaultBuilder()
             .UseConfiguration(config)
             .UseStartup<Startup>();
@@ -371,7 +472,7 @@ public class Program
 }
 ```
 
-Comme indiqué dans l’exemple précédent, l’appel à `CreateDefaultBuilder` ne doit pas passer des arguments lorsque des correspondances de commutateur sont utilisées. L’appel `AddCommandLine` de la méthode `CreateDefaultBuilder` n’inclut pas de commutateurs mappés et il n’existe aucun moyen de transmettre le dictionnaire de correspondance de commutateur à `CreateDefaultBuilder`. Si les arguments incluent un commutateur mappé et sont passés à `CreateDefaultBuilder`, son fournisseur `AddCommandLine` ne parvient pas à s’initialiser avec un <xref:System.FormatException>. La solution ne consiste pas à transmettre les arguments à `CreateDefaultBuilder` mais de permettre plutôt à la méthode `AddCommandLine` de la méthode `ConfigurationBuilder` de traiter les arguments et le dictionnaire de correspondance de commutateur.
+Comme indiqué dans l’exemple précédent, l’appel à `CreateDefaultBuilder` ne doit pas passer des arguments lorsque des correspondances de commutateur sont utilisées. L’appel `AddCommandLine` de la méthode `CreateDefaultBuilder` n’inclut pas de commutateurs mappés et il n’existe aucun moyen de transmettre le dictionnaire de correspondance de commutateur à `CreateDefaultBuilder`. Si les arguments incluent un commutateur mappé et sont passés à `CreateDefaultBuilder`, son fournisseur `AddCommandLine` ne parvient pas à s’initialiser avec un <xref:System.FormatException>. La solution ne consiste pas à transmettre les arguments à `CreateDefaultBuilder`, mais plutôt à permettre à la méthode `AddCommandLine` de la méthode `ConfigurationBuilder` de traiter les arguments et le dictionnaire de mappage de commutateur.
 
 ::: moniker-end
 
@@ -441,19 +542,82 @@ Lors de l’utilisation de clés hiérarchiques dans les variables d’environne
 
 `CreateDefaultBuilder` charge également :
 
-* Configuration facultative à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+* Configuration facultative à partir d’*appsettings.json* et d’*appsettings.{Environment}.json*.
 * [Secrets utilisateur (Secret Manager)](xref:security/app-secrets) (dans l’environnement de développement).
 * Arguments de ligne de commande
 
 Le Fournisseur de configuration de variable d’environnement est appelé une fois que la configuration est établie à partir des secrets utilisateur et des fichiers *appsettings*. Le fait d’appeler le fournisseur ainsi permet de lire les variables d’environnement pendant l’exécution pour substituer la configuration définie par les secrets utilisateur et les fichiers *appsettings*.
 
-Vous pouvez aussi appeler directement la méthode d’extension `AddEnvironmentVariables` sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> :
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application.
+
+`AddEnvironmentVariables` pour les variables d'environnement précédées par `ASPNETCORE_` a déjà été appelé par `CreateDefaultBuilder`. Si vous devez fournir la configuration de l'application à partir de variables d'environnement supplémentaires, appelez les fournisseurs supplémentaires de l'application dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> et appelez `AddEnvironmentVariables` avec le préfixe.
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                // Call additional providers here as needed.
+                // Call AddEnvironmentVariables last if you need to allow environment
+                // variables to override values from other providers.
+                config.AddEnvironmentVariables(prefix: "PREFIX_")
+            })
+            .UseStartup<Startup>();
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Appelez la méthode d’extension `AddEnvironmentVariables` sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>. Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*>.
+
+`AddEnvironmentVariables` pour les variables d'environnement précédées par `ASPNETCORE_` a déjà été appelé par `CreateDefaultBuilder`. Si vous devez fournir la configuration de l'application à partir de variables d'environnement supplémentaires, appelez les fournisseurs supplémentaires de l'application dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> et appelez `AddEnvironmentVariables` avec le préfixe.
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            // Call additional providers here as needed.
+            // Call AddEnvironmentVariables last if you need to allow environment
+            // variables to override values from other providers.
+            .AddEnvironmentVariables(prefix: "PREFIX_")
+            .Build();
+
+        return WebHost.CreateDefaultBuilder(args)
+            .UseConfiguration(config)
+            .UseStartup<Startup>();
+    }
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> :
 
 ::: moniker-end
 
@@ -575,9 +739,36 @@ Les surcharges permettent de spécifier :
 * Si la configuration est rechargée quand le fichier est modifié.
 * Le <xref:Microsoft.Extensions.FileProviders.IFileProvider> utilisé pour accéder au fichier.
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-2.1"
 
-Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.SetBasePath(Directory.GetCurrentDirectory());
+                config.AddIniFile("config.ini", optional: true, reloadOnChange: true)
+            })
+            .UseStartup<Startup>();
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ```csharp
 public class Program
@@ -601,13 +792,13 @@ public class Program
 }
 ```
 
-Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> :
 
 ::: moniker-end
 
@@ -665,7 +856,7 @@ Les surcharges permettent de spécifier :
 `AddJsonFile` est appelé automatiquement deux fois lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. La méthode est appelée pour charger la configuration à partir de :
 
 * *appSettings.JSON* &ndash; Ce fichier est lu en premier. La version de l’environnement du fichier peut remplacer les valeurs fournies par le fichier *appsettings.json*.
-* *appsettings.&lt;Environment&gt;.json* &ndash; La version de l’environnement du fichier est chargée en fonction de [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).
+* *appsettings.{Environment}.json* &ndash; La version de l’environnement du fichier est chargée à partir du fichier [IHostingEnvironment.EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*).
 
 Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fundamentals/host/web-host#set-up-a-host).
 
@@ -677,9 +868,40 @@ Pour plus d’informations, consultez [Hôte web : configurer un hôte](xref:fun
 
 Le Fournisseur de configuration JSON est établi en premier. Par conséquent, les secrets utilisateur, les variables d’environnement et les arguments de ligne de commande remplacent la configuration définie par les fichiers *appsettings*.
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application pour les fichiers autres qu’*appsettings.json* et *appsettings. {Environment} .json* :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.SetBasePath(Directory.GetCurrentDirectory());
+                config.AddJsonFile("config.json", optional: true, reloadOnChange: true)
+            })
+            .UseStartup<Startup>();
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
 Vous pouvez aussi appeler directement la méthode d’extension `AddJsonFile` sur une instance de <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder>.
 
-Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+Lors de l’appel de `CreateDefaultBuilder`, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ```csharp
 public class Program
@@ -703,13 +925,13 @@ public class Program
 }
 ```
 
-Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> :
 
 ::: moniker-end
 
@@ -729,13 +951,13 @@ var host = new WebHostBuilder()
 
 ::: moniker range=">= aspnetcore-2.0"
 
-L’exemple d’application 2.x tire parti de la méthode pratique statique `CreateDefaultBuilder` pour générer l’hôte, qui inclut deux appels à `AddJsonFile`. La configuration est chargée à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+L’exemple d’application 2.x tire parti de la méthode pratique statique `CreateDefaultBuilder` pour générer l’hôte, qui inclut deux appels à `AddJsonFile`. La configuration est chargée à partir d’*appsettings.json* et d’*appsettings{Environment}.json*.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-L’exemple d’application 1.x appelle `AddJsonFile` deux fois sur un `ConfigurationBuilder`. La configuration est chargée à partir *appsettings.json* et *appsettings.&lt;Environment&gt;.json*.
+L’exemple d’application 1.x appelle `AddJsonFile` deux fois sur un `ConfigurationBuilder`. La configuration est chargée à partir d’*appsettings.json* et d’*appsettings{Environment}.json*.
 
 ::: moniker-end
 
@@ -763,9 +985,36 @@ Les surcharges permettent de spécifier :
 
 Le nœud racine du fichier de configuration est ignoré lorsque les paires clé-valeur de la configuration sont créées. Ne spécifiez pas une définition de type de document (DTD) ou un espace de noms dans le fichier.
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-2.1"
 
-Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application :
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.SetBasePath(Directory.GetCurrentDirectory());
+                config.AddXmlFile("config.xml", optional: true, reloadOnChange: true)
+            })
+            .UseStartup<Startup>();
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ```csharp
 public class Program
@@ -789,13 +1038,13 @@ public class Program
 }
 ```
 
-Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> :
 
 ::: moniker-end
 
@@ -887,7 +1136,7 @@ Les surcharges permettent de spécifier :
 * Un délégué `Action<KeyPerFileConfigurationSource>` qui configure la source.
 * Si le répertoire est facultatif et le chemin d’accès au répertoire.
 
-Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application :
 
 ```csharp
 public class Program
@@ -897,21 +1146,18 @@ public class Program
         CreateWebHostBuilder(args).Build().Run();
     }
 
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-    {
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "path/to/files");
-        var config = new ConfigurationBuilder()
-            .AddKeyPerFile(directoryPath: path, optional: true)
-            .Build();
-
-        return WebHost.CreateDefaultBuilder(args)
-            .UseConfiguration(config)
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.SetBasePath(Directory.GetCurrentDirectory());
+                config.AddKeyPerFile(directoryPath: path, optional: true)
+            })
             .UseStartup<Startup>();
-    }
 }
 ```
 
-Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ```csharp
 var path = Path.Combine(Directory.GetCurrentDirectory(), "path/to/files");
@@ -935,9 +1181,42 @@ Pour activer la configuration de la collection en mémoire, appelez la méthode 
 
 Le fournisseur de configuration peut être initialisé avec un `IEnumerable<KeyValuePair<String,String>>`.
 
-::: moniker range=">= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-2.1"
 
-Lors de l’appel de `CreateDefaultBuilder`, appelez `UseConfiguration` avec la configuration :
+Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> lors de la création de l’hôte pour spécifier la configuration de l’application :
+
+```csharp
+public class Program
+{
+    public static readonly Dictionary<string, string> _dict = 
+        new Dictionary<string, string>
+        {
+            {"MemoryCollectionKey1", "value1"},
+            {"MemoryCollectionKey2", "value2"}
+        };
+
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }
+
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.AddInMemoryCollection(_dict)
+            })
+            .UseStartup<Startup>();
+}
+```
+
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Lors de l’appel de `CreateDefaultBuilder`, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ```csharp
 public class Program
@@ -966,13 +1245,13 @@ public class Program
 }
 ```
 
-Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez `UseConfiguration` avec la configuration :
+Lorsque vous créez un <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> directement, appelez <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> avec la configuration :
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode `UseConfiguration` :
+Appliquez la configuration à <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec la méthode <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> :
 
 ::: moniker-end
 
@@ -1317,7 +1596,7 @@ L’élément de configuration manquant pour l’index &num;3 peut être fourni 
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Dans `ConfigureAppConfiguration` :
+Dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>:
 
 ```csharp
 config.AddJsonFile("missing_value.json", optional: false, reloadOnChange: false);
