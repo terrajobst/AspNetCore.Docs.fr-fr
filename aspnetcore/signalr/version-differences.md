@@ -1,4 +1,4 @@
-﻿---
+---
 title: Différences entre SignalR et ASP.NET Core SignalR
 author: tdykstra
 description: Différences entre SignalR et ASP.NET Core SignalR
@@ -31,7 +31,7 @@ ASP.NET Core SignalR n’est pas compatible avec les clients ou serveurs pour AS
 
 ### <a name="automatic-reconnects"></a>Reconnexions automatiques
 
-Les reconnexions automatiques ne sont plus prises en charge. Auparavant, SignalR tentait de se reconnecter au serveur si la connexion était supprimée. Maintenant, si le client est déconnecté, l’utilisateur doit démarrer explicitement une nouvelle connexion s’il souhaite se reconnecter.
+Reconnexions automatique ne sont pas pris en charge dans ASP.NET Core SignalR. Si le client est déconnecté, l’utilisateur doit démarrer explicitement une nouvelle connexion s’ils souhaitent se reconnecter. Dans ASP.NET SignalR, SignalR tente de se reconnecter au serveur si la connexion est abandonnée. 
 
 ### <a name="protocol-support"></a>Prise en charge de protocole
 
