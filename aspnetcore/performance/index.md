@@ -1,21 +1,24 @@
 ---
 title: Performances dans ASP.NET Core
-author: ardalis
+author: guardrex
 description: Découvrez les rubriques relatives aux performances des applications ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 09/16/2018
 uid: performance/index
-ms.openlocfilehash: e168432280f40f9d3b918a11deb55959c9ffeb70
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: da400078f4e8899ce41ff395c86fdea14bc3c376
+ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47028086"
 ---
-# <a name="performance-in-aspnet-core"></a><span data-ttu-id="d7af2-103">Performances dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="d7af2-103">Performance in ASP.NET Core</span></span>
+# <a name="performance-in-aspnet-core"></a><span data-ttu-id="84dd5-103">Performances dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="84dd5-103">Performance in ASP.NET Core</span></span>
 
-* [<span data-ttu-id="d7af2-104">Mettre en cache des réponses</span><span class="sxs-lookup"><span data-stu-id="d7af2-104">Cache responses</span></span>](caching/index.md)
-  * [<span data-ttu-id="d7af2-105">Mettre en cache en mémoire</span><span class="sxs-lookup"><span data-stu-id="d7af2-105">Cache in-memory</span></span>](caching/memory.md)
-  * [<span data-ttu-id="d7af2-106">Utiliser un cache distribué</span><span class="sxs-lookup"><span data-stu-id="d7af2-106">Work with a distributed cache</span></span>](caching/distributed.md)
-  * [<span data-ttu-id="d7af2-107">Mise en cache des réponses</span><span class="sxs-lookup"><span data-stu-id="d7af2-107">Response caching</span></span>](caching/response.md)
-* [<span data-ttu-id="d7af2-108">Intergiciel (middleware) de compression des réponses</span><span class="sxs-lookup"><span data-stu-id="d7af2-108">Response compression middleware</span></span>](response-compression.md)
+<span data-ttu-id="84dd5-104">Les sections de rubrique suivantes concernent des scénarios de performance dans ASP.NET Core :</span><span class="sxs-lookup"><span data-stu-id="84dd5-104">The following topic areas cover performance scenarios in ASP.NET Core:</span></span>
+
+[<span data-ttu-id="84dd5-105">Mettre en cache des réponses</span><span class="sxs-lookup"><span data-stu-id="84dd5-105">Cache responses</span></span>](xref:performance/caching/index)  
+<span data-ttu-id="84dd5-106">Découvrez comment mettre en cache les données et les réponses dans ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="84dd5-106">Learn how to cache data and responses in ASP.NET Core.</span></span>
+
+[<span data-ttu-id="84dd5-107">Compression des réponses</span><span class="sxs-lookup"><span data-stu-id="84dd5-107">Response compression</span></span>](xref:performance/response-compression)  
+<span data-ttu-id="84dd5-108">Découvrez ce qu’est la compression des réponses et comment utiliser le middleware de compression des réponses dans les applications ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="84dd5-108">Learn about response compression and how to use Response Compression Middleware in ASP.NET Core apps.</span></span>

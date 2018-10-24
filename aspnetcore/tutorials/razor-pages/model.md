@@ -5,127 +5,125 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: de82738509bb009f030a02e28904e3155088fa6a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 5cd1e08ac52d352be23a280419d7456f685a03ad
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011356"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045599"
 ---
-# <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a><span data-ttu-id="8ecc3-103">Ajouter un modèle à une application de pages Razor dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="8ecc3-103">Add a model to a Razor Pages app in ASP.NET Core</span></span>
+# <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a><span data-ttu-id="cef10-103">Ajouter un modèle à une application de pages Razor dans ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="cef10-103">Add a model to a Razor Pages app in ASP.NET Core</span></span>
 
 ::: moniker range=">= aspnetcore-2.1"
 
 [!INCLUDE [model1](~/includes/RP/model1.md)]
 
-## <a name="add-a-data-model"></a><span data-ttu-id="8ecc3-104">Ajouter un modèle de données</span><span class="sxs-lookup"><span data-stu-id="8ecc3-104">Add a data model</span></span>
+## <a name="add-a-data-model"></a><span data-ttu-id="cef10-104">Ajouter un modèle de données</span><span class="sxs-lookup"><span data-stu-id="cef10-104">Add a data model</span></span>
 
-<span data-ttu-id="8ecc3-105">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie** > **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-105">In Solution Explorer, right-click the **RazorPagesMovie** project > **Add** > **New Folder**.</span></span> <span data-ttu-id="8ecc3-106">Nommez le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-106">Name the folder *Models*.</span></span>
+<span data-ttu-id="cef10-105">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie** > **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="cef10-105">In Solution Explorer, right-click the **RazorPagesMovie** project > **Add** > **New Folder**.</span></span> <span data-ttu-id="cef10-106">Nommez le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="cef10-106">Name the folder *Models*.</span></span>
 
-<span data-ttu-id="8ecc3-107">Cliquez avec le bouton droit sur le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-107">Right click the *Models* folder.</span></span> <span data-ttu-id="8ecc3-108">Sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-108">Select **Add** > **Class**.</span></span> <span data-ttu-id="8ecc3-109">Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-109">Name the class **Movie** and add the following properties:</span></span>
-
-<span data-ttu-id="8ecc3-110">Remplacez le contenu de la classe `Movie` par le code suivant :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-110">Replace the contents of the `Movie` class with the following code:</span></span>
+<span data-ttu-id="cef10-107">Cliquez avec le bouton droit sur le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="cef10-107">Right click the *Models* folder.</span></span> <span data-ttu-id="cef10-108">Sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="cef10-108">Select **Add** > **Class**.</span></span> <span data-ttu-id="cef10-109">Nommez la classe **Movie** et remplacez le contenu de la classe `Movie` par le code suivant :</span><span class="sxs-lookup"><span data-stu-id="cef10-109">Name the class **Movie** and replace the contents of the `Movie` class with the following code:</span></span>
 
 [!code-csharp[Main](razor-pages-start/sample/RazorPagesMovie21/Models/Movie1.cs?name=snippet)]
 
-## <a name="scaffold-the-movie-model"></a><span data-ttu-id="8ecc3-111">Générer automatiquement le modèle de film</span><span class="sxs-lookup"><span data-stu-id="8ecc3-111">Scaffold the movie model</span></span>
+## <a name="scaffold-the-movie-model"></a><span data-ttu-id="cef10-110">Générer automatiquement le modèle de film</span><span class="sxs-lookup"><span data-stu-id="cef10-110">Scaffold the movie model</span></span>
 
-<span data-ttu-id="8ecc3-112">Dans cette section, le modèle de film est généré automatiquement.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-112">In this section, the movie model is scaffolded.</span></span> <span data-ttu-id="8ecc3-113">Autrement dit, l’outil de génération de modèles automatique génère des pages pour les opérations de création, de lecture, de mise à jour et de suppression (CRUD) pour le modèle de film.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-113">That is, the scaffolding tool produces pages for Create, Read, Update, and Delete (CRUD) operations for the movie model.</span></span>
+<span data-ttu-id="cef10-111">Dans cette section, le modèle de film est généré automatiquement.</span><span class="sxs-lookup"><span data-stu-id="cef10-111">In this section, the movie model is scaffolded.</span></span> <span data-ttu-id="cef10-112">Autrement dit, l’outil de génération de modèles automatique génère des pages pour les opérations de création, de lecture, de mise à jour et de suppression (CRUD) pour le modèle de film.</span><span class="sxs-lookup"><span data-stu-id="cef10-112">That is, the scaffolding tool produces pages for Create, Read, Update, and Delete (CRUD) operations for the movie model.</span></span>
 
-<span data-ttu-id="8ecc3-114">Créer un dossier *Pages/Movies* :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-114">Create a *Pages/Movies* folder:</span></span>
+<span data-ttu-id="cef10-113">Créer un dossier *Pages/Movies* :</span><span class="sxs-lookup"><span data-stu-id="cef10-113">Create a *Pages/Movies* folder:</span></span>
 
-* <span data-ttu-id="8ecc3-115">Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages*, puis choisissez **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-115">In **Solution Explorer**, right click on the *Pages* folder > **Add** > **New Folder**.</span></span>
-* <span data-ttu-id="8ecc3-116">Nommez le dossier *Movies*.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-116">Name the folder *Movies*</span></span>
+* <span data-ttu-id="cef10-114">Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages*, puis choisissez **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="cef10-114">In **Solution Explorer**, right click on the *Pages* folder > **Add** > **New Folder**.</span></span>
+* <span data-ttu-id="cef10-115">Nommez le dossier *Movies*.</span><span class="sxs-lookup"><span data-stu-id="cef10-115">Name the folder *Movies*</span></span>
 
-<span data-ttu-id="8ecc3-117">Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Movies*, puis choisissez **Ajouter** > **Nouvel élément généré automatiquement**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-117">In **Solution Explorer**, right click on the *Pages/Movies* folder > **Add** > **New Scaffolded Item**.</span></span>
+<span data-ttu-id="cef10-116">Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Movies*, puis choisissez **Ajouter** > **Nouvel élément généré automatiquement**.</span><span class="sxs-lookup"><span data-stu-id="cef10-116">In **Solution Explorer**, right click on the *Pages/Movies* folder > **Add** > **New Scaffolded Item**.</span></span>
 
 ![Image illustrant les instructions précédentes.](model/_static/sca.png)
 
-<span data-ttu-id="8ecc3-119">Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Pages Razor avec Entity Framework (CRUD)** > **AJOUTER**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-119">In the **Add Scaffold** dialog, select **Razor Pages using Entity Framework (CRUD)** > **ADD**.</span></span>
+<span data-ttu-id="cef10-118">Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Razor Pages avec Entity Framework (CRUD)** > **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="cef10-118">In the **Add Scaffold** dialog, select **Razor Pages using Entity Framework (CRUD)** > **Add**.</span></span>
 
 ![Image illustrant les instructions précédentes.](model/_static/add_scaffold.png)
 
-<span data-ttu-id="8ecc3-121">Renseignez la boîte de dialogue **Pages Razor avec Entity Framework (CRUD)** :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-121">Complete the **Add Razor Pages using Entity Framework (CRUD)** dialog:</span></span>
+<span data-ttu-id="cef10-120">Renseignez la boîte de dialogue **Pages Razor avec Entity Framework (CRUD)** :</span><span class="sxs-lookup"><span data-stu-id="cef10-120">Complete the **Add Razor Pages using Entity Framework (CRUD)** dialog:</span></span>
 
-* <span data-ttu-id="8ecc3-122">Dans la liste déroulante **Classe de modèle**, sélectionnez **Film (RazorPagesMovie.Models)**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-122">In the **Model class** drop down, select **Movie (RazorPagesMovie.Models)**.</span></span>
-* <span data-ttu-id="8ecc3-123">Dans la ligne **Classe du contexte de données**, sélectionnez le signe (plus) **+** et acceptez le nom généré **RazorPagesMovie.Models.RazorPagesMovieContext**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-123">In the **Data context class** row, select the **+** (plus) sign and accept the generated name **RazorPagesMovie.Models.RazorPagesMovieContext**.</span></span>
-* <span data-ttu-id="8ecc3-124">Dans la liste déroulante **Classe du contexte de données**, sélectionnez **RazorPagesMovie.Models.RazorPagesMovieContext**</span><span class="sxs-lookup"><span data-stu-id="8ecc3-124">In the **Data context class** drop down, select **RazorPagesMovie.Models.RazorPagesMovieContext**</span></span>
-* <span data-ttu-id="8ecc3-125">Sélectionnez **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-125">Select **Add**.</span></span>
+* <span data-ttu-id="cef10-121">Dans la liste déroulante **Classe de modèle**, sélectionnez **Film (RazorPagesMovie.Models)**.</span><span class="sxs-lookup"><span data-stu-id="cef10-121">In the **Model class** drop down, select **Movie (RazorPagesMovie.Models)**.</span></span>
+* <span data-ttu-id="cef10-122">Dans la ligne **Classe du contexte de données**, sélectionnez le signe (plus) **+** et acceptez le nom généré **RazorPagesMovie.Models.RazorPagesMovieContext**.</span><span class="sxs-lookup"><span data-stu-id="cef10-122">In the **Data context class** row, select the **+** (plus) sign and accept the generated name **RazorPagesMovie.Models.RazorPagesMovieContext**.</span></span>
+* <span data-ttu-id="cef10-123">Dans la liste déroulante **Classe du contexte de données**, sélectionnez **RazorPagesMovie.Models.RazorPagesMovieContext**</span><span class="sxs-lookup"><span data-stu-id="cef10-123">In the **Data context class** drop down, select **RazorPagesMovie.Models.RazorPagesMovieContext**</span></span>
+* <span data-ttu-id="cef10-124">Sélectionnez **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="cef10-124">Select **Add**.</span></span>
 
 ![Image illustrant les instructions précédentes.](model/_static/arp.png)
 
-<span data-ttu-id="8ecc3-127">Le processus de génération de modèles automatique a créé et changé les fichiers suivants :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-127">The scaffold process created and changed the following files:</span></span>
+<span data-ttu-id="cef10-126">Le processus de génération de modèles automatique a créé et changé les fichiers suivants :</span><span class="sxs-lookup"><span data-stu-id="cef10-126">The scaffold process created and changed the following files:</span></span>
 
-### <a name="files-created"></a><span data-ttu-id="8ecc3-128">Fichiers créés</span><span class="sxs-lookup"><span data-stu-id="8ecc3-128">Files created</span></span>
+### <a name="files-created"></a><span data-ttu-id="cef10-127">Fichiers créés</span><span class="sxs-lookup"><span data-stu-id="cef10-127">Files created</span></span>
 
-* <span data-ttu-id="8ecc3-129">*Pages/Movies* Create, Delete, Details, Edit, Index.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-129">*Pages/Movies* Create, Delete, Details, Edit, Index.</span></span> <span data-ttu-id="8ecc3-130">Ces pages sont détaillées dans le tutoriel suivant.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-130">These pages are detailed in the next tutorial.</span></span>
-* <span data-ttu-id="8ecc3-131">*Data/RazorPagesMovieContext.cs*</span><span class="sxs-lookup"><span data-stu-id="8ecc3-131">*Data/RazorPagesMovieContext.cs*</span></span>
+* <span data-ttu-id="cef10-128">*Pages/Movies* : Create, Delete, Details, Edit, Index.</span><span class="sxs-lookup"><span data-stu-id="cef10-128">*Pages/Movies*: Create, Delete, Details, Edit, Index.</span></span> <span data-ttu-id="cef10-129">Ces pages sont détaillées dans le tutoriel suivant.</span><span class="sxs-lookup"><span data-stu-id="cef10-129">These pages are detailed in the next tutorial.</span></span>
+* <span data-ttu-id="cef10-130">*Data/RazorPagesMovieContext.cs*</span><span class="sxs-lookup"><span data-stu-id="cef10-130">*Data/RazorPagesMovieContext.cs*</span></span>
 
-### <a name="files-updates"></a><span data-ttu-id="8ecc3-132">Mises à jour de fichiers</span><span class="sxs-lookup"><span data-stu-id="8ecc3-132">Files updates</span></span>
+### <a name="file-updates"></a><span data-ttu-id="cef10-131">Mises à jour du fichier</span><span class="sxs-lookup"><span data-stu-id="cef10-131">File updates</span></span>
 
-* <span data-ttu-id="8ecc3-133">*Startup.cs* : Les changements apportés à ce fichier sont détaillés dans la section suivante.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-133">*Startup.cs*: Changes to this file are detailed in the next section.</span></span>
-* <span data-ttu-id="8ecc3-134">*appSettings.JSON* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-134">*appsettings.json*: The connection string used to connect to a local database is added.</span></span>
+* <span data-ttu-id="cef10-132">*Startup.cs* : Les changements apportés à ce fichier sont détaillés dans la section suivante.</span><span class="sxs-lookup"><span data-stu-id="cef10-132">*Startup.cs*: Changes to this file are detailed in the next section.</span></span>
+* <span data-ttu-id="cef10-133">*appSettings.JSON* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.</span><span class="sxs-lookup"><span data-stu-id="cef10-133">*appsettings.json*: The connection string used to connect to a local database is added.</span></span>
 
-## <a name="examine-the-context-registered-with-dependency-injection"></a><span data-ttu-id="8ecc3-135">Examiner le contexte inscrit avec l’injection de dépendances</span><span class="sxs-lookup"><span data-stu-id="8ecc3-135">Examine the context registered with dependency injection</span></span>
+## <a name="examine-the-context-registered-with-dependency-injection"></a><span data-ttu-id="cef10-134">Examiner le contexte inscrit avec l’injection de dépendances</span><span class="sxs-lookup"><span data-stu-id="cef10-134">Examine the context registered with dependency injection</span></span>
 
-<span data-ttu-id="8ecc3-136">ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-136">ASP.NET Core is built with [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="8ecc3-137">Des services (tels que le contexte de base de données EF Core) sont inscrits avec l’injection de dépendances au démarrage de l’application.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-137">Services (such as the EF Core DB context) are registered with dependency injection during application startup.</span></span> <span data-ttu-id="8ecc3-138">Ces services sont affectés aux composants qui les nécessitent (par exemple les Pages Razor) par le biais de paramètres de constructeur.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-138">Components that require these services (such as Razor Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="8ecc3-139">Le code du constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le tutoriel.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-139">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span>
+<span data-ttu-id="cef10-135">ASP.NET Core comprend [l’injection de dépendances](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="cef10-135">ASP.NET Core is built with [dependency injection](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="cef10-136">Des services (tels que le contexte de base de données EF Core) sont inscrits avec l’injection de dépendances au démarrage de l’application.</span><span class="sxs-lookup"><span data-stu-id="cef10-136">Services (such as the EF Core DB context) are registered with dependency injection during application startup.</span></span> <span data-ttu-id="cef10-137">Ces services sont affectés aux composants qui les nécessitent (par exemple les Pages Razor) par le biais de paramètres de constructeur.</span><span class="sxs-lookup"><span data-stu-id="cef10-137">Components that require these services (such as Razor Pages) are provided these services via constructor parameters.</span></span> <span data-ttu-id="cef10-138">Le code du constructeur qui obtient une instance de contexte de base de données est indiqué plus loin dans le tutoriel.</span><span class="sxs-lookup"><span data-stu-id="cef10-138">The constructor code that gets a DB context instance is shown later in the tutorial.</span></span>
 
-<span data-ttu-id="8ecc3-140">L’outil de génération de modèles automatique a créé automatiquement un contexte de base de données et l’a inscrit dans le conteneur d’injection de dépendances.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-140">The scaffolding tool automatically created a DB context and registered it with the dependency injection container.</span></span>
+<span data-ttu-id="cef10-139">L’outil de génération de modèles automatique a créé automatiquement un contexte de base de données et l’a inscrit dans le conteneur d’injection de dépendances.</span><span class="sxs-lookup"><span data-stu-id="cef10-139">The scaffolding tool automatically created a DB context and registered it with the dependency injection container.</span></span>
 
-<span data-ttu-id="8ecc3-141">Examinez la méthode `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-141">Examine the `Startup.ConfigureServices` method.</span></span> <span data-ttu-id="8ecc3-142">La ligne en surbrillance a été ajoutée par l’outil de génération de modèles automatique :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-142">The highlighted line was added by the scaffolder:</span></span>
+<span data-ttu-id="cef10-140">Examinez la méthode `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="cef10-140">Examine the `Startup.ConfigureServices` method.</span></span> <span data-ttu-id="cef10-141">La ligne en surbrillance a été ajoutée par l’outil de génération de modèles automatique :</span><span class="sxs-lookup"><span data-stu-id="cef10-141">The highlighted line was added by the scaffolder:</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Startup.cs?name=snippet_ConfigureServices&highlight=12-13)]
 
-<span data-ttu-id="8ecc3-143">La classe principale qui coordonne les fonctionnalités d’EF Core pour un modèle de données spécifié est la classe de contexte de base de données.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-143">The main class that coordinates EF Core functionality for a given data model is the DB context class.</span></span> <span data-ttu-id="8ecc3-144">Le contexte de données est dérivé de [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-144">The data context is derived from [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext).</span></span> <span data-ttu-id="8ecc3-145">Il spécifie les entités qui sont incluses dans le modèle de données.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-145">The data context specifies which entities are included in the data model.</span></span> <span data-ttu-id="8ecc3-146">Dans ce projet, la classe est nommée `RazorPagesMovieContext`.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-146">In this project, the class is named `RazorPagesMovieContext`.</span></span>
+<span data-ttu-id="cef10-142">La classe principale qui coordonne les fonctionnalités d’EF Core pour un modèle de données spécifié est la classe de contexte de base de données.</span><span class="sxs-lookup"><span data-stu-id="cef10-142">The main class that coordinates EF Core functionality for a given data model is the DB context class.</span></span> <span data-ttu-id="cef10-143">Le contexte de données est dérivé de [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext).</span><span class="sxs-lookup"><span data-stu-id="cef10-143">The data context is derived from [Microsoft.EntityFrameworkCore.DbContext](/dotnet/api/microsoft.entityframeworkcore.dbcontext).</span></span> <span data-ttu-id="cef10-144">Il spécifie les entités qui sont incluses dans le modèle de données.</span><span class="sxs-lookup"><span data-stu-id="cef10-144">The data context specifies which entities are included in the data model.</span></span> <span data-ttu-id="cef10-145">Dans ce projet, la classe est nommée `RazorPagesMovieContext`.</span><span class="sxs-lookup"><span data-stu-id="cef10-145">In this project, the class is named `RazorPagesMovieContext`.</span></span>
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Data/RazorPagesMovieContext.cs)]
 
-<span data-ttu-id="8ecc3-147">Le code précédent crée une propriété [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) pour le jeu d’entités.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-147">The preceding code creates a [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) property for the entity set.</span></span> <span data-ttu-id="8ecc3-148">Dans la terminologie Entity Framework, un jeu d’entités correspond généralement à une table de base de données.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-148">In Entity Framework terminology, an entity set typically corresponds to a database table.</span></span> <span data-ttu-id="8ecc3-149">Une entité correspond à une ligne dans la table.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-149">An entity corresponds to a row in the table.</span></span>
+<span data-ttu-id="cef10-146">Le code précédent crée une propriété [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) pour le jeu d’entités.</span><span class="sxs-lookup"><span data-stu-id="cef10-146">The preceding code creates a [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) property for the entity set.</span></span> <span data-ttu-id="cef10-147">Dans la terminologie Entity Framework, un jeu d’entités correspond généralement à une table de base de données.</span><span class="sxs-lookup"><span data-stu-id="cef10-147">In Entity Framework terminology, an entity set typically corresponds to a database table.</span></span> <span data-ttu-id="cef10-148">Une entité correspond à une ligne dans la table.</span><span class="sxs-lookup"><span data-stu-id="cef10-148">An entity corresponds to a row in the table.</span></span>
 
-<span data-ttu-id="8ecc3-150">Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-150">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="8ecc3-151">Pour le développement local, le [système de configuration ASP.NET Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir du fichier *appsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-151">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.</span></span>
+<span data-ttu-id="cef10-149">Le nom de la chaîne de connexion est transmis au contexte en appelant une méthode sur un objet [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions).</span><span class="sxs-lookup"><span data-stu-id="cef10-149">The name of the connection string is passed in to the context by calling a method on a [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) object.</span></span> <span data-ttu-id="cef10-150">Pour le développement local, le [système de configuration ASP.NET Core](xref:fundamentals/configuration/index) lit la chaîne de connexion à partir du fichier *appsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="cef10-150">For local development, the [ASP.NET Core configuration system](xref:fundamentals/configuration/index) reads the connection string from the *appsettings.json* file.</span></span>
 
 <a name="pmc"></a>
-## <a name="perform-initial-migration"></a><span data-ttu-id="8ecc3-152">Effectuer la migration initiale</span><span class="sxs-lookup"><span data-stu-id="8ecc3-152">Perform initial migration</span></span>
+## <a name="perform-initial-migration"></a><span data-ttu-id="cef10-151">Effectuer la migration initiale</span><span class="sxs-lookup"><span data-stu-id="cef10-151">Perform initial migration</span></span>
 
-<span data-ttu-id="8ecc3-153">Dans cette section, effectuez les tâches suivantes à l’aide de la console du gestionnaire de package :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-153">In this section, you use the Package Manager Console (PMC) to:</span></span>
+<span data-ttu-id="cef10-152">Dans cette section, effectuez les tâches suivantes à l’aide de la console du gestionnaire de package :</span><span class="sxs-lookup"><span data-stu-id="cef10-152">In this section, you use the Package Manager Console (PMC) to:</span></span>
 
-* <span data-ttu-id="8ecc3-154">Ajouter une migration initiale</span><span class="sxs-lookup"><span data-stu-id="8ecc3-154">Add an initial migration.</span></span>
-* <span data-ttu-id="8ecc3-155">Mettez à jour la base de données avec la migration initiale.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-155">Update the database with the initial migration.</span></span>
+* <span data-ttu-id="cef10-153">Ajouter une migration initiale</span><span class="sxs-lookup"><span data-stu-id="cef10-153">Add an initial migration.</span></span>
+* <span data-ttu-id="cef10-154">Mettez à jour la base de données avec la migration initiale.</span><span class="sxs-lookup"><span data-stu-id="cef10-154">Update the database with the initial migration.</span></span>
 
-<span data-ttu-id="8ecc3-156">Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-156">From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**.</span></span>
+<span data-ttu-id="cef10-155">Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.</span><span class="sxs-lookup"><span data-stu-id="cef10-155">From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**.</span></span>
 
   ![Menu Console du Gestionnaire de package](../first-mvc-app/adding-model/_static/pmc.png)
 
-<span data-ttu-id="8ecc3-158">Dans la console du Gestionnaire de package, entrez les commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-158">In the PMC, enter the following commands:</span></span>
+<span data-ttu-id="cef10-157">Dans la console du Gestionnaire de package, entrez les commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="cef10-157">In the PMC, enter the following commands:</span></span>
 
 ```PMC
 Add-Migration Initial
 Update-Database
 ```
 
-<span data-ttu-id="8ecc3-159">Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes à partir du dossier de projet :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-159">Alternatively, the following .NET Core CLI commands can be used from the project folder:</span></span>
+<span data-ttu-id="cef10-158">Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes à partir du dossier de projet :</span><span class="sxs-lookup"><span data-stu-id="cef10-158">Alternatively, the following .NET Core CLI commands can be used from the project folder:</span></span>
 
 ```console
 dotnet ef migrations add Initial
 dotnet ef database update
 ```
 
-<span data-ttu-id="8ecc3-160">Ignorez le message d’avertissement suivant ; vous le traiterez dans un prochain tutoriel :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-160">Ignore the following warning message, you fix that in a a later tutorial:</span></span>
+<span data-ttu-id="cef10-159">Ignorez le message d’avertissement suivant ; vous le traiterez dans un prochain tutoriel :</span><span class="sxs-lookup"><span data-stu-id="cef10-159">Ignore the following warning message, you fix that in a a later tutorial:</span></span>
 
 `Microsoft.EntityFrameworkCore.Model.Validation[30000]`
 
       *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'.*
 
-<span data-ttu-id="8ecc3-161">La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-161">The `Add-Migration` command generates code to create the initial database schema.</span></span> <span data-ttu-id="8ecc3-162">Le schéma est basé sur le modèle spécifié dans `RazorPagesMovieContext` (dans le fichier *Data/RazorPagesMovieContext.cs*).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-162">The schema is based on the model specified in the `RazorPagesMovieContext` (In the *Data/RazorPagesMovieContext.cs* file).</span></span> <span data-ttu-id="8ecc3-163">L’argument `Initial` est utilisé pour nommer les migrations.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-163">The `Initial` argument is used to name the migrations.</span></span> <span data-ttu-id="8ecc3-164">Vous pouvez utiliser n’importe quel nom, mais par convention, choisissez un nom qui décrit la migration.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-164">You can use any name, but by convention you choose a name that describes the migration.</span></span> <span data-ttu-id="8ecc3-165">Pour plus d’informations, consultez [Présentation des migrations](xref:data/ef-mvc/migrations#introduction-to-migrations).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-165">See [Introduction to migrations](xref:data/ef-mvc/migrations#introduction-to-migrations) for more information.</span></span>
+<span data-ttu-id="cef10-160">La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial.</span><span class="sxs-lookup"><span data-stu-id="cef10-160">The `Add-Migration` command generates code to create the initial database schema.</span></span> <span data-ttu-id="cef10-161">Le schéma est basé sur le modèle spécifié dans `RazorPagesMovieContext` (dans le fichier *Data/RazorPagesMovieContext.cs*).</span><span class="sxs-lookup"><span data-stu-id="cef10-161">The schema is based on the model specified in the `RazorPagesMovieContext` (In the *Data/RazorPagesMovieContext.cs* file).</span></span> <span data-ttu-id="cef10-162">L’argument `Initial` est utilisé pour nommer les migrations.</span><span class="sxs-lookup"><span data-stu-id="cef10-162">The `Initial` argument is used to name the migrations.</span></span> <span data-ttu-id="cef10-163">Vous pouvez utiliser n’importe quel nom, mais par convention, choisissez un nom qui décrit la migration.</span><span class="sxs-lookup"><span data-stu-id="cef10-163">You can use any name, but by convention you choose a name that describes the migration.</span></span> <span data-ttu-id="cef10-164">Pour plus d’informations, consultez [Présentation des migrations](xref:data/ef-mvc/migrations#introduction-to-migrations).</span><span class="sxs-lookup"><span data-stu-id="cef10-164">See [Introduction to migrations](xref:data/ef-mvc/migrations#introduction-to-migrations) for more information.</span></span>
 
-<span data-ttu-id="8ecc3-166">La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-166">The `Update-Database` command runs the `Up` method in the *Migrations/{time-stamp}_InitialCreate.cs* file, which creates the database.</span></span>
+<span data-ttu-id="cef10-165">La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.</span><span class="sxs-lookup"><span data-stu-id="cef10-165">The `Update-Database` command runs the `Up` method in the *Migrations/{time-stamp}_InitialCreate.cs* file, which creates the database.</span></span>
 
-<span data-ttu-id="8ecc3-167">Si vous obtenez l’erreur :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-167">If you get the error:</span></span>
+<span data-ttu-id="cef10-166">Si vous obtenez l’erreur :</span><span class="sxs-lookup"><span data-stu-id="cef10-166">If you get the error:</span></span>
 
-<span data-ttu-id="8ecc3-168">SqlException: impossible d’ouvrir la base de données 'RazorPagesMovieContext-GUID' demandée par la connexion.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-168">SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login.</span></span> <span data-ttu-id="8ecc3-169">La connexion a échoué.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-169">The login failed.</span></span>
-<span data-ttu-id="8ecc3-170">Échec de la connexion de l’utilisateur 'nom utilisateur'.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-170">Login failed for user 'User-name'.</span></span>
+`SqlException: Cannot open database "RazorPagesMovieContext-GUID" requested by the login. The login failed.
+Login failed for user 'User-name'.`
 
-<span data-ttu-id="8ecc3-171">Vous avez manqué [l’étape des migrations](#pmc).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-171">You missed the [migrations step](#pmc).</span></span>
+<span data-ttu-id="cef10-167">Vous avez manqué [l’étape des migrations](#pmc).</span><span class="sxs-lookup"><span data-stu-id="cef10-167">You missed the [migrations step](#pmc).</span></span>
 
 ::: moniker-end
 
@@ -133,44 +131,44 @@ dotnet ef database update
 
 [!INCLUDE [model1](~/includes/RP/model1.md)]
 
-## <a name="add-a-data-model"></a><span data-ttu-id="8ecc3-172">Ajouter un modèle de données</span><span class="sxs-lookup"><span data-stu-id="8ecc3-172">Add a data model</span></span>
+## <a name="add-a-data-model"></a><span data-ttu-id="cef10-168">Ajouter un modèle de données</span><span class="sxs-lookup"><span data-stu-id="cef10-168">Add a data model</span></span>
 
-<span data-ttu-id="8ecc3-173">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie** > **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-173">In Solution Explorer, right-click the **RazorPagesMovie** project > **Add** > **New Folder**.</span></span> <span data-ttu-id="8ecc3-174">Nommez le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-174">Name the folder *Models*.</span></span>
+<span data-ttu-id="cef10-169">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet **RazorPagesMovie** > **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="cef10-169">In Solution Explorer, right-click the **RazorPagesMovie** project > **Add** > **New Folder**.</span></span> <span data-ttu-id="cef10-170">Nommez le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="cef10-170">Name the folder *Models*.</span></span>
 
-<span data-ttu-id="8ecc3-175">Cliquez avec le bouton droit sur le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-175">Right click the *Models* folder.</span></span> <span data-ttu-id="8ecc3-176">Sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-176">Select **Add** > **Class**.</span></span> <span data-ttu-id="8ecc3-177">Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-177">Name the class **Movie** and add the following properties:</span></span>
+<span data-ttu-id="cef10-171">Cliquez avec le bouton droit sur le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="cef10-171">Right click the *Models* folder.</span></span> <span data-ttu-id="cef10-172">Sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="cef10-172">Select **Add** > **Class**.</span></span> <span data-ttu-id="cef10-173">Nommez la classe **Movie**, puis ajoutez les propriétés suivantes :</span><span class="sxs-lookup"><span data-stu-id="cef10-173">Name the class **Movie** and add the following properties:</span></span>
 
 [!INCLUDE [model 2](~/includes/RP/model2.md)]
 
 <a name="cs"></a>
-### <a name="add-a-database-connection-string"></a><span data-ttu-id="8ecc3-178">Ajouter une chaîne de connexion de base de données</span><span class="sxs-lookup"><span data-stu-id="8ecc3-178">Add a database connection string</span></span>
+### <a name="add-a-database-connection-string"></a><span data-ttu-id="cef10-174">Ajouter une chaîne de connexion de base de données</span><span class="sxs-lookup"><span data-stu-id="cef10-174">Add a database connection string</span></span>
 
-<span data-ttu-id="8ecc3-179">Ajoutez une chaîne de connexion au fichier *appsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-179">Add a connection string to the *appsettings.json* file.</span></span>
+<span data-ttu-id="cef10-175">Ajoutez une chaîne de connexion au fichier *appsettings.json*.</span><span class="sxs-lookup"><span data-stu-id="cef10-175">Add a connection string to the *appsettings.json* file.</span></span>
 
 [!code-json[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings.json?highlight=8-10)]
 
 <a name="reg"></a>
-###  <a name="register-the-database-context"></a><span data-ttu-id="8ecc3-180">Inscrire le contexte de base de données</span><span class="sxs-lookup"><span data-stu-id="8ecc3-180">Register the database context</span></span>
+###  <a name="register-the-database-context"></a><span data-ttu-id="cef10-176">Inscrire le contexte de base de données</span><span class="sxs-lookup"><span data-stu-id="cef10-176">Register the database context</span></span>
 
-<span data-ttu-id="8ecc3-181">Inscrivez le contexte de base de données auprès du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) dans la [méthode ConfigureServices de la classe Startup](xref:fundamentals/startup#the-startup-class) (*Startup.cs*) :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-181">Register the database context with the [dependency injection](xref:fundamentals/dependency-injection) container in the [ConfigureServices method of the Startup class](xref:fundamentals/startup#the-startup-class) (*Startup.cs*):</span></span>
+<span data-ttu-id="cef10-177">Inscrivez le contexte de base de données auprès du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) dans la [méthode ConfigureServices de la classe Startup](xref:fundamentals/startup#the-startup-class) (*Startup.cs*) :</span><span class="sxs-lookup"><span data-stu-id="cef10-177">Register the database context with the [dependency injection](xref:fundamentals/dependency-injection) container in the [ConfigureServices method of the Startup class](xref:fundamentals/startup#the-startup-class) (*Startup.cs*):</span></span>
 
 [!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Startup.cs?name=snippet_ConfigureServices&highlight=3-5,7-9)]
 
-<span data-ttu-id="8ecc3-182">Générez le projet pour vérifier qu’il ne comporte aucune erreur.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-182">Build the project to verify you don't have any errors.</span></span>
+<span data-ttu-id="cef10-178">Générez le projet pour vérifier qu’il ne comporte aucune erreur.</span><span class="sxs-lookup"><span data-stu-id="cef10-178">Build the project to verify you don't have any errors.</span></span>
 
 <a name="pmc"></a>
-## <a name="add-scaffold-tooling-and-perform-initial-migration"></a><span data-ttu-id="8ecc3-183">Ajouter un outil de génération de modèles automatique et effectuer la migration initiale</span><span class="sxs-lookup"><span data-stu-id="8ecc3-183">Add scaffold tooling and perform initial migration</span></span>
+## <a name="add-scaffold-tooling-and-perform-initial-migration"></a><span data-ttu-id="cef10-179">Ajouter un outil de génération de modèles automatique et effectuer la migration initiale</span><span class="sxs-lookup"><span data-stu-id="cef10-179">Add scaffold tooling and perform initial migration</span></span>
 
-<span data-ttu-id="8ecc3-184">Dans cette section, effectuez les tâches suivantes à l’aide de la console du gestionnaire de package :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-184">In this section, you use the Package Manager Console (PMC) to:</span></span>
+<span data-ttu-id="cef10-180">Dans cette section, effectuez les tâches suivantes à l’aide de la console du gestionnaire de package :</span><span class="sxs-lookup"><span data-stu-id="cef10-180">In this section, you use the Package Manager Console (PMC) to:</span></span>
 
-* <span data-ttu-id="8ecc3-185">Ajoutez le package de génération de code web Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-185">Add the Visual Studio web code generation package.</span></span> <span data-ttu-id="8ecc3-186">Ce package est nécessaire à l’exécution du moteur de génération de modèles automatique.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-186">This package is required to run the scaffolding engine.</span></span>
-* <span data-ttu-id="8ecc3-187">Ajoutez une migration initiale.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-187">Add an initial migration.</span></span>
-* <span data-ttu-id="8ecc3-188">Mettez à jour la base de données avec la migration initiale.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-188">Update the database with the initial migration.</span></span>
+* <span data-ttu-id="cef10-181">Ajoutez le package de génération de code web Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="cef10-181">Add the Visual Studio web code generation package.</span></span> <span data-ttu-id="cef10-182">Ce package est nécessaire à l’exécution du moteur de génération de modèles automatique.</span><span class="sxs-lookup"><span data-stu-id="cef10-182">This package is required to run the scaffolding engine.</span></span>
+* <span data-ttu-id="cef10-183">Ajoutez une migration initiale.</span><span class="sxs-lookup"><span data-stu-id="cef10-183">Add an initial migration.</span></span>
+* <span data-ttu-id="cef10-184">Mettez à jour la base de données avec la migration initiale.</span><span class="sxs-lookup"><span data-stu-id="cef10-184">Update the database with the initial migration.</span></span>
 
-<span data-ttu-id="8ecc3-189">Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-189">From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**.</span></span>
+<span data-ttu-id="cef10-185">Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.</span><span class="sxs-lookup"><span data-stu-id="cef10-185">From the **Tools** menu, select **NuGet Package Manager** > **Package Manager Console**.</span></span>
 
   ![Menu Console du Gestionnaire de package](../first-mvc-app/adding-model/_static/pmc.png)
 
-<span data-ttu-id="8ecc3-191">Dans la console du Gestionnaire de package, entrez les commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-191">In the PMC, enter the following commands:</span></span>
+<span data-ttu-id="cef10-187">Dans la console du Gestionnaire de package, entrez les commandes suivantes :</span><span class="sxs-lookup"><span data-stu-id="cef10-187">In the PMC, enter the following commands:</span></span>
 
 ```powershell
 Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design -Version 2.0.3
@@ -178,7 +176,7 @@ Add-Migration Initial
 Update-Database
 ```
 
-<span data-ttu-id="8ecc3-192">Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-192">Alternatively, the following .NET Core CLI commands can be used:</span></span>
+<span data-ttu-id="cef10-188">Vous pouvez aussi utiliser les commandes .NET Core CLI suivantes :</span><span class="sxs-lookup"><span data-stu-id="cef10-188">Alternatively, the following .NET Core CLI commands can be used:</span></span>
 
 ```console
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -186,19 +184,19 @@ dotnet ef migrations add Initial
 dotnet ef database update
 ```
 
-<span data-ttu-id="8ecc3-193">Ignorez le message suivant :</span><span class="sxs-lookup"><span data-stu-id="8ecc3-193">Ignore the following message:</span></span>
+<span data-ttu-id="cef10-189">Ignorez le message suivant :</span><span class="sxs-lookup"><span data-stu-id="cef10-189">Ignore the following message:</span></span>
 
     `Microsoft.EntityFrameworkCore.Model.Validation[30000]`
 
       *No type was specified for the decimal column 'Price' on entity type 'Movie'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'ForHasColumnType()'*
 
-<span data-ttu-id="8ecc3-194">Vous le traiterez dans le prochain tutoriel.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-194">You fix that in the next tutorial.</span></span>
+<span data-ttu-id="cef10-190">Vous le traiterez dans le prochain tutoriel.</span><span class="sxs-lookup"><span data-stu-id="cef10-190">You fix that in the next tutorial.</span></span>
 
-<span data-ttu-id="8ecc3-195">La commande `Install-Package` installe les outils nécessaires à l’exécution du moteur de génération de modèles automatique.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-195">The `Install-Package` command installs the tooling required to run the scaffolding engine.</span></span>
+<span data-ttu-id="cef10-191">La commande `Install-Package` installe les outils nécessaires à l’exécution du moteur de génération de modèles automatique.</span><span class="sxs-lookup"><span data-stu-id="cef10-191">The `Install-Package` command installs the tooling required to run the scaffolding engine.</span></span>
 
-<span data-ttu-id="8ecc3-196">La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-196">The `Add-Migration` command generates code to create the initial database schema.</span></span> <span data-ttu-id="8ecc3-197">Le schéma est basé sur le modèle spécifié dans le fichier `DbContext` (dans *Models/MovieContext.cs*).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-197">The schema is based on the model specified in the `DbContext` (In the *Models/MovieContext.cs* file).</span></span> <span data-ttu-id="8ecc3-198">L’argument `Initial` est utilisé pour nommer les migrations.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-198">The `Initial` argument is used to name the migrations.</span></span> <span data-ttu-id="8ecc3-199">Vous pouvez utiliser n’importe quel nom, mais par convention, choisissez un nom qui décrit la migration.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-199">You can use any name, but by convention you choose a name that describes the migration.</span></span> <span data-ttu-id="8ecc3-200">Pour plus d’informations, consultez [Présentation des migrations](xref:data/ef-mvc/migrations#introduction-to-migrations).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-200">See [Introduction to migrations](xref:data/ef-mvc/migrations#introduction-to-migrations) for more information.</span></span>
+<span data-ttu-id="cef10-192">La commande `Add-Migration` génère le code nécessaire à la création du schéma de base de données initial.</span><span class="sxs-lookup"><span data-stu-id="cef10-192">The `Add-Migration` command generates code to create the initial database schema.</span></span> <span data-ttu-id="cef10-193">Le schéma est basé sur le modèle spécifié dans le fichier `DbContext` (dans *Models/MovieContext.cs*).</span><span class="sxs-lookup"><span data-stu-id="cef10-193">The schema is based on the model specified in the `DbContext` (In the *Models/MovieContext.cs* file).</span></span> <span data-ttu-id="cef10-194">L’argument `Initial` est utilisé pour nommer les migrations.</span><span class="sxs-lookup"><span data-stu-id="cef10-194">The `Initial` argument is used to name the migrations.</span></span> <span data-ttu-id="cef10-195">Vous pouvez utiliser n’importe quel nom, mais par convention, choisissez un nom qui décrit la migration.</span><span class="sxs-lookup"><span data-stu-id="cef10-195">You can use any name, but by convention you choose a name that describes the migration.</span></span> <span data-ttu-id="cef10-196">Pour plus d’informations, consultez [Présentation des migrations](xref:data/ef-mvc/migrations#introduction-to-migrations).</span><span class="sxs-lookup"><span data-stu-id="cef10-196">See [Introduction to migrations](xref:data/ef-mvc/migrations#introduction-to-migrations) for more information.</span></span>
 
-<span data-ttu-id="8ecc3-201">La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-201">The `Update-Database` command runs the `Up` method in the *Migrations/{time-stamp}_InitialCreate.cs* file, which creates the database.</span></span>
+<span data-ttu-id="cef10-197">La commande `Update-Database` exécute la méthode `Up` dans le fichier *Migrations/{horodatage}_InitialCreate.cs*, ce qui entraîne la création de la base de données.</span><span class="sxs-lookup"><span data-stu-id="cef10-197">The `Update-Database` command runs the `Up` method in the *Migrations/{time-stamp}_InitialCreate.cs* file, which creates the database.</span></span>
 
 [!INCLUDE [model 4windows](~/includes/RP/model4Win.md)]
 
@@ -208,22 +206,22 @@ dotnet ef database update
 
 <a name="test"></a>
 
-### <a name="test-the-app"></a><span data-ttu-id="8ecc3-202">Tester l’application</span><span class="sxs-lookup"><span data-stu-id="8ecc3-202">Test the app</span></span>
+### <a name="test-the-app"></a><span data-ttu-id="cef10-198">Tester l’application</span><span class="sxs-lookup"><span data-stu-id="cef10-198">Test the app</span></span>
 
-* <span data-ttu-id="8ecc3-203">Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).</span><span class="sxs-lookup"><span data-stu-id="8ecc3-203">Run the app and append `/Movies` to the URL in the browser (`http://localhost:port/movies`).</span></span>
-* <span data-ttu-id="8ecc3-204">Testez le lien **Créer**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-204">Test the **Create** link.</span></span>
+* <span data-ttu-id="cef10-199">Exécutez l’application et ajoutez `/Movies` à l’URL dans le navigateur (`http://localhost:port/movies`).</span><span class="sxs-lookup"><span data-stu-id="cef10-199">Run the app and append `/Movies` to the URL in the browser (`http://localhost:port/movies`).</span></span>
+* <span data-ttu-id="cef10-200">Testez le lien **Créer**.</span><span class="sxs-lookup"><span data-stu-id="cef10-200">Test the **Create** link.</span></span>
 
   ![Créer une page](../../tutorials/razor-pages/model/_static/conan.png)
 
 <a name="scaffold"></a>
 
-* <span data-ttu-id="8ecc3-206">Testez les liens **Modifier**, **Détails** et **Supprimer**.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-206">Test the **Edit**, **Details**, and **Delete** links.</span></span>
+* <span data-ttu-id="cef10-202">Testez les liens **Modifier**, **Détails** et **Supprimer**.</span><span class="sxs-lookup"><span data-stu-id="cef10-202">Test the **Edit**, **Details**, and **Delete** links.</span></span>
 
-<span data-ttu-id="8ecc3-207">Si vous obtenez une exception SQL, vérifiez que vous avez exécuté les migrations et mis à jour la base de données.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-207">If you get a SQL exception, verify you have run migrations and updated the database.</span></span>
+<span data-ttu-id="cef10-203">Si vous obtenez une exception SQL, vérifiez que vous avez exécuté les migrations et mis à jour la base de données.</span><span class="sxs-lookup"><span data-stu-id="cef10-203">If you get a SQL exception, verify you have run migrations and updated the database.</span></span>
 
-<span data-ttu-id="8ecc3-208">Le prochain didacticiel décrit les fichiers créés par la génération de modèles automatique.</span><span class="sxs-lookup"><span data-stu-id="8ecc3-208">The next tutorial explains the files created by scaffolding.</span></span>
+<span data-ttu-id="cef10-204">Le prochain didacticiel décrit les fichiers créés par la génération de modèles automatique.</span><span class="sxs-lookup"><span data-stu-id="cef10-204">The next tutorial explains the files created by scaffolding.</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="8ecc3-209">[Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
-> [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)</span><span class="sxs-lookup"><span data-stu-id="8ecc3-209">[Previous: Get Started](xref:tutorials/razor-pages/razor-pages-start)
+> <span data-ttu-id="cef10-205">[Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
+> [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)</span><span class="sxs-lookup"><span data-stu-id="cef10-205">[Previous: Get Started](xref:tutorials/razor-pages/razor-pages-start)
 [Next: Scaffolded Razor Pages](xref:tutorials/razor-pages/page)</span></span>
