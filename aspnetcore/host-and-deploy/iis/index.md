@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 12075f68dd828680f6bfbd46ea22ebd7bbe52dc7
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 5092564ad885b0de090129a7a0f0bbbd472cb868
+ms.sourcegitcommit: ce6b6792c650708e92cdea051a5d166c0708c7c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326015"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49652343"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -85,13 +85,19 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>, qui récupère le port dynamique et configure Kestrel pour écouter sur `http://localhost:{dynamicPort}/`. Ceci remplace d’autres configurations URL, comme les appels à `UseUrls` ou à [l’API d’écoute de Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). L’utilisation du module évite donc les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute uniquement sur les ports spécifiés lors de l’exécution de l’application sans IIS.
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>. `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`127.0.0.1`). Si le port dynamique est 1234, Kestrel écoute sur `127.0.0.1:1234`. Cette configuration remplace les autres configurations URL fournies par :
+
+* `UseUrls`
+* [API d’écoute Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration)
+* [Configuration](xref:fundamentals/configuration/index) (ou [options --url de ligne de commande](xref:fundamentals/host/web-host#override-configuration))
+
+L’utilisation du module évite les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur les ports spécifiés uniquement lors de l’exécution de l’application sans IIS.
 
 Pour plus d’informations sur les modèles d’hébergement in-process et out-of-process, consultez la rubrique <xref:fundamentals/servers/aspnet-core-module> et <xref:host-and-deploy/aspnet-core-module>.
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0 || aspnetcore-2.1"
+::: moniker range="= aspnetcore-2.1"
 
 Un fichier *Program.cs* standard appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> pour commencer à configurer un hôte. `CreateDefaultBuilder` configure [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et active l’intégration d’IIS en configurant le chemin et le port de base pour le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) :
 
@@ -101,7 +107,33 @@ public static IWebHost BuildWebHost(string[] args) =>
         ...
 ```
 
-Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle La méthode [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration), qui récupère le port dynamique et configure Kestrel pour écouter sur `http://localhost:{dynamicPort}/`. Ceci remplace d’autres configurations URL, comme les appels à `UseUrls` ou à [l’API d’écoute de Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration). L’utilisation du module évite donc les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur le port spécifié lors de l’exécution de l’application sans IIS.
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration). `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`127.0.0.1`). Si le port dynamique est 1234, Kestrel écoute sur `127.0.0.1:1234`. Cette configuration remplace les autres configurations URL fournies par :
+
+* `UseUrls`
+* [API d’écoute Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration)
+* [Configuration](xref:fundamentals/configuration/index) (ou [options --url de ligne de commande](xref:fundamentals/host/web-host#override-configuration))
+
+L’utilisation du module évite les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur le port spécifié uniquement lors de l’exécution de l’application sans IIS.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.0"
+
+Un fichier *Program.cs* standard appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> pour commencer à configurer un hôte. `CreateDefaultBuilder` configure [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et active l’intégration d’IIS en configurant le chemin et le port de base pour le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) :
+
+```csharp
+public static IWebHost BuildWebHost(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        ...
+```
+
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration). `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`localhost`). Si le port dynamique est 1234, Kestrel écoute sur `localhost:1234`. Cette configuration remplace les autres configurations URL fournies par :
+
+* `UseUrls`
+* [API d’écoute Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration)
+* [Configuration](xref:fundamentals/configuration/index) (ou [options --url de ligne de commande](xref:fundamentals/host/web-host#override-configuration))
+
+L’utilisation du module évite les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur le port spécifié uniquement lors de l’exécution de l’application sans IIS.
 
 ::: moniker-end
 
@@ -118,7 +150,12 @@ var host = new WebHostBuilder()
 
 [UseKestrel](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderkestrelextensions.usekestrel) et [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration) sont tous les deux requis. Le code qui appelle `UseIISIntegration` n’affecte pas la portabilité du code. Si l’application n’est pas exécutée derrière IIS (par exemple si l’application est exécutée directement sur Kestrel), `UseIISIntegration` n’effectue pas d’opérations.
 
-Le module ASP.NET Core génère un port dynamique à assigner au processus backend. La méthode `UseIISIntegration` récupère le port dynamique et configure Kestrel pour écouter sur `http://locahost:{dynamicPort}/`. Ceci remplace d’autres configurations URL, comme les appels à `UseUrls`. L’utilisation du module rend donc inutile tout appel à `UseUrls`. Si `UseUrls` est appelé, Kestrel écoute sur le port spécifié lors de l’exécution de l’application sans IIS.
+Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`localhost`). Si le port dynamique est 1234, Kestrel écoute sur `localhost:1234`. Cette configuration remplace les autres configurations URL fournies par :
+
+* `UseUrls`
+* [Configuration](xref:fundamentals/configuration/index) (ou [options --url de ligne de commande](xref:fundamentals/host/web-host#override-configuration))
+
+L’utilisation du module rend inutile tout appel à `UseUrls`. Si `UseUrls` est appelé, Kestrel écoute sur le port spécifié uniquement lors de l’exécution de l’application sans IIS.
 
 Si `UseUrls` est appelé dans une application ASP.NET Core 1.0, appelez-le **avant** d’appeler `UseIISIntegration` pour que le port configuré par le module ne soit pas remplacé. Cet ordre d’appel est inutile avec ASP.NET Core 1.1, car le paramètre du module remplace `UseUrls`.
 
