@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 08/14/2018
 uid: signalr/javascript-client
 ms.openlocfilehash: 10958c414aa4a285c8a2810bb99e278f719c5b7f
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.sourcegitcommit: ce6b6792c650708e92cdea051a5d166c0708c7c0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2018
+ms.lasthandoff: 10/25/2018
 ms.locfileid: "46483047"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Client JavaScript ASP.NET Core SignalR
@@ -101,7 +101,7 @@ Utilisez le [configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbu
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Référence de l’API JavaScript](/javascript/api/?view=signalr-js-latest)
+* [Référence API JavaScript](/javascript/api/?view=signalr-js-latest)
 * [Hubs](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)
 * [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
