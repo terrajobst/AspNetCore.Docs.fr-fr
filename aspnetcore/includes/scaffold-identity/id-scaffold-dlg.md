@@ -1,36 +1,36 @@
-<span data-ttu-id="f38a6-101">Exécutez le Générateur de modèles automatique identité :</span><span class="sxs-lookup"><span data-stu-id="f38a6-101">Run the Identity scaffolder:</span></span>
+<span data-ttu-id="c2b72-101">Exécutez le Générateur de modèles automatique identité :</span><span class="sxs-lookup"><span data-stu-id="c2b72-101">Run the Identity scaffolder:</span></span>
 
-# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="f38a6-102">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="f38a6-102">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[<span data-ttu-id="c2b72-102">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="c2b72-102">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="f38a6-103">À partir de **l’Explorateur de solutions**, avec le bouton droit sur le projet > **ajouter** > **nouvel élément structuré**.</span><span class="sxs-lookup"><span data-stu-id="f38a6-103">From **Solution Explorer**, right-click on the project > **Add** > **New Scaffolded Item**.</span></span>
-* <span data-ttu-id="f38a6-104">Dans le volet gauche de la **ajouter une structure** boîte de dialogue, sélectionnez **identité** > **ajouter**.</span><span class="sxs-lookup"><span data-stu-id="f38a6-104">From the left pane of the **Add Scaffold** dialog, select **Identity** > **ADD**.</span></span>
-* <span data-ttu-id="f38a6-105">Dans le **identité ADD** boîte de dialogue, sélectionnez les options souhaitées.</span><span class="sxs-lookup"><span data-stu-id="f38a6-105">In the **ADD Identity** dialog, select the options you want.</span></span>
-  * <span data-ttu-id="f38a6-106">Sélectionnez votre page de disposition existante, ou votre fichier de disposition est remplacée par balisage incorrect.</span><span class="sxs-lookup"><span data-stu-id="f38a6-106">Select your existing layout page, or your layout file will be overwritten with incorrect markup.</span></span> <span data-ttu-id="f38a6-107">Par exemple `~/Pages/Shared/_Layout.cshtml` pour les Pages Razor `~/Views/Shared/_Layout.cshtml` pour les projets MVC</span><span class="sxs-lookup"><span data-stu-id="f38a6-107">For example `~/Pages/Shared/_Layout.cshtml` for Razor Pages `~/Views/Shared/_Layout.cshtml` for MVC projects</span></span>
-  * <span data-ttu-id="f38a6-108">Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**.</span><span class="sxs-lookup"><span data-stu-id="f38a6-108">Select the **+** button to create a new **Data context class**.</span></span>
-* <span data-ttu-id="f38a6-109">Sélectionnez **ajouter**.</span><span class="sxs-lookup"><span data-stu-id="f38a6-109">Select **ADD**.</span></span>
+* <span data-ttu-id="c2b72-103">À partir de **l’Explorateur de solutions**, avec le bouton droit sur le projet > **ajouter** > **nouvel élément structuré**.</span><span class="sxs-lookup"><span data-stu-id="c2b72-103">From **Solution Explorer**, right-click on the project > **Add** > **New Scaffolded Item**.</span></span>
+* <span data-ttu-id="c2b72-104">Dans le volet gauche de la **ajouter une structure** boîte de dialogue, sélectionnez **identité** > **ajouter**.</span><span class="sxs-lookup"><span data-stu-id="c2b72-104">From the left pane of the **Add Scaffold** dialog, select **Identity** > **ADD**.</span></span>
+* <span data-ttu-id="c2b72-105">Dans le **identité ADD** boîte de dialogue, sélectionnez les options souhaitées.</span><span class="sxs-lookup"><span data-stu-id="c2b72-105">In the **ADD Identity** dialog, select the options you want.</span></span>
+  * <span data-ttu-id="c2b72-106">Sélectionnez votre page de disposition existante, ou votre fichier de disposition est remplacée par balisage incorrect.</span><span class="sxs-lookup"><span data-stu-id="c2b72-106">Select your existing layout page, or your layout file will be overwritten with incorrect markup.</span></span> <span data-ttu-id="c2b72-107">Par exemple `~/Pages/Shared/_Layout.cshtml` pour les Pages Razor `~/Views/Shared/_Layout.cshtml` pour les projets MVC</span><span class="sxs-lookup"><span data-stu-id="c2b72-107">For example `~/Pages/Shared/_Layout.cshtml` for Razor Pages `~/Views/Shared/_Layout.cshtml` for MVC projects</span></span>
+  * <span data-ttu-id="c2b72-108">Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**.</span><span class="sxs-lookup"><span data-stu-id="c2b72-108">Select the **+** button to create a new **Data context class**.</span></span>
+* <span data-ttu-id="c2b72-109">Sélectionnez **ajouter**.</span><span class="sxs-lookup"><span data-stu-id="c2b72-109">Select **ADD**.</span></span>
 
-# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="f38a6-110">CLI .NET Core</span><span class="sxs-lookup"><span data-stu-id="f38a6-110">.NET Core CLI</span></span>](#tab/netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[<span data-ttu-id="c2b72-110">CLI .NET Core</span><span class="sxs-lookup"><span data-stu-id="c2b72-110">.NET Core CLI</span></span>](#tab/netcore-cli)
 
-<span data-ttu-id="f38a6-111">Si vous n’avez pas encore installé le Générateur de modèles automatique ASP.NET Core, vous pouvez l’installer maintenant :</span><span class="sxs-lookup"><span data-stu-id="f38a6-111">If you have not previously installed the ASP.NET Core scaffolder, install it now:</span></span>
+<span data-ttu-id="c2b72-111">Si vous n’avez pas encore installé le Générateur de modèles automatique ASP.NET Core, vous pouvez l’installer maintenant :</span><span class="sxs-lookup"><span data-stu-id="c2b72-111">If you have not previously installed the ASP.NET Core scaffolder, install it now:</span></span>
 
 ```cli
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
-<span data-ttu-id="f38a6-112">Ajouter une référence de package à [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) au projet (\*.csproj) fichier.</span><span class="sxs-lookup"><span data-stu-id="f38a6-112">Add a package reference to [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) to the project (\*.csproj) file.</span></span> <span data-ttu-id="f38a6-113">Dans le répertoire du projet, exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="f38a6-113">Run the following command in the project directory:</span></span>
+<span data-ttu-id="c2b72-112">Ajouter une référence de package à [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) au projet (\*.csproj) fichier.</span><span class="sxs-lookup"><span data-stu-id="c2b72-112">Add a package reference to [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) to the project (\*.csproj) file.</span></span> <span data-ttu-id="c2b72-113">Dans le répertoire du projet, exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="c2b72-113">Run the following command in the project directory:</span></span>
 
 ```cli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
-<span data-ttu-id="f38a6-114">Exécutez la commande suivante pour répertorier les options de génération de modèles automatique d’identité :</span><span class="sxs-lookup"><span data-stu-id="f38a6-114">Run the following command to list the Identity scaffolder options:</span></span>
+<span data-ttu-id="c2b72-114">Exécutez la commande suivante pour répertorier les options de génération de modèles automatique d’identité :</span><span class="sxs-lookup"><span data-stu-id="c2b72-114">Run the following command to list the Identity scaffolder options:</span></span>
 
 ```cli
 dotnet aspnet-codegenerator identity -h
 ```
 
-<span data-ttu-id="f38a6-115">Dans le dossier du projet, exécutez le Générateur de modèles automatique identité avec les options souhaitées.</span><span class="sxs-lookup"><span data-stu-id="f38a6-115">In the project folder, run the Identity scaffolder with the options you want.</span></span> <span data-ttu-id="f38a6-116">Par exemple, pour configurer l’identité avec l’interface utilisateur par défaut et le nombre minimal de fichiers, exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="f38a6-116">For example, to setup identity with the default UI and the minimum number of files, run the following command:</span></span>
+<span data-ttu-id="c2b72-115">Dans le dossier du projet, exécutez le Générateur de modèles automatique identité avec les options souhaitées.</span><span class="sxs-lookup"><span data-stu-id="c2b72-115">In the project folder, run the Identity scaffolder with the options you want.</span></span> <span data-ttu-id="c2b72-116">Par exemple, pour configurer l’identité avec l’interface utilisateur par défaut et le nombre minimal de fichiers, exécutez la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="c2b72-116">For example, to setup identity with the default UI and the minimum number of files, run the following command:</span></span>
 
 ```cli
 dotnet aspnet-codegenerator identity --useDefaultUI
