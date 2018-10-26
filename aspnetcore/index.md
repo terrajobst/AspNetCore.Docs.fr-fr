@@ -3,14 +3,15 @@ title: Présentation d’ASP.NET Core
 author: rick-anderson
 description: Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.
 ms.author: riande
-ms.date: 9/28/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: index
-ms.openlocfilehash: 3bb86fa255548ff66592ac14c1020e0c6b47959c
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: fcd95b88b970073f4d7eddf89729683d18be449d
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391155"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090652"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -21,11 +22,11 @@ ASP.NET Core est un framework multiplateforme à hautes performances et [open so
 * Créer des applications et des services web, des applications [IoT](https://www.microsoft.com/internet-of-things/) et des back-ends mobiles.
 * Utiliser vos outils de développement préférés sur Windows, macOS et Linux.
 * Déployer dans le cloud ou localement.
-* Exécuter sur [.NET Core ou .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
+* Exécuter sur [.NET Core ou .NET Framework](/dotnet/articles/standard/choosing-core-framework-server).
 
 ## <a name="why-use-aspnet-core"></a>Pourquoi utiliser ASP.NET Core ?
 
-Des millions de développeurs ont utilisé (et continuent d’utiliser) [ASP.NET 4.x](https://docs.microsoft.com/aspnet/overview) pour créer des applications web. ASP.NET Core est une refonte d’ASP.NET 4.x, avec des modifications d’architecture qui aboutissent à un framework plus léger et modulaire.
+Des millions de développeurs ont utilisé (et continuent d’utiliser) [ASP.NET 4.x](/aspnet/overview) pour créer des applications web. ASP.NET Core est une refonte d’ASP.NET 4.x, avec des modifications d’architecture qui aboutissent à un framework plus léger et modulaire.
 
 [!INCLUDE[](~/includes/benefits.md)]
 
