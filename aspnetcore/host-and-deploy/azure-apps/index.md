@@ -4,14 +4,14 @@ author: guardrex
 description: Cet article contient des liens vers des ressources d’hébergement et de déploiement Azure.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/29/2018
+ms.date: 10/24/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 315261c4d20970fc399cc2a879dd452bdf3be93f
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: b238630d6f762e2b9fad1060f8150185bcf413fe
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326054"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090226"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -29,10 +29,10 @@ Utilisez la ligne de commande pour créer et déployer une application web ASP.N
 
 Les articles suivants sont disponibles dans la documentation d’ASP.NET Core :
 
-[Publier sur Azure avec Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs)  
+<xref:tutorials/publish-to-azure-webapp-using-vs>  
 Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide de Visual Studio.
 
-[Déploiement continu sur Azure avec Visual Studio et Git](xref:host-and-deploy/azure-apps/azure-continuous-deployment)  
+<xref:host-and-deploy/azure-apps/azure-continuous-deployment>  
 Découvrez comment créer une application web ASP.NET Core à l’aide de Visual Studio et comment la déployer sur Azure App Service en utilisant Git pour le déploiement continu.
 
 [Créer son premier pipeline avec Azure Pipelines](/azure/devops/pipelines/get-started-yaml)  
@@ -45,13 +45,13 @@ Découvrez les limitations d’exécution du runtime Azure App Service appliqué
 
 ## <a name="application-configuration"></a>Configuration d’application
 
-Dans ASP.NET Core 2.0 ou version ultérieure, les packages NuGet suivants fournissent des fonctionnalités de journalisation automatique pour les applications déployées sur Azure App Service :
+Les packages NuGet suivants fournissent des fonctionnalités de journalisation automatique pour les applications déployées sur Azure App Service :
 
 * [Microsoft.AspNetCore.AzureAppServices.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServices.HostingStartup/) utilise [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration) pour intégrer la fonction d’éclairage ASP.NET Core dans Azure App Service. Les fonctionnalités de journalisation ajoutées sont fournies par le package `Microsoft.AspNetCore.AzureAppServicesIntegration`.
 * [Microsoft.AspNetCore.AzureAppServicesIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServicesIntegration/) exécute [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics) pour ajouter des fournisseurs de journalisation de diagnostics Azure App Service dans le package `Microsoft.Extensions.Logging.AzureAppServices`.
 * [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/) fournit des implémentations de journaliseur pour prendre en charge les journaux de diagnostics et les fonctionnalités de streaming de journal Azure App Service.
 
-Si vous ciblez .NET Core et référencez le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage), les packages sont toujours inclus. Les packages sont absents du [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) plus récent. Si vous ciblez le .NET Framework ou référencez le métapackage `Microsoft.AspNetCore.App`, référencez individuellement les packages de journalisation.
+Si vous ciblez .NET Core et référencez le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage), les packages précédents sont inclus. Les packages sont absents du [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Si vous ciblez le .NET Framework ou référencez le métapackage `Microsoft.AspNetCore.App`, référencez individuellement les packages de journalisation.
 
 ::: moniker-end
 
@@ -79,13 +79,13 @@ Découvrez comment consulter les quotas et les métriques des applications et de
 [Activer la journalisation des diagnostics pour les applications web dans Azure App Service](/azure/app-service/web-sites-enable-diagnostic-log)  
 Découvrez comment activer et accéder à la journalisation des diagnostics pour les codes d’état HTTP, les requêtes en échec et les activités de serveur web.
 
-[Présentation de la gestion des erreurs dans ASP.NET Core](xref:fundamentals/error-handling)  
+<xref:fundamentals/error-handling>  
 Découvrez les approches courantes permettant de gérer les erreurs dans les applications ASP.NET Core.
 
-[Résoudre les problèmes liés à ASP.NET Core sur Azure App Service](xref:host-and-deploy/azure-apps/troubleshoot)  
+<xref:host-and-deploy/azure-apps/troubleshoot>  
 Découvrez comment diagnostiquer les problèmes de déploiements Azure App Service avec les applications ASP.NET Core.
 
-[Informations de référence sur les erreurs courantes pour Azure App Service et IIS avec ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)  
+<xref:host-and-deploy/azure-iis-errors-reference>  
 Découvrez les erreurs de configuration de déploiement courantes dans les applications hébergées par Azure App Service/IIS, ainsi que des conseils de dépannage.
 
 ## <a name="data-protection-key-ring-and-deployment-slots"></a>Porte-clés de Protection des données et emplacements de déploiement
@@ -99,7 +99,7 @@ Lors d’une permutation entre les emplacements de déploiement, aucun système 
 * Magasin SQL
 * Cache Redis
 
-Pour plus d’informations, consultez [Fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers).
+Pour plus d'informations, consultez <xref:security/data-protection/implementation/key-storage-providers>.
 
 ## <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>Déployer la version préliminaire d’ASP.NET Core sur Azure App Service
 
