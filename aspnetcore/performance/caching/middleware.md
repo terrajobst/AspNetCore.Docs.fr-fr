@@ -1,18 +1,18 @@
 ---
 title: Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 author: guardrex
-description: Découvrez comment configurer et utiliser un intergiciel de mise en cache des réponses dans ASP.NET Core.
+description: Découvrez comment configurer et utiliser le middleware de mise en cache des réponses dans ASP.NET Core.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 uid: performance/caching/middleware
-ms.openlocfilehash: d991bc48ed07ee71b0decaa0bee4df811fdc74c4
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: b5eef012356236d600d026e5161a2df5a7954e3b
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477525"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090483"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
@@ -120,10 +120,10 @@ L’intergiciel (middleware) respecte les règles de la [spécification HTTP 1.1
 
 Pour contrôler le comportement de mise en cache plus, explorez les autres fonctionnalités de mise en cache d’ASP.NET Core. Consultez les rubriques suivantes :
 
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
-* [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Tag Helper cache dans ASP.NET Core MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
@@ -155,11 +155,11 @@ Lorsque le test et résolution des problèmes de comportement de mise en cache, 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Démarrage d’une application](xref:fundamentals/startup)
-* [Intergiciel (middleware)](xref:fundamentals/middleware/index)
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
-* [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/change-tokens)
-* [Mise en cache des réponses](xref:performance/caching/response)
-* [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:fundamentals/startup>
+* <xref:fundamentals/middleware/index>
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:fundamentals/change-tokens>
+* <xref:performance/caching/response>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

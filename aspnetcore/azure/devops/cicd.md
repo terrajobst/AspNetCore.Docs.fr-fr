@@ -3,14 +3,14 @@ title: DevOps avec ASP.NET Core et Azure | Intégration et déploiement continus
 author: CamSoper
 description: Un guide qui fournit des conseils de bout en bout sur la création d’un pipeline DevOps pour une application ASP.NET Core hébergée dans Azure.
 ms.author: scaddie
-ms.date: 08/17/2018
+ms.date: 10/24/2018
 uid: azure/devops/cicd
-ms.openlocfilehash: 0bfe1545da4c0778055d7c81c1588d3267d2e711
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 18a59a1ff6fd6bbf51ff664764725b8972dfa1bf
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340106"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090530"
 ---
 # <a name="continuous-integration-and-deployment"></a>Intégration et déploiement continus
 
@@ -230,7 +230,7 @@ La définition de build **tâches** onglet répertorie les étapes individuelles
     > [!NOTE]
     > Pour vérifier le travail de tests unitaires, modifiez *SimpleFeedReader.Tests\Services\NewsServiceTests.cs* délibérément rompre un des tests. Par exemple, remplacez `Assert.True(result.Count > 0);` à `Assert.False(result.Count > 0);` dans le `Returns_News_Stories_Given_Valid_Uri` (méthode). Validez et envoyez la modification à GitHub. La build est déclenchée et échoue. L’état de pipeline de build devient **échec**. Rétablir la modification, valider et l’envoyer à nouveau. La build réussit.
 
-1. **Publier** &mdash; exécute le `dotnet publish --configuration release --output <local_path_on_build_agent>` commande pour produire un *.zip* fichier avec les artefacts à déployer. Le `--output` option spécifie l’emplacement de publication de la *.zip* fichier. Que l’emplacement est spécifié en passant une [variable prédéfinie](https://docs.microsoft.com/vsts/pipelines/build/variables) nommé `$(build.artifactstagingdirectory)`. Cette variable est passée à un chemin d’accès local, tel que *c:\agent\_work\1\a*, sur l’agent de build.
+1. **Publier** &mdash; exécute le `dotnet publish --configuration release --output <local_path_on_build_agent>` commande pour produire un *.zip* fichier avec les artefacts à déployer. Le `--output` option spécifie l’emplacement de publication de la *.zip* fichier. Que l’emplacement est spécifié en passant une [variable prédéfinie](/azure/devops/pipelines/build/variables) nommé `$(build.artifactstagingdirectory)`. Cette variable est passée à un chemin d’accès local, tel que *c:\agent\_work\1\a*, sur l’agent de build.
 1. **Publier l’artefact** &mdash; Publishes le *.zip* fichier produit par le **publier** tâche. La tâche accepte le *.zip* emplacement_fichier en tant que paramètre, qui est la variable prédéfinie `$(build.artifactstagingdirectory)`. Le *.zip* fichier est publié comme un dossier nommé *drop*.
 
 Cliquez sur la définition de build **Résumé** lien pour afficher un historique des builds avec la définition de :
