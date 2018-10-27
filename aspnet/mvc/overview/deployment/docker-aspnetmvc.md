@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 2e7b2a2e9d915aec0814def56daab860e1efa8af
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: b3eb643daf230336ce5def96007b6096f86390e6
+ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348414"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50148939"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Migration d’applications ASP.NET MVC vers des conteneurs Windows
 
@@ -139,7 +139,7 @@ Connectez-vous au conteneur en cours d’exécution à l’aide de l’adresse I
 > Certains logiciels VPN ou proxy peuvent vous empêcher d’accéder à votre site.
 > Vous pouvez les désactiver temporairement pour vérifier que votre conteneur fonctionne.
 
-Le répertoire d’exemples sur GitHub contient un [script PowerShell](https://github.com/dotnet/docs/tree/master/samples/framework/docker/MVCRandomAnswerGenerator/run.ps1) qui exécute ces commandes pour vous. Ouvrez une fenêtre PowerShell, accédez au répertoire de votre solution et tapez la commande suivante :
+Le répertoire d’exemples sur GitHub contient un [script PowerShell](https://github.com/dotnet/samples/blob/master/framework/docker/MVCRandomAnswerGenerator/run.ps1) qui exécute ces commandes pour vous. Ouvrez une fenêtre PowerShell, accédez au répertoire de votre solution et tapez la commande suivante :
 
 ```console
 ./run.ps1
