@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 668d6e54a64022dda948170f72538f6d4cd9a49f
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 06669d69fa9fec87d262c2b5bfd8b11649259849
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011636"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348440"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -97,9 +97,9 @@ Pour vérifier que le tri fonctionne
 
 Pour mieux comprendre le fonctionnement du code
 
-* Dans *Student/Index.cshtml.cs*, définissez un point d’arrêt sur `switch (sortOrder)`.
+* Dans *Students/Index.cshtml.cs*, définissez un point d’arrêt sur `switch (sortOrder)`.
 * Ajoutez un espion pour `NameSort` et `DateSort`.
-* Dans *Student/Index.cshtml.cshtml*, définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* Dans *Students/Index.cshtml*, définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Effectuez un pas à pas détaillé dans le débogueur.
 
@@ -235,9 +235,9 @@ Exécutez l’application et accédez à la page des étudiants.
 
 Pour mieux comprendre le fonctionnement du code
 
-* Dans *Student/Index.cshtml.cs*, définissez un point d’arrêt sur `switch (sortOrder)`.
+* Dans *Students/Index.cshtml.cs*, définissez un point d’arrêt sur `switch (sortOrder)`.
 * Ajoutez un espion pour `NameSort`, `DateSort`, `CurrentSort` et `Model.Student.PageIndex`.
-* Dans *Student/Index.cshtml.cshtml*, définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
+* Dans *Students/Index.cshtml*, définissez un point d’arrêt sur `@Html.DisplayNameFor(model => model.Student[0].LastName)`.
 
 Effectuez un pas à pas détaillé dans le débogueur.
 

@@ -4,22 +4,24 @@ author: pkellner
 description: Découvrez les attributs ASP.NET Core Tag Helper Ancre et le rôle joué par chaque attribut dans l’extension du comportement de la balise d’ancrage HTML.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 01/31/2018
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 6bdf71eaf38f134cb15b5950d2cae6ab67f861a4
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 13508729c1e3b64a8b0e6965da57880738ab85c3
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36273882"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325547"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Tag Helper Ancre dans ASP.NET Core
 
 Par [Peter Kellner](http://peterkellner.net) et [Scott Addie](https://github.com/scottaddie)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
-
 Le [Tag Helper Ancre](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper) améliore la balise d’ancrage HTML standard (`<a ... ></a>`) en ajoutant de nouveaux attributs. Par convention, les noms d’attribut commencent par `asp-`. La valeur d’attribut de l’élément d’ancrage rendu `href` est déterminée par les valeurs des attributs `asp-`.
+
+Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
 
 *SpeakerController* est utilisé dans les exemples dans ce document :
 
@@ -171,7 +173,7 @@ Les balises de hachage sont utiles lors de la création des applications côté 
 
 L’attribut [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchortaghelper.area) définit le nom de la zone utilisé pour définir l’itinéraire approprié. L’exemple suivant décrit la façon dont l’attribut de zone entraîne un remappage des itinéraires. L’affectation de la valeur « Blogs » à `asp-area` préfixe le répertoire *Areas/Blogs* dans les itinéraires des vues et contrôleurs associés pour cette balise d’ancrage.
 
-* **<Nom du projet\>**
+* **{Nom du projet}**
   * **wwwroot**
   * **Les zones (areas)**
     * **Blogs**
@@ -181,7 +183,7 @@ L’attribut [asp-area](/dotnet/api/microsoft.aspnetcore.mvc.taghelpers.anchorta
         * **Accueil**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
-        * *_ViewStart.cshtml*
+        * *\_ViewStart.cshtml*
   * **Contrôleurs**
 
 Étant donné la hiérarchie de répertoire précédente, le balisage pour faire référence au fichier *AboutBlog.cshtml* est :
@@ -195,7 +197,9 @@ Code HTML généré :
 ```
 
 > [!TIP]
-> Pour que les zones fonctionnent dans une application MVC, le modèle de routage doit inclure une référence à la zone si elle existe. Ce modèle est représenté par le deuxième paramètre de l’appel de méthode `routes.MapRoute` dans *Startup.Configure* : [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
+> Pour que les zones fonctionnent dans une application MVC, le modèle de routage doit inclure une référence à la zone si elle existe. Ce modèle est représenté par le deuxième paramètre de l’appel de méthode `routes.MapRoute` dans *Startup.Configure* :
+>
+> [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
 ## <a name="asp-protocol"></a>asp-protocol
 
@@ -267,5 +271,5 @@ Code HTML généré :
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Les zones (areas)](xref:mvc/controllers/areas)
-* [Présentation des Pages Razor](xref:razor-pages/index)
+* <xref:mvc/controllers/areas>
+* <xref:razor-pages/index>

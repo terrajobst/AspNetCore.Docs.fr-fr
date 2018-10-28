@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2018
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: c2af9099fe439e1cdbf9ba86ffae3b2b0f67391e
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 4b9bceb3ce0153af2d9a30c402febe09707145b7
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751589"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477304"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Tag Helpers dans ASP.NET Core
 
@@ -68,7 +68,7 @@ Si vous créez une application web ASP.NET Core nommée *AuthoringTagHelpers*, l
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-La directive `@addTagHelper` rend les Tag Helpers disponibles dans l’affichage. Dans cet exemple, le fichier d’affichage est *Pages/_ViewImports.cshtml*, qui est hérité par défaut par tous les fichiers dans le dossier et les sous-dossiers *Pages* ; les Tag Helpers sont ainsi disponibles. Le code ci-dessus utilise la syntaxe d’expressions génériques (« \* ») pour spécifier que tous les Tag Helpers dans l’assembly spécifié (*Microsoft.AspNetCore.Mvc.TagHelpers*) sont disponibles pour chaque fichier d’affichage du répertoire ou sous-répertoire *Views*. Le premier paramètre après `@addTagHelper` spécifie les Tag Helpers à charger (nous utilisons « \* » pour tous les Tag Helpers), et le deuxième paramètre « Microsoft.AspNetCore.Mvc.TagHelpers » spécifie l’assembly qui contient les Tag Helpers. *Microsoft.AspNetCore.Mvc.TagHelpers* est l’assembly des Tag Helpers ASP.NET Core intégrés.
+La directive `@addTagHelper` rend les Tag Helpers disponibles dans l’affichage. Dans cet exemple, le fichier d’affichage est *Pages/_ViewImports.cshtml*, qui est hérité par défaut par tous les fichiers dans le dossier et les sous-dossiers *Pages* ; les Tag Helpers sont ainsi disponibles. Le code ci-dessus utilise la syntaxe d’expressions génériques (« \* ») pour spécifier que tous les Tag Helpers dans l’assembly spécifié (*Microsoft.AspNetCore.Mvc.TagHelpers*) sont disponibles pour chaque fichier d’affichage du répertoire ou sous-répertoire *Views*. Le premier paramètre après `@addTagHelper` spécifie les Tag Helpers à charger (nous utilisons « \* » pour tous les Tag Helpers), et le deuxième paramètre « Microsoft.AspNetCore.Mvc.TagHelpers » spécifie l’assembly qui contient les Tag Helpers. *Microsoft.AspNetCore.Mvc.TagHelpers* est l’assembly des Tag Helpers ASP.NET Core intégrés.
 
 Pour exposer tous les Tag Helpers inclus dans ce projet (ce qui crée un assembly nommé *AuthoringTagHelpers*), utilisez ce qui suit :
 
@@ -127,6 +127,10 @@ Dans l’image de code ci-dessous, le préfixe du Tag Helper a la valeur `th:`, 
 ![image](intro/_static/thp.png)
 
 Les mêmes règles de hiérarchie qui s’appliquent à `@addTagHelper` s’appliquent aussi à `@tagHelperPrefix`.
+
+## <a name="self-closing-tag-helpers"></a>Tag Helpers à fermeture automatique
+
+De nombreux Tag Helpers ne peuvent pas être utilisés en tant que balises à fermeture automatique. Certains Tag Helpers sont conçus en tant que balises à fermeture automatique. L’utilisation d’un Tag Helper qui n’a pas été conçu pour être à fermeture automatique supprime la sortie rendue. La fermeture automatique d’un Tag Helper aboutit à une balise à fermeture automatique dans la sortie rendue. Pour plus d’informations, consultez [cette remarque](xref:mvc/views/tag-helpers/authoring#self-closing) dans [Création de Tag Helpers](xref:mvc/views/tag-helpers/authoring).
 
 ## <a name="intellisense-support-for-tag-helpers"></a>Prise en charge IntelliSense des Tag Helpers
 

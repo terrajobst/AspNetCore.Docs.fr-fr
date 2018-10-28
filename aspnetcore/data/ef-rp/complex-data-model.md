@@ -5,12 +5,12 @@ description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vo
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 88d727b0545f1dacb56ea889e45b02f947867b19
-ms.sourcegitcommit: 6425baa92cec4537368705f8d27f3d0e958e43cd
+ms.openlocfilehash: b81918cbd74200f0672f3002f916523fb4a9a914
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39220597"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477655"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -432,7 +432,7 @@ public Student Student { get; set; }
 
 Il existe une relation plusieurs-à-plusieurs entre les entités `Student` et `Course`. L’entité `Enrollment` joue le rôle de table de jointure plusieurs-à-plusieurs *avec charge utile* dans la base de données. « Avec charge utile » signifie que la table `Enrollment` contient des données supplémentaires en plus des clés étrangères pour les tables jointes (dans le cas présent, la clé primaire et `Grade`).
 
-L’illustration suivante montre à quoi ressemblent ces relations dans un diagramme d’entité. (Ce diagramme a été généré à l’aide de EF Power Tools pour EF 6.x. Sa création ne fait pas partie de ce didacticiel.)
+L’illustration suivante montre à quoi ressemblent ces relations dans un diagramme d’entité. (Ce diagramme a été généré à l’aide de [EF Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) pour EF 6.x. Sa création ne fait pas partie de ce didacticiel.)
 
 ![Relation plusieurs à plusieurs Student-Course](complex-data-model/_static/student-course.png)
 
@@ -574,9 +574,15 @@ The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_dbo.Cou
 database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 ```
 
-Quand des migrations sont exécutées avec des données existantes, il peut y avoir des contraintes de clé étrangère qui ne sont pas satisfaites avec les données de sortie. Pour ce didacticiel, une nouvelle base de données est créée ; il n’y a donc aucune violation de contrainte de clé étrangère. Pour obtenir des instructions sur la façon de corriger les violations de clé étrangère sur la base de données actuelle, consultez [Correction des contraintes de clé étrangère avec des données héritées](#fk).
+## <a name="apply-the-migration"></a>Appliquer la migration
 
-### <a name="drop-and-update-the-database"></a>Supprimer et mettre à jour la base de données
+Disposant à présent d’une base de données, vous devez réfléchir à la façon dont vous y apporterez des modifications. Ce tutoriel montre deux approches :
+* [Supprimer et recréer la base de données](#drop)
+* [Appliquer la migration à la base de données](#applyexisting) Bien que cette méthode soit plus longue et complexe, elle constitue l’approche privilégiée pour les environnements de production réels. **Remarque** : Cette section du tutoriel est facultative. Vous pouvez effectuer les étapes de suppression et de recréation et ignorer cette section. Si vous souhaitez suivre les étapes décrites dans cette section, n’effectuez pas les étapes de suppression et de recréation. 
+
+<a name="drop"></a>
+
+### <a name="drop-and-re-create-the-database"></a>Supprimer et recréer la base de données
 
 Le code dans le `DbInitializer` mis à jour ajoute des données de valeur initiale pour les nouvelles entités. Pour forcer EF Core à créer une autre base de données, supprimez et mettez à jour la base de données :
 
@@ -620,13 +626,13 @@ Examinez la table **CourseAssignment** :
 
 ![Données CourseAssignment dans SSOX](complex-data-model/_static/ssox-ci-data.png)
 
-<a name="fk"></a>
+<a name="applyexisting"></a>
 
-## <a name="fixing-foreign-key-constraints-with-legacy-data"></a>Correction des contraintes de clé étrangère avec des données héritées
+### <a name="apply-the-migration-to-the-existing-database"></a>Appliquer la migration à la base de données
 
-Cette section est facultative.
+Cette section est facultative. Ces étapes fonctionnent seulement si vous avez ignoré la section [Supprimer et recréer la base de données](#drop) précédente.
 
-Quand des migrations sont exécutées avec des données existantes, il peut y avoir des contraintes de clé étrangère qui ne sont pas satisfaites avec les données de sortie. Avec des données de production, vous devez effectuer certaines actions pour migrer les données existantes. Cette section fournit un exemple de correction des violations de contraintes de clé étrangère. N’effectuez pas ces modifications de code sans une sauvegarde. N’effectuez pas ces modifications de code si vous avez terminé la section précédente et mis à jour la base de données.
+Quand des migrations sont exécutées avec des données existantes, il peut y avoir des contraintes de clé étrangère qui ne sont pas satisfaites avec les données existantes. Avec des données de production, vous devez effectuer certaines actions pour migrer les données existantes. Cette section fournit un exemple de correction des violations de contraintes de clé étrangère. N’effectuez pas ces modifications de code sans une sauvegarde. N’effectuez pas ces modifications de code si vous avez terminé la section précédente et mis à jour la base de données.
 
 Le fichier *{horodatage}_ComplexDataModel.cs* contient le code suivant :
 
@@ -639,7 +645,7 @@ Pour faire en sorte que la migration `ComplexDataModel` fonctionne avec des donn
 * Modifiez le code pour affecter une valeur par défaut à la nouvelle colonne (`DepartmentID`).
 * Créez un département fictif nommé « Temp » assumant la fonction de département par défaut.
 
-### <a name="fix-the-foreign-key-constraints"></a>Corriger les contraintes de clé étrangère
+#### <a name="fix-the-foreign-key-constraints"></a>Corriger les contraintes de clé étrangère
 
 Mettez à jour la méthode `Up` de la classe `ComplexDataModel` :
 

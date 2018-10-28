@@ -5,12 +5,12 @@ description: Montre comment créer une application Pages Razor à l’aide d’E
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/intro
-ms.openlocfilehash: 89002f7b4a5af17a9404b14822086c7a9a6ec265
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: f714934a2ef804813290ae0c04432470a2ba5816
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011455"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477564"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 
@@ -187,9 +187,9 @@ Le processus de génération de modèles automatique a créé et changé les fic
 * *Pages/Students* Create, Delete, Details, Edit, Index.
 * *Data/SchoolContext.cs*
 
-### <a name="files-updates"></a>Mises à jour de fichiers
+### <a name="file-updates"></a>Mises à jour du fichier
 
-* *Startup.cs* : Les changements de ce fichier sont détaillés dans la section suivante.
+* *Startup.cs* : Les changements apportés à ce fichier sont détaillés dans la section suivante.
 * *appSettings.JSON* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>Examiner le contexte inscrit avec l’injection de dépendances
