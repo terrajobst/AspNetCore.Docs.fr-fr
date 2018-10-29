@@ -5,12 +5,12 @@ description: Découvrez comment utiliser des jetons de modification pour effectu
 ms.author: riande
 ms.date: 11/10/2017
 uid: fundamentals/change-tokens
-ms.openlocfilehash: 1cf3693764919a8fd064584ab7b7ad237e8465b3
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 7ad580a7e999a4eae006ce5dd07cca0cbdbe9ab6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391375"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206417"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Détecter les modifications avec des jetons de modification dans ASP.NET Core
 
@@ -18,7 +18,7 @@ Par [Luke Latham](https://github.com/guardrex)
 
 Un *jeton de modification* est un module à usage général de bas niveau, utilisé pour effectuer le suivi des modifications.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/change-tokens/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/change-tokens/sample/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="ichangetoken-interface"></a>Interface d’IChangeToken
 
@@ -195,9 +195,9 @@ var compositeChangeToken =
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
-* [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Mise en cache des réponses](xref:performance/caching/response)
-* [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
-* [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:performance/caching/response>
+* <xref:performance/caching/middleware>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

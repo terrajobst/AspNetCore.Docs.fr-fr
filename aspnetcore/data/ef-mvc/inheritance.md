@@ -3,14 +3,15 @@ title: ASP.NET Core MVC avec EF Core - Héritage - 9 sur 10
 author: rick-anderson
 description: Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données en utilisant Entity Framework Core dans une application ASP.NET Core.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: a71954297f44f936893a7f1e9d3b0685f81378b9
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 60417040dd296311e1aecff8f224aadf8da82779
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126702"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090756"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC avec EF Core - Héritage - 9 sur 10
 
@@ -142,7 +143,7 @@ Cliquez avec le bouton droit sur la table Person, puis cliquez sur **Afficher le
 
 ## <a name="summary"></a>Récapitulatif
 
-Vous avez implémenté l’héritage TPH (table par hiérarchie) pour les classes `Person`, `Student` et `Instructor`. Pour plus d’informations sur l’héritage dans Entity Framework Core, consultez [Héritage](https://docs.microsoft.com/ef/core/modeling/inheritance). Dans le prochain didacticiel, vous allez apprendre à gérer divers scénarios Entity Framework relativement avancés.
+Vous avez implémenté l’héritage TPH (table par hiérarchie) pour les classes `Person`, `Student` et `Instructor`. Pour plus d’informations sur l’héritage dans Entity Framework Core, consultez [Héritage](/ef/core/modeling/inheritance). Dans le prochain didacticiel, vous allez apprendre à gérer divers scénarios Entity Framework relativement avancés.
 
 ::: moniker-end
 

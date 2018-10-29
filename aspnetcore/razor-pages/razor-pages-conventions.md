@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 10/12/2018
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 13fd6c156afd5ab62739b09296a929120ce3450f
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: f04e0930966c9aaf38543729565b1ef4a80a09e2
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348531"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207691"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>Conventions de routes et d’applications pour les pages Razor dans ASP.NET Core
 
@@ -25,7 +25,7 @@ Pour spécifier un itinéraire de page, ajoutez des segments de routage ou ajout
 
 Il existe des mots réservés qui ne peut pas être utilisés en tant que segments de routage ou des noms de paramètres. Pour plus d’informations, consultez [routage : routage des noms réservés](xref:fundamentals/routing#reserved-routing-names).
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/sample/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ::: moniker range="= aspnetcore-2.0"
 
@@ -87,7 +87,7 @@ Traitement de l’itinéraire est établi par convention :
 
 Si possible, évitez selon un ordre de traitement itinéraire établi. En règle générale, le routage sélectionne la route correcte avec correspondance d’URL. Si vous devez définir des itinéraires `Order` propriétés pour acheminer les demandes correctement, schéma de routage de l’application est probablement à confusion pour les clients et fragiles pour mettre à jour. Pour simplifier le schéma de routage de l’application de recherche. L’exemple d’application nécessite un itinéraire explicite afin de montrer plusieurs scénarios de routage à l’aide d’une seule application de traitement. Toutefois, vous devez essayer d’éviter la pratique de l’itinéraire du paramètre `Order` dans les applications de production.
 
-Pages Razor routage et le partage de routage de contrôleur MVC une implémentation. Informations sur l’ordre de routage dans les rubriques MVC sont disponibles à l’adresse [routage vers les actions de contrôleur : classement des routes d’attribut](xref:mvc/controllers/routing#ordering-attribute-routes).
+Le routage de Razor Pages et celui du contrôleur MVC partagent une implémentation. Informations sur l’ordre de routage dans les rubriques MVC sont disponibles à l’adresse [routage vers les actions de contrôleur : classement des routes d’attribut](xref:mvc/controllers/routing#ordering-attribute-routes).
 
 ## <a name="model-conventions"></a>Conventions de modèle
 

@@ -3,14 +3,15 @@ title: ASP.NET Core MVC avec EF Core - Mettre à jour les données associées - 
 author: rick-anderson
 description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: ef8cb3916e5d1542e4d36cad694351462b94ed32
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 37985c945f2e4b15cfcefb0c126c3209e0bdeac4
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38126724"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090730"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC avec EF Core - Mettre à jour les données associées - 7 sur 10
 
@@ -290,7 +291,7 @@ Testez en exécutant l’application et en créant un formateur.
 
 ## <a name="handling-transactions"></a>Gestion des transactions
 
-Comme expliqué dans le [didacticiel CRUD](crud.md), Entity Framework implémente implicitement les transactions. Pour les scénarios où vous avez besoin de plus de contrôle, par exemple si vous voulez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](https://docs.microsoft.com/ef/core/saving/transactions).
+Comme expliqué dans le [didacticiel CRUD](crud.md), Entity Framework implémente implicitement les transactions. Pour les scénarios où vous avez besoin de plus de contrôle, par exemple si vous voulez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](/ef/core/saving/transactions).
 
 ## <a name="summary"></a>Récapitulatif
 

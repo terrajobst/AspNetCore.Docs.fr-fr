@@ -3,14 +3,15 @@ title: Chargements de fichiers dans ASP.NET Core
 author: ardalis
 description: Comment utiliser la liaison de modèle et le streaming pour charger des fichiers dans ASP.NET Core MVC.
 ms.author: riande
-ms.date: 07/05/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 771e22ca01c67f2b6bbee780324d9d08759b3279
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 913fc9aa473950b7117fb9da5c8913e658c43a9d
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38201730"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090265"
 ---
 # <a name="file-uploads-in-aspnet-core"></a>Chargements de fichiers dans ASP.NET Core
 
@@ -70,7 +71,7 @@ Lors du chargement de fichiers avec la liaison de modèle et l’interface `IFor
 
 [!code-csharp[](file-uploads/sample/FileUploadSample/Controllers/UploadFilesController.cs?name=snippet1)]
 
-Les fichiers chargés avec la technique `IFormFile` sont placés dans une mémoire tampon ou sur disque du serveur web avant d’être traités. Dans la méthode d’action, le contenu de `IFormFile` est accessible sous forme de flux. En plus du système de fichiers local, les fichiers peuvent être diffusés en continu vers [Stockage Blob Azure](https://azure.microsoft.com/documentation/articles/vs-storage-aspnet5-getting-started-blobs/) ou [Entity Framework](https://docs.microsoft.com/ef/core/index).
+Les fichiers chargés avec la technique `IFormFile` sont placés dans une mémoire tampon ou sur disque du serveur web avant d’être traités. Dans la méthode d’action, le contenu de `IFormFile` est accessible sous forme de flux. En plus du système de fichiers local, les fichiers peuvent être diffusés en continu vers [Stockage Blob Azure](/azure/visual-studio/vs-storage-aspnet5-getting-started-blobs) ou [Entity Framework](/ef/core/index).
 
 Pour stocker les données de fichiers binaires dans une base de données avec Entity Framework, définissez une propriété de type `byte[]` sur l’entité :
 
@@ -117,7 +118,7 @@ public async Task<IActionResult> Register(RegisterViewModel model)
             user.AvatarImage = memoryStream.ToArray();
         }
     // additional logic omitted
-    
+
     // Don't rely on or trust the model.AvatarImage.FileName property 
     // without validation.
 }

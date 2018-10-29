@@ -8,12 +8,12 @@ ms.date: 01/30/2013
 ms.assetid: f9c07af0-4b20-4b08-af8f-47fc3df169a2
 msc.legacyurl: /single-page-application/overview/introduction/knockoutjs-template
 msc.type: authoredcontent
-ms.openlocfilehash: 328046363666944f121dedc1883bbe83f5b079d2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 60bc8bf95cace722244ffc87ff4c00126a0ed2a0
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831818"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207444"
 ---
 <a name="single-page-application-knockoutjs-template"></a>Application à Page unique : Modèle de KnockoutJS
 ====================
@@ -163,7 +163,7 @@ Les contrôleurs MVC se trouvent également dans le dossier contrôleurs, de la 
 
 [!code-cshtml[Main](knockoutjs-template/samples/sample4.cshtml)]
 
-Lorsque les utilisateurs sont connectés, ils voient l’interface utilisateur principale. Sinon, ils voient le panneau de connexion. Notez que ce rendu conditionnel se produit côté serveur. N’essaient jamais de masquer le contenu sensible sur le côté client & #8212anything que vous envoyez dans une réponse HTTP est visible pour une personne qui surveille les messages HTTP bruts.
+Lorsque les utilisateurs sont connectés, ils voient l’interface utilisateur principale. Sinon, ils voient le panneau de connexion. Notez que ce rendu conditionnel se produit côté serveur. N’essaient jamais de masquer le contenu sensible sur le côté client&#8212;tout ce que vous envoyez dans une réponse HTTP est visible à quelqu'un qui surveille les messages HTTP bruts.
 
 ## <a name="client-side-javascript-and-knockoutjs"></a>Knockout.js et JavaScript côté client
 

@@ -3,14 +3,15 @@ title: ASP.NET Core MVC avec EF Core - Modèle de données - 5 sur 10
 author: rick-anderson
 description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vous personnalisez le modèle de données en spécifiant des règles de mise en forme, de validation et de mappage.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 3714cf7ce705a52653394319fef1728a6ddcc3ee
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 87212edbfe34af6de938cf95314501e56e64a8be
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011767"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091039"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---data-model---5-of-10"></a>ASP.NET Core MVC avec EF Core - Modèle de données - 5 sur 10
 
@@ -232,7 +233,7 @@ Dans *Models/Course.cs*, remplacez le code que vous avez ajouté précédemment 
 
 L’entité de cours a une propriété de clé étrangère `DepartmentID` qui pointe sur l’entité Department associée et elle a une propriété de navigation `Department`.
 
-Entity Framework ne vous demande pas d’ajouter une propriété de clé étrangère à votre modèle de données lorsque vous avez une propriété de navigation pour une entité associée.  EF crée automatiquement des clés étrangères dans la base de données partout où elles sont nécessaires et crée des [propriétés fantôme](https://docs.microsoft.com/ef/core/modeling/shadow-properties) pour elles. Mais le fait d’avoir la clé étrangère dans le modèle de données peut rendre les mises à jour plus simples et plus efficaces. Par exemple, lorsque vous récupérez une entité de cours à modifier, l’entité Department a la valeur Null si vous ne la chargez pas. Par conséquent, lorsque vous mettez à jour l’entité de cours, vous devriez tout d’abord récupérer l’entité Department. Lorsque la propriété de clé étrangère `DepartmentID` est incluse dans le modèle de données, vous n’avez pas besoin de récupérer l’entité Department avant de mettre à jour.
+Entity Framework ne vous demande pas d’ajouter une propriété de clé étrangère à votre modèle de données lorsque vous avez une propriété de navigation pour une entité associée.  EF crée automatiquement des clés étrangères dans la base de données partout où elles sont nécessaires et crée des [propriétés fantôme](/ef/core/modeling/shadow-properties) pour elles. Mais le fait d’avoir la clé étrangère dans le modèle de données peut rendre les mises à jour plus simples et plus efficaces. Par exemple, lorsque vous récupérez une entité de cours à modifier, l’entité Department a la valeur Null si vous ne la chargez pas. Par conséquent, lorsque vous mettez à jour l’entité de cours, vous devriez tout d’abord récupérer l’entité Department. Lorsque la propriété de clé étrangère `DepartmentID` est incluse dans le modèle de données, vous n’avez pas besoin de récupérer l’entité Department avant de mettre à jour.
 
 ### <a name="the-databasegenerated-attribute"></a>Attribut DatabaseGenerated
 
@@ -246,7 +247,7 @@ public int CourseID { get; set; }
 
 Par défaut, Entity Framework suppose que les valeurs de clé primaire sont générées par la base de données. C’est ce que vous souhaitez dans la plupart des scénarios. Toutefois, pour les entités Course, vous allez utiliser un numéro de cours spécifié par l’utilisateur comme une série de 1000 pour un département, une série de 2000 pour un autre département, etc.
 
-L’attribut `DatabaseGenerated` peut également être utilisé pour générer des valeurs par défaut, comme dans le cas des colonnes de base de données utilisées pour enregistrer la date à laquelle une ligne a été créée ou mise à jour.  Pour plus d’informations, consultez [Propriétés générées](https://docs.microsoft.com/ef/core/modeling/generated-properties).
+L’attribut `DatabaseGenerated` peut également être utilisé pour générer des valeurs par défaut, comme dans le cas des colonnes de base de données utilisées pour enregistrer la date à laquelle une ligne a été créée ou mise à jour.  Pour plus d’informations, consultez [Propriétés générées](/ef/core/modeling/generated-properties).
 
 ### <a name="foreign-key-and-navigation-properties"></a>Propriétés de clé étrangère et de navigation
 
@@ -373,7 +374,7 @@ Une table de jointure est requise dans la base de données pour la relation plus
 
 Étant donné que les clés étrangères ne sont pas nullables et qu’elles identifient ensemble de façon unique chaque ligne de la table, une clé primaire distincte n’est pas requise. Les propriétés *InstructorID* et *CourseID* doivent fonctionner comme une clé primaire composite. La seule façon d’identifier des clés primaires composites pour EF consiste à utiliser l’*API Fluent* (ce n’est pas possible à l’aide d’attributs). Vous allez voir comment configurer la clé primaire composite dans la section suivante.
 
-La clé composite garantit qu’en ayant plusieurs lignes pour un cours et plusieurs lignes pour un formateur, vous ne puissiez pas avoir plusieurs lignes pour les mêmes formateur et cours. L’entité de jointure `Enrollment` définit sa propre clé primaire, si bien que les doublons de ce type sont possibles. Pour éviter ces doublons, vous pourriez ajouter un index unique sur les champs de clé étrangère ou configurer `Enrollment` avec une clé composite primaire similaire à `CourseAssignment`. Pour plus d’informations, consultez [Index](https://docs.microsoft.com/ef/core/modeling/indexes).
+La clé composite garantit qu’en ayant plusieurs lignes pour un cours et plusieurs lignes pour un formateur, vous ne puissiez pas avoir plusieurs lignes pour les mêmes formateur et cours. L’entité de jointure `Enrollment` définit sa propre clé primaire, si bien que les doublons de ce type sont possibles. Pour éviter ces doublons, vous pourriez ajouter un index unique sur les champs de clé étrangère ou configurer `Enrollment` avec une clé composite primaire similaire à `CourseAssignment`. Pour plus d’informations, consultez [Index](/ef/core/modeling/indexes).
 
 ## <a name="update-the-database-context"></a>Mettre à jour le contexte de base de données
 
@@ -385,7 +386,7 @@ Ce code ajoute les nouvelles entités et configure la clé primaire composite de
 
 ## <a name="fluent-api-alternative-to-attributes"></a>Alternative d’API Fluent aux attributs
 
-Le code dans la méthode `OnModelCreating` de la classe `DbContext` utilise l’*API Fluent* pour configurer le comportement EF. L’API est appelée « fluent », car elle est souvent utilisée pour enchaîner une série d’appels de méthode en une seule instruction, comme dans cet exemple tiré de la [documentation d’EF Core](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration) :
+Le code dans la méthode `OnModelCreating` de la classe `DbContext` utilise l’*API Fluent* pour configurer le comportement EF. L’API est appelée « fluent », car elle est souvent utilisée pour enchaîner une série d’appels de méthode en une seule instruction, comme dans cet exemple tiré de la [documentation d’EF Core](/ef/core/modeling/#methods-of-configuration) :
 
 ```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -400,7 +401,7 @@ Dans ce didacticiel, vous utilisez l’API Fluent uniquement pour le mappage de 
 
 Certains développeurs préfèrent utiliser exclusivement l’API Fluent afin de conserver des classes d’entité « propres ». Vous pouvez combiner les attributs et l’API Fluent si vous le voulez, et il existe quelques personnalisations qui peuvent être effectuées uniquement à l’aide de l’API Fluent, mais en général la pratique recommandée consiste à choisir l’une de ces deux approches et à l’utiliser constamment, autant que possible. Si vous utilisez ces deux approches, notez que partout où il existe un conflit, l’API Fluent a priorité sur les attributs.
 
-Pour plus d’informations sur les attributs et l’API Fluent, consultez [Méthodes de configuration](https://docs.microsoft.com/ef/core/modeling/#methods-of-configuration).
+Pour plus d’informations sur les attributs et l’API Fluent, consultez [Méthodes de configuration](/ef/core/modeling/#methods-of-configuration).
 
 ## <a name="entity-diagram-showing-relationships"></a>Diagramme des entités montrant les relations
 

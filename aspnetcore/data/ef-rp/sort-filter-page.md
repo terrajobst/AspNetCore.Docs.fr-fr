@@ -3,14 +3,15 @@ title: Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 
 author: rick-anderson
 description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de changement de page à une page à l’aide d’ASP.NET Core et d’Entity Framework Core.
 ms.author: riande
-ms.date: 6/31/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 06669d69fa9fec87d262c2b5bfd8b11649259849
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: 19fe24e0f901c50e8425db7665b5b2257b608146
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348440"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090878"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -51,7 +52,7 @@ Quand la page Index est demandée à partir du lien **Students**, il n’existe 
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly&highlight=3-4)]
 
-Le code suivant contient [l’opérateur ?:](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/conditional-operator) conditionnel C# :
+Le code suivant contient [l’opérateur ?:](/dotnet/csharp/language-reference/operators/conditional-operator) conditionnel C# :
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_Ternary)]
 
