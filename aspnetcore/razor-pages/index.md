@@ -119,7 +119,7 @@ Remarques :
 
 ## <a name="writing-a-basic-form"></a>Écriture d’un formulaire de base
 
-Les pages Razor sont conçues pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro)et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
+Les pages Razor sont conçues pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
 
 Pour les exemples de ce document, le `DbContext` est initialisé dans le fichier [Startup.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16).
 
@@ -150,7 +150,7 @@ La page a une *méthode de gestionnaire* `OnPostAsync`, qui s’exécute sur les
 * `OnGet` pour initialiser l’état nécessaire pour la page. Exemple [OnGet](#OnGet).
 * `OnPost` pour gérer les envois de formulaire.
 
-Le suffixe de nommage `Async` est facultatif, mais souvent utilisé par convention pour les fonctions asynchrones. Le code `OnPostAsync` dans l’exemple précédent est similaire à celui que vous écririez normalement dans un contrôleur. Le code précédent est typique des pages Razor. La plupart des primitives MVC comme la [liaison de modèle](xref:mvc/models/model-binding), la [validation](xref:mvc/models/validation) et les résultats d’action sont partagées.  <!-- Review: Ryan, can we get a list of what is shared and what isn't? -->
+Le suffixe de nommage `Async` est facultatif, mais souvent utilisé par convention pour les fonctions asynchrones. Le code `OnPostAsync` dans l’exemple précédent est similaire à celui que vous écririez normalement dans un contrôleur. Le code précédent est typique des pages Razor. La plupart des primitives MVC comme la [liaison de modèle](xref:mvc/models/model-binding), la [validation](xref:mvc/models/validation) et les résultats d’action sont partagés.  <!-- Review: Ryan, can we get a list of what is shared and what isn't? -->
 
 La méthode `OnPostAsync` précédente :
 
@@ -221,7 +221,7 @@ Voici un exemple de bouton Supprimer rendu avec un ID de contact client de `1`:
 <button type="submit" formaction="/?id=1&amp;handler=delete">delete</button>
 ```
 
-Quand le bouton est sélectionné, une demande `POST` de forumaire est envoyée au serveur. Par convention, le nom de la méthode de gestionnaire est sélectionné en fonction de la valeur du paramètre `handler` conformément au schéma `OnPost[handler]Async`.
+Quand le bouton est sélectionné, une demande `POST` de formulaire est envoyée au serveur. Par convention, le nom de la méthode de gestionnaire est sélectionné en fonction de la valeur du paramètre `handler` conformément au schéma `OnPost[handler]Async`.
 
 Étant donné que le `handler` est `delete` dans cet exemple, la méthode de gestionnaire `OnPostDeleteAsync` est utilisée pour traiter la demande `POST`. Si `asp-page-handler` est défini avec une autre valeur, telle que `remove`, une méthode de gestionnaire de page avec le nom `OnPostRemoveAsync` est sélectionnée.
 
@@ -236,7 +236,7 @@ La méthode `OnPostDeleteAsync` :
 
 ::: moniker range=">= aspnetcore-2.1"
 
-## <a name="mark-page-properties-required"></a>Propriétés de la page Marque requises
+## <a name="mark-page-properties-required"></a>Marquer les propriétés de la page comme requises
 
 Les propriétés définies sur `PageModel` peuvent être décorées avec l’attribut [Required](/dotnet/api/system.componentmodel.dataannotations.requiredattribute) :
 
