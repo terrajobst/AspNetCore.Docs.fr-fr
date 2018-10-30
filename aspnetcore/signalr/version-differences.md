@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.date: 09/10/2018
 uid: signalr/version-differences
-ms.openlocfilehash: 4ac7952f26500285fc1c8f9453feb3ea8b33851a
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 3cec37719b743b3c805ada77249f526278e44599
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50089825"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234603"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>Différences entre ASP.NET SignalR et ASP.NET Core SignalR
 
@@ -56,9 +56,9 @@ app.UseSignalR(routes =>
 });
 ```
 
-### <a name="sticky-sessions-now-required"></a>Sessions rémanentes désormais requises
+### <a name="sticky-sessions"></a>Sessions rémanentes
 
-En raison de la façon dont la montée en puissance fonctionnait dans ASP.NET SignalR, les clients pouvaient se reconnecter et envoyer des messages à n’importe quel serveur dans la batterie de serveurs. En raison de modifications pour le modèle de montée en puissance, mais aussi de la non prise en charge de la reconnexion, ceci n’est plus pris en charge. Une fois que le client se connecte au serveur, il doit interagir avec le même serveur pour la durée de la connexion.
+Le modèle de montée en puissance parallèle de SignalR ASP.NET permet aux clients de se reconnecter et envoyer des messages à n’importe quel serveur dans la batterie de serveurs. Dans ASP.NET Core SignalR, le client doit interagir avec le même serveur pour la durée de la connexion. Pour la montée en puissance parallèle à l’aide de Redis, cela signifie que les sessions rémanentes sont requises. Pour la montée en puissance parallèle à l’aide [Service Azure SignalR](/azure/azure-signalr/), sessions rémanentes ne sont pas requises, car le service gère les connexions aux clients. 
 
 ### <a name="single-hub-per-connection"></a>Hub unique par connexion
 

@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 06/29/2018
 uid: signalr/authn-and-authz
-ms.openlocfilehash: 31d5f753e043157caf43fa8df54e310ea0efd17b
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 7cfe90115b0710fba196693efd309f7c914f0ad4
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207938"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234538"
 ---
 # <a name="authentication-and-authorization-in-aspnet-core-signalr"></a>Authentification et autorisation dans ASP.NET Core SignalR
 
@@ -28,11 +28,13 @@ SignalR peut être utilisé avec [ASP.NET Core authentification](xref:security/a
 
 Dans une application basée sur navigateur, l’authentification par cookie permet à vos informations d’identification utilisateur existantes de circuler automatiquement vers les connexions SignalR. Lorsque vous utilisez le navigateur client, aucune configuration supplémentaire n'est nécessaire. Si l’utilisateur est connecté à votre application, la connexion SignalR hérite automatiquement de cette authentification.
 
-L’authentification par cookie n’est pas recommandée, sauf si l’application a uniquement besoin d’authentifier les utilisateurs à partir du navigateur client. Lorsque vous utilisez le [Client .NET](xref:signalr/dotnet-client), la propriété `Cookies` peut être configurée dans l'appel à `.WithUrl` afin de fournir un cookie. Toutefois, utiliser l’authentification par cookie à partir du Client .NET nécessite que l’application fournisse une API pour échanger des données d’authentification pour un cookie.
+Les cookies sont un moyen de spécifiques au navigateur d’envoyer des jetons d’accès, mais les clients non-Web peuvent les envoyer. Lorsque vous utilisez le [Client .NET](xref:signalr/dotnet-client), la propriété `Cookies` peut être configurée dans l'appel à `.WithUrl` afin de fournir un cookie. Toutefois, utiliser l’authentification par cookie à partir du Client .NET nécessite que l’application fournisse une API pour échanger des données d’authentification pour un cookie.
 
 ### <a name="bearer-token-authentication"></a>Authentification du jeton du porteur
 
-Authentification du jeton du porteur est l’approche recommandée lors de l’utilisation de clients autres que le navigateur client. Dans cette approche, le client fournit un jeton d’accès que le serveur valide et qu’il utilise pour identifier l’utilisateur. Les détails de l’authentification du jeton du porteur dépassent le cadre de ce document. Sur le serveur, l’authentification du jeton du porteur est configurée à l’aide de l'[intergiciel (middleware) du porteur JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
+Le client peut fournir un jeton d’accès au lieu d’utiliser un cookie. Le serveur valide le jeton et l’utilise pour identifier l’utilisateur. Cette validation est effectuée uniquement quand la connexion est établie. Pendant la durée de vie de la connexion, le serveur ne revalide automatiquement pour vérifier la révocation du jeton.
+
+Sur le serveur, l’authentification du jeton du porteur est configurée à l’aide de l'[intergiciel (middleware) du porteur JWT](/dotnet/api/microsoft.extensions.dependencyinjection.jwtbearerextensions.addjwtbearer).
 
 Dans le client JavaScript, le jeton peut être fourni à l’aide de l'option [accessTokenFactory](xref:signalr/configuration#configure-bearer-authentication).
 
@@ -55,6 +57,10 @@ var connection = new HubConnectionBuilder()
 Dans l’API web standard, les jetons du porteur sont envoyés dans un en-tête HTTP. Toutefois, SignalR est impossible de définir ces en-têtes dans les navigateurs lors de l’utilisation de certains transports. Lorsque vous utilisez le protocole WebSocket et les événements, le jeton est transmis comme paramètre de chaîne de requête. Pour prendre en charge cela sur le serveur, une configuration supplémentaire est requise :
 
 [!code-csharp[Configure Server to accept access token from Query String](authn-and-authz/sample/Startup.cs?name=snippet)]
+
+### <a name="cookies-vs-bearer-tokens"></a>Cookies et les jetons du porteur 
+
+Étant donné que les cookies sont spécifiques aux navigateurs, les envoyer à partir d’autres types de clients augmente la complexité par rapport à l’envoi de jetons du porteur. Pour cette raison, l’authentification par cookie n’est pas recommandée, sauf si l’application a uniquement besoin d’authentifier les utilisateurs à partir du client de navigateur. Authentification du jeton du porteur est l’approche recommandée lors de l’utilisation de clients autres que le navigateur client.
 
 ### <a name="windows-authentication"></a>Authentification Windows
 
