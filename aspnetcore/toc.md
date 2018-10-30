@@ -3,9 +3,11 @@
 ## [Comparer ASP.NET Core avec ASP.NET](xref:fundamentals/choose-between-aspnet-and-aspnetcore)
 ## [Comparer .NET Core avec le .NET Framework](/dotnet/articles/standard/choosing-core-framework-server)
 
-# Tutoriels
+# [Bien démarrer](xref:getting-started)
+
+# Didacticiels
 ## Applications web
-### Razor Pages
+### Pages Razor
 #### [Avec Visual Studio](xref:tutorials/razor-pages/index)
 #### [Avec Visual Studio Code](xref:tutorials/razor-pages-vsc/index)
 #### [Avec Visual Studio pour Mac](xref:tutorials/razor-pages-mac/index)
@@ -31,7 +33,7 @@
 ## [Vue d’ensemble](xref:fundamentals/index)
 ## [Démarrage des applications](xref:fundamentals/startup)
 ## [Injection de dépendances (services)](xref:fundamentals/dependency-injection)
-## [Routage](xref:fundamentals/routing)
+## [Le routage](xref:fundamentals/routing)
 ## [Environnements multiples](xref:fundamentals/environments)
 ## [Configuration](xref:fundamentals/configuration/index)
 ## [Options](xref:fundamentals/configuration/options)
@@ -53,9 +55,9 @@
 ## [Lancer des requêtes HTTP](xref:fundamentals/http-requests)
 
 # Applications web
-## Razor Pages
+## Pages Razor
 ### [Vue d’ensemble](xref:razor-pages/index)
-### Tutoriels
+### Didacticiels
 #### Razor Pages avec Visual Studio
 ##### [Vue d’ensemble](xref:tutorials/razor-pages/index)
 ##### [Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
@@ -68,7 +70,7 @@
 ##### [Ajouter la validation](xref:tutorials/razor-pages/validation)
 #### Razor Pages avec Visual Studio Code
 ##### [Vue d’ensemble](xref:tutorials/razor-pages-vsc/index)
-##### [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages-vsc/razor-pages-start)
+##### [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages-vsc/razor-pages-start)
 ##### [Ajouter un modèle](xref:tutorials/razor-pages-vsc/model)
 ##### [Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages-vsc/page)
 ##### [Utiliser SQLite](xref:tutorials/razor-pages-vsc/sql)
@@ -76,7 +78,7 @@
 ##### [Ajouter une recherche](xref:tutorials/razor-pages-vsc/search)
 #### Razor Pages avec Visual Studio pour Mac
 ##### [Vue d’ensemble](xref:tutorials/razor-pages-mac/index)
-##### [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages-mac/razor-pages-start)
+##### [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages-mac/razor-pages-start)
 ##### [Ajouter un modèle](xref:tutorials/razor-pages-mac/model)
 ##### [Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages-mac/page)
 ##### [Utiliser SQLite](xref:tutorials/razor-pages-mac/sql)
@@ -89,7 +91,7 @@
 ### [SDK Razor](xref:razor-pages/sdk)
 ## MVC
 ### [Vue d’ensemble](xref:mvc/overview)
-### Tutoriels
+### Didacticiels
 #### MVC avec Visual Studio
 ##### [Vue d’ensemble](xref:tutorials/first-mvc-app/index)
 ##### [Bien démarrer](xref:tutorials/first-mvc-app/start-mvc)
@@ -144,10 +146,10 @@
 #### [Anchor](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)
 #### [Cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
 #### [Distributed Cache](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
-#### [Environment](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)
+#### [Environnement](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)
 #### [Form](mvc/views/working-with-forms.md#the-form-tag-helper)
 #### [Image](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)
-#### [Input](mvc/views/working-with-forms.md#the-input-tag-helper)
+#### [Entrée](mvc/views/working-with-forms.md#the-input-tag-helper)
 #### [Label](mvc/views/working-with-forms.md#the-label-tag-helper)
 #### [Partial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)
 #### [Select](mvc/views/working-with-forms.md#the-select-tag-helper)
@@ -163,15 +165,15 @@
 ### [Composants de vues](xref:mvc/views/view-components)
 ### [Compilation de vue](xref:mvc/views/view-compilation)
 ### [Modèle d’application](xref:mvc/controllers/application-model)
-### [Filtres](xref:mvc/controllers/filters)
-### [Zones](xref:mvc/controllers/areas)
+### [Les filtres](xref:mvc/controllers/filters)
+### [Les zones (areas)](xref:mvc/controllers/areas)
 ### [Composants d’application](xref:mvc/extensibility/app-parts)
 ### [Liaison de modèle personnalisée](xref:mvc/advanced/custom-model-binding)
 ### [Version de compatibilité](xref:mvc/compatibility-version)
 
 # API web
 ## [Vue d’ensemble](xref:web-api/index)
-## Tutoriels
+## Didacticiels
 ### [API web avec Visual Studio](xref:tutorials/first-web-api)
 ### [API web avec Visual Studio Code](xref:tutorials/web-api-vsc)
 ### [API web avec Visual Studio pour Mac](xref:tutorials/first-web-api-mac)
@@ -187,7 +189,7 @@
 # Applications en temps réel
 ## [Vue d’ensemble](xref:signalr/introduction)
 ## [Plateformes prises en charge](xref:signalr/supported-platforms)
-## Tutoriels
+## Didacticiels
 ### [SignalR avec JavaScript](xref:tutorials/signalr)
 ### [SignalR avec TypeScript](xref:tutorials/signalr-typescript-webpack)
 ## Concepts serveur
@@ -213,7 +215,7 @@
 
 # Tester, déboguer et dépanner
 ## [Tests unitaires](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
-## [Tests unitaires Razor Pages](xref:test/razor-pages-tests)
+## [Tests unitaires Pages Razor](xref:test/razor-pages-tests)
 ## [Contrôleurs de test](xref:mvc/controllers/testing)
 ## [Débogage distant](/visualstudio/debugger/remote-debugging-azure)
 ## [Débogage d’instantané](/azure/application-insights/app-insights-snapshot-debugger)
@@ -222,7 +224,7 @@
 ## [Résoudre les problèmes](xref:test/troubleshoot)
 
 # Accès aux données
-## Tutoriels
+## Didacticiels
 ### EF Core avec Razor Pages
 #### [Vue d’ensemble](xref:data/ef-rp/index)
 #### [Bien démarrer](xref:data/ef-rp/intro)
@@ -404,7 +406,7 @@
 ## [Liste fiable d’adresses IP](xref:security/ip-safelist)
 
 # Autres rubriques
-## [Internationalisation et traduction](xref:fundamentals/localization)
+## [Globalisation et localisation](xref:fundamentals/localization)
 ## [Traduction d’objet portable avec Orchard Core](xref:fundamentals/portable-object-localization)
 ## [Réécriture d’URL](xref:fundamentals/url-rewriting)
 ## [Fournisseurs de fichiers](xref:fundamentals/file-providers)
