@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: index
-ms.openlocfilehash: fcd95b88b970073f4d7eddf89729683d18be449d
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 37448b1b3d0da4e3cb34b1cd51f663b7e53ddced
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090652"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207392"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -67,12 +67,20 @@ Le ciblage de .NET Core présente plusieurs avantages, qui sont plus nombreux à
 
 Nous nous efforçons de combler l’écart d’API qui existe entre .NET Framework et .NET Core. Le [Pack de compatibilité Windows](/dotnet/core/porting/windows-compat-pack) a rendu disponible dans .NET Core des milliers d’API fonctionnant seulement dans Windows. Ces API n’étaient pas disponibles dans .NET Core 1.x.
 
+## <a name="how-to-download-a-sample"></a>Comment télécharger un exemple
+
+La plupart des articles et tutoriels contiennent des liens vers des exemples de code.
+
+1. [Téléchargez le fichier zip du référentiel ASP.NET](https://codeload.github.com/aspnet/Docs/zip/master).
+1. Décompressez le fichier *Docs-master.zip*.
+1. Utilisez l’URL contenue dans l’exemple de lien pour vous aider à naviguer dans l’exemple de répertoire.
+
 ## <a name="next-steps"></a>Étapes suivantes
 
 Pour plus d'informations, reportez-vous aux ressources suivantes :
 
-* [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
-* [Didacticiels ASP.NET Core](xref:tutorials/index)
+* [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* [Tutoriels ASP.NET Core](xref:tutorials/index)
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [Notions de base d’ASP.NET Core](xref:fundamentals/index)
 * [Le point hebdomadaire de la communauté ASP.NET](https://live.asp.net/) couvre l’avancement et les plans des équipes de développement. Il comprend de nouveaux blogs et des logiciels de tiers.
