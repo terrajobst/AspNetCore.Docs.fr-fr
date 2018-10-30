@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/15/2018
 uid: web-api/index
-ms.openlocfilehash: e4615e5d416ba2433d55309b25ee3643c6c636ac
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 950f4e8afa13bf297ea8658ef1c1bea0c9b62936
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207002"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234590"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -71,7 +71,7 @@ Dans ASP.NET Core 2.2 et ultérieur, MVC transforme les résultats de code d’
 
 La réponse HTTP pour le résultat `NotFound` a un code d’état 404 avec un corps `ProblemDetails` semblable au suivant :
 
-```js
+```json
 {
     type: "https://tools.ietf.org/html/rfc7231#section-6.5.4",
     title: "Not Found",

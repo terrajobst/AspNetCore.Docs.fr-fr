@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: 08815768-2702-42ae-ae85-0a59934a11d1
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
-ms.openlocfilehash: 44ab88b61a96235da27ff41d6b649bfd7fce3e38
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 43878bc101ef97e8bbb6c150f4125707da7660c9
+ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41836474"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50244955"
 ---
 <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET et Web Tools pour Visual Studio 2013 Release Notes de publication
 ====================
@@ -574,7 +574,7 @@ Pour obtenir la liste des nouvelles fonctionnalités et d’autres modifications
 
 Razor ASP.NET 3 inclut les nouvelles fonctionnalités suivantes :
 
-- Prise en charge pour la modification de l’onglet. Preivously, le **mettre le Document** commande, la mise en retrait automatique et auto mise en forme dans Visual Studio n’a pas fonctionné correctement lorsque vous utilisez le **conserver les tabulations** option. Cette modification résout Visual Studio pour le code Razor pour l’onglet mise en forme de mise en forme.
+- Prise en charge pour la modification de l’onglet. Auparavant, le **mettre le Document** commande, la mise en retrait automatique et auto mise en forme dans Visual Studio n’a pas fonctionné correctement lorsque vous utilisez le **conserver les tabulations** option. Cette modification résout Visual Studio pour le code Razor pour l’onglet mise en forme de mise en forme.
 - Prise en charge pour les règles de réécriture d’URL lors de la génération des liens.
 - Suppression de l’attribut transparent de sécurité.
   > [!NOTE]
