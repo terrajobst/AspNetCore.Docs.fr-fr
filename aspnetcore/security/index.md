@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/index
-ms.openlocfilehash: f3b1f74f2e3a991b72cae94019f42548e3858f20
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 4277266e20ab1921a2ba24d4500358ba90330370
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091026"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50252943"
 ---
 # <a name="overview-of-aspnet-core-security"></a>Vue d’ensemble de la sécurité ASP.NET Core
 
@@ -40,7 +40,7 @@ Il existe d’autres failles de sécurité que vous devez connaître. Pour plus 
 
 ## <a name="aspnet-core-security-documentation"></a>Documentation sur la sécurité ASP.NET Core
 
-* [Authentification](xref:security/authentication/index)
+* Authentification
   * [Présentation d’Identity](xref:security/authentication/identity)
   * [Activer l’authentification à l’aide de Facebook, Google et d’autres fournisseurs externes](xref:security/authentication/social/index)
   * [Activer l’authentification avec WS-Federation](xref:security/authentication/ws-federation)
@@ -54,7 +54,7 @@ Il existe d’autres failles de sécurité que vous devez connaître. Pour plus 
     * [Appeler une API web dans une application web ASP.NET Core via Azure AD](https://azure.microsoft.com/documentation/samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/)
     * [Une application web ASP.NET Core Azure AD B2C](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapp/)
   * [Sécuriser les applications ASP.NET Core avec IdentityServer4](https://identityserver4.readthedocs.io)
-* [Autorisation](xref:security/authorization/index)
+* Autorisation
   * [Introduction](xref:security/authorization/introduction)
   * [Créer une application avec des données utilisateur protégées par une autorisation](xref:security/authorization/secure-data)
   * [Autorisation simple](xref:security/authorization/simple)
@@ -65,10 +65,10 @@ Il existe d’autres failles de sécurité que vous devez connaître. Pour plus 
   * [Autorisation basée sur les ressources](xref:security/authorization/resourcebased)
   * [Autorisation basée sur les vues](xref:security/authorization/views)
   * [Limiter une identité par schéma](xref:security/authorization/limitingidentitybyscheme)
-* [Protection des données](xref:security/data-protection/index)
+* Protection des données
   * [Présentation de la protection des données](xref:security/data-protection/introduction)
   * [Bien démarrer avec les API de protection des données](xref:security/data-protection/using-data-protection)
-  * [API de contrôle serveur consommateur](xref:security/data-protection/consumer-apis/index)
+  * API de contrôle serveur consommateur
     * [Vue d’ensemble des API de contrôle serveur consommateur](xref:security/data-protection/consumer-apis/overview)
     * [Chaînes d’objectifs](xref:security/data-protection/consumer-apis/purpose-strings)
     * [Hiérarchie d’objectifs et architecture mutualisée](xref:security/data-protection/consumer-apis/purpose-strings-multitenancy)

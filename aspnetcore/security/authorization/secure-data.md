@@ -5,12 +5,12 @@ description: Découvrez comment créer une application Pages Razor avec des donn
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 786e83eb28722e83eea46def962593f58ad524e2
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 185628d4e06c9b5ae7f2685c10ea9e46dd5abe92
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244838"
+ms.locfileid: "50253219"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -71,16 +71,16 @@ L’exemple contient les gestionnaires d’autorisation suivants :
 Ce didacticiel est avancé. Vous devez être familiarisé avec :
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
-* [Authentification](xref:security/authentication/index)
+* [Authentification](xref:security/authentication/identity)
 * [Confirmation de compte et récupération de mot de passe](xref:security/authentication/accconfirm)
-* [Autorisation](xref:security/authorization/index)
+* [Autorisation](xref:security/authorization/introduction)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-Dans ASP.NET Core 2.1, `User.IsInRole` échoue lors de l’utilisation `AddDefaultIdentity`. Ce didacticiel utilise `AddDefaultIdentity` et par conséquent nécessite ASP.NET Core 2.2 preview 1 ou version ultérieure. Consultez [ce problème GitHub](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909) pour une solution de contournement.
+Dans ASP.NET Core 2.1, `User.IsInRole` échoue lors de l’utilisation `AddDefaultIdentity`. Ce didacticiel utilise `AddDefaultIdentity` et par conséquent nécessite ASP.NET Core 2.2 ou version ultérieure. Consultez [ce problème GitHub](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909) pour une solution de contournement.
 
 ::: moniker-end
 
@@ -352,7 +352,7 @@ Tester l’application d’amorçage la base de données. S’il existe des lign
 
 * [Créer une application web .NET Core et SQL Database dans Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.NET Core d’autorisation Lab](https://github.com/blowdart/AspNetAuthorizationWorkshop). Ce laboratoire présente plus en détails sur les fonctionnalités de sécurité présentées dans ce didacticiel.
-* [Autorisation dans ASP.NET Core : Simple, rôle, basée sur les revendications et personnalisée](xref:security/authorization/index)
+* <xref:security/authorization/introduction>
 * [Autorisation basée sur une stratégie personnalisée](xref:security/authorization/policies)
 
 ::: moniker-end
