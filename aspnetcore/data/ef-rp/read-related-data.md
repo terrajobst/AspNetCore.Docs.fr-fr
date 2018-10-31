@@ -5,12 +5,12 @@ description: Dans ce didacticiel, nous allons lire et afficher des données asso
 ms.author: riande
 ms.date: 11/05/2017
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: e23b8bb870b329bd705fbc9548df62524303893e
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: e8b59c19eac2c2adc1f13cf1e44f750576686c87
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912319"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348492"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -55,7 +55,7 @@ EF Core peut charger des données associées dans les propriétés de navigation
 
 * L’opérateur `Select` charge uniquement les données associées nécessaires.
 
-## <a name="create-a-courses-page-that-displays-department-name"></a>Créer une page Courses qui affiche le nom du département
+## <a name="create-a-course-page-that-displays-department-name"></a>Créer une page Course qui affiche le nom du département
 
 L’entité Course comprend une propriété de navigation qui contient l’entité `Department`. L’entité `Department` contient le département auquel le cours est affecté.
 

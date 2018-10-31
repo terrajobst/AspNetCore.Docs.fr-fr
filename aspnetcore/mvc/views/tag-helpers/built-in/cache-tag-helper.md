@@ -3,47 +3,41 @@ title: Tag Helper Cache dans ASP.NET Core MVC
 author: pkellner
 description: Découvrez comment utiliser le Tag Helper Cache.
 ms.author: riande
-ms.date: 02/14/2017
+ms.custom: mvc
+ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 11754d2858d8f02c7eb9baac8feda9b50ddb3d79
-ms.sourcegitcommit: 4d5f8680d68b39c411b46c73f7014f8aa0f12026
+ms.openlocfilehash: 7d64c500168166b0a7a29d5b92473726d5a9f49a
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47028153"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325339"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Tag Helper Cache dans ASP.NET Core MVC
 
-Par [Peter Kellner](http://peterkellner.net) 
+Par [Peter Kellner](http://peterkellner.net) et [Luke Latham](https://github.com/guardrex) 
 
-Le Tag Helper Cache permet d’améliorer considérablement les performances de votre application ASP.NET Core en mettant en cache son contenu dans le fournisseur de caches ASP.NET Core interne.
+Le Tag Helper Cache permet d’améliorer les performances de votre application ASP.NET Core en mettant en cache son contenu dans le fournisseur de caches ASP.NET Core interne.
 
-Le moteur de vue Razor définit la valeur par défaut `expires-after` sur vingt minutes.
+Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
-Le balisage Razor suivant met en cache la date/l’heure :
+Le balisage Razor suivant met en cache la date actuelle :
 
 ```cshtml
 <cache>@DateTime.Now</cache>
 ```
 
-La première demande à la page qui contient `CacheTagHelper` affiche la date/l’heure actuelle. Les autres demandes affichent la valeur mise en cache jusqu’à ce que le cache expire (par défaut, 20 minutes) ou soit supprimé par sollicitation de la mémoire.
-
-Vous pouvez définir la durée du cache avec les attributs suivants :
+La première requête à la page qui contient le Tag Helper affiche la date actuelle. Les autres requêtes affichent la valeur mise en cache jusqu’à ce que le cache expire (par défaut, 20 minutes) ou jusqu’à ce que la date du cache soit supprimée du cache.
 
 ## <a name="cache-tag-helper-attributes"></a>Attributs de Tag Helper Cache
 
-- - -
+### <a name="enabled"></a>enabled
 
-### <a name="enabled"></a>enabled    
+| Type d’attribut  | Exemples        | Par défaut |
+| --------------- | --------------- | ------- |
+| Booléen         | `true`, `false` | `true`  |
 
-
-| Type d’attribut    | Valeurs valides      |
-|----------------   |----------------   |
-| boolean           | "true" (valeur par défaut)  |
-|                   | "false"   |
-
-
-Détermine si le contenu joint par le Tag Helper Cache est mis en cache. La valeur par défaut est `true`.  Si la valeur est `false`, ce Tag Helper Cache n’a aucun effet de mise en cache sur la sortie rendue.
+`enabled` détermine si le contenu joint par le Tag Helper Cache est mis en cache. La valeur par défaut est `true`. Si la valeur est `false`, la sortie rendue n’est **pas** mise en cache.
 
 Exemple :
 
@@ -53,17 +47,15 @@ Exemple :
 </cache>
 ```
 
-- - -
+### <a name="expires-on"></a>expires-on
 
-### <a name="expires-on"></a>expires-on 
+| Type d’attribut   | Exemple                            |
+| ---------------- | ---------------------------------- |
+| `DateTimeOffset` | `@new DateTime(2025,1,29,17,02,0)` |
 
-| Type d’attribut |           Exemple de valeur            |
-|----------------|------------------------------------|
-| DateTimeOffset | "@new DateTime(2025,1,29,17,02,0)" |
+`expires-on` définit une date d’expiration absolue pour l’élément mis en cache.
 
-Définit une date d’expiration absolue. L’exemple suivant met en cache le contenu du Tag Helper Cache jusqu’à 17:02 le 29 janvier 2025.
-
-Exemple :
+L’exemple suivant met en cache le contenu du Tag Helper Cache jusqu’à 17:02 le 29 janvier 2025 :
 
 ```cshtml
 <cache expires-on="@new DateTime(2025,1,29,17,02,0)">
@@ -71,15 +63,13 @@ Exemple :
 </cache>
 ```
 
-- - -
-
 ### <a name="expires-after"></a>expires-after
 
-| Type d’attribut |        Exemple de valeur         |
-|----------------|------------------------------|
-|    TimeSpan    | "@TimeSpan.FromSeconds(120)" |
+| Type d’attribut | Exemple                      | Par défaut    |
+| -------------- | ---------------------------- | ---------- |
+| `TimeSpan`     | `@TimeSpan.FromSeconds(120)` | 20 minutes |
 
-Définit la durée à partir de l’heure de la première demande pour mettre en cache le contenu. 
+`expires-after` définit la durée à partir de l’heure de la première demande pour mettre en cache le contenu.
 
 Exemple :
 
@@ -89,15 +79,15 @@ Exemple :
 </cache>
 ```
 
-- - -
+Le moteur de vue Razor définit la valeur par défaut `expires-after` sur vingt minutes.
 
 ### <a name="expires-sliding"></a>expires-sliding
 
-| Type d’attribut |        Exemple de valeur        |
-|----------------|-----------------------------|
-|    TimeSpan    | "@TimeSpan.FromSeconds(60)" |
+| Type d’attribut | Exemple                     |
+| -------------- | --------------------------- |
+| `TimeSpan`     | `@TimeSpan.FromSeconds(60)` |
 
-Définit l’heure à laquelle une entrée de cache doit être supprimée si elle n’a fait l’objet d’aucun accès.
+Définit l’heure à laquelle une entrée de cache doit être supprimée si sa valeur n’a fait l’objet d’aucun accès.
 
 Exemple :
 
@@ -107,18 +97,15 @@ Exemple :
 </cache>
 ```
 
-- - -
-
 ### <a name="vary-by-header"></a>vary-by-header
 
-| Type d’attribut    | Exemples de valeurs                |
-|----------------   |----------------               |
-| Chaîne            | "User-Agent"                  |
-|                   | "User-Agent,content-encoding" |
+| Type d’attribut | Exemples                                    |
+| -------------- | ------------------------------------------- |
+| Chaîne         | `User-Agent`, `User-Agent,content-encoding` |
 
-Accepte une seule valeur d’en-tête ou une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand elles changent. L’exemple suivant analyse la valeur d’en-tête `User-Agent`. L’exemple met en cache le contenu de chaque valeur `User-Agent` différente présentée au serveur web.
+`vary-by-header` accepte une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand elles changent.
 
-Exemple :
+L’exemple suivant analyse la valeur d’en-tête `User-Agent`. L’exemple met en cache le contenu de chaque valeur `User-Agent` différente présentée au serveur web :
 
 ```cshtml
 <cache vary-by-header="User-Agent">
@@ -126,18 +113,15 @@ Exemple :
 </cache>
 ```
 
-- - -
-
 ### <a name="vary-by-query"></a>vary-by-query
 
-| Type d’attribut    | Exemples de valeurs                |
-|----------------   |----------------               |
-| Chaîne            | "Make"                |
-|                   | "Make,Model" |
+| Type d’attribut | Exemples             |
+| -------------- | -------------------- |
+| Chaîne         | `Make`, `Make,Model` |
 
-Accepte une seule valeur d’en-tête ou une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand la valeur d’en-tête change. L’exemple suivant examine les valeurs de `Make` et `Model`.
+`vary-by-query` accepte une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand la valeur de l’en-tête change.
 
-Exemple :
+L’exemple suivant analyse les valeurs de `Make` et `Model`. L’exemple met en cache le contenu de chaque valeur `Make` et `Model` différente présentée au serveur web :
 
 ```cshtml
 <cache vary-by-query="Make,Model">
@@ -145,18 +129,17 @@ Exemple :
 </cache>
 ```
 
-- - -
-
 ### <a name="vary-by-route"></a>vary-by-route
 
-| Type d’attribut    | Exemples de valeurs                |
-|----------------   |----------------               |
-| Chaîne            | "Make"                |
-|                   | "Make,Model" |
+| Type d’attribut | Exemples             |
+| -------------- | -------------------- |
+| Chaîne         | `Make`, `Make,Model` |
 
-Accepte une seule valeur d’en-tête ou une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand les valeurs des paramètres de données de routage changent. Exemple :
+`vary-by-route` accepte une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand la valeur du paramètre des données de route change.
 
-*Startup.cs* 
+Exemple :
+
+*Startup.cs* :
 
 ```csharp
 routes.MapRoute(
@@ -164,7 +147,7 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
 
-*Index.cshtml*
+*Index.cshtml*:
 
 ```cshtml
 <cache vary-by-route="Make,Model">
@@ -172,18 +155,15 @@ routes.MapRoute(
 </cache>
 ```
 
-- - -
-
 ### <a name="vary-by-cookie"></a>vary-by-cookie
 
-| Type d’attribut    | Exemples de valeurs                |
-|----------------   |----------------               |
-| Chaîne            | ".AspNetCore.Identity.Application"                |
-|                   | ".AspNetCore.Identity.Application,HairColor" |
+| Type d’attribut | Exemples                                                                         |
+| -------------- | -------------------------------------------------------------------------------- |
+| Chaîne         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
-Accepte une seule valeur d’en-tête ou une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand les valeurs d’en-tête changent. L’exemple suivant examine le cookie associé à ASP.NET Core Identity. Quand un utilisateur est authentifié, cookie de la demande à définir qui déclenche une actualisation du cache.
+`vary-by-cookie` accepte une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand les valeurs d’en-tête changent.
 
-Exemple :
+L’exemple suivant analyse le cookie associé à ASP.NET Core Identity. Lorsqu’un utilisateur est authentifié, une modification dans le cookie Identity déclenche une actualisation du cache :
 
 ```cshtml
 <cache vary-by-cookie=".AspNetCore.Identity.Application">
@@ -191,20 +171,15 @@ Exemple :
 </cache>
 ```
 
-- - -
-
 ### <a name="vary-by-user"></a>vary-by-user
 
-| Type d’attribut    | Exemples de valeurs                |
-|----------------   |----------------               |
-| Booléen             | "true"                  |
-|                     | "false" (valeur par défaut) |
+| Type d’attribut  | Exemples        | Par défaut |
+| --------------- | --------------- | ------- |
+| Booléen         | `true`, `false` | `true`  |
 
-Spécifie si le cache doit ou non être réinitialisé quand l’utilisateur connecté (ou principal du contexte) change. L’utilisateur actuel est également connu comme principal du contexte de la demande et peut être affiché dans une vue Razor en référençant `@User.Identity.Name`.
+`vary-by-user` spécifie si le cache se réinitialise ou pas quand l’utilisateur connecté (ou principal du contexte) change. L’utilisateur actuel est également connu comme principal du contexte de la demande et peut être affiché dans une vue Razor en référençant `@User.Identity.Name`.
 
-L’exemple suivant examine l’utilisateur actuellement connecté.  
-
-Exemple :
+L’exemple suivant analyse l’utilisateur actuellement connecté pour déclencher une actualisation du cache :
 
 ```cshtml
 <cache vary-by-user="true">
@@ -212,26 +187,22 @@ Exemple :
 </cache>
 ```
 
-L’utilisation de cet attribut permet de conserver le contenu dans le cache via un cycle de connexion et de déconnexion.  Quand vous utilisez `vary-by-user="true"`, une action de connexion et de déconnexion invalide le cache pour l’utilisateur authentifié.  Le cache est invalidé, car une nouvelle valeur de cookie unique est générée lors de la connexion. Le cache est conservé pour l’état anonyme quand aucun cookie n’est présent ou n’a expiré. Cela signifie que, si aucun utilisateur n’est connecté, le cache est conservé.
-
-- - -
+L’utilisation de cet attribut permet de conserver le contenu dans le cache lors d’un cycle de connexion et de déconnexion. Lorsque la valeur est définie sur `true`, un cycle d’authentification invalide le cache pour l’utilisateur authentifié. Le cache est invalidé, car une nouvelle valeur de cookie unique est générée quand un utilisateur est authentifié. Le cache est conservé pour l’état anonyme quand aucun cookie n’est présent ou quand le cookie a expiré. Si l’utilisateur n’est **pas** authentifié, le cache est conservé.
 
 ### <a name="vary-by"></a>vary-by
 
-| Type d’attribut | Exemples de valeurs |
-|----------------|----------------|
-|     Chaîne     |    "@Model"    |
+| Type d’attribut | Exemple  |
+| -------------- | -------- |
+| Chaîne         | `@Model` |
 
-Permet la personnalisation des données mises en cache. Quand l’objet référencé par la valeur de la chaîne de l’attribut change, le contenu du Tag Helper Cache est mis à jour. Souvent, une concaténation de chaîne des valeurs de modèle est affectée à cet attribut.  En effet, cela signifie qu’une mise à jour de l’une des valeurs concaténées invalide le cache.
+`vary-by` permet la personnalisation des données mises en cache. Quand l’objet référencé par la valeur de la chaîne de l’attribut change, le contenu du Tag Helper Cache est mis à jour. Souvent, une concaténation de chaîne des valeurs de modèle est affectée à cet attribut. En effet, cela entraîne un scénario où une mise à jour de l’une des valeurs concaténées invalide le cache.
 
-L’exemple suivant suppose que la méthode de contrôleur restituant la vue additionne la valeur entière des deux paramètres de routage, `myParam1` et `myParam2`, et la retourne en tant que propriété de modèle unique. Quand cette somme est modifiée, le contenu du Tag Helper Cache est rendu et mis en cache à nouveau.  
-
-Exemple :
+L’exemple suivant suppose que la méthode de contrôleur restituant la vue additionne la valeur entière des deux paramètres de routage, `myParam1` et `myParam2`, et retourne la somme en tant que propriété de modèle unique. Quand cette somme est modifiée, le contenu du Tag Helper Cache est rendu et mis en cache à nouveau.  
 
 Action :
 
 ```csharp
-public IActionResult Index(string myParam1,string myParam2,string myParam3)
+public IActionResult Index(string myParam1, string myParam2, string myParam3)
 {
     int num1;
     int num2;
@@ -241,26 +212,21 @@ public IActionResult Index(string myParam1,string myParam2,string myParam3)
 }
 ```
 
-*Index.cshtml*
+*Index.cshtml*:
 
 ```cshtml
-<cache vary-by="@Model"">
+<cache vary-by="@Model">
     Current Time Inside Cache Tag Helper: @DateTime.Now
 </cache>
 ```
 
-- - -
-
 ### <a name="priority"></a>priority
 
-| Type d’attribut    | Exemples de valeurs                |
-|----------------   |----------------               |
-| CacheItemPriority  | "High"                   |
-|                    | "Low" |
-|                    | "NeverRemove" |
-|                    | "Normal" |
+| Type d’attribut      | Exemples                               | Par défaut  |
+| ------------------- | -------------------------------------- | -------- |
+| `CacheItemPriority` | `High`, `Low`, `NeverRemove`, `Normal` | `Normal` |
 
-Fournit des instructions de suppression de cache au fournisseur de caches intégré. Le serveur web supprime d’abord les entrées de cache `Low` en cas de sollicitation de la mémoire.
+`priority` fournit des instructions de suppression de cache au fournisseur de caches intégré. Le serveur web supprime d’abord les entrées de cache `Low` en cas de sollicitation de la mémoire.
 
 Exemple :
 
@@ -270,11 +236,11 @@ Exemple :
 </cache>
 ```
 
-L’attribut `priority` ne garantit pas un niveau spécifique de rétention du cache. `CacheItemPriority` est uniquement une suggestion. Si vous affectez à cet attribut la valeur `NeverRemove`, il n’est pas garanti que le cache sera toujours conservé. Pour plus d’informations, consultez [Ressources supplémentaires](#additional-resources).
+L’attribut `priority` ne garantit pas un niveau spécifique de rétention du cache. `CacheItemPriority` est uniquement une suggestion. Si vous affectez à cet attribut la valeur `NeverRemove`, il n’est pas garanti que les éléments du cache soient toujours conservés. Pour plus d’informations, consultez les rubriques de la section [Ressources supplémentaires](#additional-resources).
 
 Le Tag Helper Cache dépend du [service de cache en mémoire](xref:performance/caching/memory). Le Tag Helper Cache ajoute le service s’il ne l’a pas encore été.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
-* [Présentation d’Identity](xref:security/authentication/identity)
+* <xref:performance/caching/memory>
+* <xref:security/authentication/identity>

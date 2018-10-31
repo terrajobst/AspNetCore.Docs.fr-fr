@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/01/2018
 uid: fundamentals/routing
-ms.openlocfilehash: d9ba96c7b2abd35b1b13c84814bf3f776e8d8731
-ms.sourcegitcommit: 13940eb53c68664b11a2d685ee17c78faab1945d
+ms.openlocfilehash: 500cefbc7caee2054b4afda7c1277685862f5ad4
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47861055"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348557"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -169,7 +169,7 @@ routes.MapRoute(
 
 Avec les valeurs de route `{ controller = Products, action = List }`, cette route génère l’URL `/Products/List`. Les valeurs de route remplacent les paramètres de routage correspondant pour former le chemin d’URL. Étant donné qu’`id` est un paramètre de routage facultatif, ce n’est pas un problème qu’il n’ait pas de valeur.
 
-Avec les valeurs de route `{ controller = Home, action = Index }`, cette route génère l’URL `/`. Les valeurs de route fournies sont mises en correspondance avec les valeurs par défaut afin que les segments correspondant à ces valeurs puissent être omis sans risque. Les deux URL générées effectuent un aller-retour avec cette définition de route, et produisent les mêmes valeurs de route que celles utilisées pour générer l’URL.
+Avec les valeurs de route `{ controller = Home, action = Index }`, cette route génère l’URL `/`. Les valeurs de route fournies sont mises en correspondance avec les valeurs par défaut afin que les segments correspondant à ces valeurs peuissent être omis sans risque. Les deux URL générées effectuent un aller-retour avec cette définition de route, et produisent les mêmes valeurs de route que celles utilisées pour générer l’URL.
 
 > [!TIP]
 > Pour générer des URL, une application utilisant ASP.NET Core MVC doit utiliser <xref:Microsoft.AspNetCore.Mvc.Routing.UrlHelper> au lieu d’effectuer un appel directement dans le routage.
@@ -391,7 +391,15 @@ Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilis
 
 ## <a name="parameter-transformer-reference"></a>Informations de référence sur le transformateur de paramètre
 
-Les transformateurs de paramètre sont exécutés lors de la génération d’un lien pour un `Route`. Les transformateurs de paramètre prennent la valeur de routage du paramètre et la convertissent en une nouvelle valeur de chaîne. La valeur transformée est utilisée dans le lien généré. Par exemple, un transformateur de paramètre `slugify` personnalisé dans le modèle d’itinéraire `blog\{article:slugify}` avec `Url.Action(new { article = "MyTestArticle" })` génère `blog\my-test-article`. Les transformateurs de paramètre implémentent `Microsoft.AspNetCore.Routing.IOutboundParameterTransformer` et sont configurés à l’aide de <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>.
+Transformateurs de paramètre :
+
+* Sont exécutés lors de la génération d’un lien pour un `Route`.
+* Implémentez `Microsoft.AspNetCore.Routing.IOutboundParameterTransformer`.
+* Sont configurés à l’aide de <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>.
+* Prennent la valeur de routage du paramètre et la convertissent en une nouvelle valeur de chaîne.
+* La valeur transformée est utilisée dans le lien généré.
+
+Par exemple, un transformateur de paramètre `slugify` personnalisé dans le modèle d’itinéraire `blog\{article:slugify}` avec `Url.Action(new { article = "MyTestArticle" })` génère `blog\my-test-article`.
 
 Les transformateurs de paramètre sont également utilisés par les frameworks pour transformer l’URI vers lequel un point de terminaison est résolu. Par exemple, ASP.NET Core MVC utilise des transformateurs de paramètre pour convertir la valeur de routage utilisée et la faire correspondre à un `area`, `controller`, `action` et `page`.
 
@@ -403,7 +411,10 @@ routes.MapRoute(
 
 Avec la route précédente, l’action `SubscriptionManagementController.GetAll()` est mise en correspondance avec l’URI `/subscription-management/get-all`. Un transformateur de paramètre ne modifie pas les valeurs de routage utilisées pour générer un lien. `Url.Action("GetAll", "SubscriptionManagement")` obtient en sortie `/subscription-management/get-all`.
 
-La convention de l’API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention` est également fournie avec ASP.NET Core MVC. Cette convention applique un transformateur de paramètre spécifié à tous les jetons de routage d’attribut dans l’application.
+ASP.NET Core fournit des conventions d’API pour l’utilisation des transformateurs de paramètre avec des routages générés :
+
+* La convention de l’API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention` est fournie avec ASP.NET Core MVC. Cette convention applique un transformateur de paramètre spécifié à tous les routages d’attributs dans l’application. Le transformateur de paramètre transforme les jetons de routage d’attribut quand ils sont remplacés. Pour plus d’informations, consultez [Utiliser un transformateur de paramètre pour personnaliser le remplacement des jetons](/aspnet/core/mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
+* La convention de l’API `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` est fournie avec les pages Razor. Cette convention applique un transformateur de paramètre spécifié à toutes les pages Razor découvertes automatiquement. Le transformateur de paramètre transforme les segments du nom de dossier et du nom de fichier des routages de pages Razor. Pour plus d’informations, consultez [Utiliser un transformateur de paramètre pour personnaliser les routages de pages](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
 
 ::: moniker-end
 

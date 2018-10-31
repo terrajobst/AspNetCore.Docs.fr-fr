@@ -5,12 +5,12 @@ description: Découvrez comment les composants de vue sont utilisés dans ASP.NE
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/views/view-components
-ms.openlocfilehash: cf2cfcdb07271503b844e31940e90b7376db0a6f
-ms.sourcegitcommit: 599ebae5c2d6fcb22dfa6ae7d1f4bdfcacb79af4
+ms.openlocfilehash: 49c8be655f151e219c8fa0854dbcf510d7bbd158
+ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47211063"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49325579"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -75,20 +75,20 @@ Un composant de vue définit sa logique dans une méthode `InvokeAsync` qui reto
 
 Le Runtime recherche la vue dans les chemins suivants :
 
-* /Pages/Components/\<nom_composant_vue>/\<nom_vue>
-* /Views/\<nom_contrôleur>/Components/\<nom_composant_vue>/\<nom_vue>
-* /Views/Shared/Components/\<nom_composant_vue>/\<nom_vue>
+* /Pages/Components/{View Component Name}/{View Name}
+* /Views/{Controller Name}/Components/{View Component Name}/{View Name}
+* /Views/Shared/Components/{View Component Name}/{View Name}
 
 Le nom de la vue par défaut pour un composant de vue est *Default*. Votre fichier de vue est donc normalement appelé *Default.cshtml*. Vous pouvez spécifier un nom de vue différent quand vous créez le résultat du composant de vue ou quand vous appelez la méthode `View`.
 
-Nous vous recommandons de nommer le fichier de vue *Default.cshtml* et d’utiliser le chemin *Views/Shared/Components/\<nom_composant_vue>/\<nom_vue>*. Le composant de vue `PriorityList` montré dans cet exemple utilise le chemin *Views/Shared/Components/PriorityList/Default.cshtml* pour la vue.
+Nous vous recommandons de nommer le fichier de vue *Default.cshtml* et d’utiliser le chemin *Views/Shared/Components/{View Component Name}/{View Name}*. Le composant de vue `PriorityList` montré dans cet exemple utilise le chemin *Views/Shared/Components/PriorityList/Default.cshtml* pour la vue.
 
 ## <a name="invoking-a-view-component"></a>Appel d’un composant de vue
 
 Pour utiliser le composant de vue, appelez-le dans une vue, comme ci-dessous :
 
 ```cshtml
-@Component.InvokeAsync("Name of view component", <anonymous type containing parameters>)
+@Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
 ```
 
 Les paramètres sont passés à la méthode `InvokeAsync`. Le composant de vue `PriorityList` décrit dans cet article est appelé du fichier de vue *Views/Todo/Index.cshtml*. Dans le code suivant, la méthode `InvokeAsync` est appelée avec deux paramètres :

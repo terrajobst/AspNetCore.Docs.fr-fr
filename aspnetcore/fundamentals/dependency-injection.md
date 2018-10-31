@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/02/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 33fae5d87029c8b3afdc321e0247555c1e479d07
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 193bfc7651b6da6db69e8c15bd6beb82906bde0a
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912616"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477668"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -287,9 +287,9 @@ Les interfaces sont implémentées dans la classe `Operation`. Le constructeur `
 
 Un `OperationService` est inscrit, dépendant de chacun des autres types `Operation`. Lorsque `OperationService` est demandé via l’injection de dépendances, il reçoit une nouvelle instance de chaque service ou une instance existante en fonction de la durée de vie du service dépendant.
 
-* Si des services temporaires sont créés à la demande, le `OperationsId` du service `IOperationTransient` est différent du `OperationsId` de `OperationService`. `OperationService` reçoit une nouvelle instance de la classe `IOperationTransient`. La nouvelle instance génère un autre `OperationsId`.
-* Si des services délimités sont créés pour chaque requête, le `OperationsId` du `IOperationScoped` service est identique à celui de `OperationService` au sein d’une requête. Entre les requêtes, les deux services partagent une valeur `OperationsId` différente.
-* Si des services singleton et d’instances singleton sont créés une fois et utilisés sur toutes les requêtes et tous les services, le `OperationsId` est constant entre toutes les requêtes de service.
+* Si des services temporaires sont créés à la demande, le `OperationId` du service `IOperationTransient` est différent du `OperationId` de `OperationService`. `OperationService` reçoit une nouvelle instance de la classe `IOperationTransient`. La nouvelle instance génère un autre `OperationId`.
+* Si des services délimités sont créés pour chaque requête, le `OperationId` du `IOperationScoped` service est identique à celui de `OperationService` au sein d’une requête. Entre les requêtes, les deux services partagent une valeur `OperationId` différente.
+* Si des services singleton et d’instances singleton sont créés une fois et utilisés sur toutes les requêtes et tous les services, le `OperationId` est constant entre toutes les requêtes de service.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -538,7 +538,7 @@ La méthode de fabrique d’un service individuel, comme le deuxième argument d
 
 ## <a name="recommendations"></a>Recommandations
 
-Lorsque vous utilisez l’injection de dépendances, gardez à l’esprit les recommandations suivantes :
+* La résolution de service basée sur `async/await` et `Task` n’est pas prise en charge. C# ne prend pas en charge les constructeurs asynchrones. Par conséquent, le modèle recommandé consiste à utiliser des méthodes asynchrones après avoir résolu de façon synchrone le service.
 
 * Évitez de stocker des données et des configurations directement dans le conteneur de services. Par exemple, le panier d’achat d’un utilisateur ne doit en général pas être ajouté au conteneur de services. La configuration doit utiliser le [modèle d’options](xref:fundamentals/configuration/options). De même, évitez les objets « conteneurs de données » qui n’existent que pour autoriser l’accès à un autre objet. Il est préférable de demander l’élément réel par le biais de l’injection de dépendance.
 
@@ -557,7 +557,6 @@ L’injection de dépendance constitue une *alternative* aux modèles d’accès
 * <xref:mvc/views/dependency-injection>
 * <xref:mvc/controllers/dependency-injection>
 * <xref:security/authorization/dependencyinjection>
-* <xref:fundamentals/repository-pattern>
 * <xref:fundamentals/startup>
 * <xref:test/index>
 * <xref:fundamentals/middleware/extensibility>
