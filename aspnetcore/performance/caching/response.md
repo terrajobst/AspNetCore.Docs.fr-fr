@@ -1,4 +1,4 @@
-﻿---
+---
 title: Mise en cache de la réponse dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment utiliser la mise en cache de réponse pour diminuer la bande passante et améliorer les performances des applications ASP.NET Core.
@@ -162,7 +162,7 @@ Pragma: no-cache
 Pour activer la mise en cache, `Duration` doit être définie sur une valeur positive et `Location` doit avoir la valeur `Any` (la valeur par défaut) ou `Client`. Dans ce cas, le `Cache-Control` en-tête est défini sur la valeur d’emplacement suivie de la `max-age` de la réponse.
 
 > [!NOTE]
-> Les options `Any` et `Client` de `Location` sont traduites respectivement en valeurs d’en-tête `public` et `private` de `Cache-Control`. Comme mentionné précédemment, la définition du paramètre `Location` sur `None` définit les deux en-têtes `Cache-Control` et `Pragma` sur `no-cache`.
+> Les options `Any` et `Client` de `Location` sont traduites respectivement en valeurs d’en-tête `public` et `private` de `Cache-Control`. Comme mentionné précédemment, la définition du paramètre `Location` sur `None` définit les deux en-têtes `Cache-Control` et `Pragma` sur  `no-cache`.
 
 Vous trouverez ci-dessous un exemple montrant les en-têtes produits en définissant `Duration` et en conservant la valeur `Location` par défaut :
 
@@ -202,7 +202,7 @@ Configuration d’un profil de cache :
 
 ::: moniker-end
 
-En faisant référence à un profil de cache :
+En faisant référence à un profil de cache :
 
 ::: moniker range=">= aspnetcore-2.0"
 
