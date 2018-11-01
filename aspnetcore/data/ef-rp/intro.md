@@ -5,12 +5,12 @@ description: Montre comment créer une application Pages Razor à l’aide d’E
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/intro
-ms.openlocfilehash: 89002f7b4a5af17a9404b14822086c7a9a6ec265
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: a234d5fefd671d4503f6c63b79074d47c893f69c
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011455"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207704"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 
@@ -24,7 +24,7 @@ L’exemple d’application web Contoso University montre comment créer une app
 
 L’exemple d’application est un site web pour une université Contoso fictive. Il comprend des fonctionnalités telles que l’admission des étudiants, la création des cours et les affectations des formateurs. Cette page est la première d’une série de didacticiels qui expliquent comment générer l’exemple d’application Contoso University.
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Télécharger les instructions](xref:tutorials/index#how-to-download-a-sample).
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -187,9 +187,9 @@ Le processus de génération de modèles automatique a créé et changé les fic
 * *Pages/Students* Create, Delete, Details, Edit, Index.
 * *Data/SchoolContext.cs*
 
-### <a name="files-updates"></a>Mises à jour de fichiers
+### <a name="file-updates"></a>Mises à jour du fichier
 
-* *Startup.cs* : Les changements de ce fichier sont détaillés dans la section suivante.
+* *Startup.cs* : Les changements apportés à ce fichier sont détaillés dans la section suivante.
 * *appSettings.JSON* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>Examiner le contexte inscrit avec l’injection de dépendances

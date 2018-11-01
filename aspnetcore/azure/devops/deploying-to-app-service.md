@@ -3,18 +3,19 @@ title: DevOps avec ASP.NET Core et Azure | Déployer une application dans App Se
 author: CamSoper
 description: Un guide qui fournit des conseils de bout en bout sur la création d’un pipeline DevOps pour une application ASP.NET Core hébergée dans Azure.
 ms.author: casoper
-ms.date: 08/07/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 710e65a048fdc062219e90b0db323e8e96fd8e9d
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: 33026ed510aae63a9e580aa5d708f94aad778fca
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340132"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090935"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Déployer une application dans App Service
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/) est Azure web plateforme d’hébergement. Déploiement d’une application web sur Azure App Service peut être effectuée manuellement ou par un processus automatisé. Cette section du guide décrit les méthodes de déploiement qui peuvent être déclenchées manuellement ou par script à l’aide de la ligne de commande, ou déclenchement manuellement à l’aide de Visual Studio.
+[Azure App Service](/azure/app-service/) est Azure web plateforme d’hébergement. Déploiement d’une application web sur Azure App Service peut être effectuée manuellement ou par un processus automatisé. Cette section du guide décrit les méthodes de déploiement qui peuvent être déclenchées manuellement ou par script à l’aide de la ligne de commande, ou déclenchement manuellement à l’aide de Visual Studio.
 
 Dans cette section, vous allez effectuer les tâches suivantes :
 
@@ -70,7 +71,7 @@ N’hésitez pas à examiner le code, mais il est important de comprendre qu’i
 
 ## <a name="create-the-azure-app-service-web-app"></a>Créer l’application Web Azure App Service
 
-Pour déployer l’application, vous devez créer un Service d’application [application Web](https://docs.microsoft.com/azure/app-service/app-service-web-overview). Après la création de l’application Web, vous allez déployer à partir de votre ordinateur local à l’aide de Git à celle-ci.
+Pour déployer l’application, vous devez créer un Service d’application [application Web](/azure/app-service/app-service-web-overview). Après la création de l’application Web, vous allez déployer à partir de votre ordinateur local à l’aide de Git à celle-ci.
 
 1. Se connecter à la [Azure Cloud Shell](https://shell.azure.com/bash). Remarque : Lorsque vous connectez pour la première fois, Cloud Shell vous invite à créer un compte de stockage pour les fichiers de configuration. Acceptez les valeurs par défaut ou fournissez un nom unique.
 
@@ -88,7 +89,7 @@ Pour déployer l’application, vous devez créer un Service d’application [ap
     az group create --location centralus --name AzureTutorial
     ```
 
-    Le `az` commande appelle le [Azure CLI](https://docs.microsoft.com/cli/azure/). L’interface CLI peut être exécuté localement, mais l’utiliser dans l’interpréteur de gagner du temps et configuration.
+    Le `az` commande appelle le [Azure CLI](/cli/azure/). L’interface CLI peut être exécuté localement, mais l’utiliser dans l’interpréteur de gagner du temps et configuration.
 
     c. Créer un plan App Service dans le niveau S1. Un plan App Service est un regroupement d’applications web qui partagent le même niveau tarifaire. Le niveau S1 n’est pas gratuit, mais il est requis pour la fonctionnalité d’emplacements intermédiaire.
 
@@ -238,7 +239,7 @@ Dans la section suivante, vous allez apprendre à créer un pipeline DevOps avec
 
 ## <a name="additional-reading"></a>Lecture supplémentaire
 
-* [Vue d’ensemble des applications Web](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
-* [Créer une application web .NET Core et SQL Database dans Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
-* [Configurer les informations d’identification de déploiement pour Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)
-* [Configurer des environnements intermédiaires dans Azure App Service](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing)
+* [Vue d’ensemble des applications Web](/azure/app-service/app-service-web-overview)
+* [Créer une application web .NET Core et SQL Database dans Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
+* [Configurer les informations d’identification de déploiement pour Azure App Service](/azure/app-service/app-service-deployment-credentials)
+* [Configurer des environnements intermédiaires dans Azure App Service](/azure/app-service/web-sites-staged-publishing)

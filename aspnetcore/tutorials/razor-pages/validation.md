@@ -4,14 +4,15 @@ author: rick-anderson
 description: Découvrez comment ajouter la validation à une page Razor dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 08/07/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: e27253e3f02fa808136494ed5373059ef6e0df0d
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: 2518b9911f13da79c76c84e530cf53fc2df474e5
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011585"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090444"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -27,7 +28,7 @@ La prise en charge de la validation fournie par les pages Razor et Entity Framew
 
 ### <a name="adding-validation-rules-to-the-movie-model"></a>Ajout de règles de validation au modèle Movie
 
-Ouvrez le fichier *Movie.cs*. [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) fournit un ensemble intégré d’attributs de validation qui sont appliqués de manière déclarative à une classe ou une propriété. DataAnnotations contient également des attributs de mise en forme comme `DataType` qui aident à effectuer la mise en forme et ne fournissent aucune validation.
+Ouvrez le fichier *Models/Movie.cs*. [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) fournit un ensemble intégré d’attributs de validation qui sont appliqués de manière déclarative à une classe ou une propriété. DataAnnotations contient également des attributs de mise en forme comme `DataType` qui aident à effectuer la mise en forme et ne fournissent aucune validation.
 
 Mettez à jour la classe `Movie` pour tirer parti des attributs de validation `Required`, `StringLength`, `RegularExpression` et `Range`.
 
@@ -45,7 +46,7 @@ Mettez à jour la classe `Movie` pour tirer parti des attributs de validation `R
 
 Les attributs de validation spécifient un comportement qui est appliqué sur les propriétés du modèle :
 
-* Les attributs `Required` et `MinimumLength` indiquent qu’une propriété doit avoir une valeur. Toutefois, rien n’empêche un utilisateur d’entrer un espace blanc pour satisfaire la contrainte de validation pour un type Nullable. Les [types valeur](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/value-types) non Nullable (tels que `decimal`, `int`, `float` et `DateTime`) sont obligatoires par nature et n’ont pas besoin de l’attribut `Required`.
+* Les attributs `Required` et `MinimumLength` indiquent qu’une propriété doit avoir une valeur. Toutefois, rien n’empêche un utilisateur d’entrer un espace blanc pour satisfaire la contrainte de validation pour un type Nullable. Les [types valeur](/dotnet/csharp/language-reference/keywords/value-types) non Nullable (tels que `decimal`, `int`, `float` et `DateTime`) sont obligatoires par nature et n’ont pas besoin de l’attribut `Required`.
 * L’attribut `RegularExpression` limite les caractères que l’utilisateur peut entrer. Dans le code précédent, `Genre` doit commencer par une ou plusieurs lettres majuscules, puis zéro ou plusieurs lettres, guillemets simples ou doubles, espaces ou tirets. `Rating` doit commencer par une ou plusieurs lettres majuscules, puis zéro ou plusieurs lettres, chiffres, guillemets simples ou doubles, espaces ou tirets.
 * L’attribut `Range` contraint une valeur à une plage spécifiée.
 * L’attribut `StringLength` définit la longueur maximale d’une chaîne, et éventuellement la longueur minimale. 
@@ -79,7 +80,7 @@ Quand JavaScript est désactivé dans le navigateur, l’envoi du formulaire ave
 
 Facultatif : Testez la validation côté serveur :
 
-* Désactivez JavaScript dans le navigateur. Si vous ne pouvez pas désactiver JavaScript dans le navigateur, essayez un autre navigateur.
+* Désactivez JavaScript dans le navigateur. Pour cela, utilisez les outils de développement de votre navigateur. Si vous ne pouvez pas désactiver JavaScript dans le navigateur, essayez un autre navigateur.
 * Définissez un point d’arrêt dans la méthode `OnPostAsync` de la page Créer ou Modifier.
 * Envoyez un formulaire avec des erreurs de validation.
 * Vérifiez que l’état de modèle n’est pas valide :
@@ -95,7 +96,7 @@ Le code suivant affiche la partie de la page *Create.cshtml* pour laquelle vous 
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Create.cshtml?range=14-20)]
 
-Le [Tag Helper d’entrée](xref:mvc/views/working-with-forms) utilise les attributs [DataAnnotations](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) et produit les attributs HTML nécessaires à la validation jQuery côté client. Le [Tag Helper de validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) affiche les erreurs de validation. Pour plus d’informations, consultez [Validation](xref:mvc/models/validation).
+Le [Tag Helper d’entrée](xref:mvc/views/working-with-forms) utilise les attributs [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) et produit les attributs HTML nécessaires à la validation jQuery côté client. Le [Tag Helper de validation](xref:mvc/views/working-with-forms#the-validation-tag-helpers) affiche les erreurs de validation. Pour plus d’informations, consultez [Validation](xref:mvc/models/validation).
 
 Les pages Créer et Modifier ne contiennent pas de règles de validation. Les règles de validation et les chaînes d’erreur sont spécifiées uniquement dans la classe `Movie`. Ces règles de validation sont automatiquement appliquées aux pages Razor qui modifient le modèle `Movie`.
 
@@ -160,16 +161,16 @@ La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data
 
 ### <a name="publish-to-azure"></a>Publier sur Azure
 
-Consultez [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour obtenir des instructions sur la publication de cette application sur Azure.
+Pour plus d’informations sur le déploiement sur Azure, consultez [Tutoriel : Créer une application ASP.NET dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Les instructions s’appliquent à une application ASP.NET, pas à une application ASP.NET Core, mais les étapes sont les mêmes.
 
 Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Utilisation des formulaires](xref:mvc/views/working-with-forms)
-* [Globalisation et localisation](xref:fundamentals/localization)
-* [Introduction aux Tag Helpers](xref:mvc/views/tag-helpers/intro)
-* [Créer des Tag Helpers](xref:mvc/views/tag-helpers/authoring)
+* <xref:mvc/views/working-with-forms>
+* <xref:fundamentals/localization>
+* <xref:mvc/views/tag-helpers/intro>
+* <xref:mvc/views/tag-helpers/authoring>
 
 > [!div class="step-by-step"]
 > [Précédent : Ajout d’un nouveau champ](xref:tutorials/razor-pages/new-field)

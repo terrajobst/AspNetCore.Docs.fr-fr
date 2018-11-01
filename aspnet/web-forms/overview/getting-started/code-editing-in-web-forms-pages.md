@@ -8,12 +8,12 @@ ms.date: 03/03/2014
 ms.assetid: 5344b74e-b888-479a-92bc-601a33bd61a2
 msc.legacyurl: /web-forms/overview/getting-started/code-editing-in-web-forms-pages
 msc.type: authoredcontent
-ms.openlocfilehash: 5bf10a78b106475ffc01b732b21088bad67eb93d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 670f81ca1ef9923575cb2fee1747f06f426963d8
+ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827700"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49391217"
 ---
 <a name="code-editing-aspnet-web-forms-in-visual-studio-2013"></a>Code Édition Web Forms ASP.NET dans Visual Studio 2013
 ====================
@@ -42,9 +42,6 @@ Pour exécuter cette procédure pas à pas, vous avez besoin des éléments su
     > Microsoft Visual Studio 2013 et Microsoft Visual Studio Express 2013 pour le Web seront souvent être appelé Visual Studio tout au long de cette série de didacticiels.  
     >   
     > Si vous utilisez Visual Studio, cette procédure pas à pas suppose que vous avez choisi le **développement Web** collection de paramètres de la première fois que vous avez démarré Visual Studio. Pour plus d’informations, consultez [Comment : sélectionner des paramètres d’environnement de développement Web](https://msdn.microsoft.com/library/ff521558.aspx).
-
-  Pour une introduction à Visual Studio et ASP.NET, consultez [création d’une page Web Forms ASP.NET 4.5 de base dans Visual Studio 2013](creating-a-basic-web-forms-page.md).   
- 
 
 ## <a name="creating-a-web-application-project-and-a-page"></a>Création d’un projet d’application Web et une Page
 

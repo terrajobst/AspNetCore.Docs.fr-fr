@@ -3,14 +3,15 @@ title: ASP.NET Core MVC avec EF Core - Accès concurrentiel - 8 sur 10
 author: rick-anderson
 description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 9bf65621213c9657232dfff1701c9937d5105a9c
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 0ae566a76a2ef656843452ed537b8fdfbddaed22
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38186635"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090899"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC avec EF Core - Accès concurrentiel - 8 sur 10
 
@@ -219,7 +220,6 @@ Remplacez le code de la méthode HttpPost `Delete` (nommée `DeleteConfirmed`) p
 
 Dans le code du modèle généré automatiquement que vous venez de remplacer, cette méthode n’acceptait qu’un seul ID d’enregistrement :
 
-
 ```csharp
 public async Task<IActionResult> DeleteConfirmed(int id)
 ```
@@ -278,7 +278,7 @@ Remplacez le code de *Views/Departments/Create.cshtml* pour ajouter une option d
 
 ## <a name="summary"></a>Récapitulatif
 
-Ceci termine l’introduction à la gestion des conflits d’accès concurrentiel. Pour plus d’informations sur la gestion de l’accès concurrentiel dans EF Core, consultez [Conflits d’accès concurrentiel](https://docs.microsoft.com/ef/core/saving/concurrency). Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
+Ceci termine l’introduction à la gestion des conflits d’accès concurrentiel. Pour plus d’informations sur la gestion de l’accès concurrentiel dans EF Core, consultez [Conflits d’accès concurrentiel](/ef/core/saving/concurrency). Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
 
 ::: moniker-end
 

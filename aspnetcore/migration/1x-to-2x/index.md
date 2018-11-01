@@ -3,14 +3,15 @@ title: Migrer d’ASP.NET Core 1.x vers la version 2.0
 author: scottaddie
 description: Cet article présente les prérequis et la plupart des étapes courantes nécessaires pour la migration d’un projet ASP.NET Core 1.x vers ASP.NET Core 2.0.
 ms.author: scaddie
-ms.date: 10/03/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: 1052b17b433f06162325db340cd53ee61b76a184
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: f5bd2bc9862a7487658125e14837798886efad11
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272502"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090509"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Migrer d’ASP.NET Core 1.x vers la version 2.0
 
@@ -23,11 +24,13 @@ Les applications ASP.NET Core 1.x existantes sont basées sur des modèles de pr
 <a name="prerequisites"></a>
 
 ## <a name="prerequisites"></a>Prérequis
+
 Consultez [Bien démarrer avec ASP.NET Core](xref:getting-started).
 
 <a name="tfm"></a>
 
 ## <a name="update-target-framework-moniker-tfm"></a>Mettre à jour le Moniker du Framework cible
+
 Les projets ciblant .NET Core doivent utiliser le [Moniker du Framework cible](/dotnet/standard/frameworks#referring-to-frameworks) d’une version supérieure ou égale à .NET Core 2.0. Recherchez le nœud `<TargetFramework>` dans le fichier *.csproj* et remplacez son texte interne par `netcoreapp2.0` :
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App/AspNetCoreDotNetCore2App.csproj?range=3)]
@@ -42,13 +45,15 @@ Les projets ciblant le .NET Framework doivent utiliser le Moniker du Framework c
 <a name="global-json"></a>
 
 ## <a name="update-net-core-sdk-version-in-globaljson"></a>Mettre à jour la version du SDK .NET Core dans global.json
-Si votre solution s’appuie sur un fichier [*global.json*](https://docs.microsoft.com/dotnet/core/tools/global-json) pour cibler une version spécifique du SDK .NET Core, mettez à jour sa propriété `version` de façon à utiliser la version 2.0 installée sur votre ordinateur :
+
+Si votre solution s’appuie sur un fichier [*global.json*](/dotnet/core/tools/global-json) pour cibler une version spécifique du SDK .NET Core, mettez à jour sa propriété `version` de façon à utiliser la version 2.0 installée sur votre ordinateur :
 
 [!code-json[](../1x-to-2x/samples/AspNetCoreDotNetCore2App/global.json?highlight=3)]
 
 <a name="package-reference"></a>
 
 ## <a name="update-package-references"></a>Mettre à jour les références de package
+
 Le fichier *.csproj* dans un projet 1.x répertorie chaque package NuGet utilisé par le projet.
 
 Dans un projet ASP.NET Core 2.0 ciblant .NET Core 2.0, une seule référence de [métapackage](xref:fundamentals/metapackage) dans le fichier *.csproj* remplace la collection de packages :
@@ -66,6 +71,7 @@ Par exemple, voici la liste des nœuds `<PackageReference />` utilisés dans un 
 <a name="dot-net-cli-tool-reference"></a>
 
 ## <a name="update-net-core-cli-tools"></a>Mettre à jour les outils CLI .NET Core
+
 Dans le fichier *.csproj*, mettez à jour l’attribut `Version` de chaque nœud `<DotNetCliToolReference />` vers la version 2.0.0.
 
 Par exemple, voici la liste des outils CLI utilisés dans un projet ASP.NET Core 2.0 standard qui cible .NET Core 2.0 :
@@ -75,6 +81,7 @@ Par exemple, voici la liste des outils CLI utilisés dans un projet ASP.NET Core
 <a name="package-target-fallback"></a>
 
 ## <a name="rename-package-target-fallback-property"></a>Renommer la propriété PackageTargetFallback
+
 Le fichier *.csproj* d’un projet 1.x utilise un nœud et une variable `PackageTargetFallback` :
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=5)]
@@ -86,6 +93,7 @@ Renommez le nœud et la variable `AssetTargetFallback` :
 <a name="program-cs"></a>
 
 ## <a name="update-main-method-in-programcs"></a>Mettre à jour la méthode Main dans Program.cs
+
 Dans les projets 1.x, la méthode `Main` de *Program.cs* ressemble à ceci :
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Program.cs?name=snippet_ProgramCs&highlight=8-19)]
@@ -103,6 +111,7 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 <a name="add-modify-configuration"></a>
 
 ## <a name="add-configuration-providers"></a>Ajouter des fournisseurs de configuration
+
 Dans les projets 1.x, l’ajout de fournisseurs de configuration à une application a été effectué via le constructeur `Startup`. Étapes nécessaires à la création d’une instance de `ConfigurationBuilder`, chargement des fournisseurs applicables (variables d’environnement, paramètres de l’application, etc.) et initialisation d’un membre de `IConfigurationRoot`.
 
 [!code-csharp[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/Startup.cs?name=snippet_1xStartup)]
@@ -124,10 +133,12 @@ Pour plus d’informations, consultez [Configuration dans ASP.NET Core](xref:fun
 <a name="db-init-code"></a>
 
 ## <a name="move-database-initialization-code"></a>Déplacer le code d’initialisation de base de données
+
 Dans les projets 1.x utilisant EF Core 1.x, une commande telle que `dotnet ef migrations add` effectue les opérations suivantes :
+
 1. Instancie une instance `Startup`
-2. Appelle la méthode `ConfigureServices` pour inscrire tous les services à l’injection de dépendances (notamment les types `DbContext`)
-3. Exécute ses tâches obligatoires
+1. Appelle la méthode `ConfigureServices` pour inscrire tous les services à l’injection de dépendances (notamment les types `DbContext`)
+1. Exécute ses tâches obligatoires
 
 Dans les projets 2.0 utilisant EF Core 2.0, `Program.BuildWebHost` est appelé pour obtenir les services d’application. Contrairement à 1.x, cela a pour autre effet secondaire d’appeler `Startup.Configure`. Si votre application 1.x a appelé le code d’initialisation de base de données dans sa méthode `Configure`, des problèmes inattendus peuvent se produire. Par exemple, si la base de données n’existe pas encore, le code d’amorçage s’exécute avant l’exécution de la commande EF Core Migrations. Ce problème entraîne l’échec de la commande `dotnet ef migrations list` si la base de données n’existe pas encore.
 
@@ -144,6 +155,7 @@ Dans les projets 2.0, déplacez l’appel de `SeedData.Initialize` vers la méth
 <a name="view-compilation"></a>
 
 ## <a name="review-razor-view-compilation-setting"></a>Passer en revue le paramètre de compilation de vue Razor
+
 La vitesse de démarrage d’application et la taille des bundles publiés ont une importance capitale pour vous. Pour ces raisons, la [compilation de vue Razor](xref:mvc/views/view-compilation) est activée par défaut dans ASP.NET Core 2.0.
 
 L’affectation de la valeur true à la propriété `MvcRazorCompileOnPublish` n’est plus nécessaire. Vous pouvez supprimer la propriété du fichier *.csproj*, sauf si vous désactivez la compilation des vues.
@@ -155,12 +167,13 @@ Quand vous ciblez le .NET Framework, vous devez toujours référencer explicitem
 <a name="app-insights"></a>
 
 ## <a name="rely-on-application-insights-light-up-features"></a>S’appuyer sur les fonctionnalités de mise en évidence d’Application Insights
-La configuration sans effort de l’instrumentation des performances d’application est importante. Vous pouvez maintenant vous appuyer sur les nouvelles fonctionnalités de mise en évidence [d’Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) disponibles dans les outils Visual Studio 2017.
+
+La configuration sans effort de l’instrumentation des performances d’application est importante. Vous pouvez maintenant vous appuyer sur les nouvelles fonctionnalités de mise en évidence [d’Application Insights](/azure/application-insights/app-insights-overview) disponibles dans les outils Visual Studio 2017.
 
 Par défaut, les projets ASP.NET Core 1.1 créés dans Visual Studio 2017 ajoutaient Application Insights. Si vous n’utilisez pas le SDK Application Insights directement, en dehors de *Program.cs* et *Startup.cs*, effectuez les étapes suivantes :
 
 1. Si vous ciblez .NET Core, supprimez le nœud `<PackageReference />` suivant dans le fichier *.csproj* :
-    
+
     [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App/AspNetCoreDotNetCore1App.csproj?range=10)]
 
 2. Si vous ciblez .NET Core, supprimez l’appel de méthode d’extension `UseApplicationInsights` de *Program.cs* :
@@ -176,6 +189,7 @@ Si vous utilisez le SDK Application Insights directement, continuez à le faire.
 <a name="auth-and-identity"></a>
 
 ## <a name="adopt-authenticationidentity-improvements"></a>Adopter les améliorations d’authentification/identité
+
 ASP.NET Core 2.0 offre un nouveau modèle d’authentification, et plusieurs modifications importantes ont été apportées à ASP.NET Core Identity. Si vous avez créé votre projet avec l’option Comptes d’utilisateur individuels activée, ou si vous avez ajouté manuellement l’authentification ou l’identité, consultez [Migrer l’authentification et l’identité vers ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires

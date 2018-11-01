@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 9608f454c2c4ae0f4db1e71200b0ca98fe2cd2ad
-ms.sourcegitcommit: 32f5ee0690604d451f61e9a5c28881c9fcf85738
+ms.openlocfilehash: c88441b39d8c96ec817c58fc56ebd51a0887b077
+ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/29/2018
-ms.locfileid: "47454711"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48045560"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>Ajouter une fonction de recherche aux pages Razor dans ASP.NET Core
 
@@ -82,7 +82,7 @@ Ajoutez les propriétés en surbrillance suivantes à *Pages/Movies/Index.cshtml
 ::: moniker-end
 
 
-La propriété `SelectList Genres` contient la liste des genres. Cela permet à l’utilisateur de sélectionner un genre dans la liste.
+La propriété `Genres` contient la liste des genres. Cela permet à l’utilisateur de sélectionner un genre dans la liste.
 
 La propriété `MovieGenre` contient le genre spécifique sélectionné par l’utilisateur (par exemple, « Western »).
 

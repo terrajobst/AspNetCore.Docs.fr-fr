@@ -1,24 +1,24 @@
 ---
 title: Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 author: guardrex
-description: Découvrez comment configurer et utiliser un intergiciel de mise en cache des réponses dans ASP.NET Core.
+description: Découvrez comment configurer et utiliser le middleware de mise en cache des réponses dans ASP.NET Core.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/26/2017
 uid: performance/caching/middleware
-ms.openlocfilehash: f4e5a414b92e3ca65e19188ebd2bfaef6f32fee7
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 4b2c71aad4b5bcfee14a271303df5874ccfedb90
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893088"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207327"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex) et [John Luo](https://github.com/JunTaoLuo)
 
-[Afficher ou télécharger l’exemple de code ASP.NET Core 2.1](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([comment télécharger](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 Cet article explique comment configurer l’intergiciel de mise en cache des réponses dans une application ASP.NET Core. L’intergiciel (middleware) détermine lorsque les réponses sont mis en cache, les magasins de réponses et les réponses sert à partir du cache. Pour une introduction à la mise en cache HTTP et le `ResponseCache` d’attribut, consultez [la mise en cache de réponse](xref:performance/caching/response).
 
@@ -120,10 +120,10 @@ L’intergiciel (middleware) respecte les règles de la [spécification HTTP 1.1
 
 Pour contrôler le comportement de mise en cache plus, explorez les autres fonctionnalités de mise en cache d’ASP.NET Core. Consultez les rubriques suivantes :
 
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
-* [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Tag Helper cache dans ASP.NET Core MVC](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
@@ -155,11 +155,11 @@ Lorsque le test et résolution des problèmes de comportement de mise en cache, 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Démarrage d’une application](xref:fundamentals/startup)
-* [Intergiciel (middleware)](xref:fundamentals/middleware/index)
-* [Mettre en cache en mémoire](xref:performance/caching/memory)
-* [Utiliser un cache distribué](xref:performance/caching/distributed)
-* [Détecter les modifications à l’aide de jetons de modification](xref:fundamentals/primitives/change-tokens)
-* [Mise en cache des réponses](xref:performance/caching/response)
-* [Tag Helper de cache](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)
-* [Tag Helper de cache distribué](xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper)
+* <xref:fundamentals/startup>
+* <xref:fundamentals/middleware/index>
+* <xref:performance/caching/memory>
+* <xref:performance/caching/distributed>
+* <xref:fundamentals/change-tokens>
+* <xref:performance/caching/response>
+* <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>
+* <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>

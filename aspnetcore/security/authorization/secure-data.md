@@ -5,30 +5,30 @@ description: Découvrez comment créer une application Pages Razor avec des donn
 ms.author: riande
 ms.date: 7/24/2018
 uid: security/authorization/secure-data
-ms.openlocfilehash: 71b7855958b530b8bac32843a8d1e7db0113ffd9
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 185628d4e06c9b5ae7f2685c10ea9e46dd5abe92
+ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912629"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50253219"
 ---
+# <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
+
+Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://twitter.com/joeaudette)
+
 ::: moniker range="<= aspnetcore-1.1"
 
-Consultez [ce fichier PDF](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_1-16-18.pdf) pour la version d’ASP.NET Core MVC. La version d’ASP.NET Core 1.1 de ce didacticiel est dans [cela](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data) dossier. L’exemple ASP.NET Core 1.1 du [exemples](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).
+Consultez [ce fichier PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf) pour la version d’ASP.NET Core MVC. La version d’ASP.NET Core 1.1 de ce didacticiel est dans [cela](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data) dossier. L’exemple ASP.NET Core 1.1 du [exemples](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2).
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-Consultez [ce fichier pdf](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/asp.net_repo_pdf_July16_18.pdf)
+Consultez [ce fichier pdf](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_July16_18.pdf)
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
-
-# <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
-
-Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Joe Audette](https://twitter.com/joeaudette)
 
 Ce didacticiel montre comment créer une application web ASP.NET Core avec des données utilisateur protégées par une autorisation. Il affiche une liste de contacts (inscrits) les utilisateurs authentifiés ont créés. Il existe trois groupes de sécurité :
 
@@ -71,16 +71,16 @@ L’exemple contient les gestionnaires d’autorisation suivants :
 Ce didacticiel est avancé. Vous devez être familiarisé avec :
 
 * [ASP.NET Core](xref:tutorials/first-mvc-app/start-mvc)
-* [Authentification](xref:security/authentication/index)
+* [Authentification](xref:security/authentication/identity)
 * [Confirmation de compte et récupération de mot de passe](xref:security/authentication/accconfirm)
-* [Autorisation](xref:security/authorization/index)
+* [Autorisation](xref:security/authorization/introduction)
 * [Entity Framework Core](xref:data/ef-mvc/intro)
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-Dans ASP.NET Core 2.1, `User.IsInRole` échoue lors de l’utilisation `AddDefaultIdentity`. Ce didacticiel utilise `AddDefaultIdentity` et par conséquent nécessite ASP.NET Core 2.2 preview 1 ou version ultérieure. Consultez [ce problème GitHub](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909) pour une solution de contournement.
+Dans ASP.NET Core 2.1, `User.IsInRole` échoue lors de l’utilisation `AddDefaultIdentity`. Ce didacticiel utilise `AddDefaultIdentity` et par conséquent nécessite ASP.NET Core 2.2 ou version ultérieure. Consultez [ce problème GitHub](https://github.com/aspnet/Identity/issues/1813#issuecomment-394543909) pour une solution de contournement.
 
 ::: moniker-end
 
@@ -88,11 +88,11 @@ Dans ASP.NET Core 2.1, `User.IsInRole` échoue lors de l’utilisation `AddDefau
 
 ## <a name="the-starter-and-completed-app"></a>Le démarrage et l’application terminée
 
-[Télécharger](xref:tutorials/index#how-to-download-a-sample) le [terminé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2) application. [Test](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
+[Télécharger](xref:index#how-to-download-a-sample) le [terminé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2) application. [Test](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
 
 ### <a name="the-starter-app"></a>L’application de démarrage
 
-[Télécharger](xref:tutorials/index#how-to-download-a-sample) le [starter](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2) application.
+[Télécharger](xref:index#how-to-download-a-sample) le [starter](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/starter2) application.
 
 Exécutez l’application, appuyez sur la **ContactManager** lien et vérifiez que vous pouvez créer, modifier et supprimer un contact.
 
@@ -352,7 +352,7 @@ Tester l’application d’amorçage la base de données. S’il existe des lign
 
 * [Créer une application web .NET Core et SQL Database dans Azure App Service](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 * [ASP.NET Core d’autorisation Lab](https://github.com/blowdart/AspNetAuthorizationWorkshop). Ce laboratoire présente plus en détails sur les fonctionnalités de sécurité présentées dans ce didacticiel.
-* [Autorisation dans ASP.NET Core : Simple, rôle, basée sur les revendications et personnalisée](xref:security/authorization/index)
+* <xref:security/authorization/introduction>
 * [Autorisation basée sur une stratégie personnalisée](xref:security/authorization/policies)
 
 ::: moniker-end

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: a653b1a5c07feca8672ba38e0cda3ddc30482c5a
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 727bd80b7f37f6ebd9d37b7aab1aa6c33b85678c
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312177"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206725"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Utiliser LibMan avec ASP.NET Core dans Visual Studio
 
@@ -24,7 +24,7 @@ Visual Studio propose une prise en charge intégrée pour [LibMan](xref:client-s
 * Boîte de dialogue de recherche pour la recherche des bibliothèques et d’ajouter les fichiers à un projet.
 * Modification de la prise en charge pour *libman.json*&mdash;le fichier de manifeste LibMan.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/libman/samples/) [(comment télécharger)](xref:tutorials/index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/libman/samples/) [(comment télécharger)](xref:index#how-to-download-a-sample)
 
 ## <a name="prerequisites"></a>Prérequis
 

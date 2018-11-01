@@ -3,14 +3,15 @@ title: Extensibilité de la gestion de clés dans ASP.NET Core
 author: rick-anderson
 description: En savoir plus sur l’extensibilité de la gestion de clés de Protection des données ASP.NET Core.
 ms.author: riande
-ms.date: 11/22/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/data-protection/extensibility/key-management
-ms.openlocfilehash: 965a7ed8ca2f72a66cfe093b5978a54fea5440fd
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 1cf3fc30f72fb872ff9d7f33fc5ffb12a11a982f
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219314"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090613"
 ---
 # <a name="key-management-extensibility-in-aspnet-core"></a>Extensibilité de la gestion de clés dans ASP.NET Core
 
@@ -60,7 +61,7 @@ Le `IKeyManager` interface représente un objet responsable du stockage de clés
 
 ## <a name="xmlkeymanager"></a>XmlKeyManager
 
-Le `XmlKeyManager` type est l’implémentation concrète de l’emploi de `IKeyManager`. Il fournit plusieurs installations utiles, y compris le dépôt de clé et le chiffrement des clés au repos. Dans ce système, les clés sont représentées en tant qu’éléments XML (plus précisément, [XElement](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
+Le `XmlKeyManager` type est l’implémentation concrète de l’emploi de `IKeyManager`. Il fournit plusieurs installations utiles, y compris le dépôt de clé et le chiffrement des clés au repos. Dans ce système, les clés sont représentées en tant qu’éléments XML (plus précisément, [XElement](/dotnet/csharp/programming-guide/concepts/linq/xelement-class-overview)).
 
 `XmlKeyManager` dépend de plusieurs autres composants au cours de l’exécution de ses tâches :
 
@@ -130,10 +131,23 @@ Les implémentations de `IXmlRepository` n’avez pas besoin analyser le XML en 
 
 Il existe quatre types concrets intégrés qui implémentent `IXmlRepository`:
 
+::: moniker range=">= aspnetcore-2.2"
+
+* [FileSystemXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.filesystemxmlrepository)
+* [RegistryXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository)
+* [AzureStorage.AzureBlobXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.azurestorage.azureblobxmlrepository)
+* [RedisXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.stackexchangeredis.redisxmlrepository)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
 * [FileSystemXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.filesystemxmlrepository)
 * [RegistryXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.repositories.registryxmlrepository)
 * [AzureStorage.AzureBlobXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.azurestorage.azureblobxmlrepository)
 * [RedisXmlRepository](/dotnet/api/microsoft.aspnetcore.dataprotection.redisxmlrepository)
+
+::: moniker-end
 
 Consultez le [document de fournisseurs de stockage de clés](xref:security/data-protection/implementation/key-storage-providers) pour plus d’informations.
 

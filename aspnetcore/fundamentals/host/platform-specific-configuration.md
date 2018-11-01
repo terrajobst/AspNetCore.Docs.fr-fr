@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/13/2018
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 2eddfa03b28564fcca7cc098e353b05e23b7c6f6
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: a06c2da04c1631f5811a535c891ca5190b0d8864
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336272"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207535"
 ---
 # <a name="enhance-an-app-from-an-external-assembly-in-aspnet-core-with-ihostingstartup"></a>Améliorer une application à partir d’un assembly externe dans ASP.NET Core avec IHostingStartup
 
@@ -20,7 +20,7 @@ Par [Luke Latham](https://github.com/guardrex)
 
 Une implémentation [IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup) (hébergement au démarrage) ajoute des améliorations à une application au démarrage à partir d’un assembly externe. Par exemple, une bibliothèque externe peut utiliser une implémentation d’hébergement au démarrage pour fournir des fournisseurs ou services de configuration supplémentaires à une application. `IHostingStartup` *est disponible dans ASP.NET Core 2.0 ou versions ultérieures.*
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="hostingstartup-attribute"></a>Attribut HostingStartup
 
@@ -175,7 +175,7 @@ dotnet store --manifest <PROJECT_FILE> --runtime <RUNTIME_IDENTIFIER>
 
 Cette commande place l’assembly d’hébergement au démarrage et d’autres dépendances qui ne font pas partie du framework partagé dans le magasin de runtime du profil utilisateur, à l’emplacement ci-dessous :
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ```
 %USERPROFILE%\.dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
@@ -197,7 +197,7 @@ Cette commande place l’assembly d’hébergement au démarrage et d’autres d
 
 Si vous souhaitez placer l’assembly et les dépendances à un emplacement permettant une utilisation globale, ajoutez l’option `-o|--output` à la commande `dotnet store` dans le chemin suivant :
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ```
 %PROGRAMFILES%\dotnet\store\x64\<TARGET_FRAMEWORK_MONIKER>\<ENHANCEMENT_ASSEMBLY_NAME>\<ENHANCEMENT_VERSION>\lib\<TARGET_FRAMEWORK_MONIKER>\
@@ -229,7 +229,7 @@ Le fichier *\*.deps.json* de l’implémentation doit se trouver dans un emplace
 
 Pour une utilisation individuelle, placez le fichier dans le dossier *additonalDeps* des paramètres `.dotnet` du profil utilisateur :
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ```
 %USERPROFILE%\.dotnet\x64\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
@@ -251,7 +251,7 @@ Pour une utilisation individuelle, placez le fichier dans le dossier *additonalD
 
 Pour une utilisation globale, placez le fichier dans le dossier *additonalDeps* de l’installation .NET Core :
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ```
 %PROGRAMFILES%\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\
@@ -279,7 +279,7 @@ L’emplacement du fichier *\*.deps.json* de l’implémentation est indiqué da
 
 Si le fichier est placé dans le dossier *.dotnet* du profil utilisateur, définissez la variable d’environnement à la valeur ci-dessous :
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ```
 %USERPROFILE%\.dotnet\x64\additionalDeps\
@@ -301,7 +301,7 @@ Si le fichier est placé dans le dossier *.dotnet* du profil utilisateur, défin
 
 Si le fichier est placé dans l’installation .NET Core pour une utilisation globale, fournissez le chemin complet au fichier :
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 ```
 %PROGRAMFILES%\dotnet\additionalDeps\<ENHANCEMENT_ASSEMBLY_NAME>\shared\Microsoft.NETCore.App\<SHARED_FRAMEWORK_VERSION>\<ENHANCEMENT_ASSEMBLY_NAME>.deps.json
@@ -323,7 +323,7 @@ Si le fichier est placé dans l’installation .NET Core pour une utilisation gl
 
 Dans l’exemple d’application (*HostingStartupApp*), pour permettre la détection du fichier de dépendances (*HostingStartupApp.runtimeconfig.json*), ce fichier est placé dans le profil utilisateur.
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windowstabwindows"></a>[Fenêtres](#tab/windows)
 
 Définissez la variable d’environnement `DOTNET_ADDITIONAL_DEPS` à la valeur suivante :
 
@@ -381,7 +381,7 @@ Une amélioration de l’hébergement au démarrage peut être fournie par un as
 
 ## <a name="sample-code"></a>Exemple de code
 
-[L’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:tutorials/index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
+[L’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/platform-specific-configuration/samples/) ([Comment télécharger un exemple](xref:index#how-to-download-a-sample)) montre des scénarios d’implémentation de l’hébergement au démarrage :
 
 * Deux assemblys d’hébergement au démarrage (bibliothèques de classes) définissent chacun une paire clé-valeur de configuration en mémoire :
   * Package NuGet (*HostingStartupPackage*)

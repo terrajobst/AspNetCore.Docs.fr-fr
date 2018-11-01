@@ -3,14 +3,15 @@ title: Protection des données ASP.NET Core
 author: rick-anderson
 description: Découvrez le concept de protection des données et les principes de conception de l’API de Protection des données ASP.NET Core.
 ms.author: riande
-ms.date: 10/14/2016
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/data-protection/introduction
-ms.openlocfilehash: a49eee89e8c11b26c76ba167215c141482159933
-ms.sourcegitcommit: c684eb6c0999d11d19e15e65939e5c7f99ba47df
+ms.openlocfilehash: 37f170a3e8a46ef2215b0999358d46dd402636df
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46292295"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089546"
 ---
 # <a name="aspnet-core-data-protection"></a>Protection des données ASP.NET Core
 
@@ -44,7 +45,7 @@ Nous avons commencé en identifiant les problèmes liés à la pile existante. U
 
 Avec ces principes à l’esprit, nous avons développé une simple, [facile à utiliser](xref:security/data-protection/using-data-protection) pile de protection des données.
 
-L’API de protection des données ASP.NET Core s’appliquent pas principalement pour la persistance indéfini de charges utiles confidentielles. Autres technologies telles que [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) et [Azure Rights Management](https://docs.microsoft.com/rights-management/) sont plus adaptés pour le scénario de stockage indéterminée, et ils ont des fonctionnalités de gestion de clé forte en conséquence. Ceci dit, il n’y a rien interdire à un développeur à l’aide de l’API de protection des données ASP.NET Core pour la protection à long terme des données confidentielles.
+L’API de protection des données ASP.NET Core s’appliquent pas principalement pour la persistance indéfini de charges utiles confidentielles. Autres technologies telles que [Windows CNG DPAPI](https://msdn.microsoft.com/library/windows/desktop/hh706794%28v=vs.85%29.aspx) et [Azure Rights Management](/rights-management/) sont plus adaptés pour le scénario de stockage indéterminée, et ils ont des fonctionnalités de gestion de clé forte en conséquence. Ceci dit, il n’y a rien interdire à un développeur à l’aide de l’API de protection des données ASP.NET Core pour la protection à long terme des données confidentielles.
 
 ## <a name="audience"></a>Public
 

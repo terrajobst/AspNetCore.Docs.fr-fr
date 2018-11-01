@@ -4,16 +4,16 @@ title: ASP.NET MVC 5 | Microsoft Docs
 author: rick-anderson
 description: ASP.NET MVC 5 ASP.NET MVC 5 est une infrastructure pour générer des applications web évolutive et basée sur des normes à l’aide de modèles de conception bien établis et la puissance de AS....
 ms.author: riande
-ms.date: 01/20/2014
+ms.date: 10/11/2018
 ms.assetid: f79fbf7f-59e5-4279-a832-c1a0294630f4
 msc.legacyurl: /mvc/mvc5
 msc.type: content
-ms.openlocfilehash: c837560e0ad9618decaba9761da9cf35e0f03f08
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: c958d39c7eff0d581de6b05890b8e6df8bdb5207
+ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838358"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49348258"
 ---
 <a name="aspnet-mvc-5"></a>ASP.NET MVC 5
 ====================
@@ -21,7 +21,7 @@ ms.locfileid: "41838358"
 
 ### <a name="one-aspnet"></a>One ASP.NET
 
-Les modèles de projet Web MVC intègrent en toute transparence à la nouvelle expérience de One ASP.NET. Vous pouvez personnaliser votre projet MVC et configurer l’authentification à l’aide de l’Assistant de création de projet One ASP.NET. Vous trouverez un didacticiel d’introduction à ASP.NET MVC 5 dans [mise en route avec ASP.NET MVC 5](overview/getting-started/introduction/getting-started.md).
+Les modèles de projet Web MVC intègrent en toute transparence à l’expérience de One ASP.NET. Vous pouvez personnaliser votre projet MVC et configurer l’authentification à l’aide de l’Assistant de création de projet One ASP.NET. Vous trouverez un didacticiel d’introduction à ASP.NET MVC 5 dans [mise en route avec ASP.NET MVC 5](overview/getting-started/introduction/getting-started.md).
 
 Pour plus d’informations sur la mise à niveau des projets MVC 4 vers MVC 5, consultez [comment mettre à jour un ASP.NET MVC 4 et le projet d’API Web ASP.NET MVC 5 et API Web 2](overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md).
 
@@ -31,7 +31,7 @@ Les modèles de projet MVC ont été mis à jour pour utiliser ASP.NET Identity 
 
 ### <a name="bootstrap"></a>Programme d’amorçage
 
-Le modèle de projet MVC a été mis à jour pour utiliser [Bootstrap](http://getbootstrap.com/) pour fournir une élégante et réactive apparence que vous pouvez facilement personnaliser. Pour plus d’informations, consultez [Bootstrap dans les modèles de projet web Visual Studio 2013](../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap).
+Le modèle de projet MVC a été mis à jour pour utiliser [Bootstrap](http://getbootstrap.com/) pour fournir une élégante et réactive apparence que vous pouvez facilement personnaliser. Pour plus d’informations, consultez [Bootstrap dans les modèles de projet web Visual Studio](../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap).
 
 ### <a name="authentication-filters"></a>Filtres d’authentification
 
@@ -47,43 +47,45 @@ ASP.NET MVC prend désormais en charge [routage par attributs](https://blogs.msd
 
 ## <a name="new-web-project-experience"></a>Nouvelle expérience de projet Web
 
-Nous avons amélioré l’expérience de création de projets web dans Visual Studio 2013. Dans le **nouveau projet Web ASP.NET** dialogue, vous pouvez sélectionner le type de projet, vous souhaitez configurez n’importe quelle combinaison de technologies (Web Forms, MVC, Web API), configurez les options d’authentification et ajoutez un projet de test unitaire.
+Visual Studio amélioré l’expérience de création de projets web, à partir de Visual Studio 2013. Dans le **nouveau projet Web ASP.NET** dialogue, vous pouvez sélectionner le type de projet, vous souhaitez configurez n’importe quelle combinaison de technologies (Web Forms, MVC, Web API), configurez les options d’authentification, ajoutez la prise en charge de Docker et ajoutez un projet de test unitaire.
 
-![Nouveau projet ASP.NET](mvc5/_static/image1.png)
+![Nouveau projet ASP.NET](mvc5/_static/new-aspnet-web-app-dialog.png)
 
-La nouvelle boîte de dialogue vous permet de modifier les options d’authentification par défaut pour la plupart des modèles. Par exemple, lorsque vous créez un projet Web Forms ASP.NET vous pouvez sélectionner une des options suivantes :
+La boîte de dialogue vous permet de modifier les options d’authentification par défaut pour la plupart des modèles. Par exemple, lorsque vous créez un projet Web Forms ASP.NET vous pouvez sélectionner une des options suivantes :
 
 - Aucune authentification
 - Comptes d’utilisateur individuels (l’appartenance ASP.NET ou des journaux de fournisseur de réseau social dans)
-- Comptes d’organisation (Active Directory dans une application internet)
+- Comptes professionnels ou scolaires (Active Directory dans une application internet)
 - Authentification Windows (Active Directory dans une application intranet)
 
-![Options d’authentification](mvc5/_static/image2.png)
+![Options d’authentification](mvc5/_static/change-authentication-dialog.png)
 
-Pour plus d’informations sur le nouveau processus pour la création de projets web, consultez [Creating ASP.NET Web Projects in Visual Studio 2013](../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md). Pour plus d’informations sur les options d’authentification, consultez [ASP.NET Identity](../identity/overview/index.md).
+Pour plus d’informations sur le processus de création de projets web, consultez [Creating ASP.NET Web Projects in Visual Studio](../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md). Pour plus d’informations sur les options d’authentification, consultez [ASP.NET Identity](../identity/overview/index.md).
 
 <a id="scaffold"></a>
 ### <a name="aspnet-scaffolding"></a>Génération de modèles automatique ASP.NET
 
 Génération de modèles automatique ASP.NET est une infrastructure de génération de code pour les applications Web ASP.NET. Il est facile d’ajouter du code réutilisable à votre projet qui interagit avec un modèle de données.
 
-Dans les versions précédentes de Visual Studio, génération de modèles automatique a été limitée pour les projets ASP.NET MVC. Avec Visual Studio 2013, vous pouvez maintenant utiliser la génération de modèles automatique pour un projet ASP.NET, y compris les Web Forms. Visual Studio 2013 ne prend pas en charge les pages de génération pour un projet Web Forms, mais vous pouvez toujours utiliser la structure avec les Web Forms en ajoutant des dépendances MVC au projet. Prise en charge pour la génération de pages pour Web Forms sera ajoutée dans une prochaine mise à jour.
+Dans les versions de Visual Studio antérieures à 2013, génération de modèles automatique a été limitée pour les projets ASP.NET MVC. À partir de Visual Studio 2013, vous pouvez utiliser la génération de modèles automatique pour un projet ASP.NET, y compris les Web Forms. Visual Studio ne prend pas actuellement en charge les pages de génération pour un projet Web Forms, mais vous pouvez toujours utiliser la structure avec les Web Forms en ajoutant des dépendances MVC au projet. Prise en charge pour la génération de pages pour Web Forms sera ajoutée dans une future version.
 
-Lorsque vous utilisez la génération de modèles automatique, nous nous assurer que tous les requis dépendances sont installées dans le projet. Par exemple, si vous commencez avec un projet Web Forms ASP.NET et ensuite utilisez la structure pour ajouter un contrôleur d’API Web, références et les packages NuGet requis sont ajoutés à votre projet automatiquement.
+Lorsque vous utilisez la génération de modèles automatique, tous les requis dépendances sont installées dans le projet. Par exemple, si vous commencez avec un projet Web Forms ASP.NET et ensuite utilisez la structure pour ajouter un contrôleur d’API Web, références et les packages NuGet requis sont ajoutés à votre projet automatiquement.
 
-Pour ajouter la structure MVC à un projet Web Forms, ajoutez un **nouvel élément structuré** et sélectionnez **des dépendances MVC 5** dans la boîte de dialogue. Il existe deux options pour la génération de modèles automatique MVC ; Minimale et complète. Si vous sélectionnez Minimal, uniquement les packages NuGet et les références pour ASP.NET MVC sont ajoutés à votre projet. Si vous sélectionnez l’option complet, les dépendances minimales sont ajoutés, ainsi que les fichiers de contenu requis pour un projet MVC.
+Pour ajouter la structure MVC à un projet Web Forms, ajoutez un **nouvel élément structuré** et sélectionnez **des dépendances MVC 5** dans la boîte de dialogue. Il existe deux options pour la génération de modèles automatique MVC ; **Dépendances minimales** et **complète des dépendances**. Si vous sélectionnez **dépendances minimales**, uniquement les packages NuGet et les références pour ASP.NET MVC sont ajoutés à votre projet. Si vous sélectionnez **complète des dépendances**, les dépendances minimales sont ajoutés, ainsi que les fichiers de contenu requis pour un projet MVC.
 
-Prise en charge de la génération de modèles automatique des contrôleurs d’async utilise les nouvelles fonctionnalités asynchrones à partir d’Entity Framework 6.
+![Ajouter la boîte de dialogue Scaffold dans Visual Studio](overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/add-scaffold.png)
+
+Prise en charge pour les contrôleurs asynchrones de génération de modèles automatique utilise les fonctionnalités asynchrones à partir d’Entity Framework 6.
 
 Pour plus d’informations et des didacticiels, consultez [vue d’ensemble de la génération de modèles automatique ASP.NET](../visual-studio/overview/2013/aspnet-scaffolding-overview.md).
 
-### <a name="getting-help-and-reporting-issues"></a>Obtention d’aide et de signaler des problèmes
+### <a name="get-help-and-report-issues"></a>Get Help et signaler des problèmes
 
 - [Problèmes connus et la liste de modifications avec rupture](../visual-studio/overview/2013/release-notes.md#knownissues)
 - Obtenir de l’aide et de discuter d’ASP.NET MVC 5 dans le [forums](https://forums.asp.net/1146.aspx)
 - [Signaler un bogue dans ASP.NET MVC 5](https://github.com/aspnet/AspNetWebStack/issues)
 - [Effectuer une demande de fonctionnalité](http://aspnet.uservoice.com/forums/41201-asp-net-mvc)
 
-### <a name="upgrading-from-aspnet-mvc-4"></a>La mise à niveau à partir d’ASP.NET MVC 4
+### <a name="upgrade-from-aspnet-mvc-4"></a>Mise à niveau à partir d’ASP.NET MVC 4
 
 Consultez [comment mettre à niveau un ASP.NET MVC 4 et Web de projet d’API ASP.NET MVC 5 et API Web 2](overview/releases/how-to-upgrade-an-aspnet-mvc-4-and-web-api-project-to-aspnet-mvc-5-and-web-api-2.md)

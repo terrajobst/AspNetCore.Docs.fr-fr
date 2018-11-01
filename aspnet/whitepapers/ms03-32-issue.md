@@ -8,12 +8,12 @@ ms.date: 02/10/2010
 ms.assetid: 1365eebb-bdf7-4a05-8d18-7f200531be55
 msc.legacyurl: /whitepapers/ms03-32-issue
 msc.type: content
-ms.openlocfilehash: ce2d705a93577b0c6d28f86069873c6ecd891db6
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 9041f8d15a449a517594f8051c3d9f0ceb18a8a3
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838059"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207015"
 ---
 <a name="fix-for-server-application-unavailable-error-after-applying-security-update-for-ie"></a>Correction d’erreur de « Application serveur non disponible » après avoir appliqué la mise à jour de sécurité pour Internet Explorer
 ====================
@@ -38,7 +38,7 @@ Nous travaillons d’arrache-pied sur une solution permanente de ce problème. E
 4. Enregistre à nouveau ASP.NET. Cela crée un nouveau mot de passe aléatoire pour le compte et applique les paramètres de contrôle d’accès par défaut ASP.NET pour celui-ci
 5. Redémarre le service IIS
 
-Le fichier de commandes contient un mot de passe temporaire codé en dur de «<strong>1pass@word</strong>» qui vous serez invité à entrer pour la commande runas, exécutez lorsque le fichier de commandes est exécuté. Une fois la commande runas terminée, le mot de passe du compte ASPNET est recréé avec une valeur aléatoire forte. Notez que le fichier de commandes peut échouer si le mot de passe codé en dur ne répond pas aux exigences de complexité de mot de passe dans votre environnement. Si tel est le cas, vous pouvez le modifier à une autre valeur qui est appropriée pour votre environnement.
+Le fichier de commandes contient un mot de passe temporaire codé en dur de «<strong>1pass\@word</strong>» qui vous serez invité à entrer pour la commande runas, exécutez lorsque le fichier de commandes est exécuté. Une fois la commande runas terminée, le mot de passe du compte ASPNET est recréé avec une valeur aléatoire forte. Notez que le fichier de commandes peut échouer si le mot de passe codé en dur ne répond pas aux exigences de complexité de mot de passe dans votre environnement. Si tel est le cas, vous pouvez le modifier à une autre valeur qui est appropriée pour votre environnement.
 
 *> [!IMPORTANT]* Si vous avez ajouté les paramètres de contrôle d’accès personnalisés ou des autorisations de compte de base de données pour le compte ASPNET, elles devra être recréée issue de ce fichier de commandes. Il s’agit, car lorsque le compte est recréé, il obtiendra un nouvel identificateur de sécurité (SID).
 
@@ -51,7 +51,7 @@ Le fichier de commandes est inclus dans l’archive auto-extractible ci-dessous.
 3. Extraire le contenu dans c:\
 4. Sélectionnez Exécuter... dans le menu Démarrer, puis entrez `cmd.exe`
 5. Dans la fenêtre de commande ouverte, tapez `c:\fixup.cmd`.
-6. Lorsque vous y êtes invité, entrez <strong>1pass@word</strong> en tant que le mot de passe.
+6. Lorsque vous y êtes invité, entrez <strong>1pass\@word</strong> comme mot de passe.
 7. Si vous avez des paramètres de contrôle d’accès précédemment personnalisés ou des autorisations de compte de base de données pour le compte ASPNET, vous devrez réappliquer ces paramètres maintenant.
 
 Nombre d’excuses pour le désagrément occasionné. Nous allons envoyer des informations supplémentaires qu’il est disponible.

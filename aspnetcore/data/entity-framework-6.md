@@ -3,14 +3,15 @@ title: Bien démarrer avec ASP.NET Core et Entity Framework 6
 author: rick-anderson
 description: Cet article montre comment utiliser Entity Framework 6 dans une application ASP.NET Core.
 ms.author: tdykstra
-ms.date: 02/24/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/entity-framework-6
-ms.openlocfilehash: 500954bdf8ea592e0ed706943e0f5ba4f4594dbc
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: b7679afbe4c364386fe8f16d22d7e9797a3e0c27
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36274077"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090057"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>Bien démarrer avec ASP.NET Core et Entity Framework 6
 
@@ -20,7 +21,7 @@ Cet article montre comment utiliser Entity Framework 6 dans une application ASP.
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Pour utiliser Entity Framework 6, votre projet doit être compilé pour .NET Framework, car Entity Framework 6 ne prend pas en charge .NET Core. Si vous avez besoin de fonctionnalités multiplateformes, vous devez effectuer une mise à niveau vers [Entity Framework Core](https://docs.microsoft.com/ef/).
+Pour utiliser Entity Framework 6, votre projet doit être compilé pour .NET Framework, car Entity Framework 6 ne prend pas en charge .NET Core. Si vous avez besoin de fonctionnalités multiplateformes, vous devez effectuer une mise à niveau vers [Entity Framework Core](/ef/).
 
 La méthode recommandée pour utiliser Entity Framework 6 dans une application ASP.NET Core consiste à placer les classes de contexte et de modèle Entity Framework 6 (EF6) dans un projet de bibliothèque de classes qui cible le framework complet. Ajoutez une référence à la bibliothèque de classes depuis le projet ASP.NET Core. Consultez l’exemple [Solution Visual Studio avec des projets Entity Framework 6 et ASP.NET Core](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
 
@@ -66,9 +67,10 @@ Vous pouvez créer cet exemple à partir de zéro dans Visual Studio en effectua
 
 * Créez une solution.
 
-* **Ajouter un nouveau projet > Web > Application web ASP.NET Core (.NET Framework)**
+* **Ajouter** > **Nouveau projet** > **Web** > **Application web ASP.NET Core**
+  * Dans la boîte de dialogue de sélection du modèle de projet, sélectionnez API et .NET Framework dans la liste déroulante
 
-* **Ajouter un nouveau projet > Bureau classique Windows > Bibliothèque de classes (.NET Framework)**
+* **Ajouter** > **Nouveau projet** > **Windows Desktop** > **Bibliothèque de classes (.NET Framework)**
 
 * Dans la **Console du Gestionnaire de package** pour les deux projets, exécutez la commande `Install-Package Entityframework`.
 

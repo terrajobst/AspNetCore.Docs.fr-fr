@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez l’hôte web dans ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/01/2018
+ms.date: 10/18/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 7440ab26534840b190a346614f645860fc2b7d78
-ms.sourcegitcommit: 7211ae2dd702f67d36365831c490d6178c9a46c8
+ms.openlocfilehash: e19f12f69dfdd5653aea9c6be2b05f24009b875e
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44089897"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477447"
 ---
 # <a name="aspnet-core-web-host"></a>Hôte web ASP.NET Core
 
@@ -46,10 +46,10 @@ public class Program
 * Charge la [configuration de l’hôte](#host-configuration-values) à partir de :
   * Variables d’environnement comportant le préfixe `ASPNETCORE_` (par exemple, `ASPNETCORE_ENVIRONMENT`).
   * Arguments de ligne de commande
-* Charge la configuration de l’application à partir de :
+* Charge la configuration de l’application dans l’ordre suivant à partir des éléments ci-après :
   * *appsettings.json*
   * *appsettings.{Environment}.json*
-  * Les [secrets utilisateur](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée
+  * L’outil [Secret Manager (Gestionnaire de secrets)](xref:security/app-secrets) quand l’application s’exécute dans l’environnement `Development` à l’aide de l’assembly d’entrée.
   * Variables d'environnement.
   * Arguments de ligne de commande
 * Configure la [journalisation](xref:fundamentals/logging/index) des sorties de la console et du débogage. La journalisation inclut les règles de [filtrage de journal](xref:fundamentals/logging/index#log-filtering) qui sont spécifiées dans une section de configuration de la journalisation dans un fichier *appsettings.json* ou *appsettings.{Environment}.json*.
@@ -184,7 +184,7 @@ La propriété [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.exten
 **Type** : *string*  
 **Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
 **Définition avec** : `UseSetting`  
-**Variable d’environnement** : `ASPNETCORE_APPLICATIONKEY`
+**Variable d’environnement** : `ASPNETCORE_APPLICATIONNAME`
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -365,15 +365,13 @@ WebHost.CreateDefaultBuilder(args)
 
 ### <a name="hosting-startup-exclude-assemblies"></a>Assemblys d’hébergement à exclure au démarrage
 
-DESCRIPTION
+Chaîne délimitée par des points-virgules qui spécifie les assemblys d’hébergement à exclure au démarrage.
 
 **Clé** : hostingStartupExcludeAssemblies  
 **Type** : *string*  
 **Valeur par défaut** : une chaîne vide  
 **Définition avec** : `UseSetting`  
 **Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
-
-Chaîne délimitée par des points-virgules qui spécifie les assemblys d’hébergement à exclure au démarrage.
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -659,7 +657,7 @@ La méthode `Run` démarre l’application web et bloque le thread appelant jusq
 host.Run();
 ```
 
-**Start**
+**Démarrer**
 
 Appelez la méthode `Start` pour exécuter l’hôte en mode non bloquant :
 
@@ -832,7 +830,7 @@ La méthode `Run` démarre l’application web et bloque le thread appelant jusq
 host.Run();
 ```
 
-**Start**
+**Démarrer**
 
 Appelez la méthode `Start` pour exécuter l’hôte en mode non bloquant :
 
