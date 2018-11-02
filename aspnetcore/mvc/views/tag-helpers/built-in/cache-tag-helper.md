@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: 7d64c500168166b0a7a29d5b92473726d5a9f49a
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 2590682755721a4bb14902b9fe7138a3bff56d31
+ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325339"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50148809"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>Tag Helper Cache dans ASP.NET Core MVC
 
@@ -19,7 +19,7 @@ Par [Peter Kellner](http://peterkellner.net) et [Luke Latham](https://github.com
 
 Le Tag Helper Cache permet d’améliorer les performances de votre application ASP.NET Core en mettant en cache son contenu dans le fournisseur de caches ASP.NET Core interne.
 
-Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
 Le balisage Razor suivant met en cache la date actuelle :
 
@@ -119,7 +119,7 @@ L’exemple suivant analyse la valeur d’en-tête `User-Agent`. L’exemple met
 | -------------- | -------------------- |
 | Chaîne         | `Make`, `Make,Model` |
 
-`vary-by-query` accepte une liste séparée par des virgules de valeurs d’en-tête qui déclenchent une actualisation du cache quand la valeur de l’en-tête change.
+`vary-by-query` accepte une liste de <xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*> séparées par des virgules dans une chaîne de requête (<xref:Microsoft.AspNetCore.Http.HttpRequest.Query*>) déclenchant une actualisation du cache quand la valeur de l’une des clés répertoriées est modifiée.
 
 L’exemple suivant analyse les valeurs de `Make` et `Model`. L’exemple met en cache le contenu de chaque valeur `Make` et `Model` différente présentée au serveur web :
 
