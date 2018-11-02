@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: fundamentals/servers/index
-ms.openlocfilehash: 161ab3fdf48e58d8c9af991dc5531e46d9c5adff
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 6b6ebbe9d31d571ea470fba0989d622dcf6e68af
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325859"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758204"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -19,7 +19,7 @@ De [Tom Dykstra](https://github.com/tdykstra), [Steve Smith](https://ardalis.com
 
 Une application ASP.NET Core s’exécute avec une implémentation de serveur HTTP in-process. L’implémentation du serveur écoute les requêtes HTTP et les expose à l’application sous forme d’ensembles de [fonctionnalités de requêtes](xref:fundamentals/request-features) composées dans un <xref:Microsoft.AspNetCore.Http.HttpContext>.
 
-ASP.NET Core est livré avec trois implémentations de serveurs :
+ASP.NET Core est fourni avec les implémentations de serveur suivantes :
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -149,7 +149,7 @@ Lors du lancement d’une application à partir d’une invite de commandes dans
     * HTTP/2 sera pris en charge sur macOS dans une prochaine version.
   * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
-  * Windows Server 2016/Windows 10 ou version ultérieure
+  * Windows Server 2016/Windows 10 ou version ultérieure
   * Version cible de .Net Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (in-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
@@ -164,7 +164,7 @@ Lors du lancement d’une application à partir d’une invite de commandes dans
 ::: moniker range="< aspnetcore-2.2"
 
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
-  * Windows Server 2016/Windows 10 ou version ultérieure
+  * Windows Server 2016/Windows 10 ou version ultérieure
   * Version cible de .Net Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (out-of-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
