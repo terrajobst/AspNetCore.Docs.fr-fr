@@ -25,7 +25,7 @@ La mise en cache peut améliorer considérablement les performances et l’évol
 
 ASP.NET Core prend en charge plusieurs caches différents. Le cache le plus simple est basé sur le [IMemoryCache](/dotnet/api/microsoft.extensions.caching.memory.imemorycache), qui représente un cache stocké dans la mémoire du serveur web. Les applications qui s’exécutent sur une batterie de serveurs de plusieurs serveurs doivent vérifier que les sessions sont rémanentes lors de l’utilisation du cache en mémoire. Les sessions rémanentes garantissent que les demandes d’un client vont vers le même serveur. Par exemple, les applications web Azure utilisent [Application Request Routing](https://www.iis.net/learn/extensions/planning-for-arr) (ARR) pour router toutes les demandes vers le même serveur.
 
-Les sessions non rémanentes dans une batterie de serveurs web nécessitent un [cache distribué](distributed.md) pour éviter les problèmes de cohérence du cache. Pour certaines applications, un cache distribué peut prendre en charge un sclae-out plus important qu'un cache en mémoire. Il permet de décharger la mémoire cache vers un processus externe.
+Les sessions non persistantes dans une batterie de serveurs Web nécessitent un [cache distribué](distributed.md) pour éviter les problèmes de cohérence du cache.  Pour certaines applications, un cache distribué peut prendre en charge plus élevée montée en puissance à un cache en mémoire. Il permet de décharger la mémoire cache vers un processus externe.
 
 ::: moniker range="< aspnetcore-2.0"
 
@@ -43,7 +43,7 @@ Le cache en mémoire permet de stocker n’importe quel objet ; l’interface de
 * N’importe quel [implémentation .NET](/dotnet/standard/net-standard#net-implementation-support) qui cible .NET Standard 2.0 ou version ultérieure. Par exemple, ASP.NET Core 2.0 ou version ultérieure.
 * .NET framework 4.5 ou version ultérieure.
 
-[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` (décrit dans cette rubrique) est recommandé par rapport à `System.Runtime.Caching` / `MemoryCache` , car il est mieux intégré dans ASP.NET Core. Par exemple, `IMemoryCache` fonctionne en mode natif avec [l’injection de dépendances](xref:fundamentals/dependency-injection) ASP.NET Core.
+[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` (décrite dans cette rubrique) est recommandée sur `System.Runtime.Caching` / `MemoryCache` , car il est mieux intégrée dans ASP.NET Core. Par exemple, `IMemoryCache` fonctionne en mode natif avec ASP.NET Core [l’injection de dépendances](xref:fundamentals/dependency-injection).
 
 Utilisez `System.Runtime.Caching` / `MemoryCache` comme un pont de compatibilité lors du portage du code à partir d’ASP.NET 4.x vers ASP.NET Core.
 
@@ -120,7 +120,7 @@ L’exemple suivant :
 
 ::: moniker range=">= aspnetcore-2.0"
 
-## <a name="use-setsize-size-and-sizelimit-to-limit-cache-size"></a> Utiliser SetSize, Size et SizeLimit pour limiter la taille du cache 
+## <a name="use-setsize-size-and-sizelimit-to-limit-cache-size"></a>Utiliser SetSize, Size et SizeLimit pour limiter la taille du cache
 
 Une instance `MemoryCache` peut éventuellement spécifier et appliquer une limite de taille. La limite de taille de mémoire n’a pas d’unité de mesure, car le cache dispose d’aucun mécanisme pour mesurer le nombre d’entrées. Si la limite de taille de mémoire cache est définie, toutes les entrées doivent spécifier taille. La taille spécifiée est exprimé en unités choisies par le développeur.
 
@@ -161,7 +161,7 @@ Utiliser un `CancellationTokenSource` permet à plusieurs entrées de cache d'ê
 
 ## <a name="additional-notes"></a>Remarques supplémentaires
 
-- Lorsque vous utilisez un callback pour remplir un élément de cache :
+- Lorsque vous utilisez un rappel pour remplir un élément de cache :
 
   - Plusieurs demandes peuvent trouver la valeur de clé mise en cache vide étant donné que le rappel n’est pas terminé.
   - Il peut en résulter que plusieurs threads remplissent l’élément mis en cache.
