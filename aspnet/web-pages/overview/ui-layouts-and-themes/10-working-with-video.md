@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/10-working-with-video
 title: Affichage de vidéo dans une application Web Pages (Razor) Site | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Ce chapitre explique comment afficher la vidéo dans un ASP.NET Web Pages avec la page de syntaxe Razor.
 ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: 332fb3da-e2a5-460d-bb90-dd911e1e2c95
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/10-working-with-video
 msc.type: authoredcontent
-ms.openlocfilehash: 28884d8c4998ea5b00a60bf094f41b915b565bd8
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 8f4b7186ae5c7b7b384ebcb23f7c9ad65caeb0bd
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835325"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021038"
 ---
 <a name="displaying-video-in-an-aspnet-web-pages-razor-site"></a>Affichage de vidéo dans un Site ASP.NET Web Pages (Razor)
 ====================

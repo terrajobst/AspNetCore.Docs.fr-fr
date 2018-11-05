@@ -1,19 +1,19 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/enhancing-data-validation
 title: 'EF Database First avec ASP.NET MVC : amélioration de la Validation des données | Microsoft Docs'
-author: tfitzmac
+author: Rick-Anderson
 description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: riande
 ms.date: 12/29/2014
 ms.assetid: 0ed5e67a-34c0-4b57-84a6-802b0fb3cd00
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/enhancing-data-validation
 msc.type: authoredcontent
-ms.openlocfilehash: dbff33a1c4f47474adda82e796d9c292392142f2
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: df2cd99619f097c9f392e8fe7352c1ce3a69c8df
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833016"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021662"
 ---
 <a name="ef-database-first-with-aspnet-mvc-enhancing-data-validation"></a>EF Database First avec ASP.NET MVC : amélioration de la Validation des données
 ====================
