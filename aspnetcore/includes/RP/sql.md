@@ -2,9 +2,11 @@
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-L’objet `MovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
+L’objet `MovieContext` gère la tâche de connexion à la base de données et de mappage d’objets `Movie` à des enregistrements de la base de données. Le contexte de base de données est inscrit auprès du conteneur [Injection de dépendances](xref:fundamentals/dependency-injection) dans la méthode `ConfigureServices` du fichier *Startup.cs* :
 
 [!code-csharp[](code/Startup.cs?name=snippet2&highlight=6-8)]
+
+Pour plus d’informations sur l’utilisation de `DbContext` avec l’injection de dépendances, consultez [Utilisation de DbContext avec l’injection de dépendances](/ef/core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection).
 
 ## <a name="sqlite"></a>SQLite
 

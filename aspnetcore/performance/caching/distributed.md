@@ -104,7 +104,7 @@ Ajouter `SqlConfig.Tools` à la `<ItemGroup>` élément du fichier projet et ex�
 
 ::: moniker-end
 
-Créer une table dans SQL Server en exécutant la `sql-cache create` commande. Fournir l’instance de SQL Server (`Data Source`), base de données (`Initial Catalog`), schéma (par exemple, `dbo`) et le nom de la table (par exemple, `TestCache`) :
+Créer une table dans SQL Server en exécutant la commande `sql-cache create` : Fournir l’instance de SQL Server (`Data Source`), base de données (`Initial Catalog`), schéma (par exemple, `dbo`) et le nom de la table (par exemple, `TestCache`) :
 
 ```console
 dotnet sql-cache create "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DistCache;Integrated Security=True;" dbo TestCache

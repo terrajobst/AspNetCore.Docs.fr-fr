@@ -6,20 +6,40 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: c88441b39d8c96ec817c58fc56ebd51a0887b077
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 80292f8cfecd5363fb8acc8578f9bb0ca9ee5969
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045560"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090161"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>Ajouter une fonction de recherche aux pages Razor dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Dans ce document, la fonction de recherche est ajoutée à la page d’index qui permet la recherche de films par *genre* ou par *nom*.
+Dans ce document, la fonction de recherche est ajoutée à la page Index qui permet la recherche de films par *genre* ou par *nom*.
 
-Mettez à jour la méthode `OnGetAsync` de la page d’index avec le code suivant :
+Ajoutez les propriétés en surbrillance suivantes à *Pages/Movies/Index.cshtml.cs* :
+
+::: moniker range="= aspnetcore-2.0"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
+
+::: moniker-end
+
+* `SearchString` : contient le texte que les utilisateurs entrent dans la zone de texte de recherche.
+* `Genres` : contient la liste des genres. Cela permet à l’utilisateur de sélectionner un genre dans la liste.
+* `MovieGenre` : contient le genre spécifique sélectionné par l’utilisateur (par exemple, « Western »).
+
+Vous allez utiliser les propriétés `Genres` et `MovieGenre` plus loin dans ce document.
+
+Mettez à jour la méthode `OnGetAsync` de la page Index avec le code suivant :
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_1stSearch)]
 
@@ -40,6 +60,8 @@ Si le paramètre `searchString` contient une chaîne, la requête de films est m
 Le code `s => s.Title.Contains()` est une [expression lambda](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions). Les expressions lambda sont utilisées dans les requêtes [LINQ](/dotnet/csharp/programming-guide/concepts/linq/) basées sur une méthode comme arguments pour les méthodes d’opérateur de requête standard, telles que la méthode [Where](/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq) ou `Contains` (utilisée dans le code précédent). Les requêtes LINQ ne sont pas exécutées quand elles sont définies ou quand elles sont modifiées en appelant une méthode (comme `Where`, `Contains` ou `OrderBy`). Au lieu de cela, l’exécution de la requête est différée. Cela signifie que l’évaluation d’une expression est retardée jusqu’à ce que sa valeur réalisée fasse l’objet d’une itération réelle ou que la méthode `ToListAsync` soit appelée. Pour plus d’informations, consultez [Exécution de requête](/dotnet/framework/data/adonet/ef/language-reference/query-execution).
 
 **Remarque :** La méthode [Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) est exécutée sur la base de données, et non pas dans le code C#. Le respect de la casse pour la requête dépend de la base de données et du classement. Sur SQL Server, `Contains` est mappée à [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql), qui ne respecte pas la casse. Dans SQLite, avec le classement par défaut, elle respecte la casse.
+
+Enfin, la dernière ligne de la méthode `OnGetAsync` renseigne la propriété `SearchString` avec la valeur de recherche de l’utilisateur. Une fois la propriété `SearchString` renseignée, la valeur de recherche est conservée dans la zone de recherche après l’exécution de la recherche.
 
 Accédez à la page Movies, puis ajoutez une chaîne de requête telle que `?searchString=Ghost` à l’URL (par exemple, `http://localhost:5000/Movies?searchString=Ghost`). Les films filtrés sont affichés.
 
@@ -66,25 +88,6 @@ La balise HTML `<form>` utilise le [Tag Helper de formulaire](xref:mvc/views/wor
 ![Vue Index avec le mot « ghost » tapé dans la zone de texte de filtre des titres](search/_static/filter.png)
 
 ## <a name="search-by-genre"></a>Rechercher par genre
-
-Ajoutez les propriétés en surbrillance suivantes à *Pages/Movies/Index.cshtml.cs* :
-
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
-[!code-csharp[](razor-pages-start/sample/RazorPagesMovie21/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
-
-::: moniker-end
-
-
-La propriété `Genres` contient la liste des genres. Cela permet à l’utilisateur de sélectionner un genre dans la liste.
-
-La propriété `MovieGenre` contient le genre spécifique sélectionné par l’utilisateur (par exemple, « Western »).
 
 Mettez à jour la méthode `OnGetAsync` avec le code suivant :
 

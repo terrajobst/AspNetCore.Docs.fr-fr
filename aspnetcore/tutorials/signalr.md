@@ -7,29 +7,29 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 55fb6b1c13549129a00541c1228956a93854ad78
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: c059ace7ebe0e65ecb3ac068677d65ae148322a0
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578027"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207678"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
 Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous apprenez à :
 
 > [!div class="checklist"]
-> * Créer un projet application web.
+> * Créez un projet web.
 > * Ajouter la bibliothèque de client SignalR.
 > * Créer un hub SignalR.
 > * Configurer le projet pour utiliser SignalR.
-> * Ajouter le code qui utilise le hub pour envoyer des messages de n’importe quel client à tous les clients connectés.
+> * Ajouter du code qui envoie des messages de n’importe quel client vers tous les clients connectés.
 
 À la fin, vous disposerez d’une application de conversation opérationnelle :
 
 ![Exemple d’application SignalR](signalr/_static/signalr-get-started-finished.png)
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 ## <a name="prerequisites"></a>Prérequis
 

@@ -3,14 +3,15 @@ title: Validation de modèle dans ASP.NET Core MVC
 author: tdykstra
 description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC.
 ms.author: riande
-ms.date: 07/31/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: mvc/models/validation
-ms.openlocfilehash: fe036f261b80f6134078835080409720d149374d
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 73d41b4718071d00a6f80b33de182da2ad90f331
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312152"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090948"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>Validation de modèle dans ASP.NET Core MVC
 
@@ -27,6 +28,13 @@ Heureusement, .NET dispose d’une validation abstraite dans des attributs de va
 ## <a name="validation-attributes"></a>Attributs de validation
 
 Les attributs de validation sont un moyen de configurer la validation de modèle : elle est donc conceptuellement similaire à la validation des champs dans les tables de base de données. Ceci inclut des contraintes comme l’affectation de types de données ou des champs obligatoires. L’application de modèles aux données pour forcer le respect des règles d’entreprise, comme une carte de crédit, un numéro de téléphone ou une adresse e-mail, est un autre type de validation. Les attributs de validation simplifient et facilitent l’application de ces exigences.
+
+Les attributs de validation sont spécifiés au niveau de la propriété : 
+
+```csharp 
+[Required] 
+public string MyProperty { get; set; } 
+``` 
 
 Voici un modèle `Movie` annoté pour une application qui stocke des informations sur les films et les émissions de télévision. La plupart des propriétés sont obligatoires et plusieurs propriétés de type chaîne sont soumises à des exigences en matière de longueur. En outre, une restriction de plage numérique de 0 à 999,99 $ est en place pour la propriété `Price`, ainsi qu’un attribut de validation personnalisé.
 
@@ -62,7 +70,7 @@ Les [types valeur](/dotnet/csharp/language-reference/keywords/value-types) non N
 
 La liaison de modèle MVC, qui n’est pas concernée par la validation et les attributs de validation, rejette l’envoi d’un champ de formulaire contenant une valeur manquante ou un espace pour un type non Nullable. En l’absence d’un attribut `BindRequired` sur la propriété cible, la liaison de modèle ignore les données manquantes pour les types non Nullables, où le champ de formulaire est absent dans les données du formulaire entrant.
 
-L’attribut [BindRequired](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (consultez également [Personnaliser le comportement de la liaison de modèle avec des attributs](xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes)) est pratique pour vérifier que les données d’un formulaire sont complètes. Quand il est appliqué à une propriété, le système de la liaison de modèle exige une valeur pour cette propriété. Quand il est appliqué à un type, le système de la liaison de modèle exige des valeurs pour toutes les propriétés de ce type.
+L’[attribut BindRequired](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (consultez également <xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes>) est pratique pour vérifier que les données d’un formulaire sont complètes. Quand il est appliqué à une propriété, le système de la liaison de modèle exige une valeur pour cette propriété. Quand il est appliqué à un type, le système de la liaison de modèle exige des valeurs pour toutes les propriétés de ce type.
 
 Quand vous utilisez un type [Nullable\<T> ](/dotnet/csharp/programming-guide/nullable-types/) (par exemple `decimal?` ou `System.Nullable<decimal>`) et que vous le marquez `Required`, une vérification de la validation côté serveur est effectuée comme si la propriété était de type nullable standard (par exemple `string`).
 
@@ -256,4 +264,4 @@ Si vous devez valider deux champs supplémentaires ou plus avec l’attribut `[R
 public string MiddleName { get; set; }
 ```
 
-`AdditionalFields`, comme tous les arguments d’attribut, doit être une expression constante. Par conséquent, vous ne devez pas utiliser une [chaîne interpolée](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/interpolated-strings) ou appeler [`string.Join()`](https://msdn.microsoft.com/library/system.string.join(v=vs.110).aspx) pour initialiser `AdditionalFields`. Pour chaque champ supplémentaire que vous ajoutez à l’attribut `[Remote]`, vous devez ajouter un autre argument à la méthode d’action de contrôleur correspondante.
+`AdditionalFields`, comme tous les arguments d’attribut, doit être une expression constante. Par conséquent, vous ne devez pas utiliser une [chaîne interpolée](/dotnet/csharp/language-reference/keywords/interpolated-strings) ou appeler [`string.Join()`](https://msdn.microsoft.com/library/system.string.join(v=vs.110).aspx) pour initialiser `AdditionalFields`. Pour chaque champ supplémentaire que vous ajoutez à l’attribut `[Remote]`, vous devez ajouter un autre argument à la méthode d’action de contrôleur correspondante.

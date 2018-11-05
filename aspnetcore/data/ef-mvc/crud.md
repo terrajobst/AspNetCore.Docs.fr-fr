@@ -3,14 +3,15 @@ title: ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
 author: rick-anderson
 description: ''
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/crud
-ms.openlocfilehash: de9b0bd1e0346d4c12f256e6226353f1ab47ed11
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 34927415beadaa3f5c9035a9101e3c99f7cbc395
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477577"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090821"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
 
@@ -91,7 +92,7 @@ Ceci génère le code HTML suivant quand `item.ID` vaut 6 :
 <a href="/Students/Edit?studentID=6">Edit</a>
 ```
 
-Pour plus d’informations sur les Tag Helpers, consultez [Tag Helpers dans ASP.NET Core](xref:mvc/views/tag-helpers/intro).
+Pour plus d’informations sur les Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
 ### <a name="add-enrollments-to-the-details-view"></a>Ajouter des inscriptions à la vue Details
 
@@ -121,7 +122,7 @@ Ce code ajoute l’entité Student créée par le classeur de modèles ASP.NET C
 
 Vous avez supprimé `ID` de l’attribut `Bind`, car ID est la valeur de clé primaire définie automatiquement par SQL Server lors de l’insertion de la ligne. L’entrée de l’utilisateur ne définit pas la valeur de l’ID.
 
-À part l’attribut `Bind`, le bloc try-catch est la seule modification que vous avez apportée au code du modèle généré automatiquement. Si une exception qui dérive de `DbUpdateException` est interceptée lors de l’enregistrement des modifications, un message d’erreur générique est affiché. Les exceptions `DbUpdateException` sont parfois dues à quelque chose d’externe à l’application et non pas à une erreur de programmation : il est donc conseillé à l’utilisateur de réessayer. Bien que ceci ne soit pas implémenté dans cet exemple, une application destinée à la production doit consigner l’exception. Pour plus d’informations, consultez la section **Journal pour obtenir un aperçu** de [Surveillance et télémétrie (génération d’applications Cloud du monde réel avec Azure)](https://docs.microsoft.com/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).
+À part l’attribut `Bind`, le bloc try-catch est la seule modification que vous avez apportée au code du modèle généré automatiquement. Si une exception qui dérive de `DbUpdateException` est interceptée lors de l’enregistrement des modifications, un message d’erreur générique est affiché. Les exceptions `DbUpdateException` sont parfois dues à quelque chose d’externe à l’application et non pas à une erreur de programmation : il est donc conseillé à l’utilisateur de réessayer. Bien que ceci ne soit pas implémenté dans cet exemple, une application destinée à la production doit consigner l’exception. Pour plus d’informations, consultez la section **Journal pour obtenir un aperçu** de [Surveillance et télémétrie (génération d’applications Cloud du monde réel avec Azure)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).
 
 L’attribut `ValidateAntiForgeryToken` aide à éviter les attaques par falsification de requête intersites (CSRF, Cross-Site Request Forgery). Le jeton est automatiquement injecté dans la vue par le [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) et est inclus quand le formulaire est envoyé par l’utilisateur. Le jeton est validé par l’attribut `ValidateAntiForgeryToken`. Pour plus d’informations sur la falsification de requête intersites, consultez [Protection contre la falsification de requête](../../security/anti-request-forgery.md).
 
@@ -277,7 +278,7 @@ Dans *Startup.cs*, vous appelez la [méthode d’extension AddDbContext](https:/
 
 ## <a name="handling-transactions"></a>Gestion des transactions
 
-Par défaut, Entity Framework implémente implicitement les transactions. Dans les scénarios où vous apportez des modifications à plusieurs lignes ou plusieurs tables, puis que appelez `SaveChanges`, Entity Framework garantit automatiquement que soit toutes vos modifications réussissent soit elles échouent toutes. Si certaines modifications sont effectuées en premier puis qu’une erreur se produit, ces modifications sont automatiquement annulées. Pour les scénarios où vous avez besoin de plus de contrôle, par exemple si vous voulez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](https://docs.microsoft.com/ef/core/saving/transactions).
+Par défaut, Entity Framework implémente implicitement les transactions. Dans les scénarios où vous apportez des modifications à plusieurs lignes ou plusieurs tables, puis que appelez `SaveChanges`, Entity Framework garantit automatiquement que soit toutes vos modifications réussissent soit elles échouent toutes. Si certaines modifications sont effectuées en premier puis qu’une erreur se produit, ces modifications sont automatiquement annulées. Pour les scénarios où vous avez besoin de plus de contrôle, par exemple si vous voulez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](/ef/core/saving/transactions).
 
 ## <a name="no-tracking-queries"></a>Pas de suivi des requêtes
 
@@ -291,7 +292,7 @@ Vous pouvez désactiver le suivi des objets entité en mémoire en appelant la m
 
 * Vous voulez attacher une entité pour pouvoir la mettre à jour, mais vous avez auparavant récupéré la même entité à d’autre fins. Comme l’entité est déjà suivie par le contexte de base de données, vous ne pouvez pas attacher l’entité que vous voulez modifier. Une façon de gérer cette situation est d’appeler `AsNoTracking` sur la requête précédente.
 
-Pour plus d’informations, consultez [Suivi ou pas de suivi](https://docs.microsoft.com/ef/core/querying/tracking).
+Pour plus d’informations, consultez [Suivi ou pas de suivi](/ef/core/querying/tracking).
 
 ## <a name="summary"></a>Récapitulatif
 

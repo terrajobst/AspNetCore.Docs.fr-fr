@@ -1,17 +1,17 @@
 ---
-title: Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
+title: Résoudre les erreurs de démarrage d’ASP.NET Core sur Azure App Service
 author: guardrex
 description: Découvrez comment diagnostiquer les problèmes liés aux déploiements ASP.NET Core sur Azure App Service.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/31/2018
+ms.date: 10/24/2018
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: a995c743b4e43be8bea5329affb3f2c736b1d016
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 05bb024f5b0d2b554cc861c250a92fd7ae23437f
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41902552"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090743"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
 
@@ -108,7 +108,7 @@ Le journal stdout du module ASP.NET Core enregistre souvent des messages d’err
 
 ## <a name="common-startup-errors"></a>Erreurs de démarrage courantes 
 
-Voir [Informations de référence sur les erreurs ASP.NET Core courantes](xref:host-and-deploy/azure-iis-errors-reference). La plupart des problèmes courants qui empêchent le démarrage de l’application sont traités dans la rubrique de référence.
+Consultez <xref:host-and-deploy/azure-iis-errors-reference>. La plupart des problèmes courants qui empêchent le démarrage de l’application sont traités dans la rubrique de référence.
 
 ## <a name="slow-or-hanging-app"></a>Application lente ou bloquée
 
@@ -175,8 +175,8 @@ Pour plus d’informations, voir [Activer la journalisation des diagnostics pour
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Présentation de la gestion des erreurs dans ASP.NET Core](xref:fundamentals/error-handling)
-* [Informations de référence sur les erreurs courantes pour Azure App Service et IIS avec ASP.NET Core](xref:host-and-deploy/azure-iis-errors-reference)
+* <xref:fundamentals/error-handling>
+* <xref:host-and-deploy/azure-iis-errors-reference>
 * [Résoudre les problèmes d’une application web dans Azure App Service avec Visual Studio](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
 * [Résoudre les erreurs HTTP « 502 Passerelle incorrecte » et « 503 Service non disponible » dans des applications web Azure](/azure/app-service/app-service-web-troubleshoot-http-502-http-503)
 * [Résoudre les problèmes de performances d’une application web lente dans Azure App Service](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
