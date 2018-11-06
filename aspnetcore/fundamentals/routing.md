@@ -4,25 +4,25 @@ author: ardalis
 description: Découvrez comment la fonctionnalité de routage ASP.NET Core est chargée du mappage d’une requête entrante à un gestionnaire de routage.
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/20/2018
+ms.date: 10/01/2018
 uid: fundamentals/routing
-ms.openlocfilehash: 94fa6a278466c8cc9926d7893d1ef71d83b865df
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 06059d720bd4444b1ec12e42d466ee54d1658203
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41870849"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207754"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
 Par [Ryan Nowak](https://github.com/rynowak), [Steve Smith](https://ardalis.com/) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-La fonctionnalité de routage est chargée du mappage d’une requête entrante à un gestionnaire de routage. Les routes sont définies dans l’application et configurées au démarrage de l’application. Une route peut éventuellement extraire des valeurs de l’URL contenue dans la requête, et ces valeurs peuvent ensuite être utilisées pour le traitement de la requête. À l’aide des informations de route fournies par l’application, la fonctionnalité de routage peut également générer des URL qui mappent à des gestionnaires de routage. Par conséquent, le routage peut trouver un gestionnaire de routage en fonction d’une URL ou l’URL correspondant à un gestionnaire de routage donné en fonction des informations du gestionnaire de routage.
+La fonctionnalité de routage est chargée du mappage d’une requête entrante à un gestionnaire de routage. Les routes sont définies dans l’application et configurées au démarrage de l’application. Une route peut éventuellement extraire des valeurs de l’URL contenue dans la requête, et ces valeurs peuvent ensuite être utilisées pour le traitement de la requête. À l’aide des informations de route fournies par l’application, la fonctionnalité de routage peut également générer des URL qui mappent à des gestionnaires de routage. Par conséquent, le routage peut trouver un gestionnaire de routage en se basant sur une URL, ou il peut trouver l’URL correspondant à un gestionnaire de routage donné en se basant sur les informations relatives à celui-ci.
 
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Concepts de base du routage
 
@@ -37,7 +37,7 @@ Le routage est connecté au pipeline de [l’intergiciel (middleware)](xref:fund
 
 ### <a name="url-matching"></a>Correspondance d’URL
 
-La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *gestionnaire*. Ce processus est généralement basé sur des données présentes dans le chemin de l’URL, mais peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
+La correspondance d’URL est le processus par lequel le routage distribue une requête entrante à un *gestionnaire*. Ce processus est basé sur des données présentes dans le chemin de l’URL, mais il peut être étendu pour prendre en compte toutes les données de la requête. La possibilité de distribuer des requêtes à des gestionnaires distincts est essentielle pour adapter la taille et la complexité d’une application.
 
 Les requêtes entrantes entrent dans `RouterMiddleware`, qui appelle la méthode <xref:Microsoft.AspNetCore.Routing.IRouter.RouteAsync*> sur chaque route dans l’ordre. L’instance <xref:Microsoft.AspNetCore.Routing.IRouter> détermine s’il faut *gérer* la requête en affectant à [RouteContext.Handler](xref:Microsoft.AspNetCore.Routing.RouteContext.Handler*) un <xref:Microsoft.AspNetCore.Http.RequestDelegate> non null. Si une route définit un gestionnaire pour la requête, le traitement de la route s’arrête et le gestionnaire est appelé pour traiter la requête. Si toutes les routes sont tentées et qu’aucun gestionnaire n’est trouvé pour la requête, le middleware appelle *next* : le middleware suivant dans le pipeline de requête est alors appelé.
 
@@ -47,7 +47,7 @@ Une correspondance pendant `RouteAsync` définit également les propriétés de 
 
 [RouteData.Values](xref:Microsoft.AspNetCore.Routing.RouteData.Values*) est un dictionnaire de *valeurs de route* produites à partir de la route. Ces valeurs sont généralement déterminées en décomposant l’URL en jetons. Elles peuvent être utilisées pour accepter l’entrée d’utilisateur ou pour prendre d’autres décisions relatives à la distribution à l’intérieur de l’application.
 
-[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*) est un conteneur de propriétés des données supplémentaires associées à la route mise en correspondance. Les `DataTokens` sont fournis pour prendre en charge l’association de données d’état à chaque route afin que l’application puisse prendre des décisions ultérieurement en fonction de la route avec laquelle la correspondance a été établie. Ces valeurs sont définies par le développeur et n’affectent **pas** le comportement du routage de quelque manière que ce soit. De plus, les valeurs dissimulées dans des jetons de données peuvent être de n’importe quel type, contrairement aux valeurs de route, qui doivent être facilement convertibles en chaînes et à partir de chaînes.
+[RouteData.DataTokens](xref:Microsoft.AspNetCore.Routing.RouteData.DataTokens*) est un conteneur de propriétés des données supplémentaires associées à la route mise en correspondance. Les `DataTokens` sont fournis pour prendre en charge l’association de données d’état à chaque route afin que l’application puisse prendre des décisions ultérieurement en fonction de la route avec laquelle la correspondance a été établie. Ces valeurs sont définies par le développeur et n’affectent **pas** le comportement du routage de quelque manière que ce soit. De plus, les valeurs remisées (stash) dans `RouteData.DataTokens` peuvent être de n’importe quel type, contrairement aux `RouteData.Values`, qui doivent être facilement convertibles en chaînes et à partir de chaînes.
 
 [RouteData.Routers](xref:Microsoft.AspNetCore.Routing.RouteData.Routers*) est une liste des routes qui ont participé à la mise en correspondance correcte de la requête. Les routes peuvent être imbriquées les unes dans les autres. La propriété `Routers` reflète le chemin à travers l’arborescence logique des routes qui ont généré une correspondance. En général le premier élément de `Routers` est la collection de routes et il doit être utilisé pour la génération d’URL. Le dernier élément de `Routers` est le gestionnaire de routage avec lequel la correspondance a été établie.
 
@@ -63,7 +63,7 @@ Les entrées principales dans `GetVirtualPath` sont les suivantes :
 * [VirtualPathContext.Values](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.Values*)
 * [VirtualPathContext.AmbientValues](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.AmbientValues*)
 
-Les routes utilisent principalement les valeurs de route fournies par `Values` et `AmbientValues` pour décider où il est possible de générer une URL et les valeurs à inclure. Les `AmbientValues` sont l’ensemble des valeurs de route produites à partir de la mise en correspondance de la requête actuelle avec le système de routage. En revanche, les `Values` sont les valeurs de route qui spécifient la façon de générer l’URL souhaitée pour l’opération actuelle. `HttpContext` est fourni au cas où une route aurait besoin d’obtenir des services ou des données supplémentaires associés au contexte actuel.
+Les routes utilisent principalement les valeurs de routage fournies par `Values` et `AmbientValues` pour décider où il est possible de générer une URL et quelles sont les valeurs à inclure. Les `AmbientValues` sont l’ensemble des valeurs de route produites à partir de la mise en correspondance de la requête actuelle avec le système de routage. En revanche, les `Values` sont les valeurs de route qui spécifient la façon de générer l’URL souhaitée pour l’opération actuelle. `HttpContext` est fourni au cas où une route aurait besoin d’obtenir des services ou des données supplémentaires associés au contexte actuel.
 
 > [!TIP]
 > Considérez [VirtualPathContext.Values](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.Values*) comme un ensemble de substitutions pour [VirtualPathContext.AmbientValues](xref:Microsoft.AspNetCore.Routing.VirtualPathContext.AmbientValues*). La génération d’URL tente de réutiliser des valeurs de route de la requête actuelle afin de faciliter la génération d’URL pour des liens utilisant la même route ou les mêmes valeurs de route.
@@ -169,12 +169,12 @@ routes.MapRoute(
 
 Avec les valeurs de route `{ controller = Products, action = List }`, cette route génère l’URL `/Products/List`. Les valeurs de route remplacent les paramètres de routage correspondant pour former le chemin d’URL. Étant donné qu’`id` est un paramètre de routage facultatif, ce n’est pas un problème qu’il n’ait pas de valeur.
 
-Avec les valeurs de route `{ controller = Home, action = Index }`, cette route génère l’URL `/`. Les valeurs de route fournies sont mises en correspondance avec les valeurs par défaut afin que les segments correspondant à ces valeurs peuissent être omis sans risque. Notez que les deux URL générées effectuent un aller-retour avec cette définition de route et produisent les mêmes valeurs de route que celles utilisées pour générer l’URL.
+Avec les valeurs de route `{ controller = Home, action = Index }`, cette route génère l’URL `/`. Les valeurs de route fournies sont mises en correspondance avec les valeurs par défaut afin que les segments correspondant à ces valeurs peuissent être omis sans risque. Les deux URL générées effectuent un aller-retour avec cette définition de route, et produisent les mêmes valeurs de route que celles utilisées pour générer l’URL.
 
 > [!TIP]
 > Pour générer des URL, une application utilisant ASP.NET Core MVC doit utiliser <xref:Microsoft.AspNetCore.Mvc.Routing.UrlHelper> au lieu d’effectuer un appel directement dans le routage.
 
-Pour plus d’informations sur le processus de génération d’URL, consultez [Informations de référence sur la génération d’URL](#url-generation-reference).
+Pour plus d’informations sur la génération d’URL, consultez [Informations de référence sur la génération d’URL](#url-generation-reference).
 
 ## <a name="use-routing-middleware"></a>Utilisation du middleware de routage
 
@@ -269,9 +269,31 @@ Les modèles d’URL qui tentent de capturer un nom de fichier avec une extensio
 
 Vous pouvez utiliser le caractère `*` comme préfixe d’un paramètre de routage à lier au reste de l’URI. Cela s’appelle un paramètre *fourre-tout*. Par exemple, `blog/{*slug}` établit une correspondance avec n’importe quel URI commençant par `/blog` et suivi de n’importe quelle valeur (affectée à la valeur de route `slug`). Les paramètres fourre-tout peuvent également établir une correspondance avec la chaîne vide.
 
+::: moniker range=">= aspnetcore-2.2"
+
+Le paramètre fourre-tout place les caractères appropriés dans une séquence d’échappement lorsque la route est utilisée pour générer une URL, y compris les caractères de séparation de chemin (`/`). Par exemple, la route `foo/{*path}` avec les valeurs de route `{ path = "my/path" }` génère `foo/my%2Fpath`. Notez la barre oblique d’échappement. Pour les séparateurs de chemin aller-retour, utilisez le préfixe de paramètre de routage `**`. La route `foo/{**path}` avec `{ path = "my/path" }` génère `foo/my/path`.
+
+::: moniker-end
+
 Les paramètres de routage peuvent avoir des *valeurs par défaut*, désignées en spécifiant la valeur par défaut après le nom du paramètre, séparés par un signe égal (`=`). Par exemple, `{controller=Home}` définit `Home` comme valeur par défaut de `controller`. La valeur par défaut est utilisée si aucune valeur n’est présente dans l’URL pour le paramètre. En plus des valeurs par défaut, les paramètres de routage peuvent être facultatifs, spécifiés en ajoutant un point d’interrogation (`?`) à la fin du nom du paramètre, comme dans `id?`. La différence entre les valeurs facultatives et les paramètres de routage par défaut est qu’un paramètre de routage ayant une valeur par défaut produit toujours une valeur, tandis qu’un paramètre facultatif a une valeur uniquement quand une valeur est fournie par l’URL de requête.
 
-Les paramètres de routage peuvent également avoir des contraintes, qui doivent établir une correspondance avec la valeur de route liée à partir de l’URL. L’ajout d’un signe deux-points `:` et d’un nom de contrainte après le nom du paramètre de routage spécifie une *contrainte inline* sur un paramètre de routage. Si la contrainte exige des arguments, ils sont fournis entre parenthèses `( )` après le nom de la contrainte. Il est possible de spécifier plusieurs contraintes inline en ajoutant un autre signe deux-points `:` et le nom d’une autre contrainte. Le nom de la contrainte est passé au service <xref:Microsoft.AspNetCore.Routing.IInlineConstraintResolver> pour créer une instance de <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> à utiliser dans le traitement des URL. Par exemple, le modèle de routage `blog/{article:minlength(10)}` spécifie une contrainte `minlength` avec l’argument `10`. Pour plus d’informations sur les contraintes de routage et pour obtenir la liste des contraintes fournies par le framework, consultez la section [Informations de référence sur les contraintes de routage](#route-constraint-reference).
+::: moniker range=">= aspnetcore-2.2"
+
+Les paramètres de routage peuvent avoir des contraintes, qui doivent établir une correspondance avec la valeur de route liée à partir de l’URL. L’ajout d’un signe deux-points (`:`) et d’un nom de contrainte après le nom du paramètre de routage spécifie une *contrainte inline* sur un paramètre de routage. Si la contrainte exige des arguments, ils sont fournis entre parenthèses `( )` après le nom de la contrainte. Il est possible de spécifier plusieurs contraintes inline en ajoutant un autre signe deux-points (`:`) et le nom d’une autre contrainte. Le nom de la contrainte et les arguments sont passés au service <xref:Microsoft.AspNetCore.Routing.IInlineConstraintResolver> pour créer une instance de <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> à utiliser dans le traitement des URL. Si le constructeur de contrainte nécessite des services, ils sont résolus à partir des services d’application de l’injection de dépendance. Par exemple, le modèle de routage `blog/{article:minlength(10)}` spécifie une contrainte `minlength` avec l’argument `10`. Pour plus d’informations sur les contraintes de routage et pour obtenir la liste des contraintes fournies par le framework, consultez la section [Informations de référence sur les contraintes de routage](#route-constraint-reference).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+Les paramètres de routage peuvent avoir des contraintes, qui doivent établir une correspondance avec la valeur de route liée à partir de l’URL. L’ajout d’un signe deux-points (`:`) et d’un nom de contrainte après le nom du paramètre de routage spécifie une *contrainte inline* sur un paramètre de routage. Si la contrainte exige des arguments, ils sont fournis entre parenthèses `( )` après le nom de la contrainte. Il est possible de spécifier plusieurs contraintes inline en ajoutant un autre signe deux-points (`:`) et le nom d’une autre contrainte. Le nom de la contrainte et les arguments sont passés au service <xref:Microsoft.AspNetCore.Routing.IInlineConstraintResolver> pour créer une instance de <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> à utiliser dans le traitement des URL. Par exemple, le modèle de routage `blog/{article:minlength(10)}` spécifie une contrainte `minlength` avec l’argument `10`. Pour plus d’informations sur les contraintes de routage et pour obtenir la liste des contraintes fournies par le framework, consultez la section [Informations de référence sur les contraintes de routage](#route-constraint-reference).
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+Les paramètres de routage peuvent également contenir des transformateurs de paramètre, lesquels transforment une valeur de paramètre lors de la génération des liens et de la mise en correspondance des actions et des pages avec les URI. À l’instar des contraintes, les transformateurs de paramètre peuvent être ajoutés inline à un paramètre de routage en ajoutant un signe deux-points (`:`) et le nom du transformateur après le nom du paramètre de routage. Par exemple, le modèle de routage `blog/{article:slugify}` spécifie un transformateur `slugify`.
+
+::: moniker-end
 
 Le tableau suivant illustre certains modèles de routage et leur comportement.
 
@@ -301,7 +323,7 @@ Les mots clés suivants sont des noms réservés qui ne peuvent pas être utilis
 
 ## <a name="route-constraint-reference"></a>Informations de référence sur les contraintes de routage
 
-Les contraintes de routage s’exécutent quand un `Route` correspond à la syntaxe de l’URL entrante et a décomposé le chemin de l’URL en valeurs de route. En général, les contraintes de routage inspectent la valeur de route associée par le biais du modèle de routage et créent une décision oui/non simple indiquant si la valeur est, ou non, acceptable. Certaines contraintes de routage utilisent des données hors de la valeur de route pour déterminer si la requête peut être routée. Par exemple, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> peut accepter ou rejeter une requête en fonction de son verbe HTTP.
+Les contraintes de routage s’exécutent quand un `Route` correspond à la syntaxe de l’URL entrante et a décomposé le chemin de l’URL en valeurs de route. En général, les contraintes de routage inspectent la valeur de route associée par le biais du modèle de routage, et créent une décision oui/non indiquant si la valeur est, ou non, acceptable. Certaines contraintes de routage utilisent des données hors de la valeur de route pour déterminer si la requête peut être routée. Par exemple, <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> peut accepter ou rejeter une requête en fonction de son verbe HTTP.
 
 > [!WARNING]
 > Évitez d’utiliser des contraintes pour la **validation d’entrée**, car les entrées non valides génèrent alors une réponse *404 - Introuvable* au lieu d’une réponse *400 - Requête incorrecte* avec un message d’erreur approprié. Les contraintes de routage servent à **lever l’ambiguïté** entre des routes similaires, et non à valider les entrées d’une route particulière.
@@ -343,7 +365,7 @@ public User GetUserById(int id) { }
 
 Le framework ASP.NET Core ajoute `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` au constructeur d’expression régulière. Pour obtenir une description de ces membres, consultez <xref:System.Text.RegularExpressions.RegexOptions>.
 
-Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que vous puissiez utiliser l’expression régulière `^\d{3}-\d{2}-\d{4}$` dans le service de routage, il faut qu’elle ait les caractères `\` tapés sous la forme `\\` dans le fichier source C# afin de placer dans une séquence d’échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string). Les caractères `{`, `}`, `[` et `]` doivent être placés dans une séquence d’échappement en les doublant afin de placer les caractères de délimiteur de paramètre du service de routage dans une séquence d’échappement. Le tableau ci-dessous montre une expression régulière et la version placée dans une séquence d’échappement.
+Les expressions régulières utilisent les délimiteurs et des jetons semblables à ceux utilisés par le service de routage et le langage C#. Les jetons d’expression régulière doivent être placés dans une séquence d’échappement. Pour que vous puissiez utiliser l’expression régulière `^\d{3}-\d{2}-\d{4}$` dans le service de routage, il faut qu’elle ait les caractères `\` tapés sous la forme `\\` dans le fichier source C# afin de placer dans une séquence d’échappement le caractère d’échappement de chaîne `\` (sauf en cas d’utilisation de [littéraux de chaîne textuelle](/dotnet/csharp/language-reference/keywords/string). Les caractères `{`, `}`, `[` et `]` doivent être placés en double dans une séquence d’échappement, afin de placer les délimiteurs de paramètre de routage dans une séquence d’échappement. Le tableau ci-dessous montre une expression régulière et la version placée dans une séquence d’échappement.
 
 | Expression            | Dans une séquence d’échappement                        |
 | --------------------- | ------------------------------ |
@@ -361,9 +383,40 @@ Souvent, les expressions régulières utilisées dans le routage commencent par 
 | `^[a-z]{2}$` |  hello    | Non    | Voir `^` et `$` ci-dessus |
 | `^[a-z]{2}$` | 123abc456 | Non    | Voir `^` et `$` ci-dessus |
 
-Pour plus d’informations sur la syntaxe des expressions régulières, consultez [Expressions régulières du .NET Framework](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).
+Pour plus d’informations sur la syntaxe des expressions régulières, consultez [Expressions régulières du .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
 Pour contraindre un paramètre à un ensemble connu de valeurs possibles, utilisez une expression régulière. Par exemple, `{action:regex(^(list|get|create)$)}` établit une correspondance avec la valeur de route `action` uniquement pour `list`, `get` ou `create`. Si elle est passée dans le dictionnaire de contraintes, la chaîne `^(list|get|create)$` est équivalente. Les contraintes passées dans le dictionnaire de contraintes (c’est-à-dire qui ne sont pas inline dans un modèle) qui ne correspondent pas à l’une des contraintes connues sont également traitées comme des expressions régulières.
+
+::: moniker range=">= aspnetcore-2.2"
+
+## <a name="parameter-transformer-reference"></a>Informations de référence sur le transformateur de paramètre
+
+Transformateurs de paramètre :
+
+* Sont exécutés lors de la génération d’un lien pour un `Route`.
+* Implémentez `Microsoft.AspNetCore.Routing.IOutboundParameterTransformer`.
+* Sont configurés à l’aide de <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>.
+* Prennent la valeur de routage du paramètre et la convertissent en une nouvelle valeur de chaîne.
+* La valeur transformée est utilisée dans le lien généré.
+
+Par exemple, un transformateur de paramètre `slugify` personnalisé dans le modèle d’itinéraire `blog\{article:slugify}` avec `Url.Action(new { article = "MyTestArticle" })` génère `blog\my-test-article`.
+
+Les transformateurs de paramètre sont également utilisés par les frameworks pour transformer l’URI vers lequel un point de terminaison est résolu. Par exemple, ASP.NET Core MVC utilise des transformateurs de paramètre pour convertir la valeur de routage utilisée et la faire correspondre à un `area`, `controller`, `action` et `page`.
+
+```csharp
+routes.MapRoute(
+    name: "default",
+    template: "{controller=Home:slugify}/{action=Index:slugify}/{id?}");
+```
+
+Avec la route précédente, l’action `SubscriptionManagementController.GetAll()` est mise en correspondance avec l’URI `/subscription-management/get-all`. Un transformateur de paramètre ne modifie pas les valeurs de routage utilisées pour générer un lien. `Url.Action("GetAll", "SubscriptionManagement")` obtient en sortie `/subscription-management/get-all`.
+
+ASP.NET Core fournit des conventions d’API pour l’utilisation des transformateurs de paramètre avec des routages générés :
+
+* La convention de l’API `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention` est fournie avec ASP.NET Core MVC. Cette convention applique un transformateur de paramètre spécifié à tous les routages d’attributs dans l’application. Le transformateur de paramètre transforme les jetons de routage d’attribut quand ils sont remplacés. Pour plus d’informations, consultez [Utiliser un transformateur de paramètre pour personnaliser le remplacement des jetons](/aspnet/core/mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement).
+* La convention de l’API `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` est fournie avec les pages Razor. Cette convention applique un transformateur de paramètre spécifié à toutes les pages Razor découvertes automatiquement. Le transformateur de paramètre transforme les segments du nom de dossier et du nom de fichier des routages de pages Razor. Pour plus d’informations, consultez [Utiliser un transformateur de paramètre pour personnaliser les routages de pages](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes).
+
+::: moniker-end
 
 ## <a name="url-generation-reference"></a>Informations de référence sur la génération d’URL
 

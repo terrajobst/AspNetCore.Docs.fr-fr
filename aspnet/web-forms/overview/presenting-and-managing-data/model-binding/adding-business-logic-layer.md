@@ -1,19 +1,19 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
 title: Couche de logique métier ajout à un projet qui utilise la liaison de modèle et les web forms | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Cette série de didacticiels montre les aspects de base de l’utilisation de la liaison de modèle avec un projet Web Forms ASP.NET. Liaison de modèle rend l’interaction des données plus simple-...
 ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 7ef664b3-1cc8-4cbf-bb18-9f0f3a3ada2b
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/adding-business-logic-layer
 msc.type: authoredcontent
-ms.openlocfilehash: 2c54c0a635c662c8740aa7f9b6bd02cd71913e24
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4ba1830ce51f257e18880f752b249dbeb77f504e
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838415"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021649"
 ---
 <a name="adding-business-logic-layer-to-a-project-that-uses-model-binding-and-web-forms"></a>Couche de logique métier ajout à un projet qui utilise la liaison de modèle et les web forms
 ====================

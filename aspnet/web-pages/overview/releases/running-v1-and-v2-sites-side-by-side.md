@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
 title: En cours d’exécution différentes Versions d’ASP.NET Web Pages (Razor) côte à côte | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Cet article explique comment exécuter des sites Web ASP.NET Web Pages (Razor) sur le même ordinateur ou serveur lorsque les sites Web sont configurés pour utiliser différentes versions...
 ms.author: riande
 ms.date: 02/10/2014
 ms.assetid: a861409b-4ae6-4868-9e09-87edfac3535f
 msc.legacyurl: /web-pages/overview/releases/running-v1-and-v2-sites-side-by-side
 msc.type: authoredcontent
-ms.openlocfilehash: 9021f9b7a68b8b20f7f2fbcd5649cc7226401a1b
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e587398b430795c12a1dcee394852b4e2b8a0e44
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41831141"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021171"
 ---
 <a name="running-different-versions-of-aspnet-web-pages-razor-side-by-side"></a>Exécution côte à côte de différentes Versions d’ASP.NET Web Pages (Razor)
 ====================

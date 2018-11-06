@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/27/2017
 uid: test/razor-pages-tests
-ms.openlocfilehash: 364c4c0fd75954f1c7e0bfbc221938afe5332bde
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 5116ec3c3d6c27f9b0e098f82c82dd7b7337b8f6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41828124"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207496"
 ---
 # <a name="razor-pages-unit-tests-in-aspnet-core"></a>Tests d’unités de Pages Razor dans ASP.NET Core
 
@@ -30,7 +30,7 @@ Cette rubrique suppose que vous avez une compréhension élémentaire des applic
 * [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
 * [Test unitaire c# dans .NET Core à l’aide de dotnet test et xUnit](/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/razor-pages-tests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple de projet se compose de deux applications :
 
@@ -57,7 +57,7 @@ L’application de message est un simple système de message de Pages Razor avec
 
 &#8224;La rubrique EF, [Test avec InMemory](/ef/core/miscellaneous/testing/in-memory), explique comment utiliser une base de données en mémoire pour les tests avec MSTest. Cette rubrique utilise le [xUnit](https://xunit.github.io/) infrastructure de test. Concepts des tests et des implémentations de test entre les frameworks de test différentes sont similaires mais pas identiques.
 
-Bien que l’application n’utilise pas le [modèle dépôt](xref:fundamentals/repository-pattern) et n’est pas un exemple effectif de la [modèle unité de travail (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Pages Razor prend en charge ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance d’infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design), <xref:fundamentals/repository-pattern>, et [logique du contrôleur de Test](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
+Bien que l’application n’utilise pas le modèle de référentiel et n’est pas un exemple effectif de la [modèle unité de travail (UoW)](https://martinfowler.com/eaaCatalog/unitOfWork.html), Pages Razor prend en charge ces modèles de développement. Pour plus d’informations, consultez [conception de la couche de persistance d’infrastructure](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design) et [logique du contrôleur de Test](/aspnet/core/mvc/controllers/testing) (l’exemple implémente le modèle de référentiel).
 
 ## <a name="test-app-organization"></a>Organisation de l’application de test
 

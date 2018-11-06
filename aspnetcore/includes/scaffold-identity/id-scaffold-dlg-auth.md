@@ -5,7 +5,7 @@ Exécutez le Générateur de modèles automatique identité :
 * À partir de **l’Explorateur de solutions**, avec le bouton droit sur le projet > **ajouter** > **nouvel élément structuré**.
 * Dans le volet gauche de la **ajouter une structure** boîte de dialogue, sélectionnez **identité** > **ajouter**.
 * Dans le **identité ADD** boîte de dialogue, sélectionnez les options souhaitées.
-  * Sélectionnez votre page de disposition existante, ou votre fichier de disposition est remplacée par balisage incorrect. Lorsqu’un fichier _Layout.cshtml existant est sélectionné, il est **pas** remplacé.
+  * Sélectionnez votre page de disposition existante, ou votre fichier de disposition est remplacée par balisage incorrect. Quand un existant  *\_Layout.cshtml* fichier est sélectionné, il est **pas** remplacé.
 
  Par exemple `~/Pages/Shared/_Layout.cshtml` pour les Pages Razor `~/Views/Shared/_Layout.cshtml` pour les projets MVC
 * Pour utiliser votre contexte de données existant, sélectionnez au moins un fichier à remplacer. Vous devez sélectionner au moins un fichier pour ajouter votre contexte de données.
@@ -49,4 +49,7 @@ PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous 
 ```cli
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
+
+Si vous exécutez le Générateur de modèles automatique identité sans spécifier le `--files` indicateur ou `--useDefaultUI` indicateur, toutes les pages de l’interface utilisateur de l’identité disponibles seront créées dans votre projet.
+
 -------------

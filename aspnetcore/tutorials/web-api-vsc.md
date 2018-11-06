@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 07/30/2018
 uid: tutorials/web-api-vsc
-ms.openlocfilehash: 4ce808ec4241ab2fc3c2fb81c3fdb15dd853cd90
-ms.sourcegitcommit: 927e510d68f269d8335b5a7c8592621219a90965
+ms.openlocfilehash: 740110908358a382f20bc1e54e98056296278acf
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39342274"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089662"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio-code"></a>Créer une API web avec ASP.NET Core et Visual Studio Code
 
@@ -32,6 +32,8 @@ Il existe trois versions de ce didacticiel :
 ## <a name="prerequisites"></a>Prérequis
 
 [!INCLUDE[prerequisites](~/includes/net-core-prereqs-vscode.md)]
+
+Pour obtenir des conseils sur l’utilisation de VS Code, consultez [Aide de Visual Studio Code](#visual-studio-code-help).
 
 ## <a name="create-the-project"></a>Créer le projet
 
@@ -57,13 +59,13 @@ Appuyez sur **Déboguer** (F5) pour générer et exécuter le programme. Dans un
 ["value1","value2"]
 ```
 
-Pour obtenir des conseils sur l’utilisation de VS Code, consultez [Aide de Visual Studio Code](#visual-studio-code-help).
+
 
 ## <a name="add-support-for-entity-framework-core"></a>Ajouter la prise en charge d’Entity Framework Core
 
 :::moniker range=">= aspnetcore-2.1"
 
-La création d’un projet dans ASP.NET Core 2.1 ou version ultérieure ajoute la référence de package [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App) au fichier *TodoApi.csproj*. Ajouter l’attribut `Version` s’il n’est pas déjà spécifié.
+La création d’un projet dans ASP.NET Core 2.1 ou ultérieur ajoute le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) au fichier projet :
 
 [!code-xml[](first-web-api/samples/2.1/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
 
@@ -71,7 +73,7 @@ La création d’un projet dans ASP.NET Core 2.1 ou version ultérieure ajoute l
 
 :::moniker range="<= aspnetcore-2.0"
 
-La création d’un projet dans ASP.NET Core 2.0 ajoute la référence de package [Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) au fichier *TodoApi.csproj* :
+La création d’un projet dans ASP.NET Core 2.0 ajoute le [métapaquet Microsoft.AspNetCore.All](xref:fundamentals/metapackage) au fichier projet :
 
 [!code-xml[](first-web-api/samples/2.0/TodoApi/TodoApi.csproj?name=snippet_Metapackage&highlight=2)]
 

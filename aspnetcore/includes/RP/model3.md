@@ -1,4 +1,5 @@
 <a name="cli"></a>
+
 ## <a name="add-scaffold-tooling-and-perform-initial-migration"></a>Ajouter un outil de génération de modèles automatique et effectuer la migration initiale
 
 Ajoutez les lignes suivantes au fichier *RazorPagesMovie.csproj*, juste avant la balise `</Project>` de fermeture :
@@ -7,7 +8,8 @@ Ajoutez les lignes suivantes au fichier *RazorPagesMovie.csproj*, juste avant la
 <ItemGroup>
   <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.1.0-preview1-final"/>
 </ItemGroup>
-```  
+```
+  
 À partir de la ligne de commande, exécutez les commandes CLI .NET Core suivantes :
 
 ```console

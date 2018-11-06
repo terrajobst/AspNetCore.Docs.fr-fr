@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
 title: La densité des connexions SignalR avec Crank de test | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Densité des connexions SignalR avec Crank de test
 ms.author: riande
 ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: feda4906995c6a5b25de4bc54ef96b2d6803eb59
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 556accb1bcc18e9e4d1f813a87fc6f4b67bda088
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838641"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021480"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>Densité des connexions SignalR avec Crank de test
 ====================

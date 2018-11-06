@@ -5,18 +5,18 @@ description: Découvrez la réécriture et la redirection d’URL avec l’inter
 ms.author: riande
 ms.date: 08/17/2017
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: d3484e222c4412a427d086c1b71a12b81095ba72
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 5a1891c838436467fb49ff6288587fab08201179
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276345"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207184"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex) et [Mikael Mengistu](https://github.com/mikaelm12)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/sample/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 La réécriture d’URL consiste à modifier des URL de requête en fonction d’une ou de plusieurs règles prédéfinies. La réécriture d’URL crée une abstraction entre les emplacements de ressources et leurs adresses afin que les emplacements et les adresses ne soient pas étroitement liés. Il existe plusieurs scénarios dans lesquels la réécriture d’URL est utile :
 
@@ -63,13 +63,15 @@ Pour inclure l’intergiciel dans votre projet, ajoutez une référence au packa
 
 ## <a name="extension-and-options"></a>Extension et options
 
-Établissez vos règles de réécriture d’URL et de redirection en créant une instance de la classe `RewriteOptions` avec des méthodes d’extension pour chacune de vos règles. Chaînez plusieurs règles dans l’ordre dans lequel vous voulez qu’elles soient traitées. Les `RewriteOptions` sont passées dans l’intergiciel de réécriture d’URL quand il est ajouté au pipeline de requête avec `app.UseRewriter(options);`.
+Établissez vos règles de réécriture d’URL et de redirection en créant une instance de la classe [RewriteOptions](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptions) avec des méthodes d’extension pour chacune de vos règles. Chaînez plusieurs règles dans l’ordre dans lequel vous voulez qu’elles soient traitées. Les `RewriteOptions` sont passées dans l’intergiciel de réécriture d’URL quand il est ajouté au pipeline de requête avec `app.UseRewriter(options);`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -88,17 +90,31 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+### <a name="redirect-non-www-to-www"></a>Redirection de demandes non-www en demandes www
+
+Trois options permettent à l’application de rediriger des demandes non-`www` en demandes `www` :
+
+* [AddRedirectToWwwPermanent(RewriteOptions)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowwwpermanent) &ndash; Rediriger définitivement la demande vers le sous-domaine `www` si la demande est non-`www`. Redirige avec un code d’état [Status308PermanentRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status308permanentredirect).
+* [AddRedirectToWww(RewriteOptions)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowww) &ndash; Rediriger la demande vers le sous-domaine `www` si la demande entrante est non-`www`. Redirige avec un code d’état [Status307TemporaryRedirect](/dotnet/api/microsoft.aspnetcore.http.statuscodes.status307temporaryredirect).
+* [AddRedirectToWww(RewriteOptions, Int32)](/dotnet/api/microsoft.aspnetcore.rewrite.rewriteoptionsextensions.addredirecttowww) &ndash; Rediriger la demande vers le sous-domaine `www` si la demande entrante est non-`www`. Vous permet de fournir le code d’état pour la réponse. Utilisez les champs de la classe [StatusCodes](/dotnet/api/microsoft.aspnetcore.http.statuscodes) pour les affectations à `AddRedirectToWww`.
+
+::: moniker-end
 
 ### <a name="url-redirect"></a>Redirection d’URL
 
 Utilisez `AddRedirect` pour rediriger des requêtes. Le premier paramètre contient votre expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, le cas échéant, spécifie le code d’état. Si vous ne spécifiez pas le code d’état, sa valeur par défaut est 302 (Trouvé), ce qui indique que la ressource est temporairement déplacée ou remplacée.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=9)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -110,7 +126,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 Dans un navigateur dans lequel les outils de développement sont activés, effectuez une requête à l’exemple d’application avec le chemin `/redirect-rule/1234/5678`. L’expression régulière établit une correspondance avec le chemin de la requête sur `redirect-rule/(.*)`, et le chemin est remplacé par `/redirected/1234/5678`. L’URL de redirection est renvoyée au client avec le code d’état 302 (Trouvé). Le navigateur effectue une nouvelle requête à l’URL de redirection, qui apparaît dans la barre d’adresse du navigateur. Étant donné qu’aucune règle ne correspond à l’URL de redirection dans l’exemple d’application, la deuxième requête reçoit la réponse 200 (OK) de l’application et le corps de la réponse indique l’URL de redirection. Un aller-retour est effectué vers le serveur quand une URL est *redirigée*.
 
@@ -168,11 +184,13 @@ Requête d’origine utilisant `AddRedirectToHttpsPermanent` : `http://localhost
 
 Utilisez `AddRewrite` pour créer une règle pour la réécriture d’URL. Le premier paramètre contient votre expression régulière pour la mise en correspondance sur le chemin de l’URL entrante. Le deuxième paramètre est la chaîne de remplacement. Le troisième paramètre, `skipRemainingRules: {true|false}`, indique à l’intergiciel d’ignorer, ou non, les règles de réécriture supplémentaires si la règle actuelle est appliquée.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=10-11)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -185,7 +203,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 Requête d’origine : `/rewrite-rule/1234/5678`
 
@@ -222,13 +240,15 @@ Il n’y a pas d’aller-retour vers le serveur pour obtenir la ressource. Si la
 
 Appliquez des règles Apache mod_rewrite avec `AddApacheModRewrite`. Vérifiez que le fichier de règles est déployé avec l’application. Pour obtenir plus d’informations et des exemples de règles mod_rewrite, consultez [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Un `StreamReader` est utilisé pour lire les règles à partir du fichier de règles *ApacheModRewrite.txt*.
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=3-4,12)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Le premier paramètre prend un `IFileProvider`, qui est fourni par le biais de [l’injection de dépendances](dependency-injection.md). `IHostingEnvironment` est injecté pour fournir `ContentRootFileProvider`. Le deuxième paramètre est le chemin à votre fichier de règles, qui est *ApacheModRewrite.txt* dans l’exemple d’application.
 
@@ -242,7 +262,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
 
 L’exemple d’application redirige les requêtes de `/apache-mod-rules-redirect/(.\*)` vers `/redirected?id=$1`. Le code d’état de la réponse est 302 (Trouvé).
 
@@ -251,8 +271,6 @@ L’exemple d’application redirige les requêtes de `/apache-mod-rules-redirec
 Requête d’origine : `/apache-mod-rules-redirect/1234`
 
 ![Fenêtre de navigateur avec les requêtes et les réponses suivies par les Outils de développement](url-rewriting/_static/add_apache_mod_redirect.png)
-
-##### <a name="supported-server-variables"></a>Variables serveur prises en charge
 
 L’intergiciel prend en charge les variables de serveur Apache mod_rewrite suivantes :
 
@@ -290,13 +308,15 @@ L’intergiciel prend en charge les variables de serveur Apache mod_rewrite suiv
 
 Pour utiliser les règles qui s’appliquent au module de réécriture d’URL IIS, utilisez `AddIISUrlRewrite`. Vérifiez que le fichier de règles est déployé avec l’application. N’indiquez pas à l’intergiciel d’utiliser votre fichier *web.config* lors d’une exécution sur Windows Server IIS. Avec IIS, ces règles doivent être stockées en dehors de votre fichier *web.config* pour éviter les conflits avec le module de réécriture IIS. Pour obtenir plus d’informations et des exemples de règles du module de réécriture d’URL IIS, consultez [Utilisation du module de réécriture d’URL 2.0](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) et [Informations de référence sur la configuration du module de réécriture d’URL](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference).
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Un `StreamReader` est utilisé pour lire les règles à partir du fichier de règles *IISUrlRewrite.xml*.
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=5-6,13)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Le premier paramètre prend un `IFileProvider`, tandis que le deuxième paramètre est le chemin à votre fichier de règles XML, qui est *IISUrlRewrite.xml* dans l’exemple d’application.
 
@@ -310,7 +330,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
----
+::: moniker-end
 
 L’exemple d’application réécrit les requêtes de `/iis-rules-rewrite/(.*)` vers `/rewritten?id=$1`. La réponse est envoyée au client avec le code d’état 200 (OK).
 
@@ -324,7 +344,7 @@ Si vous avez un module de réécriture IIS actif pour lequel des règles au nive
 
 #### <a name="unsupported-features"></a>Fonctionnalités non prises en charge
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 L’intergiciel intégré à ASP.NET Core 2.x ne prend pas en charge les fonctionnalités de module de réécriture d’URL IIS suivantes :
 
@@ -333,7 +353,9 @@ L’intergiciel intégré à ASP.NET Core 2.x ne prend pas en charge les fonctio
 * Caractères génériques
 * LogRewrittenUrl
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 L’intergiciel intégré à ASP.NET Core 1.x ne prend pas en charge les fonctionnalités de module de réécriture d’URL IIS suivantes :
 
@@ -346,7 +368,7 @@ L’intergiciel intégré à ASP.NET Core 1.x ne prend pas en charge les fonctio
 * Action:CustomResponse
 * LogRewrittenUrl
 
----
+::: moniker-end
 
 #### <a name="supported-server-variables"></a>Variables serveur prises en charge
 
@@ -377,19 +399,21 @@ L’intergiciel prend en charge les variables serveur du module de réécriture 
 
 ### <a name="method-based-rule"></a>Règle basée sur une méthode
 
-Utilisez `Add(Action<RewriteContext> applyRule)` pour implémenter votre propre logique de règle dans une méthode. `RewriteContext` expose `HttpContext` pour qu’il soit utilisé dans votre méthode. `context.Result` détermine la façon dont un traitement du pipeline supplémentaire est géré.
+Utilisez `Add(Action<RewriteContext> applyRule)` pour implémenter votre propre logique de règle dans une méthode. `RewriteContext` expose `HttpContext` pour qu’il soit utilisé dans votre méthode. `RewriteContext.Result` détermine la façon dont un traitement du pipeline supplémentaire est géré.
 
-| context.Result                       | Action                                                          |
+| `RewriteContext.Result`              | Action                                                          |
 | ------------------------------------ | --------------------------------------------------------------- |
 | `RuleResult.ContinueRules` (par défaut) | Continuer à appliquer les règles                                         |
 | `RuleResult.EndResponse`             | Cesser d’appliquer les règles et envoyer la réponse                       |
 | `RuleResult.SkipRemainingRules`      | Cesser d’appliquer les règles et envoyer le contexte à l’intergiciel suivant |
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=14)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -401,7 +425,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 L’exemple d’application présente une méthode qui redirige les requêtes de chemins qui se terminent par *.xml*. Si vous effectuez une requête pour `/file.xml`, elle est redirigée vers `/xmlfiles/file.xml`. Le code d’état est défini sur 301 (Déplacé de façon permanente). Pour une redirection, vous devez définir explicitement le code d’état de la réponse ; sinon, le code d’état 200 (OK) est retourné et la redirection ne se produit pas sur le client.
 
@@ -413,13 +437,15 @@ Requête d’origine : `/file.xml`
 
 ### <a name="irule-based-rule"></a>Règle basée sur IRule
 
-Utilisez `Add(IRule)` pour implémenter votre propre logique de règle dans une classe qui dérive d’`IRule`. L’utilisation d’un `IRule` offre davantage de flexibilité par rapport à l’utilisation de l’approche de la règle basée sur une méthode. Votre classe dérivée peut inclure un constructeur, où vous pouvez passer des paramètres pour la méthode `ApplyRule`.
+Utilisez `Add(IRule)` pour encapsuler votre propre logique de règle dans une classe qui implémente l’interface `IRule`. L’utilisation d’un `IRule` offre davantage de flexibilité par rapport à l’utilisation de l’approche de la règle basée sur une méthode. Votre classe d’implémentation peut inclure un constructeur, où vous pouvez passer des paramètres pour la méthode `ApplyRule`.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 [!code-csharp[](url-rewriting/sample/Startup.cs?name=snippet1&highlight=15-16)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -432,7 +458,7 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
----
+::: moniker-end
 
 Les valeurs des paramètres dans l’exemple d’application pour `extension` et `newPath` sont vérifiées afin de remplir plusieurs conditions. `extension` doit contenir une valeur, laquelle doit être *.png*, *.jpg* ou *.gif*. Si `newPath` n’est pas valide, un `ArgumentException` est levé. Si vous effectuez une requête pour *image.png*, elle est redirigée vers `/png-images/image.png`. Si vous effectuez une requête pour *image.jpg*, elle est redirigée vers `/jpg-images/image.jpg`. Le code d’état est défini sur 301 (Déplacé de façon permanente) et `context.Result` est défini pour cesser le traitement des règles et envoyer la réponse.
 

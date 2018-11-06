@@ -3,14 +3,15 @@ title: Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 author: ardalis
 description: Découvrez comment configurer les fournisseurs de stockage personnalisés pour ASP.NET Core Identity.
 ms.author: riande
-ms.date: 09/17/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: db51c39cc700f93917f54c80adbfe7922ffcd67e
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: b10731261ca0c748548fcba94a229ba055d46eb5
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011259"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090834"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -24,7 +25,7 @@ ASP.NET Core Identity est un système extensible qui vous permet de créer un fo
 
 Par défaut, le système d’ASP.NET Core Identity stocke les informations utilisateur dans une base de données SQL Server à l’aide d’Entity Framework Core. Pour de nombreuses applications, cette approche fonctionne bien. Toutefois, vous pouvez utiliser un mécanisme de persistance différents ou un schéma de données. Exemple :
 
-* Vous utilisez [stockage Table Azure](https://docs.microsoft.com/azure/storage/) ou un autre magasin de données.
+* Vous utilisez [stockage Table Azure](/azure/storage/) ou un autre magasin de données.
 * Vos tables de base de données ont une structure différente. 
 * Vous pouvez utiliser une approche de l’accès des données différentes, telles que [Dapper](https://github.com/StackExchange/Dapper). 
 
@@ -41,7 +42,7 @@ dotnet new webapi -au Individual
 
 ## <a name="the-aspnet-core-identity-architecture"></a>L’architecture d’ASP.NET Core Identity
 
-ASP.NET Core Identity se compose de classes appelée responsables et les magasins. *Gestionnaires de* sont des classes de haut niveau qui utilise le développeur d’applications pour effectuer des opérations, telles que la création d’un utilisateur de l’identité. *Magasins* sont des classes de niveau inférieur qui spécifient le mode de conservation des entités, telles que les utilisateurs et les rôles. Magasins de suivent le [modèle de référentiel](xref:fundamentals/repository-pattern) et sont étroitement couplées avec le mécanisme de persistance. Gestionnaires sont dissociés des magasins, ce qui signifie que vous pouvez remplacer le mécanisme de persistance sans modifier votre code d’application (à l’exception de configuration).
+ASP.NET Core Identity se compose de classes appelée responsables et les magasins. *Gestionnaires de* sont des classes de haut niveau qui utilise le développeur d’applications pour effectuer des opérations, telles que la création d’un utilisateur de l’identité. *Magasins* sont des classes de niveau inférieur qui spécifient le mode de conservation des entités, telles que les utilisateurs et les rôles. Magasins de suivent le modèle de référentiel et sont étroitement couplées avec le mécanisme de persistance. Gestionnaires sont dissociés des magasins, ce qui signifie que vous pouvez remplacer le mécanisme de persistance sans modifier votre code d’application (à l’exception de configuration).
 
 Le diagramme suivant montre comment une application web interagit avec les gestionnaires, tandis que les magasins interagissent avec la couche d’accès aux données.
 
@@ -146,27 +147,27 @@ Dans le `UserStore` (classe), vous utilisez les classes d’accès aux données 
 
 ### <a name="interfaces-to-implement-when-customizing-user-store"></a>Interfaces à implémenter lors de la personnalisation du magasin de l’utilisateur
 
-- **IUserStore**  
+* **IUserStore**  
  Le [IUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserstore-1) interface est la seule interface, vous devez implémenter dans le magasin de l’utilisateur. Il définit des méthodes pour la création, la mise à jour, la suppression et la récupération des utilisateurs.
-- **IUserClaimStore**  
+* **IUserClaimStore**  
  Le [IUserClaimStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserclaimstore-1) interface définit les méthodes que vous implémentez pour activer les revendications d’utilisateur. Il contient des méthodes pour ajouter, supprimer et récupérer des revendications d’utilisateur.
-- **IUserLoginStore**  
+* **IUserLoginStore**  
  Le [IUserLoginStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1) définit les méthodes que vous implémentez pour activer les fournisseurs d’authentification externes. Il contient des méthodes pour ajouter, supprimer et récupérer les connexions utilisateur et une méthode pour récupérer un utilisateur selon les informations de connexion.
-- **IUserRoleStore**  
+* **IUserRoleStore**  
  Le [IUserRoleStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserrolestore-1) interface définit les méthodes que vous implémentez pour mapper un utilisateur à un rôle. Il contient des méthodes pour ajouter, supprimer et récupérer des rôles d’un utilisateur et une méthode pour vérifier si un utilisateur est affecté à un rôle.
-- **IUserPasswordStore**  
+* **IUserPasswordStore**  
  Le [IUserPasswordStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1) interface définit les méthodes que vous implémentez pour conserver les mots de passe hachés. Il contient des méthodes pour obtenir et définir le mot de passe haché et une méthode qui indique si l’utilisateur a défini un mot de passe.
-- **IUserSecurityStampStore**  
+* **IUserSecurityStampStore**  
  Le [IUserSecurityStampStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1) interface définit les méthodes que vous implémentez pour utiliser un tampon de sécurité permettant d’indiquer si les informations de compte de l’utilisateur a changé. Cet horodatage est mis à jour quand un utilisateur modifie le mot de passe, ou ajoute ou supprime des connexions. Il contient des méthodes pour obtenir et définir le tampon de sécurité.
-- **IUserTwoFactorStore**  
+* **IUserTwoFactorStore**  
  Le [IUserTwoFactorStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1) interface définit les méthodes que vous implémentez pour prendre en charge l’authentification à deux facteurs. Il contient des méthodes pour obtenir et définir si l’authentification à deux facteurs est activée pour un utilisateur.
-- **IUserPhoneNumberStore**  
+* **IUserPhoneNumberStore**  
  Le [IUserPhoneNumberStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1) interface définit les méthodes que vous implémentez pour stocker les numéros de téléphone d’utilisateur. Il contient des méthodes pour obtenir et définir le numéro de téléphone et indique si le numéro de téléphone est confirmé.
-- **IUserEmailStore**  
+* **IUserEmailStore**  
  Le [IUserEmailStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1) interface définit les méthodes que vous implémentez pour stocker les adresses e-mail des utilisateurs. Il contient des méthodes pour obtenir et définir l’adresse de messagerie et si l’adresse de messagerie est confirmée.
-- **IUserLockoutStore**  
+* **IUserLockoutStore**  
  Le [IUserLockoutStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iuserlockoutstore-1) interface définit les méthodes que vous implémentez pour stocker des informations sur le verrouillage d’un compte. Il contient des méthodes pour le suivi des tentatives d’accès ayant échoué et de verrouillages.
-- **IQueryableUserStore**  
+* **IQueryableUserStore**  
  Le [IQueryableUserStore&lt;TUser&gt; ](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1) interface définit les membres que vous implémentez pour fournir un magasin d’utilisateurs utilisable.
 
 Vous implémentez uniquement les interfaces qui sont nécessaires dans votre application. Exemple :
@@ -199,9 +200,9 @@ Voici un exemple de classe de rôle :
 
 Vous pouvez créer un `RoleStore` classe qui fournit les méthodes pour toutes les opérations de données sur les rôles. Cette classe est équivalente à la [RoleStore&lt;TRole&gt; ](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.rolestore-1) classe. Dans le `RoleStore` (classe), vous implémentez le `IRoleStore<TRole>` et éventuellement le `IQueryableRoleStore<TRole>` interface.
 
-- **IRoleStore&lt;TRole&gt;**  
+* **IRoleStore&lt;TRole&gt;**  
  Le [IRoleStore&lt;TRole&gt; ](/dotnet/api/microsoft.aspnetcore.identity.irolestore-1) interface définit les méthodes à implémenter dans la classe de magasin de rôle. Il contient des méthodes pour la création, la mise à jour, la suppression et la récupération des rôles.
-- **RoleStore&lt;TRole&gt;**  
+* **RoleStore&lt;TRole&gt;**  
  Pour personnaliser `RoleStore`, créez une classe qui implémente le `IRoleStore<TRole>` interface. 
 
 ## <a name="reconfigure-app-to-use-a-new-storage-provider"></a>Reconfigurer l’application pour utiliser un nouveau fournisseur de stockage
@@ -237,5 +238,5 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="references"></a>Références
 
-- [Fournisseurs de stockage personnalisés pour ASP.NET 4.x Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
-- [ASP.NET Core Identity](https://github.com/aspnet/identity) -ce référentiel inclut des liens vers la Communauté gérée des fournisseurs de magasins.
+* [Fournisseurs de stockage personnalisés pour ASP.NET 4.x Identity](/aspnet/identity/overview/extensibility/overview-of-custom-storage-providers-for-aspnet-identity)
+* [ASP.NET Core Identity](https://github.com/aspnet/identity) &ndash; ce référentiel inclut des liens vers la Communauté gérée des fournisseurs de magasins.

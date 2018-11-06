@@ -1,4 +1,4 @@
-[Visual Studio 2017 version 15.7.3 ou ultérieure](https://www.microsoft.com/net/download/windows) avec les charges de travail suivantes :
+[Visual Studio 2017 version 15.7.3 ou ultérieure](https://visualstudio.microsoft.com/downloads/) avec les charges de travail suivantes :
 
 * **Développement web et ASP.NET**
 * **Développement multiplateforme .NET Core**

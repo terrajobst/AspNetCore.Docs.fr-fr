@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/30/2018
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 78490be1cfa3018c465cb1e8125918404a7e4525
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: f47a68840a6307b69bc92a7b157037d91dce5422
+ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011603"
+ms.lasthandoff: 10/20/2018
+ms.locfileid: "49477213"
 ---
 # <a name="update-the-generated-pages-in-an-aspnet-core-app"></a>Mettre à jour les pages générées dans une application ASP.NET Core
 
@@ -45,10 +45,10 @@ Sélectionnez `using System.ComponentModel.DataAnnotations;`.
 
   ![using System.ComponentModel.DataAnnotations en haut de la liste](da1/da.png)
 
-  Visual studio ajoute `using System.ComponentModel.DataAnnotations;`.
+  Visual Studio ajoute `using System.ComponentModel.DataAnnotations;`.
 
 [!INCLUDE [model1](~/includes/RP/da2.md)]
 
 > [!div class="step-by-step"]
 > [Précédent : Utilisation de SQL Server LocalDB](xref:tutorials/razor-pages/sql)
-> [Ajouter une fonction de recherche](xref:tutorials/razor-pages/search)
+> [Suivant : Ajouter une fonction de recherche](xref:tutorials/razor-pages/search)

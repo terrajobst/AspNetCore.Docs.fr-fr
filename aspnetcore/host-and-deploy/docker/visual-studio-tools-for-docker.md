@@ -4,20 +4,20 @@ author: spboyer
 description: Découvrez comment utiliser les outils Visual Studio 2017 et Docker pour Windows pour mettre une application ASP.NET Core dans un conteneur.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/26/2018
+ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 962c35cb1487dacd93fd78d09e2417ef77387e42
-ms.sourcegitcommit: 75bf5fdbfdcb6a7cfe8fe207b9ff37655ccbacd4
+ms.openlocfilehash: 42f8071eadabba3eb8cb738be1720f4c6195808c
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39275861"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207236"
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>Visual Studio Tools pour Docker avec ASP.NET Core
 
 Visual Studio 2017 prend en charge la création, le débogage et l’exécution d’applications ASP.NET Core en conteneur ciblant .NET Core. Les conteneurs Windows et Linux sont pris en charge.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -102,6 +102,10 @@ Le fichier *docker-compose.yml* référence le nom de l’image créée pendant 
 Dans l’exemple précédent, `image: hellodockertools` génère l’image `hellodockertools:dev` quand l’application est exécutée en mode **débogage**. L’image `hellodockertools:latest` est générée quand l’application est exécutée en mode **mise en production**.
 
 En guise de préfixe, ajoutez au nom de l’image le nom d’utilisateur [Docker Hub](https://hub.docker.com/) (par exemple, `dockerhubusername/hellodockertools`) si l’image est destinée à être envoyée (push) au Registre. Vous pouvez aussi changer le nom de l’image pour inclure l’URL de Registre privé (par exemple, `privateregistry.domain.com/hellodockertools`) en fonction de la configuration.
+
+Si vous souhaitez un autre comportement basé sur la configuration de build (par exemple, Debug ou Release), ajoutez des fichiers *docker-compose* propres à la configuration. Les fichiers doivent être nommés en fonction de la configuration de build (par exemple, *docker-compose.vs.debug.yml* et *docker-compose.vs.release.yml*), et placés dans le même emplacement que le fichier *docker-compose-override.yml*. 
+
+À l’aide des fichiers de substitution spécifiques à la configuration, vous pouvez spécifier différents paramètres de configuration (par exemple, des variables d’environnement ou des points d’entrée) pour les configurations de build Debug et Release.
 
 ### <a name="service-fabric"></a>Service Fabric
 
@@ -227,6 +231,7 @@ Vous pourriez vous attendre à ce que l’image de production ou de publication 
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* [Développement de conteneurs avec Visual Studio](/visualstudio/containers)
 * [Azure Service Fabric : Préparer votre environnement de développement](/azure/service-fabric/service-fabric-get-started)
 * [Déployer une application .NET dans un conteneur Windows vers Azure Service Fabric](/azure/service-fabric/service-fabric-host-app-in-a-container)
 * [Résoudre les problèmes de développement dans Visual Studio 2017 avec Docker](/azure/vs-azure-tools-docker-troubleshooting-docker-errors)

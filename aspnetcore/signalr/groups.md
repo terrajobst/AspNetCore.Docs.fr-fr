@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 06/04/2018
 uid: signalr/groups
-ms.openlocfilehash: d54ab2a113345f98e26425a88cad165d67b8d456
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 02db46f090c487a03171de244ff7ad0d5e9de0fa
+ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095019"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50758165"
 ---
 # <a name="manage-users-and-groups-in-signalr"></a>Gérer les utilisateurs et des groupes dans SignalR
 
@@ -20,7 +20,7 @@ Par [Brennan Conroy](https://github.com/BrennanConroy)
 
 SignalR permet d'envoyer des messages à toutes les connexions associées à un utilisateur spécifique, mais aussi à des groupes de connexions nommés.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [(comment télécharger)](xref:tutorials/index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/groups/sample/) [(comment télécharger)](xref:index#how-to-download-a-sample)
 
 ## <a name="users-in-signalr"></a>Utilisateurs dans SignalR
 
@@ -54,6 +54,8 @@ Un groupe est une collection de connexions associées à un nom. Les messages pe
 [!code-csharp[Hub methods](groups/sample/hubs/chathub.cs?range=15-27)]
 
 L’appartenance au groupe n’est pas conservée quand une connexion se reconnecte. La connexion doit rejoindre le groupe quand elle est rétablie. Il n’est pas possible de compter les membres d’un groupe, car ces informations ne sont pas disponibles si l’application est mise à l'échelle sur plusieurs serveurs.
+
+Pour protéger l’accès aux ressources lors de l’utilisation de groupes, utilisez [authentification et autorisation](xref:signalr/authn-and-authz) fonctionnalités dans ASP.NET Core. Si vous ajoutez uniquement des utilisateurs à un groupe lorsque les informations d’identification sont valides pour ce groupe, les messages envoyés à ce groupe passera uniquement aux utilisateurs autorisés. Toutefois, les groupes ne sont pas une fonctionnalité de sécurité. L’authentification par revendications possèdent des fonctionnalités groupes ne le faites pas, telles que l’expiration et la révocation. Si l’autorisation d’un utilisateur pour accéder au groupe est révoquée, vous devez manuellement détecte et le supprimer du groupe.
 
 > [!NOTE]
 > Les noms de groupe respectent la casse.

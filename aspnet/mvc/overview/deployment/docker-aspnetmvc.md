@@ -7,12 +7,12 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 02/01/2017
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 1343bd100f521326477ecd831aa627b4394bad44
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 7b34187747d3081998b8b60a72adae78cafe2c3e
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795351"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207964"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Migration d’applications ASP.NET MVC vers des conteneurs Windows
 
@@ -31,7 +31,7 @@ Le déplacement de votre application implique les étapes suivantes :
 1. [Démarrage d’un conteneur Docker qui exécute votre image](#start-a-container)
 1. [Vérification de l’application à l’aide de votre navigateur](#verify-in-the-browser)
 
-L’[application terminée](https://github.com/dotnet/docs/tree/master/samples/framework/docker/MVCRandomAnswerGenerator) se trouve sur GitHub.
+L’[application terminée](https://github.com/dotnet/samples/tree/master/framework/docker/MVCRandomAnswerGenerator) se trouve sur GitHub.
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -71,7 +71,7 @@ Cliquez sur **Publier** ; Visual Studio copie alors toutes les ressources néce
 Définissez votre image Docker dans un fichier Dockerfile. Ce fichier contient des instructions pour l’image de base, des composants supplémentaires, l’application que vous souhaitez exécuter et d’autres images de configuration.  Le fichier Dockerfile est le paramètre d’entrée de la commande `docker build`, qui crée l’image.
 
 Vous allez générer une image basée sur l’image `microsoft/aspnet` qui se trouve sur le [Hub Docker](https://hub.docker.com/r/microsoft/aspnet/).
-L’image de base, `microsoft/aspnet`, est une image Windows Server. Elle contient Windows Server Core, IIS et ASP.NET 4.6.2. Quand vous exécutez cette image dans votre conteneur, elle démarre automatiquement IIS et tous les sites web installés.
+L’image de base, `microsoft/aspnet`, est une image Windows Server. Elle contient Windows Server Core, IIS et ASP.NET 4.7.2. Quand vous exécutez cette image dans votre conteneur, elle démarre automatiquement IIS et tous les sites web installés.
 
 Le fichier Dockerfile qui crée votre image ressemble à ceci :
 
@@ -122,33 +122,21 @@ La portion `--name randomanswers` donne un nom au conteneur en cours d’exécut
 
 ## <a name="verify-in-the-browser"></a>Vérifier dans le navigateur
 
-> [!NOTE]
-> Avec la version actuelle de conteneur de Windows, vous ne pouvez pas accéder à `http://localhost`.
-> Il s’agit d’un comportement connu dans WinNAT qui va être résolu. En attendant, vous devez utiliser l’adresse IP du conteneur.
-
-Une fois le conteneur démarré, recherchez son adresse IP pour pouvoir vous connecter à votre conteneur en cours d’exécution à partir d’un navigateur :
-
-```console
-docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" randomanswers
-172.31.194.61
-```
-
-Connectez-vous au conteneur en cours d’exécution à l’aide de l’adresse IPv4, `http://172.31.194.61` dans l’exemple indiqué. Tapez cette URL dans votre navigateur ; vous devriez voir le site en cours d’exécution.
+Une fois le démarrage du conteneur, connectez-vous au conteneur en cours d’exécution à l’aide `http://localhost` dans l’exemple indiqué. Tapez cette URL dans votre navigateur ; vous devriez voir le site en cours d’exécution.
 
 > [!NOTE]
 > Certains logiciels VPN ou proxy peuvent vous empêcher d’accéder à votre site.
 > Vous pouvez les désactiver temporairement pour vérifier que votre conteneur fonctionne.
 
-Le répertoire d’exemples sur GitHub contient un [script PowerShell](https://github.com/dotnet/docs/tree/master/samples/framework/docker/MVCRandomAnswerGenerator/run.ps1) qui exécute ces commandes pour vous. Ouvrez une fenêtre PowerShell, accédez au répertoire de votre solution et tapez la commande suivante :
+Le répertoire d’exemples sur GitHub contient un [script PowerShell](https://github.com/dotnet/samples/blob/master/framework/docker/MVCRandomAnswerGenerator/run.ps1) qui exécute ces commandes pour vous. Ouvrez une fenêtre PowerShell, accédez au répertoire de votre solution et tapez la commande suivante :
 
 ```console
 ./run.ps1
 ```
 
-La commande ci-dessus génère l’image, affiche la liste des images sur votre ordinateur, démarre un conteneur et affiche l’adresse IP de ce dernier.
+La commande ci-dessus génère l’image affiche la liste des images sur votre ordinateur et démarre un conteneur.
 
-Pour arrêter le conteneur, exécutez une commande `docker
-stop` :
+Pour arrêter le conteneur, exécutez une commande `docker stop` :
 
 ```console
 docker stop randomanswers

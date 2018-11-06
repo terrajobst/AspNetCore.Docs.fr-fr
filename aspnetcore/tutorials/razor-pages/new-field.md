@@ -4,20 +4,21 @@ author: rick-anderson
 description: Montre comment ajouter un nouveau champ à une page Razor avec Entity Framework Core
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 05/30/2018
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: d6d59ff336095e2f1b8b2e9a0338b7791605ad7a
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: f8be269887903797803257d8a21e002519102047
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010895"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50089511"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Ajouter un nouveau champ à une page Razor dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Dans cette section, vous utilisez la fonctionnalité Migrations Code First [d’Entity Framework](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db) pour ajouter un nouveau champ au modèle et migrer ce changement dans la base de données.
+Dans cette section, vous utilisez la fonctionnalité Migrations Code First [d’Entity Framework](/ef/core/get-started/aspnetcore/new-db) pour ajouter un nouveau champ au modèle et migrer ce changement dans la base de données.
 
 Quand vous utilisez EF Code First pour créer automatiquement une base de données, Code First :
 
@@ -96,7 +97,9 @@ Consultez le [fichier SeedData.cs complet](https://github.com/aspnet/Docs/blob/m
 
 Générez la solution.
 
-<a name="pmc"></a> Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du gestionnaire de package**.
+<a name="pmc"></a>
+
+Dans le menu **Outils**, sélectionnez **Gestionnaire de package NuGet > Console du Gestionnaire de package**.
 Dans la console du Gestionnaire de package, entrez les commandes suivantes :
 
 ```powershell
@@ -111,7 +114,9 @@ La commande `Add-Migration` indique au framework qu’il doit :
 
 Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
-<a name="ssox"></a> Si vous supprimez tous les enregistrements de la base de données, l’initialiseur amorce la base de données et inclut le champ `Rating`. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox). Pour supprimer la base de données à partir de SSOX
+<a name="ssox"></a>
+
+Si vous supprimez tous les enregistrements de la base de données, l’initialiseur amorce la base de données et inclut le champ `Rating`. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox). Pour supprimer la base de données à partir de SSOX
 
 * Sélectionnez la base de données dans SSOX.
 * Cliquez avec le bouton droit sur la base de données, puis sélectionnez *Supprimer*.

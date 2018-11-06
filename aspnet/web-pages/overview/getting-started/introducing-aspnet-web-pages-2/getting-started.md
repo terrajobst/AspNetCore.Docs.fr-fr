@@ -1,21 +1,21 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
-title: Présentation des Pages Web ASP.NET - prise en main | Microsoft Docs
-author: tfitzmac
+title: Mise en route | Microsoft Docs
+author: Rick-Anderson
 description: WebMatrix n’est plus recommandé comme un environnement de développement intégré pour ASP.NET Web Pages. Utilisez Visual Studio ou Visual Studio Code. Ce guide un...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: a36d3bdf-ef1b-47a4-b932-3a0cf4cad716
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 12878082306cf51f8ea08ae614d9420251ecb587
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 79f76410e091b137e2792127b0a42524270761e8
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46482955"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021493"
 ---
-<a name="introducing-aspnet-web-pages---getting-started"></a>Présentation des Pages Web ASP.NET - mise en route
+<a name="getting-started"></a>Prise en main
 ====================
 par [Tom FitzMacken](https://github.com/tfitzmac)
 

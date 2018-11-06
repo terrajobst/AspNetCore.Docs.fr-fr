@@ -5,12 +5,12 @@ description: Découvrez comment contrôler le comportement de l’application da
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: 720e5ef9fb63b83499ce1801a1c3f9df4786d748
-ms.sourcegitcommit: 25150f4398de83132965a89f12d3a030f6cce48d
+ms.openlocfilehash: 865257d127084671036147dd1f28c9c4843feef6
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/25/2018
-ms.locfileid: "42927940"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206846"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
@@ -18,7 +18,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ASP.NET Core configure le comportement de l’application en fonction de l’environnement d’exécution à l’aide d’une variable d’environnement.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/environments/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="environments"></a>Environnements
 
@@ -28,7 +28,7 @@ ASP.NET Core lit la variable d’environnement `ASPNETCORE_ENVIRONMENT` au déma
 
 Le code précédent :
 
-* Appelle [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) et [UseBrowserLink](/dotnet/api/microsoft.aspnetcore.builder.browserlinkextensions.usebrowserlink) quand `ASPNETCORE_ENVIRONMENT` a la valeur `Development`.
+* Appelle [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) quand `ASPNETCORE_ENVIRONMENT` a la valeur `Development`.
 * Appelle [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler) quand `ASPNETCORE_ENVIRONMENT` est définie sur l’une des valeurs :
 
     * `Staging`
@@ -245,7 +245,6 @@ Pour définir la variables d’environnement `ASPNETCORE_ENVIRONMENT` pour une a
 > [!IMPORTANT]
 > Lors de l’hébergement d’une application dans IIS et de l’ajout ou du changement de la variable d’environnement `ASPNETCORE_ENVIRONMENT`, utilisez l’une des approches suivantes pour que la nouvelle valeur soit récupérée par des applications :
 >
-> * Redémarrez le pool d’applications d’une application.
 > * Exécutez la commande `net stop was /y` suivie de `net start w3svc` à partir d’une invite de commandes.
 > * Redémarrez le serveur.
 

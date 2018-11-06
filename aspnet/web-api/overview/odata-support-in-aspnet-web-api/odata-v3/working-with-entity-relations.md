@@ -8,12 +8,12 @@ ms.date: 02/26/2014
 ms.assetid: 1e4c2eb4-b6cf-42ff-8a65-4d71ddca0394
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/working-with-entity-relations
 msc.type: authoredcontent
-ms.openlocfilehash: fc1c6b938c4e4be379edf1a495ca47f5f5f2eb4f
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: f78b5cf36789032f90d3d073698f7a439507277f
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826814"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50206859"
 ---
 <a name="supporting-entity-relations-in-odata-v3-with-web-api-2"></a>Prise en charge des Relations d’entité dans OData v3 avec Web API 2
 ====================
@@ -65,7 +65,7 @@ Pour prendre en charge de cette demande, ajoutez la méthode suivante à la `Pro
 
 [!code-csharp[Main](working-with-entity-relations/samples/sample6.cs)]
 
-Le *clé* paramètre est la clé du produit. La méthode retourne l’entité associée & #8212 dans ce cas, un `Supplier` instance. Le nom de la méthode et le nom de paramètre sont cruciales. En règle générale, si la propriété de navigation est nommée « X », vous devez ajouter une méthode nommée « GetX ». La méthode doit accepter un paramètre nommé «*clé*» qui correspond au type de données de clé du parent.
+Le *clé* paramètre est la clé du produit. La méthode retourne l’entité associée&#8212;dans ce cas, un `Supplier` instance. Le nom de la méthode et le nom de paramètre sont cruciales. En règle générale, si la propriété de navigation est nommée « X », vous devez ajouter une méthode nommée « GetX ». La méthode doit accepter un paramètre nommé «*clé*» qui correspond au type de données de clé du parent.
 
 Il est également important d’inclure le **[FromOdataUri]** d’attribut dans le *clé* paramètre. Cet attribut indique à l’API Web à utiliser les règles de syntaxe OData lorsqu’il analyse la clé à partir de l’URI de demande.
 

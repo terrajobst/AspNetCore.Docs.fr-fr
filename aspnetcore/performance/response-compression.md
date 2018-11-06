@@ -1,24 +1,24 @@
 ---
 title: Compression des réponses dans ASP.NET Core
 author: guardrex
-description: En savoir plus sur la compression de la réponse et comment utiliser un intergiciel (middleware) de Compression de réponse dans les applications ASP.NET Core.
+description: Découvrez ce qu’est la compression des réponses et comment utiliser le middleware de compression des réponses dans les applications ASP.NET Core.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: performance/response-compression
-ms.openlocfilehash: d5e0b6ed21c14f2e76396cde846c69a76ad40794
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 8c3d74b6a346d51507d3c278b03ddc842feea13e
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578144"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207977"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 La bande passante réseau est une ressource limitée. Le fait de réduire la taille de la réponse augmente généralement la réactivité d’une application, parfois de manière considérable. Une façon de réduire la taille de la charge utile consiste à compresser les réponses de l’application.
 
@@ -440,7 +440,7 @@ Si vous avez une active IIS Compression Module dynamique configuré au niveau du
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
-Utiliser un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/), ou [Postman](https://www.getpostman.com/), qui vous permettent de définir le `Accept-Encoding` en-tête de demande et d’étudier les en-têtes de réponse, la taille et le corps. Par défaut, intergiciel de Compression des réponses compresse les réponses qui remplissent les conditions suivantes :
+Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](https://getfirebug.com/) ou [Postman](https://www.getpostman.com/) pour définir l'en-tête `Accept-Encoding` de la requête et étudier les en-têtes, la taille et le corps de la réponse. Par défaut, intergiciel de Compression des réponses compresse les réponses qui remplissent les conditions suivantes :
 
 ::: moniker range=">= aspnetcore-2.2"
 

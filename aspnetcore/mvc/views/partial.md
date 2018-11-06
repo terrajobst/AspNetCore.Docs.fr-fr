@@ -1,59 +1,134 @@
 ---
 title: Vues partielles dans ASP.NET Core
 author: ardalis
-description: Découvrez ce qu’est une vue partielle, une vue rendue dans une autre vue, et quand l’utiliser dans les applications ASP.NET Core.
+description: Découvrez comment utiliser les vues partielles pour découper des fichiers de balisage volumineux et réduire la duplication du balisage commun entre les différentes pages web dans les applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 uid: mvc/views/partial
-ms.openlocfilehash: 2223f3c6e42927def4b91ff9da58c228e5904756
-ms.sourcegitcommit: 028ad28c546de706ace98066c76774de33e4ad20
+ms.openlocfilehash: ff4b99580990edbd768128d77214e664a1e29e56
+ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39655321"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50207223"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 
-Par [Steve Smith](https://ardalis.com/), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Sauber](https://twitter.com/scottsauber)
+Par [Steve Smith](https://ardalis.com/), [Luke Latham](https://github.com/guardrex), [Maher JENDOUBI](https://twitter.com/maherjend), [Rick Anderson](https://twitter.com/RickAndMSFT) et [Scott Sauber](https://twitter.com/scottsauber)
 
-ASP.NET Core prend en charge les vues partielles. Les vues partielles sont utilisées pour partager des parties réutilisables de pages web entre différentes vues.
+Une vue partielle est un fichier de balisage [Razor](xref:mvc/views/razor) (*.cshtml*) qui effectue le rendu d’une sortie HTML *dans* la sortie rendue d’un autre fichier de balisage.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([procédure de téléchargement](xref:tutorials/index#how-to-download-a-sample))
+::: moniker range=">= aspnetcore-2.1"
 
-## <a name="what-are-partial-views"></a>Que sont les vues partielles ?
+Le terme *vue partielle* s’emploie dans le cadre du développement d’une application MVC, où les fichiers de balisage sont appelés *vues*, ou du développement d’une application Razor Pages, où les fichiers de balisage sont appelés *pages*. Cette rubrique désigne les vues MVC et les pages Razor Pages avec le terme générique *fichiers de balisage*.
 
-Une vue partielle est une vue affichée dans une autre vue. La sortie HTML générée par l’exécution de la vue partielle est affichée dans la vue appelante (ou parente). Tout comme les vues, les vues partielles utilisent l’extension de fichier *.cshtml*.
+::: moniker-end
 
-Par exemple, le modèle de projet **Application web** ASP.NET Core 2.1 inclut une vue partielle *_CookieConsentPartial.cshtml*. La vue partielle est chargée à partir de *_Layout.cshtml* :
-
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_Layout.cshtml?name=snippet_CookieConsentPartial)]
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/partial/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-partial-views"></a>Quand utiliser des vues partielles ?
 
-Les vues partielles sont un moyen efficace de découper des vues volumineuses en composants plus petits. Elles permettent de réduire la duplication du contenu d’une vue et de réutiliser les éléments des vues. Les éléments de disposition communs doivent être spécifiés dans [_Layout.cshtml](xref:mvc/views/layout). Le contenu réutilisable non lié à une disposition peut être encapsulé dans des vues partielles.
+Les vues partielles sont utiles pour :
 
-Dans une page complexe formée de plusieurs parties logiques, il peut s’avérer utile de travailler sur chaque partie en tant que vue partielle. Chaque partie de la page peut être visualisée de façon isolée par rapport au reste de la page. La vue de la page elle-même devient plus simple, puisqu’elle contient uniquement la structure de page globale et les appels permettant d’afficher les vues partielles.
+* Découper des fichiers de balisage volumineux en composants plus petits.
 
-Les contrôleurs ASP.NET Core MVC ont une méthode [PartialView](/dotnet/api/microsoft.aspnetcore.mvc.controller.partialview#Microsoft_AspNetCore_Mvc_Controller_PartialView) qui est appelée à partir d’une méthode d’action. Les Razor Pages n’ont aucune méthode `PartialView` équivalente sur [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel).
+  Dans un grand fichier de balisage complexe composé de plusieurs parties logiques, il peut s’avérer utile de travailler sur chaque partie isolée dans une vue partielle. Le code dans le fichier de balisage est facile à gérer, puisqu’il contient uniquement la structure de page globale et les références aux vues partielles.
+* Réduire la duplication du contenu de balisage commun entre les fichiers de balisage.
+
+  Quand les mêmes éléments de balisage sont utilisés entre plusieurs fichiers de balisage, une vue partielle supprime la duplication du contenu de balisage dans un seul fichier de vue partielle. Quand le balisage est modifié dans la vue partielle, il met à jour la sortie rendue des fichiers de balisage qui utilisent cette vue partielle.
+
+Les vues partielles ne doivent pas être utilisées pour tenir à jour des éléments de disposition communs. Ces éléments doivent être spécifiés dans des fichiers [_Layout.cshtml](xref:mvc/views/layout).
+
+N’utilisez pas une vue partielle quand du code ou une logique de rendu complexe doit être exécuté pour effectuer le rendu du balisage. Dans ce cas, utilisez un [composant de vue](xref:mvc/views/view-components) à la place.
 
 ## <a name="declare-partial-views"></a>Déclarer des vues partielles
 
-Vous créez les vues partielles comme les autres vues : en créant un fichier *.cshtml* dans le dossier &mdash; *Vues* Il n’existe aucune différence sémantique entre une vue partielle et une vue classique. Cependant, leur rendu est différent. Une vue peut être retournée directement à partir du [ViewResult](/dotnet/api/microsoft.aspnetcore.mvc.viewresult) d’un contrôleur, et cette même vue peut être utilisée comme vue partielle. La principale différence entre le rendu d’une vue et celui d’une vue partielle est que les vues partielles n’exécutent pas *_ViewStart.cshtml*. Les vues standard exécutent *_ViewStart.cshtml*. Découvrez-en plus sur *_ViewStart.cshtml* dans [Disposition](xref:mvc/views/layout)).
+::: moniker range=">= aspnetcore-2.0"
 
-Par convention, les noms de fichiers des vues partielles commencent souvent par `_`. Cette convention de nommage n’est pas une condition requise, mais elle aide à différencier visuellement les vues partielles des vues standard.
+Une vue partielle est un fichier de balisage *.cshtml* tenu à jour dans le dossier *Vues* (MVC) ou le dossier *Pages* (Razor Pages).
+
+Dans ASP.NET Core MVC, le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle. Une fonctionnalité similaire est prévue pour Razor Pages dans ASP.NET Core 2.2. Dans Razor Pages, un <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> peut retourner un <xref:Microsoft.AspNetCore.Mvc.PartialViewResult>. Le référencement et le rendu des vues partielles sont décrits dans la section [Référencer une vue partielle](#reference-a-partial-view).
+
+Contrairement au rendu d’une vue MVC ou d’une page, une vue partielle n’exécute pas *_ViewStart.cshtml*. Pour plus d’informations sur *_ViewStart.cshtml*, consultez <xref:mvc/views/layout>.
+
+Les noms de fichiers des vues partielles commencent souvent par un trait de soulignement (`_`). Cette convention de nommage n’est pas obligatoire, mais elle aide à différencier visuellement les vues partielles des autres vues et pages.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
+
+Une vue partielle est un fichier de balisage *.cshtml* tenu à jour dans le dossier *Vues*.
+
+Le <xref:Microsoft.AspNetCore.Mvc.ViewResult> d’un contrôleur peut retourner une vue ou une vue partielle.
+
+Contrairement au rendu d’une vue MVC, une vue partielle n’exécute pas *_ViewStart.cshtml*. Pour plus d’informations sur *_ViewStart.cshtml*, consultez <xref:mvc/views/layout>.
+
+Les noms de fichiers des vues partielles commencent souvent par un trait de soulignement (`_`). Cette convention de nommage n’est pas obligatoire, mais elle aide à différencier visuellement les vues partielles des autres vues.
+
+::: moniker-end
 
 ## <a name="reference-a-partial-view"></a>Référencer une vue partielle
 
-Au sein d’une page de vue, il existe plusieurs façons d’afficher une vue partielle. La bonne pratique consiste à utiliser le rendu asynchrone.
+::: moniker range=">= aspnetcore-2.1"
+
+Il y a plusieurs façons de référencer une vue partielle au sein d’un fichier de balisage. Pour vos applications, nous vous recommandons de choisir l’une des approches de rendu asynchrone suivantes :
+
+* [Tag Helper Ppartial](#partial-tag-helper)
+* [Helper HTML asynchrone](#asynchronous-html-helper)
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.1"
+
+Il y a deux façons de référencer une vue partielle au sein d’un fichier de balisage :
+
+* [Helper HTML asynchrone](#asynchronous-html-helper)
+* [Helper HTML synchrone](#synchronous-html-helper)
+
+Pour vos applications, nous vous recommandons d’utiliser le [Helper HTML asynchrone](#asynchronous-html-helper).
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
 ### <a name="partial-tag-helper"></a>Tag Helper Partial
 
-Le Tag Helper Partial nécessite ASP.NET Core 2.1 ou ultérieur. Il effectue un rendu asynchrone et utilise une syntaxe de type HTML :
+Le [Tag Helper Partial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper) nécessite ASP.NET Core 2.1 ou version ultérieure.
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_PartialTagHelper)]
+Le Tag Helper Partial effectue un rendu asynchrone et utilise une syntaxe de type HTML :
+
+```cshtml
+<partial name="_PartialName" />
+```
+
+Si une extension de fichier est spécifiée, la vue partielle référencée par le Tag Helper doit se trouver dans le même dossier que le fichier de balisage qui appelle la vue partielle :
+
+```cshtml
+<partial name="_PartialName.cshtml" />
+```
+
+L’exemple suivant référence une vue partielle à la racine de l’application. Les chemins qui commencent par un tilde et une barre oblique (`~/`) ou par une barre oblique seule (`/`) renvoient à la racine de l’application :
+
+**Pages Razor**
+
+```cshtml
+<partial name="~/Pages/Folder/_PartialName.cshtml" />
+<partial name="/Pages/Folder/_PartialName.cshtml" />
+```
+
+**MVC**
+
+```cshtml
+<partial name="~/Views/Folder/_PartialName.cshtml" />
+<partial name="/Views/Folder/_PartialName.cshtml" />
+```
+
+L’exemple suivant référence une vue partielle avec un chemin relatif :
+
+```cshtml
+<partial name="../Account/_PartialName.cshtml" />
+```
 
 Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>.
 
@@ -61,119 +136,179 @@ Pour plus d'informations, consultez <xref:mvc/views/tag-helpers/builtin-th/parti
 
 ### <a name="asynchronous-html-helper"></a>Assistance HTML asynchrone
 
-Quand vous utilisez une assistance HTML, la bonne pratique consiste à utiliser [PartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partialasync#Microsoft_AspNetCore_Mvc_Rendering_HtmlHelperPartialExtensions_PartialAsync_Microsoft_AspNetCore_Mvc_Rendering_IHtmlHelper_System_String_). Elle retourne un type [IHtmlContent](/dotnet/api/microsoft.aspnetcore.html.ihtmlcontent) wrappé dans un `Task`. La méthode est référencée en ajoutant le préfixe `@` à l’appel :
+Avec un Helper HTML, la bonne pratique est d’utiliser <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.PartialAsync*>. `PartialAsync` retourne un type <xref:Microsoft.AspNetCore.Html.IHtmlContent> wrappé dans un <xref:System.Threading.Tasks.Task`1>. La méthode est référencée par l’ajout du préfixe `@` à l’appel attendu :
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_PartialAsync)]
+```cshtml
+@await Html.PartialAsync("_PartialName")
+```
 
-En guise d’alternative, vous pouvez afficher une vue partielle avec [RenderPartialAsync](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartialasync). Cette méthode ne retourne aucun résultat. Elle envoie la sortie rendue directement à la réponse. Comme elle ne retourne aucun résultat, cette méthode doit être appelée dans un bloc de code Razor :
+Si l’extension de fichier est spécifiée, la vue partielle référencée par le Helper HTML doit se trouver dans le même dossier que le fichier de balisage qui appelle la vue partielle :
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_RenderPartialAsync)]
+```cshtml
+@await Html.PartialAsync("_PartialName.cshtml")
+```
 
-Dans la mesure où elle envoie directement le résultat, `RenderPartialAsync` peut être plus efficace dans certains scénarios. Toutefois, nous vous recommandons d’utiliser `PartialAsync`.
-
-### <a name="synchronous-html-helper"></a>Assistance HTML synchrone
-
-[Partial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.partial) et [RenderPartial](/dotnet/api/microsoft.aspnetcore.mvc.rendering.htmlhelperpartialextensions.renderpartial) sont les équivalents synchrones de `PartialAsync` et `RenderPartialAsync`, respectivement. L’utilisation des équivalents synchrones n’est pas recommandée en raison du risque d’interblocage dans certains scénarios. Les versions ultérieures ne contiendront pas les méthodes synchrones.
-
-> [!IMPORTANT]
-> Si vos vues doivent exécuter du code, utilisez un [composant de vue](xref:mvc/views/view-components) au lieu d’une vue partielle.
+L’exemple suivant référence une vue partielle à la racine de l’application. Les chemins qui commencent par un tilde et une barre oblique (`~/`) ou par une barre oblique seule (`/`) renvoient à la racine de l’application :
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Dans ASP.NET Core 2.1 ou ultérieur, l’appel de `Partial` ou `RenderPartial` génère un avertissement de l’analyseur. Par exemple, l’utilisation de `Partial` génère le message d’avertissement suivant :
+**Pages Razor**
 
-> L’utilisation de IHtmlHelper.Partial peut entraîner des interblocages d’application. Utilisez plutôt le Tag Helper `<partial>` ou `IHtmlHelper.PartialAsync`.
+```cshtml
+@await Html.PartialAsync("~/Pages/Folder/_PartialName.cshtml")
+@await Html.PartialAsync("/Pages/Folder/_PartialName.cshtml")
+```
 
-Remplacez les appels à `@Html.Partial` par `@await Html.PartialAsync` ou le Tag Helper Partial. Pour plus d’informations sur la migration du Tag Helper Partial, consultez [Migrer à partir d’une assistance HTML](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper).
+**MVC**
+
+::: moniker-end
+
+```cshtml
+@await Html.PartialAsync("~/Views/Folder/_PartialName.cshtml")
+@await Html.PartialAsync("/Views/Folder/_PartialName.cshtml")
+```
+
+L’exemple suivant référence une vue partielle avec un chemin relatif :
+
+```cshtml
+@await Html.PartialAsync("../Account/_LoginPartial.cshtml")
+```
+
+Vous pouvez aussi effectuer le rendu d’une vue partielle avec <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*>. Cette méthode ne retourne aucun <xref:Microsoft.AspNetCore.Html.IHtmlContent>. Elle envoie la sortie rendue directement à la réponse. Comme elle ne retourne aucun résultat, cette méthode doit être appelée dans un bloc de code Razor :
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_RenderPartialAsync)]
+
+Dans la mesure où elle envoie directement le contenu rendu, la méthode `RenderPartialAsync` est plus efficace dans certains scénarios. Dans les scénarios nécessitant de hautes performances, effectuez un test d’évaluation de la page à l’aide de ces deux approches et choisissez celle qui génère une réponse plus rapidement.
+
+### <a name="synchronous-html-helper"></a>Assistance HTML synchrone
+
+<xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.Partial*> et <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartial*> sont les équivalents synchrones de `PartialAsync` et `RenderPartialAsync`, respectivement. Les équivalents synchrones ne sont pas recommandés en raison du risque d’interblocage dans certains scénarios. Les méthodes synchrones sont prévues d’être supprimées dans une version ultérieure.
+
+> [!IMPORTANT]
+> Si vous devez exécuter du code, utilisez un [composant de vue](xref:mvc/views/view-components) au lieu d’une vue partielle.
+
+::: moniker range=">= aspnetcore-2.1"
+
+L’appel de `Partial` ou `RenderPartial` génère un avertissement de l’analyseur Visual Studio. Par exemple, la présence de `Partial` génère le message d’avertissement suivant :
+
+> L’utilisation de IHtmlHelper.Partial peut entraîner des interblocages d’application. Utilisez plutôt un Tag Helper &lt;Partial&gt; ou IHtmlHelper.PartialAsync.
+
+Remplacez les appels à `@Html.Partial` par `@await Html.PartialAsync` ou le [Tag Helper Partial](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper). Pour plus d’informations sur la migration du Tag Helper Partial, consultez [Migrer à partir d’une assistance HTML](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper).
 
 ::: moniker-end
 
 ## <a name="partial-view-discovery"></a>Découverte des vues partielles
 
-Quand vous référencez une vue partielle, vous pouvez faire référence à son emplacement de plusieurs façons. Exemple :
+Quand une vue partielle est référencée par son nom sans extension de fichier, les emplacements suivants sont recherchés dans l’ordre indiqué :
 
 ::: moniker range=">= aspnetcore-2.1"
 
-```cshtml
-// Uses a view in current folder with this name.
-// If none is found, searches the Shared folder.
-<partial name="_ViewName" />
+**Pages Razor**
 
-// A view with this name must be in the same folder
-<partial name="_ViewName.cshtml" />
+1. Dossier de la page en cours d’exécution
+1. Directory Graph au-dessus du dossier de la page
+1. `/Shared`
+1. `/Pages/Shared`
+1. `/Views/Shared`
 
-// Locate the view based on the app root.
-// Paths that start with "/" or "~/" refer to the app root.
-<partial name="~/Views/Folder/_ViewName.cshtml" />
-<partial name="/Views/Folder/_ViewName.cshtml" />
-
-// Locate the view using a relative path
-<partial name="../Account/_LoginPartial.cshtml" />
-```
-
-L’exemple précédent utilise le Tag Helper Partial, qui nécessite ASP.NET Core 2.1 ou ultérieur. L’exemple suivant utilise des helpers HTML asynchrones pour accomplir la même tâche.
+**MVC**
 
 ::: moniker-end
 
-```cshtml
-// Uses a view in current folder with this name.
-// If none is found, searches the Shared folder.
-@await Html.PartialAsync("_ViewName")
+::: moniker range=">= aspnetcore-2.0"
 
-// A view with this name must be in the same folder
-@await Html.PartialAsync("_ViewName.cshtml")
+1. `/Areas/<Area-Name>/Views/<Controller-Name>`
+1. `/Areas/<Area-Name>/Views/Shared`
+1. `/Views/Shared`
+1. `/Pages/Shared`
 
-// Locate the view based on the app root.
-// Paths that start with "/" or "~/" refer to the app root.
-@await Html.PartialAsync("~/Views/Folder/_ViewName.cshtml")
-@await Html.PartialAsync("/Views/Folder/_ViewName.cshtml")
+::: moniker-end
 
-// Locate the view using a relative path
-@await Html.PartialAsync("../Account/_LoginPartial.cshtml")
-```
+::: moniker range="< aspnetcore-2.0"
 
-Vous pouvez avoir différentes vues partielles portant le même nom de fichier dans des dossiers de vues distincts. Quand vous référencez des vues par leur nom (sans extension de fichier), les vues de chaque dossier utilisent la vue partielle située dans le même dossier. Vous pouvez également spécifier une vue partielle par défaut à utiliser, en la plaçant dans le dossier *Partagé*. La vue partielle partagée est utilisée par toutes les vues qui n’ont pas leur propre version de la vue partielle. Une vue partielle par défaut (dans *Partagé*) peut être remplacée par une vue partielle ayant le même nom dans le dossier de la vue parente.
+1. `/Areas/<Area-Name>/Views/<Controller-Name>`
+1. `/Areas/<Area-Name>/Views/Shared`
+1. `/Views/Shared`
 
-Une vue partielle peut être *chaînée*, c’est-à-dire appeler une autre vue partielle (tant que vous ne créez pas de boucle). Dans chaque vue ou vue partielle, les chemins relatifs sont toujours relatifs à cette vue, et non à la vue racine ou parente.
+::: moniker-end
+
+Les conventions suivantes s’appliquent à la détection des vues partielles :
+
+* Vous pouvez avoir plusieurs vues partielles avec le même nom de fichier à condition que les vues partielles se trouvent dans des dossiers distincts.
+* Quand vous référencez une vue partielle par son nom (sans extension de fichier) et que la vue partielle est présente à la fois dans le dossier de l’appelant et le dossier *Partagé*, la vue partielle fournie est celle du dossier de l’appelant. Si la vue partielle n’est pas présente dans le dossier de l’appelant, la vue partielle fournie est celle du dossier *Partagé*. Les vues partielles dans le dossier *Partagé* sont appelées *vues partielles partagées* ou *vues partielles par défaut*.
+* Les vues partielles peuvent être *chaînées*, c’est-à-dire qu’une vue partielle peut appeler une autre vue partielle si une référence circulaire n’est pas formée par les appels. Les chemins relatifs sont toujours relatifs au fichier actuel, et non au fichier racine ou parent associé.
 
 > [!NOTE]
-> Une `section` [Razor](xref:mvc/views/razor) définie dans une vue partielle est invisible aux vues parentes. La `section` est visible uniquement par la vue partielle dans laquelle elle est définie.
+> Une `section` [Razor](xref:mvc/views/razor) définie dans une vue partielle n’est pas visible par les fichiers de balisage parents. La `section` est visible uniquement par la vue partielle dans laquelle elle est définie.
 
 ## <a name="access-data-from-partial-views"></a>Accéder à des données à partir de vues partielles
 
-Quand une vue partielle est instanciée, elle obtient une copie du dictionnaire de `ViewData` de la vue parente. Les mises à jour apportées aux données de la vue partielle ne sont pas conservées dans la vue parente. Tout changement apporté à `ViewData` dans une vue partielle est perdu quand la vue partielle est retournée.
+Quand une vue partielle est instanciée, elle reçoit une *copie* du dictionnaire `ViewData` du parent. Les mises à jour apportées aux données de la vue partielle ne sont pas conservées dans la vue parente. Tout changement apporté à `ViewData` dans une vue partielle est perdu quand la vue partielle est retournée.
 
-Vous pouvez passer une instance de [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) à la vue partielle :
+L’exemple suivant montre comment passer une instance de [ViewDataDictionary](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.viewdatadictionary) à une vue partielle :
 
 ```cshtml
 @await Html.PartialAsync("_PartialName", customViewData)
 ```
 
-Vous pouvez passer un modèle dans une vue partielle. Ce modèle peut être le modèle de vue de la page ou un objet personnalisé. Vous pouvez passer un modèle à `PartialAsync` ou `RenderPartialAsync` :
+Vous pouvez passer un modèle dans une vue partielle. Le modèle peut être un objet personnalisé. Vous pouvez passer un modèle avec `PartialAsync` (envoie le rendu d’un bloc de contenu à l’appelant) ou avec `RenderPartialAsync` (transmet le contenu à la sortie) :
 
 ```cshtml
-@await Html.PartialAsync("_PartialName", viewModel)
+@await Html.PartialAsync("_PartialName", model)
 ```
 
-Vous pouvez passer une instance de `ViewDataDictionary` et un modèle de vue à une vue partielle :
+::: moniker range=">= aspnetcore-2.1"
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_PartialAsync)]
+**Pages Razor**
 
-Le code ci-dessous montre la vue *Views/Articles/Read.cshtml*, qui contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. Utilisez la surcharge de constructeur `ViewDataDictionary` mise en surbrillance pour passer un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
+Le balisage suivant dans l’exemple d’application est extrait de la page *Pages/ArticlesRP/ReadRP.cshtml*. La page contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
 
-[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=17-20)]
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/ReadRP.cshtml?name=snippet_ReadPartialViewRP&highlight=5,15-19)]
 
-*Views/Shared/_AuthorPartial* :
+*Pages/Shared/_AuthorPartialRP.cshtml* est la première vue partielle référencée par le fichier de balisage *ReadRP.cshtml* :
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/Shared/_AuthorPartialRP.cshtml)]
+
+*Pages/ArticlesRP/_ArticleSectionRP.cshtml* est la seconde vue partielle référencée par le fichier de balisage *ReadRP.cshtml* :
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Pages/ArticlesRP/_ArticleSectionRP.cshtml)]
+
+**MVC**
+
+::: moniker-end
+
+Le balisage suivant dans l’exemple d’application illustre la vue *Views/Articles/Read.cshtml*. La vue contient deux vues partielles. La seconde vue partielle passe un modèle et `ViewData` à la vue partielle. La surcharge de constructeur `ViewDataDictionary` passe un nouveau dictionnaire `ViewData` tout en conservant le dictionnaire `ViewData` existant.
+
+[!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/Read.cshtml?name=snippet_ReadPartialView&highlight=5,15-19)]
+
+*Views/Shared/_AuthorPartial.cshtml* est la première vue partielle référencée par le fichier de balisage *ReadRP.cshtml* :
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Shared/_AuthorPartial.cshtml)]
 
-Le *_ArticleSection* partiel :
+*Views/Articles/_ArticleSection.cshtml* est la seconde vue partielle référencée par le fichier de balisage *Read.cshtml* :
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Articles/_ArticleSection.cshtml)]
 
-Au moment de l’exécution, les vues partielles sont affichées dans la vue parente, elle-même affichée dans le fichier *_Layout.cshtml* partagé.
+Au moment de l’exécution, le rendu des vues partielles est effectué dans la sortie rendue du fichier de balisage parent, qui est elle-même rendue dans le fichier *_Layout.cshtml* partagé. La première vue partielle affiche le nom de l’auteur et la date de publication de l’article :
 
-![sortie de vue partielle](partial/_static/output.png)
+> Abraham Lincoln
+>
+> This partial view from &lt;shared partial view file path&gt;.
+> 11/19/1863 12:00:00 AM
+
+La seconde vue partielle affiche les sections de l’article :
+
+> Section One Index: 0
+>
+> Four score and seven years ago ...
+>
+> Section Two Index: 1
+>
+> Now we are engaged in a great civil war, testing ...
+>
+> Section Three Index: 2
+>
+> But, in a larger sense, we can not dedicate ...
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
@@ -183,12 +318,14 @@ Au moment de l’exécution, les vues partielles sont affichées dans la vue par
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>
 * <xref:mvc/views/view-components>
+* <xref:mvc/controllers/areas>
 
 ::: moniker-end
 
-::: moniker range="<= aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.1"
 
 * <xref:mvc/views/razor>
 * <xref:mvc/views/view-components>
+* <xref:mvc/controllers/areas>
 
 ::: moniker-end

@@ -5,12 +5,12 @@ description: Découvrez comment la liaison de données permet aux actions du con
 ms.author: riande
 ms.date: 04/10/2017
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: f5bd9a3eefb1fd9c1534e8767ad8e8af37514adb
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: dc901aea3c20e7f2e955f39d923216de70ef015b
+ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275391"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50090405"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Liaison de données personnalisée dans ASP.NET Core
 
@@ -101,7 +101,7 @@ L’attribut `ModelBinder` permet d’appliquer `AuthorEntityBinder` aux paramè
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Controllers/BoundAuthorsController.cs?name=demo1&highlight=2)]
 
-Dans cet exemple, comme le nom de l’argument n’est pas le `authorId` par défaut, il est spécifié dans le paramètre à l’aide de l’attribut `ModelBinder`. Notez que le contrôleur et la méthode d’action sont simplifiés par rapport à la recherche de l’entité dans la méthode d’action. La logique permettant de récupérer (fetch) l’auteur à l’aide d’Entity Framework Core est déplacée vers le classeur de modèles. Cela peut représenter une simplification considérable quand vous avez plusieurs méthodes qui sont liées au modèle author. Cela peut également vous aider à suivre le principe [DRY](http://deviq.com/don-t-repeat-yourself/).
+Dans cet exemple, comme le nom de l’argument n’est pas le `authorId` par défaut, il est spécifié dans le paramètre à l’aide de l’attribut `ModelBinder`. Notez que le contrôleur et la méthode d’action sont simplifiés par rapport à la recherche de l’entité dans la méthode d’action. La logique permettant de récupérer (fetch) l’auteur à l’aide d’Entity Framework Core est déplacée vers le classeur de modèles. Cela peut représenter une simplification considérable quand vous avez plusieurs méthodes qui sont liées au modèle `Author`. Cela peut également vous aider à suivre le [principe DRY](http://deviq.com/don-t-repeat-yourself/).
 
 Vous pouvez appliquer l’attribut `ModelBinder` à des propriétés de modèle individuelles (par exemple viewmodel) ou à des paramètres de méthode d’action afin de spécifier un classeur de modèles ou un nom de modèle particulier pour ce type ou cette action uniquement.
 

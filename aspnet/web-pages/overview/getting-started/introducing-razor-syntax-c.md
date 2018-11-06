@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-razor-syntax-c
 title: Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (c#) | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Ce chapitre vous donne une vue d’ensemble de la programmation avec les Pages Web ASP.NET à l’aide de la syntaxe Razor. ASP.NET est la technologie de Microsoft pour les pa web dynamique en cours d’exécution...
 ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: 347e5ddbc02866887d3f422ecc291e5e3dfacaaf
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: b5eb98dfdf3fc013920f45080d4a20e1fa507725
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827716"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021779"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (c#)
 ====================
@@ -342,13 +342,13 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
 
 :::row:::
     :::column:::
-        <strong>Méthode</strong>
+    <strong>Méthode</strong>
     :::column-end:::
     :::column:::
-        <strong>Description</strong>
+    <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>Exemple</strong>
+    <strong>Exemple</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -357,7 +357,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsInt(), IsInt()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui représente un nombre entier (par exemple, « 593 ») vers un entier.
+    Convertit une chaîne qui représente un nombre entier (par exemple, « 593 ») vers un entier.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample28.cs)]
@@ -369,7 +369,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsBool(), IsBool()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne telle que &quot;true&quot; ou &quot;false&quot; à un type booléen.
+    Convertit une chaîne telle que &quot;true&quot; ou &quot;false&quot; à un type booléen.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample29.cs)]
@@ -381,7 +381,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsFloat(), IsFloat()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre à virgule flottante.
+    Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre à virgule flottante.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample30.cs)]
@@ -393,7 +393,8 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsDecimal(), IsDecimal()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre décimal. (Dans ASP.NET, un nombre décimal est plus précis qu’un nombre à virgule flottante.) :::column-end:::
+    Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre décimal. (Dans ASP.NET, un nombre décimal est plus précis qu’un nombre à virgule flottante.)
+    :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample31.cs)]
     :::column-end:::
@@ -404,7 +405,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsDateTime(), IsDateTime()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui représente une valeur de date et d’heure pour ASP.NET `DateTime` type.
+    Convertit une chaîne qui représente une valeur de date et d’heure pour ASP.NET `DateTime` type.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample32.cs)]
@@ -416,7 +417,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `ToString()`
     :::column-end:::
     :::column:::
-        Convertit n’importe quel autre type de données en une chaîne.
+    Convertit n’importe quel autre type de données en une chaîne.
     :::column-end:::
     :::column:::
         [!code-javascript[Main](introducing-razor-syntax-c/samples/sample33.js)]
@@ -430,13 +431,13 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
 
 :::row:::
     :::column:::
-        <strong>Operator</strong>
+    <strong>Operator</strong>
     :::column-end:::
     :::column:::
-        <strong>Description</strong>
+    <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>Exemples</strong>
+    <strong>Exemples</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -445,7 +446,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `+` `-` `*` `/`
     :::column-end:::
     :::column:::
-        Opérateurs mathématiques utilisés dans les expressions numériques.
+    Opérateurs mathématiques utilisés dans les expressions numériques.
     :::column-end:::
     :::column:::
         [!code-css[Main](introducing-razor-syntax-c/samples/sample34.css)]
@@ -457,7 +458,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `=`
     :::column-end:::
     :::column:::
-        Assignation. Assigne la valeur située à droite d’une instruction à l’objet sur le côté gauche.
+    Assignation. Assigne la valeur située à droite d’une instruction à l’objet sur le côté gauche.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample35.cs)]
@@ -469,7 +470,8 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `==`
     :::column-end:::
     :::column:::
-        Égalité Retourne `true` si les valeurs sont égales. (Notez la distinction entre les `=` opérateur et la `==` opérateur.) :::column-end:::
+    Égalité Retourne `true` si les valeurs sont égales. (Notez la distinction entre les `=` opérateur et la `==` opérateur.)
+    :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample36.cs)]
     :::column-end:::
@@ -480,7 +482,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `!=`
     :::column-end:::
     :::column:::
-        Inégalité Retourne `true` si les valeurs ne sont pas égales.
+    Inégalité Retourne `true` si les valeurs ne sont pas égales.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample37.cs)]
@@ -492,7 +494,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `< > <= >=`
     :::column-end:::
     :::column:::
-        Moins-à, supérieur-à, inférieur ou égal et supérieure ou égale.
+    Moins-à, supérieur-à, inférieur ou égal et supérieure ou égale.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample38.cs)]
@@ -504,7 +506,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `+`
     :::column-end:::
     :::column:::
-        Concaténation, qui est utilisée pour joindre des chaînes. ASP.NET sait que la différence entre cet opérateur et l’opérateur d’addition en fonction du type de données de l’expression.
+    Concaténation, qui est utilisée pour joindre des chaînes. ASP.NET sait que la différence entre cet opérateur et l’opérateur d’addition en fonction du type de données de l’expression.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample39.cs)]
@@ -516,7 +518,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `+=` `-=`
     :::column-end:::
     :::column:::
-        Les opérateurs incrémentation et de décrémentation, qui l’addition et de soustraction (respectivement) de 1 à partir d’une variable.
+    Les opérateurs incrémentation et de décrémentation, qui l’addition et de soustraction (respectivement) de 1 à partir d’une variable.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample40.cs)]
@@ -528,7 +530,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `.`
     :::column-end:::
     :::column:::
-        Point. Utilisé pour distinguer les objets et leurs propriétés et les méthodes.
+    Point. Utilisé pour distinguer les objets et leurs propriétés et les méthodes.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample41.cs)]
@@ -540,7 +542,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `()`
     :::column-end:::
     :::column:::
-        Parenthèses. Utilisé pour les expressions de groupe et pour passer des paramètres aux méthodes.
+    Parenthèses. Utilisé pour les expressions de groupe et pour passer des paramètres aux méthodes.
     :::column-end:::
     :::column:::
         [!code-javascript[Main](introducing-razor-syntax-c/samples/sample42.js)]
@@ -552,7 +554,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `[]`
     :::column-end:::
     :::column:::
-        Des crochets. Utilisé pour accéder aux valeurs dans les tableaux ou collections.
+    Des crochets. Utilisé pour accéder aux valeurs dans les tableaux ou collections.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample43.cs)]
@@ -564,7 +566,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `!`
     :::column-end:::
     :::column:::
-        Non. Inverse un `true` valeur `false` et vice versa. Généralement utilisé comme un moyen rapide pour tester `false` (autrement dit, pour pas `true`).
+    Non. Inverse un `true` valeur `false` et vice versa. Généralement utilisé comme un moyen rapide pour tester `false` (autrement dit, pour pas `true`).
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample44.cs)]
@@ -576,7 +578,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `&&` <code>&#124;&#124;</code>
     :::column-end:::
     :::column:::
-        AND logique et ou des conditions qui servent à lier.
+    AND logique et ou des conditions qui servent à lier.
     :::column-end:::
     :::column:::
         [!code-csharp[Main](introducing-razor-syntax-c/samples/sample45.cs)]
