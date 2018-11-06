@@ -1,4 +1,4 @@
----
+﻿---
 title: Mise en cache dans ASP.NET Core distribuée
 author: guardrex
 description: Découvrez comment utiliser un cache d’ASP.NET Core est distribué pour améliorer les performances des applications et l’évolutivité, en particulier dans un environnement de batterie de serveurs cloud ou un serveur.
