@@ -101,7 +101,7 @@ L’implémentation proposée par SqlServerCache permet l'utilisation d'une base
 
 ::: moniker range="< aspnetcore-2.1"
 
-Ajouter `SqlConfig.Tools` à l'élément `<ItemGroup>` du fichier projet et exécutez `dotnet restore`.
+Ajouter `SqlConfig.Tools` à la `<ItemGroup>` élément du fichier projet et exécutez `dotnet restore`.
 
 ```xml
 <ItemGroup>
@@ -118,7 +118,7 @@ Testez SqlConfig.Tools en exécutant la commande suivante :
 dotnet sql-cache create --help
 ```
 
-SqlConfig.Tools affiche l’utilisation, les options et l’aide de la commande.
+SqlConfig.Tools affiche l’utilisation, options et l’aide de la commande.
 
 Créer une table dans SQL Server en exécutant la commande `sql-cache create` :
 
