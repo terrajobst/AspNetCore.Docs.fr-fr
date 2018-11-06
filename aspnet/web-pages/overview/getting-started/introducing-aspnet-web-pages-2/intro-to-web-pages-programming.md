@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 title: Présentation des Pages Web ASP.NET - principes de base de programmation | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: 'Ce didacticiel vous donne une vue d’ensemble de la façon de programme dans ASP.NET Web Pages avec syntaxe Razor. Ce que vous allez apprendre : la syntaxe « Razor » de base que vous utilisez pour la demande de tirage...'
 ms.author: riande
 ms.date: 06/17/2015
 ms.assetid: 7526ed45-a97d-4e8a-8301-01324ef0eff9
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/intro-to-web-pages-programming
 msc.type: authoredcontent
-ms.openlocfilehash: 120246fab3e71afeef2e2b7c4388f7c294e6b703
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ec1c055d1b3f6ca5c6374a18840c2595bb368e0e
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834649"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021532"
 ---
 <a name="introducing-aspnet-web-pages---programming-basics"></a>Présentation des Pages Web ASP.NET - notions de programmation
 ====================

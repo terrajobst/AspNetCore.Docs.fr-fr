@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 title: Présentation des Pages Web ASP.NET - principes de base de formulaire HTML | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Ce didacticiel vous montre les principes fondamentaux de la création d’un formulaire d’entrée et comment gérer l’entrée de l’utilisateur lorsque vous utilisez les Pages Web ASP.NET (Razor). Et maintenant que vous avez...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: 81ed82bf-b940-44f1-b94a-555d0cb7cc98
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/form-basics
 msc.type: authoredcontent
-ms.openlocfilehash: 5cf628b63e868e3f76aa19879d4af554241979c0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 28385ac2244ab0bfb38ee5fcbc64e6e11804612b
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838338"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021675"
 ---
 <a name="introducing-aspnet-web-pages---html-form-basics"></a>Présentation des Pages Web ASP.NET - principes de base de formulaire HTML
 ====================

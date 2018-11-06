@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-razor-syntax-vb
 title: Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (Visual Basic) | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Cette annexe vous donne une vue d’ensemble de la programmation avec les pages Web ASP.NET dans Visual Basic, à l’aide de la syntaxe Razor.
 ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: 5da59646-e973-41cd-88a9-c6b2c0594027
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-vb
 msc.type: authoredcontent
-ms.openlocfilehash: cbec035533c37723afcd5bf4aa0c6e1c83dbae23
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 17a3a4925766b74446955a8e3a6fddbf9d29a721
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41834216"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021701"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-visual-basic"></a>Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (Visual Basic)
 ====================
@@ -275,13 +275,13 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
 
 :::row:::
     :::column:::
-        <strong>Méthode</strong>
+        <strong>Method</strong>
     :::column-end:::
     :::column:::
         <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>Exemple</strong>
+        <strong>Example</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -290,7 +290,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsInt(), IsInt()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui représente un nombre entier (comme &quot;593&quot;) vers un entier.
+        Converts a string that represents a whole number (like &quot;593&quot;) to an integer.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample23.vb)]
@@ -302,7 +302,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsBool(), IsBool()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne telle que &quot;true&quot; ou &quot;false&quot; à un type booléen.
+        Converts a string like &quot;true&quot; or &quot;false&quot; to a Boolean type.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample24.vb)]
@@ -314,7 +314,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsFloat(), IsFloat()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre à virgule flottante.
+        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a floating-point number.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample25.vb)]
@@ -326,7 +326,8 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsDecimal(), IsDecimal()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui a une valeur décimale comme &quot;1.3&quot; ou &quot;7.439&quot; un nombre décimal. (Dans ASP.NET, un nombre décimal est plus précis qu’un nombre à virgule flottante.) :::column-end:::
+        Converts a string that has a decimal value like &quot;1.3&quot; or &quot;7.439&quot; to a decimal number. (In ASP.NET, a decimal number is more precise than a floating-point number.)
+    :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample26.vb)]
     :::column-end:::
@@ -337,7 +338,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `AsDateTime(), IsDateTime()`
     :::column-end:::
     :::column:::
-        Convertit une chaîne qui représente une valeur de date et d’heure pour ASP.NET `DateTime` type.
+        Converts a string that represents a date and time value to the ASP.NET `DateTime` type.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample27.vb)]
@@ -349,7 +350,7 @@ Le tableau suivant répertorie les méthodes de conversion et de test habituelle
         `ToString()`
     :::column-end:::
     :::column:::
-        Convertit n’importe quel autre type de données en une chaîne.
+        Converts any other data type to a string.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample28.vb)]
@@ -370,7 +371,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         <strong>Description</strong>
     :::column-end:::
     :::column:::
-        <strong>Exemples</strong>
+        <strong>Examples</strong>
     :::column-end:::
 :::row-end:::
 * * *
@@ -379,7 +380,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `+ - * /`
     :::column-end:::
     :::column:::
-        Opérateurs mathématiques utilisés dans les expressions numériques.
+        Math operators used in numerical expressions.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample29.vb)]
@@ -391,7 +392,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `=`
     :::column-end:::
     :::column:::
-        Assignation et égalité. Selon le contexte, soit assigne la valeur située à droite d’une instruction à l’objet sur le côté gauche ou vérifie les valeurs pour l’égalité.
+        Assignment and equality. Depending on context, either assigns the value on the right side of a statement to the object on the left side, or checks the values for equality.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample30.vb)]
@@ -403,7 +404,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `<>`
     :::column-end:::
     :::column:::
-        Inégalité Retourne `True` si les valeurs ne sont pas égales.
+        Inequality. Returns `True` if the values are not equal.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample31.vb)]
@@ -415,7 +416,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `< > <= >=`
     :::column-end:::
     :::column:::
-        Inférieur à, supérieur à, inférieur ou égal et supérieur ou égal.
+        Less than, greater than, less than or equal, and greater than or equal.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample32.vb)]
@@ -427,7 +428,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `&`
     :::column-end:::
     :::column:::
-        Concaténation, qui est utilisée pour joindre des chaînes.
+        Concatenation, which is used to join strings.
     :::column-end:::
     :::column:::
         [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample33.vbhtml)]
@@ -439,7 +440,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `+= -=`
     :::column-end:::
     :::column:::
-        Les opérateurs incrémentation et de décrémentation, qui l’addition et de soustraction (respectivement) de 1 à partir d’une variable.
+        The increment and decrement operators, which add and subtract 1 (respectively) from a variable.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample34.vb)]
@@ -451,7 +452,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `.`
     :::column-end:::
     :::column:::
-        Point. Utilisé pour distinguer les objets et leurs propriétés et les méthodes.
+        Dot. Used to distinguish objects and their properties and methods.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample35.vb)]
@@ -463,7 +464,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `()`
     :::column-end:::
     :::column:::
-        Parenthèses. Utilisé pour les expressions de groupe, pour passer des paramètres aux méthodes et pour accéder aux membres de tableaux et collections.
+        Parentheses. Used to group expressions, to pass parameters to methods, and to access members of arrays and collections.
     :::column-end:::
     :::column:::
         [!code-vbhtml[Main](introducing-razor-syntax-vb/samples/sample36.vbhtml)]
@@ -475,7 +476,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `Not`
     :::column-end:::
     :::column:::
-        Non. Inverse la valeur true à false et inversement. Généralement utilisé comme un moyen rapide pour tester `False` (autrement dit, pour pas `True`).
+        Not. Reverses a true value to false and vice versa. Typically used as a shorthand way to test for `False` (that is, for not `True`).
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample37.vb)]
@@ -487,7 +488,7 @@ Un opérateur est un mot clé ou un caractère qui indique à ASP.NET quel type 
         `AndAlso OrElse`
     :::column-end:::
     :::column:::
-        AND logique et ou des conditions qui servent à lier.
+        Logical AND and OR, which are used to link conditions together.
     :::column-end:::
     :::column:::
         [!code-vb[Main](introducing-razor-syntax-vb/samples/sample38.vb)]

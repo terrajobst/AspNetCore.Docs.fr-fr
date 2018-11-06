@@ -1,19 +1,19 @@
 ---
 uid: web-pages/overview/getting-started/introducing-razor-syntax-c
 title: Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (c#) | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Ce chapitre vous donne une vue d’ensemble de la programmation avec les Pages Web ASP.NET à l’aide de la syntaxe Razor. ASP.NET est la technologie de Microsoft pour les pa web dynamique en cours d’exécution...
 ms.author: riande
 ms.date: 02/07/2014
 ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
-ms.openlocfilehash: b242bf52bbd63d726e6ce6ab7be01a1b81c5bf1b
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: b5eb98dfdf3fc013920f45080d4a20e1fa507725
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758256"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021779"
 ---
 <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Introduction à la programmation Web ASP.NET à l’aide de la syntaxe Razor (c#)
 ====================
