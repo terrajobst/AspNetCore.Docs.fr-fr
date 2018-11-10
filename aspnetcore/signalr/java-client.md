@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le client d’ASP.NET Core SignalR Java
 monikerRange: '>= aspnetcore-2.2'
 ms.author: mimengis
 ms.custom: mvc
-ms.date: 10/18/2018
+ms.date: 11/06/2018
 uid: signalr/java-client
-ms.openlocfilehash: 646118c78d5d38b44b89d399cd06a5332a11d064
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 4ee4e61fc301ebeec4d95b1167f94f16c38f3ac5
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207769"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225419"
 ---
 # <a name="aspnet-core-signalr-java-client"></a>Client ASP.NET Core SignalR Java
 
@@ -74,6 +74,19 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 ```
 
 Cela peut être ignoré sans risque.
+
+
+## <a name="configure-bearer-token-authentication"></a>Configurer l’authentification du jeton du porteur
+
+Dans le client SignalR Java, vous pouvez configurer un jeton du porteur à utiliser pour l’authentification en fournissant une « fabrique jeton accès » à la [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Utilisez [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) pour fournir un [RxJava](https://github.com/ReactiveX/RxJava) [unique<String>](http://reactivex.io/documentation/single.html). Avec un appel à [Single.defer](http://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), vous pouvez écrire la logique pour générer des jetons d’accès pour votre client.
+
+```java
+HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
+    .withAccessTokenProvider(Single.defer(() -> {
+        // Your logic here.
+        return Single.just("An Access Token");
+    })).build();
+```
 
 ## <a name="known-limitations"></a>Limitations connues
 

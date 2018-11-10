@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’authentification et les autorisatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 10/17/2018
+ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: 1adf762cd6de4f0cf62e31c0ec6e595a32ed56f8
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: f646d319cf3030fd4d769e882514da14b230bbdd
+ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477538"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51276143"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>Considérations de sécurité dans ASP.NET Core SignalR
 
@@ -35,7 +35,7 @@ Pour plus d’informations sur la configuration de CORS, consultez [activer de d
 * Méthodes HTTP `GET` et `POST` doivent être autorisés.
 * Informations d’identification doivent être activées, même lorsque l’authentification n’est pas utilisée.
 
-Par exemple, la stratégie CORS suivante permet à un client de navigateur de SignalR hébergé sur `http://example.com` pour accéder à l’application de SignalR hébergée sur `http://signalr.example.com`:
+Par exemple, la stratégie CORS suivante permet à un client de navigateur de SignalR hébergé sur `https://example.com` pour accéder à l’application de SignalR hébergée sur `https://signalr.example.com`:
 
 [!code-csharp[Main](security/sample/Startup.cs?name=snippet1)]
 
@@ -43,6 +43,14 @@ Par exemple, la stratégie CORS suivante permet à un client de navigateur de Si
 > SignalR n’est pas compatible avec la fonctionnalité CORS intégrée dans Azure App Service.
 
 ## <a name="websocket-origin-restriction"></a>Restriction de l’origine de WebSocket
+
+::: moniker range=">= aspnetcore-2.2"
+
+Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Pour la restriction de l’origine sur WebSockets, lisez [restriction de l’origine WebSockets](xref:fundamentals/websockets#websocket-origin-restriction).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
 
 Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Navigateurs **pas**:
 
@@ -58,9 +66,18 @@ Dans ASP.NET Core 2.1 et versions ultérieures, validation de l’en-tête peut 
 > [!NOTE]
 > Le `Origin` en-tête est contrôlé par le client et, comme le `Referer` en-tête, peut être fausses. Ces en-têtes doivent **pas** être utilisé comme mécanisme d’authentification.
 
+::: moniker-end
+
 ## <a name="access-token-logging"></a>Connexion de jeton d’accès
 
-Lorsque vous utilisez des WebSockets ou les événements, le navigateur client envoie le jeton d’accès dans la chaîne de requête. Reçoit le jeton d’accès via la chaîne de requête est généralement aussi sécurisé qu’à l’aide de la norme `Authorization` en-tête. Toutefois, plusieurs serveurs web connecter à l’URL pour chaque demande, y compris la chaîne de requête. Journalisation de l’URL peut enregistrer le jeton d’accès. Une bonne pratique consiste à définir des paramètres de journalisation du serveur pour empêcher les jetons d’accès de journalisation le web.
+Lorsque vous utilisez des WebSockets ou les événements, le navigateur client envoie le jeton d’accès dans la chaîne de requête. Reçoit le jeton d’accès via la chaîne de requête est généralement aussi sécurisé qu’à l’aide de la norme `Authorization` en-tête. Vous devez toujours utiliser HTTPS pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. Nombre de serveurs web connecter à l’URL pour chaque demande, y compris la chaîne de requête. Journalisation de l’URL peut enregistrer le jeton d’accès. ASP.NET Core se connecte à l’URL pour chaque demande par défaut, ce qui inclut la chaîne de requête. Exemple :
+
+```
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
+```
+
+Si vous avez des questions sur l’enregistrement de ces données avec les journaux de votre serveur, vous pouvez désactiver cette journalisation entièrement en configurant le `Microsoft.AspNetCore.Hosting` enregistreur d’événements à la `Warning` niveau ou version ultérieure (ces messages sont écrits au `Info` niveau). Consultez la documentation sur [filtrage de journal](xref:fundamentals/logging/index#log-filtering) pour plus d’informations. Si vous souhaitez toujours enregistrer certaines informations de demande, vous pouvez [écrire un intergiciel (middleware)](xref:fundamentals/middleware/index#write-middleware) pour journaliser les données que vous avez besoin et éliminer les `access_token` valeur de chaîne de requête (le cas échéant).
 
 ## <a name="exceptions"></a>Exceptions
 

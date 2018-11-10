@@ -759,7 +759,7 @@ Les versions suivantes de [Globalize](https://github.com/jquery/globalize "Globa
 
 ### <a name="respond-releases-on-the-cdn"></a>Répondre mises en production sur le CDN
 
-Les versions suivantes de [ https://github.com/scottjehl/Respond ] (https://github.com/scottjehl/Respond " https://github.com/scottjehl/Respond ") répondre sont hébergés sur le CDN :
+Les versions suivantes de [https://github.com/scottjehl/Respond](https://github.com/scottjehl/Respond "https://github.com/scottjehl/Respond") répondre sont hébergés sur le CDN :
 
 #### <a name="respond-version-142"></a>Dans la version 1.4.2 de répondre
 
