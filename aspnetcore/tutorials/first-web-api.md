@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2694388324cdbd246aad6c88d8439171704dfe89
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: 88d1958ce5c42d559754972a855c1ffe22ab45a6
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722514"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234577"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-visual-studio"></a>Créer une API web avec ASP.NET Core et Visual Studio
 
@@ -21,7 +21,7 @@ Ce didacticiel génère une API web de gestion d’une liste de tâches. Aucune 
 
 Il existe trois versions de ce didacticiel :
 
-* Windows : API web avec Visual Studio sur Windows (ce tutoriel)
+* Windows : API web avec Visual Studio sur Windows (ce tutoriel, voir la [version vidéo](https://www.youtube.com/watch?v=TTkhEyGBfAk))
 * macOS : [API web avec Visual Studio pour Mac](xref:tutorials/first-web-api-mac)
 * macOS, Linux, Windows : [API web avec Visual Studio Code](xref:tutorials/web-api-vsc)
 

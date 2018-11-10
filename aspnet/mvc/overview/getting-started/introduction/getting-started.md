@@ -7,12 +7,12 @@ ms.date: 10/04/2018
 ms.assetid: f3d8adbe-55e7-4fd4-84a8-7155bc45c676
 msc.legacyurl: /mvc/overview/getting-started/introduction/getting-started
 msc.type: authoredcontent
-ms.openlocfilehash: 2cc9364b815cae0207fc59784303c6a0906f1b94
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 462583a42f20126ef8f8b5927268c20ec1ceab89
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578443"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505795"
 ---
 <a name="getting-started-with-aspnet-mvc-5"></a>Mise en route avec ASP.NET MVC 5
 ====================
@@ -55,7 +55,7 @@ Appuyez sur **F5** pour démarrer le débogage. Quand vous appuyez sur **F5**, V
 
 ![](getting-started/_static/image5.png)
 
-Dès ce modèle par défaut vous donne `Home`, `Contact`, et `About` pages. L’image ci-dessus n’affiche pas le **accueil**, **sur**, et **Contact** des liens. Selon la taille de la fenêtre du navigateur, vous devrez peut-être cliquer sur l’icône de navigation pour afficher ces liens.
+Dès ce modèle par défaut vous donne `Home`, `Contact`, et `About` pages. L’image ci-dessous n’affiche pas le **accueil**, **sur**, et **Contact** des liens. Selon la taille de la fenêtre du navigateur, vous devrez peut-être cliquer sur l’icône de navigation pour afficher ces liens.
 
 ![](getting-started/_static/image6.png)
 

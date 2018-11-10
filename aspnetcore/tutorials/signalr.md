@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 08/31/2018
 uid: tutorials/signalr
-ms.openlocfilehash: fcfe2fa6cc88b9eee1389e171fa5eb7711b4f14f
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: 7d9f3a3f8aa7a5e47169da66e6fa2d6a28de3853
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758126"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021246"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
@@ -69,12 +69,13 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* Ouvrez un dossier que vous pouvez utiliser pour un nouveau projet.
+* Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal) dans le dossier dans lequel le nouveau dossier de projet va être créé.
 
-* Dans le [Terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal), exécutez la commande suivante :
+* Exécutez les commandes suivantes :
 
    ```console
    dotnet new webapp -o SignalRChat
+   code -r SignalRChat
    ```
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
@@ -113,13 +114,11 @@ La bibliothèque de serveur SignalR est incluse dans le métapackage `Microsoft.
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-* Dans le **Terminal intégré**, exécutez la commande suivante pour installer LibMan.
+* Dans le terminal intégré, exécutez la commande suivante pour installer LibMan.
 
   ```console
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
   ```
-
-* Accédez au dossier du projet (celui qui contient le fichier *SignalRChat.csproj*).
 
 * Exécutez la commande suivante pour obtenir la bibliothèque cliente SignalR à l’aide de LibMan. Vous devrez peut-être attendre quelques secondes avant que la sortie ne s’affiche.
 
@@ -225,8 +224,12 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Appuyez sur **Ctrl+F5** pour exécuter l’application sans débogage.
+* Dans le terminal intégré, exécutez la commande suivante :
 
+  ```console
+  dotnet run -p SignalRChat
+  ```
+  
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Dans le menu, sélectionnez **Exécuter > Démarrer sans débogage**.

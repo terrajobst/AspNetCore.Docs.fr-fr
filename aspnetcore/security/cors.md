@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment CORS comme une norme pour autoriser ou rejeter les demandes cross-origin dans une application ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 uid: security/cors
-ms.openlocfilehash: cfbf24edb1dae76f676d51738b0d57266688d53e
-ms.sourcegitcommit: 317f9be24db600499e79d25872d743af74bd86c0
+ms.openlocfilehash: 8e5056b448d47d75272e9394b03ce8a58b05a0f4
+ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48045586"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51191319"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Autoriser les demandes de Cross-Origin (CORS) dans ASP.NET Core
 
@@ -137,17 +137,37 @@ Pour certaines options, il peut être utile de lire le [CORS comment fonctionne]
 
 ### <a name="set-the-allowed-origins"></a>Définir les origines autorisées
 
-Pour permettre à un ou plusieurs origines spécifiques, appelez <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*>:
+L’intergiciel (middleware) CORS dans ASP.NET Core MVC présente quelques façons de spécifier les origines autorisées :
+
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithOrigins*>: Permet de spécifier une ou plusieurs URL. L’URL peut inclure le schéma, le nom d’hôte et le port sans informations de chemin d’accès. Par exemple, `https://example.com`. L’URL doit être spécifié sans barre oblique de fin (`/`).
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=20-24&highlight=4)]
 
-Pour autoriser toutes les origines, appeler <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>:
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>: Autorise les demandes CORS à partir de toutes les origines avec n’importe quel schéma (`http` ou `https`).
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=28-32&highlight=4)]
 
 Réfléchissez bien avant d’autoriser des demandes à partir de n’importe quelle origine. Autoriser les demandes à partir de toute origine signifie que *n’importe quel site Web* peut apporter les demandes cross-origin à votre application.
 
+::: moniker range=">= aspnetcore-2.2"
+
+> [!NOTE]
+> Spécification `AllowAnyOrigin` et `AllowCredentials` est une configuration non sécurisée et peut entraîner la falsification de requête intersites. Le service CORS retourne une réponse non valide de CORS lorsqu’une application est configurée avec les deux.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+> [!NOTE]
+> Spécification `AllowAnyOrigin` et `AllowCredentials` est une configuration non sécurisée et peut entraîner la falsification de requête intersites. Envisagez de spécifier une liste exacte des origines, si votre client doit accorder une autorisation d’accéder aux ressources du serveur.
+
+::: moniker-end
+
 Ce paramètre affecte [préalable des demandes et l’en-tête Access-Control-Allow-Origin](#preflight-requests) (décrite plus loin dans cette rubrique).
+
+* <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.SetIsOriginAllowedToAllowWildcardSubdomains*> -Permet aux demandes CORS à partir de n’importe quel sous-domaine d’un domaine donné. Le schéma ne peut pas être un caractère générique.
+
+[!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=98-104&highlight=4)]
 
 ### <a name="set-the-allowed-http-methods"></a>Définir les méthodes HTTP autorisées
 

@@ -1,19 +1,19 @@
 ---
 uid: mvc/overview/older-versions/using-oauth-providers-with-mvc
 title: À l’aide de fournisseurs OAuth avec MVC 4 | Microsoft Docs
-author: tfitzmac
+author: Rick-Anderson
 description: Ce didacticiel vous montre comment créer une application web ASP.NET MVC 4 qui permet aux utilisateurs de se connecter avec leurs informations d’identification à partir d’un fournisseur externe, tel que Facebo...
 ms.author: riande
 ms.date: 06/19/2013
 ms.assetid: 7a87f16f-0e19-4f15-a88a-094ae866c4a2
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: 9b0db2775db5c74762bdc55328ad44ef7ebe75ce
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: d0203b62c911056fc56ed103c1c42f67816cbbf0
+ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41833009"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51021753"
 ---
 <a name="using-oauth-providers-with-mvc-4"></a>À l’aide de fournisseurs OAuth avec MVC 4
 ====================
@@ -83,7 +83,7 @@ Ce didacticiel n’affiche pas toutes les étapes que vous devez effectuer pour 
 - [Microsoft](http://manage.dev.live.com/)
 - [Twitter](https://dev.twitter.com/)
 
-Lors de l’inscription de votre site avec Facebook, vous pouvez fournir &quot;localhost&quot; pour le domaine du site et `&quot;http://localhost/&quot;` pour l’URL, comme indiqué dans l’image ci-dessous. En utilisant localhost fonctionne avec la plupart des fournisseurs, mais ne fonctionne pas actuellement avec le fournisseur de Microsoft. Pour le fournisseur de Microsoft, vous devez inclure une URL de site web valide.
+Lors de l’inscription de votre site avec Facebook, vous pouvez fournir &quot;localhost&quot; pour le domaine du site et `&quot; http://localhost/&quot;` pour l’URL, comme indiqué dans l’image ci-dessous. En utilisant localhost fonctionne avec la plupart des fournisseurs, mais ne fonctionne pas actuellement avec le fournisseur de Microsoft. Pour le fournisseur de Microsoft, vous devez inclure une URL de site web valide.
 
 ![inscription de site](using-oauth-providers-with-mvc/_static/image4.png)
 

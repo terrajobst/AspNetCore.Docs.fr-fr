@@ -5,12 +5,12 @@ description: Découvrez comment commencer la migration d’un projet ASP.NET MVC
 ms.author: riande
 ms.date: 03/07/2017
 uid: migration/mvc
-ms.openlocfilehash: e2ecc5b1a5e2ede4c815807d4e1b1499ae1a4242
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7c9d927bbd06f96f130d53e946a2963b5804960b
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090470"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505737"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>Migrer d’ASP.NET MVC vers ASP.NET Core MVC
 
@@ -159,7 +159,7 @@ Ouvrez *_Layout.cshtml* de fichiers et apportez les modifications suivantes (le 
 
 * Supprimez `@Scripts.Render("~/bundles/modernizr")`.
 
-* Commentez la ligne `@Html.Partial("_LoginPartial")` (en la plaçant entre `@*...*@`). Nous y reviendrons dans un prochain didacticiel.
+* Commentez la ligne `@Html.Partial("_LoginPartial")` (en la plaçant entre `@*...*@`). Pour plus d’informations, consultez [migrer l’authentification et l’identité pour ASP.NET Core](xref:migration/identity)
 
 * Remplacez `@Scripts.Render("~/bundles/jquery")` par un élément `<script>` (voir ci-dessous).
 
