@@ -6,93 +6,93 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 05/17/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2694388324cdbd246aad6c88d8439171704dfe89
-ms.sourcegitcommit: 29dfe436f54a27fbb4f6494bc639d16c75001fab
+ms.openlocfilehash: 88d1958ce5c42d559754972a855c1ffe22ab45a6
+ms.sourcegitcommit: 2ef32676c16f76282f7c23154d13affce8c8bf35
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "39722514"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234577"
 ---
-# <a name="create-a-web-api-with-aspnet-core-and-visual-studio"></a><span data-ttu-id="fb5d8-103">Créer une API web avec ASP.NET Core et Visual Studio</span><span class="sxs-lookup"><span data-stu-id="fb5d8-103">Create a Web API with ASP.NET Core and Visual Studio</span></span>
+# <a name="create-a-web-api-with-aspnet-core-and-visual-studio"></a><span data-ttu-id="17f79-103">Créer une API web avec ASP.NET Core et Visual Studio</span><span class="sxs-lookup"><span data-stu-id="17f79-103">Create a Web API with ASP.NET Core and Visual Studio</span></span>
 
-<span data-ttu-id="fb5d8-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Mike Wasson](https://github.com/mikewasson)</span><span class="sxs-lookup"><span data-stu-id="fb5d8-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Mike Wasson](https://github.com/mikewasson)</span></span>
+<span data-ttu-id="17f79-104">Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Mike Wasson](https://github.com/mikewasson)</span><span class="sxs-lookup"><span data-stu-id="17f79-104">By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Mike Wasson](https://github.com/mikewasson)</span></span>
 
-<span data-ttu-id="fb5d8-105">Ce didacticiel génère une API web de gestion d’une liste de tâches.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-105">This tutorial builds a web API for managing a list of "to-do" items.</span></span> <span data-ttu-id="fb5d8-106">Aucune interface utilisateur n’est créée.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-106">A user interface (UI) isn't created.</span></span>
+<span data-ttu-id="17f79-105">Ce didacticiel génère une API web de gestion d’une liste de tâches.</span><span class="sxs-lookup"><span data-stu-id="17f79-105">This tutorial builds a web API for managing a list of "to-do" items.</span></span> <span data-ttu-id="17f79-106">Aucune interface utilisateur n’est créée.</span><span class="sxs-lookup"><span data-stu-id="17f79-106">A user interface (UI) isn't created.</span></span>
 
-<span data-ttu-id="fb5d8-107">Il existe trois versions de ce didacticiel :</span><span class="sxs-lookup"><span data-stu-id="fb5d8-107">There are three versions of this tutorial:</span></span>
+<span data-ttu-id="17f79-107">Il existe trois versions de ce didacticiel :</span><span class="sxs-lookup"><span data-stu-id="17f79-107">There are three versions of this tutorial:</span></span>
 
-* <span data-ttu-id="fb5d8-108">Windows : API web avec Visual Studio sur Windows (ce tutoriel)</span><span class="sxs-lookup"><span data-stu-id="fb5d8-108">Windows: Web API with Visual Studio on Windows (This tutorial)</span></span>
-* <span data-ttu-id="fb5d8-109">macOS : [API web avec Visual Studio pour Mac](xref:tutorials/first-web-api-mac)</span><span class="sxs-lookup"><span data-stu-id="fb5d8-109">macOS: [Web API with Visual Studio for Mac](xref:tutorials/first-web-api-mac)</span></span>
-* <span data-ttu-id="fb5d8-110">macOS, Linux, Windows : [API web avec Visual Studio Code](xref:tutorials/web-api-vsc)</span><span class="sxs-lookup"><span data-stu-id="fb5d8-110">macOS, Linux, Windows: [Web API with Visual Studio Code](xref:tutorials/web-api-vsc)</span></span>
+* <span data-ttu-id="17f79-108">Windows : API web avec Visual Studio sur Windows (ce tutoriel, voir la [version vidéo](https://www.youtube.com/watch?v=TTkhEyGBfAk))</span><span class="sxs-lookup"><span data-stu-id="17f79-108">Windows: Web API with Visual Studio on Windows (This tutorial, see the [video version](https://www.youtube.com/watch?v=TTkhEyGBfAk))</span></span>
+* <span data-ttu-id="17f79-109">macOS : [API web avec Visual Studio pour Mac](xref:tutorials/first-web-api-mac)</span><span class="sxs-lookup"><span data-stu-id="17f79-109">macOS: [Web API with Visual Studio for Mac](xref:tutorials/first-web-api-mac)</span></span>
+* <span data-ttu-id="17f79-110">macOS, Linux, Windows : [API web avec Visual Studio Code](xref:tutorials/web-api-vsc)</span><span class="sxs-lookup"><span data-stu-id="17f79-110">macOS, Linux, Windows: [Web API with Visual Studio Code](xref:tutorials/web-api-vsc)</span></span>
 
 <!-- WARNING: The code AND images in this doc are used by uid: tutorials/web-api-vsc, tutorials/first-web-api-mac and tutorials/first-web-api. If you change any code/images in this tutorial, update uid: tutorials/web-api-vsc -->
 
 [!INCLUDE[intro to web API](../includes/webApi/intro.md)]
 
-## <a name="prerequisites"></a><span data-ttu-id="fb5d8-111">Prérequis</span><span class="sxs-lookup"><span data-stu-id="fb5d8-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="17f79-111">Prérequis</span><span class="sxs-lookup"><span data-stu-id="17f79-111">Prerequisites</span></span>
 
 [!INCLUDE[](~/includes/net-core-prereqs-windows.md)]
 
-## <a name="create-the-project"></a><span data-ttu-id="fb5d8-112">Créer le projet</span><span class="sxs-lookup"><span data-stu-id="fb5d8-112">Create the project</span></span>
+## <a name="create-the-project"></a><span data-ttu-id="17f79-112">Créer le projet</span><span class="sxs-lookup"><span data-stu-id="17f79-112">Create the project</span></span>
 
-<span data-ttu-id="fb5d8-113">Suivez ces étapes dans Visual Studio :</span><span class="sxs-lookup"><span data-stu-id="fb5d8-113">Follow these steps in Visual Studio:</span></span>
+<span data-ttu-id="17f79-113">Suivez ces étapes dans Visual Studio :</span><span class="sxs-lookup"><span data-stu-id="17f79-113">Follow these steps in Visual Studio:</span></span>
 
-* <span data-ttu-id="fb5d8-114">Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-114">From the **File** menu, select **New** > **Project**.</span></span>
-* <span data-ttu-id="fb5d8-115">Sélectionnez le modèle **Application web ASP.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-115">Select the **ASP.NET Core Web Application** template.</span></span> <span data-ttu-id="fb5d8-116">Nommez le projet *TodoApi*, puis cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-116">Name the project *TodoApi* and click **OK**.</span></span>
-* <span data-ttu-id="fb5d8-117">Dans la boîte de dialogue **Nouvelle application web ASP.NET Core - TodoApi**, choisissez la version ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-117">In the **New ASP.NET Core Web Application - TodoApi** dialog, choose the ASP.NET Core version.</span></span> <span data-ttu-id="fb5d8-118">Sélectionnez le modèle **API** et cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-118">Select the **API** template and click **OK**.</span></span> <span data-ttu-id="fb5d8-119">Ne sélectionnez **pas** **Activer la prise en charge de Docker**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-119">Do **not** select **Enable Docker Support**.</span></span>
+* <span data-ttu-id="17f79-114">Dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.</span><span class="sxs-lookup"><span data-stu-id="17f79-114">From the **File** menu, select **New** > **Project**.</span></span>
+* <span data-ttu-id="17f79-115">Sélectionnez le modèle **Application web ASP.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="17f79-115">Select the **ASP.NET Core Web Application** template.</span></span> <span data-ttu-id="17f79-116">Nommez le projet *TodoApi*, puis cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="17f79-116">Name the project *TodoApi* and click **OK**.</span></span>
+* <span data-ttu-id="17f79-117">Dans la boîte de dialogue **Nouvelle application web ASP.NET Core - TodoApi**, choisissez la version ASP.NET Core.</span><span class="sxs-lookup"><span data-stu-id="17f79-117">In the **New ASP.NET Core Web Application - TodoApi** dialog, choose the ASP.NET Core version.</span></span> <span data-ttu-id="17f79-118">Sélectionnez le modèle **API** et cliquez sur **OK**.</span><span class="sxs-lookup"><span data-stu-id="17f79-118">Select the **API** template and click **OK**.</span></span> <span data-ttu-id="17f79-119">Ne sélectionnez **pas** **Activer la prise en charge de Docker**.</span><span class="sxs-lookup"><span data-stu-id="17f79-119">Do **not** select **Enable Docker Support**.</span></span>
 
-### <a name="launch-the-app"></a><span data-ttu-id="fb5d8-120">Lancer l’application</span><span class="sxs-lookup"><span data-stu-id="fb5d8-120">Launch the app</span></span>
+### <a name="launch-the-app"></a><span data-ttu-id="17f79-120">Lancer l’application</span><span class="sxs-lookup"><span data-stu-id="17f79-120">Launch the app</span></span>
 
-<span data-ttu-id="fb5d8-121">Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-121">In Visual Studio, press CTRL+F5 to launch the app.</span></span> <span data-ttu-id="fb5d8-122">Visual Studio lance un navigateur et accède à `http://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-122">Visual Studio launches a browser and navigates to `http://localhost:<port>/api/values`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="fb5d8-123">Chrome, Microsoft Edge et Firefox affichent la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="fb5d8-123">Chrome, Microsoft Edge, and Firefox display the following output:</span></span>
+<span data-ttu-id="17f79-121">Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application.</span><span class="sxs-lookup"><span data-stu-id="17f79-121">In Visual Studio, press CTRL+F5 to launch the app.</span></span> <span data-ttu-id="17f79-122">Visual Studio lance un navigateur et accède à `http://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire.</span><span class="sxs-lookup"><span data-stu-id="17f79-122">Visual Studio launches a browser and navigates to `http://localhost:<port>/api/values`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="17f79-123">Chrome, Microsoft Edge et Firefox affichent la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="17f79-123">Chrome, Microsoft Edge, and Firefox display the following output:</span></span>
 
 ```json
 ["value1","value2"]
 ```
 
-<span data-ttu-id="fb5d8-124">Si vous utilisez Internet Explorer, vous êtes invité à enregistrer un fichier *values.json*.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-124">If using Internet Explorer, you'll be prompted to save a *values.json* file.</span></span>
+<span data-ttu-id="17f79-124">Si vous utilisez Internet Explorer, vous êtes invité à enregistrer un fichier *values.json*.</span><span class="sxs-lookup"><span data-stu-id="17f79-124">If using Internet Explorer, you'll be prompted to save a *values.json* file.</span></span>
 
-### <a name="add-a-model-class"></a><span data-ttu-id="fb5d8-125">Ajouter une classe de modèle</span><span class="sxs-lookup"><span data-stu-id="fb5d8-125">Add a model class</span></span>
+### <a name="add-a-model-class"></a><span data-ttu-id="17f79-125">Ajouter une classe de modèle</span><span class="sxs-lookup"><span data-stu-id="17f79-125">Add a model class</span></span>
 
-<span data-ttu-id="fb5d8-126">Un modèle est un objet qui représente les données de l’application.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-126">A model is an object representing the data in the app.</span></span> <span data-ttu-id="fb5d8-127">Dans le cas présent, le seul modèle est une tâche.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-127">In this case, the only model is a to-do item.</span></span>
+<span data-ttu-id="17f79-126">Un modèle est un objet qui représente les données de l’application.</span><span class="sxs-lookup"><span data-stu-id="17f79-126">A model is an object representing the data in the app.</span></span> <span data-ttu-id="17f79-127">Dans le cas présent, le seul modèle est une tâche.</span><span class="sxs-lookup"><span data-stu-id="17f79-127">In this case, the only model is a to-do item.</span></span>
 
-<span data-ttu-id="fb5d8-128">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-128">In Solution Explorer, right-click the project.</span></span> <span data-ttu-id="fb5d8-129">Sélectionnez **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-129">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="fb5d8-130">Nommez le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-130">Name the folder *Models*.</span></span>
+<span data-ttu-id="17f79-128">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le projet.</span><span class="sxs-lookup"><span data-stu-id="17f79-128">In Solution Explorer, right-click the project.</span></span> <span data-ttu-id="17f79-129">Sélectionnez **Ajouter** > **Nouveau dossier**.</span><span class="sxs-lookup"><span data-stu-id="17f79-129">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="17f79-130">Nommez le dossier *Models*.</span><span class="sxs-lookup"><span data-stu-id="17f79-130">Name the folder *Models*.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="fb5d8-131">Les classes de modèles vont n’importe où dans le projet.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-131">The model classes can go anywhere in the project.</span></span> <span data-ttu-id="fb5d8-132">Le dossier *Models* est utilisé par convention pour les classes de modèles.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-132">The *Models* folder is used by convention for model classes.</span></span>
+> <span data-ttu-id="17f79-131">Les classes de modèles vont n’importe où dans le projet.</span><span class="sxs-lookup"><span data-stu-id="17f79-131">The model classes can go anywhere in the project.</span></span> <span data-ttu-id="17f79-132">Le dossier *Models* est utilisé par convention pour les classes de modèles.</span><span class="sxs-lookup"><span data-stu-id="17f79-132">The *Models* folder is used by convention for model classes.</span></span>
 
-<span data-ttu-id="fb5d8-133">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-133">In Solution Explorer, right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="fb5d8-134">Nommez la classe *TodoItem* et cliquez sur **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-134">Name the class *TodoItem* and click **Add**.</span></span>
+<span data-ttu-id="17f79-133">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="17f79-133">In Solution Explorer, right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="17f79-134">Nommez la classe *TodoItem* et cliquez sur **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="17f79-134">Name the class *TodoItem* and click **Add**.</span></span>
 
-<span data-ttu-id="fb5d8-135">Ajoutez le code suivant à la classe `TodoItem` :</span><span class="sxs-lookup"><span data-stu-id="fb5d8-135">Update the `TodoItem` class with the following code:</span></span>
+<span data-ttu-id="17f79-135">Ajoutez le code suivant à la classe `TodoItem` :</span><span class="sxs-lookup"><span data-stu-id="17f79-135">Update the `TodoItem` class with the following code:</span></span>
 
 [!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoItem.cs)]
 
-<span data-ttu-id="fb5d8-136">La base de données génère la valeur `Id` quand un `TodoItem` est créé.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-136">The database generates the `Id` when a `TodoItem` is created.</span></span>
+<span data-ttu-id="17f79-136">La base de données génère la valeur `Id` quand un `TodoItem` est créé.</span><span class="sxs-lookup"><span data-stu-id="17f79-136">The database generates the `Id` when a `TodoItem` is created.</span></span>
 
-### <a name="create-the-database-context"></a><span data-ttu-id="fb5d8-137">Créer le contexte de base de données</span><span class="sxs-lookup"><span data-stu-id="fb5d8-137">Create the database context</span></span>
+### <a name="create-the-database-context"></a><span data-ttu-id="17f79-137">Créer le contexte de base de données</span><span class="sxs-lookup"><span data-stu-id="17f79-137">Create the database context</span></span>
 
-<span data-ttu-id="fb5d8-138">Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données spécifié.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-138">The *database context* is the main class that coordinates Entity Framework functionality for a given data model.</span></span> <span data-ttu-id="fb5d8-139">Cette classe est créée en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-139">This class is created by deriving from the `Microsoft.EntityFrameworkCore.DbContext` class.</span></span>
+<span data-ttu-id="17f79-138">Le *contexte de base de données* est la classe principale qui coordonne les fonctionnalités d’Entity Framework pour un modèle de données spécifié.</span><span class="sxs-lookup"><span data-stu-id="17f79-138">The *database context* is the main class that coordinates Entity Framework functionality for a given data model.</span></span> <span data-ttu-id="17f79-139">Cette classe est créée en dérivant de la classe `Microsoft.EntityFrameworkCore.DbContext`.</span><span class="sxs-lookup"><span data-stu-id="17f79-139">This class is created by deriving from the `Microsoft.EntityFrameworkCore.DbContext` class.</span></span>
 
-<span data-ttu-id="fb5d8-140">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-140">In Solution Explorer, right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="fb5d8-141">Nommez la classe *TodoContext* et cliquez sur **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-141">Name the class *TodoContext* and click **Add**.</span></span>
+<span data-ttu-id="17f79-140">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**.</span><span class="sxs-lookup"><span data-stu-id="17f79-140">In Solution Explorer, right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="17f79-141">Nommez la classe *TodoContext* et cliquez sur **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="17f79-141">Name the class *TodoContext* and click **Add**.</span></span>
 
-<span data-ttu-id="fb5d8-142">Remplacez la classe par le code suivant :</span><span class="sxs-lookup"><span data-stu-id="fb5d8-142">Replace the class with the following code:</span></span>
+<span data-ttu-id="17f79-142">Remplacez la classe par le code suivant :</span><span class="sxs-lookup"><span data-stu-id="17f79-142">Replace the class with the following code:</span></span>
 
 [!code-csharp[](first-web-api/samples/2.0/TodoApi/Models/TodoContext.cs)]
 
 [!INCLUDE[Register the database context](../includes/webApi/register_dbContext.md)]
 
-### <a name="add-a-controller"></a><span data-ttu-id="fb5d8-143">Ajouter un contrôleur</span><span class="sxs-lookup"><span data-stu-id="fb5d8-143">Add a controller</span></span>
+### <a name="add-a-controller"></a><span data-ttu-id="17f79-143">Ajouter un contrôleur</span><span class="sxs-lookup"><span data-stu-id="17f79-143">Add a controller</span></span>
 
-<span data-ttu-id="fb5d8-144">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Contrôleurs*.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-144">In Solution Explorer, right-click the *Controllers* folder.</span></span> <span data-ttu-id="fb5d8-145">Sélectionnez **Ajouter** > **Nouvel élément**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-145">Select **Add** > **New Item**.</span></span> <span data-ttu-id="fb5d8-146">Dans la boîte de dialogue **Ajouter un nouvel élément**, sélectionnez le modèle **Classe de contrôleur d’API**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-146">In the **Add New Item** dialog, select the **API Controller Class** template.</span></span> <span data-ttu-id="fb5d8-147">Nommez la classe *TodoController* et cliquez sur **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-147">Name the class *TodoController*, and click **Add**.</span></span>
+<span data-ttu-id="17f79-144">Dans l’Explorateur de solutions, cliquez avec le bouton droit sur le dossier *Contrôleurs*.</span><span class="sxs-lookup"><span data-stu-id="17f79-144">In Solution Explorer, right-click the *Controllers* folder.</span></span> <span data-ttu-id="17f79-145">Sélectionnez **Ajouter** > **Nouvel élément**.</span><span class="sxs-lookup"><span data-stu-id="17f79-145">Select **Add** > **New Item**.</span></span> <span data-ttu-id="17f79-146">Dans la boîte de dialogue **Ajouter un nouvel élément**, sélectionnez le modèle **Classe de contrôleur d’API**.</span><span class="sxs-lookup"><span data-stu-id="17f79-146">In the **Add New Item** dialog, select the **API Controller Class** template.</span></span> <span data-ttu-id="17f79-147">Nommez la classe *TodoController* et cliquez sur **Ajouter**.</span><span class="sxs-lookup"><span data-stu-id="17f79-147">Name the class *TodoController*, and click **Add**.</span></span>
 
 ![Boîte de dialogue Ajouter un nouvel élément avec contrôleur dans la zone de recherche et le contrôleur des API web sélectionné](first-web-api/_static/new_controller.png)
 
-<span data-ttu-id="fb5d8-149">Remplacez la classe par le code suivant :</span><span class="sxs-lookup"><span data-stu-id="fb5d8-149">Replace the class with the following code:</span></span>
+<span data-ttu-id="17f79-149">Remplacez la classe par le code suivant :</span><span class="sxs-lookup"><span data-stu-id="17f79-149">Replace the class with the following code:</span></span>
 
 [!INCLUDE[code and get todo items](../includes/webApi/getTodoItems.md)]
 
-### <a name="launch-the-app"></a><span data-ttu-id="fb5d8-150">Lancer l’application</span><span class="sxs-lookup"><span data-stu-id="fb5d8-150">Launch the app</span></span>
+### <a name="launch-the-app"></a><span data-ttu-id="17f79-150">Lancer l’application</span><span class="sxs-lookup"><span data-stu-id="17f79-150">Launch the app</span></span>
 
-<span data-ttu-id="fb5d8-151">Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-151">In Visual Studio, press CTRL+F5 to launch the app.</span></span> <span data-ttu-id="fb5d8-152">Visual Studio lance un navigateur et accède à `http://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-152">Visual Studio launches a browser and navigates to `http://localhost:<port>/api/values`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="fb5d8-153">Accédez au contrôleur `Todo` à l’adresse `http://localhost:<port>/api/todo`.</span><span class="sxs-lookup"><span data-stu-id="fb5d8-153">Navigate to the `Todo` controller at `http://localhost:<port>/api/todo`.</span></span>
+<span data-ttu-id="17f79-151">Dans Visual Studio, appuyez sur Ctrl+F5 pour lancer l’application.</span><span class="sxs-lookup"><span data-stu-id="17f79-151">In Visual Studio, press CTRL+F5 to launch the app.</span></span> <span data-ttu-id="17f79-152">Visual Studio lance un navigateur et accède à `http://localhost:<port>/api/values`, où `<port>` est un numéro de port choisi de manière aléatoire.</span><span class="sxs-lookup"><span data-stu-id="17f79-152">Visual Studio launches a browser and navigates to `http://localhost:<port>/api/values`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="17f79-153">Accédez au contrôleur `Todo` à l’adresse `http://localhost:<port>/api/todo`.</span><span class="sxs-lookup"><span data-stu-id="17f79-153">Navigate to the `Todo` controller at `http://localhost:<port>/api/todo`.</span></span>
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 
