@@ -5,14 +5,14 @@ description: Découvrez comment utiliser l’authentification et les autorisatio
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
-ms.date: 10/17/2018
+ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: be1dd24c40327d9a0d8f91bf75300128d3d52725
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
-ms.translationtype: HT
+ms.openlocfilehash: f646d319cf3030fd4d769e882514da14b230bbdd
+ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225367"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51276143"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>Considérations de sécurité dans ASP.NET Core SignalR
 
@@ -35,7 +35,7 @@ Pour plus d’informations sur la configuration de CORS, consultez [activer de d
 * Méthodes HTTP `GET` et `POST` doivent être autorisés.
 * Informations d’identification doivent être activées, même lorsque l’authentification n’est pas utilisée.
 
-Par exemple, la stratégie CORS suivante permet à un client de navigateur de SignalR hébergé sur `http://example.com` pour accéder à l’application de SignalR hébergée sur `http://signalr.example.com`:
+Par exemple, la stratégie CORS suivante permet à un client de navigateur de SignalR hébergé sur `https://example.com` pour accéder à l’application de SignalR hébergée sur `https://signalr.example.com`:
 
 [!code-csharp[Main](security/sample/Startup.cs?name=snippet1)]
 
@@ -70,7 +70,14 @@ Dans ASP.NET Core 2.1 et versions ultérieures, validation de l’en-tête peut 
 
 ## <a name="access-token-logging"></a>Connexion de jeton d’accès
 
-Lorsque vous utilisez des WebSockets ou les événements, le navigateur client envoie le jeton d’accès dans la chaîne de requête. Reçoit le jeton d’accès via la chaîne de requête est généralement aussi sécurisé qu’à l’aide de la norme `Authorization` en-tête. Toutefois, plusieurs serveurs web connecter à l’URL pour chaque demande, y compris la chaîne de requête. Journalisation de l’URL peut enregistrer le jeton d’accès. Une bonne pratique consiste à définir des paramètres de journalisation du serveur pour empêcher les jetons d’accès de journalisation le web.
+Lorsque vous utilisez des WebSockets ou les événements, le navigateur client envoie le jeton d’accès dans la chaîne de requête. Reçoit le jeton d’accès via la chaîne de requête est généralement aussi sécurisé qu’à l’aide de la norme `Authorization` en-tête. Vous devez toujours utiliser HTTPS pour garantir une connexion sécurisée de bout en bout entre le client et le serveur. Nombre de serveurs web connecter à l’URL pour chaque demande, y compris la chaîne de requête. Journalisation de l’URL peut enregistrer le jeton d’accès. ASP.NET Core se connecte à l’URL pour chaque demande par défaut, ce qui inclut la chaîne de requête. Exemple :
+
+```
+info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
+      Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
+```
+
+Si vous avez des questions sur l’enregistrement de ces données avec les journaux de votre serveur, vous pouvez désactiver cette journalisation entièrement en configurant le `Microsoft.AspNetCore.Hosting` enregistreur d’événements à la `Warning` niveau ou version ultérieure (ces messages sont écrits au `Info` niveau). Consultez la documentation sur [filtrage de journal](xref:fundamentals/logging/index#log-filtering) pour plus d’informations. Si vous souhaitez toujours enregistrer certaines informations de demande, vous pouvez [écrire un intergiciel (middleware)](xref:fundamentals/middleware/index#write-middleware) pour journaliser les données que vous avez besoin et éliminer les `access_token` valeur de chaîne de requête (le cas échéant).
 
 ## <a name="exceptions"></a>Exceptions
 

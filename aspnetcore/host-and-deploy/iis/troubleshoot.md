@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 6a53c1ba5badd741afc3321ce21b047965c611db
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 2b23bf8230f7a1c207ef7870da098ffb0c597fd5
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090600"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225445"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes liés à ASP.NET Core sur IIS
 
@@ -19,7 +19,17 @@ Par [Luke Latham](https://github.com/guardrex)
 
 Cet article fournit des instructions sur la façon de diagnostiquer un problème de démarrage d’application ASP.NET Core dans le cas d’un hébergement avec [Internet Information Services (IIS)](/iis). Les informations contenues dans cet article s’appliquent à l’hébergement dans IIS sur Windows Server et Windows Desktop.
 
+::: moniker range=">= aspnetcore-2.2"
+
+Dans Visual Studio, un projet ASP.NET Core est par défaut hébergé sur [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) pendant une opération de débogage. Vous pouvez suivre les conseils indiqués dans cette rubrique pour résoudre un *échec de processus 502.5* ou un *échec de démarrage 500.30* qui se produit pendant un débogage local.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
 Dans Visual Studio, un projet ASP.NET Core est par défaut hébergé sur [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) pendant une opération de débogage. Vous pouvez suivre les conseils indiqués dans cette rubrique pour résoudre un *échec de processus 502.5* qui se produit pendant un débogage local.
+
+::: moniker-end
 
 Rubriques de dépannage supplémentaires :
 
@@ -40,11 +50,40 @@ Découvrez la prise en charge du débogage intégrée à Visual Studio Code.
 **Échec de processus 502.5**  
 Le processus de travail échoue. L’application ne démarre pas.
 
-Le module ASP.NET Core tente, en vain, de démarrer le processus de travail. Vous pouvez généralement déterminer la cause d’un échec de démarrage du processus à partir des entrées du [Journal des événements de l’application](#application-event-log) et du [journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log).
+Le module ASP.NET Core tente, en vain, de démarrer le processus dotnet backend. Vous pouvez généralement déterminer la cause d’un échec de démarrage du processus à partir des entrées du [Journal des événements de l’application](#application-event-log) et du [journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log). 
+
+Une condition d’échec courante est une application mal configurée qui cible une version du framework partagé ASP.NET Core non présente. Vérifiez les versions du framework partagé ASP.NET Core qui sont installées sur l’ordinateur cible.
 
 La page d’erreur d’un *échec de processus 502.5* est retournée quand une erreur de configuration d’hébergement ou d’application entraîne l’échec du processus de travail :
 
 ![Fenêtre de navigateur affichant la page d’échec de processus 502.5](troubleshoot/_static/process-failure-page.png)
+
+::: moniker range=">= aspnetcore-2.2"
+
+**500.30 - Échec du démarrage in-process**
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core tente, en vain, de démarrer le CLR .NET Core in-process. Vous pouvez généralement déterminer la cause d’un échec de démarrage du processus à partir des entrées du [Journal des événements de l’application](#application-event-log) et du [journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log). 
+
+Une condition d’échec courante est une application mal configurée qui cible une version du framework partagé ASP.NET Core non présente. Vérifiez les versions du framework partagé ASP.NET Core qui sont installées sur l’ordinateur cible.
+
+**500.0 - Échec de chargement du gestionnaire in-process**
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core ne peut pas trouver le CLR .NET Core et le gestionnaire de requêtes in-process (*aspnetcorev2_inprocess.dll*). Vérifiez que :
+
+* l’application cible le package NuGet [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) ou le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ;
+* la version du framework partagé ASP.NET Core que l’application cible est installée sur l’ordinateur cible.
+
+**500.0 - Échec de chargement du gestionnaire out-of-process**
+
+Le processus de travail échoue. L’application ne démarre pas.
+
+Le module ASP.NET Core ne peut pas trouver le gestionnaire de requêtes d’hébergement out-of-process. Vérifiez que le fichier *aspnetcorev2_outofprocess.dll* est présent dans un sous-dossier en regard de *aspnetcorev2.dll*. 
+
+::: moniker-end
 
 **Erreur de serveur interne 500**  
 L’application démarre, mais une erreur empêche le serveur de répondre à la requête.

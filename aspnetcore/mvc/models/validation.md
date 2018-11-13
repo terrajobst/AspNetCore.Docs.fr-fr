@@ -4,14 +4,14 @@ author: tdykstra
 description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/06/2018
 uid: mvc/models/validation
-ms.openlocfilehash: 73d41b4718071d00a6f80b33de182da2ad90f331
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: f1757f807e50019e5071abc42ec3129935ab77aa
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090948"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225458"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>Validation de modèle dans ASP.NET Core MVC
 
@@ -23,6 +23,8 @@ Avant qu’une application stocke des données dans une base de données, l’ap
 
 Heureusement, .NET dispose d’une validation abstraite dans des attributs de validation. Ces attributs contiennent un code de validation, ce qui réduit la quantité de code à écrire.
 
+Dans ASP.NET Core 2.2 et ultérieur, le runtime ASP.NET Core court-circuite (ignore) la validation s’il détermine qu’un graphe de modèle donné n’a pas besoin de validation. Cela peut déboucher sur une amélioration significative des performances lors de la validation de modèles qui ne peuvent pas avoir de validateurs associés ou qui n’en ont pas. La validation ignorée inclut des objets comme des collections de primitifs (`byte[]`, `string[]`, `Dictionary<string, string>`, etc.) ou des graphes d’objets complexes sans validateurs.
+
 [Affichez ou téléchargez un exemple depuis GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/validation/sample).
 
 ## <a name="validation-attributes"></a>Attributs de validation
@@ -31,10 +33,10 @@ Les attributs de validation sont un moyen de configurer la validation de modèle
 
 Les attributs de validation sont spécifiés au niveau de la propriété : 
 
-```csharp 
-[Required] 
+```csharp
+[Required]
 public string MyProperty { get; set; } 
-``` 
+```
 
 Voici un modèle `Movie` annoté pour une application qui stocke des informations sur les films et les émissions de télévision. La plupart des propriétés sont obligatoires et plusieurs propriétés de type chaîne sont soumises à des exigences en matière de longueur. En outre, une restriction de plage numérique de 0 à 999,99 $ est en place pour la propriété `Price`, ainsi qu’un attribut de validation personnalisé.
 
@@ -80,13 +82,19 @@ La validation côté client nécessite une valeur pour un champ de formulaire qu
 
 L’état du modèle représente les erreurs de validation dans les valeurs du formulaire HTML envoyé.
 
-MVC continue la validation des champs jusqu’à atteindre le nombre maximal d’erreurs (200 par défaut). Vous pouvez configurer ce nombre en insérant le code suivant dans la méthode `ConfigureServices` dans le fichier *Startup.cs* :
+MVC continue la validation des champs jusqu’à ce que le nombre maximal d’erreurs soit atteint (200 par défaut). Vous pouvez configurer ce nombre avec le code suivant dans `Startup.ConfigureServices` :
 
 [!code-csharp[](validation/sample/Startup.cs?range=27)]
 
-## <a name="handling-model-state-errors"></a>Gestion des erreurs d’état de modèle
+## <a name="handle-model-state-errors"></a>Gérer les erreurs d’état de modèle
 
-La validation de modèle se produit avant l’appel de chaque action du contrôleur ; il appartient à la méthode d’action d’inspecter `ModelState.IsValid` et de réagir de façon appropriée. Dans de nombreux cas, la réaction appropriée est de retourner une réponse d’erreur, dans l’idéal en détaillant la raison de l’échec de validation du modèle.
+La validation de modèle se produit avant l’exécution d’une action de contrôleur. Il incombe à l’action d’inspecter `ModelState.IsValid` et de réagir de façon appropriée. Dans de nombreux cas, la réaction appropriée est de retourner une réponse d’erreur, dans l’idéal en détaillant la raison de l’échec de validation du modèle.
+
+::: moniker range=">= aspnetcore-2.1"
+
+Quand `ModelState.IsValid` prend la valeur `false` dans les contrôleurs d’API web à l’aide de l’attribut `[ApiController]`, une réponse HTTP 400 automatique contenant les détails du problème est retournée. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses).
+
+::: moniker-end
 
 Certaines applications choisissent de suivre une convention standard pour traiter les erreurs de validation de modèle ; dans ce cas, un filtre peut être un emplacement approprié pour implémenter une telle stratégie. Vous devez tester le comportement de vos actions avec des états de modèle valides et non valides.
 

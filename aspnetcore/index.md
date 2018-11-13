@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/10/2018
 uid: index
-ms.openlocfilehash: 60f7d64baa0441b90befb2d785999a707e1025c5
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: 1699acc0086dfd50c573afc239bc8f37eb9e7af9
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225393"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569986"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -76,6 +76,22 @@ La plupart des articles et tutoriels contiennent des liens vers des exemples de 
 1. [Téléchargez le fichier zip du référentiel ASP.NET](https://codeload.github.com/aspnet/Docs/zip/master).
 1. Décompressez le fichier *Docs-master.zip*.
 1. Utilisez l’URL contenue dans l’exemple de lien pour vous aider à naviguer dans l’exemple de répertoire.
+
+Pour montrer plusieurs scénarios, les exemples d’applications utilisent les instructions C# `#define` et `#if-#else/#elif-#endif` pour compiler et exécuter différentes sections de l’exemple de code de manière sélective. Pour ces exemples qui utilisent cette approche, définissez l’instruction `#define` en haut des fichiers C# pour le symbole associé au scénario que vous souhaitez exécuter. Un exemple peut vous obliger à définir le symbole en haut de plusieurs fichiers afin d’exécuter un scénario.
+
+Par exemple, la liste des symboles `#define` suivante indique que les quatre scénarios sont disponibles (un scénario par symbole). La configuration actuelle de l’exemple exécute le scénario `TemplateCode` :
+
+```csharp
+#define TemplateCode // or LogFromMain or ExpandDefault or FilterInCode
+```
+
+Pour que l’exemple exécute le scénario `ExpandDefault`, définissez le symbole `ExpandDefault` et laissez les symboles restants commentés :
+
+```csharp
+#define ExpandDefault // TemplateCode or LogFromMain or FilterInCode
+```
+
+Pour plus d’informations sur l’utilisation des [directives de préprocesseur C#](/dotnet/csharp/language-reference/preprocessor-directives/) pour compiler de façon sélective des sections de code, consultez [#define (Référence C#)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-define) et [#if (Référence C#) ](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

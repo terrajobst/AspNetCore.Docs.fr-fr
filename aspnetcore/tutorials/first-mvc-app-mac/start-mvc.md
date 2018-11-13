@@ -5,12 +5,12 @@ description: Découvrez comment bien démarrer avec ASP.NET Core MVC et Visual S
 ms.author: riande
 ms.date: 8/23/2017
 uid: tutorials/first-mvc-app-mac/start-mvc
-ms.openlocfilehash: e94b9aa6b6c594ae407792387788410f776d4c1d
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 059ac1f7fa94d97adc958be3c0b936cdfa7f6d3e
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36272291"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225471"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio-for-mac"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio pour Mac
 
@@ -36,7 +36,7 @@ Dans Visual Studio, sélectionnez **Fichier > Nouvelle solution**.
 
 ![macOS - Nouvelle solution](../first-web-api-mac/_static/sln.png)
 
-Sélectionnez **Application .NET Core > ASP.NET Core > Application web > Suivant**.
+Sélectionnez **Application .NET Core > ASP.NET Core > Application web ASP.NET Core (MVC) > Suivant**.
 
 ![macOS - Boîte de dialogue Nouveau projet](start-mvc/1.png)
 

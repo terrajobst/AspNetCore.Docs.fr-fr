@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/21/2018
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 84e79df7fcf5790e658a20c80f21d73cdc76c054
-ms.sourcegitcommit: 8bf4dff3069e62972c1b0839a93fb444e502afe7
+ms.openlocfilehash: 6daf201654d68de978141f3dd42d48732c1161f7
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46483007"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570033"
 ---
 # <a name="aspnet-core-middleware"></a>Intergiciel (middleware) ASP.NET Core
 
@@ -34,7 +34,7 @@ Le pipeline de requête ASP.NET Core est composé d’une séquence de délégu�
 
 ![Modèle de traitement des requêtes montrant une requête qui arrive et qui est traitée par trois middlewares, puis la réponse qui quitte l’application. Chaque intergiciel exécute sa logique et transmet la requête à l’intergiciel suivant à l’instruction next(). Une fois que le troisième middleware a traité la requête, celle-ci repasse par les deux middlewares précédents dans l’ordre inverse pour être à nouveau traitée après ses instructions next(), avant de quitter l’application sous forme de réponse au client.](index/_static/request-delegate-pipeline.png)
 
-Chaque délégué peut effectuer des opérations avant et après le délégué suivant. Un délégué peut également décider de ne pas passer une requête au délégué suivant. On parle alors de *court-circuit du pipeline de requête*. Un court-circuit est souvent souhaitable car il évite le travail inutile. Par exemple, le middleware Fihiers statiques peut retourner une requête pour un fichier statique et court-circuiter le reste du pipeline. Les délégués de gestion des exceptions sont appelés tôt dans le pipeline pour qu’ils puissent intercepter les exceptions qui se produisent dans les phases ultérieures du pipeline.
+Chaque délégué peut effectuer des opérations avant et après le délégué suivant. Un délégué peut également décider de ne pas passer une requête au délégué suivant. On parle alors de *court-circuit du pipeline de requête*. Un court-circuit est souvent souhaitable car il évite le travail inutile. Par exemple, le middleware Fichier statique peut retourner une requête pour un fichier statique et court-circuiter le reste du pipeline. Les délégués de gestion des exceptions sont appelés tôt dans le pipeline pour qu’ils puissent intercepter les exceptions qui se produisent dans les phases ultérieures du pipeline.
 
 L’application ASP.NET Core la plus simple possible définit un seul délégué de requête qui gère toutes les requêtes. Ce cas ne fait pas appel à un pipeline de requête réel. À la place, une seule fonction anonyme est appelée en réponse à chaque requête HTTP.
 
@@ -153,26 +153,26 @@ Dans l’exemple de code précédent, chaque méthode d’extension d’intergic
 
 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler*> est le premier composant d’intergiciel ajouté au pipeline. Par conséquent, le middleware Gestion des exceptions intercepte toutes les exceptions qui se produisent dans les appels ultérieurs.
 
-Le middleware Fichiers statiques est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware Fichiers statiques ne fournit **aucune** vérification d’autorisation. Tous les fichiers qu’il sert, notamment ceux sous *wwwroot* sont accessibles à tous. Pour obtenir une approche permettant de sécuriser les fichiers statiques, consultez <xref:fundamentals/static-files>.
+Le middleware Fichier statique est appelé tôt dans le pipeline pour qu’il puisse gérer les requêtes et procéder au court-circuit sans passer par les composants restants. Le middleware Fichier statique ne fournit **aucune** vérification d’autorisation. Tous les fichiers qu’il sert, notamment ceux sous *wwwroot* sont accessibles à tous. Pour obtenir une approche permettant de sécuriser les fichiers statiques, consultez <xref:fundamentals/static-files>.
 
 ::: moniker range=">= aspnetcore-2.0"
 
-Si la requête n’est pas gérée par le middleware Fichiers statiques, elle est transmise au middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>), qui effectue l’authentification. Le middleware Authentification ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné une page Razor/un contrôleur MVC et une action spécifiques.
+Si la requête n’est pas gérée par le middleware Fichier statique, elle est transmise au middleware Authentification (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>), qui effectue l’authentification. Le middleware Authentification ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné une page Razor/un contrôleur MVC et une action spécifiques.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.0"
 
-Si la requête n’est pas gérée par le middleware Fichiers statiques, elle est transmise au middleware Identité (<xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*>), qui effectue l’authentification. L’intergiciel Identité ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné un contrôleur et une action spécifiques.
+Si la requête n’est pas gérée par le middleware Fichier statique, elle est transmise au middleware Identité (<xref:Microsoft.AspNetCore.Builder.BuilderExtensions.UseIdentity*>), qui effectue l’authentification. Le middleware Identité ne court-circuite pas les requêtes non authentifiées. Même s’il authentifie les requêtes, l’autorisation (et le refus) interviennent uniquement après que MVC a sélectionné un contrôleur et une action spécifiques.
 
 ::: moniker-end
 
-L’exemple suivant montre un ordre de middlewares où les requêtes pour les fichiers statiques sont gérées par le middleware Fichiers statiques avant le middleware Compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre de middlewares. Les réponses MVC de <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> peuvent être compressées.
+L’exemple suivant montre un ordre de middlewares où les requêtes pour les fichiers statiques sont gérées par le middleware Fichier statique avant le middleware Compression de la réponse. Les fichiers statiques ne sont pas compressés avec cet ordre de middlewares. Les réponses MVC de <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> peuvent être compressées.
 
 ```csharp
 public void Configure(IApplicationBuilder app)
 {
-    // Static files not compressed by Static Files Middleware.
+    // Static files not compressed by Static File Middleware.
     app.UseStaticFiles();
     app.UseResponseCompression();
     app.UseMvcWithDefaultRoute();

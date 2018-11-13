@@ -15,7 +15,7 @@ Le code précédent :
 * Définit une classe de contrôleur d’API sans méthodes.
 * Crée un nouvel élément Todo lorsque `TodoItems` est vide. Vous ne pourrez pas supprimer tous les éléments Todo, car le constructeur en crée un nouveau lorsque `TodoItems` est vide.
 
-Dans les sections suivantes, des méthodes sont ajoutées pour implémenter l’API. La classe est annotée avec un attribut `[ApiController]` pour activer certaines fonctionnalités utiles. Pour plus d’informations sur les fonctionnalités activées par l’attribut, consultez [Annoter la classe avec ApiControllerAttribute](xref:web-api/index#annotate-class-with-apicontrollerattribute).
+Dans les sections suivantes, des méthodes sont ajoutées pour implémenter l’API. La classe est annotée avec un attribut `[ApiController]` pour activer certaines fonctionnalités utiles. Pour plus d’informations sur les fonctionnalités activées par l’attribut, consultez [Annotation avec ApiControllerAttribute](xref:web-api/index#annotation-with-apicontrollerattribute).
 
 ::: moniker-end
 
@@ -74,7 +74,7 @@ L’attribut `[HttpGet]` désigne une méthode qui répond à une requête HTTP 
 
 ::: moniker-end
 
-* Remplacez `[controller]` par le nom du contrôleur, qui est le nom de la classe du contrôleur sans le suffixe « Controller ». Pour cet exemple, le nom de classe du contrôleur est **Todo**Controller et le nom racine est « todo ». Le [routage](xref:mvc/controllers/routing) d’ASP.NET Core ne respecte pas la casse.
+* Remplacez `[controller]` par le nom du contrôleur qui, par convention, est le nom de la classe du contrôleur sans le suffixe « Controller ». Pour cet exemple, le nom de classe du contrôleur est **Todo**Controller et le nom racine est « todo ». Le [routage](xref:mvc/controllers/routing) d’ASP.NET Core ne respecte pas la casse.
 * Si l’attribut `[HttpGet]` a un modèle de route (comme `[HttpGet("/products")]`, ajoutez-le au chemin. Cet exemple n’utilise pas de modèle. Pour plus d’informations, consultez [Routage par attributs avec des attributs Http[Verbe]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
 Dans la méthode `GetById` suivante, `"{id}"` est une variable d’espace réservé pour l’identificateur unique de la tâche. Quand `GetById` est appelée, elle affecte la valeur de `"{id}"` dans l’URL au paramètre `id` de la méthode.
