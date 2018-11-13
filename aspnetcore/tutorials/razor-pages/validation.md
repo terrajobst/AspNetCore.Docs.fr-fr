@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 2518b9911f13da79c76c84e530cf53fc2df474e5
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: d4cc0ab9de314c0c5a1a9016efd1e566ff1c47d2
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090444"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505776"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -61,8 +61,7 @@ Sélectionnez le lien **Créer nouveau**. Complétez le formulaire avec des vale
 
 ![Formulaire de vue Movie avec plusieurs erreurs de validation jQuery côté client](validation/_static/val.png)
 
-> [!NOTE]
-> Vous ne pourrez peut-être pas entrer des séparateurs décimaux ou des virgules dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) dans les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme séparateur décimal et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Pour plus d’informations, consultez [Ressources supplémentaires](#additional-resources). Pour le moment, entrez simplement des nombres entiers tels que 10.
+[!INCLUDE[](~/includes/currency.md)]
 
 Notez que le formulaire a affiché automatiquement un message d’erreur de validation dans chaque champ contenant une valeur non valide. Les erreurs sont appliquées à la fois côté client (à l’aide de JavaScript et de jQuery) et côté serveur (quand JavaScript est désactivé pour un utilisateur).
 
@@ -161,7 +160,7 @@ La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data
 
 ### <a name="publish-to-azure"></a>Publier sur Azure
 
-Pour plus d’informations sur le déploiement sur Azure, consultez [Tutoriel : Créer une application ASP.NET dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Les instructions s’appliquent à une application ASP.NET, pas à une application ASP.NET Core, mais les étapes sont les mêmes.
+Pour plus d’informations sur le déploiement sur Azure, consultez [Tutoriel : Créer une application ASP.NET dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Ces instructions s’appliquent à une application ASP.NET, pas à une application ASP.NET Core, mais les étapes sont les mêmes.
 
 Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
 

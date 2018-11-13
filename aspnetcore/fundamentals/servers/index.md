@@ -1,17 +1,17 @@
 ---
 title: Implémentations de serveurs web dans ASP.NET Core
-author: rick-anderson
+author: guardrex
 description: Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. Découvrez comment choisir un serveur et quand utiliser un serveur proxy inverse.
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 09/21/2018
 uid: fundamentals/servers/index
-ms.openlocfilehash: 6b6ebbe9d31d571ea470fba0989d622dcf6e68af
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: 06d4bf09b07fc70a10b3e260e78c29fe189486c5
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758204"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505724"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -144,8 +144,8 @@ Lors du lancement d’une application à partir d’une invite de commandes dans
 
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
   * Système d'exploitation
-    * Windows Server 2012 R2/Windows 8.1 ou version ultérieure
-    * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple,Ubuntu 16.04 ou version ultérieure)
+    * Windows Server 2016/Windows 10 ou version ultérieure&dagger;
+    * Linux avec OpenSSL 1.0.2 ou version ultérieure (par exemple, Ubuntu 16.04 ou version ultérieure)
     * HTTP/2 sera pris en charge sur macOS dans une prochaine version.
   * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
@@ -158,6 +158,8 @@ Lors du lancement d’une application à partir d’une invite de commandes dans
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse à Kestrel utilise HTTP/1.1.
   * Version cible de .Net Framework : non applicable aux déploiements IIS out-of-process.
+
+&dagger;Kestrel propose une prise en charge limitée de HTTP/2 sous Windows Server 2012 R2 et Windows 8.1. La prise en charge est limitée car la liste des suites de chiffrement TLS prises en charge sur ces systèmes d’exploitation est limitée. Un certificat généré à l’aide d’Elliptic Curve Digital Signature algorithme (ECDSA) peut être requis pour sécuriser les connexions TLS.
 
 ::: moniker-end
 

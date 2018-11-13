@@ -40,8 +40,7 @@ Appuyez sur le lien **Create New** pour ajouter un nouveau film. Remplissez le f
 
 ![Formulaire d’affichage de film avec plusieurs erreurs de validation côté client jQuery](~/tutorials/first-mvc-app/validation/_static/val.png)
 
-> [!NOTE]
-> Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que l’anglais qui utilisent une virgule (« , ») comme décimale et des formats de date autres que l’anglais des États-Unis, vous devez effectuer des étapes pour localiser votre application. Consultez la page [GitHub problème 4076](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420) pour savoir comment ajouter une virgule décimale. 
+[!INCLUDE[](~/includes/currency.md)]
 
 Notez que le formulaire a affiché automatiquement un message d’erreur de validation approprié dans chaque champ contenant une valeur non valide. Les erreurs sont appliquées à la fois côté client (à l’aide de JavaScript et jQuery) et côté serveur (au cas où un utilisateur aurait désactivé JavaScript).
 

@@ -5,12 +5,12 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 5014d697603d802929b417e6439d4cc6983184d2
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: af11906f86fe4ea91ed520584daedc094ab2dc0b
+ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207587"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51505828"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -338,6 +338,8 @@ Termes :
 * Culture spécifique : Culture dont la langue et la région sont spécifiées. (Exemples : « en-US », « en-GB », « es-CL ».)
 * Culture parent : Culture neutre qui contient une culture spécifique. (Exemple : « en » est la culture parent de « en-US » et « en-GB ».)
 * Paramètres régionaux : Synonyme de culture.
+
+[!INCLUDE[](~/includes/currency.md)]
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
