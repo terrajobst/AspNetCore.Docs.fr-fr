@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment charger des fichiers sur une page Razor.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
-ms.date: 07/11/2018
+ms.date: 11/10/2018
 uid: razor-pages/upload-files
-ms.openlocfilehash: 92e72869967b6e3202c97b92e341ea22adc69651
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 8d86a84bcd31cc1e1e6fbe0693c7ec179e589f3d
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912499"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570007"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Charger des fichiers dans une page Razor dans ASP.NET Core
 
@@ -22,6 +22,8 @@ Cette rubrique s’appuie sur le [exemple d’application](https://github.com/as
 Cette rubrique montre comment utiliser la liaison de modèle simple pour charger des fichiers, ce qui fonctionne bien pour charger des fichiers de petite taille. Pour plus d’informations sur le streaming de fichiers volumineux, consultez [Chargement de fichiers volumineux par streaming](xref:mvc/models/file-uploads#uploading-large-files-with-streaming).
 
 Dans les étapes suivantes, une fonctionnalité de chargement de fichiers de planification vidéo est ajoutée dans l’exemple d’application. Une planification vidéo est représentée par une classe `Schedule` . La classe inclut deux versions de la planification. Une version est fournie aux clients, `PublicSchedule`. L’autre version est utilisée pour les employés de la société, `PrivateSchedule`. Chaque version est chargée dans un fichier distinct. Le didacticiel décrit comment effectuer deux chargements de fichier à partir d’une page en envoyant une seule commande POST au serveur.
+
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/upload-files/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Considérations relatives à la sécurité
 

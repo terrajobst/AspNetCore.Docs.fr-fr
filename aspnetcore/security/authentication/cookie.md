@@ -5,12 +5,12 @@ description: Une explication de l’authentification par cookie sans ASP.NET Cor
 ms.author: riande
 ms.date: 10/11/2017
 uid: security/authentication/cookie
-ms.openlocfilehash: 8add7559557d505397c3be8d8a48aa2e9d9e45e8
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: f55b36cf3fc3b60e9d592348625f58ebaba90da7
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207418"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570111"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification par cookie sans ASP.NET Core Identity
 
@@ -28,7 +28,7 @@ Pour utiliser ASP.NET Core Identity, consultez le [présentation d’Identity](x
 
 ## <a name="configuration"></a>Configuration
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Si l’application n’utilise pas le [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app), créez une référence de package dans le fichier de projet pour le [Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/) package (version 2.1.0 ou plus tard).
 
@@ -81,7 +81,9 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ASP.NET Core 1.x utilise cookie [intergiciel (middleware)](xref:fundamentals/middleware/index) qui sérialise un principal d’utilisateur dans un cookie chiffré. Pour les requêtes ultérieures, le cookie est validé, et le principal est recréé et affecté à la `HttpContext.User` propriété.
 
@@ -127,7 +129,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
+::: moniker-end
 
 ## <a name="cookie-policy-middleware"></a>Intergiciel (middleware) de cookie stratégie
 
@@ -170,13 +172,15 @@ Le paramètre d’intergiciel (middleware) stratégie de Cookie pour `MinimumSam
 
 Pour créer un cookie contenant les informations de l’utilisateur, vous devez construire un [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal). Les informations de l’utilisateur sont sérialisées et stockées dans le cookie. 
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Créer un [ClaimsIdentity](/dotnet/api/system.security.claims.claimsidentity) avec n’importe quel requis [revendication](/dotnet/api/system.security.claims.claim)s et appelez [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signinasync?view=aspnetcore-2.0) pour connecter l’utilisateur :
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet1)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Appelez [SignInAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signinasync?view=aspnetcore-1.1) pour connecter l’utilisateur :
 
@@ -186,7 +190,7 @@ await HttpContext.Authentication.SignInAsync(
     new ClaimsPrincipal(claimsIdentity));
 ```
 
----
+::: moniker-end
 
 `SignInAsync` Crée un cookie chiffré et l’ajoute à la réponse actuelle. Si vous ne spécifiez pas un `AuthenticationScheme`, le schéma par défaut est utilisé.
 
@@ -194,13 +198,15 @@ En coulisses, du chiffrement utilisé est d’ASP.NET Core [Protection des donn�
 
 ## <a name="sign-out"></a>Déconnexion
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
+::: moniker range=">= aspnetcore-2.0"
 
 Pour déconnecter l’utilisateur actuel et supprimer leur cookie, appelez [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhttpcontextextensions.signoutasync?view=aspnetcore-2.0):
 
 [!code-csharp[](cookie/samples/2.x/CookieSample/Pages/Account/Login.cshtml.cs?name=snippet2)]
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Pour déconnecter l’utilisateur actuel et supprimer leur cookie, appelez [SignOutAsync](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1.signoutasync?view=aspnetcore-1.1):
 
@@ -209,7 +215,7 @@ await HttpContext.Authentication.SignOutAsync(
     CookieAuthenticationDefaults.AuthenticationScheme);
 ```
 
----
+::: moniker-end
 
 Si vous n’utilisez pas `CookieAuthenticationDefaults.AuthenticationScheme` (ou « Cookies ») en tant que le schéma (par exemple, « ContosoCookie »), fournir le schéma que vous avez utilisé lors de la configuration du fournisseur d’authentification. Sinon, le schéma par défaut est utilisé.
 
@@ -239,7 +245,7 @@ await HttpContext.SignInAsync(
     new ClaimsPrincipal(claimsIdentity));
 ```
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 Pour implémenter une substitution pour le `ValidatePrincipal` événement, écriture, une méthode avec la signature suivante dans une classe que vous dérivez de [CookieAuthenticationEvents](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationevents):
 
@@ -298,7 +304,9 @@ services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 services.AddScoped<CustomCookieAuthenticationEvents>();
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 Pour implémenter une substitution pour la `ValidateAsync` événement, écriture, une méthode avec la signature suivante :
 
@@ -348,7 +356,7 @@ app.UseCookieAuthentication(new CookieAuthenticationOptions
 });
 ```
 
----
+::: moniker-end
 
 Considérez une situation dans laquelle le nom d’utilisateur est mise à jour &mdash; une décision qui n’affecte pas la sécurité en aucune façon. Si vous souhaitez mettre à jour non-destructive de l’utilisateur principal, appelez `context.ReplacePrincipal` et définir le `context.ShouldRenew` propriété `true`.
 
@@ -361,7 +369,7 @@ Vous souhaiterez peut-être le cookie à conserver entre les sessions de navigat
 
 L’extrait de code suivant crée une identité et le cookie correspondant qui persiste lors par le biais des fermetures de navigateur. Tous les paramètres d’expiration décalée précédemment configurés sont respectées. Si le cookie expire pendant que le navigateur est fermé, le navigateur supprime le cookie s’est arrêté.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 await HttpContext.SignInAsync(
@@ -375,7 +383,9 @@ await HttpContext.SignInAsync(
 
 Le [AuthenticationProperties](/dotnet/api/microsoft.aspnetcore.authentication.authenticationproperties?view=aspnetcore-2.0) classe réside dans le `Microsoft.AspNetCore.Authentication` espace de noms.
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 await HttpContext.Authentication.SignInAsync(
@@ -389,7 +399,7 @@ await HttpContext.Authentication.SignInAsync(
 
 Le [AuthenticationProperties](/dotnet/api/microsoft.aspnetcore.http.authentication.authenticationproperties?view=aspnetcore-1.1) classe réside dans le `Microsoft.AspNetCore.Http.Authentication` espace de noms.
 
----
+::: moniker-end
 
 ## <a name="absolute-cookie-expiration"></a>Expiration du cookie absolu
 
@@ -397,7 +407,7 @@ Vous pouvez définir une heure d’expiration absolue avec `ExpiresUtc`. Vous de
 
 L’extrait de code suivant crée une identité et le cookie correspondant qui dure 20 minutes. Il ignore tous les paramètres d’expiration décalée précédemment configurés.
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
+::: moniker range=">= aspnetcore-2.0"
 
 ```csharp
 await HttpContext.SignInAsync(
@@ -410,7 +420,9 @@ await HttpContext.SignInAsync(
     });
 ```
 
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.0"
 
 ```csharp
 await HttpContext.Authentication.SignInAsync(
@@ -423,7 +435,7 @@ await HttpContext.Authentication.SignInAsync(
     });
 ```
 
----
+::: moniker-end
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
