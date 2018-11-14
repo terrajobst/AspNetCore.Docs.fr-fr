@@ -5,14 +5,14 @@ description: Découvrez comment commencer à utiliser les WebSockets dans ASP.NE
 monikerRange: '>= aspnetcore-1.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 06/28/2018
+ms.date: 11/06/2018
 uid: fundamentals/websockets
-ms.openlocfilehash: b0f1aeff6c7a5777993459274293ba23f2d9dc12
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 3a649f88699d61636d9aa7fbfe4468ca67b3b018
+ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206738"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51225406"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>Prise en charge des WebSockets dans ASP.NET Core
 
@@ -72,10 +72,24 @@ Ajoutez le middleware WebSocket dans la méthode `Configure` de la classe `Start
 
 ::: moniker-end
 
+::: moniker range="< aspnetcore-2.2"
+
 Les paramètres suivants peuvent être configurés :
 
-* `KeepAliveInterval` : fréquence d’envoi de frames de « ping » au client pour garantir que les proxys maintiennent la connexion ouverte.
-* `ReceiveBufferSize` : taille de la mémoire tampon utilisée pour recevoir des données. Seuls les utilisateurs avancés peuvent être amenés à changer ce paramètre, pour l’optimisation des performances en fonction de la taille des données.
+* `KeepAliveInterval` : fréquence d’envoi de frames de « ping » au client pour garantir que les proxys maintiennent la connexion ouverte. La valeur par défaut est deux minutes.
+* `ReceiveBufferSize` : taille de la mémoire tampon utilisée pour recevoir des données. Seuls les utilisateurs avancés peuvent être amenés à changer ce paramètre, pour l’optimisation des performances en fonction de la taille des données. La valeur par défaut est 4 Ko.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+Les paramètres suivants peuvent être configurés :
+
+* `KeepAliveInterval` : fréquence d’envoi de frames de « ping » au client pour garantir que les proxys maintiennent la connexion ouverte. La valeur par défaut est deux minutes.
+* `ReceiveBufferSize` : taille de la mémoire tampon utilisée pour recevoir des données. Seuls les utilisateurs avancés peuvent être amenés à changer ce paramètre, pour l’optimisation des performances en fonction de la taille des données. La valeur par défaut est 4 Ko.
+* `AllowedOrigins` : liste des valeurs d’en-tête Origin autorisées pour les requêtes WebSocket. Par défaut, toutes les origines sont autorisées. Pour plus d’informations, consultez « Restriction d’origine WebSocket » ci-dessous.
+
+::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -128,6 +142,32 @@ Le code montré précédemment qui accepte la requête WebSocket passe l’objet
 ::: moniker-end
 
 Quand vous acceptez le WebSocket avant de commencer cette boucle, le pipeline de middlewares se termine. À la fermeture du socket, le pipeline se déroule. Autrement dit, la requête cesse d’avancer dans le pipeline quand le WebSocket est accepté. Quand la boucle est terminée et que le socket est fermé, la requête recule dans le pipeline.
+
+::: moniker range=">= aspnetcore-2.2"
+
+### <a name="websocket-origin-restriction"></a>Restriction d’origine WebSocket
+
+Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Les navigateurs **:**
+
+* n’effectuent pas de requêtes préalables CORS ;
+* respectent les restrictions spécifiées dans les en-têtes `Access-Control` quand ils effectuent des requêtes WebSocket.
+
+Toutefois, les navigateurs envoient l’en-tête `Origin` au moment de l’émission des requêtes WebSocket. Les applications doivent être configurées de manière à valider ces en-têtes, le but étant de vérifier que seuls les WebSockets provenant des origines attendues sont autorisés.
+
+Si vous hébergez votre serveur sur « https://server.com » et votre client sur « https://client.com », ajoutez « https://client.com » à la liste `AllowedOrigins` pour autoriser les WebSockets.
+
+```csharp
+app.UseWebSockets(new WebSocketOptions()
+{
+    AllowedOrigins.Add("https://client.com");
+    AllowedOrigins.Add("https://www.client.com");
+});
+```
+
+> [!NOTE]
+> L’en-tête `Origin` est contrôlé par le client et, comme l’en-tête `Referer`, peut être falsifié. **N’utilisez pas** ces en-têtes comme mécanisme d’authentification.
+
+::: moniker-end
 
 ## <a name="iisiis-express-support"></a>Prise en charge d’IIS/IIS Express
 
