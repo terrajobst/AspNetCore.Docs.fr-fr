@@ -5,14 +5,14 @@ description: Découvrez comment établir des revendications supplémentaires et 
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/28/2018
+ms.date: 11/11/2018
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: dc8b3e32141466a12e4eff0c86d2d4bed689afe5
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9a24ac138950ef2bedac48f506655d06520137cf
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206355"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708359"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Conserver des revendications supplémentaires et les jetons provenant de fournisseurs externes dans ASP.NET Core
 
@@ -22,13 +22,11 @@ Une application ASP.NET Core peut établir des revendications supplémentaires e
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="prerequisite"></a>Prérequis
+## <a name="prerequisites"></a>Prérequis
 
 Décidez quels fournisseurs d’authentification externes pour prendre en charge dans l’application. Pour chaque fournisseur, inscrire l’application et obtenir un ID client et la clé secrète client. Pour plus d'informations, consultez <xref:security/authentication/social/index>. Le [exemple d’application](#sample-app-instructions) utilise le [fournisseur d’authentification Google](xref:security/authentication/google-logins).
 
-## <a name="authentication-provider-configuration"></a>Configuration du fournisseur d’authentification
-
-### <a name="set-the-client-id-and-client-secret"></a>Définir l’ID client et la clé secrète client
+## <a name="set-the-client-id-and-client-secret"></a>Définir l’ID client et la clé secrète client
 
 Le fournisseur d’authentification OAuth établit une relation d’approbation avec une application à l’aide d’un ID client et la clé secrète client. ID client et les valeurs de clé secrète du client sont créés pour l’application par le fournisseur d’authentification externe lorsque l’application est inscrite auprès du fournisseur. Chaque fournisseur externe qui utilise l’application doit être configuré indépendamment avec l’ID client et la clé secrète client du fournisseur. Pour plus d’informations, consultez les rubriques de fournisseur d’authentification externe qui s’appliquent à votre scénario :
 
@@ -43,7 +41,7 @@ L’exemple d’application configure le fournisseur d’authentification Google
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=4,6)]
 
-### <a name="establish-the-authentication-scope"></a>Établir l’étendue de l’authentification
+## <a name="establish-the-authentication-scope"></a>Établir l’étendue de l’authentification
 
 Spécifier la liste des autorisations nécessaires pour récupérer à partir du fournisseur en spécifiant le <xref:Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Scope*>. Étendues de l’authentification pour les fournisseurs externes courantes apparaissent dans le tableau suivant.
 
@@ -58,7 +56,7 @@ L’exemple d’application ajoute Google `plus.login` étendue pour demander de
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=7)]
 
-### <a name="map-user-data-keys-and-create-claims"></a>Mapper des clés de données utilisateur et de créer des revendications
+## <a name="map-user-data-keys-and-create-claims"></a>Mapper des clés de données utilisateur et de créer des revendications
 
 Dans les options du fournisseur, vous devez spécifier un <xref:Microsoft.AspNetCore.Authentication.ClaimActionCollectionMapExtensions.MapJsonKey*> pour chaque clé dans les données d’utilisateur JSON du fournisseur externe pour l’identité de l’application à lire sur la connexion. Pour plus d’informations sur les types de revendications, consultez <xref:System.Security.Claims.ClaimTypes>.
 
@@ -72,7 +70,7 @@ Dans l’exemple d’application, `OnPostConfirmationAsync` (*Account/ExternalLo
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnPostConfirmationAsync&highlight=30-31)]
 
-### <a name="save-the-access-token"></a>Enregistrer le jeton d’accès
+## <a name="save-the-access-token"></a>Enregistrer le jeton d’accès
 
 <xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.SaveTokens*> définit si les jetons d’accès et d’actualisation doivent être stockées dans le <xref:Microsoft.AspNetCore.Http.Authentication.AuthenticationProperties> après une autorisation réussie. `SaveTokens` a la valeur `false` par défaut pour réduire la taille du cookie d’authentification finale.
 
@@ -93,7 +91,7 @@ L’exemple d’application enregistre dans le jeton d’accès :
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Pages/Account/ExternalLogin.cshtml.cs?name=snippet_OnGetCallbackAsync&highlight=31-32)]
 
-### <a name="how-to-add-additional-custom-tokens"></a>Comment ajouter des jetons personnalisés supplémentaires
+## <a name="how-to-add-additional-custom-tokens"></a>Comment ajouter des jetons personnalisés supplémentaires
 
 Pour montrer comment ajouter un jeton personnalisé, qui est stocké dans le cadre de `SaveTokens`, l’exemple d’application ajoute un <xref:Microsoft.AspNetCore.Authentication.AuthenticationToken> avec actuel <xref:System.DateTime> pour un [AuthenticationToken.Name](xref:Microsoft.AspNetCore.Authentication.AuthenticationToken.Name*) de `TicketCreated`:
 
@@ -143,3 +141,5 @@ Authentication Properties
 .expires
     Mon, 10 Sep 2018 18:08:05 GMT
 ```
+
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]

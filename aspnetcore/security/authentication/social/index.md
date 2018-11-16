@@ -3,14 +3,15 @@ title: Authentification à l’aide de fournisseurs externes (Facebook, Google e
 author: rick-anderson
 description: Ce didacticiel montre comment générer une application ASP.NET Core 2.x à l’aide d’OAuth 2.0 avec des fournisseurs d’authentification externes.
 ms.author: riande
-ms.date: 11/01/2016
+ms.custom: mvc
+ms.date: 11/11/2018
 uid: security/authentication/social/index
-ms.openlocfilehash: 48a01ab241f9a6ad6ad3fb2ee9e210f459075c33
-ms.sourcegitcommit: a669c4e3f42e387e214a354ac4143555602e6f66
+ms.openlocfilehash: 19074d5014a09446ceec1b89449e78760fc8e7cf
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336118"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708372"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
@@ -28,9 +29,9 @@ Remarque : Les packages présentés font abstraction d’une grande partie de la
 
 ## <a name="create-a-new-aspnet-core-project"></a>Créer un projet ASP.NET Core
 
-* Dans Visual Studio 2017, créez un projet à partir de la page de démarrage, ou via **Fichier > Nouveau > Projet**.
+* Dans Visual Studio 2017, créez un projet à partir de la page de démarrage, ou via **Fichier** > **Nouveau** > **Projet**.
 
-* Sélectionnez le modèle **Application web ASP.NET Core** disponible dans la catégorie **Visual C# > .NET Core** :
+* Sélectionnez le modèle **Application web ASP.NET Core** disponible dans la catégorie **Visual C#** > **.NET Core** :
 
 ![Boîte de dialogue Nouveau projet](index/_static/new-project.png)
 
@@ -51,9 +52,11 @@ Remarque : Ce didacticiel s’applique à la version ASP.NET Core 2.0 SDK, qui p
 
 OAuth 2.0 nécessite l’utilisation de SSL pour l’authentification avec le protocole HTTPS.
 
-Remarque : Les projets créés à partir des modèles de projet **Application web** ou **API web** pour ASP.NET Core 2.x sont configurés automatiquement pour activer SSL, et pour se lancer avec des URL HTTPS si l’option **Comptes d’utilisateur individuels** a été sélectionnée dans la boîte de dialogue **Modifier l’authentification** dans l’Assistant Projet, comme indiqué ci-dessus.
+Les projets créés à l’aide des modèles de projet **Application web** ou **API web** avec ASP.NET Core 2.1 ou ultérieur sont automatiquement configurés pour activer SSL. L’application démarre avec un point de terminaison sécurisé par défaut si l’option **Comptes d’utilisateur individuels** est sélectionnée dans la **boîte de dialogue Modifier l’authentification** de l’Assistant de projet.
 
-* Imposez l’utilisation de SSL sur votre site en suivant les étapes de la rubrique [Imposer SSL dans une application ASP.NET Core](xref:security/enforcing-ssl).
+Pour plus d'informations, consultez <xref:security/enforcing-ssl>.
+
+[!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="use-secretmanager-to-store-tokens-assigned-by-login-providers"></a>Utilisez SecretManager pour stocker les jetons affectés par les fournisseurs de connexion
 
@@ -74,7 +77,7 @@ Utilisez les rubriques suivantes pour configurer votre application pour utiliser
 * Instructions pour [Microsoft](xref:security/authentication/microsoft-logins)
 * Instructions pour les [autres fournisseurs](xref:security/authentication/otherlogins)
 
-[!INCLUDE[](~/includes/chain-auth-providers.md)]
+[!INCLUDE[](includes/chain-auth-providers.md)]
 
 ## <a name="optionally-set-password"></a>Définition facultative d’un mot de passe
 

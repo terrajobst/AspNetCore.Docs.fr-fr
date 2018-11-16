@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/01/2018
 uid: signalr/hubcontext
-ms.openlocfilehash: ce350147e743df7f1671dd86da7c83f04bf0fe22
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 6630a99a9598d99d029090b97ac18815459eacc4
+ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569932"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51708346"
 ---
 # <a name="send-messages-from-outside-a-hub"></a>Envoyer des messages depuis en dehors d’un concentrateur
 
@@ -44,7 +44,7 @@ Maintenant, avec accès à une instance de `IHubContext`, vous pouvez appeler de
 Accéder au `IHubContext` dans le pipeline d’intergiciel (middleware) comme suit :
 
 ```csharp
-app.Use(next => async (context) =>
+app.Use(async (context, next) =>
 {
     var hubContext = context.RequestServices
                             .GetRequiredService<IHubContext<MyHub>>();
