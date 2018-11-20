@@ -2,23 +2,26 @@
 title: Implémentation du serveur web Kestrel dans ASP.NET Core
 author: guardrex
 description: Découvrez plus d’informations sur Kestrel, serveur web multiplateforme pour ASP.NET Core.
-monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 11/12/2018
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: a26726a824db31e07b881dbfa8dc2ef37d4d3492
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 793aa6e190da0170a395292ea661f7c828f817c1
+ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505763"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597808"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web Kestrel dans ASP.NET Core
 
 Par [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher) et [Stephen Halter](https://twitter.com/halter73)
 
+::: moniker range="<= aspnetcore-1.1"
+
 Pour obtenir la version 1.1 de cette rubrique, téléchargez [Kestrel web server implementation in ASP.NET Core (version 1.1, PDF)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/Kestrel_1.1.pdf).
+
+::: moniker-end
 
 Kestrel est un [serveur web multiplateforme pour ASP.NET Core](xref:fundamentals/servers/index). Kestrel est le serveur web inclus par défaut dans les modèles de projets ASP.NET Core.
 
@@ -465,7 +468,7 @@ Spécifiez les URL avec :
 
 Pour plus d’informations, consultez [URL de serveur](xref:fundamentals/host/web-host#server-urls) et [Remplacer la configuration](xref:fundamentals/host/web-host#override-configuration).
 
-La valeur fournie avec ces approches peut être un ou plusieurs points de terminaison HTTP et HTTPS (HTTPS si un certificat par défaut est disponible). Configurez la valeur sous forme de liste délimitée par des points-virgules (par exemple `"Urls": "http://localhost:8000; http://localhost:8001"`).
+La valeur fournie avec ces approches peut être un ou plusieurs points de terminaison HTTP et HTTPS (HTTPS si un certificat par défaut est disponible). Configurez la valeur sous forme de liste délimitée par des points-virgules (par exemple `"Urls": "http://localhost:8000;http://localhost:8001"`).
 
 *Remplacer le certificat par défaut dans la configuration*
 
@@ -474,7 +477,7 @@ Par défaut, [WebHost.CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.web
 Dans l’exemple de fichier *appsettings.json* suivant :
 
 * Définissez **AllowInvalid** sur `true` pour permettre l’utilisation de certificats non valides (par exemple des certificats auto-signés).
-* Tout point de terminaison HTTPS qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut**  ou au certificat de développement.
+* Tout point de terminaison HTTPS qui ne spécifie pas de certificat (**HttpsDefaultCert** dans l’exemple qui suit) revient au certificat défini sous **Certificats** > **Par défaut** ou au certificat de développement.
 
 ```json
 {
