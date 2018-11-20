@@ -2,23 +2,26 @@
 title: Hôte web ASP.NET Core
 author: guardrex
 description: Découvrez l’hôte web dans ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
-monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 11/12/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: a3601b71c65321af56644eb87c4527d6290e4378
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 5af09ad715768d51ce8ef2c8425cc51ebada6859
+ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505815"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597821"
 ---
 # <a name="aspnet-core-web-host"></a>Hôte web ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
+::: moniker range="<= aspnetcore-1.1"
+
 Pour obtenir la version 1.1 de cette rubrique, téléchargez [ASP.NET Core Web Host (version 1.1, PDF)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/Web-Host_1.1.pdf).
+
+::: moniker-end
 
 Les applications ASP.NET Core configurent et lancent un *hôte*. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. Au minimum, l’hôte configure un serveur ainsi qu’un pipeline de traitement des requêtes. Cette rubrique traite de l’hôte web ASP.NET Core ([IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)), qui est utile pour l’hébergement d’applications web. Pour découvrir l’hôte générique .NET ([IHostBuilder](/dotnet/api/microsoft.extensions.hosting.ihostbuilder)), consultez <xref:fundamentals/host/generic-host>.
 
