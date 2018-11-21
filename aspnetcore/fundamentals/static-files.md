@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 5d00e6ba57053d17b45a24a1c57a446cb3db22ca
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: fb92141b1864574242b29ecc386024ce72a6be87
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207132"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570124"
 ---
 # <a name="static-files-in-aspnet-core"></a>Fichiers statiques dans ASP.NET Core
 
@@ -96,7 +96,7 @@ Considérez une hiérarchie de répertoires dans laquelle les fichiers statiques
   * **images**
       * *banner1.svg*
 
-Vous permettez à une requête d’accéder au fichier *banner1.svg* en configurant le middleware des fichiers statiques comme suit :
+Vous permettez à une requête d’accéder au fichier *banner1.svg* en configurant le middleware (intergiciel) des fichiers statiques comme suit :
 
 [!code-csharp[](static-files/samples/1x/StartupTwoStaticFiles.cs?name=snippet_ConfigureMethod&highlight=5-10)]
 
@@ -122,10 +122,10 @@ Les fichiers peuvent être mis en cache publiquement pendant 10 minutes (600 s
 
 Le middleware de fichiers statiques ne fournit pas de vérification des autorisations. Tous les fichiers qu’il délivre, notamment ceux sous *wwwroot*, sont accessibles publiquement. Pour délivrer des fichiers en fonction d’une autorisation :
 
-* Stockez-les en dehors de *wwwroot* et de tout répertoire accessible au middleware de fichiers statiques **et**
+* Stockez-les en dehors de *wwwroot* et de tout répertoire accessible au middleware de fichiers statiques.
 * Délivrez-les via une méthode d’action à laquelle une autorisation est appliquée. Retournez un objet [FileResult](/dotnet/api/microsoft.aspnetcore.mvc.fileresult) :
 
-[!code-csharp[](static-files/samples/1x/Controllers/HomeController.cs?name=snippet_BannerImageAction)]
+  [!code-csharp[](static-files/samples/1x/Controllers/HomeController.cs?name=snippet_BannerImageAction)]
 
 ## <a name="enable-directory-browsing"></a>Activer l’exploration des répertoires
 
@@ -154,7 +154,7 @@ La définition d’une page d’accueil par défaut donne aux visiteurs un point
 [!code-csharp[](static-files/samples/1x/StartupEmpty.cs?name=snippet_ConfigureMethod&highlight=3)]
 
 > [!IMPORTANT]
-> `UseDefaultFiles` doit être appelé avant `UseStaticFiles` pour délivrer le fichier par défaut. `UseDefaultFiles` est un module de réécriture d’URL qui ne délivre pas réellement le fichier. Activer le middleware de fichiers statiques via `UseStaticFiles` pour délivrer le fichier.
+> `UseDefaultFiles` doit être appelé avant `UseStaticFiles` pour délivrer le fichier par défaut. `UseDefaultFiles` est un module de réécriture d’URL qui ne délivre pas réellement le fichier. Activez le middleware de fichiers statiques via `UseStaticFiles` pour délivrer le fichier.
 
 Avec `UseDefaultFiles`, les requêtes sur un dossier recherchent :
 

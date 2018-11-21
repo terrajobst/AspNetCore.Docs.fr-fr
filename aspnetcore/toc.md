@@ -34,7 +34,7 @@
 ## [Démarrage des applications](xref:fundamentals/startup)
 ## [Injection de dépendances (services)](xref:fundamentals/dependency-injection)
 ## [Le routage](xref:fundamentals/routing)
-## [Environnements multiples](xref:fundamentals/environments)
+## [Environnements (développement, intermédiaire, production)](xref:fundamentals/environments)
 ## [Configuration](xref:fundamentals/configuration/index)
 ## [Options](xref:fundamentals/configuration/options)
 ## [Journalisation](xref:fundamentals/logging/index)
@@ -432,6 +432,7 @@
 ## [Compression des réponses](xref:performance/response-compression)
 
 # Migration
+## [2.1 à 2.2](xref:migration/21-to-22)
 ## [2.0 à 2.1](xref:migration/20_21)
 ## 1.x à 2.0
 ### [Vue d’ensemble](xref:migration/1x-to-2x/index)

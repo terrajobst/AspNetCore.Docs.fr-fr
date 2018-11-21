@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment configurer le module ASP.NET Core pour héberger des applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 11/12/2018
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: ca86b1548c7c28a64fd391617b2e8290c1c264cf
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: 32fbf2b19da2d088847279f447f9a72cedcf8085
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191358"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570176"
 ---
 # <a name="aspnet-core-module-configuration-reference"></a>Informations de référence sur la configuration du Module ASP.NET Core
 
@@ -132,6 +132,8 @@ Le fichier *web.config* suivant est publié pour un [déploiement autonome](/dot
   </location>
 </configuration>
 ```
+
+La propriété <xref:System.Configuration.SectionInformation.InheritInChildApplications*> est définie sur `false` pour indiquer que les paramètres spécifiés dans l’élément [\<emplacement>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) ne sont pas hérités par les applications qui se trouvent dans un sous-répertoire de l’application.
 
 ::: moniker-end
 
@@ -280,13 +282,13 @@ Pour l’hébergement in-process, si le module ASP.NET Core ne peut pas démarre
 
 Pour l’hébergement out-of-process, si le module ASP.NET Core ne peut pas lancer le processus backend ou que ce dernier démarre mais ne parvient pas à écouter sur le port configuré, une page de code d’état *502.5 - Échec du processus* s’affiche.
 
-Pour supprimer cette page et revenir à la page IIS de codes d’état 5xx par défaut, utilisez l’attribut `disableStartUpErrorPage`. Pour plus d’informations sur la configuration des messages d’erreur personnalisés, consultez [Erreurs HTTP &lt;httpErrors&gt;](/iis/configuration/system.webServer/httpErrors/).
+Pour supprimer cette page et revenir à la page IIS de codes d’état 5xx par défaut, utilisez l’attribut `disableStartUpErrorPage`. Pour plus d’informations sur la configuration des messages d’erreur personnalisés, consultez [Erreurs HTTP \<httpErrors>](/iis/configuration/system.webServer/httpErrors/).
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-2.2"
 
-Si le module ASP.NET Core ne peut pas lancer le processus backend ou que ce dernier démarre mais ne parvient pas à écouter sur le port configuré, une page de code d’état *502.5 - Échec du processus* s’affiche. Pour supprimer cette page et revenir à la page IIS de code d’état 502 par défaut, utilisez l’attribut `disableStartUpErrorPage`. Pour plus d’informations sur la configuration des messages d’erreur personnalisés, consultez [Erreurs HTTP &lt;httpErrors&gt;](/iis/configuration/system.webServer/httpErrors/).
+Si le module ASP.NET Core ne peut pas lancer le processus backend ou que ce dernier démarre mais ne parvient pas à écouter sur le port configuré, une page de code d’état *502.5 - Échec du processus* s’affiche. Pour supprimer cette page et revenir à la page IIS de code d’état 502 par défaut, utilisez l’attribut `disableStartUpErrorPage`. Pour plus d’informations sur la configuration des messages d’erreur personnalisés, consultez [Erreurs HTTP \<httpErrors>](/iis/configuration/system.webServer/httpErrors/).
 
 ![Page de code d’état 502.5 Échec du processus](aspnet-core-module/_static/ANCM-502_5.png)
 

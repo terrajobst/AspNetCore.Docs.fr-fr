@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/10/2018
+ms.date: 11/16/2018
 uid: index
-ms.openlocfilehash: 1699acc0086dfd50c573afc239bc8f37eb9e7af9
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: ccf00316218c0787136193a7acaf55b8687c6ede
+ms.sourcegitcommit: 04b55a5ce9d649ff2df926157ec28ae47afe79e2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569986"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52156943"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -77,7 +77,9 @@ La plupart des articles et tutoriels contiennent des liens vers des exemples de 
 1. Décompressez le fichier *Docs-master.zip*.
 1. Utilisez l’URL contenue dans l’exemple de lien pour vous aider à naviguer dans l’exemple de répertoire.
 
-Pour montrer plusieurs scénarios, les exemples d’applications utilisent les instructions C# `#define` et `#if-#else/#elif-#endif` pour compiler et exécuter différentes sections de l’exemple de code de manière sélective. Pour ces exemples qui utilisent cette approche, définissez l’instruction `#define` en haut des fichiers C# pour le symbole associé au scénario que vous souhaitez exécuter. Un exemple peut vous obliger à définir le symbole en haut de plusieurs fichiers afin d’exécuter un scénario.
+### <a name="preprocessor-directives-in-sample-code"></a>Directives de préprocesseur dans l’exemple de code
+
+Pour illustrer plusieurs scénarios, les exemples d’applications utilisent les instructions C# `#define` et `#if-#else/#elif-#endif` pour compiler et exécuter différentes sections de l’exemple de code de manière sélective. Pour ces exemples qui utilisent cette approche, définissez l’instruction `#define` en haut des fichiers C# pour le symbole associé au scénario que vous souhaitez exécuter. Certains exemples exigent que vous définissiez le symbole en haut de plusieurs fichiers afin d’exécuter un scénario.
 
 Par exemple, la liste des symboles `#define` suivante indique que les quatre scénarios sont disponibles (un scénario par symbole). La configuration actuelle de l’exemple exécute le scénario `TemplateCode` :
 
@@ -92,6 +94,33 @@ Pour que l’exemple exécute le scénario `ExpandDefault`, définissez le symbo
 ```
 
 Pour plus d’informations sur l’utilisation des [directives de préprocesseur C#](/dotnet/csharp/language-reference/preprocessor-directives/) pour compiler de façon sélective des sections de code, consultez [#define (Référence C#)](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-define) et [#if (Référence C#) ](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if).
+
+### <a name="regions-in-sample-code"></a>Régions dans l’exemple de code
+
+Certains exemples d’applications contiennent des sections de code entourées d’instructions C# [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) et [#end-region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion). Le système de génération de documentation injecte ces régions dans les rubriques de documentation affichées.  
+
+Les noms des régions contiennent généralement le mot « snippet ». L’exemple suivant montre une région nommée `snippet_FilterInCode` :
+
+```csharp
+#region snippet_FilterInCode
+WebHost.CreateDefaultBuilder(args)
+    .UseStartup<Startup>()
+    .ConfigureLogging(logging =>
+        logging.AddFilter("System", LogLevel.Debug)
+            .AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Trace))
+            .Build();
+#endregion
+```
+
+L’extrait de code C# précédent est référencé dans le fichier Markdown de la rubrique avec la ligne suivante :
+
+```
+[!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
+```
+
+Vous pouvez sans risque ignorer (ou supprimer) les instructions `#region` et `#end-region` qui entourent le code. Ne modifiez pas le code dans ces instructions si vous prévoyez d’exécuter les exemples de scénarios décrits dans la rubrique. N’hésitez pas à modifier le code quand vous testez d’autres scénarios.
+
+Pour plus d’informations, consultez [Contribuer à la documentation ASP.NET : extraits de code](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets).
 
 ## <a name="next-steps"></a>Étapes suivantes
 

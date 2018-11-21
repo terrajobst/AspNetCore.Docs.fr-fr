@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Découvrez comment ajouter Swashbuckle à votre projet d’API web ASP.NET Core pour intégrer l’IU Swagger.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 11/14/2018
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 945a2ebe138ba6a1f6029f9e867887b1ce8d628f
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: 9832e1ea2b59085b6680820469b16d549f4b0582
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191280"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635340"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Bien démarrer avec Swashbuckle et ASP.NET Core
 
@@ -97,7 +97,7 @@ Dans la méthode `Startup.Configure`, activez l’intergiciel pour traiter le do
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup2.cs?name=snippet_Configure&highlight=4,8-11)]
 
-L’appel de méthode `UseSwaggerUI` précédent active le [middleware Fichiers statiques](xref:fundamentals/static-files). Si vous ciblez le .NET Framework ou .NET Core 1.x, ajoutez le package NuGet [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) au projet.
+L’appel de méthode `UseSwaggerUI` précédent active le [middleware (intergiciel) des fichiers statiques](xref:fundamentals/static-files). Si vous ciblez le .NET Framework ou .NET Core 1.x, ajoutez le package NuGet [Microsoft.AspNetCore.StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) au projet.
 
 Lancez l’application et accédez à `http://localhost:<port>/swagger/v1/swagger.json`. Le document généré décrivant les points de terminaison s’affiche comme illustré dans la [spécification Swagger (swagger.json)](xref:tutorials/web-api-help-pages-using-swagger#swagger-specification-swaggerjson).
 
@@ -107,6 +107,8 @@ L’IU Swagger se trouve à l’adresse `http://localhost:<port>/swagger`. Explo
 > Pour utiliser l’IU Swagger à la racine de l’application (`http://localhost:<port>/`), définissez la propriété `RoutePrefix` sur une chaîne vide :
 >
 > [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup3.cs?name=snippet_UseSwaggerUI&highlight=4)]
+
+Si vous utilisez des répertoires virtuels (par exemple avec IIS ou un proxy inverse), définissez le point de terminaison Swagger sur un chemin relatif avec le préfixe `./`. Par exemple, `./swagger/v1/swagger.json`. L’utilisation de `/swagger/v1/swagger.json` indique à l’application de rechercher le fichier JSON à la racine réelle de l’URL (plus le préfixe de la route s’il est utilisé). Par exemple, `http://localhost:<port>/<route_prefix>/swagger/v1/swagger.json` au lieu de `http://localhost:<port>/<virtual_directory>/<route_prefix>/swagger/v1/swagger.json`.
 
 ## <a name="customize-and-extend"></a>Personnaliser et étendre
 
@@ -401,7 +403,7 @@ Si vous ciblez le .NET Framework ou .NET Core 1.x, ajoutez le package NuGet [Mic
 
 Le package NuGet précédent est déjà installé si vous ciblez .NET Core 2.x et que vous utilisez le [métapackage](xref:fundamentals/metapackage).
 
-Activez l’intergiciel des fichiers statiques :
+Activez le middleware de fichiers statiques :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Startup.cs?name=snippet_Configure&highlight=3)]
 

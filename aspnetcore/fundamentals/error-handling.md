@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/01/2018
 uid: fundamentals/error-handling
-ms.openlocfilehash: 89117d78486493747d649c3bb0d9cce9f97ef419
-ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
+ms.openlocfilehash: fbc86d36f66e71e6ebd84f536148fba2e3c452d8
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50968317"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570059"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -109,7 +109,7 @@ Ajoutez une ligne à la méthode `Startup.Configure` :
 app.UseStatusCodePages();
 ```
 
-<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> doit être appelé avant les middleware de gestion des requêtes dans le pipeline (comme le middleware des fichiers statiques et le middleware MVC).
+<xref:Microsoft.AspNetCore.Builder.StatusCodePagesExtensions.UseStatusCodePages*> doit être appelé avant les middlewares de gestion des requêtes dans le pipeline (comme le middleware de fichiers statiques et le middleware MVC).
 
 Par défaut, le middleware de pages de codes d’état ajoute des gestionnaires de texte uniquement pour les codes d’état courants, comme 404 :
 

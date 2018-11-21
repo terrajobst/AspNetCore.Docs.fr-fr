@@ -4,14 +4,14 @@ author: tdykstra
 description: Découvrez comment la liaison de modèle dans ASP.NET Core MVC mappe les données des requêtes HTTP à des paramètres de méthode d’action.
 ms.assetid: 0be164aa-1d72-4192-bd6b-192c9c301164
 ms.author: tdykstra
-ms.date: 08/14/2018
+ms.date: 11/13/2018
 uid: mvc/models/model-binding
-ms.openlocfilehash: 0ce20a8040c6b19da1f57e1c053a7ef81d8bcb23
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
+ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41751630"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597782"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -55,7 +55,7 @@ Comme la liaison de modèle a demandé une clé nommée `id` et qu’aucun élé
 
 Jusqu’à présent, l’exemple utilise des types simples. Dans MVC, les types simples sont tous les types primitifs .NET ou les types avec un convertisseur de type chaîne. Si le paramètre de la méthode d’action était une classe comme le type `Movie`, qui contient à la fois des types simples et des comme complexes comme propriétés, la liaison de modèle de MVC pourrait le gérer correctement. Il utilise la réflexion et la récursivité pour parcourir les propriétés des types complexes en recherchant des correspondances. La liaison de modèle recherche le modèle *nom_paramètre.nom_propriété* pour lier des valeurs aux propriétés. S’il ne trouve pas de valeurs correspondantes de ce formulaire, il tente de lier en utilisant seulement le nom de propriété. Pour des types comme `Collection`, la liaison de modèle recherche des correspondances avec *nom_paramètre[index]* ou simplement avec *[index]*. La liaison de modèle traite les types `Dictionary` de la même façon, en demandant *nom_paramètre[clé]* ou simplement *[clé]*, à condition que les clés soient des types simples. Les clés qui sont prises en charge correspondent aux noms de champ HTML et aux helpers de balise générés pour le même type de modèle. Ceci permet l’aller-retour des valeurs, de sorte que les champs de formulaire restent remplis avec l’entrée de l’utilisateur pour lui faciliter la tâche, par exemple quand les données liées à partir d’une création ou d’une modification n’ont pas été validées.
 
-Pour que la liaison puisse se faire, la classe doit avoir un constructeur public par défaut et le membre à lier doit être constitué de propriétés publiques accessibles en écriture. Quand la liaison de modèle se produit, la classe est seulement instanciée avec le constructeur public par défaut, puis les propriétés peuvent être définies.
+Pour rendre possible la liaison de modèle, la classe doit avoir un constructeur public par défaut et des propriétés publiques accessibles en écriture à lier. Quand la liaison de modèle se produit, la classe est instanciée avec le constructeur public par défaut, puis les propriétés peuvent être définies.
 
 Quand un paramètre est lié, la liaison de modèle cesse de rechercher des valeurs avec ce nom et elle passe à la liaison du paramètre suivant. Sinon, le comportement de la liaison de modèle par défaut définit les paramètres à leurs valeurs par défaut en fonction de leur type :
 

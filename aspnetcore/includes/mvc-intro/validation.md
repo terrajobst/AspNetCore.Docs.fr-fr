@@ -60,7 +60,7 @@ Vous pouvez définir un point d’arrêt dans la méthode `[HttpPost] Create` et
 
 L’illustration suivante montre comment désactiver JavaScript dans le navigateur FireFox.
 
-![Firefox : dans Options, sous l’onglet Contenu, décochez la case Activer Javascript.](~/tutorials/first-mvc-app/validation/_static/ff.png)
+![Firefox : dans Options, sous l’onglet Contenu, décochez la case Activer JavaScript.](~/tutorials/first-mvc-app/validation/_static/ff.png)
 
 L’illustration suivante montre comment désactiver JavaScript dans le navigateur Chrome.
 

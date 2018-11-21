@@ -15,7 +15,7 @@ Le code précédent :
 * Définit une classe de contrôleur d’API sans méthodes.
 * Crée un nouvel élément Todo lorsque `TodoItems` est vide. Vous ne pourrez pas supprimer tous les éléments Todo, car le constructeur en crée un nouveau lorsque `TodoItems` est vide.
 
-Dans les sections suivantes, des méthodes sont ajoutées pour implémenter l’API. La classe est annotée avec un attribut `[ApiController]` pour activer certaines fonctionnalités utiles. Pour plus d’informations sur les fonctionnalités activées par l’attribut, consultez [Annotation avec ApiControllerAttribute](xref:web-api/index#annotation-with-apicontrollerattribute).
+Dans les sections suivantes, des méthodes sont ajoutées pour implémenter l’API. La classe est annotée avec un attribut `[ApiController]` pour activer certaines fonctionnalités utiles. Pour plus d’informations sur les fonctionnalités activées par l’attribut, consultez [Annotation avec l’attribut ApiController](xref:web-api/index#annotation-with-apicontroller-attribute).
 
 ::: moniker-end
 

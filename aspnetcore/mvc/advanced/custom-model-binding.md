@@ -3,14 +3,14 @@ title: Liaison de données personnalisée dans ASP.NET Core
 author: ardalis
 description: Découvrez comment la liaison de données permet aux actions du contrôleur de fonctionner directement avec des types de modèle dans ASP.NET Core.
 ms.author: riande
-ms.date: 04/10/2017
+ms.date: 11/13/2018
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: dc901aea3c20e7f2e955f39d923216de70ef015b
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 1da42829270e8ff4a626a45aec4d4e825062bd4f
+ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090405"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635288"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>Liaison de données personnalisée dans ASP.NET Core
 
@@ -87,11 +87,14 @@ L’exemple suivant utilise l’attribut `ModelBinder` pour le modèle `Author`�
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Data/Author.cs?highlight=10)]
 
-Dans le code précédent, l’attribut `ModelBinder` spécifie le type de `IModelBinder` à utiliser pour lier les paramètres d’action de `Author`. 
+Dans le code précédent, l’attribut `ModelBinder` spécifie le type de `IModelBinder` à utiliser pour lier les paramètres d’action de `Author`.
 
-`AuthorEntityBinder` est utilisé pour lier un paramètre `Author` en récupérant (fetch) l’entité à partir d’une source de données via Entity Framework Core et `authorId` :
+La classe `AuthorEntityBinder` suivante est utilisée pour lier un paramètre `Author` en récupérant (fetch) l’entité à partir d’une source de données via Entity Framework Core et `authorId` :
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinder.cs?name=demo)]
+
+> [!NOTE]
+> La classe `AuthorEntityBinder` précédente est destinée à illustrer un classeur de modèles personnalisé. La classe n’est pas destinée à illustrer les bonnes pratiques pour un scénario de recherche. Pour la recherche, liez `authorId` et interrogez la base de données dans une méthode d’action. Cette approche sépare les échecs de liaison des modèles des cas `NotFound`.
 
 Le code suivant montre comment utiliser `AuthorEntityBinder` dans une méthode d’action :
 
@@ -107,7 +110,7 @@ Vous pouvez appliquer l’attribut `ModelBinder` à des propriétés de modèle 
 
 ### <a name="implementing-a-modelbinderprovider"></a>Implémentation de ModelBinderProvider
 
-Au lieu d’appliquer un attribut, vous pouvez implémenter `IModelBinderProvider`. C’est ainsi que les classeurs de framework intégrés sont implémentés. Quand vous spécifiez le type sur lequel votre classeur opère, vous spécifiez le type d’argument qu’il produit, et **non** l’entrée que votre classeur accepte. Le fournisseur de classeurs suivant fonctionne avec `AuthorEntityBinder`. Quand il est ajouté à la collection de fournisseurs de MVC, vous n’avez pas besoin d’utiliser l’attribut `ModelBinder` sur `Author` ou les paramètres typés de `Author`.
+Au lieu d’appliquer un attribut, vous pouvez implémenter `IModelBinderProvider`. C’est ainsi que les classeurs de framework intégrés sont implémentés. Quand vous spécifiez le type sur lequel votre classeur opère, vous spécifiez le type d’argument qu’il produit, et **non** l’entrée que votre classeur accepte. Le fournisseur de classeurs suivant fonctionne avec `AuthorEntityBinder`. Quand il est ajouté à la collection de fournisseurs de MVC, vous n’avez pas besoin d’utiliser l’attribut `ModelBinder` sur `Author` ou sur les paramètres typés de `Author`.
 
 [!code-csharp[](custom-model-binding/sample/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
 
@@ -130,6 +133,7 @@ L’ajout de votre fournisseur à la fin de la collection peut entraîner l’ap
 ## <a name="recommendations-and-best-practices"></a>Recommandations et bonnes pratiques
 
 Les classeurs de modèles personnalisés :
+
 - Ne doivent pas tenter de définir des codes d’état ou de retourner des résultats (par exemple, 404 Introuvable). En cas d’échec de la liaison de données, un [filtre d’action](xref:mvc/controllers/filters) ou une logique située dans la méthode d’action elle-même doit prendre en charge l’erreur.
 - Sont surtout utiles pour éliminer le code répétitif et les problèmes transversaux des méthodes d’action.
 - Ne doivent pas être utilisés pour convertir une chaîne en type personnalisé. En règle générale, [`TypeConverter`](/dotnet/api/system.componentmodel.typeconverter) est une meilleure option.

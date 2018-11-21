@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 08/01/2018
 uid: fundamentals/file-providers
-ms.openlocfilehash: 3274615a0d6b6f928301ce97d18f5d9768963a30
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 5d0d46ba82cd84e48e5a9b23d6d330d8888beb41
+ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207314"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51570098"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Steve Smith](https://ardalis.com/) et [Luke Latham](https://github.com/guar
 ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers. Des fournisseurs de fichiers sont utilisés dans l’infrastructure ASP.NET Core :
 
 * [IHostingEnvironment](/dotnet/api/microsoft.extensions.hosting.ihostingenvironment) expose la racine web et la racine de contenu de l’application sous la forme de types `IFileProvider`.
-* [L’intergiciel (middleware) des fichiers statiques](xref:fundamentals/static-files) utilise des fournisseurs de fichiers pour localiser les fichiers statiques.
+* [L’intergiciel (middleware) de fichiers statiques](xref:fundamentals/static-files) utilise des fournisseurs de fichiers pour localiser les fichiers statiques.
 * [Razor](xref:mvc/views/razor) utilise des fournisseurs de fichiers pour localiser des pages et des vues.
 * Les outils .NET Core utilisent des fournisseurs de fichiers et des modèles d’utilisation des caractères génériques pour spécifier les fichiers qui doivent être publiés.
 
