@@ -1,17 +1,17 @@
 ---
 title: Bien démarrer avec ASP.NET Core
 author: rick-anderson
-description: Tutoriel rapide qui crée et exécute une application Hello World simple à l’aide d’ASP.NET Core.
+description: Didacticiel rapide qui crée et exécute une application Hello World simple à l’aide d’ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/31/2018
 uid: getting-started
-ms.openlocfilehash: 4a5a0cc5a5dab2171ab8ef43818185a4ee91af0e
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 4c899ff3c087f1b569521c6e2e8458fca01d6061
+ms.sourcegitcommit: bdfba5e7575b2a786ef27c0edf688c7dbd09ee95
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912564"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288640"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
@@ -20,7 +20,7 @@ Ce tutoriel montre comment utiliser l’interface de ligne de commande .NET Core
 > [!div class="checklist"]
 > * Créer un projet application web.
 > * Activer HTTPS localement.
-> * Exécuter l’application.
+> * Exécutez l’application.
 > * Modifier une page Razor.
 
 À la fin du tutoriel, vous disposerez d’une application web qui fonctionne et s’exécute sur votre machine locale.
@@ -110,3 +110,8 @@ Pour en savoir plus sur ASP.NET Core, consultez la présentation :
 
 > [!div class="nextstepaction"]
 > <xref:index>
+
+
+
+> [!NOTE]
+> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
