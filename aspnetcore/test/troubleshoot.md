@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: Comprenez et résolvez les avertissements et les erreurs avec les projets ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/26/2018
 uid: test/troubleshoot
-ms.openlocfilehash: 150f2192bb4b6dd0d330fd678d9c5fa0bf31673e
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7a3361970bde2b8761c76884fc1905957d075c5c
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090109"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450773"
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>Résoudre les problèmes des projets ASP.NET Core
 
@@ -67,3 +67,97 @@ Cet avertissement apparaît lorsque la variable d’environnement `PATH` ne poin
 
 * Installer ou vérifiez que le SDK .NET Core est installé.
 * Vérifiez que le `PATH` variable d’environnement pointe vers l’emplacement dans lequel le SDK est installé. Le programme d’installation définit normalement le `PATH`.
+
+## <a name="obtain-data-from-an-app"></a>Obtenir des données à partir d’une application
+
+Si une application est capable de répondre aux demandes, vous pouvez obtenir les données suivantes à partir de l’application à l’aide d’intergiciel (middleware) :
+
+* Demande &ndash; (méthode), schéma, hôte, pathbase, le chemin d’accès, chaîne de requête, en-têtes
+* Connexion &ndash; adresse IP distante, port distant, adresse IP locale, port local, certificat client
+* Identité &ndash; nom, nom d’affichage
+* Paramètres de configuration
+* Variables d’environnement
+
+Placez le code suivant [intergiciel (middleware)](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder) code au début de la `Startup.Configure` pipeline de traitement de demande de la méthode. L’environnement est vérifié avant l’exécution de l’intergiciel (middleware) pour vous assurer que le code est exécuté uniquement dans l’environnement de développement.
+
+Pour obtenir l’environnement, utilisez une des approches suivantes :
+
+* Injecter le `IHostingEnvironment` dans le `Startup.Configure` (méthode) et la vérification de l’environnement avec la variable locale. L’exemple de code suivant illustre cette approche.
+
+* Affecter l’environnement à une propriété dans la `Startup` classe. Vérifier l’environnement à l’aide de la propriété (par exemple, `if (Environment.IsDevelopment())`).
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
+    IConfiguration config)
+{
+    if (env.IsDevelopment())
+    {
+        app.Run(async (context) =>
+        {
+            var sb = new StringBuilder();
+            var nl = System.Environment.NewLine;
+            var rule = string.Concat(nl, new string('-', 40), nl);
+            var authSchemeProvider = app.ApplicationServices
+                .GetRequiredService<IAuthenticationSchemeProvider>();
+
+            sb.Append($"Request{rule}");
+            sb.Append($"{DateTimeOffset.Now}{nl}");
+            sb.Append($"{context.Request.Method} {context.Request.Path}{nl}");
+            sb.Append($"Scheme: {context.Request.Scheme}{nl}");
+            sb.Append($"Host: {context.Request.Headers["Host"]}{nl}");
+            sb.Append($"PathBase: {context.Request.PathBase.Value}{nl}");
+            sb.Append($"Path: {context.Request.Path.Value}{nl}");
+            sb.Append($"Query: {context.Request.QueryString.Value}{nl}{nl}");
+
+            sb.Append($"Connection{rule}");
+            sb.Append($"RemoteIp: {context.Connection.RemoteIpAddress}{nl}");
+            sb.Append($"RemotePort: {context.Connection.RemotePort}{nl}");
+            sb.Append($"LocalIp: {context.Connection.LocalIpAddress}{nl}");
+            sb.Append($"LocalPort: {context.Connection.LocalPort}{nl}");
+            sb.Append($"ClientCert: {context.Connection.ClientCertificate}{nl}{nl}");
+
+            sb.Append($"Identity{rule}");
+            sb.Append($"User: {context.User.Identity.Name}{nl}");
+            var scheme = await authSchemeProvider
+                .GetSchemeAsync(IISDefaults.AuthenticationScheme);
+            sb.Append($"DisplayName: {scheme?.DisplayName}{nl}{nl}");
+
+            sb.Append($"Headers{rule}");
+            foreach (var header in context.Request.Headers)
+            {
+                sb.Append($"{header.Key}: {header.Value}{nl}");
+            }
+            sb.Append(nl);
+
+            sb.Append($"Websockets{rule}");
+            if (context.Features.Get<IHttpUpgradeFeature>() != null)
+            {
+                sb.Append($"Status: Enabled{nl}{nl}");
+            }
+            else
+            {
+                sb.Append($"Status: Disabled{nl}{nl}");
+            }
+
+            sb.Append($"Configuration{rule}");
+            foreach (var pair in config.AsEnumerable())
+            {
+                sb.Append($"{pair.Path}: {pair.Value}{nl}");
+            }
+            sb.Append(nl);
+
+            sb.Append($"Environment Variables{rule}");
+            var vars = System.Environment.GetEnvironmentVariables();
+            foreach (var key in vars.Keys.Cast<string>().OrderBy(key => key, 
+                StringComparer.OrdinalIgnoreCase))
+            {
+                var value = vars[key];
+                sb.Append($"{key}: {value}{nl}");
+            }
+
+            context.Response.ContentType = "text/plain";
+            await context.Response.WriteAsync(sb.ToString());
+        });
+    }
+}
+```
