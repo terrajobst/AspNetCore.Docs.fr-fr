@@ -4,20 +4,23 @@ author: guardrex
 description: Découvrez comment héberger des applications ASP.NET Core sur Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/10/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 1b34195dc51ca8dab5e8eda10f05ff6678fbc78c
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 77fa6e1ef6a7fc707c2665826d3c1f4c2691979c
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570163"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450799"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
 Par [Luke Latham](https://github.com/guardrex)
 
 [Installer le bundle d’hébergement .NET Core](#install-the-net-core-hosting-bundle)
+
+> [!NOTE]
+> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
 
 ## <a name="supported-operating-systems"></a>Systèmes d'exploitation pris en charge
 
@@ -416,31 +419,19 @@ Pour configurer la protection des données sous IIS afin de rendre persistante l
 
   Le système de protection des données offre une prise en charge limitée de la définition d’une [stratégie au niveau de l’ordinateur](xref:security/data-protection/configuration/machine-wide-policy) par défaut pour toutes les applications qui utilisent les API de protection des données. Pour plus d'informations, consultez <xref:security/data-protection/introduction>.
 
-## <a name="sub-application-configuration"></a>Configuration de la sous-application
+## <a name="virtual-directories"></a>Répertoires virtuels
 
-Les sous-applications ajoutées sous l’application racine ne doivent pas inclure le module ASP.NET Core en tant que gestionnaire. Si le module est ajouté en guise de gestionnaire dans le fichier *web.config* d’une sous-application, une *Erreur de serveur interne 500.19* faisant référence au fichier config défaillant est reçue lors de la tentative de navigation dans la sous-application.
+Les [répertoires virtuels IIS](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories) ne sont pas pris en charge avec les applications ASP.NET Core. Une application peut être hébergée en tant que [sous-application](#sub-applications).
 
-L’exemple suivant présente un fichier *web.config* publié pour une sous-application ASP.NET Core :
+## <a name="sub-applications"></a>Sous-applications
 
-::: moniker range=">= aspnetcore-2.2"
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <location path="." inheritInChildApplications="false">
-    <system.webServer>
-      <aspNetCore processPath="dotnet" 
-        arguments=".\MyApp.dll" 
-        stdoutLogEnabled="false" 
-        stdoutLogFile=".\logs\stdout" />
-    </system.webServer>
-  </location>
-</configuration>
-```
-
-::: moniker-end
+Une application ASP.NET Core peut être hébergée en tant que [sous-application IIS](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#applications). Le chemin d'accès de la sous-application devient partie intégrante de l’URL de l’application racine.
 
 ::: moniker range="< aspnetcore-2.2"
+
+Une sous-application ne doit pas inclure le module ASP.NET Core en tant que gestionnaire. Si le module est ajouté en guise de gestionnaire dans le fichier *web.config* d’une sous-application, une *Erreur de serveur interne 500.19* faisant référence au fichier config défaillant est reçue lors de la tentative de navigation dans la sous-application.
+
+L’exemple suivant présente un fichier *web.config* publié pour une sous-application ASP.NET Core :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -473,7 +464,23 @@ Si vous hébergez une sous-application non-ASP.NET Core sous une application ASP
 
 ::: moniker-end
 
-Pour plus d’informations sur la configuration du module ASP.NET Core, consultez la rubrique [Introduction au module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) et les [Informations de référence sur la configuration du module ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+Les liens de ressources statiques au sein de la sous-application doivent utiliser la notation tilde-barre oblique (`~/`). La notation tilde-barre oblique déclenche un [Tag Helper](xref:mvc/views/tag-helpers/intro) afin d’ajouter l’élément pathbase de la sous-application au lien relatif rendu. Pour une sous-application dans `/subapp_path`, une image liée à `src="~/image.png"` est restituée sous la forme `src="/subapp_path/image.png"`. Le composant Static File Middleware de l’application racine ne traite la demande de fichiers statiques. La demande est traitée par le composant Static File Middleware de la sous-application.
+
+Si l’attribut `src` d’une ressource statique est défini sur un chemin d’accès absolu (par exemple, `src="/image.png"`), le lien apparaît sans l’élément pathbase de la sous-application. Le composant Static File Middleware de l’application racine tente de traiter la ressource à partir de l’élément [webroot](xref:fundamentals/index#web-root-webroot) de l’application racine, ce qui entraîne une erreur *404 - Introuvable*, sauf si la ressource statique est disponible depuis l’application racine.
+
+Pour héberger une application ASP.NET Core en tant que sous-application d’une autre application ASP.NET Core :
+
+1. Établissez un pool d’applications pour la sous-application. Affectez la valeur **Aucun code managé** à **Version du CLR .NET**.
+
+1. Ajoutez le site racine dans IIS Manager en plaçant la sous-application dans un dossier du site racine.
+
+1. Cliquez avec le bouton droit sur le dossier de la sous-application dans IIS Manager, puis sélectionnez **Convertir en application**.
+
+1. Dans la boîte de dialogue **Ajouter une application**, utilisez le bouton **Sélectionner** de l’option **Pool d’applications** pour affecter le pool d’applications que vous avez créé pour la sous-application. Sélectionnez **OK**.
+
+L’attribution d’un pool d’applications distinct à la sous-application est obligatoire lorsque vous utilisez le modèle d’hébergement in-process.
+
+Pour plus d’informations sur le modèle d’hébergement in-process et la configuration du module ASP.NET Core, consultez <xref:fundamentals/servers/aspnet-core-module> et <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="configuration-of-iis-with-webconfig"></a>Configuration d’IIS avec web.config
 
@@ -610,6 +617,7 @@ Repérer les erreurs courantes liées à l’hébergement d’applications ASP.N
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
+* <xref:test/troubleshoot>
 * [Présentation d’ASP.NET Core](xref:index)
 * [Site officiel de Microsoft IIS](https://www.iis.net/)
 * [Bibliothèque de contenu technique Windows Server](/windows-server/windows-server)
