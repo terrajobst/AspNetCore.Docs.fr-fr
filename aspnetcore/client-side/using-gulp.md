@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/04/2018
 uid: client-side/using-gulp
-ms.openlocfilehash: 4f383be0498b5b861bd43cc0f0685b1e62c7571b
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: e280eabecbd427f3e1418b3d7a60e0ea3df46a5a
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795516"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450604"
 ---
 # <a name="use-gulp-in-aspnet-core"></a>Utiliser Gulp dans ASP.NET Core
 
@@ -28,7 +28,7 @@ Un *exécuteur de tâches* est un outil qui automatise les tâches de développe
 
 ## <a name="gulp"></a>Gulp
 
-Gulp est un toolkit de build en continu basé sur JavaScript pour le code côté client. Il est couramment utilisé pour diffuser des fichiers côté client via une série de processus de déclenchement d’un événement spécifique dans un environnement de génération. Par exemple, Gulp peut être utilisé pour automatiser [le regroupement et la minimisation](bundling-and-minification.md) ou le nettoyage d’un environnement de développement avant une nouvelle build.
+Gulp est un toolkit de build en continu basé sur JavaScript pour le code côté client. Il est couramment utilisé pour diffuser des fichiers côté client via une série de processus de déclenchement d’un événement spécifique dans un environnement de génération. Par exemple, Gulp peut être utilisé pour automatiser [regroupement et minimisation](bundling-and-minification.md) ou le nettoyage d’un environnement de développement avant une nouvelle build.
 
 Un ensemble de tâches Gulp est défini dans *gulpfile.js*. Le code JavaScript suivant inclut les modules Gulp et spécifie les chemins d’accès de fichier pour être référencé dans les tâches à venir :
 
