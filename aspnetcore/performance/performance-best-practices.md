@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.date: 11/29/2018
 uid: performance/performance-best-practices
-ms.openlocfilehash: ced86dbc2d6f40b503493eda122d8977d6df7035
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 9f3ed97bf4d4eb371ff5ae3874234b44745cc4ca
+ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452953"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618114"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core performances meilleures pratiques
 
@@ -24,7 +24,7 @@ Cette rubrique fournit des instructions pour des performances meilleures pratiqu
 
 ## <a name="cache-aggressively"></a>Mettre en cache agressive
 
-La mise en cache est abordée en plusieurs parties de ce document. Pour plus d’informations, consultez [mettre en Cache les réponses dans ASP.NET Core](xref:performance/caching/index).
+La mise en cache est abordée en plusieurs parties de ce document. Pour plus d'informations, consultez <xref:performance/caching/response>.
 
 ## <a name="avoid-blocking-calls"></a>Éviter de bloquer les appels
 
@@ -71,7 +71,7 @@ Recommandations :
 
 * **Faire** appeler toutes les API d’accès de données de façon asynchrone.
 * **Ne le faites pas** récupérer plus de données que nécessaire. Écrire des requêtes pour retourner uniquement les données qui sont nécessaires pour la requête HTTP actuelle.
-* **Faire** envisager la mise en cache fréquemment accédé à des données récupérées à partir d’une base de données ou d’un service distant s’il est acceptable pour les données soient légèrement obsolètes. Selon le scénario, vous pouvez utiliser un [MemoryCache](xref:performance/caching/memory) ou un [DistributedCache](xref:performance/caching/distributed). Pour plus d’informations, consultez [mettre en Cache les réponses dans ASP.NET Core](xref:performance/caching/index).
+* **Faire** envisager la mise en cache fréquemment accédé à des données récupérées à partir d’une base de données ou d’un service distant s’il est acceptable pour les données soient légèrement obsolètes. Selon le scénario, vous pouvez utiliser un [MemoryCache](xref:performance/caching/memory) ou un [DistributedCache](xref:performance/caching/distributed). Pour plus d'informations, consultez <xref:performance/caching/response>.
 * Réduire les allers-retours réseau. L’objectif est de récupérer toutes les données qui seront nécessaires dans un seul appel plutôt que plusieurs appels.
 * **Faire** utiliser [pas de suivi des requêtes](/ef/core/querying/tracking#no-tracking-queries) dans Entity Framework Core lors de l’accès aux données en lecture seule. EF Core peut retourner les résultats de pas de suivi des requêtes plus efficacement.
 * **Faire** filtre et des requêtes d’agrégation LINQ (avec `.Where`, `.Select`, ou `.Sum` instructions, par exemple) afin que le filtrage est effectué par la base de données.
