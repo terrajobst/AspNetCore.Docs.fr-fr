@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/13/2018
 uid: tutorials/signalr
-ms.openlocfilehash: 8916b3659250c1bcbbc2dc9b3d466586f98bcc7e
-ms.sourcegitcommit: d3392f688cfebc1f25616da7489664d69c6ee330
+ms.openlocfilehash: 190717dc6e6f9f2766ba92aa7472f4cdea9b6827
+ms.sourcegitcommit: e7fafb153b9de7595c2558a0133f8d1c33a3bddb
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51818380"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52458528"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
@@ -30,6 +30,9 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 ![Exemple d’application SignalR](signalr/_static/signalr-get-started-finished.png)
 
 [Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+
+> [!NOTE]
+> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -227,7 +230,7 @@ Vous devez configurer le serveur SignalR pour que celui-ci transmette les requê
 * Dans le terminal intégré, exécutez la commande suivante :
 
   ```console
-  dotnet run -p SignalRChat
+  dotnet run -p SignalRChat.csproj
   ```
   
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)

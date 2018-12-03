@@ -5,12 +5,12 @@ description: Découvrez comment bien démarrer avec ASP.NET Core MVC et Visual S
 ms.author: riande
 ms.date: 10/07/2017
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: fe555e4cfcaec5d4bb8ccee00b06d1bbcaae9dcd
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 9d50607899058c887597a3d73198552d3ef5b020
+ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391204"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52710086"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio
 
@@ -23,6 +23,9 @@ Il existe trois versions de ce didacticiel :
 * macOS : [Créer une application ASP.NET Core MVC avec Visual Studio pour Mac](xref:tutorials/first-mvc-app-mac/start-mvc)
 * Windows : [Créer une application ASP.NET Core MVC avec Visual Studio](xref:tutorials/first-mvc-app/start-mvc)
 * macOS, Linux et Windows : [Créer une application ASP.NET Core MVC avec Visual Studio Code](xref:tutorials/first-mvc-app-xplat/start-mvc)
+
+> [!NOTE]
+> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
 
 ## <a name="install-visual-studio-and-net-core"></a>Installer Visual Studio et .NET Core
 
@@ -81,26 +84,7 @@ Dans la prochaine partie de ce didacticiel, nous allons découvrir MVC et commen
 
 ::: moniker range="<= aspnetcore-2.0"
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x/)
-
 [!INCLUDE [](~/includes/net-core-prereqs.md)]
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x/)
-
-Installez Visual Studio Community 2017. Sélectionnez le téléchargement Community. Ignorez cette étape si Visual Studio 2017 est installé sur votre ordinateur.
-
-* [Page d’accueil du programme d’installation de Visual Studio 2017](https://www.visualstudio.com/)
-
-Exécutez le programme d’installation et sélectionnez les charges de travail suivantes :
-
-* **ASP.NET et développement web** (sous **Web et cloud**)
-* **Développement multiplateforme .NET Core** (sous **Autres ensembles d’outils**)
-
-![**ASP.NET et développement web** (sous **Web et cloud**)](start-mvc/_static/web_workload.png)
-
-![**Développement multiplateforme .NET Core** (sous **Autres ensembles d’outils**)](start-mvc/_static/x_plat_wl.png)
-
----
 
 ## <a name="create-a-web-app"></a>Créer une application web
 
@@ -117,8 +101,6 @@ Renseignez la boîte de dialogue **Nouveau projet** :
 
 ![Boîte de dialogue Nouveau projet, .Net Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project2.png)
 
-# <a name="aspnet-core-2xtabaspnetcore2x"></a>[ASP.NET Core 2.x](#tab/aspnetcore2x)
-
 Renseignez la boîte de dialogue **Nouvelle application web ASP.NET Core (.NET Core) - MvcMovie** :
 
 * Dans la zone de liste déroulante du sélecteur de version, sélectionnez **ASP.NET Core 2.-**.
@@ -126,19 +108,6 @@ Renseignez la boîte de dialogue **Nouvelle application web ASP.NET Core (.NET 
 * Appuyez sur **OK**.
 
 ![Boîte de dialogue Nouveau projet, .Net Core dans le volet gauche, web ASP.NET Core ](start-mvc/_static/new_project22.png)
-
-# <a name="aspnet-core-1xtabaspnetcore1x"></a>[ASP.NET Core 1.x](#tab/aspnetcore1x)
-
-Renseignez la boîte de dialogue **Nouvelle application web ASP.NET Core (.NET Core) - MvcMovie** :
-
-* Dans la zone de liste déroulante du sélecteur de version, appuyez sur **ASP.NET Core 1.1**.
-* Appuyez sur **Application web**.
-* Conservez la valeur par défaut **Aucune authentification**.
-* Appuyez sur **OK**.
-
-![Nouvelle application web ASP.NET Core](start-mvc/_static/p3.png)
-
----
 
 Visual Studio a utilisé un modèle par défaut pour le projet MVC que vous venez de créer. Vous disposez maintenant d’une application fonctionnelle en entrant un nom de projet et en sélectionnant quelques options. Il s’agit d’un projet de démarrage de base qui constitue un bon point de départ.
 

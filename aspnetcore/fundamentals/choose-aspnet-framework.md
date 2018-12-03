@@ -5,12 +5,12 @@ description: Explique ASP.NET Core par rapport à ASP.NET 4.x, et comment chois
 ms.author: riande
 ms.date: 09/11/2018
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 79e56e10b756677431ceff289300c251e54bf632
-ms.sourcegitcommit: bdfba5e7575b2a786ef27c0edf688c7dbd09ee95
+ms.openlocfilehash: fa281a068dfdcd8a7c45dd5d0a0c3084c4bc8dbc
+ms.sourcegitcommit: e8d80ff566bfe505b43389d7bc4551edb1c0c872
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288666"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52549070"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Choisir entre ASP.NET 4.x et ASP.NET Core
 
@@ -63,4 +63,4 @@ Consultez [ASP.NET Core ciblant le .NET Framework](xref:index#target-framework) 
 * <xref:host-and-deploy/azure-apps/index>
 
 > [!NOTE]
-> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
+> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
