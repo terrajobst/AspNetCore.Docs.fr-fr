@@ -5,14 +5,14 @@ description: Découvrez ce qu’est la compression des réponses et comment util
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 12/01/2018
 uid: performance/response-compression
-ms.openlocfilehash: 8c3d74b6a346d51507d3c278b03ddc842feea13e
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 2516fbb30e55990dc4ad0d92069853bc26874bc9
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207977"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861886"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses dans ASP.NET Core
 
@@ -24,7 +24,7 @@ La bande passante réseau est une ressource limitée. Le fait de réduire la tai
 
 ## <a name="when-to-use-response-compression-middleware"></a>Quand utiliser l’intergiciel (middleware) de compression de réponse
 
-Utilisez les technologies de compression de réponse basées sur le serveur dans IIS, Apache ou Nginx. Les performances de l’intergiciel (middleware) ne correspondront probablement pas à celles des modules de serveur. Les serveurs [HTTP.sys](xref:fundamentals/servers/httpsys) et [Kestrel](xref:fundamentals/servers/kestrel) ne prennent pas actuellement en charge la compression intégrée.
+Utilisez les technologies de compression de réponse basées sur le serveur dans IIS, Apache ou Nginx. Les performances de l’intergiciel (middleware) ne correspondront probablement pas à celles des modules de serveur. [Serveur HTTP.sys](xref:fundamentals/servers/httpsys) serveur et [Kestrel](xref:fundamentals/servers/kestrel) serveur n’offrent actuellement pas prise en charge de la compression intégrée.
 
 Utilisez l’intergiciel (middleware) de compression de réponse dans les cas suivants :
 
@@ -33,8 +33,8 @@ Utilisez l’intergiciel (middleware) de compression de réponse dans les cas su
   * [Module Apache mod_deflate](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Décompression et compression Nginx](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Hébergement directement sur :
-  * [Serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement appelé [WebListener](xref:fundamentals/servers/weblistener))
-  * [Kestrel](xref:fundamentals/servers/kestrel)
+  * [HTTP.sys](xref:fundamentals/servers/httpsys) server (anciennement appelé [WebListener](xref:fundamentals/servers/weblistener))
+  * [Kestrel](xref:fundamentals/servers/kestrel) server
 
 ## <a name="response-compression"></a>Compression des réponses
 
@@ -432,7 +432,7 @@ Lors de la compression des réponses basés sur le `Accept-Encoding` en-tête, i
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Problème au niveau de l’intergiciel s'il est derrière un proxy inverse Nginx
 
-Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. L’intergiciel ne peut donc pas compresser la réponse. Pour plus d’informations, consultez [NGINX : Compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [Comprendre la compression pass-through pour Nginx (BasicMiddleware #123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. Suppression de la `Accept-Encoding` en-tête empêche l’intergiciel (middleware) de la compression de la réponse. Pour plus d’informations, consultez [NGINX : Compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [déterminer compression pass-through pour Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Utilisation de la compression dynamique IIS
 

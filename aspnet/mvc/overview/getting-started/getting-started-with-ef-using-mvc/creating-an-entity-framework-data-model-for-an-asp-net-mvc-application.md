@@ -3,16 +3,16 @@ uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-
 title: Bien démarrer avec Entity Framework 6 Code First avec MVC 5 | Microsoft Docs
 author: tdykstra
 ms.author: riande
-ms.date: 10/04/2018
+ms.date: 12/04/2018
 ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5dd9a5a24d8c67c5190c98e3240d132eaa27661c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: c7ab9458f83e05af84f72d9a2519a8c1c39b84b5
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912408"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861431"
 ---
 # <a name="get-started-with-entity-framework-6-code-first-using-mvc-5"></a>Bien démarrer avec Entity Framework 6 Code First avec MVC 5
 
@@ -21,7 +21,7 @@ par [Tom Dykstra](https://github.com/tdykstra)
 [Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
 > [!NOTE]
-> Un [version plus récente de cette série de didacticiels](/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.1) est disponible qui utilise [Pages Razor](/aspnet/core/razor-pages). Razor Pages est un modèle de programmation basé sur les pages qui rend plus facile et plus productive la création d’une interface utilisateur web. Nous recommandons le didacticiel de Pages Razor par rapport à la version MVC. Le didacticiel sur les pages Razor :
+> Pour tout nouveau développement, nous vous recommandons de [ASP.NET Core Razor Pages](/aspnet/core/razor-pages) sur les contrôleurs MVC ASP.NET et des vues. Une série de didacticiels semblable à celui-ci est disponible pour les Pages Razor, le [didacticiel de Pages Razor](/aspnet/core/tutorials/razor-pages/razor-pages-start):
 >
 > * est plus facile à suivre ;
 > * Fournit d’autres bonnes pratiques sur EF Core.

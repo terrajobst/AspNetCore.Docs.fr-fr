@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment exiger HTTPS/TLS dans une application web ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/18/2018
+ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: d287d30203fbf367203afe65e05478806fafab34
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: b15c6b5ac77f047c40704c9e164165c55b6ae93b
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570046"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861522"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -76,12 +76,12 @@ Spécifiez le port HTTPS en utilisant l’une des approches suivantes :
   Lorsque vous configurez un <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder> dans `Program`:
 
   [!code-csharp[](enforcing-ssl/sample-snapshot/Program.cs?name=snippet_Program&highlight=10)]
-* Indiquer un port avec le schéma sécurisé à l’aide de la `ASPNETCORE_URLS` variable d’environnement. La variable d’environnement configure le serveur. L’intergiciel (middleware) détecte indirectement le port HTTPS par le biais de <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>. (Est **pas** Professionnel dans les déploiements de proxy inverse.)
+* Indiquer un port avec le schéma sécurisé à l’aide de la `ASPNETCORE_URLS` variable d’environnement. La variable d’environnement configure le serveur. L’intergiciel (middleware) détecte indirectement le port HTTPS par le biais de <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>. Cette approche ne fonctionne pas dans les déploiements de proxy inverse.
 * Dans le développement, définir une URL HTTPS dans *launchsettings.json*. Activer le protocole HTTPS lorsque IIS Express est utilisé.
-* Configurer un point de terminaison URL HTTPS pour un déploiement de périphérie destinées au public de [Kestrel](xref:fundamentals/servers/kestrel) ou [HTTP.sys](xref:fundamentals/servers/httpsys). Uniquement **un seul port HTTPS** est utilisé par l’application. L’intergiciel (middleware) détecte le port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.
+* Configurer un point de terminaison URL HTTPS pour un déploiement de périphérie destinées au public de [Kestrel](xref:fundamentals/servers/kestrel) server ou [HTTP.sys](xref:fundamentals/servers/httpsys) server. Uniquement **un seul port HTTPS** est utilisé par l’application. L’intergiciel (middleware) détecte le port via <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature>.
 
 > [!NOTE]
-> Quand une application s’exécute derrière un proxy inverse (par exemple, IIS, IIS Express), `IServerAddressesFeature` n’est pas disponible. Le port doit être configuré manuellement. Lorsque le port n’est pas défini, les demandes ne sont pas redirigées.
+> Quand une application est exécutée dans une configuration de proxy inverse, <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> n’est pas disponible. Définissez le port à l’aide d’une des autres approches décrites dans cette section.
 
 Quand Kestrel ou HTTP.sys est utilisée comme un serveur edge de public, Kestrel ou HTTP.sys doit être configuré pour écouter sur les deux :
 

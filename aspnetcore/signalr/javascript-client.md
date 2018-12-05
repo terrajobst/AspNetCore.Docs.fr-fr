@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: 7de7abd7176e160154a458a3b90f662ba8f47f8c
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 247ccd40412cdb41f38edccbe96d4832751f12cf
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708385"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861985"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Client JavaScript ASP.NET Core SignalR
 
@@ -113,7 +113,9 @@ Une implémentation réelle serait utiliser une temporisation exponentielle ou r
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Référence API JavaScript](/javascript/api/?view=signalr-js-latest)
+* [Didacticiel de JavaScript](xref:tutorials/signalr)
+* [Didacticiel WebPack et TypeScript](xref:tutorials/signalr-typescript-webpack)
 * [Hubs](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)
 * [Publier sur Azure](xref:signalr/publish-to-azure-web-app)
-* [Autoriser les demandes de Cross-Origin (CORS) dans ASP.NET Core](xref:security/cors)
+* [Demandes de cross-Origin (CORS)](xref:security/cors)

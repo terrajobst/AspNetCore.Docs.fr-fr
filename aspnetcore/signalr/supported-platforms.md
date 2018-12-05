@@ -5,14 +5,14 @@ description: En savoir plus sur les plateformes prises en charge pour ASP.NET Co
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/31/2018
+ms.date: 11/12/2018
 uid: signalr/supported-platforms
-ms.openlocfilehash: 773f6c020dbb2982911e177b55855473c750d52a
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: be3d4d0049395fb2499bd0b4aac126e953ce7910
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758178"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861717"
 ---
 # <a name="aspnet-core-signalr-supported-platforms"></a>Plateformes prises en charge par ASP.NET Core SignalR
 
@@ -34,7 +34,7 @@ Le [client JavaScript](https://www.npmjs.com/package/@aspnet/signalr) s’exécu
  
 ## <a name="net-client"></a>Client .NET
 
-Le [client .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) s’exécute sur n’importe quelle plateforme de serveur pris en charge par ASP.NET Core.
+Le [client .NET](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) s’exécute sur n’importe quelle plateforme prise en charge par ASP.NET Core. Par exemple, [les développeurs Xamarin peuvent utiliser SignalR](https://github.com/aspnet/Announcements/issues/305) pour la création d’applications Android à l’aide de Xamarin.Android 8.4.0.1 et versions ultérieures et les applications iOS à l’aide de Xamarin.iOS 11.14.0.4 et versions ultérieures.
 
 Si le serveur exécute IIS, le transport WebSocket requiert IIS 8.0 ou version ultérieure sur Windows Server 2012 ou version ultérieure. Autres transports sont pris en charge sur toutes les plateformes.
 
