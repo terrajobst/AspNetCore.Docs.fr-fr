@@ -17,7 +17,7 @@ ms.locfileid: "50207730"
 
 Par [Damien Bowden](https://twitter.com/damien_bod) et [Tom Dykstra](https://github.com/tdykstra)
  
-Cet article montre trois façons d’implémenter un safelist IP (également appelé liste blanche) dans une application ASP.NET Core. Vous pouvez utiliser :
+Cet article montre trois façons d’implémenter un safelist IP (également appelé liste verte) dans une application ASP.NET Core. Vous pouvez utiliser :
 
 * Intergiciel (middleware) pour vérifier l’adresse IP distante de chaque demande.
 * Filtres d’action pour vérifier l’adresse IP distante de requêtes pour des contrôleurs spécifiques ou des méthodes d’action.
