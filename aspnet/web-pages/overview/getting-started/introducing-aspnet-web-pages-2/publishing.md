@@ -8,12 +8,12 @@ ms.date: 05/28/2015
 ms.assetid: 7e85c70e-1a88-4408-8b3d-29611c7713ed
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/publishing
 msc.type: authoredcontent
-ms.openlocfilehash: fe196e5db8fd1cecbe84b2eb970939303f9313d1
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: bd6611a03ee4940f5d4176ce23464f313b9ec884
+ms.sourcegitcommit: eef99d14d96dc8c3c1bb0e2c4cb14da152f8a952
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021454"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53022503"
 ---
 <a name="introducing-aspnet-web-pages---publishing-a-site-by-using-webmatrix"></a>Présentation des Pages Web ASP.NET - publication d’un Site à l’aide de WebMatrix
 ====================
@@ -50,7 +50,7 @@ Ce didacticiel contient quatre sections :
 <a id="defaultpage"></a>
 ## <a name="setting-up-the-default-page"></a>Configuration de la page par défaut
 
-Lorsqu’un utilisateur accède à l’adresse de base pour votre site web, la page par défaut pour votre site s’affiche à l’utilisateur. Par exemple, lorsque Default.htm est définie en tant que la page par défaut pour le site à www.contoso.com, puis accédez à <strong>www.contoso.com</strong> est identique à la navigation vers <strong>www.contoso.com/Default.htm</strong>.
+Lorsqu’un utilisateur accède à l’adresse de base pour votre site web, la page par défaut pour votre site s’affiche à l’utilisateur. Par exemple, lorsque *Default.htm* est défini comme la page par défaut pour le site à l’adresse `www.contoso.com`, puis en accédant à `www.contoso.com` est identique à la navigation vers `www.contoso.com/Default.htm`.
 
 Actuellement, votre site utilise **Default.cshtml** en tant que la page par défaut. Cette page est parfaite pour votre page par défaut, mais dans ce didacticiel vous n’avez ajouté aucun contenu à cette page afin de s’afficher une page vierge. Ouvrez Default.cshtml et remplacez le contenu par le code suivant.
 
