@@ -1,16 +1,17 @@
 ---
-title: DevOps avec ASP.NET Core et Azure | Intégration et déploiement continus
+title: Intégration continue et déploiement - DevOps avec ASP.NET Core et Azure
 author: CamSoper
-description: Un guide qui fournit des conseils de bout en bout sur la création d’un pipeline DevOps pour une application ASP.NET Core hébergée dans Azure.
+description: Intégration continue et le déploiement dans DevOps avec ASP.NET Core et Azure
 ms.author: scaddie
 ms.date: 10/24/2018
+ms.custom: seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: edaf2c2e1428e5e82104786d94584a4ef08f9ee3
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: e5bddde41291c9573f58d749bbf830de9ea9319d
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570085"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121588"
 ---
 # <a name="continuous-integration-and-deployment"></a>Intégration et déploiement continus
 
@@ -235,15 +236,15 @@ La définition de build **tâches** onglet répertorie les étapes individuelles
 
 Cliquez sur la définition de build **Résumé** lien pour afficher un historique des builds avec la définition de :
 
-![historique de la définition de build](media/cicd/build-definition-summary.png)
+![Historique de capture d’écran montrant build définition](media/cicd/build-definition-summary.png)
 
 Dans la page résultante, cliquez sur le lien correspondant au numéro de build unique :
 
-![page Résumé de la définition de build](media/cicd/build-definition-completed.png)
+![Page de résumé de définition de capture d’écran montrant build](media/cicd/build-definition-completed.png)
 
 Un résumé de cette build spécifique s’affiche. Cliquez sur le **artefacts** onglet et notez le *drop* dossier produit par la build est répertorié :
 
-![définition artefacts - dossier de dépôt de build](media/cicd/build-definition-artifacts.png)
+![Capture d’écran montrant les artefacts de définition de build - dossier de dépôt](media/cicd/build-definition-artifacts.png)
 
 Utilisez le **télécharger** et **Explorer** des liens pour inspecter les artefacts publiés.
 
@@ -251,25 +252,25 @@ Utilisez le **télécharger** et **Explorer** des liens pour inspecter les artef
 
 Un pipeline de mise en production a été créé avec le nom *MyFirstProject-ASP.NET Core-CD*:
 
-![vue d’ensemble du pipeline de mise en production](media/cicd/release-definition-overview.png)
+![Vue d’ensemble du pipeline capture d’écran montrant mise en production](media/cicd/release-definition-overview.png)
 
 Les deux principaux composants du pipeline de versions sont les **artefacts** et **environnements**. Clic sur la zone dans le **artefacts** section, vous affichez le panneau de configuration suivante :
 
-![artefacts de pipeline de version](media/cicd/release-definition-artifacts.png)
+![Artefacts de capture d’écran montrant version pipeline](media/cicd/release-definition-artifacts.png)
 
 Le **Source (définition de Build)** valeur représente la définition de build à laquelle est lié ce pipeline de mise en production. Le *.zip* fichier produit par une exécution réussie de la définition de build est fourni pour le *Production* environnement pour le déploiement vers Azure. Cliquez sur le *1 phase, 2 tâches* lien dans le *Production* boîte d’environnement pour afficher les tâches de pipeline de mise en production :
 
-![tâches de pipeline de mise en production](media/cicd/release-definition-tasks.png)
+![Capture d’écran affichant les tâches pipeline mise en production](media/cicd/release-definition-tasks.png)
 
 Le pipeline de mise en production est composé de deux tâches : *déployer Azure App Service à l’emplacement* et *gérer Azure App Service - échange d’emplacements*. En cliquant sur la première tâche, vous affichez la configuration de la tâche suivante :
 
-![tâche de déploiement du pipeline de versions](media/cicd/release-definition-task1.png)
+![Tâche de déploiement du pipeline de versions de capture d’écran montrant](media/cicd/release-definition-task1.png)
 
 Abonnement Azure, type de service, nom de l’application web, groupe de ressources et emplacement de déploiement sont définies dans la tâche de déploiement. Le **Package ou dossier** conserve de la zone de texte le *.zip* chemin d’accès du fichier à extraire et déployée sur le *intermédiaire* emplacement de la *mywebapp\<unique _numéro\>*  application web.
 
 En cliquant sur la tâche de permutation d’emplacement révèle la configuration de la tâche suivante :
 
-![mise en production de la tâche de pipeline slot swap](media/cicd/release-definition-task2.png)
+![Tâche de capture d’écran montrant version pipeline slot swap](media/cicd/release-definition-task2.png)
 
 L’abonnement, groupe de ressources, type de service, nom de l’application web et les détails d’emplacement de déploiement sont fournis. Le **échanger avec Production** case à cocher est activée. Par conséquent, les bits déploiement sur le *intermédiaire* emplacement sont échangé avec l’environnement de production.
 

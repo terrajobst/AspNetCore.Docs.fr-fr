@@ -1,17 +1,17 @@
 ---
-title: DevOps avec ASP.NET Core et Azure | Surveiller et déboguer
+title: Surveiller et déboguer - DevOps avec ASP.NET Core et Azure
 author: CamSoper
-description: Un guide qui fournit des conseils de bout en bout sur la création d’un pipeline DevOps pour une application ASP.NET Core hébergée dans Azure.
+description: Surveillance et le débogage de votre code en tant que partie d’une solution DevOps avec ASP.NET Core et Azure
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/monitor
-ms.openlocfilehash: c4013de574fdf34114f2ae6c6a2150d72f807578
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: e005b951aec578b396fc19dec5d2f55cbce4f664
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090184"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121607"
 ---
 # <a name="monitor-and-debug"></a>Surveiller et déboguer
 
@@ -35,7 +35,7 @@ Applications web App Service sont facilement surveillées en temps réel. Le por
 
 1. Le **vue d’ensemble** onglet affiche des informations de « at-a-glance » utiles, notamment des graphiques affichant les métriques récentes.
 
-    ![Panneau Vue d'ensemble](./media/monitoring/overview.png)
+    ![Panneau de vue d’ensemble de capture d’écran montrant](./media/monitoring/overview.png)
 
     * **HTTP 5xx**: nombre d’erreurs côté serveur, généralement des exceptions dans du code ASP.NET Core.
     * **Données entrantes**: entrée de données entrant dans votre application web.
@@ -45,7 +45,7 @@ Applications web App Service sont facilement surveillées en temps réel. Le por
 
     Plusieurs outils en libre-service pour le dépannage et l’optimisation figurent également sur cette page.
 
-    ![Outils en libre-service](./media/monitoring/wizards.png)
+    ![Capture d’écran montrant libre-service tools](./media/monitoring/wizards.png)
 
     * **Diagnostiquer et résoudre les problèmes** est un dépanneur libre-service.
     * **Application Insights** est pour le profilage des performances et le comportement de l’application et est décrit plus loin dans cette section.
@@ -103,7 +103,7 @@ Journaux du serveur web et application peuvent être diffusés en temps réel vi
 1. Ouvrez le [portail Azure](https://portal.azure.com)et accédez à la *mywebapp\<unique_number\>*  App Service.
 1. Dans le menu à gauche, faites défiler jusqu'à la **surveillance** section et sélectionnez **flux de journal**.
 
-    ![Lien de flux de données de journal](./media/monitoring/log-stream.png)
+    ![Capture d’écran montrant le lien flux journal](./media/monitoring/log-stream.png)
 
 Journaux peuvent également être [transmis en continu via Azure CLI ou Azure PowerShell](/azure/app-service/web-sites-enable-diagnostic-log#streamlogs), y compris via le Cloud Shell.
 

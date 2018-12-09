@@ -1,17 +1,17 @@
 ---
-title: DevOps avec ASP.NET Core et Azure | Outils et téléchargements
+title: Outils et téléchargements - DevOps avec ASP.NET Core et Azure
 author: CamSoper
-description: Un guide qui fournit des conseils de bout en bout sur la création d’un pipeline DevOps pour une application ASP.NET Core hébergée dans Azure.
+description: Outils et téléchargements sont nécessaires pour les opérations de développement avec ASP.NET Core et Azure.
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 573e257e6fc7614010a8749ff439f16011c2c10a
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: a12bced8826a3399d5cf347be72baf77cc39d8b6
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50089380"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121412"
 ---
 # <a name="tools-and-downloads"></a>Outils et téléchargements
 

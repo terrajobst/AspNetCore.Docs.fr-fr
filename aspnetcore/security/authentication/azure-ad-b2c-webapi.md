@@ -1,19 +1,19 @@
 ---
-title: Authentification cloud dans web API avec Azure Active Directory B2C dans ASP.NET Core
+title: Authentification dans web API avec Azure Active Directory B2C dans ASP.NET Core
 author: camsoper
 description: Découvrez comment configurer l’authentification Azure Active Directory B2C avec l’API Web ASP.NET Core. Tester l’API avec Postman de web authentifié.
 ms.author: casoper
 ms.date: 09/21/2018
-ms.custom: mvc
+ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: a7a109909d66b1016e78eedc8b802068143c65e3
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: e8ac1e33819dd369460139df25597e1aa0979c91
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348544"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121711"
 ---
-# <a name="cloud-authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification cloud dans web API avec Azure Active Directory B2C dans ASP.NET Core
+# <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification dans web API avec Azure Active Directory B2C dans ASP.NET Core
 
 Auteur : [Cam Soper](https://twitter.com/camsoper)
 
@@ -69,7 +69,7 @@ Une fois que l’API est inscrite, la liste des applications et des API dans le 
 
 Le modèle d’Application Web de Visual Studio peut être configuré pour utiliser le locataire Azure AD B2C pour l’authentification.
 
-Dans Visual Studio :
+Dans Visual Studio :
 
 1. Créez une application web ASP.NET Core. 
 2. Sélectionnez **API Web** à partir de la liste des modèles.

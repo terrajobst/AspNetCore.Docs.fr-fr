@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: H1Hack27Feb2017
 ms.date: 08/02/2017
 uid: client-side/spa-services
-ms.openlocfilehash: b0fc6be29e3ecedd9706238f439f229377bb5a63
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: ee772e67ef14608bcc6e3498ade00424ff6090e5
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256548"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121374"
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>Utiliser JavaScriptServices pour créer des Applications à Page unique dans ASP.NET Core
 
@@ -157,7 +157,7 @@ Installez les éléments suivants :
 
 Intergiciel (middleware) de Webpack Dev est inscrit dans le pipeline de requêtes HTTP via le code suivant dans le *Startup.cs* du fichier `Configure` méthode :
 
-[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=webpack-middleware-registration&highlight=4)]
+[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_WebpackMiddlewareRegistration&highlight=4)]
 
 Le `UseWebpackDevMiddleware` méthode d’extension doit être appelée avant [l’inscription de l’hébergement de fichier statique](xref:fundamentals/static-files) via la `UseStaticFiles` méthode d’extension. Pour des raisons de sécurité, inscrivez le middleware uniquement lorsque l’application s’exécute en mode de développement.
 
@@ -223,7 +223,7 @@ Installez les éléments suivants :
 
 Une méthode d’extension nommée `MapSpaFallbackRoute` est utilisé dans le `Configure` méthode :
 
-[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=mvc-routing-table&highlight=7-9)]
+[!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_MvcRoutingTable&highlight=7-9)]
 
 Conseil : Les itinéraires sont évaluées dans l’ordre dans lequel ils sont configurés. Par conséquent, le `default` itinéraire dans l’exemple de code précédent est utilisé pour les critères spéciaux.
 

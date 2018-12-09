@@ -1,17 +1,17 @@
 ---
-title: DevOps avec ASP.NET Core et Azure | Étapes suivantes
+title: Étapes suivantes - DevOps avec ASP.NET Core et Azure
 author: CamSoper
-description: Un guide qui fournit des conseils de bout en bout sur la création d’un pipeline DevOps pour une application ASP.NET Core hébergée dans Azure.
+description: Autres voies de formation pour les opérations de développement avec ASP.NET Core et Azure.
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/next-steps
-ms.openlocfilehash: b82e7251b507f8d141930673d50722cfaa576db5
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7c3b1c701b13b2a2052c72f5f84bba33d4995ad7
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50089876"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121322"
 ---
 # <a name="next-steps"></a>Étapes suivantes
 

@@ -3,15 +3,15 @@ title: Configurer l’authentification Windows dans ASP.NET Core
 author: scottaddie
 description: Découvrez comment configurer l’authentification Windows dans ASP.NET Core, à l’aide d’IIS Express, IIS, HTTP.sys et WebListener.
 ms.author: riande
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 11/01/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 87fcab75555c1dae0b2815c30d79fd4615df9660
-ms.sourcegitcommit: 85f2939af7a167b9694e1d2093277ffc9a741b23
+ms.openlocfilehash: 342759a6ff4b5679e0d54c979188ae66d339562d
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50968291"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121295"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
@@ -31,7 +31,7 @@ Le modèle d’Application Web de Visual Studio peut être configuré pour prend
 
 ### <a name="use-the-windows-authentication-app-template"></a>Utiliser le modèle d’application de l’authentification Windows
 
-Dans Visual Studio :
+Dans Visual Studio :
 
 1. Créez une application web ASP.NET Core.
 1. Sélectionnez l’Application Web à partir de la liste des modèles.
@@ -47,7 +47,7 @@ Pour le travail de développement à l’aide d’IIS Express, le modèle fourni
 
 Le projet Visual Studio **propriétés** de page **déboguer** onglet fournit des cases à cocher pour l’authentification Windows et l’authentification anonyme.
 
-![Capture d’écran de navigateur de l’authentification Windows](windowsauth/_static/vs-auth-property-menu.png)
+![Capture d’écran du navigateur de l’authentification Windows avec les options d’authentification mis en surbrillance](windowsauth/_static/vs-auth-property-menu.png)
 
 Vous pouvez également ces deux propriétés peuvent être configurées dans le *launchSettings.json* fichier :
 

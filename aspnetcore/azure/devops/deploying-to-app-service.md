@@ -1,17 +1,17 @@
 ---
-title: DevOps avec ASP.NET Core et Azure | Déployer une application dans App Service
+title: Déployer une application dans App Service - DevOps avec ASP.NET Core et Azure
 author: CamSoper
-description: Un guide qui fournit des conseils de bout en bout sur la création d’un pipeline DevOps pour une application ASP.NET Core hébergée dans Azure.
+description: Déployer une application ASP.NET Core sur Azure App Service, la première étape pour DevOps avec ASP.NET Core et Azure.
 ms.author: casoper
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 33026ed510aae63a9e580aa5d708f94aad778fca
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 4424d3d15cbd234357c8265fa276834cb9abf352
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090935"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121218"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Déployer une application dans App Service
 
@@ -150,12 +150,12 @@ L’application a déjà été déployée à partir de l’interface de commande
 3. Appuyez sur **Ctrl**+**MAJ**+**B** pour générer l’application.
 4. Dans l’Explorateur de solutions, avec le bouton droit sur le projet, puis cliquez sur **publier**.
 
-    ![Avec le bouton droit, publier](./media/deploying-to-app-service/publish.png)
+    ![Capture d’écran montrant le clic droit, publier](./media/deploying-to-app-service/publish.png)
 5. Visual Studio peut créer une ressource App Service, mais cette mise à jour sera publiée sur le déploiement existant. Dans le **choisir une cible de publication** boîte de dialogue, sélectionnez **App Service** dans la liste sur la gauche, puis sélectionnez **sélectionner**. Cliquez sur **Publier**.
 6. Dans le **App Service** boîte de dialogue, vérifiez que Microsoft ou compte professionnel utilisé pour créer votre abonnement Azure est affiché dans le coin supérieur droit. Si elle n’est pas le cas, cliquez sur la liste déroulante et ajoutez-le.
 7. Vérifiez que le Azure correct **abonnement** est sélectionné. Pour **vue**, sélectionnez **groupe de ressources**. Développez le **AzureTutorial** groupe de ressources et sélectionnez l’application web existante. Cliquez sur **OK**.
 
-    ![App Service de boîte de dialogue Publier](./media/deploying-to-app-service/publish-dialog.png)
+    ![Boîte de dialogue Publier le Service application capture d’écran](./media/deploying-to-app-service/publish-dialog.png)
 
 Visual Studio génère et déploie l’application sur Azure. Accédez à l’URL de l’application web. Vérifier que le `<h2>` modification de l’élément est en ligne.
 
@@ -211,7 +211,7 @@ Emplacements de déploiement prend en charge la mise en lots de modifications sa
 
 6. Pour vérifier que V3 a été déployé sur l’emplacement intermédiaire, ouvrez deux fenêtres de navigateur. Dans une fenêtre, accédez à l’URL d’origine de l’application web. Dans l’autre fenêtre, accédez à l’URL d’application web intermédiaire. L’URL de production sert V2 de l’application. L’URL intermédiaire sert V3 de l’application.
 
-    ![Comparaison des fenêtres de navigateur](./media/deploying-to-app-service/ready-to-swap.png)
+    ![Capture d’écran comparant les fenêtres du navigateur](./media/deploying-to-app-service/ready-to-swap.png)
 
 7. Dans l’interpréteur de commandes, remplacez l’emplacement intermédiaire vérifiée/chaud, les en production.
 

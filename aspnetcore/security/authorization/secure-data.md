@@ -3,14 +3,15 @@ title: Créer une application ASP.NET Core avec des données utilisateur protég
 author: rick-anderson
 description: Découvrez comment créer une application Pages Razor avec des données utilisateur protégées par une autorisation. Inclut HTTPS, l’authentification, sécurité, ASP.NET Core Identity.
 ms.author: riande
-ms.date: 7/24/2018
+ms.date: 12/07/2018
+ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: 185628d4e06c9b5ae7f2685c10ea9e46dd5abe92
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: d49ee7779b425d625b81c8a65694121c616bfba6
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253219"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121633"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -38,21 +39,21 @@ Ce didacticiel montre comment créer une application web ASP.NET Core avec des d
 
 Dans l’image suivante, l’utilisateur Rick (`rick@example.com`) n’est connecté. Rick peut uniquement afficher les contacts approuvés et **modifier**/**supprimer**/**créer un nouveau** liens pour ses contacts. Seul le dernier enregistrement créé par Rick, affiche **modifier** et **supprimer** des liens. Autres utilisateurs ne voient le dernier enregistrement jusqu'à ce qu’un gestionnaire ou un administrateur modifie le statut « Approved ».
 
-![image décrit la précédente](secure-data/_static/rick.png)
+![Capture d’écran montrant Rick connecté](secure-data/_static/rick.png)
 
 Dans l’image suivante, `manager@contoso.com` est signé dans et dans le rôle gestionnaires :
 
-![image décrit la précédente](secure-data/_static/manager1.png)
+![Capture d’écran manager@contoso.com connecté](secure-data/_static/manager1.png)
 
 L’illustration suivante montre les gestionnaires de vue des détails d’un contact :
 
-![image décrit la précédente](secure-data/_static/manager.png)
+![Vue du responsable d’un contact](secure-data/_static/manager.png)
 
 Le **approuver** et **rejeter** boutons sont affichés uniquement pour les responsables et les administrateurs.
 
 Dans l’image suivante, `admin@contoso.com` est signé dans et dans le rôle Administrateurs :
 
-![image décrit la précédente](secure-data/_static/admin.png)
+![Capture d’écran admin@contoso.com connecté](secure-data/_static/admin.png)
 
 L’administrateur a tous les privilèges. Elle peut lire/modifier/supprimer un contact et modifier l’état de contacts.
 
@@ -281,25 +282,32 @@ Consultez [ce problème](https://github.com/aspnet/Docs/issues/8502) pour plus d
 
 ## <a name="test-the-completed-app"></a>Tester l’application terminée
 
+Si vous n’avez pas déjà défini un mot de passe pour les comptes d’utilisateur amorcée, utilisez le [outil Secret Manager](xref:security/app-secrets#secret-manager) pour définir un mot de passe :
+
+* Choisissez un mot de passe fort : utilisez huit ou plus caractères et au moins un caractère majuscule, nombre et symboles. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
+* Exécutez la commande suivante à partir du dossier du projet, où `<PW>` est le mot de passe :
+
+  ```console
+  dotnet user-secrets set SeedUserPW <PW>
+  ```
+
 Si l’application a des contacts :
 
-* Supprimez tous les enregistrements dans la `Contact` table.
+* Supprimer tous les enregistrements dans la `Contact` table.
 * Redémarrez l’application pour amorcer la base de données.
 
-Inscrire un utilisateur pour parcourir les contacts.
-
-Un moyen simple de tester l’application terminée consiste à lancer les trois différents navigateurs (ou incognito/InPrivate versions). Dans un navigateur, inscrire un nouvel utilisateur (par exemple, `test@example.com`). Connectez-vous à chaque navigateur avec un autre utilisateur. Vérifiez les opérations suivantes :
+Un moyen simple de tester l’application terminée consiste à lancer les trois différents navigateurs (ou incognito/InPrivate sessions). Dans un navigateur, inscrire un nouvel utilisateur (par exemple, `test@example.com`). Connectez-vous à chaque navigateur avec un autre utilisateur. Vérifiez les opérations suivantes :
 
 * Les utilisateurs inscrits peuvent afficher toutes les données de contact approuvées.
 * Les utilisateurs inscrits peuvent modifier ou supprimer leurs propres données.
-* Gestionnaires peuvent approuver ou rejeter des données de contact. Le `Details` afficher montre **approuver** et **rejeter** boutons.
+* Gestionnaires peuvent approuver/rejeter les données de contact. Le `Details` afficher montre **approuver** et **rejeter** boutons.
 * Les administrateurs peuvent approuver/rejeter et modifier ou de supprimer toutes les données.
 
-| Utilisateur| Options |
-| ------------ | ---------|
-| test@example.com | Peuvent modifier ou supprimer des données propres |
-| manager@contoso.com | Approuver/rejeter et modifier/supprimer peuvent posséder données |
-| admin@contoso.com | Peut modifier ou de supprimer et approuver/rejeter toutes les données|
+| Utilisateur                | Amorcée par l’application | Options                                  |
+| ------------------- | :---------------: | ---------------------------------------- |
+| test@example.com    | Non                | Modifier/supprimer les données propres.                |
+| manager@contoso.com | Oui               | Approuver/rejeter et modifier ou de supprimer des données propres. |
+| admin@contoso.com   | Oui               | Approuver/rejeter et de modifier ou de supprimer toutes les données. |
 
 Créer un contact dans le navigateur de l’administrateur. Copiez l’URL pour supprimer et modifier à partir du contact de l’administrateur. Collez ces liens dans le navigateur de l’utilisateur de test pour vérifier que l’utilisateur de test ne peut pas effectuer ces opérations.
 
