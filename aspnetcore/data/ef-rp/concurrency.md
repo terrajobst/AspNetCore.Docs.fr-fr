@@ -4,14 +4,14 @@ author: rick-anderson
 description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: cd06cb1056e1c856214d2440533aad5789907107
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: da854bafdb9d3741358fd69c2f862c3cdf1ee406
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207340"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121646"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -271,7 +271,7 @@ La page Delete détecte les conflits d’accès concurrentiel quand l’entité 
 
 Mettez à jour *Pages/Departments/Delete.cshtml* avec le code suivant :
 
-[!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,36,51)]
+[!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
 
 
 Le balisage précédent apporte les modifications suivantes :

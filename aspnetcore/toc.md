@@ -6,20 +6,11 @@
 # [Bien démarrer](xref:getting-started)
 
 # Didacticiels
-## [Créer une API web](xref:tutorials/first-web-api)
+## API web
+### [Créer une API web](xref:tutorials/first-web-api)
+### [API Web avec MongoDB](xref:tutorials/first-mongo-app)
 ## Applications web
-### Pages Razor
-#### [Présentation des pages Razor](xref:razor-pages/index)
-
-#### [Tutoriel Razor Pages](xref:tutorials/razor-pages/index)
-##### [Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
-##### [Ajouter un modèle](xref:tutorials/razor-pages/model)
-##### [Génération de modèles automatique](xref:tutorials/razor-pages/page)
-##### [Utiliser une base de données](xref:tutorials/razor-pages/sql)
-##### [Mettre à jour les pages](xref:tutorials/razor-pages/da1)
-##### [Ajouter une recherche](xref:tutorials/razor-pages/search)
-##### [Ajouter un nouveau champ](xref:tutorials/razor-pages/new-field)
-##### [Ajouter la validation](xref:tutorials/razor-pages/validation)
+### [Pages Razor](xref:tutorials/razor-pages/index)
 
 ### MVC
 #### [Avec Visual Studio](xref:tutorials/first-mvc-app/index)
@@ -165,7 +156,9 @@
 # API web
 ## [Vue d’ensemble](xref:web-api/index)
 
-## [Créer une API web](xref:tutorials/first-web-api)
+## Didacticiels
+### [Créer une API web](xref:tutorials/first-web-api)
+### [API Web avec MongoDB](xref:tutorials/first-mongo-app)
 
 ## Swagger / OpenAPI
 ### [Vue d’ensemble](xref:tutorials/web-api-help-pages-using-swagger)
@@ -420,7 +413,7 @@
 ## [Changer des jetons](xref:fundamentals/change-tokens)
 ## [OWIN (Open Web Interface pour .NET)](xref:fundamentals/owin)
 ## [Tâches d’arrière-plan avec services hébergés](xref:fundamentals/host/hosted-services)
-## [Améliorer une application à partir d’un assembly externe](xref:fundamentals/configuration/platform-specific-configuration)
+## [Assemblys d’hébergement au démarrage](xref:fundamentals/configuration/platform-specific-configuration)
 ## [Métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app)
 ## [Métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage)
 ## [Journalisation avec LoggerMessage](xref:fundamentals/logging/loggermessage)

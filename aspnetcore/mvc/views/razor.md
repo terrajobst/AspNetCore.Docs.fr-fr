@@ -5,12 +5,12 @@ description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer d
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: ab9fb3f55399764c5fe985811d92c504ed210767
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: 2ec86c774e0fd26c4455829680a2b1db687b8090
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256578"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121583"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -741,7 +741,7 @@ Le moteur de vue Razor effectue des recherches de vues en respectant la casse. T
 
 Les développeurs doivent s’efforcer d’utiliser la même casse pour les noms de fichiers et de répertoires que pour les noms des éléments suivants :
 
-    * Zone, contrôleur et action
-    * Pages Razor
+* Zone, contrôleur et action
+* Pages Razor
 
 L’utilisation d’une casse identique garantit que les déploiements trouvent toujours les vues associées, indépendamment du système de fichiers sous-jacent.

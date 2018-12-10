@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 1680b1377351fbfbfc38249868da389012dd5fb6
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 5919fe66139260bace1c356c833abb132ba4b2e8
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862185"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121750"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -20,7 +20,7 @@ Par [Luke Latham](https://github.com/guardrex)
 [Installer le bundle d’hébergement .NET Core](#install-the-net-core-hosting-bundle)
 
 > [!NOTE]
-> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
+> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
 
 ## <a name="supported-operating-systems"></a>Systèmes d'exploitation pris en charge
 
@@ -329,6 +329,10 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publ
    ![Définissez Aucun code managé pour la version CLR .NET.](index/_static/edit-apppool-ws2016.png)
 
     ASP.NET Core s’exécute dans un processus séparé et gère l’exécution. ASP.NET Core ne repose pas sur le chargement du CLR de bureau. La configuration de la **version CLR .NET** sur **Aucun code managé** est facultative.
+
+1. *ASP.NET Core 2.2 ou version ultérieure* : pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) 64 bits (x64) qui utilise le [modèle d’hébergement In-process](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model), désactivez le pool d’applications pour les processus 32 bits (x86).
+
+   Dans la barre latérale **Actions** de **Pools d’applications** du gestionnaire IIS, sélectionnez **Définir les valeurs par défaut du pool d’applications** ou **Paramètres avancés**. Recherchez **Activer les applications 32 bits** et définissez la valeur sur `False`. Ce paramètre n’affecte pas les applications déployées pour l’[hébergement Out-of-process](xref:fundamentals/servers/aspnet-core-module#out-of-process-hosting-model).
 
 1. Vérifiez que l’identité de modèle de processus dispose des autorisations appropriées.
 

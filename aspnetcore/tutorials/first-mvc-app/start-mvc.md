@@ -5,12 +5,12 @@ description: Découvrez comment bien démarrer avec ASP.NET Core MVC et Visual S
 ms.author: riande
 ms.date: 10/07/2017
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 9d50607899058c887597a3d73198552d3ef5b020
-ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
+ms.openlocfilehash: 738c49272c2ae2b075866001f06ad09fe73969f9
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52710086"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862198"
 ---
 # <a name="get-started-with-aspnet-core-mvc-and-visual-studio"></a>Bien démarrer avec ASP.NET Core MVC et Visual Studio
 
@@ -25,7 +25,7 @@ Il existe trois versions de ce didacticiel :
 * macOS, Linux et Windows : [Créer une application ASP.NET Core MVC avec Visual Studio Code](xref:tutorials/first-mvc-app-xplat/start-mvc)
 
 > [!NOTE]
-> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/rps16hd5).
+> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
 
 ## <a name="install-visual-studio-and-net-core"></a>Installer Visual Studio et .NET Core
 
