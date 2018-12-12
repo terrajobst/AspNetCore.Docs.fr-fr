@@ -1,39 +1,39 @@
 ---
-title: Présentation de Razor Pages dans ASP.NET Core
+title: Présentation des pages Razor dans ASP.NET Core
 author: Rick-Anderson
-description: Découvrez comment Razor Pages dans ASP.NET Core permet de développer des scénarios orientés page de façon plus simple et plus productive qu’avec MVC.
+description: Découvrez comment les pages Razor dans ASP.NET Core permettent de développer des scénarios orientés page de façon plus simple et plus productive qu’avec MVC.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 05/12/2018
 uid: razor-pages/index
-ms.openlocfilehash: 7fc048e427fd49e2142160615a12989fd4f40303
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: cc881ff42d57ab1654f492a70006a995939e4844
+ms.sourcegitcommit: 8a65f6c2cbe290fb2418eed58f60fb74c95392c8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207613"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52892118"
 ---
-# <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation de Razor Pages dans ASP.NET Core
+# <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT) et [Ryan Nowak](https://github.com/rynowak)
 
-Razor Pages constitue un nouvel aspect d’ASP.NET Core MVC qui permet de développer des scénarios orientés page de façon plus simple et plus productive.
+Les pages Razor constituent un nouvel aspect d’ASP.NET Core MVC qui permet de développer des scénarios orientés page de façon plus simple et plus productive.
 
 Si vous cherchez un didacticiel qui utilise l’approche Model-View-Controller, consultez [Bien démarrer avec ASP.NET Core MVC](xref:tutorials/first-mvc-app/start-mvc).
 
-Ce document fournit une introduction à Razor Pages. Il ne s’agit pas d’un didacticiel pas à pas. Si certaines sections vous semblent trop techniques, consultez [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages/razor-pages-start). Pour une vue d’ensemble d’ASP.NET Core, consultez [Introduction à ASP.NET Core](xref:index).
+Ce document fournit une introduction aux pages Razor. Il ne s’agit pas d’un didacticiel pas à pas. Si certaines sections vous semblent trop techniques, consultez [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start). Pour une vue d’ensemble d’ASP.NET Core, consultez [Introduction à ASP.NET Core](xref:index).
 
 ## <a name="prerequisites"></a>Prérequis
 
-[!INCLUDE [](~/includes/net-core-prereqs.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
 
 <a name="rpvs17"></a>
 
-## <a name="creating-a-razor-pages-project"></a>Création d’un projet Razor Pages
+## <a name="create-a-razor-pages-project"></a>Créer un projet Razor Pages
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-Pour obtenir des instructions détaillées sur la création d’un projet Razor Pages avec Visual Studio, consultez [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages/razor-pages-start).
+Pour obtenir des instructions sur la création d’un projet Razor Pages, consultez [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages/razor-pages-start).
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -65,25 +65,11 @@ Exécutez `dotnet new razor` à partir de la ligne de commande.
 
 ::: moniker-end
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
-
-::: moniker range=">= aspnetcore-2.1"
-
-Exécutez `dotnet new webapp` à partir de la ligne de commande.
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-Exécutez `dotnet new razor` à partir de la ligne de commande.
-
-::: moniker-end
-
 ---
 
-## <a name="razor-pages"></a>Razor Pages
+## <a name="razor-pages"></a>Pages Razor
 
-Razor Pages est activé dans *Startup.cs* :
+La fonctionnalité Pages Razor est activée dans *Startup.cs* :
 
 [!code-cs[](index/sample/RazorPagesIntro/Startup.cs?name=snippet_Startup)]
 
@@ -114,12 +100,12 @@ Les associations des chemins d’URL aux pages sont déterminées par l’emplac
 
 Remarques :
 
-* Le runtime recherche les fichiers Razor Pages dans le dossier *Pages* par défaut.
+* Le runtime recherche les fichiers Pages Razor dans le dossier *Pages* par défaut.
 * `Index` est la page par défaut quand une URL n’inclut pas de page.
 
-## <a name="writing-a-basic-form"></a>Écriture d’un formulaire de base
+## <a name="write-a-basic-form"></a>Écrire un formulaire de base
 
-Razor Pages est conçu pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
+Les pages Razor sont conçues pour que les modèles courants utilisés avec les navigateurs web soient faciles à implémenter lors de la création d’une application. La [liaison de modèle](xref:mvc/models/model-binding), les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les assistances HTML *fonctionnent tous* avec les propriétés définies dans une classe Page Razor. Considérez une page qui implémente un formulaire « Nous contacter » de base pour le modèle `Contact` :
 
 Pour les exemples de ce document, le `DbContext` est initialisé dans le fichier [Startup.cs](https://github.com/aspnet/Docs/blob/master/aspnetcore/razor-pages/index/sample/RazorPagesContacts/Startup.cs#L15-L16).
 
@@ -150,7 +136,7 @@ La page a une *méthode de gestionnaire* `OnPostAsync`, qui s’exécute sur les
 * `OnGet` pour initialiser l’état nécessaire pour la page. Exemple [OnGet](#OnGet).
 * `OnPost` pour gérer les envois de formulaire.
 
-Le suffixe de nommage `Async` est facultatif, mais souvent utilisé par convention pour les fonctions asynchrones. Le code `OnPostAsync` dans l’exemple précédent est similaire à celui que vous écririez normalement dans un contrôleur. Le code précédent est typique de Razor Pages. La plupart des primitives MVC comme la [liaison de modèle](xref:mvc/models/model-binding), la [validation](xref:mvc/models/validation) et les résultats d’action sont partagés.  <!-- Review: Ryan, can we get a list of what is shared and what isn't? -->
+Le suffixe de nommage `Async` est facultatif, mais souvent utilisé par convention pour les fonctions asynchrones. Le code `OnPostAsync` dans l’exemple précédent est similaire à celui que vous écririez normalement dans un contrôleur. Le code précédent est typique des pages Razor. La plupart des primitives MVC comme la [liaison de modèle](xref:mvc/models/model-binding), la [validation](xref:mvc/models/validation) et les résultats d’action sont partagées.  <!-- Review: Ryan, can we get a list of what is shared and what isn't? -->
 
 La méthode `OnPostAsync` précédente :
 
@@ -173,10 +159,7 @@ La propriété `Customer` utilise l’attribut `[BindProperty]` pour accepter la
 
 Par défaut, les pages Razor lient les propriétés uniquement avec les verbes non-GET. La liaison aux propriétés peut réduire la quantité de code à écrire. Elle réduit la quantité de code en utilisant la même propriété pour afficher les champs de formulaire (`<input asp-for="Customer.Name" />`) et accepter l’entrée.
 
-> [!NOTE]
-> Pour des raisons de sécurité, vous devez choisir de lier les données de requête GET aux propriétés du modèle de page. Vérifiez l’entrée utilisateur avant de la mapper à des propriétés. Le choix de ce comportement est utile pour les scénarios qui reposent sur des valeurs de route ou de chaîne de requête.
->
-> Pour lier une propriété sur des requêtes GET, affectez à la propriété `SupportsGet` de l’attribut `[BindProperty]` la valeur `true` : `[BindProperty(SupportsGet = true)]`
+[!INCLUDE[](~/includes/bind-get.md)]
 
 La page d’accueil (*Index.cshtml*) :
 
@@ -246,7 +229,7 @@ Pour plus d’informations, consultez [Validation de modèle](xref:mvc/models/va
 
 ## <a name="manage-head-requests-with-the-onget-handler"></a>Gérer des demandes HEAD avec le gestionnaire OnGet
 
-Les requêtes HEAD vous permettent de récupérer les en-têtes pour une ressource spécifique. Contrairement aux requêtes GET, les requêtes HEAD ne renvoient un corps de réponse. 
+Les requêtes HEAD vous permettent de récupérer les en-têtes pour une ressource spécifique. Contrairement aux requêtes GET, les requêtes HEAD ne renvoient un corps de réponse.
 
 En règle générale, un gestionnaire HEAD est créé et appelé pour des demandes HEAD : 
 
@@ -282,12 +265,12 @@ services.AddMvc()
 
 <a name="xsrf"></a>
 
-## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF et Razor Pages
+## <a name="xsrfcsrf-and-razor-pages"></a>XSRF/CSRF et pages Razor
 
-Vous n’avez aucun code à écrire pour la [validation anti-contrefaçon](xref:security/anti-request-forgery). La validation et la génération de jetons anti-contrefaçon sont automatiquement incluses dans Razor Pages.
+Vous n’avez aucun code à écrire pour la [validation anti-contrefaçon](xref:security/anti-request-forgery). La validation et la génération de jetons anti-contrefaçon sont automatiquement incluses dans les pages Razor.
 
 <a name="layout"></a>
-## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>Utilisation de dispositions, partiels, modèles et Tag Helpers avec Razor Pages
+## <a name="using-layouts-partials-templates-and-tag-helpers-with-razor-pages"></a>Utilisation de dispositions, partiels, modèles et Tag Helpers avec les pages Razor
 
 Les pages Razor fonctionnent avec toutes les fonctionnalités du moteur de vue Razor. Les dispositions, partiels, modèles, Tag Helpers, *_ViewStart.cshtml* et *_ViewImports.cshtml* fonctionnent de la même façon que pour les vues Razor classiques.
 
@@ -532,7 +515,7 @@ Pour précompiler des vues, consultez [Compilation de vue Razor](xref:mvc/views/
 
 [Téléchargez ou affichez des exemples de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/index/sample).
 
-Consultez [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages/razor-pages-start) qui s’appuie sur cette introduction.
+Consultez [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start) qui s’appuie sur cette introduction.
 
 ### <a name="specify-that-razor-pages-are-at-the-content-root"></a>Spécifier que les pages Razor se trouvent à la racine du contenu
 

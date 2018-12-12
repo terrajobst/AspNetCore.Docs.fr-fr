@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment héberger plusieurs instances d’une application ASP.NET Core avec des ressources partagées dans un environnement de batterie de serveurs web.
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/16/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 2435c24bc205486331c828337ca81c43e6e60448
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 4873665e6174a6acf885e1ebb41fb005d646bd1f
+ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39096087"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52450669"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>Héberger ASP.NET Core dans une batterie de serveurs web
 
@@ -67,6 +67,8 @@ Les scénarios suivants ne nécessitent pas une configuration supplémentaire, m
 
 ## <a name="troubleshoot"></a>Résoudre les problèmes
 
+### <a name="data-protection-and-caching"></a>Protection et mise en cache des données
+
 Lorsque la protection des données ou la mise en cache ne sont pas configurées pour un environnement de batterie de serveurs web, des erreurs intermittentes se produisent pendant le traitement des requêtes. Ceci est dû au fait que les nœuds ne partagent pas les mêmes ressources et que les requêtes des utilisateurs ne sont pas toujours redirigées vers le même nœud.
 
 Prenons l’exemple d’un utilisateur qui se connecte à l’application à l’aide de l’authentification basée sur les cookies. L’utilisateur se connecte à l’application sur un nœud de batterie de serveurs web. Si sa prochaine requête arrive sur ce même nœud où il est connecté, l’application est en mesure de déchiffrer le cookie d’authentification et autorise l’accès aux ressources de l’application. Si sa prochaine requête arrive sur un autre nœud, l’application ne peut pas déchiffrer le cookie d’authentification à partir du nœud où l’utilisateur est connecté, et autorisation d’accès à la ressource demandée échoue.
@@ -81,3 +83,7 @@ En présence de l’un des symptômes suivants **par intermittence**, le problè
 * Échec des messages &ndash; la vérification anti-contrefaçon échoue.
 
 Pour plus d’informations sur la configuration de la protection des données pour les déploiements sur des batteries de serveurs web, consultez <xref:security/data-protection/configuration/overview>. Pour plus d’informations sur la configuration de la mise en cache pour les déploiements sur des batteries de serveurs web, consultez <xref:performance/caching/distributed>.
+
+## <a name="obtain-data-from-apps"></a>Obtenir des données à partir d’applications
+
+Si les applications de la batterie de serveurs web sont capables de répondre aux requêtes, obtenez des informations sur une requête, une connexion et d’autres informations supplémentaires à partir des applications à l’aide de l’intergiciel en ligne terminal. Pour obtenir des informations supplémentaires ainsi qu'un code d'exemple, consultez <xref:test/troubleshoot#obtain-data-from-an-app>.

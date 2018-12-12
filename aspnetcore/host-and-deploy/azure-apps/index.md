@@ -2,16 +2,17 @@
 title: Déployer des applications ASP.NET Core sur Azure App Service
 author: guardrex
 description: Cet article contient des liens vers des ressources d’hébergement et de déploiement Azure.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/04/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: c55a5202643bb947b3f38f67aec55ee5cf7b1496
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: b32dd3cb84a86d12c61e391b88355ab0411c2815
+ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244747"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52951964"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -41,23 +42,35 @@ Configurez une build CI pour une application ASP.NET Core, puis créez une versi
 [Bac à sable Azure Web App](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)  
 Découvrez les limitations d’exécution du runtime Azure App Service appliquées par la plateforme Azure Apps.
 
-::: moniker range=">= aspnetcore-2.0"
-
 ## <a name="application-configuration"></a>Configuration d’application
 
-Les packages NuGet suivants fournissent des fonctionnalités de journalisation automatique pour les applications déployées sur Azure App Service :
+### <a name="platform"></a>Plateforme
+
+::: moniker range=">= aspnetcore-2.2"
+
+Des runtimes pour les applications 64 bits (x64) et 32 bits (x 86) sont présents sur Azure App Service. Le [SDK .NET Core](/dotnet/core/sdk) disponible sur App Service est 32 bits, mais vous pouvez déployer des applications 64 bits à l’aide de la console [Kudu](https://github.com/projectkudu/kudu/wiki) ou via [MSDeploy avec un profil de publication Visual Studio ou une commande CLI](xref:host-and-deploy/visual-studio-publish-profiles).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-2.2"
+
+Concernant les applications avec des dépendances natives, des runtimes pour les applications 32 bits (x86) sont présents sur Azure App Service. Le [SDK .NET Core](/dotnet/core/sdk) disponible sur App Service est 32 bits.
+
+::: moniker-end
+
+### <a name="packages"></a>Packages
+
+Ajoutez les packages NuGet suivants pour fournir des fonctionnalités de journalisation automatique aux applications déployées sur Azure App Service :
 
 * [Microsoft.AspNetCore.AzureAppServices.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServices.HostingStartup/) utilise [IHostingStartup](xref:fundamentals/configuration/platform-specific-configuration) pour intégrer la fonction d’éclairage ASP.NET Core dans Azure App Service. Les fonctionnalités de journalisation ajoutées sont fournies par le package `Microsoft.AspNetCore.AzureAppServicesIntegration`.
 * [Microsoft.AspNetCore.AzureAppServicesIntegration](https://www.nuget.org/packages/Microsoft.AspNetCore.AzureAppServicesIntegration/) exécute [AddAzureWebAppDiagnostics](/dotnet/api/microsoft.extensions.logging.azureappservicesloggerfactoryextensions.addazurewebappdiagnostics) pour ajouter des fournisseurs de journalisation de diagnostics Azure App Service dans le package `Microsoft.Extensions.Logging.AzureAppServices`.
 * [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/) fournit des implémentations de journaliseur pour prendre en charge les journaux de diagnostics et les fonctionnalités de streaming de journal Azure App Service.
 
-Si vous ciblez .NET Core et référencez le [métapackage Microsoft.AspNetCore.All](xref:fundamentals/metapackage), les packages précédents sont inclus. Les packages sont absents du [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Si vous ciblez le .NET Framework ou référencez le métapackage `Microsoft.AspNetCore.App`, référencez individuellement les packages de journalisation.
-
-::: moniker-end
+Les packages précédents ne sont pas disponibles dans le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Les applications qui ciblent le .NET Framework ou référencent le métapackage `Microsoft.AspNetCore.App` doivent référencer explicitement les packages individuels dans le fichier projet de l’application.
 
 ## <a name="override-app-configuration-using-the-azure-portal"></a>Remplacer la configuration de l’application à l’aide du Portail Azure
 
-La zone **Paramètres de l’application** du panneau **Paramètres de l’application** permet de définir les variables d’environnement de l’application. Celles-ci peuvent être utilisées par le [Fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
+Les paramètres d’application dans le portail Azure vous permettent de définir des variables d’environnement pour l’application. Celles-ci peuvent être utilisées par le [Fournisseur de configuration des variables d’environnement](xref:fundamentals/configuration/index#environment-variables-configuration-provider).
 
 Quand un paramètre d’application est créé ou modifié dans le portail Azure et que le bouton **Enregistrer** est sélectionné, Azure App redémarre. La variable d’environnement est à la disposition de l’application après le redémarrage du service.
 
@@ -113,48 +126,36 @@ Utilisez l'une des approches suivantes :
 
 Si un problème se produit quand vous utilisez l’extension de site de version Preview, ouvrez un problème sur [GitHub](https://github.com/aspnet/azureintegration/issues/new).
 
-1. Dans le portail Azure, accédez au panneau App Service.
+1. Dans le portail Azure, accédez à App Service.
 1. Sélectionnez l’application web.
-1. Tapez « ex » dans la zone de recherche, ou faites défiler la liste des sections de gestion jusqu’à **OUTILS DE DÉVELOPPEMENT**.
-1. Sélectionnez **OUTILS DE DEVELOPPEMENT** > **Extensions**.
+1. Tapez « ex » dans la zone de recherche pour filtrer sur les « Extensions » ou faites défiler la liste outils de gestion.
+1. Sélectionner **Extensions**.
 1. Sélectionnez **Ajouter**.
-1. Sélectionnez l’extension **ASP.NET Core &lt;x.y&gt; (x86) Runtime** dans la liste, où `<x.y>` correspond à la préversion d’ASP.NET Core (par exemple **ASP.NET Core 2.2 (x86) Runtime**). Le runtime x86 convient aux [déploiements dépendants du framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), qui reposent sur un hébergement hors processus effectué par le module ASP.NET Core.
+1. Sélectionnez l’extension **ASP.NET Core {X.Y} ({x64|x86}) Runtime** dans la liste, où `{X.Y}` correspond à la préversion d’ASP.NET Core et `{x64|x86}` spécifie la plateforme.
 1. Sélectionnez **OK** pour accepter les conditions légales.
 1. Sélectionnez **OK** pour installer l’extension.
 
 Une fois l’opération effectuée, la dernière préversion de .NET Core est installée. Vérifiez l’installation :
 
-1. Sélectionnez **Outils avancés** sous **OUTILS DE DÉVELOPPEMENT**.
-1. Sélectionnez **OK** dans le panneau **Outils avancés**.
+1. Sélectionnez **Outils avancés**.
+1. Sélectionnez **Go** dans **Outils avancés**.
 1. Sélectionnez l’élément de menu **Console de débogage** > **PowerShell**.
-1. À l’invite PowerShell, exécutez la commande suivante. Remplacez `<x.y>` par la version du runtime ASP.NET Core dans la commande :
+1. À l’invite PowerShell, exécutez la commande suivante. Remplacez `{X.Y}` par la version du runtime ASP.NET Core et `{PLATFORM}` par la plateforme dans la commande :
 
    ```powershell
-   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.<x.y>.x86\
-   ```
-   Si le runtime de la préversion installée est ASP.NET Core 2.2, la commande est la suivante :
-   ```powershell
-   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.2.2.x86\
+   Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.{PLATFORM}\
    ```
    La commande retourne `True` quand le runtime de la préversion x64 est installée.
 
-::: moniker range=">= aspnetcore-2.2"
-
 > [!NOTE]
-> L’architecture de plateforme (x86/x64) d’une application App Services est définie dans le panneau **Paramètres de l’application** sous **Paramètres généraux** pour les applications hébergées sur une instance de calcul de série A ou supérieure. Si l’application s’exécute en mode in-process et si la plateforme est configurée pour une architecture 64 bits (x64), le module ASP.NET Core utilise le runtime de la préversion 64 bits, le cas échéant. Installez l’extension **ASP.NET Core &lt;x.y&gt; (x64) Runtime** (par exemple **ASP.NET Core 2.2 (x64) Runtime**).
+> L’architecture de plateforme (x86/x64) d’une application App Services est définie dans les paramètres de l’application dans le portail Azure pour les applications hébergées sur une instance de calcul de série A ou supérieure. Si l’application s’exécute en mode in-process et si la plateforme est configurée pour une architecture 64 bits (x64), le module ASP.NET Core utilise le runtime de la préversion 64 bits, le cas échéant. Installez l’extension **ASP.NET Core {X.Y} (x64) Runtime**.
 >
-> Après avoir installé le runtime de la préversion x64, exécutez la commande suivante dans la fenêtre Commande Kudu PowerShell pour vérifier l’installation. Remplacez `<x.y>` par la version du runtime ASP.NET Core dans la commande :
+> Après avoir installé le runtime de la préversion x64, exécutez la commande suivante dans la fenêtre Commande Kudu PowerShell pour vérifier l’installation. Remplacez `{X.Y}` par la version du runtime ASP.NET Core dans la commande :
 >
 > ```powershell
-> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.<x.y>.x64\
-> ```
-> Si le runtime de la préversion installée est ASP.NET Core 2.2, la commande est la suivante :
-> ```powershell
-> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.2.2.x64\
+> Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64\
 > ```
 > La commande retourne `True` quand le runtime de la préversion x64 est installée.
-
-::: moniker-end
 
 > [!NOTE]
 > Les **extensions ASP.NET Core** permettent d’activer des fonctionnalités supplémentaires pour ASP.NET Core sur Azure App Services, par exemple la journalisation Azure. L’extension est installée automatiquement quand vous effectuez le déploiement à partir de Visual Studio. Si l’extension n’est pas installée, installez-la pour l’application.

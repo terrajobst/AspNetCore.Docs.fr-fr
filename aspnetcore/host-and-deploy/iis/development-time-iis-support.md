@@ -4,14 +4,14 @@ author: shirhatti
 description: Découvrez la prise en charge du débogage des applications ASP.NET Core pendant l’exécution derrière IIS sur Windows Server.
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/14/2018
+ms.date: 11/26/2018
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: eb8b4369d6d5434adbac187f59b18d7a2b80055c
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 65dbe690a33d82a4edddf315803dc4c656db27a0
+ms.sourcegitcommit: e8d80ff566bfe505b43389d7bc4551edb1c0c872
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36277652"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52549099"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
@@ -129,13 +129,19 @@ Vous pouvez aussi ajouter manuellement un profil de lancement au fichier [launch
 
 ## <a name="run-the-project"></a>Exécuter le projet
 
-Dans l’interface utilisateur de Visual Studio, définissez le bouton Exécuter sur le profil **IIS** et sélectionnez le bouton pour démarrer l’application :
+Dans Visual Studio :
 
-![Bouton Exécuter dans la barre d’outils de Visual Studio défini sur le profil «IIS »](development-time-iis-support/_static/toolbar.png)
+* Vérifiez que la liste déroulante des configurations de build est définie sur **Déboguer**.
+* Définissez le bouton Exécuter sur le profil **IIS** et sélectionnez le bouton pour démarrer l’application.
+
+![Le bouton Exécuter de la barre d’outils de Visual Studio est défini sur le profil IIS avec la liste déroulante des configurations de build définie sur la mise en production (Release).](development-time-iis-support/_static/toolbar.png)
 
 Visual Studio peut demander un redémarrage si vous ne l’exécutez pas en tant qu’administrateur. Si vous y êtes invité, redémarrez Visual Studio.
 
 Si vous utilisez un certificat de développement non approuvé, le navigateur peut vous amener à créer une exception pour ce certificat.
+
+> [!NOTE]
+> Le débogage d’une configuration de build de mise en production avec [Uniquement mon code](/visualstudio/debugger/just-my-code) et des optimisations du compilateur entraîne une baisse des résultats. Par exemple, les points d’arrêt ne sont pas atteints.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
