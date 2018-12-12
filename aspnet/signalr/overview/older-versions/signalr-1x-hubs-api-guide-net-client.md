@@ -8,16 +8,18 @@ ms.date: 04/17/2013
 ms.assetid: c334adc3-d6dc-44f3-9f06-f7634475aad3
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 5889429645ea1c682ea43c4b17afb3745318e32d
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 34356338f24788226351e8e22b47eaaf7ea03e61
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41827872"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287977"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-signalr-1x"></a>Guide de l’API ASP.NET SignalR Hubs - Client .NET (SignalR 1.x)
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Ce document fournit une introduction à l’utilisation de l’API Hubs pour SignalR version 2 dans les clients .NET, tels que Windows Store (WinRT), WPF, Silverlight et les applications de console.
 > 
@@ -319,7 +321,7 @@ SignalR fournit des événements de durée de vie que vous pouvez gérer la conn
 - `Reconnecting`: Déclenché lorsque le transport sous-jacent commence à se reconnecter.
 - `Reconnected`: Déclenché lorsque le transport sous-jacent s’est reconnecté.
 - `StateChanged`: Déclenché lorsque l’état de connexion change. Fournit l’ancien état et le nouvel état. Pour plus d’informations sur la connexion, valeurs d’état consultez [énumération ConnectionState](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx).
-- `Closed`: Déclenché lors de la connexion a déconnecté.
+- `Closed`: Déclenché lorsque la connexion a déconnecté.
 
 Par exemple, si vous souhaitez afficher les messages d’avertissement pour les erreurs qui ne sont pas irrécupérable mais entraînent des problèmes de connexion intermittents, par exemple que lenteur ou fréquentes suppression de la connexion, gèrent le `ConnectionSlow` événement.
 

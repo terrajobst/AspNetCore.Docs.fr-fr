@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: e8ac1e33819dd369460139df25597e1aa0979c91
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 9c541644d276bbdc990bb01f8bd80c92862cd6f0
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121711"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284615"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification dans web API avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -175,14 +175,14 @@ Pour faire une demande authentifiée à l’API web, un jeton du porteur est req
    |      <strong>Nom du jeton</strong>       |                                          *{nom du jeton}*                                       |                                                                                                                   Entrez un nom descriptif pour le jeton.                                                                                                                    |
    |      <strong>Type d’octroi</strong>       |                                           Implicite                                            |                                                                                                                                                                                                                                                                              |
    |     <strong>URL de rappel</strong>      |                                 `https://getpostman.com/postman`                              |                                                                                                                                                                                                                                                                              |
-   |       <strong>URL d’authentification</strong>        | `https://login.microsoftonline.com/{tenant domain name}/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |  Remplacez *{nom de domaine client}* avec le nom de domaine du locataire. **IMPORTANT**: cette URL doit avoir le même nom de domaine que ce qui se trouve dans `AzureAdB2C.Instance` dans le site web de l’API *appsettings.json* fichier. Voir la Remarque&dagger;.                                                  |
+   |       <strong>URL d’authentification</strong>        | `https://login.microsoftonline.com/{tenant domain name}/oauth2/v2.0/authorize?p=B2C_1_SiUpIn` |  Remplacez *{nom de domaine client}* avec le nom de domaine du locataire. **IMPORTANT**: Cette URL doit avoir le même nom de domaine que ce qui se trouve dans `AzureAdB2C.Instance` dans le site web de l’API *appsettings.json* fichier. Voir la Remarque&dagger;.                                                  |
    |       <strong>ID de client</strong>       |                *{entrent dans l’application Postman <b>ID d’Application</b>}*                              |                                                                                                                                                                                                                                                                              |
    |         <strong>Portée</strong>         |         `https://{tenant domain name}/{api}/user_impersonation openid offline_access`       | Remplacez *{nom de domaine client}* avec le nom de domaine du locataire. Remplacez *{api}* avec l’URI ID d’application vous avez donné à l’API web quand vous avez inscrit (dans ce cas, `api`). Le modèle de l’URL est : `https://{tenant}.onmicrosoft.com/{api-id-uri}/{scope name}`.         |
    |         <strong>État</strong>         |                                      *{Laissez vide}*                                          |                                                                                                                                                                                                                                                                              |
    | <strong>Authentification du client</strong> |                                Envoyer des informations d’identification du client dans le corps                                |                                                                                                                                                                                                                                                                              |
 
     > [!NOTE]
-    > &dagger; La boîte de dialogue de paramètres de stratégie dans le portail Azure Active Directory B2C affiche deux URL possible : un dans le format `https://login.microsoftonline.com/`{nom de domaine client} / {informations supplémentaires du chemin} et l’autre dans le format `https://{tenant name}.b2clogin.com/`{nom de domaine client} / {supplémentaires informations de chemin d’accès}. Il a **critique** trouvant dans le domaine dans `AzureAdB2C.Instance` dans le site web de l’API *appsettings.json* fichier correspond à celui utilisé dans l’application web *appsettings.json* fichier. Il s’agit du même domaine que celui utilisé pour le champ URL d’authentification dans Postman. Notez que Visual Studio utilise un format d’URL légèrement différent à ce qui est affiché dans le portail. À condition que les domaines correspondent, l’URL fonctionne.
+    > &dagger; La boîte de dialogue de paramètres de stratégie dans le portail Azure Active Directory B2C affiche deux URL possibles : L’autre dans le format `https://login.microsoftonline.com/`{nom de domaine client} / {informations supplémentaires du chemin} et l’autre dans le format `https://{tenant name}.b2clogin.com/`{nom de domaine client} / {informations de chemin d’accès supplémentaire}. Il a **critique** trouvant dans le domaine dans `AzureAdB2C.Instance` dans le site web de l’API *appsettings.json* fichier correspond à celui utilisé dans l’application web *appsettings.json* fichier. Il s’agit du même domaine que celui utilisé pour le champ URL d’authentification dans Postman. Notez que Visual Studio utilise un format d’URL légèrement différent à ce qui est affiché dans le portail. À condition que les domaines correspondent, l’URL fonctionne.
 
 3. Sélectionnez le **demander un jeton** bouton.
 

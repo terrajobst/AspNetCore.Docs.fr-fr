@@ -8,21 +8,23 @@ ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: 556accb1bcc18e9e4d1f813a87fc6f4b67bda088
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 308fed51953b085506488c5e0dda1ced9f4d09fb
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021480"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287566"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>Densité des connexions SignalR avec Crank de test
 ====================
 par [Tom FitzMacken](https://github.com/tfitzmac)
 
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
+
 > Cet article décrit comment utiliser l’outil de manivelle pour tester une application avec plusieurs clients simulés.
 
 
-Une fois que votre application s’exécute dans son environnement d’hébergement (Azure un rôle, IIS, web ou auto-hébergé à l’aide d’Owin), vous pouvez tester la réponse de l’application à un niveau élevé de la densité des connexions à l’aide de l’outil manivelle. L’environnement d’hébergement peut être un serveur Internet Information Services (IIS), un hôte Owin ou un rôle web Azure. (Remarque : les compteurs de performances ne sont pas disponibles sur Azure App Service Web Apps, donc vous ne serez pas en mesure d’obtenir des données de performances à partir d’un test de densité de connexion.)
+Une fois que votre application s’exécute dans son environnement d’hébergement (Azure un rôle, IIS, web ou auto-hébergé à l’aide d’Owin), vous pouvez tester la réponse de l’application à un niveau élevé de la densité des connexions à l’aide de l’outil manivelle. L’environnement d’hébergement peut être un serveur Internet Information Services (IIS), un hôte Owin ou un rôle web Azure. (Remarque : Compteurs de performances ne sont pas disponibles sur Azure App Service Web Apps, donc vous ne serez pas en mesure d’obtenir des données de performances à partir d’un test de densité de connexion.)
 
 Densité de connexion fait référence au nombre de connexions TCP simultanées qui peuvent être établies sur un serveur. Chaque connexion TCP entraîne une surcharge de sa propre et ouverture d’un grand nombre de connexions inactives parviendrez à créer un goulot d’étranglement de mémoire.
 
@@ -45,21 +47,21 @@ Une fois que vous avez téléchargé et créé la base de code et installé les 
 Les options disponibles pour l’outil manivelle incluent :
 
 - **/?** : Affiche l’écran d’aide. Les options disponibles sont également affichées si les **Url** paramètre est omis.
-- **/ Url**: l’URL pour les connexions SignalR. Ce paramètre est obligatoire. Pour une application de SignalR en utilisant le mappage par défaut, le chemin d’accès se termine par « / signalr ».
-- **/ Transport**: le nom du transport utilisé. La valeur par défaut est `auto`, qui sélectionne le meilleur protocole disponible. Les options incluent `WebSockets`, `ServerSentEvents`, et `LongPolling` (`ForeverFrame` n’est pas une option pour manivelle, depuis le client .NET au lieu d’Internet Explorer est utilisé). Pour plus d’informations sur la façon dont SignalR sélectionne les transports, consultez [Transports et les solutions de secours](../getting-started/introduction-to-signalr.md#transports).
-- **/ BatchSize**: le nombre de clients ajoutés dans chaque lot. La valeur par défaut est 50.
-- **/ ConnectInterval**: l’intervalle en millisecondes entre l’ajout de connexions. La valeur par défaut est 500.
-- **/ Connexions**: le nombre de connexions utilisé pour l’application de test de charge. La valeur par défaut est 100 000.
-- **/ ConnectTimeout**: le délai d’attente en secondes avant l’abandon du test. La valeur par défaut est 300.
-- **MinServerMBytes**: les mégaoctets minimale du serveur à atteindre. La valeur par défaut est 500.
-- **SendBytes**: la taille de la charge utile envoyée au serveur en octets. La valeur par défaut est 0.
-- **SendInterval**: le délai en millisecondes entre les messages au serveur. La valeur par défaut est 500.
-- **SendTimeout**: le délai d’expiration en millisecondes pour les messages au serveur. La valeur par défaut est 300.
-- **ControllerUrl**: l’Url où un seul client hébergera un contrôleur central. La valeur par défaut est null (aucun hub de contrôleur). Le hub de contrôleur est lancé au démarrage de la session manivelle ; aucune autre contact entre le contrôleur et manivelle est fait.
-- **NumClients**: le nombre de clients simulés pour vous connecter à l’application. La valeur par défaut est un.
-- **Fichier journal**: le nom de fichier pour le fichier journal pour la série de tests. La valeur par défaut est `crank.csv`.
-- **SampleInterval**: la durée en millisecondes entre les échantillons de compteurs de performances. La valeur par défaut est 1000.
-- **SignalRInstance**: le nom d’instance des compteurs de performances sur le serveur. La valeur par défaut consiste à utiliser l’état de connexion du client.
+- **/ Url**: L’URL pour les connexions SignalR. Ce paramètre est obligatoire. Pour une application de SignalR en utilisant le mappage par défaut, le chemin d’accès se termine par « / signalr ».
+- **/ Transport**: Le nom du transport utilisé. La valeur par défaut est `auto`, qui sélectionne le meilleur protocole disponible. Les options incluent `WebSockets`, `ServerSentEvents`, et `LongPolling` (`ForeverFrame` n’est pas une option pour manivelle, depuis le client .NET au lieu d’Internet Explorer est utilisé). Pour plus d’informations sur la façon dont SignalR sélectionne les transports, consultez [Transports et les solutions de secours](../getting-started/introduction-to-signalr.md#transports).
+- **/ BatchSize**: Le nombre de clients ajoutés dans chaque lot. La valeur par défaut est 50.
+- **/ ConnectInterval**: L’intervalle en millisecondes entre l’ajout de connexions. La valeur par défaut est 500.
+- **/ Connexions**: Le nombre de connexions utilisé pour l’application de test de charge. La valeur par défaut est 100 000.
+- **/ ConnectTimeout**: Le délai d’attente en secondes avant l’abandon du test. La valeur par défaut est 300.
+- **MinServerMBytes**: Les mégaoctets minimale du serveur à atteindre. La valeur par défaut est 500.
+- **SendBytes**: La taille de la charge utile envoyée au serveur en octets. La valeur par défaut est 0.
+- **SendInterval**: Le délai en millisecondes entre les messages au serveur. La valeur par défaut est 500.
+- **SendTimeout**: Le délai d’expiration en millisecondes pour les messages au serveur. La valeur par défaut est 300.
+- **ControllerUrl**: L’Url où un seul client hébergera un contrôleur central. La valeur par défaut est null (aucun hub de contrôleur). Le hub de contrôleur est lancé au démarrage de la session manivelle ; aucune autre contact entre le contrôleur et manivelle est fait.
+- **NumClients**: Le nombre de clients simulés pour vous connecter à l’application. La valeur par défaut est un.
+- **Fichier journal**: Le nom de fichier pour le fichier journal pour la série de tests. La valeur par défaut est `crank.csv`.
+- **SampleInterval**: Durée en millisecondes entre les échantillons de compteurs de performances. La valeur par défaut est 1000.
+- **SignalRInstance**: Le nom d’instance des compteurs de performances sur le serveur. La valeur par défaut consiste à utiliser l’état de connexion du client.
 
 ### <a name="example"></a>Exemple
 

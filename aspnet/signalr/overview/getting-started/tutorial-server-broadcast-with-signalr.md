@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
-title: 'Didacticiel : Diffusion par le serveur avec SignalR 2 | Microsoft Docs'
+title: 'Didacticiel : Serveur de diffusion avec SignalR 2 | Microsoft Docs'
 author: tdykstra
 description: Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR 2 pour fournir des fonctionnalités de diffusion de serveur. Diffusion de serveur signifie que commun...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 10/13/2014
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 7a85a704dc5d830ec793540fbc44a3ce7ec8c934
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: ad2eee8742d5bc45dc2bdc90f76736b4dc94d14b
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911531"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288006"
 ---
-<a name="tutorial-server-broadcast-with-signalr-2"></a>Didacticiel : Diffusion par le serveur avec SignalR 2
+<a name="tutorial-server-broadcast-with-signalr-2"></a>Didacticiel : Serveur de diffusion avec SignalR 2
 ====================
 par [Nowak](https://github.com/tdykstra), [Tom FitzMacken](https://github.com/tfitzmac)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR 2 pour fournir des fonctionnalités de diffusion de serveur. Diffusion de serveur signifie que les communications envoyées aux clients sont initiées par le serveur. Ce scénario nécessite une approche de programmation différents scénarios de peer-to-peer telles que les applications de conversation, dans lequel les communications envoyées aux clients sont initiées par un ou plusieurs clients.
 >
@@ -52,7 +54,6 @@ par [Nowak](https://github.com/tdykstra), [Tom FitzMacken](https://github.com/tf
 > ## <a name="questions-and-comments"></a>Questions et commentaires
 >
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
-
 
 ## <a name="overview"></a>Vue d'ensemble
 

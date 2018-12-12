@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: b19913e5-cd8a-4e4b-a872-5ac7a858a934
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-server
 msc.type: authoredcontent
-ms.openlocfilehash: 6545491cfa36bb9fee555eb0348ec0a319bff470
-ms.sourcegitcommit: fc2486ddbeb15ab4969168d99b3fe0fbe91e8661
+ms.openlocfilehash: 4730c4d9f601f561cfc884e0a9c2c2d12785ae0f
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50758243"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288103"
 ---
 <a name="aspnet-signalr-hubs-api-guide---server-c"></a>Guide de l’API ASP.NET SignalR Hubs - serveur (c#)
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Ce document fournit une introduction à la programmation côté serveur de l’API des concentrateurs SignalR ASP.NET pour SignalR version 2, avec des exemples de code illustrant les options courantes.
 > 
@@ -41,7 +43,6 @@ par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://gith
 > ## <a name="questions-and-comments"></a>Questions et commentaires
 > 
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
-
 
 ## <a name="overview"></a>Vue d'ensemble
 
@@ -103,7 +104,7 @@ Pour définir l’itinéraire que les clients utiliseront pour se connecter à v
 
 [!code-csharp[Main](hubs-api-guide-server/samples/sample1.cs)]
 
-Si vous ajoutez des fonctionnalités de SignalR à une application ASP.NET MVC, assurez-vous que l’itinéraire de SignalR est ajouté avant les autres itinéraires. Pour plus d’informations, consultez [didacticiel : bien démarrer avec SignalR 2 et MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md).
+Si vous ajoutez des fonctionnalités de SignalR à une application ASP.NET MVC, assurez-vous que l’itinéraire de SignalR est ajouté avant les autres itinéraires. Pour plus d’informations, consultez [didacticiel : Bien démarrer avec SignalR 2 et MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md).
 
 <a id="signalrurl"></a>
 

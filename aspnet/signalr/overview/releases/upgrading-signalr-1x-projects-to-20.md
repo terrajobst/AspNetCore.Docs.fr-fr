@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: adcfef99-9bc5-489d-a91b-9b7c2bc35e04
 msc.legacyurl: /signalr/overview/releases/upgrading-signalr-1x-projects-to-20
 msc.type: authoredcontent
-ms.openlocfilehash: 450ddedb520035cc05a0dbcca1a2666dd1ba24c7
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 23ea23585b15395cf86bdad13885af32d1b64e79
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910549"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286842"
 ---
 <a name="upgrading-signalr-1x-projects-to-version-2"></a>La mise à niveau de projets SignalR 1.x vers la version 2
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Cette rubrique décrit comment mettre à niveau un projet 1.x de SignalR existant à SignalR 2.x et comment résoudre les problèmes qui peuvent survenir pendant le processus de mise à niveau.
 >
@@ -50,18 +52,18 @@ SignalR 2 offre une expérience de développement cohérente sur plusieurs plate
 
 Nous vous conseillons de mettre à niveau des applications SignalR 2, SignalR 1.x sont toujours être prise en charge.
 
-Ce didacticiel explique comment mettre à niveau une application hébergée sur le web pour SignalR 2. Les applications auto-hébergées (ceux qui hébergent un serveur dans une application console, de service de Windows ou d’autres processus) sont désormais pris en charge sous SignalR 2. Pour plus d’informations sur la prise en main la création d’une application auto-hébergée avec SignalR 2, consultez [didacticiel : auto-hébergement de SignalR](../deployment/tutorial-signalr-self-host.md).
+Ce didacticiel explique comment mettre à niveau une application hébergée sur le web pour SignalR 2. Les applications auto-hébergées (ceux qui hébergent un serveur dans une application console, de service de Windows ou d’autres processus) sont désormais pris en charge sous SignalR 2. Pour plus d’informations sur la prise en main la création d’une application auto-hébergée avec SignalR 2, consultez [didacticiel : Auto-hébergement de SignalR](../deployment/tutorial-signalr-self-host.md).
 
 ## <a name="contents"></a>Sommaire
 
 Les sections suivantes décrivent les tâches impliquées dans la mise à niveau des projets de SignalR et comment résoudre les problèmes qui peuvent survenir.
 
-- [Exemple : Le didacticiel de mise en route de la mise à niveau à SignalR 2](#example)
+- [Exemple : La mise à niveau de ce didacticiel de mise en route SignalR 2](#example)
 - [Résolution des problèmes rencontrés lors de la mise à niveau](#troubleshooting)
 
 <a id="example"></a>
 
-## <a name="example-upgrading-the-getting-started-tutorial-application-to-signalr-2"></a>Exemple : La mise à niveau de l’application du didacticiel mise en route SignalR 2
+## <a name="example-upgrading-the-getting-started-tutorial-application-to-signalr-2"></a>Exemple : La mise à niveau de l’application du didacticiel mise en route SignalR 2
 
 Dans cette section, vous allez mettre à jour l’application créée dans le [SignalR 1.x version de Getting Started Tutorial](../older-versions/index.md) utiliser SignalR 2.
 

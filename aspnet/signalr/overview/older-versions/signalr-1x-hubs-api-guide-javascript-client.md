@@ -8,16 +8,18 @@ ms.date: 04/17/2013
 ms.assetid: dcd4593b-1118-418a-af71-d12ff33fb36d
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 993ad7924d8335f79aa2c3e41c00ddfa8bc26874
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 2d50a92cff96be5c5c60105bba6682d38f9666b6
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41826827"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288090"
 ---
 <a name="signalr-1x-hubs-api-guide---javascript-client"></a>Guide de API SignalR 1.x Hubs - Client JavaScript
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 1.1, les clients JavaScript, telles que des navigateurs et des applications du Windows Store (WinJS).
 > 
@@ -449,7 +451,7 @@ SignalR fournit des événements de durée de vie que vous pouvez gérer la conn
 - `reconnecting`: Déclenché lorsque le transport sous-jacent commence à se reconnecter.
 - `reconnected`: Déclenché lorsque le transport sous-jacent s’est reconnecté.
 - `stateChanged`: Déclenché lorsque l’état de connexion change. Fournit l’ancien état et le nouvel état (connexion, connecté, reconnexion ou Disconnected).
-- `disconnected`: Déclenché lors de la connexion a déconnecté.
+- `disconnected`: Déclenché lorsque la connexion a déconnecté.
 
 Par exemple, si vous souhaitez afficher les messages d’avertissement lorsqu’il existe des problèmes de connexion qui peuvent entraîner des retards, gérer la `connectionSlow` événement.
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 11/01/2018
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 342759a6ff4b5679e0d54c979188ae66d339562d
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 15e388433cc9b01e9db3e2fb56aca1ebb5ba5ba4
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121295"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284411"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
@@ -61,9 +61,9 @@ IIS utilise le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-modul
 
 Activer le Service de rôle IIS pour l’authentification Windows. Pour plus d’informations, consultez [activer l’authentification Windows dans les Services de rôle IIS (voir étape 2)](xref:host-and-deploy/iis/index#iis-configuration).
 
-Intergiciel d’intégration IIS est configuré pour authentifier les demandes automatiquement par défaut. Pour plus d’informations, consultez [héberger ASP.NET Core sur Windows avec IIS : options d’IIS (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options).
+Intergiciel d’intégration IIS est configuré pour authentifier les demandes automatiquement par défaut. Pour plus d’informations, consultez [héberger ASP.NET Core sur Windows avec IIS : Options d’IIS (AutomaticAuthentication)](xref:host-and-deploy/iis/index#iis-options).
 
-Le Module ASP.NET Core est configuré pour transférer le jeton d’authentification de Windows à l’application par défaut. Pour plus d’informations, consultez [référence de configuration de Module ASP.NET Core : attributs de l’élément aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
+Le Module ASP.NET Core est configuré pour transférer le jeton d’authentification de Windows à l’application par défaut. Pour plus d’informations, consultez [référence de configuration de Module ASP.NET Core : Attributs de l’élément aspNetCore](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element).
 
 ### <a name="create-a-new-iis-site"></a>Créer un nouveau site IIS
 

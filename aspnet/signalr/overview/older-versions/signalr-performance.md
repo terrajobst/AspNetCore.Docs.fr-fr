@@ -8,16 +8,18 @@ ms.date: 07/03/2013
 ms.assetid: 9594d644-66b6-4223-acdd-23e29a6e4c46
 msc.legacyurl: /signalr/overview/older-versions/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 3ac62639617e1ff83761d0a1d45c27303d0b820d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: ea2d3908544ac8b3ea17ceceaf1d2905c5c6f322
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912759"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287565"
 ---
 <a name="signalr-performance-signalr-1x"></a>Performances de SignalR (SignalR 1.x)
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Cette rubrique décrit comment concevoir pour, mesurer et améliorer les performances dans une application de SignalR.
 
@@ -71,7 +73,7 @@ Les paramètres de configuration suivants peuvent être utilisés pour paramétr
 
 **Paramètres de configuration de SignalR**
 
-- **DefaultMessageBufferSize**: par défaut, SignalR conserve 1 000 messages en mémoire par hub par connexion. Si les messages volumineux sont utilisées, cela peut créer des problèmes de mémoire qui peuvent être résolus en réduisant cette valeur. Ce paramètre peut être défini dans le `Application_Start` Gestionnaire d’événements dans une application ASP.NET ou dans le `Configuration` méthode d’une classe de démarrage OWIN dans une application auto-hébergée. L’exemple suivant montre comment réduire cette valeur afin de réduire l’encombrement mémoire de votre application afin de réduire la quantité de mémoire du serveur utilisé :
+- **DefaultMessageBufferSize**: Par défaut, SignalR conserve 1 000 messages en mémoire par hub par connexion. Si les messages volumineux sont utilisées, cela peut créer des problèmes de mémoire qui peuvent être résolus en réduisant cette valeur. Ce paramètre peut être défini dans le `Application_Start` Gestionnaire d’événements dans une application ASP.NET ou dans le `Configuration` méthode d’une classe de démarrage OWIN dans une application auto-hébergée. L’exemple suivant montre comment réduire cette valeur afin de réduire l’encombrement mémoire de votre application afin de réduire la quantité de mémoire du serveur utilisé :
 
     **Code de serveur .NET dans Global.asax pour diminuer la taille de mémoire tampon de message par défaut**
 
@@ -79,7 +81,7 @@ Les paramètres de configuration suivants peuvent être utilisés pour paramétr
 
 **Paramètres de configuration IIS**
 
-- **Nombre maximal de demandes simultanées par application**: augmentation du nombre de IIS simultanées demandes augmente les ressources serveur disponibles au traitement des requêtes. La valeur par défaut est 5000 ; Pour augmenter ce paramètre, exécutez les commandes suivantes dans une invite de commandes avec élévation de privilèges :
+- **Nombre maximal de demandes simultanées par application**: Augmentation du nombre de IIS simultanées demandes augmente les ressources serveur disponibles au traitement des requêtes. La valeur par défaut est 5000 ; Pour augmenter ce paramètre, exécutez les commandes suivantes dans une invite de commandes avec élévation de privilèges :
 
     [!code-console[Main](signalr-performance/samples/sample4.cmd)]
 
@@ -92,10 +94,10 @@ Cette section inclut des paramètres de configuration qui peuvent être définie
 
 Paramètres de ASP.NET qui peuvent améliorer les performances de SignalR sont les suivants :
 
-- **Nombre maximal de requêtes simultané par UC**: augmentation de ce paramètre peut atténuer les goulets d’étranglement. Pour augmenter ce paramètre, ajoutez le paramètre de configuration suivant à la `aspnet.config` fichier :
+- **Nombre maximal de requêtes simultané par UC**: Augmentation de ce paramètre peut atténuer les goulots d’étranglement. Pour augmenter ce paramètre, ajoutez le paramètre de configuration suivant à la `aspnet.config` fichier :
 
     [!code-xml[Main](signalr-performance/samples/sample5.xml?highlight=4)]
-- **Limite de la file d’attente des requêtes**: lorsque le nombre total de connexions dépasse le `maxConcurrentRequestsPerCPU` définissant, ASP.NET commence à l’aide d’une file d’attente des demandes de limitation. Pour augmenter la taille de la file d’attente, vous pouvez augmenter la `requestQueueLimit` paramètre. Pour ce faire, ajoutez le paramètre de configuration suivant à la `processModel` nœud `config/machine.config` (plutôt que `aspnet.config`) :
+- **Limite de la file d’attente des requêtes**: Lorsque le nombre total de connexions dépasse le `maxConcurrentRequestsPerCPU` définissant, ASP.NET commence à l’aide d’une file d’attente des demandes de limitation. Pour augmenter la taille de la file d’attente, vous pouvez augmenter la `requestQueueLimit` paramètre. Pour ce faire, ajoutez le paramètre de configuration suivant à la `processModel` nœud `config/machine.config` (plutôt que `aspnet.config`) :
 
     [!code-xml[Main](signalr-performance/samples/sample6.xml)]
 
@@ -177,14 +179,14 @@ Les métriques suivantes mesurent le trafic via le bus de messages SignalR inter
 
 Les métriques suivantes mesurent les erreurs générées par le trafic des messages SignalR. **Résolution du Hub** erreurs se produisent quand un hub ou une méthode de concentrateur ne peut pas être résolu. **Appel de concentrateur** erreurs sont des exceptions levées lors de l’appel d’une méthode de concentrateur. **Transport** erreurs sont des erreurs de connexion levées pendant une requête ou réponse HTTP.
 
-- **Erreurs : Total de toutes les**
-- **Erreurs : All/s**
-- **Erreurs : Total de résolution Hub**
+- **Erreurs : Total de tous les**
+- **Erreurs : Tous/s**
+- **Erreurs : Total de résolution de hub**
 - **Erreurs : Résolution de concentrateur par seconde**
 - **Erreurs : Total d’appel de concentrateur**
 - **Erreurs : Appel de concentrateur par seconde**
-- **Erreurs : Total de Transport**
-- **Erreurs : Transport/s**
+- **Erreurs : Nombre Total de transport**
+- **Erreurs : Transport par seconde**
 
 **Métriques de montée en puissance parallèle**
 

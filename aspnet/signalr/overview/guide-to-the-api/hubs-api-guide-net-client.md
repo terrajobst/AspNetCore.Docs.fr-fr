@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 6d02d9f7-94e5-4140-9f51-5a6040f274f6
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 2d7dd1480694eacffc0cfa60ac0179b16348488d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0a2b24039259ef90579a7f215bb9e35ebef7b9b9
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912993"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288038"
 ---
 <a name="aspnet-signalr-hubs-api-guide---net-client-c"></a>Guide de l’API ASP.NET SignalR Hubs - Client .NET (c#)
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Ce document fournit une introduction à l’utilisation de l’API Hubs pour SignalR version 2 dans les clients .NET, tels que Windows Store (WinRT), WPF, Silverlight et les applications de console.
 >
@@ -41,7 +43,6 @@ par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://gith
 > ## <a name="questions-and-comments"></a>Questions et commentaires
 >
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
-
 
 ## <a name="overview"></a>Vue d'ensemble
 
@@ -334,7 +335,7 @@ SignalR fournit des événements de durée de vie que vous pouvez gérer la conn
 - `Reconnecting`: Déclenché lorsque le transport sous-jacent commence à se reconnecter.
 - `Reconnected`: Déclenché lorsque le transport sous-jacent s’est reconnecté.
 - `StateChanged`: Déclenché lorsque l’état de connexion change. Fournit l’ancien état et le nouvel état. Pour plus d’informations sur la connexion, valeurs d’état consultez [énumération ConnectionState](https://msdn.microsoft.com/library/microsoft.aspnet.signalr.client.connectionstate(v=vs.111).aspx).
-- `Closed`: Déclenché lors de la connexion a déconnecté.
+- `Closed`: Déclenché lorsque la connexion a déconnecté.
 
 Par exemple, si vous souhaitez afficher les messages d’avertissement pour les erreurs qui ne sont pas irrécupérable mais entraînent des problèmes de connexion intermittents, par exemple que lenteur ou fréquentes suppression de la connexion, gèrent le `ConnectionSlow` événement.
 

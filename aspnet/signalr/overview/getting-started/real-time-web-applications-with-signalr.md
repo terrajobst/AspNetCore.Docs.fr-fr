@@ -8,16 +8,19 @@ ms.date: 07/16/2014
 ms.assetid: ba07958c-42e1-4da0-81db-ba6925ed6db0
 msc.legacyurl: /signalr/overview/getting-started/real-time-web-applications-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 59831fb8497c86ec5e02de3912b36a15f416597c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: de2f2349fc284e167bd8227ae55da79b9f1f4549
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913231"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288000"
 ---
-<a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Atelier pratique : Les Applications Web en temps réel avec SignalR
+<a name="hands-on-lab-real-time-web-applications-with-signalr"></a>Atelier pratique : Applications Web en temps réel avec SignalR
 ====================
+
 par [Web Camps Team](https://twitter.com/webcamps)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 [Télécharger le Kit de formation de Web Camps](http://aka.ms/webcamps-training-kit)
 
@@ -25,9 +28,9 @@ par [Web Camps Team](https://twitter.com/webcamps)
 > 
 > **SignalR** fournit également une API simple, de haut niveau qui permet d’effectuer le serveur au client RPC (appeler des fonctions JavaScript dans les navigateurs de vos clients à partir du code .NET côté serveur) dans votre application ASP.NET, ainsi que l’ajout des raccordements utiles pour la gestion de la connexion, par exemple les événements de connexion/déconnexion, regroupement de connexions et d’autorisation.
 > 
-> **SignalR** est une abstraction par rapport à des transports qui sont nécessaires pour effectuer un travail en temps réel entre client et serveur. Un **SignalR** connexion démarre en tant que HTTP et est ensuite promue à un **WebSocket** connexion si elle est disponible. **WebSocket** est le transport idéal pour **SignalR**, car elle rend l’utilisation la plus efficace de la mémoire du serveur, a la plus faible latence, et présente les caractéristiques plus sous-jacent (telles que la communication en duplex intégral entre client et serveur), mais elle présente également des exigences les plus strictes : **WebSocket** nécessite que le serveur à utiliser **Windows Server 2012** ou **Windows 8**, ainsi que de **.NET framework 4.5**. Si ces conditions ne sont pas remplies, **SignalR** tentera d’utiliser d’autres transports pour ses connexions (telles que *Ajax interrogation longue*).
+> **SignalR** est une abstraction par rapport à des transports qui sont nécessaires pour effectuer un travail en temps réel entre client et serveur. Un **SignalR** connexion démarre en tant que HTTP et est ensuite promue à un **WebSocket** connexion si elle est disponible. **WebSocket** est le transport idéal pour **SignalR**, car elle rend l’utilisation la plus efficace de la mémoire du serveur, a la plus faible latence, et présente les caractéristiques plus sous-jacent (telles que la communication en duplex intégral entre client et serveur), mais elle présente également des exigences les plus strictes : **WebSocket** nécessite que le serveur à utiliser **Windows Server 2012** ou **Windows 8**, avec **.NET Framework 4.5**. Si ces conditions ne sont pas remplies, **SignalR** tentera d’utiliser d’autres transports pour ses connexions (telles que *Ajax interrogation longue*).
 > 
-> Le **SignalR** API contient deux modèles pour la communication entre les clients et serveurs : **connexions persistantes** et **Hubs**. Un **connexion** représente un point de terminaison simple pour envoi unique-recipient, regroupées ou diffuser des messages. Un **Hub** est un pipeline plus haut niveau basé sur l’API de connexion qui permet à votre client et le serveur pour appeler des méthodes sur eux directement.
+> Le **SignalR** API contient deux modèles pour la communication entre les clients et serveurs : **Connexions persistantes** et **Hubs**. Un **connexion** représente un point de terminaison simple pour envoi unique-recipient, regroupées ou diffuser des messages. Un **Hub** est un pipeline plus haut niveau basé sur l’API de connexion qui permet à votre client et le serveur pour appeler des méthodes sur eux directement.
 > 
 > ![Architecture de SignalR](real-time-web-applications-with-signalr/_static/image1.png)
 > 
@@ -269,9 +272,9 @@ Pour plus d’informations sur le fond de panier SignalR fonctionne, lisez ce [a
 > [!NOTE]
 > Il existe certains scénarios où un fond de panier peut devenir un goulot d’étranglement. Voici quelques scénarios classiques de SignalR :
 > 
-> - [Diffusion de serveur](tutorial-server-broadcast-with-signalr.md) (par exemple, les cotations boursières) : fonds de panier fonctionnent bien pour ce scénario, étant donné que le serveur contrôle la fréquence à laquelle les messages sont envoyés.
-> - [Client à](tutorial-getting-started-with-signalr.md) (par exemple, chat) : dans ce scénario, le fond de panier peut être un goulot d’étranglement si le nombre de messages évolue avec le nombre de clients ; autrement dit, si le taux de messages augmente proportionnellement à sa plus de clients joindre.
-> - [En temps réel haute fréquence](tutorial-high-frequency-realtime-with-signalr.md) (par exemple, des jeux en temps réel) : un fond de panier n’est pas recommandée pour ce scénario.
+> - [Diffusion de serveur](tutorial-server-broadcast-with-signalr.md) (par exemple, les cotations boursières) : Fonds de panier fonctionnent bien pour ce scénario, étant donné que le serveur contrôle la fréquence à laquelle les messages sont envoyés.
+> - [Client à](tutorial-getting-started-with-signalr.md) (par exemple, chat) : Dans ce scénario, le fond de panier peut être un goulot d’étranglement si le nombre de messages évolue avec le nombre de clients ; Autrement dit, si le taux de messages augmente proportionnellement à sa plus de clients joindre.
+> - [En temps réel haute fréquence](tutorial-high-frequency-realtime-with-signalr.md) (par exemple, des jeux en temps réel) : Fond de panier n’est pas recommandée pour ce scénario.
 
 
 Dans cet exercice, vous allez utiliser **SQL Server** pour distribuer les messages entre le **Geek questionnaire** application. Vous allez exécuter ces tâches sur un ordinateur de test unique pour apprendre à définir la configuration, mais afin d’obtenir l’effet, vous devez déployer l’application de SignalR à deux ou plusieurs serveurs. Vous devez également installer SQL Server sur l’un des serveurs ou sur un serveur dédié distinct.

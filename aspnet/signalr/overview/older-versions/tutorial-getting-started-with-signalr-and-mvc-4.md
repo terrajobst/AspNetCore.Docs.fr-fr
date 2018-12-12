@@ -8,16 +8,18 @@ ms.date: 03/29/2013
 ms.assetid: eeef9f73-6de3-49f9-b50b-9af22108f2ce
 msc.legacyurl: /signalr/overview/older-versions/tutorial-getting-started-with-signalr-and-mvc-4
 msc.type: authoredcontent
-ms.openlocfilehash: 95fc3315149e07dbdb0505a2b5ab197bfedba097
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: a67d05288252c17d84b1d7df5f7bcddde3c887f5
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910874"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287709"
 ---
 <a name="tutorial-getting-started-with-signalr-1x-and-mvc-4"></a>Didacticiel : Bien démarrer avec SignalR 1.x et MVC 4
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tim Teebken](https://github.com/timlt)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Ce didacticiel montre comment utiliser ASP.NET SignalR pour créer une application de conversation en temps réel. Vous ajouter SignalR à une application MVC 4 et créer une vue de conversation pour envoyer et afficher des messages.
 

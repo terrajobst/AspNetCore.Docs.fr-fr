@@ -8,16 +8,18 @@ ms.date: 05/01/2013
 ms.assetid: 501db899-e68c-49ff-81b2-1dc561bfe908
 msc.legacyurl: /signalr/overview/older-versions/scaleout-with-windows-azure-service-bus
 msc.type: authoredcontent
-ms.openlocfilehash: d597eebc958815b1b1b9fdffc256c4453efce6b3
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 687d3d7787baa69410ee35d651a029c69d28c70b
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910952"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53286998"
 ---
 <a name="signalr-scaleout-with-azure-service-bus-signalr-1x"></a>Montée en puissance parallèle de SignalR avec Azure Service Bus (SignalR 1.x)
 ====================
 par [Mike Wasson](https://github.com/MikeWasson), [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 Dans ce didacticiel, vous allez déployer une application de SignalR pour un rôle Web Windows Azure à l’aide de l’infrastructure d’intégration Service Bus pour distribuer les messages à chaque instance de rôle.
 
@@ -53,7 +55,7 @@ Pour chaque application, choisissez une autre valeur pour « Nomapp ». N’ut
 
 ## <a name="create-the-azure-services"></a>Créer les Services Azure
 
-Créer un Service Cloud, comme décrit dans [comment créer et déployer un Service Cloud](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy). Suivez les étapes décrites dans la section « Comment : créer un service cloud à l’aide de la création rapide ». Pour ce didacticiel, vous n’avez pas besoin de télécharger un certificat.
+Créer un Service Cloud, comme décrit dans [comment créer et déployer un Service Cloud](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy). Suivez les étapes décrites dans la section « Comment : Créer un service cloud à l’aide de la création rapide ». Pour ce didacticiel, vous n’avez pas besoin de télécharger un certificat.
 
 ![](scaleout-with-windows-azure-service-bus/_static/image2.png)
 

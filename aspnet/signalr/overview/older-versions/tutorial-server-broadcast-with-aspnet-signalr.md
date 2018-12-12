@@ -1,6 +1,6 @@
 ---
 uid: signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
-title: 'Didacticiel : Diffusion par le serveur avec ASP.NET SignalR 1.x | Microsoft Docs'
+title: 'Didacticiel : Serveur de diffusion avec ASP.NET SignalR 1.x | Microsoft Docs'
 author: pfletcher
 description: Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR pour fournir des fonctionnalités de diffusion de serveur. Serveur de diffusion signifie autrement communic...
 ms.author: riande
@@ -8,16 +8,18 @@ ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 7d604af11ade848358e291d1df25f2f8df850132
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: d5c09f6493c4dedb4fc2ecbf9055dd014ede71f2
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911979"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288045"
 ---
-<a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Didacticiel : Diffusion par le serveur avec ASP.NET SignalR 1.x
+<a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Didacticiel : Serveur de diffusion avec ASP.NET SignalR 1.x
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR pour fournir des fonctionnalités de diffusion de serveur. Diffusion de serveur signifie que les communications envoyées aux clients sont initiées par le serveur. Ce scénario nécessite une approche de programmation différents scénarios de peer-to-peer telles que les applications de conversation, dans lequel les communications envoyées aux clients sont initiées par un ou plusieurs clients.
 > 

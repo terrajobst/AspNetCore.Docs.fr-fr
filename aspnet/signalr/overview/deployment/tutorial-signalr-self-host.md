@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 400db427-27af-4f2f-abf0-5486d5e024b5
 msc.legacyurl: /signalr/overview/deployment/tutorial-signalr-self-host
 msc.type: authoredcontent
-ms.openlocfilehash: a08ce2e89ae13125cbc3915b44bcd1120fc22150
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 48cb3d4d71c33ac3382b2b35b5a19fa1c4958874
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911521"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287401"
 ---
 <a name="tutorial-signalr-self-host"></a>Didacticiel : Auto-hébergement de SignalR
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 [Télécharger le projet terminé](http://code.msdn.microsoft.com/SignalR-Self-Host-Sample-6da0f383)
 
@@ -91,7 +93,7 @@ Dans ce didacticiel, vous allez créer un serveur qui est hébergé dans une app
 
     Le code ci-dessus comprend trois classes :
 
-    - **Programme**, y compris le **Main** méthode définissant le chemin d’accès principal d’exécution. Dans cette méthode, une application web de type **démarrage** est démarré à l’URL spécifiée (`http://localhost:8080`). Si la sécurité est requise sur le point de terminaison, SSL peut être implémenté. Consultez [Comment : configurer un Port avec un certificat SSL](https://msdn.microsoft.com/library/ms733791.aspx) pour plus d’informations.
+    - **Programme**, y compris le **Main** méthode définissant le chemin d’accès principal d’exécution. Dans cette méthode, une application web de type **démarrage** est démarré à l’URL spécifiée (`http://localhost:8080`). Si la sécurité est requise sur le point de terminaison, SSL peut être implémenté. Consultez [Comment : Configurer un Port avec un certificat SSL](https://msdn.microsoft.com/library/ms733791.aspx) pour plus d’informations.
     - **Démarrage**, la classe contenant la configuration pour le serveur de SignalR (la seule configuration de ce didacticiel utilise est l’appel à `UseCors`) et l’appel à `MapSignalR`, ce qui crée des itinéraires pour tous les objets Hub dans le projet.
     - **Monconcentrateur**, la classe de concentrateur SignalR l’application fournira aux clients. Cette classe a une méthode unique, **envoyer**, que les clients appelleront pour diffuser un message à tous les autres clients connectés.
 6. Compilez et exécutez l'application. L’adresse que le serveur est en cours d’exécution doit afficher dans une fenêtre de console.

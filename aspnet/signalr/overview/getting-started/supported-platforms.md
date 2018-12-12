@@ -8,23 +8,24 @@ ms.date: 04/18/2018
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: d522602c3523d97a12c74b2d901391bd00d4f2b9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: e270f9a328f36854fdfb3e23b78e0b40cdda6411
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835346"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287359"
 ---
 <a name="supported-platforms"></a>Plateformes prises en charge
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Cet article décrit les clients et les serveurs sont pris en charge par SignalR. 
 > 
 > ## <a name="questions-and-comments"></a>Questions et commentaires
 > 
 > Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer dans les commentaires en bas de la page. Si vous avez des questions qui ne sont pas directement liées à ce didacticiel, vous pouvez les publier à le [ASP.NET SignalR forum](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) ou [StackOverflow.com](http://stackoverflow.com/).
-
 
 SignalR est pris en charge dans diverses configurations de serveurs et clients. En outre, chaque option de transport possède un ensemble d’exigences de son propre ; Si la configuration système requise pour un transport n’est pas disponible, SignalR basculent normalement d’autres transports. Pour plus d’informations sur les transports prenant en charge SignalR, consultez [Transports et les solutions de secours](introduction-to-signalr.md#transports).
 
@@ -87,9 +88,9 @@ En plus de nécessiter certains navigateurs, les différents transports que Sign
 | Transport | Internet Explorer | Chrome (Windows ou iOS) | Firefox | Safari (OS x ou iOS) | Android |
 | --- | --- | --- | --- | --- | --- |
 | WebSockets | 10+ | en cours - 1 | en cours - 1 | en cours - 1 | N/A |
-| Événements de serveur a été envoyé | N/A | en cours - 1 | en cours - 1 | en cours - 1 | N/A |
+| Événements envoyés par le serveur | N/A | en cours - 1 | en cours - 1 | en cours - 1 | N/A |
 | ForeverFrame | 8+ | N/A | N/A | N/A | 4.1 |
-| Interrogation longue | 8+ | en cours - 1 | en cours - 1 | en cours - 1 | 4.1 |
+| Interrogation longue (Long polling) | 8+ | en cours - 1 | en cours - 1 | en cours - 1 | 4.1 |
 
 \*: 6 + requis pour toutes les fonctionnalités.
 
@@ -112,8 +113,8 @@ Outre le système d’exploitation et la configuration requise du .NET framework
 | --- | --- | --- |
 | Web Sockets | Windows 8 + et .NET 4.5 + | N/A |
 | Forever Frame | N/A | N/A |
-| Événements de serveur a été envoyé | .NET 4 + | 5+ |
-| Interrogation longue | .NET 4 + | 5+ |
+| Événements envoyés par le serveur | .NET 4 + | 5+ |
+| Interrogation longue (Long polling) | .NET 4 + | 5+ |
 
 <a id="android"></a>
 
@@ -127,8 +128,8 @@ SignalR peut être utilisé dans les applications du Windows Store et les applic
 | --- | --- | --- | --- | --- |
 | WebSockets | N/A | Win8 + | 8+ | N/A |
 | Forever Frame | N/A | Win8 + | 7.5+ | N/A |
-| Événements de serveur a été envoyé | Win8 + | N/A | N/A | 8+ |
-| Interrogation longue | Win8 + | Win8 + | 7.5+ | 8+ |
+| Événements envoyés par le serveur | Win8 + | N/A | N/A | 8+ |
+| Interrogation longue (Long polling) | Win8 + | Win8 + | 7.5+ | 8+ |
 
 <a id="updates"></a>
 

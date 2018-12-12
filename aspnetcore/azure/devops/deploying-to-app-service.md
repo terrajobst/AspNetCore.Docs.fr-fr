@@ -6,12 +6,12 @@ ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 4424d3d15cbd234357c8265fa276834cb9abf352
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 9fe17c9e210d4dda9b74818104fc52a60d4f0077
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121218"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284537"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Déployer une application dans App Service
 
@@ -35,7 +35,7 @@ N’hésitez pas à examiner le code, mais il est important de comprendre qu’i
 
 À partir d’un interpréteur de commandes, vous pouvez télécharger le code, générez le projet et exécutez-le comme suit.
 
-> *Remarque : Linux/Mac OS les utilisateurs doivent apporter les modifications appropriées pour les chemins d’accès, par exemple, à l’aide de la barre oblique (`/`) au lieu de la barre oblique inverse (`\`).*
+> *Remarque : Les utilisateurs Linux/Mac OS doivent apporter les modifications appropriées pour les chemins d’accès, par exemple, à l’aide de la barre oblique (`/`) au lieu de la barre oblique inverse (`\`).*
 
 1. Clonez le code dans un dossier sur votre ordinateur local.
 
@@ -141,7 +141,7 @@ Pour déployer l’application, vous devez créer un Service d’application [ap
 
 ## <a name="deployment-with-visual-studio"></a>Déploiement avec Visual Studio
 
-> *Remarque : Cette section s’applique à Windows uniquement. Les utilisateurs de Linux et macOS doivent apporter la modification décrite à l’étape 2 ci-dessous. Enregistrez le fichier et valider la modification dans le référentiel local avec `git commit`. Enfin, transmettre la modification avec `git push`, comme illustré dans la première section.*
+> *Remarque : Cette section s’applique uniquement à Windows. Les utilisateurs de Linux et macOS doivent apporter la modification décrite à l’étape 2 ci-dessous. Enregistrez le fichier et valider la modification dans le référentiel local avec `git commit`. Enfin, transmettre la modification avec `git push`, comme illustré dans la première section.*
 
 L’application a déjà été déployée à partir de l’interface de commande. Nous allons utiliser les outils intégrés de Visual Studio pour déployer une mise à jour à l’application. Dans les coulisses, Visual Studio effectue la même opération en tant que l’outils en ligne de commande, mais au sein de l’interface familière de Visual Studio.
 

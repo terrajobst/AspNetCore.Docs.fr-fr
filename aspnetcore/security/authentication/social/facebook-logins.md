@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 11/11/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 8bb22dc6df9879e827ff9a5ac11e9e3ad5346dc2
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: d4f3e210b0d3c79eaf2233f97a29a6d96cd69b39
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121503"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284381"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Programme d’installation de Facebook login externe dans ASP.NET Core
 
@@ -121,7 +121,7 @@ Consultez le [FacebookOptions](/dotnet/api/microsoft.aspnetcore.builder.facebook
 
 Exécutez votre application et cliquez sur **connectez-vous**. Vous voyez une option pour vous connecter avec Facebook.
 
-![Application Web : utilisateur non authentifié](index/_static/DoneFacebook.png)
+![Application Web : Utilisateur non authentifié](index/_static/DoneFacebook.png)
 
 Lorsque vous cliquez sur **Facebook**, vous êtes redirigé vers Facebook pour l’authentification :
 
@@ -135,13 +135,13 @@ Une fois que vous entrez vos informations d’identification Facebook, vous ête
 
 Vous êtes maintenant connecté à l’aide de vos informations d’identification Facebook :
 
-![Application Web : utilisateur authentifié](index/_static/Done.png)
+![Application Web : Utilisateur authentifié](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
-* **ASP.NET Core 2.x uniquement :** si identité n’est pas configurée en appelant `services.AddIdentity` dans `ConfigureServices`, toute tentative authentifier entraîne *ArgumentException : l’option 'SignInScheme' doit être fournie*. Le modèle de projet utilisé dans ce didacticiel permet de s’assurer que cela est fait.
+* **ASP.NET Core 2.x uniquement :** Si l’identité n’est pas configurée en appelant `services.AddIdentity` dans `ConfigureServices`, toute tentative authentifier entraîne *ArgumentException : L’option 'SignInScheme' doit être fournie*. Le modèle de projet utilisé dans ce didacticiel permet de s’assurer que cela est fait.
 * Si la base de données de site n’a pas été créé en appliquant la migration initiale, vous obtenez *une opération de base de données a échoué lors du traitement de la demande* erreur. Appuyez sur **appliquer les Migrations** pour créer la base de données et actualiser pour passer à l’erreur.
 
 ## <a name="next-steps"></a>Étapes suivantes

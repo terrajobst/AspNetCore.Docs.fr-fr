@@ -8,16 +8,18 @@ ms.date: 06/10/2014
 ms.assetid: 3751f5e7-59db-4be0-a290-50abc24e5c84
 msc.legacyurl: /signalr/overview/performance/signalr-performance
 msc.type: authoredcontent
-ms.openlocfilehash: 269c10d7a73f181eaceac1c43ad51f3933d6711c
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 9346f0ff9720361f07afe196f59305f0f38ffe8a
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911856"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287768"
 ---
 <a name="signalr-performance"></a>Performances de SignalR
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 > Cette rubrique décrit comment concevoir pour, mesurer et améliorer les performances dans une application de SignalR.
 >
@@ -88,7 +90,7 @@ Les paramètres de configuration suivants peuvent être utilisés pour paramétr
 
 **Paramètres de configuration de SignalR**
 
-- **DefaultMessageBufferSize**: par défaut, SignalR conserve 1 000 messages en mémoire par hub par connexion. Si les messages volumineux sont utilisées, cela peut créer des problèmes de mémoire qui peuvent être résolus en réduisant cette valeur. Ce paramètre peut être défini dans le `Application_Start` Gestionnaire d’événements dans une application ASP.NET ou dans le `Configuration` méthode d’une classe de démarrage OWIN dans une application auto-hébergée. L’exemple suivant montre comment réduire cette valeur afin de réduire l’encombrement mémoire de votre application afin de réduire la quantité de mémoire du serveur utilisé :
+- **DefaultMessageBufferSize**: Par défaut, SignalR conserve 1 000 messages en mémoire par hub par connexion. Si les messages volumineux sont utilisées, cela peut créer des problèmes de mémoire qui peuvent être résolus en réduisant cette valeur. Ce paramètre peut être défini dans le `Application_Start` Gestionnaire d’événements dans une application ASP.NET ou dans le `Configuration` méthode d’une classe de démarrage OWIN dans une application auto-hébergée. L’exemple suivant montre comment réduire cette valeur afin de réduire l’encombrement mémoire de votre application afin de réduire la quantité de mémoire du serveur utilisé :
 
     **Code de serveur .NET dans Startup.cs pour diminuer la taille de mémoire tampon de message par défaut**
 
@@ -96,10 +98,10 @@ Les paramètres de configuration suivants peuvent être utilisés pour paramétr
 
 **Paramètres de configuration IIS**
 
-- **Nombre maximal de demandes simultanées par application**: augmentation du nombre de IIS simultanées demandes augmente les ressources serveur disponibles au traitement des requêtes. La valeur par défaut est 5000 ; Pour augmenter ce paramètre, exécutez les commandes suivantes dans une invite de commandes avec élévation de privilèges :
+- **Nombre maximal de demandes simultanées par application**: Augmentation du nombre de IIS simultanées demandes augmente les ressources serveur disponibles au traitement des requêtes. La valeur par défaut est 5000 ; Pour augmenter ce paramètre, exécutez les commandes suivantes dans une invite de commandes avec élévation de privilèges :
 
     [!code-console[Main](signalr-performance/samples/sample4.cmd)]
-- **ApplicationPool QueueLength**: il s’agit du nombre maximal de demandes que Http.sys files d’attente du pool d’applications. Lorsque la file d’attente est pleine, les nouvelles demandes de recevoir une réponse de « Service indisponible » 503. La valeur par défaut est 1000.
+- **Attente du pool d’applications**: Il s’agit du nombre maximal de demandes que Http.sys files d’attente du pool d’applications. Lorsque la file d’attente est pleine, les nouvelles demandes de recevoir une réponse de « Service indisponible » 503. La valeur par défaut est 1000.
 
     Raccourcir la longueur de file d’attente pour le processus de travail dans le pool d’applications hébergeant votre application sera économiser les ressources de mémoire. Pour plus d’informations, consultez [gestion, paramétrage et configuration des Pools d’applications](https://technet.microsoft.com/library/cc745955.aspx).
 
@@ -112,10 +114,10 @@ Cette section inclut des paramètres de configuration qui peuvent être définie
 
 Paramètres de ASP.NET qui peuvent améliorer les performances de SignalR sont les suivants :
 
-- **Nombre maximal de requêtes simultané par UC**: augmentation de ce paramètre peut atténuer les goulets d’étranglement. Pour augmenter ce paramètre, ajoutez le paramètre de configuration suivant à la `aspnet.config` fichier :
+- **Nombre maximal de requêtes simultané par UC**: Augmentation de ce paramètre peut atténuer les goulots d’étranglement. Pour augmenter ce paramètre, ajoutez le paramètre de configuration suivant à la `aspnet.config` fichier :
 
     [!code-xml[Main](signalr-performance/samples/sample5.xml?highlight=4)]
-- **Limite de la file d’attente des requêtes**: lorsque le nombre total de connexions dépasse le `maxConcurrentRequestsPerCPU` définissant, ASP.NET commence à l’aide d’une file d’attente des demandes de limitation. Pour augmenter la taille de la file d’attente, vous pouvez augmenter la `requestQueueLimit` paramètre. Pour ce faire, ajoutez le paramètre de configuration suivant à la `processModel` nœud `config/machine.config` (plutôt que `aspnet.config`) :
+- **Limite de la file d’attente des requêtes**: Lorsque le nombre total de connexions dépasse le `maxConcurrentRequestsPerCPU` définissant, ASP.NET commence à l’aide d’une file d’attente des demandes de limitation. Pour augmenter la taille de la file d’attente, vous pouvez augmenter la `requestQueueLimit` paramètre. Pour ce faire, ajoutez le paramètre de configuration suivant à la `processModel` nœud `config/machine.config` (plutôt que `aspnet.config`) :
 
     [!code-xml[Main](signalr-performance/samples/sample6.xml)]
 
@@ -197,14 +199,14 @@ Les métriques suivantes mesurent le trafic via le bus de messages SignalR inter
 
 Les métriques suivantes mesurent les erreurs générées par le trafic des messages SignalR. **Résolution du Hub** erreurs se produisent quand un hub ou une méthode de concentrateur ne peut pas être résolu. **Appel de concentrateur** erreurs sont des exceptions levées lors de l’appel d’une méthode de concentrateur. **Transport** erreurs sont des erreurs de connexion levées pendant une requête ou réponse HTTP.
 
-- **Erreurs : Total de toutes les**
-- **Erreurs : All/s**
-- **Erreurs : Total de résolution Hub**
+- **Erreurs : Total de tous les**
+- **Erreurs : Tous/s**
+- **Erreurs : Total de résolution de hub**
 - **Erreurs : Résolution de concentrateur par seconde**
 - **Erreurs : Total d’appel de concentrateur**
 - **Erreurs : Appel de concentrateur par seconde**
-- **Erreurs : Total de Transport**
-- **Erreurs : Transport/s**
+- **Erreurs : Nombre Total de transport**
+- **Erreurs : Transport par seconde**
 
 <a id="scaleout_metrics"></a>
 
