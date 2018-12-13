@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment héberger des applications ASP.NET Core sur Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/11/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 5919fe66139260bace1c356c833abb132ba4b2e8
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: b71adcaad710ecfb7f81de0cc302f293d1728bec
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121750"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53288116"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -32,6 +32,14 @@ Les systèmes d’exploitation suivants sont pris en charge :
 Le [serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement [WebListener](xref:fundamentals/servers/weblistener)) ne fonctionne pas dans une configuration de proxy inverse avec IIS. Utilisez le [serveur Kestrel](xref:fundamentals/servers/kestrel).
 
 Pour plus d’informations sur l’hébergement dans Azure, consultez <xref:host-and-deploy/azure-apps/index>.
+
+## <a name="supported-platforms"></a>Plateformes prises en charge
+
+Les applications publiées pour les déploiements 32 bits (x86) et 64 bits (x64) sont prises en charge. Déployez une application 32 bits, sauf si l’application :
+
+* Nécessite l’espace d’adressage de mémoire virtuelle le plus grand disponible pour une application 64 bits.
+* Nécessite la taille de pile IIS la plus grande disponible.
+* A des dépendances natives 64 bits.
 
 ## <a name="application-configuration"></a>Configuration d’application
 
@@ -227,10 +235,10 @@ Activez le rôle serveur **Serveur Web (IIS)** et établissez des services de r�
    ![Les services de rôle par défaut sont sélectionnés à l’étape Sélectionner des services de rôle.](index/_static/role-services-ws2016.png)
 
    **Authentification Windows (facultatif)**  
-   Pour activer l’authentification Windows, développez les nœuds suivants : **Serveur Web**  > **Sécurité**. Sélectionnez la fonctionnalité **Authentification Windows**. Pour plus d’informations, consultez [Authentification Windows\<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) et [Configurer l’authentification Windows](xref:security/authentication/windowsauth).
+   Pour activer l’authentification Windows, développez les nœuds suivants : **Serveur web** > **Sécurité**. Sélectionnez la fonctionnalité **Authentification Windows**. Pour plus d’informations, consultez [Authentification Windows\<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) et [Configurer l’authentification Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (facultatif)**  
-   WebSockets est pris en charge avec ASP.NET Core 1.1 ou version ultérieure. Pour activer les WebSockets, développez les nœuds suivants : **Serveur Web** > **Développement d’applications**. Sélectionnez la fonctionnalité **Protocole WebSocket**. Pour plus d’informations, consultez [WebSockets](xref:fundamentals/websockets).
+   WebSockets est pris en charge avec ASP.NET Core 1.1 ou version ultérieure. Pour activer WebSockets, développez les nœuds suivants : **Serveur web** > **Développement d’applications**. Sélectionnez la fonctionnalité **Protocole WebSocket**. Pour plus d’informations, consultez [WebSockets](xref:fundamentals/websockets).
 
 1. Validez l’étape de **Confirmation** pour installer les services et le rôle de serveur web. Un redémarrage du serveur/d’IIS n’est pas nécessaire après l’installation du rôle **Serveur Web (IIS)**.
 
@@ -252,7 +260,7 @@ Activez la **Console de gestion IIS** et les **Services World Wide Web**.
    Pour activer l’authentification Windows, développez les nœuds suivants : **Services World Wide Web** > **Sécurité**. Sélectionnez la fonctionnalité **Authentification Windows**. Pour plus d’informations, consultez [Authentification Windows\<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) et [Configurer l’authentification Windows](xref:security/authentication/windowsauth).
 
    **WebSockets (facultatif)**  
-   WebSockets est pris en charge avec ASP.NET Core 1.1 ou version ultérieure. Pour activer les WebSockets, développez les nœuds suivants : **Services World Wide Web** > **Fonctionnalités de développement d’applications**. Sélectionnez la fonctionnalité **Protocole WebSocket**. Pour plus d’informations, consultez [WebSockets](xref:fundamentals/websockets).
+   WebSockets est pris en charge avec ASP.NET Core 1.1 ou version ultérieure. Pour activer WebSockets, développez les nœuds suivants : **Services World Wide Web** > **Fonctionnalités de développement d’applications**. Sélectionnez la fonctionnalité **Protocole WebSocket**. Pour plus d’informations, consultez [WebSockets](xref:fundamentals/websockets).
 
 1. Si l’installation d’IIS requiert un redémarrage, redémarrez le système.
 
@@ -330,7 +338,7 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publ
 
     ASP.NET Core s’exécute dans un processus séparé et gère l’exécution. ASP.NET Core ne repose pas sur le chargement du CLR de bureau. La configuration de la **version CLR .NET** sur **Aucun code managé** est facultative.
 
-1. *ASP.NET Core 2.2 ou version ultérieure* : pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) 64 bits (x64) qui utilise le [modèle d’hébergement In-process](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model), désactivez le pool d’applications pour les processus 32 bits (x86).
+1. *ASP.NET Core 2.2 ou version ultérieure* : Pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) 64 bits (x64) qui utilise le [modèle d’hébergement In-process](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model), désactivez le pool d’applications pour les processus 32 bits (x86).
 
    Dans la barre latérale **Actions** de **Pools d’applications** du gestionnaire IIS, sélectionnez **Définir les valeurs par défaut du pool d’applications** ou **Paramètres avancés**. Recherchez **Activer les applications 32 bits** et définissez la valeur sur `False`. Ce paramètre n’affecte pas les applications déployées pour l’[hébergement Out-of-process](xref:fundamentals/servers/aspnet-core-module#out-of-process-hosting-model).
 
@@ -404,7 +412,7 @@ Pour configurer la protection des données sous IIS afin de rendre persistante l
 
   Pour les installations IIS autonomes hors d’une batterie de serveurs, le [script PowerShell Provision-AutoGenKeys.ps1 de protection des données](https://github.com/aspnet/AspNetCore/blob/master/src/DataProtection/Provision-AutoGenKeys.ps1) peut être utilisé pour chaque pool d’applications utilisé avec une application ASP.NET Core. Ce script crée une clé de Registre dans le Registre HKLM, accessible uniquement pour le compte du processus Worker du pool d’applications de l’application. Les clés sont chiffrées au repos à l’aide de DPAPI avec une clé à l’échelle de la machine.
 
-  Dans les scénarios de batterie de serveurs Web, vous pouvez configurer une application afin qu’elle utilise un chemin UNC pour stocker son Key Ring de protection des données. Par défaut, les clés de protection des données ne sont pas chiffrées. Vérifiez que les autorisations de fichiers pour le partage réseau sont limitées au compte Windows sous lequel s’exécute l’application. Un certificat X509 peut être utilisé pour protéger les clés au repos. Mettez en œuvre un mécanisme permettant aux utilisateurs de charger des certificats : placez les certificats dans le magasin de certificats approuvés de l’utilisateur et vérifiez qu’ils sont disponibles sur toutes les machines où s’exécute l’application de l’utilisateur. Pour plus d’informations, consultez [Configurer la protection des données ASP.NET Core](xref:security/data-protection/configuration/overview).
+  Dans les scénarios de batterie de serveurs Web, vous pouvez configurer une application afin qu’elle utilise un chemin UNC pour stocker son Key Ring de protection des données. Par défaut, les clés de protection des données ne sont pas chiffrées. Vérifiez que les autorisations de fichiers pour le partage réseau sont limitées au compte Windows sous lequel s’exécute l’application. Un certificat X509 peut être utilisé pour protéger les clés au repos. Mettez en œuvre un mécanisme permettant aux utilisateurs de charger des certificats : Placez les certificats dans le magasin de certificats approuvés de l’utilisateur et vérifiez qu’ils sont disponibles sur toutes les machines où s’exécute l’application de l’utilisateur. Pour plus d’informations, consultez [Configurer la protection des données ASP.NET Core](xref:security/data-protection/configuration/overview).
 
 * **Configurer le pool d’applications IIS pour charger le profil utilisateur**
 
@@ -542,11 +550,11 @@ Si le processus Worker IIS a besoin d’un accès élevé à l’application, mo
 
 1. Entrez **IIS AppPool\\<app_pool_name>** dans la zone **Entrer les noms des objets à sélectionner**. Sélectionnez le bouton **Vérifier les noms**. Pour le *DefaultAppPool*, vérifiez les noms à l’aide de **IIS AppPool\DefaultAppPool**. Lorsque le bouton **Vérifier les noms** est sélectionné, une valeur de **DefaultAppPool** est indiquée dans la zone des noms d’objets. Il n’est pas possible d’entrer le nom du pool d’applications directement dans la zone des noms d’objets. Utilisez le format **IIS AppPool\\<app_pool_name>** lors de la vérification du nom de l’objet.
 
-   ![Sélectionnez la boîte de dialogue utilisateurs ou groupes pour le dossier d’applications : ajoutez le nom du pool d’applications « DefaultAppPool » à « IIS AppPool\" dans la zone des noms d’objets avant de sélectionner « Vérifier les noms ».](index/_static/select-users-or-groups-1.png)
+   ![Boîte de dialogue de sélection d’utilisateurs ou de groupes pour le dossier d’application : Ajoutez le nom du pool d’applications « DefaultAppPool » à « IIS AppPool\" dans la zone des noms d’objets avant de sélectionner « Vérifier les noms ».](index/_static/select-users-or-groups-1.png)
 
 1. Sélectionnez **OK**.
 
-   ![Sélectionnez la boîte de dialogue utilisateurs ou groupes pour le dossier d’applications : après avoir sélectionné « Vérifier les noms », le nom d’objet « DefaultAppPool » est indiqué dans la zone des noms d’objets.](index/_static/select-users-or-groups-2.png)
+   ![Boîte de dialogue de sélection d’utilisateurs ou de groupes pour le dossier d’application : Après avoir sélectionné « Vérifier les noms », le nom d’objet « DefaultAppPool » est indiqué dans la zone des noms d’objets.](index/_static/select-users-or-groups-2.png)
 
 1. Les autorisations Lire &amp; exécuter doivent être accordées par défaut. Fournissez des autorisations supplémentaires si nécessaire.
 
@@ -584,7 +592,7 @@ Pour plus d’informations sur les modèles d’hébergement in-process et out-o
 
 * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
 * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse pour le [serveur Kestrel](xref:fundamentals/servers/kestrel) utilise HTTP/1.1.
-* Version cible de .Net Framework : non applicable aux déploiements out-of-process, étant donné que la connexion HTTP/2 est gérée entièrement par IIS.
+* Framework cible : Non applicable aux déploiements out-of-process, étant donné que la connexion HTTP/2 est gérée entièrement par IIS.
 * TLS 1.2 ou connexion ultérieure
 
 Si une connexion HTTP/2 est établie, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) retourne `HTTP/1.1`.

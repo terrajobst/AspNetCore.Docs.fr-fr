@@ -4,16 +4,16 @@ author: rick-anderson
 description: Didacticiel rapide qui crée et exécute une application Hello World simple à l’aide d’ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/11/2018
 uid: getting-started
-ms.openlocfilehash: 29a328b610b0a6e1616cd6ebc70a8fa3e515eb92
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: cf9e731f7638687b3f40b42864ef7ee8f5522b39
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861704"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284349"
 ---
-# <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
+# <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
 Ce tutoriel montre comment utiliser l’interface de ligne de commande .NET Core pour créer une application web ASP.NET Core.
 
@@ -31,7 +31,7 @@ Vous allez apprendre à :
 
 ## <a name="prerequisites"></a>Prérequis
 
-Installez le [!INCLUDE [](~/includes/2.1-SDK.md)].
+* [SDK .NET Core 2.2](https://www.microsoft.com/net/download/all)
 
 ## <a name="create-a-web-app-project"></a>Créer un projet application web
 
@@ -91,11 +91,11 @@ Accédez à [https://localhost:5001](https://localhost:5001). Cliquez sur **Acce
 
 ## <a name="edit-a-razor-page"></a>Modifier une page Razor
 
-Ouvrez *Pages/About.cshtml* et modifiez la page avec le balisage mis en surbrillance suivant :
+Ouvrez *Pages/Index.cshtml* et modifiez la page avec le balisage mis en surbrillance suivant :
 
-[!code-cshtml[](sample/getting-started/about.cshtml?highlight=9)]
+[!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-Accédez à [https://localhost:5001/About](https://localhost:5001/About) et vérifiez que les changements sont affichés.
+Accédez à [https://localhost:5001](https://localhost:5001) et vérifiez que les changements sont affichés.
 
 ## <a name="next-steps"></a>Étapes suivantes
 

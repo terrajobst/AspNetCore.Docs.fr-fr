@@ -5,14 +5,14 @@ description: Cet article contient des liens vers des ressources d’hébergement
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/04/2018
+ms.date: 12/10/2018
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: b32dd3cb84a86d12c61e391b88355ab0411c2815
-ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
+ms.openlocfilehash: b6ff2124aac7e866f630cf359cbd188e88906844
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52951964"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284693"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
 
@@ -22,10 +22,10 @@ ms.locfileid: "52951964"
 
 La documentation d’[Azure Web Apps](/azure/app-service/) contient la documentation, les didacticiels, les exemples, les guides pratiques et d’autres ressources sur les applications Azure. Voici deux didacticiels importants qui abordent l’hébergement d’applications ASP.NET Core :
 
-[Démarrage rapide : créer une application web ASP.NET Core dans Azure](/azure/app-service/app-service-web-get-started-dotnet)  
+[Démarrage rapide : Créer une application web ASP.NET Core dans Azure](/azure/app-service/app-service-web-get-started-dotnet)  
 Utilisez Visual Studio pour créer et déployer une application web ASP.NET Core dans Azure App Service sur Windows.
 
-[Démarrage rapide : créer une application web .NET Core dans App Service sur Linux](/azure/app-service/containers/quickstart-dotnetcore)  
+[Démarrage rapide : Créer une application web .NET Core dans App Service sur Linux](/azure/app-service/containers/quickstart-dotnetcore)  
 Utilisez la ligne de commande pour créer et déployer une application web ASP.NET Core dans Azure App Service sur Linux.
 
 Les articles suivants sont disponibles dans la documentation d’ASP.NET Core :
@@ -83,6 +83,8 @@ Quand une application utilise [l’Hôte générique](xref:fundamentals/host/gen
 L’intergiciel (middleware) d’intégration IIS, qui configure l’intergiciel des en-têtes transférés, et le module ASP.NET Core, sont configurés pour transférer le schéma (HTTP/HTTPS) et l’adresse IP distante d’où provient la requête. Une configuration supplémentaire peut être nécessaire pour les applications hébergées derrière des serveurs proxy et des équilibreurs de charge supplémentaires. Pour plus d’informations, consultez [Configurer ASP.NET Core pour l’utilisation de serveurs proxy et d’équilibreurs de charge](xref:host-and-deploy/proxy-load-balancer).
 
 ## <a name="monitoring-and-logging"></a>Surveillance et journalisation
+
+Les applications ASP.NET Core déployées sur App Service reçoivent automatiquement une extension App Service, **Extensions de journalisation ASP.NET Core**. L’extension active la journalisation Azure.
 
 Pour des informations de surveillance, de journalisation et de dépannage, consultez les articles suivants :
 
@@ -162,7 +164,7 @@ Une fois l’opération effectuée, la dernière préversion de .NET Core est in
 
 **Utiliser l’extension de site de la version Preview avec un modèle ARM**
 
-Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Exemple :
+Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Par exemple :
 
 [!code-json[](index/sample/arm.json?highlight=2)]
 
@@ -211,13 +213,13 @@ Pendant le déploiement d’une application autonome :
 
 ## <a name="protocol-settings-https"></a>Paramètres de protocole (HTTPS)
 
-Les liaisons de protocole sécurisées permettent de spécifier un certificat à utiliser pour répondre à des requêtes sur HTTPS. La liaison nécessite un certificat privé valide (*.pfx*) émis pour le nom d’hôte spécifique. Pour plus d’informations, consultez [Tutoriel : Lier un certificat SSL personnalisé existant à Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl).
+Les liaisons de protocole sécurisées permettent de spécifier un certificat à utiliser pour répondre à des requêtes sur HTTPS. La liaison nécessite un certificat privé valide (*.pfx*) émis pour le nom d’hôte spécifique. Pour plus d'informations, consultez le [Tutoriel : Lier un certificat SSL personnalisé existant à Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Vue d’ensemble de Web Apps (vidéo de 5 minutes)](/azure/app-service/app-service-web-overview)
-* [Azure App Service: The Best Place to Host your .NET Apps (55-minute overview video)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
-* [Azure Friday: Azure App Service Diagnostic and Troubleshooting Experience (12-minute video)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Azure App Service : The Best Place to Host your .NET Apps (vidéo de présentation de 55 minutes)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
+* [Azure Friday : Azure App Service Diagnostic and Troubleshooting Experience (vidéo de 12 minutes)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Vue d’ensemble des diagnostics Azure App Service](/azure/app-service/app-service-diagnostics)
 * <xref:host-and-deploy/web-farm>
 
@@ -227,4 +229,4 @@ Azure App Service sur Windows Server utilise [IIS (Internet Information Services
 * <xref:fundamentals/servers/aspnet-core-module>
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
-* [Bibliothèque Microsoft TechNet : Windows Server](/windows-server/windows-server-versions)
+* [Bibliothèque Microsoft TechNet : Windows Server](/windows-server/windows-server-versions)

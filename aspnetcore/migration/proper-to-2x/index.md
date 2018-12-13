@@ -3,14 +3,14 @@ title: Migrer d’ASP.NET vers ASP.NET Core
 author: isaac2004
 description: Recevoir des conseils de migration d’applications ASP.NET MVC ou Web API existantes vers ASP.NET Core.web
 ms.author: scaddie
-ms.date: 12/10/2018
+ms.date: 12/11/2018
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 6808fefb890dcdec6abdd0604ab61dfd2573d910
-ms.sourcegitcommit: 1872d2e6f299093c78a6795a486929ffb0bbffff
+ms.openlocfilehash: a9eef832a68afa1a73e3c7c545378da190602ce2
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53216792"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284394"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>Migrer d’ASP.NET vers ASP.NET Core
 
@@ -20,7 +20,7 @@ Cet article sert de guide de référence pour la migration d’applications ASP.
 
 ## <a name="prerequisites"></a>Prérequis
 
-[!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
+[Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download)
 
 ## <a name="target-frameworks"></a>Versions cibles de .NET Framework
 
@@ -28,15 +28,15 @@ Les projets ASP.NET Core permettent aux développeurs de cibler .NET Core, le .N
 
 Quand vous ciblez le .NET Framework, les projets doivent référencer des packages NuGet individuels.
 
-Le ciblage du .NET Core vous permet d’éliminer de nombreuses références de packages explicites, grâce au [métapackage](xref:fundamentals/metapackage) ASP.NET Core. Installez le métapackage `Microsoft.AspNetCore.All` dans votre projet :
+Le ciblage du .NET Core vous permet d’éliminer de nombreuses références de packages explicites, grâce au [métapackage](xref:fundamentals/metapackage-app) ASP.NET Core. Installez le métapackage `Microsoft.AspNetCore.App` dans votre projet :
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+   <PackageReference Include="Microsoft.AspNetCore.App" />
 </ItemGroup>
 ```
 
-Quand le métapackage est utilisé, aucun package référencé dans le métapackage n’est déployé avec l’application. Le magasin de runtimes du .NET Core inclut ces composants. Ceux-ci sont précompilés pour améliorer les performances. Pour plus d’informations, consultez [Métapackage Microsoft.AspNetCore.All pour ASP.NET Core 2.x](xref:fundamentals/metapackage).
+Quand le métapackage est utilisé, aucun package référencé dans le métapackage n’est déployé avec l’application. Le magasin de runtimes du .NET Core inclut ces composants. Ceux-ci sont précompilés pour améliorer les performances. Pour plus d’informations, consultez [Métapackage Microsoft.AspNetCore.App pour ASP.NET Core](xref:fundamentals/metapackage-app).
 
 ## <a name="project-structure-differences"></a>Différences de structure de projet
 
@@ -64,15 +64,14 @@ ASP.NET Core utilise une approche similaire mais n’a pas besoin d’OWIN pour 
 
 [!code-csharp[](samples/program.cs)]
 
-`Startup` doit inclure une méthode `Configure`. Dans `Configure`, ajoutez l’intergiciel (middleware) nécessaire au pipeline. Dans l’exemple suivant (provenant du modèle de site web par défaut), plusieurs méthodes d’extension permettent de configurer le pipeline pour une prise en charge des éléments ci-dessous :
+`Startup` doit inclure une méthode `Configure`. Dans `Configure`, ajoutez l’intergiciel (middleware) nécessaire au pipeline. Dans l’exemple suivant (provenant du modèle de site web par défaut), des méthodes d’extension configurent le pipeline pour une prise en charge des éléments ci-dessous :
 
-* [Lien du navigateur](xref:client-side/using-browserlink)
 * Pages d’erreur
-* Fichiers statiques
+* HTTP Strict Transport Security
+* Redirection HTTP vers HTTPS
 * ASP.NET Core MVC
-* Identité
 
-[!code-csharp[](../../common/samples/WebApplication1/Startup.cs?highlight=8,9,10,14,17,19,21&start=58&end=84)]
+[!code-csharp[](samples/startup.cs)]
 
 L’hôte et l’application ont été découplés, ce qui permet de passer facilement plus tard à une autre plateforme.
 
