@@ -8,16 +8,18 @@ ms.date: 04/29/2013
 ms.assetid: 3fd9f11c-799b-4001-bd60-1e70cfc61c19
 msc.legacyurl: /signalr/overview/older-versions/scaleout-in-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: 0cd1e64af031fea8078c8c1ca4c64b1e2e69d7e9
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: fffa424ea4b62a54b9df48aaa409541ab5d1608f
+ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41839030"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53287586"
 ---
 <a name="introduction-to-scaleout-in-signalr-1x"></a>Introduction à la montée en puissance parallèle dans SignalR 1.x
 ====================
 par [Mike Wasson](https://github.com/MikeWasson), [Patrick Fletcher](https://github.com/pfletcher)
+
+[!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
 En règle générale, il existe deux façons de mettre à l’échelle une application web : *monter en puissance* et *monter en charge*.
 
@@ -60,9 +62,9 @@ Le fonctionnement du mécanisme curseur même si un client est acheminé vers un
 
 À l’aide d’un fond de panier, le débit de message maximale est inférieur à ce que c’est lorsque les clients communiquent directement avec un seul nœud serveur. C’est parce que le fond de panier transfère tous les messages à tous les nœuds, donc le fond de panier peut devenir un goulot d’étranglement. Si cette limitation est un problème dépend de l’application. Par exemple, voici quelques scénarios classiques de SignalR :
 
-- [Diffusion de serveur](tutorial-server-broadcast-with-aspnet-signalr.md) (par exemple, les cotations boursières) : fonds de panier fonctionnent bien pour ce scénario, étant donné que le serveur contrôle la fréquence à laquelle les messages sont envoyés.
-- [Client à](tutorial-getting-started-with-signalr.md) (par exemple, chat) : dans ce scénario, le fond de panier peut être un goulot d’étranglement si le nombre de messages évolue avec le nombre de clients ; autrement dit, si le taux de messages augmente proportionnellement à sa plus de clients joindre.
-- [En temps réel haute fréquence](tutorial-high-frequency-realtime-with-signalr.md) (par exemple, des jeux en temps réel) : un fond de panier n’est pas recommandée pour ce scénario.
+- [Diffusion de serveur](tutorial-server-broadcast-with-aspnet-signalr.md) (par exemple, les cotations boursières) : Fonds de panier fonctionnent bien pour ce scénario, étant donné que le serveur contrôle la fréquence à laquelle les messages sont envoyés.
+- [Client à](tutorial-getting-started-with-signalr.md) (par exemple, chat) : Dans ce scénario, le fond de panier peut être un goulot d’étranglement si le nombre de messages évolue avec le nombre de clients ; Autrement dit, si le taux de messages augmente proportionnellement à sa plus de clients joindre.
+- [En temps réel haute fréquence](tutorial-high-frequency-realtime-with-signalr.md) (par exemple, des jeux en temps réel) : Fond de panier n’est pas recommandée pour ce scénario.
 
 ## <a name="enabling-tracing-for-signalr-scaleout"></a>Activation du suivi pour la montée en puissance parallèle de SignalR
 
