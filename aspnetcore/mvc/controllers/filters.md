@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/15/2018
 uid: mvc/controllers/filters
-ms.openlocfilehash: e5305852fad058961661373f9310d6dcaf30aa16
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: d25976af860ed8733c0548a4102e0095969b2ba6
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253193"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861847"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -252,7 +252,8 @@ Ce filtre peut être appliqué à des classes ou des méthodes avec la syntaxe `
 
 ## <a name="authorization-filters"></a>Filtres d’autorisations
 
-Les filtres d’autorisations :
+Les *filtres d’autorisations* :
+
 * Contrôlent l’accès aux méthodes d’action.
 * Sont les premiers filtres à être exécutée dans le pipeline de filtres. 
 * Ont une méthode avant, mais pas de méthode après. 

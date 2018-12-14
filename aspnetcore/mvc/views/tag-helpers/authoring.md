@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 78e5281d109977e8f41fe1f207254d3016f9c569
-ms.sourcegitcommit: c43a6f1fe72d7c2db4b5815fd532f2b45d964e07
+ms.openlocfilehash: 16f3a435af267a5a17a24ee9fbda2b1c7c8818fd
+ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244864"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121620"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
@@ -31,7 +31,7 @@ Un Tag Helper est toute classe qui implémente l’interface `ITagHelper`. Toute
 
 ## <a name="a-minimal-tag-helper"></a>Tag Helper minimal
 
-Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Exemple :
+Dans cette section, vous écrivez un Tag Helper qui met à jour une balise e-mail. Par exemple :
 
 ```html
 <email>Support</email>
@@ -49,7 +49,7 @@ Autrement dit, une balise d’ancrage qui en fait un lien e-mail. Vous pouvez ef
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1EmailTagHelperCopy.cs)]
 
-   * Les Tag Helpers utilisent une convention de nommage qui cible des éléments du nom de classe racine (moins la partie *TagHelper* du nom de classe). Dans cet exemple, comme le nom racine de **Email**TagHelper est *email*, la balise `<email>` est ciblée. Cette convention de nommage doit fonctionner pour la plupart des Tag Helpers et je vous montrerai plus tard comment la remplacer.
+   * Les Tag Helpers utilisent une convention de nommage qui cible des éléments du nom de classe racine (moins la partie *TagHelper* du nom de classe). Dans cet exemple, comme le nom racine de **EmailTagHelper** est *email*, la balise `<email>` est ciblée. Cette convention de nommage doit fonctionner pour la plupart des Tag Helpers et je vous montrerai plus tard comment la remplacer.
 
    * La classe `EmailTagHelper` dérive de la classe `TagHelper`. La classe `TagHelper` fournit des méthodes et propriétés pour l’écriture des Tag Helpers.
 

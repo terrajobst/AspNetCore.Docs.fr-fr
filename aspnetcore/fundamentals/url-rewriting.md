@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/19/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 98787891a97e49081d72107484f030d216d82f45
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: 84052789717738a48c346d35d1a2642017a9ab93
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256565"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861912"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
@@ -23,7 +23,7 @@ Pour obtenir la version 1.1 de cette rubrique, téléchargez [URL Rewriting Midd
 
 ::: moniker-end
 
-Ce document présente la réécriture d’URL avec des instructions sur la façon d’utiliser le middleware de réécriture d’URL dans les applications ASP.NET Core.
+Ce document présente la réécriture d’URL avec des instructions sur la façon d’utiliser l’intergiciel (middleware) de réécriture d’URL dans les applications ASP.NET Core.
 
 La réécriture d’URL consiste à modifier des URL de requête en fonction d’une ou de plusieurs règles prédéfinies. La réécriture d’URL crée une abstraction entre les emplacements des ressources et leurs adresses pour que les emplacements et les adresses ne soient pas étroitement liés. La réécriture d’URL est utile dans plusieurs scénarios pour :
 
@@ -42,7 +42,7 @@ La réécriture d’URL consiste à modifier des URL de requête en fonction d�
 
 ## <a name="url-redirect-and-url-rewrite"></a>Redirection d’URL et réécriture d’URL
 
-La différence de formulation entre la *redirection d’URL* et la *réécriture d’URL* est subtile, mais elle a des implications importantes sur la fourniture de ressources aux clients. Le middleware de réécriture d’URL d’ASP.NET Core est capable de répondre aux besoins des deux.
+La différence de formulation entre la *redirection d’URL* et la *réécriture d’URL* est subtile, mais elle a des implications importantes sur la fourniture de ressources aux clients. L’intergiciel de réécriture d’URL d’ASP.NET Core est capables de répondre aux besoins des deux.
 
 Une *redirection d’URL* implique une opération côté client, où le client est invité à accéder à une ressource à une autre adresse que celle demandée à l’origine. Ceci nécessite un aller-retour avec le serveur. L’URL de redirection retournée au client s’affiche dans la barre d’adresse du navigateur quand le client effectue une nouvelle requête pour la ressource.
 
@@ -70,7 +70,7 @@ Même si le client peut récupérer la ressource à l’URL réécrite, il n’e
 
 Vous pouvez explorer les fonctionnalités du middleware de réécriture d’URL avec [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/). L’application applique des règles de redirection et de réécriture, et montre l’URL redirigée ou réécrite pour plusieurs scénarios.
 
-## <a name="when-to-use-url-rewriting-middleware"></a>Quand utiliser le middleware de réécriture d’URL
+## <a name="when-to-use-url-rewriting-middleware"></a>Quand utiliser l’intergiciel (middleware) de réécriture d’URL
 
 Utilisez le middleware de réécriture d’URL quand vous ne pouvez pas utiliser les approches suivantes :
 
@@ -84,7 +84,7 @@ Les principales raisons d’utiliser les technologies de réécriture d’URL ba
 
 * Le middleware ne prend pas en charge toutes les fonctionnalités de ces modules.
 
-  Certaines des fonctionnalités des modules serveur ne fonctionnent pas avec les projets ASP.NET Core, comme les contraintes `IsFile` et `IsDirectory` du module Réécriture IIS. Dans ces scénarios, utilisez plutôt le middleware.
+  Certaines des fonctionnalités des modules serveur ne fonctionnent pas avec les projets ASP.NET Core, comme les contraintes `IsFile` et `IsDirectory` du module Réécriture IIS. Dans ces scénarios, utilisez plutôt l’intergiciel.
 * Les performances du middleware ne correspondent probablement pas à celles des modules.
 
   Mener des tests de performances est la seule façon de savoir exactement quelle approche dégrade le plus les performances ou si la dégradation des performances est négligeable.
@@ -210,7 +210,7 @@ La règle de réécriture, `^rewrite-rule/(\d+)/(\d+)`, établit une corresponda
 Il n’y a pas d’aller-retour avec le serveur pour obtenir la ressource. Si la ressource existe, elle est récupérée et retournée au client avec le code d’état *200 - OK*. Comme le client n’est pas redirigé, l’URL dans la barre d’adresse du navigateur ne change pas. Les clients ne peuvent pas détecter qu’une opération de réécriture d’URL s’est produite sur le serveur.
 
 > [!NOTE]
-> Utilisez `skipRemainingRules: true` quand c’est possible, car la mise en correspondance de règles est un processus gourmand en ressources et qui réduit le temps de réponse de l’application. Pour obtenir la réponse d’application la plus rapide :
+> Quand c’est possible, utilisez `skipRemainingRules: true`, car la mise en correspondance de règles est un processus gourmand en ressources qui augmente le temps de réponse de l’application. Pour obtenir la réponse d’application la plus rapide :
 >
 > * Classez vos règles de réécriture en partant de la règle la plus souvent mise en correspondance jusqu’à la règle la moins souvent mise en correspondance.
 > * Ignorez le traitement des règles restantes quand une correspondance est trouvée et qu’aucun traitement de règle supplémentaire n’est nécessaire.

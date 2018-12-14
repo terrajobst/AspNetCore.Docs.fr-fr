@@ -3,14 +3,14 @@ title: Composants de vue dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment les composants de vue sont utilisés dans ASP.NET Core et comment les ajouter à des applications.
 ms.author: riande
-ms.date: 02/14/2017
+ms.date: 12/03/2018
 uid: mvc/views/view-components
-ms.openlocfilehash: 91399acafb36f1f8759ed1783e70e59b631e3bf0
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 5812abad80cd906d6b9a7175bd7cdefd03a99eb3
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253129"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861327"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -63,13 +63,13 @@ Une classe de composant de vue :
 
 ### <a name="view-component-methods"></a>Méthodes d’un composant de vue
 
-Un composant de vue définit sa logique dans une méthode `InvokeAsync` qui retourne un `IViewComponentResult`. Les paramètres sont fournis directement en réponse à l’appel du composant de vue ; ils ne proviennent pas de la liaison de données. Un composant de vue ne traite jamais une requête directement. En règle générale, un composant de vue initialise un modèle et le passe à une vue en appelant la méthode `View`. En résumé, les méthodes d’un composant de vue :
+Un composant de vue définit sa logique dans une méthode `InvokeAsync` qui retourne un `Task<IViewComponentResult>`, ou dans une méthode `Invoke` synchrone qui retourne un `IViewComponentResult`. Les paramètres sont fournis directement en réponse à l’appel du composant de vue ; ils ne proviennent pas de la liaison de données. Un composant de vue ne traite jamais une requête directement. En règle générale, un composant de vue initialise un modèle et le passe à une vue en appelant la méthode `View`. En résumé, les méthodes d’un composant de vue :
 
-* Définissent une méthode `InvokeAsync` qui retourne un `IViewComponentResult`
-* Permettent d’initialiser un modèle et de le passer à une vue en appelant la méthode `View` `ViewComponent`
-* Utilisent des paramètres fournis par la méthode appelante, pas par HTTP (il n’y a pas de liaison de données)
-* Ne sont pas accessibles directement comme point de terminaison HTTP et sont appelées de votre code (généralement dans une vue). Un composant de vue ne traite jamais une requête directement
-* Sont surchargées sur la signature, plutôt que des détails de la requête HTTP en cours
+* Définissent une `InvokeAsync` méthode qui retourne un `Task<IViewComponentResult>` ou une méthode `Invoke` synchrone qui retourne un `IViewComponentResult`.
+* Permettent généralement d’initialiser un modèle et de le passer à une vue en appelant la méthode `View` de `ViewComponent`.
+* Les paramètres proviennent de la méthode appelante, et non pas de HTTP. Il n’y a pas de liaison de modèle.
+* Ne sont pas accessibles directement comme point de terminaison HTTP. Elles sont appelées depuis votre code (généralement dans une vue). Un composant de vue ne traite jamais une requête.
+* Sont surchargées sur la signature, plutôt que sur des détails de la requête HTTP en cours.
 
 ### <a name="view-search-path"></a>Chemin de recherche de la vue
 

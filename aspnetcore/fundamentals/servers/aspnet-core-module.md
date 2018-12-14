@@ -1,17 +1,17 @@
 ---
 title: Module ASP.NET Core
 author: guardrex
-description: Découvrez comment le module ASP.NET Core permet au serveur web Kestrel d’utiliser IIS ou IIS Express en tant que serveur proxy inverse.
+description: Découvrez comment le module ASP.NET Core permet au serveur web Kestrel d’utiliser IIS ou IIS Express.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 uid: fundamentals/servers/aspnet-core-module
-ms.openlocfilehash: 39c1b364f9dab635c79e00561d212c858c0c4395
-ms.sourcegitcommit: 09affee3d234cb27ea6fe33bc113b79e68900d22
+ms.openlocfilehash: d3f3a42dd7aebc425905b865376a584bcf0e5153
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51191254"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52861457"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -36,7 +36,7 @@ Versions Windows prises en charge :
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Lors de l’hébergement in-process, le module dispose de sa propre implémentation de serveur, `IISHttpServer`.
+Lors de l’hébergement in-process, le module utilise une implémentation du serveur in-process IIS, IIS HTTP Server (`IISHttpServer`).
 
 Lors de l’hébergement out-of-process, le module fonctionne uniquement avec Kestrel. Le module n’est pas compatible avec [HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement [WebListener](xref:fundamentals/servers/weblistener)).
 
@@ -73,9 +73,9 @@ Le schéma suivant montre la relation entre IIS, le module ASP.NET Core et une a
 
 ![Module ASP.NET Core](aspnet-core-module/_static/ancm-inprocess.png)
 
-Une requête arrive du web au pilote HTTP.sys en mode noyau. Le pilote achemine la requête native vers IIS sur le port configuré du site web, généralement 80 (HTTP) ou 443 (HTTPS). Le module reçoit la requête native et passe le contrôle à `IISHttpServer`, ce qui par le fait transforme la requête native en requête managée.
+Une requête arrive du web au pilote HTTP.sys en mode noyau. Le pilote achemine la requête native vers IIS sur le port configuré du site web, généralement 80 (HTTP) ou 443 (HTTPS). Le module reçoit la requête native et la passe à IIS HTTP Server (`IISHttpServer`). IIS HTTP Server est une implémentation du serveur in-process IIS qui convertit la requête native en requête managée.
 
-Dès que `IISHttpServer` sélectionne la requête, celle-ci est envoyée (push) dans le pipeline de middlewares d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. La réponse de l’application est ensuite repassée à IIS, qui la renvoie au client HTTP à l’origine de la requête.
+Une fois que IIS HTTP Server a traité la requête, celle-ci est envoyée (push) dans le pipeline de middleware (intergiciel) d’ASP.NET Core. Le pipeline de middlewares traite la requête et la passe en tant qu’instance de `HttpContext` à la logique de l’application. La réponse de l’application est repassée à IIS, qui la renvoie au client à l’origine de la requête.
 
 ### <a name="out-of-process-hosting-model"></a>Modèle d’hébergement out-of-process
 

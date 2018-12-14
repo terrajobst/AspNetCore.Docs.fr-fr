@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez les modules IIS actifs et inactifs pour les applications ASP.NET Core et comment gérer les modules IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/12/2018
+ms.date: 11/30/2018
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: b417d479d0c3f8b3e739d4c72b52247de0e88e56
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: c6a6cc9b6b3410267c6f5034f824648a1ebbe10f
+ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325950"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52862237"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
 
@@ -21,7 +21,7 @@ Certains des modules IIS natifs et tous les modules managés IIS ne peuvent pas 
 
 ## <a name="native-modules"></a>Modules natifs
 
-Le tableau indique les modules IIS natifs qui sont opérationnels sur les requêtes de proxy inverse destinées aux applications ASP.NET Core.
+Le tableau indique les modules IIS natifs qui fonctionnent avec les applications ASP.NET Core et le module ASP.NET Core.
 
 | Module | Opérationnel avec les applications ASP.NET Core | Option ASP.NET Core |
 | --- | :---: | --- |
