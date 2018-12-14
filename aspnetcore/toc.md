@@ -5,7 +5,7 @@
 
 # [Bien démarrer](xref:getting-started)
 
-# Didacticiels
+# Tutoriels
 ## API web
 ### [Créer une API web](xref:tutorials/first-web-api)
 ### [API Web avec MongoDB](xref:tutorials/first-mongo-app)
@@ -177,6 +177,7 @@
 ## Didacticiels
 ### [SignalR avec JavaScript](xref:tutorials/signalr)
 ### [SignalR avec TypeScript](xref:tutorials/signalr-typescript-webpack)
+## [Exemples](https://github.com/aspnet/SignalR-samples)
 ## Concepts serveur
 ### [Hubs](xref:signalr/hubs)
 ### [HubContext](xref:signalr/hubcontext)
@@ -402,6 +403,7 @@
 ### [Mise en cache distribuée](xref:performance/caching/distributed)
 ### [Intergiciel de mise en cache des réponses](xref:performance/caching/middleware)
 ## [Compression des réponses](xref:performance/response-compression)
+## [Outils de diagnostic](xref:performance/diagnostic-tools)
 
 # Autres rubriques
 ## [Globalisation et localisation](xref:fundamentals/localization)
