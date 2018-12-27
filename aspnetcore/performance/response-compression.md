@@ -5,14 +5,14 @@ description: Découvrez ce qu’est la compression des réponses et comment util
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: performance/response-compression
-ms.openlocfilehash: 2516fbb30e55990dc4ad0d92069853bc26874bc9
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 51ab51652a7b3f9b4ef97b3abbffe2e398c0bfb5
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861886"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637753"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses dans ASP.NET Core
 
@@ -33,12 +33,12 @@ Utilisez l’intergiciel (middleware) de compression de réponse dans les cas su
   * [Module Apache mod_deflate](http://httpd.apache.org/docs/current/mod/mod_deflate.html)
   * [Décompression et compression Nginx](https://www.nginx.com/resources/admin-guide/compression-and-decompression/)
 * Hébergement directement sur :
-  * [HTTP.sys](xref:fundamentals/servers/httpsys) server (anciennement appelé [WebListener](xref:fundamentals/servers/weblistener))
-  * [Kestrel](xref:fundamentals/servers/kestrel) server
+  * [Serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement appelé WebListener)
+  * [Serveur kestrel](xref:fundamentals/servers/kestrel)
 
 ## <a name="response-compression"></a>Compression des réponses
 
-En règle générale, toute réponse ne compressée pas en mode natif peut bénéficier de la compression de réponse. Les réponses pas en mode natif compressés en général : CSS, JavaScript, HTML, XML et JSON. Vous ne doivent pas compresser des ressources compressées en mode natif, telles que des fichiers PNG. Si vous tentez de compresser davantage une réponse compressée en mode natif, une petite réduction supplémentaire dans le temps de taille et la transmission sera probablement être été éclipsée par le temps de traitement de la compression. Ne pas compresser les fichiers inférieurs à environ 150-1000 octets (selon le contenu du fichier et l’efficacité de la compression). La surcharge de la compression des fichiers de petite taille peut produire un fichier compressé plus volumineux que le fichier non compressé.
+En règle générale, toute réponse ne compressée pas en mode natif peut bénéficier de la compression de réponse. Pas en mode natif compressés en général, les réponses sont : CSS, JavaScript, HTML, XML et JSON. Vous ne doivent pas compresser des ressources compressées en mode natif, telles que des fichiers PNG. Si vous tentez de compresser davantage une réponse compressée en mode natif, une petite réduction supplémentaire dans le temps de taille et la transmission sera probablement être été éclipsée par le temps de traitement de la compression. Ne pas compresser les fichiers inférieurs à environ 150-1000 octets (selon le contenu du fichier et l’efficacité de la compression). La surcharge de la compression des fichiers de petite taille peut produire un fichier compressé plus volumineux que le fichier non compressé.
 
 Quand un client peut traiter du contenu compressé, il doit en informer le serveur en envoyant l'en-tête `Accept-Encoding` avec la requête. Quand un serveur envoie du contenu compressé, il doit inclure dans l’en-tête `Content-Encoding` des informations sur le mode d’encodage de la réponse compressée. Les désignations d'encodage de contenu prises en charge par l’intergiciel sont affichées dans le tableau suivant.
 
@@ -50,7 +50,7 @@ Quand un client peut traiter du contenu compressé, il doit en informer le serve
 | `deflate`                       | Non                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | Non                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui                  | [Format de fichier GZIP](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Oui                  | Identificateur "No encoding" : la réponse ne doit pas être encodée. |
+| `identity`                      | Oui                  | Identificateur « Aucun codage » : La réponse ne doit pas être encodée. |
 | `pack200-gzip`                  | Non                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Oui                  | N'importe quel encodage de contenu disponible non explicitement demandé |
 
@@ -60,11 +60,11 @@ Quand un client peut traiter du contenu compressé, il doit en informer le serve
 
 | Valeurs d’en-tête `Accept-Encoding` | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
-| `br`                            | Non                   | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Non                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
+| `br`                            | Aucune                   | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
+| `deflate`                       | Aucune                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
 | `exi`                           | Non                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui (valeur par défaut)        | [Format de fichier GZIP](https://tools.ietf.org/html/rfc1952) |
-| `identity`                      | Oui                  | Identificateur "No encoding" : la réponse ne doit pas être encodée. |
+| `identity`                      | Oui                  | Identificateur « Aucun codage » : La réponse ne doit pas être encodée. |
 | `pack200-gzip`                  | Non                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Oui                  | N'importe quel encodage de contenu disponible non explicitement demandé |
 
@@ -74,7 +74,7 @@ Pour plus d’informations, consultez la [liste IANA officielle des encodages de
 
 L’intergiciel vous permet d’ajouter des fournisseurs de compression supplémentaires pour des valeurs d’en-tête `Accept-Encoding` personnalisées. Pour plus d’informations, consultez [Fournisseurs personnalisés](#custom-providers) ci-dessous.
 
-L’intergiciel peut réagir à la pondération de la valeur de qualité (qvalue, `q`) envoyée par le client pour hiérarchiser les schémas de compression. Pour plus d’informations, consultez le [document RFC 7231: Accept-Encoding](https://tools.ietf.org/html/rfc7231#section-5.3.4).
+L’intergiciel peut réagir à la pondération de la valeur de qualité (qvalue, `q`) envoyée par le client pour hiérarchiser les schémas de compression. Pour plus d’informations, consultez [7231 relative aux RFC : Encodage](https://tools.ietf.org/html/rfc7231#section-5.3.4).
 
 Les algorithmes de compression donnent lieu à un compromis entre vitesse de compression et efficacité de la compression. L’*Efficacité* dans ce contexte fait référence à la taille de la sortie après la compression. La plus petite taille est obtenue par la compression la plus *optimale*.
 
@@ -432,7 +432,7 @@ Lors de la compression des réponses basés sur le `Accept-Encoding` en-tête, i
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Problème au niveau de l’intergiciel s'il est derrière un proxy inverse Nginx
 
-Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. Suppression de la `Accept-Encoding` en-tête empêche l’intergiciel (middleware) de la compression de la réponse. Pour plus d’informations, consultez [NGINX : Compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [déterminer compression pass-through pour Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. Suppression de la `Accept-Encoding` en-tête empêche l’intergiciel (middleware) de la compression de la réponse. Pour plus d’informations, consultez [NGINX : La compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [déterminer compression pass-through pour Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Utilisation de la compression dynamique IIS
 
@@ -464,7 +464,7 @@ Utilisez un outil tel que [Fiddler](https://www.telerik.com/fiddler), [Firebug](
 
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>
-* [Réseau de développeurs de Mozilla : Encodage](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
-* [RFC 7231 relative aux Section 3.1.2.1 : Codings contenus](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
-* [RFC 7230 Section 4.2.3 : Codage de Gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
+* [Développeur de Mozilla réseau : Encodage](https://developer.mozilla.org/docs/Web/HTTP/Headers/Accept-Encoding)
+* [RFC 7231 relative aux Section 3.1.2.1 : Contenu Codings](https://tools.ietf.org/html/rfc7231#section-3.1.2.1)
+* [RFC 7230 Section 4.2.3 : Codage gzip](https://tools.ietf.org/html/rfc7230#section-4.2.3)
 * [Version de spécification du format fichier GZIP 4.3](http://www.ietf.org/rfc/rfc1952.txt)

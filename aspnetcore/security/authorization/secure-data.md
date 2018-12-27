@@ -3,15 +3,15 @@ title: Créer une application ASP.NET Core avec des données utilisateur protég
 author: rick-anderson
 description: Découvrez comment créer une application Pages Razor avec des données utilisateur protégées par une autorisation. Inclut HTTPS, l’authentification, sécurité, ASP.NET Core Identity.
 ms.author: riande
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: d49ee7779b425d625b81c8a65694121c616bfba6
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: fa82d3d99f4e4b7ad17ed385fb7c029745797e8d
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121633"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637831"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -57,13 +57,13 @@ Dans l’image suivante, `admin@contoso.com` est signé dans et dans le rôle Ad
 
 L’administrateur a tous les privilèges. Elle peut lire/modifier/supprimer un contact et modifier l’état de contacts.
 
-L’application a été créée par [la structure](xref:tutorials/first-mvc-app-xplat/adding-model#scaffold-the-moviecontroller) suit `Contact` modèle :
+L’application a été créée par [la structure](xref:tutorials/first-mvc-app/adding-model#scaffold-the-movie-model) suit `Contact` modèle :
 
 [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet)]
 
 L’exemple contient les gestionnaires d’autorisation suivants :
 
-* `ContactIsOwnerAuthorizationHandler`: Permet de s’assurer qu’un utilisateur peut modifier uniquement leurs données.
+* `ContactIsOwnerAuthorizationHandler`: Garantit qu’un utilisateur peut modifier uniquement leurs données.
 * `ContactManagerAuthorizationHandler`: Permet aux gestionnaires d’approuver ou rejeter des contacts.
 * `ContactAdministratorsAuthorizationHandler`: Permet aux administrateurs d’approuver ou rejeter des contacts et à modifier/supprimer des contacts.
 
@@ -284,7 +284,7 @@ Consultez [ce problème](https://github.com/aspnet/Docs/issues/8502) pour plus d
 
 Si vous n’avez pas déjà défini un mot de passe pour les comptes d’utilisateur amorcée, utilisez le [outil Secret Manager](xref:security/app-secrets#secret-manager) pour définir un mot de passe :
 
-* Choisissez un mot de passe fort : utilisez huit ou plus caractères et au moins un caractère majuscule, nombre et symboles. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
+* Choisissez un mot de passe fort : Utiliser huit ou plus de caractères et au moins un caractère majuscule, numéro et de symboles. Par exemple, `Passw0rd!` répond aux exigences de mot de passe fort.
 * Exécutez la commande suivante à partir du dossier du projet, où `<PW>` est le mot de passe :
 
   ```console

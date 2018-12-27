@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 89969370cea66b7b6632f1b0be59e135767c831e
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 4909a0084994654777ad7a6ebda866ac727f0528
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708398"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735750"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Programme d’installation de Microsoft Account connexion externe avec ASP.NET Core
 
@@ -80,9 +80,9 @@ Le modèle de projet utilisé dans ce didacticiel s’assure que [Microsoft.AspN
 Ajoutez le service Account Microsoft dans le `ConfigureServices` méthode dans *Startup.cs* fichier :
 
 ```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
+services.AddDefaultIdentity<IdentityUser>()
+        .AddDefaultUI(UIFramework.Bootstrap4)
+        .AddEntityFrameworkStores<ApplicationDbContext>();
 
 services.AddAuthentication().AddMicrosoftAccount(microsoftOptions =>
 {
@@ -119,7 +119,7 @@ Consultez le [MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.builder.
 
 Exécutez votre application et cliquez sur **connectez-vous**. Une option permettant de se connecter avec Microsoft s’affiche :
 
-![Application de journal dans la page Web : utilisateur non authentifié](index/_static/DoneMicrosoft.png)
+![Application Web Log dans la page : Utilisateur non authentifié](index/_static/DoneMicrosoft.png)
 
 Lorsque vous cliquez sur Microsoft, vous êtes redirigé vers Microsoft pour l’authentification. Après vous être connecté avec votre Account Microsoft (si pas déjà connecté), vous devez permettre à l’application d’accéder à vos informations :
 
@@ -129,7 +129,7 @@ Appuyez sur **Oui** et vous êtes redirigé vers le site web où vous pouvez dé
 
 Vous êtes maintenant connecté à l’aide de vos informations d’identification Microsoft :
 
-![Application Web : utilisateur authentifié](index/_static/Done.png)
+![Application Web : Utilisateur authentifié](index/_static/Done.png)
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
@@ -138,7 +138,7 @@ Vous êtes maintenant connecté à l’aide de vos informations d’identificati
 * Si le fournisseur Microsoft Account vous redirige vers une page d’erreur de connexion, notez l’erreur title et description paramètres chaîne de requête directement après le `#` (hashtag) dans l’Uri.
 
   Bien que le message d’erreur semble indiquer un problème avec l’authentification Microsoft, la cause la plus courante est votre application Uri ne pas corresponde à l’un de le **URI de redirection** spécifié pour le **Web** plateforme .
-* **ASP.NET Core 2.x uniquement :** si identité n’est pas configurée en appelant `services.AddIdentity` dans `ConfigureServices`, toute tentative authentifier entraîne *ArgumentException : l’option 'SignInScheme' doit être fournie*. Le modèle de projet utilisé dans ce didacticiel permet de s’assurer que cela est fait.
+* **ASP.NET Core 2.x uniquement :** Si l’identité n’est pas configurée en appelant `services.AddIdentity` dans `ConfigureServices`, toute tentative authentifier entraîne *ArgumentException : L’option 'SignInScheme' doit être fournie*. Le modèle de projet utilisé dans ce didacticiel permet de s’assurer que cela est fait.
 * Si la base de données de site n’a pas été créé en appliquant la migration initiale, vous obtiendrez *une opération de base de données a échoué lors du traitement de la demande* erreur. Appuyez sur **appliquer les Migrations** pour créer la base de données et actualiser pour passer à l’erreur.
 
 ## <a name="next-steps"></a>Étapes suivantes

@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.date: 11/14/2018
 uid: signalr/version-differences
-ms.openlocfilehash: c9302f1c9e7cd4e62eaeaef871feb54ef26aa3ca
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: fb10d6e62ff28128e6e9e5dcef55e44f25de8ad0
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708411"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425118"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>Différences entre ASP.NET SignalR et ASP.NET Core SignalR
 
@@ -24,6 +24,7 @@ ASP.NET Core SignalR n’est pas compatible avec les clients ou serveurs pour AS
 | Package NuGet serveur | [Microsoft.AspNet.SignalR](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/) | [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/) (.NET Core)<br>[Microsoft.AspNetCore.SignalR](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR/) (.NET Framework) |
 | Packages NuGet clients | [Microsoft.AspNet.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.Client/)<br>[Microsoft.AspNet.SignalR.JS](https://www.nuget.org/packages/Microsoft.AspNet.SignalR.JS/) | [Microsoft.AspNetCore.SignalR.Client](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/) |
 | Client npm Package | [SignalR](https://www.npmjs.com/package/signalr) | [@aspnet/signalr](https://www.npmjs.com/package/@aspnet/signalr) |
+| Client Java | [Référentiel GitHub](https://github.com/SignalR/java-client) (déconseillée)  | Package Maven [com.microsoft.signalr](https://search.maven.org/artifact/com.microsoft.signalr/signalr) |
 | Type d’application serveur | ASP.NET (System.Web) ou l’auto-hébergement OWIN | ASP.NET Core |
 | Plateformes serveur prises en charge | .NET framework 4.5 ou version ultérieure | .NET Framework 4.6.1 ou ultérieur<br>.NET core 2.1 ou version ultérieure |
 

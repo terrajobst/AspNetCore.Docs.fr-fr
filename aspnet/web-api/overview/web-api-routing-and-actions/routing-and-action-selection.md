@@ -4,16 +4,16 @@ title: Routage et sélection d’Action dans l’API Web ASP.NET | Microsoft Doc
 author: MikeWasson
 description: ''
 ms.author: riande
-ms.date: 07/27/2012
+ms.date: 12/14/2018
 ms.assetid: bcf2d223-cb7f-411e-be05-f43e96a14015
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions/routing-and-action-selection
 msc.type: authoredcontent
-ms.openlocfilehash: b4912d3ee1e13651f2a63d54d7dbfd92e00f85f8
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: ce54181996376cb5dde3b91c10c16f33b3c6a570
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41838691"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425170"
 ---
 <a name="routing-and-action-selection-in-aspnet-web-api"></a>Routage et sélection d’Action dans l’API Web ASP.NET
 ====================
@@ -62,7 +62,7 @@ Si vous fournissez des valeurs par défaut, l’itinéraire correspond un URI qu
 
 [!code-csharp[Main](routing-and-action-selection/samples/sample4.cs)]
 
-L’URI «`http://localhost/api/products`» correspond à cet itinéraire. Le segment « {category} » est affecté à la valeur par défaut « tous ».
+Les URI `http://localhost/api/products/all` et `http://localhost/api/products` correspondent à l’itinéraire précédent. Dans l’URI de ce dernier, manquants `{category}` segment est affecté à la valeur par défaut `all`.
 
 ### <a name="route-dictionary"></a>Dictionnaire d’itinéraires
 
@@ -122,7 +122,7 @@ Avant d’examiner l’algorithme de sélection, nous devons comprendre quelques
 
 **Méthodes HTTP.** Le framework choisit uniquement les actions qui correspondent à la méthode HTTP de la demande, déterminée comme suit :
 
-1. Vous pouvez spécifier la méthode HTTP avec un attribut : **AcceptVerbs**, **HttpDelete**, **HttpGet**, **HttpHead**,  **HttpOptions**, **HttpPatch**, **HttpPost**, ou **HttpPut**.
+1. Vous pouvez spécifier la méthode HTTP avec un attribut : **AcceptVerbs**, **HttpDelete**, **HttpGet**, **HttpHead**, **HttpOptions**, **HttpPatch**, **HttpPost**, ou **HttpPut**.
 2. Sinon, si le nom de la méthode de contrôleur commence par « Get », « Post », « Put », « Delete », « Head », « Options » ou « Patch », puis par convention l’action prend en charge cette méthode HTTP.
 3. Si aucun des éléments ci-dessus, la méthode prend en charge POST.
 
@@ -189,7 +189,7 @@ Requête HTTP :
 L’URI correspond à l’itinéraire nommé « DefaultApi ». Le dictionnaire de l’itinéraire contient les entrées suivantes :
 
 - contrôleur : « produits »
-- ID : « 1 »
+- ID : "1"
 
 Le dictionnaire d’itinéraire ne contient-elle pas les paramètres de chaîne de requête, la « version » et le « détails », mais ils sont toujours considérés lors de la sélection de l’action.
 

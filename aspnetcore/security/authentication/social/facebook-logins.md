@@ -4,20 +4,20 @@ author: rick-anderson
 description: Ce didacticiel montre l’intégration de l’authentification d’utilisateur de compte Facebook dans une application ASP.NET Core existante.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 11/11/2018
+ms.date: 12/18/2018
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: d4f3e210b0d3c79eaf2233f97a29a6d96cd69b39
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 66f895c7c8dcc00d991c0ea57535f2ed56431a77
+ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284381"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735776"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Programme d’installation de Facebook login externe dans ASP.NET Core
 
 Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce didacticiel vous montre comment autoriser vos utilisateurs à se connecter avec leur compte Facebook à l’aide d’un exemple de projet ASP.NET Core 2.0 créée sur le [page précédente](xref:security/authentication/social/index). L’authentification Facebook nécessite le [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) package NuGet. Nous commençons par créer un ID d’application Facebook en suivant le [étapes officiels](https://developers.facebook.com).
+Ce didacticiel vous montre comment autoriser vos utilisateurs à se connecter avec leur compte Facebook à l’aide d’un exemple de projet ASP.NET Core 2.0 créée sur le [page précédente](xref:security/authentication/social/index). Nous commençons par créer un ID d’application Facebook en suivant le [étapes officiels](https://developers.facebook.com).
 
 ## <a name="create-the-app-in-facebook"></a>Créer l’application dans Facebook
 
@@ -74,9 +74,9 @@ dotnet user-secrets set Authentication:Facebook:AppSecret <app-secret>
 Ajoutez le service de Facebook dans le `ConfigureServices` méthode dans le *Startup.cs* fichier :
 
 ```csharp
-services.AddIdentity<ApplicationUser, IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>()
-        .AddDefaultTokenProviders();
+services.AddDefaultIdentity<IdentityUser>()
+        .AddDefaultUI(UIFramework.Bootstrap4)
+        .AddEntityFrameworkStores<ApplicationDbContext>();
 
 services.AddAuthentication().AddFacebook(facebookOptions =>
 {
@@ -145,6 +145,8 @@ Vous êtes maintenant connecté à l’aide de vos informations d’identificati
 * Si la base de données de site n’a pas été créé en appliquant la migration initiale, vous obtenez *une opération de base de données a échoué lors du traitement de la demande* erreur. Appuyez sur **appliquer les Migrations** pour créer la base de données et actualiser pour passer à l’erreur.
 
 ## <a name="next-steps"></a>Étapes suivantes
+
+* Ajouter le [Microsoft.AspNetCore.Authentication.Facebook](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Facebook) package NuGet à votre projet pour les scénarios avancés de l’authentification Facebook. Ce package n’est pas nécessaire pour intégrer les fonctionnalités de connexion externe Facebook avec votre application. 
 
 * Cet article vous a montré comment vous pouvez vous authentifier avec Facebook. Vous pouvez suivre une approche similaire pour s’authentifier auprès d’autres fournisseurs répertoriés sur le [page précédente](xref:security/authentication/social/index).
 
