@@ -5,22 +5,16 @@ description: Consultez la table des matières d’une introduction à ASP.NET Co
 ms.author: riande
 ms.date: 10/26/2017
 uid: tutorials/first-mvc-app/index
-ms.openlocfilehash: bd6bc5ba77da506527ddc024f73b4eb195401e46
-ms.sourcegitcommit: 661d30492d5ef7bbca4f7e709f40d8f3309d2dac
+ms.openlocfilehash: 3a679e31c6eda4c86edbd0ada27b4973204c467b
+ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37938117"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53382083"
 ---
 # <a name="create-a-web-app-with-aspnet-core-mvc-on-windows-with-visual-studio"></a>Créer une application web avec ASP.NET Core MVC sur Windows avec Visual Studio
 
 [!INCLUDE [consider RP](~/includes/razor.md)]
-
-Il existe trois versions de ce didacticiel :
-
-* Windows : Cette série
-* macOS : [Créer une application ASP.NET Core MVC avec Visual Studio pour Mac](xref:tutorials/first-mvc-app-mac/start-mvc)
-* macOS, Linux et Windows : [Créer une application ASP.NET Core MVC avec Visual Studio Code](xref:tutorials/first-mvc-app-xplat/start-mvc)
 
 La série de tutoriels inclut les éléments suivants :
 
