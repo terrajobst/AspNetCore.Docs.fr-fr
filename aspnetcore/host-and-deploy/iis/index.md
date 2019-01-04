@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment héberger des applications ASP.NET Core sur Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 175df4ab633c1d84de645208cd97e8a675fb169c
-ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
+ms.openlocfilehash: 4356d986731f915c2e76a4c4863f951572820de0
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335388"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637872"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -26,7 +26,7 @@ Les systèmes d’exploitation suivants sont pris en charge :
 * Windows 7 ou version ultérieure
 * Windows Server 2008 R2 ou une version ultérieure
 
-Le [serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement [WebListener](xref:fundamentals/servers/weblistener)) ne fonctionne pas dans une configuration de proxy inverse avec IIS. Utilisez le [serveur Kestrel](xref:fundamentals/servers/kestrel).
+Le [serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement WebListener) ne fonctionne pas dans une configuration de proxy inverse avec IIS. Utilisez le [serveur Kestrel](xref:fundamentals/servers/kestrel).
 
 Pour plus d’informations sur l’hébergement dans Azure, consultez <xref:host-and-deploy/azure-apps/index>.
 
@@ -74,7 +74,7 @@ public static IWebHost BuildWebHost(string[] args) =>
 
 **Modèle d’hébergement out-of-process**
 
-Pour l’hébergement out-of-process avec IIS, `CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et permet l’intégration IIS en configurant le chemin de base et le port du [module ASP.NET Core ](xref:fundamentals/servers/aspnet-core-module).
+Pour l’hébergement out-of-process avec IIS, `CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et permet l’intégration IIS en configurant le chemin de base et le port du [module ASP.NET Core ](xref:host-and-deploy/aspnet-core-module).
 
 Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>. `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`127.0.0.1`). Si le port dynamique est 1234, Kestrel écoute sur `127.0.0.1:1234`. Cette configuration remplace les autres configurations URL fournies par :
 
@@ -84,13 +84,13 @@ Le module ASP.NET Core génère un port dynamique à assigner au processus backe
 
 L’utilisation du module évite les appels à `UseUrls` ou à l’API `Listen` de Kestrel. Si `UseUrls` ou `Listen` est appelé, Kestrel écoute sur les ports spécifiés uniquement lors de l’exécution de l’application sans IIS.
 
-Pour plus d’informations sur les modèles d’hébergement in-process et out-of-process, consultez [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) et [Informations de référence sur la configuration du module ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
+Pour plus d’informations sur les modèles d’hébergement in-process et out-of-process, consultez [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) et [Informations de référence sur la configuration du module ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-`CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et active l’intégration d’IIS en configurant le chemin et le port de base pour le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
+`CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et active l’intégration d’IIS en configurant le chemin et le port de base pour le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
 Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration). `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`127.0.0.1`). Si le port dynamique est 1234, Kestrel écoute sur `127.0.0.1:1234`. Cette configuration remplace les autres configurations URL fournies par :
 
@@ -104,7 +104,7 @@ L’utilisation du module évite les appels à `UseUrls` ou à l’API `Listen` 
 
 ::: moniker range="= aspnetcore-2.0"
 
-`CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et active l’intégration d’IIS en configurant le chemin et le port de base pour le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module).
+`CreateDefaultBuilder` configure le serveur [Kestrel](xref:fundamentals/servers/kestrel) comme serveur web et active l’intégration d’IIS en configurant le chemin et le port de base pour le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module).
 
 Le module ASP.NET Core génère un port dynamique à assigner au processus backend. `CreateDefaultBuilder` appelle la méthode [UseIISIntegration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderiisextensions.useiisintegration). `UseIISIntegration` configure Kestrel pour écouter sur le port dynamique à l’adresse IP localhost (`localhost`). Si le port dynamique est 1234, Kestrel écoute sur `localhost:1234`. Cette configuration remplace les autres configurations URL fournies par :
 
@@ -187,13 +187,13 @@ L’intergiciel (middleware) d’intégration IIS, qui configure l’intergiciel
 
 ### <a name="webconfig-file"></a>fichier web.config
 
-Le fichier *web.config* configure le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). La création, la transformation et la publication du fichier *web.config* sont gérées par une cible MSBuild (`_TransformWebConfig`) quand le projet est publié. Cette cible est présente dans les cibles du SDK web (`Microsoft.NET.Sdk.Web`). Le SDK est défini en haut du fichier projet :
+Le fichier *web.config* configure le [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module). La création, la transformation et la publication du fichier *web.config* sont gérées par une cible MSBuild (`_TransformWebConfig`) quand le projet est publié. Cette cible est présente dans les cibles du SDK web (`Microsoft.NET.Sdk.Web`). Le SDK est défini en haut du fichier projet :
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 ```
 
-Si le projet ne contient pas de fichier *web.config*, le fichier est créé avec le *processPath* et les *arguments* corrects pour configurer le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), puis il est déplacé vers la [sortie publiée](xref:host-and-deploy/directory-structure).
+Si le projet ne contient pas de fichier *web.config*, le fichier est créé avec le *processPath* et les *arguments* corrects pour configurer le [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module), puis il est déplacé vers la [sortie publiée](xref:host-and-deploy/directory-structure).
 
 Si un fichier *web.config* se trouve dans le projet, il est transformé avec le *processPath* et les *arguments* corrects pour configurer le Module ASP.NET Core, puis il est déplacé vers la sortie publiée. La transformation ne modifie pas les paramètres de configuration IIS dans le fichier.
 
@@ -265,7 +265,7 @@ Activez la **Console de gestion IIS** et les **Services World Wide Web**.
 
 ## <a name="install-the-net-core-hosting-bundle"></a>Installer le bundle d’hébergement .NET Core
 
-Installez le *bundle d’hébergement .NET Core* sur le système hôte. Le bundle installe le Runtime .NET Core, la bibliothèque .NET Core et le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module). Le module permet aux applications ASP.NET Core de s’exécuter derrière IIS. Si le système n’a pas de connexion Internet, obtenez et installez [Microsoft Visual C++ 2015 Redistributable](https://www.microsoft.com/download/details.aspx?id=53840) avant d’installer le bundle d’hébergement .NET Core.
+Installez le *bundle d’hébergement .NET Core* sur le système hôte. Le bundle installe le Runtime .NET Core, la bibliothèque .NET Core et le [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module). Le module permet aux applications ASP.NET Core de s’exécuter derrière IIS. Si le système n’a pas de connexion Internet, obtenez et installez [Microsoft Visual C++ 2015 Redistributable](https://www.microsoft.com/download/details.aspx?id=53840) avant d’installer le bundle d’hébergement .NET Core.
 
 > [!IMPORTANT]
 > Si le bundle d’hébergement est installé avant IIS, l’installation du bundle doit être réparée. Après avoir installé IIS, réexécutez le programme d’installation du bundle d’hébergement.
@@ -335,9 +335,9 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publ
 
     ASP.NET Core s’exécute dans un processus séparé et gère l’exécution. ASP.NET Core ne repose pas sur le chargement du CLR de bureau. La configuration de la **version CLR .NET** sur **Aucun code managé** est facultative.
 
-1. *ASP.NET Core 2.2 ou version ultérieure* : Pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) 64 bits (x64) qui utilise le [modèle d’hébergement In-process](xref:fundamentals/servers/aspnet-core-module#in-process-hosting-model), désactivez le pool d’applications pour les processus 32 bits (x86).
+1. *ASP.NET Core 2.2 ou version ultérieure* : Pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) 64 bits (x64) qui utilise le [modèle d’hébergement In-process](xref:fundamentals/servers/index#in-process-hosting-model), désactivez le pool d’applications pour les processus 32 bits (x86).
 
-   Dans la barre latérale **Actions** de **Pools d’applications** du gestionnaire IIS, sélectionnez **Définir les valeurs par défaut du pool d’applications** ou **Paramètres avancés**. Recherchez **Activer les applications 32 bits** et définissez la valeur sur `False`. Ce paramètre n’affecte pas les applications déployées pour l’[hébergement Out-of-process](xref:fundamentals/servers/aspnet-core-module#out-of-process-hosting-model).
+   Dans la barre latérale **Actions** de **Pools d’applications** du gestionnaire IIS, sélectionnez **Définir les valeurs par défaut du pool d’applications** ou **Paramètres avancés**. Recherchez **Activer les applications 32 bits** et définissez la valeur sur `False`. Ce paramètre n’affecte pas les applications déployées pour l’[hébergement Out-of-process](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
 
 1. Vérifiez que l’identité de modèle de processus dispose des autorisations appropriées.
 
@@ -489,7 +489,7 @@ Pour héberger une application ASP.NET Core en tant que sous-application d’une
 
 L’attribution d’un pool d’applications distinct à la sous-application est obligatoire lorsque vous utilisez le modèle d’hébergement in-process.
 
-Pour plus d’informations sur le modèle d’hébergement in-process et la configuration du module ASP.NET Core, consultez <xref:fundamentals/servers/aspnet-core-module> et <xref:host-and-deploy/aspnet-core-module>.
+Pour plus d’informations sur le modèle d’hébergement in-process et la configuration du module ASP.NET Core, consultez <xref:host-and-deploy/aspnet-core-module> et <xref:host-and-deploy/aspnet-core-module>.
 
 ## <a name="configuration-of-iis-with-webconfig"></a>Configuration d’IIS avec web.config
 
@@ -579,7 +579,7 @@ Pour plus d’informations, consultez la rubrique [icacls](/windows-server/admin
 
 Pour un déploiement in-process lorsqu’une connexion HTTP/2 est établie, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) retourne `HTTP/2`. Pour un déploiement in-process lorsqu’une connexion HTTP/2 est établie, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) retourne `HTTP/1.1`.
 
-Pour plus d’informations sur les modèles d’hébergement in-process et out-of-process, consultez la rubrique <xref:fundamentals/servers/aspnet-core-module> et <xref:host-and-deploy/aspnet-core-module>.
+Pour plus d’informations sur les modèles d’hébergement in-process et out-of-process, consultez la rubrique <xref:host-and-deploy/aspnet-core-module> et <xref:host-and-deploy/aspnet-core-module>.
 
 ::: moniker-end
 
@@ -607,7 +607,7 @@ Découvrez les modèles de déploiement d’application .NET Core.
 [Déploiement d’applications .NET Core](/dotnet/core/deploying/)
 
 Découvrez comment le module ASP.NET Core permet au serveur web Kestrel d’utiliser IIS ou IIS Express en tant que serveur proxy inverse.  
-[Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
+[Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 
 Découvrez comment configurer le module ASP.NET Core pour héberger des applications ASP.NET Core.  
 [Informations de référence sur la configuration du Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)

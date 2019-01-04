@@ -5,17 +5,13 @@
 
 # [Bien démarrer](xref:getting-started)
 
-# Tutoriels
+# Didacticiels
 ## API web
 ### [Créer une API web](xref:tutorials/first-web-api)
 ### [API Web avec MongoDB](xref:tutorials/first-mongo-app)
 ## Applications web
 ### [Pages Razor](xref:tutorials/razor-pages/index)
-
-### MVC
-#### [Avec Visual Studio](xref:tutorials/first-mvc-app/index)
-#### [Avec Visual Studio Code](xref:tutorials/first-mvc-app-xplat/index)
-#### [Avec Visual Studio pour Mac](xref:tutorials/first-mvc-app-mac/index)
+### [MVC](xref:tutorials/first-mvc-app/index)
 
 ## Applications web en temps réel
 ### [SignalR avec JavaScript](xref:tutorials/signalr)
@@ -46,11 +42,7 @@
 ### [Vue d’ensemble](xref:fundamentals/host/index)
 ### [Hôte web](xref:fundamentals/host/web-host)
 ### [Hôte générique](xref:fundamentals/host/generic-host)
-## Serveurs
-### [Vue d’ensemble](xref:fundamentals/servers/index)
-### [Kestrel](xref:fundamentals/servers/kestrel)
-### [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
-### [HTTP.sys](xref:fundamentals/servers/httpsys)
+## [Serveurs](xref:fundamentals/servers/index)
 ## [Lancer des requêtes HTTP](xref:fundamentals/http-requests)
 
 # Applications web
@@ -66,50 +58,26 @@
 #### [Ajouter un nouveau champ](xref:tutorials/razor-pages/new-field)
 #### [Ajouter la validation](xref:tutorials/razor-pages/validation)
 
+## MVC
+### [Vue d'ensemble d'un MVC](xref:mvc/overview)
+### [Tutoriel sur le MVC](xref:tutorials/first-mvc-app/index)
+#### [Bien démarrer](xref:tutorials/first-mvc-app/start-mvc)
+#### [Ajouter un contrôleur](xref:tutorials/first-mvc-app/adding-controller)
+#### [Ajouter une vue](xref:tutorials/first-mvc-app/adding-view)
+#### [Ajouter un modèle](xref:tutorials/first-mvc-app/adding-model)
+#### [Utiliser une base de données](xref:tutorials/first-mvc-app/working-with-sql)
+#### [Actions et vues du contrôleur](xref:tutorials/first-mvc-app/controller-methods-views)
+#### [Ajouter une recherche](xref:tutorials/first-mvc-app/search)
+#### [Ajouter un nouveau champ](xref:tutorials/first-mvc-app/new-field)
+#### [Ajouter la validation](xref:tutorials/first-mvc-app/validation)
+#### [Examiner les méthodes Details et Delete](xref:tutorials/first-mvc-app/details)
+
 ### [Les filtres](xref:razor-pages/filter)
 ### [Bibliothèques de classes Razor](xref:razor-pages/ui-class)
 ### [Conventions de routage et d’application](xref:razor-pages/razor-pages-conventions)
 ### [Charger des fichiers](xref:razor-pages/upload-files)
 ### [SDK Razor](xref:razor-pages/sdk)
-## MVC
-### [Vue d’ensemble](xref:mvc/overview)
-### Didacticiels
-#### MVC avec Visual Studio
-##### [Vue d’ensemble](xref:tutorials/first-mvc-app/index)
-##### [Bien démarrer](xref:tutorials/first-mvc-app/start-mvc)
-##### [Ajouter un contrôleur](xref:tutorials/first-mvc-app/adding-controller)
-##### [Ajouter une vue](xref:tutorials/first-mvc-app/adding-view)
-##### [Ajouter un modèle](xref:tutorials/first-mvc-app/adding-model)
-##### [Utiliser une base de données](xref:tutorials/first-mvc-app/working-with-sql)
-##### [Actions et vues du contrôleur](xref:tutorials/first-mvc-app/controller-methods-views)
-##### [Ajouter une recherche](xref:tutorials/first-mvc-app/search)
-##### [Ajouter un nouveau champ](xref:tutorials/first-mvc-app/new-field)
-##### [Ajouter la validation](xref:tutorials/first-mvc-app/validation)
-##### [Examiner les méthodes Details et Delete](xref:tutorials/first-mvc-app/details)
-#### MVC avec Visual Studio Code
-##### [Vue d’ensemble](xref:tutorials/first-mvc-app-xplat/index)
-##### [Bien démarrer](xref:tutorials/first-mvc-app-xplat/start-mvc)
-##### [Ajouter un contrôleur](xref:tutorials/first-mvc-app-xplat/adding-controller)
-##### [Ajouter une vue](xref:tutorials/first-mvc-app-xplat/adding-view)
-##### [Ajouter un modèle](xref:tutorials/first-mvc-app-xplat/adding-model)
-##### [Utiliser SQLite](xref:tutorials/first-mvc-app-xplat/working-with-sql)
-##### [Méthodes et vues de contrôleur](xref:tutorials/first-mvc-app-xplat/controller-methods-views)
-##### [Ajouter une recherche](xref:tutorials/first-mvc-app-xplat/search)
-##### [Ajouter un nouveau champ](xref:tutorials/first-mvc-app-xplat/new-field)
-##### [Ajouter la validation](xref:tutorials/first-mvc-app-xplat/validation)
-##### [Examiner les méthodes Details et Delete](xref:tutorials/first-mvc-app/details)
-#### MVC avec Visual Studio pour Mac
-##### [Vue d’ensemble](xref:tutorials/first-mvc-app-mac/index)
-##### [Bien démarrer](xref:tutorials/first-mvc-app-mac/start-mvc)
-##### [Ajouter un contrôleur](xref:tutorials/first-mvc-app-mac/adding-controller)
-##### [Ajouter une vue](xref:tutorials/first-mvc-app-mac/adding-view)
-##### [Ajouter un modèle](xref:tutorials/first-mvc-app-mac/adding-model)
-##### [Utiliser SQLite](xref:tutorials/first-mvc-app-mac/working-with-sql)
-##### [Méthodes et vues de contrôleur](xref:tutorials/first-mvc-app-mac/controller-methods-views)
-##### [Ajouter une recherche](xref:tutorials/first-mvc-app-mac/search)
-##### [Ajouter un nouveau champ](xref:tutorials/first-mvc-app-mac/new-field)
-##### [Ajouter la validation](xref:tutorials/first-mvc-app-mac/validation)
-##### [Examiner les méthodes Details et Delete](xref:tutorials/first-mvc-app/details)
+
 ### [Vues](xref:mvc/views/overview)
 ### [Vues partielles](xref:mvc/views/partial)
 ### [Contrôleurs](xref:mvc/controllers/actions)
@@ -284,9 +252,11 @@
 ## Héberger sur Windows avec IIS
 ### [Vue d’ensemble](xref:host-and-deploy/iis/index)
 ### [Résoudre les problèmes sur IIS](xref:host-and-deploy/iis/troubleshoot)
-### [Informations de référence sur le module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
+### [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 ### [Prise en charge IIS dans Visual Studio](xref:host-and-deploy/iis/development-time-iis-support)
 ### [Modules IIS](xref:host-and-deploy/iis/modules)
+## [Kestrel](xref:fundamentals/servers/kestrel)
+## [HTTP.sys](xref:fundamentals/servers/httpsys)
 ## [Héberger dans un service Windows](xref:host-and-deploy/windows-service)
 ## [Héberger sur Linux avec Nginx](xref:host-and-deploy/linux-nginx)
 ## [Héberger sur Linux avec Apache](xref:host-and-deploy/linux-apache)

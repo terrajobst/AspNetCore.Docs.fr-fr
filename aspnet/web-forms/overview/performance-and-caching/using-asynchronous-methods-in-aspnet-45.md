@@ -4,16 +4,16 @@ title: À l’aide de méthodes asynchrones dans ASP.NET 4.5 | Microsoft Docs
 author: Rick-Anderson
 description: Ce didacticiel vous apprend les notions de base de la création d’une application ASP.NET Web Forms asynchrone à l’aide de Visual Studio Express 2012 pour le Web, qui est un gratuite...
 ms.author: riande
-ms.date: 06/06/2012
+ms.date: 01/02/2019
 ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
-ms.openlocfilehash: 9a3c9fab4932c3bc85733a912cf1d1eaaecc1ab7
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: c36749f82051ee8965035eca9c2e4e57a5dbd616
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225484"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997342"
 ---
 <a name="using-asynchronous-methods-in-aspnet-45"></a>À l’aide de méthodes asynchrones dans ASP.NET 4.5
 ====================
@@ -38,7 +38,7 @@ ASP.NET 4.5 Web Pages en combinaison [.NET 4.5](https://msdn.microsoft.com/libra
 
 Pour plus d’informations sur l’utilisation [await](https://msdn.microsoft.com/library/hh156528(VS.110).aspx) et [async](https://msdn.microsoft.com/library/hh156513(VS.110).aspx) mots clés et les [tâche](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) espace de noms, consultez les références suivantes.
 
-- [Livre blanc : Les asynchronie dans .NET](https://go.microsoft.com/fwlink/?LinkId=204844)
+- [Livre blanc : Le comportement asynchrone dans .NET](https://go.microsoft.com/fwlink/?LinkId=204844)
 - [Forum aux questions d’async/Await](https://blogs.msdn.com/b/pfxteam/archive/2012/04/12/10293335.aspx)
 - [Programmation asynchrone Visual Basic](https://msdn.microsoft.com/vstudio/gg316360)
 
@@ -68,7 +68,7 @@ En règle générale, utilisez les méthodes asynchrones pour les conditions sui
 - Les opérations sont gourmandes en réseau ou/O-e et non le processeur.
 - Parallélisme est plus important que la simplicité du code.
 - Vous souhaitez fournir un mécanisme qui permet aux utilisateurs d’annuler une demande longue.
-- Lorsque l’avantage de la commutation des threads out pondère le coût du commutateur de contexte. En règle générale, vous devez effectuer une méthode asynchrone si la méthode synchrone bloque le thread de demande ASP.NET en effectue aucun travail. En effectuant l’appel asynchrone, le thread de demande ASP.NET n’est pas bloqué effectue aucun travail en attendant que la demande de service web s’achève.
+- Lorsque l’avantage de la commutation des threads compense le coût du commutateur de contexte. En règle générale, vous devez effectuer une méthode asynchrone si la méthode synchrone bloque le thread de demande ASP.NET en effectue aucun travail. En effectuant l’appel asynchrone, le thread de demande ASP.NET n’est pas bloqué effectue aucun travail en attendant que la demande de service web s’achève.
 - Les tests montrent que les opérations bloquantes forment un goulet d’étranglement de performances de site et qu’IIS peut traiter plus de requêtes à l’aide de méthodes asynchrones pour ces appels bloquants.
 
   L’exemple téléchargeable montre comment utiliser efficacement les méthodes asynchrones. L’exemple fourni a été conçu pour fournir une démonstration simple de la programmation asynchrone dans ASP.NET 4.5. L’exemple n’est pas destiné à être une architecture de référence pour la programmation asynchrone dans ASP.NET. L’exemple de programme appelle [API Web ASP.NET](../../../web-api/index.md) méthodes qui appellent ensuite [Task.Delay](https://msdn.microsoft.com/library/hh139096(VS.110).aspx) pour simuler des appels de service web d’exécution longue. La plupart des applications de production n’affiche pas ces avantages exceptionnels en utilisant les méthodes asynchrones.   
@@ -79,9 +79,9 @@ Peu d’applications requièrent toutes les méthodes asynchrones. Souvent, la c
 
 Vous pouvez télécharger l’exemple d’application à partir de [ https://github.com/RickAndMSFT/Async-ASP.NET ](https://github.com/RickAndMSFT/Async-ASP.NET) sur le [GitHub](https://github.com/) site. Le référentiel se compose de trois projets :
 
-- *WebAppAsync*: projet The ASP.NET Web Forms qui utilise l’API Web **WebAPIpwg** service. La plupart du code de ce didacticiel est de ce projet.
-- *WebAPIpgw*: projet de l’API Web ASP.NET MVC 4 qui implémente le `Products, Gizmos and Widgets` contrôleurs. Il fournit les données pour le *WebAppAsync* projet et le *Mvc4Async* projet.
-- *Mvc4Async*: ASP.NET MVC 4 le projet qui contient le code utilisé dans un autre didacticiel. Il effectue des appels d’API Web à la **WebAPIpwg** service.
+- *WebAppAsync*: Le projet Web Forms ASP.NET qui utilise l’API Web **WebAPIpwg** service. La plupart du code de ce didacticiel est de ce projet.
+- *WebAPIpgw*: Le projet ASP.NET MVC 4 Web API qui implémente le `Products, Gizmos and Widgets` contrôleurs. Il fournit les données pour le *WebAppAsync* projet et le *Mvc4Async* projet.
+- *Mvc4Async*: Le projet ASP.NET MVC 4 qui contient le code utilisé dans un autre didacticiel. Il effectue des appels d’API Web à la **WebAPIpwg** service.
 
 ## <a id="GizmosSynch"></a>  La Page synchrone Gizmos
 
