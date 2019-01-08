@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/redis-backplane
-ms.openlocfilehash: 343cb5b2c7ed7162bae7865553a783fea45f0cfb
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: fde7f08ae2310b0b9bf9b7fe25a1dfc4a568adb6
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284465"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099353"
 ---
 # <a name="set-up-a-redis-backplane-for-aspnet-core-signalr-scale-out"></a>Configurer un fond de panier de Redis pour ASP.NET Core SignalR scale-out
 
@@ -24,7 +24,10 @@ Cet article explique les aspects de SignalR spécifiques de la configuration d�
 
 * Déployer un serveur Redis.
 
-  À des fins de production, un fond de panier de Redis est recommandé uniquement pour l’infrastructure locale. Pour réduire la latence, le serveur Redis doit être dans le même centre de données que l’application de SignalR. Si votre application SignalR est en cours d’exécution dans le cloud Azure, nous recommandons le Service Azure SignalR au lieu de fond de panier de Redis. Vous pouvez utiliser le Service de Cache Redis Azure pour le développement et les environnements de test. Pour plus d'informations, reportez-vous aux ressources suivantes :
+  > [!IMPORTANT] 
+  > À des fins de production, un fond de panier de Redis est recommandé uniquement lorsqu’elle s’exécute dans le même centre de données que l’application de SignalR. Sinon, la latence du réseau dégrade les performances. Si votre application SignalR est en cours d’exécution dans le cloud Azure, nous recommandons le Service Azure SignalR au lieu de fond de panier de Redis. Vous pouvez utiliser le Service de Cache Redis Azure pour le développement et les environnements de test.
+
+  Pour plus d'informations, reportez-vous aux ressources suivantes :
 
   * <xref:signalr/scale>
   * [Documentation redis](https://redis.io/)
