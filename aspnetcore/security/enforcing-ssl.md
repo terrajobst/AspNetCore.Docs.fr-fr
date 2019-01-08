@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: b15c6b5ac77f047c40704c9e164165c55b6ae93b
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 0c3add9c8860a47932cda3a8b07c83dc774bf1f1
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861522"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098972"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -69,9 +69,9 @@ Spécifiez le port HTTPS en utilisant l’une des approches suivantes :
 
   **Clé**: `https_port`  
   **Type** : *string*  
-  **Par défaut**: une valeur par défaut n’est pas définie.  
+  **Par défaut**: Une valeur par défaut n’est pas définie.  
   **Définition avec** : `UseSetting`  
-  **Variable d’environnement**: `<PREFIX_>HTTPS_PORT` (le préfixe est `ASPNETCORE_` lorsque vous utilisez le [hôte Web](xref:fundamentals/host/web-host).)
+  **Variable d’environnement**: `<PREFIX_>HTTPS_PORT` (Le préfixe est `ASPNETCORE_` lorsque vous utilisez le [hôte Web](xref:fundamentals/host/web-host).)
 
   Lorsque vous configurez un <xref:Microsoft.AspNetCore.Hosting.IWebHostBuilder> dans `Program`:
 
@@ -98,7 +98,7 @@ N’importe quel pare-feu entre le client et le serveur doit également communic
 
 Si les demandes sont transmises dans une configuration de proxy inverse, utilisez [intergiciel des en-têtes transférés](xref:host-and-deploy/proxy-load-balancer) avant d’appeler intergiciel (middleware) la Redirection de HTTPS. Transféré les mises à jour de l’intergiciel des en-têtes le `Request.Scheme`, en utilisant le `X-Forwarded-Proto` en-tête. Les autorisations de l’intergiciel (middleware) rediriger URI et autres stratégies de sécurité fonctionne correctement. Lors de l’intergiciel des en-têtes transférés n’est pas utilisé, l’application back-end ne peut pas recevoir le schéma correct et finir dans une boucle de redirection. Un message d’erreur utilisateur final commun est que trop de redirections ont eu lieu.
 
-Lorsque vous déployez sur Azure App Service, suivez les instructions de [didacticiel : lier un certificat SSL personnalisé existant à Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl).
+Lorsque vous déployez sur Azure App Service, suivez les instructions de [didacticiel : Lier un certificat SSL personnalisé existant à Azure Web Apps](/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 ### <a name="options"></a>Options
 
@@ -192,9 +192,9 @@ L'exemple de code suivant :
 
 `UseHsts` exclut les hôtes de bouclage suivants :
 
-* `localhost` : L’adresse de bouclage IPv4.
-* `127.0.0.1` : L’adresse de bouclage IPv4.
-* `[::1]` : L’adresse de bouclage IPv6.
+* `localhost` : L’adresse de bouclage IPv4.
+* `127.0.0.1` : L’adresse de bouclage IPv4.
+* `[::1]` : L’adresse de bouclage IPv6.
 
 ::: moniker-end
 
@@ -260,7 +260,7 @@ Consultez [ce problème GitHub](https://github.com/aspnet/Docs/issues/6199).
 ## <a name="additional-information"></a>Informations supplémentaires
 
 * <xref:host-and-deploy/proxy-load-balancer>
-* [Héberger ASP.NET Core sur Linux avec Apache : configuration de SSL](xref:host-and-deploy/linux-apache#ssl-configuration)
-* [Héberger ASP.NET Core sur Linux avec Nginx : configuration de SSL](xref:host-and-deploy/linux-nginx#configure-ssl)
+* [Héberger ASP.NET Core sur Linux avec Apache : Configuration de HTTPS](xref:host-and-deploy/linux-apache#https-configuration)
+* [Héberger ASP.NET Core sur Linux avec Nginx : Configuration de HTTPS](xref:host-and-deploy/linux-nginx#https-configuration)
 * [Procédure pour configurer SSL sur IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)
 * [Prise en charge des navigateurs OWASP HSTS](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet#Browser_Support)

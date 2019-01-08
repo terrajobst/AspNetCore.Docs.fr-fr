@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 09/22/2018
 ms.custom: seodec18
 uid: security/authentication/2fa
-ms.openlocfilehash: 6f20928b0dec9b235fa17c1b44c81a48d031e9e0
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 48bfc50378fc0ec212f5b9d4e7ce05bb4fc97b9d
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121659"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098886"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>Authentification à deux facteurs avec SMS dans ASP.NET Core
 
@@ -27,25 +27,25 @@ Ce didacticiel montre comment configurer l’authentification à deux facteurs (
 
 ## <a name="create-a-new-aspnet-core-project"></a>Créer un projet ASP.NET Core
 
-Créer une application web ASP.NET Core nommée `Web2FA` avec les comptes d’utilisateur individuels. Suivez les instructions de [imposer SSL dans une application ASP.NET Core](xref:security/enforcing-ssl) pour configurer et exiger le protocole SSL.
+Créer une application web ASP.NET Core nommée `Web2FA` avec les comptes d’utilisateur individuels. Suivez les instructions de <xref:security/enforcing-ssl> pour configurer et d’exiger s-HTTP.
 
 ### <a name="create-an-sms-account"></a>Créer un compte SMS
 
-Créer un compte SMS, par exemple, à partir de [twilio](https://www.twilio.com/) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/). Enregistrer les informations d’identification d’authentification (pour twilio : accountSid et authToken, pour ASPSMS : Userkey et mot de passe).
+Créer un compte SMS, par exemple, à partir de [twilio](https://www.twilio.com/) ou [ASPSMS](https://www.aspsms.com/asp.net/identity/core/testcredits/). Enregistrer les informations d’identification d’authentification (pour twilio : accountSid et authToken, pour ASPSMS : UserKey et mot de passe).
 
 #### <a name="figuring-out-sms-provider-credentials"></a>Déterminer les informations d’identification du fournisseur SMS
 
-**Twilio :** à partir de l’onglet tableau de bord de votre compte Twilio, copiez la **SID de compte** et **du jeton d’authentification**.
+**Twilio :** Sous l’onglet tableau de bord de votre compte Twilio, copiez la **SID de compte** et **du jeton d’authentification**.
 
-**ASPSMS :** à partir des paramètres de votre compte, accédez à **Userkey** et copiez-le avec votre **mot de passe**.
+**ASPSMS :** À partir des paramètres de votre compte, accédez à **Userkey** et copiez-le avec votre **mot de passe**.
 
 Nous stockons ultérieurement ces valeurs avec l’outil Gestionnaire de secret dans les clés `SMSAccountIdentification` et `SMSAccountPassword`.
 
 #### <a name="specifying-senderid--originator"></a>Spécifiant l’ID d’expéditeur / donneur d’ordre
 
-**Twilio :** à partir de l’onglet numéros, copiez votre Twilio **numéro de téléphone**.
+**Twilio :** À partir de l’onglet numéros, copiez votre Twilio **numéro de téléphone**.
 
-**ASPSMS :** dans le Menu des expéditeurs déverrouiller, déverrouiller un ou plusieurs expéditeurs ou choisissez un expéditeur d’alphanumériques (non pris en charge par tous les réseaux).
+**ASPSMS :** Dans le Menu des expéditeurs déverrouiller, déverrouiller un ou plusieurs expéditeurs, ou choisissez un expéditeur d’alphanumériques (non pris en charge par tous les réseaux).
 
 Nous stockons ultérieurement cette valeur avec l’outil Gestionnaire de la clé secrète au sein de la clé `SMSAccountFrom`.
 
@@ -136,7 +136,7 @@ Si vous n’obtenez pas un message texte, consultez la page du journal twilio.
 
 ## <a name="account-lockout-for-protecting-against-brute-force-attacks"></a>Verrouillage de compte pour la protection contre les attaques par force brute
 
-Verrouillage de compte est recommandé avec 2FA. Une fois qu’un utilisateur se connecte via un compte local ou un compte de réseau social, chaque tentative ayant échoué à 2 facteurs est stocké. Si les tentatives d’accès ayant échoué maximale est atteinte, l’utilisateur est verrouillé (par défaut : verrouillage de 5 minutes après 5 tentatives infructueuses accès). Une authentification réussie réinitialise le nombre de tentatives d’accès ayant échoué et réinitialise l’horloge. Le nombre maximal de tentatives d’accès infructueuses et l’heure de verrouillage peut être définie avec [MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) et [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). Les éléments suivants configurent le verrouillage de compte pendant 10 minutes après que 10 échecs de tentatives d’accès :
+Verrouillage de compte est recommandé avec 2FA. Une fois qu’un utilisateur se connecte via un compte local ou un compte de réseau social, chaque tentative ayant échoué à 2 facteurs est stocké. Si les tentatives d’accès ayant échoué maximale est atteinte, l’utilisateur est verrouillé (par défaut : 5 minute verrouillage après que 5 tentatives infructueuses accès). Une authentification réussie réinitialise le nombre de tentatives d’accès ayant échoué et réinitialise l’horloge. Le nombre maximal de tentatives d’accès infructueuses et l’heure de verrouillage peut être définie avec [MaxFailedAccessAttempts](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.maxfailedaccessattempts) et [DefaultLockoutTimeSpan](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions.defaultlockouttimespan). Les éléments suivants configurent le verrouillage de compte pendant 10 minutes après que 10 échecs de tentatives d’accès :
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)]
 

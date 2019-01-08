@@ -8,12 +8,12 @@ ms.date: 03/28/2008
 ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
-ms.openlocfilehash: 2e0b1e1d4cbb282e7fd4b27e0a93ba1b9702edea
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 4883046aa16d5e67b7f0c92e15c897ef1a933b67
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829571"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098933"
 ---
 <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Met à jour de Page partielle de présentation avec ASP.NET AJAX
 ====================
@@ -46,14 +46,14 @@ La fonctionnalité la plus visible des Extensions ASP.NET AJAX est peut-être la
 
 La possibilité d’intégrer le rendu de page partielle est intégrée à ASP.NET avec des modifications minimes dans votre projet.
 
-## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>Procédure pas à pas : Intégration de rendu partiel dans un projet existant
+## <a name="walkthrough-integrating-partial-rendering-into-an-existing-project"></a>Procédure pas à pas : L’intégration de rendu partiel dans un projet existant
 
 
 1. Dans Microsoft Visual Studio 2008, créez un projet de Site Web ASP.NET en accédant à <em>fichier</em>  <em>- &gt; New</em>  <em>- &gt; le Site Web</em> et en sélectionnant le Site Web ASP.NET à partir de la boîte de dialogue. Vous pouvez le nommer comme vous le souhaitez, et vous pouvez l’installer dans le système de fichiers ou dans les Services Internet (IIS).
 2. S’affiche avec la page par défaut vide avec le balisage de base ASP.NET (un formulaire côté serveur et un `@Page` directive). Supprimer une étiquette appelée `Label1` et un bouton appelé `Button1` sur la page dans l’élément de formulaire. Vous pouvez définir leurs propriétés de texte à votre convenance.
 3. En mode conception, double-cliquez sur `Button1` pour générer un gestionnaire d’événements de code-behind. Dans ce gestionnaire d’événements, définissez `Label1.Text` à, vous avez cliqué sur le bouton ! .
 
-**Liste 1 : Le balisage de default.aspx avant le rendu partiel est activé.**
+**Liste 1 : Balisage de default.aspx avant le rendu partiel est activé.**
 
 [!code-aspx[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample1.aspx)]
 
@@ -85,13 +85,13 @@ La possibilité d’intégrer le rendu de page partielle est intégrée à ASP.N
 1. N’importe où dans le `<form>` élément, inclure un contrôle ScriptManager en double-cliquant sur le `ScriptManager` élément dans la boîte à outils.
 2. Modifier le `<asp:ScriptManager>` balise afin qu’il inclue l’attribut `EnablePartialRendering= true`.
 
-**Liste 3 : Le balisage de default.aspx avec le rendu partiel est activé**
+**Liste 3 : Balisage de default.aspx avec le rendu partiel est activé**
 
 [!code-aspx[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample3.aspx)]
 
 1. Ouvrez votre fichier web.config. Notez que Visual Studio a ajouté automatiquement une référence de compilation à System.Web.Extensions.dll.
 
-1. What ' s New in Visual Studio 2008 : le fichier web.config qui est fourni automatiquement avec les modèles de projet de Site Web ASP.NET inclut toutes les références nécessaires pour les Extensions ASP.NET AJAX et comprend les sections commentées des informations de configuration qui peuvent être non commentée pour activer des fonctionnalités supplémentaires. Visual Studio 2005 avaient des modèles similaires lorsque ASP.NET 2.0 AJAX Extensions ont été installées. Toutefois, dans Visual Studio 2008, les Extensions AJAX sont opt-out par défaut (autrement dit, ils sont référencés par défaut, mais peuvent être supprimés en tant que références).
+1. Quelles sont les nouveautés dans Visual Studio 2008 : Le fichier web.config qui est fourni avec le Site de Web ASP.NET modèles de projet automatiquement inclut toutes les références nécessaires pour les Extensions ASP.NET AJAX et inclut les sections d’informations de configuration qui peuvent être non commentée pour activer supplémentaires commentées fonctionnalité. Visual Studio 2005 avaient des modèles similaires lorsque ASP.NET 2.0 AJAX Extensions ont été installées. Toutefois, dans Visual Studio 2008, les Extensions AJAX sont opt-out par défaut (autrement dit, ils sont référencés par défaut, mais peuvent être supprimés en tant que références).
 
 
 [![](understanding-partial-page-updates-with-asp-net-ajax/_static/image8.png)](understanding-partial-page-updates-with-asp-net-ajax/_static/image7.png)
@@ -111,7 +111,7 @@ Visual Studio 2008 ne semble pas être accompagnée d’un modèle prédéfini p
 
 Propriétés du balisage activé :
 
-| **Nom de propriété** | **Type** | **Description** |
+| **Nom de la propriété** | **Type** | **Description** |
 | --- | --- | --- |
 | AllowCustomErrors-redirection | Bool | Spécifie s’il faut utiliser la section d’erreurs personnalisées du fichier web.config pour gérer les erreurs. |
 | Message de AsyncPostBackError | Chaîne | Obtient ou définit le message d’erreur envoyé au client si une erreur est générée. |
@@ -124,7 +124,7 @@ Propriétés du balisage activé :
 
 Propriétés du code uniquement :
 
-| **Nom de propriété** | **Type** | **Description** |
+| **Nom de la propriété** | **Type** | **Description** |
 | --- | --- | --- |
 | AuthenticationService | AuthenticationService-Manager | Obtient les détails sur le proxy de Service d’authentification ASP.NET qui sera envoyé au client. |
 | IsDebuggingEnabled | Bool | Obtient si le script et le débogage du code est activé. |
@@ -153,7 +153,7 @@ Descendants de balisage :
 
 Le contrôle ScriptManager est la base essentielle pour les Extensions ASP.NET AJAX. Il fournit l’accès à la bibliothèque de scripts (y compris le système de type complète un script côté client), prend en charge le rendu partiel et fournit la prise en charge complète pour les services ASP.NET supplémentaires (par exemple, l’authentification et de profilage, mais également d’autres Services Web). Le contrôle ScriptManager fournit également la prise en charge de globalisation et localisation pour les scripts client.
 
-## <a name="providing-alterative-and-supplemental-scripts"></a>En fournissant des Scripts alternatif et supplémentaires
+## <a name="providing-alternative-and-supplemental-scripts"></a>En fournissant des Scripts supplémentaires et Alternative
 
 Bien que les Extensions Microsoft ASP.NET 2.0 AJAX incluent le code de la totalité du script dans les versions debug et release des éditions en tant que ressources incorporées dans les assemblys référencés, les développeurs sont libres de rediriger le ScriptManager pour les fichiers de script personnalisé, mais aussi inscrire scripts nécessaires supplémentaires.
 
@@ -169,7 +169,7 @@ En consommant de l’événement AsyncPostBackError, vous pouvez spécifier le `
 
 Personnalisation côté client est également possible au lieu d’utiliser la fenêtre d’alerte par défaut ; par exemple, vous pouvez souhaiter afficher un texte personnalisé `<div>` élément plutôt que par défaut navigateur boîte de dialogue modale. Dans ce cas, vous pouvez gérer l’erreur dans le script client :
 
-**Liste 5 : Un script côté Client pour afficher les erreurs personnalisées**
+**Liste 5 : Un script côté client pour afficher les erreurs personnalisées**
 
 [!code-html[Main](understanding-partial-page-updates-with-asp-net-ajax/samples/sample4.html)]
 
@@ -185,7 +185,7 @@ Le contrôle ScriptManager offre la prise en charge complète pour la localisati
 
 Propriétés du balisage activé :
 
-| **Nom de propriété** | **Type** | **Description** |
+| **Nom de la propriété** | **Type** | **Description** |
 | --- | --- | --- |
 | ChildrenAsTriggers | bool | Spécifie si les contrôles enfants appellent automatiquement l’actualisation de publication (postback). |
 | RenderMode | enum (bloc, Inline) | Spécifie que la façon du contenu s’afficheront visuellement. |
@@ -193,7 +193,7 @@ Propriétés du balisage activé :
 
 Propriétés du code uniquement :
 
-| **Nom de propriété** | **Type** | **Description** |
+| **Nom de la propriété** | **Type** | **Description** |
 | --- | --- | --- |
 | IsInPartialRendering | bool | Détermine si le contrôle UpdatePanel prend en charge le rendu partiel pour la requête actuelle. |
 | ContentTemplate | ITemplate | Obtient le modèle de balisage pour la demande de mise à jour. |
@@ -280,7 +280,7 @@ Enfin, si une application nécessite qu’UpdatePanel est utilisés, les instruc
 
 Propriétés du balisage activé :
 
-| **Nom de propriété** | **Type** | **Description** |
+| **Nom de la propriété** | **Type** | **Description** |
 | --- | --- | --- |
 | AssociatedUpdate-PanelID | Chaîne | Spécifie l’ID du contrôle UpdatePanel qui UpdateProgress doivent signaler sur. |
 | DisplayAfter | Int | Spécifie le délai d’attente en millisecondes avant l’affichage de ce contrôle une fois que la demande asynchrone commence. |

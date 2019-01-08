@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 9c541644d276bbdc990bb01f8bd80c92862cd6f0
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: 6d0365b103572d6059ce61c54b9b3406da9e5bd4
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284615"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098699"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification dans web API avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -157,8 +157,8 @@ Pour vérifier que l’API web nécessite une authentification, tout d’abord e
     ![réponse 401 non autorisé](./azure-ad-b2c-webapi/postman-401-status.png)
 
 > [!IMPORTANT]
-> Si vous obtenez une erreur « Pas pu obtenir de réponse », vous devrez peut-être désactiver la vérification du certificat SSL dans le [les paramètres de Postman](https://learning.getpostman.com/docs/postman/launching_postman/settings). 
- 
+> Si vous recevez une erreur « Pas pu obtenir de réponse », vous devrez peut-être désactiver la vérification du certificat SSL dans le [les paramètres de Postman](https://learning.getpostman.com/docs/postman/launching_postman/settings).
+
 ### <a name="obtain-a-bearer-token"></a>Obtenir un jeton du porteur
 
 Pour faire une demande authentifiée à l’API web, un jeton du porteur est requis. Postman permet de facilement se connecter au locataire Azure AD B2C et obtenir un jeton.

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: performance/response-compression
-ms.openlocfilehash: 51ab51652a7b3f9b4ef97b3abbffe2e398c0bfb5
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: a9f72a6816298b11e7b7d30b2b4bd44083baab3a
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637753"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099037"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses dans ASP.NET Core
 
@@ -47,11 +47,11 @@ Quand un client peut traiter du contenu compressé, il doit en informer le serve
 | Valeurs d’en-tête `Accept-Encoding` | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Oui (valeur par défaut)        | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Non                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Non                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `deflate`                       | Aucune                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Aucune                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui                  | [Format de fichier GZIP](https://tools.ietf.org/html/rfc1952) |
 | `identity`                      | Oui                  | Identificateur « Aucun codage » : La réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | Non                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `pack200-gzip`                  | Aucune                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Oui                  | N'importe quel encodage de contenu disponible non explicitement demandé |
 
 ::: moniker-end
@@ -62,10 +62,10 @@ Quand un client peut traiter du contenu compressé, il doit en informer le serve
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Aucune                   | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | Aucune                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Non                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `exi`                           | Aucune                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui (valeur par défaut)        | [Format de fichier GZIP](https://tools.ietf.org/html/rfc1952) |
 | `identity`                      | Oui                  | Identificateur « Aucun codage » : La réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | Non                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `pack200-gzip`                  | Aucune                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Oui                  | N'importe quel encodage de contenu disponible non explicitement demandé |
 
 ::: moniker-end
@@ -143,8 +143,10 @@ public class Startup
 }
 ```
 
-> [!NOTE]
-> Utilisez un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), ou [Postman](https://www.getpostman.com/) pour définir l'en-tête `Accept-Encoding` de la requête et étudier les en-têtes, la taille et le corps de la réponse.
+Remarques : 
+
+* `app.UseResponseCompression` doit être appelé avant `app.UseMvc`.
+* Utiliser un outil tel que [Fiddler](http://www.telerik.com/fiddler), [Firebug](http://getfirebug.com/), ou [Postman](https://www.getpostman.com/) pour définir le `Accept-Encoding` en-tête de demande et d’étudier les en-têtes de réponse, la taille et le corps.
 
 Soumettez une requête à l’exemple d’application sans l’en-tête `Accept-Encoding` et observez que la réponse n’est pas compressée. Les en-têtes  `Content-Encoding` et `Vary` ne sont pas présents sur la réponse.
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: c4a512e5518380f5f0a43d08cd0bcba2f8c26141
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 3c1ea8f41eb6ed847bf24141ef0ae0c7e03d8a79
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207665"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099219"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Attaques empêcher Cross-Site Request Forgery (XSRF/CSRF) dans ASP.NET Core
 
@@ -225,7 +225,7 @@ services.AddAntiforgery(options =>
 | [CookiePath](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiepath) | Le chemin d’accès défini sur le cookie. Cette propriété est obsolète et sera supprimée dans une future version. L’alternative recommandée est Cookie.Path. |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Le nom du champ de formulaire masqué utilisé par le système anti-contrefaçon pour restituer des jetons anti-contrefaçon dans les vues. |
 | [HeaderName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.headername) | Le nom de l’en-tête utilisé par le système anti-contrefaçon. Si `null`, le système considère uniquement les données de formulaire. |
-| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Indique si SSL est requis par le système anti-contrefaçon. Si `true`, les demandes non-SSL échouent. La valeur par défaut est `false`. Cette propriété est obsolète et sera supprimée dans une future version. L’alternative recommandée consiste à définir les Cookie.SecurePolicy. |
+| [RequireSsl](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.requiressl) | Spécifie si HTTPS est requis par le système anti-contrefaçon. Si `true`, les requêtes non-HTTPS échouent. La valeur par défaut est `false`. Cette propriété est obsolète et sera supprimée dans une future version. L’alternative recommandée consiste à définir les Cookie.SecurePolicy. |
 | [SuppressXFrameOptionsHeader](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.suppressxframeoptionsheader) | Spécifie s’il faut supprimer la génération de la `X-Frame-Options` en-tête. Par défaut, l’en-tête est généré avec la valeur « SAMEORIGIN ». La valeur par défaut est `false`. |
 
 ::: moniker-end

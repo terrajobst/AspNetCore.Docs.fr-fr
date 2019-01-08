@@ -5,12 +5,12 @@ description: Découvrez comment configurer l’authentification Azure Active Dir
 ms.date: 01/25/2018
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 73a66cea1533cc835796f673021bfa45c35f5935
-ms.sourcegitcommit: 4cd8dce371d63a66d780e4af1baab2bcf9d61b24
+ms.openlocfilehash: 2c544475ccd3eb76f2737fec1cf269ac86add372
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43893192"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098985"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification cloud avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -53,7 +53,7 @@ Utilisez les valeurs suivantes :
 | **Autoriser un flux implicite**       | Oui                       |                                                                                                                                                                                                    |
 | **URL de réponse**                 | `https://localhost:44300/signin-oidc` | URL de réponse sont des points de terminaison auxquels Azure AD B2C retourne les jetons demandés par votre application. Visual Studio fournit l’URL de réponse à utiliser. Pour l’instant, entrez `https://localhost:44300/signin-oidc` pour remplir le formulaire. |
 | **URI ID d’application**                | Laisser vide               | Non requis pour ce didacticiel.                                                                                                                                                                    |
-| **Inclure le client natif**     | Non                        |                                                                                                                                                                                                    |
+| **Inclure le client natif**     | Aucune                        |                                                                                                                                                                                                    |
 
 > [!WARNING]
 > Si la configuration d’une URL de réponse non localhost, vous devez connaître le [contraintes sur ce qui est autorisé dans la liste des URL de réponse](/azure/active-directory-b2c/active-directory-b2c-app-registration#choosing-a-web-app-or-api-reply-url). 
@@ -66,7 +66,7 @@ Rien n’est plus peuvent être configuré dans le locataire Azure AD B2C pour l
 
 Le modèle d’Application Web de Visual Studio peut être configuré pour utiliser le locataire Azure AD B2C pour l’authentification.
 
-Dans Visual Studio :
+Dans Visual Studio :
 
 1. Créez une application web ASP.NET Core. 
 2. Sélectionnez **Web Application** à partir de la liste des modèles.
@@ -96,7 +96,7 @@ Dans Visual Studio :
 Revenez à la fenêtre de navigateur avec les propriétés de l’application B2C toujours ouvertes. Modifier la fichier temporaire **URL de réponse** spécifié précédemment pour la valeur copiée à partir de Visual Studio. Sélectionnez **enregistrer** en haut de la fenêtre.
 
 > [!TIP]
-> Si vous n’avez pas de copier l’URL de réponse, utilisez l’adresse SSL à partir de l’onglet débogage dans les propriétés du projet web et ajouter la **CallbackPath** valeur *appsettings.json*.
+> Si vous n’avez pas de copier l’URL de réponse, utilisez l’adresse HTTPS à partir de l’onglet débogage dans les propriétés du projet web et ajouter la **CallbackPath** valeur *appsettings.json*.
 
 ## <a name="configure-policies"></a>Configurer des stratégies
 

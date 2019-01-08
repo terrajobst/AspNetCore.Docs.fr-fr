@@ -8,12 +8,12 @@ ms.date: 10/17/2013
 ms.assetid: 4085de68-d243-4378-8a64-86236ea8d2da
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-a-new-field
 msc.type: authoredcontent
-ms.openlocfilehash: 87bb2c5f64e714268f5e2631b44fbb8a93a6a4b6
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 950ae17ebd6b0f15520c2a4e9372703f5374dfbe
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578085"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098686"
 ---
 <a name="adding-a-new-field"></a>Ajout d’un nouveau champ
 ====================
@@ -94,7 +94,7 @@ Dans le **Console du Gestionnaire de Package**, entrez la commande `update-datab
 
 ![](adding-a-new-field/_static/image7.png)
 
-Si vous obtenez une erreur qui indique une table existe déjà et ne peut pas être créée, il est probablement parce que vous avez exécuté l’application une fois que vous avez supprimé la base de données et avant l’exécution de `update-database`. Dans ce cas, supprimez le *Movies.mdf* à nouveau de fichier et recommencez la `update-database` commande. Si vous obtenez toujours une erreur, supprimez le dossier migrations et le contenu, commencez par les instructions en haut de cette page (qui est de supprimer le *Movies.mdf* de fichier, puis passez à Enable-Migrations). Si vous obtenez encore une générant une erreur, ouvrez l’Explorateur d’objets SQL Server et supprimer la base de données de la liste.
+Si vous obtenez une erreur qui indique une table existe déjà et ne peut pas être créée, il est probablement parce que vous avez exécuté l’application une fois que vous avez supprimé la base de données et avant l’exécution de `update-database`. Dans ce cas, supprimez le *Movies.mdf* à nouveau de fichier et recommencez la `update-database` commande. Si vous obtenez toujours une erreur, supprimez le dossier migrations et le contenu, commencez par les instructions en haut de cette page (qui est de supprimer le *Movies.mdf* de fichier, puis passez à Enable-Migrations). Si vous obtenez toujours une erreur, ouvrez l’Explorateur d’objets SQL Server et supprimer la base de données de la liste.
 
 Exécutez l’application et accédez à la */Movies* URL. Les données d’amorçage s’affiche.
 

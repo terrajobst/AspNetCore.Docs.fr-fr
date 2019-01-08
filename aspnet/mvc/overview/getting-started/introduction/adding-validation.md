@@ -4,16 +4,16 @@ title: Ajout d’une Validation | Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
-ms.date: 10/17/2013
+ms.date: 01/06/2019
 ms.assetid: 9f35ca15-e216-4db6-9ebf-24380b0f31b4
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-validation
 msc.type: authoredcontent
-ms.openlocfilehash: 22e59a99a179a7a414447036b973e3ad3b462515
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 6831259ce19c3747c179d6fc1b7e2095051a603b
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577949"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099024"
 ---
 <a name="adding-validation"></a>Ajout de la validation
 ====================
@@ -97,7 +97,7 @@ Vous vous demandez peut-être comment l’interface utilisateur de validation a 
 
 [!code-csharp[Main](adding-validation/samples/sample5.cs)]
 
-La première méthode d’action (HTTP GET) `Create` affiche le formulaire de création initial. La deuxième version (`[HttpPost]`) gère la publication de formulaire. La seconde méthode `Create` (la version `HttpPost`) appelle `ModelState.IsValid` pour vérifier si le film a des erreurs de validation. L’appel de cette méthode évalue tous les attributs de validation qui ont été appliqués à l’objet. Si l’objet comporte des erreurs de validation, la méthode `Create` réaffiche le formulaire. S’il n’y a pas d’erreur, la méthode enregistre le nouveau film dans la base de données. Dans notre exemple de film, **le formulaire n’est pas publié sur le serveur lorsqu’il existe des erreurs de validation détectées côté client ; la seconde** `Create` **méthode n’est jamais appelée**. Si vous désactivez JavaScript dans votre navigateur, la validation côté client est désactivée et la requête HTTP POST `Create` les appels de méthode `ModelState.IsValid` pour vérifier si le film a des erreurs de validation.
+La première méthode d’action (HTTP GET) `Create` affiche le formulaire de création initial. La deuxième version (`[HttpPost]`) gère la publication de formulaire. La seconde `Create` (méthode) (le `HttpPost` version) vérifie `ModelState.IsValid` pour voir si le film a des erreurs de validation. Obtention de cette propriété prend la valeur de tous les attributs de validation qui ont été appliqués à l’objet. Si l’objet comporte des erreurs de validation, le `Create` méthode réaffiche le formulaire. S’il n’y a pas d’erreur, la méthode enregistre le nouveau film dans la base de données. Dans notre exemple de film, **le formulaire n’est pas publié sur le serveur lorsqu’il existe des erreurs de validation détectées côté client ; la seconde** `Create` **méthode n’est jamais appelée**. Si vous désactivez JavaScript dans votre navigateur, la validation côté client est désactivée, la requête HTTP POST `Create` Obtient de la méthode `ModelState.IsValid` pour vérifier si le film a des erreurs de validation.
 
 Vous pouvez définir un point d’arrêt dans la méthode `HttpPost Create` et vérifier que la méthode n’est jamais appelée. La validation côté client n’enverra pas les données du formulaire quand des erreurs de validation seront détectées. Si vous désactivez JavaScript dans votre navigateur et que vous envoyez ensuite le formulaire avec des erreurs, le point d’arrêt sera atteint. Vous bénéficiez toujours d’une validation complète sans JavaScript. L’image suivante montre comment désactiver JavaScript dans Internet Explorer.
 
@@ -159,7 +159,7 @@ Si vous utilisez le `DataType` attribut avec un champ de date, vous devez spéci
 
 Le code suivant illustre la combinaison d’attributs sur une seule ligne :
 
-[!code-csharp[Main](adding-validation/samples/sample10.cs?highlight=6,10)]
+[!code-csharp[Main](adding-validation/samples/sample10.cs?highlight=4,6,10,12)]
 
 Dans la partie suivante de la série, nous allons examiner l’application et apporter des améliorations aux méthodes `Details` et `Delete` générées automatiquement.
 

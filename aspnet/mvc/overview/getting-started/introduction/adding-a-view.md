@@ -5,12 +5,12 @@ description: Ajout d’une vue à une application MVC
 ms.author: riande
 ms.date: 09/1721/2017
 uid: mvc/overview/getting-started/introduction/adding-a-view
-ms.openlocfilehash: 56c00d5992a95971f48bb6e1ec30d63706948997
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 47447c82506cc0eb4dafabe272b3204f76a2edd7
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48578232"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54098660"
 ---
 <a name="adding-a-view"></a>Ajout d’une vue
 ====================
@@ -22,7 +22,7 @@ Dans cette section vous allez modifier la `HelloWorldController` classe à utili
 
 Vous allez créer un fichier de modèle de vue à l’aide du [moteur d’affichage Razor](../../../../web-pages/overview/getting-started/introducing-razor-syntax-c.md). Modèles de vue Razor ont une *.cshtml* extension de fichier et offrent un moyen élégant pour créer le HTML de sortie à l’aide de c#. Razor réduit le nombre de caractères et des touches du clavier nécessaires lors de l’écriture d’un modèle de vue et permet un rapide, fluide de flux de travail de codage.
 
-Actuellement, la méthode `Index` retourne une chaîne avec un message qui est codé en dur dans la classe du contrôleur. Modifier le `Index` méthode pour retourner un `View` de l’objet, comme indiqué dans le code suivant :
+Actuellement, la méthode `Index` retourne une chaîne avec un message qui est codé en dur dans la classe du contrôleur. Modifier le `Index` méthode à appeler les contrôleurs [vue](/dotnet/api/microsoft.aspnetcore.mvc.controller.view#Microsoft_AspNetCore_Mvc_Controller_View) méthode, comme indiqué dans le code suivant :
 
 [!code-csharp[Main](adding-a-view/samples/sample1.cs?highlight=1,3)]
 
@@ -112,7 +112,7 @@ Notre petit peu de &quot;données&quot; (dans ce cas le &quot;Hello from our Vie
 
 Avant nous accédez à une base de données et que vous parler de modèles, cependant, nous allons tout d’abord parler de passer des informations à partir du contrôleur à une vue. Classes de contrôleur sont appelées en réponse à une demande d’URL entrante. Une classe de contrôleur est où vous écrivez le code qui gère le navigateur entrant demande, récupère les données à partir d’une base de données et finalement détermine le type de réponse à envoyer au navigateur. Vue modèles peuvent ensuite être utilisés à partir d’un contrôleur pour générer et mettre en forme une réponse HTML au navigateur.
 
-Contrôleurs sont chargés de fournir les données ou les objets sont requis pour un modèle de vue restituer une réponse au navigateur. Une bonne pratique : **un modèle de vue ne doit jamais exécuter la logique métier ou interagir directement avec une base de données**. Au lieu de cela, un modèle de vue doit fonctionner uniquement avec les données qui sont qui lui sont fournies par le contrôleur. Leur gestion &quot;séparation des préoccupations&quot; vous aide à maintenir votre code concis, testable et plus facile à gérer.
+Contrôleurs sont chargés de fournir les données ou les objets sont requis pour un modèle de vue restituer une réponse au navigateur. Une bonne pratique : **Un modèle de vue ne doit jamais exécuter la logique métier ou interagir directement avec une base de données**. Au lieu de cela, un modèle de vue doit fonctionner uniquement avec les données qui sont qui lui sont fournies par le contrôleur. Leur gestion &quot;séparation des préoccupations&quot; vous aide à maintenir votre code concis, testable et plus facile à gérer.
 
 Actuellement, le `Welcome` méthode d’action dans le `HelloWorldController` classe prend un `name` et un `numTimes` paramètre, puis sort les valeurs directement dans le navigateur. Au lieu que le contrôleur restitue cette réponse sous forme de chaîne, modifions-le pour utiliser un modèle de vue à la place. Le modèle de vue génère une réponse dynamique, ce qui signifie que vous devez passer les bits de données appropriés du contrôleur à la vue pour générer la réponse. Vous pouvez faire avec le contrôleur de placer les données dynamiques (paramètres) dont le modèle de vue a besoin dans un `ViewBag` objet auquel le modèle de vue peut ensuite accéder.
 

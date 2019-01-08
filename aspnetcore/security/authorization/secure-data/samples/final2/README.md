@@ -8,4 +8,4 @@
 
     `dotnet ef database update`
 
-* Activer le protocole SSL dans le projet
+* Activer HTTPS dans le projet

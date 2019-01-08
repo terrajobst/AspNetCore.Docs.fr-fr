@@ -4,14 +4,14 @@ author: mjrousos
 description: Conseils pour améliorer les performances dans les applications ASP.NET Core et éviter les problèmes de performances courants.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 11/29/2018
+ms.date: 1/9/2019
 uid: performance/performance-best-practices
-ms.openlocfilehash: 9f3ed97bf4d4eb371ff5ae3874234b44745cc4ca
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: 25aa4c1e22ead7db4775c6e5e81b6fd627c6d7a6
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618114"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099063"
 ---
 # <a name="aspnet-core-performance-best-practices"></a>ASP.NET Core performances meilleures pratiques
 
@@ -19,8 +19,7 @@ Par [Mike Rousos](https://github.com/mjrousos)
 
 Cette rubrique fournit des instructions pour des performances meilleures pratiques avec ASP.NET Core.
 
-<a name="hot"></a>
-<!-- TODO review hot code paths is jargon that won't MT (machine translate) and is not well defined for native speakers. --> Dans ce document, un chemin d’accès du code à chaud est défini comme un chemin d’accès de code qui est fréquemment appelé et où une grande partie de la durée d’exécution se produit. Chemins d’accès du code à chaud limitent généralement l’application scale-out et performances.
+<a name="hot"></a> Dans ce document, un chemin d’accès du code à chaud est défini comme un chemin d’accès de code qui est fréquemment appelé et où une grande partie de la durée d’exécution se produit. Chemins d’accès du code à chaud limitent généralement l’application scale-out et performances.
 
 ## <a name="cache-aggressively"></a>Mettre en cache agressive
 
@@ -129,6 +128,10 @@ Recommandations :
 
 * **Faire** utiliser d’ASP.NET Core [prise en charge intégrée](xref:client-side/bundling-and-minification) pour le regroupement et minimisation des ressources du client.
 * **Faire** envisager d’autres outils tiers tels que [Gulp](uid:client-side/bundling-and-minification#consume-bundleconfigjson-from-gulp) ou [Webpack](https://webpack.js.org/) pour la gestion des ressources client plus complexe.
+
+## <a name="compress-responses"></a>Compresser les réponses
+
+ Le fait de réduire la taille de la réponse augmente généralement la réactivité d’une application, parfois de manière considérable. Une façon de réduire la taille de la charge utile consiste à compresser les réponses de l’application. Pour plus d’informations, consultez [compression des réponses](xref:performance/response-compression).
 
 ## <a name="use-the-latest-aspnet-core-release"></a>Utilisez la dernière version d’ASP.NET Core
 
