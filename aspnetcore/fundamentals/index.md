@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez les concepts de base permettant de créer des applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/06/2019
 uid: fundamentals/index
-ms.openlocfilehash: 11dc6336ae7667038983c967f28232bef325f5bb
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: a56beebd796448705c7b84f47699e9739f451419
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637766"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099232"
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
 
@@ -63,7 +63,7 @@ La méthode `UseStartup` sur `WebHostBuilder` spécifie la classe `Startup` pour
 
 ::: moniker-end
 
-La classe `Startup` est l’emplacement où vous définissez le pipeline de traitement des requêtes et où sont configurés les services nécessaires à l’application. La classe `Startup` doit être publique et contenir les méthodes suivantes :
+C’est dans la classe `Startup` que sont configurés les services nécessaires à l’application et qu’est défini le pipeline de traitement des requêtes. La classe `Startup`, qui doit être publique, contient en général les méthodes suivantes. `Startup.ConfigureServices` est facultatif.
 
 ::: moniker range=">= aspnetcore-2.0"
 
