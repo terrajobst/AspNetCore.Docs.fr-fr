@@ -179,7 +179,9 @@
 ## [Débogage d’instantané](/azure/application-insights/app-insights-snapshot-debugger)
 ## [Débogage d’instantané dans Visual Studio](/visualstudio/debugger/debug-live-azure-applications)
 ## [Tests d’intégration](xref:test/integration-tests)
+## [Tests de charge et de contrainte](xref:test/loadtests)
 ## [Résoudre les problèmes](xref:test/troubleshoot)
+## [Journalisation](xref:fundamentals/logging/index)
 
 # Accès aux données
 ## Didacticiels
@@ -392,6 +394,7 @@
 ## [Utiliser un observateur de fichier](xref:tutorials/dotnet-watch)
 
 # Migration
+## [2.2 à 3.0](xref:migration/22-to-30)
 ## [2.1 à 2.2](xref:migration/21-to-22)
 ## [2.0 à 2.1](xref:migration/20_21)
 ## 1.x à 2.0
@@ -406,6 +409,7 @@
 ### [ClaimsPrincipal.Current](xref:migration/claimsprincipal-current)
 ### [Appartenance à une identité](xref:migration/proper-to-2x/membership-to-core-identity)
 ### [Des modules HTTP aux intergiciels (middleware)](xref:migration/http-modules)
+## [Journalisation (hors ASP.NET Core)](xref:migration/logging-nonaspnetcore)
 
 # Nouveautés
 ## [Nouveautés de la version 2.2](xref:aspnetcore-2.2)
