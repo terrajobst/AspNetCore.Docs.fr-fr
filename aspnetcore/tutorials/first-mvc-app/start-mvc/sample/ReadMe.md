@@ -1,0 +1,1 @@
+L’exemple terminé est dans le dossier *2.2-completed*. L’exemple *MvcMovie22* est utilisé pour obtenir la documentation et il est difficile à utiliser.

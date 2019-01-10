@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment diagnostiquer les problèmes liés aux déploiements Internet Information Services (IIS) d’applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/06/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 6d43057639ea88bb21ac66f2799062e06fffc530
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 68fcd578c051ae9ba6234cad0465a7ef42f1ed14
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121685"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637688"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes liés à ASP.NET Core sur IIS
 
@@ -34,7 +34,7 @@ Dans Visual Studio, un projet ASP.NET Core est par défaut hébergé sur [IIS Ex
 Rubriques de dépannage supplémentaires :
 
 <xref:host-and-deploy/azure-apps/troubleshoot>  
-Bien qu’App Service utilise le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) et IIS pour héberger des applications, consultez la rubrique dédiée pour obtenir des instructions qui concernent spécifiquement App Service.
+Bien qu’App Service utilise le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) et IIS pour héberger des applications, consultez la rubrique dédiée pour obtenir des instructions qui concernent spécifiquement App Service.
 
 <xref:fundamentals/error-handling>  
 Découvrez comment gérer les erreurs dans les applications ASP.NET Core pendant le développement sur un système local.
@@ -242,7 +242,7 @@ Quand une application répond lentement ou se bloque sur une requête, obtenez u
 
 * [ProcDump](/sysinternals/downloads/procdump)
 * [DebugDiag](https://www.microsoft.com/download/details.aspx?id=49924)
-* WinDbg : [Télécharger les outils de débogage pour Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [Débogage à l’aide de WinDbg](/windows-hardware/drivers/debugger/debugging-using-windbg)
+* WinDbg : [Télécharger les outils de débogage pour Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [Débogage à l’aide de WinDbg](/windows-hardware/drivers/debugger/debugging-using-windbg)
 
 ## <a name="remote-debugging"></a>Débogage distant
 

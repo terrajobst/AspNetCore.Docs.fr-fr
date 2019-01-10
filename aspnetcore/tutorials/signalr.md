@@ -2,19 +2,18 @@
 title: Bien démarrer avec ASP.NET Core SignalR
 author: tdykstra
 description: Dans ce tutoriel, vous créez une application de conversation qui utilise ASP.NET Core SignalR.
-monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/30/2018
 uid: tutorials/signalr
-ms.openlocfilehash: c52041b34d6c9d1d8f06f980c900b805a0933293
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 36296513726f7e098a536afc22fcbfb2cafe946d
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861979"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997277"
 ---
-# <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
+# <a name="tutorial-get-started-with-aspnet-core-signalr"></a>Tutoriel : Bien démarrer avec ASP.NET Core SignalR
 
 Ce tutoriel explique les principes fondamentaux de la création d’une application en temps réel à l’aide de SignalR. Vous apprenez à :
 
@@ -30,10 +29,6 @@ Ce tutoriel explique les principes fondamentaux de la création d’une applicat
 ![Exemple d’application SignalR](signalr/_static/signalr-get-started-finished.png)
 
 [Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
-
-> [!NOTE]
-> Nous testons la facilité d’utilisation d’une nouvelle structure proposée pour la table des matières d’ASP.NET Core.  Si vous avez quelques minutes pour essayer un exercice de recherche de 7 différentes rubriques dans la table des matières actuelle ou proposée, [cliquez ici pour participer à l’étude](https://dpk4xbh5.optimalworkshop.com/treejack/aa11wn82).
-
 
 [!INCLUDE [|Prerequisites](~/includes/net-core-prereqs-all-2.2.md)]
 
@@ -168,7 +163,7 @@ Un *hub* est une classe servant de pipeline global qui gère les communications 
 
   La classe `ChatHub` hérite la classe SignalR `Hub`. La classe `Hub` gère les connexions, les groupes et la messagerie.
 
-  La méthode `SendMessage` peut être appelée par n’importe quel client connecté. Elle envoie le message reçu à tous les clients. Le code SignalR est asynchrone afin de fournir une scalabilité maximale.
+  La méthode `SendMessage` peut être appelée par un client connecté afin d’envoyer un message à tous les clients. Le code client JavaScript qui appelle la méthode est indiqué plus loin dans le didacticiel. Le code SignalR est asynchrone afin de fournir une scalabilité maximale.
 
 ## <a name="configure-signalr"></a>Configurer SignalR
 

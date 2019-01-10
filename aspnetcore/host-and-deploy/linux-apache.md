@@ -4,14 +4,14 @@ description: Découvrez comment configurer Apache comme serveur proxy inverse su
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/20/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 46cdb764b872e86f0fd7d19133aae14891bdd452
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 8c590743328885336498ca2446c618b13a7d2ce2
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862458"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997225"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -471,6 +471,7 @@ Vous pouvez utiliser *mod_ratelimit*, qui est inclus dans le module *httpd*, pou
 ```bash
 sudo nano /etc/httpd/conf.d/ratelimit.conf
 ```
+
 L’exemple de fichier limite la bande passante à 600 Ko/s sous l’emplacement racine :
 
 ```
@@ -481,6 +482,13 @@ L’exemple de fichier limite la bande passante à 600 Ko/s sous l’emplacement
     </Location>
 </IfModule>
 ```
+
+### <a name="long-request-header-fields"></a>Longs champs d'en-tête de demande
+
+Si l’application requiert des champs d’en-tête de demande dépassant la limite autorisée par défaut du serveur proxy (généralement 8190 octets), réglez la valeur de la directive [LimitRequestFieldSize](https://httpd.apache.org/docs/2.4/mod/core.html#LimitRequestFieldSize). La valeur à appliquer dépend du scénario. Pour plus d'informations, voir la documentation du serveur.
+
+> [!WARNING]
+> N’augmentez pas la valeur par défaut de `LimitRequestFieldSize` à moins que ce ne soit nécessaire. Son augmentation augmente le risque de dépassement de mémoire tampon (dépassement de capacité) et d’attaques par déni de service (DoS) par des utilisateurs malveillants.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 06/14/2018
 uid: fundamentals/app-state
-ms.openlocfilehash: ccaaa6fafd611c3cf35a9171d5bfd6100535eeb9
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: 2d9fe4fc7c69f23a903b4ada44e328ef140963db
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618127"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997303"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>État de session et d’application dans ASP.NET Core
 
@@ -64,6 +64,7 @@ L’état de session présente les comportements suivants :
 * L’application conserve une session pendant une période limitée après la dernière requête. L’application définit le délai d’expiration d’une session ou utilise la valeur par défaut de 20 minutes. L’état de session est idéal pour le stockage des données utilisateur qui sont propres à une session particulière, mais où les données ne nécessitent pas un stockage permanent entre les sessions.
 * Les données de session sont supprimées quand l’implémentation [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) est appelée ou quand la session expire.
 * Il n’existe aucun mécanisme par défaut permettant de signaler au code d’application qu’un navigateur client a été fermé ou que le cookie de session a été supprimé ou a expiré sur le client.
+Les modèles de pages ASP.NET Core MVC et Razor incluent la prise en charge du [Règlement général sur la protection des données (RGPD)](xref:security/gdpr). [Les cookies d’état de session ne sont pas essentiels](xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential), l’état de session ne fonctionne pas lorsque le suivi est désactivé.
 
 > [!WARNING]
 > Ne stockez pas de données sensibles dans l’état de session. L’utilisateur risque de ne pas fermer le navigateur et de ne pas effacer le cookie de session. Certains navigateurs conservent des cookies de session valides entre les fenêtres du navigateur. Une session n’est pas toujours limitée à un seul utilisateur ; l’utilisateur suivant risque donc de parcourir l’application avec le même cookie de session.

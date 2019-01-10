@@ -4,14 +4,14 @@ author: tdykstra
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.2.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/03/2018
+ms.date: 12/18/2018
 uid: aspnetcore-2.2
-ms.openlocfilehash: d0bb0698526e2f7af8f0e99b0393f3ce48657b34
-ms.sourcegitcommit: a3a15d3ad4d6e160a69614a29c03bbd50db110a2
+ms.openlocfilehash: 13d7dec834a5661b445b4fc0c0be8be9b7b41b9e
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52952055"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637727"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>Nouveautés d’ASP.NET Core 2.2
 
@@ -25,7 +25,7 @@ Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
-* [ASP.NET Core 2.2.0-preview1 : Analyseurs et conventions d’Open API](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
+* [ASP.NET Core 2.2.0-preview1: Analyseurs et conventions d’Open API](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
 
 ## <a name="problem-details-support"></a>Prise en charge des détails des problèmes
 
@@ -72,7 +72,7 @@ Dans les versions antérieures d’ASP.NET Core, les options de Kestrel sont con
 
 Dans les versions antérieures d’ASP.NET Core, IIS sert de proxy inverse. Dans la version 2.2, le module ASP.NET Core peut démarrer CoreCLR et héberger une application au sein du processus worker IIS (*w3wp.exe*). L’hébergement in-process offre des gains en matière de performances et de diagnostic lors de l’exécution avec IIS.
 
-Pour plus d’informations, consultez [Hébergement in-process d’IIS](xref:fundamentals/servers/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
+Pour plus d’informations, consultez [Hébergement in-process pour IIS](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model).
 
 ## <a name="signalr-java-client"></a>Client Java SignalR
 

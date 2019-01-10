@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: f53c303dc63e092f08e933fea79eb805523cde9b
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: bdb29c318c66ac884b9225ba8c2a0dfc1f364255
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861392"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637701"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -108,7 +108,7 @@ Dans `Program.Main`, effectuez les changements suivants :
 
   Si les conditions ne sont pas remplies (l’application est exécutée en tant que service) :
 
-  * Appelez <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseContentRoot*> et utilisez un chemin vers l’emplacement publié de l’application. N’appelez pas <xref:System.IO.Directory.GetCurrentDirectory*> pour obtenir le chemin d’accès car une application Windows Service retourne le dossier *C:\\WINDOWS\\system32* lorsque `GetCurrentDirectory` est appelée. Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).
+  * Appelez <xref:System.IO.Directory.SetCurrentDirectory*> et utilisez un chemin vers l’emplacement publié de l’application. N’appelez pas <xref:System.IO.Directory.GetCurrentDirectory*> pour obtenir le chemin d’accès car une application Windows Service retourne le dossier *C:\\WINDOWS\\system32* lorsque `GetCurrentDirectory` est appelée. Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).
   * Appelez <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> pour exécuter l’application en tant que service.
 
   Étant donné que le [fournisseur de configuration de ligne de commande](xref:fundamentals/configuration/index#command-line-configuration-provider) nécessite des paires nom/valeur pour les arguments de ligne de commande, le commutateur `--console` est supprimé des arguments avant que <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> ne les reçoive.
@@ -214,7 +214,7 @@ Dans l’exemple suivant pour l’exemple d’application :
 
 * Le service s’appelle **MyService**.
 * Le service publié réside dans le dossier *c:\\svc*. L’application exécutable s’appelle *SampleApp.exe*. Mettez la valeur `binPath` entre guillemets doubles (").
-* Le service s’exécute sous le compte `ServiceUser`. Remplacez `{DOMAIN}` par le nom de l’ordinateur local ou le domaine du compte d’utilisateur. Mettez la valeur `obj` entre guillemets doubles ("). Exemple : Si le système d’hébergement est un ordinateur local nommé `MairaPC`, définissez `obj` avec la valeur `"MairaPC\ServiceUser"`.
+* Le service s’exécute sous le compte `ServiceUser`. Remplacez `{DOMAIN}` par le nom de l’ordinateur local ou le domaine du compte d’utilisateur. Mettez la valeur `obj` entre guillemets doubles ("). Exemple : si le système d’hébergement est un ordinateur local nommé `MairaPC`, définissez `obj` avec la valeur `"MairaPC\ServiceUser"`.
 * Remplacez `{PASSWORD}` par le mot de passe du compte d’utilisateur. Mettez la valeur `password` entre guillemets doubles (").
 
 ```console
@@ -323,16 +323,16 @@ Le répertoire de travail actif retourné par l’appel à <xref:System.IO.Direc
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>Définir le dossier de l’application comme chemin d’accès racine du contenu
 
-<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> est le même chemin que celui fourni à l’argument `binPath` quand le service est créé. Au lieu d’appeler `GetCurrentDirectory` pour créer des chemins d’accès aux fichiers de paramètres, appelez <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.UseContentRoot*> en utilisant le chemin d’accès à la racine du contenu de l’application.
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> est le même chemin que celui fourni à l’argument `binPath` quand le service est créé. Au lieu d’appeler `GetCurrentDirectory` pour créer des chemins d’accès aux fichiers de paramètres, appelez <xref:System.IO.Directory.SetCurrentDirectory*> en utilisant le chemin d’accès à la racine du contenu de l’application.
 
 Dans `Program.Main`, définissez le chemin d’accès au dossier du fichier exécutable du service ainsi que le chemin d’accès pour établir la racine du contenu de l’application :
 
 ```csharp
 var pathToExe = Process.GetCurrentProcess().MainModule.FileName;
 var pathToContentRoot = Path.GetDirectoryName(pathToExe);
+Directory.SetCurrentDirectory(pathToContentRoot);
 
 CreateWebHostBuilder(args)
-    .UseContentRoot(pathToContentRoot)
     .Build()
     .RunAsService();
 ```

@@ -3,16 +3,15 @@ title: 'Tutoriel : Créer une API web avec ASP.NET Core MVC'
 author: rick-anderson
 description: Générer une API web avec ASP.NET Core MVC
 ms.author: riande
-monikerRange: '> aspnetcore-2.1'
 ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/10/2018
 uid: tutorials/first-web-api
-ms.openlocfilehash: 1af14b85cbaefc00fd97db7c721c4f9436a65fb2
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: c2b4dcddd5332330cd6e6abe7d3a12697cde845e
+ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121464"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53382002"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Tutoriel : Créer une API web avec ASP.NET Core MVC
 
@@ -23,7 +22,7 @@ Ce tutoriel décrit les principes fondamentaux liés à la génération d’une 
 Dans ce didacticiel, vous apprendrez à :
 
 > [!div class="checklist"]
-> * Créer un projet d’API web
+> * Créer un projet d’API web.
 > * Ajouter une classe de modèle
 > * Créer le contexte de base de données
 > * Inscrire le contexte de base de données
@@ -32,7 +31,7 @@ Dans ce didacticiel, vous apprendrez à :
 > * Configurer le routage et les chemins d’URL
 > * Spécifier des valeurs de retour
 > * Appeler l’API web avec Postman
-> * Appeler l’API web avec jQuery
+> * Appeler l’API web avec jQuery.
 
 À la fin, vous disposez d’une API web qui peut gérer des tâches stockées dans une base de données relationnelle.
 
@@ -77,7 +76,7 @@ Le diagramme suivant illustre la conception de l’application.
 
   Ces commandes créent un projet d’API web et ouvrent une nouvelle instance de Visual Studio Code dans le nouveau dossier de projet.
 
-* Quand une boîte de dialogue vous demande si vous souhaitez ajouter les composants nécessaires au projet, sélectionnez **Oui**
+* Quand une boîte de dialogue vous demande si vous souhaitez ajouter les composants nécessaires au projet, sélectionnez **Oui**.
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -240,7 +239,7 @@ Ces méthodes implémentent deux points de terminaison GET :
 * `GET /api/todo`
 * `GET /api/todo/{id}`
 
-Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Exemple :
+Testez l’application en appelant les deux points de terminaison à partir d’un navigateur. Par exemple :
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -359,7 +358,7 @@ Ajoutez la méthode `PutTodoItem` suivante :
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
-`PutTodoItem` est similaire à `PostTodoItem`, à la différence près qu’il utilise HTTP PUT. La réponse est [204 (Pas de contenu)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). D’après la spécification HTTP, une requête PUT nécessite que le client envoie toute l’entité mise à jour, et pas seulement les changements. Pour prendre en charge les mises à jour partielles, utilisez [HTTP PATCH](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute).
+`PutTodoItem` est similaire à `PostTodoItem`, à la différence près qu’il utilise HTTP PUT. La réponse est [204 (Pas de contenu)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). D’après la spécification HTTP, une requête PUT nécessite que le client envoie toute l’entité mise à jour, et pas seulement les changements. Pour prendre en charge les mises à jour partielles, utilisez [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).
 
 ### <a name="test-the-puttodoitem-method"></a>Tester la méthode PutTodoItem
 

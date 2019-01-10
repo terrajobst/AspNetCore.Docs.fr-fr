@@ -6,12 +6,12 @@ ms.author: riande
 monikerRange: '>= aspnetcore-2.2'
 ms.date: 12/3/2018
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 91fee1db820493be671fecaee3cfb4c1b7df8bd3
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 0915c525d5fb96a3d32f91fbd65a4e1f62ee28b8
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121361"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577862"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -114,16 +114,16 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **Pour Windows**, exécutez la commande suivante :
+* **Pour Windows 10** : Exécutez la commande suivante :
 
   ```console
-  dotnet aspnet-codegenerator razorpage -m Movie -dc MovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
   ```
 
-* **Pour macOS et Linux**, exécutez la commande suivante :
+* **Pour macOS et Linux** : Exécutez la commande suivante :
 
   ```console
-  dotnet aspnet-codegenerator razorpage -m Movie -dc MovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
+  dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries
   ```
 
 [!INCLUDE [explains scaffold gen params](~/includes/RP/model4.md)]
@@ -133,6 +133,11 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Ouvrez une fenêtre Commande dans le répertoire de projet (répertoire qui contient les fichiers *Program.cs*, *Startup.cs* et *.csproj*).
+* Installez l’outil de génération de modèles automatique :
+
+  ```console
+   dotnet tool install --global dotnet-aspnet-codegenerator
+   ```
 * Exécutez la commande suivante :
 
   ```console
@@ -147,7 +152,7 @@ Le processus de génération de modèles automatique crée et met à jour les fi
 
 ### <a name="files-created"></a>Fichiers créés
 
-* *Pages/Movies* : Create, Delete, Details, Edit, Index.
+* *Pages/Movies* : Create, Delete, Details, Edit, Index.
 * *Data/RazorPagesMovieContext.cs*
 
 ### <a name="file-updated"></a>Fichier mis à jour
@@ -197,7 +202,7 @@ Update-Database
 ---  
 <!-- End of VS tabs -->
 
-La commande `ef migrations add InitialCreate` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext` (dans le fichier *Models/RazorPagesMovieContext.cs*). L’argument `InitialCreate` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
+La commande `ef migrations add InitialCreate` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext` (dans le fichier *RazorPagesMovieContext.cs*). L’argument `InitialCreate` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
 
 La commande `ef database update` exécute la méthode `Up` dans le fichier *Migrations/\<horodatage>_InitialCreate.cs*. La méthode `Up` crée la base de données.
 
@@ -265,5 +270,5 @@ Vous avez manqué [l’étape des migrations](#pmc).
 Le prochain didacticiel décrit les fichiers créés par la génération de modèles automatique.
 
 > [!div class="step-by-step"]
-> [Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
+> [Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
 > [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)

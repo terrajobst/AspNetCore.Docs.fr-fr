@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: e280bc9553113982a1f1a77eabab32575c905237
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 9b3ad5f6c4b1c9b5f016f5591127c8d1b213948d
+ms.sourcegitcommit: 1ea1b4fc58055c62728143388562689f1ef96cb2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862289"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53329131"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Ajouter un nouveau champ à une page Razor dans ASP.NET Core
 
@@ -96,9 +96,13 @@ La commande `Add-Migration` indique au framework qu’il doit :
 
 Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
+La commande `Update-Database` demande à l’infrastructure d’appliquer les modifications de schéma à la base de données.
+
 <a name="ssox"></a>
 
-Si vous supprimez tous les enregistrements de la base de données, l’initialiseur amorce la base de données et inclut le champ `Rating`. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox). Pour supprimer la base de données à partir de SSOX
+Si vous supprimez tous les enregistrements de la base de données, l’initialiseur amorce la base de données et inclut le champ `Rating`. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de [Sql Server Object Explorer](xref:tutorials/razor-pages/sql#ssox).
+
+Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données dans SSOX :
 
 * Sélectionnez la base de données dans SSOX.
 * Cliquez avec le bouton droit sur la base de données, puis sélectionnez *Supprimer*.
@@ -111,12 +115,9 @@ Si vous supprimez tous les enregistrements de la base de données, l’initialis
   ```
 
 <!-- Code -------------------------->
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-<!-- copy/paste this tab to the next. Not worth an include  --> SQLite ne prend pas en charge les migrations.
-
-* Supprimez la base de données ou changez le nom de la base de données dans le fichier *appsettings.json*.
-* Supprimez le dossier *Migrations* (et tous les fichiers du dossier).
+<!-- copy/paste this tab to the next. Not worth an include  -->
 
 Exécutez les commandes CLI .NET Core suivantes :
 
@@ -125,20 +126,28 @@ dotnet ef migrations add Rating
 dotnet ef database update
 ```
 
-<!-- Mac -------------------------->
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+La commande `ef migrations add` indique au framework qu’il doit :
 
-SQLite ne prend pas en charge les migrations.
+* Comparer le modèle `Movie` au schéma de base de données `Movie`
+* Créer du code pour migrer le schéma de base de données vers le nouveau modèle
 
-* Supprimez la base de données ou changez le nom de la base de données dans le fichier *appsettings.json*.
-* Supprimez le dossier *Migrations* (et tous les fichiers du dossier).
+Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
 
-Exécutez les commandes CLI .NET Core suivantes :
+La commande `ef database update` demande à l’infrastructure d’appliquer les modifications de schéma à la base de données.
+
+Si vous supprimez tous les enregistrements de la base de données, l’initialiseur amorce la base de données et inclut le champ `Rating`. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de l’outil SQLite.
+
+Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Exécutez ensuite la commande `ef database update` : 
 
 ```console
-dotnet ef migrations add Rating
 dotnet ef database update
 ```
+
+> [!NOTE]
+> Plusieurs opérations de modification de schéma ne sont pas prises en charge par le fournisseur EF Core SQLite. Par exemple, l’ajout d’une colonne est pris en charge, mais pas sa suppression. Si vous ajoutez une migration pour supprimer une colonne, la commande `ef migrations add` réussit mais la commande `ef database update` échoue. Vous pouvez contourner certaines limitations en écrivant manuellement du code de migration pour effectuer une reconstruction de la table. Une reconstruction de la table implique la modification du nom de la table existante, la création d’une nouvelle table, la copie des données vers la nouvelle table et la suppression de l’ancienne table. Pour plus d'informations, reportez-vous aux ressources suivantes :
+> * [Limites d’un fournisseur de base de données EF Core SQLite](/ef/core/providers/sqlite/limitations)
+> * [Personnaliser le code de migration](/ef/core/managing-schemas/migrations/#customize-migration-code)
+> * [Amorçage des données](/ef/core/modeling/data-seeding)
 
 ---  
 <!-- End of VS tabs -->
@@ -146,5 +155,5 @@ dotnet ef database update
 Exécutez l’application et vérifiez que vous pouvez créer/modifier/afficher des films avec un champ `Rating`. Si la base de données n’est pas amorcée, définissez un point d’arrêt dans la méthode `SeedData.Initialize`.
 
 > [!div class="step-by-step"]
-> [Précédent : Ajout de la recherche](xref:tutorials/razor-pages/search)
+> [Précédent : Ajout d’une fonction de recherche](xref:tutorials/razor-pages/search)
 > [Suivant : Ajout de la validation](xref:tutorials/razor-pages/validation)

@@ -4,14 +4,14 @@ author: zuckerthoben
 description: Découvrez comment utiliser NSwag pour générer des pages d’aide et de documentation pour une API web ASP.NET Core.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 09/20/2018
+ms.date: 12/18/2018
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 6c7d76e2202bf47c8d3e5d296e64e9e8c820e2a1
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 8af5bed1e042c4f6d83043b05084c51b3064a548
+ms.sourcegitcommit: ea215df889e89db44037a6ac2f01baede0450da9
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207847"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53595358"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>Bien démarrer avec NSwag et ASP.NET Core
 
@@ -280,9 +280,11 @@ NSwag utilise la [réflexion](/dotnet/csharp/programming-guide/concepts/reflecti
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-L’action précédente retourne `ActionResult<T>`, mais à l’intérieur de l’action, [CreatedAtRoute](/dotnet/api/system.web.http.apicontroller.createdatroute) est retourné. Étant donné que le contrôleur est décoré avec l’attribut [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute), une réponse [BadRequest](/dotnet/api/system.web.http.apicontroller.badrequest) est également possible. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses). Les annotations de données sont utilisées pour indiquer aux clients les codes d’état HTTP que cette action est susceptible de retourner. Décorez l’action avec les attributs suivants :
+L’action précédente retourne `ActionResult<T>`. À l’intérieur de l’action, il retourne [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*). Étant donné que le contrôleur est décoré avec l’attribut [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute), une réponse [BadRequest](xref:System.Web.Http.ApiController.BadRequest*) est également possible. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses). Les annotations de données sont utilisées pour indiquer aux clients les codes d’état HTTP que cette action est susceptible de retourner. Décorez l’action avec les attributs suivants :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
+
+Dans ASP.NET Core 2.2 ou une version ultérieure, les conventions peuvent être utilisées comme alternatives à la décoration explicites des actions individuelles avec `[ProducesResponseType]`. Pour plus d'informations, consultez <xref:web-api/advanced/conventions>.
 
 ::: moniker-end
 

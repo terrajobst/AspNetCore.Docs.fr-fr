@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: 34c7238b689993245e033625dcd0e728b7c45163
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: b66d20a46b29b6975512026fa940f7f9e50deeb5
+ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121698"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53425131"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 
@@ -65,7 +65,7 @@ Le style de l’interface utilisateur de ce site est proche de ce qui est géné
 * Créez une application web ASP.NET Core. Nommez le projet **ContosoUniversity**. Il est important de nommer le projet *ContosoUniversity* afin que les espaces de noms correspondent quand le code est copié/collé.
 * Sélectionnez **ASP.NET Core 2.1** dans la liste déroulante, puis sélectionnez **Application web**.
 
-Pour les images des étapes précédentes, consultez [Créer une application web Razor](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-web-app).
+Pour les images des étapes précédentes, consultez [Créer une application web Razor](xref:tutorials/razor-pages/razor-pages-start#create-a-razor-pages-web-app).
 Exécutez l’application.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -114,7 +114,7 @@ Créez un dossier *Models*. Dans le dossier *Models*, créez un fichier de class
 
 La propriété `ID` devient la colonne de clé primaire de la table de base de données qui correspond à cette classe. Par défaut, EF Core interprète une propriété nommée `ID` ou `classnameID` comme clé primaire. Dans `classnameID`, `classname` est le nom de la classe. L’autre clé primaire reconnue automatiquement est `StudentID` dans l’exemple précédent.
 
-La propriété `Enrollments` est une [propriété de navigation](/ef/core/modeling/relationships). Les propriétés de navigation établissent des liaisons à d’autres entités qui sont associées à cette entité. Ici, la propriété `Enrollments` d’un `Student entity` contient toutes les entités `Enrollment` associées à ce `Student`. Par exemple, si une ligne Student dans la base de données a deux lignes Enrollment associées, la propriété de navigation `Enrollments` contient ces deux entités `Enrollment`. Une ligne `Enrollment` associée est une ligne qui contient la valeur de clé primaire de cette étudiant dans la colonne `StudentID`. Par exemple, supposez que l’étudiant avec ID=1 a deux lignes dans la table `Enrollment`. La table `Enrollment` a deux lignes avec `StudentID` = 1. `StudentID` est une clé étrangère dans la table `Enrollment` qui spécifie l’étudiant dans la table `Student`.
+La propriété `Enrollments` est une [propriété de navigation](/ef/core/modeling/relationships). Les propriétés de navigation établissent des liaisons à d’autres entités qui sont associées à cette entité. Ici, la propriété `Enrollments` d’un `Student entity` contient toutes les entités `Enrollment` associées à ce `Student`. Par exemple, si une ligne Student dans la base de données a deux lignes Enrollment associées, la propriété de navigation `Enrollments` contient ces deux entités `Enrollment`. Une ligne `Enrollment` associée est une ligne qui contient la valeur de clé primaire de cet étudiant dans la colonne `StudentID`. Par exemple, supposez que l’étudiant avec ID=1 a deux lignes dans la table `Enrollment`. La table `Enrollment` a deux lignes avec `StudentID` = 1. `StudentID` est une clé étrangère dans la table `Enrollment` qui spécifie l’étudiant dans la table `Student`.
 
 Si une propriété de navigation peut contenir plusieurs entités, la propriété de navigation doit être un type de liste, tel que `ICollection<T>`. Vous pouvez spécifier `ICollection<T>`, ou un type tel que `List<T>` ou `HashSet<T>`. Quand vous utilisez `ICollection<T>`, EF Core crée une collection `HashSet<T>` par défaut. Les propriétés de navigation qui contiennent plusieurs entités proviennent de relations plusieurs-à-plusieurs et un-à-plusieurs.
 
@@ -191,7 +191,7 @@ Le processus de génération de modèles automatique a créé et changé les fic
 ### <a name="file-updates"></a>Mises à jour du fichier
 
 * *Startup.cs* : Les changements apportés à ce fichier sont détaillés dans la section suivante.
-* *appSettings.JSON* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.
+* *appsettings.json* : La chaîne de connexion utilisée pour se connecter à une base de données locale est ajoutée.
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>Examiner le contexte inscrit avec l’injection de dépendances
 
@@ -217,7 +217,7 @@ Le code suivant montre le fichier *Program.cs* mis à jour.
 
 [!code-csharp[](intro/samples/cu21/Program.cs?name=snippet)]
 
-`EnsureCreated` garantit que la base de données existe pour le contexte. Si elle existe, aucune action n’est effectuée. Si elle n’existe pas, la base de données et tous ses schéma sont créés. `EnsureCreated` n’utilise pas de migrations pour créer la base de données. Une base de données créée avec `EnsureCreated` ne peut pas être mise à jour à l’aide de migrations par la suite.
+`EnsureCreated` garantit que la base de données existe pour le contexte. Si elle existe, aucune action n’est effectuée. Si elle n’existe pas, la base de données et tous ses schémas sont créés. `EnsureCreated` n’utilise pas de migrations pour créer la base de données. Une base de données créée avec `EnsureCreated` ne peut pas être mise à jour à l’aide de migrations par la suite.
 
 `EnsureCreated` est appelée au démarrage de l’application, ce qui active le flux de travail suivant :
 

@@ -2,17 +2,16 @@
 title: Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
 author: ssougnez
 description: Dans ce tutoriel, vous configurez Webpack pour regrouper et générer une application web ASP.NET Core SignalR dont le client est écrit en TypeScript.
-monikerRange: '>= aspnetcore-2.2'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 11/30/2018
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: b2d59dfc449953cc2d747b507295c00ac0f652dd
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 92709beb7a99289b8639135aab9d821937825103
+ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862250"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335284"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
 
@@ -103,9 +102,9 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
     Explication des scripts :
 
-    * `build` : Regroupe vos ressources côté client en mode de développement et surveille les changements de fichier. L’observateur de fichiers force la regénération du regroupement chaque fois qu’un fichier projet change. L’option `mode` désactive les optimisations de production, comme la minimisation de l’arborescence (tree shaking). Utilisez uniquement `build` dans le développement.
-    * `release` : Regroupe vos ressources côté client en mode de production.
-    * `publish` : Exécute le script `release` pour regrouper les ressources côté client en mode de production. La commande appelle la commande [publish](/dotnet/core/tools/dotnet-publish) de CLI .NET Core pour publier l’application.
+    * `build`: Regroupe vos ressources côté client en mode de développement et surveille les changements de fichier. L’observateur de fichiers force la regénération du regroupement chaque fois qu’un fichier projet change. L’option `mode` désactive les optimisations de production, comme la minimisation de l’arborescence (tree shaking). Utilisez uniquement `build` dans le développement.
+    * `release`: Regroupe vos ressources côté client en mode de production.
+    * `publish`: Exécute le script `release` pour regrouper les ressources côté client en mode de production. La commande appelle la commande [publish](/dotnet/core/tools/dotnet-publish) de CLI .NET Core pour publier l’application.
 
 1. Créez un fichier nommé *webpack.config.js* à la racine du projet avec le contenu suivant :
 
@@ -144,8 +143,8 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 
     Le code TypeScript précédent récupère les références aux éléments DOM et joint deux gestionnaires d’événements :
 
-    * `keyup` : Cet événement se déclenche quand l’utilisateur tape des données dans la zone de texte identifiée comme `tbMessage`. La fonction `send` est appelée quand l’utilisateur appuie sur la touche **Entrée**.
-    * `click` : Cet événement se déclenche quand l’utilisateur clique sur le bouton **Envoyer**. La fonction `send` est appelée.
+    * `keyup`: Cet événement se déclenche quand l’utilisateur tape des données dans la zone de texte identifiée comme `tbMessage`. La fonction `send` est appelée quand l’utilisateur appuie sur la touche **Entrée**.
+    * `click`: Cet événement se déclenche quand l’utilisateur clique sur le bouton **Envoyer**. La fonction `send` est appelée.
 
 ## <a name="configure-the-aspnet-core-app"></a>Configurer l’application ASP.NET Core
 

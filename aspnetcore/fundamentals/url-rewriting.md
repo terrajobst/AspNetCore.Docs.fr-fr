@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez la réécriture et la redirection d’URL avec l’intergiciel (middleware) de réécriture d’URL dans les applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/18/2018
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 84052789717738a48c346d35d1a2642017a9ab93
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: d2dd5e9b7f196bcbd1940f7ef58331dabd2367a1
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861912"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637805"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Intergiciel (middleware) de réécriture d’URL dans ASP.NET Core
 
@@ -56,7 +56,7 @@ Lors de la redirection des requêtes vers une URL différente, indiquez si la re
 
 * Le code d’état *302 - Trouvé* est utilisé quand la redirection est temporaire ou généralement susceptible d’être modifiée. Le code d’état 302 indique au client de ne pas stocker l’URL et de ne plus l’utiliser.
 
-Pour plus d’informations sur les codes d’état, consultez [RFC 2616: Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+Pour plus d’informations sur les codes d’état, consultez [RFC 2616 : Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 Une *réécriture d’URL* est une opération côté serveur qui fournit une ressource à partir d’une adresse de ressource différente de celle demandée par le client. La réécriture d’URL ne nécessite pas d’aller-retour avec le serveur. L’URL réécrite n’est pas retournée au client et n’apparaît pas dans la barre d’adresse du navigateur.
 
@@ -78,7 +78,7 @@ Utilisez le middleware de réécriture d’URL quand vous ne pouvez pas utiliser
 * [Module mod_rewrite Apache sur Apache Server](https://httpd.apache.org/docs/2.4/rewrite/)
 * [URL de réécriture sur Nginx](https://www.nginx.com/blog/creating-nginx-rewrite-rules/)
 
-Utilisez aussi le middleware quand l’application est hébergée sur le [serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement appelé [WebListener](xref:fundamentals/servers/weblistener)).
+Utilisez aussi le middleware quand l’application est hébergée sur le [serveur HTTP.sys](xref:fundamentals/servers/httpsys) (anciennement appelé WebListener).
 
 Les principales raisons d’utiliser les technologies de réécriture d’URL basée sur le serveur dans IIS, Apache et Nginx sont les suivantes :
 

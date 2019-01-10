@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment créer une application web ASP.NET Core à l’aide de Visual Studio et comment la déployer sur Azure App Service en utilisant Git pour le déploiement continu.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/14/2016
+ms.date: 12/06/2018
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 5ae8ce01610828417fc76ed6626e518c8493bd0f
-ms.sourcegitcommit: 57eccdea7d89a62989272f71aad655465f1c600a
+ms.openlocfilehash: e12c2ee0b78db105b431770e8644e7d19d915765
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44340197"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284424"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>Déploiement continu sur Azure avec Visual Studio et Git avec ASP.NET Core
 
@@ -71,7 +71,7 @@ Les étapes suivantes permettent de créer une application web dans le portail A
 
 1. Sélectionnez **Web + Mobile** > **Application Web**.
 
-   ![Portail Microsoft Azure : Nouveau bouton Web + Mobile sous Place de marché - Bouton Application Web sous Applications à la une](azure-continuous-deployment/_static/05-azure-newwebapp.png)
+   ![Portail Microsoft Azure : Nouveau bouton : Web + Mobile sous Place de marché : Bouton Application Web sous Applications proposées](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
 1. Dans le panneau **Application web**, entrez une valeur unique pour le **Nom App Service**.
 
@@ -98,7 +98,7 @@ GIT est un système de gestion de versions distribué qui permet de déployer un
 
 1. Dans le panneau **Déploiement**, sélectionnez **Options de déploiement** > **Choisir une source** > **Référentiel Git local**.
 
-   ![Panneau Paramètres : Panneau Source de déploiement : Panneau Choisir une source](azure-continuous-deployment/_static/deployment-options.png)
+   ![Panneau Paramètres : Panneau Source de déploiement : Choisir le panneau source](azure-continuous-deployment/_static/deployment-options.png)
 
 1. Sélectionnez **OK**.
 
@@ -184,7 +184,7 @@ Vérifiez que le transfert de l’application web à partir de l’environnement
 
 Dans le [portail Azure](https://portal.azure.com), sélectionnez l’application web. Sélectionnez **Déploiement** > **Options de déploiement**.
 
-![Portail Azure : Panneau Paramètres : Panneau Déploiements montrant la réussite du déploiement](azure-continuous-deployment/_static/13-verify-deployment.png)
+![Portail Azure : Panneau Paramètres : Panneau Déploiements montrant la réussite du déploiement](azure-continuous-deployment/_static/13-verify-deployment.png)
 
 ## <a name="run-the-app-in-azure"></a>Exécuter l’application dans Azure
 
@@ -230,3 +230,4 @@ Affichez l’application web mise à jour en sélectionnant **Parcourir** dans l
 
 * [Créer son premier pipeline avec Azure Pipelines](/azure/devops/pipelines/get-started-yaml)
 * [Projet Kudu](https://github.com/projectkudu/kudu/wiki)
+* <xref:host-and-deploy/visual-studio-publish-profiles>

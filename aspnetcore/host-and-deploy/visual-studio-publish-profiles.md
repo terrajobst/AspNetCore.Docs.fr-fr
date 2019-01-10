@@ -4,30 +4,36 @@ author: rick-anderson
 description: Découvrez comment créer des profils de publication dans Visual Studio et les utiliser pour gérer les déploiements d’applications ASP.NET Core sur différentes cibles.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/06/2018
 uid: host-and-deploy/visual-studio-publish-profiles
-ms.openlocfilehash: 3e626f99b06b0343360d6c46447e357890433dda
-ms.sourcegitcommit: 54655f1e1abf0b64d19506334d94cfdb0caf55f6
+ms.openlocfilehash: 3d24cd2cd4697e8e7cf7e4bdf4d076a09b6a6a23
+ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50148926"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53284706"
 ---
 # <a name="visual-studio-publish-profiles-for-aspnet-core-app-deployment"></a>Profils de publication Visual Studio pour le déploiement d’applications ASP.NET Core
 
 De [Sayed Ibrahim Hashimi](https://github.com/sayedihashimi) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce document est axé sur l’utilisation de Visual Studio 2017 pour créer et utiliser des profils de publication. Les profils de publication créées avec Visual Studio peuvent être exécutés à partir de MSBuild et Visual Studio 2017. Consultez [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour obtenir des instructions de publication sur Azure.
+::: moniker range="<= aspnetcore-1.1"
+
+Pour obtenir la version 1.1 de cette rubrique, téléchargez les [profils de publication Visual Studio pour un déploiement d’application ASP.NET Core (version 1.1, PDF)](https://webpifeed.blob.core.windows.net/webpifeed/Partners/VS_Publish_Profiles_1.1.pdf).
+
+::: moniker-end
+
+Ce document est axé sur l’utilisation de Visual Studio 2017 ou d’une version ultérieure pour créer et utiliser des profils de publication. Les profils de publication créés avec Visual Studio peuvent être exécutés à partir de MSBuild et Visual Studio. Consultez [Publier une application web ASP.NET Core sur Azure App Service à l’aide de Visual Studio](xref:tutorials/publish-to-azure-webapp-using-vs) pour obtenir des instructions de publication sur Azure.
 
 Le fichier projet suivant a été créé avec la commande `dotnet new mvc` :
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.2"
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,37 +45,17 @@ Le fichier projet suivant a été créé avec la commande `dotnet new mvc` :
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.0"
+::: moniker range="< aspnetcore-2.2"
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
-  </ItemGroup>
-
-</Project>
-```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.8" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>
@@ -113,7 +99,7 @@ La liste d’éléments `Content` contient des fichiers qui sont publiés en plu
 Quand vous sélectionnez le bouton **Publier** dans Visual Studio ou quand vous publiez à partir de la ligne de commande :
 
 * Les éléments/propriétés sont calculés (il s’agit des fichiers nécessaires à la génération).
-* **Visual Studio uniquement** : les packages NuGet sont restaurés. (La restauration doit être explicite par l’utilisateur sur l’interface CLI.)
+* **Visual Studio uniquement** : Les packages NuGet sont restaurés. (La restauration doit être explicite par l’utilisateur sur l’interface CLI.)
 * Le projet est généré.
 * Les éléments de publication sont calculés (il s’agit des fichiers nécessaires à la publication).
 * Le projet est publié (les fichiers calculés sont copiés sur la destination de publication).
@@ -122,7 +108,7 @@ Quand un projet ASP.NET Core référence `Microsoft.NET.Sdk.Web` dans le fichier
 
 ## <a name="basic-command-line-publishing"></a>Publication de base à partir d’une ligne de commande
 
-La publication à partir d’une ligne de commande fonctionne sur toutes les plateformes .NET Core prises en charge et ne nécessite pas Visual Studio. Dans les exemples ci-dessous, la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) est exécutée à partir du répertoire du projet (qui contient le fichier *.csproj*). Si le dossier actuel n’est pas le dossier du projet, transmettez explicitement le chemin du fichier projet. Exemple :
+La publication à partir d’une ligne de commande fonctionne sur toutes les plateformes .NET Core prises en charge et ne nécessite pas Visual Studio. Dans les exemples ci-dessous, la commande [dotnet publish](/dotnet/core/tools/dotnet-publish) est exécutée à partir du répertoire du projet (qui contient le fichier *.csproj*). Si le dossier actuel n’est pas le dossier du projet, transmettez explicitement le chemin du fichier projet. Par exemple :
 
 ```console
 dotnet publish C:\Webs\Web1
@@ -130,24 +116,10 @@ dotnet publish C:\Webs\Web1
 
 Exécutez les commandes suivantes pour créer et publier une application web :
 
-::: moniker range=">= aspnetcore-2.0"
-
 ```console
 dotnet new mvc
 dotnet publish
 ```
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-```console
-dotnet new mvc
-dotnet restore
-dotnet publish
-```
-
-::: moniker-end
 
 La commande [dotnet publish](/dotnet/core/tools/dotnet-publish) produit un résultat similaire au suivant :
 
@@ -174,7 +146,7 @@ La commande [dotnet publish](/dotnet/core/tools/dotnet-publish) appelle MSBuild,
 
 Les propriétés MSBuild peuvent être passées à l’aide de l’un des formats suivants :
 
-* ` p:<NAME>=<VALUE>`
+* `p:<NAME>=<VALUE>`
 * `/p:<NAME>=<VALUE>`
 
 La commande suivante publie une build `Release` sur un partage réseau :
@@ -187,12 +159,12 @@ Vérifiez que l’application publiée pour le déploiement n’est pas en cours
 
 ## <a name="publish-profiles"></a>Profils de publication
 
-Cette section utilise Visual Studio 2017 pour créer un profil de publication. Une fois le profil créé, la publication à partir de Visual Studio ou de la ligne de commande est disponible.
+Cette section utilise Visual Studio 2017 ou une version ultérieure pour créer un profil de publication. Une fois le profil créé, la publication à partir de Visual Studio ou de la ligne de commande est disponible.
 
 Les profils de publication peuvent simplifier le processus de publication, et n’importe quel nombre de profils peut exister. Créez un profil de publication dans Visual Studio en choisissant l’une des méthodes suivantes :
 
 * Cliquez avec le bouton droit sur le projet dans l’Explorateur de solutions, puis sélectionnez **Publier**.
-* Sélectionner **Publier &lt;nom_projet&gt;** dans le menu **Générer**.
+* Sélectionner **Publier {NOM DU PROJET}** dans le menu **Générer**.
 
 L’onglet **Publier** de la page de capacités d’application s’affiche. Si le projet n’a pas de profil de publication, la page suivante s’affiche :
 
@@ -214,11 +186,11 @@ L’Assistant Publication prend en charge les cibles de publication suivantes :
 
 Consultez [Quelles options de publication choisir ?](/visualstudio/ide/not-in-toc/web-publish-options) pour plus d’informations.
 
-Quand vous créez un profil de publication avec Visual Studio, un fichier MSBuild *Properties/PublishProfiles/&lt;nom_profil&gt;.pubxml* est créé. Le fichier *.pubxml* est un fichier MSBuild qui contient des paramètres de configuration de publication. Vous pouvez changer ce fichier pour personnaliser le processus de génération et de publication. Ce fichier est lu par le processus de publication. `<LastUsedBuildConfiguration>` est spéciale, car il s’agit d’une propriété globale qui ne doit être dans aucun fichier importé dans la build. Pour plus d’informations, consultez [MSBuild: how to set the configuration property](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx) (Comment définir la propriété de configuration).
+Quand vous créez un profil de publication avec Visual Studio, un fichier MSBuild *Properties/PublishProfiles/{NOM DU PROFIL}.pubxml* est créé. Le fichier *.pubxml* est un fichier MSBuild qui contient des paramètres de configuration de publication. Vous pouvez changer ce fichier pour personnaliser le processus de génération et de publication. Ce fichier est lu par le processus de publication. `<LastUsedBuildConfiguration>` est spéciale, car il s’agit d’une propriété globale qui ne doit être dans aucun fichier importé dans la build. Pour plus d’informations, consultez [MSBuild: how to set the configuration property](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx) (Comment définir la propriété de configuration).
 
 Dans le cas d’une publication sur une cible Azure, le fichier *.pubxml* contient l’identificateur de votre abonnement Azure. Avec ce type de cible, nous vous déconseillons d’ajouter ce fichier au contrôle de code source. Dans le cas d’une publication sur une cible non-Azure, nous vous recommandons d’archiver le fichier *.pubxml*.
 
-Les informations sensibles (telles que le mot de passe de publication) sont chiffrées par utilisateur/machine. Elles sont stockées dans le fichier *Properties/PublishProfiles/&lt;nom_profil&gt;.pubxml.user*. Ce fichier pouvant stocker des informations sensibles, il ne doit pas être archivé dans le contrôle de code source.
+Les informations sensibles (telles que le mot de passe de publication) sont chiffrées par utilisateur/machine. Elles sont stockées dans le fichier *Properties/PublishProfiles/{NOM DU PROFIL}.pubxml.user*. Ce fichier pouvant stocker des informations sensibles, il ne doit pas être archivé dans le contrôle de code source.
 
 Pour obtenir une vue d’ensemble expliquant comment publier une application web sur ASP.NET Core, consultez [Héberger et déployer](xref:host-and-deploy/index). Les tâches et cibles MSBuild nécessaires pour publier une application ASP.NET Core sont disponibles au format open source à l’adresse https://github.com/aspnet/websdk.
 
@@ -270,7 +242,7 @@ dotnet publish /p:PublishProfile=Azure /p:Configuration=Release
 Définissez les propriétés MSBuild suivantes lors de l’utilisation d’un profil de publication :
 
 * `DeployOnBuild=true`
-* `PublishProfile=<Publish profile name>`
+* `PublishProfile={PUBLISH PROFILE}`
 
 Pendant la publication avec un profil nommé *FolderProfile*, l’une des commandes ci-dessous peut être exécutée :
 
@@ -321,34 +293,49 @@ msbuild /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderP
 
 ## <a name="publish-to-an-msdeploy-endpoint-from-the-command-line"></a>Publier sur un point de terminaison MSDeploy à partir de la ligne de commande
 
-La publication peut être accomplie à l’aide de CLI .NET Core ou de MSBuild. `dotnet publish` s’exécute dans le contexte de .NET Core. La commande `msbuild` nécessite le .NET Framework, qui la limite aux environnements Windows.
+L’exemple suivant utilise une application web ASP.NET Core créée par Visual Studio et nommée *AzureWebApp*. Un profil de publication Azure Apps est ajouté avec Visual Studio. Pour plus d’informations sur la création d’un profil, consultez la section [profils de publication](#publish-profiles).
 
-Pour publier avec MSDeploy, le plus simple est d’abord de créer un profil de publication dans Visual Studio 2017, puis d’utiliser le profil à partir de la ligne de commande.
+Pour déployer l’application à l’aide d’un profil de publication, exécutez la `msbuild` commande à partir d’une **invite de commandes développeur** Visual Studio. L’invite de commandes est disponible dans le dossier *Visual Studio* du menu **Démarrer** sur la barre des tâches Windows. Pour en faciliter accès, vous pouvez ajouter à l’invite de commandes au menu **Outils** dans Visual Studio. Pour plus d’informations, consultez [Invite de commandes développeur pour Visual Studio](/dotnet/framework/tools/developer-command-prompt-for-vs#run-the-command-prompt-from-inside-visual-studio).
 
-Dans l’exemple suivant, une application web ASP.NET Core est créée (à l’aide de `dotnet new mvc`), et un profil de publication Azure est ajouté avec Visual Studio.
-
-Exécutez `msbuild` à partir d’une **Invite de commandes développeur pour VS 2017**. L’Invite de commandes développeur a le bon *msbuild.exe* dans son chemin avec certaines variables MSBuild définies.
-
-MSBuild utilise la syntaxe suivante :
+MSBuild utilise la syntaxe de commande suivante :
 
 ```console
-msbuild <path-to-project-file> /p:DeployOnBuild=true /p:PublishProfile=<Publish Profile> /p:Username=<USERNAME> /p:Password=<PASSWORD>
+msbuild {PATH} 
+    /p:DeployOnBuild=true 
+    /p:PublishProfile={PROFILE} 
+    /p:Username={USERNAME} 
+    /p:Password={PASSWORD}
 ```
 
-Obtenez `Password` à partir du fichier *\<nom_publication>.PublishSettings*. Téléchargez le fichier *.PublishSettings* à partir d’un des emplacements suivants :
+* {PATH} &ndash; Chemin d’accès vers le fichier de projet de l’application.
+* {PROFILE} &ndash; Nom du profil de publication.
+* {USERNAME} &ndash; Nom d’utilisateur MSDeploy. {USERNAME} figure dans le profil de publication.
+* {PASSWORD} &ndash; Mot de passe MSDeploy. Obtenez le {PASSWORD} à partir du fichier *{PROFILE}. PublishSettings*. Téléchargez le fichier *.PublishSettings* à partir d’un des emplacements suivants :
+  * Explorateur de solutions : Sélectionnez **Vue** > **Cloud Explorer**. Connectez-vous avec votre abonnement Azure. Ouvrez **App Services**. Faites un clic droit sur l’application. Sélectionnez **Télecharger un profil de publication**.
+  * Portail Azure : cliquez sur **Obtenir le profil de publication** dans le panneau **Vue d’ensemble** de l’application web.
 
-* Explorateur de solutions : cliquez avec le bouton droit sur l’application web et sélectionnez **Télécharger le profil de publication**.
-* Portail Azure : cliquez sur **Obtenir le profil de publication** dans le panneau **Vue d’ensemble** de l’application web.
-
-`Username` figure dans le profil de publication.
-
-L’exemple suivant utilise le profil de publication *Web11112 - Web Deploy* :
+L’exemple suivant utilise un profil de publication nommé *AzureWebApp - Web Deploy*:
 
 ```console
-msbuild "C:\Webs\Web1\Web1.csproj" /p:DeployOnBuild=true
- /p:PublishProfile="Web11112 - Web Deploy"  /p:Username="$Web11112"
- /p:Password="<password removed>"
+msbuild "AzureWebApp.csproj" 
+    /p:DeployOnBuild=true 
+    /p:PublishProfile="AzureWebApp - Web Deploy" 
+    /p:Username="$AzureWebApp" 
+    /p:Password=".........."
 ```
+
+Un profil de publication peut également être utilisé avec la commande [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) de l’interface CLI .NET Core depuis une invite de commandes Windows :
+
+```console
+dotnet msbuild "AzureWebApp.csproj"
+    /p:DeployOnBuild=true 
+    /p:PublishProfile="AzureWebApp - Web Deploy" 
+    /p:Username="$AzureWebApp" 
+    /p:Password=".........."
+```
+
+> [!NOTE]
+> La commande [dotnet msbuild](/dotnet/core/tools/dotnet-msbuild) est multiplateforme et peut compiler des applications ASP.NET Core sur macOS et Linux. Toutefois, MSBuild sur macOS et Linux n’est pas capable de déployer une application dans Azure ou un autre point de terminaison MSDeploy. MSDeploy est disponible uniquement sur Windows.
 
 ## <a name="exclude-files"></a>Exclure des fichiers
 
@@ -510,7 +497,7 @@ Ajoutez la propriété `<AllowUntrustedCertificate>` avec la valeur `True` au pr
 
 ## <a name="the-kudu-service"></a>Le service Kudu
 
-Pour afficher les fichiers dans un déploiement d’application web Azure App Service, utilisez le [service Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Ajoutez le jeton `scm` au nom de l’application web. Exemple :
+Pour afficher les fichiers dans un déploiement d’application web Azure App Service, utilisez le [service Kudu](https://github.com/projectkudu/kudu/wiki/Accessing-the-kudu-service). Ajoutez le jeton `scm` au nom de l’application web. Par exemple :
 
 | URL                                    | Résultat       |
 | -------------------------------------- | ------------ |

@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment diagnostiquer les problèmes liés aux déploiements ASP.NET Core sur Azure App Service.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 05bb024f5b0d2b554cc861c250a92fd7ae23437f
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: b36c321c6ba6801a32b5187651063337b4533fd1
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090743"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637649"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
 
@@ -19,14 +19,14 @@ Par [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
-Cet article donne des instructions pour diagnostiquer un problème de démarrage de l’application ASP.NET Core avec les outils de diagnostic d’Azure App Service. Pour des conseils de dépannage supplémentaires, voir [Vue d’ensemble des diagnostics d’Azure App Service](/azure/app-service/app-service-diagnostics) et [Guide pratique : effectuer le monitoring des applications dans Azure App Service](/azure/app-service/web-sites-monitor) dans la documentation Azure.
+Cet article donne des instructions pour diagnostiquer un problème de démarrage de l’application ASP.NET Core avec les outils de diagnostic d’Azure App Service. Pour obtenir des conseils de dépannage supplémentaires, consultez [Vue d’ensemble des diagnostics Azure App Service](/azure/app-service/app-service-diagnostics) et [Comment : Surveiller des applications dans Azure App Service](/azure/app-service/web-sites-monitor) dans la documentation Azure.
 
 ## <a name="app-startup-errors"></a>Erreurs de démarrage de l’application
 
 **Échec de processus 502.5**  
 Le processus de travail échoue. L’application ne démarre pas.
 
-Le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) tente, en vain, de démarrer le processus de travail. Un examen du Journal des événements de l’application permet souvent de résoudre ce type de problème. L’accès au journal est expliqué dans la section [Journal des événements de l’application](#application-event-log).
+Le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) tente, en vain, de démarrer le processus de travail. Un examen du Journal des événements de l’application permet souvent de résoudre ce type de problème. L’accès au journal est expliqué dans la section [Journal des événements de l’application](#application-event-log).
 
 La page d’erreur *Échec de processus 502.5* est retournée quand une application mal configurée provoque l’échec du processus de travail :
 
@@ -182,4 +182,4 @@ Pour plus d’informations, voir [Activer la journalisation des diagnostics pour
 * [Résoudre les problèmes de performances d’une application web lente dans Azure App Service](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
 * [FAQ sur les performances des applications web dans Azure](/azure/app-service/app-service-web-availability-performance-application-issues-faq)
 * [Bac à sable des applications web Azure (limitations de l’exécution du runtime App Service)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)
-* [Azure Friday: Azure App Service Diagnostic and Troubleshooting Experience (12-minute video)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Azure Friday : Azure App Service Diagnostic and Troubleshooting Experience (vidéo de 12 minutes)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)

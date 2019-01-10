@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment le routage ASP.NET Core est responsable du mappage des URI des requêtes aux sélecteurs de point de terminaison et de la distribution des requêtes entrantes entre les points de terminaison.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 12/29/2018
 uid: fundamentals/routing
-ms.openlocfilehash: f18ec1da2affbf67b7ada570b68f98a42c7256a5
-ms.sourcegitcommit: ad28d1bc6657a743d5c2fa8902f82740689733bb
+ms.openlocfilehash: c57b309e4474f9aff5c0594a3d9d1c796990d31e
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52256591"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997355"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -276,7 +276,7 @@ Il existe quelques différences entre le routage de points de terminaison d’AS
 
   Dans le routage de points de terminaison avec ASP.NET Core 2.2 ou ultérieur, le résultat est `/Login`. Les valeurs ambiantes ne sont pas réutilisées quand la destination liée est une action ou une page différente.
 
-* Syntaxe des paramètres de route avec aller-retour : les barres obliques ne sont pas encodées lors de l’utilisation d’une syntaxe de paramètre passe-partout avec double astérisque (`**`).
+* Syntaxe des paramètres de route avec aller-retour : les barres obliques ne sont pas encodées lors de l’utilisation d’une syntaxe de paramètre passe-partout avec double astérisque (`**`).
 
   Pendant la génération de liens, le système de routage encode la valeur capturée dans un paramètre passe-partout avec double astérisque (`**`) (par exemple `{**myparametername}`) sans les barres obliques. Le passe-partout avec double astérisque est pris en charge avec le routage basé sur `IRouter` dans ASP.NET Core 2.2 ou ultérieur.
 
@@ -292,6 +292,8 @@ Il existe quelques différences entre le routage de points de terminaison d’AS
 Dans l’exemple suivant, un middleware utilise l’API `LinkGenerator` pour créer un lien vers une méthode d’action qui liste les produits d’un magasin. L’utilisation du générateur de liens en l’injectant dans une classe et en appelant `GenerateLink` est disponible pour n’importe quelle classe dans une application.
 
 ```csharp
+using Microsoft.AspNetCore.Routing;
+
 public class ProductsLinkMiddleware
 {
     private readonly LinkGenerator _linkGenerator;
@@ -303,8 +305,7 @@ public class ProductsLinkMiddleware
 
     public async Task InvokeAsync(HttpContext httpContext)
     {
-        var url = _linkGenerator.GenerateLink(new { controller = "Store",
-                                                    action = "ListProducts" });
+        var url = _linkGenerator.GetPathByAction("ListProducts", "Store");
 
         httpContext.Response.ContentType = "text/plain";
 
@@ -679,12 +680,23 @@ Transformateurs de paramètre :
 
 Par exemple, un transformateur de paramètre `slugify` personnalisé dans le modèle d’itinéraire `blog\{article:slugify}` avec `Url.Action(new { article = "MyTestArticle" })` génère `blog\my-test-article`.
 
+Pour utiliser un transformateur de paramètre dans un modèle d’itinéraire, configurez-le d’abord en utilisant <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> dans `Startup.ConfigureServices` :
+
+```csharp
+services.AddRouting(options =>
+{
+    // Replace the type and the name used to refer to it with your own
+    // IOutboundParameterTransformer implementation
+    options.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
+});
+```
+
 Les transformateurs de paramètre sont utilisés par le framework pour transformer l’URI où un point de terminaison est résolu. Par exemple, ASP.NET Core MVC utilise des transformateurs de paramètre pour convertir la valeur de routage utilisée et la faire correspondre à un `area`, `controller`, `action` et `page`.
 
 ```csharp
 routes.MapRoute(
     name: "default",
-    template: "{controller=Home:slugify}/{action=Index:slugify}/{id?}");
+    template: "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
 ```
 
 Avec la route précédente, l’action `SubscriptionManagementController.GetAll()` est mise en correspondance avec l’URI `/subscription-management/get-all`. Un transformateur de paramètre ne modifie pas les valeurs de routage utilisées pour générer un lien. Par exemple, `Url.Action("GetAll", "SubscriptionManagement")` produit `/subscription-management/get-all`.

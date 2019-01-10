@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez l’hôte web dans ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/host/web-host
-ms.openlocfilehash: bc77413127273aba207e68e7fbcb8ad916267e8e
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 7215027a083c0ed0bc3b15196e390a31c5dcfc14
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862276"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637844"
 ---
 # <a name="aspnet-core-web-host"></a>Hôte web ASP.NET Core
 
@@ -57,7 +57,7 @@ public class Program
   * Variables d'environnement.
   * Arguments de ligne de commande
 * Configure la [journalisation](xref:fundamentals/logging/index) des sorties de la console et du débogage. La journalisation inclut les règles de [filtrage de journal](xref:fundamentals/logging/index#log-filtering) qui sont spécifiées dans une section de configuration de la journalisation dans un fichier *appsettings.json* ou *appsettings.{Environment}.json*.
-* Lors de l’exécution derrière IIS avec le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), `CreateDefaultBuilder` permet l’[intégration IIS](xref:host-and-deploy/iis/index), qui configure l’adresse de base et le port de l’application. L’intégration IIS configure également l’application pour la [capture des erreurs de démarrage](#capture-startup-errors). Pour connaître les options par défaut d’IIS, consultez <xref:host-and-deploy/iis/index#iis-options>.
+* Lors de l’exécution derrière IIS avec le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module), `CreateDefaultBuilder` permet l’[intégration IIS](xref:host-and-deploy/iis/index), qui configure l’adresse de base et le port de l’application. L’intégration IIS configure également l’application pour la [capture des erreurs de démarrage](#capture-startup-errors). Pour connaître les options par défaut d’IIS, consultez <xref:host-and-deploy/iis/index#iis-options>.
 * Définissez [ServiceProviderOptions.ValidateScopes](/dotnet/api/microsoft.extensions.dependencyinjection.serviceprovideroptions.validatescopes) sur `true` si l’environnement de l’application est Développement. Pour plus d’informations, consultez [Validation de l’étendue](#scope-validation).
 
 La configuration définie par `CreateDefaultBuilder` peut être remplacée et enrichie par [ConfigureAppConfiguration](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configureappconfiguration), [ConfigureLogging](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) et les autres méthodes et les méthodes d’extension de [ IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder). En voici quelques exemples :
@@ -137,7 +137,7 @@ La propriété [IHostingEnvironment.ApplicationName](/dotnet/api/microsoft.exten
 
 **Clé** : applicationName  
 **Type** : *string*  
-**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
+**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
 **Définition avec** : `UseSetting`  
 **Variable d’environnement** : `ASPNETCORE_APPLICATIONNAME`
 
@@ -152,7 +152,7 @@ Ce paramètre contrôle la capture des erreurs de démarrage.
 
 **Clé** : captureStartupErrors  
 **Type** : *bool* (`true` ou `1`)  
-**Valeur par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.  
+**Par défaut** : `false`, ou `true` si l’application s’exécute avec Kestrel derrière IIS.  
 **Définition avec** : `CaptureStartupErrors`  
 **Variable d’environnement** : `ASPNETCORE_CAPTURESTARTUPERRORS`
 
@@ -169,7 +169,7 @@ Ce paramètre détermine l’emplacement où ASP.NET Core commence la recherche 
 
 **Clé** : contentRoot  
 **Type** : *string*  
-**Valeur par défaut** : dossier où réside l’assembly de l’application.  
+**Par défaut** : dossier où réside l’assembly de l’application.  
 **Définition avec** : `UseContentRoot`  
 **Variable d’environnement** : `ASPNETCORE_CONTENTROOT`
 
@@ -203,7 +203,7 @@ Définit l’environnement de l’application.
 
 **Clé** : environment  
 **Type** : *string*  
-**Valeur par défaut** : Production  
+**Par défaut** : Production  
 **Définition avec** : `UseEnvironment`  
 **Variable d’environnement** : `ASPNETCORE_ENVIRONMENT`
 
@@ -220,7 +220,7 @@ Définit les assemblys d’hébergement au démarrage de l’application.
 
 **Clé** : hostingStartupAssemblies  
 **Type** : *string*  
-**Valeur par défaut** : une chaîne vide  
+**Par défaut** : Chaîne vide  
 **Définition avec** : `UseSetting`  
 **Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES`
 
@@ -237,10 +237,10 @@ WebHost.CreateDefaultBuilder(args)
 
 Définissez le port de redirection HTTPS. Utilisé dans [l’application de HTTPS](xref:security/enforcing-ssl).
 
-**Clé** : https_port **Type** : *chaîne*
-**Valeur par défaut** : une valeur par défaut n’est pas définie.
-**Définition avec** : `UseSetting`
-**Variable d’environnement** : `ASPNETCORE_HTTPS_PORT`
+**Clé** : https_port **Type** : *string*
+**Par défaut** : Aucune valeur par défaut n’est définie.
+**Définir avec** : `UseSetting`
+**La variable d’environnement**: `ASPNETCORE_HTTPS_PORT`
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
@@ -253,7 +253,7 @@ Chaîne délimitée par des points-virgules qui spécifie les assemblys d’héb
 
 **Clé** : hostingStartupExcludeAssemblies  
 **Type** : *string*  
-**Valeur par défaut** : une chaîne vide  
+**Par défaut** : Chaîne vide  
 **Définition avec** : `UseSetting`  
 **Variable d’environnement** : `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`
 
@@ -317,7 +317,7 @@ Spécifie la durée d’attente avant l’arrêt de l’hôte web.
 
 **Clé** : shutdownTimeoutSeconds  
 **Type** : *int*  
-**Valeur par défaut** : 5  
+**Par défaut** : 5  
 **Définition avec** : `UseShutdownTimeout`  
 **Variable d’environnement** : `ASPNETCORE_SHUTDOWNTIMEOUTSECONDS`
 
@@ -341,7 +341,7 @@ Détermine l’assembly à rechercher pour la classe `Startup`.
 
 **Clé** : startupAssembly  
 **Type** : *string*  
-**Valeur par défaut** : l’assembly de l’application  
+**Par défaut** : l’assembly de l’application  
 **Définition avec** : `UseStartup`  
 **Variable d’environnement** : `ASPNETCORE_STARTUPASSEMBLY`
 
@@ -363,7 +363,7 @@ Définit le chemin relatif des ressources statiques de l’application.
 
 **Clé** : webroot  
 **Type** : *string*  
-**Valeur par défaut** : quand aucune valeur n’est spécifiée, la valeur par défaut est « (Racine de contenu)/wwwroot », si ce chemin existe. Si ce chemin est introuvable, un fournisseur de fichiers no-op est utilisé.  
+**Par défaut** : quand aucune valeur n’est spécifiée, la valeur par défaut est « (Racine de contenu)/wwwroot », si ce chemin existe. Si ce chemin est introuvable, un fournisseur de fichiers no-op est utilisé.  
 **Définition avec** : `UseWebRoot`  
 **Variable d’environnement** : `ASPNETCORE_WEBROOT`
 

@@ -3,14 +3,14 @@ title: Nouveautés d’ASP.NET Core 1.1
 author: rick-anderson
 description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 1.1.
 ms.author: riande
-ms.date: 02/14/2017
+ms.date: 12/18/2018
 uid: aspnetcore-1.1
-ms.openlocfilehash: 1f35874b253ca23743e1b046732723c3a75e855e
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: a21b2b82bfefb5b24898cf58ef97284a143e2e4a
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207821"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637597"
 ---
 # <a name="whats-new-in-aspnet-core-11"></a>Nouveautés d’ASP.NET Core 1.1
 
@@ -24,7 +24,7 @@ ASP.NET Core 1.1 inclut les nouvelles fonctionnalités suivantes :
 - [Fournisseur de journalisation Azure App Service](xref:fundamentals/logging/index#azure-app-service-provider)
 - [Fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration)
 - [Référentiels des clés de protection des données du Stockage Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis)
-- [Serveur WebListener pour Windows](xref:fundamentals/servers/weblistener)
+- Serveur WebListener pour Windows
 - [Prise en charge des WebSockets](xref:fundamentals/websockets)
 
 ## <a name="choosing-between-versions-10-and-11-of-aspnet-core"></a>Choix entre les versions 1.0 et 1.1 d’ASP.NET Core

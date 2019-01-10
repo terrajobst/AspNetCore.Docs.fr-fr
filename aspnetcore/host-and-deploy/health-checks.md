@@ -5,14 +5,14 @@ description: Découvrez comment configurer des contrôles d’intégrité pour l
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/03/2018
+ms.date: 12/12/2018
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: d8fd43d9d689396cf30ca371763cdf7ac9423c77
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: cf2aea91221887dad5646604214f810493d4b175
+ms.sourcegitcommit: 1ea1b4fc58055c62728143388562689f1ef96cb2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862594"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53329144"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Contrôles d’intégrité dans ASP.NET Core
 
@@ -22,7 +22,7 @@ ASP.NET Core met à disposition Health Check Middleware ainsi que des bibliothè
 
 Les contrôles d’intégrité sont exposés par une application comme des points de terminaison HTTP. Les points de terminaison de vérification d’intégrité peuvent être configurés pour de nombreux scénarios de supervision en temps réel :
 
-* Les sondes d’intégrité peuvent être utilisées par les orchestrateurs de conteneurs et les équilibreurs de charge afin de vérifier l’état d’une application. Par exemple, un orchestrateur de conteneurs peut répondre à un résultat de non intégrité en arrêtant le déploiement ou en redémarrant un conteneur. Face à une application non saine, l’équilibreur de charge peut réagir en redirigeant le trafic vers une instance saine.
+* Les sondes d’intégrité peuvent être utilisées par les orchestrateurs de conteneurs et les équilibreurs de charge afin de vérifier l’état d’une application. Par exemple, un orchestrateur de conteneurs peut répondre à un résultat de non-intégrité en arrêtant le déploiement ou en redémarrant un conteneur. Face à une application non saine, l’équilibreur de charge peut réagir en redirigeant le trafic vers une instance saine.
 * L’utilisation de la mémoire, des disques et des autres ressources de serveur physique peut être supervisée dans le cadre d’un contrôle d’intégrité.
 * Les contrôles d’intégrité peuvent tester les dépendances d’une application, telles que les bases de données et les points de terminaison de service externes, dans le but de vérifier leur disponibilité et leur bon fonctionnement.
 
@@ -36,10 +36,12 @@ Les contrôles d’intégrité sont généralement utilisés avec un service de 
 
 Référencez le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajoutez une référence de package au package [Microsoft.AspNetCore.Diagnostics.HealthChecks](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks).
 
-L’exemple d’application fournit du code de démarrage pour illustrer les contrôles d’intégrité de plusieurs scénarios. Le scénario [Sondage de base de données](#database-probe) sonde l’intégrité d’une connexion de base de données à l’aide de [BeatPulse](https://github.com/Xabaril/BeatPulse). Le scénario [Sondage DbContext](#entity-framework-core-dbcontext-probe) sonde une base de données à l’aide d’un `DbContext` EF Core. Pour explorer les scénarios de base de données à l’aide de l’exemple d’application :
+L’exemple d’application fournit du code de démarrage pour illustrer les contrôles d’intégrité de plusieurs scénarios. Le scénario [Sondage de base de données](#database-probe) vérifie l’intégrité d’une connexion de base de données à l’aide de [BeatPulse](https://github.com/Xabaril/BeatPulse). Le scénario [Sondage DbContext](#entity-framework-core-dbcontext-probe) vérifie une base de données à l’aide d’un `DbContext` EF Core. Pour explorer les scénarios de base de données, l’exemple d’application :
 
-* Créez une base de données et fournissez sa chaîne de connexion dans le fichier *appsettings.json* de l’application.
-* Ajoutez une référence de package à [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
+* Crée une base de données et fournit sa chaîne de connexion dans le fichier *appsettings.json*.
+* Possède les références de package suivantes dans son fichier de projet :
+  * [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/)
+  * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
 > [BeatPulse](https://github.com/Xabaril/BeatPulse) n’est pas géré ni pris en charge par Microsoft.
@@ -50,7 +52,7 @@ Un autre scénario de contrôle d’intégrité montre comment filtrer des contr
 
 Pour de nombreuses applications, un sondage d’intégrité de base qui signale la disponibilité d’une application pour le traitement des requêtes (*liveness*) suffit à découvrir l’état de l’application.
 
-La configuration de base inscrit les services de contrôle d’intégrité, puis appelle Health Check Middleware pour répondre à un point de terminaison d’URL avec une réponse d’intégrité. Par défaut, aucun contrôle d’intégrité n’est inscrit pour tester les dépendances ou le sous-système. L’application est considérée comme saine si elle est capable de répondre à l’URL de point de terminaison de contrôle d’intégrité. L’enregistreur de réponse par défaut écrit l’état (`HealthCheckStatus`) sous forme de texte en clair qu’il renvoie au client, indiquant si l’état est `HealthCheckResult.Healthy` ou `HealthCheckResult.Unhealthy`.
+La configuration de base inscrit les services de contrôle d’intégrité, puis appelle Health Check Middleware pour répondre à un point de terminaison d’URL avec une réponse d’intégrité. Par défaut, aucun contrôle d’intégrité n’est inscrit pour tester les dépendances ou le sous-système. L’application est considérée comme saine si elle est capable de répondre à l’URL de point de terminaison de contrôle d’intégrité. L’enregistreur de réponse par défaut écrit l’état (`HealthStatus`) sous forme de texte en clair qu’il renvoie au client, indiquant si l’état est `HealthStatus.Healthy`, `HealthStatus.Degraded` ou `HealthStatus.Unhealthy`.
 
 Pour inscrire les services de contrôle d’intégrité, utilisez `AddHealthChecks` dans `Startup.ConfigureServices`. Ajoutez Health Check Middleware avec `UseHealthChecks` dans le pipeline de traitement des requêtes de `Startup.Configure`.
 
@@ -216,12 +218,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     app.UseHealthChecks("/health", new HealthCheckOptions()
     {
         // The following StatusCodes are the default assignments for
-        // the HealthCheckStatus properties.
+        // the HealthStatus properties.
         ResultStatusCodes =
         {
-            [HealthCheckStatus.Healthy] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Degraded] = StatusCodes.Status200OK,
-            [HealthCheckStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+            [HealthStatus.Healthy] = StatusCodes.Status200OK,
+            [HealthStatus.Degraded] = StatusCodes.Status200OK,
+            [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
         }
     });
 }
@@ -314,9 +316,17 @@ dotnet run --scenario db
 
 ## <a name="entity-framework-core-dbcontext-probe"></a>Sondage DbContext Entity Framework Core
 
-La vérification `DbContext` est prise en charge dans les applications qui utilisent [Entity Framework (EF) Core](/ef/core/). Elle vérifie que l’application peut communiquer avec la base de données configurée pour un `DbContext` EF Core. Par défaut, `DbContextHealthCheck` appelle la méthode `CanConnectAsync` d’EF Core. Vous pouvez choisir quelle opération doit être exécutée lors du contrôle d’intégrité à l’aide des surcharges de la méthode `AddDbContextCheck`.
+La vérification `DbContext` vérifie que l’application peut communiquer avec la base de données configurée pour un `DbContext` EF Core. La vérification `DbContext` est prise en charge dans les applications qui :
 
-`AddDbContextCheck<TContext>` inscrit un contrôle d’intégrité pour un `DbContext` (`TContext`). Par défaut, le nom du contrôle d’intégrité correspond à celui du type `TContext`. Une surcharge est disponible pour configurer l’état d’échec, les étiquettes et une requête de test personnalisée.
+* Utilisent [Entity Framework (EF) Core](/ef/core/).
+* Incluent une référence de package à [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/).
+
+`AddDbContextCheck<TContext>` inscrit un contrôle d’intégrité pour un `DbContext`. Le `DbContext` est fourni en tant que `TContext` à la méthode. Une surcharge est disponible pour configurer l’état d’échec, les étiquettes et une requête de test personnalisée.
+
+Par défaut :
+
+* `DbContextHealthCheck` appelle la méthode `CanConnectAsync` d’EF Core. Vous pouvez choisir quelle opération doit être exécutée lors du contrôle d’intégrité à l’aide des surcharges de la méthode `AddDbContextCheck`.
+* Le nom du contrôle d’intégrité correspond à celui du type `TContext`.
 
 Dans l’exemple d’application, `AppDbContext` est fourni à `AddDbContextCheck`, puis est inscrit en tant que service dans `Startup.ConfigureServices`.
 
@@ -366,7 +376,7 @@ Done!
 Navigate to /health to see the health status.
 ```
 
-Envoyez une requête au point de terminaison `/health`. L’application fournit une réponse non intégrité :
+Envoyez une requête au point de terminaison `/health`. L’application fournit une réponse non-intégrité :
 
 ```
 Unhealthy

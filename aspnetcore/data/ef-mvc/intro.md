@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-mvc/intro
-ms.openlocfilehash: f1682203850f2c5440fe8d0b98830ca8772ff70f
-ms.sourcegitcommit: c4572be5ebb301013a5698caf9b5572b76cb2e34
+ms.openlocfilehash: 1191632555dc9331f815c1bfb1f313459824754a
+ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "50244886"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53577901"
 ---
 # <a name="aspnet-core-mvc-with-entity-framework-core---tutorial-1-of-10"></a>ASP.NET Core MVC avec Entity Framework Core - Didacticiel 1 sur 10
 
@@ -75,7 +75,7 @@ Ouvrez Visual Studio et créez un nouveau projet web C# ASP.NET Core, nommé « 
 
 * Sélectionnez **ASP.NET Core 2.0**, et le modèle **Application web (Model-View-Controller)**.
 
-  **Remarque :** Ce didacticiel nécessite ASP.NET Core 2.0 et EF Core 2.0 ou version ultérieure. Assurez-vous qu’**ASP.NET Core 1.1** n’est pas sélectionné.
+  **Remarque :** Ce didacticiel nécessite ASP.NET Core 2.0 et EF Core 2.0 ou version ultérieure. Assurez-vous qu’**ASP.NET Core 1.1** n’est pas sélectionné.
 
 * Vérifiez que le paramètre **Authentification** a pour valeur **Aucune authentification**.
 
@@ -135,7 +135,7 @@ La propriété `ID` devient la colonne de clé primaire de la table de base de d
 
 La propriété `Enrollments` est une [propriété de navigation](/ef/core/modeling/relationships). Les propriétés de navigation contiennent d’autres entités qui sont associées à cette entité. Dans ce cas, la propriété `Enrollments` d’un `Student entity` contient toutes les entités `Enrollment` associées à l’entité `Student`. En d’autres termes, si une ligne Student donnée dans la base de données a deux lignes Enrollment associées (lignes qui contiennent la valeur de clé primaire de cet étudiant dans la colonne de clé étrangère StudentID), la propriété de navigation `Enrollments` de cette entité `Student` contiendra ces deux entités `Enrollment`.
 
-Si une propriété de navigation peut contenir plusieurs entités (comme dans des relations plusieurs à plusieurs ou un -à-plusieurs), son type doit être une liste dans laquelle les entrées peuvent être ajoutées, supprimées et mises à jour, telle que `ICollection<T>`. Vous pouvez spécifier `ICollection<T>` ou un type tel que `List<T>` ou `HashSet<T>`. Si vous spécifiez `ICollection<T>`, EF crée une collection `HashSet<T>` par défaut.
+Si une propriété de navigation peut contenir plusieurs entités (comme dans des relations plusieurs à plusieurs ou un-à-plusieurs), son type doit être une liste dans laquelle les entrées peuvent être ajoutées, supprimées et mises à jour, telle que `ICollection<T>`. Vous pouvez spécifier `ICollection<T>` ou un type tel que `List<T>` ou `HashSet<T>`. Si vous spécifiez `ICollection<T>`, EF crée une collection `HashSet<T>` par défaut.
 
 ### <a name="the-enrollment-entity"></a>Entité Enrollment
 
@@ -245,7 +245,7 @@ La création automatique de vues et de méthodes d’action CRUD porte le nom de
 
 Si la boîte de dialogue **Ajouter des dépendances MVC** apparaît :
 
-* [Effectuez la mise à jour de Visual Studio vers la dernière version](https://www.visualstudio.com/downloads/). Les versions de Visual Studio antérieures à 15.5 affichent cette boîte de dialogue.
+* [Effectuez la mise à jour de Visual Studio vers la dernière version](https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017). Les versions de Visual Studio antérieures à 15.5 affichent cette boîte de dialogue.
 * Si vous ne pouvez pas effectuer la mise à jour, sélectionnez **ADD**, puis suivez à nouveau les étapes pour ajouter un contrôleur.
 
 * Dans la boîte de dialogue **Ajouter un modèle automatique** :

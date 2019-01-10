@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 9a0d5a8e722487ccf7e08aadb39f838a0963451d
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 930a6f2b860c71b6f499cff53e0d909a130f7948
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090965"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637896"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -47,7 +47,7 @@ Mettez à jour *Models/Student.cs* avec le code en surbrillance suivant :
 
 [!code-csharp[](intro/samples/cu21/Models/Student.cs?name=snippet_DataType&highlight=3,12-13)]
 
-L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Exemple :
+L’attribut [DataType](/dotnet/api/system.componentmodel.dataannotations.datatypeattribute?view=netframework-4.7.1) spécifie un type de données qui est plus spécifique que le type intrinsèque de la base de données. Ici, seule la date doit être affichée (pas la date et l’heure). L’énumération [DataType Enumeration](/dotnet/api/system.componentmodel.dataannotations.datatype?view=netframework-4.7.1) fournit de nombreux types de données, tels que Date, Time, PhoneNumber, Currency, EmailAddress, et ainsi de suite. L’attribut `DataType` peut également permettre à l’application de fournir automatiquement des fonctionnalités propres au type. Par exemple :
 
 * Le lien `mailto:` est créé automatiquement pour `DataType.EmailAddress`.
 * Le sélecteur de date est fourni pour `DataType.Date` dans la plupart des navigateurs.
@@ -378,7 +378,7 @@ public Instructor Administrator { get; set; }
 
 Le point d’interrogation (?) dans le code précédent indique que la propriété est nullable.
 
-Un département pouvant avoir de nombreux cours, il existe une propriété de navigation Courses :
+Un département peut avoir de nombreux cours, si bien qu’il existe une propriété de navigation Courses :
 
 ```csharp
 public ICollection<Course> Courses { get; set; }
@@ -444,7 +444,7 @@ Si la table `Enrollment` n’incluait pas d’informations de notes, elle aurait
 
 Les entités `Instructor` et `Course` ont une relation plusieurs-à-plusieurs à l’aide d’une table de jointure pure.
 
-Remarque : EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais pas EF Core. Pour plus d’informations, consultez [Many-to-many relationships in EF Core 2.0 (Relations plusieurs-à-plusieurs dans EF Core 2.0)](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/).
+Remarque : EF 6.x prend en charge les tables de jointure implicites pour les relations plusieurs-à-plusieurs, mais EF Core ne le fait pas. Pour plus d’informations, consultez [Many-to-many relationships in EF Core 2.0 (Relations plusieurs-à-plusieurs dans EF Core 2.0)](https://blog.oneunicorn.com/2017/09/25/many-to-many-relationships-in-ef-core-2-0-part-1-the-basics/).
 
 ## <a name="the-courseassignment-entity"></a>Entité CourseAssignment
 
@@ -538,10 +538,7 @@ Mettez à jour le code dans *Data/DbInitializer.cs* :
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
-Le code précédent fournit des données de valeur initiale pour les nouvelles entités. La majeure partie de ce code crée des objets d’entités et charge des exemples de données. Les exemples de données sont utilisés à des fins de test. Le code précédent crée les relations plusieurs-à-plusieurs suivantes :
-
-* `Enrollments`
-* `CourseAssignment`
+Le code précédent fournit des données de valeur initiale pour les nouvelles entités. La majeure partie de ce code crée des objets d’entités et charge des exemples de données. Les exemples de données sont utilisés à des fins de test. Consultez `Enrollments` et `CourseAssignments` pour obtenir des exemples de la façon dont des tables de jointure plusieurs-à-plusieurs peuvent être amorcées.
 
 ## <a name="add-a-migration"></a>Ajouter une migration
 

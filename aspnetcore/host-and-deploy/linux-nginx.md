@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment configurer Nginx comme proxy inverse sur Ubuntu 16.04 pour transférer le trafic HTTP vers une application web ASP.NET Core s’exécutant sur Kestrel.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 12/20/2018
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: d4bffab80ba20d4cf77a358249c7b349033de5bd
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 534c62c127e685af9c6076932943def25bd3ac06
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450786"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997329"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Héberger ASP.NET Core sur Linux avec Nginx
 
@@ -126,7 +126,7 @@ Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.
 
 ### <a name="install-nginx"></a>Installer Nginx
 
-Utilisez `apt-get` pour installer Nginx. Le programme d’installation crée un script d’initialisation *systemd* qui exécute Nginx en tant que démon au démarrage du système. Suivez les instructions d’installation pour Ubuntu sur le site [Nginx : Les packages officiels Debian/Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
+Utilisez `apt-get` pour installer Nginx. Le programme d’installation crée un script d’initialisation *systemd* qui exécute Nginx en tant que démon au démarrage du système. Suivez les instructions d’installation pour Ubuntu sur le site [Nginx : Les packages officiels Debian/Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages).
 
 > [!NOTE]
 > Si des modules Nginx facultatifs sont requis, il peut s’avérer nécessaire de configurer Nginx à partir de la source.
@@ -170,7 +170,7 @@ server {
 }
 ```
 
-Avec les fichier de configuration et le serveur par défaut précédents, Nginx accepte le trafic public sur le port 80 avec un en-tête d’hôte `example.com` ou `*.example.com`. Les requêtes qui ne correspondent pas à ces hôtes ne sont pas transférées à Kestrel. Nginx transfère les requêtes correspondantes à Kestrel à l’adresse `http://localhost:5000`. Consultez [How nginx processes a request](https://nginx.org/docs/http/request_processing.html) (Comment nginx traite une requête) pour plus d’informations. Pour changer le port/l’adresse IP Kestrel, consultez [Kestrel : configuration du point de terminaison](xref:fundamentals/servers/kestrel#endpoint-configuration).
+Avec les fichiers de configuration et le serveur par défaut précédents, Nginx accepte le trafic public sur le port 80 avec un en-tête d’hôte `example.com` ou `*.example.com`. Les requêtes qui ne correspondent pas à ces hôtes ne sont pas transférées à Kestrel. Nginx transfère les requêtes correspondantes à Kestrel à l’adresse `http://localhost:5000`. Consultez [How nginx processes a request](https://nginx.org/docs/http/request_processing.html) (Comment nginx traite une requête) pour plus d’informations. Pour changer le port/l’adresse IP Kestrel, consultez [Kestrel : configuration du point de terminaison](xref:fundamentals/servers/kestrel#endpoint-configuration).
 
 > [!WARNING]
 > La spécification d’une [directive server_name](https://nginx.org/docs/http/server_names.html) incorrecte expose votre application à des failles de sécurité. Une liaison générique de sous-domaine (par exemple, `*.example.com`) ne présente pas ce risque de sécurité si vous contrôlez le domaine parent en entier (par opposition à `*.com`, qui est vulnérable). Consultez la [rfc7230 section-5.4](https://tools.ietf.org/html/rfc7230#section-5.4) pour plus d’informations.
@@ -297,6 +297,18 @@ Pour configurer la protection des données de façon à conserver et chiffrer le
 * <xref:security/data-protection/implementation/key-storage-providers>
 * <xref:security/data-protection/implementation/key-encryption-at-rest>
 
+## <a name="long-request-header-fields"></a>Longs champs d'en-tête de demande
+
+Si l’application exige des champs d’en-tête de demande plus long que permis par les paramètres par défaut du serveur proxy (généralement 4K ou 8K selon la plateforme), les directives suivantes nécessitent un réglage. Les valeurs à appliquer dépendent du scénario. Pour plus d'informations, voir la documentation du serveur.
+
+* [proxy_buffer_size](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffer_size)
+* [proxy_buffers](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffers)
+* [proxy_busy_buffers_size](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_busy_buffers_size)
+* [large_client_header_buffers](https://nginx.org/docs/http/ngx_http_core_module.html#large_client_header_buffers)
+
+> [!WARNING]
+> N’augmentez pas les valeurs par défaut des mémoires tampons de proxy à moins que ce ne soit nécessaire. Leur augmentation augmente le risque de dépassement de mémoire tampon (dépassement de capacité) et d’attaques par déni de service (DoS) par des utilisateurs malveillants.
+
 ## <a name="secure-the-app"></a>Sécuriser l’application
 
 ### <a name="enable-apparmor"></a>Activer AppArmor
@@ -386,7 +398,7 @@ Ajoutez la ligne `add_header X-Content-Type-Options "nosniff";` et enregistrez l
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Prérequis pour .NET Core sur Linux](/dotnet/core/linux-prerequisites)
-* [Nginx: Binary Releases: Official Debian/Ubuntu packages](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages) (Nginx : versions binaires : packages Debian/Ubuntu officiels).
+* [Nginx : Versions binaires : Les packages officiels Debian/Ubuntu](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/#official-debian-ubuntu-packages)
 * <xref:test/troubleshoot>
 * <xref:host-and-deploy/proxy-load-balancer>
-* [NGINX: Using the Forwarded header](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/) (NGINX : utilisation de l’en-tête Forwarded)
+* [NGINX : Utilisation de l’en-tête Forwarded](https://www.nginx.com/resources/wiki/start/topics/examples/forwarded/)

@@ -4,14 +4,14 @@ author: shirhatti
 description: Découvrez la prise en charge du débogage des applications ASP.NET Core pendant l’exécution derrière IIS sur Windows Server.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 12/18/2018
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 51375e6a6bb25a469d467ca97a151abd305c1ece
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 44570bb28451ce4c5fde12ec77e3856fb5bd3062
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862380"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637662"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
 
@@ -54,9 +54,9 @@ Si l’installation d’IIS a déjà un **Site web par défaut** avec un nom d�
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>Activer la prise en charge d’IIS pendant le développement dans Visual Studio
 
 1. Lancez le programme d’installation de Visual Studio.
-1. Sélectionnez le composant **Prise en charge d’IIS pendant le développement**. Le composant apparaît comme facultatif dans le panneau **Résumé** pour la charge de travail **Développement web et ASP.NET**. Ce composant installe le [module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module), qui est un module IIS natif nécessaire à l’exécution des applications ASP.NET Core avec IIS.
+1. Sélectionnez le composant **Prise en charge d’IIS pendant le développement**. Le composant apparaît comme facultatif dans le panneau **Résumé** pour la charge de travail **Développement web et ASP.NET**. Ce composant installe le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module), qui est un module IIS natif nécessaire à l’exécution des applications ASP.NET Core avec IIS.
 
-![Modification des fonctionnalités de Visual Studio : l’onglet Charges de travail est sélectionné. Dans la section Web et cloud, le panneau Développement web et ASP.NET est sélectionné. Sur la droite, dans la zone Facultatif du panneau Résumé, vous voyez une case à cocher Prise en charge d’IIS pendant le développement.](development-time-iis-support/_static/development_time_support.png)
+![Modifications des fonctionnalités de Visual Studio : L’onglet Charges de travail est sélectionné. Dans la section Web et cloud, le panneau Développement web et ASP.NET est sélectionné. Sur la droite, dans la zone Facultatif du panneau Résumé, vous voyez une case à cocher Prise en charge d’IIS pendant le développement.](development-time-iis-support/_static/development_time_support.png)
 
 ## <a name="configure-the-project"></a>Configurer le projet
 
@@ -146,6 +146,6 @@ Si vous utilisez un certificat de développement non approuvé, le navigateur pe
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Héberger ASP.NET Core sur Windows avec IIS](xref:host-and-deploy/iis/index)
-* [Introduction au Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module)
+* [Introduction au Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Informations de référence sur la configuration du Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Appliquer HTTPS](xref:security/enforcing-ssl)

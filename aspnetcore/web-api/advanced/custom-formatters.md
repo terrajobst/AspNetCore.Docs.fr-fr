@@ -5,24 +5,24 @@ description: Découvrez comment créer et utiliser des formateurs personnalisés
 ms.author: tdykstra
 ms.date: 02/08/2017
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: ee6f166ced41c41506f2a17a7d362399c165b718
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 2861a15a80725dcc237d33313a24822cf8aa9c7e
+ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51020648"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53997290"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>Formateurs personnalisés dans l’API web ASP.NET Core
 
 Par [Tom Dykstra](https://github.com/tdykstra)
 
-ASP.NET Core MVC prend en charge l’échange de données dans les API web à l’aide des formats JSON, XML ou texte brut. Cet article montre comment ajouter la prise en charge de formats supplémentaires en créant des formateurs personnalisés.
+ASP.NET Core MVC prend en charge l’échange de données dans les API web à l’aide des formats JSON ou XML. Cet article montre comment ajouter la prise en charge de formats supplémentaires en créant des formateurs personnalisés.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-custom-formatters"></a>Quand utiliser les formateurs personnalisés
 
-Utilisez un formateur personnalisé quand vous souhaitez que le processus de [négociation de contenu](xref:web-api/advanced/formatting#content-negotiation) prenne en charge un type de contenu non pris en charge par les formateurs intégrés (JSON, XML et texte brut).
+Utilisez un formateur personnalisé quand vous souhaitez que le processus de [négociation de contenu](xref:web-api/advanced/formatting#content-negotiation) prenne en charge un type de contenu non pris en charge par les formateurs intégrés (JSON et XML).
 
 Par exemple, si certains clients de votre API web peuvent prendre en charge le format [Protobuf](https://github.com/google/protobuf), vous pouvez être amené à utiliser Protobuf avec ces clients, car il est plus efficace. Vous pouvez également demander à votre API web d’envoyer les noms et adresses des contacts au format [vCard](https://wikipedia.org/wiki/VCard), format couramment utilisé pour l’échange de données de contact. L’exemple d’application fourni dans cet article implémente un formateur vCard simple.
 
@@ -103,7 +103,8 @@ Les formateurs sont évalués dans l’ordre dans lequel vous les insérez. Le p
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Consultez l’[exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), qui implémente de simples formateurs d’entrée et de sortie vCard. L’application lit et écrit des vCard qui ressemblent à l’exemple suivant :
+* [Exemple de code formateur en texte brut sur GitHub.](https://github.com/aspnet/Entropy/tree/master/samples/Mvc.Formatters)
+* [Exemple d’application pour ce document](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), qui implémente de simples formateurs d’entrée et de sortie vCard. L’application lit et écrit des vCard qui ressemblent à l’exemple suivant :
 
 ```
 BEGIN:VCARD

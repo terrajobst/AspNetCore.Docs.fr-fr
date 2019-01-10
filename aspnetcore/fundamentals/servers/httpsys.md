@@ -5,26 +5,23 @@ description: Découvrez HTTP.sys, un serveur web pour ASP.NET Core sous Windows.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 12/18/2018
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 8810fd295e8c4269812e712ce2fdc9b9fa2bbb4f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: a779fee53109d4c1cabb2005896e757f23467540
+ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861691"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53637623"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
 [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher) et [Luke Latham](https://github.com/guardrex)
 
-> [!NOTE]
-> Cette rubrique s’applique à ASP.NET Core 2.0 et aux versions ultérieures. Dans les versions antérieures d’ASP.NET Core, HTTP.sys est appelé [WebListener](xref:fundamentals/servers/weblistener).
-
 [HTTP.sys](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) est un [serveur web pour ASP.NET Core](xref:fundamentals/servers/index) qui s’exécute uniquement sous Windows. HTTP.sys est une alternative au serveur [Kestrel](xref:fundamentals/servers/kestrel) et offre des fonctionnalités supplémentaires par rapport à celui-ci.
 
 > [!IMPORTANT]
-> HTTP.sys est incompatible avec le [Module ASP.NET Core](xref:fundamentals/servers/aspnet-core-module) et n’est pas utilisable avec IIS ni IIS Express.
+> HTTP.sys est incompatible avec le [Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) et n’est pas utilisable avec IIS ni IIS Express.
 
 HTTP.sys prend en charge les fonctionnalités suivantes :
 
@@ -140,7 +137,7 @@ HTTP.sys délègue l’authentification en mode noyau avec le protocole d’auth
 1. Si l’application est un [déploiement dépendant de .NET Framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), installez .NET Core, .NET Framework ou les deux (si l’application est une application .NET Core ciblant .NET Framework).
 
    * **.NET Core** &ndash; Si l’application nécessite .NET Core, procurez-vous et exécutez le programme d’installation de .NET Core sur [Tous les téléchargements .NET](https://www.microsoft.com/net/download/all).
-   * **.NET Framework** &ndash; Si l’application requiert .NET Framework, consultez la page [.NET Framework : guide d’installation](/dotnet/framework/install/) pour connaître les instructions d’installation. Installez la version requise de .NET Framework. Le programme d’installation de la dernière version de .NET Framework se trouve dans la page [Tous les téléchargements .NET](https://www.microsoft.com/net/download/all).
+   * **.NET framework** &ndash; Si l’application nécessite .NET Framework, consultez [.NET Framework : Guide d’installation](/dotnet/framework/install/) pour obtenir les instructions d’installation. Installez la version requise de .NET Framework. Le programme d’installation de la dernière version de .NET Framework se trouve dans la page [Tous les téléchargements .NET](https://www.microsoft.com/net/download/all).
 
 2. Configurez les ports et les URL de l’application.
 
@@ -190,7 +187,7 @@ HTTP.sys délègue l’authentification en mode noyau avec le protocole d’auth
 
    2. Créez des certificats X.509 auto-signés, si nécessaire.
 
-      [!INCLUDE [How to make an X.509 cert](../../includes/make-x509-cert.md)]
+      [!INCLUDE [How to make an X.509 cert](~/includes/make-x509-cert.md)]
 
 4. Ouvrez des ports du pare-feu pour autoriser le trafic à atteindre HTTP.sys. Utilisez *netsh.exe* ou les [cmdlets PowerShell](https://technet.microsoft.com/library/jj554906).
 
