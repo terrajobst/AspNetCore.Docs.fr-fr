@@ -5,14 +5,14 @@ description: Découvrez comment les tests d’intégration garantissent le bon f
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 01/11/2019
 uid: test/integration-tests
-ms.openlocfilehash: 9729925c89c212bb6e6fac1a484b6288697afe57
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 0f919d7715a26f1efdb37d35b047a7050e46a272
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450747"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249514"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>Tests d’intégration dans ASP.NET Core
 
@@ -72,9 +72,9 @@ Tests d’intégration suivent une séquence d’événements qui incluent habit
 
 1. Hôte de web du St est configuré.
 1. Un client de serveur de test est créé pour envoyer des demandes à l’application.
-1. Le *organiser* étape de test est exécutée : l’application de test prépare une demande.
-1. Le *Act* étape de test est exécuté : le client envoie la demande et reçoit la réponse.
-1. Le *Assert* étape de test est exécuté : le *réel* réponse est validée comme un *passer* ou *échouer* selon un *attendu*  réponse.
+1. Le *organiser* étape de test est exécuté : L’application de test prépare une demande.
+1. Le *Act* étape de test est exécuté : Le client envoie la demande et reçoit la réponse.
+1. Le *Assert* étape de test est exécuté : Le *réel* réponse est validée comme un *passer* ou *échouer* selon un *attendu* réponse.
 1. Le processus se poursuit jusqu'à ce que tous les tests sont exécutés.
 1. Les résultats des tests sont signalés.
 
@@ -114,7 +114,7 @@ Ces conditions préalables sont consultables dans la [exemple d’application](h
 
 [WebApplicationFactory&lt;TEntryPoint&gt; ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1) est utilisé pour créer un [TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) pour les tests d’intégration. `TEntryPoint` est la classe de point d’entrée du St, généralement la `Startup` classe.
 
-Classes de test implémentent un *fixture de classe* interface (`IClassFixture`) pour indiquer la classe contient des tests et fournir des instances d’objet partagé entre les tests dans la classe.
+Classes de test implémentent un *fixture de classe* interface ([IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)) pour indiquer la classe contient des tests et fournir des instances d’objet partagé entre les tests dans la classe.
 
 ### <a name="basic-test-of-app-endpoints"></a>Test de base des points de terminaison d’application
 
@@ -151,7 +151,7 @@ Configuration de l’hôte Web peut être créée indépendamment les classes de
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
-   Base de données d’amorçage dans le [exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectuée par le `InitializeDbForTests` (méthode). La méthode est décrite dans le [exemple de tests d’intégration : organisation de l’application Test](#test-app-organization) section.
+   Base de données d’amorçage dans le [exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/test/integration-tests/samples) est effectuée par le `InitializeDbForTests` (méthode). La méthode est décrite dans la [exemple de tests d’intégration : Organisation de l’application test](#test-app-organization) section.
 
 2. Utilisez personnalisé `CustomWebApplicationFactory` dans les classes de test. L’exemple suivant utilise la fabrique dans la `IndexPageTests` classe :
 
@@ -173,9 +173,9 @@ Le `SendAsync` méthodes d’extension d’assistance (*Helpers/HttpClientExtens
 
 * `GetDocumentAsync` &ndash; Reçoit le [HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) et retourne un `IHtmlDocument`. `GetDocumentAsync` utilise une fabrique qui prépare une *réponse virtuel* selon la version d’origine `HttpResponseMessage`. Pour plus d’informations, consultez le [AngleSharp documentation](https://github.com/AngleSharp/AngleSharp#documentation).
 * `SendAsync` méthodes d’extension pour le `HttpClient` composer un [HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage) et appelez [SendAsync(HttpRequestMessage)](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_) pour soumettre des demandes sur le st. Surcharges pour `SendAsync` acceptez le formulaire HTML (`IHtmlFormElement`) et les éléments suivants :
-  - Bouton du formulaire d’envoi (`IHtmlElement`)
-  - Collection des valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
-  - Bouton d’envoi (`IHtmlElement`) et les valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
+  * Bouton du formulaire d’envoi (`IHtmlElement`)
+  * Collection des valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
+  * Bouton d’envoi (`IHtmlElement`) et les valeurs de formulaire (`IEnumerable<KeyValuePair<string, string>>`)
 
 > [!NOTE]
 > [AngleSharp](https://anglesharp.github.io/) est un tiers, l’analyse bibliothèque utilisé à des fins de démonstration dans cette rubrique et l’exemple d’application. AngleSharp n’est pas pris en charge ou requises pour les tests d’intégration des applications ASP.NET Core. Autres analyseurs peuvent être utilisées, telle que la [Html agilité Pack (HAP)](http://html-agility-pack.net/). Une autre approche consiste à écrire du code pour gérer la demande de jeton de vérification et le cookie anti-contrefaçon le système anti-contrefaçon directement.
