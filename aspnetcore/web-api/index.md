@@ -4,14 +4,14 @@ author: scottaddie
 description: Découvrez les fonctionnalités disponibles pour la création d’une API web dans ASP.NET Core et quand il convient d’utiliser chaque fonctionnalité.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/06/2018
+ms.date: 01/11/2019
 uid: web-api/index
-ms.openlocfilehash: 7541c4c308deaecda0bda9a9c77d9372b65a5100
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: a826bdecdd3a25eb23597123166695c169ba4229
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635296"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249436"
 ---
 # <a name="build-web-apis-with-aspnet-core"></a>Créer des API web avec ASP.NET Core
 
@@ -23,7 +23,7 @@ Ce document explique comment créer une API web ASP.NET Core et quand il convien
 
 ## <a name="derive-class-from-controllerbase"></a>Dériver la classe de ControllerBase
 
-Héritez de la classe <xref:Microsoft.AspNetCore.Mvc.ControllerBase> dans un contrôleur destiné à servir d’API web. Exemple :
+Héritez de la classe <xref:Microsoft.AspNetCore.Mvc.ControllerBase> dans un contrôleur destiné à servir d’API web. Par exemple :
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -43,7 +43,7 @@ La classe `ControllerBase` fournit l’accès à de plusieurs propriétés et m�
 
 ## <a name="annotation-with-apicontroller-attribute"></a>Annotation avec attribut ApiController
 
-ASP.NET Core 2.1 introduit l’attribut [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) pour désigner une classe de contrôleur d’API web. Exemple :
+ASP.NET Core 2.1 introduit l’attribut [[ApiController]](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) pour désigner une classe de contrôleur d’API web. Par exemple :
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=2)]
 
@@ -141,7 +141,10 @@ Des règles d’inférence sont appliquées pour les sources de données par dé
 
 * **[FromBody]** est déduit des paramètres de type complexe. Une exception à cette règle est tout type complexe intégré ayant une signification spéciale, comme <xref:Microsoft.AspNetCore.Http.IFormCollection> et <xref:System.Threading.CancellationToken>. Le code de l’inférence de la source de liaison ignore ces types spéciaux. `[FromBody]` n’est pas déduit pour les types simples tels que `string` ou `int`. Vous devez donc utiliser l’attribut `[FromBody]` pour les types simples quand cette fonctionnalité est nécessaire. Quand une action a plusieurs paramètres explicitement spécifiés (par le biais de `[FromBody]`) ou déduits comme étant liés à partir du corps de la demande, une exception est levée. Par exemple, les signatures d’action suivantes génèrent une exception :
 
-[!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/TestController.cs?name=snippet_ActionsCausingExceptions)]
+    [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/TestController.cs?name=snippet_ActionsCausingExceptions)]
+
+    > [!NOTE]
+    > Dans ASP.NET Core 2.1, les paramètres de type collection comme les listes et les tableaux sont déduits de manière incorrecte en tant que [[FromQuery]](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute). [[FromBody] ](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute) doit être utilisé pour ces paramètres s’ils doivent être liés à partir du corps de la requête. Ce problème est résolu dans ASP.NET Core 2.2 ou version ultérieure, où les paramètres de type collection sont déduits pour être liés à partir du corps par défaut.
 
 * **[FromForm]** est déduit pour les paramètres d’action de type <xref:Microsoft.AspNetCore.Http.IFormFile> et <xref:Microsoft.AspNetCore.Http.IFormFileCollection>. Il n’est pas déduit pour les types simples ou définis par l’utilisateur.
 * **[FromRoute]** est déduit pour tout nom de paramètre d’action correspondant à un paramètre dans le modèle d’itinéraire. Quand plus d’un itinéraire correspond à un paramètre d’action, toute valeur d’itinéraire est considérée comme `[FromRoute]`.
@@ -193,7 +196,7 @@ Ajoutez le code suivant dans `Startup.ConfigureServices` après `services.AddMvc
 
 ### <a name="attribute-routing-requirement"></a>Exigence du routage d’attribut
 
-Le routage d’attribut devient une exigence. Exemple :
+Le routage d’attribut devient une exigence. Par exemple :
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=1)]
 
@@ -214,7 +217,7 @@ Prenons le code suivant dans une action de contrôleur :
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.22/Controllers/ProductsController.cs?name=snippet_ProblemDetailsStatusCode)]
 
-La réponse HTTP pour `NotFound` a le code d’état 404 avec le corps `ProblemDetails`. Exemple :
+La réponse HTTP pour `NotFound` a le code d’état 404 avec le corps `ProblemDetails`. Par exemple :
 
 ```json
 {

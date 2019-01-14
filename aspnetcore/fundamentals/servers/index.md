@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. Découvrez comment choisir un serveur et quand utiliser un serveur proxy inverse.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 2c209942ed219b6d6ca309d8aba94b264d421158
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 4210d67397c85a1608f79fc4ed9d283521356226
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637740"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249488"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -48,6 +48,8 @@ Le module ASP.NET Core :
   * Charge le [CoreCLR](/dotnet/standard/glossary#coreclr).
   * Appelle `Program.Main`.
 * Gère la durée de vie de la requête native IIS.
+
+Le modèle d’hébergement in-process n’est pas pris en charge pour les applications ASP.NET Core qui ciblent le .NET Framework.
 
 Le schéma suivant montre la relation entre IIS, le module ASP.NET Core et une application hébergée dans un processus :
 
