@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment configurer le module ASP.NET Core pour héberger des applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: dee4fe7a498d211cb8ef6a3c49017c3cc8a56847
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: f97d6f188bfcba6285cbd1fa91ce530e96395929
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637857"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249565"
 ---
 # <a name="aspnet-core-module"></a>Module ASP.NET Core
 
@@ -44,6 +44,8 @@ Pour configurer l’hébergement in-process dans une application, ajoutez la pro
   <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
 </PropertyGroup>
 ```
+
+Le modèle d’hébergement in-process n’est pas pris en charge pour les applications ASP.NET Core qui ciblent le .NET Framework.
 
 Si la propriété `<AspNetCoreHostingModel>` n’est pas présente dans le fichier, la valeur par défaut est `OutOfProcess`.
 
