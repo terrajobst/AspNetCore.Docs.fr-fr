@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/11/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 3239b4652d739ed2ac205c9daae7754dbd8e918c
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: 83c084beb059d803811e9739d34bdbdd6bcff463
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249553"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341795"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -312,11 +312,6 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publ
 ## <a name="create-the-iis-site"></a>Créer le site IIS
 
 1. Sur le système d’hébergement, créez un dossier pour contenir les fichiers et dossiers publiés de l’application. Une disposition du déploiement de l’application est décrite dans la rubrique [Structure des répertoires](xref:host-and-deploy/directory-structure).
-
-1. Dans le nouveau dossier, créez un dossier *journaux* où stocker les journaux stdout du Module ASP.NET Core quand la journalisation stdout est activée. Si l’application est déployée avec un dossier *logs* dans la charge utile, ignorez cette étape. Pour obtenir des instructions sur l’activation de MSBuild et créer le dossier *journaux* automatiquement lorsque le projet est généré localement, consultez la rubrique [Structure des répertoires](xref:host-and-deploy/directory-structure).
-
-   > [!IMPORTANT]
-   > Utilisez uniquement le journal stdout pour résoudre les échecs de démarrage de l’application. N’utilisez jamais la journalisation stdout pour la journalisation de l’application de routine. Il n’existe aucune limite quant à la taille du fichier journal ou au nombre de fichiers journaux créés. Le pool d’applications doit avoir un accès en écriture à l’emplacement auquel les journaux sont écrits. Tous les dossiers sur le chemin de l’emplacement des journaux doivent exister. Pour plus d’informations sur le journal stdout, consultez [Création et redirection des journaux](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection). Pour plus d’informations sur la journalisation dans une application ASP.NET Core, consultez la rubrique [Journalisation](xref:fundamentals/logging/index).
 
 1. Dans **Gestionnaire IIS**, ouvrez le nœud du serveur dans le panneau **Connexions**. Cliquez avec le bouton de droite sur le dossier **Sites**. Sélectionnez **Ajouter un site Web** dans le menu contextuel.
 

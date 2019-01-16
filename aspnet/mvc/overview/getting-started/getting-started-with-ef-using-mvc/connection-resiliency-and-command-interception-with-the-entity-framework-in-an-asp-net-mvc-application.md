@@ -1,33 +1,39 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Résilience des connexions et Interception des commandes avec Entity Framework dans une Application ASP.NET MVC | Microsoft Docs
+title: 'Tutoriel : Utilisez l’interception de la résilience et la commande de connexion avec Entity Framework dans une application ASP.NET MVC'
 author: tdykstra
-description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio...
+description: Dans ce didacticiel, vous allez apprendre à utiliser l’interception de la résilience et la commande de connexion. Ils sont deux fonctionnalités importantes d’Entity Framework 6.
 ms.author: riande
-ms.date: 01/13/2015
+ms.date: 01/14/2018
+ms.topic: tutorial
 ms.assetid: c89d809f-6c65-4425-a3fa-c9f6e8ac89f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: ab6a553100d704746840eaad512ec140d4576c44
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: fae5c7e1ad1000ed90630c3620b853de3a735d60
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48911784"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341722"
 ---
-<a name="connection-resiliency-and-command-interception-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Résilience des connexions et Interception des commandes avec Entity Framework dans une Application ASP.NET MVC
-====================
-par [Tom Dykstra](https://github.com/tdykstra)
-
-[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+# <a name="tutorial-use-connection-resiliency-and-command-interception-with-entity-framework-in-an-aspnet-mvc-app"></a>Tutoriel : Utilisez l’interception de la résilience et la commande de connexion avec Entity Framework dans une application ASP.NET MVC
 
 Jusqu'à présent, l’application a été exécuté localement dans IIS Express sur votre ordinateur de développement. Pour rendre une application réelle disponible pour d’autres personnes à utiliser sur Internet, vous devez déployer sur un fournisseur d’hébergement web, et vous devez déployer la base de données à un serveur de base de données.
 
-Dans ce didacticiel, vous allez apprendre à utiliser deux fonctionnalités d’Entity Framework 6 sont particulièrement utiles lorsque vous déployez à l’environnement de cloud : la résilience de connexion (les nouvelles tentatives automatiques pour les erreurs temporaires) et interception des commandes (catch toutes les requêtes SQL envoyé à la base de données afin d’ouvrir une session ou de les modifier).
+Dans ce didacticiel, vous allez apprendre à utiliser l’interception de la résilience et la commande de connexion. Ils sont deux fonctionnalités importantes d’Entity Framework 6 sont particulièrement utiles lorsque vous déployez à l’environnement de cloud : la résilience de connexion (les nouvelles tentatives automatiques pour les erreurs temporaires) et interception des commandes (catch toutes les requêtes SQL envoyées à la base de données Pour ouvrir une session ou les modifier).
 
 Ce didacticiel de l’interception de la résilience et la commande connexion est facultatif. Si vous ignorez ce didacticiel, quelques ajustements mineurs seront ne doit être faite dans les didacticiels suivants.
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Activer la résilience des connexions
+> * Activer l’interception des commandes
+> * Tester la nouvelle configuration
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Tri, filtrage et pagination](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="enable-connection-resiliency"></a>Activer la résilience des connexions
 
@@ -64,7 +70,7 @@ Il vous suffit pour activer la résilience des connexions est créer une classe 
 
 Pour plus d’informations, consultez [Entity Framework la résilience des connexions / logique de nouvelle tentative](https://msdn.microsoft.com/data/dn456835).
 
-## <a name="enable-command-interception"></a>Activer l’Interception des commandes
+## <a name="enable-command-interception"></a>Activer l’interception des commandes
 
 Maintenant que vous avez activé une stratégie de nouvelle tentative, comment tester pour vérifier qu’il fonctionne comme prévu ? Il n’est pas si facile forcer une erreur temporaire se produire, en particulier lorsque vous exécutez localement, et il serait particulièrement difficile à intégrer des erreurs temporaires réels dans un test unitaire automatisé. Pour tester la fonctionnalité de résilience de connexion, vous avez besoin d’un moyen d’intercepter les requêtes Entity Framework envoie à SQL Server et remplacez la réponse de SQL Server avec un type d’exception qui est généralement temporaire.
 
@@ -135,7 +141,7 @@ Ensuite, vous allez créer les classes Entity Framework appellera chaque fois qu
 
     Vous avez écrit le code de simulation d’erreur temporaire d’une manière qui vous permet de provoquer des erreurs temporaires en entrant une valeur différente dans l’interface utilisateur. Comme alternative, vous pouvez écrire le code de l’intercepteur pour toujours générer la séquence d’exceptions temporaires sans vérification pour une valeur de paramètre particulier. Vous pouvez ensuite ajouter l’intercepteur uniquement lorsque vous souhaitez générer des erreurs temporaires. Si vous le faites, cependant, n’ajoutez pas l’intercepteur jusqu'à ce que la fin de l’initialisation de base de données. En d’autres termes, effectuez l’opération d’au moins une base de données telles qu’une requête sur l’un des jeux d’entités avant de commencer à générer des erreurs temporaires. Entity Framework exécute plusieurs requêtes pendant l’initialisation de base de données, et elles ne sont pas exécutées dans une transaction, les erreurs pendant l’initialisation risquerait de provoquer le contexte obtenir un état incohérent.
 
-## <a name="test-logging-and-connection-resiliency"></a>Résilience des connexions et de journalisation de test
+## <a name="test-the-new-configuration"></a>Tester la nouvelle configuration
 
 1. Appuyez sur **F5** à exécuter l’application en mode débogage, puis cliquez sur le **étudiants** onglet.
 2. Examinez le Visual Studio **sortie** fenêtre pour afficher la sortie de traçage. Vous devrez peut-être défiler vers le haut au-delà de certaines erreurs JavaScript pour obtenir les journaux écrits par votre journal.
@@ -167,14 +173,19 @@ Ensuite, vous allez créer les classes Entity Framework appellera chaque fois qu
     ![Exception factice](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 5. Supprimez les commentaires de la *SetExecutionStrategy* de ligne dans *SchoolConfiguration.cs*.
 
-## <a name="summary"></a>Récapitulatif
-
-Dans ce didacticiel, vous avez vu comment activer la résilience des connexions et enregistrer les commandes SQL qui Entity Framework compose et envoie à la base de données. Dans le didacticiel suivant, vous allez déployer l’application à Internet, à l’aide des Migrations Code First pour déployer la base de données.
-
-Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer.
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans [accès aux données ASP.NET - ressources recommandées](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Précédent](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Suivant](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Résilience des connexions est activée
+> * Interception des commandes est activée
+> * Tester la nouvelle configuration
+
+Passez à l’article suivant pour en savoir plus sur les migrations Code First et de déploiement Azure.
+> [!div class="nextstepaction"]
+> [Code First migrations et déploiement Azure](migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application.md)

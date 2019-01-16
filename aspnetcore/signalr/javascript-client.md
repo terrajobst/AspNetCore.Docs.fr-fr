@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/javascript-client
-ms.openlocfilehash: cd64a65889227d84615768bc3d8fddcd362fbba4
-ms.sourcegitcommit: eef99d14d96dc8c3c1bb0e2c4cb14da152f8a952
+ms.openlocfilehash: acdb4d1a59d980010fe89fe381190425cbb12901
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53022477"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341450"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Client JavaScript ASP.NET Core SignalR
 
@@ -60,7 +60,7 @@ Pour empêcher la lecture des données sensibles à partir d’un autre site, un
 Les clients JavaScript appellent les méthodes publiques sur les hubs via la méthode [invoke](/javascript/api/%40aspnet/signalr/hubconnection#invoke) de la [HubConnection](/javascript/api/%40aspnet/signalr/hubconnection). La méthode `invoke` accepte deux arguments :
 
 * Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode sur le hub est `SendMessage`.
-* Tous les arguments définis dans la méthode de hub. Dans l’exemple suivant, le nom de l’argument est `message`.
+* Tous les arguments définis dans la méthode de hub. Dans l’exemple suivant, le nom de l’argument est `message`. L’exemple de code utilise la syntaxe de fonction arrow est prise en charge dans les versions actuelles de tous les principaux navigateurs à l’exception d’Internet Explorer.
 
   [!code-javascript[Call hub methods](javascript-client/sample/wwwroot/js/chat.js?range=24)]
 

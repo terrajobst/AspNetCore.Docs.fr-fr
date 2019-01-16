@@ -1,61 +1,46 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
-title: Bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 | Microsoft Docs
+title: Prise en main 4.7 Web Forms ASP.NET et Visual Studio 2017 | Microsoft Docs
 author: Erikre
-description: Cette série de didacticiels pas à pas vous présente les principes de base de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express...
+description: Cette série de didacticiels pas à pas vous apprend les notions de base de la création d’une application Web Forms ASP.NET à l’aide de Microsoft Visual Studio et ASP.NET 4.7
 ms.author: riande
-ms.date: 09/08/2014
+ms.date: 01/09/2019
 ms.assetid: 9b96eaa1-8ef0-4338-a2e8-e0f970bfaf68
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/introduction-and-overview
 msc.type: authoredcontent
-ms.openlocfilehash: b9ed6ce4ac13f047f53c56e183433cbd038ea15c
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: fb41ce72e9454d8d670a0b95234d2bc3f909f0ee
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450682"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341550"
 ---
-<a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2013"></a>Bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013
+<a name="getting-started-with-aspnet-45-web-forms-and-visual-studio-2017"></a>Bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2017
 ====================
-par [Erik Reitan](https://github.com/Erikre)
 
 [Télécharger le projet de Wingtip Toys exemple (c#)](http://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) ou [télécharger l’E-book (PDF)](http://download.microsoft.com/download/0/F/B/0FBFAA46-2BFD-478F-8E56-7BF3C672DF9D/Getting%20Started%20with%20ASP.NET%204.5%20Web%20Forms%20and%20Visual%20Studio%202013.pdf)
 
-Cette série de didacticiels pas à pas vous apprend les notions de base de la création d’une application Web Forms ASP.NET à l’aide de ASP.NET 4.5 et Microsoft Visual Studio Express 2013 pour le Web. 
+Cette série de didacticiels vous montre comment créer une application Web Forms ASP.NET avec ASP.NET 4.5 et Microsoft Visual Studio 2017. 
 
 ## <a name="introduction"></a>Introduction
 
-Cette série de didacticiels vous guide à travers les étapes requises pour créer une application Web Forms ASP.NET à l’aide de Visual Studio Express 2013 pour le Web et ASP.NET 4.5.
+Cette série de didacticiels vous guide tout au long de la création d’une application Web Forms ASP.NET à l’aide de Visual Studio 2017 et ASP.NET 4.5. Vous allez créer une application nommée **Wingtip Toys** : un site web storefront simplifiée vente d’articles en ligne. Lors de la série, les nouvelles fonctionnalités de ASP.NET 4.5 sont mises en surbrillance.
 
-L’application que vous allez créer est nommée **Wingtip Toys**. Il est un exemple simplifié d’un site web avant de magasin qui vend des éléments en ligne. Cette série de didacticiels met en évidence les nouvelles fonctionnalités disponibles dans ASP.NET 4.5.
+### <a name="target-audience"></a>Public cible
 
-Commentaires sont les bienvenus, et nous allons s’efforcer de mettre à jour cette série de didacticiels en fonction de vos suggestions.
+Les développeurs qui découvrent les Web Forms ASP.NET sont le public cible de cette série de didacticiels.
 
-### <a name="download-completed-project"></a>Projet de téléchargement terminé
+Vous devez avoir des connaissances dans les domaines suivants :
 
-Vous pouvez télécharger un projet c# qui contient la fin du didacticiel.
+- Programmation orientée objet (OOP) et les langues
+- Développement Web (HTML, CSS et JavaScript)
+- bases de données relationnelles
+- Architecture multiniveau
 
-- [Bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (c#)
-
-### <a name="review-the-content-by-taking-the-related-aspnet-web-forms-quiz"></a>Passez en revue le contenu en prenant le questionnaire de Web Forms ASP.NET connexe
-
-Après avoir terminé ce didacticiel, testez vos connaissances et approfondir les concepts clés en prenant le [ASP.NET Web Forms questionnaire](http://quizapp.cloudapp.net/?quiz=ASP.NET&cdn_id=2014-01-17-001). Ce questionnaire a été spécifiquement conçu de contenu de cette série de didacticiels. Chaque question du test fournit une explication ainsi que des liens vers des informations supplémentaires.
-
-- [Web Forms ASP.NET questionnaire](http://quizapp.cloudapp.net/?quiz=ASP.NET)
-
-### <a name="audience"></a>Public
-
-Est de cette série de didacticiels destiné aux développeurs expérimentés qui débutent avec ASP.NET Web Forms. Un développeur intéressé à cette série de didacticiels doit avoir les compétences suivantes :
-
-- Familiarisés avec un objet orientée langage de programmation (OOP)
-- Maîtriser les concepts de développement Web (HTML, CSS et JavaScript)
-- Maîtriser les concepts de base de données relationnelle
-- Maîtriser les concepts d’architecture multiniveau
-
-Si vous souhaitez passer en revue les éléments mentionnés ci-dessus, examinez le contenu suivant :
+Pour passer en revue ces zones, envisagez d’étudier le contenu suivant :
 
 - [Mise en route avec Visual c#](https://msdn.microsoft.com/library/a72418yk.aspx)
-- [Développement Web](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
+- [Web Development](https://msdn.microsoft.com/beginner/bb308760.aspx), [HTML, CSS, JavaScript, SQL, PHP, JQuery](http://w3schools.com/)
 - [Base de données relationnelle](http://en.wikipedia.org/wiki/Relational_database)
 - [Architecture à plusieurs niveaux](http://en.wikipedia.org/wiki/Multitier_architecture)
 
@@ -69,7 +54,10 @@ Les fonctionnalités de Web Form ASP.NET présentées dans cette série incluent
 - Programme d’amorçage
 - Entity Framework Code First, base de données locale
 - Validation de la demande
-- Contrôles de données fortement typés liaison, les Annotations de données, de modèle et que la valeur des fournisseurs
+- Contrôles de données fortement typées
+- Liaison de modèle
+- Annotations de données
+- Fournisseurs de valeurs
 - SSL et OAuth
 - ASP.NET Identity, Configuration et autorisation
 - Validation non obstrusive
@@ -78,12 +66,12 @@ Les fonctionnalités de Web Form ASP.NET présentées dans cette série incluent
 
 ### <a name="application-scenarios-and-tasks"></a>Tâches et des scénarios d’application
 
-Tâches décrites dans cette série sont les suivantes :
+Tâches de la série de didacticiels :
 
-- Création, la révision et le nouveau projet en cours d’exécution
-- Création de la structure de base de données
-- L’initialisation et l’amorçage de la base de données
-- Personnalisation de l’interface utilisateur à l’aide de styles, de graphiques et d’une page maître
+- Création, révision et un nouveau projet en cours d’exécution
+- Création d’une structure de base de données
+- L’initialisation et l’amorçage d’une base de données
+- Personnalisation de l’interface utilisateur avec des styles, des graphiques et une page maître
 - Ajout de pages et la navigation
 - Affichage des détails de menu et des données de produit
 - Création d’un panier d’achat
@@ -98,42 +86,49 @@ Tâches décrites dans cette série sont les suivantes :
 
 ## <a name="overview"></a>Vue d'ensemble
 
-Si vous débutez avec ASP.NET Web Forms, mais êtes familiarisé avec les concepts de programmation, vous avez le didacticiel de droite. Si vous êtes déjà familiarisé avec ASP.NET Web Forms, vous pouvez bénéficier de cette série de didacticiels par les nouvelles fonctionnalités disponibles dans ASP.NET 4.5. Si vous n’êtes pas familiarisé avec les concepts de programmation et ASP.NET Web Forms, consultez les didacticiels supplémentaires fournies dans les formulaires Web [mise en route](../../../index.md) section sur le site Web ASP.NET.
+Cette série de didacticiels est destinée à une personne connaissant les concepts de programmation, mais aucun nouveau Web Forms ASP.NET. Si vous êtes déjà familiarisé avec ASP.NET Web Forms, cette série peut toujours vous aider à en savoir plus sur les nouvelles fonctionnalités de ASP.NET 4.5. Pour les lecteurs êtes pas familiarisés avec les concepts de programmation et ASP.NET Web Forms, consultez les didacticiels de Web Forms supplémentaires fournies dans le [mise en route](../../../index.md) section sur le site Web ASP.NET.
 
-Spécifique au **dernière** ASP.NET 4.5 fonctionnalités fournies dans les formulaires Web cette série de didacticiels inclure les éléments suivants :
+Le fournies dans cette série de didacticiels ASP.NET 4.5 inclut les fonctionnalités suivantes :
 
-- Une interface utilisateur simple pour la création de projets de cette offre [prennent en charge plusieurs infrastructures ASP.NET](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#add) (Web Forms, MVC et API Web).
-- [Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap), une infrastructure de mise en page et des thèmes qui fournit des fonctionnalités de création et de thèmes réactives.
+- Une interface utilisateur simple pour créer des projets qui offre [prise en charge de nombreuses infrastructures ASP.NET](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#add) (Web Forms, MVC et API Web).
+- [Bootstrap](../../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#bootstrap), une disposition, thèmes et framework de conception réactive.
 - [ASP.NET Identity](../../../../identity/index.md), un nouveau système d’appartenance ASP.NET qui fonctionne de la même dans toutes les infrastructures ASP.NET et fonctionne avec des logiciels autres que IIS d’hébergement web.
-- [Entity Framework 6](https://msdn.microsoft.com/data/ef.aspx), une mise à jour Entity Framework qui vous permet de récupérez et manipuler des données de manière fortement typée d’objets, accéder aux données de façon asynchrone, gérer les défaillances temporaires de connexion et consigner les instructions SQL.
+- [Entity Framework 6](https://msdn.microsoft.com/data/ef.aspx)
 
-Pour obtenir une liste complète des fonctionnalités de ASP.NET 4.5, consultez [ASP.NET et Web Tools pour Visual Studio 2013 Release Notes de publication](../../../../visual-studio/overview/2013/release-notes.md).
+  Une mise à jour vers Entity Framework, ce qui vous permet :
+  - Récupérer et manipuler des données en tant qu’objets fortement typés
+  - Accéder aux données de façon asynchrone
+  - Gérer les défaillances temporaires de connexion
+  - Instructions de journalisation SQL
 
-### <a name="the-wingtip-toys-sample-application"></a>L’exemple d’Application Wingtip Toys
+Pour une liste complète des fonctionnalités ASP.NET 4.5, consultez [ASP.NET et Web Tools pour Visual Studio 2013 Release Notes de publication](../../../../visual-studio/overview/2013/release-notes.md).
 
-Les captures d’écran suivantes fournissent un aperçu rapide de l’application Web forms ASP.NET que vous allez créer dans cette série de didacticiels. Lorsque vous exécutez l’application à partir de Visual Studio Express 2013 pour le Web, vous verrez la page d’accueil web suivantes.
+### <a name="the-wingtip-toys-sample-application"></a>L’exemple d’application Wingtip Toys
+
+Les captures d’écran suivantes proviennent de l’application Web Forms ASP.NET que vous créez dans cette série de didacticiels. Lorsque vous exécutez l’application dans Visual Studio, la page d’accueil web suivante s’affiche.
 
 ![Wingtip Toys - page par défaut](introduction-and-overview/_static/image1.png)
 
-Vous pouvez enregistrer en tant qu’un nouvel utilisateur, ou connectez-vous en tant qu’un utilisateur existant. Navigation est fournie en haut de chaque catégorie de produits en récupérant les produits disponibles à partir de la base de données.
+Vous pouvez enregistrer en tant qu’un nouvel utilisateur, ou connectez-vous en tant qu’un utilisateur existant. Le volet de navigation supérieur propose des liens vers les catégories de produits et de leurs produits à partir de la base de données.
 
-En sélectionnant le lien de produits, vous serez en mesure de voir une liste de tous les produits disponibles.
+Si vous sélectionnez **produits**, tous les produits disponibles sont affichés. 
 
 ![Wingtip Toys - produits](introduction-and-overview/_static/image2.png)
 
-Vous pouvez également voir les détails du produit individuels en sélectionnant un des produits répertoriés.
+Si vous sélectionnez un produit spécifique, les détails du produit sont affichés.
+
 
 ![Wingtip Toys - détails du produit](introduction-and-overview/_static/image3.png)
 
-En tant qu’utilisateur, vous pouvez inscrire et connectez-vous à l’aide de la fonctionnalité par défaut du modèle Web Forms. Ce didacticiel explique également comment se connecter à l’aide d’un compte Gmail existant. En outre, vous pouvez vous connecter en tant que l’administrateur pour ajouter et supprimer des produits à partir de la base de données.
+En tant qu’utilisateur, vous pouvez inscrire et se connecter avec des fonctionnalités par défaut de modèle Web Forms. Ce didacticiel explique également comment se connecter à l’aide d’un compte Gmail existant. En outre, vous pouvez vous connecter en tant que l’administrateur pour ajouter et supprimer des produits à partir de la base de données.
 
 ![Wingtip Toys - connectez-vous](introduction-and-overview/_static/image4.png)
 
-Une fois que vous êtes connecté en tant qu’utilisateur, vous pouvez ajouter des produits au panier d’achat et de validation avec PayPal. Notez que cet exemple d’application est conçue pour fonctionner avec sandbox du développeur de PayPal. Aucune transaction argent n’aura lieu.
+Une fois que vous êtes connecté en tant qu’utilisateur, vous pouvez ajouter des produits au panier d’achat et de validation avec PayPal. L’exemple d’application est conçu pour fonctionner dans un sandbox du développeur de PayPal. Aucune transaction money réelle n’a lieu.
 
 ![Wingtip Toys - panier d’achat](introduction-and-overview/_static/image5.png)
 
-PayPal confirmera votre compte, l’ordre et les informations de paiement.
+PayPal confirme vos informations de compte, de commande et de paiement.
 
 ![Wingtip Toys - PayPal](introduction-and-overview/_static/image6.png)
 
@@ -143,54 +138,59 @@ Après le renvoi de PayPal, vous pouvez consulter et terminer votre commande.
 
 ## <a name="prerequisites"></a>Prérequis
 
-Avant de commencer, assurez-vous que vous avez installé sur votre ordinateur les logiciels suivants :
+Avant de commencer, assurez-vous que le logiciel suivant est installé sur votre ordinateur :
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) ou [Microsoft Visual Studio Express 2013 pour le Web](https://www.microsoft.com/visualstudio/11/downloads#express-web). Le .NET Framework est installé automatiquement.
+- [Microsoft Visual Studio 2017 ou Microsoft Visual Studio Community 2017](https://visualstudio.microsoft.com/downloads/).
 
-Cette série de didacticiels utilise Microsoft Visual Studio Express 2013 pour le Web. Vous pouvez utiliser soit Microsoft Visual Studio Express 2013 pour le Web ou Microsoft Visual Studio 2013 pour terminer cette série de didacticiels.
+Le .NET Framework est installé automatiquement.
 
-> [!NOTE] 
-> 
-> Microsoft Visual Studio 2013 et Microsoft Visual Studio Express 2013 pour le Web seront souvent être appelé Visual Studio tout au long de cette série de didacticiels.
+Cette série de didacticiels utilise Microsoft Visual Studio Community 2017. Vous pouvez utiliser qu’ou Microsoft Visual Studio 2017 pour terminer cette série de didacticiels.
 
+Notez les points suivants concernant Visual Studio :
 
-Si vous avez déjà installée une version de Visual Studio, le processus d’installation installe Visual Studio 2013 ou Microsoft Visual Studio Express 2013 pour le Web en regard de la version existante. Les sites que vous avez créé dans les versions antérieures peuvent être ouverts dans Visual Studio 2013 et continuent à ouvrir dans les versions précédentes.
+* Microsoft Visual Studio 2017 et Microsoft Visual Studio Community 2017 sont appelés *Visual Studio* tout au long de cette série de didacticiels.
 
-> [!NOTE] 
-> 
-> Cette procédure pas à pas suppose que vous avez choisi le *développement Web* collection de paramètres de la première fois que vous avez démarré Visual Studio. Pour plus d’informations, consultez [Comment : sélectionner des paramètres d’environnement de développement Web](https://msdn.microsoft.com/library/ff521558.aspx).
+* Visual Studio 2017 est installé en regard les anciennes versions déjà installées. Les sites créés dans les versions antérieures peuvent être ouverts dans Visual Studio 2017 et continuent à ouvrir dans les versions précédentes.
 
+* La première fois que vous avez démarré Visual Studio, il est supposé que vous avez sélectionné le *développement Web* paramètres. Pour plus d'informations, voir [Procédure : Sélectionnez les paramètres d’environnement de développement de Web](https://msdn.microsoft.com/library/ff521558.aspx).
 
-## <a name="download-the-sample-application"></a>Télécharger l’exemple d’Application
+Après avoir installé les composants requis, vous êtes prêt à commencer à créer le projet Web présenté dans cette série de didacticiels.
 
-Après avoir installé les composants requis, vous êtes prêt à commencer à créer le projet Web est présenté dans cette série de didacticiels. Si vous souhaitez **éventuellement** exécuter l’exemple d’application qui crée cette série de didacticiels, vous pouvez le télécharger à partir du site d’exemples MSDN. Ce téléchargement contient les éléments suivants :
+## <a name="download-the-sample-application"></a>Télécharger l’exemple d’application
+
+ Vous pouvez télécharger l’exemple terminé applicatiion à tout moment à partir du site d’exemples MSDN :
+
+[Bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (c#) 
+
+ Ce téléchargement comprend les éléments suivants :
 
 - L’exemple d’application dans le *WingtipToys* dossier.
 - Les ressources utilisées pour créer l’exemple d’application dans le *WingtipToys-ressources* dossier dans le *WingtipToys* dossier.
 
-#### <a name="download-the-file-from-msdn-samples-site"></a>Téléchargez le fichier à partir du site d’exemples de MSDN :
+Le téléchargement est un *.zip* fichier. Pour voir le projet terminé qui crée cette série de didacticiels, recherchez et sélectionnez le *C#* dossier dans le fichier .zip. Enregistrer le C# vers le dossier vous permet de travailler avec les projets Visual Studio. Par défaut, le dossier de projets Visual Studio 2017 est :
 
-[Bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (c#) 
-
-Le téléchargement est un <em>.zip</em> fichier. Pour voir le projet terminé qui crée cette série de didacticiels, recherchez et sélectionnez le <em>c#</em>dossier dans le <em>.zip</em> fichier. Enregistrer le <em>c#</em> dossier dans le dossier que vous utilisez pour travailler avec des projets Visual Studio 2013. Par défaut, le dossier de projets Visual Studio 2013 est le suivant :
-
-<strong>C:\Users&#92;</strong><strong><em>&lt;nom d’utilisateur&gt;</em></strong><strong>\Documents\Visual Studio 2013\Projects</strong>
+<strong>C:\Users&#92;</strong><strong><em>&lt;nom d’utilisateur&gt;</em></strong><strong>\source\repos</strong>
 
 Renommer le ***c#*** dossier ***WingtipToys***.
 
 > [!NOTE]
 > Si vous avez déjà un dossier nommé *WingtipToys* dans votre dossier de projets, renommez temporairement ce dossier existant avant de renommer le *c#* dossier *WingtipToys*.
 
+Pour exécuter le projet terminé, ouvrez le *WingtipToys* dossier et double-cliquez sur le *WingtipToys.sln* fichier. Visual Studio 2017 ouvre le projet. Ensuite, cliquez sur le *Default.aspx* fichier **l’Explorateur de solutions** et sélectionnez **afficher dans le navigateur**.
 
-Pour exécuter le projet terminé, ouvrez le *WingtipToys* dossier et double-cliquez sur le *WingtipToys.sln* fichier. Visual Studio 2013 s’ouvre le projet. Ensuite, cliquez sur le *Default.aspx* fichier dans la fenêtre Explorateur de solutions et cliquez sur Afficher dans le navigateur dans le menu contextuel.
+## <a name="take-a-aspnet-web-forms-quiz-to-review-content"></a>Participez à un questionnaire de Web Forms ASP.NET pour passer en revue le contenu
 
-### <a name="tutorial-support-and-comments"></a>Commentaires et didacticiel prise en charge
+À l’issue de la série de didacticiels, participez à un questionnaire pour tester vos connaissances et de renforcer les concepts clés. Chaque question fournit une explication et les liens vers des informations supplémentaires.
 
-Utilisez la section de questions-réponses incluse avec le [bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) exemple (c#) pour vos questions ou commentaires.
+ * [Web Forms ASP.NET questionnaire](https://blogs.msdn.microsoft.com/erikreitan/2016/01/08/asp-net-web-forms-quiz/) 
 
-Commentaires sur cette série de didacticiels sont les bienvenus, et lorsque la mise à jour de cette série de didacticiels chaque effort sera fait tenir des corrections de compte ou des suggestions d’améliorations qui sont fournies dans les commentaires de didacticiel.
+## <a name="tutorial-support-and-comments"></a>Commentaires et didacticiel prise en charge
 
-Quand une erreur se produit pendant le développement, ou si le site Web ne s’exécute pas correctement, les messages d’erreur peuvent donner des indices complexes à la source du problème ou ne peuvent pas expliquer comment la corriger. Pour vous aider avec quelques scénarios courants de problème, vous pouvez également utiliser le [forums ASP.NET](https://forums.asp.net/) ou la section de questions-réponses inclus avec le [bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) () C#) exemple. Si vous obtenez un message d’erreur ou quelque chose ne fonctionne pas lorsque vous parcourez les didacticiels, veillez à vérifier les emplacements ci-dessus.
+Pour les questions et vos commentaires, utilisez la section de questions-réponses incluse sur le [bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) exemple de page.
+
+Commentaires sur cette série de didacticiels sont les bienvenus. Lorsque la mise à jour de cette série de didacticiels, tout est mis en œuvre à prendre en compte des corrections ou des suggestions d’améliorations.
+
+Si une erreur se produit, les messages d’erreur correspondante peut entraîner une confus, sans aucune bonne explication sur la façon de résoudre le problème. Pour une aide, vous pouvez vérifier le [forums ASP.NET](https://forums.asp.net/). Une autre bonne source est la section de questions-réponses dans le [bien démarrer avec Web Forms ASP.NET 4.5 et Visual Studio 2013 - Wingtip Toys](https://go.microsoft.com/fwlink/?LinkID=389434&clcid=0x409) (C#) exemple de page. 
 
 > [!div class="step-by-step"]
 > [Next](create-the-project.md)
