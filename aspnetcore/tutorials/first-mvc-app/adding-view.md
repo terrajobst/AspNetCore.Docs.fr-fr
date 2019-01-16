@@ -5,12 +5,12 @@ description: Ajout d’une vue dans une application ASP.NET Core MVC simple
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 5267e5a49bb6ecdd4cef671989f111eae7a64ec4
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: 321ffd6b0168d4befc950a58035d19561e879491
+ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53381814"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54249449"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
@@ -24,7 +24,7 @@ Actuellement, la méthode `Index` retourne une chaîne avec un message qui est c
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_4)]
 
-Le code précédent retourne un objet `View`. Il utilise un modèle de vue pour générer une réponse HTML au navigateur. Les méthodes du contrôleur (également appelées méthodes d’action), comme la méthode `Index` ci-dessus, retournent généralement un [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) (ou une classe dérivée de `ActionResult`), et non une chaîne ou un type similaire.
+Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controller.View*> du contrôleur. Il utilise un modèle de vue pour générer une réponse HTML. Les méthodes du contrôleur (également appelées *méthodes d’action*), comme la méthode `Index` ci-dessus, retournent généralement un <xref:Microsoft.AspNetCore.Mvc.IActionResult> (ou une classe dérivée de <xref:Microsoft.AspNetCore.Mvc.ActionResult>), et non un type comme `string`.
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
@@ -86,9 +86,9 @@ Sélectionnez les liens du menu (**MvcMovie**, **Accueil** et **Confidentialité
 
 Les modèles de [disposition](xref:mvc/views/layout) vous permettent de spécifier la disposition du conteneur HTML de votre site dans un emplacement unique, puis de l’appliquer sur plusieurs pages de votre site. Recherchez la ligne `@RenderBody()`. `RenderBody` est un espace réservé dans lequel toutes les pages spécifiques aux vues que vous créez s’affichent, *encapsulées* dans la page de disposition. Par exemple, si vous sélectionnez le lien **Confidentialité**, la vue **Views/Home/Privacy.cshtml** est restituée dans la méthode `RenderBody`.
 
-## <a name="change-the-title-and-menu-link-in-the-layout-file"></a>Changer le lien de titre et de menu dans le fichier de disposition
+## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>Changer le lien de titre, de pied de page et de menu dans le fichier de disposition
 
-* Dans l’élément de titre, remplacez `MvcMovie` par `Movie App`.
+* Dans les éléments de titre et de pied de page, remplacez `MvcMovie` par `Movie App`.
 * Modifier l’élément d’ancrage `<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MvcMovie</a>` par `<a class="navbar-brand" asp-controller="Movies" asp-action="Index">Movie App</a>`.
 
 Le balisage suivant illustre les changements en surbrillance :

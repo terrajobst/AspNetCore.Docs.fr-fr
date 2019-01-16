@@ -6,12 +6,12 @@ ms.author: spboyer
 ms.custom: mvc
 ms.date: 12/20/2018
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 8c590743328885336498ca2446c618b13a7d2ce2
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: 217dc840748ef33173ae6a8c001aee558864ec59
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997225"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099407"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -324,15 +324,15 @@ icmp-blocks:
 rich rules: 
 ```
 
-### <a name="ssl-configuration"></a>Configuration de SSL
+### <a name="https-configuration"></a>Configuration HTTPS
 
-Pour configurer Apache pour SSL, vous utilisez le module *mod_ssl*. Le module *mod_ssl* a été installé parallèlement au module *httpd*. S’il n’a pas été installé, utilisez `yum` pour l’ajouter à la configuration.
+Pour configurer Apache pour HTTPS, vous utilisez le module *mod_ssl*. Le module *mod_ssl* a été installé parallèlement au module *httpd*. S’il n’a pas été installé, utilisez `yum` pour l’ajouter à la configuration.
 
 ```bash
 sudo yum install mod_ssl
 ```
 
-Pour mettre en œuvre SSL, installez le module `mod_rewrite` afin de permettre la réécriture d’URL :
+Pour mettre en œuvre HTTPS, installez le module `mod_rewrite` afin de permettre la réécriture d’URL :
 
 ```bash
 sudo yum install mod_rewrite

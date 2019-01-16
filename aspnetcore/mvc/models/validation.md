@@ -4,14 +4,14 @@ author: tdykstra
 description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/06/2018
+ms.date: 01/04/2019
 uid: mvc/models/validation
-ms.openlocfilehash: f1757f807e50019e5071abc42ec3129935ab77aa
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: f3a34972006b5fdee307c9a8d9989b2cc1e36893
+ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225458"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54099381"
 ---
 # <a name="model-validation-in-aspnet-core-mvc"></a>Validation de modèle dans ASP.NET Core MVC
 
@@ -44,23 +44,23 @@ Voici un modèle `Movie` annoté pour une application qui stocke des information
 
 Une simple lecture du modèle révèle les règles concernant les données de cette application, facilitant ainsi la maintenance du code. Voici plusieurs attributs de validation intégrés courants :
 
-* `[CreditCard]` : vérifie que la propriété a un format de carte de crédit.
+* `[CreditCard]`: Vérifie que la propriété a un format de carte de crédit.
 
-* `[Compare]` : vérifie que deux propriétés d’un modèle sont en correspondance.
+* `[Compare]`: Vérifie que deux propriétés d’un modèle sont en correspondance.
 
-* `[EmailAddress]` : vérifie que la propriété a un format d’e-mail.
+* `[EmailAddress]`: Vérifie que la propriété a un format d’e-mail.
 
-* `[Phone]` : vérifie que la propriété a un format de numéro de téléphone.
+* `[Phone]`: Vérifie que la propriété a un format de numéro de téléphone.
 
-* `[Range]` : vérifie que la valeur de la propriété est dans la plage donnée.
+* `[Range]`: Vérifie que la valeur de la propriété est dans la plage donnée.
 
-* `[RegularExpression]` : vérifie que les données correspondent à l’expression régulière spécifiée.
+* `[RegularExpression]`: Vérifie que les données correspondent à l’expression régulière spécifiée.
 
-* `[Required]` : rend une propriété obligatoire.
+* `[Required]`: Rend une propriété obligatoire.
 
-* `[StringLength]` : vérifie que la longueur d’une propriété de type chaîne est au plus la longueur maximale spécifiée.
+* `[StringLength]`: Vérifie que la longueur d’une propriété de type chaîne est au plus la longueur maximale spécifiée.
 
-* `[Url]` : vérifie que la propriété a un format d’URL.
+* `[Url]`: Vérifie que la propriété a un format d’URL.
 
 MVC prend en charge tout attribut dérivant de `ValidationAttribute` à des fins de validation. Vous pouvez trouver de nombreux attributs de validation utiles dans l’espace de noms [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations).
 
@@ -84,7 +84,7 @@ L’état du modèle représente les erreurs de validation dans les valeurs du f
 
 MVC continue la validation des champs jusqu’à ce que le nombre maximal d’erreurs soit atteint (200 par défaut). Vous pouvez configurer ce nombre avec le code suivant dans `Startup.ConfigureServices` :
 
-[!code-csharp[](validation/sample/Startup.cs?range=27)]
+[!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors)]
 
 ## <a name="handle-model-state-errors"></a>Gérer les erreurs d’état de modèle
 

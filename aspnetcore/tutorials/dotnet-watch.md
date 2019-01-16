@@ -5,12 +5,12 @@ description: Ce tutoriel montre comment installer et utiliser l’outil Observat
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: fc08efa433f688a0b9009aed35fdee2b0c228619
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: f1e0d91b27df4af7cbfb6f2547c94c0370c65d0d
+ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063297"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54207500"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
@@ -20,7 +20,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT) et [Victor Hurdugaci](https
 
 Ce tutoriel utilise une API web existante avec deux points de terminaison : un qui retourne une somme et un qui retourne un produit. La méthode du produit comporte un bogue, qui est résolu dans ce tutoriel.
 
-Téléchargez l’[application exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle se compose de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
+Téléchargez l’[application exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/dotnet-watch/sample). Elle est composée de deux projets : *WebApp* (API web ASP.NET Core) et *WebAppTests* (API de tests unitaires pour le web).
 
 Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la commande suivante :
 
@@ -66,7 +66,7 @@ L’outil Observateur de fichiers `dotnet watch` est inclus dans la version 2.1.
 
 ## <a name="run-net-core-cli-commands-using-dotnet-watch"></a>Exécuter les commandes de l’interface CLI de .NET Core avec `dotnet watch`
 
-Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-commands) peuvent être exécutées avec `dotnet watch`. Exemple :
+Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-commands) peuvent être exécutées avec `dotnet watch`. Par exemple :
 
 | Commande | Commande avec watch |
 | ---- | ----- |
@@ -179,4 +179,4 @@ VSTest s’exécute quand n’importe quel fichier change dans un des projets de
 
 ## <a name="dotnet-watch-in-github"></a>`dotnet-watch` dans GitHub
 
-`dotnet-watch` fait partie du [dépôt DotNetTools](https://github.com/aspnet/DotNetTools/tree/master/src/dotnet-watch) GitHub.
+`dotnet-watch` fait partie du [référentiel aspnet/AspNetCore](https://github.com/aspnet/AspNetCore/tree/master/src/Tools/dotnet-watch) GitHub.
