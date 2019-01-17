@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/16/2018
+ms.date: 01/15/2019
 uid: index
-ms.openlocfilehash: fed81090f123084f3f33e75f86d09f55ac7fb481
-ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
+ms.openlocfilehash: e7c81ff82e5206a5aca217417f6cb1c339d72e89
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335297"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341405"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -97,7 +97,7 @@ Pour plus d’informations sur l’utilisation des [directives de préprocesseur
 
 ### <a name="regions-in-sample-code"></a>Régions dans l’exemple de code
 
-Certains exemples d’applications contiennent des sections de code entourées d’instructions C# [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) et [#end-region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion). Le système de génération de documentation injecte ces régions dans les rubriques de documentation affichées.  
+Certains exemples d’applications contiennent des sections de code entourées d’instructions C# [#region](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-region) et [#endregion](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-endregion). Le système de génération de documentation injecte ces régions dans les rubriques de documentation affichées.  
 
 Les noms des régions contiennent généralement le mot « snippet ». L’exemple suivant montre une région nommée `snippet_FilterInCode` :
 
@@ -118,7 +118,7 @@ L’extrait de code C# précédent est référencé dans le fichier Markdown de 
 [!code-csharp[](sample/SampleApp/Program.cs?name=snippet_FilterInCode)]
 ```
 
-Vous pouvez sans risque ignorer (ou supprimer) les instructions `#region` et `#end-region` qui entourent le code. Ne modifiez pas le code dans ces instructions si vous prévoyez d’exécuter les exemples de scénarios décrits dans la rubrique. N’hésitez pas à modifier le code quand vous testez d’autres scénarios.
+Vous pouvez sans risque ignorer (ou supprimer) les instructions `#region` et `#endregion` qui entourent le code. Ne modifiez pas le code dans ces instructions si vous prévoyez d’exécuter les exemples de scénarios décrits dans la rubrique. N’hésitez pas à modifier le code quand vous testez d’autres scénarios.
 
 Pour plus d’informations, consultez [Contribuer à la documentation ASP.NET : extraits de code](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md#code-snippets).
 
