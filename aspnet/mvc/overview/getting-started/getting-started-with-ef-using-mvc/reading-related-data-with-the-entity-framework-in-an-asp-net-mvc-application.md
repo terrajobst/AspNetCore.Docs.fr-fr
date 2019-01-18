@@ -1,28 +1,22 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Lecture des données connexes avec Entity Framework dans une Application ASP.NET MVC | Microsoft Docs
+title: 'Tutoriel : Lire les données associées avec Entity Framework dans une application ASP.NET MVC'
+description: Dans ce didacticiel, vous allez lire et afficher les données associées, autrement dit, les données qu’Entity Framework charge dans les propriétés de navigation.
 author: tdykstra
-description: /AJAX/Tutorials/Using-AJAX-Control-Toolkit-Controls-and-Control-Extenders-VB
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/17/2019
+ms.topic: tutorial
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 18d3720f891e2356af42b58389776f2d04eee39d
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 8660a75655b801364cce7c4b59847c5c00562a27
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913201"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396205"
 ---
-<a name="reading-related-data-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Lecture de données associées avec Entity Framework dans une Application ASP.NET MVC
-====================
-par [Tom Dykstra](https://github.com/tdykstra)
-
-[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+# <a name="tutorial-read-related-data-with-ef-in-an-aspnet-mvc-app"></a>Tutoriel : Lire les données associées avec Entity Framework dans une application ASP.NET MVC
 
 Dans le didacticiel précédent vous terminé le modèle de données School. Dans ce didacticiel, vous allez lire et afficher les données associées, autrement dit, les données qu’Entity Framework charge dans les propriétés de navigation.
 
@@ -32,7 +26,18 @@ Les illustrations suivantes montrent les pages que vous allez utiliser.
 
 ![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-## <a name="lazy-eager-and-explicit-loading-of-related-data"></a>Chargement différé et hâtif, Explicit des données associées
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Découvrez comment charger les données associées
+> * Créer une page Courses
+> * Créer une page Instructors
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Créer un modèle de données plus complexe](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
+
+## <a name="learn-how-to-load-related-data"></a>Découvrez comment charger les données associées
 
 Il existe plusieurs façons que Entity Framework peut charger des données associées dans les propriétés de navigation d’une entité :
 
@@ -54,7 +59,7 @@ Si vous savez que vous avez besoin des données associées pour toutes les entit
 
 En revanche, dans certains scénarios de chargement différé est plus efficace. Le chargement hâtif peut entraîner une jointure très complexe pour être généré, que SQL Server ne peut pas traiter efficacement. Ou, si vous avez besoin accéder aux propriétés de navigation d’une entité uniquement pour un sous-ensemble d’un jeu d’entités que vous traitez, le chargement différé peuvent être plus performantes, car le chargement hâtif permet de récupérer plus de données que vous avez besoin. Si les performances sont essentielles, il est préférable de tester les performances des deux façons afin d’effectuer le meilleur choix.
 
-Le chargement différé peut masquer le code qui provoque des problèmes de performances. Par exemple, le code qui ne spécifie pas le chargement hâtif ou explicit, mais traite un volume élevé d’entités et utilise plusieurs propriétés de navigation dans chaque itération peut être très inefficace (en raison des nombreuses boucles vers la base de données). Une application fonctionnant correctement dans le développement à l’aide d’un serveur SQL local peut avoir des problèmes de performances lors du déplacement vers la base de données SQL Azure en raison de la latence accrue et le chargement différé. Les requêtes de base de données avec une charge de test réaliste de profilage vous aidera à déterminer si le chargement différé est approprié. Pour plus d’informations, consultez [Démystification des stratégies Entity Framework : chargement des données connexes](https://msdn.microsoft.com/magazine/hh205756.aspx) et [à l’aide d’Entity Framework pour réduire la latence du réseau pour SQL Azure](https://msdn.microsoft.com/magazine/gg309181.aspx).
+Le chargement différé peut masquer le code qui provoque des problèmes de performances. Par exemple, le code qui ne spécifie pas le chargement hâtif ou explicit, mais traite un volume élevé d’entités et utilise plusieurs propriétés de navigation dans chaque itération peut être très inefficace (en raison des nombreuses boucles vers la base de données). Une application fonctionnant correctement dans le développement à l’aide d’un serveur SQL local peut avoir des problèmes de performances lors du déplacement vers la base de données SQL Azure en raison de la latence accrue et le chargement différé. Les requêtes de base de données avec une charge de test réaliste de profilage vous aidera à déterminer si le chargement différé est approprié. Pour plus d’informations, consultez [Démystification des stratégies Entity Framework : Chargement des données associées](https://msdn.microsoft.com/magazine/hh205756.aspx) et [à l’aide d’Entity Framework pour réduire la latence du réseau pour SQL Azure](https://msdn.microsoft.com/magazine/gg309181.aspx).
 
 ### <a name="disable-lazy-loading-before-serialization"></a>Désactiver le chargement différé avant la sérialisation
 
@@ -73,13 +78,19 @@ Voici un autre [façons de désactiver le chargement différé](https://msdn.mic
 
     [!code-csharp[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs)]
 
-## <a name="create-a-courses-page-that-displays-department-name"></a>Créer une Page Courses ce nom affiche département
+## <a name="create-a-courses-page"></a>Créer une page Courses
 
 Le `Course` entité inclut une propriété de navigation qui contient le `Department` entité du service auquel le cours est affecté. Pour afficher le nom du département affecté dans une liste de cours, vous devez obtenir le `Name` propriété à partir de la `Department` entité qui se trouve dans le `Course.Department` propriété de navigation.
 
-Créer un contrôleur appelé `CourseController` (pas CoursesController) pour le `Course` type d’entité, en utilisant les options de mêmes pour le **contrôleur MVC 5 avec vues, utilisant Entity Framework** Générateur de modèles automatique qui vous avez fait précédemment pour le `Student` contrôleur, comme indiqué dans l’illustration suivante :
+Créer un contrôleur appelé `CourseController` (pas CoursesController) pour le `Course` type d’entité, en utilisant les options de mêmes pour le **contrôleur MVC 5 avec vues, utilisant Entity Framework** Générateur de modèles automatique qui vous avez fait précédemment pour le `Student` contrôleur :
 
-![Add_Controller_dialog_box_for_Course_controller](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
+| Paramètre | Value |
+| ------- | ----- |
+| Classe de modèle | Sélectionnez **cours (ContosoUniversity.Models)**. |
+| Classe de contexte de données | Sélectionnez **SchoolContext (ContosoUniversity.DAL)**. |
+| Nom du contrôleur | Entrez *CourseController*. Là encore, pas *CoursesController* avec un *s*. Lorsque vous avez sélectionné **cours (ContosoUniversity.Models)**, le **nom du contrôleur** valeur a été automatiquement renseignée. Vous devez modifier la valeur. |
+
+Laissez les autres valeurs par défaut et ajouter le contrôleur.
 
 Ouvrez *Controllers\CourseController.cs* et examinez le `Index` méthode :
 
@@ -103,15 +114,9 @@ Notez que pour la colonne Department, le code structuré affiche le `Name` propr
 
 Exécution de la page (sélectionnez le **cours** onglet sur la page d’accueil de Contoso University) pour afficher la liste avec les noms de service.
 
-![Courses_index_page_with_department_names](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
+## <a name="create-an-instructors-page"></a>Créer une page Instructors
 
-## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>Créer une Page Instructors qui affiche les cours et les inscriptions
-
-Dans cette section, vous allez créer un contrôleur et afficher pour le `Instructor` entité afin d’afficher la page Instructors :
-
-![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
-
-Cette page lit et affiche les données associées comme suit :
+Dans cette section, vous allez créer un contrôleur et afficher pour le `Instructor` entité afin d’afficher la page des formateurs. Cette page lit et affiche les données associées comme suit :
 
 - La liste des formateurs affiche les données associées à partir de la `OfficeAssignment` entité. Il existe une relation un-à-zéro-ou-un entre les entités `Instructor` et `OfficeAssignment`. Vous allez utiliser un chargement hâtif pour la `OfficeAssignment` entités. Comme expliqué précédemment, le chargement hâtif est généralement plus efficace lorsque vous avez besoin des données associées pour toutes les lignes extraites de la table primaire. Dans ce cas, vous souhaitez afficher les affectations de bureaux pour tous les formateurs affichés.
 - Lorsque l’utilisateur sélectionne un formateur, lié `Course` les entités sont affichées. Il existe une relation plusieurs-à-plusieurs entre les entités `Instructor` et `Course`. Vous allez utiliser un chargement hâtif pour la `Course` leur sont associées et les entités `Department` entités. Dans ce cas, le chargement différé peut être plus efficace, car vous avez besoin de cours uniquement pour le formateur sélectionné. Toutefois, cet exemple montre comment utiliser le chargement hâtif pour des propriétés de navigation dans des entités qui se trouvent elles-mêmes dans des propriétés de navigation.
@@ -127,9 +132,15 @@ Dans le *ViewModels* dossier, créez *InstructorIndexData.cs* et remplacez le co
 
 ### <a name="create-the-instructor-controller-and-views"></a>Créer le contrôleur de formateurs et des vues
 
-Créer un `InstructorController` (pas InstructorsController) contrôleur avec actions de lecture/écriture EF comme indiqué dans l’illustration suivante :
+Créer un `InstructorController` (pas InstructorsController) contrôleur avec l’action de lecture/écriture EF :
 
-![Add_Controller_dialog_box_for_Instructor_controller](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
+| Paramètre | Value |
+| ------- | ----- |
+| Classe de modèle | Sélectionnez **instructeur (ContosoUniversity.Models)**. |
+| Classe de contexte de données | Sélectionnez **SchoolContext (ContosoUniversity.DAL)**. |
+| Nom du contrôleur | Entrez *InstructorController*. Là encore, pas *InstructorsController* avec un *s*. Lorsque vous avez sélectionné **cours (ContosoUniversity.Models)**, le **nom du contrôleur** valeur a été automatiquement renseignée. Vous devez modifier la valeur. |
+
+Laissez les autres valeurs par défaut et ajouter le contrôleur.
 
 Ouvrez *Controllers\InstructorController.cs* et ajoutez un `using` instruction pour la `ViewModels` espace de noms :
 
@@ -193,8 +204,6 @@ Vous avez apporté les modifications suivantes au code existant :
 
 Exécutez l’application et sélectionnez le **formateurs** onglet. La page affiche le `Location` propriété de connexes `OfficeAssignment` entités et une table vide de cellule quand il est non lié `OfficeAssignment` entité.
 
-![Instructors_index_page_with_nothing_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
-
 Dans le *Views\Instructor\Index.cshtml* fichier, après la fermeture `table` élément (à la fin du fichier), ajoutez le code suivant. Ce code affiche la liste des cours associés à un formateur quand un formateur est sélectionné.
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample18.cshtml)]
@@ -203,8 +212,6 @@ Ce code lit la propriété `Courses` du modèle de vue pour afficher la liste de
 
 Exécutez la page et sélectionnez un formateur. Vous voyez à présent une grille qui affiche les cours affectés au formateur sélectionné et, pour chaque cours, vous voyez le nom du département affecté.
 
-![Instructors_index_page_with_instructor_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
 Après le bloc de code que vous venez d’ajouter, ajoutez le code suivant. Ceci affiche la liste des étudiants qui sont inscrits à un cours quand ce cours est sélectionné.
 
 [!code-cshtml[Main](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample19.cshtml)]
@@ -212,8 +219,6 @@ Après le bloc de code que vous venez d’ajouter, ajoutez le code suivant. Ceci
 Ce code lit la `Enrollments` propriété du modèle de vue pour afficher une liste d’étudiants inscrits dans le cours.
 
 Exécutez la page et sélectionnez un formateur. Ensuite, sélectionnez un cours pour afficher la liste des étudiants inscrits et leurs notes.
-
-![Instructors_index_page_with_instructor_and_course_selected](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
 ### <a name="adding-explicit-loading"></a>Ajout de chargement explicite
 
@@ -239,14 +244,20 @@ Notez que vous utilisez le `Collection` méthode pour charger une propriété de
 
 Exécuter maintenant de la page d’Index des formateurs et vous ne verrez aucune différence dans ce qui est affiché dans la page, même si vous avez modifié la façon dont les données sont récupérées.
 
-## <a name="summary"></a>Récapitulatif
-
-Vous avez maintenant utilisé les trois façons (différés hâtif et explicites) pour charger des données connexes dans les propriétés de navigation. Dans le didacticiel suivant, vous apprendrez à mettre à jour les données associées.
-
-Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer.
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans le [accès aux données ASP.NET - ressources recommandées](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Précédent](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
-> [Suivant](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Appris à charger les données associées
+> * Créé une page de cours
+> * Création d’une page Instructors
+
+Passez à l’article suivant pour apprendre à mettre à jour les données associées.
+
+> [!div class="nextstepaction"]
+> [Mettre à jour les données associées](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
