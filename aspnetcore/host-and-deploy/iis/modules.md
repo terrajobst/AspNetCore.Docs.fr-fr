@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez les modules IIS actifs et inactifs pour les applications ASP.NET Core et comment gérer les modules IIS.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 01/17/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: c6a6cc9b6b3410267c6f5034f824648a1ebbe10f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 8c32a668b3945f0da0194162e19e965b4aed3934
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862237"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396270"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
 
@@ -105,13 +105,13 @@ Pour plus d’informations sur la désactivation de modules avec des paramètres
 
 Si vous décidez de supprimer un module avec un paramètre dans *web.config*, déverrouillez le module et déverrouillez la section `<modules>` de *web.config* en premier :
 
-1. Déverrouillez le module au niveau du serveur. Sélectionnez le serveur IIS dans la barre latérale **Connexions** du Gestionnaire IIS. Ouvrez les **Modules** dans la zone **IIS**. Sélectionnez le module dans la liste. Dans la barre latérale **Actions** à droite, sélectionnez **Déverrouiller**. Déverrouillez tous les modules que vous envisagez de supprimer de *web.config*.
+1. Déverrouillez le module au niveau du serveur. Sélectionnez le serveur IIS dans la barre latérale **Connexions** du Gestionnaire IIS. Ouvrez les **Modules** dans la zone **IIS**. Sélectionnez le module dans la liste. Dans la barre latérale **Actions** à droite, sélectionnez **Déverrouiller**. Si l’entrée d’action du module indique **Verrouiller**, cela signifie que le module est déjà déverrouillé et qu’aucune action n’est nécessaire. Déverrouillez tous les modules que vous envisagez de supprimer de *web.config*.
 
 2. Déployez l’application sans section `<modules>` dans *web.config*. Si une application est déployée avec un fichier *web.config* contenant la section `<modules>` et que celle-ci n’a pas été préalablement déverrouillée dans le Gestionnaire IIS, Configuration Manager lève une exception au moment du déverrouillage de la section. Vous devez donc déployer l’application sans section `<modules>`.
 
-3. Déverrouillez la section `<modules>` dans *web.config*. Dans la barre latérale **Connexions**, sélectionnez le site web dans **Sites**. Dans la zone **Gestion**, ouvrez **l’Éditeur de configuration**. Utilisez les contrôles de navigation pour sélectionner la section `system.webServer/modules`. Dans la barre latérale **Actions** à droite, sélectionnez l’option permettant de **Déverrouiller** la section.
+3. Déverrouillez la section `<modules>` dans *web.config*. Dans la barre latérale **Connexions**, sélectionnez le site web dans **Sites**. Dans la zone **Gestion**, ouvrez **l’Éditeur de configuration**. Utilisez les contrôles de navigation pour sélectionner la section `system.webServer/modules`. Dans la barre latérale **Actions** à droite, sélectionnez l’option permettant de **Déverrouiller** la section. Si l’entrée d’action de la section du module indique **Verrouiller la section**, cela signifie que le module est déjà déverrouillé et qu’aucune action n’est nécessaire.
 
-4. À ce stade, vous pouvez ajouter une section `<modules>` au fichier *web.config* avec un élément `<remove>` pour supprimer le module de l’application. Vous pouvez ajouter plusieurs éléments `<remove>` pour supprimer plusieurs modules. Si des modifications sont apportées au fichier *web.config* sur le serveur, effectuez immédiatement les mêmes modifications dans le fichier *web.config* du projet localement. La suppression d’un module de cette manière n’affecte pas l’utilisation du module avec d’autres applications sur le serveur.
+4. Ajoutez une section `<modules>` au fichier *web.config* local de l’application avec un élément `<remove>` pour supprimer le module de l’application. Ajoutez plusieurs éléments `<remove>` pour supprimer plusieurs modules. Si des modifications sont apportées au fichier *web.config* sur le serveur, effectuez immédiatement les mêmes modifications dans le fichier *web.config* du projet localement. La suppression d’un module à l’aide de cette approche n’affecte pas l’utilisation du module avec d’autres applications sur le serveur.
 
    ```xml
    <configuration>
@@ -122,6 +122,26 @@ Si vous décidez de supprimer un module avec un paramètre dans *web.config*, d�
     </system.webServer>
    </configuration>
    ```
+   
+Pour ajouter ou supprimer des modules pour IIS Express à l’aide de *web.config*, modifiez *applicationHost.config* afin de déverrouiller la section `<modules>` :
+
+1. Ouvrez *{RACINE DE L’APPLICATION}\\.vs\config\applicationhost.config*.
+
+1. Recherchez l’élément `<section>` des modules IIS et changez `overrideModeDefault` en remplaçant `Deny` par `Allow` :
+
+   ```xml
+   <section name="modules" 
+            allowDefinition="MachineToApplication" 
+            overrideModeDefault="Allow" />
+   ```
+   
+1. Recherchez la section `<location path="" overrideMode="Allow"><system.webServer><modules>`. Pour tous les modules à supprimer, définissez `lockItem` en remplaçant `true` par `false`. Dans l’exemple suivant, le module CGI est déverrouillé :
+
+   ```xml
+   <add name="CgiModule" lockItem="false" />
+   ```
+   
+1. Une fois que la section `<modules>` et les modules individuels sont déverrouillés, vous pouvez ajouter ou supprimer des modules IIS à l’aide du fichier *web.config* de l’application pour permettre l’exécution de l’application sur IIS Express.
 
 Vous pouvez également supprimer un module IIS avec *Appcmd.exe*. Fournissez `MODULE_NAME` et `APPLICATION_NAME` dans la commande :
 
@@ -146,7 +166,7 @@ Le module de mise en cache HTTP (`HttpCacheModule`) implémente le cache de sort
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * <xref:host-and-deploy/iis/index>
-* [Présentation des architectures IIS : modules dans IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
+* [Présentation des architectures IIS : modules dans IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [Vue d’ensemble des modules IIS](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [Customizing IIS 7.0 Roles and Modules](https://technet.microsoft.com/library/cc627313.aspx) (Personnalisation des rôles et des modules dans IIS 7.0)
 * [IIS `<system.webServer>`](/iis/configuration/system.webServer/)

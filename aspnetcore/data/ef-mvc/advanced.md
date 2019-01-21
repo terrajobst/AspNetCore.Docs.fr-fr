@@ -3,14 +3,15 @@ title: ASP.NET Core MVC avec EF Core - Rubriques avancées - 10 sur 10
 author: rick-anderson
 description: Ce tutoriel présente plusieurs rubriques pratiques pour aller au-delà des principes de base du développement d’applications web ASP.NET Core qui utilisent Entity Framework Core.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.custom: mvc
+ms.date: 10/24/2018
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 5cdba79c0b8edd9b865bda8328c86356cbe6a0a2
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: ba3834b29e78972bf914a5cba1a2cae3cc19a315
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46010921"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "50090782"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---advanced---10-of-10"></a>ASP.NET Core MVC avec EF Core - Rubriques avancées - 10 sur 10
 
@@ -100,7 +101,7 @@ Cliquez sur **Revenir à la liste** pour afficher la liste des cours avec le nom
 
 Notez que le code de production garantit que les mises à jour fourniront toujours des données valides. Le code simplifié indiqué ici peut multiplier le nombre de crédits suffisamment pour générer des nombres supérieurs à 5. (La propriété `Credits` a un attribut `[Range(0, 5)]`.) La requête de mise à jour fonctionne, mais des données non valides peuvent provoquer des résultats inattendus dans d’autres parties du système qui supposent que le nombre de crédits est inférieur ou égal à 5.
 
-Pour plus d’informations sur les requêtes SQL brutes, consultez [Requêtes SQL brutes](https://docs.microsoft.com/ef/core/querying/raw-sql).
+Pour plus d’informations sur les requêtes SQL brutes, consultez [Requêtes SQL brutes](/ef/core/querying/raw-sql).
 
 ## <a name="examine-sql-sent-to-the-database"></a>Examiner les requêtes SQL envoyées à la base de données
 
@@ -162,7 +163,7 @@ Entity Framework détermine la manière dont une entité a changé (et par cons�
 
 * ChangeTracker.Entries
 
-Si vous effectuez le suivi d’un grand nombre d’entités et que vous appelez l’une de ces méthodes de nombreuses fois dans une boucle, vous pouvez obtenir des améliorations significatives des performances en désactivant temporairement la détection automatique des modifications à l’aide de la propriété `ChangeTracker.AutoDetectChangesEnabled`. Exemple :
+Si vous effectuez le suivi d’un grand nombre d’entités et que vous appelez l’une de ces méthodes de nombreuses fois dans une boucle, vous pouvez obtenir des améliorations significatives des performances en désactivant temporairement la détection automatique des modifications à l’aide de la propriété `ChangeTracker.AutoDetectChangesEnabled`. Par exemple :
 
 ```csharp
 _context.ChangeTracker.AutoDetectChangesEnabled = false;
@@ -176,7 +177,7 @@ Bien que le code source soit ouvert, Entity Framework Core est entièrement pris
 
 ## <a name="reverse-engineer-from-existing-database"></a>Ingénierie à rebours à partir de la base de données existante
 
-Pour rétroconcevoir un modèle de données comprenant des classes d’entité issues d’une base de données existante, utilisez la commande [scaffold-dbcontext](https://docs.microsoft.com/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext). Consultez le [didacticiel de prise en main](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db).
+Pour rétroconcevoir un modèle de données comprenant des classes d’entité issues d’une base de données existante, utilisez la commande [scaffold-dbcontext](/ef/core/miscellaneous/cli/powershell#scaffold-dbcontext). Consultez le [didacticiel de prise en main](/ef/core/get-started/aspnetcore/existing-db).
 
 <a id="dynamic-linq"></a>
 ## <a name="use-dynamic-linq-to-simplify-sort-selection-code"></a>Utiliser du code dynamique LINQ pour simplifier le code de sélection de tri
@@ -189,11 +190,11 @@ Le [troisième didacticiel de cette série](sort-filter-page.md) montre comment 
 
 Cette étape termine cette série de tutoriels sur l’utilisation d’Entity Framework Core dans une application ASP.NET Core MVC.
 
-Pour plus d’informations sur EF Core, consultez la [documentation sur Entity Framework Core](https://docs.microsoft.com/ef/core). Un ouvrage est également disponible : [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action).
+Pour plus d’informations sur EF Core, consultez la [documentation sur Entity Framework Core](/ef/core). Un ouvrage est également disponible : [Entity Framework Core in Action](https://www.manning.com/books/entity-framework-core-in-action).
 
-Pour obtenir des informations sur la façon de déployer une application web, consultez [Héberger et déployer](xref:host-and-deploy/index).
+Pour plus d’informations sur le déploiement d’une application web, consultez <xref:host-and-deploy/index>.
 
-Pour obtenir des informations sur d’autres sujets associés à ASP.NET Core MVC, tels que l’authentification et l’autorisation, consultez la [documentation relative à ASP.NET Core](xref:index).
+Pour plus d’informations sur les autres rubriques associées à ASP.NET Core MVC, par exemple l’authentification et l’autorisation, consultez <xref:index>.
 
 ## <a name="acknowledgments"></a>Remerciements
 
@@ -239,7 +240,7 @@ dotnet ef database drop
 
 Message d’erreur :
 
-> Une erreur liée au réseau ou spécifique à l’instance s’est produite lors de l’établissement d’une connexion à SQL Server. Le serveur est introuvable ou n’est pas accessible. Vérifiez que le nom de l’instance est correct et que SQL Server est configuré pour autoriser les connexions distantes. (fournisseur : interfaces réseau SQL, erreur : 26 - Erreur lors de la localisation du serveur/de l’instance spécifiés)
+> Une erreur liée au réseau ou spécifique à l’instance s’est produite lors de l’établissement d’une connexion à SQL Server. Le serveur est introuvable ou n’est pas accessible. Vérifiez que le nom de l’instance est correct et que SQL Server est configuré pour autoriser les connexions distantes. (fournisseur : Interfaces réseau SQL, erreur : 26 - Erreur lors de la localisation du serveur/de l’instance spécifiés)
 
 Solution :
 

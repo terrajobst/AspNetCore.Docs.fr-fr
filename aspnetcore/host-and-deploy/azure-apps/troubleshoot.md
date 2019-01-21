@@ -1,17 +1,17 @@
 ---
-title: Résoudre les erreurs de démarrage d’ASP.NET Core sur Azure App Service
+title: Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
 author: guardrex
 description: Découvrez comment diagnostiquer les problèmes liés aux déploiements ASP.NET Core sur Azure App Service.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 01/11/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: b36c321c6ba6801a32b5187651063337b4533fd1
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 65a5e355bc15db6de9060331395c441160c8b62d
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637649"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341639"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
 
@@ -51,15 +51,15 @@ Le module ASP.NET Core est configuré avec une valeur *startupTimeLimit* par dé
 
 Pour accéder au Journal des événements de l’application, utilisez le panneau **Diagnostiquer et résoudre les problèmes** du Portail Azure :
 
-1. Sur le Portail Azure, ouvrez le panneau de l’application dans le panneau **App Services**.
-1. Sélectionnez le panneau **Diagnostiquer et résoudre les problèmes**.
-1. Sous **SÉLECTIONNER UNE CATÉGORIE DE PROBLÈME**, sélectionnez le bouton **Application web en panne**.
-1. Sous **Solutions suggérées**, ouvrez le volet **Ouvrir le Journal des événements de l’application**. Sélectionnez le bouton **Ouvrir le Journal des événements de l’application**.
-1. Examinez la dernière erreur indiquée par le *module AspNetCore IIS* dans la colonne **Source**.
+1. Dans le Portail Azure, ouvrez l’application dans **App Services**.
+1. Sélectionnez **Diagnostiquer et résoudre les problèmes**.
+1. Sélectionnez le titre **Outils de diagnostic**.
+1. Sous **Outils de support**, sélectionnez le bouton **Événements d’application**.
+1. Examinez la dernière erreur fournie par l’entrée *IIS AspNetCoreModule* ou *IIS AspNetCoreModule V2* dans la colonne **Source**.
 
 En dehors de la solution consistant à utiliser le panneau **Diagnostiquer et résoudre les problèmes**, vous pouvez examiner directement le fichier Journal des événements de l’application avec [Kudu](https://github.com/projectkudu/kudu/wiki) :
 
-1. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Ouvrez le dossier **LogFiles**.
 1. Sélectionnez l’icône en forme de crayon à côté du fichier *eventlog.xml*.
@@ -69,7 +69,7 @@ En dehors de la solution consistant à utiliser le panneau **Diagnostiquer et r�
 
 De nombreuses erreurs de démarrage ne produisent pas d’informations utiles dans le Journal des événements de l’application. Vous pouvez exécuter l’application dans la console d’exécution à distance [Kudu](https://github.com/projectkudu/kudu/wiki) pour détecter l’erreur :
 
-1. Sélectionnez le panneau **Outils avancés** dans la zone **OUTILS DE DÉVELOPPEMENT**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
 1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
 1. Ouvrez les dossiers sur le chemin d’accès **site** > **wwwroot**.
 1. Dans la console, lancez l’application en exécutant son assembly.
@@ -95,7 +95,7 @@ Le journal stdout du module ASP.NET Core enregistre souvent des messages d’err
 1. Inspectez la colonne **Modifié** et sélectionnez l’icône en forme de crayon pour modifier le journal stdout avec la date de dernière modification.
 1. Lorsque le fichier journal s’ouvre, l’erreur s’affiche.
 
-**Important !** Désactivez la journalisation stdout une fois les problèmes résolus.
+Désactivez la journalisation stdout, une fois les problèmes résolus :
 
 1. Dans la **Console de diagnostic** Kudu, revenez au chemin d’accès **site** > **wwwroot** pour faire apparaître le fichier *web.config*. Ouvrez à nouveau le fichier **web.config** en sélectionnant l’icône en forme de crayon.
 1. Définissez **stdoutLogEnabled** sur `false`.
@@ -106,7 +106,37 @@ Le journal stdout du module ASP.NET Core enregistre souvent des messages d’err
 >
 > Pour la journalisation générale dans une application ASP.NET Core après le démarrage, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et applique une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
 
-## <a name="common-startup-errors"></a>Erreurs de démarrage courantes 
+::: moniker range=">= aspnetcore-2.2"
+
+### <a name="aspnet-core-module-debug-log"></a>Journal de débogage du module ASP.NET Core
+
+Le journal de débogage du module ASP.NET Core fournit une journalisation supplémentaire, plus approfondie, à partir du module ASP.NET Core. Pour activer et afficher les journaux stdout :
+
+1. Pour activer le journal de diagnostic amélioré, effectuez l’une des opérations suivantes :
+   * Suivez les instructions indiquées dans [Journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) afin de configurer l’application pour une journalisation des diagnostics améliorée. Redéployez l’application.
+   * Ajoutez le `<handlerSettings>` présenté dans [Journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs) au fichier *web.config* de l’application en production à l’aide de la console Kudu :
+     1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+     1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
+     1. Ouvrez les dossiers sur le chemin d’accès **site** > **wwwroot**. Modifiez le fichier *web.config* en sélectionnant le bouton représentant un crayon. Ajoutez la section `<handlerSettings>` comme indiqué dans [Journaux de diagnostic améliorés](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs). Sélectionnez le bouton **Enregistrer**.
+1. Ouvrez les **Outils avancés** dans la zone **Outils de développement**. Sélectionnez le bouton **Atteindre&rarr;**. La console Kudu s’ouvre dans un nouvel onglet ou une nouvelle fenêtre du navigateur.
+1. Dans la barre de navigation en haut de la page, ouvrez **Console de débogage** et sélectionnez **CMD**.
+1. Ouvrez les dossiers sur le chemin d’accès **site** > **wwwroot**. Si vous n’avez pas indiqué de chemin pour le fichier *aspnetcore-debug.log*, le fichier apparaît dans la liste. Si vous avez indiqué un chemin, accédez à l’emplacement du fichier journal.
+1. Ouvrez le fichier journal à l’aide du bouton représentant un crayon à côté du nom de fichier.
+
+Désactivez la journalisation du débogage, une fois la résolution des problèmes effectuée :
+
+1. Pour désactiver la journalisation de débogage améliorée, effectuez l’une des opérations suivantes :
+   * Supprimez `<handlerSettings>` du fichier *web.config* localement, puis redéployez l’application.
+   * Utilisez la console Kudu pour modifier le fichier *web.config* et supprimer la section `<handlerSettings>`. Enregistrez le fichier.
+
+> [!WARNING]
+> Si le journal de débogage n’est pas désactivé, cela peut entraîner une défaillance de l’application ou du serveur. Il n’existe aucune limite à la taille du fichier journal. Utilisez uniquement la journalisation de débogage pour résoudre les problèmes de démarrage d’application.
+>
+> Pour la journalisation générale dans une application ASP.NET Core après le démarrage, utilisez une bibliothèque de journalisation qui limite la taille du fichier journal et applique une rotation aux journaux. Pour plus d’informations, voir [Fournisseurs de journalisation tiers](xref:fundamentals/logging/index#third-party-logging-providers).
+
+::: moniker-end
+
+## <a name="common-startup-errors"></a>Erreurs de démarrage courantes
 
 Consultez <xref:host-and-deploy/azure-iis-errors-reference>. La plupart des problèmes courants qui empêchent le démarrage de l’application sont traités dans la rubrique de référence.
 
@@ -157,7 +187,7 @@ Maintenant, activez la journalisation des diagnostics :
 1. Adressez une demande à l’application.
 1. La cause de l’erreur est indiquée dans les données de flux de journal.
 
-**Important !** Veillez à désactiver la journalisation stdout une fois la résolution des problèmes effectuée. Consultez les instructions dans la section [Journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log).
+Veillez à désactiver la journalisation stdout une fois la résolution des problèmes effectuée. Consultez les instructions dans la section [Journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log).
 
 Pour afficher les journaux de suivi des demandes ayant échoué (journaux FREB) :
 

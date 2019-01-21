@@ -5,12 +5,12 @@ description: Découvrez comment contrôler le comportement de l’application da
 ms.author: riande
 ms.date: 07/03/2018
 uid: fundamentals/environments
-ms.openlocfilehash: 865257d127084671036147dd1f28c9c4843feef6
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 642af9e8f9e322e3624dad46bb1463f6525f5c9e
+ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206846"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54341665"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
@@ -22,7 +22,7 @@ ASP.NET Core configure le comportement de l’application en fonction de l’env
 
 ## <a name="environments"></a>Environnements
 
-ASP.NET Core lit la variable d’environnement `ASPNETCORE_ENVIRONMENT` au démarrage de l’application et stocke la valeur dans [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname). Vous pouvez affecter n’importe quelle valeur à `ASPNETCORE_ENVIRONMENT`, mais [trois valeurs](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) sont prises en charge par le framework : [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) et [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Si `ASPNETCORE_ENVIRONMENT` n’est pas définie, la valeur par défaut est `Production`.
+ASP.NET Core lit la variable d’environnement `ASPNETCORE_ENVIRONMENT` au démarrage de l’application et stocke la valeur dans [IHostingEnvironment.EnvironmentName](/dotnet/api/microsoft.aspnetcore.hosting.ihostingenvironment.environmentname). Vous pouvez affecter n’importe quelle valeur à `ASPNETCORE_ENVIRONMENT`. Toutefois, [trois valeurs](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) sont prises en charge par le framework : [Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging) et [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Si `ASPNETCORE_ENVIRONMENT` n’est pas définie, la valeur par défaut est `Production`.
 
 [!code-csharp[](environments/sample/EnvironmentsSample/Startup.cs?name=snippet)]
 
@@ -111,9 +111,9 @@ Le code JSON suivant montre trois profils à partir d’un fichier *launchSettin
 
 Quand l’application est lancée avec [dotnet run](/dotnet/core/tools/dotnet-run), le premier profil avec `"commandName": "Project"` est utilisé. La valeur de `commandName` spécifie le serveur web à lancer. `commandName` peut avoir l’une des valeurs suivantes :
 
-* IIS Express
-* IIS
-* Project (qui lance Kestrel)
+* `IISExpress`
+* `IIS`
+* `Project` (qui lance Kestrel)
 
 Quand une application est lancée avec [dotnet run](/dotnet/core/tools/dotnet-run) :
 
@@ -183,7 +183,7 @@ Pour définir l’environnement dans [Azure App Service](https://azure.microsoft
 1. Dans le groupe **PARAMÈTRES**, sélectionnez le panneau **Paramètres de l’application**.
 1. Dans la zone **Paramètres d’application**, sélectionnez **Ajouter un nouveau paramètre**.
 1. Pour **Entrer un nom**, spécifiez `ASPNETCORE_ENVIRONMENT`. Pour **Entrer une valeur**, spécifiez l’environnement (par exemple `Staging`).
-1. Cochez la case **Paramètre d’emplacement** si vous souhaitez que le paramètre d’environnement reste avec l’emplacement actuel quand des emplacements de déploiement sont permutés. Pour plus d’informations, consultez [Documentation Azure : Quels sont les paramètres qui sont permutés ?](/azure/app-service/web-sites-staged-publishing).
+1. Cochez la case **Paramètre d’emplacement** si vous souhaitez que le paramètre d’environnement reste avec l’emplacement actuel quand des emplacements de déploiement sont permutés. Pour plus d’informations, consultez [Documentation Azure : Quels sont les paramètres échangés ?](/azure/app-service/web-sites-staged-publishing).
 1. Sélectionnez **Enregistrer** en haut du panneau.
 
 Azure App Service redémarre automatiquement l’application après qu’un paramètre d’application (variable d’environnement) est ajouté, changé ou supprimé dans le portail Azure.
@@ -277,7 +277,7 @@ Pour les versions Linux, exécutez la commande `export` à une invite de command
 Pour charger la configuration par environnement, nous vous recommandons de disposer des éléments suivants :
 
 * Fichiers *appSettings* (*appsettings.&lt;<Environment>&gt;.json). Consultez [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider).
-* Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Voir [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) et [Stockage sécurisé des secrets d’application lors du développement : variables d’environnement](xref:security/app-secrets#environment-variables).
+* Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Consultez [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) et [Stockage sécurisé des secrets d’application au moment du développement : Variables d’environnement](xref:security/app-secrets#environment-variables).
 * Secret Manager (dans l’environnement de développement uniquement). Consultez <xref:security/app-secrets>.
 
 ## <a name="environment-based-startup-class-and-methods"></a>Classe et méthodes Startup en fonction de l’environnement
