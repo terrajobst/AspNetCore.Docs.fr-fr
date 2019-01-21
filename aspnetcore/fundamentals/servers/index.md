@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez les serveurs web Kestrel et HTTP.sys pour ASP.NET Core. Découvrez comment choisir un serveur et quand utiliser un serveur proxy inverse.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/11/2019
+ms.date: 01/17/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 4210d67397c85a1608f79fc4ed9d283521356226
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: a9f40ad7e9a63d6f88b6533578db8dfc55490bc9
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249488"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396244"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -40,7 +40,7 @@ Le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) est un module 
 
 ### <a name="in-process-hosting-model"></a>Modèle d’hébergement in-process
 
-En utilisant l’hébergement in-process, une application ASP.NET Core s’exécute dans le même processus que son processus de travail IIS. Cette opération supprime la baisse des performances out-of-process des requêtes proxy sur l’adaptateur de bouclage, une interface réseau qui renvoie du trafic réseau sortant à la même machine. IIS s’occupe de la gestion des processus par l’intermédiaire du [service d’activation des processus Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
+En utilisant l’hébergement in-process, une application ASP.NET Core s’exécute dans le même processus que son processus de travail IIS. L’hébergement in-process offre de meilleures performances que l’hébergement out-of-process parce que les requêtes n’ont pas de proxy sur l’adaptateur de bouclage, interface réseau qui retourne du trafic réseau sortant à la même machine. IIS s’occupe de la gestion des processus par l’intermédiaire du [service d’activation des processus Windows (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was).
 
 Le module ASP.NET Core :
 

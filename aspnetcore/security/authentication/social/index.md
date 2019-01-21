@@ -4,20 +4,20 @@ author: rick-anderson
 description: Ce didacticiel montre comment générer une application ASP.NET Core 2.x à l’aide d’OAuth 2.0 avec des fournisseurs d’authentification externes.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 1/19/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 063d452fb6ab91b712ade7f7b7ed99823dbdc657
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 48dd8b772234ff18158423a36ed1716102bc2f31
+ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098816"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54396140"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
 Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce didacticiel montre comment créer une application ASP.NET Core 2.x qui permet aux utilisateurs de se connecter à l’aide d’OAuth 2.0 avec des informations d’identification provenant de fournisseurs d’authentification externes.
+Ce tutoriel montre comment créer une application ASP.NET Core 2.2 qui permet aux utilisateurs de se connecter à l’aide d’OAuth 2.0 avec des informations d’identification provenant de fournisseurs d’authentification externes.
 
 Les fournisseurs [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins) et [Microsoft](xref:security/authentication/microsoft-logins) sont traités dans les sections qui suivent. D’autres fournisseurs sont disponibles dans des packages tiers, comme [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) et [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
@@ -30,29 +30,13 @@ Permettre aux utilisateurs de se connecter avec leurs informations d’identific
 * Dans Visual Studio 2017, créez un projet à partir de la page de démarrage, ou via **Fichier** > **Nouveau** > **Projet**.
 
 * Sélectionnez le modèle **Application web ASP.NET Core** disponible dans la catégorie **Visual C#** > **.NET Core** :
-
-![Boîte de dialogue Nouveau projet](index/_static/new-project.png)
-
-* Appuyez sur **Application Web** et vérifiez que **Authentification** est défini sur **Comptes d’utilisateur individuels** :
-
-![Boîte de dialogue Nouvelle application web](index/_static/select-project.png)
-
-Remarque : Ce tutoriel s’applique à la version ASP.NET Core 2.0 SDK, qui peut être sélectionnée en haut de l’Assistant.
+* Sélectionnez **Modifier l’authentification** et définissez l’authentification sur **Comptes d’utilisateur individuels**.
 
 ## <a name="apply-migrations"></a>Appliquer des migrations
 
-* Exécutez l’application et sélectionnez le lien **Se connecter**.
-* Sélectionnez le lien **S’inscrire comme nouvel utilisateur**.
+* Exécutez l’application et sélectionnez le lien **S’inscrire**.
 * Entrez l’adresse e-mail et le mot de passe du nouveau compte, puis sélectionnez **S’inscrire**.
 * Suivez les instructions pour appliquer des migrations.
-
-## <a name="require-https"></a>Exiger HTTPS
-
-OAuth 2.0 exige l’authentification SSL/TLS avec le protocole HTTPS.
-
-Les projets créés à l’aide des modèles de projet **Application web** ou **API web** avec ASP.NET Core 2.1 (ou une version ultérieure) sont automatiquement configurés de façon à activer HTTPS. L’application démarre avec un point de terminaison sécurisé par défaut si l’option **Comptes d’utilisateur individuels** est sélectionnée dans la **boîte de dialogue Modifier l’authentification** de l’Assistant de projet.
-
-Pour plus d'informations, consultez <xref:security/enforcing-ssl>.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
 
@@ -83,11 +67,11 @@ Quand vous vous inscrivez auprès d’un fournisseur de connexion externe, vous 
 
 Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous avez défini lors du processus de connexion avec des fournisseurs externes :
 
-* Appuyez sur le lien **Bonjour &lt;alias d’e-mail&gt;** en haut à droite pour accéder à la vue **Gérer**.
+* Sélectionnez le lien **Bonjour &lt;alias d’e-mail&gt;** en haut à droite pour accéder à la vue **Gérer**.
 
 ![Vue Gérer de l’application web](index/_static/pass1a.png)
 
-* Appuyez sur **Créer**.
+* Sélectionnez **Créer**.
 
 ![Page Définir votre mot de passe](index/_static/pass2a.png)
 
