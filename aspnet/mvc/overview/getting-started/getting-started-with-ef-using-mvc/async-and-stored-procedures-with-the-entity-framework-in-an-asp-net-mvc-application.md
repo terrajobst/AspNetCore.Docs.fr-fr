@@ -1,34 +1,28 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Async et les procédures stockées avec Entity Framework dans une Application ASP.NET MVC | Microsoft Docs
+title: 'Tutoriel : Utiliser async et les procédures stockées avec Entity Framework dans une application ASP.NET MVC'
+description: Dans ce didacticiel, vous allez apprendre à implémenter le modèle de programmation asynchrone et découvrez comment utiliser des procédures stockées.
 author: tdykstra
-description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio...
 ms.author: riande
-ms.date: 11/07/2014
+ms.date: 01/18/2019
+ms.topic: tutorial
 ms.assetid: 27d110fc-d1b7-4628-a763-26f1e6087549
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 84be966c1e1a4357125c1a53b8065676c8f073f6
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0896664174bc2fee65b73ecf256d994f2abacc0a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910731"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444361"
 ---
-<a name="async-and-stored-procedures-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Async et les procédures stockées avec Entity Framework dans une Application ASP.NET MVC
-====================
-par [Tom Dykstra](https://github.com/tdykstra)
-
-[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
+# <a name="tutorial-use-async-and-stored-procedures-with-ef-in-an-aspnet-mvc-app"></a>Tutoriel : Utiliser async et les procédures stockées avec Entity Framework dans une application ASP.NET MVC
 
 Dans les didacticiels précédents, vous avez appris comment lire et mettre à jour des données à l’aide du modèle de programmation synchrone. Dans ce didacticiel, vous allez apprendre à implémenter le modèle de programmation asynchrone. Code asynchrone peut vous aider à une application plus performantes, car il fait un meilleur usage des ressources du serveur.
 
-Dans ce didacticiel, vous verrez également comment utiliser des procédures stockées pour insert, update et les opérations de suppression sur une entité.
+Dans ce didacticiel, vous allez également apprendre à utiliser des procédures stockées pour insert, update et les opérations de suppression sur une entité.
 
-Enfin, vous devez redéployer l’application vers Azure, ainsi que toutes les modifications de base de données que vous avez implémentées depuis la première fois que vous avez déployé.
+Enfin, vous redéployez l’application dans Azure, ainsi que toutes les modifications de base de données que vous avez implémentées depuis la première fois que vous avez déployé.
 
 Les illustrations suivantes montrent quelques-unes des pages que vous allez utiliser.
 
@@ -36,7 +30,19 @@ Les illustrations suivantes montrent quelques-unes des pages que vous allez util
 
 ![Créer le service](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
 
-## <a name="why-bother-with-asynchronous-code"></a>Pourquoi s’embêter avec le code asynchrone
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * En savoir plus sur le code asynchrone
+> * Créer un contrôleur de service
+> * Utiliser des procédures stockées
+> * Déployer sur Azure
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Mise à jour de données associées](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+
+## <a name="why-use-asynchronous-code"></a>Pourquoi utiliser le code asynchrone
 
 Un serveur web a un nombre limité de threads disponibles et, dans les situations de forte charge, tous les threads disponibles peuvent être utilisés. Quand cela se produit, le serveur ne peut pas traiter de nouvelle requête tant que les threads ne sont pas libérés. Avec le code synchrone, plusieurs threads peuvent être bloqués alors qu’ils n’effectuent en fait aucun travail, car ils attendent que des E/S se terminent. Avec le code asynchrone, quand un processus attend que des E/S se terminent, son thread est libéré afin d’être utilisé par le serveur pour traiter d’autres demandes. Par conséquent, le code asynchrone permet à des ressources serveur à utiliser plus efficacement, et le serveur est activé pour traiter plus de trafic sans retard.
 
@@ -44,11 +50,9 @@ Dans les versions antérieures de .NET, écrire et tester le code asynchrone a �
 
 Pour plus d’informations sur la programmation asynchrone, consultez [prise en charge d’utiliser .NET 4.5 asynchrone pour éviter de bloquer les appels](../../../../aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices.md#async).
 
-## <a name="create-the-department-controller"></a>Créer le contrôleur de service
+## <a name="create-department-controller"></a>Créer le contrôleur de service
 
-Créer un contrôleur de département Sélectionnez de la même façon que vous l’avez fait les contrôleurs antérieures, mais cette fois le **utiliser async contrôleur** actions case à cocher.
-
-![Structure de contrôleur de service](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
+Créer un contrôleur de département Sélectionnez de la même façon que vous l’avez fait les contrôleurs antérieures, mais cette fois le **utiliser les actions de contrôleur asynchrones** case à cocher.
 
 Les points importants suivants montrent ce qui a été ajouté au code synchrone pour le `Index` méthode pour la rendre asynchrone :
 
@@ -89,8 +93,6 @@ Dans les vues Delete et Details, utilisez le code suivant :
 
 Exécutez l’application, puis cliquez sur le **départements** onglet.
 
-![Page départements](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
-
 Tout fonctionne comme dans les autres contrôleurs, mais dans ce contrôleur de toutes les requêtes SQL s’exécutent en mode asynchrone.
 
 Voici quelques éléments à connaître lorsque vous utilisez la programmation asynchrone avec Entity Framework :
@@ -98,7 +100,7 @@ Voici quelques éléments à connaître lorsque vous utilisez la programmation a
 - Le code asynchrone n’est pas thread-safe. En d’autres termes, en d’autres termes, n’essayez pas d’effectuer plusieurs opérations en parallèle en utilisant la même instance de contexte.
 - Si vous souhaitez tirer profit des meilleures performances du code asynchrone, assurez-vous que tous les packages de bibliothèque que vous utilisez (par exemple pour changer de page) utilisent également du code asynchrone s’ils appellent des méthodes Entity Framework qui provoquent l’envoi des requêtes à la base de données.
 
-## <a name="use-stored-procedures-for-inserting-updating-and-deleting"></a>Utiliser des procédures stockées pour l’insertion, la mise à jour et suppression
+## <a name="use-stored-procedures"></a>Utiliser des procédures stockées
 
 Certains développeurs et les administrateurs préfèrent utiliser des procédures stockées pour l’accès de base de données. Dans les versions précédentes d’Entity Framework vous pouvez récupérer des données à l’aide d’une procédure stockée par [l’exécution d’une requête SQL brute](advanced-entity-framework-scenarios-for-an-mvc-web-application.md), mais vous ne pouvez pas demander à EF d’utiliser des procédures stockées pour les opérations de mise à jour. Dans EF 6, il est facile à configurer Code First pour utiliser des procédures stockées.
 
@@ -120,7 +122,6 @@ Certains développeurs et les administrateurs préfèrent utiliser des procédur
 4. Exécutez l’application en mode débogage, cliquez sur le **départements** onglet, puis cliquez sur **créer un nouveau**.
 5. Entrer des données pour un nouveau service, puis cliquez sur **créer**.
 
-     ![Créer le service](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
 6. Dans Visual Studio, consultez les journaux dans le **sortie** fenêtre pour voir qu’une procédure stockée a été utilisée pour insérer la nouvelle ligne de service.
 
      ![Département Insert SP](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
@@ -143,12 +144,24 @@ Cette section vous oblige à terminées facultatif **déploiement de l’applica
 
     La première fois que vous exécutez une page qui accède à la base de données, Entity Framework s’exécute toutes les migrations `Up` méthodes requis pour mettre à jour avec le modèle de données actuel de la base de données. Vous pouvez désormais utiliser toutes les pages web que vous avez ajouté depuis la dernière fois que vous avez déployé, y compris les pages de service que vous avez ajouté dans ce didacticiel.
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Dans ce didacticiel vous avez vu comment améliorer l’efficacité du serveur en écrivant du code qui s’exécute de façon asynchrone et comment utiliser des procédures stockées pour insérer, mettre à jour et les opérations de suppression. Dans le didacticiel suivant, vous verrez comment éviter la perte de données lorsque plusieurs utilisateurs essaient de modifier le même enregistrement en même temps.
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans le [accès aux données ASP.NET - ressources recommandées](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Précédent](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Suivant](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Découvert de code asynchrone
+> * Création d’un contrôleur de service
+> * Utiliser des procédures stockées
+> * Déployé sur Azure
+
+Passez à l’article suivant pour apprendre à gérer les conflits quand plusieurs utilisateurs mettre à jour la même entité en même temps.
+> [!div class="nextstepaction"]
+> [Gestion des accès concurrentiels](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application.md)

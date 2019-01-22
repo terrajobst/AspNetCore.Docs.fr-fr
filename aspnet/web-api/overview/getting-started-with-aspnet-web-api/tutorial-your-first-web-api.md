@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 11/28/2017
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 62e99a41ba935470c39476c9aea8ee4193543425
-ms.sourcegitcommit: 7890dfb5a8f8c07d813f166d3ab0c263f893d0c6
+ms.openlocfilehash: 7bec95af4532535f0d620bfe6862958907466874
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48795291"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444257"
 ---
 <a name="get-started-with-aspnet-web-api-2-c"></a>Bien démarrer avec ASP.NET Web API 2 (c#)
 ====================
@@ -108,7 +108,7 @@ C’est tout ! Vous avez une API de travail web. Chaque méthode sur le contrôl
 | Méthode de contrôleur | URI |
 | --- | --- |
 | GetAllProducts | / api/produits |
-| GetProduct | /API/produits/*id* |
+| GetProduct | /api/products/*id* |
 
 Pour le `GetProduct` (méthode), le *id* dans l’URI est un espace réservé. Par exemple, pour obtenir le produit avec l’ID de 5, l’URI est `api/products/5`.
 
@@ -178,7 +178,7 @@ Si vous cliquez sur l’onglet du corps de réponse, vous pouvez voir comment la
 
 Vous souhaitez voir le site terminé en cours d’exécution en tant qu’une application web en direct ? Vous pouvez déployer une version complète de l’application à votre compte Azure en cliquant simplement sur le bouton suivant.
 
-[![](http://azuredeploy.net/deploybutton.png)](https://deploy.azure.com/?WT.mc_id=deploy_azure_aspnet&repository=https://github.com/tfitzmac/WebAPI-ProductsApp#/form/setup)
+[![](https://azuredeploy.net/deploybutton.png)](https://deploy.azure.com/?WT.mc_id=deploy_azure_aspnet&repository=https://github.com/tfitzmac/WebAPI-ProductsApp#/form/setup)
 
 Vous avez besoin d’un compte Azure pour déployer cette solution sur Azure. Si vous n’avez pas déjà un compte, vous disposez des options suivantes :
 

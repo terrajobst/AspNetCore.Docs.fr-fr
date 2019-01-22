@@ -1,35 +1,42 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Tri, filtrage et pagination avec Entity Framework dans une Application ASP.NET MVC | Microsoft Docs
+title: 'Tutoriel : Ajouter le tri, filtrage et pagination avec Entity Framework dans une application ASP.NET MVC | Microsoft Docs'
 author: tdykstra
-description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio...
+description: Dans ce didacticiel, vous ajoutez tri, filtrage et la fonctionnalité de pagination à la **étudiants** page d’Index. Vous créez également une page de regroupement simple.
 ms.author: riande
-ms.date: 10/08/2018
+ms.date: 01/14/2019
 ms.assetid: d5723e46-41fe-4d09-850a-e03b9e285bfa
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9fabb5a90af715d4e96ff79b43bfff5a4600ac08
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.topic: tutorial
+ms.openlocfilehash: 1f18a15d39d58ffb4ac48cfccee6519d33294e85
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912772"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444193"
 ---
-# <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Tri, filtrage et pagination avec Entity Framework dans une application ASP.NET MVC
+# <a name="tutorial-add-sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application"></a>Tutoriel : Ajouter le tri, filtrage et pagination avec Entity Framework dans une application ASP.NET MVC
 
-par [Tom Dykstra](https://github.com/tdykstra)
+Dans le [didacticiel précédent](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md), vous avez implémenté un ensemble de pages web pour les opérations CRUD de base pour `Student` entités. Dans ce didacticiel, vous ajoutez tri, filtrage et la fonctionnalité de pagination à la **étudiants** page d’Index. Vous créez également une page de regroupement simple.
 
-[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
-
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
-
-Dans le didacticiel précédent, vous avez implémenté un ensemble de pages web pour les opérations CRUD de base pour `Student` entités. Dans ce didacticiel vous allez ajouter le tri, filtrage et la fonctionnalité de pagination à la **étudiants** page d’Index. Vous allez également créer une page qui effectue un regroupement simple.
-
-L’illustration suivante montre à quoi ressemblera la page quand vous aurez terminé. Les en-têtes des colonnes sont des liens sur lesquels l’utilisateur peut cliquer pour trier selon les colonnes. Cliquer de façon répétée sur un en-tête de colonne permet de changer l’ordre de tri (croissant ou décroissant).
+L’illustration suivante montre à quoi ressemblera la page une lorsque vous avez terminé. Les en-têtes des colonnes sont des liens sur lesquels l’utilisateur peut cliquer pour trier selon les colonnes. Cliquer de façon répétée sur un en-tête de colonne permet de changer l’ordre de tri (croissant ou décroissant).
 
 ![Students_Index_page_with_paging](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
-## <a name="add-column-sort-links-to-the-students-index-page"></a>Ajouter des liens de tri de colonne à la page index des étudiants
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Ajouter des liens de tri de colonne
+> * Ajouter une zone de recherche
+> * Ajouter la pagination
+> * Créer une page à propos
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Implémentation de la fonctionnalité CRUD de base](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+
+## <a name="add-column-sort-links"></a>Ajouter des liens de tri de colonne
 
 Pour ajouter le tri à la page d’Index des étudiants, vous allez modifier le `Index` méthode de la `Student` contrôleur et ajouter du code pour le `Student` vue d’Index.
 
@@ -70,13 +77,9 @@ Comme alternative à l’écriture des instructions LINQ différents pour chaque
 
 2. Exécutez la page et cliquez sur le **nom** et **Date d’inscription** des en-têtes de colonne pour vérifier que le tri fonctionne.
 
-   ![Students_Index_page_with_sort_hyperlinks](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
-
    Après avoir cliqué sur le **nom** titre, les étudiants sont affichés dans le dernier nom ordre décroissant.
 
-   ![Vue d’index étudiant dans le navigateur web](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
-
-## <a name="add-a-search-box-to-the-students-index-page"></a>Ajouter une zone de recherche à la page index des étudiants
+## <a name="add-a-search-box"></a>Ajouter une zone de recherche
 
 Pour ajouter le filtrage à la page index des étudiants, vous allez ajouter une zone de texte et un bouton Envoyer à la vue et apporter les modifications correspondantes dans le `Index` (méthode). La zone de texte vous permet d’entrer une chaîne à rechercher dans le prénom et le champ.
 
@@ -103,15 +106,11 @@ Le code ajoute un `searchString` paramètre à la `Index` (méthode). La valeur 
 
 2. Exécutez la page, entrez une chaîne de recherche, puis cliquez sur **recherche** pour vérifier que le filtrage fonctionne.
 
-   ![Students_Index_page_with_search_box](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
-
    Notez que l’URL ne contient pas la « une » chaîne de recherche, ce qui signifie que si vous ajoutez cette page aux Favoris, vous n’obtiendrez la liste filtrée lorsque vous utilisez le signet. Cela s’applique également aux liens de tri de colonne, comme ils pour trier la liste entière. Vous allez modifier le **recherche** bouton à utiliser des chaînes de requête pour les critères de filtre plus loin dans le didacticiel.
 
-## <a name="add-paging-to-the-students-index-page"></a>Ajout d’une pagination à la page index des étudiants
+## <a name="add-paging"></a>Ajouter la pagination
 
-Pour ajouter la pagination à la page index des étudiants, nous allons commencer par installer le **PagedList.Mvc** package NuGet. Puis vous apporterez des modifications supplémentaires dans le `Index` (méthode) et ajouter des liens de pagination à la `Index` vue. **PagedList.Mvc** est un des nombreux pagination bon et le tri des packages pour ASP.NET MVC et son utilisation ici n’est destinée uniquement, par exemple, pas comme une recommandation pour elle sur les autres options. L’illustration suivante montre les liens de pagination.
-
-![Students_index_page_with_paging](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
+Pour ajouter la pagination à la page index des étudiants, nous allons commencer par installer le **PagedList.Mvc** package NuGet. Puis vous apporterez des modifications supplémentaires dans le `Index` (méthode) et ajouter des liens de pagination à la `Index` vue. **PagedList.Mvc** est un des nombreux pagination bon et le tri des packages pour ASP.NET MVC et son utilisation ici n’est destinée uniquement, par exemple, pas comme une recommandation pour elle sur les autres options.
 
 ### <a name="install-the-pagedlistmvc-nuget-package"></a>Installez le package NuGet de PagedList.MVC
 
@@ -124,8 +123,6 @@ Le package NuGet **PagedList.Mvc** package installe automatiquement le **PagedLi
    ```text
    Install-Package PagedList.Mvc
    ```
-
-   ![Installer PagedList.Mvc](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
 
 3. Générez le projet.
 
@@ -161,7 +158,7 @@ Le package NuGet **PagedList.Mvc** package installe automatiquement le **PagedLi
 
 ### <a name="add-paging-links-to-the-student-index-view"></a>Ajouter des liens de pagination à la vue index étudiant
 
-1. Dans *Views\Student\Index.cshtml*, remplacez le code existant par le code suivant. Les modifications apparaissent en surbrillance.
+1. Dans *Views\Student\Index.cshtml*, remplacez le code existant par le code suivant. Les modifications sont mises en surbrillance.
 
    [!code-cshtml[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cshtml?highlight=1-3,6,9,14,17,24,30,55-56,58-59)]
 
@@ -197,13 +194,9 @@ Le package NuGet **PagedList.Mvc** package installe automatiquement le **PagedLi
 
 2. Exécutez la page.
 
-   ![Page d’index des étudiants avec pagination](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
-
    Cliquez sur les liens de changement de page dans différents ordres de tri pour vérifier que le changement de page fonctionne. Ensuite, entrez une chaîne de recherche et essayez de changer de page à nouveau pour vérifier que le changement de page fonctionne correctement avec le tri et le filtrage.
 
-   ![Page avec le texte de filtre de recherche d’index des étudiants](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
-## <a name="create-an-about-page-that-shows-student-statistics"></a>Créer une page About qui affiche les statistiques des étudiants
+## <a name="create-an-about-page"></a>Créer une page à propos
 
 Pour Contoso University du site Web sur la page, vous afficherez le nombre d’étudiants inscrits pour chaque date d’inscription. Cela nécessite un regroupement et des calculs simples sur les groupes. Pour ce faire, vous devez effectuer les opérations suivantes :
 
@@ -249,14 +242,24 @@ Créer un *ViewModels* dossier dans le dossier du projet. Dans ce dossier, ajout
 
    ![About_page](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Dans ce didacticiel, vous avez appris à créer un modèle de données et à implémenter CRUD de base, tri, filtrage, la pagination et la fonctionnalité de regroupement. Dans le didacticiel suivant, vous allez aborder des sujets plus avancés en développant le modèle de données.
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
-Veuillez laisser des commentaires sur la façon dont vous avez apprécié ce didacticiel et ce que nous pouvions améliorer.
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans [accès aux données ASP.NET - ressources recommandées](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Précédent](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
-> [Suivant](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Ajouter des liens de tri de colonne
+> * Ajouter une zone de recherche
+> * Ajouter la pagination
+> * Créer une page à propos
+
+Passez à l’article suivant pour apprendre à utiliser l’interception de la résilience et la commande de connexion.
+> [!div class="nextstepaction"]
+> [Interception de la résilience et la commande de connexion](connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application.md)

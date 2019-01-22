@@ -5,12 +5,12 @@ description: Découvrez comment créer une application ASP.NET Core avec la réi
 ms.author: riande
 ms.date: 7/11/2018
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 4c2e62335bc7dd004829dbc2a8c1f62ea91f334f
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 0dc9907f9f54c8a0daf2e05a3769897e5145935f
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253037"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444140"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation de compte et de récupération de mot de passe dans ASP.NET Core
 
@@ -204,7 +204,7 @@ Sélectionnez votre nom d’utilisateur dans le navigateur : ![fenêtre de navi
 
 Vous devrez peut-être développer la barre de navigation pour afficher le nom d’utilisateur.
 
-![barre de navigation](accconfirm/_static/x.png)
+![navbar](accconfirm/_static/x.png)
 
 La page de gestion s’affiche avec l'onglet **profil** sélectionné. L'**Email** affiche une case à cocher indiquant que l’adresse de messagerie a été confirmée.
 
@@ -253,6 +253,6 @@ Les deux comptes ont été combinés. Vous pouvez vous connecter avec l'un ou l'
 Activer la confirmation du compte sur un site avec des utilisateurs bloque tous les utilisateurs existants. Ceux-ci sont bloqués, car leurs comptes ne sont pas confirmés. Pour contourner le blocage des utilisateurs existants, utilisez une des approches suivantes :
 
 * Mise à jour de la base de données pour marquer tous les utilisateurs existants comme étant confirmés.
-* Confirmation des utilisateurs existants. Par exemple, en envoyant par lot des e-mails avec des liens de confirmation.
+* Confirmer les utilisateurs existants. Par exemple, en envoyant par lot des e-mails avec des liens de confirmation.
 
 ::: moniker-end

@@ -8,12 +8,12 @@ ms.date: 02/16/2008
 ms.assetid: 152ab1e5-aec2-4ea7-b8cc-27a24dd9acb8
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-cs
 msc.type: authoredcontent
-ms.openlocfilehash: ac47caa46d93c6157926f1c9b5112555fae4f8f5
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: a8e64a99549584f150d64d909ac97210257b1147
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41830981"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444127"
 ---
 <a name="aspnet-mvc-views-overview-c"></a>Vue d’ensemble (c#) des vues ASP.NET MVC
 ====================
@@ -28,7 +28,7 @@ L’objectif de ce didacticiel est de vous fournir une brève introduction aux v
 
 Pour ASP.NET ou des pages Active Server Pages, ASP.NET MVC n’inclut pas tout ce qui correspond directement à une page. Dans une application ASP.NET MVC, il n’est pas une page sur le disque qui correspond au chemin dans l’URL que vous tapez dans la barre d’adresses de votre navigateur. La chose la plus proche à une page dans une application ASP.NET MVC est quelque chose appelé un *vue*.
 
-ASP.NET MVC, les demandes d’application du navigateur entrantes sont mappées aux actions de contrôleur. Une action de contrôleur peut retourner une vue. Toutefois, une action de contrôleur peut effectuer un autre type d’action, telle que la redirection vers une autre action de contrôleur.
+Dans une application ASP.NET MVC, les demandes du navigateur entrantes sont mappées aux actions de contrôleur. Une action de contrôleur peut retourner une vue. Toutefois, une action de contrôleur peut effectuer un autre type d’action, telle que la redirection vers une autre action de contrôleur.
 
 Listing 1 contient un simple contrôleur nommé le HomeController. Le HomeController expose deux actions de contrôleur nommées Index() et Details().
 
@@ -48,7 +48,7 @@ L’action Index() retourne une vue. La plupart des actions que vous créez reto
 
 L’action Index() contienne la ligne de code unique suivante :
 
-View() ;
+View();
 
 Cette ligne de code retourne une vue qui doit se trouve à l’emplacement suivant sur votre serveur web :
 
@@ -91,7 +91,7 @@ Vous utilisez les délimiteurs de script &lt;et %&gt; pour marquer le début et 
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample3.aspx)]
 
-Vous pouvez utiliser n’importe quel langage .NET pour générer le contenu dynamique dans une vue. Normalement, vous allez utiliser Visual Basic .NET ou c# écrire vos contrôleurs et les vues.
+Vous pouvez utiliser n’importe quel langage .NET pour générer le contenu dynamique dans une vue. Normalement, vous allez utiliser Visual Basic .NET ou C# écrire vos contrôleurs et les vues.
 
 ## <a name="using-html-helpers-to-generate-view-content"></a>À l’aide de programmes d’assistance HTML pour générer le contenu de la vue
 
@@ -99,14 +99,14 @@ Pour le rendre plus facile d’ajouter du contenu à une vue, vous pouvez tirer 
 
 Par exemple, la vue dans la liste 4 tire parti de trois programmes d’assistance HTML--les programmes d’assistance BeginForm(), TextBox() et Password()--pour générer un compte de connexion forment (voir Figure 1).
 
-**Liste 4--\Views\Home\Login.aspx**
+**Listing 4 -- \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample4.aspx)]
 
 
 [![La boîte de dialogue Nouveau projet](asp-net-mvc-views-overview-cs/_static/image1.jpg)](asp-net-mvc-views-overview-cs/_static/image1.png)
 
-**Figure 01**: un formulaire de connexion standard ([cliquez pour afficher l’image en taille réelle](asp-net-mvc-views-overview-cs/_static/image2.png))
+**Figure 01**: Un formulaire de connexion standard ([cliquez pour afficher l’image en taille réelle](asp-net-mvc-views-overview-cs/_static/image2.png))
 
 
 Toutes les méthodes de programmes d’assistance HTML sont appelées sur la propriété Html de la vue. Par exemple, vous afficher une zone de texte en appelant la méthode Html.TextBox().
@@ -115,7 +115,7 @@ Notez que vous utilisez les délimiteurs de script &lt;% = et %&gt; lors de l’
 
 L’utilisation de méthodes d’assistance HTML est facultative. Ils facilitent la vie en réduisant la quantité de code HTML et de script dont vous avez besoin d’écrire. La vue dans la liste 5 restitue la même forme exacte que la vue sur la liste 4 sans utiliser les programmes d’assistance HTML.
 
-**Liste 5--\Views\Home\Login.aspx**
+**Listing 5 -- \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample5.aspx)]
 
@@ -133,13 +133,13 @@ Le contrôleur de propriété ViewData représente une collection de paires nom 
 
 La vue dans la liste 7 récupère le message à partir des données d’affichage et affiche le message dans le navigateur.
 
-**Liste 7--\Views\Product\Index.aspx**
+**Listing 7 -- \Views\Product\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-cs/samples/sample7.aspx)]
 
 Notez que la vue tire parti de la méthode d’assistance HTML de Html.Encode() lors du rendu du message. Le programme d’assistance HTML de Html.Encode() encode les caractères spéciaux tels que &lt; et &gt; en caractères qui sont sécurisés à afficher dans une page web. Chaque fois que vous restituez contenu fournie par un utilisateur à un site Web, vous devez coder le contenu pour empêcher les attaques par injection de JavaScript.
 
-(Étant donné que nous avons créé le message nous-mêmes dans le ProductController, nous ne pas vraiment besoin encoder le message. Toutefois, il est une bonne habitude de toujours appeler la méthode Html.Encode() lors de l’affichage du contenu récupéré à partir de données d’affichage dans une vue.)
+(Étant donné que nous avons créé le message que nous-mêmes dans le ProductController, nous n’avez pas à encoder le message. Toutefois, il est une bonne habitude de toujours appeler la méthode Html.Encode() lors de l’affichage du contenu récupéré à partir de données d’affichage dans une vue.)
 
 Dans la liste 7, nous avons tiré parti de données d’affichage pour passer un message de chaîne simple à partir d’un contrôleur à une vue. Afficher les données permettent également de transmettre d’autres types de données, telle qu’une collection d’enregistrements de base de données, à partir d’un contrôleur à une vue. Par exemple, si vous souhaitez afficher le contenu de la table de base de données de produits dans une vue, vous pouvez transmettre à la collection de base de données enregistre dans la vue données.
 

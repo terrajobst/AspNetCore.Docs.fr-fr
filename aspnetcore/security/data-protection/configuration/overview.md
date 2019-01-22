@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/13/2018
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 3be220df4b14ed8dbbd1fab70f46578e9408aa26
-ms.sourcegitcommit: f202864efca81a72ea7120c0692940c40d9d0630
+ms.openlocfilehash: 0aef2680f48b7923579f90943846f22734f61b50
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635314"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444270"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Configurer la Protection des données ASP.NET Core
 
@@ -42,7 +42,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Définir l’emplacement de stockage de porte-clés (par exemple, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). L’emplacement doit être défini, car l’appel `ProtectKeysWithAzureKeyVault` implémente un [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) qui désactive les paramètres de protection automatique des données, y compris l’emplacement de stockage de porte-clés. L’exemple précédent utilise le stockage Blob Azure pour conserver le key ring. Pour plus d’informations, consultez [les fournisseurs de stockage de clés : Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Vous pouvez également conserver le key ring localement avec [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
+Définir l’emplacement de stockage de porte-clés (par exemple, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). L’emplacement doit être défini, car l’appel `ProtectKeysWithAzureKeyVault` implémente un [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) qui désactive les paramètres de protection automatique des données, y compris l’emplacement de stockage de porte-clés. L’exemple précédent utilise le stockage Blob Azure pour conserver le key ring. Pour plus d’informations, consultez [fournisseurs de stockage de clés : Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Vous pouvez également conserver le key ring localement avec [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
 
 Le `keyIdentifier` est l’identificateur de clé de coffre de clés utilisée pour le chiffrement de clé (par exemple, `https://contosokeyvault.vault.azure.net/keys/dataprotection/`).
 
@@ -135,7 +135,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="setapplicationname"></a>SetApplicationName
 
-Par défaut, le système de Protection des données isole les applications à partir d’une autre, même si elles le partagent le même référentiel clé physique. Cela empêche les applications de la compréhension des charges protégé entre eux.
+Par défaut, le système de Protection des données isole les applications à partir de l’autre en fonction de leurs chemins d’accès racine du contenu, même si elles le partagent le même référentiel clé physique. Cela empêche les applications de la compréhension des charges protégé entre eux.
 
 Partage protégé entre les applications des charges utiles :
 

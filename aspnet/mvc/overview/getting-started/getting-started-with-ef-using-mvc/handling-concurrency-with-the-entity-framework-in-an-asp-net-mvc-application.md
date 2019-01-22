@@ -1,36 +1,41 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
-title: Gestion des accès concurrentiels avec Entity Framework 6 dans une Application ASP.NET MVC 5 (10 sur 12) | Microsoft Docs
+title: 'Tutoriel : Gérer l’accès concurrentiel avec Entity Framework dans une application ASP.NET MVC 5'
+description: Ce didacticiel montre comment utiliser l’accès concurrentiel optimiste pour gérer les conflits quand plusieurs utilisateurs mettre à jour la même entité en même temps.
 author: tdykstra
-description: L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio...
 ms.author: riande
-ms.date: 12/08/2014
+ms.date: 01/21/2019
+ms.topic: tutorial
 ms.assetid: be0c098a-1fb2-457e-b815-ddca601afc65
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 22fd6bc92aa0d516e1bfeb5aa6a67d7246d977ac
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: b77b8d6f952472f4d3030f54665f970b8ace2caf
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48913253"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444179"
 ---
-<a name="handling-concurrency-with-the-entity-framework-6-in-an-aspnet-mvc-5-application-10-of-12"></a>Gestion des accès concurrentiels avec Entity Framework 6 dans une Application ASP.NET MVC 5 (10 sur 12)
-====================
-par [Tom Dykstra](https://github.com/tdykstra)
+# <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>Tutoriel : Gérer l’accès concurrentiel avec Entity Framework dans une application ASP.NET MVC 5
 
-[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+Dans les didacticiels précédents, vous avez appris comment mettre à jour des données. Ce didacticiel montre comment utiliser l’accès concurrentiel optimiste pour gérer les conflits quand plusieurs utilisateurs mettre à jour la même entité en même temps. Vous modifiez les pages web qui fonctionnent avec le `Department` entité afin qu’ils gèrent les erreurs d’accès concurrentiel. Les illustrations suivantes montrent les pages Edit et Delete, notamment certains messages qui sont affichés si un conflit d’accès concurrentiel se produit.
 
-> L’exemple d’application web Contoso University montre comment créer des applications ASP.NET MVC 5 à l’aide de l’Entity Framework 6 Code First et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
+![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
+![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image15.png)
 
-Dans les didacticiels précédents, vous avez appris comment mettre à jour des données. Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
+Dans ce didacticiel, vous avez effectué les actions suivantes :
 
-Vous allez modifier les pages web qui fonctionnent avec le `Department` entité afin qu’ils gèrent les erreurs d’accès concurrentiel. Les illustrations suivantes montrent les pages d’Index et Delete, notamment certains messages sont affichés si un conflit d’accès concurrentiel se produit.
+> [!div class="checklist"]
+> * En savoir plus sur les conflits d’accès concurrentiel
+> * Ajouter l’accès concurrentiel optimiste
+> * Modifier le contrôleur de service
+> * Gestion de test d’accès concurrentiel
+> * Mettre à jour la page Delete
 
-![Department_Index_page_before_edits](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
+## <a name="prerequisites"></a>Prérequis
 
-![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image2.png)
+* [Procédures asynchrones et stockées](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="concurrency-conflicts"></a>Conflits d’accès concurrentiel
 
@@ -46,11 +51,7 @@ La gestion des verrous présente des inconvénients. Elle peut être complexe à
 
 L’alternative à l’accès concurrentiel pessimiste est *d’accès concurrentiel optimiste*. L’accès concurrentiel optimiste signifie autoriser la survenance des conflits d’accès concurrentiel, puis de réagir correctement quand ils surviennent. Par exemple, John exécute la page de modification des départements, modifications le **Budget** montant pour le département « English » à partir de $ 350 000,00 à $0,00.
 
-![Changing_English_dept_budget_to_100000](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image3.png)
-
 Avant de Jean clique sur **enregistrer**, Jane exécute la même page et modifications le **Start Date** champ à partir du 1/9/2007 8/8/2013.
-
-![Changing_English_dept_start_date_to_1999](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image4.png)
 
 John clique sur **enregistrer** premier et voit sa modification quand le navigateur revient à la page d’Index, puis Jane clique sur **enregistrer**. Ce qui se passe ensuite est déterminé par la façon dont vous gérez les conflits d’accès concurrentiel. Voici quelques-unes des options :
 
@@ -75,7 +76,7 @@ Vous pouvez résoudre les conflits en gérant [OptimisticConcurrencyException](h
 
 Dans le reste de ce didacticiel, vous ajouterez un [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) suivi de propriété pour le `Department` entité, créer un contrôleur et des vues et de test pour vérifier que tout fonctionne correctement.
 
-## <a name="add-an-optimistic-concurrency-property-to-the-department-entity"></a>Ajouter une propriété de l’accès concurrentiel optimiste à l’entité Department
+## <a name="add-optimistic-concurrency"></a>Ajouter l’accès concurrentiel optimiste
 
 Dans *Models\Department.cs*, ajoutez une propriété de suivi nommée `RowVersion`:
 
@@ -91,7 +92,7 @@ En ajoutant une propriété, vous avez changé le modèle de base de données et
 
 [!code-console[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cmd)]
 
-## <a name="modify-the-department-controller"></a>Modifier le contrôleur de service
+## <a name="modify-department-controller"></a>Modifier le contrôleur de service
 
 Dans *Controllers\DepartmentController.cs*, ajoutez un `using` instruction :
 
@@ -135,37 +136,23 @@ Dans *Views\Department\Edit.cshtml*, ajoutez un champ masqué pour enregistrer l
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cshtml?highlight=18)]
 
-## <a name="testing-optimistic-concurrency-handling"></a>Test de gestion d’accès concurrentiel optimiste
+## <a name="test-concurrency-handling"></a>Gestion de test d’accès concurrentiel
 
-Exécutez le site et cliquez sur **départements**:
-
-![Department_Index_page_before_edits](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image5.png)
+Exécutez le site et cliquez sur **départements**.
 
 Bouton droit sur le **modifier** lien hypertexte pour le département « English » et sélectionnez **ouvert dans un nouvel onglet,** puis cliquez sur le **modifier** lien hypertexte pour le département « English ». Les deux onglets affichent les mêmes informations.
 
-![Department_Edit_page_before_changes](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image6.png)
-
 Changez un champ sous le premier onglet du navigateur, puis cliquez sur **Save**.
-
-![Department_Edit_page_1_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image7.png)
 
 Le navigateur affiche la page Index avec la valeur modifiée.
 
-![Departments_Index_page_after_first_budget_edit](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image8.png)
-
-Modifier un champ dans le deuxième onglet du navigateur, cliquez sur **enregistrer**.
-
-![Department_Edit_page_2_after_change](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image9.png)
-
-Cliquez sur **enregistrer** dans le deuxième onglet du navigateur. Vous voyez un message d’erreur :
+Modifier un champ dans le deuxième onglet du navigateur, cliquez sur **enregistrer**. Vous voyez un message d’erreur :
 
 ![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
 Cliquez à nouveau sur **Save**. La valeur que vous avez entré dans le deuxième onglet du navigateur est enregistrée en même temps que la valeur d’origine des données que vous avez modifié dans le navigateur en premier. Vous voyez les valeurs enregistrées quand la page Index apparaît.
 
-![Department_Index_page_with_change_from_second_browser](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image11.png)
-
-## <a name="updating-the-delete-page"></a>La mise à jour de la Page Delete
+## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
 
 Pour la page Delete, Entity Framework détecte les conflits d’accès concurrentiel provoqués par un autre utilisateur qui modifie le service de façon similaire. Lorsque le `HttpGet` `Delete` méthode affiche la vue de confirmation, la vue inclut la version d’origine `RowVersion` valeur dans un champ masqué. Cette valeur est ensuite disponible pour le `HttpPost` `Delete` méthode est appelée lorsque l’utilisateur confirme la suppression. Quand Entity Framework crée le SQL `DELETE` commande, il inclut un `WHERE` clause avec l’original `RowVersion` valeur. Si les résultats de la commande dans des lignes nulles affectés (c'est-à-dire la ligne a été modifiée après l’affichage de la page de confirmation de suppression), une exception d’accès concurrentiel est levée et le `HttpGet Delete` méthode est appelée avec un indicateur d’erreur défini sur `true` pour réafficher le page de confirmation avec un message d’erreur. Il est également possible qu’aucune ligne ont été affectés, car la ligne a été supprimée par un autre utilisateur, donc dans ce cas, un message d’erreur différent est affiché.
 
@@ -191,7 +178,7 @@ Vous avez également changé le nom de la méthode d’action de `DeleteConfirme
 
 Si une erreur d’accès concurrentiel est interceptée, le code réaffiche la page de confirmation de suppression et fournit un indicateur indiquant qu’elle doit afficher un message d’erreur d’accès concurrentiel.
 
-Dans *Views\Department\Delete.cshtml*, remplacez le code généré automatiquement par le code suivant qui ajoute un champ de message d’erreur et les champs masqués pour les propriétés DepartmentID et RowVersion. Les modifications apparaissent en surbrillance.
+Dans *Views\Department\Delete.cshtml*, remplacez le code généré automatiquement par le code suivant qui ajoute un champ de message d’erreur et les champs masqués pour les propriétés DepartmentID et RowVersion. Les modifications sont mises en surbrillance.
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cshtml?highlight=9-10,21,52-54)]
 
@@ -209,17 +196,11 @@ Enfin, il ajoute les champs masqués pour les `DepartmentID` et `RowVersion` pro
 
 Exécutez la page Index des départements. Bouton droit sur le **supprimer** lien hypertexte pour le département « English » et sélectionnez **ouvert dans un nouvel onglet,** puis, dans le premier onglet, cliquez sur le **modifier** lien hypertexte pour le département « English ».
 
-Dans la première fenêtre, modifiez l’une des valeurs, puis cliquez sur **enregistrer** :
-
-![Department_Edit_page_after_change_before_delete](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image12.png)
+Dans la première fenêtre, modifiez l’une des valeurs, puis cliquez sur **enregistrer**.
 
 La page d’Index a confirmé la modification.
 
-![Departments_Index_page_after_budget_edit_before_delete](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image13.png)
-
 Sous le deuxième onglet, cliquez sur **Delete**.
-
-![Department_Delete_confirmation_page_before_concurrency_error](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image14.png)
 
 Vous voyez le message d’erreur d’accès concurrentiel et les valeurs du département sont actualisées avec ce qui est actuellement dans la base de données.
 
@@ -227,12 +208,27 @@ Vous voyez le message d’erreur d’accès concurrentiel et les valeurs du dép
 
 Si vous recliquez sur **Delete**, vous êtes redirigé vers la page Index, qui montre que le département a été supprimé.
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Ceci termine l’introduction à la gestion des conflits d’accès concurrentiel. Pour plus d’informations sur les autres méthodes pour gérer les différents scénarios de concurrence, consultez [des modèles d’accès concurrentiel optimiste](https://msdn.microsoft.com/data/jj592904) et [travaillez avec des valeurs de propriété](https://msdn.microsoft.com/data/jj592677) sur MSDN. Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour le `Instructor` et `Student` entités.
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
+
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 Vous trouverez des liens vers d’autres ressources Entity Framework dans le [accès aux données ASP.NET - ressources recommandées](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-> [!div class="step-by-step"]
-> [Précédent](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Suivant](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+Pour plus d’informations sur les autres méthodes pour gérer les différents scénarios de concurrence, consultez [des modèles d’accès concurrentiel optimiste](https://msdn.microsoft.com/data/jj592904) et [travaillez avec des valeurs de propriété](https://msdn.microsoft.com/data/jj592677) sur MSDN. Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour le `Instructor` et `Student` entités.
+
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Découvert les conflits d’accès concurrentiel
+> * Ajout d’accès concurrentiel optimiste
+> * Contrôleur de service modifié
+> * Gestion d’accès concurrentiel testé
+> * Mise à jour de la page Delete
+
+Passez à l’article suivant pour savoir comment implémenter l’héritage dans le modèle de données.
+> [!div class="nextstepaction"]
+> [Implémenter l’héritage dans le modèle de données](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
