@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/scaleout-with-sql-server
 title: Montée en puissance parallèle de SignalR avec SQL Server | Microsoft Docs
-author: MikeWasson
+author: bradygaster
 description: Versions des logiciels utilisés dans cette rubrique Visual Studio 2013, .NET 4.5 SignalR les versions précédentes de la version 2 de cette rubrique pour plus d’informations sur les versions antérieures de...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 98358b6e-9139-4239-ba3a-2d7dd74dd664
 msc.legacyurl: /signalr/overview/performance/scaleout-with-sql-server
 msc.type: authoredcontent
-ms.openlocfilehash: 73b16ecf141732f0adc362dc5167073491cc2dea
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 5984a5e6c3215e7dde8c09ef702bf6453730a3ee
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287011"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837895"
 ---
 <a name="signalr-scaleout-with-sql-server"></a>Montée en puissance parallèle de SignalR avec SQL Server
 ====================
