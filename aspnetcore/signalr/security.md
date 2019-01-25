@@ -1,18 +1,18 @@
 ---
 title: Considérations de sécurité dans ASP.NET Core SignalR
-author: tdykstra
+author: bradygaster
 description: Découvrez comment utiliser l’authentification et les autorisations dans ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: f646d319cf3030fd4d769e882514da14b230bbdd
-ms.sourcegitcommit: c3fa5aded0bf76a7414047d50b8a2311d27ee1ef
+ms.openlocfilehash: 52cfac6be8e61572acdf0b19dab574b607314d97
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276143"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836062"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>Considérations de sécurité dans ASP.NET Core SignalR
 
@@ -52,19 +52,19 @@ Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Pour la 
 
 ::: moniker range="< aspnetcore-2.2"
 
-Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Navigateurs **pas**:
+Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Les navigateurs **:**
 
-* Effectuer des demandes de contrôle préliminaire CORS.
-* Respecter les restrictions spécifiées dans `Access-Control` en-têtes pour effectuer des demandes de WebSocket.
+* n’effectuent pas de requêtes préalables CORS ;
+* respectent les restrictions spécifiées dans les en-têtes `Access-Control` quand ils effectuent des requêtes WebSocket.
 
-Toutefois, les navigateurs envoient le `Origin` en-tête lors de l’émission des demandes WebSocket. Applications doivent être configurées pour valider ces en-têtes pour s’assurer qu’uniquement les WebSockets provenant les origines attendus sont autorisées.
+Toutefois, les navigateurs envoient l’en-tête `Origin` au moment de l’émission des requêtes WebSocket. Les applications doivent être configurées de manière à valider ces en-têtes, le but étant de vérifier que seuls les WebSockets provenant des origines attendues sont autorisés.
 
 Dans ASP.NET Core 2.1 et versions ultérieures, validation de l’en-tête peut être obtenue à l’aide d’un intergiciel (middleware) personnalisé placé **avant `UseSignalR`et l’intergiciel d’authentification** dans `Configure`:
 
 [!code-csharp[Main](security/sample/Startup.cs?name=snippet2)]
 
 > [!NOTE]
-> Le `Origin` en-tête est contrôlé par le client et, comme le `Referer` en-tête, peut être fausses. Ces en-têtes doivent **pas** être utilisé comme mécanisme d’authentification.
+> L’en-tête `Origin` est contrôlé par le client et, comme l’en-tête `Referer`, peut être falsifié. Ces en-têtes doivent **pas** être utilisé comme mécanisme d’authentification.
 
 ::: moniker-end
 

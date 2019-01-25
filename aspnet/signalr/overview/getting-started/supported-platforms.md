@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/getting-started/supported-platforms
 title: Plateformes prises en charge | Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: Cet article décrit les clients et les serveurs sont pris en charge par SignalR.
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/18/2018
 ms.assetid: eac31beb-0f46-4afa-9def-e80904dea4f0
 msc.legacyurl: /signalr/overview/getting-started/supported-platforms
 msc.type: authoredcontent
-ms.openlocfilehash: e270f9a328f36854fdfb3e23b78e0b40cdda6411
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 60fa74b54797efbe14ba525160b2f750a4f5a451
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287359"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836049"
 ---
 <a name="supported-platforms"></a>Plateformes prises en charge
 ====================
@@ -126,10 +126,10 @@ SignalR peut être utilisé dans les applications du Windows Store et les applic
 
 | Transport | Windows Store / .NET | Windows Store / JavaScript | Windows Phone / Internet Explorer | Windows Phone / .NET |
 | --- | --- | --- | --- | --- |
-| WebSockets | N/A | Win8 + | 8+ | N/A |
-| Forever Frame | N/A | Win8 + | 7.5+ | N/A |
-| Événements envoyés par le serveur | Win8 + | N/A | N/A | 8+ |
-| Interrogation longue (Long polling) | Win8 + | Win8 + | 7.5+ | 8+ |
+| WebSockets | N/A | Win8+ | 8+ | N/A |
+| Forever Frame | N/A | Win8+ | 7.5+ | N/A |
+| Événements envoyés par le serveur | Win8+ | N/A | N/A | 8+ |
+| Interrogation longue (Long polling) | Win8+ | Win8+ | 7.5+ | 8+ |
 
 <a id="updates"></a>
 

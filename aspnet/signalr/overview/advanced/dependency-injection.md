@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/advanced/dependency-injection
 title: L’Injection de dépendances dans SignalR | Microsoft Docs
-author: MikeWasson
+author: bradygaster
 description: Versions des logiciels utilisés dans cette rubrique Visual Studio 2013, .NET 4.5 SignalR les versions précédentes de la version 2 de cette rubrique pour plus d’informations sur les versions antérieures de...
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: a14121ae-02cf-4024-8af0-9dd0dc810690
 msc.legacyurl: /signalr/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: f5959902b030621a19d912d7db2ea0faf95b7a7c
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 54e263e277852d2d478ce5bccd4164254498831a
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287788"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836608"
 ---
 <a name="dependency-injection-in-signalr"></a>Injection de dépendances dans SignalR
 ====================

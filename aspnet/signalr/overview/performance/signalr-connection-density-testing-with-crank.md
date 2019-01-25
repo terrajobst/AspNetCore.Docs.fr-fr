@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/performance/signalr-connection-density-testing-with-crank
 title: La densité des connexions SignalR avec Crank de test | Microsoft Docs
-author: Rick-Anderson
+author: bradygaster
 description: Densité des connexions SignalR avec Crank de test
-ms.author: riande
+ms.author: bradyg
 ms.date: 02/22/2015
 ms.assetid: 148d9ca7-1af1-44b6-a9fb-91e261b9b463
 msc.legacyurl: /signalr/overview/performance/signalr-connection-density-testing-with-crank
 msc.type: authoredcontent
-ms.openlocfilehash: 308fed51953b085506488c5e0dda1ced9f4d09fb
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 40c9764f0c47b83df8300553b4b290429937345c
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287566"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836543"
 ---
 <a name="signalr-connection-density-testing-with-crank"></a>Densité des connexions SignalR avec Crank de test
 ====================
@@ -46,10 +46,10 @@ Une fois que vous avez téléchargé et créé la base de code et installé les 
 
 Les options disponibles pour l’outil manivelle incluent :
 
-- **/?** : Affiche l’écran d’aide. Les options disponibles sont également affichées si les **Url** paramètre est omis.
+- **/?**: Affiche l’écran d’aide. Les options disponibles sont également affichées si les **Url** paramètre est omis.
 - **/ Url**: L’URL pour les connexions SignalR. Ce paramètre est obligatoire. Pour une application de SignalR en utilisant le mappage par défaut, le chemin d’accès se termine par « / signalr ».
 - **/ Transport**: Le nom du transport utilisé. La valeur par défaut est `auto`, qui sélectionne le meilleur protocole disponible. Les options incluent `WebSockets`, `ServerSentEvents`, et `LongPolling` (`ForeverFrame` n’est pas une option pour manivelle, depuis le client .NET au lieu d’Internet Explorer est utilisé). Pour plus d’informations sur la façon dont SignalR sélectionne les transports, consultez [Transports et les solutions de secours](../getting-started/introduction-to-signalr.md#transports).
-- **/ BatchSize**: Le nombre de clients ajoutés dans chaque lot. La valeur par défaut est 50.
+- **/BatchSize**: Le nombre de clients ajoutés dans chaque lot. La valeur par défaut est 50.
 - **/ ConnectInterval**: L’intervalle en millisecondes entre l’ajout de connexions. La valeur par défaut est 500.
 - **/ Connexions**: Le nombre de connexions utilisé pour l’application de test de charge. La valeur par défaut est 100 000.
 - **/ ConnectTimeout**: Le délai d’attente en secondes avant l’abandon du test. La valeur par défaut est 300.

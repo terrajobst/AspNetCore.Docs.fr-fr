@@ -1,26 +1,26 @@
 ---
 uid: signalr/overview/getting-started/tutorial-getting-started-with-signalr
 title: 'Tutoriel : Conversation en temps réel avec SignalR 2 | Microsoft Docs'
-author: pfletcher
+author: bradygaster
 description: Ce didacticiel montre comment utiliser SignalR pour créer une application de conversation en temps réel. Vous ajoutez SignalR à une application de web ASP.NET vide.
-ms.author: riande
-ms.date: 01/02/2019
+ms.author: bradyg
+ms.date: 01/22/2019
 ms.assetid: a8b3b778-f009-4369-85c7-e90f9878d8b4
 msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-signalr
 msc.type: authoredcontent
 ms.topic: tutorial
-ms.openlocfilehash: aa015abc47bb2450e04e167c0404aaa1d119ba2c
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 90f2c03fbda522e3a46200bc0132cc74100ce70f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098622"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836790"
 ---
 # <a name="tutorial-real-time-chat-with-signalr-2"></a>Tutoriel : Conversation en temps réel avec SignalR 2
 
 Ce didacticiel vous montre comment utiliser SignalR pour créer une application de conversation en temps réel. Vous ajoutez des SignalR à une application de web ASP.NET vide et que vous créez une page HTML pour envoyer et afficher des messages.
 
-Dans ce didacticiel, vous :
+Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
 > * Configurer le projet
@@ -161,6 +161,10 @@ Ce code ouvre une connexion avec le hub.
 > Cette approche garantit que le code établit une connexion avant que le Gestionnaire d’événements s’exécute.
 
 Le code démarre la connexion et passe une fonction pour gérer l’événement de clic sur le **envoyer** bouton dans la page HTML.
+
+## <a name="get-the-code"></a>Obtenir le code
+
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/SignalR-Getting-Started-b9d18aa9)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

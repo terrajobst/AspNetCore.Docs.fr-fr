@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/testing-and-debugging/troubleshooting
 title: Résolution des problèmes de SignalR | Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: Cet article décrit les problèmes courants avec le développement des applications SignalR.
-ms.author: riande
+ms.author: bradyg
 ms.date: 06/10/2014
 ms.assetid: 4b559e6c-4fb0-4a04-9812-45cf08ae5779
 msc.legacyurl: /signalr/overview/testing-and-debugging/troubleshooting
 msc.type: authoredcontent
-ms.openlocfilehash: e41061f0310c021b10dc6667a5c3297788213b0a
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 38802814fbb748513274f1fd8a33521fafd48ed3
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53287947"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837206"
 ---
 <a name="signalr-troubleshooting"></a>Résolution des problèmes de SignalR
 ====================
@@ -202,7 +202,7 @@ Il s’agit d’une erreur très générique qui peut avoir un large éventail d
 
 Cette erreur se produit généralement si un pare-feu ou un proxy n’est pas configuré correctement, à l’origine à réécrire les en-têtes de demande. La solution consiste à vous assurer que le port 80 est activé sur le pare-feu ou le proxy.
 
-### <a name="unexpected-response-code-500"></a>« Code de réponse inattendu : 500 »
+### <a name="unexpected-response-code-500"></a>« Code de réponse inattendu : 500"
 
 Cette erreur peut se produire si la version du .NET framework est utilisé dans l’application ne correspond pas à la version spécifiée dans le fichier Web.Config. La solution consiste à vérifier que .NET 4.5 est utilisé dans les paramètres d’application et le fichier Web.Config.
 
@@ -284,7 +284,7 @@ Les messages sont différées quand à l’aide du serveur d’envoi des événe
 
 Il s’agit d’un problème connu, décrit [ici](https://github.com/SignalR/SignalR/issues/1963). Ce problème peut se produire à l’aide de la dernière bibliothèque JQuery ; la solution de contournement consiste à mettre à niveau votre application à JQuery 1.8.2.
 
-### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>« InvalidOperationException : Pas une demande de socket web valide.
+### <a name="invalidoperationexception-not-a-valid-web-socket-request"></a>"InvalidOperationException: Pas une demande de socket web valide.
 
 Cette erreur peut se produire si le protocole WebSocket est utilisé, mais que le proxy réseau modifie les en-têtes de demande. La solution consiste à configurer le serveur proxy pour autoriser WebSocket sur le port 80.
 

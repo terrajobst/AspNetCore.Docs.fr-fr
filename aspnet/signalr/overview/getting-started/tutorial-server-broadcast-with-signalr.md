@@ -3,18 +3,18 @@ uid: signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 title: 'Tutoriel : Serveur de diffusion avec SignalR 2 | Microsoft Docs'
 author: tdykstra
 description: Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR 2 pour fournir des fonctionnalités de diffusion de serveur.
-ms.author: riande
+ms.author: bradyg
 ms.date: 01/02/2019
 ms.topic: tutorial
 ms.assetid: 1568247f-60b5-4eca-96e0-e661fbb2b273
 msc.legacyurl: /signalr/overview/getting-started/tutorial-server-broadcast-with-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: a6014e604613492db91b2dc6f846c3c73d938d99
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: a243c78c7d552f1c82a88c6083871fcd16538618
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099297"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837427"
 ---
 # <a name="tutorial-server-broadcast-with-signalr-2"></a>Tutoriel : Serveur de diffusion avec SignalR 2
 
@@ -26,7 +26,7 @@ L’application que vous allez créer dans ce didacticiel simule un téléscript
 
 ![Créer le web](tutorial-server-broadcast-with-signalr/_static/image1.png)
 
-Dans ce didacticiel, vous :
+Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
 > * Créer le projet
@@ -487,7 +487,7 @@ Pour en savoir plus sur SignalR, consultez les ressources suivantes :
 
 ## <a name="next-steps"></a>Étapes suivantes
 
-Dans ce didacticiel, vous :
+Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 > [!div class="checklist"]
 > * Créé le projet

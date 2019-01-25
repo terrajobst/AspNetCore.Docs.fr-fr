@@ -4,17 +4,17 @@ title: 'Tutoriel : Implémenter la fonctionnalité CRUD avec Entity Framework d
 description: Passez en revue et personnaliser la créer, lire, mettre à jour, supprimer (CRUD) code que la génération de modèles automatique MVC crée automatiquement dans les contrôleurs et les vues.
 author: tdykstra
 ms.author: riande
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 ms.topic: tutorial
 ms.assetid: a2f70ba4-83d1-4002-9255-24732726c4f2
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9c6f8f3a2ffc0a9c5e15111ae47c331dab24ff43
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: MT
+ms.openlocfilehash: 42971b4e15c4aaf85d0ea50bf63934ba4a78ed91
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341718"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836232"
 ---
 # <a name="tutorial-implement-crud-functionality-with-the-entity-framework-in-aspnet-mvc"></a>Tutoriel : Implémenter la fonctionnalité CRUD avec Entity Framework dans ASP.NET MVC
 
@@ -245,6 +245,10 @@ La base de `Controller` déjà la classe implémente le `IDisposable` interface,
 ## <a name="handle-transactions"></a>Gérer les transactions
 
 Par défaut, Entity Framework implémente implicitement les transactions. Dans les scénarios où vous apportez des modifications à plusieurs lignes ou les tables, puis appelez `SaveChanges`, Entity Framework garantit automatiquement que toutes vos modifications réussissent ou tous échouer. Si certaines modifications sont effectuées en premier puis qu’une erreur se produit, ces modifications sont automatiquement annulées. Pour les scénarios où vous avez besoin de plus de contrôle&mdash;par exemple, si vous souhaitez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction&mdash;consultez [utilisation de Transactions](/ef/ef6/saving/transactions).
+
+## <a name="get-the-code"></a>Obtenir le code
+
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

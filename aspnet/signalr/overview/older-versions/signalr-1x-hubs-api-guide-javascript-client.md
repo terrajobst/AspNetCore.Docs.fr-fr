@@ -1,19 +1,19 @@
 ---
 uid: signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 title: Guide de API SignalR 1.x Hubs - Client JavaScript | Microsoft Docs
-author: pfletcher
+author: bradygaster
 description: Ce document fournit une introduction à l’utilisation de l’API de Hubs pour SignalR version 1.1 dans JavaScript clients, tels que les navigateurs et Windows Store (WinJS) appl...
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/17/2013
 ms.assetid: dcd4593b-1118-418a-af71-d12ff33fb36d
 msc.legacyurl: /signalr/overview/older-versions/signalr-1x-hubs-api-guide-javascript-client
 msc.type: authoredcontent
-ms.openlocfilehash: 2d50a92cff96be5c5c60105bba6682d38f9666b6
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: eb40648ca06adcceaa613ba86abfcf7459369c7e
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288090"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836751"
 ---
 <a name="signalr-1x-hubs-api-guide---javascript-client"></a>Guide de API SignalR 1.x Hubs - Client JavaScript
 ====================
@@ -286,9 +286,9 @@ Comme alternative, vous pouvez spécifier plusieurs méthodes de transport dans 
 
 Vous pouvez utiliser les valeurs suivantes pour spécifier le mode de transport :
 
-- « webSockets »
+- "webSockets"
 - « foreverFrame »
-- « serverSentEvents »
+- "serverSentEvents"
 - « longPolling »
 
 Les exemples suivants montrent comment savoir quelle méthode de transport est utilisé par une connexion.

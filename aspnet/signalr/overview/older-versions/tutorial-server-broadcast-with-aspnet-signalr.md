@@ -1,21 +1,21 @@
 ---
 uid: signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
-title: 'Didacticiel : Serveur de diffusion avec ASP.NET SignalR 1.x | Microsoft Docs'
-author: pfletcher
+title: 'Tutoriel : Serveur de diffusion avec ASP.NET SignalR 1.x | Microsoft Docs'
+author: bradygaster
 description: Ce didacticiel montre comment créer une application web qui utilise ASP.NET SignalR pour fournir des fonctionnalités de diffusion de serveur. Serveur de diffusion signifie autrement communic...
-ms.author: riande
+ms.author: bradyg
 ms.date: 04/10/2013
 ms.assetid: ab7b2554-956a-4f6d-b2a0-4ae0c62e8580
 msc.legacyurl: /signalr/overview/older-versions/tutorial-server-broadcast-with-aspnet-signalr
 msc.type: authoredcontent
-ms.openlocfilehash: d5c09f6493c4dedb4fc2ecbf9055dd014ede71f2
-ms.sourcegitcommit: 74e3be25ea37b5fc8b4b433b0b872547b4b99186
+ms.openlocfilehash: 258a55bf72c4b3425d001f478620fa9651952b3f
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53288045"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837466"
 ---
-<a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Didacticiel : Serveur de diffusion avec ASP.NET SignalR 1.x
+<a name="tutorial-server-broadcast-with-aspnet-signalr-1x"></a>Tutoriel : Serveur de diffusion avec ASP.NET SignalR 1.x
 ====================
 par [Patrick Fletcher](https://github.com/pfletcher), [Tom Dykstra](https://github.com/tdykstra)
 

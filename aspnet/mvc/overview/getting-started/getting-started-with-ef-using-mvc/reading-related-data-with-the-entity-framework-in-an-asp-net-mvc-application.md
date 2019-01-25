@@ -4,17 +4,17 @@ title: 'Tutoriel : Lire les données associées avec Entity Framework dans une 
 description: Dans ce didacticiel, vous allez lire et afficher les données associées, autrement dit, les données qu’Entity Framework charge dans les propriétés de navigation.
 author: tdykstra
 ms.author: riande
-ms.date: 01/17/2019
+ms.date: 01/22/2019
 ms.topic: tutorial
 ms.assetid: 18cdd896-8ed9-4547-b143-114711e3eafb
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 8660a75655b801364cce7c4b59847c5c00562a27
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
-ms.translationtype: MT
+ms.openlocfilehash: 5f45820cd7abd60e69c19368cee50e91e31a75a0
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396205"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836829"
 ---
 # <a name="tutorial-read-related-data-with-ef-in-an-aspnet-mvc-app"></a>Tutoriel : Lire les données associées avec Entity Framework dans une application ASP.NET MVC
 
@@ -243,6 +243,10 @@ Ensuite, il charge explicitement chaque `Enrollment` relative à entity `Student
 Notez que vous utilisez le `Collection` méthode pour charger une propriété de collection, mais pour une propriété contenant une seule entité, vous utilisez le `Reference` (méthode).
 
 Exécuter maintenant de la page d’Index des formateurs et vous ne verrez aucune différence dans ce qui est affiché dans la page, même si vous avez modifié la façon dont les données sont récupérées.
+
+## <a name="get-the-code"></a>Obtenir le code
+
+[Télécharger le projet terminé](http://code.msdn.microsoft.com/ASPNET-MVC-Application-b01a9fe8)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
