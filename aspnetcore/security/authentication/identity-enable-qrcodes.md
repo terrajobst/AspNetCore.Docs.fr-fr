@@ -5,12 +5,12 @@ description: Découvrez comment activer la génération de code QR pour les appl
 ms.author: riande
 ms.date: 08/14/2018
 uid: security/authentication/identity-enable-qrcodes
-ms.openlocfilehash: 437f354f71128a98bae9abdced291e04efc9f48e
-ms.sourcegitcommit: fc7eb4243188950ae1f1b52669edc007e9d0798d
+ms.openlocfilehash: cf99cc21a7a1bb4d01c7cc092106d23375a1a76f
+ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51225380"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55073125"
 ---
 # <a name="enable-qr-code-generation-for-totp-authenticator-apps-in-aspnet-core"></a>Activer la génération de Code QR pour les applications de l’authentificateur TOTP dans ASP.NET Core
 
@@ -25,6 +25,8 @@ Codes QR nécessite ASP.NET Core 2.0 ou version ultérieure.
 ASP.NET Core est livré avec la prise en charge pour les applications de l’authentificateur pour l’authentification individuelle. Deux facteurs (2FA) authentificateur applications d’authentification, à l’aide d’une heure basée à usage unique mot de passe algorithme définie (TOTP), sont le secteur de l’approche 2fa recommandé. À 2 facteurs à l’aide de TOTP est préférée à SMS 2FA. Une application d’authentification fournit un code de 6 à 8 chiffres que les utilisateurs doivent entrer après la confirmation de leur nom d’utilisateur et le mot de passe. En règle générale, une application d’authentification est installée sur un Smartphone.
 
 Les modèles d’application web ASP.NET Core prennent en charge des authentificateurs, mais ne fournissent pas la prise en charge pour la génération de QRCode. Générateurs de QRCode facilitent l’installation de 2FA. Ce document vous guidera ajout [Code QR](https://wikipedia.org/wiki/QR_code) génération à la page de configuration à 2 facteurs.
+
+Authentification à deux facteurs ne se produit pas à l’aide d’un fournisseur d’authentification externe, tel que [Google](xref:security/authentication/google-logins) ou [Facebook](xref:security/authentication/facebook-logins). Connexions externes sont protégées par le mécanisme qui fournit le fournisseur de connexion externe. Considérons, par exemple, le [Microsoft](xref:security/authentication/microsoft-logins) fournisseur d’authentification requiert une clé matérielle ou une autre approche à 2 facteurs. Si les modèles par défaut appliquées à 2 facteurs « local » puis les utilisateurs doivent satisfaire les deux approches à 2 facteurs, qui n’est pas un scénario couramment utilisé.
 
 ## <a name="adding-qr-codes-to-the-2fa-configuration-page"></a>Ajout des Codes QR à la page de configuration à 2 facteurs
 
