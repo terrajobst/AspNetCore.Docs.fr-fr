@@ -1,28 +1,36 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/enhancing-data-validation
-title: 'EF Database First avec ASP.NET MVC : amélioration de la Validation des données | Microsoft Docs'
+title: 'Tutoriel : Améliorer la validation des données pour EF Database First avec une application ASP.NET MVC'
+description: Ce didacticiel se concentre sur l’ajout d’annotations de données au modèle de données pour spécifier les exigences de validation et afficher la mise en forme.
 author: Rick-Anderson
-description: À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Ce didacticiel seri...
 ms.author: riande
-ms.date: 12/29/2014
+ms.date: 01/28/2019
+ms.topic: tutorial
 ms.assetid: 0ed5e67a-34c0-4b57-84a6-802b0fb3cd00
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/enhancing-data-validation
 msc.type: authoredcontent
-ms.openlocfilehash: df2cd99619f097c9f392e8fe7352c1ce3a69c8df
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 85299d70c6cba52c1d40a42edfd429c96318134a
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021662"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236482"
 ---
-<a name="ef-database-first-with-aspnet-mvc-enhancing-data-validation"></a>EF Database First avec ASP.NET MVC : amélioration de la Validation des données
-====================
-par [Tom FitzMacken](https://github.com/tfitzmac)
+# <a name="tutorial-enhance-data-validation-for-ef-database-first-with-aspnet-mvc-app"></a>Tutoriel : Améliorer la validation des données pour EF Database First avec une application ASP.NET MVC
 
-> À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer automatiquement les données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données.
-> 
-> Cette partie de la série se concentre sur l’ajout d’annotations de données au modèle de données pour spécifier les exigences de validation et afficher la mise en forme. Il a été amélioré en se basant sur les commentaires des utilisateurs dans la section commentaires.
+À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer automatiquement les données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données.
 
+Ce didacticiel se concentre sur l’ajout d’annotations de données au modèle de données pour spécifier les exigences de validation et afficher la mise en forme. Il a été amélioré en se basant sur les commentaires des utilisateurs dans la section commentaires.
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Ajouter des annotations de données
+> * Ajouter des classes de métadonnées
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Personnaliser un affichage](customizing-a-view.md)
 
 ## <a name="add-data-annotations"></a>Ajouter des annotations de données
 
@@ -30,25 +38,21 @@ Comme vous l’avez vu dans une rubrique précédente, certaines règles de vali
 
 Dans ce didacticiel, vous allez ajouter des annotations de données pour limiter la longueur des valeurs fournies pour les propriétés FirstName, LastName et MiddleName. Dans la base de données, ces valeurs sont limitées à 50 caractères ; Toutefois, dans votre application web cette limite de caractère n’est actuellement pas appliquée. Si un utilisateur fournit plus de 50 caractères pour l’une de ces valeurs, la page se bloque lorsque vous tentez d’enregistrer la valeur dans la base de données. Vous allez également restreindre le niveau pour les valeurs comprises entre 0 et 4.
 
-Ouvrez le **Student.cs** de fichiers dans le **modèles** dossier. Ajoutez le code en surbrillance suivant à la classe.
+Sélectionnez **modèles** > **ContosoModel.edmx** > **ContosoModel.tt** et ouvrez le *Student.cs* fichier. Ajoutez le code en surbrillance suivant à la classe.
 
 [!code-csharp[Main](enhancing-data-validation/samples/sample1.cs?highlight=5,15,17,20)]
 
-Dans Enrollment.cs, ajoutez le code en surbrillance suivant.
+Ouvrez *Enrollment.cs* et ajoutez le code en surbrillance suivant.
 
 [!code-csharp[Main](enhancing-data-validation/samples/sample2.cs?highlight=5,10)]
 
 Générez la solution.
 
-Accédez à une page de modification ou de création d’un étudiant. Si vous essayez d’entrer plus de 50 caractères, un message d’erreur s’affiche.
+Cliquez sur **liste d’étudiants** et sélectionnez **modifier**. Si vous essayez d’entrer plus de 50 caractères, un message d’erreur s’affiche.
 
 ![afficher le message d’erreur](enhancing-data-validation/_static/image1.png)
 
-Accédez à la page à modifier les inscriptions et tente de fournir un niveau au-dessus de 4.
-
-![Erreur de plage de qualité](enhancing-data-validation/_static/image2.png)
-
-Pour obtenir une liste complète des annotations de validation de données que vous pouvez appliquer aux classes et propriétés, consultez [System.ComponentModel.DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx).
+Revenez à la page d’accueil. Cliquez sur **liste des inscriptions** et sélectionnez **modifier**. Essaie de fournir un niveau au-dessus de 4. Vous recevez cette erreur : *Le champ niveau doit être comprise entre 0 et 4.*
 
 ## <a name="add-metadata-classes"></a>Ajouter des classes de métadonnées
 
@@ -56,11 +60,9 @@ Ajout d’attributs de validation directement à la classe de modèle fonctionne
 
 Pour éviter ce problème, vous pouvez ajouter une classe de métadonnées qui contient les attributs. Lorsque vous associez la classe de modèle à la classe de métadonnées, ces attributs sont appliqués au modèle. Dans cette approche, la classe de modèle peut être régénérée sans perdre tous les attributs qui ont été appliqués à la classe de métadonnées.
 
-Dans le **modèles** dossier, ajoutez une classe nommée **Metadata.cs**.
+Dans le **modèles** dossier, ajoutez une classe nommée *Metadata.cs*.
 
-![Ajouter une classe de métadonnées](enhancing-data-validation/_static/image3.png)
-
-Remplacez le code dans le fichier Metadata.cs par le code suivant.
+Remplacez le code dans *Metadata.cs* par le code suivant.
 
 [!code-csharp[Main](enhancing-data-validation/samples/sample3.cs)]
 
@@ -68,7 +70,7 @@ Ces classes de métadonnées contient tous les attributs de validation que vous 
 
 Maintenant, vous devez associer les classes de modèle avec les classes de métadonnées.
 
-Dans le **modèles** dossier, ajoutez une classe nommée **PartialClasses.cs**.
+Dans le **modèles** dossier, ajoutez une classe nommée *PartialClasses.cs*.
 
 Remplacez le contenu du fichier par le code suivant.
 
@@ -76,14 +78,24 @@ Remplacez le contenu du fichier par le code suivant.
 
 Notez que chaque classe est marquée comme un `partial` classe et chacune correspond au nom et l’espace de noms que la classe qui est générée automatiquement. En appliquant l’attribut de métadonnées à la classe partielle, vous assurer que les attributs de validation de données seront être appliqués à la classe générée automatiquement. Ces attributs ne seront pas perdues lorsque vous régénérez les classes de modèle, car l’attribut de métadonnées est appliqué dans des classes partielles qui ne sont pas régénérées.
 
-Pour régénérer les classes générées automatiquement, ouvrez le fichier ContosoModel.edmx. Une fois encore, avec le bouton droit sur l’aire de conception et sélectionnez **modèle de mise à jour à partir de la base de données**. Même si vous n’avez pas modifié la base de données, ce processus sera régénérer les classes. Dans le **Actualiser** onglet, sélectionnez **Tables** et **Terminer**.
+Pour régénérer les classes générées automatiquement, ouvrez le *ContosoModel.edmx* fichier. Une fois encore, avec le bouton droit sur l’aire de conception et sélectionnez **modèle de mise à jour à partir de la base de données**. Même si vous n’avez pas modifié la base de données, ce processus sera régénérer les classes. Dans le **Actualiser** onglet, sélectionnez **Tables** et **Terminer**.
 
-![Actualiser les tables](enhancing-data-validation/_static/image4.png)
+Enregistrer le *ContosoModel.edmx* fichier pour appliquer les modifications.
 
-Enregistrez le fichier ContosoModel.edmx pour appliquer les modifications.
+Ouvrez le *Student.cs* fichier ou le *Enrollment.cs* fichier et notez que les attributs de validation de données vous avez appliqué précédemment ne sont plus dans le fichier. Toutefois, exécutez l’application et notez que les règles de validation sont toujours appliqués lorsque vous entrez des données.
 
-Ouvrez le fichier Student.cs ou Enrollment.cs et notez que les attributs de validation de données que vous avez appliqué précédemment ne sont plus dans le fichier. Toutefois, exécutez l’application et notez que les règles de validation sont toujours appliqués lorsque vous entrez des données.
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-> [!div class="step-by-step"]
-> [Précédent](customizing-a-view.md)
-> [Suivant](publish-to-azure.md)
+Pour obtenir une liste complète des annotations de validation de données que vous pouvez appliquer aux classes et propriétés, consultez [System.ComponentModel.DataAnnotations](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.aspx).
+
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Annotations de données ajoutées
+> * Classes de métadonnées ajoutés
+
+Passez au didacticiel suivant pour apprendre à publier l’application web et la base de données vers Azure.
+> [!div class="nextstepaction"]
+> [Publier sur Azure](publish-to-azure.md)

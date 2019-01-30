@@ -1,26 +1,26 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/creating-the-web-application
 title: 'Tutoriel : Créer le l’Application Web et les modèles de données pour Entity Framework Database First avec ASP.NET MVC'
-description: Cet article se concentre sur la création de l’application web et la génération de modèles de données basés sur vos tables de base de données.
+description: Ce didacticiel se concentre sur la création de l’application web et la génération de modèles de données basés sur vos tables de base de données.
 author: Rick-Anderson
 ms.author: riande
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.assetid: bc8f2bd5-ff57-4dcd-8418-a5bd517d8953
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/creating-the-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 095d355866c9ab8fba3759f3e05e2a521992f3d6
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: dced55386c3f810e406c5c2b3f0071b45e3b2dbd
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889767"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236365"
 ---
 # <a name="tutorial-create-the-the-web-application-and-data-models-for-ef-database-first-with-aspnet-mvc"></a>Tutoriel : Créer le l’Application Web et les modèles de données pour Entity Framework Database First avec ASP.NET MVC
 
  À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer automatiquement les données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données.
 
-Cet article se concentre sur la création de l’application web et la génération de modèles de données basés sur vos tables de base de données.
+Ce didacticiel se concentre sur la création de l’application web et la génération de modèles de données basés sur vos tables de base de données.
 
 Dans ce didacticiel, vous avez effectué les actions suivantes :
 
@@ -102,6 +102,6 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Créé une application web ASP.NET
 > * Généré les modèles
 
-Passez à l’article suivant pour apprendre à créer génère du code basé sur les modèles de données.
+Passez au didacticiel suivant pour apprendre à créer génère du code basé sur les modèles de données.
 > [!div class="nextstepaction"]
 > [Génération de vues](generating-views.md)

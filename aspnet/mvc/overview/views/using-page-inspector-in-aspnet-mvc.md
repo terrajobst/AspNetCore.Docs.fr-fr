@@ -8,12 +8,12 @@ ms.date: 08/15/2012
 ms.assetid: c7e4e1ab-4932-4614-9f53-aaf7c706d498
 msc.legacyurl: /mvc/overview/views/using-page-inspector-in-aspnet-mvc
 msc.type: authoredcontent
-ms.openlocfilehash: c465b0bac9af90a892d6e62a327ba36977d08d4a
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: 0dea8b077878139a3f513cb51447b86a93fe55b8
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41829525"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236534"
 ---
 <a name="using-page-inspector-in-aspnet-mvc"></a>Utilisation de l'Inspecteur de page dans ASP.NET MVC
 ====================
@@ -34,7 +34,7 @@ par Tim Ammann
 > - [Utiliser l’inspecteur de Page pour apporter des modifications au balisage](#_5_using_page)
 > - [Mode d’inspection et de la fenêtre HTML](#_6_inspection_mode)
 > - [Aperçu des modifications dans la fenêtre Styles CSS](#_7_previewing_css)
-> - [Synchronisation automatique CSS](#css_auto_sync)
+> - [CSS Auto Sync](#css_auto_sync)
 > - [À l’aide du sélecteur de couleurs CSS](#css_color_picker)
 > - [Mappage d’éléments de Page dynamique pour JavaScript](#map_dynamic_elements)
 
@@ -81,7 +81,7 @@ Dans **l’Explorateur de solutions**, développez le **vues** dossier, puis le 
 
 ![Afficher Index.cshtml dans l’inspecteur de Page](using-page-inspector-in-aspnet-mvc/_static/image8.png)
 
-Par défaut, l’inspecteur de Page est ancré en tant que fenêtre sur le côté gauche de l’environnement Visual Studio. Si vous préférez, vous pouvez ancrer ailleurs ou détacher la fenêtre. Consultez [Comment : réorganiser et ancrer Windows](https://msdn.microsoft.com/library/z4y0hsax.aspx).
+Par défaut, l’inspecteur de Page est ancré en tant que fenêtre sur le côté gauche de l’environnement Visual Studio. Si vous préférez, vous pouvez ancrer ailleurs ou détacher la fenêtre. Voir [Guide pratique pour Organiser et ancrer des fenêtres](https://msdn.microsoft.com/library/z4y0hsax.aspx).
 
 Le volet supérieur de la fenêtre de l’inspecteur de Page affiche la page actuelle dans une fenêtre de navigateur. Le volet inférieur affiche la page dans le balisage HTML, ainsi que certains onglets qui vous permettent d’inspecter les différents aspects de la page. Le volet inférieur est similaire à la [outils de développement F12](https://msdn.microsoft.com/ie/aa740478) dans Internet Explorer.
 
@@ -161,7 +161,7 @@ Dans la fenêtre de navigateur de l’inspecteur de Page, placez le pointeur de 
 
 ![Survole div.content-wrapper](using-page-inspector-in-aspnet-mvc/_static/image26.png)
 
-Cliquez sur une seule fois dans la section div.content-wrapper, et puis déplacez le pointeur de la souris vers le **Styles** fenêtre. Le **styles** fenêtre affiche toutes les règles CSS pour cet élément. Faites défiler jusqu'à find .featured .content-wrapper du sélecteur de classe. Maintenant désactivez la case à cocher pour la propriété de couleur d’arrière-plan.
+Cliquez sur une seule fois dans la section div.content-wrapper, et puis déplacez le pointeur de la souris vers le **Styles** fenêtre. Le **Styles** fenêtre affiche toutes les règles CSS pour cet élément. Faites défiler jusqu'à find .featured .content-wrapper du sélecteur de classe. Maintenant désactivez la case à cocher pour la propriété de couleur d’arrière-plan.
 
 ![Couleur d’arrière-plan clair](using-page-inspector-in-aspnet-mvc/_static/image28.png)
 
@@ -186,7 +186,7 @@ Cliquez sur **inspecter** à placer l’inspecteur de Page en Mode d’Inspectio
 
 Dans le navigateur de l’inspecteur de Page, placez le pointeur de la souris sur la section « Page d’accueil » jusqu'à ce que le **div.content-wrapper** étiquette s’affiche. Cliquez une fois pour sélectionner cet élément.
 
-Le **styles** fenêtre affiche toutes les règles CSS pour cet élément. Faites défiler jusqu'à find .featured .content-wrapper du sélecteur de classe. Cliquez sur « .featured .content-wrapper ». Inspecteur de page ouvre le fichier CSS qui définit ce style (Site.css) et met en évidence le style CSS correspondant.
+Le **Styles** fenêtre affiche toutes les règles CSS pour cet élément. Faites défiler jusqu'à find .featured .content-wrapper du sélecteur de classe. Cliquez sur « .featured .content-wrapper ». Inspecteur de page ouvre le fichier CSS qui définit ce style (Site.css) et met en évidence le style CSS correspondant.
 
 ![](using-page-inspector-in-aspnet-mvc/_static/image32.png)
 

@@ -1,26 +1,26 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/setting-up-database
 title: 'Tutoriel : Bien démarrer avec Entity Framework Database First avec MVC 5'
-description: Cet article explique comment commencer avec un existant de base de données et de créer rapidement une application web qui permet aux utilisateurs d’interagir avec les données.
+description: Ce didacticiel montre comment commencer avec un existant de base de données et de créer rapidement une application web qui permet aux utilisateurs d’interagir avec les données.
 author: Rick-Anderson
 ms.author: riande
-ms.date: 01/23/2019
+ms.date: 01/28/2019
 ms.topic: tutorial
 ms.assetid: 095abad4-3bfe-4f06-b092-ae6a735b7e49
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: 8b094b7c334eaad510c46b55a99ec727b9c381c2
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: a503e3db63c873249178fd4783d322f4067c3208
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889923"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236378"
 ---
 # <a name="tutorial-get-started-with-ef-database-first-using-mvc-5"></a>Tutoriel : Bien démarrer avec Entity Framework Database First avec MVC 5
 
 À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer automatiquement les données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données. Dans la dernière partie de la série, vous allez déployer le site et la base de données vers Azure.
 
-Cet article explique comment commencer avec un existant de base de données et de créer rapidement une application web qui permet aux utilisateurs d’interagir avec les données. Il utilise l’Entity Framework 6 et MVC 5 pour générer l’application web. La fonctionnalité de génération de modèles automatique ASP.NET vous permet de générer automatiquement le code pour l’affichage, la mise à jour, la création et la suppression de données. Utilisez les outils de publication dans Visual Studio, vous pouvez facilement déployer le site et la base de données vers Azure.
+Ce didacticiel montre comment commencer avec un existant de base de données et de créer rapidement une application web qui permet aux utilisateurs d’interagir avec les données. Il utilise l’Entity Framework 6 et MVC 5 pour générer l’application web. La fonctionnalité de génération de modèles automatique ASP.NET vous permet de générer automatiquement le code pour l’affichage, la mise à jour, la création et la suppression de données. Utilisez les outils de publication dans Visual Studio, vous pouvez facilement déployer le site et la base de données vers Azure.
 
 Cette partie de la série se concentre sur la création d’une base de données et le remplir avec des données.
 
@@ -37,7 +37,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="introduction"></a>Introduction
 
-Cet article traite de la situation où vous avez une base de données et que vous voulez générer du code pour une application web basée sur les champs de cette base de données. Cette approche est appelée développement Database First. Si vous ne disposez pas d’une base de données existante, vous pouvez utiliser à la place une approche de développement Code First qui implique la définition des classes de données et la génération de la base de données à partir des propriétés de classe.
+Ce didacticiel traite de la situation où vous avez une base de données et que vous voulez générer du code pour une application web basée sur les champs de cette base de données. Cette approche est appelée développement Database First. Si vous ne disposez pas d’une base de données existante, vous pouvez utiliser à la place une approche de développement Code First qui implique la définition des classes de données et la génération de la base de données à partir des propriétés de classe.
 
 ## <a name="set-up-the-database"></a>Configurer la base de données
 
@@ -102,6 +102,6 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > [!div class="checklist"]
 > * Configurer la base de données
 
-Passez à l’article suivant pour apprendre à créer des modèles d’application et les données du web.
+Passez au didacticiel suivant pour apprendre à créer des modèles d’application et les données du web.
 > [!div class="nextstepaction"]
 > [Créer des modèles d’application et les données du web](creating-the-web-application.md)
