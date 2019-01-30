@@ -3,14 +3,14 @@ title: Utiliser plusieurs environnements dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment contrôler le comportement de l’application dans différents environnements dans les applications ASP.NET Core.
 ms.author: riande
-ms.date: 07/03/2018
+ms.date: 01/22/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 642af9e8f9e322e3624dad46bb1463f6525f5c9e
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: 39e1b48481832a6d76de605b37410fe2e16dcd88
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341665"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836738"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
@@ -237,6 +237,20 @@ Quand la variable d’environnement `ASPNETCORE_ENVIRONMENT` est définie global
 **web.config**
 
 Pour définir la variable d’environnement `ASPNETCORE_ENVIRONMENT` avec *web.config*, consultez la section *Définition des variables d’environnement* à l’adresse <xref:host-and-deploy/aspnet-core-module#setting-environment-variables>. Quand la variable d’environnement `ASPNETCORE_ENVIRONMENT` est définie avec *web.config*, sa valeur remplace un paramètre au niveau du système.
+
+::: moniker range=">= aspnetcore-2.2"
+
+**Fichier projet ou profil de publication**
+
+**Pour les déploiements Windows IIS :** Incluez la propriété `<EnvironmentName>` dans le profil de publication (*.pubxml*) ou le fichier projet. Cette approche définit l’environnement dans *web.config* lorsque le projet est publié :
+
+```xml
+<PropertyGroup>
+  <EnvironmentName>Development</EnvironmentName>
+</PropertyGroup>
+```
+
+::: moniker-end
 
 **Par pool d’applications IIS**
 

@@ -5,12 +5,12 @@ description: Ajout d’une vue dans une application ASP.NET Core MVC simple
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 321ffd6b0168d4befc950a58035d19561e879491
-ms.sourcegitcommit: ec71fd5a988f927ae301813aae5ff764feb3bb6a
+ms.openlocfilehash: f241a19c8821019f327fb160f01fe01eca53c5d0
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54249449"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836903"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
@@ -104,7 +104,7 @@ Dans le balisage précédent, l’[attribut Tag Helper Ancre](xref:mvc/views/tag
 
 **Remarque** : Le contrôleur `Movies` n’a pas encore été implémenté. À ce stade, le lien `Movie App` ne fonctionne pas.
 
-Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Confidentialité - Movie App** au lieu de **Confidentialité - Mvc Movie** :
+Enregistrer vos modifications et sélectionnez le lien **Confidentialité**. Notez comment le titre sur l’onglet du navigateur affiche **Stratégie de confidentialité - Movie App** au lieu de **Stratégie de confidentialité - Mvc Movie** :
 
 ![Onglet Confidentialité](~/tutorials/first-mvc-app/adding-view/_static/about2.png)
 

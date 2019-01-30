@@ -5,12 +5,12 @@ description: Découvrez comment les composants de vue sont utilisés dans ASP.NE
 ms.author: riande
 ms.date: 12/03/2018
 uid: mvc/views/view-components
-ms.openlocfilehash: 5812abad80cd906d6b9a7175bd7cdefd03a99eb3
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 156db610d99eaf8a8042a4c7c85267d521a20fd4
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52861327"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54836699"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ## <a name="view-components"></a>Composants de vue
 
-Les composants de vue sont similaires aux vues partielles, mais ils sont beaucoup plus puissants. Les composants de vue n’utilisent pas la liaison de données ; ils dépendent uniquement des données fournies en réponse à l’appel d’un composant de vue. Cet article a été écrit avec ASP.NET Core MVC, mais les composants de vue fonctionnent également avec les pages Razor.
+Les composants de vue sont similaires aux vues partielles, mais ils sont beaucoup plus puissants. Les composants de vue n’utilisent pas la liaison de données ; ils dépendent uniquement des données fournies en réponse à l’appel d’un composant de vue. Cet article a été écrit avec des contrôleurs et des vues, mais les composants de vue fonctionnent également avec les Razor Pages.
 
 Un composant de vue a les caractéristiques suivantes :
 
@@ -140,7 +140,7 @@ Dans cet exemple, le composant de vue est appelé directement du contrôleur :
 
 [!code-csharp[](view-components/sample/ViewCompFinal/Controllers/ToDoController.cs?name=snippet_IndexVC)]
 
-## <a name="walkthrough-creating-a-simple-view-component"></a>Procédure pas à pas : Création d’un composant de vue simple
+## <a name="walkthrough-creating-a-simple-view-component"></a>Procédure pas à pas : Création d’un composant de vue simple
 
 [Téléchargez](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/view-components/sample), générez et testez le code de démarrage. Il s’agit d’un projet simple avec un contrôleur `Todo` qui affiche une liste de tâches *Todo*.
 

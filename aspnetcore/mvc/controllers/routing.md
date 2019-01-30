@@ -3,20 +3,20 @@ title: Routage vers les actions du contrôleur dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment ASP.NET Core MVC utilise le middleware (intergiciel) de routage pour mettre en correspondance les URL des requêtes entrantes et les mapper à des actions.
 ms.author: riande
-ms.date: 09/17/2018
+ms.date: 01/24/2019
 uid: mvc/controllers/routing
-ms.openlocfilehash: 2f6328a5efaa96fd8e4f0cafdbde77dd63a1548f
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: f5104bc53581a41fa8c25d8c67e08e038c275391
+ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477642"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55065007"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Routage vers les actions du contrôleur dans ASP.NET Core
 
 Par [Ryan Nowak](https://github.com/rynowak) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core MVC utilise [l’intergiciel](xref:fundamentals/middleware/index) de routage pour mettre en correspondance les URL des requêtes entrantes et les mapper à des actions. Les routes sont définies dans le code de démarrage ou dans des attributs. Les routes décrivent comment les chemins des URL doivent être mis en correspondance avec les actions. Les routes sont également utilisées pour générer des URL (pour les liens) envoyés dans les réponses. 
+ASP.NET Core MVC utilise [l’intergiciel](xref:fundamentals/middleware/index) de routage pour mettre en correspondance les URL des requêtes entrantes et les mapper à des actions. Les routes sont définies dans le code de démarrage ou dans des attributs. Les routes décrivent comment les chemins des URL doivent être mis en correspondance avec les actions. Les routes sont également utilisées pour générer des URL (pour les liens) envoyés dans les réponses.
 
 Les actions sont routées de façon conventionnelle ou routées par attribut. Le fait de placer une route sur le contrôleur ou sur l’action les rend « routés par attribut ». Pour plus d’informations, consultez [Routage mixte](#routing-mixed-ref-label).
 
@@ -165,7 +165,7 @@ Dans le cadre du traitement des requêtes, MVC vérifie que les valeurs de route
 
 ### <a name="disambiguating-actions"></a>Résolution des ambiguïtés pour les actions
 
-Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Exemple :
+Quand deux actions correspondent via le routage, MVC doit résoudre l’ambiguïté pour choisir le « meilleur » candidat ou sinon lever une exception. Par exemple :
 
 ```csharp
 public class ProductsController : Controller
@@ -190,7 +190,6 @@ Si plusieurs routes correspondent et que MVC ne peut pas trouver une « meilleur
 ### <a name="route-names"></a>Noms des routes
 
 Les chaînes `"blog"` et `"default"` dans les exemples suivants sont des noms de routes :
-
 
 ```csharp
 app.UseMvc(routes =>
@@ -339,7 +338,7 @@ public class ProductsApiController : Controller
 
 Dans cet exemple, le chemin d’URL `/products` peut être mis en correspondance avec `ProductsApi.ListProducts` et le chemin d’URL `/products/5` peut être mis en correspondance avec `ProductsApi.GetProduct(int)`. Ces deux actions correspondent seulement à HTTP `GET`, car elles sont décorées avec `HttpGetAttribute`.
 
-Les modèles de routes appliqués à une action qui commencent par `/` ne sont pas combinés avec les modèles de routes appliqués au contrôleur. Cet exemple met en correspondance avec un ensemble de chemins d’URL similaires à la *route par défaut*.
+Les modèles de routes appliqués à une action qui commencent par `/` ou `~/` ne sont pas combinés avec les modèles de routes appliqués au contrôleur. Cet exemple met en correspondance avec un ensemble de chemins d’URL similaires à la *route par défaut*.
 
 ```csharp
 [Route("Home")]
@@ -549,7 +548,7 @@ Le *modèle d’application* est un modèle d’objet créé au démarrage avec 
 
 <a name="routing-mixed-ref-label"></a>
 
-## <a name="mixed-routing-attribute-routing-vs-conventional-routing"></a>Routage mixte : routage conventionnel et routage par attributs
+## <a name="mixed-routing-attribute-routing-vs-conventional-routing"></a>Routage mixte : Routage conventionnel et routage par attributs
 
 Les applications MVC peuvent combiner l’utilisation du routage conventionnel et du routage par attributs. Il est courant d’utiliser des routes conventionnelles pour les contrôleurs délivrant des pages HTML pour les navigateurs, et le routage par attributs pour les contrôleurs délivrant des API REST.
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Générer une API web avec ASP.NET Core MVC
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/10/2018
+ms.date: 01/24/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 03936ee74836c7b214cb3dc4023a6e3c252f2a26
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 65af70be2cec68d30dd712b80312ebcd40ea0624
+ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207445"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "55065046"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Tutoriel : Créer une API web avec ASP.NET Core MVC
 
@@ -168,13 +168,9 @@ Le *contexte de base de données* est la classe principale qui coordonne les fon
 
 * Cliquez avec le bouton droit sur le dossier *Models* et sélectionnez **Ajouter** > **Classe**. Nommez la classe *TodoContext* et cliquez sur **Ajouter**.
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Ajoutez une classe `TodoContext` au dossier *Models*.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
-
-* Ajoutez une classe `TodoContext` dans le dossier *Models* :
 
 ---
 
@@ -207,13 +203,9 @@ Le code précédent :
 
   ![Boîte de dialogue Ajouter un nouvel élément avec contrôleur dans la zone de recherche et le contrôleur des API web sélectionné](first-web-api/_static/new_controller.png)
 
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 * Dans le dossier *Contrôleurs*, créez une classe nommée `TodoController`.
-
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
-
-* Dans le dossier *Contrôleurs*, ajoutez la classe `TodoController`.
 
 ---
 
@@ -265,13 +257,11 @@ L’attribut [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
 * Remplacez `[controller]` par le nom du contrôleur qui, par convention, est le nom de la classe du contrôleur sans le suffixe « Controller ». Pour cet exemple, le nom de classe du contrôleur étant **Todo**Controller, le nom du contrôleur est « todo ». Le [routage](xref:mvc/controllers/routing) d’ASP.NET Core ne respecte pas la casse.
-* Si l’attribut `[HttpGet]` a un modèle de route (par exemple`[HttpGet("/products")]`), ajoutez-le au chemin. Cet exemple n’utilise pas de modèle. Pour plus d’informations, consultez [Routage par attributs avec des attributs Http[Verbe]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
+* Si l’attribut `[HttpGet]` a un modèle de route (par exemple, `[HttpGet("products")]`), ajoutez-le au chemin. Cet exemple n’utilise pas de modèle. Pour plus d’informations, consultez [Routage par attributs avec des attributs Http[Verbe]](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).
 
 Dans la méthode `GetTodoItem` suivante, `"{id}"` est une variable d’espace réservé pour l’identificateur unique de la tâche. Quand `GetTodoItem` est appelée, la valeur de `"{id}"` dans l’URL est fournie à la méthode dans son paramètre `id`.
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
-
-Le paramètre `Name = "GetTodo"` crée une route nommée. Vous verrez plus tard comment l’application peut utiliser le nom de la route pour créer un lien HTTP.
 
 ## <a name="return-values"></a>Valeurs de retour
 
@@ -313,9 +303,9 @@ Le code précédent est une méthode HTTP POST, comme indiqué par l’attribut 
 
 La méthode `CreatedAtAction` :
 
-* Retourne une réponse 201. HTTP 201 est la réponse standard d’une méthode HTTP POST qui crée une ressource sur le serveur.
-* Ajoute un en-tête Location à la réponse. L’en-tête Location spécifie l’URI de l’élément d’action qui vient d’être créé. Pour plus d’informations, consultez la section [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
-* Utilise l’itinéraire nommé « GetTodo » pour créer l’URL. L’itinéraire nommé « GetTodo » est défini dans `GetTodoItem` :
+* Retourne un code d’état HTTP 201 en cas de réussite. HTTP 201 est la réponse standard d’une méthode HTTP POST qui crée une ressource sur le serveur.
+* Ajoute un en-tête `Location` à la réponse. L’en-tête `Location` spécifie l’URI de l’élément d’action qui vient d’être créé. Pour plus d’informations, consultez la section [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+* Fait référence à l’action `GetTodoItem` pour créer l’URI `Location` de l’en-tête. Le mot clé `nameof` C# est utilisé pour éviter de coder en dur le nom de l’action dans l’appel `CreatedAtAction`.
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 19fe24e0f901c50e8425db7665b5b2257b608146
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 350243fb94b4798293a5a61b580c3b3b4d8c6d4a
+ms.sourcegitcommit: 728f4e47be91e1c87bb7c0041734191b5f5c6da3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090878"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54444296"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -122,7 +122,7 @@ Le code précédent :
 * Ajoute le paramètre `searchString` à la méthode `OnGetAsync`. La valeur de chaîne de recherche est reçue à partir d’une zone de texte qui est ajoutée dans la section suivante.
 * A ajouté une clause `Where` à l’instruction LINQ. La clause `Where` sélectionne uniquement les étudiants dont le prénom ou le nom de famille contient la chaîne de recherche. L’instruction LINQ est exécutée uniquement s’il y a une valeur à rechercher.
 
-Remarque : Le code précédent appelle la méthode `Where` sur un objet `IQueryable`, et le filtre est traité sur le serveur. Dans certains scénarios, l’application peut appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. Par exemple, supposez que `_context.Students` passe de `DbSet` EF Core à une méthode de référentiel qui retourne une collection `IEnumerable`. Le résultat serait normalement le même, mais dans certains cas il peut être différent.
+Remarque : Le code précédent appelle la méthode `Where` sur un objet `IQueryable`, et le filtre est traité sur le serveur. Dans certains scénarios, l’application peut appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. Par exemple, supposez que `_context.Students` passe de `DbSet` EF Core à une méthode de référentiel qui retourne une collection `IEnumerable`. Le résultat serait normalement le même, mais dans certains cas il peut être différent.
 
 Par exemple, l’implémentation .NET Framework de `Contains` effectue par défaut une comparaison respectant la casse. Dans SQL Server, le respect de la casse de `Contains` est déterminé par le paramètre de classement de l’instance de SQL Server. Par défaut, SQL Server ne respecte pas la casse. `ToUpper` peut être appelée pour que le test ne respecte pas la casse de manière explicite :
 
@@ -258,6 +258,8 @@ Dans le dossier *SchoolViewModels*, ajoutez un *EnrollmentDateGroup.cs* avec le 
 [!code-csharp[](intro/samples/cu21/Models/SchoolViewModels/EnrollmentDateGroup.cs)]
 
 ### <a name="update-the-about-page-model"></a>Mettre à jour le modèle de page About
+
+Les modèles web dans ASP.NET Core 2.2 n’incluent pas la page About. Si vous utilisez ASP.NET Core 2.2, créez la page About Razor Page.
 
 Mettez à jour le fichier *Pages/About.cshtml.cs* avec le code suivant :
 

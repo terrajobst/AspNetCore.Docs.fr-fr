@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 12/01/2018
+ms.date: 01/22/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: bdb29c318c66ac884b9225ba8c2a0dfc1f364255
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: eedaf64710506f2a2aac65c178a9888d2ab33d38
+ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637701"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54837479"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -44,7 +44,9 @@ Selon le [type de déploiement](#deployment-type) que vous avez choisi, mettez �
 
 #### <a name="framework-dependent-deployment-fdd"></a>Déploiement dépendant du framework
 
-Ajoutez un [identificateur de runtime (RID)](/dotnet/core/rid-catalog) Windows au `<PropertyGroup>` qui contient la version cible du .NET Framework. Ajoutez la propriété `<SelfContained>` définie sur `false`. Désactivez la création d’un fichier *web.config* en ajoutant la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
+Ajoutez un [identificateur de runtime (RID)](/dotnet/core/rid-catalog) Windows au `<PropertyGroup>` qui contient la version cible du .NET Framework. Dans l’exemple suivant, le RID est défini sur `win7-x64`. Ajoutez la propriété `<SelfContained>` définie sur `false`. Ces propriétés demandent au Kit SDK de générer un fichier exécutable (*.exe*) pour Windows.
+
+Un fichier *web.config*, qui est normalement produit lors de la publication d’une application ASP.NET Core, n’est pas nécessaire pour une application de Windows Services. Pour désactiver la création d’un fichier *web.config*, ajoutez la propriété `<IsTransformWebConfigDisabled>` définie sur `true`.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -60,6 +62,8 @@ Ajoutez un [identificateur de runtime (RID)](/dotnet/core/rid-catalog) Windows a
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
+
+Ajoutez la propriété `<UseAppHost>` définie sur `true`. Cette propriété fournit au service un chemin d’activation (un fichier exécutable *.exe*) pour un déploiement dépendant du framework (FDD).
 
 ```xml
 <PropertyGroup>

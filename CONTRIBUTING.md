@@ -67,7 +67,7 @@ Ces restrictions réduisent la taille du dépôt.
 
 ## <a name="code-snippets"></a>Extraits de code
 
-Les articles contiennent fréquemment des extraits de code pour illustrer les points abordés. DFM vous permet de copier le code dans le fichier Markdown ou de faire référence à un fichier de code distinct. Nous préférons l’utilisation de fichiers de code distincts si possible afin de limiter les risques d’erreurs dans le code. Les fichiers de code sont stockés dans le dépôt, conformément à la structure de dossiers décrite précédemment pour les exemples de projets. 
+Les articles contiennent souvent des extraits de code pour illustrer les points abordés. DFM vous permet de copier le code dans le fichier Markdown ou de faire référence à un fichier de code distinct. Nous préférons l’utilisation de fichiers de code distincts si possible afin de limiter les risques d’erreurs dans le code. Les fichiers de code sont stockés dans le dépôt, conformément à la structure de dossiers décrite précédemment pour les exemples de projets. 
 
 Les exemples suivants illustrent la [syntaxe d’extraits de code DFM](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html#code-snippet) à utiliser dans un fichier *configuration/index.md*.
 
@@ -124,22 +124,20 @@ DocFX nécessite :
 
 ### <a name="mono-instructions"></a>Instructions pour Mono
 
-* Installez Mono par le biais de Homebrew: `brew install mono`.
+* Installez Mono via Homebrew :
+
+  ```
+  brew install mono
+  ```
 * Téléchargez la [dernière version de DocFX](https://github.com/dotnet/docfx/releases).
-* Extrayez dans `\bin\docfx`.
-* Créez un alias pour **docfx** :
+* Extrayez l’archive dans *$HOME/bin/docfx*.
+* Créez une paire d’alias pour **docfx** dans un interpréteur de commandes bash. Le premier alias est utilisé pour générer la documentation. Le deuxième alias est utilisé pour générer et diffuser la documentation.
 
   ```
-  function docfx {
-    mono $HOME/bin/docfx/docfx.exe
-  }
-    
-  function docfx-serve {
-    mono $HOME/bin/docfx/docfx.exe serve _site
-  }
+  alias docfx='mono $HOME/bin/docfx/docfx.exe'
+  alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
-
-* Exécutez `docfx` dans le répertoire *Docs\aspnet* ou *Docs\aspnetcore* pour générer le site. Exécutez `docfx-serve` pour voir le site sur `http://localhost:8080`.
+* Exécutez `docfx` à partir de la racine du référentiel pour générer le site. Exécutez `docfx-serve` pour voir le site sur `http://localhost:8080`.
 
 ## <a name="voice-and-tone"></a>Style et ton
 

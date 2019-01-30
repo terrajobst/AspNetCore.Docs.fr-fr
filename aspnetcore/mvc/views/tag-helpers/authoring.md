@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 16f3a435af267a5a17a24ee9fbda2b1c7c8818fd
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: c21decd39b7855cf2eefb2bb482e5e91b9487863
+ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121620"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54889936"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
@@ -96,7 +96,7 @@ Mettez à jour la classe `EmailTagHelper` avec le code suivant :
 
 [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs?range=6-22)]
 
-* Les noms de propriété et de classe de casse Pascal pour les Tag Helpers sont convertis en [casse kebab en minuscules](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101) (mots séparés par des tirets). Par conséquent, pour utiliser l’attribut `MailTo`, vous employez l’équivalent `<email mail-to="value"/>`.
+* Les noms de propriété et de classe de casse Pascal pour les Tag Helpers sont convertis en [casse kebab](https://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101) (mots séparés par des tirets). Par conséquent, pour utiliser l’attribut `MailTo`, vous employez l’équivalent `<email mail-to="value"/>`.
 
 * La dernière ligne définit le contenu terminé pour notre Tag Helper fonctionnel au minimum.
 
@@ -189,7 +189,7 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
 
    [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/WebsiteInformationTagHelper.cs)]
 
-   * Comme mentionné précédemment, les Tag Helpers convertissent les propriétés et noms de classe C# de casse Pascal en [casse kebab en minuscules](http://wiki.c2.com/?KebabCase) (mots séparés par des tirets). Par conséquent, pour utiliser la classe `WebsiteInformationTagHelper` dans Razor, vous allez écrire `<website-information />`.
+   * Comme mentionné précédemment, les Tag Helpers convertissent les propriétés et noms de classe C# de casse Pascal en [casse kebab](http://wiki.c2.com/?KebabCase) (mots séparés par des tirets). Par conséquent, pour utiliser la classe `WebsiteInformationTagHelper` dans Razor, vous allez écrire `<website-information />`.
 
    * Comme vous n’identifiez pas de manière explicite l’élément cible avec l’attribut `[HtmlTargetElement]`, la valeur par défaut de `website-information` est ciblée. Si vous avez appliqué l’attribut suivant (notez que la casse n’est pas kebab, mais il correspond au nom de la classe) :
 
@@ -197,7 +197,7 @@ Vous pouvez également utiliser l’attribut `[HtmlTargetElement]` pour modifier
    [HtmlTargetElement("WebsiteInformation")]
    ```
 
-   La balise en casse kebab en minuscules `<website-information />` ne correspond pas. Si vous voulez utiliser l’attribut `[HtmlTargetElement]`, vous employez la casse kebab comme indiqué ci-dessous :
+   La balise en casse kebab `<website-information />` ne correspond pas. Si vous voulez utiliser l’attribut `[HtmlTargetElement]`, vous employez la casse kebab comme indiqué ci-dessous :
 
    ```csharp
    [HtmlTargetElement("Website-Information")]
