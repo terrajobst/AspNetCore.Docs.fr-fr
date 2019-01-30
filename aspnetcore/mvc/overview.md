@@ -65,7 +65,7 @@ ASP.NET Core MVC inclut les éléments suivants :
 * [Le routage](#routing)
 * [La liaison de modèle](#model-binding)
 * [La validation du modèle](#model-validation)
-* [L'njection de dépendances](../fundamentals/dependency-injection.md)
+* [L'injection de dépendances](../fundamentals/dependency-injection.md)
 * [Les filtres](#filters)
 * [Les zones (areas)](#areas)
 * [Les APIs Web](#web-apis)
