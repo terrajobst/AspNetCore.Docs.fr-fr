@@ -36,7 +36,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 
 * Le [modèle MVC (Modèle-Vue-Contrôleur)](xref:mvc/overview) permet de rendre vos API web et vos applications web testables.
 * [Razor Pages](xref:razor-pages/index) est un modèle de programmation basé sur les pages qui rend la création d’une interface utilisateur web plus facile et plus productive.
-* Le [balisage Razor](xref:mvc/views/razor) fournit une syntaxe efficace pour [Razor Pages](xref:razor-pages/index) et les [vues MVC](xref:mvc/views/overview).
+* Le [balisage Razor](xref:mvc/views/razor) fournit une syntaxe efficace pour les [pages Razor](xref:razor-pages/index) et les [vues MVC](xref:mvc/views/overview).
 * Les [Tag Helpers](xref:mvc/views/tag-helpers/intro) permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor.
 * La prise en charge intégrée de [plusieurs formats de données et de la négociation de contenu](xref:web-api/advanced/formatting) permet à vos API web d’être utilisées par un large éventail de clients, notamment des navigateurs et des appareils mobiles.
 * Le principe de la [liaison de modèle](xref:mvc/models/model-binding) permet le mappage automatiquement des données des requêtes HTTP aux paramètres des méthodes d’action.
@@ -61,11 +61,11 @@ ASP.NET Core 3.0 et ultérieur s’exécute uniquement sur .NET Core. Pour plus
 
 Le ciblage de .NET Core présente plusieurs avantages, qui sont plus nombreux à chaque version. Voici certains avantages de .NET Core par rapport à .NET Framework :
 
-* Multiplateforme S’exécute sur macOS, Linux et Windows
+* Multiplateforme. S’exécute sur macOS, Linux et Windows
 * Performances améliorées
 * Gestion des versions côte à côte
 * Nouvelles API
-* Ouvrir la source
+* Open source
 
 Nous nous efforçons de combler l’écart d’API qui existe entre .NET Framework et .NET Core. Le [Pack de compatibilité Windows](/dotnet/core/porting/windows-compat-pack) a rendu disponible dans .NET Core des milliers d’API fonctionnant seulement dans Windows. Ces API n’étaient pas disponibles dans .NET Core 1.x.
 
@@ -129,4 +129,4 @@ Pour plus d'informations, reportez-vous aux ressources suivantes :
 * [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [Notions de base d’ASP.NET Core](xref:fundamentals/index)
-* [Le point hebdomadaire de la communauté ASP.NET](https://live.asp.net/) couvre l’avancement et les plans des équipes de développement. Il comprend de nouveaux blogs et des logiciels de tiers.
+* [Le point hebdomadaire de la communauté ASP.NET](https://live.asp.net/) couvre l’avancement et les plans des équipes de développement. Il met en avant de nouveaux blogs et des logiciels de tiers.
