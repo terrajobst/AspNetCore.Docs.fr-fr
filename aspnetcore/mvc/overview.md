@@ -63,17 +63,17 @@ ASP.NET Core MVC offre un fonctionnement basé sur des patterns pour créer des 
 ASP.NET Core MVC inclut les éléments suivants :
 
 * [Le routage](#routing)
-* [Liaison de modèles](#model-binding)
-* [Validation du modèle](#model-validation)
-* [Injection de dépendances](../fundamentals/dependency-injection.md)
+* [La liaison de modèle](#model-binding)
+* [La validation du modèle](#model-validation)
+* [L'injection de dépendances](../fundamentals/dependency-injection.md)
 * [Les filtres](#filters)
 * [Les zones (areas)](#areas)
 * [Les APIs Web](#web-apis)
 * [La testabilité](#testability)
-* [Moteur de vue Razor](#razor-view-engine)
+* [Le moteur de vue Razor](#razor-view-engine)
 * [Les vues fortement typées](#strongly-typed-views)
 * [Les Tag Helpers](#tag-helpers)
-* [Composants de vues](#view-components)
+* [Les composants de vues](#view-components)
 
 ### <a name="routing"></a>Routage
 
