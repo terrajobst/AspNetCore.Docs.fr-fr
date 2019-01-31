@@ -19,9 +19,9 @@ Cette série de tutoriels explique les bases de la création d’une application
 
 1. [Créer une application web de pages Razor](xref:tutorials/razor-pages/razor-pages-start)
 1. [Ajouter un modèle à une application de pages Razor](xref:tutorials/razor-pages/model)
-1. [Structurer (générer) Razor Pages](xref:tutorials/razor-pages/page)
+1. [Structurer (générer) des pages Razor](xref:tutorials/razor-pages/page)
 1. [Utiliser une base de données](xref:tutorials/razor-pages/sql)
-1. [Mettre à jour Razor Pages](xref:tutorials/razor-pages/da1)
+1. [Mettre à jour des pages Razor](xref:tutorials/razor-pages/da1)
 1. [Ajouter une recherche](xref:tutorials/razor-pages/search)
 1. [Ajouter un nouveau champ](xref:tutorials/razor-pages/new-field)
 1. [Ajouter la validation](xref:tutorials/razor-pages/validation)
