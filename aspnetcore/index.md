@@ -61,7 +61,7 @@ ASP.NET Core 3.0 et ultérieur s’exécute uniquement sur .NET Core. Pour plus
 
 Le ciblage de .NET Core présente plusieurs avantages, qui sont plus nombreux à chaque version. Voici certains avantages de .NET Core par rapport à .NET Framework :
 
-* Multiplateforme. S’exécute sur macOS, Linux et Windows
+* Multiplateforme S’exécute sur macOS, Linux et Windows
 * Performances améliorées
 * Gestion des versions côte à côte
 * Nouvelles API
