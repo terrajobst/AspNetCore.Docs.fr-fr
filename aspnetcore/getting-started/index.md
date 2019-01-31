@@ -22,7 +22,7 @@ Vous allez apprendre à :
 > [!div class="checklist"]
 > * Créer un projet application web.
 > * Activer HTTPS localement.
-> * Exécutez l’application.
+> * Exécuter l’application.
 > * Modifier une page Razor.
 
 À la fin du tutoriel, vous disposerez d’une application web qui fonctionne et s’exécute sur votre machine locale.
@@ -104,8 +104,8 @@ Dans ce didacticiel, vous avez appris à :
 > [!div class="checklist"]
 > * Créer un projet application web.
 > * Activer HTTPS localement.
-> * Exécutez le projet.
-> * Apportez la modification souhaitée.
+> * Exécuter le projet.
+> * Apporter la modification souhaitée.
 
 Pour en savoir plus sur ASP.NET Core, consultez la présentation :
 
