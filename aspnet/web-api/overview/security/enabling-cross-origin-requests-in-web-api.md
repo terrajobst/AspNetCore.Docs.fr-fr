@@ -4,16 +4,16 @@ title: L’activation des requêtes Cross-Origin dans ASP.NET Web API 2 | Micros
 author: MikeWasson
 description: Montre comment prendre en charge le partage des ressources Cross-Origin (CORS) dans l’API Web ASP.NET.
 ms.author: riande
-ms.date: 10/10/2018
+ms.date: 01/29/2019
 ms.assetid: 9b265a5a-6a70-4a82-adce-2d7c56ae8bdd
 msc.legacyurl: /web-api/overview/security/enabling-cross-origin-requests-in-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 118b779c89edb874f7f928315d1094738be5f097
-ms.sourcegitcommit: 6e6002de467cd135a69e5518d4ba9422d693132a
+ms.openlocfilehash: 97a0027194b019b09e220493dcb593e682027fe3
+ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49348518"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55428445"
 ---
 <a name="enable-cross-origin-requests-in-aspnet-web-api-2"></a>Activer les demandes cross-origin dans ASP.NET Web API 2
 ====================
@@ -67,7 +67,7 @@ Ces URL ont des origines différentes aux deux précédentes :
 
    [!code-csharp[Main](enabling-cross-origin-requests-in-web-api/samples/sample1.cs)]
 
-4. Vous pouvez exécuter l’application localement ou déployez-la dans Azure. (Pour les captures d’écran dans ce didacticiel, l’application se déploie sur Azure App Service Web Apps.) Pour vérifier l’utilisation de l’API web, accédez à `http://hostname/api/test/`, où *nom d’hôte* est le domaine où vous avez déployé l’application. Vous devez voir le texte de réponse, &quot;obtenir : Message de Test&quot;.
+4. Vous pouvez exécuter l’application localement ou déployez-la dans Azure. (Pour les captures d’écran dans ce didacticiel, l’application se déploie sur Azure App Service Web Apps.) Pour vérifier l’utilisation de l’API web, accédez à `http://hostname/api/test/`, où *nom d’hôte* est le domaine où vous avez déployé l’application. Vous devez voir le texte de réponse, &quot;obtenir : Message de test&quot;.
 
    ![Message de test Web navigateur affichant](enabling-cross-origin-requests-in-web-api/_static/image4.png)
 
@@ -90,7 +90,7 @@ Lorsque vous cliquez sur le bouton « essayer », une requête AJAX est soumis
 ![Erreur de « Essayer » dans le navigateur](enabling-cross-origin-requests-in-web-api/_static/image7.png)
 
 > [!NOTE]
-> Si vous regardez le trafic HTTP dans un outil tel que [Fiddler](http://www.telerik.com/fiddler), vous verrez que le navigateur envoie la demande GET et la demande réussit, mais l’appel AJAX retourne une erreur. Il est important de comprendre que stratégie de même origine n’empêche pas le navigateur à partir de *envoi* la demande. Au lieu de cela, elle empêche l’application de voir les *réponse*.
+> Si vous regardez le trafic HTTP dans un outil tel que [Fiddler](https://www.telerik.com/fiddler), vous verrez que le navigateur envoie la demande GET et la demande réussit, mais l’appel AJAX retourne une erreur. Il est important de comprendre que stratégie de même origine n’empêche pas le navigateur à partir de *envoi* la demande. Au lieu de cela, elle empêche l’application de voir les *réponse*.
 
 ![Débogueur web Fiddler de requêtes web](enabling-cross-origin-requests-in-web-api/_static/image8.png)
 
@@ -146,7 +146,7 @@ Le navigateur peut ignorer la demande préliminaire si les conditions suivantes 
 
     - application/x-www-form-urlencoded
     - multipart/form-data
-    - texte/brut
+    - text/plain
 
 La règle sur les en-têtes de demande s’applique aux en-têtes de l’application définit en appelant **setRequestHeader** sur le **XMLHttpRequest** objet. (La spécification CORS les appelle « en-têtes de demande auteur ».) La règle ne s’applique pas aux en-têtes de la *navigateur* pouvez définir, telles que l’Agent utilisateur, hôte ou Content-Length.
 
@@ -156,14 +156,30 @@ Voici un exemple d’une requête préliminaire :
 
 La demande de contrôle préliminaire utilise la méthode HTTP OPTIONS. Il comprend deux en-têtes spéciaux :
 
-- Access-Control-Request-Method : Méthode HTTP qui sera utilisée pour la demande réelle.
-- Access-Control-Request-Headers : Une liste d’en-têtes de demande qui les *application* définie sur la demande réelle. (Là encore, cela n’inclut pas les en-têtes qui définit le navigateur.)
+- Access-Control-Request-Method : La méthode HTTP qui sera utilisée pour la demande réelle.
+- Access-Control-Request-Headers : Une liste des en-têtes de demande qui les *application* définie sur la demande réelle. (Là encore, cela n’inclut pas les en-têtes qui définit le navigateur.)
 
 Voici un exemple de réponse, en supposant que le serveur autorise la demande :
 
 [!code-console[Main](enabling-cross-origin-requests-in-web-api/samples/sample9.cmd?highlight=6-7)]
 
 La réponse inclut un en-tête `Access-Control-Allow-Methods` qui répertorie les méthodes autorisées et éventuellement un en-tête `Access-Control-Allow-Headers`, qui répertorie les en-têtes autorisés. Si la demande préliminaire réussit, le navigateur envoie la demande réelle, comme décrit précédemment.
+
+Outils couramment utilisés pour tester les points de terminaison avec les requêtes OPTIONS préliminaires (par exemple, [Fiddler](https://www.telerik.com/fiddler) et [Postman](https://www.getpostman.com/)) ne pas envoyer les en-têtes OPTIONS par défaut. Vérifiez que le `Access-Control-Request-Method` et `Access-Control-Request-Headers` en-têtes sont envoyés avec la demande et en-têtes d’OPTIONS d’atteindre l’application via IIS.
+
+Pour configurer IIS pour autoriser une application ASP.NET recevoir et traiter les demandes de l’OPTION, ajoutez la configuration suivante à l’application *web.config* de fichiers dans le `<system.webServer><handlers>` section :
+
+```xml
+<system.webServer>
+  <handlers>
+    <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
+    <remove name="OPTIONSVerbHandler" />
+    <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="*" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+  </handlers>
+</system.webServer>
+```
+
+La suppression de `OPTIONSVerbHandler` empêche IIS de gestion des demandes d’OPTIONS. Le remplacement de `ExtensionlessUrlHandler-Integrated-4.0` autorise les demandes d’OPTIONS à atteindre l’application, car l’enregistrement du module par défaut autorise uniquement les demandes GET, HEAD, POST et DEBUG avec des URL sans extension.
 
 ## <a name="scope-rules-for-enablecors"></a>Règles de portée pour [EnableCors]
 
@@ -230,7 +246,7 @@ Par défaut, le navigateur n’expose pas tous les en-têtes de réponse à l’
 - Content-Type
 - Arrive à expiration
 - Dernière modification
-- pragma
+- Pragma
 
 La spécification CORS appelle ces en-têtes : [les en-têtes de réponse simple](https://dvcs.w3.org/hg/cors/raw-file/tip/Overview.html#simple-response-header). Pour que les autres en-têtes accessibles à l’application, définissez la *exposedHeaders* paramètre de **[EnableCors]**.
 
