@@ -4,34 +4,31 @@ title: Introduction à ASP.NET Identity | Microsoft Docs
 author: jongalloway
 description: Le système d’appartenance ASP.NET a été introduit avec le retour de ASP.NET 2.0 en 2005 et depuis puis de nombreuses modifications ont été dans le typicall d’applications façons web...
 ms.author: riande
-ms.date: 10/17/2013
+ms.date: 01/22/2019
 ms.assetid: 38717fc1-5989-43cf-952d-4007cc1dd923
 msc.legacyurl: /identity/overview/getting-started/introduction-to-aspnet-identity
 msc.type: authoredcontent
-ms.openlocfilehash: 1938de2b57c8fafa7ea8a656c0a42d2d3f1a6c81
-ms.sourcegitcommit: 7b4e3936feacb1a8fcea7802aab3e2ea9c8af5b4
+ms.openlocfilehash: 4a545e52d2d9ea04a10c37c116fd326c60de9f8f
+ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48577871"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236443"
 ---
 <a name="introduction-to-aspnet-identity"></a>Introduction à ASP.NET Identity
 ====================
-par [Jon Galloway](https://github.com/jongalloway), [Pranav Rastogi](https://github.com/rustd), [Rick Anderson]((https://twitter.com/RickAndMSFT)), [Tom Dykstra](https://github.com/tdykstra)
 
 > Le système d’appartenance ASP.NET a été introduit avec ASP.NET 2.0 retour depuis 2005 et puis de nombreuses modifications ont été comme les applications web gèrent généralement l’authentification et l’autorisation. ASP.NET Identity est un regard neuf sur ce que le système d’appartenance doit être lorsque vous générez des applications modernes pour le web, un téléphone ou une tablette.
-> 
-> Cet article a été écrit par Pranav Rastogi ([@rustd](https://twitter.com/rustd)), Jon Galloway ([@jongalloway](https://twitter.com/jongalloway)), Tom Dykstra et Rick Anderson ([ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ).
 
 
-## <a name="background-membership-in-aspnet"></a>D’arrière-plan : L’appartenance dans ASP.NET
+## <a name="background-membership-in-aspnet"></a>Présentation : Appartenance dans ASP.NET
 
 ### <a name="aspnet-membership"></a>Appartenance ASP.NET
 
 [L’appartenance ASP.NET](https://msdn.microsoft.com/library/yh26yfzy(v=VS.100).aspx) a été conçu pour répondre aux exigences l’appartenance au site qui étaient courantes en 2005, impliquant l’authentification par formulaire et une base de données SQL Server pour les noms d’utilisateur, les mots de passe et les données de profil. Aujourd'hui, il existe un large éventail d’options de stockage de données pour les applications web, la plupart des développeurs et activer ou leurs sites pour utiliser des fournisseurs d’identité sociale pour les fonctionnalités d’authentification et d’autorisation. Les limitations de conception de l’appartenance d’ASP.NET compliquent cette transition :
 
 - Le schéma de base de données a été conçu pour SQL Server et vous ne pouvez pas le modifier. Vous pouvez ajouter des informations de profil, mais les données supplémentaires sont empaquetées dans une autre table, ce qui rend difficile pour accéder à toute autre manière, sauf via l’API de fournisseur de profil.
-- Le système du fournisseur permet de modifier le magasin de données de stockage, mais le système est conçu autour des hypothèses appropriés pour une base de données relationnelle. Vous pouvez écrire un fournisseur pour stocker les informations d’appartenance dans un mécanisme de stockage non relationnelles, telles que les Tables de stockage Azure, mais vous devez contourner la conception relationnelle en écrivant une grande quantité de code et un grand nombre de `System.NotImplementedException` exceptions pour les méthodes qui ne s’applique aux bases de données NoSQL.
+- Le système du fournisseur permet de modifier le magasin de données de stockage, mais le système est conçu autour des hypothèses appropriés pour une base de données relationnelle. Vous pouvez écrire un fournisseur pour stocker les informations d’appartenance dans un mécanisme de stockage non relationnelles, telles que les Tables de stockage Azure, mais vous devez contourner la conception relationnelle en écrivant la quantité de code et un grand nombre de `System.NotImplementedException` exceptions pour les méthodes qui ne s’applique aux bases de données NoSQL.
 - Étant donné que la fonctionnalité de déconnexion/journal est basée sur l’authentification par formulaire, le système d’appartenance ne peut pas utiliser [OWIN](../../../aspnet/overview/owin-and-katana/an-overview-of-project-katana.md). OWIN inclut les composants d’intergiciel (middleware) d’authentification, notamment la prise en charge des ouvertures de session à l’aide de fournisseurs d’identité externes (par exemple, Accounts Microsoft, Facebook, Google, Twitter) et les ouvertures de session à l’aide de comptes de société à partir d’Active Directory local ou Azure Active Directory. OWIN prend également en charge OAuth 2.0, JSON et CORS.
 
 ### <a name="aspnet-simple-membership"></a>Appartenance ASP.NET simples
@@ -85,21 +82,19 @@ Compte tenu de ces modifications dans le développement d’applications web, AS
 - **Fournisseurs de connexion de réseau social**
 
     - Vous pouvez facilement ajouter des ouvertures de session sociaux tels que Account Microsoft, Facebook, Twitter, Google et d’autres utilisateurs à votre application et stocker les données spécifiques à l’utilisateur dans votre application.
-- **Azure Active Directory**
 
-    - Vous pouvez également ajouter des fonctionnalités d’ouverture de session à l’aide d’Azure Active Directory et stocker les données spécifiques à l’utilisateur dans votre application. Pour plus d’informations, consultez [comptes professionnels](../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#orgauth) dans Creating ASP.NET Web Projects in Visual Studio 2013
 - **Intégration OWIN**
 
     - Authentification ASP.NET est désormais basée sur l’intergiciel OWIN qui peut être utilisé sur n’importe quel hôte OWIN. ASP.NET Identity n’a pas de dépendances sur System.Web. Il est une infrastructure OWIN entièrement compatible et peut être utilisé dans n’importe quelle application OWIN hébergé.
     - ASP.NET Identity utilise l’authentification OWIN de journal/journal sorti d’utilisateurs dans le site web. Cela signifie qu’au lieu d’utiliser FormsAuthentication pour générer le cookie, l’application utilise OWIN CookieAuthentication pour ce faire.
 - **Package NuGet**
 
-    - ASP.NET Identity est redistribué sous forme de package NuGet qui est installé dans les modèles ASP.NET MVC, Web Forms et Web API fournis avec Visual Studio 2013. Vous pouvez télécharger ce package NuGet à partir de la galerie NuGet.
+    - ASP.NET Identity est redistribué sous forme de package NuGet qui est installé dans les modèles ASP.NET MVC, Web Forms et Web API fournis avec Visual Studio 2017. Vous pouvez télécharger ce package NuGet à partir de la galerie NuGet.
     - Libération d’identité ASP.NET comme un package NuGet package facilite l’équipe ASP.NET effectuer une itération sur les nouvelles fonctionnalités et correctifs de bogues et fournir aux développeurs de manière agile.
 
-## <a name="getting-started-with-aspnet-identity"></a>Mise en route avec ASP.NET Identity
+## <a name="get-started-with-aspnet-identity"></a>Bien démarrer avec ASP.NET Identity
 
-ASP.NET Identity est utilisé dans les modèles de projet Visual Studio 2013 pour ASP.NET MVC, Web Forms, Web API et SPA. Dans cette procédure pas à pas, nous allons illustrent la façon dont les modèles de projet utilisent ASP.NET Identity pour ajouter des fonctionnalités pour vous inscrire, connectez-vous et déconnecter un utilisateur.
+ASP.NET Identity est utilisé dans les modèles de projet Visual Studio 2017 pour ASP.NET MVC, Web Forms, Web API et SPA. Dans cette procédure pas à pas, nous allons illustrer comment les modèles de projet utilisent ASP.NET Identity pour ajouter des fonctionnalités pour vous inscrire, connectez-vous et se déconnecter un utilisateur.
 
 ASP.NET Identity est implémenté à l’aide de la procédure suivante. L’objectif de cet article est de vous donner une vue d’ensemble détaillée de l’identité de ASP.NET ; Vous pouvez la suivre, étape par étape ou simplement de lire les détails. Pour obtenir des instructions plus détaillées sur la création d’applications à l’aide d’ASP.NET Identity, y compris à l’aide de la nouvelle API pour ajouter des utilisateurs, des rôles et des informations de profil, consultez la section étapes suivantes à la fin de cet article.
 
@@ -113,29 +108,25 @@ ASP.NET Identity est implémenté à l’aide de la procédure suivante. L’obj
     - [`Microsoft.AspNet.Identity.Core`](http://www.nuget.org/packages/Microsoft.AspNet.Identity.Core/)  
    Ce package contient des interfaces essentielles pour ASP.NET Identity. Ce package peut être utilisé pour écrire une implémentation pour ASP.NET Identity persistance différentes cibles stocke tels que Azure Table Storage, NoSQL, bases de données etc.
     - [`Microsoft.AspNet.Identity.OWIN`](http://www.nuget.org/packages/Microsoft.AspNet.Identity.Owin/)  
-   Ce package contient des fonctionnalités qui sont utilisée pour incorporer l’authentification OWIN avec ASP.NET Identity dans les applications ASP.NET. Cela est utilisé lorsque vous ajoutez un journal de fonctionnalités à votre application et appeler dans le middleware d’authentification de Cookie OWIN pour générer un cookie.
+   Ce package contient des fonctionnalités qui sont utilisée pour incorporer l’authentification OWIN avec ASP.NET Identity dans les applications ASP.NET. Cela est utilisé lorsque vous ajoutez un signe de fonctionnalités à votre application et appeler dans le middleware d’authentification de Cookie OWIN pour générer un cookie.
 3. Création d’un utilisateur.  
    Lancer l’application, puis cliquez sur le **inscrire** lien pour créer un utilisateur. L’illustration suivante montre la page d’inscription qui collecte le nom d’utilisateur et le mot de passe.  
   
     ![](introduction-to-aspnet-identity/_static/image2.png)  
   
-   Lorsque l’utilisateur clique sur le **inscrire** bouton, le `Register` action du contrôleur de compte crée l’utilisateur en appelant l’API d’identité ASP.NET, comme indiqué ci-dessous :
+   Lorsque l’utilisateur sélectionne le **inscrire** bouton, le `Register` action du contrôleur de compte crée l’utilisateur en appelant l’API d’identité ASP.NET, comme indiqué ci-dessous :
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample1.cs?highlight=8-9)]
-4. Connectez-vous.  
-   Si l’utilisateur a été créé avec succès, elle est connectée par le `SignInAsync` (méthode).  
+4. Connexion.  
+   Si l’utilisateur a été créé avec succès, elle est signée par le `SignInAsync` (méthode).  
 
-    [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample2.cs?highlight=12)]
+    [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample6.cs?highlight=12)]
 
-    [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample3.cs?highlight=5-6)]
 
-   Le code en surbrillance ci-dessus dans le `SignInAsync` méthode génère une [ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). Dans la mesure où ASP.NET Identity et l’authentification des cookies OWIN sont système basé sur les revendications, l’infrastructure requiert l’application pour générer un ClaimsIdentity pour l’utilisateur. ClaimsIdentity comporte des informations sur toutes les revendications pour l’utilisateur, telles que les rôles de l’utilisateur appartient. Vous pouvez également ajouter plusieurs revendications de l’utilisateur à ce stade.  
-  
-   Le code en surbrillance ci-dessous dans le `SignInAsync` méthode connecte l’utilisateur à l’aide de la classe AuthenticationManager d’OWIN et en appelant `SignIn` et en transmettant le ClaimsIdentity.  
-
-    [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample4.cs?highlight=8-11)]
+   Le `SignInManager.SignInAsync` méthode génère une [ClaimsIdentity](https://msdn.microsoft.com/library/system.security.claims.claimsidentity.aspx). Dans la mesure où ASP.NET Identity et l’authentification des cookies OWIN sont système basé sur les revendications, l’infrastructure requiert l’application pour générer un ClaimsIdentity pour l’utilisateur. ClaimsIdentity comporte des informations sur toutes les revendications pour l’utilisateur, telles que les rôles de l’utilisateur appartient.   
+ 
 5. Fermez la session.  
-   En cliquant sur le **déconnecter** lien appelle l’action de fermeture de session dans le contrôleur de compte. 
+   Sélectionnez le **déconnecter** lien pour appeler l’action de fermeture de session dans le contrôleur de compte. 
 
     [!code-csharp[Main](introduction-to-aspnet-identity/samples/sample5.cs?highlight=6)]
 
@@ -143,7 +134,7 @@ ASP.NET Identity est implémenté à l’aide de la procédure suivante. L’obj
 
 ## <a name="components-of-aspnet-identity"></a>Composants d’identité ASP.NET
 
-Le diagramme ci-dessous illustre les composants du système d’identité ASP.NET (cliquez sur [cela](introduction-to-aspnet-identity/_static/image3.png) ou sur le diagramme pour l’agrandir). Les packages en vert constituent le système d’identité ASP.NET. Tous les autres packages sont des dépendances qui sont nécessaires pour utiliser le système d’identité ASP.NET dans les applications ASP.NET.
+Le diagramme ci-dessous illustre les composants du système d’identité ASP.NET (sélectionnez [cela](introduction-to-aspnet-identity/_static/image3.png) ou sur le diagramme pour l’agrandir). Les packages en vert constituent le système d’identité ASP.NET. Tous les autres packages sont des dépendances qui sont nécessaires pour utiliser le système d’identité ASP.NET dans les applications ASP.NET.
 
 [![](introduction-to-aspnet-identity/_static/image5.png)](introduction-to-aspnet-identity/_static/image4.png)
 
@@ -164,9 +155,5 @@ Nous espérons bientôt fournissent des conseils sur la migration de vos applica
  Le didacticiel utilise l’API d’identité ASP.NET pour ajouter des informations de profil pour la base de données utilisateur et comment s’authentifier avec Google et Facebook.
 - [Créer une application ASP.NET MVC avec authentification et base de données SQL et la déployer sur Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)  
  Ce didacticiel montre comment utiliser l’API d’identité pour ajouter des utilisateurs et des rôles.
-- [Comptes d’utilisateur individuels](../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#indauth) lors de la création des projets Web ASP.NET dans Visual Studio 2013
-- [Comptes de société](../../../visual-studio/overview/2013/creating-web-projects-in-visual-studio.md#orgauth) lors de la création des projets Web ASP.NET dans Visual Studio 2013
-- [Personnalisation des informations de profil dans ASP.NET Identity dans les modèles de VS 2013](https://blogs.msdn.com/b/webdev/archive/2013/10/16/customizing-profile-information-in-asp-net-identity-in-vs-2013-templates.aspx)
-- [Obtenir plus d’informations provenant de fournisseurs sociaux utilisés dans les modèles de projet Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/10/16/get-more-information-from-social-providers-used-in-the-vs-2013-project-templates.aspx)
 - [https://github.com/rustd/AspnetIdentitySample](https://github.com/rustd/AspnetIdentitySample)  
  Exemple d’application qui montre comment ajouter des rôles de base et prise en charge de l’utilisateur et comment effectuer la gestion des utilisateurs et des rôles.
