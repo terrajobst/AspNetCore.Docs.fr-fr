@@ -105,7 +105,7 @@ Dans ce didacticiel, vous avez appris à :
 > * Créer un projet application web.
 > * Activer HTTPS localement.
 > * Exécuter le projet.
-> * Apporter la modification souhaitée.
+> * Effectuer une modification.
 
 Pour en savoir plus sur ASP.NET Core, consultez la présentation :
 
