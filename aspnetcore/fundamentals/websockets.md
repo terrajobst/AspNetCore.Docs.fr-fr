@@ -160,7 +160,7 @@ Les protections fournies par CORS ne s’appliquent pas aux WebSockets. Les navi
 
 Toutefois, les navigateurs envoient l’en-tête `Origin` au moment de l’émission des requêtes WebSocket. Les applications doivent être configurées de manière à valider ces en-têtes, le but étant de vérifier que seuls les WebSockets provenant des origines attendues sont autorisés.
 
-Si vous hébergez votre serveur sur « https://server.com » et votre client sur « https://client.com », ajoutez « https://client.com » à la liste `AllowedOrigins` pour autoriser les WebSockets.
+Si vous hébergez votre serveur sur « https://server.com» et votre client sur « https://client.com», ajoutez « https://client.com» à la liste `AllowedOrigins` pour autoriser les WebSockets.
 
 [!code-csharp[](websockets/samples/2.x/WebSocketsSample/Startup.cs?name=UseWebSocketsOptionsAO&highlight=6-7)]
 
