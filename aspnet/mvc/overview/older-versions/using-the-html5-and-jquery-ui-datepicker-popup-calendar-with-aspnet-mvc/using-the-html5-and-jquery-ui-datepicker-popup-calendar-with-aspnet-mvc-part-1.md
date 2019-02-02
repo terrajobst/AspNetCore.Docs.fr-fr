@@ -8,12 +8,12 @@ ms.date: 08/29/2011
 ms.assetid: c23d27f7-b0cf-44f2-8445-fb69e045c674
 msc.legacyurl: /mvc/overview/older-versions/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc/using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1
 msc.type: authoredcontent
-ms.openlocfilehash: a4cd6e9adfcd85503b9843232903a243bc07c959
-ms.sourcegitcommit: 392a36ed269b88899d6bb652aa7f4dfb72e43e7f
+ms.openlocfilehash: 3e700d2db4f86fe6734e2f08b01c9f8a8a69b6c3
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50220659"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667789"
 ---
 <a name="using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc---part-1"></a>Utilisation de HTML5 et Datepicker calendrier contextuel jQuery UI avec ASP.NET MVC - partie 1
 ====================
@@ -30,13 +30,13 @@ Avant de commencer, assurez-vous que vous avez installé les composants requis l
 - [Mettre à jour des outils ASP.NET MVC 3](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=MVC3)
 - [SQL Server Compact 4.0](https://www.microsoft.com/web/gallery/install.aspx?appid=SQLCE;SQLCEVSTools_4_0)(runtime + outils prennent en charge)
 
-Si vous utilisez Visual Studio 2010 au lieu de Visual Web Developer, installer les composants requis en cliquant sur le lien suivant : [configuration requise de Visual Studio 2010](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
+Si vous utilisez Visual Studio 2010 au lieu de Visual Web Developer, installez les composants requis en cliquant sur le lien suivant : [Visual Studio 2010 prerequisites](https://www.microsoft.com/web/gallery/install.aspx?appsxml=&amp;appid=VS2010SP1Pack).
 
 Ce didacticiel suppose que vous avez terminé la [mise en route avec MVC 3](../getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) didacticiel ou que vous êtes familiarisé avec le développement ASP.NET MVC. Ce didacticiel commence par le projet achevé du [mise en route avec MVC 3](../getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) didacticiel.
 
 Ce didacticiel montre le code en c#. Toutefois, le [projet de démarrage](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800) et projet terminé sont également disponibles dans Visual Basic.
 
-Un projet Visual Studio avec code source c# et Visual Basic est disponible pour accompagner cette rubrique : [télécharger](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800).
+Un projet Visual Studio avec C# et code source Visual Basic est disponible pour accompagner cette rubrique : [Télécharger](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15800).
 
 ### <a name="what-youll-build"></a>Ce que vous allez générer
 
@@ -54,7 +54,11 @@ Voici ce que vous allez apprendre :
 
 ### <a name="getting-started"></a>Prise en main
 
-Si vous ne disposez pas de l’application de liste de films à partir du projet de démarrage, le télécharger à l’aide du lien suivant : [télécharger](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098). Puis, dans l’Explorateur Windows, cliquez sur le *MvcMovie.zip* fichier et sélectionnez **propriétés**. Dans le **MvcMovie.zip propriétés** boîte de dialogue, sélectionnez **Unblock**. (Le déblocage empêche un avertissement de sécurité qui se produit lorsque vous essayez d’utiliser un *.zip* fichier que vous avez téléchargé à partir du web.)
+Si vous ne disposez pas de l’application de listes de film à partir du projet de départ, téléchargez-le : 
+
+* [Télécharger](https://code.msdn.microsoft.com/Introduction-to-MVC-3-10d1b098).
+* Dans l’Explorateur Windows, cliquez sur le *MvcMovie.zip* fichier et sélectionnez **propriétés**. 
+* Dans le **MvcMovie.zip propriétés** boîte de dialogue, sélectionnez **Unblock**. (Le déblocage empêche un avertissement de sécurité qui se produit lorsque vous essayez d’utiliser un *.zip* fichier que vous avez téléchargé à partir du web.)
 
 ![](using-the-html5-and-jquery-ui-datepicker-popup-calendar-with-aspnet-mvc-part-1/_static/image2.png)
 

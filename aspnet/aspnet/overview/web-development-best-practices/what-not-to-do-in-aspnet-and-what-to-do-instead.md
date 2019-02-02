@@ -4,20 +4,18 @@ title: Éléments à ne pas faire dans ASP.NET et comment réagir à la place | 
 author: Rick-Anderson
 description: Cette rubrique décrit les erreurs courantes plusieurs personnes effectué dans les projets web ASP.NET. Il fournit des recommandations pour la procédure à suivre pour éviter ces Commu...
 ms.author: riande
-ms.date: 05/08/2014
+ms.date: 01/28/2019
 ms.assetid: c39b9965-545c-4b04-8f55-21be7f28a9e5
 msc.legacyurl: /aspnet/overview/web-development-best-practices/what-not-to-do-in-aspnet-and-what-to-do-instead
 msc.type: authoredcontent
-ms.openlocfilehash: 69040ca6a1ddeaf029062da45475dd2171b1afa6
-ms.sourcegitcommit: 2d3e5422d530203efdaf2014d1d7df31f88d08d0
+ms.openlocfilehash: 512d2e2b39467635390fa175546f79d8c9f89f4a
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51021441"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667711"
 ---
-<a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>Éléments à ne pas faire dans ASP.NET et comment réagir à la place
-====================
-par [Tom FitzMacken](https://github.com/tfitzmac)
+# <a name="what-not-to-do-in-aspnet-and-what-to-do-instead"></a>Ce qu’il ne faut pas faire dans ASP.NET et ce qu’il faut faire à la place
 
 > Cette rubrique décrit les erreurs courantes plusieurs personnes effectué dans les projets web ASP.NET. Il fournit des recommandations pour la procédure à suivre pour éviter ces erreurs courantes. Il est basé sur un [présentation](http://vimeo.com/68390507) par **Damian Edwards** à couronne conférence de développeurs.
 
@@ -63,17 +61,17 @@ Cette rubrique contient les sections suivantes :
 
 ### <a name="control-adapters"></a>Adaptateurs de contrôle
 
-Recommandation : Arrêtez à l’aide des adaptateurs de contrôle pour le rendu adaptatif et utiliser à la place des requêtes de média CSS et HTML conforme aux normes.
+Recommandation : Arrêter d’utiliser les adaptateurs de contrôle pour le rendu adaptatif et utiliser à la place des requêtes de média CSS et HTML conforme aux normes.
 
 Les adaptateurs de contrôles ont été introduites dans .NET 2.0 pour restituer le code de présentation qui a été personnalisé pour les environnements et les différents appareils. À présent, ce rendu adaptatif peut être effectué avec CSS et HTML. Vous devez cesser d’utiliser les adaptateurs de contrôle et convertir les adaptateurs existants vers CSS et HTML.
 
-Pour plus d’informations, consultez [les requêtes de média](http://www.w3.org/TR/css3-mediaqueries/) et [Comment : ajouter des Pages mobiles à vos pages Web Forms ASP.NET / MVC Application](../../../whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application.md).
+Pour plus d’informations, consultez [les requêtes de média](http://www.w3.org/TR/css3-mediaqueries/) et [How To : Ajouter des Pages mobiles à vos formulaires Web ASP.NET / MVC Application](../../../whitepapers/add-mobile-pages-to-your-aspnet-web-forms-mvc-application.md).
 
 <a id="styleprop"></a>
 
 ### <a name="style-properties-on-controls"></a>Propriétés de style des contrôles
 
-Recommandation : Arrêter de valeurs de style dans le balisage du contrôle et définir à la place des valeurs de mise en forme dans les feuilles de style CSS.
+Recommandation : Arrêter la définition de valeurs de style dans le balisage du contrôle et définir à la place des valeurs de mise en forme dans les feuilles de style CSS.
 
 Les contrôles serveur Web contiennent des dizaines de propriétés qui peuvent être utilisées pour définir les propriétés de style intraligne. Par exemple, la propriété ForeColor définit la couleur du texte pour un contrôle. Vous pouvez obtenir cet effet même plus efficacement par le biais de feuilles de style CSS. Feuilles de style permettent de centraliser les valeurs de style et évitez de définir ces valeurs dans toute votre application.
 
@@ -87,9 +85,9 @@ L’exemple suivant montre comment appliquer de manière dynamique la classe CSS
 
 <a id="callback"></a>
 
-### <a name="page-and-control-callbacks"></a>Page et les rappels de contrôle
+### <a name="page-and-control-callbacks"></a>Rappels de page et de contrôle
 
-Recommandation : Arrêter d’utiliser les rappels de page et de contrôle et à la place utiliser les éléments suivants : AJAX, UpdatePanel, méthodes d’action MVC, API Web ou SignalR.
+Recommandation : Arrêter d’utiliser les rappels de page et de contrôle et à la place utiliser les éléments suivants : AJAX, UpdatePanel, MVC méthodes d’action, API Web ou SignalR.
 
 Dans les versions antérieures d’ASP.NET, Page et contrôle des méthodes de rappel vous autorisé à mettre à jour de la partie de la page web sans actualiser une page entière. Vous pouvez désormais effectuer des mises à jour de page partielle via [AJAX](../../../ajax/index.md), [UpdatePanel](https://msdn.microsoft.com/library/bb386454.aspx), [MVC](../../../mvc/index.md), [API Web](../../../web-api/index.md) ou [SignalR](../../../signalr/index.md). Vous devez arrêter à l’aide de méthodes de rappel car ils peuvent provoquer des problèmes avec des URL conviviales et le routage. Par défaut, les contrôles ne permettent pas de méthodes de rappel, mais si vous avez activé cette fonctionnalité dans un contrôle, vous devez le désactiver.
 
@@ -97,7 +95,7 @@ Dans les versions antérieures d’ASP.NET, Page et contrôle des méthodes de r
 
 ### <a name="browser-capability-detection"></a>Détection de fonctionnalité de navigateur
 
-Recommandation : Arrêtez à l’aide de la détection de fonctionnalité de navigateur statique et à la place utiliser la détection de fonctionnalité dynamique.
+Recommandation : Arrêter d’utiliser la détection de fonctionnalité du navigateur statique et à la place utiliser la détection de fonctionnalité dynamique.
 
 Dans les versions antérieures d’ASP.NET, les fonctionnalités prises en charge pour chaque navigateur ont été stockées dans un fichier XML. Prise en charge des fonctionnalités Détection via une recherche statique n’est pas la meilleure approche. Maintenant, vous pouvez détecter dynamiquement un navigateur de fonctionnalités prises en charge en utilisant une infrastructure de détection de fonctionnalité, telle que [Modernizr](http://modernizr.com/). Détection de fonctionnalité détermine la prise en charge en tente d’utiliser une méthode ou propriété, puis cochez pour voir si le navigateur a produit le résultat souhaité. Par défaut, Modernizr est inclus dans les modèles d’application Web.
 
@@ -151,7 +149,7 @@ L’exemple suivant montre comment spécifier dans le fichier Web.config que l�
 
 ### <a name="enableviewstatemac"></a>EnableViewStateMac
 
-Recommandation : Jamais a la valeur false.
+Recommandation : Jamais défini sur false.
 
 Par défaut, EnbableViewStateMac est définie sur true. Même si votre application n’utilise pas l’état d’affichage, ne définissez pas EnableViewStateMac sur false. La valeur false rendre votre application vulnérable aux scripts entre sites.
 
@@ -207,7 +205,7 @@ Vous pouvez utiliser la [PreSendRequestHeaders](https://msdn.microsoft.com/libra
 
 <a id="asyncevents"></a>
 
-### <a name="asynchronous-page-events-with-web-forms"></a>Événements de Page asynchrone avec les Web Forms
+### <a name="asynchronous-page-events-with-web-forms"></a>Événements de page asynchrone avec les web forms
 
 Recommandation : Dans Web Forms, éviter d’écrire async void méthodes pour les événements de cycle de vie de Page et à la place utiliser [Page.RegisterAsyncTask](https://msdn.microsoft.com/library/system.web.ui.page.registerasynctask.aspx) pour le code asynchrone.
 
@@ -217,7 +215,7 @@ L’exemple suivant montre un bouton Cliquez sur Gestionnaire qui contient le co
 
 [!code-csharp[Main](what-not-to-do-in-aspnet-and-what-to-do-instead/samples/sample11.cs)]
 
-Si vous utilisez des tâches asynchrones, la valeur est le framework cible de runtime Http 4.5 dans le fichier Web.config. Définition de l’infrastructure cible sur 4.5 tours sur le nouveau contexte de synchronisation qui a été ajoutée dans .NET 4.5. Cette valeur est définie par défaut dans les nouveaux projets dans Visual Studio 2012, mais n’est ne pas être définie si vous travaillez avec un projet existant.
+Si vous utilisez des tâches asynchrones, la valeur est le framework cible de runtime Http 4.5 (ou version ultérieure) dans le fichier Web.config. Définition de l’infrastructure cible sur 4.5 tours sur le nouveau contexte de synchronisation qui a été ajoutée dans .NET 4.5. Cette valeur est définie par défaut dans les nouveaux projets dans Visual Studio, mais il n’est ne pas être définie si vous travaillez avec un projet existant.
 
 [!code-xml[Main](what-not-to-do-in-aspnet-and-what-to-do-instead/samples/sample12.xml)]
 

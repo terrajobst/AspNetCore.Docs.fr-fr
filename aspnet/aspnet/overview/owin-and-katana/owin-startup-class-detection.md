@@ -4,39 +4,38 @@ title: Détection de classe de démarrage OWIN | Microsoft Docs
 author: Praburaj
 description: Ce didacticiel montre comment configurer la classe de démarrage OWIN est chargée. Pour plus d’informations sur OWIN, consultez une vue d’ensemble du projet Katana. Ce didacticiel a été...
 ms.author: riande
-ms.date: 10/17/2013
+ms.date: 01/28/2019
 ms.assetid: 08257f55-36f4-4e39-9c88-2a5602838c79
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-startup-class-detection
 msc.type: authoredcontent
-ms.openlocfilehash: 4e753187f1caae646402712c2abc28856ae71a79
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: 0b34cca8b48383dbb028106651758dff889ed614
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48910705"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667295"
 ---
 <a name="owin-startup-class-detection"></a>Détection de classe de démarrage OWIN
 ====================
-par [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 > Ce didacticiel montre comment configurer la classe de démarrage OWIN est chargée. Pour plus d’informations sur OWIN, consultez [une vue d’ensemble du projet Katana](an-overview-of-project-katana.md). Ce didacticiel a été rédigé par Rick Anderson ( [ @RickAndMSFT ](https://twitter.com/#!/RickAndMSFT) ), Praburaj Thiagarajan et Howard Dierking ( [ @howard \_dierking](https://twitter.com/howard_dierking) ).
 >
 > ## <a name="prerequisites"></a>Prérequis
 >
-> [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
+> [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 
 
 ## <a name="owin-startup-class-detection"></a>Détection de classe de démarrage OWIN
 
  Chaque Application OWIN a une classe de démarrage où vous spécifiez des composants pour le pipeline d’application. Il existe différentes façons, vous pouvez vous connecter à votre classe de démarrage avec le runtime, selon le modèle d’hébergement que vous choisissez (OwinHost, IIS et IIS Express). La classe de démarrage présentée dans ce didacticiel peut être utilisée dans chaque application d’hébergement. Vous vous connectez à la classe de démarrage avec l’hébergement runtime à l’aide d’une de ces approches :
 
-1. **Convention de dénomination**: Katana recherche une classe nommée `Startup` dans l’espace de noms mise en correspondance le nom d’assembly ou de l’espace de noms global.
-2. **Attribut de OwinStartup**: c’est l’approche prendra la plupart des développeurs pour spécifier la classe de démarrage. L’attribut suivant définit la classe de démarrage le `TestStartup` classe dans le `StartupDemo` espace de noms.
+1. **Convention de dénomination**: Recherche de Katana pour une classe nommée `Startup` dans l’espace de noms mise en correspondance le nom d’assembly ou de l’espace de noms global.
+2. **Attribut de OwinStartup**: Il s’agit de l’approche que prendra la plupart des développeurs pour spécifier la classe de démarrage. L’attribut suivant définit la classe de démarrage le `TestStartup` classe dans le `StartupDemo` espace de noms.
 
     [!code-csharp[Main](owin-startup-class-detection/samples/sample1.cs)]
 
    Le `OwinStartup` attribut remplace la convention d’affectation de noms. Vous pouvez également spécifier un nom convivial avec cet attribut, toutefois, à l’aide d’un nom convivial, vous devez également utiliser le `appSetting` élément dans le fichier de configuration.
-3. **L’élément appSetting dans le fichier de Configuration**: le `appSetting` élément remplace la `OwinStartup` attribut et la convention d’affectation de noms. Vous pouvez avoir plusieurs classes de démarrage (chacun utilisant une `OwinStartup` attribut) et configurer la classe de démarrage qui sera chargé dans un fichier de configuration à l’aide de balisage similaire à ce qui suit :
+3. **L’élément appSetting dans le fichier de Configuration**: Le `appSetting` élément remplace la `OwinStartup` attribut et la convention d’affectation de noms. Vous pouvez avoir plusieurs classes de démarrage (chacun utilisant une `OwinStartup` attribut) et configurer la classe de démarrage qui sera chargé dans un fichier de configuration à l’aide de balisage similaire à ce qui suit :
 
     [!code-xml[Main](owin-startup-class-detection/samples/sample2.xml)]
 
@@ -60,7 +59,7 @@ par [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson]((https:
 1. Créez une application de web Asp.Net vide et nommez-la **StartupDemo**. -Installez `Microsoft.Owin.Host.SystemWeb` à l’aide du Gestionnaire de package NuGet. À partir de la **outils** menu, sélectionnez **Gestionnaire de Package NuGet**, puis **Console du Gestionnaire de Package**. Entrez la commande suivante :
 
     [!code-powershell[Main](owin-startup-class-detection/samples/sample7.ps1)]
-2. Ajouter une classe de démarrage OWIN. Dans Visual Studio 2013 avec le bouton droit sur le projet et sélectionnez **ajouter une classe**. - dans le **ajouter un nouvel élément** boîte de dialogue, entrez *OWIN* dans le champ de recherche, puis remplacez le nom par Startup.cs, puis cliquez sur **ajouter**.
+2. Ajouter une classe de démarrage OWIN. Dans Visual Studio 2017, cliquez sur le projet et sélectionnez **ajouter une classe**. - dans le **ajouter un nouvel élément** boîte de dialogue, entrez *OWIN* dans le champ de recherche, puis remplacez le nom par Startup.cs, puis sélectionnez **ajouter**.
 
      ![](owin-startup-class-detection/_static/image1.png)
 
@@ -68,7 +67,7 @@ par [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson]((https:
 
      ![](owin-startup-class-detection/_static/image2.png)
 
-   Ou bien, vous pouvez cliquez avec le bouton droit sur le projet et sélectionnez **ajouter**, puis sélectionnez **un nouvel élément**, puis sélectionnez le **classe de démarrage Owin**.
+   Ou bien, vous pouvez cliquez sur le projet et sélectionnez **ajouter**, puis sélectionnez **un nouvel élément**, puis sélectionnez le **classe de démarrage Owin**.
 
      ![](owin-startup-class-detection/_static/image3.png)
 
@@ -80,7 +79,7 @@ par [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson]((https:
      > [!NOTE]
      > Dans le code ci-dessus nous avons mis en commentaire le `OwinStartup` attribut et nous allons s’appuyer sur la convention de l’exécution de la classe nommée `Startup` .-Press ***F5*** pour exécuter l’application. Cliquez sur Actualiser plusieurs fois.
 
-    ![](owin-startup-class-detection/_static/image4.png) Remarque : Le nombre indiqué dans les images dans ce didacticiel pas correspond le numéro que vous voyez. La chaîne de milliseconde est utilisée pour afficher une nouvelle réponse lorsque vous actualisez la page.
+    ![](owin-startup-class-detection/_static/image4.png) Remarque : Le nombre indiqué dans les images dans ce didacticiel ne correspondra pas le numéro que vous voyez. La chaîne de milliseconde est utilisée pour afficher une nouvelle réponse lorsque vous actualisez la page.
   Vous pouvez voir les informations de trace dans le **sortie** fenêtre.
 
     ![](owin-startup-class-detection/_static/image5.png)
@@ -158,6 +157,7 @@ Dans cette section, nous allons ajouter une autre classe de démarrage. Vous pou
 
    Chargement de la classe de démarrage de Production.
     ![](owin-startup-class-detection/_static/image9.png)
+
    Notre application a plusieurs classes de démarrage et dans cet exemple, nous avons différée quelle classe de démarrage pour charger jusqu'à l’exécution.
 8. Tester les options de démarrage runtime suivantes :
 

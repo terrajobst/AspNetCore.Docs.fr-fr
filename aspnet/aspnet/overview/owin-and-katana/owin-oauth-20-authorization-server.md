@@ -4,20 +4,18 @@ title: Serveur de d’autorisation OAuth 2.0 OWIN | Microsoft Docs
 author: hongyes
 description: Ce didacticiel vous guide sur la façon d’implémenter un serveur d’autorisation OAuth 2.0 à l’aide d’intergiciel (middleware) OWIN OAuth. Ceci est un didacticiel avancé que seule Group...
 ms.author: riande
-ms.date: 03/20/2014
+ms.date: 01/28/2019
 ms.assetid: 20acee16-c70c-41e9-b38f-92bfcf9a4c1c
 msc.legacyurl: /aspnet/overview/owin-and-katana/owin-oauth-20-authorization-server
 msc.type: authoredcontent
-ms.openlocfilehash: 095dad49a8e9f963d941a84398afe9da0f46ce0b
-ms.sourcegitcommit: a4dcca4f1cb81227c5ed3c92dc0e28be6e99447b
+ms.openlocfilehash: b8451d2d9e346bd5e2f51ba45e48030a5221b549
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48912265"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667646"
 ---
-<a name="owin-oauth-20-authorization-server"></a>Serveur de d’autorisation OAuth 2.0 OWIN
-====================
-par [Hongye Sun](https://github.com/hongyes), [Praburaj Thiagarajan](https://github.com/Praburaj), [Rick Anderson]((https://twitter.com/RickAndMSFT))
+# <a name="owin-oauth-20-authorization-server"></a>Serveur d’autorisation OAuth 2.0 OWIN
 
 > Ce didacticiel vous guide sur la façon d’implémenter un serveur d’autorisation OAuth 2.0 à l’aide d’intergiciel (middleware) OWIN OAuth. Il s’agit d’un didacticiel avancé qui ne présente les étapes pour créer un serveur d’autorisation de OWIN OAuth 2.0. Cela n’est pas un didacticiel étape par étape. [Télécharger l’exemple de code](https://code.msdn.microsoft.com/OWIN-OAuth-20-Authorization-ba2b8783/file/114932/1/AuthorizationServer.zip).
 >
@@ -29,9 +27,9 @@ par [Hongye Sun](https://github.com/hongyes), [Praburaj Thiagarajan](https://git
 >
 > | **Indiqué dans le didacticiel** | **Fonctionne également avec** |
 > | --- | --- |
-> | Windows 8.1 | Windows 8, Windows 7 |
-> | [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013) | [Visual Studio 2013 Express pour Desktop](https://my.visualstudio.com/Downloads?q=visual%20studio%202013#d-2013-express). Visual Studio 2012 avec la dernière mise à jour devrait fonctionner, mais le didacticiel n’a pas été testé avec lui et des sélections de menu et les boîtes de dialogue sont différents. |
-> | .NET 4.5 |  |
+> | Windows 8.1 | Windows 10, Windows 8, Windows 7 |
+> | [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+> | .NET 4.7.2 |  |
 >
 > ## <a name="questions-and-comments"></a>Questions et commentaires
 >
@@ -53,7 +51,7 @@ Ce didacticiel couvre :
 <a id="prerequisites"></a>
 ## <a name="prerequisites"></a>Prérequis
 
-- [Visual Studio 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-editions) ou la version gratuite [Visual Studio Express 2013](https://www.microsoft.com/visualstudio/eng/downloads#d-2013-express), comme indiqué dans **Versions logicielles** en haut de la page.
+- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) comme indiqué dans **Versions logicielles** en haut de la page.
 - Vous êtes familiarisé avec OWIN. Consultez [mise en route avec le projet Katana](https://msdn.microsoft.com/magazine/dn451439.aspx) et [Nouveautés OWIN et Katana](index.md).
 - Vous êtes familiarisé avec [OAuth](http://tools.ietf.org/html/rfc6749) la terminologie, y compris [rôles](http://tools.ietf.org/html/rfc6749#section-1.1), [flux du protocole](http://tools.ietf.org/html/rfc6749#section-1.2), et [octroi d’autorisation](http://tools.ietf.org/html/rfc6749#section-1.3). [Présentation d’OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-1) constitue une bonne introduction.
 
@@ -80,12 +78,12 @@ Le code ci-dessus autorise les cookies et l’authentification de Google, qui so
 Le `UseOAuthAuthorizationServer` méthode d’extension consiste à configurer le serveur d’autorisation. Les options d’installation sont :
 
 - `AuthorizeEndpointPath`: Le chemin d’accès de requête où les applications clientes redirigeront l’agent utilisateur afin d’obtenir les utilisateurs de consentement pour émettre un jeton ou du code. Il doit commencer par une barre oblique, par exemple, «`/Authorize`».
-- `TokenEndpointPath`: Les applications de client de chemin d’accès de requête communiquent directement pour obtenir le jeton d’accès. Il doit commencer par une barre oblique, par exemple « /Token ». Si le client reçoit un [client\_secret](http://tools.ietf.org/html/rfc6749#appendix-A.2), elle doit être fournie à ce point de terminaison.
-- `ApplicationCanDisplayErrors`: Défini sur `true` si l’application web veut générer une page d’erreur personnalisée pour les erreurs de validation client sur `/Authorize` point de terminaison. Ce paramètre est uniquement nécessaire pour les cas où le navigateur n’est pas redirigé sauvegarder à l’application cliente, par exemple, lorsque le `client_id` ou `redirect_uri` sont incorrectes. Le `/Authorize` point de terminaison doit s’attendre à voir le « oauth. Erreur «, « oauth. ErrorDescription » et « oauth. Propriétés de ErrorUri » sont ajoutées à l’environnement OWIN.
+- `TokenEndpointPath`: Les applications clientes de chemin d’accès demande communiquent directement pour obtenir le jeton d’accès. Il doit commencer par une barre oblique, par exemple « /Token ». Si le client reçoit un [client\_secret](http://tools.ietf.org/html/rfc6749#appendix-A.2), elle doit être fournie à ce point de terminaison.
+- `ApplicationCanDisplayErrors`: La valeur `true` si l’application web veut générer une page d’erreur personnalisée pour les erreurs de validation client sur `/Authorize` point de terminaison. Ce paramètre est uniquement nécessaire pour les cas où le navigateur n’est pas redirigé sauvegarder à l’application cliente, par exemple, lorsque le `client_id` ou `redirect_uri` sont incorrectes. Le `/Authorize` point de terminaison doit s’attendre à voir le « oauth. Erreur «, « oauth. ErrorDescription » et « oauth. Propriétés de ErrorUri » sont ajoutées à l’environnement OWIN.
 
     > [!NOTE]
     > Si ce n’est pas le cas, la valeur est true, le serveur d’autorisation renverra une page d’erreur par défaut avec les détails de l’erreur.
-- `AllowInsecureHttp`: True pour autoriser l’autoriser et demandes de jetons pour arriver sur des adresses URI HTTP et pour autoriser le trafic entrant `redirect_uri` autoriser les paramètres de la demande d’avoir des adresses URI HTTP.
+- `AllowInsecureHttp`: True pour permettre à autoriser et demandes de jetons pour arriver sur des adresses URI HTTP et pour autoriser le trafic entrant `redirect_uri` autoriser les paramètres de la demande d’avoir des adresses URI HTTP.
 
     > [!WARNING]
     > Sécurité - Il s’agit uniquement pour le développement.

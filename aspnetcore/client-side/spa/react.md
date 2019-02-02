@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 02/21/2018
 uid: spa/react
-ms.openlocfilehash: c83b119e81d7d0abfd727cb8c72abb09763d9448
-ms.sourcegitcommit: b2723654af4969a24545f09ebe32004cb5e84a96
+ms.openlocfilehash: d83bff8abcd5b59d8bc4a51a101510755394f0c4
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46011419"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667685"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React avec ASP.NET Core
 
@@ -97,14 +97,22 @@ Le projet est configuré pour démarrer sa propre instance du serveur de dévelo
 
 Cette configuration par défaut présente un inconvénient. Chaque fois que vous modifiez votre code C# et que votre application ASP.NET Core doit redémarrer, le serveur CRA redémarre. Quelques secondes sont nécessaires avant de démarrer la sauvegarde. Si vous apportez des modifications fréquentes au code C# et que vous ne souhaitez pas attendre que le serveur CRA redémarre, exécutez ce dernier en externe, indépendamment du processus ASP.NET Core. Pour ce faire :
 
-1. Dans une invite de commandes, basculez vers le sous-répertoire *ClientApp* et lancez le serveur de développement CRA :
+1. Ajouter un *.env* de fichiers à la *ClientApp* sous-répertoire avec le paramètre suivant :
+
+    ```
+    BROWSER=none
+    ```
+    
+    Cela ne pourra pas votre navigateur web ouvrir au démarrage du serveur d’arc en externe.
+
+2. Dans une invite de commandes, basculez vers le sous-répertoire *ClientApp* et lancez le serveur de développement CRA :
 
     ```console
     cd ClientApp
     npm start
     ```
 
-2. Modifiez votre application ASP.NET Core afin qu’elle utilise l’instance de serveur CRA externe au lieu de lancer une instance propre. Dans votre classe *Startup*, remplacez l’appel `spa.UseReactDevelopmentServer` par ce qui suit :
+3. Modifiez votre application ASP.NET Core afin qu’elle utilise l’instance de serveur CRA externe au lieu de lancer une instance propre. Dans votre classe *Startup*, remplacez l’appel `spa.UseReactDevelopmentServer` par ce qui suit :
 
     ```csharp
     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");

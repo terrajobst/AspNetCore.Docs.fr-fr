@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.assetid: 095abad4-3bfe-4f06-b092-ae6a735b7e49
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/setting-up-database
 msc.type: authoredcontent
-ms.openlocfilehash: a503e3db63c873249178fd4783d322f4067c3208
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: dfc6c7a7083524a1e7049fdc879fe679f951084d
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236378"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667737"
 ---
 # <a name="tutorial-get-started-with-ef-database-first-using-mvc-5"></a>Tutoriel : Bien démarrer avec Entity Framework Database First avec MVC 5
 
-À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer automatiquement les données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données. Dans la dernière partie de la série, vous allez déployer le site et la base de données vers Azure.
+À l’aide de la structure ASP.NET MVC et Entity Framework, vous pouvez créer une application web qui fournit une interface à une base de données existante. Cette série de didacticiels vous montre comment générer du code qui permet aux utilisateurs d’afficher, modifier, créer et supprimer automatiquement les données qui résident dans une table de base de données. Le code généré correspond aux colonnes dans la table de base de données. Dans la dernière partie de la série, vous allez découvrir comment ajouter des annotations de données au modèle de données pour spécifier les exigences de validation et afficher la mise en forme. Lorsque vous avez terminé, vous pouvez passer à un article pour savoir comment déployer une application .NET et la base de données SQL dans Azure App Service sur Azure.
 
 Ce didacticiel montre comment commencer avec un existant de base de données et de créer rapidement une application web qui permet aux utilisateurs d’interagir avec les données. Il utilise l’Entity Framework 6 et MVC 5 pour générer l’application web. La fonctionnalité de génération de modèles automatique ASP.NET vous permet de générer automatiquement le code pour l’affichage, la mise à jour, la création et la suppression de données. Utilisez les outils de publication dans Visual Studio, vous pouvez facilement déployer le site et la base de données vers Azure.
 
@@ -51,7 +51,7 @@ Lancez Visual Studio et créez un **projet de base de données SQL Server**. Nom
 
 ![créer le projet de base de données](setting-up-database/_static/image1.png)
 
-Vous disposez maintenant d’un projet de base de données vide. Vous allez déployer cette base de données vers Azure plus loin dans ce didacticiel, il vous faudra donc définir la base de données SQL Azure comme plateforme cible pour le projet. Définition de la plateforme cible ne déploie pas réellement la base de données ; Cela signifie simplement que le projet de base de données doit vérifier que la conception de base de données est compatible avec la plateforme cible. Pour définir la plateforme cible, ouvrez le **propriétés** pour le projet, puis sélectionnez **Microsoft Azure SQL Database** pour la plateforme cible.
+Vous disposez maintenant d’un projet de base de données vide. Pour vous assurer que vous pouvez déployer cette base de données vers Azure, vous allez définir la base de données SQL Azure en tant que la plateforme cible pour le projet. Définition de la plateforme cible ne déploie pas réellement la base de données ; Cela signifie simplement que le projet de base de données doit vérifier que la conception de base de données est compatible avec la plateforme cible. Pour définir la plateforme cible, ouvrez le **propriétés** pour le projet, puis sélectionnez **Microsoft Azure SQL Database** pour la plateforme cible.
 
 Vous pouvez créer les tables nécessaires pour ce didacticiel en ajoutant les scripts SQL qui définissent les tables. Cliquez sur votre projet et ajouter un nouvel élément. Sélectionnez **Tables et vues** > **Table** et nommez-le *étudiant*.
 

@@ -5,14 +5,14 @@ description: Découvrez comment configurer des applications ASP.NET Core SignalR
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 09/06/2018
+ms.date: 01/29/2019
 uid: signalr/configuration
-ms.openlocfilehash: 06e86921c65297e93dcd8954ba4983d1577bb615
-ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
+ms.openlocfilehash: ce970199984cdb8333ed1fd51f744dcda2df9c61
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55073151"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667607"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>Configuration d’ASP.NET Core SignalR
 
@@ -63,7 +63,7 @@ Le tableau suivant décrit les options de configuration de concentrateurs Signal
 
 | Option | Valeur par défaut | Description |
 | ------ | ------------- | ----------- |
-| `ClientTimeoutInterval` | 30 secondes | Le serveur considère le client déconnecté si elle n’a pas reçu un message (y compris keep-alive) dans cet intervalle. Il est possible qu’elle dure plus longtemps que cet intervalle de délai d’attente à réellement être identifiée comme étant déconnectée, en raison de la façon dont ceci est implémenté par le client. La valeur recommandée est double la `KeepAliveInterval` valeur.|
+| `ClientTimeoutInterval` | 30 secondes | Le serveur considère le client déconnecté si elle n’a pas reçu un message (y compris keep-alive) dans cet intervalle. Il peut prendre plu de cet intervalle de délai d’attente à réellement être identifiée comme étant déconnectée, en raison de la façon dont ceci est implémenté par le client. La valeur recommandée est double la `KeepAliveInterval` valeur.|
 | `HandshakeTimeout` | 15 secondes | Si le client n’envoie un message de négociation initiale au sein de cet intervalle de temps, la connexion est fermée. Il s’agit d’un paramètre avancé qui doit uniquement être modifié en cas d’erreurs de délai d’expiration de la négociation en raison de la latence du réseau graves. Pour plus d’informations sur le processus de négociation, consultez le [spécification du protocole SignalR Hub](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md). |
 | `KeepAliveInterval` | 15 secondes | Si le serveur n’a pas envoyé un message dans cet intervalle, un message ping est envoyé automatiquement pour maintenir la connexion ouverte. Lorsque vous modifiez `KeepAliveInterval`, modifiez le paramètre `ServerTimeout` / `serverTimeoutInMilliseconds` sur le client. La valeur recommandée `ServerTimeout` / `serverTimeoutInMilliseconds` est le double de la valeur `KeepAliveInterval`.  |
 | `SupportedProtocols` | Tous les protocoles installés | Les protocoles pris en charge par ce hub. Par défaut, tous les protocoles inscrits sur le serveur sont autorisés, mais les protocoles peuvent être supprimés de cette liste pour désactiver des protocoles spécifiques pour certains hubs. |
