@@ -5,18 +5,22 @@ description: Cette série de tutoriels montre comment utiliser Razor Pages dans 
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 929bc72b16e302a5018038bc449704b7078dd33a
-ms.sourcegitcommit: 6548c19f345850ee22b50f7ef9fca732895d9e08
+ms.openlocfilehash: bec5838c2efaffb933828260eaf1a840ff202140
+ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53425079"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55667763"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutoriel : Bien démarrer avec des pages Razor dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ceci est le premier didacticiel d’une série. [Cette série](xref:tutorials/razor-pages/index) décrit les principes fondamentaux liés à la génération d’une application web de pages Razor dans ASP.NET Core. À la fin de la série, vous disposez d’une application qui gère une base de données de films.  
+Ceci est le premier didacticiel d’une série. [Cette série](xref:tutorials/razor-pages/index) décrit les principes fondamentaux liés à la génération d’une application web de pages Razor dans ASP.NET Core.
+
+[!INCLUDE[](~/includes/advancedRP.md)]
+
+À la fin de la série, vous disposez d’une application qui gère une base de données de films.  
 
 [!INCLUDE[View or download sample code](~/includes/rp/download.md)]
 
@@ -24,12 +28,12 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
 
 > [!div class="checklist"]
 > * Créer une application web Razor Pages.
-> * Exécutez l’application.
+> * Exécuter l’application.
 > * Examiner les fichiers projet.
 
 À la fin de ce didacticiel, vous disposez d’une application web Razor Pages fonctionnelle et générée dans les didacticiels suivants.
 
-[Page d’accueil ou page d’index](razor-pages-start/_static/home2.2.png)
+![Page d’accueil ou page d’index](razor-pages-start/_static/home2.2.png)
 
 [!INCLUDE[](~/includes/net-core-prereqs-all-2.2.md)]
 
