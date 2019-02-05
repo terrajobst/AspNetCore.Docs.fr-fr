@@ -5,12 +5,12 @@ description: Utiliser Identity à une application ASP.NET Core Découvrez commen
 ms.author: riande
 ms.date: 08/08/2018
 uid: security/authentication/identity
-ms.openlocfilehash: 03f89114b516a37ee1d06934f2e549b4d56ff099
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 1a4e7fb3ac6a767ca17127dd58a9b9e65ed9a00b
+ms.sourcegitcommit: e418cb9cddeb3de06fa0cb4fdb5529da03ff6d63
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098767"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55739681"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>Introduction à Identity sur ASP.NET Core
 
@@ -47,7 +47,7 @@ Créer un projet d’Application Web ASP.NET Core avec des comptes d’utilisate
 
 * Sélectionnez **Fichier** > **Nouveau** > **Projet**.
 * Sélectionnez **Nouvelle application web ASP.NET Core**. Nommez le projet **application Web 1** pour avoir le même espace de noms en tant que le téléchargement du projet. Cliquez sur **OK**.
-* Sélectionnez une ASP.NET Core **Web Application** pour ASP.NET Core 2.1, puis sélectionnez **modifier l’authentification**.
+* Sélectionnez une ASP.NET Core **Web Application**, puis sélectionnez **modifier l’authentification**.
 * Sélectionnez **comptes d’utilisateur individuels** et cliquez sur **OK**.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
@@ -58,30 +58,32 @@ dotnet new webapp --auth Individual -o WebApp1
 
 ---
 
-Fournit le projet généré [ASP.NET Core Identity](xref:security/authentication/identity) comme un [bibliothèque de classes Razor](xref:razor-pages/ui-class).
+Fournit le projet généré [ASP.NET Core Identity](xref:security/authentication/identity) comme un [bibliothèque de classes Razor](xref:razor-pages/ui-class). La bibliothèque de classes d’identité Razor expose des points de terminaison avec le `Identity` zone. Exemple :
+
+* / Identity/Account/Login
+* Identité/compte/déconnecter
+* /Identity/Account/Manage
 
 ### <a name="test-register-and-login"></a>Registre de test et de connexion
 
 Exécutez l’application et inscrire un utilisateur. Selon la taille de votre écran, vous devrez peut-être sélectionner le bouton de navigation pour afficher le **inscrire** et **connexion** des liens.
-
-![bouton de barre de navigation de bascule](identity/_static/navToggle.png)
 
 [!INCLUDE[](~/includes/view-identity-db.md)]
 
 <a name="pw"></a>
 ### <a name="configure-identity-services"></a>Configurer les services d’identité
 
-Les services sont ajoutés dans `ConfigureServices`. Le modèle par défaut consiste à appeler toutes les méthodes `Add{Service}`, puis toutes les méthodes `services.Configure{Service}`. Le code suivant n’inclut pas le modèle généré `CookiePolicyOptions`:
+Les services sont ajoutés dans `ConfigureServices`. Le modèle par défaut consiste à appeler toutes les méthodes `Add{Service}`, puis toutes les méthodes `services.Configure{Service}`.
 
 ::: moniker range=">= aspnetcore-2.1"
 
-   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configureservices)]
+[!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configureservices)]
 
 Le code précédent configure l’identité avec des valeurs d’option par défaut. Services sont accessibles à l’application via [l’injection de dépendances](xref:fundamentals/dependency-injection).
 
    Identity est activé en appelant [UseAuthentication](/dotnet/api/microsoft.aspnetcore.builder.authappbuilderextensions.useauthentication#Microsoft_AspNetCore_Builder_AuthAppBuilderExtensions_UseAuthentication_Microsoft_AspNetCore_Builder_IApplicationBuilder_). `UseAuthentication`Ajoute l’authentification [intergiciel (middleware)](xref:fundamentals/middleware/index) au pipeline de demande.
 
-   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Startup.cs?name=snippet_configure&highlight=18)]
+   [!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configure&highlight=18)]
 
 ::: moniker-end
 
@@ -124,6 +126,7 @@ Ajoutez les fichiers de Registre, de connexion et de déconnexion.
 Si vous avez créé le projet avec le nom **application Web 1**, exécutez les commandes suivantes. Sinon, utilisez l’espace de noms correct pour le `ApplicationDbContext`:
 
 ```cli
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
 
@@ -137,7 +140,7 @@ PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous 
 
    Lorsqu’un utilisateur clique sur le **inscrire** lien, le `RegisterModel.OnPostAsync` action est appelée. L’utilisateur est créé par [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_) sur la `_userManager` objet. `_userManager` est fourni par l’injection de dépendances) :
 
-   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Register.cshtml.cs?name=snippet&highlight=7,22)]
+   [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=7,22)]
 
 ::: moniker-end
 
@@ -164,7 +167,7 @@ Le formulaire de connexion s’affiche lorsque :
 
 Lors de l’envoi du formulaire sur la page de connexion, le `OnPostAsync` action est appelée. `PasswordSignInAsync` est appelée sur le `_signInManager` objet (fourni par l’injection de dépendances).
 
-   [!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Login.cshtml.cs?name=snippet&highlight=10-11)]
+   [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
    La base de `Controller` classe expose un `User` propriété auxquelles vous pouvez accéder à partir de méthodes de contrôleur. Par exemple, vous pouvez énumérer `User.Claims` et prendre des décisions d’autorisation. Pour plus d'informations, consultez <xref:security/authorization/introduction>.
 
@@ -188,13 +191,13 @@ La base (`Controller` ou `PageModel`) classe expose un `User` propriété. Par e
 
 Le **déconnecter** lien appelle le `LogoutModel.OnPost` action. 
 
-[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/Logout.cshtml.cs)]
+[!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Logout.cshtml.cs)]
 
 [SignOutAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.signoutasync#Microsoft_AspNetCore_Identity_SignInManager_1_SignOutAsync) efface les revendications de l’utilisateur stockées dans un cookie. Ne pas rediriger après avoir appelé `SignOutAsync` ou l’utilisateur sera **pas** me déconnecter.
 
 POST est spécifié dans le *Pages/Shared/_LoginPartial.cshtml*:
 
-[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/_LoginPartial.cshtml?highlight=10)]
+[!code-csharp[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
 ::: moniker-end
 
@@ -210,11 +213,11 @@ POST est spécifié dans le *Pages/Shared/_LoginPartial.cshtml*:
 
 ## <a name="test-identity"></a>Tester l’identité
 
-Les modèles de projet web par défaut autoriser l’accès anonyme pour les pages d’accueil. Pour tester l’identité, vous devez ajouter [ `[Authorize]` ](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) à la page About.
+Les modèles de projet web par défaut autoriser l’accès anonyme pour les pages d’accueil. Pour tester l’identité, vous devez ajouter [ `[Authorize]` ](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) à la page de la confidentialité.
 
-[!code-csharp[](identity/sample/src/ASPNETv2.1-IdentityDemo/About.cshtml.cs)]
+[!code-csharp[](identity/sample/WebApp1/Pages/Privacy.cshtml.cs?highlight=6)]
 
-Si vous êtes connecté, déconnectez-vous. Exécutez l’application et sélectionnez le **sur** lien. Vous êtes redirigé vers la page de connexion.
+Si vous êtes connecté, déconnectez-vous. Exécutez l’application et sélectionnez le **confidentialité** lien. Vous êtes redirigé vers la page de connexion.
 
 ::: moniker range=">= aspnetcore-2.1"
 
