@@ -113,31 +113,35 @@ DocFX nécessite :
 ### <a name="windows-instructions"></a>Instructions pour Windows
 
 * Téléchargez et décompressez *docfx.zip* à partir des [versions DocFX](https://github.com/dotnet/docfx/releases).
-* Ajoutez DocFX à votre chemin d’accès.
-* Dans une fenêtre de ligne de commande, accédez au dossier approprié qui contient le fichier *docfx.json* (*aspnet* pour du contenu ASP.NET ou *aspnetcore* pour du contenu ASP.NET Core) et exécutez la commande suivante :
+* Ajoutez DocFX à votre chemin (PATH).
+* Dans un shell de commande, accédez au dossier qui contient le fichier *docfx.json* (*aspnet* pour du contenu ASP.NET ou *aspnetcore* pour du contenu ASP.NET Core) et exécutez la commande suivante :
 
-  ```
+  ```console
   docfx --serve
   ```
-    
-* Dans un navigateur, accédez à `http://localhost:8080`.
+* Dans un navigateur, accédez à `http://localhost:8080/group1-dest/`.
 
 ### <a name="mono-instructions"></a>Instructions pour Mono
 
 * Installez Mono via Homebrew :
 
-  ```
+  ```console
   brew install mono
   ```
 * Téléchargez la [dernière version de DocFX](https://github.com/dotnet/docfx/releases).
 * Extrayez l’archive dans *$HOME/bin/docfx*.
 * Créez une paire d’alias pour **docfx** dans un interpréteur de commandes bash. Le premier alias est utilisé pour générer la documentation. Le deuxième alias est utilisé pour générer et diffuser la documentation.
 
-  ```
+  ```console
   alias docfx='mono $HOME/bin/docfx/docfx.exe'
   alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
-* Exécutez `docfx` à partir de la racine du référentiel pour générer le site. Exécutez `docfx-serve` pour voir le site sur `http://localhost:8080`.
+* Dans un shell de commande, accédez au dossier qui contient le fichier *docfx.json* (*aspnet* pour du contenu ASP.NET ou *aspnetcore* pour du contenu ASP.NET Core) et exécutez la commande suivante pour créer et diffuser les documents via son alias :
+
+  ```console
+  docfx-serve
+  ```
+* Dans un navigateur, accédez à `http://localhost:8080/group1-dest/`.
 
 ## <a name="voice-and-tone"></a>Style et ton
 

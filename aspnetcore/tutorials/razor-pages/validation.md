@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 87171beb7c214b1370d4d4144a79cb6d2c56098f
-ms.sourcegitcommit: 9bb58d7c8dad4bbd03419bcc183d027667fefa20
+ms.openlocfilehash: 99b1073fe025ee8693d9fe833402d245f78a603d
+ms.sourcegitcommit: e7276930515216338a33c4a03c0d7a87fc718ffe
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52862367"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293505"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>Ajouter une validation à une page Razor ASP.NET Core
 
@@ -140,9 +140,9 @@ La rubrique [Bien démarrer avec Razor Pages et Entity Framework Core](xref:data
 
 ### <a name="publish-to-azure"></a>Publier sur Azure
 
-Pour plus d’informations sur le déploiement sur Azure, consultez [Tutoriel : Créer une application ASP.NET dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Ces instructions s’appliquent à une application ASP.NET, pas à une application ASP.NET Core, mais les étapes sont les mêmes.
+Pour plus d’informations sur le déploiement vers Azure, consultez [Didacticiel : Créer une application ASP.NET dans Azure avec SQL Database](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase). Ces instructions s’appliquent à une application ASP.NET, pas à une application ASP.NET Core, mais les étapes sont les mêmes.
 
-Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Votre avis nous intéresse. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
+Nous vous remercions d’avoir effectué cette introduction aux pages Razor. Pour compléter ce tutoriel, vous pouvez consulter [Bien démarrer avec Razor Pages et EF Core](xref:data/ef-rp/intro).
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
