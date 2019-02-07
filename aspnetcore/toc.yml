@@ -10,7 +10,7 @@ items:
   - name: Comparer .NET Core avec le .NET Framework
     href: /dotnet/standard/choosing-core-framework-server
 - uid: getting-started
-  name: Prise en main
+  name: Bien démarrer
 - name: Nouveautés
   items:
   - uid: aspnetcore-2.2
@@ -98,7 +98,7 @@ items:
       - uid: tutorials/razor-pages/index
         name: Vue d'ensemble
       - uid: tutorials/razor-pages/razor-pages-start
-        name: Prise en main
+        name: Bien démarrer
       - uid: tutorials/razor-pages/model
         name: Ajouter un modèle
       - uid: tutorials/razor-pages/page
@@ -131,7 +131,7 @@ items:
       name: Didacticiel
       items:
       - uid: tutorials/first-mvc-app/start-mvc
-        name: Prise en main
+        name: Bien démarrer
       - uid: tutorials/first-mvc-app/adding-controller
         name: Ajouter un contrôleur
       - uid: tutorials/first-mvc-app/adding-view
@@ -151,7 +151,7 @@ items:
       - uid: tutorials/first-mvc-app/details
         name: Examiner les méthodes Details et Delete
     - uid: mvc/views/overview
-      name: Affichages
+      name: Vues
     - uid: mvc/views/partial
       name: Vues partielles
     - uid: mvc/controllers/actions
@@ -196,7 +196,7 @@ items:
         name: Image
       - name: Entrée
         href: mvc/views/working-with-forms.md#the-input-tag-helper
-      - name: Etiquette
+      - name: Étiquette 
         href: mvc/views/working-with-forms.md#the-label-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
         name: Partial
@@ -209,7 +209,7 @@ items:
       - name: Résumé de validation
         href: mvc/views/working-with-forms.md#the-validation-summary-tag-helper
   - uid: mvc/views/layout
-    name: Mise en page
+    name: Disposition
   - uid: fundamentals/static-files
     name: Fichiers statiques
   - uid: mvc/models/model-binding
@@ -218,7 +218,7 @@ items:
     name: Validation du modèle
   - uid: mvc/views/razor
     name: Syntaxe Razor
-  - name: Avancé
+  - name: Options avancées
     items:
     - uid: mvc/views/view-components
       name: Composants de vue
@@ -323,7 +323,7 @@ items:
   - uid: signalr/messagepackhubprotocol
     name: Protocole MessagePack Hub
   - uid: signalr/streaming
-    name: Diffusion en continu
+    name: Streaming
   - uid: signalr/version-differences
     name: Comparer SignalR avec SignalR Core
   - uid: fundamentals/websockets
@@ -359,7 +359,7 @@ items:
       - uid: data/ef-rp/index
         name: Vue d'ensemble
       - uid: data/ef-rp/intro
-        name: Prise en main
+        name: Bien démarrer
       - uid: data/ef-rp/crud
         name: Créer, lire, mettre à jour et supprimer
       - uid: data/ef-rp/sort-filter-page
@@ -383,7 +383,7 @@ items:
       - uid: data/ef-mvc/index
         name: Vue d'ensemble
       - uid: data/ef-mvc/intro
-        name: Prise en main
+        name: Bien démarrer
       - uid: data/ef-mvc/crud
         name: Créer, lire, mettre à jour et supprimer
       - uid: data/ef-mvc/sort-filter-page
@@ -445,8 +445,8 @@ items:
     - uid: razor-components/faq
       name: FAQ
     - uid: razor-components/get-started
-      name: Prise en main
-    - uid: tutorials/first-blazor-app
+      name: Bien démarrer
+    - uid: tutorials/first-razor-components-app
       name: Créer votre première application
     - uid: razor-components/components
       name: Composants
@@ -786,7 +786,7 @@ items:
     name: Vue d'ensemble
   - uid: fundamentals/portable-object-localization
     name: Localisation d’objet portable
-- name: Avancé
+- name: Options avancées
   items:
   - uid: fundamentals/url-rewriting
     name: Réécriture d’URL
@@ -812,11 +812,10 @@ items:
     name: Journalisation avec LoggerMessage
   - uid: tutorials/dotnet-watch
     name: Utiliser un observateur de fichier
-    items:
-    - uid: fundamentals/middleware/extensibility
-      name: Intergiciel (middleware) basé sur une fabrique
-    - uid: fundamentals/middleware/extensibility-third-party-container
-      name: Intergiciel (middleware) basé sur une fabrique avec un conteneur tiers
+  - uid: fundamentals/middleware/extensibility
+    name: Intergiciel (middleware) basé sur une fabrique
+  - uid: fundamentals/middleware/extensibility-third-party-container
+    name: Intergiciel (middleware) basé sur une fabrique avec un conteneur tiers
 - name: Migration
   items:
   - uid: migration/22-to-30
@@ -855,9 +854,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.1
 - name: Collaboration
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 4cd0cebdaa4e9821ce0e176be61d304f3a876d7e
-ms.sourcegitcommit: 98e9c7187772d4ddefe6d8e85d0d206749dbd2ef
+ms.openlocfilehash: ebe88d54a391dfe44e6fda02028f9103fceb2ef8
+ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55737666"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55854365"
