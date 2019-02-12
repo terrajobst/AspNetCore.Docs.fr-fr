@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le fournisseur de Configuration de coff
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 02/08/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: d255321f6083747ce9b452e1efd4da5bc015bf64
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: f70389c86420d81e284ecc863ac8386f726ed2cf
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854430"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103109"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de Configuration d’Azure Key Vault dans ASP.NET Core
 
@@ -271,8 +271,8 @@ var cert = store.Certificates
         config["CertificateThumbprint"], false);
 
 config.AddAzureKeyVault(
-    builtConfig["Vault"],
-    builtConfig["ClientId"],
+    builtConfig["KeyVaultName"],
+    builtConfig["AzureADApplicationId"],
     cert.OfType<X509Certificate2>().Single(),
     new EnvironmentSecretManager(context.HostingEnvironment.ApplicationName));
 
@@ -342,8 +342,8 @@ Lorsque l’application ne parvient pas à charger la configuration de l’utili
 * L’application n’est pas autorisée à accéder au coffre de clés.
 * La stratégie d’accès n’inclut pas les autorisations `Get` et `List`.
 * Dans le coffre de clés, les données de configuration (paire nom-valeur) sont manquantes, désactivées, expirées ou incorrectement nommées.
-* L’application a le nom de coffre de clés incorrect (`Vault`), Id d’application Azure AD (`ClientId`), ou la clé Azure AD (`ClientSecret`).
-* La clé d’Azure AD (`ClientSecret`) a expiré.
+* L’application a le nom de coffre de clés incorrect (`KeyVaultName`), Id d’Application Azure AD (`AzureADApplicationId`), ou mot de passe Azure AD (clé secrète Client) (`AzureADPassword`).
+* Le mot de passe Azure AD (clé secrète Client) (`AzureADPassword`) a expiré.
 * La clé de configuration (nom) est incorrecte dans l’application pour la valeur que vous tentez de charger.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
