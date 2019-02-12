@@ -10,7 +10,7 @@ items:
   - name: Comparer .NET Core avec le .NET Framework
     href: /dotnet/standard/choosing-core-framework-server
 - uid: getting-started
-  name: Bien démarrer
+  name: Prise en main
 - name: Nouveautés
   items:
   - uid: aspnetcore-2.2
@@ -98,7 +98,7 @@ items:
       - uid: tutorials/razor-pages/index
         name: Vue d'ensemble
       - uid: tutorials/razor-pages/razor-pages-start
-        name: Bien démarrer
+        name: Prise en main
       - uid: tutorials/razor-pages/model
         name: Ajouter un modèle
       - uid: tutorials/razor-pages/page
@@ -131,7 +131,7 @@ items:
       name: Didacticiel
       items:
       - uid: tutorials/first-mvc-app/start-mvc
-        name: Bien démarrer
+        name: Prise en main
       - uid: tutorials/first-mvc-app/adding-controller
         name: Ajouter un contrôleur
       - uid: tutorials/first-mvc-app/adding-view
@@ -151,7 +151,7 @@ items:
       - uid: tutorials/first-mvc-app/details
         name: Examiner les méthodes Details et Delete
     - uid: mvc/views/overview
-      name: Vues
+      name: Affichages
     - uid: mvc/views/partial
       name: Vues partielles
     - uid: mvc/controllers/actions
@@ -196,7 +196,7 @@ items:
         name: Image
       - name: Entrée
         href: mvc/views/working-with-forms.md#the-input-tag-helper
-      - name: Étiquette 
+      - name: Etiquette
         href: mvc/views/working-with-forms.md#the-label-tag-helper
       - uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
         name: Partial
@@ -209,7 +209,7 @@ items:
       - name: Résumé de validation
         href: mvc/views/working-with-forms.md#the-validation-summary-tag-helper
   - uid: mvc/views/layout
-    name: Disposition
+    name: Mise en page
   - uid: fundamentals/static-files
     name: Fichiers statiques
   - uid: mvc/models/model-binding
@@ -218,7 +218,7 @@ items:
     name: Validation du modèle
   - uid: mvc/views/razor
     name: Syntaxe Razor
-  - name: Options avancées
+  - name: Avancé
     items:
     - uid: mvc/views/view-components
       name: Composants de vue
@@ -323,7 +323,7 @@ items:
   - uid: signalr/messagepackhubprotocol
     name: Protocole MessagePack Hub
   - uid: signalr/streaming
-    name: Streaming
+    name: Diffusion en continu
   - uid: signalr/version-differences
     name: Comparer SignalR avec SignalR Core
   - uid: fundamentals/websockets
@@ -359,7 +359,7 @@ items:
       - uid: data/ef-rp/index
         name: Vue d'ensemble
       - uid: data/ef-rp/intro
-        name: Bien démarrer
+        name: Prise en main
       - uid: data/ef-rp/crud
         name: Créer, lire, mettre à jour et supprimer
       - uid: data/ef-rp/sort-filter-page
@@ -383,7 +383,7 @@ items:
       - uid: data/ef-mvc/index
         name: Vue d'ensemble
       - uid: data/ef-mvc/intro
-        name: Bien démarrer
+        name: Prise en main
       - uid: data/ef-mvc/crud
         name: Créer, lire, mettre à jour et supprimer
       - uid: data/ef-mvc/sort-filter-page
@@ -442,10 +442,8 @@ items:
     items:
     - uid: razor-components/index
       name: Vue d'ensemble
-    - uid: razor-components/faq
-      name: FAQ
     - uid: razor-components/get-started
-      name: Bien démarrer
+      name: Prise en main
     - uid: tutorials/first-razor-components-app
       name: Créer votre première application
     - uid: razor-components/components
@@ -786,7 +784,7 @@ items:
     name: Vue d'ensemble
   - uid: fundamentals/portable-object-localization
     name: Localisation d’objet portable
-- name: Options avancées
+- name: Avancé
   items:
   - uid: fundamentals/url-rewriting
     name: Réécriture d’URL
@@ -851,12 +849,12 @@ items:
   - uid: migration/logging-nonaspnetcore
     name: Journalisation (hors ASP.NET Core)
 - name: Informations de référence sur les API
-  href: /dotnet/api/?view=aspnetcore-2.1
+  href: /dotnet/api/?view=aspnetcore-2.2
 - name: Collaboration
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: ebe88d54a391dfe44e6fda02028f9103fceb2ef8
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: 202bb46df6692e84e8abcefbd333abf3a3fafb7f
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854365"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103135"
