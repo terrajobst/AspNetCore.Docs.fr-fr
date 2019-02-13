@@ -5,18 +5,18 @@ description: En savoir plus sur la gestion de clés de Protection des données e
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: beff17dd81143db02a0cbc79fa7cb3a6a4deeda6
-ms.sourcegitcommit: 3ca527f27c88cfc9d04688db5499e372fbc2c775
+ms.openlocfilehash: 2f022a4c7519485fe629ce47c27d214c8c27d5bc
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39095097"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159209"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>Gestion de clés de Protection des données et la durée de vie dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-## <a name="key-management"></a>Gestion de clés
+## <a name="key-management"></a>Gestion des clés
 
 L’application tente de détecter de son environnement d’exploitation et de gérer la configuration de la clé sur son propre.
 
@@ -26,6 +26,13 @@ L’application tente de détecter de son environnement d’exploitation et de g
    * Les emplacements de déploiement distincts, tels que Préproduction et Production, ne partagent pas de porte-clés. Lorsque vous échangez entre les emplacements de déploiement, par exemple le remplacement en Production ou à l’aide d’un des tests / B, n’importe quelle application à l’aide de la Protection des données sera en mesure de déchiffrer les données stockées à l’aide de l’anneau de clé à l’intérieur du slot précédent. Cela conduit à des utilisateurs consignés en dehors d’une application qui utilise l’authentification de cookie standard ASP.NET Core, car elle utilise la Protection des données pour protéger ses cookies. Si vous le souhaitez anneaux de clé indépendante de l’emplacement, utiliser un fournisseur de porte-clés externe, telles que le stockage Blob Azure, Azure Key Vault, un magasin SQL, ou du cache Redis.
 
 1. Si le profil utilisateur est disponible, les clés sont conservés dans le *%LOCALAPPDATA%\ASP.NET\DataProtection-Keys* dossier. Si le système d’exploitation est Windows, les clés sont chiffrées au repos à l’aide de DPAPI.
+
+   L’[attribut setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) du pool d’applications doit également être activé. La valeur par défaut de `setProfileEnvironment` est `true`. Dans certains scénarios (par exemple pour le système d’exploitation Windows), `setProfileEnvironment` est défini sur `false`. Si les clés ne sont pas stockées dans le répertoire de profil utilisateur comme prévu :
+
+   1. Accédez au dossier *%windir%/system32/inetsrv/config*.
+   1. Ouvrez le fichier *applicationHost.config*.
+   1. Recherchez l’élément `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>` .
+   1. Confirmez que l’attribut `setProfileEnvironment` n’est pas présent, ce qui implique que la valeur par défaut est `true`, ou définissez de manière explicite la valeur de l’attribut sur `true`.
 
 1. Si l’application est hébergée dans IIS, les clés sont conservées dans le Registre HKLM dans une clé de Registre spéciale est tiennent uniquement pour le compte de processus de travail. Les clés sont chiffrées au repos à l’aide de DPAPI.
 
