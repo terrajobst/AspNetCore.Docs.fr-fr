@@ -416,28 +416,6 @@ items:
       href: /azure/vs-storage-aspnet5-getting-started-tables/
 - name: Développement côté client
   items:
-  - uid: client-side/index
-    name: Vue d'ensemble
-  - uid: client-side/using-gulp
-    name: Gulp
-  - uid: client-side/using-grunt
-    name: Grunt
-  - name: LibMan
-    items:
-    - uid: client-side/libman/index
-      name: Vue d'ensemble
-    - uid: client-side/libman/libman-cli
-      name: CLI
-    - uid: client-side/libman/libman-vs
-      name: Visual Studio
-  - uid: client-side/bower
-    name: Bower
-  - uid: client-side/less-sass-fa
-    name: LESS, Sass et Font Awesome
-  - uid: client-side/bundling-and-minification
-    name: Concaténer et minifier
-  - uid: client-side/using-browserlink
-    name: Lien du navigateur
   - name: Composants Razor
     items:
     - uid: razor-components/index
@@ -470,8 +448,36 @@ items:
         name: Configurer l'éditeur de liens
   - name: Applications monopages
     items:
-    - uid: spa/index
-      name: Vue d'ensemble
+    - name: Blazor
+      items:
+      - uid: spa/blazor/index
+        name: Vue d'ensemble
+      - uid: spa/blazor/get-started
+        name: Prise en main
+      - uid: tutorials/first-razor-components-app
+        name: Créer votre première application
+      - uid: razor-components/components
+        name: Composants
+      - uid: razor-components/class-libraries
+        name: Bibliothèques de composants
+      - uid: razor-components/layouts
+        name: Dispositions
+      - uid: razor-components/dependency-injection
+        name: Injection de dépendances
+      - uid: razor-components/routing
+        name: Routage
+      - uid: razor-components/javascript-interop
+        name: Interopérabilité de JavaScript
+      - uid: razor-components/debug
+        name: Débogage
+      - uid: razor-components/hosting-models
+        name: Modèles d'hébergement
+      - name: Héberger et déployer
+        items:
+        - uid: host-and-deploy/razor-components/index
+          name: Vue d'ensemble
+        - uid: host-and-deploy/razor-components/configure-linker
+          name: Configurer l'éditeur de liens
     - uid: spa/angular
       name: Angular
     - uid: spa/react
@@ -480,6 +486,26 @@ items:
       name: React avec Redux
     - uid: client-side/spa-services
       name: JavaScriptServices
+  - name: LibMan
+    items:
+    - uid: client-side/libman/index
+      name: Vue d'ensemble
+    - uid: client-side/libman/libman-cli
+      name: CLI
+    - uid: client-side/libman/libman-vs
+      name: Visual Studio
+  - uid: client-side/using-gulp
+    name: Gulp
+  - uid: client-side/using-grunt
+    name: Grunt
+  - uid: client-side/bower
+    name: Bower
+  - uid: client-side/less-sass-fa
+    name: LESS, Sass et Font Awesome
+  - uid: client-side/bundling-and-minification
+    name: Concaténer et minifier
+  - uid: client-side/using-browserlink
+    name: Lien du navigateur
 - name: Hébergement et déploiement
   items:
   - uid: host-and-deploy/index
@@ -852,9 +878,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Collaboration
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: 202bb46df6692e84e8abcefbd333abf3a3fafb7f
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 7c9baf2a9e3a800ff9abfcb757ffde039d49a9a4
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103135"
+ms.locfileid: "56159540"

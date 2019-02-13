@@ -1,0 +1,113 @@
+---
+title: Introduction à Blazor
+author: guardrex
+description: Explorez ASP.NET Core Blazor, une nouvelle méthode pour créer des applications interactives côté client à l’aide de .NET s’exécutant dans le navigateur avec WebAssembly.
+monikerRange: '>= aspnetcore-3.0'
+ms.author: riande
+ms.custom: mvc
+ms.date: 02/11/2019
+uid: spa/blazor/index
+ms.openlocfilehash: 0d22365701a4fc1857582c13459280e50d59c858
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159581"
+---
+# <a name="introduction-to-blazor"></a><span data-ttu-id="96498-103">Introduction à Blazor</span><span class="sxs-lookup"><span data-stu-id="96498-103">Introduction to Blazor</span></span>
+
+<span data-ttu-id="96498-104">Par [Daniel Roth](https://github.com/danroth27) et [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="96498-104">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
+
+[!INCLUDE[](~/includes/razor-components-preview-notice.md)]
+
+<span data-ttu-id="96498-105">Blazor est une infrastructure d’application monopage pour la création d’applications web interactives côté client avec .NET.</span><span class="sxs-lookup"><span data-stu-id="96498-105">Blazor is a single-page app framework for building interactive client-side Web apps with .NET.</span></span> <span data-ttu-id="96498-106">Blazor utilise les normes Web ouvertes sans plug-ins ou transpilation de code.</span><span class="sxs-lookup"><span data-stu-id="96498-106">Blazor uses open web standards without plugins or code transpilation.</span></span> <span data-ttu-id="96498-107">Blazor fonctionne dans tous les navigateurs web modernes, notamment les navigateurs mobiles.</span><span class="sxs-lookup"><span data-stu-id="96498-107">Blazor works in all modern web browsers, including mobile browsers.</span></span>
+
+<span data-ttu-id="96498-108">L’utilisation de .NET dans le navigateur pour le développement web côté client offre de nombreux avantages :</span><span class="sxs-lookup"><span data-stu-id="96498-108">Using .NET in the browser for client-side web development offers many advantages:</span></span>
+
+* <span data-ttu-id="96498-109">**Langage C#** : Écriture de code dans C# plutôt que dans JavaScript.</span><span class="sxs-lookup"><span data-stu-id="96498-109">**C# language**: Write code in C# instead of JavaScript.</span></span>
+* <span data-ttu-id="96498-110">**Écosystème .NET** : Tirez parti de l’écosystème existant des bibliothèques .NET.</span><span class="sxs-lookup"><span data-stu-id="96498-110">**.NET Ecosystem**: Leverage the existing ecosystem of .NET libraries.</span></span>
+* <span data-ttu-id="96498-111">**Développement de l’empilement complet** : Partager la logique côté client et côté serveur.</span><span class="sxs-lookup"><span data-stu-id="96498-111">**Full-stack development**: Share server and client-side logic.</span></span>
+* <span data-ttu-id="96498-112">**Vitesse et extensibilité** : NET a été conçu pour la performance, la fiabilité et la sécurité.</span><span class="sxs-lookup"><span data-stu-id="96498-112">**Speed and scalability**: NET was built for performance, reliability, and security.</span></span>
+* <span data-ttu-id="96498-113">**Outils de pointe** : Restez productif grâce à Visual Studio sur Windows, Linux et macOS.</span><span class="sxs-lookup"><span data-stu-id="96498-113">**Industry-leading tools**: Stay productive with Visual Studio on Windows, Linux, and macOS.</span></span>
+* <span data-ttu-id="96498-114">**Stabilité et cohérence** :  Conçu sur un ensemble de langages, d’infrastructures et des outils stables, aux caractéristiques riches et faciles d’utilisation.</span><span class="sxs-lookup"><span data-stu-id="96498-114">**Stability and consistency**:  Build on a commonset of languages, frameworks, and tools that are stable, feature-rich, and easy to use.</span></span>
+
+<span data-ttu-id="96498-115">L’exécution de code .NET à l’intérieur des navigateurs web est rendue possible grâce à [WebAssembly](http://webassembly.org) (abrégé en *wasm*).</span><span class="sxs-lookup"><span data-stu-id="96498-115">Running .NET code inside web browsers is made possible by [WebAssembly](http://webassembly.org) (abbreviated *wasm*).</span></span> <span data-ttu-id="96498-116">WebAssembly est un standard web ouvert pris en charge dans les navigateurs web sans plug-in.</span><span class="sxs-lookup"><span data-stu-id="96498-116">WebAssembly is an open web standard and supported in web browsers without plugins.</span></span> <span data-ttu-id="96498-117">WebAssembly est un format bytecode compact optimisé pour un téléchargement rapide et une vitesse d’exécution maximale.</span><span class="sxs-lookup"><span data-stu-id="96498-117">WebAssembly is a compact bytecode format optimized for fast download and maximum execution speed.</span></span>
+
+<span data-ttu-id="96498-118">Le code WebAssembly peut accéder à toutes les fonctionnalités du navigateur par le biais de l’interopérabilité JavaScript.</span><span class="sxs-lookup"><span data-stu-id="96498-118">WebAssembly code can access the full functionality of the browser via JavaScript interop.</span></span> <span data-ttu-id="96498-119">Parallèlement, le code .NET exécuté via WebAssembly s’exécute dans le même bac à sable approuvé JavaScript, afin de prévenir toute action malveillante sur l’ordinateur client.</span><span class="sxs-lookup"><span data-stu-id="96498-119">At the same time, .NET code executed via WebAssembly runs in the same trusted sandbox as JavaScript to prevent malicious actions on the client machine.</span></span>
+
+![Blazor exécute le code .NET dans le navigateur avec WebAssembly.](index/_static/blazor.png)
+
+<span data-ttu-id="96498-121">Quand une application Blazor est créée et s’exécute dans un navigateur :</span><span class="sxs-lookup"><span data-stu-id="96498-121">When a Blazor app is built and run in a browser:</span></span>
+
+* <span data-ttu-id="96498-122">Les fichiers de code C# et les fichiers Razor sont compilés dans des assemblys .NET.</span><span class="sxs-lookup"><span data-stu-id="96498-122">C# code files and Razor files are compiled into .NET assemblies.</span></span>
+* <span data-ttu-id="96498-123">Les assemblys et le runtime .NET sont téléchargés dans le navigateur.</span><span class="sxs-lookup"><span data-stu-id="96498-123">The assemblies and the .NET runtime are downloaded to the browser.</span></span>
+* <span data-ttu-id="96498-124">Blazor démarre le runtime .NET et le configure pour charger les assemblys de l’application.</span><span class="sxs-lookup"><span data-stu-id="96498-124">Blazor bootstraps the .NET runtime and configures the runtime to load the assemblies for the app.</span></span> <span data-ttu-id="96498-125">La manipulation du modèle DOM et les appels d’API de navigateur sont gérés par le runtime Blazor par le biais de l’interopérabilité JavaScript.</span><span class="sxs-lookup"><span data-stu-id="96498-125">Document Object Model (DOM) manipulation and browser API calls are handled by the Blazor runtime via JavaScript interop.</span></span>
+
+<span data-ttu-id="96498-126">Blazor prend en charge les principales installations que nécessitent la plupart des applications, y compris :</span><span class="sxs-lookup"><span data-stu-id="96498-126">Blazor supports core facilities required by most apps, including:</span></span>
+
+* <span data-ttu-id="96498-127">Paramètres</span><span class="sxs-lookup"><span data-stu-id="96498-127">Parameters</span></span>
+* <span data-ttu-id="96498-128">Gestion des événements</span><span class="sxs-lookup"><span data-stu-id="96498-128">Event handling</span></span>
+* <span data-ttu-id="96498-129">Liaison de données</span><span class="sxs-lookup"><span data-stu-id="96498-129">Data binding</span></span>
+* <span data-ttu-id="96498-130">Routage</span><span class="sxs-lookup"><span data-stu-id="96498-130">Routing</span></span>
+* <span data-ttu-id="96498-131">Injection de dépendances</span><span class="sxs-lookup"><span data-stu-id="96498-131">Dependency injection</span></span>
+* <span data-ttu-id="96498-132">Dispositions</span><span class="sxs-lookup"><span data-stu-id="96498-132">Layouts</span></span>
+* <span data-ttu-id="96498-133">Création de modèles</span><span class="sxs-lookup"><span data-stu-id="96498-133">Templating</span></span>
+* <span data-ttu-id="96498-134">Valeurs en cascade</span><span class="sxs-lookup"><span data-stu-id="96498-134">Cascading values</span></span>
+
+<span data-ttu-id="96498-135">Pour réduire la taille du code inutilisé extrait de l’application téléchargée lorsqu’elle est publiée par l’[éditeur de liens de langage intermédiaire (IL)](xref:host-and-deploy/razor-components/configure-linker).</span><span class="sxs-lookup"><span data-stu-id="96498-135">To reduce the size of the downloaded app unused code stripped out of the app when it's published by the [Intermediate Language (IL) Linker](xref:host-and-deploy/razor-components/configure-linker).</span></span>
+
+<span data-ttu-id="96498-136">Blazor est le modèle d’hébergement côté client pour Razor Components.</span><span class="sxs-lookup"><span data-stu-id="96498-136">Blazor is the client-side hosting model for Razor Components.</span></span> <span data-ttu-id="96498-137">Étant donné que Razor Components sépare la logique de rendu d’un composant de la façon dont les mises à jour des interfaces utilisateurs sont appliquées, vous disposez d’une flexibilité dans la manière dont Razor Components peut être hébergé.</span><span class="sxs-lookup"><span data-stu-id="96498-137">Because Razor Components decouple a component's rendering logic from how UI updates are applied, there's flexibility in how Razor Components can be hosted.</span></span> <span data-ttu-id="96498-138">Utilisez ASP.NET Core Razor Components pour héberger Razor Components sur le serveur dans une application ASP.NET Core où les mises à jour de l’interface utilisateur sont gérées par le biais d’une connexion SignalR.</span><span class="sxs-lookup"><span data-stu-id="96498-138">Use ASP.NET Core Razor Components to host Razor Components on the server in an ASP.NET Core app where UI updates are handled over a SignalR connection.</span></span> <span data-ttu-id="96498-139">Pour plus d'informations, consultez <xref:razor-components/hosting-models#server-side-hosting-model>.</span><span class="sxs-lookup"><span data-stu-id="96498-139">For more information, see <xref:razor-components/hosting-models#server-side-hosting-model>.</span></span> 
+
+## <a name="components"></a><span data-ttu-id="96498-140">Composants</span><span class="sxs-lookup"><span data-stu-id="96498-140">Components</span></span>
+
+<span data-ttu-id="96498-141">Un *composant Razor* est un élément d’interface utilisateur, comme une page, une boîte de dialogue ou un formulaire de saisie de données.</span><span class="sxs-lookup"><span data-stu-id="96498-141">A *Razor Component* is a piece of UI, such as a page, dialog, or data entry form.</span></span> <span data-ttu-id="96498-142">Les composants gèrent les événements de l’utilisateur et définissent une logique de rendu de l’interface utilisateur flexible.</span><span class="sxs-lookup"><span data-stu-id="96498-142">Components handle user events and define flexible UI rendering logic.</span></span> <span data-ttu-id="96498-143">Les composants peuvent être imbriqués et réutilisés.</span><span class="sxs-lookup"><span data-stu-id="96498-143">Components can be nested and reused.</span></span>
+
+<span data-ttu-id="96498-144">Les composants sont des classes .NET intégrées dans des assemblys .NET pouvant être partagées et distribuées comme packages NuGet.</span><span class="sxs-lookup"><span data-stu-id="96498-144">Components are .NET classes built into .NET assemblies that can be shared and distributed as NuGet packages.</span></span> <span data-ttu-id="96498-145">La classe peut être écrite sous la forme d’une page de balisage Razor (*.cshtml*), ou en tant que classe C# (*.cs*).</span><span class="sxs-lookup"><span data-stu-id="96498-145">The class can either be written in the form of a Razor markup page (*.cshtml*) or as a C# class (*.cs*).</span></span>
+
+<span data-ttu-id="96498-146">[Razor](xref:mvc/views/razor) est une syntaxe pour la combinaison de balisage HTML et de code C#.</span><span class="sxs-lookup"><span data-stu-id="96498-146">[Razor](xref:mvc/views/razor) is a syntax for combining HTML markup with C# code.</span></span> <span data-ttu-id="96498-147">Razor accroît la productivité des développeurs en leur permettant de basculer entre le balisage et le code C# dans le même fichier avec prise en charge d’[IntelliSense](/visualstudio/ide/using-intellisense).</span><span class="sxs-lookup"><span data-stu-id="96498-147">Razor is designed for developer productivity, allowing the developer to switch between markup and C# in the same file with [IntelliSense](/visualstudio/ide/using-intellisense) support.</span></span> <span data-ttu-id="96498-148">Razor Pages et les vues MVC utilisent également Razor.</span><span class="sxs-lookup"><span data-stu-id="96498-148">Razor Pages and MVC views also use Razor.</span></span> <span data-ttu-id="96498-149">Contrairement à Razor Pages et aux vues MVC, qui reposent sur un modèle requête/réponse, les composants sont utilisés spécifiquement pour gérer la composition de l’interface utilisateur.</span><span class="sxs-lookup"><span data-stu-id="96498-149">Unlike Razor Pages and MVC views, which are built around a request/response model, components are used specifically for handling UI composition.</span></span> <span data-ttu-id="96498-150">Razor Components peut être utilisé spécifiquement pour la composition et la logique d’interface utilisateur côté client.</span><span class="sxs-lookup"><span data-stu-id="96498-150">Razor Components can be used specifically for client-side UI logic and composition.</span></span>
+
+<span data-ttu-id="96498-151">Le balisage suivant est un exemple de composant de boîte de dialogue personnalisée dans un fichier Razor (*DialogComponent.cshtml*) :</span><span class="sxs-lookup"><span data-stu-id="96498-151">The following markup is an example of a custom dialog component in a Razor file (*DialogComponent.cshtml*):</span></span>
+
+```cshtml
+<div>
+    <h2>@Title</h2>
+    @BodyContent
+    <button onclick=@OnOK>OK</button>
+</div>
+
+@functions {
+    public string Title { get; set; }
+    public RenderFragment BodyContent { get; set; }
+    public Action OnOK { get; set; }
+}
+```
+
+<span data-ttu-id="96498-152">Quand ce composant est utilisé ailleurs dans l’application, IntelliSense accélère le développement avec la complétion de syntaxe et de paramètres.</span><span class="sxs-lookup"><span data-stu-id="96498-152">When this component is used elsewhere in the app, IntelliSense speeds development with syntax and parameter completion.</span></span>
+
+<span data-ttu-id="96498-153">Les composants s’affichent dans une représentation en mémoire du navigateur DOM appelé *arborescence d’affichage*. Elle peut ensuite être utilisée pour mettre à jour l’interface utilisateur de manière flexible et efficace.</span><span class="sxs-lookup"><span data-stu-id="96498-153">Components render into an in-memory representation of the browser DOM called a *render tree* that can then be used to update the UI in a flexible and efficient way.</span></span>
+
+## <a name="javascript-interop"></a><span data-ttu-id="96498-154">Interopérabilité JavaScript</span><span class="sxs-lookup"><span data-stu-id="96498-154">JavaScript interop</span></span>
+
+<span data-ttu-id="96498-155">Pour les applications qui nécessitent des bibliothèques JavaScript tierces et des API de navigateur, Blazor interagit avec JavaScript.</span><span class="sxs-lookup"><span data-stu-id="96498-155">For apps that require third-party JavaScript libraries and browser APIs, Blazor interoperates with JavaScript.</span></span> <span data-ttu-id="96498-156">Les composants peuvent utiliser les mêmes API ou bibliothèques que JavaScript.</span><span class="sxs-lookup"><span data-stu-id="96498-156">Components are capable of using any library or API that JavaScript is able to use.</span></span> <span data-ttu-id="96498-157">Le code C# peut appeler du code JavaScript, et le code JavaScript peut appeler du code C#.</span><span class="sxs-lookup"><span data-stu-id="96498-157">C# code can call into JavaScript code, and JavaScript code can call into C# code.</span></span> <span data-ttu-id="96498-158">Pour plus d’informations, consultez [Interopérabilité JavaScript](xref:razor-components/javascript-interop).</span><span class="sxs-lookup"><span data-stu-id="96498-158">For more information, see [JavaScript interop](xref:razor-components/javascript-interop).</span></span>
+
+## <a name="code-sharing-and-net-standard"></a><span data-ttu-id="96498-159">Partage de code et .NET Standard</span><span class="sxs-lookup"><span data-stu-id="96498-159">Code sharing and .NET Standard</span></span>
+
+<span data-ttu-id="96498-160">Les applications peuvent référencer et utiliser les bibliothèques [.NET Standard](/dotnet/standard/net-standard) existantes.</span><span class="sxs-lookup"><span data-stu-id="96498-160">Apps can reference and use existing [.NET Standard](/dotnet/standard/net-standard) libraries.</span></span> <span data-ttu-id="96498-161">.NET Standard est une spécification formelle d’API .NET qui sont communes aux implémentations .NET.</span><span class="sxs-lookup"><span data-stu-id="96498-161">.NET Standard is a formal specification of .NET APIs that are common across .NET implementations.</span></span> <span data-ttu-id="96498-162">.NET Standard 2.0 ou ultérieur est pris en charge.</span><span class="sxs-lookup"><span data-stu-id="96498-162">.NET Standard 2.0 or higher is supported.</span></span> <span data-ttu-id="96498-163">Les API qui ne sont pas applicables à l’intérieur d’un navigateur web (par exemple l’accès au système de fichiers, l’ouverture d’un socket, le threading et d’autres fonctionnalités) lèvent <xref:System.PlatformNotSupportedException>.</span><span class="sxs-lookup"><span data-stu-id="96498-163">APIs that aren't applicable inside a web browser (for example, accessing the file system, opening a socket, threading, and other features) throw <xref:System.PlatformNotSupportedException>.</span></span> <span data-ttu-id="96498-164">Les bibliothèques de classes .NET Standard peuvent être partagées entre le code serveur et dans les applications basées sur le navigateur.</span><span class="sxs-lookup"><span data-stu-id="96498-164">.NET Standard class libraries can be shared across server code and in browser-based apps.</span></span>
+
+## <a name="optimization"></a><span data-ttu-id="96498-165">Optimisation</span><span class="sxs-lookup"><span data-stu-id="96498-165">Optimization</span></span>
+
+<span data-ttu-id="96498-166">La taille de la charge utile est un facteur de performance essentiel pour qu’une application soit facile d’utilisation.</span><span class="sxs-lookup"><span data-stu-id="96498-166">Payload size is a critical performance factor for an app's useability.</span></span> <span data-ttu-id="96498-167">Blazor optimise la taille de la charge utile pour réduire les temps de téléchargement :</span><span class="sxs-lookup"><span data-stu-id="96498-167">Blazor optimizes payload size to reduce download times:</span></span>
+
+* <span data-ttu-id="96498-168">Les parties inutilisées des assemblys .NET sont supprimées pendant le processus de création.</span><span class="sxs-lookup"><span data-stu-id="96498-168">Unused parts of .NET assemblies are removed during the build process.</span></span>
+* <span data-ttu-id="96498-169">Réponses HTTP compressées.</span><span class="sxs-lookup"><span data-stu-id="96498-169">HTTP responses are compressed.</span></span>
+* <span data-ttu-id="96498-170">Le runtime .NET et les assemblys sont mis en cache dans le navigateur.</span><span class="sxs-lookup"><span data-stu-id="96498-170">The .NET runtime and assemblies are cached in the browser.</span></span>
+
+<span data-ttu-id="96498-171">[Razor Components côté serveur](xref:razor-components/index) fournit une taille de charge utile encore plus petite que Blazor en conservant les assemblys .NET, l’assembly de l’application et le runtime côté serveur.</span><span class="sxs-lookup"><span data-stu-id="96498-171">[Server-side Razor Components](xref:razor-components/index) provides an even smaller payload size than Blazor by maintaining .NET assemblies, the app's assembly, and the runtime server-side.</span></span> <span data-ttu-id="96498-172">Les applications Razor Components fournissent uniquement les fichiers de balisage et les ressources statiques aux clients.</span><span class="sxs-lookup"><span data-stu-id="96498-172">Razor Components apps only serve markup files and static assets to clients.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="96498-173">Ressources supplémentaires</span><span class="sxs-lookup"><span data-stu-id="96498-173">Additional resources</span></span>
+
+* <xref:razor-components/index>
+* [<span data-ttu-id="96498-174">WebAssembly</span><span class="sxs-lookup"><span data-stu-id="96498-174">WebAssembly</span></span>](http://webassembly.org/)
+* [<span data-ttu-id="96498-175">Guide C#</span><span class="sxs-lookup"><span data-stu-id="96498-175">C# Guide</span></span>](/dotnet/csharp/)
+* <xref:mvc/views/razor>
+* [<span data-ttu-id="96498-176">HTML</span><span class="sxs-lookup"><span data-stu-id="96498-176">HTML</span></span>](https://www.w3.org/html/)
