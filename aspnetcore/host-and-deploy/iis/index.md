@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/29/2019
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 9392da14e589736b24790676c1c07c9964882737
-ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
+ms.openlocfilehash: 9f7fc5571f8d1a6e5e2d84779082abb02d2fb292
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55428458"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56159393"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
 
@@ -313,7 +313,7 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publ
 
 1. Sur le système d’hébergement, créez un dossier pour contenir les fichiers et dossiers publiés de l’application. Une disposition du déploiement de l’application est décrite dans la rubrique [Structure des répertoires](xref:host-and-deploy/directory-structure).
 
-1. Dans **Gestionnaire IIS**, ouvrez le nœud du serveur dans le panneau **Connexions**. Cliquez avec le bouton de droite sur le dossier **Sites**. Sélectionnez **Ajouter un site Web** dans le menu contextuel.
+1. Dans le Gestionnaire IIS, ouvrez le nœud du serveur dans le panneau **Connexions**. Cliquez avec le bouton de droite sur le dossier **Sites**. Sélectionnez **Ajouter un site Web** dans le menu contextuel.
 
 1. Spécifiez le **Nom du site** et définissez le **Chemin physique** sur le dossier de déploiement de l’application. Spécifiez la configuration **Liaison** et créez le site Web en sélectionnant **OK** :
 
@@ -334,7 +334,7 @@ Quand vous déployez des applications sur un serveur avec [Web Deploy](/iis/publ
 
 1. *ASP.NET Core 2.2 ou version ultérieure* : Pour un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) 64 bits (x64) qui utilise le [modèle d’hébergement In-process](xref:fundamentals/servers/index#in-process-hosting-model), désactivez le pool d’applications pour les processus 32 bits (x86).
 
-   Dans la barre latérale **Actions** de **Pools d’applications** du gestionnaire IIS, sélectionnez **Définir les valeurs par défaut du pool d’applications** ou **Paramètres avancés**. Recherchez **Activer les applications 32 bits** et définissez la valeur sur `False`. Ce paramètre n’affecte pas les applications déployées pour l’[hébergement Out-of-process](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
+   Dans la barre latérale **Actions** du gestionnaire IIS > **Pools d’applications**, sélectionnez **Définir les valeurs par défaut du pool d’applications** ou **Paramètres avancés**. Recherchez **Activer les applications 32 bits** et définissez la valeur sur `False`. Ce paramètre n’affecte pas les applications déployées pour l’[hébergement Out-of-process](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model).
 
 1. Vérifiez que l’identité de modèle de processus dispose des autorisations appropriées.
 
@@ -410,7 +410,14 @@ Pour configurer la protection des données sous IIS afin de rendre persistante l
 
 * **Configurer le pool d’applications IIS pour charger le profil utilisateur**
 
-  Ce paramètre se trouve dans la section **Modèle de processus** sous les **Paramètres avancés** du pool d’applications. Définissez Charger le profil utilisateur sur `True`. Cela permet de stocker les clés sous le répertoire du profil utilisateur et de les protéger à l’aide de DPAPI avec une clé propre au compte d’utilisateur utilisé par le pool d’applications.
+  Ce paramètre se trouve dans la section **Modèle de processus** sous les **Paramètres avancés** du pool d’applications. Affectez la valeur `True` à **Charger le profil utilisateur**. Lorsqu’elle est définie sur `True`, les clés sont stockées dans le répertoire du profil utilisateur, protégées à l’aide de DPAPI avec une clé propre au compte d’utilisateur utilisé pour le pool d’applications. Les clés sont persistantes dans le dossier *%LOCALAPPDATA%/ASP.NET/DataProtection-Keys*.
+
+  L’[attribut setProfileEnvironment](/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration) du pool d’applications doit également être activé. La valeur par défaut de `setProfileEnvironment` est `true`. Dans certains scénarios (par exemple pour le système d’exploitation Windows), `setProfileEnvironment` est défini sur `false`. Si les clés ne sont pas stockées dans le répertoire de profil utilisateur comme prévu :
+
+  1. Accédez au dossier *%windir%/system32/inetsrv/config*.
+  1. Ouvrez le fichier *applicationHost.config*.
+  1. Recherchez l’élément `<system.applicationHost><applicationPools><applicationPoolDefaults><processModel>` .
+  1. Confirmez que l’attribut `setProfileEnvironment` n’est pas présent, ce qui implique que la valeur par défaut est `true`, ou définissez de manière explicite la valeur de l’attribut sur `true`.
 
 * **Utiliser le système de fichiers comme magasin de Key Ring**
 

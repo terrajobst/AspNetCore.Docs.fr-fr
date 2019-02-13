@@ -3,14 +3,14 @@ title: Confirmation de compte et de récupération de mot de passe dans ASP.NET 
 author: rick-anderson
 description: Découvrez comment créer une application ASP.NET Core avec la réinitialisation de confirmation et le mot de passe de messagerie.
 ms.author: riande
-ms.date: 7/11/2018
+ms.date: 2/11/2019
 uid: security/authentication/accconfirm
-ms.openlocfilehash: 0dc9907f9f54c8a0daf2e05a3769897e5145935f
-ms.sourcegitcommit: e418cb9cddeb3de06fa0cb4fdb5529da03ff6d63
+ms.openlocfilehash: 77d7b209d57f9ee44f158798ff780ce85c87aaf2
+ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "54444140"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56159406"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>Confirmation de compte et de récupération de mot de passe dans ASP.NET Core
 
@@ -166,7 +166,7 @@ L’implémentation `IEmailSender`, créer *Services/EmailSender.cs* avec un cod
 
 Ajoutez le code suivant à la `ConfigureServices` méthode dans le *Startup.cs* fichier :
 
-* Ajouter `EmailSender` comme un service singleton.
+* Ajouter `EmailSender` comme un service temporaire.
 * Inscrire le `AuthMessageSenderOptions` instance de configuration.
 
 [!code-csharp[](accconfirm/sample/WebPWrecover21/Startup.cs?name=snippet2&highlight=12-99)]
@@ -196,7 +196,7 @@ Exécuter l’application web, et testez le flux de confirmation du compte et de
 * Recherchez le lien de confirmation du compte dans votre messagerie. Consultez [Déboguer la messagerie](#debug) si vous ne recevez pas l’e-mail.
 * Cliquez sur le lien pour confirmer votre adresse de messagerie.
 * Connectez-vous à votre e-mail et un mot de passe.
-* Fermez la session.
+* Se déconnecter.
 
 ### <a name="view-the-manage-page"></a>Afficher la page de gestion
 
@@ -213,7 +213,7 @@ La page de gestion s’affiche avec l'onglet **profil** sélectionné. L'**Email
 * Si vous êtes connecté, sélectionnez **Déconnexion**.
 * Sélectionnez le lien **Connexion** et sélectionnez le lien **Vous avez oublié votre mot de passe ?**.
 * Entrez l’adresse e-mail que vous avez utilisé pour inscrire le compte.
-* Un e-mail avec un lien pour réinitialiser votre mot de passe est envoyé. Vérifier votre adresse e-mail et cliquez sur le lien pour réinitialiser votre mot de passe. Une fois que votre mot de passe a été réinitialisé avec succès, vous pouvez vous connecter avec votre e-mail et votre nouveau mot de passe.
+* Un e-mail avec un lien pour réinitialiser votre mot de passe est envoyé. Vérifier votre adresse e-mail et cliquez sur le lien pour réinitialiser votre mot de passe. Une fois que votre mot de passe a été réinitialisé avec succès, vous pouvez connecter avec votre e-mail et un nouveau mot de passe.
 
 <a name="debug"></a>
 
@@ -246,7 +246,7 @@ Cliquez sur le lien vers un autre service de connexion et acceptez les demandes 
 
 ![Gérer votre vue de logins externes répertoriant Facebook](accconfirm/_static/fb.png)
 
-Les deux comptes ont été combinés. Vous pouvez vous connecter avec l'un ou l'autre compte. Vous pouvez faire en sorte que vos utilisateurs ajoutent des comptes locaux au cas où leur service d’authentification de connexion sociale soit indisponible ou que, plus probablement, ils aient perdu l’accès à leur compte social.
+Les deux comptes ont été combinés. Vous êtes en mesure de vous connecter avec un compte. Vous pouvez faire en sorte que vos utilisateurs ajoutent des comptes locaux au cas où leur service d’authentification de connexion sociale soit indisponible ou que, plus probablement, ils aient perdu l’accès à leur compte social.
 
 ## <a name="enable-account-confirmation-after-a-site-has-users"></a>Activer la confirmation de compte après qu’un site a des utilisateurs
 
