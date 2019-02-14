@@ -5,14 +5,14 @@ description: Découvrez les avantages de la précompilation des fichiers Razor e
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 02/13/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 2720708f8e58fdc55b82bfb56665005170e79934
-ms.sourcegitcommit: d5223cf6a2cf80b4f5dc54169b0e376d493d2d3a
+ms.openlocfilehash: c4e8f722fdf3d3f64807cc35ff9f349af7f32abd
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889754"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248184"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Compilation de fichiers Razor dans ASP.NET Core
 
@@ -98,7 +98,7 @@ Un fichier *<nom_projet>.PrecompiledViews.dll*, contenant les fichiers Razor com
 
 ## <a name="recompile-razor-files-on-change"></a>Recompiler les fichiers Razor en cas de modification
 
-<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> `AllowRecompilingViewsOnFileChange` obtient ou définit une valeur qui détermine si les fichiers Razor (vues Razor et Razor Pages) sont recompilés et mis à jour si les fichiers changent sur le disque.
+<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions> <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> obtient ou définit une valeur qui détermine si les fichiers Razor (vues Razor et Razor Pages) sont recompilés et mis à jour si les fichiers changent sur le disque.
 
 Lorsqu’il est défini sur `true`, [IFileProvider.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) observe si des modifications sont apportées aux fichiers Razor dans les instances <xref:Microsoft.Extensions.FileProviders.IFileProvider> configurées.
 
@@ -107,11 +107,11 @@ La valeur par défaut de `true` pour :
 * Applications ASP.NET Core 2.1 ou versions antérieures.
 * Applications ASP.NET Core 2.2 ou versions ultérieures dans l’environnement de développement.
 
-`AllowRecompilingViewsOnFileChange` est associé à un commutateur de compatibilité et peut fournir un comportement différent selon la version de compatibilité configurée pour l’application. La configuration de l’application en définissant `AllowRecompilingViewsOnFileChange` est prioritaire sur la valeur déduite à partir de la version de compatibilité de l’application.
+<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> est associé à un commutateur de compatibilité et peut fournir un comportement différent selon la version de compatibilité configurée pour l’application. La configuration de l’application en définissant <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> est prioritaire sur la valeur déduite à partir de la version de compatibilité de l’application.
 
-Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> ou une version antérieure, `AllowRecompilingViewsOnFileChange` a la valeur `true` sauf configuration explicite.
+Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> ou une version antérieure, <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> a la valeur `true` sauf configuration explicite.
 
-Si la version de compatibilité de l’application est définie sur `CompatibilityVersion.Version_2_2` ou une version ultérieure, `AllowRecompilingViewsOnFileChange` a la valeur `false`, sauf si l’environnement est de type Développement ou si la valeur est explicitement configurée.
+Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> ou une version ultérieure, <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> a la valeur `false`, sauf si l’environnement est de type Développement ou si la valeur est explicitement configurée.
 
 Pour des conseils et des exemples concernant la définition de la version de compatibilité de l’application, consultez <xref:mvc/compatibility-version>.
 

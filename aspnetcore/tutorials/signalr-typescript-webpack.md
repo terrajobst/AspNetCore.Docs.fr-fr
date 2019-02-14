@@ -4,14 +4,14 @@ author: ssougnez
 description: Dans ce tutoriel, vous configurez Webpack pour regrouper et générer une application web ASP.NET Core SignalR dont le client est écrit en TypeScript.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/30/2018
+ms.date: 02/11/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: 8292ab2e0ad1f5c67ac7f15c280b49700f6717ad
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: aaf9aa59928ed6b17bc0586d97dbdefc9e30362c
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836322"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102950"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
 
@@ -80,13 +80,13 @@ Les étapes suivantes configurent la conversion de TypeScript en JavaScript et l
 1. Installez les packages npm nécessaires. Exécutez la commande suivante à la racine du projet :
 
     ```console
-    npm install -D -E clean-webpack-plugin@0.1.19 css-loader@0.28.11 html-webpack-plugin@3.2.0 mini-css-extract-plugin@0.4.0 ts-loader@4.4.1 typescript@2.9.2 webpack@4.12.0 webpack-cli@3.0.6
+    npm install -D -E clean-webpack-plugin@1.0.1 css-loader@2.1.0 html-webpack-plugin@4.0.0-beta.5 mini-css-extract-plugin@0.5.0 ts-loader@5.3.3 typescript@3.3.3 webpack@4.29.3 webpack-cli@3.2.3
     ```
 
     Détails de commande à prendre en compte :
 
     * Un numéro de version suit le signe `@` pour chaque nom de package. npm installe ces versions de package spécifiques.
-    * L’option `-E` désactive le comportement par défaut de npm consistant à écrire des opérateurs de plage de [gestion sémantique des versions](https://semver.org/) dans *package.json*. Par exemple, `"webpack": "4.12.0"` peut être utilisé à la place de `"webpack": "^4.12.0"`. Cette option empêche les mises à niveau involontaires vers des versions de package plus récentes.
+    * L’option `-E` désactive le comportement par défaut de npm consistant à écrire des opérateurs de plage de [gestion sémantique des versions](https://semver.org/) dans *package.json*. Par exemple, `"webpack": "4.29.3"` peut être utilisé à la place de `"webpack": "^4.29.3"`. Cette option empêche les mises à niveau involontaires vers des versions de package plus récentes.
 
     Consultez la documentation officielle de [npm-install](https://docs.npmjs.com/cli/install) pour plus de détails.
 
