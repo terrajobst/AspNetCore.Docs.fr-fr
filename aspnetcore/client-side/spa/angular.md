@@ -2,26 +2,19 @@
 title: Utiliser le modèle de projet Angular avec ASP.NET Core
 author: SteveSandersonMS
 description: Découvrez comment démarrer avec le modèle de projet d’application à page unique ASP.NET Core pour Angular et la CLI Angular.
-monikerRange: '>= aspnetcore-2.0'
-ms.author: scaddie
+monikerRange: '>= aspnetcore-2.1'
+ms.author: stevesa
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/angular
-ms.openlocfilehash: 8283fe9e96acb57942040dd4c90fabd204a19663
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 35a839e31369e8dbf00f5dbfb3751a2985335755
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326041"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248119"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>Utiliser le modèle de projet Angular avec ASP.NET Core
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> Cette documentation ne concerne pas le modèle de projet Angular inclus dans ASP.NET Core 2.0. Elle traite du nouveau modèle Angular que vous pouvez mettre à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
-
-::: moniker-end
 
 Le modèle de projet Angular mis à jour fournit un point de départ pratique pour les applications ASP.NET Core utilisant Angular et la CLI Angular pour implémenter une interface utilisateur (IU) côté client enrichie.
 
@@ -29,17 +22,7 @@ Le modèle est équivalent à la création d’un projet ASP.NET Core en tant qu
 
 ## <a name="create-a-new-app"></a>Créer une application
 
-::: moniker range="= aspnetcore-2.0"
-
-Si vous utilisez ASP.NET Core 2.0, vérifiez que vous avez [installé le modèle de projet Angular mis à jour](xref:spa/index#installation).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 Si ASP.NET Core 2.1 est installé, il est inutile d’installer le modèle de projet Angular.
-
-::: moniker-end
 
 Créez un projet à partir d’une invite de commandes à l’aide de la commande `dotnet new angular` dans un répertoire vide. Par exemple, les commandes suivantes créent l’application dans un répertoire *my-new-app* et basculent vers ce répertoire :
 
@@ -70,7 +53,7 @@ Now listening on: http://localhost:<port>
 
 Accédez à cette URL dans un navigateur.
 
-L’application démarre une instance du serveur CLI Angular en arrière-plan. Un message semblable au message suivant est journalisé : *NG Live Development Server est à l’écoute sur localhost :&lt;otherport&gt;, ouvrez votre navigateur sur http://localhost:&lt;otherport&gt;/*. Ignorez ce message&mdash;ce n’est **pas** l’URL de l’application ASP.NET Core et CLI Angular combinée.
+L’application démarre une instance du serveur CLI Angular en arrière-plan. Un message semblable au message suivant est journalisé : *Serveur de développement Live NG est à l’écoute sur localhost :&lt;otherport&gt;, ouvrez votre navigateur sur http://localhost:&lt; otherport&gt;/*. Ignorez ce message&mdash;ce n’est **pas** l’URL de l’application ASP.NET Core et CLI Angular combinée.
 
 ---
 

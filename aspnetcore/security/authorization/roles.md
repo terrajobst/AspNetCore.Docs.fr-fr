@@ -5,12 +5,12 @@ description: Découvrez comment restreindre l’accès de contrôleur et action 
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: 59753b90d3196b0bc16d4963f45b995f5108bc8b
-ms.sourcegitcommit: d99a8554c91f626cf5e466911cf504dcbff0e02e
+ms.openlocfilehash: 0467ea82831bffe6882e584930c2fa1212a244c7
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39356673"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248093"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>Autorisation basée sur des rôles dans ASP.NET Core
 
@@ -108,7 +108,8 @@ public void ConfigureServices(IServiceCollection services)
 
     services.AddAuthorization(options =>
     {
-        options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+        options.AddPolicy("RequireAdministratorRole",
+             policy => policy.RequireRole("Administrator"));
     });
 }
 ```
@@ -131,3 +132,9 @@ options.AddPolicy("ElevatedRights", policy =>
 ```
 
 Cet exemple autorise l'accès aux utilisateurs qui appartiennent aux rôles `Administrator`, `PowerUser` ou `BackupAdministrator`.
+
+### <a name="add-role-services-to-identity"></a>Ajouter des services de rôle à l’identité
+
+Ajouter [fonctionnalité Ajouter des rôles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1) pour ajouter des services de rôle :
+
+[!code-csharp[](roles/samples/Startup.cs?name=snippet&highlight=7)]

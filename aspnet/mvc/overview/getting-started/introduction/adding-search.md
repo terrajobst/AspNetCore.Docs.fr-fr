@@ -4,26 +4,36 @@ title: Recherche | Microsoft Docs
 author: Rick-Anderson
 description: ''
 ms.author: riande
-ms.date: 05/22/2015
+ms.date: 01/17/2019
 ms.assetid: df001954-18bf-4550-b03d-43911a0ea186
 msc.legacyurl: /mvc/overview/getting-started/introduction/adding-search
 msc.type: authoredcontent
-ms.openlocfilehash: 31fd35ac63f3eb31d824e1710833ad83a0852ac9
-ms.sourcegitcommit: a91e8dd2f4b788114c8bc834507277f4b5e8d6c5
+ms.openlocfilehash: ada125c917656f3a83524ff39e53b4cfc041a497
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712261"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248379"
 ---
 <a name="search"></a>Rechercher
 ====================
-par [Rick Anderson]((https://twitter.com/RickAndMSFT))
 
 [!INCLUDE [Tutorial Note](sample/code-location.md)]
 
 ## <a name="adding-a-search-method-and-search-view"></a>Ajout d’une méthode de recherche et de la vue de la recherche
 
 Dans cette section, vous ajouterez des possibilités de recherche le `Index` méthode d’action qui vous permet de rechercher des films par genre ou le nom.
+
+## <a name="prerequisites"></a>Prérequis
+
+Pour faire correspondre des captures d’écran de cette section, vous devez exécuter l’application (F5) et ajouter les films suivantes à la base de données.
+
+| Titre | Date de publication | Genre | Prix |
+| ----- | ------------ | ----- | ----- |
+| Ghostbusters | 6/8/1984 | Comédie | 6.99 |
+| Ghostbusters II | 6/16/1989 | Comédie | 6.99 |
+| Mondiale des singes | 3/27/1986 | Action | 5.99 |
+
 
 ## <a name="updating-the-index-form"></a>La mise à jour de la forme d’Index
 
@@ -68,7 +78,7 @@ Vous pouvez maintenant passer le titre de la recherche en tant que données de r
 
 ![](adding-search/_static/image2.png)
 
-Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL à chaque fois qu’ils veulent rechercher un film. Maintenant vous vous allez ajouter une interface utilisateur pour aider à les filtrer les films. Si vous avez modifié la signature de la `Index` méthode pour tester comment passer le paramètre ID de la limite de l’itinéraire, modifiez-le pour que votre `Index` méthode prend un paramètre de chaîne nommé `searchString`:
+Cependant, vous ne pouvez pas attendre des utilisateurs qu’ils modifient l’URL à chaque fois qu’ils veulent rechercher un film. Vous allez donc maintenant ajouter une interface utilisateur pour les aider à filtrer les films. Si vous avez modifié la signature de la `Index` méthode pour tester comment passer le paramètre ID de la limite de l’itinéraire, modifiez-le pour que votre `Index` méthode prend un paramètre de chaîne nommé `searchString`:
 
 [!code-csharp[Main](adding-search/samples/sample7.cs)]
 
@@ -120,7 +130,7 @@ Le code suivant est une requête LINQ qui récupère tous les genres dans la bas
 
 [!code-csharp[Main](adding-search/samples/sample12.cs)]
 
-Le code utilise le `AddRange` méthode du générique `List` collection pour ajouter tous les genres distincts à la liste. (Sans le `Distinct` modificateur, genres en doublon seraient ajoutés, par exemple, comédie est ajoutée à deux reprises dans notre exemple). Le code stocke ensuite la liste des genres dans le `ViewBag.MovieGenre` objet. Stockage des données de catégorie (de tel un genre de film) en tant qu’un [SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx) de l’objet dans un `ViewBag`, puis accéder aux données de catégorie dans une zone de liste déroulante est une approche courante pour les applications MVC.
+Le code utilise le `AddRange` méthode du générique `List` collection pour ajouter tous les genres distincts à la liste. (Sans le `Distinct` modificateur, genres en doublon seraient ajoutés, par exemple, comédie est ajoutée à deux reprises dans notre exemple). Le code stocke ensuite la liste des genres dans le `ViewBag.MovieGenre` objet. Stockage des données de catégorie (tel un film genres) en tant qu’un [SelectList](https://msdn.microsoft.cus/library/system.web.mvc.selectlist(v=vs.108).aspx) de l’objet dans un `ViewBag`, puis accéder aux données de catégorie dans une zone de liste déroulante est une approche courante pour les applications MVC.
 
 Le code suivant montre comment vérifier la `movieGenre` paramètre. S’il n’est pas vide, le code plus contraint la requête de films pour limiter les films sélectionnés pour le genre spécifié.
 

@@ -2,26 +2,19 @@
 title: Utiliser le modèle de projet React avec ASP.NET Core
 author: SteveSandersonMS
 description: Découvrez comment démarrer avec le modèle de projet d’application monopage ASP.NET Core pour React et create-react-app.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/react
-ms.openlocfilehash: d83bff8abcd5b59d8bc4a51a101510755394f0c4
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: aa08a9d8d06d8b52be564fabf904d4923684d4e4
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667685"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248028"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React avec ASP.NET Core
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> Cette documentation ne concerne pas le modèle de projet React inclus dans ASP.NET Core 2.0. Elle traite du nouveau modèle React vers lequel vous pouvez effectuer une mise à jour manuellement. Par défaut, le modèle est inclus dans ASP.NET Core 2.1.
-
-::: moniker-end
 
 Le modèle de projet React mis à jour fournit un point de départ pratique pour les applications ASP.NET Core utilisant les conventions React et [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) pour implémenter une interface utilisateur (IU) côté client enrichie.
 
@@ -29,17 +22,7 @@ Le modèle revient à créer un projet ASP.NET Core faisant office de backend d�
 
 ## <a name="create-a-new-app"></a>Créer une application
 
-::: moniker range="= aspnetcore-2.0"
-
-Si vous utilisez ASP.NET Core 2.0, vérifiez que vous avez [installé le modèle de projet React mis à jour](xref:spa/index#installation).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 Si ASP.NET Core 2.1 est installé, il est inutile d’installer le modèle de projet React.
-
-::: moniker-end
 
 Créez un projet à partir d’une invite de commandes à l’aide de la commande `dotnet new react` dans un répertoire vide. Par exemple, les commandes suivantes créent l’application dans un répertoire *my-new-app* et basculent vers ce répertoire :
 

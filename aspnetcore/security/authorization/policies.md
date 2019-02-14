@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
 uid: security/authorization/policies
-ms.openlocfilehash: 4e8a9ac6c0594f9bab67214aaa8cab9199cca29d
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 937c73c26cd3935c5069d4735e754d1a567f41f4
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207393"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248106"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorisation basée sur des stratégies dans ASP.NET Core
 
@@ -32,6 +32,8 @@ Les stratégies sont appliquées à l’aide de la `[Authorize]` attribut avec l
 Une condition d’autorisation est une collection de paramètres de données une stratégie peut utiliser pour évaluer le principal utilisateur actuel. Dans notre stratégie de « AtLeast21 », l’exigence est un paramètre unique&mdash;l’ancienneté minimale. Implémente une exigence [IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement), qui est une interface de marqueur vide. Une exigence paramétrable ancienneté minimale peut être implémentée comme suit :
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
+
+Si une stratégie d’autorisation contient plusieurs exigences d’autorisation, toutes les conditions requises doivent passer pour l’évaluation de stratégie réussisse. En d’autres termes, plusieurs exigences d’autorisation ajoutés à une stratégie d’autorisation unique sont traités sur un **AND** base.
 
 > [!NOTE]
 > Une exigence n’a pas besoin d’avoir des propriétés ou des données.

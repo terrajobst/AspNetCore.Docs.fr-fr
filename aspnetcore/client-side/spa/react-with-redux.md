@@ -2,26 +2,19 @@
 title: Utiliser le modèle de projet React-with-Redux avec ASP.NET Core
 author: SteveSandersonMS
 description: Découvrez comment démarrer avec le modèle de projet d’application monopage ASP.NET Core pour React-with-Redux et create-react-app.
-monikerRange: '>= aspnetcore-2.0'
+monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/21/2018
+ms.date: 02/13/2019
 uid: spa/react-with-redux
-ms.openlocfilehash: c1aedcf1e14a9e7b339b60dd02c4267cd5945a49
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: ed2e9aea449ddb09fef049a391f40f57452786a8
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341606"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248080"
 ---
 # <a name="use-the-react-with-redux-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React-with-Redux avec ASP.NET Core
-
-::: moniker range="= aspnetcore-2.0"
-
-> [!NOTE]
-> Cette documentation ne se rapportent au modèle de projet React avec Redux inclus dans ASP.NET Core 2.0. Ce qui concerne le modèle de React avec Redux plus récente que vous pouvez mettre à jour manuellement. Le modèle est disponible dans ASP.NET Core 2.1 ou version ultérieure.
-
-::: moniker-end
 
 Le modèle de projet React-with-Redux mis à jour fournit un point de départ pratique pour les applications ASP.NET Core utilisant les conventions React, Redux et [create-react-app](https://github.com/facebookincubator/create-react-app) (CRA) pour implémenter une interface utilisateur (IU) côté client enrichie.
 
