@@ -1,42 +1,38 @@
 ---
-title: ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
+title: 'Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core'
+description: Dans ce didacticiel, vous allez examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) que la génération de modèles automatique MVC a créé automatiquement pour vous dans des contrôleurs et des vues.
 author: rick-anderson
-description: ''
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/04/2019
+ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 34927415beadaa3f5c9035a9101e3c99f7cbc395
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 368b1774ba977ec8020a02d48705200fd54c3bbd
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090821"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102979"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---crud---2-of-10"></a>ASP.NET Core MVC avec EF Core - CRUD - 2 sur 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez créé une application MVC qui stocke et affiche les données en utilisant Entity Framework et SQL Server LocalDB. Dans ce didacticiel, vous allez examiner et personnaliser le code CRUD (créer, lire, mettre à jour, supprimer) que la génération de modèles automatique MVC a créé automatiquement pour vous dans des contrôleurs et des vues.
 
 > [!NOTE]
 > Il est courant d’implémenter le modèle de référentiel pour créer une couche d’abstraction entre votre contrôleur et la couche d’accès aux données. Pour conserver ces didacticiels simples et orientés vers l’apprentissage de l’utilisation d’Entity Framework proprement dit, ils n’utilisent pas de référentiels. Pour plus d’informations sur les référentiels avec EF, consultez [le dernier didacticiel de cette série](advanced.md).
 
-Dans ce didacticiel, vous utilisez les pages web suivantes :
+Dans ce didacticiel, vous avez effectué les actions suivantes :
 
-![Page Details pour les étudiants](crud/_static/student-details.png)
+> [!div class="checklist"]
+> * Personnaliser la page Details
+> * Mettre à jour la page Create
+> * Mettre à jour la page Edit
+> * Mettre à jour la page Delete
+> * Fermer les connexions de base de données
 
-![Page Create pour les étudiants](crud/_static/student-create.png)
+## <a name="prerequisites"></a>Prérequis
 
-![Page Edit pour les étudiants](crud/_static/student-edit.png)
-
-![Page Delete pour les étudiants](crud/_static/student-delete.png)
+* [Bien démarrer avec EF Core dans une application web ASP.NET Core MVC](intro.md)
 
 ## <a name="customize-the-details-page"></a>Personnaliser la page Details
 
@@ -172,7 +168,7 @@ Changez la date en une valeur valide, puis cliquez sur **Create** pour voir appa
 
 Dans *StudentController.cs*, la méthode HttpGet `Edit` (celle sans l’attribut `HttpPost`) utilise la méthode `SingleOrDefaultAsync` pour récupérer l’entité Student sélectionnée, comme vous l’avez vu dans la méthode `Details`. Vous n’avez pas besoin de modifier cette méthode.
 
-### <a name="recommended-httppost-edit-code-read-and-update"></a>Code HttpPost Edit recommandé : lire et mettre à jour
+### <a name="recommended-httppost-edit-code-read-and-update"></a>Code HttpPost Edit recommandé : Lire et mettre à jour
 
 Remplacez la méthode d’action HttpPost Edit par le code suivant.
 
@@ -270,13 +266,13 @@ Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez s
 
 Cliquez sur **Delete**. La page Index s’affiche sans l’étudiant supprimé. (Vous verrez un exemple du code de gestion des erreurs en action dans le didacticiel sur l’accès concurrentiel.)
 
-## <a name="closing-database-connections"></a>Fermeture des connexions de base de données
+## <a name="close-database-connections"></a>Fermer les connexions de base de données
 
 Pour libérer les ressources détenues par une connexion de base de données, l’instance du contexte doit être supprimée dès que possible quand vous en avez terminé avec celle-ci. [L’injection de dépendances](../../fundamentals/dependency-injection.md) intégrée d’ASP.NET Core prend en charge cette tâche pour vous.
 
 Dans *Startup.cs*, vous appelez la [méthode d’extension AddDbContext](https://github.com/aspnet/EntityFrameworkCore/blob/03bcb5122e3f577a84498545fcf130ba79a3d987/src/Microsoft.EntityFrameworkCore/EntityFrameworkServiceCollectionExtensions.cs) pour provisionner la classe `DbContext` dans le conteneur d’injection de dépendances d’ASP.NET Core. Cette méthode définit par défaut la durée de vie du service sur `Scoped`. `Scoped` signifie que la durée de vie de l’objet de contexte coïncide avec la durée de vie de la demande web, et que la méthode `Dispose` sera appelée automatiquement à la fin de la requête web.
 
-## <a name="handling-transactions"></a>Gestion des transactions
+## <a name="handle-transactions"></a>Gérer les transactions
 
 Par défaut, Entity Framework implémente implicitement les transactions. Dans les scénarios où vous apportez des modifications à plusieurs lignes ou plusieurs tables, puis que appelez `SaveChanges`, Entity Framework garantit automatiquement que soit toutes vos modifications réussissent soit elles échouent toutes. Si certaines modifications sont effectuées en premier puis qu’une erreur se produit, ces modifications sont automatiquement annulées. Pour les scénarios où vous avez besoin de plus de contrôle, par exemple si vous voulez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](/ef/core/saving/transactions).
 
@@ -294,12 +290,21 @@ Vous pouvez désactiver le suivi des objets entité en mémoire en appelant la m
 
 Pour plus d’informations, consultez [Suivi ou pas de suivi](/ef/core/querying/tracking).
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Vous avez maintenant un ensemble complet de pages qui effectuent des opérations CRUD simples pour les entités Student. Dans le didacticiel suivant, vous allez développer les fonctionnalités de la page **Index** en ajoutant le tri, le filtrage et la pagination.
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>Étapes suivantes
 
-> [!div class="step-by-step"]
-> [Précédent](intro.md)
-> [Suivant](sort-filter-page.md)
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Page Details personnalisée
+> * Page Create mise à jour
+> * Page Edit mise à jour
+> * Page Delete mise à jour
+> * Connexions de base de données fermées
+
+Passez à l’article suivant pour apprendre comment développer les fonctionnalités de la page **Index** en ajoutant le tri, le filtrage et la pagination.
+> [!div class="nextstepaction"]
+> [Tri, filtrage et pagination](sort-filter-page.md)

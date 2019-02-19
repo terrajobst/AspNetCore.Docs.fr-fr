@@ -1,26 +1,19 @@
 ---
-title: ASP.NET Core MVC avec EF Core - Lire les données associées - 6 sur 10
-author: rick-anderson
+title: 'Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
+author: rick-anderson
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: a310c9e4b9cec6e2ab2477461f395c9bbd3fa364
-ms.sourcegitcommit: e12f45ddcbe99102a74d4077df27d6c0ebba49c1
+ms.openlocfilehash: 73e225c2cd6d9f88079c54115cccad48f43d7d0c
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/15/2018
-ms.locfileid: "39063284"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103044"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---read-related-data---6-of-10"></a>ASP.NET Core MVC avec EF Core - Lire les données associées - 6 sur 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous a élaboré le modèle de données School. Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 
@@ -30,7 +23,19 @@ Les illustrations suivantes montrent les pages que vous allez utiliser.
 
 ![Page d’index des formateurs](read-related-data/_static/instructors-index.png)
 
-## <a name="eager-explicit-and-lazy-loading-of-related-data"></a>Chargement hâtif, explicite et différé des données associées
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Découvrir comment charger les données associées
+> * Créer une page Courses
+> * Créer une page Instructors
+> * En savoir plus sur le chargement explicite
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Créer un modèle de données plus complexe avec EF Core pour une application web ASP.NET Core MVC](complex-data-model.md)
+
+## <a name="learn-how-to-load-related-data"></a>Découvrir comment charger les données associées
 
 Il existe plusieurs façons de permettre à un logiciel de mappage relationnel objet (ORM) comme Entity Framework de charger les données associées dans les propriétés de navigation d’une entité :
 
@@ -42,7 +47,7 @@ Il existe plusieurs façons de permettre à un logiciel de mappage relationnel o
 
   ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
-* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* Chargement explicite. Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous écrivez un code qui récupère les données associées si elles sont nécessaires. Comme dans le cas du chargement hâtif avec des requêtes distinctes, le chargement explicite génère plusieurs requêtes envoyées à la base de données. La différence tient au fait qu’avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Dans Entity Framework Core 1.1, vous pouvez utiliser la méthode `Load` pour effectuer le chargement explicite. Par exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -54,7 +59,7 @@ Si vous savez que vous avez besoin des données associées pour toutes les entit
 
 En revanche, dans certains scénarios, les requêtes distinctes s’avèrent plus efficaces. Le chargement hâtif de toutes les données associées dans une seule requête peut entraîner une jointure très complexe à générer, que SQL Server ne peut pas traiter efficacement. Ou, si vous avez besoin d’accéder aux propriétés de navigation d’entité uniquement pour un sous-ensemble des entités que vous traitez, des requêtes distinctes peuvent être plus performantes, car le chargement hâtif de tous les éléments en amont entraînerait la récupération de plus de données qu’il vous faut. Si les performances sont essentielles, il est préférable de tester les performances des deux façons afin d’effectuer le meilleur choix.
 
-## <a name="create-a-courses-page-that-displays-department-name"></a>Créer une page Courses qui affiche le nom du service
+## <a name="create-a-courses-page"></a>Créer une page Courses
 
 L’entité Course inclut une propriété de navigation qui contient l’entité Department du service auquel le cours est affecté. Pour afficher le nom du service affecté dans une liste de cours, vous devez obtenir la propriété Name de l’entité Department qui figure dans la propriété de navigation `Course.Department`.
 
@@ -88,7 +93,7 @@ Exécutez l’application et sélectionnez l’onglet **Courses** pour afficher 
 
 ![Page d’index des cours](read-related-data/_static/courses-index.png)
 
-## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>Créer une page Instructors qui affiche les cours et les inscriptions
+## <a name="create-an-instructors-page"></a>Créer une page Instructors
 
 Dans cette section, vous allez créer un contrôleur et une vue pour l’entité Instructor afin d’afficher la page Instructors :
 
@@ -226,7 +231,7 @@ Actualisez la page à nouveau et sélectionnez un formateur. Ensuite, sélection
 
 ![Page d’index des formateurs avec un formateur et un cours sélectionnés](read-related-data/_static/instructors-index.png)
 
-## <a name="explicit-loading"></a>Chargement explicite
+## <a name="about-explicit-loading"></a>À propos du chargement explicite
 
 Lorsque vous avez récupéré la liste des formateurs dans *InstructorsController.cs*, vous avez spécifié un chargement hâtif pour la propriété de navigation `CourseAssignments`.
 
@@ -238,12 +243,20 @@ Le nouveau code supprime les appels de la méthode *ThenInclude* pour les donné
 
 Exécutez l’application, accédez à la page d’index des formateurs et vous ne verrez aucune différence pour ce qui est affiché dans la page, bien que vous ayez modifié la façon dont les données sont récupérées.
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Vous avez maintenant utilisé le chargement hâtif avec une seule requête et avec plusieurs requêtes pour lire les données associées dans les propriétés de navigation. Dans le didacticiel suivant, vous apprendrez à mettre à jour les données associées.
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>Étapes suivantes
 
->[!div class="step-by-step"]
->[Précédent](complex-data-model.md)
->[Suivant](update-related-data.md)
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Chargement des données associées découvert
+> * Page Courses créée
+> * Page Instructors créée
+> * Chargement explicite découvert
+
+Passez à l’article suivant pour découvrir comment mettre à jour les données associées.
+> [!div class="nextstepaction"]
+> [Mettre à jour les données associées](update-related-data.md)

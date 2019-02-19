@@ -1,26 +1,19 @@
 ---
-title: ASP.NET Core MVC avec EF Core - Tri, filtre, changement de page - 3 sur 10
+title: 'Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core'
+description: Dans ce didacticiel, vous allez ajouter les fonctionnalités de tri, de filtrage et de changement de page à la page d’index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
 author: rick-anderson
-description: Dans ce didacticiel, vous allez ajouter des fonctionnalités de tri, de filtrage et de changement de page à une page à l’aide d’ASP.NET Core et d’Entity Framework Core.
 ms.author: tdykstra
-ms.date: 03/15/2017
+ms.date: 02/04/2019
+ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 1f80faf0e36332c28e8337ddc331cc8b4c4970d7
-ms.sourcegitcommit: b8a2f14bf8dd346d7592977642b610bbcb0b0757
+ms.openlocfilehash: 51b6b08d2410652f93427371aec299eb4c8789f1
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38193947"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103057"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---sort-filter-paging---3-of-10"></a>ASP.NET Core MVC avec EF Core - Tri, filtre, changement de page - 3 sur 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+# <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez implémenté un ensemble de pages web pour les opérations CRUD de base pour les entités Student. Dans ce didacticiel, vous allez ajouter les fonctionnalités de tri, de filtrage et de changement de page à la page d’index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
 
@@ -28,7 +21,21 @@ L’illustration suivante montre à quoi ressemblera la page quand vous aurez te
 
 ![Page d’index des étudiants](sort-filter-page/_static/paging.png)
 
-## <a name="add-column-sort-links-to-the-students-index-page"></a>Ajouter des liens de tri de colonne à la page d’index des étudiants
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Ajouter des liens de tri de colonne
+> * Ajouter une zone Rechercher
+> * Ajouter la pagination aux Index des étudiants
+> * Ajouter la pagination à la méthode Index
+> * Ajouter des liens de pagination
+> * Créer une page À propos
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Implémenter la fonctionnalité CRUD avec EF Core dans une application web ASP.NET Core MVC](crud.md)
+
+## <a name="add-column-sort-links"></a>Ajouter des liens de tri de colonne
 
 Pour ajouter le tri à la page d’index des étudiants, vous allez modifier la méthode `Index` du contrôleur Students et ajouter du code à la vue de l’index des étudiants.
 
@@ -71,7 +78,7 @@ Exécutez l’application, sélectionnez l’onglet **Students**, puis cliquez s
 
 ![Page d’index des étudiants dans l’ordre de leurs noms](sort-filter-page/_static/name-order.png)
 
-## <a name="add-a-search-box-to-the-students-index-page"></a>Ajouter une zone de recherche à la page d’index des étudiants
+## <a name="add-a-search-box"></a>Ajouter une zone Rechercher
 
 Pour ajouter le filtrage à la page d’index des étudiants, vous allez ajouter une zone de texte et un bouton d’envoi à la vue et apporter les modifications correspondantes dans la méthode `Index`. La zone de texte vous permet d’entrer une chaîne à rechercher dans les champs de prénom et de nom.
 
@@ -86,7 +93,7 @@ Vous avez ajouté un paramètre `searchString` à la méthode `Index`. La valeur
 > [!NOTE]
 > Ici, vous appelez la méthode `Where` sur un objet `IQueryable`, et le filtre sera traité sur le serveur. Dans certains scénarios, vous pouvez appeler la méthode `Where` en tant que méthode d’extension sur une collection en mémoire. (Par exemple, supposons que vous changez la référence à `_context.Students` de sorte qu’à la place d’un `DbSet` EF, elle fasse référence à une méthode de référentiel qui renvoie une collection `IEnumerable`.) Le résultat serait normalement le même, mais pourrait être différent dans certains cas.
 >
->Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour rendre explicitement le test sensible à la casse :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*. Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la méthode `Contains` sur une collection `IEnumerable`, vous obtenez l’implémentation du .NET Framework ; lorsque vous l’appelez sur un objet `IQueryable`, vous obtenez l’implémentation du fournisseur de base de données.) Toutefois, cette solution présente un coût en matière de performances. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
+>Par exemple, l’implémentation par le .NET Framework de la méthode `Contains` effectue une comparaison respectant la casse par défaut, mais dans SQL Server, cela est déterminé par le paramètre de classement de l’instance SQL Server. Ce paramètre définit par défaut le non-respect de la casse. Vous pouvez appeler la méthode `ToUpper` pour que le test ne respecte pas la casse de manière explicite :  *Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*. Cela garantit que les résultats resteront les mêmes si vous modifiez le code ultérieurement pour utiliser un référentiel qui renverra une collection `IEnumerable` à la place d’un objet `IQueryable`. (Lorsque vous appelez la méthode `Contains` sur une collection `IEnumerable`, vous obtenez l’implémentation du .NET Framework ; lorsque vous l’appelez sur un objet `IQueryable`, vous obtenez l’implémentation du fournisseur de base de données.) Toutefois, cette solution présente un coût en matière de performances. Le code `ToUpper` place une fonction dans la clause WHERE de l’instruction TSQL SELECT. Elle empêche l’optimiseur d’utiliser un index. Étant donné que SQL est généralement installé comme non sensible à la casse, il est préférable d’éviter le code `ToUpper` jusqu’à ce que vous ayez migré vers un magasin de données qui respecte la casse.
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>Ajouter une zone de recherche à la vue de l’index des étudiants
 
@@ -110,7 +117,7 @@ Si vous marquez cette page d’un signet, vous obtenez la liste filtrée lorsque
 
 À ce stade, si vous cliquez sur un lien de tri d’en-tête de colonne, vous perdez la valeur de filtre que vous avez entrée dans la zone **Rechercher**. Vous corrigerez cela dans la section suivante.
 
-## <a name="add-paging-functionality-to-the-students-index-page"></a>Ajouter la fonctionnalité de changement de page à la page d’index des étudiants
+## <a name="add-paging-to-students-index"></a>Ajouter la pagination aux Index des étudiants
 
 Pour ajouter le changement de page à la page d’index des étudiants, vous allez créer une classe `PaginatedList` qui utilise les instructions `Skip` et `Take` pour filtrer les données sur le serveur au lieu de toujours récupérer toutes les lignes de la table. Ensuite, vous apporterez des modifications supplémentaires dans la méthode `Index` et ajouterez des boutons de changement de page dans la vue `Index`. L’illustration suivante montre les boutons de changement de page.
 
@@ -124,7 +131,7 @@ La méthode `CreateAsync` de ce code accepte la taille de page et le numéro de 
 
 Une méthode `CreateAsync` est utilisée à la place d’un constructeur pour créer l’objet `PaginatedList<T>`, car les constructeurs ne peuvent pas exécuter de code asynchrone.
 
-## <a name="add-paging-functionality-to-the-index-method"></a>Ajouter la fonctionnalité de changement de page à la méthode Index
+## <a name="add-paging-to-index-method"></a>Ajouter la pagination à la méthode Index
 
 Dans *StudentsController.cs*, remplacez la méthode `Index` par le code suivant.
 
@@ -167,7 +174,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 La méthode `PaginatedList.CreateAsync` accepte un numéro de page. Les deux points d’interrogation représentent l’opérateur de fusion Null. L’opérateur de fusion Null définit une valeur par défaut pour un type nullable ; l’expression `(page ?? 1)` indique de renvoyer la valeur de `page` si elle a une valeur, ou de renvoyer 1 si `page` a la valeur Null.
 
-## <a name="add-paging-links-to-the-student-index-view"></a>Ajouter des liens de changement de page à la vue de l’index des étudiants
+## <a name="add-paging-links"></a>Ajouter des liens de pagination
 
 Dans *Views/Instructors/Index.cshtml*, remplacez le code existant par le code suivant. Les modifications apparaissent en surbrillance.
 
@@ -199,7 +206,7 @@ Exécutez l’application et accédez à la page des étudiants.
 
 Cliquez sur les liens de changement de page dans différents ordres de tri pour vérifier que le changement de page fonctionne. Ensuite, entrez une chaîne de recherche et essayez de changer de page à nouveau pour vérifier que le changement de page fonctionne correctement avec le tri et le filtrage.
 
-## <a name="create-an-about-page-that-shows-student-statistics"></a>Créer une page About qui affiche les statistiques des étudiants
+## <a name="create-an-about-page"></a>Créer une page À propos
 
 Pour la page **About** du site web de Contoso University, vous afficherez le nombre d’étudiants inscrits pour chaque date d’inscription. Cela nécessite un regroupement et des calculs simples sur les groupes. Pour ce faire, vous devez effectuer les opérations suivantes :
 
@@ -243,14 +250,22 @@ Remplacez le code du fichier *Views/Home/About.cshtml* par le code suivant :
 
 Exécutez l’application et accédez à la page About. Le nombre d’étudiants pour chaque date d’inscription s’affiche dans une table.
 
-![Page About](sort-filter-page/_static/about.png)
+## <a name="get-the-code"></a>Obtenir le code
 
-## <a name="summary"></a>Récapitulatif
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-Dans ce didacticiel, vous avez vu comment effectuer un tri, un filtrage, un changement de page et un regroupement. Dans le prochain didacticiel, vous allez apprendre à gérer les modifications du modèle de données à l’aide de migrations.
+## <a name="next-steps"></a>Étapes suivantes
 
-::: moniker-end
+Dans ce didacticiel, vous avez effectué les actions suivantes :
 
-> [!div class="step-by-step"]
-> [Précédent](crud.md)
-> [Suivant](migrations.md)
+> [!div class="checklist"]
+> * Liens de tri de colonne ajoutés
+> * Zone Rechercher ajoutée
+> * Pagination aux Index des étudiants ajoutée
+> * Pagination à la méthode Index ajoutée
+> * Liens de pagination ajoutés
+> * Page À propos créée
+
+Passez à l’article suivant pour apprendre à gérer les modifications du modèle de données à l’aide de migrations.
+> [!div class="nextstepaction"]
+> [Gérer les modification du modèle de données](migrations.md)

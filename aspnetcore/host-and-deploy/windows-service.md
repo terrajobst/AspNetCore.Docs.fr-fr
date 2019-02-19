@@ -5,14 +5,14 @@ description: Découvrez comment héberger une application ASP.NET Core dans un s
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/22/2019
+ms.date: 02/13/2019
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: eedaf64710506f2a2aac65c178a9888d2ab33d38
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 081a631c9c3e74c01e15f4b0b272d650c162bd20
+ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837479"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56248249"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
 
@@ -112,7 +112,7 @@ Dans `Program.Main`, effectuez les changements suivants :
 
   Si les conditions ne sont pas remplies (l’application est exécutée en tant que service) :
 
-  * Appelez <xref:System.IO.Directory.SetCurrentDirectory*> et utilisez un chemin vers l’emplacement publié de l’application. N’appelez pas <xref:System.IO.Directory.GetCurrentDirectory*> pour obtenir le chemin d’accès car une application Windows Service retourne le dossier *C:\\WINDOWS\\system32* lorsque `GetCurrentDirectory` est appelée. Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).
+  * Appelez <xref:System.IO.Directory.SetCurrentDirectory*> et utilisez un chemin vers l’emplacement publié de l’application. N’appelez pas <xref:System.IO.Directory.GetCurrentDirectory*> pour obtenir le chemin d’accès car une application Windows Service retourne le dossier *C:\\WINDOWS\\system32* lorsque <xref:System.IO.Directory.GetCurrentDirectory*> est appelée. Pour plus d’informations, consultez la section [Répertoire actif et racine du contenu](#current-directory-and-content-root).
   * Appelez <xref:Microsoft.AspNetCore.Hosting.WindowsServices.WebHostWindowsServiceExtensions.RunAsService*> pour exécuter l’application en tant que service.
 
   Étant donné que le [fournisseur de configuration de ligne de commande](xref:fundamentals/configuration/index#command-line-configuration-provider) nécessite des paires nom/valeur pour les arguments de ligne de commande, le commutateur `--console` est supprimé des arguments avant que <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> ne les reçoive.
@@ -147,11 +147,13 @@ dotnet publish --configuration Release --runtime win7-x64 --output c:\svc
 
 ### <a name="create-a-user-account"></a>Créer un compte d’utilisateur
 
-Créez un compte d’utilisateur pour le service à l’aide de la commande `net user` :
+Créez un compte d’utilisateur pour le service en utilisant la commande `net user` à partir d’un shell de commande d’administration :
 
 ```console
 net user {USER ACCOUNT} {PASSWORD} /add
 ```
+
+L’expiration du mot de passe par défaut est de six semaines.
 
 Pour l’exemple d’application, créez un compte d’utilisateur avec le nom `ServiceUser` et un mot de passe. Dans la commande suivante, remplacez `{PASSWORD}` par un [mot de passe fort](/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements).
 
@@ -167,9 +169,13 @@ net localgroup {GROUP} {USER ACCOUNT} /add
 
 Pour plus d’informations, consultez [Comptes d’utilisateur de service](/windows/desktop/services/service-user-accounts).
 
+Une approche alternative à la gestion des utilisateurs lors de l’utilisation d’Active Directory consiste à utiliser des Comptes de service administrés. Pour plus d’informations, consultez [Vue d’ensemble des comptes de service administrés de groupe](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+
 ### <a name="set-permissions"></a>Définir les autorisations
 
-Accordez l’accès en écriture/lecture/exécution au dossier de l’application à l’aide de la commande [icacls](/windows-server/administration/windows-commands/icacls) :
+#### <a name="access-to-the-app-folder"></a>Accès au dossier d’application
+
+Accordez l’accès en écriture/lecture/exécution au dossier de l’application à l’aide de la commande [icacls](/windows-server/administration/windows-commands/icacls) à partir d’un shell de commande d’administration :
 
 ```console
 icacls "{PATH}" /grant {USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS} /t
@@ -195,11 +201,23 @@ icacls "c:\svc" /grant ServiceUser:(OI)(CI)WRX /t
 
 Pour plus d’informations, consultez [icacls](/windows-server/administration/windows-commands/icacls).
 
+#### <a name="log-on-as-a-service"></a>Ouvrir une session en tant que service
+
+Pour accorder le privilège [Ouvrir une session en tant que service](/windows/security/threat-protection/security-policy-settings/log-on-as-a-service) au compte utilisateur :
+
+1. Recherchez les stratégies **Attribution des droits utilisateur** dans la console Stratégie de sécurité locale ou la console Éditeur de stratégie de groupe locale. Pour obtenir des instructions, voir : [Configurer les paramètres de stratégie de sécurité](/windows/security/threat-protection/security-policy-settings/how-to-configure-security-policy-settings).
+1. Recherchez la stratégie `Log on as a service`. Double-cliquez sur la stratégie pour l’ouvrir.
+1. Sélectionnez **Ajouter un utilisateur ou un groupe**.
+1. Sélectionnez **Avancé** et **Rechercher maintenant**.
+1. Sélectionnez le compte utilisateur créé précédemment dans la section [Créer un compte utilisateur](#create-a-user-account). Sélectionnez **OK** pour accepter la sélection.
+1. Sélectionnez **OK** après avoir confirmé que le nom d’objet est correct.
+1. Sélectionnez **Appliquer**. Sélectionnez **OK** pour fermer la fenêtre de la stratégie.
+
 ## <a name="manage-the-service"></a>Gérer le service
 
 ### <a name="create-the-service"></a>Créer le service
 
-Utilisez l’outil en ligne de commande [sc.exe](https://technet.microsoft.com/library/bb490995) pour créer le service. La valeur `binPath` est le chemin du fichier exécutable de l’application, qui inclut le nom du fichier exécutable. **L’espace entre le signe égal à la fin du paramètre et le guillemet au début de la valeur est obligatoire.**
+Utilisez l’outil de ligne de commande [sc.exe](https://technet.microsoft.com/library/bb490995) pour créer le service à partir d’un shell de commande d’administration. La valeur `binPath` est le chemin du fichier exécutable de l’application, qui inclut le nom du fichier exécutable. **L’espace entre le signe égal à la fin du paramètre et le guillemet au début de la valeur est obligatoire.**
 
 ```console
 sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" password= "{PASSWORD}"
@@ -207,7 +225,7 @@ sc create {SERVICE NAME} binPath= "{PATH}" obj= "{DOMAIN}\{USER ACCOUNT}" passwo
 
 * `{SERVICE NAME}` &ndash; Nom à attribuer au service dans le [Gestionnaire de contrôle des services](/windows/desktop/services/service-control-manager).
 * `{PATH}` &ndash; Chemin à l’exécutable du service.
-* `{DOMAIN}` &ndash; Domaine d’un ordinateur joint au domaine. Si l’ordinateur n’est pas joint au domaine, nom de l’ordinateur local.
+* `{DOMAIN}` &ndash; Domaine d’un ordinateur joint au domaine. Si l’ordinateur n’est pas joint au domaine, utilisez le nom de l’ordinateur local.
 * `{USER ACCOUNT}` &ndash; Compte d’utilisateur sous lequel le service s’exécute.
 * `{PASSWORD}` &ndash; Mot de passe du compte d’utilisateur.
 

@@ -4,14 +4,14 @@ author: rick-anderson
 description: Générer une API web avec ASP.NET Core MVC
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/24/2019
+ms.date: 02/4/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 65af70be2cec68d30dd712b80312ebcd40ea0624
-ms.sourcegitcommit: c6db8b14521814f1f7e528d7aa06e474e4c04a1f
+ms.openlocfilehash: 5d72cb214a3d5565452b3b95f364818a71be44b7
+ms.sourcegitcommit: 98e9c7187772d4ddefe6d8e85d0d206749dbd2ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "55065046"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55737640"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Tutoriel : Créer une API web avec ASP.NET Core MVC
 
@@ -351,6 +351,8 @@ Ajoutez la méthode `PutTodoItem` suivante :
 `PutTodoItem` est similaire à `PostTodoItem`, à la différence près qu’il utilise HTTP PUT. La réponse est [204 (Pas de contenu)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). D’après la spécification HTTP, une requête PUT nécessite que le client envoie toute l’entité mise à jour, et pas seulement les changements. Pour prendre en charge les mises à jour partielles, utilisez [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).
 
 ### <a name="test-the-puttodoitem-method"></a>Tester la méthode PutTodoItem
+
+Cet exemple utilise une base de données en mémoire qui doit être initialisée à chaque démarrage de l’application. La base de données doit contenir un élément avant que vous ne passiez un appel PUT. Appelez GET afin de garantir qu’un élément existe dans la base de données avant d’effectuer un appel PUT.
 
 Mettez à jour la tâche dont l’id est 1 en définissant son nom sur « feed fish » :
 

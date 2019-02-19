@@ -1,27 +1,20 @@
 ---
-title: ASP.NET Core MVC avec EF Core - Mettre à jour les données associées - 7 sur 10
-author: rick-anderson
+title: 'Tutoriel : Mettre à jour les données associées - ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez mettre à jour des données associées en mettant à jour des propriétés de navigation et des champs de clé étrangère.
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 37985c945f2e4b15cfcefb0c126c3209e0bdeac4
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: ac94f2e2876c2d8d571a451e4641787ffe37b3d2
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090730"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103031"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---update-related-data---7-of-10"></a>ASP.NET Core MVC avec EF Core - Mettre à jour les données associées - 7 sur 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Mettre à jour les données associées - ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez affiché des données associées ; dans ce didacticiel, vous mettez à jour des données associées en mettant à jour des champs de clé étrangère et des propriétés de navigation.
 
@@ -31,7 +24,20 @@ Les illustrations suivantes montrent quelques-unes des pages que vous allez util
 
 ![Page Edit pour les formateurs](update-related-data/_static/instructor-edit-courses.png)
 
-## <a name="customize-the-create-and-edit-pages-for-courses"></a>Personnaliser les pages Create et Edit pour les cours
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Personnaliser les pages de cours
+> * Ajouter une page de modification de formateur
+> * Ajouter des cours à la page de modification
+> * Mettre à jour la page Delete
+> * Ajouter des emplacements de bureau et des cours à la page Create
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Lire les données associées avec EF Core pour une application web ASP.NET Core MVC](read-related-data.md)
+
+## <a name="customize-courses-pages"></a>Personnaliser les pages de cours
 
 Quand une entité Course est créée, elle doit avoir une relation avec un département existant. Pour faciliter cela, le code du modèle généré automatiquement inclut des méthodes de contrôleur, et des vues Create et Edit qui incluent une liste déroulante pour sélectionner le département. La liste déroulante définit la propriété de clé étrangère `Course.DepartmentID`, qui est tout ce dont Entity Framework a besoin pour charger la propriété de navigation `Department` avec l’entité Department appropriée. Vous utilisez le code du modèle généré automatiquement, mais que vous modifiez un peu pour ajouter la gestion des erreurs et trier la liste déroulante.
 
@@ -103,7 +109,7 @@ Cliquez sur **Edit** pour un cours dans la page Index des cours.
 
 Modifiez les données dans la page et cliquez sur **Save**. La page Index des cours est affichée avec les données du cours mises à jour.
 
-## <a name="add-an-edit-page-for-instructors"></a>Ajouter une page Edit pour les formateurs
+## <a name="add-instructors-edit-page"></a>Ajouter une page de modification de formateur
 
 Quand vous modifiez un enregistrement de formateur, vous voulez avoir la possibilité de mettre à jour l’attribution du bureau du formateur. L’entité Instructor a une relation un-à-zéro ou un-à-un avec l’entité OfficeAssignment, ce qui signifie que votre code doit gérer les situations suivantes :
 
@@ -163,9 +169,9 @@ Exécutez l’application, sélectionnez l’onglet **Instructors**, puis clique
 
 ![Page Edit pour les formateurs](update-related-data/_static/instructor-edit-office.png)
 
-## <a name="add-course-assignments-to-the-instructor-edit-page"></a>Ajouter des affectations de cours à la page de modification des formateurs
+## <a name="add-courses-to-edit-page"></a>Ajouter des cours à la page de modification
 
-Les formateurs peuvent donner un nombre quelconque de cours. Maintenant, vous allez améliorer la page de modification des formateurs en ajoutant la possibilité de modifier les affectations de cours avec un groupe de cases à cocher, comme le montre la capture d’écran suivante :
+Les instructeurs peuvent enseigner dans n’importe quel nombre de cours. Maintenant, vous allez améliorer la page de modification des formateurs en ajoutant la possibilité de modifier les affectations de cours avec un groupe de cases à cocher, comme le montre la capture d’écran suivante :
 
 ![Page de modification des formateurs avec des cours](update-related-data/_static/instructor-edit-courses.png)
 
@@ -236,7 +242,7 @@ Changez quelques affectations de cours et cliquez sur Save. Les modifications qu
 > [!NOTE]
 > L’approche adoptée ici pour modifier les données des cours des formateurs fonctionne bien le nombre de cours est limité. Pour les collections qui sont beaucoup plus volumineuses, une autre interface utilisateur et une autre méthode de mise à jour seraient nécessaires.
 
-## <a name="update-the-delete-page"></a>Mettre à jour la page Delete
+## <a name="update-delete-page"></a>Mettre à jour la page Delete
 
 Dans *InstructorsController.cs*, supprimez la méthode `DeleteConfirmed` et insérez à la place le code suivant.
 
@@ -246,9 +252,9 @@ Ce code apporte les modifications suivantes :
 
 * Il effectue un chargement hâtif pour la propriété de navigation `CourseAssignments`.  Vous devez inclure ceci car sinon, EF ne dispose pas d’informations sur les entités `CourseAssignment` associées et ne les supprime pas.  Pour éviter de devoir les lire ici, vous pouvez configurer une suppression en cascade dans la base de données.
 
-* Si le formateur à supprimer est affecté en tant qu’administrateur d’un département, il supprime l’affectation du formateur de ces départements.
+* Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
 
-## <a name="add-office-location-and-courses-to-the-create-page"></a>Ajouter des emplacements de bureau et des cours à la page Create
+## <a name="add-office-location-and-courses-to-create-page"></a>Ajouter des emplacements de bureau et des cours à la page Create
 
 Dans *InstructorsController.cs*, supprimez les méthodes HttpGet et HttpPost `Create`, puis ajoutez le code suivant à leur place :
 
@@ -293,12 +299,21 @@ Testez en exécutant l’application et en créant un formateur.
 
 Comme expliqué dans le [didacticiel CRUD](crud.md), Entity Framework implémente implicitement les transactions. Pour les scénarios où vous avez besoin de plus de contrôle, par exemple si vous voulez inclure des opérations effectuées en dehors d’Entity Framework dans une transaction, consultez [Transactions](/ef/core/saving/transactions).
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Vous avez maintenant terminé l’introduction à l’utilisation des données associées. Dans le didacticiel suivant, vous verrez comment gérer les conflits d’accès concurrentiel.
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="next-steps"></a>Étapes suivantes
 
-> [!div class="step-by-step"]
-> [Précédent](read-related-data.md)
-> [Suivant](concurrency.md)
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Pages de cours personnalisées
+> * Page de modification de formateur ajoutée
+> * Cours ajoutés à la page de modification
+> * Page Delete mise à jour
+> * Emplacements de bureau et cours ajoutés à la page Create
+
+Passez à l’article suivant pour apprendre à gérer les conflits d’accès concurrentiel.
+> [!div class="nextstepaction"]
+> [Gérer les conflits d’accès concurrentiel](concurrency.md)

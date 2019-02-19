@@ -1,27 +1,20 @@
 ---
-title: ASP.NET Core MVC avec EF Core - Accès concurrentiel - 8 sur 10
-author: rick-anderson
+title: 'Tutoriel : Gérer l’accès concurrentiel - ASP.NET MVC avec EF Core'
 description: Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 0ae566a76a2ef656843452ed537b8fdfbddaed22
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 7b18927d5d528ec2951087502e26b2b30214f389
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090899"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103018"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---concurrency---8-of-10"></a>ASP.NET Core MVC avec EF Core - Accès concurrentiel - 8 sur 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+# <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutoriel : Gérer l’accès concurrentiel - ASP.NET MVC avec EF Core
 
 Dans les didacticiels précédents, vous avez découvert comment mettre à jour des données. Ce didacticiel montre comment gérer les conflits quand plusieurs utilisateurs mettent à jour la même entité en même temps.
 
@@ -30,6 +23,23 @@ Vous allez créer des pages web qui utilisent l’entité Department et gérer l
 ![Page Edit pour les départements](concurrency/_static/edit-error.png)
 
 ![Page Delete pour les départements](concurrency/_static/delete-error.png)
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * En savoir plus sur les conflits d’accès concurrentiel
+> * Ajouter une propriété de suivi
+> * Créer un contrôleur Departments et des vues
+> * Mettre à jour la vue Index
+> * Mettre à jour les méthodes de modification
+> * Mettre à jour la vue Edit
+> * Tester les conflits d'accès concurrentiel
+> * Mettre à jour la page Delete
+> * Mettre à jour les vues Details et Create
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Mettre à jour les données associées avec EF Core dans une application web ASP.NET Core MVC](update-related-data.md)
 
 ## <a name="concurrency-conflicts"></a>Conflits d’accès concurrentiel
 
@@ -87,9 +97,9 @@ Vous pouvez résoudre les conflits en gérant les exceptions `DbConcurrencyExcep
 
 Dans le reste de ce didacticiel, vous ajoutez une propriété de suivi `rowversion` à l’entité Department, vous créez un contrôleur et des vues, et vous testez pour vérifier que tout fonctionne correctement.
 
-## <a name="add-a-tracking-property-to-the-department-entity"></a>Ajouter une propriété de suivi à l’entité Department
+## <a name="add-a-tracking-property"></a>Ajouter une propriété de suivi
 
-Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :
+Dans *Models/Department.cs*, ajoutez une propriété de suivi nommée RowVersion :
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
@@ -114,7 +124,7 @@ dotnet ef migrations add RowVersion
 dotnet ef database update
 ```
 
-## <a name="create-a-departments-controller-and-views"></a>Créer un contrôleur Departments et des vues
+## <a name="create-departments-controller-and-views"></a>Créer un contrôleur Departments et des vues
 
 Générez automatiquement un modèle de contrôleur Departments et des vues, comme vous l’avez fait précédemment pour les étudiants, les cours et les enseignants.
 
@@ -124,7 +134,7 @@ Dans le fichier *DepartmentsController.cs*, changez les quatre occurrences de «
 
 [!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_Dropdown)]
 
-## <a name="update-the-departments-index-view"></a>Mettre à jour la vue Index des départements
+## <a name="update-index-view"></a>Mettre à jour la vue Index
 
 Le moteur de génération de modèles automatique a créé une colonne RowVersion pour la vue Index, mais ce champ ne doit pas être affiché.
 
@@ -134,7 +144,7 @@ Remplacez le code dans *Students/Index.cshtml* par le code suivant.
 
 Ceci change l’en-tête en « Departments », supprime la colonne RowVersion et montre à l’administrateur le nom complet au lieu du prénom.
 
-## <a name="update-the-edit-methods-in-the-departments-controller"></a>Mettre à jour les méthodes Edit dans le contrôleur Departments
+## <a name="update-edit-methods"></a>Mettre à jour les méthodes de modification
 
 Dans la méthode HttpGet `Edit` et la méthode `Details`, ajoutez `AsNoTracking`. Dans la méthode HttpGet `Edit`, ajoutez un chargement hâtif pour l’administrateur.
 
@@ -172,7 +182,7 @@ Enfin, le code affecte la nouvelle valeur récupérée auprès de la base de don
 
 L’instruction `ModelState.Remove` est nécessaire, car `ModelState` contient l’ancienne valeur de `RowVersion`. Dans la vue, la valeur `ModelState` d’un champ est prioritaire par rapport aux valeurs de propriétés du modèle quand les deux sont présentes.
 
-## <a name="update-the-department-edit-view"></a>Mettre à jour la vue Edit pour un département
+## <a name="update-edit-view"></a>Mettre à jour la vue Edit
 
 Dans *Views/Departments/Edit.cshtml*, faites les modifications suivantes :
 
@@ -182,7 +192,7 @@ Dans *Views/Departments/Edit.cshtml*, faites les modifications suivantes :
 
 [!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
-## <a name="test-concurrency-conflicts-in-the-edit-page"></a>Tester les conflits d’accès concurrentiel dans la page Edit
+## <a name="test-concurrency-conflicts"></a>Tester les conflits d'accès concurrentiel
 
 Exécutez l’application et accédez à la page Index des départements. Cliquez avec le bouton droit sur le lien hypertexte **Edit** pour le département « English », sélectionnez **Ouvrir dans un nouvel onglet**, puis cliquez sur le lien hypertexte **Edit** pour le département « English ». Les deux onglets du navigateur affichent maintenant les mêmes informations.
 
@@ -276,12 +286,29 @@ Remplacez le code de *Views/Departments/Create.cshtml* pour ajouter une option d
 
 [!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Ceci termine l’introduction à la gestion des conflits d’accès concurrentiel. Pour plus d’informations sur la gestion de l’accès concurrentiel dans EF Core, consultez [Conflits d’accès concurrentiel](/ef/core/saving/concurrency). Le didacticiel suivant montre comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-> [!div class="step-by-step"]
-> [Précédent](update-related-data.md)
-> [Suivant](inheritance.md)
+ Pour plus d’informations sur la gestion de l’accès concurrentiel dans EF Core, consultez [Conflits d’accès concurrentiel](/ef/core/saving/concurrency).
+
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Conflits d’accès concurrentiel découverts
+> * Propriété de suivi ajoutée
+> * Contrôleur Departments et des vues créés
+> * Vue Index mise à jour
+> * Méthodes de modification mises à jour
+> * Vue Edit mise à jour
+> * Conflits d’accès concurrentiel testés
+> * Page Delete mise à jour
+> * Vues Details et Create mises à jour
+
+Passez à l’article suivant pour découvrir comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
+> [!div class="nextstepaction"]
+> [Implémenter l'héritage TPH (table par hiérarchie)](inheritance.md)

@@ -1,33 +1,40 @@
 ---
-title: ASP.NET Core MVC avec EF Core - Héritage - 9 sur 10
-author: rick-anderson
+title: 'Tutoriel : Implémenter l’héritage - ASP.NET MVC avec EF Core'
 description: Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données en utilisant Entity Framework Core dans une application ASP.NET Core.
+author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/05/2019
+ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 60417040dd296311e1aecff8f224aadf8da82779
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 0a5eb1aba43bc2adf746202772c7f98eff49b4ff
+ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090756"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103005"
 ---
-# <a name="aspnet-core-mvc-with-ef-core---inheritance---9-of-10"></a>ASP.NET Core MVC avec EF Core - Héritage - 9 sur 10
-
-[!INCLUDE [RP better than MVC](~/includes/RP-EF/rp-over-mvc-21.md)]
-
-::: moniker range="= aspnetcore-2.0"
-
-Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
-
-L’exemple d’application web Contoso University montre comment créer des applications web ASP.NET Core MVC avec Entity Framework Core et Visual Studio. Pour obtenir des informations sur la série de didacticiels, consultez [le premier didacticiel de la série](intro.md).
+# <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter l’héritage - ASP.NET MVC avec EF Core
 
 Dans le didacticiel précédent, vous avez géré les exceptions d’accès concurrentiel. Ce didacticiel vous indiquera comment implémenter l’héritage dans le modèle de données.
 
 En programmation orientée objet, vous pouvez utiliser l’héritage pour faciliter la réutilisation du code. Dans ce didacticiel, vous allez modifier les classes `Instructor` et `Student` afin qu’elles dérivent d’une classe de base `Person` qui contient des propriétés telles que `LastName`, communes aux formateurs et aux étudiants. Vous n’ajouterez ni ne modifierez aucune page web, mais vous modifierez une partie du code et ces modifications seront automatiquement répercutées dans la base de données.
 
-## <a name="options-for-mapping-inheritance-to-database-tables"></a>Options pour mapper l’héritage aux tables de base de données
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Mapper l’héritage à la base de données
+> * Créer la classe Person
+> * Mettre à jour Student et Instructor
+> * Ajouter la classe Person au modèle
+> * Créer et mettre à jour des migrations
+> * Tester l’implémentation
+
+## <a name="prerequisites"></a>Prérequis
+
+* [Gérer l’accès concurrentiel avec EF Core dans une application web ASP.NET Core MVC](concurrency.md)
+
+## <a name="map-inheritance-to-database"></a>Mapper l’héritage à la base de données
 
 Les classes `Instructor` et `Student` du modèle de données School ont plusieurs propriétés identiques :
 
@@ -64,7 +71,7 @@ Dans le dossier Models, créez Person.cs et remplacez le code du modèle par le 
 
 [!code-csharp[](intro/samples/cu/Models/Person.cs)]
 
-## <a name="make-student-and-instructor-classes-inherit-from-person"></a>Paramétrer les classes Student et Instructor pour qu’elles héritent de Person
+## <a name="update-instructor-and-student"></a>Mettre à jour Student et Instructor
 
 Dans *Instructor.cs*, dérivez la classe Instructor de la classe Person et supprimez les champs de clé et de nom. Le code ressemblera à l’exemple suivant :
 
@@ -74,7 +81,7 @@ Apportez les mêmes modifications dans *Student.cs*.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
-## <a name="add-the-person-entity-type-to-the-data-model"></a>Ajouter le type d’entité Person au modèle de données
+## <a name="add-person-to-the-model"></a>Ajouter la classe Person au modèle
 
 Ajoutez le type d’entité Person à *SchoolContext.cs*. Les nouvelles lignes apparaissent en surbrillance.
 
@@ -82,7 +89,7 @@ Ajoutez le type d’entité Person à *SchoolContext.cs*. Les nouvelles lignes a
 
 C’est là tout ce dont Entity Framework a besoin pour configurer l’héritage TPH (table par hiérarchie). Comme vous le verrez, lorsque la base de données sera mise à jour, elle aura une table Person à la place des tables Student et Instructor.
 
-## <a name="create-and-customize-migration-code"></a>Créer et personnaliser le code de migration
+## <a name="create-and-update-migrations"></a>Créer et mettre à jour des migrations
 
 Enregistrez vos modifications et générez le projet. Ensuite, ouvrez la fenêtre de commande dans le dossier du projet et entrez la commande suivante :
 
@@ -129,7 +136,7 @@ dotnet ef database update
 > [!NOTE]
 > Vous pouvez obtenir d’autres erreurs en apportant des modifications au schéma dans une base de données qui comporte déjà des données. Si vous obtenez des erreurs de migration que vous ne pouvez pas résoudre, vous pouvez changer le nom de la base de données dans la chaîne de connexion ou supprimer la base de données. Avec une nouvelle base de données, il n’y a pas de données à migrer et la commande de mise à jour de base de données a plus de chances de s’exécuter sans erreur. Pour supprimer la base de données, utilisez SSOX ou exécutez la commande CLI `database drop`.
 
-## <a name="test-with-inheritance-implemented"></a>Tester avec l’héritage implémenté
+## <a name="test-the-implementation"></a>Tester l’implémentation
 
 Exécutez l’application et essayez différentes pages. Tout fonctionne comme avant.
 
@@ -141,12 +148,26 @@ Cliquez avec le bouton droit sur la table Person, puis cliquez sur **Afficher le
 
 ![Table Person dans SSOX - données de la table](inheritance/_static/ssox-person-data.png)
 
-## <a name="summary"></a>Récapitulatif
+## <a name="get-the-code"></a>Obtenir le code
 
-Vous avez implémenté l’héritage TPH (table par hiérarchie) pour les classes `Person`, `Student` et `Instructor`. Pour plus d’informations sur l’héritage dans Entity Framework Core, consultez [Héritage](/ef/core/modeling/inheritance). Dans le prochain didacticiel, vous allez apprendre à gérer divers scénarios Entity Framework relativement avancés.
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
-::: moniker-end
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-> [!div class="step-by-step"]
-> [Précédent](concurrency.md)
-> [Suivant](advanced.md)
+Pour plus d’informations sur l’héritage dans Entity Framework Core, consultez [Héritage](/ef/core/modeling/inheritance).
+
+## <a name="next-steps"></a>Étapes suivantes
+
+Dans ce didacticiel, vous avez effectué les actions suivantes :
+
+> [!div class="checklist"]
+> * Héritage mappé à la base de données
+> * Classe Person créée
+> * Student et Instructor mis à jour
+> * Classe Person ajoutée au modèle
+> * Migrations créées et mises à jour
+> * Implémentation testée
+
+Passez à l’article suivant pour apprendre à gérer divers scénarios Entity Framework relativement avancés.
+> [!div class="nextstepaction"]
+> [Rubriques avancées](advanced.md)
