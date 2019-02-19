@@ -5,14 +5,14 @@ description: Découvrez comment configurer et utiliser le middleware de mise en 
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/26/2017
+ms.date: 02/16/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: 4b2c71aad4b5bcfee14a271303df5874ccfedb90
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: bb265d04022ec2f8fdb3f2f3bc42f6b3f0b2b338
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207327"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410321"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
@@ -103,8 +103,8 @@ Réponse mise en cache à l’intergiciel (middleware) est configuré à l’aid
 | Header | Détails |
 | ------ | ------- |
 | Autorisation | La réponse n’est pas mis en cache si l’en-tête existe. |
-| Cache-Control | Le middleware considère uniquement la mise en cache des réponses marquées avec la `public` directive de cache. Contrôler la mise en cache avec les paramètres suivants :<ul><li>âge maximal</li><li>obsolescence maximale&#8224;</li><li>frais de min</li><li>doit-revalidate.</li><li>non-cache</li><li>non-store</li><li>uniquement-if-cached</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-revalidate.&#8225;</li></ul>&#8224;Si aucune limite n’est spécifiée pour `max-stale`, l’intergiciel (middleware) n’effectue aucune action.<br>&#8225;`proxy-revalidate`a le même effet que `must-revalidate`.<br><br>Pour plus d’informations, consultez [7231 relative aux RFC : demander des Directives de Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
-| pragma | Un `Pragma: no-cache` en-tête dans la requête produit le même effet que `Cache-Control: no-cache`. Cet en-tête est remplacé par les directives pertinentes dans le `Cache-Control` en-tête, le cas échéant. Considéré comme pour la compatibilité descendante avec HTTP/1.0. |
+| Cache-Control | Le middleware considère uniquement la mise en cache des réponses marquées avec la `public` directive de cache. Contrôler la mise en cache avec les paramètres suivants :<ul><li>max-age</li><li>obsolescence maximale&#8224;</li><li>frais de min</li><li>doit-revalidate.</li><li>non-cache</li><li>non-store</li><li>only-if-cached</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-revalidate&#8225;</li></ul>&#8224;Si aucune limite n’est spécifiée pour `max-stale`, l’intergiciel (middleware) n’effectue aucune action.<br>&#8225;`proxy-revalidate`a le même effet que `must-revalidate`.<br><br>Pour plus d’informations, consultez [7231 relative aux RFC : Demander des Directives de Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2.1). |
+| Pragma | Un `Pragma: no-cache` en-tête dans la requête produit le même effet que `Cache-Control: no-cache`. Cet en-tête est remplacé par les directives pertinentes dans le `Cache-Control` en-tête, le cas échéant. Considéré comme pour la compatibilité descendante avec HTTP/1.0. |
 | Set-Cookie | La réponse n’est pas mis en cache si l’en-tête existe. N’importe quel intergiciel (middleware) dans le pipeline de traitement de la requête qui définit un ou plusieurs cookies empêche l’intergiciel de mise en cache de réponse de la mise en cache la réponse (par exemple, le [fournisseur TempData basé sur cookie](xref:fundamentals/app-state#tempdata)).  |
 | Vary | Le `Vary` en-tête est utilisé pour faire varier la réponse mise en cache par un autre en-tête. Par exemple, mettre en cache les réponses par l’encodage en incluant le `Vary: Accept-Encoding` en-tête, qui met en cache des réponses aux requêtes avec des en-têtes `Accept-Encoding: gzip` et `Accept-Encoding: text/plain` séparément. Une réponse avec une valeur d’en-tête de `*` n’est jamais stocké. |
 | Arrive à expiration | Une réponse jugée obsolète par cet en-tête n’est pas stockée ou récupérée sauf substitution par d’autres `Cache-Control` en-têtes. |
@@ -138,7 +138,7 @@ Lorsque le test et résolution des problèmes de comportement de mise en cache, 
 
 * La demande doit avoir pour résultat dans une réponse du serveur avec un code d’état 200 (OK).
 * La méthode de demande doit être GET ou HEAD.
-* Intergiciel de Terminal, tel que [Middleware de fichiers statiques](xref:fundamentals/static-files), ne doit pas traiter la réponse avant de l’intergiciel de mise en cache de réponse.
+* Intergiciel (middleware) Terminal Server ne doit pas traiter la réponse avant l’intergiciel de mise en cache de réponse.
 * Le `Authorization` en-tête ne doit pas être présent.
 * `Cache-Control` paramètres de l’en-tête doivent être valides, et la réponse doit être marquée `public` et pas marquée `private`.
 * Le `Pragma: no-cache` en-tête ne doit pas être présent si la `Cache-Control` en-tête n’est pas présent, comme le `Cache-Control` en-tête remplace le `Pragma` en-tête lorsqu’il est présent.
@@ -148,7 +148,7 @@ Lorsque le test et résolution des problèmes de comportement de mise en cache, 
 * Le [IHttpSendFileFeature](/dotnet/api/microsoft.aspnetcore.http.features.ihttpsendfilefeature) n’est pas utilisé.
 * La réponse ne doit pas être obsolète comme spécifié par le `Expires` en-tête et le `max-age` et `s-maxage` directives de mettre en cache.
 * Mise en mémoire tampon de réponse doit être réussie et la taille de la réponse doit être inférieure à la configuration ou par défaut `SizeLimit`.
-* La réponse doit être mis en cache en fonction de la [RFC 7234](https://tools.ietf.org/html/rfc7234) spécifications. Par exemple, le `no-store` directive ne doit pas exister dans les champs d’en-tête de demande ou réponse. Consultez *Section 3 : stocker les réponses dans les Caches* de [RFC 7234](https://tools.ietf.org/html/rfc7234) pour plus d’informations.
+* La réponse doit être mis en cache en fonction de la [RFC 7234](https://tools.ietf.org/html/rfc7234) spécifications. Par exemple, le `no-store` directive ne doit pas exister dans les champs d’en-tête de demande ou réponse. Consultez *Section 3 : Stockage des réponses dans les Caches* de [RFC 7234](https://tools.ietf.org/html/rfc7234) pour plus d’informations.
 
 > [!NOTE]
 > Jeux d’attaques par le système anti-contrefaçon pour générer des jetons sécurisés pour empêcher Cross-Site demande falsification de la `Cache-Control` et `Pragma` en-têtes à `no-cache` afin que les réponses ne sont pas mises en cache. Pour plus d’informations sur la désactivation des jetons anti-contrefaçon pour les éléments de formulaire HTML, consultez [configuration anti-contrefaçon ASP.NET Core](xref:security/anti-request-forgery#aspnet-core-antiforgery-configuration).

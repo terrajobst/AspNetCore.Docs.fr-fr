@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2019
 uid: spa/blazor/get-started
-ms.openlocfilehash: 8c984bab8a13b4fc2d87fd1a7e0b285dfa25ba09
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: 26336f73f6c8976ed5de819cebc3c5c50274ab03
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159587"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410006"
 ---
 # <a name="get-started-with-blazor"></a>Prise en main Blazor
 
@@ -32,7 +32,7 @@ Pour créer votre premier projet Blazor dans Visual Studio :
 1. Rendre les modèles Blazor disponible pour une utilisation avec l’interface CLI .NET Core en exécutant la commande suivante dans une invite de commandes :
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::0.8.0-preview-19104-04
    ```
 
 1. Sélectionnez **fichier** > **nouveau projet** > **Web** > **Application Web ASP.NET Core**.
@@ -97,7 +97,7 @@ Conditions préalables :
 1. Ajouter les modèles de Blazor en exécutant la commande suivante dans une invite de commandes :
 
    ```console
-   dotnet new -i Microsoft.AspNetCore.Blazor.Templates
+   dotnet new -i Microsoft.AspNetCore.Blazor.Templates::0.8.0-preview-19104-04
    ```
 
 1. Créer votre premier projet Blazor dans une invite de commandes :
@@ -122,9 +122,9 @@ Quand l’application est exécutée, plusieurs pages sont disponibles à partir
 * Counter
 * Récupérer des données
 
-Dans la page de compteur, sélectionnez le **Click me** bouton incrément du compteur sans une actualisation de la page. Incrémenter un compteur dans une page Web normalement requiert l’écriture de JavaScript, mais Blazor fournit une meilleure approche à l’aide C#.
+Sur la page Counter, sélectionnez le bouton **Click me** pour incrémenter le compteur sans actualisation de la page. Incrémenter un compteur dans une page Web normalement requiert l’écriture de JavaScript, mais Blazor fournit une meilleure approche à l’aide C#.
 
-*Pages/Counter.cshtml*:
+*Pages/Counter.cshtml* :
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter1.cshtml)]
 
@@ -150,13 +150,13 @@ Exécuter l’application. La page d’accueil a son propre compteur.
 Pour ajouter un paramètre au composant de compteur, mettre à jour du composant `@functions` bloc :
 
 * Ajouter une propriété pour `IncrementAmount` décorée avec le `[Parameter]` attribut.
-* Modifier le `IncrementCount` méthode à utiliser le `IncrementAmount` lorsque vous augmentez la valeur de `currentCount`.
+* Modifiez la méthode `IncrementCount` pour utiliser `IncrementAmount` lorsque vous augmentez la valeur de `currentCount`.
 
-*Pages/Counter.cshtml*:
+*Pages/Counter.cshtml* :
 
 [!code-cshtml[](get-started/samples_snapshot/3.x/Counter2.cshtml?highlight=4,8)]
 
-Spécifiez un `IncrementAmount` paramètre dans le composant accueil `<Counter>` élément à l’aide d’un attribut.
+Spécifiez un paramètre `IncrementAmount` dans l’élément `<Counter>` du composant Home à l’aide d’un attribut.
 
 *Pages/Index.cshtml* :
 

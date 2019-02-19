@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
 uid: security/authorization/policies
-ms.openlocfilehash: 937c73c26cd3935c5069d4735e754d1a567f41f4
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: be4812487c92a16c44e3983b234bc9e31be65190
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248106"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410387"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorisation basée sur des stratégies dans ASP.NET Core
 
@@ -120,7 +120,7 @@ Le `HandleRequirementAsync` méthode que vous implémentez dans un gestionnaire 
 
 Par exemple, MVC passe une instance de [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) dans le `Resource` propriété. Cette propriété fournit l’accès aux `HttpContext`, `RouteData`et tout autre fournie par MVC et les Pages Razor.
 
-L’utilisation de la `Resource` propriété est framework spécifique. À l’aide des informations contenues dans le `Resource` propriété limite vos stratégies d’autorisation aux infrastructures particuliers. Vous devez effectuer un cast du `Resource` à l’aide de la propriété le `as` mot clé, puis confirmez la conversion a été pour vérifier votre code ne se bloque avec une `InvalidCastException` lorsque vous travaillez sur d’autres infrastructures :
+L’utilisation de la `Resource` propriété est framework spécifique. À l’aide des informations contenues dans le `Resource` propriété limite vos stratégies d’autorisation aux infrastructures particuliers. Vous devez effectuer un cast du `Resource` à l’aide de la propriété le `is` mot clé, puis confirmez la conversion a réussi pour vérifier votre code ne se bloque avec une `InvalidCastException` lorsque vous travaillez sur d’autres infrastructures :
 
 ```csharp
 // Requires the following import:
