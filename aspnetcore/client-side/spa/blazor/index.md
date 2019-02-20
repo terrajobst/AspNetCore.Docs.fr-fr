@@ -1,18 +1,12 @@
 ---
 title: Introduction à Blazor
 author: guardrex
-description: Explorez ASP.NET Core Blazor, une nouvelle méthode pour créer des applications interactives côté client à l’aide de .NET s’exécutant dans le navigateur avec WebAssembly.
+description: 'Explorez ASP.NET Core Blazor, une nouvelle méthode pour créer des applications interactives côté client à l’aide de .NET s’exécutant dans le navigateur avec WebAssembly.'
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 uid: spa/blazor/index
-ms.openlocfilehash: 0d22365701a4fc1857582c13459280e50d59c858
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159581"
 ---
 # <a name="introduction-to-blazor"></a>Introduction à Blazor
 
@@ -27,7 +21,7 @@ L’utilisation de .NET dans le navigateur pour le développement web côté cli
 * **Langage C#** : Écriture de code dans C# plutôt que dans JavaScript.
 * **Écosystème .NET** : Tirez parti de l’écosystème existant des bibliothèques .NET.
 * **Développement de l’empilement complet** : Partager la logique côté client et côté serveur.
-* **Vitesse et extensibilité** : NET a été conçu pour la performance, la fiabilité et la sécurité.
+* **Rapidité et scalabilité** : .NET a été conçu pour la performance, la fiabilité et la sécurité.
 * **Outils de pointe** : Restez productif grâce à Visual Studio sur Windows, Linux et macOS.
 * **Stabilité et cohérence** :  Conçu sur un ensemble de langages, d’infrastructures et des outils stables, aux caractéristiques riches et faciles d’utilisation.
 
