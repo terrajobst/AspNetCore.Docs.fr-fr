@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 07/03/2017
 uid: mvc/controllers/actions
-ms.openlocfilehash: 3f3f565021d484b69401a3e03a2a966c92764a49
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.openlocfilehash: 8289424b3cd3678bea18a25c7850e409795d1577
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36275656"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410432"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 
@@ -33,7 +33,7 @@ Un contrôleur est une classe instanciable dans laquelle au moins une des condit
 
 Une classe de contrôleur ne doit pas avoir d’attribut `[NonController]` associé.
 
-Les contrôleurs doivent suivre le [principe de dépendances explicites](http://deviq.com/explicit-dependencies-principle/). Il existe deux approches pour implémenter ce principe. Si plusieurs actions de contrôleur nécessitent le même service, envisagez d’utiliser [l’injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour demander ces dépendances. Si le service est nécessaire pour une seule méthode d’action, envisagez d’utiliser [l’injection d’action](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) pour demander la dépendance.
+Les contrôleurs doivent suivre le [principe de dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies). Il existe deux approches pour implémenter ce principe. Si plusieurs actions de contrôleur nécessitent le même service, envisagez d’utiliser [l’injection de constructeur](xref:mvc/controllers/dependency-injection#constructor-injection) pour demander ces dépendances. Si le service est nécessaire pour une seule méthode d’action, envisagez d’utiliser [l’injection d’action](xref:mvc/controllers/dependency-injection#action-injection-with-fromservices) pour demander la dépendance.
 
 Dans le **M**odèle-**V**ue-**C**ontrôleur, un contrôleur est responsable du traitement initial de la demande et de l’instanciation du modèle. En règle générale, les décisions métier doivent être prises dans le modèle.
 
@@ -83,7 +83,7 @@ Il existe deux types de résultats dans cette catégorie : [Vue](xref:mvc/views/
 
     Ce type retourne un format JSON ou un format d’échange de données similaire pour représenter un objet d’une manière spécifique. Par exemple, `return Json(customer);` sérialise l’objet fourni au format JSON.
     
-    `File`, `PhysicalFile` et `VirtualFile` sont des méthodes courantes de ce type. Par exemple, `return PhysicalFile(customerFilePath, "text/xml");` retourne un fichier XML décrit par une valeur d’en-tête de réponse `Content-Type` « text/xml ».
+    `File` et `PhysicalFile` sont des méthodes courantes de ce type. Par exemple, `return PhysicalFile(customerFilePath, "text/xml");` retourne [PhysicalFileResult](/dotnet/api/microsoft.aspnetcore.mvc.physicalfileresult).
 
 #### <a name="3-methods-resulting-in-a-non-empty-response-body-formatted-in-a-content-type-negotiated-with-the-client"></a>3. Méthodes aboutissant à un corps de réponse non vide mise en forme selon un type de contenu négocié avec le client
 
@@ -93,7 +93,7 @@ Cette catégorie est plus connue sous le nom de **Négociation de contenu**. La 
 
 ### <a name="cross-cutting-concerns"></a>Problèmes transversaux
 
-En règle générale, les applications partagent des parties de leur flux de travail. C’est par exemple le cas d’une application qui exige une authentification pour l’accès au panier d’achat ou qui met en cache les données de certaines pages. Pour exécuter la logique avant ou après une méthode d’action, utilisez un *filtre*. L’utilisation de [filtres](xref:mvc/controllers/filters) pour les problèmes transversaux peut réduire la duplication, ce qui leur permet de suivre le [principe DRY (Don’t Repeat Yourself)](http://deviq.com/don-t-repeat-yourself/).
+En règle générale, les applications partagent des parties de leur flux de travail. C’est par exemple le cas d’une application qui exige une authentification pour l’accès au panier d’achat ou qui met en cache les données de certaines pages. Pour exécuter la logique avant ou après une méthode d’action, utilisez un *filtre*. L’utilisation de [Filtres](xref:mvc/controllers/filters) sur les problèmes transversaux peut réduire la duplication.
 
 La plupart des attributs des filtres, comme `[Authorize]`, peuvent être appliqués au niveau du contrôleur ou de l’action, selon le niveau de granularité souhaité.
 

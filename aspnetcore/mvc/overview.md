@@ -5,12 +5,12 @@ description: ASP.NET Core MVC est une infrastructure riche pour la création d�
 ms.author: riande
 ms.date: 01/08/2018
 uid: mvc/overview
-ms.openlocfilehash: d2a50e48c20fe69b1fe691bfc9c91a27d4219922
-ms.sourcegitcommit: 5a2456cbf429069dc48aaa2823cde14100e4c438
+ms.openlocfilehash: 205948cb45709b4eb6014aaf4960bf193a20dc30
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41902597"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410308"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Vue d’ensemble d’ASP.NET Core MVC
 
@@ -20,13 +20,13 @@ ASP.NET Core MVC est un puissant framework qui vous permet de générer des appl
 
 ## <a name="what-is-the-mvc-pattern"></a>Qu’est-ce que le modèle MVC ?
 
-Le modèle d’architecture Model-View-Controller (MVC) sépare une application en trois groupes de composants principaux : les modèles, les vues et les contrôleurs. Ce modèle permet d’effectuer la [séparation des préoccupations](http://deviq.com/separation-of-concerns/). En utilisant ce modèle, les demandes de l’utilisateur sont acheminées vers un contrôleur qui a la responsabilité de fonctionner avec le modèle pour effectuer des actions de l’utilisateur et/ou de récupérer les résultats de requêtes. Le contrôleur choisit la vue à afficher à l’utilisateur et lui fournit toutes les données de modèle dont elle a besoin.
+Le modèle d’architecture Model-View-Controller (MVC) sépare une application en trois groupes de composants principaux : Les modèles, les vues et les contrôleurs. Ce modèle permet d’effectuer la [séparation des préoccupations](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns). En utilisant ce modèle, les demandes de l’utilisateur sont acheminées vers un contrôleur qui a la responsabilité de fonctionner avec le modèle pour effectuer des actions de l’utilisateur et/ou de récupérer les résultats de requêtes. Le contrôleur choisit la vue à afficher à l’utilisateur et lui fournit toutes les données de modèle dont elle a besoin.
 
 Le diagramme suivant montre les trois composants principaux et leurs relations entre eux :
 
 ![Modèle MVC](overview/_static/mvc.png)
 
-Cette délimitation des responsabilités vous aide à mettre à l’échelle la complexité de l’application, car il est plus facile de coder, déboguer et tester une chose (modèle, vue ou contrôleur) qui a un seul travail (et suit le [principe de responsabilité unique](http://deviq.com/single-responsibility-principle/)). Il est plus difficile de mettre à jour, tester et déboguer du code dont les dépendances sont réparties sur deux de ces domaines ou plus. Par exemple, la logique de l’interface utilisateur a tendance à changer plus fréquemment que la logique métier. Si le code de présentation et la logique métier sont combinés en un seul objet, l’objet contenant la logique métier doit être modifié chaque fois que l’interface utilisateur change. Cela introduit souvent des erreurs et nécessite de retester la logique métier après chaque changement minimal de l’interface utilisateur.
+Cette délimitation des responsabilités vous aide à mettre à l’échelle la complexité de l’application, car il est plus facile de coder, déboguer et tester une chose (modèle, vue ou contrôleur) qui a un seul travail. Il est plus difficile de mettre à jour, tester et déboguer du code dont les dépendances sont réparties sur deux de ces domaines ou plus. Par exemple, la logique de l’interface utilisateur a tendance à changer plus fréquemment que la logique métier. Si le code de présentation et la logique métier sont combinés en un seul objet, l’objet contenant la logique métier doit être modifié chaque fois que l’interface utilisateur change. Cela introduit souvent des erreurs et nécessite de retester la logique métier après chaque changement minimal de l’interface utilisateur.
 
 > [!NOTE]
 > La vue et le contrôleur dépendent tous deux du modèle. Toutefois, le modèle ne dépend ni de la vue ni du contrôleur. Il s’agit de l’un des principaux avantages de la séparation. Cette séparation permet de générer et de tester le modèle indépendamment de la présentation visuelle.
@@ -34,9 +34,6 @@ Cette délimitation des responsabilités vous aide à mettre à l’échelle la 
 ### <a name="model-responsibilities"></a>Responsabilités du modèle
 
 Le modèle d’une application MVC représente l’état de l’application, ainsi que la logique métier ou les opérations à effectuer. La logique métier doit être encapsulée dans le modèle, ainsi que toute autre logique d’implémentation pour la persistance de l’état de l’application. En général, les vues fortement typées utilisent des types ViewModel conçus pour contenir les données à afficher sur cette vue. Le contrôleur crée et remplit ces instances de ViewModel à partir du modèle.
-
-> [!NOTE]
-> Il existe de nombreuses façons d’organiser le modèle dans une application qui utilise le modèle d'architecture MVC. Pour en savoir plus, consultez les informations sur les [différents genres de types de modèle](http://deviq.com/kinds-of-models/).
 
 ### <a name="view-responsibilities"></a>Responsabilités de la vue
 
@@ -47,10 +44,10 @@ Les vues sont responsables de la présentation du contenu via l’interface util
 Les contrôleurs sont des composants qui gèrent l’interaction avec l’utilisateur, fonctionnent avec le modèle et, au final, sélectionnent une vue à afficher. Dans une application MVC, la vue affiche uniquement des informations ; le contrôleur gère les entrées et interactions des utilisateurs, et y répond. Dans le modèle MVC, le contrôleur est le point d’entrée initial. Il est responsable de la sélection des types de modèle à utiliser et de la vue à afficher (ce qui explique son nom, car il contrôle la manière dont l’application répond à une requête donnée).
 
 > [!NOTE]
-> Vous devez éviter les excès de responsabilités pour ne pas rendre les contrôleurs trop complexes. Pour éviter que la logique du contrôleur ne devienne trop complexe, utilisez le [principe de responsabilité unique](http://deviq.com/single-responsibility-principle/) afin d’envoyer (push) la logique métier hors du contrôleur vers le modèle de domaine.
+> Vous devez éviter les excès de responsabilités pour ne pas rendre les contrôleurs trop complexes. Pour éviter que la logique du contrôleur ne devienne trop complexe, envoyez (push) la logique métier hors du contrôleur vers le modèle de domaine.
 
 >[!TIP]
-> Si vous constatez que le contrôleur effectue souvent les mêmes genres d’action, vous pouvez suivre le [principe DRY (Ne vous répétez pas)](http://deviq.com/don-t-repeat-yourself/) en plaçant ces actions usuelles dans des [filtres](#filters).
+> Si vous constatez que le contrôleur effectue souvent les mêmes genres d’action, placez ces actions usuelles dans des [filtres](#filters).
 
 ## <a name="what-is-aspnet-core-mvc"></a>Nouveautés d’ASP.NET Core MVC
 
@@ -146,7 +143,7 @@ Le framework gère la validation des données de requête à la fois sur le clie
 
 ### <a name="dependency-injection"></a>Injection de dépendances
 
-ASP.NET Core offre une prise en charge intégrée de l’[injection de dépendances](../fundamentals/dependency-injection.md). Dans ASP.NET Core MVC, les [contrôleurs](controllers/dependency-injection.md) peuvent demander les services nécessaires via leurs constructeurs, ce qui leur permet de suivre le [principe des dépendances explicites](http://deviq.com/explicit-dependencies-principle/).
+ASP.NET Core offre une prise en charge intégrée de l’[injection de dépendances](../fundamentals/dependency-injection.md). Dans ASP.NET Core MVC, les [contrôleurs](controllers/dependency-injection.md) peuvent demander les services nécessaires via leurs constructeurs, ce qui leur permet de suivre le [principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
 
 Votre application peut également utiliser l’[injection de dépendances dans les fichiers de vue](views/dependency-injection.md), à l’aide de la directive `@inject` :
 

@@ -5,12 +5,12 @@ description: Découvrez comment les composants de vue sont utilisés dans ASP.NE
 ms.author: riande
 ms.date: 1/30/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: d0e528fcf9e20afee98e74fbc09c67b81e123e95
-ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
+ms.openlocfilehash: d979c9480f7bffff993f0ea526bdc231b940baa2
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55428393"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410480"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -240,7 +240,7 @@ Si la vue PVC ne s’affiche pas, vérifiez que vous appelez le composant de vue
 
 ![Affichage de tâches ToDo avec la vue de composant Shared](view-components/_static/shared.png)
 
-### <a name="avoiding-magic-strings"></a>Éviter les chaînes magiques
+### <a name="avoiding-hard-coded-strings"></a>Éviter les chaînes codées en dur
 
 Pour éviter d’éventuels problèmes au moment de la compilation, vous pouvez remplacer le nom du composant de vue codé en dur par le nom de la classe. Créez le composant de vue sans le suffixe « ViewComponent » :
 

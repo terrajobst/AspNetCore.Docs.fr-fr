@@ -5,12 +5,12 @@ description: Découvrez comment les vues gèrent la présentation des données e
 ms.author: riande
 ms.date: 12/12/2017
 uid: mvc/views/overview
-ms.openlocfilehash: 276540a5d77b1d65119d1b2104508d77f45d5588
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 6c5b4d7b89ac07a85b5aad626e37855de98064eb
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219366"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410433"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
@@ -34,7 +34,7 @@ Les [composants de vue](xref:mvc/views/view-components) sont similaires aux vues
 
 ## <a name="benefits-of-using-views"></a>Avantages de l’utilisation des vues
 
-Les vues facilitent l’implémentation du principe de conception basé sur la séparation des préoccupations ([SoC, Separation of Concerns](http://deviq.com/separation-of-concerns/)) au sein d’une application MVC. En effet, elles permettent de séparer le balisage de l’interface utilisateur des autres parties de l’application. Une application conçue selon ce principe présente une plus grande modularité, ce qui offre plusieurs avantages :
+Les vues facilitent l’implémentation du principe de conception basé sur la séparation des préoccupations ([separation of concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)) au sein d’une application MVC. En effet, elles permettent de séparer le balisage de l’interface utilisateur des autres parties de l’application. Une application conçue selon ce principe présente une plus grande modularité, ce qui offre plusieurs avantages :
 
 * L’application est plus facile à gérer, car elle est mieux organisée. Les vues sont généralement regroupées par fonctionnalité dans l’application. Vous pouvez ainsi trouver plus rapidement les vues associées quand vous utilisez une fonctionnalité.
 * Les différentes parties de l’application sont faiblement couplées. Vous pouvez générer et mettre à jour les vues de l’application séparément de la logique métier et des composants d’accès aux données. Vous pouvez modifier les vues de l’application sans avoir nécessairement besoin de mettre à jour d’autres parties de l’application.

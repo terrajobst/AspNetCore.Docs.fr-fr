@@ -5,12 +5,12 @@ description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pou
 ms.author: riande
 ms.date: 02/14/2017
 uid: mvc/controllers/areas
-ms.openlocfilehash: b78bb5146f1ab9039fa9ff015471654510718ed6
-ms.sourcegitcommit: ecf2cd4e0613569025b28e12de3baa21d86d4258
+ms.openlocfilehash: 19e818fa198936ea1bee0da8039e88a3c0abbf6b
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43312216"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410610"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -41,37 +41,21 @@ Caractéristiques des zones :
 Examinons un exemple pour illustrer la façon dont les zones sont créées et utilisées. Supposons que vous avez une application de magasin avec deux regroupements distincts de contrôleurs et de vues : Produits et Services. Voici une structure de dossiers classique pour ce type d’application avec des zones MVC :
 
 * Nom du projet
-
   * Zones (Areas)
-
     * Produits
-
       * Contrôleurs
-
         * HomeController.cs
-
         * ManageController.cs
-
       * Affichages
-
         * Accueil
-
           * Index.cshtml
-
         * Gérer
-
           * Index.cshtml
-
     * Services
-
       * Contrôleurs
-
         * HomeController.cs
-
       * Affichages
-
         * Accueil
-
           * Index.cshtml
 
 Quand MVC tente d’afficher une vue dans une zone, par défaut, il tente de chercher aux emplacements suivants :

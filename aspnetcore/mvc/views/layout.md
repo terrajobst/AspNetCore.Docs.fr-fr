@@ -5,12 +5,12 @@ description: Apprenez à utiliser des dispositions communes, à partager des dir
 ms.author: riande
 ms.date: 10/18/2018
 uid: mvc/views/layout
-ms.openlocfilehash: b23fd4e0b1d91a4dd5aae548aa2b2081aa37a561
-ms.sourcegitcommit: f43f430a166a7ec137fcad12ded0372747227498
+ms.openlocfilehash: 1bd225c804b333efea834a46b7d9ba46b1bb69d8
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49391295"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410571"
 ---
 # <a name="layout-in-aspnet-core"></a>Disposition dans ASP.NET Core
 
@@ -33,11 +33,11 @@ La plupart des applications web ont une disposition commune pour offrir aux util
 
 ![Exemple de disposition de page](layout/_static/page-layout.png)
 
-Les structures HTML communes comme les scripts et les feuilles de style sont aussi fréquemment utilisées par bon nombre de pages dans une application. Tous ces éléments partagés peuvent être définis dans un fichier de *disposition*, qui peut ensuite être référencé par n’importe quelle vue utilisée dans l’application. Les dispositions réduisent la répétition de code dans les vues, selon le [principe Ne vous répétez pas (DRY, Don’t Repeat Yourself)](http://deviq.com/don-t-repeat-yourself/).
+Les structures HTML communes comme les scripts et les feuilles de style sont aussi fréquemment utilisées par bon nombre de pages dans une application. Tous ces éléments partagés peuvent être définis dans un fichier de *disposition*, qui peut ensuite être référencé par n’importe quelle vue utilisée dans l’application. Les dispositions réduisent les doublons de code dans les vues.
 
 Par convention, la disposition par défaut d’une application ASP.NET Core se nomme *_Layout.cshtml*. Le fichier de disposition pour les projets ASP.NET Core créés avec les modèles :
 
-* Razor Pages : *Pages/Shared/_Layout.cshtml*
+* Pages Razor : *Pages/Shared/_Layout.cshtml*
 
   ![Dossier Pages dans l’Explorateur de solutions](layout/_static/rp-web-project-views.png)
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 3626ce834b904db64c1976aefc77dc60a7bfdf1c
-ms.sourcegitcommit: 4a6bbe84db24c2f3dd2de065de418fde952c8d40
+ms.openlocfilehash: 5e5b9746da9bbc13a147b807aabfd3d9ab90a0ca
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50253167"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410506"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -342,32 +342,32 @@ Les deux sorties suivantes montrent les résultats de deux requêtes :
 Opérations du contrôleur :
 
 Transient: d233e165-f417-469b-a866-1cf1935d2518  
-Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance: 00000000-0000-0000-0000-000000000000
+Délimité : 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance : 00000000-0000-0000-0000-000000000000
 
 Opérations `OperationService` :
 
 Transient: c6b049eb-1318-4e31-90f1-eb2dd849ff64  
-Scoped: 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
-Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance: 00000000-0000-0000-0000-000000000000
+Délimité : 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
+Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance : 00000000-0000-0000-0000-000000000000
 
 **Deuxième requête :**
 
 Opérations du contrôleur :
 
 Transient: b63bd538-0a37-4ff1-90ba-081c5138dda0  
-Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
-Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance: 00000000-0000-0000-0000-000000000000
+Délimité : 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance : 00000000-0000-0000-0000-000000000000
 
 Opérations `OperationService` :
 
 Transient: c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
-Scoped: 31e820c5-4834-4d22-83fc-a60118acb9f4  
-Singleton: 01271bc1-9e31-48e7-8f7c-7261b040ded9  
-Instance: 00000000-0000-0000-0000-000000000000
+Délimité : 31e820c5-4834-4d22-83fc-a60118acb9f4  
+Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
+Instance : 00000000-0000-0000-0000-000000000000
 
 Observez les valeurs `OperationId` qui varient au sein d’une requête et entre les requêtes :
 
@@ -437,10 +437,9 @@ En règle générale, l’application ne doit pas utiliser directement ces propr
 Les bonnes pratiques permettent de :
 
 * Concevoir des services afin d’utiliser l’injection de dépendances pour obtenir leurs dépendances.
-* Éviter les appels de méthode statiques avec état (une pratique appelée [static cling](https://deviq.com/static-cling/)).
+* Éviter les appels de méthode statiques avec état.
 * Éviter une instanciation directe de classes dépendantes au sein de services. L’instanciation directe associe le code à une implémentation particulière.
-
-En suivant les [principes SOLID de conception orientée objet](https://deviq.com/solid/), les classes d’application ont naturellement tendance à être petites, bien factorisées et facilement testées.
+* Limiter la taille des classes d’application, faire en sorte qu’elles soient bien factorisées et facilement testées.
 
 Si une classe semble avoir trop de dépendances injectées, cela signifie généralement que la classe a trop de responsabilités et viole le [principe de responsabilité unique](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility). Essayez de refactoriser la classe en déplaçant certaines de ses responsabilités dans une nouvelle classe. N’oubliez pas que les classes du modèle de page Razor Pages et les classes du contrôleur MVC doivent se concentrer sur les problèmes d’interface utilisateur. Les règles d’entreprise et les détails d’implémentation de l’accès aux données doivent être conservés dans les classes appropriées à ces [préoccupations distinctes](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns).
 
@@ -488,7 +487,7 @@ Le conteneur de services intégré a vocation à répondre aux besoins du framew
 * Gestion personnalisée de la durée de vie
 * `Func<T>` prend en charge l’initialisation tardive
 
-Pour obtenir une liste de certains des conteneurs qui prennent en charge des adaptateurs, consultez le [fichier readme.md relatif à l’injection de dépendances](https://github.com/aspnet/DependencyInjection#using-other-containers-with-microsoftextensionsdependencyinjection).
+Pour obtenir une liste de certains des conteneurs qui prennent en charge des adaptateurs, consultez le [fichier readme.md relatif à l’injection de dépendances](https://github.com/aspnet/Extensions/tree/master/src/DependencyInjection).
 
 L’exemple suivant remplace le conteneur intégré par [Autofac](https://autofac.org/) :
 
@@ -560,8 +559,7 @@ L’injection de dépendance constitue une *alternative* aux modèles d’accès
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [Écrire un code clair dans ASP.NET Core avec l’injection de dépendance (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
-* [Prélude à la conception d’une application gérée par conteneur : à qui appartient le conteneur ?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
+* [Conception d’application managée par conteneur, préambule : Où soit se situer le conteneur ?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
 * [Principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
 * [Conteneurs d’inversion de contrôle et modèle d’injection de dépendances (Martin Fowler)](https://www.martinfowler.com/articles/injection.html)
-* [New is Glue (un code de « collage » dans une implémentation particulière)](https://ardalis.com/new-is-glue)
 * [Comment inscrire un service avec plusieurs interfaces dans l’injection de dépendance ASP.NET Core](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/)

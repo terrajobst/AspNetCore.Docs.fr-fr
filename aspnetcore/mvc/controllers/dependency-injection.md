@@ -5,12 +5,12 @@ description: Découvrez comment les contrôleurs ASP.NET Core MVC demandent expl
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 12247dbbbb6de3f8feb7bc37caec4ecf4bd21719
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 9d9d0a68927da62fad8df72c868eaf4b8ada440d
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206339"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410269"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>Injection de dépendances dans les contrôleurs dans ASP.NET Core
 
@@ -24,7 +24,7 @@ Les contrôleurs ASP.NET Core MVC doivent demander leurs dépendances explicitem
 
 ## <a name="dependency-injection"></a>Injection de dépendances
 
-L’injection de dépendances est une technique qui suit le [principe d’inversion de dépendance](http://deviq.com/dependency-inversion-principle/) et permet de composer des applications avec des modules faiblement couplés. ASP.NET Core a une prise en charge intégrée de [l’injection de dépendances](../../fundamentals/dependency-injection.md), ce qui facilite le test et la gestion des applications.
+ASP.NET Core a une prise en charge intégrée de [l’injection de dépendances](../../fundamentals/dependency-injection.md), ce qui facilite le test et la gestion des applications.
 
 ## <a name="constructor-injection"></a>Injection de constructeurs
 
@@ -63,7 +63,7 @@ Une fois que le service a été configuré, l’exécution de l’application et
 ![Message d’accueil du serveur](dependency-injection/_static/server-greeting.png)
 
 >[!TIP]
-> Consultez [Tester la logique du contrôleur](testing.md) pour découvrir comment demander explicitement les dépendances ([http://deviq.com/explicit-dependencies-principle/](http://deviq.com/explicit-dependencies-principle/)) dans les contrôleurs afin de rendre le code plus facile à tester.
+> Consultez [Tester la logique du contrôleur](testing.md) pour découvrir comment rendre le code plus facile à tester en demandant explicitement les dépendances dans les contrôleurs.
 
 L’injection de dépendances intégrée d’ASP.NET Core ne prend en charge qu’un seul constructeur pour les classes demandant des services. Si vous avez plusieurs constructeurs, vous pouvez recevoir une exception indiquant :
 
@@ -101,4 +101,4 @@ Une fois que vous avez spécifié un objet de configuration fortement typé (dan
 
 [!code-csharp[](./dependency-injection/sample/src/ControllerDI/Controllers/SettingsController.cs?highlight=3,5,7&range=7-22)]
 
-Suivre le modèle Options permet de découpler les paramètres et la configuration, et garantit que le contrôleur est conforme à la [séparation des problèmes](http://deviq.com/separation-of-concerns/), car il n’a pas besoin de savoir ni comment ni où rechercher les informations des paramètres. Cela simplifie également les tests unitaires du contrôleur ([Tester la logique du contrôleur](testing.md)), car il n’y a pas de [couplage des fonctionnalités statiques](http://deviq.com/static-cling/) ni d’instanciation directe de classes de paramètres au sein de la classe du contrôleur.
+Suivre le modèle Options permet de découpler les paramètres et la configuration, et garantit que le contrôleur est conforme à la [séparation des problèmes](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns), car il n’a pas besoin de savoir ni comment ni où rechercher les informations des paramètres. Cela simplifie également les [tests unitaires](testing.md) du contrôleur, car il n’y a pas d’instanciation directe de classes de paramètres au sein de la classe du contrôleur.

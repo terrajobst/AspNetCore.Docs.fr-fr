@@ -5,14 +5,14 @@ description: Découvrez comment améliorer une application ASP.NET Core à parti
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 11/22/2018
+ms.date: 02/14/2019
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: cf7114698635ab2d61fa19eb15b6a8c61a751e5b
-ms.sourcegitcommit: b34b25da2ab68e6495b2460ff570468f16a9bf0d
+ms.openlocfilehash: cffad201c84414ee4788877d80d3619a9013ae99
+ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284719"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56410493"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Utiliser des assemblys de démarrage d’hébergement dans ASP.NET Core
 
@@ -82,7 +82,7 @@ Une amélioration de l’hébergement au démarrage peut être fournie dans une 
 * Contient une classe d’hébergement au démarrage, `ServiceKeyInjection`, qui implémente `IHostingStartup`. `ServiceKeyInjection` ajoute une paire de chaînes de service à la configuration de l’application par le biais du fournisseur de configuration en mémoire ([AddInMemoryCollection](/dotnet/api/microsoft.extensions.configuration.memoryconfigurationbuilderextensions.addinmemorycollection)).
 * Inclut un attribut `HostingStartup` qui identifie l’espace de noms et la classe d’hébergement au démarrage.
 
-La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) de la classe `ServiceKeyInjection` utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des améliorations à une application. `IHostingStartup.Configure` dans l’assembly d’hébergement au démarrage est appelé par le runtime avant `Startup.Configure` dans le code utilisateur, ce qui permet au code utilisateur de remplacer la configuration fournie par l’assembly d’hébergement au démarrage.
+La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) de la classe `ServiceKeyInjection` utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des améliorations à une application.
 
 *HostingStartupLibrary/ServiceKeyInjection.cs* :
 
@@ -146,6 +146,46 @@ Durant la génération d’un projet `IHostingStartup`, le fichier de dépendanc
 [!code-json[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement1.deps.json?range=2-13&highlight=8)]
 
 Seule une partie du fichier est affichée. Le nom de l’assembly dans l’exemple est `StartupEnhancement`.
+
+## <a name="configuration-provided-by-the-hosting-startup"></a>Configuration fournie par le démarrage d’hébergement
+
+Il existe deux approches de gestion de la configuration selon si vous souhaitez que la configuration du démarrage d’hébergement ait la priorité ou que la configuration d’application ait la priorité :
+
+1. Fournissez la configuration à l’application à l’aide de <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureAppConfiguration*> pour charger la configuration après l’exécution des délégués <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureAppConfiguration*> de l’application. Avec cette approche, la configuration de démarrage d’hébergement est prioritaire sur la configuration d’application.
+1. Fournissez la configuration à l’application à l’aide de <xref:Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseConfiguration*> pour charger la configuration avant l’exécution des délégués <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder.ConfigureAppConfiguration*> de l’application. Avec cette approche, les valeurs de la configuration d’application sont prioritaires sur celles fournies par le démarrage d’hébergement.
+
+```csharp
+public class ConfigurationInjection : IHostingStartup
+{
+    public void Configure(IWebHostBuilder builder)
+    {
+        Dictionary<string, string> dict;
+
+        builder.ConfigureAppConfiguration(config =>
+        {
+            dict = new Dictionary<string, string>
+            {
+                {"ConfigurationKey1", 
+                    "From IHostingStartup: Higher priority than the app's configuration."},
+            };
+
+            config.AddInMemoryCollection(dict);
+        });
+
+        dict = new Dictionary<string, string>
+        {
+            {"ConfigurationKey2", 
+                "From IHostingStartup: Lower priority than the app's configuration."},
+        };
+
+        var builtConfig = new ConfigurationBuilder()
+            .AddInMemoryCollection(dict)
+            .Build();
+
+        builder.UseConfiguration(builtConfig);
+    }
+}
+```
 
 ## <a name="specify-the-hosting-startup-assembly"></a>Spécifier l’assembly d’hébergement au démarrage
 
