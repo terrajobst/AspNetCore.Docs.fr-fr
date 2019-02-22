@@ -5,14 +5,14 @@ description: Découvrez comment configurer et utiliser le middleware de mise en 
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/16/2019
+ms.date: 02/20/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: bb265d04022ec2f8fdb3f2f3bc42f6b3f0b2b338
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: c7c3dbd0c9cf029fa6921d77450e780768c8aa6e
+ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410321"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56647913"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
@@ -138,7 +138,7 @@ Lorsque le test et résolution des problèmes de comportement de mise en cache, 
 
 * La demande doit avoir pour résultat dans une réponse du serveur avec un code d’état 200 (OK).
 * La méthode de demande doit être GET ou HEAD.
-* Intergiciel (middleware) Terminal Server ne doit pas traiter la réponse avant l’intergiciel de mise en cache de réponse.
+* Dans `Startup.Configure`, intergiciel (middleware) de réponse mise en cache doit être placé avant un intergiciel (middleware) qui nécessitent la compression. Pour plus d'informations, consultez <xref:fundamentals/middleware/index>.
 * Le `Authorization` en-tête ne doit pas être présent.
 * `Cache-Control` paramètres de l’en-tête doivent être valides, et la réponse doit être marquée `public` et pas marquée `private`.
 * Le `Pragma: no-cache` en-tête ne doit pas être présent si la `Cache-Control` en-tête n’est pas présent, comme le `Cache-Control` en-tête remplace le `Pragma` en-tête lorsqu’il est présent.
