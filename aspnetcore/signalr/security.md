@@ -7,12 +7,12 @@ ms.author: anurse
 ms.custom: mvc
 ms.date: 11/06/2018
 uid: signalr/security
-ms.openlocfilehash: 52cfac6be8e61572acdf0b19dab574b607314d97
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 6e9f849ed856cf1cbf989b8b16cab5209c465471
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836062"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743785"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>Considérations de sécurité dans ASP.NET Core SignalR
 
@@ -77,7 +77,7 @@ info: Microsoft.AspNetCore.Hosting.Internal.WebHost[1]
       Request starting HTTP/1.1 GET http://localhost:5000/myhub?access_token=1234
 ```
 
-Si vous avez des questions sur l’enregistrement de ces données avec les journaux de votre serveur, vous pouvez désactiver cette journalisation entièrement en configurant le `Microsoft.AspNetCore.Hosting` enregistreur d’événements à la `Warning` niveau ou version ultérieure (ces messages sont écrits au `Info` niveau). Consultez la documentation sur [filtrage de journal](xref:fundamentals/logging/index#log-filtering) pour plus d’informations. Si vous souhaitez toujours enregistrer certaines informations de demande, vous pouvez [écrire un intergiciel (middleware)](xref:fundamentals/middleware/index#write-middleware) pour journaliser les données que vous avez besoin et éliminer les `access_token` valeur de chaîne de requête (le cas échéant).
+Si vous avez des questions sur l’enregistrement de ces données avec les journaux de votre serveur, vous pouvez désactiver cette journalisation entièrement en configurant le `Microsoft.AspNetCore.Hosting` enregistreur d’événements à la `Warning` niveau ou version ultérieure (ces messages sont écrits au `Info` niveau). Consultez la documentation sur [filtrage de journal](xref:fundamentals/logging/index#log-filtering) pour plus d’informations. Si vous souhaitez toujours enregistrer certaines informations de demande, vous pouvez [écrire un intergiciel (middleware)](xref:fundamentals/middleware/write) pour journaliser les données que vous avez besoin et éliminer les `access_token` valeur de chaîne de requête (le cas échéant).
 
 ## <a name="exceptions"></a>Exceptions
 

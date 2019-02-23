@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le fournisseur de Configuration de coff
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/08/2019
+ms.date: 02/22/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: f70389c86420d81e284ecc863ac8386f726ed2cf
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 2188929d6f380327465e8ce0fd8ad659188416d3
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103109"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743983"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de Configuration d’Azure Key Vault dans ASP.NET Core
 
@@ -116,7 +116,7 @@ Les instructions fournies par le [Guide de démarrage rapide : Définir et réc
 Configurer Azure AD, Azure Key Vault et l’application à utiliser un ID d’Application et le mot de passe (clé secrète Client) pour authentifier un coffre de clés **lorsque l’application est hébergée en dehors d’Azure**.
 
 > [!NOTE]
-> À l’aide d’un ID d’Application et le mot de passe (clé secrète Client) est pris en charge pour les applications hébergées dans Azure, nous vous recommandons d’utiliser [gérés d’identités pour les ressources Azure](#use-managed-identities-for-azure-resources) lors de l’hébergement d’une application dans Azure. Identités gérées nécessitent de stocker les informations d’identification dans l’application ou de sa configuration, donc, il est considéré comme une approche généralement plus sûre.
+> À l’aide d’un ID d’Application et le mot de passe (clé secrète Client) est pris en charge pour les applications hébergées dans Azure, nous vous recommandons d’utiliser [gérés d’identités pour les ressources Azure](#use-managed-identities-for-azure-resources) lors de l’hébergement d’une application dans Azure. Les identités ne nécessite pas stocker les informations d’identification dans l’application ou de sa configuration, donc, il est considéré comme une approche généralement plus sûre.
 
 L’exemple d’application utilise un ID d’Application et le mot de passe (clé secrète Client) lorsque le `#define` instruction en haut de la *Program.cs* fichier est défini sur `Basic`.
 
