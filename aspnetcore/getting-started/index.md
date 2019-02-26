@@ -6,12 +6,6 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2019
 uid: getting-started
-ms.openlocfilehash: eee927f4306fa7757f3f361e6c6f367658512897
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341808"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
@@ -107,7 +101,7 @@ Dans ce didacticiel, vous avez appris à :
 > * Exécuter le projet.
 > * Effectuer une modification.
 
-Pour en savoir plus sur ASP.NET Core, consultez la présentation :
+Pour en savoir plus sur ASP.NET Core, consultez le parcours d’apprentissage recommandé dans la présentation :
 
 > [!div class="nextstepaction"]
-> <xref:index>
+> <xref:index#recommended-learning-path>

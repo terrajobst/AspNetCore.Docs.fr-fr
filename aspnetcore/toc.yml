@@ -58,35 +58,35 @@ items:
   - uid: fundamentals/index
     name: Vue d'ensemble
   - uid: fundamentals/startup
-    name: Démarrage des applications
+    name: Classe Startup
   - uid: fundamentals/dependency-injection
     name: Injection de dépendances (services)
-  - uid: fundamentals/routing
-    name: Routage
-  - uid: fundamentals/environments
-    name: Environnements (développement, intermédiaire, production)
-  - uid: fundamentals/configuration/index
-    name: Configuration
-  - uid: fundamentals/configuration/options
-    name: Options
-  - uid: fundamentals/logging/index
-    name: Journalisation
-  - uid: fundamentals/error-handling
-    name: Gérer les erreurs
   - uid: fundamentals/middleware/index
     name: Intergiciel (middleware)
-  - name: Hôte
+  - name: L’hôte
     items:
-    - uid: fundamentals/host/index
-      name: Vue d'ensemble
     - uid: fundamentals/host/web-host
       name: Hôte web
     - uid: fundamentals/host/generic-host
       name: Hôte générique
   - uid: fundamentals/servers/index
     name: Serveurs
+  - uid: fundamentals/configuration/index
+    name: Configuration
+  - uid: fundamentals/configuration/options
+    name: Options
+  - uid: fundamentals/environments
+    name: Environnements (développement, intermédiaire, production)
+  - uid: fundamentals/logging/index
+    name: Journalisation
+  - uid: fundamentals/routing
+    name: Routage
+  - uid: fundamentals/error-handling
+    name: Gérer les erreurs
   - uid: fundamentals/http-requests
     name: Effectuer des requêtes HTTP
+  - uid: fundamentals/static-files
+    name: Fichiers statiques
 - name: Applications web
   items:
   - name: Pages Razor
@@ -210,8 +210,6 @@ items:
         href: mvc/views/working-with-forms.md#the-validation-summary-tag-helper
   - uid: mvc/views/layout
     name: Mise en page
-  - uid: fundamentals/static-files
-    name: Fichiers statiques
   - uid: mvc/models/model-binding
     name: Liaison de données
   - uid: mvc/models/validation
@@ -814,6 +812,8 @@ items:
     name: Localisation d’objet portable
 - name: Avancé
   items:
+  - uid: fundamentals/middleware/write
+    name: Middleware Écriture
   - uid: fundamentals/url-rewriting
     name: Réécriture d’URL
   - uid: fundamentals/file-providers
@@ -880,9 +880,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Collaboration
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: d2015955147460621d64ea6035f5f8118a02469b
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: e55cfa30103c2a89007f2bc5e9d133dea7f8c6d5
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248392"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743996"

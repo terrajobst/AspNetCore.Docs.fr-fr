@@ -6,12 +6,6 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/25/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 2465570e469020ae2855508bd1bfc8528e188ebb
-ms.sourcegitcommit: ca5f03210bedc61c6639a734ae5674bfe095dee8
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55073164"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -70,7 +64,7 @@ Ces trois packages sont inclus dans le [métapackage Microsoft.AspNetCore.All](x
 
 ## <a name="host-vs-app-configuration"></a>Configuration de l’hôte ou configuration de l’application
 
-Avant que l’application ne soit configurée et démarrée, un *hôte* est configuré et lancé. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. L’application et l’hôte sont configurés à l’aide des fournisseurs de configuration décrits dans cette rubrique. Les paires clé-valeur de la configuration de l’hôte font partie de la configuration générale de l’application. Pour plus d’informations sur l’utilisation des fournisseurs de configuration lors de la génération de l’hôte et l’impact des sources de configuration sur la configuration de l’hôte, consultez <xref:fundamentals/host/index>.
+Avant que l’application ne soit configurée et démarrée, un *hôte* est configuré et lancé. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. L’application et l’hôte sont configurés à l’aide des fournisseurs de configuration décrits dans cette rubrique. Les paires clé-valeur de la configuration de l’hôte font partie de la configuration générale de l’application. Pour plus d’informations sur l’utilisation des fournisseurs de configuration lors de la génération de l’hôte et l’impact des sources de configuration sur la configuration de l’hôte, consultez [L’hôte](xref:fundamentals/index#host).
 
 ## <a name="default-configuration"></a>Configuration par défaut
 
@@ -1555,8 +1549,8 @@ Observez les valeurs et les clés de configuration indiquées dans le tableau su
 | Touche             | Value  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
-| array:entries:1 | value1 |
-| array:entries:2 | value2 |
+| array:entries:1 | valeur1 |
+| array:entries:2 | valeur2 |
 | array:entries:4 | value4 |
 | array:entries:5 | value5 |
 
@@ -1622,8 +1616,8 @@ L’objet lié, une instance de `ArrayExample`, reçoit les données de tableau 
 | Index `ArrayExample.Entries` | Valeur `ArrayExample.Entries` |
 | :--------------------------: | :--------------------------: |
 | 0                            | value0                       |
-| 1                            | value1                       |
-| 2                            | value2                       |
+| 1                            | valeur1                       |
+| 2                            | valeur2                       |
 | 3                            | value4                       |
 | 4                            | value5                       |
 
@@ -1670,8 +1664,8 @@ Si l’instance de classe `ArrayExample` est liée une fois que le Fournisseur d
 | Index `ArrayExample.Entries` | Valeur `ArrayExample.Entries` |
 | :--------------------------: | :--------------------------: |
 | 0                            | value0                       |
-| 1                            | value1                       |
-| 2                            | value2                       |
+| 1                            | valeur1                       |
+| 2                            | valeur2                       |
 | 3                            | valeur3                       |
 | 4                            | value4                       |
 | 5                            | value5                       |

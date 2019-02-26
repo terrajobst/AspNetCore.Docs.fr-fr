@@ -1,17 +1,11 @@
 ---
 title: Présentation d’ASP.NET Core
 author: rick-anderson
-description: Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.
+description: 'Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 uid: index
-ms.openlocfilehash: c3f07814bfab19a0f070e0b48b0d2ef6cfc1594e
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248158"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -68,6 +62,34 @@ Le ciblage de .NET Core présente plusieurs avantages, qui sont plus nombreux à
 * Open source
 
 Nous nous efforçons de combler l’écart d’API qui existe entre .NET Framework et .NET Core. Le [Pack de compatibilité Windows](/dotnet/core/porting/windows-compat-pack) a rendu disponible dans .NET Core des milliers d’API fonctionnant seulement dans Windows. Ces API n’étaient pas disponibles dans .NET Core 1.x.
+
+## <a name="recommended-learning-path"></a>Parcours d’apprentissage recommandé
+
+Nous vous recommandons la séquence de tutoriels et d’articles suivante comme introduction au développement des applications ASP.NET Core :
+
+1. Suivez un tutoriel pour le type d’application que vous souhaitez développer ou gérer :
+
+   |Type d'application  |Scénario  |Didacticiel  |
+   |----------|----------|----------|
+   |Application web       | Pour un nouveau développement        |[Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start) |
+   |Application web       | Pour maintenir une application MVC |[Bien démarrer avec MVC](xref:tutorials/first-mvc-app/start-mvc)|
+   |API web       |                            |[Créer une API web](xref:tutorials/first-web-api)\*  |
+   |Application en temps réel |                            |[Bien démarrer avec SignalR](xref:tutorials/signalr) |
+
+1. Suivez un tutoriel qui montre comment exécuter l’accès aux données de base :
+
+   |Scénario  |Didacticiel  |
+   |----------|----------|
+   | Pour un nouveau développement        |[Pages Razor avec Entity Framework Core](xref:data/ef-rp/intro) |
+   | Pour maintenir une application MVC |[MVC avec Entity Framework Core](xref:data/ef-mvc/intro)
+
+1. Lisez une présentation des fonctionnalités d’ASP.NET Core qui s’appliquent à tous les types d’application :
+
+   * [Notions de base](xref:fundamentals/index)
+
+1. Parcourez la Table des matières pour d’autres rubriques qui vous intéressent.
+
+\* Il existe un nouveau [tutoriel sur l’API web que vous pouvez suivre entièrement dans le navigateur](https://docs.microsoft.com/learn/modules/build-web-api-net-core) (aucune installation d’IDE locale requise).  Le code s’exécute dans [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/), et [curl](https://curl.haxx.se/) est utilisé à des fins de test.
 
 ## <a name="how-to-download-a-sample"></a>Comment télécharger un exemple
 
@@ -126,7 +148,7 @@ Pour plus d’informations, consultez [Contribuer à la documentation ASP.NET :
 
 Pour plus d'informations, reportez-vous aux ressources suivantes :
 
-* [Bien démarrer avec les pages Razor](xref:tutorials/razor-pages/razor-pages-start)
+* <xref:getting-started>
 * <xref:tutorials/publish-to-azure-webapp-using-vs>
 * [Notions de base d’ASP.NET Core](xref:fundamentals/index)
 * [Le point hebdomadaire de la communauté ASP.NET](https://live.asp.net/) couvre l’avancement et les plans des équipes de développement. Il met en avant de nouveaux blogs et des logiciels de tiers.
