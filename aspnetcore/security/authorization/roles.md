@@ -5,25 +5,18 @@ description: Découvrez comment restreindre l’accès de contrôleur et action 
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: 0467ea82831bffe6882e584930c2fa1212a244c7
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: c38e7144166ce7741eee6e3acb4d1c952ad4f024
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248093"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899162"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>Autorisation basée sur des rôles dans ASP.NET Core
 
 <a name="security-authorization-role-based"></a>
 
 Lors de la création d’une identité, elle peut appartenir à un ou plusieurs rôles. Par exemple, Tracy mon peut-être appartenir aux rôles administrateur et utilisateur tandis que Scott peut uniquement appartenir au rôle d’utilisateur. Comment ces rôles sont créés et gérés varient selon le magasin de stockage du processus d’autorisation. Les rôles sont exposées au développeur via les [IsInRole](/dotnet/api/system.security.principal.genericprincipal.isinrole) méthode sur le [ClaimsPrincipal](/dotnet/api/system.security.claims.claimsprincipal) classe.
-
-::: moniker range=">= aspnetcore-2.0"
-
-> [!IMPORTANT]
-> Cette rubrique **ne s’applique pas** aux pages Razor. Prend en charge des Pages Razor [IPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.ipagefilter) et [IAsyncPageFilter](/dotnet/api/microsoft.aspnetcore.mvc.filters.iasyncpagefilter). Pour plus d’informations, consultez [Méthodes de filtre pour les pages Razor](xref:razor-pages/filter).
-
-::: moniker-end
 
 ## <a name="adding-role-checks"></a>Ajout de contrôles de rôle
 
@@ -94,6 +87,28 @@ public class ControlPanelController : Controller
     }
 }
 ```
+
+::: moniker range=">= aspnetcore-2.0"
+
+Pour les Pages Razor, le `AuthorizeAttribute` peut être appliqué à l’aide :
+
+* À l’aide un [convention](xref:razor-pages/razor-pages-conventions#page-model-action-conventions), ou
+* Appliquer le `AuthorizeAttribute` à la `PageModel` instance :
+
+```csharp
+[Authorize(Policy = "RequireAdministratorRole")]
+public class UpdateModel : PageModel
+{
+    public ActionResult OnPost()
+    {
+    }
+}
+```
+
+> [!IMPORTANT]
+> Filtrer les attributs, y compris `AuthorizeAttribute`, peuvent uniquement être appliquées au modèle de page et ne peut pas être appliqué aux méthodes de gestionnaire de page spécifique.
+::: moniker-end
+
 
 <a name="security-authorization-role-policy"></a>
 

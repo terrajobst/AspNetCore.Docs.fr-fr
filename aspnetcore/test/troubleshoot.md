@@ -4,14 +4,14 @@ author: Rick-Anderson
 description: Comprenez et résolvez les avertissements et les erreurs avec les projets ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/26/2018
+ms.date: 02/26/2019
 uid: test/troubleshoot
-ms.openlocfilehash: 7a3361970bde2b8761c76884fc1905957d075c5c
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: c8b34f51fd329eb9a7c34f7be93bd7f2aa054283
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450773"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899284"
 ---
 # <a name="troubleshoot-aspnet-core-projects"></a>Résoudre les problèmes des projets ASP.NET Core
 
@@ -63,10 +63,10 @@ Dans le **nouveau projet** boîte de dialogue pour ASP.NET Core, vous pouvez voi
 
 ![Une capture d’écran de la boîte de dialogue OneASP.NET affichant le message d’avertissement](troubleshoot/_static/NoNetCore.png)
 
-Cet avertissement apparaît lorsque la variable d’environnement `PATH` ne pointe pas vers n’importe quel SDK .NET Core sur l’ordinateur. Pour résoudre ce problème :
+Cet avertissement apparaît lorsque la variable d’environnement `PATH` ne pointe pas vers n’importe quel SDK .NET Core sur l’ordinateur (par exemple, `C:\Program Files\dotnet\` et `C:\Program Files (x86)\dotnet\`). Pour résoudre ce problème :
 
-* Installer ou vérifiez que le SDK .NET Core est installé.
-* Vérifiez que le `PATH` variable d’environnement pointe vers l’emplacement dans lequel le SDK est installé. Le programme d’installation définit normalement le `PATH`.
+* Installer ou vérifiez que le SDK .NET Core est installé. Obtenir le programme d’installation la plus récente à partir de [téléchargements .NET](https://dotnet.microsoft.com/download). 
+* Vérifiez que le `PATH` variable d’environnement pointe vers l’emplacement où est installé le Kit de développement. Le programme d’installation définit normalement le `PATH`.
 
 ## <a name="obtain-data-from-an-app"></a>Obtenir des données à partir d’une application
 
