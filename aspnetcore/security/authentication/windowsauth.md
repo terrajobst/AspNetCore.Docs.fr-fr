@@ -5,14 +5,14 @@ description: Découvrez comment configurer l’authentification Windows dans ASP
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 01/15/2019
+ms.date: 02/25/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: c98bdedcf943a9057c96a8e5d62615e400074899
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: 15fc41efba77f88fc8129f875b85836ac1b5f886
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341652"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833694"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
@@ -192,3 +192,7 @@ ASP.NET Core n’implémente pas l’emprunt d’identité. Applications s’ex�
 [!code-csharp[](windowsauth/sample_snapshot/Startup.cs?highlight=10-19)]
 
 `RunImpersonated` ne prend pas en charge les opérations asynchrones et ne doit pas être utilisé pour les scénarios complexes. Par exemple, encapsulant les demandes entières ou des chaînes d’intergiciel (middleware) n’est pas pris en charge ni recommandé.
+
+### <a name="claims-transformations"></a>Transformations de revendications
+
+Lorsque vous hébergez avec mode in-process IIS, <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> n’est pas appelée en interne pour initialiser un utilisateur. Par conséquent, un <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> implémentation utilisée pour transformer les revendications après chaque authentification n’est pas activée par défaut. Pour plus d’informations et un exemple de code qui active les transformations de revendications lors de l’hébergement intra-processus, consultez <xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>.

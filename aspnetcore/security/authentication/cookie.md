@@ -3,14 +3,14 @@ title: Utiliser l’authentification par cookie sans ASP.NET Core Identity
 author: rick-anderson
 description: Une explication de l’authentification par cookie sans ASP.NET Core Identity
 ms.author: riande
-ms.date: 10/11/2017
+ms.date: 02/25/2019
 uid: security/authentication/cookie
-ms.openlocfilehash: f05e5b83359ec1739115293e092eaed0c811c046
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
-ms.translationtype: MT
+ms.openlocfilehash: 7e975da3a276ffb6a3de7ee02f7cc5be67cbbebe
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854378"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833616"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>Utiliser l’authentification par cookie sans ASP.NET Core Identity
 
@@ -39,6 +39,8 @@ Dans le `ConfigureServices` (méthode), créez le service de l’intergiciel d�
 `AuthenticationScheme` passé à `AddAuthentication` définit le schéma d’authentification par défaut pour l’application. `AuthenticationScheme` est utile quand il existe plusieurs instances de l’authentification des cookies et que vous souhaitez [autoriser avec un schéma spécifique](xref:security/authorization/limitingidentitybyscheme). Définition de la `AuthenticationScheme` à `CookieAuthenticationDefaults.AuthenticationScheme` fournit une valeur de « Cookies » pour le schéma. Vous pouvez fournir n’importe quelle valeur de chaîne qui distingue le schéma.
 
 Schéma d’authentification de l’application est différent de schéma d’authentification de cookie de l’application. Lorsqu’un schéma d’authentification de cookie n’est pas fourni pour <xref:Microsoft.Extensions.DependencyInjection.CookieExtensions.AddCookie*>, elle utilise [CookieAuthenticationDefaults.AuthenticationScheme](xref:Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme) (« Cookies »).
+
+Le cookie d’authentification <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential> propriété a la valeur `true` par défaut. Les cookies d’authentification sont autorisées lorsqu’un visiteur du site n’a pas donné son consentement pour la collecte de données. Pour plus d'informations, consultez <xref:security/gdpr#essential-cookies>.
 
 Dans le `Configure` (méthode), utilisez le `UseAuthentication` méthode à appeler l’intergiciel d’authentification qui définit le `HttpContext.User` propriété. Appelez le `UseAuthentication` méthode avant d’appeler `UseMvcWithDefaultRoute` ou `UseMvc`:
 

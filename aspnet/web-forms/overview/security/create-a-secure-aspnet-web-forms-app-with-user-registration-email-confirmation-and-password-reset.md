@@ -8,14 +8,14 @@ ms.date: 10/02/2014
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
-ms.openlocfilehash: b964257165f8a50bef5cb5d8cee4fb30a5e91cf0
-ms.sourcegitcommit: 45ac74e400f9f2b7dbded66297730f6f14a4eb25
+ms.openlocfilehash: acc13776840408756901e20589b9efacc83ff2a9
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41837170"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833681"
 ---
-<a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Créer une application Web Forms ASP.NET sécurisée avec inscription des utilisateurs, par e-mail de réinitialisation de mot de passe et de confirmation (c#)
+<a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Créer une application Web Forms ASP.NET sécurisée avec inscription de l’utilisateur, confirmation par e-mail et réinitialisation du mot de passe (C#)
 ====================
 par [Erik Reitan](https://github.com/Erikre)
 
@@ -71,6 +71,8 @@ En règle générale, vous souhaitez empêcher les nouveaux utilisateurs à part
 <a id="SG"></a>
 ## <a name="hook-up-sendgrid"></a>Se connecter à SendGrid
 
+SendGrid a changé son API depuis la rédaction de ce didacticiel. Pour obtenir des instructions en cours de SendGrid, consultez [SendGrid](http://sendgrid.com/) ou [activer la récupération de confirmation et le mot de passe du compte](xref:security/authentication/accconfirm#enable-account-confirmation-and-password-recovery).
+
 Bien que ce didacticiel montre uniquement comment ajouter la notification par courrier électronique via [SendGrid](http://sendgrid.com/), vous pouvez envoyer un e-mail à l’aide de SMTP et d'autres mécanismes (consultez [les ressources additionnelles](#addRes)).
 
 1. Dans Visual Studio, ouvrez le **Console du Gestionnaire de Package** (**outils**  - &gt; **Gestionnaire de Package NuGet**  - &gt; **Console du Gestionnaire de package**), puis entrez la commande suivante :  
@@ -87,7 +89,7 @@ Bien que ce didacticiel montre uniquement comment ajouter la notification par co
     [!code-xml[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample3.xml?highlight=2-5)]
 
     > [!WARNING]
-    > Sécurité - Ne jamais stocker de données sensibles dans votre code source. Dans cet exemple, le compte et les informations d’identification sont stockées dans le **appSetting** section de la *Web.config* fichier. Sur Azure, vous pouvez stocker en toute sécurité ces valeurs sur l'onglet **[Configurer](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** dans le portail Azure. Pour plus d’informations, consultez rubrique de Rick Anderson [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
+    > Sécurité - Ne jamais stocker de données sensibles dans votre code source. Dans cet exemple, le compte et les informations d’identification sont stockées dans le **appSetting** section de la *Web.config* fichier.  Sur Azure, vous pouvez stocker en toute sécurité ces valeurs sur l'onglet **[Configurer](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** dans le portail Azure. Pour plus d’informations, consultez rubrique de Rick Anderson [meilleures pratiques pour le déploiement des mots de passe et autres données sensibles sur ASP.NET et Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
 6. Ajoutez les valeurs de service de messagerie pour refléter vos valeurs de l’authentification SendGrid (nom d’utilisateur et mot de passe) pour que vous puissiez réussie Envoyer e-mail à partir de votre application. Veillez à utiliser le nom de votre compte SendGrid plutôt que l’adresse de messagerie que vous avez fourni SendGrid.
 
 ### <a name="enable-email-confirmation"></a>Activer la Confirmation de courrier électronique

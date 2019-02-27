@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: b10731261ca0c748548fcba94a229ba055d46eb5
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: ccd56d0c15639e1ad29094e947f8055702ee2264
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090834"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833668"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>Fournisseurs de stockage personnalisés pour ASP.NET Core Identity
 
@@ -106,7 +106,7 @@ Stocke et récupère des informations de connexion d’utilisateur (par exemple,
 
 Stocke et récupère les rôles sont attribués à quels utilisateurs. [Exemple](/dotnet/api/microsoft.aspnet.identity.corecompat.userstore-1)
 
-**Conseil :** uniquement implémenter les classes que vous souhaitez utiliser dans votre application.
+**CONSEIL :** Uniquement implémenter les classes que vous souhaitez utiliser dans votre application.
 
 Dans les classes d’accès aux données, fournissez le code pour effectuer des opérations de données pour votre mécanisme de persistance. Par exemple, au sein d’un fournisseur personnalisé, vous pouvez avoir le code suivant pour créer un nouvel utilisateur dans le *stocker* classe :
 
@@ -133,7 +133,7 @@ Créer un `UserStore` classe qui fournit les méthodes pour toutes les opératio
 * [IUserPasswordStore](/dotnet/api/microsoft.aspnetcore.identity.iuserpasswordstore-1)
 * [IUserSecurityStampStore](/dotnet/api/microsoft.aspnetcore.identity.iusersecuritystampstore-1)
 * [IUserEmailStore](/dotnet/api/microsoft.aspnetcore.identity.iuseremailstore-1)
-* [IPhoneNumberStore](/dotnet/api/microsoft.aspnetcore.identity.iphonenumberstore-1)
+* [IUserPhoneNumberStore](/dotnet/api/microsoft.aspnetcore.identity.iuserphonenumberstore-1)
 * [IQueryableUserStore](/dotnet/api/microsoft.aspnetcore.identity.iqueryableuserstore-1)
 * [IUserLoginStore](/dotnet/api/microsoft.aspnetcore.identity.iuserloginstore-1)
 * [IUserTwoFactorStore](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactorstore-1)
@@ -184,7 +184,7 @@ public class UserStore : IUserStore<IdentityUser>,
 }
 ```
 
-### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim, IdentityUserLogin et IdentityUserRole
+### <a name="identityuserclaim-identityuserlogin-and-identityuserrole"></a>IdentityUserClaim, IdentityUserLogin, and IdentityUserRole
 
 Le `Microsoft.AspNet.Identity.EntityFramework` espace de noms contient des implémentations de la [IdentityUserClaim](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserclaim-1), [IdentityUserLogin](/dotnet/api/microsoft.aspnet.identity.corecompat.identityuserlogin), et [IdentityUserRole](/dotnet/api/microsoft.aspnetcore.identity.entityframeworkcore.identityuserrole-1) classes. Si vous utilisez ces fonctionnalités, vous souhaiterez créer vos propres versions de ces classes et de définir les propriétés de votre application. Toutefois, il est parfois plus efficace de ne charger pas ces entités en mémoire lors de l’exécution des opérations de base (par exemple, ajout ou suppression de revendication de l’utilisateur). Au lieu de cela, les classes de magasin principal peuvent exécuter ces opérations directement sur la source de données. Par exemple, le `UserStore.GetClaimsAsync` méthode peut appeler le `userClaimTable.FindByUserId(user.Id)` méthode pour exécuter une requête sur table directement et retourner une liste de revendications.
 
