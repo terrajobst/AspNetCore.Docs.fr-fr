@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/08/2019
 uid: mvc/controllers/filters
-ms.openlocfilehash: 3cd576b389a2a4384c0ba90b5740ac42140533cc
-ms.sourcegitcommit: af8a6eb5375ef547a52ffae22465e265837aa82b
+ms.openlocfilehash: a9081a9938d56b7612bba13937eba384ff02455b
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56159312"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833733"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtres dans ASP.NET Core
 
@@ -316,7 +316,7 @@ Vous pouvez utiliser un filtre d’actions pour valider l’état du modèle et 
 La méthode `OnActionExecuted` s’exécute après la méthode d’action, et peut voir et manipuler les résultats de l’action via la propriété `ActionExecutedContext.Result`. `ActionExecutedContext.Canceled` est défini sur true si l’exécution de l’action a été court-circuitée par un autre filtre. `ActionExecutedContext.Exception` est défini sur une valeur non Null si l’action ou un filtre d’actions suivant a levé une exception. Le fait de définir `ActionExecutedContext.Exception` avec la valeur null :
 
 * « Gère » effectivement une exception.
-* `ActionExectedContext.Result` est exécuté comme s’il avait été retourné normalement à partir de la méthode d’action.
+* `ActionExecutedContext.Result` est exécuté comme s’il avait été retourné normalement à partir de la méthode d’action.
 
 ## <a name="exception-filters"></a>Filtres d’exceptions
 

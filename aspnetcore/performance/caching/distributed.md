@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment utiliser un cache d’ASP.NET Core est distribué pour améliorer les performances des applications et l’évolutivité, en particulier dans un environnement de batterie de serveurs cloud ou un serveur.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 uid: performance/caching/distributed
-ms.openlocfilehash: a157eb075874d2118e3e34b51410b539a1ec37df
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 7337ee3b823064c942832d8a44e4d4289bc4fd0e
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248586"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899422"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Mise en cache dans ASP.NET Core distribuée
 
@@ -33,7 +33,15 @@ Configuration de cache distribué est spécifique à l’implémentation. Cet ar
 
 ## <a name="prerequisites"></a>Prérequis
 
-::: moniker range=">= aspnetcore-2.1"
+::: moniker range=">= aspnetcore-2.2"
+
+Pour utiliser un serveur SQL Server distributed cache, référence le [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app) ou ajouter une référence de package à la [Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) package.
+
+Pour utiliser un Redis distributed cache, référence le [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app) et ajouter une référence de package à la [Microsoft.Extensions.Caching.StackExchangeRedis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis) package. Le package Redis n’est pas inclus dans le `Microsoft.AspNetCore.App` du package, que vous devez référencer le package Redis séparément dans votre fichier projet.
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.1"
 
 Pour utiliser un serveur SQL Server distributed cache, référence le [Microsoft.AspNetCore.App métapackage](xref:fundamentals/metapackage-app) ou ajouter une référence de package à la [Microsoft.Extensions.Caching.SqlServer](https://www.nuget.org/packages/Microsoft.Extensions.Caching.SqlServer) package.
 
@@ -164,7 +172,7 @@ Mettre immédiatement à jour l’heure de mise en cache à l’heure actuelle e
 [!code-csharp[](distributed/samples/2.x/DistCacheSample/Pages/Index.cshtml.cs?name=snippet_IndexModel&highlight=7,14-20,25-29)]
 
 > [!NOTE]
->  Il est inutile d’utiliser un Singleton ou une durée de vie limitée à un périmètre d'utilisation pour gérer des instances de <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> (et ceci au moins pour les implémentations intégrées).
+> Il est inutile d’utiliser un Singleton ou une durée de vie limitée à un périmètre d'utilisation pour gérer des instances de <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> (et ceci au moins pour les implémentations intégrées).
 >
 > Vous pouvez également créer un <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> de l’instance où vous devrez peut-être un au lieu d’utiliser l’injection de dépendances, mais la création d’une instance dans le code peut rendre votre code plus difficile à tester et ne respecte pas la [principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies).
 

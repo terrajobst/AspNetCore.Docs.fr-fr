@@ -47,7 +47,7 @@ dotnet dev-certs https --trust
 
 La commande précédente affiche la boîte de dialogue suivante :
 
-![Boîte de dialogue Avertissement de sécurité](_static/cert.png)
+![Boîte de dialogue Avertissement de sécurité](~/getting-started/_static/cert.png)
 
 Sélectionnez **Oui** si vous acceptez d’approuver le certificat de développement.
 
@@ -59,18 +59,17 @@ dotnet dev-certs https --trust
 
 La commande précédente affiche le message suivant :
 
-*L’approbation du certificat de développement HTTPS a été demandée. Si le certificat n’a pas encore été approuvé, nous exécutons la commande suivante :* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`.  
-* Cette commande peut vous demander votre mot de passe afin d’installer le certificat sur le trousseau système.
-
-Mot de passe :*
-
-Entrez votre mot de passe si vous acceptez d’approuver le certificat de développement.
+*L’approbation du certificat de développement HTTPS a été demandée. Si le certificat n’a pas encore été approuvé, nous exécutons la commande suivante :* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`.
+ 
+Cette commande peut vous demander votre mot de passe afin d’installer le certificat sur le trousseau système. Entrez votre mot de passe si vous acceptez d’approuver le certificat de développement.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 Consultez la documentation de votre distribution Linux pour savoir comment approuver le certificat de développement HTTPS.
 
 ---
+
+Pour plus d’informations, consultez [Approuver le certificat de développement ASP.NET Core HTTPS](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)
 
 ## <a name="run-the-app"></a>Exécuter l'application
 

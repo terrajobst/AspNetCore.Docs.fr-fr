@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2018
 uid: fundamentals/static-files
-ms.openlocfilehash: 4c08d65cc1f658ef08a9b4b362ac7f8a3a243557
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: e6bda5dd60c62c7bdbfa81f34c14cfcd07e8d700
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637779"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744051"
 ---
 # <a name="static-files-in-aspnet-core"></a>Fichiers statiques dans ASP.NET Core
 
@@ -23,7 +23,7 @@ Les fichiers statiques, comme les fichiers HTML, CSS, images et JavaScript, sont
 
 ## <a name="serve-static-files"></a>Délivrer des fichiers statiques
 
-Les fichiers statiques sont stockés dans le répertoire racine de votre projet web. Le répertoire par défaut est *\<racine_contenu>/wwwroot*, mais il peut être changé via la méthode [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_). Pour plus d’informations, consultez [Racine du contenu](xref:fundamentals/index#content-root) et [Racine web](xref:fundamentals/index#web-root-webroot).
+Les fichiers statiques sont stockés dans le répertoire racine de votre projet web. Le répertoire par défaut est *\<racine_contenu>/wwwroot*, mais il peut être changé via la méthode [UseWebRoot](/dotnet/api/microsoft.aspnetcore.hosting.hostingabstractionswebhostbuilderextensions.usewebroot#Microsoft_AspNetCore_Hosting_HostingAbstractionsWebHostBuilderExtensions_UseWebRoot_Microsoft_AspNetCore_Hosting_IWebHostBuilder_System_String_). Pour plus d’informations, consultez [Racine du contenu](xref:fundamentals/index#content-root) et [Racine web](xref:fundamentals/index#web-root).
 
 L’hôte web de l’application doit être informé du répertoire racine du contenu.
 
@@ -82,7 +82,7 @@ La surcharge de la méthode `UseStaticFiles` sans paramètres marque les fichier
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
-Dans le code précédent, le caractère tilde `~/` pointe vers la racine web. Pour plus d’informations, consultez [Racine web](xref:fundamentals/index#web-root-webroot).
+Dans le code précédent, le caractère tilde `~/` pointe vers la racine web. Pour plus d’informations, consultez [Racine web](xref:fundamentals/index#web-root).
 
 ### <a name="serve-files-outside-of-web-root"></a>Délivrer des fichiers en dehors de la racine web
 

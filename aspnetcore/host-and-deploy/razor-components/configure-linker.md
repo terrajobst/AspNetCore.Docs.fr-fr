@@ -5,14 +5,14 @@ description: Découvrez comment contrôler l’éditeur de liens de langage inte
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 uid: host-and-deploy/razor-components/configure-linker
-ms.openlocfilehash: c3c38ec2509344cc02f3895d5d0c2d35059d1d8e
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 7c53e7912ec3b0ae471ea38777f874f55a32487d
+ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55668012"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56647939"
 ---
 # <a name="configure-the-linker-for-blazor"></a>Configurer l’éditeur de liens pour Blazor
 
@@ -73,7 +73,7 @@ Voici un exemple de fichier de configuration (*Linker.xml*) :
 </linker>
 ```
 
-Pour en savoir plus sur le format de fichier pour le fichier de configuration, consultez [Éditeur de liens de langage intermédiaire : Syntaxe du descripteur xml](https://github.com/mono/linker/blob/master/linker/README.md#syntax-of-xml-descriptor).
+Pour en savoir plus sur le format de fichier pour le fichier de configuration, consultez [Éditeur de liens de langage intermédiaire : Syntaxe du descripteur xml](https://github.com/mono/linker/blob/master/src/linker/README.md#syntax-of-xml-descriptor).
 
 Spécifiez le fichier de configuration dans le fichier projet avec l’élément `BlazorLinkerDescriptor` :
 
