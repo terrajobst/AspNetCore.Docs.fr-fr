@@ -5,14 +5,14 @@ description: Découvrez HTTP.sys, un serveur web pour ASP.NET Core sous Windows.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 859e3daeba125ab1a9392c1bdbf2733de2f79a34
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: abb426b1a41226e52d9b9b5c00c41ff816890d36
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248340"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56744129"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
@@ -86,7 +86,7 @@ HTTP.sys délègue l’authentification en mode noyau avec le protocole d’auth
 
 1. Il n’est pas nécessaire d’ajouter une référence de package dans le fichier projet dès lors que le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ([nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)) est utilisé (ASP.NET Core 2.1 ou ultérieur). Si vous n'utilisez pas le métapaquet `Microsoft.AspNetCore.App`, ajoutez une référence de package à [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/).
 
-2. Appelez la méthode d’extension <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderHttpSysExtensions.UseHttpSys*> au moment de générer l’hôte web, en spécifiant les <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions> requises :
+2. Appelez la méthode d’extension <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderHttpSysExtensions.UseHttpSys*> au moment de générer l’hôte web en spécifiant les <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions> nécessaires :
 
    [!code-csharp[](httpsys/sample/Program.cs?name=snippet1&highlight=4-12)]
 
@@ -135,7 +135,9 @@ HTTP.sys délègue l’authentification en mode noyau avec le protocole d’auth
 
 ### <a name="configure-windows-server"></a>Configurer Windows Server
 
-1. Déterminez les ports à ouvrir pour l’application et utilisez le pare-feu Windows ou des [cmdlets PowerShell](https://technet.microsoft.com/library/jj554906) pour ouvrir les ports du pare-feu afin d’autoriser le trafic à atteindre HTTP.sys. Lors du déploiement sur une machine virtuelle Azure, ouvrez les ports dans le [groupe de sécurité réseau](/azure/virtual-network/security-overview). Dans les commandes et la configuration de l’application suivantes, le port 443 est utilisé.
+1. Identifiez les ports à ouvrir pour l’application et utilisez le [pare-feu Windows](/windows/security/threat-protection/windows-firewall/create-an-inbound-port-rule) ou les applets de commande PowerShell [New-NetFirewallRule](/powershell/module/netsecurity/new-netfirewallrule) pour ouvrir les ports du pare-feu et ainsi permettre au trafic d’atteindre HTTP.sys. Dans les commandes et la configuration de l’application suivantes, le port 443 est utilisé.
+
+1. Lors du déploiement sur une machine virtuelle Azure, ouvrez les ports dans le [groupe de sécurité réseau](/azure/virtual-machines/windows/nsg-quickstart-portal). Dans les commandes et la configuration de l’application suivantes, le port 443 est utilisé.
 
 1. Obtenez et installez des certificats X.509, si nécessaire.
 
@@ -272,5 +274,5 @@ Pour les applications hébergées par HTTP.sys qui interagissent avec les demand
 * [Activer l’authentification Windows avec HTTP.sys](xref:security/authentication/windowsauth#enable-windows-authentication-with-httpsys)
 * [API de serveur HTTP](https://msdn.microsoft.com/library/windows/desktop/aa364510.aspx)
 * [Référentiel GitHub aspnet/HttpSysServer (code source)](https://github.com/aspnet/HttpSysServer/)
-* <xref:fundamentals/host/index>
+* [L’hôte](xref:fundamentals/index#host)
 * <xref:test/troubleshoot>

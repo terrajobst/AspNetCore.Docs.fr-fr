@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment ASP.NET Core implémente l’injection de dépendances et comment l’utiliser.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 02/25/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 5e5b9746da9bbc13a147b807aabfd3d9ab90a0ca
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 5e1522e0819d989a7029c2928c1c33624c1774c7
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410506"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899357"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -84,7 +84,7 @@ public class HomeController : Controller
 
 ::: moniker-end
 
-La classe est créee et dépend directement de l’instance `MyDependency`. Les dépendances de code (comme l’exemple précédent) posent problème et doivent être évitées pour les raisons suivantes :
+La classe est créée et dépend directement de l’instance `MyDependency`. Les dépendances de code (comme l’exemple précédent) posent problème et doivent être évitées pour les raisons suivantes :
 
 * Pour remplacer `MyDependency` par une autre implémentation, la classe doit être modifiée.
 * Si `MyDependency` possède des dépendances, elles doivent être configurées par la classe. Dans un grand projet comportant plusieurs classes dépendant de `MyDependency`, le code de configuration est disséminé dans l’application.
@@ -179,7 +179,7 @@ Dans l’exemple d’application, l’instance `IMyDependency` est demandée et 
 
 ## <a name="framework-provided-services"></a>Services fournis par le framework
 
-La méthode `Startup.ConfigureServices` est chargée de définir les services utilisés par l’application, notamment les fonctionnalités de plateforme comme Entity Framework Core et ASP.NET Core MVC. Au départ, la valeur `IServiceCollection` fournie à `ConfigureServices` a les services suivants définis (en fonction de [la manière dont l’hôte a été configuré](xref:fundamentals/host/index)) :
+La méthode `Startup.ConfigureServices` est chargée de définir les services utilisés par l’application, notamment les fonctionnalités de plateforme comme Entity Framework Core et ASP.NET Core MVC. Au départ, la valeur `IServiceCollection` fournie à `ConfigureServices` a les services suivants définis (en fonction de [la manière dont l’hôte a été configuré](xref:fundamentals/index#host)) :
 
 | Type de service | Durée de vie |
 | ------------ | -------- |
@@ -253,7 +253,7 @@ Lorsque des services sont résolus par `ActivatorUtilities`, l’injection de co
 
 ## <a name="entity-framework-contexts"></a>Contextes Entity Framework
 
-Vous devez ajouter des contextes Entity Framework au conteneur de services en utilisant la durée de vie délimitée. Ceci est géré automatiquement par un appel à la méthode [AddDbContext](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) lors de l’inscription du contexte de base de données. Les services qui utilisent le contexte de base de données doivent également utiliser la durée de vie délimitée.
+Les contextes Entity Framework sont généralement ajoutés au conteneur de service en utilisant la [durée de vie limitée](#service-lifetimes), car la portée des opérations de base de données d’application web est normalement limitée à la demande. La durée de vie par défaut est limitée si aucune durée de vie n’est spécifiée par une surcharge <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext*> au moment de l’inscription du contexte de base de données. Un service d’une durée de vie donnée ne doit pas utiliser un contexte de base de données dont la durée de vie est plus courte que celle du service.
 
 ## <a name="lifetime-and-registration-options"></a>Options de durée de vie et d’inscription
 

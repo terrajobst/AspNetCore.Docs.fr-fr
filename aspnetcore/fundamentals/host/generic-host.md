@@ -1,28 +1,51 @@
 ---
 title: Hôte générique .NET
 author: guardrex
-description: Découvrez l’hôte générique dans .NET, responsable de la gestion du démarrage et de la durée de vie des applications.
+description: Découvrez l’hôte générique d’ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/28/2018
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 4d435984d8169b558ab026ef8541c90f7a2a96b9
-ms.sourcegitcommit: 0fc89b80bb1952852ecbcf3c5c156459b02a6ceb
+ms.openlocfilehash: a128b7c19d544d1dd28ab16f7a208ceef680ce81
+ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52618153"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56743840"
 ---
 # <a name="net-generic-host"></a>Hôte générique .NET
 
 Par [Luke Latham](https://github.com/guardrex)
 
-Les applications .NET Core configurent et lancent un *hôte*. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications. Cette rubrique traite de l’hôte générique ASP.NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>), utile pour l’hébergement d’applications qui ne traitent pas les requêtes HTTP. Pour en savoir plus sur l’hôte web (<xref:Microsoft.AspNetCore.Hosting.WebHostBuilder>), consultez <xref:fundamentals/host/web-host>.
+::: moniker range="<= aspnetcore-2.2"
 
-L’objectif de l’hôte générique est de séparer le pipeline HTTP de l’API d’hôte web pour permettre un plus large éventail de scénarios d’hôte. La messagerie, les tâches en arrière-plan et autres charges de travail non-HTTP basées sur l’hôte générique bénéficient de fonctionnalités transversales, comme la configuration, l’injection de dépendances (DI) et la journalisation.
+Les applications ASP.NET Core configurent et lancent un hôte. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications.
 
-L’hôte générique est nouveau dans ASP.NET Core 2.1 et n’est pas adapté aux scénarios d’hébergement web. Pour les scénarios d’hébergement de web, utilisez l’[hôte web](xref:fundamentals/host/web-host). L’hôte générique est en cours de développement pour remplacer l’hôte web dans une version ultérieure et servir d’API hôte principale dans les scénarios HTTP et non-HTTP.
+Cet article traite de l’hôte générique ASP.NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>), qui est utilisé pour les applications qui ne traitent pas les requêtes HTTP.
+
+L’objectif de l’hôte générique est de séparer le pipeline HTTP de l’API Hôte web pour permettre un plus large éventail de scénarios d’hôte. La messagerie, les tâches en arrière-plan et autres charges de travail non HTTP basées sur l’hôte générique bénéficient de fonctionnalités transversales, comme la configuration, l’injection de dépendances (DI) et la journalisation.
+
+L’hôte générique est nouveau dans ASP.NET Core 2.1 et n’est pas adapté aux scénarios d’hébergement web. Pour les scénarios d’hébergement de web, utilisez l’[hôte web](xref:fundamentals/host/web-host). L’hôte générique est appelé à remplacer l’hôte web dans une version ultérieure et à servir d’API hôte principale dans les scénarios HTTP et non-HTTP.
+
+::: moniker-end
+
+::: moniker range="> aspnetcore-2.2"
+
+Les applications ASP.NET Core configurent et lancent un hôte. L’hôte est responsable de la gestion du démarrage et de la durée de vie des applications.
+
+Cet article traite de l’hôte générique .NET Core (<xref:Microsoft.Extensions.Hosting.HostBuilder>).
+
+L’hôte générique se distingue de l’hôte web en ce sens qu’il sépare le pipeline HTTP de l’API Hôte web pour autoriser un plus large éventail de scénarios d’hôte. La messagerie, les tâches en arrière-plan et autres charges de travail non HTTP peuvent utiliser l’hôte générique et bénéficier de fonctionnalités transversales, comme la configuration, l’injection de dépendances (DI) et la journalisation.
+
+À compter d’ASP.NET Core 3.0, l’hôte générique est recommandé pour les charges de travail HTTP et non-HTTP. Une implémentation de serveur HTTP, si elle est incluse, s’exécute en tant qu’implémentation de <xref:Microsoft.Extensions.Hosting.IHostedService>. `IHostedService` est une interface qui peut aussi être utilisée pour d’autres charges de travail.
+
+L’hôte web n’est plus recommandé pour les applications web, mais reste disponible à des fins de compatibilité descendante.
+
+> [!NOTE]
+> Le reste de cet article n’a pas encore été mis à jour pour 3.0.
+
+::: moniker-end
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -95,7 +118,7 @@ La propriété [IHostingEnvironment.ApplicationName](xref:Microsoft.Extensions.H
 
 **Clé** : applicationName  
 **Type** : *string*  
-**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
+**Par défaut** : nom de l’assembly contenant le point d’entrée de l’application.  
 **Définition avec** : `HostBuilderContext.HostingEnvironment.ApplicationName`  
 **Variable d’environnement** : `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` est [facultatif et défini par l’utilisateur](#configurehostconfiguration))
 
@@ -105,7 +128,7 @@ Ce paramètre détermine où l’hôte commence la recherche des fichiers de con
 
 **Clé** : contentRoot  
 **Type** : *string*  
-**Valeur par défaut** : dossier où réside l’assembly de l’application.  
+**Par défaut** : dossier où réside l’assembly de l’application.  
 **Définition avec** : `UseContentRoot`  
 **Variable d’environnement** : `<PREFIX_>CONTENTROOT` (`<PREFIX_>` est [facultatif et défini par l’utilisateur](#configurehostconfiguration))
 
@@ -119,7 +142,7 @@ Définit l’[environnement](xref:fundamentals/environments) de l’application.
 
 **Clé** : environment  
 **Type** : *string*  
-**Valeur par défaut** : Production  
+**Par défaut** : Production  
 **Définition avec** : `UseEnvironment`  
 **Variable d’environnement** : `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` est [facultatif et défini par l’utilisateur](#configurehostconfiguration))
 

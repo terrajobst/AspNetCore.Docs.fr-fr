@@ -3,14 +3,14 @@ title: Disposition dans ASP.NET Core
 author: ardalis
 description: Apprenez à utiliser des dispositions communes, à partager des directives et à exécuter le code commun avant d’afficher les vues dans une application ASP.NET Core.
 ms.author: riande
-ms.date: 10/18/2018
+ms.date: 02/26/2019
 uid: mvc/views/layout
-ms.openlocfilehash: 1bd225c804b333efea834a46b7d9ba46b1bb69d8
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 7a60ee15e688d6f0e531302457604fa759213758
+ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410571"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56899240"
 ---
 # <a name="layout-in-aspnet-core"></a>Disposition dans ASP.NET Core
 
@@ -49,15 +49,15 @@ La disposition définit un modèle général pour les vues dans l’application.
 
 Le code suivant montre le fichier de disposition pour un projet créé avec un modèle, avec un contrôleur et des vues :
 
-[!code-html[](~/common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=44,72)]
+[!code-cshtml[](~/common/samples/WebApplication1/Views/Shared/_Layout.cshtml?highlight=44,72)]
 
 ## <a name="specifying-a-layout"></a>Spécification d’une disposition
 
 Les vues Razor ont une propriété `Layout`. Chaque vue spécifie une disposition en définissant cette propriété :
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
-La disposition spécifiée peut utiliser un chemin complet (par exemple, */Pages/Shared/_Layout.cshtml* ou */Views/Shared/_Layout.cshtml*) ou un nom partiel (exemple : `_Layout`). Quand un nom partiel est fourni, le moteur de vue Razor recherche le fichier de disposition en suivant son processus de détection habituel. Le dossier où se trouve la méthode de gestionnaire (ou contrôleur) est parcouru en premier, suivi du dossier *Shared*. Ce processus de détection est le même que celui utilisé pour détecter les [vues partielles](partial.md).
+La disposition spécifiée peut utiliser un chemin complet (par exemple, */Pages/Shared/_Layout.cshtml* ou */Views/Shared/_Layout.cshtml*) ou un nom partiel (exemple : `_Layout`). Quand un nom partiel est fourni, le moteur de vue Razor recherche le fichier de disposition en utilisant son processus de détection habituel. Le dossier où se trouve la méthode de gestionnaire (ou contrôleur) est parcouru en premier, suivi du dossier *Shared*. Ce processus de détection est le même que celui utilisé pour détecter les [vues partielles](xref:mvc/views/partial#partial-view-discovery).
 
 Par défaut, chaque disposition doit appeler `RenderBody`. À chaque appel de `RenderBody`, le contenu de la vue est affiché.
 
@@ -123,7 +123,7 @@ Le fichier ne prend pas en charge les autres fonctionnalités Razor, telles que 
 
 Exemple de fichier `_ViewImports.cshtml` :
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewImports.cshtml)]
 
 Le fichier *_ViewImports.cshtml* pour une application ASP.NET Core MVC est généralement créé dans le dossier *Pages* (ou *Views*). Un fichier *_ViewImports.cshtml* peut être créé dans un autre dossier ; dans ce cas, il s’applique uniquement aux pages ou vues contenues dans ce dossier et ses sous-dossiers. Les fichiers `_ViewImports` sont traités à partir de la racine, puis pour chaque dossier conduisant à l’emplacement de la page ou vue elle-même. Les paramètres `_ViewImports` spécifiés au niveau de la racine peuvent être remplacés au niveau du dossier.
 
@@ -151,7 +151,7 @@ Le code qui doit s’exécuter avant chaque vue ou page doit être placé dans l
 
 Exemple de fichier *_ViewStart.cshtml* :
 
-[!code-html[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
+[!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml)]
 
 Le fichier ci-dessus spécifie que toutes les vues doivent utiliser la disposition *_Layout.cshtml*.
 

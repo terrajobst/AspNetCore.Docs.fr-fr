@@ -3,42 +3,40 @@ title: Zones dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues).
 ms.author: riande
-ms.date: 02/14/2017
+ms.date: 02/14/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 19e818fa198936ea1bee0da8039e88a3c0abbf6b
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: c21eed04ea68512515da262b6b6895dc1a821039
+ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410610"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56833525"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
 Par [Dhananjay Kumar](https://twitter.com/debug_mode) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Les zones sont une fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues). L’utilisation de zones crée une hiérarchie qui permet le routage par ajout d’un autre paramètre de route, `area`, à `controller` et à `action`.
+Les zones sont une fonctionnalité d’ASP.NET qui servent à organiser les fonctionnalités associées dans un groupe sous la forme d’un espace de noms (pour le routage) et d’une structure de dossiers (pour les vues) distincts. L’utilisation de zones a pour effet de créer une hiérarchie pour les besoins du routage en ajoutant un autre paramètre de route, `area`, à `controller` et `action` ou une Razor Page `page`.
 
-Les zones permettent de partitionner une application web ASP.NET Core MVC de grande taille en regroupements fonctionnels plus petits. Une zone est en réalité une structure MVC à l’intérieur d’une application. Dans un projet MVC, les composants logiques, comme Modèle, Contrôleur et Vue, sont conservés dans des dossiers différents, et MVC utilise des conventions de nommage pour créer la relation entre ces composants. Pour une application de grande taille, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de haut niveau. Par exemple, considérons une application de e-commerce avec plusieurs entités métier, comme la commande, la facturation, la recherche, etc. Chacune de ces unités a ses propres vues, contrôleurs et modèles de composant logique. Dans ce scénario, vous pouvez utiliser des zones pour partitionner physiquement les composants métier dans le même projet.
+Les zones offrent un moyen de partitionner une application web ASP.NET Core en groupes fonctionnels plus petits, chacun avec son propre ensemble de Razor Pages, de contrôleurs, de vues et de modèles. Une zone est en réalité une structure au sein d’une application. Dans un projet web ASP.NET Core, les composants logiques comme Pages, Controller et View sont conservés dans différents dossiers. Le runtime ASP.NET Core utilise des conventions de nommage pour créer la relation entre ces composants. Pour une application volumineuse, il peut être avantageux de partitionner l’application en différentes zones de fonctionnalités de premier niveau. Par exemple, pour une application d’e-commerce à plusieurs entités, il peut s’agir de la caisse, de la facturation et de la recherche. Chacune de ces unités a sa propre zone pour accueillir les vues, les contrôleurs, les Razor Pages et les modèles.
 
-Une zone peut être définie comme une unité fonctionnelle plus petite dans un projet ASP.NET Core MVC avec son propre ensemble de contrôleurs, de vues et de modèles.
+Envisagez d’utiliser des zones dans un projet quand :
 
-Envisagez l’utilisation de zones dans un projet MVC quand :
+* L’application est constituée de plusieurs composants fonctionnels globaux qui peuvent être logiquement séparés.
+* Vous pouvez partitionner l’application de façon à pouvoir travailler indépendamment sur chaque zone fonctionnelle.
 
-* Votre application est constituée de plusieurs composants fonctionnels de haut niveau qui doivent être logiquement séparés
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). L’exemple de code téléchargeable fournit une application de base pour tester les zones.
 
-* Vous voulez partitionner votre projet MVC de façon à pouvoir travailler indépendamment sur chaque zone fonctionnelle
+## <a name="areas-for-controllers-with-views"></a>Zones pour contrôleurs avec vues
 
-Caractéristiques des zones :
+Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et des vues est constituée des éléments suivants :
 
-* Une application ASP.NET Core MVC peut contenir n’importe quel nombre de zones.
+* Une [structure de dossiers Zone](#area-folder-structure).
+* Des contrôleurs décorés avec l’attribut [&lbrack;Area&rbrack;](#attribute) pour associer le contrôleur à la zone : [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
+* La [route de zone ajoutée au démarrage](#add-area-route) : [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
-* Chaque zone a ses propres contrôleurs, modèles et vues.
-
-* Les zones vous permettent d’organiser des projets MVC de grande taille en plusieurs composants généraux sur lesquels vous pouvez travailler indépendamment.
-
-* Les zones prennent en charge plusieurs contrôleurs de même nom, à condition que ces contrôleurs soient dans des *zones* différentes.
-
-Examinons un exemple pour illustrer la façon dont les zones sont créées et utilisées. Supposons que vous avez une application de magasin avec deux regroupements distincts de contrôleurs et de vues : Produits et Services. Voici une structure de dossiers classique pour ce type d’application avec des zones MVC :
+## <a name="area-folder-structure"></a>Structure de dossiers Zone
+Imaginez une application qui contient deux groupes logiques, *Produits* et *Services*. En utilisant des zones, la structure de dossiers se présenterait comme suit :
 
 * Nom du projet
   * Zones (Areas)
@@ -51,6 +49,7 @@ Examinons un exemple pour illustrer la façon dont les zones sont créées et ut
           * Index.cshtml
         * Gérer
           * Index.cshtml
+          * About.cshtml
     * Services
       * Contrôleurs
         * HomeController.cs
@@ -58,112 +57,80 @@ Examinons un exemple pour illustrer la façon dont les zones sont créées et ut
         * Accueil
           * Index.cshtml
 
-Quand MVC tente d’afficher une vue dans une zone, par défaut, il tente de chercher aux emplacements suivants :
+Si la disposition précédente est classique dans les cas où des zones sont utilisées, seuls les fichiers de vues sont nécessaires pour utiliser cette structure de dossiers. La détection de vues recherche un fichier de vue de zone correspondant dans l’ordre suivant :
 
 ```text
 /Areas/<Area-Name>/Views/<Controller-Name>/<Action-Name>.cshtml
-   /Areas/<Area-Name>/Views/Shared/<Action-Name>.cshtml
-   /Views/Shared/<Action-Name>.cshtml
+/Areas/<Area-Name>/Views/Shared/<Action-Name>.cshtml
+/Views/Shared/<Action-Name>.cshtml
+/Pages/Shared/<Action-Name>.cshtml
    ```
 
-Il s’agit des emplacements par défaut, qui peuvent être changés via `AreaViewLocationFormats` sur `Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions`.
+L’emplacement des dossiers autres que Vues comme *Contrôleurs* et *Modèles* **n’a pas** d’importance. Par exemple, les dossiers *Contrôleurs* et *Modèles* ne sont pas nécessaires. Le contenu de *Contrôleurs* et *Modèles* est constitué de code qui est compilé dans un fichier .dll. Le contenu de *Vues* n’est pas compilée tant qu’aucune demande n’a été émise pour la vue en question.
 
-Par exemple, dans le code ci-dessous, le nom de dossier « Areas » a été changé en « Categories ».
+<!-- TODO review:
+The content of the *Views* isn't compiled until a request to that view has been made.
 
-```csharp
-services.Configure<RazorViewEngineOptions>(options =>
-   {
-       options.AreaViewLocationFormats.Clear();
-       options.AreaViewLocationFormats.Add("/Categories/{2}/Views/{1}/{0}.cshtml");
-       options.AreaViewLocationFormats.Add("/Categories/{2}/Views/Shared/{0}.cshtml");
-       options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
-   });
-   ```
+What about precompiled views? 
+ -->
+<a name="attribute"></a>
 
-Une chose à noter est que la structure du dossier *Vues* est la seule qui est considérée comme importante ici, et que le contenu du reste des dossiers, comme *Contrôleurs* et *Modèles* **n’a pas** d’importance. Par exemple, il n’est pas du tout nécessaire d’avoir des dossiers *Contrôleurs* et *Modèles*. Ceci fonctionne, car le contenu de *Contrôleurs* et de *Modèles* est simplement du code qui est compilé dans un fichier .dll, alors que le contenu de *Vues* ne l’est pas tant qu’une demande n’est pas adressée à cette vue.
+### <a name="associate-the-controller-with-an-area"></a>Associer le contrôleur à une zone
 
-Une fois que vous avez défini la hiérarchie des dossiers, vous devez indiquer à MVC que chaque contrôleur est associé à une zone. Vous faites cela en décorant le nom du contrôleur avec l’attribut `[Area]`.
+Les contrôleurs de zone sont désignés à l’aide de l’attribut [&lbrack;Area&rbrack;](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) :
 
-```csharp
-...
-   namespace MyStore.Areas.Products.Controllers
-   {
-       [Area("Products")]
-       public class HomeController : Controller
-       {
-           // GET: /Products/Home/Index
-           public IActionResult Index()
-           {
-               return View();
-           }
+[!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?highlight=5&name=snippet)]
 
-           // GET: /Products/Home/Create
-           public IActionResult Create()
-           {
-               return View();
-           }
-       }
-   }
-   ```
+### <a name="add-area-route"></a>Ajouter une route de zone
 
-Configurez une définition de route qui fonctionne avec vos zones nouvellement créées. L’article [Router vers les actions du contrôleur](routing.md) explique en détail comment créer des définitions de route, notamment l’utilisation de routes conventionnelles par rapport aux routes d’attributs. Dans cet exemple, nous allons utiliser une route conventionnelle. Pour cela, ouvrez le fichier *Startup.cs* et modifiez-le en ajoutant la définition de route nommée `areaRoute` ci-dessous.
+Les routes de zones utilisent généralement un routage conventionnel plutôt qu’un routage par attributs. Le routage conventionnel est dépendant de l’ordre. En général, les routes avec des zones doivent être placées plus haut dans la table de routage, car elles sont plus spécifiques que les routes sans zone.
 
-```csharp
-...
-   app.UseMvc(routes =>
-   {
-     routes.MapRoute(
-         name: "areaRoute",
-         template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+`{area:...}` peut être utilisé comme jeton dans les modèles de route si l’espace d’url est uniforme dans toutes les zones :
 
-     routes.MapRoute(
-         name: "default",
-         template: "{controller=Home}/{action=Index}/{id?}");
-   });
-   ```
+[!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet&highlight=18-21)]
 
-Avec un accès à `http://<yourApp>/products`, la méthode d’action `Index` de `HomeController` dans la zone `Products` sera appelée.
+Dans le code précédent, `exists` applique une contrainte qui impose à la route de correspondre à une zone. Pour ajouter un routage à des zones, le mécanisme le moins compliqué consiste à utiliser `{area:...}`.
 
-## <a name="link-generation"></a>Génération de liens
+Le code suivant utilise <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute*> pour créer deux routes de zone nommées :
 
-* Génération de liens depuis une action dans un contrôleur basé sur une zone vers une autre action au sein du même contrôleur
+[!code-csharp[](areas/samples/MVCareas/StartupMapAreaRoute.cs?name=snippet&highlight=18-27)]
 
-  Supposons que le chemin de la requête actuelle soit `/Products/Home/Create`
+Si vous utilisez `MapAreaRoute` avec ASP.NET Core 2.2, prenez connaissance de [ce problème sur GitHub](https://github.com/aspnet/AspNetCore/issues/7772).
 
-  Syntaxe de HtmlHelper : `@Html.ActionLink("Go to Product's Home Page", "Index")`
+Pour plus d’informations, consultez [Routage de zones](xref:mvc/controllers/routing#areas).
 
-  Syntaxe de TagHelper : `<a asp-action="Index">Go to Product's Home Page</a>`
+### <a name="link-generation-with-areas"></a>Génération de liens avec zones
 
-  Notez que nous ne devons pas fournir ici les valeurs « area » et « controller », car elles sont déjà disponibles dans le contexte de la requête actuelle. Ces types de valeurs sont appelées valeurs `ambient`.
+Le code suivant tiré de l’[exemple de code téléchargeable](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) illustre une génération de liens avec la zone spécifiée :
 
-* Génération de liens depuis une action dans un contrôleur basé sur une zone vers une autre action sur un autre contrôleur
+[!code-cshtml[](areas/samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
-  Supposons que le chemin de la requête actuelle soit `/Products/Home/Create`
+Les liens générés par le code précédent sont valides où que ce soit dans l’application.
 
-  Syntaxe de HtmlHelper : `@Html.ActionLink("Go to Manage Products Home Page", "Index", "Manage")`
+L’exemple de code téléchargeable comprend une [vue partielle](xref:mvc/views/partial) qui contient les liens précédents et les mêmes liens sans spécification de la zone. La vue partielle étant référencée dans le [fichier de disposition](), chaque page de l’application affiche les liens générés. Les liens générés sans spécification de la zone sont valides uniquement quand ils sont référencés dans une page contenue dans la même zone et le même contrôleur.
 
-  Syntaxe de TagHelper : `<a asp-controller="Manage" asp-action="Index">Go to Manage Products Home Page</a>`
+Quand la zone ou le contrôleur n’est pas spécifié, le routage dépend des valeurs *ambiantes*. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects.
 
-  Notez qu’ici la valeur ambiante d’une « area » (zone) est utilisée, mais que la valeur « controller » est spécifiée explicitement ci-dessus.
+Pour plus d’informations, consultez [Routage vers des actions de contrôleur](xref:mvc/controllers/routing).
 
-* Génération de liens depuis une action dans un contrôleur basé sur une zone vers une autre action sur un autre contrôleur et une autre zone
+### <a name="shared-layout-for-areas-using-the-viewstartcshtml-file"></a>Disposition partagée pour les zones en utilisant le fichier _ViewStart.cshtml
 
-  Supposons que le chemin de la requête actuelle soit `/Products/Home/Create`
+Pour partager une disposition commune pour l’ensemble de l’application, déplacez *_ViewStart.cshtml* dans le dossier racine de l’application.
 
-  Syntaxe de HtmlHelper : `@Html.ActionLink("Go to Services Home Page", "Index", "Home", new { area = "Services" })`
+<!-- This section will be completed after https://github.com/aspnet/Docs/pull/10978 is merged.
+<a name="arp"></a>
 
-  Syntaxe de TagHelper : `<a asp-area="Services" asp-controller="Home" asp-action="Index">Go to Services Home Page</a>`
+## Areas for Razor Pages
+-->
+<a name="rename"></a>
 
-  Notez qu’ici aucune valeur ambiante n’est utilisée.
+### <a name="change-default-area-folder-where-views-are-stored"></a>Changer le dossier de zone par défaut où sont stockées les vues
 
-* Génération de liens depuis une action dans un contrôleur basé sur une zone vers une autre action sur un autre contrôleur mais **pas** dans une zone
+Le code suivant remplace le dossier de zone par défaut `"Areas"` par `"MyAreas"` :
 
-  Syntaxe de HtmlHelper : `@Html.ActionLink("Go to Manage Products  Home Page", "Index", "Home", new { area = "" })`
+[!code-csharp[](areas/samples/MVCareas/Startup2.cs?name=snippet)]
 
-  Syntaxe de TagHelper : `<a asp-area="" asp-controller="Manage" asp-action="Index">Go to Manage Products Home Page</a>`
-
-  Comme nous voulons générer des liens vers une action de contrôleur qui n’est pas basé sur une zone, nous vidons ici la valeur ambiante pour « area » (zone).
-
-## <a name="publishing-areas"></a>Zones de publication
+<!-- TODO review - can we delete this. Areas doesn't change publishing - right? -->
+### <a name="publishing-areas"></a>Zones de publication
 
 Tous les fichiers `*.cshtml` et `wwwroot/**` sont publiés en sortie quand `<Project Sdk="Microsoft.NET.Sdk.Web">` est inclus dans le fichier *.csproj*.
