@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: d989bc841a372bed7ebf2c84c6abe1a57762ad04
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 587df6e216943d3eeec779df4d0554dd0fc2fda0
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207354"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345426"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>Charger et de test ASP.NET Core de contrainte
 
@@ -25,6 +25,10 @@ Test de charge et tests de contrainte sont importantes pour garantir qu'une appl
 * Ressources informatiques limitées.  
 
 En situation de stress, peut l’application récupérer et normalement revenir au comportement attendu ? En situation de stress, l’application est *pas* s’exécutent sous des conditions normales.
+
+Visual Studio 2019 sera la dernière version de Visual Studio à proposer des fonctionnalités de test de charge. Pour les clients qui ont besoin d’outils de test de charge, nous leur recommandons d’utiliser d’autres outils de test de charge comme Apache JMeter, Akamai CloudTest ou Blazemeter. Pour plus d’informations, consultez le [Notes de publication Visual Studio 2019 Preview](/visualstudio/releases/2019/release-notes-preview#test-tools).
+
+La tests de charge service dans Azure DevOps se termine dans 2020. Pour plus d’informations, consultez [nuage un test de charge principal de service de durée de vie](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/).
 
 ## <a name="visual-studio-tools"></a>Visual Studio Tools
 

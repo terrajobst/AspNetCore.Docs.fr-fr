@@ -8,14 +8,14 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 65eee9bc477fc8adf10e8d819b93375ffbb72d7b
-ms.sourcegitcommit: 42a8164b8aba21f322ffefacb92301bdfb4d3c2d
+ms.openlocfilehash: ea42a33fbca09787a6643cb14e87f9a7b2fd32b0
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54341837"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346552"
 ---
-<a name="microsoft-ajax-content-delivery-network"></a>Microsoft Ajax Content Delivery Network
+<a name="microsoft-ajax-content-delivery-network"></a>Réseau de distribution de contenu Microsoft Ajax
 ====================
 > [!WARNING]
 > Les applications de production doivent prendront une dépendance dure sur les ressources CDN. Les applications doivent tester pour la ressource CDN référencée et utiliser une ressource de secours lorsque le CDN n’est pas disponible. 
@@ -727,6 +727,8 @@ Les versions suivantes de [Knockout](http://www.knockoutjs.com "Knockout") sont 
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.1.debug.js
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js
 - https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.debug.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.js
+- https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.debug.js
 
 <a id="Globalize_Releases_on_the_CDN_12"></a>
 

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.date: 10/24/2018
 ms.custom: seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: e5bddde41291c9573f58d749bbf830de9ea9319d
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: 906aae3fd4b4abd0becc8847b0f54c372bda300a
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121588"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346305"
 ---
 # <a name="continuous-integration-and-deployment"></a>Intégration et déploiement continus
 
@@ -60,9 +60,9 @@ Supprimer le déploiement Git local en procédant comme suit. Les Pipelines Azur
 
     ![terme de recherche application Web intermédiaire](media/cicd/portal-search-box.png)
 
-1. Cliquez sur **options de déploiement**. Un nouveau panneau s’affiche. Cliquez sur **déconnexion** pour supprimer la configuration de contrôle d’une source de Git locale qui a été ajoutée dans le chapitre précédent. Confirmer l’opération de suppression en cliquant sur le **Oui** bouton.
+1. Cliquez sur **Deployment Center**. Un nouveau panneau s’affiche. Cliquez sur **déconnexion** pour supprimer la configuration de contrôle d’une source de Git locale qui a été ajoutée dans le chapitre précédent. Confirmer l’opération de suppression en cliquant sur le **Oui** bouton.
 1. Accédez à la *mywebapp < unique_number >* App Service. En guise de rappel, zone de recherche du portail peut être utilisé pour localiser rapidement le Service d’application.
-1. Cliquez sur **options de déploiement**. Un nouveau panneau s’affiche. Cliquez sur **déconnexion** pour supprimer la configuration de contrôle d’une source de Git locale qui a été ajoutée dans le chapitre précédent. Confirmer l’opération de suppression en cliquant sur le **Oui** bouton.
+1. Cliquez sur **Deployment Center**. Un nouveau panneau s’affiche. Cliquez sur **déconnexion** pour supprimer la configuration de contrôle d’une source de Git locale qui a été ajoutée dans le chapitre précédent. Confirmer l’opération de suppression en cliquant sur le **Oui** bouton.
 
 ## <a name="create-an-azure-devops-organization"></a>Création d’une organisation Azure DevOps
 
@@ -262,7 +262,7 @@ Le **Source (définition de Build)** valeur représente la définition de build 
 
 ![Capture d’écran affichant les tâches pipeline mise en production](media/cicd/release-definition-tasks.png)
 
-Le pipeline de mise en production est composé de deux tâches : *déployer Azure App Service à l’emplacement* et *gérer Azure App Service - échange d’emplacements*. En cliquant sur la première tâche, vous affichez la configuration de la tâche suivante :
+Le pipeline de mise en production est composé de deux tâches : *Déployer Azure App Service à l’emplacement* et *gérer Azure App Service - Slot Swap*. En cliquant sur la première tâche, vous affichez la configuration de la tâche suivante :
 
 ![Tâche de déploiement du pipeline de versions de capture d’écran montrant](media/cicd/release-definition-task1.png)
 

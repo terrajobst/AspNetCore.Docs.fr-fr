@@ -5,14 +5,14 @@ description: Ajouter le protocole MessagePack Hub à ASP.NET Core SignalR.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 06/04/2018
+ms.date: 02/27/2019
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: da6eeeb51f5d0fc2ad69978688ad1c4ca4d63dab
-ms.sourcegitcommit: 3c2ba9a0d833d2a096d9d800ba67a1a7f9491af0
+ms.openlocfilehash: 7742f6f8bb53fb3c299ff98ae52a0da519ff396c
+ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854339"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57400669"
 ---
 # <a name="use-messagepack-hub-protocol-in-signalr-for-aspnet-core"></a>Utiliser le protocole MessagePack Hub dans SignalR pour ASP.NET Core
 
@@ -98,6 +98,74 @@ const connection = new signalR.HubConnectionBuilder()
 
 > [!NOTE]
 > À ce stade, il n’existe aucune option de configuration pour le protocole MessagePack sur le client JavaScript.
+
+## <a name="messagepack-quirks"></a>MessagePack quirks
+
+Il existe quelques problèmes à connaître lorsque vous utilisez le protocole de Hub MessagePack.
+
+### <a name="messagepack-is-case-sensitive"></a>MessagePack respecte la casse
+
+Le protocole MessagePack respecte la casse. Par exemple, considérez les éléments suivants C# classe :
+
+```csharp
+public class ChatMessage
+{
+    public string Sender { get; }
+    public string Message { get; }
+}
+```
+
+Lors de l’envoi à partir du client JavaScript, vous devez utiliser `PascalCased` des noms de propriété, étant donné que la casse doit correspondre à la C# classe exactement. Exemple :
+
+```javascript
+connection.invoke("SomeMethod", { Sender: "Sally", Message: "Hello!" });
+```
+
+À l’aide de `camelCased` noms ne se lier correctement à la C# classe. Vous pouvez contourner ce à l’aide de la `Key` attribut pour spécifier un autre nom pour la propriété MessagePack. Pour plus d’informations, consultez [la documentation MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp#object-serialization).
+
+### <a name="datetimekind-is-not-preserved-when-serializingdeserializing"></a>DateTime.Kind n’est pas conservé lors de la sérialisation/désérialisation
+
+Le protocole MessagePack ne fournit pas un moyen pour encoder le `Kind` valeur d’un `DateTime`. Par conséquent, lors de la désérialisation d’une date, le protocole de Hub MessagePack part du principe que la date entrante est au format UTC. Si vous travaillez avec `DateTime` valeurs en heure locale, nous vous recommandons de conversion en heure UTC avant de les envoyer. Convertir les à l’heure UTC en heure locale lorsque vous les recevez.
+
+Pour plus d’informations sur cette limitation, consultez le GitHub problème [aspnet/SignalR #2632](https://github.com/aspnet/SignalR/issues/2632).
+
+### <a name="datetimeminvalue-is-not-supported-by-messagepack-in-javascript"></a>DateTime.MinValue n’est pas pris en charge par MessagePack dans JavaScript
+
+Le [msgpack5](https://github.com/mcollina/msgpack5) bibliothèque utilisée par le client SignalR JavaScript ne prend pas en charge la `timestamp96` type dans MessagePack. Ce type est utilisé pour encoder les valeurs de date très volumineux (soit très tôt dans le passé, soit très éloignée dans le futur). La valeur de `DateTime.MinValue` est `January 1, 0001` qui doit être codé dans un `timestamp96` valeur. En raison de cette option, envoi `DateTime.MinValue` à un code JavaScript client n’est pas pris en charge. Lorsque `DateTime.MinValue` est reçu par le client JavaScript, l’erreur suivante est levée :
+
+```
+Uncaught Error: unable to find ext type 255 at decoder.js:427
+```
+
+En règle générale, `DateTime.MinValue` est utilisé pour encoder un « manquant » ou `null` valeur. Si vous devez coder cette valeur dans MessagePack, utilisez nullable `DateTime` valeur (`DateTime?`) ou encoder un distinct `bool` valeur indiquant si la date est présente.
+
+Pour plus d’informations sur cette limitation, consultez le GitHub problème [aspnet/SignalR #2228](https://github.com/aspnet/SignalR/issues/2228).
+
+### <a name="messagepack-support-in-ahead-of-time-compilation-environment"></a>Prise en charge de MessagePack dans l’environnement de compilation de « ahead-of-time »
+
+Le [MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp) bibliothèque utilisée par le client .NET et le serveur utilise la génération de code pour optimiser la sérialisation. Par conséquent, il n’est pas pris en charge par défaut sur les environnements qui utilisent la compilation « ahead-of-time » (par exemple, Xamarin iOS ou Unity). Il est possible d’utiliser MessagePack dans ces environnements par « prégénération de « le code de sérialiseur/désérialiseur. Pour plus d’informations, consultez [la documentation MessagePack-CSharp](https://github.com/neuecc/MessagePack-CSharp#pre-code-generationunityxamarin-supports). Une fois que vous avez préalablement généré les sérialiseurs, vous pouvez les enregistrer à l’aide du délégué de configuration transmis à `AddMessagePackProtocol`:
+
+```csharp
+services.AddSignalR()
+    .AddMessagePackProtocol(options =>
+    {
+        options.FormatterResolvers = new List<MessagePack.IFormatterResolver>()
+        {
+            MessagePack.Resolvers.GeneratedResolver.Instance,
+            MessagePack.Resolvers.StandardResolver.Instance
+        };
+    });
+```
+
+### <a name="type-checks-are-more-strict-in-messagepack"></a>Vérifications de type sont plus strictes dans MessagePack
+
+Le protocole de Hub JSON effectue les conversions de type pendant la désérialisation. Par exemple, si l’objet entrant a une valeur de propriété qui est un nombre (`{ foo: 42 }`), mais la propriété sur la classe .NET est de type `string`, la valeur sera convertie. Toutefois, MessagePack n’effectue pas cette conversion et lève une exception qui peut être consultée dans les journaux côté serveur (et dans la console) :
+
+```
+InvalidDataException: Error binding arguments. Make sure that the types of the provided values match the types of the hub method being invoked.
+```
+
+Pour plus d’informations sur cette limitation, consultez le GitHub problème [aspnet/SignalR #2937](https://github.com/aspnet/SignalR/issues/2937).
 
 ## <a name="related-resources"></a>Ressources connexes
 
