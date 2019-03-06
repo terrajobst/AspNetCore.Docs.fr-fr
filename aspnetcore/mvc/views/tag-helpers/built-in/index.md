@@ -6,18 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
 uid: mvc/views/tag-helpers/builtin-th/Index
-ms.openlocfilehash: 58840d6ecd09bd2ae7f96c046a0cb93c018f9645
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325482"
 ---
+
 # <a name="aspnet-core-built-in-tag-helpers"></a>Tag Helpers intégrés d’ASP.NET Core
 
 Par [Peter Kellner](http://peterkellner.net)
 
-Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
+Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
 > [!NOTE]
 > Il existe des Tag Helpers intégrés qui ne sont pas décrits dans la documentation. Ces Tag Helpers sont utilisés en interne par le moteur d’affichage [Razor](xref:mvc/views/razor) . Cela inclut notamment un Tag Helper pour le caractère `~` (tilde), qui développe le chemin racine du site web.
@@ -35,6 +30,8 @@ Pour avoir une vue d’ensemble de Tag Helpers, consultez <xref:mvc/views/tag-he
 [comment]: **[FormActionTagHelper](xref:mvc/views/tag-helpers/builtin-th/form-action-tag-helper)**
 
 **[Tag Helper Form](xref:mvc/views/working-with-forms#the-form-tag-helper)**
+
+**[Tag Helper Form Action](xref:mvc/views/working-with-forms#the-form-action-tag-helper)**
 
 **[Tag Helper d’image](xref:mvc/views/tag-helpers/builtin-th/image-tag-helper)**
 

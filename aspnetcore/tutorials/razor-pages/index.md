@@ -1,16 +1,10 @@
 ---
-title: 'Tutoriel : Créer une application web de pages Razor avec ASP.NET Core'
+title: "Tutoriel\_: Créer une application web de pages Razor avec ASP.NET Core"
 author: rick-anderson
-description: Créez une application web de pages Razor sur Windows avec Visual Studio, ASP.NET Core et EF Core.
+description: 'Créez une application web de pages Razor sur Windows avec Visual Studio, ASP.NET Core et EF Core.'
 ms.author: riande
 ms.date: 09/08/2017
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: c543e86b58b37a120df22331043944757beeca3a
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410058"
 ---
 # <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>Tutoriel : Créer une application web de pages Razor avec ASP.NET Core
 
@@ -32,3 +26,7 @@ Cette série comprend les tutoriels suivants :
 À la fin, vous disposez d’une application qui peut afficher et gérer une base de données de films.
 
 ![Modèle de page d’exemple d’application](index/_static/sample-page.png)
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=F0SP7Ry4flQ&feature=youtu.be)

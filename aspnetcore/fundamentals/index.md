@@ -4,7 +4,7 @@ author: rick-anderson
 description: Découvrez les concepts de base permettant de créer des applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 03/02/2019
 uid: fundamentals/index
 ---
 # <a name="aspnet-core-fundamentals"></a>Notions de base d’ASP.NET Core
@@ -83,7 +83,7 @@ Le code pour créer un hôte se trouve dans `Program.Main` et suit le [modèle d
 
 ::: moniker range="<= aspnetcore-2.2"
 
-ASP.NET Core 2.x utilise l’hôte web (la classe `WebHost`) pour les applications web. L’infrastructure fournit des méthodes d’extension `CreateDefaultBuilder` qui définissent un hôte avec des options fréquemment utilisées, telles que :
+ASP.NET Core 2.x utilise l’hôte web (la classe `WebHost`) pour les applications web. Le framework fournit `CreateDefaultBuilder` pour définir un hôte avec des options fréquemment utilisées, telles que :
 
 * Utilisez [Kestrel](#servers) en tant que serveur web et activez l’intégration IIS.
 * Chargez la configuration à partir de *appsettings.json*, des variables d’environnement, des arguments de ligne de commande et d’autres sources.
@@ -105,13 +105,13 @@ Pour plus d’informations, consultez [Hôte web](xref:fundamentals/host/web-hos
 
 Dans ASP.NET Core 3.0, un hôte web (classe `WebHost`) ou un hôte générique (classe `Host`) peuvent être utilisés dans une application web. L’hôte générique est recommandée, et l’hôte web est disponible pour la compatibilité descendante.
 
-L’infrastructure fournit des méthodes d’extension `CreateDefaultBuilder` et `ConfigureWebHostDefaults` qui définissent un hôte avec des options fréquemment utilisées, telles que :
+Le framework fournit les méthodes `CreateDefaultBuilder` et `ConfigureWebHostDefaults` pour définir un hôte avec des options fréquemment utilisées, telles que :
 
 * Utilisez [Kestrel](#servers) en tant que serveur web et activez l’intégration IIS.
 * Chargez la configuration à partir de *appsettings.json*, *appsettings.[EnvironmentName].json*, des variables d’environnement, des arguments de ligne de commande et d’autres sources.
 * Envoyez la sortie de journalisation aux fournisseurs Console et Debug.
 
-Voici l’exemple de code qui génère un hôte. Les méthodes d’extension qui configurent l’hôte avec les options fréquemment utilisées sont mises en surbrillance.
+Voici l’exemple de code qui génère un hôte. Les méthodes qui configurent l’hôte avec les options fréquemment utilisées sont mises en surbrillance.
 
 [!code-csharp[](index/snapshots/3.x/Program1.cs?highlight=9-10)]
 

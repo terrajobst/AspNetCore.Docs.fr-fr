@@ -4,14 +4,8 @@ author: tdykstra
 description: Découvrez plus en détail le framework de journalisation dans ASP.NET Core. Apprenez à utiliser les fournisseurs de journalisation intégrés et découvrez-en plus sur les fournisseurs tiers les plus courants.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 01/14/2019
+ms.date: 03/02/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 81620f0c844f3dbb1a2da0e9f1c319f87d9790b6
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667698"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -31,7 +25,7 @@ Pour ajouter un fournisseur, appelez la méthode d’extension `Add{provider nam
 
 [!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_ExpandDefault&highlight=17-19)]
 
-Le modèle de projet par défaut appelle la méthode d’extension <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
+Le modèle de projet par défaut appelle <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A>, qui ajoute les fournisseurs de journalisation suivants :
 
 * Console
 * Débogage
@@ -98,7 +92,7 @@ Le *niveau* du journal indique la gravité de l’événement consigné. La *cat
 
 Pour écrire des journaux dans la classe `Startup`, ajoutez un paramètre `ILogger` dans la signature de constructeur :
 
-[!code-csharp[](index/samples/2.x/TodoApiSample/Startup.cs?name=snippet_Startup&highlight=3,5,8,19,26)]
+[!code-csharp[](index/samples/2.x/TodoApiSample/Startup.cs?name=snippet_Startup&highlight=3,5,8,20,27)]
 
 ### <a name="create-logs-in-program"></a>Créer des journaux dans le programme
 
@@ -806,7 +800,7 @@ Si vous ciblez .NET Core, notez les points suivants :
 
 * N’appelez pas explicitement <xref:Microsoft.Extensions.Logging.AzureAppServicesLoggerFactoryExtensions.AddAzureWebAppDiagnostics*>. Le fournisseur est automatiquement mis à la disposition de l’application qui est déployée sur Azure App Service.
 
-Si vous ciblez le .NET Framework ou référencez le métapackage `Microsoft.AspNetCore.App`, ajoutez le package de fournisseur dans le projet. Appelez `AddAzureWebAppDiagnostics` sur une instance <xref:Microsoft.Extensions.Logging.ILoggerFactory> :
+Si vous ciblez le .NET Framework ou référencez le métapackage `Microsoft.AspNetCore.App`, ajoutez le package de fournisseur dans le projet. Appelez `AddAzureWebAppDiagnostics` :
 
 ```csharp
 logging.AddAzureWebAppDiagnostics();
@@ -822,19 +816,27 @@ loggerFactory.AddAzureWebAppDiagnostics();
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-1.1"
+::: moniker range="<= aspnetcore-2.1"
 
 Une surcharge <xref:Microsoft.Extensions.Logging.AzureAppServicesLoggerFactoryExtensions.AddAzureWebAppDiagnostics*> permet de transmettre <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureAppServicesDiagnosticsSettings>. L’objet de paramètres peut remplacer les paramètres par défaut, comme le modèle de sortie de journalisation, le nom d’objet blob et la limite de taille de fichier. (*Modèle de sortie* est un modèle de message qui s’applique à tous les journaux en plus de ce qui est fourni avec un appel de méthode `ILogger`.)
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
+
+Pour configurer les paramètres du fournisseur, utilisez <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureFileLoggerOptions> et <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureBlobLoggerOptions>, comme illustré dans l’exemple suivant :
+
+[!code-csharp[](index/samples/2.x/TodoApiSample/Program.cs?name=snippet_AzLogOptions&highlight=19-27)]
+
+::: moniker-end
 
 En cas de déploiement sur une application App Service, celle-ci applique les paramètres définis dans la section [Journaux de diagnostic](/azure/app-service/web-sites-enable-diagnostic-log/#enablediag) de la page **App Service** du Portail Azure. Lorsque ces paramètres sont mis à jour, les changements prennent effet immédiatement sans avoir besoin de redémarrer ou redéployer l’application.
 
 ![Paramètres de journalisation Azure](index/_static/azure-logging-settings.png)
 
-L’emplacement par défaut des fichiers journaux est le dossier *D:\\racine\\LogFiles\\Application*, et le nom de fichier par défaut est *diagnostics-aaaammjj.txt*. La limite de taille de fichier par défaut est de 10 Mo, et le nombre maximal de fichiers conservés par défaut est de 2. Le nom par défaut du blob est *{app-name}{timestamp}/aaaa/mm/jj/hh/{guid}-applicationLog.txt*. Pour plus d'informations sur le comportement par défaut, voir <xref:Microsoft.Extensions.Logging.AzureAppServices.AzureAppServicesDiagnosticsSettings>.
+L’emplacement par défaut des fichiers journaux est le dossier *D:\\racine\\LogFiles\\Application*, et le nom de fichier par défaut est *diagnostics-aaaammjj.txt*. La limite de taille de fichier par défaut est de 10 Mo, et le nombre maximal de fichiers conservés par défaut est de 2. Le nom par défaut du blob est *{app-name}{timestamp}/aaaa/mm/jj/hh/{guid}-applicationLog.txt*.
 
 Le fournisseur fonctionne uniquement quand le projet s’exécute dans l’environnement Azure. Il n’a aucun effet si le projet s’exécute localement &mdash; il n’écrit pas d’enregistrements dans les fichiers locaux ou dans le stockage de développement local pour les objets blob.
-
-::: moniker-end
 
 ### <a name="azure-log-streaming"></a>Streaming des journaux Azure
 

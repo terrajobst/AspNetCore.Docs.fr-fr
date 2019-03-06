@@ -4,7 +4,7 @@ author: guardrex
 description: Découvrez comment utiliser l’API de configuration pour configurer une application ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/25/2019
+ms.date: 03/04/2019
 uid: fundamentals/configuration/index
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
@@ -128,7 +128,26 @@ Au démarrage de l’application, les sources de configuration sont lues dans l�
 
 Les fournisseurs de configuration de fichier peuvent recharger la configuration lorsqu’un fichier de paramètres sous-jacent est modifié après le démarrage de l’application. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
 
-<xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur [Dependency Injection (DI)](xref:fundamentals/dependency-injection) de l’application. Les fournisseurs de configuration ne peuvent pas utiliser le DI, car celui-ci n’est pas disponible lorsque les fournisseurs sont configurés par l’hôte.
+<xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) de l’application. <xref:Microsoft.Extensions.Configuration.IConfiguration> peut être injecté dans une Razor Page <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> pour obtenir la configuration de la classe :
+
+```csharp
+// using Microsoft.Extensions.Configuration;
+
+public class IndexModel : PageModel
+{
+    private readonly IConfiguration _config;
+
+    public IndexModel(IConfiguration config)
+    {
+        _config = config;
+    }
+        
+    // The _config local variable is used to obtain configuration 
+    // throughout the class.
+}
+```
+
+Les fournisseurs de configuration ne peuvent pas utiliser le DI, car celui-ci n’est pas disponible lorsque les fournisseurs sont configurés par l’hôte.
 
 Les clés de configuration adoptent les conventions suivantes :
 
@@ -256,6 +275,8 @@ Appelez <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration
 [!code-csharp[](index/samples/2.x/ConfigurationSample/Program.cs?name=snippet_Program&highlight=19)]
 
 ::: moniker-end
+
+La configuration fournie à l’application dans <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> est disponible lors du démarrage de l’application, notamment `Startup.ConfigureServices`. Pour plus d’informations, consultez la section [Accéder à la configuration lors du démarrage](#access-configuration-during-startup).
 
 ## <a name="command-line-configuration-provider"></a>Fournisseur de configuration de ligne de commande
 
@@ -1305,10 +1326,29 @@ var host = new WebHostBuilder()
 
 [ConfigurationBinder.GetValue&lt;T&gt; ](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue*) extrait une valeur à partir de la configuration avec une clé spécifiée et la convertit selon le type spécifié. Une surcharge vous permet de fournir une valeur par défaut si la clé est introuvable.
 
-L’exemple suivant extrait la valeur de la chaîne à partir de la configuration avec la clé `NumberKey`, tape la valeur en tant que `int` et stocke la valeur dans la variable `intValue`. Si `NumberKey` est introuvable dans les clés de configuration, `intValue` reçoit la valeur par défaut `99` :
+L’exemple suivant :
+
+* Extrait la valeur de chaîne de la configuration avec la clé `NumberKey`. Si `NumberKey` est introuvable dans les clés de configuration, la valeur par défaut de `99` est utilisée.
+* Tape la valeur comme `int`.
+* Stocke la valeur dans la propriété `NumberConfig` pour une utilisation par la page.
 
 ```csharp
-var intValue = config.GetValue<int>("NumberKey", 99);
+// using Microsoft.Extensions.Configuration;
+
+public class IndexModel : PageModel
+{
+    public IndexModel(IConfiguration config)
+    {
+        _config = config;
+    }
+    
+    public int NumberConfig { get; private set; }
+        
+    public void OnGet()
+    {
+        NumberConfig = _config.GetValue<int>("NumberKey", 99);
+    }
+}
 ```
 
 ## <a name="getsection-getchildren-and-exists"></a>GetSection, GetChildren et Exists
