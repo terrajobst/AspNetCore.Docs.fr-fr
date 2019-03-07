@@ -1,14 +1,46 @@
-<span data-ttu-id="374cd-101">Ajoutez les propriétés suivantes à la classe `Movie` :</span><span class="sxs-lookup"><span data-stu-id="374cd-101">Add the following properties to the `Movie` class:</span></span>
-
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/Models/MovieNoEF.cs?name=snippet_MovieNoEF)]
-
-<span data-ttu-id="374cd-102">Le champ `ID` est requis par la base de données pour la clé primaire.</span><span class="sxs-lookup"><span data-stu-id="374cd-102">The `ID` field is required by the database for the primary key.</span></span>
-
 <a name="dc"></a>
-### <a name="add-a-database-context-class"></a><span data-ttu-id="374cd-103">Ajouter une classe de contexte de base de données</span><span class="sxs-lookup"><span data-stu-id="374cd-103">Add a database context class</span></span>
+### 
 
-<span data-ttu-id="374cd-104">Ajoutez la classe *MovieContext.cs* suivante au dossier *Models*:</span><span class="sxs-lookup"><span data-stu-id="374cd-104">Add the following *MovieContext.cs* class to the *Models* folder:</span></span>  
+<span data-ttu-id="a2bfc-101">Ajoutez la classe `RazorPagesMovieContext` suivante au dossier *Models* :</span><span class="sxs-lookup"><span data-stu-id="a2bfc-101">Add the following `RazorPagesMovieContext` class to the *Models* folder:</span></span>  
 
-[!code-csharp[](../../tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Models/MovieContext.cs)]
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
-<span data-ttu-id="374cd-105">Le code précédent crée une propriété `DbSet` pour le jeu d’entités.</span><span class="sxs-lookup"><span data-stu-id="374cd-105">The preceding code creates a `DbSet` property for the entity set.</span></span> <span data-ttu-id="374cd-106">Dans la terminologie Entity Framework, un jeu d’entités correspond généralement à une table de base de données, et une entité correspond à une ligne dans la table.</span><span class="sxs-lookup"><span data-stu-id="374cd-106">In Entity Framework terminology, an entity set typically corresponds to a database table, and an entity corresponds to a row in the table.</span></span>
+<span data-ttu-id="a2bfc-102">Le code précédent crée une propriété `DbSet` pour le jeu d’entités.</span><span class="sxs-lookup"><span data-stu-id="a2bfc-102">The preceding code creates a `DbSet` property for the entity set.</span></span> <span data-ttu-id="a2bfc-103">Dans la terminologie Entity Framework, un jeu d’entités correspond généralement à une table de base de données, et une entité correspond à une ligne dans la table.</span><span class="sxs-lookup"><span data-stu-id="a2bfc-103">In Entity Framework terminology, an entity set typically corresponds to a database table, and an entity corresponds to a row in the table.</span></span>
+
+<a name="cs"></a>
+
+### <a name="add-a-database-connection-string"></a><span data-ttu-id="a2bfc-104">Ajouter une chaîne de connexion de base de données</span><span class="sxs-lookup"><span data-stu-id="a2bfc-104">Add a database connection string</span></span>
+
+<span data-ttu-id="a2bfc-105">Ajoutez une chaîne de connexion au fichier *appsettings.json* :</span><span class="sxs-lookup"><span data-stu-id="a2bfc-105">Add a connection string to the *appsettings.json* file:</span></span>
+
+[!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
+
+### <a name="add-required-nuget-packages"></a><span data-ttu-id="a2bfc-106">Ajouter les packages NuGet nécessaires</span><span class="sxs-lookup"><span data-stu-id="a2bfc-106">Add required NuGet packages</span></span>
+
+<span data-ttu-id="a2bfc-107">Exécutez la commande CLI .NET Core suivante pour ajouter SQLite et CodeGeneration.Design au projet :</span><span class="sxs-lookup"><span data-stu-id="a2bfc-107">Run the following .NET Core CLI command to add SQLite and CodeGeneration.Design  to the project:</span></span>
+
+```console
+dotnet add package Microsoft.EntityFrameworkCore.SQLite
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+```
+
+<span data-ttu-id="a2bfc-108">Le package `Microsoft.VisualStudio.Web.CodeGeneration.Design` est nécessaire à la génération de modèles automatique.</span><span class="sxs-lookup"><span data-stu-id="a2bfc-108">The `Microsoft.VisualStudio.Web.CodeGeneration.Design` package is required for scaffolding.</span></span>
+
+<a name="reg"></a>
+
+### <a name="register-the-database-context"></a><span data-ttu-id="a2bfc-109">Inscrire le contexte de base de données</span><span class="sxs-lookup"><span data-stu-id="a2bfc-109">Register the database context</span></span>
+
+<span data-ttu-id="a2bfc-110">En tête du fichier *Startup.cs*, ajoutez les instructions `using` suivantes :</span><span class="sxs-lookup"><span data-stu-id="a2bfc-110">Add the following `using` statements at the top of *Startup.cs*:</span></span>
+
+```csharp
+using RazorPagesMovie.Models;
+using Microsoft.EntityFrameworkCore;
+```
+
+<span data-ttu-id="a2bfc-111">Inscrivez le contexte de base de données auprès du conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) dans `Startup.ConfigureServices`.</span><span class="sxs-lookup"><span data-stu-id="a2bfc-111">Register the database context with the [dependency injection](xref:fundamentals/dependency-injection) container in `Startup.ConfigureServices`.</span></span>
+
+[!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Startup.cs?name=snippet_UseSqlite&highlight=11-12)]
+
+<span data-ttu-id="a2bfc-112">Générez le projet en tant que vérification des erreurs.</span><span class="sxs-lookup"><span data-stu-id="a2bfc-112">Build the project as a check for errors.</span></span>
