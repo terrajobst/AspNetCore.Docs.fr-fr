@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/04/2018
 uid: client-side/using-gulp
-ms.openlocfilehash: e280eabecbd427f3e1418b3d7a60e0ea3df46a5a
-ms.sourcegitcommit: e9b99854b0a8021dafabee0db5e1338067f250a9
+ms.openlocfilehash: 43277dc5910971374187f49031e74769c9e29e1f
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52450604"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665624"
 ---
 # <a name="use-gulp-in-aspnet-core"></a>Utiliser Gulp dans ASP.NET Core
 
@@ -24,7 +24,7 @@ Dans une application web moderne typique, le processus de génération peut :
 * Compilez les fichiers LESS ou SASS en fichiers CSS.
 * Compiler des fichiers CoffeeScript ou TypeScript en JavaScript.
 
-Un *exécuteur de tâches* est un outil qui automatise les tâches de développement de routine et bien plus encore. Visual Studio fournit la prise en charge intégrée pour deux exécuteurs de tâches de base de JavaScript populaires: [Gulp](https://gulpjs.com/) et [Grunt](using-grunt.md).
+Un *exécuteur de tâches* est un outil qui automatise les tâches de développement de routine et bien plus encore. Visual Studio fournit la prise en charge intégrée pour deux exécuteurs de tâches de base de JavaScript les plus courants : [Gulp](https://gulpjs.com/) et [Grunt](using-grunt.md).
 
 ## <a name="gulp"></a>Gulp
 
@@ -61,8 +61,8 @@ Le code ci-dessus spécifie quels modules de nœud sont requis. La fonction `req
 | gulp        | Système de génération en continu Gulp. Pour plus d’informations, consultez [gulp](https://www.npmjs.com/package/gulp). |
 | rimraf      | Un module Node de suppression. Pour plus d’informations, consultez [rimraf](https://www.npmjs.com/package/rimraf). |
 | concat de gulp | Un module qui concatène les fichiers en fonction de caractère de saut de ligne du système d’exploitation. Pour plus d’informations, consultez [gulp-concat](https://www.npmjs.com/package/gulp-concat). |
-| cssmin de gulp | Un module qui minimise les fichiers CSS. Pour plus d’informations, consultez [gulp-cssmin](https://www.npmjs.com/package/gulp-cssmin). |
-| uglify de gulp | Un module qui minimise les fichiers *.js*. Pour plus d’informations, consultez [uglify de gulp](https://www.npmjs.com/package/gulp-uglify). |
+| gulp-cssmin | Un module qui minimise les fichiers CSS. Pour plus d’informations, consultez [gulp-cssmin](https://www.npmjs.com/package/gulp-cssmin). |
+| gulp-uglify | Un module qui minimise les fichiers *.js*. Pour plus d’informations, consultez [uglify de gulp](https://www.npmjs.com/package/gulp-uglify). |
 
 Une fois que les modules requis sont importés, les tâches peuvent être spécifiées. Ici, il existe six tâches enregistrées, représentées par le code suivant :
 
@@ -337,7 +337,7 @@ Une tâche Gulp est inscrite avec un nom de fonction. Vous pouvez spécifier des
 |src   |`gulp.src(globs[, options]) { }`|La fonction `src` fournit des fichiers qui correspondent aux valeurs glob. Le paramètre `glob` est une `string` ou un `array` qui détermine les fichiers à lire. Le paramètre `options` fournit des options de fichiers supplémentaires.|
 |destination  |`gulp.dest(path[, options]) { }`|La fonction `dest` définit un emplacement dans lequel les fichiers peuvent être écrits. Le paramètre `path` est une chaîne ou une fonction qui détermine le dossier de destination. Le paramètre `options` est un objet qui spécifie les options de dossier de sortie.|
 
-Pour plus d’informations de référence supplémentaires sur l'API de Gulp , consultez [documentation de l'API Gulp](https://github.com/gulpjs/gulp/blob/master/docs/API.md).
+Pour plus d’informations de référence supplémentaires sur l'API de Gulp , consultez [documentation de l'API Gulp](https://gulpjs.org/API.html).
 
 ## <a name="gulp-recipes"></a>Recettes Gulp
 

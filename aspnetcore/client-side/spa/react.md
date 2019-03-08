@@ -5,14 +5,14 @@ description: Découvrez comment démarrer avec le modèle de projet d’applicat
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 03/07/2019
 uid: spa/react
-ms.openlocfilehash: 3b2b2e67b5d577872bafefef5624a13ca1a22449
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 7b07f696ae071531c88c9f8cf528fc6f0bf97b46
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899175"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665559"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>Utiliser le modèle de projet React avec ASP.NET Core
 
@@ -105,3 +105,7 @@ Quand vous démarrez votre application ASP.NET Core, celle-ci ne lance pas un se
 
 > [!IMPORTANT]
 > « Rendu côté serveur » n’est pas une fonctionnalité prise en charge de ce modèle. L’objectif de ce modèle consiste à répondre à parité avec « créer-react-app ». Par conséquent, scénarios et fonctionnalités non incluses dans un projet de « créer-react-app » (par exemple, SSR) ne sont pas prises en charge et sont laissées en guise d’exercice pour l’utilisateur.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* <xref:security/authentication/identity/spa>
