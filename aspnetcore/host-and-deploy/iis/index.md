@@ -286,7 +286,7 @@ Pour obtenir une version antérieure du programme d’installation :
 1. Téléchargez le programme d’installation à l’aide du lien **Runtime & Hosting Bundle**.
 
 > [!WARNING]
-> Certains programmes d’installation contiennent des versions qui sont arrivées à leur fin de vie (EOL) et qui ne sont plus prises en charge par Microsoft. Pour plus d’informations, consultez la [politique de support](https://www.microsoft.com/net/download/dotnet-core/2.0).
+> Certains programmes d’installation contiennent des versions qui sont arrivées à leur fin de vie (EOL) et qui ne sont plus prises en charge par Microsoft. Pour plus d’informations, consultez la [politique de support](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 ### <a name="install-the-hosting-bundle"></a>Installer le bundle d’hébergement
 
@@ -592,7 +592,7 @@ Pour plus d’informations sur les modèles d’hébergement in-process et out-o
 
 * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
 * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse pour le [serveur Kestrel](xref:fundamentals/servers/kestrel) utilise HTTP/1.1.
-* Framework cible : Non applicable aux déploiements out-of-process, étant donné que la connexion HTTP/2 est gérée entièrement par IIS.
+* Version cible de .NET Framework : Non applicable aux déploiements out-of-process, étant donné que la connexion HTTP/2 est gérée entièrement par IIS.
 * TLS 1.2 ou connexion ultérieure
 
 Si une connexion HTTP/2 est établie, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) retourne `HTTP/1.1`.
