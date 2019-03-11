@@ -6,21 +6,21 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 08/09/2018
 uid: client-side/bower
-ms.openlocfilehash: 06edf7ee791aac0984ff71c2f243f61093f0d503
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 08e6daa537c6c6f92a1cf80d70745e8ef606f580
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570020"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665611"
 ---
 # <a name="manage-client-side-packages-with-bower-in-aspnet-core"></a>Gérer les dépendances côté client avec Bower dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/), et [Scott Addie](https://scottaddie.com)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Noel riz](https://twitter.com/noelrice1), et [Scott Addie](https://scottaddie.com)
 
 > [!IMPORTANT]
 > Tandis que Bower est conservé, son chargés de maintenance vous recommandons d’utiliser une autre solution. [Gestionnaire de bibliothèque](https://blogs.msdn.microsoft.com/webdev/2018/04/18/what-happened-to-bower/) (LibMan en abrégé) est outil de Visual Studio nouvelle bibliothèque côté client acquisition (Visual Studio 15,8 ou version ultérieure). Pour plus d'informations, consultez <xref:client-side/libman/index>. Bower est pris en charge dans Visual Studio jusqu'à la version 15.5.
 >
-> L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles.
+>  L'utilisation de Yarn avec Webpack constitue une alternative courante pour laquelle des [instructions de migration](https://bower.io/blog/2017/how-to-migrate-away-from-bower/) sont disponibles.
 
 [Bower](https://bower.io/) se définit lui-même comme "Un gestionnaire de paquets pour le web". Dans l’écosystème .NET, il remplit le vide laissé par l’impossibilité d'inclure des fichiers de contenu statique avec NuGet. Pour les projets ASP.NET Core, ces fichiers statiques sont inhérents aux bibliothèques côté client comme[jQuery](http://jquery.com/) et [Bootstrap](http://getbootstrap.com/). Pour les bibliothèques .NET, vous utilisez toujours le gestionnaire de package [NuGet](https://www.nuget.org/)
 
@@ -44,13 +44,13 @@ Dans ce didacticiel, nous allons ajouter la prise en charge de [Font Awesome](ht
 
 ### <a name="manual-installation-in-bowerjson"></a>Installation manuelle de bower.json
 
-Ouvrez le fichier *bower.json* et ajoutez "Font Awesome" aux dépendances. IntelliSense affiche les packages disponibles.  Lorsqu’un package est sélectionné, les versions disponibles sont affichées.  Les images ci-dessous sont plus anciennes et ne correspondent pas à ce que vous voyez.
+Ouvrez le fichier *bower.json* et ajoutez "Font Awesome" aux dépendances.  IntelliSense affiche les packages disponibles.  Lorsqu’un package est sélectionné, les versions disponibles sont affichées.   Les images ci-dessous sont plus anciennes et ne correspondent pas à ce que vous voyez.
 
 ![IntelliSense de l’Explorateur de package bower](bower/_static/add-package.png)
 
 ![version de bower IntelliSense](bower/_static/version-intelliSense.png)
 
-Bower utilise le [contrôle de version sémantique](http://semver.org/) pour organiser les dépendances.  les dépendances. Le contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation \<majeure >.\< mineure >. \<correctif >. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste IntelliSense (4.6.3 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole de signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente.
+Bower utilise le [contrôle de version sémantique](http://semver.org/) pour organiser les dépendances.  les dépendances.  Le contrôle de version sémantique, également appelé SemVer, identifie les packages avec le modèle de numérotation \<majeure >.\< mineure >. \<correctif >. IntelliSense simplifie le contrôle de version sémantique en affichant uniquement quelques choix courants. Le premier élément dans la liste IntelliSense (4.6.3 dans l’exemple ci-dessus) est considéré comme la dernière version stable du package. Le symbole de signe insertion (^) correspond à la version majeure la plus récente et le tilde (~) correspond à la version mineure la plus récente.
 
 Enregistrez le fichier *bower.json*. Visual Studio surveille les modifications du fichier *bower.json*. Après l’enregistrement, la commande *bower install* est exécutée. Consultez la fenêtre de sortie et la vue**Bower/npm** pour la commande exacte exécutée.
 
@@ -91,7 +91,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 * Créez une application web ASP.NET Core avec le modèle **Application web ASP.NET Core (.NET Core)**. Sélectionnez le modèle de projet **vide** et cliquez sur **OK**.
 
-* Dans l’Explorateur de solutions, cliquez sur le projet > **Ajouter un nouvel élément** et sélectionnez **Fichier de configuration Bower**. Remarque : un fichier *.bowerrc* est également ajouté.
+* Dans l’Explorateur de solutions, cliquez sur le projet > **Ajouter un nouvel élément** et sélectionnez **Fichier de configuration Bower**. Remarque : Un *.bowerrc* fichier est également ajouté.
 
 * Ouvrez le fichier *bower.json*et ajoutez jquery et bootstrap dans la section `dependencies`. Le fichier *bower.json* résultant ressemblera à l’exemple suivant. Les versions changent au fil du temps et peuvent ne pas correspondre à l’image ci-dessous.
 
@@ -101,7 +101,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
   Vérifiez que le projet inclut les répertoires *Bootstrap* et *jQuery* dans *wwwroot/lib*. Bower utilise le fichier *.bowerrc* pour installer les composants dans *wwwroot/lib*.
 
-  Remarque : L’interface utilisateur "Gérer les paquets Bower" offre une alternative à la modification manuelle du fichier.
+  Remarque : L’interface utilisateur « Gérer les Packages Bower » fournit une alternative à la modification de fichier manuel.
 
 ### <a name="enable-static-files"></a>Activer les fichiers statiques
 
@@ -114,7 +114,7 @@ Une fois la liste de paquets définie dans le fichier *bower.json*, Visual Studi
 
 Dans cette section, vous allez créer une page HTML pour vérifier qu’il peut accéder aux packages déployés.
 
-* Ajoutez une nouvelle page HTML nommée *Index.html* dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Consultez [fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
+* Ajoutez une nouvelle page HTML nommée *Index.html* dans le dossier *wwwroot*. Remarque : Vous devez ajouter le fichier HTML pour le *wwwroot* dossier. Remarque : Vous devez ajouter le fichier HTML dans le dossier *wwwroot*. Consultez [fichiers statiques](xref:fundamentals/static-files) pour plus d’informations.
 
   Remplacez le contenu du fichier *Index.html* par le contenu suivant :
 
