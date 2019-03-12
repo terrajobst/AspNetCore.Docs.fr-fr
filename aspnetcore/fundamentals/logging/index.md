@@ -866,6 +866,7 @@ Le Kit SDK Application Insights peut collecter et présenter des journaux géné
 * [Vue d'ensemble d'Application Insights](/azure/application-insights/app-insights-overview)
 * [Application Insights pour ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
 * [Adaptateurs de journalisation Application Insights](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md).
+* [Exemples d’implémentation d’Application Insights ILogger](/azure/azure-monitor/app/ilogger)
 
 ::: moniker-end
 
