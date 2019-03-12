@@ -5,12 +5,12 @@ description: Décrit l’obtention de pages Razor par génération de modèles a
 ms.author: riande
 ms.date: 12/4/2018
 uid: tutorials/razor-pages/page
-ms.openlocfilehash: ad87e3da72c3dd6adf8cf55d16da58fa47ed5542
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 07ad142b369fab92589f63479533a769136a087b
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410347"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346448"
 ---
 # <a name="scaffolded-razor-pages-in-aspnet-core"></a>Pages Razor obtenues par génération de modèles automatique dans ASP.NET Core
 
@@ -171,6 +171,11 @@ Les [Tag Helpers de validation](xref:mvc/views/working-with-forms#the-validation
 Le [Tag Helper d’étiquette](xref:mvc/views/working-with-forms#the-label-tag-helper) (`<label asp-for="Movie.Title" class="control-label"></label>`) génère la légende de l’étiquette et l’attribut `for` pour la propriété `Title`.
 
 Le [Tag Helper d’entrée](xref:mvc/views/working-with-forms) (`<input asp-for="Movie.Title" class="form-control" />`) utilise les attributs [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) et produit les attributs HTML nécessaires à la validation jQuery côté client.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel](https://youtu.be/zxgKjPYnOMM)
+
 
 > [!div class="step-by-step"]
 > [Précédent : Ajout d’un modèle](xref:tutorials/razor-pages/model)

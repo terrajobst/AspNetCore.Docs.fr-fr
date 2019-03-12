@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: cf8733e1e806c4be0c4b217fc45c7a338a03a3ce
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 140f482e136acf4daba1248fecc87e06db6866f3
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207554"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345888"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -42,13 +42,13 @@ EF Core peut charger des données associées dans les propriétés de navigation
   * Une requête pour la requête principale 
   * Une requête pour chaque « périmètre » de collection dans l’arborescence de la charge.
 
-* Requêtes distinctes avec `Load` : les données peuvent être récupérées dans des requêtes distinctes, et EF Core « corrige » les propriétés de navigation. Le terme « corrige » signifie qu’EF Core renseigne automatiquement les propriétés de navigation. Les requêtes distinctes avec `Load` s’apparentent plus au chargement explicite qu’au chargement hâtif.
+* Requêtes distinctes avec `Load` : Les données peuvent être récupérées dans des requêtes distinctes, et EF Core « corrige » les propriétés de navigation. Le terme « corrige » signifie qu’EF Core renseigne automatiquement les propriétés de navigation. Les requêtes distinctes avec `Load` s’apparentent plus au chargement explicite qu’au chargement hâtif.
 
   ![Exemple de requêtes distinctes](read-related-data/_static/separate-queries.png)
 
   Remarque : EF Core corrige automatiquement les propriétés de navigation vers d’autres entités qui étaient précédemment chargées dans l’instance de contexte. Même si les données pour une propriété de navigation ne sont *pas* explicitement incluses, la propriété peut toujours être renseignée si toutes ou une partie des entités associées ont été précédemment chargées.
 
-* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Exemple :
+* [Chargement explicite](/ef/core/querying/related-data#explicit-loading). Quand l’entité est lue pour la première fois, les données associées ne sont pas récupérées. Vous devez écrire du code pour récupérer les données associées en cas de besoin. En cas de chargement explicite avec des requêtes distinctes, plusieurs requêtes sont envoyées à la base de données. Avec le chargement explicite, le code spécifie les propriétés de navigation à charger. Utilisez la méthode `Load` pour effectuer le chargement explicite. Par exemple :
 
   ![Exemple de chargement explicite](read-related-data/_static/explicit-loading.png)
 
@@ -184,8 +184,8 @@ Examinez la requête dans le fichier *Pages/Instructors/Index.cshtml.cs* :
 
 La requête comporte deux Include :
 
-* `OfficeAssignment` : affiché dans l’[affichage Instructors](#IP).
-* `CourseAssignments` : qui affiche les cours dispensés.
+* `OfficeAssignment`: Affiché dans [l’affichage Instructors](#IP).
+* `CourseAssignments`: Qui affiche les cours dispensés.
 
 
 ### <a name="update-the-instructors-index-page"></a>Mettre à jour la page d’index des formateurs
@@ -330,6 +330,11 @@ Notez que le code précédent commente `.AsNoTracking()`. Les propriétés de na
 Testez l’application. Du point de vue des utilisateurs, l’application se comporte comme la version précédente.
 
 Le didacticiel suivant montre comment mettre à jour les données associées.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel (partie 1)](https://www.youtube.com/watch?v=PzKimUDmrvE)
+* [Version YouTube de ce tutoriel (partie 2)](https://www.youtube.com/watch?v=xvDDrIHv5ko)
 
 >[!div class="step-by-step"]
 >[Précédent](xref:data/ef-rp/complex-data-model)

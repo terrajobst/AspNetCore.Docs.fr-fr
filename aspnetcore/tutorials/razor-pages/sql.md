@@ -5,12 +5,12 @@ description: Explique l’utilisation d’une base de données et d’ASP.NET Co
 ms.author: riande
 ms.date: 12/07/2017
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 3e05f5dbc73c35f1f938346b2eaab8c0fa7d8ab9
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 9f01f5c9fcf9c423ccc2af8ae6ca55c2f427c9c1
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410295"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346026"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>Utiliser une base de données et ASP.NET Core
 
@@ -176,6 +176,10 @@ L’application affiche les données de départ :
 ![Application Movie ouverte dans Chrome, affichant les données relatives aux films](sql/_static/m55.png)
 
 Le didacticiel suivant nettoie la présentation des données.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
 > [Précédent : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)

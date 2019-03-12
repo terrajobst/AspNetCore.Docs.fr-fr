@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: cfd0a57d5d0b60862b017a170b6d5cbddf56f15a
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: d629c2f02f9021454d8f8539018f3e2ca4703a00
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56744181"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346396"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -40,7 +40,7 @@ L’hôte fournit des services accessibles au constructeur de classe `Startup`. 
 Une utilisation courante de [l’injection de dépendances](xref:fundamentals/dependency-injection) dans la classe `Startup` consiste à injecter :
 
 * <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment> pour configurer les services en fonction de l’environnement.
-* <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> pour lire la configuration.
+* <xref:Microsoft.Extensions.Configuration.IConfiguration> pour lire la configuration.
 * <xref:Microsoft.Extensions.Logging.ILoggerFactory> pour créer un enregistreur d’événements dans `Startup.ConfigureServices`.
 
 [!code-csharp[](startup/sample_snapshot/Startup2.cs?highlight=7-8)]
@@ -73,7 +73,7 @@ La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> permet de
 
 Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeline pour permettre la prise en charge des éléments suivants :
 
-* [Page d’exceptions du développeur](xref:fundamentals/error-handling#the-developer-exception-page)
+* [Page d’exceptions du développeur](xref:fundamentals/error-handling#developer-exception-page)
 * [Gestionnaire d’exceptions](xref:fundamentals/error-handling#configure-a-custom-exception-handling-page)
 * [HSTS (HTTP Strict Transport Security)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [Redirection HTTPS](xref:security/enforcing-ssl)

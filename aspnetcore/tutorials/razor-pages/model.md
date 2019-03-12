@@ -5,12 +5,12 @@ description: Découvrez comment ajouter des classes pour gérer des films dans u
 ms.author: riande
 ms.date: 02/12/2019
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: c7341430e8e2ace7eb04faa308020095139d5b94
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0ba00750dee1ccbef5d91d8c66f2de0db401c5c1
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56410230"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346357"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>Ajouter un modèle à une application de pages Razor dans ASP.NET Core
 
@@ -147,10 +147,6 @@ Le fichier *appsettings.json* est mis à jour avec la chaîne de connexion utili
 
 ---
 
-Les commandes précédentes génèrent l’avertissement suivant : « Aucun type n’a été spécifié pour la colonne décimale ‘Price’ sur le type d’entité ‘Movie’. Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'HasColumnType()'. »
-
-Vous pouvez ignorer cet avertissement, il sera corrigé dans un prochain tutoriel.
-
 Le processus de génération de modèles automatique crée et met à jour les fichiers suivants :
 
 ### <a name="files-created"></a>Fichiers créés
@@ -204,6 +200,10 @@ Update-Database
 
 ---  
 <!-- End of VS tabs -->
+
+Les commandes précédentes génèrent l’avertissement suivant : « Aucun type n’a été spécifié pour la colonne décimale ‘Price’ sur le type d’entité ‘Movie’. Les valeurs sont tronquées en mode silencieux si elles ne sont pas compatibles avec la précision et l’échelle par défaut. Spécifiez explicitement le type de colonne SQL Server capable d’accueillir toutes les valeurs en utilisant 'HasColumnType()'. »
+
+Vous pouvez ignorer cet avertissement, il sera corrigé dans un prochain tutoriel.
 
 La commande `ef migrations add InitialCreate` génère le code nécessaire à la création du schéma de base de données initial. Le schéma est basé sur le modèle spécifié dans `DbContext` (dans le fichier *RazorPagesMovieContext.cs*). L’argument `InitialCreate` est utilisé pour nommer les migrations. Vous pouvez utiliser n’importe quel nom, mais par convention, un nom décrivant la migration est sélectionné.
 
@@ -272,6 +272,10 @@ Vous avez manqué [l’étape des migrations](#pmc).
 
 Le prochain didacticiel décrit les fichiers créés par la génération de modèles automatique.
 
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=sFVIsdR_RcM)
+
 > [!div class="step-by-step"]
-> [Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
+> [Précédent : Bien démarrer](xref:tutorials/razor-pages/razor-pages-start)
 > [Suivant : Pages Razor obtenues par génération de modèles automatique](xref:tutorials/razor-pages/page)

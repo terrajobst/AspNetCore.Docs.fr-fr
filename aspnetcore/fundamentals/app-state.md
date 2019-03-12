@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez différentes approches pour conserver l’état de session et d’application entre les requêtes.
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/14/2018
+ms.date: 03/04/2019
 uid: fundamentals/app-state
-ms.openlocfilehash: a510e4f49e158203dd7c5e1e0bd28472541f7925
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 2e3591ac1d6b1670b27b1ed9e42f59ba2b956b37
+ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836335"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57400708"
 ---
 # <a name="session-and-app-state-in-aspnet-core"></a>État de session et d’application dans ASP.NET Core
 
@@ -64,7 +64,7 @@ L’état de session présente les comportements suivants :
 * L’application conserve une session pendant une période limitée après la dernière requête. L’application définit le délai d’expiration d’une session ou utilise la valeur par défaut de 20 minutes. L’état de session est idéal pour le stockage des données utilisateur qui sont propres à une session particulière, mais où les données ne nécessitent pas un stockage permanent entre les sessions.
 * Les données de session sont supprimées quand l’implémentation [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) est appelée ou quand la session expire.
 * Il n’existe aucun mécanisme par défaut permettant de signaler au code d’application qu’un navigateur client a été fermé ou que le cookie de session a été supprimé ou a expiré sur le client.
-Les modèles de pages ASP.NET Core MVC et Razor incluent la prise en charge du [Règlement général sur la protection des données (RGPD)](xref:security/gdpr). [Les cookies d’état de session ne sont pas essentiels](xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential), l’état de session ne fonctionne pas lorsque le suivi est désactivé.
+Les modèles de pages ASP.NET Core MVC et Razor incluent la prise en charge du Règlement général sur la protection des données (RGPD). Les cookies d’état de session ne sont pas marqués comme étant essentiels par défaut, donc l’état de session n’est pas fonctionnel, sauf si le suivi est autorisé par le visiteur du site. Pour plus d'informations, consultez <xref:security/gdpr#tempdata-provider-and-session-state-cookies-are-not-essential>.
 
 > [!WARNING]
 > Ne stockez pas de données sensibles dans l’état de session. L’utilisateur risque de ne pas fermer le navigateur et de ne pas effacer le cookie de session. Certains navigateurs conservent des cookies de session valides entre les fenêtres du navigateur. Une session n’est pas toujours limitée à un seul utilisateur ; l’utilisateur suivant risque donc de parcourir l’application avec le même cookie de session.

@@ -5,12 +5,12 @@ description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pou
 ms.author: riande
 ms.date: 02/14/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: c21eed04ea68512515da262b6b6895dc1a821039
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 8904d217a18fff65113ae3469efe60258d20d5f0
+ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833525"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57400643"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -27,6 +27,8 @@ Envisagez d’utiliser des zones dans un projet quand :
 
 [Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). L’exemple de code téléchargeable fournit une application de base pour tester les zones.
 
+Si vous utilisez Razor Pages, consultez [Zones avec Razor Pages](#areas-with-razor-pages) dans ce document.
+
 ## <a name="areas-for-controllers-with-views"></a>Zones pour contrôleurs avec vues
 
 Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et des vues est constituée des éléments suivants :
@@ -35,7 +37,7 @@ Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et
 * Des contrôleurs décorés avec l’attribut [&lbrack;Area&rbrack;](#attribute) pour associer le contrôleur à la zone : [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
 * La [route de zone ajoutée au démarrage](#add-area-route) : [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
-## <a name="area-folder-structure"></a>Structure de dossiers Zone
+### <a name="area-folder-structure"></a>Structure de dossiers Zone
 Imaginez une application qui contient deux groupes logiques, *Produits* et *Services*. En utilisant des zones, la structure de dossiers se présenterait comme suit :
 
 * Nom du projet
@@ -68,11 +70,6 @@ Si la disposition précédente est classique dans les cas où des zones sont uti
 
 L’emplacement des dossiers autres que Vues comme *Contrôleurs* et *Modèles* **n’a pas** d’importance. Par exemple, les dossiers *Contrôleurs* et *Modèles* ne sont pas nécessaires. Le contenu de *Contrôleurs* et *Modèles* est constitué de code qui est compilé dans un fichier .dll. Le contenu de *Vues* n’est pas compilée tant qu’aucune demande n’a été émise pour la vue en question.
 
-<!-- TODO review:
-The content of the *Views* isn't compiled until a request to that view has been made.
-
-What about precompiled views? 
- -->
 <a name="attribute"></a>
 
 ### <a name="associate-the-controller-with-an-area"></a>Associer le contrôleur à une zone
@@ -99,7 +96,7 @@ Si vous utilisez `MapAreaRoute` avec ASP.NET Core 2.2, prenez connaissance de [
 
 Pour plus d’informations, consultez [Routage de zones](xref:mvc/controllers/routing#areas).
 
-### <a name="link-generation-with-areas"></a>Génération de liens avec zones
+### <a name="link-generation-with-mvc-areas"></a>Génération de liens avec zones MVC
 
 Le code suivant tiré de l’[exemple de code téléchargeable](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) illustre une génération de liens avec la zone spécifiée :
 
@@ -107,7 +104,7 @@ Le code suivant tiré de l’[exemple de code téléchargeable](https://github.c
 
 Les liens générés par le code précédent sont valides où que ce soit dans l’application.
 
-L’exemple de code téléchargeable comprend une [vue partielle](xref:mvc/views/partial) qui contient les liens précédents et les mêmes liens sans spécification de la zone. La vue partielle étant référencée dans le [fichier de disposition](), chaque page de l’application affiche les liens générés. Les liens générés sans spécification de la zone sont valides uniquement quand ils sont référencés dans une page contenue dans la même zone et le même contrôleur.
+L’exemple de code téléchargeable comprend une [vue partielle](xref:mvc/views/partial) qui contient les liens précédents et les mêmes liens sans spécification de la zone. La vue partielle étant référencée dans le [fichier de disposition](xref:mvc/views/layout), chaque page de l’application affiche les liens générés. Les liens générés sans spécification de la zone sont valides uniquement quand ils sont référencés dans une page contenue dans la même zone et le même contrôleur.
 
 Quand la zone ou le contrôleur n’est pas spécifié, le routage dépend des valeurs *ambiantes*. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects.
 
@@ -117,11 +114,6 @@ Pour plus d’informations, consultez [Routage vers des actions de contrôleur](
 
 Pour partager une disposition commune pour l’ensemble de l’application, déplacez *_ViewStart.cshtml* dans le dossier racine de l’application.
 
-<!-- This section will be completed after https://github.com/aspnet/Docs/pull/10978 is merged.
-<a name="arp"></a>
-
-## Areas for Razor Pages
--->
 <a name="rename"></a>
 
 ### <a name="change-default-area-folder-where-views-are-stored"></a>Changer le dossier de zone par défaut où sont stockées les vues
@@ -130,7 +122,72 @@ Le code suivant remplace le dossier de zone par défaut `"Areas"` par `"MyAreas"
 
 [!code-csharp[](areas/samples/MVCareas/Startup2.cs?name=snippet)]
 
-<!-- TODO review - can we delete this. Areas doesn't change publishing - right? -->
+<a name="arp"></a>
+
+## <a name="areas-with-razor-pages"></a>Zones avec Razor Pages
+
+Les zones avec Razor Pages requièrent un dossier *Areas/&lt;nom de zone&gt;/Pages* à la racine de l’application. La structure de dossiers suivante est utilisée avec le [téléchargement de l’exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)
+
+* Nom du projet
+  * Zones (Areas)
+    * Produits
+      * Pages
+        * _ViewImports
+        * À propos de
+        * Index
+    * Services
+      * Pages
+        * Gérer
+          * À propos de
+          * Index
+
+### <a name="link-generation-with-razor-pages-and-areas"></a>Génération de liens avec Razor Pages et des zones
+
+Le code suivant tiré de [l’exemple de code téléchargeable](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) illustre une génération de liens avec la zone spécifiée (par exemple, `asp-area="Products"`) :
+
+[!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
+
+Les liens générés par le code précédent sont valides où que ce soit dans l’application.
+
+L’exemple de code téléchargeable comprend une [vue partielle](xref:mvc/views/partial) qui contient les liens précédents et les mêmes liens sans spécification de la zone. La vue partielle étant référencée dans le [fichier de disposition](xref:mvc/views/layout), chaque page de l’application affiche les liens générés. Les liens générés sans spécification de la zone sont valides uniquement quand ils sont référencés dans une page contenue dans la même zone.
+
+Quand la zone n’est pas spécifiée, le routage dépend des valeurs *ambiantes*. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans de nombreux cas, pour l’exemple d’application, l’utilisation des valeurs ambiantes génère des liens incorrects. Prenons l’exemple des liens générés à partir de l’extrait de code suivant :
+
+[!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
+
+Pour le code précédent :
+
+* Le lien généré à partir de `<a asp-page="/Manage/About">` est correct uniquement lorsque la dernière requête concernait une page dans la zone `Services`. Par exemple, `/Services/Manage/`, `/Services/Manage/Index` ou `/Services/Manage/About`.
+* Le lien généré à partir de `<a asp-page="/About">` est correct uniquement lorsque la dernière requête concernait une page dans `/Home`.
+* Le code est issu du [téléchargement de l’exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
+
+### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>Importer l’espace de noms et les Tag Helpers avec le fichier _ViewImports
+
+Un fichier *_ViewImports* peut être ajouté à chaque dossier *Pages* de la zone pour importer l’espace de noms et les Tag Helpers dans chaque Razor Page du dossier.
+
+Observez la zone *Services* de l’exemple de code, qui ne contient pas de fichier *_ViewImports*. Le balisage suivant montre la Razor Page */Services/Manage/About* :
+
+[!code-cshtml[](areas/samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
+
+Dans le balisage précédent :
+
+* Le nom de domaine complet doit être utilisé pour spécifier le modèle (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`).
+* Les [Tag Helpers]() sont activés par `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`
+
+Dans le téléchargement de l’exemple, la zone Products contient le fichier *_ViewImports* suivant :
+
+[!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
+
+Le balisage suivant montre la Razor Page */Products/About* : [!code-cshtml [](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
+
+Dans le fichier précédent, l’espace de noms et la directive `@addTagHelper` sont importés dans le fichier par le fichier *Areas/Products/Pages/_ViewImports.cshtml* :
+
+Pour plus d’informations, consultez [Gestion de l’étendue des Tag Helpers](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) et [Importation de directives partagées](xref:mvc/views/layout#importing-shared-directives).
+
+### <a name="shared-layout-for-razor-pages-areas"></a>Disposition partagée pour les zones Razor Pages
+
+Pour partager une disposition commune pour l’ensemble de l’application, déplacez *_ViewStart.cshtml* dans le dossier racine de l’application.
+
 ### <a name="publishing-areas"></a>Zones de publication
 
-Tous les fichiers `*.cshtml` et `wwwroot/**` sont publiés en sortie quand `<Project Sdk="Microsoft.NET.Sdk.Web">` est inclus dans le fichier *.csproj*.
+Tous les fichiers `*.cshtml` et `wwwroot/**` sont publiés en sortie quand `<Project Sdk="Microsoft.NET.Sdk.Web">` est inclus dans le fichier .csproj*.

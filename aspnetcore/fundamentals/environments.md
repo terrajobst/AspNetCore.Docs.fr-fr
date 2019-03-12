@@ -5,12 +5,12 @@ description: Découvrez comment contrôler le comportement de l’application da
 ms.author: riande
 ms.date: 01/22/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 39e1b48481832a6d76de605b37410fe2e16dcd88
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 4120453c36d1fc2a2303c2175df30ef9777bc54f
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836738"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345948"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
@@ -43,7 +43,7 @@ Sur Windows et macOS, les valeurs et les variables d’environnement ne respecte
 
 ### <a name="development"></a>Développement
 
-L’environnement de développement peut activer des fonctionnalités qui ne doivent pas être exposées en production. Par exemple, les modèles ASP.NET Core activent la [page d’exception de développeur](xref:fundamentals/error-handling#the-developer-exception-page) dans l’environnement de développement.
+L’environnement de développement peut activer des fonctionnalités qui ne doivent pas être exposées en production. Par exemple, les modèles ASP.NET Core activent la [page d’exceptions du développeur](xref:fundamentals/error-handling#developer-exception-page) dans l’environnement de développement.
 
 L’environnement de développement de l’ordinateur local peut être défini dans le fichier *Properties\launchSettings.json* du projet. Les valeurs d’environnement définies dans *launchSettings.json* remplacent les valeurs définies dans l’environnement système.
 

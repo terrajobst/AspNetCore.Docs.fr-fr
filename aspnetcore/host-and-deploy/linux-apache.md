@@ -4,14 +4,14 @@ description: Découvrez comment configurer Apache comme serveur proxy inverse su
 author: spboyer
 ms.author: spboyer
 ms.custom: mvc
-ms.date: 02/13/2019
+ms.date: 02/27/2019
 uid: host-and-deploy/linux-apache
-ms.openlocfilehash: 0dec9c657134bba3224a1fbb69aaefaaba753404
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: 69026997b2c269a4fb56ed2a79fa42ae218368e1
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248262"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345935"
 ---
 # <a name="host-aspnet-core-on-linux-with-apache"></a>Héberger ASP.NET Core sur Linux avec Apache
 
@@ -92,7 +92,7 @@ app.UseFacebookAuthentication(new FacebookOptions()
 
 Si aucune option <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions> n’est spécifiée au middleware, les en-têtes par défaut à transférer sont `None`.
 
-Seuls les proxys en cours d’exécution sur localhost (127.0.0.1, [::1]) sont approuvés par défaut. Si d’autres proxys ou réseaux approuvés au sein de l’organisation gèrent les requêtes entre Internet et le serveur web, ajoutez-les à la liste des <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> ou des <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> avec <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. L’exemple suivant ajoute un serveur proxy approuvé avec l’adresse IP 10.0.0.100 au middleware des en-têtes transférés `KnownProxies` dans `Startup.ConfigureServices` :
+Les serveurs proxy exécutés sur les adresses de bouclage (127.0.0.0/8, [ :: 1]), notamment l’adresse localhost standard (127.0.0.1), sont approuvés par défaut. Si d’autres proxys ou réseaux approuvés au sein de l’organisation gèrent les requêtes entre Internet et le serveur web, ajoutez-les à la liste des <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies*> ou des <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks*> avec <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions>. L’exemple suivant ajoute un serveur proxy approuvé avec l’adresse IP 10.0.0.100 au middleware des en-têtes transférés `KnownProxies` dans `Startup.ConfigureServices` :
 
 ```csharp
 services.Configure<ForwardedHeadersOptions>(options =>

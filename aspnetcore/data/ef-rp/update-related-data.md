@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez mettre à jour des données associ�
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: 4306118240c052585a5c2eeb2053ce03534b547c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: c3dbfe57a832ba63c5da2f89c0d29e443a1277a7
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207541"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57345760"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 
@@ -197,7 +197,7 @@ Lors de l’affichage initial des cases à cocher, les cours affectés au format
 
 Exécutez l’application et testez la page Edit des formateurs mise à jour. Changez certaines affectations de cours. Les modifications sont répercutées dans la page Index.
 
-Remarque : L’approche adoptée ici pour modifier les données de cours des formateurs fonctionne bien quand il y a un nombre limité de cours. Pour les collections qui sont beaucoup plus grandes, une interface utilisateur différente et une autre méthode de mise à jour seraient plus utiles et plus efficaces.
+Remarque : L’approche adoptée ici pour modifier les données des cours des formateurs fonctionne bien le nombre de cours est limité. Pour les collections qui sont beaucoup plus grandes, une interface utilisateur différente et une autre méthode de mise à jour seraient plus utiles et plus efficaces.
 
 ### <a name="update-the-instructors-create-page"></a>Mise à jour de la page de création des instructeurs
 
@@ -224,6 +224,11 @@ Le code précédent apporte les modifications suivantes :
 * Utilise un chargement hâtif pour la propriété de navigation `CourseAssignments`. Les `CourseAssignments` doivent être inclus ou ils ne seront pas supprimés lorsque l'instructeur est supprimé. Pour éviter d’avoir à les lire, configurez la suppression en cascade dans la base de données.
 
 * Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel (Partie 1)](https://www.youtube.com/watch?v=Csh6gkmwc9E)
+* [Version YouTube de ce tutoriel (Partie 2)](https://www.youtube.com/watch?v=mOAankB_Zgc)
 
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/read-related-data)

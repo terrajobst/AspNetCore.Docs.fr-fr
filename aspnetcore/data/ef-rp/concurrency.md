@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 71d68a7ee249c31efa78d98247017e85c009ed8b
-ms.sourcegitcommit: e1cc4c1ef6c9e07918a609d5ad7fadcb6abe3e12
+ms.openlocfilehash: a6c264e460855c9f1d6f5a363eb7ee2cf69619ee
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53997316"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346292"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -306,6 +306,9 @@ Pour découvrir comment hériter d’un modèle de données, consultez [Héritag
 
 * [Concurrency Tokens in EF Core (Jetons d’accès concurrentiel dans EF Core)](/ef/core/modeling/concurrency)
 * [Gestion de l’accès concurrentiel dans EF Core](/ef/core/saving/concurrency)
+* [Version YouTube de ce tutoriel(gestion des conflits d’accès concurrentiel)](https://youtu.be/EosxHTFgYps)
+* [Version YouTube de ce tutoriel(Partie 2)](https://www.youtube.com/watch?v=kcxERLnaGO0)
+* [Version YouTube de ce tutoriel(Partie 3)](https://www.youtube.com/watch?v=d4RbpfvELRs)
 
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/update-related-data)

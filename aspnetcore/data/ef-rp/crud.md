@@ -5,12 +5,12 @@ description: Montre comment créer, lire, mettre à jour et supprimer avec EF Co
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: 4af16bdf3928609214c1255cdd411312c8b7d3f3
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: adb281277599456356251c6ee30772a25f14ac58
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477434"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346049"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -187,15 +187,15 @@ Le contexte de base de données effectue un suivi afin de savoir si les entités
 
 Une entité peut être dans l’un des [états suivants](/dotnet/api/microsoft.entityframeworkcore.entitystate) :
 
-* `Added` : L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
+* `Added`: L’entité n’existe pas encore dans la base de données. La méthode `SaveChanges` émet une instruction INSERT.
 
-* `Unchanged` : Aucune modification ne doit être enregistrée avec cette entité. Une entité est dans cet état quand elle est lue à partir de la base de données.
+* `Unchanged`: Aucune modification ne doit être enregistrée avec cette entité. Une entité est dans cet état quand elle est lue à partir de la base de données.
 
-* `Modified` : Tout ou une partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
+* `Modified`: Tout ou partie des valeurs de propriété de l’entité ont été modifiées. La méthode `SaveChanges` émet une instruction UPDATE.
 
-* `Deleted` : L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
+* `Deleted`: L’entité a été marquée pour suppression. La méthode `SaveChanges` émet une instruction DELETE.
 
-* `Detached` : L’entité n’est pas suivie par le contexte de base de données.
+* `Detached`: L’entité n’est pas suivie par le contexte de base de données.
 
 Dans une application de bureau, les changements d’état sont généralement définis automatiquement. Une entité est lue, des modifications sont apportées et l’état d’entité passe automatiquement à `Modified`. L’appel de `SaveChanges` génère une instruction SQL UPDATE qui met à jour uniquement les propriétés modifiées.
 
@@ -247,6 +247,10 @@ Vérifiez que la Page Razor contient la bonne directive `@page`. Par exemple, la
 Chaque page Razor doit inclure la directive `@page`.
 
 ::: moniker-end
+
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=F0SP7Ry4flQ&list=PLnVvOWNfuhGV45HnNgd0vuIIkoQ1UaVBf)
 
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/intro)

@@ -5,12 +5,12 @@ description: Montre comment ajouter une fonction de recherche à des pages Razor
 ms.author: riande
 ms.date: 12/3/2018
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 3900b33f31fef79327d01b0579208355b0bce90c
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 8a8e51632a75efd6411bae46b9a7f9e4f16b480f
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410217"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346198"
 ---
 # <a name="add-search-to-aspnet-core-razor-pages"></a>Ajouter une fonction de recherche aux pages Razor dans ASP.NET Core
 
@@ -106,6 +106,11 @@ Mettez à jour *Index.cshtml* comme suit :
 
 Testez l’application en effectuant une recherche par genre, par titre de film et selon ces deux critères.
 
+## <a name="additional-resources"></a>Ressources supplémentaires
+
+* [Version YouTube de ce tutoriel](https://youtu.be/4B6pHtdyo08)
+
+
 > [!div class="step-by-step"]
-> [Précédent : Mise à jour des pages](xref:tutorials/razor-pages/da1)
+> [Précédent : Mise à jour des pages](xref:tutorials/razor-pages/da1)
 > [Suivant : Ajout d’un nouveau champ](xref:tutorials/razor-pages/new-field)

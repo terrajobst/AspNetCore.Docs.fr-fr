@@ -4,18 +4,18 @@ author: rick-anderson
 description: Décrit les Tag Helpers intégrés, utilisés avec des formulaires.
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/11/2019
+ms.date: 02/27/2019
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: cd15c641fbf702071bd57510a1d51737f6ab8e19
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: a0fbeac51bd1bfbc50c4d369a479ce5f3091358b
+ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54099011"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57346253"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>Tag Helpers dans les formulaires dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Dave Paquette](https://twitter.com/Dave_Paquette) et [Jerrie Pelser](https://github.com/jerriep)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT), [N. Taylor Mullen](https://github.com/NTaylorMullen), [Dave Paquette](https://twitter.com/Dave_Paquette) et [Jerrie Pelser](https://github.com/jerriep)
 
 Ce document montre comment utiliser les formulaires, ainsi que les éléments HTML couramment utilisés dans un formulaire. L’élément HTML [Form](https://www.w3.org/TR/html401/interact/forms.html) fournit le principal mécanisme utilisé par les applications web pour publier des données sur le serveur. La majeure partie de ce document décrit les [Tag Helpers](tag-helpers/intro.md) et explique comment ils peuvent vous aider à créer des formulaires HTML robustes. Nous vous recommandons de lire [Introduction aux Tag Helpers](tag-helpers/intro.md) avant de lire ce document.
 
@@ -66,6 +66,98 @@ Un bon nombre des vues du dossier *Vues/Compte* (généré quand vous créez une
 
 >[!NOTE]
 >Avec les modèles intégrés, `returnUrl` est uniquement rempli automatiquement quand vous essayez d’accéder à une ressource autorisée sans l’authentification ou l’autorisation nécessaire. Quand vous tentez d’effectuer un accès non autorisé, l’intergiciel (middleware) de sécurité vous redirige vers la page de connexion avec le `returnUrl` défini.
+
+## <a name="the-form-action-tag-helper"></a>Le Tag Helper Form Action
+
+Le Tag Helper Form Action génère l’attribut `formaction` sur la balise `<button ...>` ou `<input type="image" ...>` générée. L’attribut `formaction` détermine où un formulaire envoie ses données. Il se lie aux éléments [\<input>](https://www.w3.org/wiki/HTML/Elements/input) de type `image` et aux éléments [\<button>](https://www.w3.org/wiki/HTML/Elements/button). Le Tag Helper Form Action permet l’utilisation de plusieurs attributs [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) `asp-` pour contrôler quel lien `formaction` est généré pour l’élément correspondant.
+
+Attributs [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) pris en charge pour contrôler la valeur de `formaction` :
+
+|Attribut|Description|
+|---|---|
+|[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|Nom du contrôleur.|
+|[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|Nom de la méthode d’action.|
+|[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|Nom de la zone.|
+|[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Nom de la page Razor.|
+|[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Nom du gestionnaire de la page Razor.|
+|[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|Nom de l’itinéraire.|
+|[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|Valeur de routage d’URL unique. Par exemple, `asp-route-id="1234"`.|
+|[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|Toutes les valeurs d’itinéraire.|
+|[asp-fragment](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-fragment)|Fragment d’URL.|
+
+### <a name="submit-to-controller-example"></a>Exemple d’envoi au contrôleur
+
+Le balisage suivant envoie le formulaire à l’action `Index` de `HomeController` lorsque input ou button est sélectionnée :
+
+```cshtml
+<form method="post">
+    <button asp-controller="Home" asp-action="Index">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-controller="Home" 
+                                asp-action="Index" />
+</form>
+```
+
+Le balisage précédent génère le code HTML suivant :
+
+```html
+<form method="post">
+    <button formaction="/Home">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home" />
+</form>
+```
+
+### <a name="submit-to-page-example"></a>Exemple d’envoi à la page
+
+Le balisage suivant envoie le formulaire à Razor Page `About` :
+
+```cshtml
+<form method="post">
+    <button asp-page="About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-page="About" />
+</form>
+```
+
+Le balisage précédent génère le code HTML suivant :
+
+```html
+<form method="post">
+    <button formaction="/About">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/About" />
+</form>
+```
+
+### <a name="submit-to-route-example"></a>Exemple d’envoi à l’itinéraire
+
+Prenez le point de terminaison `/Home/Test` :
+
+```csharp
+public class HomeController : Controller
+{
+    [Route("/Home/Test", Name = "Custom")]
+    public string Test()
+    {
+        return "This is the test page";
+    }
+}
+```
+
+Le balisage suivant envoie le formulaire au point de terminaison `/Home/Test`.
+
+```cshtml
+<form method="post">
+    <button asp-route="Custom">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" asp-route="Custom" />
+</form>
+```
+
+Le balisage précédent génère le code HTML suivant :
+
+```html
+<form method="post">
+    <button formaction="/Home/Test">Click Me</button>
+    <input type="image" src="..." alt="Or Click Me" formaction="/Home/Test" />
+</form>
+```
 
 ## <a name="the-input-tag-helper"></a>Tag Helper Input
 
