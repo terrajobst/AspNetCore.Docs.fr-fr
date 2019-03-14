@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment diagnostiquer les problèmes liés aux déploiements Internet Information Services (IIS) d’applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 03/06/2019
 uid: host-and-deploy/iis/troubleshoot
-ms.openlocfilehash: 68fcd578c051ae9ba6234cad0465a7ef42f1ed14
-ms.sourcegitcommit: 816f39e852a8f453e8682081871a31bc66db153a
+ms.openlocfilehash: 2f36ae2bda8537e91a3bc925505986bdd6a22a47
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53637688"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841551"
 ---
 # <a name="troubleshoot-aspnet-core-on-iis"></a>Résoudre les problèmes liés à ASP.NET Core sur IIS
 
@@ -236,13 +236,51 @@ Consultez <xref:host-and-deploy/azure-iis-errors-reference>. La plupart des prob
 
 Si une application est capable de répondre aux requêtes, obtenez des informations sur une requête, une connexion et d’autres informations supplémentaires à partir d’une application à l’aide de l’intergiciel en ligne terminal. Pour obtenir des informations supplémentaires ainsi qu'un code d'exemple, consultez <xref:test/troubleshoot#obtain-data-from-an-app>.
 
-## <a name="slow-or-hanging-app"></a>Application lente ou bloquée
+## <a name="create-a-dump"></a>Créer un fichier dump
 
-Quand une application répond lentement ou se bloque sur une requête, obtenez un [fichier de vidage](/visualstudio/debugger/using-dump-files) afin de l’analyser. Les fichiers de vidage peuvent être obtenus à l’aide des outils suivants :
+Un fichier *dump* est un instantané de la mémoire système et peut aider à déterminer la cause de l’arrêt d’une application, d’un échec de démarrage ou de la lenteur d’une application.
 
-* [ProcDump](/sysinternals/downloads/procdump)
-* [DebugDiag](https://www.microsoft.com/download/details.aspx?id=49924)
-* WinDbg : [Télécharger les outils de débogage pour Windows](https://developer.microsoft.com/windows/hardware/download-windbg), [Débogage à l’aide de WinDbg](/windows-hardware/drivers/debugger/debugging-using-windbg)
+### <a name="app-crashes-or-encounters-an-exception"></a>L’application cesse de fonctionner ou rencontre une exception
+
+Obtenez un fichier dump et analysez-le depuis le [Rapport d'erreurs Windows](/windows/desktop/wer/windows-error-reporting) :
+
+1. Créez un dossier pour accueillir les fichiers d’image mémoire dans `c:\dumps`. Le pool d’application doit disposer des accès d’écriture dans le dossier.
+1. Exécutez le [script PowerShell EnableDumps](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/EnableDumps.ps1) :
+   * Si l’application utilise le [modèle d’hébergement in-process](xref:fundamentals/servers/index#in-process-hosting-model), exécutez le script pour *w3wp.exe* :
+
+     ```console
+     .\EnableDumps w3wp.exe c:\dumps
+     ```
+   * Si l’application utilise le [modèle d’hébergement out-of-process](xref:fundamentals/servers/index#out-of-process-hosting-model), exécutez le script pour *dotnet.exe* :
+
+     ```console
+     .\EnableDumps dotnet.exe c:\dumps
+     ```
+1. Exécutez l’application en reproduisant les conditions ayant entraîné l’incident.
+1. Une fois l’incident survenu, exécutez le [script PowerShell DisableDumps](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/troubleshoot/scripts/DisableDumps.ps1) :
+   * Si l’application utilise le [modèle d’hébergement in-process](xref:fundamentals/servers/index#in-process-hosting-model), exécutez le script pour *w3wp.exe* :
+
+     ```console
+     .\DisableDumps w3wp.exe
+     ```
+   * Si l’application utilise le [modèle d’hébergement out-of-process](xref:fundamentals/servers/index#out-of-process-hosting-model), exécutez le script pour *dotnet.exe* :
+
+     ```console
+     .\DisableDumps dotnet.exe
+     ```
+
+Après l’arrêt de l’application et après avoir terminé la collection dump, l’application peut être fermée normalement. Le script PowerShell configure le rapport d’erreurs Windows pour collecter jusqu'à cinq fichiers dump par application.
+
+> [!WARNING]
+> Les fichiers dump d’incident peuvent occuper plus d’espace disque (jusqu’à plusieurs gigaoctets par fichier).
+
+### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>L’application se bloque, ne démarre pas ou s’exécute normalement
+
+Lorsqu’une application *se bloque* (ne répond plus mais ne s’arrête pas), ne démarre pas ou s’exécute normalement, consultez [User-Mode Dump Files: Choosing the Best Tool](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool) (Fichiers dump en mode utilisateur : choisir le meilleur outil) afin de sélectionner l’outil adapté pour produire le fichier dump.
+
+### <a name="analyze-the-dump"></a>Analyser le fichier dump
+
+Un fichier dump peut être analysé à l’aide de plusieurs approches. Pour plus d’informations, consultez [Analyzing a User-Mode Dump File](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file) (Analyser un fichier dump en mode utilisateur).
 
 ## <a name="remote-debugging"></a>Débogage distant
 

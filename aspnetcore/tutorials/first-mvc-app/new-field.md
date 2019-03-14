@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/new-field
-ms.openlocfilehash: 7993b36bf9115225e082d2929bb253aba5b18310
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: f352a9c3573119028d1bc42fd622919ce0560e7c
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207367"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841499"
 ---
 # <a name="add-a-new-field-to-an-aspnet-core-mvc-app"></a>Ajouter un nouveau champ à une application ASP.NET Core MVC
 
@@ -98,23 +98,22 @@ Update-Database
 
 La commande `Add-Migration` indique au framework de migration d’examiner le modèle `Movie` actuel avec le schéma de la base de données `Movie` actuel et de créer le code nécessaire pour migrer la base de données vers le nouveau modèle.
 
+Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
+
+Si tous les enregistrements de la base de données sont supprimés, la méthode d’initialisation amorce la base de données et inclut le champ `Rating`.
+
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 [!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-Exécutez la commande suivante :
+Supprimer la base de données et utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Exécutez ensuite la commande `ef database update` : 
 
-```cli
-dotnet ef migrations add Rating
+```console
 dotnet ef database update
 ```
 
 ---  
 <!-- End of VS tabs -->
-
-Le nom « Rating » est arbitraire et est utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
-
-Si tous les enregistrements de la base de données sont supprimés, la méthode d’initialisation amorce la base de données et inclut le champ `Rating`.
 
 Exécutez l’application et vérifiez que vous pouvez créer/modifier/afficher des films avec un champ `Rating`. Vous devez ajouter le champ `Rating` aux modèles de vue `Edit`, `Details` et `Delete`.
 

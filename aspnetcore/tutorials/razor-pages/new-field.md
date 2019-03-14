@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: f8661a48ddd6fc616c141435edc603117b4925fb
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 3799b072da04e32948b5fc78032f0575e760aa1d
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345887"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841444"
 ---
 # <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>Ajouter un nouveau champ à une page Razor dans ASP.NET Core
 
@@ -116,37 +116,15 @@ Une autre option consiste à supprimer la base de données et à utiliser des mi
 <!-- Code -------------------------->
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-<!-- copy/paste this tab to the next. Not worth an include  -->
+### <a name="drop-and-re-create-the-database"></a>Supprimer et recréer la base de données
 
-Exécutez les commandes CLI .NET Core suivantes :
+[!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
-```console
-dotnet ef migrations add Rating
-dotnet ef database update
-```
-
-La commande `ef migrations add` indique au framework qu’il doit :
-
-* Comparer le modèle `Movie` au schéma de base de données `Movie`
-* Créer du code pour migrer le schéma de base de données vers le nouveau modèle
-
-Le nom « Rating » est arbitraire et utilisé pour nommer le fichier de migration. Il est utile d’utiliser un nom explicite pour le fichier de migration.
-
-La commande `ef database update` demande à l’infrastructure d’appliquer les modifications de schéma à la base de données.
-
-Si vous supprimez tous les enregistrements de la base de données, l’initialiseur amorce la base de données et inclut le champ `Rating`. Pour ce faire, utilisez les liens de suppression disponibles dans le navigateur ou à partir de l’outil SQLite.
-
-Une autre option consiste à supprimer la base de données et à utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Exécutez ensuite la commande `ef database update` : 
+Supprimer la base de données et utiliser des migrations pour recréer la base de données. Pour supprimer la base de données, supprimez le fichier de base de données (*MvcMovie.db*). Exécutez ensuite la commande `ef database update` : 
 
 ```console
 dotnet ef database update
 ```
-
-> [!NOTE]
-> Plusieurs opérations de modification de schéma ne sont pas prises en charge par le fournisseur EF Core SQLite. Par exemple, l’ajout d’une colonne est pris en charge, mais pas sa suppression. Si vous ajoutez une migration pour supprimer une colonne, la commande `ef migrations add` réussit mais la commande `ef database update` échoue. Vous pouvez contourner certaines limitations en écrivant manuellement du code de migration pour effectuer une reconstruction de la table. Une reconstruction de la table implique la modification du nom de la table existante, la création d’une nouvelle table, la copie des données vers la nouvelle table et la suppression de l’ancienne table. Pour plus d'informations, reportez-vous aux ressources suivantes :
-> * [Limites d’un fournisseur de base de données EF Core SQLite](/ef/core/providers/sqlite/limitations)
-> * [Personnaliser le code de migration](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [Amorçage des données](/ef/core/modeling/data-seeding)
 
 ---  
 <!-- End of VS tabs -->
