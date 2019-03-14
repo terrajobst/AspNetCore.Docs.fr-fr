@@ -5,12 +5,12 @@ description: Comment ajouter une validation à une application ASP.NET Core
 ms.author: riande
 ms.date: 04/13/2017
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 431715e7c584d3ee381cbafb42171a7c01dddb3a
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: 49db8d7c1d3e54f416c66685c19b3a2e3b14251c
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382054"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665442"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>Ajouter une validation à une application ASP.NET Core MVC
 
@@ -59,7 +59,7 @@ Notez que le formulaire a affiché automatiquement un message d’erreur de vali
 
 L’un des principaux avantages est que vous n’avez pas eu à changer une seule ligne de code dans la classe `MoviesController` ou dans la vue *Create.cshtml* pour activer cette interface utilisateur de validation. Le contrôleur et les vues créées précédemment dans ce didacticiel ont détecté les règles de validation que vous avez spécifiées à l’aide des attributs de validation sur les propriétés de la classe de modèle `Movie`. Testez la validation à l’aide de la méthode d’action `Edit`. La même validation est appliquée.
 
-Les données de formulaire ne sont pas envoyées au serveur tant qu’il y a des erreurs de validation côté client. Vous pouvez vérifier cela en plaçant un point d’arrêt dans la méthode `HTTP Post`, en utilisant l’[outil Fiddler](http://www.telerik.com/fiddler) ou à l’aide des [Outils de développement F12](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).
+Les données de formulaire ne sont pas envoyées au serveur tant qu’il y a des erreurs de validation côté client. Vous pouvez vérifier cela en plaçant un point d’arrêt dans la méthode `HTTP Post`, en utilisant l’[outil Fiddler](http://www.telerik.com/fiddler) ou à l’aide des [Outils de développement F12](/microsoft-edge/devtools-guide).
 
 ## <a name="how-validation-works"></a>Fonctionnement de la validation
 

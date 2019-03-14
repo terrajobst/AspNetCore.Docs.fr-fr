@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/25/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 5e1522e0819d989a7029c2928c1c33624c1774c7
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 72e3ae1c4be18edaa2e7f1906cf65269e5ed2288
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899357"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665494"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -84,7 +84,7 @@ public class HomeController : Controller
 
 ::: moniker-end
 
-La classe est créée et dépend directement de l’instance `MyDependency`. Les dépendances de code (comme l’exemple précédent) posent problème et doivent être évitées pour les raisons suivantes :
+La classe est créee et dépend directement de l’instance `MyDependency`. Les dépendances de code (comme l’exemple précédent) posent problème et doivent être évitées pour les raisons suivantes :
 
 * Pour remplacer `MyDependency` par une autre implémentation, la classe doit être modifiée.
 * Si `MyDependency` possède des dépendances, elles doivent être configurées par la classe. Dans un grand projet comportant plusieurs classes dépendant de `MyDependency`, le code de configuration est disséminé dans l’application.
@@ -559,7 +559,6 @@ L’injection de dépendance constitue une *alternative* aux modèles d’accès
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [Écrire un code clair dans ASP.NET Core avec l’injection de dépendance (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
-* [Conception d’application managée par conteneur, préambule : Où soit se situer le conteneur ?](https://blogs.msdn.microsoft.com/nblumhardt/2008/12/26/container-managed-application-design-prelude-where-does-the-container-belong/)
 * [Principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
 * [Conteneurs d’inversion de contrôle et modèle d’injection de dépendances (Martin Fowler)](https://www.martinfowler.com/articles/injection.html)
 * [Comment inscrire un service avec plusieurs interfaces dans l’injection de dépendance ASP.NET Core](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/)
