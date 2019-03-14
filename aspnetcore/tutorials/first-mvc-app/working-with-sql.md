@@ -5,12 +5,12 @@ description: Découvrez comment utiliser SQL Server LocalDB ou SQLite dans une a
 ms.author: riande
 ms.date: 03/07/2017
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 3757b972694a41cb87beb8ebee818cd498be6764
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: a6b2026a43bda94a84a05749e9ea395308dec231
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382028"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841434"
 ---
 # <a name="work-with-sql-in-aspnet-core"></a>Utiliser SQL dans ASP.NET Core
 
@@ -69,6 +69,7 @@ Notez l’icône de clé en regard de `ID`. Par défaut, EF fait d’une propri�
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
 [!INCLUDE[](~/includes/rp/sqlite.md)]
+[!INCLUDE[](~/includes/RP-mvc-shared/sqlite-warn.md)]
 
 ---  
 <!-- End of VS tabs -->
