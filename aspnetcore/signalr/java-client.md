@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le client d’ASP.NET Core SignalR Java
 monikerRange: '>= aspnetcore-2.2'
 ms.author: mimengis
 ms.custom: mvc
-ms.date: 11/07/2018
+ms.date: 03/14/2019
 uid: signalr/java-client
-ms.openlocfilehash: d0eff38c1f622b896ed1dc3002238aec7b6bfd38
-ms.sourcegitcommit: 8a65f6c2cbe290fb2418eed58f60fb74c95392c8
+ms.openlocfilehash: 09e5ce23ddcc250d212a8cdf1176f39531a9c0ba
+ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892092"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57978488"
 ---
 # <a name="aspnet-core-signalr-java-client"></a>Client ASP.NET Core SignalR Java
 
@@ -49,6 +49,9 @@ Pour établir une `HubConnection`, la `HubConnectionBuilder` doit être utilisé
 Un appel à `send` appelle une méthode de concentrateur. Passez le nom de la méthode de hub et de tous les arguments définis dans la méthode de hub à `send`.
 
 [!code-java[send method](java-client/sample/src/main/java/Chat.java?range=28)]
+
+> [!NOTE]
+> Si vous utilisez le Service Azure SignalR dans *mode sans serveur*, vous ne pouvez pas appeler des méthodes de concentrateur à partir d’un client. Pour plus d’informations, consultez le [documentation de SignalR Service](/azure/azure-signalr/signalr-concept-serverless-development-config).
 
 ## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir de hub
 
@@ -105,3 +108,4 @@ HubConnection hubConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
 * <xref:signalr/hubs>
 * <xref:signalr/javascript-client>
 * <xref:signalr/publish-to-azure-web-app>
+* [Documentation de serverless Azure SignalR Service](/azure/azure-signalr/signalr-concept-serverless-development-config)
