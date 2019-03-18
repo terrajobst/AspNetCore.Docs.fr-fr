@@ -5,16 +5,16 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: af11906f86fe4ea91ed520584daedc094ab2dc0b
-ms.sourcegitcommit: edb9d2d78c9a4d68b397e74ae2aff088b325a143
+ms.openlocfilehash: 70de86f2e8c4a5577b8a4b50c53d66eb3b205c09
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51505828"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665535"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
-Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Damien Bowden](https://twitter.com/damien_bod), [Bart Calixto](https://twitter.com/bartmax), [Nadeem Afana](https://twitter.com/NadeemAfana) et [Hisham Bin Ateya](https://twitter.com/hishambinateya)
+Par [Rick Anderson](https://twitter.com/RickAndMSFT), [Damien Bowden](https://twitter.com/damien_bod), [Bart Calixto](https://twitter.com/bartmax), [Nadeem Afana](https://afana.me/) et [Hisham Bin Ateya](https://twitter.com/hishambinateya)
 
 Créer un site web multilingue avec ASP.NET Core permet d’atteindre un plus large public. ASP.NET Core offre des services et des intergiciels (middleware) de traduction dans différentes langues et cultures.
 
@@ -44,7 +44,7 @@ Utilisez l’implémentation de `IHtmlLocalizer<T>` pour les ressources qui cont
 
 [!code-csharp[](../fundamentals/localization/sample/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**Remarque :** Vous avez généralement besoin de localiser uniquement le texte et pas le code HTML.
+**Remarque :** en général, seul le texte (et non le code HTML) doit être localisé.
 
 Au niveau le plus bas, vous pouvez sortir `IStringLocalizerFactory` de l’[injection de dépendances](dependency-injection.md) :
 
@@ -80,9 +80,9 @@ Un fichier de ressources en français peut contenir ce qui suit :
 
 La vue contient le balisage HTML provenant du fichier de ressources.
 
-**Remarque :** Vous avez généralement besoin de localiser uniquement le texte et pas le code HTML.
+**Remarque :** en général, seul le texte (et non le code HTML) doit être localisé.
 
-Pour utiliser un fichier de ressources partagées dans un affichage, injectez `IHtmlLocalizer<T>` :
+Pour utiliser un fichier de ressources partagées dans une vue, injectez `IHtmlLocalizer<T>` :
 
 [!code-cshtml[](../fundamentals/localization/sample/Localization/Views/Test/About.cshtml?highlight=5,12)]
 
@@ -127,7 +127,7 @@ Un fichier de ressources est un mécanisme utile pour séparer les chaînes loca
 
 1. Dans l’**Explorateur de solutions**, cliquez avec le bouton droit sur le dossier qui contient le fichier de ressources > **Ajouter** > **Nouvel élément**.
 
-    ![Menu contextuel imbriqué : dans l’Explorateur de solutions, un menu contextuel est ouvert pour les ressources. Un second menu contextuel est ouvert pour l’option Ajouter, avec la commande Nouvel élément mise en surbrillance.](localization/_static/newi.png)
+    ![Menu contextuel imbriqué : dans l’Explorateur de solutions, un menu contextuel est ouvert pour les ressources. Un second menu contextuel est ouvert pour l’option Ajouter, avec la commande Nouvel élément mise en surbrillance.](localization/_static/newi.png)
 
 2. Dans la zone **Rechercher dans les modèles installés**, entrez « ressource » et nommez le fichier.
 
@@ -330,14 +330,14 @@ L’internationalisation est souvent abrégée par « I18N ». Cette abréviat
 
 Termes :
 
-* Globalisation (G11N) : Processus permettant de faire prendre en charge différentes langues et régions à une application.
-* Localisation (L10N) : Processus permettant de personnaliser une application pour une langue et une région données.
-* Internationalisation (I18N) : Décrit à la fois la globalisation et la localisation.
-* Culture : Correspond à une langue et éventuellement à une région.
-* Culture neutre : Culture dont la langue est spécifiée, mais pas la région. (Exemples : « en », « es ».)
-* Culture spécifique : Culture dont la langue et la région sont spécifiées. (Exemples : « en-US », « en-GB », « es-CL ».)
-* Culture parent : Culture neutre qui contient une culture spécifique. (Exemple : « en » est la culture parent de « en-US » et « en-GB ».)
-* Paramètres régionaux : Synonyme de culture.
+* Globalisation (G11N) : processus consistant à faire prendre en charge différentes langues et régions à une application.
+* Localisation (L10N) : processus consistant à personnaliser une application pour une langue et une région données.
+* Internationalisation (I18N) : globalisation et localisation.
+* Culture : langue et, éventuellement, région.
+* Culture neutre : culture dont la langue est spécifiée, mais non la région. (Exemples : « en », « es ».)
+* Culture spécifique : culture dont la langue et la région sont spécifiées. (Exemples : « en-US », « en-GB », « es-CL ».)
+* Culture parente : culture neutre qui contient une culture spécifique. (Exemple : « en » est la culture parent de « en-US » et « en-GB ».)
+* Paramètres régionaux : synonyme de culture.
 
 [!INCLUDE[](~/includes/currency.md)]
 
