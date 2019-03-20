@@ -1,18 +1,12 @@
 ---
 title: Héberger et déployer Razor Components
 author: guardrex
-description: Découvrez comment héberger et déployer des applications Razor Components et Blazor à l’aide d’ASP.NET Core, de réseaux de distribution de contenu (CDN), de serveurs de fichiers et de GitHub Pages.
+description: 'Découvrez comment héberger et déployer des applications Razor Components et Blazor à l’aide d’ASP.NET Core, de réseaux de distribution de contenu (CDN), de serveurs de fichiers et de GitHub Pages.'
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/29/2019
 uid: host-and-deploy/razor-components/index
-ms.openlocfilehash: 9debd75128ceecb805fc673a8182a785fc9f7942
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667926"
 ---
 # <a name="host-and-deploy-razor-components"></a>Héberger et déployer Razor Components
 
@@ -273,7 +267,7 @@ Pour héberger Blazor dans Docker à l’aide de Nginx, configurez le fichier Do
 
 Ajoutez une ligne au fichier Dockerfile, comme indiqué dans l’exemple suivant :
 
-```
+```Dockerfile
 FROM nginx:alpine
 COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf

@@ -531,8 +531,6 @@ Les surcharges permettent de spécifier :
 * Si la configuration est rechargée quand le fichier est modifié.
 * Le <xref:Microsoft.Extensions.FileProviders.IFileProvider> utilisé pour accéder au fichier.
 
-
-
 `AddJsonFile` est appelé automatiquement deux fois lorsque vous initialisez un nouveau <xref:Microsoft.AspNetCore.Hosting.WebHostBuilder> avec <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>. La méthode est appelée pour charger la configuration à partir de :
 
 * *appSettings.JSON* &ndash; Ce fichier est lu en premier. La version de l’environnement du fichier peut remplacer les valeurs fournies par le fichier *appsettings.json*.
