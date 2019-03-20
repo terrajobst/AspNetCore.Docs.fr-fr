@@ -140,12 +140,12 @@ Le flux de base de `OnPostAsync` :
 
 Recherchez les erreurs de validation.
 
-*  S’il n’y a aucune erreur, enregistrez les données et redirigez.
-*  S’il y a des erreurs, réaffichez la page avec des messages de validation. La validation côté client est identique à celle des applications ASP.NET Core MVC traditionnelles. Dans de nombreux cas, les erreurs de validation sont détectées sur le client et jamais envoyées au serveur.
+* S’il n’y a aucune erreur, enregistrez les données et redirigez.
+* S’il y a des erreurs, réaffichez la page avec des messages de validation. La validation côté client est identique à celle des applications ASP.NET Core MVC traditionnelles. Dans de nombreux cas, les erreurs de validation sont détectées sur le client et jamais envoyées au serveur.
 
 Quand les données sont entrées correctement, la méthode de gestionnaire `OnPostAsync` appelle la méthode d’assistance `RedirectToPage` pour retourner une instance de `RedirectToPageResult`. `RedirectToPage` est un nouveau résultat d’action, semblable à `RedirectToAction` ou `RedirectToRoute`, mais personnalisé pour les pages. Dans l’exemple précédent, il redirige vers la page Index racine (`/Index`). `RedirectToPage` est détaillé dans la section [Génération d’URL pour les pages](#url_gen).
 
-Quand le formulaire envoyé comporte des erreurs de validation (qui sont passées au serveur), la méthode de gestionnaire `OnPostAsync` appelle la méthode d’assistance `Page`. `Page` retourne une instance de `PageResult`. Le retour de `Page` est similaire à la façon dont les actions dans les contrôleurs retournent `View`. `PageResult` est le type de retour <!-- Review  --> par défaut pour une méthode de gestionnaire. Une méthode de gestionnaire qui retourne `void` restitue la page.
+Quand le formulaire envoyé comporte des erreurs de validation (qui sont passées au serveur), la méthode de gestionnaire `OnPostAsync` appelle la méthode d’assistance `Page`. `Page` retourne une instance de `PageResult`. Le retour de `Page` est similaire à la façon dont les actions dans les contrôleurs retournent `View`. `PageResult` est le type de retour par défaut <!-- Review  --> pour une méthode de gestionnaire. Une méthode de gestionnaire qui retourne `void` restitue la page.
 
 La propriété `Customer` utilise l’attribut `[BindProperty]` pour accepter la liaison de modèle.
 

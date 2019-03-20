@@ -69,7 +69,7 @@ Pour plus d’informations, consultez [Middleware](xref:fundamentals/middleware/
 
 ## <a name="the-host"></a>L’hôte
 
-Une application ASP.NET Core génère un *hôte* au démarrage. L’hôte est un objet qui encapsule toutes les ressources de l’application, telles que :
+Une application ASP.NET Core génère un *hôte* au démarrage. L’hôte est un objet qui encapsule toutes les ressources de l’application, telles que :
 
 * Une implémentation serveur HTTP
 * Composants d’intergiciel (middleware)
