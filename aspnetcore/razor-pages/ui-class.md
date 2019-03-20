@@ -7,12 +7,12 @@ ms.author: riande
 ms.date: 09/07/2018
 ms.custom: seodec18
 uid: razor-pages/ui-class
-ms.openlocfilehash: e5f329dcc423a7b7d6c247d0d359d35d95283de4
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.openlocfilehash: dc7db9483f2d75fe79ed9a9806f944e4f2a05a9b
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121490"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265344"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>Créer l’interface utilisateur réutilisable à l’aide du projet de bibliothèque de classes Razor dans ASP.NET Core
 
@@ -48,7 +48,8 @@ dotnet new razorclasslib -o RazorUIClassLib
 
 Pour plus d’informations, consultez [dotnet new](/dotnet/core/tools/dotnet-new). Pour éviter une collision de nom de fichier avec la bibliothèque de vues générée, vérifiez que le nom de la bibliothèque ne se termine pas par `.Views`.
 
-------
+---
+
 Ajoutez des fichiers Razor à la RCL.
 
 Les modèles ASP.NET Core supposent que le contenu RCL se trouve dans le *zones* dossier. Consultez [disposition des Pages de RCL](#afs) pour créer du contenu dans un RCL expose `~/Pages` plutôt que `~/Areas/Pages`.
@@ -60,7 +61,7 @@ La RCL peut être référencée par :
 * Un package NuGet. Consultez [Création de packages NuGet](/nuget/create-packages/creating-a-package), [dotnet add package](/dotnet/core/tools/dotnet-add-package) et [Créer et publier un package NuGet](/nuget/quickstart/create-and-publish-a-package-using-visual-studio).
 * Un fichier *{NomProjet}.csproj*. Consultez [dotnet-add reference](/dotnet/core/tools/dotnet-add-reference).
 
-## <a name="walkthrough-create-a-razor-class-library-project-and-use-from-a-razor-pages-project"></a>Procédure pas à pas : Créer un projet RCL et l’utiliser à partir d’un projet de pages Razor
+## <a name="walkthrough-create-a-razor-class-library-project-and-use-from-a-razor-pages-project"></a>Procédure pas à pas : Créez un projet de bibliothèque de classes Razor et utiliser à partir d’un projet de Pages Razor
 
 Vous pouvez télécharger et tester le [projet complet](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/ui-class/samples) au lieu de le créer de toutes pièces. L’exemple proposé sous forme de téléchargement contient du code et des liens supplémentaires qui facilitent le test du projet. Si vous souhaitez commenter le mode d’obtention des exemples (téléchargement ou création au moyen d’instructions détaillées), entrez vos commentaires dans [ce problème GitHub](https://github.com/aspnet/Docs/issues/6098).
 
@@ -86,7 +87,7 @@ Passez au répertoire *WebApp1* et exécutez l’application :
 dotnet run
 ```
 
-------
+---
 
 Suivez les instructions contenues dans [Test WebApp1](#test)
 
@@ -123,7 +124,7 @@ Les commandes précédentes :
 
 Le *_ViewStart.cshtml* fichier est nécessaire pour utiliser la disposition du projet de Pages Razor (qui est ajoutée à la section suivante).
 
-------
+---
 
 ### <a name="add-razor-files-and-folders-to-the-project"></a>Ajouter les fichiers Razor et des dossiers au projet
 
@@ -218,7 +219,7 @@ Pour référence RCL de contenu comme s’il faisait partie de l’application w
 * *RazorUIClassLib/Pages/Shared*
 
 Supposons que *RazorUIClassLib/Pages/Shared* contient deux fichiers partielles : *_Header.cshtml* et *_Footer.cshtml*. Le `<partial>` balises peut être ajoutés à *_Layout.cshtml* fichier :
-  
+
 ```cshtml
 <body>
   <partial name="_Header">

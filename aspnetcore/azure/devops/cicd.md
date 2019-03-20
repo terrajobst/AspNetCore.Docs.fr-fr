@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.date: 10/24/2018
 ms.custom: seodec18
 uid: azure/devops/cicd
-ms.openlocfilehash: 906aae3fd4b4abd0becc8847b0f54c372bda300a
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 676620b5dd151c9cd009d7cb278ed2c2b122c83f
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346305"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264889"
 ---
 # <a name="continuous-integration-and-deployment"></a>Intégration et déploiement continus
 
@@ -39,17 +39,23 @@ Dans cette section, vous allez effectuer les tâches suivantes :
 1. Cliquez sur le **créer référentiel** bouton.
 1. Ouvrez l’interface de commande de votre ordinateur local. Accédez au répertoire dans lequel le *lecture de flux simple* référentiel Git est stocké.
 1. Renommez les fichiers *origine* distant à *en amont*. Exécutez la commande suivante :
+
     ```console
     git remote rename origin upstream
     ```
+
 1. Ajouter un nouveau *origine* distant qui pointe vers votre copie du référentiel sur GitHub. Exécutez la commande suivante :
+
     ```console
     git remote add origin https://github.com/<GitHub_username>/simple-feed-reader/
     ```
+
 1. Publier votre référentiel Git local vers le dépôt GitHub nouvellement créé. Exécutez la commande suivante :
+
     ```console
     git push -u origin master
     ```
+
 1. Ouvrez une fenêtre de navigateur et accédez à `https://github.com/<GitHub_username>/simple-feed-reader/`. Vérifiez que votre code s’affiche dans le référentiel GitHub.
 
 ## <a name="disconnect-local-git-deployment"></a>Déconnecter le déploiement Git local
@@ -192,6 +198,7 @@ Il existe trois étapes distinctes pour terminer. Les étapes dans les résultat
     ```console
     git commit -a -m "upgraded to V4"
     ```
+
 1. Transmettre la modification le *master* créer une branche vers le *origine* à distance de votre référentiel GitHub :
 
     ```console

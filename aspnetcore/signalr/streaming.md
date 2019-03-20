@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/14/2018
 uid: signalr/streaming
-ms.openlocfilehash: fb7183f7189d62c181f69ffdb170e3da25612919
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 7c176e3f21ffca7b97d9d3c2e8861032f22587b8
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345585"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264302"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Utiliser la diffusion en continu dans ASP.NET Core SignalR
 
@@ -139,12 +139,14 @@ Pour terminer le flux à partir du client, appelez le `dispose` méthode sur le 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
+
 ## <a name="java-client"></a>Client Java
+
 Le client SignalR Java utilise le `stream` méthode à appeler les méthodes de diffusion en continu. Elle accepte trois arguments ou plus :
 
-* Le type des éléments de flux de données attendu 
+* Le type des éléments de flux de données attendu
 * Le nom de la méthode de hub.
-* Les arguments définis dans la méthode de hub. 
+* Les arguments définis dans la méthode de hub.
 
 ```java
 hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
@@ -153,6 +155,7 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
         (error) -> {/* Define your onError handler here. */},
         () -> {/* Define your onCompleted handler here. */});
 ```
+
 Le `stream` méthode sur `HubConnection` retourne un Observable du type d’élément de flux de données. Le type Observable `subscribe` méthode est l’emplacement où vous définissez votre `onNext`, `onError` et `onCompleted` gestionnaires.
 
 ::: moniker-end
