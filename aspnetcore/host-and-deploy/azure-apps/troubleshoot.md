@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez comment diagnostiquer les problèmes liés aux déploiements ASP.NET Core sur Azure App Service.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: c3732bfab362ec034248eb3912d4b1337c94216e
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 326f66070d51c04298abbf6292d2d350414311de
+ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665426"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57841397"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
 
@@ -187,7 +187,10 @@ Consultez <xref:host-and-deploy/azure-iis-errors-reference>. La plupart des prob
 
 ## <a name="slow-or-hanging-app"></a>Application lente ou bloquée
 
-Si une application répond lentement ou se bloque sur une requête, consultez [Résoudre les problèmes de performances d’une application web lente dans Azure App Service](/azure/app-service/app-service-web-troubleshoot-performance-degradation) pour obtenir des conseils de débogage.
+Si une application répond lentement ou se bloque sur une requête, voir les articles suivants :
+
+* [Résoudre les problèmes de performances d’une application web lente dans Azure App Service](/azure/app-service/app-service-web-troubleshoot-performance-degradation)
+* [Utiliser l’extension de site Outil de diagnostic des incidents pour capturer une image mémoire des problèmes d’exception intermittente ou de performances sur Azure Web App](https://blogs.msdn.microsoft.com/asiatech/2015/12/28/use-crash-diagnoser-site-extension-to-capture-dump-for-intermittent-exception-issues-or-performance-issues-on-azure-web-app/)
 
 ## <a name="remote-debugging"></a>Débogage distant
 
