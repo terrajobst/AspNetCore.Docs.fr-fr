@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 9bc74079235338c75c47e06bde2b78dc1c466bd6
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 244ddc40e647bfcc3ca8cda2797c51bc49174822
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836686"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320145"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utilisation des hubs dans SignalR pour ASP.NET Core
 
@@ -52,6 +52,7 @@ Vous pouvez spécifier un type de retour et paramètres, y compris les types com
 
 > [!NOTE]
 > Les concentrateurs sont temporaires :
+>
 > * Ne pas stocker l’état dans une propriété sur la classe de concentrateur. Chaque appel de méthode de concentrateur est exécutée sur une nouvelle instance de concentrateur.  
 > * Utilisez `await` lors de l’appel de méthodes asynchrones qui dépendent du hub de rester actif. Par exemple, une méthode telle que `Clients.All.SendAsync(...)` peut échouer si elle est appelée sans `await` et la méthode de concentrateur se termine avant `SendAsync` se termine.
 

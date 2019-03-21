@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 53774177030adf8a61606a696af85cd1f57d6ab9
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: MT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320290"
+---
 Exécutez le Générateur de modèles automatique identité :
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
@@ -15,41 +23,41 @@ Exécutez le Générateur de modèles automatique identité :
   * Sélectionnez le **+** bouton pour créer un nouveau **classe de contexte de données**.
   * Sélectionnez **ajouter**.
 
-Remarque : Si vous créez un nouveau contexte utilisateur, il est inutile de sélectionner un fichier à remplacer.
+Remarque : Si vous créez un nouveau contexte utilisateur, vous n’êtes pas obligé de sélectionner un fichier à remplacer.
 
 # <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Si vous n’avez pas encore installé le Générateur de modèles automatique ASP.NET Core, vous pouvez l’installer maintenant :
 
-```cli
+```console
 dotnet tool install -g dotnet-aspnet-codegenerator
 ```
 
 Ajouter une référence de package à [Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/) au projet (\*.csproj) fichier. Dans le répertoire du projet, exécutez la commande suivante :
 
-```cli
+```console
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet restore
 ```
 
 Exécutez la commande suivante pour répertorier les options de génération de modèles automatique d’identité :
 
-```cli
+```console
 dotnet aspnet-codegenerator identity -h
 ```
 
 Dans le dossier du projet, exécutez le Générateur de modèles automatique identité avec les options souhaitées. Par exemple, pour configurer l’identité avec l’interface utilisateur par défaut et le nombre minimal de fichiers, exécutez la commande suivante. Utilisez le nom qualifié complet correct pour votre contexte de base de données :
 
-```cli
+```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files Account.Register
 ```
 
-PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous utilisez powershell, les points-virgules dans la liste des fichiers de séquence d’échappement ou placez la liste des fichiers dans des guillemets doubles. Exemple :
+PowerShell utilise le point-virgule comme séparateur de commande. Lorsque vous utilisez PowerShell, les points-virgules dans la liste des fichiers de séquence d’échappement ou placez la liste des fichiers dans des guillemets doubles. Exemple :
 
-```cli
+```console
 dotnet aspnet-codegenerator identity -dc MyWeb.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
 ```
 
 Si vous exécutez le Générateur de modèles automatique identité sans spécifier le `--files` indicateur ou `--useDefaultUI` indicateur, toutes les pages de l’interface utilisateur de l’identité disponibles seront créées dans votre projet.
 
--------------
+---
