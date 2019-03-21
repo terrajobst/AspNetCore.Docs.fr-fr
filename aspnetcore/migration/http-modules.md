@@ -5,12 +5,12 @@ description: ''
 ms.author: tdykstra
 ms.date: 12/07/2016
 uid: migration/http-modules
-ms.openlocfilehash: 601b93fb12ab5b37b7d8ad8fd9825accc6e314cd
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 516230a66ee3edba986c91d79684256aa8e4c994
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56743853"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209844"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>Migrer des modules et gestionnaires HTTP vers l’intergiciel (middleware) ASP.NET Core
 
@@ -26,29 +26,29 @@ Avant de passer à l’intergiciel (middleware) ASP.NET Core, nous allons tout d
 
 **Les gestionnaires sont :**
 
-   * Classes qui implémentent [IHttpHandler](/dotnet/api/system.web.ihttphandler)
+* Classes qui implémentent [IHttpHandler](/dotnet/api/system.web.ihttphandler)
 
-   * Utilisé pour gérer les demandes avec un nom de fichier donné ou une extension, tel que *report*
+* Utilisé pour gérer les demandes avec un nom de fichier donné ou une extension, tel que *report*
 
-   * [Configuré](/iis/configuration/system.webserver/handlers/) dans *Web.config*
+* [Configuré](/iis/configuration/system.webserver/handlers/) dans *Web.config*
 
 **Les modules sont :**
 
-   * Classes qui implémentent [IHttpModule](/dotnet/api/system.web.ihttpmodule)
+* Classes qui implémentent [IHttpModule](/dotnet/api/system.web.ihttpmodule)
 
-   * Appelé pour chaque demande
+* Appelé pour chaque demande
 
-   * En mesure de court-circuit (interrompre le traitement d’une demande)
+* En mesure de court-circuit (interrompre le traitement d’une demande)
 
-   * Ajouter à la réponse HTTP, ou créer leurs propres
+* Ajouter à la réponse HTTP, ou créer leurs propres
 
-   * [Configuré](/iis/configuration/system.webserver/modules/) dans *Web.config*
+* [Configuré](/iis/configuration/system.webserver/modules/) dans *Web.config*
 
 **L’ordre dans lequel les modules traitent les requêtes entrantes est déterminé par :**
 
-   1. Le [cycle de vie d’application](https://msdn.microsoft.com/library/ms227673.aspx), c'est-à-dire les événements déclenchés par ASP.NET en une série : [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Chaque module peut créer un gestionnaire pour un ou plusieurs événements.
+1. Le [cycle de vie d’application](https://msdn.microsoft.com/library/ms227673.aspx), c'est-à-dire les événements déclenchés par ASP.NET en une série : [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest), [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest), etc. Chaque module peut créer un gestionnaire pour un ou plusieurs événements.
 
-   2. Pour le même événement, l’ordre dans lequel ils sont configurés dans *Web.config*.
+2. Pour le même événement, l’ordre dans lequel ils sont configurés dans *Web.config*.
 
 En plus des modules, vous pouvez ajouter des gestionnaires pour les événements de cycle de vie à votre *Global.asax.cs* fichier. Ces gestionnaires s’exécutent après les gestionnaires dans les modules configurés.
 
@@ -56,29 +56,29 @@ En plus des modules, vous pouvez ajouter des gestionnaires pour les événements
 
 **Intergiciel (middleware) sont plus simples que les gestionnaires et modules HTTP :**
 
-   * Modules, gestionnaires, *Global.asax.cs*, *Web.config* (à l’exception de la configuration d’IIS) et le cycle de vie d’application ont disparu
+* Modules, gestionnaires, *Global.asax.cs*, *Web.config* (à l’exception de la configuration d’IIS) et le cycle de vie d’application ont disparu
 
-   * Les rôles des modules et gestionnaires ont été prises en charge par l’intergiciel (middleware)
+* Les rôles des modules et gestionnaires ont été prises en charge par l’intergiciel (middleware)
 
-   * Intergiciel (middleware) sont configurés à l’aide de code plutôt que dans *Web.config*
+* Intergiciel (middleware) sont configurés à l’aide de code plutôt que dans *Web.config*
 
-   * [Création de branches de pipeline](xref:fundamentals/middleware/index#use-run-and-map) vous permet d’envoyer les demandes au middleware spécifique, basé sur non seulement l’URL, mais également sur les en-têtes de demande, les chaînes de requête, etc.
+* [Création de branches de pipeline](xref:fundamentals/middleware/index#use-run-and-map) vous permet d’envoyer les demandes au middleware spécifique, basé sur non seulement l’URL, mais également sur les en-têtes de demande, les chaînes de requête, etc.
 
 **Intergiciel (middleware) sont très similaires aux modules :**
 
-   * Appelé en principe pour chaque demande
+* Appelé en principe pour chaque demande
 
-   * En mesure de court-circuiter une demande, par [ne pas passer la demande à l’intergiciel suivant](#http-modules-shortcircuiting-middleware)
+* En mesure de court-circuiter une demande, par [ne pas passer la demande à l’intergiciel suivant](#http-modules-shortcircuiting-middleware)
 
-   * En mesure de créer leur propre réponse HTTP
+* En mesure de créer leur propre réponse HTTP
 
 **Intergiciel (middleware) et les modules sont traités dans un ordre différent :**
 
-   * Ordre des intergiciels (middleware) est basé sur l’ordre dans lequel ils sont insérés dans le pipeline de demande, tandis que l’ordre des modules est principalement basé sur [cycle de vie d’application](https://msdn.microsoft.com/library/ms227673.aspx) événements
+* Ordre des intergiciels (middleware) est basé sur l’ordre dans lequel ils sont insérés dans le pipeline de demande, tandis que l’ordre des modules est principalement basé sur [cycle de vie d’application](https://msdn.microsoft.com/library/ms227673.aspx) événements
 
-   * Ordre des intergiciels (middleware) pour les réponses est l’inverse de celui pour les demandes, tandis que l’ordre des modules est le même pour les demandes et réponses
+* Ordre des intergiciels (middleware) pour les réponses est l’inverse de celui pour les demandes, tandis que l’ordre des modules est le même pour les demandes et réponses
 
-   * Consultez [créer un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
+* Consultez [créer un pipeline d’intergiciel (middleware) avec IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)
 
 ![Intergiciel (middleware)](http-modules/_static/middleware.png)
 
