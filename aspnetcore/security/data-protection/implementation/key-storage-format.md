@@ -5,12 +5,12 @@ description: Découvrez les détails d’implémentation du format de stockage d
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/data-protection/implementation/key-storage-format
-ms.openlocfilehash: bca19ad001dd20b5d02ae5470f7d928082496037
-ms.sourcegitcommit: 8f8924ce4eb9effeaf489f177fb01b66867da16f
+ms.openlocfilehash: 81df124f3dd0cadf8fd895ab55f66eec6415705f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39219275"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208016"
 ---
 # <a name="key-storage-format-in-aspnet-core"></a>Format de stockage de clés dans ASP.NET Core
 
@@ -65,7 +65,7 @@ Le format particulier de la \<descripteur > élément dépend de l’implémenta
 
 Un **&lt;encryptedSecret&gt;** élément qui contient la forme chiffrée de la clé secrète peut être présent si [le chiffrement des secrets au repos est activé](xref:security/data-protection/implementation/key-encryption-at-rest). L’attribut `decryptorType` est le nom qualifié d’assembly d’un type qui implémente [IXmlDecryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmldecryptor). Ce type est responsable de lire les interne **&lt;encryptedKey&gt;** élément et le déchiffrement pour récupérer le texte brut d’origine.
 
-Comme avec \<descripteur >, le format particulier de la <encryptedSecret> élément varie selon le mécanisme de chiffrement au repos en cours d’utilisation. Dans l’exemple ci-dessus, la clé principale est chiffrée à l’aide de DPAPI de Windows par le commentaire.
+Comme avec `<descriptor>`, le format particulier de la `<encryptedSecret>` élément varie selon le mécanisme de chiffrement au repos en cours d’utilisation. Dans l’exemple ci-dessus, la clé principale est chiffrée à l’aide de DPAPI de Windows par le commentaire.
 
 ## <a name="the-revocation-element"></a>Le \<révocation > élément
 

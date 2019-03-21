@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/21/2017
 uid: security/authorization/policies
-ms.openlocfilehash: c2bc626b2dd341dda878a151def6b405884357d7
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: e72f15c28fb7b62c671dd6475cc323cacce42de6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208319"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>Autorisation basée sur des stratégies dans ASP.NET Core
 
@@ -19,13 +19,25 @@ Dans les coulisses, [autorisation basée sur le rôle](xref:security/authorizati
 
 Une stratégie d’autorisation se compose d’une ou plusieurs exigences. Il est inscrit dans le cadre de la configuration du service d’autorisation, dans le `Startup.ConfigureServices` méthode :
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63,72)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,66)]
 
 Dans l’exemple précédent, une stratégie de « AtLeast21 » est créée. Il a une seule exigence&mdash;celle d’un minimum d’ancienneté, qui est fourni en tant que paramètre à cette exigence.
 
-Les stratégies sont appliquées à l’aide de la `[Authorize]` attribut avec le nom de la stratégie. Exemple :
+## <a name="applying-policies-to-mvc-controllers"></a>Appliquer des stratégies à des contrôleurs MVC
+
+Si vous utilisez des Pages Razor, consultez [appliquer des stratégies aux Pages Razor](#applying-policies-to-razor-pages) dans ce document.
+
+Les stratégies sont appliquées aux contrôleurs à l’aide de la `[Authorize]` attribut avec le nom de la stratégie. Exemple :
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
+
+## <a name="applying-policies-to-razor-pages"></a>Appliquer des stratégies aux Pages Razor
+
+Les stratégies sont appliquées aux Pages Razor à l’aide de la `[Authorize]` attribut avec le nom de la stratégie. Exemple :
+
+[!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
+
+Stratégies peuvent également être appliquées aux Pages Razor en utilisant un [convention d’autorisation](xref:security/authorization/razor-pages-authorization).
 
 ## <a name="requirements"></a>Spécifications
 
@@ -70,7 +82,7 @@ Le code précédent traverse [PendingRequirements](/dotnet/api/microsoft.aspnetc
 
 Gestionnaires sont enregistrés dans la collection de services lors de la configuration. Exemple :
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=40-41,50-55,63-65,72)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,62-63,66)]
 
 Inscrit le code précédent `MinimumAgeHandler` comme un singleton en appelant `services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();`. Gestionnaires peuvent être enregistrés à l’aide d’intégrés [des durées de vie du service](xref:fundamentals/dependency-injection#service-lifetimes).
 
@@ -112,7 +124,7 @@ Il peut arriver dans quel remplissant une stratégie est simple à exprimer dans
 
 Par exemple, le précédent `BadgeEntryHandler` peut être réécrit comme suit :
 
-[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=52-53,57-63)]
+[!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=50-51,55-61)]
 
 ## <a name="accessing-mvc-request-context-in-handlers"></a>Accès au contexte de demande MVC dans les gestionnaires
 

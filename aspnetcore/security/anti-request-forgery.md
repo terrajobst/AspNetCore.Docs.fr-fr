@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/11/2018
 uid: security/anti-request-forgery
-ms.openlocfilehash: 6e140717834b901e12ef7863fd07b983b0c55107
-ms.sourcegitcommit: ed76cc752966c604a795fbc56d5a71d16ded0b58
+ms.openlocfilehash: 88a2d127407378b9e83df7f48b1938ed081f9bb2
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667659"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208526"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>Attaques empêcher Cross-Site Request Forgery (XSRF/CSRF) dans ASP.NET Core
 
@@ -102,12 +102,12 @@ Dans ASP.NET Core 2.0 ou version ultérieure, le [FormTagHelper](xref:mvc/views/
 </form>
 ```
 
-Même manière, [IHtmlHelper.BeginForm](/dotnet/api/microsoft.aspnetcore.mvc.rendering.ihtmlhelper.beginform) génère des jetons anti-contrefaçon par défaut si la méthode du formulaire n’est pas GET.
+De même, [IHtmlHelper.BeginForm](/dotnet/api/microsoft.aspnetcore.mvc.rendering.ihtmlhelper.beginform) génère des jetons anti-contrefaçon par défaut si la méthode du formulaire n’est pas GET.
 
 La génération automatique des jetons anti-contrefaçon pour les éléments de formulaire HTML se produit lorsque le `<form>` balise contient le `method="post"` attribut et une des opérations suivantes sont remplie :
 
-  * L’attribut action est vide (`action=""`).
-  * L’attribut d’action n’est pas fourni (`<form method="post">`).
+* L’attribut action est vide (`action=""`).
+* L’attribut d’action n’est pas fourni (`<form method="post">`).
 
 Vous pouvez désactiver la génération automatique des jetons anti-contrefaçon pour les éléments de formulaire HTML :
 

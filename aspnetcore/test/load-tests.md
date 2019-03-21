@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: 587df6e216943d3eeec779df4d0554dd0fc2fda0
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 39632af2c92dac548c03e24d35a5e8a03e00890d
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345426"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209831"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>Charger et de test ASP.NET Core de contrainte
 
@@ -22,7 +22,7 @@ Test de charge et tests de contrainte sont importantes pour garantir qu'une appl
 **Tests de contrainte**: Tests application la stabilité lors de l’exécution sous les conditions d’utilisation extrêmes et souvent une longue période de temps :
 
 * Charge utilisateur élevée – pics ou augmenter progressivement.
-* Ressources informatiques limitées.  
+* Ressources informatiques limitées.
 
 En situation de stress, peut l’application récupérer et normalement revenir au comportement attendu ? En situation de stress, l’application est *pas* s’exécutent sous des conditions normales.
 
@@ -44,41 +44,42 @@ Tests de charge peuvent être configurés pour exécuter en local ou exécuter d
 
 Les séries de tests de charge peuvent être démarrées à l’aide de la [Azure DevOps Plans de Test](/azure/devops/test/load-test/index?view=vsts) service.
 
-![](./load-tests/_static/azure-devops-load-test.png)
+![Azure DevOps un test de charge page d’accueil](./load-tests/_static/azure-devops-load-test.png)
 
 Le service prend en charge les types de format de test suivants :
 
-- Visual Studio test – test web créé dans Visual Studio.
-- Test basé sur une HTTP Archive – le trafic HTTP capturé à l’intérieur d’archive est relu pendant le test.
-- [Test basé sur l’URL](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=vsts) – permet de spécifier des URL pour charger le test, les types de demandes, les en-têtes et les chaînes de requête. Exécuter la définition des paramètres, tels que la durée, le modèle de charge, nombre d’utilisateurs, etc., peut être configuré.
-- [Apache JMeter](https://jmeter.apache.org/) de test.
+* Visual Studio test – test web créé dans Visual Studio.
+* Test basé sur une HTTP Archive – le trafic HTTP capturé à l’intérieur d’archive est relu pendant le test.
+* [Test basé sur l’URL](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=vsts) – permet de spécifier des URL pour charger le test, les types de demandes, les en-têtes et les chaînes de requête. Exécuter la définition des paramètres, tels que la durée, le modèle de charge, nombre d’utilisateurs, etc., peut être configuré.
+* [Apache JMeter](https://jmeter.apache.org/) de test.
 
 ## <a name="azure-portal"></a>portail Azure
 
 [Le portail Azure permet la configuration et l’exécution du test de charge des applications Web,](/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts) directement à partir de l’onglet performances du Service d’application dans le portail Azure.
 
-![](./load-tests/_static/azure-appservice-perf-test.png)
+![Azure App Service dans le portail Azure](./load-tests/_static/azure-appservice-perf-test.png)
 
 Le test peut être un test manuel avec une URL spécifiée, ou un fichier de Test Web Visual Studio, qui peut tester plusieurs URL.
 
-![](./load-tests/_static/azure-appservice-perf-test-config.png)
+![Nouvelle page de Test de performances sur le portail Azure](./load-tests/_static/azure-appservice-perf-test-config.png)
 
 À la fin du test, les rapports sont générés pour afficher les caractéristiques de performances de l’application. Statistiques de l’exemple sont les suivantes :
 
-- Temps de réponse moyen
-- Débit max. : demandes par seconde
-- Pourcentage d’échec
+* Temps de réponse moyen
+* Débit max. : demandes par seconde
+* Pourcentage d’échec
 
 ## <a name="third-party-tools"></a>Des outils tiers
 
 La liste suivante contient des outils de performances web tierces avec différents ensembles de fonctionnalités :
 
-- [Apache JMeter](https://jmeter.apache.org/) : Suite proposée complète d’outils de test de charge. Lié aux threads : besoin d’un thread par l’utilisateur.
-- [AB - Apache HTTP server benchmark tool](https://httpd.apache.org/docs/2.4/programs/ab.html)
-- [Gatling](https://gatling.io/) : Outil de bureau avec une interface graphique utilisateur et test enregistreurs. Plus performant que JMeter.
-- [Locust.IO](https://locust.io/) : Pas délimités par des threads.
+* [Apache JMeter](https://jmeter.apache.org/) : Suite proposée complète d’outils de test de charge. Lié aux threads : besoin d’un thread par l’utilisateur.
+* [AB - Apache HTTP server benchmark tool](https://httpd.apache.org/docs/2.4/programs/ab.html)
+* [Gatling](https://gatling.io/) : Outil de bureau avec une interface graphique utilisateur et test enregistreurs. Plus performant que JMeter.
+* [Locust.IO](https://locust.io/) : Pas délimités par des threads.
 
 <a name="add"></a>
+
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 [Série de blogs de Test de charge](https://blogs.msdn.microsoft.com/charles_sterling/2015/06/01/load-test-series-part-i-creating-web-performance-tests-for-a-load-test/) par Charles Sterling. Date d’effet, mais la plupart des rubriques sont toujours applicables.

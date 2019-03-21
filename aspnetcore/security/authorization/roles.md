@@ -5,12 +5,12 @@ description: Découvrez comment restreindre l’accès de contrôleur et action 
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/roles
-ms.openlocfilehash: c38e7144166ce7741eee6e3acb4d1c952ad4f024
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 0e01e1976e2721ca64720a67c6341661f646395c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899162"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209094"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>Autorisation basée sur des rôles dans ASP.NET Core
 
@@ -108,7 +108,6 @@ public class UpdateModel : PageModel
 > [!IMPORTANT]
 > Filtrer les attributs, y compris `AuthorizeAttribute`, peuvent uniquement être appliquées au modèle de page et ne peut pas être appliqué aux méthodes de gestionnaire de page spécifique.
 ::: moniker-end
-
 
 <a name="security-authorization-role-policy"></a>
 

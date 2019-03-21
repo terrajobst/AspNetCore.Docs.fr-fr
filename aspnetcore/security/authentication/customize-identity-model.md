@@ -5,12 +5,12 @@ description: Cet article décrit comment personnaliser le modèle de données En
 ms.author: avickers
 ms.date: 09/24/2018
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 90c867eeac0e64bfe77cc7a829d61e831a2fb8e1
-ms.sourcegitcommit: 9bdba90b2c97a4016188434657194b2d7027d6e3
+ms.openlocfilehash: 55346c571f180fa17a1108a622d991d15f365bae
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47402250"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209460"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>Personnalisation de modèle d’identité dans ASP.NET Core
 
@@ -301,7 +301,6 @@ Lors de la substitution `OnModelCreating`, `base.OnModelCreating` doit être app
 ### <a name="custom-user-data"></a>Données utilisateur personnalisées
 
 [Les données utilisateur personnalisées](xref:security/authentication/add-user-data) est pris en charge en héritant de `IdentityUser`. Il est courant de nommer ce type `ApplicationUser`:
-
 
 ```csharp
 public class ApplicationUser : IdentityUser
