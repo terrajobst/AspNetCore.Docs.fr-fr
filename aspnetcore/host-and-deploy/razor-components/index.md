@@ -109,7 +109,7 @@ Avec le [modèle d’hébergement côté client](xref:razor-components/hosting-m
 * L’application est exécutée directement sur le thread d’interface utilisateur du navigateur. Les stratégies suivantes sont prises en charge :
   * L’application Blazor est fournie par une application ASP.NET Core. Voir la section [Déploiement Blazor hébergé côté client avec ASP.NET Core](#client-side-blazor-hosted-deployment-with-aspnet-core).
   * L’application Blazor est placée sur un service ou un serveur web d’hébergement statique, où .NET n’est pas utilisé pour servir l’application Blazor. Voir la section [Déploiement Blazor autonome côté client](#client-side-blazor-standalone-deployment).
-  
+
 ### <a name="configure-the-linker"></a>Configurer l'éditeur de liens
 
 Blazor effectue la liaison de langage intermédiaire (IL) lors de chaque génération afin de supprimer tout langage intermédiaire inutile des assemblys de sortie. Vous pouvez contrôler la liaison d’assembly lors de la génération. Pour plus d'informations, consultez <xref:host-and-deploy/razor-components/configure-linker>.
@@ -191,7 +191,8 @@ Pour plus d’informations sur l’hébergement et le déploiement d’applicati
 
 Pour plus d’informations sur le déploiement sur Azure App Service, consultez les rubriques suivantes :
 
-<xref:tutorials/publish-to-azure-webapp-using-vs>  
+<xref:tutorials/publish-to-azure-webapp-using-vs>
+
 Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide de Visual Studio.
 
 ### <a name="client-side-blazor-standalone-deployment"></a>Déploiement Blazor autonome côté client
@@ -299,5 +300,6 @@ Quand l’application ASP.NET Core est publiée, l’application Razor Component
 
 Pour plus d’informations sur le déploiement sur Azure App Service, consultez les rubriques suivantes :
 
-<xref:tutorials/publish-to-azure-webapp-using-vs>  
+<xref:tutorials/publish-to-azure-webapp-using-vs>
+
 Découvrez comment publier une application ASP.NET Core sur Azure App Service à l’aide de Visual Studio.
