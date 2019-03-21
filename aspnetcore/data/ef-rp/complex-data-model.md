@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: fbe43e019ddab6f9acc2ea46799f0a39aa7c2e7c
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 311f72699b6291996a43d56247bd3d2bfab596e6
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208988"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320246"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -142,7 +142,7 @@ dotnet ef migrations add ColumnFirstName
 dotnet ef database update
 ```
 
-------
+---
 
 La commande `migrations add ColumnFirstName` génère le message d’avertissement suivant :
 
@@ -555,7 +555,7 @@ Add-Migration ComplexDataModel
 dotnet ef migrations add ComplexDataModel
 ```
 
-------
+---
 
 La commande précédente affiche un avertissement concernant les pertes de données possibles.
 
@@ -607,7 +607,7 @@ Entrez ce qui suit dans la fenêtre de commande :
 dotnet ef database update
  ```
 
-------
+---
 
 Exécuter l’application. L’exécution de l’application entraîne l’exécution de la méthode `DbInitializer.Initialize`. La méthode `DbInitializer.Initialize` remplit la nouvelle base de données.
 
