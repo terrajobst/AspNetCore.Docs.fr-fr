@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/05/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: c08fd6ff7c19c63161135b4c87609f6edd3edb80
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 5ab893dd77ff2cc9a735702eb3a547ed8bcb2197
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103122"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264862"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Tutoriel : Créer un modèle de données complexe - ASP.NET MVC avec EF Core
 
@@ -287,7 +287,6 @@ public ICollection<CourseAssignment> CourseAssignments { get; set; }
 
 ![Entité Department](complex-data-model/_static/department-entity.png)
 
-
 Créez *Models/Department.cs* avec le code suivant :
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Begin)]
@@ -322,6 +321,7 @@ public ICollection<Course> Courses { get; set; }
 
 > [!NOTE]
 > Par convention, Entity Framework permet la suppression en cascade pour les clés étrangères non nullables et pour les relations plusieurs à plusieurs. Cela peut entraîner des règles de suppression en cascade circulaires, qui provoqueront une exception lorsque vous essaierez d’ajouter une migration. Par exemple, si vous n’avez pas défini la propriété Department.InstructorID comme nullable, EF configure une règle de suppression en cascade pour supprimer le formateur lorsque vous supprimez le département, ce qui n’est pas ce que vous voulez. Si vos règles d’entreprise exigent que la propriété `InstructorID` soit non nullable, vous devez utiliser l’instruction d’API Fluent suivante pour désactiver la suppression en cascade sur la relation :
+>
 > ```csharp
 > modelBuilder.Entity<Department>()
 >    .HasOne(d => d.Administrator)
@@ -482,6 +482,7 @@ Enregistrez les modifications dans *appsettings.json*.
 
 > [!NOTE]
 > Comme alternative au changement de nom de la base de données, vous pouvez supprimer la base de données. Utilisez **l’Explorateur d’objets SQL Server** (SSOX) ou la commande CLI `database drop` :
+>
 > ```console
 > dotnet ef database drop
 > ```

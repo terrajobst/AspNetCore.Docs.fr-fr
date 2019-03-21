@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/06/2018
 uid: tutorials/publish-to-azure-webapp-using-vs
-ms.openlocfilehash: e71cb8badbbc852685c845e6bbb0bbb12ab5499f
-ms.sourcegitcommit: 68a3081dd175d6518d1bfa31b4712bd8a2dd3864
+ms.openlocfilehash: b2b5a155d0dff28e471af449731da787f19d1faf
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53577810"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208355"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>Publier une application ASP.NET Core sur Azure avec Visual Studio
 
@@ -127,7 +127,7 @@ Visual Studio retourne la boîte de dialogue **Créer App Service**.
 
 ![Boîte de dialogue Configurer la base de données SQL](publish-to-azure-webapp-using-vs/_static/conf_final.png)
 
-Visual Studio crée l’application web et SQL Server sur Azure. Cette étape peut prendre quelques minutes. Pour plus d’informations sur les ressources créées, consultez [Ressources supplémentaires](#additonal-resources).
+Visual Studio crée l’application web et SQL Server sur Azure. Cette étape peut prendre quelques minutes. Pour plus d’informations sur les ressources créées, consultez [Ressources supplémentaires](#additional-resources).
 
 Quand le déploiement est terminé, sélectionnez **Paramètres** :
 
@@ -135,8 +135,8 @@ Quand le déploiement est terminé, sélectionnez **Paramètres** :
 
 Dans la page **Paramètres** de la boîte de dialogue **Publier** :
 
-  * Développez **Bases de données**, puis cochez **Utilisez cette chaîne de connexion au moment de l’exécution**.
-  * Développez **Migrations Entity Framework**, puis cochez **Appliquer cette migration lors de la publication**.
+* Développez **Bases de données**, puis cochez **Utilisez cette chaîne de connexion au moment de l’exécution**.
+* Développez **Migrations Entity Framework**, puis cochez **Appliquer cette migration lors de la publication**.
 
 * Sélectionnez **Enregistrer**. Visual Studio retourne à la boîte de dialogue **Publier**. 
 
@@ -184,7 +184,7 @@ Après avoir testé l’application, accédez au [portail Azure](https://portal.
 
 * <xref:host-and-deploy/azure-apps/azure-continuous-deployment>
 
-## <a name="additonal-resources"></a>Ressources supplémentaires
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Azure App Service](/azure/app-service/app-service-web-overview)
 * [Groupes de ressources Azure](/azure/azure-resource-manager/resource-group-overview#resource-groups)

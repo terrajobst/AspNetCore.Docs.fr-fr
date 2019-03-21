@@ -5,12 +5,12 @@ description: Montre comment créer, lire, mettre à jour et supprimer avec EF Co
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: adb281277599456356251c6ee30772a25f14ac58
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: c104498a4411ac36672ffbb9660948d4e96bf1ee
+ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346049"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58142389"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
 
@@ -250,7 +250,7 @@ Chaque page Razor doit inclure la directive `@page`.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=F0SP7Ry4flQ&list=PLnVvOWNfuhGV45HnNgd0vuIIkoQ1UaVBf)
+* [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=K4X1MT2jt6o)
 
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/intro)

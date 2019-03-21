@@ -7,12 +7,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/13/2018
 uid: web-api/advanced/conventions
-ms.openlocfilehash: 5ae96b213a19464045e1d0b1a76f8eb81089dc5b
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 64be4984779724eb60af3b70d4f52b22eae32213
+ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236339"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58142304"
 ---
 # <a name="use-web-api-conventions"></a>Utiliser les conventions d’API web
 
@@ -25,7 +25,7 @@ Une convention vous permet de :
 * Définir les types de retours les plus courants et les codes d’état retournés à partir d’un type d’action spécifique.
 * Identifier les actions qui s’écartent de la norme définie.
 
-ASP.NET Core MVC 2.2 et ses versions ultérieures incluent un ensemble de conventions par défaut dans `Microsoft.AspNetCore.Mvc.DefaultApiConventions`. Les conventions sont basées sur le contrôleur (*ValuesController.cs*) fourni dans le modèle de projet de l’**API** ASP.NET Core. Si vos actions suivent les profils dans le modèle, vous devriez normalement réussir à utiliser les conventions par défaut. Si les conventions par défaut ne répondent pas à vos besoins, consultez [Créer des conventions d’API web](#create-web-api-conventions).
+ASP.NET Core MVC 2.2 et ses versions ultérieures incluent un ensemble de conventions par défaut dans <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName>. Les conventions sont basées sur le contrôleur (*ValuesController.cs*) fourni dans le modèle de projet de l’**API** ASP.NET Core. Si vos actions suivent les profils dans le modèle, vous devriez normalement réussir à utiliser les conventions par défaut. Si les conventions par défaut ne répondent pas à vos besoins, consultez [Créer des conventions d’API web](#create-web-api-conventions).
 
 À l’exécution, <xref:Microsoft.AspNetCore.Mvc.ApiExplorer> comprend les conventions. `ApiExplorer` est l’abstraction de MVC pour communiquer avec des générateurs de documents [OpenAPI](https://www.openapis.org/) (également nommé Swagger). Les attributs provenant de la convention appliquée sont associés à une action et sont inclus dans la documentation OpenAPI de l’action. Les [analyseurs d’API](xref:web-api/advanced/analyzers) comprennent aussi les conventions. Si votre action n’est pas conventionnelle (par exemple, elle retourne un code d’état qui n’est pas documenté par la convention appliquée), un avertissement vous encourage à documenter le code d’état.
 

@@ -5,12 +5,12 @@ description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer d
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 8e9ec3c5040e5a24cd5f773b1232897338741c0c
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 254c85ee9e74dc72170b19d27fbc5f1ae7ccd3dc
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396257"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264753"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -69,9 +69,9 @@ Les expressions implicites **ne doivent pas** contenir de caractères génériqu
 
 Le code précédent génère l’un des types d’erreur de compilateur suivants :
 
- * L’élément « int » n’a pas été fermé. Tous les éléments doivent se fermer automatiquement ou contenir une balise de fin correspondante.
- *  Impossible de convertir le groupe de méthodes 'GenericMethod' en type non-délégué 'object'. Souhaitiez-vous appeler la méthode ? 
- 
+* L’élément « int » n’a pas été fermé. Tous les éléments doivent se fermer automatiquement ou contenir une balise de fin correspondante.
+* Impossible de convertir le groupe de méthodes 'GenericMethod' en type non-délégué 'object'. Souhaitiez-vous appeler la méthode ?
+
 Les appels de méthode générique doivent être inclus dans un wrapper dans une [expression Razor explicite](#explicit-razor-expressions) ou dans un [bloc de code Razor](#razor-code-blocks).
 
 ## <a name="explicit-razor-expressions"></a>Expressions Razor explicites
@@ -199,7 +199,7 @@ Utilisez cette approche pour afficher du code HTML qui n’est pas entouré d’
 
 La balise **\<text>** est utile pour contrôler les espaces blancs dans le contenu affiché :
 
-* Seul le contenu situé dans la balise **\<text>** est affiché. 
+* Seul le contenu situé dans la balise **\<text>** est affiché.
 * Aucun espace blanc avant ou après la balise **\<text>** ne s’affiche dans la sortie HTML.
 
 ### <a name="explicit-line-transition-with-"></a>Conversion de ligne explicite avec @ :
@@ -337,7 +337,6 @@ Les instructions de boucle suivantes sont prises en charge :
 
 En C#, une instruction `using` est utilisée pour garantir la dispose d’un objet. Dans Razor, le même mécanisme permet de créer des HTML Helpers avec du contenu supplémentaire. Dans le code suivant, les HTML Helpers affichent une balise Form à l’aide de l’instruction `@using` :
 
-
 ```cshtml
 @using (Html.BeginForm())
 {
@@ -425,6 +424,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 Plus loin dans cet article, la section [Inspecter la classe C# Razor générée pour une vue](#inspect-the-razor-c-class-generated-for-a-view) explique comment afficher cette classe générée.
 
 <a name="using"></a>
+
 ### <a name="using"></a>@using
 
 La directive `@using` ajoute la directive `using` C# à la vue générée :
@@ -579,7 +579,7 @@ Vous pouvez également fournir un modèle Razor inline en tant qu’argument à 
 @using Microsoft.AspNetCore.Html
 
 @functions {
-    public static IHtmlContent Repeat(IEnumerable<dynamic> items, int times, 
+    public static IHtmlContent Repeat(IEnumerable<dynamic> items, int times,
         Func<dynamic, IHtmlContent> template)
     {
         var html = new HtmlContentBuilder();

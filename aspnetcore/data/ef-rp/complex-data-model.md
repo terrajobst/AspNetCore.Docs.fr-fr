@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 56c2d783e8c75aad7487aa03309bb962f4354567
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: fbe43e019ddab6f9acc2ea46799f0a39aa7c2e7c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346526"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208988"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
 
@@ -223,8 +223,8 @@ Si une propriété de navigation contient plusieurs entités :
 Les types de propriétés de navigation sont :
 
 * `ICollection<T>`
-*  `List<T>`
-*  `HashSet<T>`
+* `List<T>`
+* `HashSet<T>`
 
 Si `ICollection<T>` est spécifié, EF Core crée une collection `HashSet<T>` par défaut.
 
@@ -267,7 +267,6 @@ La propriété de navigation `OfficeAssignment` pour l’entité `Instructor` es
 
 * Les types référence (tels que les classes) sont nullables.
 * Un formateur peut ne pas avoir d’affectation de bureau.
-
 
 L’entité `OfficeAssignment` a une propriété de navigation `Instructor` non-nullable car :
 

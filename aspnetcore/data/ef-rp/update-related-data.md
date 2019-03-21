@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez mettre à jour des données associ�
 ms.author: riande
 ms.date: 11/15/2017
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: c3dbfe57a832ba63c5da2f89c0d29e443a1277a7
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: e1407048157fccdbfdd854071a6fbf9785356026
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208607"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---update-related-data---7-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Mise à jour de données associées - 7 sur 8
 
@@ -136,9 +136,9 @@ Mettez à jour le modèle de page Edit d'instructeur avec le code suivant :
 
 Le code précédent :
 
-- Obtient l'entité `Instructor` en cours à partir de la base de données à l’aide d’un chargement hâtif de la propriété de navigation `OfficeAssignment`.
-- Met à jour l’entité `Instructor` récupérée avec les valeurs du classeur de modèles. `TryUpdateModel` empêche la [survalidation](xref:data/ef-rp/crud#overposting).
-- Si l’emplacement du bureau est vide, définit `Instructor.OfficeAssignment` avec la valeur null. Lorsque `Instructor.OfficeAssignment` est null, la ligne correspondante dans la table `OfficeAssignment` est supprimée.
+* Obtient l'entité `Instructor` en cours à partir de la base de données à l’aide d’un chargement hâtif de la propriété de navigation `OfficeAssignment`.
+* Met à jour l’entité `Instructor` récupérée avec les valeurs du classeur de modèles. `TryUpdateModel` empêche la [survalidation](xref:data/ef-rp/crud#overposting).
+* Si l’emplacement du bureau est vide, définit `Instructor.OfficeAssignment` avec la valeur null. Lorsque `Instructor.OfficeAssignment` est null, la ligne correspondante dans la table `OfficeAssignment` est supprimée.
 
 ### <a name="update-the-instructor-edit-page"></a>Mettre à jour la page de modification de formateur
 

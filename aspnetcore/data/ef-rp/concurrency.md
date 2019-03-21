@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/07/2018
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: a6c264e460855c9f1d6f5a363eb7ee2cf69619ee
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 3fb8ebe415d0619d33302a08e97da78db0ad1d1e
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346292"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265515"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---concurrency---8-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Accès concurrentiel - 8 sur 8
 
@@ -95,9 +95,9 @@ Pour détecter les conflits d’accès concurrentiel, une colonne de suivi [rowv
 
 La base de données génère un numéro `rowversion` séquentiel qui est incrémenté chaque fois que la ligne est mise à jour. Dans une commande `Update` ou `Delete`, la clause `Where` comprend la valeur récupérée de `rowversion`. Si la ligne mise à jour a changé :
 
- * `rowversion` ne correspond pas à la valeur récupérée.
- * Les commandes `Update` ou `Delete` ne trouvent pas de ligne, car la clause `Where` comprend la valeur `rowversion` récupérée.
- * Une `DbUpdateConcurrencyException` est levée.
+* `rowversion` ne correspond pas à la valeur récupérée.
+* Les commandes `Update` ou `Delete` ne trouvent pas de ligne, car la clause `Where` comprend la valeur `rowversion` récupérée.
+* Une `DbUpdateConcurrencyException` est levée.
 
 Dans EF Core, quand aucune ligne n’a été mise à jour par une commande `Update` ou `Delete`, une exception d’accès concurrentiel est levée.
 
@@ -152,6 +152,7 @@ Les commandes précédentes :
 * Exécutent des migrations pour mettre à jour la base de données.
 
 <a name="scaffold"></a>
+
 ## <a name="scaffold-the-departments-model"></a>Générer automatiquement le modèle Departments
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -272,7 +273,6 @@ La page Delete détecte les conflits d’accès concurrentiel quand l’entité 
 Mettez à jour *Pages/Departments/Delete.cshtml* avec le code suivant :
 
 [!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
-
 
 Le balisage précédent apporte les modifications suivantes :
 

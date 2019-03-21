@@ -5,12 +5,12 @@ description: ''
 ms.author: riande
 ms.date: 07/03/2017
 uid: mvc/controllers/actions
-ms.openlocfilehash: 8289424b3cd3678bea18a25c7850e409795d1577
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 952e4dbb2c4343ca87ace1535e4a5968faf088cf
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410432"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209013"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>Gérer les requêtes avec des contrôleurs dans ASP.NET Core MVC
 
@@ -98,7 +98,7 @@ En règle générale, les applications partagent des parties de leur flux de tra
 La plupart des attributs des filtres, comme `[Authorize]`, peuvent être appliqués au niveau du contrôleur ou de l’action, selon le niveau de granularité souhaité.
 
 La gestion des erreurs et la mise en cache des réponses sont souvent des problèmes transversaux :
-   * [Gérer les erreurs](xref:mvc/controllers/filters#exception-filters)
-   * [Mise en cache des réponses](xref:performance/caching/response)
+* [Gérer les erreurs](xref:mvc/controllers/filters#exception-filters)
+* [Mise en cache des réponses](xref:performance/caching/response)
 
 De nombreux problèmes transversaux peuvent être gérés en utilisant des filtres ou un [intergiciel (middleware)](xref:fundamentals/middleware/index) personnalisé.

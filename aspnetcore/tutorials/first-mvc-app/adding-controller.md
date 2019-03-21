@@ -5,12 +5,12 @@ description: Découvrez comment ajouter un contrôleur à une application ASP.NE
 ms.author: riande
 ms.date: 02/28/2017
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: bbb7b06e2c9c63f44cb7f7a8ee63bffa1e316b3e
-ms.sourcegitcommit: 4e87712029de2aceb1cf2c52e9e3dda8195a5b8e
+ms.openlocfilehash: dad9262e544fc216ddc694b11b0dfb88b58db9cd
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53381866"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265009"
 ---
 # <a name="add-a-controller-to-an-aspnet-core-mvc-app"></a>Ajouter un contrôleur à une application ASP.NET Core MVC
 
@@ -30,7 +30,6 @@ Nous présentons ces concepts dans cette série de didacticiels et nous vous mon
 
 ## <a name="add-a-controller"></a>Ajouter un contrôleur
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le ![menu contextuel](adding-controller/_static/add_controller.png) **Contrôleurs > Ajouter > Contrôleur**
@@ -42,14 +41,12 @@ Nous présentons ces concepts dans cette série de didacticiels et nous vous mon
 
 * Dans la **boîte de dialogue Ajouter un contrôleur MVC vide**, entrez **HelloWorldController** et sélectionnez **AJOUTER**.
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Sélectionnez l’icône **EXPLORATEUR** et cliquez en maintenant enfoncée la touche Ctrl (ou cliquez avec le bouton droit) sur **Contrôleurs > Nouveau fichier** et nommez le nouveau fichier *HelloWorldController.cs*.
 
   ![Menu contextuel](~/tutorials/first-mvc-app-xplat/adding-controller/_static/new_file.png)
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur **Contrôleurs > Ajouter > Nouveau fichier**.
@@ -62,7 +59,6 @@ Nommez le contrôleur **HelloWorldController**.
 ![Ajoutez un contrôleur MVC et nommez-le](~/tutorials/first-mvc-app-mac/adding-controller/_static/ac.png)
 
 ---
-<!-- End of VS tabs -->
 
 Remplacez le contenu de *Controllers/HelloWorldController.cs* par ceci :
 
@@ -130,7 +126,6 @@ Cette fois, le troisième segment de l’URL correspondait au paramètre de rout
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_1&highlight=5)]
 
 Dans ces exemples, le contrôleur a fait la partie « VC » du modèle MVC, autrement dit, la vue et le contrôleur fonctionnent. Le contrôleur retourne directement du HTML. En règle générale, vous ne souhaitez pas que les contrôleurs retournent directement du HTML, car le codage et la maintenance deviennent dans ce cas très laborieux. Au lieu de cela, vous utilisez généralement un fichier de modèle de vue Razor distinct pour faciliter la génération de la réponse HTML. Vous faites cela dans le didacticiel suivant.
-
 
 > [!div class="step-by-step"]
 > [Précédent](start-mvc.md)

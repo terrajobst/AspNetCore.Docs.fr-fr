@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/26/2019
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 9566ed75375bdfaa9d6d8bf898b9fb2054356017
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.openlocfilehash: 8d219658b7116ad7e1f2a73678ef76ea1ce69595
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56899318"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209185"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Modèle d’options dans ASP.NET Core
 
@@ -126,7 +126,7 @@ Chaque appel à <xref:Microsoft.Extensions.Options.IConfigureOptions`1.Configure
 Quand plusieurs services de configuration sont activés, la dernière source de configuration spécifiée *gagne* et définit la valeur de configuration. Quand l’application est exécutée, la méthode `OnGet` du modèle de page retourne une chaîne indiquant les valeurs de la classe d’options :
 
 ```html
-delegate_option1 = value1_configured_by_delgate, delegate_option2 = 500
+delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 ```
 
 ## <a name="suboptions-configuration"></a>Configuration des sous-options

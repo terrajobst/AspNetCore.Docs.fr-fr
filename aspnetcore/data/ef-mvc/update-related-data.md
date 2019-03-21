@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/05/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: ac94f2e2876c2d8d571a451e4641787ffe37b3d2
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 1606b872df2df839266ef17efee1948065c4efae
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209412"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Mettre à jour les données associées - ASP.NET MVC avec EF Core
 
@@ -131,11 +131,11 @@ Remplacez la méthode HttpPost `Edit` par le code suivant pour gérer les mises 
 
 Le code effectue les actions suivantes :
 
--  Il change le nom de la méthode `EditPost`, car la signature est maintenant la même que celle de la méthode HttpGet `Edit` (l’attribut `ActionName` spécifie que l’URL `/Edit/` est encore utilisée).
+* Il change le nom de la méthode `EditPost`, car la signature est maintenant la même que celle de la méthode HttpGet `Edit` (l’attribut `ActionName` spécifie que l’URL `/Edit/` est encore utilisée).
 
--  Obtient l’entité Instructor actuelle auprès de la base de données en utilisant le chargement hâtif pour la propriété de navigation `OfficeAssignment`. C’est identique à ce que vous avez fait dans la méthode HttpGet `Edit`.
+* Obtient l’entité Instructor actuelle auprès de la base de données en utilisant le chargement hâtif pour la propriété de navigation `OfficeAssignment`. C’est identique à ce que vous avez fait dans la méthode HttpGet `Edit`.
 
--  Elle met à jour l’entité Instructor récupérée avec des valeurs dans le classeur de modèles. La surcharge de `TryUpdateModel` vous permet de mettre en liste verte les propriétés que vous voulez inclure. Ceci empêche la survalidation, comme expliqué dans le [deuxième didacticiel](crud.md).
+* Elle met à jour l’entité Instructor récupérée avec des valeurs dans le classeur de modèles. La surcharge de `TryUpdateModel` vous permet de mettre en liste verte les propriétés que vous voulez inclure. Ceci empêche la survalidation, comme expliqué dans le [deuxième didacticiel](crud.md).
 
     <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -146,7 +146,7 @@ Le code effectue les actions suivantes :
         i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
     ```
 
--   Si l’emplacement du bureau est vide, il définit la propriété Instructor.OfficeAssignment sur null, de façon que la ligne correspondante dans la table OfficeAssignment soit supprimée.
+* Si l’emplacement du bureau est vide, il définit la propriété Instructor.OfficeAssignment sur null, de façon que la ligne correspondante dans la table OfficeAssignment soit supprimée.
 
     <!-- Snippets don't play well with <ul>  "intro/samples/cu/Controllers/InstructorsController.cs"} -->
 
@@ -157,7 +157,7 @@ Le code effectue les actions suivantes :
     }
     ```
 
-- Il enregistre les modifications dans la base de données.
+* Il enregistre les modifications dans la base de données.
 
 ### <a name="update-the-instructor-edit-view"></a>Mettre à jour la vue de modification des formateurs
 
@@ -225,7 +225,7 @@ Dans *Views/Instructors/Edit.cshtml*, ajoutez un champ **Courses** avec un table
 
 <a id="notepad"></a>
 > [!NOTE]
-> Quand vous collez le code dans Visual Studio, les sauts de ligne seront changés d’une façon qui va déstructurer le code.  Appuyez une fois sur Ctrl+Z pour annuler la mise en forme automatique.  Ceci permet de corriger les sauts de ligne de façon à ce qu’ils apparaissent comme ce que vous voyez ici. L’indentation ne doit pas nécessairement être parfaite, mais les lignes `@</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune tenir sur une seule ligne comme dans l’illustration, sinon vous recevrez une erreur d’exécution. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur la touche Tab pour aligner le nouveau code avec le code existant. Vous pouvez vérifier l’état de ce problème [ici](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
+> Quand vous collez le code dans Visual Studio, les sauts de ligne seront changés d’une façon qui va déstructurer le code. Appuyez une fois sur Ctrl+Z pour annuler la mise en forme automatique. Ceci permet de corriger les sauts de ligne de façon à ce qu’ils apparaissent comme ce que vous voyez ici. L’indentation ne doit pas nécessairement être parfaite, mais les lignes `@</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune tenir sur une seule ligne comme dans l’illustration, sinon vous recevrez une erreur d’exécution. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur la touche Tab pour aligner le nouveau code avec le code existant. Vous pouvez vérifier l’état de ce problème [ici](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
@@ -250,7 +250,7 @@ Dans *InstructorsController.cs*, supprimez la méthode `DeleteConfirmed` et ins�
 
 Ce code apporte les modifications suivantes :
 
-* Il effectue un chargement hâtif pour la propriété de navigation `CourseAssignments`.  Vous devez inclure ceci car sinon, EF ne dispose pas d’informations sur les entités `CourseAssignment` associées et ne les supprime pas.  Pour éviter de devoir les lire ici, vous pouvez configurer une suppression en cascade dans la base de données.
+* Il effectue un chargement hâtif pour la propriété de navigation `CourseAssignments`. Vous devez inclure ceci car sinon, EF ne dispose pas d’informations sur les entités `CourseAssignment` associées et ne les supprime pas. Pour éviter de devoir les lire ici, vous pouvez configurer une suppression en cascade dans la base de données.
 
 * Si le formateur à supprimer est attribué en tant qu’administrateur d’un département, supprime l’attribution de l'instructeur de ces départements.
 

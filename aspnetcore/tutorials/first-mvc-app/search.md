@@ -5,12 +5,12 @@ description: Montre comment ajouter une fonction de recherche à une application
 ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: e5dce35b60080ef752f8e6c6004158219015cbf5
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 41d7494b77edaddbf719cab087142f0132dd3ed6
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208380"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Ajouter une fonction de recherche à une application ASP.NET Core MVC
 
@@ -113,10 +113,10 @@ Ajoutez la classe `MovieGenreViewModel` suivante au dossier *Models* :
 
 Le modèle de vue movie-genre contiendra :
 
-   * Une liste de films.
-   * Une `SelectList` contenant la liste des genres. Cela permet à l’utilisateur de sélectionner un genre dans la liste.
-   * `MovieGenre`, qui contient le genre sélectionné.
-   * `SearchString`, qui contient le texte que les utilisateurs entrent dans la zone de texte de recherche.
+* Une liste de films.
+* Une `SelectList` contenant la liste des genres. Cela permet à l’utilisateur de sélectionner un genre dans la liste.
+* `MovieGenre`, qui contient le genre sélectionné.
+* `SearchString`, qui contient le texte que les utilisateurs entrent dans la zone de texte de recherche.
 
 Remplacez la méthode `Index` dans `MoviesController.cs` par le code suivant :
 
@@ -148,4 +148,4 @@ Testez l’application en effectuant une recherche par genre, par titre de film 
 
 > [!div class="step-by-step"]
 > [Précédent](controller-methods-views.md)
-> [Suivant](new-field.md)  
+> [Suivant](new-field.md)

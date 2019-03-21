@@ -5,12 +5,12 @@ description: Découvrez les nouvelles fonctionnalités d’ASP.NET Core 2.0.
 ms.author: riande
 ms.date: 07/10/2017
 uid: aspnetcore-2.0
-ms.openlocfilehash: a6d3179c84bfef0b15c2772e696466b88d228de5
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 60e44e64bd1cfada0143e374f6f51dec0e4e84f8
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209883"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>Nouveautés d’ASP.NET Core 2.0
 
@@ -81,9 +81,9 @@ Des modèles de projet SPA (Single Page Application) pour Angular, Aurelia, Knoc
 
 Le serveur web Kestrel offre de nouvelles fonctionnalités qui le rendent plus adapté en tant que serveur connecté à Internet. Plusieurs options de configuration de contrainte de serveur ont été ajoutées à la nouvelle propriété `Limits` de la classe `KestrelServerOptions`. Ajoutez des limites pour les éléments suivants :
 
-- Nombre maximale de connexions client
-- Taille maximale du corps de la requête
-- Débit données minimal du corps de la requête
+* Nombre maximale de connexions client
+* Taille maximale du corps de la requête
+* Débit données minimal du corps de la requête
 
 Pour plus d’informations, consultez [Implémentation du serveur web Kestrel dans ASP.NET Core](xref:fundamentals/servers/kestrel).
 

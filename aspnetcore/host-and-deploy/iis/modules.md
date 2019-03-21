@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: e5bb1a86453bb945789cc1f4b56616551e316615
-ms.sourcegitcommit: 6ddd8a7675c1c1d997c8ab2d4498538e44954cac
+ms.openlocfilehash: de740775e124298f7c3d3be0c6f5a7311174116d
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57400682"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265481"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
 
@@ -123,7 +123,7 @@ Si vous décidez de supprimer un module avec un paramètre dans *web.config*, d�
     </system.webServer>
    </configuration>
    ```
-   
+
 Pour ajouter ou supprimer des modules pour IIS Express à l’aide de *web.config*, modifiez *applicationHost.config* afin de déverrouiller la section `<modules>` :
 
 1. Ouvrez *{RACINE DE L’APPLICATION}\\.vs\config\applicationhost.config*.
@@ -131,17 +131,17 @@ Pour ajouter ou supprimer des modules pour IIS Express à l’aide de *web.confi
 1. Recherchez l’élément `<section>` des modules IIS et changez `overrideModeDefault` en remplaçant `Deny` par `Allow` :
 
    ```xml
-   <section name="modules" 
-            allowDefinition="MachineToApplication" 
+   <section name="modules"
+            allowDefinition="MachineToApplication"
             overrideModeDefault="Allow" />
    ```
-   
+
 1. Recherchez la section `<location path="" overrideMode="Allow"><system.webServer><modules>`. Pour tous les modules à supprimer, définissez `lockItem` en remplaçant `true` par `false`. Dans l’exemple suivant, le module CGI est déverrouillé :
 
    ```xml
    <add name="CgiModule" lockItem="false" />
    ```
-   
+
 1. Une fois que la section `<modules>` et les modules individuels sont déverrouillés, vous pouvez ajouter ou supprimer des modules IIS à l’aide du fichier *web.config* de l’application pour permettre l’exécution de l’application sur IIS Express.
 
 Vous pouvez également supprimer un module IIS avec *Appcmd.exe*. Fournissez `MODULE_NAME` et `APPLICATION_NAME` dans la commande :
