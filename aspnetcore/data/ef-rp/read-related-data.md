@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 140f482e136acf4daba1248fecc87e06db6866f3
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 4b564e9e407dcb6b7fd71d0a6c41596269ed5e09
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345888"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320119"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -68,6 +68,7 @@ Pour afficher le nom du département affecté dans une liste de cours
 ![Course.Department](read-related-data/_static/dep-crs.png)
 
 <a name="scaffold"></a>
+
 ### <a name="scaffold-the-course-model"></a>Génération automatique du modèle Course
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio) 
@@ -82,7 +83,7 @@ Suivez les instructions fournies dans [Générer automatiquement le modèle d’
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
 
-------
+---
 
 La commande précédente génère automatiquement le modèle `Course`. Ouvrez le projet dans Visual Studio.
 
@@ -115,6 +116,7 @@ Exécutez l’application et sélectionnez l’onglet **Courses** pour afficher 
 ![Page d’index des cours](read-related-data/_static/courses-index.png)
 
 <a name="select"></a>
+
 ### <a name="loading-related-data-with-select"></a>Chargement de données associées avec Select
 
 La méthode `OnGetAsync` charge les données associées avec la méthode `Include` :
@@ -168,7 +170,7 @@ Suivez les instructions fournies dans [Générer automatiquement le modèle d’
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
   ```
 
-------
+---
 
 La commande précédente génère automatiquement le modèle `Instructor`. Exécutez l’application et accédez à la page des formateurs.
 
@@ -187,7 +189,6 @@ La requête comporte deux Include :
 * `OfficeAssignment`: Affiché dans [l’affichage Instructors](#IP).
 * `CourseAssignments`: Qui affiche les cours dispensés.
 
-
 ### <a name="update-the-instructors-index-page"></a>Mettre à jour la page d’index des formateurs
 
 Mettez à jour *Pages/Instructors/Index.cshtml* avec le balisage suivant :
@@ -198,11 +199,11 @@ Le balisage précédent apporte les modifications suivantes :
 
 * Il met à jour la directive `page` en remplaçant `@page` par `@page "{id:int?}"`. `"{id:int?}"` est un modèle de route. Le modèle de route change les chaînes de requête entières dans l’URL en données de route. Par exemple, si vous cliquez sur le lien **Select** pour un formateur avec seulement la directive `@page`, une URL comme celle-ci est générée :
 
-    `http://localhost:1234/Instructors?id=2`
+  `http://localhost:1234/Instructors?id=2`
 
-    Quand la directive de page est `@page "{id:int?}"`, l’URL précédente est :
+  Quand la directive de page est `@page "{id:int?}"`, l’URL précédente est :
 
-    `http://localhost:1234/Instructors/2`
+  `http://localhost:1234/Instructors/2`
 
 * Le titre de la page est **Instructors**.
 * Il ajoute une colonne **Office** qui affiche `item.OfficeAssignment.Location` uniquement si `item.OfficeAssignment` n’est pas Null. Comme il s’agit d’une relation un-à-zéro-ou-un, il se peut qu’il n’y ait pas d’entité OfficeAssignment associée.

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/06/2019
 uid: host-and-deploy/azure-apps/troubleshoot
-ms.openlocfilehash: 326f66070d51c04298abbf6292d2d350414311de
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 36c2bdfa585a0fd54ca93bf4c0edb4cf6f7d934a
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841397"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265446"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service"></a>Résoudre les problèmes liés à ASP.NET Core sur Azure App Service
 
@@ -23,8 +23,7 @@ Cet article donne des instructions pour diagnostiquer un problème de démarrage
 
 ## <a name="app-startup-errors"></a>Erreurs de démarrage de l’application
 
-**Échec de processus 502.5**  
-Le processus de travail échoue. L’application ne démarre pas.
+**Échec de processus 502.5** Le processus de travail échoue. L’application ne démarre pas.
 
 Le [module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) tente, en vain, de démarrer le processus de travail. Un examen du Journal des événements de l’application permet souvent de résoudre ce type de problème. L’accès au journal est expliqué dans la section [Journal des événements de l’application](#application-event-log).
 
@@ -32,7 +31,8 @@ La page d’erreur *Échec de processus 502.5* est retournée quand une applicat
 
 ![Fenêtre de navigateur affichant la page d’échec de processus 502.5](troubleshoot/_static/process-failure-page.png)
 
-**Erreur de serveur interne 500**  
+**Erreur de serveur interne 500**
+
 L’application démarre, mais une erreur empêche le serveur de répondre à la requête.
 
 Cette erreur se produit dans le code de l’application pendant le démarrage ou durant la création d’une réponse. La réponse peut être dépourvue de contenu ou apparaître sous la forme d’une *erreur de serveur interne 500* dans le navigateur. Le Journal des événements de l’application indique généralement qu’elle a démarré normalement. Du point de vue du serveur, c’est exact. L’application a démarré, mais elle ne parvient pas à générer une réponse valide. [Exécutez l’application dans la console Kudu](#run-the-app-in-the-kudu-console) ou [activez le journal stdout du module ASP.NET Core](#aspnet-core-module-stdout-log) pour résoudre le problème.
@@ -83,15 +83,16 @@ De nombreuses erreurs de démarrage ne produisent pas d’informations utiles da
      ```console
      dotnet .\{ASSEMBLY NAME}.dll
      ```
+
    * Si l’application est un [déploiement autonome](/dotnet/core/deploying/#self-contained-deployments-scd) :
 
      ```console
      {ASSEMBLY NAME}.exe
      ```
-   
+
 La sortie de console de l’application, affichant toutes les erreurs éventuelles, est transmise à la console Kudu.
-   
-##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>Déploiement dépendant du framework sur une préversion
+
+##### <a name="framework-dependent-deployment-running-on-a-preview-release"></a>Déploiement dépendant du framework sur une préversion
 
 *Installation de l’extension de site du runtime ASP.NET Core {VERSION} (x86) requise.*
 
@@ -113,7 +114,7 @@ La sortie de console de l’application, affichant toutes les erreurs éventuell
 
 La sortie de console de l’application, affichant toutes les erreurs éventuelles, est transmise à la console Kudu.
 
-##### <a name="framework-depdendent-deployment-running-on-a-preview-release"></a>Déploiement dépendant du framework sur une préversion
+##### <a name="framework-dependent-deployment-running-on-a-preview-release"></a>Déploiement dépendant du framework sur une préversion
 
 *Installation de l’extension de site du runtime ASP.NET Core {VERSION} (x64) requise.*
 
@@ -170,7 +171,7 @@ Le journal de débogage du module ASP.NET Core fournit une journalisation suppl�
 
 Désactivez la journalisation du débogage, une fois la résolution des problèmes effectuée :
 
-1. Pour désactiver la journalisation de débogage améliorée, effectuez l’une des opérations suivantes :
+1. Pour désactiver la journalisation de débogage améliorée, effectuez l’une des opérations suivantes :
    * Supprimez `<handlerSettings>` du fichier *web.config* localement, puis redéployez l’application.
    * Utilisez la console Kudu pour modifier le fichier *web.config* et supprimer la section `<handlerSettings>`. Enregistrez le fichier.
 
@@ -230,7 +231,7 @@ Maintenant, activez la journalisation des diagnostics :
 
 1. Sur le Portail Azure, sélectionnez le panneau **Journaux de diagnostic**.
 1. Basculez **Journalisation des applications (système de fichiers)** et **Messages d’erreur détaillés** sur **Activé**. Sélectionnez le bouton **Enregistrer** en haut du panneau.
-1. Pour inclure le suivi des demandes ayant échoué, également appelé Mise en mémoire tampon des événements d’échec des demandes (FREB), basculez **Suivi des demandes ayant échoué** sur **Activé**. 
+1. Pour inclure le suivi des demandes ayant échoué, également appelé Mise en mémoire tampon des événements d’échec des demandes (FREB), basculez **Suivi des demandes ayant échoué** sur **Activé**.
 1. Sélectionnez le panneau **Flux du journal** situé juste sous le panneau **Journaux de diagnostic** sur le portail.
 1. Adressez une demande à l’application.
 1. La cause de l’erreur est indiquée dans les données de flux de journal.

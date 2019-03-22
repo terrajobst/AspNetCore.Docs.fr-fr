@@ -5,12 +5,12 @@ description: Cet article décrit comment personnaliser le modèle de données En
 ms.author: avickers
 ms.date: 09/24/2018
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 55346c571f180fa17a1108a622d991d15f365bae
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 0aa7448ac37a97a4d09a04caf365f641f22f5997
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209460"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327299"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>Personnalisation de modèle d’identité dans ASP.NET Core
 
@@ -253,7 +253,7 @@ public abstract class IdentityDbContext<
          where TUserToken : IdentityUserToken<TKey>
 ```
 
-Il est également possible d’utiliser Identity sans rôles (uniquement des revendications), auquel cas un <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext`1> classe doit être utilisée :
+Il est également possible d’utiliser Identity sans rôles (uniquement des revendications), auquel cas un <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserContext%601> classe doit être utilisée :
 
 ```csharp
 // Uses the built-in non-role Identity types except with a custom User type
@@ -368,7 +368,7 @@ Suivez ces étapes pour modifier le type de clé primaire :
 
 1. Si la base de données a été créé avant la modification de la clé primaire, exécutez `Drop-Database` (PMC) ou `dotnet ef database drop` (CLI) .NET Core pour le supprimer.
 2. Après avoir confirmé la suppression de la base de données, supprimez la migration initiale avec `Remove-Migration` (PMC) ou `dotnet ef migrations remove` (CLI .NET Core).
-3. Mise à jour le `ApplicationDbContext` classe à dériver de <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext`3>. Spécifiez le type de clé pour `TKey`. Par exemple, pour utiliser un `Guid` type de clé :
+3. Mise à jour le `ApplicationDbContext` classe à dériver de <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext%603>. Spécifiez le type de clé pour `TKey`. Par exemple, pour utiliser un `Guid` type de clé :
 
     ```csharp
     public class ApplicationDbContext
@@ -383,13 +383,13 @@ Suivez ces étapes pour modifier le type de clé primaire :
 
     ::: moniker range=">= aspnetcore-2.0"
 
-    Dans le code précédent, les classes génériques <xref:Microsoft.AspNetCore.Identity.IdentityUser`1> et <xref:Microsoft.AspNetCore.Identity.IdentityRole`1> doit être spécifié pour utiliser le nouveau type de clé.
+    Dans le code précédent, les classes génériques <xref:Microsoft.AspNetCore.Identity.IdentityUser%601> et <xref:Microsoft.AspNetCore.Identity.IdentityRole%601> doit être spécifié pour utiliser le nouveau type de clé.
 
     ::: moniker-end
 
     ::: moniker range="<= aspnetcore-1.1"
 
-    Dans le code précédent, les classes génériques <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser`1> et <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole`1> doit être spécifié pour utiliser le nouveau type de clé.
+    Dans le code précédent, les classes génériques <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUser%601> et <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole%601> doit être spécifié pour utiliser le nouveau type de clé.
 
     ::: moniker-end
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 10/14/2016
 uid: web-api/advanced/formatting
-ms.openlocfilehash: 819bf1b49b56e953a9a4398e82866ba0b01ab4db
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: b0fce0632fd2d885cb8e9a056923ec365d2f327d
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207106"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209984"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>Mettre en forme les données des réponses dans l’API web ASP.NET Core
 
@@ -168,7 +168,7 @@ Sans `HttpNoContentOutputFormatter`, les objets null sont mis en forme avec le f
 
 ## <a name="response-format-url-mappings"></a>Mappages d’URL de format de réponse
 
-Les clients peuvent demander un format particulier dans l’URL, comme dans la chaîne de requête ou une partie du chemin, ou en utilisant une extension de fichier spécifique à un format, comme .xml ou .json. Le mappage du chemin de la requête doit être spécifié dans la route utilisée par l’API. Exemple :
+Les clients peuvent demander un format particulier dans l’URL, comme dans la chaîne de requête ou une partie du chemin, ou en utilisant une extension de fichier spécifique à un format, comme .xml ou .json. Le mappage du chemin de la requête doit être spécifié dans la route utilisée par l’API. Par exemple :
 
 ```csharp
 [FormatFilter]
@@ -180,10 +180,8 @@ public class ProductsController
 
 Cette route permet de spécifier le format demandé sous la forme d’une extension de fichier facultative. L’attribut `[FormatFilter]` vérifie l’existence de la valeur du format dans `RouteData` et mappe le format de la réponse au formateur approprié lors de la création de la réponse.
 
-
 |           Route            |             Formateur              |
 |----------------------------|------------------------------------|
 |   `/products/GetById/5`    |    Le formateur de sortie par défaut    |
 | `/products/GetById/5.json` | Le formateur JSON (s’il est configuré) |
 | `/products/GetById/5.xml`  | Le formateur XML (s’il est configuré)  |
-

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 1c8cb31b306b38ec17596af0a84f22ca0e3d911c
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 053dcce7f8c59b7afe7e52d2f704c992afce0b67
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346224"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265171"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Informations de référence sur les erreurs courantes pour Azure App Service et IIS avec ASP.NET Core
 
@@ -61,7 +61,7 @@ Les fichiers autres que les fichiers de système d’exploitation dans le réper
 
 *S’applique aux applications hébergées par Azure App Services.*
 
-* **Navigateur :** Erreur HTTP 500.0 - Échec du chargement du gestionnaire in-process d’ANCM 
+* **Navigateur :** Erreur HTTP 500.0 - Échec du chargement du gestionnaire in-process d’ANCM
 
 * **Journal des applications :** Échec de l’appel de hostfxr pour la recherche du gestionnaire de requêtes in-process. Dépendances natives introuvables. Le gestionnaire de requêtes in-process est introuvable. Sortie capturée à partir de l’appel de hostfxr : Il n’a pas été possible de localiser une version compatible du framework. Le framework spécifié « Microsoft.AspNetCore.App », version « {VERSION}-preview-\* » est introuvable. Échec du démarrage de l’application « /LM/W3SVC/1416782824/ROOT ». Code d’erreur : 0x8000ffff.
 
@@ -80,7 +80,7 @@ Résolution des problèmes :
   * Runtime ASP.NET Core {RUNTIME VERSION} (x86)
   * Runtime ASP.NET Core {RUNTIME VERSION} (x64)
 
-  Redémarrez l’application. Patientez quelques secondes pour que l’application redémarre. 
+  Redémarrez l’application. Patientez quelques secondes pour que l’application redémarre.
 
 * Si vous exécutez l’application sur un runtime en préversion et que les deux [extensions de site](xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension) 32 bits (x86) et 64 bits (x64) sont installées, désinstallez l’extension de site qui ne correspond pas au nombre de bits de l’application. Après avoir supprimé l’extension de site, redémarrez l’application. Patientez quelques secondes pour que l’application redémarre.
 
@@ -201,7 +201,7 @@ Résolution des problèmes :
   ```xml
   <section name="aspNetCore" overrideModeDefault="Allow" />
   ```
-  
+
   Sinon, installez la dernière version du bundle d’hébergement ASP.NET Core. La dernière version est rétrocompatible avec les applications ASP.NET Core prises en charge.
 
 ## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>processPath incorrect, variable de chemin manquante, bundle d’hébergement non installé, système/IIS non redémarré, VC++ Redistributable non installé ou violation d’accès dotnet.exe

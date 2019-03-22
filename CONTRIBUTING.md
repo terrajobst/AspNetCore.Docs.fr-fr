@@ -1,4 +1,12 @@
-# <a name="contribute-to-the-aspnet-documentation"></a>Contribuer à la documentation ASP.NET
+---
+ms.openlocfilehash: 98a03118954baa85b093a0514e1ac6f0fb6353e8
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320106"
+---
+# <a name="contribute-to-the-aspnet-core-documentation"></a>Contribuer à la documentation ASP.NET Core
 
 Ce document aborde le processus de contribution aux articles et exemples de code qui sont hébergés sur le [site de la documentation ASP.NET](https://docs.microsoft.com/aspnet/). Les corrections de fautes de frappe et les nouveaux articles sont des contributions bienvenues.
 
@@ -18,7 +26,7 @@ Vous devez avoir une connaissance élémentaire de [Git et GitHub.com](https://g
 
 Pour obtenir un exemple où ce processus a conduit à la publication d’un nouvel article, consultez le [problème &num;67](https://github.com/dotnet/docs/issues/67) et la [demande de tirage &num;798](https://github.com/dotnet/docs/pull/798) dans le dépôt .NET Docs. Le nouvel article est [Documentation de votre code](https://docs.microsoft.com/dotnet/articles/csharp/codedoc).
 
-## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Extension Docs Authoring Pack dans Visual Studio Code 
+## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Extension Docs Authoring Pack dans Visual Studio Code
 
 Si vous utilisez Visual Studio Code pour contribuer à la documentation ASP.NET, vous pouvez augmenter votre productivité en installant l’extension [Docs Authoring Pack](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-authoring-pack). L’extension fournit un éventail d’outils qui facilitent la vérification (linting) du code Markdown, la vérification orthographique du code et l’utilisation des modèles d’article.
 
@@ -30,7 +38,7 @@ Les articles sont écrits en [DFM (DocFX Flavored Markdown)](https://dotnet.gith
 
 Pour chaque fichier Markdown, un dossier pour les images et un dossier pour l’exemple de code peuvent exister. Si l’article est [fundamentals/configuration/index.md](https://github.com/aspnet/Docs/blob/master/aspnetcore/fundamentals/configuration/index.md), les images se trouvent dans [fundamentals/configuration/index/\_static](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/_static), tandis que les exemples de fichiers de projet d’application se trouvent dans [fundamentals/configuration/index/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/index/sample). Une image dans le fichier *fundamentals/configuration/index.md* est affichée par le code Markdown suivant :
 
-```
+```md
 ![description of image for alt attribute](configuration/index/_static/imagename.png)
 ```
 
@@ -42,13 +50,13 @@ Utilisez des minuscules pour les noms de fichiers Markdown et les noms de fichie
 
 Les liens internes doivent utiliser l’`uid` de l’article cible avec un lien xref (le texte du lien est défini sur le titre du contenu lié) :
 
-```
+```md
 <xref:uid_of_the_topic>
 ```
 
 Si le titre de l’article ne convient pas pour le texte du lien (par exemple, un mot ou une expression dans une phrase est le texte du lien), spécifiez le lien xref et le texte du lien comme suit :
 
-```
+```md
 [link text](xref:uid_of_the_topic)
 ```
 
@@ -73,13 +81,13 @@ Les exemples suivants illustrent la [syntaxe d’extraits de code DFM](https://d
 
 Pour afficher un fichier de code entier en tant qu’extrait de code :
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs)]
 ```
 
 Pour afficher une partie d’un fichier en tant qu’extrait de code à l’aide de numéros de ligne :
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?range=1-10,20,30,40-50]
 [!code-html[](configuration/index/sample/Views/Home/Index.cshtml?range=1-10,20,30,40-50]
 ```
@@ -88,13 +96,13 @@ Pour les extraits de code C#, référencez une [région C#](https://docs.microso
 
 Pour afficher une région C# nommée « snippet_Example » :
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?name=snippet_Example)]
 ```
 
 Pour mettre en surbrillance les lignes sélectionnées dans un extrait de code affiché (généralement sous la forme d’un arrière-plan jaune) :
 
-```
+```md
 [!code-csharp[](configuration/index/sample/Program.cs?name=snippet_Example&highlight=1-3,10,20-25)]
 [!code-csharp[](configuration/index/sample/Program.cs?range=10-20&highlight=1-3]
 [!code-html[](configuration/index/sample/Views/Home/Index.cshtml?range=10-20&highlight=1-3]
@@ -119,6 +127,7 @@ DocFX nécessite :
   ```console
   docfx --serve
   ```
+
 * Dans un navigateur, accédez à `http://localhost:8080/group1-dest/`.
 
 ### <a name="mono-instructions"></a>Instructions pour Mono
@@ -128,6 +137,7 @@ DocFX nécessite :
   ```console
   brew install mono
   ```
+
 * Téléchargez la [dernière version de DocFX](https://github.com/dotnet/docfx/releases).
 * Extrayez l’archive dans *$HOME/bin/docfx*.
 * Créez une paire d’alias pour **docfx** dans un interpréteur de commandes bash. Le premier alias est utilisé pour générer la documentation. Le deuxième alias est utilisé pour générer et diffuser la documentation.
@@ -136,11 +146,13 @@ DocFX nécessite :
   alias docfx='mono $HOME/bin/docfx/docfx.exe'
   alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
+
 * Dans un shell de commande, accédez au dossier qui contient le fichier *docfx.json* (*aspnet* pour du contenu ASP.NET ou *aspnetcore* pour du contenu ASP.NET Core) et exécutez la commande suivante pour créer et diffuser les documents via son alias :
 
   ```console
   docfx-serve
   ```
+
 * Dans un navigateur, accédez à `http://localhost:8080/group1-dest/`.
 
 ## <a name="voice-and-tone"></a>Style et ton

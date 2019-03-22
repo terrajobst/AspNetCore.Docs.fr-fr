@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: f7b557c8e560393ae886c46fad95c48ccbcc65b4
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 31fca1b32942f9246e099c01669f77824edf521e
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102966"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264847"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutoriel : Bien démarrer avec EF Core dans une application web ASP.NET MVC
 
@@ -316,7 +316,7 @@ Cliquez avec le bouton droit sur la table **Student** et cliquez sur **Afficher 
 
 ![Table Student dans SSOX](intro/_static/ssox-student-table.png)
 
-Les fichiers de base de données <em>.mdf</em> et <em>.ldf</em> se trouvent dans le dossier <em>C:\Utilisateurs\\<yourusername></em>.
+Les fichiers de base de données *.mdf* et *.ldf* se trouvent dans le dossier *C:\Users\\\<votre_nom_utilisateur>*.
 
 Étant donné que vous appelez `EnsureCreated` dans la méthode d’initialiseur qui s’exécute au démarrage de l’application, vous pouvez maintenant apporter une modification à la classe `Student`, supprimer la base de données ou réexécuter l’application, et la base de données serait automatiquement recréée conformément à votre modification. Par exemple, si vous ajoutez une propriété `EmailAddress` à la classe `Student`, vous voyez une nouvelle colonne `EmailAddress` dans la table recréée.
 
@@ -330,7 +330,7 @@ La quantité de code que vous deviez écrire pour qu’Entity Framework puisse c
 
 * Les propriétés d’entité nommées ID ou classnameID sont reconnues comme propriétés de clé primaire.
 
-* Une propriété est interprétée comme propriété de clé étrangère si elle se nomme *<navigation property name><primary key property name>* (par exemple `StudentID` pour la propriété de navigation `Student`, puisque la clé primaire de l’entité `Student` est `ID`). Les propriétés de clé étrangère peuvent également être nommées simplement *<primary key property name>* (par exemple, `EnrollmentID`, puisque la clé primaire de l’entité `Enrollment` est `EnrollmentID`).
+* Une propriété est interprétée comme propriété de clé étrangère si elle se nomme*\<nom de la propriété de navigation>\<nom de la propriété de clé primaire>* (par exemple `StudentID` pour la propriété de navigation `Student`, puisque la clé primaire de l’entité `Student` est `ID`). Les propriétés de clé étrangère peuvent également être nommées simplement *\<nom de la propriété de clé primaire>* (par exemple, `EnrollmentID`, puisque la clé primaire de l’entité `Enrollment` est `EnrollmentID`).
 
 Le comportement conventionnel peut être remplacé. Par exemple, vous pouvez spécifier explicitement les noms de tables, comme vous l’avez vu précédemment dans ce didacticiel. De plus, vous pouvez définir des noms de colonne et définir une propriété quelconque en tant que clé primaire ou clé étrangère, comme vous le verrez dans un [didacticiel ultérieur](complex-data-model.md) dans cette série.
 

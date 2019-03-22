@@ -5,12 +5,12 @@ description: Ajout d’une vue dans une application ASP.NET Core MVC simple
 ms.author: riande
 ms.date: 03/04/2017
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 32eddb233a8a6b9b8f480926673d15d568ce6ede
-ms.sourcegitcommit: c47d7c131eebbcd8811e31edda210d64cf4b9d6b
+ms.openlocfilehash: 6ff706012dabbf9500a805708c1f058b59ebc610
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236430"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58265548"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>Ajouter une vue à une application ASP.NET Core MVC
 
@@ -28,7 +28,6 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ## <a name="add-a-view"></a>Ajouter une vue
 
-<!-- VS -------------------------->
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
@@ -47,7 +46,6 @@ Le code précédent appelle la méthode <xref:Microsoft.AspNetCore.Mvc.Controlle
 
 ![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view.png)
 
-<!-- Code -------------------------->
 # <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 Ajoutez une vue `Index` pour `HelloWorldController`.
@@ -55,7 +53,6 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 * Ajoutez un nouveau dossier nommé *Views/HelloWorld*.
 * Ajoutez un nouveau fichier à la *vues/HelloWorld* nom du dossier *Index.cshtml*.
 
-<!-- Mac -------------------------->
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * Cliquez avec le bouton droit sur le dossier *Vues*, cliquez sur **Ajouter > Nouveau dossier**, puis nommez le dossier *HelloWorld*.
@@ -69,8 +66,7 @@ Ajoutez une vue `Index` pour `HelloWorldController`.
 
 ![Boîte de dialogue Ajouter un nouvel élément](adding-view/_static/add_view.png)
 
----  
-<!-- End of VS tabs -->
+---
 
 Remplacez le contenu du fichier vue Razor *Views/HelloWorld/Index.cshtml* par le code suivant :
 
@@ -152,7 +148,7 @@ Dans *HelloWorldController.cs*, modifiez la méthode `Welcome` pour ajouter une 
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/HelloWorldController.cs?name=snippet_5)]
 
-L’objet dictionnaire `ViewData` contient des données qui seront passées à la vue. 
+L’objet dictionnaire `ViewData` contient des données qui seront passées à la vue.
 
 Créez un modèle de vue Welcome nommé *Views/HelloWorld/Welcome.cshtml*.
 

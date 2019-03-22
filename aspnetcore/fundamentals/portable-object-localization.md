@@ -5,12 +5,12 @@ description: Cet article présente les fichiers d’objets portables et décrit 
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: c9f892f5a886d7167b4705595ed2277279495201
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 466759b30e756a7cac8abab7352025df0462bb6f
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207626"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58210091"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurer la localisation d’objets portables dans ASP.NET Core
 
@@ -18,7 +18,7 @@ Par [Sébastien Ros](https://github.com/sebastienros) et [Scott Addie](https://t
 
 Cet article présente les étapes d’utilisation d’objets portables (PO, Portable Object) dans une application ASP.NET Core avec le framework [Orchard Core](https://github.com/OrchardCMS/OrchardCore).
 
-**Remarque :** Orchard Core n’est pas un produit Microsoft. Par conséquent, Microsoft ne fournit aucun support pour cette fonctionnalité.
+**Remarque :** Orchard Core n’est pas un produit Microsoft. Par conséquent, Microsoft ne fournit aucun support pour cette fonctionnalité.
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
@@ -49,15 +49,15 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 Cet exemple utilise la syntaxe suivante :
 
-- `#:` : commentaire indiquant le contexte de la chaîne à traduire. La même chaîne peut être traduite différemment selon l’endroit où elle est utilisée.
-- `msgid` : la chaîne non traduite.
-- `msgstr` : la chaîne traduite.
+- `#:`: commentaire indiquant le contexte de la chaîne à traduire. La même chaîne peut être traduite différemment selon l’endroit où elle est utilisée.
+- `msgid`: la chaîne non traduite.
+- `msgstr`: la chaîne traduite.
 
 Dans le cas de la prise en charge de la pluralisation, des entrées supplémentaires peuvent être définies.
 
-- `msgid_plural` : la chaîne au pluriel non traduite.
-- `msgstr[0]` : la chaîne traduite pour le cas 0.
-- `msgstr[N]` : la chaîne traduite pour le cas N.
+- `msgid_plural`: la chaîne au pluriel non traduite.
+- `msgstr[0]`: la chaîne traduite pour le cas 0.
+- `msgstr[N]`: la chaîne traduite pour le cas N.
 
 La spécification du fichier PO se trouve [ici](https://www.gnu.org/savannah-checkouts/gnu/gettext/manual/html_node/PO-Files.html).
 
@@ -91,7 +91,7 @@ Une instance `IViewLocalizer` est injectée et utilisée pour traduire le texte 
 
 ### <a name="creating-a-po-file"></a>Création d’un fichier PO
 
-Créez un fichier nommé *<culture code>.po* dans le dossier racine de votre application. Dans cet exemple, le nom de fichier est *fr.po*, car le français est utilisé :
+Créez un fichier nommé *\<code de culture>.po* dans le dossier racine de votre application. Dans cet exemple, le nom de fichier est *fr.po*, car le français est utilisé :
 
 [!code-text[](localization/sample/POLocalization/fr.po)]
 
@@ -153,7 +153,7 @@ Modifiez le fichier *Views/Home/About.cshtml* pour restituer des chaînes locali
 <p>@Localizer.Plural(5, "There is one item.", "There are {0} items.")</p>
 ```
 
-**Remarque :** Dans un scénario réel, une variable serait utilisée pour représenter le nombre. Ici, nous répétons le même code avec trois valeurs différentes pour exposer un cas très spécifique.
+**Remarque :** dans un scénario réel, une variable serait utilisée pour représenter le nombre. Ici, nous répétons le même code avec trois valeurs différentes pour exposer un cas très spécifique.
 
 Quand vous passez d’une culture à l’autre, vous voyez ceci :
 

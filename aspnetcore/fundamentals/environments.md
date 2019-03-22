@@ -5,12 +5,12 @@ description: Découvrez comment contrôler le comportement de l’application da
 ms.author: riande
 ms.date: 01/22/2019
 uid: fundamentals/environments
-ms.openlocfilehash: 4120453c36d1fc2a2303c2175df30ef9777bc54f
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 5982f3e51a68dfa29af482067156c42006f50c0c
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345948"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58208450"
 ---
 # <a name="use-multiple-environments-in-aspnet-core"></a>Utiliser plusieurs environnements dans ASP.NET Core
 
@@ -31,9 +31,9 @@ Le code précédent :
 * Appelle [UseDeveloperExceptionPage](/dotnet/api/microsoft.aspnetcore.builder.developerexceptionpageextensions.usedeveloperexceptionpage) quand `ASPNETCORE_ENVIRONMENT` a la valeur `Development`.
 * Appelle [UseExceptionHandler](/dotnet/api/microsoft.aspnetcore.builder.exceptionhandlerextensions.useexceptionhandler) quand `ASPNETCORE_ENVIRONMENT` est définie sur l’une des valeurs :
 
-    * `Staging`
-    * `Production`
-    * `Staging_2`
+  * `Staging`
+  * `Production`
+  * `Staging_2`
 
 Le [Tag helper d’environnement](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper) utilise la valeur de la propriété `IHostingEnvironment.EnvironmentName` pour inclure ou exclure le balisage dans l’élément :
 
@@ -290,7 +290,7 @@ Pour les versions Linux, exécutez la commande `export` à une invite de command
 
 Pour charger la configuration par environnement, nous vous recommandons de disposer des éléments suivants :
 
-* Fichiers *appSettings* (*appsettings.&lt;<Environment>&gt;.json). Consultez [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider).
+* Fichiers *appsettings* (*appsettings.\<Environment>.json*). Consultez [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider).
 * Variables d’environnement (définies sur chaque système sur lequel l’application est hébergée). Consultez [Configuration : fournisseur de configuration de fichier](xref:fundamentals/configuration/index#file-configuration-provider) et [Stockage sécurisé des secrets d’application au moment du développement : Variables d’environnement](xref:security/app-secrets#environment-variables).
 * Secret Manager (dans l’environnement de développement uniquement). Consultez <xref:security/app-secrets>.
 

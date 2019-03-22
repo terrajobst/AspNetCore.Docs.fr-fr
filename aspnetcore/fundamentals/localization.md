@@ -5,12 +5,12 @@ description: Découvrez les services et intergiciels (middleware) fournis par AS
 ms.author: riande
 ms.date: 01/14/2017
 uid: fundamentals/localization
-ms.openlocfilehash: 70de86f2e8c4a5577b8a4b50c53d66eb3b205c09
-ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.openlocfilehash: 0eda297b7df97a5d20fea035983f426eafa03775
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57665535"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264641"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalisation et localisation dans ASP.NET Core
 
@@ -98,6 +98,7 @@ Les messages d’erreur DataAnnotations sont localisés avec `IStringLocalizer<T
 Dans ASP.NET Core MVC 1.1.0 et version supérieure, les attributs de non-validation sont localisés. ASP.NET Core MVC 1.0 ne recherche **pas** de chaînes localisées pour des attributs de non-validation.
 
 <a name="one-resource-string-multiple-classes"></a>
+
 ### <a name="using-one-resource-string-for-multiple-classes"></a>Utilisation d’une seule chaîne de ressource pour plusieurs classes
 
 Le code suivant montre comment utiliser une seule chaîne de ressource pour les attributs de validation avec plusieurs classes :
@@ -304,7 +305,6 @@ Utilisez `RequestLocalizationOptions` pour ajouter ou supprimer des fournisseurs
 ### <a name="set-the-culture-programmatically"></a>Définir la culture par programmation
 
 Cet exemple de projet **Localization.StarterWeb** sur [GitHub](https://github.com/aspnet/entropy) contient l’interface utilisateur permettant de définir `Culture`. Le fichier *Views/Shared/_SelectLanguagePartial.cshtml* vous permet de sélectionner la culture dans la liste des cultures prises en charge :
-
 
 [!code-cshtml[](localization/sample/Localization/Views/Shared/_SelectLanguagePartial.cshtml)]
 

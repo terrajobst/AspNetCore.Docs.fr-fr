@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/21/2019
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: abb426b1a41226e52d9b9b5c00c41ff816890d36
-ms.sourcegitcommit: b3894b65e313570e97a2ab78b8addd22f427cac8
+ms.openlocfilehash: 6ec9b7bf3da0015b8ac3918a4d47644fffc14cdb
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56744129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209172"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>Implémentation du serveur web HTTP.sys dans ASP.NET Core
 
@@ -148,7 +148,7 @@ HTTP.sys délègue l’authentification en mode noyau avec le protocole d’auth
 1. Si l’application est un [déploiement dépendant de .NET Framework](/dotnet/core/deploying/#framework-dependent-deployments-fdd), installez .NET Core, .NET Framework ou les deux (si l’application est une application .NET Core ciblant .NET Framework).
 
    * **.NET Core** &ndash; Si l’application nécessite .NET Core, procurez-vous et exécutez le programme d’installation de **.NET Core Runtime** à partir de [Téléchargements .NET Core](https://dotnet.microsoft.com/download). N’installez pas le Kit SDK complet sur le serveur.
-   * **.NET framework** &ndash; Si l’application nécessite .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible à partir de la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
+   * **.NET framework** &ndash; Si l’application nécessite .NET Framework, consultez le [Guide d’installation de .NET Framework](/dotnet/framework/install/). Installez la version requise de .NET Framework. Le programme d’installation du .NET Framework le plus récent est disponible depuis la page [Téléchargements .NET Core](https://dotnet.microsoft.com/download).
 
    Si l’application est un [déploiement autonome](/dotnet/core/deploying/#framework-dependent-deployments-scd), elle inclut le runtime dans son déploiement. Aucune installation de framework n’est requise sur le serveur.
 

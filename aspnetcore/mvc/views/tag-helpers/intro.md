@@ -4,20 +4,20 @@ author: rick-anderson
 description: Découvrez ce que sont les Tag Helpers et comment les utiliser dans ASP.NET Core.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 2/14/2018
+ms.date: 03/18/2019
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 4b9bceb3ce0153af2d9a30c402febe09707145b7
-ms.sourcegitcommit: f5d403004f3550e8c46585fdbb16c49e75f495f3
+ms.openlocfilehash: 7768dd45bdbe40c16176d57a76823cbb9dd0b91b
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/20/2018
-ms.locfileid: "49477304"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264614"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>Tag Helpers dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-## <a name="what-are-tag-helpers"></a>Que sont les Tag Helpers ?
+## <a name="what-are-tag-helpers"></a>Que sont les Tag Helpers ?
 
 Les Tag Helpers permettent au code côté serveur de participer à la création et au rendu des éléments HTML dans les fichiers Razor. Par exemple, le `ImageTagHelper` intégré peut ajouter un numéro de version au nom de l’image. Chaque fois que l’image change, le serveur en génère une nouvelle version unique, pour que les clients soient sûrs d’obtenir l’image actuelle (au lieu d’une image mise en cache obsolète). Il existe de nombreux Tag Helpers pour les tâches courantes (par exemple la création de formulaires ou de liens, le chargement de ressources, etc.) et bien d’autres encore, dans les dépôts GitHub publics et sous forme de packages NuGet. Les Tag Helpers sont créés en C# et ciblent les éléments HTML en fonction du nom de l’élément, du nom de l’attribut ou de la balise parente. Par exemple, le `LabelTagHelper` intégré peut cibler l’élément `<label>` HTML quand les attributs `LabelTagHelper` sont appliqués. Si vous connaissez déjà les [HTML Helpers](http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers), les Tag Helpers permettent de réduire les transitions explicites entre le code HTML et le code C# dans les affichages Razor. Dans de nombreux cas, les HTML Helpers offrent une autre approche par rapport à un Tag Helper spécifique. Toutefois, il est clair que les Tag Helpers ne remplacent pas les HTML Helpers, et qu’il n’existe pas toujours un Tag Helper pour chaque HTML Helper. [Comparaison des Tag Helpers aux HTML Helpers](#tag-helpers-compared-to-html-helpers) explique les différences de façon plus approfondie.
 
@@ -122,6 +122,7 @@ La directive `@tagHelperPrefix` vous permet de spécifier une chaîne de préfix
 ```cshtml
 @tagHelperPrefix th:
 ```
+
 Dans l’image de code ci-dessous, le préfixe du Tag Helper a la valeur `th:`, si bien que seuls les éléments qui utilisent le préfixe `th:` prennent en charge les Tag Helpers (les éléments activés pour les Tag Helpers ont une police caractéristique). Les éléments `<label>` et `<input>` ont le préfixe du Tag Helper et sont activés, à la différence de l’élément `<span>`.
 
 ![image](intro/_static/thp.png)
@@ -186,37 +187,21 @@ L’arobase (`@`) signale le début du code à Razor. Les deux paramètres suiva
 new {@class="caption"}
 ```
 
-Est un objet anonyme utilisé pour représenter des attributs. Étant donné que <strong>class</strong> est un mot clé réservé en C#, vous utilisez le symbole `@` pour forcer le code C# à interpréter « @class= » comme un symbole (nom de propriété). Pour un concepteur frontal (une personne qui connaît bien le code HTML, CSS et JavaScript et d’autres technologies clientes, mais qui ne connaît pas C# et Razor), la majorité de la ligne est étrangère. La ligne entière doit être créée sans l’aide d’IntelliSense.
+Est un objet anonyme utilisé pour représenter des attributs. Étant donné que `class` est un mot clé réservé en C#, vous utilisez le symbole `@` pour forcer le code C# à interpréter `@class=` comme un symbole (nom de propriété). Pour un concepteur frontal (une personne qui connaît bien le code HTML, CSS et JavaScript et d’autres technologies clientes, mais qui ne connaît pas C# et Razor), la majorité de la ligne est étrangère. La ligne entière doit être créée sans l’aide d’IntelliSense.
 
 Avec `LabelTagHelper`, le même balisage peut s’écrire ainsi :
 
-![image](intro/_static/label2.png)
+```cshtml
+<label class="caption" asp-for="FirstName"></label>
+```
 
 Avec la version Tag Helper, dès que vous entrez `<l` dans l’éditeur Visual Studio, IntelliSense affiche les éléments correspondants :
 
 ![image](intro/_static/label.png)
 
-IntelliSense vous aide à écrire la ligne entière. `LabelTagHelper` définit aussi par défaut le contenu de la valeur d’attribut `asp-for` (« FirstName ») sur « First Name » ; les propriétés en casse mixte sont converties en une phrase composée du nom de la propriété avec un espace là où se trouve chaque nouvelle lettre majuscule. Dans le balisage suivant :
+IntelliSense vous aide à écrire la ligne entière.
 
-![image](intro/_static/label2.png)
-
-Génère :
-
-```cshtml
-<label class="caption" for="FirstName">First Name</label>
-```
-
-Le contenu qui passe d’une casse mixte à une majuscule en début de phrase n’est pas utilisé si vous ajoutez du contenu à `<label>`. Exemple :
-
-![image](intro/_static/1stName.png)
-
-Génère :
-
-```cshtml
-<label class="caption" for="FirstName">Name First</label>
-```
-
-L’image de code suivante montre la partie formulaire de l’affichage Razor *Views/Account/Register.cshtml* généré à partir du modèle ASP.NET 4.5.x MVC inclus dans Visual Studio 2015.
+L’image de code suivante montre la partie formulaire de l’affichage Razor *Views/Account/Register.cshtml* généré à partir du modèle ASP.NET 4.5.x MVC inclus dans Visual Studio.
 
 ![image](intro/_static/regCS.png)
 

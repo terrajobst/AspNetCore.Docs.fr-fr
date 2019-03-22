@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/social/additional-claims
-ms.openlocfilehash: 9a24ac138950ef2bedac48f506655d06520137cf
-ms.sourcegitcommit: 09bcda59a58019fdf47b2db5259fe87acf19dd38
+ms.openlocfilehash: 49c323fab64bd4ea52dd1d8cf2e43a79d4d0d0dc
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708359"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327350"
 ---
 # <a name="persist-additional-claims-and-tokens-from-external-providers-in-aspnet-core"></a>Conserver des revendications supplémentaires et les jetons provenant de fournisseurs externes dans ASP.NET Core
 
@@ -64,7 +64,7 @@ L’exemple d’application crée un <xref:System.Security.Claims.ClaimTypes.Gen
 
 [!code-csharp[](additional-claims/samples/2.x/AdditionalClaimsSample/Startup.cs?name=snippet_AddGoogle&highlight=8)]
 
-Dans <xref:Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync*>, un <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) est connecté à l’application avec <xref:Microsoft.AspNetCore.Identity.SignInManager`1.SignInAsync*>. Lors de la connexion des processus, le <xref:Microsoft.AspNetCore.Identity.UserManager`1> peut stocker un `ApplicationUser` de revendication pour les données utilisateur disponibles à partir de la <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
+Dans <xref:Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal.ExternalLoginModel.OnPostConfirmationAsync*>, un <xref:Microsoft.AspNetCore.Identity.IdentityUser> (`ApplicationUser`) est connecté à l’application avec <xref:Microsoft.AspNetCore.Identity.SignInManager%601.SignInAsync*>. Lors de la connexion des processus, le <xref:Microsoft.AspNetCore.Identity.UserManager%601> peut stocker un `ApplicationUser` de revendication pour les données utilisateur disponibles à partir de la <xref:Microsoft.AspNetCore.Identity.ExternalLoginInfo.Principal*>.
 
 Dans l’exemple d’application, `OnPostConfirmationAsync` (*Account/ExternalLogin.cshtml.cs*) établit une <xref:System.Security.Claims.ClaimTypes.Gender> de revendication pour l’élément signé dans `ApplicationUser`:
 

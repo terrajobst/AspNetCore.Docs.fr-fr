@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 368b1774ba977ec8020a02d48705200fd54c3bbd
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 83f5d4bdc3d5872109649818b61a6dbb656fd8be
+ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102979"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58264834"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core
 
@@ -123,6 +123,7 @@ Vous avez supprimé `ID` de l’attribut `Bind`, car ID est la valeur de clé pr
 L’attribut `ValidateAntiForgeryToken` aide à éviter les attaques par falsification de requête intersites (CSRF, Cross-Site Request Forgery). Le jeton est automatiquement injecté dans la vue par le [FormTagHelper](xref:mvc/views/working-with-forms#the-form-tag-helper) et est inclus quand le formulaire est envoyé par l’utilisateur. Le jeton est validé par l’attribut `ValidateAntiForgeryToken`. Pour plus d’informations sur la falsification de requête intersites, consultez [Protection contre la falsification de requête](../../security/anti-request-forgery.md).
 
 <a id="overpost"></a>
+
 ### <a name="security-note-about-overposting"></a>Remarque sur la sécurité concernant la survalidation
 
 L’attribut `Bind` inclus dans le code du modèle généré automatiquement sur la méthode `Create` est un moyen de protéger contre la survalidation dans les scénarios de création. Par exemple, supposons que l’entité Student comprend une propriété `Secret` et que vous ne voulez pas que cette page web définisse sa valeur.

@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/20/2018
 uid: signalr/hubs
-ms.openlocfilehash: 244ddc40e647bfcc3ca8cda2797c51bc49174822
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: f037c1f6fd7ef773b8e7b2fd4fdf6e28222c441a
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: MT
 ms.contentlocale: fr-FR
 ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320145"
+ms.locfileid: "58327259"
 ---
 # <a name="use-hubs-in-signalr-for-aspnet-core"></a>Utilisation des hubs dans SignalR pour ASP.NET Core
 
@@ -116,7 +116,7 @@ Pour effectuer des appels à des clients spécifiques, utilisez les propriétés
 
 Un inconvénient de l’utilisation de `SendAsync` est qu’elle s’appuie sur une chaîne en dur pour spécifier la méthode de client à appeler. Cela laisse le code ouvert à des erreurs d’exécution si le nom de la méthode est mal orthographié ou manquant à partir du client.
 
-Une alternative à l’utilisation de `SendAsync` est pour typer fortement les `Hub` avec <xref:Microsoft.AspNetCore.SignalR.Hub`1>. Dans l’exemple suivant, le `ChatHub` méthodes client ont été extraite et placées dans une interface appelée `IChatClient`.  
+Une alternative à l’utilisation de `SendAsync` est pour typer fortement les `Hub` avec <xref:Microsoft.AspNetCore.SignalR.Hub%601>. Dans l’exemple suivant, le `ChatHub` méthodes client ont été extraite et placées dans une interface appelée `IChatClient`.  
 
 [!code-csharp[Interface for IChatClient](hubs/sample/hubs/ichatclient.cs?name=snippet_IChatClient)]
 
