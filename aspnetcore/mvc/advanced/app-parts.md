@@ -5,12 +5,12 @@ description: Apprenez à utiliser les composants d’application, c’est-à-dir
 ms.author: riande
 ms.date: 01/04/2017
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: c0d3ad6bcdf2e56df915b176b28759c59e76faf6
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 67bd40adef4cdb0bd781f70114d3954cd9a8ed09
+ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206561"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58320093"
 ---
 # <a name="application-parts-in-aspnet-core"></a>Composants d’application dans ASP.NET Core
 
@@ -64,11 +64,11 @@ Les fournisseurs de fonctionnalités d’application examinent les composants d�
 * [Contrôleurs](/dotnet/api/microsoft.aspnetcore.mvc.controllers.controllerfeatureprovider)
 * [Référence de métadonnées](/dotnet/api/microsoft.aspnetcore.mvc.razor.compilation.metadatareferencefeatureprovider)
 * [Les Tag Helpers](/dotnet/api/microsoft.aspnetcore.mvc.razor.taghelpers.taghelperfeatureprovider)
-* [Composants de vues](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
+* [Les composants de vues](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponents.viewcomponentfeatureprovider)
 
 Les fournisseurs de fonctionnalités héritent de `IApplicationFeatureProvider<T>`, où `T` correspond au type de la fonctionnalité. Vous pouvez implémenter vos propres fournisseurs de fonctionnalités pour tous les types de fonctionnalité de MVC listés ci-dessus. L’ordre des fournisseurs de fonctionnalités dans la collection `ApplicationPartManager.FeatureProviders` peut avoir son importance, car les fournisseurs suivants peuvent réagir à des actions entreprises par les fournisseurs précédents.
 
-### <a name="sample-generic-controller-feature"></a>Exemple : Fonctionnalité de contrôleur générique
+### <a name="sample-generic-controller-feature"></a>Aperçu : Fonctionnalité de contrôleur générique
 
 Par défaut, ASP.NET Core MVC ignore les contrôleurs génériques (par exemple `SomeController<T>`). Cet exemple utilise un fournisseur de fonctionnalités de contrôleur qui s’exécute après le fournisseur par défaut, et qui ajoute des instances de contrôleurs génériques pour une liste spécifique de types (définis dans `EntityTypes.Types`) :
 
@@ -96,9 +96,9 @@ Classe `GenericController` :
 
 Voici le résultat, quand un routage correspondant est demandé :
 
-![L’exemple de sortie de l’exemple d’application est : « Hello from a generic Sproket controller. »](app-parts/_static/generic-controller.png)
+![L’exemple de sortie de l’exemple d’application est : « Hello from a generic Sprocket controller. »](app-parts/_static/generic-controller.png)
 
-### <a name="sample-display-available-features"></a>Exemple : Afficher les fonctionnalités disponibles
+### <a name="sample-display-available-features"></a>Aperçu : Afficher les fonctionnalités disponibles
 
 Vous pouvez effectuer une itération parmi les fonctionnalités renseignées accessibles à votre application en demandant un `ApplicationPartManager` via une [injection de dépendances](../../fundamentals/dependency-injection.md) et en l’utilisant pour remplir les instances des fonctionnalités appropriées :
 

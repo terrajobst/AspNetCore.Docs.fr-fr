@@ -4,7 +4,7 @@ author: guardrex
 description: Découvrez comment héberger des applications ASP.NET Core sur Windows Server Internet Information Services (IIS).
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/19/2019
+ms.date: 03/21/2019
 uid: host-and-deploy/iis/index
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>Héberger ASP.NET Core sur Windows avec IIS
@@ -298,8 +298,6 @@ Pour obtenir une version antérieure du programme d’installation :
    * `OPT_NO_X86=1` &ndash; Ignorer l’installation des runtimes x86. Utilisez ce paramètre lorsque vous savez que vous n’hébergerez pas d’applications 32 bits. Si vous n’excluez pas d’avoir à héberger des applications 32 bits et 64 bits dans le futur, n'utilisez pas ce paramètre et installez les deux runtimes.
    * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; Désactivez la vérification d’utilisation d’une Configuration partagée IIS lorsque la configuration partagée (*applicationHost.config*) se trouve sur le même ordinateur que l’installation d’IIS. *Disponible uniquement pour les programmes d’installation du pack d’hébergement ASP.NET Core 2.2 ou version ultérieure.* Pour plus d'informations, consultez <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>.
 1. Redémarrez le système ou exécutez **net stop was /y** suivi de **net start w3svc** à partir d’un shell de commande. Le redémarrage d’IIS récupère une modification apportée au CHEMIN D’ACCÈS du système, qui est une variable d’environnement, par le programme d’installation.
-
-Si le programme d'installation du pack d'hébergement Windows détecte qu’IIS requiert une réinitialisation pour terminer l’installation, le programme d’installation réinitialise IIS. Si le programme d’installation déclenche une réinitialisation d’IIS, tous les pools d’applications et sites Web IIS sont redémarrés.
 
 > [!NOTE]
 > Pour plus d’informations sur la configuration partagée IIS, consultez [Module ASP.NET Core avec configuration partagée des services Internet (IIS)](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration).
