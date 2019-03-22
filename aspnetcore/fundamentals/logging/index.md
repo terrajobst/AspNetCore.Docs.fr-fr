@@ -56,7 +56,7 @@ Vous trouverez des informations sur les [fournisseurs de journalisation intégr�
 
 ## <a name="create-logs"></a>Créer des journaux
 
-Récupérez un objet <xref:Microsoft.Extensions.Logging.ILogger`1> auprès de l’injection de dépendances.
+Récupérez un objet <xref:Microsoft.Extensions.Logging.ILogger%601> auprès de l’injection de dépendances.
 
 ::: moniker range=">= aspnetcore-2.0"
 
