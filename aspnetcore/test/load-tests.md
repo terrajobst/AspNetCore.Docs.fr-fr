@@ -6,16 +6,16 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/04/2019
 uid: test/loadtests
-ms.openlocfilehash: 39632af2c92dac548c03e24d35a5e8a03e00890d
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 08c4251059b7d9f4549ad710054d8299c4943465
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209831"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419379"
 ---
 # <a name="load-and-stress-testing-aspnet-core"></a>Charger et de test ASP.NET Core de contrainte
 
-Test de charge et tests de contrainte sont importantes pour garantir qu'une application web est performante et évolutive. Leurs objectifs diffèrent même ils partagent souvent des tests similaires.
+Test de charge et tests de contrainte sont importantes pour garantir qu'une application web est performante et évolutive. Leurs objectifs sont différents, même s’ils partagent souvent des tests similaires.
 
 **Tests de charge**: Teste si l’application peut gérer une charge spécifié d’utilisateurs pour un scénario certaines tout en répondant à l’objectif de réponse. L’application est exécutée dans des conditions normales.
 

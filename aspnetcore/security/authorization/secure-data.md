@@ -6,12 +6,12 @@ ms.author: riande
 ms.date: 12/18/2018
 ms.custom: seodec18
 uid: security/authorization/secure-data
-ms.openlocfilehash: bdba706c1ef24ebe35129cb8bb2d9949196245a1
-ms.sourcegitcommit: 97d7a00bd39c83a8f6bccb9daa44130a509f75ce
+ms.openlocfilehash: 748de9264a1b22b50e0832fdd350e06eeefd5cb3
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54098920"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419457"
 ---
 # <a name="create-an-aspnet-core-app-with-user-data-protected-by-authorization"></a>Créer une application ASP.NET Core avec des données utilisateur protégées par une autorisation
 
@@ -89,7 +89,7 @@ Dans ASP.NET Core 2.1, `User.IsInRole` échoue lors de l’utilisation `AddDefau
 
 ## <a name="the-starter-and-completed-app"></a>Le démarrage et l’application terminée
 
-[Télécharger](xref:index#how-to-download-a-sample) le [terminé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/final2) application. [Test](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
+[Télécharger](xref:index#how-to-download-a-sample) le [terminé](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/secure-data/samples) application. [Test](#test-the-completed-app) l’application terminée afin de vous familiariser avec ses fonctionnalités de sécurité.
 
 ### <a name="the-starter-app"></a>L’application de démarrage
 
