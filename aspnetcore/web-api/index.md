@@ -1,7 +1,7 @@
 ---
 title: Créer des API web avec ASP.NET Core
 author: scottaddie
-description: Découvrez les fonctionnalités disponibles pour la création d’une API web dans ASP.NET Core et quand il convient d’utiliser chaque fonctionnalité.
+description: Découvrez les fonctionnalités disponibles pour la création d’une API web dans ASP.NET Core et comment choisir la fonctionnalité la plus appropriée en fonction du besoin.
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/11/2019
@@ -13,7 +13,7 @@ Par [Scott Addie](https://github.com/scottaddie)
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/web-api/define-controller/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-Ce document explique comment créer une API web ASP.NET Core et quand il convient le plus d’utiliser chaque fonctionnalité.
+Ce document explique comment créer une API web ASP.NET Core et comment choisir la fonctionnalité la plus appropriée en fonction du besoin.
 
 ## <a name="derive-class-from-controllerbase"></a>Dériver la classe de ControllerBase
 
@@ -31,7 +31,7 @@ Héritez de la classe <xref:Microsoft.AspNetCore.Mvc.ControllerBase> dans un con
 
 ::: moniker-end
 
-La classe `ControllerBase` fournit l’accès à de plusieurs propriétés et méthodes. Dans le code précédent, les exemples incluent <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)> et <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction(System.String,System.Object,System.Object)>. Ces méthodes sont appelées dans les méthodes d’action pour retourner les codes d’état HTTP 400 et 201, respectivement. La propriété <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState>, également fournie par `ControllerBase`, permet de gérer la validation des modèles de requêtes.
+La classe `ControllerBase` fournit l’accès à plusieurs propriétés et méthodes. Dans le code précédent, les exemples incluent <xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary)> et <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction(System.String,System.Object,System.Object)>. Ces méthodes sont appelées dans les méthodes d’action pour retourner les codes d’état HTTP 400 et 201, respectivement. La propriété <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ModelState>, également fournie par `ControllerBase`, permet de gérer la validation des modèles de requêtes.
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -51,7 +51,7 @@ Pour plus d'informations, consultez <xref:mvc/compatibility-version>.
 
 ::: moniker range=">= aspnetcore-2.2"
 
-Dans ASP.NET Core 2.2 ou ultérieur, l’attribut `[ApiController]` peut être appliqué à un assembly. De cette manière, l’annotation applique le comportement de l’API web à tous les contrôleurs de l’assembly. Notez que les contrôleurs individuels n’ont aucun moyen de refuser. Il est recommandé d’appliquer des attributs de niveau assembly à la classe `Startup` :
+Dans ASP.NET Core 2.2 ou ultérieur, l’attribut `[ApiController]` peut être appliqué à un assembly. De cette manière, l’annotation applique le comportement de l’API web à tous les contrôleurs de l’assembly. Notez que, dans ce cas, les contrôleurs individuels n’ont aucun moyen de faire en sorte que cet attribut ne s'applique pas. Il est recommandé d’appliquer des attributs de niveau assembly à la classe `Startup` :
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.22/Startup.cs?name=snippet_ApiControllerAttributeOnAssembly&highlight=1)]
 
@@ -61,7 +61,7 @@ Une version de compatibilité 2.2 ou ultérieure, définie par le biais de <xref
 
 ::: moniker range=">= aspnetcore-2.1"
 
-L’attribut `[ApiController]` est généralement associé à `ControllerBase` pour donner aux contrôleurs un comportement spécifique à REST. `ControllerBase` permet d’accéder aux méthodes telles que <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*> et <xref:Microsoft.AspNetCore.Mvc.ControllerBase.File*>.
+L’attribut `[ApiController]` est généralement associé à `ControllerBase` pour donner aux contrôleurs un comportement REST spécifique. `ControllerBase` permet d’accéder aux méthodes telles que <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*> et <xref:Microsoft.AspNetCore.Mvc.ControllerBase.File*>.
 
 Une autre approche consiste à créer une classe de contrôleur de base personnalisée annotée avec l’attribut `[ApiController]` :
 
@@ -127,7 +127,7 @@ Un attribut de source de liaison définit l’emplacement auquel se trouve la va
 > [!WARNING]
 > N’utilisez pas `[FromRoute]` lorsque les valeurs risquent de contenir `%2f` (c’est-à-dire `/`). `%2f` ne sera pas sans la séquence d’échappement `/`. Utilisez `[FromQuery]` si la valeur peut contenir `%2f`.
 
-Sans l’attribut `[ApiController]`, les attributs de source de liaison sont définis explicitement. Sans `[ApiController]` ou autres attributs de source de liaison comme `[FromQuery]`, le runtime ASP.NET Core tente d’utiliser le classeur de modèles objet complexe. Le classeur de modèles objet complexe extrait des données à partir de fournisseurs de valeurs (qui ont un ordre défini). Par exemple,le « classeur de modèles body » est toujours activé.
+Sans l’attribut `[ApiController]`, les attributs de source de liaison sont définis explicitement. Sans `[ApiController]` ou autres attributs de source de liaison comme `[FromQuery]`, le runtime ASP.NET Core tente d’utiliser la liaison de modèle d'objet complexe. Le liasion de modèle d'objet complexe extrait des données à partir de fournisseurs de valeurs (qui ont un ordre défini). Par exemple, la « liaison de modèle body » est toujours activée.
 
 Dans l’exemple suivant, l’attribut `[FromQuery]` indique que la valeur du paramètre `discontinuedOnly` est fournie dans la chaîne de requête de l’URL de demande :
 
@@ -190,9 +190,9 @@ Ajoutez le code suivant dans `Startup.ConfigureServices` après `services.AddMvc
 
 ::: moniker range=">= aspnetcore-2.1"
 
-### <a name="attribute-routing-requirement"></a>Exigence du routage d’attribut
+### <a name="attribute-routing-requirement"></a>Nécessité du routage d’attribut
 
-Le routage d’attribut devient une exigence. Par exemple :
+Le routage d’attribut devient une nécessité. Par exemple :
 
 [!code-csharp[](define-controller/samples/WebApiSample.Api.21/Controllers/ProductsController.cs?name=snippet_ControllerSignature&highlight=1)]
 
@@ -202,7 +202,7 @@ Les actions sont inaccessibles par le biais de [routes conventionnelles](xref:mv
 
 ::: moniker range=">= aspnetcore-2.2"
 
-### <a name="problem-details-responses-for-error-status-codes"></a>Réponses de la fonctionnalité Détails du problème pour les codes d’état erreur
+### <a name="problem-details-responses-for-error-status-codes"></a>Réponses de Détails du problème pour les codes d’état erreur
 
 Dans ASP.NET Core 2.2 ou ultérieur, MVC transforme un résultat d’erreur (résultat avec un code d’état égal ou supérieur à 400) en résultat avec <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>. `ProblemDetails` est :
 
