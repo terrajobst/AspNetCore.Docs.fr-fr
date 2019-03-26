@@ -5,7 +5,7 @@ description: 'Découvrez comment héberger et déployer des applications Razor C
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/29/2019
+ms.date: 03/22/2019
 uid: host-and-deploy/razor-components/index
 ---
 # <a name="host-and-deploy-razor-components"></a>Héberger et déployer Razor Components
@@ -284,7 +284,7 @@ Quand vous utilisez un site de projet plutôt qu’un site d’entreprise, ajout
 
 Avec le [modèle d’hébergement côté serveur](xref:razor-components/hosting-models#server-side-hosting-model), Razor Components est exécuté sur le serveur à partir d’une application ASP.NET Core. Les mises à jour de l’interface utilisateur, la gestion des événements et les appels JavaScript sont gérés par le biais d’une connexion SignalR.
 
-L’application est incluse dans l’application ASP.NET Core dans la sortie publiée, afin que les deux applications soient déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement côté serveur, Visual Studio inclut le modèle de projet **Blazor (côté serveur dans ASP.NET Core)** (modèle `blazorserver` quand vous utilisez la commande [dotnet new](/dotnet/core/tools/dotnet-new)).
+L’application est incluse dans l’application ASP.NET Core dans la sortie publiée, afin que les deux applications soient déployées ensemble. Un serveur web capable d’héberger une application ASP.NET Core est nécessaire. Pour un déploiement côté serveur, Visual Studio inclut le modèle de projet **Razor Components** (modèle `razorcomponents` quand vous utilisez la commande [dotnet new](/dotnet/core/tools/dotnet-new)).
 
 <!--
 
