@@ -4,14 +4,14 @@ author: mjrousos
 description: Apprenez à migrer à partir de ClaimsPrincipal.Current pour récupérer les identités et les revendications dans ASP.NET Core de l’utilisateur authentifié actuel.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 05/04/2018
+ms.date: 03/26/2019
 uid: migration/claimsprincipal-current
-ms.openlocfilehash: 35c3389798041e141c45bf0a76fa9d7285212768
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.openlocfilehash: 526cc3cf3a58a656e2a1b162cfaccacc7694dc51
+ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835371"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488640"
 ---
 # <a name="migrate-from-claimsprincipalcurrent"></a>Migrer à partir de ClaimsPrincipal.Current
 
@@ -56,4 +56,4 @@ Il existe plusieurs options pour la récupération de l’utilisateur authentifi
   * Obtenir une instance de `IHttpContextAccessor` lors du démarrage et le stocker dans une variable statique. L’instance est rendue disponible au code qui récupérait précédemment l’utilisateur actuel à partir d’une propriété statique.
   * Récupérer l’utilisateur actuel `ClaimsPrincipal` à l’aide de `HttpContextAccessor.HttpContext?.User`. Si ce code est utilisé en dehors du contexte d’une requête HTTP, le `HttpContext` a la valeur null.
 
-La dernière option, à l’aide de `IHttpContextAccessor`, est contraire à des principes d’ASP.NET Core (préférant injectés dépendances aux dépendances statiques). Prévoyons de supprimer la dépendance vis-à-vis de la méthode statique `IHttpContextAccessor` helper. Il peut être un pont utile, cependant, lors de la migration de grandes applications ASP.NET existantes qui ont été précédemment à l’aide `ClaimsPrincipal.Current`.
+La dernière option, à l’aide un `IHttpContextAccessor` instance stockées dans une variable statique, est contraire aux principes de ASP.NET Core (préférant injectés dépendances aux dépendances statiques). Envisagez éventuellement récupérer `IHttpContextAccessor` instances à partir de l’injection de dépendances à la place. Une application d’assistance statique peut être un pont utile, cependant, lors de la migration de grandes applications ASP.NET existantes qui ont été précédemment à l’aide `ClaimsPrincipal.Current`.
