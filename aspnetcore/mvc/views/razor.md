@@ -5,12 +5,12 @@ description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer d
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 254c85ee9e74dc72170b19d27fbc5f1ae7ccd3dc
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 53d4dc608fbfd45bcc015a3af83f5d87f86c7f15
+ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264753"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58327363"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -534,7 +534,7 @@ Les modèles Razor vous permettent de définir un extrait de code d’interface 
 @<tag>...</tag>
 ```
 
-L’exemple suivant montre comment spécifier un délégué Razor basé sur un modèle comme <xref:System.Func`2>. Le [type dynamique](/dotnet/csharp/programming-guide/types/using-type-dynamic) est spécifié pour le paramètre de la méthode encapsulée par le délégué. Un [type objet](/dotnet/csharp/language-reference/keywords/object) est spécifié comme valeur de retour du délégué. Le modèle est utilisé avec une <xref:System.Collections.Generic.List`1> de `Pet` qui a une propriété `Name`.
+L’exemple suivant montre comment spécifier un délégué Razor basé sur un modèle comme <xref:System.Func%602>. Le [type dynamique](/dotnet/csharp/programming-guide/types/using-type-dynamic) est spécifié pour le paramètre de la méthode encapsulée par le délégué. Un [type objet](/dotnet/csharp/language-reference/keywords/object) est spécifié comme valeur de retour du délégué. Le modèle est utilisé avec une <xref:System.Collections.Generic.List%601> de `Pet` qui a une propriété `Name`.
 
 ```csharp
 public class Pet
@@ -599,7 +599,7 @@ Vous pouvez également fournir un modèle Razor inline en tant qu’argument à 
 
 En utilisant la liste d’éléments « pets » de l’exemple précédent, la méthode `Repeat` est appelée avec :
 
-* <xref:System.Collections.Generic.List`1> de `Pet`.
+* <xref:System.Collections.Generic.List%601> de `Pet`.
 * Nombre de fois que chaque élément « pet » doit être répété.
 * Modèle inline à utiliser pour les éléments de liste d’une liste non triée.
 
