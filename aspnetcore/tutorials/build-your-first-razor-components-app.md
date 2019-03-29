@@ -5,14 +5,14 @@ description: Créez une application Composants Razor pas à pas et découvrez le
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/14/2019
+ms.date: 03/24/2019
 uid: tutorials/first-razor-components-app
-ms.openlocfilehash: c0f7b27fdfc770f8001625ecb3bf8d50af517b99
-ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
+ms.openlocfilehash: 2a987b3f2e687cd9d4dffa2c573c938e68ea3cc8
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57978421"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419363"
 ---
 # <a name="build-your-first-razor-components-app"></a>Créer votre première application Composants Razor
 
@@ -67,7 +67,7 @@ Pour une expérience à l’aide de Blazor :
 
 Incluez un composant dans un autre composant à l’aide d’une syntaxe de type HTML.
 
-1. Ajoutez le composant Counter au composant Index (page d’accueil) de l’application en ajoutant un élément `<Counter />` au composant Index.
+1. Ajoutez le composant Counter au composant Index (Home) de l’application en ajoutant un élément `<Counter />` au composant Index.
 
    Si vous utilisez Blazor pour cette expérience, un composant Survey Prompt (élément `<SurveyPrompt>`) se trouve dans le composant Index. Remplacez l’élément `<SurveyPrompt>` par l’élément `<Counter>`.
 
@@ -101,7 +101,7 @@ Les composants peuvent également avoir des paramètres. Les paramètres des com
 
    [!code-cshtml[](build-your-first-razor-components-app/samples/3.x/RazorComponents/Components/Pages/Index.razor?highlight=7)]
 
-1. Rechargez la page. Le compteur de la page d’accueil s’incrémente de dix unités à chaque fois que le bouton **Click me** est sélectionné. Le compteur sur la page *Counter* s’incrémente d’une unité.
+1. Rechargez la page d’accueil. Le compteur s’incrémente de dix unités chaque fois que le bouton **Cliquer ici** est sélectionné. Le compteur sur la page Counter s’incrémente d’une unité.
 
 ## <a name="route-to-components"></a>Acheminer vers les composants
 
@@ -111,29 +111,38 @@ La directive `@page` en haut du fichier *Counter.razor* spécifie que ce composa
 
 Les services enregistrés dans le conteneur de services de l’application sont disponibles pour les composants via [l’injection de dépendance (DI)](xref:fundamentals/dependency-injection). Injectez des services dans un composant à l’aide de la directive `@inject`.
 
-Examinez les directives du composant FetchData. La directive `@inject` est utilisée pour injecter l’instance du service `WeatherForecastService` dans le composant :
+Examinez les directives du composant FetchData dans l’exemple d’application.
 
-*Components/Pages/FetchData.razor* (*Pages/FetchData.cshtml* dans Blazor) :
+Dans l’exemple d’application Razor Components, le service `WeatherForecastService` est inscrit en tant que [singleton](xref:fundamentals/dependency-injection#service-lifetimes), de sorte qu’une instance du service est disponible dans toute l’application. La directive `@inject` est utilisée pour injecter l’instance du service `WeatherForecastService` dans le composant.
+
+*Components/Pages/FetchData.razor* :
 
 [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData1.razor?highlight=3)]
-
-Le service `WeatherForecastService` est inscrit en tant que [singleton](xref:fundamentals/dependency-injection#service-lifetimes), de sorte qu’une instance du service est disponible dans toute l’application.
 
 Le composant FetchData utilise le service injecté, comme `ForecastService`, pour récupérer un tableau d’objets `WeatherForecast` :
 
 [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-Une boucle [@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) est utilisée pour restituer chaque instance de prévision sous forme de ligne dans la table sur la météo :
+Dans la version Blazor de l’exemple d’application, `HttpClient` est injecté pour obtenir des données de prévisions météorologiques à partir des fichiers *weather.json* du dossier *wwwroot/sample-data* :
+
+*Pages/FetchData.cshtml* :
+
+[!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData1.cshtml?highlight=7)]
+
+Dans les deux exemples d’applications, une boucle [@foreach](/dotnet/csharp/language-reference/keywords/foreach-in) est utilisée pour restituer chaque instance de prévision sous forme de ligne dans la table des données météorologiques :
 
 [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 
 ## <a name="build-a-todo-list"></a>Générer une liste de tâches
 
-Ajoutez une nouvelle page à l’application qui implémente une liste de tâches simple.
+Ajoutez un nouveau composant à l’application qui implémente une liste de tâches simple.
 
-1. Ajoutez un fichier vide au dossier *Components/Pages* (dossier *Pages* dans Blazor) nommé *Todo.razor*.
+1. Ajoutez un fichier vide à l’exemple d’application :
 
-1. Fournissez le balisage initial pour la page :
+   * Pour l’expérience Razor Components, ajoutez un fichier *Todo.razor* au dossier *Components/Pages*.
+   * Pour l’expérience Blazor, ajoutez un fichier *Todo.cshtml* au dossier *Pages*.
+
+1. Fournissez le balisage initial pour le composant :
 
    ```cshtml
    @page "/todo"
@@ -141,11 +150,11 @@ Ajoutez une nouvelle page à l’application qui implémente une liste de tâche
    <h1>Todo</h1>
    ```
 
-1. Ajoutez la page Todo à la barre de navigation.
+1. Ajoutez le composant Todo à la barre de navigation.
 
    Le composant NavMenu (*Components/Shared/NavMenu.razor* ou *Shared/NavMenu.cshtml* dans Blazor) est utilisé dans la disposition de l’application. Les dispositions sont des composants qui vous permettent d’éviter la duplication de contenu dans l’application. Pour plus d'informations, consultez <xref:razor-components/layouts>.
 
-   Ajoutez un `<NavLink>` pour la page Todo en ajoutant le balisage d’élément de liste suivant sous les éléments de liste existants dans le fichier *Components/Shared/NavMenu.razor* (*Shared/NavMenu.cshtml* dans Blazor) :
+   Ajoutez un `<NavLink>` pour le composant Todo en ajoutant le balisage d’élément de liste suivant sous les éléments de liste existants dans le fichier *Components/Shared/NavMenu.razor* (*Shared/NavMenu.cshtml* dans Blazor) :
 
    ```cshtml
    <li class="nav-item px-3">
@@ -155,7 +164,7 @@ Ajoutez une nouvelle page à l’application qui implémente une liste de tâche
    </li>
    ```
 
-1. Régénérez et exécutez l’application. Consultez la nouvelle page Todo pour confirmer que le lien vers la page Todo fonctionne.
+1. Régénérez et exécutez l’application. Consultez la nouvelle page Todo pour vérifier que le lien vers le composant Todo fonctionne.
 
 1. Ajoutez un fichier *TodoItem.cs* à la racine du projet pour contenir une classe qui représente un élément Todo. Utilisez le code C# suivant pour la classe `TodoItem` :
 

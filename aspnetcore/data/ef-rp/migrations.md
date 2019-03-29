@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez commencer à utiliser la fonctionna
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 5848e5e1e45708c3ab5c2a79614111662701aa77
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 1803c6d3956121e4e7091f4f951917425e87c335
+ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320158"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419470"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Migrations - 4 sur 8
 
@@ -133,7 +133,7 @@ Dans les phases initiales de développement, nous avons utilisé `EnsureCreated`
 * Elle ne peut *pas* être utilisée avec des migrations
 * Elle est conçue pour effectuer des tests et un prototypage rapide, où la base de données est supprimée et recréée fréquemment.
 
-Supprimez la ligne suivante de `DbInitializer` :
+Supprimez `EnsureCreated` :
 
 ```csharp
 context.Database.EnsureCreated();
