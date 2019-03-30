@@ -61,7 +61,7 @@ Une version de compatibilité 2.2 ou ultérieure, définie par le biais de <xref
 
 ::: moniker range=">= aspnetcore-2.1"
 
-L’attribut `[ApiController]` est généralement associé à `ControllerBase` pour donner aux contrôleurs un comportement REST spécifique. `ControllerBase` permet d’accéder aux méthodes telles que <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*> et <xref:Microsoft.AspNetCore.Mvc.ControllerBase.File*>.
+L’attribut `[ApiController]` est généralement associé à `ControllerBase` pour donner aux contrôleurs un comportement spécifique à REST. `ControllerBase` permet d’accéder aux méthodes telles que <xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound*> et <xref:Microsoft.AspNetCore.Mvc.ControllerBase.File*>.
 
 Une autre approche consiste à créer une classe de contrôleur de base personnalisée annotée avec l’attribut `[ApiController]` :
 
@@ -127,7 +127,7 @@ Un attribut de source de liaison définit l’emplacement auquel se trouve la va
 > [!WARNING]
 > N’utilisez pas `[FromRoute]` lorsque les valeurs risquent de contenir `%2f` (c’est-à-dire `/`). `%2f` ne sera pas sans la séquence d’échappement `/`. Utilisez `[FromQuery]` si la valeur peut contenir `%2f`.
 
-Sans l’attribut `[ApiController]`, les attributs de source de liaison sont définis explicitement. Sans `[ApiController]` ou autres attributs de source de liaison comme `[FromQuery]`, le runtime ASP.NET Core tente d’utiliser la liaison de modèle d'objet complexe. Le liasion de modèle d'objet complexe extrait des données à partir de fournisseurs de valeurs (qui ont un ordre défini). Par exemple, la « liaison de modèle body » est toujours activée.
+Sans l’attribut `[ApiController]`, les attributs de source de liaison sont définis explicitement. Sans `[ApiController]` ou autres attributs de source de liaison comme `[FromQuery]`, le runtime ASP.NET Core tente d’utiliser le classeur de modèles objet complexe. Le classeur de modèles objet complexe extrait des données à partir de fournisseurs de valeurs (qui ont un ordre défini). Par exemple,le « classeur de modèles body » est toujours activé.
 
 Dans l’exemple suivant, l’attribut `[FromQuery]` indique que la valeur du paramètre `discontinuedOnly` est fournie dans la chaîne de requête de l’URL de demande :
 
@@ -202,7 +202,7 @@ Les actions sont inaccessibles par le biais de [routes conventionnelles](xref:mv
 
 ::: moniker range=">= aspnetcore-2.2"
 
-### <a name="problem-details-responses-for-error-status-codes"></a>Réponses de Détails du problème pour les codes d’état erreur
+### <a name="problem-details-responses-for-error-status-codes"></a>Réponses des détails des problèmes pour les codes d’état erreur
 
 Dans ASP.NET Core 2.2 ou ultérieur, MVC transforme un résultat d’erreur (résultat avec un code d’état égal ou supérieur à 400) en résultat avec <xref:Microsoft.AspNetCore.Mvc.ProblemDetails>. `ProblemDetails` est :
 
