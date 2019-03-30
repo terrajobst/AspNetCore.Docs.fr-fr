@@ -5,7 +5,7 @@ description: 'Explorez ASP.NET Core Blazor, une nouvelle méthode pour créer de
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/11/2019
+ms.date: 03/27/2019
 uid: spa/blazor/index
 ---
 # <a name="introduction-to-blazor"></a>Introduction à Blazor
@@ -50,7 +50,7 @@ Blazor prend en charge les principales installations que nécessitent la plupart
 
 Pour réduire la taille du code inutilisé extrait de l’application téléchargée lorsqu’elle est publiée par l’[éditeur de liens de langage intermédiaire (IL)](xref:host-and-deploy/razor-components/configure-linker).
 
-Blazor est le modèle d’hébergement côté client pour Razor Components. Étant donné que Razor Components sépare la logique de rendu d’un composant de la façon dont les mises à jour des interfaces utilisateurs sont appliquées, vous disposez d’une flexibilité dans la manière dont Razor Components peut être hébergé. Utilisez ASP.NET Core Razor Components pour héberger Razor Components sur le serveur dans une application ASP.NET Core où les mises à jour de l’interface utilisateur sont gérées par le biais d’une connexion SignalR. Pour plus d'informations, consultez <xref:razor-components/hosting-models#server-side-hosting-model>. 
+Blazor est le modèle d’hébergement côté client pour Razor Components. Étant donné que Razor Components sépare la logique de rendu d’un composant de la façon dont les mises à jour des interfaces utilisateurs sont appliquées, vous disposez d’une flexibilité dans la manière dont Razor Components peut être hébergé. Utilisez ASP.NET Core Razor Components pour héberger Razor Components sur le serveur dans une application ASP.NET Core où les mises à jour de l’interface utilisateur sont gérées par le biais d’une connexion SignalR. Pour plus d’informations, consultez <xref:razor-components/index> et <xref:razor-components/hosting-models#server-side-hosting-model>. 
 
 ## <a name="components"></a>Composants
 

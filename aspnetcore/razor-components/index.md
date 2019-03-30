@@ -5,7 +5,7 @@ description: 'Explorez ASP.NET Core Razor Components, un moyen de créer une int
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/13/2019
+ms.date: 03/27/2019
 uid: razor-components/index
 ---
 # <a name="introduction-to-razor-components"></a>Introduction à Razor Components
@@ -42,7 +42,7 @@ La connexion utilisée par Razor Components pour communiquer avec le navigateur 
 
 Pour plus d'informations, consultez <xref:razor-components/hosting-models#server-side-hosting-model>.
 
-*Blazor* est le modèle d’hébergement expérimental côté client de Razor Components. Blazor s’exécute sur .NET dans le navigateur à l’aide de standards web ouverts, sans plug-in ni aucune transpilation de code. Pour plus d'informations, consultez <xref:razor-components/hosting-models#client-side-hosting-model>.
+*Blazor* est le modèle d’hébergement expérimental côté client de Razor Components. Blazor s’exécute sur .NET dans le navigateur à l’aide de standards web ouverts, sans plug-in ni aucune transpilation de code. Pour plus d’informations, consultez <xref:spa/blazor/index> et <xref:razor-components/hosting-models#client-side-hosting-model>.
 
 ## <a name="components"></a>Composants
 

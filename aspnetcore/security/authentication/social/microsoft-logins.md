@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/11/2018
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 4909a0084994654777ad7a6ebda866ac727f0528
-ms.sourcegitcommit: 3e94d192b2ed9409fe72e3735e158b333354964c
+ms.openlocfilehash: 1733d049d6752c24d7749b5b5ae2a4b866492358
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735750"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751005"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>Programme d’installation de Microsoft Account connexion externe avec ASP.NET Core
 
@@ -65,6 +65,8 @@ Si vous n’avez pas déjà un compte Microsoft, appuyez sur  **[créez-en un !
 ![Boîte de dialogue Nouveau mot de passe généré](index/_static/MicrosoftDevPassword.png)
 
 Lier des paramètres sensibles telles que Microsoft `Application ID` et `Password` à votre configuration d’application en utilisant le [Secret Manager](xref:security/app-secrets). Dans le cadre de ce didacticiel, nommez les jetons `Authentication:Microsoft:ApplicationId` et `Authentication:Microsoft:Password`.
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 ## <a name="configure-microsoft-account-authentication"></a>Configurer l’authentification de compte Microsoft
 

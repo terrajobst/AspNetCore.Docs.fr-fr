@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/13/2019
 uid: security/app-secrets
-ms.openlocfilehash: 1a10c4d035510c689e3eccadc5986df0cc06b71e
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 18313f8284e81d196cbe786f494a607ee97a299f
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57841512"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750970"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>Stockage sécurisé des secrets d’application dans le développement dans ASP.NET Core
 
@@ -37,6 +37,8 @@ Imaginez une application web ASP.NET Core dans laquelle la sécurité **Comptes 
 
 > [!WARNING]
 > Les variables d’environnement sont généralement stockées au format texte brut non chiffré. Si l’ordinateur ou le processus est compromis, des tiers non approuvés peuvent y accéder. Il peut donc être nécessaire de prendre des mesures supplémentaires pour empêcher la divulgation des secrets utilisateur.
+
+[!INCLUDE[](~/includes/environmentVarableColon.md)]
 
 ## <a name="secret-manager"></a>L'outil Secret Manager (Gestionnaire de secrets)
 
