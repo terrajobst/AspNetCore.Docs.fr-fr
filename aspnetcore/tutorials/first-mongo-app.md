@@ -183,8 +183,8 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
 ## <a name="add-a-model"></a>Ajouter un modèle
 
-1. Ajoutez un répertoire *Modèles* à la racine du projet.
-1. Ajoutez une classe `Book` au répertoire *Modèles* avec le code suivant :
+1. Ajoutez un répertoire *Models* à la racine du projet.
+1. Ajoutez une classe `Book` au répertoire *Models* avec le code suivant :
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Models/Book.cs)]
 
@@ -192,7 +192,7 @@ Dans la classe précédente, la propriété `Id` :
 
 * Est requise pour mapper l’objet Common Language Runtime (CLR) à la collection MongoDB.
 * Est annotée avec `[BsonId]` pour désigner cette propriété comme clé primaire du document.
-* Est annotée avec `[BsonRepresentation(BsonType.ObjectId)]` pour autoriser la transmission du paramètre en tant que type `string` au lieu de `ObjectId`. Mongo gère la conversion de `string` à `ObjectId`.
+* Est annotée avec `[BsonRepresentation(BsonType.ObjectId)]` pour autoriser la transmission du paramètre en tant que type `string` au lieu de `ObjectId`. Mongo gère la conversion de `string` en `ObjectId`.
 
 Les autres propriétés de la classe sont annotées avec l’attribut `[BsonElement]`. La valeur de l’attribut représente le nom de la propriété dans la collection MongoDB.
 
@@ -234,7 +234,7 @@ La classe `BookService` utilise les membres `MongoDB.Driver` suivants pour effec
 
 ## <a name="add-a-controller"></a>Ajouter un contrôleur
 
-1. Ajoutez une classe `BooksController` au répertoire *Contrôleurs* avec le code suivant :
+1. Ajoutez une classe `BooksController` au répertoire *Controllers* avec le code suivant :
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Controllers/BooksController.cs)]
 
