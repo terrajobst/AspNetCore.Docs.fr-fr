@@ -34,16 +34,16 @@ NSwag offre les avantages suivants :
 * La possibilité d’utiliser l’interface utilisateur de Swagger et le générateur Swagger.
 * Fonctionnalités de génération de code flexibles.
 
-Avec NSwag, vous n’avez pas besoin d’une API&mdash;existante, vous pouvez utiliser des API de tiers qui intègrent Swagger et génèrent une implémentation du client. NSwag vous permet d’accélérer le cycle de développement et de vous adapter facilement aux modifications de l’API.
+Avec NSwag, vous n’avez pas besoin d’une API existante, vous pouvez utiliser des APIs tiers qui intègrent Swagger et génèrent une implémentation du client. NSwag vous permet d’accélérer le cycle de développement et de vous adapter facilement aux modifications de l’API.
 
 ## <a name="register-the-nswag-middleware"></a>Inscrire le middleware NSwag
 
 Inscrivez le middleware NSwag pour :
 
 * Générer la spécification Swagger pour l’API web implémentée.
-* Utiliser l’IU Swagger pour parcourir et tester l’API web.
+* Utiliser l’interface utilisateur Swagger pour parcourir et tester l’API web.
 
-Pour utiliser le middleware [NSwag](https://github.com/RSuter/NSwag) avec ASP.NET Core, installez le package NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/). Ce package contient le middleware nécessaire pour générer et utiliser la spécification Swagger, l’IU Swagger (v2 et v3) et [l’IU ReDoc](https://github.com/Rebilly/ReDoc).
+Pour utiliser le middleware [NSwag](https://github.com/RSuter/NSwag) avec ASP.NET Core, installez le package NuGet [NSwag.AspNetCore](https://www.nuget.org/packages/NSwag.AspNetCore/). Ce package contient le middleware nécessaire pour générer et utiliser la spécification Swagger, l’interface utilisateur Swagger (v2 et v3) et [l’IU ReDoc](https://github.com/Rebilly/ReDoc).
 
 Vous pouvez installer le package NuGet NSwag avec l’une des méthodes suivantes :
 
@@ -192,7 +192,7 @@ Swagger fournit des options pour documenter le modèle objet pour faciliter l’
 
 ### <a name="api-info-and-description"></a>Informations sur l’API et description
 
-Dans la méthode `Startup.ConfigureServices`, une action de configuration passée à la méthode `AddSwaggerDocument` ajoute des informations comme l’auteur, la licence et la description :
+Dans la méthode `Startup.ConfigureServices`, une action de configuration passée à la méthode `AddSwaggerDocument` ajoute des informations comme l’auteur, la license et la description :
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.NSwag/Startup2.cs?name=snippet_AddSwaggerDocument)]
 
@@ -286,7 +286,7 @@ L’action précédente retourne `ActionResult<T>`. À l’intérieur de l’act
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
-Dans ASP.NET Core 2.2 ou une version ultérieure, vous pouvez utiliser les conventions comme alternatives à la décoration explicites des actions individuelles avec `[ProducesResponseType]`. Pour plus d'informations, consultez <xref:web-api/advanced/conventions>.
+Dans ASP.NET Core 2.2 ou une version ultérieure, vous pouvez utiliser les conventions comme alternatives à la décoration explicite des actions individuelles avec `[ProducesResponseType]`. Pour plus d'informations, consultez <xref:web-api/advanced/conventions>.
 
 ::: moniker-end
 
