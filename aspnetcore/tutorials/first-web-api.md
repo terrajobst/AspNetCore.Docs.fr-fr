@@ -138,7 +138,7 @@ Un *modèle* est un ensemble de classes qui représentent les données gérées 
 
 * Ajoutez un dossier nommé *Models*.
 
-* Ajoutez une classe `TodoItem` au dossier *Modèles* avec le code suivant :
+* Ajoutez une classe `TodoItem` au dossier *Models* avec le code suivant :
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
@@ -205,7 +205,7 @@ Le code précédent :
 
 # <a name="visual-studio-code--visual-studio-for-mactabvisual-studio-codevisual-studio-mac"></a>[Visual Studio Code / Visual Studio pour Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Dans le dossier *Contrôleurs*, créez une classe nommée `TodoController`.
+* Dans le dossier *Controllers*, créez une classe nommée `TodoController`.
 
 ---
 
@@ -216,7 +216,7 @@ Le code précédent :
 Le code précédent :
 
 * Définit une classe de contrôleur d’API sans méthodes.
-* Décorez la classe avec l’attribut [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez [Annotation avec attribut ApiController](xref:web-api/index#annotation-with-apicontroller-attribute).
+* Décore la classe avec l’attribut [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez [Annotation avec attribut ApiController](xref:web-api/index#annotation-with-apicontroller-attribute).
 * Utilise l’injection de dépendances pour injecter le contexte de base de données (`TodoContext`) dans le contrôleur. Le contexte de base de données est utilisé dans chacune des méthodes la [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) du contrôleur.
 * Ajoute un élément nommé `Item1` à la base de données si celle-ci est vide. Ce code se trouvant dans le constructeur, il s’exécute chaque fois qu’une nouvelle requête HTTP existe. Si vous supprimez tous les éléments, le constructeur recrée `Item1` au prochain appel d’une méthode d’API. Ainsi, il peut vous sembler à tort que la suppression n’a pas fonctionné.
 
@@ -356,7 +356,7 @@ Si vous obtenez une erreur en appelant `PutTodoItem`, appelez `GET` pour vérifi
 
 Cet exemple utilise une base de données en mémoire qui doit être initialisée à chaque démarrage de l’application. La base de données doit contenir un élément avant que vous ne passiez un appel PUT. Appelez GET afin de garantir qu’un élément existe dans la base de données avant d’effectuer un appel PUT.
 
-Mettez à jour la tâche dont l’id est 1 en définissant son nom sur « feed fish » :
+Mettez à jour la tâche dont l’ID = 1 et nommez-la « feed fish » :
 
 ```json
   {
