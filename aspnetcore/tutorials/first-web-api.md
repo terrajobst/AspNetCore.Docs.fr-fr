@@ -356,7 +356,7 @@ Si vous obtenez une erreur en appelant `PutTodoItem`, appelez `GET` pour vérifi
 
 Cet exemple utilise une base de données en mémoire qui doit être initialisée à chaque démarrage de l’application. La base de données doit contenir un élément avant que vous ne passiez un appel PUT. Appelez GET afin de garantir qu’un élément existe dans la base de données avant d’effectuer un appel PUT.
 
-Mettez à jour la tâche dont l’id est 1 en définissant son nom comme étant « feed fish » :
+Mettez à jour la tâche dont l’ID = 1 et nommez-la « feed fish » :
 
 ```json
   {
