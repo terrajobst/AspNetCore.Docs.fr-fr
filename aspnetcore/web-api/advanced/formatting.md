@@ -139,7 +139,7 @@ Utilisez l’onglet Composer pour modifier la requête en spécifiant `applicati
 
 Dans cette capture d’écran, vous pouvez voir que la requête définit un en-tête `Accept: application/json` et que la réponse spécifie de même dans son `Content-Type`. L’objet `Author` est montré dans le corps de la réponse, au format JSON.
 
-### <a name="forcing-a-particular-format"></a>Forçer un format particulier
+### <a name="forcing-a-particular-format"></a>Forcer un format particulier
 
 Si vous voulez limiter les formats de réponse pour une action spécifique, vous pouvez appliquer le filtre `[Produces]`. Le filtre `[Produces]` spécifie les formats de réponse pour une action (ou un contrôleur) spécifique. Comme la plupart des [filtres](xref:mvc/controllers/filters), celui-ci peut être appliqué à l’action, au contrôleur ou à l’étendue globale.
 
