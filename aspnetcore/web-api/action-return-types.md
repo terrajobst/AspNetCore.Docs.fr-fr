@@ -36,7 +36,7 @@ ASP.NET Core offre les options suivantes pour les types de retour des actions du
 
 ::: moniker-end
 
-Ce document décrit le moment le plus approprié pour utiliser chaque type de retour.
+Ce document décrit quel type de retour est le plus adapté en fonction de chaque cas.
 
 ## <a name="specific-type"></a>Type spécifique
 
@@ -50,7 +50,7 @@ Quand des conditions connues doivent être prises en compte dans une action, plu
 
 ## <a name="iactionresult-type"></a>Type IActionResult
 
-Le type de retour [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) est approprié quand plusieurs types de retour [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) sont possibles dans une action. Les types `ActionResult` représentent différents codes d’état HTTP. Certains types de retour courants relevant de cette catégorie sont [BadRequestResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestresult) (400), [NotFoundResult](/dotnet/api/microsoft.aspnetcore.mvc.notfoundresult) (404) et [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200).
+Le type de retour [IActionResult](/dotnet/api/microsoft.aspnetcore.mvc.iactionresult) est adapté quand plusieurs types de retour [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) sont possibles dans une action. Les types `ActionResult` représentent différents codes d’état HTTP. Certains types de retour courants relevant de cette catégorie sont [BadRequestResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestresult) (400), [NotFoundResult](/dotnet/api/microsoft.aspnetcore.mvc.notfoundresult) (404) et [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200).
 
 Comme il existe plusieurs types de retour et chemins dans l’action, une utilisation répandue de l’attribut [[ProducesResponseType]](/dotnet/api/microsoft.aspnetcore.mvc.producesresponsetypeattribute.-ctor) est nécessaire. Cet attribut génère des détails plus descriptifs de la réponse pour les pages d’aide de l’API créées par des outils tels que [Swagger](/aspnet/core/tutorials/web-api-help-pages-using-swagger). `[ProducesResponseType]` indique les types connus et les codes d’état HTTP que l’action doit retourner.
 
@@ -98,7 +98,7 @@ public ActionResult<IEnumerable<Product>> Get()
 }
 ```
 
-Pour réparer le code précédent, vous pouvez retourner `_repository.GetProducts().ToList();`.
+Pour corriger le code précédent, vous pouvez retourner `_repository.GetProducts().ToList();`.
 
 La plupart des actions ont un type de retour spécifique. Des conditions inattendues peuvent se produire pendant l’exécution d’une action, auquel cas le type spécifique n’est pas retourné. Par exemple, le paramètre d’entrée d’une action peut entraîner l’échec de la validation du modèle. Dans ce cas, il est courant de retourner le type `ActionResult` approprié à la place du type spécifique.
 
