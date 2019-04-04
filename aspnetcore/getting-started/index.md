@@ -6,6 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2019
 uid: getting-started
+ms.openlocfilehash: 76728c484368a8b63130c259a9663473970846d3
+ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58209474"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a><span data-ttu-id="5e5b5-103">Tutoriel : Bien démarrer avec ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="5e5b5-103">Tutorial: Get started with ASP.NET Core</span></span>
 

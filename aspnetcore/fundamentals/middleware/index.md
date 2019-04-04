@@ -6,6 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/17/2019
 uid: fundamentals/middleware/index
+ms.openlocfilehash: bac121441d6856ca79affe1a3130e5cbc76debd9
+ms.sourcegitcommit: 191d21c1e37b56f0df0187e795d9a56388bbf4c7
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57665387"
 ---
 # <a name="aspnet-core-middleware"></a><span data-ttu-id="2f4f8-103">Intergiciel (middleware) ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="2f4f8-103">ASP.NET Core Middleware</span></span>
 

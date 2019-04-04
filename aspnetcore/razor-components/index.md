@@ -1,12 +1,18 @@
 ---
 title: Introduction à Razor Components
 author: guardrex
-description: 'Explorez ASP.NET Core Razor Components, un moyen de créer une interface utilisateur web interactive côté client à l’aide de .NET dans une application ASP.NET Core.'
+description: Explorez ASP.NET Core Razor Components, un moyen de créer une interface utilisateur web interactive côté client à l’aide de .NET dans une application ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 uid: razor-components/index
+ms.openlocfilehash: 8b2e87fe856598a5ac231e3bc1d413957829b448
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.translationtype: HT
+ms.contentlocale: fr-FR
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751015"
 ---
 # <a name="introduction-to-razor-components"></a><span data-ttu-id="fd3e9-103">Introduction à Razor Components</span><span class="sxs-lookup"><span data-stu-id="fd3e9-103">Introduction to Razor Components</span></span>
 
