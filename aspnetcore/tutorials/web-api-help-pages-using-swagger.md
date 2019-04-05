@@ -17,13 +17,13 @@ ms.locfileid: "53121542"
 
 Par [Christoph Nienaber](https://twitter.com/zuckerthoben) et [Rico Suter](http://rsuter.com)
 
-Les différentes méthodes qui permettent d’utiliser une API web ne sont pas toujours simples à comprendre pour les développeurs. [Swagger](https://swagger.io/), également appelé [OpenAPI](https://www.openapis.org/), résout le problème de la génération de pages d’aide et de documentation qu’utilisent les API web. Ses avantages sont, entre autres, la documentation interactive, la génération de SDK client et la découvrabilité des APIs.
+Les différentes méthodes qui permettent d’utiliser une API web ne sont pas toujours simples à comprendre pour les développeurs. [Swagger](https://swagger.io/), également appelé [OpenAPI](https://www.openapis.org/), résout le problème de la génération de pages d’aide et de documentation qu’utilisent les API web. Ses avantages sont, entre autres, la documentation interactive, la génération de SDK client et la découvrabilité des API.
 
 Cet article décrit les implémentations .NET Swagger [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) et [NSwag](https://github.com/RSuter/NSwag) :
 
-* **Swashbuckle.AspNetCore** est un projet open source pour la génération de documents Swagger pour des APIs web ASP.NET Core.
+* **Swashbuckle.AspNetCore** est un projet open source pour la génération de documents Swagger pour des API web ASP.NET Core.
 
-* **NSwag** est un autre projet open source pour générer des documents Swagger et intégrer [l’interface utilisateur Swagger](https://swagger.io/swagger-ui/) ou [ReDoc](https://github.com/Rebilly/ReDoc) aux APIs web ASP.NET Core. NSwag fournit aussi des méthodes pour générer du code client C# et TypeScript pour votre API.
+* **NSwag** est un autre projet open source pour générer des documents Swagger et intégrer [l’interface utilisateur Swagger](https://swagger.io/swagger-ui/) ou [ReDoc](https://github.com/Rebilly/ReDoc) aux API web ASP.NET Core. NSwag fournit aussi des méthodes pour générer du code client C# et TypeScript pour votre API.
 
 ## <a name="what-is-swagger--openapi"></a>Qu’est-ce que Swagger/OpenAPI ?
 
