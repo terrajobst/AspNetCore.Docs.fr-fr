@@ -34,7 +34,7 @@ NSwag offre les avantages suivants :
 * La possibilité d’utiliser l’interface utilisateur de Swagger et le générateur Swagger.
 * Fonctionnalités de génération de code flexibles.
 
-Avec NSwag, vous n’avez pas besoin d’une API existante, vous pouvez utiliser des APIs tiers qui intègrent Swagger et génèrent une implémentation du client. NSwag vous permet d’accélérer le cycle de développement et de vous adapter facilement aux modifications de l’API.
+Avec NSwag, vous n’avez pas besoin d’une API&mdash;existante, vous pouvez utiliser des API de tiers qui intègrent Swagger et génèrent une implémentation du client. NSwag vous permet d’accélérer le cycle de développement et de vous adapter facilement aux modifications de l’API.
 
 ## <a name="register-the-nswag-middleware"></a>Inscrire le middleware NSwag
 
