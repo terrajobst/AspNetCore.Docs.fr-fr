@@ -5,14 +5,14 @@ description: Découvrez comment configurer l’authentification Windows dans ASP
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 02/25/2019
+ms.date: 04/03/2019
 uid: security/authentication/windowsauth
-ms.openlocfilehash: 15fc41efba77f88fc8129f875b85836ac1b5f886
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.openlocfilehash: 9b53f523cf579aeb0e7dd37ccf5f161269a54913
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833694"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068259"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
 
@@ -26,15 +26,19 @@ L’authentification Windows s’appuie sur le système d’exploitation pour au
 
 Le **Web Application** modèle disponible via Visual Studio ou l’interface CLI .NET Core peut être configuré pour prendre en charge l’authentification Windows.
 
-# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
 
 ### <a name="use-the-windows-authentication-app-template-for-a-new-project"></a>Utiliser le modèle d’application de l’authentification Windows pour un nouveau projet
 
 Dans Visual Studio :
 
-1. Créer un nouveau **Application Web ASP.NET Core**.
-1. Sélectionnez **Web Application** à partir de la liste des modèles.
-1. Sélectionnez le **modifier l’authentification** bouton et sélectionnez **l’authentification Windows**.
+1. Créer un nouveau projet.
+1. Sélectionnez **Nouvelle application web ASP.NET Core**. Sélectionnez **Suivant**.
+1. Fournissez un nom dans la **nom_projet** champ. Confirmer la **emplacement** entrée est correcte ou indiquez un emplacement pour le projet. Sélectionnez **Créer**.
+1. Sélectionnez **modification** sous **authentification**.
+1. Dans le **modifier l’authentification** fenêtre, sélectionnez **l’authentification Windows**. Sélectionnez **OK**.
+1. Sélectionnez **Application web**.
+1. Sélectionnez **Créer**.
 
 Exécuter l’application. Le nom d’utilisateur s’affiche dans l’interface utilisateur de l’application rendue.
 
@@ -51,7 +55,7 @@ Vous pouvez également les propriétés peuvent être configurées dans le `iisS
 
 [!code-json[](windowsauth/sample_snapshot/launchSettings.json?highlight=2-3)]
 
-# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
+# [<a name="net-core-cli"></a>CLI .NET Core](#tab/netcore-cli)
 
 Utilisez le **l’authentification Windows** modèle d’application.
 
@@ -195,4 +199,4 @@ ASP.NET Core n’implémente pas l’emprunt d’identité. Applications s’ex�
 
 ### <a name="claims-transformations"></a>Transformations de revendications
 
-Lorsque vous hébergez avec mode in-process IIS, <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> n’est pas appelée en interne pour initialiser un utilisateur. Par conséquent, un <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> implémentation utilisée pour transformer les revendications après chaque authentification n’est pas activée par défaut. Pour plus d’informations et un exemple de code qui active les transformations de revendications lors de l’hébergement intra-processus, consultez <xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>.
+Lorsque vous hébergez avec mode in-process IIS, <xref:Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync*> n’est pas appelée en interne pour initialiser un utilisateur. Par conséquent, une implémentation de <xref:Microsoft.AspNetCore.Authentication.IClaimsTransformation> utilisée pour transformer les revendications après chaque authentification n’est pas activée par défaut. Pour plus d’informations et un exemple de code qui active les transformations de revendications lors de l’hébergement intra-processus, consultez <xref:host-and-deploy/aspnet-core-module#in-process-hosting-model>.

@@ -1,23 +1,23 @@
 ---
 title: Programme d’installation de Facebook login externe dans ASP.NET Core
 author: rick-anderson
-description: Ce didacticiel montre l’intégration de l’authentification d’utilisateur de compte Facebook dans une application ASP.NET Core existante.
+description: Didacticiel avec des exemples de code illustrant l’intégration de l’authentification d’utilisateur de compte Facebook dans une application ASP.NET Core existante.
 ms.author: riande
 ms.custom: mvc, seodec18
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 5fd40e7b42b17d4a3b858de15c8ed03fb64ce690
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: b69a6f3955d59aaff273a965d8820862e187cd51
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751094"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068207"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>Programme d’installation de Facebook login externe dans ASP.NET Core
 
 Par [Valeriy Novytskyy](https://github.com/01binary) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Ce didacticiel vous montre comment autoriser vos utilisateurs à se connecter avec leur compte Facebook à l’aide d’un exemple de projet ASP.NET Core 2.0 créée sur le [page précédente](xref:security/authentication/social/index). Nous commençons par créer un ID d’application Facebook en suivant le [étapes officiels](https://developers.facebook.com).
+Ce didacticiel avec des exemples de code montre comment autoriser vos utilisateurs à se connecter avec leur compte Facebook à l’aide d’un exemple de projet ASP.NET Core 2.0 créée sur le [page précédente](xref:security/authentication/social/index). Nous commençons par créer un ID d’application Facebook en suivant le [étapes officiels](https://developers.facebook.com).
 
 ## <a name="create-the-app-in-facebook"></a>Créer l’application dans Facebook
 
