@@ -192,7 +192,7 @@ Dans la classe précédente, la propriété `Id` :
 
 * Est requise pour mapper l’objet Common Language Runtime (CLR) à la collection MongoDB.
 * Est annotée avec `[BsonId]` pour désigner cette propriété comme clé primaire du document.
-* Est annotée avec `[BsonRepresentation(BsonType.ObjectId)]` pour autoriser la transmission du paramètre en tant que type `string` au lieu de `ObjectId`. Mongo gère la conversion de `string` en `ObjectId`.
+* Est annotée avec `[BsonRepresentation(BsonType.ObjectId)]` pour autoriser la transmission du paramètre en tant que type `string` au lieu de `ObjectId`. Mongo gère la conversion de `string` à `ObjectId`.
 
 Les autres propriétés de la classe sont annotées avec l’attribut `[BsonElement]`. La valeur de l’attribut représente le nom de la propriété dans la collection MongoDB.
 
