@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/02/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: c6543ec1f2295c21c6a693ac8bd16ee07ec11381
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 065b2016d3a2dcc2243ec6869e027c5fabe4dad8
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327405"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068402"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -110,7 +110,7 @@ Pour écrire des journaux dans la classe `Program`, récupérez une instance `IL
 
 ### <a name="no-asynchronous-logger-methods"></a>Aucune méthode d’enregistreur d’événements asynchrone
 
-La journalisation doit être suffisamment rapide par rapport au coût du code asynchrone en matière de performances. Si votre magasin de données de journalisation est lent, n’écrivez pas directement dedans. Écrivez au départ les messages de journal dans un magasin rapide, puis déplacez-les dans le magasin lent. Par exemple, enregistrez les messages dans une file d’attente qui est lue et conservée dans le stockage lent par un autre processus.
+La journalisation doit être suffisamment rapide par rapport au coût du code asynchrone en matière de performances. Si votre magasin de données de journalisation est lent, n’écrivez pas directement dedans. Écrivez au départ les messages de journal dans un magasin rapide, puis déplacez-les dans le magasin lent. Par exemple, si vous vous connectez à SQL Server, évitez de le faire directement dans une méthode `Log`, car les méthodes `Log` sont synchrones. Ajoutez plutôt de façon synchronisée des messages de journal à une file d’attente en mémoire, puis configurez un traitement en arrière-plan afin d’extraire les messages de la file d’attente et d’effectuer le travail asynchrone d’envoi des données vers SQL Server.
 
 ## <a name="configuration"></a>Configuration
 
@@ -168,7 +168,7 @@ Si les niveaux sont spécifiés dans `Logging.{providername}.LogLevel`, ils remp
 }
 ```
 
-Les clés `LogLevel` représentent des noms de journal. La clé `Default` s’applique aux journaux qui ne sont pas explicitement répertoriés. La valeur représente le [niveau de journal](#log-level) appliqué au journal donné.
+`LogLevel` représentent des noms de journal. La clé `Default` s’applique aux journaux qui ne sont pas explicitement répertoriés. La valeur représente le [niveau de journal](#log-level) appliqué au journal donné.
 
 ::: moniker-end
 
@@ -285,11 +285,11 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
 * Information = 2
 
-  Informations de suivi du flux général de l’application. Ces journaux ont généralement une utilité à long terme. Exemple : `Request received for path /api/todo`
+  Informations de suivi du flux général de l’application. Ces journaux ont généralement une utilité à long terme. Exemple : `Request received for path /api/todo`
 
 * Warning = 3
 
-  Informations sur les événements anormaux ou inattendus dans le flux de l’application. Il peut s’agir d’erreurs ou d’autres situations qui ne provoquent pas l’arrêt de l’application, mais qu’il peut être intéressant d’examiner. Le niveau de journalisation `Warning` est généralement utilisé pour les exceptions gérées. Exemple : `FileNotFoundException for file quotes.txt.`
+  Informations sur les événements anormaux ou inattendus dans le flux de l’application. Il peut s’agir d’erreurs ou d’autres situations qui ne provoquent pas l’arrêt de l’application, mais qu’il peut être intéressant d’examiner. Le niveau de journalisation `Warning` est généralement utilisé pour les exceptions gérées. Exemple : `FileNotFoundException for file quotes.txt.`
 
 * Error = 4
 
@@ -611,7 +611,7 @@ warn: TodoApi.Controllers.TodoController[4000]
 ASP.NET Core contient les fournisseurs suivants :
 
 * [Console](#console-provider)
-* [Déboguer](#debug-provider)
+* [Débogage](#debug-provider)
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
@@ -771,11 +771,11 @@ L’exemple suivant configure un fournisseur `TraceSource` qui enregistre les me
 Pour plus d'informations sur la journalisation dans Azure, voir les sections suivantes :
 
 * [Fournisseur Azure App Service](#azure-app-service-provider)
-* [Diffusion en continu de journaux Azure](#azure-log-streaming)
+* [Streaming des journaux Azure](#azure-log-streaming)
 
 ::: moniker range=">= aspnetcore-1.1"
 
-* [Journalisation du suivi Azure Application Insights](#azure-application-insights-trace-logging)
+* [Journalisation des traces Azure Application Insights](#azure-application-insights-trace-logging)
 
 ::: moniker-end
 

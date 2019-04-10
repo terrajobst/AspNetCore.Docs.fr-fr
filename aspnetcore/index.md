@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez une introduction à ASP.NET Core, framework multiplateforme à hautes performances et open source qui permet de créer des applications cloud modernes et connectées à Internet.
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: baf8557b29c30f6dbeb6a4ff5d50c83d07160a51
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 944c8a93aff53b8d72fda03f5df9c5ba45990cbc
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320235"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068271"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -50,9 +50,9 @@ ASP.NET Core s’intègre parfaitement avec les frameworks et les bibliothèques
 
 ## <a name="aspnet-core-targeting-net-framework"></a>ASP.NET Core ciblant .NET Framework
 
-ASP.NET Core 2.x peut cibler .NET Core ou le .NET Framework. Les applications ASP.NET Core ciblant .NET Framework ne sont pas multiplateformes : elles s’exécutent seulement sur Windows. D’une façon générale, ASP.NET Core 2.x est constitué de bibliothèques [.NET Standard](/dotnet/standard/net-standard). Les applications écrites avec .NET Standard 2.0 s’exécutent partout où .NET Standard 2.0 est pris en charge.
+ASP.NET Core 2.x peut cibler .NET Core ou le .NET Framework. Les applications ASP.NET Core ciblant .NET Framework ne sont pas multiplateformes : elles s’exécutent seulement sur Windows. D’une façon générale, ASP.NET Core 2.x est constitué de bibliothèques [.NET Standard](/dotnet/standard/net-standard). Les bibliothèques écrites avec .NET Standard 2.0 s’exécutent sur [n’importe quelle plateforme .NET qui implémente .NET Standard 2.0](/dotnet/standard/net-standard#net-implementation-support).
 
-ASP.NET Core 2.x est pris en charge sur les versions de .NET Framework compatibles avec .NET Standard 2.0 :
+ASP.NET Core 2.x est pris en charge sur les versions .NET Framework compatibles avec .NET Standard 2.0 :
 
 * .NET Framework 4.7.1 ou version ultérieure est vivement recommandé.
 * .NET Framework 4.6.1 et versions ultérieures.
