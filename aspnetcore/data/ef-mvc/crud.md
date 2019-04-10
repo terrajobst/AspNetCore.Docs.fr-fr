@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 83f5d4bdc3d5872109649818b61a6dbb656fd8be
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: cee521eec3172c04b4d9d93c12076c42c9adff18
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264834"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750627"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter la fonctionnalité CRUD - ASP.NET MVC avec EF Core
 
@@ -32,7 +32,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Bien démarrer avec EF Core dans une application web ASP.NET Core MVC](intro.md)
+* [Bien démarrer avec EF Core et ASP.NET Core MVC](intro.md)
 
 ## <a name="customize-the-details-page"></a>Personnaliser la page Details
 
@@ -243,7 +243,7 @@ Ce code accepte un paramètre facultatif qui indique si la méthode a été appe
 
 Remplacez la méthode d’action HttpPost `Delete` (nommée `DeleteConfirmed`) par le code suivant, qui effectue l’opération de suppression réelle et intercepte les erreurs de mise à jour de la base de données.
 
-[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6,8-11,13-14,18-23)]
+[!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_DeleteWithReadFirst&highlight=6-9,11-12,16-21)]
 
 Ce code récupère l’entité sélectionnée, puis appelle la méthode `Remove` pour définir l’état de l’entité sur `Deleted`. Quand `SaveChanges` est appelée, une commande SQL DELETE est générée.
 
@@ -306,6 +306,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Page Delete mise à jour
 > * Connexions de base de données fermées
 
-Passez à l’article suivant pour apprendre comment développer les fonctionnalités de la page **Index** en ajoutant le tri, le filtrage et la pagination.
+Passez au tutoriel suivant pour découvrir comment développer les fonctionnalités de la page **Index** en ajoutant le tri, le filtrage et la pagination.
+
 > [!div class="nextstepaction"]
-> [Tri, filtrage et pagination](sort-filter-page.md)
+> [Suivant : Tri, filtrage et pagination](sort-filter-page.md)

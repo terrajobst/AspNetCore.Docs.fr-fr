@@ -4,15 +4,15 @@ description: Dans ce didacticiel, vous allez mettre à jour des données associ�
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 1606b872df2df839266ef17efee1948065c4efae
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 6add725430380f0855fe660a70b90a4546ef0637
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209412"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750910"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Mettre à jour les données associées - ASP.NET MVC avec EF Core
 
@@ -35,7 +35,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Lire les données associées avec EF Core pour une application web ASP.NET Core MVC](read-related-data.md)
+* [Lire les données associées](read-related-data.md)
 
 ## <a name="customize-courses-pages"></a>Personnaliser les pages de cours
 
@@ -123,7 +123,7 @@ Quand vous modifiez un enregistrement de formateur, vous voulez avoir la possibi
 
 Dans *InstructorsController.cs*, modifiez le code de la méthode HttpGet `Edit` afin qu’elle charge la propriété de navigation `OfficeAssignment` de l’entité Instructor et appelle `AsNoTracking` :
 
-[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=9,10&name=snippet_EditGetOA)]
+[!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?highlight=8-11&name=snippet_EditGetOA)]
 
 Remplacez la méthode HttpPost `Edit` par le code suivant pour gérer les mises à jour des attributions de bureau :
 
@@ -225,7 +225,7 @@ Dans *Views/Instructors/Edit.cshtml*, ajoutez un champ **Courses** avec un table
 
 <a id="notepad"></a>
 > [!NOTE]
-> Quand vous collez le code dans Visual Studio, les sauts de ligne seront changés d’une façon qui va déstructurer le code. Appuyez une fois sur Ctrl+Z pour annuler la mise en forme automatique. Ceci permet de corriger les sauts de ligne de façon à ce qu’ils apparaissent comme ce que vous voyez ici. L’indentation ne doit pas nécessairement être parfaite, mais les lignes `@</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune tenir sur une seule ligne comme dans l’illustration, sinon vous recevrez une erreur d’exécution. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur la touche Tab pour aligner le nouveau code avec le code existant. Vous pouvez vérifier l’état de ce problème [ici](https://developercommunity.visualstudio.com/content/problem/147795/razor-editor-malforms-pasted-markup-and-creates-in.html).
+> Quand vous collez le code dans Visual Studio, les sauts de ligne peuvent être changés d’une façon qui casse le code. Si le code semble différent après un collage, appuyez une fois sur Ctrl+Z pour annuler la mise en forme automatique. Ceci permet de corriger les sauts de ligne de façon à ce qu’ils apparaissent comme ce que vous voyez ici. L’indentation ne doit pas nécessairement être parfaite, mais les lignes `@</tr><tr>`, `@:<td>`, `@:</td>` et `@:</tr>` doivent chacune tenir sur une seule ligne comme dans l’illustration, sinon vous recevrez une erreur d’exécution. Avec le bloc de nouveau code sélectionné, appuyez trois fois sur la touche Tab pour aligner le nouveau code avec le code existant. Ce problème est résolu dans Visual Studio 2019.
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
@@ -314,6 +314,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Page Delete mise à jour
 > * Emplacements de bureau et cours ajoutés à la page Create
 
-Passez à l’article suivant pour apprendre à gérer les conflits d’accès concurrentiel.
+Passez au tutoriel suivant pour découvrir comment gérer les conflits d’accès concurrentiel.
+
 > [!div class="nextstepaction"]
 > [Gérer les conflits d’accès concurrentiel](concurrency.md)

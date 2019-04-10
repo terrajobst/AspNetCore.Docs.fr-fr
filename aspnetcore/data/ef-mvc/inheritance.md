@@ -4,15 +4,15 @@ description: Ce didacticiel vous indiquera comment implémenter l’héritage da
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 0a5eb1aba43bc2adf746202772c7f98eff49b4ff
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: ba688b259206f21045376b6a38a266ad7528aec1
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103005"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750761"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter l’héritage - ASP.NET MVC avec EF Core
 
@@ -32,7 +32,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Gérer l’accès concurrentiel avec EF Core dans une application web ASP.NET Core MVC](concurrency.md)
+* [Gérer l’accès concurrentiel](concurrency.md)
 
 ## <a name="map-inheritance-to-database"></a>Mapper l’héritage à la base de données
 
@@ -168,6 +168,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Migrations créées et mises à jour
 > * Implémentation testée
 
-Passez à l’article suivant pour apprendre à gérer divers scénarios Entity Framework relativement avancés.
+Passez au tutoriel suivant pour découvrir comment gérer divers scénarios Entity Framework relativement avancés.
+
 > [!div class="nextstepaction"]
-> [Rubriques avancées](advanced.md)
+> [Suivant : Rubriques avancées](advanced.md)

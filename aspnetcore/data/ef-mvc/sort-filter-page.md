@@ -3,15 +3,15 @@ title: 'Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC a
 description: Dans ce didacticiel, vous allez ajouter les fonctionnalités de tri, de filtrage et de changement de page à la page d’index des étudiants. Vous allez également créer une page qui effectue un regroupement simple.
 author: rick-anderson
 ms.author: tdykstra
-ms.date: 02/04/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 51b6b08d2410652f93427371aec299eb4c8789f1
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: dff5a5b1ba3c8ed07ccc8d134f8cfeb25b9f6689
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103057"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751036"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core
 
@@ -33,7 +33,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Implémenter la fonctionnalité CRUD avec EF Core dans une application web ASP.NET Core MVC](crud.md)
+* [Implémenter la fonctionnalité CRUD](crud.md)
 
 ## <a name="add-column-sort-links"></a>Ajouter des liens de tri de colonne
 
@@ -144,7 +144,7 @@ public async Task<IActionResult> Index(
     string sortOrder,
     string currentFilter,
     string searchString,
-    int? page)
+    int? pageNumber)
 ```
 
 La première fois que la page s’affiche, ou si l’utilisateur n’a pas cliqué sur un lien de changement de page ni de tri, tous les paramètres sont Null.  Si l’utilisateur clique sur un lien de changement de page, la variable de page contient le numéro de page à afficher.
@@ -158,7 +158,7 @@ Si la chaîne de recherche est modifiée au cours du changement de page, la page
 ```csharp
 if (searchString != null)
 {
-    page = 1;
+    pageNumber = 1;
 }
 else
 {
@@ -169,10 +169,10 @@ else
 À la fin de la méthode `Index`, la méthode `PaginatedList.CreateAsync` convertit la requête d’étudiant en une page individuelle d’étudiants dans un type de collection qui prend en charge le changement de page. Cette page individuelle d’étudiants est alors transmise à la vue.
 
 ```csharp
-return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), page ?? 1, pageSize));
+return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
 ```
 
-La méthode `PaginatedList.CreateAsync` accepte un numéro de page. Les deux points d’interrogation représentent l’opérateur de fusion Null. L’opérateur de fusion Null définit une valeur par défaut pour un type nullable ; l’expression `(page ?? 1)` indique de renvoyer la valeur de `page` si elle a une valeur, ou de renvoyer 1 si `page` a la valeur Null.
+La méthode `PaginatedList.CreateAsync` accepte un numéro de page. Les deux points d’interrogation représentent l’opérateur de fusion Null. L’opérateur de fusion Null définit une valeur par défaut pour un type nullable ; l’expression `(pageNumber ?? 1)` indique de renvoyer la valeur de `pageNumber` si elle a une valeur, ou de renvoyer 1 si `pageNumber` a la valeur Null.
 
 ## <a name="add-paging-links"></a>Ajouter des liens de pagination
 
@@ -193,7 +193,7 @@ Les boutons de changement de page sont affichés par des Tag Helpers :
 ```html
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
-   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    class="btn btn-default @prevDisabled">
    Previous
@@ -234,7 +234,7 @@ Ajoutez une variable de classe pour le contexte de base de données immédiateme
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_AddContext&highlight=3,5,7)]
 
-Remplacez la méthode `About` par le code suivant :
+Ajoutez une méthode `About` avec le code suivant :
 
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
@@ -244,7 +244,7 @@ L’instruction LINQ regroupe les entités Student par date d’inscription, cal
 
 ### <a name="modify-the-about-view"></a>Modifier la vue About
 
-Remplacez le code du fichier *Views/Home/About.cshtml* par le code suivant :
+Ajoutez un fichier *Views/Home/About.cshtml* avec le code suivant :
 
 [!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
 
@@ -266,6 +266,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Liens de pagination ajoutés
 > * Page À propos créée
 
-Passez à l’article suivant pour apprendre à gérer les modifications du modèle de données à l’aide de migrations.
+Passez au tutoriel suivant pour découvrir comment gérer les modifications du modèle de données à l’aide de migrations.
+
 > [!div class="nextstepaction"]
-> [Gérer les modification du modèle de données](migrations.md)
+> [Suivant : Gérer les modifications du modèle de données](migrations.md)

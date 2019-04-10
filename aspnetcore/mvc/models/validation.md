@@ -1,82 +1,185 @@
 ---
 title: Validation de modèle dans ASP.NET Core MVC
 author: tdykstra
-description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC.
+description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC et Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/14/2019
+ms.date: 04/01/2019
 uid: mvc/models/validation
-ms.openlocfilehash: ca7ee54b8e6b6ae5091b0cb133e448ad9c04da8f
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: b766d47f296745ba4be6ea8cb6335db9c3e2d975
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248517"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809313"
 ---
-# <a name="model-validation-in-aspnet-core-mvc"></a>Validation de modèle dans ASP.NET Core MVC
+# <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et Razor Pages
 
-Par [Rachel Appel](https://github.com/rachelappel)
+Cet article explique comment valider l’entrée d’utilisateur dans une application ASP.NET Core MVC ou Razor Pages.
 
-## <a name="introduction-to-model-validation"></a>Introduction à la validation de modèle
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
-Avant qu’une application stocke des données dans une base de données, l’application doit valider les données. L’application doit vérifier que les données ne contiennent pas de menaces de sécurité potentielles, et qu’elles sont mises en forme de façon appropriée quand au type et à la taille. Elles doivent aussi être conformes à vos règles. La validation est nécessaire même si son implémentation peut être fastidieuse et redondante. Dans MVC, la validation se produit à la fois sur le client et sur le serveur.
+## <a name="model-state"></a>État du modèle
 
-Heureusement, .NET dispose d’une validation abstraite dans des attributs de validation. Ces attributs contiennent un code de validation, ce qui réduit la quantité de code à écrire.
+L’état du modèle représente les erreurs qui proviennent de deux sous-systèmes : liaison de modèle et validation de modèle. Les erreurs qui proviennent de la [liaison de modèle](model-binding.md) sont généralement des erreurs de conversion de données (par exemple, un « x » est entré dans un champ qui attend un nombre entier). La validation de modèle se produit après la liaison de modèle, et signale les erreurs où les données ne sont pas conformes aux règles d’entreprise (par exemple, un 0 est entré dans un champ qui attend une évaluation comprise entre 1 et 5).
 
-Dans ASP.NET Core 2.2 et ultérieur, le runtime ASP.NET Core court-circuite (ignore) la validation s’il détermine qu’un graphe de modèle donné n’a pas besoin de validation. Cela peut déboucher sur une amélioration significative des performances lors de la validation de modèles qui ne peuvent pas avoir de validateurs associés ou qui n’en ont pas. La validation ignorée inclut des objets comme des collections de primitifs (`byte[]`, `string[]`, `Dictionary<string, string>`, etc.) ou des graphes d’objets complexes sans validateurs.
+::: moniker range=">= aspnetcore-2.1"
 
-[Affichez ou téléchargez un exemple depuis GitHub](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/validation/sample).
+La liaison et la validation de modèle se produisent avant l’exécution d’une action de contrôleur ou d’une méthode de gestionnaire Razor Pages. Il incombe à l’application d’inspecter `ModelState.IsValid` et de réagir de façon appropriée. En règle générale, les applications web réaffichent la page avec un message d’erreur :
+
+[!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.1"
+
+La liaison et la validation de modèle se produisent avant l’exécution d’une action de contrôleur ou d’une méthode de gestionnaire Razor Pages. Pour les applications web, il incombe à l’application d’inspecter `ModelState.IsValid` et de réagir de façon appropriée. En règle générale, les applications web réaffichent la page avec un message d’erreur :
+
+[!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
+
+Les contrôleurs d’API web ne sont pas obligés de vérifier `ModelState.IsValid` s’ils ont l’attribut `[ApiController]`. Dans ce cas, une réponse HTTP 400 automatique contenant les détails du problème est retournée quand l’état du modèle n’est pas valide. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses).
+
+::: moniker-end
+
+## <a name="rerun-validation"></a>Réexécuter la validation
+
+La validation est automatique, mais vous souhaiterez peut-être la répéter manuellement. Par exemple, vous pourriez calculer une valeur pour une propriété, et souhaiter réexécuter la validation après avoir affecté la valeur calculée comme valeur de la propriété. Pour réexécuter la validation, appelez la méthode `TryValidateModel`, comme indiqué ici :
+
+[!code-csharp[](validation/sample/Controllers/MoviesController.cs?name=snippet_TryValidateModel&highlight=11)]
 
 ## <a name="validation-attributes"></a>Attributs de validation
 
-Les attributs de validation sont un moyen de configurer la validation de modèle : elle est donc conceptuellement similaire à la validation des champs dans les tables de base de données. Ceci inclut des contraintes comme l’affectation de types de données ou des champs obligatoires. L’application de modèles aux données pour forcer le respect des règles d’entreprise, comme une carte de crédit, un numéro de téléphone ou une adresse e-mail, est un autre type de validation. Les attributs de validation simplifient et facilitent l’application de ces exigences.
+Les attributs de validation vous permettent de spécifier des règles de validation pour des propriétés de modèle. L’exemple suivant tiré de l’[exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/models/validation/sample) montre une classe de modèle qui est annotée avec des attributs de validation. L’attribut `[ClassicMovie]` est un attribut de validation personnalisé, et les autres sont prédéfinis. (`[ClassicMovie2]` n’est pas affiché ici ; il montre une autre façon d’implémenter un attribut personnalisé.)
 
-Les attributs de validation sont spécifiés au niveau de la propriété : 
+[!code-csharp[](validation/sample/Models/Movie.cs?name=snippet_ModelClass)]
+
+## <a name="built-in-attributes"></a>Attributs prédéfinis
+
+Voici certains des attributs de validation prédéfinis :
+
+* `[CreditCard]`: vérifie que la propriété a un format de carte de crédit.
+* `[Compare]`: vérifie que deux propriétés d’un modèle correspondent.
+* `[EmailAddress]`: vérifie que la propriété a un format d’e-mail.
+* `[Phone]`: vérifie que la propriété a un format de numéro de téléphone.
+* `[Range]`: vérifie que la valeur de propriété est comprise dans une plage spécifiée.
+* `[RegularExpression]`: vérifie que la valeur de propriété correspond à une expression régulière spécifiée.
+* `[Required]`: vérifie que le champ n’est pas Null. Pour plus d’informations sur le comportement de cet attribut, consultez [Attribut [Required]](#required-attribute).
+* `[StringLength]`: vérifie qu’une valeur de propriété de chaîne ne dépasse pas une limite de longueur spécifiée.
+* `[Url]`: vérifie que la propriété a un format d’URL.
+* `[Remote]`: valide l’entrée sur le client en appelant une méthode d’action sur le serveur. Pour plus d’informations sur le comportement de cet attribut, consultez [Attribut [Remote]](#remote-attribute).
+
+Vous trouverez la liste complète des attributs de validation dans l’espace de noms [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations).
+
+### <a name="error-messages"></a>Messages d’erreur
+
+Les attributs de validation vous permettent de spécifier le message d’erreur à afficher pour l’entrée non valide. Par exemple :
 
 ```csharp
-[Required]
-public string MyProperty { get; set; }
+[StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
 ```
 
-Voici un modèle `Movie` annoté pour une application qui stocke des informations sur les films et les émissions de télévision. La plupart des propriétés sont obligatoires et plusieurs propriétés de type chaîne sont soumises à des exigences en matière de longueur. En outre, une restriction de plage numérique de 0 à 999,99 $ est en place pour la propriété `Price`, ainsi qu’un attribut de validation personnalisé.
+En interne, les attributs appellent `String.Format` avec un espace réservé pour le nom de champ et parfois d’autres espaces réservés. Par exemple :
 
-[!code-csharp[](validation/sample/Movie.cs?range=6-29)]
+```csharp
+[StringLength(8, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 6)]
+```
 
-Une simple lecture du modèle révèle les règles concernant les données de cette application, facilitant ainsi la maintenance du code. Voici plusieurs attributs de validation intégrés courants :
+Appliqué à une propriété `Name`, le message d’erreur créé par le code précédent serait « Name length must be between 6 and 8 ».
 
-* `[CreditCard]`: Vérifie que la propriété a un format de carte de crédit.
+Pour savoir quels paramètres sont passés à `String.Format` pour le message d’erreur d’un attribut particulier, consultez le [code source de DataAnnotations](https://github.com/dotnet/corefx/tree/master/src/System.ComponentModel.Annotations/src/System/ComponentModel/DataAnnotations).
 
-* `[Compare]`: Vérifie que deux propriétés d’un modèle sont en correspondance.
+## <a name="required-attribute"></a>Attribut [Required]
 
-* `[EmailAddress]`: Vérifie que la propriété a un format d’e-mail.
+Par défaut, le système de validation traite les propriétés ou paramètres n’acceptant pas les valeurs Null comme s’ils avaient un attribut `[Required]`. Les [types valeur](/dotnet/csharp/language-reference/keywords/value-types) comme `decimal` et `int` n’acceptent pas les valeurs Null.
 
-* `[Phone]`: Vérifie que la propriété a un format de numéro de téléphone.
+### <a name="required-validation-on-the-server"></a>Validation de [Required] sur le serveur
 
-* `[Range]`: Vérifie que la valeur de la propriété est dans la plage donnée.
+Sur le serveur, une valeur obligatoire est considérée comme manquante si la propriété est Null. Un champ n’acceptant pas les valeurs Null est toujours valide, et le message d’erreur de l’attribut [Required] n’est jamais affiché.
 
-* `[RegularExpression]`: Vérifie que les données correspondent à l’expression régulière spécifiée.
+Toutefois, la liaison de modèle pour une propriété n’acceptant pas les valeurs Null peut échouer, entraînant l’affichage d’un message d’erreur tel que `The value '' is invalid`. Pour spécifier un message d’erreur personnalisé pour la validation côté serveur des types n’acceptant pas les valeurs Null, vous disposez des options suivantes :
 
-* `[Required]`: Rend une propriété obligatoire.
+* Rendre le champ Nullable (par exemple, `decimal?` au lieu de `decimal`). Les types valeur [Nullable\<T>](/dotnet/csharp/programming-guide/nullable-types/) sont traités comme des types Nullable standard.
+* Spécifier le message d’erreur par défaut devant être utilisé par la liaison de modèle, comme indiqué dans l’exemple suivant :
 
-* `[StringLength]`: Vérifie que la longueur d’une propriété de type chaîne est au plus la longueur maximale spécifiée.
+  [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=4-5)]
 
-* `[Url]`: Vérifie que la propriété a un format d’URL.
+  Pour plus d’informations sur les erreurs de liaison de modèle pour lesquelles vous pouvez définir des messages par défaut, consultez <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Metadata.DefaultModelBindingMessageProvider#methods>.
 
-MVC prend en charge tout attribut dérivant de `ValidationAttribute` à des fins de validation. Vous pouvez trouver de nombreux attributs de validation utiles dans l’espace de noms [System.ComponentModel.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations).
+### <a name="required-validation-on-the-client"></a>Validation de [Required] sur le client
 
-Pour certaines, vous pouvez avoir besoin de plus de fonctionnalités que celles fournies par les attributs prédéfinis. Dans ces cas, vous pouvez créer des attributs de validation personnalisés en dérivant depuis `ValidationAttribute` ou en modifiant votre modèle pour implémenter `IValidatableObject`.
+Les chaînes et les types n’acceptant pas les valeurs Null sont gérés différemment sur le client et sur le serveur. Sur le client :
 
-## <a name="notes-on-the-use-of-the-required-attribute"></a>Remarques sur l’utilisation de l’attribut Required
+* Une valeur est considérée comme présente uniquement si une entrée est tapée pour celle-ci. Par conséquent, la validation côté client gère les types n’acceptant pas les valeurs Null de la même façon que les types Nullable
+* Un espace blanc dans un champ de chaîne est considéré comme une entrée valide par la méthode [required](https://jqueryvalidation.org/required-method/) jQuery Validate. La validation côté serveur considère qu’un champ de chaîne obligatoire est non valide si seul un espace blanc est entré.
 
-Les [types valeur](/dotnet/csharp/language-reference/keywords/value-types) non Nullable (tels que `decimal`, `int`, `float` et `DateTime`) sont obligatoires par nature et n’ont pas besoin de l’attribut `Required`. L’application n’effectue pas de vérifications de validation côté serveur pour les types non Nullables qui sont marqués `Required`.
+Comme indiqué précédemment, les types n’acceptant pas les valeurs Null sont traités comme s’ils avaient un attribut `[Required]`. Cela signifie que vous bénéficiez d’une validation côté client même si vous n’appliquez pas l’attribut `[Required]`. En revanche, si vous n’utilisez pas l’attribut, vous recevez un message d’erreur par défaut. Pour spécifier un message d’erreur personnalisé, utilisez l’attribut.
 
-La liaison de modèle MVC, qui n’est pas concernée par la validation et les attributs de validation, rejette l’envoi d’un champ de formulaire contenant une valeur manquante ou un espace pour un type non Nullable. En l’absence d’un attribut `BindRequired` sur la propriété cible, la liaison de modèle ignore les données manquantes pour les types non Nullables, où le champ de formulaire est absent dans les données du formulaire entrant.
+## <a name="remote-attribute"></a>Attribut [Remote]
 
-L’[attribut BindRequired](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.bindrequiredattribute) (consultez également <xref:mvc/models/model-binding#customize-model-binding-behavior-with-attributes>) est pratique pour vérifier que les données d’un formulaire sont complètes. Quand il est appliqué à une propriété, le système de la liaison de modèle exige une valeur pour cette propriété. Quand il est appliqué à un type, le système de la liaison de modèle exige des valeurs pour toutes les propriétés de ce type.
+L’attribut `[Remote]` implémente la validation côté client qui nécessite l’appel d’une méthode sur le serveur pour déterminer si le champ d’entrée est valide. Par exemple, l’application peut avoir besoin de vérifier si un nom d’utilisateur est déjà en cours d’utilisation.
 
-Quand vous utilisez un type [Nullable\<T> ](/dotnet/csharp/programming-guide/nullable-types/) (par exemple `decimal?` ou `System.Nullable<decimal>`) et que vous le marquez `Required`, une vérification de la validation côté serveur est effectuée comme si la propriété était de type nullable standard (par exemple `string`).
+Pour implémenter la validation à distance
 
-La validation côté client nécessite une valeur pour un champ de formulaire qui correspond à une propriété du modèle que vous avez marquée `Required` et pour une propriété de type non Nullable que vous n’avez pas marquée `Required`. `Required` peut être utilisé pour contrôler le message d’erreur de validation côté client.
+1. Créez une méthode d’action devant être appelée par JavaScript.  La méthode [remote](https://jqueryvalidation.org/remote-method/) jQuery Validate attend une réponse JSON :
+
+   * `"true"` signifie que les données d’entrée sont valides.
+   * `"false"`, `undefined` ou `null` signifie que l’entrée n’est pas valide.  Affichez le message d’erreur par défaut.
+   * Toute autre chaîne signifie que l’entrée n’est pas valide. Affichez la chaîne en tant que message d’erreur personnalisé.
+
+   Voici un exemple de méthode d’action qui retourne un message d’erreur personnalisé :
+
+   [!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyEmail)]
+
+1. Dans la classe de modèle, annotez la propriété avec un attribut `[Remote]` qui pointe vers la méthode d’action de validation, comme indiqué dans l’exemple suivant :
+
+   [!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserEmailProperty)]
+
+### <a name="additional-fields"></a>Champs supplémentaires
+
+La propriété `AdditionalFields` de l’attribut `[Remote]` vous permet de valider des combinaisons de champs relativement à des données présentes sur le serveur. Par exemple, si le modèle `User` a des propriétés `FirstName` et `LastName`, vous pouvez vérifier qu’aucun utilisateur existant n’a déjà cette paire de noms. L'exemple suivant montre comment utiliser `AdditionalFields` :
+
+[!code-csharp[](validation/sample/Models/User.cs?name=snippet_UserNameProperties)]
+
+`AdditionalFields` peut être défini explicitement avec les chaînes `"FirstName"` et `"LastName"`, mais l’utilisation de l’opérateur [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) simplifie la refactorisation ultérieure. La méthode d’action pour cette validation doit accepter les arguments de nom et de prénom :
+
+[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyName)]
+
+Quand l’utilisateur entre un nom ou un prénom, JavaScript effectue un appel à distance pour vérifier si cette paire de noms est déjà utilisée.
+
+Pour valider deux champs supplémentaires ou plus, spécifiez-les sous la forme d’une liste délimitée par des virgules. Par exemple, pour ajouter une propriété `MiddleName` au modèle, définissez l’attribut `[Remote]` comme indiqué dans l’exemple suivant :
+
+```cs
+[Remote(action: "VerifyName", controller: "Users", AdditionalFields = nameof(FirstName) + "," + nameof(LastName))]
+public string MiddleName { get; set; }
+```
+
+`AdditionalFields`, comme tous les arguments d’attribut, doit être une expression constante. Vous ne devez donc pas utiliser une [chaîne interpolée](/dotnet/csharp/language-reference/keywords/interpolated-strings) ou appeler <xref:System.String.Join*> pour initialiser `AdditionalFields`.
+
+## <a name="alternatives-to-built-in-attributes"></a>Alternatives aux attributs prédéfinis
+
+Si vous avez besoin d’une validation non fournie par les attributs prédéfinis, vous pouvez :
+
+* [Créer des attributs personnalisés](#custom-attributes).
+* [Implémenter IValidatableObject](#ivalidatableobject).
+
+
+## <a name="custom-attributes"></a>Attributs personnalisés
+
+Pour les scénarios non gérés par les attributs de validation prédéfinis, vous pouvez créer des attributs de validation personnalisés. Créez une classe qui hérite de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> et substituez la méthode <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
+
+La méthode `IsValid` accepte un objet nommé *value*, qui est l’entrée à valider. Une surcharge accepte également un objet `ValidationContext`, qui fournit des informations supplémentaires telles que l’instance de modèle créée par la liaison de modèle.
+
+L’exemple suivant vérifie que la date de sortie d’un film appartenant au genre *Classic* n’est pas ultérieure à une année spécifiée. L’attribut `[ClassicMovie2]` vérifie d’abord le genre, et continue uniquement s’il s’agit de *Classic*. Pour les films identifiés comme des classiques, il vérifie si la date de sortie n’est pas ultérieure à la limite passée au constructeur d’attribut.
+
+[!code-csharp[](validation/sample/Attributes/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
+
+La variable `movie` de l’exemple précédent représente un objet `Movie` qui contient les données de l’envoi du formulaire. La méthode `IsValid` vérifie la date et le genre. Si la validation réussit, `IsValid` retourne un code `ValidationResult.Success`. Quand la validation échoue, un `ValidationResult` avec un message d’erreur est retourné.
+
+## <a name="ivalidatableobject"></a>IValidatableObject
+
+L’exemple précédent fonctionne uniquement avec les types `Movie`. Une autre option de validation au niveau de la classe consiste à implémenter `IValidatableObject` dans la classe de modèle, comme indiqué dans l’exemple suivant :
+
+[!code-csharp[](validation/sample/Models/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -89,13 +192,13 @@ Les nœuds de niveau supérieur incluent les éléments suivants :
 * Paramètres du gestionnaire de page
 * Propriétés du modèle de page
 
-Les nœuds de niveau supérieur liés au modèle sont validés en plus de la validation des propriétés du modèle. Dans l’exemple suivant tiré de l’exemple d’application, la méthode `VerifyPhone` utilise <xref:System.ComponentModel.DataAnnotations.RegularExpressionAttribute> pour valider les données utilisateur dans le champ Phone (Téléphone) d’un formulaire :
+Les nœuds de niveau supérieur liés au modèle sont validés en plus de la validation des propriétés du modèle. Dans l’exemple suivant tiré de l’exemple d’application, la méthode `VerifyPhone` utilise <xref:System.ComponentModel.DataAnnotations.RegularExpressionAttribute> pour valider le paramètre d’action `phone` :
 
-[!code-csharp[](validation/sample/UsersController.cs?name=snippet_VerifyPhone)]
+[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_VerifyPhone)]
 
 Les nœuds de niveau supérieur peuvent utiliser <xref:Microsoft.AspNetCore.Mvc.ModelBinding.BindRequiredAttribute> avec des attributs de validation. Dans l’exemple suivant de l’exemple d’application, la méthode `CheckAge` spécifie que le paramètre `age` doit être lié à partir de la chaîne de requête au moment de l’envoi du formulaire :
 
-[!code-csharp[](validation/sample/UsersController.cs?name=snippet_CheckAge)]
+[!code-csharp[](validation/sample/Controllers/UsersController.cs?name=snippet_CheckAge)]
 
 Dans la page de vérification de l’âge (*CheckAge.cshtml*), il existe deux formulaires. Le premier formulaire envoie une valeur `Age` égale à `99` en tant que chaîne de requête : `https://localhost:5001/Users/CheckAge?Age=99`.
 
@@ -103,73 +206,59 @@ Quand un paramètre `age` au format approprié est envoyé à partir de la chaî
 
 Le second formulaire de la page de vérification de l’âge envoie la valeur `Age` dans le corps de la requête, ce qui entraîne un échec de la validation. L’échec de la liaison est dû au fait que le paramètre `age` doit provenir d’une chaîne de requête.
 
-La validation est activée par défaut et contrôlée par la propriété <xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowValidatingTopLevelNodes*> de <xref:Microsoft.AspNetCore.Mvc.MvcOptions>. Pour désactiver la validation du nœud de niveau supérieur, affectez à `AllowValidatingTopLevelNodes` la valeur `false` dans les options MVC (`Startup.ConfigureServices`) :
+Lors de l’exécution avec `CompatibilityVersion.Version_2_1` ou version ultérieure, la validation du nœud de niveau supérieur est activée par défaut. Autrement, la validation du nœud de niveau supérieur est désactivée. L’option par défaut peut être remplacée en définissant la propriété <xref:Microsoft.AspNetCore.Mvc.MvcOptions.AllowValidatingTopLevelNodes*> dans (`Startup.ConfigureServices`), comme illustré ici :
 
 [!code-csharp[](validation/sample_snapshot/Startup.cs?name=snippet_AddMvc&highlight=4)]
 
 ::: moniker-end
 
-## <a name="model-state"></a>État du modèle
+## <a name="maximum-errors"></a>Quantité maximale d’erreurs
 
-L’état du modèle représente les erreurs de validation dans les valeurs du formulaire HTML envoyé.
+La validation s’arrête quand le nombre maximal d’erreurs est atteint (200 par défaut). Vous pouvez configurer ce nombre avec le code suivant dans `Startup.ConfigureServices` :
 
-MVC continue la validation des champs jusqu’à ce que le nombre maximal d’erreurs soit atteint (200 par défaut). Vous pouvez configurer ce nombre avec le code suivant dans `Startup.ConfigureServices` :
-
-[!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors)]
-
-## <a name="handle-model-state-errors"></a>Gérer les erreurs d’état de modèle
-
-La validation de modèle se produit avant l’exécution d’une action de contrôleur. Il incombe à l’action d’inspecter `ModelState.IsValid` et de réagir de façon appropriée. Dans de nombreux cas, la réaction appropriée est de retourner une réponse d’erreur, dans l’idéal en détaillant la raison de l’échec de validation du modèle.
+[!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=3)]
 
 ::: moniker range=">= aspnetcore-2.1"
 
-Quand `ModelState.IsValid` prend la valeur `false` dans les contrôleurs d’API web à l’aide de l’attribut `[ApiController]`, une réponse HTTP 400 automatique contenant les détails du problème est retournée. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses).
+## <a name="maximum-recursion"></a>Récursivité maximale
+
+<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor> parcourt le graphe d’objet du modèle en cours de validation. Pour les modèles très profonds ou infiniment récursifs, la validation peut entraîner un dépassement de la capacité de la pile. [MvcOptions.MaxValidationDepth](xref:Microsoft.AspNetCore.Mvc.MvcOptions.MaxValidationDepth) fournit un moyen d’interrompre la validation de manière anticipée si la récursivité du visiteur dépasse une profondeur configurée. La valeur par défaut de `MvcOptions.MaxValidationDepth` est 200 lors de l’exécution avec `CompatibilityVersion.Version_2_2` ou ultérieure. Pour les versions antérieures, la valeur est Null, ce qui signifie qu’il n’y a aucune contrainte de profondeur.
+
+## <a name="automatic-short-circuit"></a>Court-circuit automatique
+
+La validation est automatiquement court-circuitée (ignorée) si le graphe du modèle ne nécessite pas de validation. Les objets pour lesquels le runtime ignore la validation comprennent les collections de primitives (telles que `byte[]`, `string[]`, `Dictionary<string, string>`) et les graphes d’objets complexes qui n’ont pas de validateur.
 
 ::: moniker-end
 
-Certaines applications choisissent de suivre une convention standard pour traiter les erreurs de validation de modèle ; dans ce cas, un filtre peut être un emplacement approprié pour implémenter une telle stratégie. Vous devez tester le comportement de vos actions avec des états de modèle valides et non valides.
+## <a name="disable-validation"></a>Désactiver la validation
 
-## <a name="manual-validation"></a>Validation manuelle
+Pour désactiver la validation
 
-Une fois la liaison de modèle et la validation terminées, vous pouvez en répéter des parties. Par exemple, un utilisateur peut avoir entré du texte dans un champ qui attendait un entier, ou il peut être nécessaire de calculer une valeur pour une propriété du modèle.
+1. Créez une implémentation de `IObjectModelValidator` qui ne marque aucun champ comme étant non valide.
 
-Il peut être nécessaire d’effectuer la validation manuellement. Pour cela, appelez la méthode `TryValidateModel`, comme indiqué ici :
+   [!code-csharp[](validation/sample/Attributes/NullObjectModelValidator.cs?name=snippet_DisableValidation)]
 
-[!code-csharp[](validation/sample/MoviesController.cs?name=snippet_TryValidateModel)]
+1. Ajoutez le code suivant à `Startup.ConfigureServices` pour remplacer l’implémentation par défaut de `IObjectModelValidator` dans le conteneur d’injection de dépendances.
 
-## <a name="custom-validation"></a>Validation personnalisée
+   [!code-csharp[](validation/sample/Startup.cs?name=snippet_DisableValidation)]
 
-Les attributs de validation fonctionnent pour la plupart des besoins de validation. Certaines règles de validation sont cependant spécifiques à votre métier. Vos règles peuvent ne pas être des techniques de validation de données courantes comme vérifier qu’un champ est obligatoire ou qu’il est conforme à une plage de valeurs. Pour ces scénarios, les attributs de validation personnalisés sont une bonne solution. Vous pouvez créer facilement vos propres attributs de validation personnalisée dans MVC. Héritez simplement de `ValidationAttribute` et remplacez la méthode `IsValid`. La méthode `IsValid` accepte deux paramètres, le premier est un objet nommé *value* et le second est un objet `ValidationContext` nommé *validationContext*. *value* fait référence à la valeur réelle du champ que votre validateur personnalisé doit valider.
-
-Dans l’exemple suivant, une règle métier stipule que les utilisateurs ne peuvent pas définir le genre sur *Classic* pour un film sorti après 1960. L’attribut `[ClassicMovie]` vérifie d’abord le genre et, s’il s’agit d’un classique, vérifie ensuite si date de sortie est postérieure à 1960. Si la sortie est postérieure à 1960, la validation échoue. L’attribut accepte un paramètre entier qui représente l’année que vous pouvez utiliser pour valider les données. Vous pouvez capturer la valeur du paramètre dans le constructeur de l’attribut, comme illustré ici :
-
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?name=snippet_ClassicMovieAttribute)]
-
-La variable `movie` ci-dessus représente un objet `Movie` qui contient les données de l’envoi du formulaire à valider. Dans ce cas, le code de validation vérifie la date et le genre dans la méthode `IsValid` de la classe `ClassicMovieAttribute` selon les règles définies. Si la validation réussit, `IsValid` retourne un code `ValidationResult.Success`. Quand la validation échoue, un `ValidationResult` avec un message d’erreur est retourné :
-
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?name=snippet_GetErrorMessage)]
-
-Quand un utilisateur modifie le champ `Genre` et envoie le formulaire, la méthode `IsValid` de la classe `ClassicMovieAttribute` doit vérifier si le film est un classique. Comme pour tout attribut prédéfini, appliquez `ClassicMovieAttribute` à une propriété comme `ReleaseDate` pour garantir que la validation se produit, comme illustré dans l’exemple de code précédent. Étant donné que l’exemple fonctionne seulement avec les types `Movie`, une meilleure option consiste à utiliser `IValidatableObject` comme illustré dans le paragraphe suivant.
-
-Vous pouvez aussi placer ce même code dans le modèle en implémentant la méthode `Validate` sur l’interface `IValidatableObject`. Si les attributs de validation personnalisés fonctionnent bien pour la validation de propriétés individuelles, vous pouvez aussi utiliser l’implémentation de `IValidatableObject` pour implémenter une validation au niveau de la classe :
-
-[!code-csharp[](validation/sample/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
+Vous risquez toujours de voir des erreurs d’état du modèle provenant de la liaison de modèle.
 
 ## <a name="client-side-validation"></a>Validation côté client
 
-La validation côté client est très pratique pour les utilisateurs. Elle leur épargne le temps d’attente nécessaire à un aller-retour avec le serveur. En termes d’activité de l’entreprise, même de quelques fractions de secondes multipliées des centaines de fois par jour finissent par représenter un temps considérable, auquel s’ajoute un coût et de la frustration. Une validation directe et immédiate permet aux utilisateurs de travailler plus efficacement, et de produire une meilleure qualité des entrées et des sorties.
+La validation côté client empêche l’envoi jusqu’à ce que le formulaire soit valide. Le bouton Submit exécute le code JavaScript qui envoie le formulaire ou qui affiche des messages d’erreur.
 
-Vous devez disposer d’une vue avec les références de script JavaScript appropriées en place pour que la validation côté client fonctionne comme vous le voyez ici.
+La validation côté client permet d’éviter un aller-retour inutile vers le serveur quand il existe des erreurs d’entrée sur un formulaire. Les références de script suivantes dans *_Layout.cshtml* et *_ValidationScriptsPartial.cshtml* prennent en charge la validation côté client :
 
 [!code-cshtml[](validation/sample/Views/Shared/_Layout.cshtml?name=snippet_ScriptTag)]
 
-[!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml)]
+[!code-cshtml[](validation/sample/Views/Shared/_ValidationScriptsPartial.cshtml?name=snippet_ScriptTags)]
 
-Le script [jQuery Unobtrusive Validation](https://github.com/aspnet/jquery-validation-unobtrusive) est une bibliothèque frontale personnalisée de Microsoft qui s’appuie sur le plug-in bien connu [jQuery Validate](https://jqueryvalidation.org/). Sans jQuery Unobtrusive Validation, vous devriez coder la même logique de validation à deux endroits : une fois dans les attributs de validation côté serveur sur les propriétés du modèle, puis à nouveau dans les scripts côté client (les exemples de méthode [`validate()`](https://jqueryvalidation.org/validate/) de jQuery Validate montrent combien ceci peut devenir complexe). Au lieu de cela, les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les [helpers HTML](xref:mvc/views/overview) peuvent utiliser les attributs de validation et les métadonnées de type des propriétés du modèle pour rendre les [attributs data-](http://w3c.github.io/html/dom.html#embedding-custom-non-visible-data-with-the-data-attributes) HTML 5 dans les éléments de formulaire nécessitant une validation. MVC génère les attributs `data-` pour les attributs intégrés et pour les attributs personnalisés. jQuery Unobtrusive Validation analyse ensuite les attributs `data-` et passe la logique à jQuery Validate, en « copiant » la logique de validation côté serveur vers le client. Vous pouvez afficher les erreurs de validation sur le client en utilisant les Tag Helpers appropriés, comme indiqué ici :
+Le script [jQuery Unobtrusive Validation](https://github.com/aspnet/jquery-validation-unobtrusive) est une bibliothèque frontale personnalisée de Microsoft qui s’appuie sur le plug-in bien connu [jQuery Validate](https://jqueryvalidation.org/). Sans jQuery Unobtrusive Validation, vous devriez coder la même logique de validation à deux endroits : une fois dans les attributs de validation côté serveur sur les propriétés du modèle, puis à nouveau dans les scripts côté client. Au lieu de cela, les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les [helpers HTML](xref:mvc/views/overview) utilisent les attributs de validation et les métadonnées de type des propriétés du modèle afin de restituer les attributs `data-` HTML 5 pour les éléments de formulaire nécessitant une validation. jQuery Unobtrusive Validation analyse les attributs `data-` et passe la logique à jQuery Validate, en « copiant » la logique de validation côté serveur vers le client. Vous pouvez afficher les erreurs de validation sur le client en utilisant des Tag Helpers, comme indiqué ici :
 
 [!code-cshtml[](validation/sample/Views/Movies/Create.cshtml?name=snippet_ReleaseDate&highlight=4-5)]
 
-Les Tag Helpers ci-dessus rendent le HTML ci-dessous. Notez que les attributs `data-` dans la sortie HTML correspondent aux attributs de validation pour la propriété `ReleaseDate`. L’attribut `data-val-required` ci-dessous contient un message d’erreur à afficher si l’utilisateur ne renseigne pas le champ correspondant à la date de sortie. jQuery Unobtrusive Validation passe cette valeur à la méthode [`required()`](https://jqueryvalidation.org/required-method/) de jQuery Validate, qui affiche alors ce message dans l’élément **\<span>** qui l’accompagne.
+Les Tag Helpers précédents restituent le code HTML suivant.
 
 ```html
 <form action="/Movies/Create" method="post">
@@ -190,13 +279,13 @@ Les Tag Helpers ci-dessus rendent le HTML ci-dessous. Notez que les attributs `d
 </form>
 ```
 
-La validation côté client empêche l’envoi jusqu’à ce que le formulaire soit valide. Le bouton Submit exécute le code JavaScript qui envoie le formulaire ou qui affiche des messages d’erreur.
+Notez que les attributs `data-` dans la sortie HTML correspondent aux attributs de validation pour la propriété `ReleaseDate`. L’attribut `data-val-required` contient un message d’erreur à afficher si l’utilisateur ne renseigne pas le champ correspondant à la date de sortie. jQuery Unobtrusive Validation passe cette valeur à la méthode [`required()`](https://jqueryvalidation.org/required-method/) de jQuery Validate, qui affiche alors ce message dans l’élément **\<span>** qui l’accompagne.
 
-MVC détermine les valeurs d’attribut de type en fonction du type de données .NET d’une propriété, éventuellement remplacé avec des attributs `[DataType]`. L’attribut `[DataType]` de base ne fait pas de validation côté serveur réelle. Les navigateurs choisissent eux-mêmes leurs propres messages d’erreur et affichent ces erreurs ; le package jQuery Unobtrusive Validation peut cependant remplacer les messages et les afficher de façon cohérente avec d’autres messages. Ceci se produit de façon plus évidente quand des utilisateurs appliquent des sous-classes `[DataType]` comme `[EmailAddress]`.
+La validation du type de données est basée sur le type .NET d’une propriété, sauf en cas de substitution par un attribut `[DataType]`. Les navigateurs ont leurs propres messages d’erreur par défaut, mais le package jQuery Validation Unobtrusive Validation peut remplacer ces messages. Les attributs `[DataType]` et les sous-classes comme `[EmailAddress]` vous permettent de spécifier le message d’erreur.
 
 ### <a name="add-validation-to-dynamic-forms"></a>Ajouter une validation à des formulaires dynamiques
 
-Comme jQuery Unobtrusive Validation passe la logique et les paramètres de validation à jQuery Validate lors du premier chargement de la page, les formulaires générés dynamiquement ne se présentent pas automatiquement à la validation. Au lieu de cela, vous devez indiquer à jQuery Validate d’analyser le formulaire dynamique immédiatement après sa création. Par exemple, le code ci-dessous montre comment vous pouvez configurer la validation côté client sur un formulaire ajouté via AJAX.
+jQuery Unobtrusive Validation passe la logique et les paramètres de validation à jQuery Validate lors du premier chargement de la page. Par conséquent, la validation ne fonctionne pas automatiquement sur les formulaires générés de manière dynamique. Pour activer la validation, vous devez faire en sorte que jQuery Validate analyse le formulaire dynamique immédiatement après l’avoir créé. Par exemple, le code suivant définit la validation côté client sur un formulaire ajouté par le biais d’AJAX.
 
 ```js
 $.get({
@@ -215,11 +304,11 @@ $.get({
 })
 ```
 
-La méthode `$.validator.unobtrusive.parse()` accepte un sélecteur jQuery comme argument. Cette méthode indique à jQuery Unobtrusive Validation d’analyser les attributs `data-` des formulaires dans ce sélecteur. Les valeurs de ces attributs sont ensuite passées au plug-in jQuery Validate pour que le formulaire présente les règles de validation souhaitées côté client.
+La méthode `$.validator.unobtrusive.parse()` accepte un sélecteur jQuery comme argument. Cette méthode indique à jQuery Unobtrusive Validation d’analyser les attributs `data-` des formulaires dans ce sélecteur. Les valeurs de ces attributs sont ensuite passées au plug-in jQuery Validate.
 
 ### <a name="add-validation-to-dynamic-controls"></a>Ajouter une validation à des contrôles dynamiques
 
-Vous pouvez aussi mettre à jour les règles de validation sur un formulaire quand des contrôles individuels, comme `<input/>` et `<select/>`, sont générés dynamiquement. Vous ne pouvez pas passer de sélecteurs pour ces éléments directement à la méthode `parse()`, car le formulaire entourant a déjà été analysé et ne sera pas mis à jour. Au lieu de cela, vous supprimez d’abord les données de validation existantes, puis vous réanalysez tout le formulaire, comme indiqué ci-dessous :
+La méthode `$.validator.unobtrusive.parse()` opère sur un formulaire entier, et non sur des contrôles individuels générés de manière dynamique tels que `<input/>` et `<select/>`. Pour réanalyser le formulaire, supprimez les données de validation qui ont été ajoutées quand le formulaire a été analysé précédemment, comme illustré dans l’exemple suivant :
 
 ```js
 $.get({
@@ -238,69 +327,69 @@ $.get({
 })
 ```
 
-## <a name="iclientmodelvalidator"></a>IClientModelValidator
+## <a name="custom-client-side-validation"></a>Validation personnalisée côté client
 
-Vous pouvez créer une logique côté client pour votre attribut personnalisé, et la [validation discrète](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html) qui crée un adaptateur pour la [validation jquery](http://jqueryvalidation.org/documentation/) l’exécute sur le client automatiquement pour vous dans le cadre de la validation. La première étape consiste à contrôler quels attributs data- sont ajoutés en implémentant l’interface `IClientModelValidator` comme indiqué ici :
+La validation personnalisée côté client s’effectue en générant des attributs HTML `data-` qui fonctionnent avec un adaptateur jQuery Validate personnalisé. L’exemple de code d’adaptateur suivant a été écrit pour les attributs `ClassicMovie` et `ClassicMovie2` qui ont été introduits plus haut dans cet article :
 
-[!code-csharp[](validation/sample/ClassicMovieAttribute.cs?name=snippet_AddValidation)]
+[!code-javascript[](validation/sample/wwwroot/js/classicMovieValidator.js?name=snippet_UnobtrusiveValidation)]
 
-Les attributs qui implémentent cette interface peuvent ajouter des attributs HTML aux champs générés. L’examen de la sortie pour l’élément `ReleaseDate` révèle du HTML qui est similaire à l’exemple précédent, excepté qu’il existe maintenant un attribut `data-val-classicmovie` qui a été défini dans la méthode `AddValidation` de `IClientModelValidator`.
+Pour plus d’informations sur la façon d’écrire des adaptateurs, consultez la [documentation de jQuery Validate](http://jqueryvalidation.org/documentation/).
+
+L’utilisation d’un adaptateur pour un champ donné est déclenchée par des attributs `data-` qui :
+
+* Marquent le champ comme étant soumis à validation (`data-val="true"`).
+* Identifient un nom de règle de validation et un texte de message d’erreur (par exemple, `data-val-rulename="Error message."`).
+* Fournissent les éventuels paramètres supplémentaires dont le validateur a besoin (par exemple, `data-val-rulename-parm1="value"`).
+
+L’exemple suivant montre les attributs `data-` pour l’attribut `ClassicMovie` de l’exemple d’application :
 
 ```html
 <input class="form-control" type="datetime"
     data-val="true"
-    data-val-classicmovie="Classic movies must have a release year earlier than 1960."
-    data-val-classicmovie-year="1960"
+    data-val-classicmovie1="Classic movies must have a release year earlier than 1960."
+    data-val-classicmovie1-year="1960"
     data-val-required="The ReleaseDate field is required."
     id="ReleaseDate" name="ReleaseDate" value="" />
 ```
 
-La validation discrète utilise les données de l’attribut `data-` pour afficher les messages d’erreur. Cependant, jQuery ne dispose pas des règles ou des messages tant que vous ne les avez pas ajoutés à l’objet `validator` de jQuery. Cela est illustré dans l’exemple suivant, qui ajoute une méthode de validation client `classicmovie` personnalisée pour l’objet `validator` jQuery. Pour obtenir une explication de la méthode `unobtrusive.adapters.add`, consultez [Validation client non obstrusive dans ASP.NET MVC](http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html).
+Comme mentionné plus haut, les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les [helpers HTML](xref:mvc/views/overview) utilisent les informations des attributs de validation pour restituer les attributs `data-`. Il existe deux options pour l’écriture de code qui entraîne la création d’attributs HTML `data-` personnalisés :
 
-[!code-javascript[](validation/sample/Views/Movies/Create.cshtml?name=snippet_UnobtrusiveValidation)]
+* Créez une classe qui dérive de `AttributeAdapterBase<TAttribute>` et une classe qui implémente `IValidationAttributeAdapterProvider`, et inscrivez votre attribut et son adaptateur dans l’injection de dépendances. Cette méthode respecte le [principe de responsabilité unique](https://wikipedia.org/wiki/Single_responsibility_principle), dans la mesure où le code de validation lié au serveur et celui lié au client se trouvent dans des classes distinctes. Il existe un autre avantage : l’adaptateur étant inscrit dans l’injection de dépendances, les autres services dans l’injection de dépendances lui sont accessibles si nécessaire.
+* Implémentez `IClientModelValidator` dans votre classe `ValidationAttribute`. Cette méthode peut être appropriée si l’attribut n’effectue aucune validation côté serveur et n’a besoin d’aucun service à partir de l’injection de dépendances.
 
-Avec le code précédent, la méthode `classicmovie` effectue la validation côté client à la date de mise en production du film. Le message d’erreur s’affiche si la méthode retourne `false`.
+### <a name="attributeadapter-for-client-side-validation"></a>AttributeAdapter pour la validation côté client
 
-## <a name="remote-validation"></a>Validation à distance
+Cette méthode de rendu des attributs `data-` en HTML est utilisée par l’attribut `ClassicMovie` dans l’exemple d’application. Pour ajouter la validation côté client à l’aide de cette méthode
 
-La validation à distance est une fonctionnalité intéressante à utiliser quand vous devez valider des données sur le client relativement à des données présentes sur le serveur. Par exemple, votre application doit vérifier si une adresse e-mail ou un nom d’utilisateur est déjà utilisé, et elle doit pour cela interroger une grande quantité de données. Le téléchargement de grands jeux de données pour valider un seul champ ou même quelques-uns consomme trop de ressources. Il peut également exposer des informations sensibles. Une alternative consiste à faire une demande aller-retour pour valider un champ.
+1. Créez une classe d’adaptateurs d’attributs pour l’attribut de validation personnalisé. Dérivez la classe de [AttributeAdapterBase\<T>](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.attributeadapterbase-1?view=aspnetcore-2.2). Créez une méthode `AddValidation` qui ajoute des attributs `data-` à la sortie restituée, comme illustré dans cet exemple :
 
-Vous pouvez implémenter une validation à distance selon un processus en deux étapes. Vous devez d’abord annoter votre modèle avec l’attribut `[Remote]`. L’attribut `[Remote]` accepte plusieurs surcharges que vous pouvez utiliser pour diriger le code JavaScript côté client vers le code approprié à appeler. L’exemple ci-dessous pointe vers la méthode d’action `VerifyEmail` du contrôleur `Users`.
+   [!code-csharp[](validation/sample/Attributes/ClassicMovieAttributeAdapter.cs?name=snippet_ClassicMovieAttributeAdapter)]
 
-[!code-csharp[](validation/sample/User.cs?name=snippet_UserEmailProperty)]
+1. Créez une classe de fournisseurs d’adaptateurs qui implémente <xref:Microsoft.AspNetCore.Mvc.DataAnnotations.IValidationAttributeAdapterProvider>. Dans la méthode `GetAttributeAdapter`, passez l’attribut personnalisé au constructeur de l’adaptateur, comme illustré dans cet exemple :
 
-La deuxième étape consiste à placer le code de validation dans la méthode d’action correspondante comme défini dans l’attribut `[Remote]`. Selon la documentation sur la méthode jQuery Validate [distante](https://jqueryvalidation.org/remote-method/), la réponse du serveur doit être une chaîne JSON qui est :
+   [!code-csharp[](validation/sample/Attributes/CustomValidationAttributeAdapterProvider.cs?name=snippet_CustomValidationAttributeAdapterProvider)]
 
-* `"true"` pour les éléments valides.
-* `"false"`, `undefined` ou `null` pour les éléments non valides, avec le message d’erreur par défaut.
+1. Inscrivez le fournisseur d’adaptateurs auprès de l’injection de dépendances dans `Startup.ConfigureServices` :
 
-Si la réponse du serveur est une chaîne (par exemple, `"That name is already taken, try peter123 instead"`), la chaîne est affichée comme un message d’erreur personnalisé à la place de la chaîne par défaut.
+   [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=8-10)]
 
-La définition de la méthode `VerifyEmail` suit ces règles, comme indiqué ci-dessous. Elle retourne un message d’erreur de validation si l’adresse e-mail est déjà utilisée ou `true` si l’adresse e-mail est libre, et elle encapsule le résultat dans un objet `JsonResult`. Le côté client peut alors utiliser la valeur retournée pour continuer ou afficher l’erreur si nécessaire.
+### <a name="iclientmodelvalidator-for-client-side-validation"></a>IClientModelValidator pour la validation côté client
 
-[!code-csharp[](validation/sample/UsersController.cs?name=snippet_VerifyEmail)]
+Cette méthode de rendu des attributs `data-` en HTML est utilisée par l’attribut `ClassicMovie2` dans l’exemple d’application. Pour ajouter la validation côté client à l’aide de cette méthode
 
-Maintenant, quand les utilisateurs entrent une adresse e-mail, le code JavaScript de la vue effectue un appel à distance pour vérifier si l’e-mail a déjà été utilisé et, le cas échéant, affiche le message d’erreur. Dans le cas contraire, l’utilisateur peut envoyer le formulaire comme d’habitude.
+* Dans l’attribut de validation personnalisé, implémentez l’interface `IClientModelValidator` et créez une méthode `AddValidation`. Dans la méthode `AddValidation`, ajoutez des attributs `data-` pour la validation, comme indiqué dans l’exemple suivant :
 
-La propriété `AdditionalFields` de l’attribut `[Remote]` est pratique pour valider des combinaisons de champs relativement à des données présentes sur le serveur. Par exemple, si le modèle `User` ci-dessus a deux propriétés supplémentaires appelées `FirstName` et `LastName`, vous pouvez vérifier qu’aucun utilisateur existant n’a déjà cette paire de noms. Vous définissez les nouvelles propriétés comme indiqué dans le code suivant :
+  [!code-csharp[](validation/sample/Attributes/ClassicMovie2Attribute.cs?name=snippet_ClassicMovie2Attribute)]
 
-[!code-csharp[](validation/sample/User.cs?name=snippet_UserNameProperties)]
+## <a name="disable-client-side-validation"></a>Désactiver la validation côté client
 
-`AdditionalFields` peut avoir été défini explicitement avec les chaînes `"FirstName"` et `"LastName"`, mais l’utilisation de l’opérateur [`nameof`](/dotnet/csharp/language-reference/keywords/nameof) de cette façon simplifie la refactorisation ultérieure. La méthode d’action pour effectuer la validation doit alors accepter deux arguments, un pour la valeur de `FirstName` et l’autre pour la valeur de `LastName`.
+Le code suivant désactive la validation côté client dans les vues MVC :
 
-[!code-csharp[](validation/sample/UsersController.cs?name=snippet_VerifyName)]
+[!code-csharp[](validation/sample_snapshot/Startup2.cs?name=snippet_DisableClientValidation)]
 
-Maintenant, quand des utilisateurs entrent un prénom et un nom, JavaScript :
+Cela fonctionne uniquement dans les vues MVC, pas dans les pages Razor. Une autre option permettant de désactiver la validation côté client consiste à commenter la référence à `_ValidationScriptsPartial` dans votre fichier *.cshtml*.
 
-* Effectue un appel à distance pour vérifier si cette paire de noms est déjà utilisée.
-* Si la paire est déjà utilisée, un message d’erreur est affiché.
-* Si elle n’est pas déjà utilisée, l’utilisateur peut envoyer le formulaire.
+## <a name="additional-resources"></a>Ressources supplémentaires
 
-Si vous devez valider deux champs supplémentaires ou plus avec l’attribut `[Remote]`, vous les fournissez sous la forme d’une liste délimitée par des virgules. Par exemple, pour ajouter une propriété `MiddleName` au modèle, définissez l’attribut `[Remote]` comme indiqué dans le code suivant :
-
-```cs
-[Remote(action: "VerifyName", controller: "Users", AdditionalFields = nameof(FirstName) + "," + nameof(LastName))]
-public string MiddleName { get; set; }
-```
-
-`AdditionalFields`, comme tous les arguments d’attribut, doit être une expression constante. Vous ne devez donc pas utiliser une [chaîne interpolée](/dotnet/csharp/language-reference/keywords/interpolated-strings) ou appeler <xref:System.String.Join*> pour initialiser `AdditionalFields`. Pour chaque champ supplémentaire que vous ajoutez à l’attribut `[Remote]`, vous devez ajouter un autre argument à la méthode d’action de contrôleur correspondante.
+* [Espace de noms System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations)
+* [Liaison de données](model-binding.md)

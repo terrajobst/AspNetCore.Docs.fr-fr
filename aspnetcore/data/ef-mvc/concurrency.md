@@ -4,15 +4,15 @@ description: Ce didacticiel montre comment gérer les conflits quand plusieurs u
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 7b18927d5d528ec2951087502e26b2b30214f389
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 668cdafc078091b65035ecad854d2ecc62555721
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103018"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58750864"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>Tutoriel : Gérer l’accès concurrentiel - ASP.NET MVC avec EF Core
 
@@ -39,7 +39,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Mettre à jour les données associées avec EF Core dans une application web ASP.NET Core MVC](update-related-data.md)
+* [Mettre à jour les données associées](update-related-data.md)
 
 ## <a name="concurrency-conflicts"></a>Conflits d’accès concurrentiel
 
@@ -148,7 +148,7 @@ Ceci change l’en-tête en « Departments », supprime la colonne RowVersion et
 
 Dans la méthode HttpGet `Edit` et la méthode `Details`, ajoutez `AsNoTracking`. Dans la méthode HttpGet `Edit`, ajoutez un chargement hâtif pour l’administrateur.
 
-[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading&highlight=2,3)]
+[!code-csharp[](intro/samples/cu/Controllers/DepartmentsController.cs?name=snippet_EagerLoading)]
 
 Remplacez le code existant pour la méthode HttpPost `Edit` méthode par le code suivant :
 
@@ -309,6 +309,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Page Delete mise à jour
 > * Vues Details et Create mises à jour
 
-Passez à l’article suivant pour découvrir comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
+Passez au tutoriel suivant pour découvrir comment implémenter l’héritage table par hiérarchie pour les entités Instructor et Student.
+
 > [!div class="nextstepaction"]
-> [Implémenter l'héritage TPH (table par hiérarchie)](inheritance.md)
+> [Suivant : Implémenter l’héritage TPH (table par hiérarchie)](inheritance.md)

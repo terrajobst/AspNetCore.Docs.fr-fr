@@ -2,16 +2,17 @@
 title: Fournisseurs de fichiers dans ASP.NET Core
 author: guardrex
 description: Découvrez comment ASP.NET Core fournit un accès au système de fichiers en utilisant des fournisseurs de fichiers.
+monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 08/01/2018
+ms.date: 03/30/2019
 uid: fundamentals/file-providers
-ms.openlocfilehash: 5d0d46ba82cd84e48e5a9b23d6d330d8888beb41
-ms.sourcegitcommit: 408921a932448f66cb46fd53c307a864f5323fe5
+ms.openlocfilehash: 2ce40ea0d576d08a6b42c3eb6693754f2a0bddce
+ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51570098"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58809219"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Fournisseurs de fichiers dans ASP.NET Core
 
@@ -50,25 +51,11 @@ L’exemple d’application montre comment configurer un fournisseur de fichiers
 
 Trois implémentations de `IFileProvider` sont disponibles.
 
-::: moniker range=">= aspnetcore-2.0"
-
 | Implémentation | Description |
 | -------------- | ----------- |
 | [PhysicalFileProvider](#physicalfileprovider) | Le fournisseur physique est utilisé pour accéder aux fichiers physiques du système. |
 | [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | Le fournisseur incorporé de manifeste est utilisé pour accéder à des fichiers incorporés dans des assemblys. |
 | [CompositeFileProvider](#compositefileprovider) | Le fournisseur composite est utilisé pour fournir un accès combiné à des fichiers et à des répertoires à partir d’un ou de plusieurs fournisseurs. |
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-| Implémentation | Description |
-| -------------- | ----------- |
-| [PhysicalFileProvider](#physicalfileprovider) | Le fournisseur physique est utilisé pour accéder aux fichiers physiques du système. |
-| [EmbeddedFileProvider](#embeddedfileprovider) | Le fournisseur incorporé est utilisé pour accéder à des fichiers incorporés dans des assemblys. |
-| [CompositeFileProvider](#compositefileprovider) | Le fournisseur composite est utilisé pour fournir un accès combiné à des fichiers et à des répertoires à partir d’un ou de plusieurs fournisseurs. |
-
-::: moniker-end
 
 ### <a name="physicalfileprovider"></a>PhysicalFileProvider
 
@@ -102,8 +89,6 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 Injectez le fournisseur dans n’importe quel constructeur de classe et affectez-le à un champ local. Utilisez le champ dans l’ensemble des méthodes de la classe pour accéder aux fichiers.
 
-::: moniker range=">= aspnetcore-2.0"
-
 Dans l’exemple d’application, la classe `IndexModel` reçoit une instance `IFileProvider` pour obtenir le contenu du répertoire pour le chemin d’accès de la base de l’application.
 
 *Pages/Index.cshtml.cs* :
@@ -116,32 +101,9 @@ Dans l’exemple d’application, la classe `IndexModel` reçoit une instance `I
 
 [!code-cshtml[](file-providers/samples/2.x/FileProviderSample/Pages/Index.cshtml?name=snippet1)]
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Dans l’exemple d’application, la classe `HomeController` reçoit une instance `IFileProvider` pour obtenir le contenu du répertoire pour le chemin d’accès de la base de l’application.
-
-*Controllers/HomeController.cs* :
-
-[!code-csharp[](file-providers/samples/1.x/FileProviderSample/Controllers/HomeController.cs?name=snippet1)]
-
-`IDirectoryContents` sont itérés dans la vue.
-
-*Views/Home/Index.cshtml* :
-
-[!code-cshtml[](file-providers/samples/1.x/FileProviderSample/Views/Home/Index.cshtml?name=snippet1)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.0"
-
 ### <a name="manifestembeddedfileprovider"></a>ManifestEmbeddedFileProvider
 
 [ManifestEmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider) est utilisé pour accéder à des fichiers incorporés dans des assemblys. `ManifestEmbeddedFileProvider` utilise un manifeste compilé dans l’assembly pour reconstruire les chemins d’accès d’origine des fichiers intégrés.
-
-> [!NOTE]
-> `ManifestEmbeddedFileProvider` est disponible dans ASP.NET Core 2.1 et versions ultérieures. Pour accéder aux fichiers incorporés dans des assemblys dans ASP.NET Core 2.0 ou versions antérieures, consultez la [version d’ASP.NET Core 1.x de cette rubrique](/aspnet/core/fundamentals/file-providers?view=aspnetcore-1.1).
 
 Pour générer un manifeste des fichiers incorporés, définissez la propriété `<GenerateEmbeddedFilesManifest>` sur `true`. Spécifiez les fichiers à incorporer avec [ &lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) :
 
@@ -170,76 +132,24 @@ Des surcharges supplémentaires vous permettent de :
 | [ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_System_DateTimeOffset_) | Accepte un paramètre de chemin d’accès relatif `root` facultatif et un paramètre de date `lastModified` ([DateTimeOffset](/dotnet/api/system.datetimeoffset)). La date `lastModified` définit la portée de la dernière date de modification pour les instances [IFileInfo](/dotnet/api/microsoft.extensions.fileproviders.ifileinfo) retournées par [IFileProvider](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider). |
 | [ManifestEmbeddedFileProvider(Assembly, String, String, DateTimeOffset)](/dotnet/api/microsoft.extensions.fileproviders.manifestembeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_ManifestEmbeddedFileProvider__ctor_System_Reflection_Assembly_System_String_System_String_System_DateTimeOffset_) | Accepte un chemin d'accès relatif `root` facultatif, une date `lastModified` et des paramètres `manifestName`. `manifestName` représente le nom de la ressource incorporée contenant la manifeste. |
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-### <a name="embeddedfileprovider"></a>EmbeddedFileProvider
-
-[EmbeddedFileProvider](/dotnet/api/microsoft.extensions.fileproviders.embeddedfileprovider) est utilisé pour accéder à des fichiers incorporés dans des assemblys. Spécifiez les fichiers à incorporer avec la propriété [ &lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) dans le fichier projet :
-
-```xml
-<ItemGroup>
-  <EmbeddedResource Include="Resource.txt" />
-</ItemGroup>
-```
-
-Utilisez les [modèles glob](#glob-patterns) pour spécifier un ou plusieurs fichiers à incorporer dans l’assembly.
-
-L’exemple d’application crée un `EmbeddedFileProvider` et transmet l’assembly en cours d’exécution à son constructeur.
-
-*Startup.cs* :
-
-```csharp
-var embeddedProvider = new EmbeddedFileProvider(Assembly.GetEntryAssembly());
-```
-
-Les ressources incorporées n’exposent pas les répertoires. Au lieu de cela, le chemin de la ressource (par l’intermédiaire de son espace de noms) est incorporé dans son nom de fichier à l’aide de séparateurs `.`. Dans l’exemple d’application, `baseNamespace` est `FileProviderSample.`.
-
-Le constructeur [EmbeddedFileProvider (Assembly, String)](/dotnet/api/microsoft.extensions.fileproviders.embeddedfileprovider.-ctor#Microsoft_Extensions_FileProviders_EmbeddedFileProvider__ctor_System_Reflection_Assembly_) accepte un paramètre `baseNamespace` facultatif. Spécifiez l’espace de noms de base pour définir la portée des appels à [GetDirectoryContents](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.getdirectorycontents) sur ces ressources sous l’espace de noms fourni.
-
-::: moniker-end
-
 ### <a name="compositefileprovider"></a>CompositeFileProvider
 
 [CompositeFileProvider](/dotnet/api/microsoft.extensions.fileproviders.compositefileprovider) combine des instances `IFileProvider` en exposant une interface unique qui permet d’utiliser des fichiers de différents fournisseurs. Quand vous créez `CompositeFileProvider`, vous passez une ou plusieurs instances `IFileProvider` à son constructeur.
-
-::: moniker range=">= aspnetcore-2.0"
 
 Dans l’exemple d’application, un `PhysicalFileProvider` et un `ManifestEmbeddedFileProvider` fournissent des fichiers à un `CompositeFileProvider` inscrit dans le conteneur de service de l’application :
 
 [!code-csharp[](file-providers/samples/2.x/FileProviderSample/Startup.cs?name=snippet1)]
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-Dans l’exemple d’application, un `PhysicalFileProvider` et un `EmbeddedFileProvider` fournissent des fichiers à un `CompositeFileProvider` inscrit dans le conteneur de service de l’application :
-
-[!code-csharp[](file-providers/samples/1.x/FileProviderSample/Startup.cs?name=snippet1)]
-
-::: moniker-end
-
 ## <a name="watch-for-changes"></a>Suivre les modifications apportées
 
 La méthode [IFileProvider.Watch](/dotnet/api/microsoft.extensions.fileproviders.ifileprovider.watch) offre un moyen d’observer un ou plusieurs fichiers ou répertoires afin de détecter les changements. `Watch` accepte une chaîne de chemin, qui peut utiliser des [modèles d’utilisation des caractères génériques](#glob-patterns) pour spécifier plusieurs fichiers. `Watch` retourne un [IChangeToken](/dotnet/api/microsoft.extensions.primitives.ichangetoken). Le jeton de modification expose :
 
-* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged) : une propriété qui peut être inspectée pour déterminer si une modification a eu lieu.
-* [RegisterChangeCallback](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback) : appelée lorsque des modifications sont détectées dans la chaîne de chemin d’accès spécifiée. Chaque jeton de modification appelle uniquement son rappel associé en réponse à un changement unique. Pour activer une surveillance constante, vous pouvez utiliser une [TaskCompletionSource](/dotnet/api/system.threading.tasks.taskcompletionsource-1) comme indiqué ci-dessous, ou recréer des instances `IChangeToken` en réponse aux changements.
+* [HasChanged](/dotnet/api/microsoft.extensions.primitives.ichangetoken.haschanged) : une propriété qui peut être inspectée pour déterminer si une modification a eu lieu.
+* [RegisterChangeCallback](/dotnet/api/microsoft.extensions.primitives.ichangetoken.registerchangecallback) : appelée quand des modifications sont détectées dans la chaîne de chemin spécifiée. Chaque jeton de modification appelle uniquement son rappel associé en réponse à un changement unique. Pour activer une surveillance constante, vous pouvez utiliser une [TaskCompletionSource](/dotnet/api/system.threading.tasks.taskcompletionsource-1) comme indiqué ci-dessous, ou recréer des instances `IChangeToken` en réponse aux changements.
 
 Dans l’exemple d’application, l’application console *WatchConsole* est configurée pour afficher un message chaque fois qu’un fichier texte est modifié :
 
-::: moniker range=">= aspnetcore-2.0"
-
 [!code-csharp[](file-providers/samples/2.x/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-[!code-csharp[](file-providers/samples/1.x/WatchConsole/Program.cs?name=snippet1&highlight=1-2,16,19-20)]
-
-::: moniker-end
 
 Certains systèmes de fichiers, comme les conteneurs Docker et les partages réseau, peuvent ne pas envoyer de manière fiable les notifications de modifications. Définissez la variable d’environnement `DOTNET_USE_POLLING_FILE_WATCHER` sur `1` ou `true` pour interroger le système de fichiers à la recherche de changements toutes les quatre secondes (non configurable).
 

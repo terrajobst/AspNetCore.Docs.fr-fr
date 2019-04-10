@@ -3,15 +3,15 @@ title: 'Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core'
 description: Dans ce didacticiel, vous allez lire et afficher les données associées, à savoir les données qu’Entity Framework charge dans les propriétés de navigation.
 author: rick-anderson
 ms.author: tdykstra
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 73e225c2cd6d9f88079c54115cccad48f43d7d0c
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: a2ae878fd861b68a17de19af1b33b6ffbf5a268c
+ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103044"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58751076"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutoriel : Lire les données associées - ASP.NET MVC avec EF Core
 
@@ -33,7 +33,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Créer un modèle de données plus complexe avec EF Core pour une application web ASP.NET Core MVC](complex-data-model.md)
+* [Créer un modèle de données complexe](complex-data-model.md)
 
 ## <a name="learn-how-to-load-related-data"></a>Découvrir comment charger les données associées
 
@@ -257,6 +257,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Page Instructors créée
 > * Chargement explicite découvert
 
-Passez à l’article suivant pour découvrir comment mettre à jour les données associées.
+Passez au tutoriel suivant pour découvrir comment mettre à jour les données associées.
+
 > [!div class="nextstepaction"]
 > [Mettre à jour les données associées](update-related-data.md)
