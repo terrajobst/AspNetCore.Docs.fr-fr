@@ -4,14 +4,14 @@ author: pkellner
 description: Montre comment utiliser un Tag Helper Image.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/10/2018
+ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 5eb74a6698911a1c594d11573192cb1b9ed53b49
-ms.sourcegitcommit: 4bdf7703aed86ebd56b9b4bae9ad5700002af32d
+ms.openlocfilehash: 916a68c187cbf516a59d3c5d7578cdb6ada01b86
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49325833"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468816"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>Tag Helper Image dans ASP.NET Core
 
@@ -43,13 +43,13 @@ Quand `asp-append-version` est spécifié avec une valeur `true` et un attribut 
 L’exemple suivant utilise un Tag Helper Image :
 
 ```cshtml
-<img src="~/images/asplogo.png" asp-append-version="true" />
+<img src="~/images/asplogo.png" asp-append-version="true">
 ```
 
 Si le fichier statique existe dans le répertoire */wwwroot/images/*, le code HTML généré est semblable au suivant (le hachage sera différent) :
 
 ```html
-<img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM" />
+<img src="/images/asplogo.png?v=Kl_dqr9NVtnMdsM2MUg4qthUnWZm5T1fCEimBPWDNgM">
 ```
 
 La valeur affectée au paramètre `v` est la valeur de hachage du fichier *asplogo.png* sur le disque. Si le serveur web ne peut pas obtenir l’accès en lecture au fichier statique, aucun paramètre `v` n’est ajouté à l’attribut `src` dans le balisage affiché.

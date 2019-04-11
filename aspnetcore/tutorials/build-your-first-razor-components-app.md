@@ -5,14 +5,14 @@ description: Créez une application Composants Razor pas à pas et découvrez le
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/24/2019
+ms.date: 04/06/2019
 uid: tutorials/first-razor-components-app
-ms.openlocfilehash: 2a987b3f2e687cd9d4dffa2c573c938e68ea3cc8
-ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
+ms.openlocfilehash: 697c4659bcc9952ffe9868fe9b3c0d28019bc369
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419363"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59468774"
 ---
 # <a name="build-your-first-razor-components-app"></a>Créer votre première application Composants Razor
 
@@ -194,7 +194,7 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
    [!code-cshtml[](build-your-first-razor-components-app/samples_snapshot/3.x/ToDo7.razor?highlight=2)]
 
    ```cshtml
-   <input placeholder="Something todo" bind="@newTodo" />
+   <input placeholder="Something todo" bind="@newTodo">
    ```
 
 1. Mettez à jour la méthode `AddTodo` pour ajouter `TodoItem` avec le titre spécifié à la liste. Supprimez la valeur du texte d’entrée en définissant `newTodo` sur une chaîne vide :
@@ -221,4 +221,4 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
 
 ## <a name="publish-and-deploy-the-app"></a>Publier et déployer l’application
 
-Pour publier l’application, consultez <xref:host-and-deploy/razor-components/index#publish-the-app>.
+Pour publier l’application, consultez <xref:host-and-deploy/razor-components-blazor/index>.
