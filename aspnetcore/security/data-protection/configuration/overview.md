@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment configurer la Protection des données dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 04/11/2019
 uid: security/data-protection/configuration/overview
-ms.openlocfilehash: 36a06246513215ec29891df02688d113db11f914
-ms.sourcegitcommit: 32bc00435767189fa3ae5fb8a91a307bf889de9d
+ms.openlocfilehash: ee43427fa1e82a365d49df50567b4ca7afb5a5d3
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733494"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516246"
 ---
 # <a name="configure-aspnet-core-data-protection"></a>Configurer la Protection des données ASP.NET Core
 
@@ -44,7 +44,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Définir l’emplacement de stockage de porte-clés (par exemple, [PersistKeysToAzureBlobStorage](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.persistkeystoazureblobstorage)). L’emplacement doit être défini, car l’appel `ProtectKeysWithAzureKeyVault` implémente un [IXmlEncryptor](/dotnet/api/microsoft.aspnetcore.dataprotection.xmlencryption.ixmlencryptor) qui désactive les paramètres de protection automatique des données, y compris l’emplacement de stockage de porte-clés. L’exemple précédent utilise le stockage Blob Azure pour conserver le key ring. Pour plus d’informations, consultez [fournisseurs de stockage de clés : Azure et Redis](xref:security/data-protection/implementation/key-storage-providers#azure-and-redis). Vous pouvez également conserver le key ring localement avec [PersistKeysToFileSystem](xref:security/data-protection/implementation/key-storage-providers#file-system).
 
-Le `keyIdentifier` est l’identificateur de clé de coffre de clés utilisée pour le chiffrement de clé (par exemple, `https://contosokeyvault.vault.azure.net/keys/dataprotection/`).
+Le `keyIdentifier` est l’identificateur de clé de coffre de clés utilisée pour le chiffrement de clé. Par exemple, une clé créée dans le coffre de clés nommé `dataprotection` dans le `contosokeyvault` a l’identificateur de clé `https://contosokeyvault.vault.azure.net/keys/dataprotection/`. Fournir à l’application avec **Unwrap Key** et **Wrap Key** autorisations au coffre de clés.
 
 `ProtectKeysWithAzureKeyVault` surcharges :
 
@@ -154,7 +154,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="disableautomatickeygeneration"></a>DisableAutomaticKeyGeneration
 
-Vous pouvez avoir un scénario dans lequel vous voulez une application à déployer automatiquement des clés (créer des clés) qu’ils approchent d’expiration. Un exemple de ce peut être définies dans une relation principal/secondaire, où le principal de l’application est responsable de problèmes de gestion des clés et des applications secondaires ont simplement une vue en lecture seule de l’anneau de clé des applications. Les applications secondaire peuvent être configurées pour traiter le key ring en lecture seule en configurant le système avec [DisableAutomaticKeyGeneration](/dotnet/api/microsoft.aspnetcore.dataprotection.dataprotectionbuilderextensions.disableautomatickeygeneration):
+Vous pouvez avoir un scénario dans lequel vous voulez une application à déployer automatiquement des clés (créer des clés) qu’ils approchent d’expiration. Un exemple de ce peut être définies dans une relation principal/secondaire, où le principal de l’application est responsable de problèmes de gestion des clés et des applications secondaires ont simplement une vue en lecture seule de l’anneau de clé des applications. Les applications secondaire peuvent être configurées pour traiter le key ring en lecture seule en configurant le système avec <xref:Microsoft.AspNetCore.DataProtection.DataProtectionBuilderExtensions.DisableAutomaticKeyGeneration*>:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -166,15 +166,14 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="per-application-isolation"></a>Isolation par application
 
-Lorsque le système de Protection des données est fourni par un hôte ASP.NET Core, elle isole automatiquement les applications à partir d’une autre, même si ces applications sont exécutent sous le même compte de processus de travail et que vous utilisez le même matériel de gestion de clés principal. Cela s’apparente au modificateur IsolateApps à partir de System.Web  **\<machineKey >** élément.
+Lorsque le système de Protection des données est fourni par un hôte ASP.NET Core, elle isole automatiquement les applications à partir d’une autre, même si ces applications sont exécutent sous le même compte de processus de travail et que vous utilisez le même matériel de gestion de clés principal. Cela s’apparente au modificateur IsolateApps à partir de System.Web `<machineKey>` élément.
 
-Le mécanisme d’isolation fonctionne en tenant compte de chaque application sur l’ordinateur local en tant qu’un locataire unique, donc le [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) rooté pour une application donnée inclut automatiquement l’ID d’application en tant que discriminateur. ID unique de l’application provient d’un des deux emplacements :
+Le mécanisme d’isolation fonctionne en tenant compte de chaque application sur l’ordinateur local en tant qu’un locataire unique, donc le <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> rooté pour une application donnée inclut automatiquement l’ID d’application en tant que discriminateur. ID unique de l’application est le chemin d’accès physique de l’application :
 
-1. Si l’application est hébergée dans IIS, l’identificateur unique est le chemin d’accès de l’application configuration. Si une application est déployée dans un environnement de batterie de serveurs web, cette valeur doit être stable, en supposant que les environnements d’IIS sont configurés de façon similaire sur tous les ordinateurs dans la batterie de serveurs web.
+* Pour les applications hébergées dans [IIS](xref:fundamentals/servers/index#iis-http-server), l’ID unique est le chemin physique IIS de l’application. Si une application est déployée dans un environnement de batterie de serveurs web, cette valeur est stable, en supposant que les environnements d’IIS sont configurés de façon similaire sur tous les ordinateurs dans la batterie de serveurs web.
+* Pour les applications auto-hébergé qui s’exécutent le [serveur Kestrel](xref:fundamentals/servers/index#kestrel), l’ID unique est le chemin d’accès physique à l’application sur le disque.
 
-2. Si l’application n’est pas hébergée dans IIS, l’identificateur unique est le chemin d’accès physique de l’application.
-
-L’identificateur unique est conçu pour résister aux réinitialisations &mdash; de l’application individuelle et de la machine elle-même.
+L’identificateur unique est conçu pour résister aux réinitialisations&mdash;de l’application individuelle et de la machine elle-même.
 
 Ce mécanisme d’isolation part du principe que les applications ne sont pas malveillantes. Une application malveillante peut toujours avoir un impact sur n’importe quel autre application en cours d’exécution sous le même compte de processus de travail. Dans un environnement d’hébergement partagé où les applications sont mutuellement non approuvées, le fournisseur d’hébergement doit prendre étapes pour garantir l’isolation au niveau du système d’exploitation entre les applications, notamment pour séparer les applications sous-jacentes référentiels des clés.
 

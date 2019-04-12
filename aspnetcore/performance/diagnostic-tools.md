@@ -4,14 +4,14 @@ author: mjrousos
 description: Outils utiles pour diagnostiquer les problèmes de performances dans les applications ASP.NET Core.
 monikerRange: '>= aspnetcore-1.1'
 ms.author: riande
-ms.date: 12/07/2018
+ms.date: 04/11/2019
 uid: performance/diagnostic-tools
-ms.openlocfilehash: 0fb9944d1082090f4f58f641a26ee96286920456
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 66676b5a2b95b87bfbbd50022e279e35a12b9793
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210000"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516220"
 ---
 # <a name="performance-diagnostic-tools"></a>Outils de Diagnostic de performances
 
@@ -32,7 +32,7 @@ Informations supplémentaires sont disponibles dans [documentation de Visual Stu
 Azure Application Insights offre plusieurs moyens de donner des informations sur les applications analysées :
 
 - [Cartographie d’application](/azure/application-insights/app-insights-app-map) – permet des baisses de performances ou réactives Échec sur tous les composants d’applications distribuées.
-- [Panneau de métriques dans le portail Application Insights](/azure/application-insights/app-insights-metrics-explorer?toc=/azure/azure-monitor/toc.json) montre les valeurs observées et nombres d’événements.
+- [Azure Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started) est un composant du portail Microsoft Azure qui permet de tracer des graphiques, de corréler visuellement des tendances, et examen des pics et creux valeurs de métriques.
 - [Panneau de performances dans le portail Application Insights](/azure/application-insights/app-insights-tutorial-performance):
 
   - Affiche les détails de performances pour différentes opérations dans l’application analysée.
