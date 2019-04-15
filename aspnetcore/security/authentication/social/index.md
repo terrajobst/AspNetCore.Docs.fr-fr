@@ -4,14 +4,14 @@ author: rick-anderson
 description: Ce didacticiel montre comment générer une application ASP.NET Core 2.x à l’aide d’OAuth 2.0 avec des fournisseurs d’authentification externes.
 ms.author: riande
 ms.custom: mvc
-ms.date: 1/19/2019
+ms.date: 4/19/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 48dd8b772234ff18158423a36ed1716102bc2f31
-ms.sourcegitcommit: 184ba5b44d1c393076015510ac842b77bc9d4d93
+ms.openlocfilehash: 61482481358256dc9ddd1a0a894541040a8a452f
+ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396140"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59516324"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
@@ -23,14 +23,60 @@ Les fournisseurs [Facebook](xref:security/authentication/facebook-logins), [Twit
 
 ![Icônes de réseau social pour Facebook, Twitter, Google plus et Windows](index/_static/social.png)
 
-Permettre aux utilisateurs de se connecter avec leurs informations d’identification existantes est pratique pour eux et transfère une grande partie de la complexité de la gestion du processus de connexion sur un tiers. Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux peuvent amener du trafic et des conversions de clients, consultez les études de cas par [Facebook](https://www.facebook.com/unsupportedbrowser) et [Twitter](https://dev.twitter.com/resources/case-studies).
+Permettre aux utilisateurs de se connecter avec leurs informations d’identification existantes :
+* Est pratique pour les utilisateurs.
+* Transfère une grande partie des complexités de la gestion du processus de connexion à un tiers. 
+
+Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux peuvent amener du trafic et des conversions de clients, consultez les études de cas par [Facebook](https://www.facebook.com/unsupportedbrowser) et [Twitter](https://dev.twitter.com/resources/case-studies).
 
 ## <a name="create-a-new-aspnet-core-project"></a>Créer un projet ASP.NET Core
 
-* Dans Visual Studio 2017, créez un projet à partir de la page de démarrage, ou via **Fichier** > **Nouveau** > **Projet**.
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Sélectionnez le modèle **Application web ASP.NET Core** disponible dans la catégorie **Visual C#** > **.NET Core** :
+* Dans Visual Studio, dans le menu **Fichier**, sélectionnez **Nouveau** > **Projet**.
+* Créez une application web ASP.NET Core.
+* Sélectionnez **ASP.NET Core 2.2** dans la liste déroulante, puis sélectionnez **Application web**.
 * Sélectionnez **Modifier l’authentification** et définissez l’authentification sur **Comptes d’utilisateur individuels**.
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+* Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
+
+* Accédez à un répertoire (`cd`) destiné à contenir le projet.
+
+* Exécutez les commandes suivantes :
+
+  ```console
+  dotnet new webapp -o WebApp1
+  code -r WebApp1
+  ```
+
+  * La commande `dotnet new` crée un nouveau projet Razor Pages dans le dossier *WebApp1*.
+  * La commande `code` ouvre le dossier *WebApp1* dans une nouvelle instance de Visual Studio Code.
+
+  Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « WebApp1 ». Faut-il les ajouter ?**
+
+* Sélectionnez **Oui**.
+
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+À partir d’un terminal, exécutez la commande suivante :
+
+<!-- TODO: update these instruction once mac support 2.2 projects -->
+
+```console
+dotnet new webapp -o WebApp1
+```
+
+Les commandes précédentes utilisent le [CLI .NET Core](/dotnet/core/tools/dotnet) pour créer un projet Razor Pages.
+
+## <a name="open-the-project"></a>Ouvrir le projet
+
+Dans Visual Studio, sélectionnez **Fichier > Ouvrir**, puis sélectionnez le fichier *WebApp1.csproj*.
+
+<!-- End of VS tabs -->
+
+---
 
 ## <a name="apply-migrations"></a>Appliquer des migrations
 
@@ -63,7 +109,7 @@ Utilisez les rubriques suivantes pour configurer votre application pour utiliser
 
 ## <a name="optionally-set-password"></a>Définition facultative d’un mot de passe
 
-Quand vous vous inscrivez auprès d’un fournisseur de connexion externe, vous n’avez pas de mot de passe inscrit auprès de l’application. Ceci vous évite de devoir créer et mémoriser un mot de passe pour le site, mais vous rend aussi dépendant du fournisseur de connexion externe. Si le fournisseur de connexion externe est indisponible, vous ne pouvez pas vous connecter au site web.
+Quand vous vous inscrivez auprès d’un fournisseur de connexion externe, vous n’avez pas de mot de passe inscrit auprès de l’application. Ceci vous évite de devoir créer et mémoriser un mot de passe pour le site, mais vous rend aussi dépendant du fournisseur de connexion externe. Si le fournisseur de connexion externe n’est pas disponible, vous ne pouvez pas vous connecter au site web.
 
 Pour créer un mot de passe et vous connecter à l’aide de l’e-mail que vous avez défini lors du processus de connexion avec des fournisseurs externes :
 
