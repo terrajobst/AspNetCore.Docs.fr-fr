@@ -6,12 +6,12 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/31/2019
 uid: grpc/migration
-ms.openlocfilehash: ffe5ccbd99c6920e093eddc00fc60a9f66aab527
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: 4d489b5aecf2e15fbbe3ac472b991a4365cd47c1
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "59515511"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59672617"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Migration des services de gRPC à partir de C vers ASP.NET Core
 
@@ -27,7 +27,7 @@ Une durée de vie délimitée permet à l’implémentation de service résoudre
 
 * Une nouvelle instance de l’implémentation du service est construite pour chaque requête.
 * Il n’est pas possible de partager l’état entre les demandes via les membres d’instance sur le type d’implémentation.
-* L’attente consiste à stocker des états partagés dans un service singleton dans le conteneur d’injection de dépendances. Les états partagés stockées sont résolus dans le constructeur de l’implémentation du service gRPC. 
+* L’attente consiste à stocker des états partagés dans un service singleton dans le conteneur d’injection de dépendances. Les états partagés stockées sont résolus dans le constructeur de l’implémentation du service gRPC.
 
 Pour plus d’informations sur les durées de vie de service, consultez <xref:fundamentals/dependency-injection#service-lifetimes>.
 
