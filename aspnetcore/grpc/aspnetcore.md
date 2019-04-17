@@ -6,11 +6,11 @@ monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 03/08/2019
 uid: grpc/aspnetcore
-ms.openlocfilehash: 387c3134efc04bec740fc66a5ca4b84715264d35
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: c99a499fad824c3ac026f6f390c826c0418fc069
+ms.sourcegitcommit: 57a974556acd09363a58f38c26f74dc21e0d4339
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59515476"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Services gRPC avec ASP.NET Core
@@ -45,11 +45,11 @@ gRPC requiert les packages suivants :
 
 gRPC est activé avec le `AddGrpc` méthode :
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Startup.cs?name=snippet&highlight=5)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Startup.cs?name=snippet&highlight=5)]
 
 Chaque service gRPC est ajouté au pipeline routage via le `MapGrpcService` méthode :
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Startup.cs?name=snippet&highlight=16-19)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Startup.cs?name=snippet&highlight=21)]
 
 Fonctionnalités et des intergiciels d’ASP.NET Core partagent le pipeline de routage, par conséquent, une application peut être configurée pour servir des gestionnaires de demandes supplémentaires. Les gestionnaires de demande supplémentaires, tels que les contrôleurs MVC, travaillent en parallèle avec les services configurés gRPC.
 
@@ -72,11 +72,11 @@ Par défaut, l’implémentation du service gRPC peut résoudre d’autres servi
 
 L’API gRPC fournit l’accès à certaines données de message HTTP/2, telles que la méthode, hôte, en-tête et codes de fin. Accès s’effectue via le `ServerCallContext` argument passé à chaque méthode gRPC :
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Services/GreeterService.cs?highlight=3-4&name=snippet)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Services/GreeterService.cs?highlight=3-4&name=snippet)]
 
 `ServerCallContext` ne fournit pas un accès complet à `HttpContext` dans toutes les APIs ASP.NET. Le `GetHttpContext` méthode d’extension fournit un accès complet à la `HttpContext` représentant le message HTTP/2 sous-jacent dans ASP.NET APIs :
 
-[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcStart/GrpcGreeter.Server/Services/GreeterService.cs?name=snippet1)]
+[!code-cs[](~/tutorials/grpc/grpc-start/samples/GrpcGreeter/Services/GreeterService.cs?name=snippet1)]
 
 ### <a name="request-body-data-rate-limit"></a>Limite de débit de données de corps de la demande
 
