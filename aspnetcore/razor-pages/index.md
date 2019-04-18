@@ -7,10 +7,10 @@ ms.author: riande
 ms.date: 04/06/2019
 uid: razor-pages/index
 ms.openlocfilehash: e79ce1e2ddfc0e1a4d72e3f67f702d6eb938b8d3
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468693"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>Présentation des pages Razor dans ASP.NET Core
@@ -31,11 +31,11 @@ Ce document fournit une introduction aux pages Razor. Il ne s’agit pas d’un 
 
 ## <a name="create-a-razor-pages-project"></a>Créer un projet Razor Pages
 
-# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 Pour obtenir des instructions sur la création d’un projet Razor Pages, consultez [Bien démarrer avec Razor Pages](xref:tutorials/razor-pages/razor-pages-start).
 
-# [<a name="visual-studio-for-mac"></a>Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -51,7 +51,7 @@ Exécutez `dotnet new razor` à partir de la ligne de commande.
 
 Ouvrez le fichier *.csproj* généré à partir de Visual Studio pour Mac.
 
-# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -151,7 +151,7 @@ Recherchez les erreurs de validation.
 
 Quand les données sont entrées correctement, la méthode de gestionnaire `OnPostAsync` appelle la méthode d’assistance `RedirectToPage` pour retourner une instance de `RedirectToPageResult`. `RedirectToPage` est un nouveau résultat d’action, semblable à `RedirectToAction` ou `RedirectToRoute`, mais personnalisé pour les pages. Dans l’exemple précédent, il redirige vers la page Index racine (`/Index`). `RedirectToPage` est détaillé dans la section [Génération d’URL pour les pages](#url_gen).
 
-Quand le formulaire envoyé comporte des erreurs de validation (qui sont passées au serveur), la méthode de gestionnaire `OnPostAsync` appelle la méthode d’assistance `Page`. `Page` retourne une instance de `PageResult`. Le retour de `Page` est similaire à la façon dont les actions dans les contrôleurs retournent `View`. `PageResult` est la valeur par défaut <!-- Review  --> pour une méthode de gestionnaire. Une méthode de gestionnaire qui retourne `void` restitue la page.
+Quand le formulaire envoyé comporte des erreurs de validation (qui sont passées au serveur), la méthode de gestionnaire `OnPostAsync` appelle la méthode d’assistance `Page`. `Page` retourne une instance de `PageResult`. Le retour de `Page` est similaire à la façon dont les actions dans les contrôleurs retournent `View`. `PageResult` est le type de retour par défaut <!-- Review  --> pour une méthode de gestionnaire. Une méthode de gestionnaire qui retourne `void` restitue la page.
 
 La propriété `Customer` utilise l’attribut `[BindProperty]` pour accepter la liaison de modèle.
 
@@ -324,7 +324,7 @@ Ajoutez un fichier *Pages/_ViewImports.cshtml* :
 
 [!code-cshtml[](index/sample/RazorPagesContacts2/Pages/_ViewImports.cshtml)]
 
-`@namespace` est expliqué plus loin dans le tutoriel. La directive `@addTagHelper` permet de bénéficier des [Tag Helpers intégrés](xref:mvc/views/tag-helpers/builtin-th/Index) dans toutes les pages du dossier *Pages*.
+`@namespace` est expliqué plus loin dans le didacticiel. La directive `@addTagHelper` permet de bénéficier des [Tag Helpers intégrés](xref:mvc/views/tag-helpers/builtin-th/Index) dans toutes les pages du dossier *Pages*.
 
 <a name="namespace"></a>
 
@@ -346,7 +346,7 @@ Le fichier *Pages/_ViewImports.cshtml* définit l’espace de noms suivant :
 
 L’espace de noms généré pour la page Razor *Pages/Customers/Edit.cshtml* est identique à la classe `PageModel`.
 
-`@namespace` *fonctionne également avec les vues Razor classiques.*
+`@namespace` *fonctionne également avec les vues Razor classiques*.
 
 Le fichier de vue *Pages/Create.cshtml* d’origine :
 
@@ -396,7 +396,7 @@ La génération d’URL pour les pages prend en charge les noms relatifs. Le tab
 | RedirectToPage("../Index") | *Pages/Index* |
 | RedirectToPage("Index")  | *Pages/Customers/Index* |
 
-`RedirectToPage("Index")``RedirectToPage("./Index")` et `RedirectToPage("../Index")` sont des *noms relatifs*. Le paramètre `RedirectToPage` est *combiné* avec le chemin de la page active pour calculer le nom de la page de destination.  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page.  page name, not page path -->
+`RedirectToPage("Index")`, `RedirectToPage("./Index")` et `RedirectToPage("../Index")` sont des *noms relatifs*. Le paramètre `RedirectToPage` est *combiné* avec le chemin de la page active pour calculer le nom de la page de destination.  <!-- Review: Original had The provided string is combined with the page name of the current page to compute the name of the destination page.  page name, not page path -->
 
 La liaison de nom relatif est utile lors de la création de sites avec une structure complexe. Si vous utilisez des noms relatifs pour établir une liaison entre les pages d’un dossier, vous pouvez renommer ce dossier. Tous les liens fonctionneront encore (car ils n’incluent pas le nom du dossier).
 

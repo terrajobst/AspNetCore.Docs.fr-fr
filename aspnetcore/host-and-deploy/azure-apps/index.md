@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 03/30/2019
 uid: host-and-deploy/azure-apps/index
 ms.openlocfilehash: 009ee97d954a21f5fca1713b2b45218cac235e33
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012836"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>Déployer des applications ASP.NET Core sur Azure App Service
@@ -174,7 +174,7 @@ Une fois l’opération effectuée, la dernière préversion de .NET Core est in
 > [!NOTE]
 > Les **extensions ASP.NET Core** permettent d’activer des fonctionnalités supplémentaires pour ASP.NET Core sur Azure App Services, par exemple la journalisation Azure. L’extension est installée automatiquement quand vous effectuez le déploiement à partir de Visual Studio. Si l’extension n’est pas installée, installez-la pour l’application.
 
-**Utiliser l’extension de site en préversion avec un modèle ARM**
+**Utiliser l’extension de site de la version Preview avec un modèle ARM**
 
 Si un modèle ARM est utilisé pour créer et déployer des applications, le type de ressource `siteextensions` peut être utilisé pour ajouter l’extension de site à une application web. Par exemple :
 
@@ -236,8 +236,8 @@ Si vous devez transformer *web.config* lors de la publication (par exemple, déf
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Vue d’ensemble d’App Service](/azure/app-service/app-service-web-overview)
-* [Azure App Service: The Best Place to Host your .NET Apps (vidéo de présentation de 55 minutes)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
-* [Azure Friday: Azure App Service Diagnostic and Troubleshooting Experience (vidéo de 12 minutes)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
+* [Azure App Service : The Best Place to Host your .NET Apps (vidéo de présentation de 55 minutes)](https://channel9.msdn.com/events/dotnetConf/2017/T222)
+* [Azure Friday : Azure App Service Diagnostic and Troubleshooting Experience (vidéo de 12 minutes)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Diagnostic-and-Troubleshooting-Experience)
 * [Vue d’ensemble des diagnostics Azure App Service](/azure/app-service/app-service-diagnostics)
 * <xref:host-and-deploy/web-farm>
 
