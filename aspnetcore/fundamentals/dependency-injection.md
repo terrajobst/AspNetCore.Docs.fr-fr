@@ -5,14 +5,14 @@ description: Découvrez comment ASP.NET Core implémente l’injection de dépen
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/28/2019
+ms.date: 04/07/2019
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 8312f3375296a8530ac2db3db46d062b7b9e76b9
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: da6ddf1f0efd164a58f017ff55ce216bbefa7cc6
+ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750602"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59068321"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>Injection de dépendances dans ASP.NET Core
 
@@ -80,9 +80,9 @@ Cette interface est implémentée par un type concret, `MyDependency` :
 
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Services/MyDependency.cs?name=snippet1)]
 
-`MyDependency` demande un [ILogger&lt;TCategoryName&gt; ](/dotnet/api/microsoft.extensions.logging.ilogger-1) dans son constructeur. Il n’est pas rare que l’injection de dépendances soit utilisée de manière chaînée. Dans ce cas, chaque dépendance demandée demande à son tour ses propres dépendances. Le conteneur résout les dépendances dans le graphique et retourne le service entièrement résolu. L’ensemble collectif de dépendances qui doivent être résolues est généralement appelé *arborescence des dépendances*, *graphique de dépendance* ou *graphique d’objet*.
+`MyDependency` demande un [ILogger&lt;TCategoryName&gt;](/dotnet/api/microsoft.extensions.logging.ilogger-1) dans son constructeur. Il n’est pas rare que l’injection de dépendances soit utilisée de manière chaînée. Dans ce cas, chaque dépendance demandée demande à son tour ses propres dépendances. Le conteneur résout les dépendances dans le graphique et retourne le service entièrement résolu. L’ensemble collectif de dépendances qui doivent être résolues est généralement appelé *arborescence des dépendances*, *graphique de dépendance* ou *graphique d’objet*.
 
-`IMyDependency` et `ILogger<TCategoryName>` doivent être inscrits dans le conteneur de service. `IMyDependency` est inscrit dans `Startup.ConfigureServices`. `ILogger<TCategoryName>` est inscrit par l’infrastructure d’abstractions de journalisation. Il s’agit donc d’un [service fourni par le framework](#framework-provided-services) et inscrit par défaut par l’infrastructure.
+`IMyDependency` et `ILogger<TCategoryName>` doivent être inscrits dans le conteneur de service. `IMyDependency` est inscrit dans `Startup.ConfigureServices`. `ILogger<TCategoryName>` est inscrit par l’infrastructure d’abstractions de journalisation. Il s’agit donc d’un [service fourni par le framework](#framework-provided-services) inscrit par défaut par l’infrastructure.
 
 Le conteneur résout `ILogger<TCategoryName>` en tirant parti de [types ouverts (génériques)](/dotnet/csharp/language-reference/language-specification/types#open-and-closed-types), ce qui élimine la nécessité d’inscrire chaque [type construit (générique)](/dotnet/csharp/language-reference/language-specification/types#constructed-types) :
 
@@ -166,7 +166,7 @@ Choisissez une durée de vie appropriée pour chaque service inscrit. Vous pouve
 
 Des services à durée de vie temporaire (Transient) sont créés chaque fois qu’ils sont demandés à partir du conteneur de service. Cette durée de vie convient parfaitement aux services légers et sans état.
 
-**Scoped**
+**Délimité**
 
 Les services à durée de vie délimitée (Scoped) sont créés une seule fois par requête de client (connexion).
 
@@ -236,7 +236,7 @@ Délimité : 5d997e2d-55f5-4a64-8388-51c4e3a1ad19
 Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
 Instance : 00000000-0000-0000-0000-000000000000
 
-Opérations `OperationService` :
+`OperationService` Opérations :
 
 Transient: c6b049eb-1318-4e31-90f1-eb2dd849ff64  
 Délimité : 5d997e2d-55f5-4a64-8388-51c4e3a1ad19  
@@ -252,7 +252,7 @@ Délimité : 31e820c5-4834-4d22-83fc-a60118acb9f4
 Singleton : 01271bc1-9e31-48e7-8f7c-7261b040ded9  
 Instance : 00000000-0000-0000-0000-000000000000
 
-Opérations `OperationService` :
+`OperationService` Opérations :
 
 Transient: c4cbacb8-36a2-436d-81c8-8c1b78808aaf  
 Délimité : 31e820c5-4834-4d22-83fc-a60118acb9f4  
@@ -364,7 +364,7 @@ Le conteneur de services intégré a vocation à répondre aux besoins du framew
 * Injection en fonction du nom
 * Conteneurs enfants
 * Gestion personnalisée de la durée de vie
-* `Func<T>` prend en charge l’initialisation tardive
+* `Func<T>` prise en charge de l’initialisation tardive
 
 Pour obtenir une liste de certains des conteneurs qui prennent en charge des adaptateurs, consultez le [fichier readme.md relatif à l’injection de dépendances](https://github.com/aspnet/Extensions/tree/master/src/DependencyInjection).
 
@@ -416,13 +416,46 @@ La méthode de fabrique d’un service individuel, comme le deuxième argument d
 
 ## <a name="recommendations"></a>Recommandations
 
-* La résolution de service basée sur `async/await` et `Task` n’est pas prise en charge. C# ne prend pas en charge les constructeurs asynchrones. Par conséquent, le modèle recommandé consiste à utiliser des méthodes asynchrones après avoir résolu de façon synchrone le service.
+* `async/await` La résolution de service basée sur `Task` n’est pas prise en charge. C# ne prend pas en charge les constructeurs asynchrones ; par conséquent, le modèle recommandé consiste à utiliser des méthodes asynchrones après avoir résolu le service de façon synchrone.
 
 * Évitez de stocker des données et des configurations directement dans le conteneur de services. Par exemple, le panier d’achat d’un utilisateur ne doit en général pas être ajouté au conteneur de services. La configuration doit utiliser le [modèle d’options](xref:fundamentals/configuration/options). De même, évitez les objets « conteneurs de données » qui n’existent que pour autoriser l’accès à un autre objet. Il est préférable de demander l’élément réel par le biais de l’injection de dépendance.
 
 * Évitez l’accès statique aux services (par exemple avec [IApplicationBuilder.ApplicationServices](/dotnet/api/microsoft.aspnetcore.builder.iapplicationbuilder.applicationservices) à utiliser ailleurs).
 
-* Évitez d’utiliser le *modèle de localisation de service*. Par exemple, n’appelez pas <xref:System.IServiceProvider.GetService*> pour obtenir une instance de service lorsque vous pouvez utiliser l’injection de dépendance à la place. Une autre variante du localisateur de service à éviter est l’injection d’une fabrique qui résout les dépendances au moment de l’exécution. Ces deux pratiques combinent des stratégies [Inversion de contrôle](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion).
+* Évitez d’utiliser le *modèle de localisation de service*. Par exemple, n’appelez pas <xref:System.IServiceProvider.GetService*> pour obtenir une instance de service si vous pouvez utiliser l’injection de dépendance à la place :
+
+  **Incorrect :**
+
+  ```csharp
+  public void MyMethod()
+  {
+      var options = 
+          _services.GetService<IOptionsMonitor<MyOptions>>();
+      var option = options.CurrentValue.Option;
+
+      ...
+  }
+  ```
+
+  **Correct** :
+
+  ```csharp
+  private readonly MyOptions _options;
+
+  public MyClass(IOptionsMonitor<MyOptions> options)
+  {
+      _options = options.CurrentValue;
+  }
+
+  public void MyMethod()
+  {
+      var option = _options.Option;
+
+      ...
+  }
+  ```
+
+* Une autre variante du localisateur de service à éviter est l’injection d’une fabrique qui résout les dépendances au moment de l’exécution. Ces deux pratiques combinent des stratégies [Inversion de contrôle](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion).
 
 * Évitez l’accès statique à `HttpContext` (par exemple, [IHttpContextAccessor.HttpContext](/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor.httpcontext)).
 
@@ -439,5 +472,5 @@ L’injection de dépendance constitue une *alternative* aux modèles d’accès
 * <xref:fundamentals/middleware/extensibility>
 * [Écrire un code clair dans ASP.NET Core avec l’injection de dépendance (MSDN)](https://msdn.microsoft.com/magazine/mt703433.aspx)
 * [Principe des dépendances explicites](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies)
-* [Conteneurs d’inversion de contrôle et modèle d’injection de dépendances (Martin Fowler)](https://www.martinfowler.com/articles/injection.html)
-* [Comment inscrire un service avec plusieurs interfaces dans l’injection de dépendance ASP.NET Core](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/)
+* [Inversion of Control Containers and the Dependency Injection Pattern (Martin Fowler)](https://www.martinfowler.com/articles/injection.html)
+* [Guide pratique pour inscrire un service comportant plusieurs interfaces dans l’injection de dépendance ASP.NET Core](https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/)

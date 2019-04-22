@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/28/2019
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: de740775e124298f7c3d3be0c6f5a7311174116d
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 9770801b527829b131257da7c6e670bd33c23634
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265481"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59468871"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>Modules IIS avec ASP.NET Core
 
@@ -30,7 +30,7 @@ Le tableau indique les modules IIS natifs qui fonctionnent avec les application
 | **Authentification par mappage de certification cliente**<br>`CertificateMappingAuthenticationModule`      | Oui | |
 | **CGI**<br>`CgiModule`                                                                           | Non  | |
 | **Validation de configuration**<br>`ConfigurationValidationModule`                                  | Oui | |
-| **Erreurs HTTP**<br>`CustomErrorModule`                                                           | Non  | [Middleware (intergiciel) de pages de codes d’état](xref:fundamentals/error-handling#configure-status-code-pages) |
+| **Erreurs HTTP**<br>`CustomErrorModule`                                                           | Non  | [Middleware (intergiciel) de pages de codes d’état](xref:fundamentals/error-handling#usestatuscodepages) |
 | **Journalisation personnalisée**<br>`CustomLoggingModule`                                                      | Oui | |
 | **Document par défaut**<br>`DefaultDocumentModule`                                                  | Non  | [Middleware de fichiers par défaut](xref:fundamentals/static-files#serve-a-default-document) |
 | **Authentification Digest**<br>`DigestAuthenticationModule`                                        | Oui | |

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: 7723f7ca6c5f9a21b2628933c6e7dabde20c3af6
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: aff62d760cf0899983cf841f6715f2658b113f82
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320197"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59012680"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
 
@@ -278,8 +278,9 @@ Supprimez les enregistrements d’étudiants et redémarrez l’application. Si 
 
 ## <a name="view-the-db"></a>Afficher la base de données
 
+Le nom de la base de données est généré à partir du nom de contexte indiqué précédemment, ainsi que d’un tiret et d’un GUID. Il sera donc « SchoolContext-{GUID} ». Le GUID est différent pour chaque utilisateur.
 Ouvrez **l’Explorateur d’objets SQL Server** (SSOX) à partir du menu **Affichage** de Visual Studio.
-Dans SSOX, cliquez sur **(localdb)\MSSQLLocalDB > Bases de données > ContosoUniversity1**.
+Dans SSOX, cliquez sur **(localdb)\MSSQLLocalDB > Databases > SchoolContext-{GUID}**.
 
 Développez le nœud **Tables**.
 

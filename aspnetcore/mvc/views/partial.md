@@ -4,14 +4,14 @@ author: ardalis
 description: Découvrez comment utiliser les vues partielles pour découper des fichiers de balisage volumineux et réduire la duplication du balisage commun entre les différentes pages web dans les applications ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/11/2018
+ms.date: 04/06/2019
 uid: mvc/views/partial
-ms.openlocfilehash: b7c1545007086053e879bce6781802959da77901
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 65da78d6df3f179df9bdfa3a32af8736b71bbac5
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327376"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59468706"
 ---
 # <a name="partial-views-in-aspnet-core"></a>Vues partielles dans ASP.NET Core
 

@@ -7,12 +7,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 01/17/2019
 uid: fundamentals/startup
-ms.openlocfilehash: 9556ec076fce3500115cf0e934202f11b175ccd3
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 362186be6feeeefeca3c56688ee6420de5fb9659
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750795"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59468622"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Démarrage d’une application dans ASP.NET Core
 
@@ -63,9 +63,11 @@ L’hôte peut configurer certains services avant l’appel des méthodes `Start
 
 Pour les fonctionnalités qui nécessitent une configuration importante, il existe des méthodes d’extension `Add{Service}` pour <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>. Une application ASP.NET Core classique inscrit des services pour Entity Framework, Identity et MVC :
 
-[!code-csharp[](startup/sample_snapshot/Startup3.cs?highlight=4,7,11)]
+[!code-csharp[](startup/sample_snapshot/Startup3.cs)]
 
 L'ajout de services au conteneur de service les rend disponibles au sein de l’application et dans la méthode `Configure`. Les services sont résolus via l’[injection de dépendances](xref:fundamentals/dependency-injection) ou à partir de <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>.
+
+Pour plus d’informations sur `SetCompatibilityVersion`, voir [SetCompatibilityVersion](xref:mvc/compatibility-version).
 
 ## <a name="the-configure-method"></a>Méthode Configure
 
@@ -74,7 +76,7 @@ La méthode <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> permet de
 Les [modèles ASP.NET Core](/dotnet/core/tools/dotnet-new) configurent le pipeline pour permettre la prise en charge des éléments suivants :
 
 * [Page d’exceptions du développeur](xref:fundamentals/error-handling#developer-exception-page)
-* [Gestionnaire d’exceptions](xref:fundamentals/error-handling#configure-a-custom-exception-handling-page)
+* [Gestionnaire d’exceptions](xref:fundamentals/error-handling#exception-handler-page)
 * [HSTS (HTTP Strict Transport Security)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [Redirection HTTPS](xref:security/enforcing-ssl)
 * [Fichiers statiques](xref:fundamentals/static-files)

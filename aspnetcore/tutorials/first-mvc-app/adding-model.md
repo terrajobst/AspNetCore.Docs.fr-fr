@@ -5,12 +5,12 @@ description: Ajoutez un modèle à une application ASP.NET Core simple.
 ms.author: riande
 ms.date: 02/25/2019
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 224b8d7622b691df65e217fc9b963c0ba64c8baf
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 08d8e9679bfee11f03e61cb4b9ae9b5b36186049
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320080"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59012823"
 ---
 # <a name="add-a-model-to-an-aspnet-core-mvc-app"></a>Ajouter un modèle dans une application ASP.NET Core MVC
 
@@ -211,7 +211,7 @@ Login failed for user 'User-name'.
 
 Vous avez manqué [l’étape des migrations](#pmc).
 
-* Testez le lien **Créer**.
+* Testez le lien **Créer**. Entrez et envoyez des données.
 
   > [!NOTE]
   > Vous ne pourrez peut-être pas entrer de virgules décimales dans le champ `Price`. Pour prendre en charge la [validation jQuery](https://jqueryvalidation.org/) pour les paramètres régionaux autres que « Anglais » qui utilisent une virgule (« , ») comme décimale et des formats de date autres que le format « Anglais (États-Unis »), l’application doit être localisée. Pour obtenir des instructions sur la localisation, consultez [ce problème GitHub](https://github.com/aspnet/Docs/issues/4076#issuecomment-326590420).

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: index
-ms.openlocfilehash: 944c8a93aff53b8d72fda03f5df9c5ba45990cbc
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: 9cb598c4068586e4e960ec40743c4f54f09995ad
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068271"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614370"
 ---
 # <a name="introduction-to-aspnet-core"></a>Présentation d’ASP.NET Core
 
@@ -44,7 +44,7 @@ Le modèle MVC d’ASP.NET Core fournit des fonctionnalités pour créer des [AP
 
 ## <a name="client-side-development"></a>Développement côté client
 
-ASP.NET Core s’intègre parfaitement avec les frameworks et les bibliothèques populaires côté client, notamment [Razor Components](xref:razor-components/index), [Angular](xref:spa/angular), [React](xref:spa/react) et [Bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez [Razor Components](xref:razor-components/index) et les rubriques connexes sous *Développement côté client*.
+ASP.NET Core s’intègre parfaitement avec les frameworks et les bibliothèques populaires côté client, notamment [Blazor](xref:blazor/index), [Angular](xref:spa/angular), [React](xref:spa/react) et [Bootstrap](https://getbootstrap.com/). Pour plus d’informations, consultez <xref:blazor/index> et les rubriques connexes sous *Développement côté client*.
 
 <a name="target-framework"></a>
 

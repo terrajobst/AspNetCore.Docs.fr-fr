@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 8a14ada241330ca33811b7cce70daf26ff8fc13a
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 3d2ae12bf8eda4f7997008758d4d29434a8371a7
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750634"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59012602"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>Tutoriel : Utilisation de la fonctionnalité de migrations - ASP.NET MVC avec EF Core
 
@@ -54,6 +54,7 @@ Cette modification configure le projet de façon à ce que la première migratio
 > ```console
 > dotnet ef database drop
 > ```
+>
 > La section suivante explique comment exécuter des commandes CLI.
 
 ## <a name="create-an-initial-migration"></a>Créer une migration initiale

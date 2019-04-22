@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
 uid: data/ef-mvc/intro
-ms.openlocfilehash: 282af56eb911aea53a6ce945e7c1177c158fc342
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 5a2ec9a8d85925e55840962cc90b3092953e7920
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750583"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59012849"
 ---
 # <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>Tutoriel : Bien démarrer avec EF Core dans une application web ASP.NET MVC
 
@@ -39,8 +39,8 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 * [Kit SDK .NET Core 2.2](https://www.microsoft.com/net/download)
 * [Visual Studio 2017 ou 2019](https://visualstudio.microsoft.com/downloads/) avec les charges de travail suivantes :
-    * Charge de travail **Développement web et ASP.NET**
-    * Charge de travail **Développement multiplateforme .NET Core**
+  * Charge de travail **Développement web et ASP.NET**
+  * Charge de travail **Développement multiplateforme .NET Core**
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 

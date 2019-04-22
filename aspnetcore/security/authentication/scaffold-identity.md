@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: d86d3cab91e8f927db30767097a89a08cf358f06
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: 7445db31e461bf61e8a91af7239187a6ece9d011
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410165"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59705469"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>Identité d’une structure de projets ASP.NET Core
 
@@ -47,7 +47,7 @@ Ajoutez les appels en surbrillance suivants à la `Startup` classe :
 
 <!--
 set projNam=RPnoAuth
-set projType=razor
+set projType=webapp
 set version=2.1.0
 
 dotnet new %projType% -o %projNam%

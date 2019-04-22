@@ -5,12 +5,12 @@ description: Cette série de tutoriels montre comment utiliser Razor Pages dans 
 ms.author: riande
 ms.date: 12/5/2018
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 88449a0064dad42d8d2bf9fbdd67078e4c2ba8de
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 1d264ca4a605d8291e273a8f054c92e7eefa5548
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210052"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59468845"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutoriel : Bien démarrer avec des pages Razor dans ASP.NET Core
 
@@ -77,13 +77,12 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
 
 # <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
-À partir d’un terminal, exécutez les commandes suivantes :
+À partir d’un terminal, exécutez la commande suivante :
 
 <!-- TODO: update these instruction once mac support 2.2 projects -->
 
 ```console
 dotnet new webapp -o RazorPagesMovie
-cd RazorPagesMovie
 ```
 
 Les commandes précédentes utilisent le [CLI .NET Core](/dotnet/core/tools/dotnet) pour créer un projet Razor Pages.
@@ -105,24 +104,6 @@ Dans Visual Studio, sélectionnez **Fichier > Ouvrir**, puis sélectionnez le fi
   [!INCLUDE[](~/includes/trustCertVS.md)]
 
   Visual Studio démarre [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) et exécute l’application. La barre d’adresses affiche `localhost:port#` au lieu de quelque chose qui ressemble à `example.com`. La raison en est que `localhost` est le nom d’hôte standard de l’ordinateur local. Localhost traite uniquement les requêtes web de l’ordinateur local. Quand Visual Studio crée un projet web, un port aléatoire est utilisé pour le serveur web.
-  
-# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
-
-* Appuyez sur **Ctrl+F5** pour exécuter sans le débogueur.
-
-  [!INCLUDE[](~/includes/trustCertVSC.md)]
-
-  Visual Studio Code démarre [Kestrel](xref:fundamentals/servers/kestrel), lance un navigateur, puis accède à `http://localhost:5001`. La barre d’adresses affiche `localhost:port#` au lieu de quelque chose qui ressemble à `example.com`. La raison en est que `localhost` est le nom d’hôte standard de l’ordinateur local. Localhost traite uniquement les requêtes web de l’ordinateur local.
-  
-# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
-
-Sélectionnez **Exécuter > Exécuter sans débogage** pour lancer l’application. Visual Studio démarre [Kestrel](xref:fundamentals/servers/kestrel), lance un navigateur, puis accède à `http://localhost:5001`.
-
-[!INCLUDE[](~/includes/trustCertMac.md)]
-
-<!-- End of VS tabs -->
-
----
 
 * Sur la page d'accueil de l’application, sélectionnez **Accepter** pour accepter le suivi.
 
@@ -133,6 +114,46 @@ Sélectionnez **Exécuter > Exécuter sans débogage** pour lancer l’applicati
   L’illustration suivante montre l’application après avoir consenti au suivi :
 
   ![Page d’accueil ou page d’index](razor-pages-start/_static/home2.2.png)
+  
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+  [!INCLUDE[](~/includes/trustCertVSC.md)]
+
+* Appuyez sur **Ctrl+F5** pour exécuter sans le débogueur.
+
+  Visual Studio Code démarre [Kestrel](xref:fundamentals/servers/kestrel), lance un navigateur, puis accède à `http://localhost:5001`. La barre d’adresses affiche `localhost:port#` au lieu de quelque chose qui ressemble à `example.com`. La raison en est que `localhost` est le nom d’hôte standard de l’ordinateur local. Localhost traite uniquement les requêtes web de l’ordinateur local.
+
+* Sur la page d'accueil de l’application, sélectionnez **Accepter** pour accepter le suivi.
+
+  Cette application ne suit pas les informations personnelles, mais le modèle de projet inclut la fonctionnalité de consentement en cas de besoin pour vous conformer au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr) de l’Union européenne.
+
+  ![Page d’accueil ou page d’index](razor-pages-start/_static/homeGDPR2.2.png)
+
+  L’illustration suivante montre l’application après avoir consenti au suivi :
+
+  ![Page d’accueil ou page d’index](razor-pages-start/_static/home2.2.png)
+  
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
+
+  [!INCLUDE[](~/includes/trustCertMac.md)]
+
+* Appuyez sur **Cmd+Opt+F5** pour lancer l’exécution sans le débogueur.
+
+  Visual Studio démarre [Kestrel](xref:fundamentals/servers/kestrel), lance un navigateur, puis accède à `http://localhost:5001`.
+
+* Sur la page d'accueil de l’application, sélectionnez **Accepter** pour accepter le suivi.
+
+  Cette application ne suit pas les informations personnelles, mais le modèle de projet inclut la fonctionnalité de consentement en cas de besoin pour vous conformer au [Règlement général sur la protection des données (RGPD)](xref:security/gdpr) de l’Union européenne.
+
+  ![Page d’accueil ou page d’index](razor-pages-start/_static/homeGDPR2.2_safari.png)
+
+  L’illustration suivante montre l’application après avoir consenti au suivi :
+
+  ![Page d’accueil ou page d’index](razor-pages-start/_static/home2.2_safari.png)
+
+<!-- End of VS tabs -->
+
+---
 
 ## <a name="examine-the-project-files"></a>Examiner les fichiers projet
 

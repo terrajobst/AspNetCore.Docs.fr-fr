@@ -4,14 +4,14 @@ author: scottaddie
 description: Découvrez ce que sont les Tag Helper Components et apprenez à les utiliser dans ASP.NET Core.
 monikerRange: '>= aspnetcore-2.0'
 ms.author: scaddie
-ms.date: 09/18/2018
+ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: 3d21e12650d844f05bdfdf5b3451ab6219e3c3b7
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: fdad4ae367245cd3beabaf90587c1fe5e9162afe
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206872"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59468593"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>Tag Helper Components dans ASP.NET Core
 
@@ -112,7 +112,7 @@ Pour créer un Tag Helper Component personnalisé :
 
 * Créez une classe publique dérivée de <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper>.
 * Appliquez un attribut [[HtmlTargetElement]](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) à la classe. Spécifiez le nom de l’élément HTML cible.
-* *Facultatif* : appliquez un attribut [[EditorBrowsable(EditorBrowsableState.Never)]](xref:System.ComponentModel.EditorBrowsableAttribute) à la classe pour supprimer l’affichage de type dans IntelliSense.
+* *Facultatif* : appliquez un attribut [[EditorBrowsable(EditorBrowsableState.Never)]](xref:System.ComponentModel.EditorBrowsableAttribute) à la classe pour supprimer l’affichage du type dans IntelliSense.
 
 Le code suivant crée un Tag Helper Component personnalisé qui cible l’élément HTML `<address>` :
 

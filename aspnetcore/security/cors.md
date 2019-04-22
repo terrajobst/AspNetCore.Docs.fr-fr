@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/07/2019
 uid: security/cors
 ms.openlocfilehash: fe5b750c44e5fad9ba80efb2cc8116d0a64b1a17
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068295"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Autoriser les demandes de Cross-Origin (CORS) dans ASP.NET Core
@@ -170,7 +170,7 @@ to
 to remove the ambiguous **This**.
 -->
 
-`AllowAnyOrigin` Affecte des demandes de contrôle en amont et le `Access-Control-Allow-Origin` en-tête. Pour plus d’informations, consultez le [demandes de contrôle en amont](#preflight-requests) section.
+`AllowAnyOrigin` affecte des demandes de contrôle en amont et le `Access-Control-Allow-Origin` en-tête. Pour plus d’informations, consultez le [demandes de contrôle en amont](#preflight-requests) section.
 
 ::: moniker range=">= aspnetcore-2.0"
 

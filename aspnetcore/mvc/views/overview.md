@@ -3,14 +3,14 @@ title: Vues dans ASP.NET Core MVC
 author: ardalis
 description: Découvrez comment les vues gèrent la présentation des données et les interactions utilisateur dans les applications ASP.NET Core MVC.
 ms.author: riande
-ms.date: 12/12/2017
+ms.date: 04/03/2019
 uid: mvc/views/overview
-ms.openlocfilehash: 0ee1fef9e9da15d91427a2eb5b5f530a0b77ce33
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 766996645bc6ef2b6be42d729baf5d57f55b6ddd
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58265388"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59012797"
 ---
 # <a name="views-in-aspnet-core-mvc"></a>Vues dans ASP.NET Core MVC
 
@@ -202,7 +202,7 @@ En plus des vues fortement typées, les vues ont accès à une collection de don
 | Une vue et une [disposition](xref:mvc/views/layout)   | Définition du contenu de l’élément **\<title>** dans la disposition à partir d’un fichier de vue.  |
 | Une [vue partielle](xref:mvc/views/partial) et une vue | Widget qui affiche des données en fonction de la page web demandée par l’utilisateur.      |
 
-Cette collection peut être référencée par les propriétés `ViewData` ou `ViewBag` sur les contrôleurs et les vues. La propriété `ViewData` est un dictionnaire d’objets faiblement typés. La propriété `ViewBag` est un wrapper autour de `ViewData` qui fournit des propriétés dynamiques pour la collection `ViewData` sous-jacente.
+Cette collection peut être référencée par les propriétés `ViewData` ou `ViewBag` sur les contrôleurs et les vues. La propriété `ViewData` est un dictionnaire d’objets faiblement typés. La propriété `ViewBag` est un wrapper autour de `ViewData` qui fournit des propriétés dynamiques pour la collection `ViewData` sous-jacente. Remarque : Les recherches de clés respectent la casse pour `ViewData` et `ViewBag`.
 
 `ViewData` et `ViewBag` sont résolues dynamiquement au moment de l’exécution. Dans la mesure où elles n’effectuent pas de contrôle de type à la compilation, ces deux propriétés sont généralement davantage sujettes aux erreurs qu’un ViewModel. Pour cette raison, certains développeurs préfèrent ne jamais utiliser les propriétés `ViewData` et `ViewBag`, ou les utiliser le moins possible.
 

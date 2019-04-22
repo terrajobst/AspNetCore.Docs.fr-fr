@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 02/25/2019
 uid: security/key-vault-configuration
 ms.openlocfilehash: 8fd1cca1803d3f1d44d80ec63c5cfc259cbdaf55
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012693"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de Configuration d’Azure Key Vault dans ASP.NET Core
@@ -213,7 +213,7 @@ Exemples de valeurs :
 
 * Nom du coffre de clés : `contosovault`
 * ID d’application : `627e911e-43cc-61d4-992e-12db9c81b413`
-* Mot de passe : `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
+* Mot de passe : `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
 
 Le `IKeyVaultSecretManager` implémentation réagit aux préfixes de version de secrets pour charger la clé secrète appropriée dans configuration :
 

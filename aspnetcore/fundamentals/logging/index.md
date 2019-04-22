@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 03/02/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 065b2016d3a2dcc2243ec6869e027c5fabe4dad8
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.openlocfilehash: f0e4dbb6fda4f676ad8e769c71cc9548a4d61d66
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59068402"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614433"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -168,7 +168,7 @@ Si les niveaux sont spécifiés dans `Logging.{providername}.LogLevel`, ils remp
 }
 ```
 
-`LogLevel` représentent des noms de journal. La clé `Default` s’applique aux journaux qui ne sont pas explicitement répertoriés. La valeur représente le [niveau de journal](#log-level) appliqué au journal donné.
+Les clés `LogLevel` représentent des noms de journal. La clé `Default` s’applique aux journaux qui ne sont pas explicitement répertoriés. La valeur représente le [niveau de journal](#log-level) appliqué au journal donné.
 
 ::: moniker-end
 
@@ -285,11 +285,11 @@ ASP.NET Core définit les niveaux de journalisation suivants, classés selon leu
 
 * Information = 2
 
-  Informations de suivi du flux général de l’application. Ces journaux ont généralement une utilité à long terme. Exemple : `Request received for path /api/todo`
+  Informations de suivi du flux général de l’application. Ces journaux ont généralement une utilité à long terme. Exemple : `Request received for path /api/todo`
 
 * Warning = 3
 
-  Informations sur les événements anormaux ou inattendus dans le flux de l’application. Il peut s’agir d’erreurs ou d’autres situations qui ne provoquent pas l’arrêt de l’application, mais qu’il peut être intéressant d’examiner. Le niveau de journalisation `Warning` est généralement utilisé pour les exceptions gérées. Exemple : `FileNotFoundException for file quotes.txt.`
+  Informations sur les événements anormaux ou inattendus dans le flux de l’application. Il peut s’agir d’erreurs ou d’autres situations qui ne provoquent pas l’arrêt de l’application, mais qu’il peut être intéressant d’examiner. Le niveau de journalisation `Warning` est généralement utilisé pour les exceptions gérées. Exemple : `FileNotFoundException for file quotes.txt.`
 
 * Error = 4
 
@@ -497,7 +497,8 @@ Chaque fournisseur définit un *alias* qui peut être utilisé dans la configura
 * Console
 * Débogage
 * EventLog
-* AzureAppServices
+* AzureAppServicesFile
+* AzureAppServicesBlob
 * TraceSource
 * EventSource
 
@@ -611,7 +612,7 @@ warn: TodoApi.Controllers.TodoController[4000]
 ASP.NET Core contient les fournisseurs suivants :
 
 * [Console](#console-provider)
-* [Débogage](#debug-provider)
+* [Déboguer](#debug-provider)
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
@@ -771,11 +772,11 @@ L’exemple suivant configure un fournisseur `TraceSource` qui enregistre les me
 Pour plus d'informations sur la journalisation dans Azure, voir les sections suivantes :
 
 * [Fournisseur Azure App Service](#azure-app-service-provider)
-* [Streaming des journaux Azure](#azure-log-streaming)
+* [Diffusion en continu de journaux Azure](#azure-log-streaming)
 
 ::: moniker range=">= aspnetcore-1.1"
 
-* [Journalisation des traces Azure Application Insights](#azure-application-insights-trace-logging)
+* [Journalisation du suivi Azure Application Insights](#azure-application-insights-trace-logging)
 
 ::: moniker-end
 

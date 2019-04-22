@@ -5,12 +5,12 @@ description: Ce tutoriel montre comment installer et utiliser l’outil Observat
 ms.author: riande
 ms.date: 05/31/2018
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: f1e0d91b27df4af7cbfb6f2547c94c0370c65d0d
-ms.sourcegitcommit: cec77d5ad8a0cedb1ecbec32834111492afd0cd2
+ms.openlocfilehash: 40ecca1c6f9d519b24649d0c28946d95b820c07c
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54207500"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59068194"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>Développer des applications ASP.NET Core à l’aide d’un observateur de fichiers
 
@@ -27,6 +27,9 @@ Dans une interface de commande, accédez au dossier *WebApp*. Exécutez la comma
 ```console
 dotnet run
 ```
+
+> [!NOTE]
+> Vous pouvez utiliser `dotnet run --project <PROJECT>` pour spécifier un projet à exécuter. Par exemple, `dotnet run --project WebApp` à la racine de l’exemple d’application aura également pour effet d’exécuter le projet *WebApp*.
 
 La sortie de la console affiche des messages semblables à ce qui suit (indiquant que l’application est en cours d’exécution et en attente de demandes) :
 
@@ -77,6 +80,9 @@ Toutes les [commandes de l’interface CLI de .NET Core](/dotnet/core/tools#cli-
 
 Exécutez `dotnet watch run` dans le dossier *WebApp*. La sortie de la console indique que `watch` a démarré.
 
+> [!NOTE]
+> Vous pouvez utiliser `dotnet watch --project <PROJECT>` pour spécifier un projet à surveiller. Par exemple, `dotnet watch --project WebApp run` à la racine de l’exemple d’application aura également pour effet d’exécuter le projet *WebApp* et d’en effectuer le suivi.
+
 ## <a name="make-changes-with-dotnet-watch"></a>Apporter des modifications avec `dotnet watch`
 
 Vérifiez que `dotnet watch` est en cours d’exécution.
@@ -86,7 +92,7 @@ Corrigez le bogue présent dans la méthode `Product` de *MathController.cs* afi
 ```csharp
 public static int Product(int a, int b)
 {
-  return a * b;
+    return a * b;
 }
 ```
 

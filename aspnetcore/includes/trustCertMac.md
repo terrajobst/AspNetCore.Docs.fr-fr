@@ -1,19 +1,29 @@
 ---
-ms.openlocfilehash: 33772d3ad8bbb1ffc54792f8c31834849d0f9567
-ms.sourcegitcommit: 34bf9fc6ea814c039401fca174642f0acb14be3c
+ms.openlocfilehash: 2ec079606cb48670dbc3852482fd8d401e7db44b
+ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57964136"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59472317"
 ---
-Visual Studio pour Mac affiche une boîte de dialogue avec le message suivant :
+* Approuvez le certificat de développement HTTPS en exécutant la commande suivante :
 
-*Ce projet est configuré pour utiliser SSL. Pour éviter les avertissements SSL dans le navigateur, vous pouvez choisir d’approuver le certificat auto-signé. Voulez-vous approuver le certificat SSL d’IIS Express ?*
+    ```console
+    dotnet dev-certs https --trust
+    ```
 
-Sélectionnez **Oui** et la boîte de dialogue suivante s’affiche :
+* La commande précédente affiche la sortie suivante :
 
-![Boîte de dialogue Avertissement de sécurité](~/getting-started/_static/cert.png)
+    ```console
+    Trusting the HTTPS development certificate was requested. If the certificate 
+    is not already trusted we will run the following command:
+    'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain 
+    <<certificate>>'
+    This command might prompt you for your password to install the certificate on the 
+    system keychain.
+    The HTTPS developer certificate was generated successfully.
+    ```
 
-Sélectionnez **Oui** si vous acceptez d’approuver le certificat de développement.
+* Entrez le nom d’utilisateur administrateur et le mot de passe s’ils vous sont demandés.  Le certificat est maintenant installé et approuvé.
 
-Pour plus d’informations, consultez [Approuver le certificat de développement HTTPS ASP.NET Core](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).
+    Pour plus d’informations, consultez [Approuver le certificat de développement HTTPS ASP.NET Core](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).

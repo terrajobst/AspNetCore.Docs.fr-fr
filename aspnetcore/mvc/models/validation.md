@@ -4,14 +4,15 @@ author: tdykstra
 description: Découvrez plus d’informations sur la validation de modèle dans ASP.NET Core MVC et Razor Pages.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/01/2019
+ms.date: 04/06/2019
+monikerRange: '>= aspnetcore-2.1'
 uid: mvc/models/validation
-ms.openlocfilehash: b766d47f296745ba4be6ea8cb6335db9c3e2d975
-ms.sourcegitcommit: 5995f44e9e13d7e7aa8d193e2825381c42184e47
+ms.openlocfilehash: 1ae3c20478b02d6f654e65fdf34c88e1ffb837f8
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58809313"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59468735"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>Validation de modèle dans ASP.NET Core MVC et Razor Pages
 
@@ -23,23 +24,11 @@ Cet article explique comment valider l’entrée d’utilisateur dans une applic
 
 L’état du modèle représente les erreurs qui proviennent de deux sous-systèmes : liaison de modèle et validation de modèle. Les erreurs qui proviennent de la [liaison de modèle](model-binding.md) sont généralement des erreurs de conversion de données (par exemple, un « x » est entré dans un champ qui attend un nombre entier). La validation de modèle se produit après la liaison de modèle, et signale les erreurs où les données ne sont pas conformes aux règles d’entreprise (par exemple, un 0 est entré dans un champ qui attend une évaluation comprise entre 1 et 5).
 
-::: moniker range=">= aspnetcore-2.1"
-
-La liaison et la validation de modèle se produisent avant l’exécution d’une action de contrôleur ou d’une méthode de gestionnaire Razor Pages. Il incombe à l’application d’inspecter `ModelState.IsValid` et de réagir de façon appropriée. En règle générale, les applications web réaffichent la page avec un message d’erreur :
-
-[!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-2.1"
-
 La liaison et la validation de modèle se produisent avant l’exécution d’une action de contrôleur ou d’une méthode de gestionnaire Razor Pages. Pour les applications web, il incombe à l’application d’inspecter `ModelState.IsValid` et de réagir de façon appropriée. En règle générale, les applications web réaffichent la page avec un message d’erreur :
 
 [!code-csharp[](validation/sample_snapshot/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
 Les contrôleurs d’API web ne sont pas obligés de vérifier `ModelState.IsValid` s’ils ont l’attribut `[ApiController]`. Dans ce cas, une réponse HTTP 400 automatique contenant les détails du problème est retournée quand l’état du modèle n’est pas valide. Pour plus d’informations, consultez [Réponses HTTP 400 automatiques](xref:web-api/index#automatic-http-400-responses).
-
-::: moniker-end
 
 ## <a name="rerun-validation"></a>Réexécuter la validation
 
@@ -162,7 +151,6 @@ Si vous avez besoin d’une validation non fournie par les attributs prédéfini
 * [Créer des attributs personnalisés](#custom-attributes).
 * [Implémenter IValidatableObject](#ivalidatableobject).
 
-
 ## <a name="custom-attributes"></a>Attributs personnalisés
 
 Pour les scénarios non gérés par les attributs de validation prédéfinis, vous pouvez créer des attributs de validation personnalisés. Créez une classe qui hérite de <xref:System.ComponentModel.DataAnnotations.ValidationAttribute> et substituez la méthode <xref:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid*>.
@@ -180,8 +168,6 @@ La variable `movie` de l’exemple précédent représente un objet `Movie` qui 
 L’exemple précédent fonctionne uniquement avec les types `Movie`. Une autre option de validation au niveau de la classe consiste à implémenter `IValidatableObject` dans la classe de modèle, comme indiqué dans l’exemple suivant :
 
 [!code-csharp[](validation/sample/Models/MovieIValidatable.cs?name=snippet&highlight=1,26-34)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="top-level-node-validation"></a>Validation du nœud de niveau supérieur
 
@@ -210,15 +196,11 @@ Lors de l’exécution avec `CompatibilityVersion.Version_2_1` ou version ultér
 
 [!code-csharp[](validation/sample_snapshot/Startup.cs?name=snippet_AddMvc&highlight=4)]
 
-::: moniker-end
-
 ## <a name="maximum-errors"></a>Quantité maximale d’erreurs
 
 La validation s’arrête quand le nombre maximal d’erreurs est atteint (200 par défaut). Vous pouvez configurer ce nombre avec le code suivant dans `Startup.ConfigureServices` :
 
 [!code-csharp[](validation/sample/Startup.cs?name=snippet_MaxModelValidationErrors&highlight=3)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 ## <a name="maximum-recursion"></a>Récursivité maximale
 
@@ -227,8 +209,6 @@ La validation s’arrête quand le nombre maximal d’erreurs est atteint (200 p
 ## <a name="automatic-short-circuit"></a>Court-circuit automatique
 
 La validation est automatiquement court-circuitée (ignorée) si le graphe du modèle ne nécessite pas de validation. Les objets pour lesquels le runtime ignore la validation comprennent les collections de primitives (telles que `byte[]`, `string[]`, `Dictionary<string, string>`) et les graphes d’objets complexes qui n’ont pas de validateur.
-
-::: moniker-end
 
 ## <a name="disable-validation"></a>Désactiver la validation
 
@@ -270,7 +250,7 @@ Les Tag Helpers précédents restituent le code HTML suivant.
             <div class="col-md-10">
                 <input class="form-control" type="datetime"
                 data-val="true" data-val-required="The ReleaseDate field is required."
-                id="ReleaseDate" name="ReleaseDate" value="" />
+                id="ReleaseDate" name="ReleaseDate" value="">
                 <span class="text-danger field-validation-valid"
                 data-valmsg-for="ReleaseDate" data-valmsg-replace="true"></span>
             </div>
@@ -308,7 +288,7 @@ La méthode `$.validator.unobtrusive.parse()` accepte un sélecteur jQuery comme
 
 ### <a name="add-validation-to-dynamic-controls"></a>Ajouter une validation à des contrôles dynamiques
 
-La méthode `$.validator.unobtrusive.parse()` opère sur un formulaire entier, et non sur des contrôles individuels générés de manière dynamique tels que `<input/>` et `<select/>`. Pour réanalyser le formulaire, supprimez les données de validation qui ont été ajoutées quand le formulaire a été analysé précédemment, comme illustré dans l’exemple suivant :
+La méthode `$.validator.unobtrusive.parse()` opère sur un formulaire entier, et non sur des contrôles individuels générés de manière dynamique tels que `<input>` et `<select/>`. Pour réanalyser le formulaire, supprimez les données de validation qui ont été ajoutées quand le formulaire a été analysé précédemment, comme illustré dans l’exemple suivant :
 
 ```js
 $.get({
@@ -349,7 +329,7 @@ L’exemple suivant montre les attributs `data-` pour l’attribut `ClassicMovie
     data-val-classicmovie1="Classic movies must have a release year earlier than 1960."
     data-val-classicmovie1-year="1960"
     data-val-required="The ReleaseDate field is required."
-    id="ReleaseDate" name="ReleaseDate" value="" />
+    id="ReleaseDate" name="ReleaseDate" value="">
 ```
 
 Comme mentionné plus haut, les [Tag Helpers](xref:mvc/views/tag-helpers/intro) et les [helpers HTML](xref:mvc/views/overview) utilisent les informations des attributs de validation pour restituer les attributs `data-`. Il existe deux options pour l’écriture de code qui entraîne la création d’attributs HTML `data-` personnalisés :

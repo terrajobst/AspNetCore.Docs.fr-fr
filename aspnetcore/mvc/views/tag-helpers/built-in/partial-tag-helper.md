@@ -5,14 +5,14 @@ description: Découvrez le Tag Helper Partial ASP.NET Core et le rôle de ses at
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 07/25/2018
+ms.date: 04/06/2019
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: d56df549d845b1f83ec4a5ec97ce6b44438f725a
-ms.sourcegitcommit: d22b3c23c45a076c4f394a70b1c8df2fbcdf656d
+ms.openlocfilehash: 116fce7af5dc138fbbb0351a4f38f59e88c8f338
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55428432"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59468680"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>Tag Helper Partial dans ASP.NET Core
 

@@ -8,10 +8,10 @@ ms.custom: mvc, seodec18
 ms.date: 04/03/2019
 uid: security/authentication/windowsauth
 ms.openlocfilehash: bd4ffa79c4d1e0070c820fa9c06b0a84c3aaae74
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59468651"
 ---
 # <a name="configure-windows-authentication-in-aspnet-core"></a>Configurer l’authentification Windows dans ASP.NET Core
@@ -26,7 +26,7 @@ L’authentification Windows s’appuie sur le système d’exploitation pour au
 
 Le **Web Application** modèle disponible via Visual Studio ou l’interface CLI .NET Core peut être configuré pour prendre en charge l’authentification Windows.
 
-# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="use-the-windows-authentication-app-template-for-a-new-project"></a>Utiliser le modèle d’application de l’authentification Windows pour un nouveau projet
 
@@ -55,7 +55,7 @@ Vous pouvez également les propriétés peuvent être configurées dans le `iisS
 
 [!code-json[](windowsauth/sample_snapshot/launchSettings.json?highlight=2-3)]
 
-# [<a name="net-core-cli"></a>CLI .NET Core](#tab/netcore-cli)
+# <a name="net-core-clitabnetcore-cli"></a>[CLI .NET Core](#tab/netcore-cli)
 
 Utilisez le **l’authentification Windows** modèle d’application.
 
