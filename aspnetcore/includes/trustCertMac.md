@@ -1,18 +1,18 @@
 ---
 ms.openlocfilehash: 2ec079606cb48670dbc3852482fd8d401e7db44b
-ms.sourcegitcommit: 948e533e02c2a7cb6175ada20b2c9cabb7786d0b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59472317"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737077"
 ---
-* <span data-ttu-id="1c01e-101">Approuvez le certificat de développement HTTPS en exécutant la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="1c01e-101">Trust the HTTPS development certificate by running the following command:</span></span>
+* <span data-ttu-id="8c2da-101">Approuvez le certificat de développement HTTPS en exécutant la commande suivante :</span><span class="sxs-lookup"><span data-stu-id="8c2da-101">Trust the HTTPS development certificate by running the following command:</span></span>
 
     ```console
     dotnet dev-certs https --trust
     ```
 
-* <span data-ttu-id="1c01e-102">La commande précédente affiche la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="1c01e-102">The preceding command displays the following output:</span></span>
+* <span data-ttu-id="8c2da-102">La commande précédente affiche la sortie suivante :</span><span class="sxs-lookup"><span data-stu-id="8c2da-102">The preceding command displays the following output:</span></span>
 
     ```console
     Trusting the HTTPS development certificate was requested. If the certificate 
@@ -24,6 +24,6 @@ ms.locfileid: "59472317"
     The HTTPS developer certificate was generated successfully.
     ```
 
-* <span data-ttu-id="1c01e-103">Entrez le nom d’utilisateur administrateur et le mot de passe s’ils vous sont demandés.</span><span class="sxs-lookup"><span data-stu-id="1c01e-103">Enter the admin username and password if prompted.</span></span>  <span data-ttu-id="1c01e-104">Le certificat est maintenant installé et approuvé.</span><span class="sxs-lookup"><span data-stu-id="1c01e-104">The certificate will now be installed and trusted.</span></span>
+* <span data-ttu-id="8c2da-103">Entrez le nom d’utilisateur administrateur et le mot de passe s’ils vous sont demandés.</span><span class="sxs-lookup"><span data-stu-id="8c2da-103">Enter the admin username and password if prompted.</span></span>  <span data-ttu-id="8c2da-104">Le certificat est maintenant installé et approuvé.</span><span class="sxs-lookup"><span data-stu-id="8c2da-104">The certificate will now be installed and trusted.</span></span>
 
-    <span data-ttu-id="1c01e-105">Pour plus d’informations, consultez [Approuver le certificat de développement HTTPS ASP.NET Core](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).</span><span class="sxs-lookup"><span data-stu-id="1c01e-105">See [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos) for more information.</span></span>
+    <span data-ttu-id="8c2da-105">Pour plus d’informations, consultez [Approuver le certificat de développement HTTPS ASP.NET Core](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos).</span><span class="sxs-lookup"><span data-stu-id="8c2da-105">See [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos) for more information.</span></span>
