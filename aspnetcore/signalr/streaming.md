@@ -1,74 +1,109 @@
 ---
 title: Utiliser la diffusion en continu dans ASP.NET Core SignalR
 author: bradygaster
-description: Découvrez comment retourner des flux de valeurs à partir de méthodes de concentrateur de serveur et de consommer les flux à l’aide les clients .NET et JavaScript.
+description: Découvrez comment diffuser des données entre le client et le serveur.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 04/12/2019
 uid: signalr/streaming
-ms.openlocfilehash: 7c176e3f21ffca7b97d9d3c2e8861032f22587b8
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 83bbb231482d9c1606be3c5bbbeb1cc3b8efcf7d
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264302"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982654"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Utiliser la diffusion en continu dans ASP.NET Core SignalR
 
 Par [Brennan Conroy](https://github.com/BrennanConroy)
 
-ASP.NET Core SignalR prend en charge la diffusion en continu des valeurs de retour des méthodes de serveur. Cela est utile pour les scénarios où les fragments de données arriveront au fil du temps. Lorsqu’une valeur de retour est diffusée sur le client, chaque fragment est envoyé au client dès qu’il est disponible, et non en attente que toutes les données soient disponibles.
-
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/streaming/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
-
-## <a name="set-up-the-hub"></a>Configurer le hub
-
 ::: moniker range=">= aspnetcore-3.0"
 
-Une méthode de concentrateur devient automatiquement une méthode de concentrateur de diffusion en continu quand elle retourne un `ChannelReader<T>`, `IAsyncEnumerable<T>`, `Task<ChannelReader<T>>`, ou `Task<IAsyncEnumerable<T>>`.
+ASP.NET Core SignalR prend en charge la diffusion en continu du client au serveur et du serveur au client. Cela est utile pour les scénarios où les fragments des données arrivent au fil du temps. Lors de la diffusion en continu, chaque fragment est envoyé au client ou serveur dès qu’il est disponible, au lieu d’attendre à toutes les données soient disponibles.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Une méthode de hub devient automatiquement une méthode de hub de diffusion en continu quand elle retourne un `ChannelReader<T>` ou un `Task<ChannelReader<T>>`.
+ASP.NET Core SignalR prend en charge la diffusion en continu des valeurs de retour des méthodes de serveur. Cela est utile pour les scénarios où les fragments des données arrivent au fil du temps. Lorsqu’une valeur de retour est diffusée sur le client, chaque fragment est envoyé au client dès qu’il est disponible, et non en attente que toutes les données soient disponibles.
 
 ::: moniker-end
+
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+
+## <a name="set-up-a-hub-for-streaming"></a>Configurer un concentrateur de diffusion en continu
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Dans ASP.NET Core 3.0 ou version ultérieure, la diffusion en continu des méthodes de concentrateur peut retourner `IAsyncEnumerable<T>` outre `ChannelReader<T>`. La façon la plus simple pour retourner `IAsyncEnumerable<T>` consiste à rendre la méthode de concentrateur une méthode d’itérateur async, comme le montre l’exemple suivant. Méthodes d’itérateur Hub async peuvent accepter un `CancellationToken` paramètre qui sera déclenchée quand le client annule son abonnement à partir du flux. Les méthodes Async itérateur facilement évitent des problèmes courants avec les canaux comme le retour ne pas le `ChannelReader` suffisamment tôt ou de la sortie de la méthode sans terminer la `ChannelWriter`.
-
-[!INCLUDE[](~/includes/csharp-8-required.md)]
-
-[!code-csharp[Streaming hub async iterator method](streaming/sample/Hubs/AsyncEnumerableHub.cs?name=snippet_AsyncIterator)]
+Une méthode de concentrateur devient automatiquement une méthode de concentrateur de diffusion en continu quand elle retourne un <xref:System.Threading.Channels.ChannelReader`1>, `IAsyncEnumerable<T>`, `Task<ChannelReader<T>>`, ou `Task<IAsyncEnumerable<T>>`.
 
 ::: moniker-end
 
-L’exemple suivant montre les principes de base de données au client à l’aide de canaux de diffusion en continu. Chaque fois qu’un objet est écrit dans le `ChannelWriter` cet objet est immédiatement envoyé au client. À la fin, le `ChannelWriter` est terminé pour indiquer au client que le flux est fermé.
+::: moniker range="< aspnetcore-3.0"
+
+Une méthode de hub devient automatiquement une méthode de hub de diffusion en continu quand elle retourne un <xref:System.Threading.Channels.ChannelReader`1> ou un `Task<ChannelReader<T>>`.
+
+::: moniker-end
+
+### <a name="server-to-client-streaming"></a>Serveur-client de diffusion en continu
+
+::: moniker range=">= aspnetcore-3.0"
+
+Méthodes de concentrateur de diffusion en continu peut retourner `IAsyncEnumerable<T>` outre `ChannelReader<T>`. La façon la plus simple pour retourner `IAsyncEnumerable<T>` consiste à rendre la méthode de concentrateur une méthode d’itérateur async, comme le montre l’exemple suivant. Méthodes d’itérateur Hub async peuvent accepter un `CancellationToken` paramètre qui est déclenchée quand le client annule son abonnement à partir du flux. Les méthodes Async itérateur éviter les problèmes courants avec des canaux, comme le retour ne pas le `ChannelReader` suffisamment tôt ou de la sortie de la méthode sans terminer la <xref:System.Threading.Channels.ChannelWriter`1>.
+
+[!INCLUDE[](~/includes/csharp-8-required.md)]
+
+[!code-csharp[Streaming hub async iterator method](streaming/samples/3.0/Hubs/AsyncEnumerableHub.cs?name=snippet_AsyncIterator)]
+
+::: moniker-end
+
+L’exemple suivant montre les principes de base de données au client à l’aide de canaux de diffusion en continu. Chaque fois qu’un objet est écrit dans le <xref:System.Threading.Channels.ChannelWriter`1>, l’objet est immédiatement envoyée au client. À la fin, le `ChannelWriter` est terminé pour indiquer au client que le flux est fermé.
 
 > [!NOTE]
-> * Écrivez dans le `ChannelWriter` sur un thread d’arrière-plan, puis revenez sur le `ChannelReader` dès que possible. Les autres appels du hub seront bloqués jusqu'à ce qu'un `ChannelReader` soit retourné.
-> * Encapsuler votre logique dans un `try ... catch` et terminez le `Channel` dans la capture et à l’extérieur catch s’assurer que le hub d’appel de méthode est terminée correctement.
+> Écrivez dans le `ChannelWriter<T>` sur un thread d’arrière-plan, puis revenez sur le `ChannelReader` dès que possible. Autres appels de concentrateur sont bloqués jusqu'à ce qu’un `ChannelReader` est retourné.
+>
+> Encapsuler la logique dans un `try ... catch`. Terminer la `Channel` dans le `catch` et en dehors du `catch` s’assurer que le hub d’appel de méthode est s’est déroulée correctement.
+
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[Streaming hub method](streaming/samples/3.0/Hubs/StreamHub.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="= aspnetcore-2.2"
+
+[!code-csharp[Streaming hub method](streaming/samples/2.2/Hubs/StreamHub.cs?name=snippet1)]
+
+::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.aspnetcore21.cs?name=snippet1)]
+[!code-csharp[Streaming hub method](streaming/samples/2.1/Hubs/StreamHub.cs?name=snippet1)]
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.2"
 
-[!code-csharp[Streaming hub method](streaming/sample/Hubs/StreamHub.cs?name=snippet1)]
+Méthodes de concentrateur de diffusion en continu de client-serveur peuvent accepter un `CancellationToken` paramètre qui est déclenchée quand le client annule son abonnement à partir du flux. Utiliser ce jeton pour arrêter l’opération de serveur et de libérer les ressources si le client se déconnecte avant la fin du flux.
 
-Dans ASP.NET Core 2.2 ou version ultérieure, la diffusion en continu des méthodes de concentrateur peut accepter un `CancellationToken` paramètre qui sera déclenchée quand le client annule son abonnement à partir du flux. Utiliser ce jeton pour arrêter l’opération de serveur et de libérer les ressources si le client se déconnecte avant la fin du flux.
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="client-to-server-streaming"></a>Client-serveur de diffusion en continu
+
+Une méthode de concentrateur devient automatiquement une méthode de concentrateur de diffusion en continu client-serveur lorsqu’il accepte un ou plusieurs <xref:System.Threading.Channels.ChannelReader`1>s. L’exemple suivant montre les principes fondamentaux de la lecture des données de diffusion en continu envoyées depuis le client. Chaque fois que le client écrit dans le <xref:System.Threading.Channels.ChannelWriter`1>, les données sont écrites dans le `ChannelReader` sur le serveur qui lit à partir de la méthode de concentrateur.
+
+[!code-csharp[Streaming upload hub method](streaming/samples/3.0/Hubs/StreamHub.cs?name=snippet2)]
 
 ::: moniker-end
 
 ## <a name="net-client"></a>Client .NET
 
-La méthode `StreamAsChannelAsync` sur `HubConnection` est utilisée pour appeler une méthode de diffusion en continu. Passez le nom de la méthode hub et les arguments définis dans la méthode de hub pour `StreamAsChannelAsync`. Le paramètre générique sur `StreamAsChannelAsync<T>` spécifie le type d’objets retournés par la méthode de diffusion en continu. Un `ChannelReader<T>` est retourné à partir de l’appel de flux de données et représente le flux sur le client. Pour lire les données, il est courant d’utiliser une boucle sur `WaitToReadAsync` et d'appeler `TryRead` lorsque les données sont disponibles. La boucle s’arrête lorsque le flux a été fermé par le serveur ou lorsque le jeton d’annulation passé à `StreamAsChannelAsync` est annulé.
+### <a name="server-to-client-streaming"></a>Serveur-client de diffusion en continu
+
+Le `StreamAsChannelAsync` méthode sur `HubConnection` est utilisé pour appeler une méthode de diffusion en continu du client-serveur. Passez le nom de méthode de hub et les arguments définis dans la méthode de concentrateur pour `StreamAsChannelAsync`. Le paramètre générique sur `StreamAsChannelAsync<T>` spécifie le type d’objets retournés par la méthode de diffusion en continu. Un `ChannelReader<T>` est retourné à partir de l’appel de flux et représente le flux sur le client.
 
 ::: moniker range=">= aspnetcore-2.2"
 
@@ -115,36 +150,72 @@ Console.WriteLine("Streaming completed");
 
 ::: moniker-end
 
+::: moniker range=">= aspnetcore-3.0"
+
+### <a name="client-to-server-streaming"></a>Client-serveur de diffusion en continu
+
+Pour appeler une méthode de concentrateur client-serveur diffusion en continu à partir du client .NET, créez un `Channel` et passer le `ChannelReader` en tant qu’argument à `SendAsync`, `InvokeAsync`, ou `StreamAsChannelAsync`, selon la méthode de concentrateur appelée.
+
+Chaque fois que les données sont écrites dans le `ChannelWriter`, la méthode de concentrateur sur le serveur reçoit un nouvel élément avec les données du client.
+
+Pour terminer le flux de données, terminez le canal avec `channel.Writer.Complete()`.
+
+```csharp
+var channel = Channel.CreateBounded<string>(10);
+await connection.SendAsync("UploadStream", channel.Reader);
+await channel.Writer.WriteAsync("some data");
+await channel.Writer.WriteAsync("some more data");
+channel.Writer.Complete();
+```
+
+::: moniker-end
+
 ## <a name="javascript-client"></a>Client JavaScript
 
-Les clients JavaScript appellent des méthodes de diffusion en continu sur les hubs à l’aide de `connection.stream`. La méthode `stream` accepte deux arguments :
+### <a name="server-to-client-streaming"></a>Serveur-client de diffusion en continu
+
+Les clients JavaScript appellent des méthodes de diffusion en continu de client-serveur sur les hubs avec `connection.stream`. La méthode `stream` accepte deux arguments :
 
 * Le nom de la méthode de hub. Dans l’exemple suivant, le nom de méthode de hub est `Counter`.
-* Les arguments définis dans la méthode de hub. Dans l’exemple suivant, les arguments sont : un nombre pour le nombre d’éléments de flux de données à recevoir et le délai entre les éléments de flux de données.
+* Les arguments définis dans la méthode de hub. Dans l’exemple suivant, les arguments sont un nombre pour le nombre d’éléments de flux de données à recevoir et le délai entre les éléments de flux de données.
 
-`connection.stream` retourne un `IStreamResult` qui contient une méthode `subscribe`. Passez un `IStreamSubscriber` à `subscribe` et définissez les callbacks `next`, `error`, et `complete` pour obtenir des notifications à partir de l'invocation de `stream`.
+`connection.stream` Retourne un `IStreamResult`, qui contient un `subscribe` (méthode). Passer un `IStreamSubscriber` à `subscribe` et définissez le `next`, `error`, et `complete` rappels pour recevoir des notifications à partir de la `stream` invocation.
 
-[!code-javascript[Streaming javascript](streaming/sample/wwwroot/js/stream.js?range=19-36)]
+::: moniker range=">= aspnetcore-2.2"
+
+[!code-javascript[Streaming javascript](streaming/samples/2.2/wwwroot/js/stream.js?range=19-36)]
+
+Pour terminer le flux à partir du client, appelez le `dispose` méthode sur le `ISubscription` qui est retourné à partir de la `subscribe` (méthode). Appel de cette méthode provoque l’annulation de la `CancellationToken` paramètre de la méthode de concentrateur, si vous avez fourni un.
+
+::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
+
+[!code-javascript[Streaming javascript](streaming/samples/2.1/wwwroot/js/stream.js?range=19-36)]
 
 Pour terminer le flux à partir du client, appelez le `dispose` méthode sur le `ISubscription` qui est retourné à partir de la `subscribe` (méthode).
 
 ::: moniker-end
 
-::: moniker range=">= aspnetcore-2.2"
-
-Pour terminer le flux à partir du client, appelez le `dispose` méthode sur le `ISubscription` qui est retourné à partir de la `subscribe` (méthode). Appeler cette méthode provoque la `CancellationToken` paramètre de la méthode de concentrateur (si vous avez fourni une) doit être annulée.
-
-::: moniker-end
-
 ::: moniker range=">= aspnetcore-3.0"
+
+### <a name="client-to-server-streaming"></a>Client-serveur de diffusion en continu
+
+Les clients JavaScript appellent des méthodes de diffusion en continu de client-serveur sur les hubs en passant un `Subject` en tant qu’argument à `send`, `invoke`, ou `stream`, selon la méthode de concentrateur appelée. Le `Subject` est une classe qui se présente comme un `Subject`. Par exemple dans RxJS, vous pouvez utiliser la [sujet](https://rxjs-dev.firebaseapp.com/api/index/class/Subject) classe à partir de cette bibliothèque.
+
+[!code-javascript[Upload javascript](streaming/samples/3.0/wwwroot/js/stream.js?range=41-51)]
+
+L’appel `subject.next(item)` avec un élément écrit l’élément dans le flux, et la méthode de concentrateur reçoit l’élément sur le serveur.
+
+Pour terminer le flux de données, appelez `subject.complete()`.
 
 ## <a name="java-client"></a>Client Java
 
-Le client SignalR Java utilise le `stream` méthode à appeler les méthodes de diffusion en continu. Elle accepte trois arguments ou plus :
+### <a name="server-to-client-streaming"></a>Serveur-client de diffusion en continu
 
-* Le type des éléments de flux de données attendu
+Le client SignalR Java utilise le `stream` méthode à appeler les méthodes de diffusion en continu. `stream` accepte trois arguments ou plus :
+
+* Le type attendu des éléments de flux de données.
 * Le nom de la méthode de hub.
 * Les arguments définis dans la méthode de hub.
 
@@ -156,11 +227,11 @@ hubConnection.stream(String.class, "ExampleStreamingHubMethod", "Arg1")
         () -> {/* Define your onCompleted handler here. */});
 ```
 
-Le `stream` méthode sur `HubConnection` retourne un Observable du type d’élément de flux de données. Le type Observable `subscribe` méthode est l’emplacement où vous définissez votre `onNext`, `onError` et `onCompleted` gestionnaires.
+Le `stream` méthode sur `HubConnection` retourne un Observable du type d’élément de flux de données. Le type Observable `subscribe` méthode est where `onNext`, `onError` et `onCompleted` gestionnaires sont définis.
 
 ::: moniker-end
 
-## <a name="related-resources"></a>Ressources connexes
+## <a name="additional-resources"></a>Ressources supplémentaires
 
 * [Hubs](xref:signalr/hubs)
 * [Client .NET](xref:signalr/dotnet-client)

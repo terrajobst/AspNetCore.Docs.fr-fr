@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/17/2019
 uid: signalr/javascript-client
-ms.openlocfilehash: e58015221497a9f962edf9f9fdba7ea3025d7694
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: f1f072e63928502fa1bad62e808ff035e57f2fd3
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59705602"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59983011"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>Client JavaScript ASP.NET Core SignalR
 
@@ -66,6 +66,13 @@ Les clients JavaScript appellent les méthodes publiques sur les hubs via la mé
 
 > [!NOTE]
 > Si vous utilisez le Service Azure SignalR dans *mode sans serveur*, vous ne pouvez pas appeler des méthodes de concentrateur à partir d’un client. Pour plus d’informations, consultez le [documentation de SignalR Service](/azure/azure-signalr/signalr-concept-serverless-development-config).
+
+Le `invoke` méthode retourne un code JavaScript [promesse](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise). Le `Promise` est résolu avec la valeur de retour (le cas échéant) lorsque la méthode sur le serveur est retournée. Si la méthode sur le serveur génère une erreur, le `Promise` est rejetée avec le message d’erreur. Utilisez le `then` et `catch` méthodes sur le `Promise` lui-même pour gérer ces cas (ou `await` syntaxe).
+
+Le `send` méthode retourne un code JavaScript `Promise`. Le `Promise` est résolu lorsque le message a été envoyé au serveur. S’il existe une erreur d’envoi du message, le `Promise` est rejetée avec le message d’erreur. Utilisez le `then` et `catch` méthodes sur le `Promise` lui-même pour gérer ces cas (ou `await` syntaxe).
+
+> [!NOTE]
+> À l’aide de `send` n’attend pas jusqu'à ce que le serveur a reçu le message. Par conséquent, il n’est pas possible de retourner des erreurs ou des données à partir du serveur.
 
 ## <a name="call-client-methods-from-hub"></a>Appeler des méthodes de client à partir de hub
 

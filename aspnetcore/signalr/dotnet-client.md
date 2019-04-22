@@ -5,14 +5,14 @@ description: Informations sur le Client .NET SignalR ASP.NET Core
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 03/14/2019
+ms.date: 04/17/2019
 uid: signalr/dotnet-client
-ms.openlocfilehash: a03abef53aa44f0a1016b8f72d8e3a7af2f9bed1
-ms.sourcegitcommit: d913bca90373c07f89b1d1df01af5fc01fc908ef
+ms.openlocfilehash: 640d75157e42ffa6d78235c5be03e4846e8dcde9
+ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57978302"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59982944"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Client .NET SignalR ASP.NET Core 
 
@@ -63,6 +63,10 @@ Dans un gestionnaire `Closed` qui redémarre la connexion, envisagez d’attendr
 `InvokeAsync` appelle des méthodes sur le hub. Passez le nom de la méthode de hub et de tous les arguments définis dans la méthode de hub à `InvokeAsync`. SignalR est asynchrone, par conséquent, utilisez `async` et `await` lors de l’appel.
 
 [!code-csharp[InvokeAsync method](dotnet-client/sample/signalrchatclient/MainWindow.xaml.cs?name=snippet_InvokeAsync)]
+
+Le `InvokeAsync` méthode retourne un `Task` qui se termine lorsque la méthode de serveur est retournée. La valeur de retour, le cas échéant, est fournie en tant que le résultat de la `Task`. Toutes les exceptions levées par la méthode sur le serveur génère une erreur `Task`. Utilisez `await` syntaxe d’attente de la méthode de serveur pour terminer et `try...catch` syntaxe permettant de gérer les erreurs.
+
+Le `SendAsync` méthode retourne un `Task` qui se termine lorsque le message a été envoyé au serveur. Aucune valeur de retour n’est fourni, car ce `Task` n’attendez la fin de la méthode de serveur. Toutes les exceptions levées sur le client lors de l’envoi du message génère une erreur `Task`. Utilisez `await` et `try...catch` syntaxe pour gérer les erreurs d’envoi.
 
 > [!NOTE]
 > Si vous utilisez le Service Azure SignalR dans *mode sans serveur*, vous ne pouvez pas appeler des méthodes de concentrateur à partir d’un client. Pour plus d’informations, consultez le [documentation de SignalR Service](/azure/azure-signalr/signalr-concept-serverless-development-config).
