@@ -261,10 +261,82 @@ items:
       name: Injection de dépendances - vues
     - uid: mvc/controllers/testing
       name: Test unitaire
-  - uid: razor-components/index
-    name: Composants Razor
+  - name: Blazor
+    items:
+    - uid: blazor/index
+      name: Vue d'ensemble
+    - uid: blazor/get-started
+      name: Prise en main
+    - uid: blazor/hosting-models
+      name: Modèles d'hébergement
+    - uid: tutorials/first-blazor-app
+      name: Créer votre première application
+    - uid: blazor/components
+      name: Composants
+    - uid: blazor/forms-validation
+      name: Formulaires et validation
+    - uid: blazor/class-libraries
+      name: Bibliothèques de composants
+    - uid: blazor/layouts
+      name: Dispositions
+    - uid: blazor/dependency-injection
+      name: Injection de dépendances
+    - uid: blazor/routing
+      name: Routage
+    - uid: blazor/javascript-interop
+      name: Interopérabilité de JavaScript
+    - uid: blazor/debug
+      name: Débogage
+    - name: Héberger et déployer
+      items:
+      - uid: host-and-deploy/blazor/index
+        name: Vue d'ensemble
+      - uid: host-and-deploy/blazor/client-side
+        name: Côté client
+      - uid: host-and-deploy/blazor/server-side
+        name: Côté serveur
+      - uid: host-and-deploy/blazor/configure-linker
+        name: Configurer l'éditeur de liens
+  - name: Développement côté client
+    items:
+    - name: Applications monopages
+      items:
+      - uid: spa/angular
+        name: Angular
+      - uid: spa/react
+        name: React
+      - uid: spa/react-with-redux
+        name: React avec Redux
+      - uid: client-side/spa-services
+        name: JavaScriptServices
+    - name: LibMan
+      items:
+      - uid: client-side/libman/index
+        name: Vue d'ensemble
+      - uid: client-side/libman/libman-cli
+        name: CLI
+      - uid: client-side/libman/libman-vs
+        name: Visual Studio
+    - uid: client-side/using-gulp
+      name: Gulp
+    - uid: client-side/using-grunt
+      name: Grunt
+    - uid: client-side/bower
+      name: Bower
+    - uid: client-side/bundling-and-minification
+      name: Concaténer et minifier
+    - uid: client-side/using-browserlink
+      name: Lien du navigateur
   - uid: fundamentals/app-state
     name: État de session et d’application
+  - uid: mvc/views/layout
+    name: Mise en page
+  - uid: mvc/models/model-binding
+    name: Liaison de données
+  - uid: mvc/models/validation
+    name: Validation du modèle
+  - uid: mvc/views/razor
+    name: Syntaxe Razor
   - name: Tag Helpers
     items:
     - uid: mvc/views/tag-helpers/intro
@@ -303,14 +375,6 @@ items:
         href: mvc/views/working-with-forms.md#the-validation-message-tag-helper
       - name: Résumé de validation
         href: mvc/views/working-with-forms.md#the-validation-summary-tag-helper
-  - uid: mvc/views/layout
-    name: Mise en page
-  - uid: mvc/models/model-binding
-    name: Liaison de données
-  - uid: mvc/models/validation
-    name: Validation du modèle
-  - uid: mvc/views/razor
-    name: Syntaxe Razor
   - name: Avancé
     items:
     - uid: mvc/views/view-components
@@ -553,102 +617,6 @@ items:
       href: /azure/visual-studio/vs-storage-aspnet5-getting-started-queues?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
     - name: Stockage de tables
       href: /azure/visual-studio/vs-storage-aspnet5-getting-started-tables?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json
-- name: Développement côté client
-  items:
-  - name: Composants Razor
-    items:
-    - uid: razor-components/index
-      name: Vue d'ensemble
-    - uid: razor-components/get-started
-      name: Prise en main
-    - uid: razor-components/hosting-models
-      name: Modèles d'hébergement
-    - uid: tutorials/first-razor-components-app
-      name: Créer votre première application
-    - uid: razor-components/components
-      name: Composants
-    - uid: razor-components/forms-validation
-      name: Formulaires et validation
-    - uid: razor-components/class-libraries
-      name: Bibliothèques de composants
-    - uid: razor-components/layouts
-      name: Dispositions
-    - uid: razor-components/dependency-injection
-      name: Injection de dépendances
-    - uid: razor-components/routing
-      name: Routage
-    - uid: razor-components/javascript-interop
-      name: Interopérabilité de JavaScript
-    - uid: razor-components/debug
-      name: Débogage
-    - name: Héberger et déployer
-      items:
-      - uid: host-and-deploy/razor-components-blazor/index
-        name: Vue d'ensemble
-      - uid: host-and-deploy/razor-components-blazor/razor-components
-        name: Composants Razor
-  - name: Applications monopages
-    items:
-    - name: Blazor
-      items:
-      - uid: spa/blazor/index
-        name: Vue d'ensemble
-      - uid: spa/blazor/get-started
-        name: Prise en main
-      - uid: razor-components/hosting-models
-        name: Modèles d'hébergement
-      - uid: tutorials/first-razor-components-app
-        name: Créer votre première application
-      - uid: razor-components/components
-        name: Composants
-      - uid: razor-components/forms-validation
-        name: Formulaires et validation
-      - uid: razor-components/class-libraries
-        name: Bibliothèques de composants
-      - uid: razor-components/layouts
-        name: Dispositions
-      - uid: razor-components/dependency-injection
-        name: Injection de dépendances
-      - uid: razor-components/routing
-        name: Routage
-      - uid: razor-components/javascript-interop
-        name: Interopérabilité de JavaScript
-      - uid: razor-components/debug
-        name: Débogage
-      - name: Héberger et déployer
-        items:
-        - uid: host-and-deploy/razor-components-blazor/index
-          name: Vue d'ensemble
-        - uid: host-and-deploy/razor-components-blazor/blazor
-          name: Blazor
-        - uid: host-and-deploy/razor-components-blazor/configure-linker
-          name: Configurer l'éditeur de liens
-    - uid: spa/angular
-      name: Angular
-    - uid: spa/react
-      name: React
-    - uid: spa/react-with-redux
-      name: React avec Redux
-    - uid: client-side/spa-services
-      name: JavaScriptServices
-  - name: LibMan
-    items:
-    - uid: client-side/libman/index
-      name: Vue d'ensemble
-    - uid: client-side/libman/libman-cli
-      name: CLI
-    - uid: client-side/libman/libman-vs
-      name: Visual Studio
-  - uid: client-side/using-gulp
-    name: Gulp
-  - uid: client-side/using-grunt
-    name: Grunt
-  - uid: client-side/bower
-    name: Bower
-  - uid: client-side/bundling-and-minification
-    name: Concaténer et minifier
-  - uid: client-side/using-browserlink
-    name: Lien du navigateur
 - name: Hébergement et déploiement
   displayName: publish
   items:
@@ -777,15 +745,15 @@ items:
   - uid: host-and-deploy/health-checks
     name: Contrôles d’intégrité
     displayName: deploy, publish
-  - name: Composants Razor/Blazor
+  - name: Blazor
     items:
-    - uid: host-and-deploy/razor-components-blazor/index
+    - uid: host-and-deploy/blazor/index
       name: Vue d'ensemble
-    - uid: host-and-deploy/razor-components-blazor/blazor
-      name: Blazor
-    - uid: host-and-deploy/razor-components-blazor/razor-components
-      name: Composants Razor
-    - uid: host-and-deploy/razor-components-blazor/configure-linker
+    - uid: host-and-deploy/blazor/client-side
+      name: Côté client
+    - uid: host-and-deploy/blazor/server-side
+      name: Côté serveur
+    - uid: host-and-deploy/blazor/configure-linker
       name: Configurer l'éditeur de liens
 - name: Sécurité et identité
   displayName: authentication, authorization
@@ -1090,9 +1058,9 @@ items:
   href: /dotnet/api/?view=aspnetcore-2.2
 - name: Collaboration
   href: https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
-ms.openlocfilehash: e788460a2de31aa570907b4561d30ad0da2ca854
-ms.sourcegitcommit: 9b7fcb4ce00a3a32e153a080ebfaae4ef417aafa
+ms.openlocfilehash: 1863125cec772262c41884af343f66ec8fcb53ad
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59516272"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614296"
