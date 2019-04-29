@@ -4,14 +4,14 @@ author: rick-anderson
 description: Découvrez comment créer des Tag Helpers dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 04/12/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: ddfd7cb8c67e28709b8ce75d5a4d0a8c0c0cc43c
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 19b7df1abc8765cb9a77487e39c4365fdacf2b65
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210078"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614420"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
@@ -65,7 +65,9 @@ Autrement dit, une balise d’ancrage qui en fait un lien e-mail. Vous pouvez ef
    public class Email : TagHelper
    ```
 
-1. Afin de rendre la classe `EmailTagHelper` disponible pour toutes les vues Razor, ajoutez la directive `addTagHelper` au fichier *Views/_ViewImports.cshtml* : [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
+1. Afin de rendre la classe `EmailTagHelper` disponible pour toutes les vues Razor, ajoutez la directive `addTagHelper` au fichier *Views/_ViewImports.cshtml* :
+
+   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
    Le code ci-dessus utilise la syntaxe d’expressions génériques pour spécifier que tous les Tag Helpers dans notre assembly seront disponibles. La première chaîne après `@addTagHelper` désigne le Tag Helper à charger (utilisez « * » pour tous les Tag Helpers), et la deuxième chaîne « AuthoringTagHelpers » indique l’assembly dans lequel se trouve le Tag Helper. En outre, notez que la deuxième ligne introduit les Tag Helpers ASP.NET Core MVC à l’aide de la syntaxe d’expressions génériques (ceux-ci sont décrits dans [Introduction aux Tag Helpers](intro.md).) C’est la directive `@addTagHelper` qui met le Tag Helper à la disposition de la vue Razor. Sinon, vous pouvez fournir le nom qualifié complet d’un Tag Helper comme indiqué ci-dessous :
 

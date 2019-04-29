@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 04/08/2019
 uid: host-and-deploy/iis/development-time-iis-support
 ms.openlocfilehash: 6f555858239b4432d252f8b3ac7add5c3e8bfe62
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425099"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Prise en charge d’IIS pendant le développement dans Visual Studio pour ASP.NET Core
@@ -42,7 +42,7 @@ IIS doit avoir un site web configuré avec les éléments suivants :
 * **Liaison de site**
   * Pour les applications qui exigent le protocole HTTPS, créez une liaison au port 443 avec un certificat. On utilise en général le **certificat de développement IIS Express**, mais tous les certificats valides conviennent.
   * Pour les applications qui utilisent le protocole HTTP, vérifiez l’existence d’une liaison au port 80 ou créez-en une pour un nouveau site.
-  * Utilisez une liaison unique pour HTTP ou HTTPS. **La liaison simultanée avec les ports HTTP et HTTPS n’est pas prise en charge.**
+  * Utilisez une liaison unique pour HTTP ou HTTPS. **La liaison simultanée aux ports HTTP et aux ports HTTPS n’est pas prise en charge.**
 
 ## <a name="enable-development-time-iis-support-in-visual-studio"></a>Activer la prise en charge d’IIS pendant le développement dans Visual Studio
 
@@ -153,6 +153,6 @@ Si vous utilisez un certificat de développement non approuvé, le navigateur pe
 
 * [Bien démarrer avec le Gestionnaire IIS dans IIS](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
 * [Héberger ASP.NET Core sur Windows avec IIS](xref:host-and-deploy/iis/index)
-* [Introduction au module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
+* [Introduction au Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Informations de référence sur la configuration du Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module)
 * [Appliquer HTTPS](xref:security/enforcing-ssl)

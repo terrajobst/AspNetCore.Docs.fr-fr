@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 04/04/2019
 uid: host-and-deploy/windows-service
 ms.openlocfilehash: 544eefa87898e82ec2bf8f9f61ce4e26dd554bb7
-ms.sourcegitcommit: 6bde1fdf686326c080a7518a6725e56e56d8886e
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59068334"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Héberger ASP.NET Core dans un service Windows
@@ -24,7 +24,7 @@ Une application ASP.NET Core peut être hébergée sur Windows en tant que [serv
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [PowerShell 6.2 ou version ultérieure](https://github.com/PowerShell/PowerShell)
+* [PowerShell version 6.2 ou ultérieure](https://github.com/PowerShell/PowerShell)
 
 > [!NOTE]
 > Pour une version du système d’exploitation Windows antérieure à la Mise à jour d’octobre 2018 de Windows 10 (version 1809/build 10.0.17763), le module [Microsoft.PowerShell.LocalAccounts](/powershell/module/microsoft.powershell.localaccounts) doit être importé avec le module [WindowsCompatibility](https://github.com/PowerShell/WindowsCompatibility) pour permettre l’accès à la cmdlet [New-LocalUser](/powershell/module/microsoft.powershell.localaccounts/new-localuser) utilisée dans la section [Créer un compte d’utilisateur](#create-a-user-account) :
@@ -187,7 +187,7 @@ Accordez l’accès en écriture/lecture/exécution au dossier de l’applicatio
 icacls "{PATH}" /grant "{USER ACCOUNT}:(OI)(CI){PERMISSION FLAGS}" /t
 ```
 
-* `{PATH}` &ndash; Chemin du dossier de l’application.
+* `{PATH}` &ndash; Chemin au dossier de l’application.
 * `{USER ACCOUNT}` &ndash; Compte d’utilisateur (SID).
 * `(OI)` &ndash; L’indicateur Object Inherit propage les autorisations aux fichiers subordonnés.
 * `(CI)` &ndash; L’indicateur Container Inherit propage les autorisations aux dossiers subordonnés.

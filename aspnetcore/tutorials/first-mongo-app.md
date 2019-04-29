@@ -7,10 +7,10 @@ ms.custom: mvc, seodec18
 ms.date: 01/31/2019
 uid: tutorials/first-mongo-app
 ms.openlocfilehash: 95a5f8bdb4b302d6bdae7b5809b54f1b263e6ee4
-ms.sourcegitcommit: 1a7000630e55da90da19b284e1b2f2f13a393d74
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59012862"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>Créer une API web avec ASP.NET Core et MongoDB
@@ -31,23 +31,23 @@ Dans ce didacticiel, vous apprendrez à :
 
 ## <a name="prerequisites"></a>Prérequis
 
-# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [Visual Studio 2017 version 15.9 ou ultérieure](https://www.visualstudio.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) avec la charge de travail **ASP.NET et développement web**
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
-# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
 * [Visual Studio Code](https://code.visualstudio.com/download)
 * [C# pour Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-# [<a name="visual-studio-for-mac"></a>Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 * [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
-* [Visual Studio pour Mac 7.7 ou version ultérieure](https://www.visualstudio.com/downloads/)
+* [Visual Studio pour Mac version 7.7 ou ultérieure](https://www.visualstudio.com/downloads/)
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 
 ---
@@ -140,7 +140,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
 
 ## <a name="create-the-aspnet-core-web-api-project"></a>Créer le projet d’API web ASP.NET Core
 
-# [<a name="visual-studio"></a>Visual Studio](#tab/visual-studio)
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. Sélectionnez **Fichier** > **Nouveau** > **Projet**.
 1. Sélectionnez **Application web ASP.NET Core**, nommez le projet *BooksApi*, puis cliquez sur **OK**.
@@ -151,7 +151,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
     Install-Package MongoDB.Driver -Version {VERSION}
     ```
 
-# [<a name="visual-studio-code"></a>Visual Studio Code](#tab/visual-studio-code)
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 1. Exécutez les commandes suivantes dans l’interpréteur de commandes :
 
@@ -169,7 +169,7 @@ La base de données est en lecture seule. Vous pouvez commencer à créer l’AP
     dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
     ```
 
-# [<a name="visual-studio-for-mac"></a>Visual Studio pour Mac](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mactabvisual-studio-mac"></a>[Visual Studio pour Mac](#tab/visual-studio-mac)
 
 1. Sélectionnez **Fichier** > **Nouvelle solution** > **.NET Core** > **App**.
 1. Sélectionnez le modèle de projet C# **API Web ASP.NET Core**, puis cliquez sur **Suivant**.
@@ -217,20 +217,20 @@ Les autres propriétés de la classe sont annotées avec l’attribut `[BsonElem
 
 La classe `BookService` utilise les membres `MongoDB.Driver` suivants pour effectuer des opérations CRUD dans la base de données :
 
-* `MongoClient` &ndash; Lit l’instance de serveur permettant d’effectuer des opérations dans la base de données. Le constructeur de cette classe reçoit la chaîne de connexion MongoDB :
+* `MongoClient` &ndash; Lit l’instance de serveur pour effectuer des opérations dans la base de données. Le constructeur de cette classe reçoit la chaîne de connexion MongoDB :
 
     [!code-csharp[](first-mongo-app/sample/BooksApi/Services/BookService.cs?name=snippet_BookServiceConstructor&highlight=3)]
 
-* `IMongoDatabase` &ndash; Représente la base de données Mongo permettant d’effectuer des opérations. Ce didacticiel utilise la méthode générique `GetCollection<T>(collection)` sur l’interface pour accéder aux données d’une collection spécifique. Des opérations CRUD peuvent être exécutées sur la collection, une fois cette méthode appelée. Dans l’appel à la méthode `GetCollection<T>(collection)` :
+* `IMongoDatabase` &ndash; Représente la base de données Mongo pour effectuer des opérations. Ce didacticiel utilise la méthode générique `GetCollection<T>(collection)` sur l’interface pour accéder aux données d’une collection spécifique. Des opérations CRUD peuvent être exécutées sur la collection, une fois cette méthode appelée. Dans l’appel à la méthode `GetCollection<T>(collection)` :
   * `collection` représente le nom de la collection.
   * `T` représente le type d’objet CLR stocké dans la collection.
 
 `GetCollection<T>(collection)` retourne un objet `MongoCollection` représentant la collection. Dans ce didacticiel, les méthodes suivantes sont appelées sur la collection :
 
-* `Find<T>` &ndash; Retourne tous les documents de la collection qui respectent les critères de recherche spécifiés.
-* `InsertOne` &ndash; Insère l’objet fourni sous forme de nouveau document dans la collection.
-* `ReplaceOne` &ndash; Remplace l’unique document correspondant aux critères de recherche spécifiés par l’objet fourni.
-* `DeleteOne` &ndash; Supprime un unique document correspondant aux critères de recherche spécifiés.
+* `Find<T>` &ndash; Retourne tous les documents dans la collection qui correspondent aux critères de recherche spécifiés.
+* `InsertOne` &ndash; Insère l’objet fourni en tant que nouveau document dans la collection.
+* `ReplaceOne` &ndash; Remplace le document unique correspondant aux critères de recherche spécifiés par l’objet fourni.
+* `DeleteOne` &ndash; Supprime un document unique correspondant aux critères de recherche spécifiés.
 
 ## <a name="add-a-controller"></a>Ajouter un contrôleur
 

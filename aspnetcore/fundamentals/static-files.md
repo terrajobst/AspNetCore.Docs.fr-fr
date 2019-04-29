@@ -7,10 +7,10 @@ ms.custom: mvc
 ms.date: 04/08/2019
 uid: fundamentals/static-files
 ms.openlocfilehash: 12c7b39bee462ff83188a5a0f10b133ca273863b
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425060"
 ---
 # <a name="static-files-in-aspnet-core"></a>Fichiers statiques dans ASP.NET Core
@@ -200,7 +200,7 @@ Le code suivant active les fichiers statiques, les fichiers par défaut et l’e
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureMethod&highlight=5-11)]
 
-`AddDirectoryBrowser` doit être appelé quand la valeur de propriété `EnableDirectoryBrowsing` est `true` :
+`AddDirectoryBrowser` doit être appelé quand la valeur de la propriété `EnableDirectoryBrowsing` est `true` :
 
 [!code-csharp[](static-files/samples/1x/StartupUseFileServer.cs?name=snippet_ConfigureServicesMethod)]
 
@@ -208,15 +208,15 @@ En utilisant la hiérarchie de fichiers et le code précédent, les URL sont ré
 
 | URI            |                             Réponse  |
 | ------- | ------|
-| *http://\<adresse_serveur>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
-| *http://\<adresse_serveur>/StaticFiles*             |     MyStaticFiles/default.html |
+| *http://\<server_address>/StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
+| *http://\<server_address>/StaticFiles*             |     MyStaticFiles/default.html |
 
 Si aucun fichier nommé default n’existe dans le répertoire *MyStaticFiles*, *http://\<adresse_serveur>/StaticFiles* retourne la liste des répertoires avec des liens cliquables :
 
 ![Liste des fichiers statiques](static-files/_static/db2.png)
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles*> et <xref:Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser*> effectuent une redirection côté client de `http://{SERVER ADDRESS}/StaticFiles` (sans barre oblique) à `http://{SERVER ADDRESS}/StaticFiles/` (avec barre oblique). Les URL relatives du répertoire *StaticFiles* ne sont pas valides sans barre oblique de fin.
+> <xref:Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles*> et <xref:Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser*> effectuent une redirection côté client à partir de `http://{SERVER ADDRESS}/StaticFiles` (sans barre oblique) vers `http://{SERVER ADDRESS}/StaticFiles/` (avec barre oblique). Les URL relatives du répertoire *StaticFiles* ne sont pas valides sans barre oblique de fin.
 
 ## <a name="fileextensioncontenttypeprovider"></a>FileExtensionContentTypeProvider
 

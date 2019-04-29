@@ -5,12 +5,12 @@ description: Apprenez à utiliser la syntaxe de balisage Razor pour incorporer d
 ms.author: riande
 ms.date: 10/26/2018
 uid: mvc/views/razor
-ms.openlocfilehash: 53d4dc608fbfd45bcc015a3af83f5d87f86c7f15
-ms.sourcegitcommit: a1c43150ed46aa01572399e8aede50d4668745ca
+ms.openlocfilehash: 7f97be651c067e94f29eef4956c10d87ec031bed
+ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58327363"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59614283"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>Informations de référence sur la syntaxe Razor pour ASP.NET Core
 
@@ -171,6 +171,31 @@ Le code s’affiche en HTML de la façon suivante :
 <p>The future depends on what you do today. - Mahatma Gandhi</p>
 <p>Hate cannot drive out hate, only love can do that. - Martin Luther King, Jr.</p>
 ```
+
+::: moniker range=">= aspnetcore-3.0"
+
+Dans des blocs de code, déclarez des [fonctions locales](/dotnet/csharp/programming-guide/classes-and-structs/local-functions) avec des balises servant de méthodes de création de modèles :
+
+```cshtml
+@{
+    void RenderName(string name)
+    {
+        <p>Name: <strong>@name</strong></p>
+    }
+
+    RenderName("Mahatma Gandhi");
+    RenderName("Martin Luther King, Jr.");
+}
+```
+
+Le code s’affiche en HTML de la façon suivante :
+
+```html
+<p>Name: <strong>Mahatma Gandhi</strong></p>
+<p>Name: <strong>Martin Luther King, Jr.</strong></p>
+```
+
+::: moniker-end
 
 ### <a name="implicit-transitions"></a>Transitions implicites
 
@@ -521,6 +546,33 @@ Le code génère le balisage HTML suivant :
 Le code suivant correspond à la classe C# Razor générée :
 
 [!code-csharp[](razor/sample/Classes/Views_Home_Test_cshtml.cs?range=1-19)]
+
+::: moniker range=">= aspnetcore-3.0"
+
+Les méthodes `@functions` servent de méthodes de création de modèles lorsqu’elles comprennent des balises :
+
+```cshtml
+@{
+    RenderName("Mahatma Gandhi");
+    RenderName("Martin Luther King, Jr.");
+}
+
+@functions {
+    private void RenderName(string name)
+    {
+        <p>Name: <strong>@name</strong></p>
+    }
+}
+```
+
+Le code s’affiche en HTML de la façon suivante :
+
+```html
+<p>Name: <strong>Mahatma Gandhi</strong></p>
+<p>Name: <strong>Martin Luther King, Jr.</strong></p>
+```
+
+::: moniker-end
 
 ### <a name="section"></a>@section
 

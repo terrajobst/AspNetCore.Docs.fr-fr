@@ -8,10 +8,10 @@ ms.custom: mvc, seodec18
 ms.date: 04/06/2019
 uid: fundamentals/configuration/platform-specific-configuration
 ms.openlocfilehash: c2a2e1fbd288ff292c6759d03fae51876cdb5704
-ms.sourcegitcommit: 258a97159da206f9009f23fdf6f8fa32f178e50b
+ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/17/2019
 ms.locfileid: "59425073"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>Utiliser des assemblys de démarrage d’hébergement dans ASP.NET Core
@@ -44,10 +44,10 @@ Pour désactiver le chargement automatique des assemblys d’hébergement au dé
 
 * Pour bloquer le chargement de tous les assemblys d’hébergement au démarrage, définissez l’une des valeurs suivantes sur `true` ou `1` :
   * Le paramètre de configuration d’hôte [PreventHostingStartup](xref:fundamentals/host/web-host#prevent-hosting-startup).
-  * `ASPNETCORE_PREVENTHOSTINGSTARTUP` La variable d’environnement.
+  * La variable d’environnement `ASPNETCORE_PREVENTHOSTINGSTARTUP`.
 * Pour bloquer le chargement de certains assemblys d’hébergement au démarrage, définissez l’une des valeurs suivantes sous la forme d’une liste délimitée par des points-virgules contenant les assemblys d’hébergement au démarrage à exclure au moment du démarrage :
   * Le paramètre de configuration d’hôte [HostingStartupExcludeAssemblies](xref:fundamentals/host/web-host#hosting-startup-exclude-assemblies).
-  * `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES` La variable d’environnement.
+  * La variable d’environnement `ASPNETCORE_HOSTINGSTARTUPEXCLUDEASSEMBLIES`.
 
 Si le paramètre de configuration d’hôte et la variable d’environnement sont définis tous les deux, c’est le paramètre d’hôte qui détermine le comportement.
 
@@ -98,7 +98,7 @@ La page d’index de l’application lit et affiche les valeurs de configuration
 
 ### <a name="console-app-without-an-entry-point"></a>Application console sans point d’entrée
 
-*Cette approche s’applique aux applications .NET Core, et non à .NET Framework.*
+*Cette approche s’applique aux applications .NET Core, mais pas aux applications .NET Framework.*
 
 Une amélioration d’hébergement au démarrage dynamique qui ne nécessite pas de référence au moment de la compilation pour l’activation peut être fournie dans une application console sans point d’entrée qui contient un attribut `HostingStartup`. La publication de l’application console génère un assembly d’hébergement au démarrage qui peut être utilisé à partir du magasin de runtime.
 
@@ -124,7 +124,7 @@ Un attribut [HostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.hostingsta
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet1)]
 
-Une classe implémente `IHostingStartup`. La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) de la classe utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des améliorations à une application. `IHostingStartup.Configure` dans l’assembly d’hébergement au démarrage est appelé par le runtime avant `Startup.Configure` dans le code utilisateur, ce qui permet à ce dernier de remplacer la configuration fournie par l’assembly en question.
+Une classe implémente `IHostingStartup`. La méthode [Configure](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup.configure) de la classe utilise un [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder) pour ajouter des améliorations à une application. `IHostingStartup.Configure` dans l’assembly d’hébergement au démarrage est appelé par le runtime avant `Startup.Configure` dans le code utilisateur, ce qui permet au code utilisateur de remplacer la configuration fournie par l’assembly d’hébergement au démarrage.
 
 [!code-csharp[](platform-specific-configuration/samples-snapshot/2.x/StartupEnhancement.cs?name=snippet2&highlight=3,5)]
 
@@ -217,7 +217,7 @@ Pour que le runtime découvre le magasin de runtime, l’emplacement du magasin 
 
 **Modifier et placer le fichier de dépendances de l’hébergement au démarrage**
 
-Pour activer l’amélioration sans référence de package à l’amélioration, spécifiez les dépendances supplémentaires pour le runtime avec `additionalDeps`. `additionalDeps` permet de :
+Pour activer l’amélioration sans référence de package à l’amélioration, spécifiez les dépendances supplémentaires pour le runtime avec `additionalDeps`. `additionalDeps` vous permet de :
 
 * Étendre le graphe de la bibliothèque de l’application en fournissant un ensemble de fichiers *\*.deps.json* supplémentaires à fusionner avec le fichier *\*.deps.json* de l’application au démarrage.
 * Rendre l’assembly d’hébergement au démarrage détectable et chargeable.
@@ -280,7 +280,7 @@ Placez le fichier *\*.deps.json* à l’emplacement suivant :
 ```
 
 * `{ADDITIONAL DEPENDENCIES PATH}` &ndash; Emplacement ajouté à la variable d’environnement `DOTNET_ADDITIONAL_DEPS`.
-* `{SHARED FRAMEWORK NAME}` &ndash; Framework partagé requis par ce fichier de dépendances supplémentaire.
+* `{SHARED FRAMEWORK NAME}` &ndash; Framework partagé requis pour ce fichier de dépendances supplémentaire.
 * `{SHARED FRAMEWORK VERSION}` &ndash; Version minimale du framework partagé.
 * `{ENHANCEMENT ASSEMBLY NAME}` &ndash; Nom de l’assembly de l’amélioration.
 
@@ -313,7 +313,7 @@ Une amélioration de l’hébergement au démarrage peut être fournie dans un p
 
 Pour plus d’informations sur les packages NuGet et le magasin de runtime, consultez les rubriques suivantes :
 
-* [Création d’un Package NuGet avec les outils multiplateformes](/dotnet/core/deploying/creating-nuget-packages)
+* [Création d’un package NuGet avec les outils multiplateformes](/dotnet/core/deploying/creating-nuget-packages)
 * [Publication de packages](/nuget/create-packages/publish-a-package)
 * [Magasin de packages de runtime](/dotnet/core/deploying/runtime-store)
 
@@ -378,7 +378,7 @@ dotnet nuget locals all --clear
 
 1. Notez que les valeurs des clés de configuration de service affichées dans la page d’index correspondent aux valeurs définies par la méthode `ServiceKeyInjection.Configure` de la bibliothèque de classes.
 
-**Activation à partir d’un assembly déployé à partir du magasin de runtime**
+**Activation à partir d’un assembly déployé depuis le magasin de runtime**
 
 1. Le projet *StartupDiagnostics* utilise [PowerShell](/powershell/scripting/powershell-scripting) pour modifier le fichier *StartupDiagnostics.deps.json* associé. PowerShell est installé par défaut sur Windows à compter de Windows 7 SP1 et de Windows Server 2008 R2 SP1. Pour obtenir PowerShell sur d’autres plateformes, consultez [Installation de Windows PowerShell](/powershell/scripting/setup/installing-powershell#powershell-core).
 1. Exécutez le script *build.ps1* du dossier *RuntimeStore*. Le script :

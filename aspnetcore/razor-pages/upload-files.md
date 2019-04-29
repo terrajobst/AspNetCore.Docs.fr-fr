@@ -5,14 +5,14 @@ description: Découvrez comment télécharger des fichiers vers une Page Razor d
 monikerRange: '>= aspnetcore-2.0'
 ms.author: riande
 ms.date: 11/10/2018
-ms.custom: seodec18
+ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: 80929c6c1a95b46b942958def1540ac8ed5abc81
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
-ms.translationtype: MT
+ms.openlocfilehash: a12653e5dc99ad731de63e151af6dbdbe38ffefc
+ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60165220"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Charger des fichiers dans une page Razor dans ASP.NET Core
 
@@ -113,7 +113,7 @@ Le processus Worker doit avoir des autorisations en écriture pour l’emplaceme
 > L’exemple de code ne fournit aucune protection côté serveur contre le chargement de fichiers malveillants. Pour plus d’informations sur la réduction de la surface d’attaque quand vous acceptez des fichiers d’utilisateurs, consultez les ressources suivantes :
 >
 > * [Unrestricted File Upload](https://www.owasp.org/index.php/Unrestricted_File_Upload) (Chargement de fichiers illimité)
-> * [Sécurité Azure : Vérifier que les contrôles appropriés sont en place quand vous acceptez des fichiers d’utilisateurs](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users)
+> * [Sécurité Azure : Vérifiez les contrôles appropriés sont en place lors de l’acceptation des fichiers provenant d’utilisateurs](/azure/security/azure-security-threat-modeling-tool-input-validation#controls-users)
 
 ### <a name="save-the-file-to-azure-blob-storage"></a>Enregistrer le fichier dans le stockage Blob Azure
 
@@ -159,7 +159,7 @@ Spécifiez `DbSet` dans `MovieContext` (*Models/MovieContext.cs*) pour les plani
 
 ## <a name="add-the-schedule-table-to-the-database"></a>Ajouter la table Schedule à la base de données
 
-Ouvrez la console du gestionnaire de package : **Outils** > **Gestionnaire de package NuGet** > **Console du gestionnaire de package**.
+Ouvrez la Console du Gestionnaire de Package (PMC) : **Outils** > **Gestionnaire de Package NuGet** > **Console du Gestionnaire de Package**.
 
 ![Menu Console du Gestionnaire de package](upload-files/_static/pmc.png)
 
@@ -345,4 +345,4 @@ L’utilisateur peut cliquer sur le lien **Supprimer** à partir d’ici pour ac
 
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
-Pour obtenir des informations avec `IFormFile` chargement, consultez [chargements de fichiers dans ASP.NET Core : résolution des problèmes](xref:mvc/models/file-uploads#troubleshooting).
+Pour obtenir des informations avec `IFormFile` chargement, consultez [chargements de fichiers dans ASP.NET Core : Résolution des problèmes](xref:mvc/models/file-uploads#troubleshooting).

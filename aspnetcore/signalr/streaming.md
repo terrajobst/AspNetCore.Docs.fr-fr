@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/12/2019
 uid: signalr/streaming
-ms.openlocfilehash: 83bbb231482d9c1606be3c5bbbeb1cc3b8efcf7d
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
-ms.translationtype: MT
+ms.openlocfilehash: d185056d3bdda089eaa46ae9b8e13ab7a4354f93
+ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
+ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982654"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60165074"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Utiliser la diffusion en continu dans ASP.NET Core SignalR
 
@@ -36,13 +36,13 @@ ASP.NET Core SignalR prend en charge la diffusion en continu des valeurs de reto
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Une méthode de concentrateur devient automatiquement une méthode de concentrateur de diffusion en continu quand elle retourne un <xref:System.Threading.Channels.ChannelReader`1>, `IAsyncEnumerable<T>`, `Task<ChannelReader<T>>`, ou `Task<IAsyncEnumerable<T>>`.
+Une méthode de concentrateur devient automatiquement une méthode de concentrateur de diffusion en continu quand elle retourne un <xref:System.Threading.Channels.ChannelReader%601>, `IAsyncEnumerable<T>`, `Task<ChannelReader<T>>`, ou `Task<IAsyncEnumerable<T>>`.
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-Une méthode de hub devient automatiquement une méthode de hub de diffusion en continu quand elle retourne un <xref:System.Threading.Channels.ChannelReader`1> ou un `Task<ChannelReader<T>>`.
+Une méthode de hub devient automatiquement une méthode de hub de diffusion en continu quand elle retourne un <xref:System.Threading.Channels.ChannelReader%601> ou un `Task<ChannelReader<T>>`.
 
 ::: moniker-end
 
@@ -58,7 +58,7 @@ Méthodes de concentrateur de diffusion en continu peut retourner `IAsyncEnumera
 
 ::: moniker-end
 
-L’exemple suivant montre les principes de base de données au client à l’aide de canaux de diffusion en continu. Chaque fois qu’un objet est écrit dans le <xref:System.Threading.Channels.ChannelWriter`1>, l’objet est immédiatement envoyée au client. À la fin, le `ChannelWriter` est terminé pour indiquer au client que le flux est fermé.
+L’exemple suivant montre les principes de base de données au client à l’aide de canaux de diffusion en continu. Chaque fois qu’un objet est écrit dans le <xref:System.Threading.Channels.ChannelWriter%601>, l’objet est immédiatement envoyée au client. À la fin, le `ChannelWriter` est terminé pour indiquer au client que le flux est fermé.
 
 > [!NOTE]
 > Écrivez dans le `ChannelWriter<T>` sur un thread d’arrière-plan, puis revenez sur le `ChannelReader` dès que possible. Autres appels de concentrateur sont bloqués jusqu'à ce qu’un `ChannelReader` est retourné.
