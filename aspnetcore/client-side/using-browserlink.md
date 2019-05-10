@@ -7,11 +7,11 @@ ms.custom: H1Hack27Feb2017
 ms.date: 09/22/2017
 uid: client-side/using-browserlink
 ms.openlocfilehash: 452ba5149563c186750466f471c7b950f0017614
-ms.sourcegitcommit: d53e0cc71542b92de867bcce51575b054886f529
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41835672"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894706"
 ---
 # <a name="browser-link-in-aspnet-core"></a>Lien du navigateur dans ASP.NET Core
 
@@ -83,7 +83,7 @@ Quand vous avez un projet ASP.NET Core ouvert, Visual Studio affiche le contrôl
 
 * Actualiser l’application web dans plusieurs navigateurs à la fois.
 * Ouvrir le **tableau de bord Lien du navigateur**.
-* Activer ou désactiver le **lien du navigateur**. Remarque : Le lien du navigateur est désactivé par défaut dans Visual Studio 2017 (15.3).
+* Activer ou désactiver le **lien du navigateur**. Remarque : Lien du navigateur est désactivé par défaut dans Visual Studio 2017 (15.3).
 * Activer ou désactiver [la synchronisation automatique CSS](#enable-or-disable-css-auto-sync).
 
 > [!NOTE]
@@ -117,7 +117,7 @@ Le lien du navigateur fonctionne également avec les navigateurs lancés en deho
 
 Dans la liste de lien du navigateur déroulante menu pour gérer la connexion avec les navigateurs ouverts, ouvrez le tableau de bord de lien de navigateur :
 
-![Open-browserslink-tableau de bord](using-browserlink/_static/open-browserlink-dashboard.png)
+![open-browserslink-dashboard](using-browserlink/_static/open-browserlink-dashboard.png)
 
 Si aucun navigateur n’est connecté, vous pouvez démarrer une session autre qu'une session de débogage en sélectionnant le lien *Afficher dans le navigateur* :
 
@@ -125,7 +125,7 @@ Si aucun navigateur n’est connecté, vous pouvez démarrer une session autre q
 
 Sinon, les navigateurs connectés sont affichées avec le chemin d’accès à la page qui affiche chaque navigateur :
 
-![browserlink tableau de bord deux connexions](using-browserlink/_static/browserlink-dashboard-two-connections.png)
+![browserlink-dashboard-two-connections](using-browserlink/_static/browserlink-dashboard-two-connections.png)
 
 Si vous le souhaitez, vous pouvez cliquer sur un nom de navigateur répertorié pour actualiser seulement ce navigateur.
 

@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 82c0f3076e846045ca85697e150ff0ab9be75dba
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
-ms.translationtype: HT
-ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214347"
----
 <a name="dc"></a>
 
 Ajoutez la classe `MvcMovieContext` suivante au dossier *Models* :  

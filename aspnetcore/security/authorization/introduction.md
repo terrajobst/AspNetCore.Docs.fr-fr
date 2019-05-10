@@ -1,18 +1,18 @@
 ---
-title: Introduction à l’autorisation dans ASP.NET Core
+title: Introduction aux autorisations dans ASP.NET Core
 author: rick-anderson
-description: Découvrez les principes fondamentaux de l’autorisation et le fonctionnement des autorisations dans les applications ASP.NET Core.
+description: Découvrez les principes de base d’autorisation et de fonctionne de l’autorisation dans les applications ASP.NET Core.
 ms.author: riande
 ms.date: 10/14/2016
 uid: security/authorization/introduction
 ms.openlocfilehash: 5465eb7875ebecd77b628376ef886db0ddd05025
-ms.sourcegitcommit: a1afd04758e663d7062a5bfa8a0d4dca38f42afc
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36276865"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64896976"
 ---
-# <a name="introduction-to-authorization-in-aspnet-core"></a>Introduction à l’autorisation dans ASP.NET Core
+# <a name="introduction-to-authorization-in-aspnet-core"></a>Introduction aux autorisations dans ASP.NET Core
 
 <a name="security-authorization-introduction"></a>
 
@@ -28,4 +28,4 @@ L'autorisation de ASP.NET Core fournit un simple [rôle](xref:security/authoriza
 
 Les composants d’autorisation, y compris les attributs `AuthorizeAttribute` et `AllowAnonymousAttribute` se trouvent dans l'espace de noms `Microsoft.AspNetCore.Authorization`.
 
-Consultez la documentation sur [une autorisation simple](xref:security/authorization/simple).
+Consultez la documentation sur [autorisation simple](xref:security/authorization/simple).

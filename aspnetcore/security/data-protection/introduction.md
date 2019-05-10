@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 10/24/2018
 uid: security/data-protection/introduction
 ms.openlocfilehash: 37f170a3e8a46ef2215b0999358d46dd402636df
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50089546"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897986"
 ---
 # <a name="aspnet-core-data-protection"></a>Protection des données ASP.NET Core
 
@@ -21,7 +21,7 @@ La pile de protection des données ASP.NET Core est conçue pour servir le rempl
 
 ## <a name="problem-statement"></a>Énoncé du problème
 
-L’énoncé du problème global peut se résumer brièvement dans une phrase unique : j’ai besoin de conserver des informations fiables pour une récupération ultérieure, mais je n’approuve le mécanisme de persistance. Cela peut être écrit en termes de web, comme « J’ai besoin pour effectuer un aller-retour état approuvé via un client non fiable. »
+L’énoncé du problème global peut se résumer brièvement dans une phrase unique : J’ai besoin de conserver des informations fiables pour une récupération ultérieure, mais je n’approuve le mécanisme de persistance. Cela peut être écrit en termes de web, comme « J’ai besoin pour effectuer un aller-retour état approuvé via un client non fiable. »
 
 L’exemple canonique de ceci est un cookie d’authentification ou au porteur jeton. Le serveur génère un « Je suis Groot et disposer des autorisations de xyz » du jeton et le remet au client. À une date ultérieure, le client présentera ce jeton sur le serveur, mais le serveur a besoin d’une sorte de garantie que le client n’a pas falsifié le jeton. Par conséquent, la première exigence : authenticité (également appelé) l’intégrité, falsification de la vérification).
 

@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 08/20/2018
 uid: client-side/libman/libman-vs
-ms.openlocfilehash: 727bd80b7f37f6ebd9d37b7aab1aa6c33b85678c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 41a5a41c8921b04290784d26441ecb46aea753e7
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50206725"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894966"
 ---
 # <a name="use-libman-with-aspnet-core-in-visual-studio"></a>Utiliser LibMan avec ASP.NET Core dans Visual Studio
 
@@ -24,7 +24,7 @@ Visual Studio propose une prise en charge intégrée pour [LibMan](xref:client-s
 * Boîte de dialogue de recherche pour la recherche des bibliothèques et d’ajouter les fichiers à un projet.
 * Modification de la prise en charge pour *libman.json*&mdash;le fichier de manifeste LibMan.
 
-[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/client-side/libman/samples/) [(comment télécharger)](xref:index#how-to-download-a-sample)
+[Afficher ou télécharger l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) [(comment télécharger)](xref:index#how-to-download-a-sample)
 
 ## <a name="prerequisites"></a>Prérequis
 
@@ -64,8 +64,8 @@ Suivez ces étapes pour installer une bibliothèque côté client :
   
   |Emplacement de lancement                           |Dossier suggérée      |
   |------------------------------------------|----------------------|
-  |racine du projet (si *wwwroot* existe)        |*wwwroot/lib/jquery /* |
-  |racine du projet (si *wwwroot* n’existe pas) |*lib/jquery /*         |
+  |racine du projet (si *wwwroot* existe)        |*wwwroot/lib/jquery/* |
+  |racine du projet (si *wwwroot* n’existe pas) |*lib/jquery/*         |
   |*Pages* dossier de projet                 |*Pages/jquery /*       |
 
 * Cliquez sur le **installer** bouton pour télécharger les fichiers, par la configuration dans *libman.json*.

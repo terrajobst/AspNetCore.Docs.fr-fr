@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: 16cfa672fe4a81d9e8f09fc3dd1e6c036edd4c4e
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: ab407436afb16687fa285a836b608ad2e6a4802f
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208974"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894556"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -239,13 +239,13 @@ For establishing trust on other platforms refer to the platform specific documen
 For more information on configuring HTTPS see https://go.microsoft.com/fwlink/?linkid=848054.
 ```
 
-L’installation du SDK .NET Core installe le certificat de développement ASP.NET Core HTTPS pour le magasin de certificats d’utilisateur local. Le certificat a été installé, mais il n’a pas été approuvé. Pour approuver le certificat procédez à usage unique pour exécuter le dotnet `dev-certs` outil :
+L’installation du kit SDK .NET Core installe le certificat de développement ASP.NET Core HTTPS dans le magasin de certificats de l’utilisateur local. Le certificat a été installé, mais il n’a pas été approuvé. Pour approuver le certificat procédez à usage unique pour exécuter le dotnet `dev-certs` outil :
 
 ```console
 dotnet dev-certs https --trust
 ```
 
-La commande suivante fournit une aide sur la `dev-certs` outil :
+La commande suivante fournit de l’aide sur l’outil `dev-certs` :
 
 ```console
 dotnet dev-certs https --help
@@ -253,7 +253,7 @@ dotnet dev-certs https --help
 
 ## <a name="how-to-set-up-a-developer-certificate-for-docker"></a>Comment configurer un certificat de développeur pour Docker
 
-Consultez [ce problème GitHub](https://github.com/aspnet/Docs/issues/6199).
+Consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/6199).
 
 ::: moniker-end
 

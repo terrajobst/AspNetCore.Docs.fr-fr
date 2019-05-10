@@ -5,16 +5,16 @@ description: Apprenez à utiliser les composants d’application, c’est-à-dir
 ms.author: riande
 ms.date: 01/04/2017
 uid: mvc/extensibility/app-parts
-ms.openlocfilehash: 67bd40adef4cdb0bd781f70114d3954cd9a8ed09
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: 5d5e79d3afe0eee6d0b126d4642ccd5f61bff409
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320093"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64888134"
 ---
 # <a name="application-parts-in-aspnet-core"></a>Composants d’application dans ASP.NET Core
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/app-parts/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 Un *composant d’application* est une abstraction des ressources d’une application, qui permet de découvrir des fonctionnalités MVC telles que les contrôleurs, les composants de vue ou les Tag Helpers. AssemblyPart est un exemple de composant d’application qui encapsule une référence d’assembly, et expose les types et les références de compilation. Les *fournisseurs de fonctionnalités* utilisent les composants d’application pour remplir les fonctionnalités d’une application ASP.NET Core MVC. Le cas d’usage principal des composants d’application est de vous permettre de configurer votre application pour découvrir (ou éviter de charger) les fonctionnalités MVC d’un assembly.
 

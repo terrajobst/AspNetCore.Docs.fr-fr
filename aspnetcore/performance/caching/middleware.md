@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/20/2019
 uid: performance/caching/middleware
-ms.openlocfilehash: c7c3dbd0c9cf029fa6921d77450e780768c8aa6e
-ms.sourcegitcommit: 0945078a09c372f17e9b003758ed87e99c2449f4
+ms.openlocfilehash: ddbd547ec0fdd09da1f3e3ce30f8fa35a34870c2
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56647913"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897366"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>Réponse mise en cache d’intergiciel (middleware) dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex) et [John Luo](https://github.com/JunTaoLuo)
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)).
 
 Cet article explique comment configurer l’intergiciel de mise en cache des réponses dans une application ASP.NET Core. L’intergiciel (middleware) détermine lorsque les réponses sont mis en cache, les magasins de réponses et les réponses sert à partir du cache. Pour une introduction à la mise en cache HTTP et le `ResponseCache` d’attribut, consultez [la mise en cache de réponse](xref:performance/caching/response).
 

@@ -7,18 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: performance/response-compression
-ms.openlocfilehash: e87480ebb81791ed233f3e2308e35e21e081824f
-ms.sourcegitcommit: 6ba5fb1fd0b7f9a6a79085b0ef56206e462094b7
+ms.openlocfilehash: e312d43fb62106f6ecb98367c29daa377bb227c9
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56248366"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893346"
 ---
 # <a name="response-compression-in-aspnet-core"></a>Compression des réponses dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 La bande passante réseau est une ressource limitée. Le fait de réduire la taille de la réponse augmente généralement la réactivité d’une application, parfois de manière considérable. Une façon de réduire la taille de la charge utile consiste à compresser les réponses de l’application.
 
@@ -47,11 +47,11 @@ Quand un client peut traiter du contenu compressé, il doit en informer le serve
 | Valeurs d’en-tête `Accept-Encoding` | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | Oui (valeur par défaut)        | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Aucune                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Aucune                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `deflate`                       | Non                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Non                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui                  | [Format de fichier GZIP](https://tools.ietf.org/html/rfc1952) |
 | `identity`                      | Oui                  | Identificateur « Aucun codage » : La réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | Aucune                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `pack200-gzip`                  | Non                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Oui                  | N'importe quel encodage de contenu disponible non explicitement demandé |
 
 ::: moniker-end
@@ -60,12 +60,12 @@ Quand un client peut traiter du contenu compressé, il doit en informer le serve
 
 | Valeurs d’en-tête `Accept-Encoding` | Intergiciel pris en charge | Description |
 | ------------------------------- | :------------------: | ----------- |
-| `br`                            | Aucune                   | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
-| `deflate`                       | Aucune                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
-| `exi`                           | Aucune                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
+| `br`                            | Non                   | [Format de données compressées Brotli](https://tools.ietf.org/html/rfc7932) |
+| `deflate`                       | Non                   | [Format de données compressées DEFLATE](https://tools.ietf.org/html/rfc1951) |
+| `exi`                           | Non                   | [Échange efficace de XML W3C](https://tools.ietf.org/id/draft-varga-netconf-exi-capability-00.html) |
 | `gzip`                          | Oui (valeur par défaut)        | [Format de fichier GZIP](https://tools.ietf.org/html/rfc1952) |
 | `identity`                      | Oui                  | Identificateur « Aucun codage » : La réponse ne doit pas être encodée. |
-| `pack200-gzip`                  | Aucune                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
+| `pack200-gzip`                  | Non                   | [Format de transfert de réseau d’Archives Java](https://jcp.org/aboutJava/communityprocess/review/jsr200/index.html) |
 | `*`                             | Oui                  | N'importe quel encodage de contenu disponible non explicitement demandé |
 
 ::: moniker-end
@@ -89,7 +89,7 @@ Les en-têtes impliqués dans la demande, l'envoi, la mise en cache et la récep
 | `Content-Type`     | Spécifie le type MIME du contenu. Chaque réponse doit spécifier son `Content-Type`. L’intergiciel vérifie cette valeur pour déterminer si la réponse doit être compressée. L’intergiciel (middleware) spécifie un ensemble de [par défaut des types MIME](#mime-types) qui peut donc coder, mais vous pouvez remplacer ou ajouter des types MIME. |
 | `Vary`             | Quand l’en-tête `Vary` est envoyé par le serveur avec la valeur `Accept-Encoding` à des clients et proxys, ces derniers doivent mettre en cache les réponses (vary) en fonction de la valeur de l’en-tête `Accept-Encoding` de la requête. Si du contenu est retourné avec l'en-tête `Vary: Accept-Encoding`, les réponses (compressées et non compressées) sont mises en cache séparément. |
 
-Explorez les fonctionnalités de l’intergiciel de Compression de réponse avec le [exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/response-compression/samples). L’exemple illustre :
+Explorez les fonctionnalités de l’intergiciel de Compression de réponse avec le [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/response-compression/samples). L’exemple illustre :
 
 * La compression des réponses d’application à l’aide de Gzip et fournisseurs de compression personnalisé.
 * Comment ajouter un type MIME à la liste par défaut des types MIME pour la compression.
@@ -350,7 +350,7 @@ Lors de la compression des réponses basés sur le `Accept-Encoding` en-tête, i
 
 ## <a name="middleware-issue-when-behind-an-nginx-reverse-proxy"></a>Problème au niveau de l’intergiciel s'il est derrière un proxy inverse Nginx
 
-Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. Suppression de la `Accept-Encoding` en-tête empêche l’intergiciel (middleware) de la compression de la réponse. Pour plus d’informations, consultez [NGINX : La compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [déterminer compression pass-through pour Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
+Quand une requête est transmise par Nginx, l'en-tête `Accept-Encoding` est supprimé. Suppression de la `Accept-Encoding` en-tête empêche l’intergiciel (middleware) de la compression de la réponse. Pour plus d’informations, consultez [NGINX : La compression et décompression](https://www.nginx.com/resources/admin-guide/compression-and-decompression/). Ce problème est suivi par [déterminer compression pass-through pour Nginx (aspnet/BasicMiddleware \#123)](https://github.com/aspnet/BasicMiddleware/issues/123).
 
 ## <a name="working-with-iis-dynamic-compression"></a>Utilisation de la compression dynamique IIS
 

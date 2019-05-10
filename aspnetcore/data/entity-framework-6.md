@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/entity-framework-6
-ms.openlocfilehash: b7679afbe4c364386fe8f16d22d7e9797a3e0c27
-ms.sourcegitcommit: 4d74644f11e0dac52b4510048490ae731c691496
+ms.openlocfilehash: 50f51a72341cbad017872df581da214211b9920a
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50090057"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64886934"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>Bien démarrer avec ASP.NET Core et Entity Framework 6
 
@@ -23,7 +23,7 @@ Cet article montre comment utiliser Entity Framework 6 dans une application ASP.
 
 Pour utiliser Entity Framework 6, votre projet doit être compilé pour .NET Framework, car Entity Framework 6 ne prend pas en charge .NET Core. Si vous avez besoin de fonctionnalités multiplateformes, vous devez effectuer une mise à niveau vers [Entity Framework Core](/ef/).
 
-La méthode recommandée pour utiliser Entity Framework 6 dans une application ASP.NET Core consiste à placer les classes de contexte et de modèle Entity Framework 6 (EF6) dans un projet de bibliothèque de classes qui cible le framework complet. Ajoutez une référence à la bibliothèque de classes depuis le projet ASP.NET Core. Consultez l’exemple [Solution Visual Studio avec des projets Entity Framework 6 et ASP.NET Core](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
+La méthode recommandée pour utiliser Entity Framework 6 dans une application ASP.NET Core consiste à placer les classes de contexte et de modèle Entity Framework 6 (EF6) dans un projet de bibliothèque de classes qui cible le framework complet. Ajoutez une référence à la bibliothèque de classes depuis le projet ASP.NET Core. Consultez l’exemple [Solution Visual Studio avec des projets Entity Framework 6 et ASP.NET Core](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).
 
 Vous ne pouvez pas mettre un contexte EF6 dans un projet ASP.NET Core, car les projets .NET Core ne prennent pas en charge toutes les fonctionnalités nécessaires pour les commandes EF6, comme *Enable-Migrations*.
 
@@ -61,7 +61,7 @@ Vous pouvez ensuite obtenir une instance du contexte dans vos contrôleurs en ut
 
 ## <a name="sample-application"></a>Exemple d’application
 
-Pour un exemple d’application opérationnelle, consultez [l’exemple de solution Visual Studio](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/entity-framework-6/sample/) qui accompagne cet article.
+Pour un exemple d’application opérationnelle, consultez [l’exemple de solution Visual Studio](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/) qui accompagne cet article.
 
 Vous pouvez créer cet exemple à partir de zéro dans Visual Studio en effectuant les étapes suivantes :
 
