@@ -5,12 +5,12 @@ description: Dans ce didacticiel, vous allez commencer à utiliser la fonctionna
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 1803c6d3956121e4e7091f4f951917425e87c335
-ms.sourcegitcommit: 7d6019f762fc5b8cbedcd69801e8310f51a17c18
+ms.openlocfilehash: 5b8228130378059aebe21c9c3ea1eb72e4c6aad9
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419470"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086170"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Migrations - 4 sur 8
 
@@ -25,7 +25,7 @@ Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.co
 Dans ce didacticiel, nous allons utiliser la fonctionnalité de migrations EF Core pour gérer les modifications du modèle de données.
 
 Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée](
-https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 Quand une nouvelle application est développée, le modèle de données change fréquemment. Chaque fois que le modèle change, il est désynchronisé avec la base de données. Ce didacticiel commence par configurer Entity Framework pour créer la base de données si elle n’existe pas. Chaque fois que le modèle de données change :
 
@@ -161,7 +161,7 @@ EF Core utilise la table `__MigrationsHistory` pour voir si des migrations doive
 ## <a name="troubleshooting"></a>Résolution des problèmes
 
 Téléchargez [l’application terminée](
-https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part4-migrations).
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part4-migrations).
 
 L’application génère l’exception suivante :
 

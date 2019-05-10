@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.custom: mvc
 ms.date: 02/14/2019
 uid: fundamentals/servers/index
-ms.openlocfilehash: 4fa32fb4fe1d482f1000cd803cd2d26cd9ff2341
-ms.sourcegitcommit: d75d8eb26c2cce19876c8d5b65ac8a4b21f625ef
+ms.openlocfilehash: da5be57fa728a4bc075a580cb9b57301046b4132
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56410532"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64882494"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implémentations de serveurs web dans ASP.NET Core
 
@@ -210,9 +210,9 @@ Si les serveurs intégrés ne répondent pas aux spécifications de l’applicat
 
 Le serveur est lancé lorsque l’environnement de développement intégré (IDE) ou l’éditeur démarre l’application :
 
-* Des &ndash;profils de lancement [Visual Studio](https://www.visualstudio.com/vs/) peuvent être utilisés pour démarrer l’application et le serveur avec [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) ou avec la console.
+* Des &ndash;profils de lancement [Visual Studio](https://visualstudio.microsoft.com) peuvent être utilisés pour démarrer l’application et le serveur avec [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)/[Module ASP.NET Core](xref:host-and-deploy/aspnet-core-module) ou avec la console.
 * [Visual Studio Code](https://code.visualstudio.com/) &ndash;L’application et le serveur sont démarrés par [Omnisharp](https://github.com/OmniSharp/omnisharp-vscode), qui active le débogueur CoreCLR.
-* [Visual Studio pour Mac](https://www.visualstudio.com/vs/mac/) &ndash; L’application et le serveur sont démarrés par le [débogueur Mono Soft-Mode](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/).
+* [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/) &ndash; L’application et le serveur sont démarrés par le [débogueur Mono Soft-Mode](https://www.mono-project.com/docs/advanced/runtime/docs/soft-debugger/).
 
 Lors du lancement de l’application à partir d’une invite de commandes dans le dossier du projet, [dotnet run](/dotnet/core/tools/dotnet-run) lance l’application et le serveur (Kestrel et HTTP.sys uniquement). La configuration est spécifiée par l’option `-c|--configuration`, qui est définie sur `Debug` (par défaut) ou sur `Release`. Si les profils de lancement sont présents dans un fichier *launchSettings.json*, utilisez l’option `--launch-profile <NAME>` pour définir le profil de lancement (par exemple `Development` ou `Production`). Pour plus d’informations, consultez les rubriques [dotnet run](/dotnet/core/tools/dotnet-run) et [Package de distribution de .NET Core](/dotnet/core/build/distribution-packaging).
 
@@ -230,14 +230,14 @@ Lors du lancement de l’application à partir d’une invite de commandes dans 
   * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure
-  * Framework cible : non applicable aux déploiements HTTP.sys.
+  * Version cible de .NET Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (in-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Version cible de .Net Framework : .NET Core 2.2 ou version ultérieure
 * [IIS (out-of-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse à Kestrel utilise HTTP/1.1.
-  * Framework cible : non applicable aux déploiements IIS out-of-process.
+  * Version cible de .NET Framework : non applicable aux déploiements IIS out-of-process.
 
 &dagger;Kestrel propose une prise en charge limitée de HTTP/2 sous Windows Server 2012 R2 et Windows 8.1. La prise en charge est limitée car la liste des suites de chiffrement TLS prises en charge sur ces systèmes d’exploitation est limitée. Un certificat généré à l’aide d’Elliptic Curve Digital Signature algorithme (ECDSA) peut être requis pour sécuriser les connexions TLS.
 
@@ -247,11 +247,11 @@ Lors du lancement de l’application à partir d’une invite de commandes dans 
 
 * [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure
-  * Framework cible : non applicable aux déploiements HTTP.sys.
+  * Version cible de .NET Framework : non applicable aux déploiements HTTP.sys.
 * [IIS (out-of-process)](xref:host-and-deploy/iis/index#http2-support)
   * Windows Server 2016/Windows 10 ou version ultérieure ; IIS 10 ou version ultérieure
   * Les connexions au serveur périphérique public utilisent HTTP/2, mais la connexion de proxy inverse à Kestrel utilise HTTP/1.1.
-  * Framework cible : non applicable aux déploiements IIS out-of-process.
+  * Version cible de .NET Framework : non applicable aux déploiements IIS out-of-process.
 
 ::: moniker-end
 

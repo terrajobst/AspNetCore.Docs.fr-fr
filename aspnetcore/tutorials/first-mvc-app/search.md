@@ -6,11 +6,11 @@ ms.author: riande
 ms.date: 12/13/2018
 uid: tutorials/first-mvc-app/search
 ms.openlocfilehash: 41d7494b77edaddbf719cab087142f0132dd3ed6
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58208380"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087286"
 ---
 # <a name="add-search-to-an-aspnet-core-mvc-app"></a>Ajouter une fonction de recherche à une application ASP.NET Core MVC
 
@@ -134,7 +134,7 @@ Quand l’utilisateur recherche l’élément, la valeur de recherche est conser
 
 Mettez à jour `Index.cshtml` comme suit :
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,28,31,34,37,43)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,19,28,31,34,37,43)]
 
 Examinez l’expression lambda utilisée dans le Helper HTML suivant :
 

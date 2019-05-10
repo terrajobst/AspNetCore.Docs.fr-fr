@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 11/20/2018
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 5d5f0aadb7740c9b2b959d12a585cd8c91758ce8
-ms.sourcegitcommit: 4225e2c49a0081e6ac15acff673587201f54b4aa
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282137"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894296"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Regrouper et minimiser les ressources statiques dans ASP.NET Core
 
@@ -29,7 +29,7 @@ Regroupement et minimisation principalement améliorent la première fois de cha
 
 Regroupement de combiner plusieurs fichiers dans un seul fichier. Regroupement réduit le nombre de demandes de serveur qui sont nécessaires à l’affichage d’une ressource web, telle qu’une page web. Vous pouvez créer n’importe quel nombre de regroupements individuels spécifiquement pour CSS, JavaScript, etc. Moins de fichiers signifie moins de demandes HTTP à partir du navigateur au serveur ou à partir du service fournissant à votre application. Il en résulte amélioration des performances de charge première page.
 
-### <a name="minification"></a>Minimisation
+### <a name="minification"></a>Minification
 
 Minimisation supprime les caractères inutiles à partir du code sans dégrader les fonctionnalités. Il en résulte une réduction de taille importante dans les ressources demandées (par exemple, images, fichiers CSS et JavaScript). Les effets secondaires communs de minimisation incluent raccourcir les noms de variables pour un caractère et de suppression de commentaires et espace blanc inutile.
 
@@ -85,15 +85,15 @@ Le *bundleconfig.json* fichier définit les options pour chaque regroupement. Da
 
 Options de configuration sont les suivantes :
 
-* `outputFileName`: Nom de fichier d’offre groupée de sortie. Peut contenir un chemin d’accès relatif à partir de la *bundleconfig.json* fichier. **Obligatoire**
-* `inputFiles`: Tableau de fichiers à regrouper. Il s’agit des chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide résulte en un fichier de sortie vide. [utilisation des caractères génériques](http://www.tldp.org/LDP/abs/html/globbingref.html) modèles sont pris en charge.
-* `minify`: Les options de la minimisation, pour le type de sortie. **facultatif**, *par défaut : `minify: { enabled: true }`*
+* `outputFileName`: Le nom de fichier d’offre groupée de sortie. Peut contenir un chemin d’accès relatif à partir de la *bundleconfig.json* fichier. **required**
+* `inputFiles`: Un tableau de fichiers à regrouper. Il s’agit des chemins d’accès relatifs au fichier de configuration. **facultatif**, * une valeur vide résulte en un fichier de sortie vide. [utilisation des caractères génériques](http://www.tldp.org/LDP/abs/html/globbingref.html) modèles sont pris en charge.
+* `minify`: Les options de minimisation pour le type de sortie. **optional**, *default - `minify: { enabled: true }`*
   * Options de configuration sont disponibles par type de fichier de sortie.
     * [Minimisation CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minimisation de JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minimisation de HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: Indicateur précisant s’il faut ajouter les fichiers générés au fichier projet. **facultatif**, *par défaut : false*
-* `sourceMap`: Indicateur spécifiant s’il faut générer une carte de code source pour le fichier regroupé. **facultatif**, *par défaut : false*
+* `includeInProject`: Indicateur précisant s’il faut ajouter les fichiers générés au fichier projet. **optional**, *default - false*
+* `sourceMap`: Indicateur précisant s’il faut générer une carte de code source pour le fichier regroupé. **optional**, *default - false*
 * `sourceMapRootPath`: Le chemin d’accès racine pour stocker le fichier de mappage de source généré.
 
 ## <a name="build-time-execution-of-bundling-and-minification"></a>Exécution du moment de la génération de regroupement et minimisation

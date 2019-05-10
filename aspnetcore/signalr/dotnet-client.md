@@ -7,21 +7,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/17/2019
 uid: signalr/dotnet-client
-ms.openlocfilehash: 640d75157e42ffa6d78235c5be03e4846e8dcde9
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
+ms.openlocfilehash: b59af0f9c84a008f778709970dba2273abdfcd4f
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982944"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087716"
 ---
 # <a name="aspnet-core-signalr-net-client"></a>Client .NET SignalR ASP.NET Core 
 
 La bibliothèque cliente ASP.NET Core SignalR .NET vous permet de communiquer avec les hubs SignalR à partir des applications .NET.
 
-> [!NOTE]
-> Xamarin a des prérequis spéciaux pour la version de Visual Studio. Pour plus d’informations, consultez [SignalR Client 2.1.1 dans Xamarin](https://github.com/aspnet/Announcements/issues/305).
-
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/dotnet-client/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple de code dans cet article est une application WPF qui utilise le client .NET SignalR ASP.NET Core.
 

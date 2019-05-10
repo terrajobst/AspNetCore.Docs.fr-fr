@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: ba688b259206f21045376b6a38a266ad7528aec1
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: f80de595fd23cc9c1065e5257ad1d2376ea40cf3
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58750761"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64886294"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutoriel : Implémenter l’héritage - ASP.NET MVC avec EF Core
 
@@ -150,7 +150,7 @@ Cliquez avec le bouton droit sur la table Person, puis cliquez sur **Afficher le
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

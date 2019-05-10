@@ -7,11 +7,11 @@ ms.custom: mvc
 ms.date: 01/16/2019
 uid: security/authentication/ws-federation
 ms.openlocfilehash: 7967410686da0e59742b721c0154e143bf19ba01
-ms.sourcegitcommit: 2c7ffe349eabdccf2ed748dd303ffd0ba6e1cfe3
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833538"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897566"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>Authentifier les utilisateurs avec WS-Federation dans ASP.NET Core
 
@@ -74,7 +74,7 @@ Par défaut, le middleware de nouvelle :
 
 * Cliquez sur **points de terminaison** et notez le **Document de métadonnées de fédération** URL. Il s’agit de l’intergiciel de WS-Federation `MetadataAddress`:
 
-![Azure Active Directory : points de terminaison](ws-federation/_static/AadFederationMetadataDocument.png)
+![Azure Active Directory : Points de terminaison](ws-federation/_static/AadFederationMetadataDocument.png)
 
 * Accédez à la nouvelle inscription d’application. Cliquez sur **paramètres** > **propriétés** et prenez note de la **URI ID d’application**. Il s’agit de l’intergiciel de WS-Federation `Wtrealm`:
 

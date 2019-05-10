@@ -5,12 +5,12 @@ description: Cet article présente les fichiers d’objets portables et décrit 
 ms.author: scaddie
 ms.date: 09/26/2017
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 466759b30e756a7cac8abab7352025df0462bb6f
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 6ec7afc59d6dfd2629a3d6d83ae619575397a9df
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58210091"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884374"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurer la localisation d’objets portables dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Cet article présente les étapes d’utilisation d’objets portables (PO, Port
 
 **Remarque :** Orchard Core n’est pas un produit Microsoft. Par conséquent, Microsoft ne fournit aucun support pour cette fonctionnalité.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="what-is-a-po-file"></a>Qu’est-ce qu’un fichier PO ?
 

@@ -3,15 +3,15 @@ title: Choisir entre ASP.NET 4.x et ASP.NET Core
 author: rick-anderson
 description: Explique ASP.NET Core par rapport à ASP.NET 4.x, et comment choisir entre les deux.
 ms.author: riande
-ms.custom: seodec18
+ms.custom: mvc, seodec18
 ms.date: 09/11/2018
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: eb216bdac7dd029c3d985f2edd9e70eb91f42883
-ms.sourcegitcommit: a16352c1c88a71770ab3922200a8cd148fb278a6
+ms.openlocfilehash: 454f1021520f8f22eb2b0417a958b78690f89cef
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335340"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64886964"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>Choisir entre ASP.NET 4.x et ASP.NET Core
 
@@ -36,7 +36,7 @@ Le tableau suivant compare ASP.NET Core à ASP.NET 4.x.
 |Générer pour Windows, macOS ou Linux|Générer pour Windows|
 |Nous vous recommandons d’utiliser les [pages Razor](xref:razor-pages/index) pour créer une interface utilisateur web à partir d’ASP.NET Core 2. Voir aussi [MVC](xref:mvc/overview), [API web](xref:tutorials/first-web-api) et [SignalR](xref:signalr/introduction).|Utilisez [Web Forms](/aspnet/web-forms), [SignalR](/aspnet/signalr), [MVC](/aspnet/mvc), [Web API](/aspnet/web-api/), [WebHooks](/aspnet/webhooks/) ou [Pages Web](/aspnet/web-pages)|
 |Plusieurs versions par machine|Une seule version par machine|
-|Développer avec Visual Studio, [Visual Studio pour Mac](https://www.visualstudio.com/vs/visual-studio-mac/) ou [Visual Studio Code](https://code.visualstudio.com/) en utilisant C# ou F#|Développer avec Visual Studio en utilisant C#, VB ou F#|
+|Développer avec Visual Studio, [Visual Studio pour Mac](https://visualstudio.microsoft.com/vs/mac/) ou [Visual Studio Code](https://code.visualstudio.com/) en utilisant C# ou F#|Développer avec Visual Studio en utilisant C#, VB ou F#|
 |Performances supérieures à celles d’ASP.NET 4.x|Bonnes performances|
 |[Choisir le runtime .NET Framework ou .NET Core](/dotnet/standard/choosing-core-framework-server)|Utiliser le runtime .NET Framework|
 

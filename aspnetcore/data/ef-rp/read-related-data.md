@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 4b564e9e407dcb6b7fd71d0a6c41596269ed5e09
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: e98f6dddc727bb78a411fbd0a5014bcee87c7aeb
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320119"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887804"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Lire des données associées - 6 sur 8
 
@@ -21,7 +21,7 @@ Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.co
 
 Dans ce didacticiel, nous allons lire et afficher des données associées. Les données associées sont des données qu’EF Core charge dans des propriétés de navigation.
 
-Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
+Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, [téléchargez ou affichez l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples). [Télécharger les instructions](xref:index#how-to-download-a-sample).
 
 Les illustrations suivantes montrent les pages terminées pour ce didacticiel :
 
@@ -133,7 +133,7 @@ Voici le `CourseViewModel` :
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/CourseViewModel.cs?name=snippet)]
 
-Pour obtenir un exemple complet, consultez [IndexSelect.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) et [IndexSelect.cshtml.cs](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
+Pour obtenir un exemple complet, consultez [IndexSelect.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml) et [IndexSelect.cshtml.cs](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu/Pages/Courses/IndexSelect.cshtml.cs).
 
 ## <a name="create-an-instructors-page-that-shows-courses-and-enrollments"></a>Créer une page Instructors qui affiche les cours et les inscriptions
 

@@ -4,14 +4,14 @@ author: ssougnez
 description: Dans ce tutoriel, vous configurez Webpack pour regrouper et générer une application web ASP.NET Core SignalR dont le client est écrit en TypeScript.
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 02/11/2019
+ms.date: 04/23/2019
 uid: tutorials/signalr-typescript-webpack
-ms.openlocfilehash: aaf9aa59928ed6b17bc0586d97dbdefc9e30362c
-ms.sourcegitcommit: 5e3797a02ff3c48bb8cb9ad4320bfd169ebe8aba
+ms.openlocfilehash: 8bebdd9102f93d2b2a8bf142db1053def9d001a0
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56102950"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884604"
 ---
 # <a name="use-aspnet-core-signalr-with-typescript-and-webpack"></a>Utiliser ASP.NET Core SignalR avec TypeScript et Webpack
 
@@ -28,9 +28,24 @@ Dans ce didacticiel, vous apprendrez à :
 > * Configurer le serveur SignalR
 > * Activer la communication entre le client et le serveur
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-typescript-webpack/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-[!INCLUDE [Prerequisites](~/includes/net-core-prereqs-vs-vsc-2.2.md)]
+## <a name="prerequisites"></a>Prérequis
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* [Visual Studio 2017 version 15.9 ou ultérieure](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) avec la charge de travail **ASP.NET et développement web**
+* [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
+* [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
+
+# <a name="visual-studio-codetabvisual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+
+* [Visual Studio Code](https://code.visualstudio.com/download)
+* [Kit SDK .NET Core 2.2 ou version ultérieure](https://www.microsoft.com/net/download/all)
+* [C# pour Visual Studio Code version 1.17.1 ou ultérieure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [Node.js](https://nodejs.org/) avec [npm](https://www.npmjs.com/)
+
+---
 
 ## <a name="create-the-aspnet-core-web-app"></a>Créer l’application web ASP.NET Core
 

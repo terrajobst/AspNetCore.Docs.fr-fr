@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 162586059e3115bc15efaa63a9a0652e09872f1b
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 228722ecdc0fb19e024b7154393390fe6d34c5ff
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209963"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887304"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging---3-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Tri, filtre, pagination - 3 sur 8
 
@@ -29,7 +29,7 @@ L’illustration suivante présente une page complète. Les en-têtes de colonne
 
 ![Page d’index des étudiants](sort-filter-page/_static/paging.png)
 
-Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="add-sorting-to-the-index-page"></a>Ajouter le tri à la page Index
 
@@ -275,13 +275,13 @@ Remplacez le code du fichier *Pages/About.cshtml* par le code suivant :
 
 Exécutez l’application et accédez à la page About. Le nombre d’étudiants pour chaque date d’inscription s’affiche dans une table.
 
-Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée pour cette phase](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).
+Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée pour cette phase](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/StageSnapShots/cu-part3-sorting).
 
 ![Page About](sort-filter-page/_static/about.png)
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Débogage d’une source ASP.NET Core 2.x](https://github.com/aspnet/Docs/issues/4155)
+* [Débogage d’une source ASP.NET Core 2.x](https://github.com/aspnet/AspNetCore.Docs/issues/4155)
 * [Version YouTube de ce tutoriel](https://www.youtube.com/watch?v=MDs7PFpoMqI)
 
 Dans le didacticiel suivant, l’application utilise des migrations pour mettre à jour le modèle de données.

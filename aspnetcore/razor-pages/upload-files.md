@@ -7,24 +7,24 @@ ms.author: riande
 ms.date: 11/10/2018
 ms.custom: mvc, seodec18
 uid: razor-pages/upload-files
-ms.openlocfilehash: a12653e5dc99ad731de63e151af6dbdbe38ffefc
-ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
-ms.translationtype: HT
+ms.openlocfilehash: 07457d57b7d3b444c8cea818149569407f1dd8e8
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60165220"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65085715"
 ---
 # <a name="upload-files-to-a-razor-page-in-aspnet-core"></a>Charger des fichiers dans une page Razor dans ASP.NET Core
 
 Par [Luke Latham](https://github.com/guardrex)
 
-Cette rubrique s’appuie sur le [exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample) dans <xref:tutorials/razor-pages/razor-pages-start>.
+Cette rubrique s’appuie sur le [exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample) dans <xref:tutorials/razor-pages/razor-pages-start>.
 
 Cette rubrique montre comment utiliser la liaison de modèle simple pour charger des fichiers, ce qui fonctionne bien pour charger des fichiers de petite taille. Pour plus d’informations sur le streaming de fichiers volumineux, consultez [Chargement de fichiers volumineux par streaming](xref:mvc/models/file-uploads#uploading-large-files-with-streaming).
 
 Dans les étapes suivantes, une fonctionnalité de chargement de fichiers de planification vidéo est ajoutée dans l’exemple d’application. Une planification vidéo est représentée par une classe `Schedule` . La classe inclut deux versions de la planification. Une version est fournie aux clients, `PublicSchedule`. L’autre version est utilisée pour les employés de la société, `PrivateSchedule`. Chaque version est chargée dans un fichier distinct. Le didacticiel décrit comment effectuer deux chargements de fichier à partir d’une page en envoyant une seule commande POST au serveur.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/razor-pages/upload-files/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/upload-files/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="security-considerations"></a>Considérations relatives à la sécurité
 

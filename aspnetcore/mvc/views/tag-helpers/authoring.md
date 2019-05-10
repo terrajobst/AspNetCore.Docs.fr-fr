@@ -4,20 +4,20 @@ author: rick-anderson
 description: Découvrez comment créer des Tag Helpers dans ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/12/2019
+ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 19b7df1abc8765cb9a77487e39c4365fdacf2b65
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 37e39ac93e7b67184dfc238d58e12c2be8d84f91
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614420"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087348"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="get-started-with-tag-helpers"></a>Bien démarrer avec les Tag Helpers
 
@@ -108,7 +108,9 @@ Mettez à jour la classe `EmailTagHelper` avec le code suivant :
 
 Cette approche fonctionne pour l’attribut « href » tant qu’il n’existe pas dans la collection d’attributs. Vous pouvez également utiliser la méthode `output.Attributes.Add` pour ajouter un attribut de Tag Helper à la fin de la collection des attributs de balise.
 
-1. Mettez à jour le balisage dans le fichier *Views/Home/Contact.cshtml* avec les modifications suivantes : [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+1. Mettez à jour le balisage dans le fichier *Views/Home/Contact.cshtml* avec les modifications suivantes :
+
+   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 1. Exécutez l’application et vérifiez qu’elle génère les liens corrects.
 

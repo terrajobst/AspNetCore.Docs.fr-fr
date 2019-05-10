@@ -5,18 +5,14 @@ description: Montre comment créer, lire, mettre à jour et supprimer avec EF Co
 ms.author: riande
 ms.date: 6/31/2017
 uid: data/ef-rp/crud
-ms.openlocfilehash: c104498a4411ac36672ffbb9660948d4e96bf1ee
-ms.sourcegitcommit: 10e14b85490f064395e9b2f423d21e3c2d39ed8b
+ms.openlocfilehash: 43d133c61c0387ebcb4bcb2d22c800588d8534c3
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58142389"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65516923"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---crud---2-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - CRUD - 2 sur 8
-
-[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 Par [Tom Dykstra](https://github.com/tdykstra), [Jon P Smith](https://twitter.com/thereformedprog) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -161,7 +157,7 @@ Le code suivant utilise le modèle d’affichage `StudentVM` pour créer un étu
 
 La méthode [SetValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues.setvalues#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyValues_SetValues_System_Object_) définit les valeurs de cet objet en lisant les valeurs d’un autre objet [PropertyValues](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyvalues). `SetValues` utilise la correspondance de nom de propriété. Le type de modèle d’affichage ne doit pas nécessairement être lié au type de modèle. Il doit simplement avoir des propriétés qui correspondent.
 
-L’utilisation de `StudentVM` exige que [CreateVM.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
+L’utilisation de `StudentVM` exige que [CreateVM.cshtml](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu21/Pages/Students/CreateVM.cshtml) soit mis à jour pour utiliser `StudentVM` plutôt que `Student`.
 
 Dans les pages Razor, la classe dérivée `PageModel` est le modèle d’affichage.
 
@@ -246,7 +242,7 @@ Vérifiez que la Page Razor contient la bonne directive `@page`. Par exemple, la
 
 Chaque page Razor doit inclure la directive `@page`.
 
-::: moniker-end
+
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

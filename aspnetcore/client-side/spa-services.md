@@ -7,11 +7,11 @@ ms.custom: H1Hack27Feb2017
 ms.date: 08/02/2017
 uid: client-side/spa-services
 ms.openlocfilehash: ee772e67ef14608bcc6e3498ade00424ff6090e5
-ms.sourcegitcommit: 49faca2644590fc081d86db46ea5e29edfc28b7b
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/09/2018
-ms.locfileid: "53121374"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64893946"
 ---
 # <a name="use-javascriptservices-to-create-single-page-applications-in-aspnet-core"></a>Utiliser JavaScriptServices pour créer des Applications à Page unique dans ASP.NET Core
 
@@ -67,7 +67,7 @@ Pour utiliser SpaServices, installez les éléments suivants :
     node -v && npm -v
     ```
 
-Remarque : Si vous effectuez un déploiement vers un site web Azure, vous n’avez à faire quoi que ce soit ici &mdash; Node.js est installé et disponible dans les environnements de serveur.
+Remarque : Si vous effectuez un déploiement vers un site web Azure, vous n’avez pas besoin de faire quoi que ce soit ici &mdash; Node.js est installé et disponible dans les environnements de serveur.
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
@@ -225,7 +225,7 @@ Une méthode d’extension nommée `MapSpaFallbackRoute` est utilisé dans le `C
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_MvcRoutingTable&highlight=7-9)]
 
-Conseil : Les itinéraires sont évaluées dans l’ordre dans lequel ils sont configurés. Par conséquent, le `default` itinéraire dans l’exemple de code précédent est utilisé pour les critères spéciaux.
+Conseil : Itinéraires sont évaluées dans l’ordre dans lequel ils sont configurés. Par conséquent, le `default` itinéraire dans l’exemple de code précédent est utilisé pour les critères spéciaux.
 
 <a name="new-project-creation"></a>
 
