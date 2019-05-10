@@ -7,12 +7,12 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/12/2019
 uid: signalr/streaming
-ms.openlocfilehash: d185056d3bdda089eaa46ae9b8e13ab7a4354f93
-ms.sourcegitcommit: 8a84ce880b4c40d6694ba6423038f18fc2eb5746
-ms.translationtype: HT
+ms.openlocfilehash: 8f39fdfa45766b5bbec572970f009abefefdc419
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60165074"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897196"
 ---
 # <a name="use-streaming-in-aspnet-core-signalr"></a>Utiliser la diffusion en continu dans ASP.NET Core SignalR
 
@@ -30,7 +30,7 @@ ASP.NET Core SignalR prend en charge la diffusion en continu des valeurs de reto
 
 ::: moniker-end
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/signalr/streaming/samples/) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="set-up-a-hub-for-streaming"></a>Configurer un concentrateur de diffusion en continu
 

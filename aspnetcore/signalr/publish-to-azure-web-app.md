@@ -7,25 +7,25 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/20/2018
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: 66fa855590c49c4284e4b42cae57f3d4d81dd0fc
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.openlocfilehash: 1c472711a86edae8dc6e207734aa54e48c02d47d
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54837674"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087705"
 ---
 # <a name="publish-an-aspnet-core-signalr-app-to-an-azure-web-app"></a>Publier une application ASP.NET Core SignalR sur Azure Web App
 
 [Azure Web App](/azure/app-service/app-service-web-overview) est une plateforme de services de [Cloud computing de Microsoft](https://azure.microsoft.com/) pour l’hébergement d’applications web, y compris ASP.NET Core.
 
 > [!NOTE]
-> Cet article fait référence à la publication d’une application ASP.NET Core SignalR à partir de Visual Studio. Visitez [service SignalR pour Azure](https://azure.microsoft.com/en-gb/services/signalr-service?) pour plus d’informations sur l’utilisation de SignalR sur Azure.
+> Cet article fait référence à la publication d’une application ASP.NET Core SignalR à partir de Visual Studio. Visitez [service SignalR pour Azure](https://azure.microsoft.com/services/signalr-service) pour plus d’informations sur l’utilisation de SignalR sur Azure.
 
 ## <a name="publish-the-app"></a>Publier l'application
 
 Visual Studio fournit des outils intégrés pour la publication sur Azure Web App. Un utilisateur de Visual Studio Code peut utiliser les commandes [Azure CLI](/cli/azure) pour publier des applications sur Azure. Cet article couvre la publication avec les outils dans Visual Studio. Pour publier une application à l’aide d’Azure CLI, consultez [publier une application ASP.NET Core sur Azure avec les outils de ligne de commande](/azure/app-service/app-service-web-get-started-dotnet).
 
-Avec le bouton droit sur le projet dans **l’Explorateur de solutions** et sélectionnez **publier**. Vérifiez que **créer** est archivé le **choisir une cible de publication** boîte de dialogue, puis sélectionnez **publier**.
+Cliquez avec le bouton droit sur le projet dans **l’Explorateur de solutions**, puis sélectionnez **Publier**. Vérifiez que **créer** est archivé le **choisir une cible de publication** boîte de dialogue, puis sélectionnez **publier**.
 
 ![Choix de publication cible](publish-to-azure-web-app/_static/pick-publish-target-dialog.png)
 
@@ -38,7 +38,7 @@ Entrez les informations suivantes dans la boîte de dialogue **Créer un App Ser
 | **Groupe de ressources** | Le groupe de ressources liées à laquelle appartient l’application.  |
 | **Plan d’hébergement** | Le plan de tarification pour l’application web. |
 
-![Créer app service](publish-to-azure-web-app/_static/create-app-service-dialog.png)
+![Créer App Service](publish-to-azure-web-app/_static/create-app-service-dialog.png)
 
 Visual Studio effectue les tâches suivantes :
 

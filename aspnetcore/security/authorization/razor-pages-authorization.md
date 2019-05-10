@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2019
 uid: security/authorization/razor-pages-authorization
-ms.openlocfilehash: 040d33eba7eaf7a3aece2eedcdef7343e52972af
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: ff061f96f30cd893b903403de760a172c924cf06
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57345499"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895416"
 ---
 # <a name="razor-pages-authorization-conventions-in-aspnet-core"></a>Conventions d’autorisation des Pages Razor dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Luke Latham](https://github.com/guardrex)
 
 Une façon de contrôler l’accès dans votre application Pages Razor consiste à utiliser les conventions d’autorisation au démarrage. Ces conventions permettent d’autoriser les utilisateurs et permettre aux utilisateurs anonymes d’accéder à des pages individuelles ou des dossiers de pages. Appliquent les conventions décrites dans cette rubrique automatiquement [filtres d’autorisation](xref:mvc/controllers/filters#authorization-filters) pour contrôler l’accès.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/razor-pages-authorization/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application utilise [authentification par cookie sans ASP.NET Core Identity](xref:security/authentication/cookie). Les concepts et les exemples présentés dans cette rubrique s’appliquent également aux applications qui utilisent ASP.NET Core Identity. Pour utiliser ASP.NET Core Identity, suivez les instructions de <xref:security/authentication/identity>.
 

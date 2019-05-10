@@ -8,11 +8,11 @@ ms.custom: mvc
 ms.date: 11/28/2018
 uid: signalr/scale
 ms.openlocfilehash: 4ac4509acc89d0091a3757c7cfbc9981614f29ad
-ms.sourcegitcommit: ebf4e5a7ca301af8494edf64f85d4a8deb61d641
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54836920"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64895076"
 ---
 # <a name="aspnet-core-signalr-hosting-and-scaling"></a>Hébergement de ASP.NET Core SignalR et de mise à l’échelle
 
@@ -66,7 +66,7 @@ Pour ces raisons, nous vous recommandons le Service Azure SignalR pour toutes le
 
 Pour plus d’informations, consultez le [documentation de Service Azure SignalR](/azure/azure-signalr/signalr-overview).
 
-## <a name="redis-backplane"></a>Fond de panier de redis
+## <a name="redis-backplane"></a>Fond de panier Redis
 
 [Redis](https://redis.io/) est un magasin clé-valeur en mémoire qui prend en charge un système de messagerie avec un modèle de publication/abonnement. Le fond de panier SignalR Redis utilise la fonctionnalité de pub/sub pour transférer des messages vers d’autres serveurs. Lorsqu’un client établit une connexion, les informations de connexion sont passées au fond de panier. Lorsqu’un serveur souhaite envoyer un message à tous les clients, il envoie au fond de panier. Le fond de panier connaît tous les clients connectés et les serveurs, ils sont sur. Il envoie le message à tous les clients par le biais de leurs serveurs respectifs. Ce processus est illustré dans le diagramme suivant :
 

@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/07/2019
 uid: security/cors
-ms.openlocfilehash: fe5b750c44e5fad9ba80efb2cc8116d0a64b1a17
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 655d9be894c677f8adf0fecc2b465d5ae7af2b61
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59068295"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64897466"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>Autoriser les demandes de Cross-Origin (CORS) dans ASP.NET Core
 
@@ -28,7 +28,7 @@ Sécurité des navigateurs empêche une page web d’effectuer des requêtes ver
 * Permet à un serveur autoriser explicitement certaines demandes cross-origin tout en refusant d’autres.
 * Est plus sûre et plus flexible que les techniques précédentes, telles que [JSONP](/dotnet/framework/wcf/samples/jsonp).
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/2.2-stage-samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="same-origin"></a>Même origine
 
@@ -425,13 +425,13 @@ Si la réponse n’inclut pas le `Access-Control-Allow-Origin` en-tête, la dema
 
 Pour tester CORS :
 
-1. [Créer un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [télécharger l’exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/security/cors/sample/Cors).
+1. [Créer un projet d’API](xref:tutorials/first-web-api). Vous pouvez également [télécharger l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample/Cors).
 1. Activer CORS à l’aide d’une des approches dans ce document. Exemple :
 
   [!code-csharp[](cors/sample/Cors/WebAPI/StartupTest.cs?name=snippet2&highlight=13-18)]
 
   > [!WARNING]
-  > `WithOrigins("https://localhost:<port>");` doit uniquement être utilisé pour tester un exemple d’application similaire à la [télécharger l’exemple de code](https://github.com/aspnet/Docs/tree/live/aspnetcore/security/cors/sample/Cors).
+  > `WithOrigins("https://localhost:<port>");` doit uniquement être utilisé pour tester un exemple d’application similaire à la [télécharger l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors).
 
 1. Créer un projet d’application web (Pages Razor ou MVC). L’exemple utilise les Pages Razor. Vous pouvez créer l’application web dans la même solution que le projet d’API.
 1. Ajoutez le code en surbrillance suivant à la *Index.cshtml* fichier :

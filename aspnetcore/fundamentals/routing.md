@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/13/2019
 uid: fundamentals/routing
-ms.openlocfilehash: 622f28f3b4348820c8781e0ba14ae5137136e797
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: 0c2df3ec63f393b961754f496830cccb26f1cb76
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346565"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64884564"
 ---
 # <a name="routing-in-aspnet-core"></a>Routage dans ASP.NET Core
 
@@ -70,7 +70,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > Ce document traite du routage ASP.NET Core de bas niveau. Pour plus d’informations sur le routage ASP.NET Core MVC, consultez <xref:mvc/controllers/routing>. Pour plus d’informations sur les conventions de routage dans Razor Pages, consultez <xref:razor-pages/razor-pages-conventions>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="routing-basics"></a>Concepts de base du routage
 
@@ -734,7 +734,7 @@ L’exemple suivant montre comment générer un lien vers une route selon un dic
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_Dictionary)]
 
-Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/routing/samples).
+Le <xref:Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath> généré à la fin de l’exemple précédent est `/package/create/123`. Le dictionnaire fournit les valeurs de route `operation` et `id` du modèle « Suivi de package de route », `package/{operation}/{id}`. Pour plus d’informations, consultez l’exemple de code dans la section [Utilisation du middleware de routage](#use-routing-middleware) ou l’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples).
 
 Le deuxième paramètre pour le constructeur <xref:Microsoft.AspNetCore.Routing.VirtualPathContext> est une collection de *valeurs ambiantes*. Les valeurs ambiantes sont pratiques à utiliser, car elles limitent le nombre de valeurs qu’un développeur doit spécifier dans un contexte de requête. Les valeurs de route actuelles de la requête actuelle sont considérées comme des valeurs ambiantes pour la génération de liens. Dans l’action `About` de `HomeController` d’une application ASP.NET Core MVC, vous n’avez pas besoin de spécifier la valeur de route du contrôleur pour créer un lien vers l’action `Index` : la valeur ambiante de `Home` est utilisée.
 

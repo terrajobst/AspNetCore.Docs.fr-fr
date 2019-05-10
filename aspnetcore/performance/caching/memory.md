@@ -6,18 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/11/2019
 uid: performance/caching/memory
-ms.openlocfilehash: 6433df36023b79bc679186bee8b0a92371661dbe
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 1474dd397f2a8f83c7a1b0ead511b7f5751865bb
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59425047"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64894346"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>Mettre en cache en mémoire dans ASP.NET Core
 
 Par [Rick Anderson](https://twitter.com/RickAndMSFT), [John Luo](https://github.com/JunTaoLuo), et [Steve Smith](https://ardalis.com/)
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/performance/caching/memory/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/memory/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="caching-basics"></a>Principes fondamentaux de la mise en cache
 
