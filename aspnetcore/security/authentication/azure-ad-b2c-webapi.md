@@ -6,12 +6,12 @@ ms.author: casoper
 ms.date: 09/21/2018
 ms.custom: mvc, seodec18
 uid: security/authentication/azure-ad-b2c-webapi
-ms.openlocfilehash: 00e7c9a438260ef8e12e567e521fc44b2ffa9cca
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: 0eb8b533f44a1f72cfc3c4ec5ec060adb37eed6c
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65086331"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610369"
 ---
 # <a name="authentication-in-web-apis-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification dans web API avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -37,7 +37,7 @@ Dans ce didacticiel, découvrez comment :
 Les éléments suivants sont requis pour cette procédure pas à pas :
 
 * [Abonnement Microsoft Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) (toute édition)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 * [Postman](https://www.getpostman.com/postman)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Créer le client Azure Active Directory B2C
@@ -65,7 +65,7 @@ Utilisez les valeurs suivantes :
 
 Une fois que l’API est inscrite, la liste des applications et des API dans le client s’affiche. Sélectionnez l’API qui a déjà été inscrit. Sélectionnez le **copie** icône à droite de la **ID d’Application** champ pour le copier dans le Presse-papiers. Sélectionnez **étendues publiées** et vérifiez la valeur par défaut *user_impersonation* étendue est présente.
 
-## <a name="create-an-aspnet-core-app-in-visual-studio-2017"></a>Créer une application ASP.NET Core dans Visual Studio 2017
+## <a name="create-an-aspnet-core-app-in-visual-studio"></a>Créer une application ASP.NET Core dans Visual Studio
 
 Le modèle d’Application Web de Visual Studio peut être configuré pour utiliser le locataire Azure AD B2C pour l’authentification.
 

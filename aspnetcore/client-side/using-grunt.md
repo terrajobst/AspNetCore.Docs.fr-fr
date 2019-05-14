@@ -3,20 +3,20 @@ title: Utiliser Grunt dans ASP.NET Core
 author: rick-anderson
 description: ''
 ms.author: riande
-ms.date: 10/14/2016
+ms.date: 05/10/2019
 uid: client-side/using-grunt
-ms.openlocfilehash: fc912974fb6ed3c65bb46a7d616d9e531587d946
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 73b7704726db9d93588dddd3f3b05a23fb3425b3
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894636"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65535937"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Utiliser Grunt dans ASP.NET Core
 
 Par [Noel riz](https://blog.falafel.com/falafel-software-recognized-sitefinity-website-year/)
 
-Grunt est un exécuteur de tâches JavaScript qui automatise la minimisation de script, la compilation de TypeScript, qualité du code, outils de la moulinette « lint », les processeurs préliminaire CSS et pratiquement n’importe quel répétitive, qui doit effectuer pour prendre en charge le développement de clients. Grunt est entièrement pris en charge dans Visual Studio, bien que les modèles de projet ASP.NET utilisent Gulp par défaut (consultez [utiliser Gulp](using-gulp.md)).
+Grunt est un exécuteur de tâches JavaScript qui automatise la minimisation de script, la compilation de TypeScript, qualité du code, outils de la moulinette « lint », les processeurs préliminaire CSS et pratiquement n’importe quel répétitive, qui doit effectuer pour prendre en charge le développement de clients. Grunt est entièrement pris en charge dans Visual Studio.
 
 Cet exemple utilise un projet ASP.NET Core vide comme point de départ, pour montrer comment automatiser le processus de génération de client à partir de zéro.
 
@@ -286,7 +286,3 @@ Déchargez et rechargez le projet. Lorsque le projet se charge là encore, la t�
 ## <a name="summary"></a>Récapitulatif
 
 Grunt est un exécuteur de tâches puissantes qui peut être utilisé pour automatiser la plupart des tâches de génération de client. Grunt tire parti de NPM pour proposer ses packages, fonctionnalités et outils d’intégration avec Visual Studio. Task Runner Explorer de Visual Studio détecte les modifications apportées aux fichiers de configuration et fournit une interface pratique pour exécuter des tâches, afficher les tâches en cours d’exécution et lier des tâches aux événements de Visual Studio.
-
-## <a name="additional-resources"></a>Ressources supplémentaires
-
-* [Utiliser Gulp](using-gulp.md)

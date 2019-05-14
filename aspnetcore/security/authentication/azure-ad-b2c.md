@@ -5,12 +5,12 @@ description: Découvrez comment configurer l’authentification Azure Active Dir
 ms.date: 02/27/2019
 ms.custom: mvc
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 86be999e02cfe34193bd594dcf89e8872590cca5
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 46654e38c780cfc9c44e7ba479419320ee684b76
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64898016"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610686"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>Authentification cloud avec Azure Active Directory B2C dans ASP.NET Core
 
@@ -34,7 +34,7 @@ Dans ce didacticiel, découvrez comment :
 Les éléments suivants sont requis pour cette procédure pas à pas :
 
 * [Abonnement Microsoft Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) (toute édition)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>Créer le client Azure Active Directory B2C
 
@@ -62,7 +62,7 @@ Une fois que l’application est inscrite, la liste des applications dans le cli
 
 Rien n’est plus peuvent être configuré dans le locataire Azure AD B2C pour l’instant, mais laissant la fenêtre du navigateur ouverte. Il existe davantage de configuration après la création de l’application ASP.NET Core.
 
-## <a name="create-an-aspnet-core-app-in-visual-studio-2017"></a>Créer une application ASP.NET Core dans Visual Studio 2017
+## <a name="create-an-aspnet-core-app-in-visual-studio"></a>Créer une application ASP.NET Core dans Visual Studio
 
 Le modèle d’Application Web de Visual Studio peut être configuré pour utiliser le locataire Azure AD B2C pour l’authentification.
 

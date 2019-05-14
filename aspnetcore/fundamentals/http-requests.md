@@ -5,14 +5,14 @@ description: Découvrez plus d’informations sur l’utilisation de l’interfa
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 03/30/2019
+ms.date: 05/10/2019
 uid: fundamentals/http-requests
-ms.openlocfilehash: 84cdbca20e7c7aaa1941c78483cc36a9f0b24505
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 540f14ad2b290d276436033a94d4c815888e5a95
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888944"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65536004"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Effectuer des requêtes HTTP en utilisant IHttpClientFactory dans ASP.NET Core
 
@@ -27,9 +27,13 @@ Une <xref:System.Net.Http.IHttpClientFactory> peut être inscrite et utilisée p
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
+::: moniker range="<= aspnetcore-2.2"
+
 ## <a name="prerequisites"></a>Prérequis
 
 Les projets ciblant .NET Framework nécessitent l’installation du package NuGet [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/). Les projets qui ciblent .NET Core et référencent le [métapackage Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) incluent déjà le package `Microsoft.Extensions.Http`.
+
+::: moniker-end
 
 ## <a name="consumption-patterns"></a>Modèles de consommation
 
@@ -197,11 +201,10 @@ Utilisez l’une des approches suivantes pour partager l’état de chaque requ�
 
 `IHttpClientFactory` s’intègre à une bibliothèque tierce très utilisée, appelée [Polly](https://github.com/App-vNext/Polly). Polly est une bibliothèque complète de gestion des erreurs transitoires et de résilience pour .NET. Elle permet aux développeurs de formuler facilement et de façon thread-safe des stratégies, comme Retry (Nouvelle tentative), Circuit Breaker (Disjoncteur), Timeout (Délai d’attente), Bulkhead Isolation (Isolation par cloisonnement) et Fallback (Alternative de repli).
 
-Des méthodes d’extension sont fournies pour permettre l’utilisation de stratégies Polly avec les instances configurées de `HttpClient`. Les extensions Polly sont disponibles dans le package NuGet [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/). Ce package n’est pas inclus dans le métapackage [Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app). Pour utiliser les extensions, vous devez inclure un `<PackageReference />` explicite dans le projet.
+Des méthodes d’extension sont fournies pour permettre l’utilisation de stratégies Polly avec les instances configurées de `HttpClient`. Les extensions Polly :
 
-[!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/HttpClientFactorySample.csproj?highlight=10)]
-
-Après la restauration de ce package, les méthodes d’extension sont disponibles pour prendre en charge l’ajout de gestionnaires Polly à des clients.
+* Prennent en charge l’ajout de gestionnaires Polly à des clients.
+* Peuvent être utilisées après l’installation du package NuGet [Microsoft.Extensions.Http.Polly](https://www.nuget.org/packages/Microsoft.Extensions.Http.Polly/). Ce package n’est pas inclus dans le framework partagé ASP.NET Core.
 
 ### <a name="handle-transient-faults"></a>Gérer les erreurs temporaires
 
@@ -219,11 +222,11 @@ Il existe d’autres méthodes d’extension que vous pouvez utiliser pour ajout
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet8)]
 
-Dans le code précédent, si la requête sortante est une opération GET, un délai d’attente de 10 secondes est appliqué. Pour toutes les autres méthodes HTTP, un délai d’attente de 30 secondes est utilisé.
+Dans le code précédent, si la requête sortante est un HTTP GET, un délai d’attente de 10 secondes est appliqué. Pour toutes les autres méthodes HTTP, un délai d’attente de 30 secondes est utilisé.
 
 ### <a name="add-multiple-polly-handlers"></a>Ajouter plusieurs gestionnaires Polly
 
-Il est courant d’imbriquer des stratégies Polly pour fournir des fonctionnalités améliorées :
+Il est courant d’imbriquer des stratégies Polly pour fournir des fonctionnalités améliorées :
 
 [!code-csharp[Main](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet9)]
 

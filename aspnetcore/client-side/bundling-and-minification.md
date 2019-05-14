@@ -4,14 +4,14 @@ author: scottaddie
 description: Découvrez comment optimiser les ressources statiques dans une application web ASP.NET Core en appliquant les techniques de regroupement et minimisation.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 11/20/2018
+ms.date: 05/10/2019
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 5d5f0aadb7740c9b2b959d12a585cd8c91758ce8
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: ba01d365a25dfbd13fed89263d7489b2ce2a8771
+ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894296"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65535930"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Regrouper et minimiser les ressources statiques dans ASP.NET Core
 
@@ -63,7 +63,7 @@ Les navigateurs sont assez détaillés en ce qui concerne les en-têtes de requ�
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>Choisir une stratégie de regroupement et minimisation
 
-Les modèles de projet MVC et les Pages Razor fournissent une solution out-of-the-box pour le regroupement et minimisation consistant en un fichier de configuration JSON. Outils tiers, tels que le [Gulp](xref:client-side/using-gulp) et [Grunt](xref:client-side/using-grunt) exécuteurs de tâches, d’accomplir les mêmes tâches avec un peu plus complexe. Un outil tiers est idéaux lorsque votre flux de travail de développement requiert un traitement au-delà de regroupement et minimisation&mdash;telles que l’optimisation lint et image. À l’aide de regroupement et minimisation au moment du design, les fichiers réduits sont créés avant le déploiement de l’application. Bundles et minimisation avant le déploiement offre l’avantage d’une charge serveur réduite. Toutefois, il est important de reconnaître ce regroupement au moment du design et de minimisation augmente la complexité de la build et fonctionne uniquement avec les fichiers statiques.
+Les modèles de projet MVC et les Pages Razor fournissent une solution out-of-the-box pour le regroupement et minimisation consistant en un fichier de configuration JSON. Outils tiers, tels que le [Grunt](xref:client-side/using-grunt) exécuteur de tâches, d’accomplir les mêmes tâches avec un peu plus complexe. Un outil tiers est idéaux lorsque votre flux de travail de développement requiert un traitement au-delà de regroupement et minimisation&mdash;telles que l’optimisation lint et image. À l’aide de regroupement et minimisation au moment du design, les fichiers réduits sont créés avant le déploiement de l’application. Bundles et minimisation avant le déploiement offre l’avantage d’une charge serveur réduite. Toutefois, il est important de reconnaître ce regroupement au moment du design et de minimisation augmente la complexité de la build et fonctionne uniquement avec les fichiers statiques.
 
 ## <a name="configure-bundling-and-minification"></a>Configurer le regroupement et minimisation
 
@@ -325,11 +325,9 @@ Dans cet exemple, toutes les tâches définies dans le `MyPreCompileTarget` cibl
 ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 ```
 
-Task Runner Explorer de Visual Studio peut également servir pour lier des tâches Gulp à des événements spécifiques de Visual Studio. Consultez [en cours d’exécution des tâches par défaut](xref:client-side/using-gulp#running-default-tasks) pour obtenir des instructions sur cette méthode.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-* [Utiliser Gulp](xref:client-side/using-gulp)
 * [Utiliser Grunt](xref:client-side/using-grunt)
 * [Utiliser plusieurs environnements](xref:fundamentals/environments)
 * [Les Tag Helpers](xref:mvc/views/tag-helpers/intro)

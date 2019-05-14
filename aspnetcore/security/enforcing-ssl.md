@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/01/2018
 uid: security/enforcing-ssl
-ms.openlocfilehash: ab407436afb16687fa285a836b608ad2e6a4802f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: e27e0c31b128cbd7d71bf7b83a2d33cc89ea3ab1
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894556"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610429"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Appliquer HTTPS dans ASP.NET Core
 
@@ -256,6 +256,17 @@ dotnet dev-certs https --help
 Consultez [ce problème GitHub](https://github.com/aspnet/AspNetCore.Docs/issues/6199).
 
 ::: moniker-end
+
+<a name="wsl"></a>
+
+## <a name="trust-https-certificate-from-windows-subsystem-for-linux"></a>Faire confiance au certificat HTTPS à partir du sous-système de Windows pour Linux
+
+Le sous-système Windows pour Linux (WSL) génère un certificat auto-signé HTTPS. Pour configurer le magasin de certificats Windows pour approuver le certificat WSL :
+
+* Exécutez la commande suivante pour exporter le certificat WSL généré : `dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p <cryptic-password>`
+* Dans une fenêtre WSL, exécutez la commande suivante : `ASPNETCORE_Kestrel__Certificates__Default__Password="<cryptic-password>" ASPNETCORE_Kestrel__Certificates__Default__Path=/mnt/c/Users/user-name/.aspnet/https/aspnetapp.pfx dotnet watch run`
+
+  La commande précédente définit les variables d’environnement Linux utilise le certificat approuvé Windows.
 
 ## <a name="additional-information"></a>Informations supplémentaires
 
