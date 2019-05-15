@@ -1,16 +1,16 @@
 ---
 title: Utiliser Grunt dans ASP.NET Core
 author: rick-anderson
-description: ''
+description: Utiliser Grunt dans ASP.NET Core
 ms.author: riande
-ms.date: 05/10/2019
+ms.date: 05/14/2019
 uid: client-side/using-grunt
-ms.openlocfilehash: 73b7704726db9d93588dddd3f3b05a23fb3425b3
-ms.sourcegitcommit: ffe3ed7921ec6c7c70abaac1d10703ec9a43374c
+ms.openlocfilehash: 4d9b6cf6f9a0007e9722bc054f0d9a7608f1473b
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65535937"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621003"
 ---
 # <a name="use-grunt-in-aspnet-core"></a>Utiliser Grunt dans ASP.NET Core
 
@@ -113,12 +113,12 @@ Ensuite, configurez NPM pour télécharger grunt et tâches de grunt.
 
 4. Enregistrer le *package.json* fichier.
 
-Les packages pour chaque élément devDependencies télécharge, ainsi que tous les fichiers qui nécessite de chaque package. Vous trouverez les fichiers du package dans le `node_modules` répertoire en activant la **afficher tous les fichiers** bouton dans l’Explorateur de solutions.
+Les packages pour chaque `devDependencies` élément télécharge, ainsi que tous les fichiers qui nécessite de chaque package. Vous trouverez les fichiers du package dans le *node_modules* répertoire en activant la **afficher tous les fichiers** situé dans **l’Explorateur de solutions**.
 
 ![node_modules de Grunt](using-grunt/_static/node-modules.png)
 
 > [!NOTE]
-> Si vous le souhaitez, vous pouvez restaurer manuellement les dépendances dans l’Explorateur de solutions en cliquant sur `Dependencies\NPM` et en sélectionnant le **restaurer les Packages** option de menu.
+> Si vous le souhaitez, vous pouvez restaurer manuellement les dépendances dans **l’Explorateur de solutions** en cliquant sur `Dependencies\NPM` et en sélectionnant le **restaurer les Packages** option de menu.
 
 ![restaurer des packages](using-grunt/_static/restore-packages.png)
 
@@ -126,9 +126,9 @@ Les packages pour chaque élément devDependencies télécharge, ainsi que tous 
 
 Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui définit, charge et enregistre les tâches qui peuvent être exécutés manuellement ou configurés pour exécuter automatiquement en fonction des événements dans Visual Studio.
 
-1. Cliquez sur le projet et sélectionnez **Ajouter > nouvel élément**. Sélectionnez le **fichier de Configuration de Grunt** , laissez le nom par défaut, l’option *Gruntfile.js*, puis cliquez sur le **ajouter** bouton.
+1. Cliquez sur le projet et sélectionnez **ajouter** > **un nouvel élément**. Sélectionnez le **fichier JavaScript** modèle d’élément, remplacez le nom par *Gruntfile.js*, puis cliquez sur le **ajouter** bouton.
 
-   Le code initial inclut une définition de module et le `grunt.initConfig()` (méthode). Le `initConfig()` est utilisé pour définir les options pour chaque package, et le reste du module va charger et inscrire des tâches.
+1. Ajoutez le code suivant à *Gruntfile.js*. Le `initConfig` fonction définit des options pour chaque package et le reste du module charge et inscrire des tâches.
 
    ```javascript
    module.exports = function (grunt) {
@@ -137,7 +137,7 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
    };
    ```
 
-2. À l’intérieur de la `initConfig()` (méthode), ajouter des options pour le `clean` comme indiqué dans l’exemple de tâches *Gruntfile.js* ci-dessous. La tâche clean accepte un tableau de chaînes de répertoire. Cette tâche supprime les fichiers de wwwroot/lib et supprime le répertoire entier/temp.
+1. À l’intérieur de la `initConfig` de fonction, ajouter des options pour le `clean` comme indiqué dans l’exemple de tâches *Gruntfile.js* ci-dessous. Le `clean` tâche accepte un tableau de chaînes de répertoire. Cette tâche supprime les fichiers à partir de *wwwroot/lib* et supprime l’intégralité de */temp* directory.
 
     ```javascript
     module.exports = function (grunt) {
@@ -147,32 +147,32 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     };
     ```
 
-3. Sous la méthode initConfig(), ajoutez un appel à `grunt.loadNpmTasks()`. Cela rendra la tâche exécutable à partir de Visual Studio.
+1. Ci-dessous le `initConfig` de fonction, ajoutez un appel à `grunt.loadNpmTasks`. Cela rendra la tâche exécutable à partir de Visual Studio.
 
     ```javascript
     grunt.loadNpmTasks("grunt-contrib-clean");
     ```
 
-4. Enregistrer *Gruntfile.js*. Le fichier doit ressembler à la capture d’écran ci-dessous.
+1. Enregistrer *Gruntfile.js*. Le fichier doit ressembler à la capture d’écran ci-dessous.
 
     ![gruntfile initiale](using-grunt/_static/gruntfile-js-initial.png)
 
-5. Avec le bouton droit *Gruntfile.js* et sélectionnez **Task Runner Explorer** dans le menu contextuel. La fenêtre Task Runner Explorer s’ouvre.
+1. Avec le bouton droit *Gruntfile.js* et sélectionnez **Task Runner Explorer** dans le menu contextuel. Le **Task Runner Explorer** fenêtre s’ouvre.
 
     ![menu de l’Explorateur exécuteur de tâche](using-grunt/_static/task-runner-explorer-menu.png)
 
-6. Vérifiez que `clean` s’affiche sous **tâches** dans l’Explorateur d’exécuteur de tâche.
+1. Vérifiez que `clean` s’affiche sous **tâches** dans le **Task Runner Explorer**.
 
     ![liste des tâches tâches runner explorer](using-grunt/_static/task-runner-explorer-tasks.png)
 
-7. Avec le bouton droit de la tâche clean et sélectionnez **exécuter** dans le menu contextuel. Une fenêtre de commande affiche la progression de la tâche.
+1. Avec le bouton droit de la tâche clean et sélectionnez **exécuter** dans le menu contextuel. Une fenêtre de commande affiche la progression de la tâche.
 
     ![tâche de nettoyage de tâche runner explorer exécuter](using-grunt/_static/task-runner-explorer-run-clean.png)
 
     > [!NOTE]
     > Il n’existe aucun fichier ou répertoire pour nettoyer encore. Si vous le souhaitez, vous pouvez les créer manuellement dans l’Explorateur de solutions, puis exécutez la tâche clean comme un test.
 
-8. Dans la méthode initConfig(), ajoutez une entrée pour `concat` en utilisant le code ci-dessous.
+1. Dans le `initConfig` de fonction, ajoutez une entrée pour `concat` en utilisant le code ci-dessous.
 
     Le `src` tableau de propriétés répertorie les fichiers de combiner, dans l’ordre qu’ils doivent être combinées. Le `dest` propriété affecte le chemin d’accès au fichier combiné qui est généré.
 
@@ -186,11 +186,11 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     ```
 
     > [!NOTE]
-    > Le `all` propriété dans le code ci-dessus est le nom d’une cible. Cibles dans certaines tâches Grunt servent à autoriser plusieurs environnements de génération. Vous pouvez afficher les cibles intégrées à l’aide d’Intellisense ou affecter les vôtres.
+    > Le `all` propriété dans le code ci-dessus est le nom d’une cible. Cibles dans certaines tâches Grunt servent à autoriser plusieurs environnements de génération. Vous pouvez afficher les cibles intégrées à l’aide d’IntelliSense ou affecter les vôtres.
 
-9. Ajouter le `jshint` de tâches en utilisant le code ci-dessous.
+1. Ajouter le `jshint` de tâches en utilisant le code ci-dessous.
 
-    L’utilitaire de la qualité du code jshint est exécuté sur tous les fichiers JavaScript trouvé dans le répertoire temp.
+    Le jshint `code-quality` utilitaire est exécuté sur chaque fichier JavaScript dans le *temp* directory.
 
     ```javascript
     jshint: {
@@ -204,7 +204,7 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     > [!NOTE]
     > L’option «-W069 » est une erreur produite par jshint lorsque JavaScript utilise mettre entre parenthèses la syntaxe pour assigner une propriété au lieu de la notation à points, par exemple, `Tastes["Sweet"]` au lieu de `Tastes.Sweet`. L’option désactive l’avertissement pour autoriser le reste du processus pour continuer.
 
-10. Ajouter le `uglify` de tâches en utilisant le code ci-dessous.
+1. Ajouter le `uglify` de tâches en utilisant le code ci-dessous.
 
     La tâche minimise le *combined.js* fichier trouvé dans le répertoire temp et crée le fichier de résultats dans wwwroot/lib conformément à la convention d’affectation de noms standard  *\<nom de fichier\>. min.js*.
 
@@ -217,7 +217,7 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     },
     ```
 
-11. Sous l’appel grunt.loadNpmTasks() qui charge grunt-cotisation-clean, incluent le même appel pour jshint, concat et uglify en utilisant le code ci-dessous.
+1. Sous l’appel à `grunt.loadNpmTasks` qui charge `grunt-contrib-clean`, incluent le même appel pour jshint, concat et uglify en utilisant le code ci-dessous.
 
     ```javascript
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -225,15 +225,15 @@ Grunt est configuré à l’aide d’un manifeste nommé *Gruntfile.js* qui déf
     grunt.loadNpmTasks('grunt-contrib-uglify');
     ```
 
-12. Enregistrer *Gruntfile.js*. Le fichier doit ressembler à l’exemple ci-dessous.
+1. Enregistrer *Gruntfile.js*. Le fichier doit ressembler à l’exemple ci-dessous.
 
     ![exemple de fichier complet grunt](using-grunt/_static/gruntfile-js-complete.png)
 
-13. Notez que la liste de tâches de l’Explorateur d’exécuteur tâche inclut `clean`, `concat`, `jshint` et `uglify` tâches. Exécuter chaque tâche dans l’ordre et observez les résultats dans l’Explorateur de solutions. Chaque tâche doit s’exécuter sans erreur.
+1. Notez que le **Task Runner Explorer** liste de tâches inclut `clean`, `concat`, `jshint` et `uglify` tâches. Exécuter chaque tâche dans l’ordre et observez les résultats dans **l’Explorateur de solutions**. Chaque tâche doit s’exécuter sans erreur.
 
     ![Explorateur d’exécuteur de tâches exécuter chaque tâche](using-grunt/_static/task-runner-explorer-run-each-task.png)
 
-    La tâche concat crée un nouveau *combined.js* de fichier et le place dans le répertoire temporaire. La tâche jshint simplement s’exécute et ne produit pas sortie. La tâche uglify crée un nouveau *combined.min.js* de fichier et le place dans wwwroot/lib. L’opération, la solution doit ressembler à la capture d’écran ci-dessous :
+    La tâche concat crée un nouveau *combined.js* de fichier et le place dans le répertoire temporaire. Le `jshint` tâche simplement s’exécute et ne produit pas sortie. Le `uglify` tâche crée un nouveau *combined.min.js* de fichier et le place dans *wwwroot/lib*. L’opération, la solution doit ressembler à la capture d’écran ci-dessous :
 
     ![une fois toutes les tâches de l’Explorateur de solutions](using-grunt/_static/solution-explorer-after-all-tasks.png)
 
