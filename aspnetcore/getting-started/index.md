@@ -1,27 +1,27 @@
 ---
 title: Bien démarrer avec ASP.NET Core
 author: rick-anderson
-description: Didacticiel rapide qui crée et exécute une application Hello World simple à l’aide d’ASP.NET Core.
+description: Bref tutoriel qui crée et exécute une application Hello World de base à l’aide d’ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 5/15/2019
 uid: getting-started
-ms.openlocfilehash: 76728c484368a8b63130c259a9663473970846d3
-ms.sourcegitcommit: 5f299daa7c8102d56a63b214b9a34cc4bc87bc42
+ms.openlocfilehash: 9227dcfbc84376d9d73bc6fc0dd76085779acae1
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58209474"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610311"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>Tutoriel : Bien démarrer avec ASP.NET Core
 
-Ce tutoriel montre comment utiliser l’interface de ligne de commande .NET Core pour créer une application web ASP.NET Core.
+Ce tutoriel montre comment utiliser l’interface de ligne de commande .NET Core pour créer et exécuter une application web ASP.NET Core.
 
 Vous allez apprendre à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.
-> * Activer HTTPS localement.
+> * Approuver le certificat de développement.
 > * Exécuter l’application.
 > * Modifier une page Razor.
 
@@ -41,7 +41,7 @@ Ouvrez un interpréteur de commandes, puis entrez la commande suivante :
 dotnet new webapp -o aspnetcoreapp
 ```
 
-## <a name="enable-local-https"></a>Activer HTTPS localement
+### <a name="trust-the-development-certificate"></a>Approuver le certificat de développement
 
 Approuvez le certificat de développement HTTPS :
 
@@ -70,6 +70,8 @@ La commande précédente affiche le message suivant :
 Cette commande risque de vous demander votre mot de passe afin d’installer le certificat sur le trousseau système. Entrez votre mot de passe si vous acceptez d’approuver le certificat de développement.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+Pour le sous-système Windows pour Linux, consultez [Approuver le certificat HTTPS à partir du sous-système Windows pour Linux](xref:security/enforcing-ssl#wsl).
 
 Consultez la documentation de votre distribution Linux pour savoir comment approuver le certificat de développement HTTPS.
 
@@ -102,7 +104,7 @@ Dans ce didacticiel, vous avez appris à :
 
 > [!div class="checklist"]
 > * Créer un projet application web.
-> * Activer HTTPS localement.
+> * Approuver le certificat de développement.
 > * Exécuter le projet.
 > * Effectuer une modification.
 
