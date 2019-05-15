@@ -5,14 +5,14 @@ description: Découvrez comment utiliser le fournisseur de Configuration de coff
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 05/13/2019
 uid: security/key-vault-configuration
-ms.openlocfilehash: 45eca05b5eb41815924ca48f60c3b00046c6bdaf
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 78c63cf135ca92f0b5f6c6828b2ae34a44a7b36c
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: MT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894986"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621014"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Fournisseur de Configuration d’Azure Key Vault dans ASP.NET Core
 
@@ -111,7 +111,7 @@ Les instructions fournies par le [Guide de démarrage rapide : Définir et réc
    az keyvault secret set --vault-name "{KEY VAULT NAME}" --name "Section--SecretName" --value "secret_value_2_prod"
    ```
 
-## <a name="use-application-id-and-client-secret-for-non-azure-hosted-apps"></a>Utiliser des ID d’Application et clé secrète Client pour les applications non-Azure-hébergé
+## <a name="use-application-id-and-x509-certificate-for-non-azure-hosted-apps"></a>Utiliser un certificat X.509 et les ID d’Application pour les applications non-Azure-hébergé
 
 Configurer Azure AD, Azure Key Vault et l’application à utiliser un ID d’Application Azure Active Directory et le X.509 de certificat pour s’authentifier auprès d’un coffre de clés **lorsque l’application est hébergée en dehors d’Azure**. Pour plus d’informations, consultez [sur les clés, secrets et certificats](/azure/key-vault/about-keys-secrets-and-certificates).
 
@@ -120,12 +120,15 @@ Configurer Azure AD, Azure Key Vault et l’application à utiliser un ID d’Ap
 
 L’exemple d’application utilise un ID d’Application et de certificat X.509 quand le `#define` instruction en haut de la *Program.cs* fichier est défini sur `Certificate`.
 
+1. Créer une archive PKCS #12 (*.pfx*) certificat. Options de création de certificats incluent [MakeCert sur Windows](/windows/desktop/seccrypto/makecert) et [OpenSSL](https://www.openssl.org/).
+1. Installez le certificat dans le magasin de certificats personnel de l’utilisateur actuel. Marquer la clé comme exportable est facultative. Notez l’empreinte du certificat, qui est utilisé plus loin dans ce processus.
+1. Exporter l’archive PKCS #12 (*.pfx*) certificat en tant qu’un certificat codé DER (*.cer*).
 1. Inscrire l’application avec Azure AD (**inscriptions**).
-1. Télécharger la clé publique :
+1. Télécharger le certificat codé DER (*.cer*) à Azure AD :
    1. Sélectionnez l’application dans Azure AD.
-   1. Accédez à **paramètres** > **clés**.
-   1. Sélectionnez **charger la clé publique** pour charger le certificat, qui contient la clé publique. En plus d’utiliser un *.cer*, *.pem*, ou *.crt* certificat, un *.pfx* certificat peut être chargé.
-1. Store le nom de coffre de clés et l’ID de l’Application dans l’application *appsettings.json* fichier. Placer le certificat à la racine de l’application ou dans le magasin de certificats de l’application&dagger;.
+   1. Accédez à **certificats et clés secrètes**.
+   1. Sélectionnez **télécharger un certificat** pour charger le certificat, qui contient la clé publique. Un *.cer*, *.pem*, ou *.crt* certificat est acceptable.
+1. Store le nom de coffre de clés, un ID d’Application et une empreinte numérique du certificat de l’application *appsettings.json* fichier.
 1. Accédez à **coffres de clés** dans le portail Azure.
 1. Sélectionnez le coffre de clés que vous avez créé dans le [stockage Secret dans l’environnement de Production avec Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault) section.
 1. Sélectionnez **stratégies d’accès**.
@@ -136,8 +139,6 @@ L’exemple d’application utilise un ID d’Application et de certificat X.509
 1. Sélectionnez **Enregistrer**.
 1. Déployer l’application.
 
-&dagger;Dans l’exemple d’application, le certificat est directement consommé depuis le fichier de certificat physique à la racine de l’application en créant un nouveau `X509Certificate2` lors de l’appel `AddAzureKeyVault`. Une autre approche consiste à autoriser le système d’exploitation gérer le certificat. Pour plus d’informations, consultez le [autoriser le système d’exploitation gérer le certificat X.509](#allow-the-os-to-manage-the-x509-certificate) section.
-
 Le `Certificate` exemple d’application obtient ses valeurs de configuration à partir de `IConfigurationRoot` avec le même nom que le nom de secret :
 
 * Valeurs non hiérarchiques : La valeur de `SecretName` est obtenu avec `config["SecretName"]`.
@@ -145,14 +146,15 @@ Le `Certificate` exemple d’application obtient ses valeurs de configuration à
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-Les appels de l’application `AddAzureKeyVault` avec les valeurs fournies par le *appsettings.json* fichier :
+Le certificat X.509 est géré par le système d’exploitation. Les appels de l’application `AddAzureKeyVault` avec les valeurs fournies par le *appsettings.json* fichier :
 
-[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=12-15)]
+[!code-csharp[](key-vault-configuration/sample/Program.cs?name=snippet1&highlight=20-23)]
 
 Exemples de valeurs :
 
 * Nom du coffre de clés : `contosovault`
 * ID d’application : `627e911e-43cc-61d4-992e-12db9c81b413`
+* Empreinte numérique du certificat : `fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
 *appsettings.json* :
 
@@ -203,17 +205,7 @@ Dans l’exemple suivant, une clé secrète est établie dans la clé de coffre 
 
 `AddAzureKeyVault` est appelée avec un personnalisé `IKeyVaultSecretManager`:
 
-[!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?name=snippet1&highlight=22)]
-
-Les valeurs de nom de coffre de clés, ID d’Application et le mot de passe (clé secrète Client) sont fournies par le *appsettings.json* fichier :
-
-[!code-json[](key-vault-configuration/sample/appsettings.json)]
-
-Exemples de valeurs :
-
-* Nom du coffre de clés : `contosovault`
-* ID d’application : `627e911e-43cc-61d4-992e-12db9c81b413`
-* Mot de passe : `g58K3dtg59o1Pa+e59v2Tx829w6VxTB2yv9sv/101di=`
+[!code-csharp[](key-vault-configuration/sample_snapshot/Program.cs?highlight=30-34)]
 
 Le `IKeyVaultSecretManager` implémentation réagit aux préfixes de version de secrets pour charger la clé secrète appropriée dans configuration :
 
@@ -261,44 +253,6 @@ Lorsque cette approche est mise en œuvre :
 
 > [!NOTE]
 > Vous pouvez également fournir votre propre implémentation `KeyVaultClient` à `AddAzureKeyVault`. Un client personnalisé permet le partage d’une instance unique du client sur l’application.
-
-## <a name="allow-the-os-to-manage-the-x509-certificate"></a>Autoriser le système d’exploitation gérer le certificat X.509
-
-Le certificat X.509 peut être géré par le système d’exploitation. L’exemple suivant utilise le `AddAzureKeyVault` surcharge qui accepte un `X509Certificate2` à partir d’un empreinte numérique du certificat fourni par la configuration et de magasin de certificats utilisateur actuel de la machine :
-
-```csharp
-// using System.Linq;
-// using System.Security.Cryptography.X509Certificates;
-// using Microsoft.Extensions.Configuration;
-
-WebHost.CreateDefaultBuilder(args)
-    .ConfigureAppConfiguration((context, config) =>
-    {
-        if (context.HostingEnvironment.IsProduction())
-        {
-            var builtConfig = config.Build();
-
-            using (var store = new X509Store(StoreName.My, 
-                StoreLocation.CurrentUser))
-            {
-                store.Open(OpenFlags.ReadOnly);
-                var certs = store.Certificates
-                    .Find(X509FindType.FindByThumbprint, 
-                        builtConfig["CertificateThumbprint"], false);
-
-                config.AddAzureKeyVault(
-                    builtConfig["KeyVaultName"], 
-                    builtConfig["AzureADApplicationId"], 
-                    certs.OfType<X509Certificate2>().Single());
-
-                store.Close();
-            }
-        }
-    })
-    .UseStartup<Startup>();
-```
-
-Pour plus d’informations, consultez [authentifier avec un certificat au lieu d’une clé secrète Client](/azure/key-vault/key-vault-use-from-web-application#authenticate-with-a-certificate-instead-of-a-client-secret).
 
 ## <a name="bind-an-array-to-a-class"></a>Lier un tableau à une classe
 
@@ -358,13 +312,12 @@ Les secrets désactivés et expirés lèvent une exception `KeyVaultClientExcept
 
 Lorsque l’application ne parvient pas à charger la configuration de l’utilisation du fournisseur, un message d’erreur est écrite à la [infrastructure de journalisation ASP.NET Core](xref:fundamentals/logging/index). Les conditions suivantes empêchent le chargement de la configuration :
 
-* L’application n’est pas configurée correctement dans Azure Active Directory.
+* L’application ou le certificat n’est pas configuré correctement dans Azure Active Directory.
 * Le coffre de clés n’existe pas dans Azure Key Vault.
 * L’application n’est pas autorisée à accéder au coffre de clés.
 * La stratégie d’accès n’inclut pas les autorisations `Get` et `List`.
 * Dans le coffre de clés, les données de configuration (paire nom-valeur) sont manquantes, désactivées, expirées ou incorrectement nommées.
-* L’application a le nom de coffre de clés incorrect (`KeyVaultName`), Id d’Application Azure AD (`AzureADApplicationId`), ou mot de passe Azure AD (clé secrète Client) (`AzureADPassword`).
-* Le mot de passe Azure AD (clé secrète Client) (`AzureADPassword`) a expiré.
+* L’application a le nom de coffre de clés incorrect (`KeyVaultName`), Id d’Application Azure AD (`AzureADApplicationId`), ou l’empreinte numérique du certificat Azure AD (`AzureADCertThumbprint`).
 * La clé de configuration (nom) est incorrecte dans l’application pour la valeur que vous tentez de charger.
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
