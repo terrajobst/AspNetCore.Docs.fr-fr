@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/29/2019
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 37e39ac93e7b67184dfc238d58e12c2be8d84f91
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: d7a5656131189ffafb60a7b1db0b8d93a3787ae2
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087348"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621047"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>Créer des Tag Helpers dans ASP.NET Core
 
@@ -313,3 +313,12 @@ Les Tag Helpers fournissent plusieurs propriétés permettant de récupérer le 
 [!code-csharp[](../../views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z1AutoLinkerCopy.cs?highlight=5,6,10&range=8-21)]
 
 * Plusieurs appels à `GetChildContentAsync` retournent la même valeur et ne réexécutent pas le corps `TagHelper`, sauf si vous passez un paramètre false indiquant de ne pas utiliser le résultat mis en cache.
+
+## <a name="load-minified-partial-view-taghelper"></a>Charger TagHelper avec une vue partielle minimisée
+
+Dans les environnements de production, les performances peuvent être améliorées en chargeant des vues partielles minimisées. Pour tirer parti de la vue partielle minimisée en production :
+
+* Créez/configurez un processus pré-build qui minimise les vues partielles.
+* Utilisez le code suivant pour charger des vues partielles minimisées dans des environnements non liés au développement.
+
+[!code-csharp[](authoring/sample/AuthoringTagHelpers/src/MinifiedVersionTagHelper.cs?name=snippet)]

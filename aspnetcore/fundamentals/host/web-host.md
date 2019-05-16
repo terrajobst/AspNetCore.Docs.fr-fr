@@ -4,14 +4,14 @@ author: guardrex
 description: Découvrez l’hôte web dans ASP.NET Core, qui est responsable de la gestion du démarrage et de la durée de vie des applications.
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 05/11/2019
 uid: fundamentals/host/web-host
-ms.openlocfilehash: b391b5e514e750f64f30d33cf4eb91e489242eba
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 48f3b664d901bdfb27cdf9e798fa60c0587d1def
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64888974"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610289"
 ---
 # <a name="aspnet-core-web-host"></a>Hôte web ASP.NET Core
 
@@ -39,7 +39,9 @@ Cet article traite de l’hôte web ASP.NET Core ([IWebHostBuilder](/dotnet/api/
 
 ## <a name="set-up-a-host"></a>Configurer un hôte
 
-Créez un hôte en utilisant une instance de [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder). Cette opération est généralement effectuée au point d’entrée de l’application, à savoir la méthode `Main`. Dans les modèles de projet, `Main` se trouve dans *Program.cs*. Un fichier *Program.cs* standard appelle [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) pour commencer la configuration d’un hôte :
+Créez un hôte en utilisant une instance de [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder). Cette opération est généralement effectuée au point d’entrée de l’application, à savoir la méthode `Main`. Le nom de la méthode du générateur, `CreateWebHostBuilder`, est un nom spécial qui identifie la méthode du générateur auprès des composants externes, par exemple [Entity Framework](/ef/core/).
+
+Dans les modèles de projet, `Main` se trouve dans *Program.cs*. Une application standard appelle [CreateDefaultBuilder](/dotnet/api/microsoft.aspnetcore.webhost.createdefaultbuilder) pour lancer la configuration d’un hôte :
 
 ```csharp
 public class Program
