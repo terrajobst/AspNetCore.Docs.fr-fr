@@ -6,27 +6,27 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 09/12/2018
 uid: host-and-deploy/docker/visual-studio-tools-for-docker
-ms.openlocfilehash: 42f8071eadabba3eb8cb738be1720f4c6195808c
-ms.sourcegitcommit: 375e9a67f5e1f7b0faaa056b4b46294cc70f55b7
+ms.openlocfilehash: 3bf3d8d0a627d97090e3ce9fef7e380f03c7626d
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50207236"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64888364"
 ---
 # <a name="visual-studio-tools-for-docker-with-aspnet-core"></a>Visual Studio Tools pour Docker avec ASP.NET Core
 
 Visual Studio 2017 prend en charge la création, le débogage et l’exécution d’applications ASP.NET Core en conteneur ciblant .NET Core. Les conteneurs Windows et Linux sont pris en charge.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/docker/visual-studio-tools-for-docker/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="prerequisites"></a>Prérequis
 
 * [Docker pour Windows](https://docs.docker.com/docker-for-windows/install/)
-* [Visual Studio 2017](https://www.visualstudio.com/) avec la charge de travail **Développement multiplateforme .NET Core**
+* [Visual Studio 2017](https://visualstudio.microsoft.com) avec la charge de travail **Développement multiplateforme .NET Core**
 
 ## <a name="installation-and-setup"></a>Installation et configuration
 
-Pour l’installation Docker, commencez par passer en revue les informations contenues dans [Docker for Windows: What to know before you install](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). Ensuite, installez [Docker pour Windows](https://docs.docker.com/docker-for-windows/install/).
+Pour installer Docker, commencez par examiner les informations de [Docker pour Windows : What to know before you install](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). Ensuite, installez [Docker pour Windows](https://docs.docker.com/docker-for-windows/install/).
 
 Il est nécessaire de configurer les **[lecteurs partagés](https://docs.docker.com/docker-for-windows/#shared-drives)** dans Docker pour Windows pour prendre en charge le mappage de volume et le débogage. Cliquez avec le bouton droit sur l’icône Docker de la zone de notification, sélectionnez **Paramètres**, puis **Lecteurs partagés**. Sélectionnez le lecteur où Docker stocke les fichiers. Cliquez sur **Appliquer**.
 
@@ -84,7 +84,7 @@ Le fichier *Dockerfile* précédent est basé sur l’image [microsoft/aspnetcor
 
 Visual Studio 2017 version 15.7 ou antérieure prend en charge [Docker Compose](https://docs.docker.com/compose/overview/) en tant que solution d’orchestration de conteneurs unique. Les artefacts Docker Compose sont ajoutés via **Ajouter** > **Prise en charge de Docker**.
 
-Visual Studio 2017 version 15.8 ou ultérieure ajoute une solution d’orchestration seulement si cela lui est demandé. Cliquez avec le bouton droit sur le projet dans l’**Explorateur de solutions**, puis sélectionnez **Ajouter** > **Prise en charge de l’orchestrateur de conteneurs**. Deux choix différents sont proposés : [Docker Compose](#docker-compose) et [Service Fabric](#service-fabric).
+Visual Studio 2017 version 15.8 ou ultérieure ajoute une solution d’orchestration seulement si cela lui est demandé. Cliquez avec le bouton droit sur le projet dans l’**Explorateur de solutions**, puis sélectionnez **Ajouter** > **Prise en charge de l’orchestrateur de conteneurs**. Vous avez le choix entre deux solutions : [Docker Compose](#docker-compose) et [Service Fabric](#service-fabric).
 
 ### <a name="docker-compose"></a>Docker Compose
 

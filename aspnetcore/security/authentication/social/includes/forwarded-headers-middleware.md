@@ -1,9 +1,9 @@
-## <a name="forward-request-information-with-a-proxy-or-load-balancer"></a>Avant de demander des informations avec un proxy ou de l’équilibreur de charge
+## <a name="forward-request-information-with-a-proxy-or-load-balancer"></a>Transférer les informations sur la demande avec un proxy ou un équilibreur de charge
 
-Si l’application est déployée derrière un serveur proxy ou un équilibreur de charge, certaines informations de demande d’origine peuvent être transféré vers l’application dans les en-têtes de demande. Ces informations comprennent généralement le schéma de demande sécurisé (`https`), hôte et adresse IP du client. Les applications ne lisent pas automatiquement ces en-têtes de demande pour découvrir et d’utiliser les informations de demande d’origine.
+Si l’application est déployée derrière un serveur proxy ou un équilibreur de charge, certaines informations sur la demande d’origine peuvent être transférées vers l’application dans les en-têtes de demande. Ces informations incluent généralement le schéma de demande sécurisé (`https`), l’hôte et l’adresse IP du client. Les applications ne lisent pas automatiquement ces en-têtes de demande pour découvrir et d’utiliser les informations sur la demande d’origine.
 
-Le schéma est utilisé dans la génération de lien qui affecte le flux d’authentification auprès de fournisseurs externes. Perdre le schéma sécurisé (`https`) entraîne l’application de génération des URL de redirection non sécurisé incorrect.
+Le schéma est utilisé dans la génération de lien qui affecte le flux d’authentification dans le cas de fournisseurs externes. En cas de perte du schéma sécurisé (`https`), l’application génère des URL de redirection incorrectes et non sécurisées.
 
-Utilisez intergiciel des en-têtes transférés pour rendre les informations de demande d’origine disponible pour l’application pour traiter une demande.
+Utilisez l’intergiciel Forwarded Headers afin de mettre les informations de demande d’origine à la disposition de l’application pour le traitement des demandes.
 
 Pour plus d'informations, consultez <xref:host-and-deploy/proxy-load-balancer>.

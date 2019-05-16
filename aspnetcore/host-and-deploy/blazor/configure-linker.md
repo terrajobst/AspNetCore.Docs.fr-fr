@@ -5,22 +5,20 @@ description: Découvrez comment contrôler l’éditeur de liens de langage inte
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/15/2019
+ms.date: 04/24/2019
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: 01e18498a16e86392755b02b92ffda929669cb7d
-ms.sourcegitcommit: 017b673b3c700d2976b77201d0ac30172e2abc87
+ms.openlocfilehash: 00676d4311f8955c3c1ef38d31219d62ea9f4a25
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59614646"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887774"
 ---
 # <a name="configure-the-linker-for-blazor"></a>Configurer l’éditeur de liens pour Blazor
 
 Par [Luke Latham](https://github.com/guardrex)
 
-[!INCLUDE[](~/includes/razor-components-preview-notice.md)]
-
-Blazor effectue la liaison de [langage intermédiaire (IL)](/dotnet/standard/managed-code#intermediate-language--execution) lors de chaque génération afin de supprimer tout langage intermédiaire inutile des assemblys de sortie de l’application.
+Blazor effectue une liaison de [langage intermédiaire (IL)](/dotnet/standard/managed-code#intermediate-language--execution) pendant un build de mise en production pour supprimer un langage intermédiaire inutile des assemblys de sortie de l’application.
 
 Contrôlez la liaison d’assembly avec l’une des approches suivantes :
 

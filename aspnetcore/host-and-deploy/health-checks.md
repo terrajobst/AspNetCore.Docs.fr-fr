@@ -5,14 +5,14 @@ description: Découvrez comment configurer des contrôles d’intégrité pour l
 monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/11/2019
+ms.date: 04/23/2019
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: 0bb80a5fccc8240c6f1fb8e59b379766bfd90d9e
-ms.sourcegitcommit: 687ffb15ebe65379f75c84739ea851d5a0d788b7
+ms.openlocfilehash: 5119267a8da5c950989b14b7c2e818aa22806506
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488713"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887924"
 ---
 # <a name="health-checks-in-aspnet-core"></a>Contrôles d’intégrité dans ASP.NET Core
 
@@ -26,7 +26,7 @@ Les contrôles d’intégrité sont exposés par une application comme des point
 * L’utilisation de la mémoire, des disques et des autres ressources de serveur physique peut être supervisée dans le cadre d’un contrôle d’intégrité.
 * Les contrôles d’intégrité peuvent tester les dépendances d’une application, telles que les bases de données et les points de terminaison de service externes, dans le but de vérifier leur disponibilité et leur bon fonctionnement.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/health-checks/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 L’exemple d’application comprend des exemples pour les scénarios décrits dans cette rubrique. Pour exécuter l’exemple d’application selon un scénario donné, utilisez la commande [dotnet run](/dotnet/core/tools/dotnet-run) dans un interpréteur de commandes, à partir du dossier du projet. Pour plus d’informations sur l’utilisation de l’exemple d’application, consultez le fichier *README.md* de l’exemple d’application ainsi que les descriptions de scénarios de cette rubrique.
 
@@ -36,7 +36,7 @@ Les contrôles d’intégrité sont généralement utilisés avec un service de 
 
 Référencez le [métapaquet Microsoft.AspNetCore.App](xref:fundamentals/metapackage-app) ou ajoutez une référence de package au package [Microsoft.AspNetCore.Diagnostics.HealthChecks](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.HealthChecks).
 
-L’exemple d’application fournit du code de démarrage pour illustrer les contrôles d’intégrité de plusieurs scénarios. Le scénario [Sondage de base de données](#database-probe) vérifie l’intégrité d’une connexion de base de données à l’aide de [BeatPulse](https://github.com/Xabaril/BeatPulse). Le scénario [Sondage DbContext](#entity-framework-core-dbcontext-probe) vérifie une base de données à l’aide d’un `DbContext` EF Core. Pour explorer les scénarios de base de données, l’exemple d’application :
+L’exemple d’application fournit du code de démarrage pour illustrer les contrôles d’intégrité de plusieurs scénarios. Le scénario [probe de la base de données](#database-probe) vérifie l’intégrité d’une connexion de base de données à l’aide d’[AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks). Le scénario [Sondage DbContext](#entity-framework-core-dbcontext-probe) vérifie une base de données à l’aide d’un `DbContext` EF Core. Pour explorer les scénarios de base de données, l’exemple d’application :
 
 * Crée une base de données et fournit sa chaîne de connexion dans le fichier *appsettings.json*.
 * Possède les références de package suivantes dans son fichier de projet :
@@ -44,7 +44,7 @@ L’exemple d’application fournit du code de démarrage pour illustrer les con
   * [Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/)
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) n’est pas géré ni pris en charge par Microsoft.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) est un port de [BeatPulse](https://github.com/xabaril/beatpulse) et n’est ni tenu à jour ni pris en charge par Microsoft.
 
 Un autre scénario de contrôle d’intégrité montre comment filtrer des contrôles d’intégrité selon un port de gestion. L’exemple d’application vous oblige à créer un fichier *Properties/launchSettings.json* comprenant l’URL de gestion et le port de gestion. Pour plus d’informations, consultez la section [Filtrer par port](#filter-by-port).
 
@@ -286,18 +286,18 @@ private static Task WriteResponse(HttpContext httpContext,
 
 Un contrôle d’intégrité peut spécifier une requête de base de données à exécuter en tant que test booléen pour indiquer si la base de données répond normalement.
 
-Pour exécuter un contrôle d’intégrité sur une base de données SQL Server, l’exemple d’application utilise [BeatPulse](https://github.com/Xabaril/BeatPulse), qui est une bibliothèque de contrôle d’intégrité pour les applications ASP.NET Core. BeatPulse exécute une requête `SELECT 1` sur la base de données pour vérifier que la connexion à la base de données est saine.
+L’exemple d’application utilise [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks), une bibliothèque de vérification d’intégrité pour les applications ASP.NET Core, pour effectuer une vérification d’intégrité sur une base de données SQL Server. `AspNetCore.Diagnostics.HealthChecks` exécute une demande `SELECT 1` sur la base de données pour confirmer que la connexion à la base de données est saine.
 
 > [!WARNING]
 > Lorsque vous vérifiez une connexion de base de données à l’aide d’une requête, choisissez une requête qui est retournée rapidement. L’utilisation d’une requête risque néanmoins d’entraîner une surcharge de la base de données et d’en diminuer les performances. Dans la plupart des cas, il n’est pas nécessaire d’utiliser une requête de test. Il suffit simplement d’établir une connexion à la base de données. Si vous avez besoin d’exécuter une requête, choisissez une requête SELECT simple, telle que `SELECT 1`.
 
-Pour utiliser la bibliothèque BeatPulse, ajoutez une référence de package à [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
+Inclure une référence de package à [AspNetCore.HealthChecks.SqlServer](https://www.nuget.org/packages/AspNetCore.HealthChecks.SqlServer/).
 
 Fournissez une chaîne de connexion de base de données valide dans le fichier *appsettings.json* de l’exemple d’application. L’application utilise une base de données SQL Server nommée `HealthCheckSample` :
 
 [!code-json[](health-checks/samples/2.x/HealthChecksSample/appsettings.json?highlight=3)]
 
-Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’exemple d’application appelle la méthode `AddSqlServer` de BeatPulse avec la chaîne de connexion de la base de données (*DbHealthStartup.cs*) :
+Pour inscrire les services de contrôle d’intégrité, utilisez <xref:Microsoft.Extensions.DependencyInjection.HealthCheckServiceCollectionExtensions.AddHealthChecks*> dans `Startup.ConfigureServices`. L’exemple d’application appelle la méthode `AddSqlServer` avec la chaîne de connexion de la base de données (*DbHealthStartup.cs*) :
 
 [!code-csharp[](health-checks/samples/2.x/HealthChecksSample/DbHealthStartup.cs?name=snippet_ConfigureServices)]
 
@@ -312,7 +312,7 @@ dotnet run --scenario db
 ```
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) n’est pas géré ni pris en charge par Microsoft.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) est un port de [BeatPulse](https://github.com/xabaril/beatpulse) et n’est ni tenu à jour ni pris en charge par Microsoft.
 
 ## <a name="entity-framework-core-dbcontext-probe"></a>Sondage DbContext Entity Framework Core
 
@@ -469,9 +469,9 @@ dotnet run --scenario writer
 ```
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) inclut des scénarios de contrôle d’intégrité basé sur les métriques, y compris la vérification du stockage sur disque et la vérification de l’activité de l’application en fonction d’une valeur maximale.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) inclut des scénarios de vérification de l’intégrité basés sur des métriques, notamment des vérifications du stockage sur disque et de la vivacité maximale des valeurs.
 >
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) n’est pas géré ni pris en charge par Microsoft.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) est un port de [BeatPulse](https://github.com/xabaril/beatpulse) et n’est ni tenu à jour ni pris en charge par Microsoft.
 
 ## <a name="filter-by-port"></a>Filtrer par port
 
@@ -681,6 +681,6 @@ Dans l’exemple d’application `LivenessProbeStartup`, la vérification de la 
 ::: moniker-end
 
 > [!NOTE]
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) inclut les serveurs de publication de plusieurs systèmes, y compris [Application Insights](/azure/application-insights/app-insights-overview).
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) inclut les serveurs de publication pour plusieurs systèmes, notamment [Application Insights](/azure/application-insights/app-insights-overview).
 >
-> [BeatPulse](https://github.com/Xabaril/BeatPulse) n’est pas géré ni pris en charge par Microsoft.
+> [AspNetCore.Diagnostics.HealthChecks](https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks) est un port de [BeatPulse](https://github.com/xabaril/beatpulse) et n’est ni tenu à jour ni pris en charge par Microsoft.

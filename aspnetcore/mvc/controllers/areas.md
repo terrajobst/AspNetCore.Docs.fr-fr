@@ -3,14 +3,14 @@ title: Zones dans ASP.NET Core
 author: rick-anderson
 description: Découvrez les zones, fonctionnalité d’ASP.NET MVC utilisée pour organiser des fonctionnalités connexes dans un groupe sous la forme d’un espace de noms distinct (pour le routage) et d’une structure de dossiers (pour les vues).
 ms.author: riande
-ms.date: 02/14/2019
+ms.date: 05/06/2019
 uid: mvc/controllers/areas
-ms.openlocfilehash: 79bc023a7bd00a9d4de375e3cddaafd148251469
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 35c7682861f7392b0bcda7326e4d7f5ccc356bda
+ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264766"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212592"
 ---
 # <a name="areas-in-aspnet-core"></a>Zones dans ASP.NET Core
 
@@ -25,7 +25,7 @@ Envisagez d’utiliser des zones dans un projet quand :
 * L’application est constituée de plusieurs composants fonctionnels globaux qui peuvent être logiquement séparés.
 * Vous pouvez partitionner l’application de façon à pouvoir travailler indépendamment sur chaque zone fonctionnelle.
 
-[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). L’exemple de code téléchargeable fournit une application de base pour tester les zones.
+[Affichez ou téléchargez un exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample)). L’exemple de code téléchargeable fournit une application de base pour tester les zones.
 
 Si vous utilisez Razor Pages, consultez [Zones avec Razor Pages](#areas-with-razor-pages) dans ce document.
 
@@ -34,8 +34,13 @@ Si vous utilisez Razor Pages, consultez [Zones avec Razor Pages](#areas-with-raz
 Une application web ASP.NET Core type qui utilise des zones, des contrôleurs et des vues est constituée des éléments suivants :
 
 * Une [structure de dossiers Zone](#area-folder-structure).
-* Des contrôleurs décorés avec l’attribut [&lbrack;Area&rbrack;](#attribute) pour associer le contrôleur à la zone : [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
-* La [route de zone ajoutée au démarrage](#add-area-route) : [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
+* Des contrôleurs décorés avec l’attribut [&lbrack;Area&rbrack;](#attribute) pour associer le contrôleur à la zone :
+
+  [!code-csharp[](areas/samples/MVCareas/Areas/Products/Controllers/ManageController.cs?name=snippet2)]
+
+* La [route de zone ajoutée au démarrage](#add-area-route) :
+
+  [!code-csharp[](areas/samples/MVCareas/Startup.cs?name=snippet2&highlight=3-6)]
 
 ### <a name="area-folder-structure"></a>Structure de dossiers Zone
 
@@ -99,7 +104,7 @@ Pour plus d’informations, consultez [Routage de zones](xref:mvc/controllers/ro
 
 ### <a name="link-generation-with-mvc-areas"></a>Génération de liens avec zones MVC
 
-Le code suivant tiré de l’[exemple de code téléchargeable](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) illustre une génération de liens avec la zone spécifiée :
+Le code suivant tiré de l’[exemple de code téléchargeable](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples) illustre une génération de liens avec la zone spécifiée :
 
 [!code-cshtml[](areas/samples/MVCareas/Views/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -127,7 +132,7 @@ Le code suivant remplace le dossier de zone par défaut `"Areas"` par `"MyAreas"
 
 ## <a name="areas-with-razor-pages"></a>Zones avec Razor Pages
 
-Les zones avec Razor Pages requièrent un dossier *Areas/&lt;nom de zone&gt;/Pages* à la racine de l’application. La structure de dossiers suivante est utilisée avec le [téléchargement de l’exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)
+Les zones avec Razor Pages requièrent un dossier *Areas/&lt;nom de zone&gt;/Pages* à la racine de l’application. La structure de dossiers suivante est utilisée avec le [téléchargement de l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples)
 
 * Nom du projet
   * Zones (Areas)
@@ -144,7 +149,7 @@ Les zones avec Razor Pages requièrent un dossier *Areas/&lt;nom de zone&gt;/Pag
 
 ### <a name="link-generation-with-razor-pages-and-areas"></a>Génération de liens avec Razor Pages et des zones
 
-Le code suivant tiré de [l’exemple de code téléchargeable](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) illustre une génération de liens avec la zone spécifiée (par exemple, `asp-area="Products"`) :
+Le code suivant tiré de [l’exemple de code téléchargeable](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas) illustre une génération de liens avec la zone spécifiée (par exemple, `asp-area="Products"`) :
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet)]
 
@@ -160,7 +165,7 @@ Pour le code précédent :
 
 * Le lien généré à partir de `<a asp-page="/Manage/About">` est correct uniquement lorsque la dernière requête concernait une page dans la zone `Services`. Par exemple, `/Services/Manage/`, `/Services/Manage/Index` ou `/Services/Manage/About`.
 * Le lien généré à partir de `<a asp-page="/About">` est correct uniquement lorsque la dernière requête concernait une page dans `/Home`.
-* Le code est issu du [téléchargement de l’exemple](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
+* Le code est issu du [téléchargement de l’exemple](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/areas/samples/RPareas).
 
 ### <a name="import-namespace-and-tag-helpers-with-viewimports-file"></a>Importer l’espace de noms et les Tag Helpers avec le fichier _ViewImports
 
@@ -179,9 +184,11 @@ Dans le téléchargement de l’exemple, la zone Products contient le fichier *_
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
-Le balisage suivant montre la Razor Page */Products/About* : [!code-cshtml [](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
+Le balisage suivant montre Razor Page */Products/About* :
 
-Dans le fichier précédent, l’espace de noms et la directive `@addTagHelper` sont importés dans le fichier par le fichier *Areas/Products/Pages/_ViewImports.cshtml* :
+[!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
+
+Dans le fichier précédent, l’espace de noms et la directive `@addTagHelper` sont importés dans le fichier par le fichier *Areas/Products/Pages/_ViewImports.cshtml*.
 
 Pour plus d’informations, consultez [Gestion de l’étendue des Tag Helpers](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) et [Importation de directives partagées](xref:mvc/views/layout#importing-shared-directives).
 

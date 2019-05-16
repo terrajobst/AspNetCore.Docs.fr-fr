@@ -7,11 +7,11 @@ ms.author: tdykstra
 ms.date: 11/13/2018
 uid: mvc/models/model-binding
 ms.openlocfilehash: 1dc9b41328ed78440622acc1865b6f088d394403
-ms.sourcegitcommit: 1d6ab43eed9cb3df6211c22b97bb3a9351ec4419
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597782"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883144"
 ---
 # <a name="model-binding-in-aspnet-core"></a>Liaison de données dans ASP.NET Core
 
@@ -33,15 +33,15 @@ Le modèle de route se présentant comme ceci, `{controller=Home}/{action=Index}
 public IActionResult Edit(int? id)
    ```
 
-Remarque : Les chaînes dans la route de l’URL ne respectent pas la casse.
+Remarque : Les chaînes de l’itinéraire d’URL ne respectent pas la casse.
 
 MVC tente de lier les données de la requête aux paramètres de l’action avec le nom. MVC recherche des valeurs pour chaque paramètre en utilisant le nom du paramètre et les noms de ses propriétés définissables publiques. Dans l’exemple ci-dessus, le seul paramètre d’action est nommé `id`, que MVC lie à la valeur portant le même nom dans les valeurs de la route. En plus des valeurs de la route, MVC lie les données des différentes parties de la requête, ceci selon un ordre défini. Voici une liste des sources de données dans l’ordre où la liaison de modèle les recherche :
 
-1. `Form values` : il s’agit de valeurs de formulaire qui vont dans la requête HTTP avec la méthode POST. (notamment les requêtes POST jQuery).
+1. `Form values`: il s’agit de valeurs de formulaire qui vont dans la requête HTTP avec la méthode POST. (notamment les requêtes POST jQuery).
 
-2. `Route values` : l’ensemble des valeurs de la route fournies par le [routage](xref:fundamentals/routing)
+2. `Route values`: l’ensemble des valeurs de l’itinéraire fournies par le [routage](xref:fundamentals/routing)
 
-3. `Query strings` : la partie de chaîne de la requête de l’URI.
+3. `Query strings`: la partie de chaîne de la requête de l’URI.
 
 <!-- DocFX BUG
 The link works but generates an error when building with DocFX
@@ -49,7 +49,7 @@ The link works but generates an error when building with DocFX
 [Routing](xref:fundamentals/routing)
 -->
 
-Remarque : Les valeurs de formulaire, les données des routes et les chaînes de requête sont toutes stockées sous la forme de paires nom-valeur.
+Remarque : Les valeurs de formulaire, les données des itinéraires et les chaînes de requête sont toutes stockées sous la forme de paires nom-valeur.
 
 Comme la liaison de modèle a demandé une clé nommée `id` et qu’aucun élément n’est nommé `id` dans les valeurs de formulaire, il est passé aux valeurs de la route pour rechercher cette clé. Dans notre exemple, il trouve une correspondance. La liaison est effectuée et la valeur est convertie un entier dont la valeur est 2. La même requête qui utiliserait Edit(string id) convertirait en une chaîne « 2 ».
 
@@ -59,23 +59,23 @@ Pour rendre possible la liaison de modèle, la classe doit avoir un constructeur
 
 Quand un paramètre est lié, la liaison de modèle cesse de rechercher des valeurs avec ce nom et elle passe à la liaison du paramètre suivant. Sinon, le comportement de la liaison de modèle par défaut définit les paramètres à leurs valeurs par défaut en fonction de leur type :
 
-* `T[]` : À l’exception des tableaux de type `byte[]`, la liaison définit les paramètres de type `T[]` sur `Array.Empty<T>()`. Les tableaux de type `byte[]` ont la valeur `null`.
+* `T[]`: à l’exception des tableaux de type `byte[]`, la liaison définit les paramètres de type `T[]` sur `Array.Empty<T>()`. Les tableaux de type `byte[]` ont la valeur `null`.
 
-* Types de référence : la liaison crée une instance d’une classe avec le constructeur par défaut sans définir des propriétés. Cependant, la liaison de modèle définit les `string` sur `null`.
+* Types références : la liaison crée une instance d’une classe avec le constructeur par défaut sans définir des propriétés. Cependant, la liaison de modèle définit les `string` sur `null`.
 
-* Types Nullable : les types Nullable sont définis sur `null`. Dans l’exemple ci-dessus, la liaison de modèle définit `id` sur `null`, car il est de type `int?`.
+* Types Nullable : les types Nullable sont définis sur `null`. Dans l’exemple ci-dessus, la liaison de modèle définit `id` sur `null`, car il est de type `int?`.
 
-* Types de valeur : les types de valeur non-Nullable de type `T` sont définis sur `default(T)`. Par exemple, la liaison de modèle définit un paramètre `int id` sur 0. Envisagez d’utiliser la validation de modèle ou des types Nullables au lieu de travailler avec les valeurs par défaut.
+* Types valeur : les types valeurs non Nullables de type `T` sont définis sur `default(T)`. Par exemple, la liaison de modèle définit un paramètre `int id` sur 0. Envisagez d’utiliser la validation de modèle ou des types Nullables au lieu de travailler avec les valeurs par défaut.
 
 Si la liaison échoue, MVC ne génère pas d’erreur. Chaque action acceptant une entrée utilisateur doit vérifier la propriété `ModelState.IsValid`.
 
-Remarque : Chaque entrée dans la propriété `ModelState` du contrôleur est une `ModelStateEntry` contenant une propriété `Errors`. Il est rarement nécessaire interroger cette collection vous-même. Utilisez plutôt `ModelState.IsValid`.
+Remarque : Chaque entrée dans la propriété `ModelState` du contrôleur est une `ModelStateEntry` contenant une propriété `Errors`. Il est rarement nécessaire interroger cette collection vous-même. Utilisez plutôt `ModelState.IsValid`.
 
 En outre, MVC doit prendre en compte certains types de données spéciaux lors de la liaison de modèle :
 
 * `IFormFile`, `IEnumerable<IFormFile>` : un ou plusieurs fichiers chargés qui font partie de la requête HTTP.
 
-* `CancellationToken` : utilisé pour annuler l’activité dans les contrôleurs asynchrones.
+* `CancellationToken`: utilisé pour annuler l’activité dans les contrôleurs asynchrones.
 
 Ces types peuvent être liés à des paramètres d’action ou à des propriétés sur un type de classe.
 
@@ -85,17 +85,17 @@ Une fois que la liaison de modèle est terminée, la [validation](validation.md)
 
 MVC contient plusieurs attributs que vous pouvez utiliser pour spécifier son comportement de liaison de modèle par défaut vers une autre source. Par exemple, vous pouvez spécifier si la liaison est obligatoire pour une propriété, ou si elle ne doit jamais se produire, avec les attributs `[BindRequired]` ou `[BindNever]`. Vous pouvez aussi remplacer la source de données par défaut et spécifier la source de données du classeur de modèles. Voici une liste des attributs de liaison de modèle :
 
-* `[BindRequired]` : cet attribut ajoute une erreur d’état de modèle si la liaison ne peut pas se produire.
+* `[BindRequired]`: cet attribut ajoute une erreur d’état de modèle si la liaison ne peut pas se produire.
 
-* `[BindNever]` : indique au classeur de modèles de ne jamais lier à ce paramètre.
+* `[BindNever]`: indique au classeur de modèles de ne jamais lier à ce paramètre.
 
-* `[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]` : utilisez ces attributs pour spécifier la source de liaison exacte que vous voulez appliquer.
+* `[FromHeader]`, `[FromQuery]`, `[FromRoute]`, `[FromForm]` : utilisez ces attributs pour spécifier la source de liaison exacte que vous voulez appliquer.
 
-* `[FromServices]` : cet attribut utilise [l’injection de dépendances](../../fundamentals/dependency-injection.md) pour lier des paramètres de services.
+* `[FromServices]`: cet attribut utilise [l’injection de dépendances](../../fundamentals/dependency-injection.md) pour lier des paramètres de services.
 
-* `[FromBody]` : utilisez les formateurs configurés pour lier des données du corps de la requête. Le formateur est sélectionné en fonction du type de contenu de la requête.
+* `[FromBody]`: utilisez les formateurs configurés pour lier des données du corps de la requête. Le formateur est sélectionné en fonction du type de contenu de la requête.
 
-* `[ModelBinder]` : utilisé pour remplacer le classeur de modèles, la source de liaison et le nom par défaut.
+* `[ModelBinder]`: utilisé pour remplacer le classeur de modèles, la source de liaison et le nom par défaut.
 
 Les attributs sont très utiles quand vous devez remplacer le comportement par défaut de la liaison de modèle.
 

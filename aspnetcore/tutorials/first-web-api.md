@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 02/4/2019
 uid: tutorials/first-web-api
-ms.openlocfilehash: 24c87f2ad0446aef51f9d648fd20c181cbeaed2e
-ms.sourcegitcommit: 036d4b03fd86ca5bb378198e29ecf2704257f7b2
+ms.openlocfilehash: dce2926e3cb19d6ac8d2af0e9b96c31dee1d92fd
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57346465"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65087521"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core-mvc"></a>Tutoriel : Créer une API web avec ASP.NET Core MVC
 
@@ -216,7 +216,7 @@ Le code précédent :
 Le code précédent :
 
 * Définit une classe de contrôleur d’API sans méthodes.
-* Décore la classe avec l’attribut [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez [Annotation avec attribut ApiController](xref:web-api/index#annotation-with-apicontroller-attribute).
+* Décore la classe avec l’attribut [[ApiController]](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute). Cet attribut indique que le contrôleur répond aux requêtes de l’API web. Pour plus d’informations sur les comportements spécifiques que permet l’attribut, consultez <xref:web-api/index>.
 * Utilise l’injection de dépendances pour injecter le contexte de base de données (`TodoContext`) dans le contrôleur. Le contexte de base de données est utilisé dans chacune des méthodes la [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) du contrôleur.
 * Ajoute un élément nommé `Item1` à la base de données si celle-ci est vide. Ce code se trouvant dans le constructeur, il s’exécute chaque fois qu’une nouvelle requête HTTP existe. Si vous supprimez tous les éléments, le constructeur recrée `Item1` au prochain appel d’une méthode d’API. Ainsi, il peut vous sembler à tort que la suppression n’a pas fonctionné.
 
@@ -443,7 +443,7 @@ Pour supprimer une tâche, vous devez définir le `type` sur l’appel AJAX avec
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 
-[Affichez ou téléchargez l’exemple de code de ce tutoriel](https://github.com/aspnet/Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample).
+[Affichez ou téléchargez l’exemple de code de ce tutoriel](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples). Consultez [Guide pratique pour télécharger](xref:index#how-to-download-a-sample).
 
 Pour plus d'informations, reportez-vous aux ressources suivantes :
 

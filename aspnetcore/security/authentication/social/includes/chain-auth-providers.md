@@ -1,4 +1,4 @@
-## <a name="multiple-authentication-providers"></a>Plusieurs fournisseurs d’authentification
+## <a name="multiple-authentication-providers"></a>Fournisseurs d’authentification multiple
 
 Lorsque l’application nécessite plusieurs fournisseurs, chaînez les méthodes d’extension de fournisseur derrière [AddAuthentication](/dotnet/api/microsoft.extensions.dependencyinjection.authenticationservicecollectionextensions.addauthentication) :
 

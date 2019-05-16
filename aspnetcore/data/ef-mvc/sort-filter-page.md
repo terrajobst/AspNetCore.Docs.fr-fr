@@ -6,12 +6,12 @@ ms.author: tdykstra
 ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: dff5a5b1ba3c8ed07ccc8d134f8cfeb25b9f6689
-ms.sourcegitcommit: 3e9e1f6d572947e15347e818f769e27dea56b648
+ms.openlocfilehash: 921e27bf56587813f835357c9090c91a155c087b
+ms.sourcegitcommit: b508b115107e0f8d7f62b25cfcc8ad45e1373459
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58751036"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65212551"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>Tutoriel : Ajouter le tri, le filtrage et la pagination - ASP.NET MVC avec EF Core
 
@@ -211,10 +211,8 @@ Cliquez sur les liens de changement de page dans différents ordres de tri pour 
 Pour la page **About** du site web de Contoso University, vous afficherez le nombre d’étudiants inscrits pour chaque date d’inscription. Cela nécessite un regroupement et des calculs simples sur les groupes. Pour ce faire, vous devez effectuer les opérations suivantes :
 
 * Créez une classe de modèle de vue pour les données que vous devez transmettre à la vue.
-
-* Modifiez la méthode About dans le contrôleur Home.
-
-* Modifiez la vue About.
+* Créez la méthode About dans le contrôleur Home.
+* Créer la vue About.
 
 ### <a name="create-the-view-model"></a>Créer le modèle de vue
 
@@ -239,10 +237,8 @@ Ajoutez une méthode `About` avec le code suivant :
 [!code-csharp[](intro/samples/cu/Controllers/HomeController.cs?name=snippet_UseDbSet)]
 
 L’instruction LINQ regroupe les entités Student par date d’inscription, calcule le nombre d’entités dans chaque groupe et stocke les résultats dans une collection d’objets de modèle de vue `EnrollmentDateGroup`.
-> [!NOTE]
-> Dans la version 1.0 d’Entity Framework Core, le jeu de résultats entier est renvoyé au client et le regroupement est effectué sur le client. Dans certains scénarios, cela peut générer des problèmes de performances. Veillez à tester les performances avec des volumes de données de production et, si nécessaire, utilisez des requêtes SQL brutes pour effectuer le regroupement sur le serveur. Pour obtenir des informations sur la façon d’utiliser des requêtes SQL brutes, consultez [le dernier didacticiel de cette série](advanced.md).
 
-### <a name="modify-the-about-view"></a>Modifier la vue About
+### <a name="create-the-about-view"></a>Créer la vue About
 
 Ajoutez un fichier *Views/Home/About.cshtml* avec le code suivant :
 
@@ -252,7 +248,7 @@ Exécutez l’application et accédez à la page About. Le nombre d’étudiants
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Étapes suivantes
 

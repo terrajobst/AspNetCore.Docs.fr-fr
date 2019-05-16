@@ -4,15 +4,15 @@ description: Dans ce tutoriel, vous ajoutez des entités et des relations, et vo
 author: rick-anderson
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 03/27/2019
 ms.topic: tutorial
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 5ab893dd77ff2cc9a735702eb3a547ed8bcb2197
-ms.sourcegitcommit: 57792e5f594db1574742588017c708350958bdf0
+ms.openlocfilehash: 2776e3357941d0e7932882c39af121f85d037d62
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58264862"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64887244"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>Tutoriel : Créer un modèle de données complexe - ASP.NET MVC avec EF Core
 
@@ -40,7 +40,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 
 ## <a name="prerequisites"></a>Prérequis
 
-* [Utilisation de la fonctionnalité de migrations EF Core pour ASP.NET Core dans une application web MVC](migrations.md)
+* [À l’aide de migrations d’EF Core](migrations.md)
 
 ## <a name="customize-the-data-model"></a>Personnaliser le modèle de données
 
@@ -320,7 +320,7 @@ public ICollection<Course> Courses { get; set; }
 ```
 
 > [!NOTE]
-> Par convention, Entity Framework permet la suppression en cascade pour les clés étrangères non nullables et pour les relations plusieurs à plusieurs. Cela peut entraîner des règles de suppression en cascade circulaires, qui provoqueront une exception lorsque vous essaierez d’ajouter une migration. Par exemple, si vous n’avez pas défini la propriété Department.InstructorID comme nullable, EF configure une règle de suppression en cascade pour supprimer le formateur lorsque vous supprimez le département, ce qui n’est pas ce que vous voulez. Si vos règles d’entreprise exigent que la propriété `InstructorID` soit non nullable, vous devez utiliser l’instruction d’API Fluent suivante pour désactiver la suppression en cascade sur la relation :
+> Par convention, Entity Framework permet la suppression en cascade pour les clés étrangères non nullables et pour les relations plusieurs à plusieurs. Cela peut entraîner des règles de suppression en cascade circulaires, qui provoqueront une exception lorsque vous essaierez d’ajouter une migration. Par exemple, si vous n’avez pas défini la propriété Department.InstructorID comme nullable, EF configure une règle de suppression en cascade pour supprimer le département lorsque vous supprimez le formateur, ce qui n’est pas ce que vous voulez. Si vos règles d’entreprise exigent que la propriété `InstructorID` soit non nullable, vous devez utiliser l’instruction d’API Fluent suivante pour désactiver la suppression en cascade sur la relation :
 >
 > ```csharp
 > modelBuilder.Entity<Department>()
@@ -509,7 +509,7 @@ Cliquez avec le bouton droit sur la table **CourseAssignment** et sélectionnez 
 
 ## <a name="get-the-code"></a>Obtenir le code
 
-[Télécharger ou afficher l’application complète.](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
+[Télécharger ou afficher l’application complète.](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 
 ## <a name="next-steps"></a>Étapes suivantes
 
@@ -529,6 +529,7 @@ Dans ce didacticiel, vous avez effectué les actions suivantes :
 > * Chaîne de connexion modifiée
 > * Base de données mise à jour
 
-Passez à l’article suivant pour en savoir plus sur l’accès aux données associées.
+Passez au tutoriel suivant pour en savoir plus sur l’accès aux données associées.
+
 > [!div class="nextstepaction"]
-> [Accéder aux données associées](read-related-data.md)
+> [Suivant : Accéder aux données associées](read-related-data.md)

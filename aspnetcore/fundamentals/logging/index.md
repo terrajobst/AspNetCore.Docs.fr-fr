@@ -4,14 +4,14 @@ author: tdykstra
 description: Découvrez plus en détail le framework de journalisation dans ASP.NET Core. Apprenez à utiliser les fournisseurs de journalisation intégrés et découvrez-en plus sur les fournisseurs tiers les plus courants.
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 03/02/2019
+ms.date: 05/01/2019
 uid: fundamentals/logging/index
-ms.openlocfilehash: 8a2e310b47e32e9015b0c127ed79d8f6bdf2e44d
-ms.sourcegitcommit: eb784a68219b4829d8e50c8a334c38d4b94e0cfa
+ms.openlocfilehash: ee7d4b2ae04b5f6c262acc5da0f86f90ab50585f
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59982851"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65085667"
 ---
 # <a name="logging-in-aspnet-core"></a>Journalisation dans ASP.NET Core
 
@@ -19,7 +19,7 @@ Article rédigé par [Steve Smith](https://ardalis.com/) et [Tom Dykstra](https:
 
 ASP.NET Core prend en charge une API de journalisation qui fonctionne avec différents fournisseurs de journalisation tiers et intégrés. Cet article explique comment utiliser cette API de journalisation avec les fournisseurs de journalisation intégrés.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 ## <a name="add-providers"></a>Ajouter des fournisseurs
 
@@ -54,7 +54,7 @@ Pour utiliser un fournisseur, installez son package NuGet et appelez sa méthode
 [L’injection de dépendances](xref:fundamentals/dependency-injection) ASP.NET Core fournit l’instance `ILoggerFactory`. Les méthodes d’extension `AddConsole` et `AddDebug` sont définies dans les packages [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/) et [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/). Chaque méthode d’extension appelle la méthode `ILoggerFactory.AddProvider`, en passant une instance du fournisseur.
 
 > [!NOTE]
-> L’[exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/logging/index/samples/1.x) ajoute des fournisseurs de journalisation dans la méthode `Startup.Configure`. Pour obtenir la sortie de journal du code exécuté plus haut, ajoutez les fournisseurs de journalisation au constructeur de classe `Startup`.
+> L’[exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/logging/index/samples/1.x) ajoute des fournisseurs de journalisation dans la méthode `Startup.Configure`. Pour obtenir la sortie de journal du code exécuté plus haut, ajoutez les fournisseurs de journalisation au constructeur de classe `Startup`.
 
 ::: moniker-end
 
@@ -496,11 +496,12 @@ Chaque fournisseur définit un *alias* qui peut être utilisé dans la configura
 
 * Console
 * Débogage
+* EventSource
 * EventLog
+* TraceSource
 * AzureAppServicesFile
 * AzureAppServicesBlob
-* TraceSource
-* EventSource
+* ApplicationInsights
 
 ### <a name="default-minimum-level"></a>Niveau minimum par défaut
 
@@ -616,8 +617,9 @@ ASP.NET Core contient les fournisseurs suivants :
 * [EventSource](#eventsource-provider)
 * [EventLog](#windows-eventlog-provider)
 * [TraceSource](#tracesource-provider)
-
-Les options de [Journalisation dans Azure](#logging-in-azure) sont traitées plus loin dans cet article.
+* [AzureAppServicesFile](#azure-app-service-provider)
+* [AzureAppServicesBlob](#azure-app-service-provider)
+* [ApplicationInsights](#azure-application-insights-trace-logging)
 
 Pour plus d'informations sur la journalisation stdout, voir <xref:host-and-deploy/iis/troubleshoot#aspnet-core-module-stdout-log> et <xref:host-and-deploy/azure-apps/troubleshoot#aspnet-core-module-stdout-log>.
 
@@ -767,19 +769,6 @@ L’exemple suivant configure un fournisseur `TraceSource` qui enregistre les me
 
 ::: moniker-end
 
-## <a name="logging-in-azure"></a>Journalisation dans Azure
-
-Pour plus d'informations sur la journalisation dans Azure, voir les sections suivantes :
-
-* [Fournisseur Azure App Service](#azure-app-service-provider)
-* [Diffusion en continu de journaux Azure](#azure-log-streaming)
-
-::: moniker range=">= aspnetcore-1.1"
-
-* [Journalisation du suivi Azure Application Insights](#azure-application-insights-trace-logging)
-
-::: moniker-end
-
 ### <a name="azure-app-service-provider"></a>Fournisseur Azure App Service
 
 Le package de fournisseur [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) écrit les enregistrements de log dans des fichiers texte dans le système de fichiers d’une application Azure App Service, et dans un [stockage Blob](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/#what-is-blob-storage) dans un compte de stockage Azure. Le package de fournisseur est disponible pour les applications ciblant .NET Core 1.1 ou ultérieur.
@@ -842,7 +831,7 @@ L’emplacement par défaut des fichiers journaux est le dossier *D:\\racine\\Lo
 
 Le fournisseur fonctionne uniquement quand le projet s’exécute dans l’environnement Azure. Il n’a aucun effet si le projet s’exécute localement &mdash; il n’écrit pas d’enregistrements dans les fichiers locaux ou dans le stockage de développement local pour les objets blob.
 
-### <a name="azure-log-streaming"></a>Streaming des journaux Azure
+#### <a name="azure-log-streaming"></a>Streaming des journaux Azure
 
 La diffusion en continu des journaux Azure permet d’afficher l’activité de journalisation en temps réel aux emplacements suivants :
 
@@ -865,14 +854,23 @@ Accédez à la page **Diffusion en continu des journaux** pour voir les messages
 
 ### <a name="azure-application-insights-trace-logging"></a>Journalisation des traces Azure Application Insights
 
-Le Kit SDK Application Insights peut collecter et présenter des journaux générés par l’infrastructure de journalisation ASP.NET Core. Pour plus d'informations, reportez-vous aux ressources suivantes :
+Le package de fournisseur [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) écrit des journaux dans Azure Application Insights. Application Insights est un service qui surveille une application web et fournit des outils pour interroger et analyser les données de télémétrie. Si vous utilisez ce fournisseur, vous pouvez interroger et analyser vos journaux à l’aide des outils Application Insights.
+
+Le fournisseur de journalisation est inclus en tant que dépendance de [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore), le package qui fournit toutes les données de télémétrie disponibles pour ASP.NET Core. Si vous utilisez ce package, vous n’avez pas besoin d’installer le package du fournisseur.
+
+N’utilisez pas le [package Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) package&mdash;destiné à ASP.NET 4.x.
+
+Pour plus d'informations, reportez-vous aux ressources suivantes :
 
 * [Vue d'ensemble d'Application Insights](/azure/application-insights/app-insights-overview)
-* [Application Insights pour ASP.NET Core](/azure/application-insights/app-insights-asp-net-core)
+* [Application Insights pour les applications ASP.NET Core](/azure/azure-monitor/app/asp-net-core-no-visualstudio) : commencez ici si vous souhaitez implémenter la gamme complète des données de télémétrie d’Application Insights en même temps que la journalisation.
+* [Journaux ApplicationInsightsLoggerProvider pour .NET Core ILogger](/azure/azure-monitor/app/ilogger) : commencez ici si vous souhaitez implémenter le fournisseur de journalisation sans le reste des données de télémétrie Application Insights.
 * [Adaptateurs de journalisation Application Insights](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/blob/develop/README.md).
-* [Exemples d’implémentation d’Application Insights ILogger](/azure/azure-monitor/app/ilogger)
-
+* [Installer, configurer et initialiser le kit de développement logiciel (SDK) Application Insights](/learn/modules/instrument-web-app-code-with-application-insights) : tutoriel interactif sur le site Microsoft Learn.
 ::: moniker-end
+
+> [!NOTE]
+> Depuis le 1/5/2019, l’article intitulé [Application Insights pour ASP.NET Core](/azure/azure-monitor/app/asp-net-core) est obsolète et les étapes du tutoriel ne fonctionnent plus. Reportez-vous à [Application Insights pour les applications ASP.NET Core](/azure/azure-monitor/app/asp-net-core-no-visualstudio) à la place. Nous sommes conscients du problème et travaillons à y remédier.
 
 ## <a name="third-party-logging-providers"></a>Fournisseurs de journalisation tiers
 
@@ -885,7 +883,7 @@ Frameworks de journalisation tiers qui sont pris en charge dans ASP.NET Core :
 * [Loggr](http://loggr.net/) ([dépôt GitHub](https://github.com/imobile3/Loggr.Extensions.Logging))
 * [NLog](http://nlog-project.org/) ([dépôt GitHub](https://github.com/NLog/NLog.Extensions.Logging))
 * [Sentry](https://sentry.io/welcome/) ([dépôt GitHub](https://github.com/getsentry/sentry-dotnet))
-* [Serilog](https://serilog.net/) ([dépôt GitHub](https://github.com/serilog/serilog-extensions-logging))
+* [Serilog](https://serilog.net/) ([dépôt GitHub](https://github.com/serilog/serilog-aspnetcore))
 * [Stackdriver](https://cloud.google.com/dotnet/docs/stackdriver#logging) ([Github repo](https://github.com/googleapis/google-cloud-dotnet))
 
 Certains frameworks tiers prennent en charge la [journalisation sémantique, également appelée journalisation structurée](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).

@@ -5,14 +5,14 @@ description: Découvrez comment gérer les erreurs dans les applications ASP.NET
 monikerRange: '>= aspnetcore-2.1'
 ms.author: tdykstra
 ms.custom: mvc
-ms.date: 04/07/2019
+ms.date: 05/03/2019
 uid: fundamentals/error-handling
-ms.openlocfilehash: cbb9462a3c6010e074dc391aa128ac2cbb901456
-ms.sourcegitcommit: 78339e9891c8676db01a6e81e9cb0cdaa280162f
+ms.openlocfilehash: 36cd9fdac0b9159900e82327705a73d561e7ce6b
+ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59705576"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65086958"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Gérer les erreurs dans ASP.NET Core
 
@@ -20,7 +20,7 @@ Par [Tom Dykstra](https://github.com/tdykstra/), [Luke Latham](https://github.co
 
 Cet article aborde des approches courantes pour gérer les erreurs dans les applications ASP.NET Core.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples). ([Guide pratique de téléchargement](xref:index#how-to-download-a-sample).) L’article présente les instructions à suivre pour définir des directives de préprocesseur (`#if`, `#endif`, `#define`) dans l’exemple d’application afin de gérer différents scénarios.
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples). ([Guide pratique de téléchargement](xref:index#how-to-download-a-sample).) L’article présente les instructions à suivre pour définir des directives de préprocesseur (`#if`, `#endif`, `#define`) dans l’exemple d’application afin de gérer différents scénarios.
 
 ## <a name="developer-exception-page"></a>Page d’exceptions du développeur
 
@@ -40,7 +40,7 @@ Cette page inclut les informations suivantes sur l’exception et la demande :
 * Cookies (le cas échéant)
 * En-têtes
 
-Pour afficher la Page d’exceptions du développeur dans [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez la directive de préprocesseur `DevEnvironment` et sélectionnez **Déclencher une exception** sur la page d’accueil.
+Pour afficher la Page d’exceptions du développeur dans [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez la directive de préprocesseur `DevEnvironment` et sélectionnez **Déclencher une exception** sur la page d’accueil.
 
 ## <a name="exception-handler-page"></a>Page Gestionnaire d’exceptions
 
@@ -75,7 +75,7 @@ Utilisez <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature> po
 > [!WARNING]
 > Ne communiquez **pas** d’informations sensibles sur les erreurs aux clients. Cela représenterait un risque de sécurité.
 
-Pour afficher la page de gestion des exceptions dans [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez les directive de préprocesseur `ProdEnvironment` et `ErrorHandlerPage` et sélectionnez **Déclencher une exception** sur la page d’accueil.
+Pour afficher la page de gestion des exceptions dans [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez les directive de préprocesseur `ProdEnvironment` et `ErrorHandlerPage` et sélectionnez **Déclencher une exception** sur la page d’accueil.
 
 ## <a name="exception-handler-lambda"></a>Expression lambda Gestionnaire d’exceptions
 
@@ -88,7 +88,7 @@ Voici un exemple d’utilisation d’une expression lambda pour la gestion des e
 > [!WARNING]
 > Ne distribuez **pas** d’informations sensibles sur les erreurs de <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature> ou de <xref:Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature> aux clients. Cela représenterait un risque de sécurité.
 
-Pour afficher le résultat de l’expression lambda de gestion des exceptions dans [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez les directive de préprocesseur `ProdEnvironment` et `ErrorHandlerLambda` et sélectionnez **Déclencher une exception** sur la page d’accueil.
+Pour afficher le résultat de l’expression lambda de gestion des exceptions dans [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez les directive de préprocesseur `ProdEnvironment` et `ErrorHandlerLambda` et sélectionnez **Déclencher une exception** sur la page d’accueil.
 
 ## <a name="usestatuscodepages"></a>UseStatusCodePages
 
@@ -108,7 +108,7 @@ Voici un exemple du texte affiché par les gestionnaires par défaut :
 Status Code: 404; Not Found
 ```
 
-Pour voir l’un des formats de pages de codes d’état dans [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez une des directives de préprocesseur qui commencent par `StatusCodePages`, puis sélectionnez **Déclencher une erreur 404** sur la page d’accueil.
+Pour voir l’un des formats de pages de codes d’état dans [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples), utilisez une des directives de préprocesseur qui commencent par `StatusCodePages`, puis sélectionnez **Déclencher une erreur 404** sur la page d’accueil.
 
 ## <a name="usestatuscodepages-with-format-string"></a>UseStatusCodePages avec chaîne de format
 
@@ -131,7 +131,7 @@ La méthode d’extension <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExte
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithRedirect)]
 
-Le modèle d’URL peut comporter un espace réservé `{0}` pour le code d’état, comme dans l’exemple. S’il commence par un tilde (~), celui-ci est remplacé par le `PathBase` de l’application. Si vous pointez vers un point de terminaison dans l’application, créez une vue MVC ou une page Razor pour le point de terminaison. Pour consulter un exemple Razor Pages, voir [StatusCode.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/2.x/Pages/StatusCode.cshtml) dans [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
+Le modèle d’URL peut comporter un espace réservé `{0}` pour le code d’état, comme dans l’exemple. S’il commence par un tilde (~), celui-ci est remplacé par le `PathBase` de l’application. Si vous pointez vers un point de terminaison dans l’application, créez une vue MVC ou une page Razor pour le point de terminaison. Pour consulter un exemple Razor Pages, voir *Pages/StatusCode.cshtml* dans [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
 
 Cette méthode est généralement utilisée lorsque l’application :
 
@@ -147,7 +147,7 @@ La méthode d’extension <xref:Microsoft.AspNetCore.Builder.StatusCodePagesExte
 
 [!code-csharp[](error-handling/samples/2.x/ErrorHandlingSample/Startup.cs?name=snippet_StatusCodePagesWithReExecute)]
 
-Si vous pointez vers un point de terminaison dans l’application, créez une vue MVC ou une page Razor pour le point de terminaison. Pour consulter un exemple Razor Pages, voir [StatusCode.cshtml](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples/2.x/Pages/StatusCode.cshtml) dans [l’exemple d’application](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
+Si vous pointez vers un point de terminaison dans l’application, créez une vue MVC ou une page Razor pour le point de terminaison. Pour consulter un exemple Razor Pages, voir *Pages/StatusCode.cshtml* dans [l’exemple d’application](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples).
 
 Cette méthode est généralement utilisée lorsque l’application doit :
 

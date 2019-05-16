@@ -4,14 +4,14 @@ author: pkellner
 description: Découvrez les attributs ASP.NET Core Tag Helper Ancre et le rôle joué par chaque attribut dans l’extension du comportement de la balise d’ancrage HTML.
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/18/2018
+ms.date: 4/18/2019
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 60fa0c00e40878a8227ca2bc8bdb0bc2bf9f8336
-ms.sourcegitcommit: ea215df889e89db44037a6ac2f01baede0450da9
+ms.openlocfilehash: de45c99194d4825c1e404aa193b0f076ba659748
+ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53595339"
+ms.lasthandoff: 04/27/2019
+ms.locfileid: "64883424"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>Tag Helper Ancre dans ASP.NET Core
 
@@ -21,15 +21,15 @@ Le [Tag Helper Ancre](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper) 
 
 Pour avoir une vue d’ensemble des Tag Helpers, consultez <xref:mvc/views/tag-helpers/intro>.
 
-[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
+[Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
 *SpeakerController* est utilisé dans les exemples dans ce document :
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Controllers/SpeakerController.cs?name=snippet_SpeakerController)]
 
-Un inventaire des attributs `asp-` vient ensuite.
+## <a name="anchor-tag-helper-attributes"></a>Attributs de Tag Helper Ancre
 
-## <a name="asp-controller"></a>asp-controller
+### <a name="asp-controller"></a>asp-controller
 
 L’attribut [asp-controller](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Controller*) assigne le contrôleur utilisé pour générer l’URL. Le balisage suivant répertorie tous les présentateurs :
 
@@ -63,7 +63,7 @@ Si aucun attribut `asp-controller` n’est spécifié, le contrôleur par défau
 
 Si la valeur de l’attribut `asp-action` est `Index`, aucune action n’est ajoutée à l’URL, ce qui aboutit à l’appel de l’action `Index` par défaut. L’action spécifiée (ou par défaut) doit exister dans le contrôleur référencé dans `asp-controller`.
 
-## <a name="asp-route-value"></a>asp-route-{value}
+### <a name="asp-route-value"></a>asp-route-{value}
 
 L’attribut [asp-route-{value}](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) active un préfixe d’itinéraire générique. Toute valeur occupant l’espace réservé `{value}` est interprétée comme un paramètre d’itinéraire potentiel. Si aucune route par défaut n’est trouvée, ce préfixe de routage est ajouté à l’attribut `href` généré en tant que valeur et paramètre de requête. Dans le cas contraire, il est remplacé dans le modèle de routage.
 
@@ -117,7 +117,7 @@ Le code HTML suivant est généré, car `speakerid` n’a pas été trouvé dans
 
 Si `asp-controller` ou `asp-action` ne sont pas spécifiés, le même traitement par défaut est appliqué que dans l’attribut `asp-route`.
 
-## <a name="asp-route"></a>asp-route
+### <a name="asp-route"></a>asp-route
 
 L’attribut [asp-route](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Route*) est utilisé pour créer une URL reliant directement à un itinéraire nommé. À l’aide des [attributs de routage](xref:mvc/controllers/routing#attribute-routing), un itinéraire peut être nommé comme indiqué dans `SpeakerController` et utilisé dans son action `Evaluations` :
 
@@ -155,7 +155,7 @@ Le dictionnaire `asp-all-route-data` est aplati pour produire une chaîne de req
 
 Si des clés dans le dictionnaire correspondent aux paramètres d’itinéraire, ces valeurs sont substituées dans l’itinéraire comme il convient. Les autres valeurs non correspondantes sont générées en tant que paramètres de la requête.
 
-## <a name="asp-fragment"></a>asp-fragment
+### <a name="asp-fragment"></a>asp-fragment
 
 L’attribut [asp-fragment](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Fragment*) définit un fragment d’URL à ajouter à l’URL. Le Tag Helper Ancre ajoute le caractère de hachage (#). Examinons le balisage suivant :
 
@@ -169,7 +169,7 @@ Code HTML généré :
 
 Les balises de hachage sont utiles lors de la création des applications côté client. Elles peuvent servir à faciliter le marquage et la recherche en JavaScript, par exemple.
 
-## <a name="asp-area"></a>asp-area
+### <a name="asp-area"></a>asp-area
 
 L’attribut [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) définit le nom de la zone utilisé pour définir l’itinéraire approprié. Les exemples suivants décrivent la façon dont l’attribut `asp-area` entraîne un remappage des itinéraires.
 
@@ -239,7 +239,7 @@ Code HTML généré :
 >
 > [!code-csharp[](samples/TagHelpersBuiltIn/Startup.cs?name=snippet_UseMvc&highlight=5)]
 
-## <a name="asp-protocol"></a>asp-protocol
+### <a name="asp-protocol"></a>asp-protocol
 
 L’attribut [asp-protocol](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Protocol*) permet de spécifier un protocole (tel que `https`) dans l’URL. Par exemple :
 
@@ -253,7 +253,7 @@ Code HTML généré :
 
 Le nom d’hôte dans l’exemple est localhost. Le Tag Helper Ancre utilise le domaine public du site web lors de la génération de l’URL.
 
-## <a name="asp-host"></a>asp-host
+### <a name="asp-host"></a>asp-host
 
 L’attribut [asp-host](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Host*) est destiné à spécifier un nom d’hôte dans votre URL. Par exemple :
 
@@ -265,7 +265,7 @@ Code HTML généré :
 <a href="https://microsoft.com/Home/About">About</a>
 ```
 
-## <a name="asp-page"></a>asp-page
+### <a name="asp-page"></a>asp-page
 
 L’attribut [asp-page](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*) est utilisé avec les Pages Razor. Utilisez-le pour définir la valeur d’attribut `href` d’une balise d’ancrage sur une page spécifique. En ajoutant une barre oblique (« / ») comme préfixe au nom de la page, vous créez l’URL.
 
@@ -289,7 +289,7 @@ Code HTML généré :
 <a href="/Attendee?attendeeid=10">View Attendee</a>
 ```
 
-## <a name="asp-page-handler"></a>asp-page-handler
+### <a name="asp-page-handler"></a>asp-page-handler
 
 L’attribut [asp-page-handler](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*) est utilisé avec les Pages Razor. Il est destiné à la liaison à des gestionnaires de page spécifiques.
 
