@@ -6,18 +6,14 @@ ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 11/22/2018
 uid: data/ef-rp/intro
-ms.openlocfilehash: b16d1b67b3b501811ab34330851e6cacc76f2ed0
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: dea178d169cb8f2ae807caa2ef495d4243b1f59f
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64886404"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65516888"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Pages Razor avec Entity Framework Core dans ASP.NET Core - Tutoriel 1 sur 8
-
-[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -158,7 +154,7 @@ Dans cette section, le modèle d’étudiant est généré automatiquement. Autr
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Dans **l’Explorateur de solutions**, cliquez avec le bouton droit sur le dossier *Pages/Students* > **Ajouter** > **Nouvel élément généré automatiquement**.
-* Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Pages Razor avec Entity Framework (CRUD)** > **AJOUTER**.
+* Dans la boîte de dialogue **Ajouter un modèle automatique**, sélectionnez **Pages Razor avec Entity Framework (CRUD)** > **Ajouter**.
 
 Renseignez la boîte de dialogue **Pages Razor avec Entity Framework (CRUD)** :
 
@@ -316,7 +312,7 @@ Pour plus d’informations sur la programmation asynchrone dans .NET, consultez 
 
 Dans le didacticiel suivant, nous allons examiner les opérations CRUD de base (créer, lire, mettre à jour, supprimer).
 
-::: moniker-end
+
 
 ## <a name="additional-resources"></a>Ressources supplémentaires
 

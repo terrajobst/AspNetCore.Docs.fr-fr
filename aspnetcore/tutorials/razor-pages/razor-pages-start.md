@@ -3,14 +3,14 @@ title: 'Tutoriel : Bien démarrer avec des pages Razor dans ASP.NET Core'
 author: rick-anderson
 description: Cette série de tutoriels montre comment utiliser Razor Pages dans ASP.NET Core. Découvrez comment créer un modèle, générer du code pour Razor Pages, utiliser Entity Framework Core et SQL Server pour l’accès aux données, ajouter des fonctionnalités de recherche, ajouter la validation d’entrée et mettre à jour le modèle à l’aide de migrations.
 ms.author: riande
-ms.date: 12/5/2018
+ms.date: 05/09/2019
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 1d264ca4a605d8291e273a8f054c92e7eefa5548
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 9307291756baf1bef714d6dae2f8d25d3aa6f922
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891154"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517106"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>Tutoriel : Bien démarrer avec des pages Razor dans ASP.NET Core
 
@@ -59,7 +59,7 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
 
 * Ouvrez le [terminal intégré](https://code.visualstudio.com/docs/editor/integrated-terminal).
 
-* Accédez à un répertoire (`cd`) destiné à contenir le projet.
+* Accédez au répertoire (`cd`) qui contiendra le projet.
 
 * Exécutez les commandes suivantes :
 
@@ -69,7 +69,7 @@ Dans ce didacticiel, vous allez effectuer les actions suivantes :
   ```
 
   * La commande `dotnet new` crée un nouveau projet Razor Pages dans le dossier *RazorPagesMovie*.
-  * La commande `code` ouvre le dossier *RazorPagesMovie* dans une nouvelle instance de Visual Studio Code.
+  * La commande `code` ouvre le dossier *RazorPagesMovie* dans l’instance actuelle de Visual Studio Code.
 
   Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « RazorPagesMovie ». Faut-il les ajouter ?**
 

@@ -5,12 +5,12 @@ description: Découvrez comment ASP.NET Core prend en charge l’injection de d�
 ms.author: riande
 ms.date: 10/14/2016
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 940e237fd73a864d9fd59f5447fe486f93648f62
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: b411b164bfea81f82c5c9fc1052e0ecfe65f0bc2
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087464"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517050"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>Injection de dépendances dans les vues dans ASP.NET Core
 
@@ -20,13 +20,38 @@ ASP.NET Core prend en charge l’[injection de dépendances](xref:fundamentals/d
 
 [Affichez ou téléchargez l’exemple de code](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) ([procédure de téléchargement](xref:index#how-to-download-a-sample))
 
-## <a name="a-simple-example"></a>Exemple simple
+## <a name="configuration-injection"></a>Injection de configuration
 
-Vous pouvez injecter un service dans une vue à l’aide de la directive `@inject`. L’utilisation de la directive `@inject` revient à ajouter une propriété à la vue, puis à remplir cette propriété à l’aide de l’injection de dépendances.
+Les valeurs *appsettings.json* peuvent être injectées directement dans une vue.
+
+Exemple de fichier *appsettings.json* :
+
+```json
+{
+   "root": {
+      "parent": {
+         "child": "myvalue"
+      }
+   }
+}
+```
 
 Syntaxe de la directive `@inject` : `@inject <type> <name>`
 
-Exemple d’exécution de la directive `@inject` :
+Exemple avec `@inject` :
+
+```csharp
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+   string myValue = Configuration["root:parent:child"];
+   ...
+}
+```
+
+## <a name="service-injection"></a>Injection de service
+
+Un service peut être injecté dans une vue en utilisant la directive `@inject`. `@inject` équivaut à ajouter une propriété à la vue et à remplir la propriété à l’aide de l’injection de dépendances.
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 

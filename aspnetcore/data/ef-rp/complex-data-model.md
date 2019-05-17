@@ -6,18 +6,14 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: data/ef-rp/complex-data-model
-ms.openlocfilehash: 311f72699b6291996a43d56247bd3d2bfab596e6
-ms.sourcegitcommit: 088e6744cd67a62f214f25146313a53949b17d35
+ms.openlocfilehash: a65543f805b197031bd46ef1974d4d4a5018b2d1
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58320246"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65516900"
 ---
 # <a name="razor-pages-with-ef-core-in-aspnet-core---data-model---5-of-8"></a>Pages Razor avec EF Core dans ASP.NET Core - Modèle de données - 5 sur 8
-
-[!INCLUDE[2.0 version](~/includes/RP-EF/20-pdf.md)]
-
-::: moniker range=">= aspnetcore-2.1"
 
 Par [Tom Dykstra](https://github.com/tdykstra) et [Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -33,7 +29,7 @@ Les classes d’entités pour le modèle de données sont illustrées ci-dessous
 ![Diagramme des entités](complex-data-model/_static/diagram.png)
 
 Si vous rencontrez des problèmes que vous ne pouvez pas résoudre, téléchargez [l’application terminée](
-https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
+https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples).
 
 ## <a name="customize-the-data-model-with-attributes"></a>Personnaliser le modèle de données avec des attributs
 
@@ -385,19 +381,18 @@ public ICollection<Course> Courses { get; set; }
 
 Remarque : Par convention, EF Core autorise la suppression en cascade pour les clés étrangères non nullables et pour les relations plusieurs à plusieurs. Les suppressions en cascade peuvent engendrer des règles de suppression en cascade circulaires. Les règles de suppression en cascade circulaires provoquent une exception quand une migration est ajoutée.
 
-Par exemple, si la propriété `Department.InstructorID` n’a pas été définie comme nullable :
+Par exemple, si la propriété `Department.InstructorID` ne doit pas accepter les valeurs Null :
 
-* EF Core configure une règle de suppression en cascade pour supprimer le formateur quand le département est supprimé.
-* Supprimer le formateur quand le département est supprimé n’est pas le comportement souhaité.
+* EF Core configure une règle de suppression en cascade pour supprimer le service lorsque l’instructeur est supprimé.
+* La suppression du service lorsque l’instructeur est supprimé n’est pas le comportement souhaité.
+* L’API Fluent suivante définit une règle de restriction au lieu d’une cascade.
 
-Si les règles d’entreprise exigent que la propriété `InstructorID` soit non nullable, utilisez l’instruction d’API Fluent suivante :
-
- ```csharp
- modelBuilder.Entity<Department>()
-    .HasOne(d => d.Administrator)
-    .WithMany()
-    .OnDelete(DeleteBehavior.Restrict)
- ```
+   ```csharp
+   modelBuilder.Entity<Department>()
+      .HasOne(d => d.Administrator)
+      .WithMany()
+      .OnDelete(DeleteBehavior.Restrict)
+  ```
 
 Le code précédent désactive la suppression en cascade sur la relation formateur-département.
 
@@ -671,7 +666,7 @@ Le didacticiel suivant traite des données associées.
 * [Version YouTube de ce tutoriel(Partie 1)](https://www.youtube.com/watch?v=0n2f0ObgCoA)
 * [Version YouTube de ce tutoriel(Partie 2)](https://www.youtube.com/watch?v=Je0Z5K1TNmY)
 
-::: moniker-end
+
 
 > [!div class="step-by-step"]
 > [Précédent](xref:data/ef-rp/migrations)

@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/11/2019
 uid: fundamentals/configuration/index
-ms.openlocfilehash: ad430f50b3d2616437b716b8be275937ef282bea
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 63a876c09f952537d790f2a5df4b8672df49d015
+ms.sourcegitcommit: 3376f224b47a89acf329b2d2f9260046a372f924
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882524"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517018"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuration dans ASP.NET Core
 
@@ -98,7 +98,7 @@ Les méthodes <xref:Microsoft.Extensions.Configuration.ConfigurationSection.GetS
 
 Au démarrage de l’application, les sources de configuration sont lues dans l’ordre où leurs fournisseurs de configuration sont spécifiés.
 
-Les fournisseurs de configuration de fichier peuvent recharger la configuration lorsqu’un fichier de paramètres sous-jacent est modifié après le démarrage de l’application. Le fournisseur de configuration de fichier est décrit plus loin dans cette rubrique.
+Les fournisseurs de configuration qui implémentent la détection des modifications peuvent recharger la configuration lorsqu’un paramètre sous-jacent est modifié. Par exemple, le fournisseur de configuration de fichier (décrit plus loin dans cette rubrique) et le [fournisseur de configuration Azure Key Vault](xref:security/key-vault-configuration) implémentent la détection des modifications.
 
 <xref:Microsoft.Extensions.Configuration.IConfiguration> est disponible dans le conteneur d’[injection de dépendances](xref:fundamentals/dependency-injection) de l’application. <xref:Microsoft.Extensions.Configuration.IConfiguration> peut être injecté dans une Razor Page <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> pour obtenir la configuration de la classe :
 
