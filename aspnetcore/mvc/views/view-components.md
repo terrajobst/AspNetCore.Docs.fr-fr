@@ -3,14 +3,15 @@ title: Composants de vue dans ASP.NET Core
 author: rick-anderson
 description: Découvrez comment les composants de vue sont utilisés dans ASP.NET Core et comment les ajouter à des applications.
 ms.author: riande
-ms.date: 1/30/2019
+ms.custom: mvc
+ms.date: 5/14/2019
 uid: mvc/views/view-components
-ms.openlocfilehash: 2bcf6411933b884c2f96d926827079dfbc25ca74
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 17fd7aa977868d522df9f27e0c23d07b016bfb7c
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64891274"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621075"
 ---
 # <a name="view-components-in-aspnet-core"></a>Composants de vue dans ASP.NET Core
 
@@ -40,6 +41,8 @@ Les composants de vue sont conçus pour être utilisés là où vous avez une lo
 * Panneau de connexion inclus dans chaque page pour afficher les liens de connexion ou déconnexion, en fonction de l’état de connexion de l’utilisateur
 
 Un composant de vue a deux éléments : sa classe (généralement dérivée de [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) et le résultat qu’il retourne (en général, une vue). Comme les contrôleurs, un composant de vue peut être un OCT, mais la plupart des développeurs préfèrent utiliser les méthodes et propriétés dérivées de `ViewComponent`.
+
+Lorsque vous vérifiez si des composants de vue répondent aux spécifications d’une application, utilisez plutôt des composants Razor. Les composants Razor combinent également un balisage avec un code C# pour produire des unités d’interface utilisateur réutilisables. Les composants Razor sont conçus pour la productivité des développeurs lorsque vous fournissez une logique d’interface utilisateur et une composition côté client. Pour plus d'informations, consultez <xref:blazor/components>.
 
 ## <a name="creating-a-view-component"></a>Création d’un composant de vue
 

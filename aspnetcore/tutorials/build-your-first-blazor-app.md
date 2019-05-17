@@ -5,14 +5,14 @@ description: Créez une application Blazor étape par étape.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/18/2019
+ms.date: 05/14/2019
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: d235fec4e128ad8622a06d301eeac15c4862c159
-ms.sourcegitcommit: dd9c73db7853d87b566eef136d2162f648a43b85
+ms.openlocfilehash: c1b142ebdbd85eb10ddf8c8b70edd9782732a4f1
+ms.sourcegitcommit: 3ee6ee0051c3d2c8d47a58cb17eef1a84a4c46a0
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65087729"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65621103"
 ---
 # <a name="build-your-first-blazor-app"></a>Créer votre première application Blazor
 
@@ -151,6 +151,14 @@ Ajoutez un nouveau composant à l’application qui implémente une liste de tâ
    ```
 
 1. Régénérez et exécutez l’application. Consultez la nouvelle page Todo pour vérifier que le lien vers le composant Todo fonctionne.
+
+1. Si vous créez une application Blazor côté serveur, ajoutez l’espace de noms de l’application au fichier *\_Imports.razor*. L’énoncé `@using` suivant suppose que l’espace de noms de l’application est `WebApplication` :
+
+   ```cshtml
+   @using WebApplication
+   ```
+   
+   Les applications Blazor côté client incluent l’espace de noms de l’application par défaut dans le fichier *\_Imports.razor*.
 
 1. Ajoutez un fichier *TodoItem.cs* à la racine du projet pour contenir une classe qui représente un élément Todo. Utilisez le code C# suivant pour la classe `TodoItem` :
 
