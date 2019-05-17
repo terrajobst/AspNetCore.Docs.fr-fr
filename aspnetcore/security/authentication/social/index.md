@@ -6,12 +6,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 4/19/2019
 uid: security/authentication/social/index
-ms.openlocfilehash: 61482481358256dc9ddd1a0a894541040a8a452f
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: e2d68ac93bdcfa2fc015e8447ea38626787cdb02
+ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882004"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65451045"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Authentification à l’aide de fournisseurs externes (Facebook, Google et autres) dans ASP.NET Core
 
@@ -47,11 +47,13 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 * Exécutez les commandes suivantes :
 
   ```console
-  dotnet new webapp -o WebApp1
+  dotnet new webapp -o WebApp1 -au Individual -uld
   code -r WebApp1
   ```
 
   * La commande `dotnet new` crée un nouveau projet Razor Pages dans le dossier *WebApp1*.
+  * `-uld` utilise la Base de données locale au lieu de SQLite. Omettez `-uld` pour utiliser SQLite.
+  * `-au Individual` crée le code servant à l’authentification individuelle.
   * La commande `code` ouvre le dossier *WebApp1* dans une nouvelle instance de Visual Studio Code.
 
   Une boîte de dialogue apparaît et affiche **Les composants nécessaires à la build et au débogage sont manquants dans « WebApp1 ». Faut-il les ajouter ?**
@@ -65,7 +67,7 @@ Pour obtenir des exemples de la façon dont les connexions des réseaux sociaux 
 <!-- TODO: update these instruction once mac support 2.2 projects -->
 
 ```console
-dotnet new webapp -o WebApp1
+dotnet new webapp -o WebApp1 -au Individual
 ```
 
 Les commandes précédentes utilisent le [CLI .NET Core](/dotnet/core/tools/dotnet) pour créer un projet Razor Pages.

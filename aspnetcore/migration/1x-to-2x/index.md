@@ -6,12 +6,12 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 10/24/2018
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: f5bd2bc9862a7487658125e14837798886efad11
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: fb6157205ab5280eb982a61e834eea5074864830
+ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64882794"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65450954"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>Migrer d’ASP.NET Core 1.x vers la version 2.0
 
@@ -41,6 +41,8 @@ Les projets ciblant le .NET Framework doivent utiliser le Moniker du Framework c
 
 > [!NOTE]
 > .NET Core 2.0 offre une surface d’exposition beaucoup plus grande que .NET Core 1.x. Si vous ciblez le .NET Framework uniquement car il manque des API dans .NET Core 1.x, le ciblage de .NET Core 2.0 fonctionnera sans doute.
+
+Si le fichier projet contient `<RuntimeFrameworkVersion>1.{sub-version}</RuntimeFrameworkVersion>`, voir [ce problème GitHub](https://github.com/aspnet/AspNetCore/issues/3221#issuecomment-413094268).
 
 <a name="global-json"></a>
 
