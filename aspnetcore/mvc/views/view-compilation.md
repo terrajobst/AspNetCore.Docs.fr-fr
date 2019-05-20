@@ -7,12 +7,12 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/02/2019
 uid: mvc/views/view-compilation
-ms.openlocfilehash: eba9de26e1af8c4df06b846748d8aa9380fc1862
-ms.sourcegitcommit: a3926eae3f687013027a2828830c12a89add701f
+ms.openlocfilehash: df25c9ad03ff52c43aac1a761462772547b3b954
+ms.sourcegitcommit: 6afe57fb8d9055f88fedb92b16470398c4b9b24a
 ms.translationtype: HT
 ms.contentlocale: fr-FR
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65450875"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65610142"
 ---
 # <a name="razor-file-compilation-in-aspnet-core"></a>Compilation de fichiers Razor dans ASP.NET Core
 
@@ -114,7 +114,7 @@ La compilation au moment de la génération est complétée par la compilation a
 La valeur par défaut de `true` pour :
 
 * Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1> ou une version antérieure
-* Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> ou une version ultérieure et que l’application se trouve dans l’environnement de développement <xref:Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsDevelopment*>. En d’autres termes, les fichiers Razor ne se recompilent pas dans un environnement non centré sur le développement, sauf si <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> est explicitement défini.
+* Si la version de compatibilité de l’application est définie sur <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2> ou ultérieur et que l’application se trouve dans l’environnement de développement <xref:Microsoft.AspNetCore.Hosting.HostingEnvironmentExtensions.IsDevelopment*>. En d’autres termes, les fichiers Razor ne se recompilent pas dans un environnement non centré sur le développement, sauf si <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.AllowRecompilingViewsOnFileChange> est explicitement défini.
 
 Pour des conseils et des exemples concernant la définition de la version de compatibilité de l’application, consultez <xref:mvc/compatibility-version>.
 
